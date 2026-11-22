@@ -2,58 +2,38 @@
  "form": "s2",
  "reviews": {
   "gate:s2.amt_boat_ask": {
-   "subject_sha": "b97f66ce964573b17555dbae0bfc75fd1393ca17a9f0f53b16e061b2026dc6a9",
+   "subject_sha": "79b051e6865d56ef28ef96938668c049ae046ae6e6369d6bac0ee757a4069826",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer itemizes and deducts mortgage interest on a second house or condo (not the main home) that is rented as a short-term vacation rental. Its use is transient.",
-       "why_no": "The question asks only about a boat, motor home or recreational vehicle. The help says outright that 'A house, an apartment, a condominium or a mobile home is not one of these.' The truthful answer is no.",
-       "line": "s2.amt_boat_if_could (the refusal to compute Form 6251 is missed, so line 3's mortgage interest adjustment is dropped)",
-       "irs_text": "i6251 (2025) p. 8, Line 3, Mortgage Interest: 'If you deducted home mortgage interest on Schedule A for a dwelling that isn't a principal residence ... or qualified dwelling for AMT, include that deducted interest on line 3. A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis.'",
-       "severity": "high",
-       "fix": "Ask: 'Is any of the mortgage interest you (or, on a joint return, your spouse) deduct for a home that was not your main home and that was either (a) a boat, houseboat, motor home, camper, travel trailer or other recreational vehicle, or (b) a house, apartment, condominium or mobile home used on a transient basis, such as a short-term or vacation rental, hotel-style rental pool or timeshare?' Remove the help sentence that says houses, condos and mobile homes are never included."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A married couple filing jointly deducts mortgage interest on a timeshare condominium or a resort condo in a rental pool. It is not their main home, and it is used on a transient basis.",
-       "why_no": "The help names 'a condominium' as not one of these. The question lists only boats and RVs. They truthfully answer no.",
-       "line": "s2.amt_boat_if_could (Form 6251 refusal missed)",
-       "irs_text": "i6251 (2025) p. 8, Line 3: 'A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis.'",
-       "severity": "high",
-       "fix": "Use the same broadened question as above. Name timeshares and rental-pool or short-term-rental units explicitly. Qualify the help: 'a house, apartment, condominium or mobile home counts only if it was used on a transient basis.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer deducts interest on a loan for a travel trailer, fifth-wheel, park-model RV or camper that is not the main home, and calls it a 'mobile home.'",
-       "why_no": "The help says 'a mobile home is not one of these.' The filer reads their trailer or camper as a mobile home and answers no. The near-identical terms 'motor home' and 'mobile home' add to the confusion.",
-       "line": "s2.amt_boat_if_could (Form 6251 refusal missed)",
-       "irs_text": "i6251 (2025) p. 8, Line 3: 'A qualified dwelling for AMT doesn't include house boats and recreational vehicles.'",
-       "severity": "medium",
-       "fix": "List the RV types explicitly: motor home, camper, travel trailer, fifth-wheel, park-model RV, houseboat or other boat. In the help, define a mobile home as a manufactured home sited as a dwelling, and say that any towable or drivable RV counts as Yes."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer lived aboard a boat or in a motor home for part of the year, then moved into a house. The filer deducts interest paid on the boat or RV loan for the whole year.",
-       "why_no": "The words 'that was not your main home' lead the filer to answer no because the boat was the main home at some point in the year. The add-back turns on principal residence within the meaning of section 121, not on residence at any point in the year.",
+       "pattern": "other",
+       "who": "An itemizing filer who deducts Schedule A mortgage interest on a condominium or house rented out for short stays (transient basis) and has no boat or camper interest, where adding that short-stay home interest to AMTI is what makes line 7 exceed line 10.",
+       "why_no": "The computed gate helper adds only private activity bond interest and boat or camper mortgage interest at their largest. It does not add short-stay/transient home mortgage interest, so the tool computes the gate false, never asks s2.amt_boat, and silently treats s2.amt_boat_if_could as zero.",
        "line": "s2.amt_boat_if_could",
-       "irs_text": "i6251 (2025) p. 8, Line 3: 'a dwelling that isn't a principal residence (within the meaning of section 121) or qualified dwelling for AMT, include that deducted interest on line 3'",
-       "severity": "low",
-       "fix": "Add to the help: 'If the boat or RV was your main home for only part of the year, or you are unsure whether it counts as your main home, answer Yes.'"
+       "irs_text": "i6251 p. 8, Line 3, Mortgage Interest: If you deducted home mortgage interest on Schedule A for a dwelling that isn’t a principal residence or qualified dwelling for AMT, include that deducted interest on line 3. A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis.",
+       "severity": "high",
+       "fix": "Broaden the gate helper to add all nonqualified-dwelling mortgage interest at its largest, including short-stay/transient house, apartment, condominium, or mobile-home interest, or ask the gated question whenever Schedule A home mortgage interest is positive and AMT could apply after adding any such interest."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "An itemizing filer with a second condominium or house used for short stays by family or guests but not rented out, who deducts the mortgage interest on Schedule A and where adding that interest could make AMT apply.",
+       "why_no": "The question asks only about a home rented out for short stays. The filer reads their non-rented short-stay use as outside that phrase and answers no, although the IRS text refers more broadly to a house, apartment, condominium, or mobile home used on a transient basis.",
+       "line": "s2.amt_boat_if_could",
+       "irs_text": "i6251 p. 8, Line 3, Mortgage Interest: A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis; include deducted interest for a dwelling that isn’t a principal residence or qualified dwelling for AMT on line 3.",
+       "severity": "medium",
+       "fix": "Use the statutory phrase used on a transient basis and give examples, including short-stay rentals, rather than limiting the question to a home rented out for short stays."
       }
      ],
-     "prompt_sha": "0a584c07d860e458d1bba14fd5888dc80a13bfd79c4e41632a99202695e8a478",
+     "prompt_sha": "729b9ec7ed073c34932beab8d5fd229c277173e66ccbf42de39600ca56c7a856",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.082432,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_s2.amt_boat_ask.b97f66ce9645.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_s2.amt_boat_ask.79b051e6865d.1.response.txt"
     }
    ],
    "condition": "s2.amt_boat_ask",
@@ -74,7 +54,7 @@
      "how": "cited pages",
      "locators": [
       "p. 8, Line 3, Mortgage Interest, \"A qualified dwelling for AMT doesn’t include house boats and recreational vehicles\"",
-      "p. 8, Line 3, Mortgage Interest, \"If you deducted home mortgage interest on Schedule A for a dwelling that isn’t a principal residence (within the meaning of section 121) or qualified dwelling for AMT, include that deducted interest on line 3\", \"A qualified dwelling for AMT doesn’t include house boats and recreational vehicles\"",
+      "p. 8, Line 3, Mortgage Interest, \"If you deducted home mortgage interest on Schedule A for a dwelling that isn’t a principal residence (within the meaning of section 121) or qualified dwelling for AMT, include that deducted interest on line 3\", \"A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis\", \"A qualified dwelling for AMT doesn’t include house boats and recreational vehicles\"",
       "p. 8, Line 3, Mortgage Interest, \"include that deducted interest on line 3\""
      ],
      "cols_pages": [
@@ -85,7 +65,7 @@
    ]
   },
   "gate:s2.amt_pab_ask": {
-   "subject_sha": "7ca01dc31cbbd49d75cc845184d6c1af678ee047ef5db889baebf7b0e56b0de6",
+   "subject_sha": "05128a5224861503f4597b9b48d57ce4f84f524242a6b5c473170372fa8a751a",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -93,50 +73,40 @@
       {
        "kind": "FALSE_NO",
        "pattern": "4",
-       "who": "A filer, or the spouse on a joint return, whose tax-exempt income comes only from a municipal bond mutual fund or ETF. The fund's Form 1099-DIV reports exempt-interest dividends in box 12, with the private activity bond part in box 13.",
-       "why_no": "The question says 'Add up box 9 of your Forms 1099-INT.' The filer has no Form 1099-INT, or box 9 on it is blank, so the true total is zero. The help 'Box 9 is a part of box 8' points only to the 1099-INT, never to the 1099-DIV.",
+       "who": "A filer whose specified private activity bond interest is paid as exempt-interest dividends by a mutual fund or other regulated investment company and is not reported in box 9 of a Form 1099-INT.",
+       "why_no": "The gated question says to add 'box 9 of your Forms 1099-INT' and the help says 'Box 9 is a part of box 8'; the filer has no 1099-INT box 9, so answers zero or none even though the fund's exempt-interest dividend includes line 2g interest.",
        "line": "s2.amt_pab_if_could (Form 6251 line 2g)",
-       "irs_text": "i6251 (2025) p. 3, Line 2g: 'Exempt-interest dividends paid by a mutual fund or other regulated investment company are treated as interest income'",
+       "irs_text": "i6251 p. 3, Line 2g: 'Exempt-interest dividends paid by a mutual fund or other regulated investment company are treated as interest income' on line 2g; f6251 p. 1 line 2g: 'Interest from specified private activity bonds exempt from the regular tax'.",
        "severity": "high",
-       "fix": "Ask: 'How much of your (or your spouse's) tax-exempt interest is from private activity bonds? Include Form 1099-INT box 9, Form 1099-DIV box 13 (specified private activity bond interest dividends), and any amount from a Schedule K-1 or other statement. Include it even if you got no form.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A filer whose only tax-exempt income is exempt-interest dividends from a fund (Form 1099-DIV box 12), with no bond interest or OID of their own.",
-       "why_no": "The gate helper is 'Tax-exempt interest and tax-exempt OID, net of amortized premium.' If the tool fills this only from 1099-INT box 8 and 1099-OID inputs, the helper is $0 for this filer. The gate is then false and the question is never asked.",
-       "line": "s2.amt_pab_if_could (Form 6251 line 2g)",
-       "irs_text": "i6251 (2025) p. 3, Line 2g: 'Exempt-interest dividends paid by a mutual fund or other regulated investment company are treated as interest income'",
-       "severity": "medium",
-       "fix": "Make the gate's first condition the full Form 1040 line 2a amount, which includes exempt-interest dividends (1099-DIV box 12), or test 1099-DIV box 12 > 0 as a separate condition."
+       "fix": "Ask for specified private activity bond interest from all sources, expressly including mutual-fund/RIC exempt-interest dividends and not limiting the answer to Form 1099-INT box 9."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "4",
-       "who": "A filer who receives private activity bond interest through a partnership, S corporation, or trust, and has only a Schedule K-1 or similar statement showing it. No Form 1099-INT reports it.",
-       "why_no": "The question tells the filer to add up box 9 of their Forms 1099-INT. The K-1 amount is not on any 1099-INT, so the filer answers zero.",
+       "who": "A partner, S corporation shareholder, or trust or estate beneficiary whose specified private activity bond interest is reported on a Schedule K-1, with no Form 1099-INT box 9.",
+       "why_no": "The question directs the filer to 'Add up box 9 of your Forms 1099-INT'; the Schedule K-1 code for specified private activity bond interest is not a 1099-INT box 9, so the filer enters zero.",
        "line": "s2.amt_pab_if_could (Form 6251 line 2g)",
-       "irs_text": "i6251 (2025) p. 3, Line 2g: 'Enter on line 2g interest income from “specified private activity bonds”'",
+       "irs_text": "i6251 p. 3, Line 2g: 'Enter on line 2g interest income from “specified private activity bonds”'; f6251 p. 1 line 2g: 'Interest from specified private activity bonds exempt from the regular tax'.",
        "severity": "high",
-       "fix": "State that pass-through amounts reported on a Schedule K-1 count, or ask for them in a separate input that adds to line 2g."
+       "fix": "Include Schedule K-1 statements and say the amount is not limited to Form 1099-INT box 9; name the pass-through code or ask a broad 'any specified private activity bond interest' question."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A filer holding a private activity bond whose payer sent no Form 1099-INT or left box 9 blank. Examples: a small amount, a bond held directly outside a broker, or a payer that put the whole amount in box 8 only.",
-       "why_no": "The instruction to add up box 9 gives zero. The IRS wording 'should send' means the form is expected, not that the income depends on it.",
+       "pattern": "2",
+       "who": "A filer with tax-exempt OID from a zero-coupon specified private activity bond, reported on a Form 1099-OID, who receives no cash interest and has no Form 1099-INT box 9.",
+       "why_no": "The gate helper says 'tax-exempt interest and tax-exempt OID ... when any was received'; a zero-coupon PAB pays no cash, and the gated question says add box 9 of Forms 1099-INT. The filer answers zero.",
        "line": "s2.amt_pab_if_could (Form 6251 line 2g)",
-       "irs_text": "i6251 (2025) p. 3, Line 2g: 'Each payer of this type of interest should send you a Form 1099-INT showing the amount of this interest in box 9'",
-       "severity": "medium",
-       "fix": "Ask about the fact first: 'Is any of your tax-exempt interest from private activity bonds (bonds funding private projects such as airports, stadiums, housing, or hospitals), whether or not box 9 shows it?' Use box 9 only as a guide."
+       "irs_text": "i6251 p. 3, Line 2g: 'Enter on line 2g interest income from “specified private activity bonds”'; the gate itself treats 'tax-exempt OID' as within the amount.",
+       "severity": "high",
+       "fix": "Use 'accrued or received' for OID and include tax-exempt OID from Form 1099-OID or other statements, not only Form 1099-INT box 9."
       }
      ],
-     "prompt_sha": "4e06a72a429d2cc2e1f8128a8b5c7a9dec42079c1976de8a3fdabebfa100ef82",
+     "prompt_sha": "5f9b590eae7f7ca1ab89bf607586142fc8b91c1a8deff8355583b8ae5017ac76",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.096328,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_s2.amt_pab_ask.7ca01dc31cbb.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_s2.amt_pab_ask.05128a522486.1.response.txt"
     }
    ],
    "condition": "s2.amt_pab_ask",
@@ -182,68 +152,58 @@
    ]
   },
   "gate:s2.household_help": {
-   "subject_sha": "c76f75245e4b55e30c666cbb3c1d6712f31fd552ec7de1a1a3545f1ba73132a1",
+   "subject_sha": "ba39985882241df985873e0fa3167cde6936f7c20109ec66a961496a1ab559d6",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A couple employs a full-time nanny at $40,000 a year. They pay her through a household payroll service, which debits their account, issues her paychecks and handles withholding.",
-       "why_no": "The help says 'Count anyone you paid yourself' and 'Do not count a company you hired.' The payroll service is a company they hired, and they never pay the nanny directly. Read literally, the help gives a no.",
-       "line": "s2.household_employee_if_help (Schedule 2 line 9 / Schedule H), plus the refusal a Yes would trigger",
-       "irs_text": "f1040s2 (2025) p.1, line 9: 'Household employment taxes. Attach Schedule H'",
-       "severity": "high",
-       "fix": "Ask who the worker works for, not who hands over the money. For example: 'Count a worker even if a payroll service or agency handles paying them. Do not count a business that supplies and directs its own staff, such as a cleaning company or a daycare center.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer hires a home health aide for a disabled spouse through a nurse registry. The registry only finds and refers the aide. The filer directs the aide's work and pays the registry, which passes the pay on.",
-       "why_no": "The filer pays an agency, so it looks like 'a company you hired,' even though the aide works under the filer's direction.",
-       "line": "s2.household_employee_if_help (Schedule 2 line 9)",
-       "irs_text": "f1040s2 (2025) p.1, line 9: 'Household employment taxes. Attach Schedule H'",
+       "pattern": "1",
+       "who": "A filer paid a housekeeper total cash wages of $1,200 in October-December 2024 and paid no one for household work in 2025. On the 2025 joint return the filer answers no.",
+       "why_no": "The gate asks only 'In 2025, did you ... pay anyone'; the filer truthfully says no because the payments were in 2024. The help mentions only 2025 pay for 2024 work, not 2024 pay.",
+       "line": "s2.household_employee_if_help (Schedule H; Schedule 2 line 9)",
+       "irs_text": "f1040s2 (2025) p. 1, line 9: 'Household employment taxes. Attach Schedule H'",
        "severity": "medium",
-       "fix": "Say that a worker found through an agency or registry still counts if the filer, not the agency, decides how and when the work is done."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer pays a private driver $30,000 a year to drive them to appointments. The driver works in the car and around town, not at the house.",
-       "why_no": "The question asks about work 'in or around your home' and lists a nanny, a carer, a housekeeper and a gardener. A chauffeur fits neither the place nor the list.",
-       "line": "s2.household_employee_if_help (Schedule 2 line 9)",
-       "irs_text": "f1040s2 (2025) p.1, line 9: 'Household employment taxes. Attach Schedule H'",
-       "severity": "medium",
-       "fix": "Widen the examples to 'babysitter, nanny, carer or health aide, housekeeper, cook, private nurse, driver, yard worker or caretaker'. Add: 'including someone who works for your household away from the home, such as a driver.'"
+       "fix": "Broaden the gate to ask whether in 2025 the filer paid anyone, or whether the filer paid total cash wages of $1,000 or more in any quarter of 2024, to work in or around the home."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A household employee worked through December 2024. The filer paid the final wages or bonus, $3,000, in January 2025. Nobody worked for them during 2025.",
-       "why_no": "'In 2025, did you pay anyone to work' reads as asking whether anyone worked in 2025. The filer answers no because the work was done in 2024.",
-       "line": "s2.household_employee_if_help (Schedule 2 line 9)",
-       "irs_text": "f1040s2 (2025) p.1, line 9: 'Household employment taxes. Attach Schedule H'",
+       "who": "A filer paid $1,200 to a housekeeper in the fourth quarter of 2024 and $500 to the same housekeeper in 2025. The filer answers no because no one 2025 employee reached $2,800 and no 2025 quarter reached $1,000.",
+       "why_no": "The filer reads the gate as a threshold/owe question, not as asking whether anyone was paid in 2025. The help does not mention that the 2024 fourth-quarter $1,000 trigger makes the $500 of 2025 wages taxable.",
+       "line": "s2.household_employee_if_help (Schedule H; Schedule 2 line 9)",
+       "irs_text": "f1040s2 (2025) p. 1, line 9: 'Household employment taxes. Attach Schedule H'",
        "severity": "medium",
-       "fix": "Ask: 'Did you (or your spouse) make any payment in 2025 to a household worker, including pay for work done in 2024?'"
+       "fix": "State in the gate help that if the filer paid $1,000 or more in any quarter of 2024, any 2025 cash wages to household employees can trigger Schedule H even below the usual 2025 thresholds."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A single parent pays their own mother, or an adult sibling, to babysit a young child regularly, $5,000 in 2025.",
-       "why_no": "The filer sees money given to a relative for helping out as family support, not as paying someone to work like a nanny.",
-       "line": "s2.household_employee_if_help (Schedule 2 line 9)",
-       "irs_text": "f1040s2 (2025) p.1, line 9: 'Household employment taxes. Attach Schedule H'",
-       "severity": "low",
-       "fix": "Add to the help: 'Include relatives you paid, such as a parent or sibling who babysits. The next question sorts out which relatives are exempt.'"
+       "pattern": "6",
+       "who": "A filer hires a cook to work in the home and pays $30,000, but did not hire a nanny, carer, housekeeper, or gardener.",
+       "why_no": "The filer treats the four examples in the question as the complete list and answers no.",
+       "line": "s2.household_employee_if_help (Schedule H; Schedule 2 line 9)",
+       "irs_text": "f1040s2 (2025) p. 1, line 9: 'Household employment taxes. Attach Schedule H'",
+       "severity": "medium",
+       "fix": "Say explicitly that the examples are not exhaustive and include a cook, personal assistant, or any other domestic worker the filer chooses and directs."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer pays a nanny or gardener $3,000 to work at a vacation home, not at the filer's primary residence.",
+       "why_no": "The filer reads 'your home' as the main home and answers no because the work was at a second home.",
+       "line": "s2.household_employee_if_help (Schedule H; Schedule 2 line 9)",
+       "irs_text": "f1040s2 (2025) p. 1, line 9: 'Household employment taxes. Attach Schedule H'",
+       "severity": "medium",
+       "fix": "Say 'any home you own or rent, including a vacation home,' not just the primary residence."
       }
      ],
-     "prompt_sha": "21e275d5f0dce98382e7faf2d8790d34e276ce16907c7508c0d255d0b38f7735",
+     "prompt_sha": "b08bbaf49a796bdcea29992f5a87cf876eaa6ad95022d259e8d1a880926ada95",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.08882399999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_s2.household_help.c76f75245e4b.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_s2.household_help.ba3998588224.1.response.txt"
     }
    ],
    "condition": "s2.household_help",
@@ -272,7 +232,7 @@
    ]
   },
   "gate:s2.options_any": {
-   "subject_sha": "450d70daed282a6f7a9f9558d91a9c52f31dec5f80ddbf62e3c1ea981c7028d2",
+   "subject_sha": "a280ef4334cfd9b682590e8687ce8b5d48ea8f1b7c2ee45fcf05bc80414872be",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -280,60 +240,70 @@
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A startup employee who early-exercised incentive stock options in 2024 and made no section 83(b)-type election. The unvested shares vested during 2025 and are still held.",
-       "why_no": "The gate asks whether in 2025 they used options to buy shares or sold such shares. They bought in 2024 and sold nothing, so they truthfully answer no. The s2.iso question 'buy shares in 2025' would also be a truthful no.",
-       "line": "s2.iso_if_options (missed AMT adjustment and missed refusal)",
-       "irs_text": "i6251 (2025) p. 4, Line 2i: include the excess of 'The fair market value (FMV) of the stock acquired through exercise of the option ... when your rights in the acquired stock first become transferable or when these rights are no longer subject to a substantial risk of forfeiture' over the amount paid",
+       "who": "A filer exercised an ISO before 2025 but the acquired shares stayed subject to a substantial risk of forfeiture until 2025, and the filer still held them at the end of 2025.",
+       "why_no": "The gate asks only whether they used employee stock options to buy shares in 2025; they bought the shares in the earlier exercise year, so they truthfully answer no. The ISO helper also asks only about ISOs exercised in 2025.",
+       "line": "s2.iso_if_options",
+       "irs_text": "i6251 p. 4, Line 2i: include on line 2i the excess of the fair market value of the stock acquired through exercise of the option when rights first become transferable or are no longer subject to a substantial risk of forfeiture over the amount paid.",
        "severity": "high",
-       "fix": "Broaden the gate and the ISO question to also ask: 'In 2025, did any shares you bought earlier with incentive stock options stop being subject to vesting or forfeiture, or become transferable?' Treat a yes as an AMT case."
+       "fix": "Broaden the gate and ISO helper to ask whether in 2025 the filer exercised an ISO or had ISO stock first become transferable or no longer subject to forfeiture, and still held ISO shares at year-end."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "An employee who bought ESPP shares, or exercised ISOs, in 2024 and sold them early in 2025 (a disqualifying disposition). The employer did not add the ordinary income to box 1 of the 2025 W-2.",
-       "why_no": "They answer yes to the outer gate because they sold shares. But s1.stock_options is reached only through the helper 'In 2025, did you ... exercise stock options from an employer?', which they truthfully answer no. The ESPP buyer may also say no because a plan purchase is not 'exercising stock options'.",
+       "pattern": "2",
+       "who": "A filer whose ISO or ESPP shares bought through options in an earlier year were disposed of in 2025 in a merger, exchange, redemption, or gift rather than a sale, and the employer did not report the ordinary income in W-2 box 1.",
+       "why_no": "The gate asks only whether they sell shares bought that way. They did not sell, so they answer no, even though a disqualifying disposition can create income not otherwise reported.",
        "line": "s1.stock_options_if_options",
-       "irs_text": "i1040gi (2025) p. 91, Line 8k: 'Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h'. The tool's own help names this case: 'shares from an incentive stock option or a purchase plan were sold early and the employer did not add the income to a W-2'.",
-       "severity": "high",
-       "fix": "Condition s1.stock_options on the outer gate (exercise, ESPP purchase, or sale of such shares in 2025), not on a 2025 exercise. Name ESPP purchases explicitly in the helper."
+       "irs_text": "i6251 p. 4, Line 2k: ordinary income from the disposition of property, such as a disqualifying disposition of stock acquired in a prior year by exercising an incentive stock option; i1040gi p. 91, line 8k: Enter any income from the exercise of stock options not otherwise reported.",
+       "severity": "medium",
+       "fix": "Ask whether the filer sold or otherwise disposed of shares acquired through employee stock options or an ESPP, including disqualifying dispositions."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A consultant or other non-employee service provider exercised nonqualified stock options in 2025 and had income not reported in W-2 box 1 and not otherwise reported on the return.",
+       "why_no": "The gate asks only about employee stock options. The filer was not an employee and did not receive employee stock options, so answers no; the Schedule 1 line 8k instruction is not limited to employee options.",
+       "line": "s1.stock_options_if_options",
+       "irs_text": "i1040gi p. 91, line 8k: Stock options. Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h.",
+       "severity": "medium",
+       "fix": "Remove employee from the gate or add including stock options received for services as a non-employee; or add a separate line for non-employee stock options."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer exercised an ISO in 2025 to buy shares that were restricted or vesting, still held them at the end of 2025, and either the shares vested in 2025 or the filer made a timely 83(b) election.",
+       "why_no": "The help says shares simply granted, such as restricted stock, do not count. The filer reads that as excluding their restricted ISO shares and answers no, even though the shares were acquired by exercising an ISO.",
+       "line": "s2.iso_if_options",
+       "irs_text": "i6251 p. 4, Line 2i: the AMT adjustment applies to stock acquired through exercise of the option, including when rights are subject to a substantial risk of forfeiture or the filer makes the 30-day election.",
+       "severity": "medium",
+       "fix": "Clarify that restricted stock acquired by exercising an option counts; only shares merely granted without an option are excluded."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer did a cashless or net exercise of employee stock options in 2025, with income not reported in W-2 box 1: the broker exercised the options and immediately sold the shares, and the filer never held a share position.",
+       "why_no": "The filer reads use employee stock options to buy shares as requiring an actual purchase of shares and answers no, not treating the same-day exercise-and-sale as buying and selling shares.",
+       "line": "s1.stock_options_if_options",
+       "irs_text": "i1040gi p. 91, line 8k: Enter any income from the exercise of stock options not otherwise reported.",
+       "severity": "medium",
+       "fix": "Say exercise employee stock options, including cashless or same-day exercise-and-sale, or sell shares acquired that way."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A former employee who left in 2025 and exercised ISOs within the post-termination window, still holding the shares at year end. Or a filer whose options were granted by the employer's parent or subsidiary corporation.",
-       "why_no": "They read 'stock options from an employer' as their current employer, or as the company that pays their wages. The options came from a former employer or a related corporation, so they answer no.",
-       "line": "s2.iso_if_options (missed refusal); s1.stock_options_if_options",
-       "irs_text": "i6251 (2025) p. 4, Line 2i: 'For the regular tax, no income is recognized when an incentive stock option (ISO), as defined in section 422(b), is exercised. However, this rule doesn't apply for the AMT.'",
-       "severity": "medium",
-       "fix": "Reword as 'stock options you received through a job (current or former employer, or its parent or subsidiary company)'. Repeat this in the help text."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A former spouse who received nonstatutory options in a divorce settlement and exercised them in 2025. The income is reported to them on a Form 1099, not a W-2.",
-       "why_no": "The options came from the ex-spouse's employer, not 'an employer' of the filer or current spouse, so they answer no.",
+       "who": "A filer received employee stock options by gift, not by inheritance or divorce, from the employee; the filer exercised them in 2025 and had income not reported in W-2 box 1.",
+       "why_no": "The help says to count options that you inherited or got in a divorce. The filer did neither, reads the list as exhaustive, and answers no.",
        "line": "s1.stock_options_if_options",
-       "irs_text": "i1040gi (2025) p. 91, Line 8k: 'Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h'",
-       "severity": "medium",
-       "fix": "Ask about any compensatory stock options exercised, including options received from a former spouse in a divorce or separation. Classify after a broad yes."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "An employee who did a cashless 'exercise and sell' of options through a broker in 2025 and received only cash.",
-       "why_no": "They never thought of themselves as using options 'to buy shares', or as selling shares they owned. They read the event as receiving a cash payout and answer no.",
-       "line": "s1.stock_options_if_options",
-       "irs_text": "i1040gi (2025) p. 91, Line 8k: 'Enter any income from the exercise of stock options not otherwise reported'",
+       "irs_text": "i1040gi p. 91, line 8k: Enter any income from the exercise of stock options not otherwise reported.",
        "severity": "low",
-       "fix": "Add to the help: 'Count a cashless or same-day exercise-and-sell, even if you received only cash.'"
+       "fix": "Say including options acquired by inheritance, divorce, gift, or other transfer, or simply options originally granted to any employee even if you were not the employee."
       }
      ],
-     "prompt_sha": "f14287e3edd4fa051dd695aed2564a2bc74e36b4bb56a4a941d90ccf79582638",
+     "prompt_sha": "fc30a788e3aceb1c22f785af462da11ba14610c0fbce62f19579f32a9f48ea62",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.147724,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_s2.options_any.450d70daed28.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_s2.options_any.a280ef4334cf.1.response.txt"
     }
    ],
    "condition": "s2.options_any",

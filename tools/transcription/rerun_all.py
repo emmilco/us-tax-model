@@ -13,9 +13,14 @@ The forms of a kind are those with a log of any model family; each tool writes t
 the family `--model` names (families.py), so a second family's run leaves the Claude logs as
 they are.
 
-Only active families (families.json) run. A `--model` of an inactive family is refused unless
-`--inactive-family FAMILY --inactive-family-reason TEXT` names that family; the reason is passed to
+Only callable families (families.json) run. A `--model` of a family that is not callable is refused unless
+`--uncallable-family FAMILY --uncallable-family-reason TEXT` names that family; the reason is passed to
 each tool and recorded in each paid call's cost-ledger row.
+
+With a qualified family's model, forms another qualified family's log already answers are skipped: they
+need no second review to satisfy check_logs.py, so the run buys only the forms that have none. Name them
+with --forms to run them anyway. An advisory family's transcription runs only where its log would earn
+second-family credit (owner decision 2026-11-04), unless --forms names the form.
 
 A model family's first usage-limit failure (USAGE_LIMIT) opens its breaker: no further job of that
 family calls the model in this run (a --resume reuse of a matching saved response still runs, since it
@@ -237,6 +242,16 @@ def eligible(kind, form, family):
         return False
 
 
+def satisfying(kind, form, family):
+    """Another qualified family's log that answers this form now, or None. A log answers a form when it
+    covers its current subject (answered); an open ruling is adjudicated, not rerun, so it does not stop a
+    log satisfying the form here."""
+    for fam in families.load(kind)["qualified"]:
+        if fam != family and answered(kind, form, fam) is None:
+            return fam
+    return None
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--kinds", default="transcription,render,classm")
@@ -260,7 +275,7 @@ def main():
     ap.add_argument("--summary", default=os.path.join(ROOT, ".transcription", "rerun_summary.json"))
     families.add_override_args(ap)
     a = ap.parse_args()
-    families.apply_override(ap, a)  # refuses a --model of an inactive family unless the override names it
+    families.apply_override(ap, a)  # refuses a --model of a family that is not callable unless the override names it
     if a.jobs < 1:
         ap.error("--jobs must be positive")
     if a.force_rerun is not None and not a.force_rerun.strip():
@@ -277,17 +292,26 @@ def main():
             sys.exit(2)
     jobs = []
     fam = families.family_of(a.model) if a.model else families.DEFAULT
-    skipped = []
+    skipped, satisfied = [], []
     for kind in a.kinds.split(","):
+        tiers = families.load(kind)
         for form in forms_for(kind):
             if a.forms and form not in a.forms.split(","):
                 continue
-            if kind == "transcription" and fam == "deepseek" and not a.forms and not eligible(kind, form, fam):
-                skipped.append(form)  # owner decision 2026-11-04: DeepSeek transcription only where it can earn credit
+            if not a.forms and fam in tiers["qualified"]:
+                other = satisfying(kind, form, fam)
+                if other:
+                    satisfied.append(f"{kind}:{form} ({other})")
+                    continue
+            if kind == "transcription" and fam != families.DEFAULT and not a.forms and not eligible(kind, form, fam):
+                skipped.append(form)  # owner decision 2026-11-04: a second transcription reading only where it can earn credit
                 continue
             jobs.append((kind, form))
+    if satisfied:
+        print(f"skipped {len(satisfied)} job(s) a qualified family already answers "
+              f"(name them with --forms to run anyway): {', '.join(satisfied)}", flush=True)
     if skipped:
-        print(f"skipped {len(skipped)} DeepSeek transcription form(s) not eligible for second-family credit "
+        print(f"skipped {len(skipped)} second-family transcription form(s) not eligible for credit "
               f"(name them with --forms to run anyway): {', '.join(skipped)}", flush=True)
     # classm.py rebuilds its own document's jobs under a lock. A redundant
     # all-document corpus here can exhaust the heap before any review starts.
@@ -357,8 +381,8 @@ def skipped_report(results, a):
                *(["--reasoning-effort", a.reasoning_effort] if a.reasoning_effort else []),
                *(["--max-output-tokens", str(a.max_output_tokens)] if a.max_output_tokens is not None else []),
                *(["--case-jobs", str(a.case_jobs)] if kind == "classm" and a.case_jobs != 1 else []),
-               *(["--inactive-family", a.inactive_family, "--inactive-family-reason", shlex.quote(a.inactive_family_reason)]
-                 if a.inactive_family else [])]
+               *(["--uncallable-family", a.uncallable_family, "--uncallable-family-reason", shlex.quote(a.uncallable_family_reason)]
+                 if a.uncallable_family else [])]
         out += [f"  {family} {kind} ({len(forms)}): {', '.join(sorted(forms))}", "    " + " ".join(cmd)]
     return "\n".join(out) + "\n"
 

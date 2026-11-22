@@ -104,6 +104,36 @@ rows:
       person[taxpayer].retirement[r].under59: false
     expect:
       refused: person[taxpayer].retirement[r].special
+  - id: retirement.ira_basis_rollover
+    design: "BUG-0871: basis from after-tax money rolled over from a work plan"
+    situation: "A retiree rolled after-tax 401(k) money into a traditional IRA years ago and now withdraws from it."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: traditional_ira
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].charity_hsa: false
+      person[taxpayer].retirement[r].ira_returned: false
+      person[taxpayer].retirement[r].ira_basis: true
+      person[taxpayer].retirement[r].box1: 900000
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.ira_basis_inherited
+    design: "BUG-0871: basis that came with an inherited traditional IRA"
+    situation: "A person withdraws from a traditional IRA inherited from a parent who had made nondeductible contributions."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: traditional_ira
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].charity_hsa: false
+      person[taxpayer].retirement[r].ira_returned: false
+      person[taxpayer].retirement[r].ira_basis: true
+      person[taxpayer].retirement[r].box1: 900000
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
   - id: retirement.box6
     design: "retirement.special: a distribution of employer securities with net unrealized appreciation (an amount in box 6)"
     situation: "A plan's Form 1099-R shows an amount in box 6."
@@ -716,7 +746,7 @@ rows:
     answers:
       ssb.any: true
       ssb.benefits: 2000000
-      f1040.tax_exempt_interest: 0
+      f1040.tax_exempt_any: false
       ssb.repaid_more: false
       ssb.ira_covered: false
       ssb.prior_year_pay: false

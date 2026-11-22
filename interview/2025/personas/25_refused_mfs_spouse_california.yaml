@@ -1,0 +1,11 @@
+# Predicted end: refused at household.mfs_community_property, told at household.spouse_cp_domicile (its help says a Yes
+# ends the interview). Mirrors coverage row mfs.spouse_cp_domicile.
+name: 25_refused_mfs_spouse_california
+who: A married person in New York who files apart from her husband; she has never lived in a community property state, but he works in Los Angeles and his permanent home is California, so half of his pay may be hers under California law.
+end: { refused: household.mfs_community_property }
+answers:
+  $person: [taxpayer]
+  f1040.status: mfs
+  household.married_dec31: true
+  household.community_property: false
+  household.spouse_cp_domicile: true

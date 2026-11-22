@@ -1,0 +1,255 @@
+{
+ "kind": "render",
+ "form": "k1p",
+ "family": "deepseek",
+ "base": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+ "lines": [
+  {
+   "key": "1",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "cdd2eaaa3e4ddac54c0af9c6e001f8be9135a1fba3d95d435aeb37f384705ada"
+  },
+  {
+   "key": "2",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "caedb631392a3350a8f73f12a469cb44b0259841df7508a2d0bc53a7a5504f06"
+  },
+  {
+   "key": "3",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "966f80f5c9fc214e052708e7d5afd30926bae690ee59e0a4b646c162cf56ae73"
+  },
+  {
+   "key": "4a",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "776b165af9072ff657bb89b871dface3c7fc1cbe4e64b719272b51cb3dfb521e"
+  },
+  {
+   "key": "5",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "ac80deafb3159c0f5f7dfe4fab222f12778a6a3fbae0ff473589e07a9af160bb"
+  },
+  {
+   "key": "6a",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "aa7a6f84e3487ad48d0238253e6db7ad57dff35af1f3996029d3e4fbda23a2a4"
+  },
+  {
+   "key": "8",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "a389584be1d380245e1e9a19cd68365fb87096271d796f2a6295292ec0ae8e2c"
+  },
+  {
+   "key": "9a",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "f4f456183b0fef2191c5a1e8d3e2e0a8f345faf5919d6b9c4eba7d44651cbbaa"
+  },
+  {
+   "key": "14 A",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "2d7a5397b4302006049ca7f57a57fc54e4d3fe3e49b4ff8ac257f64e0f54c465"
+  },
+  {
+   "key": "15 O",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "512704af13d691208ba9c8cd440b1092b40f1d1a9ff1d6271b2183b0e11bf07b"
+  },
+  {
+   "key": "18 A",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "4de70831a3dfc3747874a5e3bd482a98c8bb33d3736cad40ca2679a535b9d986"
+  },
+  {
+   "key": "20 Z",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "d4e8f18bee13dd88e93848cacea7f85742762cb3b34a7d208441ca4cf4d893a1"
+  },
+  {
+   "key": "6b",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "e4e6fa547532e42d947f77ebd49c815db022f8d4ce50246686e143aecb240d8c"
+  },
+  {
+   "key": "9b",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "6d82b2000e0c2589a4949e568d042e241b6808f39ac32e42bb57f180707ecc9a"
+  },
+  {
+   "key": "9c",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "3ccc8828f6cbe9567c5346a55d0ef3c6ed0688014f43cc6987408c6658784d02"
+  },
+  {
+   "key": "V (a) (k1p.b1_net_income)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "e604a3ddd61a0173778bb1a79e8c75f63a8d1dc71da1c5216815e8e4b4084db9"
+  },
+  {
+   "key": "V (b) (k1p.b1_net_loss)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "55ae2ddb1478770080821d81a59b2c9712e11f992fa078e7a96cb45d0a25ca1b"
+  },
+  {
+   "key": "IV/V (a)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "34dbd880781916df1ecdd3026b65e6349f86136480b70df8bbd49f65c95ebb3b"
+  },
+  {
+   "key": "IV/V (b)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "f0fd5cfbc465ee2dbff25f8e9b485108708fde52eef41bb5decb4fbab2d17c5c"
+  },
+  {
+   "key": "V (a) (k1p.b3_net_income)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "26d59ada5a56cd2e18a35198f26a00469cd7b380b2b5aae04ad9d074720a8ce6"
+  },
+  {
+   "key": "V (b) (k1p.b3_net_loss)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "9cbcb07b05d7c7a2c409c533f2abcb60eb3ac15e5cbf3b2c1b9151c63f37346e"
+  },
+  {
+   "key": "(e) (k1p.b1_overall_loss)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "8bd05c15007ab6493a1442237deb011e8a459cedd39e9729e8aebda714896c1f"
+  },
+  {
+   "key": "(e) (k1p.b2_overall_loss)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "b7dab539fbee3327df0bdc58626a7e924a060f2056d3042b5b5d158e6493e481"
+  },
+  {
+   "key": "(e) (k1p.b3_overall_loss)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "75bdf4daffa913a0cc7914102307eb7eabb3ee2b9c142b8791ee39e33dbb78b3"
+  },
+  {
+   "key": "IV (a)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "19e6ae64d80bda530c3a1e72bc19c092097b62494e19ce604ee8c2c38ebe87d3"
+  },
+  {
+   "key": "IV (b)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "f9f1a5678b69aa60f97ca5b58c2ffb7b1ed4f6596e5f1e22907faa3ba3856c73"
+  },
+  {
+   "key": "IV (c)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i8582 p. 10: the Part IV/V split follows current-year active participation and the tool's prior-year loss inputs carry the year the loss arose; a both-year test is outside it. Project stands.",
+   "subject_key": "4afaa47295170b7cca0f9d23f85a921841d36640b1e07ac0881bfc2a88691508"
+  },
+  {
+   "key": "VI (a)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i8582 p. 12: the Part IV/V split follows current-year active participation and the tool's prior-year loss inputs carry the year the loss arose; a both-year test is outside it. Project stands.",
+   "subject_key": "b07901d440ffd6dcd732d2fec452c36739aabdf9132bf3afcf46e548743d2d6c"
+  },
+  {
+   "key": "V (a) (k1p.p5_income)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "19ee39c0f572d1d49578251f6cb648066fb3478f08f59cadfba58c3b5da01159"
+  },
+  {
+   "key": "V (b) (k1p.p5_loss)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MATCH",
+   "subject_key": "46b15d9656151ee144b3f3eb530c9f9d9fb56c4871eb0b6868efeddbbbc9f453"
+  },
+  {
+   "key": "V (c)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i8582 p. 9: the Part IV/V split follows current-year active participation and the tool's prior-year loss inputs carry the year the loss arose; a both-year test is outside it. Project stands.",
+   "subject_key": "7ce9fa947fe8b87910d553c791140ea9284b6924e3d8a09159940a21c3465490"
+  },
+  {
+   "key": "28 (h)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1065sk1 p. 14: real-estate-professional and box 2 nonpassive income are outside k1p.screened. Project stands.",
+   "subject_key": "0c2a5d89fa35e9ffef7f7b36cf8fb82edc751a3ad2bc4273fdd62328446901dc"
+  },
+  {
+   "key": "28 (k)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1065sk1 p. 14: box 4b and real-estate-professional box 2 income are outside k1p.screened. Project stands.",
+   "subject_key": "a8d827160305edbbd98c3578f7543a29e67d110ee05f94c06f2bd3d8c7f501ba"
+  },
+  {
+   "key": "28 (i)",
+   "record": "faef32f709ec576a64f574fc8da65823e4dcc7d450fe4bfd600bfdef2335046f",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1065sk1 p. 14: box 2 nonpassive loss is outside k1p.screened. Project stands.",
+   "subject_key": "f715fed05b79f787bb353270a2b3fbe3bbe43ca96d993457546cfccf8f55c6da"
+  }
+ ],
+ "subjects": {
+  "1": "172b91bca01262b0fc582607f086bcff0ab05f6e5211725f3afba536cdaefab3",
+  "2": "8952fd60b44a3da466eeaf90979f34741c0cfe4aea45a7ceabd903e8b0f62656",
+  "3": "493c15b244cc72e90e820a3de060b374b128a2401c31031ee11648b6bf4a8f75",
+  "4a": "e2e47f6f1c4b0cc5d75fb5ee81109f1f130f27bb46f3073ac77ce95fde7445a1",
+  "5": "30c9933cc274c24adf426ddf36c67f10f376fd85f9f97d227dd68b4989186524",
+  "6a": "7218252f1763385da89b1796510840987d074c759436f47dbd4c3e80a93b2697",
+  "8": "e8c321cf2aaa3db203625fdacc39aaeb3eab69949f7789a6d3a929b88f4f2185",
+  "9a": "6f6c91fa50f85c2924b3e4f35e648ea31ca33bfd165ea1d5a1e813d7dcf2d935",
+  "14 A": "7b0d8249d9c65151ad62a7a8cb6d3e8f7f5fdd78efae86f2e1ab44d3e52d537c",
+  "15 O": "b51bfe49ed89581c4244c589bf0ef40d78d05b4e97b0dabbab22a6650fbd71d5",
+  "18 A": "1b487f1634f2697399e197172c59f13e3f0073cb5ecc36e2caff56b20e9add2a",
+  "20 Z": "89a07d645baa178768ab08cf64181d56010fbcdc607650a301039bf7f27083ca",
+  "6b": "3bd84370d2d4c5ac7f3327680e8ba424dba8c5ad4e17017428cdfdcc8ca3be05",
+  "9b": "27614c9e858a9013b8028a8dc07d0a00d06334b45f2519742e7d5d48a8b76724",
+  "9c": "491594ee84b9548a954423a4721661adb593f6316abbcf726a2f5a9d0880e2b4",
+  "V (a) (k1p.b1_net_income)": "77e2b09f327e13acf9e59b7bf248b945671e9061ee4d6c158dd9e785a1a3b062",
+  "V (b) (k1p.b1_net_loss)": "c9d4934bc0f36b43d0ca93b19ce80be70247d1c36e5934fb98cc09b4811a0976",
+  "IV/V (a)": "c642db9fceb34ec94c7674a89742e8125b926061f1883e2544e22799a0d790b5",
+  "IV/V (b)": "bb930fed214509d3624296b2b6cb4d3ed0b62cce7a626a6b69b5e42429682bca",
+  "V (a) (k1p.b3_net_income)": "2d7e35505b7f01e14e133e6b3da83393be55437c2d03ee72a407362fc4bad0d5",
+  "V (b) (k1p.b3_net_loss)": "e077af824642975042588404f2dcf33eb821422ecf128eba4e3f6eb011cf4fd1",
+  "(e) (k1p.b1_overall_loss)": "5f5d08d29c825b39a0c65e78846f225395a1d2086c188e38e176b2c8d0e2d5af",
+  "(e) (k1p.b2_overall_loss)": "ca6be2f3f0e974b4ab200042adc369974b796d3aa68888e2b9617853f828727d",
+  "(e) (k1p.b3_overall_loss)": "7bdee5c835a93f36abd390369e0507c8d5756876d297d87b13aed34f41556e6d",
+  "IV (a)": "87cd8ee3a863591650b5486142d23dce3477f7a0e306efdaf69670117f66e851",
+  "IV (b)": "2209be4fcc5b488efb408c5ff3340a2526cca2d85e95c3bcd0c3f09cb50be458",
+  "IV (c)": "9da61494712076db6c8f7c18636ea363c6149f8565ffb27f813028c39eea2e2e",
+  "VI (a)": "b32ad8d0bdb1a34c78cdc861d3192e35bfa84d83828caf0063e9559e30eda9c1",
+  "V (a) (k1p.p5_income)": "430fc6f944ec513c34ed0b1c1b7a7a4710f2026fa4a8ce9eecf425a5e4b60902",
+  "V (b) (k1p.p5_loss)": "7f307d6f22ed9a8452ad69a8675d65fe407cdb473d19788ed937b621834a5934",
+  "V (c)": "8056854fdfdffdd424f13c186d5b08ea462d1d15c980dbbd0c731b511c629dbb",
+  "28 (h)": "6c9139daee36116bc89e96632d8a311093c0bdcfa97040c6265a7dfebb3b536e",
+  "28 (k)": "d57acc0a98813f065a5a8034f291396dff056288daeaf7839c18abe3f7cdc41d",
+  "28 (i)": "88835c6a088564681236a895d74d2f24eba8fed5bf63bb922b81be2f5e02cb82"
+ },
+ "__rest__": "65627ea48fc29d0c821959ccfa6a427b33279019080356daed014f1d487b4c97"
+}

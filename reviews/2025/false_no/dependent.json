@@ -2,68 +2,17 @@
  "form": "dependent",
  "reviews": {
   "gate:dependent.edu_has_adj": {
-   "subject_sha": "22d5d0d9a6aeddb84b13c67a46fec8650926a5792d7682fe0a84e0a1ecf57bf7",
+   "subject_sha": "846e8cfa504fda56774fad888be17eb1cedb9e7bf3b3ca750092fbd4969b85d5",
    "samples": [
     {
-     "verdict": "UNCLEAR",
-     "findings": [
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A parent pays $3,000 in 2025 for a student's fall 2025 term and receives a $5,000 Pell grant for that term. Worksheet line 4 for that period is zero.",
-       "why_no": "The gate is labeled 'Adjusted qualified education expenses (worksheet line 3) above zero', but on the IRS worksheet adjusted qualified education expenses are line 4. Line 3 is total adjustments. If the gate is built, or later maintained, by its label, line 4 is zero exactly when adjustments meet or exceed expenses. The gate is then false and the refusal question is never asked.",
-       "line": "dependent.edu_over_if_adj",
-       "irs_text": "i8863 p. 9 worksheet: '3. Total adjustments (add lines 2a, 2b, and 2c)' and '4. Adjusted qualified education expenses. Subtract line 3 from line 1. If zero or less, enter -0-'",
-       "severity": "medium",
-       "fix": "Rename the gate 'Total adjustments (worksheet line 3, lines 2a+2b+2c) above zero'. Never compute it from line 4. Test it with a period whose adjustments exceed its expenses and confirm the question is asked."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A student's spring term tuition of $4,000 is paid in 2025. It is covered by $2,500 of tax-free employer educational assistance, $1,000 of VA education benefits and a $1,000 refund after a dropped class.",
-       "why_no": "'Tax-free help' reads as scholarships or grants. The filer does not count employer-provided assistance or veterans' benefits as 'help'. Counting only the refund, the filer finds no excess and answers no.",
-       "line": "dependent.edu_over_if_adj",
-       "irs_text": "i8863 p. 4: 'reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period.' i8863 p. 9 worksheet lines 2a-2c",
-       "severity": "medium",
-       "fix": "List the kinds of tax-free assistance in the help: the tax-free part of scholarships and fellowships including Pell grants, tax-free employer-provided educational assistance, veterans' educational assistance, and any other tax-free payment for the education other than a gift or inheritance. State that refunds include refunds after a dropped course or a withdrawal."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A student pays winter quarter tuition in December 2025 for a quarter starting in January 2026. A scholarship for that quarter arrives in February 2026, before filing, and exceeds the tuition.",
-       "why_no": "The filer reads 'school term ... in 2025' as a term held in 2025. The winter 2026 quarter is not one, so the filer answers no, although that quarter is treated as beginning in 2025.",
-       "line": "dependent.edu_over_if_adj",
-       "irs_text": "i8863 p. 9: 'If any qualified education expenses for the student were paid in 2025 for an academic period beginning in the first 3 months of 2026, treat that academic period as if it began in 2025.'",
-       "severity": "medium",
-       "fix": "Add to the help: 'Include a term that begins in January, February or March 2026 if you paid for it in 2025.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A student has two terms in 2025. Grants for the fall term exceed fall tuition, while spring tuition is far larger than spring aid.",
-       "why_no": "The help says to answer by the term alone only when there is one term. With two terms, the filer nets the whole year, sees total payments above total aid, and answers no.",
-       "line": "dependent.edu_over_if_adj",
-       "irs_text": "i8863 p. 9: 'Complete a separate worksheet for each student for each academic period'",
-       "severity": "medium",
-       "fix": "Reword the help: 'Look at each term separately. Do not combine terms, even if total payments for the year exceed total help.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A lifetime learning credit student buys required textbooks at an outside bookstore. Scholarships exceed tuition plus fees paid to the school, but not tuition plus fees plus the books.",
-       "why_no": "'Course materials' invites adding books bought anywhere. For the lifetime learning credit, books count only if they must be paid to the institution. Adding them raises the expense total above the aid, and the filer answers no.",
-       "line": "dependent.edu_over_if_adj",
-       "irs_text": "i8863 p. 4: 'Lifetime learning credit: Qualified education expenses include amounts paid for books, supplies, and equipment only if required to be paid to the institution as a condition of enrollment or attendance.'",
-       "severity": "low",
-       "fix": "Add to the help: 'For the lifetime learning credit, count books and supplies only if they had to be paid to the school.'"
-      }
-     ],
-     "prompt_sha": "428a4da8f89795f3bd5ed1e7dc95af1c983412bc0d15a801e621bddfbbb5c4ee",
+     "verdict": "SOUND",
+     "findings": [],
+     "prompt_sha": "64efc003e03b7b87114c977a99e56b6f26e14d1a84d038fc05b1dea5d736d4ce",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.085208,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_dependent.edu_has_adj.22d5d0d9a6ae.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_dependent.edu_has_adj.846e8cfa504f.1.response.txt"
     }
    ],
    "condition": "dependent.edu_has_adj",
@@ -96,48 +45,17 @@
    ]
   },
   "gate:dependent.ever_married": {
-   "subject_sha": "796ac901d60ff9bfa6dd9d7d9fa640b8f1f399a4fe2a49c4de7ae237c0f48793",
+   "subject_sha": "ffcadd12262ebfe5bdf893fd650251bcf83b712c3581d1d8a1e9ee297bd5bb68",
    "samples": [
     {
-     "verdict": "UNCLEAR",
-     "findings": [
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A 22-year-old student the filer supports lives in a state that recognizes common-law marriage, such as Colorado or Texas (informal marriage). They and their partner meet the state's requirements, never had a ceremony or license, and file a 2025 joint return with the partner that is not only a refund claim.",
-       "why_no": "Without a ceremony, license or certificate, the filer, and often the couple, read \"Has this person ever been married?\" as no. The help \"Count a marriage that has since ended\" says nothing about informal or common-law marriages.",
-       "line": "dependent.joint_return_if_ever_married (forced false, so the bar on claiming a married person who files jointly is never applied)",
-       "irs_text": "i1040gi p. 21, Married person: \"If the person is married and files a joint return, you can't claim that person as your dependent.\"",
-       "severity": "medium",
-       "fix": "Add to the help: \"Count a common-law marriage recognized by the state where it began, a marriage performed in another country, and a marriage to someone who has since died or divorced this person.\" Better, drop the gate and ask every dependent the joint-return question directly; it is one question, and a never-married person simply answers no."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer claims an adult child, grandchild, or other relative who married during 2025 or earlier, for example abroad or without telling the family, and who files a 2025 joint return with the spouse to get the full refundable credits, not only to recover withholding.",
-       "why_no": "The filer answers about another person's private life from their own knowledge. Believing the person is single, they truthfully say no to \"Has this person ever been married?\" The tool never asks whether a joint return includes this person, which is the fact the filer could confirm by asking the person.",
-       "line": "dependent.joint_return_if_ever_married (forced false, so the refusal of the dependency claim is missed)",
-       "irs_text": "i1040gi p. 17, Step 1: \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund of withheld income tax or estimated tax paid\"; p. 21: \"If the person is married and files a joint return, you can't claim that person as your dependent.\"",
-       "severity": "medium",
-       "fix": "Ask the fact directly and without a gate: \"Will this person be included on any 2025 joint tax return (with a spouse), other than one filed only to get back withheld or estimated tax? If you're not sure, check with them.\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer whose dependent's marriage was in a religious or tribal ceremony, or was annulled after 2025 but valid at the end of 2025, and who joined a 2025 joint return.",
-       "why_no": "\"Count a marriage that has since ended\" does not say whether an annulment, which declares the marriage never valid, counts. The filer may also think a ceremony that was never civilly registered is not a \"marriage\" for this question, even where state law treats it as one.",
-       "line": "dependent.joint_return_if_ever_married",
-       "irs_text": "i1040gi p. 21, Married person: \"If the person is married and files a joint return, you can't claim that person as your dependent.\"",
-       "severity": "low",
-       "fix": "Make the help say what to count, or remove the gate as above so the joint-return question decides on its own."
-      }
-     ],
-     "prompt_sha": "26293f1c8de154cb851e5561c6ecbc4356369c0a169cbfde2f7a737f5bdf5583",
+     "verdict": "SOUND",
+     "findings": [],
+     "prompt_sha": "ecd517b5d79b17a4b6c0f047e55cb71c356a0e6f36983c6225f236c9b2447cea",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.073264,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_dependent.ever_married.796ac901d60f.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_dependent.ever_married.ffcadd12262e.1.response.txt"
     }
    ],
    "condition": "dependent.ever_married",
@@ -158,8 +76,8 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 17, Step 1, \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund\"; p. 21, Married person, \"If the person is married and files a joint return, you can’t claim that person as your dependent.\"",
-      "p. 21, Married person, \"If the person is married and files a joint return, you can’t claim that person as your dependent.\""
+      "p. 17, Step 1, \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund\"; p. 21, Married person, \"If the person is married and files a joint return, you can\u2019t claim that person as your dependent.\"",
+      "p. 21, Married person, \"If the person is married and files a joint return, you can\u2019t claim that person as your dependent.\""
      ],
      "cols_pages": [
       17,
@@ -213,7 +131,7 @@
      "how": "cited pages",
      "locators": [
       "p. 17, Step 1, \"Who lived with you for more than half of 2025\"; p. 21, Exception to time lived with you (\"the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025\"; \"Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025\"); , Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\"",
-      "p. 21, Kidnapped child, \"If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a family member, you may be able to take the child into account\"; , Kidnapped child, \"1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family.\", \"2. In the year the kidnapping occurred, the child lived with you for more than half of the part of the year before the date of the kidnapping.\" and \"3. In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return.\"; , \"This treatment applies for all years until the earlier of\"; , Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped\""
+      "p. 21, Kidnapped child, \"If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn\u2019t a family member, you may be able to take the child into account\"; , Kidnapped child, \"1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn\u2019t a member of your family or the child\u2019s family.\", \"2. In the year the kidnapping occurred, the child lived with you for more than half of the part of the year before the date of the kidnapping.\" and \"3. In the year of the child\u2019s return, the child lived with you for more than half the part of the year following the date of the child\u2019s return.\"; , \"This treatment applies for all years until the earlier of\"; , Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped\""
      ],
      "cols_pages": [
       17,
@@ -341,72 +259,113 @@
     }
    ]
   },
-  "gate:dependent.ptc_files": {
-   "subject_sha": "6cc9ddd0f7c8c6652d8f9a33927b10b63aea245fd160424bd6eea8eace059b7e",
+  "gate:dependent.own_money": {
+   "subject_sha": "9d3d8ac0aba9e00f4b38c925ad7000e67e677ed321d6dcbf2a1879d29d169077",
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [],
+     "prompt_sha": "0c31b8f023724f166b2c166892df1b237bf338f7e6dc49990490befe4604b014",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_dependent.own_money.9d3d8ac0aba9.1.response.txt"
+    }
+   ],
+   "condition": "dependent.own_money",
+   "lines": [
+    "dependent.ptc_files_if_own_money"
+   ],
+   "inputs": [
+    "dependent.ptc_files"
+   ],
+   "used": [
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      19,
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, \"A person\u2019s own funds aren\u2019t support unless they are actually spent for support.\"; p. 21, Person living in their own home, \"The total fair rental value of a person\u2019s home that the person owns is considered support contributed by that person.\""
+     ],
+     "cols_pages": [
+      19,
+      21
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    },
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\", \"Do not include the modified AGI of dependents who are filing a tax return only to claim a refund of tax withheld or estimated tax.\"; , Chart B\u2014For Children and Other Dependents, \"Your unearned income was over $1,350.\", \"Earned income includes salaries, wages, tips, professional fees, and taxable scholarship and fellowship grants.\", \"Were you either age 65 or older or blind?\"",
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"; , Chart B\u2014For Children and Other Dependents, \"Your unearned income was over $1,350.\", \"Your earned income was over $15,750.\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      10
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:dependent.ptc_files_if_own_money": {
+   "subject_sha": "a28a4ded777bae9a6bfa534666562df9d4134f8d132e6fa9b986854bccbda655",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A married dependent under 65 and not blind. Their spouse files a separate return and itemizes deductions. The dependent has $600 of wages and $200 of interest.",
-       "why_no": "The question lists only more than $1,350 of income not from work or more than $15,750 of pay. The help gives only the combined rule and says the limits are for a single dependent. Nothing mentions the $5 rule for a married dependent, so a truthful answer is no.",
+       "pattern": "other",
+       "who": "A parent filing Form 8814 for a dependent child whose interest/dividends exceed $1,350, so the parent reports the child\u2019s income and the child is not required to file a separate return.",
+       "why_no": "The gate asks only whether the dependent is required to file because of income. Because the Form 8814 election means the child need not file, the parent truthfully answers no; the gate never asks for the Worksheet 1-2 amount.",
        "line": "dependent.ptc_magi_counted",
-       "irs_text": "i1040gi (2025) p. 10, Chart B, Married dependents: \"Your gross income was at least $5 and your spouse files a separate return and itemizes deductions.\"; i8962 p. 8, Line 2b: \"dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"",
+       "irs_text": "i8962 p. 8, Line 2b and Worksheet 1-2: \u201cIf you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.\u201d",
        "severity": "high",
-       "fix": "Add to the gate: \"or is this dependent married, with a spouse who files a separate return and itemizes deductions, and had at least $5 of income?\" Better, ask for the dependent's earned income, unearned income, marital status, age 65 or older and blindness, and compute the Chart B test."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "8",
-       "who": "A dependent under 65 and not blind with $15,000 of wages and $1,000 of interest. Gross income is $16,000, which is more than $15,300 plus $450. Another example is a dependent with $500 of pay and $1,000 of interest, whose $1,500 is more than $1,350.",
-       "why_no": "The question offers only two separate tests, more than $1,350 not from work or more than $15,750 of pay, and the dependent fails both. The combined rule appears only in the help. A filer who answers from the question's words truthfully says no.",
-       "line": "dependent.ptc_magi_counted",
-       "irs_text": "i1040gi (2025) p. 10, Chart B: \"Your gross income was more than the larger of— $1,350, or Your earned income (up to $15,300) plus $450.\"",
-       "severity": "medium",
-       "fix": "Move the combined test into the question itself, or ask for the two amounts and compute the test."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A dependent college student whose scholarship exceeds tuition. In 2025, $16,500 of it, used for room and board, is taxable, and the student has no wages.",
-       "why_no": "\"Pay\" does not suggest a scholarship, and the grant is not interest or dividends. The filer finds neither test met and answers no. Chart B counts taxable scholarships as earned income.",
-       "line": "dependent.ptc_magi_counted",
-       "irs_text": "i1040gi (2025) p. 10, Chart B: \"Earned income includes salaries, wages, tips, professional fees, and taxable scholarship and fellowship grants.\"",
-       "severity": "medium",
-       "fix": "Say \"pay (wages, tips, professional fees and taxable scholarship or fellowship grants)\", and list the Chart B unearned items: capital gain distributions, unemployment compensation, taxable social security, pensions, annuities and trust distributions."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A child under 19 or a full-time student under 24 with $3,000 of interest and dividends. The parents elect on Form 8814 to report it, so the child files no return. Form 8814, line 4, is more than $1,350.",
-       "why_no": "With the election made, the child does not \"have to file a tax return\", so the parent answers no. The gated question also asks for amounts \"from their own return\", which does not exist.",
-       "line": "dependent.ptc_magi_counted",
-       "irs_text": "i8962 (2025) p. 8, Line 2b, Form 8814: \"If you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.\"",
-       "severity": "high",
-       "fix": "Ask separately whether the filer reports this child's interest and dividends on Form 8814. If so, and line 4 is more than $1,350, take Form 8814 lines 1b, 4 and 5 and the child's nontaxable social security for Worksheet 1-2, whatever the answer to the filing question."
+       "fix": "Make the gate true when Form 8814 is filed and line 4 exceeds $1,350, and ask for the Worksheet 1-2 amounts from Form 8814 even if the child is not required to file."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A dependent teenager with $4,000 of net earnings from self-employment, for example lawn mowing or freelance work, and no other income. The dependent must file because net self-employment earnings are $400 or more.",
-       "why_no": "$4,000 is below $15,750 of \"pay\", and the filer may not count self-employment profit as \"pay\" at all. The question presents its income tests as the whole rule, so the filer answers no.",
+       "who": "An unmarried dependent under 65 and not blind with $15,000 earned income and $1,000 unearned income. Neither quoted threshold is exceeded, but gross income is $16,000, more than the larger of $1,350 or earned income (up to $15,300) plus $450 ($15,450).",
+       "why_no": "The help/citation quotes only \u201cYour unearned income was over $1,350\u201d and \u201cYour earned income was over $15,750.\u201d Reading that list as complete, the dependent answers no because neither bullet applies.",
        "line": "dependent.ptc_magi_counted",
-       "irs_text": "i8962 (2025) p. 8, Line 2b: \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\" (The Chart B text quoted covers only unearned, earned and gross income. Whether the self-employment filing rule counts as an income threshold is not settled by the quoted text.)",
+       "irs_text": "i1040gi p. 10, Chart B: \u201cYour gross income was more than the larger of\u2014 $1,350, or Your earned income (up to $15,300) plus $450.\u201d",
        "severity": "medium",
-       "fix": "Ask whether the dependent had $400 or more of net self-employment earnings or $108.28 or more of church employee income, and decide whether the instructions treat these as an income filing threshold. If they do, include them in the gate."
+       "fix": "Show the full Chart B gross-income test, not just the unearned and earned threshold bullets, or ask directly whether gross income exceeds the larger of $1,350 or earned income (up to $15,300) plus $450."
       }
      ],
-     "prompt_sha": "14f447c0084e4bf403ba8fcb9900ee2e3bb3623d185a4c57d334d37ecc873bc8",
+     "prompt_sha": "cdf166d339d08630ee90559283742ae19f3d8add40632caf02e65f6106a2bef3",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.10266,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_dependent.ptc_files.6cc9ddd0f7c8.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_dependent.ptc_files_if_own_money.a28a4ded777b.1.response.txt"
     }
    ],
-   "condition": "dependent.ptc_files",
+   "condition": "dependent.ptc_files_if_own_money",
    "lines": [
     "dependent.ptc_magi_counted"
    ],
@@ -424,7 +383,7 @@
      "how": "cited pages",
      "locators": [
       "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"",
-      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\", \"Do not include the modified AGI of dependents who are filing a tax return only to claim a refund of tax withheld or estimated tax.\"; , Chart B—For Children and Other Dependents, \"Your unearned income was over $1,350.\"",
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"; , Chart B\u2014For Children and Other Dependents, \"Your unearned income was over $1,350.\", \"Your earned income was over $15,750.\"",
       "p. 8, Worksheet 1-2, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\""
      ],
      "cols_pages": [
@@ -521,7 +480,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "pp. 17 and 19, Steps 1 and 4, \"A qualifying child is your...\" and \"A qualifying relative is your...\"; p. 20, Adopted child, \"An adopted child includes a child lawfully placed with you for legal adoption\"; p. 21, Foster child, \"A foster child is any child placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction\"; , Relatives who don't have to live with you, \"Your father, mother, grandparent, or other direct ancestor, but not foster parent\"; , Member of Household or Relationship Test, \"If at any time during the year the person was your spouse, that person can’t be your qualifying relative.\"; , \"Any of these relationships that were established by marriage aren’t ended by death or divorce.\""
+      "pp. 17 and 19, Steps 1 and 4, \"A qualifying child is your...\" and \"A qualifying relative is your...\"; p. 20, Adopted child, \"An adopted child includes a child lawfully placed with you for legal adoption\"; p. 21, Foster child, \"A foster child is any child placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction\"; , Relatives who don't have to live with you, \"Your father, mother, grandparent, or other direct ancestor, but not foster parent\"; , Member of Household or Relationship Test, \"If at any time during the year the person was your spouse, that person can\u2019t be your qualifying relative.\"; , \"Any of these relationships that were established by marriage aren\u2019t ended by death or divorce.\""
      ],
      "cols_pages": [
       17,
@@ -541,8 +500,8 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 15, Tiebreaker rules, \"For purposes of these tiebreaker rules, the term “parent” means a biological or adoptive parent of an individual. It does not include a stepparent or foster parent unless that person has adopted the individual.\"",
-      "p. 15, Tiebreaker rules, \"For purposes of these tiebreaker rules, the term “parent” means a biological or adoptive parent of an individual.\""
+      "p. 15, Tiebreaker rules, \"For purposes of these tiebreaker rules, the term \u201cparent\u201d means a biological or adoptive parent of an individual. It does not include a stepparent or foster parent unless that person has adopted the individual.\"",
+      "p. 15, Tiebreaker rules, \"For purposes of these tiebreaker rules, the term \u201cparent\u201d means a biological or adoptive parent of an individual.\""
      ],
      "cols_pages": [
       15,

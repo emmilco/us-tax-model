@@ -1,0 +1,17 @@
+{
+ "kind": "render",
+ "form": "f8606",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1",
+   "restated": "Enter the amount from person helper \"This person's nondeductible traditional IRA contributions for 2025 (Form 8606 line 1)\".",
+   "model": "The IRS line 1 instructions say to include repayments of qualified reservist distributions and to subtract worksheet line 12 \"or the amount you chose to deduct on Schedule 1 (Form 1040), line 20, if less\"; the helper uses only worksheet line 12 and omits those items.",
+   "ruling": "Ruling: scope; f8606 p. 9: reservist repayments are refused (scope.reservist_repaid); the deduction is the tool's own Schedule 1 line 20 path. Project stands.",
+   "context": "50ec47f6d8c0da49f6ff3935db2e4e8100a67a5f9fe3afb92cc9f0d5cf1b3eef",
+   "date": "2026-11-17",
+   "run": "4e756ba326063d0bb337e30436830adfd0b09900adbc5c1152406a51620f4bc7",
+   "subject_key": "f50ed2e4ba46d84f3d5b84da43f9b0a82a1aec85fb6b2c9b462528a44ba95814"
+  }
+ ]
+}

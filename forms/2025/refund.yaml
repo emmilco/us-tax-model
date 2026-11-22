@@ -324,21 +324,22 @@ form:
         tax in 2024" and "7. You couldn’t use the full amount of credits you were entitled to in 2024"
   - id: refund.exc_who
     printed: (gate)
-    label: Could you be claimed as a dependent by someone else in 2024; were you a nonresident alien filing Form 1040-NR for
-      2024; or did you receive any of these refunds because of a jointly filed state or local income tax return when you
+    label: Could you be claimed as a dependent by someone else in 2024; were you a nonresident alien for all or part of 2024,
+      whichever form you filed; or did you receive any of these refunds because of a jointly filed state or local income tax return when you
       are not filing a joint 2025 Form 1040 or 1040-SR with the same person?
     type: Bool
     expr:
       op: input
-      source: Could you be claimed as a dependent by someone else in 2024; were you a nonresident alien filing Form 1040-NR
-        for 2024; or did you receive any of these refunds because of a jointly filed state or local income tax return when
+      source: Could you be claimed as a dependent by someone else in 2024; were you a nonresident alien for all or part of
+        2024, whichever form you filed; or did you receive any of these refunds because of a jointly filed state or local income tax return when
         you are not filing a joint 2025 Form 1040 or 1040-SR with the same person?
     cite:
       doc: i1040gi
       locator: p. 89, Line 1, "8. You could be claimed as a dependent by someone else in 2024" and "9. You received a refund
         because of a jointly filed state or local income tax return, but you aren’t filing a joint 2025 Form 1040 or 1040-SR
         with the same person"; p525 p. 24, Itemized Deduction Recoveries, "You can’t use the State and Local Income Tax
-        Refund Worksheet—Schedule 1, Line 1, and must use this discussion if you’re a nonresident alien"
+        Refund Worksheet—Schedule 1, Line 1, and must use this discussion if you’re a nonresident alien"; i1040gi p. 34,
+        Exception 3—Dual-status alien, "If you checked the box on line 12c, your standard deduction is zero"
     ambiguity: amb.2025.refund_exceptions
   - id: refund.line5d_prior_year
     printed: (helper)

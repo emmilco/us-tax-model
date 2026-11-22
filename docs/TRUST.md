@@ -17,7 +17,7 @@ page; the build adds the tax year, revision and content hash of the archived sou
 `sources/<year>/` from its manifest (`spec/spec.md` section 5, `engine/src/build.ts`). **Guarantees:**
 the build fails if any line, parameter, gate or question lacks a complete citation or cites a document
 absent from the manifest, and `tools/citations.py` verifies every quote and locator
-against the archived text; `reports/2025/citations.md` reports <!-- figures:trust-citations -->7,410 anchors and 8,124 quotes<!-- /figures:trust-citations --> with 0
+against the archived text; `reports/2025/citations.md` reports <!-- figures:trust-citations -->7,506 anchors and 8,261 quotes<!-- /figures:trust-citations --> with 0
 findings without a recorded ruling, and no computed-line locator too coarse to verify (the check runs
 with `--strict`). **Does not guarantee:** that the expression says what the cited page says. A
 citation proves a line points at a page, not that it was read correctly.
@@ -29,7 +29,7 @@ Every computed line is one application of one atom from the list in `spec/spec.m
 there are no user-defined functions, loops, variables, strings or recursion. **Guarantees:** the whole
 meaning of the data is the meaning of about twenty operations, each small enough to read; the one
 escape, `opaque`, a host-language function, is counted and published, and `reports/2025/coverage.md`
-reports <!-- figures:trust-opaque -->0 of 5,890 lines<!-- /figures:trust-opaque -->, federal and New York, use it. **Does not guarantee:** that the right atom was chosen for a line.
+reports <!-- figures:trust-opaque -->0 of 5,963 lines<!-- /figures:trust-opaque -->, federal and New York, use it. **Does not guarantee:** that the right atom was chosen for a line.
 
 ## 3. The build-time checker
 
@@ -96,13 +96,15 @@ project's; a render comparison, in which an isolated model that has not seen the
 reads each line's English against the page; class M hand-work, in which an isolated model works
 branch-covering inputs on the printed worksheet; and blind predictions of whole-return values made
 before the encoding was run. Every model runs with no repository access and no network
-(`tools/transcription/README.md`). Reviews run under the Claude model family only. The second families
-(DeepSeek, GPT) are inactive in `tools/transcription/families.json`: no new review runs under them and
-`check_logs.py` does not require or fail their logs. Their earlier logs stay in `reviews/2025/` as
-history, integrity-checked, and their class M fixtures still run as evidence cases. The last comparison
-of the families, `reports/2025/second_family.md`, is kept as written on 2026-11-09 (136 form-and-kind pairs, 64
-eligible and 72 pending; ruled second-family model error 7.2% in aggregate) and is not regenerated while
-the families are inactive. Every disagreement must be ruled against the source with the page and quote
+(`tools/transcription/README.md`). Review families are tiered in `families.json` (owner, 2026-11-17): a current log
+from any **qualified** family satisfies a form, and an **advisory** family's review is usable only beside one of
+those. Claude is qualified but not callable while it is off this project, so its current logs stand as the evidence
+for the forms they cover; DeepSeek is qualified and callable and reviews what changes; GPT is advisory and not
+callable. `callable` governs calls, not standing: a family that is not called keeps its logs. Their earlier logs
+stay in `reviews/2025/` as history, integrity-checked, and their class M fixtures still run as evidence cases.
+`reports/2025/second_family.md` is written by `compare_families.py` whenever a second family is callable; the copy
+committed on 2026-11-09 records 136 form-and-kind pairs, 64 eligible and 72 pending, ruled second-family model error
+7.2% in aggregate. Every disagreement must be ruled against the source with the page and quote
 recorded, and the logs are committed under `reviews/2025/`.
 **Guarantees:** for each review, an independent reading of the same page produced the same structure,
 or the difference is on record with its ruling. **Does not guarantee:** independence of the readers;
@@ -129,7 +131,7 @@ reach some worksheet lines.
 official IRS example; B, human hand-work; C, a named outside calculator; M, isolated model hand-work;
 H, human source reading; E, an engine; R, the project's own regression; `spec/spec.md` section 6.1).
 Its first line is the scoreboard, the share of computed lines with at least one assertion from outside
-the Claude model family: <!-- figures:trust-scoreboard -->**561 of 3,883 (14.4%)**, with H 0, B 0, second-family M 448 and E 223<!-- /figures:trust-scoreboard --> (the sub-counts overlap, and include lines credited through exact copies of an asserted line). H credits a source reading only with a current receipt and the exact log
+the Claude model family: <!-- figures:trust-scoreboard -->**692 of 3,911 (17.7%)**, with H 0, B 0, second-family M 583 and E 223<!-- /figures:trust-scoreboard --> (the sub-counts overlap, and include lines credited through exact copies of an asserted line). H credits a source reading only with a current receipt and the exact log
 committed by its named reader; it supplies no worked values and never fills B. Human packets are
 optional under the [2026-10-24 policy amendment](2026-10-24_validation_policy.md), and the reading
 packets are retired: no tool issues receipts, so H stays 0 and the recorded readings are listed as
@@ -222,5 +224,5 @@ The IRS forms and instructions are not the law. They embed judgments about the I
 that are not announced, and this project encodes the published procedure, judgments included; where the
 text is ambiguous or silent, the reading chosen is recorded in `ambiguities/<year>.yaml` and shown to
 the user when the entry is linked to a line that affects their return
-(<!-- figures:trust-ambiguities -->144 of the 149 entries for 2025 are linked that way; each of the others says why it stands unlinked<!-- /figures:trust-ambiguities -->). No lawyer has reviewed the legal position the project operates
+(<!-- figures:trust-ambiguities -->149 of the 153 entries for 2025 are linked that way; each of the others says why it stands unlinked<!-- /figures:trust-ambiguities -->). No lawyer has reviewed the legal position the project operates
 under (`spec/spec.md` section 9).

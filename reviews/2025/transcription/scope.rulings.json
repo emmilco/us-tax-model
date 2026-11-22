@@ -6,11 +6,11 @@
    "printed": "scope.contractor_pay_if_pay",
    "project_expr_sha256": "39d259bd3e10343e03f5359b3fb7f2fc8b96858c6909e9b212eec3dc0131e3e9",
    "second_expr_sha256": "d87b7475e1735a665fc919946541b86e8ab7bf8983f7791d797c3a5b94c67ab4",
-   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.pay_no_w2 and scope.contractor_pay is the project's gated choose; f8919 p. 1, the form is for wages from a firm that treated the worker as an independent contractor. Triage (pass 4be1d7385eb3): 4,483/4,499 agree; 16 project-unknown on incomplete (7) and refused (9) partial records (scope.pay_no_w2 unanswered); no value difference.",
-   "context": "c9bc18fd9e313f1863d0a47a6eb2e028ca70a9eab11f100a7f6103f2092b8592",
-   "date": "2026-11-15",
-   "run": "911930537db936d15f7f3cd7c00560052256a0834fb936903c8663fb6b01c9b3",
-   "subject_key": "fe471bea388a21c14e828a352f34c2fa6a6e0a4fbb2c1968795d76d2c5d870ae",
+   "ruling": "Ruling: representation; f8919 p. 1, Who must file, \"You performed services for a firm\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4715 of 4732 comparisons agree, 4715 of 4732 in scope; completed {}. Project stands.",
+   "context": "7b7090b04ea4ea06f0bc16e585f06698627fa29f11ddb6dcd7095d03bd8b876b",
+   "date": "2026-11-17",
+   "run": "6e94b684afd2df31c023a7bb693239b15db49d62276b43f685575afa44150001",
+   "subject_key": "d3128a7f629a0fd4f1a645d78dc413d53753a9b042e9c289f43dbcacf6a39b8e",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -47,11 +47,11 @@
    "printed": "scope.household_pay_if_pay",
    "project_expr_sha256": "771f794ea8348de3523f21a9a6cc7d6e6753ed95d3b430ee756c1b13e1bf37fe",
    "second_expr_sha256": "1d0faf3f99e20c6dfe6d524fe18331edff29fdd483dbdbcb4aa2ec5b3537e66b",
-   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.pay_no_w2 and scope.household_pay is the project's gated choose (household.no when scope.pay_no_w2 is false; the answer when true); i1040gi p. 24, Line 1b, \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\". Triage (pass 4be1d7385eb3): 4,483/4,499 agree; the 16 others are project-unknown on incomplete (7) and refused (9) partial records, where scope.pay_no_w2 is unanswered and the reply's conjunction short-circuits; no value difference.",
-   "context": "c9bc18fd9e313f1863d0a47a6eb2e028ca70a9eab11f100a7f6103f2092b8592",
-   "date": "2026-11-15",
-   "run": "911930537db936d15f7f3cd7c00560052256a0834fb936903c8663fb6b01c9b3",
-   "subject_key": "d65c972c52c04a68e66459fca89a9ab50b821e24ea1fcda7a7e00bf634d69be5",
+   "ruling": "Ruling: representation; i1040gi p. 24, Line 1b, \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4715 of 4732 comparisons agree, 4715 of 4732 in scope; completed {}. Project stands.",
+   "context": "7b7090b04ea4ea06f0bc16e585f06698627fa29f11ddb6dcd7095d03bd8b876b",
+   "date": "2026-11-17",
+   "run": "6e94b684afd2df31c023a7bb693239b15db49d62276b43f685575afa44150001",
+   "subject_key": "0013be3ddfabd0a5493248de89a10664a2530db67e20e64b5492c45fef2bb9e8",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -147,6 +147,84 @@
    }
   },
   {
+   "printed": "scope.other_income",
+   "project_expr_sha256": "e174cf0994199180d534ab616d412412be0ae07de594d6739373a4e665c00773",
+   "second_expr_sha256": "d4bd39e2fa5de2126624b19a72b943ff6e76d98dd928f8094edb51406f1e8096",
+   "ruling": "Ruling: representation; i1040gi p. 8, \"Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR\". The candidate reads adoption_benefits directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4095 of 4732 comparisons agree, 4095 of 4732 in scope; completed {\"candidate-unknown\": 267}. Project stands.",
+   "context": "7b7090b04ea4ea06f0bc16e585f06698627fa29f11ddb6dcd7095d03bd8b876b",
+   "date": "2026-11-17",
+   "run": "6e94b684afd2df31c023a7bb693239b15db49d62276b43f685575afa44150001",
+   "subject_key": "1f9329a45b5d7d5bdb119167f7a43b5fc86484193fa2a69b30867fefb7f329d7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.1@scope",
+     "fixture:classm.asset.2@scope",
+     "fixture:classm.asset.3@scope",
+     "fixture:classm.asset.4@scope",
+     "fixture:classm.carloan.2@scope",
+     "fixture:classm.f2441.1@scope",
+     "fixture:classm.f2441.2@scope",
+     "fixture:classm.s179.4@scope",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@scope",
+     "fixture:t264.f4952.unsupported_with_interest@scope",
+     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@scope",
+     "fixture:stage16.cleanup.f8959_line16_se_refused@scope",
+     "fixture:mutation.t2.hoh_s1a_car@scope",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@scope",
+     "fixture:mutation.m3.scope.oi_reservist_repaid@scope",
+     "fixture:mutation.m3.scope.oi_care_benefits_other@scope",
+     "fixture:mutation.m3.scope.oi_passive@scope",
+     "fixture:mutation.m3.scope.l16_cfc@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.other_line16",
+   "project_expr_sha256": "2900cb29bb0f182dd40d6ffff6eed29fce26eff3a09b71aa4529a3067ac99147",
+   "second_expr_sha256": "6d9917a7b89e9567a422d8a6e8de823f77a72c770114cb6d3d402e5e084b0c32",
+   "ruling": "Ruling: representation; i1040gi p. 36, Form 8615, \"You must file Form 8615 if you meet all of the following conditions\". The candidate reads unearned_2700 directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4194 of 4732 comparisons agree, 4194 of 4732 in scope; completed {\"candidate-unknown\": 278}. Project stands.",
+   "context": "7b7090b04ea4ea06f0bc16e585f06698627fa29f11ddb6dcd7095d03bd8b876b",
+   "date": "2026-11-17",
+   "run": "6e94b684afd2df31c023a7bb693239b15db49d62276b43f685575afa44150001",
+   "subject_key": "6e7224e07b74c38e8983e8602e821d927b2d5a554b16c63d56b08b0eb56fb827",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.1@scope",
+     "fixture:classm.asset.2@scope",
+     "fixture:classm.asset.3@scope",
+     "fixture:classm.asset.4@scope",
+     "fixture:classm.f2441.1@scope",
+     "fixture:classm.f2441.2@scope",
+     "fixture:stage21.choose.eic_limit_status_unanswered@scope",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@scope",
+     "fixture:redesign.hsa.testing_kept_age_unanswered@scope",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@scope",
+     "fixture:mutation.m3.scope.l16_cfc@scope",
+     "generated:20261026.11@scope",
+     "generated:20261026.16@scope",
+     "generated:20261026.25@scope",
+     "generated:20261026.34@scope",
+     "generated:20261026.36@scope",
+     "partial:stage14.asset.hy_5yr-scope.foreign_shares@scope",
+     "partial:stage14.asset.hy_5yr-scope.business_before@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "scope.other_line16",
    "project_expr_sha256": "2900cb29bb0f182dd40d6ffff6eed29fce26eff3a09b71aa4529a3067ac99147",
    "second_expr_sha256": "d8c05e13702e656e2e2e2b0b6d7bc40852484bcb811913098ebb528a21724bc4",
@@ -189,11 +267,11 @@
    "printed": "scope.reservist_repaid_if_armed_forces",
    "project_expr_sha256": "5a5cbd70609cd65510d1b17e24a21b9696b94e070d23d61e4c6c7bc6c22750db",
    "second_expr_sha256": "0265bbfb785c1d65b5f69a21927b9a359c6516e254a0e850ea6c885b2f9f2209",
-   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.armed_forces and scope.reservist_repaid is the project's gated choose (i1040gi p. 95, Line 20, \"Don't include any repayments of qualified reservist distributions\"). Triage (pass 1ad4bbd67c02): 3,997/4,036 agree; 39 project-unknown (incomplete/refused); no value difference.",
-   "context": "852bef97de84c45c8048e870b17689bd0cb7cdc30d46ac7c09ccd0ca61b5bd41",
-   "date": "2026-11-14",
-   "run": "89595313a04bdabe1ed00c59811a46ddf5252ac63423c3678b0e9a5ae19cc7ad",
-   "subject_key": "f01dfd60f725b7df3efc06cefe690e103db1c54c8f9d705481a9bb5caaa510c2",
+   "ruling": "Ruling: representation; i1040gi p. 95, Line 20, \"Don’t include any repayments of qualified reservist distributions\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4693 of 4732 comparisons agree, 4693 of 4732 in scope; completed {}. Project stands.",
+   "context": "7b7090b04ea4ea06f0bc16e585f06698627fa29f11ddb6dcd7095d03bd8b876b",
+   "date": "2026-11-17",
+   "run": "6e94b684afd2df31c023a7bb693239b15db49d62276b43f685575afa44150001",
+   "subject_key": "d3d550fcad55d5d4ea020f7b4259a4a47fce2f70ff45a5674190c47ed709e8ae",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -330,6 +408,45 @@
   {
    "printed": "scope.schedule1",
    "project_expr_sha256": "c6534c13567f2f559e145c4b06a2e5113366fc22147b5b2c852c55419e013f18",
+   "second_expr_sha256": "02fd528b57c465bde2816e8172e9c4e592e0093c763773d46c70db81d4b8d295",
+   "ruling": "Ruling: model error; i1040se p. 1, \"Use Schedule E (Form 1040) to report income or loss from rental real estate ... partnerships, S corporations\". The reply keeps the reading the earlier ruling refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4003 of 4732 comparisons agree, 4003 of 4732 in scope; completed {\"candidate-unknown\": 228, \"value\": 4}. Project stands.",
+   "context": "7b7090b04ea4ea06f0bc16e585f06698627fa29f11ddb6dcd7095d03bd8b876b",
+   "date": "2026-11-17",
+   "run": "6e94b684afd2df31c023a7bb693239b15db49d62276b43f685575afa44150001",
+   "subject_key": "ad8a5a0247a7aa0a426ea9219aced09638e13182d007aa87f13ccc49e3f1af56",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.1@scope",
+     "fixture:classm.asset.2@scope",
+     "fixture:classm.asset.3@scope",
+     "fixture:classm.asset.4@scope",
+     "fixture:classm.f2441.1@scope",
+     "fixture:classm.f2441.2@scope",
+     "fixture:classm.s1.3@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1.step5@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1@scope",
+     "fixture:x2k1p.refuse_ptp@scope",
+     "fixture:x2k1p.refuse_box10@scope",
+     "fixture:x2k1p.refuse_multi@scope",
+     "partial:stage14.asset.hy_5yr-scope.armed_forces@scope",
+     "partial:stage14.asset.hy_5yr-scope.rental@scope",
+     "partial:stage14.asset.hy_5yr-scope.k1@scope",
+     "partial:stage14.asset.hy_5yr-scope.farm@scope",
+     "partial:stage14.asset.hy_5yr-scope.religious_work@scope",
+     "partial:stage14.asset.hy_5yr-scope.archer_msa@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.schedule1",
+   "project_expr_sha256": "c6534c13567f2f559e145c4b06a2e5113366fc22147b5b2c852c55419e013f18",
    "second_expr_sha256": "2218d826e380e965f6eb871c525b1a3fa78193ce696dadeded36857cf2f35c18",
    "ruling": "Ruling: model error; as in the earlier landing and goal-1 rulings, the reply's screen keeps only reservist, military move, performer, Archer MSA, reforestation and attorney-fee items and leaves out the personal-property rental (scope.rent_personal_if_rental, which this merge put in place of scope.rental), K-1, farm, clergy/church employee, W-2 marks (statutory employee) and other self-employed plan items the project refuses (i1040se p. 1, \"Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties, partnerships, S corporations\"; i1040sf p. 2; i1040sse p. 1, Ministers and Employees of Churches; i1040gi p. 25, statutory employees). Every operand of the reply is in the project's list, so the reply can be true only where the project is: triage (pass 4be1d7385eb3) 4,134/4,499 agree; 48 value differences, all on refused returns (project true, reply false); 279 project-unknown on incomplete/refused partial records; 38 candidate-unknown (27 on completed returns: the reply reads scope.artist_official and others without their gates). Like the project, the reply leaves NOL and recoveries out (now computed: s1.nol_amount_if_nol, rec). Project stands.",
    "context": "c9bc18fd9e313f1863d0a47a6eb2e028ca70a9eab11f100a7f6103f2092b8592",
@@ -370,11 +487,11 @@
    "printed": "scope.strike_pay_if_pay",
    "project_expr_sha256": "50ced07419afaeee4e7b1d8aacca2f4775e68fccd6fd325c784dc88d3d07a5ae",
    "second_expr_sha256": "c4ce5e917463f341d4a429f6fa278ea91eba419dc6527dea498ce4e4bc242f5b",
-   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.pay_no_w2 and scope.strike_pay is the project's gated choose; i1040gi p. 24, Line 1h, \"Strike or lockout benefits (other than bona fide gifts)\". Triage (pass 4be1d7385eb3): 4,483/4,499 agree; 16 project-unknown on incomplete (7) and refused (9) partial records (scope.pay_no_w2 unanswered); no value difference.",
-   "context": "c9bc18fd9e313f1863d0a47a6eb2e028ca70a9eab11f100a7f6103f2092b8592",
-   "date": "2026-11-15",
-   "run": "911930537db936d15f7f3cd7c00560052256a0834fb936903c8663fb6b01c9b3",
-   "subject_key": "0c839ceb36cba94f114d17e02e43b46b523e5708e29e1f9eb617bf83b02e30d4",
+   "ruling": "Ruling: representation; i1040gi p. 24, Line 1h, \"Strike or lockout benefits (other than bona fide gifts)\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4715 of 4732 comparisons agree, 4715 of 4732 in scope; completed {}. Project stands.",
+   "context": "7b7090b04ea4ea06f0bc16e585f06698627fa29f11ddb6dcd7095d03bd8b876b",
+   "date": "2026-11-17",
+   "run": "6e94b684afd2df31c023a7bb693239b15db49d62276b43f685575afa44150001",
+   "subject_key": "8b15913e8418dd20baa784e2e4d0c3dc47f0a4fd2fa7d640e2746a84f932c765",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -395,11 +512,11 @@
    "printed": "scope.tips_unreported_if_pay",
    "project_expr_sha256": "881f6328968612dfb22d85ee7243cc3df497b40604adf1f72a9023952a0c2a88",
    "second_expr_sha256": "5fabc3f40083042b18e6196cf34a9f625a5a9a81a996ab94e0e0acc1b6f8df70",
-   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.pay_no_w2 and scope.tips_unreported is the project's gated choose; i1040gi p. 24, Line 1c, \"Enter the total of your tip income that was not reported on Form 1040, line 1a\". Triage (pass 4be1d7385eb3): 4,483/4,499 agree; 16 project-unknown on incomplete (7) and refused (9) partial records (scope.pay_no_w2 unanswered); no value difference.",
-   "context": "c9bc18fd9e313f1863d0a47a6eb2e028ca70a9eab11f100a7f6103f2092b8592",
-   "date": "2026-11-15",
-   "run": "911930537db936d15f7f3cd7c00560052256a0834fb936903c8663fb6b01c9b3",
-   "subject_key": "99bc67be10851a9a55db726a58dae3a64aa1adfa9d5adf4ff878cd402650ac87",
+   "ruling": "Ruling: representation; i1040gi p. 24, Line 1c, \"Enter the total of your tip income that was not reported on Form 1040, line 1a\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4715 of 4732 comparisons agree, 4715 of 4732 in scope; completed {}. Project stands.",
+   "context": "7b7090b04ea4ea06f0bc16e585f06698627fa29f11ddb6dcd7095d03bd8b876b",
+   "date": "2026-11-17",
+   "run": "6e94b684afd2df31c023a7bb693239b15db49d62276b43f685575afa44150001",
+   "subject_key": "e01a87f8d055a27aff8bd1aaccb9e99652421a681cd679d0a4bbdc2413cf0729",
    "triage": {
     "verdict": "differs",
     "kinds": [

@@ -1,0 +1,47 @@
+{
+ "kind": "render",
+ "form": "royalty",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "10",
+   "restated": "Choose — [helper \"Any expenses for this royalty\" = true → helper \"Legal and other professional fees paid in 2025\"] [helper \"Any expenses for this royalty\" = false → helper \"Zero\"]",
+   "model": "Line 10 is limited to 'fees for tax advice and the preparation of tax forms related to your rental real estate or royalty properties' and says not to deduct legal fees to defend title, recover, develop, or improve property; the helper accepts any legal and other professional fees for it.",
+   "ruling": "Ruling: representation; i1040se p. 6: the input is the filer's answer; the cited page limits the deductible fees and the filer enters the deductible amount. Project stands.",
+   "context": "a21a66fe1fcd2d98f5d2162bf6aad5ce9e6f2843d7c119247fca73097180f9c3",
+   "date": "2026-11-17",
+   "run": "6ee24ac8b61ad58bd44475cd73ebcd1c4693cd620f28290e91c5723b7bb12af5",
+   "subject_key": "ca1b3ca5e94e8529c6d527044d8910cfe7739b2b273e6012fef350c5946d5dab"
+  },
+  {
+   "printed": "19",
+   "restated": "Choose — [helper \"Any expenses for this royalty\" = true → helper \"Other paid in 2025\"] [helper \"Any expenses for this royalty\" = false → helper \"Zero\"]",
+   "model": "Line 19 says to enter 'any ordinary and necessary expenses not listed on lines 5 through 18'; the helper says only 'Other costs of it (not depletion),' omitting the ordinary-and-necessary and not-listed-on-lines-5-through-18 limits.",
+   "ruling": "Ruling: representation; i1040se p. 7: the input is the filer's answer; the cited page limits other expenses to ordinary and necessary ones not listed above. Project stands.",
+   "context": "a21a66fe1fcd2d98f5d2162bf6aad5ce9e6f2843d7c119247fca73097180f9c3",
+   "date": "2026-11-17",
+   "run": "6ee24ac8b61ad58bd44475cd73ebcd1c4693cd620f28290e91c5723b7bb12af5",
+   "subject_key": "1e5cae90141e5986dd3d8ee83455bf342e41dac9483487bf0e691a6be406c17b"
+  },
+  {
+   "printed": "20",
+   "restated": "Add line 10, line 16, and line 19.",
+   "model": "Line 20 says 'Total expenses. Add lines 5 through 19'; the restatement adds only line 10, line 16, and line 19, omitting the other expense lines without a refusal for them.",
+   "ruling": "Ruling: scope; f1040se: only the expense lines the tool computes are added; the other lines of the form are outside it. Project stands.",
+   "context": "a21a66fe1fcd2d98f5d2162bf6aad5ce9e6f2843d7c119247fca73097180f9c3",
+   "date": "2026-11-17",
+   "run": "6ee24ac8b61ad58bd44475cd73ebcd1c4693cd620f28290e91c5723b7bb12af5",
+   "subject_key": "6a4e62310b2188a82642190a4f4a8bad5cd3df89238f542f2daa741717291b3b"
+  },
+  {
+   "printed": "21",
+   "restated": "Subtract line 20 from line 4.",
+   "model": "The subtraction matches, but line 21 instructions say 'If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss'; the restatement has no refusal or gate for that Form 6198 limitation.",
+   "ruling": "Ruling: scope; f1040se p. 7: a Form 6198 at-risk limitation is outside the tool. Project stands.",
+   "context": "a21a66fe1fcd2d98f5d2162bf6aad5ce9e6f2843d7c119247fca73097180f9c3",
+   "date": "2026-11-17",
+   "run": "6ee24ac8b61ad58bd44475cd73ebcd1c4693cd620f28290e91c5723b7bb12af5",
+   "subject_key": "7cf045b1ce5bd3bad79a22c585da16f53f48ebb9ea497321c6c709958194d588"
+  }
+ ]
+}

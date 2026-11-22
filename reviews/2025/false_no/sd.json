@@ -40,108 +40,88 @@
    ]
   },
   "gate:sd.sold_other": {
-   "subject_sha": "1326844239127f7390e501cab6a9d6c8378ea210c7a4eda72b7cf00eb5241bc8",
+   "subject_sha": "f0eb20505dae243d635e6131e9940ec69aeccd4f0f402eccbfad03e55320482d",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer whose business building, or vacant land held for investment for more than a year, was taken by a city or state through condemnation in 2025, and who received a condemnation award.",
-       "why_no": "The gate asks whether they \"sell or trade\" real estate or business property. A government taking under eminent domain is neither a sale nor a trade in the filer's words, so they truthfully answer No.",
-       "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. ... 2. The involuntary conversion (other than from casualty or theft) of property used in a trade or business and capital assets held more than 1 year for business or profit.\"",
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who receives an installment payment in 2025 from a sale made in 2021 and did not sell anything in 2025.",
+       "why_no": "They read 'In 2025, did you ... sell' as requiring a 2025 sale, and 'comes in a year after the year of the sale' as a future payment rather than a 2025 payment from an older sale.",
+       "line": "sd.installment_if_sold",
+       "irs_text": "i1040sd p. 6, Installment Sales: 'Also, use Form 6252 to report any payment received in 2025 from a sale made in an earlier year that you reported on the installment method.'",
        "severity": "high",
-       "fix": "Broaden the gate: \"...sell, trade, give up, scrap or abandon real estate or business property, or have any of it taken by condemnation (or the threat of it)?\" Add \"condemnation\" to the help text."
+       "fix": "Ask: 'Did you receive in 2025 any payment from a sale you made in 2025 or an earlier year, or will you receive a payment after 2025 from a 2025 sale?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A married filer filing jointly whose spouse alone received an installment payment in 2025 from a sale the spouse made in 2021.",
+       "why_no": "The first sentence says 'you (or, on a joint return, your spouse),' but the installment-payment sentence says only 'anything you sold'; read literally, the spouse's sale is not covered.",
+       "line": "sd.installment_if_sold",
+       "irs_text": "i1040sd p. 6, Installment Sales: 'Also, use Form 6252 to report any payment received in 2025 from a sale made in an earlier year that you reported on the installment method.'",
+       "severity": "high",
+       "fix": "Add 'you or your spouse' to the installment-payment clause."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "2",
-       "who": "A sole proprietor who scrapped, junked or abandoned depreciable business equipment or a business vehicle in 2025 without selling it.",
-       "why_no": "Nothing was \"sold or traded\", so the filer truthfully answers No.",
+       "who": "A filer whose business property or investment real estate held more than one year for profit was condemned in 2025 and converted to cash, with no sale or trade by the filer.",
+       "why_no": "The gate asks only whether they sold or traded; a condemnation is an involuntary conversion, and the gated question also asks business/rental/mineral or non-investment property, so investment real estate is excluded.",
        "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd p. 1: \"3. The disposition of noncapital assets other than inventory or property held primarily for sale to customers in the ordinary course of your trade or business.\" and \"A capital asset is any property owned by you except ... 3. Depreciable property used in your trade or business\"",
+       "irs_text": "i1040sd p. 1, Other Forms You May Have To File: 'Use Form 4797 to report ... The involuntary conversion (other than from casualty or theft) of property used in a trade or business and capital assets held more than 1 year for business or profit.'",
        "severity": "high",
-       "fix": "Ask about any disposal: \"Did you sell, trade, scrap, abandon or otherwise dispose of real estate or business property...?\""
+       "fix": "Broaden the gate and the Form 4797 question to include involuntary conversions of business property and capital assets held more than one year for business or profit."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "7",
-       "who": "A filer who sold stock in a small private corporation at a loss in 2025, or whose stock in that corporation became worthless in 2025. The stock qualifies as section 1244 stock or as small business investment company (section 1242) stock.",
-       "why_no": "Stock is not \"real estate or business property\" as the help defines it (equipment, vehicle, building), and worthless stock was not sold. The filer truthfully answers No, so the Form 4797 ordinary-loss case never reaches the refusal.",
-       "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd p. 1: \"4. Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1242) stock. 5. Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.\"",
+       "who": "A filer who sold section 1244 small business stock at an ordinary loss, or whose section 1244 stock became worthless, or who had a section 1242 small business investment company stock loss.",
+       "why_no": "They see stock as an investment, not 'real estate or business property,' so they answer no; the gate never reaches the Form 4797 refusal.",
+       "line": "sd.business_property",
+       "irs_text": "i1040sd p. 1, Other Forms You May Have To File: 'Use Form 4797 to report ... Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1242) stock' and 'small business (section 1244) stock.'",
        "severity": "high",
-       "fix": "Add a separate gate question the filer can check: \"Did you sell stock in, or did stock become worthless in, a small corporation that is not publicly traded?\" Then ask about section 1244 or 1242 status after a Yes."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A filer who owns an oil, gas or mineral royalty interest (or timber or section 126 cost-sharing property) as an investment and sold it in 2025.",
-       "why_no": "The gate's help defines business property as something \"used in a business or rented out\". The filer does not think of a royalty interest as \"real estate\". Oil, gas and mineral property is named only in the gated child question, which the filer never reaches.",
-       "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. 1. The sale or exchange of: ... c. Oil, gas, geothermal, or other mineral property; and d. Section 126 property.\"",
-       "severity": "medium",
-       "fix": "Name these in the gate itself: \"...real estate, business property, or oil, gas, mineral or timber interests (including royalties)?\""
+       "fix": "Ask broadly about any sale, exchange, or worthlessness reportable on Form 4797, including sections 1242 and 1244 stock, instead of limiting the gate to real estate or business property."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A securities trader who made a mark-to-market (section 475(f)) election and sold securities in the trading business in 2025.",
-       "why_no": "The gate lists examples (\"equipment, a vehicle or a building\") that a trader reads as the whole rule. Securities do not seem to be \"business property\", so the trader answers No.",
-       "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd p. 1: \"6. Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.\"",
-       "severity": "medium",
-       "fix": "Add to the gate: \"or are you a securities or commodities trader who made a mark-to-market election?\""
+       "who": "A trader who made a mark-to-market election and sold securities or commodities held in connection with that trading business in 2025.",
+       "why_no": "The help lists equipment, a vehicle, and a building, so the filer reads 'business property' as tangible business assets and treats exchange-traded securities as investments.",
+       "line": "sd.business_property",
+       "irs_text": "i1040sd p. 1, Other Forms You May Have To File: 'Use Form 4797 to report ... Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.'",
+       "severity": "high",
+       "fix": "Add a specific gate for securities or commodities held in a trading business with a mark-to-market election, or ask broadly about Form 4797 dispositions."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A partner or S corporation shareholder whose 2025 Schedule K-1 reports a section 1231 gain or loss from the entity's sale of business real estate or equipment. The filer personally sold nothing.",
-       "why_no": "The gate asks whether \"you (or ... your spouse)\" sold or traded the property. The entity did, so the filer answers No.",
-       "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd p. 1: \"Use Schedule D: ... To report a gain from Form 2439 or 6252 or Part I of Form 4797\" and \"Use Form 4797 to report ... a. Real property used in your trade or business\"",
-       "severity": "medium",
-       "fix": "Add to the gate: \"...or does a Schedule K-1 you received show a section 1231 gain or loss, or a like-kind exchange?\" Alternatively, route K-1 section 1231 amounts to the Form 4797 refusal elsewhere."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer who made a like-kind exchange of real estate with a related party (for example, a sibling) in 2023 or 2024 and made no exchange in 2025, but still has the follow-up Form 8824 reporting for the related-party exchange.",
-       "why_no": "\"In 2025, did you ... sell or trade\" reads as a question about 2025 transactions only. The filer answers No, and the like-kind question is never reached.",
+       "pattern": "6",
+       "who": "A filer who exchanged vacant investment real estate for other real estate in a like-kind exchange and did not live on it or rent it out.",
+       "why_no": "The help says real estate includes a home lived in and an oil, gas, or mineral interest, so the filer reads the list as the relevant kinds of real estate and answers no because the land was neither.",
        "line": "sd.like_kind_if_sold",
-       "irs_text": "i1040sd p. 1: \"Use Form 8824 to report like-kind exchanges. A like-kind exchange occurs when you exchange business or investment property for property of a like kind.\"",
+       "irs_text": "i1040sd p. 1, Other Forms You May Have To File: 'Use Form 8824 to report like-kind exchanges. A like-kind exchange occurs when you exchange business or investment property for property of a like kind.'",
        "severity": "medium",
-       "fix": "Add to the gate: \"...or did you make a like-kind exchange in 2023 or 2024 with a relative or other related party?\""
+       "fix": "Say that real estate includes any real property, such as vacant land or investment real estate, not just a home or mineral interest."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who sold a privately held business interest or real estate before 2025 with an earnout, contingent payment or escrow holdback, and who received some of that money in 2025 (or will receive it after 2025).",
-       "why_no": "The filer does not think of an earnout or a released escrow as \"payment for anything you sold\" that \"comes in a year after the year of the sale\". They treat the deal as closed in the year of sale, so they answer No.",
-       "line": "sd.installment_if_sold",
-       "irs_text": "i1040sd p. 6: \"Also, use Form 6252 to report any payment received in 2025 from a sale made in an earlier year that you reported on the installment method.\"",
+       "pattern": "7",
+       "who": "A gig worker who sold a car used for rideshare or delivery but did not treat the activity as a business.",
+       "why_no": "They read 'business property' as requiring a formal business, despite the help mentioning a vehicle used in a business.",
+       "line": "sd.business_property",
+       "irs_text": "i1040sd p. 1, Other Forms You May Have To File: 'Use Form 4797 to report ... Depreciable and amortizable tangible property used in your trade or business.'",
        "severity": "medium",
-       "fix": "Add to the help: \"This includes earnouts, contingent payments, escrow or holdback releases, and payments on a note from the buyer.\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who sold land at a gain in 2025 with seller financing. They never made any choice about how to report the gain.",
-       "why_no": "The gated question asks whether the gain is \"reported as the payments arrive\", and the help says to answer No if you \"choose to report the whole gain\". The filer believes they never elected the installment method, so they answer No. In fact the installment method is the default and opting out requires a timely election.",
-       "line": "sd.installment_if_sold",
-       "irs_text": "i1040sd p. 6: \"you must generally report the sale on the installment method unless you elect not to\"",
-       "severity": "low",
-       "fix": "Reword the question: \"Does any payment come in a later year? (The installment method applies automatically unless you elect out by reporting the full gain on Form 8949 on a timely 2025 return.)\""
+       "fix": "Ask whether the vehicle was used for any business, including gig work, and state that a formal business entity is not required."
       }
      ],
-     "prompt_sha": "f02c9199cdba9dfbd7b066a45202aa7479961ff9062a8d10482ef8214cc130d4",
+     "prompt_sha": "d6bd767b2cfceb9d07626bc5a7488bfbe1bfceead6bbb2c13ae87b7260fd9e52",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.143072,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_sd.sold_other.132684423912.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_sd.sold_other.f0eb20505dae.1.response.txt"
     }
    ],
    "condition": "sd.sold_other",

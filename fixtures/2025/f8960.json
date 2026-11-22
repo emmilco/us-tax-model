@@ -1405,6 +1405,90 @@
           "cents": 0
         }
       }
+    },
+    {
+      "id": "mf.f8960.election_6013g_refused",
+      "covers": [
+        "f8960"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. Married filing jointly; the spouse is not a U.S. citizen and the couple chose to treat the spouse as a U.S. resident for 2025 to file jointly (a section 6013(g) election; under it the spouse is a resident for the whole year, so the nonresident question is No). i8960 p. 3: such a couple must also choose whether the election applies for the net investment income tax, and if not figures it as married filing separately; p. 7, Line 1, the election checkboxes. This tool does not make that choice, so Form 8960 line 1 refuses at the election gate.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "scope.noncitizen": true,
+        "scope.nonresident": false,
+        "f8960.election_6013g": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000
+      },
+      "expect": {
+        "f8960.line1": {
+          "kind": "refusal",
+          "gate": "f8960.election_6013g_if_joint",
+          "form": "Form 8960, line 1 checkboxes (section 6013(g) or 6013(h) election)",
+          "remedy": "A joint return made by choosing to treat a nonresident spouse as a U.S. resident needs a further choice for the net investment income tax (to apply that election to it, or to figure it as if filing separately); this is outside this tool.",
+          "cite": {
+            "doc": "i8960",
+            "locator": "p. 3, \"If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes, but don’t elect to apply the joint return election for NIIT purposes, then, for NIIT purposes, you’ll be treated under the default method as married filing separately\"",
+            "revision": "2025; printed date 2026-02-04",
+            "snapshot": "b10fbb23ff4a053db197285497a00914c558e3ae0cdf5c956b7c0c7867376428",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mf.f8960.election_6013g_over_threshold",
+      "covers": [
+        "f8960"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived sources before running the evaluator. mf.f8960.election_6013g_refused with wages of $300,000 (Form W-2 boxes 1 and 5; box 4 is 6.2% of the $176,100 wage base, $10,918.20; box 6 is 1.45% of $300,000 plus 0.9% of the $100,000 over $200,000, $5,250), so adjusted gross income is $300,000. That is over the $250,000 married filing jointly threshold (i8960 p. 2, Application to Individuals), so Form 8960 is filed and its line 1 is read. Married filing jointly; the spouse is not a U.S. citizen and the couple chose to treat the spouse as a U.S. resident for 2025 to file jointly (a section 6013(g) election). i8960 p. 3: such a couple must also choose whether the election applies for the net investment income tax, and if not figures it as married filing separately; p. 7, Line 1, the election checkboxes. This tool does not make that choice, so Form 8960 line 1 refuses at the election gate, and the return is refused.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "scope.noncitizen": true,
+        "scope.nonresident": false,
+        "f8960.election_6013g": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 30000000,
+        "person[taxpayer].w2[emp_a].box2": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 1091820,
+        "person[taxpayer].w2[emp_a].box5": 30000000,
+        "person[taxpayer].w2[emp_a].box6": 525000
+      },
+      "expect": {
+        "f8960.line1": {
+          "kind": "refusal",
+          "gate": "f8960.election_6013g_if_joint",
+          "form": "Form 8960, line 1 checkboxes (section 6013(g) or 6013(h) election)",
+          "remedy": "A joint return made by choosing to treat a nonresident spouse as a U.S. resident needs a further choice for the net investment income tax (to apply that election to it, or to figure it as if filing separately); this is outside this tool.",
+          "cite": {
+            "doc": "i8960",
+            "locator": "p. 3, \"If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes, but don’t elect to apply the joint return election for NIIT purposes, then, for NIIT purposes, you’ll be treated under the default method as married filing separately\"",
+            "revision": "2025; printed date 2026-02-04",
+            "snapshot": "b10fbb23ff4a053db197285497a00914c558e3ae0cdf5c956b7c0c7867376428",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

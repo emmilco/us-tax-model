@@ -6350,7 +6350,7 @@
         "dependent"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (the spouse-relative operand of dependent.qr_household_member), predicted from the archived i1040gi before evaluating: married filing jointly, wages $120,000; a household member who is the spouse's uncle (a brother of the spouse's father; relationship household_member, spouse_relative Yes), age 70, gross income $4,000, over half support provided, with the question whether he lived with you all year withheld. i1040gi Step 4: on a joint return the listed relatives of either spouse qualify without living with you, so he meets the relationship test whatever the withheld answer is.",
+      "evidence_note": "Mutation fixture (the household operand of dependent.qr_household_member), predicted from the archived i1040gi before evaluating: married filing jointly, wages $120,000; a household member who is the spouse's uncle (a brother of the spouse's father; relationship household_member, spouse_relative Yes), age 70, gross income $4,000, over half support provided, who did not live with the couple for all of 2025 (lived_all_year No), with the narrower question whether he lived with you all year as a member of your household withheld. i1040gi Step 4: on a joint return the listed relatives of either spouse qualify without living with you, and a person who lived with you all year qualifies as a member of the household. The test asks the household question first (a Yes spares a joint filer the spouse-relative question), so the line waits for that answer even though the spouse answer would settle it.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -6372,6 +6372,7 @@
         ],
         "dependent[uncle].relationship": "household_member",
         "dependent[uncle].age": 70,
+        "dependent[uncle].lived_all_year": false,
         "dependent[uncle].spouse_relative": true,
         "dependent[uncle].qr_all_year": null,
         "dependent[uncle].gross_income": 400000,
@@ -6379,8 +6380,9 @@
       },
       "expect": {
         "dependent[uncle].qr_relationship": {
-          "kind": "bool",
-          "value": true
+          "kind": "unknown",
+          "reason": "no input supplied for dependent[uncle].qr_all_year",
+          "input": "dependent[uncle].qr_all_year"
         }
       }
     },
@@ -6390,7 +6392,7 @@
         "dependent.qr_household_member"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Predicted from the archived i1040gi and p501 before recording: married filing jointly, a household member of 16 who lived with the couple all year, with the question whether the person is related to the spouse not yet answered. The relationship test (i1040gi p. 19, Step 4) is met either as a relative of the spouse on a joint return (p501 p. 19, Joint return) or as a member of the household all year. The test asks the spouse question first, as the interview does, so the line waits for that answer rather than being settled by the household answer while the spouse question is still open.",
+      "evidence_note": "Predicted from the archived i1040gi and p501 before recording: married filing jointly, a household member of 16 who lived with the couple all year, with the question whether the person is related to the spouse not answered. The relationship test (i1040gi p. 19, Step 4) is met either as a relative of the spouse on a joint return (p501 p. 19, Joint return) or as a member of the household all year. The test asks the household question first, so the household answer settles the line and the spouse question is not needed.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -6417,9 +6419,8 @@
       },
       "expect": {
         "dependent[member].qr_household_member": {
-          "kind": "unknown",
-          "reason": "no input supplied for dependent[member].spouse_relative",
-          "input": "dependent[member].spouse_relative"
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -6429,7 +6430,7 @@
         "dependent.qr_other_relation"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Predicted from the archived i1040gi and p501 before recording: married filing jointly, a person of no listed relationship, aged 40, who lived with the couple all year and whose relationship with them is lawful, with the question whether the person is related to the spouse not yet answered. The relationship test (i1040gi p. 19, Step 4) is met either as a relative of the spouse on a joint return (p501 p. 19, Joint return) or as a member of the household all year in a lawful relationship. The test asks the spouse question first, so the line waits for that answer.",
+      "evidence_note": "Predicted from the archived i1040gi and p501 before recording: married filing jointly, a person of no listed relationship, aged 40, who lived with the couple all year and whose relationship with them is lawful, with the question whether the person is related to the spouse not answered. The relationship test (i1040gi p. 19, Step 4) is met either as a relative of the spouse on a joint return (p501 p. 19, Joint return) or as a member of the household all year in a lawful relationship. The test asks the household and lawful questions first, so they settle the line and the spouse question is not needed.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -6457,9 +6458,8 @@
       },
       "expect": {
         "dependent[member].qr_other_relation": {
-          "kind": "unknown",
-          "reason": "no input supplied for dependent[member].spouse_relative",
-          "input": "dependent[member].spouse_relative"
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -7397,6 +7397,56 @@
         "dependent[kid].qualifying_child": {
           "kind": "bool",
           "value": false
+        }
+      }
+    },
+    {
+      "id": "mf.dependent.spouse_uncle_not_all_year",
+      "covers": [
+        "dependent.qr_household_member",
+        "dependent.qr_relationship"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. Married filing jointly, wages $120,000; the spouse's uncle (a brother of the spouse's father; no relative of the filer, entered as household_member), age 70, gross income $4,000, over half his support provided, who did not live with the couple all year. i1040gi p. 19, Step 4 and p501 p. 19, Joint return: on a joint return the person can be related to either spouse, and a brother of a parent is a listed relative who need not live with you, so the relationship test is met; gross income under $5,200 and support met: a qualifying relative, other dependent credit $500 (line 19).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[spouse]": [],
+        "$dependent": [
+          "uncle"
+        ],
+        "dependent[uncle].relationship": "household_member",
+        "dependent[uncle].age": 70,
+        "dependent[uncle].lived_all_year": false,
+        "dependent[uncle].spouse_relative": true,
+        "dependent[uncle].qr_all_year": false,
+        "dependent[uncle].gross_income": 400000,
+        "dependent[uncle].supported": true
+      },
+      "expect": {
+        "dependent[uncle].qr_household_member": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[uncle].qr_relationship": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 50000
         }
       }
     }

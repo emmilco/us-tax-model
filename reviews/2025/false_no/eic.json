@@ -2,7 +2,7 @@
  "form": "eic",
  "reviews": {
   "gate:eic.lived_with_relative": {
-   "subject_sha": "c53b1104a45bfba842fdc72336a6319e769cd210a2ba0738c3a48cebc3efd906",
+   "subject_sha": "c2aa4b961d03f640ff4a90343a388c4277141d6c4e94412204e811cd72e953ca",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -10,60 +10,40 @@
       {
        "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "A 20-year-old single parent with a qualifying child and earned income who lived all of 2025 with an older stepbrother or stepsister. The stepsibling files a return that is required.",
-       "why_no": "The gate names 'brother, sister', and the help adds only 'half brothers and sisters', so a stepbrother is neither on the list nor among the added kinds. Strictly, a stepbrother is not a 'brother', so No is truthful.",
-       "line": "eic.qc_of_another_if_lived",
-       "irs_text": "i1040gi p. 41, Step 3: 'Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them'",
+       "who": "A filer who lived for more than half of 2025 with a great-great-grandparent, great-great-aunt, or great-great-uncle (or a more remote ancestor of a parent or sibling) who is older, where that relative is required to file or is filing other than a refund-only return.",
+       "why_no": "The gate lists parent, grandparent, brother, sister, aunt, and uncle, and the help adds only great-grandparents and great-aunts/uncles. A great-great relative is outside that list, so the filer truthfully answers no.",
+       "line": "eic.qc_of_another_if_lived is set false, so eic.qc_of_another is never asked and the Step 3/Step 4 refusal is missed.",
+       "irs_text": "i1040gi p. 41, Step 3: a qualifying child includes 'brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them'; that reaches a great-great-aunt/uncle's descendant of a sibling.",
        "severity": "high",
-       "fix": "Add stepbrothers and stepsisters to the gate or its help: '...brother, sister, half brother or sister, stepbrother or stepsister...'."
+       "fix": "Ask broadly whether the filer lived with anyone who is an ancestor, sibling, or sibling of an ancestor, without a closed list; at minimum add great-great and more remote grandparents, great-great and more remote aunts/uncles."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A young filer with a child who lived all year with a step-grandparent (the grandparent's spouse, who is the stepparent of the filer's parent), a step-aunt or step-uncle (a stepsibling of the filer's parent), or a foster grandparent. The filer is a descendant of that person's stepchild, stepsibling or foster child.",
-       "why_no": "The gate says 'grandparent', 'aunt or uncle' and 'foster parent', and the help adds only stepparents, half siblings, great-grandparents and great-aunts and great-uncles. Read as a complete list, these step or foster relatives of a generation up are excluded.",
-       "line": "eic.qc_of_another_if_lived",
-       "irs_text": "i1040gi p. 41, Step 3: '...stepchild, foster child, ... stepbrother, stepsister, ... or a descendant of any of them (for example, your grandchild, niece, or nephew)'",
-       "severity": "medium",
-       "fix": "State the rule from the other side: 'Did you live more than half of 2025 with anyone you are a child, stepchild, foster child, grandchild, sibling, stepsibling, half sibling, niece or nephew (or a descendant of one) of, including step, half, foster and great- relatives?' Keep 'If not sure, answer Yes.'"
-      },
-      {
-       "kind": "UNCLEAR",
+       "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A return prepared for a 20-year-old with a qualifying child who died in April 2025. The decedent lived with their parent for all of 2025 until death, and the parent files a required return.",
-       "why_no": "The gate asks 'more than half the year', and the decedent lived only about four months. The help covers only time 'temporarily away, for example at school', not the birth or death exception, so the preparer truthfully answers No.",
-       "line": "eic.qc_of_another_if_lived",
-       "irs_text": "i1040gi p. 41, Step 3 TIP: 'If the child didn't live with you for more than half of 2025 because of a temporary absence, birth, death, placement with you for foster or adoption, or kidnapping, see Exception to time lived with you, later.'",
-       "severity": "medium",
-       "fix": "Add to the help: 'If you were born or died in 2025, count the time you were alive. Also count time you or the relative were away because of kidnapping or placement.'"
+       "who": "A filer who did not literally live with the relative for more than half of 2025 because of birth, death, placement for foster care or adoption, or kidnapping, but whose time is treated as lived with the relative under the IRS exception (for example, a child who died in 2025 after earning income, or a child placed for adoption late in the year), where the relative is required to file or is filing other than a refund-only return.",
+       "why_no": "The gate asks literally whether the filer lived more than half the year with the relative, and its help mentions only temporary absence or school. A filer who knows the half-year mark was not met because of birth, death, placement, or kidnapping answers no.",
+       "line": "eic.qc_of_another_if_lived false; eic.qc_of_another never asked and the QC-of-another refusal is missed.",
+       "irs_text": "i1040gi p. 41, Step 3 caution: 'If the child didn’t live with you for more than half of 2025 because of a temporary absence, birth, death, placement with you for foster or adoption, or kidnapping, see Exception to time lived with you, later.'",
+       "severity": "high",
+       "fix": "Treat those IRS exceptions as a yes in the gate, or ask 'Even if less than half, was the child born, did the child die, was the child placed for foster care/adoption, or was the child kidnapped during 2025?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A 21-year-old full-time student with a child who stayed all year in the home of a parent who was away most of 2025, for example on military deployment, in a hospital or for a temporary work assignment.",
-       "why_no": "The help says to count time 'you were temporarily away'. It says nothing about the relative's temporary absence, so the filer reads 'live in the same home as your parent' as not met when the parent was absent.",
-       "line": "eic.qc_of_another_if_lived",
-       "irs_text": "i1040gi p. 41, Step 3 TIP: 'If the child didn't live with you for more than half of 2025 because of a temporary absence ... see Exception to time lived with you, later.'",
+       "who": "A filer placed by an authorized agency or court with a non-relative foster parent, prospective adoptive parent, or legal guardian, or a filer living with a foster grandparent (the foster parent of the filer’s parent), where that caregiver is required to file or is filing other than a refund-only return and the filer does not read 'foster relatives' as covering the non-relative caregiver.",
+       "why_no": "The gate says 'parent' and 'grandparent' and the parenthetical 'foster relatives count' can be read as foster siblings or blood relatives in a foster relationship, not as a non-relative foster parent, guardian, or foster grandparent. The filer answers no.",
+       "line": "eic.qc_of_another_if_lived false; eic.qc_of_another is skipped and the refusal is missed.",
+       "irs_text": "i1040gi p. 41, Step 3: a qualifying child includes 'foster child' and 'a descendant of any of them,' and must have 'lived with you in the United States for more than half of 2025.'",
        "severity": "medium",
-       "fix": "Change the help to: 'Count time either of you was temporarily away, for example at school, in the military, in a hospital, or for work.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A young filer with a child who lived all year with an adoptive parent or with a grandparent who had adopted them.",
-       "why_no": "The gate says 'parent' and the help adds stepparents but does not mention adoptive parents. A few filers may wonder whether an adoptive parent counts and, despite 'If you are not sure, answer Yes,' answer No.",
-       "line": "eic.qc_of_another_if_lived",
-       "irs_text": "i1040gi p. 41, Step 3: 'Son, daughter, stepchild, foster child ...' (an adopted child is a son or daughter)",
-       "severity": "low",
-       "fix": "Add 'adoptive parents' to the help list."
+       "fix": "Say explicitly 'including a foster parent, prospective adoptive parent, legal guardian, or foster grandparent,' rather than only 'foster relatives.'"
       }
      ],
-     "prompt_sha": "e3e37d9ea1d0eae9547bbceb0b0bcddbce63206b3c337e27a3d0c3f3ac228829",
+     "prompt_sha": "da6a4ddf7f3667f46ec5e5cd7fe19932f9476c73c2a30cda02116935cdb2fdb2",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.09668399999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_eic.lived_with_relative.c53b1104a45b.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_eic.lived_with_relative.c2aa4b961d03.1.response.txt"
     }
    ],
    "condition": "eic.lived_with_relative",

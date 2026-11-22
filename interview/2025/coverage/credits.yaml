@@ -279,6 +279,7 @@ rows:
   answers:
     s3.foreign_any: true
     s3.section965: true
+    ftc.taxes: 0
   expect:
     refused: s3.section965_if_foreign
 - id: credits.section960c
@@ -288,6 +289,7 @@ rows:
     s3.foreign_any: true
     s3.section960c: true
     s3.section965: false
+    ftc.taxes: 0
   expect:
     refused: s3.section960c_if_foreign
 - id: credits.virgin_islands
@@ -298,6 +300,7 @@ rows:
     s3.section960c: false
     s3.section965: false
     s3.virgin_islands: true
+    ftc.taxes: 0
   expect:
     refused: s3.virgin_islands_if_foreign
 - id: credits.farmland

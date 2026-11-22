@@ -755,7 +755,7 @@
         "s1:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.small.s7 (canceled debt $5,000), with the canceled-debt exceptions question (Form 982, Pub. 4681 exceptions, business or farm debt, foreclosure or repossession) answered Yes. The refused line copies the amount, an input, so its own entry decides its value; line 8c and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
+      "evidence_note": "Inputs are stage16.small.s7 (canceled debt $5,000), with the first box of the canceled-debt screen (bankruptcy or insolvency, or another Form 982 exclusion) ticked. The refused line copies the amount, an input, so its own entry decides its value; line 8c and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
       "inputs": {
         "f1040.estimated_any": true,
         "f1040.line26": 200000,
@@ -766,7 +766,7 @@
         "person[taxpayer].w2[emp_a].box5": 4500000,
         "person[taxpayer].w2[emp_a].box6": 65250,
         "s1.cod_amount": 500000,
-        "s1.cod_unsupported": true,
+        "s1.cod_bankrupt": true,
         "s1.cod_any": true,
         "s179.prior_form": null,
         "s179.carryover": null

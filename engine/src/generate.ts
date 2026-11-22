@@ -189,10 +189,12 @@ const PERSON_NO = ["x_edu_account", "x_edu_taxable", "x_edu_excess", "x_archer_e
   "inherited_account", "rmd_missed", "ira_extra_left", "ira_recharacterized"];
 const FIXED = new Set([
   ...PERSON_NO.map((k) => `person[taxpayer].${k}`), "person[taxpayer].ira_owner",
-  "s1.alimony", "s1.alimony_received", "s1.alimony_paid", "s1.alimony_unsupported", "s1.cod_any", "s1.cod_amount", "s1.cod_unsupported",
+  "s1.alimony", "s1.alimony_received", "s1.alimony_paid", "s1.alimony_unsupported", "s1.cod_any", "s1.cod_amount",
+  "s1.cod_bankrupt", "s1.cod_student_home", "s1.cod_gift", "s1.cod_price_cut", "s1.cod_stockholder", "s1.cod_business", "s1.cod_property", "s1.cod_interest", "s1.cod_not_liable", "s1.cod_joint_other",
   `${HSA}.line14a`, `${HSA}.rollover`, `${HSA}.medical`, `${HSA}.line17a`, `${HSA}.subject_part`,
   "household.married_dec31", "household.ever_married", "household.credit_disallowed", "household.community_property", "household.rdp", "household.spouse_died_this_year",
   "household.cp_married", "household.qss_eligible", "eic.died_this_year",
+  "household.spouse_cp_domicile",
   "person[taxpayer].eic_ssn", ...BIRTH_SET,
   "clcw.spouse_screen", "clcw.prior_11", "clcw.prior_14", "clcw.prior_sd7", "clcw.prior_sd15", "clcw.prior_sd21",
   "f4952.prior_7", "f8960.prior_2i", "sa.gifts", "f4952.has_interest",
@@ -708,6 +710,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["household.rdp"] = false;
   inputs["household.spouse_died_this_year"] = false;
   inputs["household.cp_married"] = false;
+  inputs["household.spouse_cp_domicile"] = false;
   inputs["household.qss_eligible"] = true;
   inputs["eic.died_this_year"] = false;
   inputs["person[taxpayer].itin_applied"] = false;
@@ -1189,7 +1192,7 @@ const NY_IN_SCOPE: Record<string, boolean> = {
   est_any: true, item_c: false, inflation_check: false,
   out_of_state_bond_interest: false, "414h": false, "529_nonqualified": false, it225: false, gov_pension: false,
   us_obligation_interest: false, pension_exclusion: false, "529_owner": false, itemize: false, resident_credit: false,
-  other_credits: false, other_taxes: false, city_credits: false, mctmt: false, owes_use_tax: false, use_tax_st141: false,
+  other_credits: false, other_taxes: false, city_credits: false, mctmt: false, bought_untaxed: false, use_tax_dmv_only: false, use_tax_st141: false,
   contributions: false, dependent_care: false, noncustodial: false, real_property_credit: false, college_tuition: false,
   other_withholding: false, refund_529: false, late_penalty: false, prior_agi_high: false, abode_part_year: false,
   est_late: false,

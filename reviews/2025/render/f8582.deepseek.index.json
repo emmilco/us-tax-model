@@ -1,0 +1,160 @@
+{
+ "kind": "render",
+ "form": "f8582",
+ "family": "deepseek",
+ "base": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+ "lines": [
+  {
+   "key": "1a",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "subject_key": "fa2984e0d1c55b1bb86a88df193369a876eac9b762e179d98f25714709a4e3e9"
+  },
+  {
+   "key": "1b",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "subject_key": "bc6f2be173a38f5a50c52a8b0f02ca338e86997dc75dac2ec7c5f9100f171259"
+  },
+  {
+   "key": "1c",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "subject_key": "9774f2d6320def5e75dd9a7df6413b0c17538516d0f7095c1dc699702847ed43"
+  },
+  {
+   "key": "1d",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "ad82d8cf61a20197e605fd5f33eb6d60ab39606840e4be4c95170cab4d48d1b8"
+  },
+  {
+   "key": "2a",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "subject_key": "1328354b44b104648b384f11f1300534a8d49a320fb43a466bcc8170f65b709c"
+  },
+  {
+   "key": "2b",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "subject_key": "5e3257726e4026e567e83dd1d2eb88dc35bda6afc097ef289b889293eb5791a1"
+  },
+  {
+   "key": "2c",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "subject_key": "d93531da7ead6d87d819ce98d4cc96a0dd07a2527d4c706ab05ceac6f9f88e62"
+  },
+  {
+   "key": "2d",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "22f9db321dcac6f0f1387e1f7b192c7f4b91de0151066ad687fbb430b7e5d0c2"
+  },
+  {
+   "key": "3",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f8582 p. 10: a commercial revitalization deduction is outside the tool; its line is the sum of lines 1d and 2d. Project stands.",
+   "subject_key": "7e32fd0c0d1c33f92d1bc0ea78d2c57ae24069db5bfb6693708813e28bd9d448"
+  },
+  {
+   "key": "4",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "1ced976a51a51ede3489f8d220afe4b106536a38445e3811d7837fe440466310"
+  },
+  {
+   "key": "5",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "bc373c55d14114442b38a6b7e9d02373b0e342b8663a31453e9042eeb1865108"
+  },
+  {
+   "key": "6",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i8582 p. 11: Schedule 1 line 5 rental income and lines 12, 14 and 23 are outside the tool (scope.rental and scope.schedule1 refuse them); the royalty part is read. Project stands.",
+   "subject_key": "5c4a492bf8e326c424c393c93ff97701a1353205b7ee8a0a6ce1a6f7e2fd4a22"
+  },
+  {
+   "key": "7",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "1efdc8be31d19b1cd800d0cfa445a551a142d80e915cf67dbd0bbad06e4a958b"
+  },
+  {
+   "key": "8",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "790a295ba7845529b9bd6451014d70d343b09e1d461a2c7dd3fb2446819f72bf"
+  },
+  {
+   "key": "9",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f8582 p. 11: a commercial revitalization deduction is outside the tool; its line is the smaller of line 4 or line 8. Project stands.",
+   "subject_key": "15ee351b30689a1994ee55b2f13866022c64a6b6816d9bb73bcf9901b71137b6"
+  },
+  {
+   "key": "10",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "4f8f7ffa278e62a17789b1404d954284392f8f28afa96dcfa7b237ec975e9af6"
+  },
+  {
+   "key": "11",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "76e9e18a5af12e3d1af34dc721dfead7ea87bde7d84c9e168b23a37336ca81c4"
+  },
+  {
+   "key": "VI (a) total",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "5e630b2c2f6fc8bab5e67d85b9c7d14fdb9520153d85c9d236afcec35a84cc0c"
+  },
+  {
+   "key": "VII (a) total",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "4ec9fac9c38b1510f5a83e06c1e4adee9f3eee17ff191cca4e9b35e7579301af"
+  },
+  {
+   "key": "VII worksheet C",
+   "record": "2586fd2f9c2fd3774ab02d9374005abae5f91fe37e9db0299935f25208c8ab7b",
+   "status": "MATCH",
+   "subject_key": "5d216ff0f4d833fe3d6860efeb2e77768ecd3c860fdc5c4c80d3fa44a1be550b"
+  }
+ ],
+ "subjects": {
+  "1a": "d18fc47b260e2a0ab178079cbd9e2a5138f44ac86acaeb9e707fc704fb49d0b4",
+  "1b": "adae1cb5f21e416120bacd968169117e01009b10a5bcd4ef6926ef7c58ce5550",
+  "1c": "0f8d462364371576f96ee2cd11a37f03dbfa8473dfdcd823ad21f062e8fe6e96",
+  "1d": "5c8574385a50d0c30b92140927eaf3240a3745d37632f98a371813312a56744c",
+  "2a": "18ded85887469dbe918c5ef0b1d6defa4085359e50019bd7b9244878144febb9",
+  "2b": "7cd241a00cb521ea0f2077a8c510029c60cf7d80cc34611210ef2d6fd0299154",
+  "2c": "8a7622f6763e5faf446d0edf243e854da79fdd7071340fb5fa4c7bb3aa03086d",
+  "2d": "fc3995dee2909f428509ed44302835e03587ea73d4add9927ebc3b6cc9404b08",
+  "3": "deec39dd383f11d1d192b5e088d0d3a4220343b21395d235dc644d17314fa9d0",
+  "4": "8bb6969e450094debe4ca1a0585d663e8d3de6db5051eeab8f2b60948d9f2ab6",
+  "5": "a0803b093a3917b66caabb760a451acf039d80e6c0bd66442bf363c1166ebc0d",
+  "6": "67c92b48ac2f8f85fbd1772ae765d2c46df76bdb3becef0fcad5eb024280c941",
+  "7": "12d9497d1fa001707a187f38dcdd5f49b9e13f0bfa67487b656b15c325301ca5",
+  "8": "398091254b955c7d3692d47c4710310322cca172b11e2c09f60df59ab09b0fd6",
+  "9": "09e31136788082c87f72000ccb93f93e98d38b2038d43795b1fee9ef82377579",
+  "10": "a82a331bcfd8888d91586cbef0b1dec93a5747e331fad95a28bba2dcb4f2e57d",
+  "11": "e474ea9bfdfa44317c699a7abdb3769b788e370e76a411cf260f0ffea82eb753",
+  "VI (a) total": "5fe2342a8da144e87ec3b4b55d755d468dab6ea95976be557860a7eb9c1518f1",
+  "VII (a) total": "641782ba02e5d83454f4f7f338630613230481c1def334452c82479dc0388a52",
+  "VII worksheet C": "cf32f9dc0032b842537bd3f1e13e9affeee129f64fa0c38528b58452d2ca99a2"
+ },
+ "__rest__": "4bd6500b643c93b7d13a548ba3bf7cc991c4e9c46e977ae29b2e186e57caaba0"
+}

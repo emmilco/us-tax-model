@@ -93,13 +93,26 @@ form:
       cite:
         doc: f1040
         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+    - id: scope.treaty
+      printed: (helper)
+      type: Bool
+      label: "Is any of your (or, on a joint return, your spouse's) 2025 income exempt from U.S. tax under a tax treaty?"
+      expr:
+        op: input
+        source: "Is any of your (or, on a joint return, your spouse's) 2025 income exempt from U.S. tax under a tax treaty,
+          such as the pay or scholarship of a student, teacher or researcher from another country (often shown on Form
+          1042-S or claimed on Form 8833)?"
+      cite:
+        doc: i1040s8812
+        locator: 'p. 3, Line 18a, "Income excluded under a tax treaty is also excluded from the computation of earned income
+          on line 18a."'
     - id: scope.armed_forces
       printed: (helper)
       type: Bool
-      label: "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?"
+      label: "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?"
       expr:
         op: input
-        source: "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?"
+        source: "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?"
       cite:
         doc: f1040
         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
@@ -390,10 +403,10 @@ form:
     - id: scope.rental
       printed: (helper)
       type: Bool
-      label: "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?"
+      label: "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?"
       expr:
         op: input
-        source: "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?"
+        source: "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?"
       cite:
         doc: f1040
         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
@@ -453,10 +466,10 @@ form:
     - id: scope.pay_no_w2
       printed: (helper)
       type: Bool
-      label: "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?"
+      label: "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?"
       expr:
         op: input
-        source: "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?"
+        source: "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?"
       cite:
         doc: f1040
         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
@@ -464,10 +477,10 @@ form:
       printed: (helper)
       type: Bool
       gated_by: scope.household_pay_if_pay
-      label: "In 2025, were you (or, on a joint return, your spouse) paid for work in someone else's home, for example as a nanny, carer or housekeeper, by a household that gave you no W-2?"
+      label: "In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?"
       expr:
         op: input
-        source: "In 2025, were you (or, on a joint return, your spouse) paid for work in someone else's home, for example as a nanny, carer or housekeeper, by a household that gave you no W-2?"
+        source: "In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?"
       cite:
         doc: i1040gi
         locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"'
@@ -563,10 +576,10 @@ form:
       printed: (helper)
       type: Bool
       gated_by: scope.strike_pay_if_pay
-      label: "In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits from a union, other than bona fide gifts?"
+      label: "In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits, other than bona fide gifts?"
       expr:
         op: input
-        source: "In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits from a union, other than bona fide gifts?"
+        source: "In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits, other than bona fide gifts?"
       cite:
         doc: i1040gi
         locator: 'p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)"'
@@ -628,20 +641,20 @@ form:
     - id: scope.medicaid_waiver
       printed: (helper)
       type: Bool
-      label: "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?"
+      label: "In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?"
       expr:
         op: input
-        source: "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?"
+        source: "In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?"
       cite:
         doc: f1040
         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
     - id: scope.religious_work
       printed: (helper)
       type: Bool
-      label: "In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?"
+      label: "In 2025, were you (or, on a joint return, your spouse) paid by a church or religious body, or as clergy or religious order member?"
       expr:
         op: input
-        source: "In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?"
+        source: "In 2025, were you (or, on a joint return, your spouse) paid by a church or religious body, or as clergy or religious order member?"
       cite:
         doc: f1040
         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
@@ -985,10 +998,10 @@ form:
     - id: scope.foreign_shares
       printed: (helper)
       type: Bool
-      label: "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?"
+      label: "In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?"
       expr:
         op: input
-        source: "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?"
+        source: "In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?"
       cite:
         doc: f1040
         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
@@ -1243,6 +1256,10 @@ form:
               - const: true
           - op: test
             eq:
+              - scope.treaty
+              - const: true
+          - op: test
+            eq:
               - scope.reservist_repaid_if_armed_forces
               - const: true
           - op: test
@@ -1271,7 +1288,7 @@ form:
               - const: true
       cite:
         doc: i1040gi
-        locator: 'p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"; p. 24, Line 1c, "Enter the total of your tip income that was not reported on Form 1040, line 1a"; p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)"; p. 24, Line 1d, "Enter your taxable Medicaid waiver payments that were not reported on"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)"'
+        locator: 'p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 25, Missing or Incorrect Form W-2?, "Even if you don’t get a Form W-2, you must still report your earnings"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)"; i1040s8812 p. 3, Line 18a, "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a."'
     - id: scope.other_line16
       printed: (helper)
       type: Bool

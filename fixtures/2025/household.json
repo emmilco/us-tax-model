@@ -112,7 +112,7 @@
           "kind": "refusal",
           "gate": "household.hoh_community_property",
           "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
-          "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "remedy": "A married person filing as head of household, where either spouse lived in or had a permanent home in a community property state, may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
@@ -125,7 +125,7 @@
           "kind": "refusal",
           "gate": "household.hoh_community_property",
           "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
-          "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "remedy": "A married person filing as head of household, where either spouse lived in or had a permanent home in a community property state, may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
@@ -138,7 +138,7 @@
           "kind": "refusal",
           "gate": "household.hoh_community_property",
           "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
-          "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "remedy": "A married person filing as head of household, where either spouse lived in or had a permanent home in a community property state, may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
@@ -1289,7 +1289,7 @@
           "kind": "refusal",
           "gate": "household.widowed_this_year",
           "form": "Filing status after a spouse's death in 2025",
-          "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.",
+          "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly) or a separate return (married filing separately).",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 13, Single, \"You were widowed before January 1, 2025, and didn’t remarry before the end of 2025\"; p. 13, Married Filing Jointly, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"; p501 p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"",
@@ -1382,7 +1382,7 @@
           "kind": "refusal",
           "gate": "household.widowed_this_year",
           "form": "Filing status after a spouse's death in 2025",
-          "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.",
+          "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly) or a separate return (married filing separately).",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 13, Single, \"You were widowed before January 1, 2025, and didn’t remarry before the end of 2025\"; p. 13, Married Filing Jointly, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"; p501 p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"",
@@ -1426,7 +1426,7 @@
           "kind": "refusal",
           "gate": "household.cp_marriage_ended",
           "form": "Community income of a marriage that ended in 2025 (Form 8958; Pub. 555)",
-          "remedy": "Income earned while you were married and living in a community property state may be community income under state law, half yours and half your former spouse's; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "remedy": "Income earned while you were married and lived in, or had your permanent home in, a community property state may be community income under state law, half yours and half your former spouse's; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555.\"",
@@ -1569,7 +1569,7 @@
           "kind": "refusal",
           "gate": "household.hoh_community_property",
           "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
-          "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "remedy": "A married person filing as head of household, where either spouse lived in or had a permanent home in a community property state, may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
@@ -1982,7 +1982,7 @@
           "kind": "refusal",
           "gate": "household.mfs_community_property",
           "form": "Community income on a married filing separately return (Form 8958; Pub. 555)",
-          "remedy": "A married person who files a separate return and lived in a community property state may have to report half of the community income of both spouses under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "remedy": "A married person who files a separate return, where either spouse lived in or had a permanent home in a community property state, may have to report half of the community income of both spouses under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "revision": "2025; printed date 2026-02-25",
@@ -2200,7 +2200,7 @@
           "kind": "refusal",
           "gate": "household.mfs_community_property",
           "form": "Community income on a married filing separately return (Form 8958; Pub. 555)",
-          "remedy": "A married person who files a separate return and lived in a community property state may have to report half of the community income of both spouses under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "remedy": "A married person who files a separate return, where either spouse lived in or had a permanent home in a community property state, may have to report half of the community income of both spouses under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "revision": "2025; printed date 2026-02-25",
@@ -2213,7 +2213,7 @@
           "kind": "refusal",
           "gate": "household.mfs_community_property",
           "form": "Community income on a married filing separately return (Form 8958; Pub. 555)",
-          "remedy": "A married person who files a separate return and lived in a community property state may have to report half of the community income of both spouses under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "remedy": "A married person who files a separate return, where either spouse lived in or had a permanent home in a community property state, may have to report half of the community income of both spouses under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "revision": "2025; printed date 2026-02-25",

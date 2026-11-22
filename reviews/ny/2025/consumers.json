@@ -18,12 +18,6 @@
    "source_phrase": "p. 11, \"To calculate your New York itemized deduction, use Form IT-196\"",
    "reason": "The question asks whether the filer itemizes on Form IT-196, the case p. 11 describes; the gate refuses it."
   },
-  "consumer:ny_it201.ask.owes_use_tax@ny_it201i:p19": {
-   "verdict": "same",
-   "question_phrase": "owe New York sales or use tax on purchases made without paying New York tax",
-   "source_phrase": "p. 19, \"If you do not owe any sales or use tax, you must enter 0 on line 59.\"",
-   "reason": "A No is the case p. 19 says to enter 0 for; the question restates p. 18's \"You owe sales or compensating use tax if you\" conditions."
-  },
   "consumer:ny_it201.ask.abroad@ny_it201i:p5": {
    "verdict": "same",
    "question_phrase": "Were you outside the United States and Puerto Rico on April 15, 2026, and are you using the extra time to file that this gives?",

@@ -62,6 +62,16 @@
   {
    "printed": "9b",
    "restated": "Choose — [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = true → helper \"Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed\"] [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "IRS line 9b instructions say to include 'state, local, and foreign income taxes' and 'state, local, and foreign real property taxes,' as well as state and local personal property taxes; the restatement limits the positive amount to state/local income and property taxes, omitting includible foreign taxes not claimed as a credit.",
+   "ruling": "Ruling: scope; i8960 pp. 17–18: foreign taxes for which no credit is claimed are outside the tool's foreign-tax path. Project stands.",
+   "context": "abf1b9506e260478420e7728e7b83233316bc3f65cfb44fefb671b2bfe8072c4",
+   "date": "2026-11-17",
+   "run": "8d73f9c2a3af92a150f539faada4936297574b6075b3aead711e738aa77107df",
+   "subject_key": "e84dc3be39994ea14597df8c1d8a1b24408cfd27f69400a7945eae6588d09d78"
+  },
+  {
+   "printed": "9b",
+   "restated": "Choose — [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = true → helper \"Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed\"] [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = false → helper \"Year parameter sales.zero\"]",
    "model": "IRS says to include 'state, local, and foreign income taxes' and 'state, local, and foreign real property taxes,' but the restatement mentions only state/local income and property taxes and an exclusion for foreign taxes claimed as a credit.",
    "ruling": "Ruling: scope; same as the earlier ruling. i8960 p. 17, Line 9b, \"Include state, local, and foreign income taxes ... Include also state, local, and foreign real property taxes\". A deduction for foreign taxes is refused on Schedule A (sa.unsupported, \"a foreign tax or generation-skipping tax deduction\"), so within scope the deducted taxes allocable to NII are state and local taxes.",
    "context": "53b1c6ffce44947a492970f04a444e52a7dde83e885f5693d629239ad7050c12",

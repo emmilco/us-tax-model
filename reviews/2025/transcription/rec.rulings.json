@@ -38,6 +38,45 @@
   },
   {
    "printed": "11",
+   "project_expr_sha256": "6ab0b73e669c27c1085ec96b1a26a358f966bde5efd053261725947d6735da7c",
+   "second_expr_sha256": "1acd0618c34c8bdff7b65b87c1ab1e7686ae5b6780a0724881e7a88d330a6821",
+   "ruling": "Ruling: representation; p525 p. 27, line 11: \"If line 10 is a negative amount, add lines 9 and 10 ... but not less than zero.\" The candidate's line is the project's; its completed-return differences are prior-year figures it reads directly (rec.agi_prior 53, rec.ded_prior 26), which the interview does not ask because the project carries the prior-year figures as its own inputs. Where both evaluate no value differs; the 7 refusals are the project's cited screens. Triage executable-triage-v2 (.transcription/triage/2025/rec.json): 3,619 of 3,745 comparisons agree; completed {candidate-unknown 53, project-unknown 26}. Project stands.",
+   "context": "cdf67307924b9e5b7a7c70f5f71b8453f8867ae31a83ac8a5e97e80d8debfa3b",
+   "date": "2026-11-17",
+   "run": "249acc79cf51a45e5ed2905681ba52433f85145c2b44fce03c4b51fd9e0b599c",
+   "subject_key": "ef221c0523024e470b748f8adc21ed21bb0dcac7c0bef4c9f11a42a8aa2186a8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2s1o.rec.refuse.amt_2024@rec",
+     "fixture:x2s1o.rec.refuse.nol_negative@rec",
+     "fixture:mrental.rec.amt_2024_split_refused@rec",
+     "fixture:mrental.rec.prior_dependent_refused@rec",
+     "fixture:mrental.rec.nol_negative_ti_prior_mfs@rec",
+     "fixture:mrental.rec.split_line11_less_than_line3@rec",
+     "fixture:stage16.refuse.refund.exc_tax@rec",
+     "partial:stage14.asset.hy_5yr-rec.ti_positive@rec",
+     "partial:stage14.asset.hy_5yr-rec.agi_prior@rec",
+     "partial:stage14.asset.hy_5yr-rec.ded_prior@rec",
+     "partial:stage14.asset.bonus_100-rec.ti_positive@rec",
+     "partial:stage14.asset.bonus_100-rec.agi_prior@rec",
+     "partial:stage14.asset.bonus_100-rec.ded_prior@rec",
+     "partial:stage14.asset.prior_7yr-rec.ti_positive@rec",
+     "partial:stage14.asset.prior_7yr-rec.agi_prior@rec",
+     "partial:stage14.asset.qip-rec.ti_positive@rec",
+     "partial:stage14.asset.done-rec.ti_positive@rec",
+     "partial:stage14.asset.refuse_class-rec.ti_positive@rec"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "11",
    "project_expr_sha256": "e24528aea80655cbf2bf76847376cab67208d8c40a4cfec278d17a58b4307641",
    "second_expr_sha256": "6d3931c8fc0206d2472091d14d83d032ee6ad2ab879ab5ca2278b12bb385f612",
    "ruling": "Ruling: model error; the reply refuses through its own rec.h_ti_conflict on 16 completed returns where the project computes (classm.rec.1: project $925); its value expression equals the project's (p525 p. 27, line 11, 'If line 10 is a negative amount, add lines 9 and 10 ... but not less than zero').",

@@ -1,0 +1,107 @@
+{
+ "form": "rprop",
+ "reviews": {
+  "gate:rprop.new_nonres": {
+   "subject_sha": "cea1e9f94b4aead0af1970ba2c26aa5013f83df84f217d1132e468f00a34991f",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "7",
+       "who": "A filer with a qualifying interior improvement to a nonresidential building placed in service after 2017 who correctly treats the improvement as 15-year qualified improvement property on Form 4562.",
+       "why_no": "The gate requires column(a) = 'nonresidential'; the filer reads that as the 39-year real-property class and answers/classifies the asset as 15-year property, so the gate is false and the QIP question is never asked.",
+       "line": "rprop.qip_if_new_nonres",
+       "irs_text": "i4562 p. 10: '15-year property includes ... Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017.'",
+       "severity": "high",
+       "fix": "Do not require column(a) = 'nonresidential' to ask the QIP question; ask the factual interior-improvement question for improvements to nonresidential buildings and classify QIP as 15-year property after a yes."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer who makes a qualifying interior improvement in 2025 to a nonresidential building that was first placed in service years earlier, for example in 2010.",
+       "why_no": "The gate says 'Nonresidential real property placed in service after 2017' and uses a recovery-year count of 8 or less; the filer truthfully says the building was placed in service before 2018, so the gate is false even though the improvement itself was placed in service after 2017.",
+       "line": "rprop.qip_if_new_nonres",
+       "irs_text": "p946 p. 31: 'Qualified improvement property. Generally, this is any improvement to an interior part of a building that is nonresidential real property, and the improvement is ... placed in service by you after 2017 and after the date the building was first placed in service by any person.'",
+       "severity": "high",
+       "fix": "Gate the question on the improvement's placed-in-service date, not the building's; ask it for any interior improvement placed in service after 2017 even if the building was first placed in service earlier."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose qualifying QIP is an interior addition, such as new interior walls or partitions that do not enlarge the building's footprint.",
+       "why_no": "The help says 'A new roof or an addition is not an improvement to the inside'; the filer reads 'addition' as any added interior construction and answers no.",
+       "line": "rprop.qip_if_new_nonres",
+       "irs_text": "p946 p. 31: QIP is 'any improvement to an interior part of a building that is nonresidential real property' and excludes only 'The enlargement of the building,' 'Any elevator or escalator,' and 'The internal structural framework of the building.'",
+       "severity": "medium",
+       "fix": "Change the help to say an enlargement or building addition outside the existing footprint is not inside, while interior partitions and interior additions can be QIP."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "A filer who has a qualifying interior QIP as part of a larger project that also includes a new roof or a building enlargement.",
+       "why_no": "The single yes/no question requires the improvement to be inside and 'not an enlargement'; the filer answers no because part of the project is a roof or enlargement, dropping the otherwise qualifying interior portion.",
+       "line": "rprop.qip_if_new_nonres",
+       "irs_text": "p946 p. 31: QIP includes 'any improvement to an interior part' and excludes only expenditures 'attributable to' the enlargement, elevator/escalator, or internal structural framework, so the interior portion can still be QIP.",
+       "severity": "medium",
+       "fix": "Ask separately or allow allocation, so the filer can report the cost of the interior QIP portion and exclude only the costs attributable to the roof, enlargement, elevator/escalator, or internal structural framework."
+      }
+     ],
+     "prompt_sha": "992d5229862e32eec6721e7b3b8dd9422de3f5a98a43238ada834da50a0bbde3",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_rprop.new_nonres.cea1e9f94b4a.1.response.txt"
+    }
+   ],
+   "condition": "rprop.new_nonres",
+   "lines": [
+    "rprop.qip_if_new_nonres"
+   ],
+   "inputs": [
+    "rprop.qip"
+   ],
+   "used": [
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      16,
+      31
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Qualified improvement property; p. 31, Qualified improvement property",
+      "p. 31, Qualified improvement property, \"placed in service by you after 2017 and after the date the building was first placed in service by any person\""
+     ],
+     "cols_pages": [
+      16,
+      31
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    },
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      10,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, 15-year property, \"Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017\""
+     ],
+     "cols_pages": [
+      10,
+      15
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  }
+ }
+}

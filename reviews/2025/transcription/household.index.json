@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "25",
   "agree / disagree / missing": "7 / 18 / 0",
-  "line-scoped reviews": "7 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "8 (latest 2026-11-16); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -111,10 +111,10 @@
   },
   {
    "key": "household.hoh_fails",
-   "record": "0f7b00caee1dc90f45a85c2b070661ff2756ea91d077e4fbf0caf7300f213759",
+   "record": "6f962d361a860e24735457f4371d828f97c1510baf8bbdfd3cee87476e6ff6c7",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 14, Head of Household, \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\"; Pub. 501 p. 6, \"If your spouse died during the year, you are considered married for the whole year\". The reply's tests are the project's: dependent.hoh_test1 (Test 1), dependent.hoh_test2 with household.home_cost (Test 2, the project's test2_met), married_dec31 and not considered_unmarried (the project's household.unmarried false). It also folds in a spouse who died in 2025, which the project refuses at the same Form 1040 status line through household.widowed_this_year (f1040.yaml refuses on hoh_fails and widowed_this_year side by side), and it reads married_dec31 and considered_unmarried raw where the project gates them. Same refusal outcome. Ruled by reading: the triage record predates this reply (pass de16cc0a21be).",
-   "subject_key": "0063c1ae7bb05c60e12463b86fcdce7c20c86c566b8e256a1340fb113ac44444"
+   "ruling": "Ruling: representation; i1040gi p. 14, Head of Household, \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/household.json): 2500 of 2514 comparisons agree, 2483 of 2492 in scope; completed {}. Project stands.",
+   "subject_key": "4d9f2ae233cc12f1897d390668d2a5eda0db85afee7121a57fa6fbbf4671bc53"
   },
   {
    "key": "household.qss_fails",
@@ -131,17 +131,17 @@
   },
   {
    "key": "household.cp_marriage_ended",
-   "record": "e489c2b263f0be04bfdce6cb3c97c564f770a815ea6bb5c950f38ca8c8d3bff6",
+   "record": "6f962d361a860e24735457f4371d828f97c1510baf8bbdfd3cee87476e6ff6c7",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 23, Community Property States, and p501 p. 6 (part-year marriage in a community property state; Form 8958, Pub. 555). Both are true for a filer not filing jointly who lived in a community property state, was not married at the end of 2025 and was married there for part of 2025. The project asks household.cp_married only where a marriage is possible (marriage_possible: not a never-married single or head of household filer) and reads year-end marriage through household.married; the reply reads household.married_dec31 and household.cp_married directly, so it differs only on records where the interview asks neither. Ruled by reading: no household triage (triage.py refuses the form because an earlier pass names the renamed household.widowed_2025; the record on disk predates the redraft). Project stands.",
-   "subject_key": "5687e5b2efc6d50fc7a193872741cdb94e18c44a38fa9d4dcf5892fd5854ebc0"
+   "ruling": "Ruling: representation; i1040gi p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555.\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/household.json): 2492 of 2514 comparisons agree, 2492 of 2514 in scope; completed {}. Project stands.",
+   "subject_key": "dc101ff16fba42029480dbb060f246fddf468b6ca4a00646af68426cfeb4f897"
   },
   {
    "key": "household.rdp_community_property",
-   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "record": "6f962d361a860e24735457f4371d828f97c1510baf8bbdfd3cee87476e6ff6c7",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 23, Community Property States; p501 p. 6. As the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`): the reply tests household.rdp alone, dropping the nonjoint and community-property guards, so it asks the answer on every return (262 completed candidate-unknowns, for example classm.f8889.1.deepseek). Not a tax-value disagreement. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 611 of 2,300 agree; 1,689 candidate-unknown; on returns the full interview completes: 262 candidate-unknown. Project stands.",
-   "subject_key": "8c2126fd6028bdbbe7fb58e99819675a65efbf220a2d8cc6aba3439ba85fca4d"
+   "ruling": "Ruling: representation; i1040gi p. 23, Community Property States, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner\". The candidate reads rdp directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/household.json): 1940 of 2514 comparisons agree, 1940 of 2514 in scope; completed {\"candidate-unknown\": 213}. Project stands.",
+   "subject_key": "db3509e2fde4e2213ff7a6f3c2662c1c73e57e0c691598a96965b4e2a0cf6fae"
   },
   {
    "key": "household.filing_status_conflict",
@@ -158,24 +158,24 @@
   },
   {
    "key": "household.mfs_apart_all_year",
-   "record": "9e8c0fdaad9ae9700f8acc54ceab59a5719abdb91dd0b6b793c5075a4def1dfa",
+   "record": "6f962d361a860e24735457f4371d828f97c1510baf8bbdfd3cee87476e6ff6c7",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; read without triage (triage.py refuses the log, see filing_status_conflict). On MFS both read household.mfs_living == apart_all_year. Off MFS the project reads the year parameter household.mfs_living_else (together_late), so the test is false, and the reply's conjunction with status mfs is false too; the reply only reads the gated input ungated. Equal on every status (i1040gi p. 31, Line 6d; amb.2025.mfs_lived_apart).",
-   "subject_key": "fb2aecce58a6ab5aab663ba26378b7675be85f613c36240e247f07df222b76d2"
+   "ruling": "Ruling: representation; i1040gi p. 31, Line 6d, \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/household.json): None of None comparisons agree; completed {}. Project stands.",
+   "subject_key": "1dcd2add2cec218e5200f12db31302409d73fe0d59e94a2e2843bc47f2869842"
   },
   {
    "key": "household.mfs_apart_last6",
-   "record": "9e8c0fdaad9ae9700f8acc54ceab59a5719abdb91dd0b6b793c5075a4def1dfa",
+   "record": "6f962d361a860e24735457f4371d828f97c1510baf8bbdfd3cee87476e6ff6c7",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; read without triage (see filing_status_conflict). On MFS both are apart_last6 or apart_all_year (the reply's note picks the IRS condition 'lived apart for the last 6 months', which the all-year value also meets, as the project does). Off MFS both are false (project: together_late from household.mfs_living_else; reply: conjunction with status mfs). i1040gi p. 15, Married persons who live apart; p. 44, Special rule for separated spouses.",
-   "subject_key": "835fee60361837210beca461cb09f9971f9c06deb33e1dd73222077e21f0bd1e"
+   "ruling": "Ruling: representation; i1040gi p. 15, Married persons who live apart, \"You lived apart from your spouse for the last 6 months of 2025\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/household.json): None of None comparisons agree; completed {}. Project stands.",
+   "subject_key": "c605da7866983075e825eaf8ed1449a814f412259a3000a1a4718fd40d5a5cd0"
   },
   {
    "key": "household.mfs_community_property",
-   "record": "9e8c0fdaad9ae9700f8acc54ceab59a5719abdb91dd0b6b793c5075a4def1dfa",
+   "record": "6f962d361a860e24735457f4371d828f97c1510baf8bbdfd3cee87476e6ff6c7",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; read without triage (see filing_status_conflict). On MFS both are household.community_property; on every other status the project gives household.no (false) and the reply's conjunction with status mfs gives false. The reply's note leaves registered domestic partners to household.rdp, as the project does (household.rdp_community_property). i1040gi p. 14, Married Filing Separately, \"Different rules apply to people in community property states; see Pub. 555\"; amb.2025.mfs_community_property.",
-   "subject_key": "108c4a27efbe603f6e40f397fbe16fe7016a9bc7724c3778a99187aeb44d5bc1"
+   "ruling": "Ruling: representation; i1040gi p. 14, Married Filing Separately, \"Different rules apply to people in community property states; see Pub. 555\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/household.json): None of None comparisons agree; completed {}. Project stands.",
+   "subject_key": "f74da235b5a42b840922397e64a73fa6a16a3a2a1a0f074febb03b934b786b5f"
   }
  ],
  "subjects": {
@@ -194,16 +194,16 @@
   "household.married": "7797a97c6f7d1f92e9aeacf90b0228f01b64886317ff4af7e7ec13d17bcc7161",
   "household.ctc_disallowed_claim": "ee3b3554dd5ac6ccdd4664421c2c2092138a851d7d7937b4db24eb21ddf724ba",
   "household.eic_disallowed_claim": "77b822135b27ab6e7b5c950dad556162237369336af8b5aa9426e04536558108",
-  "household.hoh_fails": "5b2424e680753988a95a52efa78bc28f9dd7dd6004fc844ad0df5f037e8ede06",
+  "household.hoh_fails": "c503f7dfa5b84c6d78e22824cbe1b6c26aecc3e813616ca16ac8f66e7976c5b7",
   "household.qss_fails": "49db0cd4d57e1d8f68ff7615a282d68a1900f30e202c0c01e4293d18fbb0dbb1",
   "household.widowed_this_year": "8abbe182d333f715cac8ac03b86fa35d20710670f069ca3553d886ecd038ec3f",
-  "household.cp_marriage_ended": "74e5a4b773100f1aec2778721a3ddc190f09a7ac7cc8762c239fb490250d6022",
-  "household.rdp_community_property": "cb7ac4eaf81490b4b959f5e229c0a0c49d5f3d3cc6e4f3ab0c18cc7a4c0311ba",
+  "household.cp_marriage_ended": "83e4be6740c94293c155d28d8590ba7f4308a54c56a7e701fe3c2c988fd98f9b",
+  "household.rdp_community_property": "cc8a52a6955f6574bf7ec6c447c5931cfa116075bab6cf8102a17d25bc12e442",
   "household.filing_status_conflict": "c20f956d22dccd614e1d5ac766e3267b84b02b72154f1fe9624ea9469c34c315",
   "household.mfs": "176699ddce9a83f1c9416ba78656a2b56ac77d598593dc578bb1ded5ce97b640",
-  "household.mfs_apart_all_year": "da52f9a1821e39b91e804f3aa457836970061d10c66846a048b8e0000e687b3c",
-  "household.mfs_apart_last6": "a5dddebeca49eee99f2000ef1909058390d0ddd5a00d6ad3ba35c13571c86a95",
-  "household.mfs_community_property": "0f1c67a4ce5098eff5c11bcc60478ea07274f28266b249b77afc59af38b2cf40"
+  "household.mfs_apart_all_year": "150855687ea4442b9580dca4458459bcc97dc1c45144c635d8704aeeeacc2fcc",
+  "household.mfs_apart_last6": "37bc6bbe8bf82e257a31c0237e7f4eb50b91c411faaa32d19257f5e80eefd060",
+  "household.mfs_community_property": "90440e67c070ec616f50975487993ed0a462014cf8707d08f938130d79711dc2"
  },
  "__rest__": "92bf81ae283c1e0d5fa92ecd444c292ac15487a8e6ed56b6d46422a82d26927b",
  "foreign": {
@@ -219,6 +219,7 @@
   "household.qss_fails": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.widowed_this_year": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.cp_marriage_ended": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.rdp_community_property": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.filing_status_conflict": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.mfs": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.mfs_apart_all_year": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",

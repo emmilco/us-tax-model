@@ -273,11 +273,36 @@ form:
       expr: { op: input, source: 'Did you or your spouse have net earnings from self-employment allocated to New York City (MCTD Zone 1) or to Zone 2 of more than $50,000?' }
       cite: { doc: ny_it201i, locator: 'p. 15, Lines 54a through 54e, "Did you or your spouse have net earnings from self-employment allocated to Zone 1 or Zone 2, or both that exceed $50,000?"' }
       gated_by: ny_it201.gate.mctmt
-    - id: ny_it201.ask.owes_use_tax
+    - id: ny_it201.ask.bought_untaxed
       printed: '(question)'
-      label: 'Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City''s (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business''s own sales tax return.'
+      label: 'Bought goods or services taxable in New York without paying New York sales tax on them, or paid tax at a lower rate than New York City''s (for example online, by catalog, or out of state and brought into New York), other than purchases of a business registered for sales tax'
       type: Bool
-      expr: { op: input, source: 'Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City''s (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business''s own sales tax return.' }
+      expr: { op: input, source: 'Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City''s (for example online, by catalog, or out of state and brought into New York)? Do not count purchases of a business registered for sales tax, which go on the business''s own sales tax return.' }
+      cite: { doc: ny_it201i, locator: 'p. 18, Line 59: Sales or use tax, "You owe sales or compensating use tax if you:"' }
+    - id: ny_it201.ask.use_tax_dmv_only
+      printed: '(question)'
+      label: 'Every such purchase was a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile whose tax is paid to the Department of Motor Vehicles'
+      type: Bool
+      gated_by: ny_it201.use_tax_dmv_only_if_bought
+      expr: { op: input, source: 'Was every such purchase a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile whose sales or use tax is paid to the Department of Motor Vehicles when it is registered or titled?' }
+      cite: { doc: ny_it201i, locator: 'p. 18, Line 59: Sales or use tax, "You may not use this line to report:" and "any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department"' }
+    - id: ny_it201.use_tax_dmv_only_if_bought
+      printed: '(gate)'
+      label: 'Every untaxed purchase was a vehicle or vessel taxed at the DMV (asked only after a Yes to an untaxed purchase; otherwise no)'
+      type: Bool
+      expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.ask.bought_untaxed", { const: true }] }, then: "ny_it201.ask.use_tax_dmv_only" }, { guard: { op: test, eq: ["ny_it201.ask.bought_untaxed", { const: false }] }, then: "ny_it201.no" }] }
+      cite: { doc: ny_it201i, locator: 'p. 18, Line 59: Sales or use tax, "You may not use this line to report:" and "any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department"' }
+    - id: ny_it201.use_tax_not_dmv
+      printed: '(helper)'
+      label: 'Not every untaxed purchase was a vehicle or vessel taxed at the DMV'
+      type: Bool
+      expr: { op: test, eq: ["ny_it201.use_tax_dmv_only_if_bought", { const: false }] }
+      cite: { doc: ny_it201i, locator: 'p. 18, Line 59: Sales or use tax, "You may not use this line to report:" and "any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department"' }
+    - id: ny_it201.ask.owes_use_tax
+      printed: '(helper)'
+      label: 'Owes New York sales or use tax on purchases (an untaxed purchase other than a vehicle or vessel taxed at the DMV)'
+      type: Bool
+      expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.ask.bought_untaxed", { const: true }] }, then: "ny_it201.use_tax_not_dmv" }, { guard: { op: test, eq: ["ny_it201.ask.bought_untaxed", { const: false }] }, then: "ny_it201.no" }] }
       cite: { doc: ny_it201i, locator: 'p. 18, Line 59: Sales or use tax, "You owe sales or compensating use tax if you:"' }
     - id: ny_it201.ask.use_tax_st141
       printed: '(question)'
@@ -357,10 +382,10 @@ form:
       cite: { doc: ny_it201i, locator: 'p. 23, Line 81, "In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax based on a 12-month return."' }
     - id: ny_it201.ask.est_late
       printed: '(question)'
-      label: 'Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year''s required payment?'
+      label: 'Was any 2025 New York estimated tax installment skipped, paid late, or smaller than one quarter of the year''s required payment?'
       type: Bool
       gated_by: ny_it201.est_penalty_late
-      expr: { op: input, source: 'Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year''s required payment?' }
+      expr: { op: input, source: 'Was any 2025 New York estimated tax installment skipped, paid late, or smaller than one quarter of the year''s required payment?' }
       cite: { doc: ny_it201i, locator: 'p. 23, Line 81, "if you underpaid your estimated tax liability for any payment period"' }
     - id: ny_it201.ask.spouse_resident
       printed: '(question)'
@@ -628,9 +653,9 @@ form:
       ambiguity: amb.ny.2025.whole_dollars
     - id: ny_it201.has_tax_exempt
       printed: '(helper)'
-      label: 'Tax-exempt interest or exempt-interest dividends on federal line 2a'
+      label: 'Tax-exempt interest received (federal Yes, even if bond premium leaves line 2a at zero), or exempt-interest dividends on federal line 2a'
       type: Bool
-      expr: { op: test, gt: ["f1040.line2a", { const: 0 }] }
+      expr: { op: test, any: [{ op: test, eq: ["f1040.tax_exempt_any", { const: true }] }, { op: test, gt: ["f1040.line2a", { const: 0 }] }] }
       cite: { doc: ny_it201i, locator: 'p. 7, Line 20, "Do you have interest income from state and local bonds and obligations from states other than New York State or its local governments?"' }
     - id: ny_it201.gate.line20
       printed: '(gate)'
@@ -651,9 +676,9 @@ form:
           cite: { doc: ny_it201i, locator: 'p. 7, Line 20, "enter any such interest income that you received or that was credited to you during 2025 that was not included in your federal adjusted gross income"' }
     - id: ny_it201.ask.public_job
       printed: '(question)'
-      label: 'A government job in New York'
+      label: 'A Form W-2 from a New York public employer'
       type: Bool
-      expr: { op: input, source: 'In 2025, did you (or, on a joint return, your spouse) work for the government in New York, including a public school or college or the MTA?' }
+      expr: { op: input, source: 'Did you (or, on a joint return, your spouse) get a 2025 Form W-2 from New York State, a New York local government or another New York public employer?' }
       cite: { doc: ny_it201i, locator: 'p. 8, Line 21, "Are you a public employee of New York State or its local governments?"' }
       gated_by: ny_it201.public_job_if_w2
     - id: ny_it201.public_job_if_w2
@@ -693,9 +718,9 @@ form:
       cite: { doc: ny_it201i, locator: 'p. 10, Line 30, "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?"' }
     - id: ny_it201.ask.ny_529
       printed: '(question)'
-      label: 'Owns an account in New York''s 529 college savings program'
+      label: 'Owned an account in New York''s 529 college savings program at any time in 2025'
       type: Bool
-      expr: { op: input, source: 'Is any 529 account you (or, on a joint return, your spouse) own part of New York''s own 529 college savings program?' }
+      expr: { op: input, source: 'At any time in 2025, did you (or, on a joint return, your spouse) own an account in New York''s 529 college savings program?' }
       cite: { doc: ny_it201i, locator: 'p. 10, Line 30, "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?"' }
       gated_by: ny_it201.ny_529_if_account
     - id: ny_it201.ny_529_if_account
@@ -746,13 +771,13 @@ form:
       cite: { doc: ny_it201, locator: 'p. 2, New York additions, "Add lines 19 through 23"' }
     - id: ny_it201.has_other_income
       printed: '(helper)'
-      label: 'Other income on federal Schedule 1 (line 9 is not zero)'
+      label: 'A state tax refund or other income on federal Schedule 1 (line 1 more than zero, or line 9 not zero)'
       type: Bool
-      expr: { op: test, ne: ["s1.line9", { const: 0 }] }
+      expr: { op: test, any: [{ op: test, gt: ["s1.line1", { const: 0 }] }, { op: test, ne: ["s1.line9", { const: 0 }] }] }
       cite: { doc: ny_it201i, locator: 'p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25."' }
     - id: ny_it201.inflation_if_other_income
       printed: '(gate)'
-      label: 'An inflation refund check in federal income (asked only with other income on Schedule 1; otherwise no)'
+      label: 'An inflation refund check in federal income (asked only with a state tax refund or other income on Schedule 1; otherwise no)'
       type: Bool
       expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.has_other_income", { const: true }] }, then: "ny_it201.ask.inflation_check" }, { guard: { op: test, eq: ["ny_it201.has_other_income", { const: false }] }, then: "ny_it201.no" }] }
       cite: { doc: ny_it201i, locator: 'p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25."' }
@@ -790,18 +815,35 @@ form:
           - { op: test, gt: ["ny_it201.line9", { const: 0 }] }
           - { op: test, gt: ["ny_it201.line10", { const: 0 }] }
       cite: { doc: ny_it201i, locator: 'p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10)"; p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
-      note: 'Within this tool, pension, annuity and IRA income in federal adjusted gross income is on federal lines 4b and 5b (IT-201 lines 9 and 10): the federal screens refuse a disability pension reported as wages (retirement.special, scope.other_income) and a pension from a nonqualified plan or a nongovernmental section 457 plan on Schedule 1 line 8t (s1.line8_other).'
+      note: 'Within this tool, pension, annuity and IRA income in federal adjusted gross income is on federal lines 4b and 5b (IT-201 lines 9 and 10), except a disability pension paid wholly before the minimum retirement age, which is wages on federal line 1h (person.dis_wages) and is read by ny_it201.gov_pension_candidate, not here. The federal screens refuse a disability pension paid partly before and partly after that age, or with after-tax cost (retirement.dis_split, through retirement.special), and a pension from a nonqualified plan or a nongovernmental section 457 plan on Schedule 1 line 8t (s1.line8_other).'
+    - id: ny_it201.dis_pension_wages
+      printed: '(helper)'
+      label: 'Disability pensions paid before the minimum retirement age, in federal wages (Form 1040 line 1h)'
+      type: NonNegDollars
+      expr: { op: sum_over, collection: person, field: person.dis_wages }
+      cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
+      note: 'A disability pension paid before the minimum retirement age is reported as wages (IT-201 line 1, through federal line 1h), not on line 9 or 10, but it is still a pension included in federal adjusted gross income for line 26.'
+    - id: ny_it201.gov_pension_candidate
+      printed: '(gate)'
+      label: 'Pension, annuity or IRA income on line 9 or 10, or a disability pension in wages'
+      type: Bool
+      expr:
+        op: test
+        any:
+          - { op: test, eq: ["ny_it201.has_pension_income", { const: true }] }
+          - { op: test, gt: ["ny_it201.dis_pension_wages", { const: 0 }] }
+      cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
     - id: ny_it201.gov_pension_if_income
       printed: '(gate)'
-      label: 'The government pension question, asked only with pension or IRA income; otherwise no'
+      label: 'The government pension question, asked only with pension or IRA income or a disability pension in wages; otherwise no'
       type: Bool
-      expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.has_pension_income", { const: true }] }, then: "ny_it201.ask.gov_pension" }, { guard: { op: test, eq: ["ny_it201.has_pension_income", { const: false }] }, then: "ny_it201.no" }] }
+      expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.gov_pension_candidate", { const: true }] }, then: "ny_it201.ask.gov_pension" }, { guard: { op: test, eq: ["ny_it201.gov_pension_candidate", { const: false }] }, then: "ny_it201.no" }] }
       cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
     - id: ny_it201.gov_said_no
       printed: '(helper)'
-      label: 'Pension or IRA income, and No to the government pension question'
+      label: 'Pension or IRA income, or a disability pension in wages, and No to the government pension question'
       type: Bool
-      expr: { op: test, all: [{ op: test, eq: ["ny_it201.has_pension_income", { const: true }] }, { op: test, eq: ["ny_it201.gov_pension_if_income", { const: false }] }] }
+      expr: { op: test, all: [{ op: test, eq: ["ny_it201.gov_pension_candidate", { const: true }] }, { op: test, eq: ["ny_it201.gov_pension_if_income", { const: false }] }] }
       cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
     - id: ny_it201.ask.gov_pension_other
       printed: '(question)'
@@ -2390,7 +2432,7 @@ form:
       printed: '(question)'
       label: 'Paid New York income tax for 2025 in advance, or had a 2024 refund applied'
       type: Bool
-      expr: { op: input, source: 'Apart from tax taken out of your pay, did you (or, on a joint return, your spouse) pay New York income tax for 2025 ahead of time, or have a 2024 New York refund applied to it?' }
+      expr: { op: input, source: 'Apart from tax taken out of your pay, did you (or, on a joint return, your spouse) pay New York income tax for 2025 ahead of time, have a 2024 New York refund applied to it, or have estimated tax passed to you by an estate or trust?' }
       cite: { doc: ny_it201i, locator: 'p. 22, Line 75: Total estimated tax payments and amount paid with Form IT-370, "your 2025 estimated tax payments for New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax"' }
     - id: ny_it201.line75_amount
       printed: '(question)'

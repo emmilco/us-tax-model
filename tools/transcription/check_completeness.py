@@ -3,7 +3,7 @@
 """Standing section completeness review, offline, in check-all.
 
 Sampled reviews (samples.py). A form's subject is the hash of the prompt completeness_review.py would send now,
-without the system prompt (the form's cited pages, its encoding list and the HANDLED ELSEWHERE list). Its record in
+without the system prompt and without the HANDLED ELSEWHERE list (the form's cited pages and its encoding list). Its record in
 reviews/<year>/completeness/completeness.json holds the samples run against one subject.
 
 - A form whose subject differs from its record's (or that has none) is `due`: listed, not failed. It is reviewed

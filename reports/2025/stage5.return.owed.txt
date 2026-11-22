@@ -386,7 +386,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Married filing separately: your spouse lived with you at some time in the last 6 months of 2025 (the answer to Step 3, question 4, from when you lived together)
       = true
       cite: [i1040gi] p. 41, Step 3, question 4, "Did you and your spouse have the same principal residence for the last 6 months of 2025?"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025" (2025; printed date 2026-02-25; 482e9c48)
-      note: Interpretation amb.2025.mfs_lived_apart: The first. One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule in its help, and every test reads it. The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies. (i1040gi, p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025")
+      note: Interpretation amb.2025.mfs_lived_apart: The first, with time in a shared home counted as living together whether or not the spouses were separated (the fourth reading rejected). One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule and the shared home in its help, and every test reads it. The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies. The archived 6-month tests are stated by the home ("lived in the home", "didn’t live in your home"), so spouses under one roof did not live apart for them; reading the all-year test the same way asks one fact once, and the fourth reading would need a second question on estrangement that no source defines. (i1040gi, p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025"; p501 p. 8, Considered Unmarried, "Your spouse didn't live in your home during the last 6 months of the tax year")
   (helper) Step 3, question 4: you and your spouse had the same principal residence for the last 6 months of 2025 (on a separate return, from when you lived together; otherwise asked)
       = false
       cite: [i1040gi] p. 41, Step 3, question 4, "Did you and your spouse have the same principal residence for the last 6 months of 2025?" (2025; printed date 2026-02-25; 482e9c48)
@@ -635,9 +635,16 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   1z  Add lines 1a through 1h
       = $120,000
       cite: [f1040] Form 1040 (2025), line 1z (line 1f, employer-provided adoption benefits, is refused by scope.adoption_benefits) (2025; created 2025-09-05; 3d31c226)
+  (gate) Was tax-exempt interest received in 2025?
+      = false
+      cite: [i1040gi] Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" (Form 1099-INT box 8, Form 1099-OID boxes 2 and 11, net of amortized bond premium and acquisition premium) (2025; printed date 2026-02-25; 482e9c48)
   (helper) Tax-exempt interest and tax-exempt OID, net of amortized premium
       = $0
       cite: [i1040gi] Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" (Form 1099-INT box 8, Form 1099-OID boxes 2 and 11, net of amortized bond premium and acquisition premium) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Tax-exempt interest and tax-exempt OID, net of amortized premium, when any was received; zero otherwise
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" (Form 1099-INT box 8, Form 1099-OID boxes 2 and 11, net of amortized bond premium and acquisition premium) (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.tax_exempt_any",{"const":false}],"op":"test"}
   2a  Tax-exempt interest
       = $0
       cite: [i1040gi] Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" and "Also include on line 2a any exempt-interest dividends from a mutual fund or other regulated investment company. This amount should be shown in box 12 of Form 1099-DIV" (2025; printed date 2026-02-25; 482e9c48)
@@ -649,7 +656,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] Instructions for Form 1040, p. 26, line 3b (2025; printed date 2026-02-25; 482e9c48)
   3a  Qualified dividends
       = $1,500
-      cite: [i1040gi] Instructions for Form 1040, pp. 25–26, line 3a and exceptions (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] pp. 25–26, Line 3a, Exception, "Some dividends may be reported as qualified dividends in box 1b of Form 1099-DIV but aren’t qualified dividends" (2025; printed date 2026-02-25; 482e9c48)
   4a  IRA distributions
       = $0
       cite: [i1040gi] pp. 26-27, Lines 4a and 4b (total distributions where an exception applies; 'More than one distribution') (2025; printed date 2026-02-25; 482e9c48)
@@ -1744,6 +1751,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Do you (or, on a joint return, your spouse) have investment interest expense disallowed in 2024 and carried forward (line 7 of a 2024 Form 4952 of either of you, on a joint or a separate return)?
       = false
       cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
+      note: Interpretation amb.2025.f4952_no_2024_form: The first (f4952.carryover asks only about a 2024 Form 4952), until the owner rules on a refusing question for this case. Pub. 550: "You can carry over the amount of investment interest you could not deduct because of this limit to the next tax year. The interest carried over is treated as investment interest paid or accrued in that next year." The third reading carries the whole earlier amount past a year whose net investment income could have absorbed it, so it can overstate line 2; it is not used. The second follows the quoted rule but asks the filer to complete a form for a past year. The first can understate the deduction, for a filer whose 2024 net investment income did not absorb the carryforward; it cannot overstate it. (p550, p. 47, Limit on Deduction, "You can carry over the amount of investment interest you could not deduct because of this limit to the next tax year. The interest carried over is treated as investment interest paid or accrued in that next year.")
   (helper) The amount on line 7 of the 2024 Form 4952 (on a joint return, both spouses' amounts if each filed one)
       = $0
       cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
@@ -2707,9 +2715,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) The smaller of the loss on line 1d or the loss on line 3
       = $0
       cite: [i8582] p. 11, Line 4 (2025; 76787e11)
-  (helper) Part II applies: line 3 is a loss and line 1d is a loss
+  (helper) Married filing separately, and you lived with your spouse at some time in 2025
       = false
-      cite: [f8582] Form 8582 (2025), line 3, "If line 3 is a loss and: • Line 1d is a loss, go to Part II" (2025; d929884f)
+      cite: [i8582] p. 10, Part II, "Caution: If your filing status is married filing separately and you lived with your spouse at any time during the year, you are not eligible for the special allowances in Part II. Do not complete Part II" (2025; 76787e11)
+  (helper) Part II applies: line 3 is a loss and line 1d is a loss, and you are not married filing separately having lived with your spouse at some time in 2025
+      = false
+      cite: [f8582] Form 8582 (2025), line 3, "If line 3 is a loss and: • Line 1d is a loss, go to Part II"; i8582 p. 10, Part II, "Do not complete Part II. Instead, go to Part III of Form 8582" (2025; d929884f)
+  (gate) Part II is shown (Form 8582 is required, and the married-filing-separately caution does not apply)
+      = false
+      cite: [i8582] p. 10, Part II, "Do not complete Part II" (2025; 76787e11)
   (helper) Income for modified adjusted gross income: Form 1040 lines 1z to 5b and 7a, Schedule 1 additional income other than line 5, and royalty income or loss
       = $123,200
       cite: [i8582] p. 11, Line 6, "To figure modified adjusted gross income, combine all the amounts used to figure adjusted gross income, except don’t take into account" (2025; 76787e11)
@@ -2741,9 +2755,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   VII worksheet C Part VII column (c) worksheet: line 3 as a positive amount less line 9
       = $0
       cite: [i8582] p. 13, Column (c), "Enter as a positive amount Part I, line 3, of Form 8582", "Subtract line B from line A" (2025; 76787e11)
-  (gate) The filing exception holds: active participation only, no prior unallowed loss, total loss $25,000 or less, MAGI $100,000 or less
+  (gate) The filing exception holds: active participation only, no prior unallowed loss, total loss $25,000 or less, MAGI $100,000 or less, and, if married filing separately, you lived apart from your spouse all year
       = false
-      cite: [i8582] p. 1, Exception, "Your total loss from the rental real estate activities wasn’t more than $25,000" (2025; 76787e11)
+      cite: [i8582] p. 1, Exception, "Your total loss from the rental real estate activities wasn’t more than $25,000"; "If you’re married filing separately, you lived apart from your spouse all year" (2025; 76787e11)
       note: Interpretation amb.2025.f8582_shown: Show it only when required (f8582.required). Under the exception line 9 equals the total loss, so the allowed losses are the same. (i8582, p. 1, Exception; p. 2, Coordination With Other Limitations, "If all the above conditions are met, your rental real estate losses are not limited, and you don’t need to complete Form 8582")
   (helper) Any passive activity deduction (a net loss or a prior unallowed loss)
       = false
@@ -3110,6 +3124,16 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 (for example a state or local income tax refund, or a refund of foreign income tax), even if none of it is taxable on Form 1040?
       = false
       cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17 (2025; created 2025-08-19; 9b323b71)
+  (helper) A joint return on which you or your spouse was not a U.S. citizen at some time in 2025
+      = false
+      cite: [i8960] p. 3, "If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes, but don’t elect to apply the joint return election for NIIT purposes" (2025; printed date 2026-02-04; b10fbb23)
+  (helper) Joint return made by choosing to treat a nonresident or dual-status spouse as a U.S. resident (section 6013(g) or 6013(h))
+      = false
+      cite: [i8960] p. 7, Line 1, "If you’re making the section 6013(g) or 6013(h) election (see Election To File Jointly With Nonresident Spouse—Section 6013(g) or 6013(h), earlier), check the corresponding checkbox" (2025; printed date 2026-02-04; b10fbb23)
+  (gate) Asked only on a joint return with a noncitizen (false otherwise)
+      = false
+      cite: [i8960] p. 7, Line 1, "check the corresponding checkbox" (2025; printed date 2026-02-04; b10fbb23)
+      note: taken: {"eq":["f8960.joint_noncitizen",{"const":false}],"op":"test"}
   (helper) Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed
       = $0
       cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17 (2025; created 2025-08-19; 9b323b71)
@@ -3879,10 +3903,24 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?"; i8889 p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year"; p501 p. 6, Marital Status, "State law governs whether you are married or legally separated under a divorce or separate maintenance decree."; p501 p. 6, Definition of marriage, "Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship"; p501 p. 6, Considered married, "You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began."; p501 p. 6, Divorce and remarriage, "you and your spouse must file as married individuals in both years."; p501 p. 6, Annulled marriages, "you are considered unmarried even if you filed joint returns for earlier years." (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["household.marriage_possible",{"const":true}],"op":"test"}
-  (helper) Did you live in a community property state at any time in 2025?
+  (helper) Did you live in, or have your permanent home (domicile) in, a community property state at any time in 2025?
       = false
-      cite: [i1040gi] p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin" (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Filing as head of household: married at the end of 2025, and lived in a community property state
+      cite: [i1040gi] p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin"; p555 p. 2, Domicile, "The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both"; p555 p. 3, Domicile, "you intend to use for an indefinite or unlimited period, and to which, when absent, you intend to return" and "When this publication refers to where you live, it means your domicile." (2025; printed date 2026-02-25; 482e9c48)
+  (helper) At some time in 2025 while married, the husband or wife lived in, or had a permanent home (domicile) in, a community property state
+      = false
+      cite: [p555] p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both"; p. 6, Military retirement pay, "Active military pay earned while married and domiciled in a community property state is also community income" (Rev. December 2024 (Publication 555 (Rev. 12-2024), Catalog Number 15103C, Feb 18, 2025); current irs-pdf edition, not year-specific; 7a1e1f3a)
+  (helper) A marriage is possible and the filing status is not qualifying surviving spouse
+      = true
+      cite: [p555] p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both" (Rev. December 2024 (Publication 555 (Rev. 12-2024), Catalog Number 15103C, Feb 18, 2025); current irs-pdf edition, not year-specific; 7a1e1f3a)
+  (helper) The husband or wife lived in, or had a permanent home in, a community property state in 2025, asked only where a marriage is possible and the filing status is not qualifying surviving spouse (false otherwise)
+      = false
+      cite: [p555] p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both" (Rev. December 2024 (Publication 555 (Rev. 12-2024), Catalog Number 15103C, Feb 18, 2025); current irs-pdf edition, not year-specific; 7a1e1f3a)
+      note: taken: {"eq":["household.ask_spouse_cp_domicile",{"const":true}],"op":"test"}
+  (helper) You lived in, or had your permanent home in, a community property state in 2025, or (asked when you did not) your husband or wife did
+      = false
+      cite: [p555] p. 2, Domicile, "The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both. If you and your spouse (or your RDP) have different domiciles, check the laws of each" (Rev. December 2024 (Publication 555 (Rev. 12-2024), Catalog Number 15103C, Feb 18, 2025); current irs-pdf edition, not year-specific; 7a1e1f3a)
+      note: taken: {"eq":["household.community_property",{"const":false}],"op":"test"}
+  (helper) Filing as head of household: married at the end of 2025, and you or your husband or wife lived in, or had a permanent home in, a community property state
       = false
       cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["household.married",{"const":false}],"op":"test"}
@@ -4011,7 +4049,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
-  (helper) Married at any time in 2025 while living in a community property state, though not married at the end of 2025
+  (helper) Married at any time in 2025 while living in, or having your permanent home in, a community property state, though not married at the end of 2025
       = false
       cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Married for part of 2025 while living in a community property state, asked only where a marriage is possible (false for a person never married)
@@ -4052,8 +4090,8 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 14, Married Filing Separately, "Enter your spouse’s name in the entry space. Be sure to enter your spouse’s SSN or ITIN in the space for spouse’s SSN on Form 1040 or 1040-SR. If your spouse doesn’t have and isn’t required to have an SSN or ITIN, enter “NRA” in the entry space." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Married filing separately: when you lived with your spouse in 2025 (together_late: at some time from July through December; apart_last6: only before July; apart_all_year: not at any time)
       = together_late
-      cite: [i1040gi] p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025"; p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d" (2025; printed date 2026-02-25; 482e9c48)
-      note: Interpretation amb.2025.mfs_lived_apart: The first. One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule in its help, and every test reads it. The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies. (i1040gi, p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025")
+      cite: [i1040gi] p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025"; p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"; p501 p. 8, Considered Unmarried, "Your spouse didn't live in your home during the last 6 months of the tax year" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.mfs_lived_apart: The first, with time in a shared home counted as living together whether or not the spouses were separated (the fourth reading rejected). One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule and the shared home in its help, and every test reads it. The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies. The archived 6-month tests are stated by the home ("lived in the home", "didn’t live in your home"), so spouses under one roof did not live apart for them; reading the all-year test the same way asks one fact once, and the fourth reading would need a second question on estrangement that no source defines. (i1040gi, p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025"; p501 p. 8, Considered Unmarried, "Your spouse didn't live in your home during the last 6 months of the tax year")
   (helper) Year parameter household.mfs_living_else (together_late)
       = together_late
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025" (2025; printed date 2026-02-25; 482e9c48)
@@ -4064,15 +4102,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Married filing separately, and you lived apart from your spouse for all of 2025
       = false
       cite: [i1040gi] p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"; p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "married filing separately and you lived apart from your spouse for all of 2025, enter $89,000" (2025; printed date 2026-02-25; 482e9c48)
-      note: Interpretation amb.2025.mfs_lived_apart: The first. One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule in its help, and every test reads it. The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies. (i1040gi, p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025")
+      note: Interpretation amb.2025.mfs_lived_apart: The first, with time in a shared home counted as living together whether or not the spouses were separated (the fourth reading rejected). One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule and the shared home in its help, and every test reads it. The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies. The archived 6-month tests are stated by the home ("lived in the home", "didn’t live in your home"), so spouses under one roof did not live apart for them; reading the all-year test the same way asks one fact once, and the fourth reading would need a second question on estrangement that no source defines. (i1040gi, p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025"; p501 p. 8, Considered Unmarried, "Your spouse didn't live in your home during the last 6 months of the tax year")
   (helper) Married filing separately, and your spouse did not live with you at any time in the last 6 months of 2025
       = false
       cite: [i1040gi] p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025" (2025; printed date 2026-02-25; 482e9c48)
-      note: Interpretation amb.2025.mfs_lived_apart: The first. One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule in its help, and every test reads it. The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies. (i1040gi, p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025")
-  (gate) Married filing separately, and you lived in a community property state at some time in 2025
+      note: Interpretation amb.2025.mfs_lived_apart: The first, with time in a shared home counted as living together whether or not the spouses were separated (the fourth reading rejected). One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule and the shared home in its help, and every test reads it. The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies. The archived 6-month tests are stated by the home ("lived in the home", "didn’t live in your home"), so spouses under one roof did not live apart for them; reading the all-year test the same way asks one fact once, and the fourth reading would need a second question on estrangement that no source defines. (i1040gi, p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025"; p501 p. 8, Considered Unmarried, "Your spouse didn't live in your home during the last 6 months of the tax year")
+  (gate) Married filing separately, and you or your husband or wife lived in, or had a permanent home in, a community property state at some time in 2025
       = false
       cite: [i1040gi] p. 14, Married Filing Separately, "Different rules apply to people in community property states; see Pub. 555"; p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income" (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}; Interpretation amb.2025.mfs_community_property: The second, on the existing question (household.community_property), for the nine states the instructions list. The same ground as amb.2025.hoh_community_property (owner decision of 2026-10-22, integrity plan decision 10): the community income split of Pub. 555 is outside the tool. "Lived in" is broader than "domicile": a filer who lived in one of the states only temporarily is refused too, which errs toward refusing (settled as design decision D1 of the married-filing-separately scout, by the coordinator under the owner's delegation, 2026-11-15). (p504, p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income" and "If you and your spouse file separate returns, you must report half of any income described by state law as community income")
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}; Interpretation amb.2025.mfs_community_property: The second, on household.community_property and, when the filer answers No, household.spouse_cp_domicile, for the nine states the instructions list. The same ground as amb.2025.hoh_community_property (owner decision of 2026-10-22, integrity plan decision 10): the community income split of Pub. 555 is outside the tool. "Lived in" is broader than "domicile": a filer who lived in one of the states only temporarily is refused too, which errs toward refusing (settled as design decision D1 of the married-filing-separately scout, by the coordinator under the owner's delegation, 2026-11-15). The permanent-home clause and the question on the husband or wife cover the other side: a filer domiciled in one of the states who lived elsewhere (Pub. 555 makes active military pay earned while domiciled there community income, p. 6), and spouses with different domiciles, whose income Pub. 555 settles by the law of each (p. 2), which the tool cannot apply. The question on the husband or wife is not asked after a marriage that ended in 2025 (single or unmarried head of household): one step for about 14% of returns against a very rare case (coordinator, 2026-11-16). Such a return, where only the former husband or wife lived in or had a permanent home in one of the states, is computed without the split. (p555, p. 2, Domicile, "The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both. If you and your spouse (or your RDP) have different domiciles, check the laws of each"; p. 3, Domicile, "When this publication refers to where you live, it means your domicile."; p504 p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income")
 
 == Schedule B — interest payer entries — interest[bank_a] ==
   (helper) Taxable interest from this payer, including Treasury interest; exclude tax-exempt interest
@@ -4469,9 +4507,23 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (question) Did you or your spouse have net earnings from self-employment allocated to New York City (MCTD Zone 1) or to Zone 2 of more than $50,000?
       = UNKNOWN (no input supplied for ny_it201.ask.mctmt)
       cite: [ny_it201i] p. 15, Lines 54a through 54e, "Did you or your spouse have net earnings from self-employment allocated to Zone 1 or Zone 2, or both that exceed $50,000?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return.
-      = UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax)
+  (question) Bought goods or services taxable in New York without paying New York sales tax on them, or paid tax at a lower rate than New York City's (for example online, by catalog, or out of state and brought into New York), other than purchases of a business registered for sales tax
+      = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed)
       cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You owe sales or compensating use tax if you:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+  (question) Every such purchase was a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile whose tax is paid to the Department of Motor Vehicles
+      = UNKNOWN (no input supplied for ny_it201.ask.use_tax_dmv_only)
+      cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You may not use this line to report:" and "any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+  (gate) Every untaxed purchase was a vehicle or vessel taxed at the DMV (asked only after a Yes to an untaxed purchase; otherwise no)
+      = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed)
+      cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You may not use this line to report:" and "any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: guard incomplete; possible: #0 unknown, #1 bool
+  (helper) Not every untaxed purchase was a vehicle or vessel taxed at the DMV
+      = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed)
+      cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You may not use this line to report:" and "any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+  (helper) Owes New York sales or use tax on purchases (an untaxed purchase other than a vehicle or vessel taxed at the DMV)
+      = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed)
+      cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You owe sales or compensating use tax if you:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: guard incomplete; possible: #0 unknown, #1 bool
   (question) Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?
       = UNKNOWN (no input supplied for ny_it201.ask.use_tax_st141)
       cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
@@ -4508,7 +4560,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (question) Did you file a 2024 New York return for a full 12-month tax year (a return as a 2024 part-year resident or nonresident counts)?
       = UNKNOWN (no input supplied for ny_it201.ask.prior_full_year)
       cite: [ny_it201i] p. 23, Line 81, "In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax based on a 12-month return." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year's required payment?
+  (question) Was any 2025 New York estimated tax installment skipped, paid late, or smaller than one quarter of the year's required payment?
       = UNKNOWN (no input supplied for ny_it201.ask.est_late)
       cite: [ny_it201i] p. 23, Line 81, "if you underpaid your estimated tax liability for any payment period" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) On your joint return, was your spouse also a full-year New York State and New York City resident?
@@ -4645,7 +4697,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [ny_it201i] p. 7, Lines 1 through 19: Federal income tax return information, "The calculation of your New York State, New York City, and Yonkers income tax is based on the information you reported on your federal income tax return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
       note: Interpretation amb.ny.2025.whole_dollars: Round each federal amount half-up to the dollar as it is entered on lines 1 to 18, and each computed tax, credit or worksheet line half-up to the dollar where it is computed. Owner decision C4 (docs/ny/DECISIONS.md, 2026-11-04). The instructions require every entry on the return and its worksheets to be a whole dollar and give the half-up rule; rounding where a line is entered is the literal reading. Rounding lines 1 to 18 separately can make line 19 differ by a few dollars from federal AGI rounded once; ny_it201.line19_agrees shows whether they agree. A product of a rate and an amount is rounded once to the dollar (multiply_rate with unit 100), not first to the cent.
  (ny_it201i, p. 2, Entering whole dollar amounts, "When you enter amounts on your return, enter whole dollar amounts only.")
-  (helper) Tax-exempt interest or exempt-interest dividends on federal line 2a
+  (helper) Tax-exempt interest received (federal Yes, even if bond premium leaves line 2a at zero), or exempt-interest dividends on federal line 2a
       = false
       cite: [ny_it201i] p. 7, Line 20, "Do you have interest income from state and local bonds and obligations from states other than New York State or its local governments?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (gate) Out-of-state municipal bond interest
@@ -4655,7 +4707,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   20  Interest income on state and local bonds and obligations (but not those of NYS or its local governments)
       = $0
       cite: [ny_it201] p. 2, New York additions, "Interest income on state and local bonds and obligations" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
-  (question) A government job in New York
+  (question) A Form W-2 from a New York public employer
       = UNKNOWN (no input supplied for ny_it201.ask.public_job)
       cite: [ny_it201i] p. 8, Line 21, "Are you a public employee of New York State or its local governments?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (gate) A public employer in New York (asked only when the return has a Form W-2; otherwise no)
@@ -4676,7 +4728,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) A 529 plan, Coverdell or ABLE account on the return
       = false
       cite: [ny_it201i] p. 10, Line 30, "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Owns an account in New York's 529 college savings program
+  (question) Owned an account in New York's 529 college savings program at any time in 2025
       = UNKNOWN (no input supplied for ny_it201.ask.ny_529)
       cite: [ny_it201i] p. 10, Line 30, "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (gate) An account in New York's 529 program (asked only with a 529, Coverdell or ABLE account; otherwise no)
@@ -4699,10 +4751,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   24  Add lines 19 through 23
       = UNKNOWN (no input supplied for ny_it201.ask.city_resident)
       cite: [ny_it201] p. 2, New York additions, "Add lines 19 through 23" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
-  (helper) Other income on federal Schedule 1 (line 9 is not zero)
+  (helper) A state tax refund or other income on federal Schedule 1 (line 1 more than zero, or line 9 not zero)
       = false
       cite: [ny_it201i] p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (gate) An inflation refund check in federal income (asked only with other income on Schedule 1; otherwise no)
+  (gate) An inflation refund check in federal income (asked only with a state tax refund or other income on Schedule 1; otherwise no)
       = false
       cite: [ny_it201i] p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
       note: taken: {"eq":["ny_it201.has_other_income",{"const":false}],"op":"test"}
@@ -4719,11 +4771,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Is there taxable IRA, pension or annuity income on line 9 or 10?
       = false
       cite: [ny_it201i] p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10)"; p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (gate) The government pension question, asked only with pension or IRA income; otherwise no
+  (helper) Disability pensions paid before the minimum retirement age, in federal wages (Form 1040 line 1h)
+      = $0
+      cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: confirmed roster $person: taxpayer
+  (gate) Pension, annuity or IRA income on line 9 or 10, or a disability pension in wages
       = false
       cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-      note: taken: {"eq":["ny_it201.has_pension_income",{"const":false}],"op":"test"}
-  (helper) Pension or IRA income, and No to the government pension question
+  (gate) The government pension question, asked only with pension or IRA income or a disability pension in wages; otherwise no
+      = false
+      cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: taken: {"eq":["ny_it201.gov_pension_candidate",{"const":false}],"op":"test"}
+  (helper) Pension or IRA income, or a disability pension in wages, and No to the government pension question
       = false
       cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) A pension from the MTA, MABSTOA, the Long Island Rail Road or a SUNY, CUNY or State Education Department plan
@@ -5186,7 +5245,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [ny_it201i] p. 18, Sales and use tax chart, "If your federal adjusted gross income (line 19) is:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
       note: guard incomplete; possible: #0 money, #1 money, #2 money, #3 money, #4 money, #5 money, #6 money, #7 unknown, none unknown
   (gate) Use tax owed with a New York abode for only part of the year (the chart amount is prorated by months)
-      = UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax)
+      = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed)
       cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
       note: guard incomplete; possible: #0 unknown, #1 bool
   (question) Wants the use tax figured exactly (Form ST-141) rather than from the chart
@@ -5197,10 +5256,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
       note: guard incomplete; possible: #0 bool, #1 unknown
   (gate) Use tax that must be calculated on Form ST-141
-      = UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax)
+      = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed)
       cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   59  Sales or use tax (do not leave blank)
-      = UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax)
+      = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed)
       cite: [ny_it201i] p. 19, Line 59, "If you do not owe any sales or use tax, you must enter 0 on line 59. Do not leave line 59 blank." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (helper) No sales or use tax owed
       = $0
@@ -5554,7 +5613,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["person.turned_65_this_year",{"const":false}],"op":"test"}
-  (helper) Is this the final return of a person who died in 2025 before reaching age 65?
+  (helper) Did this person die in 2025 before reaching age 65?
       = false
       cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Year parameter s1.educator_max ($300)
@@ -6819,7 +6878,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Form 5329 parts this tool does not prepare
       = false
       cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
-  (helper) A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025
+  (helper) This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026
       = false
       cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
   (helper) Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?
@@ -7901,9 +7960,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) For 2024: did you owe alternative minimum tax; were you unable to use the full amount of credits you were entitled to because the total credits were more than the amount on your 2024 Form 1040 or 1040-SR, line 18; did you have taxable income on your 2024 Form 1040 or 1040-SR, line 15, but no tax on line 16 because of the 0% tax rate on net capital gain and qualified dividends; or is your 2024 state and local income tax refund more than your 2024 state and local income tax deduction minus the amount you could have deducted as your 2024 state and local general sales taxes?
       = false
       cite: [i1040gi] p. 89, Line 1, "3. You had taxable income on your 2024 Form 1040 or 1040-SR, line 15, but no tax on your Form 1040 or 1040-SR, line 16, because of the 0% tax rate on net capital gain and qualified dividends in certain situations", "4. Your 2024 state and local income tax refund is more than your 2024 state and local income tax deduction minus the amount you could have deducted as your 2024 state and local general sales taxes", "6. You owed alternative minimum tax in 2024" and "7. You couldn’t use the full amount of credits you were entitled to in 2024" (2025; printed date 2026-02-25; 482e9c48)
-  (gate) Could you be claimed as a dependent by someone else in 2024; were you a nonresident alien filing Form 1040-NR for 2024; or did you receive any of these refunds because of a jointly filed state or local income tax return when you are not filing a joint 2025 Form 1040 or 1040-SR with the same person?
+  (gate) Could you be claimed as a dependent by someone else in 2024; were you a nonresident alien for all or part of 2024, whichever form you filed; or did you receive any of these refunds because of a jointly filed state or local income tax return when you are not filing a joint 2025 Form 1040 or 1040-SR with the same person?
       = false
-      cite: [i1040gi] p. 89, Line 1, "8. You could be claimed as a dependent by someone else in 2024" and "9. You received a refund because of a jointly filed state or local income tax return, but you aren’t filing a joint 2025 Form 1040 or 1040-SR with the same person"; p525 p. 24, Itemized Deduction Recoveries, "You can’t use the State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, and must use this discussion if you’re a nonresident alien" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 89, Line 1, "8. You could be claimed as a dependent by someone else in 2024" and "9. You received a refund because of a jointly filed state or local income tax return, but you aren’t filing a joint 2025 Form 1040 or 1040-SR with the same person"; p525 p. 24, Itemized Deduction Recoveries, "You can’t use the State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, and must use this discussion if you’re a nonresident alien"; i1040gi p. 34, Exception 3—Dual-status alien, "If you checked the box on line 12c, your standard deduction is zero" (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.refund_exceptions: The first (refund.box8 and refund.not_prior_year on refund.taxable; refund.exc_tax and refund.exc_who on refund.line1; refund.other on Schedule 1 line 1). The TIP is stated for "the year you paid the tax", which is 2024 only when the refund is for 2024 and was paid then, so items 1 and 5 can make a refund taxable even when you did not itemize for 2024, and a part of the refund for a 2025 payment changes the 2025 deduction for taxes (Pub. 525 p. 24, Example 28). A 2024 refund of tax paid before 2024 is a recovery for the year in which the tax was paid (Pub. 525 p. 24, Recovery for 2 or more years), so it is asked with item 5 and refused by refund.not_prior_year. Items 3, 4, 6, 7, 8 and 9 and the nonresident rule change only how much of a refund of a deducted tax is included; when no income tax was deducted for 2024, none is (Pub. 525 p. 24, Deductions not itemized). Box 8 sends a taxable refund to Schedule C or F whatever the itemizing. A recovery deducted on an earlier Form 8960 is refused by f8960.refund when Form 8960 is filed (modified AGI above the threshold); below the threshold it changes no amount. (i1040gi, pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet"; p525 p. 24, Deductions not itemized)
   (helper) The amount on your 2024 Schedule A, line 5d
       = $0
@@ -8175,9 +8234,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040gi] p. 91, Line 8e, "Enter the total of the amounts from Form 8853, lines 8, 12, and 26" (lines 8 and 12, Sections A and B, are refused by scope.archer_msa) (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["s1.ltc_payout",{"const":false}],"op":"test"}
-  (helper) Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income that is not wages, business income or a capital gain, such as from staking, from mining not as a business or from a hard fork?
+  (helper) Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income that is not wages, business income or a capital gain, such as from staking, from mining not as a business, from a hard fork or from an airdrop?
       = false
-      cite: [i1040gi] p. 92, Line 8v, "If, in 2025, you received ordinary income in connection with digital assets that isn’t reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining, which aren’t wages reported on line 1a or capital gain or loss reported on Form 8949 and Schedule D), report this income on line 8v." (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 92, Line 8v, "If, in 2025, you received ordinary income in connection with digital assets that isn’t reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining, which aren’t wages reported on line 1a or capital gain or loss reported on Form 8949 and Schedule D), report this income on line 8v."; rr-2019-24 p. 5, Holding (2), "A taxpayer has gross income, ordinary in character, under § 61 as a result of an airdrop of a new cryptocurrency following a hard fork if the taxpayer receives units of new cryptocurrency" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Digital assets received as ordinary income, asked only after a Yes to the digital asset question on Form 1040 page 1 (no otherwise)
       = false
       cite: [i1040gi] p. 15, Digital Assets, "Check the “Yes” box next to the question on digital assets on page 1 of Form 1040 or 1040-SR if at any time during 2025, you (a) received (as a reward, award, or payment for property or services)"; p. 16, "Received new digital assets as a result of mining, staking, and similar activities; • Received digital assets as a result of a hard fork" (2025; printed date 2026-02-25; 482e9c48)
@@ -8312,9 +8371,39 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any canceled nonbusiness debt
       = false
       cite: [i1040gi] p. 91, Line 8c (2025; printed date 2026-02-25; 482e9c48)
-  (gate) Does any of these apply to a canceled debt: an exception or exclusion (Form 982), a business, rental or farm debt, a foreclosure, repossession or abandonment, deductible interest or other deductible debt, a debt you were not personally liable for, or a debt owed jointly with someone who is not on this return?
+  (gate) A canceled debt is excluded or excepted from income (Form 982), a business, rental or farm debt, canceled in a foreclosure, repossession or abandonment, deductible, nonrecourse, or owed jointly with someone not on this return (true when any of the canceled-debt screening questions is answered Yes)
       = false
       cite: [p4681] p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Persons who each receive a Form 1099-C showing the full amount of debt; p. 6, Exclusions, "If a canceled debt is excluded from your income, it is nontaxable"; p. 6, Deductible Debt, "If you use the cash method of accounting, you don’t realize income from the cancellation of debt if the payment of the debt would have been a deductible expense." (2025; d87305a0)
+  (helper) A canceled debt was canceled in a title 11 bankruptcy case or while insolvent, or is otherwise excluded from income (Form 982)
+      = false
+      cite: [p4681] p. 6, Bankruptcy, "Debt canceled in a title 11 bankruptcy case isn’t included in your income"; p. 6, Insolvency, "Don’t include a canceled debt in income to the extent that you were insolvent immediately before the cancellation" (2025; d87305a0)
+  (helper) A canceled debt was a student loan or a debt on the main home (qualified principal residence indebtedness)
+      = false
+      cite: [p4681] p. 4, Student Loans, "Cancellation of certain other loans after December 31, 2020, and before January 1, 2026"; p. 2, "Qualified principal residence indebtedness can be excluded from income for discharges before January 1, 2026" (2025; d87305a0)
+  (helper) A canceled debt was canceled as a gift, bequest, devise or inheritance
+      = false
+      cite: [p4681] p. 4, Gifts, Bequests, Devises, and Inheritances, "In most cases, you don’t have income from canceled debt if the debt is canceled as a gift, bequest, devise, or inheritance" (2025; d87305a0)
+  (helper) A canceled debt was owed to the seller of property bought and was a reduction of its price
+      = false
+      cite: [p4681] p. 6, Price Reduced After Purchase, "If debt you owe the seller for the purchase of property is reduced by the seller at a time when you aren’t insolvent and the reduction doesn’t occur in a title 11 bankruptcy case, the reduction doesn’t result in cancellation of debt income" (2025; d87305a0)
+  (helper) A canceled debt was owed to a corporation in which the debtor is a stockholder
+      = false
+      cite: [p4681] p. 4, Stockholder Debt, "If you are a stockholder in a corporation and the corporation cancels or forgives your debt to it, the canceled debt is a constructive distribution" (2025; d87305a0)
+  (helper) A canceled debt was a business, rental or farm debt
+      = false
+      cite: [p4681] p. 8, Qualified Farm Indebtedness; p. 9, Qualified Real Property Business Indebtedness; p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable" (2025; d87305a0)
+  (helper) A canceled debt was canceled in connection with a foreclosure, repossession or abandonment of property
+      = false
+      cite: [p4681] p. 4, Sales or Other Dispositions (Such as Foreclosures and Repossessions); p. 4, Abandonments (2025; d87305a0)
+  (helper) A canceled debt includes interest or another amount that would have been deductible if paid
+      = false
+      cite: [p4681] p. 4, Interest included in canceled debt, "Whether the interest portion of the canceled debt must be included in your income depends on whether the interest would be deductible if you paid it"; p. 6, Deductible Debt, "you don’t realize income from the cancellation of debt if the payment of the debt would have been a deductible expense" (2025; d87305a0)
+  (helper) The debtor was not personally liable for a canceled debt (nonrecourse debt)
+      = false
+      cite: [p4681] p. 3, "Debt for which you are personally liable is recourse debt. All other debt is nonrecourse debt" (2025; d87305a0)
+  (helper) A canceled debt was owed jointly with someone who is not on this return
+      = false
+      cite: [p4681] p. 4, Persons who each receive a Form 1099-C showing the full amount of debt, "If you and another person were jointly and severally liable for a canceled debt, each of you may get a Form 1099-C showing the entire amount of the canceled debt" (2025; d87305a0)
   (helper) Canceled nonbusiness debt, before the screen for exceptions, exclusions and other debts
       = $0
       cite: [p525] p. 20, Canceled Debts, "If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c" (2025; 39b0fa5e)
@@ -8357,14 +8446,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) A loss carried into 2025 on a return that is not joint
       = false
       cite: [i172] p. 3, Joint to separate returns, "figure each of your carryovers separately" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
-  (gate) Were the two of you not married to each other in a year the loss came from, or in a year since?
+  (gate) Were the two of you not married to each other in a year the loss came from or was carried back to, or in a year since?
       = false
       cite: [i172] p. 3, Change in Marital Status, "If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction. If you file a joint return, the NOL deduction is limited to the income of that spouse" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
   (gate) Not married to each other in all the years of the loss, asked only on a joint return with a loss carried into 2025 (no otherwise)
       = false
       cite: [i172] p. 3, Change in Marital Status, "only the spouse who had the loss can take the NOL deduction" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
       note: taken: {"eq":["s1.nol_joint",{"const":false}],"op":"test"}
-  (gate) Was a joint return filed for a year the loss came from, or for a year since?
+  (gate) Was a joint return filed for a year the loss came from or was carried back to, or for a year since?
       = false
       cite: [i172] p. 3, Joint to separate returns, "If you and your spouse file separate returns for a tax year, but filed a joint return for any or all of the tax years involved in figuring the NOL carryover, figure each of your carryovers separately" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
   (gate) A joint return in a year of the loss, asked only on a return that is not joint with a loss carried into 2025 (no otherwise)
@@ -9136,7 +9225,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter household.no (false)
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  (helper) In 2025, did you (or, on a joint return, your spouse) exercise stock options from an employer?
+  (helper) In 2025, did you (or, on a joint return, your spouse) exercise employee stock options, including options inherited or received in a divorce?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
   (helper) Did you (or, on a joint return, your spouse) exercise incentive stock options in 2025 and not dispose of the stock in 2025?
@@ -9437,9 +9526,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) With private activity bond interest and boat or camper mortgage interest at their largest, line 7 could be greater than line 10
       = false
       cite: [i6251] p. 1, Who Must File, "1. Form 6251, line 7, is greater than line 10" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); b130e873)
-  (helper) Is any of the home mortgage interest you (or, on a joint return, your spouse) deduct for a boat, a motor home or another recreational vehicle that was not your main home?
+  (helper) Is any of the home mortgage interest you (or, on a joint return, your spouse) deduct for a dwelling that was not your main home for all of 2025 and is a boat, a motor home or another recreational vehicle, or a house, apartment, condominium or mobile home used on a transient basis (rented out for short stays)?
       = false
-      cite: [i6251] p. 8, Line 3, Mortgage Interest, "If you deducted home mortgage interest on Schedule A for a dwelling that isn’t a principal residence (within the meaning of section 121) or qualified dwelling for AMT, include that deducted interest on line 3", "A qualified dwelling for AMT doesn’t include house boats and recreational vehicles" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); b130e873)
+      cite: [i6251] p. 8, Line 3, Mortgage Interest, "If you deducted home mortgage interest on Schedule A for a dwelling that isn’t a principal residence (within the meaning of section 121) or qualified dwelling for AMT, include that deducted interest on line 3", "A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis", "A qualified dwelling for AMT doesn’t include house boats and recreational vehicles" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); b130e873)
+      note: Interpretation amb.2025.amt_transient: The first. Every Yes to s2.amt_boat refuses (Form 6251), so the broader reading can lose a case but cannot give a wrong value. (i6251, p. 8, Line 3, Mortgage Interest, "A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis")
   (gate) Home mortgage interest is deducted and the alternative minimum tax could apply if all of it were added back
       = false
       cite: [i6251] p. 8, Line 3, Mortgage Interest, "include that deducted interest on line 3" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); b130e873)
@@ -9490,7 +9580,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Must you (or, on a joint return, your spouse) pay back in 2025 a tax credit claimed in an earlier year (a recapture or repayment of a business, investment, energy, low-income housing or vehicle refueling credit, or a penalty tied to one)?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 1d, 1e, 1f, 1y, 16, 17a, 17z and 19 (2025; created 2025-05-08; 64d867b6)
-  (helper) Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025 or for property depreciated under the income forecast method (Form 8697 or Form 8866)?
+  (helper) Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025, or whose price or costs were adjusted in 2025 after it was finished, or for property depreciated under the income forecast method (Form 8697 or Form 8866)?
       = false
       cite: [f1040s2] Schedule 2 (2025), line 17n (2025; created 2025-05-08; 64d867b6)
   (gate) Look-back interest, asked only when the return has a Schedule C (false otherwise)
@@ -10128,21 +10218,20 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sa.no (no)
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering.
+  (helper) Are any of the 2025 charitable deductions reduced by income limits? Determine under Publication 526 before answering.
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity in 2025)
+  (helper) The 2025 charitable deductions are reduced by income limits (no when you and your spouse gave nothing to charity in 2025)
       = false
       cite: [i1040sca] p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction if any of the following applies"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; b0999b12)
       note: taken: {"eq":["sa.gifts",{"const":false}],"op":"test"}
   (helper) Do you (or, on a joint return, your spouse) have a charitable contribution carried over from an earlier year, one that was more than you could deduct in the year you made it?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (gate) A charitable contribution is carried over from an earlier year (asked only when you and your spouse gave nothing to charity in 2025)
+  (gate) A charitable contribution is carried over from an earlier year (asked of every filer, whether or not they gave in 2025)
       = false
       cite: [i1040sca] p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; b0999b12)
-      note: taken: {"eq":["sa.gifts",{"const":false}],"op":"test"}
-  (helper) Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?
+  (helper) Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or exclude income from sources within Puerto Rico?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
@@ -10340,7 +10429,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Gifts to charity in cash or by check, card or payroll deduction, including out-of-pocket volunteer costs, less the value of benefits received and the amounts that can't be deducted
       = $0
-      cite: [i1040sca] p. 9, Amounts You Can Deduct, "Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work", "14 cents a mile", "But don't deduct any amounts that were repaid to you", Gifts from which you benefit, "you can generally only deduct the amount that is more than the value of the benefit", Gifts of $250 or more; p. 10, Amounts You Can't Deduct, "Political contributions", "Cost of raffle, bingo, or lottery tickets", "Cost of tuition", "Value of your time or services"; Line 11, "Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)", Recordkeeping, "you must maintain as a record of the contribution a bank record (such as a canceled check or credit card statement) or a written record from the charity" (2025; printed date 2025-12-08; b0999b12)
+      cite: [i1040sca] p. 9, Amounts You Can Deduct, "Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work", "14 cents a mile", "But don't deduct any amounts that were repaid to you", Gifts from which you benefit, "you can generally only deduct the amount that is more than the value of the benefit", Gifts of $250 or more; p. 10, Amounts You Can't Deduct, "Political contributions", "Cost of raffle, bingo, or lottery tickets", "Cost of tuition", "Value of your time or services", "Gifts to foreign organizations. However, you may be able to deduct gifts to certain U.S. organizations that transfer funds to foreign charities"; Line 11, "Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)", Recordkeeping, "you must maintain as a record of the contribution a bank record (such as a canceled check or credit card statement) or a written record from the charity" (2025; printed date 2025-12-08; b0999b12)
   11  Gifts by cash or check (zero when you and your spouse gave nothing to charity)
       = $0
       cite: [f1040sa] p. 1, Gifts to Charity, line 11, "Gifts by cash or check"; i1040sca p. 10, Line 11, "Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)" (2025; created 2025-11-20; c14acf34)
@@ -10684,6 +10773,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) A rental treated as a trade or business
       = false
       cite: [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; 875843ba)
+  (helper) Rental books kept on the accrual method
+      = false
+      cite: [p527] p. 4, When To Deduct, "If you use the accrual method, see Pub. 538 for more information" (2025; 20c826e9)
   (helper) Rents of all reported rental properties
       = $0
       cite: [f1040se] Schedule E (2025), line 23a, "Total of all amounts reported on line 3 for all rental properties" (2025; c5e2c8fa)
@@ -10801,7 +10893,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) At any time in 2025, were you (or, on a joint return, your spouse) in a chapter 11 bankruptcy case?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?
+  (helper) Is any of your (or, on a joint return, your spouse's) 2025 income exempt from U.S. tax under a tax treaty?
+      = false
+      cite: [i1040s8812] p. 3, Line 18a, "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a." (2025; printed date 2026-01-23; bb9788cd)
+  (helper) In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Do you want to deduct costs, not paid back, of travel more than 100 miles from home for reserve or National Guard duty in 2025?
@@ -10860,7 +10955,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["s3.adoption_any",{"const":false}],"op":"test"}
-  (helper) In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?
+  (helper) In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Was any of what you rented out something other than a building, a room or land, such as a car, a trailer or equipment?
@@ -10876,10 +10971,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) In 2025, did you (or, on a joint return, your spouse) have income or a loss from farming?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?
+  (helper) In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) In 2025, were you (or, on a joint return, your spouse) paid for work in someone else's home, for example as a nanny, carer or housekeeper, by a household that gave you no W-2?
+  (helper) In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?
       = false
       cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Wages as a household employee not reported on a W-2 (asked only after a Yes to pay not on a W-2; otherwise no)
@@ -10900,7 +10995,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 24, Line 1c, "This should include any tip income you didn’t report to your employer", "Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
-  (helper) In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits from a union, other than bona fide gifts?
+  (helper) In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits, other than bona fide gifts?
       = false
       cite: [i1040gi] p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Strike or lockout benefits (asked only after a Yes to pay not on a W-2; otherwise no)
@@ -10914,10 +11009,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 25, Missing or Incorrect Form W-2?, "Even if you don’t get a Form W-2, you must still report your earnings" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
-  (helper) In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?
+  (helper) In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?
+  (helper) In 2025, were you (or, on a joint return, your spouse) paid by a church or religious body, or as clergy or religious order member?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Was that work as a minister or other clergy (a chaplain too), as a member of a religious order who has not taken a vow of poverty, or as a Christian Science practitioner?
@@ -10995,7 +11090,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 36, Schedule J, "If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J"; i1040sj p. 1, "all or part of your 2025 taxable income from your trade or business of farming or fishing" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["s1.has_sc",{"const":false}],"op":"test"}
-  (helper) In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?
+  (helper) In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Was any of it a fund, or a company whose income or assets are mostly investments, set up outside the United States (a 'passive foreign investment company')?
@@ -11043,7 +11138,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 93, Line 12, "Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home"; p. 93, Line 12, "Performing-arts-related expenses as a qualified performing artist", "Business expenses of fee-basis state or local government officials"; p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station"; p. 93, Line 16, "Self-Employed SEP, SIMPLE, and Qualified Plans", "If you were self-employed or a partner, you may be able to take this"; i1040se p. 1, General Instructions, "Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties, partnerships, S corporations, estates, trusts, and residual interests in REMICs"; i1040sf p. 2, General Instructions, "Use Schedule F (Form 1040) to report farm income and expenses"; i1040sse p. 1, Ministers, Members of Religious Orders, and Christian Science Practitioners, "you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn’t taken a vow of poverty, or Christian Science practitioner"; i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes"; p. 25, Were You a Statutory Employee?, "Statutory employees report the amount shown in box 1 of Form W-2 on a Schedule C"; p. 100, Line 24f, "Enter contributions to section 501(c)(18)"; p. 99, Line 23, "Archer MSA Deduction"; p. 99, Lines 24a Through 24z, "Enter reforestation amortization and expenses"; p. 100, Line 24h, "Enter attorney fees and court costs for actions involving certain unlawful" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Nonresident alien status, or other income or return treatment outside this tool (true when any of the other-income screening questions is answered Yes)
       = false
-      cite: [i1040gi] p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"; p. 24, Line 1c, "Enter the total of your tip income that was not reported on Form 1040, line 1a"; p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)"; p. 24, Line 1d, "Enter your taxable Medicaid waiver payments that were not reported on"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 25, Missing or Incorrect Form W-2?, "Even if you don’t get a Form W-2, you must still report your earnings"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)"; i1040s8812 p. 3, Line 18a, "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a." (2025; printed date 2026-02-25; 482e9c48)
   (helper) An additional Form 1040 line 16 tax or filing outside this tool (true when any of the line 16 screening questions is answered Yes)
       = false
       cite: [i1040gi] p. 36, Form 8615, "You must file Form 8615 if you meet all of the following conditions"; p. 34, Line 16, "Tax from Form(s) 8814 (relating to the election to report child’s interest or dividends)", "Recapture of an education credit", "Tax with respect to a section 962 election (election made by a domestic shareholder of a controlled foreign corporation to be taxed at corporate rates)"; p. 34, Line 16, "Any tax from Form 8621, line 16e, relating to a section 1291 fund"; p. 114, Line 17p, "Enter any interest amount from Form 8621, line 16f"; p. 34, Line 16, "Tax from Form 8978, line 14 (relating to partner’s audit liability under section 6226)"; p. 36, Schedule J, "If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J" (2025; printed date 2026-02-25; 482e9c48)
@@ -12178,7 +12273,6 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sa.line12: chose $0 (guard 1)
       not taken: guard 0 = false
-  sa.gift_carryover_if_no_gifts: chose false (guard 0)
   sa.line16: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.mfs_spouse_extra: chose false (guard 1)
@@ -12223,6 +12317,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   eic.limit_other: chose $19,104 (guard 0)
   eic.limit_joint: chose $26,214 (guard 0)
   eic.limit: chose $19,104 (guard 0)
+  f1040.tax_exempt_interest_if_any: chose $0 (guard 1)
+      not taken: guard 0 = false
   sche.any: chose false (guard 1)
       not taken: guard 0 = false
   scope.under24_if_not_joint: chose false (guard 0)
@@ -12752,6 +12848,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f8880.can_take_contrib: chose false (guard 1)
       not taken: guard 0 = false
   f8880.can_take_tax: chose false (guard 0)
+  f8960.election_6013g_if_joint: chose false (guard 1)
+      not taken: guard 0 = false
   f8960.line9a: chose $0 (guard 1)
       not taken: guard 0 = false
   f8960.bad_allocation: chose false (guard 1)
@@ -12805,6 +12903,9 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   person[taxpayer].tin_or_itin_applied: chose true (guard 0)
   person[taxpayer].work_ssn_or_tin: chose true (guard 0)
   household.considered_unmarried_if_married: chose false (guard 1)
+      not taken: guard 0 = false
+  household.spouse_cp_domicile_if_asked: chose false (guard 0)
+  household.cp_any: chose false (guard 1)
       not taken: guard 0 = false
   household.hoh_cp_married: chose false (guard 1)
       not taken: guard 0 = false
@@ -12863,6 +12964,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   ny_it201.active_duty_if_armed_forces: chose false (guard 1)
       not taken: guard 0 = false
   ny_it201.bab_if_interest: chose UNKNOWN (no input supplied for ny_it201.ask.bab) (guard 0)
+  ny_it201.use_tax_dmv_only_if_bought: chose UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed)
+  ny_it201.ask.owes_use_tax: chose UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed)
   ny_it201.gate.spouse_nonresident: chose false (guard 0)
   ny_it201.gate.special_accrual: chose UNKNOWN (no input supplied for ny_it201.ask.moved_in)
   ny_it201.item_c_if_not_federal: chose UNKNOWN (no input supplied for ny_it201.ask.item_c) (guard 1)
@@ -12936,7 +13039,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   ny_it201.gate.mctmt: chose false (guard 1)
       not taken: guard 0 = false
   ny_it201.sut.chart: chose UNKNOWN (no input supplied for ny_it201.ask.city_resident)
-  ny_it201.gate.use_tax_abode: chose UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax)
+  ny_it201.gate.use_tax_abode: chose UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed)
   ny_it201.use_tax_exact_if_small: chose UNKNOWN (no input supplied for ny_it201.ask.use_tax_st141)
   ny_it201.gate.dependent_care: chose false (guard 1)
       not taken: guard 0 = false
@@ -13467,7 +13570,7 @@ Derivations:
   scope.care_benefits_other_if_benefits: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; scope.no = false)
   scope.excess_deferral_if_w2: choose(scope.has_w2 = true; true = true; scope.excess_deferral = false)
   scope.passive_if_business_before: choose(scope.business_before = false; true = true; scope.business_before = false; false = false; scope.no = false)
-  scope.other_income: test(scope.nonresident_if_noncitizen = false; true = true; scope.chapter11 = false; true = true; scope.reservist_repaid_if_armed_forces = false; true = true; scope.adoption_benefits_if_adoption = false; true = true; scope.wages_no_form_if_pay = false; true = true; scope.care_benefits_other_if_benefits = false; true = true; scope.disaster_distribution = false; true = true; scope.excess_deferral_if_w2 = false; true = true; scope.passive_if_business_before = false; true = true)
+  scope.other_income: test(scope.nonresident_if_noncitizen = false; true = true; scope.chapter11 = false; true = true; scope.treaty = false; true = true; scope.reservist_repaid_if_armed_forces = false; true = true; scope.adoption_benefits_if_adoption = false; true = true; scope.wages_no_form_if_pay = false; true = true; scope.care_benefits_other_if_benefits = false; true = true; scope.disaster_distribution = false; true = true; scope.excess_deferral_if_w2 = false; true = true; scope.passive_if_business_before = false; true = true)
   refund.has: test(refund.any = false; true = true)
   s1.zero: param(#sales.zero = $0)
   s1.line1: choose(refund.has = false; false = false; s1.zero = $0)
@@ -13660,7 +13763,7 @@ Derivations:
   sa.line10: sum(sa.line8e = $0; sa.line9 = $0)
   sa.line11_if_gifts: choose(sa.gifts = false; true = true; sa.gifts = false; false = false; sa.zero = $0)
   sa.line12: choose(sa.charity_limited_if_gifts = false; sa.unsupported = false; sa.excluded_income = false; sa.gifts = false; true = true; sa.gifts = false; false = false; sa.zero = $0)
-  sa.gift_carryover_if_no_gifts: choose(sa.gifts = false; false = false; sa.gift_carryover = false)
+  sa.gift_carryover_if_no_gifts: copy(sa.gift_carryover = false)
   sa.line13: copy(sa.charity_limited_if_gifts = false; sa.gift_carryover_if_no_gifts = false; sa.unsupported = false; sa.excluded_income = false; sa.zero = $0)
   sa.line14: sum(sa.line11_if_gifts = $0; sa.line12 = $0; sa.line13 = $0)
   sa.line15: copy(sa.charity_limited_if_gifts = false; sa.unsupported = false; sa.excluded_income = false; sa.zero = $0)
@@ -13793,7 +13896,8 @@ Derivations:
   eic.step1_foreign: test(sa.excluded_income = false; sa.excluded_income = false; false = false)
   eic.step1_resident: test(scope.other_income = false; scope.other_income = false; false = false)
   eic.gain_7a: subtract_floor0(f1040.line7a = $0; eic.zero = $0)
-  f1040.line2a: sum(f1040.tax_exempt_interest = $0; div.box12_if_dividends = $0)
+  f1040.tax_exempt_interest_if_any: choose(f1040.tax_exempt_any = false; true = true; f1040.tax_exempt_any = false; false = false; div.zero = $0)
+  f1040.line2a: sum(f1040.tax_exempt_interest_if_any = $0; div.box12_if_dividends = $0)
   eic.investment_income: sum(f1040.line2a = $0; f1040.line2b = $1,200; f1040.line3b = $2,000; eic.gain_7a = $0)
   eic.step2_income: test(eic.investment_income = $3,200; #eic.investment_limit = $11,950)
   sche.no: param(#household.no = false)
@@ -13972,7 +14076,7 @@ Derivations:
   s2.amt_business_if_sc: choose(s1.has_sc = false; true = true; s1.has_sc = false; false = false; s2.no = false)
   s2.amt_owed: test(s2.amt_boat_if_could = false; true = true; s2.amt_business_if_sc = false; true = true)
   s2.amt_mfs: test(f1040.status = single; "mfs" = mfs)
-  s2.amt_pab_ask: test(f1040.tax_exempt_interest = $0; 0 = $0)
+  s2.amt_pab_ask: test(f1040.tax_exempt_interest_if_any = $0; 0 = $0)
   s2.amt_pab_over: test(s2.amt_pab_ask = false; true = true)
   s2.amt_l1a: subtract(f1040.line14 = $15,750; s1a.line37 = $0)
   s2.amt_l1b: subtract(f1040.line11b = $123,200; s2.amt_l1a = $15,750)
@@ -14702,7 +14806,11 @@ Derivations:
   f8582.loss1d: subtract_floor0(f8582.zero = $0; f8582.line1d = $0)
   f8582.loss3: subtract_floor0(f8582.zero = $0; f8582.line3 = $0)
   f8582.line4_both: smaller_of(f8582.loss1d = $0; f8582.loss3 = $0)
+  f8582.mfs_together: test(household.mfs = false; true = true)
   f8582.part2: test(f8582.line1d = $0; 0 = $0)
+  f8582.deductions: test(f8582.p4b = $0; 0 = $0; f8582.p4c = $0; 0 = $0; f8582.p5b = $0; 0 = $0; f8582.p5c = $0; 0 = $0)
+  f8582.required: test(f8582.deductions = false; true = true)
+  f8582.part2_shown: test(f8582.required = false; true = true)
   f8582.line4: choose(f8582.part2 = false; true = true; f8582.part2 = false; false = false; f8582.zero = $0)
   f8582.line5: param(#f8582.phaseout_end = $150,000)
   f8582.magi_income: sum(f1040.line1z = $120,000; f1040.line2b = $1,200; f1040.line3b = $2,000; f1040.line4b = $0; f1040.line5b = $0; f1040.line7a = $0; s1.line10_ex5 = $0; sche.nonpassive_net = $0)
@@ -14719,8 +14827,6 @@ Derivations:
   f8582.p7_total: copy(f8582.p7_total_rental = $0)
   f8582.p7_C: subtract_floor0(f8582.loss3 = $0; f8582.line9 = $0)
   f8582.exception: test(f8582.p5b = $0; 0 = $0; f8582.p5c = $0; 0 = $0; f8582.p4c = $0; 0 = $0; f8582.p4b = $0; #f8582.exception_loss = $25,000; f8582.line6 = $123,200; #f8582.exception_magi = $100,000)
-  f8582.deductions: test(f8582.p4b = $0; 0 = $0; f8582.p4c = $0; 0 = $0; f8582.p5b = $0; 0 = $0; f8582.p5c = $0; 0 = $0)
-  f8582.required: test(f8582.deductions = false; true = true)
   f8863.claimed_count: sum_over(person[taxpayer].sav_claimed = false; true = true)
   f8863.none_claimed: test(f8863.claimed_count = 0; 0 = 0)
   person[taxpayer].edu_no: param(#edu.no = false)
@@ -14831,7 +14937,10 @@ Derivations:
   f8880.can_take_tax: choose(f8880.clw_room = true; true = true; f8880.can_take_contrib = false)
   f8880.line12_figured: smaller_of(f8880.line10 = $0; f8880.line11 = $18,500)
   f8960.carryforward_adj: test(sd.carryover = false; true = true)
-  f8960.line1: copy(f8960.unsupported = false; f8960.refund = false; f1040.line2b = $1,200)
+  f8960.joint_noncitizen: test(f1040.status = single; "mfj" = mfj)
+  f8960.no: param(#household.no = false)
+  f8960.election_6013g_if_joint: choose(f8960.joint_noncitizen = false; true = true; f8960.joint_noncitizen = false; false = false; f8960.no = false)
+  f8960.line1: copy(f8960.unsupported = false; f8960.refund = false; f8960.election_6013g_if_joint = false; f1040.line2b = $1,200)
   f8960.line2: copy(f1040.line3b = $2,000)
   f8960.line3: copy(f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)
   f8960.line4a: copy(f8960.unsupported = false; f8960.refund = false; s1.line5 = $0)
@@ -14848,7 +14957,6 @@ Derivations:
   f8960.line5d: sum(f8960.line5a = $0; f8960.line5b = $0; f8960.line5c = $0)
   f8960.line8: sum(f8960.line1 = $1,200; f8960.line2 = $2,000; f8960.line3 = $0; f8960.line4c = $0; f8960.line5d = $0; f8960.line6 = $0; f8960.line7 = $0)
   f8960.line9a: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; f8960.zero = $0)
-  f8960.no: param(#household.no = false)
   f8960.bad_allocation: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; f8960.no = false)
   f8960.line9b: choose(f8960.bad_allocation = false; sa.itemizes = false; true = true; sa.itemizes = false; false = false; f8960.zero = $0)
   f8960.line9d: sum(f8960.line9a = $0; f8960.line9b = $0; f8960.line9c = $0)
@@ -15038,6 +15146,9 @@ Derivations:
   household.taxpayer_work_ssn: test(household.taxpayer_work_ssn_count = 1; 0 = 0)
   household.considered_unmarried_if_married: choose(household.married = false; true = true; household.married = false; false = false; household.no = false)
   household.status_states_marriage: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "mfs" = mfs; f1040.status = single; "qss" = qss)
+  household.ask_spouse_cp_domicile: test(household.marriage_possible = true; true = true; f1040.status = single; "qss" = qss)
+  household.spouse_cp_domicile_if_asked: choose(household.ask_spouse_cp_domicile = true; true = true; household.spouse_cp_domicile = false)
+  household.cp_any: choose(household.community_property = false; true = true; household.community_property = false; false = false; household.spouse_cp_domicile_if_asked = false)
   household.hoh_cp_married: choose(household.married = false; true = true; household.married = false; false = false; household.no = false)
   household.hoh_community_property: choose(f1040.status = single; "single" = single; household.no = false)
   household.eic_above_zero: test(eic.line6 = UNKNOWN (no band for 12320000 cents); eic.zero = $0)
@@ -15154,6 +15265,9 @@ Derivations:
   ny_it201.has_line28_income: test(ny_it201.line2 = $1,200; 0 = $0)
   ny_it201.bab_if_interest: choose(ny_it201.has_line28_income = true; true = true; ny_it201.ask.bab = UNKNOWN (no input supplied for ny_it201.ask.bab))
   ny_it201.ask.special_code: test(ny_it201.bab_if_interest = UNKNOWN (no input supplied for ny_it201.ask.bab); true = true; ny_it201.ask.abroad = UNKNOWN (no input supplied for ny_it201.ask.abroad); true = true; ny_it201.ask.installment = UNKNOWN (no input supplied for ny_it201.ask.installment); true = true)
+  ny_it201.use_tax_dmv_only_if_bought: choose(ny_it201.ask.bought_untaxed = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed); true = true; ny_it201.ask.use_tax_dmv_only = UNKNOWN (no input supplied for ny_it201.ask.use_tax_dmv_only); ny_it201.ask.bought_untaxed = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed); false = false; ny_it201.no = false)
+  ny_it201.use_tax_not_dmv: test(ny_it201.use_tax_dmv_only_if_bought = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed); false = false)
+  ny_it201.ask.owes_use_tax: choose(ny_it201.ask.bought_untaxed = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed); true = true; ny_it201.use_tax_not_dmv = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed); ny_it201.ask.bought_untaxed = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed); false = false; ny_it201.no = false)
   ny_it201.gate.part_year_state: test(ny_it201.active_duty_if_armed_forces = false; true = true; ny_it201.ask.city_resident = UNKNOWN (no input supplied for ny_it201.ask.city_resident); false = false; ny_it201.state_resident_if_not_city = UNKNOWN (no input supplied for ny_it201.ask.city_resident); false = false)
   ny_it201.gate.part_year_city: test(ny_it201.ask.city_resident = UNKNOWN (no input supplied for ny_it201.ask.city_resident); false = false)
   ny_it201.gate.spouse_nonresident: choose(f1040.status = single; "single" = single; ny_it201.no = false)
@@ -15183,7 +15297,7 @@ Derivations:
   ny_it201.line19: subtract(ny_it201.line17 = UNKNOWN (no input supplied for ny_it201.ask.city_resident); ny_it201.line18 = $0)
   ny_it201.fagi_rounded: round(f1040.line11a = $123,200)
   ny_it201.line19_agrees: test(ny_it201.line19 = UNKNOWN (no input supplied for ny_it201.ask.city_resident); ny_it201.fagi_rounded = $123,200)
-  ny_it201.has_tax_exempt: test(f1040.line2a = $0; 0 = $0)
+  ny_it201.has_tax_exempt: test(f1040.tax_exempt_any = false; true = true; f1040.line2a = $0; 0 = $0)
   ny_it201.gate.line20: choose(ny_it201.has_tax_exempt = false; true = true; ny_it201.has_tax_exempt = false; false = false; ny_it201.no = false)
   ny_it201.line20: param(ny_it201.gate.line20 = false; #ny.zero = $0)
   ny_it201.public_job_if_w2: choose(scope.has_w2 = true; true = true; ny_it201.ask.public_job = UNKNOWN (no input supplied for ny_it201.ask.public_job))
@@ -15197,13 +15311,15 @@ Derivations:
   ny_it201.gate.it225: test(ny_it201.ask.it225 = UNKNOWN (no input supplied for ny_it201.ask.it225); true = true)
   ny_it201.line23: gate(ny_it201.gate.it225 = UNKNOWN (no input supplied for ny_it201.ask.it225))
   ny_it201.line24: sum(ny_it201.line19 = UNKNOWN (no input supplied for ny_it201.ask.city_resident); ny_it201.line20 = $0; ny_it201.line21 = UNKNOWN (no input supplied for ny_it201.ask.public_job); ny_it201.line22 = $0; ny_it201.line23 = UNKNOWN (no input supplied for ny_it201.ask.it225))
-  ny_it201.has_other_income: test(s1.line9 = $0; 0 = $0)
+  ny_it201.has_other_income: test(s1.line1 = $0; 0 = $0; s1.line9 = $0; 0 = $0)
   ny_it201.inflation_if_other_income: choose(ny_it201.has_other_income = false; true = true; ny_it201.has_other_income = false; false = false; ny_it201.no = false)
   ny_it201.gate.line25: test(ny_it201.line4 = $0; 0 = $0; ny_it201.inflation_if_other_income = false; true = true)
   ny_it201.line25: param(ny_it201.gate.line25 = false; #ny.zero = $0)
   ny_it201.has_pension_income: test(ny_it201.line9 = $0; 0 = $0; ny_it201.line10 = $0; 0 = $0)
-  ny_it201.gov_pension_if_income: choose(ny_it201.has_pension_income = false; true = true; ny_it201.has_pension_income = false; false = false; ny_it201.no = false)
-  ny_it201.gov_said_no: test(ny_it201.has_pension_income = false; true = true)
+  ny_it201.dis_pension_wages: sum_over(person[taxpayer].dis_wages = $0)
+  ny_it201.gov_pension_candidate: test(ny_it201.has_pension_income = false; true = true; ny_it201.dis_pension_wages = $0; 0 = $0)
+  ny_it201.gov_pension_if_income: choose(ny_it201.gov_pension_candidate = false; true = true; ny_it201.gov_pension_candidate = false; false = false; ny_it201.no = false)
+  ny_it201.gov_said_no: test(ny_it201.gov_pension_candidate = false; true = true)
   ny_it201.gov_pension_other_if_no: choose(ny_it201.gov_said_no = false; true = true; ny_it201.gov_said_no = false; false = false; ny_it201.no = false)
   ny_it201.gov_pension_any: test(ny_it201.gov_pension_if_income = false; true = true; ny_it201.gov_pension_other_if_no = false; true = true)
   ny_it201.gate.line26: test(ny_it201.gov_pension_any = false; true = true)
@@ -15511,14 +15627,14 @@ Derivations:
   ny_it201.sut.cap: param(#ny.sut.cap = $125)
   ny_it201.sut.top: smaller_of(ny_it201.sut.top_product = UNKNOWN (no input supplied for ny_it201.ask.city_resident); ny_it201.sut.cap = $125)
   ny_it201.sut.chart: choose(ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); 0 = $0; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b1.upper = $15,000; ny_it201.sut.b1 = $3; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b1.upper = $15,000; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b2.upper = $30,000; ny_it201.sut.b2 = $6; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b2.upper = $30,000; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b3.upper = $50,000; ny_it201.sut.b3 = $10; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b3.upper = $50,000; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b4.upper = $75,000; ny_it201.sut.b4 = $15; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b4.upper = $75,000; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b5.upper = $100,000; ny_it201.sut.b5 = $18; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b5.upper = $100,000; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b6.upper = $150,000; ny_it201.sut.b6 = $26; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b6.upper = $150,000; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b7.upper = $200,000; ny_it201.sut.b7 = $34; ny_it201.hh_agi = UNKNOWN (no input supplied for ny_it201.ask.city_resident); #ny.sut.b7.upper = $200,000; ny_it201.sut.top = UNKNOWN (no input supplied for ny_it201.ask.city_resident))
-  ny_it201.gate.use_tax_abode: choose(ny_it201.ask.owes_use_tax = UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax); true = true; ny_it201.ask.abode_part_year = UNKNOWN (no input supplied for ny_it201.ask.abode_part_year); ny_it201.ask.owes_use_tax = UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax); false = false; ny_it201.no = false)
+  ny_it201.gate.use_tax_abode: choose(ny_it201.ask.owes_use_tax = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed); true = true; ny_it201.ask.abode_part_year = UNKNOWN (no input supplied for ny_it201.ask.abode_part_year); ny_it201.ask.owes_use_tax = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed); false = false; ny_it201.no = false)
   ny_it201.use_tax_exact_if_small: choose(ny_it201.ask.use_tax_st141 = UNKNOWN (no input supplied for ny_it201.ask.use_tax_st141); true = true; ny_it201.no = false; ny_it201.ask.use_tax_st141 = UNKNOWN (no input supplied for ny_it201.ask.use_tax_st141); false = false; ny_it201.ask.use_tax_exact = UNKNOWN (no input supplied for ny_it201.ask.use_tax_exact))
-  ny_it201.gate.use_tax_st141: test(ny_it201.ask.owes_use_tax = UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax); true = true; ny_it201.ask.use_tax_st141 = UNKNOWN (no input supplied for ny_it201.ask.use_tax_st141); true = true; ny_it201.use_tax_exact_if_small = UNKNOWN (no input supplied for ny_it201.ask.use_tax_st141); true = true)
-  ny_it201.line59: gate(ny_it201.gate.use_tax_abode = UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax))
+  ny_it201.gate.use_tax_st141: test(ny_it201.ask.owes_use_tax = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed); true = true; ny_it201.ask.use_tax_st141 = UNKNOWN (no input supplied for ny_it201.ask.use_tax_st141); true = true; ny_it201.use_tax_exact_if_small = UNKNOWN (no input supplied for ny_it201.ask.use_tax_st141); true = true)
+  ny_it201.line59: gate(ny_it201.gate.use_tax_abode = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed))
   ny_it201.zero_sut: param(#ny.zero = $0)
   ny_it201.gate.contributions: test(ny_it201.ask.contributions = UNKNOWN (no input supplied for ny_it201.ask.contributions); true = true)
   ny_it201.line60: gate(ny_it201.gate.contributions = UNKNOWN (no input supplied for ny_it201.ask.contributions))
-  ny_it201.line61: sum(ny_it201.line46 = UNKNOWN (no input supplied for ny_it201.ask.city_resident); ny_it201.line58 = UNKNOWN (no input supplied for ny_it201.ask.city_resident); ny_it201.line59 = UNKNOWN (no input supplied for ny_it201.ask.owes_use_tax); ny_it201.line60 = UNKNOWN (no input supplied for ny_it201.ask.contributions))
+  ny_it201.line61: sum(ny_it201.line46 = UNKNOWN (no input supplied for ny_it201.ask.city_resident); ny_it201.line58 = UNKNOWN (no input supplied for ny_it201.ask.city_resident); ny_it201.line59 = UNKNOWN (no input supplied for ny_it201.ask.bought_untaxed); ny_it201.line60 = UNKNOWN (no input supplied for ny_it201.ask.contributions))
   ny_it201.line62: copy(ny_it201.line61 = UNKNOWN (no input supplied for ny_it201.ask.city_resident))
   ny_it201.gate.child_credit: test(ny_it201.under17_count = 0; 0 = 0)
   ny_it201.line63: param(ny_it201.gate.child_credit = false; #ny.zero = $0)
@@ -15683,6 +15799,7 @@ Derivations:
   s1.alimony_refused: copy(s1.alimony_unsupported = false; s1.alimony_received = $0)
   s1.line2b_notice: test(s1.line2a = $0; #sales.zero = $0)
   s1.has_cod: test(s1.cod_amount = $0; #sales.zero = $0)
+  s1.cod_unsupported: test(s1.cod_bankrupt = false; true = true; s1.cod_student_home = false; true = true; s1.cod_gift = false; true = true; s1.cod_price_cut = false; true = true; s1.cod_stockholder = false; true = true; s1.cod_business = false; true = true; s1.cod_property = false; true = true; s1.cod_interest = false; true = true; s1.cod_not_liable = false; true = true; s1.cod_joint_other = false; true = true)
   s1.cod_refused: copy(s1.cod_unsupported = false; s1.cod_amount = $0)
   s1.cod_figured: choose(s1.has_cod = false; true = true; s1.has_cod = false; false = false; s1.zero = $0)
   s1.nol_ti: subtract(f1040.line11b = $123,200; f1040.line14 = $15,750)
@@ -15889,7 +16006,7 @@ Derivations:
   s2.amt_l35: sum(s2.amt_l17 = $33,600; s2.amt_l32 = $1,500; s2.amt_l33 = $0)
   s2.amt_l36: subtract_floor0(s2.amt_l6 = $35,100; s2.amt_l35 = $35,100)
   s2.amt_l37_rate: multiply_rate(s2.amt_l36 = $0; #amt.rate_25 = 25/100)
-  s2.amt_h_extra: sum(f1040.tax_exempt_interest = $0; s2.amt_mortgage = $0)
+  s2.amt_h_extra: sum(f1040.tax_exempt_interest_if_any = $0; s2.amt_mortgage = $0)
   s2.amt_h4: sum(s2.amt_l4_known = $123,200; s2.amt_h_extra = $0)
   s2.amt_h_mfs_over: subtract_floor0(s2.amt_h4 = $123,200; #amt.mfs_addback_start = $900,350)
   s2.amt_h_mfs_quarter: multiply_rate(s2.amt_h_mfs_over = $0; #amt.rate_25 = 25/100)
@@ -15987,7 +16104,7 @@ Derivations:
   sche.line23e: sum(sche.rent_exp = $0; sche.roy_exp = $0)
   sche.line24: sum(sche.rent_income = $0; sche.roy_income = $0)
   sche.line25: sum(sche.rent_loss = $0; sche.roy_loss = $0)
-  sche.line26: sum(sche.re_pro = false; sche.grouped = false; sche.qbi_business = false; sche.line24 = $0; sche.line25 = $0)
+  sche.line26: sum(sche.re_pro = false; sche.grouped = false; sche.qbi_business = false; sche.accrual = false; sche.line24 = $0; sche.line25 = $0)
   sche.line41: copy(sche.line26 = $0)
   sche.loss_prelimit: sum(sche.rent_netloss = $0; sche.roy_lossabs = $0)
   sche.count: sum(sche.rental_count = 0; sche.royalty_count = 0)
@@ -16391,7 +16508,7 @@ Interpretation amb.2025.div_gain_portions_disjoint: The first (div.bad_special t
  (i1099div, p. 4, Box 2a, "Include all amounts shown in boxes 2b, 2c, 2d, and 2f"; Box 2b; Box 2c; Box 2d)
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
 Interpretation amb.2025.clcw_to_2026: The second. The archived 2024 and 2025 editions of the worksheet differ only in their years (sources/2024/i1040sd p. 11, sources/2025/i1040sd p. 10), and the lines give Pub. 550's rule, "the amount of your total net loss that is more than the lesser of" the allowable deduction and taxable income increased by it (checked by brute force over random cases in the Stage 20 premise map and its verification). The figures are the inputs the 2026 return needs. Owner's decision D4, 2026-10-27. (i1040sd, p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550")
-Interpretation amb.2025.mfs_community_property: The second, on the existing question (household.community_property), for the nine states the instructions list. The same ground as amb.2025.hoh_community_property (owner decision of 2026-10-22, integrity plan decision 10): the community income split of Pub. 555 is outside the tool. "Lived in" is broader than "domicile": a filer who lived in one of the states only temporarily is refused too, which errs toward refusing (settled as design decision D1 of the married-filing-separately scout, by the coordinator under the owner's delegation, 2026-11-15). (p504, p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income" and "If you and your spouse file separate returns, you must report half of any income described by state law as community income")
+Interpretation amb.2025.mfs_community_property: The second, on household.community_property and, when the filer answers No, household.spouse_cp_domicile, for the nine states the instructions list. The same ground as amb.2025.hoh_community_property (owner decision of 2026-10-22, integrity plan decision 10): the community income split of Pub. 555 is outside the tool. "Lived in" is broader than "domicile": a filer who lived in one of the states only temporarily is refused too, which errs toward refusing (settled as design decision D1 of the married-filing-separately scout, by the coordinator under the owner's delegation, 2026-11-15). The permanent-home clause and the question on the husband or wife cover the other side: a filer domiciled in one of the states who lived elsewhere (Pub. 555 makes active military pay earned while domiciled there community income, p. 6), and spouses with different domiciles, whose income Pub. 555 settles by the law of each (p. 2), which the tool cannot apply. The question on the husband or wife is not asked after a marriage that ended in 2025 (single or unmarried head of household): one step for about 14% of returns against a very rare case (coordinator, 2026-11-16). Such a return, where only the former husband or wife lived in or had a permanent home in one of the states, is computed without the split. (p555, p. 2, Domicile, "The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both. If you and your spouse (or your RDP) have different domiciles, check the laws of each"; p. 3, Domicile, "When this publication refers to where you live, it means your domicile."; p504 p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income")
 Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
 Interpretation amb.2025.f4137_reported_over_received: The first (f4137.line4 subtracts with a floor of zero). Line 4 is "Include as income on Form 1040 ... line 1c", the tips not reported; a negative unreported amount has no meaning there, and column (c) is to "Include all cash and charge tips you received", so it holds at least the tips reported. The reading matters only for inconsistent entries. (f4137, p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c"; p. 2, Columns (c) and (d), "Include all cash and charge tips you received")
 Interpretation amb.2025.mw_all_nontaxable: The first. The interview asks only about pay for care of someone living in the filer's home with them, the case Pub. 525 names; an individual care provider caring for more than five adults or ten children at home is taken to be outside the situations a filer of this tool reports. Were it wrong, line 1a or 1d would be right but Schedule 1 line 8s would exclude too much. Notice 2014-7 is not archived. (p525, p. 33, "Certain Medicaid waiver payments are treated as difficulty-of-care payments when received by an individual care provider for caring for an eligible individual (whether related or unrelated) living in the provider’s home", "Ten qualified foster individuals under age 19, or", "Five qualified foster individuals age 19 or older")
@@ -16408,7 +16525,7 @@ Interpretation amb.2025.sa_dep_qss: Refuse (gate sa.dep_qss, on sa.standard and 
  (i1040gi, p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3)
 Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
  (f8995, Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a)
-Interpretation amb.2025.mfs_lived_apart: The first. One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule in its help, and every test reads it. The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies. (i1040gi, p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025")
+Interpretation amb.2025.mfs_lived_apart: The first, with time in a shared home counted as living together whether or not the spouses were separated (the fourth reading rejected). One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule and the shared home in its help, and every test reads it. The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies. The archived 6-month tests are stated by the home ("lived in the home", "didn’t live in your home"), so spouses under one roof did not live apart for them; reading the all-year test the same way asks one fact once, and the fourth reading would need a second question on estrangement that no source defines. (i1040gi, p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025"; p501 p. 8, Considered Unmarried, "Your spouse didn't live in your home during the last 6 months of the tax year")
 Interpretation amb.2025.eic_below_table: The credit on line 2 is zero. Every column of the table is zero at the far end and rises from $2 to $11 in the first row, so the credit is built up from earned income; with no row for less than $1 the table grants nothing there, and the worksheet's own instruction for a zero line 2 ends the computation. Rev. Proc. 2024-40 section 2.06(1) describes the credit as a percentage of earned income up to the earned income amount, which is zero at zero earned income.
  (i1040gi, p. 46, Worksheet A, line 2; p. 49, EIC Table, first row)
 Interpretation amb.2025.separated_spouses_box: The first (eic.separated_box, copied to f1040.separated_spouses). The owner's decision (2026-10-26, source adjudication). The only instructions for the box are the earned income credit's, and no amount depends on it; the alternative would add questions for the separation-agreement branch on returns that do not claim the credit. (f1040, Form 1040 (2025), Dependents section, the box for the special rule for separated spouses)
@@ -16444,13 +16561,14 @@ Interpretation amb.2025.dc_rate_nonpositive_agi: The first (tables/2025/dc_rate.
 Interpretation amb.2025.f2441_mfs_no_credit: The first (f2441.line11 is zero when f2441.mfs_married is true). Both readings put no credit on Schedule 3 line 2, so the return is the same; a zero line 11 also keeps Part III (which needs lines 27 to 31 only for the credit) free of a partly completed Part II. The "generally" names no exception in the archived 2025 sources (i2441 pp. 1 to 2, Pub. 503 pp. 7 to 8), whose only route to the credit on a separate return is the considered-unmarried rule of line A. Settled by the coordinator under the owner's delegation for the MFS expansion (scout-mfs, section 3.7). (i2441, p. 2, Married Persons Filing Separately, "If you don't meet all of the requirements to be treated as unmarried, you can’t generally take the credit")
 Interpretation amb.2025.dc_employer_care_value: The first when line 16 is at least line 15, where line 17 is line 15 under either reading and no amount differs; otherwise the return is refused (f2441.employer_care_l16). The questions tell the filer to leave the value out. Session reading under the owner's standing delegation (2026-11-03, T-123); a refusal covers the only case in which the readings give different amounts. (i2441, p. 5, Line 16; p. 3, Columns (a) and (b))
 Interpretation amb.2025.dc_plan_maximum: The first (f2441.plan_max, f2441.plans_differ). The owner's decision (Stage 15, decision 6), confirmed 2026-10-30. Where every plan allows the same maximum, readings 1 and 2 agree but reading 3 differs (two $3,000 plans give $3,000 under reading 1 and $5,000 under reading 3); the owner keeps reading 1 for that case. Where the plans allow different maximums the text does not decide, so that case is refused. (i2441, p. 5, Line 21, "Don't enter more than the maximum amount allowed under your dependent care plan")
+Interpretation amb.2025.f4952_no_2024_form: The first (f4952.carryover asks only about a 2024 Form 4952), until the owner rules on a refusing question for this case. Pub. 550: "You can carry over the amount of investment interest you could not deduct because of this limit to the next tax year. The interest carried over is treated as investment interest paid or accrued in that next year." The third reading carries the whole earlier amount past a year whose net investment income could have absorbed it, so it can overstate line 2; it is not used. The second follows the quoted rule but asks the filer to complete a form for a past year. The first can understate the deduction, for a filer whose 2024 net investment income did not absorb the carryforward; it cannot overstate it. (p550, p. 47, Limit on Deduction, "You can carry over the amount of investment interest you could not deduct because of this limit to the next tax year. The interest carried over is treated as investment interest paid or accrued in that next year.")
 Interpretation amb.2025.f5695_battery_second_home: The first (f5695.line5a asks for battery storage technology installed in connection with your home in the United States, not your main home). The owner's decision. The text names the main home where it means it (fuel cell property, line 7a) and does not for the battery; the Part I general rule is that improvements to "more than one home that you used as a residence" go on one Form 5695 (i5695 p. 2). (i5695, p. 2, Qualified battery storage technology costs, "installed in connection with your home located in the United States")
 Interpretation amb.2025.f5695_spouse_carryforward: The first (f5695.carry and f5695.line12 ask about your or, on a joint return, your spouse's 2024 Form 5695, and line 12 takes the total). The general joint-return rule: "A married couple filing jointly report their combined income and deduct their combined allowable expenses on one return" (i1040gi p. 13). The instructions give no exception for this credit, and their joint-occupancy allocation "don't apply to married individuals filing a joint return" (i5695 p. 2). The reading matters only on a joint return where a spouse brings a carryforward from a separate 2024 return; were it wrong, line 12, line 15 and Schedule 3 line 5a would be overstated by that carryforward (BUG-0597). (i1040gi, p. 13, Married Filing Jointly, "A married couple filing jointly report their combined income and deduct their combined allowable expenses on one return"; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy credit carryforward from 2024"; i5695 p. 2, Joint occupancy, "These rules don't apply to married individuals filing a joint return.")
 Interpretation amb.2025.f5695_17abc_section_a: The first (f5695.sec_a_claimed gates lines 18b, 19h and 20d only). The owner's decision. Section B has its own residence test on line 21a, "a home located in the United States that you use as a residence", which is not limited to the main home, and its own original-use test on line 21b, and the audit has its own test on line 26a; the form's direction is "Do not complete Part II, Section A". Reading the No as disallowing Section B would make line 21a's wider residence test unreachable for anyone without Section A improvements on a main home. (f5695, Form 5695 (2025), lines 17a to 17c and 21a; i5695 p. 5, Lines 17a Through 17e)
 Interpretation amb.2025.f5695_section_b_residence: The first (f5695.line21a's question says the home may be a second home or a home you rent). The owner's decision. Line 21a and the Section B paragraph state the wider test, line 21c asks for "each home", and Fact Sheet 2025-01 says "such property may be installed in the taxpayer’s second home" and that "the taxpayer may rent the home". The main-home statements are in Section A (lines 17a and 17d) and in a summary in the Form 1040 instructions. (fs-2025-01, p. 5, Energy Efficient Home Improvement Credit - Qualifying residence, "In this case, the taxpayer may rent the home in which such property is installed, and such property may be installed in the taxpayer’s second home")
 Interpretation amb.2025.f5695_category_cap: The first (f5695.ac_capped, wh_capped, furnace_capped and enabling_capped against f5695.item_max). The owner's decision to encode the form as printed. The joint occupancy list of credit limits (i5695 p. 3) also gives the limit by category ("$600 for central air conditioners"). The two readings differ only for a filer with two or more items in one category whose 30% exceeds $600 together, and line 28's $1,200 limit narrows even that. (f5695, Form 5695 (2025), lines 22d, 23d, 24d and 25e; i5695 p. 2, Energy Efficient Home Improvement Credit (Part II), "A credit limit of $600 for any qualified energy property item")
-Interpretation amb.2025.f8582_magi_build: The first. The two agree whenever line 9 is reached: line 9 is reached only when line 3 is a loss, and then the passive incomes and losses net to that loss, which MAGI leaves out. Taxable social security, the EE bond exclusion and adoption benefits are excluded or refused elsewhere. (i8582, p. 11, Line 6, "To figure modified adjusted gross income, combine all the amounts used to figure adjusted gross income")
 Interpretation amb.2025.f8582_shown: Show it only when required (f8582.required). Under the exception line 9 equals the total loss, so the allowed losses are the same. (i8582, p. 1, Exception; p. 2, Coordination With Other Limitations, "If all the above conditions are met, your rental real estate losses are not limited, and you don’t need to complete Form 8582")
+Interpretation amb.2025.f8582_magi_build: The first. The two agree whenever line 9 is reached: line 9 is reached only when line 3 is a loss, and then the passive incomes and losses net to that loss, which MAGI leaves out. Taxable social security, the EE bond exclusion and adoption benefits are excluded or refused elsewhere. (i8582, p. 11, Line 6, "To figure modified adjusted gross income, combine all the amounts used to figure adjusted gross income")
 Interpretation amb.2025.edu_ratio_places: The first (the prorate atom with places 3 on f8863.line7 and f8863.line18), as amb.2025.sli_ratio_places reads the same words. The owner's Stage 11 ruling on the same words, applied by the Stage 19 decision batch (Settled item 4). The readings differ by at most a few dollars of credit. (f8863, p. 1, Part I, line 6, "Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to at least three places).")
 Interpretation amb.2025.edu_age_rule: The first (person.sav_born, person.edu_over18 and person.edu_age24 feeding person.edu_kid). Pub. 501 states the rule for age 65 and the project's other birth-date questions apply it. Owner's decision D7(b), 2026-10-29. (i8863, p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.")
 Interpretation amb.2025.savers_traditional: The first (person.sav_line1 adds person.ira_contrib). The owner's decision (Stage 16 decision 10). The line names traditional IRA contributions without limiting them to the deductible ones. Excess or recharacterized contributions, traditional or Roth, are refused by one screen per person (person.ira_excess), which also answers Stage 15 owner question 4. (f8880, Form 8880 (2025), line 1, "Traditional and Roth IRA contributions")
@@ -16500,6 +16618,7 @@ Interpretation amb.2025.digital_income_value: The first (s1.digital_amount asks 
 Interpretation amb.2025.s1_unnumbered_lines: The first (s1.line2b_notice, s1.line19b_notice, s1.line19c_notice, shown when line 2a or line 19a is more than zero). The owner's decision (Stage 16 decision batch, D12). No amount depends on them. (i1040gi, p. 89, Line 2b, "enter the month and year of your original divorce or separation agreement"; p. 95, Line 19c, "On line 19c, enter the month and year of your original divorce or separation agreement")
 Interpretation amb.2025.s1_line20_box: The first (s1.line20_box). The box tells the IRS which line 2 amount of the worksheet applies ($89,000 rather than $10,000); i1040gi warns of a math error notice when it is missing, which arises only where an IRA deduction is figured. The first reading asks no MFS filer without an IRA contribution about living arrangements for a box that changes nothing. (i1040gi, p. 96, Married persons filing separately, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 20. If you don’t check the box on line 20, you may get a math error notice from the IRS")
 Interpretation amb.2025.s179_carryover_no_property: The second. s179.line1 is the $2,500,000 the line 1 instruction states, so line 5 is the dollar limitation and a carryover is deducted up to the dollar limitation less the 2025 election and up to the business income limit (line 11). On a separate return line 5 is 50% of the limitation, the instruction's allocation when the spouses elect no other. Research for the owner (ambiguities/research/amb.2025.s179_carryover_no_property.md) quotes the archived 26 U.S.C. 179(b)(3)(B), Treas. Reg. 1.179-2(b) and 1.179-3(b) to (d), and P.L. 119-21 sec. 70306. The carryover's room is "the limitation of paragraphs (1) and (2)", the dollar amount, which the cost of 2025 property reduces only above $4,000,000. Form 4562 computes exactly that when line 1 is the $2,500,000 the line 1 instruction states (p. 4). The optional Worksheet 1 instead takes the smaller of that and the cost of 2025 property, a cap that changes no return without a carryover and departs from the statute on a return with one. (i4562, p. 4, Line 1 and Worksheet 1; p. 5, Line 5)
+Interpretation amb.2025.amt_transient: The first. Every Yes to s2.amt_boat refuses (Form 6251), so the broader reading can lose a case but cannot give a wrong value. (i6251, p. 8, Line 3, Mortgage Interest, "A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis")
 Interpretation amb.2025.f5329_joint_box: The first (s2.line8_file and f5329.files; s2.line8_box). The tax is the same either way, and the instructions give no way to mark the mixed case. Owner's decision D5, 2026-10-29. (f1040s2, p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here")
 Interpretation amb.2025.sa_mfs_spouse_itemizes: The first (sa.spouse_itemizes, read through sa.mfs_spouse_itemizes). The line is a fact about the spouse's return, and a filer can find it out by asking; Pub. 504 p. 4: "If you and your spouse file separate returns and one of you itemizes deductions, the other spouse can’t use the standard deduction and should also itemize deductions." A wrong No overstates the standard deduction; the help says to ask. (i1040gi, p. 33, Line 12b, "If your filing status is married filing separately and your spouse itemizes deductions on their return, check the box on line 12b")
 Interpretation amb.2025.sa_mfs_mortgage_limit: The first (sa.mortgage_over_limit_mfs). The limit question only refuses, so counting the whole balance can only refuse a return that the share reading would compute; it cannot produce a wrong deduction. The rule leans to Yes (formal gates design, standing rule 6). The reading is reopened when Pub. 936 is archived. (i1040sca, p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt")

@@ -1181,6 +1181,22 @@
   {
    "printed": "ira.excl_gate",
    "project_expr_sha256": "ecfa31ab2ef7aeb1b8d306b190b2ff4d0903a65e14c523c56f22382afb6d399b",
+   "second_expr_sha256": "546fb2cc57783786d6a7ae8207a2d242771329aaec5843e1ab47c5a7b5b8d4ce",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3201 values compared, none different or missing: 2569 on 2569 fixture cases, 500 on 500 generated returns seed 20261026, 132 on 132 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "e5be3a1d2bb18569913833f783a2f7b08ebacc5e32074f9a2a21cd00e51c336b",
+   "date": "2026-11-16",
+   "run": "8bfae9aba0bccd67acdd3cbf441f09de59b9d04e41df09958d3955ca5c531ef0",
+   "subject_key": "cdf7a235cd9389551a75ce38b8a1f23b386d39af3bd8180c2ac25c1d7f78e8d5",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ira.excl_gate",
+   "project_expr_sha256": "ecfa31ab2ef7aeb1b8d306b190b2ff4d0903a65e14c523c56f22382afb6d399b",
    "second_expr_sha256": "d7484438d1eb9c1a69776a2e0226f1c7c85ea76ba3411e60dd6fc44119476286",
    "ruling": "Ruling: model error; executable triage 2,978/2,999 agree; 12 candidate-unknown, 7 project-unknown, 2 value (refused returns only). The reply encodes a different exclusion, the joint traditional-and-Roth one (i1040gi p. 95, Line 20, 'If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don't use the IRA Deduction Worksheet'), which the project carries in its own gate ira.both_kinds. This gate's label and cite are the excluded-income rule: i1040gi p. 96, 'If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A'.",
    "context": "b7eeb9ab74215af148833feea0a19b6ff6845c7486aa7cb3e84cc1af2c09bb4e",

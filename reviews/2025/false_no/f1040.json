@@ -2,58 +2,58 @@
  "form": "f1040",
  "reviews": {
   "gate:f1040.digital_assets": {
-   "subject_sha": "19b3c160007b43f9ffc51915e1e71ceb03cd8cfbd9d343fab5f5749a2decf407",
+   "subject_sha": "82d893a2568d4987bf766b60c0baf0579df9270c91e9f21647dfdbd86725c024",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer held a coin through an exchange when it hard-forked in 2024. The exchange did not support the new coin until 2025, when it credited the forked units to the filer's account.",
+       "why_no": "The gate asks whether 'In 2025' they got 'new coins from a fork'. The filer dates the fork to 2024, so they answer no. Under the IRS ruling, though, the coins were received in 2025, when the filer first gained dominion and control.",
+       "line": "s1.digital_income_if_assets",
+       "irs_text": "rr-2019-24 p. 3: \"If the taxpayer later acquires the ability to transfer, sell, exchange, or otherwise dispose of the cryptocurrency, the taxpayer is treated as receiving the cryptocurrency at that time.\"",
+       "severity": "medium",
+       "fix": "Add to the help: 'Count forked or airdropped coins in the year they first showed up in a wallet or account you could use, even if the fork or airdrop happened earlier.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer received tokens in a promotional airdrop or project 'giveaway' that the issuer marketed as free or as a gift. Or the filer received crypto tips or donations from strangers for online content they made as a hobby, not a business.",
+       "why_no": "The help's No list says 'getting it as a gift'. A giveaway or tip feels like a gift, and the gate's help does not limit the gift exception to a gift from a person, as the gated question's help does.",
+       "line": "s1.digital_income_if_assets",
+       "irs_text": "rr-2019-24 p. 5, Holding (2): \"A taxpayer has gross income, ordinary in character, under § 61 as a result of an airdrop\"; i1040gi p. 92, Line 8v: \"If, in 2025, you received ordinary income in connection with digital assets that isn't reported elsewhere on your return ... report this income on line 8v.\"",
+       "severity": "medium",
+       "fix": "Narrow the help's No item to 'getting it as a personal gift from a family member or friend, or as an inheritance'. Add: 'Airdrops, giveaways, promotions and tips are not gifts. Answer Yes.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer holds a liquid-staking or rebasing token, or leaves coins in an exchange 'earn' or auto-staking program. Their balance grows on its own and they never took any action.",
+       "why_no": "The filer sees themselves as only holding, and the help's No list includes 'holding'. They do not perceive automatic balance growth as getting 'a reward or new coins'.",
+       "line": "s1.digital_income_if_assets",
+       "irs_text": "i1040gi p. 16: \"Received new digital assets as a result of mining, staking, and similar activities\"; i1040gi p. 92, Line 8v: \"income from forks, staking, or mining\"",
+       "severity": "medium",
+       "fix": "Add to the help: 'Yes also if your crypto balance grew on its own in 2025, such as from automatic staking, an exchange earn or rewards program, or a rebasing or liquid-staking token. Holding counts as No only if the number of coins did not grow.'"
+      },
+      {
+       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer (or spouse) who got an airdrop of new tokens, a promotional or 'learn-and-earn' reward from an exchange, liquidity-mining or DeFi protocol reward tokens, or play-to-earn game tokens in 2025. None of it was wages or business income. They answer Yes to the page 1 digital asset question.",
-       "why_no": "The gated question lists only 'staking, ... mining that is not a business, or when a coin split in two (a fork)'. Airdrops, awards and other rewards are not named, so a truthful reading of the closed list is No. The IRS list after 'for example' is open-ended.",
-       "line": "s1.digital_income_if_assets (Schedule 1, line 8v)",
-       "irs_text": "i1040gi p. 92, Line 8v: 'If, in 2025, you received ordinary income in connection with digital assets that isn't reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining ...)'; i1040gi p. 15: 'Received digital assets as a result of a reward or award'",
-       "severity": "high",
-       "fix": "Ask: 'Did you (or your spouse) receive any crypto or other digital asset in 2025 that was not pay from an employer or business income, and not something you bought, were given as a gift or inherited? Examples: staking or \"earn\" rewards, mining (not as a business), coins from a fork, airdrops, promotional or learn-and-earn rewards, DeFi or liquidity rewards, game rewards.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer (or spouse) who bought ETH, SOL, ADA or similar with dollars and left it on an exchange with staking or 'earn' turned on, often by default. The account credited rewards to them through 2025, and they never sold, swapped or spent anything.",
-       "why_no": "The help says 'Buying crypto with dollars and holding it ... is a No.' Its Yes examples are only being paid, swapping and spending. The filer sees themselves as only holding, and does not count automatic rewards as 'receive'.",
-       "line": "s1.digital_income_if_assets (Schedule 1, line 8v)",
-       "irs_text": "i1040gi p. 16: 'Received new digital assets as a result of mining, staking, and similar activities'; p. 92, Line 8v: 'income from forks, staking, or mining ... report this income on line 8v'",
+       "who": "A filer lent crypto on a lending platform or a decentralized-finance protocol, or provided liquidity there, and received yield or interest paid in crypto in 2025.",
+       "why_no": "The gate names 'pay, a reward or new coins', and the help's Yes list mentions only pay, staking, mining, forks and airdrops. The filer reads interest or yield as none of these and answers no. The IRS question covers receipt 'as ... payment for property', which reaches yield for lending property.",
+       "line": "s1.digital_income_if_assets",
+       "irs_text": "f1040 p. 1, Digital Assets: \"did you: (a) receive (as a reward, award, or payment for property or services)\"; i1040gi p. 92, Line 8v: \"ordinary income in connection with digital assets that isn't reported elsewhere on your return\"",
        "severity": "medium",
-       "fix": "Change the help to: 'Buying crypto with dollars and holding it is a No only if no new coins or tokens were added to your account. Staking, \"earn\" or interest-style rewards, airdrops and coins from a fork are a Yes, even if you did nothing.' Name these receipts in the gate question itself."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer (or spouse) who holds USDC or another stablecoin on an exchange or in a wallet that paid 'rewards' or yield in 2025. They think of the stablecoin as dollars, not crypto.",
-       "why_no": "The gate says 'crypto or another digital asset' and the help speaks only of 'crypto'. A filer who sees the stablecoin as a dollar balance earning interest reads the gate as not applying and answers No.",
-       "line": "s1.digital_income_if_assets (Schedule 1, line 8v)",
-       "irs_text": "i1040gi p. 15: 'digital assets include non-fungible tokens (NFTs) and virtual currencies, such as cryptocurrencies and stablecoins'",
-       "severity": "medium",
-       "fix": "Name stablecoins (USDC, USDT and similar) and NFTs in the gate, and add a help line: 'Rewards or yield paid on a stablecoin balance are a Yes.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer (or spouse) who held a coin through a hard fork and had the forked coins credited to their wallet or exchange account in 2025. They never claimed, sold or used the new coins.",
-       "why_no": "They read 'receive' as an act they took, such as a payment or a purchase. The help counts only being paid, swapping or spending as Yes, and a fork they did nothing about looks like 'holding'.",
-       "line": "s1.digital_income_if_assets (Schedule 1, line 8v)",
-       "irs_text": "i1040gi p. 16: 'Received digital assets as a result of a hard fork'; p. 92, Line 8v: 'income from forks'",
-       "severity": "medium",
-       "fix": "Add to the gate's help: 'Coins credited to you because a coin split (a fork), or tokens dropped into your wallet (an airdrop), count as received even if you did nothing.'"
+       "fix": "Add 'interest, yield or lending or liquidity rewards, prizes, referral or learn-and-earn bonuses' to the Yes help. Also broaden the gated question beyond staking, mining, forks and airdrops."
       }
      ],
-     "prompt_sha": "6843fc1fcb7db21bf40e45f7b3471974f72b1b1a71910cbab4e7a33bef7d42d5",
+     "prompt_sha": "6f0e866ce3c6e3ce1e3ac50dd25e35d47ae2b77758bf3622e68d3ba1f488ca8b",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.12578799999999998,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f1040.digital_assets.19b3c160007b.1.response.txt"
+     "cost": 0.14302399999999998,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_f1040.digital_assets.82d893a2568d.1.response.txt"
     }
    ],
    "condition": "f1040.digital_assets",
@@ -91,7 +91,7 @@
      "how": "cited pages",
      "locators": [
       "p. 15, Digital Assets, \"Check the “Yes” box next to the question on digital assets on page 1 of Form 1040 or 1040-SR if at any time during 2025, you (a) received (as a reward, award, or payment for property or services)\"; p. 16, \"Received new digital assets as a result of mining, staking, and similar activities; • Received digital assets as a result of a hard fork\"",
-      "p. 92, Line 8v, \"If, in 2025, you received ordinary income in connection with digital assets that isn’t reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining, which aren’t wages reported on line 1a or capital gain or loss reported on Form 8949 and Schedule D), report this income on line 8v.\""
+      "p. 92, Line 8v, \"If, in 2025, you received ordinary income in connection with digital assets that isn’t reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining, which aren’t wages reported on line 1a or capital gain or loss reported on Form 8949 and Schedule D), report this income on line 8v.\"; , Holding (2), \"A taxpayer has gross income, ordinary in character, under § 61 as a result of an airdrop of a new cryptocurrency following a hard fork if the taxpayer receives units of new cryptocurrency\""
      ],
      "cols_pages": [
       15,
@@ -99,92 +99,78 @@
       92
      ],
      "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "rr-2019-24",
+     "revision": "Rev. Rul. 2019-24 (IRB 2019-44); not year-specific",
+     "text_sha256": "b4a74db956bdc1f983816d5937d60de397db23d883edf838f7eac93a3db5588c",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "e4331efed15f139094e43d7c9efcb1eb50b1d78b8c1db9f2b5cdf11eb360a6ac"
     }
    ]
   },
   "gate:f1040.estimated_any": {
-   "subject_sha": "a1dcfeb98d8ead2053cb0afd2ef85805e9d2a3d0a6c9c6ccb159fc4447ee83fa",
+   "subject_sha": "38d326ddcff15f06c8cb82a275630d3e4c80387fba42c283784fffa89f1b8416",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A married filer files separately for 2025. During 2025 the spouse mailed joint estimated tax payments (Form 1040-ES in both names) from a joint account.",
-       "why_no": "The gate asks whether 'you (or, on a joint return, your spouse)' sent payments. This return is not joint, and the filer personally sent nothing, so 'no' is literally true.",
-       "line": "f1040.line26_if_estimated",
+       "who": "A filer who made joint estimated tax payments with a spouse or former spouse and is now filing separately or single, especially if the spouse or former spouse sent the payments.",
+       "why_no": "The gate says 'by you (or, on a joint return, your spouse)' and the filer reads spouse/former-spouse payments as counting only on a joint return, so they answer no because they are not filing jointly.",
+       "line": "f1040.line26",
        "irs_text": "i1040gi p. 39, Line 26: 'If you and your spouse paid joint estimated tax but are now filing separate income tax returns, you can divide the amount paid in any way you choose as long as you both agree.'",
-       "severity": "high",
-       "fix": "Ask: 'Were any estimated tax payments for 2025 made by you, by your spouse, or jointly with a spouse or former spouse (even if they sent them), or was an overpayment from an earlier return applied to 2025?' On MFS, follow with a question about the agreed share."
+       "severity": "medium",
+       "fix": "Drop the 'on a joint return' limitation and say: include estimated tax paid jointly with a spouse or former spouse even if you are now filing separately; enter your agreed share."
       },
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A filer divorced in 2025 and files single or head of household. Earlier in 2025 the former spouse sent joint estimated payments in both names.",
-       "why_no": "The filer did not send the payments, and the gate's spouse clause covers only a current spouse on a joint return. A former spouse is never mentioned.",
-       "line": "f1040.line26_if_estimated",
-       "irs_text": "i1040gi p. 39, Divorced taxpayers: 'If you got divorced in 2025 and you made joint estimated tax payments with your former spouse, enter your former spouse's SSN in the space provided on line 26.'",
-       "severity": "high",
-       "fix": "Name the former spouse in the gate: 'including joint payments made with a spouse or former spouse, whoever sent them.' Then ask for the former spouse's SSN and the filer's share."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer's only overpayment credited to 2025 estimated tax came from an amended return for an earlier year, such as a 2023 Form 1040-X. They made no 1040-ES payments.",
-       "why_no": "The gate asks only about 'a 2024 refund applied to your 2025 tax.' An overpayment from an amended return for another year does not fit those words.",
-       "line": "f1040.line26_if_estimated",
-       "irs_text": "i1040gi p. 39, Line 26: 'Include any overpayment that you applied to your 2025 estimated tax from your 2024 return or an amended return.'",
-       "severity": "high",
-       "fix": "Say: 'or have an overpayment from your 2024 return or from any amended return applied to your 2025 estimated tax.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "On the 2024 return, a filer entered an amount on the line 'applied to your 2025 estimated tax' and received no check, so they never think of it as a refund. They made no other payments.",
-       "why_no": "The gate's words 'have a 2024 refund applied' suggest money that was refunded. The filer remembers getting no refund and answers no.",
-       "line": "f1040.line26_if_estimated",
-       "irs_text": "Form 1040 (2025) line 26: '2025 estimated tax payments and amount applied from 2024 return'; i1040gi p. 39: 'Include any overpayment that you applied to your 2025 estimated tax from your 2024 return.'",
+       "who": "A surviving spouse filing a joint return for 2025 whose deceased spouse made 2025 estimated tax payments or had a 2024 overpayment applied.",
+       "why_no": "The gate refers to 'your spouse' only in the present tense and the help does not mention a deceased spouse; the filer may answer no because the spouse has died.",
+       "line": "f1040.line26",
+       "irs_text": "i1040gi p. 39, Line 26: 'Follow these instructions even if your spouse died in 2025 or in 2026 before filing a 2025 return.'",
        "severity": "medium",
-       "fix": "Use 'overpayment' and point to the source line: 'Did your 2024 return apply any overpayment to 2025 estimated tax (2024 Form 1040, line 36)?'"
+       "fix": "Add to the gate/help: include payments made by a spouse who died in 2025 or 2026 if you file a joint return."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer whose only estimated payment for 2025 was the fourth-quarter installment, paid in January 2026.",
-       "why_no": "The help says estimated payments are ones 'you send yourself during the year.' A payment made in 2026 seems outside 2025.",
-       "line": "f1040.line26_if_estimated",
-       "irs_text": "Form 1040 (2025) line 26: '2025 estimated tax payments'; i1040gi p. 39: 'Enter any estimated federal income tax payments you made for 2025.'",
-       "severity": "medium",
-       "fix": "Change the help to: 'payments toward your 2025 tax that you sent yourself, usually each quarter, including the one due in January 2026; not tax taken out of your pay or benefits.'"
+       "who": "A filer who made a 2025 estimated tax payment in January 2025, an early Q1 payment, rather than in January 2026.",
+       "why_no": "The help says 'including one in January 2026 but not a January 2025 payment for 2024'; the filer may read the January 2025 exclusion as covering any January 2025 payment.",
+       "line": "f1040.line26",
+       "irs_text": "f1040 (2025) p. 2, line 26: '2025 estimated tax payments and amount applied from 2024 return'; i1040gi p. 39: 'Enter any estimated federal income tax payments you made for 2025.'",
+       "severity": "low",
+       "fix": "Say: a January 2025 payment counts if it was designated for 2025; only a January 2025 payment for 2024 does not."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer who paid estimated tax only electronically, through IRS Direct Pay, EFTPS, a debit or credit card, or their IRS online account.",
-       "why_no": "The verb 'send' and the help's picture of mailing each quarter suggest checks with vouchers. An online or card payment may not register as 'sending' estimated tax.",
-       "line": "f1040.line26_if_estimated",
+       "pattern": "1",
+       "who": "A filer who made a late 2025 estimated tax payment in February 2026 or later, before filing the 2025 return.",
+       "why_no": "The help gives only 'including one in January 2026' as the post-year example; the filer may read that as the only post-2025 payment date that counts.",
+       "line": "f1040.line26",
        "irs_text": "i1040gi p. 39, Line 26: 'Enter any estimated federal income tax payments you made for 2025.'",
        "severity": "low",
-       "fix": "Use 'make or send (by mail, online, card, or bank transfer)' in place of 'send'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "After a yes on a separate (MFS) return where joint estimated tax was paid, the filer answers the gated amount question.",
-       "why_no": "The gated question asks how much was paid 'in all' and gives only joint-return help. The filer enters the full joint total, not their divided share. This is an overstatement, not a dropped amount.",
-       "line": "f1040.line26",
-       "irs_text": "i1040gi p. 39: 'you can divide the amount paid in any way you choose as long as you both agree. If you can't agree, you must divide the payments in proportion to each spouse's individual tax.'",
-       "severity": "low",
-       "fix": "On MFS, ask for the filer's agreed or proportional share of joint payments, plus the spouse's SSN for line 26."
+       "fix": "Say: include any estimated tax payment for 2025 made after 2025, not only one in January 2026."
       }
      ],
-     "prompt_sha": "95f311f16ab415c641705d990ac77565ccb496a2c302b1f191cd4c6180d479e6",
+     "prompt_sha": "555bc6076dba9a413e67c12ddd439968a9382e006b190e3ad7f28f706a955138",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.109816,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f1040.estimated_any.a1dcfeb98d8e.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_f1040.estimated_any.38d326ddcff1.1.response.txt"
     }
    ],
    "condition": "f1040.estimated_any",
@@ -226,89 +212,130 @@
     }
    ]
   },
-  "gate:f1040.withheld_other_any": {
-   "subject_sha": "c56aaf35b413a9ade73df6d283e222bc816fe36e3e9d1622bb10ec53a83e0637",
+  "gate:f1040.tax_exempt_any": {
+   "subject_sha": "451f948ab44902169ef97b7c3c6294aeef25aabbfa3206902f33cb1a76add35d",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A partner whom a partnership treated as a foreign partner (for example, someone who became a U.S. resident during or after the year). The partnership paid section 1446 tax on that partner's allocated effectively connected income and issued Form 8805, but distributed no cash.",
-       "why_no": "Nothing was 'taken out of money paid to you'. The partnership paid the tax on income it allocated to the partner, not on a payment made to them. The help names W-2G, K-1 and 1042-S but never Form 8805.",
-       "line": "f1040.line25c_other_if_withheld_other",
-       "irs_text": "i1040gi p. 39, Line 25c: \"Tax withheld that is shown on Form 1042-S, Form 8805, or Form 8288-A.\"",
+       "pattern": "8",
+       "who": "Filer has only exempt-interest dividends from a municipal bond mutual fund, reported in Form 1099-DIV box 12, and no Form 1099-INT box 8 or Form 1099-OID amount.",
+       "why_no": "The gate help says those fund dividends are 'asked with dividends,' so the filer answers no to tax-exempt interest; if the dividends gate asks ordinary dividends, box 12 is not ordinary either, so the amount can fall through both.",
+       "line": "f1040.tax_exempt_interest_if_any",
+       "irs_text": "i1040gi (2025) p. 25, line 2a: 'Also include on line 2a any exempt-interest dividends from a mutual fund or other regulated investment company. This amount should be shown in box 12 of Form 1099-DIV.'",
        "severity": "high",
-       "fix": "Ask whether any form shows federal tax withheld or paid on your behalf, whether or not you received money. Name Forms 8805 and 8288-A in the question or help, and drop 'out of money paid to you'."
+       "fix": "Broaden this gate/help to include exempt-interest dividends (Form 1099-DIV box 12), or make the dividends question explicitly collect box 12 and add it to line 2a."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "Filer holds a tax-exempt zero-coupon bond and receives a Form 1099-OID showing tax-exempt OID in box 2 or box 11, but no cash interest payment was made in 2025.",
+       "why_no": "The question asks whether they 'get' tax-exempt interest; the filer reads that as cash received and answers no because OID is not paid in cash.",
+       "line": "f1040.tax_exempt_interest_if_any",
+       "irs_text": "i1040gi (2025) p. 25, line 2a: 'including any tax-exempt original issue discount (OID)... your tax-exempt OID should be shown in box 11 of Form 1099-OID. Enter the total on line 2a.'",
+       "severity": "medium",
+       "fix": "Ask about tax-exempt interest or OID reported to the filer, and state that OID counts even if no cash is received."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A seller of U.S. real property (or a partnership interest) who did not give the buyer a non-foreign certification, so the buyer withheld FIRPTA tax and issued Form 8288-A. The seller is now a resident or dual-status filer of Form 1040.",
-       "why_no": "A home sale does not feel like 'money paid to you … such as a pension, social security, unemployment or gambling winnings'. The help does not list Form 8288-A.",
-       "line": "f1040.line25c_other_if_withheld_other",
-       "irs_text": "i1040gi p. 39, Line 25c: \"Tax withheld that is shown on Form 1042-S, Form 8805, or Form 8288-A.\"",
+       "who": "Filer receives tax-exempt interest through a trust or partnership Schedule K-1, or from a direct municipal loan or below-threshold payment, so no Form 1099-INT box 8 or Form 1099-OID was issued.",
+       "why_no": "The help names only Box 8 of Form 1099-INT and Form 1099-OID boxes 2 and 11, so the filer answers no when no such form was received.",
+       "line": "f1040.tax_exempt_interest_if_any",
+       "irs_text": "i1040gi (2025) p. 25, line 2a: 'If you received any tax-exempt interest... Enter the total on line 2a.'",
        "severity": "medium",
-       "fix": "Add to the examples: 'sale of real estate where the buyer withheld tax (Form 8288-A)'. Add Forms 8805 and 8288-A to the help list."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer who converted a traditional IRA to a Roth IRA, or made a direct transfer, and had the custodian withhold federal tax from the converted amount. The tax appears in box 4 of Form 1099-R.",
-       "why_no": "No money was 'paid to you'. The funds moved between accounts, and the filer sees the withholding as part of a transfer rather than a payment.",
-       "line": "f1040.line25b_if_withheld_other",
-       "irs_text": "i1040gi p. 39, Line 25b: \"Include on line 25b any federal income tax withheld on your Form(s) 1099-R. The amount withheld should be shown in box 4.\"",
-       "severity": "medium",
-       "fix": "Ask about tax withheld on any distribution, conversion or other transaction other than wages. Add 'IRA or retirement plan distributions or conversions (Form 1099-R box 4)' to the question text."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "An independent contractor or gig worker whose payer or payment app applied backup withholding. The tax shows in box 4 of Form 1099-NEC, 1099-MISC or 1099-K.",
-       "why_no": "They think of pay for their work as 'wages', so they read 'other than wages' as excluding it. The examples (pension, social security, unemployment, gambling) suggest benefits, not business income.",
-       "line": "f1040.line25b_if_withheld_other",
-       "irs_text": "i1040gi p. 39, Line 25b: \"If you received a 2025 Form 1099 showing federal income tax withheld on … other income you received, include the amount withheld in the total on line 25b. This should be shown in box 4 of Form 1099\"",
-       "severity": "medium",
-       "fix": "Say 'other than on a Form W-2' instead of 'other than wages'. Add examples: 'self-employment or contractor payments, payment-app or broker forms (backup withholding)'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "An investor whose broker applied backup withholding to sale proceeds (box 4 of Form 1099-B), or to interest or dividends credited and reinvested rather than paid out.",
-       "why_no": "Sale proceeds or reinvested dividends do not read as 'money paid to you … such as a pension, social security, unemployment or gambling winnings'. Backup withholding is often not seen as 'federal income tax taken out'.",
-       "line": "f1040.line25b_if_withheld_other",
-       "irs_text": "i1040gi p. 39, Line 25b: \"federal income tax withheld on dividends, taxable or tax-exempt interest income … or other income you received … box 4 of Form 1099\"",
-       "severity": "medium",
-       "fix": "Add 'interest, dividends, or brokerage sales (including backup withholding)' to the examples. Tell the filer to check box 4 of every Form 1099 they received, including 1099-B, -INT, -DIV, -K, -NEC and -MISC."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A partner in a fiscal-year partnership whose 2025 K-1 or Form 8805 reports withholding the partnership paid in late 2024 for the tax year ending in 2025.",
-       "why_no": "'In 2025, was federal income tax taken out' is read by when the tax was paid, not by the year of the form claimed on the 2025 return.",
-       "line": "f1040.line25c_other_if_withheld_other",
-       "irs_text": "i1040gi p. 39, Line 25c: \"Federal income tax withheld that is shown on a Schedule K-1.\"",
-       "severity": "low",
-       "fix": "Ask whether any form for 2025 (a 2025 Form 1099, SSA-1099, RRB-1099, W-2G, 1042-S, 8805, 8288-A, or a K-1 you report on this return) shows federal tax withheld."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A student who was a resident alien for 2025 and whose scholarship or fellowship was applied directly to tuition, with tax withheld and reported on Form 1042-S.",
-       "why_no": "The scholarship never reached them as money, so nothing was 'taken out of money paid to you'. The help's mention of Form 1042-S partly offsets this.",
-       "line": "f1040.line25c_other_if_withheld_other",
-       "irs_text": "i1040gi p. 39, Line 25c: \"Tax withheld that is shown on Form 1042-S, Form 8805, or Form 8288-A.\"",
-       "severity": "low",
-       "fix": "Ask in terms of forms showing tax withheld rather than money paid to the filer."
+       "fix": "Ask the fact rather than the form; add that tax-exempt interest reported on a Schedule K-1 or received without a 1099-INT/OID still belongs on line 2a."
       }
      ],
-     "prompt_sha": "095bc08789122b66d4e7d09b1d68ae0692501aca5fe337751a10599fcf8fcc1f",
+     "prompt_sha": "65331bb96edd68ed8bdb4e170c3e83a48b38d301a343a7a540d21c79d082517c",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.105824,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f1040.withheld_other_any.c56aaf35b413.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_f1040.tax_exempt_any.451f948ab449.1.response.txt"
+    }
+   ],
+   "condition": "f1040.tax_exempt_any",
+   "lines": [
+    "f1040.tax_exempt_interest_if_any"
+   ],
+   "inputs": [
+    "f1040.tax_exempt_interest"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      25
+     ],
+     "how": "cited pages",
+     "locators": [
+      "Instructions for Form 1040, p. 25, line 2a, \"Enter the total on line 2a\" (Form 1099-INT box 8, Form 1099-OID boxes 2 and 11, net of amortized bond premium and acquisition premium)"
+     ],
+     "cols_pages": [
+      25
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:f1040.withheld_other_any": {
+   "subject_sha": "3c95d7e0120311c5a5ae921aa67515ab9892ed19737a732f2454f9166cec2dbd",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer whose W-2 shows Additional Medicare Tax withheld (Form 8959, line 24) and no non-wage withholding.",
+       "why_no": "The gate asks for federal income tax taken out of money other than wages; Additional Medicare Tax is Medicare tax and is withheld from wages, so the truthful answer is no.",
+       "line": "f1040.line25c_other_if_withheld_other",
+       "irs_text": "i1040gi p. 39, Line 25c—Other Forms: 'Additional Medicare Tax you had withheld. Include the amount shown on Form 8959, line 24, in the total on line 25c.'",
+       "severity": "high",
+       "fix": "Do not gate the Additional Medicare Tax component on this question; remove the line-25c help saying to leave it out, and add a separate ungated input for Form 8959 line 24 that flows to line 25c."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer with a 2025 Form 1099-OID, or a 1099-B for barter, showing federal income tax withheld in box 4 on accrued or non-cash income but no money paid to them.",
+       "why_no": "They read 'money paid to you' literally, see that no cash was paid, and answer no; the help only says 'Box 4 of a Form 1099' without saying non-cash or accrued 1099 income also counts.",
+       "line": "f1040.line25b_if_withheld_other",
+       "irs_text": "i1040gi p. 39, Line 25b: 'If you received a 2025 Form 1099 showing federal income tax withheld on ... other income you received, include the amount withheld in the total on line 25b.'",
+       "severity": "medium",
+       "fix": "Ask whether any Form 1099 box 4 shows federal income tax withheld, regardless of whether cash was paid, and state that non-cash or accrued 1099 income counts."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer with federal income tax withheld on an IRA distribution (Form 1099-R) or on dividends or interest (Form 1099-DIV or 1099-INT), not a pension, social security, unemployment, or gambling winning.",
+       "why_no": "They read the gate’s list—'such as a pension, social security, unemployment or gambling winnings'—as the complete set and answer no because their 1099 is not one of those examples.",
+       "line": "f1040.line25b_if_withheld_other",
+       "irs_text": "i1040gi p. 39, Line 25b: 'If you received a 2025 Form 1099 showing federal income tax withheld on dividends, taxable or tax-exempt interest income ... include the amount withheld in the total on line 25b.'",
+       "severity": "medium",
+       "fix": "Replace the short example list with a broad form-based prompt: any Form 1099 series (1099-R, 1099-DIV, 1099-INT, 1099-G, 1099-B, 1099-K, 1099-MISC, etc.) showing box 4 withholding."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "An executor or guardian filing a final or fiduciary Form 1040 for a decedent or incapacitated person who had a 2025 Form 1099-R or SSA-1099 with federal income tax withheld.",
+       "why_no": "The gate asks whether tax was taken out of money paid to 'you'; the money was paid to the decedent or ward, not to the person answering, so they answer no.",
+       "line": "f1040.line25b_if_withheld_other",
+       "irs_text": "i1040gi p. 39, Line 25b: 'Include on line 25b any federal income tax withheld on your Form(s) 1099-R.'",
+       "severity": "medium",
+       "fix": "Ask about the taxpayer, including a decedent or incapacitated person for whom the return is filed, and keep the joint-return spouse language."
+      }
+     ],
+     "prompt_sha": "5434a32b909f29c7805743bd70a054eecdbecc114c01f28188fb48bdae3bb595",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_f1040.withheld_other_any.3c95d7e01203.1.response.txt"
     }
    ],
    "condition": "f1040.withheld_other_any",

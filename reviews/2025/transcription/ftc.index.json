@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "f7af1fe592d8595ccb3286ea46b772e6ad4c729d49dc3f623e421cd8cb002a86",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-16); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -57,10 +57,10 @@
   },
   {
    "key": "ftc.credit",
-   "record": "bb7faccaea5fcba2245664567aa79ea6533e1d6c243618fa2d1af184be3122fb",
+   "record": "4915984ccb419e02a451adf22909adfad76272f06297ad6ac95bf6e76091a8bb",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply's credit cannot be relied on. Triage (pass 73f790ce759c, 3,002 compared): 352 agree, no value difference on any return; every difference is the reply's own: 2,068 candidate-refuses (with no foreign tax it has no zero branch and routes to f1116.line35, which refuses, e.g. stage14.asset.hy_5yr: project $0.00, f1116.other_category), 579 candidate-unknown (it reads ftc.all_passive and ftc.carryover directly, which the interview asks only when foreign tax was paid), and 3 project-refuses where the project's refusal comes from Form 2441 (f2441.line14_bad), not from this line. It also leaves out requirement 4 of the election, which its own pages carry: i1040gi p. 115, Schedule 3, line 1, 'You aren't filing Form 4563 or excluding income from sources within Puerto Rico'; the project tests it in ftc.needs1116 (sa.excluded_income). The project's credit is the election's 'smaller of (a) your total foreign taxes, or (b)' the regular tax when every condition is met (i1116 pp. 1-2; p. 25, Line 20), Form 1116 line 35 otherwise, and zero with no foreign tax.",
-   "subject_key": "32677f3fe2bbd06aad08156f27524f6be1effb986e2473a56c24971613c2c4b5"
+   "ruling": "Ruling: representation; i1116 p. 2, \"To make the election, just enter on the foreign tax credit line of your tax return (for example, Schedule 3 (Form 1040), Part I, line 1) the smaller of (a) your total foreign tax, or (b) your regular tax.\" The candidate figures the same smaller-of through its own election and Form 1116 helpers (ftc.h_election_credit, ftc.h_form_credit); where both evaluate, 2,766 of 3,036 in-scope comparisons agree. On completed returns its 221 differences are inputs the interview does not ask (ftc.taxes, ftc.carryover, ftc.any, household.home_cost): the project asks ftc.has_tax first and reads the tax through ftc.credit_tax. No value or refusal difference on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/ftc.json): 2,866 of 3,195 comparisons agree. Project stands.",
+   "subject_key": "bf8ec330e1fb8f710dfaa374484601e7afa3dfa0d2371a20b10f16d1162985b2"
   }
  ],
  "subjects": {
@@ -82,6 +82,6 @@
   "ftc.statements_if_tax": "ec11c0522c2e35b28cc43c29df709dfb45bbb31a47d44093c456501d397e9836",
   "ftc.eligible_if_tax": "ec11c0522c2e35b28cc43c29df709dfb45bbb31a47d44093c456501d397e9836",
   "ftc.regular_tax": "774b5845d44fad5bd8b79ebabcf444cdf4602990d646b1aaa32abcf7330c421e",
-  "ftc.credit": "f93ed19bb046fb55612cf4021c99f42931cf684d1849f505f76b02334eae7f5d"
+  "ftc.credit": "f97f25422cce8fb00ee75266e66de14e3649feb00c16bd8e096ae2d25391f0b9"
  }
 }

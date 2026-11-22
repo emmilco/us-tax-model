@@ -38,13 +38,12 @@ form:
       locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b)
   - id: tipjob.listed
     printed: (helper)
-    label: Were the tips from this employer received in an occupation on the IRS list of occupations that customarily
-      and regularly received tips on or before December 31, 2024?
+    label: Were any of the tips from this employer received in an occupation on the IRS list of occupations that
+      customarily and regularly received tips on or before December 31, 2024?
     type: Bool
     expr:
       op: input
-      source: Is the work you got these tips for on the IRS list of jobs that customarily get tips? Restaurant, bar and
-        hotel staff, hairdressers and barbers, and taxi and delivery drivers are on it.
+      source: Were any of these tips for a job on the IRS list of tipped jobs (such as server, bartender, cook, hairdresser or driver; not manager)?
     cite:
       doc: i1040gi
       locator: pp. 101-103, Schedule 1-A, Qualified Tips, "Occupations that customarily and regularly received tips";

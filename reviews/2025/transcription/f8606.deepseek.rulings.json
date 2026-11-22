@@ -1,0 +1,37 @@
+{
+ "kind": "transcription",
+ "form": "f8606",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1",
+   "project_expr_sha256": "718c6006c346240b7af23fb6fe99158495b4dc5e2a42b63d78ee85afd3919b7b",
+   "second_expr_sha256": "92b88579c99cc08d252f93b7fe089b7d77f98d0f333559152760ff66a1a7f245",
+   "ruling": "Ruling: representation; the second takes line 1 as a single supplied amount, while the project computes it from the filer's traditional IRA contributions and the deduction worksheet, as the second's own note says the instructions allow.",
+   "context": "651c3e4416b2c5f8aaee07ee09a3c0d5cafa2f236c75c3b2cc471b1d91a7a3bd",
+   "date": "2026-11-21",
+   "run": "7f0e7faeb495611f1df32fd4f80fafa0ee53adabadf5bc97bf67643c33c6f61d",
+   "subject_key": "8dcf3b9be75025f30e30bba718a6530261b6dc2465cd2a2b1da7fe68b61f18b2"
+  },
+  {
+   "printed": "2",
+   "project_expr_sha256": "0f7817f6801f779c33a6596024d85c771dcfdec90bbd81277d648e3bd1760948",
+   "second_expr_sha256": "db9334cc68ba2ecef76d4838d02f1a22f0788757e124489a0baf3ca5a5c25d95",
+   "ruling": "Ruling: representation; the second takes line 2 as a single supplied total basis, while the project computes it from the filer's basis input (person.ira_basis) and its other IRA inputs; whether each adjustment the second names (excess returned, divorce transfers, rollovers of nontaxable amounts) is asked or refused is not settled by this comparison and is not a transcription difference.",
+   "context": "651c3e4416b2c5f8aaee07ee09a3c0d5cafa2f236c75c3b2cc471b1d91a7a3bd",
+   "date": "2026-11-21",
+   "run": "7f0e7faeb495611f1df32fd4f80fafa0ee53adabadf5bc97bf67643c33c6f61d",
+   "subject_key": "9c6dc39c9494105ace21b7d6daef28cd68691e882b126da5311c2ab3daa7aed9"
+  },
+  {
+   "printed": "3 (question)",
+   "project_expr_sha256": "6fc76bece9134641425dc893fb1073603e2889e6602e3e767539247b81427f02",
+   "second_expr_sha256": "0ac6a03f7b2012937438e1dd30c787111db88a5d1c89d4d3f54a18f213bfa947",
+   "ruling": "Ruling: representation; the second makes the Part I question after line 3 a supplied answer; the project derives it from the distribution and conversion inputs it already asks (person.ira_dist and the rest).",
+   "context": "651c3e4416b2c5f8aaee07ee09a3c0d5cafa2f236c75c3b2cc471b1d91a7a3bd",
+   "date": "2026-11-21",
+   "run": "7f0e7faeb495611f1df32fd4f80fafa0ee53adabadf5bc97bf67643c33c6f61d",
+   "subject_key": "e2cd8e46ef123d73221d6b5f919901e6a3482af8a2143f29eff34fd8e03d9425"
+  }
+ ]
+}

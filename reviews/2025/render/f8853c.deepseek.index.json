@@ -1,0 +1,90 @@
+{
+ "kind": "render",
+ "form": "f8853c",
+ "family": "deepseek",
+ "base": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+ "lines": [
+  {
+   "key": "17",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MATCH",
+   "subject_key": "07d25c95f2c10c95fe1120c10c944d9b803f7b1fe56cf9425bf965a58ca1464e"
+  },
+  {
+   "key": "18",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MATCH",
+   "subject_key": "c86bd2d9557a3918a9a3aaf781cb4642106c33d25db812e9e83afa3e89f29de8"
+  },
+  {
+   "key": "19",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MATCH",
+   "subject_key": "65778a9d90a3fd614be06711d319898094e6e68191f08aaa71919ee72a40b3a1"
+  },
+  {
+   "key": "20",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; f8853: the “asked only when” gating is how the interview reaches line 19; the printed amount is lines 18 and 19. Project stands.",
+   "subject_key": "0ba25e99c9c070be611d9109918afa1020430e3f21afe3d1c08fe24e9c62ff60"
+  },
+  {
+   "key": "15",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MATCH",
+   "subject_key": "348a79cbf738f3b87cbdbf7e82178c03c8ea8b94f3a3827fe7550ce9a7123c50"
+  },
+  {
+   "key": "21",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MATCH",
+   "subject_key": "86f2849cf10dc6ec5c83f7c1774f9e24f012bebb466c302ac745d9ca3604dbc8"
+  },
+  {
+   "key": "22",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MATCH",
+   "subject_key": "7ae4d7ef74461afb838ab7d72b0f7c5808e85f7f7aa62f5f340e012b8677ebae"
+  },
+  {
+   "key": "23",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MATCH",
+   "subject_key": "ecd6bcd4d16c7827aadc996a710a7e8992cc536d6021e2d4680db543558b887a"
+  },
+  {
+   "key": "24",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MATCH",
+   "subject_key": "567c5c914415b4dc069075958fb0df611f28af61c857ba76312eacae06ccf486"
+  },
+  {
+   "key": "25",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; f8853: the zero floor is the line's nonnegativity; the printed amount is line 23 less line 24. Project stands.",
+   "subject_key": "04cb7ae7a3732ff8c26ade570abddb3ff187ee72d4890451bea24f6ef480d2ff"
+  },
+  {
+   "key": "26",
+   "record": "e25665da57edcb54d12c3f063e8a10778d059e5649415d403c67736be61d6fa8",
+   "status": "MATCH",
+   "subject_key": "d081d020f19d15b485369731c0aa983356b6558961e51a40fbf5df97dde6b165"
+  }
+ ],
+ "subjects": {
+  "17": "b5f313e21edbcd06179c311865bfb2650116dcb9d63148e4784e7b9eb5b8e3f5",
+  "18": "50a1cb06e0889f113e8c03fb87c78612c9b020c54605a1a7644abfc6f9054314",
+  "19": "4ed1a012d6d39dc48b3103ac476988b4ac3f5b82cf7645ba66ffd44cff23ff2a",
+  "20": "8d2dcd00f08f9df8a3e5a347de0b20d7bf2b30eac0b6ba236b171d37dbec9b16",
+  "15": "915598c2bced39bd5bd8472c79a04e69cf2e6eed171403b59b777be58157aea2",
+  "21": "503dadecab4cab8b90cf3030116f6bd3f29b3b4ba3974e9f37aab7ceb693b3aa",
+  "22": "7fcfc404066af2812dfd5eabdae210984d5168972b588c7b2edfeb3c38d7e176",
+  "23": "8f55e7bc40a9226906e1a0bdaa1aeddc48574157c66cdd601de0fc34e7b546ff",
+  "24": "60b1442e84aaaffdbccfbcf7ffb9c8e6a710b98204ba53ed6d1293ccc0025118",
+  "25": "3b18d90b6615048f50b6998ca9572bfac7d6a667a949d1d349d67a1521797edb",
+  "26": "4604dbb275b94837b2bfb95a894d537ea355972aa51f703b30854bf3927e9887"
+ },
+ "__rest__": "c5ffe993a4caf7ba8595a6d37fe630e100eb6108ee6d3c21e6e90e953f473b50"
+}

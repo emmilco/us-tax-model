@@ -158,6 +158,38 @@
    }
   },
   {
+   "printed": "sche.any",
+   "project_expr_sha256": "1c6bfa745fdf667622172c771fadf71d9bb72cc189e9f7ff367b875288447131",
+   "second_expr_sha256": "e7d36ec321686440740bcbea45defe0f2cbd417349c12fa5073419ea1a54bc19",
+   "ruling": "Ruling: representation; i1040se p. 5: \"If you did use the unit as a home and rented the unit out for fewer than 15 days in 2025, do not report the rental income and do not deduct any rental expenses.\" The candidate counts the rentals and royalties it reads as reported (sche.h_rental_reported_count, sche.h_royalty_count); its 176 completed-return differences are the $rental roster withheld by partial records, and the project's scope.rental gate refuses those returns upstream. No value or refusal difference on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/sche.json): 2,056 of 3,117 agree. Project stands.",
+   "context": "06aa59700f2faf9bc6d64cf4a91ae4d782a5437df11242d3afd31de201b6223e",
+   "date": "2026-11-17",
+   "run": "c0cdaf7250fab5427bb1250ef7e82a9c8176d29e70c49900fdb332228ee7c4d6",
+   "subject_key": "1f43bc4a30756bb0d4dc069c89cdbb7ff4c806a39325600112ea45448b392c77",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@sche",
+     "fixture:classm.f2441.2.deepseek@sche",
+     "fixture:classm.f2441.3.deepseek@sche",
+     "fixture:classm.f2441.4.deepseek@sche",
+     "fixture:classm.f2441.5.deepseek@sche",
+     "fixture:classm.f2441.6.deepseek@sche",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@sche",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sche",
+     "fixture:stage16.cleanup.refuse.f1040_line16@sche",
+     "fixture:stage16.cleanup.refuse.scope_credits@sche",
+     "fixture:mexist.f8960.line5d.no_gains@sche",
+     "fixture:ss.single.over@sche"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "sche.loss_prelimit",
    "project_expr_sha256": "50c57fd867be7902139fd8b8df3626ebb1304c6d8522c5624c71af4c49f85e3a",
    "second_expr_sha256": "11d2160cac77dcc29b78b5a1594778ae54313f82f788b32899a5395c95ffe666",

@@ -6,9 +6,9 @@
 ## (helper) — `eic.lived_with_relative`
 
 - **Authored helper label:** Did you live for more than half of 2025 with a person whose qualifying child you could be by relationship?
-- **Encoded (Bool):** Input — In 2025, did you live for more than half the year in the same home as your parent, grandparent, brother, sister, aunt or uncle, or a foster parent? Count time you were temporarily away, for example at school.
+- **Encoded (Bool):** Input — In 2025, did you live more than half the year with a parent, grandparent, brother, sister, aunt or uncle (step, half and foster relatives count)?
 - Note: A plain question in front of eic.qc_of_another. A person is the qualifying child of another only when that other is the person's parent, stepparent, foster parent, brother or sister (step or half included) or an ancestor of one of them, and the two lived together for more than half of 2025; a filer who lived with no such relative for more than half the year is no one's qualifying child.
-- Expr: `{"op":"input","source":"In 2025, did you live for more than half the year in the same home as your parent, grandparent, brother, sister, aunt or uncle, or a foster parent? Count time you were temporarily away, for example at school."}`
+- Expr: `{"op":"input","source":"In 2025, did you live more than half the year with a parent, grandparent, brother, sister, aunt or uncle (step, half and foster relatives count)?"}`
 - Cite: [i1040gi] p. 41, Step 3, Qualifying Child, "A qualifying child for the EIC is your... Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them" and "Who lived with you in the United States for more than half of 2025"; p. 41, Step 3, question 6, and p. 42, Step 4, question 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.qc_of_another`
@@ -204,7 +204,7 @@
 ## (helper) — `eic.step1_foreign`
 
 - **Authored helper label:** Step 1, question 3. Not filing Form 2555 (foreign earned income)
-- **Encoded (Bool):** sa helper "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?" = false
+- **Encoded (Bool):** sa helper "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or exclude income from sources within Puerto Rico?" = false
 - **Refusal:** when sa.excluded_income is true, cannot complete Form 2555 (EIC, Step 1, question 3). A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool. Cite: [i1040gi] p. 40, Step 1, question 3, "Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"eq":["sa.excluded_income",{"const":false}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 1, question 3 (2025; printed date 2026-02-25; sha256 482e9c48)

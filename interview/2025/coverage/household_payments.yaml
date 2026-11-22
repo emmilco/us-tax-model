@@ -68,6 +68,26 @@ rows:
     expect:
       proceeds:
         f1040.line26: 400000
+  - id: payments.estimated_amended_overpayment
+    design: BUG-0897 (an overpayment from an amended 2024 return applied to 2025)
+    situation: A filer whose only 2025 payment is an overpayment from an amended 2024 return, applied to 2025, gives that amount.
+    uses: [one_person]
+    answers:
+      f1040.estimated_any: true
+      f1040.line26: 120000
+    expect:
+      proceeds:
+        f1040.line26: 120000
+  - id: payments.estimated_january_2026
+    design: BUG-0897 (the fourth payment for 2025, sent in January 2026)
+    situation: A filer whose only estimated payment for 2025 was sent in January 2026 gives that amount.
+    uses: [one_person]
+    answers:
+      f1040.estimated_any: true
+      f1040.line26: 150000
+    expect:
+      proceeds:
+        f1040.line26: 150000
   - id: household.single_divorced
     design: lane 1, marriage chain (single; married before, not at the end of 2025)
     situation: A divorced person files as single, says the marriage was over by December 31 and that no husband or wife died in 2025.
@@ -102,6 +122,7 @@ rows:
       household.considered_unmarried: false
       household.community_property: false
       household.spouse_died_this_year: false
+      household.spouse_cp_domicile: false
     expect:
       refused: household.hoh_fails
   - id: household.couple_not_asked_ever_married
@@ -156,3 +177,28 @@ rows:
     expect:
       asks: household.credit_disallowed
       not_asked: ["dependent[kid].absence_no_return"]
+  - id: household.hoh_married_asks_spouse_state
+    design: lane A1-jr, candidate 1 (married, head of household, the filer outside the community property states)
+    situation: A married parent living apart from their husband or wife, who counts as unmarried and did not live or have a
+      permanent home in a community property state, is asked about the husband or wife's state.
+    answers:
+      $person: [taxpayer]
+      f1040.status: hoh
+      household.ever_married: true
+      household.married_dec31: true
+      household.spouse_died_this_year: false
+      household.considered_unmarried: true
+      household.community_property: false
+    expect:
+      asks: household.spouse_cp_domicile
+  - id: household.never_married_not_asked_spouse_state
+    design: lane A1-jr, candidate 1 (a person never married is not asked about a husband or wife's state)
+    situation: A person who has never been married files as single and is not asked about a husband or wife's state.
+    answers:
+      $person: [taxpayer]
+      f1040.status: single
+      household.ever_married: false
+    expect:
+      proceeds:
+        f1040.status: single
+      not_asked: [household.spouse_cp_domicile]

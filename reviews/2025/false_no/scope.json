@@ -2,38 +2,17 @@
  "form": "scope",
  "reviews": {
   "gate:scope.armed_forces": {
-   "subject_sha": "1b6181bc8330de678b3f54f3c6da16dffd665222100ad8d9bfb1d1c5e02398b9",
+   "subject_sha": "b2856110b4a6ac74427d0092f609a3e0fc7824fcf434f431920f35415d47aa0f",
    "samples": [
     {
-     "verdict": "FALSE_NO",
-     "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A widow or widower whose spouse died on active duty in 2024. In 2025 they file as qualifying surviving spouse (or single) and move the family under the military's orders. The filer never served.",
-       "why_no": "The gate asks whether 'you (or, on a joint return, your spouse)' served. This is not a joint return and the filer never served, so a truthful answer is no. The same holds for a spouse filing separately whose member spouse deserted or is imprisoned.",
-       "line": "scope.military_move_if_armed_forces",
-       "irs_text": "i1040gi p. 93, Line 14: 'Use Tax Topic 455 or see Form 3903.' Form 3903 (the cited source; its text is not in the excerpt) lets the spouse and dependents of a member who dies, deserts or is imprisoned deduct the move. The excerpt alone says only 'if you are a member of the Armed Forces on active duty'.",
-       "severity": "high",
-       "fix": "Broaden the gate: 'Since the start of 2022, did you or your spouse (current or deceased, on any filing status) serve in the U.S. armed forces, including the Coast Guard, the reserves or the National Guard?' Or add a separate question: 'In 2025, did you move under military orders as the spouse or dependent of a service member who died, deserted or was imprisoned?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "An active-duty Coast Guard member, or a Coast Guard reservist, who made a 2025 permanent-change-of-station move or traveled more than 100 miles for reserve duty.",
-       "why_no": "The Coast Guard falls under the Department of Homeland Security, not the Department of Defense. A filer may read 'U.S. armed forces, the reserves or the National Guard' as the Department of Defense services only.",
-       "line": "scope.military_move_if_armed_forces; scope.reservist_expenses_if_armed_forces",
-       "irs_text": "i1040gi p. 93, Line 14: 'member of the Armed Forces on active duty ... permanent change of station'. Line 12: 'National Guard and reserve members who traveled more than 100 miles from home'.",
-       "severity": "low",
-       "fix": "Name the Coast Guard: 'the U.S. armed forces (Army, Navy, Air Force, Marine Corps, Space Force or Coast Guard), their reserves or the National Guard'."
-      }
-     ],
-     "prompt_sha": "43dcf9830d488cb4adb00417cf39415f46df0b0f00ad09b08347d604fd7eaf4c",
+     "verdict": "SOUND",
+     "findings": [],
+     "prompt_sha": "f53fdd7768cb19964a2970887013a85d27f609a455a4f6a953913e86e03e95c5",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.10706399999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.armed_forces.1b6181bc8330.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.armed_forces.b2856110b4a6.1.response.txt"
     }
    ],
    "condition": "scope.armed_forces",
@@ -324,78 +303,48 @@
    ]
   },
   "gate:scope.foreign_shares": {
-   "subject_sha": "8fcbc637b411c5b847d10dba497709e8dcc35f51aef04a76caa3f0b92320583a",
+   "subject_sha": "d40ab13b2c33950ab48c24db233c7f01130e0b968c17ee87256541931778b4a9",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer who in 2025 held or sold warrants or options to buy shares of a Cayman-organized SPAC or other foreign fund, but never held the shares themselves.",
-       "why_no": "The gate asks whether they 'own shares'. Warrants and options are not shares, so a literal no is truthful.",
+       "pattern": "5",
+       "who": "A filer is a partner in a U.S. hedge fund or other domestic flow-through fund that owns shares of a foreign PFIC and sells them in 2025; the fund itself is a U.S. fund, but the filer may be an indirect PFIC shareholder.",
+       "why_no": "The gate says 'not through a U.S. fund,' so they answer no; the help's 'partnership' line does not say U.S. or foreign, and they read the U.S.-fund exclusion as covering their domestic fund.",
        "line": "scope.pfic_if_foreign_shares",
-       "irs_text": "i1040gi p. 114, Line 17p: 'Enter any interest amount from Form 8621, line 16f, relating to distributions from, and dispositions of, stock of a section 1291 fund' (an option to buy PFIC stock is treated as that stock for this purpose).",
+       "irs_text": "i1040gi p. 34, Line 16: 'Any tax from Form 8621, line 16e, relating to a section 1291 fund'; p. 114, Line 17p: 'Enter any interest amount from Form 8621, line 16f, relating to distributions from, and dispositions of, stock of a section 1291 fund.'",
        "severity": "high",
-       "fix": "Ask whether the filer owned shares, or options or warrants to buy shares, of a company or fund set up outside the United States."
+       "fix": "Narrow the exclusion to a U.S. mutual fund/ETF/RIC that reports the foreign shares to the filer, and state that foreign shares held through a U.S. partnership, LLC, or grantor trust still count."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A beneficiary of a decedent's estate that, during 2025, held foreign fund shares or shares of a foreign company.",
-       "why_no": "The help lists only a partnership, a trust or a company you own. An estate is not named, and a beneficiary does not 'own' the estate's shares.",
-       "line": "scope.pfic_if_foreign_shares",
-       "irs_text": "i1040gi p. 34, Line 16: 'Any tax from Form 8621, line 16e, relating to a section 1291 fund' (this applies to indirect shareholders through estates).",
+       "pattern": "other",
+       "who": "A filer owns all or part of a foreign LLC or other foreign company through membership units, percentage interests, or similar equity, and the entity is taxed as a corporation, so it can be a CFC or PFIC.",
+       "why_no": "The gate asks about 'shares or options'; the filer holds membership units or equity interests, not shares or options, so answers no.",
+       "line": "scope.cfc_if_foreign_shares / scope.pfic_if_foreign_shares",
+       "irs_text": "i1040gi p. 91, Line 8n: 'Section 951 generally requires that a U.S. shareholder of a controlled foreign corporation include in income its pro rata share'; p. 34, Line 16: 'Any tax from Form 8621, line 16e, relating to a section 1291 fund.'",
        "severity": "high",
-       "fix": "Change the help to 'Count shares held for you, or for anyone you inherit from, by a partnership, an estate, a trust, a pension or another company in which you have an interest.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer who holds Nasdaq- or NYSE-listed stock or ADRs in a U.S. brokerage account, where the company is organized in the Cayman Islands, Bermuda or elsewhere abroad. Examples are a SPAC or a Chinese VIE holding company, some of which are PFICs.",
-       "why_no": "They bought 'U.S. stock' on a U.S. exchange through a U.S. broker. They do not see these as shares of a company 'set up outside the United States', and the carve-out for U.S. funds reinforces that U.S.-traded means domestic.",
-       "line": "scope.pfic_if_foreign_shares",
-       "irs_text": "i1040gi p. 34, Line 16: 'Any tax from Form 8621, line 16e, relating to a section 1291 fund'; p. 114, Line 17p: 'Enter any interest amount from Form 8621, line 16f'.",
-       "severity": "medium",
-       "fix": "Add help saying: 'This includes stock or ADRs traded on a U.S. exchange if the company is incorporated abroad (for example in the Cayman Islands, Bermuda, Ireland or the British Virgin Islands); check the place of incorporation in the prospectus or on Form 1099-DIV.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer, often a returning expat or a U.S. citizen abroad, who holds units of foreign unit trusts, OEICs, SICAVs or similar funds inside a foreign pension, ISA, investment-linked insurance policy or savings wrapper.",
-       "why_no": "They think they hold 'units' in a pension, account or policy, not 'shares'. A pension or insurance wrapper is not a partnership, a trust or a company they own in their own understanding.",
-       "line": "scope.pfic_if_foreign_shares",
-       "irs_text": "i1040gi p. 114, Line 17p: 'Enter any interest amount from Form 8621, line 16f, relating to distributions from, and dispositions of, stock of a section 1291 fund'.",
-       "severity": "medium",
-       "fix": "Ask: 'Did you or your spouse own shares or units of a company or fund organized outside the U.S., directly or inside a foreign account, pension, ISA or insurance policy?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "An investor in a U.S. private equity, hedge fund or venture partnership, or an S corporation shareholder, where the entity held foreign corporations or foreign funds. The Schedule K-1 reports Form 5471, Form 8992 or Form 8621 items.",
-       "why_no": "The help asks them to count shares held for them by a partnership, but they do not know what the partnership holds. They answer from their own holdings.",
-       "line": "scope.cfc_if_foreign_shares",
-       "irs_text": "i1040gi p. 91, Line 8o: 'Section 951A generally requires that a U.S. shareholder of a controlled foreign corporation include in income its global intangible low-taxed income (GILTI)'; Line 8n: 'include in income its pro rata share of the corporation's subpart F income'.",
-       "severity": "medium",
-       "fix": "Add a check the filer can answer: 'Did any Schedule K-1 or statement you received mention a foreign corporation, a PFIC or QEF, Form 5471, Form 8621, Form 8992, subpart F or GILTI?' Count a yes as a yes to the gate."
+       "fix": "Ask about 'shares, membership interests, units, or other equity, or options' and explain that foreign LLC/company interests taxed as corporate stock count."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer with a fiscal-year or short-year return, or one who disposed of a foreign fund's shares by gift, pledge or transfer early in 2025 and no longer holds them.",
-       "why_no": "The past tense 'did you own' in 2025 can be read as asking about current or year-end holdings.",
+       "who": "A filer sold a foreign fund in March 2025 and no longer holds it at year-end or when filing.",
+       "why_no": "They read 'In 2025, did you hold' as asking about shares held at the end of 2025 or at filing, so answer no; the March sale itself is a 2025 disposition.",
        "line": "scope.pfic_if_foreign_shares",
-       "irs_text": "i1040gi p. 114, Line 17p: interest amount from Form 8621, line 16f, 'relating to distributions from, and dispositions of, stock of a section 1291 fund'.",
-       "severity": "low",
-       "fix": "Ask 'At any time during the tax year, including shares you sold, gave away or otherwise disposed of, did you own...'"
+       "irs_text": "i1040gi p. 114, Line 17p: 'Enter any interest amount from Form 8621, line 16f, relating to distributions from, and dispositions of, stock of a section 1291 fund.'",
+       "severity": "medium",
+       "fix": "Say 'at any time during 2025, including shares you sold, exchanged, or otherwise disposed of in 2025.'"
       }
      ],
-     "prompt_sha": "bb9d82ce001a86eacf52d01d69250ac72334a4cc2731771268c20555200cf8d5",
+     "prompt_sha": "54cf6897dc1f4ce06e04fac3ea46536a00d3e20244a07a14de45ca6ad6ff1a99",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.169412,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.foreign_shares.8fcbc637b411.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.foreign_shares.d40ab13b2c33.1.response.txt"
     }
    ],
    "condition": "scope.foreign_shares",
@@ -446,108 +395,128 @@
    ]
   },
   "gate:scope.has_w2": {
-   "subject_sha": "85cac9489b715dfd3682d2fe67247055d50e8a95f82b9fbc9838ed4d0cbe7b1e",
+   "subject_sha": "2793fb75961df5030c4a12dc7323ff8c1e1c9ab6d616afca26aae8ea9f5ace35",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A county recorder, constable or justice of the peace paid only from fees collected from the public. No employer issues a W-2, so the return lists no W-2.",
-       "why_no": "The computed gate counts Forms W-2. With none listed, the tool never asks scope.artist_official and sets it to false. A fee-basis official usually has no W-2, so the parent condition truthfully excludes the very filer the child question covers (same as L-38).",
-       "line": "scope.artist_official_if_w2",
-       "irs_text": "i1040gi p. 93, Line 12: \"Business expenses of fee-basis state or local government officials.\"",
-       "severity": "high",
-       "fix": "Ask scope.artist_official on every return, not only when a W-2 is listed. At minimum, ask the fee-basis official half unconditionally. The qualified performing artist half can stay W-2-gated, since that status requires employee wages from two or more employers."
-      },
-      {
-       "kind": "FALSE_NO",
        "pattern": "4",
-       "who": "A nonemployee director or independent contractor whose nonqualified deferred compensation failed section 409A. The payer reported it in box 15 of Form 1099-MISC, and the filer has no W-2.",
-       "why_no": "The gate is true only if a W-2 is listed. The 409A amount can arrive on a 1099-MISC alone, so the gate is false and s2.w2_marks is never asked. The Schedule 2 line 17h tax (20% plus interest) and the refusal it should trigger are both silently dropped.",
-       "line": "s2.w2_marks_if_w2",
-       "irs_text": "i1040gi p. 114, Line 17h: \"This income should be shown in box 12 of Form W-2 with code Z, or in box 15 of Form 1099-MISC.\"",
-       "severity": "high",
-       "fix": "Gate on 'a Form W-2 or a Form 1099-MISC/1099-NEC is listed', or ask on every return: 'Does any W-2 show code Z in box 12, or any 1099-MISC show an amount in box 15?'"
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A former outside director or consultant who received an excess parachute payment on change of control. It was reported on Form 1099-NEC, and the filer has no W-2.",
-       "why_no": "No W-2 is listed, so the gate is false. The 20% excess parachute payment tax on Schedule 2 line 17k, and the refusal for it, are never reached.",
-       "line": "s2.w2_marks_if_w2",
-       "irs_text": "i1040gi p. 114, Line 17k: \"If you received a Form 1099-NEC, the tax is 20% of the EPP shown in box 3. Enter this amount on line 17k.\"",
-       "severity": "high",
-       "fix": "Add a separate, ungated question: 'Did any Form 1099-NEC or W-2 report an excess (golden) parachute payment?' Or widen the gate to include a listed Form 1099-NEC."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "An employee whose employer never issued a W-2, or issued one the filer lost. The filer reports wages from pay stubs or Form 4852, so no W-2 is listed. The employee may have tips, excess 401(k) deferrals, a statutory-employee job, or NQDC payments.",
-       "why_no": "The gate counts W-2 documents, not wages. The instructions require reporting earnings without the form, but with zero W-2s listed, all five gated questions are skipped and set to false.",
-       "line": "s2.w2_marks_if_w2; scope.excess_deferral_if_w2; scope.w2_marks_if_w2; s1.nqdc_pension_if_w2",
-       "irs_text": "i1040gi p. 25, Missing or Incorrect Form W-2?: \"Even if you don’t get a Form W-2, you must still report your earnings.\"",
-       "severity": "medium",
-       "fix": "Base the gate on 'had wages as an employee in 2025 (with or without a Form W-2, including a Form 4852 substitute)'. Or first ask 'Did you or your spouse work as an employee in 2025?' and route a yes with no W-2 to the gated questions."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A server who received more than $20 a month in cash tips but did not report them all to the employer. The W-2 has nothing in box 8 and no box 12 codes A, B, M or N.",
-       "why_no": "The gated question asks only whether box 8 or a box 12 code appears. The truthful answer is no, yet Schedule 2 line 5 tax on unreported tips (Form 4137) applies whether or not the employer allocated tips.",
-       "line": "s2.w2_marks_if_w2",
-       "irs_text": "i1040gi p. 112, Line 5: \"If you received tips of $20 or more in any month and you didn’t report the full amount to your employer, you must pay the social security and Medicare or railroad retirement (RRTA) tax on the unreported tips.\"",
-       "severity": "high",
-       "fix": "Add to the question, or ask separately: 'Did you (or your spouse) receive tips that you did not fully report to your employer, including noncash tips such as tickets?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer who left a job in 2024, has no 2025 W-2, and in 2025 received a Form 1099-R (code 8 or P) correcting an excess elective deferral or paying earnings on it.",
-       "why_no": "No W-2 is listed, so scope.excess_deferral is not asked. Even if it were, its wording ('In 2025, did you put more of your pay ... than the yearly limit') points to current-year deferrals only.",
-       "line": "scope.excess_deferral_if_w2",
-       "irs_text": "i1040gi p. 25, Line 1h: \"Corrective distributions from a retirement plan shown on Form 1099-R of excess elective deferrals and excess contributions (plus earnings).\"",
-       "severity": "medium",
-       "fix": "Also ask, without the W-2 gate: 'Did any Form 1099-R show a corrective distribution of excess deferrals or contributions (box 7 code 8 or P)?' Or include a listed 1099-R with those codes in the gate."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A self-employed filer with no W-2 who made elective deferrals to a solo 401(k), alone or together with deferrals at a job held earlier in another year, that exceed the $23,500 limit.",
-       "why_no": "The gate requires a listed W-2, and the help says 'Box 12 of each W-2 shows the amounts'. A filer whose deferrals were all self-employed salary reductions is never asked, though the limit applies 'under all plans'.",
-       "line": "scope.excess_deferral_if_w2",
-       "irs_text": "i1040gi p. 24, Line 1h: \"If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500 ... include the excess on line 1h.\"",
-       "severity": "medium",
-       "fix": "Ask whenever there is a W-2 or self-employment income: 'Did you or your spouse make elective (salary-reduction) deferrals to any retirement plan, including a solo 401(k), above the limit?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "The beneficiary of a deceased employee, or a former nonemployee director, receiving payments from a nonqualified deferred compensation or nongovernmental 457 plan. The payments are reported on Form 1099-MISC or 1099-R, not a W-2.",
-       "why_no": "No W-2 is listed, so s1.nqdc_pension is not asked. The question also points only to 'box 11 of any W-2', so a filer holding a 1099 for the same kind of plan would answer no anyway.",
+       "who": "A joint filer (or spouse) with a W-2 that reports in box 1 a pension or annuity from a nonqualified deferred compensation plan, while box 11 is blank.",
+       "why_no": "The question asks only whether box 11 shows the payment. The filer checks box 11, sees it blank, and answers no.",
        "line": "s1.nqdc_pension_if_w2",
-       "irs_text": "f1040s1 2025, line 8t: \"Pension or annuity from a nonqualifed deferred compensation plan or a nongovernmental section 457 plan\"",
-       "severity": "medium",
-       "fix": "Ask on every return: 'Did you (or your spouse) receive payments from an employer's nonqualified deferred pay plan or nongovernmental 457 plan, on a W-2, 1099-R or 1099-MISC, including as a beneficiary?' Then classify the answer."
+       "irs_text": "i1040gi p. 24, Line 1a: If you received a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan and it was reported in box 1 of Form W-2, do not include this amount on Form 1040, line 1a. This amount is reported on Schedule 1, line 8t.",
+       "severity": "high",
+       "fix": "Ask about the fact of such a pension or annuity and whether it was shown on a W-2, whether in box 1 or box 11, or on Form 1099-R; do not ask only about box 11."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer (or spouse) who receives a nongovernmental section 457 plan distribution reported on Form 1099-R and has no W-2.",
+       "why_no": "The W-2 gate is false, so the question is not asked; a W-2-only box 11 question would also be answered no.",
+       "line": "s1.nqdc_pension_if_w2",
+       "irs_text": "f1040s1 p. 1, line 8t: Pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan.",
+       "severity": "high",
+       "fix": "Remove the W-2-only gate and ask about these pensions and annuities regardless of whether reported on a W-2 or Form 1099-R."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "An employee (or spouse) with a W-2 whose box 8 is blank and whose box 12 has none of codes A, B, K, M, N, or Z, but who received $20 or more of cash tips in a month and did not report the full amount to the employer.",
+       "why_no": "The question lists only box 8 and those codes, so the filer truthfully answers no; the W-2 does not show the uncollected tax on the unreported tips.",
+       "line": "s2.w2_marks_if_w2",
+       "irs_text": "i1040gi p. 112, Line 5: If you received tips of $20 or more in any month and you didn't report the full amount to your employer, you must pay the social security and Medicare tax on the unreported tips.",
+       "severity": "high",
+       "fix": "Add a question about unreported tips of $20 or more in any month, or broaden this scope question to include that fact."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer (or spouse) whose nonqualified deferred compensation plan failed section 409A and the income is reported in box 15 of Form 1099-MISC, with no W-2 code Z, including a return with no W-2.",
+       "why_no": "The question asks only whether a W-2 has code Z; the W-2 does not, or there is no W-2, so the filer answers no.",
+       "line": "s2.w2_marks_if_w2",
+       "irs_text": "i1040gi p. 114, Line 17h: This income should be shown in box 12 of Form W-2 with code Z, or in box 15 of Form 1099-MISC.",
+       "severity": "high",
+       "fix": "Ask about a section 409A failure and 1099-MISC box 15 as well as W-2 code Z; do not make the W-2 gate exclusive."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer (or spouse) who received an excess parachute payment reportable in box 3 of Form 1099-NEC and has no W-2 code K, including a return with no W-2.",
+       "why_no": "The question asks only whether a W-2 shows code K; it does not, so the filer answers no.",
+       "line": "s2.w2_marks_if_w2",
+       "irs_text": "i1040gi p. 114, Line 17k: If you received a Form 1099-NEC, the tax is 20% of the EPP shown in box 3.",
+       "severity": "high",
+       "fix": "Ask about excess parachute payments on Form 1099-NEC box 3 as well as W-2 code K."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A state or local government official (or spouse) compensated solely on a fee basis, with no W-2, who paid business expenses deductible on Schedule 1 line 12.",
+       "why_no": "The W-2 gate is false, so the question is not asked; if asked, the filer would answer yes to being paid from fees.",
+       "line": "scope.artist_official_if_w2",
+       "irs_text": "i1040gi p. 93, Line 12: Performing-arts-related expenses as a qualified performing artist; Business expenses of fee-basis state or local government officials.",
+       "severity": "high",
+       "fix": "Remove the W-2-only gate or ask the question regardless of W-2; a fee-basis official may have no W-2."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "A filer (or spouse) under 50 with only SIMPLE plan(s) who deferred $18,000 for 2025.",
+       "why_no": "The question states the yearly limit is $23,500 for most people, and $18,000 is not more than $23,500, so they answer no; the SIMPLE limit is $16,500.",
+       "line": "scope.excess_deferral_if_w2",
+       "irs_text": "i1040gi p. 24, Line 1h: This limit is generally (a) $16,500 if you have only SIMPLE plans, and (b) $26,500 for section 403(b) plans if you qualify for the 15-year rule in Pub. 571.",
+       "severity": "high",
+       "fix": "Ask about the applicable plan-specific limit and state the SIMPLE, 403(b) 15-year, catch-up, and 457(b) rules in the help."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A National Guard or reserve member with unreimbursed travel of more than 100 miles for drills.",
-       "why_no": "scope.artist_official cites Schedule 1 line 12 but names only performing artists and fee-basis officials. A reservist reads the list as complete and answers no.",
-       "line": "scope.artist_official_if_w2",
-       "irs_text": "i1040gi p. 93, Line 12: \"Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home to perform services as a National Guard or reserve member.\"",
-       "severity": "low",
-       "fix": "If reservists are handled elsewhere, say so in the help. Otherwise add 'or as a National Guard or reserve member who traveled more than 100 miles from home for duty' to the question."
+       "pattern": "8",
+       "who": "A filer (or spouse) with two separate 457(b) plans at two jobs who deferred $12,000 to each, $24,000 total, and read 'count it apart' as applying separately to each 457(b) plan.",
+       "why_no": "They compare each $12,000 plan to the limit and answer no, though the 457(b) limit is an aggregate per-person limit under all such plans.",
+       "line": "scope.excess_deferral_if_w2",
+       "irs_text": "i1040gi p. 24, Line 1h: If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500, include the excess on line 1h.",
+       "severity": "medium",
+       "fix": "Say that multiple 457(b) plans are aggregated for the same person and that 'apart' means apart from 401(k) or 403(b), not apart plan-by-plan."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A full-time life insurance salesperson (or spouse) who is a statutory employee but whose employer did not check the Statutory employee box in box 13.",
+       "why_no": "The question asks whether the box is ticked. It is not, so the filer answers no even though the filer was a statutory employee by occupation.",
+       "line": "scope.w2_marks_if_w2",
+       "irs_text": "i1040gi p. 25, Were You a Statutory Employee?: If you were a statutory employee, the Statutory employee box in box 13 of your Form W-2 should be checked. Statutory employees include full-time life insurance salespeople.",
+       "severity": "high",
+       "fix": "Ask about the statutory-employee categories and facts, not only whether the employer checked box 13."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer (or spouse) who contributed through payroll to a section 501(c)(18)(D) pension plan but whose W-2 box 12 does not show code H.",
+       "why_no": "The question asks only whether box 12 shows code H; with no code H the filer answers no, although the contribution is deductible on Schedule 1 line 24f.",
+       "line": "scope.w2_marks_if_w2",
+       "irs_text": "i1040gi p. 100, Line 24f: Enter contributions to section 501(c)(18) (D) pension plans (see Pub. 525).",
+       "severity": "high",
+       "fix": "Ask about section 501(c)(18)(D) contributions directly and accept plan records, not only W-2 code H."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A statutory employee, for example a full-time life insurance salesperson, who received no W-2 and therefore has no box 13 mark or code H.",
+       "why_no": "The W-2 gate is false, so the statutory-employee question is never asked and the tool treats the line as no.",
+       "line": "scope.w2_marks_if_w2",
+       "irs_text": "i1040gi p. 25: Statutory employees report the amount shown in box 1 of Form W-2 on a Schedule C. Even if you don't get a Form W-2, you must still report your earnings.",
+       "severity": "high",
+       "fix": "Ask about statutory-employee status by occupation and facts even when no W-2 was received, and handle missing W-2 earnings."
       }
      ],
-     "prompt_sha": "17f13d4aa190e40610498bfcd8bc7594f1bdfd122f9a6aca75960e945061acba",
+     "prompt_sha": "a5b24c36dac8c419fbf1761cacb9e1247b3a7c2c530125c08ac1d873e59a315f",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.244748,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.has_w2.85cac9489b71.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.has_w2.2793fb75961d.1.response.txt"
     }
    ],
    "condition": "scope.has_w2",
@@ -647,68 +616,58 @@
    ]
   },
   "gate:scope.household_pay_if_pay": {
-   "subject_sha": "076bd4c2b8bfbf1dd066fba310fd2b9b98cdef046ef3f3ee8737ee83db7dbe9b",
+   "subject_sha": "086b2a90d7b0a60000d02db0ec20763193cfea3775629051ce8bbe2dbdedb5b0",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A private chauffeur, gardener, yard worker, pool cleaner or estate caretaker paid directly by a family that gave no W-2. The work is done around the home or away from it, not inside it.",
-       "why_no": "The child question asks only about 'work in someone else's home' and gives indoor examples (nanny, carer, housekeeper). A driver or groundskeeper truthfully answers no because they did not work in the home.",
-       "line": "person.household_wages_if_pay",
-       "irs_text": "i1040gi p. 24, Line 1b: \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\"",
-       "severity": "high",
-       "fix": "Ask: 'Were you (or your spouse) paid by a private household for work in or around its home, or for it personally (for example nanny, carer, housekeeper, cook, gardener, yard worker, private driver, caretaker), with no W-2 for that pay?' Ask the same in the help for the amount."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A babysitter or cleaner paid in cash by several families, each under $2,800, with no W-2. They think of this as cash side jobs, not 'wages'.",
-       "why_no": "The parent question asks about 'wages, tips or strike benefits that are not on a W-2'. Informal cash pay from households is often not seen as wages, so the filer answers no and never reaches the household question.",
-       "line": "person.household_wages_if_pay",
-       "irs_text": "i1040gi p. 24, Line 1b: \"An employer isn’t required to provide a Form W-2 to you if they paid you wages of less than $2,800 in 2025\"",
-       "severity": "medium",
-       "fix": "Do not nest the household question under the wages question. Ask it directly, or add to the parent: 'including cash paid by a family for babysitting, cleaning, caregiving or yard work, even small amounts with no form'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "An adult child living with an elderly parent and paid by that parent to be the parent's live-in carer or housekeeper in the shared home, with no W-2.",
-       "why_no": "'Someone else's home' reads as excluding a home the filer also lives in. The filer answers no although they are the parent's household employee.",
-       "line": "person.household_wages_if_pay",
-       "irs_text": "i1040gi p. 24, Line 1b: \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\"",
-       "severity": "medium",
-       "fix": "Say 'in another person's household, including one you live in (for example a live-in carer, or a household run by a relative)'."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A nanny whose employing family gave a W-2 for only part of the year's pay, or a W-2 that understates the pay, or gave a Form 1099-NEC instead of a W-2.",
-       "why_no": "The question asks about 'a household that gave you no W-2'. A filer who received some form from the family answers no, and the unreported part is dropped.",
+       "who": "A household employee such as a nanny or housekeeper whose household issued a Form W-2 for part of the 2025 pay but paid an additional cash amount that the W-2 did not report.",
+       "why_no": "The gate asks whether the household 'gave you no W-2'; this household did give a W-2, so the literal and truthful answer is no, even though some household-employee wages were omitted from it.",
        "line": "person.household_wages_if_pay",
-       "irs_text": "i1040gi p. 24, Line 1b: \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\"",
+       "irs_text": "i1040gi p. 24, Line 1b: \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2.\"",
+       "severity": "high",
+       "fix": "Gate on whether any household-employee wages were not reported on a W-2, even if the household issued a W-2 for other wages; change 'gave you no W-2' to 'did not report all of your household wages on a W-2.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A nanny, housekeeper, or caregiver paid directly by a family that gave no W-2 but issued a Form 1099-NEC or told the filer they were an independent contractor.",
+       "why_no": "The gate asks whether they were paid 'as a household employee.' The filer may read the 1099 or contractor label as meaning they were not an employee and answer no.",
+       "line": "person.household_wages_if_pay",
+       "irs_text": "i1040gi p. 24, Line 1b: \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2.\"",
        "severity": "medium",
-       "fix": "Ask about pay not shown on a W-2: 'Was any of your pay from a household not included on a W-2 (no form, a 1099 instead, or a W-2 for less than you were paid)?' The amount help should say the same."
+       "fix": "Ask the observable facts (work in or around a home for its members, paid by the household, no W-2) and state that a 1099 or contractor label does not by itself make the worker a non-employee."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A live-in household worker paid partly in kind (meals, lodging) or in goods, with no W-2.",
-       "why_no": "The words 'paid' and 'how much were you paid' suggest only cash.",
+       "who": "A filer paid less than $2,800 in 2025 by a household for nanny, housekeeping, or similar work and given no W-2.",
+       "why_no": "The gate asks about 'wages ... not on a W-2,' but the filer may think pay below the W-2 threshold is not 'wages' or is not reportable because no W-2 was required; the $2,800 help appears only after the gate.",
        "line": "person.household_wages_if_pay",
-       "irs_text": "i1040gi p. 24, Line 1b: \"Enter the total of your wages received as a household employee\"",
-       "severity": "low",
-       "fix": "Add to the help: 'Include cash and the value of any other pay you received for the work.'"
+       "irs_text": "i1040gi p. 24, Line 1b: \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2. An employer isn’t required to provide a Form W-2 to you if they paid you wages of less than $2,800 in 2025.\"",
+       "severity": "medium",
+       "fix": "Put the $2,800 point in the gate or ask 'Did any household pay you wages not reported on a W-2, even if the amount was under $2,800?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who worked for the same household in 2024, received a W-2 for that year, and worked again in 2025 for cash with no 2025 W-2.",
+       "why_no": "The gate asks whether the household 'gave you no W-2' without saying for 2025; the filer may remember the 2024 W-2 and answer no.",
+       "line": "person.household_wages_if_pay",
+       "irs_text": "i1040gi p. 24, Line 1b: \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2.\"",
+       "severity": "medium",
+       "fix": "Specify 'no W-2 for that 2025 pay' or '2025 household wages not reported on a 2025 W-2.'"
       }
      ],
-     "prompt_sha": "36ce3fb4883d119befdb27a6a8a170bef5987d4b68751d0c195031beb59d1c06",
+     "prompt_sha": "67f40aa72375f523d8bb58b31a5b18385c9a51ec8d30a52e4f83783d8049d6e8",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.074496,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.household_pay_if_pay.076bd4c2b8bf.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.household_pay_if_pay.086b2a90d7b0.1.response.txt"
     }
    ],
    "condition": "scope.household_pay_if_pay",
@@ -739,68 +698,48 @@
    ]
   },
   "gate:scope.medicaid_waiver": {
-   "subject_sha": "0f03c72fdeeb66581dd790fff09fbbb8c262edcfd50936375b713f2da4024ac7",
+   "subject_sha": "fb8ac01c594b688b2a7e17504005747209eeae2528ec8a6c3341610e67e5e7b1",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A parent is the paid caregiver for an adult disabled son who lives with them. Under a Medicaid waiver, the pay runs through a home-care agency, a managed-care plan or a fiscal intermediary (often 'consumer-directed'). That payer issues the W-2, and box 12 shows code II.",
-       "why_no": "\"did a state Medicaid program pay you\": the check and the W-2 name the agency or fiscal agent, not the state. Many caregivers do not know the money is Medicaid waiver funding.",
-       "line": "person.mw_box1_if_mw and person.mw_not_box1_if_mw",
-       "irs_text": "i1040gi p. 92, Line 8s: \"Your nontaxable Medicaid waiver payments should be reported to you on Form(s) W-2 in box 12, Code II. If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a.\"",
+       "pattern": "other",
+       "who": "A caregiver paid through a state Medicaid waiver, agency, or care plan to care for a disabled client in the client's home rather than the caregiver's own home, who receives a Form 1099-MISC/NEC or no W-2 and is not in a separate home-care trade or business.",
+       "why_no": "The gate asks whether the person cared for was 'living in your home'; the help says caring for someone who does not live with you is paid work in someone's home. This filer truthfully answers no because the care recipient does not live in the filer's home.",
+       "line": "person.mw_not_box1_if_mw",
+       "irs_text": "i1040gi p. 24, Line 1d: 'Enter your taxable Medicaid waiver payments that were not reported on Form(s) W-2' and 'enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC.'",
        "severity": "high",
-       "fix": "Ask: \"In 2025, were you (or your spouse) paid, directly or through a home-care agency, managed-care plan or fiscal agent, under a Medicaid or Medicaid waiver program to care for someone who lived in your home? Answer yes also if any W-2 shows code II in box 12.\""
+       "fix": "Broaden the gate to ask whether the filer or spouse received any Medicaid waiver/difficulty-of-care payments, including taxable payments for caring for someone outside the filer's home; or add a separate taxable-Medicaid-waiver question that feeds Form 1040 line 1d."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A caregiver received a W-2 whose box 12 shows code II, and box 1 may be blank or not. They do not know what program funds the pay or what a 'Medicaid waiver payment' is.",
-       "why_no": "The gate asks for a classification (whether a state Medicaid program paid them) and names no fact they can check on the form. Code II appears only in help text for the gated question, which is never shown after a no.",
-       "line": "person.mw_box1_if_mw and person.mw_not_box1_if_mw",
-       "irs_text": "i1040gi p. 24, Line 1d TIP: \"Your nontaxable Medicaid waiver payments may have been reported to you [on] Form(s) W-2, box 12, with Code II.\"",
+       "pattern": "4",
+       "who": "A filer paid under a Medicaid waiver to care for someone living in the filer's home, but paid by Form 1099-MISC/NEC or with no form, so the filer has no W-2 with code II and wants to include the nontaxable payments in earned income for a credit.",
+       "why_no": "The help says 'A W-2 with code II in box 12 shows them'; the filer reads that as the only way such payments are identified and answers no when no W-2/code II exists.",
+       "line": "person.mw_not_box1_if_mw",
+       "irs_text": "i1040gi p. 24, Line 1d: payments 'not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2'; and p. 92, Line 8s: 'If you did not receive a Form W-2 for nontaxable payments ... report the amount on Form 1040 ... line 1d.'",
        "severity": "medium",
-       "fix": "Put the code II test in the gate itself: \"Does any 2025 Form W-2 for you or your spouse show code II in box 12?\" A yes opens the gated questions."
+       "fix": "State that a W-2 code II is only one way these payments appear; ask about Medicaid waiver/difficulty-of-care payments even if reported on Form 1099-MISC/NEC or no form."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A caregiver was paid by Medicaid in 2025 to care for a parent who lived with them. The parent died or moved to a nursing facility in 2025, before the return was prepared.",
-       "why_no": "\"someone who lives in your home\" is in the present tense, and no one lives there now. The gated question itself says \"lived\", but the filer never reaches it.",
-       "line": "person.mw_box1_if_mw and person.mw_not_box1_if_mw",
-       "irs_text": "i1040gi p. 92, Line 8s: \"Certain Medicaid waiver payments you received for caring for someone living in your home with you may be nontaxable.\"",
+       "who": "A filer who in 2025 receives a final Medicaid waiver payment for care provided in 2024 while the care recipient lived with them, but the recipient moved out or died before the 2025 payment.",
+       "why_no": "The gate says 'In 2025 ... to care for someone living in your home'; the filer reads 'living' as requiring the person to live there when paid in 2025, so answers no.",
+       "line": "person.mw_box1_if_mw",
+       "irs_text": "i1040gi p. 92, Line 8s: 'Certain Medicaid waiver payments you received for caring for someone living in your home with you may be nontaxable'; 'If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a.'",
        "severity": "medium",
-       "fix": "Ask: \"...to care for someone who lived in your home with you at any time while you were caring for them in 2025 (even if they no longer do)?\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "An adult child moved into a disabled parent's house to care for them, and Medicaid waiver pay was reported on a W-2 with code II. The caregiver lives in that house too, so it is their home as well.",
-       "why_no": "The help says \"Medicaid pay for care in the other person's own home ... is pay for work in someone's home.\" The house is the parent's (owned or leased by the parent), so the caregiver reads it as \"the other person's own home\" and answers no, although they live there with the person cared for.",
-       "line": "person.mw_box1_if_mw and person.mw_not_box1_if_mw",
-       "irs_text": "i1040gi p. 92, Line 8s: \"Medicaid waiver payments you received for caring for someone living in your home with you\"; p. 24, Line 1d TIP: code II on box 12 of Form W-2.",
-       "severity": "medium",
-       "fix": "State the test as living together, not ownership: \"to care for someone who lived with you, in a home you both lived in, whoever owns or rents it.\" Limit the help's exclusion to care in a home where the caregiver did not also live."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A parent is paid through a Medicaid waiver (for example, a family-caregiver or self-directed program) to care for their own disabled minor or adult child at home.",
-       "why_no": "They see the money as family support or a program stipend, not as Medicaid paying them 'to care for someone'. They may also read 'someone' as a person outside the family.",
-       "line": "person.mw_box1_if_mw and person.mw_not_box1_if_mw",
-       "irs_text": "i1040gi p. 92, Line 8s: \"Certain Medicaid waiver payments you received for caring for someone living in your home with you may be nontaxable.\"",
-       "severity": "low",
-       "fix": "Add to the help: \"Includes pay for caring for your own child, parent, spouse or other relative who lives with you, under any Medicaid program, however it is named (waiver, self-directed, family caregiver, IHSS).\""
+       "fix": "Ask whether the 2025 payment was for care of someone who lived with the filer when the care was provided, even if the person no longer lives there; avoid present-tense 'living.'"
       }
      ],
-     "prompt_sha": "31847b8a14affd1c3998102d33c3abb83a82a8ba8a81a3725f49a9764cfebce6",
+     "prompt_sha": "88d7e69b11fa63b9b7fb4e10c6f184787e4ceb4cffbb638c07d577095b2224b2",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.14019199999999998,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.medicaid_waiver.0f03c72fdeeb.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.medicaid_waiver.fb8ac01c594b.1.response.txt"
     }
    ],
    "condition": "scope.medicaid_waiver",
@@ -851,80 +790,80 @@
    ]
   },
   "gate:scope.nol": {
-   "subject_sha": "7fe3535a3704ed609cf63ba4125ec47322acc1ba8bfd45a339a40a6e6175c4cd",
+   "subject_sha": "191d734b0b4e0b36994f2f2e4ff5e866371adb2b706950adae57001affdac282",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "8",
-       "who": "A high earner whose 2024 Schedule C, farm or K-1 business losses were capped by Form 461. The disallowed excess business loss carries into 2025, yet their 2024 total income was positive (for example, $2M of wages against a $1M business loss).",
-       "why_no": "The help defines the loss as 'A loss bigger than that year's income'. Their 2024 loss was not bigger than their income, and they think of the amount as a Form 461 disallowance, not as a 'net operating loss'. A truthful no to the definition shown.",
-       "line": "s1.nol_amount_if_nol (zero instead of the carryover); s1.nol_ebl_if_nol (false, so the refusal it leads to is missed)",
-       "irs_text": "i172 p. 4, Excess Business Loss: 'Excess business losses that are disallowed are treated as an NOL carryover to the following tax year'; 'This excess business loss of $738,000 will be treated as an NOL carryover to the next tax year.'",
-       "severity": "high",
-       "fix": "Add to the gate and help: 'or did a 2024 Form 461 (excess business loss) disallow part of a business loss?' Drop the claim that the loss must exceed that year's income, or add 'or a business loss limited on Form 461'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer (or spouse) whose deductions exceeded income for the first time in 2024, so 2025 is the first year the NOL is used. They never filed Form 172, and their 2024 Form 1040 shows taxable income of zero, not a negative number.",
-       "why_no": "The help says 'carried forward on an earlier return'. Nothing was carried forward on any earlier return yet, and the 2024 return shows no loss figure at all. They read the question as asking about an NOL they have already been claiming.",
-       "line": "s1.nol_amount_if_nol",
-       "irs_text": "i172 p. 2: 'If you waive the carryback period ... you will have an NOL that can be carried forward ... Start by carrying the NOL to the first tax year after the NOL year.'",
-       "severity": "medium",
-       "fix": "Help: 'Including a loss from 2024 that you have not used yet, even if no return has claimed it before. A 2024 return with taxable income of zero and business, rental or disaster losses may have one.' Ask the checkable fact first: 'In 2024 or any earlier year, were your deductions (business, rental, farm, disaster) more than your income?' Then classify."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A landlord, a partner or S corporation shareholder with K-1 losses, or a farmer, whose earlier-year rental, pass-through or farm loss produced an unused NOL.",
-       "why_no": "The help names only 'a business, or ... a disaster or theft with no business'. A rental owner does not see rental property as a business, and a partner sees the loss as the partnership's, not their own.",
+       "who": "A filer whose only carried-forward NOL arose from pre-2018 employee business expenses or moving expenses.",
+       "why_no": "The help lists only business, farm, rental, disaster, or Form 461 losses; employee work and moving expenses are omitted, so the filer reads the loss as outside the gate.",
+       "line": "s1.nol_before_limit_date_if_nol",
+       "irs_text": "i172 p. 1: 'To have an NOL, your loss must generally be caused by deductions from your: ... Work as an employee ... Moving expenses ...'",
+       "severity": "high",
+       "fix": "Add employee business expenses and moving expenses to the help, or ask broadly whether any Form 172 or prior-year NOL carryforward is being carried into 2025."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A qualified performing artist, Armed Forces reservist, fee-basis state or local official, or active-duty service member with a post-2017 NOL from employee business expenses or moving expenses.",
+       "why_no": "The same omitted categories apply; the filer has an NOL from work as an employee or moving expenses, not from the listed business, farm, rental, disaster, or Form 461 sources.",
        "line": "s1.nol_amount_if_nol",
-       "irs_text": "i172 p. 1: 'To have an NOL, your loss must generally be caused by deductions from your: • Trade or business, • Work as an employee ..., • Casualty and theft losses resulting from a federally declared disaster, ... or • Rental property'; 'partners or shareholders can use their separate shares of the partnership’s or S corporation’s business income and business deductions to figure their individual NOLs.'",
-       "severity": "medium",
-       "fix": "List the sources in the help: 'a business or farm (including your share from a partnership or S corporation K-1), rental property, work as an employee, or a federally declared disaster.'"
+       "irs_text": "i172 p. 1: 'Work as an employee (although not deductible for most taxpayers for 2018 through 2025)' and 'Moving expenses (although not deductible for most taxpayers for 2018 through 2025)' are NOL causes, so exceptions remain.",
+       "severity": "high",
+       "fix": "Broaden the help to include employee business expenses and moving expenses, including current-year exceptions, or ask whether prior-year Form 172 shows an NOL carryforward."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A beneficiary of an estate or trust that terminated in an earlier year with an unused NOL. The NOL passed to the beneficiary on the final Schedule K-1 (Form 1041).",
-       "why_no": "The beneficiary never had 'a loss bigger than that year's income' on their own return, and nothing was 'carried forward on an earlier return' of theirs. They read the question as about their own losses only.",
+       "pattern": "8",
+       "who": "A filer with an NOL from a year in which total business or rental deductions exceeded income, but no single business, farm, rental, or disaster loss was larger than that year's income.",
+       "why_no": "The help says 'A loss bigger than that year's income,' which can be read as requiring one loss to exceed income; the NOL instead comes from combined deductions.",
        "line": "s1.nol_amount_if_nol",
-       "irs_text": "i1040gi p. 91, Line 8a: 'Enter any deduction for an NOL from an earlier year'; i172 p. 1: 'Individuals, estates, and trusts use Form 172 to figure the amount of the NOL that is available for carrying back or forward.'",
+       "irs_text": "i172 p. 1: 'If your deductions for the year are more than your income for the year, you may have a net operating loss.'",
        "severity": "medium",
-       "fix": "Add to the help: 'Include an NOL carryover passed to you on a final Schedule K-1 (Form 1041) from an estate or trust that ended.'"
+       "fix": "Say that deductions for the loss year exceeded income, rather than 'a loss bigger than that year's income.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A divorced or widowed filer, or one now filing jointly with a new spouse, who has a share of an NOL from a joint return with a former spouse, or from separate returns before the current marriage.",
-       "why_no": "They regard the loss as belonging to the old joint return or to the former spouse, so it is not 'you (or ... your spouse)' as they now read those words.",
+       "pattern": "8",
+       "who": "A filer whose original NOL was larger than the loss year's income but who has already used part of it, so the remaining unused carryforward is now smaller than that year's income.",
+       "why_no": "The help says 'A loss bigger than that year's income, not yet used up'; the filer reads the remaining unused amount as needing to be bigger than the loss year's income.",
        "line": "s1.nol_amount_if_nol",
-       "irs_text": "i172 p. 3, Change in Marital Status: 'only the spouse who had the loss can take the NOL deduction'; Joint to separate returns: 'figure each of your carryovers separately by separating the NOL portion for each spouse from within the joint return.'",
-       "severity": "low",
-       "fix": "Help: 'Include your share of a loss from a joint return with a former or late spouse.'"
+       "irs_text": "i172 p. 2: 'If you carried the NOL to an earlier year, your NOL deduction is the carried over NOL minus the NOL amount you used in the earlier year or years.'",
+       "severity": "medium",
+       "fix": "Clarify that the original loss must have exceeded the loss-year income and that a partially used remaining carryforward still qualifies."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer with a prior-year passive rental loss that was suspended on Form 8582 but became allowed in an earlier year and generated an NOL carryforward into 2025.",
+       "why_no": "The help says 'Not a loss still held back on Form 8582'; seeing Form 8582 in the records, the filer reads any passive loss as excluded even though it is no longer held back.",
+       "line": "s1.nol_amount_if_nol",
+       "irs_text": "i172 p. 1: 'To have an NOL, your loss must generally be caused by deductions from your: ... Rental property.'",
+       "severity": "medium",
+       "fix": "Clarify that only losses still suspended under Form 8582 in 2025 are excluded; a previously suspended loss that became allowed and created an NOL is included."
       }
      ],
-     "prompt_sha": "547217a3fcc9ea4c5e42924d170e2778a03b7b8cd74a0396760b2b26dc9a9eda",
+     "prompt_sha": "488172fef94ee0e4c5b06dbb7ba672619000e4dcad73817e4c3932898ffd97f5",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.135488,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.nol.ce1bf8bc5cc0.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.nol.191d734b0b4e.1.response.txt"
     }
    ],
    "condition": "scope.nol",
    "lines": [
     "s1.nol_amount_if_nol",
-    "s1.nol_ebl_if_nol",
-    "s1.nol_pre2018_if_nol"
+    "s1.nol_before_limit_date_if_nol",
+    "s1.nol_ebl_if_nol"
    ],
    "inputs": [
     "s1.nol_amount",
-    "s1.nol_ebl",
-    "s1.nol_pre2018"
+    "s1.nol_before_limit_date",
+    "s1.nol_ebl"
    ],
    "used": [
     {
@@ -984,16 +923,7 @@
      ],
      "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
     }
-   ],
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s1.nol_pre2018": "s1.nol_before_limit_date",
-     "s1.nol_pre2018_if_nol": "s1.nol_before_limit_date_if_nol"
-    },
-    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
-    "was": "ce1bf8bc5cc0d31955e839dcfd1d62526afb6e5e3afb71f3b3e311e2982d88f3"
-   }
+   ]
   },
   "gate:scope.noncitizen": {
    "subject_sha": "129467153b180b24eea51488fe0d101eebafb94d3eac381bc0079740bd3c9d5f",
@@ -1082,98 +1012,98 @@
    ]
   },
   "gate:scope.pay_no_w2": {
-   "subject_sha": "43db5129a7eedf8e5d269b1de0182e1fa89e61532b8e7823f59197765e5aca62",
+   "subject_sha": "c00301f30c05d7ef343c130523cdfa8762b7a50f46c504fa9e0226ff6d595646",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A union member (or, on a joint return, the spouse) who was locked out by the employer in 2025 and received lockout benefits from the union. There was no strike.",
-       "why_no": "The gate asks only about 'wages, tips or strike benefits'. A locked-out worker was not on strike, and lockout benefits are not wages or tips, so a truthful no is correct as worded.",
-       "line": "scope.strike_pay_if_pay",
-       "irs_text": "i1040gi 2025 p. 24, Line 1h: 'Strike or lockout benefits (other than bona fide gifts).'",
+       "pattern": "4",
+       "who": "A filer whose employer issued a W-2 but the form was lost or never reached them, so the filer has pay stubs but no W-2 to enter.",
+       "why_no": "The gate asks for wages 'not on a W-2'; the filer reads that as wages not reported on the W-2 that exists, so answers no even though they have no W-2 in hand.",
+       "line": "scope.wages_no_form_if_pay",
+       "irs_text": "i1040gi p. 25, Missing or Incorrect Form W-2?: If you lose your Form W-2 ... ask your employer for a new one. Even if you don’t get a Form W-2, you must still report your earnings.",
        "severity": "high",
-       "fix": "Ask: 'In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits from a union that are not on a W-2?'"
+       "fix": "Ask whether the filer has wages for which they did not receive a W-2, and treat a W-2 that is missing, lost, or never received as a Yes that triggers the ask-employer-first refusal."
       },
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A worker who got a W-2 from a firm that also paid them a bonus, award or non-accountable travel reimbursement on a Form 1099-NEC or 1099-MISC, which should have been wages (Form 8919 reason code H).",
-       "why_no": "The help gives 'pay from a firm that wrongly treated you as a contractor'. This firm treated them as an employee and gave them a W-2, so they answer no. The gated question 'pay you as an independent contractor, when you believe you were its employee' would also draw a no.",
-       "line": "scope.contractor_pay_if_pay",
-       "irs_text": "f8919 2025 p. 1, Reason code H: 'I received a Form W-2 and a Form 1099-MISC and/or 1099-NEC from this firm for 2025. The amount on Form 1099-MISC and/or 1099-NEC should have been included as wages on Form W-2.'",
+       "who": "A filer whose employer has not sent a W-2 by filing time, or who never received it and expects it to arrive.",
+       "why_no": "The filer reads 'not on a W-2' as off-the-books pay or as not reportable until the W-2 arrives, so answers no rather than reporting earnings from pay stubs.",
+       "line": "scope.wages_no_form_if_pay",
+       "irs_text": "i1040gi p. 25: Even if you don’t get a Form W-2, you must still report your earnings.",
        "severity": "medium",
-       "fix": "Add to the gate help and to the gated question: 'or a firm that gave you a W-2 also reported some of your employee pay (such as a bonus or award) on a Form 1099-NEC or 1099-MISC.'"
+       "fix": "Include missing or not-yet-received W-2s in the gate help and ask whether the filer has wages for which no W-2 has been received."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer received a W-2 that omits a bonus or part of the pay, so part of the wages is not on the W-2.",
+       "why_no": "Because a W-2 arrived, the filer reads the gate as asking whether they got a W-2 at all and answers no, missing the omitted wages.",
+       "line": "scope.wages_no_form_if_pay",
+       "irs_text": "i1040gi p. 25: If you lose your Form W-2 or it is incorrect, ask your employer for a new one. Even if you don’t get a Form W-2, you must still report your earnings.",
+       "severity": "medium",
+       "fix": "Mention incorrect or incomplete W-2s in the gate/help and ask whether any wages are missing from the W-2."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A server, valet or hotel worker who reported every cash and card tip to the employer but also got noncash tips such as event tickets, passes or goods.",
-       "why_no": "The help names only 'tips not reported in full to your employer'. They reported all their tips, and they do not think of tickets as tips that belong on a W-2, so they answer no.",
-       "line": "scope.tips_unreported_if_pay",
-       "irs_text": "i1040gi 2025 p. 24, Line 1c: 'Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value. Although you don't report these noncash tips to your employer, you must report them on line 1c.'",
+       "who": "A gardener, private driver, or live-in carer paid by a household for work around the home, for household members, or in a home the worker shares.",
+       "why_no": "The gate help says 'pay for work in someone's home'; the filer reads 'in' narrowly and does not count work around the home, for its members, or in a shared home.",
+       "line": "scope.household_pay_if_pay",
+       "irs_text": "i1040gi p. 24, Line 1b: Enter the total of your wages received as a household employee that was not reported on Form(s) W-2.",
        "severity": "medium",
-       "fix": "Gate help: 'tips you did not report in full to your employer (including tips under $20 a month), or tips that were not money, such as tickets, passes or goods.'"
+       "fix": "Use the broader gated wording in the gate help: work in or around a household's home or for its members, including a home the filer shares."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A part-time worker who received less than $20 a month in cash tips at a job and so was not required to report them to the employer.",
-       "why_no": "They read 'tips not reported in full to your employer' as a reporting failure. Because they had no duty to report, they believe nothing applies and answer no.",
-       "line": "scope.tips_unreported_if_pay",
-       "irs_text": "i1040gi 2025 p. 24, Line 1c: 'This should include any tip income you didn't report to your employer.'",
-       "severity": "medium",
-       "fix": "State 'any tips you did not report to your employer, for any reason, including tips you were not required to report.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A gardener, yard worker, pool cleaner or driver paid directly by a household that gave them no W-2, for example less than $2,800 in the year.",
-       "why_no": "The gate help says 'pay for work in someone's home'. Their work was outside the house or away from it, so they read the example as not covering them. Only the gated question's help names gardeners.",
+       "who": "A babysitter, cleaner, or other household worker paid less than $2,800 in cash by a household, with no W-2.",
+       "why_no": "The filer knows no W-2 is required below $2,800 and reads 'not on a W-2' as not reportable, so answers no.",
        "line": "scope.household_pay_if_pay",
-       "irs_text": "i1040gi 2025 p. 24, Line 1b: 'Enter the total of your wages received as a household employee that was not reported on Form(s) W-2. An employer isn't required to provide a Form W-2 to you if they paid you wages of less than $2,800 in 2025.'",
+       "irs_text": "i1040gi p. 24, Line 1b: Enter the total of your wages received as a household employee that was not reported on Form(s) W-2. An employer isn’t required to provide a Form W-2 to you if they paid you wages of less than $2,800 in 2025.",
        "severity": "medium",
-       "fix": "Gate help: 'pay from a household for work in or around its home (such as a nanny, carer, cleaner, gardener or household driver), even a small amount.'"
+       "fix": "Add to the gate help that household wages are reportable even when the household was not required to give a W-2 because it paid less than $2,800."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A worker whose U.S. employer never sent a W-2 (for example, a business that closed), or whose W-2 left out part of the wages paid.",
-       "why_no": "The help examples cover home work, tips and misclassification only. The filer reads that list as complete and answers no. A filer with an incomplete W-2 thinks the wages are 'on a W-2'.",
-       "line": "scope.wages_no_form_if_pay",
-       "irs_text": "i1040gi 2025 p. 25, Missing or Incorrect Form W-2?: 'Even if you don't get a Form W-2, you must still report your earnings. If you lose your Form W-2 or it is incorrect, ask your employer for a new one.'",
+       "pattern": "2",
+       "who": "A worker who performed services for a firm that treated the worker as a contractor but was paid through an agency, platform, or other intermediary rather than directly by the firm.",
+       "why_no": "The gate help says 'pay from a firm'; the worker reads that as requiring direct payment by the firm and answers no because the intermediary paid them.",
+       "line": "scope.contractor_pay_if_pay",
+       "irs_text": "f8919 p. 2, Firm: This firm may or may not have paid you directly for these services.",
        "severity": "medium",
-       "fix": "Add to the gate help: 'or wages from any employer that sent no W-2, or a W-2 that leaves out some of your pay.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A U.S. citizen or resident employed by a foreign company, foreign government, embassy or international organization that issues payslips but never a W-2.",
-       "why_no": "The help examples (home work, tips, misclassification) do not describe ordinary salaried employment abroad. The filer assumes 'not on a W-2' means a missing form from a U.S. employer and answers no.",
-       "line": "scope.wages_no_form_if_pay",
-       "irs_text": "i1040gi 2025 p. 25, Missing or Incorrect Form W-2?: 'Even if you don't get a Form W-2, you must still report your earnings.'",
-       "severity": "medium",
-       "fix": "Add to the gate help: 'including pay from a foreign employer, a foreign government or an international organization, which does not issue W-2s.'"
+       "fix": "Ask whether the filer performed services for a firm that treated them as a contractor, even if payment came through someone else."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A worker treated as a contractor by an individual, a nonprofit or a state agency, or paid through a third party rather than by the business they worked for.",
-       "why_no": "The help and the gated question say 'a firm' and 'did a firm pay you'. They do not see an individual or a public body as a 'firm', or the payer was not the business they served, so they answer no.",
+       "who": "A worker who received both a W-2 and a Form 1099-MISC or 1099-NEC from the same firm for 2025, where the 1099 amount should have been wages on the W-2.",
+       "why_no": "Because a W-2 came from the firm, the worker reads the gate as satisfied and answers no, even though the 1099 amount is not on any W-2.",
        "line": "scope.contractor_pay_if_pay",
-       "irs_text": "f8919 2025 p. 2, Firm: 'the term \"firm\" means any individual, business enterprise, company, nonprofit organization, state, or other entity for which you performed services. This firm may or may not have paid you directly for these services.'",
-       "severity": "low",
-       "fix": "Say 'a business, person, nonprofit or government body you worked for (whether it paid you directly or through someone else).'"
+       "irs_text": "f8919 p. 1, Reason code H: I received a Form W-2 and a Form 1099-MISC and/or 1099-NEC from this firm for 2025. The amount on Form 1099-MISC and/or 1099-NEC should have been included as wages on Form W-2.",
+       "severity": "medium",
+       "fix": "Add a gate help example for a firm that gave both a W-2 and a 1099 for pay that should have been wages."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A worker who believes they were an employee, filed Form SS-8, and has not received an IRS determination, while the firm paid them as a contractor with no social security or Medicare withholding.",
+       "why_no": "The gate help says 'wrongly treated you as a contractor'; the worker reads 'wrongly' as requiring an IRS determination and answers no because no reply has come.",
+       "line": "scope.contractor_pay_if_pay",
+       "irs_text": "f8919 p. 1: You believe your pay from the firm wasn’t for services as an independent contractor; reason code G: I filed Form SS-8 with the IRS and haven’t received a reply.",
+       "severity": "medium",
+       "fix": "Ask whether the worker believes they were an employee and the firm treated them as a contractor; mention that a pending SS-8 still counts."
       }
      ],
-     "prompt_sha": "283111958771939f0c95235350f7fb03a0cb6cb9d6426856ef12a95b3f020741",
+     "prompt_sha": "f3b429494667849c691075e790ba9c1188ff5d9eec94869bae58a98005784370",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.185488,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.pay_no_w2.43db5129a7ee.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.pay_no_w2.c00301f30c05.1.response.txt"
     }
    ],
    "condition": "scope.pay_no_w2",
@@ -1248,99 +1178,129 @@
    ]
   },
   "gate:scope.recovery": {
-   "subject_sha": "5d16430b6470b8fd81793a4df89e0250e0abef728dd2155aea63560e9f8141af",
+   "subject_sha": "196a0cfbdf1964230c9f5563e5e252c1800dddfd94f27f75df4685dc1b79e540",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer who itemized for 2023 and took the standard deduction for 2024. In 2025 they receive insurance money for a 2023 casualty loss, or a refund of 2023 real property tax.",
-       "why_no": "The help says: 'If you took the standard deduction for 2024, money back for something you could deduct only by itemizing is not income: answer No.' The filer did take the standard deduction for 2024 and follows the help, but the recovered item was itemized in 2023.",
-       "line": "rec.not_2024_if_any",
-       "irs_text": "p525 p. 27, Worksheet 2: 'If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 and a casualty loss reimbursement from 2023, complete a separate worksheet for each year. Use information from your tax return for the year the expense was deducted.' p. 24: 'If you didn't itemize deductions for the year for which you received the recovery...'",
-       "severity": "high",
-       "fix": "Tie the help to the year of the deduction: 'If you took the standard deduction for the year you deducted the item, money back for something you could deduct only by itemizing is not income.' Better, drop the year test from the gate and ask it after a Yes."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer who itemized for 2022 or 2023. In 2025, after a state amended return or audit, they receive a state income tax refund for that earlier year.",
-       "why_no": "The gate excludes any 'state or local income tax refund' with no year limit, and says such refunds are 'asked about separately'. A truthful No follows. The 2024-focused state refund question may not route a pre-2024 refund to refusal.",
-       "line": "rec.not_2024_if_any",
-       "irs_text": "p525 p. 24, Itemized Deduction Recoveries: 'must use this discussion if ... 1. You received a refund in 2025 that is for a tax year other than 2024.' p. 27, Worksheet 2: 'complete a separate worksheet for each year.'",
-       "severity": "high",
-       "fix": "Narrow the exclusion to 'other than a refund of 2024 state or local income tax', or confirm that the separate state refund question asks the year of the refund and refuses for a year other than 2024."
-      },
-      {
-       "kind": "FALSE_NO",
        "pattern": "7",
-       "who": "A filer whose earlier-year deduction or credit did not lower that year's tax but did increase a carryover, such as an NOL or an unused credit carried forward. In 2025 the amount is refunded or repaid.",
-       "why_no": "The gate asks whether the deduction or credit 'lowered your tax'. That year's tax was zero either way, so the filer answers No truthfully. The tax benefit rule counts the larger carryover as having reduced tax.",
-       "line": "rec.nonitemized_if_any; rec.not_2024_if_any",
-       "irs_text": "p525 p. 24, Tax benefit rule: 'any increase to an amount carried over to the current year that resulted from the deduction or credit is considered to have reduced your tax in the earlier year.'",
-       "severity": "high",
-       "fix": "Ask the checkable fact: 'In 2025, did you or your spouse get money back, or a credit or price reduction, for something you deducted or took a credit for on an earlier year's return?' Apply the tax benefit test after a Yes."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer who deducted an item in an earlier year but cannot tell whether the deduction changed their tax. Examples: tax computed with the capital gain worksheet, AMT, or credits that already brought tax near zero.",
-       "why_no": "The words 'whose deduction or credit ... lowered your tax' require a refigured prior-year computation. Unsure, the filer answers No, and the refusal the gated lines lead to is skipped.",
-       "line": "rec.nonitemized_if_any; rec.not_2024_if_any; rec.sales_tax_if_any",
-       "irs_text": "p525 p. 25, Capital gains: 'you'll have to refigure your tax for the earlier year to determine if the recovery must be included in your income'; p. 28, Subject to AMT: 'you'll have to refigure your tax for the earlier year'.",
-       "severity": "medium",
-       "fix": "Remove 'lowered your tax' from the gate. Ask only whether money, a credit, or a price reduction came back for a previously deducted or credited item."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer who claimed a credit on an item and later got a downward price adjustment or manufacturer rebate. Or one whose earlier-year property tax refund was applied as a credit against the next bill instead of paid in cash.",
-       "why_no": "'Paid back' suggests cash returned to the filer. A price adjustment, or a credit applied to a later bill, does not read as being 'paid back'.",
+       "who": "A filer whose prior-year nonitemized deduction or credit did not reduce that year's tax but increased an NOL or credit carryover; they answer no because the gate asks whether the item 'lowered your tax.'",
+       "why_no": "They read 'lowered your tax' literally and know the item only created or increased a carryover.",
        "line": "rec.nonitemized_if_any",
-       "irs_text": "p525 p. 28, Amounts Recovered for Credits: 'You had a recovery if there was a downward price adjustment or similar adjustment on the item for which you claimed a credit.' p. 24: 'The most common recoveries are refunds, reimbursements, and rebates'.",
-       "severity": "medium",
-       "fix": "Say 'paid back, refunded, reimbursed, credited, or given a rebate or price reduction'. Add a credit example to the gate's help, such as a rebate on an item you took an energy or vehicle credit for."
+       "irs_text": "p525 (2025) p. 24: 'any increase to an amount carried over to the current year that resulted from the deduction or credit is considered to have reduced your tax in the earlier year.'",
+       "severity": "high",
+       "fix": "Ask whether the earlier-year deduction or credit gave any tax benefit, including by increasing a carryover, and compute the amount; do not require the filer to decide whether it 'lowered' tax."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer claimed a tax credit for an item, such as solar equipment, and in 2025 the seller makes a downward price adjustment or similar adjustment instead of paying cash.",
+       "why_no": "The gate asks whether they were 'paid back an amount'; a price reduction is not an amount paid back.",
+       "line": "rec.nonitemized_if_any",
+       "irs_text": "p525 (2025) p. 28: 'You had a recovery if there was a downward price adjustment or similar adjustment on the item for which you claimed a credit.'",
+       "severity": "high",
+       "fix": "Ask about a refund, rebate, reimbursement, credit, offset, or downward price adjustment of an earlier deduction or credit, not only being 'paid back.'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer's lender in 2025 credits a refund of 2023 mortgage interest to escrow, shown in Form 1098 box 4, rather than sending cash.",
+       "why_no": "The gate says 'paid back'; no money was paid to the filer, so they answer no.",
+       "line": "rec.before_prior_year_if_any",
+       "irs_text": "p525 (2025) p. 24: 'If you received a refund or credit in 2025 of mortgage interest paid in an earlier year, the amount should be shown in box 4 of Form 1098.'",
+       "severity": "high",
+       "fix": "Use 'refund, credit, offset, reimbursement, rebate, or price adjustment' and treat a lender credit as received."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer received in 2025 a 2023 state income tax refund that they had deducted on their 2023 return and that lowered 2023 tax.",
+       "why_no": "The gate expressly excludes 'a state or local income tax refund,' so they answer no.",
+       "line": "rec.before_prior_year_if_any",
+       "irs_text": "p525 (2025) p. 24: 'You received a refund in 2025 that is for a tax year other than 2024'; p. 27 Worksheet 2 line 1a: 'State/local income tax refund or credit.'",
+       "severity": "high",
+       "fix": "Exclude only the immediately preceding year's state/local income tax refund handled by the Schedule 1 worksheet; if a state/local income tax refund is for any year before 2024, ask the before-2024 question or route it to a separate worksheet."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer who took the standard deduction for 2024 and in 2025 recovers a nonitemized deduction. Examples: a payment on a bad debt deducted in an earlier year, a refund of an earlier year's deducted business or self-employed expense, or a returned penalty on early withdrawal of savings.",
-       "why_no": "All of the gate's examples are itemized deductions (property tax, mortgage interest, medical bill). The help then says a standard deduction filer should 'answer No'. The filer reads the examples as the whole rule and the standard-deduction sentence as covering them.",
-       "line": "rec.nonitemized_if_any",
-       "irs_text": "p525 p. 24: 'You may also have recoveries of nonitemized deductions (such as payments on previously deducted bad debts)'; p. 28: 'If you recover an amount that you deducted in an earlier year when you were figuring your AGI, you must generally include the full amount of the recovery in your income'.",
+       "who": "A filer received insurance reimbursement in 2025 for a 2023 casualty loss that they had deducted.",
+       "why_no": "The help lists property tax, sales tax, mortgage interest, medical costs, and bad debt; the filer reads the examples as the complete set and does not see casualty/insurance reimbursement.",
+       "line": "rec.before_prior_year_if_any",
+       "irs_text": "p525 (2025) p. 27: 'If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 and a casualty loss reimbursement from 2023, complete a separate worksheet for each year.'",
        "severity": "medium",
-       "fix": "Add nonitemized and credit examples to the gate's help (a repaid bad debt, a refunded business expense, a rebate on a credited item). State that the standard-deduction rule applies only to itemized-only items, and that other deductions and credits still count."
+       "fix": "Add casualty-loss reimbursements and say the examples are not exhaustive, or ask broadly about any refund, reimbursement, rebate, credit, or offset of a prior deduction."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who deducted general sales tax for 2024 using actual receipts, or the table plus a large purchase. In 2025 they return an item and get its sales tax refunded.",
-       "why_no": "They think of the refund as part of a store return, not as money 'paid back' for a deduction. A table user may also think no specific tax was deducted. The gate's examples do not mention sales tax.",
-       "line": "rec.sales_tax_if_any",
-       "irs_text": "p525 p. 24, Example 27: 'In 2025, you return an item you had purchased and receive a $500 sales tax refund... The maximum refund that you may have to include in income is $500'.",
+       "who": "A filer took the standard deduction in the prior year but recovered a nonitemized deduction, such as a business expense refund or a reimbursement of an above-the-line deduction.",
+       "why_no": "They read the help's sentence 'Not counted if deductible only by itemizing and you did not itemize that year' as excluding all recoveries when they did not itemize.",
+       "line": "rec.nonitemized_if_any",
+       "irs_text": "p525 (2025) p. 28: 'This section discusses recovery of deductions other than itemized deductions.'",
        "severity": "medium",
-       "fix": "Add to the gate's help: 'a refund of sales tax on an item you returned, if you deducted sales tax for that year'."
+       "fix": "Reword the help to say the itemizing exception applies only to expenses that could be deducted only on Schedule A, and that nonitemized deductions and credits still count."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "On a joint return, the spouse had the earlier-year nonitemized deduction or credit and received the 2025 repayment; the filer answers no because the earlier item was the spouse's and did not lower the filer's own tax.",
+       "why_no": "The gate says 'you or your spouse' only for who was paid back, then asks whether 'your tax' was lowered.",
+       "line": "rec.nonitemized_if_any",
+       "irs_text": "p525 (2025) p. 28: 'If you recover an amount that you deducted in an earlier year when you were figuring your AGI, you must generally include the full amount of the recovery in your income in the year received.'",
+       "severity": "medium",
+       "fix": "Say 'you or your spouse paid back an amount that you or your spouse deducted or claimed a credit for on an earlier return, and that lowered either of your taxes or increased a carryover.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer recovered $2,100 of 2024 itemized deductions when itemized deductions were $29,450 and the standard deduction was $29,200; only $250 had tax benefit, but they answer no because they believe the refund did not lower their tax.",
+       "why_no": "They apply 'whose deduction ... lowered your tax' to the whole recovered amount and conclude no because most of it merely restored the standard-deduction cushion.",
+       "line": "rec.sales_tax_if_any",
+       "irs_text": "p525 (2025) p. 25, Example 32: 'Include $250 of the recoveries in your 2025 income. This is the smaller of your recoveries ($2,100) or the amount by which your itemized deductions were more than your standard deduction ($29,450 − $29,200 = $250).'",
+       "severity": "medium",
+       "fix": "Ask whether they received any refund of a deduction claimed in a year they itemized, regardless of whether they think it lowered tax; compute the standard-deduction limitation in the tool."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer had a general sales tax refund in 2025 and had deducted that sales tax in the prior year, but answers no because the gate excludes 'a state or local income tax refund' and they read that as excluding any state or local tax refund.",
+       "why_no": "They do not carry the word 'income' to the sales-tax refund or read the exception as a broad state-tax-refund carve-out.",
+       "line": "rec.sales_tax_if_any",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2 footnote 2: 'If you deducted state and local general sales taxes and received a refund of those taxes, include the amount on line 2.'",
+       "severity": "medium",
+       "fix": "State explicitly: 'Do not include a state or local income tax refund here; sales tax and property tax refunds are included.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer who was subject to AMT or had unused credits in the year of the deduction answers no because they believe the deduction or credit gave no tax benefit.",
+       "why_no": "The gate asks a legal tax-benefit conclusion; the filer cannot readily refigure AMT or credit limitations.",
+       "line": "rec.before_prior_year_if_any",
+       "irs_text": "p525 (2025) p. 28: 'If inclusion of the recovery doesn't change your total tax, you don't include the recovery in your income. However, if your total tax increases by any amount, you received a tax benefit from the deduction.'",
+       "severity": "medium",
+       "fix": "Ask whether they claimed the deduction or credit, then have the tool refigure AMT, unused credits, and other limitations instead of asking the filer whether tax was lowered."
       }
      ],
-     "prompt_sha": "7beb8a266db0cfa394fcd0bd01d68566af4ff4f939a33cc8564a847b336c969c",
+     "prompt_sha": "4dd52da36412e6c7424ef31cb3292aaecc4a75e4659cce98ade399b28e3a27da",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.163776,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.recovery.0c93e1a2c867.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.recovery.196a0cfbdf19.1.response.txt"
     }
    ],
    "condition": "scope.recovery",
    "lines": [
+    "rec.before_prior_year_if_any",
     "rec.nonitemized_if_any",
-    "rec.not_2024_if_any",
     "rec.sales_tax_if_any"
    ],
    "inputs": [
+    "rec.before_prior_year",
     "rec.nonitemized",
-    "rec.not_2024",
     "rec.sales_tax"
    ],
    "used": [
@@ -1371,80 +1331,41 @@
      ],
      "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
     }
-   ],
-   "carried": {
-    "by": "rename",
-    "map": {
-     "rec.not_2024": "rec.before_prior_year",
-     "rec.not_2024_if_any": "rec.before_prior_year_if_any"
-    },
-    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
-    "was": "0c93e1a2c867e31af4af3ac430e10a5252e700869e19a0646e6daa404cc4b358"
-   }
+   ]
   },
   "gate:scope.religious_work": {
-   "subject_sha": "523dc16cdc6e186ab8f13a91e87e46f25bc678b6166675aeb19b0feeec7882f6",
+   "subject_sha": "0f7287160db85e3edff0dbc166040c106fca5fb812927d651803ed66eb6c4841",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "An office worker, cook or counselor at a church-run seminary, camp, retirement home, mission board or denominational agency who knows the employer only as a nonprofit. The W-2 shows wages in box 1, but boxes 4 and 6 are empty because the employer filed the church election.",
-       "why_no": "They do not know the employer is 'a church or other religious body' or is one 'a church controls'. The help names only a school, hospital or charity. The decisive fact, a W-2 with no social security or Medicare tax withheld, is not asked until after the gate.",
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A church employee of a qualified church-controlled organization that does not fit the help's three named examples—for example, a church-controlled camp, publishing house, or missionary-service organization—whose W-2 boxes 4 and 6 are empty because the organization has an exemption certificate.",
+       "why_no": "They read 'paid by a church or religious body' as requiring the employer itself to be the church or religious body, and read the help's 'school, hospital or charity' list as the complete set of church-controlled employers that count.",
        "line": "scope.church_exempt_wages_if_religious_work",
-       "irs_text": "i1040sse p. 1: \"Church employee income is wages you received as an employee ... of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes\"",
-       "severity": "medium",
-       "fix": "Widen the gate to cover a fact the filer can check: 'or did you (or your spouse) get a Form W-2 with wages in box 1 but boxes 4 and 6 (social security and Medicare tax withheld) empty?' Also widen the help to 'any organization a church or denomination controls, such as a seminary, camp, retirement home, mission board or agency'."
+       "irs_text": "i1040sse (2025), p. 1: 'Church employee income is wages you received as an employee … of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes.'",
+       "severity": "high",
+       "fix": "Broaden the gate to include 'or by a qualified church-controlled organization' and make the help examples non-exhaustive, such as 'a school, hospital, charity, camp, publishing house, or mission society controlled by a church or religious body'; then ask the empty-boxes-4-and-6 question for any such employer."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A member of a Catholic or other religious order who has not taken a vow of poverty (a lay brother, sister or associate). The order assigns them to work for an outside, non-religious employer that pays them.",
-       "why_no": "They are not 'clergy (a minister, priest, rabbi or imam)', and their payer is not 'a church or other religious body'. The gate never mentions members of religious orders, even though the gated question does.",
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "An ordained minister whose only 2025 compensation from the church is a rent-free parsonage, utilities, and/or meals and lodging furnished for the church's convenience, with no cash salary or housing allowance.",
+       "why_no": "The gate asks whether they were 'paid' and the help says 'pay in housing'; the filer treats furnished housing and meals as not being paid and sees no cash amount to report.",
        "line": "scope.clergy_if_religious_work",
-       "irs_text": "i1040sse p. 1: \"you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn’t taken a vow of poverty, or Christian Science practitioner\"",
-       "severity": "medium",
-       "fix": "Add to the gate: 'or are you (or your spouse) a member of a religious order, whoever paid you'. Add the order member to the help text."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A minister or order member whose 2025 compensation was mainly or entirely in kind (a parsonage, utilities, meals and lodging), or love offerings and gifts from congregants, with little or no cash salary.",
-       "why_no": "The gate asks whether they were 'paid for work'. They see housing and personal offerings as support or gifts, not pay.",
-       "line": "scope.clergy_if_religious_work",
-       "irs_text": "i1040sse p. 1: \"Also, include on line 2: • The rental value of a home or an allowance for a home furnished to you (including payments for utilities); and • The value of meals and lodging provided to you, your spouse, and your dependents\"",
-       "severity": "medium",
-       "fix": "Reword the gate to 'paid, or given housing, a housing allowance, meals, lodging or offerings, for work ...'. Alternatively, ask first whether the filer or spouse is clergy or a religious-order member, whatever the form of pay."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A self-employed religious officiant with a title outside the parenthetical list, such as a licensed or commissioned minister, pastor, deacon, cantor, swami or pandit. Families, not a congregation, paid this person directly for weddings, funerals or ceremonies.",
-       "why_no": "The payer was not 'a church or other religious body'. The officiant reads 'clergy (a minister, priest, rabbi or imam)' as a complete list of titles that does not include theirs.",
-       "line": "scope.clergy_if_religious_work",
-       "irs_text": "i1040sse p. 1: \"you must pay SE tax on salaries and other income for services you performed as a minister\"",
-       "severity": "low",
-       "fix": "Change the parenthetical to 'clergy of any faith or title (for example, a minister, pastor, priest, deacon, cantor, rabbi or imam), including fees paid directly by individuals for weddings, funerals or other services'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A fiscal-year filer who is clergy or a church employee, whose tax year began in 2025 and runs into 2026, with the religious work or pay falling in 2026.",
-       "why_no": "'In 2025' reads as the calendar year, not the tax year.",
-       "line": "scope.clergy_if_religious_work",
-       "irs_text": "i1040sse p. 3: \"If your tax year is a fiscal year, use the tax rate and annual earnings limit that apply at the time the fiscal year begins.\"",
-       "severity": "low",
-       "fix": "Say 'During your 2025 tax year' instead of 'In 2025'."
+       "irs_text": "i1040sse (2025), p. 1: 'Also, include on line 2: • The rental value of a home or an allowance for a home furnished to you (including payments for utilities); and • The value of meals and lodging provided to you, your spouse, and your dependents for your employer’s convenience.'",
+       "severity": "high",
+       "fix": "Ask about compensation in cash or in kind, including parsonage/rental value, utilities, meals, and lodging, rather than only whether the filer was 'paid'; or gate on 'received any compensation or allowance as a minister, religious order member, or Christian Science practitioner.'"
       }
      ],
-     "prompt_sha": "2ab507d50e9e56792b8177c07428d591c18817b4153e6c3b500fa61bc3e872c5",
+     "prompt_sha": "11f3bca2b4440de73f494dc2c67bb168ee6d821b4c6eff273e927ad5df6be546",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.169728,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.religious_work.523dc16cdc6e.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.religious_work.0f7287160db8.1.response.txt"
     }
    ],
    "condition": "scope.religious_work",
@@ -1510,58 +1431,68 @@
    ]
   },
   "gate:scope.rental": {
-   "subject_sha": "3ad3f0ddc874761ed66659cabc604785e32b72e192c85d7a14bbf66531055218",
+   "subject_sha": "bee1dfbac974fabda3ca949a72c4c29104cd3abeacf01a8eeaab1c45dcd10bbf",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer who leases a car, or rents equipment such as a camera rig or trailer, from someone else and rents it on to others in 2025 (for example a leased car listed on Turo, or rented tools sublet to a contractor). The filer earns rent from personal property they do not own.",
-       "why_no": "The gate asks whether they rented out 'anything you own'. They own nothing they rented out, so a truthful answer is No.",
-       "line": "scope.rent_personal_if_rental (the refusal for personal-property rental is never reached)",
-       "irs_text": "i1040se (2025) p. 5, Personal property: \"Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles.\" The rule turns on renting personal property, not on owning it.",
-       "severity": "high",
-       "fix": "Drop 'you own' or broaden it: \"...rent out, sublet, or offer for rent anything, whether you own it, lease it, or rent it from someone else...\""
-      },
-      {
-       "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A cash-basis filer who rented equipment or a vehicle to someone in late 2024 and received the rent in January 2025. Nothing was rented or offered for rent during 2025.",
-       "why_no": "'In 2025, did you ... rent out, or offer for rent' asks about the rental activity in 2025, not about rent received in 2025, so a truthful answer is No.",
+       "who": "A filer rented a trailer or piece of equipment to a neighbor in 2024 and received the final rental payment in 2025; no rental agreement was active or offered in 2025.",
+       "why_no": "Reads 'In 2025, did you ... rent out' as asking only about rentals made or offered during 2025, so answers No because the renting happened in 2024.",
        "line": "scope.rent_personal_if_rental",
-       "irs_text": "i1040se (2025) p. 5, Personal property: rental of personal property is not reported on Schedule E but on Schedule C or Schedule 1, lines 8l and 24b. Rent received in 2025 is 2025 income regardless of when the rental occurred.",
+       "irs_text": "i1040se p. 5, Personal property: 'Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles. ... If your rental of personal property is not a business, see the instructions for Schedule 1 (Form 1040), lines 8l and 24b...'",
        "severity": "high",
-       "fix": "\"In 2025, did you ... rent out or offer for rent anything, or receive any rent or royalties (including rent for an earlier year)?\""
+       "fix": "Ask whether the filer received rental income in 2025 as well as whether they rented out or offered property for rent in 2025; state that a payment received in 2025 for an earlier rental counts."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer who rents out personal items such as camera gear, costumes, tools, a boat, an RV, a jet ski or a bike. None of these is a house, a room, land, or (to them) a 'vehicle'.",
-       "why_no": "The help lists only real estate: \"A house, an apartment, a room, land or a vacation home counts\". The filer reads it as the whole scope and concludes the question is about real estate.",
+       "pattern": "2",
+       "who": "A filer owns construction equipment and leases it to a contractor for monthly payments, calling the arrangement a lease rather than a rent.",
+       "why_no": "The gate says 'rent out'; the help's 'even one you lease and rent on to others' sounds like subleasing from someone else. They answer No because they leased the equipment out rather than rented it.",
        "line": "scope.rent_personal_if_rental",
-       "irs_text": "i1040se (2025) p. 5, Personal property: \"rental of personal property, such as equipment or vehicles\"; the business test (\"primary purpose ... income or profit ... continuity and regularity\") and the non-business routing to Schedule 1 lines 8l and 24b.",
+       "irs_text": "i1040se p. 5, Personal property: 'Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles.'",
        "severity": "medium",
-       "fix": "Add to the help: \"Renting out any belongings counts too, such as a car, boat, RV, trailer, tools, camera gear or other equipment, including through an app such as Turo.\""
+       "fix": "Say 'rent out, lease out, license, or otherwise make the property available for use for payment' instead of only 'rent out.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who earns money from car-sharing apps, or who supplies equipment for a fee as part of a service (a photo booth, DJ gear, a bounce house, a party-rental item delivered and set up).",
-       "why_no": "They think of the income as 'sharing' or as pay for a service, not as renting something out, and answer No.",
+       "who": "A filer rents a personal trailer to a neighbor for one weekend for $150 and has no profit motive or continuing activity.",
+       "why_no": "Reads 'rent out' as a rental business or investment activity; answers No because this was a one-time personal favor, not a business.",
        "line": "scope.rent_personal_if_rental",
-       "irs_text": "i1040se (2025) p. 5, Personal property: \"Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles.\"",
+       "irs_text": "i1040se p. 5, Personal property: 'Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles. ... If your rental of personal property is not a business, see the instructions for Schedule 1 (Form 1040), lines 8l and 24b...'",
        "severity": "medium",
-       "fix": "Add to the help: \"Count money from car-sharing or peer-to-peer rental apps, and fees for letting others use your equipment, even when you also provide a service with it.\""
+       "fix": "State that a one-time rental, a rental at a loss, and a nonbusiness rental all count; the gate is not limited to rental businesses."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer rents out furniture separately from any home or land, or rents out a boat or horse; the help lists a house, apartment, room, land, vacation home, car or equipment but not these items.",
+       "why_no": "Treats the help examples as the complete list of what counts and answers No because the rented item is not one of the listed examples.",
+       "line": "scope.rent_personal_if_rental",
+       "irs_text": "i1040se p. 5, Personal property: 'Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles.'",
+       "severity": "medium",
+       "fix": "Use 'tangible personal property, including furniture, appliances, boats, aircraft, livestock, and equipment' and say the examples are not exhaustive; distinguish only furniture actually leased with real estate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer lets a contractor use their excavator for a month in exchange for remodeling services, with no cash rent.",
+       "why_no": "Reads 'rent out' as receiving money rent; answers No because no cash was paid.",
+       "line": "scope.rent_personal_if_rental",
+       "irs_text": "i1040se p. 5: 'If you received services or property instead of money as rent, report the fair market value of the services or property as rental income on line 3.'",
+       "severity": "medium",
+       "fix": "Say 'rent out for cash, services, or other property' and include barter or exchange."
       }
      ],
-     "prompt_sha": "d9288b1c47e8fb55aa6c4ae13d41bcf1166b2bf39690e1f9e10a966fb8072cbb",
+     "prompt_sha": "c5e279857e9225a6608eb27294c52a62ca6f1a588ece29b0035d35e7528c445a",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.093336,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.rental.3ad3f0ddc874.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.rental.bee1dfbac974.1.response.txt"
     }
    ],
    "condition": "scope.rental",
@@ -1606,58 +1537,17 @@
    ]
   },
   "gate:scope.strike_pay_if_pay": {
-   "subject_sha": "82e31000e8f02af3445bd3ff6562c2ae187bc0876c9c053929d77a65f754740d",
+   "subject_sha": "8ef0d1d2973d46bb4a316ec093501f1c92d9c44d3d1b478d0eff59efbf540e39",
    "samples": [
     {
-     "verdict": "FALSE_NO",
-     "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A striking worker paid weekly benefits by a strike fund that is not a union, such as a labor council solidarity fund, a worker-run or crowdfunded strike fund, or another organization's hardship fund. The payments required picket duty or went to every striker regardless of need.",
-       "why_no": "The gated helper and the input both ask about benefits 'from a union'. The payer was not their union, so a truthful no follows and the input is never reached.",
-       "line": "person.strike_if_pay",
-       "irs_text": "i1040gi p. 24, Line 1h: 'Strike or lockout benefits (other than bona fide gifts)' with no limit on who pays them",
-       "severity": "high",
-       "fix": "Ask: 'In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits from a union, strike fund or any other source (in cash or in kind)?' Remove 'from a union' from the input as well."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A worker who was locked out by the employer and did not strike. The worker got lockout benefits from the union and no Form W-2 shows them.",
-       "why_no": "The parent gate asks only about 'wages, tips or strike benefits that are not on a W-2'. A lockout is not a strike and the payments were not wages, so the worker answers no at the parent. The child question that names lockout benefits is never asked.",
-       "line": "person.strike_if_pay",
-       "irs_text": "i1040gi p. 24, Line 1h: 'Strike or lockout benefits (other than bona fide gifts)'",
-       "severity": "medium",
-       "fix": "Ask the strike or lockout question directly rather than behind the pay-not-on-W-2 parent. At minimum, change the parent to 'wages, tips, or strike or lockout benefits that are not on a W-2'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A striker whose union paid a flat weekly amount to every member on the picket line. The union called it 'assistance' or 'support', and no form was issued.",
-       "why_no": "The question says 'other than bona fide gifts' and the help says 'Leave out true gifts'. The filer treats the union's help as a gift and answers no, or enters zero. Benefits conditioned on picketing or paid without regard to need are not bona fide gifts.",
-       "line": "person.strike_if_pay",
-       "irs_text": "i1040gi p. 24, Line 1h: 'Strike or lockout benefits (other than bona fide gifts)' must be included in the total on line 1h",
-       "severity": "medium",
-       "fix": "Ask about facts the filer can check: did you get any money or goods from a union or strike fund during a strike or lockout? Then classify with factual questions, such as whether the payments required picket duty or were paid to members regardless of need. Treat them as taxable unless they were based only on need with no conditions."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A striker whose union or strike fund gave groceries or food vouchers, or paid the striker's rent or utilities directly to the landlord or utility, instead of paying cash.",
-       "why_no": "The words 'How much did you get' and the parent's grouping with 'wages, tips' suggest cash pay. The filer does not see in-kind support or third-party payments as benefits they 'got' and enters zero or answers no.",
-       "line": "person.strike_if_pay",
-       "irs_text": "i1040gi p. 24, Line 1h: 'Strike or lockout benefits (other than bona fide gifts)'",
-       "severity": "medium",
-       "fix": "Add help: 'Include the value of food, vouchers, and rent or bills paid for you, not only cash.'"
-      }
-     ],
-     "prompt_sha": "190fab861dd0c3b553f5dd21e79b14c70d25c5318f620950e70e4a65097854e7",
+     "verdict": "SOUND",
+     "findings": [],
+     "prompt_sha": "726e17e872e1640f50edd1f956387cfb1b80ba31f6bac74e5bf0fc47b61e45c4",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.070044,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.strike_pay_if_pay.82e31000e8f0.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.strike_pay_if_pay.8ef0d1d2973d.1.response.txt"
     }
    ],
    "condition": "scope.strike_pay_if_pay",
@@ -1688,38 +1578,28 @@
    ]
   },
   "gate:scope.tips_unreported_if_pay": {
-   "subject_sha": "8ae01bacb9f6495a70e32307fe0c011c7d923dc968e5758b5792dcbb9756157b",
+   "subject_sha": "8812e11ed39cffa878c374c9ba9c75450c64672f13baba0d6ae1aa23edd9a5e4",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A restaurant server or hotel concierge, or the spouse on a joint return, is paid on a W-2 and reports every cash and card tip to the employer, so W-2 box 7 shows those tips. In 2025 customers also gave them event tickets, passes or a gift card worth a few hundred dollars.",
-       "why_no": "The parent question asks about 'wages, tips or strike benefits that are not on a W-2'. This filer's wages and tips do appear on the W-2, so they answer no. They do not see that noncash tips are never on a W-2. The noncash-tip question sits only under this parent, so the filer never reaches the words 'tips that were not money'.",
-       "line": "person.tips_noncash_if_unreported",
-       "irs_text": "i1040gi p. 24, Line 1c: 'Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value. Although you don't report these noncash tips to your employer, you must report them on line 1c.'",
-       "severity": "medium",
-       "fix": "Do not reach the noncash-tip question only through the 'not on a W-2' parent. Either ask it on its own for every filer with W-2 wages, or add to the parent's words and help: 'including tips that were not money, such as tickets, passes or other items of value. These are never on a W-2, even when all your other tips are.'"
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A tipped employee, such as a valet, bartender or tour guide, whose customers gave them concert tickets, sports passes, a bottle of wine or a gift card in place of or on top of money.",
-       "why_no": "To this filer, 'tips' means cash or card tips. They think of items from customers as gifts, not tips or pay. So at both the parent question and the child question ('cash or card tips ... not reported in full ... or tips that were not money') they answer no, or they stop reading after the cash-tip part.",
+       "who": "An employee who received only noncash tips in 2025, such as tickets, passes, meals, or other items of value from customers, and no unreported cash or card tips; they may also have ordinary W-2 wages.",
+       "why_no": "They read the first gate's phrase 'wages, tips, or strike or lockout benefits that are not on a W-2' as asking about cash pay or cash tips, not tickets or other noncash items. Because their W-2 wages are reported and they did not think of noncash items as 'wages' or 'tips' for this question, they answer no; the second helper that expressly mentions 'tips that were not money' is never reached.",
        "line": "person.tips_noncash_if_unreported",
-       "irs_text": "i1040gi p. 24, Line 1c: 'include the value of any noncash tips you received, such as tickets, passes, or other items of value'",
+       "irs_text": "i1040gi p. 24, Line 1c: 'Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value. Although you don’t report these noncash tips to your employer, you must report them on line 1c.'",
        "severity": "medium",
-       "fix": "Ask noncash tips as a separate yes/no question with its own wording: 'Did customers give you (or your spouse) anything other than money for your service at a job, such as tickets, passes, gift cards or other items of value? These count as tips even if you think of them as gifts.' Keep it apart from the question on unreported cash tips."
+       "fix": "Broaden the first gate to ask directly about 'tips of any kind, including noncash tips such as tickets, passes, meals, services, or other items of value,' or remove the parent gate so the noncash-tip question is asked whenever the filer had any tip income."
       }
      ],
-     "prompt_sha": "1125ab39deed906775c802a4f433eddb48fff0b4278d5d548304e13fa18ded31",
+     "prompt_sha": "39f4c40b652cd1dc0de82f05497e5d779ed2b0b6a9e2b8d4a649261ec7b339f7",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.054772,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scope.tips_unreported_if_pay.8ae01bacb9f6.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_scope.tips_unreported_if_pay.8812e11ed39c.1.response.txt"
     }
    ],
    "condition": "scope.tips_unreported_if_pay",

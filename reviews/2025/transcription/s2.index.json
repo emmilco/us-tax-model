@@ -6,15 +6,15 @@
  "head_rows": {
   "printed lines compared": "17",
   "agree / disagree / missing": "14 / 3 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-17); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "s2.other",
-   "record": "642f5afe182398b66ac0b8aea8760ced96f7077a42b43e535de6bca49de7d983",
+   "record": "7f24498b1b4a8dd2478df9ea3600e9e33bf11e1896a19f66445a1a26f876540d",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 113, Lines 9 and 13 (household employment taxes; uncollected social security and Medicare tax on W-2 box 12 codes A, B, M, N). As in the landing round: the reply's screen for Schedule 2 amounts the tool does not figure leaves out s2.household_employee and s2.w2_marks (both in its input list), so the line other forms rely on (s8812 line 22, s1a, tipjob) would not refuse a Schedule H or uncollected-tax return. It also reads s2.mortgage_subsidy and s2.lookback raw (the project asks them only of a home owner and of a Schedule C filer). Triage (pass fbc614250ee5): 2,669/2,922 agree; no value in the bank; completed: 35 candidate-unknown (s2.mortgage_subsidy not asked); 218 candidate-/project-unknown on incomplete or refused records.",
-   "subject_key": "7fd4de57d746fad98137ddd618acd700f01591be1c9daf314d1c8b46b4c661a6"
+   "ruling": "Ruling: model error; i1040gi p. 111, Line 1y, \"Other additions to tax\". The reply keeps the screening reading the earlier ruling refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/s2.json): 1913 of 3472 comparisons agree, 1913 of 2713 in scope; completed {\"candidate-unknown\": 36, \"value\": 256}. Project stands.",
+   "subject_key": "88d1d3b7db8106aea208bde70f41ae87a51b1c0cf442f3181981c53bee470bd9"
   },
   {
    "key": "s2.line8_file",
@@ -31,16 +31,16 @@
   },
   {
    "key": "1z",
-   "record": "642f5afe182398b66ac0b8aea8760ced96f7077a42b43e535de6bca49de7d983",
+   "record": "7f24498b1b4a8dd2478df9ea3600e9e33bf11e1896a19f66445a1a26f876540d",
    "status": "AGREE",
-   "subject_key": "3ad43c2c521dca72ebf8b99f8ced1d024e1af30ad4595a9297185779ef3e356c"
+   "subject_key": "485506b124f42b5d02e783b426c0db842b3edf8f54301ea5aa5db7c4155d17a0"
   },
   {
    "key": "2",
-   "record": "78711551cece2a9b3a3c4d4b199dd675f15a9f329e74443ee3bd7f99400a853a",
+   "record": "7f24498b1b4a8dd2478df9ea3600e9e33bf11e1896a19f66445a1a26f876540d",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; the project refuses alternative minimum tax through the computed screen s2.amt (Form 6251 refusal on line 2; this round adds the Schedule 1 line 8a net operating loss deduction, Form 6251 line 2e, to its line 4 estimate, s2.amt_l4_sum) and enters zero otherwise; the reply figures Form 6251 itself with its own refusals. Triage (pass 4d367142f549) 2,550/3,238 agree with no value difference anywhere: on completed returns 208 candidate-unknown (the reply reads Form 6251 inputs the interview does not ask, e.g. s2.amt_boat) and 2 candidate-refuses; the rest are on refused or incomplete records (171 project-refuses at s2.amt). f1040s2 line 2; i6251 Who Must File. As in the Goal-1 round.",
-   "subject_key": "9f7c27c5f93dfd58ff133c9b030cff664a4e1cb548d6eaab743880f1ccc0ceb5"
+   "ruling": "Ruling: scope; f1040s2 p. 112, Line 2, \"See the Instructions for Form 6251 to see if you must file the form\". The project refuses alternative minimum tax through the computed s2.amt screen and enters zero otherwise; the reply figures Form 6251 where the project refuses, and the differences are those refusals. Triage executable-triage-v2 (.transcription/triage/2025/s2.json): 2741 of 3472 comparisons agree, 1862 of 2290 in scope; completed {\"candidate-refuses\": 50, \"candidate-unknown\": 280}. Project stands.",
+   "subject_key": "68a37ccac418d5092e6f8c714f492b6ac501c2916a134f65f6a4ca4a88c981f9"
   },
   {
    "key": "3",
@@ -110,17 +110,17 @@
   },
   {
    "key": "21",
-   "record": "78711551cece2a9b3a3c4d4b199dd675f15a9f329e74443ee3bd7f99400a853a",
+   "record": "7f24498b1b4a8dd2478df9ea3600e9e33bf11e1896a19f66445a1a26f876540d",
    "status": "AGREE",
-   "subject_key": "aaa390a3cfd6b99fa62a50dc23a53a91b34aadf822a0a02d628c6ac0f27d0a72"
+   "subject_key": "f16024773758489a9213323fb4ca464aecf69dc24fc6d4975b9007f2eef139fc"
   }
  ],
  "subjects": {
-  "s2.other": "1adc784f7dd0d49a6c6364a5b0831ccfd74f745df74bed8edcea91e7649d2dae",
+  "s2.other": "55edc29092a85906e9d06ed6d874176e760632c8c5aed7dc99f4c407f806be52",
   "s2.line8_file": "deb8be263885897cf5058b90185a21cfbad1938e3b0c9298cb84098d5a29294d",
   "1a": "45c38ce8fdfae6506bcf62fdeee06baaffe971d62e9f9cdb5cbb53c45888473b",
-  "1z": "acdd300bc19203a1c6f82e0ae7fa541b71afe7546f9a6992bda1cf1c27853811",
-  "2": "9ad8ea8833d99e8420ae4019a963e3eb5d5c3f05ec65bec7d91ea48107c0d94f",
+  "1z": "33d872e88e513fc79c3fba1a08807a2e2dba942d5af1890a2bf7ffb33623e9d5",
+  "2": "f34b908df8ab8d55184a4931d2b5d6e57c70e23818476b85fdb76cbc28184705",
   "3": "7ab9b1b03d4566d66f61819570d3d1f50e8cef92e15293d3637f871dfcc2e150",
   "4": "953ef54c0b1d62d61d6b53201beb0d3ad1e1265d162735865c2ae696027a420c",
   "5": "6bd6e5be7ca48e5b0d354c7a7975c3d59856c6de1ab596825db1f7b0c0d6dfb0",
@@ -132,13 +132,13 @@
   "12": "8815af92f32d42a0845b67cc205b1f75b926aa1f211865b195398d8c43314de6",
   "17c": "a0773b09a661c82935a41d37eac6c5d2fc11bd478506d923f364a2385b9616d7",
   "18": "70b979917d928776213d250602da518e7d7b607beb59522fca084ad3286f5069",
-  "21": "d73996c0569ab0f6d830592a9322a2886f77c234c8829b2cebbf5d03965e06f0"
+  "21": "8da015df877f6bd19e6789e2d04a8246821f588ab218a72b99b684b72d67311a"
  },
  "__rest__": "afebc9cd3ed3e50a0f1f9e9d83cb49dd824e77c8da32f20b0c141d045a8c0355",
  "foreign": {
   "s2.other": "6f2f86896e47652538c236b09bafbc66489ff2838ddfdbded44cc80c1a5592db",
   "1z": "6f2f86896e47652538c236b09bafbc66489ff2838ddfdbded44cc80c1a5592db",
-  "2": "8b0e8fe60ef24abc62cca3fb8cd81f07b9b951a7d87222394465a77b210022d9",
+  "2": "f8a83ec6a29c0b3235346cdad5f82334809ddd897eef0153490b1db8c4d5412b",
   "3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "5": "cd35aebd2a8b869daeb60aaf1dec8855c88d4feae9e81366508b9f396e5e9d42",
   "6": "e6901d0a1d64fd79f936339dd644932cafe3d09f2213f4d3b5d604b809e5949e",

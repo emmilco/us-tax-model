@@ -213,15 +213,15 @@
 ## (helper) — `person.died_before_65`
 
 - **Authored helper label:** The final return of a person who died in 2025 before reaching age 65 (asked only of a person born in 1960, or on January 1, 1961; otherwise no)
-- **Encoded (Bool):** Choose — [helper "Born in 1960, or on January 1, 1961 (a person whose 65th birthday, or the day before it, fell in 2025)" = true → helper "Is this the final return of a person who died in 2025 before reaching age 65?"] [helper "Born in 1960, or on January 1, 1961 (a person whose 65th birthday, or the day before it, fell in 2025)" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Born in 1960, or on January 1, 1961 (a person whose 65th birthday, or the day before it, fell in 2025)" = true → helper "Did this person die in 2025 before reaching age 65?"] [helper "Born in 1960, or on January 1, 1961 (a person whose 65th birthday, or the day before it, fell in 2025)" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.turned_65_this_year",{"const":true}],"op":"test"},"then":"person.died_at_64"},{"guard":{"eq":["person.turned_65_this_year",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.died_at_64`
 
-- **Authored helper label:** Is this the final return of a person who died in 2025 before reaching age 65?
-- **Encoded (Bool):** Input — Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
-- Expr: `{"op":"input","source":"Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)"}`
+- **Authored helper label:** Did this person die in 2025 before reaching age 65?
+- **Encoded (Bool):** Input — Did you die in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+- Expr: `{"op":"input","source":"Did you die in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.educator_max`
@@ -615,8 +615,8 @@
 ## (helper) — `person.household_wages`
 
 - **Authored helper label:** Wages you received as a household employee that were not reported on Form(s) W-2
-- **Encoded (NonNegDollars):** Input — How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
-- Expr: `{"op":"input","source":"How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none."}`
+- **Encoded (NonNegDollars):** Input — How much were you paid in 2025 for work in or around a household's home, or for its members, by households that gave no W-2? Zero if none.
+- Expr: `{"op":"input","source":"How much were you paid in 2025 for work in or around a household's home, or for its members, by households that gave no W-2? Zero if none."}`
 - Cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2", "An employer isn’t required to provide a Form W-2 to you if they paid you wages of less than $2,800 in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `person.household_wages_if_pay`
@@ -629,8 +629,8 @@
 ## (helper) — `person.strike`
 
 - **Authored helper label:** Strike or lockout benefits you received (other than bona fide gifts)
-- **Encoded (NonNegDollars):** Input — How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
-- Expr: `{"op":"input","source":"How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none."}`
+- **Encoded (NonNegDollars):** Input — How much did you get in 2025 in strike or lockout benefits? Leave out true gifts and state unemployment pay. Zero if none.
+- Expr: `{"op":"input","source":"How much did you get in 2025 in strike or lockout benefits? Leave out true gifts and state unemployment pay. Zero if none."}`
 - Cite: [i1040gi] p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout benefits (other than bona fide gifts)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `person.strike_if_pay`
@@ -650,7 +650,7 @@
 ## (gate) — `person.mw_box1_if_mw`
 
 - **Authored helper label:** Medicaid waiver payments in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)
-- **Encoded (NonNegDollars):** Choose — [scope helper "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?" = true → helper "Nontaxable Medicaid waiver payments reported in box 1 of Form(s) W-2"] [scope helper "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [scope helper "In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?" = true → helper "Nontaxable Medicaid waiver payments reported in box 1 of Form(s) W-2"] [scope helper "In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?" = false → line zero]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.medicaid_waiver",{"const":true}],"op":"test"},"then":"person.mw_box1"},{"guard":{"eq":["scope.medicaid_waiver",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -664,7 +664,7 @@
 ## (gate) — `person.mw_not_box1_if_mw`
 
 - **Authored helper label:** Medicaid waiver payments not in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)
-- **Encoded (NonNegDollars):** Choose — [scope helper "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?" = true → helper "Nontaxable Medicaid waiver payments not reported in box 1 of a Form W-2"] [scope helper "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [scope helper "In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?" = true → helper "Nontaxable Medicaid waiver payments not reported in box 1 of a Form W-2"] [scope helper "In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?" = false → line zero]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.medicaid_waiver",{"const":true}],"op":"test"},"then":"person.mw_not_box1"},{"guard":{"eq":["scope.medicaid_waiver",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -2986,9 +2986,9 @@
 
 ## (helper) — `person.x_edu_account`
 
-- **Authored helper label:** A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025
-- **Encoded (Bool):** Input — In 2025, was money put into or taken out of a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account that is yours or is held for you?
-- Expr: `{"op":"input","source":"In 2025, was money put into or taken out of a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account that is yours or is held for you?"}`
+- **Authored helper label:** This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026
+- **Encoded (Bool):** Input — At any time in 2025, did you have a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account, or was one held for you; or was money put into a Coverdell ESA for you for 2025 by April 15, 2026?
+- Expr: `{"op":"input","source":"At any time in 2025, did you have a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account, or was one held for you; or was money put into a Coverdell ESA for you for 2025 by April 15, 2026?"}`
 - Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
 
 ## (helper) — `person.x_edu_taxable`
@@ -3001,7 +3001,7 @@
 ## (gate) — `person.x_edu_taxable_if_account`
 
 - **Authored helper label:** A taxable distribution from a Coverdell ESA, a qualified tuition program or an ABLE account (asked only with such an account; otherwise no)
-- **Encoded (Bool):** Choose — [helper "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025" = true → helper "Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?"] [helper "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026" = true → helper "Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?"] [helper "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.x_edu_account",{"const":true}],"op":"test"},"then":"person.x_edu_taxable"},{"guard":{"eq":["person.x_edu_account",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
 
@@ -3015,7 +3015,7 @@
 ## (gate) — `person.x_edu_excess_if_account`
 
 - **Authored helper label:** Excess contributions to a Coverdell ESA or an ABLE account (asked only with such an account; otherwise no)
-- **Encoded (Bool):** Choose — [helper "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025" = true → helper "Do you have excess contributions to a Coverdell ESA or an ABLE account?"] [helper "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026" = true → helper "Do you have excess contributions to a Coverdell ESA or an ABLE account?"] [helper "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.x_edu_account",{"const":true}],"op":"test"},"then":"person.x_edu_excess"},{"guard":{"eq":["person.x_edu_account",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
 

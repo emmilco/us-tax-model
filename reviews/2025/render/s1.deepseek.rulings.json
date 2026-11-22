@@ -5,6 +5,16 @@
  "rulings": [
   {
    "printed": "10",
+   "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
+   "model": "IRS line 10 says 'Combine lines 1 through 7 and 9'; the restatement omits line 4 (other gains) and line 6 (farm income) from the helper and adds only the remaining listed lines plus line 5.",
+   "ruling": "Ruling: scope; f1040s1: line 4 other gains and line 6 farm income are refused (scope.schedule1, scope.farm). Project stands.",
+   "context": "6b759400879326d06ba5643e785896d5fbb8cee7387798c8f2879eab380282e3",
+   "date": "2026-11-17",
+   "run": "52ed43f00e05e95081af8acfa8527d7a51ac1257ba0925ad7b54600d9801f7d3",
+   "subject_key": "7aadba287ffcd7485dbeb9a30623fa71f357f7dde3591e00c91d4e6fed787aac"
+  },
+  {
+   "printed": "10",
    "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
    "model": "IRS line 10 says 'Combine lines 1 through 7 and 9'; the restatement adds only 1, 2a, 3, 7, and 9, omitting lines 4, 5, and 6.",
    "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: its text names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\" (checked on the current forms/2025/scope.yaml); within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the income package changed only the wording of the alimony and unemployment screens, which does not touch this line. Project stands.",
@@ -108,6 +118,16 @@
    "subject_key": "7f9be5ded71d947865771154e204df27af09e5711def8205fd543ac855eb0377"
   },
   {
+   "printed": "20 (box)",
+   "restated": "Choose — [ira helper \"Anyone on the return made traditional IRA contributions for 2025\" = true → household helper \"Married filing separately, and you lived apart from your spouse for all of 2025\"] [ira helper \"Anyone on the return made traditional IRA contributions for 2025\" = false → helper \"Year parameter household.no (false)\"]",
+   "model": "IRS line 20 says to check the box if married filing separately and lived apart from your spouse for the entire year; the restatement only checks it when someone made traditional IRA contributions, an extra condition not in the IRS text.",
+   "ruling": "Ruling: representation; i1040gi p. 96: the box is only meaningful with a traditional IRA contribution; the IRA condition is how the interview reaches it. Project stands.",
+   "context": "6b759400879326d06ba5643e785896d5fbb8cee7387798c8f2879eab380282e3",
+   "date": "2026-11-17",
+   "run": "52ed43f00e05e95081af8acfa8527d7a51ac1257ba0925ad7b54600d9801f7d3",
+   "subject_key": "7a1dcad6a82fda4ebaf2f04af6dabe9928b755d6b989ed68bcd92a5de71e9ab5"
+  },
+  {
    "printed": "25",
    "restated": "Enter the amount from line 24a.",
    "model": "IRS line 25 says 'Add lines 24a through 24z.' The restatement enters only line 24a.",
@@ -161,9 +181,11 @@
    "printed": "26",
    "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
    "model": "IRS line 26 says 'Add lines 11 through 23 and 25'; the restatement omits lines 12, 14, and 23.",
-   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same ruling as the earlier rounds; unchanged by fix round 3.",
-   "context": "592f4736288df2d3c768037385399136ae34f1ea628b3dbe8946ec70574d23a1",
-   "subject_key": "2ad3d6e44e02598b243819ff18e9506a9e9d3f6e56ffd0f7bff28193d66cc4e6"
+   "ruling": "Ruling: scope; f1040s1: lines 12, 14 and 23 are refused (the tool's screens refuse those cases); the restatement lists the lines the tool computes. Project stands.",
+   "context": "6b759400879326d06ba5643e785896d5fbb8cee7387798c8f2879eab380282e3",
+   "date": "2026-11-17",
+   "run": "52ed43f00e05e95081af8acfa8527d7a51ac1257ba0925ad7b54600d9801f7d3",
+   "subject_key": "634f64f1082cb40cd5df3aab91cfa82926d0f84ae94b15b6d239ce9df1ce832b"
   },
   {
    "printed": "26",
@@ -180,6 +202,26 @@
    "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same ruling as the earlier rounds.",
    "context": "ff5e80e7a641e4c6497714e5fbe9477e1fa6b90cd39cee790496ca9a6ec4cbea",
    "subject_key": "2ad3d6e44e02598b243819ff18e9506a9e9d3f6e56ffd0f7bff28193d66cc4e6"
+  },
+  {
+   "printed": "5",
+   "restated": "Choose — [scope helper \"In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?\" = true → sche line 41] [scope helper \"In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?\" = false → helper \"Zero\"]",
+   "model": "IRS line 5 is 'Rental real estate, royalties, partnerships, S corporations, trusts, etc.'; the restatement returns Schedule E line 41 only when the rental/royalty screen is true and otherwise zero, omitting partnership, S corporation, and trust amounts.",
+   "ruling": "Ruling: scope; f1040s1 p. 1: partnership, S corporation and trust amounts are refused (scope.k1); the line reads Schedule E line 41. Project stands.",
+   "context": "6b759400879326d06ba5643e785896d5fbb8cee7387798c8f2879eab380282e3",
+   "date": "2026-11-17",
+   "run": "52ed43f00e05e95081af8acfa8527d7a51ac1257ba0925ad7b54600d9801f7d3",
+   "subject_key": "7303a67c831e9f27f7a9d057b7e3e5fa7334822f4f1314878ce79dc889b0bb5a"
+  },
+  {
+   "printed": "8e",
+   "restated": "Choose — [helper \"Did you (or, on a joint return, your spouse) receive in 2025 payments under a long-term care insurance contract, or accelerated death benefits under a life insurance contract (Form 1099-LTC; Form 8853)?\" = true → helper \"Form 8853, line 26, added for every Section C\"] [helper \"Did you (or, on a joint return, your spouse) receive in 2025 payments under a long-term care insurance contract, or accelerated death benefits under a life insurance contract (Form 1099-LTC; Form 8853)?\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "IRS instructions say 'Enter the total of the amounts from Form 8853, lines 8, 12, and 26'; the restatement only adds Form 8853 line 26, omitting taxable MSA distributions from lines 8 and 12.",
+   "ruling": "Ruling: scope; i1040gi p. 91: Archer MSA distributions (Form 8853 lines 8 and 12) are refused (scope.archer_msa); the line reads the long-term care amounts. Project stands.",
+   "context": "6b759400879326d06ba5643e785896d5fbb8cee7387798c8f2879eab380282e3",
+   "date": "2026-11-17",
+   "run": "52ed43f00e05e95081af8acfa8527d7a51ac1257ba0925ad7b54600d9801f7d3",
+   "subject_key": "e8352b600642582fbc5a2d4d007c7f26eca343455548aaa329fb679ac66f5fdb"
   },
   {
    "printed": "8f",
@@ -212,6 +254,26 @@
    "ruling": "Ruling: scope; i1040gi p. 91, Line 8j, \"Activity not engaged in for profit income. See Pub. 525\", and Line 8l, \"Income from the rental of personal property if you engaged in the rental for profit but were not in the business of renting such property\". The question excludes the rental of personal property from line 8j, and scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them names \"rental of personal property\" without a for-profit qualifier, so a rental of personal property not for profit (which would belong on line 8j) and one for profit (line 8l) are both refused rather than computed. A refusal by a cited scope screen; no computed amount is wrong. Unchanged by the fix round.",
    "context": "ff5e80e7a641e4c6497714e5fbe9477e1fa6b90cd39cee790496ca9a6ec4cbea",
    "subject_key": "89b7aaf61870ffba3195234a563ced203676d9d41002c0a153a69bfdd9bda5b0"
+  },
+  {
+   "printed": "8s",
+   "restated": "Add person.line8s over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS instructions say to enter the total nontaxable Medicaid waiver payments 'in the entry space in the preprinted parentheses (as a negative number)'; the restatement computes a NonNegDollars positive amount, applying the negative only in the line 9 helper.",
+   "ruling": "Ruling: representation; i1040gi p. 92: the line is the positive amount; the negative sign is applied on line 9 through the line 9 helper. Project stands.",
+   "context": "6b759400879326d06ba5643e785896d5fbb8cee7387798c8f2879eab380282e3",
+   "date": "2026-11-17",
+   "run": "52ed43f00e05e95081af8acfa8527d7a51ac1257ba0925ad7b54600d9801f7d3",
+   "subject_key": "43b837a9038ebf42c93b68d367de9d95a523463ef52fe28010b7c1767676c46d"
+  },
+  {
+   "printed": "9",
+   "restated": "Add line 8a, line 8b, line 8c, line 8e, line 8f, line 8g, line 8h, line 8i, line 8j, line 8k, line 8r, line 8v, helper \"Line 8s as the negative number added on line 9\", and line 8z.",
+   "model": "IRS line 9 says 'Add lines 8a through 8z'; the restatement adds only a subset, and its line8_other gate does not cover omitted items such as lines 8d, 8l, 8n, 8o, 8p, and 8q.",
+   "ruling": "Ruling: scope; f1040s1: lines 8d, 8l, 8n, 8o, 8p and 8q are outside the tool (scope.schedule1 refuses them); the restatement lists the lines the tool computes. Project stands.",
+   "context": "6b759400879326d06ba5643e785896d5fbb8cee7387798c8f2879eab380282e3",
+   "date": "2026-11-17",
+   "run": "52ed43f00e05e95081af8acfa8527d7a51ac1257ba0925ad7b54600d9801f7d3",
+   "subject_key": "42dda78bf23ebcaca8f9c199c05a95a4d03c774b3a4c288d45bc9a93f2bf4669"
   }
  ]
 }

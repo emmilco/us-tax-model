@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
-"""Fail unless every form has a transcription-agreement log and a render-comparison log from
-every required model family (families.json), each with no open ruling, current source hashes, an
-unchanged subject (what the review judged: subjects.py; per compared line for a transcription or
-render log whose form changed or that holds line-scoped reviews, subjects.log_state), and rulings
-that agree with its sidecar.
-An optional family's logs may be missing; those present are held to the same source and subject
-checks, and their open rulings are counted and printed without failing the run. A stale optional log
-(a changed subject or source snapshot) fails only when it would earn second-family credit if it were
-current (compare_families.eligible_when_current); one that would not is reported as stale-ineligible
-and does not fail, since a review is rerun only where it can earn credit. A log whose family
-is in neither list fails. Counts are printed per kind and family. Runs offline in check-all; the logs
-themselves are produced deliberately by transcribe.py and render_compare.py (network steps).
+"""Fail unless every form is satisfied by a current log from a qualified model family (families.json),
+with no open ruling in a current qualified log, current source hashes, an unchanged subject (what the review
+judged: subjects.py; per compared line for a transcription or render log whose form changed or that holds
+line-scoped reviews, subjects.log_state), and rulings that agree with their sidecars.
 
-Only active families (families.json `active`) are checked as above. An inactive family's logs are history:
-counted and printed, never required and never failed for staleness, open rulings or eligibility. Their
-integrity is still checked, for every family, by rulings.check() below (each ruling in a log equals its
-sidecar's) and by `review_store.py check` (every record present and named by its hash).
+A form is satisfied when one qualified family's log is present, current and holds no open ruling; the
+qualified families are asked in the order families.json lists them. Every other log of the form is
+advisory: an advisory family's logs are counted, their open rulings are counted and printed without
+failing the run, and a stale one (a changed subject or source snapshot) fails only when it would earn
+credit if it were current (compare_families.eligible_when_current) and its family is callable; one that
+would not earn credit anyway, or whose family is not callable, is reported as stale-ineligible and does
+not fail, since a review is rerun only where it can earn credit. A log whose family is in neither tier
+fails. Counts are printed per kind and tier. Runs offline in check-all; the logs themselves are produced
+deliberately by transcribe.py, render_compare.py and classm.py (network steps).
+
+`callable` (families.json) says which families the tools may call; it does not decide whose logs count.
+A family that may not be called keeps its logs and their standing, so Claude's current logs go on
+satisfying forms while Claude is not called. Integrity is checked for every family, by rulings.check()
+below (each ruling in a log equals its sidecar's) and by `review_store.py check` (every record present
+and named by its hash).
 
 Optional human reading logs (reviews/<year>/human/) are validated by tools/human_review/logs.py:
 malformed or duplicate records, a reader who is not a named person and a committed log whose
@@ -105,81 +108,121 @@ def log_text(kind, logs, fid, family):
     return text
 
 
-def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, required=True):
-    """One log per form of the family under `logs`; no open ruling; every source hash current;
-    the subject it reviewed (subjects.py) unchanged. For an optional family a missing log is
-    allowed and open rulings are counted, not failed."""
-    problems, open_counts, tolerated = [], {}, []
-    tag = f"{kind} logs [{family}{'' if required else ', optional'}]"
-    waiting = PENDING.get(kind, set()) if required else set()
-    for fid in (expected if expected is not None else forms):
-        text = log_text(kind, logs, fid, family)
-        if text is None:
-            if fid in waiting:
-                print(f"{tag}: {fid}: pending, no review yet (listed in {pending.name()})"); continue
-            problems.append(f"{fid}: no {kind} log"); continue
+def log_faults(kind, fid, family, text):
+    """(open rulings, staleness) in one form's log: how many rulings it leaves open, and why it no
+    longer answers its subject (a changed subject, a source snapshot or reading order that moved on)."""
+    opened = text.count("Ruling: open")
+    stale = []
+    state = review_store.state(kind, fid, family, Y)  # from the index: per line, __rest__, foreign interfaces
+    if state is review_store.NO_INDEX:
+        state = subjects.log_state(kind, fid, Y, text)
+    if state:
+        stale.append(state)
+    for row in re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M):
+        doc_id, sha, cols_sha = row
+        if doc_id in docs and docs[doc_id]["text_sha256"] != sha:
+            stale.append(f"{kind} log was made against a different snapshot of {doc_id}")
+        if doc_id in docs and cols_sha and cols_sha != "-" and docs[doc_id].get("cols_sha256") != cols_sha:
+            stale.append(f"{kind} log was made against a different reading-order text of {doc_id}")
+    return opened, stale
+
+
+def check(kind, logs, optional_env, expected=None):
+    """Every form's logs against the tiers of families.json: satisfied by a qualified family's current log
+    with no open ruling; advisory logs counted, and failed only when stale where they would earn credit.
+    `optional_env=1` tolerates a form no qualified log satisfies (the New York first reviews)."""
+    forms_ = expected if expected is not None else forms
+    fams = families.load(kind)
+    qualified, advisory = fams["qualified"], fams["advisory"]
+    waiting = PENDING.get(kind, set())
+    problems, awaited, unsatisfied, satisfied = [], [], [], {}
+    for fid in forms_:
+        owed, current = [], []
+        for fam in qualified:
+            text = log_text(kind, logs, fid, fam)
+            if text is None:
+                owed.append(f"{fam}: no {kind} log")
+                continue
+            opened, stale = log_faults(kind, fid, fam, text)
+            if opened and not stale:
+                problems.append(f"{fid}: {fam}: open ruling(s) in the {kind} log")
+            if stale:
+                owed.append(f"{fam}: " + "; ".join(stale + ([f"{opened} open ruling(s)"] if opened else [])))
+            elif opened:
+                owed.append(f"{fam}: open ruling(s) in the {kind} log")
+            else:
+                current.append(fam)
         if fid in waiting:
-            problems.append(f"{fid}: has a {kind} log but is still listed as pending; remove it from {pending.name()}")
-        quality = None
-        if family != families.DEFAULT and log_text(kind, logs, fid, families.DEFAULT) is not None:
-            quality = compare_families.compare(kind, fid, family)["quality"]
-            if quality["state"] == "pending":
-                note = f"{fid}: second-family review not eligible: " + "; ".join(quality["blockers"])
-                if required:
-                    problems.append(note)
-                else:
-                    print(f"[{family}, optional] {note}")
-        if "Ruling: open" in text:
-            open_counts[fid] = text.count("Ruling: open")
-            if required:
-                problems.append(f"{fid}: open ruling(s) in the {kind} log")
-        stale = []
-        state = review_store.state(kind, fid, family, Y)  # from the index: per line, __rest__, foreign interfaces
-        if state is review_store.NO_INDEX:
-            state = subjects.log_state(kind, fid, Y, text)
-        if state:
-            stale.append(state)
-        for row in re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M):
-            doc_id, sha, cols_sha = row
-            if doc_id in docs and docs[doc_id]["text_sha256"] != sha:
-                stale.append(f"{kind} log was made against a different snapshot of {doc_id}")
-            if doc_id in docs and cols_sha and cols_sha != "-" and docs[doc_id].get("cols_sha256") != cols_sha:
-                stale.append(f"{kind} log was made against a different reading-order text of {doc_id}")
-        if stale and not required:
-            eligible, blockers = (compare_families.eligible_when_current(quality) if quality is not None
-                                  else (False, [f"no {families.DEFAULT} log to compare with"]))
-            if not eligible:
-                print(f"[{family}, optional] {fid}: stale-ineligible, not a failure ({'; '.join(stale)}); "
-                      f"not eligible for second-family credit even if current: {'; '.join(blockers)}")
-                tolerated.append(fid)
-                stale = []
-        problems += [f"{fid}: {s}" for s in stale]
-    allow_missing = os.environ.get(optional_env) == "1" or not required
-    missing = [p for p in problems if p.endswith(f"no {kind} log")]
-    hard = [p for p in problems if not p.endswith(f"no {kind} log")]
-    for p in hard:
-        print(f"[{family}] {p}", file=sys.stderr)
-    total = len(expected if expected is not None else forms)
-    waited = sum(1 for fid in (expected if expected is not None else forms)
-                 if fid in waiting and log_text(kind, logs, fid, family) is None)
-    logged = total - len(missing) - waited
-    if not required:
-        opened = (f"; open rulings in {len(open_counts)} log(s): " + ", ".join(f"{f} ({n})" for f, n in sorted(open_counts.items()))) if open_counts else "; no open rulings"
-        state = "" if hard else "; snapshots and subjects current" + (
-            f" except {len(tolerated)} stale-ineligible ({', '.join(tolerated)})" if tolerated else "")
-        print(f"{tag}: {logged}/{total} forms logged" + (f" ({', '.join(sorted(set(forms) - {p.split(':')[0] for p in missing}) if expected is None else sorted(set(expected) - {p.split(':')[0] for p in missing}))})" if 0 < logged <= 8 else "") + opened + state)
-    elif missing:
-        print(f"{tag}: {logged}/{total} forms logged; missing: " + ", ".join(p.split(':')[0] for p in missing))
-    elif not hard and waited:
-        print(f"{tag} OK for {logged}/{total} forms logged, {waited} pending (no open rulings, snapshots and subjects current)")
-    elif not hard:
-        print(f"{tag} OK ({total} forms, no open rulings, snapshots and subjects current)")
-    return bool(hard or (missing and not allow_missing))
+            if current:
+                problems.append(f"{fid}: has a {kind} log but is still listed as pending; remove it from {pending.name()}")
+            else:
+                awaited.append(fid)
+                print(f"{kind} logs: {fid}: pending, no review yet (listed in {pending.name()})")
+            continue
+        if current:
+            satisfied[fid] = current[0]
+        else:
+            unsatisfied.append((fid, owed))
+    for fam in advisory:
+        have = opened_n = tolerated = 0
+        for fid in forms_:
+            text = log_text(kind, logs, fid, fam)
+            if text is None:
+                continue
+            have += 1
+            opened, stale = log_faults(kind, fid, fam, text)
+            opened_n += opened
+            if not stale:
+                continue
+            if not fams["callable"].get(fam, False) or log_text(kind, logs, fid, families.DEFAULT) is None:
+                tolerated += 1
+                continue
+            try:
+                quality = compare_families.compare(kind, fid, fam)["quality"]
+                eligible, blockers = compare_families.eligible_when_current(quality)
+            except Exception as ex:  # an absent or unreadable comparison cannot earn credit
+                eligible, blockers = False, [f"no comparison ({type(ex).__name__}: {ex})"]
+            if eligible:
+                problems.append(f"{fid}: {fam}: advisory log is stale where it would earn credit: " + "; ".join(stale))
+            else:
+                tolerated += 1
+                print(f"[{kind}, {fam}, advisory] {fid}: stale-ineligible, not a failure ({'; '.join(stale)}); "
+                      f"not eligible for credit even if current: {'; '.join(blockers)}")
+        if have:
+            note = f"{kind} logs [{fam}, advisory]: {have}/{len(forms_)} form(s) logged"
+            note += f", {opened_n} open ruling(s)" if opened_n else ", no open rulings"
+            note += f", {tolerated} stale-ineligible" if tolerated else ""
+            print(note)
+    for p in problems:
+        print(f"[{kind}] {p}", file=sys.stderr)
+    for fid, why in unsatisfied:
+        print(f"[{kind}] {fid}: no current qualified log ({'; '.join(why)})", file=sys.stderr)
+    total = len(forms_)
+    counts = {}
+    for fam in satisfied.values():
+        counts[fam] = counts.get(fam, 0) + 1
+    detail = ", ".join(f"{fam} {n}" for fam, n in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0])))
+    absent = [fam for fam in qualified if not fams["callable"].get(fam, False)]
+    tier = f"[qualified: {', '.join(qualified)}" + (f"; not callable: {', '.join(absent)}]" if absent else "]")
+    allow_missing = os.environ.get(optional_env) == "1" or not qualified
+    tag = f"{kind} logs"
+    if unsatisfied and not allow_missing:
+        print(f"{tag}: {len(satisfied)}/{total} forms satisfied" + (f" ({detail})" if detail else "") +
+              "; unsatisfied: " + ", ".join(fid for fid, _ in unsatisfied))
+    else:
+        extra = []
+        if awaited:
+            extra.append(f"{len(awaited)} pending (no review yet)")
+        if unsatisfied:
+            extra.append(f"{len(unsatisfied)} unsatisfied tolerated ({optional_env}=1)")
+        print(f"{tag}: {len(satisfied)}/{total} forms satisfied" + (f" ({detail})" if detail else "") +
+              ("; " + "; ".join(extra) if extra else "") + " " + tier)
+    return bool(problems or (unsatisfied and not allow_missing))
 
 
 def check_families(kind, logs):
     """Every log under `logs` belongs to a family named in families.json."""
-    known = set(families.load(kind)["required"]) | set(families.load(kind)["optional"])
+    known = set(families.load(kind)["qualified"]) | set(families.load(kind)["advisory"])
     bad = []
     for form, fam in rulings.forms_with_logs(kind):
         if fam not in known:
@@ -191,23 +234,11 @@ def check_families(kind, logs):
 
 
 def check_kind(kind, expected=None):
-    """Every active required family's logs of a kind, then every active optional family's; an inactive
-    family's logs are counted as history; logs of unlisted families fail."""
+    """Every form's logs of one kind against the tiers of families.json."""
     logs = os.path.join(REVIEWS, kind)
     env = {"transcription": "TRANSCRIPTION_LOGS_OPTIONAL", "render": "RENDER_LOGS_OPTIONAL", "classm": "CLASSM_LOGS_OPTIONAL"}[kind]
-    fams = families.load(kind)
     failed = check_families(kind, logs)
-    for fam in fams["required"]:
-        if fams["active"].get(fam, False):
-            failed = check(kind, logs, env, expected, fam, required=True) or failed
-    for fam in fams["optional"]:
-        if fams["active"].get(fam, False):
-            failed = check(kind, logs, env, expected, fam, required=False) or failed
-    for fam in fams["required"] + fams["optional"]:
-        if not fams["active"].get(fam, False):
-            logged = sum(1 for _, f in rulings.forms_with_logs(kind) if f == fam)
-            print(f"{kind} logs [{fam}, inactive]: {logged} log(s) kept as history; not checked for currency "
-                  f"(set \"active\" in tools/transcription/families.json to check them again)")
+    failed = check(kind, logs, env, expected) or failed
     return failed
 
 

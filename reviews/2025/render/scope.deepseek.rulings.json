@@ -4,6 +4,16 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "armed_forces",
+   "restated": "Input — In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?",
+   "model": "IRS text describes National Guard/reserve members and Armed Forces members on active duty for the relevant expenses; it does not impose a '2022 or later' service condition.",
+   "ruling": "Ruling: representation; the “2022 or later” wording is how the tool asks for the service whose expenses it refuses; the cited page describes those expenses. Project stands.",
+   "context": "ae0db6f7ccb3c68d17dda3c5261f52a2e98eac090e8a2afae5325ce63d62a0bc",
+   "date": "2026-11-17",
+   "run": "b6dbba876d969201eba08f30e6c337fe5eae23059a37856f6a914061408a6f9a",
+   "subject_key": "f6b3e797c5690985843f3a2bb25a7c6a8183a3dae96f5ec2e62af70d973c4473"
+  },
+  {
    "printed": "credits",
    "restated": "Input — Do you want to claim any credit other than the following, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?\n\n- the foreign tax credit claimed without Form 1116\n- the excess social security credit\n- the child tax credit\n- the credit for other dependents\n- the additional child tax credit\n- the earned income credit\n- the credit for child and dependent care expenses (Form 2441)\n- the retirement savings contributions credit (Form 8880)\n- the residential energy credits (Form 5695)\n- the net premium tax credit this tool figures on Form 8962 from your Forms 1095-A (Schedule 3 line 9)\n- the education credits this tool figures on Form 8863 (the American opportunity and lifetime learning credits)",
    "model": "The provided IRS text does not include the Schedule 3 or credit instructions for most listed credits (foreign tax, excess Social Security, child tax, etc.), so the completeness of the 'other than' list cannot be verified.",
@@ -44,6 +54,26 @@
    "ruling": "Ruling: interface gap; f1040s3 p. 1: Part I is lines 1 to 8, line 3 \"Education credits from Form 8863, line 19\" and lines 6a to 6z the other nonrefundable credits; Part II line 9 \"Net premium tax credit. Attach Form 8962\"; Form 1040 line 29, \"American opportunity credit from Form 8863, line 8\". The pages given were Form 1040 pp. 1-2 and i1040gi p. 14 only; the text that would decide the listed items is not among them: interface gap (a coverage gap of the review). Checked against Schedule 3 and the Stage 19 data: the question now lists \"the education credits this tool figures on Form 8863 (the American opportunity and lifetime learning credits)\" among the supported credits, which matches s3.line3 (Form 8863 line 19 when f8863.eligible) and f1040.line29 (Form 8863 line 8 when eligible, its refusal removed); the refusal shown for a yes (scope.ready, f1040.line30, s3.line8) now reads \"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\", no longer naming line 3 or line 29, and its remedy names \"the net premium tax credit figured on Form 8962 and the education credits (Form 8863)\", so Stage 18’s F3 and BUG-0193 are fixed. Education situations that stay refused (Form 8862 or a ban, an academic period with excess assistance, excluded foreign or possession income, recapture) have their own cited screens (f8863.ban, the per-student D3 screens person.edu_over_refused and dependent.edu_over_refused, sa.excluded_income on Form 8863 lines 3 and 14, scope.other_line16), so a filer with such a case who answers no here is still refused. Restatement accepted.",
    "context": "b795eb1f3971518d3022147f07b3d1a8e4af8a56956b17b64731ba75cf4deae8",
    "subject_key": "6f3b824b138b66a206e293c7573fa0adc25fd858628320918d4b5e7c6126201e"
+  },
+  {
+   "printed": "disaster_distribution",
+   "restated": "Input — Did you (or, on a joint return, your spouse) take money from a retirement plan in 2023 or 2024 because of a disaster, and spread its tax over three years or pay any of it back in 2025?",
+   "model": "IRS Form 8915-F also applies to a qualified disaster distribution made 'this year' (2025); the restatement asks only about 2023 or 2024 distributions.",
+   "ruling": "Ruling: representation; the tool asks about 2023 and 2024 distributions because the current-year distribution is read on the retirement form; the cited page covers the spread. Project stands.",
+   "context": "ae0db6f7ccb3c68d17dda3c5261f52a2e98eac090e8a2afae5325ce63d62a0bc",
+   "date": "2026-11-17",
+   "run": "b6dbba876d969201eba08f30e6c337fe5eae23059a37856f6a914061408a6f9a",
+   "subject_key": "0018851c156cedbd82f43227ead337e268672ec1e92f61e0f5dbdebd8a7b5c48"
+  },
+  {
+   "printed": "income_averaging",
+   "restated": "Input — Is your business fishing, and do you (or, on a joint return, your spouse) choose to figure your tax by averaging its income over three years (Schedule J)?",
+   "model": "IRS says income averaging on Schedule J applies to income from farming or fishing; the restatement asks only about a fishing business.",
+   "ruling": "Ruling: scope; farm income is refused (scope.farm), so Schedule J reaches only the fishing case the question names. Project stands.",
+   "context": "ae0db6f7ccb3c68d17dda3c5261f52a2e98eac090e8a2afae5325ce63d62a0bc",
+   "date": "2026-11-17",
+   "run": "b6dbba876d969201eba08f30e6c337fe5eae23059a37856f6a914061408a6f9a",
+   "subject_key": "1a987920379d494f1edfa87590a42cf12f6938c0407ef9d54da3fd27c67b1af5"
   },
   {
    "printed": "other_income",
@@ -140,6 +170,16 @@
    "subject_key": "98c1605d7c52c21f3a56725ae64957df213c997b30690b0b689a1f56f39c7ac3"
   },
   {
+   "printed": "passive",
+   "restated": "Input — In 2025, did you (or, on a joint return, your spouse) have income or a loss from, or sell your share of, a business that you owned but did not help run (a 'passive activity')?",
+   "model": "IRS says passive activities include rental activities regardless of participation; the restatement asks only about a business the filer did not help run.",
+   "ruling": "Ruling: representation; rental activities are handled by the rental scope; the question asks about businesses the filer did not help run. Project stands.",
+   "context": "ae0db6f7ccb3c68d17dda3c5261f52a2e98eac090e8a2afae5325ce63d62a0bc",
+   "date": "2026-11-17",
+   "run": "b6dbba876d969201eba08f30e6c337fe5eae23059a37856f6a914061408a6f9a",
+   "subject_key": "2fe23d7d57f19a68822b705c95218d95399aefe6ea579094f4dca41ecaf955ff"
+  },
+  {
    "printed": "ready",
    "restated": "true = true",
    "model": "'ready' is a program-internal gate with no corresponding IRS line; the provided text does not define an 'all declared scope screens passed' Boolean.",
@@ -170,6 +210,26 @@
    "ruling": "Ruling: interface gap; the married filing separately refusal matches i1040gi p. 14, Married Filing Separately, and the other screens are filer-answered declarations whose items are cited on the lines that read them; for those the pages given (Form 1040, i1040gi p. 14) lack the deciding text. Checked against the data: Stage 18’s F3 is fixed (the scope.credits remedy on scope.ready now says \"the net premium tax credit figured on Form 8962 and the education credits (Form 8863)\", and its form text \"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\" no longer names line 29). The gate is the constant test true = true carrying the five refusals, as restated. Restatement accepted.",
    "context": "b795eb1f3971518d3022147f07b3d1a8e4af8a56956b17b64731ba75cf4deae8",
    "subject_key": "a2a3cdab4d89d0a74803c70a2990d72b06b7aa2253b833cfe678647c3602a6d0"
+  },
+  {
+   "printed": "ready_credits",
+   "restated": "true = true",
+   "model": "It lists Form 8834 as a credit carried from an earlier year, but the IRS text says the unused Form 8834 credit can't be carried back or forward to other tax years.",
+   "ruling": "Ruling: scope; a prior-year Form 8834 credit is refused by the screen; the tool never carries it. Project stands.",
+   "context": "ae0db6f7ccb3c68d17dda3c5261f52a2e98eac090e8a2afae5325ce63d62a0bc",
+   "date": "2026-11-17",
+   "run": "b6dbba876d969201eba08f30e6c337fe5eae23059a37856f6a914061408a6f9a",
+   "subject_key": "18133d94232cbcdff46e7ea3f9b865a69d14034217ba8e8d779d08003408db52"
+  },
+  {
+   "printed": "schedule1",
+   "restated": "(helper \"The answer to scope.reservist_expenses, asked only when the question scope.armed_forces is answered Yes (false otherwise)\" = true or helper \"The answer to scope.military_move, asked only when the question scope.armed_forces is answered Yes (false otherwise)\" = true or helper \"The answer to scope.rent_personal, asked only when the question scope.rental is answered Yes (false otherwise)\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it.\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) have income or a loss from farming?\" = true or helper \"The answer to scope.clergy, asked only when the question scope.religious_work is answered Yes (false otherwise)\" = true or helper \"The answer to scope.church_exempt_wages, asked only when the question scope.religious_work is answered Yes (false otherwise)\" = true or helper \"The answer to scope.w2_marks, asked only when a Form W-2 is listed (false otherwise)\" = true or helper \"The answer to scope.performer_expenses, asked only when the question scope.artist_official is answered Yes (false otherwise)\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) put money into, or take money out of, an Archer MSA or a Medicare Advantage MSA (older kinds of medical savings account, not a health savings account)?\" = true or helper \"The answer to scope.se_plan_other, asked only when a business (Schedule C) is listed (false otherwise)\" = true or helper \"Do you (or, on a joint return, your spouse) own or lease timber land on which you paid to plant or replant trees, in 2025 or in the seven years before?\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) pay a lawyer or court costs to win a claim of unlawful discrimination or a whistleblower award?\" = true)",
+   "model": "It includes clergy/church-exempt wages (Schedule SE items) and w2_marks (statutory employee/Schedule C or code H), which do not themselves require Schedule 1.",
+   "ruling": "Ruling: representation; the helper lists the refused items the tool can see; the cited pages are the authority for the rest. Project stands.",
+   "context": "ae0db6f7ccb3c68d17dda3c5261f52a2e98eac090e8a2afae5325ce63d62a0bc",
+   "date": "2026-11-17",
+   "run": "b6dbba876d969201eba08f30e6c337fe5eae23059a37856f6a914061408a6f9a",
+   "subject_key": "adc7310cbede35e2749fb706947732e76a2fb12152c216eb0fc202ed269de938"
   },
   {
    "printed": "schedule1",
@@ -212,6 +272,16 @@
    "date": "2026-11-06",
    "run": "e84f834475309d561b83cd947365fbb16fa1382cf60f74999d3cef639d4d046f",
    "subject_key": "de98672379be9325b8d8f39584237f81317338199df64af5f01156647d468cf9"
+  },
+  {
+   "printed": "w2_marks",
+   "restated": "Input — On any W-2 for 2025, is the 'Statutory employee' box in box 13 ticked, or does box 12 show the code H?",
+   "model": "IRS says the 'Statutory employee' box in box 13 should be checked; it does not say box 12 code H establishes statutory employee status.",
+   "ruling": "Ruling: representation; the question names the two marks the tool reads; the statutory employee box is read with box 12 code H as the tool's screening input. Project stands.",
+   "context": "ae0db6f7ccb3c68d17dda3c5261f52a2e98eac090e8a2afae5325ce63d62a0bc",
+   "date": "2026-11-17",
+   "run": "b6dbba876d969201eba08f30e6c337fe5eae23059a37856f6a914061408a6f9a",
+   "subject_key": "7bd4cfd20006d6763143fb34f9cfaaddd880d8a56d76ccc00b045ed9e70692fe"
   }
  ]
 }

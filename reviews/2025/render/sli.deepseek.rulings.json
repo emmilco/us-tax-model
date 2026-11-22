@@ -1,0 +1,37 @@
+{
+ "kind": "render",
+ "form": "sli",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "3",
+   "restated": "Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, s1 line 17, s1 line 18, s1 line 19a, s1 line 20, and s1 line 25.",
+   "model": "The IRS line says to total \"Schedule 1, lines 11 through 20, and 23 and 25\"; the restatement omits Schedule 1 line 23 (Archer MSA deduction).",
+   "ruling": "Ruling: scope; i1040gi p. 99: Schedule 1 line 23 (Archer MSA) is refused. Project stands.",
+   "context": "47f4e08873370bc58a8952f408be58d8ecb0b5e5568ad173650c9b2e6bb8f390",
+   "date": "2026-11-17",
+   "run": "38fe997d8fd97aba9e980934de8a9201d2e7d16a37a6273a9632ba4f6787f438",
+   "subject_key": "8114d01d5df277aea1ce616d829606059807752feda942832fd723ef1ff0f969"
+  },
+  {
+   "printed": "5",
+   "restated": "Choose — [f1040 line Filing Status = 'single' → helper \"Year parameter sli.base_other ($85,000)\"] [f1040 line Filing Status = 'mfj' → helper \"Year parameter sli.base_joint ($170,000)\"] [f1040 line Filing Status = 'mfs' → helper \"Year parameter sales.zero\"] [f1040 line Filing Status = 'hoh' → helper \"Year parameter sli.base_other ($85,000)\"] [f1040 line Filing Status = 'qss' → helper \"Year parameter sli.base_other ($85,000)\"]",
+   "model": "The IRS says the deduction requires \"any status except married filing separately\" and line 5 lists only $85,000 for single/HOH/QSS and $170,000 for MFJ; assigning MFS $0 is not in the IRS text and does not exclude MFS.",
+   "ruling": "Ruling: scope; i1040gi p. 99: married filing separately is refused (s3.mfs); its $0 base is the same refusal. Project stands.",
+   "context": "47f4e08873370bc58a8952f408be58d8ecb0b5e5568ad173650c9b2e6bb8f390",
+   "date": "2026-11-17",
+   "run": "38fe997d8fd97aba9e980934de8a9201d2e7d16a37a6273a9632ba4f6787f438",
+   "subject_key": "b6ca43a65422cb8f7861cf5f27f255b5fa25186292beda53e7a238971e110b5f"
+  },
+  {
+   "printed": "6",
+   "restated": "Subtract line 5 from line 4.",
+   "model": "The IRS line says \"No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9\"; the restatement subtracts line 5 from line 4 without that condition, so line 6 would be negative when line 4 is not more than line 5.",
+   "ruling": "Ruling: representation; i1040gi p. 99: the line is line 4 less line 5; the skip to line 8 is on the next line's helper. Project stands.",
+   "context": "47f4e08873370bc58a8952f408be58d8ecb0b5e5568ad173650c9b2e6bb8f390",
+   "date": "2026-11-17",
+   "run": "38fe997d8fd97aba9e980934de8a9201d2e7d16a37a6273a9632ba4f6787f438",
+   "subject_key": "f96e4b35aef3c1326fef77a696212c9c0cb0ca5380cb6d08637f4d0326dc8266"
+  }
+ ]
+}

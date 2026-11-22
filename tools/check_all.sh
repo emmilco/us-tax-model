@@ -43,6 +43,7 @@ fi
 
 rm -f "$marker"
 python3 tools/worktree_data.py check || exit 1
+timeout 300 python3 tools/worktree_gc.py check || true  # listed, not failed: a release fails on it (release.sh)
 year_of() { python3 -I -c 'import sys; sys.path.insert(0, "tools"); import taxyear; print(taxyear.Y)' "$@"; }
 year="$(year_of "$@")"
 default_year="$(year_of)"

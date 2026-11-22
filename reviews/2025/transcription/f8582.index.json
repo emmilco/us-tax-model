@@ -3,125 +3,137 @@
  "form": "f8582",
  "family": "claude",
  "base": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+ "head_rows": {
+  "printed lines compared": "21",
+  "agree / disagree / missing": "0 / 21 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
+ },
  "lines": [
   {
-   "key": "1a",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "key": "f8582.mfs_together",
+   "record": "d60e6385e8df1680382bdb556f28d01e4e66aae8a86ad5a4f92cfdf9e0d52e5d",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
-   "subject_key": "d74fc76302d75e8e92865683d599326b5a25ddc7cbed473fb68ea8ef3be97648"
+   "ruling": "Ruling: model error; the second could not find the filing status in its interface and tested a filing-status-keyed parameter instead; the project reads f1040.status and household.mfs_living directly, which is what i8582 p. 10 describes (married filing separately and lived with the spouse at any time during the year).",
+   "subject_key": "65298cdeac4b799419f41858224ecbcd9ddd7d9a5f5b1b408667973b16286a34"
+  },
+  {
+   "key": "1a",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2715 of 3069 comparisons agree, 2700 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 13, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "cd4b9d7fb7f0f64c359fed9f83d0000522265965e347ac744a2ea285986e0312"
   },
   {
    "key": "1b",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
-   "subject_key": "a1ec8302805168c04347d02816704f84d87154dd51c26e12e7a16bbaf72c47be"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2722 of 3069 comparisons agree, 2707 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "cd64331ea4cde2f0e25d606230a740b8ff8b959b62a277914e2a3f4a4cdd160c"
   },
   {
    "key": "1c",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; differs only as candidate-unknown on classm.sche.2, where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed); no value differs and no shown/hidden difference.",
-   "subject_key": "8b1c7ba71c82bcab8822a44276b0c3a44468a42193b99615db080f3095031f58"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2718 of 3069 comparisons agree, 2716 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "8d74f7ecdcab54c0864fc0ba65429fd65fe281dfa11756144259573bb0abae7a"
   },
   {
    "key": "1d",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
-   "subject_key": "29e13aa9db959e586e55850c7cfc0580d2275284667bac82029cce0d56b78433"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2705 of 3069 comparisons agree, 2688 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 21, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "d64c4447a0d56cecaf1fc474c29a72fae69439aadb168697a583ddfa6a1844b5"
   },
   {
    "key": "2a",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
-   "subject_key": "313a97d2e28fed6a27d8c184942acd3c0d445e8fb4843cd4e0c749f717c3ee82"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2698 of 3069 comparisons agree, 2698 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 8, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "849714a2dd1122ded62cf563d36d1c3a6fb341aaef588827f7fc2b871eca4383"
   },
   {
    "key": "2b",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; differs only as candidate-unknown on classm.sche.2, where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed); no value differs and no shown/hidden difference.",
-   "subject_key": "80a1a742dfadc220c2a3851f63957be47b69a93683f643475eb1abc58f61b195"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2704 of 3069 comparisons agree, 2704 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 5, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "db17249887944016be38487f06a2f281f3c5096edadc3030dcf1c9d6d65dc4df"
   },
   {
    "key": "2c",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; differs only as candidate-unknown on classm.sche.2, where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed); no value differs and no shown/hidden difference.",
-   "subject_key": "ef2913733da5a4e7e2186156081b5eea1dce2306157c271f9446dc800d38720d"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2712 of 3069 comparisons agree, 2712 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 2, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "62a98e6902cfdf486e3d7d77d08b58833755631b6c157e44eb40f4f3590cbb9a"
   },
   {
    "key": "2d",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
-   "subject_key": "2d12646f03e3c8df6e0c6221042e2886714f54847774008a7477a60ce15aa92a"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2686 of 3069 comparisons agree, 2686 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 13, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "dfe02dacb7a114f2eba9113b757442dffa0ac8392823ba049dcd5a0b06230c1e"
   },
   {
    "key": "3",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); it also refuses on sche.re_pro/sche.grouped on the line, which the project refuses before (sche, x1sche.r5.re_pro is a refused return either way); unknowns as where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right. Line 4: MFS is refused for every return (s3.mfs), so the MFS-lived-with-spouse caution never applies.",
-   "subject_key": "3c991b4d73ac8fe8b6fd58769f16d92bd8ad8b9f43e9d527317768f578035ef8"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2674 of 3069 comparisons agree, 2657 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 33, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "6afe5ad5122e43de86dc3b52120bdab602497c12512ee2550b9fa8689fe9888e"
   },
   {
    "key": "4",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); it also refuses on sche.re_pro/sche.grouped on the line, which the project refuses before (sche, x1sche.r5.re_pro is a refused return either way); unknowns as where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right. Line 4: MFS is refused for every return (s3.mfs), so the MFS-lived-with-spouse caution never applies.",
-   "subject_key": "003f82acecb927caf0519703511cec03604b7d7f68b3d33ec212cc41de265fc4"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2723 of 3069 comparisons agree, 2706 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "84010b0400700d3e9b1c228c9be7286bd4863d139c26383522659a69a171f89b"
   },
   {
    "key": "5",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); and it hides line 5 on x1sche.f10.part5, where the project correctly shows $150,000 (Part II applies there).",
-   "subject_key": "cc9f7b32fe0e397e76d17e2dab76d2f6f5f929bb372b26df37331918cb4a6517"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2719 of 3069 comparisons agree, 2702 of 2729 in scope; completed {\"candidate-hides-shown\": 4, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "7b7bbf75012aa8059a4073fba9d9ff3e3e81fecd708daa1d17dde8b84b43c6b7"
   },
   {
    "key": "6",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; on x1sche.f7.royalty_magi the reply leaves the royalty (2,400) out of modified AGI (98,600 vs the project's 101,000), but i8582 p. 11, Line 6: 'Include in modified adjusted gross income any portfolio income and expenses that are clearly and directly allocable to portfolio income' (royalties are portfolio income); it also reads person.plan, unanswered on classm.f8582.2, and hides line 6 on a Part II return (x1sche.f10.part5) and shows it under the filing exception.",
-   "subject_key": "71bce56a1fc6aceef83693946a801330b9c114f6eb915033b93585a823a705fd"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2723 of 3069 comparisons agree, 2705 of 2729 in scope; completed {\"candidate-hides-shown\": 4, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 6, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "85d3b4cbc68aa928051177bd6d8022759745c1086ea4da5b414c2b4078edea64"
   },
   {
    "key": "7",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; inherits line 6's exclusion of royalty income from modified AGI (x1sche.f7.royalty_magi: line 7 51,400 vs 49,000; i8582 p. 11, Line 6, 'Include ... any portfolio income'), hides the line on a Part II return and refuses where the project computes. The project-unknown witnesses are generated returns with no rental (scope.rental false), where Form 8582 is not filed and the $royalty roster is not asked: nothing on those completed returns reads the line.",
-   "subject_key": "215407a9917ed710e1ef6c38f11687f0805006cd11e77ed597468cf913bf524f"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2934 of 3069 comparisons agree, 2704 of 2729 in scope; completed {\"candidate-hides-shown\": 4, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 9}. Project stands.",
+   "subject_key": "dede908afe51c05136c1bae11f448de6ac59d4a9d28488161369cb3b8798bb20"
   },
   {
    "key": "8",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; inherits line 6's exclusion of royalty income from modified AGI (x1sche.f7.royalty_magi: line 7 51,400 vs 49,000; i8582 p. 11, Line 6, 'Include ... any portfolio income'), hides the line on a Part II return and refuses where the project computes. The project-unknown witnesses are generated returns with no rental (scope.rental false), where Form 8582 is not filed and the $royalty roster is not asked: nothing on those completed returns reads the line.",
-   "subject_key": "36c47799fb3d5ccab5f7bc4c7d11ecef204d517e805c2a40b7abd4e01c950cbd"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2934 of 3069 comparisons agree, 2704 of 2729 in scope; completed {\"candidate-hides-shown\": 4, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 9}. Project stands.",
+   "subject_key": "48dfbd44884f3ba8fb7cc802a8654c80d7b6086871c1d6e862cf0474b48a0a30"
   },
   {
    "key": "9",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); it also refuses on sche.re_pro/sche.grouped on the line, which the project refuses before (sche, x1sche.r5.re_pro is a refused return either way); unknowns as where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right. Line 4: MFS is refused for every return (s3.mfs), so the MFS-lived-with-spouse caution never applies.",
-   "subject_key": "9de0a60939175904ad2d27f8ebc1afd25dd812291b33b24f41cd8df713513c10"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2724 of 3069 comparisons agree, 2706 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "118e1072ab552cf7505f7bc40b60fc91b59aa972af2c259345c9353ef862714c"
   },
   {
    "key": "10",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
-   "subject_key": "91f455de48afa914d93bcb953a971e1c719763aa04f63351eb97512e75312e19"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2729 of 3069 comparisons agree, 2712 of 2729 in scope; completed {\"candidate-hides-shown\": 3, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 3, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "4872b0e7e679d0f5db74e7d65e0d687a567c228695ea9f693e26acf295c39136"
   },
   {
    "key": "11",
-   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "record": "30c9960395125dd5c6dd0f7d8fd82960de73319d7436344db5aa19fad1fbca8f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply refuses line 11 on completed returns the project computes (through its own line 9 refusals on sche.re_pro/sche.grouped and an unasked input) and shows it under the filing exception (f8582.required); no value differs where both compute.",
-   "subject_key": "d6717f39ba118faad6586e1015e49b6e44e935f565f21ee765131be13e5424a9"
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2720 of 3069 comparisons agree, 2702 of 2729 in scope; completed {\"candidate-hides-shown\": 3, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 10, \"candidate-unknown\": 11}. Project stands.",
+   "subject_key": "3333ba3c09b726df9020b3cbfd753aedbad4ac27aac8259bf3b3f51f146a7aa4"
   },
   {
    "key": "VI (a) total",
@@ -146,46 +158,48 @@
   }
  ],
  "subjects": {
-  "1a": "b8f873ca5b560d457628f1cd28dfc71c96f9987f009af808336e69620338b376",
-  "1b": "5bd36bb404b5acb9f000775d85b44af6b07d28678d9c2252ff9949ec3451d03f",
-  "1c": "3308e3a59e1048a4cab57bbff1f9754df7a9bee59ab6a8f44e80c76ed704e16e",
-  "1d": "f000346e504356b3a789c968463a889c071aa177ee24ac10021719d89ba32ea0",
-  "2a": "0e691461b4235152dbda950077424875552de378448e8d1b985044cabae168c7",
-  "2b": "607a2d492b0791114ce9abe71dc9402e43e15e3d1e34f8721b5f4d26e9f45cd9",
-  "2c": "7d84d2d713146fc94fea17fa2eb01dd45485ad0befc9b4219c044670488b551f",
-  "2d": "8d90dcf15bb3c7d2bbbdd592058aaf4562788fd6b52370c1df86b51f3d5242b5",
-  "3": "8ba86752414097b93982f55ccedfeb2d207214a3d8fa846f466affde4a4846de",
-  "4": "764f2b3945ec0bb50a36e4bbf81e5678bebb92656e14e48cd0bb99e7efcce548",
-  "5": "28fa4e849d39870f088d3ce9f1c2d09da16e6a121f229d0086532730933d27b5",
-  "6": "f6d175462dec004e6650e994c31a2cea87af53c5d900ec59f68644c47ac3a353",
-  "7": "189c014d28f3d3c6a3af92b9ed1629f24b644f0fe236561c83abe6050e961843",
-  "8": "c5469e41b50f821b03b92a89100369a19e30070f3b435b47e8bb373aa4474234",
-  "9": "ec943832ac3160e97cd7bf9b511018c2af3912fc51437e84e2134a9c2e302042",
-  "10": "0cf6f47e478895b24f9d3ea13c93962fb3747e926c89c0a4453b2e4f2753cbbd",
-  "11": "119ed862c59b385926f1cbd978cfb9ba25cf23e1267e2c44c0f7766e76a49360",
+  "f8582.mfs_together": "3b0f0ef9d40252251f9f18b386e92343637fc08e022430e62a379f5c934dba21",
+  "1a": "f4cd4d2a37dd45e4dcb01cea047f0fac21eb2674fa1c5d5b22a91b1bbb117b64",
+  "1b": "571289e9a0452b1f5defd04aed6896cf617773f4c34f13b554090f933ec70e5f",
+  "1c": "2353a9b9d6b18a0667fcc05d13b9d530ba378ff59b07e430d64477b37e42d682",
+  "1d": "345b97c42a9e754b54c8053a20267c133443d463798b4ae1f00f3e256db7b896",
+  "2a": "dd6be15a200a5710b8b97ac37480bf9957a3f0ce60cf7a80f04817e2627e3cd8",
+  "2b": "f6e8b3dc0287c67b2aa0d0387c953bac50dfac81fac23a298b3184debfa7d26a",
+  "2c": "b19bf617f88a51756444eef0fc4f25288d9cc4c3990cda64800b14d94fbffbdb",
+  "2d": "f518f1d73c90281a6f9c621f53e05e6d8ada6f3d0d577d235fe959c4b21483dd",
+  "3": "94a05233c6ebcddebed1c3ffab01d633d5ad560f93bbd9d5a3e63aa63c08c497",
+  "4": "98e55c3d6af660e23613e93b5027cc2e79404939fbda707641bdfe3eb46cfca2",
+  "5": "cfa3b2d79d9a71d6ea39b8d86a145c62bf71ae0b044f8640e086797bb48e9d55",
+  "6": "ad3e9197f18c956af65ac2861f9ddcfa3c60c95159dab75a1be15abaca2fa79e",
+  "7": "f5639822da4d3c5b55e3c7dc536980a25478e8a40f5c07113174466ad3833da9",
+  "8": "d74f8a78724bb24865eeaca5d3b2fe26e2db35997668f6ecfdda0a86db3920ec",
+  "9": "db798bd386492324bd2b8d414a7c30f56cadca9c790380944c405e9bb430d3bf",
+  "10": "57996c5f52c1c356262547257d1b7d44850c3302ca17e4d6dca5a5f8697c0440",
+  "11": "2260e987af3347bacc163ce2bdf93da135196529fbfae09ab5839571de7ef237",
   "VI (a) total": "191c9e11890162f3cf83e2832bfdb366465a3d584444b2310339bb341af13019",
   "VII (a) total": "68caec96574a3bc9e01a46284695a0da12b471269eb39c21683eace7f4f293ec",
   "VII worksheet C": "b63d4cbfd352dcbb13aa11bc2e581511335aba7f1543d21540fe3b80d90cc6b7"
  },
  "__rest__": "50c697d45d2d161e175d84d1d897ad2ab4c6298bf7f4f319084992a970ceea89",
  "foreign": {
-  "1a": "19299db09146e2898252f3c1324fd80a09b16a8481579773d794d0cf53b29344",
-  "1b": "f204b0856bc4629bb022909b8456077154e85602215c9b339319c60a530c66f7",
-  "1c": "f204b0856bc4629bb022909b8456077154e85602215c9b339319c60a530c66f7",
-  "1d": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
-  "2a": "19299db09146e2898252f3c1324fd80a09b16a8481579773d794d0cf53b29344",
-  "2b": "f204b0856bc4629bb022909b8456077154e85602215c9b339319c60a530c66f7",
-  "2c": "f204b0856bc4629bb022909b8456077154e85602215c9b339319c60a530c66f7",
-  "2d": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
-  "3": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
-  "4": "f204b0856bc4629bb022909b8456077154e85602215c9b339319c60a530c66f7",
-  "5": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
-  "6": "aacd74ff507e279467ff8727afc68f63fd8eded87bacf63ff4893c81c1bb93c4",
-  "7": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
-  "8": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
-  "9": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
-  "10": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
-  "11": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
+  "f8582.mfs_together": "07161f3d08c4c02ea9b9eeaa9e9f061946e00c1acb46c53e07492e9c155972f0",
+  "1a": "5da62a6dd6bdc3b701efb915c29bc57bc8af25cf3e93b8071aaa657897b60e48",
+  "1b": "6b386fa43b3ea750c3a87e73bbcd790c91fed1c82d58f0d1a86b6e529874bf2c",
+  "1c": "6b386fa43b3ea750c3a87e73bbcd790c91fed1c82d58f0d1a86b6e529874bf2c",
+  "1d": "94a8236999b39863f4e376b08437fced43a91c259bcd0c195ae9c78a10f733a6",
+  "2a": "5da62a6dd6bdc3b701efb915c29bc57bc8af25cf3e93b8071aaa657897b60e48",
+  "2b": "6b386fa43b3ea750c3a87e73bbcd790c91fed1c82d58f0d1a86b6e529874bf2c",
+  "2c": "6b386fa43b3ea750c3a87e73bbcd790c91fed1c82d58f0d1a86b6e529874bf2c",
+  "2d": "94a8236999b39863f4e376b08437fced43a91c259bcd0c195ae9c78a10f733a6",
+  "3": "94a8236999b39863f4e376b08437fced43a91c259bcd0c195ae9c78a10f733a6",
+  "4": "6b386fa43b3ea750c3a87e73bbcd790c91fed1c82d58f0d1a86b6e529874bf2c",
+  "5": "94a8236999b39863f4e376b08437fced43a91c259bcd0c195ae9c78a10f733a6",
+  "6": "7a1a31cc1f05ca4ec2b1e0889774409b8cea1d826f6578d52cc2918b46da3041",
+  "7": "94a8236999b39863f4e376b08437fced43a91c259bcd0c195ae9c78a10f733a6",
+  "8": "94a8236999b39863f4e376b08437fced43a91c259bcd0c195ae9c78a10f733a6",
+  "9": "94a8236999b39863f4e376b08437fced43a91c259bcd0c195ae9c78a10f733a6",
+  "10": "94a8236999b39863f4e376b08437fced43a91c259bcd0c195ae9c78a10f733a6",
+  "11": "94a8236999b39863f4e376b08437fced43a91c259bcd0c195ae9c78a10f733a6",
   "VI (a) total": "e5fd6ae0e2bb009e2d0dbbf9881388cbc388bb6fff0fc2d1160362c0d763087b",
   "VII (a) total": "ed387e000d2483b2d8d4a66a00d480acfcb534be2fcd32e75737dfaeef06af9c",
   "VII worksheet C": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"

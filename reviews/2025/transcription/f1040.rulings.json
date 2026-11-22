@@ -111,6 +111,41 @@
   {
    "printed": "16",
    "project_expr_sha256": "9e2cade2b1ff2eb7d96740bd471c58e13c0525cc09eb02b9884656a50679195f",
+   "second_expr_sha256": "bba0fe74d463ae5ab913dfecbce99dd758a1affb7e95cc4c708cfb51d0bf3f5d",
+   "ruling": "Ruling: representation; i1040gi p. 36, Line 16: the worksheet choice is the Schedule D Tax Worksheet first, else the Qualified Dividends and Capital Gain Tax Worksheet, else the tax on line 15 (amb.2025.sd4952_selection). This reply tests sd.line15 > 0 and sd.line16 > 0, which forms/2025/sd.yaml defines as its sd.line17 test; no value differs anywhere in the sample (3,199 of 3,422 comparisons agree; the differences are 157 project refusals, 64 project-unknown and 2 candidate-refuses on refused or incomplete records). Project stands.",
+   "context": "b9e49e9f11734ca0f98f34844e11f874facaf228e593051625173809e080cd88",
+   "date": "2026-11-17",
+   "run": "8b8e4f61e0529c22b1e67806c98fc6547bdd1c8f193eb089c37691360d392a9d",
+   "subject_key": "af5b39d7dc45e972b5f8309ff460737101e92ae15011f51f299f666686d3f8a1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw_next_year.3.deepseek@f1040",
+     "fixture:classm.f1095a.1.deepseek@f1040",
+     "fixture:classm.f8962.2.deepseek@f1040",
+     "fixture:classm.f8962.3.deepseek@f1040",
+     "fixture:classm.f8962.5.deepseek@f1040",
+     "fixture:classm.s8812.2.deepseek@f1040",
+     "fixture:classm.s8812.4.deepseek@f1040",
+     "fixture:classm.retirement.3.deepseek@f1040",
+     "fixture:classm.f8995a.2@f1040",
+     "fixture:classm.tipjob.1@f1040",
+     "fixture:stage8.hoh.parent.died_not_half@f1040",
+     "fixture:audit.dependent.claimed_no_tin@f1040",
+     "fixture:mutation.m4.qbi.reit_loss_carryforward@f1040",
+     "fixture:mutation.m4.qbi.suspended_losses@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "9e2cade2b1ff2eb7d96740bd471c58e13c0525cc09eb02b9884656a50679195f",
    "second_expr_sha256": "c6474c1578b13d4c781d81590abf1a5407814cab7fa667e023c465c3a67fa66b",
    "ruling": "Ruling: representation; line-scoped rerun (pass 0416e96b1303, its foreign interfaces changed). Executable triage 2,983/3,201 agree; no value difference on any return; 215 candidate-unknown (175 on completed returns; every witness 'no input supplied for f1040.line3a': the reply reads qualified dividends directly, the project its parent-gated form), 3 project-refuses, all on returns refused by scope.other_line16 (Forms 8814, 4972, 8615, 8621 or 8978, section 962, education credit recapture) or f4952.unsupported. The reply's own note leaves Form 4972 unrefused; the project refuses it at scope.other_line16, which is right under i1040gi p. 34, Line 16, 'Tax from Form 4972 (relating to lump-sum distributions)'. Worksheet selection the same (Tax Table, Tax Computation Worksheet, Schedule D Tax Worksheet, QDCG worksheet). Same ruling as the earlier rounds (adjudication/f1040.md).",
    "context": "7f31e240a140b31e830a162acf094c2b1ba1a585ec01eb93791b52dffdd0a5e7",
@@ -686,6 +721,84 @@
      "fixture:classm.s8812.4@f1040",
      "fixture:t264.f4952.unsupported_with_interest@f1040",
      "partial:classm.f8962.5.deepseek-f1040.tax_exempt_interest@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1040.gate.qdcg_applies",
+   "project_expr_sha256": "fdaf7b951655f411153997e2c8c48caed813acc8e16020fb61ad7108b7deb575",
+   "second_expr_sha256": "7daf3e2d877303abb8c4afbaaa120552fddb387d895054928b1cc23301fe28be",
+   "ruling": "Ruling: representation; i1040sd p. 15: \"Complete this worksheet only if line 18 or line 19 of Schedule D is more than zero and lines 15 and 16 of Schedule D are gains or if you file Form 4952 and you have an amount on line 4g,\" with the Exception for a zero-or-less line 15 or 16 and no qualified dividends. The project's gate is the trigger shared by both capital gain worksheets; the candidate makes it exclusive of the Schedule D Tax Worksheet, so on 44 completed returns with that worksheet in force it answers false where the project answers true. Line 16 takes sdtw.line47 first, so the gate changes no tax on those returns; the 3 candidate refusals are on returns the project refuses. Triage executable-triage-v2 (.transcription/triage/2025/f1040.json): 3,187 of 3,422 agree, 2,403 of 2,492 in scope. Project stands.",
+   "context": "b9e49e9f11734ca0f98f34844e11f874facaf228e593051625173809e080cd88",
+   "date": "2026-11-17",
+   "run": "8b8e4f61e0529c22b1e67806c98fc6547bdd1c8f193eb089c37691360d392a9d",
+   "subject_key": "6215e4a7f67636af5af1ac51362818046797af3bc8f6d7f02097ad0f75c3e358",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.u1250.2.deepseek@f1040",
+     "fixture:classm.clcw_next_year.3.deepseek@f1040",
+     "fixture:classm.f8962.2.deepseek@f1040",
+     "fixture:classm.f8962.5.deepseek@f1040",
+     "fixture:classm.f8880.2.deepseek@f1040",
+     "fixture:classm.f1040.2.deepseek@f1040",
+     "fixture:classm.f1040.6.deepseek@f1040",
+     "fixture:classm.s8812.4.deepseek@f1040",
+     "fixture:classm.f8863.2.deepseek@f1040",
+     "fixture:classm.eic.2.deepseek@f1040",
+     "fixture:classm.retirement.2.deepseek@f1040",
+     "fixture:classm.retirement.3.deepseek@f1040",
+     "fixture:classm.f5329.2.deepseek@f1040",
+     "fixture:classm.f8995a.2@f1040",
+     "fixture:stage8.hoh.parent.died_not_half@f1040",
+     "fixture:audit.dependent.claimed_no_tin@f1040",
+     "fixture:audit.dependent.hoh_test1_no_tin@f1040",
+     "fixture:stage8.mut.parent_no_tin_nonresident@f1040",
+     "fixture:t264.f4952.unsupported_with_interest@f1040",
+     "fixture:mutation.m4.qbi.reit_loss_carryforward@f1040",
+     "fixture:mutation.m4.qbi.suspended_losses@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1040.gate.sdtw",
+   "project_expr_sha256": "502792f26d40195b33b76705428f6de714a1f86772611dccc7c9c634e5e49290",
+   "second_expr_sha256": "f19626d2a2feee24d05b28fac7e6e093b6c7f0a06e3b97a27d4d765f0872a6a5",
+   "ruling": "Ruling: representation; i1040sd p. 15: \"Complete this worksheet only if line 18 or line 19 of Schedule D is more than zero and lines 15 and 16 of Schedule D are gains or if you file Form 4952 and you have an amount on line 4g,\" with the Exception for a zero-or-less line 15 or 16 and no qualified dividends. The project conditions both worksheet branches on the shared trigger; the candidate's differences are the project's refusals (143) and unknowns on refused or incomplete records. No completed return differs. Triage executable-triage-v2 (.transcription/triage/2025/f1040.json): 3,271 of 3,422 agree, 2,486 of 2,492 in scope. Project stands.",
+   "context": "b9e49e9f11734ca0f98f34844e11f874facaf228e593051625173809e080cd88",
+   "date": "2026-11-17",
+   "run": "8b8e4f61e0529c22b1e67806c98fc6547bdd1c8f193eb089c37691360d392a9d",
+   "subject_key": "6b86e11adfee284cbbf191e6e9134b96d0753bea675759f3ae49f60e6e8511c1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8962.2.deepseek@f1040",
+     "fixture:classm.f8863.2.deepseek@f1040",
+     "fixture:classm.retirement.3.deepseek@f1040",
+     "fixture:classm.retirement.4.deepseek@f1040",
+     "fixture:classm.f8995a.2@f1040",
+     "fixture:stage8.hoh.parent.died_not_half@f1040",
+     "fixture:audit.dependent.claimed_no_tin@f1040",
+     "fixture:audit.dependent.hoh_test1_no_tin@f1040",
+     "fixture:stage8.mut.parent_no_tin_nonresident@f1040",
+     "fixture:mutation.t2.mfs_sdtw_skip41@f1040",
+     "fixture:mutation.t2.f8962_months_r4@f1040",
+     "fixture:mutation.m4.qbi.reit_loss_carryforward@f1040",
+     "fixture:mutation.m4.qbi.suspended_losses@f1040",
+     "partial:classm.s8812.4.deepseek-f1040.line3a@f1040"
     ],
     "policy": "executable-triage-v2"
    }

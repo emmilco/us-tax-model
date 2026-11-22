@@ -452,6 +452,94 @@
           "cents": -200000
         }
       }
+    },
+    {
+      "id": "mf.f8582.part2_shown_both_losses",
+      "covers": [
+        "f8582"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. Inputs of mrental.f8582.part5_prior_loss: Form 8582 is required (a prior-year unallowed loss and an activity without active participation rule out the exception, i8582 p. 1); single; line 1d -6,000 and line 3 -4,000 are both losses, so Form 8582 line 3 says go to Part II, and Part II is shown: line 4 = smaller of the two losses = 4,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 9000000,
+        "person[taxpayer].w2[a].box3": 9000000,
+        "person[taxpayer].w2[a].box5": 9000000,
+        "$rental": [
+          "a",
+          "b"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 400000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 1000000,
+        "rental[b].kind": "sfr",
+        "rental[b].rents": 500000,
+        "rental[b].has_taxes": true,
+        "rental[b].amt16": 100000,
+        "rental[b].active": false,
+        "rental[b].prior_any": true,
+        "rental[b].prior_amt": 200000
+      },
+      "expect": {
+        "f8582.required": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8582.part2_shown": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8582.line4": {
+          "kind": "money",
+          "cents": 400000
+        }
+      }
+    },
+    {
+      "id": "mf.f8582.exception_part2_not_shown",
+      "covers": [
+        "f8582"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. Single, wages $90,000; one single-family rental with active participation, rents 4,000 and mortgage interest 10,000: line 21 -6,000. i8582 p. 1, Exception: the only passive activity is rental real estate with active participation, the total loss (6,000) is not more than $25,000, modified AGI (90,000) is not more than $100,000, and there is no prior-year unallowed loss, so Form 8582 is not required and nothing of it, Part II included, is shown; the loss is allowed in full: line 22 -6,000, Schedule E line 26 -6,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 9000000,
+        "person[taxpayer].w2[a].box3": 9000000,
+        "person[taxpayer].w2[a].box5": 9000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 400000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 1000000
+      },
+      "expect": {
+        "f8582.required": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.part2_shown": {
+          "kind": "bool",
+          "value": false
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": -600000
+        },
+        "sche.line26": {
+          "kind": "money",
+          "cents": -600000
+        }
+      }
     }
   ]
 }

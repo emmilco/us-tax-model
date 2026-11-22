@@ -8,70 +8,70 @@
    "key": "12",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: representation; Form 4562 is filed per business and line 12 is the section 179 deduction this business takes: the project copies the per-business allowance sc.s179_allowed, the second the return-wide s179.line12, which the second's own note says stands in for the per-business allocation it could not find.",
    "subject_key": "515df9203404a67599ccb315a367877c41675267bfb22f5d84851ad40a5a9cc6"
   },
   {
    "key": "14",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: model error; line 14 is in Part II and excludes listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter the project applies.",
    "subject_key": "4ed1e2e5b3a39412bbdf077d6e885be7eccbeef7e490087237b73399c8482104"
   },
   {
    "key": "17",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: model error; line 17 is in Part III, which excludes listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second sums every asset, listed or not.",
    "subject_key": "9ce99b661daffebc791cd52d57c4735a7f1715f2d3fcaaaccee18e356720253d"
   },
   {
    "key": "19a(g)",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
    "subject_key": "a32601114a0a234bf0bc1b65591ecc72dfc40ff6ad341c2115fc8f97b2783454"
   },
   {
    "key": "19b(g)",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
    "subject_key": "9186fea71ca297620281bcbedbd23eeed7fc5167b006f2db9babf0af948ad155"
   },
   {
    "key": "19c(g)",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
    "subject_key": "101619cdd4a378bd007777ea4e7fc0c91ffeb48774893a31f05afdc769808bf2"
   },
   {
    "key": "19d(g)",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
    "subject_key": "bceaedf472b83f72cd19057fde641a5b6eb9dbafca6009ec80e1988500c063de"
   },
   {
    "key": "19f(g)",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
    "subject_key": "c2caf4fd2be7c1aa0c43e8019852fbad90e9890e1fce5e0604f7db33e2172642"
   },
   {
    "key": "19e(g)",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
    "subject_key": "3a199f0caa62eaa6652b670de6b5d9e50b1209c25a69fe68a94fac9d1121b43a"
   },
   {
    "key": "21",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: representation; line 21 is the amount from line 28 (f4562 line 21, \"Listed property. Enter amount from line 28\"); the project inlines line 28's sum and the second refers to line 28, the same amount.",
    "subject_key": "2314f8a12aa5494bef1197facb061f5308cbdc62f306d1698a4bf82148968570"
   },
   {
@@ -84,28 +84,28 @@
    "key": "25",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: representation; the same Part V amounts summed from different per-asset and per-vehicle helpers of the encoding (listed assets and vehicles); no amount differs between the two for an asset the project computes.",
    "subject_key": "8e0059ebe4f4189d3ac7e8972642097799d2f2175cdde4c3b2d923c559f64c5e"
   },
   {
    "key": "26(h)",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: representation; the same Part V amounts summed from different per-asset and per-vehicle helpers of the encoding (listed assets and vehicles); no amount differs between the two for an asset the project computes.",
    "subject_key": "3b5ca018b42aca626fd407d21cf5176cd7f345454666c8665c7485289e9d45cb"
   },
   {
    "key": "28",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: representation; the same Part V amounts summed from different per-asset and per-vehicle helpers of the encoding (listed assets and vehicles); no amount differs between the two for an asset the project computes.",
    "subject_key": "1a8bff5ff354adbeacd41f377825a2f160870d4ae98b4a6f915a3fe7edae8988"
   },
   {
    "key": "29",
    "record": "81cb6b56f4f8082f123b7d1644cfc9cde330b677331ecc838d94f434ad6e53e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: representation; the same Part V amounts summed from different per-asset and per-vehicle helpers of the encoding (listed assets and vehicles); no amount differs between the two for an asset the project computes.",
    "subject_key": "9a04fe55a7cecf3a829da3c327cbb617b781dc330887a21e6b7b1d981b88a7b4"
   }
  ],

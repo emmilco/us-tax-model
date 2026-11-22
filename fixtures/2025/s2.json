@@ -8,6 +8,7 @@
       ],
       "evidence": "synthetic refusal regression Restated 2026-11-15 (coordinator decision, DECISIONS.md): line 21 no longer refuses on s2.amt (the AMT is line 2, outside line 21's sum) and line 3 tells s2.other before s2.amt. Line 21 = 4 + 8 + 11 + 12 + 18 = 0: Medicare wages $200,000 do not exceed the $200,000 threshold (Form 8959), no investment income (Form 8960), no SE, Form 5329 or HSA tax.",
       "inputs": {
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": 10000000,
         "s2.amt_pab": 10000000,
         "$w2@person[taxpayer]": [
@@ -181,6 +182,7 @@
       ],
       "evidence": "synthetic refusal regression Restated 2026-11-15 (coordinator decision, DECISIONS.md): line 21 no longer refuses on s2.amt (the AMT is line 2, outside line 21's sum) and line 3 tells s2.other before s2.amt. With s2.other_tax Yes, lines 3 and 21 refuse on s2.other; line 2 still refuses on s2.amt.",
       "inputs": {
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": 10000000,
         "s2.amt_pab": 10000000,
         "s2.other_tax": true,
@@ -313,6 +315,7 @@
         "s179.prior_form": null,
         "s179.carryover": null,
         "s2.options_any": false,
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": 10000000,
         "s2.amt_pab": 10000000
       },
@@ -381,6 +384,7 @@
         "s179.prior_form": null,
         "s179.carryover": null,
         "s2.options_any": false,
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": 10000000,
         "s2.amt_pab": 2000000
       },
@@ -665,6 +669,7 @@
         "div.other_boxes": true,
         "div.box2d": 3000000,
         "sd.distributions": 20000000,
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": 1000000
       },
       "expect": {
@@ -1108,6 +1113,7 @@
         "person[taxpayer].w2[a].box6": 0,
         "person[taxpayer].w2[a].box1": 10000000,
         "s2.options_any": false,
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": 10000000,
         "s2.amt_pab": 10000100
       },
@@ -1391,6 +1397,55 @@
         "s2.amt_l7": {
           "kind": "money",
           "cents": 3409400
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_boat_not_asked_without_mortgage",
+      "covers": [
+        "s2"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the s2.amt_mortgage operand of s2.amt_boat_ask, read as s2.amt_h39_product by the mutant), predicted by hand before running from f6251 and i6251 (Line 2a; Line 3, Mortgage Interest; the exemption, p. 9) and the 2025 Tax Computation Worksheet. Single, wages $200,000, standard deduction $15,750, tax-exempt interest $80,000: taxable income $184,250, tax 24% x $184,250 - $7,153 = $37,067 (line 10 bound). The bound's line 4 is $184,250 + $15,750 (line 2a) + $80,000 (tax-exempt interest at its largest as private activity bond interest) = $280,000; less the $88,100 exemption, $191,900; 26% = $49,894, more than $37,067, so s2.amt_could is true. No mortgage interest is deducted (s2.amt_mortgage $0), so the boat or recreational vehicle mortgage question is not asked: s2.amt_boat_ask false.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 20000000,
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 0,
+        "s2.options_any": false,
+        "f1040.tax_exempt_any": true,
+        "f1040.tax_exempt_interest": 8000000
+      },
+      "expect": {
+        "s2.amt_mortgage": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_h4": {
+          "kind": "money",
+          "cents": 28000000
+        },
+        "s2.amt_h6": {
+          "kind": "money",
+          "cents": 19190000
+        },
+        "s2.amt_h39": {
+          "kind": "money",
+          "cents": 4989400
+        },
+        "s2.amt_l10": {
+          "kind": "money",
+          "cents": 3706700
+        },
+        "s2.amt_could": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.amt_boat_ask": {
+          "kind": "bool",
+          "value": false
         }
       }
     }

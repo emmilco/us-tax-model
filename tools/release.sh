@@ -20,7 +20,8 @@
 # <n> is one more than the highest <n> among the day's existing local tags. A run that
 # is not green tags nothing; the failing step's log names what broke.
 # Before the run, the sampled reviews must be complete (tools/release_reviews.sh, on a fresh build): a
-# form due or short of samples, or an unruled finding, tags nothing. A tagged tree is recorded under
+# form due or short of samples, or an unruled finding, tags nothing; so does a linked worktree that
+# tools/worktree_gc.py check lists as removable or stale. A tagged tree is recorded under
 # <git common dir>/release-ready/, which tools/hooks/pre-push requires of a pushed release tag.
 # When HEAD's tree is already in the release list (tools/green.sh: a green full run made in release mode,
 # CHECK_ALL_RELEASE=1 with ENGINE_CACHE=verify, on exactly that tree, in tools/check_all_bg.sh's snapshot worktree), the
@@ -47,6 +48,7 @@ done
 tip="$(git rev-parse HEAD)"
 
 tools/release_reviews.sh || die "the sampled reviews are not complete for a release (above); nothing tagged"
+python3 tools/worktree_gc.py check --fail || die "linked worktrees need removal, archiving or a keep lock (above); nothing tagged"
 [ "$(worktree_tree)" = "$(git rev-parse 'HEAD^{tree}')" ] || die "the review check changed the working tree; nothing tagged"
 
 common="$(cd "$(git rev-parse --git-common-dir)" && pwd)"

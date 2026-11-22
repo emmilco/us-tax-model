@@ -2929,6 +2929,457 @@
           "value": 1
         }
       }
+    },
+    {
+      "id": "x2k1p.retired_test5",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: A limited partner who did no work in the business in 2025 (retired), box 1 $40,000, materially participated in 5 of the 10 years 2015 to 2024. Test 5 needs no work in 2025 and a limited partner may use it (i1065sk1 p. 9, Limited partners, item 1, 5 or 6): material participation, column (k) $40,000, column (h) zero. Boxes 2 and 3 are blank, so neither the real estate professional nor the personal-use question is asked.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 4000000,
+        "person[taxpayer].k1p[fund].work": false,
+        "person[taxpayer].k1p[fund].five_of_ten": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].ask_five": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].five_of_ten_if_asked": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].col_k": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].re_pro_if_b2": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].dwelling_if_rent": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "x2k1p.retired_gp_no_test4_test7",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: A general partner who did no work in the business in 2025, box 1 $40,000, not test 5 or 6. Tests 4 and 7 need more than 100 hours of work in 2025 (i1065sk1 p. 9), so they are not asked; box 1 is passive, column (h) $40,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "llc"
+        ],
+        "person[taxpayer].k1p[llc].general": true,
+        "person[taxpayer].k1p[llc].has_b1": true,
+        "person[taxpayer].k1p[llc].box1": 4000000,
+        "person[taxpayer].k1p[llc].work": false,
+        "person[taxpayer].k1p[llc].five_of_ten": false,
+        "person[taxpayer].k1p[llc].t6": false
+      },
+      "expect": {
+        "person[taxpayer].k1p[llc].ask_other": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[llc].ask_other_gp": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[llc].t4_if_gp": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[llc].t7_if_gp": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[llc].material": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[llc].col_h": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "person[taxpayer].k1p[llc].col_k": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2k1p.retired_test6_refuses",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: A partner who did no work in 2025, box 1 $40,000, not test 5, but a personal service business in which they materially participated in 3 earlier years (test 6, i1065sk1 p. 9): refused, as test 6 is.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 4000000,
+        "person[taxpayer].k1p[fund].work": false,
+        "person[taxpayer].k1p[fund].five_of_ten": false,
+        "person[taxpayer].k1p[fund].t6": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].t6_if_asked",
+          "form": "Material participation by test 6 (personal service activity)",
+          "remedy": "Material participation by the personal service test is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 9, Individuals (other than limited partners), \"The activity was a personal service activity and you materially participated in the activity for any 3 tax years\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_upe",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: box 1 $1,000 and expenses of the partnership the partner paid under the partnership agreement (i1040se p. 10): refused at k1p.screened.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 100000,
+        "person[taxpayer].k1p[fund].upe": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].upe",
+          "form": "Schedule E, line 28, unreimbursed partnership expenses (and box 14, code A reduced by them)",
+          "remedy": "Partnership expenses you paid yourself under the partnership agreement are outside this tool.",
+          "cite": {
+            "doc": "i1040se",
+            "locator": "p. 10, Unreimbursed Partnership Expenses, \"You can deduct unreimbursed ordinary and necessary partnership expenses you paid on behalf of the partnership on Schedule E if you were required to pay these expenses under the partnership agreement\"",
+            "revision": "2025",
+            "snapshot": "ad71de356a6250383ab08097582e982c3c3964792be2d4f5e4bd851816867975",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_interest_buy",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: box 1 $1,000 and interest on money borrowed to buy into the partnership (i1040se p. 9): refused at k1p.screened.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 100000,
+        "person[taxpayer].k1p[fund].interest_buy": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].interest_buy",
+          "form": "Schedule E, line 28, interest on money borrowed to buy into a partnership (debt-financed acquisition)",
+          "remedy": "Interest on money borrowed to buy into a partnership is outside this tool.",
+          "cite": {
+            "doc": "i1040se",
+            "locator": "p. 9, Domestic Partnerships, \"If you used loan proceeds to buy an interest in, or make a contribution to the capital of, a partnership (debt-financed acquisition), report your share of deductible partnership interest expense on either Schedule A or Schedule E\"",
+            "revision": "2025",
+            "snapshot": "ad71de356a6250383ab08097582e982c3c3964792be2d4f5e4bd851816867975",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_basis_carry",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: box 1 $1,000 and a loss carried from an earlier year by the basis limitation (i1065sk1 p. 13): refused at k1p.screened.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 100000,
+        "person[taxpayer].k1p[fund].basis_carry": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].basis_carry",
+          "form": "Schedule E, line 28, column (i), a loss carried from an earlier year by the basis limitation",
+          "remedy": "A partnership loss carried from an earlier year by the basis limitation is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 13, \"If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your net income, loss, or credits for this year\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_risk_carry",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: box 1 $1,000 and a loss carried from an earlier year by the at-risk limitation (i1065sk1 p. 13): refused at k1p.screened.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 100000,
+        "person[taxpayer].k1p[fund].risk_carry": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].risk_carry",
+          "form": "Form 6198 (at-risk limitations), a loss carried from an earlier year",
+          "remedy": "A partnership loss carried from an earlier year by the at-risk limitation is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 13, \"If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your net income, loss, or credits for this year\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_fuel_2024",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: box 1 $1,000 and a 2024 fuel tax credit from the partnership, taken into 2025 income (i1040se p. 9): refused at k1p.screened.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 100000,
+        "person[taxpayer].k1p[fund].fuel_prior_year": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].fuel_prior_year",
+          "form": "Schedule E, line 28, a 2024 fuel tax credit from the partnership taken into income",
+          "remedy": "A fuel tax credit from a partnership claimed on your 2024 return is outside this tool.",
+          "cite": {
+            "doc": "i1040se",
+            "locator": "p. 9, Domestic Partnerships, \"If you claimed a credit for federal tax on gasoline or other fuels on your 2024 Form 1040, 1040-SR, or 1040-NR based on information received from the partnership, enter as income in column (h) or column (k), whichever applies, the amount of the credit claimed for 2024\"",
+            "revision": "2025",
+            "snapshot": "ad71de356a6250383ab08097582e982c3c3964792be2d4f5e4bd851816867975",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_re_pro",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: A limited partner, box 2 loss $5,000, no rental of their own (scope.rental No), a real estate professional: box 2 may be nonpassive (i1065sk1 p. 14, Box 2), refused as on Schedule E Part I.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": -500000,
+        "person[taxpayer].k1p[fund].re_pro": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_p5_loss": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].re_pro_if_b2",
+          "form": "Schedule K-1 (Form 1065) box 2 of a real estate professional (Schedule E, line 43)",
+          "remedy": "Rental real estate from a partnership held by a real estate professional is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 14, Box 2. Net Rental Real Estate Income (Loss), \"the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.re_pro_asked_on_sche",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: A limited partner, box 2 loss $5,000, who also listed a rental of their own (scope.rental Yes): the real estate professional question is asked once, on Schedule E Part I (sche.re_pro, whose Yes refuses the return), so the K-1 does not ask it; the box 2 loss is passive in Part V, $5,000 (as x2k1p.fk3_limited_rental_loss).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": -500000,
+        "scope.rental": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].re_pro_if_b2": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].p5_loss": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_dwelling_box3",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1p, predicted by hand from the source before recording: Box 3 income $3,000 from renting a home that a partner used personally for more than the greater of 14 days or 10% of the fair-rental days: nonpassive (i1065sk1 p. 11, item 2), refused.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b3": true,
+        "person[taxpayer].k1p[fund].box3": 300000,
+        "person[taxpayer].k1p[fund].dwelling": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].dwelling_if_rent",
+          "form": "Rental of a home a partner used personally (nonpassive; Form 8582 does not apply)",
+          "remedy": "A partnership's rental of a home a partner used personally for more than the limit is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 11, Special rules for certain other activities, \"The rental of a dwelling unit any partner used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mf.k1p.dwelling_box2",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. Box 2 net rental real estate income $3,000 from renting a home that a partner used personally for more than the greater of 14 days or 10% of the fair-rental days; the filer is not a real estate professional and has no rental of their own. i1065sk1 p. 11, Special rules for certain other activities: such a rental is not a passive activity and Form 8582 does not apply; refused.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": 300000,
+        "person[taxpayer].k1p[fund].re_pro": false,
+        "person[taxpayer].k1p[fund].dwelling": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].dwelling_if_rent",
+          "form": "Rental of a home a partner used personally (nonpassive; Form 8582 does not apply)",
+          "remedy": "A partnership's rental of a home a partner used personally for more than the limit is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 11, Special rules for certain other activities, \"The rental of a dwelling unit any partner used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "k1p.mut.limited_under500_no_test2",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the gp_under500 operand of k1p.ask_nearly_all, read as under500 by the mutant), predicted by hand from i1065sk1 p. 9 before running: a limited partner (not a general partner), box 1 $8,000, worked in the business in 2025 but not over 500 hours, not test 5 or 6. Limited partners, \"If you're a limited partner, you must meet item 1, 5, or 6 above to qualify as having materially participated\": test 2 (substantially all the participation) is not open to them, so the question is not asked (k1p.ask_nearly_all false) and the activity is passive: material participation false, column (h) $8,000, column (k) $0, as x2k1p.limited_worked_passive.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].general": false,
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 800000,
+        "person[taxpayer].k1p[fund].work": true,
+        "person[taxpayer].k1p[fund].hours500": false,
+        "person[taxpayer].k1p[fund].five_of_ten": false,
+        "person[taxpayer].k1p[fund].t6": false
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].ask_nearly_all": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].material": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "person[taxpayer].k1p[fund].col_k": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

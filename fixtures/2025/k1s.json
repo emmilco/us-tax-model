@@ -1516,7 +1516,7 @@
           "remedy": "Section 199A dividends and qualified PTP income from an S corporation are outside this tool.",
           "cite": {
             "doc": "i1120ssk",
-            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation\u2019s net section 199A dividends\"",
+            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation’s net section 199A dividends\"",
             "revision": "2025",
             "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
             "tax_year": 2025
@@ -1529,7 +1529,7 @@
           "remedy": "Section 199A dividends and qualified PTP income from an S corporation are outside this tool.",
           "cite": {
             "doc": "i1120ssk",
-            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation\u2019s net section 199A dividends\"",
+            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation’s net section 199A dividends\"",
             "revision": "2025",
             "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
             "tax_year": 2025
@@ -1542,7 +1542,7 @@
           "remedy": "Section 199A dividends and qualified PTP income from an S corporation are outside this tool.",
           "cite": {
             "doc": "i1120ssk",
-            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation\u2019s net section 199A dividends\"",
+            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation’s net section 199A dividends\"",
             "revision": "2025",
             "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
             "tax_year": 2025
@@ -2324,7 +2324,7 @@
           "remedy": "Section 199A dividends and qualified PTP income from an S corporation are outside this tool.",
           "cite": {
             "doc": "i1120ssk",
-            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation\u2019s net section 199A dividends\"",
+            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation’s net section 199A dividends\"",
             "revision": "2025",
             "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
             "tax_year": 2025
@@ -2634,6 +2634,199 @@
         "person[taxpayer].k1s_total_nonpassive_income": {
           "kind": "money",
           "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_trader",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane v2-k1s, predicted by hand from the source before recording: Box 1 income $5,000 from a corporation whose business is trading investments for its owners: nonpassive (i1120ssk p. 5), refused at k1s.ok, as k1p.trader is.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].trader": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].trader_if_b1",
+          "form": "A corporation trading investments for its owners (nonpassive trading activity)",
+          "remedy": "A corporation that trades investments for its owners is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 5, \"Trading personal property for the account of owners of interests in the activity\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_re_pro",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane v2-k1s, predicted by hand from the source before recording: Box 2 income $3,000, no rental of the filer's own (scope.rental No), a real estate professional: box 2 may be nonpassive (i1120ssk p. 6, Box 2), refused as on Schedule E Part I.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box2_any": true,
+        "person[taxpayer].k1s[acme].box2": 300000,
+        "person[taxpayer].k1s[acme].re_pro": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].re_pro_if_b2",
+          "form": "Schedule K-1 (Form 1120-S) box 2 of a real estate professional (Schedule E, line 43)",
+          "remedy": "Rental real estate from an S corporation held by a real estate professional is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 6, Box 2. Net Rental Real Estate Income (Loss), \"the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "k1s.re_pro_asked_on_sche",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane v2-k1s, predicted by hand from the source before recording: Box 2 income $3,000 and a rental of the filer's own listed (scope.rental Yes): the real estate professional question is asked once, on Schedule E Part I, so the K-1 does not ask it; box 2 income is passive, column (h) $3,000.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box2_any": true,
+        "person[taxpayer].k1s[acme].box2": 300000,
+        "scope.rental": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].re_pro_if_b2": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_dwelling_box3",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane v2-k1s, predicted by hand from the source before recording: Box 3 income $2,000 from renting a home a shareholder used personally for more than the greater of 14 days or 10% of the fair-rental days: nonpassive (i1120ssk p. 5), refused.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box3_any": true,
+        "person[taxpayer].k1s[acme].box3": 200000,
+        "person[taxpayer].k1s[acme].dwelling": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].dwelling_if_rent",
+          "form": "Rental of a home a shareholder used personally (nonpassive; Form 8582 does not apply)",
+          "remedy": "An S corporation's rental of a home a shareholder used personally for more than the limit is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 5, \"The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_interest_buy",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane v2-k1s, predicted by hand from the source before recording: Box 1 income $5,000 and interest paid on money borrowed to buy the shares (i1040se p. 9, S Corporations, a separate Schedule E line): refused.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].interest_buy": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].interest_buy",
+          "form": "Schedule E, line 28, interest on money borrowed to buy into an S corporation (debt-financed acquisition)",
+          "remedy": "Interest on money borrowed to buy into an S corporation is outside this tool.",
+          "cite": {
+            "doc": "i1040se",
+            "locator": "p. 9, S Corporations, \"If you used loan proceeds to buy an interest in, or make a contribution to the capital of, an S corporation (debt-financed acquisition), report your share of deductible S corporation interest expense on either Schedule A or Schedule E\"",
+            "revision": "2025",
+            "snapshot": "ad71de356a6250383ab08097582e982c3c3964792be2d4f5e4bd851816867975",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mf.k1s.dwelling_box2",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. Box 2 net rental real estate income $2,000 from renting a home that a shareholder used personally for more than the greater of 14 days or 10% of the fair-rental days; the filer is not a real estate professional and has no rental of their own. i1120ssk p. 5: such a rental is not a passive activity; refused.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box2_any": true,
+        "person[taxpayer].k1s[acme].box2": 200000,
+        "person[taxpayer].k1s[acme].re_pro": false,
+        "person[taxpayer].k1s[acme].dwelling": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].dwelling_if_rent",
+          "form": "Rental of a home a shareholder used personally (nonpassive; Form 8582 does not apply)",
+          "remedy": "An S corporation's rental of a home a shareholder used personally for more than the limit is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 5, \"The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
         }
       }
     }

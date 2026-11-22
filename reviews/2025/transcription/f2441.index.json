@@ -5,8 +5,8 @@
  "base": "e1801a2b8baccd604e79f756165fa89a89a603c80cd7723ff8c70e8f1f021147",
  "head_rows": {
   "printed lines compared": "38",
-  "agree / disagree / missing": "30 / 8 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "29 / 9 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-16); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -58,15 +58,16 @@
   },
   {
    "key": "4",
-   "record": "78a7ac1ec6dad83a4023288c1791893ff082d0b6c295c941c3b5a9fade25222c",
+   "record": "6bb542263a3044c5c4960c040424161df5fb6ee96a4ccc66b463bf28c6541019",
    "status": "AGREE",
-   "subject_key": "9d3b4ff967400e4449594a83af63ebcfa7551b5e39e4c83b71ea51b3ed1e63e3"
+   "subject_key": "6b70368a0fbd77aee6324ade6123560b68630c9cdb8339d313ecfae6985aa297"
   },
   {
    "key": "5",
-   "record": "c99162821b67d2c7eb5892c336fc9d2671aba94a6c7e06c5f0cf2346b508b8cf",
-   "status": "AGREE",
-   "subject_key": "94dcfa2a9ba6a15d94af2fbc4466025803ba05bc3181604bc6f722ad8f5a1eae"
+   "record": "6bb542263a3044c5c4960c040424161df5fb6ee96a4ccc66b463bf28c6541019",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i2441 p. 4, Lines 4 and 5: earned income includes \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\", and on a joint return the spouse's earned income. The candidate tests its own f2441.h_spouse_counted where the project tests f2441.joint, and the two refuse different returns: the 2 completed-return differences are returns the project refuses (s3.mfs, and its cited screens at lines 11 and 26), which the candidate computes. No value difference on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/f2441.json): 3,416 of 3,483 agree, 3,226 of 3,227 in scope. Project stands.",
+   "subject_key": "cde8667eea13210a2e28a50433fa52009636863465e07c6503d16ed22031de79"
   },
   {
    "key": "6",
@@ -161,16 +162,16 @@
   },
   {
    "key": "18",
-   "record": "c99162821b67d2c7eb5892c336fc9d2671aba94a6c7e06c5f0cf2346b508b8cf",
+   "record": "6bb542263a3044c5c4960c040424161df5fb6ee96a4ccc66b463bf28c6541019",
    "status": "AGREE",
-   "subject_key": "03fd6090de5747495ca97eb8d59e9d17567754c5a42774aa6e13fcc065b151e8"
+   "subject_key": "4923df6a9c3cfd11f0adf411e9a12f3eab1f6d4a13c6d59ac27b224e07117fe1"
   },
   {
    "key": "19",
-   "record": "d8c907b6f929a24b99a6782275128501c54c76781f5cd444c9901d24863ed90b",
+   "record": "6bb542263a3044c5c4960c040424161df5fb6ee96a4ccc66b463bf28c6541019",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i2441 p. 6, Line 19: if married filing jointly, the spouse's earned income; for a married-filing-separately filer not considered unmarried, the spouse's earned income; otherwise line 18. Both sides compute the same three branches (MFS via line A and f2441.mfs_spouse_earned). The project refuses where the spouse died in 2025 (f2441.spouse_died_gate) or was a student or disabled with benefits (f2441.mfs_spouse_deemed_if_married), which the reply computes. Triage: 3,218/3,236 agree; 15 project-refuses, 3 project-unknown, all on refused returns (classm.w2.1.deepseek: project refuses, reply $59,127.00). No change.",
-   "subject_key": "015cd8b1a9fd9e6de776f1fc70752ffdb64dfad4403320e4301d317ff54a20b8"
+   "ruling": "Ruling: scope; i2441 p. 6, Line 19: \"If you are married filing jointly, enter the spouse's earned income ... If you are married filing separately and you are considered unmarried ... enter your spouse's earned income ... Otherwise, enter the amount from line 18.\" The project writes line 18 for every return that is not joint and refuses a married filing separately Form 2441 at lines 11 and 26 (s3.mfs; i2441 p. 2, \"Generally, married persons must file a joint return to claim the credit\"), so its line 19 reaches no completed separate return; the candidate's separate-return branch reaches none either (all 4 differences are project refusals). Triage executable-triage-v2 (.transcription/triage/2025/f2441.json): 3,479 of 3,483 agree. Project stands.",
+   "subject_key": "016361e0a457cdd8c9bb648b4834fb9cdd7844b6bdfd2dc4065d89a39c947329"
   },
   {
    "key": "20",
@@ -292,16 +293,16 @@
   "1 (box)": "fbe110317d55037e9e9efad2950f82c8ac5db73914dc76e2965e61657bf5b047",
   "2 (box)": "030bf37888598654c2beea5dc83b96b7b453a6c972e9a4d85d650a02715d689a",
   "3": "ce509cabfcd60bdc212876e6e092a019dc8a03d4cfae5f6ee29982827e31829b",
-  "4": "393d457b6194801195cf4deac18a4e49482d059515a543e3b6a863a4ab05702f",
-  "5": "393d457b6194801195cf4deac18a4e49482d059515a543e3b6a863a4ab05702f",
+  "4": "9e12dd655da603236dafdb1875499f102cb2ebe2b23b7eeeab648508d1dd2bb3",
+  "5": "9e12dd655da603236dafdb1875499f102cb2ebe2b23b7eeeab648508d1dd2bb3",
   "9b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "11": "cd12af4ce893663992dc1e35440311528f9f86909f186e35d7b2c83adf9a001a",
   "12": "78667a04a4cb43be6c914ade0a654311037a5e8a36568827c92a75a1ddcf9fd5",
   "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "16": "0a255eace46677d5e2c4b6a775d4b0f246edfebd5d51f01b0a6e1dd956c7b276",
   "17": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "18": "77988f257d9c10526587c8fca156ad28d1d80f496d1f641aa763aed9115d725c",
-  "19": "3bb750c6243ab57f2818d6e1e649b6924773c91248f32986b776b89f3d645958",
+  "18": "2c4519247fca0e09e3ad8f296c2cb86165331316a7e8ef96c5eb8d12c3b1eb5a",
+  "19": "36b5b5615c72891e265a736452067851278efbce204260c02c850bee1a544f17",
   "20": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "21": "4872f54fd85739324d6d2d304f607067ef4ef4b8d8ea3af17269292313036d75",
   "22": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

@@ -1619,7 +1619,7 @@
         "s1"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Hand-predicted refusal (BUG-0919): an interior improvement to a rented office building placed in service in 2019 is qualified improvement property (i4562 p. 9, 15-year property); the filer ticks it on the screen, so rprop.dep refuses at rprop.screen.",
+      "evidence_note": "Hand-predicted refusal (BUG-0919): an interior improvement to a rented office building placed in service in 2019 is qualified improvement property (i4562 p. 9, 15-year property); the filer answers Yes to rprop.qip (asked of nonresidential real property placed in service after 2017), so the derived rprop.screen is true and rprop.dep refuses at rprop.screen.",
       "inputs": {
         "scope.rental": true,
         "$w2@person[taxpayer]": [
@@ -1640,14 +1640,14 @@
         "rental[a].rprop[b].month": "m3",
         "rental[a].rprop[b].year": "y2019",
         "rental[a].rprop[b].basis": 5000000,
-        "rental[a].rprop[b].screen": true
+        "rental[a].rprop[b].qip": true
       },
       "expect": {
         "rental[a].rprop[b].dep": {
           "kind": "refusal",
           "gate": "rental[a].rprop[b].screen",
           "form": "Form 4562 (real property outside the mid-month tables)",
-          "remedy": "Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, or cooperative stock is outside this tool.",
+          "remedy": "Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, cooperative stock, or property received in a like-kind exchange or an involuntary conversion is outside this tool.",
           "cite": {
             "doc": "i4562",
             "locator": "p. 11, Column (f)—Method",
@@ -2008,6 +2008,71 @@
       }
     },
     {
+      "id": "rj.rental.rental_only_costs_whole_with_personal_use",
+      "covers": [
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived sources before running the evaluator (lane RJ, owner ruling C1). A vacation home rented at a fair price for 90 days and used personally for 10 other days: total use 100 days, rental part 90/100 = 0.9 (Pub. 527 (2025) p. 25, Dividing Expenses; p. 26, the cottage example). Not used as a home: 10 personal days is not more than the greater of 14 days and 10% of 90 rental days (p. 26), so the expenses are divided (p. 28, Not used as a home). Advertising 1,000 and commissions to an agent who found renters 600 are directly related only to the rental activity and are taken whole (p. 31, Line 2d, rental agency fees, advertising; p. 29, line 2e, Fully deductible rental expenses; pp. 23-24, expenses that belong only to the rental): line 5 1,000.00, line 8 600.00. Management fees 800 and cleaning 1,000 are divided: line 11 720.00, line 7 900.00. Line 20 = 1,000 + 900 + 600 + 720 = 3,220.00; rents 12,000, line 21 = 8,780.00 (i1040se line 21); Schedule E line 24 8,780.00. Under the former reading (every line divided) lines 5 and 8 would be 900.00 and 540.00 and line 21 8,940.00.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "vacation",
+        "rental[a].rents": 1200000,
+        "rental[a].days_fair": 90,
+        "rental[a].personal_any": true,
+        "rental[a].days_personal": 10,
+        "rental[a].days_overlap": 0,
+        "rental[a].has_advertising": true,
+        "rental[a].amt5": 100000,
+        "rental[a].has_cleaning": true,
+        "rental[a].amt7": 100000,
+        "rental[a].has_commissions": true,
+        "rental[a].amt8": 60000,
+        "rental[a].has_management": true,
+        "rental[a].amt11": 80000
+      },
+      "expect": {
+        "rental[a].line5": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "rental[a].line7": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "rental[a].line8": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "rental[a].line11": {
+          "kind": "money",
+          "cents": 72000
+        },
+        "rental[a].line20": {
+          "kind": "money",
+          "cents": 322000
+        },
+        "rental[a].line21": {
+          "kind": "money",
+          "cents": 878000
+        },
+        "sche.line24": {
+          "kind": "money",
+          "cents": 878000
+        }
+      }
+    },
+    {
       "id": "mrental.rental.excluded_home_with_costs",
       "covers": [
         "rental",
@@ -2355,6 +2420,604 @@
             "snapshot": "ad71de356a6250383ab08097582e982c3c3964792be2d4f5e4bd851816867975",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "xsa.f8582_mfs_together_late",
+      "covers": [
+        "rental",
+        "sche",
+        "f8582",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i8582 (BUG-0836): the rental of x1sche.f2.small_loss_exception (line 21 -$213.20) on a married-filing-separately return, spouses lived together from July to December. i8582 p. 10, Part II caution: not eligible for the special allowance, do not complete Part II, so line 4 and line 9 are $0; p. 1, the exception needs the spouses to have lived apart all year, so it fails and Form 8582 is required. Line 10 (passive income) $0, line 11 $0; Part VII line C = 213.20 - 0 = 213.20, all unallowed; line 22 $0, carried to 2026 $213.20; AGI = wages $50,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1350000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 800000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 40000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 50000,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 25000,
+        "rental[a].has_utilities": true,
+        "rental[a].amt17": 20000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m2",
+        "rental[a].rprop[b].year": "y2020",
+        "rental[a].rprop[b].basis": 12000000,
+        "f1040.status": "mfs",
+        "household.mfs_living": "together_late"
+      },
+      "expect": {
+        "f8582.exception": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.required": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8582.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8582.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8582.p7_C": {
+          "kind": "money",
+          "cents": 21320
+        },
+        "rental[a].line21": {
+          "kind": "money",
+          "cents": -21320
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rental[a].carryforward": {
+          "kind": "money",
+          "cents": 21320
+        },
+        "s1.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5000000
+        }
+      }
+    },
+    {
+      "id": "xsa.f8582_mfs_apart_last6",
+      "covers": [
+        "rental",
+        "sche",
+        "f8582",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i8582 (BUG-0836): the rental of x1sche.f2.small_loss_exception (line 21 -$213.20) on a married-filing-separately return, spouses lived together only before July (still 'at any time during the year'). i8582 p. 10, Part II caution: not eligible for the special allowance, do not complete Part II, so line 4 and line 9 are $0; p. 1, the exception needs the spouses to have lived apart all year, so it fails and Form 8582 is required. Line 10 (passive income) $0, line 11 $0; Part VII line C = 213.20 - 0 = 213.20, all unallowed; line 22 $0, carried to 2026 $213.20; AGI = wages $50,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1350000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 800000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 40000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 50000,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 25000,
+        "rental[a].has_utilities": true,
+        "rental[a].amt17": 20000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m2",
+        "rental[a].rprop[b].year": "y2020",
+        "rental[a].rprop[b].basis": 12000000,
+        "f1040.status": "mfs",
+        "household.mfs_living": "apart_last6"
+      },
+      "expect": {
+        "f8582.exception": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.required": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8582.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8582.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8582.p7_C": {
+          "kind": "money",
+          "cents": 21320
+        },
+        "rental[a].line21": {
+          "kind": "money",
+          "cents": -21320
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rental[a].carryforward": {
+          "kind": "money",
+          "cents": 21320
+        },
+        "s1.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5000000
+        }
+      }
+    },
+    {
+      "id": "xsa.f8582_mfs_apart_all_year",
+      "covers": [
+        "rental",
+        "sche",
+        "f8582",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i8582 (BUG-0836): the same rental on a married-filing-separately return, spouses apart all year. The exception holds with the separate-return limits (p. 1: loss $213.20 not more than $12,500; MAGI $50,000 not more than $50,000), so Form 8582 is not required. Part II as computed: line 4 213.20, line 5 $75,000, line 7 75,000 - 50,000 = 25,000, line 8 the smaller of 12,500 and $12,500 = 12,500, line 9 213.20; line 22 -213.20; AGI 49,786.80.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1350000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 800000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 40000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 50000,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 25000,
+        "rental[a].has_utilities": true,
+        "rental[a].amt17": 20000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m2",
+        "rental[a].rprop[b].year": "y2020",
+        "rental[a].rprop[b].basis": 12000000,
+        "f1040.status": "mfs",
+        "household.mfs_living": "apart_all_year"
+      },
+      "expect": {
+        "f8582.exception": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8582.required": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.line5": {
+          "kind": "money",
+          "cents": 7500000
+        },
+        "f8582.line8": {
+          "kind": "money",
+          "cents": 1250000
+        },
+        "f8582.line9": {
+          "kind": "money",
+          "cents": 21320
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": -21320
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4978680
+        }
+      }
+    },
+    {
+      "id": "xsa.converted_home_june",
+      "covers": [
+        "rental",
+        "rprop",
+        "rf4562",
+        "sche",
+        "f8582",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted (BUG-0775): the filer's home until May 31, 2025, rented from June 1 under a lease running 12 months or more (214 days at a fair rent; the main-home days are not personal-use days, p527 p. 27, so they are not counted and personal_any is No). Following the amount questions' help, each yearly cost is entered for June to December only (p527 p. 22, Property Changed to Rental Use: seven-twelfths): mortgage interest 8,000 x 7/12 = 4,666.67, insurance 400 x 7/12 = 233.33, tax 500 x 7/12 = 291.67; repairs 250 and utilities 200 paid while rented. No personal-use days, so no further division: lines 9, 12 and 16 are the amounts entered. Building $120,000 placed in service June 2025, p946 Table A-6 month 6, 1.970% = $2,364.00. Expenses 5,641.67 + 2,364.00 = 8,005.67; line 21 = 7,000 - 8,005.67 = -1,005.67. Form 8582 exception (active, loss under $25,000, MAGI $50,000): line 22 -1,005.67; AGI 48,994.33.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].days_fair": 214,
+        "rental[a].personal_any": false,
+        "rental[a].rents": 700000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 466667,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 23333,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 29167,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 25000,
+        "rental[a].has_utilities": true,
+        "rental[a].amt17": 20000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m6",
+        "rental[a].rprop[b].year": "y2025",
+        "rental[a].rprop[b].basis": 12000000
+      },
+      "expect": {
+        "rental[a].line9": {
+          "kind": "money",
+          "cents": 23333
+        },
+        "rental[a].line12": {
+          "kind": "money",
+          "cents": 466667
+        },
+        "rental[a].line16": {
+          "kind": "money",
+          "cents": 29167
+        },
+        "rental[a].line18": {
+          "kind": "money",
+          "cents": 236400
+        },
+        "rental[a].line21": {
+          "kind": "money",
+          "cents": -100567
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": -100567
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4899433
+        }
+      }
+    },
+    {
+      "id": "xsa.tenant_paid_repair",
+      "covers": [
+        "rental",
+        "sche",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted (BUG-0789): rent $11,400 received plus a $600 repair the tenant paid in place of rent; both are rent (p527, Expenses paid by tenant), so rents are $12,000, and the repair is ticked and entered as a cost (\"Did you, or a tenant for you, pay ...\"). Line 14 $600; line 21 = 12,000 - 600 = 11,400; AGI 50,000 + 11,400 = 61,400.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1200000,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 60000
+      },
+      "expect": {
+        "rental[a].line14": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "rental[a].line21": {
+          "kind": "money",
+          "cents": 1140000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 6140000
+        }
+      }
+    },
+    {
+      "id": "xsa.royalty_tax_withheld",
+      "covers": [
+        "royalty",
+        "sche",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted (BUG-0890): an oil royalty of $10,000 gross, from which the producer withheld $500 severance tax (i1040se p. 6, Line 4: gross on line 4, the tax withheld on line 16). The filer answers Yes to the costs question (\"or did the payer take any out of your payments\"): line 4 $10,000, line 16 $500, line 20 $500, line 21 $9,500; AGI 50,000 + 9,500 = 59,500.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [],
+        "$royalty": [
+          "r"
+        ],
+        "royalty[r].line4": 1000000,
+        "royalty[r].expenses_any": true,
+        "royalty[r].amt16": 50000
+      },
+      "expect": {
+        "royalty[r].line16": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "royalty[r].line21": {
+          "kind": "money",
+          "cents": 950000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5950000
+        }
+      }
+    },
+    {
+      "id": "xsa.rental_then_home_june",
+      "covers": [
+        "rental",
+        "sche",
+        "f8582",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted (BUG-0775, the reverse case): rented at a fair rent January 1 to May 31, 2025 (151 days), then the filer's main home from June 1 (214 days). The rental lasted under 12 months and did not end in a sale, so the main-home days are personal-use days (p527 p. 27, Days used as a main home before or after renting). The days were counted, so, per the amount questions' help, the yearly costs are entered whole: mortgage interest 8,000, insurance 400, tax 500. The form divides them by 151 / (151 + 214): ratio 0.413699 (half-up to 6 places), so line 9 = 165.48, line 12 = 3,309.59, line 16 = 206.85, close to the five-twelfths of p527 p. 22 (Property Changed to Rental Use). Home test: 214 personal days, more than 14 and more than 15.1 (10% of 151): used as a home and rented 15 days or more, so refused at rental.ws51 (Worksheet 5-1).",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].days_fair": 151,
+        "rental[a].personal_any": true,
+        "rental[a].days_personal": 214,
+        "rental[a].rents": 750000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 800000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 40000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 50000
+      },
+      "expect": {
+        "rental[a].home": {
+          "kind": "bool",
+          "value": true
+        },
+        "rental[a].line9": {
+          "kind": "money",
+          "cents": 16548
+        },
+        "rental[a].line12": {
+          "kind": "money",
+          "cents": 330959
+        },
+        "rental[a].line16": {
+          "kind": "money",
+          "cents": 20685
+        },
+        "rental[a].line21": {
+          "kind": "refusal",
+          "gate": "rental[a].ws51",
+          "form": "Pub. 527, Worksheet 5-1 (dwelling unit used as a home)",
+          "remedy": "A home you also lived in or used for more than the greater of 14 days or 10% of the days rented, and rented 15 days or more, is outside this tool.",
+          "cite": {
+            "doc": "p527",
+            "locator": "p. 28, Used as a home and rented 15 days or more",
+            "revision": "2025",
+            "snapshot": "20c826e98dce23d20f80ab89da7e668a8ee7162a2194f480ce417cff651201d6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mf.rental.held_for_sale_refused",
+      "covers": [
+        "rental"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. A single-family house rented for $5,000 in 2025 but held mainly to sell at a gain as an investment. i8582 p. 3, Exceptions (\"The rental of property is incidental to an activity of holding property for investment\") and i1040se p. 5 (rentals of real estate held for sale to customers): not handled as a Schedule E rental by this tool, so line 21 refuses at the held-for-sale gate. Filing status single is stated: rental.part4 reads f8582.mfs_together, which reads the filing status.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 500000,
+        "rental[a].held_for_sale": true,
+        "f1040.status": "single"
+      },
+      "expect": {
+        "rental[a].line21": {
+          "kind": "refusal",
+          "gate": "rental[a].held_for_sale",
+          "form": "Form 8582 exceptions, or Schedule C (property held mainly for sale, or offered in business hours to many customers)",
+          "remedy": "Property held mainly to sell, as an investment or by a real estate dealer, and property offered during business hours to many customers may not be a rental activity, and are outside this tool.",
+          "cite": {
+            "doc": "i8582",
+            "locator": "p. 3, Exceptions, \"The rental of property is incidental to an activity of holding property for investment\"; i1040se p. 6, \"Do not use Schedule E to report income and expenses from rentals of real estate you held for sale to customers in the ordinary course of your business as a real estate dealer\"",
+            "revision": "2025",
+            "snapshot": "76787e11a385d1205faf70a07924cdec4efd5e66628e6f47e5316d29e6035f71",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mf.rental.prior_ws51_refused",
+      "covers": [
+        "rental"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. A single-family rental (rents $5,000, active participation) with a $2,000 loss carried over, part of it rental costs carried over from an earlier year's Pub. 527 Worksheet 5-1 when the owner also used the place as a home. p527 p. 28: that limit applies to expenses carried forward even if the property is not used as a home in the later year; this tool does not apply it, so the prior-year unallowed loss (Form 8582 Part IV (c)) refuses.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 500000,
+        "rental[a].prior_any": true,
+        "rental[a].prior_amt": 200000,
+        "rental[a].prior_ws51": true
+      },
+      "expect": {
+        "rental[a].prior_loss": {
+          "kind": "refusal",
+          "gate": "rental[a].prior_ws51_if_any",
+          "form": "Pub. 527, Worksheet 5-1 (expenses carried over from a year of home use)",
+          "remedy": "Rental costs carried over from an earlier year's Worksheet 5-1, when you also used the place as a home, are outside this tool.",
+          "cite": {
+            "doc": "p527",
+            "locator": "p. 28, \"This limitation will apply to expenses carried forward to another year even if you don’t use the property as your home for that subsequent year\"",
+            "revision": "2025",
+            "snapshot": "20c826e98dce23d20f80ab89da7e668a8ee7162a2194f480ce417cff651201d6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "rental.mut.allowed_zero_not_in_part7",
+      "covers": [
+        "rental",
+        "f8582"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the rental.zero operand of rental.allowed's not-listed alternative, read as rental.p7c_share by the mutant), predicted by hand before running: the inputs of x1sche.f1.profit (rents $18,000, line 21 $1,782.40, a profit). i8582 Part VII is completed only for activities with an overall loss in Part V column (e) or a loss in Part VI column (d), and Part VIII lists the activities of Part VII: this rental has no loss, so Part VII column (a) is $0 (rental.p7_listed false) and its Part VIII loss allowed (rental.allowed) is $0.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1800000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 600000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 240000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 120000,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 80000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m2",
+        "rental[a].rprop[b].year": "y2020",
+        "rental[a].rprop[b].basis": 16000000
+      },
+      "expect": {
+        "rental[a].line21": {
+          "kind": "money",
+          "cents": 178240
+        },
+        "rental[a].p7_listed": {
+          "kind": "bool",
+          "value": false
+        },
+        "rental[a].allowed": {
+          "kind": "money",
+          "cents": 0
         }
       }
     }

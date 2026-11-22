@@ -92,6 +92,7 @@ rows:
     person[taxpayer].w2[job].box4: 930000
     person[taxpayer].w2[job].box5: 15000000
     person[taxpayer].w2[job].box6: 217500
+    f1040.tax_exempt_any: true
     f1040.tax_exempt_interest: 10000000
     s2.amt_pab: 10000000
     s2.w2_marks: false
@@ -112,6 +113,22 @@ rows:
 - id: other.household_employee
   design: s2.other, Schedule 2 line 9
   situation: A person paid a nanny $20,000 in 2025.
+  answers:
+    s2.household_help: true
+    s2.household_employee: true
+  expect:
+    refused: s2.other
+- id: other.household_nanny_payroll_service
+  design: BUG-0901 (a worker the family directs, paid through a payroll service)
+  situation: A family paid a nanny it chose and directs $30,000 in 2025 through a payroll service.
+  answers:
+    s2.household_help: true
+    s2.household_employee: true
+  expect:
+    refused: s2.other
+- id: other.household_private_driver
+  design: BUG-0901 (a private driver is a household worker)
+  situation: A person paid a private driver $15,000 in 2025.
   answers:
     s2.household_help: true
     s2.household_employee: true
@@ -181,6 +198,27 @@ rows:
     s1.inmate_wages: true
   expect:
     refused: s1.line8_other
+- id: other.niit_6013g
+  design: BUG-0828 (Form 8960 with a section 6013(g) election)
+  situation: A U.S. citizen and her spouse, a nonresident alien she chose to treat as a resident, file jointly with $300,000 of pay.
+  uses: [one_w2]
+  answers:
+    "$person": ["taxpayer", "spouse"]
+    "household.married_dec31": true
+    "scope.noncitizen": true
+    "scope.nonresident": false
+    person[taxpayer].w2[job].box1: 30000000
+    person[taxpayer].w2[job].box5: 30000000
+    f8960.unsupported: false
+    f8960.refund: false
+    f8960.election_6013g: true
+    s2.w2_marks: false
+    s1.nqdc_pension: false
+    scope.w2_marks: false
+    scope.artist_official: false
+    scope.excess_deferral: false
+  expect:
+    refused: f8960.election_6013g_if_joint
 - id: other.digital_income
   design: s1.line8_other, line 8v; end restated by lane x1-digital (line 8v computed, beneath the Form 1040 digital asset question)
   situation: A person received crypto from staking.
@@ -191,6 +229,16 @@ rows:
   expect:
     proceeds:
       s1.digital_amount: 41250
+- id: other.digital_airdrop
+  design: BUG-0896 fix (crypto received in an airdrop, line 8v)
+  situation: A person who only held crypto received new coins worth $200 in an airdrop.
+  answers:
+    f1040.digital_assets: true
+    s1.digital_income: true
+    s1.digital_amount: 20000
+  expect:
+    proceeds:
+      s1.digital_amount: 20000
 - id: other.digital_income_niit
   design: x1-digital, f8960.digital_nii (line 8v on a return over the net investment income tax threshold; amb.2025.digital_8v_nii)
   situation: A person with $190,000 of wages received $20,000 of crypto from staking.
@@ -239,6 +287,38 @@ rows:
   expect:
     proceeds:
       s1.gambling_winnings: 30000
+- id: other.lottery_installment
+  design: BUG-0808 fix (winnings received in 2025 from an earlier win)
+  situation: A person got the 2025 yearly payment of $1,000 from a lottery prize won in 2022.
+  uses: [won]
+  answers:
+    s1.gambling_winnings: 100000
+    sa.gambling_losses: 0
+    s1.gambling_pro: false
+    s1.prizes: 3750000
+    s1.olympic: false
+    person[taxpayer].sav_student: false
+    person[taxpayer].sav_voluntary: 0
+    person[taxpayer].sav_able: false
+  expect:
+    proceeds:
+      s1.gambling_winnings: 100000
+- id: other.lottery_rights_sale
+  design: BUG-0808 fix (a lump sum for selling the right to future lottery payments)
+  situation: A person sold the right to the rest of a small lottery prize's yearly payments for a lump sum of $1,500.
+  uses: [won]
+  answers:
+    s1.gambling_winnings: 150000
+    sa.gambling_losses: 0
+    s1.gambling_pro: false
+    s1.prizes: 3750000
+    s1.olympic: false
+    person[taxpayer].sav_student: false
+    person[taxpayer].sav_voluntary: 0
+    person[taxpayer].sav_able: false
+  expect:
+    proceeds:
+      s1.gambling_winnings: 150000
 - id: other.professional_gambler
   design: s1.gambling_business (unchanged refusal, new path)
   situation: A person gambles for a living.
@@ -343,6 +423,15 @@ rows:
   expect:
     proceeds:
       s1.hobby_income: 40000
+- id: other.hobby_at_loss
+  design: BUG-0822 fix (hobby income counted in full when the hobby cost more than it brought in)
+  situation: A person sold $600 of quilts made as a pastime, after spending $900 on fabric.
+  answers:
+    s1.hobby_any: true
+    s1.hobby_income: 60000
+  expect:
+    proceeds:
+      s1.hobby_income: 60000
 - id: other.scholarship
   design: s1.line8r beneath s1.scholarship_any
   situation: A degree student's scholarship paid $3,000 toward room and board.
@@ -362,12 +451,68 @@ rows:
     proceeds:
       s1.scholarship_taxable: 0
 - id: other.canceled_debt_exception
-  design: s1.cod_unsupported (unchanged refusal)
+  design: s1.cod_unsupported (unchanged refusal); answers restated by BUG-0810 (the screen taken apart into boxes)
   situation: A person whose credit card debt was canceled owed more than everything they owned.
   answers:
     s1.cod_any: true
     s1.cod_amount: 400000
-    s1.cod_unsupported: true
+    s1.cod_bankrupt: true
+  expect:
+    refused: s1.cod_unsupported
+- id: other.canceled_debt_student_loan
+  design: BUG-0810 fix, s1.cod_unsupported taken apart (box s1.cod_student_home)
+  situation: A person's private student loan of $12,000 was forgiven in 2025.
+  answers:
+    s1.cod_any: true
+    s1.cod_amount: 1200000
+    s1.cod_bankrupt: false
+    s1.cod_student_home: true
+  expect:
+    refused: s1.cod_unsupported
+- id: other.canceled_debt_main_home
+  design: BUG-0810 fix, s1.cod_unsupported taken apart (box s1.cod_student_home)
+  situation: A lender cut $30,000 off the mortgage on a person's main home in a loan modification.
+  answers:
+    s1.cod_any: true
+    s1.cod_amount: 3000000
+    s1.cod_bankrupt: false
+    s1.cod_student_home: true
+  expect:
+    refused: s1.cod_unsupported
+- id: other.canceled_debt_gift
+  design: BUG-0810 fix, s1.cod_unsupported taken apart (box s1.cod_gift)
+  situation: A person's aunt forgave a $5,000 loan as a gift.
+  answers:
+    s1.cod_any: true
+    s1.cod_amount: 500000
+    s1.cod_bankrupt: false
+    s1.cod_student_home: false
+    s1.cod_gift: true
+  expect:
+    refused: s1.cod_unsupported
+- id: other.canceled_debt_seller_price_cut
+  design: BUG-0810 fix, s1.cod_unsupported taken apart (box s1.cod_price_cut)
+  situation: The dealer who sold a person a boat on credit cut $2,000 off what was still owed.
+  answers:
+    s1.cod_any: true
+    s1.cod_amount: 200000
+    s1.cod_bankrupt: false
+    s1.cod_student_home: false
+    s1.cod_gift: false
+    s1.cod_price_cut: true
+  expect:
+    refused: s1.cod_unsupported
+- id: other.canceled_debt_stockholder
+  design: BUG-0810 fix, s1.cod_unsupported taken apart (box s1.cod_stockholder)
+  situation: A family company in which a person holds shares forgave the $8,000 the person owed it.
+  answers:
+    s1.cod_any: true
+    s1.cod_amount: 800000
+    s1.cod_bankrupt: false
+    s1.cod_student_home: false
+    s1.cod_gift: false
+    s1.cod_price_cut: false
+    s1.cod_stockholder: true
   expect:
     refused: s1.cod_unsupported
 - id: other.other_income_item

@@ -1,3 +1,18 @@
+# 2026-11-17: handed to DeepSeek (opencode) until the IRS final 2026 forms; round F staged in `.claude/worktrees/fr2`
+
+**FROZEN 2026-11-18.** Work paused for the owner's absence. Read `.claude/freeze-2026-11-18/FREEZE.md`
+(main checkout, next to the worktree) or `handoffs/FREEZE-2026-11-18.md` before touching anything: it names
+the exact tree state (439 files staged at `213058b3`, restore hash `6ff27dbb`), what is finished (per-form
+reviews green, three pending bugs), what is open (sampled reviews 9% adjudicated, round F uncommitted), the
+diagnosed cost cause (the screen subject hash change made 157 of 166 screens due at once), and the resume
+steps. The DeepSeek balance is empty.
+
+**State:** `main` = `213058b3` (pushed); last release `r2026.11.16.1`. Round F (fix round) is complete and staged, not
+committed, in worktree `.claude/worktrees/fr2` (branch `fix-round-2`); its paid review round is half done. The owner
+(2026-11-17) handed orchestration and reviews to DeepSeek via opencode; Claude returns for the IRS finals push.
+**Read `handoffs/HANDOFF-DEEPSEEK-2026-11-17.md` first**: state, the review-family switch to decide first, the steps to
+finish round F, the queue, and the lessons.
+
 # 2026-11-15/16: start here (fix round B1 and the coverage expansion on main; release r2026.11.15.1 started)
 
 This entry is the current state of the project. Earlier entries are historical and are in
@@ -11,10 +26,10 @@ below for the kind of work you are doing, then the top of `TASKS.md`.
 
 - **Last release:** `r2026.11.16.1` (2026-11-16), the newest release tag before this commit; `git describe --tags
   --match 'r*'` gives the commits after it (a file cannot name the commit that holds it).
-- **Figures**, read from this tree: `BUG_INVENTORY.md` 932 entries (highest BUG-0932), 204 open, 4 of them covered by
-  a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 66 rows not done; scoreboard 561 of 3,883 computed lines
-  (14.4%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
-  149 ambiguity entries, 144 linked to a line (`ambiguities/2025.yaml`).
+- **Figures**, read from this tree: `BUG_INVENTORY.md` 997 entries (highest BUG-0997), 265 open, 5 of them covered by
+  a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 79 rows not done; scoreboard 692 of 3,911 computed lines
+  (17.7%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
+  153 ambiguity entries, 149 linked to a line (`ambiguities/2025.yaml`).
 <!-- /figures:handoff-state -->
 
 - **On `main`** when this entry was written, oldest first: `c556c598` (the coverage report lists at most 8 cases per
@@ -27,7 +42,8 @@ below for the kind of work you are doing, then the top of `TASKS.md`.
   prepared, not adopted: the definition changes as operations in `changes/2026/` (checked on every check-all run),
   parameters and tables staged in `research/ty2026/`, plan in `docs/ty2026/ADOPTION.md`. The IRS finals are expected
   December 2026 to January 2027 (T-011, T-322).
-- **Reviews:** Claude only (`claude-opus-5-5`); the second family is inactive (`docs/consolidation_charter.md`).
+- **Reviews:** qualified families by tier (`families.json`, owner 2026-11-17): a form is satisfied by any qualified
+  family's current log, Claude's included while Claude is not called; DeepSeek is qualified and callable; GPT is advisory.
 
 ## Landed on 2026-11-15/16, and what is open
 

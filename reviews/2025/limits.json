@@ -346,11 +346,44 @@
   },
   "limit:p527:p25:825f794e": {
    "enforced_by": [
-    "rental.div5",
+    "rental.div7",
     "rental.div18",
     "rental.total_c"
    ],
-   "reason": "rental expenses of a dwelling with personal use: each expense line (rental.div5 to rental.div19, and depreciation rental.div18) is the whole expense times fair rental days (rental.fair_c) over total days of use (rental.total_c), the ratio rounded to six places and at most 1; a dwelling used as a home (rental.home) and rented 15 days or more is refused (rental.ws51, Pub. 527 Worksheet 5-1)."
+   "reason": "rental expenses of a dwelling with personal use: each divided expense line (rental.div7 to rental.div19, and depreciation rental.div18; lines 5 and 8 are taken whole, owner ruling C1 of 2026-11-16) is the whole expense times fair rental days (rental.fair_c) over total days of use (rental.total_c), the ratio rounded to six places and at most 1; a dwelling used as a home (rental.home) and rented 15 days or more is refused (rental.ws51, Pub. 527 Worksheet 5-1)."
+  },
+  "limit:p4681:p8:66fa0040": {
+   "not_applicable": "refused: canceled qualified farm or qualified real property business debt is a business, rental or farm debt, and a Yes to s1.cod_business makes s1.cod_unsupported refuse the return (Form 982 exclusions are not prepared)"
+  },
+  "limit:p4681:p8:c54f8b57": {
+   "not_applicable": "refused: canceled qualified farm or qualified real property business debt is a business, rental or farm debt, and a Yes to s1.cod_business makes s1.cod_unsupported refuse the return (Form 982 exclusions are not prepared)"
+  },
+  "limit:p4681:p9:337573df": {
+   "not_applicable": "refused: canceled qualified farm or qualified real property business debt is a business, rental or farm debt, and a Yes to s1.cod_business makes s1.cod_unsupported refuse the return (Form 982 exclusions are not prepared)"
+  },
+  "limit:p4681:p9:9314ee3e": {
+   "not_applicable": "refused: canceled qualified farm or qualified real property business debt is a business, rental or farm debt, and a Yes to s1.cod_business makes s1.cod_unsupported refuse the return (Form 982 exclusions are not prepared)"
+  },
+  "limit:p526:p18:749faba7": {
+   "not_applicable": "refused: a donated vehicle is on the gift.special list, which refuses (Form 8283 special treatment)"
+  },
+  "limit:p526:p18:1f5ec7cf": {
+   "enforced_by": [
+    "gift.deduction"
+   ],
+   "reason": "gift.deduction asks for the deduction for the item or group 'after required valuation/basis reductions', so the filer enters the amount already limited by this rule (Pub. 526 pp. 18-19); the encoding does not recompute it"
+  },
+  "limit:p526:p18:921b59a3": {
+   "enforced_by": [
+    "gift.deduction"
+   ],
+   "reason": "gift.deduction asks for the deduction for the item or group 'after required valuation/basis reductions', so the filer enters the amount already limited by this rule (Pub. 526 pp. 18-19); the encoding does not recompute it"
+  },
+  "limit:p526:p19:7624d3f3": {
+   "enforced_by": [
+    "gift.deduction"
+   ],
+   "reason": "gift.deduction asks for the deduction for the item or group 'after required valuation/basis reductions', so the filer enters the amount already limited by this rule (Pub. 526 pp. 18-19); the encoding does not recompute it"
   }
  },
  "baseline": {

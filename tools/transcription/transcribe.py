@@ -1753,7 +1753,7 @@ def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_e
     jurisdiction_id (us or ny) name the tax year and jurisdiction the call is spent on; they default to
     the run's own (--year, --jurisdiction)."""
     import time
-    families.require_active(model)
+    families.require_callable(model)
     families.require_selected_model(model)
     if not model.startswith("deepseek") and (reasoning_effort is not None or max_output_tokens is not None):
         raise ValueError("reasoning/output-budget options are supported only by the DeepSeek transport")
@@ -1863,8 +1863,8 @@ def record_cost(started, seconds, model, transport, prompt, system, meta, outcom
     if os.environ.get(RERUN_REASON_ENV):
         record["rerun_reason"] = os.environ[RERUN_REASON_ENV]  # rerun_all.py --force-rerun
     granted = families.override()
-    if granted and granted[0] == families.family_of(model) and not families.is_active(granted[0]):
-        record["inactive_family_override"] = {"family": granted[0], "reason": granted[1]}
+    if granted and granted[0] == families.family_of(model) and not families.is_callable(granted[0]):
+        record["uncallable_family_override"] = {"family": granted[0], "reason": granted[1]}
     line = (json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
     os.makedirs(RAW, exist_ok=True)
     fd = os.open(os.path.join(RAW, LEDGER_NAME), os.O_WRONLY | os.O_APPEND | os.O_CREAT, 0o644)

@@ -188,9 +188,14 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "ny_it201.ask.owes_use_tax",
+      "input": "ny_it201.ask.bought_untaxed",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.use_tax_dmv_only",
+      "value": false,
+      "reason": "Closed: an untaxed purchase is of goods other than a vehicle taxed at the DMV unless the scenario says so."
     },
     {
       "input": "ny_it201.ask.pension_exclusion",

@@ -80,7 +80,7 @@ for call in "mutate" "interview-length" "evidence" "review-stage" "tools/engines
 done
 has "$tmp/out" "== release_reviews: PASS ("
 has "$tmp/out" "== test_fixtures: PASS ("
-[ "$(grep -c '^  PASS ' "$tmp/out" || true)" = 25 ] || fail "expected 25 steps listed as PASS (the reviews and 24 steps)"
+[ "$(grep -c '^  PASS ' "$tmp/out" || true)" = 26 ] || fail "expected 26 steps listed as PASS (the reviews, the worktree gate and 24 steps)"
 first="$(grep -n 'tools/check_bug_inventory.py' "$CALLS" | head -1 | cut -d: -f1)"
 last_review="$(grep -n 'check_false_no.py --release --jurisdiction ny' "$CALLS" | head -1 | cut -d: -f1)"
 [ "${first:-0}" -gt "${last_review:-0}" ] || fail "the steps ran before the release reviews ended"

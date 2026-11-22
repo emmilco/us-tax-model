@@ -6,8 +6,10 @@ A screen is a yes/no input that one or more lines name as a refusal gate: answer
 lines refuse with a citation; answered no, they are computed (usually with the source the screen
 covers pinned to zero). A screen worded narrower than those lines lets an unsupported case through
 as a zero; one worded wider refuses cases the tool computes. The review gives the model the
-screen's question and the help the interview shows with it, each gated line with its encoded English (from rendered/) and its refusal text,
-and the archived pages those lines cite, and asks for every case the wording misses or sweeps in.
+screen's question as the interview shows it (its prompt, or for a box of a tick-box group the group's heading and the
+box's label with the prompt behind it; question_text) and the help shown with it, each gated line with its encoded
+English (from rendered/) and its refusal text, and the archived pages those lines cite, and asks for every case the
+wording misses or sweeps in. An input no interview profile asks is shown with its line's own question text, marked so.
 
 A choose-guard gate (gates.py: an input marked `gated_by` and its gate line) is reviewed the same way, keyed
 `gate:<condition>`: the condition's wording (the question the filer answers, or the computed condition) and every gate
@@ -19,8 +21,9 @@ current while its subject (gates.subject: wording and gated lines, not the promp
     screen_review.py [--screens a,b] [--gates-only] [--samples K] [--force-rerun REASON] [--approve-cost DOLLARS]
                      [--dry-run] [--jobs 6] [--model M]
 
-Sampled standing review (samples.py): a unit's subject is its question, the gated lines' English and refusals and
-the pages they cite (screen_subject; gates.subject for a gate), without the system prompt. A run gives each selected
+Sampled standing review (samples.py): a unit's subject is its question as the interview shows it (help aside), the
+gated lines' English and refusals and the pages they cite (screen_subject; gates.subject for a gate), without the
+system prompt, so a change to the interview's wording of a screen makes it due. A run gives each selected
 unit the samples its current subject still needs this milestone, merged into reviews/<year>/screens/screen_review.json;
 samples beyond it need --force-rerun REASON, and a run estimated above the owner's gate needs --approve-cost
 (spend.py). Between releases a unit whose subject changed is due, not failed (tools/transcription/check_screens.py);
@@ -119,7 +122,24 @@ def help_note(help_text):
     return f"Help shown with it: {indent_rest(help_text, '  ')}\n" if help_text else ""
 
 
-def build_prompt(screen, sline, gated, excerpt, gate="", help_text=""):
+def question_text(sline):
+    """The screening question as the filer sees it (gates.shown), as the prompt gives it after "Input `<id>`: ". A box
+    of a tick-box group is shown as the group's heading and the box's label, which every filer reads, and the prompt
+    the box's "What this asks" opens."""
+    s = gates.shown(sline)
+    if not s["asked"]:
+        return (indent_rest(s["prompt"], "  ")
+                + "\n(No interview profile asks this input; this is the form's own question text.)")
+    if "tick" not in s:
+        return indent_rest(s["prompt"], "  ")
+    return ("a box on a tick-box screen. The filer ticks it for YES, and leaves it unticked or chooses \"None of "
+            "these\" for NO.\n"
+            f"  Screen heading: {indent_rest(s['heading'], '    ')}\n"
+            f"  Label beside the box: {indent_rest(s['tick'], '    ')}\n"
+            f"  Question shown under the box's \"What this asks\": {indent_rest(s['prompt'], '    ')}")
+
+
+def build_prompt(screen, sline, gated, excerpt, question, gate="", help_text=""):
     items = []
     for doc, l, r in gated:
         items.append(f"""- Line `{l['id']}` (document {doc}, printed {l['printed']}): {indent_rest(l['label'], "    ")}
@@ -137,7 +157,7 @@ situation the tool does compute correctly.
 
 # The screening question
 
-Input `{screen}`: {sline['expr']['source']}
+Input `{screen}`: {question}
 {help_note(help_text)}{gate_note(gate)}
 # Lines that refuse when the answer is yes
 
@@ -152,8 +172,8 @@ Read the IRS text below. Report:
 - WIDE: a situation the question's wording makes a filer answer YES to, although the tool computes
   it correctly. Quote the question and the IRS text.
 - UNCLEAR: wording a filer could reasonably read either way.
-Do not report differences that arise only on a joint return (married filing statuses are refused
-elsewhere) or situations another listed refusal already covers.
+Do not report situations another listed refusal already covers. A joint return is in scope: on a
+joint return the question must cover the spouse's situations too.
 
 # Output
 
@@ -242,22 +262,25 @@ def gate_prompt_for(unit, lines, mani):
     return build_gate_prompt(unit, lines, excerpt), used
 
 
-def prompt_for(screen, gated, lines, mani, with_gate=True):
-    """The review prompt of one screen and the pages it gives. The prompt shows the help the interview gives with
-    the question (gates.wording) and, for a gated screen, its gate condition; `with_gate=False` is the prompt without
-    either, which is the screen's review subject (screen_subject)."""
+def prompt_for(screen, gated, lines, mani, with_gate=True, question=None):
+    """The review prompt of one screen and the pages it gives. The prompt shows the question as the filer sees it
+    (`question`, by default question_text), the help the interview gives with it (gates.wording) and, for a gated
+    screen, its gate condition; `with_gate=False` is the prompt without the help and the gate, which is the screen's
+    review subject (screen_subject)."""
     if screen.startswith("gate:"):
         return gate_prompt_for(gated, lines, mani)
     sdoc, sline = lines[screen]
     pseudo = {"id": screen, "lines": [sline] + [l for _, l, _ in gated] + [{"cite": r["cite"], "expr": {}} for _, _, r in gated]}
     excerpt, used = excerpt_for(pseudo, mani)
-    return build_prompt(screen, sline, gated, excerpt, screen_gate(screen, lines) if with_gate else "",
+    return build_prompt(screen, sline, gated, excerpt, question_text(sline) if question is None else question,
+                        screen_gate(screen, lines) if with_gate else "",
                         gates.wording(sline)["help"] if with_gate else ""), used
 
 
 def screen_subject(screen, gated, lines, mani):
     """The hash a screen's review is current against: the prompt without the gate condition and without the help, so
-    gating a screen's input changes it only through the wording or gated lines it already depended on. The gate
+    gating a screen's input changes it only through the wording or gated lines it already depended on. The wording is
+    the interview's (question_text): its prompt, and for a tick-box member the group's heading and the box's label. The gate
     condition is the subject of the gate's own review (gate:<condition>). The help is in the subject of the question
     review (question_review.py), which judges every question with its help; here it is reviewer context, so a change to
     the help alone does not make a screen due and reaches its review at the screen's next sample."""
@@ -288,7 +311,10 @@ def run_one(screen, gated, lines, mani, model, dry, from_response, k=None, subje
         text, meta = call_model(prompt, model, system=SYSTEM, kind="screen", subject=screen)
         open(response, "w", encoding="utf-8").write(text)
     blocks = re.findall(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
-    doc = yaml.safe_load(blocks[-1] if blocks else text) or {}
+    try:
+        doc = yaml.safe_load(blocks[-1] if blocks else text) or {}
+    except yaml.YAMLError:
+        doc = {}  # an unparseable reply is an UNPARSED sample (as_sample marks its parse_error)
     if gate:
         return {"screen": screen, "kind": "gate", "condition": gated["condition"],
                 "lines": [g["id"] for _, g, _ in gated["gates"]], "inputs": [i["id"] for _, _, i in gated["gates"]],
@@ -299,7 +325,7 @@ def run_one(screen, gated, lines, mani, model, dry, from_response, k=None, subje
                 "date": datetime.date.today().isoformat(), "system_sha": SYSTEM_SHA,
                 "response": os.path.relpath(response, ROOT), **_reason()}
     sline = lines[screen][1]
-    return {"screen": screen, "question": sline["expr"]["source"], "lines": [l["id"] for _, l, _ in gated],
+    return {"screen": screen, "question": question_text(sline), "lines": [l["id"] for _, l, _ in gated],
             "verdict": str(doc.get("verdict", "UNPARSED")), "findings": doc.get("findings") or [],
             "prompt_sha": hashlib.sha256(prompt.encode()).hexdigest(), "subject_sha": screen_subject(screen, gated, lines, mani),
             "used": used, "cost": meta.get("cost_usd") or 0, "model": ", ".join(meta.get("model_reported", [])),
@@ -414,6 +440,7 @@ def main():
         for j, flat in sorted([r for r in results if r[0]["form"] == key], key=lambda r: r[0]["k"]):
             unit, smp = as_sample(flat)
             rec.update({k: v for k, v in unit.items() if k != "subject_sha"})
+            rec.pop("subject_migrated", None)  # now sampled on the wording the interview shows
             rec["samples"].append(smp)
     json.dump(sorted(records.values(), key=lambda r: r["screen"]), open(path, "w"), indent=1, ensure_ascii=False)
     done = [as_sample(f)[1] for _, f in results]

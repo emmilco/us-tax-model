@@ -146,6 +146,7 @@ form:
       cite:
         doc: f4952
         locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"
+      ambiguity: amb.2025.f4952_no_2024_form
     - id: f4952.prior_7
       printed: (helper)
       type: NonNegDollars

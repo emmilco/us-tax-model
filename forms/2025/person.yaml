@@ -582,10 +582,10 @@ form:
       printed: (helper)
       type: Bool
       gated_by: person.died_before_65
-      label: Is this the final return of a person who died in 2025 before reaching age 65?
+      label: Did this person die in 2025 before reaching age 65?
       expr:
         op: input
-        source: Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+        source: Did you die in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
       cite:
         doc: i1040gi
         locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
@@ -1442,7 +1442,8 @@ form:
       label: Wages you received as a household employee that were not reported on Form(s) W-2
       expr:
         op: input
-        source: How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+        source: How much were you paid in 2025 for work in or around a household's home, or for its members, by households
+          that gave no W-2? Zero if none.
       cite:
         doc: i1040gi
         locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on
@@ -1478,7 +1479,8 @@ form:
       label: Strike or lockout benefits you received (other than bona fide gifts)
       expr:
         op: input
-        source: How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+        source: How much did you get in 2025 in strike or lockout benefits? Leave out true gifts and state unemployment pay.
+          Zero if none.
       cite:
         doc: i1040gi
         locator: 'p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout
@@ -7098,10 +7100,10 @@ form:
     - id: person.x_edu_account
       printed: (helper)
       type: Bool
-      label: "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025"
+      label: "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026"
       expr:
         op: input
-        source: "In 2025, was money put into or taken out of a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account that is yours or is held for you?"
+        source: "At any time in 2025, did you have a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account, or was one held for you; or was money put into a Coverdell ESA for you for 2025 by April 15, 2026?"
       cite:
         doc: f5329
         locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from

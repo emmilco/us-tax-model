@@ -34,10 +34,9 @@ import migrate_line_subjects as ML
 import input_context
 import os
 
-# The DeepSeek family is inactive (families.json), but its transport, token budget and comparison paths are
-# kept and tested: these tests run them under the override a deliberate DeepSeek run would use. The tests of
-# the inactive state itself (InactiveFamilies) remove it.
-os.environ[families.OVERRIDE_ENV], os.environ[families.OVERRIDE_REASON_ENV] = "deepseek", "offline test of the dormant family"
+# DeepSeek is a qualified, callable family (families.json): its transport, token budget and comparison
+# paths run here without an override. A test of a family that is not callable (gpt) passes
+# --uncallable-family itself, and FamilyTiers checks the refusal.
 
 
 def log(statuses, rulings=None):
@@ -194,21 +193,30 @@ class RulingContext(unittest.TestCase):
             self.assertIn("Ruling: open", path.read_text())
 
 
-class OptionalStaleLogs(unittest.TestCase):
-    """check_logs.py: a stale optional-family log fails only when it would earn second-family credit if it
-    were current; one that would not is reported as stale-ineligible and passes."""
+class AdvisoryStaleLogs(unittest.TestCase):
+    """check_logs.py: an advisory family's log fails only when it has gone stale where it would earn credit
+    if it were current, and only while its family is callable; otherwise it is reported as stale-ineligible
+    and passes. A form is satisfied by a qualified family's current log."""
 
-    def run_check(self, blockers, stale="subject changed since the review"):
+    TIERS = {"qualified": ["claude"], "advisory": ["deepseek"], "models": {},
+             "callable": {"claude": True, "deepseek": True}}
+
+    def run_check(self, blockers, stale="subject changed since the review", callable_=True):
         import check_logs
+        tiers = {**self.TIERS, "callable": {**self.TIERS["callable"], "deepseek": callable_}}
+        quality = {"quality": {"state": "pending", "blockers": blockers}}
+
+        def faults(kind, fid, family, text):
+            return (0, [stale] if family == "deepseek" and stale else [])
         with tempfile.TemporaryDirectory() as d:
             for stem in ("f1", families.stem("f1", "deepseek")):
                 Path(d, stem + ".md").write_text("# log\n", encoding="utf-8")
-            quality = {"quality": {"state": "pending", "blockers": blockers}}
             out = io.StringIO()
-            with patch.object(check_logs.subjects, "log_state", return_value=stale), \
+            with patch.object(check_logs.families, "load", return_value=tiers), \
+                 patch.object(check_logs, "log_faults", side_effect=faults), \
                  patch.object(check_logs.compare_families, "compare", return_value=quality), \
                  contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
-                failed = check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"], "deepseek", required=False)
+                failed = check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"])
         return failed, out.getvalue()
 
     def test_stale_ineligible_log_is_reported_not_failed(self):
@@ -228,13 +236,21 @@ class OptionalStaleLogs(unittest.TestCase):
         self.assertFalse(failed)
         self.assertNotIn("stale-ineligible", out)
 
-    def test_required_family_stale_log_fails_whatever_its_eligibility(self):
+    def test_a_stale_log_of_a_family_that_is_not_callable_is_tolerated(self):
+        failed, out = self.run_check(["stale subject: claude, deepseek"], callable_=False)
+        self.assertFalse(failed)
+        self.assertIn("1 stale-ineligible", out)
+
+    def test_a_qualified_family_stale_log_fails_whatever_its_eligibility(self):
         import check_logs
+        tiers = {"qualified": ["claude"], "advisory": [], "models": {}, "callable": {"claude": False}}
         with tempfile.TemporaryDirectory() as d:
             Path(d, "f1.md").write_text("# log\n", encoding="utf-8")
-            with patch.object(check_logs.subjects, "log_state", return_value="subject changed"), \
-                 contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
-                self.assertTrue(check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"], families.DEFAULT, required=True))
+            out = io.StringIO()
+            with patch.object(check_logs.families, "load", return_value=tiers), \
+                 patch.object(check_logs, "log_faults", return_value=(0, ["subject changed"])), \
+                 contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+                self.assertTrue(check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"]))
 
 
 class RenderedTextGuard(unittest.TestCase):
@@ -252,87 +268,112 @@ class RenderedTextGuard(unittest.TestCase):
             self.assertEqual(done.exception.code, "stale rendered text: " + why)
 
 
-class InactiveFamilies(unittest.TestCase):
-    """families.json `active`: an inactive family's model is not called without the override naming it, an
-    overridden call records its reason in the cost ledger, and check_logs counts its logs as history."""
+class FamilyTiers(unittest.TestCase):
+    """families.json `qualified`/`advisory`/`callable`: the tiers check_logs.py reads, the refusal of a model
+    whose family is not callable, the override and its cost-ledger row, and a qualified family that is not
+    callable still satisfying its forms."""
 
     def setUp(self):
         self.env = patch.dict(os.environ)
         self.env.start()
         self.addCleanup(self.env.stop)
-        os.environ.pop(families.OVERRIDE_ENV, None); os.environ.pop(families.OVERRIDE_REASON_ENV, None)
+        os.environ.pop(families.UNCALLABLE_ENV, None); os.environ.pop(families.UNCALLABLE_REASON_ENV, None)
 
-    def test_only_claude_is_active(self):
-        self.assertEqual({f for f, on in families.load()["active"].items() if on}, {"claude"})
-        self.assertFalse(families.is_active("deepseek") or families.is_active("gpt") or families.is_active("other"))
+    def test_the_tiers_are_disjoint_and_name_their_models(self):
+        tiers = families.load()
+        self.assertEqual(set(tiers["qualified"]) & set(tiers["advisory"]), set())
+        self.assertIn("deepseek", tiers["qualified"])
+        self.assertIn("gpt", tiers["advisory"])
+        self.assertEqual(tiers["models"]["deepseek"], "deepseek-flash")
+        for fam in tiers["qualified"] + tiers["advisory"]:
+            self.assertIn(fam, tiers["callable"])
 
-    def test_an_inactive_model_is_refused_before_any_transport_or_ledger_row(self):
+    def test_a_family_in_both_tiers_is_refused(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp, "families.json")
+            path.write_text(json.dumps({"qualified": ["claude"], "advisory": ["claude"], "models": {}, "callable": {}}))
+            with patch.object(families, "LIST", str(path)), self.assertRaisesRegex(ValueError, "both qualified and advisory"):
+                families.load()
+
+    def test_a_family_that_is_not_callable_is_not_called(self):
+        self.assertFalse(families.is_callable("claude"))
+        self.assertFalse(families.is_callable("gpt"))
+        self.assertFalse(families.is_callable("other"))
+        self.assertTrue(families.is_callable("deepseek"))
+
+    def test_a_family_that_is_not_callable_is_refused_before_any_transport_or_ledger_row(self):
         with tempfile.TemporaryDirectory() as temp, patch.object(T, "RAW", temp), \
-                patch.object(T, "_deepseek_key", side_effect=AssertionError("must not read keychain")), \
                 patch.object(T, "_call_codex", side_effect=AssertionError("must not run codex")):
-            for model in ("deepseek-flash", "gpt-6-astra"):
-                with self.assertRaisesRegex(families.InactiveFamily, "is inactive.*--inactive-family"):
-                    T.call_model("PUBLIC", model)
-            os.environ[families.OVERRIDE_ENV], os.environ[families.OVERRIDE_REASON_ENV] = "gpt", "why"
-            with self.assertRaises(families.InactiveFamily):
-                T.call_model("PUBLIC", "deepseek-flash")  # the override names another family
+            with self.assertRaisesRegex(families.NotCallable, "is not callable.*--uncallable-family"):
+                T.call_model("PUBLIC", "gpt-6-astra")
+            os.environ[families.UNCALLABLE_ENV], os.environ[families.UNCALLABLE_REASON_ENV] = "claude", "why"
+            with self.assertRaises(families.NotCallable):
+                T.call_model("PUBLIC", "gpt-6-astra")  # the override names another family
             self.assertFalse(os.path.exists(os.path.join(temp, T.LEDGER_NAME)))
 
     def test_an_overridden_call_records_its_reason(self):
-        os.environ[families.OVERRIDE_ENV], os.environ[families.OVERRIDE_REASON_ENV] = "deepseek", "owner asked for one form"
-        meta = {"model_reported": ["deepseek-flash"], "usage": {}, "cost_usd": None, "transport": "deepseek"}
+        os.environ[families.UNCALLABLE_ENV], os.environ[families.UNCALLABLE_REASON_ENV] = "gpt", "owner asked for one form"
+        meta = {"model_reported": ["gpt-6-astra"], "usage": {}, "cost_usd": None, "transport": "codex-exec"}
         with tempfile.TemporaryDirectory() as temp, patch.object(T, "RAW", temp), \
-                patch.object(T, "_call_deepseek", return_value=("lines: []", meta)):
-            T.call_model("PUBLIC", "deepseek-flash", kind="render", subject="x")
+                patch.object(T, "_call_codex", return_value=("lines: []", meta)):
+            T.call_model("PUBLIC", "gpt-6-astra", kind="render", subject="x")
             row = json.loads(Path(temp, T.LEDGER_NAME).read_text())
-        self.assertEqual(row["inactive_family_override"], {"family": "deepseek", "reason": "owner asked for one form"})
+        self.assertEqual(row["uncallable_family_override"], {"family": "gpt", "reason": "owner asked for one form"})
 
-    def test_a_writer_refuses_an_inactive_model_at_its_arguments(self):
+    def test_a_writer_refuses_a_model_of_a_family_that_is_not_callable(self):
         import argparse
         ap = argparse.ArgumentParser(); ap.add_argument("--model"); families.add_override_args(ap)
         err = io.StringIO()
         with contextlib.redirect_stderr(err), self.assertRaises(SystemExit):
-            families.apply_override(ap, ap.parse_args(["--model", "deepseek-flash"]))
-        self.assertIn("inactive", err.getvalue())
-        for argv in (["--inactive-family", "deepseek"], ["--inactive-family", "claude", "--inactive-family-reason", "x"]):
+            families.apply_override(ap, ap.parse_args(["--model", "gpt-6-astra"]))
+        self.assertIn("not callable", err.getvalue())
+        for argv in (["--uncallable-family", "gpt"], ["--uncallable-family", "deepseek", "--uncallable-family-reason", "x"]):
             with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
                 families.apply_override(ap, ap.parse_args(argv))
-        families.apply_override(ap, ap.parse_args(["--model", "deepseek-flash", "--inactive-family", "deepseek",
-                                                   "--inactive-family-reason", "one form"]))
-        self.assertEqual(families.override(), ("deepseek", "one form"))
+        families.apply_override(ap, ap.parse_args(["--model", "gpt-6-astra", "--uncallable-family", "gpt",
+                                                   "--uncallable-family-reason", "one form"]))
+        self.assertEqual(families.override(), ("gpt", "one form"))
 
-    def test_check_logs_counts_an_inactive_familys_logs_as_history(self):
+    def test_a_qualified_family_that_is_not_callable_still_satisfies_its_forms(self):
         import check_logs
-        out = io.StringIO()
-        with patch.object(check_logs, "check", side_effect=AssertionError("an inactive family is not checked")) as check, \
-                patch.object(check_logs, "check_families", return_value=False), \
-                patch.object(check_logs.families, "load", return_value={"required": ["claude"], "optional": ["deepseek"],
-                                                                       "active": {"claude": False, "deepseek": False}, "models": {}}), \
-                patch.object(check_logs.rulings, "forms_with_logs", return_value=[("f1", "claude"), ("f1", "deepseek"), ("f2", "deepseek")]), \
-                contextlib.redirect_stdout(out):
-            self.assertFalse(check_logs.check_kind("render"))
-        self.assertIn("render logs [deepseek, inactive]: 2 log(s) kept as history", out.getvalue())
+        tiers = {"qualified": ["claude", "deepseek"], "advisory": ["gpt"], "models": {},
+                 "callable": {"claude": False, "deepseek": True, "gpt": False}}
+        with tempfile.TemporaryDirectory() as d:
+            Path(d, "f1.md").write_text("# claude log\n", encoding="utf-8")
+            out = io.StringIO()
+            with patch.object(check_logs.families, "load", return_value=tiers), \
+                 patch.object(check_logs, "log_faults", return_value=(0, [])), \
+                 contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+                failed = check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"])
+        self.assertFalse(failed)
+        self.assertIn("1/1 forms satisfied (claude 1)", out.getvalue())
 
-    def test_the_second_family_report_is_kept_while_every_second_family_is_inactive(self):
+    def test_a_form_only_an_advisory_family_logged_is_unsatisfied(self):
+        import check_logs
+        tiers = {"qualified": ["claude"], "advisory": ["deepseek"], "models": {},
+                 "callable": {"claude": True, "deepseek": True}}
+        with tempfile.TemporaryDirectory() as d:
+            Path(d, families.stem("f1", "deepseek") + ".md").write_text("# deepseek log\n", encoding="utf-8")
+            out = io.StringIO()
+            with patch.object(check_logs.families, "load", return_value=tiers), \
+                 patch.object(check_logs, "log_faults", return_value=(0, [])), \
+                 contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+                failed = check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"])
+        self.assertTrue(failed)
+        self.assertIn("unsatisfied: f1", out.getvalue())
+
+    def test_the_second_family_report_is_kept_while_no_second_family_is_callable(self):
         with tempfile.TemporaryDirectory() as temp:
             report = Path(temp, "second_family.md"); report.write_text("history\n")
             out = io.StringIO()
-            with patch.object(C, "REPORT", str(report)), patch.object(C, "compare", side_effect=AssertionError("no comparison")), \
+            with patch.object(C, "REPORT", str(report)), \
+                    patch.object(C.families, "load", return_value={"qualified": ["claude"], "advisory": ["deepseek"],
+                                                                   "models": {}, "callable": {"claude": False, "deepseek": False}}), \
+                    patch.object(C, "compare", side_effect=AssertionError("no comparison")), \
                     contextlib.redirect_stdout(out):
                 C.main()
             self.assertEqual(report.read_text(), "history\n")
-        self.assertIn("every second family is inactive", out.getvalue())
-
-    def test_check_logs_checks_a_reactivated_family_as_optional(self):
-        import check_logs
-        calls = []
-        with patch.object(check_logs, "check", side_effect=lambda *a, **k: calls.append((a[4], k["required"])) or False), \
-                patch.object(check_logs, "check_families", return_value=False), \
-                patch.object(check_logs.families, "load", return_value={"required": ["claude"], "optional": ["deepseek", "gpt"],
-                                                                       "active": {"claude": True, "deepseek": True}, "models": {}}), \
-                patch.object(check_logs.rulings, "forms_with_logs", return_value=[]), contextlib.redirect_stdout(io.StringIO()):
-            check_logs.check_kind("render")
-        self.assertEqual(calls, [("claude", True), ("deepseek", False)])
+        self.assertIn("no second family is callable", out.getvalue())
 
 
 class RenderedSubject(unittest.TestCase):
@@ -679,7 +720,8 @@ class DeepSeekTransport(unittest.TestCase):
 
     def test_options_cannot_be_silently_ignored_by_another_transport(self):
         for args in ({"reasoning_effort": "max"}, {"max_output_tokens": 131072}):
-            with self.subTest(args=args), patch.object(T, "_call_claude", side_effect=AssertionError("no network")):
+            with self.subTest(args=args), patch.object(T, "_call_claude", side_effect=AssertionError("no network")), \
+                    patch.object(families, "is_callable", return_value=True):
                 with self.assertRaisesRegex(ValueError, "only by the DeepSeek"):
                     T.call_model("PUBLIC", "claude-test", **args)
 
@@ -1448,14 +1490,15 @@ class DefinitionInterfaces(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "conflicting ids"):
             T.normalize_definition_ids("se", [{"id": "line13"}], second)
 
-    def test_required_families_can_differ_by_review_kind(self):
+    def test_the_tiers_can_differ_by_review_kind(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "families.json"
-            path.write_text(json.dumps({"required": ["claude", "deepseek"], "optional": [],
-                                       "by_kind": {"classm": {"required": ["claude"], "optional": ["deepseek"]}}}))
+            path.write_text(json.dumps({"qualified": ["claude", "deepseek"], "advisory": [], "callable": {}, "models": {},
+                                       "by_kind": {"classm": {"qualified": ["claude"], "advisory": ["deepseek"]}}}))
             with patch.object(families, "LIST", str(path)):
-                self.assertEqual(families.load("render")["required"], ["claude", "deepseek"])
-                self.assertEqual(families.load("classm")["required"], ["claude"])
+                self.assertEqual(families.load("render")["qualified"], ["claude", "deepseek"])
+                self.assertEqual(families.load("classm")["qualified"], ["claude"])
+                self.assertEqual(families.load("classm")["advisory"], ["deepseek"])
 
 
 def node_module(script):
@@ -1966,7 +2009,8 @@ class CostLedger(unittest.TestCase):
         self.assertFalse(self.ledger.exists())
 
     def test_rejected_options_make_no_ledger_line(self):
-        with patch.object(T, "RAW", self.temp.name), patch.object(T, "_call_claude", side_effect=AssertionError("no network")):
+        with patch.object(T, "RAW", self.temp.name), patch.object(T, "_call_claude", side_effect=AssertionError("no network")), \
+                patch.object(families, "is_callable", return_value=True):
             with self.assertRaises(ValueError):
                 T.call_model("PUBLIC", "claude-test", reasoning_effort="max")
         self.assertFalse(self.ledger.exists())
@@ -2618,6 +2662,21 @@ class CompletenessPages(unittest.TestCase):
         self.assertEqual(CR.elsewhere(reader, [shared, reader, gated]), [])
         gated["lines"][0]["expr"]["args"][1] = {"line": "z.zero"}
         self.assertEqual(CR.elsewhere(reader, [shared, reader, gated]), ["- g: Form G line 1"])
+
+    def test_a_refusal_on_another_form_is_context_not_subject(self):
+        import completeness_review as CR
+        from unittest import mock
+        reader = {"id": "r", "title": "R", "lines": [
+            {"id": "r.a", "label": "A", "cite": {"doc": "ir", "locator": "p. 1"}, "expr": {"op": "copy", "from": "s.x"}}]}
+        other = lambda text: {"id": "s", "title": "S", "lines": [
+            {"id": "s.x", "label": "X", "expr": {"op": "input", "source": "X?"}, "refuses": [{"when": "s.x", "form": text}]}]}
+        with mock.patch.object(CR, "sections", return_value=([("ir", 1, 1, "[ir page 1]\ntext")], ["ir p. 1"])):
+            p1, _, s1 = CR.prompt_for(reader, {}, [reader, other("Form S line 1")])
+            p2, _, s2 = CR.prompt_for(reader, {}, [reader, other("Form S line 1, reworded")])
+            self.assertNotEqual(p1, p2)   # the reviewer is shown the reworded refusal
+            self.assertEqual(s1, s2)      # but the form's review stays current
+            reader["lines"][0]["label"] = "A changed"
+            self.assertNotEqual(CR.prompt_for(reader, {}, [reader, other("Form S line 1")])[2], s1)
 
 
 class ScopeKeys(unittest.TestCase):
@@ -3284,6 +3343,8 @@ import screen_review as SR  # noqa: E402
 import check_screens as CS  # noqa: E402
 import false_no_review as FN  # noqa: E402
 import check_false_no as CFN  # noqa: E402
+import migrate_screen_subjects as MS  # noqa: E402
+import baseline_check  # noqa: E402
 
 
 def _gate_lines(condition_prompt="Did you or your spouse receive any dividends?"):
@@ -3501,6 +3562,7 @@ class GatedScreens(unittest.TestCase):
         stack = contextlib.ExitStack()
         self.addCleanup(stack.close)
         stack.enter_context(patch.object(G, "_QUESTIONS", {}))
+        stack.enter_context(patch.object(G, "_TICKS", {}))
         stack.enter_context(patch.object(SR, "encoded_english", ENGLISH))
         stack.enter_context(patch.object(SR, "excerpt_for", return_value=("ARCHIVED PAGES", [])))
 
@@ -3531,7 +3593,8 @@ class GatedScreens(unittest.TestCase):
     def test_the_prompt_shows_the_help_and_the_subject_ignores_it(self):
         plain = _screen_lines(False)
         gated = SR.screens(plain)["div.pr"]
-        before = SR.screen_subject("div.pr", gated, plain, {})
+        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Outside scope?", "help": ""}}):
+            before = SR.screen_subject("div.pr", gated, plain, {})
         with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Outside scope?", "help": "Count foreign accounts too."}}):
             prompt, _ = SR.prompt_for("div.pr", gated, plain, {})
             self.assertIn("Help shown with it: Count foreign accounts too.", prompt)
@@ -3554,6 +3617,74 @@ class GatedScreens(unittest.TestCase):
                 patch.object(CS.pending, "listed", return_value=set()):
             CS.RECORD.write_text(json.dumps([{"screen": "div.pr", **covers}]))
             self.assertEqual([f["kind"] for f in CS.findings()[0] if f["line"] == "div.pr"], ["due"])
+
+
+class ScreenWording(unittest.TestCase):
+    """A screen's prompt and subject hold the question as the interview shows it (screen_review.question_text)."""
+
+    def setUp(self):
+        stack = contextlib.ExitStack()
+        self.addCleanup(stack.close)
+        stack.enter_context(patch.object(G, "_QUESTIONS", {}))
+        stack.enter_context(patch.object(G, "_TICKS", {}))
+        stack.enter_context(patch.object(SR, "encoded_english", ENGLISH))
+        stack.enter_context(patch.object(SR, "excerpt_for", return_value=("ARCHIVED PAGES", [])))
+        self.lines = _screen_lines(False)
+        self.gated = SR.screens(self.lines)["div.pr"]
+
+    def subject(self):
+        return SR.screen_subject("div.pr", self.gated, self.lines, {})
+
+    def prompt(self):
+        return SR.prompt_for("div.pr", self.gated, self.lines, {})[0]
+
+    def test_the_prompt_shows_the_interview_prompt_and_a_rewording_makes_the_screen_due(self):
+        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Did you have income from abroad?", "help": ""}}):
+            self.assertIn("Input `div.pr`: Did you have income from abroad?", self.prompt())
+            self.assertNotIn("Outside scope?", self.prompt())
+            first = self.subject()
+        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Did you have income from outside the US?", "help": ""}}):
+            self.assertNotEqual(self.subject(), first)
+
+    def test_a_tick_box_screen_shows_its_heading_and_label_and_both_are_in_the_subject(self):
+        asked = {"div.pr": {"prompt": "Did you have income from abroad?", "help": ""}}
+        box = {"heading": "Do any of these apply to you?", "tick": "Income from abroad"}
+        with patch.object(G, "_QUESTIONS", asked), patch.object(G, "_TICKS", {"div.pr": box}):
+            prompt, first = self.prompt(), self.subject()
+            self.assertIn("Screen heading: Do any of these apply to you?", prompt)
+            self.assertIn("Label beside the box: Income from abroad", prompt)
+            self.assertIn("Did you have income from abroad?", prompt)
+        for changed in ({**box, "tick": "Foreign income"}, {**box, "heading": "Does any of these apply?"}):
+            with patch.object(G, "_QUESTIONS", asked), patch.object(G, "_TICKS", {"div.pr": changed}):
+                self.assertNotEqual(self.subject(), first)
+
+    def test_an_input_no_profile_asks_shows_the_form_text_and_says_so(self):
+        self.assertIn("Input `div.pr`: Outside scope?\n(No interview profile asks this input", self.prompt())
+
+    def test_the_migration_moves_a_record_current_on_the_form_text_with_its_rulings(self):
+        old = MS.source_subject("div.pr", self.gated, self.lines, {})
+        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Did you have income from abroad?", "help": ""}}):
+            new = self.subject()
+            self.assertNotEqual(new, old)
+            rows = [{"screen": "div.pr", "subject_sha": old, "samples": [{"verdict": "WIDE"}]},
+                    {"screen": "div.other", "subject_sha": "x", "samples": []}]
+            rulings = {"rulings": {"unruled:div.pr#1": {"subject_sha": old}, "unruled:gate:div.any#1": {"subject_sha": old}},
+                       "baseline": {"unruled:div.pr#1": baseline_check.subject_hash({"subject": old}, {})}}
+            moves, left = MS.plan(self.lines, {}, {r["screen"]: r for r in rows})
+            self.assertEqual(moves, {"div.pr": (old, new)})
+            self.assertEqual(MS.apply(moves, rows, rulings, "2026-01-01"), {"records": 1, "rulings": 1, "baseline": 1})
+            self.assertEqual(rows[0]["subject_sha"], new)
+            self.assertEqual(rows[0]["subject_migrated"], {"from": old, "date": "2026-01-01"})
+            self.assertEqual(rulings["rulings"]["unruled:div.pr#1"]["subject_sha"], new)
+            self.assertEqual(rulings["rulings"]["unruled:gate:div.any#1"]["subject_sha"], old)
+            self.assertEqual(rulings["baseline"]["unruled:div.pr#1"], baseline_check.subject_hash({"subject": new}, {}))
+            self.assertEqual(MS.plan(self.lines, {}, {r["screen"]: r for r in rows})[0], {})
+
+    def test_the_migration_leaves_a_record_on_another_subject_due(self):
+        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Did you have income from abroad?", "help": ""}}):
+            moves, left = MS.plan(self.lines, {}, {"div.pr": {"screen": "div.pr", "subject_sha": "f" * 64, "samples": []}})
+        self.assertEqual(moves, {})
+        self.assertIn("due", left["div.pr"])
 
 
 class StructuredTextOneLineTests(unittest.TestCase):
@@ -3787,6 +3918,29 @@ class ReviewStore(unittest.TestCase):
             self.store.parse_record(content)
         with self.assertRaisesRegex(ValueError, "reserved"):
             self.store.write_record(ident, [("shared", "x")])
+
+
+# The tests run against a fixed families.json, not the live one, so that which family the owner makes callable does
+# not change their outcome: Claude and GPT not callable, DeepSeek callable and the default model of its family.
+FAMILIES_FIXTURE = {"qualified": ["claude", "deepseek"], "advisory": ["gpt"],
+                    "models": {"deepseek": "deepseek-flash", "gpt": "gpt-6-astra"},
+                    "callable": {"claude": False, "deepseek": True, "gpt": False}}
+_families_patch = None
+
+
+def setUpModule():
+    global _families_patch
+    fixture = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+    json.dump(FAMILIES_FIXTURE, fixture)
+    fixture.close()
+    _families_patch = patch.object(families, "LIST", fixture.name)
+    _families_patch.start()
+
+
+def tearDownModule():
+    path = families.LIST
+    _families_patch.stop()
+    os.unlink(path)
 
 
 if __name__ == "__main__":

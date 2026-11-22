@@ -2,7 +2,7 @@
 
 - Document: `k1s` (form, tax year 2025)
 - Collection: keyed entries within person; [i1120ssk] p. 1, General Instructions, "The corporation uses Schedule K-1 to report your share of" (2025; sha256 fb6194da)
-- Note: One entry per Schedule K-1 (Form 1120-S) a person received. Boxes 1 to 5b, 7 to 8c, 13 code O, 16 codes A to D and 17 code V are entered; each box 1, 2 and 3 is one activity. Box 1 is passive or nonpassive by material participation tests 1, 3, 5 and 6; box 2 is in Form 8582 Part IV with active participation. Losses are limited by stock basis on the K-1's Form 7203 (collection f7203); the passive activity limitation (Form 8582) is applied by the return-level forms from the lines exposed here. Boxes 6, 9 to 12, 13 (other codes), 14, 15, 16 E and F and 17 (other codes), more than one activity, a disposition of stock, at-risk amounts, losses carried from earlier years by basis or at-risk limits and the other material participation tests are refused.
+- Note: One entry per Schedule K-1 (Form 1120-S) a person received. Boxes 1 to 5b, 7 to 8c, 13 code O, 16 codes A to D and 17 code V are entered; each box 1, 2 and 3 is one activity. Box 1 is passive or nonpassive by material participation tests 1, 3, 5 and 6; box 2 is in Form 8582 Part IV with active participation. Losses are limited by stock basis on the K-1's Form 7203 (collection f7203); the passive activity limitation (Form 8582) is applied by the return-level forms from the lines exposed here. Boxes 6, 9 to 12, 13 (other codes), 14, 15, 16 E and F and 17 (other codes), more than one activity, a disposition of stock, at-risk amounts, losses carried from earlier years by basis or at-risk limits, the other material participation tests, a corporation trading investments for its owners, a real estate professional's box 2 when no rental of the filer's own is listed (Schedule E Part I asks it then), a rented home a shareholder used personally, and interest on money borrowed to buy into the corporation are refused.
 
 ## (helper) — `k1s.zero`
 
@@ -504,8 +504,8 @@
 ## (screen) — `k1s.work`
 
 - **Authored helper label:** You or your spouse worked in the corporation's business in 2025
-- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) work in this corporation's business?
-- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) work in this corporation's business?"}`
+- **Encoded (Bool):** Input — In 2025, did you (or your spouse, whether or not you file jointly) work in this corporation's business?
+- Expr: `{"op":"input","source":"In 2025, did you (or your spouse, whether or not you file jointly) work in this corporation's business?"}`
 - Cite: [i1120ssk] p. 4, Work counted toward material participation, "Generally, any work that you or your spouse does in connection with an activity held through an S corporation (where you own your stock at the time the work is done) is counted toward material participation" (2025; sha256 fb6194da)
 
 ## (gate) — `k1s.work_if_b1`
@@ -518,8 +518,8 @@
 ## (screen) — `k1s.hours500`
 
 - **Authored helper label:** Material participation test 1: more than 500 hours in 2025
-- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) work more than 500 hours in it in 2025, counting both of you together?
-- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) work more than 500 hours in it in 2025, counting both of you together?"}`
+- **Encoded (Bool):** Input — Did you (or your spouse, whether or not you file jointly) work more than 500 hours in it in 2025, counting both of you together?
+- Expr: `{"op":"input","source":"Did you (or your spouse, whether or not you file jointly) work more than 500 hours in it in 2025, counting both of you together?"}`
 - Cite: [i1120ssk] p. 4, Material participation, "Material participation standards for shareholders who are individuals are listed below"; p. 4, Individuals, "You participated in the activity for more than 500 hours during the tax year" (2025; sha256 fb6194da)
 
 ## (gate) — `k1s.hours500_if_work`
@@ -539,8 +539,8 @@
 ## (screen) — `k1s.most_hours`
 
 - **Authored helper label:** Material participation test 3: more than 100 hours, and not less than any other individual
-- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) work more than 100 hours in it in 2025, with no one else, employees included, working more?
-- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) work more than 100 hours in it in 2025, with no one else, employees included, working more?"}`
+- **Encoded (Bool):** Input — Did you (or your spouse, whether or not you file jointly) work more than 100 hours in it in 2025, with no one else, employees included, working more?
+- Expr: `{"op":"input","source":"Did you (or your spouse, whether or not you file jointly) work more than 100 hours in it in 2025, with no one else, employees included, working more?"}`
 - Cite: [i1120ssk] p. 4, Individuals, "You participated in the activity for more than 100 hours during the tax year, and your participation in the activity for the tax year wasn’t less than the participation in the activity of any other individual" (2025; sha256 fb6194da)
 
 ## (gate) — `k1s.most_hours_if_under`
@@ -567,8 +567,8 @@
 ## (screen) — `k1s.past_years`
 
 - **Authored helper label:** Material participation test 5 or 6: earlier years
-- **Encoded (Bool):** Input — In at least 5 of the years 2015 to 2024 (or any 3 earlier years, if it is a personal service business), did you (or, on a joint return, your spouse) materially participate in this business (its income or loss was nonpassive on your return)?
-- Expr: `{"op":"input","source":"In at least 5 of the years 2015 to 2024 (or any 3 earlier years, if it is a personal service business), did you (or, on a joint return, your spouse) materially participate in this business (its income or loss was nonpassive on your return)?"}`
+- **Encoded (Bool):** Input — Did you (or your spouse, whether or not you file jointly) materially participate in this business in at least 5 of the years 2015 to 2024 (any 3 earlier years if it provides personal services)?
+- Expr: `{"op":"input","source":"Did you (or your spouse, whether or not you file jointly) materially participate in this business in at least 5 of the years 2015 to 2024 (any 3 earlier years if it provides personal services)?"}`
 - Cite: [i1120ssk] p. 4, Individuals, "You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year"; "The activity was a personal service activity and you materially participated in the activity for any 3 tax years (whether or not consecutive) preceding the tax year" (2025; sha256 fb6194da)
 
 ## (gate) — `k1s.past_years_if_ask`
@@ -588,8 +588,8 @@
 ## (screen) — `k1s.mp_other`
 
 - **Authored helper label:** Material participation by test 2, 4 or 7
-- **Encoded (Bool):** Input — Did you do nearly all the work done in it, or work over 100 hours in it and over 500 hours in all such businesses together, or meet another test of material participation?
-- Expr: `{"op":"input","source":"Did you do nearly all the work done in it, or work over 100 hours in it and over 500 hours in all such businesses together, or meet another test of material participation?"}`
+- **Encoded (Bool):** Input — Did you (or your spouse, whether or not you file jointly) do almost all its work, work over 100 hours in it and over 500 hours in all such businesses, or meet another material participation test?
+- Expr: `{"op":"input","source":"Did you (or your spouse, whether or not you file jointly) do almost all its work, work over 100 hours in it and over 500 hours in all such businesses, or meet another material participation test?"}`
 - Cite: [i1120ssk] p. 4, Individuals, "Your participation in the activity for the tax year constituted substantially all the participation in the activity of all individuals"; "The activity was a significant participation activity for the tax year, and you participated in all significant participation activities (including activities outside the corporation) during the year for more than 500 hours" (2025; sha256 fb6194da)
 
 ## (gate) — `k1s.mp_other_if_ask`
@@ -609,8 +609,8 @@
 ## (screen) — `k1s.active`
 
 - **Authored helper label:** Actively participated in the corporation's rental real estate activity
-- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) help make management decisions for its rental real estate, such as approving tenants, rents or repairs?
-- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) help make management decisions for its rental real estate, such as approving tenants, rents or repairs?"}`
+- **Encoded (Bool):** Input — In 2025, did you (or your spouse, whether or not you file jointly) help make management decisions for its rental real estate, such as approving tenants, rents or repairs?
+- Expr: `{"op":"input","source":"In 2025, did you (or your spouse, whether or not you file jointly) help make management decisions for its rental real estate, such as approving tenants, rents or repairs?"}`
 - Cite: [i1120ssk] p. 5, Special allowance for a rental real estate activity, "You may be treated as actively participating if you participated, for example, in making management decisions or arranging for others to provide services (such as repairs) in a significant and bona fide sense" (2025; sha256 fb6194da)
 
 ## (gate) — `k1s.active_if_b2`
@@ -623,8 +623,8 @@
 ## (screen) — `k1s.tenth`
 
 - **Authored helper label:** Your and your spouse's interest was at least 10% (by value) all year
-- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) own at least a tenth of this corporation's stock, by value, all through 2025?
-- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) own at least a tenth of this corporation's stock, by value, all through 2025?"}`
+- **Encoded (Bool):** Input — Did you (and your spouse, whether or not you file jointly) own at least a tenth of this corporation's stock, by value, all through 2025?
+- Expr: `{"op":"input","source":"Did you (and your spouse, whether or not you file jointly) own at least a tenth of this corporation's stock, by value, all through 2025?"}`
 - Cite: [i1120ssk] p. 5, Special allowance for a rental real estate activity, "You aren’t considered to actively participate in a rental real estate activity if, at any time during the tax year, your interest (including your spouse’s interest) in the activity was less than 10% (by value) of all interests in the activity" (2025; sha256 fb6194da)
 
 ## (gate) — `k1s.tenth_if_active`
@@ -853,6 +853,69 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["k1s.has_loss",{"const":true}],"op":"test"},"then":"k1s.not_at_risk"},{"guard":{"eq":["k1s.has_loss",{"const":false}],"op":"test"},"then":"k1s.no"}],"op":"choose"}`
 - Cite: [i1120ssk] p. 3, At-Risk Limitations, "you will have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity" (2025; sha256 fb6194da)
 
+## (screen) — `k1s.trader`
+
+- **Authored helper label:** The corporation's business is trading investments for its owners (nonpassive)
+- **Encoded (Bool):** Input — Is this corporation's business trading stocks, commodities or other investments for its owners?
+- Expr: `{"op":"input","source":"Is this corporation's business trading stocks, commodities or other investments for its owners?"}`
+- Cite: [i1120ssk] p. 5, "Trading personal property for the account of owners of interests in the activity" (2025; sha256 fb6194da)
+
+## (gate) — `k1s.trader_if_b1`
+
+- **Authored helper label:** Trading, asked only when box 1 shows an amount (false otherwise)
+- **Encoded (Bool):** Choose — [line 1 (k1s.box1_any) = true → helper "The corporation's business is trading investments for its owners (nonpassive)"] [line 1 (k1s.box1_any) = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["k1s.box1_any",{"const":true}],"op":"test"},"then":"k1s.trader"},{"guard":{"eq":["k1s.box1_any",{"const":false}],"op":"test"},"then":"k1s.no"}],"op":"choose"}`
+- Cite: [i1120ssk] p. 5, "Trading personal property for the account of owners of interests in the activity" (2025; sha256 fb6194da)
+
+## (screen) — `k1s.re_pro`
+
+- **Authored helper label:** Real estate professional (box 2 may be nonpassive)
+- **Encoded (Bool):** Input — Did you (or your spouse) work more than 750 hours in 2025 in real estate businesses, and more than half of all your work time?
+- Expr: `{"op":"input","source":"Did you (or your spouse) work more than 750 hours in 2025 in real estate businesses, and more than half of all your work time?"}`
+- Cite: [i1120ssk] p. 6, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity" (2025; sha256 fb6194da)
+
+## (helper) — `k1s.ask_re_pro`
+
+- **Authored helper label:** Box 2 shows an amount and no rental or royalty of your own is listed
+- **Encoded (Bool):** line 2 (k1s.box2_any) = true and scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?" = false
+- Expr: `{"all":[{"eq":["k1s.box2_any",{"const":true}],"op":"test"},{"eq":["scope.rental",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i1120ssk] p. 6, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity" (2025; sha256 fb6194da)
+
+## (gate) — `k1s.re_pro_if_b2`
+
+- **Authored helper label:** Real estate professional, asked only when box 2 shows an amount and no rental or royalty of your own is listed (false otherwise; Schedule E Part I asks it then, and a Yes there refuses the return)
+- **Encoded (Bool):** Choose — [helper "Box 2 shows an amount and no rental or royalty of your own is listed" = true → helper "Real estate professional (box 2 may be nonpassive)"] [helper "Box 2 shows an amount and no rental or royalty of your own is listed" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["k1s.ask_re_pro",{"const":true}],"op":"test"},"then":"k1s.re_pro"},{"guard":{"eq":["k1s.ask_re_pro",{"const":false}],"op":"test"},"then":"k1s.no"}],"op":"choose"}`
+- Cite: [i1120ssk] p. 6, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity" (2025; sha256 fb6194da)
+
+## (screen) — `k1s.dwelling`
+
+- **Authored helper label:** A rented home used personally by a shareholder beyond the greater of 14 days or 10% of the fair-rental days
+- **Encoded (Bool):** Input — In 2025, did you or another shareholder use one of its rental homes personally for over 14 days and over a tenth of the days it was rented at a fair price?
+- Expr: `{"op":"input","source":"In 2025, did you or another shareholder use one of its rental homes personally for over 14 days and over a tenth of the days it was rented at a fair price?"}`
+- Cite: [i1120ssk] p. 5, "The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value" (2025; sha256 fb6194da)
+
+## (helper) — `k1s.ask_dwelling`
+
+- **Authored helper label:** Box 2 or box 3 shows an amount
+- **Encoded (Bool):** (line 2 (k1s.box2_any) = true or line 3 (k1s.box3_any) = true)
+- Expr: `{"any":[{"eq":["k1s.box2_any",{"const":true}],"op":"test"},{"eq":["k1s.box3_any",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1120ssk] p. 5, "The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value" (2025; sha256 fb6194da)
+
+## (gate) — `k1s.dwelling_if_rent`
+
+- **Authored helper label:** Personal use of a rented home, asked only when box 2 or box 3 shows an amount (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Box 2 or box 3 shows an amount" = true → helper "A rented home used personally by a shareholder beyond the greater of 14 days or 10% of the fair-rental days"] [helper "Box 2 or box 3 shows an amount" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["k1s.ask_dwelling",{"const":true}],"op":"test"},"then":"k1s.dwelling"},{"guard":{"eq":["k1s.ask_dwelling",{"const":false}],"op":"test"},"then":"k1s.no"}],"op":"choose"}`
+- Cite: [i1120ssk] p. 5, "The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value" (2025; sha256 fb6194da)
+
+## (screen) — `k1s.interest_buy`
+
+- **Authored helper label:** Interest on money borrowed to buy shares or put capital into the corporation (debt-financed acquisition)
+- **Encoded (Bool):** Input — Did you pay interest in 2025 on money borrowed to buy its shares or put money into it as an owner?
+- Expr: `{"op":"input","source":"Did you pay interest in 2025 on money borrowed to buy its shares or put money into it as an owner?"}`
+- Cite: [i1040se] p. 9, S Corporations, "If you used loan proceeds to buy an interest in, or make a contribution to the capital of, an S corporation (debt-financed acquisition), report your share of deductible S corporation interest expense on either Schedule A or Schedule E" (2025; sha256 ad71de35)
+
 ## (gate) — `k1s.ok`
 
 - **Authored helper label:** This Schedule K-1 passes every screen and its Form 7203 is supported
@@ -875,6 +938,10 @@
 - **Refusal:** when k1s.basis_carry is true, cannot complete Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27. A loss or deduction carried from an earlier year by the basis limitation is outside this tool. Cite: [i7203] p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "Column (b). Enter any loss or deduction items disallowed due to basis limitations in prior years that were carried forward" (Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists); sha256 f2a4a124)
 - **Refusal:** when k1s.risk_carry is true, cannot complete Form 6198 (At-Risk Limitations). A loss carried from an earlier year by the at-risk limitation is figured on Form 6198, which this tool does not prepare. Cite: [i1120ssk] p. 3, At-Risk Limitations, "Any loss from a section 465 activity not allowed for this tax year will be treated as a deduction allocable to the activity in the next tax year" (2025; sha256 fb6194da)
 - **Refusal:** when k1s.not_at_risk_if_loss is true, cannot complete Form 6198 (At-Risk Limitations). A loss with amounts not at risk is figured on Form 6198, which this tool does not prepare. Cite: [i1120ssk] p. 3, At-Risk Limitations, "you will have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity" (2025; sha256 fb6194da)
+- **Refusal:** when k1s.trader_if_b1 is true, cannot complete A corporation trading investments for its owners (nonpassive trading activity). A corporation that trades investments for its owners is outside this tool. Cite: [i1120ssk] p. 5, "Trading personal property for the account of owners of interests in the activity" (2025; sha256 fb6194da)
+- **Refusal:** when k1s.re_pro_if_b2 is true, cannot complete Schedule K-1 (Form 1120-S) box 2 of a real estate professional (Schedule E, line 43). Rental real estate from an S corporation held by a real estate professional is outside this tool. Cite: [i1120ssk] p. 6, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity" (2025; sha256 fb6194da)
+- **Refusal:** when k1s.dwelling_if_rent is true, cannot complete Rental of a home a shareholder used personally (nonpassive; Form 8582 does not apply). An S corporation's rental of a home a shareholder used personally for more than the limit is outside this tool. Cite: [i1120ssk] p. 5, "The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value" (2025; sha256 fb6194da)
+- **Refusal:** when k1s.interest_buy is true, cannot complete Schedule E, line 28, interest on money borrowed to buy into an S corporation (debt-financed acquisition). Interest on money borrowed to buy into an S corporation is outside this tool. Cite: [i1040se] p. 9, S Corporations, "If you used loan proceeds to buy an interest in, or make a contribution to the capital of, an S corporation (debt-financed acquisition), report your share of deductible S corporation interest expense on either Schedule A or Schedule E" (2025; sha256 ad71de35)
 - Expr: `{"eq":["k1s.f7203_n",{"const":1,"type":"Count"}],"op":"test"}`
 - Cite: [i1120ssk] p. 6, Specific Instructions, "If any of the above limitations apply, adjust the amounts on Schedule K-1 before you report them on your return" (2025; sha256 fb6194da)
 

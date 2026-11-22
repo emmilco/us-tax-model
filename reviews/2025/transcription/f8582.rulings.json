@@ -4,6 +4,53 @@
  "rulings": [
   {
    "printed": "10",
+   "project_expr_sha256": "5cb0f538ff11767f8535c132beed6cd8765776b0cc083a0d8993b3e5d115b9dd",
+   "second_expr_sha256": "e8464e8dccd33333246382b7e59c9a6795d2ad9c5cbb99755ce7817d440b3873",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2729 of 3069 comparisons agree, 2712 of 2729 in scope; completed {\"candidate-hides-shown\": 3, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 3, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "ab57a8420a7726d79db9c8fb131885e0fd87c380d735d9f447163a38b4522d06",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:mrental.f8582.part4_prior_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_prior_loss_net_gain@f8582",
+     "fixture:x2k1p.prior_box1_partly_used@f8582",
+     "fixture:x2k1p.prior_box2_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "10",
    "project_expr_sha256": "6d46c8b86b6fa94dfd3ab846328c32b4d053e01462744951a3ef8c1fae288358",
    "second_expr_sha256": "34fd2b2ab1b547bac5bb9d59a90e64a224d21467dce4e2b3d5d122aaaa634841",
    "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
@@ -83,6 +130,56 @@
    }
   },
   {
+   "printed": "11",
+   "project_expr_sha256": "d76ec772056b7278105e5b250525946f853c9991eb8ad0f1477647a03ec6a71d",
+   "second_expr_sha256": "7760b629af8599e27d5cc45fd486e11978b8cfd2a661e25b0380eef780e035f9",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2720 of 3069 comparisons agree, 2702 of 2729 in scope; completed {\"candidate-hides-shown\": 3, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 10, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "5f09519066a4ad182472ebd78c1b6ae67c9940335ff29f9cceb57bb52ae85ac0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:mrental.f8582.part4_prior_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_prior_loss_net_gain@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.fk3b_general_active@f8582",
+     "fixture:x2k1p.prior_box1_partly_used@f8582",
+     "fixture:x2k1p.prior_box2_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "1a",
    "project_expr_sha256": "afdf8b4aef18530059d65e580fffdcccdf7dda92018a7decf5d77bdc3ac61045",
    "second_expr_sha256": "2d06de58154885af5567fe47c92b12b5527facee055edc18ce2909df99ea9ff8",
@@ -112,6 +209,52 @@
      "fixture:x1sche.f12.commercial_39yr@f8582",
      "fixture:x1sche.f16.home_test_edges@f8582",
      "fixture:x1sche.f17.home_tenth_edge@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1a",
+   "project_expr_sha256": "afdf8b4aef18530059d65e580fffdcccdf7dda92018a7decf5d77bdc3ac61045",
+   "second_expr_sha256": "e4b34ac305639eb3460d88061d1fac448428661fef3e1430339ed39040841692",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2715 of 3069 comparisons agree, 2700 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 13, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "7fff83c4a5c1d8841b74c4922bd1ed98af9c0e7b1010f3c1297c2c59bdc6d081",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.s1.14@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:f1116.rental@f8582",
+     "fixture:x2k1p.fk3d_rental_income_active@f8582",
+     "fixture:x2k1p.prior_box2_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:mk1.k1s.rental_active_with_prior_and_box3@f8582",
+     "fixture:x1sche.f1.profit@f8582"
     ],
     "policy": "executable-triage-v2"
    }
@@ -150,6 +293,52 @@
    }
   },
   {
+   "printed": "1b",
+   "project_expr_sha256": "b45842573bef9fbbc1ac11632b65339e1af4aa9424c0abf84882dbd36ca0cf06",
+   "second_expr_sha256": "d0f190830cf0b88d93a185e608a7da13dfbe9a6b24f1e58a9eb243ef529915ed",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2722 of 3069 comparisons agree, 2707 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "d583799c9baac403ec2251603d41e54d2f27f88e5682a2451b251214ee2e4c58",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.fk3b_general_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:k1s.loss_over_basis_prorata@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "1c",
    "project_expr_sha256": "f1950721169d21e0bd501740f03fd3a0a6e76f77cd26f98d2621b863f9d4cf6b",
    "second_expr_sha256": "10bc0afe50f80dd0920dc80c6edf9aa36050a0bc4a4715839c12e2060f72234d",
@@ -172,6 +361,48 @@
      "fixture:classm.dependent.4.deepseek@f8582",
      "fixture:classm.dependent.5.deepseek@f8582",
      "fixture:classm.sche.2@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1c",
+   "project_expr_sha256": "f1950721169d21e0bd501740f03fd3a0a6e76f77cd26f98d2621b863f9d4cf6b",
+   "second_expr_sha256": "3d3e013d4aac908e37a42ef3e35a817b09239e5baf8377fd7135e7e460358eca",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2718 of 3069 comparisons agree, 2716 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "0f12c515f78a5ced23d3d8b96a62641c7a7bd467bd66ea6b7279ee9569001373",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:x2k1p.prior_box2_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:mk1.k1s.rental_active_with_prior_and_box3@f8582"
     ],
     "policy": "executable-triage-v2"
    }
@@ -206,6 +437,98 @@
      "fixture:x1sche.f1.profit@f8582",
      "fixture:x1sche.f2.small_loss_exception@f8582",
      "fixture:x1sche.f8.personal_use_not_home@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1d",
+   "project_expr_sha256": "be43eba441e2e51235fdaec3817f505006d0241bbf115d857833919031d1d2f1",
+   "second_expr_sha256": "945cc7ad241952607707e0e5ccdbdf58e4a1d10fb74e28007effe8b142677724",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2705 of 3069 comparisons agree, 2688 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 21, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "435abe80618cd5246bba13f6c5c2042e351e31dd561e46be6c23f04cd34e2676",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.s1.14@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:f1116.rental@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.fk3b_general_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2a",
+   "project_expr_sha256": "816ab1c099118b02306f8f08d94c9ed6f9f8f063bc67ef4c6b02be051cf6bb59",
+   "second_expr_sha256": "9005bc10c9e05a2b306875dac336c7ff1eb5eddf0687da41d69eebb8e72a3efd",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2698 of 3069 comparisons agree, 2698 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 8, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "a5962acfa446cb3667fb8339596d3685c28d80aa21f4c3d800e9f4e4f6a60243",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:x2k1p.fk11_limited_box1_income@f8582",
+     "fixture:x2k1p.limited_worked_passive@f8582",
+     "fixture:x2k1p.prior_box1_partly_used@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:mk1.k1p.passive_three_income_with_priors@f8582",
+     "fixture:mk1.k1p.box2_income_prior_only@f8582",
+     "fixture:mk1.k1p.box3_income_prior_only@f8582"
     ],
     "policy": "executable-triage-v2"
    }
@@ -268,6 +591,98 @@
    }
   },
   {
+   "printed": "2b",
+   "project_expr_sha256": "7dabea96f2479cb4fa3dcad79f584c0fa34245de2bcc46099d4e1ae5a20039b7",
+   "second_expr_sha256": "8c4a097a206add8ae7ed908065e64f9f9f1751da097ac4aa7a6823d2b2326e95",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2704 of 3069 comparisons agree, 2704 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 5, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "80f18b3cacfb9ca7ab647d4cb937ad953bb6ae76c3150961a5276143342ddc15",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:x2k1p.fk3_limited_rental_loss@f8582",
+     "fixture:x2k1p.fk3c_general_under_tenth@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:mk1.k1p.passive_three_losses@f8582",
+     "fixture:mk1.k1p.passive_box1_loss_only@f8582",
+     "fixture:mk1.k1p.passive_box3_loss_only@f8582",
+     "fixture:mk1.k1p.box2_loss_box3_income@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2c",
+   "project_expr_sha256": "4e2aa23c329291cb003961e18a668287ccf0024eab9219ad52ff6e024838ebed",
+   "second_expr_sha256": "9487d39b1f639ff4396b37bc964cf85ce1e7ba4cfc754a72c96fad482ffc00d7",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2712 of 3069 comparisons agree, 2712 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 2, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "aefce3837e81427d649f0dae793acf7d77d9de87b871cd9de4af5cd37bb93c1a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:x2k1p.prior_box1_partly_used@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:mk1.k1p.passive_three_income_with_priors@f8582",
+     "fixture:mk1.k1p.box2_income_prior_only@f8582",
+     "fixture:mk1.k1p.box3_income_prior_only@f8582",
+     "fixture:mk1.k1p.box1_zero_prior_loss@f8582",
+     "fixture:k1s.passive_rental_prior_loss@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "2c",
    "project_expr_sha256": "4e2aa23c329291cb003961e18a668287ccf0024eab9219ad52ff6e024838ebed",
    "second_expr_sha256": "9a5f61dfa74e2a0d11548be70ee228974f2fcd3cc0d93f366f3346c37f5e7970",
@@ -320,6 +735,98 @@
      "fixture:classm.f8582.3@f8582",
      "fixture:classm.sche.2@f8582",
      "fixture:x1sche.f15.part2_line1d_smaller@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2d",
+   "project_expr_sha256": "9d0f0746de3b49e028afe9f3071bf9e1c414c4c16b67643b0eee60609a507afa",
+   "second_expr_sha256": "f236b6a955ea3a67d098b87bbc502df3e7f78494327d9c7d6ee00209af4df5da",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2686 of 3069 comparisons agree, 2686 of 2730 in scope; completed {\"candidate-refuses\": 14, \"candidate-shows-skipped\": 13, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "6c70b524ba60b3e6f717b95f156d607859b20d5b7def7932ec21745cee2b3b71",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:x2k1p.fk3_limited_rental_loss@f8582",
+     "fixture:x2k1p.fk3c_general_under_tenth@f8582",
+     "fixture:x2k1p.fk11_limited_box1_income@f8582",
+     "fixture:x2k1p.limited_worked_passive@f8582",
+     "fixture:x2k1p.prior_box1_partly_used@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:mk1.k1p.passive_three_income_with_priors@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
+   "project_expr_sha256": "a52b5f2a46511f732e909e3d46d49f532ec3826a4f2baa9a8f7fef9a49f5a206",
+   "second_expr_sha256": "1dee596b45adc51dbdc0281cd3a9114b4ef17b84ec2d82e1b2a5170976b6e65a",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2674 of 3069 comparisons agree, 2657 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 33, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "a28e72d64bf04456fe293375804b44f32112fc6e8cc4c6545a2dcf4a5ce27277",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.s1.14@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:f1116.rental@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.fk3_limited_rental_loss@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582"
     ],
     "policy": "executable-triage-v2"
    }
@@ -406,6 +913,52 @@
    }
   },
   {
+   "printed": "4",
+   "project_expr_sha256": "e0be072872f29d238c0348aa305c26db5bcc380a740b0e45360d7da3ae484646",
+   "second_expr_sha256": "d5afac9896574f47307605587ee281f392e681c2c443d7384c17dee55e69a722",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2723 of 3069 comparisons agree, 2706 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "49d7082c508499a1f97601c0e2e1258ff20cb4d8a9ca2d8373ecc7ddf62a03e9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.fk3b_general_active@f8582",
+     "fixture:x2k1p.prior_box2_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:k1s.loss_over_basis_prorata@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "5",
    "project_expr_sha256": "2979535ff7fb256c60f209a6215669cb107995e65878abc3aa0361e0a865f500",
    "second_expr_sha256": "3cba09e7db8add198afbcf6810b7547fa497d0cdd46121d581325adcd7670c74",
@@ -443,6 +996,57 @@
      "generated:20261026.325@f8582",
      "generated:20261026.419@f8582",
      "generated:20261026.488@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5",
+   "project_expr_sha256": "d9ecd0c117a84867218a6d304f3a656a3d9b431f23f464711b71060e6703b825",
+   "second_expr_sha256": "3cdbab41aef2e6a9d7fc568eb2b3654bbd56c9c8955e35865ad1d2cb0d2d9fb0",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2719 of 3069 comparisons agree, 2702 of 2729 in scope; completed {\"candidate-hides-shown\": 4, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "d5104cba773279080fc1d32cc4a0784ed080b62e1bff833211d5f965b92f6e38",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:mrental.f8582.part4_prior_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_prior_loss_net_gain@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.fk3b_general_active@f8582",
+     "fixture:x2k1p.prior_box2_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:k1s.loss_over_basis_prorata@f8582",
+     "fixture:x1sche.f10.part5@f8582"
     ],
     "policy": "executable-triage-v2"
    }
@@ -488,6 +1092,108 @@
      "generated:20261026.325@f8582",
      "generated:20261026.419@f8582",
      "generated:20261026.488@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6",
+   "project_expr_sha256": "918d02bd7de50bcc59911d1c28eeaa9b9c480312ce61dd767e9ae84b7419e398",
+   "second_expr_sha256": "e69acb4340c384eed51827dd40f98ac18e58f5734c4ab2fbc3136c594c543c1a",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2723 of 3069 comparisons agree, 2705 of 2729 in scope; completed {\"candidate-hides-shown\": 4, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 6, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "b68b7429750b0c5292042138f200d052545a6dc951234a9ac9f64c192db5d7ad",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:mrental.f8582.part4_prior_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_prior_loss_net_gain@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582",
+     "fixture:x1sche.f10.part5@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "5f7e6b469502e3297b36d4c3381852e7f7e83bfd9da05c2b6db075e27c90c914",
+   "second_expr_sha256": "29a9227284abc023c957553bc84c11289f6a3ce5154b90b201f025a4bda0303f",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2934 of 3069 comparisons agree, 2704 of 2729 in scope; completed {\"candidate-hides-shown\": 4, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 9}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "b1a4b2dc9a762148f837b3d94208bf148ad5b284c87811f1f73f4445b892f80b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.s179.4@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:classm.rental.3@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:mrental.f8582.part4_prior_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_prior_loss_net_gain@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.fk3b_general_active@f8582",
+     "fixture:x2k1p.prior_box2_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:k1s.loss_over_basis_prorata@f8582",
+     "fixture:mutation.t2.mfs_sli_line5@f8582",
+     "fixture:mutation.t2.f8880.inherited_ira@f8582",
+     "fixture:mutation.m4.f5695.hp_no_qmid_mfs@f8582",
+     "fixture:mutation.m4.tipjob.service_charge@f8582",
+     "fixture:x1sche.f10.part5@f8582"
     ],
     "policy": "executable-triage-v2"
    }
@@ -546,6 +1252,57 @@
   },
   {
    "printed": "8",
+   "project_expr_sha256": "06e2aa1c28595634c0b58f0dda2eef1d38343f21fccb99a6f50f1b6b6fe4d6fd",
+   "second_expr_sha256": "5e002fa08e547e89cf200955188e31e3cac50c4e777ad3c06e6eab30003e9d20",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2934 of 3069 comparisons agree, 2704 of 2729 in scope; completed {\"candidate-hides-shown\": 4, \"candidate-refuses\": 15, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 9}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "d757956e85f17f7cd0a7941b0b6730aa523bc864aa90ffebb78ab7de147de44e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.s179.4@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:classm.rental.3@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:mrental.f8582.part4_prior_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_loss_net_gain@f8582",
+     "fixture:mrental.f8582.part5_prior_loss_net_gain@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.fk3b_general_active@f8582",
+     "fixture:x2k1p.prior_box2_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:k1s.loss_over_basis_prorata@f8582",
+     "fixture:mutation.t2.mfs_sli_line5@f8582",
+     "fixture:mutation.t2.f8880.inherited_ira@f8582",
+     "fixture:mutation.m4.f5695.hp_no_qmid_mfs@f8582",
+     "fixture:mutation.m4.tipjob.service_charge@f8582",
+     "fixture:x1sche.f10.part5@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
    "project_expr_sha256": "f2b147607390d34d7ec6f0a761781123f8d3f30fa303047db381491e78071fab",
    "second_expr_sha256": "e294887a187473eaf05c02d77e6f094a45a481abe10ac665124933e874485080",
    "ruling": "Ruling: model error; inherits line 6's exclusion of royalty income from modified AGI (x1sche.f7.royalty_magi: line 7 51,400 vs 49,000; i8582 p. 11, Line 6, 'Include ... any portfolio income'), hides the line on a Part II return and refuses where the project computes. The project-unknown witnesses are generated returns with no rental (scope.rental false), where Form 8582 is not filed and the $royalty roster is not asked: nothing on those completed returns reads the line.",
@@ -592,6 +1349,52 @@
      "generated:20261026.147@f8582",
      "generated:20261026.155@f8582",
      "generated:20261026.281@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "0dcc3e1ff0a4f48d83eaf74cbb0970a980501c9f43bb2ca97e2aac4a9142ab4c",
+   "second_expr_sha256": "1a79f81b5a3eab32be698e14cdb98d5cf46da5a571d6eaa2f75586fb01298947",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2724 of 3069 comparisons agree, 2706 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 9, \"candidate-unknown\": 11}. Project stands.",
+   "context": "8a409d0cb323f676fc2a45eab31ff0225f9d1fe8f8f1ba9dbde7f66109f7eb5f",
+   "date": "2026-11-17",
+   "run": "e7763d458c18fef3a79a38e03accd251e0ee570e3dbe8e507c5260c471f9ff75",
+   "subject_key": "b0e329713f43d63e77c7ec558e9a5d58113d0d93f65758b23d6ffc1947e9abaf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:classm.rental.1@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.fk3b_general_active@f8582",
+     "fixture:x2k1p.prior_box2_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582",
+     "fixture:k1s.loss_over_basis_prorata@f8582"
     ],
     "policy": "executable-triage-v2"
    }
@@ -725,6 +1528,38 @@
      "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@f8582",
      "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f8582",
      "fixture:stage10.ira.roth_code_unanswered@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8582.mfs_together",
+   "project_expr_sha256": "41aac9866b70be7af05b6e4306a1fee8c58e3e79abd80d8a201354441c3ecb75",
+   "second_expr_sha256": "867e8ef69d9a447dc06e49d683a62df9534a95ac7af12ca849dc6374df425837",
+   "ruling": "Ruling: model error; the second could not find the filing status in its interface and tested a filing-status-keyed parameter instead; the project reads f1040.status and household.mfs_living directly, which is what i8582 p. 10 describes (married filing separately and lived with the spouse at any time during the year).",
+   "context": "bb91251b16517b7dc957ab5e4273f55199d0d48ca0b3d1f6a66b07e4929a7d88",
+   "date": "2026-11-22",
+   "run": "45540dd95296c29cdee853f2ff847bfa20da821ff329af1b3b134c9835fe662b",
+   "subject_key": "1f90d23849e5c26bd6ef9d339c883f6b4ee0109ad2cccfa132432bb68f187428",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.s2.5.deepseek@f8582",
+     "fixture:classm.f1040.8.deepseek@f8582",
+     "fixture:classm.sa.2.deepseek@f8582",
+     "fixture:classm.sa.4.deepseek@f8582",
+     "fixture:classm.sa.5.deepseek@f8582",
+     "fixture:classm.asset.2.deepseek@f8582",
+     "fixture:classm.s1.13.deepseek@f8582",
+     "fixture:classm.s1.13@f8582",
+     "fixture:classm.ssb.2@f8582",
+     "fixture:classm.person.23@f8582",
+     "fixture:stage10.ss.mfs_apart@f8582",
+     "fixture:mfs.m6.ssb_apart@f8582"
     ],
     "policy": "executable-triage-v2"
    }

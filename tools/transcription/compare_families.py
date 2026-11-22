@@ -14,7 +14,7 @@ A line one log judged and the other did not (MISSING, or absent from one log) is
 floor and counted. A log whose subject hash is no longer current is marked stale in the table.
 The report's "Summary:" line is also printed when the report is written.
 
-While every second family is inactive (families.json `active`) the report is not rewritten: the last one
+While no second family is callable (families.json `callable`) the report is not rewritten: the last one
 written stays as the record of the families' historical logs, and the run says so. Reactivating a family
 resumes the comparison on the next run.
 
@@ -343,12 +343,12 @@ def pairs():
 
 def main():
     known = families.load()
-    if not any(on for fam, on in known["active"].items() if fam != families.DEFAULT):
+    if not any(on for fam, on in known["callable"].items() if fam != families.DEFAULT):
         kept = "is kept as last written" if os.path.exists(REPORT) else "does not exist"
-        print(f"second_family: every second family is inactive (tools/transcription/families.json); "
+        print(f"second_family: no second family is callable (tools/transcription/families.json); "
               f"{os.path.relpath(REPORT, ROOT)} {kept} and is not regenerated")
         return
-    results = [compare(kind, form, fam) for kind, form, fam in pairs() if families.is_active(fam)]
+    results = [compare(kind, form, fam) for kind, form, fam in pairs() if families.is_callable(fam)]
     fams = sorted({r["family"] for r in results})
     judged = sum(len(r["judged"]) for r in results)
     agreed = sum(len(r["both_agree"]) for r in results)
@@ -370,7 +370,7 @@ def main():
            f"Written by `tools/transcription/compare_families.py` on {datetime.date.today().isoformat()} from the review logs under `{jurisdiction.ypath('reviews', Y).relative_to(jurisdiction.ROOT)}/`. "
            "For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.", "",
            "- **Noise rule** (owner's decision 12, integrity plan item 1.3): second-family disputes ruled **model error**, divided by the lines that family judged, must be at most 10% for each form-kind run. Findings, representation differences, scope differences and ambiguities are not model noise. The threshold uses integer arithmetic; 1/10 passes and 1/9 does not. Rates for pending reviews are provisional: an unresolved objection has not yet been classified, and zero ruled model errors does not mean every objection was correct.",
-           "- **Eligibility** also requires current subjects/sources, the named second-family model, no missing or invalid verdicts, and no open or unclassified ruling. Empty reviews earn no assertion. Optional-family results can remain pending without becoming evidence.",
+           "- **Eligibility** also requires current subjects/sources, the named second-family model, no missing or invalid verdicts, and no open or unclassified ruling. Empty reviews earn no assertion. An advisory family's results can remain pending without becoming evidence.",
            "- **Raw agreement** is retained as a diagnostic only. A correct objection must not disqualify an independent reader.",
            "- **Current independence yield**: lines the second family disputed (DISAGREE, MISMATCH or UNCLEAR) where the Claude log agreed or matched, with the second family's reason. This describes current logs; findings fixed before a rerun remain in BUG_INVENTORY.md and are not erased by a current yield of zero.",
            "- **Both disputed**: lines both families disputed; **Claude only**: lines only the Claude run disputed.",

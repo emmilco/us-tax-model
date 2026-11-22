@@ -103,8 +103,122 @@
     }
    ]
   },
+  "gate:household.ask_spouse_cp_domicile": {
+   "subject_sha": "d40bffa2af88a4395b098ea619257c5799b1df45d86723fb6b78373219afc38f",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A registered domestic partner in California, Nevada, or Washington who files single or head of household and has never been married.",
+       "why_no": "The gate requires a possible marriage; an RDP is not married for federal tax purposes, and the gated question asks only about a husband or wife, so the truthful answer is no or no spouse.",
+       "line": "household.spouse_cp_domicile_if_asked",
+       "irs_text": "p555 p. 2: 'RDPs in Nevada, Washington, or California must generally follow state community property laws and report half the combined community income of the individual and his or her RDP.'",
+       "severity": "high",
+       "fix": "Treat an RDP in a community property state as within the gate and ask about the RDP's domicile, not only a husband or wife."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A married filer whose spouse or RDP is domiciled in a foreign country with community property law, or a filer and spouse with different domiciles one of which is such a foreign country.",
+       "why_no": "The question lists only nine U.S. states; the spouse did not live in or have a permanent home in any listed state, so the filer answers no.",
+       "line": "household.spouse_cp_domicile_if_asked",
+       "irs_text": "p555 p. 2: 'The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both.'",
+       "severity": "high",
+       "fix": "Ask whether either spouse or RDP was domiciled in any community property jurisdiction, including a foreign country, or add an 'other foreign community property country' branch."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A married filer who is domiciled in a community property state but whose spouse or RDP is domiciled in a non-community-property state.",
+       "why_no": "The question asks only whether the husband or wife lived in or had a permanent home in a listed state; the spouse did not, so the filer answers no even though the filer's own domicile is in a community property state.",
+       "line": "household.spouse_cp_domicile_if_asked",
+       "irs_text": "p555 p. 2: 'If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both.'",
+       "severity": "high",
+       "fix": "Ask about either spouse's or RDP's domicile, including the filer's own, not just the husband's or wife's."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A married filer who now lives in a non-community-property state and receives a civil service annuity or military retirement pay based on service performed while married and domiciled in a community property state in an earlier year.",
+       "why_no": "The question asks only about 2025 while married; the spouse did not live in or have a permanent home in a listed state in 2025, so the filer answers no.",
+       "line": "household.spouse_cp_domicile_if_asked",
+       "irs_text": "p555 p. 6: 'Even if you now live in a noncommunity property state and you receive a civil service annuity, it may be community income if it is based on services you performed while married ... and domiciled in a community property state.' Also p555 p. 6: military retirement pay is community income when based on services performed during marriage and domicile in a community property state.",
+       "severity": "high",
+       "fix": "Ask about domicile during prior years of marriage or service, especially when retirement pay is received, or separately ask whether any retirement pay is based on service in a community property state."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer, including a qualifying surviving spouse, who in 2025 sells property inherited from a spouse or RDP who had lived in a community property state and whose domicile affects the inherited basis.",
+       "why_no": "The gate excludes qualifying surviving spouse, and the question asks only whether the husband or wife lived in or had a permanent home in a listed state in 2025 while married; a deceased spouse or an earlier-year domicile makes the truthful answer no.",
+       "line": "household.spouse_cp_domicile_if_asked",
+       "irs_text": "p555 p. 2: 'Community property laws also affect your basis in property you inherit from a married person who lived in a community property state.'",
+       "severity": "high",
+       "fix": "Do not exclude qualifying surviving spouse from the community-property or basis question; ask separately whether the filer inherited property from a spouse or RDP who was domiciled in a community property state, regardless of the year."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer who was married earlier in 2025 but divorced or widowed by year-end and now files as single or head of household, or as married filing jointly for the year of death.",
+       "why_no": "They read 'husband or wife' as the current spouse and answer no because they have no current husband or wife, although the question says 'while you were married' and the former or deceased spouse lived in a listed state during the marriage.",
+       "line": "household.spouse_cp_domicile_if_asked",
+       "irs_text": "p555 p. 2: 'If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both.'",
+       "severity": "medium",
+       "fix": "Say 'your spouse or former spouse, including a deceased spouse, at any time during 2025 while you were married' and add a help example for divorce or death during the year."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose spouse or RDP did live in or have a permanent home in a listed community property state in 2025 while married, but who wants to finish the electronic interview.",
+       "why_no": "The help says 'A Yes ends the interview here'; the filer reads a yes as aborting or refusing the return, so they answer no to keep going.",
+       "line": "household.spouse_cp_domicile_if_asked",
+       "irs_text": "p555 p. 2: 'If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both.'",
+       "severity": "medium",
+       "fix": "Remove the warning that a yes ends the interview or explain that a yes opens the required community-property questions; do not make the truthful answer appear to terminate the return."
+      }
+     ],
+     "prompt_sha": "4feda74017cd243b59cd67d49517f4d1d3cfc204c02d60fd6569de1b0ca1243c",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_household.ask_spouse_cp_domicile.d40bffa2af88.1.response.txt"
+    }
+   ],
+   "condition": "household.ask_spouse_cp_domicile",
+   "lines": [
+    "household.spouse_cp_domicile_if_asked"
+   ],
+   "inputs": [
+    "household.spouse_cp_domicile"
+   ],
+   "used": [
+    {
+     "doc": "p555",
+     "revision": "Rev. December 2024 (Publication 555 (Rev. 12-2024), Catalog Number 15103C, Feb 18, 2025); current irs-pdf edition, not year-specific",
+     "text_sha256": "2dd22ea2d7de4975655ee6396abc0e0308c9a2a55ac3d3545dd5898316da88a2",
+     "pages": [
+      2,
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Domicile, \"If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both\"",
+      "p. 2, Domicile, \"If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both\"; p. 6, Military retirement pay, \"Active military pay earned while married and domiciled in a community property state is also community income\""
+     ],
+     "cols_pages": [
+      2,
+      6
+     ],
+     "cols_sha256": "3f3fcfee62061de0f01cb468367f8da77c98aa006c9e6d23c3e0045e740ed99d"
+    }
+   ]
+  },
   "gate:household.claims_8862_credit": {
-   "subject_sha": "46ce227672dcd239a2c9aa5fbb78a3b96478ca284f846178ae6998ae01701f88",
+   "subject_sha": "2580d9cf4b7a2192e9fe2aa3fd44922fea7688b69d4fb4efc6c4614017182cf6",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -112,50 +226,30 @@
       {
        "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "A filer with no income tax liability in 2019 claimed only the additional child tax credit (the refundable part). An IRS examination found the child did not live with them for more than half the year and disallowed it. In 2025 they claim the CTC/ACTC again.",
-       "why_no": "The question names only 'a child tax credit, a credit for other dependents or an earned income credit', and the help says 'the other credits for 2016 or later'. The additional child tax credit, a separately named credit, is never mentioned. A filer who reads their old notice literally ('additional child tax credit disallowed') truthfully answers No.",
+       "who": "A single or joint filer who claims only the credit for other dependents (for example, for a dependent parent or a 17-year-old child) and has enough tax liability to use the full ODC, and whose own or spouse's ODC/CTC was denied or reduced after 2015.",
+       "why_no": "The gate computes only 'Schedule 8812 line 8 > line 11'; on an ODC-only return line 8 is not greater than line 11 because line 11 carries the ODC amount, so the tool treats the gate as false and never asks about the earlier disallowance.",
        "line": "household.credit_disallowed_if_claimed",
-       "irs_text": "i1040gi p. 39: \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced\"; i1040s8812 p. 2: \"If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced...\"",
+       "irs_text": "i1040gi p. 39: 'You must file Form 8862 to claim ... credit for other dependents if your ... credit for other dependents for a year after 2015 was denied or reduced ...'; i1040s8812 p. 2: 'If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced ... you must attach Form 8862 ...'",
        "severity": "high",
-       "fix": "Name every credit: 'Has the IRS ever reduced or refused an earned income credit (1997 or later), or a child tax credit, additional child tax credit (refundable child credit) or credit for other dependents (2016 or later)...'"
+       "fix": "Gate on any positive CTC, ODC, ACTC, or EIC claim, including ODC-only; do not use line 8 > line 11. Test the dependents' credit boxes and any positive credit amount, and ask the disallowance question whenever Form 8862 could be required."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer whose earlier EIC or CTC was cut after the IRS sent a letter asking for proof that a child qualified (residency or relationship). The filer thinks of it as an IRS correction of a mistake on their return.",
-       "why_no": "The carve-out 'for any reason other than a math or clerical error' asks the filer to classify the IRS action. A filer who believes the change was 'just a mistake on the form' answers No, confident enough that 'If you are not sure, answer Yes' does not prompt them.",
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer otherwise eligible for the earned income credit who elects to have the IRS figure the EIC by entering 'EIC' on line 27a, and who had an EIC reduced or disallowed after 1996.",
+       "why_no": "The gate helper counts EIC as claimed only if Steps 1-5 are passed and the credit computed in Worksheet A line 6 or Worksheet B line 11 is more than zero; choosing 'Yes' in Step 6 to have the IRS figure the credit bypasses those worksheets, so the helper is false and the question is not asked.",
        "line": "household.credit_disallowed_if_claimed",
-       "irs_text": "i1040gi p. 43: \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error.\"",
-       "severity": "medium",
-       "fix": "Ask facts first: 'Did the IRS ever reduce or deny one of these credits?' If Yes, follow up: 'Was the only reason an arithmetic error, or a missing or mismatched SSN shown on a math-error notice, with no request for documents and no audit?' Treat any other case as Yes."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer whose prior-year EIC or CTC was refunded in full but later reversed in an audit, for example a Form 4549 they signed in agreement. They repaid the credit with a balance-due notice.",
-       "why_no": "'Reduced or refused a ... credit that you claimed' reads like a denial at filing time. A filer who got the refund, then agreed to an adjustment and paid it back, may not see that as the IRS refusing the credit, especially since they 'agreed'.",
-       "line": "household.credit_disallowed_if_claimed",
-       "irs_text": "i1040gi p. 43: \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error.\"",
-       "severity": "medium",
-       "fix": "Add to help: 'Include a credit you received and later had to repay, or agreed to give up, after an IRS audit or letter, and any case where the IRS told you that you can't claim these credits for 2 or 10 years.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "On a joint return, a spouse who is now in a 2- or 10-year disallowance period from an earlier return the spouse filed alone. The other spouse answers the interview.",
-       "why_no": "The question says 'you (or, on a joint return, your spouse) claimed', but the help does not mention disallowance periods. The answering spouse may not know about the other spouse's earlier audit.",
-       "line": "household.credit_disallowed_if_claimed",
-       "irs_text": "i1040gi p. 43: \"don't file Form 8862 or take the credit for the: • 2 years after ... reckless or intentional disregard ... • 10 years after ... fraud\"; i1040gi p. 39: \"you won't be allowed to take either credit or the additional child tax credit for 2 years ... for 10 years\"",
-       "severity": "low",
-       "fix": "Add to help: 'Ask your spouse. Include any IRS notice to either of you, on any earlier return, saying a credit was disallowed or that you can't claim it for 2 or 10 years.'"
+       "irs_text": "i1040gi p. 43: 'To have the IRS figure your EIC ... Enter “EIC” on the dotted line next to line 27a ... If your EIC for a year after 1996 was reduced or disallowed, see Form 8862, who must file'; and 'You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed ...'",
+       "severity": "high",
+       "fix": "Treat an explicit EIC claim or a line 27a 'EIC' election as claimed regardless of whether the tool computes a worksheet amount; ask the prior-disallowance question before refusing or computing the EIC."
       }
      ],
-     "prompt_sha": "f116c601b8f6d76427895e1feef3fe10f7b313ad62a4578ffe24a88ef8845b4d",
+     "prompt_sha": "dfa326b1176b66f0965d0f4081212d9cba1a17295d4b760a594d286a899e7a2f",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.127524,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_household.claims_8862_credit.46ce227672dc.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_household.claims_8862_credit.2580d9cf4b7a.1.response.txt"
     }
    ],
    "condition": "household.claims_8862_credit",
@@ -203,48 +297,38 @@
    ]
   },
   "gate:household.marriage_possible": {
-   "subject_sha": "44658d9ba1e1b6dd389aeabbe56da996af4e2b6ada598315d24f0dee86c948f4",
+   "subject_sha": "3b41064169e6c4e32d13cdb1dee6f7ce01292ef008ed15c07c004ec4ff9c10d8",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer in Texas who has lived with a partner as husband and wife without a ceremony or license, which makes them common-law married under Texas law, and who chose single or head of household.",
-       "why_no": "\"Have you ever been married?\" reads to most people as a wedding or a marriage license. A common-law spouse who never had either answers No. The only help that mentions common-law marriage is attached to the gated December 31 question, which this filer never sees.",
-       "line": "household.married (and household.cp_married_if_ever_married, since Texas is a community property state)",
-       "irs_text": "p501 p. 6, Considered married: \"You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.\"",
-       "severity": "medium",
-       "fix": "Ask: \"Have you ever been married, including a common-law marriage (living together as spouses in a state that recognizes it), or a marriage entered into abroad or under tribal law?\" Show the common-law help with the gate itself."
-      },
-      {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A registered domestic partner in California, Nevada or Washington who has never married and files single or head of household.",
-       "why_no": "They truthfully answer No to \"Have you ever been married?\" The gated help says \"A registered domestic partnership or civil union is not a marriage,\" which confirms the No. So the community property question, and the refusal a Yes would trigger, never comes up.",
-       "line": "household.cp_married_if_ever_married (the refusal it leads to: Form 8958 splitting of community income is not supported)",
-       "irs_text": "i1040gi p. 23, Nevada, Washington, and California domestic partners: \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555.\"",
+       "pattern": "other",
+       "who": "A never-married filer who is a registered domestic partner in California, Nevada, or Washington and files as single or head of household.",
+       "why_no": "The gate asks 'Have you ever been married?' and the filer truthfully answers no because a registered domestic partnership or civil union is not a marriage for federal tax; Pub. 501 says such relationships are not lawfully married.",
+       "line": "household.cp_married_if_ever_married (and the Form 8958/community-income inquiry it gates)",
+       "irs_text": "i1040gi p. 23: 'Nevada, Washington, and California domestic partners. A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner.'",
        "severity": "high",
-       "fix": "Add a question that does not depend on the marriage gate: \"Were you a registered domestic partner in California, Nevada or Washington at any time in 2025?\" A Yes ends the interview, the same as the community property Yes."
+       "fix": "Broaden the gate/line to cover registered domestic partners in community property states, or ask a separate community-property/RDP question regardless of marriage; do not condition Form 8958 on 'ever married' alone."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer whose 2025 marriage in a community property state such as California was annulled before the end of 2025, and who now files single.",
-       "why_no": "An annulment decree holds that \"no valid marriage ever existed,\" so the filer answers \"never married.\" State law can still treat property earned during a putative marriage as quasi-community property, which needs the Form 8958 or Pub. 555 analysis.",
-       "line": "household.cp_married_if_ever_married",
-       "irs_text": "p501 p. 6, Annulled marriages: \"you are considered unmarried even if you filed joint returns for earlier years\"; i1040gi p. 23: \"you must usually follow state law to determine what is community income and what is separate income.\"",
-       "severity": "low",
-       "fix": "Add to the gate help: \"Count a marriage that was later annulled.\" In the community property help, say that an annulled marriage in a listed state may still require Form 8958."
+       "pattern": "7",
+       "who": "A filer in a state-recognized common-law marriage who files as single or head of household and has no marriage license or ceremony.",
+       "why_no": "They read 'Have you ever been married?' as requiring a formal marriage and answer no; the rule that a recognized common-law marriage counts appears only in the gated help for household.married, which is never shown.",
+       "line": "household.married (and any status or HSA/refusal it gates)",
+       "irs_text": "p501 p. 6: 'You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.'",
+       "severity": "medium",
+       "fix": "Put the common-law rule in the gate/help or replace the gate with a fact question: 'Did you and a partner live together in a state-recognized common-law marriage?'"
       }
      ],
-     "prompt_sha": "7df5fa2c9a5f19cc92afa275b862a0b6340b536a203b7d84f088cb4d255177ba",
+     "prompt_sha": "a4bda985076b625b3e05dc0d017ab93f26c4306c954818639c25d28f89661186",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.109184,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_household.marriage_possible.44658d9ba1e1.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_household.marriage_possible.3b41064169e6.1.response.txt"
     }
    ],
    "condition": "household.marriage_possible",
@@ -454,68 +538,38 @@
    ]
   },
   "gate:household.mfs": {
-   "subject_sha": "3ebed3af05460b20e5a51b42a047c0d05649a0223a79ac7b930eb5e4f4d2c508",
+   "subject_sha": "5a4104ae82c48a091fd909303adf47f241e2e6749baf80d7c1235e8b23533fdb",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A married filer who lived apart from their spouse from July through December 2025, kept up a home for their child, and files as head of household under 'Married persons who live apart'.",
-       "why_no": "The gate checks the filing status box, so it is false for anyone who chose head of household rather than married filing separately. The line then defaults to together_late, 'so that neither lived-apart test is met'. The last-6-months test that head of household eligibility needs therefore fails, and the living-apart question is never asked.",
+       "pattern": "other",
+       "who": "A married filer who lived apart from their spouse for the last six months of 2025 and therefore files as head of household (considered unmarried) rather than married filing separately.",
+       "why_no": "The gate is only Filing status married filing separately. Their filing status is HOH, so the computed gate is false and the living-with-spouse question is never shown.",
        "line": "household.mfs_living_if_mfs",
-       "irs_text": "i1040gi p. 14: 'You are married but lived apart from your spouse for the last 6 months of 2025 and you meet the other rules under Married persons who live apart'; p. 15: 'You lived apart from your spouse for the last 6 months of 2025 ... You file a separate return from your spouse.'",
+       "irs_text": "i1040gi p. 15, Married persons who live apart: \"You lived apart from your spouse for the last 6 months of 2025.\"",
        "severity": "high",
-       "fix": "Gate on 'married at the end of 2025 and not filing a joint return' (MFS or HOH), not on the MFS box. Or ask the living-apart question before filing status is settled and feed it to both the line 6d test and the head of household test."
+       "fix": "Ask the living-with-spouse question whenever a married filer is not filing jointly and a lived-apart test can matter (HOH/considered unmarried, EIC, line 6d), not only when the status is MFS."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A married filer who lived apart from their spouse and files head of household. Their child lived with both spouses during the year, so the spouse (the child's other parent) could also claim the child.",
-       "why_no": "The gate is false because the status is not MFS, so the line is false. The IRS exclusion covers only a spouse 'if filing jointly', so on this separate head of household return the spouse is 'any other person'. The constant false gives no record of whether the spouse is that person, so the tie-breaker rules may be applied wrongly or skipped.",
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A married filer on a separate return who files HOH rather than MFS (for example, considered unmarried because of a nonresident-alien spouse or because they lived apart) and claims a child who could also be the spouse's qualifying child; the spouse is the only other person who could claim the child.",
+       "why_no": "The gate is only MFS, so a HOH separate return never reaches the question; the tool forces the line false even though the filer is married and not filing jointly.",
        "line": "dependent.other_only_spouse_if_mfs",
-       "irs_text": "i1040gi p. 17, Step 1: 'If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025, see Qualifying child of more than one person.'",
-       "severity": "medium",
-       "fix": "Ask the question on every return that is not a joint return where the filer is married at the end of 2025, including head of household under the lived-apart rule. Or state downstream that on a non-joint return the spouse counts as another person."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A married filer filing separately whose spouse is the child's other parent and the only other person who lived with the child for more than half of 2025.",
-       "why_no": "The help says 'Answer No if ... another parent of the child also lived with the child'. The filer reads their spouse as 'another parent' and answers no, which may end the interview, even though the spouse is exactly the person the question asks about.",
-       "line": "dependent.other_only_spouse_if_mfs",
-       "irs_text": "i1040gi p. 17, Step 1: 'qualifying child of any other person (other than your spouse if filing jointly) ... see Qualifying child of more than one person.'",
-       "severity": "medium",
-       "fix": "Change the help to 'Answer No if anyone other than your husband or wife, such as a grandparent, aunt, uncle, or grown brother or sister, also lived with the child ...'. Remove 'another parent', or say 'a parent other than your husband or wife'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A married filer filing separately where no one besides the filer could claim the child: the spouse did not live with the child, and no other relative did.",
-       "why_no": "The question asks whether the spouse is 'the only relative, besides you, who ... could claim them'. If nobody else could, the filer truthfully answers no, and the help warns that 'A No may end the interview here'. That is a refusal the IRS text does not support.",
-       "line": "dependent.other_only_spouse_if_mfs",
-       "irs_text": "i1040gi p. 17, Step 1: the tie-breaker applies only 'If the child meets the conditions to be a qualifying child of any other person'.",
-       "severity": "medium",
-       "fix": "First ask 'Could anyone besides you claim this child?' Then ask whether that person is only your husband or wife. Give 'no one else' as its own answer that does not end the interview."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A married filer filing separately who receives social security benefits and lived with their spouse during 2025, but whose spouse was often away for work. The filer does not count those periods as living together.",
-       "why_no": "The help applies the head of household temporary-absence rule to the line 6d and worksheet test ('lived with your spouse at any time'). The answer options also split the year at July. A filer whose only time together was brief may pick apart_all_year and get the $25,000 base instead of the 85% rule.",
-       "line": "household.mfs_living_if_mfs",
-       "irs_text": "i1040gi p. 32, worksheet line 8: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85%'",
-       "severity": "low",
-       "fix": "Make the apart_all_year answer read 'We did not live together at any time in 2025, not even for a day'. Keep the temporary-absence help, and tie it to both tests explicitly."
+       "irs_text": "i1040gi p. 17, Step 1: \"If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025...\"",
+       "severity": "high",
+       "fix": "Gate on any married filer who is not filing jointly (MFS, HOH, or other separate-return status), because the spouse is excluded only on a joint return."
       }
      ],
-     "prompt_sha": "58debe05e1724987afe015a974739c6e997c875fdbc185b0bdb17a30b1016169",
+     "prompt_sha": "15d13e2a068b30bacd1a964bb79bb87dd8252b329fd4b302bba5a3f294635f51",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.121508,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_household.mfs.3ebed3af0546.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_household.mfs.5a4104ae82c4.1.response.txt"
     }
    ],
    "condition": "household.mfs",
@@ -542,7 +596,7 @@
      "how": "cited pages",
      "locators": [
       "p. 14, Married Filing Separately, \"Check the “Married filing separately” box in the Filing Status section on page 1 of Form 1040 or 1040-SR if you are married at the end of 2025 and file a separate return\"",
-      "p. 15, Married persons who live apart, \"You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home\"; p. 32, Social Security Benefits Worksheet, line 8, \"Married filing separately and you lived with your spouse at any time in 2025\"; p. 31, Line 6d, \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d\"",
+      "p. 15, Married persons who live apart, \"You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home\"; p. 32, Social Security Benefits Worksheet, line 8, \"Married filing separately and you lived with your spouse at any time in 2025\"; p. 31, Line 6d, \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d\"; , Considered Unmarried, \"Your spouse didn't live in your home during the last 6 months of the tax year\"",
       "p. 17, Step 1, \"If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025, see Qualifying child of more than one person, later.\"",
       "p. 31, Line 6d, \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d\"; p. 15, Married persons who live apart, \"You lived apart from your spouse for the last 6 months of 2025\""
      ],
@@ -553,6 +607,20 @@
       31
      ],
      "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      8
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
     }
    ]
   }

@@ -39,6 +39,16 @@
   },
   {
    "printed": "needs1116",
+   "restated": "helper \"Positive foreign taxes\" = true and (helper \"Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise\" > helper \"Year parameter ftc.limit\" or helper \"Whether all foreign-source gross income was passive category income, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or helper \"Whether all foreign income and taxes were reported on qualified payee statements, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or helper \"Whether the creditability, holding-period, related-payment and reduction rules are met, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or helper \"Whether the election without Form 1116 is made, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or sa helper \"Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or exclude income from sources within Puerto Rico?\" = true)",
+   "model": "IRS allows the election with Form 2555 excluded income after required line 12 reductions ('You are still required to reduce the taxes available for credit by any amount you would have entered on line 12'); it does not make filing Form 2555 a condition requiring Form 1116.",
+   "ruling": "Ruling: scope; Form 2555 and Form 4563 exclusions are refused (the scope form refuses them), so the election with excluded income reaches no computed return. Project stands.",
+   "context": "91ccdb0d75f77cd2d263b0bc0e7ed2ca4cc279b56dd668fb970e23c4a4e01584",
+   "date": "2026-11-17",
+   "run": "f32b3ccb50c007edf165b3956df8e6889300f5337fd789ca7e9f0b419d99ff9a",
+   "subject_key": "e8839254c3e125561baa36e1906e743aba3bb1b3313747da4909899f89042977"
+  },
+  {
+   "printed": "needs1116",
    "restated": "helper \"Positive foreign taxes\" = true and (helper \"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7\" > helper \"Year parameter ftc.limit\" or helper \"Was all foreign-source gross income passive category income under the small-tax election rules?\" = false or helper \"Were all foreign income and taxes reported on qualified payee statements?\" = false or helper \"Have creditability, holding-period, related-payment and required foreign-tax reduction rules been satisfied?\" = false or helper \"Elect the credit without Form 1116, with no carryover to or from this election year?\" = false)",
    "model": "The IRS says 'This election isn’t available to estates or trusts,' but the gate has no entity condition, so an estate or trust with otherwise qualifying amounts would not be sent to Form 1116.",
    "ruling": "Ruling: scope; i1116 (2025) p.1 expressly excludes estates and trusts from the no-Form1116 election. The project prepares resident individual Form1040 returns (spec sections1-2; archived f1040 p.1 individual filing statuses), not Form1041 estate/trust returns; there is no estate/trust entity in the supported input domain. Thus the objection identifies a broader IRS taxpayer class outside this tool, not a missing individual-filer condition. The Form1116 conditions remain enforced for supported individuals.",
@@ -52,6 +62,16 @@
    "ruling": "Ruling: scope; screens scope.other_line16 and scope.credits. i1116 p. 25, Line 20, \"Individuals. Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.\" and \"If you file Form 8978, Partner’s Additional Reporting Year Tax, you will need to increase or decrease the amount you report on Form 1116, line 20 ... If, after your adjustment, the amount of your tax is zero or less, enter -0- on Form 1116, line 20.\" The restatement is the BUG-0190 fix (round-1 F1): ftc.regular_tax = f1040.line16 + s2.line1z. The three omitted terms are refused. Form 4972: scope.other_line16 (\"... including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount ...\") refuses f1040.line16 and scope.ready, so no Form 4972 tax is in line 16 and nothing is subtracted. Form 8978: a positive amount is in line 16 and refused by the same screen; a negative one goes to Schedule 3 Part I and is refused by scope.credits (\"... any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)\", at f1040 lines 29 and 30). The zero floor applies only \"after your adjustment\"; without one, line 16 and line 1z are both NonNegDollars, so their sum is never below zero. The fix uses line 1z, not line 3, which agrees with the page (line 3 adds the alternative minimum tax, section 26(b)(2)). Regression stage18.ftc_limit_with_repayment evaluates to ftc.regular_tax $375.00, ftc.credit $200.00 and Form 1040 line 22 $175.00, the round-1 source values. No new error found.",
    "context": "cce77a446274d8b073a534c5cfae2041b606489009b1bebf28437dfbf4318e0b",
    "subject_key": "3e8e84f5bedef540b0e867fcf30dcaabe8440148b9286ca7944fa536becd3742"
+  },
+  {
+   "printed": "regular_tax",
+   "restated": "Add f1040 line 16 and s2 line 1z.",
+   "model": "IRS says to use Form 1040 line 16 plus Schedule 2 line 1z 'less any tax included on line 16 from Form 4972'; the restatement omits the Form 4972 subtraction.",
+   "ruling": "Ruling: scope; a Form 4972 lump-sum distribution is refused (scope.income_averaging). Project stands.",
+   "context": "91ccdb0d75f77cd2d263b0bc0e7ed2ca4cc279b56dd668fb970e23c4a4e01584",
+   "date": "2026-11-17",
+   "run": "f32b3ccb50c007edf165b3956df8e6889300f5337fd789ca7e9f0b419d99ff9a",
+   "subject_key": "063a2158de91692f091f360ac4e59734b3b161ba8c008e19f7f98a677de86bd9"
   },
   {
    "printed": "regular_tax",

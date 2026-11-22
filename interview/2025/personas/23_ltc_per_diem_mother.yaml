@@ -1,0 +1,22 @@
+# Predicted end (hand-derived, Form 8853 Section C; unverified until draft-walk and a values run):
+#   f8853c[mom]: line17 $90,000, line20 $90,000, line21 $84,000 (420 x 200), line22 $76,000, line23 $84,000,
+#   line24 $8,000, line25 $76,000, line26 $14,000. Schedule 1 line 8e $14,000.
+#   AGI $66,000; standard deduction $15,750; taxable income $50,250; tax $5,975 (Tax Table, +/- $1).
+name: 23_ltc_per_diem_mother
+who: A single person, 56, with one job (one Form W-2, $52,000 of wages) who owns a long-term care policy on her mother; it paid her $450 a day for the 200 days of 2025 her mother spent in a nursing home that cost $76,000, of which Medicare paid $8,000.
+extends: 01_single_w2
+end: complete
+answers:
+  person[taxpayer].birth_year: 1969
+  s1.ltc_payout: true
+  $f8853c: [mom]
+  f8853c[mom].periodic: true
+  f8853c[mom].line17: 9000000
+  f8853c[mom].nonqualified: false
+  f8853c[mom].line19: 0
+  f8853c[mom].others_paid: false
+  f8853c[mom].rate_changed: false
+  f8853c[mom].days: 200
+  f8853c[mom].line22: 7600000
+  f8853c[mom].line24: 800000
+  f8853c[mom].contract_before_ltc_date: false

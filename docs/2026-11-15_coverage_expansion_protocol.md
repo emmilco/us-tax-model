@@ -541,6 +541,9 @@ the adoption steps.
 5. Its reviews meet 6.5, items 2 to 4.
 6. Its next-year work meets 7.1 or 7.2: operations checked, documents listed.
 7. Its bookkeeping is done (section 9). The coverage documents are regenerated and the task row is updated.
+8. Its lanes' worktrees are removed, or archived with `tools/worktree_gc.py archive`, once their work and review
+   data are carried back (owner, 2026-11-21); a worktree kept for later work is locked with a reason starting
+   "keep". A release fails while a removable or stale worktree remains (`tools/worktree_gc.py check --fail`).
 
 10.2 **A release that claims new coverage** (`tools/release.sh`, on the clean tip of `main`):
 1. Full tier is green, and the tag `r<YYYY>.<MM>.<DD>.<n>` is on the tested commit.

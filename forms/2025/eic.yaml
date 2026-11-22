@@ -17,8 +17,7 @@ form:
       label: Did you live for more than half of 2025 with a person whose qualifying child you could be by relationship?
       expr:
         op: input
-        source: In 2025, did you live for more than half the year in the same home as your parent, grandparent, brother, sister,
-          aunt or uncle, or a foster parent? Count time you were temporarily away, for example at school.
+        source: In 2025, did you live more than half the year with a parent, grandparent, brother, sister, aunt or uncle (step, half and foster relatives count)?
       cite:
         doc: i1040gi
         locator: 'p. 41, Step 3, Qualifying Child, "A qualifying child for the EIC is your... Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them" and "Who lived with you in the United States for more than half of 2025"; p. 41, Step 3, question 6, and p. 42, Step 4, question 5'

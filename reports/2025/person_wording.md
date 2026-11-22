@@ -193,19 +193,19 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+> For this person (you, or your spouse on a joint return) — Did you die in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
 
 Shown on a one-person return:
 
-> Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+> Did you die in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
 
 Shown for you on a couple's return:
 
-> About you — Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+> About you — Did you die in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
 
 Shown for your spouse:
 
-> About your spouse — Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+> About your spouse — Did your spouse die in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
 
 **Help, as stored**
 
@@ -261,35 +261,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+> For this person (you, or your spouse on a joint return) — How much were you paid in 2025 for work in or around a household's home, or for its members, by households that gave no W-2? Zero if none.
 
 Shown on a one-person return:
 
-> How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+> How much were you paid in 2025 for work in or around a household's home, or for its members, by households that gave no W-2? Zero if none.
 
 Shown for you on a couple's return:
 
-> About you — How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+> About you — How much were you paid in 2025 for work in or around a household's home, or for its members, by households that gave no W-2? Zero if none.
 
 Shown for your spouse:
 
-> About your spouse — How much was your spouse paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+> About your spouse — How much was your spouse paid in 2025 for work in or around a household's home, or for its members, by households that gave no W-2? Zero if none.
 
 **Help, as stored**
 
-> Add up the pay from every household that gave no W-2 for it. Pay on a W-2 is entered with the W-2s.
+> Add up the pay from every household that gave no W-2 for it, for work in or around its home or for its members. Pay on a W-2 is entered with the W-2s.
 
 Shown on a one-person return:
 
-> Add up the pay from every household that gave no W-2 for it. Pay on a W-2 is entered with the W-2s.
+> Add up the pay from every household that gave no W-2 for it, for work in or around its home or for its members. Pay on a W-2 is entered with the W-2s.
 
 Shown for you on a couple's return:
 
-> Add up the pay from every household that gave no W-2 for it. Pay on a W-2 is entered with the W-2s.
+> Add up the pay from every household that gave no W-2 for it, for work in or around its home or for its members. Pay on a W-2 is entered with the W-2s.
 
 Shown for your spouse:
 
-> Add up the pay from every household that gave no W-2 for it. Pay on a W-2 is entered with the W-2s.
+> Add up the pay from every household that gave no W-2 for it, for work in or around its home or for its members. Pay on a W-2 is entered with the W-2s.
 
 ## `$f8919firm`
 
@@ -329,19 +329,19 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+> For this person (you, or your spouse on a joint return) — How much did you get in 2025 in strike or lockout benefits? Leave out true gifts and state unemployment pay. Zero if none.
 
 Shown on a one-person return:
 
-> How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+> How much did you get in 2025 in strike or lockout benefits? Leave out true gifts and state unemployment pay. Zero if none.
 
 Shown for you on a couple's return:
 
-> About you — How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+> About you — How much did you get in 2025 in strike or lockout benefits? Leave out true gifts and state unemployment pay. Zero if none.
 
 Shown for your spouse:
 
-> About your spouse — How much did your spouse get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+> About your spouse — How much did your spouse get in 2025 in strike or lockout benefits? Leave out true gifts and state unemployment pay. Zero if none.
 
 ## `$f4137row`
 
@@ -381,35 +381,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Of the cash and charge tips you did not report, how much did you not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none.
+> For this person (you, or your spouse on a joint return) — Of the cash and card tips you did not report, how much was from a month in which your tips at that job were under $20? Zero if none.
 
 Shown on a one-person return:
 
-> Of the cash and charge tips you did not report, how much did you not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none.
+> Of the cash and card tips you did not report, how much was from a month in which your tips at that job were under $20? Zero if none.
 
 Shown for you on a couple's return:
 
-> About you — Of the cash and charge tips you did not report, how much did you not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none.
+> About you — Of the cash and card tips you did not report, how much was from a month in which your tips at that job were under $20? Zero if none.
 
 Shown for your spouse:
 
-> About your spouse — Of the cash and charge tips your spouse did not report, how much did your spouse not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none.
+> About your spouse — Of the cash and card tips your spouse did not report, how much was from a month in which your spouse's tips at that job were under $20? Zero if none.
 
 **Help, as stored**
 
-> You had to report tips to an employer only in a month in which the cash and card tips at that job came to $20 or more. Tips below that are still income but carry no social security or Medicare tax.
+> Tips under $20 in a month at one job did not have to be reported to the employer. They are still income but carry no social security or Medicare tax.
 
 Shown on a one-person return:
 
-> You had to report tips to an employer only in a month in which the cash and card tips at that job came to $20 or more. Tips below that are still income but carry no social security or Medicare tax.
+> Tips under $20 in a month at one job did not have to be reported to the employer. They are still income but carry no social security or Medicare tax.
 
 Shown for you on a couple's return:
 
-> You had to report tips to an employer only in a month in which the cash and card tips at that job came to $20 or more. Tips below that are still income but carry no social security or Medicare tax.
+> Tips under $20 in a month at one job did not have to be reported to the employer. They are still income but carry no social security or Medicare tax.
 
 Shown for your spouse:
 
-> Your spouse had to report tips to an employer only in a month in which the cash and card tips at that job came to $20 or more. Tips below that are still income but carry no social security or Medicare tax.
+> Tips under $20 in a month at one job did not have to be reported to the employer. They are still income but carry no social security or Medicare tax.
 
 ## `person.tips_gov`
 
@@ -483,19 +483,19 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — How much of the Medicaid pay you received in 2025 for caring for someone who lived with you in your home appears in box 1 of your W-2s? Zero if none.
+> For this person (you, or your spouse on a joint return) — How much 2025 Medicaid pay for caring for someone who lived with you in your home is in box 1 of your W-2s? Zero if none.
 
 Shown on a one-person return:
 
-> How much of the Medicaid pay you received in 2025 for caring for someone who lived with you in your home appears in box 1 of your W-2s? Zero if none.
+> How much 2025 Medicaid pay for caring for someone who lived with you in your home is in box 1 of your W-2s? Zero if none.
 
 Shown for you on a couple's return:
 
-> About you — How much of the Medicaid pay you received in 2025 for caring for someone who lived with you in your home appears in box 1 of your W-2s? Zero if none.
+> About you — How much 2025 Medicaid pay for caring for someone who lived with you in your home is in box 1 of your W-2s? Zero if none.
 
 Shown for your spouse:
 
-> About your spouse — How much of the Medicaid pay your spouse received in 2025 for caring for someone who lived with your spouse in your spouse's home appears in box 1 of your spouse's W-2s? Zero if none.
+> About your spouse — How much 2025 Medicaid pay for caring for someone who lived with your spouse in your spouse's home is in box 1 of your spouse's W-2s? Zero if none.
 
 **Help, as stored**
 
@@ -517,19 +517,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none.
+> For this person (you, or your spouse on a joint return) — How much of that Medicaid pay is not in box 1 of a W-2? Zero if none.
 
 Shown on a one-person return:
 
-> How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none.
+> How much of that Medicaid pay is not in box 1 of a W-2? Zero if none.
 
 Shown for you on a couple's return:
 
-> About you — How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none.
+> About you — How much of that Medicaid pay is not in box 1 of a W-2? Zero if none.
 
 Shown for your spouse:
 
-> About your spouse — How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none.
+> About your spouse — How much of that Medicaid pay is not in box 1 of a W-2? Zero if none.
+
+**Help, as stored**
+
+> It may show only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form.
+
+Shown on a one-person return:
+
+> It may show only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form.
+
+Shown for you on a couple's return:
+
+> It may show only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form.
+
+Shown for your spouse:
+
+> It may show only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form.
 
 ## `person.mw_1099`
 
@@ -1159,35 +1175,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?
+> For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials (for the lifetime learning credit, only materials that had to be bought from the school)?
 
 Shown on a one-person return:
 
-> Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?
+> Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials (for the lifetime learning credit, only materials that had to be bought from the school)?
 
 Shown for you on a couple's return:
 
-> About you — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?
+> About you — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials (for the lifetime learning credit, only materials that had to be bought from the school)?
 
 Shown for your spouse:
 
-> About your spouse — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?
+> About your spouse — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials (for the lifetime learning credit, only materials that had to be bought from the school)?
 
 **Help, as stored**
 
-> With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes is outside what this tool prepares and ends the interview here.
+> A term beginning January to March 2026 and paid for in 2025 counts as a 2025 term. With only one such term, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes ends the interview here.
 
 Shown on a one-person return:
 
-> With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes is outside what this tool prepares and ends the interview here.
+> A term beginning January to March 2026 and paid for in 2025 counts as a 2025 term. With only one such term, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes is outside what this tool prepares and ends the interview here.
+> A term beginning January to March 2026 and paid for in 2025 counts as a 2025 term. With only one such term, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes ends the interview here.
 
 Shown for your spouse:
 
-> With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before your spouse files. A Yes is outside what this tool prepares and ends the interview here.
+> A term beginning January to March 2026 and paid for in 2025 counts as a 2025 term. With only one such term, answer by that term alone. Count help and refunds received in 2025 or in 2026 before your spouse files. A Yes ends the interview here.
 
 ## `person.edu_fulltime`
 
@@ -1363,19 +1379,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Answer Yes whether the account is yours or is held for you. A Form 1099-Q or Form 1099-QA sent to you for 2025 means Yes.
+> Answer Yes whether the account is yours or is held for you, and for money put into a Coverdell for 2025 by April 15, 2026. A Form 1099-Q or Form 1099-QA sent to you for 2025 means Yes.
 
 Shown on a one-person return:
 
-> Answer Yes whether the account is yours or is held for you. A Form 1099-Q or Form 1099-QA sent to you for 2025 means Yes.
+> Answer Yes whether the account is yours or is held for you, and for money put into a Coverdell for 2025 by April 15, 2026. A Form 1099-Q or Form 1099-QA sent to you for 2025 means Yes.
 
 Shown for you on a couple's return:
 
-> Answer Yes whether the account is yours or is held for you. A Form 1099-Q or Form 1099-QA sent to you for 2025 means Yes.
+> Answer Yes whether the account is yours or is held for you, and for money put into a Coverdell for 2025 by April 15, 2026. A Form 1099-Q or Form 1099-QA sent to you for 2025 means Yes.
 
 Shown for your spouse:
 
-> Answer Yes whether the account is your spouse's or is held for your spouse. A Form 1099-Q or Form 1099-QA sent to your spouse for 2025 means Yes.
+> Answer Yes whether the account is your spouse's or is held for your spouse, and for money put into a Coverdell for 2025 by April 15, 2026. A Form 1099-Q or Form 1099-QA sent to your spouse for 2025 means Yes.
 
 ## `person.x_edu_taxable`
 
@@ -1397,19 +1413,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Money used for the costs the account is meant for is not taxable. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> Costs also used for an education credit, or paid by a tax-free scholarship, do not count as costs it paid. A Coverdell left at age 30 or at death counts as paid out. A Yes ends the interview here.
 
 Shown on a one-person return:
 
-> Money used for the costs the account is meant for is not taxable. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> Costs also used for an education credit, or paid by a tax-free scholarship, do not count as costs it paid. A Coverdell left at age 30 or at death counts as paid out. A Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> Money used for the costs the account is meant for is not taxable. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> Costs also used for an education credit, or paid by a tax-free scholarship, do not count as costs it paid. A Coverdell left at age 30 or at death counts as paid out. A Yes ends the interview here.
 
 Shown for your spouse:
 
-> Money used for the costs the account is meant for is not taxable. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> Costs also used for an education credit, or paid by a tax-free scholarship, do not count as costs it paid. A Coverdell left at age 30 or at death counts as paid out. A Yes ends the interview here.
 
 ## `person.x_edu_excess`
 
@@ -1519,35 +1535,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did you take less than the required yearly minimum out of a retirement account by its deadline, even if you made up the shortfall later?
+> For this person (you, or your spouse on a joint return) — Did you take less than the required amount out of a retirement account by a 2025 deadline, even if you made up the shortfall later?
 
 Shown on a one-person return:
 
-> Did you take less than the required yearly minimum out of a retirement account by its deadline, even if you made up the shortfall later?
+> Did you take less than the required amount out of a retirement account by a 2025 deadline, even if you made up the shortfall later?
 
 Shown for you on a couple's return:
 
-> About you — Did you take less than the required yearly minimum out of a retirement account by its deadline, even if you made up the shortfall later?
+> About you — Did you take less than the required amount out of a retirement account by a 2025 deadline, even if you made up the shortfall later?
 
 Shown for your spouse:
 
-> About your spouse — Did your spouse take less than the required yearly minimum out of a retirement account by its deadline, even if your spouse made up the shortfall later?
+> About your spouse — Did your spouse take less than the required amount out of a retirement account by a 2025 deadline, even if your spouse made up the shortfall later?
 
 **Help, as stored**
 
-> People aged 73 or older, and people who inherited an account, usually must take a minimum amount out each year. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> This includes a yearly minimum (at 73 or older, or on an inherited account), a first amount due April 1, 2025, and emptying an inherited account by its deadline. A Yes ends the interview here.
 
 Shown on a one-person return:
 
-> People aged 73 or older, and people who inherited an account, usually must take a minimum amount out each year. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> This includes a yearly minimum (at 73 or older, or on an inherited account), a first amount due April 1, 2025, and emptying an inherited account by its deadline. A Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> People aged 73 or older, and people who inherited an account, usually must take a minimum amount out each year. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> This includes a yearly minimum (at 73 or older, or on an inherited account), a first amount due April 1, 2025, and emptying an inherited account by its deadline. A Yes ends the interview here.
 
 Shown for your spouse:
 
-> People aged 73 or older, and people who inherited an account, usually must take a minimum amount out each year. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> This includes a yearly minimum (at 73 or older, or on an inherited account), a first amount due April 1, 2025, and emptying an inherited account by its deadline. A Yes ends the interview here.
 
 ## `$retirement`
 
@@ -1634,6 +1650,22 @@ Shown for you on a couple's return:
 Shown for your spouse:
 
 > About your spouse — In 2025, did your spouse work in a school, from kindergarten through grade 12, as a teacher, instructor, counselor, principal or aide, for at least 900 hours during a school year?
+
+**Help, as stored**
+
+> Count the hours of a whole school year that falls partly in 2025 (2024-25 or 2025-26), not only those in 2025, at all your K-12 schools together.
+
+Shown on a one-person return:
+
+> Count the hours of a whole school year that falls partly in 2025 (2024-25 or 2025-26), not only those in 2025, at all your K-12 schools together.
+
+Shown for you on a couple's return:
+
+> Count the hours of a whole school year that falls partly in 2025 (2024-25 or 2025-26), not only those in 2025, at all your K-12 schools together.
+
+Shown for your spouse:
+
+> Count the hours of a whole school year that falls partly in 2025 (2024-25 or 2025-26), not only those in 2025, at all your spouse's K-12 schools together.
 
 ## `$f8889`
 

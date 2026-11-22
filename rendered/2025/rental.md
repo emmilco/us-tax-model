@@ -2,7 +2,7 @@
 
 - Document: `rental` (form, tax year 2025)
 - Collection: keyed entries; [i1040se] p. 5, Line 1a (2025; sha256 ad71de35)
-- Note: One entry per rental real estate property (Schedule E types 1 to 5). Its expenses are divided by days when it had personal use but was not used as a home; a home rented fewer than 15 days is left out. Its Form 8582 worksheet columns (Parts IV to VIII) are figured here and totalled on Form 8582. Refused: self-rental and other property, average stays of 7 days or less, significant services, less than 10% owned, not for profit, depletion, part of a property the filer lives in, car and travel expenses, a home used personally and rented 15 days or more, a held-back loss from a year without active participation, and a loss with amounts not at risk.
+- Note: One entry per rental real estate property (Schedule E types 1 to 5). Its expenses, other than advertising and commissions, are divided by days when it had personal use but was not used as a home; a home rented fewer than 15 days is left out. Its Form 8582 worksheet columns (Parts IV to VIII) are figured here and totalled on Form 8582. Refused: self-rental and other property, average stays of 7 days or less, significant services, less than 10% owned, not for profit, depletion, part of a property the filer lives in, property held mainly for sale or offered in business hours, car and travel expenses, a home used personally and rented 15 days or more, a held-back loss from a year without active participation, and a loss with amounts not at risk.
 
 ## (helper) — `rental.zero`
 
@@ -64,8 +64,8 @@
 ## 2 — `rental.days_personal`
 
 - **IRS:** Personal use days
-- **Encoded (Count):** Input — How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row.
-- Expr: `{"op":"input","source":"How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row."}`
+- **Encoded (Count):** Input — How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row, or for less if you then sold or traded it.
+- Expr: `{"op":"input","source":"How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row, or for less if you then sold or traded it."}`
 - Cite: [p527] p. 26, What is a day of personal use?; i1040se p. 5, Line 2, "For each property listed on line 1a, report the number of days in the year each property was rented at fair rental value and the number of days of personal use" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.days_overlap`
@@ -80,7 +80,7 @@
 - **Authored helper label:** One day carried as one cent
 - **Encoded (NonNegDollars):** Enter $0.01 (rental.day_cents).
 - Expr: `{"op":"param","ref":"rental.day_cents"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.tenth_cents`
 
@@ -94,49 +94,49 @@
 - **Authored helper label:** Fair rental days (as cents)
 - **Encoded (NonNegDollars):** Multiply helper "One day carried as one cent" by the number on line 2 (rental.days_fair).
 - Expr: `{"amount":"rental.day_cents","count":"rental.days_fair","op":"multiply_count"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.personal_raw`
 
 - **Authored helper label:** Personal use days as answered (as cents)
 - **Encoded (NonNegDollars):** Multiply helper "One day carried as one cent" by the number on line 2 (rental.days_personal).
 - Expr: `{"amount":"rental.day_cents","count":"rental.days_personal","op":"multiply_count"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.personal_c`
 
 - **Authored helper label:** Personal use days (as cents), asked only when there was personal use (none otherwise)
 - **Encoded (NonNegDollars):** Choose — [helper "Any day of personal use in 2025" = true → helper "Personal use days as answered (as cents)"] [helper "Any day of personal use in 2025" = false → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.personal_any",{"const":true}],"op":"test"},"then":"rental.personal_raw"},{"guard":{"eq":["rental.personal_any",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.overlap_raw`
 
 - **Authored helper label:** Overlap days as answered (as cents)
 - **Encoded (NonNegDollars):** Multiply helper "One day carried as one cent" by the number on helper "Days of personal use that were also fair rental days".
 - Expr: `{"amount":"rental.day_cents","count":"rental.days_overlap","op":"multiply_count"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.overlap_c`
 
 - **Authored helper label:** Overlap days (as cents), asked only when there was personal use (none otherwise)
 - **Encoded (NonNegDollars):** Choose — [helper "Any day of personal use in 2025" = true → helper "Overlap days as answered (as cents)"] [helper "Any day of personal use in 2025" = false → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.personal_any",{"const":true}],"op":"test"},"then":"rental.overlap_raw"},{"guard":{"eq":["rental.personal_any",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.use_c`
 
 - **Authored helper label:** Fair rental days plus personal use days, before taking out overlap days (as cents)
 - **Encoded (NonNegDollars):** Add helper "Fair rental days (as cents)" and helper "Personal use days (as cents), asked only when there was personal use (none otherwise)".
 - Expr: `{"of":["rental.fair_c","rental.personal_c"],"op":"sum"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.total_c`
 
 - **Authored helper label:** Total days of use: rental days plus personal use days not also rental days (as cents)
 - **Encoded (NonNegDollars):** Subtract helper "Overlap days (as cents), asked only when there was personal use (none otherwise)" from helper "Fair rental days plus personal use days, before taking out overlap days (as cents)". If zero or less, enter -0-.
 - Expr: `{"from":"rental.use_c","op":"subtract_floor0","take":"rental.overlap_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.home_rent_c`
 
@@ -212,15 +212,15 @@
 ## (helper) — `rental.services`
 
 - **Authored helper label:** Significant services provided to renters (Schedule C)
-- **Encoded (Bool):** Input — Did you provide services for renters, such as cleaning during their stay, changing linen or meals?
-- Expr: `{"op":"input","source":"Did you provide services for renters, such as cleaning during their stay, changing linen or meals?"}`
+- **Encoded (Bool):** Input — Did you, or someone for you, provide services for renters, such as cleaning during their stay, changing linen or meals?
+- Expr: `{"op":"input","source":"Did you, or someone for you, provide services for renters, such as cleaning during their stay, changing linen or meals?"}`
 - Cite: [i1040se] p. 5, Line 3, "If you provided significant services to the renter, such as maid service, report the rental activity on Schedule C" (2025; sha256 ad71de35)
 
 ## (helper) — `rental.under_tenth`
 
 - **Authored helper label:** Less than 10% owned (with the spouse)
-- **Encoded (Bool):** Input — Did you (with your spouse) own less than a tenth of it?
-- Expr: `{"op":"input","source":"Did you (with your spouse) own less than a tenth of it?"}`
+- **Encoded (Bool):** Input — At any time in 2025, did you (with your spouse) own less than a tenth of it, by value?
+- Expr: `{"op":"input","source":"At any time in 2025, did you (with your spouse) own less than a tenth of it, by value?"}`
 - Cite: [i8582] p. 4, Active participation, "in the activity was less than 10% (by value) of all interests in the activity" (2025; sha256 76787e11)
 
 ## (helper) — `rental.not_for_profit`
@@ -239,10 +239,17 @@
 
 ## (helper) — `rental.part_home`
 
-- **Authored helper label:** Part of a property the filer also lives in
-- **Encoded (Bool):** Input — Is it part of a property you also live in, such as a room in your home or one unit of a building you live in?
-- Expr: `{"op":"input","source":"Is it part of a property you also live in, such as a room in your home or one unit of a building you live in?"}`
+- **Authored helper label:** Part of a property the filer also lives in, lived in during 2025, or uses
+- **Encoded (Bool):** Input — Is it part of a property you live in or use yourself, or lived in during 2025, such as a room in your home, one unit of a building you live in, or space in a building that holds your own office?
+- Expr: `{"op":"input","source":"Is it part of a property you live in or use yourself, or lived in during 2025, such as a room in your home, one unit of a building you live in, or space in a building that holds your own office?"}`
 - Cite: [i1040se] p. 6, Renting out part of your home (2025; sha256 ad71de35)
+
+## (helper) — `rental.held_for_sale`
+
+- **Authored helper label:** Held mainly for sale (as an investment or by a real estate dealer), or made available in business hours for nonexclusive use by many customers
+- **Encoded (Bool):** Input — Do you hold it mainly to sell at a gain rather than to rent (as an investment, or for sale to customers as a real estate dealer), or do you make it available during set business hours for use by many customers, such as a parking lot?
+- Expr: `{"op":"input","source":"Do you hold it mainly to sell at a gain rather than to rent (as an investment, or for sale to customers as a real estate dealer), or do you make it available during set business hours for use by many customers, such as a parking lot?"}`
+- Cite: [i8582] p. 3, Exceptions, "The rental of property is incidental to an activity of holding property for investment"; p. 4, "You customarily make the rental property available during defined business hours for nonexclusive use by various customers" (2025; sha256 76787e11)
 
 ## (helper) — `rental.vehicle`
 
@@ -286,20 +293,13 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.has_advertising",{"const":true}],"op":"test"},"then":"rental.amt5"},{"guard":{"eq":["rental.has_advertising",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
 - Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
-## (helper) — `rental.div5`
-
-- **Authored helper label:** Advertising: the rental part (rental days over total days of use)
-- **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Advertising, asked only when ticked (zero otherwise)" by the result.
-- Interpretation: amb.2025.rental_use_ratio_places
-- Expr: `{"amount":"rental.amt5_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
-
 ## 5 — `rental.line5`
 
 - **IRS:** Advertising
-- **Encoded (NonNegDollars):** Choose — [helper "Any day of personal use in 2025" = false → helper "Advertising, asked only when ticked (zero otherwise)"] [helper "Any day of personal use in 2025" = true → helper "Advertising: the rental part (rental days over total days of use)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["rental.personal_any",{"const":false}],"op":"test"},"then":"rental.amt5_if_any"},{"guard":{"eq":["rental.personal_any",{"const":true}],"op":"test"},"then":"rental.div5"}],"op":"choose"}`
-- Cite: [i1040se] p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes" (2025; sha256 ad71de35)
+- **Encoded (NonNegDollars):** Enter the amount from helper "Advertising, asked only when ticked (zero otherwise)".
+- Interpretation: amb.2025.rental_direct_expenses
+- Expr: `{"from":"rental.amt5_if_any","op":"copy"}`
+- Cite: [p527] p. 31, Line 2d, "Enter the total of your rental expenses that are directly related only to the rental activity" and "Also, include rental agency fees, advertising"; p. 29, Worksheet 5-1, line 2e, "Fully deductible rental expenses"; pp. 23-24, Renting Part of Property, "You don't have to divide the expenses that belong only to the rental part of your property" (a cost of the rental activity alone is taken whole, also when the unit had personal use) (2025; sha256 20c826e9)
 
 ## (helper) — `rental.has_cleaning`
 
@@ -328,7 +328,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Cleaning and maintenance, asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt7_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 7 — `rental.line7`
 
@@ -342,57 +342,50 @@
 - **Authored helper label:** Commissions: any
 - **Encoded (Bool):** Input — Commissions
 - Expr: `{"op":"input","source":"Commissions"}`
-- Cite: [i1040se] p. 1, Line 8 (2025; sha256 ad71de35)
+- Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (helper) — `rental.amt8`
 
 - **Authored helper label:** Commissions paid in 2025, before any division for personal use
 - **Encoded (NonNegDollars):** Input — Commissions paid, for example to an agent who found a renter, paid in 2025
 - Expr: `{"op":"input","source":"Commissions paid, for example to an agent who found a renter, paid in 2025"}`
-- Cite: [i1040se] p. 1, Line 8 (2025; sha256 ad71de35)
+- Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt8_if_any`
 
 - **Authored helper label:** Commissions, asked only when ticked (zero otherwise)
 - **Encoded (NonNegDollars):** Choose — [helper "Commissions: any" = true → helper "Commissions paid in 2025, before any division for personal use"] [helper "Commissions: any" = false → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.has_commissions",{"const":true}],"op":"test"},"then":"rental.amt8"},{"guard":{"eq":["rental.has_commissions",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
-- Cite: [i1040se] p. 1, Line 8 (2025; sha256 ad71de35)
-
-## (helper) — `rental.div8`
-
-- **Authored helper label:** Commissions: the rental part (rental days over total days of use)
-- **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Commissions, asked only when ticked (zero otherwise)" by the result.
-- Interpretation: amb.2025.rental_use_ratio_places
-- Expr: `{"amount":"rental.amt8_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## 8 — `rental.line8`
 
 - **IRS:** Commissions
-- **Encoded (NonNegDollars):** Choose — [helper "Any day of personal use in 2025" = false → helper "Commissions, asked only when ticked (zero otherwise)"] [helper "Any day of personal use in 2025" = true → helper "Commissions: the rental part (rental days over total days of use)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["rental.personal_any",{"const":false}],"op":"test"},"then":"rental.amt8_if_any"},{"guard":{"eq":["rental.personal_any",{"const":true}],"op":"test"},"then":"rental.div8"}],"op":"choose"}`
-- Cite: [i1040se] p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes" (2025; sha256 ad71de35)
+- **Encoded (NonNegDollars):** Enter the amount from helper "Commissions, asked only when ticked (zero otherwise)".
+- Interpretation: amb.2025.rental_direct_expenses
+- Expr: `{"from":"rental.amt8_if_any","op":"copy"}`
+- Cite: [p527] p. 31, Line 2d, "Enter the total of your rental expenses that are directly related only to the rental activity" and "Also, include rental agency fees, advertising"; p. 29, Worksheet 5-1, line 2e, "Fully deductible rental expenses"; pp. 23-24, Renting Part of Property, "You don't have to divide the expenses that belong only to the rental part of your property" (a cost of the rental activity alone is taken whole, also when the unit had personal use) (2025; sha256 20c826e9)
 
 ## (helper) — `rental.has_insurance`
 
 - **Authored helper label:** Insurance: any
 - **Encoded (Bool):** Input — Insurance
 - Expr: `{"op":"input","source":"Insurance"}`
-- Cite: [i1040se] p. 10, Line 9 (2025; sha256 ad71de35)
+- Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (helper) — `rental.amt9`
 
-- **Authored helper label:** Insurance paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Insurance on it (the part for 2025), paid in 2025
-- Expr: `{"op":"input","source":"Insurance on it (the part for 2025), paid in 2025"}`
-- Cite: [i1040se] p. 10, Line 9 (2025; sha256 ad71de35)
+- **Authored helper label:** Insurance for 2025 coverage, before any division for personal use
+- **Encoded (NonNegDollars):** Input — Insurance on it for 2025 coverage, paid in 2025 or paid earlier for more than one year (only the part for 2025)
+- Expr: `{"op":"input","source":"Insurance on it for 2025 coverage, paid in 2025 or paid earlier for more than one year (only the part for 2025)"}`
+- Cite: [p527] p. 5, Insurance premiums paid in advance, "For each year of coverage, you can deduct only the part of the premium payment that applies to that year" (2025; sha256 20c826e9)
 
 ## (gate) — `rental.amt9_if_any`
 
 - **Authored helper label:** Insurance, asked only when ticked (zero otherwise)
-- **Encoded (NonNegDollars):** Choose — [helper "Insurance: any" = true → helper "Insurance paid in 2025, before any division for personal use"] [helper "Insurance: any" = false → helper "Zero"]
+- **Encoded (NonNegDollars):** Choose — [helper "Insurance: any" = true → helper "Insurance for 2025 coverage, before any division for personal use"] [helper "Insurance: any" = false → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.has_insurance",{"const":true}],"op":"test"},"then":"rental.amt9"},{"guard":{"eq":["rental.has_insurance",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
-- Cite: [i1040se] p. 10, Line 9 (2025; sha256 ad71de35)
+- Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (helper) — `rental.div9`
 
@@ -400,7 +393,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Insurance, asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt9_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 9 — `rental.line9`
 
@@ -436,7 +429,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Legal and other professional fees, asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt10_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 10 — `rental.line10`
 
@@ -472,7 +465,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Management fees, asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt11_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 11 — `rental.line11`
 
@@ -491,8 +484,8 @@
 ## (helper) — `rental.amt12`
 
 - **Authored helper label:** Mortgage interest paid to banks, etc. paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Mortgage interest on it shown on Form 1098 (box 1), your share, paid in 2025
-- Expr: `{"op":"input","source":"Mortgage interest on it shown on Form 1098 (box 1), your share, paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Mortgage interest on it shown on Form 1098 (box 1), your share, paid in 2025, leaving out interest on any part of the loan spent on something else
+- Expr: `{"op":"input","source":"Mortgage interest on it shown on Form 1098 (box 1), your share, paid in 2025, leaving out interest on any part of the loan spent on something else"}`
 - Cite: [i1040se] p. 6, Lines 12 and 13 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt12_if_any`
@@ -508,7 +501,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Mortgage interest paid to banks, etc., asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt12_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 12 — `rental.line12`
 
@@ -527,8 +520,8 @@
 ## (helper) — `rental.amt13`
 
 - **Authored helper label:** Other interest paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Other interest on loans for it (no Form 1098 in your name), paid in 2025
-- Expr: `{"op":"input","source":"Other interest on loans for it (no Form 1098 in your name), paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Other interest on loans for it (no Form 1098 in your name), paid in 2025 and not for a later year; for points or loan fees, only 2025's share, spread evenly over the loan
+- Expr: `{"op":"input","source":"Other interest on loans for it (no Form 1098 in your name), paid in 2025 and not for a later year; for points or loan fees, only 2025's share, spread evenly over the loan"}`
 - Cite: [i1040se] p. 6, Lines 12 and 13 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt13_if_any`
@@ -544,7 +537,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Other interest, asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt13_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 13 — `rental.line13`
 
@@ -580,7 +573,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Repairs, asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt14_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 14 — `rental.line14`
 
@@ -594,21 +587,21 @@
 - **Authored helper label:** Supplies: any
 - **Encoded (Bool):** Input — Supplies
 - Expr: `{"op":"input","source":"Supplies"}`
-- Cite: [i1040se] p. 11, Line 15 (2025; sha256 ad71de35)
+- Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (helper) — `rental.amt15`
 
 - **Authored helper label:** Supplies paid in 2025, before any division for personal use
 - **Encoded (NonNegDollars):** Input — Supplies, paid in 2025
 - Expr: `{"op":"input","source":"Supplies, paid in 2025"}`
-- Cite: [i1040se] p. 11, Line 15 (2025; sha256 ad71de35)
+- Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt15_if_any`
 
 - **Authored helper label:** Supplies, asked only when ticked (zero otherwise)
 - **Encoded (NonNegDollars):** Choose — [helper "Supplies: any" = true → helper "Supplies paid in 2025, before any division for personal use"] [helper "Supplies: any" = false → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.has_supplies",{"const":true}],"op":"test"},"then":"rental.amt15"},{"guard":{"eq":["rental.has_supplies",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
-- Cite: [i1040se] p. 11, Line 15 (2025; sha256 ad71de35)
+- Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (helper) — `rental.div15`
 
@@ -616,7 +609,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Supplies, asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt15_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 15 — `rental.line15`
 
@@ -652,7 +645,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Taxes, asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt16_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 16 — `rental.line16`
 
@@ -671,8 +664,8 @@
 ## (helper) — `rental.amt17`
 
 - **Authored helper label:** Utilities paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Utilities you paid, paid in 2025
-- Expr: `{"op":"input","source":"Utilities you paid, paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Utilities for it, paid in 2025 by you or by a tenant in place of rent
+- Expr: `{"op":"input","source":"Utilities for it, paid in 2025 by you or by a tenant in place of rent"}`
 - Cite: [i1040se] p. 7, Line 17 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt17_if_any`
@@ -688,7 +681,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Utilities, asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt17_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 17 — `rental.line17`
 
@@ -724,7 +717,7 @@
 - **Encoded (NonNegDollars):** Divide helper "Fair rental days (as cents)" by helper "Total days of use: rental days plus personal use days not also rental days (as cents)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Other, asked only when ticked (zero otherwise)" by the result.
 - Interpretation: amb.2025.rental_use_ratio_places
 - Expr: `{"amount":"rental.amt19_if_any","op":"prorate","part":"rental.fair_c","places":6,"whole":"rental.total_c"}`
-- Cite: [p527] p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose"; p. 26, "Any day that the unit is rented at a fair rental price is a", "The total use of the cottage was 99 days" (2025; sha256 20c826e9)
 
 ## 19 — `rental.line19`
 
@@ -774,6 +767,7 @@
 - **Refusal:** when rental.not_for_profit is true, cannot complete Not rented for profit (Schedule 1, line 8l and Schedule A). Property not rented for profit is reported differently and is outside this tool. Cite: [p527] p. 17, Not Rented for Profit (2025; sha256 20c826e9)
 - **Refusal:** when rental.depletion is true, cannot complete Schedule E, line 18 (depletion). Depletion is outside this tool. Cite: [i1040se] p. 6, Line 18, "Depletion" (2025; sha256 ad71de35)
 - **Refusal:** when rental.part_home is true, cannot complete Schedule E, Part I (rental of part of a property you also live in). Renting out part of a home or building you also live in, such as a room, is outside this tool. Cite: [i1040se] p. 6, Renting out part of your home (2025; sha256 ad71de35)
+- **Refusal:** when rental.held_for_sale is true, cannot complete Form 8582 exceptions, or Schedule C (property held mainly for sale, or offered in business hours to many customers). Property held mainly to sell, as an investment or by a real estate dealer, and property offered during business hours to many customers may not be a rental activity, and are outside this tool. Cite: [i8582] p. 3, Exceptions, "The rental of property is incidental to an activity of holding property for investment"; i1040se p. 6, "Do not use Schedule E to report income and expenses from rentals of real estate you held for sale to customers in the ordinary course of your business as a real estate dealer" (2025; sha256 76787e11)
 - **Refusal:** when rental.vehicle is true, cannot complete Schedule E, line 6 (auto and travel). Car, truck and travel expenses of a rental are outside this tool. Cite: [i1040se] p. 4, Line 6 (2025; sha256 ad71de35)
 - **Refusal:** when rental.ws51 is true, cannot complete Pub. 527, Worksheet 5-1 (dwelling unit used as a home). A home you also lived in or used for more than the greater of 14 days or 10% of the days rented, and rented 15 days or more, is outside this tool. Cite: [p527] p. 28, Used as a home and rented 15 days or more (2025; sha256 20c826e9)
 - Expr: `{"from":"rental.rents","op":"subtract","take":"rental.line20"}`
@@ -810,8 +804,8 @@
 ## (helper) — `rental.prior_any`
 
 - **Authored helper label:** A loss from this rental held back on the 2024 return
-- **Encoded (Bool):** Input — Was a loss from this rental held back (not deducted) on your 2024 return or an earlier one?
-- Expr: `{"op":"input","source":"Was a loss from this rental held back (not deducted) on your 2024 return or an earlier one?"}`
+- **Encoded (Bool):** Input — Was a loss from this rental held back (not deducted) on any of your (or, on a joint return, your spouse's) earlier returns, even a separate one?
+- Expr: `{"op":"input","source":"Was a loss from this rental held back (not deducted) on any of your (or, on a joint return, your spouse's) earlier returns, even a separate one?"}`
 - Cite: [i8582] p. 10, Part IV, "You find these amounts in Part VII, column (c), of your 2024 Form 8582" (2025; sha256 76787e11)
 
 ## (helper) — `rental.prior_amt`
@@ -828,11 +822,25 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.prior_any",{"const":true}],"op":"test"},"then":"rental.prior_amt"},{"guard":{"eq":["rental.prior_any",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
 - Cite: [i8582] p. 10, Part IV, "You find these amounts in Part VII, column (c), of your 2024 Form 8582" (2025; sha256 76787e11)
 
+## (helper) — `rental.prior_ws51`
+
+- **Authored helper label:** Part of the carryover is expenses carried over from a year the filer also used it as a home (Worksheet 5-1)
+- **Encoded (Bool):** Input — Was any of it rental costs carried over from an earlier year when you also used the place as a home (Pub. 527, Worksheet 5-1)?
+- Expr: `{"op":"input","source":"Was any of it rental costs carried over from an earlier year when you also used the place as a home (Pub. 527, Worksheet 5-1)?"}`
+- Cite: [p527] p. 28, "The excess expenses that can’t be used to offset income from other sources are carried forward to the next year and treated as rental expenses for the same property" (2025; sha256 20c826e9)
+
+## (gate) — `rental.prior_ws51_if_any`
+
+- **Authored helper label:** Asked only when a loss or cost was carried over (false otherwise)
+- **Encoded (Bool):** Choose — [helper "A loss from this rental held back on the 2024 return" = true → helper "Part of the carryover is expenses carried over from a year the filer also used it as a home (Worksheet 5-1)"] [helper "A loss from this rental held back on the 2024 return" = false → helper "No (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["rental.prior_any",{"const":true}],"op":"test"},"then":"rental.prior_ws51"},{"guard":{"eq":["rental.prior_any",{"const":false}],"op":"test"},"then":"rental.no"}],"op":"choose"}`
+- Cite: [p527] p. 28, Used as a home and rented 15 days or more (2025; sha256 20c826e9)
+
 ## (helper) — `rental.prior_not_active`
 
 - **Authored helper label:** Part of the held-back loss arose in a year without active participation
-- **Encoded (Bool):** Input — Did any of that held-back loss come from a year when you (or your spouse) did not help make decisions for it?
-- Expr: `{"op":"input","source":"Did any of that held-back loss come from a year when you (or your spouse) did not help make decisions for it?"}`
+- **Encoded (Bool):** Input — Did any of that held-back loss come from a year when neither you nor your spouse helped make its decisions, or when you and your spouse together owned under 10% of it at some time?
+- Expr: `{"op":"input","source":"Did any of that held-back loss come from a year when neither you nor your spouse helped make its decisions, or when you and your spouse together owned under 10% of it at some time?"}`
 - Cite: [i8582] p. 10, Part IV, "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year" (2025; sha256 76787e11)
 
 ## (gate) — `rental.prior_not_active_if_both`
@@ -854,15 +862,16 @@
 - **IRS:** Prior years unallowed loss
 - **Encoded (NonNegDollars):** Choose — [helper "The property is reported on Schedule E (not excluded)" = true → helper "Prior years unallowed loss, asked only when a loss was held back (zero otherwise)"] [helper "The property is reported on Schedule E (not excluded)" = false → helper "Zero"]
 - **Refusal:** when rental.prior_not_active_if_both is true, cannot complete Form 8582, Part IV and Part V (prior-year loss from a year without active participation). A held-back loss from a year in which you did not actively participate is outside this tool. Cite: [i8582] p. 4, Part IV (2025; sha256 76787e11)
+- **Refusal:** when rental.prior_ws51_if_any is true, cannot complete Pub. 527, Worksheet 5-1 (expenses carried over from a year of home use). Rental costs carried over from an earlier year's Worksheet 5-1, when you also used the place as a home, are outside this tool. Cite: [p527] p. 28, "This limitation will apply to expenses carried forward to another year even if you don’t use the property as your home for that subsequent year" (2025; sha256 20c826e9)
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.reported",{"const":true}],"op":"test"},"then":"rental.prior_amt_if_any"},{"guard":{"eq":["rental.reported",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
 - Cite: [i8582] p. 10, Part IV, "You find these amounts in Part VII, column (c), of your 2024 Form 8582" (2025; sha256 76787e11)
 
 ## (gate) — `rental.part4`
 
-- **Authored helper label:** Actively participated: Part IV (otherwise Part V)
-- **Encoded (Bool):** helper "Active participation" = true
-- Expr: `{"eq":["rental.active",{"const":true}],"op":"test"}`
-- Cite: [i8582] p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV" (2025; sha256 76787e11)
+- **Authored helper label:** Actively participated, and not a separate filer who lived with the spouse: Part IV (otherwise Part V)
+- **Encoded (Bool):** helper "Active participation" = true and f8582 helper "Married filing separately, and you lived with your spouse at some time in 2025" = false
+- Expr: `{"all":[{"eq":["rental.active",{"const":true}],"op":"test"},{"eq":["f8582.mfs_together",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i8582] p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV"; p. 10, Part IV, Caution, "Married individuals who file separate returns and lived with their spouses at any time during the tax year don't qualify under the active participation rule and must use Part V instead of Part IV." (2025; sha256 76787e11)
 
 ## (helper) — `rental.loss_sum`
 
@@ -881,7 +890,7 @@
 ## VI (a) — `rental.p6_loss`
 
 - **IRS:** Part VI: overall loss of an activity with active participation
-- **Encoded (NonNegDollars):** Choose — [helper "Actively participated: Part IV (otherwise Part V)" = true → line IV/V (e)] [helper "Actively participated: Part IV (otherwise Part V)" = false → helper "Zero"]
+- **Encoded (NonNegDollars):** Choose — [helper "Actively participated, and not a separate filer who lived with the spouse: Part IV (otherwise Part V)" = true → line IV/V (e)] [helper "Actively participated, and not a separate filer who lived with the spouse: Part IV (otherwise Part V)" = false → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.part4",{"const":true}],"op":"test"},"then":"rental.overall_loss"},{"guard":{"eq":["rental.part4",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
 - Cite: [i8582] p. 12, Part VI, "Enter the overall loss from column (e) of Part IV for each activity" (2025; sha256 76787e11)
 
@@ -936,12 +945,26 @@
 - Expr: `{"amount":"f8582.p7_C","op":"prorate","part":"rental.p7a","places":6,"whole":"f8582.p7_total"}`
 - Cite: [i8582] p. 13, Column (c), "Subtract line B from line A" (2025; sha256 76787e11)
 
-## VIII (c) — `rental.allowed`
+## (helper) — `rental.loss_after_p7`
 
-- **IRS:** Part VIII: loss allowed
+- **Authored helper label:** Loss with prior-year unallowed loss, less the Part VII unallowed loss (the loss line 22 reports)
 - **Encoded (NonNegDollars):** Subtract line VII (c) from helper "Net loss plus prior years unallowed loss". If zero or less, enter -0-.
 - Expr: `{"from":"rental.loss_sum","op":"subtract_floor0","take":"rental.p7c"}`
 - Cite: [i8582] p. 13, Part VIII—Allowed Losses, "Subtract column (b) from column (a)" (2025; sha256 76787e11)
+
+## (helper) — `rental.p7_listed`
+
+- **Authored helper label:** Listed in Part VII: a loss in Part VII column (a)
+- **Encoded (Bool):** line VII (a) > $0
+- Expr: `{"gt":["rental.p7a",{"const":0}],"op":"test"}`
+- Cite: [i8582] p. 12, Part VII, "Complete Part VII if any activities have an overall loss in column (e) of Part V or losses in column (d) of Part VI" (2025; sha256 76787e11)
+
+## VIII (c) — `rental.allowed`
+
+- **IRS:** Part VIII: loss allowed (only for an activity listed in Part VII, a loss in its column (a); zero otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "Listed in Part VII: a loss in Part VII column (a)" = true → helper "Loss with prior-year unallowed loss, less the Part VII unallowed loss (the loss line 22 reports)"] [helper "Listed in Part VII: a loss in Part VII column (a)" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["rental.p7_listed",{"const":true}],"op":"test"},"then":"rental.loss_after_p7"},{"guard":{"eq":["rental.p7_listed",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
+- Cite: [i8582] p. 13, Part VIII—Allowed Losses, "Use Part VIII for any activity listed in Part VII"; p. 12, Part VII, "Complete Part VII if any activities have an overall loss in column (e) of Part V or losses in column (d) of Part VI", so an activity with no loss in Part VII column (a) has no Part VIII entry (2025; sha256 76787e11)
 
 ## VIII (b) — `rental.carryforward`
 
@@ -953,9 +976,9 @@
 ## (helper) — `rental.not_at_risk`
 
 - **Authored helper label:** Some investment not at risk
-- **Encoded (Bool):** Input — Is any of the money you put into it borrowed on a loan you are not personally liable for, other than a loan from a bank or other lender in the business of lending (for example, a loan from the seller)?
-- Expr: `{"op":"input","source":"Is any of the money you put into it borrowed on a loan you are not personally liable for, other than a loan from a bank or other lender in the business of lending (for example, a loan from the seller)?"}`
-- Cite: [i1040se] p. 2, At-Risk Rules (2025; sha256 ad71de35)
+- **Encoded (Bool):** Input — Was any money you put in borrowed without personal liability from anyone but a bank or regular lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it?
+- Expr: `{"op":"input","source":"Was any money you put in borrowed without personal liability from anyone but a bank or regular lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it?"}`
+- Cite: [i1040se] p. 3, At-Risk Rules, "In most cases, you are not at risk for amounts such as the following", and Qualified nonrecourse financing (2025; sha256 ad71de35)
 
 ## (gate) — `rental.not_at_risk_if_loss`
 
@@ -974,9 +997,9 @@
 ## 22 — `rental.line22`
 
 - **IRS:** Deductible rental real estate loss after limitation, if any, on Form 8582
-- **Encoded (Dollars):** Subtract line VIII (c) from helper "Zero".
+- **Encoded (Dollars):** Subtract helper "Loss with prior-year unallowed loss, less the Part VII unallowed loss (the loss line 22 reports)" from helper "Zero".
 - **Refusal:** when rental.not_at_risk_if_loss is true, cannot complete Form 6198 (at-risk limits). A rental loss with an amount not at risk is outside this tool. Cite: [i1040se] p. 2, At-Risk Rules (2025; sha256 ad71de35)
-- Expr: `{"from":"rental.zero","op":"subtract","take":"rental.allowed"}`
+- Expr: `{"from":"rental.zero","op":"subtract","take":"rental.loss_after_p7"}`
 - Cite: [i1040se] p. 8, Line 22 (2025; sha256 ad71de35)
 
 ## (helper) — `rental.dep_prior`

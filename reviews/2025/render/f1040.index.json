@@ -5,8 +5,8 @@
  "base": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
  "head_rows": {
   "lines judged": "65",
-  "match / mismatch / unclear / missing": "61 / 4 / 0 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-15); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "60 / 5 / 0 / 0",
+  "line-scoped reviews": "7 (latest 2026-11-17); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,10 +23,10 @@
   },
   {
    "key": "1a",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
    "status": "MISMATCH",
-   "ruling": "Ruling: finding; medium; the model is right that line 1a adds every W-2 box 1 amount with no carve-out for wages earned while an inmate. i1040gi p. 23, Line 1a: \"If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a.\" Earlier rounds ruled this scope because s1.line8_other refused 8u; lane x2-s1o removed s1.inmate_wages from that refusal and computes line 8u, so nothing now keeps inmate pay shown on a W-2 off line 1a (double count with 8u, or EIC earned income that p596 excludes). The nonqualified deferred compensation / section 457 pension part of the model's reason stays refused (s1.line8_other still names 8t). (BUG-0766)",
-   "subject_key": "7a9ee48ea64f9ab9238614fdc124aa115d6915eefe338802f015ca614641b25b"
+   "ruling": "Ruling: scope; i1040gi pp. 23–24: inmate wages, nonqualified deferred compensation and section 457 amounts are behind the s1.line8_other screen (8t, 8u), and a statutory employee's box 1 is behind the Schedule C refusal. Project stands.",
+   "subject_key": "27f059c9f471319d0748001da19e2470a544b7ed948d7226d3b1291be325ce02"
   },
   {
    "key": "1b",
@@ -67,16 +67,16 @@
   },
   {
    "key": "1z",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the model says line 1z leaves out line 1f. Line 1f (employer-provided adoption benefits, Form 8839 line 31) is refused: scope.adoption_benefits (\"Did an employer pay or repay any of the adoption costs ... Box 12 of a W-2 shows it with the code T\", asked when there was an adoption, scope.adoption_benefits_if_adoption) is a disjunct of scope.other_income, which f1040 refuses on. Line 1f is therefore zero on every computed return and the sum of 1a-1e, 1g and 1h equals \"Add lines 1a through 1h\" (the line's cite says so: \"line 1f, employer-provided adoption benefits, is refused by scope.adoption_benefits\").",
-   "subject_key": "c10a3389859571903a50b9facd19f5d4c9fe82dc38104601f6a5c86ff5813d3f"
+   "ruling": "Ruling: scope; f1040: line 1f adoption benefits are outside the tool (Form 8839 is refused, scope.adoption_benefits); the remaining lines are the ones the tool computes. Project stands.",
+   "subject_key": "04b291483a418613d77d7e65cc12b4733de94c901647712c43d9e86c0c314c02"
   },
   {
    "key": "2a",
-   "record": "c1459c5c68b4683b937c7ce1957f783d73097cac7e93613c6fd7ba195c1347e7",
+   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
    "status": "MATCH",
-   "subject_key": "c9a5a43ab6f3a364270d76f92d8c2e885ea9b25653dbbf54c691e662821174ef"
+   "subject_key": "7d578e91c0d651eccc046afe11ab99f6e1c8a8af903698aa52c25db4656a440f"
   },
   {
    "key": "2b",
@@ -92,9 +92,9 @@
   },
   {
    "key": "3a",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
    "status": "MATCH",
-   "subject_key": "a5bb5e744249efcaf1969c5b9b518611ac84cd332c8aa8d0afbe6e7678661ce5"
+   "subject_key": "6a4268625d70be5a9739c21eb14dbb013455a500b6660a028de86d03a0afaf02"
   },
   {
    "key": "4a",
@@ -158,9 +158,9 @@
   },
   {
    "key": "7a",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
    "status": "MATCH",
-   "subject_key": "cf252494585ed36ef19951fe890c64d6c4eef034bcfd065065d1abc165ae93da"
+   "subject_key": "e249f2f204991ead0df8403da9f499d883469fc83b7d39bd68132855bb976ba0"
   },
   {
    "key": "8",
@@ -200,9 +200,10 @@
   },
   {
    "key": "12e",
-   "record": "6bebe585daf860b5f9e750e2302640e3cc7637f41a1c5aac9ed430c68c1b9778",
-   "status": "MATCH",
-   "subject_key": "99f80bcdc46e96c4e6ac545fb4a94e906cb162740686517665c2a50b5790f704"
+   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi pp. 34–35: the worksheet's lines 6, 8t and 8u are outside the tool (scope.schedule1 refuses them), and a dual-status alien return is refused. Project stands.",
+   "subject_key": "53127771241cb7161fccae244e2ff5c5842f0fafc7229a1b419b3e851e6d5af3"
   },
   {
    "key": "13a",
@@ -218,9 +219,9 @@
   },
   {
    "key": "14",
-   "record": "6bebe585daf860b5f9e750e2302640e3cc7637f41a1c5aac9ed430c68c1b9778",
+   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
    "status": "MATCH",
-   "subject_key": "86561c5fcc04d8e36158057ec9f303536a51466715cf9aa2a9c1e1a834f98617"
+   "subject_key": "2392b806b73434f2ac58a2a884a58daa60c209179d4548d3a5cbe09346bc357b"
   },
   {
    "key": "15",
@@ -230,9 +231,9 @@
   },
   {
    "key": "16",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
    "status": "MATCH",
-   "subject_key": "78cf205c00f3a82e5b1f5ead6bb6551856d2ab5ddc860435e67a31f4d63fb08e"
+   "subject_key": "82d7b0a6f325e58a8b82017a073472ca9f75b84ae2df611a2c6df5a641435544"
   },
   {
    "key": "17",
@@ -407,18 +408,18 @@
  "subjects": {
   "Filing Status": "801fa2ed5458122404d348444fe6a5005e94d94c822fb1b9c35f915b193514b1",
   "Digital Assets": "df9bdaea38e093215a615ebf0590699b5e37c002b8df44e049d4d85958eca19b",
-  "1a": "430487890a7b0f2b6e7cd42660eaa03817f6a02f9d3871cdda406a13e0612808",
+  "1a": "80ecf5d4d109b2cda57e45300775005af27450837ad30ddea7ef561916c3728d",
   "1b": "2728b0bef68d5e6114001eb765ea97623f829134ae81e6da26b50d4cb5515a05",
   "1c": "45e84ebfaefcbba71551fe8560d1fc2a551b0dfaa75f388a15cd280dd65d80d3",
   "1d": "54a29d08832324a43209392cbcf6db61e0fa6cb07e618adeefad817d6443f659",
   "1e": "f11ac36da1c34a2647c8a2d99ccb55dda332b3355f00e2ddd18e457120a40e60",
   "1g": "2345499d47453246a01c68de37bdc0bd62ba8bab8e0f7b5ebc05003d938708f9",
   "1h": "10313f383c5458576ff1abbf90bfc6a7053e9e80f4ff996bd8da8c17774cef29",
-  "1z": "4fe7c340434063a3f1951bac2d6800bc75d416e275ed77799fcc644af40fa3f6",
-  "2a": "e8c9b844784825d9205dd6175cfbfef15afde57b9d07e38db6c3fb86dd643558",
+  "1z": "731a0682acc0cd131bd819a9e4ed4ef6031752c180a4048ce2b855bdb3b260f8",
+  "2a": "cac124b3fc73e77bf1e246709a0620d6a3ee2e46397402db50af84d3ae909487",
   "2b": "48291acb502b02c2e8d526c1ea984748a53248240981b7cfac306b63033cca22",
   "3b": "747eeb072037cc1b34b72900a4247be3c419c015d581dc88da0d831bb8476af7",
-  "3a": "6e3f46c7c8292bb173f0601aef6e345571ad75004482003ff7622a866936784c",
+  "3a": "7d8411340687ae709ceb0bbbfdc9f45b6a07103e6b7cd310b47712282a553b5d",
   "4a": "05a3932cddc2a2f29c0d72e13ac268505324c3950c79f791aa31f8d54bbeeace",
   "4b": "56e420c34717b46f375797c738aef59393c202a9e02d59404e83eb8f0ec60318",
   "4c": "57c369639ec75e445e5ec501d1c30c3c6a0527a4256e616578db15459895b089",
@@ -429,19 +430,19 @@
   "6b": "2cfe44440e5bb1af343272aa6c6e2101d02fb705630feb24f0ce2ab80a6a49cf",
   "6c": "39f3fa35ea53da9a3950ed1e0d318dfbf500019d3c18ff0a7288dff2bacef715",
   "6d": "9796eed4c9fa5787a64f033cfaaff1457d413f2e449525f53150b2d9873f85ae",
-  "7a": "46425acd5b253489c42e114295f17912766612cca9746e7232989ebbf9933e1d",
+  "7a": "0d66d2dac105404d9ccc0a87cd6cc1890d895d64a56d675b3953d768ff90c497",
   "8": "a42edcad6b686d6a14fc6fe265fcd8d634b143446c75ca4bde2c0bcec8c02a3a",
   "9": "ae6119935dc43602719f142cc0698b3fe8821beef465e8438012705c58ca3031",
   "10": "4530ea57e270b30dbeb7901b5515647693a7231b8435745678fd61e01501f9a8",
   "11a": "064e972a2617f2fc888fe2d32b56ceaef22b560bd8e8a239578aec3f4f800b5c",
   "11b": "7df116c5e90d3201485de113ebc2dab1b5231717df077133b325ece94ff93004",
   "12b": "6a583c52a7a4fd228c16a0381ec99669568d5b94dbee99eef75ac17540393f6b",
-  "12e": "e429b529772ebf1700ced37a4445b0ac712fc8261776f616025c18862b3a5316",
+  "12e": "20edadb30cd18cd8f2c66f2f587fd42d514de57a5eeb181cadce20a35d5ebf02",
   "13a": "dfe2b5904c4bf25e025191f62d204a2a0ea19e7b88c01e4ee78678c56b769883",
   "13b": "aaffecdd8735a76d4cdbabda6a1050129779c26b30681ef982fd627ad92fa861",
-  "14": "e624b92fb1e9a00ccb2a03a63c5d375eb46cfe1afbcb6630959d60e47c3bbaa7",
+  "14": "ab0b86be179cfb44644fc9db1a56d7ba700c6ba14341ac25537a30c02f44faef",
   "15": "cb08046dd4d0a337ee8620eecf5270a8412a96a89ad8462c6a762bc6c546ec54",
-  "16": "daa590e0215ca848d95a76113cb30e3a3dd9dce669b46fc6715088f2cf6846f4",
+  "16": "d824b4ae65a9dd1a487f826852ae985d574323b2ea87ee48ca92d20a1db5d683",
   "17": "28ea233a6bb93db2d5371ed426827b429860b05eb3ef8ceb5ca08f871edfc37d",
   "18": "8eb51b0b9ea4c3d13d6bfb4d05fedc53d6cbc0d13c450f90c3314e0ee431bbea",
   "19": "2acec0fabe27c85c4a2078c2b853eed218c07d0213990e32254404612600ba6a",

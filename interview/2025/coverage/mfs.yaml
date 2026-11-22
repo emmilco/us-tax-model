@@ -15,6 +15,7 @@ sets:
       f1040.status: mfs
       household.married_dec31: true
       household.community_property: false
+      household.spouse_cp_domicile: false
       sa.spouse_itemizes: false
       sa.spouse_extra: false
 rows:
@@ -49,6 +50,7 @@ rows:
       household.married_dec31: false
       household.spouse_died_this_year: true
       household.community_property: false
+      household.spouse_cp_domicile: false
       sa.spouse_itemizes: false
       sa.spouse_extra: false
     expect:
@@ -82,7 +84,7 @@ rows:
     answers:
       ssb.any: true
       ssb.benefits: 2000000
-      f1040.tax_exempt_interest: 0
+      f1040.tax_exempt_any: false
       ssb.repaid_more: false
       ssb.ira_covered: false
       ssb.prior_year_pay: false
@@ -92,3 +94,26 @@ rows:
       proceeds:
         f1040.status: mfs
         household.mfs_living: apart_all_year
+  - id: mfs.spouse_cp_domicile
+    design: lane A1-jr, candidate 1 (the husband or wife has a permanent home in a community property state)
+    situation: A married person in Ohio filing apart from their husband or wife, whose husband or wife's permanent home is
+      California, is stopped at the question on the husband or wife's state.
+    answers:
+      $person: [taxpayer]
+      f1040.status: mfs
+      household.married_dec31: true
+      household.community_property: false
+      household.spouse_cp_domicile: true
+    expect:
+      refused: household.mfs_community_property
+  - id: mfs.spouse_cp_domicile_asked
+    design: lane A1-jr, candidate 1 (the question on the husband or wife's state follows a No at once)
+    situation: A married person filing apart, who did not live or have a permanent home in a community property state, is
+      next asked about the husband or wife's state.
+    answers:
+      $person: [taxpayer]
+      f1040.status: mfs
+      household.married_dec31: true
+      household.community_property: false
+    expect:
+      asks: household.spouse_cp_domicile

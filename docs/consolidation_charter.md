@@ -78,16 +78,18 @@ means the form is stable and only small changes or year updates happen.
 | Render review | whole form | changed lines only, and only when the wording changed | About $70 per bug on stable forms |
 | Class M (cases) | yes | when the form's arithmetic changes | Found nothing in the ledger window |
 | Completeness, screen and false-no reviews | yes | a fixed sample per form per milestone, its union ruled once. A milestone is a release; one sample per subject (owner, 2026-11-10). `tools/release_reviews.sh` enforces it | $2 to $3 per bug. Completeness behaves like a random sample, so rerunning on every edit only pulls in old low findings. Calibration (2026-11-10): four more samples on each of five stable forms found no real gap the first sample had missed |
-| Second family (DeepSeek, GPT) | inactive | inactive | 1 bug in 1,488 rulings. Owner, 2026-11-09: Claude-only reviews; machinery kept dormant |
+| Second family (DeepSeek, GPT) | superseded | superseded | 1 bug in 1,488 rulings. Owner, 2026-11-09: Claude-only reviews; machinery kept dormant. **Superseded 2026-11-17 (T-347):** reviews are tiered in `families.json` — a current log from any qualified family (`claude`, `deepseek`) satisfies a form, an advisory family (`gpt`) reviews only beside one, and `callable` decides only whose model may be called. Claude is not callable while it is off the project; its current logs stand |
 | Human reading | optional | optional | Validation policy, 10-24 |
 
 Budget: the $3.00 owner gate in `rerun_all.py` stays. There is no monthly budget for now: the gate and the
 once-per-round rule bound the spend. Revisit after one month of ledger data at maintenance rates.
 
-**The second family is inactive (owner, 2026-11-09).** No DeepSeek or GPT review runs. Its machinery is
-disabled, not deleted: an `active` flag in `families.json`, skipped by `rerun_all.py` unless overridden with a recorded
-reason, and treated as history by `check_logs.py`. `compare_families.py` and the transport code stay dormant, with
-their self-tests, so reactivating a family is a flag change.
+**The second family is inactive (owner, 2026-11-09). Superseded 2026-11-17 (T-347):** the owner replaced
+"Claude-only" with a tiered list — a list of qualified models, any one of which is sufficient as a reviewer, and
+a list of advisory models usable only beside one. `families.json` now carries `qualified`, `advisory` and
+`callable`; a family that is not callable keeps its logs and their standing, and its model is skipped by
+`rerun_all.py` unless overridden with a recorded reason. `compare_families.py` and the transport code stay
+live, with their self-tests.
 
 ## 5. Process rules and their enforcement
 

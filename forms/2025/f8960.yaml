@@ -101,6 +101,61 @@ form:
       cite:
         doc: f8960
         locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.joint_noncitizen
+      printed: (helper)
+      type: Bool
+      label: A joint return on which you or your spouse was not a U.S. citizen at some time in 2025
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f1040.status
+              - const: mfj
+          - op: test
+            eq:
+              - scope.noncitizen
+              - const: true
+      cite:
+        doc: i8960
+        locator: p. 3, "If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax
+          purposes, but don’t elect to apply the joint return election for NIIT purposes"
+    - id: f8960.election_6013g
+      printed: (helper)
+      type: Bool
+      gated_by: f8960.election_6013g_if_joint
+      label: Joint return made by choosing to treat a nonresident or dual-status spouse as a U.S. resident (section 6013(g)
+        or 6013(h))
+      expr:
+        op: input
+        source: Did you and your spouse choose to be treated as U.S. residents for 2025 so that you could file jointly, because
+          one of you was a nonresident alien for some or all of the year (a section 6013(g) or 6013(h) election)?
+      cite:
+        doc: i8960
+        locator: p. 7, Line 1, "If you’re making the section 6013(g) or 6013(h) election (see Election To File Jointly With
+          Nonresident Spouse—Section 6013(g) or 6013(h), earlier), check the corresponding checkbox"
+    - id: f8960.election_6013g_if_joint
+      printed: (gate)
+      type: Bool
+      label: Asked only on a joint return with a noncitizen (false otherwise)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f8960.joint_noncitizen
+                - const: true
+            then: f8960.election_6013g
+          - guard:
+              op: test
+              eq:
+                - f8960.joint_noncitizen
+                - const: false
+            then: f8960.no
+      cite:
+        doc: i8960
+        locator: p. 7, Line 1, "check the corresponding checkbox"
     - id: f8960.allocated_taxes
       printed: (helper)
       type: NonNegDollars
@@ -149,6 +204,16 @@ form:
             doc: i8960
             locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
               worksheet
+        - when: f8960.election_6013g_if_joint
+          form: Form 8960, line 1 checkboxes (section 6013(g) or 6013(h) election)
+          remedy: A joint return made by choosing to treat a nonresident spouse as a U.S. resident needs a further choice for
+            the net investment income tax (to apply that election to it, or to figure it as if filing separately); this is
+            outside this tool.
+          cite:
+            doc: i8960
+            locator: p. 3, "If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax
+              purposes, but don’t elect to apply the joint return election for NIIT purposes, then, for NIIT purposes, you’ll
+              be treated under the default method as married filing separately"
     - id: f8960.line2
       printed: "2"
       type: NonNegDollars

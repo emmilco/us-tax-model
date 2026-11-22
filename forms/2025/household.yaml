@@ -669,17 +669,97 @@ form:
     - id: household.community_property
       printed: (helper)
       type: Bool
-      label: Did you live in a community property state at any time in 2025?
+      label: Did you live in, or have your permanent home (domicile) in, a community property state at any time in 2025?
       expr:
         op: input
-        source: Did you live in a community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico,
-          Texas, Washington or Wisconsin) at any time in 2025?
+        source: Did you live in, or have your permanent home (domicile) in, a community property state (Arizona, California,
+          Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or Wisconsin) at any time in 2025?
       cite:
         doc: i1040gi
-        locator: 'p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin"'
+        locator: 'p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin"; p555 p. 2, Domicile, "The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both"; p555 p. 3, Domicile, "you intend to use for an indefinite or unlimited period, and to which, when absent, you intend to return" and "When this publication refers to where you live, it means your domicile."'
+    - id: household.spouse_cp_domicile
+      printed: (helper)
+      type: Bool
+      gated_by: household.spouse_cp_domicile_if_asked
+      label: At some time in 2025 while married, the husband or wife lived in, or had a permanent home (domicile) in, a
+        community property state
+      expr:
+        op: input
+        source: At any time in 2025 while you were married, did your husband or wife live in, or have their permanent home
+          (domicile) in, a community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas,
+          Washington or Wisconsin)? (Asked when you are not filing jointly, a marriage is possible, and you did not live
+          or have your permanent home in one of those states yourself.)
+      cite:
+        doc: p555
+        locator: 'p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both"; p. 6, Military retirement pay, "Active military pay earned while married and domiciled in a community property state is also community income"'
+    - id: household.ask_spouse_cp_domicile
+      printed: (helper)
+      label: A marriage is possible and the filing status is not qualifying surviving spouse
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - household.marriage_possible
+          - const: true
+        - op: test
+          ne:
+          - f1040.status
+          - const: qss
+      cite:
+        doc: p555
+        locator: 'p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both"'
+    - id: household.spouse_cp_domicile_if_asked
+      printed: (helper)
+      label: 'The husband or wife lived in, or had a permanent home in, a community property state in 2025, asked only where a
+        marriage is possible and the filing status is not qualifying surviving spouse (false otherwise)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.ask_spouse_cp_domicile
+            - const: true
+          then: household.spouse_cp_domicile
+        - guard:
+            op: test
+            eq:
+            - household.ask_spouse_cp_domicile
+            - const: false
+          then: household.no
+      cite:
+        doc: p555
+        locator: 'p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both"'
+    - id: household.cp_any
+      printed: (helper)
+      label: 'You lived in, or had your permanent home in, a community property state in 2025, or (asked when you did not)
+        your husband or wife did'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.community_property
+            - const: true
+          then: household.community_property
+        - guard:
+            op: test
+            eq:
+            - household.community_property
+            - const: false
+          then: household.spouse_cp_domicile_if_asked
+      cite:
+        doc: p555
+        locator: 'p. 2, Domicile, "The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both. If you and your spouse (or your RDP) have different domiciles, check the laws of each"'
     - id: household.hoh_cp_married
       printed: (helper)
-      label: 'Filing as head of household: married at the end of 2025, and lived in a community property state'
+      label: 'Filing as head of household: married at the end of 2025, and you or your husband or wife lived in, or had a
+        permanent home in, a community property state'
       type: Bool
       expr:
         op: choose
@@ -689,7 +769,7 @@ form:
             eq:
             - household.married
             - const: true
-          then: household.community_property
+          then: household.cp_any
         - guard:
             op: test
             eq:
@@ -1145,8 +1225,9 @@ form:
             locator: p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
         - when: household.hoh_community_property
           form: Community income on a married head of household return in a community property state (Form 8958; Pub. 555)
-          remedy: A married person filing as head of household who lived in a community property state may have to report
-            community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
+          remedy: A married person filing as head of household, where either spouse lived in or had a permanent home in a
+            community property state, may have to report community income under state law; Form 8958 and the community
+            property rules of Pub. 555 are outside this tool.
           cite:
             doc: i1040gi
             locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555"'
@@ -1425,13 +1506,14 @@ form:
       printed: (helper)
       type: Bool
       gated_by: household.cp_married_if_ever_married
-      label: Married at any time in 2025 while living in a community property state, though not married at the end of 2025
+      label: Married at any time in 2025 while living in, or having your permanent home in, a community property state,
+        though not married at the end of 2025
       expr:
         op: input
-        source: Were you married at any time during 2025, before a divorce or legal separation, while you lived in a
-          community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or
-          Wisconsin)? (Asked when you lived in a community property state in 2025, are not filing jointly and were not
-          married at the end of 2025.)
+        source: Were you married at any time during 2025, before a divorce or legal separation, while you lived in, or had
+          your permanent home (domicile) in, a community property state (Arizona, California, Idaho, Louisiana, Nevada,
+          New Mexico, Texas, Washington or Wisconsin)? (Asked when you lived in, or had your permanent home in, a
+          community property state in 2025, are not filing jointly and were not married at the end of 2025.)
       cite:
         doc: i1040gi
         locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."'
@@ -1682,10 +1764,11 @@ form:
         source: 'Married filing separately: did you live with your spouse at any time in 2025? together_late if you lived
           together at some time from July 1 through December 31, 2025; apart_last6 if you lived together only before
           July 1, 2025; apart_all_year if you did not live together at any time in 2025. A temporary absence for special
-          circumstances, such as business, medical care, school or military service, counts as time lived together.'
+          circumstances, such as business, medical care, school or military service, counts as time lived together, and
+          so does time you shared a home while separated.'
       cite:
         doc: i1040gi
-        locator: 'p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025"; p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"'
+        locator: 'p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025"; p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"; p501 p. 8, Considered Unmarried, "Your spouse didn''t live in your home during the last 6 months of the tax year"'
       ambiguity: amb.2025.mfs_lived_apart
     - id: household.mfs_living_else
       printed: (helper)
@@ -1755,7 +1838,8 @@ form:
     - id: household.mfs_community_property
       printed: (gate)
       type: Bool
-      label: Married filing separately, and you lived in a community property state at some time in 2025
+      label: Married filing separately, and you or your husband or wife lived in, or had a permanent home in, a community
+        property state at some time in 2025
       expr:
         op: choose
         alternatives:
@@ -1776,7 +1860,7 @@ form:
             eq:
             - f1040.status
             - const: mfs
-          then: household.community_property
+          then: household.cp_any
         - guard:
             op: test
             eq:

@@ -8,7 +8,7 @@
    "key": "2",
    "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
    "status": "MISMATCH",
-   "ruling": "Ruling: open"
+   "ruling": "Ruling: scope; f1040sse p. 2: Schedule K-1 box 14 code A is refused (scope.k1); the line reads this person's Schedule C results. Project stands."
   },
   {
    "key": "8a",
@@ -19,7 +19,7 @@
    "key": "3",
    "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
    "status": "MISMATCH",
-   "ruling": "Ruling: open"
+   "ruling": "Ruling: scope; f1040sse: Schedule K-1 box 14 code A is refused (scope.k1); the line reads Schedule C. Project stands."
   },
   {
    "key": "4a",
@@ -30,7 +30,7 @@
    "key": "4b",
    "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
    "status": "MISMATCH",
-   "ruling": "Ruling: open"
+   "ruling": "Ruling: scope; f1040sse: the optional methods are refused; the line is zero. Project stands."
   },
   {
    "key": "4c",
@@ -41,7 +41,7 @@
    "key": "5b",
    "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
    "status": "MISMATCH",
-   "ruling": "Ruling: open"
+   "ruling": "Ruling: scope; f1040sse: line 5a is zero on the supported path (optional methods refused); the line is zero. Project stands."
   },
   {
    "key": "6",
@@ -57,7 +57,7 @@
    "key": "8d",
    "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
    "status": "MISMATCH",
-   "ruling": "Ruling: open"
+   "ruling": "Ruling: scope; f1040sse: lines 8b and 8c are outside the tool; the line reads line 8a. Project stands."
   },
   {
    "key": "9",

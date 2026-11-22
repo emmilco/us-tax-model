@@ -2455,6 +2455,7 @@
         "dependent[dep_b].eic_ssn": null,
         "dependent[dep_c].us_half": null,
         "dependent[dep_c].eic_ssn": null,
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": null,
         "div.box12": null,
         "eic.qc_of_another": null,

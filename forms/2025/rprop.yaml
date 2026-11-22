@@ -68,30 +68,195 @@ form:
     cite:
       doc: i1040se
       locator: p. 6, Line 18
+  - id: rprop.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: p946
+      locator: p. 16, Qualified improvement property
+  - id: rprop.new_nonres
+    printed: (gate)
+    label: Nonresidential real property placed in service after 2017, which may be qualified improvement property
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - rprop.kind
+        - const: nonresidential
+      - op: test
+        le:
+        - rprop.recovery_year
+        - const: 8
+          type: Count
+    cite:
+      doc: p946
+      locator: p. 31, Qualified improvement property, "placed in service by you after 2017 and after the date the building
+        was first placed in service by any person"
+  - id: rprop.qip
+    printed: (screen)
+    label: Qualified improvement property (an improvement to an interior portion of a building that is nonresidential real
+      property, placed in service after the building was first placed in service; not an enlargement, an elevator or
+      escalator, or the internal structural framework)
+    type: Bool
+    gated_by: rprop.qip_if_new_nonres
+    expr:
+      op: input
+      source: Is it an improvement to the inside of the building, made after the building was first placed in service by
+        anyone, and not an enlargement, an elevator or escalator, or the internal structural framework?
+    cite:
+      doc: p946
+      locator: p. 16, Qualified improvement property; p. 31, Qualified improvement property
+  - id: rprop.qip_if_new_nonres
+    printed: (gate)
+    label: Qualified improvement property, asked only of nonresidential real property placed in service after 2017 (false
+      otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rprop.new_nonres
+          - const: true
+        then: rprop.qip
+      - guard:
+          op: test
+          eq:
+          - rprop.new_nonres
+          - const: false
+        then: rprop.no
+    cite:
+      doc: i4562
+      locator: p. 10, 15-year property, "Qualified improvement property, as defined in section 168(e)(6), placed in service
+        by you after December 31, 2017"
+  - id: rprop.disposed
+    printed: (screen)
+    label: Retired from service in 2025 (sold or exchanged, converted to personal use, abandoned or destroyed)
+    type: Bool
+    expr:
+      op: input
+      source: In 2025, was it sold, traded, given away, destroyed or torn out, or did you stop renting it for good?
+    cite:
+      doc: p527
+      locator: p. 9, Retired From Service; p946 p. 40, "If you dispose of property before the end of its recovery period"
+  - id: rprop.fast
+    printed: (screen)
+    label: A special depreciation allowance or section 179 deduction claimed, or depreciated by a method other than straight
+      line over 27.5 or 39 years
+    type: Bool
+    expr:
+      op: input
+      source: Did you deduct any cost in one year (bonus depreciation or section 179), or depreciate it other than straight
+        line over 27.5 or 39 years?
+    cite:
+      doc: p527
+      locator: p. 12, Decreases to basis, "Special depreciation allowance or a section 179 deduction claimed on qualified
+        property"; i4562 p. 11, Column (f)—Method
+  - id: rprop.ads
+    printed: (screen)
+    label: Depreciated under the alternative depreciation system (ADS), elected or required
+    type: Bool
+    expr:
+      op: input
+      source: Do you depreciate it over 30 or 40 years (the alternative depreciation system, ADS), by choice or because you
+        must?
+    cite:
+      doc: p527
+      locator: p. 12, Depreciation Systems, "You must use GDS unless you are specifically required by law to use ADS or you
+        elect to use ADS"; i4562 p. 13, Line 20c, Residential rental property
+  - id: rprop.basis_changed
+    printed: (screen)
+    label: Basis adjusted after it was placed in service for anything other than depreciation or an improvement depreciated
+      as a separate item (for example a casualty loss or an easement)
+    type: Bool
+    expr:
+      op: input
+      source: Since renting began, has anything but depreciation changed its cost for tax purposes, like a casualty loss or
+        easement payment?
+    cite:
+      doc: p946
+      locator: p. 37, Rules Covering the Use of the Tables, rule 4; p527 p. 12, Decreases to basis
+  - id: rprop.credit
+    printed: (screen)
+    label: Basis reduced by a credit or deduction (for example the disabled access credit, the deduction for removal of
+      barriers to the disabled and the elderly, or the section 179D deduction)
+    type: Bool
+    expr:
+      op: input
+      source: Did you take a credit or special deduction for part of its cost, like for disabled access or barrier removal?
+    cite:
+      doc: i4562
+      locator: p. 11, Column (c)—Basis for depreciation, "The following are examples of some credits and deductions that
+        reduce the basis for depreciation"
+  - id: rprop.coop
+    printed: (screen)
+    label: Stock in a cooperative housing corporation
+    type: Bool
+    expr:
+      op: input
+      source: Is it stock in a cooperative housing corporation (a co-op apartment you rent out)?
+    cite:
+      doc: p527
+      locator: p. 8, Cooperative apartments
+  - id: rprop.exchanged
+    printed: (screen)
+    label: Acquired in a like-kind exchange or an involuntary conversion (carryover basis)
+    type: Bool
+    expr:
+      op: input
+      source: Did you get it in a trade for other property (a like-kind exchange), or to replace property that was destroyed,
+        stolen or taken by a government (an involuntary conversion)?
+    cite:
+      doc: i4562
+      locator: p. 9, "Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange
+        or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged
+        or involuntarily converted"
   - id: rprop.screen
     printed: (helper)
     label: Depreciation of this property outside the tables this tool uses
     type: Bool
     expr:
-      op: input
-      source: 'Does any of these apply to it?
-
-
-        - you depreciate it over a longer period (the alternative depreciation system), or chose to
-
-        - its basis changed after you began depreciating it, other than by depreciation (for example, a casualty loss)
-
-        - you sold, gave away or stopped renting it in 2025
-
-        - it is stock in a cooperative housing corporation
-
-        - you deducted any of its cost in one year (a special allowance or section 179) or depreciate it another way
-
-        - it is an improvement to the inside of a nonresidential building, made after the building was first placed in service
-        and placed in service in 2018 or later (not an enlargement, an elevator or escalator, or the internal structural framework)
-
-        - you took a credit or deduction for part of its cost (for example the disabled access credit or the deduction for
-        removing barriers)'
+      op: test
+      any:
+      - op: test
+        eq:
+        - rprop.disposed
+        - const: true
+      - op: test
+        eq:
+        - rprop.fast
+        - const: true
+      - op: test
+        eq:
+        - rprop.ads
+        - const: true
+      - op: test
+        eq:
+        - rprop.basis_changed
+        - const: true
+      - op: test
+        eq:
+        - rprop.credit
+        - const: true
+      - op: test
+        eq:
+        - rprop.coop
+        - const: true
+      - op: test
+        eq:
+        - rprop.exchanged
+        - const: true
+      - op: test
+        eq:
+        - rprop.qip_if_new_nonres
+        - const: true
     cite:
       doc: i4562
       locator: p. 11, Column (f)—Method
@@ -174,7 +339,8 @@ form:
     - when: rprop.screen
       form: Form 4562 (real property outside the mid-month tables)
       remedy: Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property
-        with a credit or deduction for part of its cost, or cooperative stock is outside this tool.
+        with a credit or deduction for part of its cost, cooperative stock, or property received in a like-kind exchange or
+        an involuntary conversion is outside this tool.
       cite:
         doc: i4562
         locator: p. 11, Column (f)—Method

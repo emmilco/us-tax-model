@@ -349,7 +349,7 @@ def split_ruling(text):
 
 
 _SECTION = {
-    "transcription": re.compile(r"^Status: \*\*(?:DISAGREE|MISSING)\*\*\n\nProject:\n\n```json\n(.*?)\n```\n\nSecond:\n\n```json\n(.*?)\n```(?:\n\nSecond transcription's note: [^\n]*)?\n\n(Ruling: [^\n]*)", re.S),
+    "transcription": re.compile(r"^Status: \*\*(?:DISAGREE|MISSING)\*\*\n\nProject:\n\n```json\n(.*?)\n```\n\nSecond:\n\n```json\n(.*?)\n```.*?\n(Ruling: [^\n]*)", re.S),
     "render": re.compile(r"^Status: \*\*(?:MISMATCH|UNCLEAR|MISSING)\*\*\n\nRestated: (.*?)\n\nModel: (.*?)\n\n(Ruling: [^\n]*)", re.S),
     "classm": re.compile(r"^Status: \*\*(?:DISAGREE|MISSING)\*\*\n\nProject: ([^\n]*)\nModel: ([^\n]*)\n(?:Work: [^\n]*\n)?\n(Ruling: [^\n]*)"),
 }

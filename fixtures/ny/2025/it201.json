@@ -2087,6 +2087,7 @@
         "dependent[parent].supported": true,
         "dependent[parent].parent_home_paid": true,
         "ny_it201.ask.city_resident": true,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "eic.died_this_year": null,
         "eic.us_home": null,
@@ -2148,6 +2149,7 @@
         "dependent[parent].supported": true,
         "dependent[parent].parent_home_paid": true,
         "ny_it201.ask.city_resident": true,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "eic.died_this_year": null,
         "eic.us_home": null,
@@ -2209,6 +2211,7 @@
         "dependent[parent].supported": true,
         "dependent[parent].parent_home_paid": true,
         "ny_it201.ask.city_resident": true,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "eic.died_this_year": null,
         "eic.us_home": null,
@@ -10450,6 +10453,7 @@
         "dependent[parent].supported": true,
         "dependent[parent].parent_home_paid": true,
         "ny_it201.ask.city_resident": true,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "eic.died_this_year": null,
         "eic.us_home": null,
@@ -10511,6 +10515,7 @@
         "dependent[parent].supported": true,
         "dependent[parent].parent_home_paid": true,
         "ny_it201.ask.city_resident": true,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "eic.died_this_year": null,
         "eic.us_home": null,
@@ -11012,7 +11017,7 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.owes_use_tax": true,
+        "ny_it201.ask.bought_untaxed": true,
         "ny_it201.ask.prior_full_year": true,
         "$ny_it2": [
           "w0"
@@ -11177,7 +11182,7 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.owes_use_tax": true,
+        "ny_it201.ask.bought_untaxed": true,
         "ny_it201.ask.prior_full_year": true,
         "$ny_it2": [
           "w0"
@@ -11342,7 +11347,7 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.owes_use_tax": true,
+        "ny_it201.ask.bought_untaxed": true,
         "ny_it201.ask.prior_full_year": true,
         "$ny_it2": [
           "w0"
@@ -11507,7 +11512,7 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.owes_use_tax": true,
+        "ny_it201.ask.bought_untaxed": true,
         "ny_it201.ask.prior_full_year": true,
         "$ny_it2": [
           "w0"
@@ -12454,10 +12459,59 @@
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
         "ny_it201.ask.out_of_state_bond_interest": true,
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": 50000
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: the screen's Yes refuses: line 20 is not computed (B4). The New York answers make ny_it201.gate.line20 true, so ny_it201.line20 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
+      "expect": {
+        "ny_it201.line20": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.line20",
+          "form": "Form IT-201 line 20 (addition for other states' bond interest)",
+          "remedy": "This addition is not computed by this tool (decision B4).",
+          "cite": {
+            "doc": "ny_it201i",
+            "locator": "p. 7, Line 20, \"enter any such interest income that you received or that was credited to you during 2025 that was not included in your federal adjusted gross income\"",
+            "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+            "snapshot": "29489d6eed7529bc1388e57a5bf0814e6e6d94d02288c5c83a377d21e3773f72",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ny.refuse.line20_premium",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3800000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 3800000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 3800000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.out_of_state_bond_interest": true,
+        "f1040.tax_exempt_any": true,
+        "f1040.tax_exempt_interest": 0
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Refusal predicted from the source: line 20 adds the gross interest of other states' bonds, and bond premium amortization is not an offset (IT-201-I p. 7, Line 20). Premium equal to the coupon leaves federal line 2a at 0, but the federal Yes to tax-exempt interest opens ny_it201.gate.line20, so the Yes refuses at line 20 as in ny.refuse.line20.",
       "expect": {
         "ny_it201.line20": {
           "kind": "refusal",
@@ -13372,7 +13426,7 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.owes_use_tax": true,
+        "ny_it201.ask.bought_untaxed": true,
         "ny_it201.ask.use_tax_st141": true,
         "$ny_it2": [
           "w0"
@@ -16576,7 +16630,7 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.owes_use_tax": true,
+        "ny_it201.ask.bought_untaxed": true,
         "ny_it201.ask.abode_part_year": true,
         "$ny_it2": [
           "w0"
@@ -16991,6 +17045,126 @@
       }
     },
     {
+      "id": "ny.gate.pension_disability_wages",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3800000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 3800000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 3800000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "ny_it201.ask.city_resident": true,
+        "$ny_it2": [
+          "w0"
+        ],
+        "ny_it2[w0].state_withheld": 300000,
+        "ny_it2[w0].city_withheld": 200000,
+        "$retirement@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].retirement[r].account": "plan",
+        "person[taxpayer].retirement[r].code": "disability_3",
+        "person[taxpayer].retirement[r].box1": 1800000,
+        "person[taxpayer].retirement[r].disability": true,
+        "person[taxpayer].retirement[r].dis_early": true,
+        "person[taxpayer].retirement[r].dis_all_early": true,
+        "ny_it201.ask.gov_pension": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Gate regression, predicted from the source: a Form 1099-R disability pension of $18,000 paid wholly before the minimum retirement age is wages on federal line 1h (person.dis_wages), so IT-201 lines 9 and 10 are $0; the pension is still included in federal adjusted gross income, so the line 26 question is asked (ny_it201.gov_pension_candidate) and its Yes refuses line 26 at ny_it201.gate.line26 (IT-201-I p. 9, Line 26).",
+      "expect": {
+        "ny_it201.line26": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.line26",
+          "form": "Form IT-201 line 26",
+          "remedy": "This subtraction is not computed by this tool (decision B4).",
+          "cite": {
+            "doc": "ny_it201i",
+            "locator": "p. 9, Line 26, \"enter the amount of any pension you received\"",
+            "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+            "snapshot": "29489d6eed7529bc1388e57a5bf0814e6e6d94d02288c5c83a377d21e3773f72",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ny.gate.pension_disability_wages_not_gov",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3800000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 3800000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 3800000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "ny_it201.ask.city_resident": true,
+        "$ny_it2": [
+          "w0"
+        ],
+        "ny_it2[w0].state_withheld": 300000,
+        "ny_it2[w0].city_withheld": 200000,
+        "$retirement@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].retirement[r].account": "plan",
+        "person[taxpayer].retirement[r].code": "disability_3",
+        "person[taxpayer].retirement[r].box1": 1800000,
+        "person[taxpayer].retirement[r].disability": true,
+        "person[taxpayer].retirement[r].dis_early": true,
+        "person[taxpayer].retirement[r].dis_all_early": true,
+        "ny_it201.ask.gov_pension": false,
+        "ny_it201.ask.gov_pension_other": false
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Gate regression, predicted from the source: the same $18,000 disability pension in wages (federal line 1h), with No to both government pension questions, so line 26 is $0 and nothing refuses; lines 9 and 10 stay $0, so the line 29 pension exclusion is not reached and line 29 is $0. Federal adjusted gross income is the two W-2s ($38,000 and $40,000) plus the pension: $96,000, which is line 33 with no New York additions or subtractions.",
+      "expect": {
+        "ny_it201.line26": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line29": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line33": {
+          "kind": "money",
+          "cents": 9600000
+        }
+      }
+    },
+    {
       "id": "ny.gate.penalty_line79",
       "covers": [
         "ny_it201"
@@ -17072,6 +17246,109 @@
         "ny_it201.line34": {
           "kind": "money",
           "cents": 310000
+        }
+      }
+    },
+    {
+      "id": "mf.ny.use_tax_dmv_only",
+      "covers": [
+        "ny_it201"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. Inputs of ny.use_tax.single.40000, but the only purchase made without New York tax was a car whose tax is paid to the DMV when it is registered. IT-201-I p. 18, Line 59: \"You may not use this line to report ... any unpaid sales and use tax on motor vehicles ... This tax is paid directly to the Department of Motor Vehicles\"; with nothing else owed, p. 19: enter 0 on line 59.",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 800000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 800000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 800000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.bought_untaxed": true,
+        "ny_it201.ask.prior_full_year": true,
+        "$ny_it2": [
+          "w0"
+        ],
+        "ny_it201.ask.use_tax_dmv_only": true
+      },
+      "expect": {
+        "ny_it201.line59": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mf.ny.disability_wages_mta_pension",
+      "covers": [
+        "ny_it201"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. Inputs of ny.gate.pension_disability_wages (a 1099-R disability pension of $18,000 paid wholly before the minimum retirement age, wages on federal line 1h, so IT-201 lines 9 and 10 are $0), but the pension is from the MTA rather than a New York State or local or federal plan: No to the first government pension question, Yes to the second. IT-201-I p. 9, Line 26 counts such pensions; this tool does not compute the subtraction, so line 26 refuses at gate.line26 (decision B4).",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3800000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 3800000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 3800000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "ny_it201.ask.city_resident": true,
+        "$ny_it2": [
+          "w0"
+        ],
+        "ny_it2[w0].state_withheld": 300000,
+        "ny_it2[w0].city_withheld": 200000,
+        "$retirement@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].retirement[r].account": "plan",
+        "person[taxpayer].retirement[r].code": "disability_3",
+        "person[taxpayer].retirement[r].box1": 1800000,
+        "person[taxpayer].retirement[r].disability": true,
+        "person[taxpayer].retirement[r].dis_early": true,
+        "person[taxpayer].retirement[r].dis_all_early": true,
+        "ny_it201.ask.gov_pension": false,
+        "ny_it201.ask.gov_pension_other": true
+      },
+      "expect": {
+        "ny_it201.line26": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.line26",
+          "form": "Form IT-201 line 26",
+          "remedy": "This subtraction is not computed by this tool (decision B4).",
+          "cite": {
+            "doc": "ny_it201i",
+            "locator": "p. 9, Line 26, \"enter the amount of any pension you received\"",
+            "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+            "snapshot": "29489d6eed7529bc1388e57a5bf0814e6e6d94d02288c5c83a377d21e3773f72",
+            "tax_year": 2025
+          }
         }
       }
     }

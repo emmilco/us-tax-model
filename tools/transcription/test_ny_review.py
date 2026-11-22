@@ -122,9 +122,9 @@ class NewYorkMode(unittest.TestCase):
         # Federal helper lines the encoding reads, which no source text can name: review evidence.
         self.assertEqual(got["ny_it201"]["missing"], ["dependent:dependent.claimed", "dependent:dependent.one",
                                                       "dependent:dependent.under_ctc_age", "eic:eic.limit",
-                                                      "f1040:f1040.line4a", "f1040:f1040.line5a",
+                                                      "f1040:f1040.line4a", "f1040:f1040.line5a", "f1040:f1040.tax_exempt_any",
                                                       "f2441:f2441.benefits", "f2441:f2441.care", "f8863:f8863.paid",
-                                                      "person:person.birth_year", "person:person.ira_taxable", "person:person.one",
+                                                      "person:person.birth_year", "person:person.dis_wages", "person:person.ira_taxable", "person:person.one",
                                                       "person:person.plan_taxable", "person:person.sc_count",
                                                       "person:person.sc_total", "person:person.x_edu_account", "s1:s1.has_sc",
                                                       "sa:sa.dependent", "scope:scope.armed_forces", "scope:scope.has_w2"])
@@ -335,7 +335,7 @@ class PendingReviews(unittest.TestCase):
         short = {**everything, "render": [d for d in NY_DOCS if d != "ny_it2"]}
         bad = self.check_logs(short)
         self.assertEqual(bad.returncode, 1)
-        self.assertIn("render logs [claude]: 0/6 forms logged; missing: ny_it2", bad.stdout)
+        self.assertIn("render logs: 0/6 forms satisfied; unsatisfied: ny_it2", bad.stdout)
 
     def test_reviewed_but_still_listed_fails(self):
         got = run_ny("import json, tempfile, pathlib, check_completeness as K\n"

@@ -137,6 +137,45 @@
   },
   {
    "printed": "28 (i)",
+   "project_expr_sha256": "bcafeda467a4ec41627972675e0b6323a3681634f81c716b1a263e4afe8fd190",
+   "second_expr_sha256": "1fb201f3a3c3a27e5eaccdf70b5a997fee5c75b1dc7c0af7b74946eb90d1b161",
+   "ruling": "Ruling: scope; i1065sk1 p. 14, Box 1. Ordinary Business Income (Loss), \"Report box 1 income (loss) from partnership trade or business activities in which you materially participated in column (i) or (k)\". On completed returns every difference is an entry the project refuses on k1p.screened (or withholds an input for) and the candidate computes; no value stands against the project. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 761 of 1519 comparisons agree, 761 of 1111 in scope; completed {\"candidate-refuses\": 82, \"candidate-unknown\": 162, \"project-unknown\": 11}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "db2ab6f7671b629d22005f5883b71a88430739833d91675f500b1774fbcf4571",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.1@person[taxpayer].k1p[llc]",
+     "fixture:classm.k1p.2@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.4@person[taxpayer].k1p[llc]",
+     "fixture:classm.k1p.5@person[taxpayer].k1p[llc]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_ptp@person[taxpayer].k1p[mlp]",
+     "fixture:x2k1p.refuse_box10@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_multi@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_disposed@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_basis@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_at_risk@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.gains_withholding-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].general@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].work@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].most_hours@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "28 (i)",
    "project_expr_sha256": "dc670b8d9b8a02106b1a1a1a302c0ea5d53e41ae9487de0dceb1f63b590e9160",
    "second_expr_sha256": "f636905f5cbaca3358d27bafcaf0137c847bd3b53d4db1be8962f51c18103ad3",
    "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 428/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 70 candidate-refuses, 23 candidate-unknown, 2 project-unknown. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
@@ -210,6 +249,84 @@
    }
   },
   {
+   "printed": "28 (k)",
+   "project_expr_sha256": "d9dddd0d5e4fcf92f9d5389abdbd1c59fb21ade46e73f5ab6513902891c3efe5",
+   "second_expr_sha256": "9587dc46227357a751fe6e44208d614e4d547772aea06c7f6d49d08ddbb64902",
+   "ruling": "Ruling: scope; i1065sk1 p. 14, Box 1. Ordinary Business Income (Loss), \"Report box 1 income (loss) from partnership trade or business activities in which you materially participated in column (i) or (k)\". On completed returns every difference is an entry the project refuses on k1p.screened (or withholds an input for) and the candidate computes; no value stands against the project. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 673 of 1519 comparisons agree, 673 of 1113 in scope; completed {\"candidate-refuses\": 82, \"candidate-unknown\": 154, \"project-unknown\": 11, \"value\": 3}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "795a3c100c366b87ae595d57e49ed44661d62f20fe32978fda8aa71acc232cdc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.1@person[taxpayer].k1p[llc]",
+     "fixture:classm.k1p.2@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.4@person[taxpayer].k1p[llc]",
+     "fixture:classm.k1p.5@person[taxpayer].k1p[llc]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_ptp@person[taxpayer].k1p[mlp]",
+     "fixture:x2k1p.refuse_box10@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_multi@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_disposed@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_test4@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.refuse_former_passive@person[taxpayer].k1p[llc]",
+     "fixture:mk1.k1p.refuse_box4b@person[taxpayer].k1p[fund]",
+     "fixture:mk1.k1p.refuse_box7@person[taxpayer].k1p[fund]",
+     "fixture:mk1.k1p.refuse_test6@person[taxpayer].k1p[fund]",
+     "fixture:mk1.k1p.refuse_test7@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.retired_test6_refuses@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.gains_withholding-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].general@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].work@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].most_hours@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV (a)",
+   "project_expr_sha256": "e62af676cd26518e716dd83d85163d683e23d5a18753f574cf9ff109dc47bfe5",
+   "second_expr_sha256": "a20ccbc43ec64202f8fde9de8bf85ba974552a7a79463ece4da98c0756ad0ac5",
+   "ruling": "Ruling: scope; i8582 p. 10, Part IV, \"Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1482 of 1519 comparisons agree, 1482 of 1519 in scope; completed {\"candidate-unknown\": 27, \"project-unknown\": 6}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "da8af203bc880ccdb0e3fdfc7ceb41dfeb0301a643745e0e2c9c15bab68fbd01",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.2@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.9-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.9-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.9-person[taxpayer].k1p[fund].decisions@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_test4-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:mk1.k1p.refuse_test7-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "IV (a)",
    "project_expr_sha256": "e62af676cd26518e716dd83d85163d683e23d5a18753f574cf9ff109dc47bfe5",
    "second_expr_sha256": "d4bae0b720fcdb4f79b967212098cdfabc400ccaea9c4b24219669ee0c3423d1",
@@ -231,6 +348,38 @@
      "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
      "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
      "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV (b)",
+   "project_expr_sha256": "a73b06d4de627422cca730a933d83d64d917242a9109f50af5d589b0f1dd6f04",
+   "second_expr_sha256": "24c424fed812085816029c828c6dd4c0d3c7c65125237ffbfdb77ff897b8d449",
+   "ruling": "Ruling: scope; i8582 p. 10, Part IV, \"Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1480 of 1519 comparisons agree, 1480 of 1519 in scope; completed {\"candidate-unknown\": 29, \"project-unknown\": 6}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "d6813edc3f4348849f5962ac5a37478f22d05ef4d9197ad6bd03beab9c513714",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.2@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.9-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.9-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.9-person[taxpayer].k1p[fund].decisions@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_test4-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:mk1.k1p.refuse_test7-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -291,6 +440,40 @@
      "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
      "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].box1@person[taxpayer].k1p[fund]",
      "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV (c)",
+   "project_expr_sha256": "81b07fdd3caa8bb1ad8458049711b9c11cb831e9e3de0e9a4407ae7aa6053e44",
+   "second_expr_sha256": "8298124635535f7236ca038d44f0fad757021efd6aa6cd1a845ac2549b74e10e",
+   "ruling": "Ruling: scope; i8582 p. 10, Part IV, \"Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1480 of 1519 comparisons agree, 1480 of 1519 in scope; completed {\"candidate-unknown\": 27, \"project-unknown\": 7}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "bc156f12e25ecf59d31fc4a6f0aa6eab674f14799fe13cd544c7966ec694308e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.2@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_prior_not_active@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.9-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.9-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.9-person[taxpayer].k1p[fund].decisions@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_test4-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -380,6 +563,47 @@
    }
   },
   {
+   "printed": "V (a) (k1p.b1_net_income)",
+   "project_expr_sha256": "de24990a75cabe44c25501fcd2e149787d8ddc11f97f2b73cbe8f66ef8565c3a",
+   "second_expr_sha256": "80a00ab8e4b7ecfd833296a68fbae66f036723eee2f9d6e8338251c09639fef5",
+   "ruling": "Ruling: scope; None. On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1327 of 1519 comparisons agree, 1327 of 1519 in scope; completed {\"candidate-hides-shown\": 1, \"candidate-unknown\": 11, \"project-unknown\": 16}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "b95b9d564c4506eb8bb1c87442a2b11d8c9f4047d6b7d0186470833c54741f40",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.7@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.8@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_test4@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.refuse_former_passive@person[taxpayer].k1p[llc]",
+     "fixture:mk1.k1p.refuse_test6@person[taxpayer].k1p[fund]",
+     "fixture:mk1.k1p.refuse_test7@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.retired_test6_refuses@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].general@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].work@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_test4-person[taxpayer].k1p[llc].ptp@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "V (a) (k1p.b3_net_income)",
    "project_expr_sha256": "a4014577aee77f957614c73b906ec6c312b68877a317225781083fa52ecdb1b2",
    "second_expr_sha256": "3295531c961bda82a845ac36899b57a42f73862dd365702d4f8e66a53c42060c",
@@ -431,6 +655,88 @@
      "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
      "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
      "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (a) (k1p.p5_income)",
+   "project_expr_sha256": "a502b7d34a5cc295d2c67153f05c2c23f1f72988792054296ea35c1f5f921d03",
+   "second_expr_sha256": "f28fdd58ed2ffe7c7f8d816c0088ae66c3ebb05b3385cf03b23fd12d6ba1cfa3",
+   "ruling": "Ruling: scope; . On completed returns every difference is an entry the project refuses on k1p.screened (or withholds an input for) and the candidate computes; no value stands against the project. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1135 of 1519 comparisons agree, 1135 of 1441 in scope; completed {\"candidate-hides-shown\": 3, \"candidate-refuses\": 78, \"candidate-unknown\": 59, \"project-unknown\": 16}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "3d24895095a30883977f59ddc851a7f2cf8fd87313bd13f7aa23e7a2c97a50b1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.2@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.7@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.8@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.9@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_test4@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.refuse_former_passive@person[taxpayer].k1p[llc]",
+     "fixture:mk1.k1p.refuse_test6@person[taxpayer].k1p[fund]",
+     "fixture:mk1.k1p.refuse_test7@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.retired_test6_refuses@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_upe@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_interest_buy@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_basis_carry@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_risk_carry@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_fuel_2024@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_dwelling_box3@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].general@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].work@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_basis_carry-person[taxpayer].k1p[fund].box1@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (b) (k1p.b1_net_loss)",
+   "project_expr_sha256": "25564cb8a0e0f4a1dafcbc6e29bf26c1c2e17c03f40aa5cf808c1995929bcaff",
+   "second_expr_sha256": "fc77d102ae9f369ede8ee98ac17abc7f1fa6303709d1a2c43195741ce9cd8d6b",
+   "ruling": "Ruling: scope; None. On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1470 of 1519 comparisons agree, 1470 of 1518 in scope; completed {\"candidate-unknown\": 11, \"project-unknown\": 16}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "7aea8d2320ae3f2f9555e1f020c912f6aaa360b805feafd258962fafbb7ec02a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.7@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.8@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_basis@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].general@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].work@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -494,6 +800,45 @@
   {
    "printed": "V (b) (k1p.p5_loss)",
    "project_expr_sha256": "e7ee94a6de2a5c3f334d4d89600a3307381778c01817780c37ab3235a8b2f88b",
+   "second_expr_sha256": "a12d74a1e6499c09bd0787b55f14a48e318ada2dae92726f13ae20dd39b67a3f",
+   "ruling": "Ruling: scope; . On completed returns every difference is an entry the project refuses on k1p.screened (or withholds an input for) and the candidate computes; no value stands against the project. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1269 of 1519 comparisons agree, 1269 of 1439 in scope; completed {\"candidate-refuses\": 78, \"candidate-unknown\": 61, \"project-unknown\": 16}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "5109ae3c3e4c122409f27bf17649a66401d756da56b64ff52aba5dfe203dcf61",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.2@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.7@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.8@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.9@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_basis@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_at_risk@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_upe@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_interest_buy@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_basis_carry@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_risk_carry@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].general@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].work@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (b) (k1p.p5_loss)",
+   "project_expr_sha256": "e7ee94a6de2a5c3f334d4d89600a3307381778c01817780c37ab3235a8b2f88b",
    "second_expr_sha256": "f6414189e8cc53352f4016b802d7ddd7ddfcc24ba4116a01b21430dd77214151",
    "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 438/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 65 candidate-refuses, 17 candidate-unknown, 3 project-unknown. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
    "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
@@ -523,6 +868,47 @@
      "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]",
      "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]",
      "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (c)",
+   "project_expr_sha256": "64e8b9d9aed7c33f40ec87c6269d6d253bb715b4dfd4b40c6f329169f00ab871",
+   "second_expr_sha256": "90fa341fedbdde2494fc8575921b2ccd88cab94e6adbed6148994c2042acbfdf",
+   "ruling": "Ruling: scope; i8582 p. 9, Part V, \"Use Part V for all other passive activities\". On completed returns every difference is an entry the project refuses on k1p.screened (or withholds an input for) and the candidate computes; no value stands against the project. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1273 of 1519 comparisons agree, 1273 of 1441 in scope; completed {\"candidate-refuses\": 78, \"candidate-unknown\": 71, \"project-unknown\": 9}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "a183fafbf3e77046742f9d7d665774b9ad8f9a91b683303f23212d33b470a993",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.2@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.7@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.8@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.9@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_prior_not_active@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_upe@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_interest_buy@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_basis_carry@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_risk_carry@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_fuel_2024@person[taxpayer].k1p[fund]",
+     "partial:classm.k1p.1-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:classm.k1p.5-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.test5_five_of_ten-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_test4-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_basis_carry-person[taxpayer].k1p[fund].box1@person[taxpayer].k1p[fund]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -562,6 +948,45 @@
      "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
      "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].box1@person[taxpayer].k1p[fund]",
      "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VI (a)",
+   "project_expr_sha256": "2a43b4b217a8392c55b4e61e3a5d6d7a7b48406c1490b0db6891753a7ab58c85",
+   "second_expr_sha256": "236124792e1d87a09809233ab97a1a3788d073989a8966ae2655fa3df0444687",
+   "ruling": "Ruling: scope; i8582 p. 12, Part VI, \"Enter the overall loss from column (e) of Part IV for each activity\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1396 of 1519 comparisons agree, 1396 of 1519 in scope; completed {\"candidate-hides-shown\": 74, \"candidate-unknown\": 36, \"project-unknown\": 9}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "6ef11fab52941184da5bb0bcfea7b47d7751e3242ac4abd2a80353f80dd0b286",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1p.1@person[taxpayer].k1p[llc]",
+     "fixture:classm.k1p.2@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.3@person[taxpayer].k1p[fund]",
+     "fixture:classm.k1p.4@person[taxpayer].k1p[llc]",
+     "fixture:classm.k1p.5@person[taxpayer].k1p[llc]",
+     "fixture:classm.k1p.6@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3b_general_active@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.prior_box2_active@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].decisions@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].tenth@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].box1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -866,6 +1291,45 @@
      "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
      "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b14a@person[taxpayer].k1p[llc]",
      "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].box14a@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1p.screened",
+   "project_expr_sha256": "8514593afc86b029ddc172da57d286d63b0f769b6abfed8c63f7cc368e848875",
+   "second_expr_sha256": "bc5a6823eb8e72832bbb87d26776ea3f742017356ebdc2244e505d64c9128c57",
+   "ruling": "Ruling: model error; i1065sk1 p. 14, Codes, \"report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E\". The reply still defines the inverse of the line (true where the K-1 has items the tool does not support), false on every supported K-1. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 311 of 1519 comparisons agree, 311 of 1003 in scope; completed {\"project-refuses\": 55, \"project-unknown\": 101, \"value\": 290}. Project stands.",
+   "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",
+   "date": "2026-11-17",
+   "run": "0351fad2e798c739a833af06615c2677e4381a591f41ddc93312ed298374a771",
+   "subject_key": "2c9c2a7325cbfa7401ae9e775c6fff72c8dc0a90224be605b757d57fae99a391",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.fk2_general_material@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.fk3_limited_rental_loss@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3b_general_active@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3c_general_under_tenth@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3d_rental_income_active@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk7_portfolio_only@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_ptp@person[taxpayer].k1p[mlp]",
+     "fixture:x2k1p.refuse_box10@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_multi@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_disposed@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_dist_over@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].has_b14a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].has_b20z@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3b_general_active-person[taxpayer].k1p[fund].has_b19@person[taxpayer].k1p[fund]"
     ],
     "policy": "executable-triage-v2"
    }

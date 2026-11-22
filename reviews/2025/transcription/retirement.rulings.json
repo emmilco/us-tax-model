@@ -664,6 +664,52 @@
   {
    "printed": "retirement.amount_a",
    "project_expr_sha256": "b349d27c4a2a099d87fa371c2b0b8ae6888a2458914a8b51d49967bca043b663",
+   "second_expr_sha256": "a5b089c4ca82f6c84661d286604b88bfc3f42213bf4af83a27bec80382e0e1c0",
+   "ruling": "Ruling: model error; i1040gi pp. 27-30, lines 4a and 5a. The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 2679 of 3834 comparisons agree, 2616 of 3448 in scope; completed {\"candidate-refuses\": 5, \"candidate-unknown\": 115}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "4738c020530f54c9347807e0166f442150871f1118a1ef3bb8eb1f8f5f7ab0dd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.s2.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.f8880.3.deepseek@person[taxpayer].retirement[p]",
+     "fixture:classm.dependent.5.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.dcprov.1@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8606.1@person[taxpayer].retirement[r1]",
+     "fixture:stage10.ira.roth_code_unanswered@person[taxpayer].retirement[r]",
+     "fixture:stage10.plan.direct_rollover@person[taxpayer].retirement[p]",
+     "fixture:stage10.smw.cost_recovered@person[taxpayer].retirement[p]",
+     "fixture:stage10.smw.recovered_exceeds_cost@person[taxpayer].retirement[p]",
+     "fixture:stage10.smw.cost_recovered_box5@person[taxpayer].retirement[p]",
+     "fixture:mutation.m1.retirement.direct_rollover_put_back@person[taxpayer].retirement[p]",
+     "fixture:stage21.t067.smw_hidden_cost_recovered@person[taxpayer].retirement[p]",
+     "generated:20261026.0@person[taxpayer].retirement[r1]",
+     "generated:20261026.8@person[taxpayer].retirement[r1]",
+     "generated:20261026.31@person[taxpayer].retirement[r2]",
+     "generated:20261026.70@person[taxpayer].retirement[r1]",
+     "generated:20261026.90@person[taxpayer].retirement[r1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.amount_a",
+   "project_expr_sha256": "b349d27c4a2a099d87fa371c2b0b8ae6888a2458914a8b51d49967bca043b663",
    "second_expr_sha256": "e1fb3f49ab38862ae2dcff79e7d52b327982cd4bb3e60cd3adead0680d23934b",
    "ruling": "Ruling: model error; executable triage 2,314/3,506 agree; 862 candidate-unknown, 175 project-refuses, 73 value, 57 project-unknown, 25 candidate-refuses (completed: 6 value). The reply leaves line 4a/5a blank for a code G direct rollover (stage10.plan.direct_rollover project $20,000, reply $0; classm.carloan.1 $40,040; classm.clcw.3 $4,054), against i1040gi Lines 5a and 5b, Rollovers: 'Enter on line 5a the distribution from Form 1099-R, box 1'; and fills it for stage10.smw.recovered_exceeds_cost (project $0, reply $12,000), whose cost was recovered before 2025, against i1040gi Fully Taxable Pensions and Annuities: 'Your payments are fully taxable if ... (b) you got your entire cost back tax free before 2025 ... enter the total pension or annuity payments (from Form(s) 1099-R, box 1) on line 5b; don't make an entry on line 5a'.",
    "context": "b6a8f34a1aa5c72807e2513d7f84a289d873cc08be186f0533c06c0b2e5b707b",
@@ -1140,6 +1186,52 @@
    }
   },
   {
+   "printed": "retirement.has_rollover",
+   "project_expr_sha256": "79a0982bc280dc6ea46946eadc0b9502a1321d8910b152fc770e8995696d1826",
+   "second_expr_sha256": "cca13f73a8b9b100f0e2a5302fbc1a8138095549677c9a1a98bb4944236fa814",
+   "ruling": "Ruling: model error; i1040gi p. 30, Rollovers: \"Use lines 5a and 5b to report a rollover, including a direct rollover, from one qualified employer’s plan to another or to an IRA. ... Also check box 1 on line 5c.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 2588 of 3834 comparisons agree, 2588 of 3508 in scope; completed {\"candidate-unknown\": 33, \"value\": 40}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "550372283988316b1ceed29779607930b58b1a1475045296f06469ac36d02af2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f1040.3.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.s8812.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f5695.7.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.aqee.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.eic.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.eic.6.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.retirement.3.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.dependent.5.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.1.gpt@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.3.gpt@person[taxpayer].retirement[r1]",
+     "fixture:classm.dcprov.1@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8606.1@person[taxpayer].retirement[r1]",
+     "fixture:classm.retirement.1@person[taxpayer].retirement[p]",
+     "fixture:classm.retirement.2@person[taxpayer].retirement[p]",
+     "fixture:stage10.ira.roth_code_unanswered@person[taxpayer].retirement[r]",
+     "generated:20261026.0@person[taxpayer].retirement[r2]",
+     "generated:20261026.8@person[taxpayer].retirement[r2]",
+     "generated:20261026.11@person[taxpayer].retirement[r1]",
+     "generated:20261026.13@person[taxpayer].retirement[r1]",
+     "generated:20261026.15@person[taxpayer].retirement[r1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "retirement.is_e23",
    "project_expr_sha256": "dfd0567ea9f6de8045346f473896766378013201083068ff3070633280e80ed2",
    "second_expr_sha256": "26c90ad2dfb568849c34c2575d42d063c669a2bdfd51e99b7a7e5e906ac26be4",
@@ -1361,6 +1453,47 @@
   {
    "printed": "retirement.l1",
    "project_expr_sha256": "e0306c0261132c1616aba1e9c0d4c79fa549c1e12e666767e1bf219342bbd5b6",
+   "second_expr_sha256": "56bba237264d78fdb5bbe95aedfe7055417b0732ef0c83d9cb0c5480093f7ef9",
+   "ruling": "Ruling: representation; i5329 p. 3, Line 1, \"Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:\". The candidate reads roth_moved directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3548 of 3834 comparisons agree, 3502 of 3781 in scope; completed {\"candidate-unknown\": 61}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "caf3015f86aefa6c3cbd1cfb5fca68d2d17c674bfd0d526ef6336a40dce41486",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.s2.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.retirement.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f5329.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f5329.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f5329.3.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.sa.5.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:stage21.refuse.bad_code_screen_unasked@person[taxpayer].retirement[a]",
+     "partial:stage21.example.teacher_education-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[b].rollover_any@person[taxpayer].retirement[b]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[c].rollover_any@person[taxpayer].retirement[c]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[d].rollover_any@person[taxpayer].retirement[d]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[d].disability@person[taxpayer].retirement[d]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].account@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].charity_hsa@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].ira_returned@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].ira_basis@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].disaster@person[taxpayer].retirement[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l1",
+   "project_expr_sha256": "e0306c0261132c1616aba1e9c0d4c79fa549c1e12e666767e1bf219342bbd5b6",
    "second_expr_sha256": "8d5b20b45e46a5efb2370da0d7c08b4a309b54928d7ccaca53f4c44b7a1f3c5a",
    "ruling": "Ruling: representation; the candidate reads retirement.early_screen, under59, code2_partial, not_beneficiary and sec457 raw; each is asked only with its code (early_screen with codes 1 and S, the others with codes 2, 4 and 7), so it is unknown on completed returns whose code does not ask them (classm.f1040.3 r1, stage10.ira.partial_rollover). It also computes line 1 for a code 2, 4 or 7 entry that does not fit, which the project refuses (code_screen); the one value difference is on a refused return. i5329 p. 3, Line 1. Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,558 of 3,671 agree; on completed returns: 88 candidate-unknown.",
    "context": "442be10aabb4512fab8d94de8d446b9f6b3d55fde1f6a8647d51198b7ce858f4",
@@ -1458,6 +1591,35 @@
      "partial:classm.f5329.2-person[taxpayer].retirement[r1].rollover@person[taxpayer].retirement[r1]",
      "partial:classm.f5329.2-person[taxpayer].retirement[r1].annuity@person[taxpayer].retirement[r1]",
      "partial:classm.f5329.2-person[taxpayer].retirement[r1].cost@person[taxpayer].retirement[r1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l1_s",
+   "project_expr_sha256": "16d7edfdecd05a3caa7d7d20b1b16a74a450b95ba2e6a03ba2bb008c262ce569",
+   "second_expr_sha256": "5fda151b8d83aa756aed133c4aa00572c9bf2fe98da93a06c48c4b7db712b477",
+   "ruling": "Ruling: representation; i5329 p. 5, Line 4, \"If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%.\". The candidate reads rollover, rollover_property, rollover_qdro, roth_moved directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3823 of 3834 comparisons agree, 3823 of 3833 in scope; completed {}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "245558789895b96900393e64200a6dda69f149206783b2c1ace83361114f791a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f5329.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f5329.2@person[taxpayer].retirement[r1]",
+     "fixture:stage21.refuse.bad_code_screen_unasked@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].rollover@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].roth_moved@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].rollover_property@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].rollover_qdro@person[taxpayer].retirement[a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1861,6 +2023,54 @@
   {
    "printed": "retirement.l2",
    "project_expr_sha256": "99e00ff1d54012f13ee36758af8945cf156e47645990b996aabf63ef32a6375b",
+   "second_expr_sha256": "6cdfe520d57a26a3488416a0cc0914c06f5668315952e8930f5ede65102892cf",
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3053 of 3834 comparisons agree, 3053 of 3781 in scope; completed {\"candidate-unknown\": 67, \"value\": 16}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "984f401f0606fa9f04452b935ee457c2139d15a511ac541c8e105b9058ca8b28",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.s2.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.retirement.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f5329.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f5329.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f5329.3.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.s2.7@person[taxpayer].retirement[a]",
+     "fixture:stage19.mut.classm_f5329_3_dependent_no_ein@person[taxpayer].retirement[r1]",
+     "fixture:stage21.example.tom_jones@person[taxpayer].retirement[a]",
+     "fixture:stage21.blind.e1@person[taxpayer].retirement[a]",
+     "fixture:stage21.blind.e1@person[taxpayer].retirement[b]",
+     "fixture:stage21.blind.e2@person[taxpayer].retirement[a]",
+     "fixture:stage21.blind.e2@person[taxpayer].retirement[b]",
+     "fixture:stage21.refuse.wrong_kind@person[taxpayer].retirement[a]",
+     "fixture:stage21.refuse.early_screen@person[taxpayer].retirement[a]",
+     "partial:stage21.example.teacher_education-person[taxpayer].retirement[a].exception@person[taxpayer].retirement[a]",
+     "partial:stage21.example.teacher_education-person[taxpayer].retirement[a].exc_amount@person[taxpayer].retirement[a]",
+     "partial:stage21.example.teacher_education-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[a].exc_amount@person[taxpayer].retirement[a]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[a].exception@person[taxpayer].retirement[a]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[b].exc_amount@person[taxpayer].retirement[b]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].account@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].box1@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].box5@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].rollover@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.early_screen-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2",
+   "project_expr_sha256": "99e00ff1d54012f13ee36758af8945cf156e47645990b996aabf63ef32a6375b",
    "second_expr_sha256": "9920abbf5f3af4297a265253eab4dca06ffa36e6ca440e6daeafef8766e6395f",
    "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,725/2,459 agree; 373 value, 346 candidate-unknown, 14 project-unknown, 1 project-refuses; completed: 220 value, 11 candidate-unknown. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
    "context": "36271235b98be8625380e378aaaafa2b2b268444a757f22121da5bec69a7c3cf",
@@ -1936,6 +2146,45 @@
      "partial:stage21.blind.e5-person[taxpayer].retirement[a].exception@person[taxpayer].retirement[a]",
      "partial:stage21.blind.e5-person[taxpayer].retirement[b].exc_amount@person[taxpayer].retirement[b]",
      "partial:stage21.blind.e5-person[taxpayer].retirement[b].exception@person[taxpayer].retirement[b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2_e05",
+   "project_expr_sha256": "2bab1a81f4899c151bceb935fbcb8e2f3ba7d4bc75a281f8bbcd7996d3c97749",
+   "second_expr_sha256": "7bee4963377ce3ac3c63881854ba351b3704beed3dac12fff0b8bdba2aad7f02",
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3488 of 3834 comparisons agree, 3488 of 3834 in scope; completed {\"candidate-unknown\": 1, \"value\": 3}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "38f24006067bf2bfe044931dab751977e8448c00d86fbfc1335223a161cdb90d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.person.13@person[taxpayer].retirement[a]",
+     "fixture:stage21.blind.e6@person[taxpayer].retirement[a]",
+     "fixture:stage21.blind.e7@person[spouse].retirement[a]",
+     "fixture:stage21.blind.e7@person[taxpayer].retirement[a]",
+     "fixture:stage21.refuse.e05_joint@person[spouse].retirement[a]",
+     "fixture:stage21.refuse.e05_joint@person[taxpayer].retirement[a]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r1].code2_partial@person[taxpayer].retirement[r1]",
+     "partial:classm.s8812.4.deepseek-person[taxpayer].retirement[r2].code@person[taxpayer].retirement[r2]",
+     "partial:classm.dcprov.1-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
+     "partial:classm.f8880.3-person[taxpayer].retirement[p].code@person[taxpayer].retirement[p]",
+     "partial:classm.retirement.2-person[taxpayer].retirement[p].code@person[taxpayer].retirement[p]",
+     "partial:classm.tcw.4-person[taxpayer].retirement[r2].code2_partial@person[taxpayer].retirement[r2]",
+     "partial:classm.tcw.10-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
+     "partial:classm.tcw.16-person[taxpayer].retirement[r1].not_beneficiary@person[taxpayer].retirement[r1]",
+     "partial:classm.clcw.1-person[taxpayer].retirement[r2].not_beneficiary@person[taxpayer].retirement[r2]",
+     "partial:stage21.refuse.e05_joint-person[spouse].retirement[a].box1@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.e05_joint-person[taxpayer].retirement[a].under59@person[taxpayer].retirement[a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2349,6 +2598,45 @@
   {
    "printed": "retirement.l2_e09",
    "project_expr_sha256": "ad48b1ba2959d1ec444b85b66f1ba477b74f9b09e794a2506e932a2d8ca90b1a",
+   "second_expr_sha256": "3162348e3c4df632b9ec7404d553dd37f9e9f30a5af239b787ce085f3f1e0ff7",
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3382 of 3834 comparisons agree, 3382 of 3834 in scope; completed {\"candidate-unknown\": 4, \"value\": 328}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "3830896f1ade47e5188b74f19863710173868efd541ad166580b432b4d67454b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.person.9@person[taxpayer].retirement[a]",
+     "fixture:classm.person.9@person[taxpayer].retirement[b]",
+     "fixture:stage21.blind.e4@person[taxpayer].retirement[a]",
+     "fixture:stage21.blind.e4@person[taxpayer].retirement[b]",
+     "fixture:mutation.t2.person.f5329_first_home_only@person[taxpayer].retirement[a]",
+     "fixture:mutation.t2.person.f5329_first_home_only@person[taxpayer].retirement[b]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r1].code2_partial@person[taxpayer].retirement[r1]",
+     "partial:classm.s8812.4.deepseek-person[taxpayer].retirement[r2].code@person[taxpayer].retirement[r2]",
+     "partial:classm.dcprov.1-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
+     "partial:classm.f8880.3-person[taxpayer].retirement[p].code@person[taxpayer].retirement[p]",
+     "partial:classm.retirement.2-person[taxpayer].retirement[p].code@person[taxpayer].retirement[p]",
+     "partial:classm.tcw.4-person[taxpayer].retirement[r2].code2_partial@person[taxpayer].retirement[r2]",
+     "partial:classm.tcw.10-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[a].box1@person[taxpayer].retirement[b]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[a].code@person[taxpayer].retirement[b]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[a].exc_amount@person[taxpayer].retirement[b]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[a].exception@person[taxpayer].retirement[b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2_e09",
+   "project_expr_sha256": "ad48b1ba2959d1ec444b85b66f1ba477b74f9b09e794a2506e932a2d8ca90b1a",
    "second_expr_sha256": "6c67b5dcc555d328fbc7f32b0a285bdad984a23a8aa91507ebf7213d06402a7b",
    "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,330/2,459 agree; 119 candidate-unknown, 8 project-unknown, 2 value; completed: 2 value. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
    "context": "36271235b98be8625380e378aaaafa2b2b268444a757f22121da5bec69a7c3cf",
@@ -2486,6 +2774,45 @@
      "partial:stage21.mut.e19-person[taxpayer].retirement[a].box5@person[taxpayer].retirement[a]",
      "partial:stage21.mut.e19-person[taxpayer].retirement[a].rollover@person[taxpayer].retirement[a]",
      "partial:stage21.mut.e19-person[taxpayer].retirement[a].roth_moved@person[taxpayer].retirement[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2_e19",
+   "project_expr_sha256": "27f470b80b8baa7b278ad581656a6760d30dd7a13ac68bf4f79b955c59b9256a",
+   "second_expr_sha256": "773e625172ece5608a5cc83296e300595097dfa5f667db7934f395cf2d681a35",
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3383 of 3834 comparisons agree, 3383 of 3834 in scope; completed {\"candidate-unknown\": 4, \"value\": 329}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "bfe4e727d494ea3932a0d52ec5d1c3ca1acd28b14ab7c222511cbc8be7fae9bd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.person.9@person[taxpayer].retirement[c]",
+     "fixture:classm.person.9@person[taxpayer].retirement[d]",
+     "fixture:stage21.blind.e4@person[taxpayer].retirement[c]",
+     "fixture:stage21.blind.e4@person[taxpayer].retirement[d]",
+     "fixture:stage21.mut.e19@person[taxpayer].retirement[a]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r1].code2_partial@person[taxpayer].retirement[r1]",
+     "partial:classm.s8812.4.deepseek-person[taxpayer].retirement[r2].code@person[taxpayer].retirement[r2]",
+     "partial:classm.dcprov.1-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
+     "partial:classm.f8880.3-person[taxpayer].retirement[p].code@person[taxpayer].retirement[p]",
+     "partial:classm.retirement.2-person[taxpayer].retirement[p].code@person[taxpayer].retirement[p]",
+     "partial:classm.tcw.4-person[taxpayer].retirement[r2].code2_partial@person[taxpayer].retirement[r2]",
+     "partial:classm.tcw.10-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
+     "partial:classm.tcw.16-person[taxpayer].retirement[r1].not_beneficiary@person[taxpayer].retirement[r1]",
+     "partial:classm.clcw.1-person[taxpayer].retirement[r2].not_beneficiary@person[taxpayer].retirement[r2]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[a].box1@person[taxpayer].retirement[c]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[a].box1@person[taxpayer].retirement[d]",
+     "partial:stage21.blind.e4-person[taxpayer].retirement[a].code@person[taxpayer].retirement[c]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2706,6 +3033,41 @@
    "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" The exception number is asked only for an early distribution, a code 1 or S entry on line 1. The candidate tests retirement.exception = e19 on every entry, without the project's has_exception guard, so it needs the exception answer for code 2, 4, 7, G and Q entries, which the source does not ask: classm.dependent.5.deepseek (completed, code 7) project $0.00, candidate unknown. Triage executable-triage-v2 (triage/retirement.json; 1,372 fixtures, 500 generated returns seed 20261026, 1,140 partial records): 1,662 of 2,528 agree; 866 candidate-unknown, all of this kind; no value differs. Project stands.",
    "context": "2d36474716e0033f3f54dc81de71bb1d7427c35049bb7b49b4464d32fe622c8a",
    "subject_key": "3526a6dfeecd3c0ebd85a4da5c9f0a1b485ac5d8333119b115ded48ba9a61151"
+  },
+  {
+   "printed": "retirement.l2_e22",
+   "project_expr_sha256": "426df31597e1d692edb9dd32f16586a762b38f201dfcf629c3d9fa9f8b243abe",
+   "second_expr_sha256": "17a272f48f77ade17c7c8495ff53e9f6634114514df0b70bc909bd87f933dc99",
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3805 of 3834 comparisons agree, 3805 of 3834 in scope; completed {\"candidate-unknown\": 2, \"value\": 2}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "ded979fce6ae6addb0bb8b388fa3acf52c2d9192aa9099a0976f4d19530e5fa1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.retirement.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.person.19@person[taxpayer].retirement[a]",
+     "fixture:classm.person.19@person[taxpayer].retirement[b]",
+     "fixture:stage21.blind.e5@person[taxpayer].retirement[a]",
+     "fixture:stage21.blind.e5@person[taxpayer].retirement[b]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r1].code2_partial@person[taxpayer].retirement[r1]",
+     "partial:classm.s8812.4.deepseek-person[taxpayer].retirement[r2].code@person[taxpayer].retirement[r2]",
+     "partial:classm.dcprov.1-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
+     "partial:classm.f8880.3-person[taxpayer].retirement[p].code@person[taxpayer].retirement[p]",
+     "partial:classm.retirement.2-person[taxpayer].retirement[p].code@person[taxpayer].retirement[p]",
+     "partial:classm.tcw.4-person[taxpayer].retirement[r2].code2_partial@person[taxpayer].retirement[r2]",
+     "partial:classm.tcw.10-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
+     "partial:classm.tcw.16-person[taxpayer].retirement[r1].not_beneficiary@person[taxpayer].retirement[r1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "retirement.l2_e22",
@@ -3189,6 +3551,45 @@
   {
    "printed": "retirement.l2_e23",
    "project_expr_sha256": "b1b2e3273635d599fbed92c4a24907eb0f4ca8c853b73238bdfbbaebc436a346",
+   "second_expr_sha256": "9d39dea0d4aa281d27f1fd88919a54ddea848833a2670dbce921c41740d3eebc",
+   "ruling": "Ruling: model error; p590b p. 28, Emergency personal expense distributions, Distribution limits: \"You are limited to taking one emergency personal expense distribution per calendar year\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3539 of 3834 comparisons agree, 3539 of 3834 in scope; completed {\"candidate-unknown\": 2, \"value\": 3}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "3b945ef8593cc81f6b5fd3dcd8f4a894c8b481bda947017bd2943fe301524ece",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.person.19@person[taxpayer].retirement[c]",
+     "fixture:classm.person.20@person[taxpayer].retirement[a]",
+     "fixture:stage21.blind.e5@person[taxpayer].retirement[c]",
+     "fixture:stage21.mut.e23_over_cap@person[taxpayer].retirement[a]",
+     "fixture:stage21.refuse.two23@person[taxpayer].retirement[a]",
+     "fixture:stage21.refuse.two23@person[taxpayer].retirement[b]",
+     "fixture:stage21.refuse.limit_binds@person[taxpayer].retirement[a]",
+     "fixture:stage21.mut.simple_e23_within_cap@person[taxpayer].retirement[a]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r1].code2_partial@person[taxpayer].retirement[r1]",
+     "partial:classm.s8812.4.deepseek-person[taxpayer].retirement[r2].code@person[taxpayer].retirement[r2]",
+     "partial:classm.dcprov.1-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
+     "partial:classm.f8880.3-person[taxpayer].retirement[p].code@person[taxpayer].retirement[p]",
+     "partial:classm.retirement.2-person[taxpayer].retirement[p].code@person[taxpayer].retirement[p]",
+     "partial:classm.tcw.4-person[taxpayer].retirement[r2].code2_partial@person[taxpayer].retirement[r2]",
+     "partial:classm.tcw.10-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
+     "partial:classm.tcw.16-person[taxpayer].retirement[r1].not_beneficiary@person[taxpayer].retirement[r1]",
+     "partial:classm.clcw.1-person[taxpayer].retirement[r2].not_beneficiary@person[taxpayer].retirement[r2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2_e23",
+   "project_expr_sha256": "b1b2e3273635d599fbed92c4a24907eb0f4ca8c853b73238bdfbbaebc436a346",
    "second_expr_sha256": "ee527c6072fbc69722a2227f81c3f9aea850278fd492f5adb9b2ba9f8dda8bbc",
    "ruling": "Ruling: representation; retirement.under59 is asked only with code 7 (under59_if_code7); for codes 1 and S the interview does not ask it, and the filer claims exception 12 through retirement.exception (i5329 p. 5, \"12 Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older\"). The candidate's h_auto12 reads the raw under59 (false when unasked) on codes 1 and S and applies exception 12 to the whole taxable amount; the sampled completed value witnesses are all code 1 or S entries where under59 was never asked. Here the candidate zeroes the exception 23 share (stage21.blind.e5, stage21.mut.e23_over_cap, stage21.mut.simple_e23_within_cap). Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,685 of 3,671 agree; on completed returns: 159 value, 10 candidate-unknown.",
    "context": "442be10aabb4512fab8d94de8d446b9f6b3d55fde1f6a8647d51198b7ce858f4",
@@ -3482,6 +3883,42 @@
    }
   },
   {
+   "printed": "retirement.l2_s",
+   "project_expr_sha256": "63f63516eef008985ec0cbb2b25cb7a8cfc393670863451c46d48f1bfd01ff58",
+   "second_expr_sha256": "d6b041567c479eb497ce1ac1944d8c22f4ef6aa5315ff35e1a1e16b31196072b",
+   "ruling": "Ruling: scope; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". As the round-3 ruling: a code S distribution's 25%/10% branch is a scope the project does not take; no value stands against it. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3783 of 3834 comparisons agree, 3783 of 3834 in scope; completed {\"value\": 2}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "5220eecec83c81e257589e2b020d062cc7ada2a3a21f527c2dee3ef5043aa594",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f5329.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f5329.2@person[taxpayer].retirement[r1]",
+     "fixture:stage21.blind.e2@person[taxpayer].retirement[a]",
+     "fixture:stage21.refuse.limit_binds@person[taxpayer].retirement[a]",
+     "fixture:stage21.mut.simple_e23_within_cap@person[taxpayer].retirement[a]",
+     "fixture:t264.person.senior_counts_under_65@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].exc_amount@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].exception@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].box5@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].rollover@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].roth_moved@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].rollover_property@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].rollover_qdro@person[taxpayer].retirement[a]",
+     "partial:t264.person.senior_counts_under_65-person[taxpayer].retirement[a].disability@person[taxpayer].retirement[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "retirement.sav_amount",
    "project_expr_sha256": "0a2f3573efc5544a3e8290d2d7b23a99734dd5b74b844ff1e4791e799c0491a8",
    "second_expr_sha256": "27a8f339ae16b3534f3fde704703226b4bf7473fdf9a0bcef42e62eba5ff5c11",
@@ -3629,6 +4066,52 @@
      "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r2].ira_basis@person[taxpayer].retirement[r2]",
      "partial:classm.f1040.3.deepseek-person[taxpayer].retirement[r2].account@person[taxpayer].retirement[r2]",
      "partial:classm.f1040.3.deepseek-person[taxpayer].retirement[r1].rollover_any@person[taxpayer].retirement[r1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.sav_amount",
+   "project_expr_sha256": "1f3db49317d84376187447d7752a3c0abeb05f0cb34bacf87877fef57d434239",
+   "second_expr_sha256": "a361b7d8f303c72aad9802300ac87c1429a766c7f43c79f601dc4c591a4f3bdd",
+   "ruling": "Ruling: model error; f8880 p. 2, Line 4, \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 2614 of 3834 comparisons agree, 2613 of 3518 in scope; completed {\"candidate-unknown\": 49, \"value\": 1}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "b4fe185bcca254637fa1c40fbac47bcd5fa7ffc1900cc7eef04c4d83ab4ab1f7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.s2.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8880.3.deepseek@person[taxpayer].retirement[p]",
+     "fixture:classm.f1040.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.aqee.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.carloan.1@person[taxpayer].retirement[r2]",
+     "fixture:classm.dcprov.1@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8606.1@person[taxpayer].retirement[r1]",
+     "fixture:classm.otjob.1@person[taxpayer].retirement[r1]",
+     "fixture:classm.w2.1@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.3@person[taxpayer].retirement[r1]",
+     "fixture:stage10.plan.direct_rollover@person[taxpayer].retirement[p]",
+     "fixture:stage10.refuse.annuity_rollover@person[taxpayer].retirement[p]",
+     "fixture:mutation.m1.retirement.direct_rollover_put_back@person[taxpayer].retirement[p]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r2].account@person[taxpayer].retirement[r2]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r2].disaster@person[taxpayer].retirement[r2]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r2].rollover_any@person[taxpayer].retirement[r2]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r2].rollover_property@person[taxpayer].retirement[r2]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r2].rollover_qdro@person[taxpayer].retirement[r2]",
+     "partial:classm.w2.1.deepseek-person[taxpayer].retirement[r2].levy_returned@person[taxpayer].retirement[r2]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -3788,6 +4271,54 @@
      "partial:stage19.mut.classm_f5329_3_dependent_no_ein-person[taxpayer].retirement[r1].rollover_any@person[taxpayer].retirement[r1]",
      "partial:stage19.mut.classm_f5329_3_dependent_no_ein-person[taxpayer].retirement[r1].early_screen@person[taxpayer].retirement[r1]",
      "partial:stage19.mut.classm_f5329_3_dependent_no_ein-person[taxpayer].retirement[r2].rollover_any@person[taxpayer].retirement[r2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.taxable",
+   "project_expr_sha256": "a9f2fd22e93016129311dde6735513b04c84b201ab0459683574587ba5c1326f",
+   "second_expr_sha256": "6cec1873d8d8891de95c8cb9ba0390d54acd9417ec1870ea107037f07fe9f9f5",
+   "ruling": "Ruling: model error; i1040gi pp. 27-30, lines 4b and 5b. The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 2724 of 3834 comparisons agree, 2507 of 3426 in scope; completed {\"candidate-refuses\": 5, \"candidate-unknown\": 128, \"value\": 1}. Project stands.",
+   "context": "e95ce41da22cde0811adfbded46b816fbc5007f663d5d4c9be412aa5b4745ed9",
+   "date": "2026-11-17",
+   "run": "767554b3cdcafeb960a81be38bb3f515ec52ce471d8f55751de066450c11abaa",
+   "subject_key": "5a87e68e890146cc7b579f934d14c359e8d9590b1cc15574cce6563626863617",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.s2.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.dcprov.1@person[taxpayer].retirement[r1]",
+     "fixture:classm.f4952.2@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8606.1@person[taxpayer].retirement[r1]",
+     "fixture:stage10.plan.direct_rollover@person[taxpayer].retirement[p]",
+     "fixture:stage10.smw.cost_recovered@person[taxpayer].retirement[p]",
+     "fixture:stage10.smw.recovered_exceeds_cost@person[taxpayer].retirement[p]",
+     "fixture:stage10.smw.cost_recovered_box5@person[taxpayer].retirement[p]",
+     "fixture:stage21.refuse.early_screen@person[taxpayer].retirement[a]",
+     "fixture:mutation.m1.retirement.direct_rollover_put_back@person[taxpayer].retirement[p]",
+     "fixture:x2pay.disability.w6@person[taxpayer].retirement[r]",
+     "partial:stage10.ira.fully_taxable-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage10.ira.fully_taxable-person[taxpayer].retirement[a].under59@person[taxpayer].retirement[a]",
+     "partial:stage10.plan.box5-person[taxpayer].retirement[p].rollover_any@person[taxpayer].retirement[p]",
+     "partial:stage10.plan.box5-person[taxpayer].retirement[p].disability@person[taxpayer].retirement[p]",
+     "partial:stage10.plan.box5-person[taxpayer].retirement[p].born_before_averaging_date@person[taxpayer].retirement[p]",
+     "partial:stage10.plan.box5-person[taxpayer].retirement[p].under59@person[taxpayer].retirement[p]"
     ],
     "policy": "executable-triage-v2"
    }

@@ -1,0 +1,20 @@
+# Predicted end (hand-derived; unverified until draft-walk and a values run):
+#   Unearned income $2,100, under $2,700, so no Form 8615. Schedule B Part I $2,100 (over $1,500).
+#   Dependent's standard deduction: larger of $1,350 or earned income $6,000 + $450 = $6,450 (not over $15,750).
+#   AGI $8,100; taxable income $1,650; tax $166 (Tax Table, +/- $1); withholding $120; owed $46. No earned income credit.
+name: 27_dependent_student_interest
+who: A single student, 19, whom the parents claim as a dependent, with one summer job (one Form W-2, $6,000 of wages) and $2,100 of interest on a certificate of deposit her grandparents opened for her.
+extends: 20_dependent_student
+end: complete
+answers:
+  $interest: [bank]
+  interest[bank].amount: 210000
+  interest[bank].penalty: 0
+  sb.nominee: false
+  sb.bonds_any: false
+  ftc.taxes: 0
+  person[taxpayer].sav_claimed: false
+  person[taxpayer].sav_student: false
+  person[taxpayer].sav_voluntary: 0
+  person[taxpayer].sav_able: false
+  person[taxpayer].w2[diner].box12_any: false

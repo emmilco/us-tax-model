@@ -4,92 +4,113 @@
  "family": "deepseek",
  "base": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "lines judged": "36",
+  "match / mismatch / unclear / missing": "23 / 13 / 0 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-17); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "1039f440fce27cbe813649990df4dd54d0ef9352be65320d98ee64231bb4b84b"
+   "subject_key": "34192f9e30b4b633877c7d66e2ac82e3f49a2621599c5abf08e7054b7efcfc35"
   },
   {
    "key": "7",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "0de08a3cb810713ab1b3964f893a59a51f109558174f073da5c286e294f02ca1"
+   "subject_key": "208c8f6868af8b2f08083843015089b2a0fb711b3e5e598bdbcbf6255307a947"
   },
   {
    "key": "7 (box)",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "ebc007ae9c75124851378c4f93d1068c6fa91acadb5aa967ad7aa1e338b68fd0"
+   "subject_key": "da90b1d688cfbacf91e3ac1430028e4705fea72a7bc8e2e41ddb04f2d5983014"
   },
   {
    "key": "7 (amount repaid)",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "df5b7624675a0f12fe0457b2746fc532bc2256b856bf802f54d585702010dd91"
+   "subject_key": "d7ac07cb9575c271a938f3c85089bd39b8f34b6cb06368773426c1802e50d236"
   },
   {
    "key": "3",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "c54336bc1dea0694f355a57ecea5c5bca9cf309b8c7806ac725b4d7de1380b34"
+   "subject_key": "914ffbdac3e61ca289c675a11dbf0799994aa30b61e6a8a254f34835bc9947af"
+  },
+  {
+   "key": "8k",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
+   "status": "MATCH",
+   "subject_key": "c3842472f6c66858644660c99abbac49c8848aa1e3b4c5d521b877505f8e4dcc"
+  },
+  {
+   "key": "8e",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 91: Archer MSA distributions (Form 8853 lines 8 and 12) are refused (scope.archer_msa); the line reads the long-term care amounts. Project stands.",
+   "subject_key": "4d66bb53fba366d22f93a376c504bc274bf994ce73512dd256f02248ecbad1c8"
+  },
+  {
+   "key": "8v",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
+   "status": "MATCH",
+   "subject_key": "97e29f4bb72de9b4ca64fff639752bd8cdf523f9701ae6565d4806ca5f547095"
   },
   {
    "key": "8b",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "72e8f792f6148b74004566e8ea6269756746bd56038af20f6b884f1bea84e816"
+   "subject_key": "0d106eb70636f0176d25cb4b9a0c04dd46a914a8a172c3f05b6c5320b7a61266"
   },
   {
    "key": "8g",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "e06d8b4955244c30564e75f1293a7adc72c5c13599a01ef2290cd0c08aabc8ef"
+   "subject_key": "faf27a096c474c658e0f3c8e9cb77988c986a85c1aff91e7f26c5f86b23054fd"
   },
   {
    "key": "8h",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "2e6d12e9b2d06ae3f938203256d6462e72f842a838dc8650a152c1837e5a2883"
+   "subject_key": "bc885a643b30a08e177b70055fbf441942da8dec0e8a71c1b33598f32fdab755"
   },
   {
    "key": "8i",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "a5d84b6c421f3780f88a8d7f90ed3b522c3b9dc6bcca6da84f64f97c2d9088f2"
+   "subject_key": "97e6d794b1c6ac93625ec129dcee2129bf856a6da79399f18fe6d4cfcca9c000"
   },
   {
    "key": "8j",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "92e75e7f43e91626951c68a5a635ee9addf6c218631ad5c88fb7006a10d5e458"
+   "subject_key": "ea3340c829e2a31b81c5859c07801c9df57f4685cb5240ea5f14061d251ab3ac"
   },
   {
    "key": "8r",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "0069f578eb4bf03d23f0d0f614f142a3005ff2d9646345886b64b78a73528a68"
+   "subject_key": "a2a1e4b591a78e550a75f61f63739e0d2fc0a6db2d5c6c8892a8d6d2a9eb9a00"
   },
   {
    "key": "8z",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "b2e46e96a051b8f3bff4ece13f2dbe800294d5087d659089abd40cc20bb8b540"
+   "subject_key": "e99959c12e5a89f18ecf061d6eaa222ec87b3beabd370f71afb4684d4244cabd"
   },
   {
    "key": "2a",
-   "record": "a78099464032e98fdbeb900db0473e53e5051d61d0b5d2bef4d26ec8a55bd24c",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "c263eb69d5b4946f7c14b643e57667e4948aff73ea18891b4df75af1905939f1"
+   "subject_key": "a31ef010c8d1a21ea1c84f157315ef005a880f3d7009a063c6600c428e13424a"
   },
   {
    "key": "8c",
-   "record": "a78099464032e98fdbeb900db0473e53e5051d61d0b5d2bef4d26ec8a55bd24c",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "b64b5f28330f95a7ea159f4cd86caffd6c11d81fcf4673aa5a1bf04c975cb6e7"
+   "subject_key": "7180a49c5dacf6a4b7384e9a467249bbccb41ff1123edf999db39d85bc8c11ed"
   },
   {
    "key": "8f",
@@ -99,17 +120,38 @@
    "subject_key": "100a59ff3933a60db034a9f1389477c63a2d96920f38d7a97cfbeae39aba9488"
   },
   {
-   "key": "9",
-   "record": "a78099464032e98fdbeb900db0473e53e5051d61d0b5d2bef4d26ec8a55bd24c",
+   "key": "8a",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "2c3c49ba2d72956a19e25ed74b7e7163778df4c4a27990b790737b0fdf5f44fe"
+   "subject_key": "c59a89c38daae92bcdfa540f2f26acb3539ced66fa66dcf29256d3b5ef8d4e22"
+  },
+  {
+   "key": "8s",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; i1040gi p. 92: the line is the positive amount; the negative sign is applied on line 9 through the line 9 helper. Project stands.",
+   "subject_key": "bb57d2e3044d84564e62b63e2ac8b3b9569f78077729635878cf7c6c55b41dcd"
+  },
+  {
+   "key": "9",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040s1: lines 8d, 8l, 8n, 8o, 8p and 8q are outside the tool (scope.schedule1 refuses them); the restatement lists the lines the tool computes. Project stands.",
+   "subject_key": "f406814aa2b3fed12439e41cc6b8085216a603784f00773b78b9b8d887418d73"
+  },
+  {
+   "key": "5",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040s1 p. 1: partnership, S corporation and trust amounts are refused (scope.k1); the line reads Schedule E line 41. Project stands.",
+   "subject_key": "c2dc57797c5e9ba0c29fc94833d78192e604d0eb69d88406c588ec12f6b9a6c3"
   },
   {
    "key": "10",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: its text names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\" (checked on the current forms/2025/scope.yaml); within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the income package changed only the wording of the alimony and unemployment screens, which does not touch this line. Same point as the earlier rounds; re-checked on the current scope.yaml, f8889.yaml and s3.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393, and the alimony and educator wording, BUG-0394). Project stands on the English.",
-   "subject_key": "af75401d75f7a8fa34e4124509da222647d021a4418d713bc0cca401f39568fc"
+   "ruling": "Ruling: scope; f1040s1: line 4 other gains and line 6 farm income are refused (scope.schedule1, scope.farm). Project stands.",
+   "subject_key": "ba600e867dd746cbccbe4a534c1dc58b7decce6d3f5c80b21485bb4c3b741a9e"
   },
   {
    "key": "11",
@@ -152,9 +194,9 @@
   },
   {
    "key": "19a",
-   "record": "a78099464032e98fdbeb900db0473e53e5051d61d0b5d2bef4d26ec8a55bd24c",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "65b189128cad5496a2e5f83cc55dc70b7bb590e4ebeaca0651baf1b2ba367796"
+   "subject_key": "e556e7a43cf5587b8d4f7f0dae984d31338e8bd576d07c3c7acfaefb1a54d809"
   },
   {
    "key": "20",
@@ -164,6 +206,13 @@
    "subject_key": "857735354b7a4fc1e16b4a6d9cf7126c89539f58044795b9b401b68ebc4169d3"
   },
   {
+   "key": "20 (box)",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; i1040gi p. 96: the box is only meaningful with a traditional IRA contribution; the IRA condition is how the interview reaches it. Project stands.",
+   "subject_key": "d497d3f614e1b72ae0d233ca29c01f479b4281ab7081d785376aa09f47b0cced"
+  },
+  {
    "key": "21",
    "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
    "status": "MATCH",
@@ -171,9 +220,9 @@
   },
   {
    "key": "24a",
-   "record": "787a52e645141cd74c6c70d6b135a5b9585301bc6aff5ad79c7420afcdacaea6",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MATCH",
-   "subject_key": "b750c7a101cdda8eb3f42e1c7cad33e2ecf975152ba814d904ba5b665f5d1c5f"
+   "subject_key": "8a5b3a1d40d3507a89d7671847112071698a07b532946a57878893e89a5a3bbd"
   },
   {
    "key": "25",
@@ -184,42 +233,49 @@
   },
   {
    "key": "26",
-   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "record": "c06ce119254991f8d845877b5032f6f18a217406913117d9158edd884c8b20eb",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\", checked on the current scope.yaml); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same point as the earlier rounds; re-checked on the current scope.yaml, f8889.yaml and s3.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393, and the alimony and educator wording, BUG-0394). Project stands on the English.",
-   "subject_key": "b9971c49cee297c10f1f7acd0a5bbeae9423c6595946e3a596c46368f86707ca"
+   "ruling": "Ruling: scope; f1040s1: lines 12, 14 and 23 are refused (the tool's screens refuse those cases); the restatement lists the lines the tool computes. Project stands.",
+   "subject_key": "1ca22e652c71dc9b0d21f3d7c01a7f99777190113b6057177736b89dd9614edf"
   }
  ],
  "subjects": {
-  "1": "3cf027355da75e3c1f9ff97b91bfd36372ca9ab6e610480bc31bdbad6d856ef1",
-  "7": "d23cac3fd35a6e5c74c7ffdb8f6ed2a696ff014771f7c92a10935588a91d6d51",
-  "7 (box)": "cfa288e2100e3813f7e9936325f2459f2d5aae2719904140e13654637972b0a7",
-  "7 (amount repaid)": "50dca390cec3a553681e83bce8aae15fcfb84e11f571e67f6bcdce2e63fd6742",
-  "3": "bc3ec168d14d2a8cd64d175e37c7e910d8a5af268c316d775da646c4dd01ddcd",
-  "8b": "adfb6ff250a141ed5fab7f20a031c8747e794eef23ddd9b2cef9fb2168eaf763",
-  "8g": "a3571d84edee2cfb3de333815f5d20985387df2f1636b2e1b6e1aac16cd49204",
-  "8h": "9ed043904bf99e07ffdba67546672e89dcf24deb3424681bd8a7dc67942ad15e",
-  "8i": "c68f1e8a3ff60d5244459d36d21b0b62e65c8c933467f51dea16aa0ae2b8407d",
-  "8j": "29a9416344de32f83f0e9092659845581207319a988464bfe47bd71bcf5eb305",
-  "8r": "97662a747727caf31391c45b947c97f49ba69e76d0f9c4043b5d7c40354a9f7d",
-  "8z": "716e4f6692a25b41948e6fdbe805ecff692e5452aeffbfaba8b32f5e0f42e407",
-  "2a": "4a10d6f1f0d1e84a1163eb6cf950895f4668a789194a38c2f17635530e4d4da6",
-  "8c": "80adfd672aa8bb986148f7d5c9a17bef372ee3b0c00f669b24440bdf6e75ffd4",
+  "1": "58670c8bb3557b518db28d15c0575db7bd18c807075f888cec9d91e0522cd172",
+  "7": "0aa7e18fa41397e9c171ffac098cfbea679e107ade4d0789644fb7a869935a82",
+  "7 (box)": "09b7c34093b1ada499b0dd9b024a5725401b1b3c053bf7a088ca9b4b4fe0fa61",
+  "7 (amount repaid)": "684c11973a74fbcaca801a35d11dedc198af1f3f9c8045e0b24173854c36a5a6",
+  "3": "e9eadef50254c18db0f7d888d64f9cf74830749a377d4ac7f493a407190d5d90",
+  "8k": "79703a7ee8550d8f1d19717276b642375b605709355919902d9b2138aee37cc5",
+  "8e": "d5cd00ae0c81f94ed4c7013603e0261f9210b3899839ac562b445ad9bf9336a8",
+  "8v": "dd44167abc6561937393d2f9ac3d84c0a80ca0055156949de0f044ccd84cc4a1",
+  "8b": "cc86673029995e183bbe1b99c0d9fab9a8e94421f7f4fa29ed2b1dcaeedb9ec8",
+  "8g": "1565127f4954ac0df1c1dd4dfc11ed29f439a77d206ac1cab6b259c676adb9b3",
+  "8h": "80b6c80b9281d97b3e5ed1441f830a5cd8349c82557cb07fc2b4d9d68b7781c5",
+  "8i": "a6573e9820a655fac65854a14fbd99a59c5c65e5bfeaada666cabba577c5c80e",
+  "8j": "9080f3ad8698c5cdcb124d73834ba1fc736d2d01d330936ab03035c1048f70c0",
+  "8r": "25bb17eeabc46e59f3b84ce777b6fbabe4bee372eebd99c2a6ae5e24ce3822e9",
+  "8z": "d34ab5762ec738a0b3d8021fd20bdfdd4830d80fd7572c3a0a373cee4e0a25a8",
+  "2a": "978f6fd9d84dccac3569cc51b677eb4899a483919ee31adc82908e98379c6d53",
+  "8c": "a2434e6a595e5ebbe2861b7e80c1c2db35a3d21a6371698d9d8c2b30d342474e",
   "8f": "61cd1ea00f9720c8fa0491e4eabe0184235cd502525725831f06f21d546abb4a",
-  "9": "dde89809ce8bad85e766e1cf4963bb04bda3013b8e040b530ddf16dd98fc1302",
-  "10": "d6214796af17b99dfca44131888035ff71b7c5e63bc3d2a2cae51af7939a196c",
+  "8a": "af1ba828bbe165b9e77f8067806271de812f15f2c5d063a0c695247717d742cc",
+  "8s": "0c94351cf75aec1a858c09699d1d65a754072228774a78b3179d6fce37a0be19",
+  "9": "643e9ab07699d048abd15c9a3bf998b00858c85f8491cec4dbe072f89090712d",
+  "5": "e75ee2ec29678c04391abf8a1d2e3bcdac8089c23806791314f3cec6f1b97a8b",
+  "10": "7c6b4a9ea798cb20c750dbb0b9919a37a074f0cd6861f6acd1a712e6fdb9685b",
   "11": "444b97633e80dc22f7362c42b60b247a91d3290a3d4917b7429f07dec9ebf99d",
   "13": "d28511b7f2c281e110c89fdb0b05daddf7fd81c5cd68febefceddfd95320e99c",
   "15": "2862a9af51da579f2eeae0fca7a1e5fd656c4e385c5dde00e4cedea04abf6f88",
   "16": "aef86069282bbaabff9f8a9daed19f8276dbdddcce570580486b1dcecd2b8871",
   "17": "bf48e84e65b403942498520eeb97e8bffef5b0d9e4a871749fcad25441a36591",
   "18": "68468ce4276ba46f7520091bb4beb4cca084d19d6b0ceb9bbba6fc637e9593ac",
-  "19a": "36620465c8c2c92815455755333a427d0ec30ef08594be3b2c91244d9acc5a37",
+  "19a": "c81ab15d94daae0e64cbd97bece5b206e3b2fb73c5b19bb72e144eb8bdd82098",
   "20": "f5fe786e81fd42f622503e89aab81fb0d7d0dd71d81f7ef1bb4a2c0c276a41cc",
+  "20 (box)": "5448b54aa9210d86e4f19632555613078ee065822ffe193de3ae622b98520c0a",
   "21": "6a9e1286ec5d1c79200191fa27ea65aad3e34c1557b4f969476844c8c2b25dbf",
-  "24a": "d0fbed7869157afc41a042ee4e71347d6896026dbf9429c2d32eb412db42a286",
+  "24a": "31369b1b105228b8c5f133e8c3fd9b294c8ffc28346a0687a317919714dc1274",
   "25": "c3cc27cbf052acae70854b6056de1f9f7c2bfa9717211b348d2fafede9c896e0",
-  "26": "7ada04370e3a07740337ad078e0e63008201c54239e01a63516de1f64def451a"
+  "26": "09514616fba09c45dc0c3ac1c2172fcfcec69ece8ed2a950ee276104560e168b"
  },
  "__rest__": "f5e70797ebc2b9e4473c24c82607878d7004ef8e9ac2a487cb492e6158a05791"
 }

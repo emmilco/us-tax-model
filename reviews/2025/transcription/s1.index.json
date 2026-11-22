@@ -5,8 +5,8 @@
  "base": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
  "head_rows": {
   "printed lines compared": "42",
-  "agree / disagree / missing": "26 / 16 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "25 / 17 / 0",
+  "line-scoped reviews": "7 (latest 2026-11-17); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -76,16 +76,16 @@
   },
   {
    "key": "3",
-   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "record": "d84d0c201ca6347ba1696b81a13602efc1182d2417aecd44686f5835658b4668",
    "status": "AGREE",
-   "subject_key": "8e56ed93069302f2a545698e1e69f0814ab407e426229402690e5d39ceaf8c9c"
+   "subject_key": "d419a2e7f1122a709f3491e26639ef6776b604167c0553244b4e5414108e1d0a"
   },
   {
    "key": "8k",
-   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "record": "d84d0c201ca6347ba1696b81a13602efc1182d2417aecd44686f5835658b4668",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads s1.stock_options directly, the project only beneath its parent question s2.options_any (an option exercised in 2025), as the interview asks it (i1040gi p. 92, Line 8k). Triage 4e8342b3a4f8: 2,610/4,000 agree with no value difference; all 1,390 differences are candidate-unknown (s1.stock_options unasked because the parent was No or unanswered).",
-   "subject_key": "66eb0620be3ab6f119bc91afb23e2df88aeb9aecea75a8a4b088bfe950f6aec5"
+   "ruling": "Ruling: representation; f1040s1 p. 91, Line 8k, \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h\". The candidate reads stock_options directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): 2610 of 4000 comparisons agree, 2610 of 4000 in scope; completed {\"candidate-unknown\": 209}. Project stands.",
+   "subject_key": "30ac98f6ffb92a6dffd20790202f89ef385b067178a9e8349efd31d594c297d7"
   },
   {
    "key": "8e",
@@ -95,10 +95,10 @@
   },
   {
    "key": "8v",
-   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "record": "d84d0c201ca6347ba1696b81a13602efc1182d2417aecd44686f5835658b4668",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads s1.digital_income directly, the project only beneath f1040.digital_assets (the page 1 digital asset question; i1040gi p. 92, Line 8v). Triage 4e8342b3a4f8: 3,921/4,000 agree; 78 candidate-unknown (the question not asked), and the one value difference is fixture s1.line8v.not_asked, which answers f1040.digital_assets No and s1.digital_income Yes: the interview never asks the second after a No to the first, and the project gives 0 as it must.",
-   "subject_key": "fcda92751d5af1af554aab5166dc57e897bc84432830d30b097a0f86d978938d"
+   "ruling": "Ruling: representation; f1040s1 p. 92, Line 8v, \"report this income on line 8v\". The reply reads s1.digital_income directly where the project reads it only beneath f1040.digital_assets (i1040gi p. 92, Line 8v); no amount differs on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): 3921 of 4000 comparisons agree, 3921 of 4000 in scope; completed {\"candidate-unknown\": 33, \"value\": 1}. Project stands.",
+   "subject_key": "621ac0f1a6daa85b7c16b0cb8f13216910c14580ab317c23a1bf29388429bfc1"
   },
   {
    "key": "8b",
@@ -151,10 +151,10 @@
   },
   {
    "key": "8c",
-   "record": "519b12ded5b73a02c4c1e6ea70f20c6120263a41bb9ce8de89170a2a3be870d6",
+   "record": "d84d0c201ca6347ba1696b81a13602efc1182d2417aecd44686f5835658b4668",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: i1040gi p. 91, Line 8c, 'Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable'. The reply enters s1.cod_amount when s1.cod_any is Yes; the project enters it through s1.cod_figured, which is s1.cod_amount when it is above $0 and $0 otherwise; s1.cod_amount is NonNegDollars, so the values are equal. Triage executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass 92bfb4f93b24; 2,028 fixtures, 500 generated returns seed 20261026, 1,087 partial records): 3,614 of 3,615 agree; the one difference is candidate-unknown on an incomplete record (mutation.t2.s1.cod_none_with_alimony: cod_any Yes, amount $0), where the reply's own screen asks s1.cod_unsupported whenever a debt was canceled and the project asks it only when the amount is above $0 (s1.cod_refused is read only then). No value differs. Project stands.",
-   "subject_key": "2ef23fc6361c29fa932fb623391d80a0a5b1c11bd21144fde99d6ddf97340066"
+   "ruling": "Ruling: representation; f1040s1 p. 91, Line 8c, \"Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable\". The candidate reads cod_unsupported directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): 4047 of 4048 comparisons agree, 4045 of 4046 in scope; completed {}. Project stands.",
+   "subject_key": "9bd95a2017821ef23a6ca1f7f2c3ee40bdb9b50d0bdb1feb0e7bfccc5ee5ffe3"
   },
   {
    "key": "8f",
@@ -164,18 +164,10 @@
   },
   {
    "key": "8a",
-   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
-   "status": "AGREE",
-   "subject_key": "b5a1fc11adefff4b45b9793db60ded1faf0985c5feb3d09ce9f2d179407fd883",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s1.nol_pre2018": "s1.nol_before_limit_date",
-     "s1.nol_pre2018_if_nol": "s1.nol_before_limit_date_if_nol"
-    },
-    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
-    "was": "9f0a6c9bb504eebbaacca5861fe6b10305d2e9bd78636bbed73881ca58d80ac6"
-   }
+   "record": "d84d0c201ca6347ba1696b81a13602efc1182d2417aecd44686f5835658b4668",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 91, Line 8a, \"Enter any deduction for an NOL from an earlier year. Enter the amount in the preprinted parentheses (as a negative number)\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): None of None comparisons agree; completed {}. Project stands.",
+   "subject_key": "c53d3e0c9d5d62b9b9016ca86532e104647aad8350633c199f08ff7d2500956d"
   },
   {
    "key": "8s",
@@ -192,10 +184,10 @@
   },
   {
    "key": "5",
-   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "record": "d84d0c201ca6347ba1696b81a13602efc1182d2417aecd44686f5835658b4668",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the project reads Schedule E line 41 only when scope.rental is Yes (else 0), the reply always. When there is no rental, royalty, partnership, S corporation, estate or trust income the Schedule E chain is not asked, so line 5 is 0 either way (f1040s1 line 5; i1040se p. 1). Triage 4e8342b3a4f8: 2,111/4,000 agree with no value difference: 1,854 candidate-unknown (Schedule E inputs such as sche.re_pro unasked), 27 candidate-refuses, 8 project-unknown (scope.rental unanswered).",
-   "subject_key": "bb677422185f9c3275deef59d97d6d71bfd2242f5e4fa9877fff7fa3e6fc9f57"
+   "ruling": "Ruling: representation; f1040s1 p. 1, General Instructions, \"Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties\". The candidate reads re_pro directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): 2111 of 4000 comparisons agree, 2093 of 3955 in scope; completed {\"candidate-unknown\": 262}. Project stands.",
+   "subject_key": "a6b67c4c31958e9e027ee1c5362573e78b75f8f82b7c9bacf8ef22a36220d021"
   },
   {
    "key": "10",
@@ -301,7 +293,7 @@
   "3": "128e6afe6daa483cb0a928220b4cb698fd332f7aa814a710a5c977557018a833",
   "8k": "12ef7a8c8aee45184e532cb680e7a5930acf83339f3eb56dc495d4bf8bc45a91",
   "8e": "0931c3b526b1fd13b959607c92c04a33eba8931da85a6d3d6394b3fbdbc3d4eb",
-  "8v": "76b3aff83021a78b42b2f89bfcd57bb006334722e61a687b4a3e30a0f295d172",
+  "8v": "1cc7515aad3e4f96f9191d73621a108e3e9b5ec51cb56b4f4c49f8f04e5be8f9",
   "8b": "317c9af4b8707be06471ed88e4d9b39551d8cf70d504260681d24c58481737b4",
   "8g": "e557e03a3d1e792213d88b196ed644d6c5b431411f094e0eb267197c544bc5f2",
   "8h": "a624e95b6ab59b1369cedeaaff167e84b80885b45dca5831904fce89ed2159ed",
@@ -310,9 +302,9 @@
   "8r": "d8ee2687a7f54dad0f30de5dde8a057e667aa59d731dd2c686445ca0db228bfe",
   "8z": "7e7807fc60b99a48a1c1e410ddfc18bb152506ca0b490fc83d263d6b75c7bc6f",
   "2a": "2624bf842fdb3dea79f7e27e69337c835de05e667027bbcb00126ba016de922a",
-  "8c": "c23d04291c8cf663f26a5f385e82ab902418ee7f4d607c9702aaca963b75bf64",
+  "8c": "39ff7f970a07823f3638e77dde2b8b075d3353e1027624b4df89b72fd80c2fda",
   "8f": "dee58c3a3a2e9d420ebd44edc73fd91c3b2398b04d3f339930e9912c50bae6cb",
-  "8a": "98bbfd144e7f15f0bd432333d38a36046c2bbf297f8aa9e1ba11fbba06c6a985",
+  "8a": "7056b44409c6034262a177f8b30a139440bf6170bd5096d04290c74b123f5491",
   "8s": "4c6b90ed1828a8350f4997b6946a7facb8de86113c5d7ff100ba16359a3da9ff",
   "9": "d779a369728fde16ce0d8c87763aea7db98cb6b873901d4ab61fa67cbe55405a",
   "5": "86615372531012dd894bf2c6c03464d689e29d6d64725a91e6f751ae0dc30c92",
@@ -340,8 +332,8 @@
   "7": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "7 (box)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "7 (amount repaid)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "3": "66176e861ad864f333077964273aa9972087f570ad4138b85da10194a3708f3c",
-  "8k": "f5d2e4b17be626214ba8e4d8dfd4186a2d59c7dd3fd1eb4cad6ec55fd7585426",
+  "3": "e098429f3cba2ecd6f96a00fc9cd45cae7bf1d0e6008954ccec9de9b6b0a81a4",
+  "8k": "dc1d7dbdeebf0e03ea04e258ee081a709616b592efdcca1866f2b68cb3c5b868",
   "8e": "7872673caca1d365b475a70b988fc32d20e307cb5602130b09ddd12df6869b65",
   "8v": "8ad59ee21212289d55e9b04644b1887b76f4bba07fb369b815df80c59375c07b",
   "8b": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
@@ -356,7 +348,7 @@
   "8a": "1aa4410e52a1ee814fc4f9d404939bfeba60656d9bcf0aceddd2a694b6701ac9",
   "8s": "0a701c83a4087c557fc3a1cbdf90bd0c59ab685ae364a7b145acffcf5eab1ed6",
   "9": "c581079fc619e65dbdf1d0669d689494d527ce2b3fb32c8a0dcb5b555cc88c75",
-  "5": "7ed1becfc18ec9e493bef39ffe5be15ddfd4c0982ba858183dfbbcc2a288f79d",
+  "5": "6e8ab22af7f2b77ffa3cfcaa29d406814f4baa9e32db2cec95a619885d895f1a",
   "10": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "19a": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "20 (box)": "08927003e7927682732d357290954820e20041dd23ee8bfb5dc68beacc369d3b",

@@ -115,6 +115,35 @@ rows:
       s3.foreign_any: false
     expect:
       refused: f4952.bad_election
+  - id: sales.interest_home_equity_for_stocks
+    design: BUG-0833 (interest on a home equity loan whose money bought investments is investment interest)
+    situation: A person paid $500 of interest in 2025 on a home equity loan used to buy shares, and has no carryforward.
+    answers:
+      f4952.has_interest: true
+      f4952.line1: 50000
+      f4952.carryover: false
+      f4952.line4g: 0
+      f4952.unsupported: false
+      f4952.alternative_allocation: false
+      s3.foreign_any: false
+    expect:
+      proceeds:
+        f4952.line1: 50000
+  - id: sales.interest_carry_from_2024
+    design: f4952.carryover (a carryforward on line 7 of a 2024 Form 4952; amb.2025.f4952_no_2024_form)
+    situation: A person whose 2024 Form 4952 shows $800 on line 7 paid $500 of margin interest in 2025.
+    answers:
+      f4952.has_interest: true
+      f4952.line1: 50000
+      f4952.carryover: true
+      f4952.prior_7: 80000
+      f4952.line4g: 0
+      f4952.unsupported: false
+      f4952.alternative_allocation: false
+      s3.foreign_any: false
+    expect:
+      proceeds:
+        f4952.prior_7: 80000
   - id: sales.ordinary_sale
     design: MAP 2.9, the per-sale questions; the route beneath a question asked once
     situation: A person sold shares of one stock, reported on a Form 1099-B with basis, and none of the special kinds.
@@ -138,9 +167,6 @@ rows:
       sales[a].box: D
       sales[a].special: true
       sd.route_each: false
-      sales[a].proceeds: 0
-      sales[a].reported_basis: 0
-      sales[a].code: none
       sd.trader_election: false
       sd.qof: false
     expect:
@@ -153,9 +179,6 @@ rows:
       sales[a].box: A
       sales[a].special: true
       sd.route_each: false
-      sales[a].proceeds: 0
-      sales[a].reported_basis: 0
-      sales[a].code: none
       sd.trader_election: false
       sd.qof: false
     expect:
@@ -168,9 +191,6 @@ rows:
       sales[a].box: D
       sales[a].special: true
       sd.route_each: false
-      sales[a].proceeds: 0
-      sales[a].reported_basis: 0
-      sales[a].code: none
       sd.trader_election: false
       sd.qof: false
     expect:
@@ -295,9 +315,6 @@ rows:
       sales[a].box: L
       sales[a].special: true
       sd.route_each: false
-      sales[a].proceeds: 0
-      sales[a].correct_basis: 0
-      sales[a].code: none
       sd.trader_election: false
       sd.qof: false
     expect:

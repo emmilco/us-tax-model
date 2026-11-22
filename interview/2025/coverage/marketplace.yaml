@@ -7,7 +7,7 @@ sets:
     says: "One person with one Form 1095-A, which is not void or replaced, and no tax-exempt interest."
     answers:
       $f1095a: [form_1]
-      f1040.tax_exempt_interest: 0
+      f1040.tax_exempt_any: false
       f1095a[form_1].void: false
   plain:
     says: "None of the facts that end the interview. No other coverage was possible, the plan covered only people on the return, and every premium was paid and none refunded."

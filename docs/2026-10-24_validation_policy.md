@@ -33,8 +33,11 @@ can carry; it is not a pin on any one run.
   `gpt-6-terra`, `claude-sonnet`, `claude-haiku`.
 
 A model's rank does not by itself qualify a review: the provenance, subject, noise and ruling rules
-above still decide whether a run is evidence. The Claude family remains the required reviewer for the
-standing logs; `deepseek-flash` and `gpt-6-astra` are optional peer families under `families.json`.
+above still decide whether a run is evidence. `families.json` carries the review tier (owner, 2026-11-17,
+T-347): a current log from any **qualified** family (`claude`, `deepseek`) satisfies a form, an **advisory**
+family (`gpt`) may review only beside one, and `callable` says whether the tools may call a family at all — it
+does not change whose logs count. Claude is not callable while it is off this project; its current logs stay
+evidence, and DeepSeek reviews what changes. `deepseek-flash` and `gpt-6-astra` are the pinned models.
 GPT-6 Astra runs through `codex exec` in an empty read-only scratch directory with `--ignore-user-config`;
 any tool event in its stream fails the call, and the model codex actually used is read from its session
 rollout (deleted after the fact, so the review's own receipt is the only retained copy).

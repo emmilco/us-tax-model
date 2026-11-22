@@ -43,7 +43,7 @@ answers:
   dcprov[bright_start_day_care].related: false
   dcprov[bright_start_day_care].tin_kind: tin
   person[taxpayer].eic_ssn: true
-  f1040.tax_exempt_interest: 0
+  f1040.tax_exempt_any: false
   scope.w2_marks: false
   s2.w2_marks: false
   s1.nqdc_pension: false

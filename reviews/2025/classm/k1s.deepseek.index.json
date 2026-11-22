@@ -1,0 +1,188 @@
+{
+ "kind": "classm",
+ "form": "k1s",
+ "family": "deepseek",
+ "base": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+ "lines": [
+  {
+   "key": "case classm.k1s.1",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": null
+  },
+  {
+   "key": "classm.k1s.1 — person[taxpayer].k1s[acme].col_k",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.1 — person[taxpayer].k1s[acme].col_i",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.1 — person[taxpayer].k1s[acme].col_h",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.k1s.2",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": null
+  },
+  {
+   "key": "classm.k1s.2 — person[taxpayer].k1s[acme].col_k",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.2 — person[taxpayer].k1s[acme].col_i",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.2 — person[taxpayer].k1s[acme].col_h",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.k1s.3",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": null
+  },
+  {
+   "key": "classm.k1s.3 — person[taxpayer].k1s[acme].col_k",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.3 — person[taxpayer].k1s[acme].col_i",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.3 — person[taxpayer].k1s[acme].col_h",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.k1s.4",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": null
+  },
+  {
+   "key": "classm.k1s.4 — person[taxpayer].k1s[acme].col_k",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.4 — person[taxpayer].k1s[acme].col_i",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.4 — person[taxpayer].k1s[acme].col_h",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.k1s.5",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": null
+  },
+  {
+   "key": "classm.k1s.5 — person[taxpayer].k1s[acme].col_k",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.5 — person[taxpayer].k1s[acme].col_i",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.5 — person[taxpayer].k1s[acme].col_h",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.k1s.6",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": null
+  },
+  {
+   "key": "classm.k1s.6 — person[taxpayer].k1s[acme].col_k",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.6 — person[taxpayer].k1s[acme].col_i",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.6 — person[taxpayer].k1s[acme].col_h",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.k1s.7",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": null
+  },
+  {
+   "key": "classm.k1s.7 — person[taxpayer].k1s[acme].col_k",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.7 — person[taxpayer].k1s[acme].col_i",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.7 — person[taxpayer].k1s[acme].col_h",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.k1s.8",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": null
+  },
+  {
+   "key": "classm.k1s.8 — person[taxpayer].k1s[acme].col_k",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.8 — person[taxpayer].k1s[acme].col_i",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.8 — person[taxpayer].k1s[acme].col_h",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.k1s.9",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": null
+  },
+  {
+   "key": "classm.k1s.9 — person[taxpayer].k1s[acme].col_k",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.9 — person[taxpayer].k1s[acme].col_i",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.k1s.9 — person[taxpayer].k1s[acme].col_h",
+   "record": "43b20ad448a4ff99836339c115ac849670722b5b0359881d4260194a5f198234",
+   "status": "AGREE"
+  }
+ ]
+}

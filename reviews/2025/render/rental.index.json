@@ -2,243 +2,230 @@
  "kind": "render",
  "form": "rental",
  "family": "claude",
- "base": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+ "base": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
  "lines": [
   {
    "key": "1b",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
    "subject_key": "f38154e62e78d1a09436184dff1a0ee50ccd7c6ddb01d131d902d80d85b6a8a8"
   },
   {
    "key": "2 (rental.days_fair)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
    "subject_key": "2d3416f693c20e38cfafa44a9709c8ab7f67fd0a5765145536158279b24bc2c0"
   },
   {
    "key": "2 (rental.days_personal)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MISMATCH",
-   "ruling": "Ruling: finding; i1040se p. 4, Line 2 excludes main-home days around a rental of 'at least 12 consecutive months (or for a period of less than 12 consecutive months at the end of which you sold or exchanged it)'; the question names only the 12-month case. A 2025 sale of a listed building already refuses at rprop.screen, so the gap is a shorter rental ended by a later sale or exchange: low (BUG-0772). The family point is representation: the question asks days 'used that way', the use defined at rental.personal_any, whose help says family renting at a fair rent as their main home is not personal use.",
-   "subject_key": "08f7f5eaef0d6d3f1ac96434cc946fb885b104ab17f061554429de63ebddbe65"
+   "ruling": "Ruling: finding; the question omits p527 p. 26's exceptions for a family member renting at a fair rent as a main home and for shared-equity use (BUG-0994)",
+   "subject_key": "26183e9dfc2e77c2ae8a05f99368bbd17f7734d337c789774e3667b4f5b79124"
   },
   {
    "key": "5",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "c552ab0ca103c8fbaaad3c8310897c5a1bc93738563c88691fa03e8b788ccb41"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "da69f13479fada932b421a13d9092ff87559973782050e9e79f6396894e5c81c"
   },
   {
    "key": "7",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "303d98a2848abf2b1b7da0ca29eaaa33c07c73edae9fb6e3c877335e75c89355"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "78df9e7a970cc94788ba61264af34d848d988228329ff97730c3d26a544f9e3e"
   },
   {
    "key": "8",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "9b2d992ab16034ee9fa7838d6c0154b50d6da28c0b14f0debafcc3e5e935d314"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "6da9e9ca139f7f28fe2d33422becd5b814cb8f2439b10277ee46cda121e37df9"
   },
   {
    "key": "9",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "4fa39cd31dcdef88db3247442e30d0a7f246ecc4ab7be47564ee3059cd4d97b0"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "365ebb8cacebda3ed4f0da637dbb1420d1e203e28f9d6747769ce2986878b9d6"
   },
   {
    "key": "10",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "eeae62e15c362976a8ed9580fb14b202911e2d5e0d948ee99f21ea52d2842099"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "ee5f16dcb636817e7a3b6c4dc608310f2010cd4dec008813d5e74123897c1efd"
   },
   {
    "key": "11",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "845c7cfc672d80fdf3efa8f6bf5f2e2d8a594fb96890495735436ec9e0935a3c"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "494c826591cc12f02114406a11e752166b834e197b127ff644d51ac4924d7256"
   },
   {
    "key": "12",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "eb57836739ab3f823e4a864038e2eed7a33a5dcd85767dc1f1fa4a8fd359c98c"
+   "ruling": "Ruling: finding; deductible mortgage interest above the Form 1098 amount (i1040se p. 6, Line 12) has no question (BUG-0995)",
+   "subject_key": "70e7b35839c255bf9226c288493970f542b6eb2c8d443826ddc47b22a2e57ba7"
   },
   {
    "key": "13",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "f60780170a11dbe6cea20139fd528e375fa84c8897eebed7c63f2d025250e83a"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "1f75ba05c73f04263a303e4c709a20cf736da9fba570adb04a8fe46763c089d2"
   },
   {
    "key": "14",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "73379f24cd0afd51dc2400b9cb3dc49231e973c63d55fcdab4805d4fb7a29e98"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "aec4ee67f1049dd51f48bbcd9de5d9a78b5c661b2efcd6140d4055a759961784"
   },
   {
    "key": "15",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "1041cd2a334c62baf29a9cd8e584a8a067d9d8f3b223409ecfb35f4c1370fec7"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "d160f61668d094f3a7c8364919184baef2d92c8f9bb9ca757082b9266a563bf8"
   },
   {
    "key": "16",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "37d76f9f7a76212ef6341aed47b281a0d6b8d84531847a6329dcf958a8ec875b"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "f9716296c5dc7bd6f180bfe7e336487b080becd37024616ce1c1989ccafb5736"
   },
   {
    "key": "17",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "f5a3f61e0c5ca24df6ba04384e14c7f1e113e583e4da31582da58a276b33b260"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "c997f15a0bdd8ded2abbaa5d59ddee3960e5e71d0f2caf464ce0fa918094a6ae"
   },
   {
    "key": "19",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "565203afdbafe377c29b671b717fb0577e5b7c761970512416a3ae0ee76985c5"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "0a22750ca7eb0e4c06e7820c271bf64adcaffa7c41ec4e89055bb8574a9fbcdb"
   },
   {
    "key": "18",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
-   "subject_key": "490caf0d8e333065fccedb9e63b37d8bfc869537058e2437eca9ef71c63d04bc"
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
+   "status": "MATCH",
+   "subject_key": "771409e2bcad3928a3b5e9f9285530d6cc81f7e003ef30f88b5aef11899f0c93"
   },
   {
    "key": "20",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MISMATCH",
-   "ruling": "Ruling: representation; line 20 adds lines 5 and 7 to 19 (line 6 refused), as the review says; for an excluded entry the line is not reported: sche sums over rental.reported only and line 21 is zero (i1040se p. 5, Line 2, 'do not deduct any rental expenses').",
-   "subject_key": "924f80de1a72ad8ca3752a1eb24860182928ab2af6c62ea8504b9f486a46e9e3"
+   "ruling": "Ruling: representation; an excluded property's lines are figured but its column is not carried to Schedule E: the Schedule E totals sum only rentals with rental.reported true (forms/2025/sche.yaml), so nothing is reported for it, as the instructions require.",
+   "subject_key": "9e0ad2a95eb375acae87b2a12a0fd433ba82825cf0810e3987dba4f7d5e552bd"
   },
   {
    "key": "3",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
-   "subject_key": "87e22e7c7eba4a6f9127687f04b6b5d93fa012170bdb31e7a2069da89ba89cb7"
+   "subject_key": "ae0ebeaf8a262333d8909b97e5b6012cf0474c2eb8a3fba55c54e6a2a2029afc"
   },
   {
    "key": "21",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
-   "subject_key": "0553d7cef087ccbb747e4cdaed4513994f412f6e4b3e8b0772e88de03727874d"
+   "subject_key": "b9da10788ce5fe81555749dc6cde3b0f664ae53b7546cd0479e3d27ea87f200c"
   },
   {
    "key": "IV/V (a)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
    "subject_key": "27ca6614813b334af25411b6116e430151d16fc30ffb84242942dc161ef64d9a"
   },
   {
    "key": "IV/V (b)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
    "subject_key": "c74665d3424e627f4ece8296e62943b4695953d4abc5057d3db1c6b66ca87285"
   },
   {
    "key": "IV/V (c)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
-   "subject_key": "10406504838c9e34fd6fce0e04828ed9807b9fad673411bb087d64045cf89120"
+   "subject_key": "71cf619cb7b0a6484500afa910d49c4128ae09b3b6712e7554a19fd4260018f8"
   },
   {
    "key": "IV/V (e)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
-   "subject_key": "f6c20cb4aff303bb149bb0734e29ca451568432d777a53f47e25d21f1ca05e02"
+   "subject_key": "ec97bca6cb65887413f78f55f9c4473b21586344be5f38627ca0453262886561"
   },
   {
    "key": "VI (a)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
-   "subject_key": "582b8e2d1e2c16016853bad8cc46e9823f83fd3cb5a701705a9c0696af4ceeb9"
+   "subject_key": "3b62e66f1bc810c2d8635fce209bb72c491cb8aa93ac8f1d4748f6e181d3bb1c"
   },
   {
    "key": "VI (c)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
-   "subject_key": "8baad149f4d57c55c03c4755bfffa539c76a3752e28f0739106c4a8008bc8bb1"
+   "subject_key": "586c65908605b84f4456e3bf93495b8c7d2b9dfa2bc271eb9159c73b7f7bdbb1"
   },
   {
    "key": "VII (a)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
    "subject_key": "51bec26cbd58f5eeb5541f236398d078e7ff3a856e6cad7d9644ea6982a2cf42"
   },
   {
    "key": "VII (c)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
    "subject_key": "163825b5c60df5aec6338fa84822cd2f370916cd1ab8accfed7ca5643b0c509b"
   },
   {
    "key": "VIII (c)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
-   "subject_key": "df4b3076d360a5713e9571ed2ecf6a58c7b88493946c2edefcc863e01b905152"
+   "subject_key": "4783effaf61243d5123b6416d978f906f3d2b54bcd5f56ff48027417b90d864e"
   },
   {
    "key": "VIII (b)",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
    "subject_key": "2ac03259c605074ba8b23dad0d333e4ff1077fe26f5aa533bd72c1c05705f074"
   },
   {
    "key": "22",
-   "record": "06d8bff51768c80987e9a8cb0206ad055b09bd0964e06cc909303678fa9676c4",
+   "record": "63493032240c196d34fbb4d01e206c31686ce63ebe34c8e09009091a5ad3c71e",
    "status": "MATCH",
-   "subject_key": "992c769c3d3a8e665284cdf6981135bb036d8d9d4f0755709cc5957f69c29cd8"
+   "subject_key": "966c624981f1d3364420691ee8bac95a76e5f34e348515d236c1b14818d918b9"
   }
  ],
  "subjects": {
   "1b": "bc48c0ba6922aba4bfbbdf27042c799633bb2f74be8727289418b08d17dbd7fe",
   "2 (rental.days_fair)": "072d4134e7bda8a6e8951a6bcffc4e3f374ef1a0a4ea7fd2086330a2eee2a166",
-  "2 (rental.days_personal)": "a10d8779407cd080dd302c2564e9b683d5ac538f7529e45b4d90307d956ab97d",
-  "5": "f3986cc1272749e1dd349103e46ede35ac98d87f88f5594dcb6bf8d7ecf3bbb9",
-  "7": "b456525cf0aa816561c6913566cdc054b2edf959c25bdc250e862c3bea470b01",
-  "8": "c95cdebe23d9019fd741338aa4c1fafa1d5d6fd0209750db916944c4a7df22f5",
-  "9": "793ad193101755c232a7b125f84808e393b1324182d4132f867dd783a3204781",
-  "10": "3b1c5d5b34405b530e1b3d2bb7a6bb56d8b1918beb91e16b689490bb076fc773",
-  "11": "152262d6b202fae6ee5bd073a2b2917094ba9235ce49f8c5cdaa832b6b26132b",
-  "12": "cf52d28af4b55758f2c115cdd4cbf8ac49e0bc8b77e25842e42c8a74b5f5d100",
-  "13": "91887a4646b14b488c99c247c7c872e7ad03dbfc2eeea6edce68bdf216a07439",
-  "14": "ee7346e1cad1b45510ee54214b0f2e95b5418176386909724cb69354a490f602",
-  "15": "11c5bc83e08452679809e98484cbecffb7ece256e89070cd9b303544919816d0",
-  "16": "36080e768d348f3baf8be4d0e746a2fc70ac415a2ee41aeb49d7cc3106589476",
-  "17": "5e688baf9366f17e45ff4d7f400e1ebd80cf1fa4cd4196ce77379e896165594b",
-  "19": "29befc81f0a0e521b8a612c6dd762b089951c26982b9b3dc59d1af339fc45b1a",
-  "18": "5eb1fcbc61703d3c964d4db05dcce206306b5c9aa8c3a1072619b58168e5d4a5",
-  "20": "866f62d1133d974f975ccc825605c48d9d005aa90036307c4b7500bae6973ecb",
-  "3": "9fb1028609445f1be215ac82da3bc639724df389aafe0cdfb03b24ebef7b0d67",
-  "21": "3aa56d18b3549a092663a3684491ac7c80059d35e61df096e621383d3d1b7293",
+  "2 (rental.days_personal)": "b44d7fef7d1a23be48155881987683db4f17feb819d438a173c8429a5fabe2c1",
+  "5": "245409f1e0d0319bb0c55b5b0421c9e333d10a3700ab8027f87a5d8987e33e6d",
+  "7": "dc6deffa16a49fb7c13ae9fda1fe528d544bb5eb91ae1cd064c1438a4ed7b5c3",
+  "8": "ff5e963167bfbb05bd66cbed4f3d81df1c6b7949cdabed2c24e27cc9b8750c9d",
+  "9": "0b3316ea71e0008f75fcd5f6748f2e2c1d22b8d4ec81f89d5cf278388572bbc7",
+  "10": "e314844b1a0a8a5e51b408e7a22622b71593cead6f55de9d4e906d098838de7b",
+  "11": "e8e3bad82eee47d3af8fff3c89901f97f7cffff5a8537ea5977bcf8fbe6c2d53",
+  "12": "5dfb9265c5f4b3581ababdcaee8e6f965f2dd7584b9481fe79d497eaa413aaad",
+  "13": "770e0389e192532700d35033c03900651c9d1494a14059b86dd2739166f1dce8",
+  "14": "6adaf5e953443a94bc0b1948ce41a6b76dc64196ca5625ace8b4046b452cbb19",
+  "15": "cfbfac9c6bab40285de052ec937f21e39c30f0d5b884b8a9f6aa8c096f826b63",
+  "16": "7c868d05f47f9a2c2a99f141de21175fc237d173a5e93cf4a238bfe17836df34",
+  "17": "8e6f7e0304409378cbd0f92f6bd726e15caf5b24df4ad8886436da4cbf02bacc",
+  "19": "24301a9e544c9ed2b6281ec7b7effe600cf3792ae91c97617ebfcd2808925cdc",
+  "18": "e3033c45d0058c8b1ce48522065415f15250c6cc4aaed5dc8602279ca6712b09",
+  "20": "3fd66edfb47b4b7e69d890bf8f3f9bd72f9e73ed540a7347f51939f56b3c490a",
+  "3": "5aefbf3e4b2692208c9f42cb49dcbaa76f9ef80c4303efc41036b943edf7eaab",
+  "21": "ff4b7e8f6e4f84be9bd66430d94eb37c12770f3e6b200c86bc5aa677fa371886",
   "IV/V (a)": "5ef05fb338167af0bcd4ec36112dcddc36e5e8dbb43541613ec0fb87035c6bc1",
   "IV/V (b)": "ae42e020f6b7077198ed5ede60e7ea80698e4ddabb356955c1062b61239f398c",
-  "IV/V (c)": "824c21caab7bd4587b84a83562bb6012b7b9677ba7b68ce52644b055c00389e0",
-  "IV/V (e)": "d36556ba0f37bfdcb6f7ccd72aa3f4543019586f6708bbf53fc752a4677a3c07",
-  "VI (a)": "87120e06bf80e782e32cc294cc6c179702804197de768bd915bcc0056ac0d7fc",
-  "VI (c)": "e3fea3df067b99cd1b3d85537d2b7d8fd093bee0e5a65de49a5717e62a08d82f",
+  "IV/V (c)": "f52431ab33d673649dc37c12e4bc4ed7b648cca8410d9ef9386fe2fd3ec7aa13",
+  "IV/V (e)": "2c68cf678d9d710d0ab54d95c0a12c63ae26db9b106c7463450b2c0243cb64c1",
+  "VI (a)": "510914c1a805ec24c242976c94cbb1fdcbb938a0370f89a03e130042f2ec23e2",
+  "VI (c)": "7984157f999c2ee5b62e60cce0823dc99c1ef49a12d156093ac6f49a91db1cf1",
   "VII (a)": "b7ecd6ca9bc2bee8caded4a1b91a10347a8c7722f9f218e805d07029ae7281d6",
   "VII (c)": "0d7811a92c8bb66f010506e9855dab0c48b10915f2fe281f20abd97b2254ce0a",
-  "VIII (c)": "e4fb990faf131504c8d2b447e463a2fa6f24634a78e6b3741d04fd4842be2b94",
+  "VIII (c)": "fab0e9fbc5768f1d27d0a22abe0e1e3e274b8b924c03a2ee708512c31797a0bf",
   "VIII (b)": "f5b6747aa9f3c680e0ef7120120ec4f8b6ccf1b7947ae843b13c15e01a8b85ac",
-  "22": "74c51b3173b8ebe8e9525459ff7970c2b7b4cb9a666b3ae9f79e0be78c356667"
+  "22": "9f087610f6a133a957304ef0a91f2577c3017c33fdea1164397e7f80b6bde7ff"
  },
- "__rest__": "10698c6e77630867ad668abf9aa14ac2567a5427359e03094d3eafa319df69a9"
+ "__rest__": "24cbf42508a0abaefd46c96c9bf6e47a6dd76483ea0f68ce88f98eb7304c0060"
 }

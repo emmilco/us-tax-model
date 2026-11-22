@@ -35,7 +35,7 @@ every tool here (`transcribe.py`, `render_compare.py`, `classm.py`,
   --permission-prompts none --model <pinned>`, system prompt task-only. The tool
   list in the init event is empty and a request to read a file is refused;
   verified before the first run. No credential beyond the CLI's own.
-- `gpt*` (inactive family; runs only under `--inactive-family gpt`, see Model families) — `codex exec --skip-git-repo-check --ignore-user-config -s read-only
+- `gpt*` (advisory, and not callable in `families.json`: runs only under `--uncallable-family gpt`, see Model families) — `codex exec --skip-git-repo-check --ignore-user-config -s read-only
   --json --model <pinned> -` with the working directory set to an empty scratch
   directory, so no project file is in its workspace. Codex has no separate
   system-prompt flag, so the system prompt and the review prompt are joined on
@@ -46,7 +46,7 @@ every tool here (`transcribe.py`, `render_compare.py`, `classm.py`,
   after the model is recorded. The owner's authority ranking is in
   `docs/2026-10-24_validation_policy.md`: `gpt-6-astra` is a peer of
   `claude-opus-5-5` and `deepseek-v4.1-flash`.
-- `deepseek*` (inactive family; runs only under `--inactive-family deepseek`) — DeepSeek's hosted OpenAI-compatible endpoint
+- `deepseek*` (qualified and callable) — DeepSeek's hosted OpenAI-compatible endpoint
   (`https://api.deepseek.com/chat/completions`), standard library only: the
   system and user prompts become the two messages, temperature 0, one
   non-streaming request with a timeout, retried with backoff on 429 and 5xx
@@ -68,7 +68,7 @@ reported, whichever transport ran. `--dry-run` builds the prompt and excerpt
 and reaches neither transport nor the keychain.
 
 ```
-python3 tools/transcription/transport_check.py [--model deepseek-flash] --inactive-family deepseek --inactive-family-reason TEXT   # one tiny call; prints model and usage
+python3 tools/transcription/transport_check.py [--model deepseek-flash]   # one tiny call; prints model and usage
 ```
 
 ### Cost ledger
@@ -103,31 +103,44 @@ dot- or colon-separated part of its subject begins `ny_`, else federal. This is 
 
 ## Model families
 
-Reviews run under the Claude family only. The second families, DeepSeek (`deepseek-flash`) and GPT
-(`gpt-6-astra`), are **inactive** in `families.json` (`"active": {"claude": true, "deepseek": false,
-"gpt": false}`). While a family is inactive:
+`families.json` sorts every family into a tier and says whether the tools may call it:
 
-- no review tool calls its model: `transcribe.call_model` raises `families.InactiveFamily` before any
-  transport, keychain read or ledger row, and the writers (`transcribe.py`, `render_compare.py`,
-  `classm.py`), `transport_check.py` and `rerun_all.py` refuse a `--model` of that family at their
-  arguments;
-- a single deliberate run needs the override naming the family, `--inactive-family deepseek
-  --inactive-family-reason TEXT` (on those tools; `rerun_all.py` passes it to each tool). Each paid call
-  made under it records `"inactive_family_override": {"family", "reason"}` in its cost-ledger row;
-- `check_logs.py` counts the family's logs as history and never requires or fails them; their integrity
-  is still checked for every family by `rulings.check()` (run by `check_logs.py`) and
-  `review_store.py check`;
-- `compare_families.py` (the check-all step `compare_families`) does not regenerate
-  `reports/<year>/second_family.md`; the last report written stays as the record and the step says so;
-- the family's class M fixtures (`fixtures/<year>/classm.<family>.json`) still run as evidence cases,
-  and the evidence report still counts them as second-family M.
+```json
+{"qualified": ["claude", "deepseek"], "advisory": ["gpt"],
+ "models": {"deepseek": "deepseek-flash", "gpt": "gpt-6-astra"},
+ "callable": {"claude": false, "deepseek": true, "gpt": false}}
+```
+
+- **qualified** — a current log from any one of these families satisfies a form's review requirement.
+  `check_logs.py` asks them in the order listed and takes the first log that is current and holds no
+  open ruling. Every other log of that form is advisory.
+- **advisory** — corroboration that never satisfies: its logs may be missing, those present are held
+  to the snapshot and subject checks, and its open rulings are counted and printed without failing the
+  run. A stale advisory log fails only when it would earn credit if it were current
+  (`compare_families.eligible_when_current`) and its family is callable; otherwise it is reported as
+  stale-ineligible. A form only an advisory family logged is unsatisfied.
+- **callable** — whether the tools may call the family's model. It is independent of the tier: a
+  family that is not callable keeps its logs and their standing, so Claude's current logs go on
+  satisfying forms while Claude is not called, and a qualified family that is not callable is simply
+  not asked again.
+
+A call to a family that is not callable needs the override naming it, `--uncallable-family FAMILY
+--uncallable-family-reason TEXT` (on the review tools; `rerun_all.py` passes it to each tool). Each
+paid call made under it records `"uncallable_family_override": {"family", "reason"}` in its
+cost-ledger row. `transcribe.call_model` raises `families.NotCallable` before any transport, keychain
+read or ledger row, and the writers (`transcribe.py`, `render_compare.py`, `classm.py`),
+`transport_check.py` and `rerun_all.py` refuse a `--model` of that family other than their own default at
+their arguments; a tool's default model is refused at its call.
+
+While no second family is callable, `compare_families.py` (the check-all step `compare_families`)
+does not regenerate `reports/<year>/second_family.md`; the last report written stays as the record
+and the step says so. A family's class M fixtures (`fixtures/<year>/classm.<family>.json`) run as
+evidence cases whether or not the family is callable.
 
 The transport (DeepSeek's hosted endpoint, `codex exec` for GPT), the DeepSeek token-budget and
-reasoning-effort options, the eligibility checks and the comparison are kept and tested offline
-(`test_review_tools.py` runs them under the override). **To reactivate a family**, set its `active`
-flag to true in `families.json`: `check_logs.py` then checks its logs as an optional family again
-(stale logs that would earn credit fail), `compare_families.py` rewrites the report, and its models
-run without the override. The `models` pin in `families.json` is enforced before network calls and
+reasoning-effort options, the eligibility checks and the comparison are kept and tested offline.
+**To move a family** between tiers, edit `qualified`/`advisory`; **to allow its calls**, set its
+`callable` flag to true. The `models` pin in `families.json` is enforced before network calls and
 when qualifying review logs, so another member of the same family cannot silently substitute.
 
 A family is the first token of the model name (`families.py`: `claude-opus-5-5`
@@ -173,24 +186,15 @@ suffix on the case id (`classm.qdcg.1.deepseek`) so no two families' cases
 share an id; their `evidence_note` records the model, which is how the
 evidence report counts second-family M assertions.
 
-`families.json` lists the families `check_logs.py` expects:
-
-```json
-{"required": ["claude"], "optional": ["deepseek", "gpt"],
- "active": {"claude": true, "deepseek": false, "gpt": false},
- "models": {"deepseek": "deepseek-flash", "gpt": "gpt-6-astra"}}
-```
-
-Only active families are checked as below; an inactive family's logs are history (above). Every required family must have a current log with no open ruling for every
-form (`check-all` fails otherwise). An optional family's logs may be missing;
-those present are held to the same snapshot and subject checks, and their
-open rulings are counted and printed without failing the run, so a second
-family's disagreements can stand open while they undergo source adjudication. A log whose
-family is in neither list fails. Counts are printed per kind and family. The
-family can move to `required` only once every form has a qualifying log; an owner reading sample
-is no longer a prerequisite under the amended plan.
-Optional `by_kind` entries override the two lists for one review kind. This lets
-transcription/render become required while class M is still being qualified.
+Every form must be satisfied by a current log with no open ruling from one of the `qualified`
+families (`check-all` fails otherwise). An `advisory` family's logs may be missing; those present are
+held to the same snapshot and subject checks, and its open rulings are counted and printed without
+failing the run, so its disagreements can stand open while they undergo source adjudication. A stale
+advisory log fails only while it would earn credit and its family is callable, as above. A log whose
+family is in neither tier fails. Counts are printed per kind and tier. Moving a family is a
+`families.json` edit; it becomes qualified once its logs are trusted for every form it covers.
+Optional `by_kind` entries override the tiers and the models for one review kind; `callable` is
+global, because it says which transports this machine may call.
 
 ### Agreement floor and independence yield
 
@@ -223,8 +227,10 @@ overall, in `reports/<year>/second_family.md`:
 MISSING lines are excluded from the noise denominator and block eligibility;
 they cannot improve a run's qualification. A log whose subject hash is no longer
 current is marked stale. The report's summary line is printed when it is written.
-`rerun_all.py --model <non-Claude>` (an active family, or an inactive one under the override)
-runs every form that has a log of any family through that family, leaving the Claude logs as they are.
+`rerun_all.py --model <non-Claude>` (a callable family; an uncallable one under the override)
+runs the forms that family's review is needed for, leaving the Claude logs as they are. A qualified
+family's job is skipped where another qualified family's log already answers the form (name it with
+`--forms` to run it anyway).
 
 ## Running
 
@@ -232,7 +238,7 @@ runs every form that has a log of any family through that family, leaving the Cl
 python3 tools/transcription/transcribe.py --form qdcg            # one model call
 python3 tools/transcription/transcribe.py --form qdcg --dry-run  # excerpt and prompt only
 python3 tools/transcription/transcribe.py --form qdcg --from-response   # re-compare the saved response
-python3 tools/transcription/rerun_all.py --kinds transcription,render --resume   # the Claude family
+python3 tools/transcription/rerun_all.py --kinds transcription,render --model deepseek-flash --resume   # the qualified family that may be called
 ```
 
 This is a deliberate network step like the source fetcher; it is not run by
@@ -261,7 +267,7 @@ each completed job. A model family's first usage-limit failure (an exhausted all
 rate limit or timeout) stops `rerun_all.py` calling that family: calls in flight finish, later jobs of the
 family are not run (a `--resume` reuse still runs; it makes no call), and the end of the run lists every
 job the limit stopped with the command that reruns it. `--reasoning-effort low|high|max` is supported for DeepSeek
-reviews (an inactive family: under the override only); it is recorded and checked on reuse. Class M rebuilds current jobs
+reviews (its family must be callable, or the run needs the override); it is recorded and checked on reuse. Class M rebuilds current jobs
 even when reusing a response, so changed supplied amounts require fresh work.
 `--max-output-tokens N` raises the DeepSeek allowance for reasoning plus the
 final answer (default 65536; use 131072 for the largest documents); the request

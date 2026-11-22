@@ -13,7 +13,8 @@ claims grouped by encoded item (item, sentences[quote, page], why_uncovered, eff
     completeness_review.py [--forms a,b] [--samples K] [--force-rerun REASON] [--approve-cost DOLLARS]
                            [--dry-run] [--from-response] [--jobs 4] [--model M]
 
-Sampled (samples.py): a form's subject is the hash of its prompt without the system prompt. A run gives each
+Sampled (samples.py): a form's subject is the hash of its prompt without the system prompt and without the HANDLED
+ELSEWHERE list (other forms' refusals, given as reviewer context). A run gives each
 selected form the samples its current subject still needs this milestone (samples.SAMPLES_PER_MILESTONE; a form
 whose subject changed starts over), merged into reviews/<year>/completeness/completeness.json. Samples beyond the
 milestone need --force-rerun REASON. The run is priced from the cost ledger and refused above the owner's gate
@@ -220,13 +221,16 @@ def build_prompt(form, secs, forms=()):
 
 def prompt_for(form, mani, forms=None):
     """(prompt, used, subject_sha) of a form's review, or None when it has no cited instruction pages. The subject
-    hash covers the prompt only, not the system prompt: a change to the reviewer's instructions applies at each
-    form's next sample and does not make every review due (samples.py)."""
+    hash covers the form's own prompt: its cited pages and its encoding list. It leaves out the system prompt, so a
+    change to the reviewer's instructions applies at each form's next sample and does not make every review due
+    (samples.py), and the HANDLED ELSEWHERE list, which holds other forms' refusals: it is reviewer context, so
+    rewording a refusal on one form does not make every form that reads it due."""
     secs, used = sections(form, mani)
     if not secs:
         return None
     prompt = jurisdiction.preface(build_prompt(form, secs, forms if forms is not None else context_forms()))
-    return prompt, used, hashlib.sha256(prompt.encode()).hexdigest()
+    own = jurisdiction.preface(build_prompt(form, secs, ()))
+    return prompt, used, hashlib.sha256(own.encode()).hexdigest()
 
 
 SYSTEM_SHA = hashlib.sha256(SYSTEM.encode()).hexdigest()

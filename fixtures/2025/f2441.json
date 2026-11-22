@@ -6023,6 +6023,7 @@
         "dependent[a].eic_ssn": null,
         "dependent[b].us_half": null,
         "dependent[b].eic_ssn": null,
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": null,
         "eic.died_this_year": null,
         "eic.us_home": null,

@@ -144,6 +144,52 @@
   },
   {
    "printed": "ftc.credit",
+   "project_expr_sha256": "337b0682c817fc469669c8a3de565d2d5c74d6b52903418fb57bee504d5745d2",
+   "second_expr_sha256": "dfc8514da1ebfe1e9124954953ae4bfae4815a4b12239df4ed31b6e6b9fd7f10",
+   "ruling": "Ruling: representation; i1116 p. 2, \"To make the election, just enter on the foreign tax credit line of your tax return (for example, Schedule 3 (Form 1040), Part I, line 1) the smaller of (a) your total foreign tax, or (b) your regular tax.\" The candidate figures the same smaller-of through its own election and Form 1116 helpers (ftc.h_election_credit, ftc.h_form_credit); where both evaluate, 2,766 of 3,036 in-scope comparisons agree. On completed returns its 221 differences are inputs the interview does not ask (ftc.taxes, ftc.carryover, ftc.any, household.home_cost): the project asks ftc.has_tax first and reads the tax through ftc.credit_tax. No value or refusal difference on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/ftc.json): 2,866 of 3,195 comparisons agree. Project stands.",
+   "context": "d3b1f93262dc030ff667bd2bfb69d8425d0c2717ca2da202b3db916ef97c8807",
+   "date": "2026-11-17",
+   "run": "224765f1e62cc0c972ecabdc87f142d0d6640f3408f3ad2d66233e93e502d2bb",
+   "subject_key": "3d280e16af3f5c70fd8d0d8c6de93adbd56441ab1c4d5fe2b3eac059046da757",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@ftc",
+     "fixture:classm.f8889.3.deepseek@ftc",
+     "fixture:classm.f8889.4.deepseek@ftc",
+     "fixture:classm.f8889.5.deepseek@ftc",
+     "fixture:classm.clcw_next_year.3.deepseek@ftc",
+     "fixture:classm.dependent.2.deepseek@ftc",
+     "fixture:classm.f1040.6.deepseek@ftc",
+     "fixture:classm.eic.7.deepseek@ftc",
+     "fixture:classm.sa.6.deepseek@ftc",
+     "fixture:classm.asset.2@ftc",
+     "fixture:classm.asset.3@ftc",
+     "fixture:classm.f2441.1@ftc",
+     "fixture:classm.f2441.2@ftc",
+     "fixture:classm.f2441.3@ftc",
+     "fixture:classm.f4562.1@ftc",
+     "fixture:classm.f4952.2@ftc",
+     "fixture:classm.f4952.3@ftc",
+     "fixture:classm.s179.4@ftc",
+     "fixture:classm.gift.1@ftc",
+     "fixture:t264.eic.show5_agi_open_married_child@ftc",
+     "fixture:f1116.c2_prior_form_room@ftc",
+     "fixture:f1116.c2_prior_other@ftc",
+     "fixture:mutation.t2.f8880.inherited_ira@ftc",
+     "fixture:mutation.t2.eic.mfs_step1_agi_stop@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.credit",
    "project_expr_sha256": "a04b3c85e3e664c7c20705672c04591da2eb5fe71970a2fe60512588028dc343",
    "second_expr_sha256": "1602629c39e7ff08e6791b3fef34882dad49af90dc938917da1f2a730c8db5ae",
    "ruling": "Ruling: model error on the regular tax, representation otherwise; i1116 (2025) pp. 1-2, the election to claim the credit without filing Form 1116: the smaller of the foreign tax and the regular tax; p. 25, Line 20, \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". As ruled before on this line: the reply names the refusal for a carryover (ftc.carryover_if_asked, BUG-0619), as the project does, and takes Form 1040 line 16 alone as the regular tax, saying no line 1z is supplied. executable-triage-v2 (`.transcription/triage/2025/ftc.json`, pass c0bc3a63fe27; 1,854 fixtures, 500 generated returns seed 20261026, 149 partial records from 40 bases; 2,503 comparisons): 1,826 agree; 593 candidate-refuses, 48 candidate-unknown and 3 project-refuses on refused returns, 31 candidate-unknown on incomplete ones, and 2 value differences on completed returns: the fixture stage18.ftc_limit_with_repayment ($200.00 of foreign tax, Form 1040 line 16 of $0, an excess advance premium tax credit repayment on Schedule 2: project $200.00, reply $0.00) and generated return 35 ($149.13 of foreign tax, line 16 of $0: project $99.09, reply $0.00). Checked against the page: line 20 adds Schedule 2, Part I, line 1z. Project stands.",

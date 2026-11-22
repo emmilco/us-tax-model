@@ -1,0 +1,123 @@
+{
+ "kind": "classm",
+ "form": "asset",
+ "family": "deepseek",
+ "base": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+ "lines": [
+  {
+   "key": "case classm.asset.1",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": null
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[d].asset[cam].period",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[d].asset[cam].basis",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[d].asset[cam].f25",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[d].asset[cam].f26i",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[d].asset[cam].dep_listed",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[d].asset[pc].period",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[d].asset[pc].basis",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[d].asset[pc].bonus",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[d].asset[pc].col19c",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[d].asset[pc].macrs_this_year",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.asset.2",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": null
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].period",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].basis",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].bonus",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].col19c",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].macrs_this_year",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.asset.3",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": null
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[desk].asset[pc].period",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[desk].asset[pc].basis",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[desk].asset[pc].bonus",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[desk].asset[pc].col19c",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[desk].asset[pc].macrs_this_year",
+   "record": "b4773f4e933a7d8b0b8de3866cb15eec8a4996e44c577b43bcec0a2a648beb02",
+   "status": "AGREE"
+  }
+ ]
+}

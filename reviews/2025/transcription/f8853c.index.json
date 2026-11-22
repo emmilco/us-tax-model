@@ -3,6 +3,9 @@
  "form": "f8853c",
  "family": "claude",
  "base": "885758b8da739775d31f01d1fc6968e9e2b88a23e7e0e2ac5acf5d1876f91a8e",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-16); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "18",
@@ -27,10 +30,10 @@
   },
   {
    "key": "23",
-   "record": "885758b8da739775d31f01d1fc6968e9e2b88a23e7e0e2ac5acf5d1876f91a8e",
+   "record": "8b283e96eb719c09e395b652aa4cb3d4cb1cccccb489bf9f65bcafc8d2c27734",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as line 21 (line 22 asked only when line 20 is more than zero); no value differs.",
-   "subject_key": "3c1a1ad94ef20be38d23fe4d779568be1ff76518b84f3a8b1fda987f11d5b6b0"
+   "ruling": "Ruling: representation; f8853 Form 8853 (2025), line 23: \"Enter the larger of line 21 or line 22.\" The candidate's line is the project's (line 22 is asked only when line 20 is more than zero); its one completed-return difference reads the candidate's others_paid input where the project reads the answered line 20, and the candidate's refusal is on a return the project refuses too. Triage executable-triage-v2 (.transcription/triage/2025/f8853c.json): 48 of 54 agree, 48 of 53 in scope. Project stands.",
+   "subject_key": "9e209f9b832086bda9d5ad1b9609f88dc57f44fd15be2a2a9b734cfe65203f11"
   },
   {
    "key": "25",
@@ -59,7 +62,7 @@
   "18": "30c214eda7e886a1cf96001b911824c17c5857711ece7f64cbf3fc9b8beaa94c",
   "20": "4908a90bfd3c0da9a91ee33ae52a784b48823edf022da9040c2dee07b0d9869d",
   "21": "302700ed286d34d963286e905e2ca1eefc5e915b4cca260c07c1c6d260c7de5a",
-  "23": "9376d8d936625bafdad889334b7deb6195aed9b4e33a8dc44388d949ac146a45",
+  "23": "98a04908454349b771225c6156393635d3ed60856726e7512ac132222d3f2680",
   "25": "44c134ba41921e4dfb70f20d632adb29b40da8814f03597f2facbc8c6dcfbfa2",
   "26": "7c9c99af3c94c6031bafbdaa3758089dc4694a180d4f813e1d2464019abd86d6"
  },

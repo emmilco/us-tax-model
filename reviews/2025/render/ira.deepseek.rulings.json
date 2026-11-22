@@ -20,6 +20,16 @@
    "subject_key": "d1344a1cd5810b8b2b13f473804969a28183a71ba3e61f4cd5dbf8a6f1e317b6"
   },
   {
+   "printed": "1b",
+   "restated": "helper \"Anyone on the return made traditional IRA contributions for 2025\" = true and helper \"Your spouse was covered by a retirement plan (1 if Yes)\" > 0 (a count)",
+   "model": "The IRS line says 'If married filing jointly, was your spouse covered by a retirement plan?' The restatement omits the married-filing-jointly condition and would also be true on a married-filing-separately return when the spouse is covered.",
+   "ruling": "Ruling: scope; i1040gi p. 97: married filing separately is refused (s3.mfs), so the joint condition reaches no computed return. Project stands.",
+   "context": "c63795c1cb60b5bcddf33bfa5604f13e9cf3f9dd3d9377d81c37ff5712d639fe",
+   "date": "2026-11-17",
+   "run": "08dbdccfa76118a281a7e525dd803aaebb52ff506b1e7918d15053d0b45d5123",
+   "subject_key": "b231beb246e52f10e3abafea2899c24a2e1e5a9bf3b9a12b799fd4d04b0b4bf0"
+  },
+  {
    "printed": "2a",
    "restated": "Choose — [helper \"Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)\" = true → helper \"Line 2, your column\"] [helper \"Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)\" = false → helper \"Zero\"]",
    "model": "For married filing separately and living apart from the spouse all year, the IRS says 'enter $89,000'; the program uses $10,000 for all married-filing-separately cases.",

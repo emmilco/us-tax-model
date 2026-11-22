@@ -446,6 +446,7 @@
         "scope.business_before": true,
         "s179.prior_form": true,
         "s179.carryover": 300000,
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": null,
         "eic.died_this_year": null,
         "eic.us_home": null,

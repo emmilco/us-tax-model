@@ -43,6 +43,33 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "(g)",
+   "project_expr_sha256": "77bcb7c94e864d5d51560455a989584e75ae49936fb4b60a9a68b1cf480acfdf",
+   "second_expr_sha256": "d34513594380a1e1b1f8a5bbc99a20428f5ead0a52e627d5b74765d2dc0bb350",
+   "ruling": "Ruling: representation; i4562 p. 12, Column (g)—Depreciation deduction: the project multiplies rprop.basis by the Table A rate. The candidate reaches the same amount through its own h_figured helper; its 13 completed-return differences come from reading rprop.qip as an input where the project computes it (rprop.qip_if_new_nonres, i4562 p. 10), so the candidate is unknown on records the project answers. No value difference on a completed return; the 1 refusal is the project's cited rprop.personal screen. Triage executable-triage-v2 (.transcription/triage/2025/rprop.json): 228 of 289 comparisons agree, 226 of 286 in scope. Project stands.",
+   "context": "b668560753d3bf3b713d03555f0cad753deae1d0da866ee0dc5dda0123084421",
+   "date": "2026-11-17",
+   "run": "e1e56caf9ca40a20252d14d4457d53708f96f2e0baaa0c63001ba12fd931f9da",
+   "subject_key": "f5d1902e1cc08905365f9fc54178f3a6416ce2746e014a8fff8d8fc9527e02f0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.s1.14@rental[a].rprop[b]",
+     "fixture:classm.f8582.1@rental[a].rprop[b]",
+     "fixture:classm.sche.1@rental[a].rprop[b]",
+     "fixture:classm.rental.3@rental[a].rprop[b]",
+     "fixture:classm.rprop.1@rental[a].rprop[b]",
+     "fixture:classm.rprop.1@rental[a].rprop[c]",
+     "fixture:x1sche.r9.nonres_before_1994@rental[a].rprop[b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

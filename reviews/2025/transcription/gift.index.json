@@ -4,18 +4,18 @@
  "family": "claude",
  "base": "9a2625f5e650c0be5d2b72d94c268ea5f66169af89afa684ed92b3b67c4fa18a",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-16); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "gift.allowed",
-   "record": "ba90611679fab65ad951fb6adbbb9c77f7371645f0f40618e4300f3fdea1c9d3",
+   "record": "d848309545fbcb4edb9ffd4abcc1300951f74809baf938397c8eccd9cd8c7422",
    "status": "AGREE",
-   "subject_key": "ba076a80151fdfa35f2630e597b634719412b6d3458b7b5fd9b7607f21a827c0"
+   "subject_key": "ba90a3818e85fe36a58c3775af9dfea39b8f5a3ed331f019dcd6aee4ee0c20e0"
   }
  ],
  "subjects": {
-  "gift.allowed": "636954ddd47ac1bd858698c37ddcb181e1f50cc11c426d4e224abc9b6c3b2ffd"
+  "gift.allowed": "fa7b88fcbfa17c1f025280fb5ed6600eed0cb21bf52040b697ed8f85f3c9e937"
  },
  "__rest__": "ddbcf2f1a297aa931cad1239e9a5fd1dd8e5972b3c96439aab19e487bc291084",
  "foreign": {

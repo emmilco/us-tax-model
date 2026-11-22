@@ -718,6 +718,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
     person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
@@ -789,6 +790,25 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].industry_item: true
   expect:
     refused: person[taxpayer].sc[design_studio].asset[item].screened
+- id: equipment.screen_industry_use
+  design: BUG-0791 (item-defined property outside the named businesses)
+  situation: 'A manufacturer''s baler used only to recycle its own scrap (qualified reuse and recycling property).'
+  uses:
+  - business
+  answers:
+    $asset@person[taxpayer].sc[design_studio]: *id003
+    person[taxpayer].sc[design_studio].asset[item].class: c00_12
+    person[taxpayer].sc[design_studio].asset[item].placed: y2025
+    person[taxpayer].sc[design_studio].asset[item].pct: 100
+    person[taxpayer].sc[design_studio].asset[item].listed: false
+    person[taxpayer].sc[design_studio].asset[item].s179: 0
+    person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
+    person[taxpayer].sc[design_studio].asset[item].software: false
+    person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: true
+    person[taxpayer].sc[design_studio].asset[item].industry_item: true
+  expect:
+    refused: person[taxpayer].sc[design_studio].asset[item].screened
 - id: equipment.screen_long_production
   design: asset.screen item, now asset.long_production
   situation: 'An item of equipment: Property with a long production period, or qualified production property.'
@@ -804,6 +824,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: true
   expect:
     refused: person[taxpayer].sc[design_studio].asset[item].screened
@@ -823,6 +844,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: true
     person[taxpayer].sc[design_studio].asset[item].cost: 200000
@@ -843,6 +865,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
     person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: true
@@ -865,6 +888,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
     person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
@@ -888,6 +912,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
     person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
@@ -908,6 +933,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].listed: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
@@ -934,6 +960,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
     person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
@@ -958,6 +985,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
     person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
@@ -984,6 +1012,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
     person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
@@ -1011,6 +1040,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
     person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
@@ -1038,6 +1068,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].qbu_low: true
     person[taxpayer].sc[design_studio].asset[item].cost: 200000
@@ -1059,6 +1090,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].kind_excluded: false
     person[taxpayer].sc[design_studio].asset[item].software: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
     person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false
@@ -1092,6 +1124,7 @@ rows:
     person[taxpayer].sc[design_studio].asset[item].software: true
     person[taxpayer].sc[design_studio].asset[item].software_spread: false
     person[taxpayer].sc[design_studio].asset[item].industry: false
+    person[taxpayer].sc[design_studio].asset[item].industry_use: false
     person[taxpayer].sc[design_studio].asset[item].long_production: false
     person[taxpayer].sc[design_studio].asset[item].got_other: false
     person[taxpayer].sc[design_studio].asset[item].acquired_before_bonus_date: false

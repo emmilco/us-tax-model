@@ -4,7 +4,8 @@
  "family": "deepseek",
  "base": "1418dc17f9ad9bb048c070c102d8a055e02f8906a255324605c6ee55515afca2",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "6 / 1 / 1 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-17); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,16 +16,16 @@
   },
   {
    "key": "public_securities",
-   "record": "1418dc17f9ad9bb048c070c102d8a055e02f8906a255324605c6ee55515afca2",
-   "status": "MATCH",
-   "subject_key": "eb6619f8a38c484089f100c904fc012297687a1cf6d22ea51c47f59ff74fdb1a"
+   "record": "10c09b74e4378b142922234742cddfad4606fedb9d86d96e751b68341e955078",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; a contribution valued differently from the market quotations is outside the tool's valuation and is refused. Project stands.",
+   "subject_key": "9be7293c1ddb4fccac054b2643c4746e0d7ec71954b617e3a902e3c765da287f"
   },
   {
    "key": "special",
-   "record": "4f804a707edec4954516c537f4b68946da5a97c7339687aa0090cf7a335873a1",
-   "status": "MISSING",
-   "ruling": "Ruling: model error; the reply returned no verdict for this line. The restructured gift.special question was judged MATCH in the Claude render pass of the same restatement (reviews/2025/render/gift.md), and its words are the earlier question's (R3 word check: none lost).",
-   "subject_key": "3c9cab85728d6ab5b1825bb2d9c8e2bddca1349be349addd1cb902417dc653ce"
+   "record": "10c09b74e4378b142922234742cddfad4606fedb9d86d96e751b68341e955078",
+   "status": "MATCH",
+   "subject_key": "e139772fb27d70177e8b69b2d08e3ee7e3186fd0aaa8475c393dd92cb2ecf0c4"
   },
   {
    "key": "over_5000",
@@ -34,9 +35,9 @@
   },
   {
    "key": "not_public",
-   "record": "540e69bad16e1ce10c7680853bcb413a94d726c134abe64eabda8889c9a3c492",
+   "record": "10c09b74e4378b142922234742cddfad4606fedb9d86d96e751b68341e955078",
    "status": "MATCH",
-   "subject_key": "2a0f9b68c00128cb7c44b31f7ff4a8243802548967c9b515679773f42c1244a1"
+   "subject_key": "253c51f1bd089d5f25939a5e2d4ed900c150e79f8c97cab314198f86faaea24f"
   },
   {
    "key": "no",
@@ -53,20 +54,20 @@
   },
   {
    "key": "allowed",
-   "record": "540e69bad16e1ce10c7680853bcb413a94d726c134abe64eabda8889c9a3c492",
+   "record": "10c09b74e4378b142922234742cddfad4606fedb9d86d96e751b68341e955078",
    "status": "MATCH",
-   "subject_key": "7a6f90f99fa015f48b646eb7b0f05433c33eeb098d8dab00f41b1075931073b2"
+   "subject_key": "4feadd5e2da7074fad3b0f88b296f6369180a56715bf44181623191eb0363fe8"
   }
  ],
  "subjects": {
   "deduction": "2c743be67b29b3d1bc72955e6d9df9a4cf4ff957f8e03656f34f2f1651dd1275",
-  "public_securities": "e6a87578d54851f8c4cc5e873fc24302bc51124ced33e09660437210e75e16f2",
-  "special": "40a1549aba0e72b0e00eb760f5c2ed54b7f87008bc774e60be9e4adb6e91a76c",
+  "public_securities": "17f17e84d2bcbc542b4af54ddb38130ce7724cccbfe18c2382a7faccf59270be",
+  "special": "46e8ae26e43f28cc8377e79a2a3dd7a602b105c381b0db5b11db95807364a001",
   "over_5000": "cf86d4f8648cf4a6b9897d576176959c24abb6eb3885764b787b94bf3c4e8a9c",
-  "not_public": "208bc9f49f33ae44786e8dfad2c8ddec1b80b5949d0fdae3b40ea389131fa14d",
+  "not_public": "60e4c07dae802b69ef7ea8b0603b80ade9cbf7602927aba7940de56036119a57",
   "no": "d9fa15f532ffe8528369f1a894ea723d018c837730f4432559a9eef822bb07ab",
   "section_b": "41faadbceda9c3c8ee5d88f29ba0785cea9242aa59052f66a5be178e843372f7",
-  "allowed": "9b2d891a2631662a76396816fd880615d4c3d39bcfb1d8da5c5661eacd44e13f"
+  "allowed": "7e489d24433f05af2651ebca6eb35be13c526ed6293ff833be67c733ef42b167"
  },
  "__rest__": "453167e36426ad055796eee7ca39439492a94ba8c947ab84ce7cc052e0dd764e"
 }

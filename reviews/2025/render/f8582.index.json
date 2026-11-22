@@ -3,24 +3,28 @@
  "form": "f8582",
  "family": "claude",
  "base": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+ "head_rows": {
+  "match / mismatch / unclear / missing": "20 / 0 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1a",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "fa2984e0d1c55b1bb86a88df193369a876eac9b762e179d98f25714709a4e3e9"
+   "subject_key": "e490097e6d7e245c22dd390207b4f90312061adf7ac616c5d4bec46764cb7b26"
   },
   {
    "key": "1b",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "bc6f2be173a38f5a50c52a8b0f02ca338e86997dc75dac2ec7c5f9100f171259"
+   "subject_key": "c540fb3fd45d5efbf148bc1dbf388d2b167a9a3ba6f4ff512ccbffb120fee30a"
   },
   {
    "key": "1c",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "9774f2d6320def5e75dd9a7df6413b0c17538516d0f7095c1dc699702847ed43"
+   "subject_key": "b9eccb51addf3d5b6e02fbf7045389fdf5efc742473bac07505867c0f0ea9c68"
   },
   {
    "key": "1d",
@@ -30,21 +34,21 @@
   },
   {
    "key": "2a",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "1328354b44b104648b384f11f1300534a8d49a320fb43a466bcc8170f65b709c"
+   "subject_key": "ba4b9e47ddc625f431cae2b82a14fa0f181cd3c4cfa3811ac6dd8f8ec792b614"
   },
   {
    "key": "2b",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "5e3257726e4026e567e83dd1d2eb88dc35bda6afc097ef289b889293eb5791a1"
+   "subject_key": "80cffc8259499c70290edcedcc78bc8d016cb7b429319852663ebf0ab3872ca8"
   },
   {
    "key": "2c",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "d93531da7ead6d87d819ce98d4cc96a0dd07a2527d4c706ab05ceac6f9f88e62"
+   "subject_key": "3f23b5ba38c5827092f898345a39bcd5399af39414455d69fac7c3f97028e4d4"
   },
   {
    "key": "2d",
@@ -60,41 +64,39 @@
   },
   {
    "key": "4",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; married filing separately is refused for every return (scope, s3.mfs, 'Married filing separately': 'The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together ...) are outside'), so the caution 'If your filing status is married filing separately and you lived with your spouse ... do not complete Part II' never applies to a completed return.",
-   "subject_key": "bbc61c3c4f29407dc1937b1c8b6c7256c68725814e1a6be8a1475713a5b7d2cf"
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
+   "status": "MATCH",
+   "subject_key": "1ced976a51a51ede3489f8d220afe4b106536a38445e3811d7837fe440466310"
   },
   {
    "key": "5",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "2360a7bef25d388d3006aac0aefb1139af90fe7e5ba2368ee0e3b9f43eb79566"
+   "subject_key": "bc373c55d14114442b38a6b7e9d02373b0e342b8663a31453e9042eeb1865108"
   },
   {
    "key": "6",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; s1.line25 is a copy of s1.line24a only (Schedule 1 lines 24b to 24z, 24f included, are outside the tool and refused at Form 1040 line 10 by scope.schedule1), so no section 501(c)(18)(D) contribution can reach f8582.magi_adj.",
-   "subject_key": "80ee9a46ee239e121ced890c89d6e5392e0bd401327bac5d2f6a3c2097ffe0c9"
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
+   "status": "MATCH",
+   "subject_key": "5c4a492bf8e326c424c393c93ff97701a1353205b7ee8a0a6ce1a6f7e2fd4a22"
   },
   {
    "key": "7",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "b8bf4e70d3bf90150b098c2679577ab25f6c1c131afcbc9baa013ee4c906bd44"
+   "subject_key": "1efdc8be31d19b1cd800d0cfa445a551a142d80e915cf67dbd0bbad06e4a958b"
   },
   {
    "key": "8",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "3b5354591bd4c315d9380e294f364dadd0280948baca06351e27d048114ea1b7"
+   "subject_key": "790a295ba7845529b9bd6451014d70d343b09e1d461a2c7dd3fb2446819f72bf"
   },
   {
    "key": "9",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "a4d8ebed739bb6bda07cb61cc9cd364f6408eb5563c4317fbc46d39796cd9ac2"
+   "subject_key": "15ee351b30689a1994ee55b2f13866022c64a6b6816d9bb73bcf9901b71137b6"
   },
   {
    "key": "10",
@@ -104,50 +106,50 @@
   },
   {
    "key": "11",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "70342cb75cbb73632754041f326e16110298df4a6f9754d7e049d2e01ec85269"
+   "subject_key": "76e9e18a5af12e3d1af34dc721dfead7ea87bde7d84c9e168b23a37336ca81c4"
   },
   {
    "key": "VI (a) total",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "5e630b2c2f6fc8bab5e67d85b9c7d14fdb9520153d85c9d236afcec35a84cc0c"
+   "subject_key": "70b4d0c5e4a96861258cb6d0d1fe5411a869440d4b819f454de4e13409f159e8"
   },
   {
    "key": "VII (a) total",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "4ec9fac9c38b1510f5a83e06c1e4adee9f3eee17ff191cca4e9b35e7579301af"
+   "subject_key": "56b82d08f9aa915c557557be3ada7a0fdd648daa48e8e98fea7fe80033c23bfc"
   },
   {
    "key": "VII worksheet C",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
    "status": "MATCH",
-   "subject_key": "54aecbd293097e2de81c90a6abf81bf7ccfdf7f26f9003f73d122e3a79ba6c59"
+   "subject_key": "5d216ff0f4d833fe3d6860efeb2e77768ecd3c860fdc5c4c80d3fa44a1be550b"
   }
  ],
  "subjects": {
-  "1a": "d18fc47b260e2a0ab178079cbd9e2a5138f44ac86acaeb9e707fc704fb49d0b4",
-  "1b": "adae1cb5f21e416120bacd968169117e01009b10a5bcd4ef6926ef7c58ce5550",
-  "1c": "0f8d462364371576f96ee2cd11a37f03dbfa8473dfdcd823ad21f062e8fe6e96",
+  "1a": "615336f58f28d3ff2ca9c1885f971d2fb979310f2c9e81cfdc54b71ac7b46f63",
+  "1b": "42f56e98ad6cc06521705e1766128204fd67a1c9863991d90989eae05cf5b435",
+  "1c": "1187b0e7042bb2e4125532499ca8750b6700f9d5d8b61852758a06de427e2ee8",
   "1d": "5c8574385a50d0c30b92140927eaf3240a3745d37632f98a371813312a56744c",
-  "2a": "18ded85887469dbe918c5ef0b1d6defa4085359e50019bd7b9244878144febb9",
-  "2b": "7cd241a00cb521ea0f2077a8c510029c60cf7d80cc34611210ef2d6fd0299154",
-  "2c": "8a7622f6763e5faf446d0edf243e854da79fdd7071340fb5fa4c7bb3aa03086d",
+  "2a": "c66666f99021c36843fd33b8c73e11e6805dba23d08756ec7b9aa2060f71d83f",
+  "2b": "c96437ae84e819303051c593ade92eec9e4cd1c6b06f28707f30f6feb2c499f5",
+  "2c": "21a22a44ad182a92b8f74d35354f9019e54ba3b5a10ce794ae8f3584bb56ed04",
   "2d": "fc3995dee2909f428509ed44302835e03587ea73d4add9927ebc3b6cc9404b08",
   "3": "deec39dd383f11d1d192b5e088d0d3a4220343b21395d235dc644d17314fa9d0",
-  "4": "cea9a6be307fdbeecc1bfb1a4b0562525dfce0e8ca9d1a1ca2ea24a25bb24269",
-  "5": "ced94a7f696763e67bca17cf7ad06abfda9dd94a77c619389d7f7f4ea07b307a",
-  "6": "4fb1d6d3328406aad700ab9220b426155341df38a22c2b64afed282e5b61344c",
-  "7": "55a2ead1e50e051faf8b8409483aa6588a61bfd7adafc723fc853c02f18cfa1e",
-  "8": "8000dd6f56a91447bdd1cc7a4004c01814fc2e3293098d5569330d8177ebba4e",
-  "9": "7f47cffcf03754bbaf02636d95cc36440a8f45bc377cbd90092d2c79715c5143",
+  "4": "8bb6969e450094debe4ca1a0585d663e8d3de6db5051eeab8f2b60948d9f2ab6",
+  "5": "a0803b093a3917b66caabb760a451acf039d80e6c0bd66442bf363c1166ebc0d",
+  "6": "67c92b48ac2f8f85fbd1772ae765d2c46df76bdb3becef0fcad5eb024280c941",
+  "7": "12d9497d1fa001707a187f38dcdd5f49b9e13f0bfa67487b656b15c325301ca5",
+  "8": "398091254b955c7d3692d47c4710310322cca172b11e2c09f60df59ab09b0fd6",
+  "9": "09e31136788082c87f72000ccb93f93e98d38b2038d43795b1fee9ef82377579",
   "10": "a82a331bcfd8888d91586cbef0b1dec93a5747e331fad95a28bba2dcb4f2e57d",
-  "11": "1869c5448c3d9c5e9e5744a0717d8168a59fb9163e0af4cd892f06f1bf5e8ee8",
-  "VI (a) total": "5fe2342a8da144e87ec3b4b55d755d468dab6ea95976be557860a7eb9c1518f1",
-  "VII (a) total": "641782ba02e5d83454f4f7f338630613230481c1def334452c82479dc0388a52",
-  "VII worksheet C": "4b613d2e7fa76ea65e668e62487e54654c302561506b871a272f852f59bc5942"
+  "11": "e474ea9bfdfa44317c699a7abdb3769b788e370e76a411cf260f0ffea82eb753",
+  "VI (a) total": "01dc0a0b84b9f7f1f7167e3ebd897e55cc3f442b96e301b53fc2188746509b1f",
+  "VII (a) total": "2b1fddeef8331d67bf69367376ef14b2dd69394fcf6997531ee8459f930384de",
+  "VII worksheet C": "cf32f9dc0032b842537bd3f1e13e9affeee129f64fa0c38528b58452d2ca99a2"
  },
  "__rest__": "4bd6500b643c93b7d13a548ba3bf7cc991c4e9c46e977ae29b2e186e57caaba0"
 }

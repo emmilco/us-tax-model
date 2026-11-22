@@ -31,6 +31,13 @@
 - Expr: `{"op":"input","source":"Do you treat a rental as a business for the qualified business income deduction (for example, 250 hours or more a year of rental services, with separate books)?"}`
 - Cite: [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; sha256 875843ba)
 
+## (helper) — `sche.accrual`
+
+- **Authored helper label:** Rental books kept on the accrual method
+- **Encoded (Bool):** Input — Do you keep the books for your rentals on the accrual method, counting rent when earned and costs when owed rather than when received or paid?
+- Expr: `{"op":"input","source":"Do you keep the books for your rentals on the accrual method, counting rent when earned and costs when owed rather than when received or paid?"}`
+- Cite: [p527] p. 4, When To Deduct, "If you use the accrual method, see Pub. 538 for more information" (2025; sha256 20c826e9)
+
 ## (helper) — `sche.rents`
 
 - **Authored helper label:** Rents of all reported rental properties
@@ -136,6 +143,7 @@
 - **Refusal:** when sche.re_pro is true, cannot complete Schedule E, line 43 (real estate professional). A real estate professional's rentals are outside this tool. Cite: [i1040se] p. 3, Real estate professionals (2025; sha256 ad71de35)
 - **Refusal:** when sche.grouped is true, cannot complete Form 8582 (activities grouped). Rentals treated as one activity are outside this tool. Cite: [i8582] p. 1, Grouping of Activities (2025; sha256 76787e11)
 - **Refusal:** when sche.qbi_business is true, cannot complete Form 8995 (rental real estate as a trade or business). A rental treated as a trade or business is outside this tool. Cite: [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; sha256 875843ba)
+- **Refusal:** when sche.accrual is true, cannot complete Schedule E, Part I (accrual method). Rentals kept on the accrual method are outside this tool. Cite: [p527] p. 4, When To Deduct, "If you use the accrual method, see Pub. 538 for more information" (2025; sha256 20c826e9)
 - Expr: `{"of":["sche.line24","sche.line25"],"op":"sum"}`
 - Cite: [f1040se] Schedule E (2025), line 26 (2025; sha256 c5e2c8fa)
 
@@ -207,6 +215,6 @@
 ## (gate) — `sche.any`
 
 - **Authored helper label:** Schedule E is filed (a rental reported or a royalty listed)
-- **Encoded (Bool):** Choose — [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?" = true → helper "A rental is reported, or a royalty is listed"] [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?" = false → helper "No (false)"]
+- **Encoded (Bool):** Choose — [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?" = true → helper "A rental is reported, or a royalty is listed"] [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?" = false → helper "No (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.rental",{"const":true}],"op":"test"},"then":"sche.any_listed"},{"guard":{"eq":["scope.rental",{"const":false}],"op":"test"},"then":"sche.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 40, Step 2, "You are filing Schedule E" (2025; printed date 2026-02-25; sha256 482e9c48)

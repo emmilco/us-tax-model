@@ -40,7 +40,7 @@ answers:
   f8962.midmonth_start: false
   f1095a[form_1].void: false
   f8962.fpl_table: contiguous
-  f1040.tax_exempt_interest: 0
+  f1040.tax_exempt_any: false
   f1095a[form_1].same_months: false
   f1095a[form_1].b_blank: false
   f1095a[form_1].b_changed: false

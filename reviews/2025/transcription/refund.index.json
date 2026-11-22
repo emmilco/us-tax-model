@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "13",
   "agree / disagree / missing": "7 / 6 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-17); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -37,10 +37,10 @@
   },
   {
    "key": "1",
-   "record": "db9c397b6830a60d2ab59c4c984c01be0e265b754ddbd4be89429ce3a2059791",
+   "record": "942fb352798d46c1d6a4c15551e3bbe88ceeab703b18473ad000fa2b83f3bcb9",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the same smaller-of (i1040gi p. 90, worksheet line 1, \"Enter the income tax refund from Form(s) 1099-G ... But don't enter more than ... your 2024 Schedule A, line 5d\"); the project reads the refund through refund.received_if_worksheet (zero off the worksheet path), the reply reads refund.received under a shown_when on the worksheet path. Triage: 2,602/3,291 agree, no value differs; 101 project-unknown on completed returns where the reply's line is hidden (worksheet not used, refund.exc_tax or refund.two_returns unasked), the rest unknowns on incomplete or refused returns, 20 candidate-unknown. The reply's cap note is the chosen reading of amb.2025.refund_cap_5d.",
-   "subject_key": "17c9abeb008c4f088ab064b16df401df681851729df40c52629223e68c5d4924"
+   "ruling": "Ruling: representation; i1040gi p. 90, worksheet line 1: \"But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d.\" Both enter the refund capped at the 2024 Schedule A line 5d amount; the difference is which question carries it. The project reads refund.received only when its worksheet parent question is answered yes; the candidate reads refund.received, box 8 and other-year refunds directly, so on completed returns its differences are those unasked inputs (candidate-unknown 67, project-unknown 19). The 2 value witnesses are on incomplete mutation records, as the 2026-11-16 ruling found. Triage executable-triage-v2 (.transcription/triage/2025/refund.json): 3,602 of 3,834 agree. Project stands.",
+   "subject_key": "52c9f4ff86030804030f06ff90604d67ea5a6165de75d1ead4ef4db8c1763e4a"
   },
   {
    "key": "2",
@@ -116,7 +116,7 @@
   "refund.joint": "a4b43d7cd0014f72cbb54ce1e888f8cbb81368ce4392d877aeba47db355eccaa",
   "refund.received_if_worksheet": "50dcd0bc5bf1cefd86f4d4f31f5a5596c33ff335fe18de3fc4e0dd51a677987d",
   "refund.taxable": "66d68e61915a218f7acf52915fed634f3cf60f75cc7439093a25fc5e01de815c",
-  "1": "9cfda671b758ad1c1411bc3bc52f567abf583bafdc8b0cf5b159aae42cc81caf",
+  "1": "1b2846a2d8cc5e2eae89dd41ca01696ed3e03641847da9f6056cbb556a1c3342",
   "2": "5d1fcd89d106a50a99c5c224d43fccb3989f6c037038842467a57092badbf562",
   "3": "dee0b86519f8bb9ddf2c825b78358413221b68d930a03e98e7344a8d18bf6ede",
   "4": "e48bd6e2a58def054ba9a5f5a088b9a4673d02ffec932f6a04a816dbca878417",

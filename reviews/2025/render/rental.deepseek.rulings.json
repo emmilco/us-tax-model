@@ -1,0 +1,37 @@
+{
+ "kind": "render",
+ "form": "rental",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "10",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Legal and other professional fees, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Legal and other professional fees: the rental part (rental days over total days of use)\"]",
+   "model": "IRS line 10 says to include fees for tax advice and the preparation of tax forms related to the rental real estate, and Pub. 527 treats legal and professional expenses as rental expenses; the restatement instead prorates them by rental days/total use whenever there is personal use.",
+   "ruling": "Ruling: model error; i1040se p. 5: p527 p. 26, Dividing Expenses, requires the rental part of an expense when the dwelling has personal use; the proration is the source's, not the restatement's invention. Project stands.",
+   "context": "dfd1aad3de3eaf30aab28c258939d9fbb4ad783ce3fed800e22e1ab37465ebe3",
+   "date": "2026-11-17",
+   "run": "4c6eea5b4d86a927dea37e84b732932fcf7905f2b8223c3ad3a916f3a7776bed",
+   "subject_key": "1d2518a61b7f7af5f8f8d214a3e40a91a0d2685a8dd42d2242762de397fbc289"
+  },
+  {
+   "printed": "1b",
+   "restated": "Input — What kind of property is this?\n\n- sfr: a house or condo (one home)\n- multi: a building with two or more homes\n- vacation: a vacation or short-stay rental\n- commercial: shops, offices or other business space\n- land: land only\n- self_rental: property rented to a business you or your spouse run\n- other: something else",
+   "model": "IRS line 1b says to enter code 7 for self-rental if you rent property to a trade or business in which you materially participated; the restatement instead uses 'a business you or your spouse run,' which is a different condition.",
+   "ruling": "Ruling: scope; i1040se p. 5: self-rental is refused (rental.ws51). Project stands.",
+   "context": "dfd1aad3de3eaf30aab28c258939d9fbb4ad783ce3fed800e22e1ab37465ebe3",
+   "date": "2026-11-17",
+   "run": "4c6eea5b4d86a927dea37e84b732932fcf7905f2b8223c3ad3a916f3a7776bed",
+   "subject_key": "7f20330cac51682cf217b42df7ad2d92748a8c84283e06c8eafde1cfdb8b22c5"
+  },
+  {
+   "printed": "2 (rental.days_personal)",
+   "restated": "Input — How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row, or for less if you then sold or traded it.",
+   "model": "IRS line 2 treats family use as personal use unless the unit is rented at a fair rental price to that person as their main home, and it includes family of another owner; the restatement omits that exception and the other owner's family.",
+   "ruling": "Ruling: representation; the input restates the page in plain language; the fair-rental main-home exception is on the cited page and the filer answers it. Project stands.",
+   "context": "dfd1aad3de3eaf30aab28c258939d9fbb4ad783ce3fed800e22e1ab37465ebe3",
+   "date": "2026-11-17",
+   "run": "4c6eea5b4d86a927dea37e84b732932fcf7905f2b8223c3ad3a916f3a7776bed",
+   "subject_key": "0906b4ce9bba91cd985df5f08200994e178e7cab562f56313f9a9b3c3e7c570e"
+  }
+ ]
+}

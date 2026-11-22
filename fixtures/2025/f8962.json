@@ -2707,6 +2707,7 @@
         "$f1095a": [
           "form_1"
         ],
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": 120000,
         "f1095a[form_1].same_months": true,
         "f1095a[form_1].mo_a": 52000,

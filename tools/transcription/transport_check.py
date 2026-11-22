@@ -3,8 +3,8 @@
 print the model the service reported and its token usage, nothing else. A deliberate network step;
 the API key is read from the macOS keychain inside the transport and is never printed.
 
-Usage: transport_check.py [--model deepseek-flash] --inactive-family deepseek --inactive-family-reason TEXT
-(the override is needed while the DeepSeek family is inactive in families.json)
+Usage: transport_check.py [--model deepseek-flash] [--uncallable-family deepseek --uncallable-family-reason TEXT]
+(the override is needed only if families.json marks the DeepSeek family not callable)
 """
 import argparse, json, os, sys
 
@@ -26,7 +26,7 @@ def main():
         sys.exit(f"transport_check: {a.model!r} does not name a DeepSeek model")
     try:
         text, meta = call_model(PROMPT, a.model, timeout=120, system=SYSTEM)
-    except (MissingCredential, families.InactiveFamily) as ex:
+    except (MissingCredential, families.NotCallable) as ex:
         sys.exit(f"transport_check: {ex}")
     except RuntimeError as ex:
         sys.exit(f"transport_check: {ex}")

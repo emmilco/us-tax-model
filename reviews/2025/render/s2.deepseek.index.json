@@ -4,7 +4,9 @@
  "family": "deepseek",
  "base": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "lines judged": "15",
+  "match / mismatch / unclear / missing": "12 / 3 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-17); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,28 +17,46 @@
   },
   {
    "key": "1z",
-   "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; f1040s2 p. 1, line 1z, \"Add lines 1a through 1y\". s2.other (\"Any amount on Schedule 2 other than ...\") refuses lines 2, 3 and 21, so any return with an amount on lines 1b to 1y is refused, and on every computed return line 1z equals line 1a, as the heading says. The round-1 rewording of s2.other (its Form 5329 clause moved to the end) concerns line 8 only and does not change this. Same as Stage 18 and round 1. Project stands.",
-   "subject_key": "59ff1a4068b50412e9b03e33f91f171fa3735f1312356b3fe5538e33be91b29e"
+   "record": "a17c09d683e74f251d5e5a1a9af35e29944f457d8ad42f4ec30e23042326f349",
+   "status": "MATCH",
+   "subject_key": "2db177d9f5f750a4a53595047a8c4f31c12a7ee3e87e2c37736fe829e2ee88e1"
   },
   {
    "key": "2",
-   "record": "64781acc2c0e2c3e8f56d9fa7c5e5cafe1c9dc2ffc667f5967fdbb18226f59b8",
-   "status": "MATCH",
-   "subject_key": "d80b0dff54c740420947cbfec15fdb23bcf3b4ba4f84b27a3baa641d6364a80a"
+   "record": "a17c09d683e74f251d5e5a1a9af35e29944f457d8ad42f4ec30e23042326f349",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040s2 p. 112: alternative minimum tax is refused through the computed s2.amt screen; the line is zero otherwise. Project stands.",
+   "subject_key": "05b6695fff230a80c567cf52b7bfe29e0242843c99adc211589b7ce44c56d962"
   },
   {
    "key": "3",
-   "record": "64781acc2c0e2c3e8f56d9fa7c5e5cafe1c9dc2ffc667f5967fdbb18226f59b8",
+   "record": "a17c09d683e74f251d5e5a1a9af35e29944f457d8ad42f4ec30e23042326f349",
    "status": "MATCH",
-   "subject_key": "c0345b308b92a23046c3389f8f7a9194e531c223cb8673dec37c5202d4be2863"
+   "subject_key": "151a9a742d052f1a05c3d9d91ace236f6326e97ef342194e6503b2d7bbd7a192"
   },
   {
    "key": "4",
    "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
    "status": "MATCH",
    "subject_key": "a5f57f71fa027a47c5a97b9f57177809158f740b214d0a9f69381c96b65a51ac"
+  },
+  {
+   "key": "5",
+   "record": "a17c09d683e74f251d5e5a1a9af35e29944f457d8ad42f4ec30e23042326f349",
+   "status": "MATCH",
+   "subject_key": "2362d458851cc45526718ef6f2d42f09aa297ba76dbe0a0bda30a9bc6640c77a"
+  },
+  {
+   "key": "6",
+   "record": "a17c09d683e74f251d5e5a1a9af35e29944f457d8ad42f4ec30e23042326f349",
+   "status": "MATCH",
+   "subject_key": "d699eb23382dda491d96749b04c899d5385d340d7551cbee4009ee2fa6ed6741"
+  },
+  {
+   "key": "7",
+   "record": "a17c09d683e74f251d5e5a1a9af35e29944f457d8ad42f4ec30e23042326f349",
+   "status": "MATCH",
+   "subject_key": "5beeaeb7ef968c9b5fa4466779f27c73f97beabdff1bc534f2a0ac117dd00ee6"
   },
   {
    "key": "8",
@@ -77,24 +97,28 @@
   },
   {
    "key": "21",
-   "record": "64781acc2c0e2c3e8f56d9fa7c5e5cafe1c9dc2ffc667f5967fdbb18226f59b8",
-   "status": "MATCH",
-   "subject_key": "51006f3b48dc6a285358d87771b35bdbc3517768b1aace676a7f1ea7b971c4f8"
+   "record": "a17c09d683e74f251d5e5a1a9af35e29944f457d8ad42f4ec30e23042326f349",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040s2: line 14 installment interest is outside the tool. Project stands.",
+   "subject_key": "fcc045d2c339e1b066c1a499df37823428d030aee926a00663a44f5a9009278b"
   }
  ],
  "subjects": {
   "1a": "948c5bdb2766ad5ed74cbb3ecc7e370cef081b3b5fc0e996e63782a1b301ec54",
-  "1z": "e9c1c517071505d51cfdd09048d2806447cc278f27db6ccaaeb8660cf62dcff9",
-  "2": "da86415f7fb0e39304a50c08bb97ccd06519d0fc25e24041fc4f39075623b3e0",
-  "3": "cb25af5a8a6b33079d9d8d1c27c87faae3da4eee551adfb8454883f662cd9b4e",
+  "1z": "feba7ad92b1251a4eaf4be32819b83bde9fed3305511fbb87c391e53dad80f5a",
+  "2": "9b7941008e45e3332e4a4a1bb9fa98bc0594d2621f347d0d9495406e18bca7fe",
+  "3": "092dce3698e41b666202e25927d6d429a51b8315eb175bfae2cf9419b6e941ae",
   "4": "9cd8a4c296c43b06d436f6de558fe38ee0931e30d2d7f91c46bde228c1854ab2",
+  "5": "6cc9e64faea296584ab6171f7127488239bc08d4ce8200cd4bb545ff1dc3ed36",
+  "6": "8ce3a00ba954716000a18586475210cba33ac21f05b51fa227e5aa4e601bce64",
+  "7": "87cb370fbd0f60499a8da123462168ff1cf0ffcac22125e7137535f9f80c0fb1",
   "8": "65684a5df6d08729d036bc5051b48a08801862608c1a4302b5840a91893f491e",
   "8 (box)": "59f629b249ea6174de9ff804d402427ce91849e74e08d825be82d81b90eb1af3",
   "11": "84639ccb55785408dbae1f6c5d5e00533aeb504b0038020f3ff72dca803291a7",
   "12": "a2b0364ad10a5465bad5f179eaabc783505f19ee1cfa377f25770c36df7d6ad1",
   "17c": "a7f242e005215d810811a1ccbafcb250d841c171576512a790ace38f8326c71d",
   "18": "fa212e033612dc85b8b7d0a72790eddf3c24462b8703bef9af9f623e922eb97e",
-  "21": "80d0dda4428b7955cd91678600754992ee2fe43ca30bf3be7a83a395b81e8078"
+  "21": "be9794e25dcb370bfc1d2a9bf25e0b4731f5da698006b733233802ac01351585"
  },
  "__rest__": "62e1e78bc43403c82fc8dd83ac8b2f3e5535a2a722b2af4193ee0376b12e6cd6"
 }

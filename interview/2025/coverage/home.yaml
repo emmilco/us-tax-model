@@ -163,19 +163,32 @@ rows:
       sa.gifts: true
       sa.line11: 100000
       $gift: []
+      sa.gift_carryover: false
       sa.charity_limited: false
     expect:
       proceeds:
         sa.line11: 100000
-      not_asked: [sa.gift_carryover]
+        sa.gift_carryover: false
   - id: home.gifts_limited
     design: provisional redraft, lane 7a (what sa.charity_limited covered)
-    situation: A person gave to charity in 2025 and the deduction is limited by income or includes a carryover.
+    situation: A person gave to charity in 2025 and the deduction is limited by income.
     answers:
       sa.gifts: true
       sa.charity_limited: true
     expect:
       refused: sa.charity_limited_if_gifts
+  - id: home.gifts_and_carryover
+    design: BUG-0817 (the carryover is asked of every filer, so a filer who gave in 2025 and has a carryover is refused on it)
+    situation: A person gave to charity in 2025, no income limit applies to those gifts, and a gift from an earlier year is still carried over.
+    answers:
+      sa.gifts: true
+      sa.line11: 100000
+      sa.gift_carryover: true
+      sa.charity_limited: false
+      $gift: []
+      s3.foreign_any: false
+    expect:
+      refused: sa.gift_carryover_if_no_gifts
   - id: home.gift_worth_more_than_deduction
     design: BUG-0506, gift.special (the $5,000 test is on the deduction after reductions, read by gift.section_b)
     situation: A person gave a painting bought eight months earlier for $3,000 and worth $8,000, so the deduction is limited to $3,000.

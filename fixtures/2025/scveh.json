@@ -1706,6 +1706,51 @@
           "cents": 774000
         }
       }
+    },
+    {
+      "id": "scveh.mut.bonus_full_before_jan20",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (scveh.bonus_fullcase and scveh.bonus_this_year, whose mutants take the 100% allowance for a vehicle acquired before January 20, 2025), predicted by hand from i4562 (p. 5, Line 14; the depreciation worksheet) before running: stage14.veh.2025_forty's $30,000 car, 100% business, half-year, but acquired before January 20, 2025 and the special allowance claimed (bonus_choice full). The allowance for property acquired before January 20, 2025 is 40%: line 16 $12,000; allowed $12,000; line 17 $20,200 - $12,000 = $8,200; line 18 $18,000; line 19 20% = $3,600; line 20 $3,600.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].after_jan19": false,
+        "person[taxpayer].sc[r].scveh[car].bonus_choice": "full",
+        "person[taxpayer].sc[r].scveh[car].bonus_same": true,
+        "person[taxpayer].sc[r].scveh[car].quarter": "q2",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 3000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].line16": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].sc[r].scveh[car].bonus_allowed": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].sc[r].scveh[car].line17": {
+          "kind": "money",
+          "cents": 820000
+        },
+        "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 360000
+        }
+      }
     }
   ]
 }

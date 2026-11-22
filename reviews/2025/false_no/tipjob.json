@@ -2,68 +2,58 @@
  "form": "tipjob",
  "reviews": {
   "gate:tipjob.listed": {
-   "subject_sha": "8ad2b6c61fe24713efb8e2217d953a375adbc02e6cd527d737af0a6b991144b3",
+   "subject_sha": "12a5d897215bb39c21ed9b7dd5fd28a42a89be597ba3e1d5d8382a8bebd0357e",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "An employee who got tips from one employer for two jobs, only one of them on the list. For example, a restaurant shift manager (not listed) who also works shifts as a server or bartender (listed), or a hotel front-desk clerk who also works as a bellhop.",
-       "why_no": "The question asks whether 'the work you got these tips for' is on the list. That work as a whole is not, so a truthful answer is no. The help confirms the no: 'If the work is not on it, tips from this employer cannot be deducted.' The question offers no 'partly' answer.",
-       "line": "tipjob.other_work_if_listed (the refusal is missed) and tipjob.amount (the listed-occupation tips are silently zeroed)",
-       "irs_text": "i1040gi p. 103: 'If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list ... are considered qualified tips.'",
-       "severity": "high",
-       "fix": "Ask: 'Did you get any of these tips while working in a job on the IRS list?' (Yes covers partly.) Then ask tipjob.other_work after a yes. Change the help to: 'If none of the work you got tips for is on the list...'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "An employee whose listed occupation is not among the gate's examples: a cook, dishwasher or baker sharing in a tip pool; a casino dealer; a musician; a valet; a nanny; a massage therapist; a tattoo artist; a golf caddy; a home mover; a tutor; a locksmith; a pet caretaker; a fitness instructor.",
-       "why_no": "The gate names 'Restaurant, bar and hotel staff, hairdressers and barbers, and taxi and delivery drivers.' A filer who does not visit the URL reads this as the list. 'Customarily get tips' also invites the filer's own judgment, for example that cooks or dishwashers do not customarily get tips.",
-       "line": "tipjob.amount",
-       "irs_text": "i1040gi p. 103: 'Beverage and food service: ... chefs and cooks (105); dishwashers (108) ... Entertainment and events: gambling dealers (201) ... musicians and singers (206) ... Personal services: ... tutors (507), and nannies and babysitters (508) ... Transportation and delivery: parking and valet attendants (801) ... home movers (809).'",
-       "severity": "medium",
-       "fix": "Show the full set of category headings with examples from p. 103 (beverage and food service including cooks and dishwashers; entertainment and casino; hospitality; home services; personal services; personal appearance and wellness; recreation and instruction; transportation and delivery). Say: 'These are examples only. Check the full list before answering no.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "An employee whose job title differs from the list's occupation titles: a barista, busser, food runner, barback, sommelier, nail technician, esthetician, shampoo assistant, room-service attendant or casino cocktail server.",
-       "why_no": "The filer searches the list for their own job title, does not find it, and answers no. They are actually covered by an occupation description or illustrative example (for example wait staff, bartenders, or barbers, hairdressers, hairstylists and cosmetologists 603).",
-       "line": "tipjob.amount",
-       "irs_text": "i1040gi pp. 102-103: the list 'provides for each occupation ... an occupation title, a description of the types of services performed ... illustrative examples of specific occupations that would be included, and the ... SOC system code(s)'.",
-       "severity": "medium",
-       "fix": "Tell the filer to match the duties they performed against the occupation descriptions and illustrative examples, not their job title. Better: ask what work they did and map it to a TTOC code in the tool."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "An employee in a listed occupation working for an employer outside restaurants, bars and hotels: a bartender or server at a country club, stadium, hospital or catering company; a valet employed by a hospital; a hairstylist at a spa; a delivery driver for a grocery chain.",
-       "why_no": "The examples name industries ('Restaurant, bar and hotel staff'). A filer whose employer is not a restaurant, bar or hotel concludes the work is not on the list, even though the list is by occupation.",
-       "line": "tipjob.amount",
-       "irs_text": "i1040gi p. 102: 'it must have been paid to you while you were working in an occupation that customarily and regularly received tips on or before December 31, 2024.'",
-       "severity": "medium",
-       "fix": "Say that the list is of occupations, not employers: 'It is your job duties that count, whatever kind of business employs you.'"
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A joint filer completing the tipjob document for the spouse's W-2 from a tipped job, where the filer has no tipped work.",
-       "why_no": "'Is the work you got these tips for' is read as the filer's own work, so the filer answers no for the spouse's employer.",
+       "who": "A married-filing-jointly filer whose spouse, not the filer answering, worked as a server or bartender for an employer and received qualified tips.",
+       "why_no": "The gate says only 'you' and 'your tips'; the filer reads it as asking only about the filer's own jobs and answers no for the spouse's employer.",
        "line": "tipjob.amount",
-       "irs_text": "i1040gi p. 101: 'You (and/or your spouse if filing a joint return) received qualified tips in 2025.'",
-       "severity": "low",
-       "fix": "Name the person whose W-2 this is in the question: 'Is the work [name] got these tips for...'"
+       "irs_text": "i1040gi p. 101: 'You (and/or your spouse if filing a joint return) received qualified tips in 2025'; p. 104: 'If you and/or your spouse received qualified tips as employees with respect to employment with more than one employer...'",
+       "severity": "high",
+       "fix": "Add 'you or your spouse' to the gate and make the gated tips question ask for the spouse's employer tips too."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose occupation is on the IRS list but is not named in the gate's short examples or help, such as a dishwasher, restaurant host, concierge, maid or home cleaner, nanny, tutor, massage therapist, tattoo artist, golf caddy, tour guide, parking valet, delivery worker, or mover.",
+       "why_no": "They read the examples ('such as server, bartender, cook, hairdresser or driver' plus housekeepers, desk clerks, barbers) as the list, or their job title does not match an occupation title, so they answer no.",
+       "line": "tipjob.amount",
+       "irs_text": "i1040gi p. 103 lists dishwashers (108), host staff (109), concierges (302), maids and housekeeping cleaners (304), home cleaning service workers (407), personal care workers (501), tutors (507), nannies and babysitters (508), massage therapists (602), tattoo artists (609), golf caddies (701), tour guides (704), parking and valet attendants (801), goods delivery people (804), and home movers (809).",
+       "severity": "medium",
+       "fix": "Make clear the examples are not exhaustive and the test is the occupation's duties, not the employer's job title; require checking the IRS list or add a broader 'any occupation listed at IRS.gov/TippedOccupations' confirmation."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer with tips from one employer for both a listed occupation, such as server, and an unlisted occupation, such as manager or office work; or a working manager who also waits tables and receives tips for serving.",
+       "why_no": "They read 'not manager' and the help's 'If none of the work...' as excluding them because part of their work is unlisted, and answer no instead of applying the gate's 'any'.",
+       "line": "tipjob.other_work_if_listed",
+       "irs_text": "i1040gi p. 103: 'If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list ... are considered qualified tips. Do not include tips received in occupations that are not included on this list...'",
+       "severity": "medium",
+       "fix": "Say: 'Answer yes if any of these tips were for duties in a listed occupation, even if other duties for the same employer are not listed; a later question handles the mixed work.' Do not let 'not manager' override listed duties."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A server, bartender, or other listed-occupation employee whose employer's reported 'tips' include an automatic service charge or gratuity, or noncash tips such as tickets or meals; the filer knows those amounts are not qualified tips.",
+       "why_no": "They read the gate as asking whether these are qualified tips rather than whether the occupation is listed, so they answer no because the amounts are service charges or noncash, not tips.",
+       "line": "tipjob.charged_if_listed",
+       "irs_text": "i1040gi p. 102: 'service charges, automatic gratuities, or any other mandatory amounts automatically added ... are not qualified tips'; 'Cash tips don't include items paid in any medium other than cash' including event tickets, meals, services, or other assets.",
+       "severity": "medium",
+       "fix": "Make the gate explicitly about occupation even if some amounts are service charges or noncash; say 'Answer yes if your occupation is listed; a later question will identify nonqualified service charges or noncash amounts and may end the interview.'"
       }
      ],
-     "prompt_sha": "d879b575d73b240cf8614ebe47308cb706b286774edc6c8d32a9a90f486680ad",
+     "prompt_sha": "7c54cc2c108cbca26f018b0a9449aa1416333a6d4742ff0c9468203297be52b7",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.124264,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_tipjob.listed.8ad2b6c61fe2.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_tipjob.listed.12a5d897215b.1.response.txt"
     }
    ],
    "condition": "tipjob.listed",

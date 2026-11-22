@@ -1,1 +1,1 @@
-{"required": ["claude"], "optional": ["deepseek", "gpt"], "active": {"claude": true, "deepseek": false, "gpt": false}, "models": {"deepseek": "deepseek-flash", "gpt": "gpt-6-astra"}}
+{"qualified": ["claude", "deepseek"], "advisory": ["gpt"], "models": {"deepseek": "deepseek-flash", "gpt": "gpt-6-astra"}, "callable": {"claude": true, "deepseek": false, "gpt": false}}

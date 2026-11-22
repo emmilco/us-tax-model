@@ -1,5 +1,6 @@
 # The New York question bank (decision C5), asked after the federal interview: orders from 1000, above every federal
-# question, except the care question, which follows the federal care questions (155). Six topics, in the order of a
+# question, except questions asked where their subject lives: care (155), the New York 529 account (180) and
+# tax-free interest from other states' bonds (272). Six topics, in the order of a
 # life: where you lived (1000), income as New York counts it (1010), deductions (1020), credits and other taxes (1030),
 # things you bought (1040), tax already paid and your refund (1050). A question is asked only where the federal answers
 # leave it open (docs/provisional/lanes/ny.md). A New York refusal stops only the New York profile
@@ -12,7 +13,7 @@ bank:
   - id: ny_where
     heading: Did any of these apply to you (or, on a joint return, your spouse)?
   - id: ny_interest
-    heading: Did any of your interest or dividends come from these?
+    heading: Did any of your (or, on a joint return, your spouse's) interest or dividends come from these?
   - id: ny_filing
     heading: Do any of these apply to you (or, on a joint return, your spouse)?
   questions:
@@ -65,8 +66,7 @@ bank:
   - input: ny_it201.ask.special_accrual
     order: 1000
     seq: 50
-    prompt: Was any of your (or, on a joint return, your spouse's) income earned in one year but paid in the other, such as a
-      bonus earned in 2025 and paid in 2026?
+    prompt: Did you (or, on a joint return, your spouse) have income fixed in one year but reported federally in another, such as a 2025 bonus paid in 2026, or deferred pay or an installment-sale gain from before 2025?
     help: With a move at the turn of the year, such income falls under New York's special accrual rules, which this tool
       does not apply. A Yes ends the New York part here.
   - input: ny_it201.ask.decedent
@@ -86,8 +86,8 @@ bank:
   - input: ny_it201.ask.public_job
     order: 1010
     seq: 10
-    help: Count the State, a city, county, town or village, a school district, SUNY or CUNY, and public authorities such as
-      the MTA. A federal job does not count here.
+    help: Count the State, a city, county, town or village, a school district, SUNY or CUNY, and public bodies such as the
+      MTA, a public hospital or library, or a fire district. A federal job does not count here.
   - input: ny_it201.ask.414h
     order: 1010
     seq: 11
@@ -101,9 +101,9 @@ bank:
     order: 1010
     seq: 20
     group: ny_interest
-    tick: U.S. Treasury or savings bonds, or a fund holding them
-    prompt: Was any of your interest or dividends from U.S. Treasury bills, notes or bonds, U.S. savings bonds, or a fund that
-      holds them?
+    tick: U.S. government bonds, notes or bills, or a fund holding them
+    prompt: Was any of your (or, on a joint return, your spouse's) interest or dividends from U.S. government obligations, such
+      as Treasury bills, notes or bonds, savings bonds, bonds of a U.S. government agency, or a fund that holds them?
     help: Such interest is often in box 3 of a Form 1099-INT. New York does not tax it, but this tool does not compute the
       subtraction, so a Yes ends the New York part here rather than overstate your tax.
   - input: ny_it201.ask.bab
@@ -113,15 +113,13 @@ bank:
     tick: Build America Bonds
     help: Build America Bonds are taxable bonds issued by states and cities in 2009 and 2010. Their interest changes the
       income New York uses for its household credits, which this tool does not handle.
+  # ---- asked where its subject lives: after the federal tax-exempt interest and dividend questions
   - input: ny_it201.ask.out_of_state_bond_interest
-    order: 1010
-    seq: 22
-    group: ny_interest
-    tick: Another state's bonds, or a fund holding them
+    order: 272
+    seq: 30
     prompt: Did any of your tax-free interest or dividends come from bonds issued outside New York, or from a fund that holds
       them?
-    help: Most national tax-free bond funds hold bonds of many states. Bonds of New York State, its cities and agencies, and
-      of Puerto Rico and other U.S. territories count as No. New York taxes the rest, which this tool does not compute.
+    help: National tax-free bond funds hold other states' bonds; part of a New York fund may too (see its year-end statement). Bonds of New York, its cities and agencies, or a U.S. territory are No. A Yes ends the interview here.
   - input: ny_it201.ask.gov_pension
     order: 1010
     seq: 30
@@ -142,15 +140,14 @@ bank:
   - input: ny_it201.ask.ny_529
     order: 180
     seq: 40
-    help: New York's program is the New York 529 College Savings Program. A 529 plan of another state, or an account someone
-      else owns for you, counts as No.
+    help: Count an account you closed, or moved to another state's plan, during 2025. A 529 plan of another state, or an account
+      someone else owns for you, counts as No.
   - input: ny_it201.ask.529_nonqualified
     order: 180
     seq: 41
     prompt: In 2025, did you take money out of that New York 529 account for anything but college, career training or student
       loans? School tuition before college and a move to another state's plan count.
-    help: A rollover to a Roth IRA or an ABLE account, and money taken out because the student died or became disabled,
-      count as No. Moving money between family members' New York accounts is not taking it out.
+    help: "Career training is No only if paid from July 4, 2025, to an eligible school; loans, only the student's or a sibling's. No too: a Roth IRA or ABLE rollover, the student's death or disability, or a move between family members' New York accounts."
   - input: ny_it201.ask.529_owner
     order: 180
     seq: 42
@@ -160,7 +157,8 @@ bank:
   - input: ny_it201.ask.inflation_check
     order: 1010
     seq: 50
-    prompt: Was any of the other income you reported on your federal return a New York State inflation refund check?
+    prompt: Did you (or, on a joint return, your spouse) include a New York State inflation refund check in your federal
+      income, as a state tax refund or as other income?
     help: New York mailed inflation refund checks in the fall of 2025. Whether New York subtracts them is unsettled for 2025,
       so a Yes ends the New York part here.
   - input: ny_it201.ask.it225
@@ -199,10 +197,8 @@ bank:
   - input: ny_it201.ask.real_property_credit
     order: 1030
     seq: 30
-    prompt: Was your rent $450 a month or less (not counting heat, gas, electricity or meals), or is all the real estate you
-      own worth $85,000 or less?
-    help: New York's real property tax credit (Form IT-214) is for people with income of $18,000 or less who lived in the
-      same New York home for six months or more and paid rent or property tax on it. This tool does not compute it.
+    prompt: In 2025, did you (or, on a joint return, your spouse) pay rent averaging $450 a month or less, not counting heat, gas, electricity, furnishings or meals, or own real estate worth $85,000 or less in all?
+    help: Leave out rent paid by a subsidy, such as Section 8. New York's real property tax credit (Form IT-214) also needs six months or more in the same New York home; this tool does not compute it.
   - input: ny_it201.ask.noncustodial
     order: 1030
     seq: 40
@@ -235,18 +231,21 @@ bank:
       payment or the payback of a New York credit taken earlier?
     help: Other New York taxes are reported on Form IT-201-ATT, which this tool does not prepare.
   # ---- 1040 Things you bought
-  - input: ny_it201.ask.owes_use_tax
+  - input: ny_it201.ask.bought_untaxed
     order: 1040
     seq: 10
-    prompt: In 2025, did you buy anything taxable in New York without paying New York sales tax on it (for example online, by
-      mail, or in another state)? Leave out a vehicle or boat whose tax you pay at the DMV.
-    help: Count a purchase taxed at a lower rate than New York City's, too. Leave out purchases of a business registered
-      for sales tax; they go on its own return. Purchases under $1,000 each are charged from a chart by income.
+    prompt: In 2025, did you (or, on a joint return, your spouse) buy anything taxable in New York without paying New York sales tax, such as online or out of state?
+    help: Count a purchase taxed below New York City's rate, and an untaxed purchase on an Indian reservation (unless Oneida Nation tax was paid). Leave out purchases of a business registered for sales tax. Purchases under $1,000 are charged from a chart.
+  - input: ny_it201.ask.use_tax_dmv_only
+    order: 1040
+    seq: 15
+    prompt: Was every such purchase a vehicle, boat, trailer or snowmobile whose tax you pay at the DMV when you register it?
+    help: A Yes means no use tax is owed on this return. If you will not register it at the DMV, answer No.
   - input: ny_it201.ask.use_tax_st141
     order: 1040
     seq: 20
-    prompt: Did any one of those purchases cost $1,000 or more, or was any of them for a rental, royalties or a business not
-      registered for sales tax?
+    prompt: Leaving out a vehicle or boat taxed at the DMV, did any one of those purchases cost $1,000 or more, or was any of
+      them for a rental, royalties or a business not registered for sales tax?
     help: Then the tax must be worked out exactly on Form ST-141, which this tool does not do.
   - input: ny_it201.ask.use_tax_exact
     order: 1040
@@ -290,8 +289,8 @@ bank:
   - input: ny_it201.ask.est_any
     order: 1050
     seq: 60
-    help: Count estimated tax payments (the last one may be paid in January 2026), a 2024 New York refund you asked to have
-      applied to 2025, and a payment made with a request for more time to file.
+    help: Count estimated payments of State, City or commuter (MCTMT) tax (the last one may be paid in January 2026), a 2024
+      New York refund you asked to have applied to 2025, and a payment made with a request for more time to file.
   - input: ny_it201.line75_amount
     order: 1050
     seq: 70
@@ -341,7 +340,8 @@ bank:
   - input: ny_it201.ask.est_late
     order: 1050
     seq: 95
-    prompt: Was any of your 2025 New York estimated payments made late, or smaller than a quarter of what was due for the year?
+    prompt: Was any 2025 New York estimated installment skipped, or any of your (or, on a joint return, your spouse's) 2025
+      New York estimated payments made late or smaller than a quarter of what was due for the year?
     help: A penalty can apply for any quarter in which a payment was late or short, even when the year's total was enough.
   - input: ny_it201.ask.late_penalty
     order: 1050

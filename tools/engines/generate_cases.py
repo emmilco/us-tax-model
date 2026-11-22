@@ -91,7 +91,7 @@ def gen_case(rng, i):
         "f1040.line25b": 0, "f1040.line25c_other": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
         # nobody's qualifying child, with no tax-exempt interest.
-        "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.lived_with_relative": False, "eic.qc_of_another": False, "person[taxpayer].eic_age25": True, "person[taxpayer].eic_under65": True, "eic.us_home": True, "household.married": False,
+        "f1040.tax_exempt_any": False, "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.lived_with_relative": False, "eic.qc_of_another": False, "person[taxpayer].eic_age25": True, "person[taxpayer].eic_under65": True, "eic.us_home": True, "household.married": False,
         "household.credit_disallowed": False, "household.community_property": False, "household.rdp": False, "household.spouse_died_this_year": False, "household.cp_married": False, "eic.died_this_year": False,
         "person[taxpayer].eic_ssn": True, "person[taxpayer].under16": False,
         "$retirement@person[taxpayer]": [],
@@ -743,7 +743,7 @@ SCREENS_NO = {
                         "scope.religious_work", "scope.rental", "scope.reservist_expenses", "scope.se_plan_other", "scope.w2_marks"),
     "scope.other_income": ("scope.adoption_benefits", "scope.care_benefits_other", "scope.chapter11", "scope.disaster_distribution",
                            "scope.excess_deferral", "scope.medicaid_waiver", "scope.noncitizen", "scope.nonresident", "scope.passive",
-                           "scope.pay_no_w2", "scope.reservist_repaid"),
+                           "scope.pay_no_w2", "scope.reservist_repaid", "scope.treaty"),
     "scope.other_line16": ("scope.cfc", "scope.education_recapture", "scope.f8615", "scope.f8814", "scope.f8978", "scope.foreign_shares",
                            "scope.income_averaging", "scope.pfic", "scope.unearned_2700"),
     "ira.special": ("ira.care_payments", "ira.deferred_comp", "ira.fellowship"),

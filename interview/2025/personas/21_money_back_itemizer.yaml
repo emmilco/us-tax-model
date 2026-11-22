@@ -1,5 +1,5 @@
 name: 21_money_back_itemizer
-who: A single person, 58, with one job (one Form W-2, $90,000 of wages) who itemized for 2024 and in 2025 got back $400 of 2024 state income tax and $600 of 2024 property tax, and carries in a $5,000 loss from a small business closed in 2023.
+who: A single person, 58, with one job (one Form W-2, $90,000 of wages) who itemized for 2024 and in 2025 got back $400 of 2024 state income tax and $600 of 2024 property tax, and carries in a $5,000 loss from a small business closed in 2023. Their 2024 Schedule A deducted $5,000 of state income tax and $4,000 of property tax.
 end: complete
 answers:
   $person: [taxpayer]
@@ -21,13 +21,20 @@ answers:
   rec.nonitemized: false
   rec.sales_tax: false
   refund.any: true
+  refund.box8: false
+  refund.other_year: false
+  refund.paid_other_time: false
   refund.received: 40000
   refund.itemized: true
   refund.sales: false
+  refund.exc_tax: false
+  refund.exc_who: false
   refund.line5d_prior_year: 900000
   refund.line5e_prior_year: 900000
   refund.line17_prior_year: 1800000
   refund.status: single
+  refund.you_born: false
+  refund.you_blind: false
   rec.has_property_tax: true
   rec.has_mortgage: false
   rec.has_medical: false
@@ -36,6 +43,9 @@ answers:
   rec.ti_positive: true
   scope.business_before: true
   scope.nol: true
+  scope.passive: false
+  scope.f8978: false
+  s179.prior_form: false
   s1.nol_amount: 500000
   s1.nol_before_limit_date: false
   s1.nol_ebl: false

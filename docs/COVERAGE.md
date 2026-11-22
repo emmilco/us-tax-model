@@ -14,15 +14,15 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 289 of the 305 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 308 of the 324 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 85.9% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **353 refusal gates**: 305 tax situations the tool does not prepare, grouped by topic below, and 48 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **372 refusal gates**: 324 tax situations the tool does not prepare, grouped by topic below, and 48 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
-- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (67)
+- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (68)
 - [Household and dependents](#household-and-dependents) (20)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (5)
@@ -30,7 +30,7 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
 - [Social Security](#social-security) (3)
 - [Self-employment](#self-employment) (30)
 - [State and local tax refunds](#state-and-local-tax-refunds) (9)
-- [Other income and alimony](#other-income-and-alimony) (35)
+- [Other income and alimony](#other-income-and-alimony) (42)
 - [IRA contributions](#ira-contributions) (12)
 - [Health savings accounts](#health-savings-accounts) (12)
 - [Itemized deductions](#itemized-deductions) (8)
@@ -40,7 +40,7 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
 - [Education credits](#education-credits) (5)
 - [Home energy credits](#home-energy-credits) (7)
 - [Premium tax credit](#premium-tax-credit) (8)
-- [Partnership and S corporation Schedules K-1](#partnership-and-s-corporation-schedules-k-1) (51)
+- [Partnership and S corporation Schedules K-1](#partnership-and-s-corporation-schedules-k-1) (62)
 - [Entry checks](#entry-checks) (48)
 
 ### Filing status, residency, wages, accounts and other taxes
@@ -73,7 +73,7 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"
   - *Refused at:* `f1040.line1a`
 - **`sa.excluded_income`**: Are you excluding foreign earned income (Form 2555), American Samoa income (Form 4563) or Puerto Rico income?
-  - *The data asks or tests:* Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico? (`input`)
+  - *The data asks or tests:* Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or exclude income from sources within Puerto Rico? (`input`)
   - *Stops the return as:* Form 2555, Form 4563 or excluded Puerto Rico income
   - *Not covered:* Form 2555 (EIC, Step 1, question 3). A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool.
     *Source:* [i1040gi] p. 40, Step 1, question 3, "Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP"
@@ -507,18 +507,23 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
   - *Not covered:* Form 8960 Net Gains and Losses Worksheet lines 2(h) and 2(i). The adjustment of a capital loss carryforward for losses excluded from net investment income (the prior year's worksheet line 2(i)) is outside this tool.
     *Source:* [i8960] p. 9, "capital loss carryforwards must be adjusted"
   - *Refused at:* `f8960.line5b`
+- **`f8960.election_6013g_if_joint`**: On a joint return, did you and your spouse choose to treat a nonresident spouse as a U.S. resident so you could file jointly (a section 6013(g) or 6013(h) election)?
+  - *The data asks or tests:* Asked only on a joint return with a noncitizen (false otherwise) (`choose`)
+  - *Not covered:* Form 8960, line 1 checkboxes (section 6013(g) or 6013(h) election). A joint return made by choosing to treat a nonresident spouse as a U.S. resident needs a further choice for the net investment income tax (to apply that election to it, or to figure it as if filing separately); this is outside this tool.
+    *Source:* [i8960] p. 3, "If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes, but don’t elect to apply the joint return election for NIIT purposes, then, for NIIT purposes, you’ll be treated under the default method as married filing separately"
+  - *Refused at:* `f8960.line1`
 
 ### Household and dependents
 
 - **`household.hoh_community_property`**: Are you married, filing as head of household, and living in a community property state?
   - *The data asks or tests:* Married, filing as head of household, and living in a community property state (`choose`)
-  - *Not covered:* Community income on a married head of household return in a community property state (Form 8958; Pub. 555). A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
+  - *Not covered:* Community income on a married head of household return in a community property state (Form 8958; Pub. 555). A married person filing as head of household, where either spouse lived in or had a permanent home in a community property state, may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
     *Source:* [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555"
   - *Refused at:* `household.hoh_eligible`
 - **`household.mfs_community_property`**: Are you married, filing separately, and did you live in a community property state at any time in 2025?
-  - *The data asks or tests:* Married filing separately, and you lived in a community property state at some time in 2025 (`choose`)
+  - *The data asks or tests:* Married filing separately, and you or your husband or wife lived in, or had a permanent home in, a community property state at some time in 2025 (`choose`)
   - *Stops the return as:* Married filing separately in a community property state (Form 8958)
-  - *Not covered:* Community income on a married filing separately return (Form 8958; Pub. 555). A married person who files a separate return and lived in a community property state may have to report half of the community income of both spouses under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
+  - *Not covered:* Community income on a married filing separately return (Form 8958; Pub. 555). A married person who files a separate return, where either spouse lived in or had a permanent home in a community property state, may have to report half of the community income of both spouses under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
     *Source:* [i1040gi] p. 14, Married Filing Separately, "Different rules apply to people in community property states; see Pub. 555"; p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."
   - *Refused at:* `f1040.line1a`
   - *Share of returns (coverage estimate):* Married filing separately, 2.6%
@@ -529,12 +534,12 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
   - *Refused at:* `s8812.line12`
 - **`household.widowed_this_year`**: Are you filing as single or head of household although your spouse died in 2025?
   - *The data asks or tests:* Filing as single or head of household although your spouse died in 2025 (`choose`)
-  - *Not covered:* Filing status after a spouse's death in 2025. Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.
+  - *Not covered:* Filing status after a spouse's death in 2025. Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly) or a separate return (married filing separately).
     *Source:* [i1040gi] p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."
   - *Refused at:* `f1040.line12e`
 - **`household.cp_marriage_ended`**: Not filing jointly and not married at the end of 2025, were you married during 2025 while living in a community property state?
   - *The data asks or tests:* Not filing jointly, and married for part of 2025 while living in a community property state (`choose`)
-  - *Not covered:* Community income of a marriage that ended in 2025 (Form 8958; Pub. 555). Income earned while you were married and living in a community property state may be community income under state law, half yours and half your former spouse's; Form 8958 and the community property rules of Pub. 555 are outside this tool.
+  - *Not covered:* Community income of a marriage that ended in 2025 (Form 8958; Pub. 555). Income earned while you were married and lived in, or had your permanent home in, a community property state may be community income under state law, half yours and half your former spouse's; Form 8958 and the community property rules of Pub. 555 are outside this tool.
     *Source:* [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."
   - *Refused at:* `f1040.line1a`
 - **`household.hoh_absence`**: Filing as head of household, does every person who would qualify you count as living with you only by counting an absence they weren't expected to return from, or during which you didn't keep up the home?
@@ -927,7 +932,7 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
     *Source:* [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 3, 4, 6 and 7
   - *Refused at:* `rec.line11`, `refund.line1`
 - **`refund.exc_who`**: For 2024, could someone claim you as a dependent, did you file Form 1040-NR, or did the refund come from a joint state return with someone you are not filing with now?
-  - *The data asks or tests:* Could you be claimed as a dependent by someone else in 2024; were you a nonresident alien filing Form 1040-NR for 2024; or did you receive any of these refunds because of a jointly filed state or local income tax return when you are not filing a joint 2025 Form 1040 or 1040-SR with the same person? (`input`)
+  - *The data asks or tests:* Could you be claimed as a dependent by someone else in 2024; were you a nonresident alien for all or part of 2024, whichever form you filed; or did you receive any of these refunds because of a jointly filed state or local income tax return when you are not filing a joint 2025 Form 1040 or 1040-SR with the same person? (`input`)
   - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A 2024 return on which you could be claimed as a dependent, a 2024 Form 1040-NR, or a refund from a joint state or local return with someone you are not filing jointly with for 2025 changes the 2024 standard deduction or the refund to count; that is outside this tool.
     *Source:* [p525] p. 25, Itemized Deduction Recoveries, "You could be claimed as a dependent by someone else in 2024" and "You received a refund because of a jointly filed state or local income tax return"; p. 25, Nonresident aliens, "you can’t claim the standard deduction"
   - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A 2024 return on which you could be claimed as a dependent, a 2024 Form 1040-NR, or a refund from a joint state or local return with someone you are not filing jointly with for 2025 is figured with Pub. 525 instead of the Form 1040 worksheet; that is outside this tool.
@@ -997,7 +1002,7 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
     *Source:* [i1040se] p. 6, Line 18, "Depletion"
   - *Refused at:* `rental.line21_full`
 - **`rental.part_home`**: Is the rental part of a home or building you live in, such as a room?
-  - *The data asks or tests:* Part of a property the filer also lives in (`input`)
+  - *The data asks or tests:* Part of a property the filer also lives in, lived in during 2025, or uses (`input`)
   - *Not covered:* Schedule E, Part I (rental of part of a property you also live in). Renting out part of a home or building you also live in, such as a room, is outside this tool.
     *Source:* [i1040se] p. 6, Renting out part of your home
   - *Refused at:* `rental.line21_full`
@@ -1021,14 +1026,24 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
   - *Not covered:* Form 6198 (at-risk limits). A rental loss with an amount not at risk is outside this tool.
     *Source:* [i1040se] p. 2, At-Risk Rules
   - *Refused at:* `rental.line22`
+- **`rental.held_for_sale`**: Is the rental property held mainly to sell (as an investment or as a real estate dealer), or open in set business hours for use by many customers, such as a parking lot?
+  - *The data asks or tests:* Held mainly for sale (as an investment or by a real estate dealer), or made available in business hours for nonexclusive use by many customers (`input`)
+  - *Not covered:* Form 8582 exceptions, or Schedule C (property held mainly for sale, or offered in business hours to many customers). Property held mainly to sell, as an investment or by a real estate dealer, and property offered during business hours to many customers may not be a rental activity, and are outside this tool.
+    *Source:* [i8582] p. 3, Exceptions, "The rental of property is incidental to an activity of holding property for investment"; i1040se p. 6, "Do not use Schedule E to report income and expenses from rentals of real estate you held for sale to customers in the ordinary course of your business as a real estate dealer"
+  - *Refused at:* `rental.line21_full`
+- **`rental.prior_ws51_if_any`**: Does a rental's carried-over loss include costs carried over from a year you also used the place as a home (Pub. 527, Worksheet 5-1)?
+  - *The data asks or tests:* Asked only when a loss or cost was carried over (false otherwise) (`choose`)
+  - *Not covered:* Pub. 527, Worksheet 5-1 (expenses carried over from a year of home use). Rental costs carried over from an earlier year's Worksheet 5-1, when you also used the place as a home, are outside this tool.
+    *Source:* [p527] p. 28, "This limitation will apply to expenses carried forward to another year even if you don’t use the property as your home for that subsequent year"
+  - *Refused at:* `rental.prior_loss`
 - **`rprop.personal`**: Is depreciable property of the rental something other than a building, such as an appliance or a fence?
   - *The data asks or tests:* Personal property or a land improvement in a rental (`test`)
   - *Not covered:* Form 4562 (personal property or land improvements in a rental). Appliances, carpet, furniture, fences and other property that is not a building are outside this tool.
     *Source:* [i4562] p. 9, Lines 19a Through 19j
   - *Refused at:* `rprop.dep`
 - **`rprop.screen`**: Is a building of the rental depreciated another way, disposed of, or with a changed basis?
-  - *The data asks or tests:* Depreciation of this property outside the tables this tool uses (`input`)
-  - *Not covered:* Form 4562 (real property outside the mid-month tables). Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, or cooperative stock is outside this tool.
+  - *The data asks or tests:* Depreciation of this property outside the tables this tool uses (`test`)
+  - *Not covered:* Form 4562 (real property outside the mid-month tables). Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, cooperative stock, or property received in a like-kind exchange or an involuntary conversion is outside this tool.
     *Source:* [i4562] p. 11, Column (f)—Method
   - *Refused at:* `rprop.dep`
 - **`rprop.early_nonres`**: Is nonresidential real property placed in service before 1994 depreciated?
@@ -1037,8 +1052,8 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
     *Source:* [p946] p. 74, Table A-7, "Straight Line—31.5 Years"
   - *Refused at:* `rprop.dep`
 - **`royalty.business`**: Did a royalty come from your own self-employed creative work or a working interest?
-  - *The data asks or tests:* Royalty from the filer's own work as a self-employed writer, artist or inventor, or from a working interest (`input`)
-  - *Not covered:* Schedule C (royalties from your own trade or business). Royalties from your own work as a self-employed writer, artist or inventor, or from a working interest, are reported on Schedule C; this tool does not prepare them on Schedule E.
+  - *The data asks or tests:* Royalty from the filer's own business or services (a self-employed writer, artist, inventor or other creator, or name, image and likeness income from sponsorships or services), or from an operating (working) interest in minerals (`input`)
+  - *Not covered:* Schedule C (royalties from your own trade or business). Royalties from your own business or services (as a self-employed writer, artist, inventor or other creator, or name, image and likeness income from sponsorships or services), or from a working interest, are reported on Schedule C; this tool does not prepare them on Schedule E.
     *Source:* [i1040se] p. 6, Line 4, "If you are in business as a self-employed writer, inventor, artist, etc., report your royalty income and expenses on Schedule C"
   - *Refused at:* `royalty.line21`
 - **`royalty.depletion`**: Do you claim depletion for a royalty?
@@ -1046,6 +1061,26 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
   - *Not covered:* Schedule E, line 18 (depletion). Depletion is outside this tool.
     *Source:* [i1040se] p. 6, Line 18, "Depletion"
   - *Refused at:* `royalty.line21`
+- **`royalty.capital`**: Is a royalty a payment for a patent you transferred, or for coal or iron ore you disposed of?
+  - *The data asks or tests:* Payment for a transferred patent, or for coal or iron ore disposed of, that may be a sale of a capital asset (`input`)
+  - *Not covered:* Form 4797 or Schedule D (patent transfer, or coal or iron ore). Royalties that may be treated as the sale of a capital asset (from a patent you transferred, or coal or iron ore you disposed of) are outside this tool.
+    *Source:* [i1040se] p. 6, "You may be able to treat amounts received as 'royalties' for the transfer of a patent or amounts received on the disposal of coal and iron ore as the sale of a capital asset"
+  - *Refused at:* `royalty.line21`
+- **`royalty.vehicle`**: Do you have car, truck or travel costs for a royalty?
+  - *The data asks or tests:* Car, truck or travel expenses for the royalty (line 6) (`input`)
+  - *Not covered:* Schedule E, line 6 (auto and travel). Car, truck and travel costs of a royalty are outside this tool.
+    *Source:* [i1040se] p. 4, Line 6
+  - *Refused at:* `royalty.line21`
+- **`royalty.depreciation`**: Do you depreciate or amortize anything for a royalty, such as a copyright or patent you bought?
+  - *The data asks or tests:* Depreciation or amortization for the royalty (line 18) (`input`)
+  - *Not covered:* Schedule E, line 18 (depreciation). Depreciation or amortization for a royalty is outside this tool.
+    *Source:* [f1040se] Schedule E (2025), line 18, "Depreciation expense or depletion"
+  - *Refused at:* `royalty.line21`
+- **`royalty.not_at_risk_if_loss`**: Does a royalty have a loss with an investment not at risk (Form 6198)?
+  - *The data asks or tests:* Asked only when the royalty has a loss (false otherwise) (`choose`)
+  - *Not covered:* Form 6198 (at-risk limits). A royalty loss with an amount not at risk is outside this tool.
+    *Source:* [i1040se] p. 3, At-Risk Rules
+  - *Refused at:* `royalty.loss_abs`
 - **`sche.re_pro`**: Did you work over 750 hours, and most of your work time, in real estate?
   - *The data asks or tests:* Real estate professional (`input`)
   - *Not covered:* Schedule E, line 43 (real estate professional). A real estate professional's rentals are outside this tool.
@@ -1061,13 +1096,18 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
   - *Not covered:* Form 8995 (rental real estate as a trade or business). A rental treated as a trade or business is outside this tool.
     *Source:* [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction"
   - *Refused at:* `sche.line26`
+- **`sche.accrual`**: Do you keep the books for your rentals on the accrual method?
+  - *The data asks or tests:* Rental books kept on the accrual method (`input`)
+  - *Not covered:* Schedule E, Part I (accrual method). Rentals kept on the accrual method are outside this tool.
+    *Source:* [p527] p. 4, When To Deduct, "If you use the accrual method, see Pub. 538 for more information"
+  - *Refused at:* `sche.line26`
 - **`s1.alimony_unsupported`**: Is alimony paid under more than one agreement or to more than one person, subject to recapture, or partly child support?
   - *The data asks or tests:* Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement, or paid to more than one person; a recapture of alimony; or payments of which part is not alimony (child support, including an amount reduced on a contingency relating to a child; payments for a home either of you owns; or a part that must continue after the recipient's death)? (`input`)
   - *Not covered:* Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504). Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.
     *Source:* [p504] p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony
   - *Refused at:* `s1.alimony_refused`, `s1.paid_refused`
 - **`s1.cod_unsupported`**: Is a canceled debt excluded or excepted (Form 982), a business, rental or farm debt, from a foreclosure or repossession, or another special case?
-  - *The data asks or tests:* Does any of these apply to a canceled debt: an exception or exclusion (Form 982), a business, rental or farm debt, a foreclosure, repossession or abandonment, deductible interest or other deductible debt, a debt you were not personally liable for, or a debt owed jointly with someone who is not on this return? (`input`)
+  - *The data asks or tests:* A canceled debt is excluded or excepted from income (Form 982), a business, rental or farm debt, canceled in a foreclosure, repossession or abandonment, deductible, nonrecourse, or owed jointly with someone not on this return (true when any of the canceled-debt screening questions is answered Yes) (`test`)
   - *Not covered:* Form 982, Pub. 4681 exceptions, business or farm debt, foreclosures and repossessions. Canceled debt that is excluded from income or excepted, business, rental or farm debt, debt canceled in a foreclosure, repossession or abandonment, deductible interest, nonrecourse debt and debt owed jointly with another person are outside this tool; only fully taxable canceled nonbusiness debt is computed.
     *Source:* [p4681] p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions
   - *Refused at:* `s1.cod_refused`
@@ -1278,12 +1318,12 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
 - **`sa.charity_limited_if_gifts`**: Are your charitable deductions limited by income, or carried over from an earlier year?
-  - *The data asks or tests:* Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity in 2025) (`choose`)
+  - *The data asks or tests:* The 2025 charitable deductions are reduced by income limits (no when you and your spouse gave nothing to charity in 2025) (`choose`)
   - *Not covered:* Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
 - **`sa.gift_carryover_if_no_gifts`**: With no gifts to charity in 2025, do you have a charitable contribution carried over from an earlier year?
-  - *The data asks or tests:* A charitable contribution is carried over from an earlier year (asked only when you and your spouse gave nothing to charity in 2025) (`choose`)
+  - *The data asks or tests:* A charitable contribution is carried over from an earlier year (asked of every filer, whether or not they gave in 2025) (`copy`)
   - *Not covered:* Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line13`
@@ -1297,6 +1337,8 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
     - inventory
     - conservation or partial interests
     - property with restrictions on its use
+    - property other than qualified appreciated stock given to a private nonoperating foundation
+    - tangible personal property held more than 1 year and worth more than its cost or other basis, that the charity puts to an unrelated use
     - a clothing or household item over $500 not in good used condition (`input`)
   - *Not covered:* Form 8283 special treatment. This contribution requires unsupported appraisal or special-property treatment.
     *Source:* [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
@@ -1655,6 +1697,26 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
   - *Not covered:* Form 8995 with a qualified business loss limited by stock basis. When a loss is partly carried forward by the basis limitation, only the allowed part of the qualified business loss counts this year; working out that part is outside this tool.
     *Source:* [i1120ssk] p. 17, Code V. Section 199A information, "When determining QBI or qualified PTP income, you must include only those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable income for the tax year"
   - *Refused at:* `k1s.qbi`
+- **`k1s.trader_if_b1`**: Is an S corporation's business trading investments for its owners?
+  - *The data asks or tests:* Trading, asked only when box 1 shows an amount (false otherwise) (`choose`)
+  - *Not covered:* A corporation trading investments for its owners (nonpassive trading activity). A corporation that trades investments for its owners is outside this tool.
+    *Source:* [i1120ssk] p. 5, "Trading personal property for the account of owners of interests in the activity"
+  - *Refused at:* `k1s.ok`
+- **`k1s.re_pro_if_b2`**: With rental real estate income or loss from an S corporation (box 2), did you work over 750 hours, and most of your work time, in real estate?
+  - *The data asks or tests:* Real estate professional, asked only when box 2 shows an amount and no rental or royalty of your own is listed (false otherwise; Schedule E Part I asks it then, and a Yes there refuses the return) (`choose`)
+  - *Not covered:* Schedule K-1 (Form 1120-S) box 2 of a real estate professional (Schedule E, line 43). Rental real estate from an S corporation held by a real estate professional is outside this tool.
+    *Source:* [i1120ssk] p. 6, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity"
+  - *Refused at:* `k1s.ok`
+- **`k1s.dwelling_if_rent`**: Did you or another shareholder use one of an S corporation's rental homes personally for over 14 days and over a tenth of its fair-rental days?
+  - *The data asks or tests:* Personal use of a rented home, asked only when box 2 or box 3 shows an amount (false otherwise) (`choose`)
+  - *Not covered:* Rental of a home a shareholder used personally (nonpassive; Form 8582 does not apply). An S corporation's rental of a home a shareholder used personally for more than the limit is outside this tool.
+    *Source:* [i1120ssk] p. 5, "The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value"
+  - *Refused at:* `k1s.ok`
+- **`k1s.interest_buy`**: Did you pay interest on money borrowed to buy S corporation shares or put capital into the corporation?
+  - *The data asks or tests:* Interest on money borrowed to buy shares or put capital into the corporation (debt-financed acquisition) (`input`)
+  - *Not covered:* Schedule E, line 28, interest on money borrowed to buy into an S corporation (debt-financed acquisition). Interest on money borrowed to buy into an S corporation is outside this tool.
+    *Source:* [i1040se] p. 9, S Corporations, "If you used loan proceeds to buy an interest in, or make a contribution to the capital of, an S corporation (debt-financed acquisition), report your share of deductible S corporation interest expense on either Schedule A or Schedule E"
+  - *Refused at:* `k1s.ok`
 - **`f7203.election_if_req`**: Is a Regulations section 1.1367-1(g) election in effect for an S corporation (Form 7203)?
   - *The data asks or tests:* The election, asked only when Form 7203 is required (false otherwise) (`choose`)
   - *Not covered:* Form 7203 with a Regulations section 1.1367-1(g) election. With the election, nondeductible expenses are moved to line 13 and carried over under special rules; that is outside this tool.
@@ -1781,12 +1843,12 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
     *Source:* [i1065sk1] p. 9, Individuals (other than limited partners), "The activity was a personal service activity and you materially participated in the activity for any 3 tax years"
   - *Refused at:* `k1p.screened`
 - **`k1p.t4_if_gp`**: Did you materially participate in a partnership business only by the significant participation test?
-  - *The data asks or tests:* Asked only of a general partner who met none of tests 1, 2, 3 and 5 (false otherwise) (`choose`)
+  - *The data asks or tests:* Asked only of a general partner who worked in the business and met none of tests 1, 2, 3 and 5 (false otherwise) (`choose`)
   - *Not covered:* Material participation by test 4 (significant participation activities). Material participation by the significant participation test is outside this tool.
     *Source:* [i1065sk1] p. 9, Individuals (other than limited partners), "The activity was a significant participation activity for the tax year"
   - *Refused at:* `k1p.screened`
 - **`k1p.t7_if_gp`**: Did you materially participate in a partnership business only by the facts and circumstances test?
-  - *The data asks or tests:* Asked only of a general partner who met none of tests 1, 2, 3 and 5 (false otherwise) (`choose`)
+  - *The data asks or tests:* Asked only of a general partner who worked in the business and met none of tests 1, 2, 3 and 5 (false otherwise) (`choose`)
   - *Not covered:* Material participation by test 7 (facts and circumstances). Material participation by the facts and circumstances test is outside this tool.
     *Source:* [i1065sk1] p. 9, Individuals (other than limited partners), "Based on all the facts and circumstances, you participated in the activity on a regular, continuous, and substantial basis during the tax year"
   - *Refused at:* `k1p.screened`
@@ -1814,6 +1876,41 @@ The data holds **353 refusal gates**: 305 tax situations the tool does not prepa
   - *The data asks or tests:* Asked only of a held-back rental loss with active participation (false otherwise) (`choose`)
   - *Not covered:* Form 8582, Part IV (prior-year loss from a year without active participation). A held-back rental loss from a year without active participation is outside this tool.
     *Source:* [i8582] p. 10, Part IV, "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year"
+  - *Refused at:* `k1p.screened`
+- **`k1p.upe`**: Did you pay partnership expenses the partnership agreement required you to pay, without being paid back?
+  - *The data asks or tests:* Unreimbursed partnership expenses paid under the partnership agreement (`input`)
+  - *Not covered:* Schedule E, line 28, unreimbursed partnership expenses (and box 14, code A reduced by them). Partnership expenses you paid yourself under the partnership agreement are outside this tool.
+    *Source:* [i1040se] p. 10, Unreimbursed Partnership Expenses, "You can deduct unreimbursed ordinary and necessary partnership expenses you paid on behalf of the partnership on Schedule E if you were required to pay these expenses under the partnership agreement"
+  - *Refused at:* `k1p.screened`
+- **`k1p.interest_buy`**: Did you pay interest on money borrowed to buy into a partnership or put capital into it?
+  - *The data asks or tests:* Interest on money borrowed to buy the interest or put capital into the partnership (debt-financed acquisition) (`input`)
+  - *Not covered:* Schedule E, line 28, interest on money borrowed to buy into a partnership (debt-financed acquisition). Interest on money borrowed to buy into a partnership is outside this tool.
+    *Source:* [i1040se] p. 9, Domestic Partnerships, "If you used loan proceeds to buy an interest in, or make a contribution to the capital of, a partnership (debt-financed acquisition), report your share of deductible partnership interest expense on either Schedule A or Schedule E"
+  - *Refused at:* `k1p.screened`
+- **`k1p.re_pro_if_b2`**: With rental real estate income or loss from a partnership (box 2), did you work over 750 hours, and most of your work time, in real estate?
+  - *The data asks or tests:* Asked only when box 2 shows an amount and no rental or royalty of your own is listed (false otherwise; Schedule E Part I asks it then, and a Yes there refuses the return) (`choose`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 2 of a real estate professional (Schedule E, line 43). Rental real estate from a partnership held by a real estate professional is outside this tool.
+    *Source:* [i1065sk1] p. 14, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity"
+  - *Refused at:* `k1p.screened`
+- **`k1p.dwelling_if_rent`**: Did you or another partner use one of a partnership's rental homes personally for over 14 days and over a tenth of its fair-rental days?
+  - *The data asks or tests:* Asked only when box 2 or box 3 shows an amount (false otherwise) (`choose`)
+  - *Not covered:* Rental of a home a partner used personally (nonpassive; Form 8582 does not apply). A partnership's rental of a home a partner used personally for more than the limit is outside this tool.
+    *Source:* [i1065sk1] p. 11, Special rules for certain other activities, "The rental of a dwelling unit any partner used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value"
+  - *Refused at:* `k1p.screened`
+- **`k1p.basis_carry`**: Is a partnership loss carried from an earlier year by the basis limitation?
+  - *The data asks or tests:* Losses from this partnership not allowed in an earlier year because of the basis limitation (`input`)
+  - *Not covered:* Schedule E, line 28, column (i), a loss carried from an earlier year by the basis limitation. A partnership loss carried from an earlier year by the basis limitation is outside this tool.
+    *Source:* [i1065sk1] p. 13, "If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your net income, loss, or credits for this year"
+  - *Refused at:* `k1p.screened`
+- **`k1p.risk_carry`**: Is a partnership loss carried from an earlier year by the at-risk rules (Form 6198)?
+  - *The data asks or tests:* A loss from this partnership not allowed in an earlier year because of the at-risk limitation (`input`)
+  - *Not covered:* Form 6198 (at-risk limitations), a loss carried from an earlier year. A partnership loss carried from an earlier year by the at-risk limitation is outside this tool.
+    *Source:* [i1065sk1] p. 13, "If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your net income, loss, or credits for this year"
+  - *Refused at:* `k1p.screened`
+- **`k1p.fuel_prior_year`**: Did you claim a credit for federal tax on fuels on your 2024 return from a partnership's information?
+  - *The data asks or tests:* A credit for federal tax on fuels claimed on the 2024 return from this partnership's information (`input`)
+  - *Not covered:* Schedule E, line 28, a 2024 fuel tax credit from the partnership taken into income. A fuel tax credit from a partnership claimed on your 2024 return is outside this tool.
+    *Source:* [i1040se] p. 9, Domestic Partnerships, "If you claimed a credit for federal tax on gasoline or other fuels on your 2024 Form 1040, 1040-SR, or 1040-NR based on information received from the partnership, enter as income in column (h) or column (k), whichever applies, the amount of the credit claimed for 2024"
   - *Refused at:* `k1p.screened`
 
 ## Entry checks

@@ -52,6 +52,26 @@
    "subject_key": "db470279762cc332dc4959a0150d92f175d1a1c578c6a278674cac6023235823"
   },
   {
+   "printed": "2",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The IRS line says “Alternative minimum tax. Attach Form 6251” and the instructions say “Enter the amount from Form 6251, line 11, on line 2,” but the restatement enters zero unless s2.amt is true; s2.amt does not screen all AMT adjustments and filing triggers that can make Form 6251 line 11 positive.",
+   "ruling": "Ruling: scope; f1040s2 p. 112: alternative minimum tax is refused through the computed s2.amt screen; the line is zero otherwise. Project stands.",
+   "context": "19dedc2a2ccb2174e2117d578bbca57779d0a9283639672cc2ed19b6ff912a78",
+   "date": "2026-11-17",
+   "run": "15f966610d68d56754c97819e8cd51ba99af10865ca30460a7024233e1085e53",
+   "subject_key": "e6f1c82a6a0fbfe03dfe45add8cb23259666291b4e49d8aa33f79cd1d0494a6a"
+  },
+  {
+   "printed": "21",
+   "restated": "Add line 4, line 7, line 8, line 11, line 12, and line 18.",
+   "model": "The IRS line says “Add lines 4, 7 through 16, 18, and 19,” but the restatement adds only lines 4, 7, 8, 11, 12, and 18; it omits line 14, “Interest on tax due on installment income from the sale of certain residential lots and timeshares,” without a refusal condition naming that exclusion.",
+   "ruling": "Ruling: scope; f1040s2: line 14 installment interest is outside the tool. Project stands.",
+   "context": "19dedc2a2ccb2174e2117d578bbca57779d0a9283639672cc2ed19b6ff912a78",
+   "date": "2026-11-17",
+   "run": "15f966610d68d56754c97819e8cd51ba99af10865ca30460a7024233e1085e53",
+   "subject_key": "a2275733efed4e00368bb180340490c9b34cedd7e08e7728c892b867dbef21c5"
+  },
+  {
    "printed": "8 (box)",
    "restated": "line 8 > $0 and helper \"Someone on the return must file Form 5329, so a Form 5329 is prepared for each person with an early distribution\" = false",
    "model": "IRS says 'If not required, check here'; the restatement also requires line 8 > $0, so it would not check the box when no Form 5329 is required and line 8 is zero.",

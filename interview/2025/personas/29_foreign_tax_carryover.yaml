@@ -1,0 +1,29 @@
+# Predicted end (hand-derived; unverified until draft-walk and a values run; cents rounding may move a figure by $1):
+#   Form 1116 (passive): line 1a $4,000; line 3a $15,750; line 3e $96,000; line 3g about $657 (ratio 0.0417);
+#   line 7 and 15 about $3,343; line 8 and 9 $360; line 10 $100 (Schedule B (Form 1116), 2024 column);
+#   line 14 $460; line 18 $80,250; line 20 $12,225; line 21 about $510 (ratio 0.0417); line 24, 33, 35 $460.
+#   Adjustment exception applies (foreign dividends under $20,000; QDCG line 5 $75,250 under $197,300). No carryover left.
+#   AGI $96,000; taxable income $80,250; tax $12,225 (QDCG worksheet: $11,475 on $75,250 plus $750 on $5,000);
+#   Schedule 3 line 1 $460; tax after credits $11,765; withholding $11,000; owed $765.
+name: 29_foreign_tax_carryover
+who: A single person, 52, with one job (one Form W-2, $90,000 of wages) and an international index fund whose Form 1099-DIV shows $6,000 of dividends ($5,000 qualified) and $360 of foreign tax, $4,000 of it foreign source; her 2024 Form 1116 carried $100 of unused foreign tax into 2025.
+extends: 14_investor_international_fund
+end: complete
+answers:
+  person[taxpayer].birth_year: 1973
+  person[taxpayer].w2[employer].box1: 9000000
+  person[taxpayer].w2[employer].box2: 1100000
+  person[taxpayer].w2[employer].box4: 558000
+  person[taxpayer].w2[employer].box5: 9000000
+  person[taxpayer].w2[employer].box6: 130500
+  sb.ordinary_dividends: 600000
+  f1040.line3a: 500000
+  ftc.carryover: true
+  ftc.taxes: 36000
+  f1116col[funds].div_income: 400000
+  f1116col[funds].tax_div: 36000
+  f1116sb.changed: false
+  f1116sb.split: false
+  $f1116sbyr: [y2024]
+  f1116sbyr[y2024].year: p1
+  f1116sbyr[y2024].amount: 10000

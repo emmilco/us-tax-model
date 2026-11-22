@@ -1,0 +1,231 @@
+{
+ "kind": "render",
+ "form": "rental",
+ "family": "deepseek",
+ "base": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+ "lines": [
+  {
+   "key": "1b",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040se p. 5: self-rental is refused (rental.ws51). Project stands.",
+   "subject_key": "f38154e62e78d1a09436184dff1a0ee50ccd7c6ddb01d131d902d80d85b6a8a8"
+  },
+  {
+   "key": "2 (rental.days_fair)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "2d3416f693c20e38cfafa44a9709c8ab7f67fd0a5765145536158279b24bc2c0"
+  },
+  {
+   "key": "2 (rental.days_personal)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; the input restates the page in plain language; the fair-rental main-home exception is on the cited page and the filer answers it. Project stands.",
+   "subject_key": "26183e9dfc2e77c2ae8a05f99368bbd17f7734d337c789774e3667b4f5b79124"
+  },
+  {
+   "key": "5",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "da69f13479fada932b421a13d9092ff87559973782050e9e79f6396894e5c81c"
+  },
+  {
+   "key": "7",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "78df9e7a970cc94788ba61264af34d848d988228329ff97730c3d26a544f9e3e"
+  },
+  {
+   "key": "8",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "6da9e9ca139f7f28fe2d33422becd5b814cb8f2439b10277ee46cda121e37df9"
+  },
+  {
+   "key": "9",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "365ebb8cacebda3ed4f0da637dbb1420d1e203e28f9d6747769ce2986878b9d6"
+  },
+  {
+   "key": "10",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; i1040se p. 5: p527 p. 26, Dividing Expenses, requires the rental part of an expense when the dwelling has personal use; the proration is the source's, not the restatement's invention. Project stands.",
+   "subject_key": "ee5f16dcb636817e7a3b6c4dc608310f2010cd4dec008813d5e74123897c1efd"
+  },
+  {
+   "key": "11",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "494c826591cc12f02114406a11e752166b834e197b127ff644d51ac4924d7256"
+  },
+  {
+   "key": "12",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "70e7b35839c255bf9226c288493970f542b6eb2c8d443826ddc47b22a2e57ba7"
+  },
+  {
+   "key": "13",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "1f75ba05c73f04263a303e4c709a20cf736da9fba570adb04a8fe46763c089d2"
+  },
+  {
+   "key": "14",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "aec4ee67f1049dd51f48bbcd9de5d9a78b5c661b2efcd6140d4055a759961784"
+  },
+  {
+   "key": "15",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "d160f61668d094f3a7c8364919184baef2d92c8f9bb9ca757082b9266a563bf8"
+  },
+  {
+   "key": "16",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "f9716296c5dc7bd6f180bfe7e336487b080becd37024616ce1c1989ccafb5736"
+  },
+  {
+   "key": "17",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "c997f15a0bdd8ded2abbaa5d59ddee3960e5e71d0f2caf464ce0fa918094a6ae"
+  },
+  {
+   "key": "19",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "0a22750ca7eb0e4c06e7820c271bf64adcaffa7c41ec4e89055bb8574a9fbcdb"
+  },
+  {
+   "key": "18",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "771409e2bcad3928a3b5e9f9285530d6cc81f7e003ef30f88b5aef11899f0c93"
+  },
+  {
+   "key": "20",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "9e0ad2a95eb375acae87b2a12a0fd433ba82825cf0810e3987dba4f7d5e552bd"
+  },
+  {
+   "key": "3",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "ae0ebeaf8a262333d8909b97e5b6012cf0474c2eb8a3fba55c54e6a2a2029afc"
+  },
+  {
+   "key": "21",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "b9da10788ce5fe81555749dc6cde3b0f664ae53b7546cd0479e3d27ea87f200c"
+  },
+  {
+   "key": "IV/V (a)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "27ca6614813b334af25411b6116e430151d16fc30ffb84242942dc161ef64d9a"
+  },
+  {
+   "key": "IV/V (b)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "c74665d3424e627f4ece8296e62943b4695953d4abc5057d3db1c6b66ca87285"
+  },
+  {
+   "key": "IV/V (c)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "71cf619cb7b0a6484500afa910d49c4128ae09b3b6712e7554a19fd4260018f8"
+  },
+  {
+   "key": "IV/V (e)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "ec97bca6cb65887413f78f55f9c4473b21586344be5f38627ca0453262886561"
+  },
+  {
+   "key": "VI (a)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "582b8e2d1e2c16016853bad8cc46e9823f83fd3cb5a701705a9c0696af4ceeb9"
+  },
+  {
+   "key": "VI (c)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "8baad149f4d57c55c03c4755bfffa539c76a3752e28f0739106c4a8008bc8bb1"
+  },
+  {
+   "key": "VII (a)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "51bec26cbd58f5eeb5541f236398d078e7ff3a856e6cad7d9644ea6982a2cf42"
+  },
+  {
+   "key": "VII (c)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "163825b5c60df5aec6338fa84822cd2f370916cd1ab8accfed7ca5643b0c509b"
+  },
+  {
+   "key": "VIII (c)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "402391db598aaf8f53ebc9b08286b6d8fc2785b7c010ec25d5ba776d6f60ffb0"
+  },
+  {
+   "key": "VIII (b)",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "2ac03259c605074ba8b23dad0d333e4ff1077fe26f5aa533bd72c1c05705f074"
+  },
+  {
+   "key": "22",
+   "record": "6ff8f9ae4950891b99bf697ef8116596008707f10017144761edd74f7faa5a2c",
+   "status": "MATCH",
+   "subject_key": "87870a9e4437e4bb3e2b2763d7d4a588c98cd138895a2db9ecb00ff297272ca4"
+  }
+ ],
+ "subjects": {
+  "1b": "bc48c0ba6922aba4bfbbdf27042c799633bb2f74be8727289418b08d17dbd7fe",
+  "2 (rental.days_fair)": "072d4134e7bda8a6e8951a6bcffc4e3f374ef1a0a4ea7fd2086330a2eee2a166",
+  "2 (rental.days_personal)": "b44d7fef7d1a23be48155881987683db4f17feb819d438a173c8429a5fabe2c1",
+  "5": "245409f1e0d0319bb0c55b5b0421c9e333d10a3700ab8027f87a5d8987e33e6d",
+  "7": "dc6deffa16a49fb7c13ae9fda1fe528d544bb5eb91ae1cd064c1438a4ed7b5c3",
+  "8": "ff5e963167bfbb05bd66cbed4f3d81df1c6b7949cdabed2c24e27cc9b8750c9d",
+  "9": "0b3316ea71e0008f75fcd5f6748f2e2c1d22b8d4ec81f89d5cf278388572bbc7",
+  "10": "e314844b1a0a8a5e51b408e7a22622b71593cead6f55de9d4e906d098838de7b",
+  "11": "e8e3bad82eee47d3af8fff3c89901f97f7cffff5a8537ea5977bcf8fbe6c2d53",
+  "12": "5dfb9265c5f4b3581ababdcaee8e6f965f2dd7584b9481fe79d497eaa413aaad",
+  "13": "770e0389e192532700d35033c03900651c9d1494a14059b86dd2739166f1dce8",
+  "14": "6adaf5e953443a94bc0b1948ce41a6b76dc64196ca5625ace8b4046b452cbb19",
+  "15": "cfbfac9c6bab40285de052ec937f21e39c30f0d5b884b8a9f6aa8c096f826b63",
+  "16": "7c868d05f47f9a2c2a99f141de21175fc237d173a5e93cf4a238bfe17836df34",
+  "17": "8e6f7e0304409378cbd0f92f6bd726e15caf5b24df4ad8886436da4cbf02bacc",
+  "19": "24301a9e544c9ed2b6281ec7b7effe600cf3792ae91c97617ebfcd2808925cdc",
+  "18": "e3033c45d0058c8b1ce48522065415f15250c6cc4aaed5dc8602279ca6712b09",
+  "20": "3fd66edfb47b4b7e69d890bf8f3f9bd72f9e73ed540a7347f51939f56b3c490a",
+  "3": "5aefbf3e4b2692208c9f42cb49dcbaa76f9ef80c4303efc41036b943edf7eaab",
+  "21": "ff4b7e8f6e4f84be9bd66430d94eb37c12770f3e6b200c86bc5aa677fa371886",
+  "IV/V (a)": "5ef05fb338167af0bcd4ec36112dcddc36e5e8dbb43541613ec0fb87035c6bc1",
+  "IV/V (b)": "ae42e020f6b7077198ed5ede60e7ea80698e4ddabb356955c1062b61239f398c",
+  "IV/V (c)": "f52431ab33d673649dc37c12e4bc4ed7b648cca8410d9ef9386fe2fd3ec7aa13",
+  "IV/V (e)": "2c68cf678d9d710d0ab54d95c0a12c63ae26db9b106c7463450b2c0243cb64c1",
+  "VI (a)": "87120e06bf80e782e32cc294cc6c179702804197de768bd915bcc0056ac0d7fc",
+  "VI (c)": "e3fea3df067b99cd1b3d85537d2b7d8fd093bee0e5a65de49a5717e62a08d82f",
+  "VII (a)": "b7ecd6ca9bc2bee8caded4a1b91a10347a8c7722f9f218e805d07029ae7281d6",
+  "VII (c)": "0d7811a92c8bb66f010506e9855dab0c48b10915f2fe281f20abd97b2254ce0a",
+  "VIII (c)": "fc4f9c5e1cd3dcab8f9627134b148348d9c4af005bf104389bbcc998ce032475",
+  "VIII (b)": "f5b6747aa9f3c680e0ef7120120ec4f8b6ccf1b7947ae843b13c15e01a8b85ac",
+  "22": "8b1fb0fd2264c69f60aa90ea6d5beb649b266bb85fad7d1027b89e9618574b22"
+ },
+ "__rest__": "24cbf42508a0abaefd46c96c9bf6e47a6dd76483ea0f68ce88f98eb7304c0060"
+}

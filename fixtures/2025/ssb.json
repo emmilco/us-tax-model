@@ -312,6 +312,7 @@
         "person[taxpayer].w2[emp_a].box6": 43500,
         "ssb.any": true,
         "ssb.benefits": 2000000,
+        "f1040.tax_exempt_any": true,
         "f1040.tax_exempt_interest": 200000
       },
       "expect": {

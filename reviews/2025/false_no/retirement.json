@@ -778,88 +778,78 @@
    ]
   },
   "gate:retirement.is_trad": {
-   "subject_sha": "bb6e089992c8044db0678c24e2eda097c4e5c0eee60d8e05b0b4de0c6507cacd",
+   "subject_sha": "2d758cb8a21172b1bbe2de9077a442299258ed30633a7f6a5df0011a2456084a",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A married couple filing jointly. The 2025 distribution came from the spouse's traditional IRA, and the spouse made nondeductible contributions years ago and filed Form 8606. The primary filer never made any.",
-       "why_no": "The question asks 'Have you ever put money into a traditional IRA...'. The primary filer truthfully answers for themself, and the help mentions only 'your earlier tax returns'.",
+       "pattern": "2",
+       "who": "A filer who made a nondeductible contribution to a traditional IRA for 2025 but took no distribution from a traditional IRA in 2025, for example because the only retirement distribution was from a 401(k) or pension.",
+       "why_no": "The gate looks only at the kind of account a distribution came from; with no traditional-IRA distribution the computed condition is false, so the basis question is never asked.",
        "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i1040gi p.27, Exception 2(1): 'You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs for 2025 or an earlier year'; p.27: 'If you (or your spouse if filing jointly) received more than one distribution, figure the taxable amount of each distribution'",
+       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You made nondeductible contributions to a traditional IRA for 2025.'",
        "severity": "high",
-       "fix": "Ask about the owner of the IRA: 'Have you or your spouse ever put money into a traditional, SEP or SIMPLE IRA that was not deducted, or filed Form 8606 for any year?' Or ask once for each IRA owner whose distribution is reported."
+       "fix": "Broaden the gate to ask about traditional-IRA basis whenever the filer made nondeductible contributions, converted, recharacterized, or had a divorce or inheritance basis event, even without a traditional-IRA distribution."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "A beneficiary takes a distribution from a traditional IRA inherited from a parent. The parent made nondeductible contributions and had basis on Form 8606.",
-       "why_no": "The beneficiary never 'put money into' any IRA and never filed Form 8606. The question and its help both describe only the filer's own contributions.",
+       "who": "A filer who receives a distribution from a SEP or SIMPLE IRA and has basis in a traditional IRA, or has after-tax basis in the SEP or SIMPLE IRA itself.",
+       "why_no": "The account-kind helper is SEP or SIMPLE, not 'traditional_ira', so the gate is false; the question's 'traditional IRA' wording also invites reading SEP and SIMPLE IRAs out.",
        "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i1040gi p.27, Exception 2(1): '...you made nondeductible contributions to any of your traditional IRAs...see Form 8606 and its instructions to figure the amount to enter on line 4b' (an inherited IRA carries the decedent's basis, which Form 8606 tracks)",
+       "irs_text": "i1040gi (2025) p. 27, Exception 2: 'You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs...'",
        "severity": "high",
-       "fix": "Add: 'Is any of this an inherited IRA, and did the original owner make nondeductible contributions or file Form 8606?' Treat 'yes' or 'don't know' as out of scope."
+       "fix": "Gate on any non-Roth IRA distribution when any traditional, SEP, or SIMPLE IRA has basis, and word the question to include SEP and SIMPLE IRAs."
       },
       {
-       "kind": "UNCLEAR",
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A joint filer whose spouse has basis in a traditional IRA, such as nondeductible contributions or an inherited IRA, and who receives a traditional-IRA distribution from that spouse's IRA.",
+       "why_no": "The gated question asks 'any traditional IRA of yours' and the help never mentions the spouse; the filer answers no for themselves, and the joint return drops the spouse's basis.",
+       "line": "retirement.ira_basis_if_trad",
+       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You or your spouse transferred all or part of their traditional IRA...'",
+       "severity": "high",
+       "fix": "Ask 'you or your spouse' and include the spouse's traditional, SEP, and SIMPLE IRAs in the basis test."
+      },
+      {
+       "kind": "FALSE_NO",
        "pattern": "2",
-       "who": "A filer rolled after-tax contributions from a 401(k) or 403(b) (Form 1099-R box 5) into a traditional IRA. The rollover created IRA basis.",
-       "why_no": "The filer reads 'put money into a traditional IRA' as making a contribution, not a rollover. They also never thought of the after-tax plan money as something they 'did not deduct on a tax return'.",
+       "who": "A filer who transferred or received all or part of a traditional IRA in 2025 under a divorce or separation agreement and the transfer changed the IRA basis, but who had no traditional-IRA distribution.",
+       "why_no": "A divorce transfer is not a distribution from a traditional IRA, so the gate computed from the distribution source is false and the basis question is skipped.",
        "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i1040gi p.30, Rollovers: 'From this amount, subtract any contributions (usually shown in box 5) that were taxable to you when made'; p.27, Exception 2(1): '...see Form 8606 and its instructions to figure the amount to enter on line 4b'",
-       "severity": "medium",
-       "fix": "Broaden the question: '...including after-tax money rolled over from an employer plan (Form 1099-R box 5)'."
+       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You or your spouse transferred all or part of their traditional IRA in 2025 to the other spouse under a divorce or separation agreement where the transfer resulted in a change in the basis...'",
+       "severity": "high",
+       "fix": "Add a direct divorce-transfer basis trigger and do not require a distribution from a traditional IRA."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A higher-income filer covered by a workplace plan made traditional IRA contributions in past years. The contributions were not deductible, so nothing was deducted, but the filer never filed Form 8606.",
-       "why_no": "The help says 'If any of your earlier tax returns includes Form 8606, answer Yes.' The filer finds no Form 8606, reads the help as the test, and answers no.",
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A beneficiary who receives a distribution from an inherited traditional IRA that has basis, where the account-kind helper records the account as an inherited IRA rather than exactly 'traditional_ira'.",
+       "why_no": "The gate requires the account kind to equal 'traditional_ira'; an inherited-IRA category makes it false, so the basis question is not asked even though the help mentions inherited basis.",
        "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i1040gi p.27, Exception 2(1): 'you made nondeductible contributions to any of your traditional IRAs for 2025 or an earlier year'",
-       "severity": "medium",
-       "fix": "Reword the help: 'Answer Yes if you ever contributed to a traditional IRA without deducting it, even if you never filed Form 8606. A Form 8606 on an earlier return is one sign of this.'"
+       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You received a distribution from an inherited traditional IRA that has a basis.'",
+       "severity": "high",
+       "fix": "Treat inherited traditional IRAs as within the gate and do not require the account-kind value to be exactly 'traditional_ira'."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer made a 2025 traditional IRA contribution, or a 2025 contribution in early 2026. The filer assumes it is deductible, but it is partly nondeductible because of the active-participant phase-out.",
-       "why_no": "Whether a contribution is deductible is a legal classification the filer cannot check. They expect to deduct it on this return and answer no.",
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer who rolled after-tax money from a qualified work plan into a traditional IRA in 2025 and took no distribution from a traditional IRA.",
+       "why_no": "The gate looks at the account the distribution came from; the work-plan rollover is not a traditional-IRA distribution, so the gate is false. The help's 'Form 8606 on any earlier return means Yes' also suggests no to a filer with no prior Form 8606.",
        "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i1040gi p.27, Exception 2(1): '...nondeductible contributions to any of your traditional IRAs for 2025...If you made nondeductible contributions to these IRAs for 2025, also see Pub. 590-A and Pub. 590-B'",
+       "irs_text": "i8606 (2025) p. 9, Line 2: 'You rolled over any nontaxable portion of your qualified retirement plan to a traditional IRA... Include the nontaxable portion on line 2.'",
        "severity": "medium",
-       "fix": "Ask a fact the filer can check: 'Did you contribute to a traditional IRA for 2025?' Then compute deductibility, or refuse if you cannot. Separately, ask about earlier years' undeducted contributions."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer whose 2025 traditional IRA distribution was one of these: a 2024 or 2025 contribution returned with its earnings before the due date; a returned excess contribution; a conversion to Roth; or a recharacterization. None of these involves basis from earlier years.",
-       "why_no": "The question asks only about undeducted contributions. For a returned contribution, the filer also thinks 'it came back out, so it doesn't count'. The help ties the refusal to Form 8606, but nothing asks about these events, which also require Form 8606 and change line 4b.",
-       "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i1040gi p.27, Exception 2: '3. You converted part or all of a traditional IRA...to a Roth IRA in 2025. 4. You had a 2024 or 2025 IRA contribution returned to you... 5. ...excess contributions...returned to you in 2025. 6. You recharacterized part or all of a contribution'",
-       "severity": "medium",
-       "fix": "Add a screening question with the same refusal: 'In 2025, did you convert to a Roth IRA, recharacterize a contribution, or have an IRA contribution or excess contribution returned to you?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer whose distribution came from a SEP or SIMPLE IRA, which the gate includes. The filer, or the account holder whose IRA was transferred to them in a divorce, has basis in an IRA.",
-       "why_no": "The question says only 'a traditional IRA'. A SEP or SIMPLE participant may read their account as a different kind. A divorce transferee never contributed to the account at all.",
-       "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i1040gi p.27, Exception 2(1): '...nondeductible contributions to any of your traditional IRAs...'",
-       "severity": "low",
-       "fix": "Say 'a traditional, SEP or SIMPLE IRA (including one received from a spouse or former spouse)'."
+       "fix": "Ask directly about after-tax rollovers into traditional IRAs and do not require a traditional-IRA distribution or a prior Form 8606."
       }
      ],
-     "prompt_sha": "8c2193d97136c6630b1b85ef3f5c18de63c9edc657081d5d92e70f35a557a4f9",
+     "prompt_sha": "c1c3292603dd58c2449b14b386c09e066ca7e949dabbda1c45f9165235779e25",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.141604,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_retirement.is_trad.bb6e089992c8.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_retirement.is_trad.2d758cb8a211.1.response.txt"
     }
    ],
    "condition": "retirement.is_trad",
@@ -890,6 +880,24 @@
       30
      ],
      "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i8606",
+     "revision": "2025",
+     "text_sha256": "242e712835ef634f3af8f1d0f19435b236e9c54b80921d6017c153b3e6c2aec6",
+     "pages": [
+      2,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Who Must File, \"You received distributions from a traditional IRA in 2025 and your basis in these IRAs is more than zero\", \"You or your spouse transferred all or part of their traditional IRA in 2025 to the other spouse under a divorce or separation agreement where the transfer resulted in a change in the basis\", and \"You received a distribution from an inherited traditional IRA that has a basis\"; p. 9, Line 2, \"You rolled over any nontaxable portion of your qualified retirement plan to a traditional IRA\""
+     ],
+     "cols_pages": [
+      2,
+      9
+     ],
+     "cols_sha256": "805e59f2458d33a3fc0a1d17ebede2ecd59e18d911069bbe84987e53e297ec79"
     }
    ]
   },

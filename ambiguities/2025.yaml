@@ -1440,11 +1440,13 @@ register:
       text_at_issue: 'i1040gi p. 23, Community Property States: "If you and your spouse lived in a community property state, you
         must usually follow state law to determine what is community income and what is separate income. For details, see Form
         8958 and Pub. 555." The text names nine states (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas,
-        Washington, and Wisconsin). Pub. 555 and Form 8958 are not archived. A married person filing as head of household
-        (considered unmarried) reports their own income, which state law may define as half the community income.'
+        Washington, and Wisconsin). p555 p. 2, Domicile: "If you and your spouse (or your RDP) have different domiciles, check
+        the laws of each to see if you have community property, community income, or both." A married person filing as head
+        of household (considered unmarried) reports their own income, which state law may define as half the community
+        income.'
       readings:
       - Compute the return from the income entered, leaving community income allocation to the filer.
-      - Refuse a married filer who files as head of household and lived in a community property state (household.hoh_community_property), since the tool cannot apply Pub. 555.
+      - Refuse a married filer who files as head of household where either spouse lived in, or had a permanent home in, a community property state (household.hoh_community_property, through household.cp_any), since the tool cannot apply Pub. 555.
       chosen: The second, for the nine states the instructions list (Direct File''s knockout tests eight; Louisiana is in the text and so in the question).
       reason: 'The owner''s decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income
         rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a
@@ -1459,27 +1461,41 @@ register:
       text_at_issue: 'i1040gi p. 14, Married Filing Separately: "Different rules apply to people in community property states;
         see Pub. 555." p504 p. 22, Community Property: "If your domicile is in a community property state during any part of
         your tax year, you may have community income" and "If you and your spouse file separate returns, you must report half
-        of any income described by state law as community income". Pub. 555 and Form 8958 are not archived; the question asks
-        where the filer lived, not where the filer was domiciled.'
+        of any income described by state law as community income". p555 p. 2, Domicile: "The law of the state, or the law of
+        the foreign country, where you are domiciled will determine if you have community property, community income, or
+        both. If you and your spouse (or your RDP) have different domiciles, check the laws of each"; p. 3: "When this
+        publication refers to where you live, it means your domicile." The question asks where the filer lived or had a
+        permanent home, and, for a filer who answers No, where the husband or wife did (household.spouse_cp_domicile).'
       readings:
       - Compute the separate return from the income entered, leaving the community income split to the filer.
-      - Refuse a married filing separately return of a filer who lived in a community property state at any time in 2025
-        (household.mfs_community_property).
-      chosen: The second, on the existing question (household.community_property), for the nine states the instructions list.
+      - Refuse a married filing separately return where the filer, or the husband or wife, lived in or had a permanent home
+        in a community property state at any time in 2025 (household.mfs_community_property, through household.cp_any).
+      chosen: The second, on household.community_property and, when the filer answers No, household.spouse_cp_domicile, for
+        the nine states the instructions list.
       reason: 'The same ground as amb.2025.hoh_community_property (owner decision of 2026-10-22, integrity plan decision 10):
         the community income split of Pub. 555 is outside the tool. "Lived in" is broader than "domicile": a filer who lived
         in one of the states only temporarily is refused too, which errs toward refusing (settled as design decision D1 of the
-        married-filing-separately scout, by the coordinator under the owner''s delegation, 2026-11-15).'
+        married-filing-separately scout, by the coordinator under the owner''s delegation, 2026-11-15). The permanent-home
+        clause and the question on the husband or wife cover the other side: a filer domiciled in one of the states who lived
+        elsewhere (Pub. 555 makes active military pay earned while domiciled there community income, p. 6), and spouses with
+        different domiciles, whose income Pub. 555 settles by the law of each (p. 2), which the tool cannot apply. The
+        question on the husband or wife is not asked after a marriage that ended in 2025 (single or unmarried head of
+        household): one step for about 14% of returns against a very rare case (coordinator, 2026-11-16). Such a return,
+        where only the former husband or wife lived in or had a permanent home in one of the states, is computed without
+        the split.'
       cite:
-        doc: p504
-        locator: 'p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income" and "If you and your spouse file separate returns, you must report half of any income described by state law as community income"'
-      status: Coordinator decision under owner delegation, 2026-11-15 (docs/provisional/DECISIONS.md, lane mfs-l1, D1).
+        doc: p555
+        locator: 'p. 2, Domicile, "The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both. If you and your spouse (or your RDP) have different domiciles, check the laws of each"; p. 3, Domicile, "When this publication refers to where you live, it means your domicile."; p504 p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income"'
+      status: Coordinator decision under owner delegation, 2026-11-15 (docs/provisional/DECISIONS.md, lane mfs-l1, D1); the
+        permanent-home clause and household.spouse_cp_domicile proposed in lane A1-jr, 2026-11-16, for the owner.
     - id: amb.2025.mfs_lived_apart
       text_at_issue: 'i1040gi p. 31, Line 6d, and p. 32, Social Security Benefits Worksheet, line 8: "lived apart from your
         spouse for all of 2025" and "lived with your spouse at any time in 2025"; p. 97, IRA Deduction Worksheet, line 2, the
         same words; p. 15, Married persons who live apart: "You lived apart from your spouse for the last 6 months of 2025.
         Temporary absences for special circumstances ... count as time lived in the home." Only the 6-month test states how
-        a temporary absence counts; the all-year test is silent (Pub. 915, which may say more, is not archived). The Earned
+        a temporary absence counts; the all-year test is silent, and Pub. 915 only repeats the line 6d words (p. 1). p501 p. 8,
+        Considered Unmarried, measures the 6-month test by the home: "Your spouse didn''t live in your home during the last 6
+        months of the tax year." None says how spouses who were separated but shared a home count. The Earned
         Income Credit asks "Did you and your spouse have the same principal residence for the last 6 months of 2025?" (p. 41,
         Step 3, question 4) where its special rule says "You lived apart from your spouse for the last 6 months of 2025"
         (p. 44).'
@@ -1489,18 +1505,22 @@ register:
       - A temporary absence counts as living together only for the 6-month test; the all-year test reads physical living
         apart.
       - EIC question 4 is Yes only when the spouses shared a home for all of the last 6 months.
-      chosen: The first. One question (household.mfs_living) asks when the spouses lived together, with the temporary
-        absence rule in its help, and every test reads it.
+      - Spouses who were separated but shared a home lived apart for the all-year test (and for the 6-month test).
+      chosen: The first, with time in a shared home counted as living together whether or not the spouses were separated (the
+        fourth reading rejected). One question (household.mfs_living) asks when the spouses lived together, with the
+        temporary absence rule and the shared home in its help, and every test reads it.
       reason: The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states
         the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The
         EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who
         lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4
-        while failing the rule the question applies.
+        while failing the rule the question applies. The archived 6-month tests are stated by the home ("lived in the home",
+        "didn’t live in your home"), so spouses under one roof did not live apart for them; reading the all-year test the same
+        way asks one fact once, and the fourth reading would need a second question on estrangement that no source defines.
       cite:
         doc: i1040gi
-        locator: 'p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025"'
-      status: Coordinator decision under owner delegation, 2026-11-15 (docs/provisional/DECISIONS.md, lane mfs-l1); Pub. 915 to
-        archive.
+        locator: 'p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025"; p501 p. 8, Considered Unmarried, "Your spouse didn''t live in your home during the last 6 months of the tax year"'
+      status: Coordinator decision under owner delegation, 2026-11-15 (docs/provisional/DECISIONS.md, lane mfs-l1); the shared
+        home reading proposed in lane A1-jr, 2026-11-16, for the owner.
     - id: amb.2025.mfs_lived_apart_boxes
       text_at_issue: 'i1040gi p. 31, Line 6d: "If you are married filing separately and you lived apart from your spouse for all
         of 2025, check the box on line 6d. If you don’t check the box on line 6d, you may get a math error notice from the
@@ -2146,14 +2166,21 @@ register:
       readings:
       - Divide every expense by the days fraction.
       - Leave rental-only expenses undivided.
-      chosen: Divide every expense (the chapter text applies to a unit not used as a home; Worksheet 5-1 is refused).
-      reason: The design scout's reading D2; the worksheet that treats them differently applies only to a home, which is refused.
+      chosen: Leave rental-only expenses undivided. Advertising (line 5) and commissions (line 8) are taken whole; every
+        other expense line, management fees included, is divided by the days fraction.
+      reason: Worksheet 5-1, the stricter regime for a home, deducts in full the expenses "directly related only to the rental
+        activity", naming rental agency fees and advertising, and Renting Part of Property leaves whole the expenses that belong
+        only to the rental; the Schedule E instructions take out "expenses related to days of personal use", which these are
+        not. Management fees, other interest and supplies stay divided because each can also pay for the dwelling's upkeep
+        (Worksheet 5-1 line 4a divides upkeep) and the form does not ask which part is which.
       cite:
         doc: p527
-        locator: p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number
-          of days used for each purpose"
-      status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
-      unlinked: The reading is in every rental.divN line; linking each would repeat it thirteen times.
+        locator: p. 31, Line 2d, "Enter the total of your rental expenses that are directly related only to the rental activity"
+          and "Also, include rental agency fees, advertising"; p. 29, Worksheet 5-1, line 2e, "Fully deductible rental
+          expenses"; pp. 23-24, Renting Part of Property, "You don't have to divide the expenses that belong only to the
+          rental part of your property"; p. 25, Dividing Expenses, "divide your expenses between the rental use and the
+          personal use based on the number of days used for each purpose"
+      status: Owner's ruling C1 (2026-11-16), replacing the coordinator's reading for lane x1-sche; awaiting review.
     - id: amb.2025.rental_not_qbi
       text_at_issue: A rental real estate activity is a trade or business for the qualified business income deduction only if
         it meets the safe harbor or is a section 162 trade or business.
@@ -2615,3 +2642,76 @@ register:
           individual care provider for caring for an eligible individual (whether related or unrelated) living in the provider’s
           home", "Ten qualified foster individuals under age 19, or", "Five qualified foster individuals age 19 or older"'
       status: Lane x2-paynow2 (coverage expansion, pay not on a W-2), 2026-11-15.
+    - id: amb.2025.f4952_no_2024_form
+      text_at_issue: 'f4952 p. 1, Part I, line 2: "Disallowed investment interest expense from 2024 Form 4952, line 7". A
+        filer who carried disallowed investment interest into 2024 and filed no 2024 Form 4952 (for example because the
+        standard deduction was taken for 2024) has no 2024 line 7 to read.'
+      readings:
+      - Ask only for an amount on line 7 of a 2024 Form 4952; such a filer answers No and enters no carryforward.
+      - Use the amount a 2024 Form 4952 would have shown on line 7 had one been completed (the carryforward, treated as 2024
+        investment interest, less the part the 2024 net investment income could have absorbed).
+      - Use line 7 of the latest Form 4952 filed.
+      chosen: The first (f4952.carryover asks only about a 2024 Form 4952), until the owner rules on a refusing question for
+        this case.
+      reason: 'Pub. 550: "You can carry over the amount of investment interest you could not deduct because of this limit to
+        the next tax year. The interest carried over is treated as investment interest paid or accrued in that next year."
+        The third reading carries the whole earlier amount past a year whose net investment income could have absorbed it,
+        so it can overstate line 2; it is not used. The second follows the quoted rule but asks the filer to complete a form
+        for a past year. The first can understate the deduction, for a filer whose 2024 net investment income did not
+        absorb the carryforward; it cannot overstate it.'
+      cite:
+        doc: p550
+        locator: 'p. 47, Limit on Deduction, "You can carry over the amount of investment interest you could not deduct
+          because of this limit to the next tax year. The interest carried over is treated as investment interest paid or
+          accrued in that next year."'
+      status: Planning lane plan-med-income (BUG-0833), redrafted in lane v2-income after the wording red team (A6),
+        2026-11-16; for the owner.
+    - id: amb.2025.amt_transient
+      text_at_issue: 'i6251 p. 8, Line 3: "A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not
+        used on a transient basis." The instructions do not define "used on a transient basis".'
+      readings:
+      - A house, apartment, condominium or mobile home rented out for short stays is used on a transient basis, so its
+        mortgage interest is a line 3 adjustment; asked in s2.amt_boat, whose Yes refuses.
+      - Only a place run as lodging for passing guests, like a hotel, is meant; a second home that is sometimes rented
+        for short stays is a qualified dwelling.
+      chosen: The first.
+      reason: Every Yes to s2.amt_boat refuses (Form 6251), so the broader reading can lose a case but cannot give a wrong
+        value.
+      cite:
+        doc: i6251
+        locator: 'p. 8, Line 3, Mortgage Interest, "A qualified dwelling for AMT is a house, apartment, condominium, or mobile
+          home not used on a transient basis"'
+      status: Planning lane plan-med-income (BUG-0900), drafted in lane patch-inc-m34, 2026-11-16; for the owner.
+    - id: amb.2025.f8853c_line24_public
+      text_at_issue: 'i8853 p. 9, Line 24: "Enter the reimbursements you received or expect to receive through insurance or
+        otherwise for qualified LTC services provided for the insured for LTC periods in 2025." The instructions do not say
+        whether Medicaid or VA payments made straight to the care provider are reimbursements "through insurance or
+        otherwise".'
+      readings:
+      - They are; they count on line 24 and lower the cost-based limit on line 25.
+      - They are not; only payments under an insurance contract or a like arrangement count.
+      chosen: The first, as worded (the f8853c.line24 question follows i8853's "or otherwise" and names neither program).
+      reason: 'i8853 places no limit on "otherwise". If the second reading is right, a filer whose costs Medicaid or the VA
+        paid would overstate line 24 and so the taxable amount on line 26. Money family or friends gave toward the care is
+        excluded in the help: it is not a reimbursement of the filer''s costs (inferred).'
+      cite:
+        doc: i8853
+        locator: 'p. 9, Line 24, "Enter the reimbursements you received or expect to receive through insurance or otherwise for
+          qualified LTC services provided for the insured for LTC periods in 2025"'
+      status: Planning lane plan-med-income (BUG-0873, owner decision 3), drafted in lane v2-income, 2026-11-16; for the
+        owner.
+    - id: amb.2025.f8853c_line25_floor
+      text_at_issue: 'Form 8853 (2025), Section C, line 25: "Per diem limitation. Subtract line 24 from line 23" (no instruction for a
+        result below zero), and line 26: "Taxable payments. Subtract line 25 from line 20. If zero or less, enter -0-".
+        When the reimbursements on line 24 are more than line 23, the printed subtraction on line 25 is negative.'
+      readings:
+      - Line 25 is the printed subtraction and may be negative, so line 26 can be more than the payments on line 20.
+      - Line 25 is floored at zero (a limitation of zero), so the taxable payments on line 26 are never more than line 20.
+      chosen: The second (f8853c.line25 is subtract_floor0).
+      reason: Line 25 is named a limitation on the payments excluded; a negative limitation would tax, through line 26, more
+        than the per diem payments received on lines 17 to 20, and no text of the form or i8853 says reimbursements are
+        taxed there. The two readings differ only when line 24 is more than line 23 (rare).
+      cite:
+        doc: f8853
+        locator: Form 8853 (2025), line 25, "Per diem limitation. Subtract line 24 from line 23"
+      status: Planning lane lows-inc (BUG-0917), drafted 2026-11-16; for the owner.

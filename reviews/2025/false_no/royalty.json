@@ -2,68 +2,68 @@
  "form": "royalty",
  "reviews": {
   "gate:royalty.expenses_any": {
-   "subject_sha": "803dc9de136ae97a5d43ef2061d526ec265b0096f20bcc45c4783cbd07e2b182",
+   "subject_sha": "dc70a46234f42cfffd0fafbbe10fa12807b6444a53b567a3ac404cc946c33b31",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "An owner of an oil or gas royalty interest whose producer withheld severance, production or state taxes from the royalty checks. The owner never wrote a check for any tax.",
-       "why_no": "The gate asks 'Did you pay any costs'. The producer took the tax out before paying, so the owner truthfully says they paid nothing. Only the gated question mentions 'including any the payer withheld', and the owner never sees it.",
-       "line": "royalty.line16",
-       "irs_text": "i1040se p. 6, Line 4: \"Enter on line 4 the gross amount of royalty income, even if state or local taxes were withheld from oil or gas payments you received. Include taxes withheld by the producer on line 16.\"",
-       "severity": "high",
-       "fix": "Ask in the gate: 'For this royalty, did you or your spouse pay any costs, or did the payer or operator withhold or deduct any taxes, fees or other charges from your royalty payments (check your royalty statement or Form 1099-MISC)?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A mineral royalty owner whose operator statement nets out post-production deductions such as gathering, compression, transportation or marketing charges. The owner reports the gross amount from the Form 1099-MISC.",
-       "why_no": "The owner sees these as reductions of the check, not as costs 'you paid'. The gate's example 'production costs' suggests money the owner spent, not charges the operator deducted.",
-       "line": "royalty.line19",
-       "irs_text": "i1040se p. 7, Line 19: \"Enter on line 19 any ordinary and necessary expenses not listed on lines 5 through 18.\"; p. 6: \"Enter on line 4 the gross amount of royalty income\"",
-       "severity": "medium",
-       "fix": "Broaden the gate to cover amounts deducted or withheld from royalty payments, as in the fix above. State in the help that gross reporting on line 4 means netted charges go on the expense lines."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer with copyright, patent or NIL royalties who paid a preparer for the whole return, or paid for tax advice that partly concerned the royalty.",
-       "why_no": "The filer does not think of the return preparation fee as a cost 'for this royalty'. The gate's examples (fees, taxes, production costs) read as costs of the property itself.",
-       "line": "royalty.line10",
-       "irs_text": "i1040se p. 6, Line 10: \"Include on line 10 fees for tax advice and the preparation of tax forms related to your rental real estate or royalty properties.\"",
-       "severity": "medium",
-       "fix": "Add to the gate or its help: 'including the part of tax preparation or tax advice fees that relates to this royalty'."
-      },
-      {
-       "kind": "FALSE_NO",
        "pattern": "3",
-       "who": "A married couple filing jointly whose royalty is held jointly or by the spouse. The spouse paid the agent, attorney, county mineral tax or patent maintenance fees.",
-       "why_no": "The gate says 'Did you pay'. The filer answering the interview truthfully did not pay these costs.",
-       "line": "royalty.line10, royalty.line16, royalty.line19",
-       "irs_text": "i1040se p. 6, General Instructions for Lines 5 Through 21: \"Enter your rental and royalty expenses for each property in the appropriate column. You can deduct all ordinary and necessary expenses, such as taxes, ...\"",
+       "who": "Married filing jointly; the spouse owns the royalty and had production taxes withheld from the spouse's royalty payments, while the taxpayer did not personally receive that royalty or have any tax taken out of the taxpayer's own payments.",
+       "why_no": "The gate says 'Did you pay' and 'your payments'; the taxpayer reads those words as limited to the taxpayer's own payments, not the spouse's.",
+       "line": "royalty.line16",
+       "irs_text": "i1040se p. 6, Line 4: 'Include taxes withheld by the producer on line 16.'",
        "severity": "high",
-       "fix": "Ask 'Did you or your spouse pay, or have deducted from your payments, any costs for this royalty ...'."
+       "fix": "Ask 'Did you or your spouse pay costs for this royalty, or were any taken out of either spouse's payments?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A copyright, NIL or patent royalty owner whose licensing agent, collecting society or platform keeps an administration or collection fee before paying the owner.",
-       "why_no": "The fee is netted from the payment, and the owner never paid it directly. The gate's word 'paid' and its oil-flavored example 'production costs' suggest the gate does not apply.",
-       "line": "royalty.line19",
-       "irs_text": "i1040se p. 7, Line 19: \"Enter on line 19 any ordinary and necessary expenses not listed on lines 5 through 18.\"",
+       "who": "A copyright, patent, or NIL royalty owner paid an accountant in 2025 for tax advice or return preparation allocable to the royalty, but paid no oil/gas production costs.",
+       "why_no": "The examples in the gate are production fees, severance/production taxes, and production costs; the filer does not read a general tax-preparation fee as a cost 'for this royalty' and answers no.",
+       "line": "royalty.line10",
+       "irs_text": "i1040se p. 6, Line 10: 'Include on line 10 fees for tax advice and the preparation of tax forms related to your rental real estate or royalty properties.'",
        "severity": "medium",
-       "fix": "Use the broadened gate wording above, covering amounts kept or deducted by a payer, agent or operator."
+       "fix": "Mention allocable tax advice and tax-preparation fees in the gate, or ask broadly about any expenses including professional and tax-preparation fees."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A royalty owner paid an attorney in 2025 to defend title to the royalty or recover the royalty property; the fees are capitalizable rather than currently deductible.",
+       "why_no": "The filer reads 'costs' as deductible expenses; because the legal fees are capital, the filer answers no and never sees the help saying to capitalize them.",
+       "line": "royalty.line10",
+       "irs_text": "i1040se p. 6, Line 10: 'Do not deduct legal fees paid or incurred to defend or protect title to property, to recover property, or to develop or improve property. Instead, you must capitalize these fees and add them to the property’s basis.'",
+       "severity": "medium",
+       "fix": "Ask whether any royalty-related legal or professional fees were paid or incurred, including capitalizable title/protection fees, and show the capitalization warning even when the gate is answered no."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A mineral royalty owner paid state or local property (ad valorem) tax on the royalty interest, or had state income tax withheld from oil/gas royalties, but no severance or production tax.",
+       "why_no": "The gate lists only 'severance or production taxes'; the filer treats those as the only taxes asked about and answers no.",
+       "line": "royalty.line16",
+       "irs_text": "i1040se p. 6, General Instructions for Lines 5 Through 21: 'You can deduct all ordinary and necessary expenses, such as taxes'; and Line 4: 'even if state or local taxes were withheld from oil or gas payments you received. Include taxes withheld by the producer on line 16.'",
+       "severity": "medium",
+       "fix": "Say 'taxes paid or withheld, including property, severance, production, or state/local taxes' rather than only severance or production taxes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A royalty owner paid an ordinary and necessary expense for the royalty in 2025, such as postage or office supplies used to manage the royalty, that is not a production cost or professional fee.",
+       "why_no": "The gate's parenthetical examples read as the whole category; the filer does not see an 'other' nonproduction expense as within 'costs for it' and answers no.",
+       "line": "royalty.line19",
+       "irs_text": "i1040se p. 7, Line 19: 'Enter on line 19 any ordinary and necessary expenses not listed on lines 5 through 18.'",
+       "severity": "medium",
+       "fix": "Ask broadly about any ordinary and necessary expenses for the royalty, not only production fees/costs, and mention the line 19 catch-all."
       }
      ],
-     "prompt_sha": "95991c9aa586579aa00efcbbe23f0d5701865e3483c8f9ca18f54b55f2a76671",
+     "prompt_sha": "c3a1d6e73da4f020d6d72c39361e23a53f8ec06ddb69e33d70082b317db686e6",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.083488,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_royalty.expenses_any.803dc9de136a.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_royalty.expenses_any.dc70a46234f4.1.response.txt"
     }
    ],
    "condition": "royalty.expenses_any",
@@ -96,6 +96,101 @@
      ],
      "cols_pages": [
       6,
+      7
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:royalty.has_loss": {
+   "subject_sha": "7ed14d3bef5aff610ebf712a1cb98b74efa6bdb49bc37070a96f785fe00fdd9a",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer owns a royalty interest used in a trade or business or for production of income and disposes of it in 2025 at a loss, while current royalty operations are break-even or income; the disposition loss is reported on Form 4797 or Schedule D, not Schedule E line 21.",
+       "why_no": "The tool computes Line 21 is a loss as false because Schedule E line 21 is not negative; the disposition loss does not appear on that line.",
+       "line": "royalty.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 3: The at-risk rules in most cases limit the amount of loss (including loss on the disposition of assets) you can claim to the amount you could actually lose in the activity.",
+       "severity": "high",
+       "fix": "Gate on any loss from the royalty activity, including a disposition loss reported outside line 21; do not require line 21 < 0."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer has two royalty activities, one with a current loss financed by nonrecourse debt and one with enough income that the combined Schedule E line 21 is zero or positive.",
+       "why_no": "The computed gate looks only at net line 21; because that net is not a loss, the tool never asks about the loss activity.",
+       "line": "royalty.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 3: In most cases, you must complete Form 6198 to figure your loss if you have a loss from an activity carried on as a trade or business or for the production of income, and amounts in the activity for which you are not at risk.",
+       "severity": "high",
+       "fix": "Ask separately for each royalty activity and gate on any activity-level loss, not the net line 21."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "Married filing jointly; the spouse, not the filer, put nonrecourse or stakeholder money into the royalty activity that has a line 21 loss.",
+       "why_no": "The gated question asks Was any money you put in and the help speaks to you; the filer truthfully answers no for himself, though the spouse's amount makes the line true on the joint return.",
+       "line": "royalty.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 7: If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss.",
+       "severity": "high",
+       "fix": "Say you or your spouse and apply the at-risk question separately to each spouse's royalty activity."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "A filer has a line 21 royalty loss and a nonrecourse loan from a bank or regular lender used to acquire or finance the royalty, not qualified real-property financing.",
+       "why_no": "The question asks about borrowing without personal liability from anyone but a bank or regular lender, and the help says A loan from a bank, a government or another regular lender is at risk, so the filer answers no.",
+       "line": "royalty.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 3: Nonrecourse loans used to finance the activity, to acquire property used in the activity, or to acquire your interest in the activity that are not secured by your own property (other than property used in the activity) are not at risk.",
+       "severity": "high",
+       "fix": "Remove the bank or regular-lender carve-out for nonrecourse debt; ask about any loan without personal liability, including a bank loan, except qualified nonrecourse real-property financing."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer is a partner or member in a royalty activity; the entity, not the filer personally, borrowed nonrecourse funds or funds from a stakeholder or related person to finance the activity, and the filer has a line 21 loss.",
+       "why_no": "The gated question asks whether money you put in was borrowed, so the filer reads it as personal borrowing and answers no; entity-level debt is not money the filer put in.",
+       "line": "royalty.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 3: Cash, property, or borrowed amounts used in the activity (or contributed to the activity, or used to acquire your interest in the activity) that are nonrecourse, protected, or from a person with an interest are not at risk.",
+       "severity": "medium",
+       "fix": "Ask about debt used by the royalty activity or pass-through entity, not only money the filer personally borrowed and contributed."
+      }
+     ],
+     "prompt_sha": "478714878391ff3c12b6ba39c943a0ed506e29c3d5ac08da02b9c868ca061a1f",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_royalty.has_loss.7ed14d3bef5a.1.response.txt"
+    }
+   ],
+   "condition": "royalty.has_loss",
+   "lines": [
+    "royalty.not_at_risk_if_loss"
+   ],
+   "inputs": [
+    "royalty.not_at_risk"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      3,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, At-Risk Rules, \"In most cases, you must complete Form 6198 to figure your loss if you have\"",
+      "p. 7, Line 21",
+      "p. 7, Line 21, \"If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss\""
+     ],
+     "cols_pages": [
+      3,
       7
      ],
      "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"

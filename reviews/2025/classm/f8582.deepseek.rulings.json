@@ -1,0 +1,55 @@
+{
+ "kind": "classm",
+ "form": "f8582",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "case": "classm.f8582.4",
+   "printed": "1b",
+   "project": "$-213.20",
+   "model": "$0.00",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" This case (MFS, lived together late in the year) is classified in Part IV by rental.part4 = rental.active, so the project computes line 1b -\\$213.20 and line 2b \\$0; the hand-work puts the loss in Part V (line 2b -\\$213.20). BUG-0933. Severity high.",
+   "context": "f83a6dab94131e3deb6dc2c85dad637eca7df6fd0e4dfe083760406a78db82e6",
+   "date": "2026-11-17",
+   "run": "279185a9074cecaecd1fee75aba037245a70f3994afe15c0b53155ab513ac0a4",
+   "severity": "high",
+   "subject_key": "d583799c9baac403ec2251603d41e54d2f27f88e5682a2451b251214ee2e4c58"
+  },
+  {
+   "case": "classm.f8582.4",
+   "printed": "1d",
+   "project": "$-213.20",
+   "model": "$0.00",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" This case (MFS, lived together late in the year) is classified in Part IV by rental.part4 = rental.active, so the project computes line 1b -\\$213.20 and line 2b \\$0; the hand-work puts the loss in Part V (line 2b -\\$213.20). BUG-0933. Severity high.",
+   "context": "f83a6dab94131e3deb6dc2c85dad637eca7df6fd0e4dfe083760406a78db82e6",
+   "date": "2026-11-17",
+   "run": "279185a9074cecaecd1fee75aba037245a70f3994afe15c0b53155ab513ac0a4",
+   "severity": "high",
+   "subject_key": "435abe80618cd5246bba13f6c5c2042e351e31dd561e46be6c23f04cd34e2676"
+  },
+  {
+   "case": "classm.f8582.4",
+   "printed": "2b",
+   "project": "$0.00",
+   "model": "$-213.20",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" This case (MFS, lived together late in the year) is classified in Part IV by rental.part4 = rental.active, so the project computes line 1b -\\$213.20 and line 2b \\$0; the hand-work puts the loss in Part V (line 2b -\\$213.20). BUG-0933. Severity high.",
+   "context": "f83a6dab94131e3deb6dc2c85dad637eca7df6fd0e4dfe083760406a78db82e6",
+   "date": "2026-11-17",
+   "run": "279185a9074cecaecd1fee75aba037245a70f3994afe15c0b53155ab513ac0a4",
+   "severity": "high",
+   "subject_key": "80f18b3cacfb9ca7ab647d4cb937ad953bb6ae76c3150961a5276143342ddc15"
+  },
+  {
+   "case": "classm.f8582.4",
+   "printed": "2d",
+   "project": "$0.00",
+   "model": "$-213.20",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" This case (MFS, lived together late in the year) is classified in Part IV by rental.part4 = rental.active, so the project computes line 1b -\\$213.20 and line 2b \\$0; the hand-work puts the loss in Part V (line 2b -\\$213.20). BUG-0933. Severity high.",
+   "context": "f83a6dab94131e3deb6dc2c85dad637eca7df6fd0e4dfe083760406a78db82e6",
+   "date": "2026-11-17",
+   "run": "279185a9074cecaecd1fee75aba037245a70f3994afe15c0b53155ab513ac0a4",
+   "severity": "high",
+   "subject_key": "6c70b524ba60b3e6f717b95f156d607859b20d5b7def7932ec21745cee2b3b71"
+  }
+ ]
+}

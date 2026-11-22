@@ -72,6 +72,84 @@
     }
    ]
   },
+  "gate:ny_it201.ask.bought_untaxed": {
+   "subject_sha": "9bbba148a8e3c935e84ab61c780672193ad37a2d6936656df8ba86d572ce4831",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A New York resident who bought a $4,000 sofa in New Hampshire in 2024 while a New York resident, stored it out of state, and first brought it into New York for use in 2025; no New York sales tax was paid.",
+       "why_no": "The gate asks 'In 2025, did you ... buy'; they did not buy anything in 2025, so they answer no. The line also reaches a purchase made earlier and first used in New York this year.",
+       "line": "ny_it201.use_tax_dmv_only_if_bought",
+       "irs_text": "ny_it201i p. 18: 'You owe sales or compensating use tax if you: ... purchased an item or service outside New York State that is subject to tax in New York State (and you were a resident of New York State at the time of purchase) with subsequent use in New York State.'",
+       "severity": "high"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A non-NYC New York resident who buys a $3,000 item in a New York locality with a lower combined rate than their home locality, or from an online seller that collects the lower rate, and uses it at home; they paid New York State and local sales tax, but less than their home locality's rate.",
+       "why_no": "The gate asks whether they bought without paying New York sales tax; they did pay New York sales tax, just at a lower local rate, so they answer no. The help's 'Count a purchase taxed below New York City's rate' reads as an NYC-only rule and does not tell them to compare to their own locality's rate.",
+       "line": "ny_it201.use_tax_dmv_only_if_bought",
+       "irs_text": "ny_it201i p. 18: 'You may also owe an additional local tax if you use property or services in another locality in New York State, other than the locality to which you paid tax. You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid.'",
+       "severity": "medium"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A New Jersey income-tax resident who owns a Manhattan apartment (a permanent place of abode) and buys taxable goods online from a no-tax state, delivered to that apartment, for use there.",
+       "why_no": "They know they are not a New York income-tax resident and answer no to buying taxable goods in New York; the instructions make a person with a New York permanent place of abode a sales-tax resident even if not an income-tax resident.",
+       "line": "ny_it201.use_tax_dmv_only_if_bought",
+       "irs_text": "ny_it201i p. 18: 'For sales and use tax purposes, a resident includes persons who have a permanent place of abode in the state. Accordingly, you may be a resident for sales tax purposes even though you may not be a resident for income tax purposes.'",
+       "severity": "medium"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A sole proprietor who buys $5,000 of taxable equipment online for a business that is not registered for New York sales tax, and the seller charges no New York tax.",
+       "why_no": "The help says 'Leave out purchases of a business registered for sales tax'; the filer reads that as leaving out business purchases generally, or does not know whether the business is registered, and answers no.",
+       "line": "ny_it201.use_tax_dmv_only_if_bought",
+       "irs_text": "ny_it201i p. 18: 'You may not use this line to report: ... any sales and use tax on business purchases if the business is registered for sales and use tax purposes. You must report this tax on the business\u2019s sales tax return.' The same page says the chart may not be used for purchases related to a business not registered for sales tax purposes.",
+       "severity": "medium"
+      }
+     ],
+     "prompt_sha": "35417d8cc535c74f72f45d8b601658dbca3f782f2022222a20762458353d9829",
+     "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.ask.bought_untaxed.9bbba148a8e3.1.response.txt"
+    }
+   ],
+   "condition": "ny_it201.ask.bought_untaxed",
+   "lines": [
+    "ny_it201.use_tax_dmv_only_if_bought"
+   ],
+   "inputs": [
+    "ny_it201.ask.use_tax_dmv_only"
+   ],
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 18, Line 59: Sales or use tax, \"You may not use this line to report:\" and \"any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department\"",
+      "p. 18, Line 59: Sales or use tax, \"You owe sales or compensating use tax if you:\""
+     ],
+     "cols_pages": [
+      18
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
   "gate:ny_it201.ask.city_resident": {
    "subject_sha": "875832fbf8802cd287736462087f9d115e034a877cb98072458490c3baaed4f4",
    "samples": [
@@ -187,68 +265,38 @@
    ]
   },
   "gate:ny_it201.ask.est_any": {
-   "subject_sha": "afb0fe4a03df6b2d64b443d14ce3cfda124ae7a67229ddafc0144f7216ac19db",
+   "subject_sha": "3e6592a43f64aa4432e26116c6d837905abec293b67f426b0e290f83d94eee14",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A New York resident is the beneficiary of a trust or estate. The fiduciary made 2025 estimated payments and allocated part of them to the beneficiary on its notice. The beneficiary and their spouse made no payments of their own.",
-       "why_no": "The gate asks whether 'you (or ... your spouse)' paid New York income tax ahead of time. The fiduciary paid, not the filer. Its help lists only the filer's own estimated payments, a 2024 refund and an extension payment. The trust-allocation help appears only with the gated amount question, which is never reached after a no.",
-       "line": "ny_it201.line75",
-       "irs_text": "ny_it201i p. 22: 'If you are a beneficiary of an estate or trust and are claiming your portion of any payment of estimated taxes allocated to you by the estate or trust, include your amount on line 75'",
-       "severity": "high",
-       "fix": "Add to the gate: '... or did an estate or trust you are a beneficiary of allocate estimated tax payments to you?' Repeat in the gate's help: 'Include estimated tax an estate or trust allocated to you on its notice to you.'"
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "8",
-       "who": "A self-employed filer in the MCTD region (for example, a consultant in Westchester or New York City) made 2025 estimated payments only for the metropolitan commuter transportation mobility tax. A spouse's wage withholding covered their income tax.",
-       "why_no": "The gate asks only about 'New York income tax.' The MCTMT is a tax on net earnings from self-employment, not an income tax. A filer who paid only MCTMT estimates truthfully answers no.",
-       "line": "ny_it201.line75",
-       "irs_text": "ny_it201i p. 22, Line 75: 'your 2025 estimated tax payments for New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax'",
-       "severity": "high",
-       "fix": "Reword the gate: '... pay New York State, New York City or Yonkers income tax, or the metropolitan commuter transportation mobility tax (MCTMT), for 2025 ahead of time ...'"
-      },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A New York City or Yonkers resident made 2025 estimated payments that they think of as city tax, for example payments sized to cover NYC resident tax on investment income. They do not regard these as payments of state tax.",
-       "why_no": "The phrase 'New York income tax', with no mention of the city taxes, is easily read as New York State tax only. The gate's help does not say that City and Yonkers payments count. Only the gated question's help says so.",
+       "who": "A Yonkers resident who made only 2025 Yonkers estimated income tax payments, with no New York State, New York City, or MCTMT estimated payments.",
+       "why_no": "The gate asks about 'New York income tax,' and the help lists only 'State, City or commuter (MCTMT)' tax; it never names Yonkers, so the filer reads the list as complete and answers no.",
        "line": "ny_it201.line75",
-       "irs_text": "ny_it201i p. 22, Line 75: 'estimated tax payments for New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax'",
+       "irs_text": "ny_it201i p. 22, Line 75: 'your 2025 estimated tax payments for New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax'",
        "severity": "medium",
-       "fix": "Name New York City and Yonkers income tax in the gate question itself, as in the MCTMT fix above, and state in the gate help that payments of any of these taxes count."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer whose only payment was made with Form IT-370 (or IT-370-V online) on the April 15, 2026 due date, with the extension request.",
-       "why_no": "A payment made on the due date in 2026 may not feel like paying 2025 tax 'ahead of time'. The help does list the extension payment, which mitigates this.",
-       "line": "ny_it201.line75",
-       "irs_text": "ny_it201i p. 22: 'any amount you paid with Form IT-370, Application for Automatic Six-Month Extension of Time to File for Individuals (or Form IT-370-V ...)'",
-       "severity": "low",
-       "fix": "Put the extension payment in the question itself: '... or make a payment with an extension request (Form IT-370) ...'"
+       "fix": "Add 'Yonkers' to the gate and help, or ask broadly whether the filer made any 2025 New York State, New York City, Yonkers, or MCTMT estimated tax payment."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer had a 2024 overpayment credited to 2025 estimated tax, and the Tax Department later adjusted the credit. Or the filer recalls the 2024 overpayment as a 'credit carried forward', not a refund.",
-       "why_no": "The word 'refund' may not match how the filer remembers an overpayment that was never paid out to them.",
+       "who": "A beneficiary of an estate or trust that paid 2025 New York estimated tax and allocated the beneficiary's share on the required notification, but did not distribute cash to the beneficiary.",
+       "why_no": "The gate says 'have estimated tax passed to you'; the filer reads 'passed' as money distributed to them, not as an allocation of estimated tax paid on their behalf, and the help does not mention estate or trust allocations.",
        "line": "ny_it201.line75",
-       "irs_text": "ny_it201i p. 22: 'any amount of overpayment from your 2024 personal income tax return that you applied to your 2025 estimated tax (if this amount was adjusted by the Tax Department, use the adjusted amount)'",
-       "severity": "low",
-       "fix": "Use 'a 2024 overpayment (refund) credited to your 2025 estimated tax, including an amount the Tax Department adjusted'."
+       "irs_text": "ny_it201i p. 22, Line 75: 'your portion of any payment of estimated taxes allocated to you by the estate or trust' and 'submit a copy of the notification issued by the estate or trust'",
+       "severity": "medium",
+       "fix": "Say 'or had an estate or trust allocate or pay estimated tax on your behalf, even if you received no cash,' and mention the notification in the help."
       }
      ],
-     "prompt_sha": "c29b398bfbe768e55934f6d176d7d01ed512ddfe56412300c82346ce7fa70ca7",
+     "prompt_sha": "ab7fe507310e686343697d078d45a86d5c3e96bd6004b4e12dd4b648f07c8415",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.087328,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.ask.est_any.afb0fe4a03df.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.ask.est_any.3e6592a43f64.1.response.txt"
     }
    ],
    "condition": "ny_it201.ask.est_any",
@@ -278,7 +326,7 @@
    ]
   },
   "gate:ny_it201.ask.owes_use_tax": {
-   "subject_sha": "d45d5bc081c3917a923e4b96cc6c3f6bcd1300816a7001029ed9712c0b73416d",
+   "subject_sha": "832fee71d69cb3667dd3a35941ce3afdc5e3dbc5fde41fd5c8b7c7ab562eba3b",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -286,60 +334,70 @@
       {
        "kind": "FALSE_NO",
        "pattern": "3",
-       "who": "A married couple files jointly. The spouse made untaxed online or out-of-state purchases while the couple kept a New York home for only part of 2025. The filer answering bought nothing untaxed.",
-       "why_no": "The gate asks only 'did you buy anything'. Unlike the gated helper, it does not say 'you (or, on a joint return, your spouse)', so the filer truthfully answers no for themselves.",
-       "line": "ny_it201.gate.use_tax_abode (and the line 59 amount it prorates)",
-       "irs_text": "ny_it201i p. 18, Line 59: 'You owe sales or compensating use tax if you: • purchased an item or service subject to tax that is delivered to you in New York State without payment of New York State and local tax to the seller'",
+       "who": "Married filing jointly; the spouse, not the filer, bought taxable personal goods online delivered to their New York home and no New York sales tax was collected. They maintained a New York abode for only part of 2025.",
+       "why_no": "The gate asks whether 'you' bought the goods; the filer truthfully answers no for themselves and the wording never says 'you or your spouse'.",
+       "line": "ny_it201.gate.use_tax_abode",
+       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'Report your sales or use tax liability on this line' and 'You owe sales or compensating use tax if you: \u2022 purchased an item or service subject to tax...'",
        "severity": "high",
-       "fix": "Ask: 'In 2025, did you (or, on a joint return, your spouse) buy anything ...'"
+       "fix": "Ask 'Did you or your spouse buy...' and include either spouse's untaxed purchases in the line 59 and abode-proration computation."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A New York resident bought a taxable item out of state in 2023, stored it, and first brought it into New York in 2025; the filer maintained a New York abode for only part of 2025.",
+       "why_no": "In the annual return context the filer reads 'Bought' as asking about purchases made in 2025, so they say no because the purchase was years earlier.",
+       "line": "ny_it201.gate.use_tax_abode",
+       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'purchased an item or service outside New York State ... with subsequent use in New York State.'",
+       "severity": "medium",
+       "fix": "Ask whether in 2025 the filer first used or brought into New York any taxable item purchased without New York tax, regardless of the purchase year."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A part-year New York abode holder who is not a New York income tax resident bought taxable goods online delivered to the New York apartment and paid no New York tax; they think nonresidents do not owe New York use tax.",
+       "why_no": "The gate says 'taxable in New York' without telling them that a permanent place of abode makes them a New York sales-tax resident, so they answer no because they are not a New York resident for income tax.",
+       "line": "ny_it201.gate.use_tax_abode",
+       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'For sales and use tax purposes, a resident includes persons who have a permanent place of abode in the state. Accordingly, you may be a resident for sales tax purposes even though you may not be a resident for income tax purposes.'",
+       "severity": "medium",
+       "fix": "State that a permanent place of abode makes the filer a New York sales-tax resident for these purchases; ask whether goods were delivered to or used at that New York home."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A New York resident buys an item in New Jersey or Pennsylvania, pays that state's sales tax, and brings it home to New York, where the combined rate is higher.",
-       "why_no": "They paid sales tax on it, and they read 'taxable in New York' as excluding a purchase another state taxed. Only a lower rate than New York City's is mentioned, so a filer outside NYC sees nothing that applies to them.",
+       "who": "A filer bought a taxable laptop online delivered to New York and paid no sales tax; they had no vehicle or vessel purchase. When asked 'Not every untaxed purchase was a vehicle or vessel taxed at the DMV,' they answer no.",
+       "why_no": "The double-negative helper is read as asking whether they had a vehicle or vessel; they say no, although the statement is true for their laptop purchase.",
        "line": "ny_it201.gate.use_tax_abode",
-       "irs_text": "ny_it201i p. 18: 'purchased an item or service outside New York State that is subject to tax in New York State ... with subsequent use in New York State.' Note: 'You may be entitled to a credit for sales tax paid to another state.'",
+       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'You owe sales or compensating use tax if you: \u2022 purchased an item or service subject to tax that is delivered to you in New York State without payment of New York State and local tax to the seller...'",
        "severity": "medium",
-       "fix": "Add to the help: 'Count a purchase taxed by another state at a lower rate than your New York rate; you owe the difference.'"
+       "fix": "Replace the helper with 'Were all of your untaxed purchases vehicles or vessels taxed at the DMV?' (yes -> no; no -> yes) or ask directly whether there was any untaxed purchase other than a DMV-taxed vehicle or vessel."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "An individual bought personal goods online from a New York seller that collected no tax, and the individual also owns a business registered for New York sales tax. They read 'other than purchases of a business registered for sales tax' as excluding them because they have a registered business.",
+       "why_no": "The phrase 'purchases of a business registered for sales tax' is ambiguous; they take it to exclude personal purchases or purchases from a registered seller.",
+       "line": "ny_it201.gate.use_tax_abode",
+       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'You may not use this line to report: \u2022 any sales and use tax on business purchases if the business is registered for sales and use tax purposes.'",
+       "severity": "medium",
+       "fix": "Say 'other than business purchases made by a business registered for New York sales tax' and add that personal purchases by an owner remain reportable."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A resident of a higher-rate New York locality (outside NYC) buys an item in a lower-rate New York county, pays that county's tax, and uses the item at home.",
-       "why_no": "They did pay New York sales tax. The help names only a rate 'lower than New York City's', so they take the gate as not covering an intra-state rate difference.",
+       "who": "A filer bought taxable goods from a television shopping channel (or on an Indian reservation other than Oneida) and paid no New York tax; they read the gate's examples 'online, by catalog, or out of state' as the complete list.",
+       "why_no": "The examples omit categories the instructions expressly name, so the filer takes the list as exhaustive and answers no.",
        "line": "ny_it201.gate.use_tax_abode",
-       "irs_text": "ny_it201i p. 18: 'You may also owe an additional local tax if you use property or services in another locality in New York State ... and its rate of tax is higher than the rate of tax originally paid.'",
+       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'An unpaid sales or use tax liability commonly occurs if you made purchases through the Internet, by catalog, from television shopping channels, or on an Indian reservation (except for purchases subject to Oneida Nation taxes)...'",
        "severity": "medium",
-       "fix": "Change the help to: 'Count a purchase taxed at a lower rate than the rate where you live in New York.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer bought cigarettes, fuel or other goods on an Indian reservation, not under Oneida Nation taxes, and paid no New York tax.",
-       "why_no": "They read the reservation sale as not taxable in New York. The examples ('online, by mail, or in another state') omit reservations.",
-       "line": "ny_it201.gate.use_tax_abode",
-       "irs_text": "ny_it201i p. 18: 'An unpaid sales or use tax liability commonly occurs if you made purchases ... on an Indian reservation (except for purchases subject to Oneida Nation taxes)'",
-       "severity": "medium",
-       "fix": "Add 'on an Indian reservation (other than Oneida Nation)' and 'by catalog or TV shopping' to the examples."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer paid for a taxable service, such as out-of-state repair or storage of property used in New York, without New York tax.",
-       "why_no": "They read 'buy anything' as goods only, not services.",
-       "line": "ny_it201.gate.use_tax_abode",
-       "irs_text": "ny_it201i p. 18: 'purchased an item or service subject to tax ...'",
-       "severity": "low",
-       "fix": "Say 'buy any item or taxable service'."
+       "fix": "Add television shopping and Indian reservation purchases to the examples, or drop the examples and use the broad 'purchased an item or service subject to tax' wording."
       }
      ],
-     "prompt_sha": "ebdf46c38544c3bc0a1716387ccce0cacb68450396e50d1e072e7b141347dab4",
+     "prompt_sha": "cb76e5e504c759d14cbf983e1b4c490025863bd3fafff536b8e60fcb21645532",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.07674399999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.ask.owes_use_tax.d45d5bc081c3.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.ask.owes_use_tax.832fee71d69c.1.response.txt"
     }
    ],
    "condition": "ny_it201.ask.owes_use_tax",
@@ -371,68 +429,28 @@
    ]
   },
   "gate:ny_it201.estimated_payments_positive": {
-   "subject_sha": "59ee58c82b142450e0f684eee87550867f069178e7129082af44d4ee7149d383",
+   "subject_sha": "067d6a0e1014ad4cc79ca56e672e8160dbb1424fba486c4bf717a838269dd098",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A filer, or a married couple filing jointly, with significant non-wage income in 2025, such as self-employment, rent, gains or a large bonus with little withholding. They made no New York estimated tax payments at all, so line 75 is $0. Withholding was below 90% of 2025 tax and below 100% or 110% of 2024 tax.",
-       "why_no": "The gate is computed as line 75 > $0, so it is false and the late-or-short question is never asked. Skipping every installment is the most extreme short payment, but the tool treats est_penalty_late as false.",
-       "line": "ny_it201.est_penalty_late",
-       "irs_text": "ny_it201i p. 23, Line 81: \"You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income ... You may owe a penalty ... if you underpaid your estimated tax liability for any payment period.\"",
-       "severity": "high",
-       "fix": "Do not gate on line 75 > 0. Ask everyone whose 2025 prepayments (withholding plus estimated payments) were below the safe harbor (100% of 2024 NY tax, or 110% if 2024 NY AGI was over $150,000, or $75,000 if married filing separately) whether any installment period was unpaid, late or short. Alternatively, compute the per-period underpayment from Form IT-2105.9."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A wage earner whose withholding was not enough and who made no estimated payments. Their 2025 balance due on line 80 is $300 or more and is more than 10% of the 2025 income tax shown, and they do not meet the prior-year safe harbor.",
-       "why_no": "Line 75 is $0, so the gate is false and the penalty pathway is closed. The instructions say a penalty may apply on the line 80 test alone, whether or not any estimated payments were made.",
-       "line": "ny_it201.est_penalty_late",
-       "irs_text": "ny_it201i p. 23, Line 81: \"You may owe a penalty: • if line 80 is $300 or more and represents more than 10% of the income tax shown on your 2025 return\"",
-       "severity": "high",
-       "fix": "Gate the penalty inquiry on total prepayments being below the safe harbor, or on the line 80 test, not on line 75 > 0."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "2",
-       "who": "A filer who made estimated payments for only some quarters, for example only in September and January. The payments together reached the year's total, but nothing was paid by the April 15 or June 15 due dates.",
-       "why_no": "The question asks whether any of 'your 2025 New York estimated payments' was 'made late, or smaller than a quarter'. Each payment actually made was on time and large, so the filer reads a skipped installment as not being 'a payment' and answers no.",
+       "who": "A filer (or joint filer and spouse) with no New York estimated tax payments on line 75, whose only prepayment is wage withholding that is less than the required annual payment\u2014for example, a wage earner with a large bonus or investment income, or a self-employed filer with no withholding.",
+       "why_no": "The computed gate requires 'Estimated tax payments (line 75) more than zero'; with line 75 at zero it is false, so the tool never asks whether any estimated installment was skipped and treats the late/short-installment line as no.",
        "line": "ny_it201.est_penalty_late",
-       "irs_text": "ny_it201i p. 23, Line 81: \"if you underpaid your estimated tax liability for any payment period\"",
-       "severity": "medium",
-       "fix": "Ask: \"For any of the four 2025 installment due dates (April 15, June 16, September 15, 2025 and January 15, 2026), did you or your spouse pay less than one quarter of the year's required amount by that date, including paying nothing?\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A married couple filing jointly where one spouse made the estimated payments on a separate schedule, or one spouse missed a quarter. The person answering knows only their own payments.",
-       "why_no": "The question says 'your' estimated payments, and the answering spouse's own payments were on time.",
-       "line": "ny_it201.est_penalty_late",
-       "irs_text": "ny_it201i p. 23, Line 81: \"if you underpaid your estimated tax liability for any payment period\"",
-       "severity": "medium",
-       "fix": "Say \"you or your spouse\" and refer to combined installments for each due date."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who compares each payment with one quarter of the tax they actually paid or expected. The required installment is a quarter of the required annual payment, which is the lesser of 90% of 2025 tax or 100%/110% of 2024 tax, computed on Form IT-2105.9.",
-       "why_no": "'Smaller than a quarter of what was due for the year' leaves the filer to work out the required annual payment, and the help text does not explain it. A filer whose income rose may compare against last year's payments and wrongly answer no.",
-       "line": "ny_it201.est_penalty_late",
-       "irs_text": "ny_it201i p. 23, Line 81: \"your 2025 prepayments must equal at least 110% of your 2024 New York income tax ... For more information, see Form IT-2105.9\"",
-       "severity": "medium",
-       "fix": "Collect 2024 NY AGI, 2024 NY tax and the dates and amounts of each payment, then compute the required installments rather than asking the filer to judge them."
+       "irs_text": "ny_it201i p. 23, Line 81: 'You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year.'",
+       "severity": "high",
+       "fix": "Broaden the gate: ask the late/short-installment question whenever total 2025 prepayments (withholding plus estimated payments, including payments made on the filer's behalf) may be below the required annual payment, or whenever line 80 is $300 or more and more than 10% of the tax; treat zero estimated payments as skipped installments when an installment was required."
       }
      ],
-     "prompt_sha": "f499a5a093036d61af84d310bab8dceb285459e116d3491eeff6acb17f875c8f",
+     "prompt_sha": "b0a2446022f9b26ad522a618b752503d8723b1e981e8fabe734f21c5137893d2",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.077984,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.estimated_payments_positive.59ee58c82b14.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.estimated_payments_positive.067d6a0e1014.1.response.txt"
     }
    ],
    "condition": "ny_it201.estimated_payments_positive",
@@ -474,9 +492,9 @@
        "who": "A married couple filing jointly where only the spouse's employer provided dependent care benefits (for example, through the spouse's dependent care FSA, W-2 box 10), or only the spouse paid the daycare provider from the spouse's own account.",
        "why_no": "The gate is computed from the f2441 helpers 'Did you pay for the care of a qualifying person so you could work or look for work?' and 'Did you receive dependent care benefits?', which say only 'you'. The filer truthfully answers no for themselves. The displayed text says 'you (or your spouse)', but the inputs that drive the condition do not.",
        "line": "ny_it201.gate.dependent_care",
-       "irs_text": "ny_it216i p. 1: 'The care was provided so you (and your spouse, if you were married) could work or look for work.'; 'Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits.'",
+       "irs_text": "ny_it216i p. 1: 'The care was provided so you (and your spouse, if you were married) could work or look for work.'; 'Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 \u2013 Dependent care benefits.'",
        "severity": "high",
-       "fix": "Word both f2441 helpers as 'Did you or your spouse pay for…' and 'Did you or your spouse receive dependent care benefits (for example, Form W-2 box 10 or a dependent care FSA)?', or ask a per-return gate that names the spouse."
+       "fix": "Word both f2441 helpers as 'Did you or your spouse pay for\u2026' and 'Did you or your spouse receive dependent care benefits (for example, Form W-2 box 10 or a dependent care FSA)?', or ask a per-return gate that names the spouse."
       },
       {
        "kind": "UNCLEAR",
@@ -484,7 +502,7 @@
        "who": "An employee whose employer paid the care provider directly, ran an on-site daycare, or reimbursed care through a dependent care FSA funded by salary reduction. The employee never handed over money for care and never thinks of having 'received' a benefit.",
        "why_no": "'Did you pay for the care' reads as no because the FSA or employer paid. 'Did you receive dependent care benefits' reads as no because no cash was received, and nothing points the filer to Form W-2 box 10.",
        "line": "ny_it201.gate.dependent_care",
-       "irs_text": "ny_it216i p. 1: 'Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits.'",
+       "irs_text": "ny_it216i p. 1: 'Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 \u2013 Dependent care benefits.'",
        "severity": "medium",
        "fix": "Add help: 'Include care paid through a dependent care FSA or flexible spending plan, care your employer paid for or provided on site, and any amount in Form W-2 box 10.'"
       },
@@ -544,7 +562,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 1, Who qualifies, \"If you qualify to claim the federal child and dependent care credit, you can claim the New York State credit (whether you actually claim the federal credit or not).\" and \"The care was provided so you (and your spouse, if you were married) could work or look for work.\" and \"Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits.\""
+      "p. 1, Who qualifies, \"If you qualify to claim the federal child and dependent care credit, you can claim the New York State credit (whether you actually claim the federal credit or not).\" and \"The care was provided so you (and your spouse, if you were married) could work or look for work.\" and \"Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 \u2013 Dependent care benefits.\""
      ],
      "cols_pages": [
       1
@@ -570,79 +588,180 @@
     }
    ]
   },
-  "gate:ny_it201.gov_said_no": {
-   "subject_sha": "e86abeafea179b170a08b691f927411635704016d279eab6cf954710243d5eeb",
+  "gate:ny_it201.gov_pension_candidate": {
+   "subject_sha": "a5b890093a3b8af9919a583c426a619d517c8836398dbef70a52eb95b06e855a",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A former New York State, New York City or federal employee who retired on disability before the plan's minimum retirement age. The disability pension is reported as wages (federal Form 1040 line 1h, carried to IT-201 wages), so nothing is on line 9 or 10.",
-       "why_no": "The helper 'Is there taxable IRA, pension or annuity income on line 9 or 10?' is false. So the government pension question and this follow-up are never asked, even though the payment is a government pension included in federal AGI.",
-       "line": "ny_it201.gov_pension_other_if_no (and line 26 generally)",
-       "irs_text": "ny_it201i p. 9, Line 26: 'Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?'",
-       "severity": "high",
-       "fix": "Ask the government pension question whenever any pension, annuity, disability retirement or plan distribution is included in federal AGI, wherever it is reported (wages, line 9 or line 10). Do not tie it only to amounts on lines 9 and 10."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A retiree from a local public employer: NYS Teachers' Retirement System, NYC Teachers' or NYC Employees' Retirement System, a school district, BOCES, fire district, public library, police or fire pension fund, or the NYS & Local Retirement System. The retiree does not think of the payer as 'government'.",
-       "why_no": "They answer no to the government pension question. The follow-up then lists only the MTA, MABSTOA, the LIRR and SUNY/CUNY/SED plans. Its help, 'These public plans count as government pensions', implies those are the only non-obvious cases, so they truthfully answer no again.",
-       "line": "ny_it201.gov_pension_other_if_no",
-       "irs_text": "ny_it201i p. 9, Line 26: '– Local governments within the state.' and '– New York State, including State and City University of New York ...'",
-       "severity": "medium",
-       "fix": "Broaden the follow-up: 'Was any of it from a public employer's plan, such as NYSLRS, a teachers' retirement system, a New York City retirement system, a school district, fire or police pension fund, the MTA, the LIRR, MABSTOA, or a SUNY, CUNY or State Education Department plan (such as TIAA)?'"
+       "who": "A retired employee of the District of Columbia or of a U.S. territory or possession (for example, Puerto Rico) who receives a government pension included in federal AGI on IT-201 line 9 or 10.",
+       "why_no": "The question asks only about 'the federal government, the military, or a New York State or local government job'; a DC or territorial government pension is none of those, and the help does not mention them.",
+       "line": "ny_it201.gov_pension_if_income",
+       "irs_text": "ny_it201i p. 9: 'The United States, its territories, possessions (or political subdivisions thereof), ... or the District of Columbia.'",
+       "severity": "high",
+       "fix": "Ask about a 'federal, military, New York State or local, District of Columbia, or U.S. territory/possession government job' and repeat the list in the help."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A retiree whose pension is from the MTA Police 20-Year Retirement Program, MABSTOA, or the Long Island Rail Road and is included in federal AGI on line 9 or 10.",
+       "why_no": "The question says 'New York State or local government job'; a public authority such as the MTA, MABSTOA, or LIRR is not the state or a local government, and the help names no public authority.",
+       "line": "ny_it201.gov_pension_if_income",
+       "irs_text": "ny_it201i p. 9: 'Certain public authorities, including: \u2022 Metropolitan Transit Authority (MTA) Police 20-Year Retirement Program; \u2022 Manhattan and Bronx Surface Transit Operating Authority (MABSTOA); and \u2022 Long Island Railroad Company.'",
+       "severity": "high",
+       "fix": "Name the MTA Police 20-Year Retirement Program, MABSTOA, and LIRR in the question or help, or ask about a 'New York public authority' pension."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A military retiree paid by DFAS, a federal civil service annuitant paid by OPM (CSRS/FERS), or a retiree of a U.S. territory, U.S. agency or the District of Columbia government.",
-       "why_no": "They read 'retired pay' or an OPM 'annuity' as not a 'pension'. Also, the follow-up names only New York public bodies, so a federal payer never matches it.",
-       "line": "ny_it201.gov_pension_other_if_no",
-       "irs_text": "ny_it201i p. 9, Line 26: '– The United States, its territories, possessions ... or any agency or instrumentality of the United States (including the military), or the District of Columbia.'",
+       "pattern": "4",
+       "who": "A retired SUNY/CUNY or State Education Department employee in the Optional Retirement Program whose pension is an annuity paid by TIAA or another insurer and is included in federal AGI on line 9 or 10.",
+       "why_no": "The question asks about a 'New York State ... government job,' but the filer sees a TIAA/insurer annuity and the help does not mention the Optional Retirement Program or TIAA; they read it as a private annuity, not a government pension.",
+       "line": "ny_it201.gov_pension_if_income",
+       "irs_text": "ny_it201i p. 9: 'New York State, including State and City University of New York and New York State Education Department employees who belong to the Optional Retirement Program.'",
        "severity": "medium",
-       "fix": "Add to the follow-up: 'military retired pay (DFAS), a federal civil service annuity (OPM), or a pension from a U.S. territory, a U.S. agency or the District of Columbia government'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A surviving spouse or other beneficiary receiving a survivor annuity from a government plan. Or an ex-spouse paid under a QDRO, or a New York DRO, from a NYS, local or federal plan.",
-       "why_no": "They think 'a pension' means their own pension from their own work. A survivor benefit, or an ex-spouse's pension split by court order, does not seem to count. Neither question mentions beneficiaries or court orders.",
-       "line": "ny_it201.gov_pension_other_if_no",
-       "irs_text": "ny_it201i p. 9, Line 26: 'as an officer, employee, or beneficiary of an officer or employee' and 'You may include distributions you received ... as a nonemployee spouse in accordance with a court-issued qualified domestic relations order (QDRO)'",
-       "severity": "medium",
-       "fix": "Add to both questions: 'including survivor or beneficiary payments, and payments to you under a divorce or domestic relations order'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A person who left New York public employment before retiring and took a refund of their pension contributions, part of which was taxable.",
-       "why_no": "They see it as a refund of their own money, not a pension they 'received'. The follow-up again asks only about a pension 'from' named plans.",
-       "line": "ny_it201.gov_pension_other_if_no",
-       "irs_text": "ny_it201i p. 9, Line 26: 'or any distributions made to you from a pension plan that represents a return of contributions in a year prior to retirement'",
-       "severity": "medium",
-       "fix": "Ask 'Did you receive a pension, a refund of your contributions, or any other payment from a government retirement plan ...'."
+       "fix": "Mention the Optional Retirement Program and the TIAA example in the help, or ask about 'an ORP annuity paid by TIAA or another insurer.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A joint filer whose spouse receives a NYSLRS, NYC, SUNY/CUNY ORP, MTA or federal pension while the filer has none of their own.",
-       "why_no": "The government pension question and its follow-up say 'you' and 'any of it' with no mention of the spouse, so the filer answers about their own income.",
-       "line": "ny_it201.gov_pension_other_if_no",
-       "irs_text": "ny_it201i p. 9, Line 26: 'Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan ...'",
+       "who": "A joint filer who personally has no IRA, pension, or annuity income, but whose spouse has taxable government pension income on line 9 or 10 (or a disability pension in federal wages on line 1h).",
+       "why_no": "The gate helper asks 'Is there taxable IRA, pension or annuity income on line 9 or 10?' without 'you or your spouse'; the filer answers for themselves and says no, so the government pension question is never asked.",
+       "line": "ny_it201.gov_pension_if_income",
+       "irs_text": "ny_it201i p. 9: 'Did you receive a pension or other distribution ... that was included in your federal adjusted gross income?'",
        "severity": "medium",
-       "fix": "Say 'Did you or your spouse receive ...' in both the government pension question and the follow-up."
+       "fix": "Add 'you or your spouse' to both gate helpers: line 9/10 income and line 1h disability pension."
       }
      ],
-     "prompt_sha": "5eeb1371da8c93825bdb22aa4661666809601699d10d22dfe4393c62489b3647",
+     "prompt_sha": "67523cb6d01faf92f99a7ca6b4773eafded23ffff715625d737f22bb79f8a756",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.11066799999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.gov_said_no.e86abeafea17.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.gov_pension_candidate.a5b890093a3b.1.response.txt"
+    }
+   ],
+   "condition": "ny_it201.gov_pension_candidate",
+   "lines": [
+    "ny_it201.gov_pension_if_income"
+   ],
+   "inputs": [
+    "ny_it201.ask.gov_pension"
+   ],
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Line 26, \"Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "gate:ny_it201.gov_said_no": {
+   "subject_sha": "36b42937327d257f4c07ec90b2de36c61657f46412b44fde135cbf6da1f59b2f",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A retired District of Columbia or U.S. territory government employee receives a government pension included in federal AGI. The question asks only about New York State/local or federal government plans, so the filer truthfully answers No; the gated question lists only MTA/MABSTOA/LIRR/SUNY/CUNY/SED, so the filer also truthfully answers No.",
+       "why_no": "The words 'federal government pension plan' do not cover a DC or territorial pension, and the gated question's list does not mention DC or territories.",
+       "line": "ny_it201.gov_pension_other_if_no",
+       "irs_text": "ny_it201i p. 9, Line 26: 'The United States, its territories, possessions (or political subdivisions thereof), or any agency or instrumentality of the United States (including the military), or the District of Columbia.'",
+       "severity": "high",
+       "fix": "Ask about any U.S., territorial, possession, or District of Columbia government pension plan, not just NYS/local/federal; or add these to the gated question."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A retired New York City employee, teacher, police officer, or NYS and Local Retirement System member receives a local/state pension included in federal AGI. They answer No to the initial question because they do not think their city, school, police, or retirement-system pension is the kind of 'New York State or local government pension plan' meant; the gated question then names only MTA/MABSTOA/LIRR/SUNY/CUNY/SED, so they truthfully answer No.",
+       "why_no": "The gated question's list is read as complete; their local or state retirement-system plan is not one of the named plans.",
+       "line": "ny_it201.gov_pension_other_if_no",
+       "irs_text": "ny_it201i p. 9, Line 26: 'New York State... \u2013 Local governments within the state.'",
+       "severity": "high",
+       "fix": "Broaden the gated question to any New York State or local government pension plan, including NYCERS, NYSTRS, NYS and Local Retirement System, police/fire, and other state/local plans."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A retired MTA Police officer receives a pension from the MTA Police 20-Year Retirement Program included in federal AGI. They answer No to the initial question if they think MTA Police is not the MTA transit system; the gated question says 'MTA' but not 'MTA Police 20-Year Retirement Program', so they answer No.",
+       "why_no": "The gated question names 'MTA' but omits the MTA Police 20-Year Retirement Program; the filer reads the list as not covering MTA Police.",
+       "line": "ny_it201.gov_pension_other_if_no",
+       "irs_text": "ny_it201i p. 9, Line 26: 'Metropolitan Transit Authority (MTA) Police 20-Year Retirement Program'",
+       "severity": "high",
+       "fix": "Name the MTA Police 20-Year Retirement Program explicitly and use 'including but not limited to' for public authorities."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A divorced filer receives part of an ex-spouse's NYS and Local Retirement System or federal pension under a QDRO; the distribution is included in federal AGI. They answer No to the initial question because they were not the government employee, and No to the gated question because the plan is not MTA/MABSTOA/LIRR/SUNY/CUNY/SED.",
+       "why_no": "The initial question reads as employee-only; the gated question's list does not mention a nonemployee spouse or QDRO.",
+       "line": "ny_it201.gov_pension_other_if_no",
+       "irs_text": "ny_it201i p. 9, Line 26: 'Nonemployee spouses You may include distributions you received from a New York State or local pension plan or from a federal government pension plan as a nonemployee spouse in accordance with a court-issued qualified domestic relations order (QDRO)...'",
+       "severity": "high",
+       "fix": "Ask whether you, your spouse, or a nonemployee spouse under a QDRO received the distribution, and broaden the gated question beyond the named plans."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer receives a survivor pension as the beneficiary of a deceased parent who worked for a local government or federal agency (not MTA/SUNY); included in federal AGI. They answer No to the initial question because they were not the employee, and No to the gated question because the named plans do not fit.",
+       "why_no": "They read the question as employee-only; the gated question names plans, not beneficiaries.",
+       "line": "ny_it201.gov_pension_other_if_no",
+       "irs_text": "ny_it201i p. 9, Line 26: 'enter the amount of any pension you received ... as an officer, employee, or beneficiary of an officer or employee of any of the following'",
+       "severity": "high",
+       "fix": "Add 'or as a beneficiary' to the question and do not limit the follow-up to the named plans."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A taxpayer files jointly; only the spouse receives a pension from the MTA included in federal AGI. The taxpayer answers No to 'Did you receive' because it was the spouse's, and then answers No to 'Was any of it from the MTA' because the question says 'you' rather than 'you or your spouse'.",
+       "why_no": "The gate and gated question say 'you'; the taxpayer reads them as asking only about the taxpayer personally.",
+       "line": "ny_it201.gov_pension_other_if_no",
+       "irs_text": "ny_it201i p. 9, Line 26: enter the amount of any pension you received ... as an officer, employee, or beneficiary ... Metropolitan Transit Authority (MTA) Police 20-Year Retirement Program...",
+       "severity": "high",
+       "fix": "Use 'you or your spouse' in both the government pension question and the gated MTA/SUNY question."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "A retired MTA Police officer receives a line-of-duty disability pension reported in W-2 wages. The filer does not describe it as a 'disability pension in wages' (it is called disability retirement or injury pay), so the gate helper is false and the gated question is never asked.",
+       "why_no": "The helper says 'disability pension in wages'; the filer thinks their line-of-duty disability retirement is not a pension.",
+       "line": "ny_it201.gov_pension_other_if_no",
+       "irs_text": "ny_it201i p. 9, Line 26: 'pension you received\u2014or any distributions made to you from a pension plan ... as an officer, employee, or beneficiary ... MTA Police 20-Year Retirement Program'",
+       "severity": "high",
+       "fix": "Ask a broad question about any W-2 wage amount that is a disability retirement or line-of-duty pension from a government employer, with examples."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A military retiree receives military retirement pay included in federal AGI. They answer No to the initial question because it says 'federal government pension plan' and does not mention military retirement; the gated question lists only NY public plans, so they answer No.",
+       "why_no": "The initial question omits military retirement; the gated question's list is read as complete.",
+       "line": "ny_it201.gov_pension_other_if_no",
+       "irs_text": "ny_it201i p. 9, Line 26: '... any agency or instrumentality of the United States (including the military) ...'",
+       "severity": "medium",
+       "fix": "Mention military retirement and federal plans in the gated question; ask 'federal, military, or other U.S. government pension'."
+      }
+     ],
+     "prompt_sha": "69c30f2c1dc8e508173554995486ca8b6da0d5d5e494af2c5ebf93e6a807aa05",
+     "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.gov_said_no.36b42937327d.1.response.txt"
     }
    ],
    "condition": "ny_it201.gov_said_no",
@@ -672,58 +791,28 @@
    ]
   },
   "gate:ny_it201.has_edu_account": {
-   "subject_sha": "f4c099cb8a3a60ff88a8123e98f93fc0535a0866f58b326df40bdbfe56c670ae",
+   "subject_sha": "22953c48306f7cbb155e42078f0e94c6c17913f4bc73c215b094ad4f3612767c",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A college student, or the student's parents on a joint return, received in 2025 a withdrawal from a New York 529 account that a grandparent owns. Part of the withdrawal was non-qualified and was included in the student's federal AGI.",
-       "why_no": "The help says 'an account someone else owns for you counts as No', and the question asks only about accounts 'you (or your spouse) own'. A beneficiary who is not the owner truthfully answers No. The federal gate question ('had a 529 plan... account') also invites a No from someone who does not own the account.",
-       "line": "ny_it201.ny_529_if_account (and the line 30 beneficiary subtraction it controls)",
-       "irs_text": "ny_it201i p. 10, Line 30, Beneficiary: 'During 2025, did you, as a beneficiary, receive a withdrawal from one or more tuition savings accounts established under New York's 529 college savings program? ... If Yes, and you included part of the withdrawal in your federal adjusted gross income ... then enter that amount on line 30.'",
-       "severity": "high",
-       "fix": "Add a separate gate and question for beneficiaries: 'In 2025, did you (or your spouse) receive a withdrawal from a New York 529 College Savings Program account, including one owned by someone else, such as a parent or grandparent?' Remove 'an account someone else owns for you counts as No' from the help, or limit it to the owner contribution and withdrawal part."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "An account owner who withdrew everything from a New York 529 account in 2025, or rolled it out, and closed it. Part of the withdrawal was included in federal AGI.",
-       "why_no": "The question is in the present tense ('Is any 529 account you ... own part of New York's ... program?'). An owner who no longer owns any account at filing time reads it as No.",
-       "line": "ny_it201.ny_529_if_account (line 30 worksheet line 2)",
-       "irs_text": "ny_it201i p. 10, Line 30: 'During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York's 529 college savings program?'",
-       "severity": "medium",
-       "fix": "Ask in the instruction's own terms: 'During 2025, did you (or your spouse), as an account owner, contribute to or withdraw from a New York 529 College Savings Program account, even if the account is now closed?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A New York account owner who made 2025 contributions only. They took no distribution and received no Form 1099-Q, so nothing on the federal return concerns the 529.",
-       "why_no": "The gate is computed from a federal answer. A federal question about 529, Coverdell or ABLE accounts is typically driven by distributions or Form 1099-Q, which a contribution-only owner does not have. They answer No, and the New York question about contributions is never asked.",
-       "line": "ny_it201.ny_529_if_account (line 30 worksheet line 1, contributions up to $5,000/$10,000)",
-       "irs_text": "ny_it201i p. 10, Line 30 worksheet line 1: 'Amount of contributions you made in 2025 to an account established under New York's 529 college savings program (cannot exceed $5,000 ... or $10,000 for married taxpayers filing a joint return)'",
-       "severity": "medium",
-       "fix": "Do not gate the New York question on the federal answer. Ask the New York line 30 question directly of every New York resident filer. If a federal gate is kept, word it as 'own, contribute to, or receive a withdrawal from', and make clear that contributions alone count."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A New York resident whose account is in New York's Advisor-Guided 529 plan, opened through a financial advisor, rather than the Direct Plan.",
-       "why_no": "The help names only 'the New York 529 College Savings Program'. An owner whose statements carry an advisor or brokerage brand may decide their plan is not 'New York's own' and answer No.",
+       "pattern": "5",
+       "who": "A filer (or the filer's spouse on a joint return) who is only the beneficiary of a New York 529 account owned by someone else, and who in 2025 received a withdrawal from that account that was partly included in federal adjusted gross income.",
+       "why_no": "The gate counts persons who had a 529, Coverdell, or ABLE account, and the gated question asks whether the filer owns a New York 529 account. The help says an account someone else owns for you counts as No. A beneficiary who does not own the account answers No, so the tool treats the line 30 amount as zero.",
        "line": "ny_it201.ny_529_if_account",
-       "irs_text": "ny_it201i p. 10, Line 30: 'one or more tuition savings accounts established under New York's 529 college savings program'",
-       "severity": "medium",
-       "fix": "Help: 'New York's program includes both the Direct Plan and the Advisor-Guided Plan, including accounts opened through a financial advisor. A 529 plan sponsored by another state counts as No.'"
+       "irs_text": "ny_it201i p. 10: Beneficiary During 2025, did you, as a beneficiary, receive a withdrawal from one or more tuition savings accounts established under New York\u2019s 529 college savings program? ... enter that amount on line 30.",
+       "severity": "high",
+       "fix": "Broaden the gate and the question to cover both account owners and beneficiaries: ask whether the filer or spouse owned a New York 529 account or received a beneficiary withdrawal in 2025, and compute line 30 from contributions plus any qualified distribution included in federal AGI."
       }
      ],
-     "prompt_sha": "b36401b24d44d570f8b26ac16763de4319f846954cd11216760aae7a2596dfa8",
+     "prompt_sha": "c857148eddbeb7fb912b4067030e67c5f20aac3e532293425a142f8db4d4a6ac",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.071312,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.has_edu_account.f4c099cb8a3a.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.has_edu_account.22953c48306f.1.response.txt"
     }
    ],
    "condition": "ny_it201.has_edu_account",
@@ -743,7 +832,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 10, Line 30, \"During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?\""
+      "p. 10, Line 30, \"During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York\u2019s 529 college savings program?\""
      ],
      "cols_pages": [
       10
@@ -753,7 +842,7 @@
    ]
   },
   "gate:ny_it201.has_line28_income": {
-   "subject_sha": "275f9fba92c3797f3e54d29791ce8f0b85240cdb387e0c74fec0ea632c446a03",
+   "subject_sha": "da546d47bf5bbc8a91f822ba9b8308f629156ad8771a37cc383d6063dceb5645",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -761,50 +850,20 @@
       {
        "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "A filer holds Federal Home Loan Bank or Federal Farm Credit Bank bonds, or Tennessee Valley Authority notes. Their interest is on line 2 and has no Treasury or savings bond component.",
-       "why_no": "The question lists only 'U.S. Treasury bills, notes or bonds, U.S. savings bonds, or a fund that holds them'. Agency bonds are none of these, so the filer truthfully answers No.",
-       "line": "ny_it201.gate.line28",
-       "irs_text": "ny_it201i p. 9, Line 28: 'Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?'",
+       "who": "A farmer who operates a sole proprietorship on Schedule F and holds Build America Bonds in the farm's brokerage account, with the interest reported as other farm income on Schedule F so it is included in federal AGI on IT-201 line 12, while lines 2, 3, 6 and 11 are zero.",
+       "why_no": "The gate lists only lines 2, 3, 6 and 11 and calls line 6 'business income'; the farmer's farm business income is on line 12, not in the list, so the computed condition is false and the tool never asks about Build America Bonds.",
+       "line": "ny_it201.bab_if_interest",
+       "irs_text": "ny_it201i p. 5, Item G, Code A6: 'Enter this code if you included Build America Bond interest in your federal adjusted gross income.'",
        "severity": "high",
-       "fix": "Ask: 'Was any of your (or your spouse's) interest or dividends, including amounts passed through from a business, partnership, S corporation, estate or trust, from the U.S. government or a U.S. government agency? Examples are Treasury bills, notes or bonds, savings bonds, federal agency bonds, or a fund that holds them.' Classify after a broad yes."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A married couple files jointly. Only the spouse owns Treasury bonds, U.S. savings bonds, or Build America Bonds, and the filer answers the tool's questions.",
-       "why_no": "The question as shown reads 'Was any of your interest or dividends from...' without 'or your spouse's'. The filer reads 'your' as their own holdings. The helper text names the spouse, but the question shown does not.",
-       "line": "ny_it201.gate.line28; ny_it201.bab_if_interest",
-       "irs_text": "ny_it201i p. 9, Line 28: 'Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?'; ny_it201i p. 5, Item G Code A6: 'Enter this code if you included Build America Bond interest in your federal adjusted gross income.'",
-       "severity": "medium",
-       "fix": "Say 'you or your spouse' in both gated questions on a joint return."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A partner, S corporation shareholder, or trust beneficiary receives a Schedule K-1 that reports U.S. Treasury interest or Build America Bond interest. That interest flows into line 11, or into line 6 as part of business income.",
-       "why_no": "The filer received no Form 1099-INT for it. The question asks about 'your interest or dividends' and the help points to 'box 3 of a Form 1099-INT'. The filer thinks of K-1 or business income as something other than their interest.",
-       "line": "ny_it201.gate.line28; ny_it201.bab_if_interest",
-       "irs_text": "ny_it201i p. 9, Line 28: '...on lines 2, 6, or 11?' and 'If you include an amount on line 28 from more than one line on Form IT-201, submit a schedule...'",
-       "severity": "medium",
-       "fix": "Add to both questions: 'including interest reported to you on a Schedule K-1 or earned in your business'. Mention Schedule K-1 in the help."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer's Schedule C or Schedule E nets to exactly $0, so line 6 or line 11 is $0, and lines 2 and 3 are also $0. The netted business or partnership income still includes Treasury interest or Build America Bond interest.",
-       "why_no": "The computed gate tests whether each line is nonzero. A component of a line that nets to zero leaves the gate false, so neither question is asked.",
-       "line": "ny_it201.gate.line28; ny_it201.bab_if_interest",
-       "irs_text": "ny_it201i p. 9, Line 28: 'Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?'",
-       "severity": "low",
-       "fix": "Also open the gate when any Schedule C, Schedule E or K-1 is present, whatever the net amount on line 6 or line 11."
+       "fix": "Broaden the BAB gate to include line 12 (farm income) and other federal AGI lines, or ask directly whether Build America Bond interest was included in federal AGI."
       }
      ],
-     "prompt_sha": "0a2b7a85287907d17535e505b24dcb1d7bafeb3fd662d00a8e75ebb7923125d2",
+     "prompt_sha": "e17bf49402ed9b97831502887ba2e3af82f321b764670fa07eb363b3057f06b4",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.08929599999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.has_line28_income.275f9fba92c3.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.has_line28_income.da546d47bf5b.1.response.txt"
     }
    ],
    "condition": "ny_it201.has_line28_income",
@@ -841,58 +900,68 @@
    ]
   },
   "gate:ny_it201.has_other_income": {
-   "subject_sha": "8e38b5c7677cd57eb2bcbb60b8df79a0bf67371df0cb8e376705e025e87e7545",
+   "subject_sha": "2409eaa71587931256eb4eaed4e3582c73b65ff40ba4835ae0ae11c40a201312",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A filer who reported the New York inflation refund check on federal Schedule 1, line 1 (taxable refunds, credits, or offsets of state and local income taxes) rather than as other income. That line is where the check most naturally goes, and where software that treats it as a state refund puts it. They have no entries on lines 8a through 8z, so Schedule 1 line 9 is $0.",
-       "why_no": "The computed gate tests only Schedule 1 line 9 (total other income). Line 1 is not part of line 9, so the gate is false and the inflation-check question is never asked. Even if the gate were broadened, the question asks whether 'any of the other income' was the check, and this filer truthfully says no because they reported it as a refund, not other income.",
-       "line": "ny_it201.inflation_if_other_income (and so the Yes that ends the New York part, plus IT-201 line 25)",
-       "irs_text": "ny_it201i p. 8, Line 25 heading 'Taxable refunds, credits, or offsets of state and local income taxes': 'If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.'",
-       "severity": "high",
-       "fix": "Gate on any check included in federal AGI, not on Schedule 1 line 9. Ask whenever Schedule 1 line 1 or line 9 is non-zero, or ask unconditionally: 'Did you (or your spouse) receive a New York State inflation refund check and report it anywhere on your federal return, for example as a state tax refund (Schedule 1, line 1) or as other income (Schedule 1, line 8z)?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer whose Schedule 1 line 9 is non-zero for another reason (for example, gambling winnings or a prize), and who also included the inflation check in federal AGI.",
-       "why_no": "The question asks whether the check was part of the 'other income you reported.' A filer who thinks of the check as a refund or rebate of their own tax, rather than as income, reads it as not 'other income' and answers no, although it is in federal AGI.",
-       "line": "ny_it201.inflation_if_other_income",
-       "irs_text": "ny_it201i p. 8, Line 25: 'If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income ... enter that amount on line 25.'",
-       "severity": "medium",
-       "fix": "Ask about the fact, not the classification: 'Did you include any New York inflation refund check in the income on your federal return, whether as a refund or as other income?'"
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "Married filers on a joint return where the inflation refund check was issued in the spouse's name (based on the spouse's earlier return) and included in the joint federal AGI.",
-       "why_no": "The gated question says 'you reported' with no mention of a spouse. A filer who did not personally receive the check may answer no, even though the helper covers 'you (or, on a joint return, your spouse).'",
+       "who": "A married filer filing a joint IT-201 whose spouse received a New York inflation refund check in fall 2025 and included it in the joint federal AGI as a state tax refund or other income; the filer personally did not receive or include it.",
+       "why_no": "The gate says \"A state tax refund or other income on federal Schedule 1\" and does not say \"you or your spouse.\" The filer reads \"you\" as self alone and answers no, so the tool never asks the inflation-check question.",
        "line": "ny_it201.inflation_if_other_income",
-       "irs_text": "ny_it201i p. 8, Line 25: 'If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income ...'",
+       "irs_text": "ny_it201i p. 8, Line 25: \"If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.\"",
+       "severity": "high",
+       "fix": "Word the gate \"you or your spouse\" and compute it from the joint Schedule 1 lines; if either spouse received and included the check, the gate must be true."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A self-employed filer who deposited the New York inflation refund check into a business account and reported it as gross business income on Schedule C, so it flows to federal Schedule 1 line 3 and into federal AGI, with no state tax refund on line 1 and no amount on line 9.",
+       "why_no": "The gate asks only for a state tax refund or other income on Schedule 1 line 1 or line 9. The filer truthfully says no because the check was business income, not a state refund or Schedule 1 \"other income.\"",
+       "line": "ny_it201.inflation_if_other_income",
+       "irs_text": "ny_it201i p. 8, Line 25: \"If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.\"",
+       "severity": "high",
+       "fix": "Broaden the gate to ask whether the filer or spouse received a New York inflation refund check and included it in federal AGI, regardless of the federal line or schedule used; do not restrict it to Schedule 1 line 1 or line 9."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer who included the New York inflation refund check as other income on federal Schedule 1 but also has an equal negative other-income or loss amount, so Schedule 1 line 9 nets to exactly zero.",
+       "why_no": "The computed gate requires line 9 to be not zero. The check amount is included in federal AGI, but the net line 9 is zero, so the tool computes the gate false and never asks about the check.",
+       "line": "ny_it201.inflation_if_other_income",
+       "irs_text": "ny_it201i p. 8, Line 25: \"If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.\"",
        "severity": "medium",
-       "fix": "Word the question as 'Did you or your spouse receive a New York State inflation refund check ...'"
+       "fix": "Gate on the presence or gross amount of the inflation check itself, or on any Schedule 1 line containing it, not on whether the net line 9 is nonzero."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer whose Schedule 1 other-income entries net to exactly $0, for example a positive line 8z amount equal to a line 8a net operating loss, with the inflation check among the positive entries.",
-       "why_no": "The computed test 'line 9 ≠ $0' is false when other-income items offset each other, so the question is not asked.",
+       "pattern": "2",
+       "who": "A filer whose gate is true because of an unrelated state tax refund on Schedule 1 line 1, and who also received the New York inflation refund check but included it in federal AGI as business income on Schedule C/Schedule 1 line 3.",
+       "why_no": "The gated question asks whether the check was included \"as a state tax refund or as other income.\" The filer reads that list as exhaustive and answers no because it was included as business income, not in either named category.",
        "line": "ny_it201.inflation_if_other_income",
-       "irs_text": "ny_it201i p. 8, Line 25: 'included the check amount in the calculation of federal adjusted gross income reported on line 19'",
-       "severity": "low",
-       "fix": "Gate on the presence of any Schedule 1 line 1 or line 8 entry, not on the net total on line 9."
+       "irs_text": "ny_it201i p. 8, Line 25: \"If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.\"",
+       "severity": "medium",
+       "fix": "Remove the \"as a state tax refund or as other income\" limitation and ask whether the filer included the New York inflation refund check in federal income or federal AGI in any manner."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer whose preparer reported the New York inflation refund check as additional wages on Form 1040 line 1a or as interest on line 2b, so the check is in federal AGI but there is no Schedule 1 line 1 or line 9 amount.",
+       "why_no": "The gate asks only about federal Schedule 1. The filer truthfully says no to having a Schedule 1 state refund or other income, even though the check is included in federal AGI.",
+       "line": "ny_it201.inflation_if_other_income",
+       "irs_text": "ny_it201i p. 8, Line 25: \"If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.\"",
+       "severity": "medium",
+       "fix": "Ask directly about receipt and inclusion in federal AGI rather than using Schedule 1 line 1 or line 9 as a proxy for inclusion."
       }
      ],
-     "prompt_sha": "a678f54c37726b894f072c763796b0313b8367b182e566bc746f00f5689da91a",
+     "prompt_sha": "b05e325252a97b351d9dedf745ef5213c39a4464a584a688522a1b0f6ec21065",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.069532,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.has_other_income.8e38b5c7677c.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.has_other_income.2409eaa71587.1.response.txt"
     }
    ],
    "condition": "ny_it201.has_other_income",
@@ -992,98 +1061,6 @@
     }
    ]
   },
-  "gate:ny_it201.has_pension_income": {
-   "subject_sha": "bbd71fe095ee4e295b1d437a60bc6ddef66d448f64e44716dcf44397f2527681",
-   "samples": [
-    {
-     "verdict": "FALSE_NO",
-     "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A retired New York City police officer or firefighter, or a federal or military employee, receives a government disability pension before reaching the plan's minimum retirement age. Following the federal rule, the taxable amount is reported as wages on federal Form 1040 line 1 (so on IT-201 line 1), not as pensions and annuities. Nothing else of theirs lands on line 9 or 10.",
-       "why_no": "The computed gate checks only lines 9 and 10. Lines 9 and 10 are zero, so the condition is false, the government pension question is never asked, and the line 26 subtraction is silently zero even though the pension is in federal AGI.",
-       "line": "ny_it201.gov_pension_if_income",
-       "irs_text": "ny_it201i p. 9, Line 26: \"Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?\" (the test is inclusion in federal AGI, not on line 9 or 10)",
-       "severity": "high",
-       "fix": "Do not gate on lines 9/10 alone. Ask the government pension question whenever the filer or spouse received any Form 1099-R or any pension or disability retirement payment, including amounts reported as wages on line 1. Alternatively, add to the gate: 'or any government disability pension reported as wages before minimum retirement age'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A retired Long Island Rail Road worker, a MABSTOA bus operator, or an MTA Police 20-Year Retirement Program retiree, filing alone or jointly, whose pension is on line 10.",
-       "why_no": "The question names 'the federal government, the military, or a New York State or local government job'. The help does not mention public authorities. A railroad or transit-authority retiree reasonably does not see the LIRR or MABSTOA as a 'government job' and answers no.",
-       "line": "ny_it201.gov_pension_if_income",
-       "irs_text": "ny_it201i p. 9, Line 26: \"Certain public authorities, including: • Metropolitan Transit Authority (MTA) Police 20-Year Retirement Program; • Manhattan and Bronx Surface Transit Operating Authority (MABSTOA); and • Long Island Railroad Company.\"",
-       "severity": "medium",
-       "fix": "Name these in the question or help: 'Count the MTA Police 20-Year Retirement Program, MABSTOA, and the Long Island Rail Road.' The gate helper already lists them; carry that list into the filer-facing question."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A retired SUNY or CUNY professor, or a former State Education Department employee, in the Optional Retirement Program. The annuity is paid and reported on Form 1099-R by TIAA, a private company.",
-       "why_no": "The payer on the form is TIAA, not a government. The filer thinks of it as a TIAA annuity, not 'pension or retirement money from a New York State or local government job', and answers no.",
-       "line": "ny_it201.gov_pension_if_income",
-       "irs_text": "ny_it201i p. 9, Line 26: \"New York State, including State and City University of New York and New York State Education Department employees who belong to the Optional Retirement Program.\"",
-       "severity": "medium",
-       "fix": "Add to the help: 'Count the Optional Retirement Program of SUNY, CUNY or the State Education Department, even when the payer is TIAA or another private company (only the part from that employment).'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A New York resident who receives a pension from former government employment in Puerto Rico, Guam, the U.S. Virgin Islands, or the District of Columbia.",
-       "why_no": "The question lists only 'the federal government, the military, or a New York State or local government job'. A territorial or D.C. government pension is none of these on a plain reading, so the filer answers no.",
-       "line": "ny_it201.gov_pension_if_income",
-       "irs_text": "ny_it201i p. 9, Line 26: \"The United States, its territories, possessions (or political subdivisions thereof), or any agency or instrumentality of the United States (including the military), or the District of Columbia.\"",
-       "severity": "medium",
-       "fix": "Add to the question: 'a U.S. territory or possession (or one of its local governments), or the District of Columbia'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A former New York State or local employee, or a former federal employee, who left the job before retirement and this year took a refund of their own pension contributions (reported on line 10). They have never retired.",
-       "why_no": "The question asks about 'pension or retirement money'. The help mentions 'a refund of your own contributions', but a filer who never retired may not connect a contribution refund on leaving a job with 'pension' money and answers no.",
-       "line": "ny_it201.gov_pension_if_income",
-       "irs_text": "ny_it201i p. 9, Line 26: \"any distributions made to you from a pension plan that represents a return of contributions in a year prior to retirement\"",
-       "severity": "low",
-       "fix": "Put it in the question itself: 'including a refund of your own pension contributions when you left the job, even if you never retired'."
-      }
-     ],
-     "prompt_sha": "17e56336c50c24d1c1ae3d98be6b02c9e36c3745f40a3c6f7c846068571ad69c",
-     "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.086264,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.has_pension_income.bbd71fe095ee.1.response.txt"
-    }
-   ],
-   "condition": "ny_it201.has_pension_income",
-   "lines": [
-    "ny_it201.gov_pension_if_income"
-   ],
-   "inputs": [
-    "ny_it201.ask.gov_pension"
-   ],
-   "used": [
-    {
-     "doc": "ny_it201i",
-     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
-     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
-     "pages": [
-      9
-     ],
-     "how": "cited pages",
-     "locators": [
-      "p. 9, Line 26, \"Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?\"",
-      "p. 9, Line 29, \"Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10)\"; p. 9, Line 26, \"Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?\""
-     ],
-     "cols_pages": [
-      9
-     ],
-     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
-    }
-   ]
-  },
   "gate:ny_it201.has_refund": {
    "subject_sha": "08b3405144d0c9d0e19c81e932da025578518d3fe1ac4435c86452c4a8e001fa",
    "samples": [
@@ -1137,78 +1114,68 @@
    ]
   },
   "gate:ny_it201.has_tax_exempt": {
-   "subject_sha": "8b6500db6cb42db1899cb60f2bc533183bfa39415c474792df0531f75a0b69ce",
+   "subject_sha": "56a889dd3c83f28e4f8ba8f24b540b5a14cd31f572c8d6bf9d651b02e5f63f68",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer who bought out-of-state municipal bonds at a large premium, for example high-coupon bonds bought near a call date. The 1099-INT box 13 amortizable premium on tax-exempt bonds offsets the box 8 interest, so the net tax-exempt interest reported on federal line 2a is $0.",
-       "why_no": "The gate is computed as f1040 line 2a > $0. Federal reporting nets premium amortization against tax-exempt interest, so line 2a can be zero. The tool then never asks the question, even though gross interest was received.",
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer owns an out-of-state municipal bond bought at a premium; the bond pays tax-exempt interest in 2025, but bond-premium amortization leaves federal Form 1040 line 2a at zero.",
+       "why_no": "The gate asks only 'Was tax-exempt interest received in 2025?' and the filer answers No because line 2a is zero after premium; the parenthetical about premium is not in the question itself.",
        "line": "ny_it201.gate.line20",
-       "irs_text": "ny_it201i p. 7, Line 20: \"For purposes of this addition, bond premium amortization is not allowed as a direct offset to interest income. You must report it: • as a subtraction modification on Form IT-225 ... or • as an itemized deduction addition adjustment on Form IT-196, line 44\"",
+       "irs_text": "ny_it201i p. 7, Line 20: 'If Yes, enter any such interest income that you received or that was credited to you during 2025...' and 'For purposes of this addition, bond premium amortization is not allowed as a direct offset to interest income.'",
        "severity": "high",
-       "fix": "Base the gate on the gross figure: line 2a > 0 OR any 1099-INT box 8 or box 13 amount OR any 1099-DIV box 12 amount. Or ask directly whether the filer or spouse held any state or local bonds, or tax-exempt funds, at any time in 2025."
+       "fix": "Ask whether the filer or spouse received or had credited any interest from state or local bonds or tax-exempt bond funds before bond-premium amortization, and gate on 1099-INT box 8 or 1099-DIV box 13 as well as line 2a."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer sold an out-of-state municipal bond between interest dates and received accrued interest from the buyer as part of the sale price, with no coupon payment and no amount on federal line 2a.",
+       "why_no": "The gate asks whether tax-exempt interest was 'received'; the filer thinks of interest as coupon payments and answers No, not treating accrued interest embedded in the sale proceeds as tax-exempt interest.",
+       "line": "ny_it201.gate.line20",
+       "irs_text": "ny_it201i p. 7, Line 20: 'If you sold a bond between interest dates, include the amount of interest you received during the year plus the accrued interest amount...'",
+       "severity": "high",
+       "fix": "Broaden the gate to cover accrued interest on bonds bought or sold between interest dates, including accrued interest paid by the buyer, and ask about it explicitly."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer who sold an out-of-state municipal bond between interest dates in 2025, before any coupon was paid to them that year. The accrued interest was received as part of the sale price and went into proceeds rather than into tax-exempt interest on line 2a, so line 2a is $0.",
-       "why_no": "The computed condition line 2a > $0 is false, so the question is never asked. The accrued interest received on the sale is a sale-date event, not a reported interest payment.",
-       "line": "ny_it201.gate.line20",
-       "irs_text": "ny_it201i p. 7, Line 20: \"If you sold a bond between interest dates, include the amount of interest you received during the year plus the accrued interest amount ... to the date you sold the bond.\"",
-       "severity": "medium",
-       "fix": "Add a gate branch for any sale or redemption of a state or local bond in 2025 (Form 1099-B or a brokerage statement), and ask for the accrued interest received at sale."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A partner or S corporation shareholder whose K-1 reports out-of-state municipal interest (partnership box 18A, S corporation box 16A, plus the NY modification EA-113 from the entity). The filer or tool did not carry it to federal line 2a, which is common because it has no federal tax effect.",
-       "why_no": "The gate is computed only from line 2a. Entity-level tax-exempt interest that never reached line 2a leaves the gate false. The NY instructions route the entity's EA-113 amount directly to line 20.",
-       "line": "ny_it201.gate.line20",
-       "irs_text": "ny_it201i p. 7: \"If you have either of the addition or subtraction modifications in the chart below, relating to your partnership or S corporation income, include the amount on the corresponding line of Form IT-201. ... EA-113 Interest income on state and local bonds and obligations 20\"",
-       "severity": "medium",
-       "fix": "Also open the gate when any partnership or S corporation K-1 (yours or your spouse's) reports tax-exempt interest or an EA-113 modification. Ask: 'Did a partnership or S corporation report a New York modification EA-113 to you or your spouse?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A joint filer whose spouse alone holds a national tax-free bond fund or out-of-state bonds, while the asker holds only New York bonds.",
-       "why_no": "The gated question reads \"Did any of your tax-free interest or dividends come from bonds issued outside New York\". The spouse is named only in the helper wording, not in the question actually asked, so the asker answers for their own holdings.",
-       "line": "ny_it201.gate.line20",
-       "irs_text": "ny_it201i p. 7, Line 20: \"enter any such interest income that you received or that was credited to you during 2025 that was not included in your federal adjusted gross income.\"",
-       "severity": "medium",
-       "fix": "Reword: \"Did any tax-free interest or dividends received by you or, on a joint return, your spouse come from bonds issued outside New York, or from a fund that holds them?\""
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer holding a 'New York tax-free' municipal bond fund whose year-end statement shows that part of its exempt-interest dividends came from non-New York issuers, for example 5% from other states' bonds.",
-       "why_no": "The help says \"Bonds of New York State, its cities and agencies ... count as No\" and contrasts \"national tax-free bond funds\". A holder of a fund named New York reads it as entirely New York and answers No.",
+       "who": "A filer whose only tax-exempt income is exempt-interest dividends from a national tax-free bond fund or a tax-exempt money market fund; the filer received dividends, not 'interest,' and may leave federal line 2a at zero.",
+       "why_no": "The gate question says 'Was tax-exempt interest received?' and does not mention exempt-interest dividends or fund dividends, so the filer answers No.",
        "line": "ny_it201.gate.line20",
-       "irs_text": "ny_it201i p. 7, Line 20: \"This includes interest income on: ... interest and dividend income from tax-exempt bond mutual funds, and – tax-exempt money market funds that invest in obligations of states other than New York.\"",
+       "irs_text": "ny_it201i p. 7, Line 20: 'This includes interest income on: ... interest and dividend income from tax-exempt bond mutual funds, and tax-exempt money market funds that invest in obligations of states other than New York.'",
        "severity": "medium",
-       "fix": "Add to the help: \"A New York tax-free fund may still hold some bonds of other states or of territories; check the fund's year-end statement for the percentage from New York. Answer Yes if any part is from other states.\""
+       "fix": "Ask 'tax-exempt interest or exempt-interest dividends, including from tax-exempt bond mutual funds or money market funds' and gate on 1099-DIV box 13 or line 2a."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer who received a small amount of out-of-state municipal interest with no 1099-INT, for example under $10, or interest on a directly held bond. They did not enter it on line 2a.",
-       "why_no": "The gate depends on line 2a having been filled from information returns. Without a form, the amount never reaches line 2a and the question is never asked.",
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "On a joint return, only the spouse received out-of-state municipal bond interest that is not reflected on the joint federal line 2a, such as accrued interest on a sale or gross interest eliminated by bond premium; the primary filer answers No because the helper asks whether 'you' received it.",
+       "why_no": "The helper uses 'you' and does not say 'you or your spouse,' so the primary filer answers No for himself or herself.",
        "line": "ny_it201.gate.line20",
-       "irs_text": "ny_it201i p. 7, Line 20: \"enter any such interest income that you received or that was credited to you during 2025\"",
-       "severity": "low",
-       "fix": "Ask about holdings of state or local bonds or tax-exempt funds, whether or not a form was received, rather than relying solely on line 2a."
+       "irs_text": "ny_it201i p. 7, Line 20: 'If Yes, enter any such interest income that you received or that was credited to you during 2025...'",
+       "severity": "medium",
+       "fix": "Ask 'Did you or your spouse receive or have credited...' and compute the gate from the joint federal line 2a plus either spouse's 1099s."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A partner or S corporation shareholder is allocated out-of-state municipal bond interest on a K-1 but receives no cash distribution; the entity reports a New York addition for line 20, but the filer answers No because the interest was allocated, not paid.",
+       "why_no": "The gate asks whether tax-exempt interest was 'received' in 2025; an allocation on a K-1 is not a receipt to the filer.",
+       "line": "ny_it201.gate.line20",
+       "irs_text": "ny_it201i p. 7: 'Partners and S corporation shareholders ... EA-113 Interest income on state and local bonds and obligations 20.'",
+       "severity": "medium",
+       "fix": "Include interest allocated to the filer on a Schedule K-1 from a partnership, S corporation, estate, or trust, even if no cash was distributed."
       }
      ],
-     "prompt_sha": "568278f99ecaa7a92bbdcff208e08f0d1b8233a79e6dbb23966895765d1eaa5d",
+     "prompt_sha": "6305f78c5d55f5e8263848690f1b77ed8d263e213afc855160d852760fc67e43",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.09657199999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.has_tax_exempt.8b6500db6cb4.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.has_tax_exempt.56a889dd3c83.1.response.txt"
     }
    ],
    "condition": "ny_it201.has_tax_exempt",
@@ -1239,78 +1206,78 @@
    ]
   },
   "gate:ny_it201.low_income": {
-   "subject_sha": "2cff21c85e9c0695ce94a0912d17906e5b9f8b78625f7aa2c08b03d44e92dd5f",
+   "subject_sha": "64d0f7ec66d2e0817f910e4218b82a0577680a6940e52a4117bb0b7670cb5f29",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A married couple filing jointly with FAGI of $15,000. The house they live in is titled only to the spouse, is worth $70,000, and the spouse pays its property taxes. The filer named first on the return owns no real estate and pays no rent.",
-       "why_no": "The question asks whether 'your rent' was $450 or less, or whether 'all the real estate you own' is worth $85,000 or less. The first filer pays no rent and owns no real estate, so they truthfully answer no.",
-       "line": "ny_it201.gate.real_property (Form IT-201 line 67 / Form IT-214 never prompted)",
-       "irs_text": "ny_it214i p. 1: 'Homeowners – You or your spouse (if married filing jointly) paid real property taxes.' ... 'Renters – You or your spouse (if married filing jointly) paid rent for your residence.'",
+       "pattern": "8",
+       "who": "A low-income tenant-stockholder in a cooperative housing corporation pays monthly maintenance of more than $450, which includes the co-op's real property taxes, and the unit's market value is $85,000 or less.",
+       "why_no": "They do not pay rent and do not own real estate in the ordinary sense; they own shares and pay maintenance, so both branches of the question read false.",
+       "line": "ny_it201.gate.real_property",
+       "irs_text": "ny_it214i p. 2, Step 4: 'A condominium, a cooperative, or a rental unit within a single dwelling is also a residence'; p. 2, line 15: 'Real property taxes paid also include any real estate taxes allowed ... as a deduction for tenant-stockholders in a cooperative housing corporation under IRC section 216.'",
        "severity": "high",
-       "fix": "Ask: 'Did you or your spouse pay rent averaging $450 a month or less, or own real estate (all of it together) worth $85,000 or less, for your New York home?'"
+       "fix": "Ask about rent, co-op maintenance/tenant-stockholder status, or owning a home, condo, mobile home, or other real estate; state that the $450 rent cap does not apply to homeowners/co-op owners."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "8",
-       "who": "A renter in a furnished room who pays $520 a month. The landlord's charge includes $100 a month for furnishings, so the adjusted rent is $420.",
-       "why_no": "The question says to leave out only 'heat, gas, electricity or meals'. It does not mention furnishings, so the filer counts the full $520 and answers no.",
+       "pattern": "6",
+       "who": "A low-income filer owns a mobile home that is assessed for real property tax and pays the taxes, but rents the lot for more than $450 a month; the mobile home's market value is $85,000 or less.",
+       "why_no": "The question asks whether they pay rent of $450 or less or own real estate of $85,000 or less; they do not own land/real estate in the ordinary sense and their lot rent is over $450.",
        "line": "ny_it201.gate.real_property",
-       "irs_text": "ny_it214i p. 1: 'The average monthly rent ... was $450 or less, not counting charges for heat, gas, electricity, furnishings, or board.'; p. 2 Line 12: 'Adjusted rent is the rent paid after subtracting any charges for heat, gas, electricity, furnishings, and board.'",
+       "irs_text": "ny_it214i p. 2, Step 4: 'A trailer or mobile home that is used only for residential purposes is also a residence if the trailer or mobile home is assessed for real property tax purposes'; 'Mobile homeowners who pay the real property taxes should follow the instructions for homeowners.'",
        "severity": "high",
-       "fix": "List all five exclusions: 'not counting charges for heat, gas, electricity, furnishings, or board (meals)'."
+       "fix": "Ask about owning a house, condominium, cooperative shares, or an assessed mobile home/trailer, and about real property taxes paid, not just rent or real estate."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A Section 8 or other subsidized tenant. The lease rent is $1,100 a month, but the tenant pays only their own share of $300 a month.",
-       "why_no": "The filer reads 'your rent' as the lease or contract rent of $1,100 and answers no. The instructions count only the part the filer paid, with the subsidized part excluded.",
+       "who": "A low-income renter pays $500 a month including heat; after subtracting the heat charge, adjusted rent is $440, and the filer is not a dependent.",
+       "why_no": "They compare the $500 paid to the $450 limit and answer no, because they do not have a separate heat charge or do not treat the parenthetical as a computation.",
        "line": "ny_it201.gate.real_property",
-       "irs_text": "ny_it214i p. 2 Line 11: 'Enter the total rent you or your spouse ... paid during 2025; do not include any subsidized part of your rental charge.'",
+       "irs_text": "ny_it214i p. 2, line 12: 'Adjusted rent is the rent paid after subtracting any charges for heat, gas, electricity, furnishings, and board.'",
        "severity": "medium",
-       "fix": "Ask about 'the rent you or your spouse paid yourselves (not counting any part paid by a housing subsidy)'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A tenant-stockholder in a New York cooperative whose shares are worth under $85,000. Monthly maintenance is $600, which includes the share of real estate taxes deductible under IRC section 216.",
-       "why_no": "The filer owns shares rather than 'real estate', so they say they own none. They also treat the $600 maintenance as rent above $450. The gate's help text mentions only 'rent or property tax', and they do not see maintenance as either.",
-       "line": "ny_it201.gate.real_property",
-       "irs_text": "ny_it214i p. 2: 'A condominium, a cooperative, or a rental unit within a single dwelling is also a residence.' ... 'Real property taxes paid also include any real estate taxes allowed ... as a deduction for tenant-stockholders in a cooperative housing corporation under IRC section 216.'",
-       "severity": "medium",
-       "fix": "Add a branch: 'Do you or your spouse own a co-op or condo unit (count co-op shares as real estate)?' Also say that co-op maintenance includes property tax."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A homeowner who lived in and paid taxes on a $70,000 house from January to October 2025, then sold it. They now rent an apartment at $600 a month and own no real estate.",
-       "why_no": "The present tense 'is all the real estate you own' points to today, when they own nothing, so they answer not applicable or no. The rent half is also false. Yet they paid 2025 property taxes on a residence they occupied for at least six months.",
-       "line": "ny_it201.gate.real_property",
-       "irs_text": "ny_it214i p. 2 Line 15: 'Real property taxes paid are all current, prior, and prepaid real property taxes ... levied upon a residence owned or previously owned by a qualified taxpayer ... and paid during the tax year.'; Line 18: 'If you owned your residence for part of the tax year and rented your residence for part of the tax year, add the amount from line 17 to the amount from line 14.'",
-       "severity": "medium",
-       "fix": "Use the past tense and the whole year: 'At any time in 2025, did you or your spouse own and live in a New York home where all your real estate was worth $85,000 or less, or rent one for an average of $450 a month or less?'"
+       "fix": "Ask for adjusted rent after subtracting those charges, with a 'don't know' path and an example."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "other",
-       "who": "A renter who moved during 2025, from a $520-a-month apartment to a $350-a-month apartment where they lived for seven months.",
-       "why_no": "'Was your rent $450 a month or less' does not say which apartment or which period counts. The filer remembers the $520 rent, or a year average above $450, and answers no. The instructions add adjusted rent across residences, and the six-month residence may qualify on its own.",
+       "who": "A low-income renter occupied one New York apartment for seven months at $400 a month and another for five months at $800 a month; the first residence meets the six-month and rent tests, but the annual average rent exceeds $450.",
+       "why_no": "They average all 2025 rent and answer no, even though the instructions apply the rent limit per rented property and the six-month test to the first residence.",
        "line": "ny_it201.gate.real_property",
-       "irs_text": "ny_it214i p. 2 Line 12: 'If you moved from one rented residence to another rented residence, calculate the adjusted rent for each residence. Add the total adjusted rent for all rented residences and enter on line 12.'",
+       "irs_text": "ny_it214i p. 1: 'The average monthly rent you or your spouse ... paid was $450 or less'; p. 1 note: 'If the current average monthly rent paid for a rented property ... was more than $450, then no credit is allowed for any renters of that rented property'; p. 2, line 12: 'If you moved from one rented residence to another rented residence, calculate the adjusted rent for each residence.'",
+       "severity": "medium",
+       "fix": "Ask on a per-residence basis whether any New York residence occupied six months or more had adjusted rent of $450 or less; do not use a blended annual average."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A low-income renter shares an apartment; the total rent is $900 a month, but the filer's share is $450 or less and the filer paid only that share.",
+       "why_no": "They read 'pay rent averaging $450 a month or less' as the apartment's total rent, not the rent the filer actually paid after the roommate's share.",
+       "line": "ny_it201.gate.real_property",
+       "irs_text": "ny_it214i p. 2, line 11: 'Enter the total rent you or your spouse ... paid during 2025'; line 12: 'Adjusted rent is the rent paid after subtracting any charges...'",
+       "severity": "medium",
+       "fix": "Ask for the rent paid by the filer/spouse, after reimbursements from roommates, not the household's total rent."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A low-income homeowner's house has a current market value of $80,000 and a mortgage of $70,000; the filer thinks the bank owns the home or that 'worth' means net equity.",
+       "why_no": "They read 'own real estate worth $85,000 or less' as requiring outright ownership or using equity rather than current market value.",
+       "line": "ny_it201.gate.real_property",
+       "irs_text": "ny_it214i p. 1: 'The current market value of all real property you owned ... was $85,000 or less'; p. 1 note: 'If the current market value of a real property is more than $85,000...'",
        "severity": "low",
-       "fix": "Add: 'If you moved, answer yes if the home you lived in for six months or more had rent of $450 a month or less.'"
+       "fix": "Ask about current market value, not equity or mortgage balance, and state that a mortgage does not mean the filer does not own the home."
       }
      ],
-     "prompt_sha": "74690185a036565ae6d23b9601283e2549724c55245b7d59874ac9462e1a6dd7",
+     "prompt_sha": "40983b45c0a45a95d9447e47b65566d13df841af3a5b3ad0b63e74ab01adc41c",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.156452,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.low_income.2cff21c85e9c.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.low_income.64d0f7ec66d2.1.response.txt"
     }
    ],
    "condition": "ny_it201.low_income",
@@ -1372,7 +1339,7 @@
        "who": "A general partner or member of an LLC taxed as a partnership, such as a Manhattan law-firm partner, with $200,000 of net earnings from self-employment reported on Schedule K-1 and no Schedule C. On a joint return, the spouse may be the partner.",
        "why_no": "The gate is computed from Schedule C alone: more than one Schedule C, or Schedule C net profit over $50,000. With no Schedule C the count is zero, the gate is false, and the MCTMT question is never asked.",
        "line": "ny_it201.gate.mctmt",
-       "irs_text": "ny_it201i p. 15: \"For purposes of the MCTMT, self-employed individuals include: • Sole proprietors • Partners in partnerships • Members of limited liability companies (LLCs) that are treated as partnerships • Partners of limited liability partnerships (LLPs)\"",
+       "irs_text": "ny_it201i p. 15: \"For purposes of the MCTMT, self-employed individuals include: \u2022 Sole proprietors \u2022 Partners in partnerships \u2022 Members of limited liability companies (LLCs) that are treated as partnerships \u2022 Partners of limited liability partnerships (LLPs)\"",
        "severity": "high",
        "fix": "Count a person in the helper if they have any partnership or LLC self-employment earnings (federal Schedule K-1, box 14, code A), or Schedule SE net earnings over $50,000. Simpler: ask whether you or your spouse had any self-employment or partnership earnings from business in the MCTD."
       },
@@ -1392,7 +1359,7 @@
        "who": "A Suffolk or Orange County farmer whose Schedule F shows $90,000 of net farm profit and who has no Schedule C.",
        "why_no": "The helper looks only at Schedule C. Farm income goes on Schedule F but is still net earnings from self-employment, so the gate is false.",
        "line": "ny_it201.gate.mctmt",
-       "irs_text": "ny_it201i p. 15: \"If an individual’s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\"",
+       "irs_text": "ny_it201i p. 15: \"If an individual\u2019s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\"",
        "severity": "high",
        "fix": "Base the helper on each person's Schedule SE net earnings from self-employment, which covers Schedule C, Schedule F and partnership earnings. Do not base it on Schedule C."
       },
@@ -1402,7 +1369,7 @@
        "who": "A Connecticut-resident partner in a Manhattan partnership, or a consultant whose own office is in New Jersey but whose business is allocated partly to NYC.",
        "why_no": "The question asks whether earnings \"come from business done in New York City or the nearby counties.\" The filer thinks of their own work as done elsewhere and does not see that the partnership's or business's allocation percentage puts the earnings in a zone.",
        "line": "ny_it201.gate.mctmt",
-       "irs_text": "ny_it201i p. 15: \"To calculate your MCTMT net earnings base you must multiply your net earnings from self-employment from each source by the specific zone’s allocation percentage for each source\"",
+       "irs_text": "ny_it201i p. 15: \"To calculate your MCTMT net earnings base you must multiply your net earnings from self-employment from each source by the specific zone\u2019s allocation percentage for each source\"",
        "severity": "medium",
        "fix": "Ask whether any business or partnership you or your spouse earned self-employment income from had business activity in the five NYC boroughs or the listed counties, wherever you live or work. Then compute or ask the allocated amount."
       }
@@ -1434,7 +1401,7 @@
      "locators": [
       "p. 15, Lines 54a through 54e, \"Did you or your spouse have net earnings from self-employment allocated to Zone 1 or Zone 2, or both that exceed $50,000?\"",
       "p. 15, Lines 54a through 54e, \"If Yes, you are subject to MCTMT. Go to lines 54a and 54b, as applicable.\"",
-      "p. 15, Lines 54a through 54e, \"If an individual’s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\""
+      "p. 15, Lines 54a through 54e, \"If an individual\u2019s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\""
      ],
      "cols_pages": [
       15
@@ -1444,78 +1411,58 @@
    ]
   },
   "gate:ny_it201.moved": {
-   "subject_sha": "e41e30601132ba839968e001ec51127cdf9b135226eab4b1754240fc3d5ba383",
+   "subject_sha": "3b86db8456cda8a99f3b2a68fc1db056f05b8a58ed37668053c216d71ebd2077",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A full-year New York State resident who moved into New York City on July 1, 2025, or moved out of New York City on December 31, 2025, and who has a bonus or installment-sale gain fixed in one year but reported federally in another.",
+       "why_no": "The gate asks only about moving into New York City on January 1, 2025 or out on January 1, 2026. A mid-year or year-end move is a truthful no to both helpers.",
+       "line": "ny_it201.gate.special_accrual",
+       "irs_text": "ny_it201i p. 31, Special accruals: 'Full-year and part-year New York City residents ... subject ... if you have accrued income for 2025 ... and you were a ... New York City part-year resident for tax year 2025.'",
+       "severity": "high",
+       "fix": "Broaden the gate to include any New York City part-year resident for 2025, or any change of New York City residency during 2025, not only January 1 moves."
+      },
+      {
+       "kind": "FALSE_NO",
        "pattern": "other",
-       "who": "A full-year New York State resident who lives outside New York City, such as in Buffalo, Albany or Westchester. They either moved in from another state at the start of 2025 or are leaving New York State at the start of 2026, and they have a bonus earned in 2025 but paid in 2026.",
-       "why_no": "The computed gate asks only whether they moved into or out of New York City. They never lived in the City, so both helpers are truthfully false and the special-accrual question is never asked.",
+       "who": "A full-year New York State resident who lived outside New York City and moved from New Jersey to Buffalo on January 1, 2025, or from Buffalo to Florida on January 1, 2026, with income fixed in one year but reported federally in another.",
+       "why_no": "The gate asks only about moving into or out of New York City. This filer moved into or out of New York State but not New York City, so both helpers are false.",
        "line": "ny_it201.gate.special_accrual",
-       "irs_text": "ny_it201i p. 31: \"Full-year New York State residents You are subject to the special accrual rules only if you have accrued income for 2025 and • you were a nonresident of New York State on December 31, 2024; or • you will be a New York State nonresident on January 1, 2026.\"",
+       "irs_text": "ny_it201i p. 31, Special accruals: 'Full-year New York State residents ... subject ... only if you have accrued income for 2025 and you were a nonresident of New York State on December 31, 2024; or you will be a New York State nonresident on January 1, 2026.'",
        "severity": "high",
-       "fix": "Broaden the gate to: \"(you or your spouse) was a New York State or New York City nonresident on December 31, 2024, became a New York City resident or nonresident during 2025, or will be a New York State or New York City nonresident on January 1, 2026.\""
+       "fix": "Gate on the New York State full-year resident conditions as well as the New York City conditions: nonresident of New York State on December 31, 2024 or will be nonresident on January 1, 2026."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A full-year New York State resident who was a New York City part-year resident in 2025. For example, they moved from Westchester to Brooklyn in June 2025, or from Manhattan to Long Island in September 2025. They have income fixed and determinable in one period but reportable in the other, or a bonus earned in 2025 and paid in 2026.",
-       "why_no": "The gate asks only about a move \"at the start of 2025\" or \"at the start of 2026\" (January 1). A mid-year move truthfully makes both helpers false.",
-       "line": "ny_it201.gate.special_accrual",
-       "irs_text": "ny_it201i p. 31: \"Full-year and part-year New York City residents You are subject to the special accrual rules only if you have accrued income for 2025 ... and you were a: ... • New York City part-year resident for tax year 2025.\"",
-       "severity": "high",
-       "fix": "Add to the gate: \"Did you (or your spouse) move into or out of New York City at any time during 2025?\" Treat a yes as reaching the special-accrual question."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "Married couple filing jointly. Only one spouse moved into New York City (or New York State) at the start of 2025, or will leave at the start of 2026, and that spouse has accrued income. The other spouse had no move.",
-       "why_no": "The helpers \"Moved into New York City on January 1, 2025\" and \"Moved out of New York City on January 1, 2026\" do not say \"you or your spouse\". The filer answering for themselves says no.",
+       "who": "On a joint return, the filer lived outside New York City all year, but the spouse moved into New York City on January 1, 2025 and has a bonus fixed in one year but reported federally in another.",
+       "why_no": "The gate helper says 'Moved into New York City' in the singular and does not say 'you or your spouse.' The filer truthfully answers no for himself, even though the spouse's facts trigger the special accrual rules.",
        "line": "ny_it201.gate.special_accrual",
-       "irs_text": "ny_it201i p. 31: \"you may have to use special accrual rules ... If you are subject to the special accrual rules, see the instructions for Form IT-225, addition modification number A-115 and subtraction modification number S-129.\"",
-       "severity": "medium",
-       "fix": "Word both helpers as \"Did you (or, on a joint return, your spouse) ...\"."
+       "irs_text": "ny_it201i p. 31, Special accruals: 'As a full-year New York State resident for 2025, or if you are a full-year New York City resident or New York City part-year resident for 2025, you may have to use special accrual rules ...'",
+       "severity": "high",
+       "fix": "Make the gate per-person on a joint return: ask whether either spouse moved into New York City on January 1, 2025 or out on January 1, 2026, and ask the special-accrual question if either spouse meets the condition."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer who moved into New York City and New York State on January 1, 2025. In 2025 they report federally some non-New York source income that was fixed and determinable in 2022 or 2023, such as deferred compensation or a lump sum from a former out-of-state employer.",
-       "why_no": "The question asks about income \"earned in one year but paid in the other\", and the example is 2025/2026. The filer reads \"the other\" year as only 2024 or 2026, so income fixed in 2022 or 2023 seems excluded.",
+       "pattern": "7",
+       "who": "A filer who had a permanent place of abode in New York City throughout 2024 and 2025, was a New York City nonresident on December 31, 2024, but met the 183-day statutory residency test for 2025 and is therefore a full-year New York City resident for 2025, with accrued income fixed in 2024 but reported federally in 2025.",
+       "why_no": "The gate asks whether the filer 'moved into' New York City on January 1, 2025. This filer did not move; residency changed by statutory days, so the filer answers no even though the legal condition is met.",
        "line": "ny_it201.gate.special_accrual",
-       "irs_text": "ny_it201i p. 31: \"non-New York source income that was fixed and determinable in a tax year prior to 2025, but you are reporting that income for federal income tax purposes in tax year 2025\"",
+       "irs_text": "ny_it201i p. 31, Special accruals: 'You are subject to the special accrual rules only if you have accrued income for 2025 ... and you were a nonresident of New York City on December 31, 2024, but you were a full-year New York City resident for tax year 2025 ...'",
        "severity": "high",
-       "fix": "Ask: \"Do you (or your spouse) report any income in 2025 that became fixed (earned, sold or owed to you) in any earlier year? Or was any income fixed in 2025 that you will report in a later year?\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer who moved at the year boundary and has accrued income that is not wages or a bonus. Examples: installment-sale gain from an out-of-state property sold before the move, collected and reported in 2025; or a 2025 sale whose gain will be reported in a later year under the installment method.",
-       "why_no": "The words \"earned\" and \"paid\", and the bonus example, suggest compensation. A sale gain or an installment receivable does not feel \"earned\", and the trigger is when the income is reported federally, not when it is paid.",
-       "line": "ny_it201.gate.special_accrual",
-       "irs_text": "ny_it201i p. 31: \"income that was fixed and determinable in tax year 2025, but you will be reporting that income for federal income tax purposes in a tax year after 2025\"",
-       "severity": "medium",
-       "fix": "Use \"fixed and determinable\" and \"reported on your federal return\" in plain words, and give more examples in the help: installment sales, deferred compensation, accrued interest, and sale proceeds received in another year."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A New York City part-year resident who moved during 2025 (once the gate is broadened). They have income fixed and determinable in the 2025 City resident period but reportable federally in the 2025 nonresident period, or the reverse.",
-       "why_no": "The question asks only about income \"earned in one year but paid in the other\". Both dates fall in 2025, so the filer truthfully answers no.",
-       "line": "ny_it201.gate.special_accrual",
-       "irs_text": "ny_it201i p. 31: \"income that was fixed and determinable in your 2025 New York City resident period, but that income is not reportable for federal income tax purposes in your 2025 New York City resident period\"",
-       "severity": "medium",
-       "fix": "For filers who moved into or out of New York City during 2025, add: \"or became fixed while you lived in the City but is reported for a period when you did not, or the reverse?\""
+       "fix": "Ask the legal condition directly: were you a New York City nonresident on December 31, 2024 and a full-year New York City resident for 2025, or will you be a New York City nonresident on January 1, 2026, rather than asking only about a move."
       }
      ],
-     "prompt_sha": "bdb2136ca419a96512a094a69ebf8ac50506273eccf23a903d48f4db8e15d541",
+     "prompt_sha": "f135756b0928c8dd077f87925088ff7df1ecfc62eb4e3fe9d56386ffd5afdd8d",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.094732,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.moved.e41e30601132.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.moved.3b86db8456cd.1.response.txt"
     }
    ],
    "condition": "ny_it201.moved",
@@ -1546,98 +1493,58 @@
    ]
   },
   "gate:ny_it201.ny_529_if_account": {
-   "subject_sha": "648fc42c667a8a46980333b791d835d6bfd12eb8c19fda8bff11f207021eccfc",
+   "subject_sha": "2aa05854f8280c9e8a9016080232977052abac35350d811d2973b214ccc2370e",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A parent who emptied or closed their New York 529 account in 2025, either with a cash withdrawal or a full rollover to another state's plan. On December 31 they no longer own any New York 529 account.",
-       "why_no": "The helper \"Owns an account in New York's 529 college savings program\" is in the present tense. With the account closed, the truthful answer is no, so neither gated question is asked.",
-       "line": "ny_it201.gate.line22 (and ny_it201.gate.line30 for contributions made before the account was closed)",
-       "irs_text": "ny_it201i p. 8, Line 22: \"Nonqualified withdrawals ... include ... the transfer to another state's program\"; p. 10, Line 30: \"During 2025, did you, as an account owner, make contributions to or a withdrawal from...\"",
-       "severity": "high",
-       "fix": "Ask \"At any time during 2025, did you or your spouse own a New York 529 college savings account, including one closed or rolled to another state's plan during the year?\""
-      },
-      {
-       "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A college student who is the designated beneficiary, not the owner, of a parent's or grandparent's New York 529 account. They received a 2025 withdrawal, and part of it is included in their federal AGI.",
-       "why_no": "The gate asks whether they own a New York 529 account. They are only the beneficiary, so they truthfully answer no, and line 30 never reaches the beneficiary branch its own helper describes.",
+       "who": "A filer is the designated beneficiary of a New York 529 account owned by a parent and in 2025 receives a withdrawal included in federal adjusted gross income; the filer never owns the account.",
+       "why_no": "The gate asks whether the filer 'Owned an account in New York's 529 college savings program at any time in 2025'; a beneficiary who is not the account owner reads that as no.",
        "line": "ny_it201.gate.line30",
-       "irs_text": "ny_it201i p. 10, Line 30: \"Beneficiary During 2025, did you, as a beneficiary, receive a withdrawal ... If Yes, and you included part of the withdrawal in your federal adjusted gross income ... enter that amount on line 30.\"",
+       "irs_text": "ny_it201i p. 10, Line 30: 'Beneficiary During 2025, did you, as a beneficiary, receive a withdrawal ... If Yes, and you included part of the withdrawal in your federal adjusted gross income ... enter that amount on line 30.'",
        "severity": "high",
-       "fix": "Broaden the gate to \"Did you or your spouse own a New York 529 account, or receive a withdrawal from one as its beneficiary, during 2025?\" Ask the beneficiary-withdrawal question separately."
+       "fix": "Broaden the gate to cover a filer or spouse who received a New York 529 withdrawal as a beneficiary, or ask the beneficiary line 30 question outside the account-ownership gate."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "3",
-       "who": "A married couple filing jointly where only the spouse owns the New York 529 account. The spouse contributed $8,000 or took a nonqualified withdrawal.",
-       "why_no": "The ownership helper and both gated questions say \"you\", with no mention of a spouse. The filer answering truthfully says no.",
-       "line": "ny_it201.gate.line30 and ny_it201.gate.line22",
-       "irs_text": "ny_it201i p. 10, Line 30: \"up to $5,000 ($10,000 for married taxpayers filing a joint return)\"; ny_it225i p. 8, A-103: \"include the applicable amounts from all existing accounts owned by you and your spouse\"",
+       "who": "A joint return filer does not own the New York 529 account; the filer's spouse alone owns it and in 2025 makes a nonqualified withdrawal from it.",
+       "why_no": "The gate asks only whether 'you' owned a New York 529 account and does not say 'you or your spouse,' so the filer answers no even though the spouse's withdrawal belongs on the joint return.",
+       "line": "ny_it201.gate.line22",
+       "irs_text": "ny_it225i p. 8, A-103: 'If you are filing a joint return, include the applicable amounts from all existing accounts owned by you and your spouse'; ny_it201i p. 8, Line 22 requires the Line 22 worksheet for a nonqualified withdrawal.",
        "severity": "high",
-       "fix": "Say \"you or your spouse\" in the ownership helper and in both gated questions, as the line 22 helper already does."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "An account owner who only contributed to a New York 529 account in 2025. There was no distribution, so no Form 1099-Q, and nothing about the account appears on the federal return.",
-       "why_no": "The outer helper \"A 529 plan, Coverdell or ABLE account on the return\" reads as asking whether the federal return reports such an account. Contributions are not reported federally, so the filer answers no and the ownership question is never asked.",
-       "line": "ny_it201.gate.line30",
-       "irs_text": "ny_it201i p. 10, Line 30: \"as an account owner, made contributions, enter the amount up to $5,000 ... on line 1 of the Line 30 worksheet\"",
-       "severity": "medium",
-       "fix": "Ask about owning or contributing to a 529, Coverdell or ABLE account whether or not a form was received. Do not tie it to the federal return."
+       "fix": "Add 'you or, on a joint return, your spouse' to the ownership gate, and keep the spouse wording in the line 22 question."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "An account owner who withdrew from the New York 529 account in spring 2025 to pay the beneficiary's credentialing or career-training costs before July 4, 2025.",
-       "why_no": "The question excludes money taken out \"for ... career training\" without a date. The filer truthfully says the money went to career training and answers no.",
-       "line": "ny_it201.gate.line22",
-       "irs_text": "ny_it201i p. 8, Line 22: \"to pay the qualified postsecondary credentialing expenses of the designated beneficiary at an eligible educational institution on or after July 4, 2025\"",
+       "pattern": "3",
+       "who": "A joint return filer does not own the New York 529 account; the filer's spouse alone owns it and in 2025 makes contributions to it, or takes a withdrawal included in federal adjusted gross income.",
+       "why_no": "The gate asks whether 'you' owned an account and does not mention spouse; the filer answers no, although the joint return's line 30 covers the spouse's account.",
+       "line": "ny_it201.gate.line30",
+       "irs_text": "ny_it201i p. 10, Line 30: 'up to $5,000 ($10,000 for married taxpayers filing a joint return)'; ny_it225i p. 8, A-103: 'include the applicable amounts from all existing accounts owned by you and your spouse.'",
        "severity": "high",
-       "fix": "Say \"career training paid to an eligible school on or after July 4, 2025\"; or ask what the money paid for, with dates, and classify after."
+       "fix": "Use an ownership gate that says 'you or your spouse' on a joint return."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "An account owner who paid credentialing costs to a provider that is not an eligible educational institution. Or one who paid their own Parent PLUS loan, or a loan of someone other than the beneficiary or the beneficiary's sibling.",
-       "why_no": "The question lists \"college, career training or student loans\" as qualified without limits. The filer reads their use as one of those and answers no.",
-       "line": "ny_it201.gate.line22",
-       "irs_text": "ny_it201i p. 8, Line 22: \"any withdrawal used for postsecondary credentialing expenses that are not paid to an eligible educational institution\"; \"qualified education loan ... of the designated beneficiary or a sibling of the designated beneficiary\"",
-       "severity": "medium",
-       "fix": "State the limits: \"career training paid to an eligible school; student loans of the beneficiary or a sibling of the beneficiary\". Otherwise ask the use and the payee, and classify in the tool."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "An account owner who withdrew more than the beneficiary's qualified college costs, for example after a scholarship or tuition refund, and kept the excess.",
-       "why_no": "The withdrawal was made \"for college\", so the filer does not see the unspent excess as money taken out for anything else.",
-       "line": "ny_it201.gate.line22",
-       "irs_text": "ny_it201i p. 8, Line 22: \"A withdrawal ... is considered nonqualified unless it is used: to pay the qualified higher education expenses of the designated beneficiary at an eligible educational institution\"",
-       "severity": "medium",
-       "fix": "Add to the help: \"Any part not actually spent on those costs (for example, an amount more than tuition after a scholarship) counts as Yes.\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer who owns several New York 529 accounts and was active in a different account from the one they had in mind.",
-       "why_no": "Both questions refer to \"that New York 529 account\", in the singular.",
-       "line": "ny_it201.gate.line30 and ny_it201.gate.line22",
-       "irs_text": "ny_it201i p. 10, Line 30: \"contributions to or a withdrawal from one or more tuition savings accounts\"",
-       "severity": "low",
-       "fix": "Say \"any of your (or your spouse's) New York 529 accounts\"."
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer owns one New York 529 account but in 2025 has no contribution to or withdrawal from it; the same filer receives a withdrawal as beneficiary of a different New York 529 account and includes part of it in federal adjusted gross income.",
+       "why_no": "The gated question asks only whether the filer 'put money into that New York 529 account, or take any out'; the filer truthfully says no about their own account and is not asked about the beneficiary withdrawal.",
+       "line": "ny_it201.gate.line30",
+       "irs_text": "ny_it201i p. 10, Line 30: 'Beneficiary ... If Yes, and you included part of the withdrawal in your federal adjusted gross income ... enter that amount on line 30.'",
+       "severity": "high",
+       "fix": "Add 'or receive a withdrawal as a beneficiary included in federal adjusted gross income' to the line 30 question, or ask a separate beneficiary question."
       }
      ],
-     "prompt_sha": "6ef2e59cbf89fcf066aa8f7f8e4fd65e0ece7cd3c85332bba5bc45bce152ec21",
+     "prompt_sha": "3fa3397233c8bce783ce0de824bd0420f41393b48d96b0b316a86e21aba45abd",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.11302799999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.ny_529_if_account.648fc42c667a.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.ny_529_if_account.2aa05854f828.1.response.txt"
     }
    ],
    "condition": "ny_it201.ny_529_if_account",
@@ -1660,9 +1567,9 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 10, Line 30, \"During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?\"",
+      "p. 10, Line 30, \"During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York\u2019s 529 college savings program?\"",
       "p. 10, Line 30, \"as an account owner, made contributions, enter the amount up to $5,000 ($10,000 for married taxpayers filing a joint return) on line 1 of the Line 30 worksheet\"",
-      "p. 8, Line 22, \"Did you make a nonqualified withdrawal during 2025 from an account established under New York’s 529 college savings program?\"; ny_it225i p. 8, A-103, \"If you are filing a joint return, include the applicable amounts from all existing accounts owned by you and your spouse\"",
+      "p. 8, Line 22, \"Did you make a nonqualified withdrawal during 2025 from an account established under New York\u2019s 529 college savings program?\"; ny_it225i p. 8, A-103, \"If you are filing a joint return, include the applicable amounts from all existing accounts owned by you and your spouse\"",
       "p. 8, Line 22, \"If Yes, the withdrawal is a nonqualified withdrawal and you must complete the Line 22 worksheet.\""
      ],
      "cols_pages": [
@@ -1682,22 +1589,22 @@
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A filer, or a spouse on a joint return, born between January 1 and July 1, 1966, who received a taxable IRA, 401(k) or private pension distribution in the second half of 2025, after turning 59½ during the year.",
-       "why_no": "The gate counts only recipients born in 1965 or earlier. Its helper text claims that this means '59½ or older at some time in 2025', but a person born in the first half of 1966 reaches 59½ between July and December 2025. The computed count is therefore 0, and that person is never asked.",
+       "who": "A filer, or a spouse on a joint return, born between January 1 and July 1, 1966, who received a taxable IRA, 401(k) or private pension distribution in the second half of 2025, after turning 59\u00bd during the year.",
+       "why_no": "The gate counts only recipients born in 1965 or earlier. Its helper text claims that this means '59\u00bd or older at some time in 2025', but a person born in the first half of 1966 reaches 59\u00bd between July and December 2025. The computed count is therefore 0, and that person is never asked.",
        "line": "ny_it201.pension_exclusion_if_young (and the line 29 exclusion or refusal it leads to)",
-       "irs_text": "ny_it201i p. 9, Line 29: 'If you became 59½ during 2025, enter only the amount you received after you became 59½, but not more than $20,000.'",
+       "irs_text": "ny_it201i p. 9, Line 29: 'If you became 59\u00bd during 2025, enter only the amount you received after you became 59\u00bd, but not more than $20,000.'",
        "severity": "high",
-       "fix": "Count recipients born before July 2, 1966, not 'in 1965 or earlier'. Better, ask the line 29 question whenever any taxable pension, annuity or IRA income exists, and let the filer give the date they turned 59½."
+       "fix": "Count recipients born before July 2, 1966, not 'in 1965 or earlier'. Better, ask the line 29 question whenever any taxable pension, annuity or IRA income exists, and let the filer give the date they turned 59\u00bd."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A filer under 59½ (born after mid-1966) who received taxable distributions as the beneficiary of a deceased parent's IRA or pension, where the decedent would have qualified for the exclusion.",
+       "who": "A filer under 59\u00bd (born after mid-1966) who received taxable distributions as the beneficiary of a deceased parent's IRA or pension, where the decedent would have qualified for the exclusion.",
        "why_no": "The gate checks only the recipient's own birth year, so no recipient is counted. The beneficiary clause exists only inside the gated question, and that question is reached only through this gate. In addition, the line's 'Otherwise: false, and the question below is not asked' means that when the gate is false the question is never asked at all. The beneficiary branch is unreachable.",
        "line": "ny_it201.pension_exclusion_if_young",
        "irs_text": "ny_it201i p. 9, Line 29: 'If you received pension and annuity income and are married, or received pension and annuity income as a beneficiary, see Married taxpayers or Beneficiaries below.'",
        "severity": "high",
-       "fix": "Make the gate 'any person had taxable pension, annuity or IRA income' (count > 0), with no age filter. Then ask whether the recipient turned 59½ by December 31, 2025, or received the money as the beneficiary of someone who died."
+       "fix": "Make the gate 'any person had taxable pension, annuity or IRA income' (count > 0), with no age filter. Then ask whether the recipient turned 59\u00bd by December 31, 2025, or received the money as the beneficiary of someone who died."
       },
       {
        "kind": "FALSE_NO",
@@ -1707,15 +1614,15 @@
        "line": "ny_it201.pension_exclusion_if_young",
        "irs_text": "ny_it201i p. 9, Line 29: 'Did you enter an amount of pension income or annuity income, or both ... that was not from a New York State or local government pension plan or federal government pension plan?'",
        "severity": "high",
-       "fix": "Invert the gate so the question is asked when no recipient is known to be 59½. Alternatively, drop the gate and ask whenever taxable pension, annuity or IRA income exists, since the tool must refuse or compute in either case."
+       "fix": "Invert the gate so the question is asked when no recipient is known to be 59\u00bd. Alternatively, drop the gate and ask whenever taxable pension, annuity or IRA income exists, since the tool must refuse or compute in either case."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer 59½ or older whose only qualifying income is periodic distributions from a government 457 plan, a 403(b) or a 401(k), which they do not think of as 'pension or IRA money'.",
+       "who": "A filer 59\u00bd or older whose only qualifying income is periodic distributions from a government 457 plan, a 403(b) or a 401(k), which they do not think of as 'pension or IRA money'.",
        "why_no": "The question says 'that pension or IRA money', and the help mentions only 'such income'. A filer with a 401(k) or 457 plan may read this as excluding their plan.",
        "line": "ny_it201.pension_exclusion_if_young",
-       "irs_text": "ny_it201i p. 9, Line 29: qualifying income includes 'periodic distributions from government (IRC § 457) deferred compensation plans' and 'a qualified cash or deferred profit-sharing or stock bonus plan [IRC § 401(k)]'.",
+       "irs_text": "ny_it201i p. 9, Line 29: qualifying income includes 'periodic distributions from government (IRC \u00a7 457) deferred compensation plans' and 'a qualified cash or deferred profit-sharing or stock bonus plan [IRC \u00a7 401(k)]'.",
        "severity": "low",
        "fix": "Name the plan types in the question: 'pension, annuity, IRA, 401(k), 403(b), Keogh, or government 457 plan distributions'."
       }
@@ -1746,7 +1653,7 @@
      "how": "cited pages",
      "locators": [
       "p. 9, Line 29, \"Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10) that was not from a New York State or local government pension plan or federal government pension plan?\"",
-      "p. 9, Line 29, \"If Yes, and you were 59½ before January 1, 2025, enter the qualifying pension and annuity income included in your 2025 federal adjusted gross income, but not more than $20,000.\""
+      "p. 9, Line 29, \"If Yes, and you were 59\u00bd before January 1, 2025, enter the qualifying pension and annuity income included in your 2025 federal adjusted gross income, but not more than $20,000.\""
      ],
      "cols_pages": [
       9
@@ -1756,58 +1663,58 @@
    ]
   },
   "gate:ny_it201.public_job_if_w2": {
-   "subject_sha": "92995fe019f067e6b1f9e28742290b183b005fcf6fdacd14665aecedb662600b",
+   "subject_sha": "29f21ff6b15c2956a98e96261bcfe3a03c7cda45a7bbde561e469a0537a3d38e",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
+       "kind": "FALSE_NO",
        "pattern": "3",
-       "who": "A married couple filing jointly. The spouse is a NYC teacher in the NYC Teachers' Retirement System, and the W-2 shows 414(h) in box 14. The primary filer, who answers the screening questions, works in the private sector.",
-       "why_no": "The gate helper is labelled only 'A government job in New York' or 'A public employer in New York'. It does not say 'you or your spouse', so the filer answers about their own job and says no. The spouse wording appears only in the gated line's helper, which is never reached.",
+       "who": "Married filing jointly; the filer is a private-sector employee and the spouse is a New York City public school teacher in the NYC Teachers' Retirement System whose W-2 shows 414(h) contributions.",
+       "why_no": "The gate is cited as 'Are you a public employee...' and does not say 'you or your spouse'; the filer answers no about themself, though the joint return includes the spouse's W-2.",
        "line": "ny_it201.gate.line21",
-       "irs_text": "ny_it201i p. 8, Line 21: 'Are you a public employee of New York State or its local governments? ... If Yes, enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2'",
-       "severity": "medium",
-       "fix": "Word the gate as 'Did you or your spouse work for New York State or a New York local government, school district, public authority, or public university at any time in 2025?'"
+       "irs_text": "ny_it201i p. 8, Line 21: 'If Yes, enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2' and includes the New York City Teachers' Retirement System.",
+       "severity": "high",
+       "fix": "Ask 'Are you or your spouse a public employee...' or compute the gate from any W-2 on the joint return."
       },
       {
-       "kind": "UNCLEAR",
+       "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A state employee in the NYS Employees' Retirement System who retired or moved to a private employer in mid-2025. The 2025 W-2 from the state shows 414(h) contributions for the months worked.",
-       "why_no": "'A government job' and the instruction's present-tense 'Are you a public employee' read as current status at filing time. The filer no longer has the job and answers no.",
+       "who": "A filer who was a New York State employee until retiring or leaving in June 2025 and now works in the private sector; the 2025 state W-2 shows a 414(h) contribution.",
+       "why_no": "The question uses the present tense 'Are you a public employee'; at filing time they are not, so they answer no even though they had a New York public employer during 2025.",
        "line": "ny_it201.gate.line21",
-       "irs_text": "ny_it201i p. 8, Line 21: 'enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2'",
-       "severity": "medium",
-       "fix": "Ask about any time in 2025, or key the gate to any 2025 W-2 from a New York public employer."
+       "irs_text": "ny_it201i p. 8, Line 21: 'If Yes, enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2' for a member of the listed New York retirement systems.",
+       "severity": "high",
+       "fix": "Ask 'Were you (or your spouse) a public employee at any time during 2025...' or use any 2025 W-2."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "An employee of MABSTOA (or another New York public authority/public benefit corporation) who participates in the MABSTOA Pension Plan and has 414(h) contributions shown on a W-2; they are not employed by the state or a local government.",
+       "why_no": "They read 'public employee of New York State or its local governments' as excluding a public authority or public benefit corporation, so they answer no.",
+       "line": "ny_it201.gate.line21",
+       "irs_text": "ny_it201i p. 8, Line 21: 'a member of the Manhattan and Bronx Surface Transit Operating Authority (MABSTOA) Pension Plan.'",
+       "severity": "high",
+       "fix": "Ask 'public employee of New York State, a local government, or a New York public authority/public benefit corporation' or use the retirement-system list in the instructions."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A MABSTOA bus operator, or an employee of a public authority or public benefit corporation that participates in NYSLRS (Thruway Authority, a BOCES, a public library, a community college). The W-2 shows 414(h) contributions.",
-       "why_no": "The filer does not think of a transit authority, school district or public corporation as 'a government job' or 'New York State or its local governments'. They answer no, and the list of retirement systems that would correct them is only in the gated question's help.",
+       "pattern": "8",
+       "who": "A public employee whose W-2 box 14 shows a pension pickup under a label such as 'NYSLRS' or 'PENSION' rather than the literal '414(h)'.",
+       "why_no": "The gated question asks whether the W-2 shows a '414(h) retirement contribution (usually in box 14)'; not seeing that exact label, they answer no.",
        "line": "ny_it201.gate.line21",
-       "irs_text": "ny_it201i p. 8, Line 21: '– a member of the Manhattan and Bronx Surface Transit Operating Authority (MABSTOA) Pension Plan'; '– a member of the New York State and Local Retirement Systems'",
+       "irs_text": "ny_it201i p. 8, Line 21: 'enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2' (it does not require the W-2 label to say '414(h)').",
        "severity": "medium",
-       "fix": "List the retirement systems in the gate itself, or ask the gate as 'Does any 2025 W-2 for you or your spouse show 414(h) in box 14, or are either of you a member of any of these systems: ...?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A public school teacher in the NYS Teachers' Retirement System, or a SUNY or CUNY faculty member in the Optional Retirement Program, who thinks of the employer as a school or university rather than 'government'.",
-       "why_no": "The wording 'government job' and 'public employer' suggests agency or civil-service work, not teaching or university employment.",
-       "line": "ny_it201.gate.line21",
-       "irs_text": "ny_it201i p. 8, Line 21: '– a member of the New York State Teachers' Retirement System; – an employee of the State or City University of New York who belongs to the Optional Retirement Program'",
-       "severity": "medium",
-       "fix": "Name public schools, school districts, SUNY and CUNY in the gate wording or its help."
+       "fix": "Ask whether box 14 shows any retirement/pension pickup for a listed New York public retirement system, and give examples of common box 14 labels."
       }
      ],
-     "prompt_sha": "2c48030d45d65ca29f13cf33eec6813f48de82421c8de0598e79ce716712d67f",
+     "prompt_sha": "ebfe865fc1d9638208ccf03baf914b6e24de36735adfbdfbe75a3507f8570620",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "claude-opus-5-5",
-     "cost": 0.07414799999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_ny_it201.public_job_if_w2.92995fe019f0.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/ny/false_no/gate_ny_it201.public_job_if_w2.29f21ff6b15c.1.response.txt"
     }
    ],
    "condition": "ny_it201.public_job_if_w2",

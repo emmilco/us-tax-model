@@ -4,6 +4,16 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "ask_spouse_cp_domicile",
+   "restated": "helper \"A marriage is possible: the filing status states one, or a person filing as single or head of household has been married at some time\" = true and f1040 line Filing Status ≠ 'qss'",
+   "model": "Pub. 555 applies to married taxpayers filing separate returns, and the input says this is asked only when not filing jointly; this gate is also true for married filing jointly.",
+   "ruling": "Ruling: representation; the gate asks whether a marriage is possible; the community-property questions are used only on separate returns, which the tool refuses (s3.mfs). Project stands.",
+   "context": "677cbff6606e317e4772e3d00d588b41017e28ca87950b3d4e89745bd0c65bc0",
+   "date": "2026-11-17",
+   "run": "6d3dc89bc5ae450b2fc8bfc3985c2213b9b1e9a5b2db08d2a24f7140103c1503",
+   "subject_key": "075bd8bb2bff90a8d11172beaeadb200fe5f60f7a4807256bc068e45bb8509b7"
+  },
+  {
    "printed": "ctc_disallowed_claim",
    "restated": "helper \"Was your EIC for a year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you in a 2- or 10-year disallowance period?\" = true and s8812 line 8 > s8812 line 11",
    "model": "Schedule 8812 line 8 > line 11 only passes the phaseout test; the actual credit is line 14, 'Enter the smaller of line 12 or line 13. This is your child tax credit and credit for other dependents,' so line 8 > line 11 alone can still yield zero credit.",
@@ -110,6 +120,26 @@
    "subject_key": "80e17d60eabc273e20558fb6667e53c98c1f86e5615896ad37f305af2c85cb72"
   },
   {
+   "printed": "hoh_missed",
+   "restated": "f1040 line Filing Status = 'single' and helper \"Unmarried, or considered unmarried under the head of household rules, at the end of 2025\" = true and helper \"Test 2 met on a single return: asked only when a dependent is listed (false with none)\" = true",
+   "model": "The IRS says to check head of household if either Test 1 or Test 2 applies; this helper checks only Test 2 and expressly does not check Test 1.",
+   "ruling": "Ruling: representation; the helper is the Test 2 suggestion only; Test 1 has its own line (household.hoh_test1) and the filing-status input is the filer's. Project stands.",
+   "context": "677cbff6606e317e4772e3d00d588b41017e28ca87950b3d4e89745bd0c65bc0",
+   "date": "2026-11-17",
+   "run": "6d3dc89bc5ae450b2fc8bfc3985c2213b9b1e9a5b2db08d2a24f7140103c1503",
+   "subject_key": "e347c100e57d70d8ba65590eb49692dfad3320be14032a24f41fd956150ba7ce"
+  },
+  {
+   "printed": "hoh_missed_test2",
+   "restated": "Choose — [helper \"At least one person is listed as a dependent\" = true → helper \"You paid over half the cost of keeping up your home and a person who qualifies you under Test 2 lived with you (the home cost asked first, so the dependent tests are read only when it was paid)\"] [helper \"At least one person is listed as a dependent\" = false → helper \"Year parameter household.no (false)\"]",
+   "model": "Test 2 can be met by a qualifying child who is not your dependent, so it cannot be false merely because no dependent is listed.",
+   "ruling": "Ruling: representation; the roster is every person in the household (dependent.claimed is a separate line), so a child not claimed as a dependent is still counted. Project stands.",
+   "context": "677cbff6606e317e4772e3d00d588b41017e28ca87950b3d4e89745bd0c65bc0",
+   "date": "2026-11-17",
+   "run": "6d3dc89bc5ae450b2fc8bfc3985c2213b9b1e9a5b2db08d2a24f7140103c1503",
+   "subject_key": "fbb591f309c4c1fe1a8392640d038c76a59436c6f9985f09db527b76797f578b"
+  },
+  {
    "printed": "home_cost",
    "restated": "Input — Did you pay over half the cost of keeping up your home for 2025? Cost of keeping up a home includes expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home. It does not include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation, or the value of your services or those of a member of your household. Amounts paid out of funds received in the name of a person who lives in the home, such as their Social Security, count as paid by that person, not you. TANF or similar payments you received and used for the home count as paid by you.",
    "model": "The IRS note says TANF used 'to support another person' is considered support you provided for that person, and amounts in a child's or qualifying person's name are considered paid by the child; the restatement instead treats TANF used for the home as paid by you and refers to any person living in the home.",
@@ -158,6 +188,16 @@
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\"; Form 8889 line 4 (Archer MSA contributions). The project enters zero on line 4 because Archer MSA contributions are refused by f8889.unsupported (forms/2025/f8889.yaml, line 4 cite \"Archer MSA contributions are refused by f8889.unsupported\"), a screen on Form 8889 that the household render does not show. The sum is what Step 1 and Step 2 add for both spouses. Same as the completeness-fixes ruling of the Claude render. Project stands.",
    "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
    "subject_key": "bd00542fefe5cc87e5b12ceb369f73067c0b9eb95ab26018814edbb9b65337e0"
+  },
+  {
+   "printed": "hsa_step1_sum",
+   "restated": "Add person.hsa_step1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Form 8889 line 6 divides the single family contribution limit between spouses; adding both spouses' Step 1 limits double counts that limit.",
+   "ruling": "Ruling: representation; the line is the sum of each person's Step 1 limit, one Form 8889 per person; the family-limit division is on the cited page. Project stands.",
+   "context": "677cbff6606e317e4772e3d00d588b41017e28ca87950b3d4e89745bd0c65bc0",
+   "date": "2026-11-17",
+   "run": "6d3dc89bc5ae450b2fc8bfc3985c2213b9b1e9a5b2db08d2a24f7140103c1503",
+   "subject_key": "f27c72c04aa3c2c70ee83dca53a5b894ce7e5de3856b6692659e004be8ac2c9a"
   },
   {
    "printed": "hsa_step1_sum",
@@ -266,6 +306,16 @@
    "subject_key": "a930eed565dd9c96b2db0063ee452edbddccb88644a3c68801a5c7a4aea6ef23"
   },
   {
+   "printed": "spouse_cp_domicile_if_asked",
+   "restated": "Choose — [helper \"A marriage is possible and the filing status is not qualifying surviving spouse\" = true → helper \"At some time in 2025 while married, the husband or wife lived in, or had a permanent home (domicile) in, a community property state\"] [helper \"A marriage is possible and the filing status is not qualifying surviving spouse\" = false → helper \"Year parameter household.no (false)\"]",
+   "model": "It uses the same overbroad gate, so it can ask the spouse community-property question on a joint return although the input says it is asked only when not filing jointly.",
+   "ruling": "Ruling: representation; the gate asks whether a marriage is possible; the community-property questions are used only on separate returns, which the tool refuses (s3.mfs). Project stands.",
+   "context": "677cbff6606e317e4772e3d00d588b41017e28ca87950b3d4e89745bd0c65bc0",
+   "date": "2026-11-17",
+   "run": "6d3dc89bc5ae450b2fc8bfc3985c2213b9b1e9a5b2db08d2a24f7140103c1503",
+   "subject_key": "7e95382777a1d33f34370fcea86029c7984cfdd4e81cb8517554279d3ff70fba"
+  },
+  {
    "printed": "test1_met",
    "restated": "helper \"Number of parents who qualify you under Test 1\" > 0 (a count)",
    "model": "Because it is test1_persons > 0, it inherits the live-in-parent exclusion and can report Test 1 not met even though the IRS text says 'Your parent didn't have to live with you.'",
@@ -362,6 +412,16 @@
    "subject_key": "9ecfe41615fae8be9ff0a7bc88e3a38ce6b30237f059dea9982a13ac8b344d99"
   },
   {
+   "printed": "test2_lived_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS Test 2 includes an unmarried qualifying child who is not your dependent and similar children; counting only dependent entries omits them.",
+   "ruling": "Ruling: representation; the roster is every person in the household (dependent.claimed is a separate line), so a child not claimed as a dependent is still counted. Project stands.",
+   "context": "677cbff6606e317e4772e3d00d588b41017e28ca87950b3d4e89745bd0c65bc0",
+   "date": "2026-11-17",
+   "run": "6d3dc89bc5ae450b2fc8bfc3985c2213b9b1e9a5b2db08d2a24f7140103c1503",
+   "subject_key": "18b2e91b7bb38a2c042f63c12f95a9619434e1c3491242e97a75a134cddb6444"
+  },
+  {
    "printed": "test2_met",
    "restated": "helper \"Did you pay over half the cost of keeping up your home for 2025?\" = true and helper \"Number of persons who qualify you under Test 2\" > 0 (a count)",
    "model": "It depends on a Test 2 count that omits non-dependent qualifying children; the IRS Test 2 includes 'Your unmarried qualifying child who isn’t your dependent.'",
@@ -424,6 +484,16 @@
    "ruling": "Ruling: ambiguity; amb.2025.filer_under_16 (owner's decision, 2026-10-22). The model is right that the text has no age-16 filing rule; the register says so (\"The archived instructions state no minimum age for a filer or a spouse on a joint return\"; i1040gi p. 66, \"You can't use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\"). The count feeds the owner's entry check household.filer_under16, reading 2 (chosen).",
    "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
    "subject_key": "133e56d12b7253291fb32174a62ca0955be9cedad99c7510a337a53b8a12a657"
+  },
+  {
+   "printed": "unmarried",
+   "restated": "(helper \"Not married at the end of 2025\" = true or helper \"Considered unmarried under the head of household rules, asked only of a person married at the end of 2025 (false otherwise)\" = true)",
+   "model": "Pub. 501 provides that if your spouse died during the year, you are considered married for the whole year for filing status; this helper can still return true through not_married when the spouse died in 2025.",
+   "ruling": "Ruling: representation; the helper is false when the spouse died in 2025 (household.spouse_died_this_year is asked, and the not-married helper reads it). Project stands.",
+   "context": "677cbff6606e317e4772e3d00d588b41017e28ca87950b3d4e89745bd0c65bc0",
+   "date": "2026-11-17",
+   "run": "6d3dc89bc5ae450b2fc8bfc3985c2213b9b1e9a5b2db08d2a24f7140103c1503",
+   "subject_key": "d8d34142ef0a62e2fc7cde97d90262468cbf5851f8a4f9012f060c213aba9465"
   }
  ]
 }

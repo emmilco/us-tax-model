@@ -984,18 +984,17 @@
    "printed": "1",
    "project_expr_sha256": "4e0fde6bbd661f1105d1a536ba0f5adfd120991ae32984f69ca91d31bbaa9a97",
    "second_expr_sha256": "483e47bf835761306362f5ca228c939ae3d18344d6a248b860b93a8d0ca2d17b",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The reply copies f1040.line1z in cents; the project rounds it half-up to the dollar as it is entered on lines 1 to 18, the register's chosen reading. Same reference otherwise; the line was rerun because its refusal gates changed, not its expression. Triage: 3 value witnesses, all on refused returns (cents only); the other differing witnesses are refusal or unknown differences (project-refuses 2,483, project-unknown 2,074, candidate-refuses 20) from the whole-return refusal gates the project attaches to line 1 (part-year, spouse nonresident, special accrual, Yonkers), which the reply's line does not carry and the compared expressions do not include; those gates are reviewed with the screens.",
-   "context": "f057b4158c20e9742ab62282786002d1c4cbed9499350eaa44a013143176c8ab",
-   "date": "2026-11-15",
-   "run": "c6b27997f3d65db2ac511829fa1caeac2f04eeb1f1c36f493ba16a410e284d45",
-   "subject_key": "df53b8f9374e9a012dae80dd9ae5814b2d8c00f195d5144d1d5bc55f225dee6e",
+   "ruling": "Ruling: model error; ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\": the project rounds federal line 1z half up, the second copies it with cents.",
+   "context": "ef4cda24afe999c72eb1837c76a9938721c88c759b32ce51f083ffa375ebbeaa",
+   "date": "2026-11-22",
+   "run": "dc95fa816536cf27eb65ca402669fa9defd280879dbf37515f882ce1d79f799c",
+   "subject_key": "28fa003f064ceb59baf60346c44cac710562ab19d057c711cf6935f01031d551",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
      "project-refuses",
-     "project-unknown",
-     "value"
+     "project-unknown"
     ],
     "witnesses": [
      "fixture:stage14.asset.hy_5yr@ny_it201",
@@ -1015,10 +1014,7 @@
      "generated:20261026.2@ny_it201",
      "generated:20261026.3@ny_it201",
      "generated:20261026.4@ny_it201",
-     "generated:20261026.5@ny_it201",
-     "generated:20261026.319@ny_it201",
-     "generated:20261026.325@ny_it201",
-     "generated:20261026.358@ny_it201"
+     "generated:20261026.5@ny_it201"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1759,6 +1755,28 @@
      "fixture:classm.f2441.4.deepseek@ny_it201",
      "fixture:classm.f2441.5.deepseek@ny_it201",
      "fixture:classm.f2441.6.deepseek@ny_it201"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "59",
+   "project_expr_sha256": "2c5961622050a268ad3d453ff17e0e6f2ed0951e1c5d01964343c37dc772997a",
+   "second_expr_sha256": "3914b05361f162bca3a72cab061717f87e109846dd12414e81aad8a8d8e22e16",
+   "ruling": "Ruling: representation; the same rule: the project's ny_it201.ask.owes_use_tax is an untaxed purchase that was not all paid at the DMV (bought_untaxed and not use_tax_dmv_only), the second's two-question guard; both give 0 when none is owed and the chart otherwise, and both refuse Form ST-141 and the part-year abode proration.",
+   "context": "ef4cda24afe999c72eb1837c76a9938721c88c759b32ce51f083ffa375ebbeaa",
+   "date": "2026-11-22",
+   "run": "dc95fa816536cf27eb65ca402669fa9defd280879dbf37515f882ce1d79f799c",
+   "subject_key": "9a0e8b5be9cc375fb1aaa48294aba1c4de6de5bf0348f8fa3a450cec012258e4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "generated:20261026.211@ny_it201",
+     "partial:generated 20261026/68-ny_it201.ask.bought_untaxed@ny_it201"
     ],
     "policy": "executable-triage-v2"
    }

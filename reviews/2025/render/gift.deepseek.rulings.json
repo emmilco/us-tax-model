@@ -30,6 +30,16 @@
    "subject_key": "bc7349ce2e3f16ba0e30410148b99a110e9074f4717699a59e6e44dd81eb05a9"
   },
   {
+   "printed": "public_securities",
+   "restated": "Input — Is this group publicly traded securities? A security is generally publicly traded if it is (a) listed on a recognized stock exchange whose quotations are published daily, (b) regularly traded on a national or regional over-the-counter market, or (c) mutual fund shares quoted daily in a national newspaper of general circulation. Answer No for privately held stock, LLC or partnership interests, for stock that is neither listed on a recognized stock exchange nor regularly traded over the counter, even if it has a ticker symbol, and for securities subject to restrictions that materially affect their value to you or prevent them from being freely traded.",
+   "model": "The restatement omits the regulatory exception that securities 'shall not be considered publicly traded securities' if 'the amount claimed or reported as a deduction with respect to the contribution of the securities is different than the amount listed in the market quotations'; it would still treat them as publicly traded unless merely subject to restrictions.",
+   "ruling": "Ruling: scope; a contribution valued differently from the market quotations is outside the tool's valuation and is refused. Project stands.",
+   "context": "1ac4c8869a0109df4d34a76aaba372f2fb737390e71a4d669208ad3357c4d455",
+   "date": "2026-11-17",
+   "run": "1aedfb7b69c351e8b734991f61e36539738a5b6817fbdefd517066696a2d6e82",
+   "subject_key": "0433d35908bf1366ef62d7f771ecfb16a497f786077ab82b80060439850f41d3"
+  },
+  {
    "printed": "section_b",
    "restated": "helper \"Is this group publicly traded securities (listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper of general circulation)?\" = false and helper \"Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions\" > $5,000",
    "model": "The IRS Section B is 'Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory Reportable in Section A)'; the helper excludes only publicly traded securities, so it would incorrectly treat vehicles, intellectual property, inventory, and certain other securities as Section B.",

@@ -331,9 +331,29 @@ form:
     cite:
       doc: i8582
       locator: p. 11, Line 4
+  - id: f8582.mfs_together
+    printed: (helper)
+    label: Married filing separately, and you lived with your spouse at some time in 2025
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - household.mfs
+        - const: true
+      - op: test
+        eq:
+        - household.mfs_apart_all_year
+        - const: false
+    cite:
+      doc: i8582
+      locator: 'p. 10, Part II, "Caution: If your filing status is married filing separately and you lived with your spouse
+        at any time during the year, you are not eligible for the special allowances in Part II. Do not complete Part II"'
   - id: f8582.part2
     printed: (helper)
-    label: 'Part II applies: line 3 is a loss and line 1d is a loss'
+    label: 'Part II applies: line 3 is a loss and line 1d is a loss, and you are not married filing separately having lived
+      with your spouse at some time in 2025'
     type: Bool
     expr:
       op: test
@@ -346,13 +366,36 @@ form:
         lt:
         - f8582.line3
         - const: 0
+      - op: test
+        eq:
+        - f8582.mfs_together
+        - const: false
     cite:
       doc: f8582
-      locator: 'Form 8582 (2025), line 3, "If line 3 is a loss and: • Line 1d is a loss, go to Part II"'
+      locator: 'Form 8582 (2025), line 3, "If line 3 is a loss and: • Line 1d is a loss, go to Part II"; i8582 p. 10, Part II,
+        "Do not complete Part II. Instead, go to Part III of Form 8582"'
+  - id: f8582.part2_shown
+    printed: (gate)
+    label: Part II is shown (Form 8582 is required, and the married-filing-separately caution does not apply)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8582.required
+        - const: true
+      - op: test
+        eq:
+        - f8582.mfs_together
+        - const: false
+    cite:
+      doc: i8582
+      locator: 'p. 10, Part II, "Do not complete Part II"'
   - id: f8582.line4
     printed: '4'
     label: Enter the smaller of the loss on line 1d or the loss on line 3
-    shown_when: f8582.required
+    shown_when: f8582.part2_shown
     type: NonNegDollars
     expr:
       op: choose
@@ -375,7 +418,7 @@ form:
   - id: f8582.line5
     printed: '5'
     label: Enter $150,000. If married filing separately, see instructions
-    shown_when: f8582.required
+    shown_when: f8582.part2_shown
     type: NonNegDollars
     expr:
       op: param
@@ -425,7 +468,7 @@ form:
   - id: f8582.line6
     printed: '6'
     label: Enter modified adjusted gross income, but not less than zero
-    shown_when: f8582.required
+    shown_when: f8582.part2_shown
     type: NonNegDollars
     expr:
       op: subtract_floor0
@@ -438,7 +481,7 @@ form:
   - id: f8582.line7
     printed: '7'
     label: Subtract line 6 from line 5
-    shown_when: f8582.required
+    shown_when: f8582.part2_shown
     type: NonNegDollars
     expr:
       op: subtract_floor0
@@ -472,7 +515,7 @@ form:
   - id: f8582.line8
     printed: '8'
     label: Multiply line 7 by 50% (0.50). Do not enter more than $25,000
-    shown_when: f8582.required
+    shown_when: f8582.part2_shown
     type: NonNegDollars
     expr:
       op: smaller_of
@@ -485,7 +528,7 @@ form:
   - id: f8582.line9
     printed: '9'
     label: Enter the smaller of line 4 or line 8
-    shown_when: f8582.required
+    shown_when: f8582.part2_shown
     type: NonNegDollars
     expr:
       op: smaller_of
@@ -579,7 +622,7 @@ form:
   - id: f8582.exception
     printed: (gate)
     label: 'The filing exception holds: active participation only, no prior unallowed loss, total loss $25,000 or less, MAGI
-      $100,000 or less'
+      $100,000 or less, and, if married filing separately, you lived apart from your spouse all year'
     type: Bool
     expr:
       op: test
@@ -604,9 +647,14 @@ form:
         le:
         - f8582.line6
         - param: f8582.exception_magi
+      - op: test
+        eq:
+        - f8582.mfs_together
+        - const: false
     cite:
       doc: i8582
-      locator: p. 1, Exception, "Your total loss from the rental real estate activities wasn’t more than $25,000"
+      locator: p. 1, Exception, "Your total loss from the rental real estate activities wasn’t more than $25,000"; "If you’re
+        married filing separately, you lived apart from your spouse all year"
     ambiguity: amb.2025.f8582_shown
   - id: f8582.deductions
     printed: (helper)

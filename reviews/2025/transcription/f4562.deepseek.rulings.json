@@ -1,0 +1,147 @@
+{
+ "kind": "transcription",
+ "form": "f4562",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "12",
+   "project_expr_sha256": "16ed0fb0ee7147b50cc095665590d2aee9ca900769a7df11d4c50e6226db6daa",
+   "second_expr_sha256": "3551ea6d82752dc99019c5c95a7eb1470c41cbfe2651f33964aaba89678ed580",
+   "ruling": "Ruling: representation; Form 4562 is filed per business and line 12 is the section 179 deduction this business takes: the project copies the per-business allowance sc.s179_allowed, the second the return-wide s179.line12, which the second's own note says stands in for the per-business allocation it could not find.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "35eceb5a070b861c87b85fec08e7854849b93d5425d546e6e915912a40fa21e1"
+  },
+  {
+   "printed": "14",
+   "project_expr_sha256": "a9902403a8c9bf210786a896482488467f2735933204fe96b98cf99a039ca9b0",
+   "second_expr_sha256": "5740e752c6e3ed00019cc632907b9be196f309ecf8264741680f849eeafcab4e",
+   "ruling": "Ruling: model error; line 14 is in Part II and excludes listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter the project applies.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "a3968d2894898384ceac4f936a25acc3163d483b61b1acd8efd0288fc609c434"
+  },
+  {
+   "printed": "17",
+   "project_expr_sha256": "0a453b1bdeb8779a9a2f62ebc8f63f3b400446c2b9538ea9b118f1214a06a81b",
+   "second_expr_sha256": "9a600b477dd910d8fb318128a233516cbdac111df27935cd2c6a276451632fca",
+   "ruling": "Ruling: model error; line 17 is in Part III, which excludes listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second sums every asset, listed or not.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "04b133a8343a19abb538c473f9400d70af95a5b3f31ebf06e2d360bdf398ba4e"
+  },
+  {
+   "printed": "19a(g)",
+   "project_expr_sha256": "864e87e4ee75c79fe7b8636104ac44e37a3bd7dce953cf74115308962fb1d2c6",
+   "second_expr_sha256": "52ad1006d70fc8bdd3e69764e2ecca749b3f1ba6b5c61cbd0fc2c593aeeb5c3b",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "77334e965dd46c8a414905421cf68e95e93433e46933e9243288363b23f2c40c"
+  },
+  {
+   "printed": "19b(g)",
+   "project_expr_sha256": "aa29e90e0d26c9c4d81be7fe2612b8e653ba13399b545952b26672ea29248ce7",
+   "second_expr_sha256": "4e8043579c269822a2d047c21132da71c0bcc1241bd603f039155bb0b60b1d0d",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "4df97bc1092e2a837db1049678529edb008ddbd4f2c3d00f0076a188856e5df5"
+  },
+  {
+   "printed": "19c(g)",
+   "project_expr_sha256": "7b12cf31e0307c30790ad6b31849da11ad81859bedbee052e2d00a83dd9fcc01",
+   "second_expr_sha256": "0cc34fcac0fdeaa48288cb04a5a6574b255dcbc014a219fb00efaadefb3b8648",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "3382894093c7574c6429aa9d16ea3b473bdb982a83fdb911d1bd108518432e39"
+  },
+  {
+   "printed": "19d(g)",
+   "project_expr_sha256": "6868606df98d86a3a23558e9ad949a47feda7008157af35d9d493fc36a91489f",
+   "second_expr_sha256": "734685c6d4a869ac79e71e2f35fecf29598f5a6b41ad6f69aea20d625dee0fed",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "9f601acff1dbf10dd31c8f6d0178a6c67eb24205b45d5b239d732e1efe024080"
+  },
+  {
+   "printed": "19e(g)",
+   "project_expr_sha256": "c2dca4c2ce0ca99204c8888e5bf34530b37965f3782b63bd3bd17d04f1e22690",
+   "second_expr_sha256": "454b8cf1e5049c1c6b24bf2ffaf4f01f3d1fb0256a45866cb48b2cfffb4b1a72",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "318e49504ef098647103c4d20145c35392eec71017128ad8cbc4a4619d5228df"
+  },
+  {
+   "printed": "19f(g)",
+   "project_expr_sha256": "2af4c8552ba35a5471d35ce958eb672a362b2c157aad71e2c4c66ea83874d28d",
+   "second_expr_sha256": "7e4af976780b9a351a29d0c8716661831d5b0f1fe36bd6b266b7bf771e65fcb4",
+   "ruling": "Ruling: model error; Part III lines exclude listed property (f4562 p. 1, \"Note: Don’t use Part II or Part III below for listed property. Instead, use Part V.\"); the second drops the not-listed filter, and asset.macrs2025 is not a line of the encoding.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "25c93e8f03002e50ba3b1b9a993297f737e827199e03c1f1be32e8168bdfb16b"
+  },
+  {
+   "printed": "21",
+   "project_expr_sha256": "dd5afc34606660425137f3ed23c31e5a532204fc599b9f406c0e8541e41afcae",
+   "second_expr_sha256": "2a009e7a28f62396fa5047ecf4717e527fea463a11c007f9120f0a5c75615780",
+   "ruling": "Ruling: representation; line 21 is the amount from line 28 (f4562 line 21, \"Listed property. Enter amount from line 28\"); the project inlines line 28's sum and the second refers to line 28, the same amount.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "d64012f40265c1ccb6164c7fc712f3fc5ea34a5bdfb8009ff50338bf8b362101"
+  },
+  {
+   "printed": "25",
+   "project_expr_sha256": "c733c60538cd90c581c0b5f06383c43a086dfc0623a3249b7c333751fb183a8d",
+   "second_expr_sha256": "023b143087eb34a441e39d8c16402ab8627b7fff129ff2e7b0aa1255158cd056",
+   "ruling": "Ruling: representation; the same Part V amounts summed from different per-asset and per-vehicle helpers of the encoding (listed assets and vehicles); no amount differs between the two for an asset the project computes.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "62b696d7ad76ded18136ca77da5d1e5dc8c48ba836454a369979684f781e3cff"
+  },
+  {
+   "printed": "26(h)",
+   "project_expr_sha256": "9eda744a35516eabbcf2d3320571317705e4d5fb048c48453e3e35e4560f83f3",
+   "second_expr_sha256": "0d66ff900ca02f10a9b563a4cae58b1392ecd9593c6f39a894a96d5400d3faa4",
+   "ruling": "Ruling: representation; the same Part V amounts summed from different per-asset and per-vehicle helpers of the encoding (listed assets and vehicles); no amount differs between the two for an asset the project computes.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "6fdc0eea83fa821e69b501ea7c5ebc6782b8fc48f4a9debff5a5c1933c66e796"
+  },
+  {
+   "printed": "28",
+   "project_expr_sha256": "dd5afc34606660425137f3ed23c31e5a532204fc599b9f406c0e8541e41afcae",
+   "second_expr_sha256": "9e0eab6b6c993f140bf50a9ede93a61bb757130171f1a8214200113ff56c785b",
+   "ruling": "Ruling: representation; the same Part V amounts summed from different per-asset and per-vehicle helpers of the encoding (listed assets and vehicles); no amount differs between the two for an asset the project computes.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "0605a447397405cf692f4ba2b87132ebf57d8707802660afb97595c40fcfcaa6"
+  },
+  {
+   "printed": "29",
+   "project_expr_sha256": "2a1dc7c78aabf7e3e2eb7c507706fcd8d6260f8fd4f593888a9d4583c79f0931",
+   "second_expr_sha256": "f8b63c6effbb3a2d503dc12d31f34af477b46a0dc437c826fe6e176bfae0bf69",
+   "ruling": "Ruling: representation; the same Part V amounts summed from different per-asset and per-vehicle helpers of the encoding (listed assets and vehicles); no amount differs between the two for an asset the project computes.",
+   "context": "b7f68586d4b7d0c746d032803a387f829fb541cb0b639508b6d58431054d79e9",
+   "date": "2026-11-21",
+   "run": "320f61f239264fb9453850d76efe8f87537fb4b0e0d0cf82c122818beb622085",
+   "subject_key": "7b740f0ec2820407665e0e6ccf5772918915caf1ca8bc52a121ebcd865a982c0"
+  }
+ ]
+}

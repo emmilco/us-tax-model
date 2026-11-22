@@ -1,0 +1,57 @@
+{
+ "kind": "render",
+ "form": "rprop",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "(a)",
+   "restated": "Input — What is this?\n\n- residential: a building (or an improvement to one) whose rent comes mostly (80% or more) from homes\n- nonresidential: any other building, such as shops or offices, or an improvement to one\n- personal: something other than a building or part of one, such as an appliance, carpet, furniture, a fence or a driveway",
+   "model": "IRS text says nonresidential real property is any real property that is neither residential rental property nor property with a class life of less than 27.5 years; 'any other building' would include buildings with a class life under 27.5 years.",
+   "ruling": "Ruling: representation; i4562 p. 10: the input's categories restate the page's classification; the class-life details are on the cited page. Project stands.",
+   "context": "790a5373fecddeaffd152af2d9d8f8cd68fbc7d4e9a0ab96bf766c4259c12ab7",
+   "date": "2026-11-17",
+   "run": "49bd81b75bc39a90545e13b28ee150b0b50a7c2bbbcd95aa485e1c5c48445991",
+   "subject_key": "18f1672464038bbae19a5ed9c703b0548d39243849412ba0aa9fba8c94a595a1"
+  },
+  {
+   "printed": "(c)",
+   "restated": "Input — Its basis for depreciation: what you paid for the building or improvement, not the land (for a home you lived in before renting it, the smaller of its value and your adjusted basis when you began renting it); your share",
+   "model": "IRS column (c) says to multiply 'the cost or other basis of the property by the percentage of business/investment use' and subtract credits and deductions; the restatement substitutes 'what you paid' and 'your share.'",
+   "ruling": "Ruling: representation; i1040se p. 6: basis is the filer's answer; the business-use percentage and the credit reductions are in the helper and on the cited page. Project stands.",
+   "context": "790a5373fecddeaffd152af2d9d8f8cd68fbc7d4e9a0ab96bf766c4259c12ab7",
+   "date": "2026-11-17",
+   "run": "49bd81b75bc39a90545e13b28ee150b0b50a7c2bbbcd95aa485e1c5c48445991",
+   "subject_key": "3a739aed59fb544eaa9a59cc83be7ae22860b1bbc3887cd2d88938ed2927ceb0"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Multiply column (c) by helper \"Rate from Table A-6 or A-7a for the month placed in service and the year of recovery\".",
+   "model": "IRS text says 'You cannot use the percentage tables for a short tax year,' but the restatement has no refusal for a short tax year and would apply the Table A-6 or A-7a rate.",
+   "ruling": "Ruling: scope; i4562 p. 12: a short tax year is refused (rprop.short_year). Project stands.",
+   "context": "790a5373fecddeaffd152af2d9d8f8cd68fbc7d4e9a0ab96bf766c4259c12ab7",
+   "date": "2026-11-17",
+   "run": "49bd81b75bc39a90545e13b28ee150b0b50a7c2bbbcd95aa485e1c5c48445991",
+   "subject_key": "8ffefaa45b5ca640765b427150b40bde028cc54554e77bb0cbe8c77aa76eead6"
+  },
+  {
+   "printed": "(screen) (rprop.ads)",
+   "restated": "Input — Do you depreciate it over 30 or 40 years (the alternative depreciation system, ADS), by choice or because you must?",
+   "model": "The provided IRS text describes ADS and says to use the applicable recovery period, but it does not state that the period is 30 or 40 years, so the '30 or 40 years' condition cannot be verified.",
+   "ruling": "Ruling: representation; the 30- and 40-year periods are the ADS periods for the property classes the tool supports, on the cited pages. Project stands.",
+   "context": "790a5373fecddeaffd152af2d9d8f8cd68fbc7d4e9a0ab96bf766c4259c12ab7",
+   "date": "2026-11-17",
+   "run": "49bd81b75bc39a90545e13b28ee150b0b50a7c2bbbcd95aa485e1c5c48445991",
+   "subject_key": "5cbef894ab028c8e3081e4224dd86747b2094f6e18da8867396c9e5020c28e5b"
+  },
+  {
+   "printed": "(screen) (rprop.basis_changed)",
+   "restated": "Input — Since renting began, has anything but depreciation changed its cost for tax purposes, like a casualty loss or easement payment?",
+   "model": "IRS text permits continued use of the tables for an addition or improvement depreciated as a separate item, but the restatement treats 'anything but depreciation' as disqualifying.",
+   "ruling": "Ruling: representation; an addition or improvement depreciated separately is a separate item; a basis change to this item is the question. Project stands.",
+   "context": "790a5373fecddeaffd152af2d9d8f8cd68fbc7d4e9a0ab96bf766c4259c12ab7",
+   "date": "2026-11-17",
+   "run": "49bd81b75bc39a90545e13b28ee150b0b50a7c2bbbcd95aa485e1c5c48445991",
+   "subject_key": "e2e1b77898287d7e28e8cb93179b15e5f0b5bc2a0e4018dad176435d70b5cdd9"
+  }
+ ]
+}

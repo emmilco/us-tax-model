@@ -108,20 +108,20 @@ form:
       printed: (helper)
       type: Bool
       gated_by: sa.charity_limited_if_gifts
-      label: Are any charitable deductions reduced by income limits, or carried over from a prior year?
-        Determine under Publication 526 before answering.
+      label: Are any of the 2025 charitable deductions reduced by income limits? Determine under Publication 526 before
+        answering.
       expr:
         op: input
-        source: Are any charitable deductions reduced by income limits, or carried over from a prior year?
-          Determine under Publication 526 before answering.
+        source: Are any of the 2025 charitable deductions reduced by income limits? Determine under Publication 526 before
+          answering.
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
     - id: sa.charity_limited_if_gifts
       printed: (helper)
       type: Bool
-      label: Charitable deductions are reduced by income limits or carried over from a prior year (no when you and
-        your spouse gave nothing to charity in 2025)
+      label: The 2025 charitable deductions are reduced by income limits (no when you and your spouse gave nothing to
+        charity in 2025)
       expr:
         op: choose
         alternatives:
@@ -155,32 +155,20 @@ form:
     - id: sa.gift_carryover_if_no_gifts
       printed: (gate)
       type: Bool
-      label: A charitable contribution is carried over from an earlier year (asked only when you and your spouse gave nothing to charity in 2025)
+      label: A charitable contribution is carried over from an earlier year (asked of every filer, whether or not they gave in 2025)
       expr:
-        op: choose
-        alternatives:
-          - guard:
-              op: test
-              eq:
-                - sa.gifts
-                - const: false
-            then: sa.gift_carryover
-          - guard:
-              op: test
-              eq:
-                - sa.gifts
-                - const: true
-            then: sa.no
+        op: copy
+        from: sa.gift_carryover
       cite:
         doc: i1040sca
         locator: 'p. 11, Line 13, "You may have contributions that you couldn''t deduct in an earlier year because they exceeded the limits on the amount you could deduct"'
     - id: sa.excluded_income
       printed: (helper)
       type: Bool
-      label: 'Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?'
+      label: 'Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or exclude income from sources within Puerto Rico?'
       expr:
         op: input
-        source: 'Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?'
+        source: 'Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or exclude income from sources within Puerto Rico?'
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
@@ -399,7 +387,7 @@ form:
           - your spouse
           - your dependents
           - your child whom you do not claim only because of the rules for children of divorced or separated parents
-          - anyone you could have claimed as a dependent except that the person had gross income of $5,200 or more or filed a joint return
+          - anyone you could have claimed as a dependent except that the person had gross income of $5,200 or more or filed a joint return, or that you (or your spouse, if filing jointly) can be claimed as a dependent on someone else's 2025 return
 
           Reduce them by payments from insurance or other sources, but do not reduce them by a 2025 reimbursement of expenses paid in an earlier year.
 
@@ -1231,14 +1219,15 @@ form:
 
           Count only what you paid above the value of any benefit you received in return, and only gifts for which you keep a bank record or a written record from the charity (and, for a gift of $250 or more, the charity's written acknowledgment).
 
-          Leave out: the part of a gift for which you received a state or local tax credit; political contributions; raffle, bingo or lottery tickets; tuition; dues to clubs, lodges or similar groups; payments for the right to buy college athletic tickets; gifts to individuals or to groups run for profit or to lobby; travel away from home with a significant element of personal pleasure; the value of your time; and amounts repaid to you.
+          Leave out: the part of a gift for which you received a state or local tax credit; political contributions; raffle, bingo or lottery tickets; tuition; dues to clubs, lodges or similar groups; payments for the right to buy college athletic tickets; gifts to individuals or to groups run for profit or to lobby; gifts to foreign organizations (a gift to a U.S. organization that transfers funds to a foreign charity is not left out); travel away from home with a significant element of personal pleasure; the value of your time; and amounts repaid to you.
       cite:
         doc: i1040sca
         locator: 'p. 9, Amounts You Can Deduct, "Contributions can be in cash, property, or out-of-pocket expenses you paid to
           do volunteer work", "14 cents a mile", "But don''t deduct any amounts that were repaid to you", Gifts from which you
           benefit, "you can generally only deduct the amount that is more than the value of the benefit", Gifts of $250 or
           more; p. 10, Amounts You Can''t Deduct, "Political contributions", "Cost of raffle, bingo, or lottery tickets",
-          "Cost of tuition", "Value of your time or services"; Line 11, "Enter on line 11 the total value of gifts you made in
+          "Cost of tuition", "Value of your time or services", "Gifts to foreign organizations. However, you may be able to
+          deduct gifts to certain U.S. organizations that transfer funds to foreign charities"; Line 11, "Enter on line 11 the total value of gifts you made in
           cash or by check (including out-of-pocket expenses)", Recordkeeping, "you must maintain as a record of the
           contribution a bank record (such as a canceled check or credit card statement) or a written record from the
           charity"'

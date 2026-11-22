@@ -854,6 +854,51 @@
   },
   {
    "printed": "22d",
+   "project_expr_sha256": "10bebc49a410b6abcb7a61ad885600f0ca644f26e4ec3bbf4fe4b6f193d399eb",
+   "second_expr_sha256": "7834bdf850af371300c864d02bdf1b8aef73afc79c592db5431b12728adccdd8",
+   "ruling": "Ruling: representation; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4425 of 5226 comparisons agree, 4425 of 5207 in scope; completed {\"candidate-unknown\": 258}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "e9447925f3c33023580a713214b74236b6b67207fd9c75590aadb69f6055ee5a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:classm.w2.1@f5695",
+     "fixture:stage15.refuse.f5695.qmid_doors_windows_ac@f5695",
+     "fixture:stage15.mut.f5695_furnace_ac_no_qmid@f5695",
+     "fixture:stage15.mut.f5695_one_cent_no_qmid_condo@f5695",
+     "generated:20261026.16@f5695",
+     "generated:20261026.17@f5695",
+     "generated:20261026.18@f5695",
+     "generated:20261026.21@f5695",
+     "generated:20261026.74@f5695",
+     "generated:20261026.106@f5695",
+     "generated:20261026.203@f5695",
+     "partial:stage14.asset.hy_5yr-f5695.any@f5695",
+     "partial:stage14.asset.bonus_100-f5695.any@f5695",
+     "partial:stage14.asset.prior_7yr-f5695.any@f5695",
+     "partial:stage14.asset.qip-f5695.any@f5695",
+     "partial:stage14.asset.done-f5695.any@f5695",
+     "partial:stage14.asset.refuse_class-f5695.any@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "22d",
    "project_expr_sha256": "e2d7c66289c264c416d99d86cea2c2e076fadc8701fd2c2cc6d5272808a2ed48",
    "second_expr_sha256": "4ac1ae025b4311130359a20df85e37933e04294fc9f7fff22484a82be8e83c70",
    "ruling": "Ruling: scope; values otherwise equal. f5695 p. 3, line 21b: \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26.\" The candidate drops the 21a/21b gate on line 22d because its 22c line carries it; the products and caps are the project's. Triage executable-triage-v2 (`../triage/f5695.json`; 1,495 fixtures, 500 generated returns seed 20261026, 1,690 partial records; 3,685 comparisons): 3,597 agree; 67 candidate-refuses, 20 candidate-unknown, 1 project-refuses; on completed returns 10 candidate-unknown. The candidate refusals (f5695.h_new_home_refuse) and project refusals (the QMID screens) are on refused returns. The candidate-unknowns on completed returns are partial records that withhold an answer the candidate's own guard reads (line 17a, 17b, 17c or 17e; line 21a, 21b or f5695.b_new_home) on returns with no cost on the line, where the project's line does not need it; the project-unknowns are returns without that Section, where the interview never asks the cost and the project's printed line, read only through Schedule 3 line 5b, is not reached (as earlier rounds).",
@@ -1008,6 +1053,49 @@
      "partial:stage14.asset.prior_7yr-f5695.any@f5695",
      "partial:stage14.asset.qip-f5695.any@f5695",
      "partial:stage14.asset.done-f5695.any@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "23d",
+   "project_expr_sha256": "13d1b53cfe705443d73e1805daf157a148015ce374a2c0d12e040350479564ce",
+   "second_expr_sha256": "9356b12107b5b72526b1e0708028940dc77327e1c5e6ec3f51eac51e8ebfcd0f",
+   "ruling": "Ruling: representation; f5695 p. 3, line 21b, \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26.\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4427 of 5226 comparisons agree, 4427 of 5209 in scope; completed {\"candidate-unknown\": 258}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "8c468fb5953e5be0a349abbf2a434d52d6e1a206c9ff03bf969efd3f443071cb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:classm.w2.1@f5695",
+     "fixture:stage15.refuse.f5695.qmid_wh_furnace_enabling_hp@f5695",
+     "fixture:stage15.mut.f5695_wh_no_qmid_no_furnace@f5695",
+     "fixture:stage15.mut.f5695_one_cent_no_qmid_condo@f5695",
+     "generated:20261026.17@f5695",
+     "generated:20261026.18@f5695",
+     "generated:20261026.21@f5695",
+     "generated:20261026.106@f5695",
+     "generated:20261026.203@f5695",
+     "partial:stage14.asset.hy_5yr-f5695.any@f5695",
+     "partial:stage14.asset.bonus_100-f5695.any@f5695",
+     "partial:stage14.asset.prior_7yr-f5695.any@f5695",
+     "partial:stage14.asset.qip-f5695.any@f5695",
+     "partial:stage14.asset.done-f5695.any@f5695",
+     "partial:stage14.asset.refuse_class-f5695.any@f5695"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1304,6 +1392,51 @@
    }
   },
   {
+   "printed": "24d",
+   "project_expr_sha256": "9efee3dc23f495afde193ee95a934bd95a933265fdbe8216d8fd4cfe460618e7",
+   "second_expr_sha256": "b6066ea8e8124643fde1f0e14e315ed0a64fb40909bb736cb038f54174acc345",
+   "ruling": "Ruling: representation; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4426 of 5226 comparisons agree, 4426 of 5207 in scope; completed {\"candidate-unknown\": 258}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "3b605f77e2e232d28b9ade54cb15eedc87114bf0ba4d7cbe01341e7578e3427d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:classm.w2.1@f5695",
+     "fixture:stage15.refuse.f5695.qmid_wh_furnace_enabling_hp@f5695",
+     "fixture:stage15.mut.f5695_furnace_ac_no_qmid@f5695",
+     "fixture:stage15.mut.f5695_one_cent_no_qmid_condo@f5695",
+     "generated:20261026.16@f5695",
+     "generated:20261026.17@f5695",
+     "generated:20261026.18@f5695",
+     "generated:20261026.21@f5695",
+     "generated:20261026.106@f5695",
+     "generated:20261026.203@f5695",
+     "generated:20261026.211@f5695",
+     "partial:stage14.asset.hy_5yr-f5695.any@f5695",
+     "partial:stage14.asset.bonus_100-f5695.any@f5695",
+     "partial:stage14.asset.prior_7yr-f5695.any@f5695",
+     "partial:stage14.asset.qip-f5695.any@f5695",
+     "partial:stage14.asset.done-f5695.any@f5695",
+     "partial:stage14.asset.refuse_class-f5695.any@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "25e",
    "project_expr_sha256": "2f7a4f47a276d6d7203ddefa93f02e1c59a7c3a0cac446a57110e1bb34cb642e",
    "second_expr_sha256": "1928ab5d464fdbc3cd95f98635b4b4e44cd18d2e7369b7c9c1f169c7ce857591",
@@ -1393,6 +1526,42 @@
      "fixture:classm.f2441.6.deepseek@f5695",
      "fixture:stage15.refuse.f5695.qmid_wh_furnace_enabling_hp@f5695",
      "fixture:mutation.m4.f5695.panel_unanswered@f5695",
+     "partial:stage14.asset.hy_5yr-f5695.any@f5695",
+     "partial:stage14.asset.bonus_100-f5695.any@f5695",
+     "partial:stage14.asset.prior_7yr-f5695.any@f5695",
+     "partial:stage14.asset.qip-f5695.any@f5695",
+     "partial:stage14.asset.done-f5695.any@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "25e",
+   "project_expr_sha256": "84d943fd2252e0583f4e76e5a9f063c9e0293d3fb270674febb9dd98fd89dc17",
+   "second_expr_sha256": "91b1d1967e2bbcf307707e0bb3013fec7b8641ba26a107ae3b8bb255e581ca54",
+   "ruling": "Ruling: representation; f5695 p. 3, line 21b, \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26.\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4447 of 5226 comparisons agree, 4447 of 5224 in scope; completed {\"candidate-unknown\": 255}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "ecfec15f2becdabd70d76f91739c650d52e33dcb621833324992a157cf8ffdd8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:stage15.refuse.f5695.qmid_wh_furnace_enabling_hp@f5695",
+     "fixture:mutation.m4.f5695.panel_unanswered@f5695",
+     "generated:20261026.307@f5695",
      "partial:stage14.asset.hy_5yr-f5695.any@f5695",
      "partial:stage14.asset.bonus_100-f5695.any@f5695",
      "partial:stage14.asset.prior_7yr-f5695.any@f5695",
@@ -1680,6 +1849,51 @@
    }
   },
   {
+   "printed": "29h",
+   "project_expr_sha256": "d4af03736c12f4722e020e56ca7ce9d5a21e2d5f95d7aae859809223b7140458",
+   "second_expr_sha256": "feb444a109d56ce33b8d5f6f30e3760cfd9d48c91ffac9fd0953201554bfe2bd",
+   "ruling": "Ruling: representation; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4427 of 5226 comparisons agree, 4427 of 5207 in scope; completed {\"candidate-unknown\": 258}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "632154f7b46edde227dcc23e25bbe9b3a646f6a96b3edc19b3ff7e547cc79c45",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:classm.w2.1@f5695",
+     "fixture:stage15.refuse.f5695.qmid_wh_furnace_enabling_hp@f5695",
+     "fixture:mutation.m4.f5695.hp_no_qmid_single@f5695",
+     "fixture:mutation.m4.f5695.hp_no_qmid_mfs@f5695",
+     "fixture:mutation.m4.f5695.hp_no_qmid_hoh@f5695",
+     "fixture:mutation.m4.f5695.hp_no_qmid_qss@f5695",
+     "generated:20261026.17@f5695",
+     "generated:20261026.18@f5695",
+     "generated:20261026.21@f5695",
+     "generated:20261026.106@f5695",
+     "generated:20261026.203@f5695",
+     "partial:stage14.asset.hy_5yr-f5695.any@f5695",
+     "partial:stage14.asset.bonus_100-f5695.any@f5695",
+     "partial:stage14.asset.prior_7yr-f5695.any@f5695",
+     "partial:stage14.asset.qip-f5695.any@f5695",
+     "partial:stage14.asset.done-f5695.any@f5695",
+     "partial:stage14.asset.refuse_class-f5695.any@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "30",
    "project_expr_sha256": "c299af8ad37cc7b11db9c177ad27dbb14fdf64a95d27bef138e0bf0715a08149",
    "second_expr_sha256": "0cf35cc6e6961b68084391287f4419f1c8a8f90786551bf9afd840d60a51ab00",
@@ -1779,11 +1993,11 @@
    "printed": "32",
    "project_expr_sha256": "94feb9160ee43c9eed7940b54913a8836ccedd02b8d1b62dc06c8f0304564571",
    "second_expr_sha256": "e2cbf221c715cb84c6759b2b1be508697c8b9388b8ec3ce1e87c00e61e26b55d",
-   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate's line 32 is the printed smaller of lines 30 and 31 (f5695 p. 4) on every return; through line 30 it reads f5695.joint_occupancy and the other Part II screens, asked only with Part II (classm.eic.1: project $0.00, candidate unknown). Its 1,387 refusals are all on returns the project refuses elsewhere. The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 2,276 of 4,642 agree; on completed returns: 61 candidate-unknown.",
-   "context": "2eef302cbd34717747b3d3bc04e865e7a0645bf335ac058ebc95d4a9fda7ced9",
-   "date": "2026-11-14",
-   "run": "e2af329d1d9e4834132cd3e1a1856d565bc3ec3a84dbe065f278b54a8063e1e7",
-   "subject_key": "d795694641e3472c658ecde3cbd621b765782bd5edd2dccf1738005aee9b2a96",
+   "ruling": "Ruling: representation; f5695 Form 5695 (2025), line 32 (zero when Part II is not completed). The candidate reads joint_occupancy, listed directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 2329 of 5226 comparisons agree, 2296 of 3367 in scope; completed {\"candidate-unknown\": 271}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "92970ab0388944b1ecdc5c4f7c3bed978ef44ea1b73b22545ca17301dcbd60c7",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1805,18 +2019,18 @@
      "fixture:classm.f2441.3.deepseek@f5695",
      "fixture:classm.f2441.4.deepseek@f5695",
      "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:stage15.refuse.f5695.separate_homes@f5695",
      "fixture:stage15.refuse.f5695.sec_a_new_home@f5695",
      "fixture:stage15.refuse.f5695.sec_b_new_home@f5695",
-     "fixture:stage15.refuse.f5695.qmid_doors_windows_ac@f5695",
      "fixture:stage15.refuse.f5695.qmid_wh_furnace_enabling_hp@f5695",
      "fixture:stage15.mut.f5695_furnace_ac_no_qmid@f5695",
      "fixture:stage15.mut.f5695_wh_no_qmid_no_furnace@f5695",
-     "fixture:mutation.m4.f5695.panel_unanswered@f5695",
-     "fixture:mutation.m4.f5695.heat_pump_unanswered@f5695",
-     "fixture:mutation.m4.f5695.hp_water_heater_unanswered@f5695",
-     "fixture:mutation.m4.f5695.central_ac_unanswered@f5695",
-     "fixture:mutation.m4.f5695.water_heater_unanswered@f5695",
-     "fixture:mutation.m4.f5695.furnace_unanswered@f5695"
+     "partial:classm.f5695.3.deepseek-f5695.solar@f5695",
+     "partial:classm.f5695.3.deepseek-f5695.solar_water@f5695",
+     "partial:classm.f5695.3.deepseek-f5695.wind@f5695",
+     "partial:classm.f5695.3.deepseek-f5695.geothermal@f5695",
+     "partial:classm.f5695.3.deepseek-f5695.panel@f5695",
+     "partial:classm.f5695.3.deepseek-f5695.line5a@f5695"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1932,6 +2146,38 @@
    }
   },
   {
+   "printed": "32a",
+   "project_expr_sha256": "deea7f27a7ef6d58b95d745e357a46b7218f5e05703b6f235ccef04caf70dd2f",
+   "second_expr_sha256": "cb4bf06a17864e3f6383b0304d5642e0cf179ef81e2e204b580b5b727ffba6f8",
+   "ruling": "Ruling: representation; i5695 p. 7, Line 32a, \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\". The candidate reads joint_occupancy directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4494 of 5226 comparisons agree, 4494 of 5041 in scope; completed {\"candidate-unknown\": 250}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "0d792dc948ba866ba575f301de3ab87fe5cd26a406ee4e2ff6731d4fd6ac1e2d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:classm.f8889.1.deepseek@f5695",
+     "fixture:classm.f8889.3.deepseek@f5695",
+     "fixture:classm.f8889.5.deepseek@f5695",
+     "fixture:classm.f4952.4.deepseek@f5695",
+     "fixture:classm.dependent.1.deepseek@f5695",
+     "fixture:classm.dependent.2.deepseek@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "32b",
    "project_expr_sha256": "2f42d321f5630dbf0f5a18904ac2acaafc7baffc083be0c8a17336a0c00d8dfa",
    "second_expr_sha256": "6ea32fbfc16a46589243a9b23189af10e337745851960b6fb2962b8dafe1dabd",
@@ -1971,6 +2217,45 @@
    "ruling": "Ruling: model error; minor, a Boolean on which no amount depends. i5695 p. 7, Lines 32a and 32b: \"Line 32b. Occupants of a condominium or cooperative who are claiming a fractional share of the qualified energy efficiency improvements or residential energy property costs must check the box on line 32b.\" The box goes with a Part II claim of a share; the candidate checks it on the condominium answer alone. Triage executable-triage-v2 (`../triage/f5695.json`; 1,495 fixtures, 500 generated returns seed 20261026, 1,690 partial records; 3,685 comparisons): 2,462 agree; 1,199 candidate-unknown, 24 value; on completed returns 132 candidate-unknown. The value differences are on refused returns (f5695.condo Yes, part2_any No: project false, candidate true); the completed candidate-unknowns are returns without Part II, where f5695.condo is not asked. Same ruling as earlier rounds.",
    "context": "2c41aae54bd45385ac57f7f13998ed777963e2779562b5133fb35193ec2c86b8",
    "subject_key": "88843388f196966fa0b1fe6ba3e0196a38bcd4aa3c6981c84810b3139286f9c1"
+  },
+  {
+   "printed": "32b",
+   "project_expr_sha256": "65a7bfdab0f1e75d823dcaa9cebc1c1bd92cea5782246aff42e402e74077b96b",
+   "second_expr_sha256": "77cc1716225ff9adfc73f8207441332774575423543245d114bff960f06eec01",
+   "ruling": "Ruling: representation; i5695 p. 7, Lines 32a and 32b, \"must check the box on line 32b\". The candidate reads condo directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4348 of 5226 comparisons agree, 4348 of 4966 in scope; completed {\"candidate-unknown\": 247}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "eac59e2d2f050d67756bbb64aa9ac3d7c88a0dd05aa1a2c67a56d17017721cdd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:classm.f8889.1.deepseek@f5695",
+     "fixture:classm.f8889.3.deepseek@f5695",
+     "fixture:classm.f8889.5.deepseek@f5695",
+     "fixture:classm.f4952.4.deepseek@f5695",
+     "fixture:classm.clcw_next_year.3.deepseek@f5695",
+     "fixture:classm.dependent.1.deepseek@f5695",
+     "fixture:mutation.m4.f5695.panel_unanswered@f5695",
+     "fixture:mutation.m4.f5695.heat_pump_unanswered@f5695",
+     "fixture:mutation.m4.f5695.hp_water_heater_unanswered@f5695",
+     "fixture:mutation.m4.f5695.central_ac_unanswered@f5695",
+     "fixture:mutation.m4.f5695.water_heater_unanswered@f5695",
+     "fixture:mutation.m4.f5695.furnace_unanswered@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "32b",
@@ -2331,40 +2616,33 @@
    "printed": "f5695.claiming_part1",
    "project_expr_sha256": "b9892839e49ba9aabacfeac96f447c8dbf572ea292119272d897098e13dd11f7",
    "second_expr_sha256": "cf4e8e3eb764ae555f82360e89c17c48b4b89b1cfeaae8ef217e8f783d0f0130",
-   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate tests line 13 above zero on every return (amb.2025.clwb_claiming_part1, i1040s8812 p. 4, \"Residential clean energy credit, Form 5695, Part I\"); line 13 reads the Part I screens (f5695.construction_later, f5695.business_use), asked only with Part I, so it is unknown on completed returns without Part I (classm.eic.1: project false). The two value differences (classm.dcprov.1, mutation.t2.qss_s1a_car) are refused fixtures that carry a $1,619 line 3 cost with f5695.any and every kind answered No, inputs the interview does not ask. The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,688 of 4,642 agree; on completed returns: 78 candidate-unknown.",
-   "context": "2eef302cbd34717747b3d3bc04e865e7a0645bf335ac058ebc95d4a9fda7ced9",
-   "date": "2026-11-14",
-   "run": "e2af329d1d9e4834132cd3e1a1856d565bc3ec3a84dbe065f278b54a8063e1e7",
-   "subject_key": "8077de40d58da7bb459eb247fdc170c7ef69f119ac3cbe4dc772f16f42939c8b",
+   "ruling": "Ruling: representation; i1040s8812 p. 4, Credit Limit Worksheet A, \"You are claiming one or more of the following credits\". The candidate reads business_use, construction_later directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 5155 of 5226 comparisons agree, 5143 of 5212 in scope; completed {\"candidate-unknown\": 1}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "d442aca59a4bedd122eb5cad5b747c9be9e3ae16a5349f6ac7ce691ec80f34b8",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
      "candidate-unknown",
-     "project-unknown",
-     "value"
+     "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.f2441.1.deepseek@f5695",
-     "fixture:classm.f2441.2.deepseek@f5695",
-     "fixture:classm.f2441.3.deepseek@f5695",
-     "fixture:classm.f2441.4.deepseek@f5695",
-     "fixture:classm.f2441.5.deepseek@f5695",
-     "fixture:classm.f2441.6.deepseek@f5695",
-     "fixture:classm.clcw.1.deepseek@f5695",
-     "fixture:classm.carloan.1@f5695",
-     "fixture:classm.dcprov.1@f5695",
-     "fixture:classm.clcw.1@f5695",
+     "fixture:classm.s3.3.deepseek@f5695",
+     "fixture:classm.s3.13@f5695",
+     "fixture:classm.clcw_next_year.3@f5695",
      "fixture:stage15.refuse.f5695.business_use_part2@f5695",
-     "fixture:mutation.t2.qss_s1a_car@f5695",
-     "fixture:mutation.t2.s3.one_employer@f5695",
      "fixture:mutation.m4.f5695.panel_unanswered@f5695",
      "fixture:mutation.m4.f5695.heat_pump_unanswered@f5695",
      "fixture:mutation.m4.f5695.hp_water_heater_unanswered@f5695",
      "fixture:mutation.m4.f5695.central_ac_unanswered@f5695",
      "fixture:mutation.m4.f5695.water_heater_unanswered@f5695",
      "fixture:mutation.m4.f5695.furnace_unanswered@f5695",
-     "generated:20261026.7@f5695"
+     "generated:20261026.106@f5695",
+     "partial:classm.f5695.3.deepseek-f5695.business_use@f5695",
+     "partial:classm.f5695.3.deepseek-f5695.construction_later@f5695",
+     "partial:classm.f5695.11.deepseek-f5695.business_use@f5695"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2404,6 +2682,52 @@
    }
   },
   {
+   "printed": "f5695.part1_any",
+   "project_expr_sha256": "52af4a02ee7698207e4e981365fffa957ed61950b2f0ebd1910353b74a546fbb",
+   "second_expr_sha256": "fcef6208f70a07e0038aa21553e5fa7e992211842f5ed80c9aff94e2e0cb7092",
+   "ruling": "Ruling: representation; i5695 p. 2, Joint occupancy, \"These rules don't apply to married individuals filing a joint return\". The candidate reads business_use directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4287 of 5226 comparisons agree, 4287 of 5206 in scope; completed {\"candidate-unknown\": 284}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "aee9fed53d00582f51a341f9de50e85a589a71b4ba84b12bcc15be44380b9221",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:classm.clcw.1.deepseek@f5695",
+     "fixture:classm.clcw_next_year.3.deepseek@f5695",
+     "fixture:classm.s3.4.deepseek@f5695",
+     "fixture:classm.carloan.1@f5695",
+     "fixture:classm.clcw.1@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part1@f5695",
+     "fixture:stage15.refuse.f5695.construction_later@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part2@f5695",
+     "fixture:mutation.m4.f5695.panel_unanswered@f5695",
+     "fixture:mutation.m4.f5695.heat_pump_unanswered@f5695",
+     "fixture:mutation.m4.f5695.hp_water_heater_unanswered@f5695",
+     "fixture:mutation.m4.f5695.central_ac_unanswered@f5695",
+     "fixture:mutation.m4.f5695.water_heater_unanswered@f5695",
+     "fixture:mutation.m4.f5695.furnace_unanswered@f5695",
+     "fixture:mint.sa.mortgage_limit.over_limit_1098_only@f5695",
+     "generated:20261026.8@f5695",
+     "generated:20261026.91@f5695",
+     "generated:20261026.142@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f5695.part2_any",
    "project_expr_sha256": "0ad16a5f075f2457cc65f2857d544f9c2e68b85008b22e204abbfdf0a81e79fd",
    "second_expr_sha256": "0660aa980099b42442c230cbdb58082c74974f596c89364cc04520af9d978766",
@@ -2431,6 +2755,52 @@
      "fixture:mutation.m4.f5695.central_ac_unanswered@f5695",
      "fixture:mutation.m4.f5695.water_heater_unanswered@f5695",
      "fixture:mutation.m4.f5695.furnace_unanswered@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f5695.part2_any",
+   "project_expr_sha256": "0ad16a5f075f2457cc65f2857d544f9c2e68b85008b22e204abbfdf0a81e79fd",
+   "second_expr_sha256": "42c488824061a4af67cabdb0122f63d9fa3c56ec3be641262561215aede94da7",
+   "ruling": "Ruling: representation; i5695 p. 2, Residential Clean Energy Credit (Part I), \"You may be able to take a credit of 30% of your costs of qualified solar electric property, solar water heating property, small wind energy property, geothermal heat pump property, battery storage technology, and fuel cell property\". The two completed-return differences are the reply's own joint-occupancy gate returning false where its sub-question is unanswered; the line is a gate, no amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4367 of 5226 comparisons agree, 4367 of 5196 in scope; completed {\"candidate-unknown\": 271, \"value\": 2}. Project stands.",
+   "context": "e1d1222946ca7ffa79878da2cb9002bb8cd4ebfffb867f129c9cbccefc2c197d",
+   "date": "2026-11-17",
+   "run": "f0d1e09da36c4211d5bd0f3e4a91bc263e7213cd4c0f0a277bc65781052458ce",
+   "subject_key": "02e379f67af989224de8b465f7cd2d52c16a5eae24f4a6e4d6a4014b9c1c1ca2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:classm.f1040.6.deepseek@f5695",
+     "fixture:classm.carloan.2@f5695",
+     "fixture:classm.w2.1@f5695",
+     "fixture:mexist.f4952.exception.filing_4952@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part1@f5695",
+     "fixture:stage15.refuse.f5695.other_credits_part2@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part2@f5695",
+     "fixture:stage15.refuse.f5695.joint_occupancy@f5695",
+     "fixture:stage15.refuse.f5695.separate_homes@f5695",
+     "fixture:stage15.refuse.f5695.sec_a_new_home@f5695",
+     "fixture:stage15.refuse.f5695.sec_b_new_home@f5695",
+     "fixture:stage15.refuse.f5695.qmid_doors_windows_ac@f5695",
+     "fixture:mutation.m4.f5695.panel_unanswered@f5695",
+     "partial:classm.clcw_next_year.3.deepseek-f5695.solar@f5695",
+     "partial:classm.clcw_next_year.3.deepseek-f5695.solar_water@f5695",
+     "partial:classm.clcw_next_year.3.deepseek-f5695.wind@f5695",
+     "partial:classm.clcw_next_year.3.deepseek-f5695.geothermal@f5695",
+     "partial:classm.clcw_next_year.3.deepseek-f5695.panel@f5695"
     ],
     "policy": "executable-triage-v2"
    }

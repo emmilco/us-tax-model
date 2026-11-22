@@ -2,7 +2,7 @@
  "form": "k1s",
  "reviews": {
   "gate:k1s.active_if_b2": {
-   "subject_sha": "51f24c22b147e8fff2040c31e7d4b14573aa63d777abf8f6644ce426ee4d0ac9",
+   "subject_sha": "b0ff249aa73fccef55a0bbc9db7cffbf824641c52459ac33f7ee80c2d95389e7",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -10,60 +10,50 @@
       {
        "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "A shareholder who made no tenant or rent decisions for the corporation's rental property, but arranged for contractors to make repairs and handle maintenance in a significant and bona fide way.",
-       "why_no": "The gate is titled 'Management decisions' and asks whether they helped make management decisions. Arranging repairs is not a management decision, so a truthful answer is no. The cited IRS sentence lists arranging for others to provide services as a separate way to actively participate.",
+       "who": "A shareholder who owns at least 10% all year and actively participated only by arranging repairs or approving repair/capital expenditures, without making tenant or rental-term decisions.",
+       "why_no": "The gate is labeled 'Management decisions' and its help stops at management decisions; the filer truthfully says no because they did not make those decisions.",
        "line": "k1s.tenth_if_active",
-       "irs_text": "i1120ssk p. 5: \"You may be treated as actively participating if you participated, for example, in making management decisions or arranging for others to provide services (such as repairs) in a significant and bona fide sense\"",
+       "irs_text": "i1120ssk p. 5: 'You may be treated as actively participating if you participated, for example, in making management decisions or arranging for others to provide services (such as repairs) in a significant and bona fide sense'; 'Management decisions that can count include ... approving capital or repair expenditures ...'",
        "severity": "high",
-       "fix": "Ask: 'Did you (or, on a joint return, your spouse) take part in a significant and bona fide way in this rental real estate, for example by approving tenants, setting rental terms, approving repair or capital spending, or arranging for others to provide services such as repairs?'"
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A married couple filing jointly where only the spouse approves tenants and repair spending for the S corporation's rental building. The filer is passive.",
-       "why_no": "The gate asks whether 'you' helped make management decisions and does not mention the spouse. The filer truthfully answers no. The next question, which counts the spouse's interest toward the 10% test, is then never asked.",
-       "line": "k1s.tenth_if_active",
-       "irs_text": "i1120ssk p. 5: \"your interest (including your spouse's interest) in the activity\"; \"married individuals filing a joint return can qualify for is $25,000\"",
-       "severity": "high",
-       "fix": "Word the gate as 'Did you, or on a joint return your spouse, ...'. Help text: 'Either spouse's participation counts.'"
+       "fix": "Ask broad active participation and show the full examples, including arranging services and approving capital/repair expenditures; do not label the gate only 'Management decisions'."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A shareholder whose K-1 leaves box 2 blank or zero this year but reports rental real estate credits in box 13. Another case: a shareholder carrying a prior-year unallowed rental real estate loss from this activity.",
-       "why_no": "The condition is computed false when box 2 shows no amount, so the participation and 10% questions are never asked. The special allowance also covers credits and prior-year unallowed losses.",
+       "who": "A shareholder with a rental real estate credit from the S corporation but no box 2 net income or loss, so box 2 shows no amount; they own at least 10% all year and actively participate.",
+       "why_no": "The gate is computed false whenever box 2 shows no amount, so the tool never asks the active-participation or 10% question.",
        "line": "k1s.tenth_if_active",
-       "irs_text": "i1120ssk p. 5: \"you may be able to deduct up to $25,000 of the loss (or credit equivalent to a $25,000 deduction) from the activity\"; \"(the excess of deductions and losses, including any prior-year unallowed loss, over income) or credits from a passive activity\"",
+       "irs_text": "i1120ssk p. 5: 'If you actively participated in a rental real estate activity, you may be able to deduct up to $25,000 of the loss (or credit equivalent to a $25,000 deduction) from the activity...'",
        "severity": "high",
-       "fix": "Make the gate true when box 2 shows an amount, OR box 13 shows a rental real estate credit, OR the filer reports a prior-year unallowed loss or credit from this corporation's rental real estate activity."
+       "fix": "Gate on a rental real estate loss or credit (or any box 2 amount or rental real estate credit), not solely on box 2 amount."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A shareholder who is also an officer of the S corporation. As officer, they approve leases and repair budgets for its rental real estate.",
-       "why_no": "They read the decisions as the corporation's, made in an officer role, not their own. The help text says 'the corporation's rental real estate activity', which supports that reading, so they answer no.",
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A joint filer whose spouse, not the filer, made the management decisions or arranged services for the S corporation's rental real estate activity; together they own at least 10% all year.",
+       "why_no": "The gate asks whether 'you' actively participated and does not say 'you or your spouse'; the filer answers no for themselves.",
        "line": "k1s.tenth_if_active",
-       "irs_text": "i1120ssk p. 5: \"Management decisions that can count as active participation include approving new tenants, deciding rental terms, approving capital or repair expenditures, and other similar decisions.\"",
+       "irs_text": "i1120ssk p. 5: 'your interest (including your spouse’s interest) in the activity was less than 10% (by value) of all interests in the activity.'",
        "severity": "medium",
-       "fix": "Add help text: 'Count decisions you made in any role, including as an officer or employee of the corporation.'"
+       "fix": "Gate should ask 'Did you or your spouse actively participate...' on a joint return, consistent with the 10% test's spouse rule."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A shareholder who approved a few new tenants and one roof replacement during the year, with a property manager handling day-to-day work.",
-       "why_no": "They think occasional approvals are too small to count as 'helping make management decisions' and answer no. The IRS treats approving tenants and repair spending as qualifying decisions, and active participation as less stringent than material participation.",
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A decedent whose final 2025 Form 1040 covers a short tax year ending at death; the decedent owned at least 10% and actively participated throughout that short tax year but did not own stock literally 'all through 2025'.",
+       "why_no": "The gated question asks 'all through 2025'; the filer/executor answers no because the decedent did not own after death, even though the IRS test is 'during the tax year'.",
        "line": "k1s.tenth_if_active",
-       "irs_text": "i1120ssk p. 5: \"Active participation is a less stringent requirement than material participation.\"",
+       "irs_text": "i1120ssk p. 5: 'You aren’t considered to actively participate ... if, at any time during the tax year, your interest ... was less than 10%...'",
        "severity": "medium",
-       "fix": "Add help text: 'Approving tenants, rental terms, or repair or capital spending counts, even if a manager handles day-to-day work. This is a lower bar than material participation.'"
+       "fix": "Ask 'throughout your 2025 tax year (including a short tax year)' rather than 'all through 2025'."
       }
      ],
-     "prompt_sha": "dfdfdfc693fb937f8bb674b17d3fa727e63781c3c9120387a11ad67fe5ce9634",
+     "prompt_sha": "8ffd75d26b3ef035dcc74c5294ad5c9f10d8bf709b1f65f9a855c0b04782c45c",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.082092,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1s.active_if_b2.51f24c22b147.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_k1s.active_if_b2.b0ff249aa73f.1.response.txt"
     }
    ],
    "condition": "k1s.active_if_b2",
@@ -88,6 +78,188 @@
      ],
      "cols_pages": [
       5
+     ],
+     "cols_sha256": "35409ab206f74e319d834ec1373b393b86ad5f91f16ec4d2319f1409bf6c7e7e"
+    }
+   ]
+  },
+  "gate:k1s.ask_dwelling": {
+   "subject_sha": "5f689f75655a258a3e1aea8e929c30b78b840860ff1575a933136ff9c5a95a2a",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A shareholder in an S corporation with a fiscal tax year ending in 2025 (for example, June 30, 2025) who used a rental dwelling personally for more than the threshold during the part of that fiscal year falling in 2024, but not during calendar 2025.",
+       "why_no": "The question says 'In 2025'; the shareholder truthfully answers no for calendar 2025, even though the K-1 year's personal use occurred in 2024.",
+       "line": "k1s.dwelling_if_rent",
+       "irs_text": "i1120ssk p. 5: 'The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value.'",
+       "severity": "high",
+       "fix": "Ask about the S corporation's tax year covered by the K-1, not calendar 2025; for example, 'During this S corporation's tax year, did ...'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A shareholder whose S corporation rental dwelling was used personally over the threshold, but whose K-1 shows no net amount in box 2 or box 3 because rental income and deductions net to zero, while the K-1 still reports rental deductions or a passive credit from that activity.",
+       "why_no": "The computed gate reads 'Box 2 or box 3 shows an amount'; with zero net box 2/3, the tool treats the gate as false and never asks, even though the activity has deductions or credits.",
+       "line": "k1s.dwelling_if_rent",
+       "irs_text": "i1120ssk p. 5: 'If you have net income (loss), deductions, or credits from either of the following activities, treat such amounts as nonpassive... The rental of a dwelling unit any shareholder used for personal purposes...'",
+       "severity": "high",
+       "fix": "Broaden the gate to any rental activity reported on the K-1 or statement with box 2/3 amounts, deductions, or credits, not only a nonzero net box 2/3 amount."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A shareholder who used the S corporation's rental apartment, condominium, mobile home, boat, or other non-house dwelling unit personally over the threshold, but answered no because the question says 'rental homes' rather than 'dwelling units.'",
+       "why_no": "They read 'home' as a house and not the broader 'dwelling unit' from the instructions.",
+       "line": "k1s.dwelling_if_rent",
+       "irs_text": "i1120ssk p. 5: 'The rental of a dwelling unit any shareholder used for personal purposes...'",
+       "severity": "medium",
+       "fix": "Replace 'rental homes' with 'dwelling units (including a house, apartment, condominium, mobile home, boat, or similar property)' or 'residential rental property.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A shareholder who used the S corporation's rental dwelling personally for 20 days in a year when it was never rented at fair rental value, so there were zero fair-rental days.",
+       "why_no": "The question asks whether use was 'over a tenth of the days it was rented at a fair price'; with zero such days, the shareholder reads the test as impossible or undefined and answers no.",
+       "line": "k1s.dwelling_if_rent",
+       "irs_text": "i1120ssk p. 5: '...more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value.'",
+       "severity": "medium",
+       "fix": "State that if there are no fair-rental days, the 10% figure is zero and the test is more than 14 personal-use days; or ask separately about fair-rental days."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A shareholder whose S corporation rental dwelling was used for 20 days by an unrelated guest who paid nothing, and the shareholder answers no because the help says 'anyone paying less than a fair rent' used it.",
+       "why_no": "They read 'paying less than a fair rent' as requiring some payment; free use is still less than fair rent under the rule.",
+       "line": "k1s.dwelling_if_rent",
+       "irs_text": "i1120ssk p. 5: 'The rental of a dwelling unit any shareholder used for personal purposes...'",
+       "severity": "medium",
+       "fix": "Say 'anyone who paid less than fair rent, including someone who paid nothing' or 'anyone who used it for less than fair rent, including free use.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A shareholder in an S corporation where the rental dwelling was used personally for 10 days by the filer and 10 days by another shareholder or family member, so total personal use is 20 days but no single person used it for over 14 days.",
+       "why_no": "The question asks whether 'you or another shareholder' used it for over 14 days, which reads as a single-user test; the help's 'a day counts' is not explicit that all users' days are summed.",
+       "line": "k1s.dwelling_if_rent",
+       "irs_text": "i1120ssk p. 5: 'The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days...'",
+       "severity": "medium",
+       "fix": "Ask whether the dwelling was used for personal purposes for more than the threshold in total by any shareholder, family member, or below-market renter; state that days by all such users are added."
+      }
+     ],
+     "prompt_sha": "0e08d3351b727fa90ae8e092754fd68b0349ff4d1989daf77fb080d170f48aed",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_k1s.ask_dwelling.5f689f75655a.1.response.txt"
+    }
+   ],
+   "condition": "k1s.ask_dwelling",
+   "lines": [
+    "k1s.dwelling_if_rent"
+   ],
+   "inputs": [
+    "k1s.dwelling"
+   ],
+   "used": [
+    {
+     "doc": "i1120ssk",
+     "revision": "2025",
+     "text_sha256": "1c1f935d5041f7e2d3f811dc3fae5a58ced98bf6c7bc15d2956b71acbcece2a8",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, \"The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "35409ab206f74e319d834ec1373b393b86ad5f91f16ec4d2319f1409bf6c7e7e"
+    }
+   ]
+  },
+  "gate:k1s.ask_re_pro": {
+   "subject_sha": "919c7ba1ffcdd342780a5d05c2efdb6db209d6fcfd5e1051d30bd820af3c7f86",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A shareholder who materially participates in the S corporation’s rental real estate but works fewer than 750 hours for that S corporation; they meet the 750-hour and more-than-half test through other real estate work, such as 800 hours as a real estate broker or in another rental.",
+       "why_no": "They read the question’s opening 'For this S corporation' as limiting the 750-hour test to work for this S corporation, so they answer no even though their total real estate work makes them a real estate professional.",
+       "line": "k1s.re_pro_if_b2",
+       "irs_text": "i1120ssk p. 6, Box 2: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
+       "severity": "high",
+       "fix": "Remove the 'For this S corporation' limitation or add: 'Hours in any real property trade or business count, not only hours for this S corporation.'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer with an S corporation K-1 box 2 amount who is a real estate professional and materially participates in that rental activity, but who also rents out personal property such as equipment or a vehicle.",
+       "why_no": "They truthfully answer yes to the scope helper because it asks whether they rent out or offer for rent 'anything you own or lease'; the computed gate is then false and the S-corporation real-estate-professional line is treated as no.",
+       "line": "k1s.re_pro_if_b2",
+       "irs_text": "i1120ssk p. 6, Box 2: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
+       "severity": "high",
+       "fix": "Limit the helper to real property rentals or royalties actually listed on Schedule E Part I, or ask the S-corporation RE-professional question whenever box 2 has an amount."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer with an S corporation K-1 box 2 amount who is a real estate professional and materially participates in that rental activity, and who offered their own vacation home or other real property for rent but did not actually rent it or list any rental income.",
+       "why_no": "They truthfully answer yes to the scope helper because it asks whether they 'offer for rent' property they own; the gate is then false even though no rental or royalty of their own is listed, so the S-corporation question is never asked.",
+       "line": "k1s.re_pro_if_b2",
+       "irs_text": "i1120ssk p. 6, Box 2: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
+       "severity": "high",
+       "fix": "Gate on an actual rental or royalty listed on Schedule E Part I, not on an offer for rent; do not suppress the S-corporation question merely because property was offered for rent."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "On a joint return, one spouse owns the S corporation K-1 with box 2 rental real estate and is a real estate professional who materially participates, while the other spouse has a small rental condo or receives royalties.",
+       "why_no": "The scope helper asks whether 'you (or, on a joint return, your spouse)' rented or received royalties; the spouse’s unrelated rental/royalty makes the computed gate false, so the S-corporation RE-professional question for the shareholder-spouse is never asked.",
+       "line": "k1s.re_pro_if_b2",
+       "irs_text": "i1120ssk p. 6, Box 2: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
+       "severity": "high",
+       "fix": "Do not use either spouse’s separate rental/royalty to suppress the S-corporation shareholder’s RE-professional question; ask it per shareholder and per activity."
+      }
+     ],
+     "prompt_sha": "b15dab7abffcda4a09c7f3ba94428a25a5d1be3301410d299b69d94b7ebf0afb",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_k1s.ask_re_pro.919c7ba1ffcd.1.response.txt"
+    }
+   ],
+   "condition": "k1s.ask_re_pro",
+   "lines": [
+    "k1s.re_pro_if_b2"
+   ],
+   "inputs": [
+    "k1s.re_pro"
+   ],
+   "used": [
+    {
+     "doc": "i1120ssk",
+     "revision": "2025",
+     "text_sha256": "1c1f935d5041f7e2d3f811dc3fae5a58ced98bf6c7bc15d2956b71acbcece2a8",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Box 2. Net Rental Real Estate Income (Loss), \"the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\""
+     ],
+     "cols_pages": [
+      6
      ],
      "cols_sha256": "35409ab206f74e319d834ec1373b393b86ad5f91f16ec4d2319f1409bf6c7e7e"
     }
@@ -723,7 +895,7 @@
    ]
   },
   "gate:k1s.box1_any": {
-   "subject_sha": "118a421a68e51c6986452597982f97dc2a0e4671b5b4dc9f07b94d262d8cc677",
+   "subject_sha": "64ad32d5ef988b6197b5435dc205db51cb380f5de1a01d4934e148e15a299919",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -731,59 +903,71 @@
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A shareholder whose K-1 box 1 is blank, but who has amounts from the corporation's trade or business activity in other boxes. Examples are a box 11 section 179 deduction, box 12 deductions, box 13 credits, or box 10 or box 17 items. The shareholder (or spouse) works full time in that business.",
-       "why_no": "The gate asks only whether box 1 shows an amount. Box 1 is truly blank, so the answer no is accurate. Work in the business is then forced to false even though the shareholder works there.",
-       "line": "k1s.work_if_b1",
-       "irs_text": "i1120ssk p. 4: 'You must determine if you materially participated (a) in each trade or business activity held through the corporation'; 'any work that you or your spouse does in connection with an activity held through an S corporation ... is counted toward material participation'",
+       "who": "A shareholder who worked in the S corporation's business in 2025, but the K-1's box 1 is zero or blank while the same S corporation activity produces a section 179 deduction, other deduction, or credit reported on the K-1.",
+       "why_no": "The gate asks only whether box 1 shows an amount. Box 1 shows no amount, so the filer truthfully answers no.",
+       "line": "k1s.work_if_b1; the tool then treats work as false and can misclassify non-box-1 deductions or credits from the activity as passive.",
+       "irs_text": "i1120ssk p. 5: Income (loss), deductions, and credits from an activity are nonpassive if you determine that you materially participated in a trade or business activity of the corporation; p. 4: any work that you or your spouse does in connection with an activity held through an S corporation is counted toward material participation.",
        "severity": "high",
-       "fix": "Do not gate the work question on box 1. Gate it on whether any K-1 box shows a trade or business or rental real estate item. Better, ask it for every S corporation K-1. Material participation is decided per activity, not per box."
+       "fix": "Ask the work/material-participation question whenever the K-1 has any item from the S corporation activity, not only when box 1 is non-zero; or gate it on any activity item in boxes 1, 11, 13, or an attached statement."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A real estate professional (more than 750 hours, and more than half of their services in real property businesses). Their S corporation K-1 shows only a box 2 rental real estate loss, and they manage the properties day to day.",
-       "why_no": "Box 1 is truly blank, so the answer no is accurate. Work in the business then defaults to false, and the box 2 loss is treated as passive.",
-       "line": "k1s.work_if_b1",
-       "irs_text": "i1120ssk p. 6, Box 2: 'the income (loss) in box 2 isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity'; p. 4: material participation must be determined '(b) if you were a real estate professional ... in each rental real estate activity'",
-       "severity": "high",
-       "fix": "Also ask the work question when box 2 shows an amount. At minimum, ask it whenever the filer reports real estate professional status."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A shareholder in a corporation with more than one trade or business activity (box 19 is checked). The attached statement shows income from one activity and an equal loss from another, so box 1 prints 0 or a dash.",
-       "why_no": "The filer reads '0' or a dash as 'does not show an amount' and answers no. Box 1 and work in the business are then never asked, although each activity's income or loss is treated separately. The loss may be passive while the income is nonpassive.",
-       "line": "k1s.box1_if_any (per-activity amounts), k1s.work_if_b1",
-       "irs_text": "i1120ssk p. 6, Box 1: 'If the corporation had more than one trade or business activity, it will attach a statement identifying the income or loss from each activity'; p. 4: 'If the corporation has more than one activity, it will attach a statement ... that ... specifies the income (loss), deductions, and credits from each activity'",
-       "severity": "medium",
-       "fix": "Ask: 'Does box 1 show any entry, including 0, or is box 19 checked with a statement that lists income or loss by activity?' When box 19 is checked, collect box 1 amounts per activity."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A shareholder whose box 1 losses from earlier years were not allowed because of basis or at-risk limits. This year box 1 is blank, but basis rose from other items or contributions, so the earlier losses are now deductible.",
-       "why_no": "'Does box 1 of this Schedule K-1 show an amount?' refers only to the current K-1. The filer answers no, and nothing collects the earlier-year box 1 losses or the work in the business needed to classify them.",
-       "line": "k1s.box1_if_any, k1s.work_if_b1",
-       "irs_text": "i1120ssk p. 6: 'If you have losses, deductions, or credits from a prior year that weren't deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your income, loss, or credits for this year'",
-       "severity": "low",
-       "fix": "Add a separate question, not gated on current box 1: 'Do you have business losses from this corporation that you could not deduct in an earlier year?'"
+       "who": "A shareholder with a prior-year unallowed passive loss from this S corporation and a current K-1 whose box 1 is zero, who worked in the corporation's business in 2025.",
+       "why_no": "The 2025 box 1 line shows no amount, so the filer answers no for the current K-1; the tool sets work false and does not free the prior-year suspended loss.",
+       "line": "k1s.work_if_b1",
+       "irs_text": "i1120ssk p. 6: If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, take them into account in determining your income, loss, or credits for this year; p. 5: income, deductions, and credits from an activity are nonpassive if you materially participated.",
+       "severity": "high",
+       "fix": "Gate work on the existence of a current or prior-year suspended amount from this S corporation, not only current box 1; ask separately about prior-year passive losses."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A shareholder in an S corporation whose business is trading stocks, commodities, or other investments for its owners, but whose K-1 box 1 is zero or blank.",
+       "why_no": "Box 1 shows no amount, so the filer truthfully answers no to the gate; the tool sets trader false and never asks the question whose Yes ends the interview as outside scope.",
+       "line": "k1s.trader_if_b1",
+       "irs_text": "i1120ssk p. 5: Trading personal property for the account of owners of interests in the activity is treated as nonpassive; p. 4: passive activities do not include activities of trading personal property for the account of owners of interests in the activities.",
+       "severity": "high",
+       "fix": "Ask the trading question as a standalone scope question for every S corporation K-1, or gate it on any K-1 activity item, not only box 1."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A shareholder in an S corporation with more than one trade or business activity; box 1 nets to zero because one activity has income and another has a loss, and the K-1 attaches a statement identifying each activity's income or loss.",
+       "why_no": "The box 1 line itself shows zero, so the filer answers no; the tool zeroes ordinary business income/loss and never asks which activity the filer worked in or whether an activity is trading.",
+       "line": "k1s.box1_if_any and k1s.work_if_b1",
+       "irs_text": "i1120ssk p. 6: If the corporation had more than one trade or business activity, it will attach a statement identifying the income or loss from each activity; p. 5: income, deductions, and credits from an activity are nonpassive if you materially participated in that trade or business activity.",
+       "severity": "high",
+       "fix": "Gate on any amount in box 1 or in the attached activity statement, and capture per-activity ordinary income/loss and material participation."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married-filing-jointly filer whose spouse is the shareholder and whose spouse's S corporation K-1 shows an amount in box 1, while the filer personally has no K-1 for that corporation.",
+       "why_no": "The gate says this Schedule K-1, not you or your spouse; the filer reads it as asking about their own K-1 and answers no, so the spouse's K-1 is treated as zero.",
+       "line": "k1s.box1_if_any; also k1s.trader_if_b1 and k1s.work_if_b1",
+       "irs_text": "i1120ssk p. 6: The amount reported in box 1 is your share of the ordinary income (loss) from trade or business activities of the corporation; report box 1 income (loss) from corporate trade or business activities in column (i) or (k) of Schedule E, line 28.",
+       "severity": "medium",
+       "fix": "Say you or your spouse, or make the gate explicitly cover a K-1 belonging to either spouse on a joint return."
       }
      ],
-     "prompt_sha": "967d994fea5f8e92c1c6848a215293147d3c9d749ea89c11945ca08dd347dfd9",
+     "prompt_sha": "66a8442247d2da8bf450ac6f47a381b9d4f1eb6d16fc5c7116039a5b3e991108",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.101924,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1s.box1_any.118a421a68e5.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_k1s.box1_any.64ad32d5ef98.1.response.txt"
     }
    ],
    "condition": "k1s.box1_any",
    "lines": [
     "k1s.box1_if_any",
+    "k1s.trader_if_b1",
     "k1s.work_if_b1"
    ],
    "inputs": [
     "k1s.box1",
+    "k1s.trader",
     "k1s.work"
    ],
    "used": [
@@ -807,15 +991,18 @@
      "text_sha256": "1c1f935d5041f7e2d3f811dc3fae5a58ced98bf6c7bc15d2956b71acbcece2a8",
      "pages": [
       4,
+      5,
       6
      ],
      "how": "cited pages",
      "locators": [
       "p. 4, Work counted toward material participation, \"Generally, any work that you or your spouse does in connection with an activity held through an S corporation (where you own your stock at the time the work is done) is counted toward material participation\"",
+      "p. 5, \"Trading personal property for the account of owners of interests in the activity\"",
       "p. 6, Box 1. Ordinary Business Income (Loss), \"Report box 1 income (loss) from corporate trade or business activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28\""
      ],
      "cols_pages": [
       4,
+      5,
       6
      ],
      "cols_sha256": "35409ab206f74e319d834ec1373b393b86ad5f91f16ec4d2319f1409bf6c7e7e"
@@ -823,58 +1010,58 @@
    ]
   },
   "gate:k1s.box2_any": {
-   "subject_sha": "1ba64fa227d5ecdc6fdac826dca651aa928c060bd0ac45562b06a6f177159277",
+   "subject_sha": "8084d810e9af9786e159ef78314baca9e86009a84e9c7d274dcd67d9513dd1fb",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A shareholder whose S corporation's rental real estate lost money in an earlier year and whose loss was suspended under the passive rules (or the basis or at-risk rules). In 2025 the rental broke even or was sold, so box 2 of the 2025 K-1 is blank. The filer approves tenants and repairs, owns at least 10%, and has MAGI under $150,000.",
-       "why_no": "Box 2 of this year's K-1 really is blank, so the honest answer is no. The tool never asks about active participation, and the suspended loss carried in from earlier years is never tested against the $25,000 special allowance.",
+       "pattern": "5",
+       "who": "A shareholder in an S corporation that reports a rental real estate credit in box 13 (for example, a low-income housing credit) but whose box 2 net rental real estate income/loss is blank or zero; the shareholder actively participates in the rental real estate.",
+       "why_no": "The gate asks only whether box 2 shows an amount. The shareholder truthfully answers no because box 2 is blank or zero, even though the rental real estate credit makes active participation matter.",
        "line": "k1s.active_if_b2",
-       "irs_text": "i1120ssk p. 5: 'If you have an overall loss (the excess of deductions and losses, including any prior-year unallowed loss, over income) ... from a passive activity'; 'If you actively participated in a rental real estate activity, you may be able to deduct up to $25,000 of the loss ... from nonpassive income.' i1120ssk p. 6: 'If you have losses ... from a prior year that weren't deductible ... take them into account in determining your income, loss, or credits for this year.'",
+       "irs_text": "i1120ssk p. 5: 'If you actively participated in a rental real estate activity, you may be able to deduct up to $25,000 of the loss (or credit equivalent to a $25,000 deduction) from the activity from nonpassive income.'",
        "severity": "high",
-       "fix": "Ask the active-participation question when box 2 shows an amount, or the filer reports a prior-year unallowed loss from this corporation's rental real estate, or another box reports rental real estate items. Example gate: 'Does this K-1 or its statement report any rental real estate income, loss, gain or credit, or do you have an unused loss from this corporation's rental real estate from an earlier year?'"
+       "fix": "Ask active participation if box 2 shows an amount OR the K-1 reports a rental real estate credit, such as a box 13 credit from the rental real estate activity."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A shareholder with a prior-year unallowed passive loss from this S corporation's rental real estate activity; the current K-1 box 2 is blank or zero, but the shareholder actively participates in 2025 and wants to use the special allowance against nonpassive income.",
+       "why_no": "The gate asks whether current box 2 shows an amount. The shareholder truthfully answers no because current box 2 is blank or zero, even though the prior-year unallowed loss from the same rental activity remains and active participation affects the special allowance.",
+       "line": "k1s.active_if_b2",
+       "irs_text": "i1120ssk p. 5: 'If you have an overall loss (the excess of deductions and losses, including any prior-year unallowed loss, over income) ...' and 'If you actively participated in a rental real estate activity, you may be able to deduct up to $25,000 of the loss ... from the activity from nonpassive income.'",
+       "severity": "high",
+       "fix": "Ask active participation when there is a prior-year unallowed passive loss from this S corporation's rental real estate activity, even if current box 2 is zero."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A shareholder whose K-1 reports rental real estate items outside box 2. Examples: a box 13 rental real estate credit, a box 9 section 1231 loss on the sale of a rental building, or rental-related deductions in box 11 or 12. Box 2 itself is blank.",
-       "why_no": "The gate asks only about box 2, which is blank. The active-participation question is therefore never asked, although it controls the special allowance for those other rental real estate losses and its credit equivalent.",
+       "who": "A shareholder in an S corporation with more than one rental real estate activity where box 2 nets to zero because one activity has a loss and another has income; the shareholder actively participates in the loss activity.",
+       "why_no": "The gate asks only whether the net box 2 line shows an amount. The shareholder truthfully answers no because box 2 nets to zero, even though the attached statement identifies a loss activity for which active participation can allow the special allowance.",
        "line": "k1s.active_if_b2",
-       "irs_text": "i1120ssk p. 5: 'you may be able to deduct up to $25,000 of the loss (or credit equivalent to a $25,000 deduction) from the activity from nonpassive income.'",
-       "severity": "medium",
-       "fix": "Ask the active-participation question on a broader gate: any rental real estate amount anywhere on the K-1 or its statement (boxes 2, 9, 10, 11, 12 or 13), or a carryover from such an activity."
+       "irs_text": "i1120ssk p. 6: 'If the corporation had more than one rental real estate activity, it will attach a statement identifying the income or loss from each activity.' i1120ssk p. 5: 'If you actively participated in a rental real estate activity, you may be able to deduct up to $25,000 of the loss ... from the activity from nonpassive income.'",
+       "severity": "high",
+       "fix": "Ask active participation when the K-1 or attached statement shows any rental real estate activity loss, even if the net box 2 line is zero."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A shareholder in an S corporation with more than one rental real estate activity. The attached statement shows income in one activity and a loss in another, and they net to zero, so box 2 is blank or shows 0.",
-       "why_no": "The filer reads 'Does box 2 show an amount' as asking about a nonzero net figure. The tool then never collects the loss of each activity or active participation, although the passive rules apply activity by activity.",
+       "who": "A shareholder whose box 2 shows a loss in parentheses or with a minus sign but who does not recognize that as an amount.",
+       "why_no": "The gate asks whether box 2 'show[s] an amount'; the filer reads the parentheses as a note or as no positive income and answers no.",
        "line": "k1s.box2_if_any",
-       "irs_text": "i1120ssk p. 6: 'If the corporation had more than one rental real estate activity, it will attach a statement identifying the income or loss from each activity.'",
+       "irs_text": "i1120ssk p. 6: 'Generally, the income (loss) reported in box 2 is a passive activity amount for all shareholders.'",
        "severity": "medium",
-       "fix": "Ask: 'Does box 2, or an attached statement for box 2, show any rental real estate income or loss, even if the total is zero?' Then collect the amount for each activity listed on the statement."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A shareholder whose box 2 shows 'STMT' or an asterisk instead of a dollar figure, with the amounts given on an attached statement.",
-       "why_no": "The filer sees no number printed in box 2 and answers that it shows no amount.",
-       "line": "k1s.box2_if_any",
-       "irs_text": "i1120ssk p. 6: 'For those informational items that can't be reported as a single dollar amount, the corporation will enter an asterisk in the left column and enter \"STMT\" in the dollar amount entry space.'",
-       "severity": "low",
-       "fix": "Add help to the gate: 'Answer yes if box 2 shows a number, a loss in parentheses, or \"STMT\" or an asterisk pointing to an attached statement.'"
+       "fix": "Add the loss-format help to the gate: 'A loss shown in parentheses or with a minus sign is an amount.'"
       }
      ],
-     "prompt_sha": "021cbdefff5a61a46b75bc9804265b62e206093156402e72d2e06098c256452c",
+     "prompt_sha": "9db13efb3cc0ae71d6c306af39faf4ef6fb1441c28738560002d265114193b7d",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.090192,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1s.box2_any.1ba64fa227d5.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_k1s.box2_any.8084d810e9af.1.response.txt"
     }
    ],
    "condition": "k1s.box2_any",
@@ -1289,98 +1476,88 @@
    ]
   },
   "gate:k1s.has_loss": {
-   "subject_sha": "353b26293e2e1ca53ba40e321822c811f6d98b56c94f901ef0cd5d9c11c4074e",
+   "subject_sha": "6c68707c2286f90dd30a92cb3ced6fcc3e8ab1ce2636cfa466ffb0ee3a2dadde",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "An S corporation shareholder whose K-1 shows income in boxes 1, 2, 3, 7 and 8a but a section 179 deduction in box 11 or other deductions in box 12 (for example, investment interest or charitable items tied to the activity). They bought the stock with nonrecourse debt.",
-       "why_no": "The computed gate counts only losses in boxes 1, 2, 3, 7 and 8a. With no loss in those boxes, the not-at-risk question is never asked.",
+       "pattern": "other",
+       "who": "A shareholder whose only S corporation loss is a box 9 net section 1231 loss (for example, a loss on disposition of business assets), with no loss in boxes 1, 2, 3, 7, or 8a, and who has stock or loan basis that is not at risk.",
+       "why_no": "The gate counts only losses in boxes 1, 2, 3, 7 and 8a; a box 9 loss makes the computed condition false, so the not-at-risk question is skipped even though the IRS at-risk text expressly includes a loss on disposition of assets.",
        "line": "k1s.not_at_risk_if_loss",
-       "irs_text": "i1120ssk p. 3: 'if you have (a) a loss or other deduction from any activity ... These losses and deductions include a loss on the disposition of assets and the section 179 expense deduction.'",
+       "irs_text": "i1120ssk p. 3: 'These losses and deductions include a loss on the disposition of assets and the section 179 expense deduction.'",
        "severity": "high",
-       "fix": "Widen the gate to include any deduction or loss item: box 9 net section 1231 loss, box 10 other loss, box 11 section 179, box 12 other deductions, and loss items in box 17 or on a box 18 statement. Better, ask the at-risk funding question of every S corporation shareholder."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A shareholder whose K-1 shows a net section 1231 loss in box 9, or a loss on an asset disposition in box 10, while boxes 1 through 8a show income or zero. Their stock basis came from a loan guaranteed by another party.",
-       "why_no": "No loss appears in boxes 1, 2, 3, 7 or 8a, so the gate computes false.",
-       "line": "k1s.not_at_risk_if_loss",
-       "irs_text": "i1120ssk p. 3: 'These losses and deductions include a loss on the disposition of assets'",
-       "severity": "high",
-       "fix": "Include boxes 9 and 10 losses, and any other loss item, in the gate helper."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A shareholder whose loss was disallowed under the at-risk rules in an earlier year. This year the K-1 shows income in every box, and the prior-year loss carries into this year.",
-       "why_no": "The gate looks only at this year's K-1 boxes. The carryover appears on no K-1 line.",
-       "line": "k1s.not_at_risk_if_loss",
-       "irs_text": "i1120ssk p. 3: 'Any loss from a section 465 activity not allowed for this tax year will be treated as a deduction allocable to the activity in the next tax year.'",
-       "severity": "high",
-       "fix": "Add a question: 'Did a prior year's return (Form 6198) carry forward a loss from this S corporation that the at-risk rules did not allow?' A yes should also trigger the at-risk question."
+       "fix": "Add box 9 to the gate, or gate on any activity loss or other deduction subject to the at-risk rules, not only the enumerated boxes."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "other",
-       "who": "A shareholder in an S corporation that runs several activities. One activity has a loss and another has larger income, so the netted K-1 box 1 shows income. Box 18 is checked with a per-activity statement.",
-       "why_no": "The gate reads netted box amounts. A loss in one activity is hidden in a positive box total.",
+       "who": "A shareholder with a box 10 other loss from the S corporation's trade or business or income-producing activity, no loss in boxes 1, 2, 3, 7, or 8a, and amounts not at risk.",
+       "why_no": "Box 10 is omitted from the gate, so a box 10 loss is treated as no loss and the not-at-risk question is never asked.",
+       "line": "k1s.not_at_risk_if_loss",
+       "irs_text": "i1120ssk p. 3: 'if you have (a) a loss or other deduction from any activity carried on as a trade or business or for the production of income by the corporation, and (b) amounts in the activity for which you aren't at risk, you will have to complete Form 6198'",
+       "severity": "high",
+       "fix": "Include box 10 losses or gate on any activity loss or deduction subject to at-risk."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A shareholder with a section 179 expense deduction in box 11 (or another at-risk other deduction in box 12) and no loss in boxes 1, 2, 3, 7, or 8a, who has not-at-risk stock or loan basis.",
+       "why_no": "The gate asks only for a loss in the listed boxes; a section 179 or other deduction is not a loss in those boxes, so the filer is not asked even though the at-risk rules limit the deduction.",
+       "line": "k1s.not_at_risk_if_loss",
+       "irs_text": "i1120ssk p. 3: 'These losses and deductions include a loss on the disposition of assets and the section 179 expense deduction'; and the general rule applies to a 'loss or other deduction from any activity' when amounts are not at risk.",
+       "severity": "high",
+       "fix": "Ask the not-at-risk question when box 11 section 179 (or another at-risk deduction) is present, even if the listed loss boxes are zero."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A shareholder with two activities in one S corporation: one activity has a loss and not-at-risk amounts, while another activity has enough income that the K-1 box (for example, box 1) shows no net loss.",
+       "why_no": "The gate tests the net box total, not each activity; the filer truthfully sees no loss in the box and is not asked, but at-risk limits apply activity by activity.",
        "line": "k1s.not_at_risk_if_loss",
        "irs_text": "i1120ssk p. 3: 'Since at-risk limitations apply for each activity, you should get a separate statement of income, expenses, and other items for each activity from the corporation.'",
-       "severity": "medium",
-       "fix": "Ask whether box 18 is checked or an at-risk activity statement is attached. If so, check each activity for a loss, or ask the at-risk question regardless."
+       "severity": "high",
+       "fix": "Use the separate activity statement and gate on any activity-level loss subject to at-risk, not on the net K-1 box."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A shareholder who received stock by contributing property (for example, real estate) that carried nonrecourse debt the corporation took over. Or one who contributed equipment financed by a loan from another owner.",
-       "why_no": "The question asks whether they 'pay for your shares ... with money borrowed'. They paid no money; they contributed property.",
+       "pattern": "1",
+       "who": "A shareholder with a prior-year section 465 loss suspended by the at-risk rules from this S corporation, and no current-year loss in boxes 1, 2, 3, 7, or 8a, whose current at-risk amount determines whether and how much of the carryover is allowed.",
+       "why_no": "The gate looks only for a current-year loss in the listed boxes; with current income or no current loss, the filer is not asked, even though the prior-year suspended loss makes current at-risk status matter.",
        "line": "k1s.not_at_risk_if_loss",
-       "irs_text": "i1120ssk p. 3: 'Any cash or property contributed to a corporate activity ... that is (a) covered by nonrecourse indebtedness ... or (c) covered by indebtedness from a person who has an interest in the activity'",
+       "irs_text": "i1120ssk p. 3: 'Any loss from a section 465 activity not allowed for this tax year will be treated as a deduction allocable to the activity in the next tax year.'",
        "severity": "high",
-       "fix": "Reword: 'Did you get your shares, or make loans to the corporation, using money or property that was financed by debt you are not personally liable for, debt someone guarantees for you, or debt owed to another owner or someone related to one, or did you contribute property subject to such debt?'"
+       "fix": "Include prior-year suspended at-risk losses from this S corporation or activity in the gate, or ask about carryovers separately."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A shareholder who paid for stock with their own savings, but under a stop-loss agreement or buy-back promise: another owner or the corporation agreed to buy the shares back at cost, or to reimburse any losses.",
-       "why_no": "The question asks only about money that was borrowed. No borrowing occurred, so they answer no.",
-       "line": "k1s.not_at_risk_if_loss",
-       "irs_text": "i1120ssk p. 3: 'Any cash or property contributed to a corporate activity, or your interest in the corporate activity, that is ... (b) protected against loss by a guarantee, stop-loss agreement, or other similar arrangement'",
-       "severity": "high",
-       "fix": "Add a separate clause: 'or does any agreement (a stop-loss, buy-back at a guaranteed price, or reimbursement promise) protect you from losing what you put into the corporation?'"
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "Joint filers where the spouse holds the S corporation shares and bought them with a nonrecourse loan. The other spouse is completing the interview.",
-       "why_no": "The question says 'Did you pay for your shares'. The preparer answers about themselves and says no.",
+       "who": "On a joint return, the taxpayer-spouse does not own the S corporation, but the other spouse does and has stock or loan basis that is not at risk.",
+       "why_no": "The gated question says 'you' and asks what 'you put into it'; the taxpayer can truthfully answer no for himself or herself, leaving out the spouse's facts that make the joint return's line true.",
        "line": "k1s.not_at_risk_if_loss",
-       "irs_text": "i1120ssk p. 3: 'The basis of your stock in the corporation or the basis of your loans to the corporation if the cash or other property used to purchase the stock or make the loans was from a source (a) covered by nonrecourse indebtedness'",
-       "severity": "medium",
-       "fix": "Name the shareholder on the K-1: 'Did [shareholder named on this K-1] pay for ...', or say 'you or your spouse, whoever owns these shares'."
+       "irs_text": "i1120ssk p. 3: 'if you have (a) a loss or other deduction from any activity ... and (b) amounts in the activity for which you aren't at risk, you will have to complete Form 6198'",
+       "severity": "high",
+       "fix": "Ask 'you or your spouse' and include the spouse's S corporation interests and at-risk amounts on a joint return."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A shareholder who borrowed from a lender that also holds an equity or profit interest in the activity. One example is a seller-financed purchase where the seller keeps a share of profits. Another is a loan from a related person's company.",
-       "why_no": "The help says 'A loan from a bank or other outside lender that you must repay yourself is not meant.' The filer sees the lender as an outside lender and answers no, though the lender has an interest in the activity.",
+       "pattern": "8",
+       "who": "A shareholder who borrowed money to invest in the S corporation from a fellow shareholder, or from a relative of a shareholder, and must repay the loan personally.",
+       "why_no": "The help says 'A bank loan you must repay yourself does not count'; the filer reads that as any loan they must repay, even though a loan from a person with an interest in the activity (other than an ordinary creditor) is not at risk under the IRS rule.",
        "line": "k1s.not_at_risk_if_loss",
-       "irs_text": "i1120ssk p. 3: '(c) that is covered by indebtedness from a person who has an interest in the activity or from a person related to a person (except you) having such an interest, other than a creditor'",
+       "irs_text": "i1120ssk p. 3: not at risk when the stock or loan basis is from a source 'covered by indebtedness from a person who has an interest in the activity or from a person related to a person (except you) having such an interest, other than a creditor.'",
        "severity": "medium",
-       "fix": "Change the help: 'A loan from a lender with no other stake in the corporation or its business, that you must repay yourself, is not meant. A lender who also shares in profits, owns part of the business, or is related to an owner counts.'"
+       "fix": "Clarify that the bank-loan exception is only for ordinary creditors and that loans from owners, persons with an interest, or their relatives are not at risk even if the filer is personally liable."
       }
      ],
-     "prompt_sha": "80bb41c1294b6ccc5d0efa94ea93017e91293df2accb1df08a3e0ca2149835d9",
+     "prompt_sha": "8fc198cd5f82bea118547c1c6712d9a139c453d912091a4786abd251c4e69e37",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.091288,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1s.has_loss.353b26293e2e.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_k1s.has_loss.6c68707c2286.1.response.txt"
     }
    ],
    "condition": "k1s.has_loss",
@@ -1410,88 +1587,98 @@
    ]
   },
   "gate:k1s.other_ask": {
-   "subject_sha": "b5a0e8487d1082bc8e8f7d712a822895fb4095d944d73d0e4b72b5e82157a008",
+   "subject_sha": "137d878ca93a38678db4ab398ba5dc77bf1bd492a4f9a9b7114002f7cd946ce0",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A shareholder whose K-1 box 1 is zero or blank but whose trade or business activity reaches them through other boxes, such as a box 11 section 179 deduction or box 12 or 13 deductions and credits. They meet test 2 or 4.",
-       "why_no": "The worked-in-the-business helper is asked only when box 1 shows an amount and is false otherwise. The gate is computed false without asking anything.",
-       "line": "k1s.mp_other_if_ask",
-       "irs_text": "i1120ssk p. 4: \"You must determine if you materially participated (a) in each trade or business activity held through the corporation\"",
-       "severity": "high",
-       "fix": "Gate the worked-in-the-business question on any trade or business item on the K-1 (boxes 1, 10–13, 17 and the attached statements), not on box 1 alone."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A real estate professional, or the spouse who is one on a joint return, whose S corporation K-1 shows rental real estate income or loss in box 2 and nothing in box 1. They participate in that rental under test 2, 4 or 7.",
-       "why_no": "The gate keys only on box 1 and on 'the business'. Box 2 rental real estate never reaches the material participation questions.",
-       "line": "k1s.mp_other_if_ask",
-       "irs_text": "i1120ssk p. 4: \"(b) if you were a real estate professional (defined earlier), in each rental real estate activity held through the corporation\"",
-       "severity": "high",
-       "fix": "Ask whether you or your spouse was a real estate professional when box 2 shows an amount. On yes, apply the material participation tests, or refuse as outside scope."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A married shareholder whose spouse, not the shareholder, did the work in the S corporation's business. For example, the spouse ran operations for over 100 hours and did substantially all the work.",
-       "why_no": "The gate is 'Worked in the business', and the gated question asks 'Did you do nearly all the work… work over 100 hours'. A shareholder who did no work personally answers no.",
+       "who": "A shareholder who personally did no work in the S corporation in 2025, but whose spouse did substantially all the participation or enough significant-participation hours so the shareholder is treated as materially participating.",
+       "why_no": "The gate asks whether 'you' worked in the business; the filer truthfully says no because the spouse did the work, even though the gated question itself asks 'you (or your spouse)'.",
        "line": "k1s.mp_other_if_ask",
-       "irs_text": "i1120ssk p. 4: \"Generally, any work that you or your spouse does in connection with an activity held through an S corporation ... is counted toward material participation.\"",
+       "irs_text": "i1120ssk p. 4: 'Generally, any work that you or your spouse does in connection with an activity held through an S corporation ... is counted toward material participation.'",
        "severity": "high",
-       "fix": "Ask 'Did you or your spouse work in the business?' and count both spouses' hours in every test. Say so even on a separate return, since the instructions count a spouse's work regardless of filing status."
+       "fix": "Make the gate 'Did you or your spouse work in the business during the corporation's tax year?' and compute tests 1, 3, 5, and 6 using the spouse's work."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A retired or disabled farmer, or the surviving spouse of a farmer, who holds an S corporation farming activity. They did no work in 2025, but the special rules treat them as materially participating.",
-       "why_no": "They truthfully did not work in the business in 2025. The gate is false and the refusal for a case outside the tool's scope never fires.",
-       "line": "k1s.mp_other_if_ask",
-       "irs_text": "i1120ssk p. 4: \"Special rules apply to certain retired or disabled farmers and to the surviving spouses of farmers. See the Instructions for Form 8582 for details.\"",
-       "severity": "high",
-       "fix": "Before the worked question, ask whether the activity is farming and whether you are a retired or disabled farmer or a farmer's surviving spouse. Refuse on yes."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A shareholder in an S corporation with a fiscal tax year ending in 2025 (for example, a section 444 year ending September 30, 2025). All of their work fell in October–December 2024.",
-       "why_no": "The gate says 'Worked in the business in 2025', but participation is measured over the corporation's tax year, part of which fell in 2024.",
+       "who": "A shareholder in an S corporation with a fiscal tax year ending in 2025 who performed substantially all participation during the part of the corporation's tax year falling in 2024, but did no work in calendar 2025.",
+       "why_no": "The gate says 'in 2025'; the filer reads that as calendar 2025 and answers no, even though the work was in the corporation's tax year.",
        "line": "k1s.mp_other_if_ask",
-       "irs_text": "i1120ssk p. 4: \"All determinations of material participation are based on your participation during the corporation's tax year.\"",
-       "severity": "medium",
-       "fix": "Ask about work during the corporation's tax year shown on the K-1 (the dates at the top), not during 2025."
+       "irs_text": "i1120ssk p. 4: 'All determinations of material participation are based on your participation during the corporation’s tax year.'",
+       "severity": "high",
+       "fix": "Replace 'in 2025' with 'during the corporation's tax year' and use the K-1 tax year, not the calendar year."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A shareholder who worked 150 hours in the S corporation and 400 hours in their own sole proprietorship and a partnership business, each over 100 hours with no material participation. The total exceeds 500 hours, so test 4 is met.",
-       "why_no": "'Over 500 hours in all such businesses together' reads as S corporations, or businesses like this one. They count only 150 hours.",
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A shareholder whose S corporation activity produced no box 1 ordinary income (box 1 zero or blank) but had a separately stated rental real estate loss or passive credit, and who materially participated in that activity under test 2, 4, or 7.",
+       "why_no": "The first helper is false whenever box 1 shows no amount, so the tool never asks; the filer never gets to say yes to material participation that matters for the rental loss or credit.",
        "line": "k1s.mp_other_if_ask",
-       "irs_text": "i1120ssk p. 4: \"you participated in all significant participation activities (including activities outside the corporation) during the year for more than 500 hours\"",
-       "severity": "medium",
-       "fix": "Reword as: 'over 500 hours in total across all businesses of any kind (sole proprietorships, partnerships, other S corporations) where you worked over 100 hours each but did not otherwise materially participate'."
+       "irs_text": "i1120ssk p. 4: 'You must determine if you materially participated (a) in each trade or business activity held through the corporation; and (b) if you were a real estate professional, in each rental real estate activity held through the corporation.'",
+       "severity": "high",
+       "fix": "Remove the box-1-only gate; ask when any K-1 activity has a loss, credit, or other item affected by passive activity rules, not only when box 1 has an amount."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "An owner who did not perform hands-on tasks but regularly made management decisions, hired staff and negotiated contracts. This is participation that may meet test 7.",
-       "why_no": "'Worked in the business' reads as doing the business's operational work or being on payroll. Management decisions are not perceived as 'work'.",
+       "who": "A shareholder who performed about 80-85% of all participation in the S corporation activity, with the rest done by employees, which can be 'substantially all' under the IRS standard but is not naturally described as 'almost all'.",
+       "why_no": "The gated question asks 'do almost all its work'; the filer reads that as requiring near-total work and answers no.",
        "line": "k1s.mp_other_if_ask",
-       "irs_text": "i1120ssk p. 4: \"7. Based on all the facts and circumstances, you participated in the activity on a regular, continuous, and substantial basis during the tax year.\"",
+       "irs_text": "i1120ssk p. 4, test 2: 'Your participation in the activity for the tax year constituted substantially all the participation in the activity of all individuals (including individuals who aren’t owners of interests in the activity).'",
        "severity": "medium",
-       "fix": "Ask 'Did you or your spouse participate in the business in any way (operations, management, decisions), other than only as an investor reviewing reports?'"
+       "fix": "Ask whether participation constituted 'substantially all the participation in the activity of all individuals, including non-owners' instead of 'almost all its work'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A shareholder with more than 100 hours in this S corporation and more than 500 hours total in significant participation activities, where the additional hours are in a partnership or sole proprietorship rather than another S corporation.",
+       "why_no": "The question says 'over 500 hours in all such businesses'; the filer reads 'such businesses' as other S corporations or similar corporations, not all significant participation activities including activities outside the corporation.",
+       "line": "k1s.mp_other_if_ask",
+       "irs_text": "i1120ssk p. 4, test 4: 'The activity was a significant participation activity for the tax year, and you participated in all significant participation activities (including activities outside the corporation) during the year for more than 500 hours.'",
+       "severity": "medium",
+       "fix": "Say 'all significant participation activities, including activities outside this corporation' and define significant participation activity as more than 100 hours with no material participation under another test."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A shareholder who participated on a regular, continuous, and substantial basis (test 7) but did not do almost all the work and did not have 100/500 hours, and who does not recognize facts-and-circumstances as a listed material participation test.",
+       "why_no": "The question lists 'almost all', '100/500', or 'another material participation test'; the filer reads the specifics as the whole rule and does not know that regular, continuous, substantial participation is itself a test.",
+       "line": "k1s.mp_other_if_ask",
+       "irs_text": "i1120ssk p. 4, test 7: 'Based on all the facts and circumstances, you participated in the activity on a regular, continuous, and substantial basis during the tax year.'",
+       "severity": "medium",
+       "fix": "Spell out the facts-and-circumstances test in the question or help, or ask a broad yes/no about regular, continuous, substantial participation and classify after."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A shareholder who is a retired or disabled farmer, or the surviving spouse of a farmer, and is treated as materially participating under the special rules but did not work in the business in 2025 and meets none of tests 1, 3, 5, or 6.",
+       "why_no": "The gate asks whether they worked in the business and whether no test is met; they truthfully answer that they did not work and do not meet the listed tests, so the special-rule participation is never asked.",
+       "line": "k1s.mp_other_if_ask",
+       "irs_text": "i1120ssk p. 4: 'Special rules apply to certain retired or disabled farmers and to the surviving spouses of farmers. See Instructions for Form 8582 for details.'",
+       "severity": "high",
+       "fix": "Add a gate or question for the retired-or-disabled-farmer and surviving-spouse special rules, or state that they are treated as materially participating without meeting tests 1-7."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A shareholder who worked in the S corporation in 5 of the prior 10 years but did not legally 'materially participate' in those years, and who meets test 2 or 4 in the current year; they answer the earlier-years helper yes because they were involved.",
+       "why_no": "The earlier-years helper asks the legal conclusion 'materially participated'; the filer reads it as 'worked/owned' and says yes, making the gate false and skipping the current-year other tests.",
+       "line": "k1s.mp_other_if_ask",
+       "irs_text": "i1120ssk p. 4, test 5: 'You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year'; test 2: 'substantially all the participation ...'",
+       "severity": "medium",
+       "fix": "Ask checkable prior-year facts such as hours or participation, or do not let an uncertain prior-year answer suppress the current-year other-test question; ask current-year tests first."
       }
      ],
-     "prompt_sha": "2caecb478830b007d981790e07bf68bd187787a988ec39f3376a48e5dacd6f8b",
+     "prompt_sha": "9a174a0e73b93106074b5e0efa818409129ce6eaa5dc673f8985f79336c53474",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.08924800000000001,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1s.other_ask.b5a0e8487d10.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_k1s.other_ask.137d878ca93a.1.response.txt"
     }
    ],
    "condition": "k1s.other_ask",
@@ -1522,68 +1709,58 @@
    ]
   },
   "gate:k1s.past_ask": {
-   "subject_sha": "d96807cb8659dcbf97085c5a7fcf1f77935df467c60febacbb3f91bca9ba20a2",
+   "subject_sha": "86f3ba1dbe9c9921767fd910cbc79dde063dec1036035ac901f4a82cd056f0fb",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A married shareholder filing separately. Their spouse worked full time in the S corporation's business in 6 of the years 2015 to 2024. The filer did not.",
-       "why_no": "The question counts the spouse only 'on a joint return'. A filer who is married filing separately truthfully answers no for themselves.",
-       "line": "k1s.past_years_if_ask",
-       "irs_text": "i1120ssk (2025) p. 4: \"Generally, any work that you or your spouse does in connection with an activity held through an S corporation ... is counted toward material participation.\" The text is not limited to joint returns.",
+       "pattern": "other",
+       "who": "A shareholder in an S corporation with two trade or business activities identified on the K-1 statement: Activity A in which the shareholder worked more than 500 hours in 2025, and Activity B in which the shareholder did not meet test 1 or test 3 in 2025 but did materially participate in Activity B in 5 of 2015-2024.",
+       "why_no": "The tool computes the gate once for the whole S corporation. Because Activity A meets test 1, the gate is false and the earlier-years question is never asked for Activity B, so Activity B's prior material participation is dropped.",
+       "line": "k1s.past_years_if_ask (Earlier years)",
+       "irs_text": "i1120ssk p. 4: \"You must determine if you materially participated ... in each trade or business activity held through the corporation\"; \"You materially participated in the activity for any 5 tax years ... during the 10 tax years that immediately precede the tax year.\"",
        "severity": "high",
-       "fix": "Ask 'did you or your spouse (whether or not you file jointly) materially participate...'. In the help, say the spouse's work counts on any return."
+       "fix": "Compute test 1/3 and ask the earlier-years question separately for each activity identified on the K-1 statement; one activity's current-year test 1/3 should not suppress another activity's test 5/6."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A shareholder who ran the same consulting practice as a sole proprietorship (Schedule C) or through a partnership from 2016 to 2022, then moved it into this S corporation in 2023.",
-       "why_no": "The question says 'For this S corporation' and 'this business'. The help says earlier returns show it in Schedule E columns (i) or (k). The Schedule C years or the old entity's years do not appear there, so the filer reads them as not counting.",
-       "line": "k1s.past_years_if_ask",
-       "irs_text": "i1120ssk (2025) p. 4, test 5: \"You materially participated in the activity for any 5 tax years ... during the 10 tax years that immediately precede the tax year\". Test 6: \"The activity was a personal service activity and you materially participated in the activity for any 3 tax years\". The tests count years of the activity, not years of the entity.",
-       "severity": "medium",
-       "fix": "Ask about 'this business or activity, including years before it was held through this S corporation (for example as a sole proprietorship on Schedule C, or through a partnership)'. In the help, name Schedule C, Schedule F and earlier partnership K-1s as evidence."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A shareholder who worked more than 500 hours a year in the business for 5 earlier years. Either their preparer reported the K-1 income in passive columns (g)/(h) by mistake, or in some years the business broke even and nothing appeared in columns (i) or (k).",
-       "why_no": "The question defines material participation by its result: '(its income or loss was nonpassive on your return)'. The help says the earlier returns 'show it' in column (i) or (k). The filer checks those returns, finds no nonpassive entry, and answers no.",
-       "line": "k1s.past_years_if_ask",
-       "irs_text": "i1120ssk (2025) p. 4: \"You materially participated in the activity for any 5 tax years\". The test turns on the participation itself, not on how the earlier return reported it. Test 1: \"You participated in the activity for more than 500 hours during the tax year.\"",
-       "severity": "medium",
-       "fix": "Ask about the facts of participation in earlier years, such as hours worked or the tests met. Present the Schedule E columns only as one possible clue: 'a year counts if you met any test, even if the return reported it as passive or showed no income or loss'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A shareholder whose K-1 has no amount in box 1 but shows trade-or-business items in other boxes, such as section 179 deductions, other income or loss in box 10, or deductions in box 12. The shareholder materially participated in 5 of the prior 10 years.",
-       "why_no": "The gate requires box 1 to show an amount. With box 1 blank, the gate is false and the earlier-years question is never asked. The other trade-or-business items from the same activity are then treated as passive.",
-       "line": "k1s.past_years_if_ask",
-       "irs_text": "i1120ssk (2025) p. 4: \"You must determine if you materially participated (a) in each trade or business activity held through the corporation\". The determination covers the activity's income, deductions and credits, not only box 1.",
-       "severity": "medium",
-       "fix": "Open the gate when any trade-or-business item from the activity appears on the K-1 (boxes 1, 10, 11, 12, 13, 17 and so on), not only box 1."
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A real estate professional shareholder in an S corporation whose only S-corporation activity is rental real estate reported in Box 2, with Box 1 zero; the shareholder materially participated in that rental activity in 5 of 2015-2024 but does not meet test 1 or test 3 in 2025.",
+       "why_no": "The gate requires Box 1 to show an amount. With only Box 2 rental income, the tool treats the gate as false and never asks the earlier-years question, even though prior material participation in the rental activity matters.",
+       "line": "k1s.past_years_if_ask (Earlier years)",
+       "irs_text": "i1120ssk p. 4: \"Passive activities don’t include ... Rental real estate activities in which you materially participated if you were a real estate professional for the tax year\"; \"if you were a real estate professional ... in each rental real estate activity held through the corporation.\"",
+       "severity": "high",
+       "fix": "Gate on any S-corporation activity with income, loss, or credit, including Box 2/3 rental real estate activities when the filer is a real estate professional, and ask per activity."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A shareholder of an S corporation with a fiscal tax year, for example one ending June 30. Some of the qualifying participation years are fiscal years that straddle calendar years, such as the one ending June 2015.",
-       "why_no": "'The years 2015 to 2024' reads as calendar years. The filer may miscount which fiscal years are among the 10 that immediately precede the corporation's tax year, and answer no.",
-       "line": "k1s.past_years_if_ask",
-       "irs_text": "i1120ssk (2025) p. 4: \"All determinations of material participation are based on your participation during the corporation's tax year\". Test 5 counts \"the 10 tax years that immediately precede the tax year\".",
-       "severity": "low",
-       "fix": "Say 'in at least 5 of the 10 tax years of the corporation just before this one (2015 to 2024 for a calendar-year corporation)'."
+       "who": "A filer who materially participated in a personal-service S corporation activity in 2012, 2013, and 2014, but not in 2015-2024, and does not meet test 1 or test 3 in 2025.",
+       "why_no": "The question reads as if the personal-service alternative is limited to 3 years within the listed 2015-2024 range. The filer answers no because they have no qualifying years in that window.",
+       "line": "k1s.past_years_if_ask (Earlier years)",
+       "irs_text": "i1120ssk p. 4: \"The activity was a personal service activity and you materially participated in the activity for any 3 tax years (whether or not consecutive) preceding the tax year.\"",
+       "severity": "medium",
+       "fix": "For personal-service activities, say 'any 3 tax years before the current year, not limited to 2015-2024' and make clear the 10-year range applies only to the 5-year test."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who materially participated more than 500 hours in 2016-2020, but the S corporation reported losses or no income in those years on Schedule E; the filer answers no because the help says a year counts only if 'its income' was in columns (i) or (k).",
+       "why_no": "They read 'income' literally and do not count loss or zero-income years, even though material participation is not conditioned on having income in the year.",
+       "line": "k1s.past_years_if_ask (Earlier years)",
+       "irs_text": "i1120ssk p. 4: \"You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year.\"",
+       "severity": "medium",
+       "fix": "Remove the income-column limitation or state that a year counts if the activity was reported (income or loss) and the filer met a material participation test; material participation can exist in a loss year."
       }
      ],
-     "prompt_sha": "37d9037d006cdf0ddff5a7bee383388700790830eaf7c08b07e612a35332afbf",
+     "prompt_sha": "2ff49e272eb9933b1b85b1be8e2c323edefcbc9478370f749fcc300d4c2cba6b",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.09306400000000001,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1s.past_ask.d96807cb8659.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_k1s.past_ask.86f3ba1dbe9c.1.response.txt"
     }
    ],
    "condition": "k1s.past_ask",
@@ -1709,68 +1886,68 @@
    ]
   },
   "gate:k1s.under500": {
-   "subject_sha": "c710ded10561591a5e3f78e0cf414dab8df62243e28aa7d931f4ac896e4feeaf",
+   "subject_sha": "d00fdb9f6fc62f80d16b563f09095a1001a033cd00ed2f795d43c947c6d7fd71",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "An individual shareholder whose S corporation K-1 shows nothing in box 1 but reports trade or business items elsewhere. Examples are a section 179 deduction in box 11, other deductions in box 12, credits in box 13, or other income or loss in box 10. The shareholder (or spouse) worked 300 hours in the business, more than anyone else.",
-       "why_no": "The gate asks whether the filer worked in the business only when box 1 shows an amount. With box 1 blank, that answer is computed as false, so the gate is false and test 3 is never asked.",
+       "pattern": "3",
+       "who": "A married filer who did not personally work in the S corporation, but whose spouse worked more than 100 and not more than 500 hours in it with no one else, employees or owners, working more, whether they file jointly or separately.",
+       "why_no": "The gate's first helper asks only whether 'you' worked in the business; it omits 'or your spouse' even though the gated question expressly includes the spouse and the IRS counts the spouse's work. The filer truthfully answers no for themselves, so the gate is false.",
        "line": "k1s.most_hours_if_under",
-       "irs_text": "i1120ssk p. 4: \"You must determine if you materially participated (a) in each trade or business activity held through the corporation\"; test 3: \"You participated in the activity for more than 100 hours ... and your participation ... wasn't less than the participation ... of any other individual\"",
+       "irs_text": "i1120ssk p. 4: 'Generally, any work that you or your spouse does in connection with an activity held through an S corporation ... is counted toward material participation.'",
        "severity": "high",
-       "fix": "Ask the worked-in-the-business question whenever the K-1 reports any trade or business item (boxes 1, 4–12, 13, 15–17 or a box 19 activity statement), not only when box 1 shows an amount."
+       "fix": "Change the gate to ask whether you or your spouse worked in the business, and use combined spousal hours for the under-500 and >500 branches."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A married couple filing jointly in which one spouse is a real estate professional. The S corporation's K-1 reports a rental real estate loss in box 2 and nothing in box 1. That spouse worked 200 hours managing the rental, more than any other individual.",
-       "why_no": "Box 1 is blank, so the worked helper is false and the gate never opens. Material participation in each rental real estate activity of a real estate professional uses the same seven tests, but the tool never asks test 3.",
+       "pattern": "4",
+       "who": "A shareholder who worked more than 100 hours in the S corporation activity with no one else working more, but whose K-1 box 1 is zero or blank—for example, the activity's income is in box 2 or only separately stated items are present.",
+       "why_no": "The gate is computed as false unless box 1 'shows an amount,' so the tool never asks about the work. Material participation is factual and does not depend on box 1 having ordinary business income.",
        "line": "k1s.most_hours_if_under",
-       "irs_text": "i1120ssk p. 4: \"You must determine if you materially participated ... (b) if you were a real estate professional (defined earlier), in each rental real estate activity held through the corporation.\"",
+       "irs_text": "i1120ssk p. 4: 'You must determine if you materially participated (a) in each trade or business activity held through the corporation' and the standards are based on participation.",
        "severity": "high",
-       "fix": "Also open the gate when box 2 shows an amount and the filer or spouse is a real estate professional. Ask the hours questions for each rental real estate activity (or for the aggregated activity if the filer made the election)."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A shareholder of an S corporation with a fiscal year, such as July 2024–June 2025, reported on the 2025 return. The shareholder worked 250 hours in the second half of 2024 and 60 hours in 2025, more than anyone else during the corporation's year.",
-       "why_no": "The question says \"work more than 100 hours in it in 2025\". The filer truthfully counts only calendar-2025 hours (60) and answers no.",
-       "line": "k1s.most_hours_if_under",
-       "irs_text": "i1120ssk p. 4: \"All determinations of material participation are based on your participation during the corporation's tax year.\"",
-       "severity": "high",
-       "fix": "Ask about hours \"during the corporation's tax year shown at the top of your Schedule K-1 (which may begin in 2024)\". Make the same change to the worked and more-than-500-hours questions."
+       "fix": "Ask the participation question based on work in the activity, not on box 1; use box 1 at most to prioritize, not to gate material participation."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "other",
-       "who": "A shareholder in an S corporation that runs two activities, shown on a box 19 statement. The shareholder worked 600 hours in total: 450 in activity A and 150 in activity B. In each activity they worked more than any other individual.",
-       "why_no": "They truthfully answer yes to \"more than 500 hours\" for the business as a whole. That makes the gate false, so test 3 is never asked. In fact neither activity reaches 500 hours, and each qualifies only under test 3.",
+       "who": "A shareholder in an S corporation with more than one activity who worked 600 hours total, including 150 hours in activity A with no one else in activity A working more; or who worked 150 hours in activity A while someone else worked more in activity B.",
+       "why_no": "The gate and gated question ask about 'this S corporation' and compare hours for the corporation as a whole. The filer reads 'more than 500 hours' as total corporation hours, or 'no one else working more' as across the corporation, and answers no, although test 3 is met for activity A.",
        "line": "k1s.most_hours_if_under",
-       "irs_text": "i1120ssk p. 4: \"You must determine if you materially participated (a) in each trade or business activity held through the corporation\"; \"If the corporation has more than one activity, it will attach a statement ... that identifies each activity\"",
-       "severity": "medium",
-       "fix": "When box 19 shows a statement with more than one activity, ask the 500-hour and 100-hour/most-hours questions separately for each activity, with hours counted per activity."
+       "irs_text": "i1120ssk p. 4: 'You must determine if you materially participated (a) in each trade or business activity held through the corporation' and 'Each interest in rental real estate is a separate activity, unless you elect to treat all interests in rental real estate as one activity.'",
+       "severity": "high",
+       "fix": "Ask and compute material participation separately for each activity identified on the K-1 statement, not once for the S corporation as a whole."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A shareholder in an S corporation with a fiscal tax year ending in 2025 who worked more than 100 hours with no one else working more during that fiscal year, but not during calendar 2025.",
+       "why_no": "They answer no to 'in 2025' because they did not work in calendar 2025. The material-participation test uses the corporation's tax year, which can include 2024 for a fiscal-year corporation.",
+       "line": "k1s.most_hours_if_under",
+       "irs_text": "i1120ssk p. 4: 'All determinations of material participation are based on your participation during the corporation’s tax year.'",
+       "severity": "high",
+       "fix": "Replace 'in 2025' with 'during the corporation's tax year'."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A shareholder who oversaw the business by reviewing operations, approving budgets and making management decisions, without doing hands-on daily work. Their spouse did the bookkeeping.",
-       "why_no": "\"Worked in the business\" reads as hands-on labor or employment. The filer may answer no to the parent question even though their spouse's work and their own non-investor management work both count.",
+       "pattern": "3",
+       "who": "A married filer and spouse who together worked 120 hours in the S corporation with no one else working more, but neither individually worked more than 100 hours.",
+       "why_no": "The question asks whether 'you (or your spouse)' worked more than 100 hours; the filer reads this as either one individually, not their combined hours, and answers no. The help says to compare 'your hours (with your spouse's)' but does not clearly say to add them to meet the 100-hour threshold.",
        "line": "k1s.most_hours_if_under",
-       "irs_text": "i1120ssk p. 4: \"Generally, any work that you or your spouse does in connection with an activity held through an S corporation ... is counted toward material participation.\"",
+       "irs_text": "i1120ssk p. 4: 'Generally, any work that you or your spouse does in connection with an activity held through an S corporation ... is counted toward material participation.'",
        "severity": "medium",
-       "fix": "Reword the parent question as \"Did you or your spouse do any work in connection with this business (management or operations, paid or unpaid) while you owned the stock?\" Add help explaining that work only as an investor, such as reviewing financial statements, does not count."
+       "fix": "Ask whether you and your spouse together worked more than 100 hours, and state that the hours are combined for the threshold and the comparison."
       }
      ],
-     "prompt_sha": "7f8f8a4d00b4b740f4b0da9589022f1c4bc1faae81dfe60002c19036c4becb65",
+     "prompt_sha": "f2c41876275386ea8041207670c8c5941599534adda4269e9a5050c3c8990878",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.082952,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1s.under500.c710ded10561.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_k1s.under500.d00fdb9f6fc6.1.response.txt"
     }
    ],
    "condition": "k1s.under500",
@@ -1801,7 +1978,7 @@
    ]
   },
   "gate:k1s.work_if_b1": {
-   "subject_sha": "982da587c51ed8325ceb21bdcef5f3325e60657ceb23e8f17c6ebb2826c1fd0b",
+   "subject_sha": "9177eac069276278a3bb93e035baad7aac5c80fe88b241cd78aa8d3e3136205b",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -1809,60 +1986,50 @@
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A shareholder in an S corporation whose fiscal year runs July 1, 2024 to June 30, 2025, so the K-1 belongs on the 2025 return. They worked full time in the business from July through December 2024, then retired and did no work in calendar 2025.",
-       "why_no": "The gate asks whether they 'worked in the corporation's business in 2025'. They truthfully did not work in calendar 2025, so the hours question is never asked.",
+       "who": "A shareholder in an S corporation with a fiscal tax year beginning in 2025 and ending in 2026, who performed more than 500 hours in the January-June 2026 portion of that tax year but not in calendar 2025.",
+       "why_no": "The gate and question ask whether they worked 'in 2025'; they truthfully say no because their more-than-500 hours were in 2026, even though those hours are in the corporation's 2025 tax year.",
        "line": "k1s.hours500_if_work",
-       "irs_text": "i1120ssk (2025) p. 4: \"All determinations of material participation are based on your participation during the corporation's tax year.\"",
+       "irs_text": "i1120ssk p. 4: 'All determinations of material participation are based on your participation during the corporation’s tax year.'",
        "severity": "high",
-       "fix": "Ask about the corporation's tax year shown on the K-1, not calendar 2025. For example: 'Did you or your spouse do any work in this corporation's business during the corporation's tax year shown at the top of the K-1 (which may begin in 2024)?' Ask the same in k1s.hours500."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A shareholder in an S corporation with a fiscal year ending in 2025, such as March 31, 2025. Their 500-plus hours fall mostly between April and December 2024, and they worked fewer than 500 hours in calendar 2025.",
-       "why_no": "The gated question and its help say 'in 2025' and 'during 2025, added together'. The filer counts only calendar 2025 hours and truthfully answers that they did not work more than 500.",
-       "line": "k1s.hours500_if_work",
-       "irs_text": "i1120ssk (2025) p. 4: \"You participated in the activity for more than 500 hours during the tax year\"; \"All determinations of material participation are based on your participation during the corporation's tax year.\"",
-       "severity": "high",
-       "fix": "Word k1s.hours500 as: 'During the corporation's tax year shown on this K-1, did you and your spouse together work more than 500 hours in this business?' Add help noting that a fiscal-year corporation's tax year can begin in 2024."
+       "fix": "Ask about the corporation's tax year shown on the Schedule K-1, not calendar 2025; e.g., 'during the corporation's tax year' and count hours in that period."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A shareholder whose K-1 shows nothing in box 1, but whose trade or business activity passes through a section 179 deduction (box 11), other deductions or credits (boxes 12 and 13), or a net loss split across activities on the box 19 statement. Also a real estate professional whose only activity is rental real estate in box 2. They work more than 500 hours in the activity.",
-       "why_no": "The gate is computed as false whenever box 1 shows no amount. The work and hours questions are never asked, and hours500 is set to false even though material participation decides whether those items are passive.",
+       "who": "A real-estate-professional shareholder in an S corporation whose box 1 is zero or blank but whose box 2 rental real estate activity has a loss or passive credit, and who worked more than 500 hours in that rental activity in the corporation's tax year.",
+       "why_no": "The gate is computed only when box 1 shows an amount; because box 1 is zero or blank, the tool never asks and treats more-than-500-hours as false, even though the shareholder's work was in a rental real estate activity held through the S corporation.",
        "line": "k1s.hours500_if_work",
-       "irs_text": "i1120ssk (2025) p. 4: \"You must determine if you materially participated (a) in each trade or business activity held through the corporation; and (b) if you were a real estate professional (defined earlier), in each rental real estate activity held through the corporation.\"",
+       "irs_text": "i1120ssk p. 4: material participation is determined 'in each trade or business activity held through the corporation; and (b) if you were a real estate professional ... in each rental real estate activity held through the corporation'; 'any work that you or your spouse does in connection with an activity held through an S corporation ... is counted toward material participation.'",
        "severity": "high",
-       "fix": "Widen box1_any to any amount in boxes 1, 2, or 10 through 13, or any per-activity amount on the box 19 statement. Alternatively, ask the work question for every K-1 that reports trade or business or rental real estate items."
+       "fix": "Gate on any activity of the S corporation for which material participation can matter, including box 2 rental real estate and passive credits, not only on box 1 having an amount."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "An owner, or the owner's spouse, who was not on payroll but managed the business: approving contracts, hiring, overseeing operations, and helping unpaid during busy seasons.",
-       "why_no": "'Worked in the corporation's business' reads as being employed by or paid by the corporation. An unpaid spouse or a managing owner who takes no salary may answer no.",
+       "pattern": "5",
+       "who": "A shareholder who performed more than 500 hours for a partnership or other lower-tier activity owned by the S corporation, but not directly for the S corporation itself.",
+       "why_no": "They read 'worked in the corporation's business' as work for the S corporation itself, so they answer no for work done at the lower-tier entity.",
        "line": "k1s.hours500_if_work",
-       "irs_text": "i1120ssk (2025) p. 4: \"Generally, any work that you or your spouse does in connection with an activity held through an S corporation (where you own your stock at the time the work is done) is counted toward material participation.\"",
+       "irs_text": "i1120ssk p. 4: 'any work that you or your spouse does in connection with an activity held through an S corporation ... is counted toward material participation.'",
        "severity": "medium",
-       "fix": "Add help: 'Count any work you or your spouse did in connection with the business, paid or unpaid, as an employee or not, including managing or directing operations. Do not count only reviewing financial statements as an investor.'"
+       "fix": "Ask about work 'in connection with any activity held through this S corporation, including lower-tier entities' rather than 'in the corporation's business.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A married couple filing jointly where only one spouse owns the stock and the non-owner spouse does all the work in the business.",
-       "why_no": "The gate helper says 'you or your spouse', but a filer may still believe that only the shareholder's own work counts, because the spouse has no ownership.",
+       "pattern": "5",
+       "who": "A shareholder whose Schedule K-1 box 1 shows income from one S-corporation activity, but who performed more than 500 hours in a different activity held through the same S corporation and did not work in the box 1 activity.",
+       "why_no": "They read 'worked in the corporation's business' as the business that produced box 1 income, so they answer no; the question does not say material participation is tested separately for each activity.",
        "line": "k1s.hours500_if_work",
-       "irs_text": "i1120ssk (2025) p. 4: \"any work that you or your spouse does in connection with an activity held through an S corporation (where you own your stock at the time the work is done) is counted\"",
-       "severity": "low",
-       "fix": "Add help to the gate: 'Count your spouse's work even if your spouse owns no stock.'"
+       "irs_text": "i1120ssk p. 4: 'You must determine if you materially participated (a) in each trade or business activity held through the corporation; and (b) if you were a real estate professional ... in each rental real estate activity held through the corporation.'",
+       "severity": "medium",
+       "fix": "Ask about work in each activity held through the S corporation, or say 'any activity held through this S corporation,' and explain that material participation is tested per activity."
       }
      ],
-     "prompt_sha": "866cd8535cf8e091160fd637c9bb9bc752de4d8ecd45a9cb345386f343a5deb4",
+     "prompt_sha": "be0dbc0ba796a9c01f0e464c1358be2822bd14ec47f43c0353a487466c5bb479",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.077628,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1s.work_if_b1.982da587c51e.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_k1s.work_if_b1.9177eac06927.1.response.txt"
     }
    ],
    "condition": "k1s.work_if_b1",

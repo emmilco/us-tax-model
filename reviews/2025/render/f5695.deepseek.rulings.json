@@ -4,6 +4,16 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "12",
+   "restated": "Input — The residential clean energy credit carryforward from 2024, the amount on line 16 of your (or, on a joint return, your spouse's) 2024 Form 5695, or the total of those amounts if there is more than one such form (zero if none)",
+   "model": "IRS line 12 says 'Enter the amount, if any, from your 2024 Form 5695, line 16'; it does not provide for adding the line 16 amounts from more than one such form.",
+   "ruling": "Ruling: scope; f5695 p. 1: the tool takes one 2024 Form 5695 per person; more than one such form is outside it. Project stands.",
+   "context": "cd0d69e20217726bbdbb5c88da85765760944822769e1d7aad3f9cfd937b5245",
+   "date": "2026-11-17",
+   "run": "8b1ec3a8b8e58141790097c9fd96c2ade2a1a5b4d31c9320f784e561bb182cef",
+   "subject_key": "f19d6085a743c7b63f8031db1986440c6fb26b412df3a3ac72819445c0b1080c"
+  },
+  {
    "printed": "14",
    "restated": "Enter the amount from helper \"Residential Clean Energy Credit Limit Worksheet, line 3. Subtract line 2 from line 1. If zero or less, enter -0-\".",
    "model": "The helper for the child tax credit omits the IRS condition that Credit Limit Worksheet B is completed only if 'You are not filing Form 2555.'",

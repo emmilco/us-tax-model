@@ -1,0 +1,107 @@
+{
+ "kind": "render",
+ "form": "rprop",
+ "family": "deepseek",
+ "base": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+ "lines": [
+  {
+   "key": "(a)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; i4562 p. 10: the input's categories restate the page's classification; the class-life details are on the cited page. Project stands.",
+   "subject_key": "ec58e6838379a04f8f73b487c715ef45ef485a755c34523778898a7fcd3d148d"
+  },
+  {
+   "key": "(b) (rprop.month)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MATCH",
+   "subject_key": "b84d24dc2622577ae6eba3f2c8eed6fedba3c331e17e0c833dd779d8eb5456cc"
+  },
+  {
+   "key": "(b) (rprop.year)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MATCH",
+   "subject_key": "0be47222d6d543d8e0b91e95334d4141dd2c97a9bc62b92bc3c00a7fa0114c67"
+  },
+  {
+   "key": "(c)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; i1040se p. 6: basis is the filer's answer; the business-use percentage and the credit reductions are in the helper and on the cited page. Project stands.",
+   "subject_key": "15041613aedb2f6102c385d9ac0e17204aa3c291ffe1fcbd0d47ded9ffb7b4cd"
+  },
+  {
+   "key": "(screen) (rprop.qip)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MATCH",
+   "subject_key": "ed55829860940b24785a998375cee69652f7ccc453f5437f975efcd90761c526"
+  },
+  {
+   "key": "(screen) (rprop.disposed)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MATCH",
+   "subject_key": "92a99acfcdb61d6e45f0c49b7c9000d88a4b6e51ab6e022b3d58b0d33c024b9d"
+  },
+  {
+   "key": "(screen) (rprop.fast)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MATCH",
+   "subject_key": "f06143768946df9c55fcb2f45074785408017b4b55e2baeb51de4a6968c30a3b"
+  },
+  {
+   "key": "(screen) (rprop.ads)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: representation; the 30- and 40-year periods are the ADS periods for the property classes the tool supports, on the cited pages. Project stands.",
+   "subject_key": "4a1db0c14800d0ac38e36011fe2cca804d713ae199981efb0d9bf35efb3a20c4"
+  },
+  {
+   "key": "(screen) (rprop.basis_changed)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; an addition or improvement depreciated separately is a separate item; a basis change to this item is the question. Project stands.",
+   "subject_key": "e7aa2c604bbdb5062230502e184953a38f4a15d9045b08b8bf7f5da899539027"
+  },
+  {
+   "key": "(screen) (rprop.credit)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MATCH",
+   "subject_key": "45da020ef4a1267cd852cef163ae690d37e06aa77b8993049d7805f098b8b129"
+  },
+  {
+   "key": "(screen) (rprop.coop)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MATCH",
+   "subject_key": "4a0b77564ec3377e44e654e81943d025bbdb0417bda583ab8392e07623fe0c73"
+  },
+  {
+   "key": "(screen) (rprop.exchanged)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MATCH",
+   "subject_key": "9e9657386d1b699095fa3a2a691dfe9ca996f1b0859cdded895c219996eccccb"
+  },
+  {
+   "key": "(g)",
+   "record": "fc4ea0520c8a097fcbabaa49901d031c140890aca2d5b59958ff483ff30294cc",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i4562 p. 12: a short tax year is refused (rprop.short_year). Project stands.",
+   "subject_key": "af7d7015983fd50a9e27015a339cebedb8317f2a71ab43301451ada0b46e5267"
+  }
+ ],
+ "subjects": {
+  "(a)": "6194bce631073eace24ba248e1ea48a062d6208b5f9daf082640b671af50e8c0",
+  "(b) (rprop.month)": "0e6157a6eab1d7dfcd7a1e40e8ab023f153d5d8eb65a3a4fc826068a028f8c71",
+  "(b) (rprop.year)": "f8d91cb0764171724b00ad14e7729fa66803f22d3fd328e849f712a2e8e593bc",
+  "(c)": "4423f3f3ff303893fedfa94dc148d625512f1390003e4035b33bfb0e9e0d1f64",
+  "(screen) (rprop.qip)": "7bb882cf54874c35ecdf4eb497ab3d210c4e31943626c55701074a89d8130652",
+  "(screen) (rprop.disposed)": "a038d0438390cdb4ff6db1353e7d584b370b2437b89c28e73bd0c8faafbe84db",
+  "(screen) (rprop.fast)": "5e43e776b44338357bb08cf22cb7ce47bee025e6bf15c40877b611753492ffb0",
+  "(screen) (rprop.ads)": "6cdf5f03d2d8ac61d96eee910ba659500e66e40800fb1114d2d8687fe429dbda",
+  "(screen) (rprop.basis_changed)": "df2c7e7200a9aa710ca5b09e5efc5fcdbad17f49864b0509899e68956e482321",
+  "(screen) (rprop.credit)": "bfedc7e5eb5d2026a55db0020dcbf51e289399fe971da65c39648f7017d794b6",
+  "(screen) (rprop.coop)": "77dabcf0b15c1f602b4b155d5e25ada46b228ca09d84cc4e74f1a5863c544422",
+  "(screen) (rprop.exchanged)": "a46f7227ee1e9af734fd3ea58e596b22b8919c89415f7ee8f92980768243b185",
+  "(g)": "c5de4382f4bf5145db535551ac69a8392bcaa3e19b6b91e4e747aedf0635f152"
+ },
+ "__rest__": "4dcdacd2d019b55ab0d46a7fe398a3e419d8c77b238bacc1190f4258bd4ddb4d"
+}

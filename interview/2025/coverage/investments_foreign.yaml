@@ -272,6 +272,21 @@ rows:
       div.basis_reconciled: false
     expect:
       refused: div.unsupported
+  - id: dividends.return_of_capital_no_form
+    design: BUG-0830 (a distribution with no Form 1099-DIV is counted at div.other_boxes)
+    situation: A shareholder of a small company was paid, with no Form 1099-DIV, a return of capital that was more than what the shares had cost.
+    answers:
+      div.any: true
+      sb.ordinary_dividends: 0
+      sd.distributions: 0
+      div.other_boxes: true
+      div.box3: 500000
+      div.box9: 0
+      div.box10: 0
+      div.box13: 0
+      div.basis_reconciled: false
+    expect:
+      refused: div.unsupported
   # The special-treatment screen of Schedule B (sb.unsupported, nine items in one sentence) taken apart.
   - id: interest.bank_only
     design: 'lane 5a, interest (the common case: bank interest and nothing special)'
@@ -295,6 +310,7 @@ rows:
       interest[bank].amount: 30000
       interest[bank].penalty: 0
       sb.nominee: true
+      ftc.taxes: 0
     expect:
       refused: sb.unsupported_if_income
   - id: interest.seller_financed
@@ -307,6 +323,7 @@ rows:
       sb.nominee: false
       sb.bonds_any: true
       sb.bond_special: true
+      ftc.taxes: 0
     expect:
       refused: sb.unsupported_if_income
   - id: interest.treasury_plain

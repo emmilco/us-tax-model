@@ -1,0 +1,19 @@
+{
+ "kind": "classm",
+ "form": "rental",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "case": "classm.rental.1",
+   "printed": "rental[b].allowed",
+   "project": "$2,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: finding; i8582 p. 13, Part VIII—Allowed Losses: use Part VIII only for an activity listed in Part VII; column (a) is the net loss plus the prior-year unallowed loss, column (b) is column (c) of Part VII. This activity has a \\$4,000 current gain and a \\$2,000 prior-year unallowed loss already deducted on line 22, so it has no Part VII entry and its Part VIII loss allowed is \\$0; the project computes \\$2,000 by subtracting p7c from net loss plus prior loss without that gate. BUG-0934. Severity medium.",
+   "context": "450b3a739f78f62cf87c5d96a78234fba1bbd83d0da961423e5b0bfc2c0141a5",
+   "date": "2026-11-17",
+   "run": "82130b81caa5a25470b69d6c342390405e08567cf1551e7237a93a01c01c321a",
+   "severity": "medium",
+   "subject_key": "215094d1efd44724fd20e4c49199fad236f521ab02730bbcfb26b331b6e99f0d"
+  }
+ ]
+}

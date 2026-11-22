@@ -38,7 +38,7 @@ answers:
   ssb.ira_covered: false
   ssb.terror_disability: false
   div.box12: 0
-  f1040.tax_exempt_interest: 0
+  f1040.tax_exempt_any: false
   person[taxpayer].retirement[pension].box5: 0
   f1040.line3a: 160000
   sb.nominee: false

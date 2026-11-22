@@ -256,68 +256,58 @@
    ]
   },
   "gate:person.edu_has_adj": {
-   "subject_sha": "aad7b15de5307e8e753d0d8dc75e19ce10c18d45d5ec6f9aab9dccb06ed612b2",
+   "subject_sha": "2cf2b23e7d98b46de7d62e4a00b3b9c49079eb27e2e7c387b048c8fb4bd60587",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer whose employer reimbursed tuition under a section 127 plan, or a veteran whose GI Bill benefits paid toward the term. Their 1098-T shows no scholarship in box 5.",
-       "why_no": "They read 'tax-free help' as scholarships and grants. They do not count employer tuition assistance or veterans' benefits, so they compare only the Pell grant or scholarship with the term's cost and answer no.",
-       "line": "person.edu_over_if_adj",
-       "irs_text": "i8863 p. 4: 'reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period... Tax-free educational assistance includes: 1. The tax-free part of any scholarship or fellowship grant (including Pell grants);' (the list continues with employer-provided assistance, veterans' assistance and other nontaxable payments)",
-       "severity": "medium",
-       "fix": "Name the kinds in the question or help: 'Count scholarships and grants (including Pell grants), tuition your employer paid or reimbursed tax-free, veterans' education benefits, and any other tax-free payment for education other than a gift or inheritance.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A lifetime learning credit filer whose student bought required books and a laptop from an outside bookstore. The scholarship exceeds tuition and fees paid to the school, but not tuition, fees and the outside purchases combined.",
-       "why_no": "The question counts 'course materials' in what was paid, so they add the outside purchases and answer no. For the lifetime learning credit, materials count only if paid to the institution. The tool's own helper label says 'expenses paid to the institution'.",
-       "line": "person.edu_over_if_adj",
-       "irs_text": "i8863 p. 4: 'Lifetime learning credit: Qualified education expenses include amounts paid for books, supplies, and equipment only if required to be paid to the institution as a condition of enrollment or attendance.'",
-       "severity": "medium",
-       "fix": "Make the expense side match the credit: count course materials bought elsewhere only for the American opportunity credit. Otherwise ask the question per credit, or compare against the worksheet line 1 the tool has already computed."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A student who paid in December 2025 for a term starting in January–March 2026 and also attended a fall 2025 term. A grant for the 2026 term arrived in February 2026, before filing, and exceeds the prepaid amount.",
-       "why_no": "The help says 'With one term in the year, answer by that term alone.' They read 'the year' as calendar 2025, see one term, check only fall 2025 and answer no. The prepaid 2026 term is treated as beginning in 2025.",
-       "line": "person.edu_over_if_adj",
-       "irs_text": "i8863 p. 9: 'If any qualified education expenses for the student were paid in 2025 for an academic period beginning in the first 3 months of 2026, treat that academic period as if it began in 2025.'; line 2b 'Tax-free educational assistance received in 2026 (and before you file your 2025 tax return) allocable to the academic period'",
-       "severity": "medium",
-       "fix": "Change the help to: 'Include any term beginning January–March 2026 that you paid for in 2025. Check each term separately; answer by a single term only if it is the only one.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A student holding a scholarship whose terms allow it to be used for room and board as well as tuition, with the total exceeding the term's tuition.",
-       "why_no": "'Tax-free help' asks the filer to classify for themselves how much of the scholarship is tax-free. They may treat the excess over tuition as taxable, leaving 'tax-free help' equal to tuition, so it does not 'come to more' and they answer no. The tool's upstream allocation (line 2a) may differ.",
-       "line": "person.edu_over_if_adj",
-       "irs_text": "i8863 p. 4: 'Tax-free educational assistance includes: 1. The tax-free part of any scholarship or fellowship grant (including Pell grants);'",
-       "severity": "low",
-       "fix": "Ask for the total of scholarships, grants and other assistance applied to the term, and let the tool apply the tax-free allocation already used for line 2a. Alternatively, compute the excess per period from the worksheet lines the tool already holds, rather than asking."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A parent preparing a return where the student is a dependent child, if the tool uses the person document for dependents as well.",
-       "why_no": "The question begins 'For this person (you, or your spouse on a joint return)'. A filer answering for the child may think the question is about themselves, who attended no school, and answer no.",
+       "who": "A parent claiming an education credit for a dependent child who is the eligible student; the child's academic period has tax-free help or refunds exceeding that period's qualified expenses.",
+       "why_no": "The gated question says 'For this person (you, or your spouse on a joint return)'; the parent reads that as limiting the question to the filer or spouse, not the dependent child, and answers no.",
        "line": "person.edu_over_if_adj",
-       "irs_text": "i8863 p. 9: 'Complete a separate worksheet for each student for each academic period...'",
+       "irs_text": "i8863 p. 4: 'Qualified education expenses paid (or treated as paid) by a student who is claimed as a dependent on your tax return are treated as paid by you.'",
+       "severity": "medium",
+       "fix": "Say 'For this student (you, your spouse, or a dependent you are claiming)' rather than only 'you, or your spouse'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer with two academic periods for the same student, one with scholarship/refund overage and another with enough extra expenses that total help is less than total expenses.",
+       "why_no": "They compare total help and refunds for the year with total amounts paid, rather than separately for each academic period, and answer no.",
+       "line": "person.edu_over_if_adj",
+       "irs_text": "i8863 p. 9, Adjusted Qualified Education Expenses Worksheet: 'Complete a separate worksheet for each student for each academic period beginning or treated as beginning... in 2025...'",
+       "severity": "medium",
+       "fix": "Say to compare each academic period separately and answer yes if any single period has help plus refunds greater than that period's qualified expenses; do not net periods."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer with one prepaid term beginning January-March 2026 paid in 2025 and a separate 2025 term that has the overage.",
+       "why_no": "The help says 'With only one such term, answer by that term alone'; the filer reads 'such term' as the prepaid Jan-Mar 2026 term and ignores the other 2025 term, answering no.",
+       "line": "person.edu_over_if_adj",
+       "irs_text": "i8863 p. 9: 'Complete a separate worksheet for each student for each academic period beginning or treated as beginning... in 2025...'",
+       "severity": "medium",
+       "fix": "Clarify that the prepaid Jan-Mar 2026 term is only one academic period and that every other 2025 academic period must still be compared; answer yes if any period has an overage."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A student with an overage in a summer session, mini-session, or other academic period that the institution does not call a 'term'.",
+       "why_no": "The question asks about a 'school term'; the filer has a summer session or mini-session, not a term, so answers no.",
+       "line": "person.edu_over_if_adj",
+       "irs_text": "i8863 p. 9: 'Complete a separate worksheet for each student for each academic period beginning or treated as beginning... in 2025...'",
        "severity": "low",
-       "fix": "Name the student in the question ('For [student name]') and drop the 'you, or your spouse' parenthetical if dependents can be students on this document."
+       "fix": "Use 'academic period (semester, quarter, trimester, summer session, or other period)' instead of 'school term'."
       }
      ],
-     "prompt_sha": "8fc3c43a7e570dcd72a13e415f1abdf5f55a74626c6c689ab09823e1afd37d32",
+     "prompt_sha": "3faf62676a3ba0025771ceee3b0f21cea400b491bff78e2b1cb2ec0a2c1b7dc3",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.10188,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_person.edu_has_adj.aad7b15de530.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_person.edu_has_adj.2cf2b23e7d98.1.response.txt"
     }
    ],
    "condition": "person.edu_has_adj",
@@ -350,7 +340,7 @@
    ]
   },
   "gate:person.eligible_educator": {
-   "subject_sha": "c25a86ee05447b2407a85cfd2cd8ba8e231a4c0561d15ddd579ae07814dd43e4",
+   "subject_sha": "7b45ca8cc52918b0d5365a4e1a882efb452092fd3be568fc3147350aedb7f9e2",
    "samples": [
     {
      "verdict": "UNCLEAR",
@@ -358,60 +348,20 @@
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A teacher who worked the full 2024–25 school year, well over 900 hours, and retired or left teaching in June 2025. She bought classroom supplies in spring 2025.",
-       "why_no": "\"In 2025, did you work ... for at least 900 hours\" reads as hours worked inside calendar 2025. January through June comes to well under 900 hours, so she answers no. The IRS test counts hours during a school year, and the 2024–25 school year ended in 2025.",
+       "who": "A K-12 teacher, instructor, counselor, principal, or aide who worked at least 900 hours in the 2024-25 school year entirely before January 2025 (or in the 2025-26 school year entirely after December 2025) and paid qualified educator expenses in 2025.",
+       "why_no": "They read the opening 'In 2025, did you work' as requiring the 900 hours themselves to fall in calendar 2025, despite the help saying to count the whole school year that falls partly in 2025 and not only hours in 2025.",
        "line": "person.educator_expenses_if_educator",
-       "irs_text": "i1040gi p. 93, line 11: 'If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025 ... who worked in a school for at least 900 hours during a school year.'",
+       "irs_text": "i1040gi p. 93: 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year'; 'If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025.'",
        "severity": "medium",
-       "fix": "Ask: 'Did you work at least 900 hours in a kindergarten through grade 12 school during a school year that included part of 2025, such as 2024–25 or 2025–26? Count the whole school year, not only the months in 2025.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A first-year teacher or aide who started full time in August 2025. She works more than 900 hours in the 2025–26 school year, but fewer than 900 of those hours fall in calendar 2025. She paid for classroom supplies that fall.",
-       "why_no": "\"In 2025 ... for at least 900 hours\" leads her to count only her hours from August to December 2025. The IRS text measures hours during a school year, not hours in the tax year.",
-       "line": "person.educator_expenses_if_educator",
-       "irs_text": "i1040gi p. 93, line 11: 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year.'",
-       "severity": "medium",
-       "fix": "Measure the 900 hours across the whole school year (2024–25 or 2025–26), not the calendar year. The instructions should state which school year counts."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A full-time teacher at an online or virtual K-12 public charter school who teaches from home.",
-       "why_no": "\"Did you work in a school\" can be read as working physically inside a school building.",
-       "line": "person.educator_expenses_if_educator",
-       "irs_text": "i1040gi p. 93, line 11: 'teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year.'",
-       "severity": "medium",
-       "fix": "Ask 'work for a kindergarten through grade 12 school, including an online school, ...'. Keep the home-schooling exclusion in the help text."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A substitute teacher or itinerant aide who works at several schools in one district and totals more than 900 hours in the school year, but fewer than 900 at any one school.",
-       "why_no": "\"In a school ... for at least 900 hours\" reads as 900 hours at one school.",
-       "line": "person.educator_expenses_if_educator",
-       "irs_text": "i1040gi p. 93, line 11: 'who worked in a school for at least 900 hours during a school year.'",
-       "severity": "low",
-       "fix": "Add help text: 'Count all your hours in kindergarten through grade 12 schools during the school year, even if you worked at more than one school.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A school librarian, reading specialist or instructional coach working full time in a K-12 school. She buys materials for students.",
-       "why_no": "Her job title is not one of the five listed (teacher, instructor, counselor, principal, aide), so she reads the list as excluding her, even where her duties are instruction.",
-       "line": "person.educator_expenses_if_educator",
-       "irs_text": "i1040gi p. 93, line 11: 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide'",
-       "severity": "low",
-       "fix": "Add help text: 'Answer by what you did, not your job title. Anyone who instructs or counsels students, or assists a teacher, counts.'"
+       "fix": "Reword the gate to remove the calendar-year limit from the main clause: 'Did you work in a school ... for at least 900 hours during a school year that falls partly in 2025 (such as 2024-25 or 2025-26)?'"
       }
      ],
-     "prompt_sha": "288dd05c9170c93c8e7164295fcccf6c1e39c28d2ee2495c2ad1fa50a080b50c",
+     "prompt_sha": "f0a2663722ac2537d5b6fd63d640a596058cdf127213e8b78ac63af97d1d9b35",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.079148,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_person.eligible_educator.c25a86ee0544.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_person.eligible_educator.7b45ca8cc529.1.response.txt"
     }
    ],
    "condition": "person.eligible_educator",
@@ -442,28 +392,98 @@
    ]
   },
   "gate:person.f4137_filed": {
-   "subject_sha": "32ea859ec1fa178071700f1fa89d0de4db6d32b29d02f2f321290cdd43311de9",
+   "subject_sha": "bc43532f4151f4f7056057ec1b0e6a18f69de0018aea467b40ab9b843c5315ea",
    "samples": [
     {
-     "verdict": "SOUND",
+     "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
+       "kind": "FALSE_NO",
        "pattern": "4",
-       "who": "An employee whose W-2 box 8 shows allocated tips. They reported every actual tip to the employer and kept no records showing their unreported tips were less than box 8, so they must file Form 4137 and enter the allocated tips in column (c).",
-       "why_no": "The helper that sets line 2 says it is 'zero for a person with no unreported tips'. This filer believes they reported all their tips, so they leave column (c) empty. Line 2 becomes zero and the gate closes. The gated lines are correctly zero once line 2 is zero, so the real loss is upstream on lines 4, 6 and 13. If such a filer were also a 1.45%-only government employee, the line-10 condition would be lost too.",
-       "line": "person.tips_gov_if_rows (and person.f4137_under20_if_rows, through the upstream line 2 helper)",
-       "irs_text": "f4137 p. 1, Who must file: 'You must also file Form 4137 if your Form(s) W-2, box 8, shows allocated tips that you must report as income'; p. 2, Columns (c) and (d): 'include any allocated tips ... shown on your Form(s) W-2, box 8, unless you can prove that your unreported tips are less than the amount in box 8'",
+       "who": "A tipped employee who is required to file Form 4137 because of $25 of unreported tips in one month and $15 in another month, but who is preparing the return and has not yet prepared or filed Form 4137.",
+       "why_no": "The gate is labeled 'f4137_filed' and asks whether 'This person has tips on Form 4137 (line 2 more than zero)'; the filer truthfully has no Form 4137 yet and answers no, even though the $15 under-$20 month belongs on line 5.",
+       "line": "person.f4137_under20_if_rows",
+       "irs_text": "f4137 p. 2, Line 5: 'Enter only the tips you weren’t required to report to your employer because the total received was less than $20 in a calendar month.'",
+       "severity": "high",
+       "fix": "Gate on the fact that the person received cash or charge tips not reported to an employer, including under-$20 and allocated tips, not on whether a Form 4137 has been prepared or filed."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A federal, state, or local government employee whose pay is subject only to the 1.45% Medicare tax and who received unreported tips, but who has not yet prepared Form 4137.",
+       "why_no": "The same 'f4137_filed'/'has tips on Form 4137' wording makes them answer no because no Form 4137 exists yet; the government-tip refusal is never reached.",
+       "line": "person.tips_gov_if_rows",
+       "irs_text": "f4137 p. 2, Line 10: 'If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax...'",
+       "severity": "high",
+       "fix": "Ask first whether the person received any unreported cash or charge tips; only after a yes ask whether any are government Medicare-only tips."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "An employee with unreported cash tips that are not 'qualified tips' for the 2025 tips deduction, such as a nonqualified occupation or no valid SSN for the deduction, so the cited Qualified Tips worksheet column (c) is zero.",
+       "why_no": "The gate is cited to the Qualified Tips From More Than One Employer Worksheet, column (c); the filer sees no qualified-tip amount and answers no, although Form 4137 line 2 is more than zero.",
+       "line": "person.f4137_under20_if_rows",
+       "irs_text": "f4137 p. 1, line 2: 'Total cash and charge tips you received in 2025. Add the amounts from line 1, column (c)'; f4137 p. 2, Line 5: 'Enter only the tips you weren’t required to report... less than $20...'",
+       "severity": "high",
+       "fix": "Compute the gate from total Form 4137 line 2/line 1 column (c), not from the qualified-tips worksheet."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A government employee with unreported tips subject only to the 1.45% Medicare tax whose tips are not qualified tips for the 2025 deduction; the cited qualified-tips worksheet column (c) is zero.",
+       "why_no": "The gate is computed from qualified tips rather than total Form 4137 tips, so the government-tip question/refusal is skipped even though Form 4137 line 6 includes the tips.",
+       "line": "person.tips_gov_if_rows",
+       "irs_text": "f4137 p. 2, Line 10: 'If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax...'",
+       "severity": "high",
+       "fix": "Use total unreported tips for the gate, not qualified tips."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer with allocated tips in Form W-2 box 8 and some months of cash tips under $20 at a job.",
+       "why_no": "The helper says 'zero for a person with no unreported tips'; the filer thinks allocated tips are already reported on the W-2 and under-$20 tips were not required to be reported, so they answer no.",
+       "line": "person.f4137_under20_if_rows",
+       "irs_text": "f4137 p. 2, Allocated tips: 'include any allocated tips ... unless you can prove...' and Line 5: 'Enter only the tips you weren’t required to report... less than $20...'",
+       "severity": "medium",
+       "fix": "Ask separately about allocated tips and about cash/charge tips under $20; include both in line 2 and let line 5 capture the under-$20 portion."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A government employee whose only unreported tips are allocated tips in Form W-2 box 8 and whose pay was subject only to the 1.45% Medicare tax.",
+       "why_no": "They think allocated tips are not 'tips on Form 4137' because they did not receive cash or charge tips directly, so they answer no; the government-tip refusal is never reached.",
+       "line": "person.tips_gov_if_rows",
+       "irs_text": "f4137 p. 2, Allocated tips: 'include any allocated tips ...'; Line 10: 'If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax...'",
+       "severity": "medium",
+       "fix": "Include allocated tips in the gate and ask the government-tip question when line 6 includes them."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A government employee whose pay is subject only to the 1.45% Medicare tax and who received unreported tips; they believe Form 4137 is only for Social Security-covered private employment.",
+       "why_no": "They read 'tips on Form 4137' as excluding their Medicare-only government tips and answer no, so the line 10 government-tip question/refusal is never reached.",
+       "line": "person.tips_gov_if_rows",
+       "irs_text": "f4137 p. 2, Line 10: 'If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax...'",
+       "severity": "medium",
+       "fix": "Gate on any unreported cash/charge tips; then ask the government Medicare-only fact with clarifying help instead of making the filer decide whether Form 4137 covers it."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer with unreported tips from a sixth employer listed on an attached statement rather than in rows A through E of Form 4137.",
+       "why_no": "The helper says 'the column (c) tips of the employers listed'; the filer reads that as only the five employers on the form and answers no.",
+       "line": "person.f4137_under20_if_rows",
+       "irs_text": "f4137 p. 2, Line 1: 'If you had more than five employers in 2025, attach a statement... The line 2 and line 3 amounts ... should be the combined totals of all your Forms 4137 and attached statements.'",
        "severity": "low",
-       "fix": "Word the line 2 helper as 'zero for a person with no unreported tips and no allocated tips in W-2 box 8 that must be reported as income', or ask about W-2 box 8 directly before this gate. The gate itself (line 2 > 0) is sound: if line 2 is zero, then lines 4, 5 and 6 must be zero and the line 10 government-tips condition has no effect."
+       "fix": "Say 'employers listed on Form 4137 or attached statements' and compute line 2 from all employer rows and statements."
       }
      ],
-     "prompt_sha": "796bdc726a46458c885f68e5d287d1c054739a356204a08fbe1f0b7b17d17484",
+     "prompt_sha": "6b54ae03c69e96b6a42d00041017790db49ec96462315352c782b1d1bd41ba65",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.075544,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_person.f4137_filed.32ea859ec1fa.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_person.f4137_filed.bc43532f4151.1.response.txt"
     }
    ],
    "condition": "person.f4137_filed",
@@ -1130,98 +1150,38 @@
    ]
   },
   "gate:person.rmd_possible": {
-   "subject_sha": "69ec185521f4d9ce9e8ea54e285b220ede07697678e7ea2167f8eaa9520642fb",
+   "subject_sha": "7fe4273fbf9f49aad5255ff319ade365dc6ad267cc7d3029e0cf907b94b8badf",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer born after 1952 who is an alternate payee under a QDRO from a divorce. They hold a separate share in an ex-spouse's 401(k). The ex-spouse was born in 1950, so required distributions from the share are timed by the participant's age and are already due. The alternate payee took nothing in 2025.",
-       "why_no": "The gate offers only two ways in: 'Born in 1952 or earlier' and 'Inherited an IRA or a retirement plan account'. This filer is younger and inherited nothing; the share came from a divorce. Both helpers are truthfully false, so the question is never asked.",
-       "line": "person.rmd_missed_if_possible",
-       "irs_text": "i5329 p. 9: \"You owe this tax if you don't receive the minimum required distribution from your qualified retirement plan, including an IRA or an eligible section 457 deferred compensation plan.\"",
-       "severity": "high",
-       "fix": "Add a third gate helper: 'Do you have a retirement plan or IRA share that came from someone else, for example by inheritance or a divorce or separation order (QDRO)?' Or ask the RMD question of anyone who has an IRA or plan account, and drop the birth-year gate."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A beneficiary under the 5-year rule. For example, someone who inherited through an estate from an owner who died in 2019 before the required beginning date. The whole account had to be paid out by December 31, 2025, and a balance remained.",
-       "why_no": "The question asks about 'the required yearly minimum', and the help says 'take a minimum amount out each year'. This beneficiary had no yearly amount, only a deadline to empty the account, so a no is truthful as worded.",
-       "line": "person.rmd_missed_if_possible",
-       "irs_text": "i5329 p. 9: \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed. The tax is due for the tax year that includes the last day by which the minimum required distribution must be taken.\"",
-       "severity": "high",
-       "fix": "Ask: 'Was any amount you were required to take out of a retirement account (a yearly minimum, or emptying an inherited account by a 5- or 10-year deadline) not taken by its deadline, even if you made it up later?'"
+       "who": "A filer born after 1952 who inherited an eligible section 457 deferred compensation plan, such as a governmental 457(b) account, and did not take the beneficiary distribution by its deadline.",
+       "why_no": "The gate helper lists only an 'IRA or a retirement plan account.' The filer reads a 457 plan as a deferred-compensation plan, not a retirement plan account, and answers no to the inherited-account helper.",
+       "line": "person.rmd_missed_if_possible / person.rmd_missed",
+       "irs_text": "i5329 p. 9: 'You owe this tax if you don’t receive the minimum required distribution from your qualified retirement plan, including an IRA or an eligible section 457 deferred compensation plan.'",
+       "severity": "medium",
+       "fix": "Add 'including an eligible section 457 deferred compensation plan' to the inherited-account helper, or ask 'Did you inherit any IRA, retirement plan, or eligible 457 plan account?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A non-spouse beneficiary under the 10-year rule. The original owner died after the required beginning date, so annual distributions are required in 2025 after the 2021–2024 relief. The beneficiary took nothing in 2025.",
-       "why_no": "They believe the 10-year rule means they only have to empty the account by year 10, with no yearly minimum. Nothing in the question or help tells them that annual distributions can also be required within the 10 years.",
-       "line": "person.rmd_missed_if_possible",
-       "irs_text": "i5329 p. 9: \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\" (f5329 p. 3, Part IX)",
+       "who": "A filer born after 1952 who inherited a Roth IRA or a designated Roth account and missed the beneficiary distribution deadline.",
+       "why_no": "The filer knows the IRS says there are no minimum required distributions during the lifetime of the owner of a Roth IRA or designated Roth account, and reads the gate's 'RMD possible' as no for any Roth account, so answers no to the inherited-account helper.",
+       "line": "person.rmd_missed_if_possible / person.rmd_missed",
+       "irs_text": "i5329 p. 9: 'Following the death of the Roth IRA owner, required distribution rules apply to the beneficiary.' Also: 'Following the death of the employee, required distribution rules apply to the beneficiary.'",
        "severity": "medium",
-       "fix": "Add to the help: 'If you inherited an account from someone who had already started required distributions, you generally must take a yearly amount even under the 10-year rule (starting 2025).'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A beneficiary of an inherited Roth IRA, or of a designated Roth account in a plan, who missed a required distribution.",
-       "why_no": "They know that Roth accounts have no required distributions and apply that to the inherited Roth as well. The help ('People aged 73 or older ... usually must take a minimum amount out each year') does not correct them.",
-       "line": "person.rmd_missed_if_possible",
-       "irs_text": "i5329 p. 9: \"Roth IRA. There are no minimum required distributions during the lifetime of the owner of a Roth IRA. Following the death of the Roth IRA owner, required distribution rules apply to the beneficiary.\"",
-       "severity": "medium",
-       "fix": "Add to the help: 'This includes inherited Roth IRAs and inherited Roth 401(k) accounts.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A surviving spouse born after 1952 who is the beneficiary of the late spouse's IRA. They kept it as a beneficiary (inherited) IRA, and the late spouse was born in 1950. The surviving spouse thinks of the IRA as their own.",
-       "why_no": "They read 'Inherited an IRA or a retirement plan account' as meaning accounts from someone other than a spouse. They say the IRA simply passed to them and answer no.",
-       "line": "person.rmd_missed_if_possible",
-       "irs_text": "i5329 p. 9: \"If you are the beneficiary of an inherited IRA, then only distributions from IRAs inherited from the same decedent can be combined to satisfy the minimum required distribution for all inherited IRAs from that decedent.\"",
-       "severity": "medium",
-       "fix": "Word the helper: 'Are you the beneficiary of an IRA or retirement plan account of someone who died (including your spouse), or do you hold an account received through a beneficiary designation?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer born in 1951 whose first required distribution (for 2024) was due April 1, 2025. They missed it, but took their 2025 distribution in full.",
-       "why_no": "They read 'the required yearly minimum' as this year's (2025) amount, which they took. The first-year amount had a deadline in 2025 but belongs to the 2024 year.",
-       "line": "person.rmd_missed_if_possible",
-       "irs_text": "i5329 p. 9: \"The tax is due for the tax year that includes the last day by which the minimum required distribution must be taken.\"",
-       "severity": "medium",
-       "fix": "Ask: 'Did any required minimum distribution whose deadline fell in 2025 (including a first-year distribution due April 1, 2025) go untaken in full by that deadline?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who missed a required distribution from an eligible governmental 457(b) deferred compensation plan or a 403(a)/403(b) annuity.",
-       "why_no": "They do not think of a deferred compensation plan or an annuity contract as a 'retirement account'.",
-       "line": "person.rmd_missed_if_possible",
-       "irs_text": "i5329 p. 9: \"You owe this tax if you don't receive the minimum required distribution from your qualified retirement plan, including an IRA or an eligible section 457 deferred compensation plan.\"",
-       "severity": "low",
-       "fix": "Write 'an IRA, 401(k), 403(b), 457(b) deferred compensation plan, pension, or annuity under such a plan'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "Any filer who missed a required distribution and reads the help before answering.",
-       "why_no": "The help says 'a Yes ends the interview here', which invites a no from a filer who is unsure or wants to finish the return.",
-       "line": "person.rmd_missed_if_possible",
-       "irs_text": "f5329 p. 3, Part IX: \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"",
-       "severity": "low",
-       "fix": "Explain the consequence neutrally, for example 'Form 5329 Part IX is required; this tool cannot prepare it', and point to the 10% reduced rate for a correction made in time."
+       "fix": "State in the inherited-account helper that inherited Roth IRAs and inherited designated Roth accounts can require beneficiary RMDs despite the lifetime Roth exception."
       }
      ],
-     "prompt_sha": "8bf67bde1e55f644d0e04140db603dfe484368e29aab3e61d96e933a89c0e11d",
+     "prompt_sha": "0143a8200633d82165202d58eac8fbcacd5a5baf2589b732aaa48ca5552881d6",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.163812,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_person.rmd_possible.69ec185521f4.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_person.rmd_possible.7fe4273fbf9f.1.response.txt"
     }
    ],
    "condition": "person.rmd_possible",
@@ -1459,48 +1419,28 @@
    ]
   },
   "gate:person.turned_65_this_year": {
-   "subject_sha": "566d3e402854c6e2b395f3fd3ef327f5508ef26165135e660fd5fed38f982808",
+   "subject_sha": "b65802d2cf4752e4952c9bb4752851eddb88c3845bf35052853947455e2e48e8",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A surviving spouse files married filing separately for 2025. The spouse was born March 3, 1960 and died January 10, 2025. The spouse had no income, no return is being filed for the spouse, and nobody can claim the spouse as a dependent, so the filer may check the spouse box on line 12d.",
-       "why_no": "The question asks 'Is this the final return of a person who died in 2025' and limits itself to 'your spouse on a joint return'. On a separate return, this is not the spouse's return at all, so 'No' is the truthful answer.",
-       "line": "person.died_before_65 (for the spouse; the line 12d spouse box and the extra standard deduction then follow wrongly)",
-       "irs_text": "i1040gi p. 33, Line 12d: 'If your filing status is married filing separately and your spouse was born before January 2, 1961 ... you can check the appropriate box(es) ... Death of spouse in 2025. If your spouse was born before January 2, 1961, but died in 2025 before reaching age 65, don't check the box that says \"Spouse was born before January 2, 1961.\"'",
-       "severity": "high",
-       "fix": "Ask about the person, not the return: 'Did this person (you, or your spouse on any return where your spouse's age counts, including married filing separately) die in 2025 before reaching age 65?' Ask it of the spouse whenever the spouse's year of birth is used."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A widow files a 2025 joint return with her husband. He was born in August 1960 and died in May 2025. She thinks of this as her own joint return, not as 'his final return', which she takes to mean a separate return an executor files.",
-       "why_no": "'Is this the final return of a person who died' reads as describing a decedent-only return filed by an estate. A joint return the survivor files in her own name does not look like that, so she answers no for the spouse.",
-       "line": "person.died_before_65 (spouse)",
-       "irs_text": "i1040gi p. 110, Part V: 'If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors.'",
-       "severity": "medium",
-       "fix": "Ask a fact instead of a return label: 'Did this person die in 2025? If so, on what date?' Then compute 'before reaching age 65' from the birth date and the date of death (age 65 is reached on the day before the 65th birthday)."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "An executor or adult child prepares the final 2025 return of a single parent. The parent was born in November 1960 and died in July 2025.",
-       "why_no": "The question addresses 'you', and the help says 'For a living person the answer is No.' The preparer is alive and reads 'you' as themselves, so they answer no.",
+       "pattern": "other",
+       "who": "An executor or surviving spouse preparing the 2025 final return of a decedent who was born in 1960 (or on January 1, 1961) and died in 2025 before reaching age 65; the person answering the gate is not the decedent.",
+       "why_no": "The gate asks 'The year you were born' and 'Born on January 1' without saying 'this person' or 'you or your spouse.' The preparer truthfully answers for themselves, so the computed gate is false and the death question is never asked.",
        "line": "person.died_before_65",
-       "irs_text": "i1040gi p. 110, Part V: 'If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors.'; i1040gi p. 33: 'Death of taxpayer in 2025. If you are preparing a return for someone who died in 2025, see Pub. 501 before completing the standard deduction information.'",
-       "severity": "medium",
-       "fix": "Name the person in the question (for example, 'Did [name], the person this return is for, die in 2025?'). Change the help to 'Answer about the person named on the return, not about whoever is preparing it.'"
+       "irs_text": "i1040gi p. 110, Schedule 1-A, Part V: 'If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn’t qualify for the enhanced deduction for seniors.'",
+       "severity": "high",
+       "fix": "Ask 'What year was this person born?' and 'Was this person born on January 1?' for the decedent/spouse, not 'you'; on joint returns ask separately for each spouse."
       }
      ],
-     "prompt_sha": "b8fca76e180563352d28c20560d9105d0fbb0653a529b320646721b8aaddbf1d",
+     "prompt_sha": "2caf8764cecc1b952ec89458c7c6224168bcd16d868aea4c6132dec11c6ed39c",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.086104,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_person.turned_65_this_year.566d3e402854.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_person.turned_65_this_year.b65802d2cf47.1.response.txt"
     }
    ],
    "condition": "person.turned_65_this_year",
@@ -1585,78 +1525,17 @@
    ]
   },
   "gate:person.x_edu_account": {
-   "subject_sha": "9d72875f4cf35ba86ac950cc489a6be1a5e0a7976cb58365a13d8c8f8ed20e95",
+   "subject_sha": "86686e8083c71bfa6311c3d9ee65e06622b991a2282009fb264b8488599e73b9",
    "samples": [
     {
-     "verdict": "FALSE_NO",
-     "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A parent opened a Coverdell ESA for a child between January 1 and April 15, 2026, and made a contribution for 2025. The contribution was over the $2,000 limit, or the contributor's income made any contribution excess. The child (the beneficiary) files a 2025 return, and the account did not exist during 2025.",
-       "why_no": "The gate asks 'At any time in 2025, did you have ... a Coverdell education savings account.' The account did not exist until 2026, so No is truthful. Coverdell contributions for 2025 can still be made in 2026.",
-       "line": "person.x_edu_excess_if_account",
-       "irs_text": "f5329 (2025) p. 2, line 33: 'Enter 6% (0.06) of the smaller of line 32 or the value of your Coverdell ESAs on December 31, 2025 (including 2025 contributions made in 2026).'",
-       "severity": "high",
-       "fix": "Broaden the gate: 'At any time in 2025, or in 2026 as a contribution for 2025, did you have ... or was one held for you?' Or ask directly whether any contribution for 2025 was made to a Coverdell ESA for this person, including one made by April 15, 2026."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A Coverdell ESA beneficiary had an excess contribution in 2024 that was not withdrawn, so line 32 of the 2024 Form 5329 shows an amount. Nothing was contributed to or distributed from the account in 2025.",
-       "why_no": "The filer answers Yes to the gate. The computed helper 'had contributions or distributions in 2025' is then false, so the excess question is never asked. This happens even though its own help says 'This includes an excess from an earlier year.'",
-       "line": "person.x_edu_excess_if_account",
-       "irs_text": "f5329 (2025) p. 2, Part V: 'Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329.' Line 26: 'Enter the excess contributions from line 32 of your 2024 Form 5329.'",
-       "severity": "high",
-       "fix": "Do not let the 2025-activity helper gate the excess question. Ask it whenever the account gate is Yes, or extend the helper to 'or a Form 5329 for 2024 showed excess contributions to this Coverdell ESA.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A Coverdell ESA beneficiary turned 30 in 2025, or died, and the balance was not distributed within 30 days. The balance is treated as distributed even though no money was paid out and no 2025 contribution was made.",
-       "why_no": "The helper 'had contributions or distributions in 2025' and the gated question 'Was any money that came out of the account in 2025 taxable' both describe actual withdrawals. A deemed distribution is not money that came out.",
-       "line": "person.x_edu_taxable_if_account",
-       "irs_text": "f5329 (2025) p. 1, line 5: 'Distributions included in income from a Coverdell ESA, a QTP, or an ABLE account'",
-       "severity": "medium",
-       "fix": "Add to the helper and the gated question: 'including a balance treated as distributed because the beneficiary reached age 30 or died, or because the account stopped qualifying.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "The owner of a 529 plan received a non-qualified distribution paid to the owner. The beneficiary's costs had also been used for the American opportunity or lifetime learning credit, or were covered by a tax-free scholarship.",
-       "why_no": "The help says 'Money used for the costs the account is meant for is not taxable.' The filer compares the distribution to total tuition and does not reduce the costs by scholarships or by the expenses used for an education credit.",
-       "line": "person.x_edu_taxable_if_account",
-       "irs_text": "f5329 (2025) p. 1, Part II: 'Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP)'",
-       "severity": "medium",
-       "fix": "Ask facts the filer can check: Form 1099-Q box 1, the qualified costs paid, tax-free scholarships, and any costs used for an education credit. Compute the taxable amount from those, or end the interview when any distribution exceeds costs after these reductions."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A parent or grandparent owns a 529 plan or Coverdell ESA naming a child as beneficiary. In 2025 the owner withdrew money paid to themselves for a non-education use.",
-       "why_no": "The gate's phrasing 'or was one held for you' and the help 'whether the account is yours or is held for you' read as asking about accounts for the filer's own benefit. The owner thinks of it as the child's account. The help's Form 1099-Q cue fails if the form was not received, was lost, or was addressed in a way the owner did not connect to themselves.",
-       "line": "person.x_edu_taxable_if_account",
-       "irs_text": "f5329 (2025) p. 1, line 5: 'Distributions included in income from a Coverdell ESA, a QTP, or an ABLE account'",
-       "severity": "medium",
-       "fix": "Reword the gate: 'At any time in 2025, did you own a 529 plan, Coverdell ESA or ABLE account (even one for someone else's benefit), was one held for your benefit, or did you receive money from one?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "Any filer or reviewer checking the gate against its sources.",
-       "why_no": "The citations attached to the gate and to both gated lines include Part IX and the excess accumulation text on required minimum distributions. That text is unrelated to education or ABLE accounts. The citations omit Parts V and VIII, which give the excess-contribution line its amount.",
-       "line": "person.x_edu_excess_if_account",
-       "irs_text": "f5329 (2025) p. 2, Part VIII: 'Complete this part if contributions to your ABLE account for 2025 were more than is allowable.'",
-       "severity": "low",
-       "fix": "Replace the Part IX and i5329 p. 9 excess-accumulation citations with f5329 Part V (lines 26–33) and Part VIII (lines 50–51) for the excess line, and keep Part II for the taxable-distribution line."
-      }
-     ],
-     "prompt_sha": "a1d9d3b00835645e287d5787748ca0e028bd1e79c584987856c290282db8b472",
+     "verdict": "SOUND",
+     "findings": [],
+     "prompt_sha": "13d3acd8861f8c9c235dd400f337669fafd20b7111354fc8215705b571085517",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.140316,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_person.x_edu_account.9d72875f4cf3.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_person.x_edu_account.86686e8083c7.1.response.txt"
     }
    ],
    "condition": "person.x_edu_account",

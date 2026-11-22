@@ -1,0 +1,17 @@
+{
+ "kind": "render",
+ "form": "oi8z",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "8z (amount)",
+   "restated": "Input — The amount of this item to include in income for 2025",
+   "model": "The line is NonNegDollars, but the IRS line 8z examples include a 'Loss on certain corrective distributions of excess deferrals'; a loss cannot be entered as a nonnegative amount to include in income.",
+   "ruling": "Ruling: scope; i1040gi p. 92: a loss on line 8z is outside the tool; the line takes positive amounts only. Project stands.",
+   "context": "771f3ceda9c48dbe162aedabe7a30e881a60be833afa595a2a0076ffd91fcf07",
+   "date": "2026-11-17",
+   "run": "7b07f91b1e37a2c79005704317e5dadeb2ca64f69944b1e82111d5c00cbb47bb",
+   "subject_key": "9a094d1812f17478c33a57d9ec5ac38d6e8d347c5e0f4c2676517beaf7f77a1b"
+  }
+ ]
+}

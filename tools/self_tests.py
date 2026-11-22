@@ -96,6 +96,7 @@ TESTS = [
     ("build_fresh_self_test", "code", False, ["python3", "tools/build_fresh.py", "--self-test"]),
     ("ny_fixtures_self_test", "code", False, ["python3", "tools/ny_fixtures.py", "--self-test"]),
     ("claude_hooks_self_test", "bookkeeping", False, ["bash", "-c", "python3 tools/claude_hooks/bash_guard.py --self-test && python3 tools/claude_hooks/agents.py --self-test"]),
+    ("worktree_gc_self_test", "bookkeeping", False, ["python3", "tools/worktree_gc.py", "--self-test"]),
 ]
 GROUPS = ("bookkeeping", "code")
 

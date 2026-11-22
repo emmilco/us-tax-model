@@ -1,0 +1,17 @@
+{
+ "kind": "render",
+ "form": "f8995a",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "33",
+   "restated": "Enter the amount from qbi helper \"Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero\".",
+   "model": "The restatement adds an 'if zero or less, enter -0-' floor, but the IRS instruction is only 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b'; no zero floor is stated for line 33.",
+   "ruling": "Ruling: representation; f8995a p. 2: Form 1040 line 11a cannot be negative, so the floor restates the form. Project stands.",
+   "context": "e454a09fbe6474ae276e36b211def2d2e9a62ebcaeb4d12e51fbe2204afbe9d4",
+   "date": "2026-11-17",
+   "run": "1ddc8bee08dad3e47f8c3038c15a6395bd7cc46db6959d8417154d3bedc1d3b2",
+   "subject_key": "c48a9b2d0f701aa239f2586dabbe56cc5bfd779a466816f246211a1d3138980d"
+  }
+ ]
+}

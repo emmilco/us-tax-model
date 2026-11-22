@@ -83,7 +83,7 @@
    ]
   },
   "gate:f8962.income_100": {
-   "subject_sha": "03f45e644c80cbe6bbc79a0072136469c477671ae7a131457c35d6ecb6226f3b",
+   "subject_sha": "330d39c47344d575fdd4df41b0ccdb054502b315e9cba713c20063d0441fa892",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -91,50 +91,20 @@
       {
        "kind": "FALSE_NO",
        "pattern": "other",
-       "who": "A single filer or a married couple filing jointly with Marketplace coverage, APTC paid, and household income below the poverty line (Form 8962 line 5 below 100). The filer or the spouse is a green card holder within the five-year bar and is therefore ineligible for Medicaid.",
-       "why_no": "The gate is inverted. The tool asks the question only when line 5 is at least 100, and in that case the line is false whatever the answer. When line 5 is below 100, the gate fails, so the tool never asks the question and sets the line to false. Its own help says 'Asked because the income on this return is below the federal poverty line', which contradicts the condition. A filer who should be asked never is, and no answer from any filer can make the line true.",
+       "who": "A lawfully present noncitizen with household income below 100% of the federal poverty line, covered by a Marketplace plan, who was not eligible for Medicaid because of immigration status.",
+       "why_no": "They truthfully answer no to 'household income at least 100% of the federal poverty line' because line 5 is below 100; the gate then suppresses the alien-below question and treats the alien exception as zero.",
        "line": "f8962.alien_from_income",
-       "irs_text": "i8962 p. 9, Household income below 100%: 'If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under ... Alien lawfully present in the United States'; 'Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.'",
+       "irs_text": "i8962 p. 9, Line 5: 'If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under ... Alien lawfully present in the United States, later.' And p. 9: 'Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.'",
        "severity": "high",
-       "fix": "Gate on NOT f8962.income_100 (line 5 below 100) so the question is asked exactly when the help says it is. Alternatively, drop the outer gate and rely on the Choose already inside the line."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer below the poverty line whose Marketplace-covered spouse or dependent holds a nonimmigrant status, such as an H-1B worker, an F-1 student, or a TPS holder. The person is lawfully present but ineligible for Medicaid because of that status.",
-       "why_no": "The question asks about a 'lawfully present immigrant'. Under immigration law, H-1B, F-1, and similar visa holders are 'nonimmigrants', so a filer who knows the terms answers no truthfully. Other filers read 'immigrant' as meaning green card holders only.",
-       "line": "f8962.alien_from_income",
-       "irs_text": "i8962 p. 9, 'Alien lawfully present in the United States. Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.'",
-       "severity": "high",
-       "fix": "Ask: 'Was anyone covered by the Marketplace plan lawfully in the United States but not a U.S. citizen (for example a green card holder, a visa holder such as H-1B or F-1 and their family members, or someone with TPS or another lawful status)?' Then ask a separate question about Medicaid."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A lawfully present noncitizen below the poverty line who never applied for Medicaid. The person enrolled through the Marketplace, which granted APTC without a Medicaid denial notice.",
-       "why_no": "'Could not get Medicaid because of their immigration status' asks the filer to make a legal eligibility determination. A filer who never applied, or never got a denial, answers no or 'I don't know' and treats that as no.",
-       "line": "f8962.alien_from_income",
-       "irs_text": "i8962 p. 9, 'Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.'",
-       "severity": "medium",
-       "fix": "First ask a fact the filer can check: is the covered person a noncitizen who is lawfully present? On a yes, ask whether the Marketplace told them they were not eligible for Medicaid, or whether they were in the U.S. less than five years with that status. Treat 'not sure' as yes, which leads to the refusal."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A covered family member whose immigration status changed partway through 2025. For example, the person was within the five-year bar for some months, then became a citizen or Medicaid-eligible later in the year.",
-       "why_no": "The past tense 'was ... could not get Medicaid' reads as a description of the person's status now or at year end. A filer whose relative can now get Medicaid answers no, although the exception applied for the earlier months of coverage.",
-       "line": "f8962.alien_from_income",
-       "irs_text": "i8962 p. 9, 'Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.'",
-       "severity": "medium",
-       "fix": "Add: 'for any month of 2025 in which they had Marketplace coverage'."
+       "fix": "Gate the alien-below question on line 5 being less than 100 (income_100 = false), not on line 5 being at least 100; or invert the gate so the below-100 branch is reachable."
       }
      ],
-     "prompt_sha": "8476978449521adc156ad4f6ef1f8fba4ae9590a90868ac6469e3a018b91e7b7",
+     "prompt_sha": "7e1747a11816a3c29e18d19bb2bc45ba0f909f151336086b27a8b6dffeb68e97",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.082896,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f8962.income_100.03f45e644c80.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_f8962.income_100.330d39c47344.1.response.txt"
     }
    ],
    "condition": "f8962.income_100",
@@ -277,7 +247,7 @@
    ]
   },
   "gate:f8962.mfs_ask": {
-   "subject_sha": "bb2e4d3e48dae935f11628f1feb55f60503b3f4dcf7be0178a4f20eb0115b3b5",
+   "subject_sha": "36d9d68112aa0f9888fc3d9d656f9c806936a5ba6f806b26b8eb83c17431a993",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -285,60 +255,50 @@
       {
        "kind": "FALSE_NO",
        "pattern": "4",
-       "who": "A married filer whose abandoning or abusive spouse was the Marketplace enrollee. The Form 1095-A was mailed to the spouse, and the filer, who was covered on the policy with APTC, never received it and files married filing separately.",
-       "why_no": "The gate depends on the helper \"Any Form 1095-A, so Form 8962 is prepared.\" This filer truthfully has no Form 1095-A, so the tool never prepares Form 8962 and never asks the line A question, even though APTC was paid for their coverage.",
-       "line": "f8962.mfs_exception_if_mfs (and Form 8962 as a whole, including the APTC repayment it would figure)",
-       "irs_text": "i8962 p. 7: \"If you are a victim of domestic abuse or spousal abandonment, you can file a return as married filing separately and take the PTC\"; \"If APTC was paid for your coverage but you cannot take the PTC because you are married filing a separate return ... complete lines 1 through 5 ... Then, complete the rest of the form to determine how much you must repay.\" The policy may cover \"at least one individual in your spouse's tax family.\"",
+       "who": "A married filing separately filer who is a domestic-abuse or spousal-abandonment victim and had Marketplace coverage/APTC, but never received or lost the Form 1095-A and so says no Form 1095-A exists.",
+       "why_no": "The gate asks whether there is 'Any Form 1095-A'; the filer reads it as possession of the form, not Marketplace coverage, and truthfully says no because the form is missing.",
+       "line": "f8962.mfs_exception_if_mfs",
+       "irs_text": "i8962 p. 7: 'If Exception 2 applies, you are treated as married but can take the PTC with the filing status of married filing separately'; without it, MFS 'cannot take the PTC' and 'must generally repay all of the APTC.'",
        "severity": "high",
-       "fix": "Base the gate on the fact, not the document. Ask: \"Were you or anyone in your tax family enrolled in a health plan through the Marketplace (HealthCare.gov or a state exchange) at any time in 2025, even if you did not get a Form 1095-A or it went to your spouse?\" Then tell the filer how to get the 1095-A from their Marketplace account."
+       "fix": "Gate on Marketplace coverage or APTC, not receipt or possession of Form 1095-A; tell filers to retrieve a missing 1095-A from the Marketplace."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer filing married filing separately who had Marketplace coverage with APTC but lost or never received the Form 1095-A, or got it only online and does not think of it as received.",
-       "why_no": "If the helper asks whether a Form 1095-A was received, this filer answers no from the paperwork in hand. Form 8962 is then never prepared and the line A question is never asked.",
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A married filing separately victim whose Marketplace policy/Form 1095-A is issued in the spouse's name, or covers the filer under the spouse's policy, so the filer does not have a 1095-A in their own name.",
+       "why_no": "The gate says 'you' have a Form 1095-A; the filer reads that as the form having to be issued to them, and answers no because the only 1095-A is the spouse's.",
        "line": "f8962.mfs_exception_if_mfs",
-       "irs_text": "i8962 p. 7: \"Check the box on line A ... if you are filing as married filing separately, are a victim of domestic abuse or spousal abandonment, and qualify for Exception 2\"; \"If APTC was paid for your coverage ... complete the rest of the form to determine how much you must repay.\"",
-       "severity": "medium",
-       "fix": "Ask about Marketplace enrollment, with or without advance payments, rather than about receiving the form."
+       "irs_text": "i8962 p. 7: 'If the policy also covered at least one individual in your spouse’s tax family, you must generally repay half of the APTC paid for the policy'; Exception 2 still lets a victim MFS filer take the PTC.",
+       "severity": "high",
+       "fix": "Ask whether the filer or spouse had a 1095-A covering anyone in the filer's tax family, and include spouse-issued policies."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A married filer living apart from a spouse who abused the filer's child or another family member in the household, but never directly harmed the filer.",
-       "why_no": "The question says \"because they abused you\", and the help lists only abuse aimed at \"you\". The filer reads abuse of the child as outside the question and answers no.",
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A married filing separately filer whose spouse abused the filer's child or another family member living in the household, but did not directly abuse the filer.",
+       "why_no": "The gated question asks whether 'they abused you'; the filer truthfully says no to direct abuse, even though the IRS treats abuse of the child or household member as abuse of the filer in some facts.",
        "line": "f8962.mfs_exception_if_mfs",
-       "irs_text": "i8962 p. 7: \"Depending on the facts and circumstances, abuse of an individual's child or other family member living in the household may constitute abuse of the individual.\"",
-       "severity": "medium",
-       "fix": "Add to the help: \"Abuse of your child or another family member living in your household can count as abuse of you.\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A married filer whose spouse used humiliation, psychological manipulation, or efforts to undermine the filer's ability to reason independently, often alongside the spouse's drinking or drug use, with no physical violence.",
-       "why_no": "The help lists \"physical, sexual or emotional abuse, and efforts to control, isolate or frighten you.\" The filer takes that list as complete and does not see psychological abuse, humiliation, or undermining their reasoning in it, so they answer no.",
-       "line": "f8962.mfs_exception_if_mfs",
-       "irs_text": "i8962 p. 7: \"Domestic abuse includes physical, psychological, sexual, or emotional abuse, including efforts to control, isolate, humiliate, and intimidate, or to undermine the victim's ability to reason independently. All the facts and circumstances are considered ... including the effects of alcohol or drug abuse by the victim's spouse.\"",
-       "severity": "low",
-       "fix": "Use the full IRS list in the help: physical, psychological, sexual or emotional abuse, including efforts to control, isolate, humiliate or intimidate you, or to undermine your ability to think for yourself."
+       "irs_text": "i8962 p. 7: 'Depending on the facts and circumstances, abuse of an individual’s child or other family member living in the household may constitute abuse of the individual.'",
+       "severity": "high",
+       "fix": "Ask whether the spouse abused the filer or a child/other household member, or move the child/relative-abuse rule into the question wording."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "An abused filer who could in principle sign a joint return but does not, because doing so would require contact with or cooperation from the abusive spouse or would be unsafe.",
-       "why_no": "\"Unable to file a joint return\" reads as physically impossible. A filer who could technically sign, but will not for safety reasons, answers no.",
+       "who": "A married filing separately victim living apart from an abusive spouse who could physically or legally sign a joint return but cannot safely do so because of the abuse.",
+       "why_no": "The question asks whether they are 'unable to file a joint return'; the filer reads 'unable' as a legal or physical incapacity and answers no because they could sign a joint return.",
        "line": "f8962.mfs_exception_if_mfs",
-       "irs_text": "i8962 p. 7: \"You are unable to file a joint return because you are a victim of domestic abuse (described next) or spousal abandonment.\"",
-       "severity": "low",
-       "fix": "Add to the help: \"Unable includes not filing jointly because of the abuse, for example because it would be unsafe or would require contact or cooperation with your spouse.\""
+       "irs_text": "i8962 p. 7: Exception 2 applies when 'You are unable to file a joint return because you are a victim of domestic abuse ... or spousal abandonment'; it then allows MFS PTC.",
+       "severity": "medium",
+       "fix": "Clarify that 'unable' includes being unable to file jointly safely because of abuse; it is not a legal-incapacity test."
       }
      ],
-     "prompt_sha": "fdb55150f7b06a2407eb637d5faabedad26a2217147170732938917bf66effeb",
+     "prompt_sha": "f374c0571cedde87c02bcc78975390e016e68555163ce66330bba55e0bd0d474",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.087504,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f8962.mfs_ask.bb2e4d3e48da.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_f8962.mfs_ask.36d9d68112aa.1.response.txt"
     }
    ],
    "condition": "f8962.mfs_ask",

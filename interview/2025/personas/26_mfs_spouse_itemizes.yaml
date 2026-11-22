@@ -1,0 +1,32 @@
+# Predicted end (hand-derived; unverified until draft-walk and a values run):
+#   Form 1040 line 12b checked (spouse itemizes): standard deduction $0, so Schedule A is used.
+#   Schedule A line 5a $2,849, 5d $2,849, 5e $2,849 (MFS cap $20,000 not reached); line 11 $1,200; line 17 $4,049.
+#   AGI $70,000; taxable income $65,951; tax $9,429 (Tax Table, MFS, +/- $1); withholding $7,000; owed $2,429.
+name: 26_mfs_spouse_itemizes
+who: A married man, 47, in Pennsylvania, who lives with his wife but files apart because she itemizes her large medical bills on her own return; he has one job (one Form W-2, $70,000 of wages), paid $2,849 of state and local income tax and gave $1,200 in cash to charity, and rents his home.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: mfs
+  household.married_dec31: true
+  household.community_property: false
+  household.spouse_cp_domicile: false
+  person[taxpayer].birth_year: 1978
+  $w2@person[taxpayer]: [plant]
+  person[taxpayer].w2[plant].box1: 7000000
+  person[taxpayer].w2[plant].box2: 700000
+  person[taxpayer].w2[plant].box4: 434000
+  person[taxpayer].w2[plant].box5: 7000000
+  person[taxpayer].w2[plant].box6: 101500
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false
+  sa.state_tax_any: true
+  sa.gifts: true
+  sa.line5a: 284900
+  sa.charity_limited: false
+  sa.line11: 120000
+  $gift: []
+  sa.spouse_itemizes: true

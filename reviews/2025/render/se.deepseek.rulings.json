@@ -1,0 +1,57 @@
+{
+ "kind": "render",
+ "form": "se",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "2",
+   "restated": "Input — Bound by the calling line (this person's Schedule C results).",
+   "model": "IRS line 2 includes \"Schedule K-1 (Form 1065), box 14, code A\" and other income per instructions; restatement uses only this person Schedule C results.",
+   "ruling": "Ruling: scope; f1040sse p. 2: Schedule K-1 box 14 code A is refused (scope.k1); the line reads this person's Schedule C results. Project stands.",
+   "context": "b2774a8f50cede7513a01250420992a6ca1427078e762ff234e1096ea26bdbc6",
+   "date": "2026-11-17",
+   "run": "540e231988e7b7347cf7d61a7bf9bcc9f3873993f281395a43082effde744cbc",
+   "subject_key": "adabbb285517f2d196401a55d0b90a82233fe392fddd3d8c0c0b3d7c034b0698"
+  },
+  {
+   "printed": "3",
+   "restated": "Enter the amount from line 2.",
+   "model": "IRS line 3 says \"Combine lines 1a, 1b, and 2\"; restatement enters only the amount from line 2.",
+   "ruling": "Ruling: scope; f1040sse: Schedule K-1 box 14 code A is refused (scope.k1); the line reads Schedule C. Project stands.",
+   "context": "b2774a8f50cede7513a01250420992a6ca1427078e762ff234e1096ea26bdbc6",
+   "date": "2026-11-17",
+   "run": "540e231988e7b7347cf7d61a7bf9bcc9f3873993f281395a43082effde744cbc",
+   "subject_key": "877cb9fc80bd537cfa3db9bd71ef675b39e2b7c146254f661cde4cf679639603"
+  },
+  {
+   "printed": "4b",
+   "restated": "Enter the amount from helper \"Zero\".",
+   "model": "IRS line 4b says \"If you elect one or both of the optional methods, enter the total of lines 15 and 17 here\"; restatement always enters zero.",
+   "ruling": "Ruling: scope; f1040sse: the optional methods are refused; the line is zero. Project stands.",
+   "context": "b2774a8f50cede7513a01250420992a6ca1427078e762ff234e1096ea26bdbc6",
+   "date": "2026-11-17",
+   "run": "540e231988e7b7347cf7d61a7bf9bcc9f3873993f281395a43082effde744cbc",
+   "subject_key": "c83e05eccab6576eba7917db0b285e3b082026389dfeed06a41def0612aed2ae"
+  },
+  {
+   "printed": "5b",
+   "restated": "Enter the amount from helper \"Zero\".",
+   "model": "IRS line 5b says \"Multiply line 5a by 92.35% (0.9235). If less than $100, enter -0-\"; restatement always enters zero.",
+   "ruling": "Ruling: scope; f1040sse: line 5a is zero on the supported path (optional methods refused); the line is zero. Project stands.",
+   "context": "b2774a8f50cede7513a01250420992a6ca1427078e762ff234e1096ea26bdbc6",
+   "date": "2026-11-17",
+   "run": "540e231988e7b7347cf7d61a7bf9bcc9f3873993f281395a43082effde744cbc",
+   "subject_key": "1c98c082ab742c7318ea5b9054aa90f0e079bf688bec9244b7c097d5ad0e4d3c"
+  },
+  {
+   "printed": "8d",
+   "restated": "Enter the amount from line 8a.",
+   "model": "IRS line 8d says \"Add lines 8a, 8b, and 8c\"; restatement enters only line 8a.",
+   "ruling": "Ruling: scope; f1040sse: lines 8b and 8c are outside the tool; the line reads line 8a. Project stands.",
+   "context": "b2774a8f50cede7513a01250420992a6ca1427078e762ff234e1096ea26bdbc6",
+   "date": "2026-11-17",
+   "run": "540e231988e7b7347cf7d61a7bf9bcc9f3873993f281395a43082effde744cbc",
+   "subject_key": "cfe38d2ccfa88bd5c9fc26439248e0f8bbe2622b76c6e268907deda602b257e6"
+  }
+ ]
+}

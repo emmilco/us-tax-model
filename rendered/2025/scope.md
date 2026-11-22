@@ -52,11 +52,18 @@
 - Expr: `{"op":"input","source":"At any time in 2025, were you (or, on a joint return, your spouse) in a chapter 11 bankruptcy case?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
+## (helper) — `scope.treaty`
+
+- **Authored helper label:** Is any of your (or, on a joint return, your spouse's) 2025 income exempt from U.S. tax under a tax treaty?
+- **Encoded (Bool):** Input — Is any of your (or, on a joint return, your spouse's) 2025 income exempt from U.S. tax under a tax treaty, such as the pay or scholarship of a student, teacher or researcher from another country (often shown on Form 1042-S or claimed on Form 8833)?
+- Expr: `{"op":"input","source":"Is any of your (or, on a joint return, your spouse's) 2025 income exempt from U.S. tax under a tax treaty, such as the pay or scholarship of a student, teacher or researcher from another country (often shown on Form 1042-S or claimed on Form 8833)?"}`
+- Cite: [i1040s8812] p. 3, Line 18a, "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a." (2025; printed date 2026-01-23; sha256 bb9788cd)
+
 ## (helper) — `scope.armed_forces`
 
-- **Authored helper label:** Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?
-- **Encoded (Bool):** Input — Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?
-- Expr: `{"op":"input","source":"Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?"}`
+- **Authored helper label:** In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?
+- **Encoded (Bool):** Input — In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?
+- Expr: `{"op":"input","source":"In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.reservist_expenses`
@@ -69,7 +76,7 @@
 ## (gate) — `scope.reservist_expenses_if_armed_forces`
 
 - **Authored helper label:** The answer to scope.reservist_expenses, asked only when the question scope.armed_forces is answered Yes (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?" = true → helper "Do you want to deduct costs, not paid back, of travel more than 100 miles from home for reserve or National Guard duty in 2025?"] [helper "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = true → helper "Do you want to deduct costs, not paid back, of travel more than 100 miles from home for reserve or National Guard duty in 2025?"] [helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.armed_forces",{"const":true}],"op":"test"},"then":"scope.reservist_expenses"},{"guard":{"eq":["scope.armed_forces",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 93, Line 12, "Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -83,7 +90,7 @@
 ## (gate) — `scope.military_move_if_armed_forces`
 
 - **Authored helper label:** The answer to scope.military_move, asked only when the question scope.armed_forces is answered Yes (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?" = true → helper "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders?"] [helper "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = true → helper "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders?"] [helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.armed_forces",{"const":true}],"op":"test"},"then":"scope.military_move"},{"guard":{"eq":["scope.armed_forces",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -97,7 +104,7 @@
 ## (gate) — `scope.reservist_repaid_if_armed_forces`
 
 - **Authored helper label:** The answer to scope.reservist_repaid, asked only when the question scope.armed_forces is answered Yes (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?" = true → helper "In 2025, did you (or, on a joint return, your spouse) put back into an IRA money taken out of a retirement plan during a call to active duty as a reservist?"] [helper "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = true → helper "In 2025, did you (or, on a joint return, your spouse) put back into an IRA money taken out of a retirement plan during a call to active duty as a reservist?"] [helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.armed_forces",{"const":true}],"op":"test"},"then":"scope.reservist_repaid"},{"guard":{"eq":["scope.armed_forces",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -173,9 +180,9 @@
 
 ## (helper) — `scope.rental`
 
-- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?
-- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?
-- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?"}`
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.rent_personal`
@@ -188,7 +195,7 @@
 ## (gate) — `scope.rent_personal_if_rental`
 
 - **Authored helper label:** The answer to scope.rent_personal, asked only when the question scope.rental is answered Yes (false otherwise)
-- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?" = true → helper "Was any of what you rented out something other than a building, a room or land, such as a car, a trailer or equipment?"] [helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?" = true → helper "Was any of what you rented out something other than a building, a room or land, such as a car, a trailer or equipment?"] [helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.rental",{"const":true}],"op":"test"},"then":"scope.rent_personal"},{"guard":{"eq":["scope.rental",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040se] p. 5, Personal property, "Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles" (2025; sha256 ad71de35)
 
@@ -208,22 +215,22 @@
 
 ## (helper) — `scope.pay_no_w2`
 
-- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?
-- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?
-- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?"}`
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.household_pay`
 
-- **Authored helper label:** In 2025, were you (or, on a joint return, your spouse) paid for work in someone else's home, for example as a nanny, carer or housekeeper, by a household that gave you no W-2?
-- **Encoded (Bool):** Input — In 2025, were you (or, on a joint return, your spouse) paid for work in someone else's home, for example as a nanny, carer or housekeeper, by a household that gave you no W-2?
-- Expr: `{"op":"input","source":"In 2025, were you (or, on a joint return, your spouse) paid for work in someone else's home, for example as a nanny, carer or housekeeper, by a household that gave you no W-2?"}`
+- **Authored helper label:** In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?
+- **Encoded (Bool):** Input — In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?
+- Expr: `{"op":"input","source":"In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?"}`
 - Cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `scope.household_pay_if_pay`
 
 - **Authored helper label:** Wages as a household employee not reported on a W-2 (asked only after a Yes to pay not on a W-2; otherwise no)
-- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?" = true → helper "In 2025, were you (or, on a joint return, your spouse) paid for work in someone else's home, for example as a nanny, carer or housekeeper, by a household that gave you no W-2?"] [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?" = true → helper "In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?"] [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.pay_no_w2",{"const":true}],"op":"test"},"then":"scope.household_pay"},{"guard":{"eq":["scope.pay_no_w2",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -237,7 +244,7 @@
 ## (gate) — `scope.contractor_pay_if_pay`
 
 - **Authored helper label:** Wages from a firm that treated the worker as an independent contractor (Form 8919) (asked only after a Yes to pay not on a W-2; otherwise no)
-- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?" = true → helper "In 2025, did a firm pay you (or, on a joint return, your spouse) as an independent contractor, when you believe you were its employee, without taking out social security or Medicare tax?"] [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?" = true → helper "In 2025, did a firm pay you (or, on a joint return, your spouse) as an independent contractor, when you believe you were its employee, without taking out social security or Medicare tax?"] [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.pay_no_w2",{"const":true}],"op":"test"},"then":"scope.contractor_pay"},{"guard":{"eq":["scope.pay_no_w2",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [f8919] p. 1, Who must file, "You performed services for a firm", "You believe your pay from the firm wasn’t for services as an independent contractor", "The firm didn’t withhold your share of social security and Medicare taxes from your pay" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)
 
@@ -251,21 +258,21 @@
 ## (gate) — `scope.tips_unreported_if_pay`
 
 - **Authored helper label:** Tips not reported in full to an employer, or noncash tips (Form 4137 and line 1c) (asked only after a Yes to pay not on a W-2; otherwise no)
-- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?" = true → helper "In 2025, did you (or, on a joint return, your spouse) get cash or card tips at a job that were not reported in full to the employer, or tips that were not money, such as tickets or other items of value?"] [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?" = true → helper "In 2025, did you (or, on a joint return, your spouse) get cash or card tips at a job that were not reported in full to the employer, or tips that were not money, such as tickets or other items of value?"] [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.pay_no_w2",{"const":true}],"op":"test"},"then":"scope.tips_unreported"},{"guard":{"eq":["scope.pay_no_w2",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 24, Line 1c, "This should include any tip income you didn’t report to your employer", "Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `scope.strike_pay`
 
-- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits from a union, other than bona fide gifts?
-- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits from a union, other than bona fide gifts?
-- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits from a union, other than bona fide gifts?"}`
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits, other than bona fide gifts?
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits, other than bona fide gifts?
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits, other than bona fide gifts?"}`
 - Cite: [i1040gi] p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `scope.strike_pay_if_pay`
 
 - **Authored helper label:** Strike or lockout benefits (asked only after a Yes to pay not on a W-2; otherwise no)
-- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?" = true → helper "In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits from a union, other than bona fide gifts?"] [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?" = true → helper "In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits, other than bona fide gifts?"] [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.pay_no_w2",{"const":true}],"op":"test"},"then":"scope.strike_pay"},{"guard":{"eq":["scope.pay_no_w2",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -279,22 +286,22 @@
 ## (gate) — `scope.wages_no_form_if_pay`
 
 - **Authored helper label:** Other wages from an employer, with no W-2 (asked only after a Yes to pay not on a W-2; otherwise no)
-- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?" = true → helper "In 2025, did an employer pay you (or, on a joint return, your spouse) wages for which you have no W-2, other than the kinds of pay just asked about?"] [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?" = true → helper "In 2025, did an employer pay you (or, on a joint return, your spouse) wages for which you have no W-2, other than the kinds of pay just asked about?"] [helper "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.pay_no_w2",{"const":true}],"op":"test"},"then":"scope.wages_no_form"},{"guard":{"eq":["scope.pay_no_w2",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 25, Missing or Incorrect Form W-2?, "Even if you don’t get a Form W-2, you must still report your earnings" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `scope.medicaid_waiver`
 
-- **Authored helper label:** In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?
-- **Encoded (Bool):** Input — In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?
-- Expr: `{"op":"input","source":"In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?"}`
+- **Authored helper label:** In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?
+- **Encoded (Bool):** Input — In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?
+- Expr: `{"op":"input","source":"In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.religious_work`
 
-- **Authored helper label:** In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?
-- **Encoded (Bool):** Input — In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?
-- Expr: `{"op":"input","source":"In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?"}`
+- **Authored helper label:** In 2025, were you (or, on a joint return, your spouse) paid by a church or religious body, or as clergy or religious order member?
+- **Encoded (Bool):** Input — In 2025, were you (or, on a joint return, your spouse) paid by a church or religious body, or as clergy or religious order member?
+- Expr: `{"op":"input","source":"In 2025, were you (or, on a joint return, your spouse) paid by a church or religious body, or as clergy or religious order member?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.clergy`
@@ -307,7 +314,7 @@
 ## (gate) — `scope.clergy_if_religious_work`
 
 - **Authored helper label:** The answer to scope.clergy, asked only when the question scope.religious_work is answered Yes (false otherwise)
-- **Encoded (Bool):** Choose — [helper "In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?" = true → helper "Was that work as a minister or other clergy (a chaplain too), as a member of a religious order who has not taken a vow of poverty, or as a Christian Science practitioner?"] [helper "In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, were you (or, on a joint return, your spouse) paid by a church or religious body, or as clergy or religious order member?" = true → helper "Was that work as a minister or other clergy (a chaplain too), as a member of a religious order who has not taken a vow of poverty, or as a Christian Science practitioner?"] [helper "In 2025, were you (or, on a joint return, your spouse) paid by a church or religious body, or as clergy or religious order member?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.religious_work",{"const":true}],"op":"test"},"then":"scope.clergy"},{"guard":{"eq":["scope.religious_work",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] i1040sse p. 1, Ministers, Members of Religious Orders, and Christian Science Practitioners, "you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn’t taken a vow of poverty, or Christian Science practitioner" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -321,7 +328,7 @@
 ## (gate) — `scope.church_exempt_wages_if_religious_work`
 
 - **Authored helper label:** The answer to scope.church_exempt_wages, asked only when the question scope.religious_work is answered Yes (false otherwise)
-- **Encoded (Bool):** Choose — [helper "In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?" = true → helper "Did a church or church organization pay you (or, on a joint return, your spouse) wages with no social security or Medicare tax taken out (boxes 4 and 6 of its W-2 are empty)?"] [helper "In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, were you (or, on a joint return, your spouse) paid by a church or religious body, or as clergy or religious order member?" = true → helper "Did a church or church organization pay you (or, on a joint return, your spouse) wages with no social security or Medicare tax taken out (boxes 4 and 6 of its W-2 are empty)?"] [helper "In 2025, were you (or, on a joint return, your spouse) paid by a church or religious body, or as clergy or religious order member?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.religious_work",{"const":true}],"op":"test"},"then":"scope.church_exempt_wages"},{"guard":{"eq":["scope.religious_work",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -453,9 +460,9 @@
 
 ## (helper) — `scope.foreign_shares`
 
-- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?
-- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?
-- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?"}`
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.pfic`
@@ -468,7 +475,7 @@
 ## (gate) — `scope.pfic_if_foreign_shares`
 
 - **Authored helper label:** The answer to scope.pfic, asked only when the question scope.foreign_shares is answered Yes (false otherwise)
-- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?" = true → helper "Was any of it a fund, or a company whose income or assets are mostly investments, set up outside the United States (a 'passive foreign investment company')?"] [helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?" = true → helper "Was any of it a fund, or a company whose income or assets are mostly investments, set up outside the United States (a 'passive foreign investment company')?"] [helper "In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.foreign_shares",{"const":true}],"op":"test"},"then":"scope.pfic"},{"guard":{"eq":["scope.foreign_shares",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 34, Line 16, "Any tax from Form 8621, line 16e, relating to a section 1291 fund"; p. 114, Line 17p, "Enter any interest amount from Form 8621, line 16f" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -482,7 +489,7 @@
 ## (gate) — `scope.cfc_if_foreign_shares`
 
 - **Authored helper label:** The answer to scope.cfc, asked only when the question scope.foreign_shares is answered Yes (false otherwise)
-- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?" = true → helper "Was any of it a foreign company in which U.S. owners together hold more than half (a 'controlled foreign corporation')?"] [helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?" = true → helper "Was any of it a foreign company in which U.S. owners together hold more than half (a 'controlled foreign corporation')?"] [helper "In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.foreign_shares",{"const":true}],"op":"test"},"then":"scope.cfc"},{"guard":{"eq":["scope.foreign_shares",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 91, Line 8n, "Section 951 generally requires that a U.S. shareholder of a controlled foreign corporation include in income its pro rata share"; p. 91, Line 8o, "Section 951A generally requires that a U.S. shareholder of a controlled foreign corporation include in income its global intangible low-taxed income" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -552,9 +559,9 @@
 ## (helper) — `scope.other_income`
 
 - **Authored helper label:** Nonresident alien status, or other income or return treatment outside this tool (true when any of the other-income screening questions is answered Yes)
-- **Encoded (Bool):** (helper "The answer to scope.nonresident, asked only when the question scope.noncitizen is answered Yes (false otherwise)" = true or helper "At any time in 2025, were you (or, on a joint return, your spouse) in a chapter 11 bankruptcy case?" = true or helper "The answer to scope.reservist_repaid, asked only when the question scope.armed_forces is answered Yes (false otherwise)" = true or helper "The answer to scope.adoption_benefits, asked only when there was an adoption or adoption costs since the start of 2024 (false otherwise)" = true or helper "Other wages from an employer, with no W-2 (asked only after a Yes to pay not on a W-2; otherwise no)" = true or helper "The answer to scope.care_benefits_other, asked only when dependent care benefits were received (false otherwise)" = true or helper "Did you (or, on a joint return, your spouse) take money from a retirement plan in 2023 or 2024 because of a disaster, and spread its tax over three years or pay any of it back in 2025?" = true or helper "The answer to scope.excess_deferral, asked only when a Form W-2 is listed (false otherwise)" = true or helper "The answer to scope.passive, asked only when the question scope.business_before is answered Yes (false otherwise)" = true)
-- Expr: `{"any":[{"eq":["scope.nonresident_if_noncitizen",{"const":true}],"op":"test"},{"eq":["scope.chapter11",{"const":true}],"op":"test"},{"eq":["scope.reservist_repaid_if_armed_forces",{"const":true}],"op":"test"},{"eq":["scope.adoption_benefits_if_adoption",{"const":true}],"op":"test"},{"eq":["scope.wages_no_form_if_pay",{"const":true}],"op":"test"},{"eq":["scope.care_benefits_other_if_benefits",{"const":true}],"op":"test"},{"eq":["scope.disaster_distribution",{"const":true}],"op":"test"},{"eq":["scope.excess_deferral_if_w2",{"const":true}],"op":"test"},{"eq":["scope.passive_if_business_before",{"const":true}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"; p. 24, Line 1c, "Enter the total of your tip income that was not reported on Form 1040, line 1a"; p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)"; p. 24, Line 1d, "Enter your taxable Medicaid waiver payments that were not reported on"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Bool):** (helper "The answer to scope.nonresident, asked only when the question scope.noncitizen is answered Yes (false otherwise)" = true or helper "At any time in 2025, were you (or, on a joint return, your spouse) in a chapter 11 bankruptcy case?" = true or helper "Is any of your (or, on a joint return, your spouse's) 2025 income exempt from U.S. tax under a tax treaty?" = true or helper "The answer to scope.reservist_repaid, asked only when the question scope.armed_forces is answered Yes (false otherwise)" = true or helper "The answer to scope.adoption_benefits, asked only when there was an adoption or adoption costs since the start of 2024 (false otherwise)" = true or helper "Other wages from an employer, with no W-2 (asked only after a Yes to pay not on a W-2; otherwise no)" = true or helper "The answer to scope.care_benefits_other, asked only when dependent care benefits were received (false otherwise)" = true or helper "Did you (or, on a joint return, your spouse) take money from a retirement plan in 2023 or 2024 because of a disaster, and spread its tax over three years or pay any of it back in 2025?" = true or helper "The answer to scope.excess_deferral, asked only when a Form W-2 is listed (false otherwise)" = true or helper "The answer to scope.passive, asked only when the question scope.business_before is answered Yes (false otherwise)" = true)
+- Expr: `{"any":[{"eq":["scope.nonresident_if_noncitizen",{"const":true}],"op":"test"},{"eq":["scope.chapter11",{"const":true}],"op":"test"},{"eq":["scope.treaty",{"const":true}],"op":"test"},{"eq":["scope.reservist_repaid_if_armed_forces",{"const":true}],"op":"test"},{"eq":["scope.adoption_benefits_if_adoption",{"const":true}],"op":"test"},{"eq":["scope.wages_no_form_if_pay",{"const":true}],"op":"test"},{"eq":["scope.care_benefits_other_if_benefits",{"const":true}],"op":"test"},{"eq":["scope.disaster_distribution",{"const":true}],"op":"test"},{"eq":["scope.excess_deferral_if_w2",{"const":true}],"op":"test"},{"eq":["scope.passive_if_business_before",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 25, Missing or Incorrect Form W-2?, "Even if you don’t get a Form W-2, you must still report your earnings"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)"; i1040s8812 p. 3, Line 18a, "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `scope.other_line16`
 

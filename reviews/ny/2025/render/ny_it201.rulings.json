@@ -63,6 +63,17 @@
    "subject_key": "123ce07ce04e905a19ef0bfbe96a0fa704f3000318a7fa0c8d51c2be9acf9baf"
   },
   {
+   "printed": "30",
+   "restated": "Enter $0 (ny.zero).",
+   "model": "The instructions also give the subtraction to a beneficiary: 'During 2025, did you, as a beneficiary, receive a withdrawal ... If Yes, and you included part of the withdrawal in your federal adjusted gross income ... enter that amount on line 30.' The gate's question covers this, but it is asked only when the filer 'owned an account in New York's 529 college savings program'. A beneficiary who owns no account answers No, so the program enters $0 instead of refusing.",
+   "ruling": "Ruling: finding; a beneficiary who owns no New York 529 account never reaches the beneficiary-withdrawal question, so line 30 is $0 where the instructions give a subtraction (BUG-0996)",
+   "context": "adec44412066df5f770d840a04ac80d9a26cd6457409b015ffef85ebab49347d",
+   "date": "2026-11-22",
+   "run": "8392e3b46d414821e4ff5352308211e2db22d03034c1a2ad84902f16c719f7f6",
+   "severity": "low",
+   "subject_key": "7d70474bfe1c2a59963cbd5e14ba949a1aa59f539f020927876d882c76b91fb0"
+  },
+  {
    "printed": "40",
    "restated": "Choose — [line C = true → helper \"Zero\"] [line C = false → column (40)]",
    "model": "The married-filing-separately refusal only fires when the filer's own line 19 is $32,000 or less, but table 3 uses federal AGI \"total from both returns\", and Note 2 says the amount \"could be 0 or a negative amount\". A spouse's negative AGI can bring the total within the credit rows while the program enters $0 without refusing.",

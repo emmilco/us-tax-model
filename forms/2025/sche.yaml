@@ -49,6 +49,17 @@ form:
       doc: i8995
       locator: p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated
         as a trade or business for purposes of the QBI deduction"
+  - id: sche.accrual
+    printed: (helper)
+    label: Rental books kept on the accrual method
+    type: Bool
+    expr:
+      op: input
+      source: Do you keep the books for your rentals on the accrual method, counting rent when earned and costs when owed
+        rather than when received or paid?
+    cite:
+      doc: p527
+      locator: p. 4, When To Deduct, "If you use the accrual method, see Pub. 538 for more information"
   - id: sche.rents
     printed: (helper)
     label: Rents of all reported rental properties
@@ -247,6 +258,12 @@ form:
         doc: i8995
         locator: p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated
           as a trade or business for purposes of the QBI deduction"
+    - when: sche.accrual
+      form: Schedule E, Part I (accrual method)
+      remedy: Rentals kept on the accrual method are outside this tool.
+      cite:
+        doc: p527
+        locator: p. 4, When To Deduct, "If you use the accrual method, see Pub. 538 for more information"
   - id: sche.line41
     printed: '41'
     label: Total income or (loss). Combine lines 26, 32, 37, 39, and 40

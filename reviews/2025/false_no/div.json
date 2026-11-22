@@ -2,7 +2,7 @@
  "form": "div",
  "reviews": {
   "gate:div.any": {
-   "subject_sha": "719c65ef1104a44c70320cf6955028bd58832066923e0ba9eb2b8ee2c0a87279",
+   "subject_sha": "f7429cfb859471ff98b3584773ed8b8f9c48c420d06f99d85cb77173660cad57",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -10,80 +10,90 @@
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A filer sold all their stock in late 2024, before the dividend payment date but after the record date. The company paid that dividend in January 2025. The amount was under $10, so no Form 1099-DIV was issued. Or the payer was a foreign registrar that issues no Form 1099-DIV.",
-       "why_no": "'In 2025, did you ... own shares' is truthfully no, since they were sold in 2024. 'Or get a Form 1099-DIV' is also no, since no form came.",
+       "who": "A participant in an employee stock ownership plan (ESOP) whose employer paid dividends directly to them in 2025; the shares are held inside the ESOP, a retirement account, and the 2025 Form 1099-DIV arrives in 2026.",
+       "why_no": "They answer no because they did not own shares outside a retirement account and did not get a Form 1099-DIV during calendar 2025.",
        "line": "sb.ordinary_dividends_if_dividends",
-       "irs_text": "i1040sb p. 2, Line 5: \"Report on line 5 all of your ordinary dividends.\"",
+       "irs_text": "f1099div p. 5, Box 1b: 'The amount shown may be dividends a corporation paid directly to you as a participant (or beneficiary of a participant) in an employee stock ownership plan (ESOP). Report it as a dividend on your Form 1040 or 1040-SR...'",
        "severity": "high",
-       "fix": "Ask: 'In 2025, did you (or your spouse) own shares of a company or fund outside a retirement account, receive any dividend or other distribution on shares (even shares sold earlier, or with no form), or get a Form 1099-DIV?'"
+       "fix": "Ask about dividends or a 2025 Form 1099-DIV received in 2025 or 2026, including ESOP dividends paid directly to a participant, even when the shares are inside a retirement account."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A shareholder surrendered their shares in a corporation that adopted a plan of complete liquidation, at its first liquidating payment in 2024. The final cash liquidation distribution was paid in 2025. The form was lost or went to an old address.",
-       "why_no": "They truthfully owned no shares in 2025, and they do not recall getting a Form 1099-DIV.",
+       "who": "A nominee recipient who receives a 2025 Form 1099-DIV in 2026 showing ordinary dividends that belong to another person; they own no shares in 2025.",
+       "why_no": "They answer no because in 2025 they neither owned shares nor got the form; the form arrived in 2026.",
+       "line": "sb.ordinary_dividends_if_dividends",
+       "irs_text": "i1040sb p. 2, Line 5, Nominees: 'If you received a Form 1099-DIV that includes ordinary dividends you received as a nominee (that is, in your name, but the ordinary dividends actually belong to someone else), report the total on line 5.'",
+       "severity": "high",
+       "fix": "Ask about a 2025 Form 1099-DIV received in 2025 or 2026 and explicitly cover nominee amounts and amounts belonging to another."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer who sold all shares in December 2024 but received an ordinary dividend in January 2025 because they were the holder of record; they owned no shares in 2025 and the 2025 Form 1099-DIV arrives in 2026.",
+       "why_no": "They answer no because 'In 2025' they did not own shares and did not get a Form 1099-DIV in 2025.",
+       "line": "sb.ordinary_dividends_if_dividends",
+       "irs_text": "i1040sb p. 2, Line 5: 'Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements.'",
+       "severity": "high",
+       "fix": "Gate on receiving any ordinary dividend for 2025, including a dividend paid in 2025 on shares sold before 2025."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer whose company or fund closed or whose shares were canceled before 2025, but who receives a final return-of-capital or liquidation distribution in 2025 without a Form 1099-DIV.",
+       "why_no": "They answer no because they did not own shares in 2025 and got no Form 1099-DIV; the gated question's help says to count a no-form return of capital or a payout when a company closed.",
        "line": "div.other_boxes_if_dividends",
-       "irs_text": "f1099div p. 5: \"Boxes 9 and 10. Show cash and noncash liquidation distributions.\"",
-       "severity": "medium",
-       "fix": "Add 'or receive a payment from a company or fund you own or used to own, including a liquidation payment' to the gate."
+       "irs_text": "f1099div p. 5, Box 3: 'Shows a return of capital... Any amount received in excess of your basis is taxable to you as capital gain'; Boxes 9 and 10: 'Show cash and noncash liquidation distributions.'",
+       "severity": "high",
+       "fix": "Gate on receiving any 2025 distribution, including a no-form return of capital or liquidation distribution, even if the shares were no longer held in 2025."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer whose taxable brokerage account holding dividend-paying funds is the account they call 'my retirement account', because they are saving it for retirement. They file the broker's 'Consolidated Form 1099' without recognizing that it contains a Form 1099-DIV.",
-       "why_no": "'Outside a retirement account' is undefined, so they treat the taxable account as a retirement account. 'Get a Form 1099-DIV' does not match a document titled 'Consolidated 1099'.",
-       "line": "sb.ordinary_dividends_if_dividends; sd.distributions_if_dividends; div.box12_if_dividends; div.other_boxes_if_dividends; sd.f2439_if_dividends",
-       "irs_text": "f1099div p. 5: \"Box 1a. Shows total ordinary dividends that are taxable.\"",
+       "who": "A REIT shareholder who receives a Form 2439 for 2025 but no Form 1099-DIV because the REIT retained the gains; they do not see REITs in the gate's help list of stocks, mutual funds, ETFs and money market funds.",
+       "why_no": "They answer no because they did not get a 1099-DIV and do not think a REIT is a 'company or fund' from the examples.",
+       "line": "sd.f2439_if_dividends",
+       "irs_text": "i1040sd p. 6: 'Include on Schedule D, line 11, the amount from box 1a of Form 2439. This represents your share of the undistributed long-term capital gains of the regulated investment company (including a mutual fund) or real estate investment trust.'",
        "severity": "medium",
-       "fix": "Define the term: 'a retirement account means a tax-advantaged plan such as an IRA, Roth IRA, 401(k), 403(b) or pension; an ordinary brokerage account counts as outside, even if you are saving it for retirement.' Add to the help: 'A broker's consolidated or composite Form 1099 counts as a Form 1099-DIV.'"
+       "fix": "Add REITs and other RICs to the gate help, or ask directly whether any Form 2439 was received."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer whose stocks and mutual funds are held in their revocable living trust, or in a single-member LLC that is disregarded for tax purposes. The Form 1099-DIV shows the trust's or LLC's name.",
-       "why_no": "They read 'did you ... own shares' and 'did you ... get a Form 1099-DIV' as no, because the trust or the LLC owns the shares and got the form, not them.",
-       "line": "sb.ordinary_dividends_if_dividends; sd.distributions_if_dividends; div.box12_if_dividends; div.other_boxes_if_dividends; sd.f2439_if_dividends",
-       "irs_text": "i1040sb p. 2, Line 5: \"Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements.\"",
+       "pattern": "4",
+       "who": "A beneficial owner of municipal-fund shares held in another person's name who receives exempt-interest dividends in 2025 without a Form 1099-DIV; they do not own shares in their own name.",
+       "why_no": "They answer no because they did not own shares in their own name and did not get a Form 1099-DIV.",
+       "line": "div.box12_if_dividends",
+       "irs_text": "f1099div p. 5, Box 12: 'Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year'; i1040sb p. 2: 'Also include on line 2a ... any exempt-interest dividends from a mutual fund or other regulated investment company.'",
        "severity": "medium",
-       "fix": "Add to the gate or help: 'Count shares held for you through your revocable (living) trust, or through an LLC you own alone, and any Form 1099-DIV issued in its name.'"
+       "fix": "Ask about exempt-interest dividends received for 2025, directly or through another name and with or without a form."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A participant in an employer's ESOP who received section 404(k) dividends paid directly by the corporation and reported on Form 1099-DIV. The participant does not remember receiving that form, as distinct from their Form 1099-R.",
-       "why_no": "The shares are in a retirement plan, so 'outside a retirement account' is no, and they do not recall a Form 1099-DIV.",
+       "pattern": "4",
+       "who": "A beneficial owner of shares held in another person's name who receives ordinary dividends in 2025 without a Form 1099-DIV; they do not own shares in their own name.",
+       "why_no": "They answer no because they did not own shares in their own name and did not get a Form 1099-DIV.",
        "line": "sb.ordinary_dividends_if_dividends",
-       "irs_text": "f1099div p. 5, Box 1b: \"The amount shown may be dividends a corporation paid directly to you as a participant (or beneficiary of a participant) in an employee stock ownership plan (ESOP). Report it as a dividend on your Form 1040\"",
+       "irs_text": "i1040sb p. 2, Line 5: 'Report on line 5 all of your ordinary dividends...' and the Nominees paragraph for Form 1099-DIV amounts belonging to another.",
        "severity": "medium",
-       "fix": "Add 'or receive dividends paid directly to you on employer stock in an ESOP' to the gate."
+       "fix": "Ask whether they received any ordinary dividends for 2025, directly or through someone else, with or without a form."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A shareholder of an LLC that elected to be taxed as a corporation (C corporation) holds 'membership units' and received a distribution treated as a dividend.",
-       "why_no": "They read 'shares of a company' literally: they hold units, not shares. They may not connect a payment from their own closely held company with a Form 1099-DIV.",
-       "line": "sb.ordinary_dividends_if_dividends; div.other_boxes_if_dividends",
-       "irs_text": "f1099div p. 5: \"Box 1a. Shows total ordinary dividends that are taxable.\" / \"Box 3. Shows a return of capital.\"",
-       "severity": "low",
-       "fix": "Add to the help: 'Shares include stock, units or interests in any company taxed as a corporation (including an LLC that elected corporate status), and units of a unit investment trust.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A partner in an investment partnership, or a beneficiary of an estate or trust, whose Schedule K-1 reports ordinary dividends. The filer holds no shares directly and got no Form 1099-DIV.",
-       "why_no": "Truthfully they did not own shares or get a Form 1099-DIV, though Schedule B line 5 takes 'all of your ordinary dividends'.",
-       "line": "sb.ordinary_dividends_if_dividends",
-       "irs_text": "i1040sb p. 2, Line 5: \"Report on line 5 all of your ordinary dividends.\"",
-       "severity": "low",
-       "fix": "Confirm that K-1 dividends reach line 5 through a separate K-1 path. If they do not, add 'or receive a Schedule K-1 showing dividends' to the gate."
+       "pattern": "4",
+       "who": "A beneficial owner of fund shares held in another person's name who receives a capital gain distribution in 2025 without a Form 1099-DIV.",
+       "why_no": "They answer no because they did not own shares in their own name and did not get a Form 1099-DIV.",
+       "line": "sd.distributions_if_dividends",
+       "irs_text": "f1099div p. 5, Box 2a: 'Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT).'",
+       "severity": "medium",
+       "fix": "Ask whether they received any capital gain distribution for 2025, with or without a form and including amounts paid through another name."
       }
      ],
-     "prompt_sha": "22591a03ca6843fd4b72955f0e67fc1b6e68299e2e14a7719218ceab42e7b078",
+     "prompt_sha": "b0c1f7a143895258aeb72d99961004850a2980b5ba08cedfa311de3601d24a30",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.221756,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_div.any.719c65ef1104.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_div.any.f7429cfb8594.1.response.txt"
     }
    ],
    "condition": "div.any",
@@ -278,68 +288,58 @@
    ]
   },
   "gate:div.has_ordinary": {
-   "subject_sha": "8ca4bda397b16f219de39b1a3f951581b203be8bd9954f914dab6a0a45f307ba",
+   "subject_sha": "18df54104e7cae9b1e3d992ab4d40cf4f6ab10d3d66364c184597c827bb16ee1",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A filer or spouse who received dividends that no Form 1099-DIV reports. Examples are dividends from a foreign corporation held directly or through a foreign broker, a payer that sent no form for a small amount, or a closely held company that never issued one.",
-       "why_no": "The gate totals only 'Form 1099-DIV box 1a'. With no form, the truthful total is zero. The qualified part of those dividends is then dropped.",
+       "pattern": "other",
+       "who": "A parent who elects to include a child’s dividends on the parent’s return on Form 8814, where neither the parent nor spouse has any Form 1099-DIV box 1a ordinary dividends but the child has box 1b qualified dividends.",
+       "why_no": "The gate is computed from 'Total ordinary dividends, Form 1099-DIV box 1a, when you or your spouse received dividends'; the parent truthfully says no because the dividends were the child’s, not the parent’s or spouse’s.",
        "line": "f1040.line3a_if_ordinary",
-       "irs_text": "i1040gi p. 25, Line 3a: 'Generally, these dividends are shown in box 1b of Form(s) 1099-DIV'; p. 26: 'See Pub. 550 for the definition of qualified dividends if you received dividends not reported on Form 1099-DIV.'",
+       "irs_text": "i1040gi p. 25, Line 3a: \"If you are including your child’s qualified dividends in the total on line 3a, check box 1 on line 3c.\"",
        "severity": "high",
-       "fix": "Base the gate on the fact, not the form: 'Did you or your spouse receive any dividends in 2025, whether or not you got a Form 1099-DIV (including from foreign companies or a foreign broker)?' Then ask for qualified amounts per source, with or without a form."
+       "fix": "Broaden the gate to include a child’s ordinary and qualified dividends included through Form 8814, and ask separately for the child’s box 1b amount on line 3a."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "4",
-       "who": "A filer whose only dividends come through a Schedule K-1 from a partnership, S corporation, estate or trust. The entity holds stocks or REIT shares and passes through qualified dividends or section 199A REIT dividends.",
-       "why_no": "The filer or spouse received no Form 1099-DIV, so box 1a is zero. The K-1 dividends never open the gate.",
-       "line": "f1040.line3a_if_ordinary; qbi.dividends_if_ordinary",
-       "irs_text": "i1040gi p. 25: 'Enter your total qualified dividends on line 3a ... Generally, these dividends are shown in box 1b'; f8995 line 6: 'Qualified REIT dividends and publicly traded partnership (PTP) income'; i8995 p. 3: 'Qualified REIT dividends include any dividends you received from a REIT held for more than 45 days.'",
-       "severity": "high",
-       "fix": "Make the gate true when box 1a is above zero or when any Schedule K-1 shows qualified dividends or section 199A/REIT dividends. Ask about K-1 dividend items separately."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A parent who elects Form 8814 to report a child's dividends on the parent's return. Neither the parent nor the spouse received dividends themselves.",
-       "why_no": "The gate counts dividends 'when you or your spouse received' them. Truthfully, neither did. The child's qualified dividends, which belong on line 3a, are then dropped.",
+       "who": "A filer whose only qualified dividends are not reported on Form 1099-DIV—for example, qualified dividends passed through on a partnership or S-corporation Schedule K-1, received from a foreign payer, or paid by a payer that issued no Form 1099-DIV—and who therefore has no Form 1099-DIV box 1a amount.",
+       "why_no": "The gate is worded as 'Ordinary dividends (box 1a) are above zero' and is computed from Form 1099-DIV box 1a; with no such box 1a amount the filer truthfully answers no, even though the non-1099-DIV qualified dividends belong on line 3a.",
        "line": "f1040.line3a_if_ordinary",
-       "irs_text": "i1040gi p. 25, Line 3a: 'If you are including your child's qualified dividends in the total on line 3a, check box 1 on line 3c.'",
+       "irs_text": "i1040gi p. 25, Line 3a: \"See Pub. 550 for the definition of qualified dividends if you received dividends not reported on Form 1099-DIV.\"",
        "severity": "high",
-       "fix": "Make the gate true when a Form 8814 election includes the child's dividends, or ask 'Are you reporting a child's dividends on your return (Form 8814)?' before the gate."
+       "fix": "Gate line 3a on qualified dividends themselves, including non-1099-DIV qualified dividends, or broaden the gate to any dividends and then ask separately for box 1a, box 1b, and non-1099-DIV qualified dividends."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose fund or stock dividends were all reinvested automatically (a DRIP or reinvested mutual fund distributions). The filer never saw cash.",
-       "why_no": "'Received dividends or other distributions' reads as cash paid out. The filer thinks reinvested amounts were not received and enters zero, though Form 1099-DIV box 1a, 1b and 5 show amounts.",
-       "line": "f1040.line3a_if_ordinary; qbi.dividends_if_ordinary",
-       "irs_text": "f1099div p. 5: 'Box 1a. Shows total ordinary dividends that are taxable. Include this amount on the \"Ordinary dividends\" line of Form 1040'; 'Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction.'",
+       "who": "A filer whose Form 1099-DIV shows qualified dividends in box 1b but who reads 'ordinary dividends' as excluding 'qualified dividends' and therefore treats box 1a as zero or answers no.",
+       "why_no": "The gate says 'Ordinary dividends (box 1a) are above zero'; the filer thinks qualified dividends are a separate category, not part of ordinary dividends, despite box 1b being a portion of box 1a.",
+       "line": "f1040.line3a_if_ordinary",
+       "irs_text": "i1040gi p. 25, Line 3a: \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b.\"",
        "severity": "medium",
-       "fix": "Add help: 'Include dividends that were reinvested, and money market fund dividends; enter box 1a from every Form 1099-DIV, including the dividend section of a brokerage composite 1099.'"
+       "fix": "State in the gate that box 1a includes box 1b qualified dividends, or gate line 3a on qualified dividends rather than on ordinary dividends."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer who owns part of a joint brokerage account with someone other than a spouse (for example, a parent or sibling). The Form 1099-DIV is issued under the other person's name and SSN.",
-       "why_no": "No Form 1099-DIV names the filer, so they total box 1a as zero. Their share of the qualified and section 199A dividends is then dropped.",
-       "line": "f1040.line3a_if_ordinary; qbi.dividends_if_ordinary",
-       "irs_text": "f1099div p. 5, Nominees: 'If this form includes amounts belonging to another person, you are considered a nominee recipient ... you must furnish a Form 1099-DIV to each'; i1040gi p. 26: 'if you received dividends not reported on Form 1099-DIV.'",
+       "pattern": "8",
+       "who": "A filer whose Form 1099-DIV shows section 199A dividends in box 5 but who reads 'ordinary dividends' as excluding section 199A dividends and therefore treats box 1a as zero or answers no.",
+       "why_no": "The gate says 'Ordinary dividends (box 1a) are above zero'; the filer sees box 5 as a separate 'section 199A dividends' amount and does not realize box 5 is a portion of box 1a.",
+       "line": "qbi.dividends_if_ordinary",
+       "irs_text": "f1099div p. 5, Instructions for Recipient: \"Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A.\"",
        "severity": "medium",
-       "fix": "Ask: 'Do you or your spouse own any share of an account or stock that paid dividends, even if the Form 1099-DIV is in someone else's name?'"
+       "fix": "State in the gate that box 1a includes box 5 section 199A dividends, or gate the box 5 question directly on whether box 5 is present."
       }
      ],
-     "prompt_sha": "a87605e1ed705fde491fe52197f4da4d98acc8d42f08f4ad1962c11207be8394",
+     "prompt_sha": "4940938f5535bb3f3d2f1c383eec40a6c35475587a7d705b79e2f717aebc2cdf",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.14555200000000001,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_div.has_ordinary.8ca4bda397b1.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_div.has_ordinary.18df54104e7c.1.response.txt"
     }
    ],
    "condition": "div.has_ordinary",
@@ -384,8 +384,8 @@
      ],
      "how": "cited pages",
      "locators": [
-      "Instructions for Form 1040, pp. 25–26, line 3a and exceptions",
-      "p. 25, Line 3a, \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\""
+      "p. 25, Line 3a, \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\"",
+      "pp. 25–26, Line 3a, Exception, \"Some dividends may be reported as qualified dividends in box 1b of Form 1099-DIV but aren’t qualified dividends\""
      ],
      "cols_pages": [
       25,

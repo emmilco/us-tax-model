@@ -1,0 +1,70 @@
+{
+ "form": "f8960",
+ "reviews": {
+  "gate:f8960.joint_noncitizen": {
+   "subject_sha": "ec2994a8d89a9d879ab219e33751d4a8da121086c8b590d01c2ac28f60bb9305",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who made a section 6013(g) election in an earlier year, such as 2021, and that election is still in effect when the filer files an MFJ return for 2025 with the same nonresident-alien spouse.",
+       "why_no": "The gated question asks whether they chose to be treated as U.S. residents 'for 2025' and the help says the choice is made with a signed statement. They remember making the choice in 2021 and signing no new 2025 statement, so they answer no.",
+       "line": "f8960.election_6013g_if_joint",
+       "irs_text": "i8960 p. 7: 'If you’re making the section 6013(g) or 6013(h) election ..., check the corresponding checkbox.' i8960 p. 3: 'If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes ...'",
+       "severity": "high",
+       "fix": "Ask whether a section 6013(g) or 6013(h) election was ever made and remains in effect for 2025, including an election made in an earlier year; do not require a new 2025 statement."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose spouse was a nonresident alien for part of 2025 and became a U.S. citizen during 2025, and who made a section 6013(h) election to file jointly for that dual-status year.",
+       "why_no": "The gate helper asks 'At any time in 2025, were you ... not a U.S. citizen?' The filer focuses on the spouse's current U.S. citizenship at year-end and answers no, overlooking the part of the year before naturalization.",
+       "line": "f8960.election_6013g_if_joint",
+       "irs_text": "i8960 p. 7: 'If you’re making the section 6013(g) or 6013(h) election ..., check the corresponding checkbox.'",
+       "severity": "medium",
+       "fix": "Rephrase the gate as 'Were both you and your spouse U.S. citizens for the entire year?' or add 'including any period before becoming a U.S. citizen.'"
+      }
+     ],
+     "prompt_sha": "7b2689695860db181f36eb40c5c36827796a0e2452ca4160ac06acb26f721c7a",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_f8960.joint_noncitizen.ec2994a8d89a.1.response.txt"
+    }
+   ],
+   "condition": "f8960.joint_noncitizen",
+   "lines": [
+    "f8960.election_6013g_if_joint"
+   ],
+   "inputs": [
+    "f8960.election_6013g"
+   ],
+   "used": [
+    {
+     "doc": "i8960",
+     "revision": "2025; printed date 2026-02-04",
+     "text_sha256": "fcae098ebc1ad79343de101a66765d3b3597f664dc744de3a7588be123c900a1",
+     "pages": [
+      3,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, \"If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes, but don’t elect to apply the joint return election for NIIT purposes\"",
+      "p. 7, Line 1, \"If you’re making the section 6013(g) or 6013(h) election (see Election To File Jointly With Nonresident Spouse—Section 6013(g) or 6013(h), earlier), check the corresponding checkbox\"",
+      "p. 7, Line 1, \"check the corresponding checkbox\""
+     ],
+     "cols_pages": [
+      3,
+      7
+     ],
+     "cols_sha256": "d6dc1f475c511790abb02d6d6cfff554a59b40c0da1c56eb2f26af4e3cb7fa51"
+    }
+   ]
+  }
+ }
+}

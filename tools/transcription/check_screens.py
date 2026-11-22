@@ -4,8 +4,8 @@
 
 Every scope screen (a yes/no input that lines name as a refusal gate) and every choose-guard gate (gates.py, keyed
 `gate:<condition>`) has a record in reviews/<year>/screens/screen_review.json holding the samples run against one
-subject. A screen's subject is the prompt screen_review.py would send without the gate condition and without the
-system prompt (screen_subject); a gate's is gates.subject (the condition's wording and line, each gate line and gated
+subject. A screen's subject is the prompt screen_review.py would send without the gate condition, the help and the
+system prompt (screen_subject: the question as the interview shows it, the gated lines and their pages); a gate's is gates.subject (the condition's wording and line, each gate line and gated
 input with their English and wording, citations included).
 
 - A unit whose subject differs from its record's (or that has none) is `due`: listed, not failed. It is reviewed
@@ -16,6 +16,9 @@ input with their English and wording, citations included).
   unit and subject carries that ruling. Unruled samples fail check-all.
 - A sample whose verdict did not parse is listed and does not count toward the milestone.
 - `orphan`: a recorded gate review whose gate no longer exists (fails).
+- A screen record marked `subject_migrated` (migrate_screen_subjects.py) holds samples that were shown the form's own
+  question text, not the interview's wording; it is current until its subject next changes, and the mark goes at its
+  next sample. They are counted, not failed.
 
 `--release` is the release gate (tools/release_reviews.sh): it also fails on every due unit and every unit short of the
 milestone's samples, and writes no report. Findings that existed when the check was introduced form the baseline
@@ -57,6 +60,7 @@ def findings():
     reviewed = read_records(str(RECORD))
     out, shas = [], {}
     waiting = pending.listed("screens")
+    migrated = 0
     for screen in sorted(waiting & set(reviewed)):
         out.append({"kind": "pending", "line": screen, "form": lines[screen][0] if screen in lines else "?", "subject": "-",
                     "detail": f"reviewed but still listed as pending; remove it from {pending.name()}"})
@@ -66,8 +70,12 @@ def findings():
             print(f"  pending: {screen}: never reviewed (listed in {pending.name()})")
             continue
         shas[screen] = sha
+        migrated += bool(reviewed.get(screen, {}).get("subject_migrated") and reviewed[screen].get("subject_sha") == sha)
         out += unit_findings(screen, lines[screen][0], sha, reviewed.get(screen),
                              "question, gated lines or their citations changed since its samples")
+    if migrated:
+        print(f"  {migrated} screen(s) current on samples shown the form's question text, not the interview's "
+              "(subject_migrated); each is sampled on the interview's wording at its next change")
     gf, gshas = gate_findings(lines, reviewed)
     return out + gf, {**shas, **gshas}
 

@@ -127,12 +127,6 @@
    "source_phrase": "If you have alimony payments from more than one divorce or separation agreement, on line 2b enter the month and year of the divorce or separation agreement for which you received the most ... Attach a statement listing the month and year of the other agreements",
    "reason": "Line 2b's multiple-agreement case is the one the question asks, and the line refuses on yes."
   },
-  "consumer:s1.cod_unsupported@p525:p20": {
-   "verdict": "same",
-   "question_phrase": "it was a business, rental or farm debt ... or is otherwise excluded from income ... canceled as a gift or inheritance",
-   "source_phrase": "If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c. If it's a business debt, report the amount on Schedule C",
-   "reason": "The page's nonbusiness-debt condition and its gift-or-bequest exception are among the cases the question asks, and the line refuses on yes."
-  },
   "consumer:ssb.terror_disability@i1040gi:p32": {
    "verdict": "same",
    "question_phrase": "disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies",
@@ -2923,12 +2917,6 @@
    "source_phrase": "Table A-6 Residential Rental Property; Table A-7a Nonresidential Real Property",
    "reason": "The two kinds select the two tables, as the tables' titles name them."
   },
-  "consumer:rprop.screen@i4562:p12": {
-   "verdict": "same",
-   "question_phrase": "depreciate it over a longer period (the alternative depreciation system), basis changed, sold, cooperative stock, special allowance or section 179",
-   "source_phrase": "Column (g), Multiply column (c) by the applicable rate",
-   "reason": "The screen refuses every case in which the table rate times the basis is not the deduction."
-  },
   "consumer:rprop.year@i4562:p9": {
    "verdict": "same",
    "question_phrase": "the year it was first ready and available for rent (placed in service)",
@@ -2946,12 +2934,6 @@
    "question_phrase": "rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment",
    "source_phrase": "Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles",
    "reason": "scope.rental only opens the child that asks about personal property; the child carries the p. 5 rule."
-  },
-  "consumer:household.community_property@i1040gi:p14": {
-   "verdict": "same",
-   "question_phrase": "Did you live in a community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or Wisconsin) at any time in 2025?",
-   "source_phrase": "Different rules apply to people in community property states; see Pub. 555.",
-   "reason": "Married Filing Separately names community property states without listing them; the question asks residence at any time in 2025 in the nine states p. 23 lists, the reading amb.2025.mfs_community_property records for the refusal."
   },
   "consumer:household.home_cost@i2441:p2": {
    "verdict": "same",
@@ -3301,6 +3283,432 @@
    "question_phrase": "file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico",
    "source_phrase": "Line 20, regular tax",
    "reason": "ftc.needs1116 cites p. 25 for the regular tax the election credit is limited to, another item; the page states no rule about excluded income."
+  },
+  "consumer:asset.industry_use@i4562:p6": {
+   "verdict": "same",
+   "question_phrase": "used only to collect, distribute or recycle reusable or recyclable materials",
+   "source_phrase": "used exclusively to collect, distribute, or recycle qualified reuse and recyclable materials",
+   "reason": "asset.industry_any is a screening gate that only decides whether asset.industry_item (which restates the page's qualified-materials rule in full) is asked, so the slightly broader wording only over-asks and cannot change a result."
+  },
+  "consumer:dependent.own_money@i1040gi:p10": {
+   "verdict": "same",
+   "question_phrase": "have any income, benefits, savings, borrowed money or other funds or property of their own",
+   "source_phrase": "Your unearned income was over $1,350",
+   "reason": "dependent.ptc_files_if_own_money uses a No only to skip the required-to-file question for a person with no income or funds at all, who cannot meet any filing threshold on the page; a Yes merely asks the required-to-file question, so the broader wording over-asks and cannot misstate the threshold."
+  },
+  "consumer:dependent.own_money@i8962:p8": {
+   "verdict": "same",
+   "question_phrase": "have any income, benefits, savings, borrowed money or other funds or property of their own",
+   "source_phrase": "dependents who are required to file an income tax return because their income meets the income tax return filing threshold",
+   "reason": "dependent.ptc_files_if_own_money uses a No only to skip the required-to-file question for a person with no income or funds at all, who cannot meet any filing threshold on the page; a Yes merely asks the required-to-file question, so the broader wording over-asks and cannot misstate the threshold."
+  },
+  "consumer:f1040.status@i8960:p3": {
+   "verdict": "same",
+   "question_phrase": "Form 1040, Filing Status checkboxes",
+   "source_phrase": "If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes",
+   "reason": "f8960.joint_noncitizen only tests that the status is married filing jointly (together with a noncitizen answer) to ask the follow-up about the NIIT election; the page's joint return for regular income tax purposes is exactly what the joint status box records."
+  },
+  "consumer:f1040.status@p555:p2": {
+   "verdict": "same",
+   "question_phrase": "Form 1040, Filing Status checkboxes",
+   "source_phrase": "If you and your spouse (or your RDP) have different domiciles, check the laws of each",
+   "reason": "household.ask_spouse_cp_domicile uses the status only to decide whether a spouse's domicile question is asked (not for a qualifying surviving spouse), which is a routing use that the filing status box supports; the page's domicile rule is answered by the domicile questions themselves."
+  },
+  "consumer:k1p.basis_carry@i1065sk1:p14": {
+   "verdict": "same",
+   "question_phrase": "Was a loss from this partnership held back on an earlier return because your basis was too low?",
+   "source_phrase": "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E",
+   "reason": "k1p.screened only refuses a K-1 on a Yes to this question, citing the rule that owns the item, and page 14 is cited for the unrelated separate-line-28 instruction, which does not define or need this input."
+  },
+  "consumer:k1p.fuel_prior_year@i1065sk1:p14": {
+   "verdict": "same",
+   "question_phrase": "Did your 2024 return claim a credit for federal tax on gasoline or other fuels",
+   "source_phrase": "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E",
+   "reason": "k1p.screened only refuses a K-1 on a Yes to this question, citing the rule that owns the item, and page 14 is cited for the unrelated separate-line-28 instruction, which does not define or need this input."
+  },
+  "consumer:k1p.interest_buy@i1065sk1:p14": {
+   "verdict": "same",
+   "question_phrase": "Did you pay interest in 2025 on money borrowed to buy your share",
+   "source_phrase": "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E",
+   "reason": "k1p.screened only refuses a K-1 on a Yes to this question, citing the rule that owns the item, and page 14 is cited for the unrelated separate-line-28 instruction, which does not define or need this input."
+  },
+  "consumer:k1p.risk_carry@i1065sk1:p14": {
+   "verdict": "same",
+   "question_phrase": "held back on an earlier return by the at-risk rules (Form 6198)",
+   "source_phrase": "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E",
+   "reason": "k1p.screened only refuses a K-1 on a Yes to this question, citing the rule that owns the item, and page 14 is cited for the unrelated separate-line-28 instruction, which does not define or need this input."
+  },
+  "consumer:k1p.upe@i1065sk1:p14": {
+   "verdict": "same",
+   "question_phrase": "Did you pay, without being paid back, partnership expenses that the partnership agreement required you to pay?",
+   "source_phrase": "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E",
+   "reason": "k1p.screened only refuses a K-1 on a Yes to this question, citing the rule that owns the item, and page 14 is cited for the unrelated separate-line-28 instruction, which does not define or need this input."
+  },
+  "consumer:k1p.has_b3@i1065sk1:p11": {
+   "verdict": "same",
+   "question_phrase": "Does box 3 (other net rental income or loss) show an amount?",
+   "source_phrase": "The rental of a dwelling unit any partner used for personal purposes during the year",
+   "reason": "k1p.ask_dwelling asks the personal-use dwelling question whenever box 2 or box 3 shows an amount, which is where a partnership's rental income lands; the box-shows-an-amount fact is all the gate needs and the dwelling rule itself is asked by the following question."
+  },
+  "consumer:k1s.box1_any@i1120ssk:p5": {
+   "verdict": "same",
+   "question_phrase": "Does box 1 of this Schedule K-1 (ordinary business income or loss) show an amount?",
+   "source_phrase": "Trading personal property for the account of owners of interests in the activity",
+   "reason": "k1s.trader_if_b1 asks whether the corporation trades for its owners only when box 1 (where an S corporation's trading income or loss appears) shows an amount; the gate only decides whether the trading question is asked, and the trading rule itself is applied to that question."
+  },
+  "consumer:k1s.box3_any@i1120ssk:p5": {
+   "verdict": "same",
+   "question_phrase": "Does box 3 of this Schedule K-1 (other net rental income or loss) show an amount?",
+   "source_phrase": "The rental of a dwelling unit any shareholder used for personal purposes during the year",
+   "reason": "k1s.ask_dwelling asks the personal-use dwelling question when box 2 or box 3 shows an amount, which is where the corporation's rental amounts appear; the gate needs only that fact."
+  },
+  "consumer:k1s.interest_buy@i1120ssk:p6": {
+   "verdict": "same",
+   "question_phrase": "Did you pay interest in 2025 on money borrowed to buy its shares",
+   "source_phrase": "If any of the above limitations apply, adjust the amounts on Schedule K-1 before you report them on your return",
+   "reason": "k1s.ok is a refusal aggregator; this input only refuses through its own cited rule, and page 6 is cited for the unrelated adjust-the-amounts instruction, which does not define this input."
+  },
+  "consumer:refund.exc_who@i1040gi:p90": {
+   "verdict": "same",
+   "question_phrase": "Could you be claimed as a dependent by someone else in 2024",
+   "source_phrase": "Enter the income tax refund from Form(s) 1099-G (or similar statement)",
+   "reason": "refund.line1 reads this answer only in a refusal that cites the exception items on pages 88-89 and Pub. 525; page 90 is cited for the worksheet's line 1 computation, which the answer does not feed."
+  },
+  "consumer:rental.days_fair@p527:p25": {
+   "verdict": "same",
+   "question_phrase": "rented at a fair price even if you also used it that day",
+   "source_phrase": "the numerator of which is the total number of days actually rented at a fair rental price",
+   "reason": "rental.fair_c multiplies the answer by a per-day amount, and the count of days actually rented at a fair rental price is the page's numerator."
+  },
+  "consumer:rental.days_overlap@p527:p25": {
+   "verdict": "same",
+   "question_phrase": "how many were also days it was rented at a fair price",
+   "source_phrase": "divide your expenses between the rental use and the personal use based on the number of days used for each purpose",
+   "reason": "rental.overlap_raw only scales the count of days that are both rented and used, which the tool subtracts so that each day is counted once as the page's days used for each purpose requires."
+  },
+  "consumer:rental.days_personal@p527:p25": {
+   "verdict": "same",
+   "question_phrase": "used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)",
+   "source_phrase": "the denominator of which is the total number of days the dwelling unit is used",
+   "reason": "rental.personal_raw scales the personal-use day count, which is the personal-use part of the page's total days used; the question's exclusions (repair days, main-home days) are the rule's own and the page text does not set a different count."
+  },
+  "consumer:rental.personal_any@p527:p25": {
+   "verdict": "same",
+   "question_phrase": "did you, your family or another owner use it, or did anyone stay free, below a fair rent or under a home swap?",
+   "source_phrase": "If you have any personal use of a dwelling unit (including a vacation home) that you rent",
+   "reason": "rental.personal_c uses a No only to set personal days to zero, and any personal use of the unit is what the page says triggers the division of expenses."
+  },
+  "consumer:rental.prior_any@p527:p28": {
+   "verdict": "same",
+   "question_phrase": "Was a loss from this rental held back (not deducted) on any of your (or, on a joint return, your spouse's) earlier returns",
+   "source_phrase": "The excess expenses that can’t be used to offset income from other sources are carried forward to the next year",
+   "reason": "rental.prior_ws51_if_any only decides whether the follow-up asks whether part of the held-back amount is Worksheet 5-1 carried-over expenses; expenses disallowed and carried forward are held-back rental loss, and the follow-up asks the page's rule directly."
+  },
+  "consumer:retirement.ira_basis@i1040gi:p27": {
+   "verdict": "same",
+   "question_phrase": "hold money you already paid tax on, such as contributions you did not deduct",
+   "source_phrase": "you made nondeductible contributions to any of your traditional IRAs for 2025 or an earlier year",
+   "reason": "retirement.ira_basis_if_trad asks the IRA basis question only of an owner with a traditional IRA; page 27's nondeductible contributions to traditional IRAs is the basis the question describes."
+  },
+  "consumer:retirement.ira_basis@i1040gi:p28": {
+   "verdict": "same",
+   "question_phrase": "hold money you already paid tax on, such as contributions you did not deduct",
+   "source_phrase": "Lines 5a and 5b Pensions and Annuities",
+   "reason": "retirement.ira_basis_if_trad only gates the IRA basis question, and this page is cited for the pension, annuity or rollover rules, which the IRA-basis answer does not feed."
+  },
+  "consumer:retirement.ira_basis@i1040gi:p29": {
+   "verdict": "same",
+   "question_phrase": "hold money you already paid tax on, such as contributions you did not deduct",
+   "source_phrase": "Simplified Method Worksheet—Lines 5a and 5b",
+   "reason": "retirement.ira_basis_if_trad only gates the IRA basis question, and this page is cited for the pension, annuity or rollover rules, which the IRA-basis answer does not feed."
+  },
+  "consumer:retirement.ira_basis@i1040gi:p30": {
+   "verdict": "same",
+   "question_phrase": "hold money you already paid tax on, such as contributions you did not deduct",
+   "source_phrase": "Rollovers Generally, a rollover is a tax-free distribution",
+   "reason": "retirement.ira_basis_if_trad only gates the IRA basis question, and this page is cited for the pension, annuity or rollover rules, which the IRA-basis answer does not feed."
+  },
+  "consumer:royalty.capital@i1040se:p7": {
+   "verdict": "same",
+   "question_phrase": "payment for a patent you transferred, or for coal or iron ore you disposed of",
+   "source_phrase": "If you have amounts for which you are not at risk, use Form 6198",
+   "reason": "royalty.line21 reads this answer only in a refusal whose own citation is the page 6 patent and coal rule; page 7 line 21 is cited for the at-risk instruction, which this input does not feed."
+  },
+  "consumer:royalty.depreciation@i1040se:p7": {
+   "verdict": "same",
+   "question_phrase": "Do you depreciate or amortize anything for it",
+   "source_phrase": "Depreciation is the annual deduction you must take to recover the cost or other basis",
+   "reason": "royalty.line21 refuses on this answer under its own depreciation citation, and the page's line 18 depreciation text is consistent with the question; line 21 is cited for the at-risk instruction, not for this input."
+  },
+  "consumer:royalty.not_at_risk@i1040se:p7": {
+   "verdict": "same",
+   "question_phrase": "borrowed without personal liability from anyone but a bank or regular lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it",
+   "source_phrase": "If you have amounts for which you are not at risk, use Form 6198",
+   "reason": "royalty.not_at_risk_if_loss gates the question to a royalty with a loss, and the question lists the standard not-at-risk financing (nonrecourse, guaranteed, interested-lender) that the page's amounts-not-at-risk instruction points to Form 6198 for."
+  },
+  "consumer:royalty.vehicle@i1040se:p7": {
+   "verdict": "same",
+   "question_phrase": "Do you have car, truck or travel costs for it?",
+   "source_phrase": "Depreciation on listed property (defined in the Instructions for Form 4562), including a vehicle",
+   "reason": "royalty.line21 refuses on this answer under its own line 6 citation; page 7 is cited for the at-risk instruction and mentions vehicles only as listed property, which does not require a different meaning of the question."
+  },
+  "consumer:rprop.ads@i4562:p11": {
+   "verdict": "same",
+   "question_phrase": "Do you depreciate it over 30 or 40 years (the alternative depreciation system, ADS)",
+   "source_phrase": "Applicable depreciation methods are prescribed for each classification of property as follows",
+   "reason": "rprop.screen is a refusal screen: any Yes sends the property outside the straight-line tables this tool uses, and page 11's column (c) and (f) rules (basis reductions, prescribed methods) are the ordinary case the tool computes, so a Yes only refuses and the wording cannot make the tool apply the page's rule wrongly."
+  },
+  "consumer:rprop.basis_changed@i4562:p11": {
+   "verdict": "same",
+   "question_phrase": "has anything but depreciation changed its cost for tax purposes, like a casualty loss or easement payment?",
+   "source_phrase": "subtract any credits and deductions allocable to the property",
+   "reason": "rprop.screen is a refusal screen: any Yes sends the property outside the straight-line tables this tool uses, and page 11's column (c) and (f) rules (basis reductions, prescribed methods) are the ordinary case the tool computes, so a Yes only refuses and the wording cannot make the tool apply the page's rule wrongly."
+  },
+  "consumer:rprop.coop@i4562:p11": {
+   "verdict": "same",
+   "question_phrase": "Is it stock in a cooperative housing corporation",
+   "source_phrase": "Applicable depreciation methods are prescribed for each classification of property as follows",
+   "reason": "rprop.screen is a refusal screen: any Yes sends the property outside the straight-line tables this tool uses, and page 11's column (c) and (f) rules (basis reductions, prescribed methods) are the ordinary case the tool computes, so a Yes only refuses and the wording cannot make the tool apply the page's rule wrongly."
+  },
+  "consumer:rprop.disposed@i4562:p11": {
+   "verdict": "same",
+   "question_phrase": "was it sold, traded, given away, destroyed or torn out, or did you stop renting it for good?",
+   "source_phrase": "Applicable depreciation methods are prescribed for each classification of property as follows",
+   "reason": "rprop.screen is a refusal screen: any Yes sends the property outside the straight-line tables this tool uses, and page 11's column (c) and (f) rules (basis reductions, prescribed methods) are the ordinary case the tool computes, so a Yes only refuses and the wording cannot make the tool apply the page's rule wrongly."
+  },
+  "consumer:rprop.exchanged@i4562:p11": {
+   "verdict": "same",
+   "question_phrase": "Did you get it in a trade for other property (a like-kind exchange)",
+   "source_phrase": "Applicable depreciation methods are prescribed for each classification of property as follows",
+   "reason": "rprop.screen is a refusal screen: any Yes sends the property outside the straight-line tables this tool uses, and page 11's column (c) and (f) rules (basis reductions, prescribed methods) are the ordinary case the tool computes, so a Yes only refuses and the wording cannot make the tool apply the page's rule wrongly."
+  },
+  "consumer:rprop.kind@p946:p31": {
+   "verdict": "same",
+   "question_phrase": "nonresidential: any other building, such as shops or offices, or an improvement to one",
+   "source_phrase": "Qualified improvement property. Generally, this is any improvement to an interior part of a building that is nonresidential real property",
+   "reason": "rprop.new_nonres uses kind only to decide whether to ask the qualified-improvement-property question; the nonresidential option (a building or improvement not mostly residential rental) is the page's nonresidential real property."
+  },
+  "consumer:rprop.qip@i4562:p10": {
+   "verdict": "same",
+   "question_phrase": "an improvement to the inside of the building, made after the building was first placed in service by anyone, and not an enlargement, an elevator or escalator, or the internal structural framework",
+   "source_phrase": "Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017",
+   "reason": "The question restates the section 168(e)(6) definition (interior improvement, after the building was first placed in service, excluding enlargement, elevators and structural framework) that the page names, and the reader only gates asking it."
+  },
+  "consumer:rprop.qip@i4562:p15": {
+   "verdict": "same",
+   "question_phrase": "an improvement to the inside of the building, made after the building was first placed in service by anyone, and not an enlargement, an elevator or escalator, or the internal structural framework",
+   "source_phrase": "Column (f)—Recovery period. Enter the recovery period.",
+   "reason": "rprop.qip_if_new_nonres only gates the question to new nonresidential property; this page is cited for other parts of the reader and holds no qualified-improvement rule that needs a different definition."
+  },
+  "consumer:s1.cod_bankrupt@p4681:p3": {
+   "verdict": "same",
+   "question_phrase": "canceled in a bankruptcy case, or while you (or, on a joint return, your spouse) owed more than everything you owned",
+   "source_phrase": "Code A—Bankruptcy. Code A is used to identify cancellation of debt as a result of a title 11 bankruptcy case",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_bankrupt@p4681:p4": {
+   "verdict": "same",
+   "question_phrase": "canceled in a bankruptcy case, or while you (or, on a joint return, your spouse) owed more than everything you owned",
+   "source_phrase": "Even if you didn’t receive a Form 1099-C, you must report canceled debt as gross income",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_business@p4681:p4": {
+   "verdict": "same",
+   "question_phrase": "a business, rental or farm debt",
+   "source_phrase": "Even if you didn’t receive a Form 1099-C, you must report canceled debt as gross income",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_business@p4681:p6": {
+   "verdict": "same",
+   "question_phrase": "a business, rental or farm debt",
+   "source_phrase": "Deductible Debt If you use the cash method of accounting",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_gift@p4681:p3": {
+   "verdict": "same",
+   "question_phrase": "forgiven as a gift, a bequest or an inheritance",
+   "source_phrase": "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_gift@p4681:p6": {
+   "verdict": "same",
+   "question_phrase": "forgiven as a gift, a bequest or an inheritance",
+   "source_phrase": "After you have applied any exceptions to the general rule that a canceled debt is included in your income",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_interest@p4681:p3": {
+   "verdict": "same",
+   "question_phrase": "include interest (Form 1099-C box 3) or another amount that would have been deductible if you had paid it",
+   "source_phrase": "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_joint_other@p4681:p3": {
+   "verdict": "same",
+   "question_phrase": "liable for a canceled debt together with someone who is not on this return",
+   "source_phrase": "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_joint_other@p4681:p6": {
+   "verdict": "same",
+   "question_phrase": "liable for a canceled debt together with someone who is not on this return",
+   "source_phrase": "After you have applied any exceptions to the general rule that a canceled debt is included in your income",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_not_liable@p4681:p4": {
+   "verdict": "same",
+   "question_phrase": "not personally liable for a canceled debt (Form 1099-C box 5)",
+   "source_phrase": "Nonrecourse debt. If you owned property that was subject to a nonrecourse debt",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_not_liable@p4681:p6": {
+   "verdict": "same",
+   "question_phrase": "not personally liable for a canceled debt (Form 1099-C box 5)",
+   "source_phrase": "After you have applied any exceptions to the general rule that a canceled debt is included in your income",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_price_cut@p4681:p3": {
+   "verdict": "same",
+   "question_phrase": "owed to the seller of property you bought, who reduced what you owed for it",
+   "source_phrase": "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_price_cut@p4681:p4": {
+   "verdict": "same",
+   "question_phrase": "owed to the seller of property you bought, who reduced what you owed for it",
+   "source_phrase": "Persons who each receive a Form 1099-C showing the full amount of debt",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_property@p4681:p3": {
+   "verdict": "same",
+   "question_phrase": "canceled in connection with a foreclosure, repossession or abandonment of property",
+   "source_phrase": "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_property@p4681:p6": {
+   "verdict": "same",
+   "question_phrase": "canceled in connection with a foreclosure, repossession or abandonment of property",
+   "source_phrase": "After you have applied any exceptions to the general rule that a canceled debt is included in your income",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_stockholder@p4681:p3": {
+   "verdict": "same",
+   "question_phrase": "owed to a corporation in which you (or, on a joint return, your spouse) hold stock",
+   "source_phrase": "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_stockholder@p4681:p6": {
+   "verdict": "same",
+   "question_phrase": "owed to a corporation in which you (or, on a joint return, your spouse) hold stock",
+   "source_phrase": "After you have applied any exceptions to the general rule that a canceled debt is included in your income",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_student_home@p4681:p3": {
+   "verdict": "same",
+   "question_phrase": "a student loan, or a loan on your (or, on a joint return, your spouse's) main home",
+   "source_phrase": "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:s1.cod_student_home@p4681:p6": {
+   "verdict": "same",
+   "question_phrase": "a student loan, or a loan on your (or, on a joint return, your spouse's) main home",
+   "source_phrase": "After you have applied any exceptions to the general rule that a canceled debt is included in your income",
+   "reason": "s1.cod_unsupported only refuses when any canceled-debt screening question is Yes, so a Yes or No from this question never computes an amount; the page is cited for the general exceptions-and-exclusions rule that the whole list screens for, which this question's wording (written from the same Pub. 4681 rules) does not narrow."
+  },
+  "consumer:sa.charity_limited@i1040sca:p11": {
+   "verdict": "same",
+   "question_phrase": "Are any of the 2025 charitable deductions reduced by income limits?",
+   "source_phrase": "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct",
+   "reason": "sa.charity_limited_if_gifts only refuses on a Yes; the page's line 13 carryover from an earlier year is asked separately by sa.gift_carryover of every filer, so this question need only cover the 2025 limits."
+  },
+  "consumer:scope.chapter11@i1040gi:p25": {
+   "verdict": "same",
+   "question_phrase": "in a chapter 11 bankruptcy case",
+   "source_phrase": "Even if you don’t get a Form W-2, you must still report your earnings",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.chapter11@i1040s8812:p3": {
+   "verdict": "same",
+   "question_phrase": "in a chapter 11 bankruptcy case",
+   "source_phrase": "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.disaster_distribution@i1040gi:p25": {
+   "verdict": "same",
+   "question_phrase": "take money from a retirement plan in 2023 or 2024 because of a disaster",
+   "source_phrase": "Even if you don’t get a Form W-2, you must still report your earnings",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.disaster_distribution@i1040s8812:p3": {
+   "verdict": "same",
+   "question_phrase": "take money from a retirement plan in 2023 or 2024 because of a disaster",
+   "source_phrase": "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.treaty@i1040gi:p8": {
+   "verdict": "same",
+   "question_phrase": "income exempt from U.S. tax under a tax treaty",
+   "source_phrase": "Most nonresident aliens and dual-status aliens have different filing requirements",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.treaty@i1040gi:p23": {
+   "verdict": "same",
+   "question_phrase": "income exempt from U.S. tax under a tax treaty",
+   "source_phrase": "unless exempt by law or a tax treaty",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.treaty@i1040gi:p24": {
+   "verdict": "same",
+   "question_phrase": "income exempt from U.S. tax under a tax treaty",
+   "source_phrase": "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.treaty@i1040gi:p25": {
+   "verdict": "same",
+   "question_phrase": "income exempt from U.S. tax under a tax treaty",
+   "source_phrase": "Even if you don’t get a Form W-2, you must still report your earnings",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.treaty@i1040gi:p95": {
+   "verdict": "same",
+   "question_phrase": "income exempt from U.S. tax under a tax treaty",
+   "source_phrase": "Don’t include any repayments of qualified reservist distributions",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.treaty@i2441:p5": {
+   "verdict": "same",
+   "question_phrase": "income exempt from U.S. tax under a tax treaty",
+   "source_phrase": "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.treaty@i8582:p1": {
+   "verdict": "same",
+   "question_phrase": "income exempt from U.S. tax under a tax treaty",
+   "source_phrase": "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.treaty@i8915f:p2": {
+   "verdict": "same",
+   "question_phrase": "income exempt from U.S. tax under a tax treaty",
+   "source_phrase": "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report",
+   "reason": "scope.other_income only routes: any Yes on its list sends the return out of scope, and this page is cited for a different item in that list (not for this question), so the answer is used only to refuse and the page's rule does not need a different definition."
+  },
+  "consumer:scope.noncitizen@i8960:p3": {
+   "verdict": "same",
+   "question_phrase": "were you (or, on a joint return, your spouse) not a U.S. citizen?",
+   "source_phrase": "If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes",
+   "reason": "f8960.joint_noncitizen uses the answer with the joint status only to decide whether to ask the 6013(g) election follow-up, so a citizen-or-not answer that is broader than a nonresident alien spouse only over-asks and cannot misstate the election."
+  },
+  "consumer:scope.rental@i1065sk1:p14": {
+   "verdict": "same",
+   "question_phrase": "rent out, or offer for rent, anything you own or lease, or receive royalties",
+   "source_phrase": "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional",
+   "reason": "k1p.ask_re_pro asks the real-estate-professional question here only when no rental of your own is listed, because with an own rental Schedule E Part I asks it; the answer only routes where that question is asked, and the page's rule is applied by the real-estate-professional question itself."
+  },
+  "consumer:scope.rental@i1120ssk:p6": {
+   "verdict": "same",
+   "question_phrase": "rent out, or offer for rent, anything you own or lease, or receive royalties",
+   "source_phrase": "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional",
+   "reason": "k1s.ask_re_pro asks the real-estate-professional question here only when no rental of your own is listed, because with an own rental Schedule E Part I asks it; the answer only routes where that question is asked, and the page's rule is applied by the real-estate-professional question itself."
   }
  },
  "baseline": {
@@ -3476,7 +3884,6 @@
   "consumer:retirement.code@i5329:p5": "7fcc0a57df11fa9a",
   "consumer:s1.alimony_unsupported@i1040gi:p89": "c12a8e4b73109ab3",
   "consumer:s1.cod_any@i1040gi:p91": "aeef6f520df8c4e3",
-  "consumer:s1.cod_unsupported@p525:p20": "87179fa8a7fdb63a",
   "consumer:s8812.combat_pay@i1040gi:p42": "50fff57981f89a2b",
   "consumer:s8812.combat_pay@i1040gi:p95": "50fff57981f89a2b",
   "consumer:s8812.combat_pay@i2441:p4": "50fff57981f89a2b",

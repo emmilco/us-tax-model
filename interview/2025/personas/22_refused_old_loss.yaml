@@ -18,6 +18,9 @@ answers:
   scope.excess_deferral: false
   scope.business_before: true
   scope.nol: true
+  scope.passive: false
+  scope.f8978: false
+  s179.prior_form: false
   s1.nol_amount: 800000
   s1.nol_before_limit_date: true
   s1.nol_ebl: false

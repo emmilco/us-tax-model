@@ -34,6 +34,7 @@ sets:
       rental[house].not_for_profit: false
       rental[house].depletion: false
       rental[house].part_home: false
+      rental[house].held_for_sale: false
       rental[house].active: true
       rental[house].rents: 1800000
       rental[house].has_mortgage: true
@@ -59,11 +60,18 @@ sets:
       rental[house].rprop[bldg].month: m2
       rental[house].rprop[bldg].year: y2020
       rental[house].rprop[bldg].basis: 16000000
-      rental[house].rprop[bldg].screen: false
+      rental[house].rprop[bldg].disposed: false
+      rental[house].rprop[bldg].fast: false
+      rental[house].rprop[bldg].ads: false
+      rental[house].rprop[bldg].basis_changed: false
+      rental[house].rprop[bldg].credit: false
+      rental[house].rprop[bldg].coop: false
+      rental[house].rprop[bldg].exchanged: false
       $royalty: []
       sche.re_pro: false
       sche.grouped: false
       sche.qbi_business: false
+      sche.accrual: false
   royalty_only:
     says: Has no rental; lists one royalty; no Schedule E return-level items.
     answers:
@@ -73,6 +81,7 @@ sets:
       sche.re_pro: false
       sche.grouped: false
       sche.qbi_business: false
+      sche.accrual: false
 rows:
 - id: rental.house_computed
   design: scout-schedule-e.md §4 (lane x1-sche)
@@ -141,6 +150,7 @@ rows:
     rental[house].prior_any: true
     rental[house].prior_amt: 500000
     rental[house].prior_not_active: false
+    rental[house].prior_ws51: false
   expect:
     proceeds:
       rental[house].prior_amt: 500000
@@ -230,6 +240,17 @@ rows:
     rental[house].part_home: true
   expect:
     refused: rental[house].part_home
+- id: rental.held_for_sale
+  design: BUG-0779 (Form 8582 exception for property held for investment; dealer property)
+  situation: A person holds land for its rising value and leases it to a farmer for a small rent.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: land
+    rental[house].held_for_sale: true
+  expect:
+    refused: rental[house].held_for_sale
 - id: rental.vehicle
   design: scout-schedule-e.md §4 (lane x1-sche)
   situation: A person drives to the rental and deducts car costs.
@@ -252,6 +273,19 @@ rows:
     rental[house].prior_not_active: true
   expect:
     refused: rental[house].prior_not_active_if_both
+- id: rental.prior_ws51
+  design: BUG-0778 (Worksheet 5-1 carryover)
+  situation: A person used a lake house for a month in 2024, carried its unused costs over, and only rented it in 2025.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].prior_any: true
+    rental[house].prior_amt: 300000
+    rental[house].prior_not_active: false
+    rental[house].prior_ws51: true
+  expect:
+    refused: rental[house].prior_ws51_if_any
 - id: rental.personal_property
   design: scout-schedule-e.md §4 (lane x1-sche)
   situation: A person depreciates a refrigerator in the rental.
@@ -281,9 +315,112 @@ rows:
   - one_w2
   - rents_house
   answers:
-    rental[house].rprop[bldg].screen: true
+    rental[house].rprop[bldg].disposed: true
   expect:
     refused: rental[house].rprop[bldg].screen
+- id: rental.rprop_fast
+  design: scout-schedule-e.md §4 (lane x1-sche); rprop.screen taken apart (technique 3.1)
+  situation: A person took a section 179 deduction for part of the cost of an improvement to her rental.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].rprop[bldg].fast: true
+  expect:
+    refused: rental[house].rprop[bldg].screen
+- id: rental.rprop_ads
+  design: scout-schedule-e.md §4 (lane x1-sche); rprop.screen taken apart (technique 3.1)
+  situation: A person chose to depreciate her rental house over 30 years under the alternative depreciation system.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].rprop[bldg].ads: true
+  expect:
+    refused: rental[house].rprop[bldg].screen
+- id: rental.rprop_basis_changed
+  design: scout-schedule-e.md §4 (lane x1-sche); rprop.screen taken apart (technique 3.1)
+  situation: A person's rental house was damaged by a storm in 2023 and she reduced its basis by the casualty loss.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].rprop[bldg].basis_changed: true
+  expect:
+    refused: rental[house].rprop[bldg].screen
+- id: rental.rprop_credit
+  design: scout-schedule-e.md §4 (lane x1-sche); rprop.screen taken apart (technique 3.1)
+  situation: A person took the disabled access credit for a ramp she built at her rental.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].rprop[bldg].credit: true
+  expect:
+    refused: rental[house].rprop[bldg].screen
+- id: rental.rprop_coop
+  design: scout-schedule-e.md §4 (lane x1-sche); rprop.screen taken apart (technique 3.1)
+  situation: A person rents out her co-op apartment and depreciates her stock in the cooperative housing corporation.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].rprop[bldg].coop: true
+  expect:
+    refused: rental[house].rprop[bldg].screen
+- id: rental.rprop_exchanged
+  design: BUG-0891 (carryover basis of a like-kind exchange or involuntary conversion)
+  situation: A person rents out a house received in a 1031 exchange for a duplex in 2020.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].rprop[bldg].exchanged: true
+  expect:
+    refused: rental[house].rprop[bldg].screen
+- id: rental.rprop_qip
+  design: scout-schedule-e.md §4 (lane x1-sche); rprop.screen taken apart (technique 3.1); BUG-0919
+  situation: A person rents out an office and lists the new interior walls and flooring she put in in 2019.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: commercial
+    rental[house].rprop[bldg].kind: nonresidential
+    rental[house].rprop[bldg].year: y2019
+    rental[house].rprop[bldg].qip: true
+  expect:
+    refused: rental[house].rprop[bldg].screen
+- id: rental.rprop_qip_not_asked_old
+  design: rprop.screen taken apart (technique 3.1); the qualified-improvement question is gated on the year
+  situation: A person rents out an office building she placed in service in 2010; she is not asked about interior
+    improvements and the return is completed.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: commercial
+    rental[house].rprop[bldg].kind: nonresidential
+    rental[house].rprop[bldg].year: y2010
+  expect:
+    proceeds:
+      rental[house].rprop[bldg].year: y2010
+    not_asked:
+    - rental[house].rprop[bldg].qip
+- id: rental.rprop_qip_not_asked_home
+  design: rprop.screen taken apart (technique 3.1); the qualified-improvement question is gated on the kind
+  situation: A person rents out a house placed in service in 2020; she is not asked about interior improvements and the
+    return is completed.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].rprop[bldg].kind: residential
+  expect:
+    proceeds:
+      rental[house].rprop[bldg].kind: residential
+    not_asked:
+    - rental[house].rprop[bldg].qip
 - id: rental.not_at_risk
   design: scout-schedule-e.md §4 (lane x1-sche)
   situation: A person bought a rental with a loan from the seller and has a loss.
@@ -325,6 +462,16 @@ rows:
     sche.qbi_business: true
   expect:
     refused: sche.qbi_business
+- id: rental.accrual
+  design: BUG-0786 (accrual-method landlord)
+  situation: A landlord keeps the books of her rentals on the accrual method.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    sche.accrual: true
+  expect:
+    refused: sche.accrual
 - id: rental.royalty_computed
   design: scout-schedule-e.md §4 (lane x1-sche)
   situation: A person with one job receives book royalties of $2,400 and no rental; the return is completed.
@@ -338,6 +485,9 @@ rows:
     royalty[book].business: false
     royalty[book].depletion: false
     royalty[book].expenses_any: false
+    royalty[book].capital: false
+    royalty[book].vehicle: false
+    royalty[book].depreciation: false
   expect:
     proceeds:
       royalty[book].line4: 240000
@@ -368,3 +518,73 @@ rows:
     royalty[oil].business: false
   expect:
     refused: royalty[oil].depletion
+- id: rental.royalty_capital
+  design: BUG-0889 (patent transfer treated as a sale)
+  situation: An inventor who sold his patent is paid by the units the buyer sells.
+  uses:
+  - one_w2
+  - royalty_only
+  answers:
+    $royalty:
+    - patent
+    royalty[patent].line4: 100000
+    royalty[patent].business: false
+    royalty[patent].depletion: false
+    royalty[patent].capital: true
+  expect:
+    refused: royalty[patent].capital
+- id: rental.royalty_vehicle
+  design: BUG-0889 (car and travel costs of a royalty)
+  situation: A person drives to inspect the land under an oil lease and deducts the trips.
+  uses:
+  - one_w2
+  - royalty_only
+  answers:
+    $royalty:
+    - oil
+    royalty[oil].line4: 100000
+    royalty[oil].business: false
+    royalty[oil].depletion: false
+    royalty[oil].capital: false
+    royalty[oil].vehicle: true
+  expect:
+    refused: royalty[oil].vehicle
+- id: rental.royalty_depreciation
+  design: BUG-0889 (depreciation or amortization of a bought copyright)
+  situation: A person bought the copyright of a book and amortizes its cost against the royalties.
+  uses:
+  - one_w2
+  - royalty_only
+  answers:
+    $royalty:
+    - book
+    royalty[book].line4: 100000
+    royalty[book].business: false
+    royalty[book].depletion: false
+    royalty[book].capital: false
+    royalty[book].vehicle: false
+    royalty[book].depreciation: true
+  expect:
+    refused: royalty[book].depreciation
+- id: rental.royalty_not_at_risk
+  design: BUG-0889 (at-risk rules on a royalty loss)
+  situation: A person's royalty costs exceed its payments, and the money put in was a nonrecourse loan from the seller.
+  uses:
+  - one_w2
+  - royalty_only
+  answers:
+    $royalty:
+    - lease
+    royalty[lease].line4: 100000
+    royalty[lease].business: false
+    royalty[lease].depletion: false
+    royalty[lease].capital: false
+    royalty[lease].vehicle: false
+    royalty[lease].depreciation: false
+    royalty[lease].expenses_any: true
+    royalty[lease].amt10: 0
+    royalty[lease].amt16: 0
+    royalty[lease].amt19: 150000
+    royalty[lease].not_at_risk: true
+  expect:
+    refused: royalty[lease].not_at_risk_if_loss

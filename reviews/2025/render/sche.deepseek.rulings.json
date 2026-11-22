@@ -1,0 +1,17 @@
+{
+ "kind": "render",
+ "form": "sche",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "41",
+   "restated": "Enter the amount from line 26.",
+   "model": "IRS line 41 says 'Combine lines 26, 32, 37, 39, and 40,' but the restatement takes only line 26, omitting lines 32, 37, 39, and 40.",
+   "ruling": "Ruling: scope; f1040se: only line 26 (rental and royalty) is computed; lines 32, 37, 39 and 40 are outside the tool. Project stands.",
+   "context": "c8f923f959199e4ca445b63c2f26a20368835aba58754a9f911a7dd87818c8dc",
+   "date": "2026-11-17",
+   "run": "c51f3a7dacb9dd85d41abbf7cbb4361deb5ee20dc23c77cff2243e8b4568540e",
+   "subject_key": "46d5d57cc547e8a1a01f2c3c9be56ec9edc069764f11a5dbcc0c2fb1d3d51463"
+  }
+ ]
+}

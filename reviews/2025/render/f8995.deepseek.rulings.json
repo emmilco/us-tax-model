@@ -1,0 +1,27 @@
+{
+ "kind": "render",
+ "form": "f8995",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "11",
+   "restated": "Enter the amount from qbi helper \"Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero\".",
+   "model": "IRS line 11 instructions compute 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b' and do not provide a zero floor; the restatement adds an 'If zero or less, enter -0-' condition.",
+   "ruling": "Ruling: representation; f8995 pp. 3–4: Form 1040 line 11a cannot be negative, so the floor restates the form. Project stands.",
+   "context": "327ee96861d16bd244827b6cc349fbd2a135782e7c77c5505368290bd4ccc6a3",
+   "date": "2026-11-17",
+   "run": "8e19af102e1cd38be4af8e8f5bbef75197d6af0286a9bc8beb8a55c7c1264de5",
+   "subject_key": "a87b998155d9f265f42dc0654d47ffaab06e7b1228a9d1ec9d542a609d684dba"
+  },
+  {
+   "printed": "12",
+   "restated": "Enter the amount from qbi helper \"Add sd.net_gain, f1040.line3a\".",
+   "model": "IRS line 12 instructions say if you're not required to file Schedule D, your net capital gain is the amount on Form 1040 line 7a; the restatement uses only the smaller of Schedule D lines 15 and 16.",
+   "ruling": "Ruling: representation; f8995 pp. 3–4: when no Schedule D is filed, sd.net_gain is Form 1040 line 7a. Project stands.",
+   "context": "327ee96861d16bd244827b6cc349fbd2a135782e7c77c5505368290bd4ccc6a3",
+   "date": "2026-11-17",
+   "run": "8e19af102e1cd38be4af8e8f5bbef75197d6af0286a9bc8beb8a55c7c1264de5",
+   "subject_key": "e4cb0e1a0b1161483a01004f64b43b0802841ca2ea43d07e192d7086f04f64ce"
+  }
+ ]
+}

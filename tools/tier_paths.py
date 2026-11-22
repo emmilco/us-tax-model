@@ -148,6 +148,8 @@ WALKERS = {
     ("tools/transcription/test_review_tools.py", "'archive'"): "a temporary directory",
     ("tools/worktree_data.py", "os.walk("): "walks reviews/ and the git-ignored data folders (.transcription/ and the rest)",
     ("tools/worktree_data.py", "ls-files"): "lists the tracked files under the git-ignored data folders",
+    ("tools/worktree_gc.py", "ls-files"): "lists a linked worktree's untracked files to archive them; reads no docs-tier path",
+    ("tools/worktree_gc.py", '"archive"'): "the archive command's name; writes only under .claude/worktree-archive/",
     ("tools/defaults_guard.mjs", "ls-files"): "lists the staged fixture files in the commit-msg hook; its self-test (the check-all step) lists none",
 }
 

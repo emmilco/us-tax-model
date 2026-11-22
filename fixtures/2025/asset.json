@@ -1531,6 +1531,124 @@
           "value": true
         }
       }
+    },
+    {
+      "id": "mf.asset.industry_business_item_not_listed",
+      "covers": [
+        "asset",
+        "f4562"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. A rent-to-own dealer (a business of one of the kinds in the screen: i4562 p. 7, Exceptions) buys an office computer (asset class 00.12, 5-year) for $3,000, placed in service in March 2025, no special allowance or section 179. The computer is not itself rent-to-own property or any other item of the list, so the screen does not apply to it. MACRS 5-year, half-year convention, first year 20.00% (p946 Table A-1): $600 on Form 4562 line 19b and Schedule C line 13.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[pc].cost": 300000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].bonus_choice": "none",
+        "person[taxpayer].sc[desk].asset[pc].industry": true,
+        "person[taxpayer].sc[desk].asset[pc].industry_item": false
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_this_year": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "person[taxpayer].sc[desk].f19_y5": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 60000
+        }
+      }
+    },
+    {
+      "id": "mf.asset.industry_business_item_listed",
+      "covers": [
+        "asset:refuse:industry"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. A rent-to-own dealer places in service in 2025 a television it holds for rent-to-own customers (qualified rent-to-own property, section 168(i)(14); i4562 pp. 8-12, Part III and p. 7, Exceptions), $3,000, no special allowance. Rent-to-own property is one of the items of the screen this tool does not depreciate, so the screen is answered yes and the property's cost line refuses at the screen.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "tv"
+        ],
+        "person[taxpayer].sc[desk].asset[tv].class": "c57_0",
+        "person[taxpayer].sc[desk].asset[tv].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[tv].cost": 300000,
+        "person[taxpayer].sc[desk].asset[tv].pct": 100,
+        "person[taxpayer].sc[desk].asset[tv].bonus_choice": "none",
+        "person[taxpayer].sc[desk].asset[tv].industry": true,
+        "person[taxpayer].sc[desk].asset[tv].industry_item": true
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[tv].cost": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[desk].asset[tv].screened",
+          "form": "Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of the screen)",
+          "remedy": "This property is outside the depreciation this tool covers.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "pp. 8-12, Part III, and Pub. 946 Appendix B",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mf.asset.recycling_item_listed",
+      "covers": [
+        "asset:refuse:industry"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane MF, predicted by hand from the archived sources before running the evaluator. A business that is not one of the listed kinds places in service in 2025 a baler used only to recycle cardboard (qualified reuse and recycling property, section 168(m); i4562 p. 6, Qualified reuse and recycling property), $3,000. The item is of a listed kind whatever the business, so the item question is asked and answered yes; reuse and recycling property is outside this tool, so the property's cost line refuses at the screen.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "baler"
+        ],
+        "person[taxpayer].sc[desk].asset[baler].class": "c57_0",
+        "person[taxpayer].sc[desk].asset[baler].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[baler].cost": 300000,
+        "person[taxpayer].sc[desk].asset[baler].pct": 100,
+        "person[taxpayer].sc[desk].asset[baler].bonus_choice": "none",
+        "person[taxpayer].sc[desk].asset[baler].industry": false,
+        "person[taxpayer].sc[desk].asset[baler].industry_use": true,
+        "person[taxpayer].sc[desk].asset[baler].industry_item": true
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[baler].cost": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[desk].asset[baler].screened",
+          "form": "Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of the screen)",
+          "remedy": "This property is outside the depreciation this tool covers.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "pp. 8-12, Part III, and Pub. 946 Appendix B",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

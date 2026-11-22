@@ -1,7 +1,7 @@
 [
  {
   "form": "ny_city_rs",
-  "subject_sha": "8880e645355e0c4d5455dc716a45af3518ad25a23d602b30fd4df94e041c78ab",
+  "subject_sha": "49be96ed2f36f64e529cd0f69e8a38df784fb1a8fc429a11cf69756ee87b7f4a",
   "used": [
    {
     "doc": "ny_it201i",
@@ -18,15 +18,15 @@
       "item": "status",
       "sentences": [
        {
-        "quote": "The only exceptions are for certain married couples filing a joint federal return in the following situations: • One spouse is a New York State resident and the other is a nonresident or part-year resident.",
+        "quote": "The only exceptions are for certain married couples filing a joint federal return in the following situations: \u2022 One spouse is a New York State resident and the other is a nonresident or part-year resident.",
         "page": "ny_it201i p. 4"
        },
        {
-        "quote": "In this case, you must either: – file separate New York returns using filing status ; or – file jointly, as if you both were New York State residents, using filing status .",
+        "quote": "In this case, you must either: \u2013 file separate New York returns using filing status ; or \u2013 file jointly, as if you both were New York State residents, using filing status .",
         "page": "ny_it201i p. 4"
        }
       ],
-      "quote": "The only exceptions are for certain married couples filing a joint federal return in the following situations: • One spouse is a New York State resident and the other is a nonresident or part-year resident. / In this case, you must either: – file separate New York returns using filing status ; or – file jointly, as if you both were New York State residents, using filing status .",
+      "quote": "The only exceptions are for certain married couples filing a joint federal return in the following situations: \u2022 One spouse is a New York State resident and the other is a nonresident or part-year resident. / In this case, you must either: \u2013 file separate New York returns using filing status ; or \u2013 file jointly, as if you both were New York State residents, using filing status .",
       "page": "ny_it201i p. 4",
       "why_uncovered": "The status item takes the federal filing status unchanged and cites only the general rule (\"In most cases, you must use the same filing status you used on your federal return\"). Nothing in the encoding covers the exception for a joint federal filer whose spouse is a nonresident or part-year resident of New York. No question asks about the spouses' residency, and no refusal covers the case. The HANDLED ELSEWHERE refusals are about federal filing-status tests and nonresident aliens for the EIC, so they do not cover it either. In this case New York requires married filing separately, or a joint return as if both spouses were residents, so the federal status cannot simply be carried over.",
       "closest_item": "status",
@@ -38,11 +38,16 @@
     "date": "2026-11-15",
     "response": ".transcription/completeness/ny_city_rs.8880e645355e.1.response.txt"
    }
-  ]
+  ],
+  "subject_migrated": {
+   "from": "8880e645355e0c4d5455dc716a45af3518ad25a23d602b30fd4df94e041c78ab",
+   "date": "2026-11-21",
+   "task": "T-351"
+  }
  },
  {
   "form": "ny_it2",
-  "subject_sha": "ff20ae5c3cdf95204b4b01c4fb69c6e1fc8484884a68f15cc063e8d37965c07d",
+  "subject_sha": "1356bcdf5aa88e24be7bb6cf80bfc72b3d7f051943f6b9d9f9dc3979a26ba588",
   "used": [
    {
     "doc": "ny_it201i",
@@ -81,11 +86,16 @@
     "date": "2026-11-15",
     "response": ".transcription/completeness/ny_it2.ff20ae5c3cdf.1.response.txt"
    }
-  ]
+  ],
+  "subject_migrated": {
+   "from": "ff20ae5c3cdf95204b4b01c4fb69c6e1fc8484884a68f15cc063e8d37965c07d",
+   "date": "2026-11-21",
+   "task": "T-351"
+  }
  },
  {
   "form": "ny_it201",
-  "subject_sha": "a1f486f1466b6172d295114e661a0b75780b153cc055839dc92eadde1553aab6",
+  "subject_sha": "2de63d55925a41ddbfe45a50625869a712fa81c813bbec3cc97f575f30c0b833",
   "used": [
    {
     "doc": "ny_it112ri",
@@ -158,46 +168,144 @@
     "system_sha": "12614b3b48e43be67d70ed8eea3f366fc2eb5c9e4ab4c3e0c27f6f18bb0d44e2",
     "claims": [
      {
-      "item": "ny_it201.item_h_count",
+      "item": "ny_it201.line37",
       "sentences": [
        {
-        "quote": "Also enter the required information for any dependent you were entitled to claim on your federal return but chose not to (see Example below).",
-        "page": "ny_it201i p. 6"
-       },
-       {
-        "quote": "If you did not have to file a federal return, enter the required information for each dependent you would be entitled to claim for federal income tax purposes.",
-        "page": "ny_it201i p. 6"
-       },
-       {
-        "quote": "Note: If you are married filing a joint federal return but are required to file separate returns for New York State, complete item H as if you filed separate federal returns.",
-        "page": "ny_it201i p. 6"
+        "quote": "If line 36 is more than line 35, leave line 37 and line 38 blank.",
+        "page": "ny_it201i p. 11"
        }
       ],
-      "quote": "Also enter the required information for any dependent you were entitled to claim on your federal return but chose not to (see Example below). / If you did not have to file a federal return, enter the required information for each dependent you would be entitled to claim for federal income tax purposes. / Note: If you are married filing a joint federal return but are required to file separate returns for New York State, complete item H as if you filed separate federal returns.",
-      "page": "ny_it201i p. 6",
-      "why_uncovered": "The item H count is drawn from the dependents on the federal return. No question asks whether a dependent the filer could have claimed federally, but chose not to claim (for example, so the child could take an education credit), should also be listed. No refusal covers that case either. The count feeds the line 36 exemption and the household-credit and IT-270 people counts.",
-      "closest_item": "ny_it201.item_h_count",
+      "quote": "If line 36 is more than line 35, leave line 37 and line 38 blank.",
+      "page": "ny_it201i p. 11",
+      "why_uncovered": "The encoding computes line 37 as line 35 minus line 36 and does not floor it at zero or leave line 38 blank; no question or refusal covers this case.",
+      "closest_item": "ny_it201.line37",
+      "effect": "amount"
+     },
+     {
+      "item": "ny_it201.line47",
+      "sentences": [
+       {
+        "quote": "Did you contribute to the New York Charitable Gifts Trust Fund in one or more of the following accounts: \u2022 Health Charitable Account; or \u2022 Elementary and Secondary Education Account; and",
+        "page": "ny_it201i p. 13"
+       },
+       {
+        "quote": "did you claim an itemized deduction for that contribution on Form IT-196?",
+        "page": "ny_it201i p. 13"
+       },
+       {
+        "quote": "If Yes, complete the Line 47 worksheet below.",
+        "page": "ny_it201i p. 13"
+       }
+      ],
+      "quote": "Did you contribute to the New York Charitable Gifts Trust Fund in one or more of the following accounts: \u2022 Health Charitable Account; or \u2022 Elementary and Secondary Education Account; and / did you claim an itemized deduction for that contribution on Form IT-196? / If Yes, complete the Line 47 worksheet below.",
+      "page": "ny_it201i p. 13",
+      "why_uncovered": "Encoding line 47 uses line 38 and has no question about Charitable Gifts Trust Fund contributions or the Line 47 worksheet that adds them to New York City taxable income.",
+      "closest_item": "ny_it201.line47",
+      "effect": "amount"
+     },
+     {
+      "item": "ny_it201.line48",
+      "sentences": [
+       {
+        "quote": "If you marked the Yes box at item C on the front of Form IT-201, you do not qualify for this credit and should go to line 49.",
+        "page": "ny_it201i p. 13"
+       }
+      ],
+      "quote": "If you marked the Yes box at item C on the front of Form IT-201, you do not qualify for this credit and should go to line 49.",
+      "page": "ny_it201i p. 13",
+      "why_uncovered": "The encoding has the item C question but line 48 has no zero/refusal for item C Yes; its only line-48 refusals are for married filing separately and more than seven people.",
+      "closest_item": "ny_it201.line48",
       "effect": "amount"
      },
      {
       "item": "ny_it201.line69a",
       "sentences": [
        {
-        "quote": "If you are a New York City resident or part-year resident and you marked Yes at item C on the front of Form IT-201 indicating that you can be claimed as a dependent on another taxpayer’s federal return, or your income (see below) is more than $500,000, you do not qualify to claim this credit.",
+        "quote": "If you are a New York City resident or part-year resident and you marked Yes at item C on the front of Form IT-201 indicating that you can be claimed as a dependent on another taxpayer\u2019s federal return, or your income (see below) is more than $500,000, you do not qualify to claim this credit. Go to line 70.",
         "page": "ny_it201i p. 20"
        }
       ],
-      "quote": "If you are a New York City resident or part-year resident and you marked Yes at item C on the front of Form IT-201 indicating that you can be claimed as a dependent on another taxpayer’s federal return, or your income (see below) is more than $500,000, you do not qualify to claim this credit.",
+      "quote": "If you are a New York City resident or part-year resident and you marked Yes at item C on the front of Form IT-201 indicating that you can be claimed as a dependent on another taxpayer\u2019s federal return, or your income (see below) is more than $500,000, you do not qualify to claim this credit. Go to line 70.",
       "page": "ny_it201i p. 20",
-      "why_uncovered": "For line 69a the encoding only refuses when income is over $500,000 (gate.stc_rr_income). The item C test is encoded for line 69 (stc_fixed_eligible), but no listed gate or helper denies the rate reduction amount when item C is Yes.",
+      "why_uncovered": "Encoding's line 69a gate covers only income over $500,000; it does not disqualify a filer who marked item C Yes.",
       "closest_item": "ny_it201.line69a",
       "effect": "amount"
      },
      {
-      "item": "ny_it201.line1",
+      "item": "ny_it201.line59",
       "sentences": [
        {
-        "quote": "You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown, and – you can demonstrate that reasonable efforts have been made to locate your spouse, and – good cause exists for the failure to file a joint New York return.",
+        "quote": "You may also owe an additional local tax if you use property or services in another locality in New York State, other than the locality to which you paid tax.",
+        "page": "ny_it201i p. 18"
+       },
+       {
+        "quote": "You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid.",
+        "page": "ny_it201i p. 18"
+       },
+       {
+        "quote": "If the amount reported on line 59 is $1,700 or more, you must complete Form IT-135, Sales and Use Tax Report for Purchases of Items and Services Costing $25,000 or More, and submit it with your return.",
+        "page": "ny_it201i p. 18"
+       }
+      ],
+      "quote": "You may also owe an additional local tax if you use property or services in another locality in New York State, other than the locality to which you paid tax. / You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid. / If the amount reported on line 59 is $1,700 or more, you must complete Form IT-135, Sales and Use Tax Report for Purchases of Items and Services Costing $25,000 or More, and submit it with your return.",
+      "page": "ny_it201i p. 18",
+      "why_uncovered": "The encoding asks about lower local tax only by comparison to New York City and has no question or refusal for a second New York locality; it also has no rule requiring Form IT-135 when line 59 reaches $1,700.",
+      "closest_item": "ny_it201.line59",
+      "effect": "amount"
+     },
+     {
+      "item": "ny_it201.line77",
+      "sentences": [
+       {
+        "quote": "If you marked filing status  and you do not want to apply your part of the overpayment to your spouse\u2019s debt because you are not liable (legally responsible) for it, complete Form IT-280, Nonobligated Spouse Allocation, and submit it with your original return.",
+        "page": "ny_it201i p. 22"
+       },
+       {
+        "quote": "You cannot file an amended return to disclaim your spouse\u2019s debt after you have filed your original return.",
+        "page": "ny_it201i p. 22"
+       },
+       {
+        "quote": "You cannot use Form IT-280 to disclaim liability for a legally enforceable debt to the IRS or to disclaim a tax liability owed to another state.",
+        "page": "ny_it201i p. 22"
+       }
+      ],
+      "quote": "If you marked filing status  and you do not want to apply your part of the overpayment to your spouse\u2019s debt because you are not liable (legally responsible) for it, complete Form IT-280, Nonobligated Spouse Allocation, and submit it with your original return. / You cannot file an amended return to disclaim your spouse\u2019s debt after you have filed your original return. / You cannot use Form IT-280 to disclaim liability for a legally enforceable debt to the IRS or to disclaim a tax liability owed to another state.",
+      "page": "ny_it201i p. 22",
+      "why_uncovered": "Encoding line 77 computes net overpayment only; it has no question or refusal for the nonobligated-spouse election, Form IT-280, or its limits.",
+      "closest_item": "ny_it201.line77",
+      "effect": "amount"
+     },
+     {
+      "item": "ny_it201.line80",
+      "sentences": [
+       {
+        "quote": "You may qualify for relief from full or partial tax liability on a joint return as an innocent spouse if:",
+        "page": "ny_it201i p. 32"
+       },
+       {
+        "quote": "If you and your spouse or former spouse are no longer married, or are legally separated, or have lived apart at all times during the 12-month period prior to the date of filing for relief, you may also request a separation of liability for any understated tax on a joint return.",
+        "page": "ny_it201i p. 32"
+       },
+       {
+        "quote": "If you do not qualify as an innocent spouse or for separation of liability, you may qualify for equitable relief if you can show that, considering all the facts and circumstances, you should not be held liable for any understatement or underpayment of tax.",
+        "page": "ny_it201i p. 32"
+       },
+       {
+        "quote": "You may use Form IT-285 only for innocent spouse relief under the three circumstances stated above. Do not file Form IT-285 with your return.",
+        "page": "ny_it201i p. 32"
+       }
+      ],
+      "quote": "You may qualify for relief from full or partial tax liability on a joint return as an innocent spouse if: / If you and your spouse or former spouse are no longer married, or are legally separated, or have lived apart at all times during the 12-month period prior to the date of filing for relief, you may also request a separation of liability for any understated tax on a joint return. / If you do not qualify as an innocent spouse or for separation of liability, you may qualify for equitable relief if you can show that, considering all the facts and circumstances, you should not be held liable for any understatement or underpayment of tax. / You may use Form IT-285 only for innocent spouse relief under the three circumstances stated above. Do not file Form IT-285 with your return.",
+      "page": "ny_it201i p. 32",
+      "why_uncovered": "No encoded question or refusal asks about innocent spouse, separation-of-liability, or equitable relief; the software computes line 80 without regard to Form IT-285 relief.",
+      "closest_item": "ny_it201.line80",
+      "effect": "amount"
+     },
+     {
+      "item": "ny_it201.gate.spouse_nonresident",
+      "sentences": [
+       {
+        "quote": "You are unable to file a joint New York return because: \u2013 the address or whereabouts of your spouse is unknown, and \u2013 you can demonstrate that reasonable efforts have been made to locate your spouse, and \u2013 good cause exists for the failure to file a joint New York return.",
         "page": "ny_it201i p. 5"
        },
        {
@@ -205,67 +313,32 @@
         "page": "ny_it201i p. 5"
        },
        {
-        "quote": "You are unable to file a joint New York return because: – your spouse refuses to sign a joint New York return; and – reasonable efforts have been made to have your spouse sign a joint return; and – there exists objective evidence of alienation from your spouse such as:",
+        "quote": "You are unable to file a joint New York return because: \u2013 your spouse refuses to sign a joint New York return; and \u2013 reasonable efforts have been made to have your spouse sign a joint return; and \u2013 there exists objective evidence of alienation from your spouse such as: \u2022 judicial order of protection; \u2022 legal separation under a decree of divorce or separate maintenance; or \u2022 living apart for the twelve months immediately preceding application to file a separate return, or commencement of an action for divorce or commencement of certain family court proceedings; and \u2013 good cause exists for the failure to file a joint New York return.",
         "page": "ny_it201i p. 5"
        }
       ],
-      "quote": "You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown, and – you can demonstrate that reasonable efforts have been made to locate your spouse, and – good cause exists for the failure to file a joint New York return. / In this case, you may file a separate New York return using filing status . / You are unable to file a joint New York return because: – your spouse refuses to sign a joint New York return; and – reasonable efforts have been made to have your spouse sign a joint return; and – there exists objective evidence of alienation from your spouse such as:",
+      "quote": "You are unable to file a joint New York return because: \u2013 the address or whereabouts of your spouse is unknown, and \u2013 you can demonstrate that reasonable efforts have been made to locate your spouse, and \u2013 good cause exists for the failure to file a joint New York return. / In this case, you may file a separate New York return using filing status . / You are unable to file a joint New York return because: \u2013 your spouse refuses to sign a joint New York return; and \u2013 reasonable efforts have been made to have your spouse sign a joint return; and \u2013 there exists objective evidence of alienation from your spouse such as: \u2022 judicial order of protection; \u2022 legal separation under a decree of divorce or separate maintenance; or \u2022 living apart for the twelve months immediately preceding application to file a separate return, or commencement of an action for divorce or commencement of certain family court proceedings; and \u2013 good cause exists for the failure to file a joint New York return.",
       "page": "ny_it201i p. 5",
-      "why_uncovered": "The New York filing status is taken from the federal return. The only exception the encoding handles is a spouse who is a nonresident or part-year resident (gate.spouse_nonresident). Nothing asks about, or refuses, a federal joint filer who must or may file a separate New York return because the spouse cannot be found or refuses to sign. That changes the filing status, the standard deduction, the tax and the credits.",
-      "closest_item": "ny_it201.line1",
-      "effect": "amount"
-     },
-     {
-      "item": "ny_it201.ask.state_resident",
-      "sentences": [
-       {
-        "quote": "Therefore, for any tax year of the marriage, a servicemember and their spouse may elect to use, for purposes of taxation, any of the following (regardless of the date they married): • the residence or domicile of the servicemember • the residence or domicile of the spouse • the permanent duty station of the servicemember",
-        "page": "ny_it201i pp. 3–4"
-       },
-       {
-        "quote": "Note: Special rules under the SCRA apply to members of the military and their spouses for determining residency.",
-        "page": "ny_it201i p. 30"
-       }
-      ],
-      "quote": "Therefore, for any tax year of the marriage, a servicemember and their spouse may elect to use, for purposes of taxation, any of the following (regardless of the date they married): • the residence or domicile of the servicemember • the residence or domicile of the spouse • the permanent duty station of the servicemember / Note: Special rules under the SCRA apply to members of the military and their spouses for determining residency.",
-      "page": "ny_it201i pp. 3–4; ny_it201i p. 30",
-      "why_uncovered": "The residency question asks only about domicile, the statutory 184-day test and Groups A/B, plus active duty for the 184-day test. Nothing asks about an SCRA residence election (codes M4–M9), especially by a civilian spouse. Such an election can make a filer a nonresident or change their residence. The special_code gate says the other codes are refused elsewhere, but no listed refusal covers the SCRA election.",
-      "closest_item": "ny_it201.ask.state_resident",
+      "why_uncovered": "Encoding's spouse_nonresident gate covers only the resident/nonresident-spouse exception to using the federal filing status; no question or refusal covers an unknown spouse or a spouse who refuses to sign.",
+      "closest_item": "ny_it201.gate.spouse_nonresident",
       "effect": "eligibility"
-     },
-     {
-      "item": "ny_it201.ask.mctmt",
-      "sentences": [
-       {
-        "quote": "Note: In determining if the exclusion under IRC § 1402(a)(13) applies, an individual shall not be considered a limited partner if they directly, or indirectly, take part in the control, or participate in the management or operations of the partnership such that they are not a passive investor, regardless of their title or characterization in a partnership or operating agreement.",
-        "page": "ny_it201i p. 17"
-       },
-       {
-        "quote": "In this case, you must include the distributive share from such partnership in your net earnings from self-employment [Tax Law § 800(e)].",
-        "page": "ny_it201i p. 17"
-       },
-       {
-        "quote": "If your net earnings from self-employment are not subject to federal self-employment tax (for example, nonresident noncitizens), use federal Schedule SE (Form 1040) to calculate your net earnings from self-employment as if they were subject to the tax.",
-        "page": "ny_it201i p. 17"
-       }
-      ],
-      "quote": "Note: In determining if the exclusion under IRC § 1402(a)(13) applies, an individual shall not be considered a limited partner if they directly, or indirectly, take part in the control, or participate in the management or operations of the partnership such that they are not a passive investor, regardless of their title or characterization in a partnership or operating agreement. / In this case, you must include the distributive share from such partnership in your net earnings from self-employment [Tax Law § 800(e)]. / If your net earnings from self-employment are not subject to federal self-employment tax (for example, nonresident noncitizens), use federal Schedule SE (Form 1040) to calculate your net earnings from self-employment as if they were subject to the tax.",
-      "page": "ny_it201i p. 17",
-      "why_uncovered": "The MCTMT question and the mctmt_possible helper rely on Schedule C profit and on the filer's own view of net earnings from self-employment. Neither tells the filer to count a 'limited partner' distributive share when the partner takes part in management. Neither tells the filer to count earnings that are not subject to federal SE tax. A filer in either situation could answer No and skip the MCTMT refusal.",
-      "closest_item": "ny_it201.ask.mctmt",
-      "effect": "amount"
      }
     ],
-    "cost": 0.518772,
-    "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/completeness/ny_it201.a1f486f1466b.1.response.txt"
+    "cost": 0,
+    "model": "deepseek-flash",
+    "date": "2026-11-18",
+    "response": ".transcription/completeness/ny_it201.d41d0a7756f0.1.response.txt"
    }
-  ]
+  ],
+  "subject_migrated": {
+   "from": "d41d0a7756f04e85eaa22fcef0326a486f887bf07458392abde605bf7b7e33a1",
+   "date": "2026-11-21",
+   "task": "T-351"
+  }
  },
  {
   "form": "ny_rs",
-  "subject_sha": "eff52c44bc69f18ea39a7f5374ce473e2454da1497049348c3c2eeee1eab8783",
+  "subject_sha": "c9d8750c329d3459bf28a7aed9754844cd5c17bc7949e7dc23f64dbeefe34b7d",
   "used": [
    {
     "doc": "ny_it201i",
@@ -282,17 +355,17 @@
       "item": "status",
       "sentences": [
        {
-        "quote": "The only exceptions are for certain married couples filing a joint federal return in the following situations: • One spouse is a New York State resident and the other is a nonresident or part-year resident.",
+        "quote": "The only exceptions are for certain married couples filing a joint federal return in the following situations: \u2022 One spouse is a New York State resident and the other is a nonresident or part-year resident.",
         "page": "ny_it201i p. 4"
        },
        {
-        "quote": "In this case, you must either: – file separate New York returns using filing status ; or – file jointly, as if you both were New York State residents, using filing status .",
+        "quote": "In this case, you must either: \u2013 file separate New York returns using filing status ; or \u2013 file jointly, as if you both were New York State residents, using filing status .",
         "page": "ny_it201i p. 4"
        }
       ],
-      "quote": "The only exceptions are for certain married couples filing a joint federal return in the following situations: • One spouse is a New York State resident and the other is a nonresident or part-year resident. / In this case, you must either: – file separate New York returns using filing status ; or – file jointly, as if you both were New York State residents, using filing status .",
+      "quote": "The only exceptions are for certain married couples filing a joint federal return in the following situations: \u2022 One spouse is a New York State resident and the other is a nonresident or part-year resident. / In this case, you must either: \u2013 file separate New York returns using filing status ; or \u2013 file jointly, as if you both were New York State residents, using filing status .",
       "page": "ny_it201i p. 4",
-      "why_uncovered": "The status item is bound directly to the federal filing status. It cites only the general rule (\"In most cases, you must use the same filing status you used on your federal return\"). Nothing asks whether one spouse on a joint federal return was a New York resident and the other a nonresident or part-year resident. Nothing refuses that case either. In that case New York requires either married filing separately (status ③, the single schedule) or a joint return as if both were residents (status ②). The encoding would just carry the federal joint status through to the married filing jointly schedule. No refusal on the HANDLED ELSEWHERE list covers this New York mixed-residency exception. The f1040 filing-status refusals only test federal marriage facts.",
+      "why_uncovered": "The status item is bound directly to the federal filing status. It cites only the general rule (\"In most cases, you must use the same filing status you used on your federal return\"). Nothing asks whether one spouse on a joint federal return was a New York resident and the other a nonresident or part-year resident. Nothing refuses that case either. In that case New York requires either married filing separately (status \u2462, the single schedule) or a joint return as if both were residents (status \u2461). The encoding would just carry the federal joint status through to the married filing jointly schedule. No refusal on the HANDLED ELSEWHERE list covers this New York mixed-residency exception. The f1040 filing-status refusals only test federal marriage facts.",
       "closest_item": "status",
       "effect": "amount"
      }
@@ -302,6 +375,11 @@
     "date": "2026-11-15",
     "response": ".transcription/completeness/ny_rs.eff52c44bc69.1.response.txt"
    }
-  ]
+  ],
+  "subject_migrated": {
+   "from": "eff52c44bc69f18ea39a7f5374ce473e2454da1497049348c3c2eeee1eab8783",
+   "date": "2026-11-21",
+   "task": "T-351"
+  }
  }
 ]

@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "3820de89b16e07ec18b8f2948a1ba4c707e6b244b7c5f94165ef67ba0ac1f02b",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "2 / 26 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-16); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -43,10 +44,9 @@
   },
   {
    "key": "3",
-   "record": "ee70bfe04381b319194685a95f203a4217951786db156b7ddfcea22ccbd98ae9",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; The reply reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 273/2,930 agree; kinds {\"candidate-refuses\": 564, \"candidate-shows-skipped\": 1922, \"candidate-unknown\": 130, \"project-unknown\": 41}; on completed returns {\"candidate-shows-skipped\": 1211}. Project right under the source; no change.",
-   "subject_key": "12579762bc447703670652fb66650928f0ba835a6e22eb695fb84f2692b0ba22"
+   "record": "3dca6864700c3febd7bffa035e9df3d3dba558a2f1071068c5a67923ad06a6d0",
+   "status": "AGREE",
+   "subject_key": "61a2098bfd07604fad7a60556074635a293ceb2f17605de81697fa7046354fdb"
   },
   {
    "key": "4",
@@ -120,10 +120,10 @@
   },
   {
    "key": "14",
-   "record": "ee70bfe04381b319194685a95f203a4217951786db156b7ddfcea22ccbd98ae9",
+   "record": "3dca6864700c3febd7bffa035e9df3d3dba558a2f1071068c5a67923ad06a6d0",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,885/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-unknown\": 16, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
-   "subject_key": "d9359b20431df1a1bc0ffe2a99032332fc64d7671625789b227ff096a8b6144e"
+   "ruling": "Ruling: representation; i8863 p. 8, Line 14: \"Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11b.\" All 3,130 comparisons agree (3,081 of 3,081 in scope); the model's disagreement is about how the amount is displayed, not what it is. Triage executable-triage-v2 (.transcription/triage/2025/f8863.json): no value difference. Project stands.",
+   "subject_key": "14084792ee94649c27634f207e9ba911dd8f8f495465e6f0dadbe6cc75007dd6"
   },
   {
    "key": "15",
@@ -238,7 +238,7 @@
   "f8863.eligible": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
   "1": "d319b0b4381761f646debe67429e3d5d4e2ae55be8e0fdf097631718badfb439",
   "2": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
-  "3": "48ddcc69ffec158176313e57be62dfa9fdc7d03180c922756134ef9f5d94cbfd",
+  "3": "01638eb3220f712f311aa2e5dd0dd452191120f7ca17175ec03f43bf691577da",
   "4": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
   "5": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
   "7": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
@@ -249,7 +249,7 @@
   "11": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
   "12": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
   "13": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
-  "14": "48ddcc69ffec158176313e57be62dfa9fdc7d03180c922756134ef9f5d94cbfd",
+  "14": "01638eb3220f712f311aa2e5dd0dd452191120f7ca17175ec03f43bf691577da",
   "15": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
   "16": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
   "18": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",

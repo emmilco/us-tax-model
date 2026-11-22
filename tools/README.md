@@ -69,6 +69,14 @@ files make `clone` refuse. It never overwrites or deletes a worktree file and ne
 a ledger; each filled file enters the base at the hash of main's copy, so carry-back brings
 it back only if the worktree later edits it. `--self-test` runs in check-all.
 
+`python3 tools/worktree_gc.py` sorts the linked worktrees: `keep` (locked with a reason starting "keep",
+`git worktree lock --reason "keep: <why>" <path>`), `removable` (clean, HEAD on `main`, nothing for carry-back to
+bring), `active` (used in the last 7 days) and `stale` (the rest). `remove` removes the removable ones; `archive
+NAME...` saves a worktree's uncommitted diff, untracked files and uncarried review files under
+`.claude/worktree-archive/<date>/<name>/`, then removes it. A lane's worktree is removed or archived in the unit
+that integrates it. check-all prints `worktree_gc.py check`; `tools/release.sh` and `tools/release_prep.sh` fail
+while any worktree is removable or stale. `--self-test` runs in check-all.
+
 The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast`):
 
 - **full** (the default): every step except `interview_length`, which only a release runs
@@ -425,7 +433,8 @@ name a directory holding the tree before the rename. Without `--write` it only r
   sections, with a rename marker; sidecar contexts re-stamped where they were current). Records keep the old
   document name; `review_store.py check` accepts it for a renamed document. Lines whose proof holds are carried;
   the rest stay stale.
-- **Not covered.** An inactive family's logs (history), definition lines' local ids, and the seeded
+- **Not covered.** A second family's transcription and render logs (line carries load the Claude index only;
+  class M rulings and a renamed document's variants do move), definition lines' local ids, and the seeded
   generated returns (which move with input ids: rulings citing them
   rest on the earlier sample). It takes several minutes on the whole tree (it computes every subject twice).
 - Self-test: `tools/transcription/test_rename_carry.py` (a small tree of its own; check-all `self_tests`).
@@ -588,7 +597,10 @@ listed by check-all, not failed. `--release` of the completeness, screen and fal
 `check_questions.py` lists due questions (a count on the console, the list in `reports/<year>/question_currency.md`)
 and fails on unruled samples and orphans; its `--release` mode joins the release gate once the first full pass is
 ruled (owner decision 2026-11-10). A question's subject is its line, interview wording and help, and its direct
-readers' lines and English (`question_review.subject`); a screen's subject leaves out the help its prompt shows. A record marked `grandfathered` holds one review made before
+readers' lines and English (`question_review.subject`); a screen's subject holds its question as the interview shows it
+(`screen_review.question_text`: the prompt, and for a box of a tick-box group the group's heading and the box's label),
+so a rewording makes the screen due, and leaves out the help its prompt shows. A screen record marked `subject_migrated`
+(`migrate_screen_subjects.py`) is current on samples shown the form's own question text until its next change or sample. A record marked `grandfathered` holds one review made before
 sampling and satisfies the milestone until its subject changes. Runs are guarded: samples beyond the milestone need
 `--force-rerun REASON`, and an estimate above the owner's $3.00 gate needs `--approve-cost` (`spend.py`, shared with
 `rerun_all.py`).
@@ -933,4 +945,5 @@ that year's table from its archived source, and the check-all step named beside 
 | `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |
 | `transcription/question_review.py` | The question review (section "Sampled completeness, screen, false-no and question reviews"); also prices every question's prompt without a call (`--measure`) and lists which existing reviews judge each input's wording (`--coverage`) |
 | `transcription/migrate_line_subjects.py` | Rewrites transcription logs' line-subject tables (`transcription/README.md`; tested by `test_review_tools.py`) |
+| `transcription/migrate_screen_subjects.py` | Moves screen review records current on the form's question text to the subject with the interview's wording, with their rulings (section "Sampled completeness, screen, false-no and question reviews"; tested by `test_review_tools.py`) |
 | `../ui/test_browser.mjs` | Browser smoke test of the web UI (the interview page and the vetting page), against a separately launched headless Chrome |

@@ -55,7 +55,7 @@
 ## (gate) — `ny_it201.active_duty_if_armed_forces`
 
 - **Authored helper label:** Active duty in 2025 (asked only when the federal answer says you or your spouse served in the armed forces since 2022; otherwise no)
-- **Encoded (Bool):** Choose — [scope helper "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?" = true → helper "On active duty in the armed forces in 2025"] [scope helper "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?" = false → helper "No"]
+- **Encoded (Bool):** Choose — [scope helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = true → helper "On active duty in the armed forces in 2025"] [scope helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.armed_forces",{"const":true}],"op":"test"},"then":"ny_it201.ask.active_duty"},{"guard":{"eq":["scope.armed_forces",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 30, Resident, "whether or not you were domiciled in New York State (unless you were in active service in the military)" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -270,11 +270,39 @@
 - Expr: `{"op":"input","source":"Did you or your spouse have net earnings from self-employment allocated to New York City (MCTD Zone 1) or to Zone 2 of more than $50,000?"}`
 - Cite: [ny_it201i] p. 15, Lines 54a through 54e, "Did you or your spouse have net earnings from self-employment allocated to Zone 1 or Zone 2, or both that exceed $50,000?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
-## (question) — `ny_it201.ask.owes_use_tax`
+## (question) — `ny_it201.ask.bought_untaxed`
 
-- **Authored helper label:** Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return.
-- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return.
-- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return."}`
+- **Authored helper label:** Bought goods or services taxable in New York without paying New York sales tax on them, or paid tax at a lower rate than New York City's (for example online, by catalog, or out of state and brought into New York), other than purchases of a business registered for sales tax
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count purchases of a business registered for sales tax, which go on the business's own sales tax return.
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count purchases of a business registered for sales tax, which go on the business's own sales tax return."}`
+- Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You owe sales or compensating use tax if you:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (question) — `ny_it201.ask.use_tax_dmv_only`
+
+- **Authored helper label:** Every such purchase was a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile whose tax is paid to the Department of Motor Vehicles
+- **Encoded (Bool):** Input — Was every such purchase a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile whose sales or use tax is paid to the Department of Motor Vehicles when it is registered or titled?
+- Expr: `{"op":"input","source":"Was every such purchase a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile whose sales or use tax is paid to the Department of Motor Vehicles when it is registered or titled?"}`
+- Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You may not use this line to report:" and "any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (gate) — `ny_it201.use_tax_dmv_only_if_bought`
+
+- **Authored helper label:** Every untaxed purchase was a vehicle or vessel taxed at the DMV (asked only after a Yes to an untaxed purchase; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Bought goods or services taxable in New York without paying New York sales tax on them, or paid tax at a lower rate than New York City's (for example online, by catalog, or out of state and brought into New York), other than purchases of a business registered for sales tax" = true → helper "Every such purchase was a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile whose tax is paid to the Department of Motor Vehicles"] [helper "Bought goods or services taxable in New York without paying New York sales tax on them, or paid tax at a lower rate than New York City's (for example online, by catalog, or out of state and brought into New York), other than purchases of a business registered for sales tax" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.ask.bought_untaxed",{"const":true}],"op":"test"},"then":"ny_it201.ask.use_tax_dmv_only"},{"guard":{"eq":["ny_it201.ask.bought_untaxed",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You may not use this line to report:" and "any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (helper) — `ny_it201.use_tax_not_dmv`
+
+- **Authored helper label:** Not every untaxed purchase was a vehicle or vessel taxed at the DMV
+- **Encoded (Bool):** helper "Every untaxed purchase was a vehicle or vessel taxed at the DMV (asked only after a Yes to an untaxed purchase; otherwise no)" = false
+- Expr: `{"eq":["ny_it201.use_tax_dmv_only_if_bought",{"const":false}],"op":"test"}`
+- Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You may not use this line to report:" and "any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (helper) — `ny_it201.ask.owes_use_tax`
+
+- **Authored helper label:** Owes New York sales or use tax on purchases (an untaxed purchase other than a vehicle or vessel taxed at the DMV)
+- **Encoded (Bool):** Choose — [helper "Bought goods or services taxable in New York without paying New York sales tax on them, or paid tax at a lower rate than New York City's (for example online, by catalog, or out of state and brought into New York), other than purchases of a business registered for sales tax" = true → helper "Not every untaxed purchase was a vehicle or vessel taxed at the DMV"] [helper "Bought goods or services taxable in New York without paying New York sales tax on them, or paid tax at a lower rate than New York City's (for example online, by catalog, or out of state and brought into New York), other than purchases of a business registered for sales tax" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.ask.bought_untaxed",{"const":true}],"op":"test"},"then":"ny_it201.use_tax_not_dmv"},{"guard":{"eq":["ny_it201.ask.bought_untaxed",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You owe sales or compensating use tax if you:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.use_tax_st141`
@@ -363,9 +391,9 @@
 
 ## (question) — `ny_it201.ask.est_late`
 
-- **Authored helper label:** Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year's required payment?
-- **Encoded (Bool):** Input — Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year's required payment?
-- Expr: `{"op":"input","source":"Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year's required payment?"}`
+- **Authored helper label:** Was any 2025 New York estimated tax installment skipped, paid late, or smaller than one quarter of the year's required payment?
+- **Encoded (Bool):** Input — Was any 2025 New York estimated tax installment skipped, paid late, or smaller than one quarter of the year's required payment?
+- Expr: `{"op":"input","source":"Was any 2025 New York estimated tax installment skipped, paid late, or smaller than one quarter of the year's required payment?"}`
 - Cite: [ny_it201i] p. 23, Line 81, "if you underpaid your estimated tax liability for any payment period" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.spouse_resident`
@@ -627,15 +655,15 @@
 
 ## (helper) — `ny_it201.has_tax_exempt`
 
-- **Authored helper label:** Tax-exempt interest or exempt-interest dividends on federal line 2a
-- **Encoded (Bool):** f1040 line 2a > $0
-- Expr: `{"gt":["f1040.line2a",{"const":0}],"op":"test"}`
+- **Authored helper label:** Tax-exempt interest received (federal Yes, even if bond premium leaves line 2a at zero), or exempt-interest dividends on federal line 2a
+- **Encoded (Bool):** (f1040 helper "Was tax-exempt interest received in 2025?" = true or f1040 line 2a > $0)
+- Expr: `{"any":[{"eq":["f1040.tax_exempt_any",{"const":true}],"op":"test"},{"gt":["f1040.line2a",{"const":0}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 7, Line 20, "Do you have interest income from state and local bonds and obligations from states other than New York State or its local governments?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.line20`
 
 - **Authored helper label:** Out-of-state municipal bond interest
-- **Encoded (Bool):** Choose — [helper "Tax-exempt interest or exempt-interest dividends on federal line 2a" = true → helper "Did you (or, on a joint return, your spouse) have interest or dividends from bonds of states other than New York or their local governments, or from tax-exempt mutual or money market funds that invest in them, that was not included in federal adjusted gross income?"] [helper "Tax-exempt interest or exempt-interest dividends on federal line 2a" = false → helper "No"]
+- **Encoded (Bool):** Choose — [helper "Tax-exempt interest received (federal Yes, even if bond premium leaves line 2a at zero), or exempt-interest dividends on federal line 2a" = true → helper "Did you (or, on a joint return, your spouse) have interest or dividends from bonds of states other than New York or their local governments, or from tax-exempt mutual or money market funds that invest in them, that was not included in federal adjusted gross income?"] [helper "Tax-exempt interest received (federal Yes, even if bond premium leaves line 2a at zero), or exempt-interest dividends on federal line 2a" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_tax_exempt",{"const":true}],"op":"test"},"then":"ny_it201.ask.out_of_state_bond_interest"},{"guard":{"eq":["ny_it201.has_tax_exempt",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 7, Line 20, "If Yes, enter any such interest income that you received or that was credited to you during 2025 that was not included in your federal adjusted gross income." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -649,15 +677,15 @@
 
 ## (question) — `ny_it201.ask.public_job`
 
-- **Authored helper label:** A government job in New York
-- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) work for the government in New York, including a public school or college or the MTA?
-- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) work for the government in New York, including a public school or college or the MTA?"}`
+- **Authored helper label:** A Form W-2 from a New York public employer
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) get a 2025 Form W-2 from New York State, a New York local government or another New York public employer?
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) get a 2025 Form W-2 from New York State, a New York local government or another New York public employer?"}`
 - Cite: [ny_it201i] p. 8, Line 21, "Are you a public employee of New York State or its local governments?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.public_job_if_w2`
 
 - **Authored helper label:** A public employer in New York (asked only when the return has a Form W-2; otherwise no)
-- **Encoded (Bool):** Choose — [scope helper "The return has a Form W-2" = true → helper "A government job in New York"] [scope helper "The return has a Form W-2" = false → helper "No"]
+- **Encoded (Bool):** Choose — [scope helper "The return has a Form W-2" = true → helper "A Form W-2 from a New York public employer"] [scope helper "The return has a Form W-2" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.has_w2",{"const":true}],"op":"test"},"then":"ny_it201.ask.public_job"},{"guard":{"eq":["scope.has_w2",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 8, Line 21, "Are you a public employee of New York State or its local governments?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -679,7 +707,7 @@
 ## (helper) — `ny_it201.edu_people`
 
 - **Authored helper label:** Number of persons on the return who had a 529 plan, Coverdell or ABLE account (federal answer)
-- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.x_edu_account",{"const":true}],"op":"test"}}`
 - Cite: [ny_it201i] p. 10, Line 30, "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -692,15 +720,15 @@
 
 ## (question) — `ny_it201.ask.ny_529`
 
-- **Authored helper label:** Owns an account in New York's 529 college savings program
-- **Encoded (Bool):** Input — Is any 529 account you (or, on a joint return, your spouse) own part of New York's own 529 college savings program?
-- Expr: `{"op":"input","source":"Is any 529 account you (or, on a joint return, your spouse) own part of New York's own 529 college savings program?"}`
+- **Authored helper label:** Owned an account in New York's 529 college savings program at any time in 2025
+- **Encoded (Bool):** Input — At any time in 2025, did you (or, on a joint return, your spouse) own an account in New York's 529 college savings program?
+- Expr: `{"op":"input","source":"At any time in 2025, did you (or, on a joint return, your spouse) own an account in New York's 529 college savings program?"}`
 - Cite: [ny_it201i] p. 10, Line 30, "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.ny_529_if_account`
 
 - **Authored helper label:** An account in New York's 529 program (asked only with a 529, Coverdell or ABLE account; otherwise no)
-- **Encoded (Bool):** Choose — [helper "A 529 plan, Coverdell or ABLE account on the return" = true → helper "Owns an account in New York's 529 college savings program"] [helper "A 529 plan, Coverdell or ABLE account on the return" = false → helper "No"]
+- **Encoded (Bool):** Choose — [helper "A 529 plan, Coverdell or ABLE account on the return" = true → helper "Owned an account in New York's 529 college savings program at any time in 2025"] [helper "A 529 plan, Coverdell or ABLE account on the return" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_edu_account",{"const":true}],"op":"test"},"then":"ny_it201.ask.ny_529"},{"guard":{"eq":["ny_it201.has_edu_account",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 10, Line 30, "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -743,22 +771,22 @@
 
 ## (helper) — `ny_it201.has_other_income`
 
-- **Authored helper label:** Other income on federal Schedule 1 (line 9 is not zero)
-- **Encoded (Bool):** s1 line 9 ≠ $0
-- Expr: `{"ne":["s1.line9",{"const":0}],"op":"test"}`
+- **Authored helper label:** A state tax refund or other income on federal Schedule 1 (line 1 more than zero, or line 9 not zero)
+- **Encoded (Bool):** (s1 line 1 > $0 or s1 line 9 ≠ $0)
+- Expr: `{"any":[{"gt":["s1.line1",{"const":0}],"op":"test"},{"ne":["s1.line9",{"const":0}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.inflation_if_other_income`
 
-- **Authored helper label:** An inflation refund check in federal income (asked only with other income on Schedule 1; otherwise no)
-- **Encoded (Bool):** Choose — [helper "Other income on federal Schedule 1 (line 9 is not zero)" = true → helper "Did you (or, on a joint return, your spouse) receive an inflation refund check from the New York State Tax Department and include it in federal adjusted gross income?"] [helper "Other income on federal Schedule 1 (line 9 is not zero)" = false → helper "No"]
+- **Authored helper label:** An inflation refund check in federal income (asked only with a state tax refund or other income on Schedule 1; otherwise no)
+- **Encoded (Bool):** Choose — [helper "A state tax refund or other income on federal Schedule 1 (line 1 more than zero, or line 9 not zero)" = true → helper "Did you (or, on a joint return, your spouse) receive an inflation refund check from the New York State Tax Department and include it in federal adjusted gross income?"] [helper "A state tax refund or other income on federal Schedule 1 (line 1 more than zero, or line 9 not zero)" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_other_income",{"const":true}],"op":"test"},"then":"ny_it201.ask.inflation_check"},{"guard":{"eq":["ny_it201.has_other_income",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.line25`
 
 - **Authored helper label:** Line 4 is more than zero or an inflation refund check was included in federal AGI
-- **Encoded (Bool):** (line 4 > $0 or helper "An inflation refund check in federal income (asked only with other income on Schedule 1; otherwise no)" = true)
+- **Encoded (Bool):** (line 4 > $0 or helper "An inflation refund check in federal income (asked only with a state tax refund or other income on Schedule 1; otherwise no)" = true)
 - Expr: `{"any":[{"gt":["ny_it201.line4",{"const":0}],"op":"test"},{"eq":["ny_it201.inflation_if_other_income",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -782,22 +810,37 @@
 
 - **Authored helper label:** Is there taxable IRA, pension or annuity income on line 9 or 10?
 - **Encoded (Bool):** (line 9 > $0 or line 10 > $0)
-- Note: Within this tool, pension, annuity and IRA income in federal adjusted gross income is on federal lines 4b and 5b (IT-201 lines 9 and 10): the federal screens refuse a disability pension reported as wages (retirement.special, scope.other_income) and a pension from a nonqualified plan or a nongovernmental section 457 plan on Schedule 1 line 8t (s1.line8_other).
+- Note: Within this tool, pension, annuity and IRA income in federal adjusted gross income is on federal lines 4b and 5b (IT-201 lines 9 and 10), except a disability pension paid wholly before the minimum retirement age, which is wages on federal line 1h (person.dis_wages) and is read by ny_it201.gov_pension_candidate, not here. The federal screens refuse a disability pension paid partly before and partly after that age, or with after-tax cost (retirement.dis_split, through retirement.special), and a pension from a nonqualified plan or a nongovernmental section 457 plan on Schedule 1 line 8t (s1.line8_other).
 - Expr: `{"any":[{"gt":["ny_it201.line9",{"const":0}],"op":"test"},{"gt":["ny_it201.line10",{"const":0}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10)"; p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
+## (helper) — `ny_it201.dis_pension_wages`
+
+- **Authored helper label:** Disability pensions paid before the minimum retirement age, in federal wages (Form 1040 line 1h)
+- **Encoded (NonNegDollars):** Add person.dis_wages over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Note: A disability pension paid before the minimum retirement age is reported as wages (IT-201 line 1, through federal line 1h), not on line 9 or 10, but it is still a pension included in federal adjusted gross income for line 26.
+- Expr: `{"collection":"person","field":"person.dis_wages","op":"sum_over"}`
+- Cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (gate) — `ny_it201.gov_pension_candidate`
+
+- **Authored helper label:** Pension, annuity or IRA income on line 9 or 10, or a disability pension in wages
+- **Encoded (Bool):** (helper "Is there taxable IRA, pension or annuity income on line 9 or 10?" = true or helper "Disability pensions paid before the minimum retirement age, in federal wages (Form 1040 line 1h)" > $0)
+- Expr: `{"any":[{"eq":["ny_it201.has_pension_income",{"const":true}],"op":"test"},{"gt":["ny_it201.dis_pension_wages",{"const":0}],"op":"test"}],"op":"test"}`
+- Cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
 ## (gate) — `ny_it201.gov_pension_if_income`
 
-- **Authored helper label:** The government pension question, asked only with pension or IRA income; otherwise no
-- **Encoded (Bool):** Choose — [helper "Is there taxable IRA, pension or annuity income on line 9 or 10?" = true → helper "Did you or your spouse receive a pension or other distribution included in federal adjusted gross income from a New York State or local government pension plan or a federal government pension plan, including a return of your own contributions before retirement? Count the military, a U.S. territory or the District of Columbia, the MTA Police 20-Year Retirement Program, MABSTOA, the Long Island Rail Road, and the Optional Retirement Program of SUNY, CUNY or the State Education Department (for example an annuity paid by TIAA), whether received as an employee, as a beneficiary, or as a former spouse under a domestic relations order."] [helper "Is there taxable IRA, pension or annuity income on line 9 or 10?" = false → helper "No"]
-- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_pension_income",{"const":true}],"op":"test"},"then":"ny_it201.ask.gov_pension"},{"guard":{"eq":["ny_it201.has_pension_income",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- **Authored helper label:** The government pension question, asked only with pension or IRA income or a disability pension in wages; otherwise no
+- **Encoded (Bool):** Choose — [helper "Pension, annuity or IRA income on line 9 or 10, or a disability pension in wages" = true → helper "Did you or your spouse receive a pension or other distribution included in federal adjusted gross income from a New York State or local government pension plan or a federal government pension plan, including a return of your own contributions before retirement? Count the military, a U.S. territory or the District of Columbia, the MTA Police 20-Year Retirement Program, MABSTOA, the Long Island Rail Road, and the Optional Retirement Program of SUNY, CUNY or the State Education Department (for example an annuity paid by TIAA), whether received as an employee, as a beneficiary, or as a former spouse under a domestic relations order."] [helper "Pension, annuity or IRA income on line 9 or 10, or a disability pension in wages" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.gov_pension_candidate",{"const":true}],"op":"test"},"then":"ny_it201.ask.gov_pension"},{"guard":{"eq":["ny_it201.gov_pension_candidate",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (helper) — `ny_it201.gov_said_no`
 
-- **Authored helper label:** Pension or IRA income, and No to the government pension question
-- **Encoded (Bool):** helper "Is there taxable IRA, pension or annuity income on line 9 or 10?" = true and helper "The government pension question, asked only with pension or IRA income; otherwise no" = false
-- Expr: `{"all":[{"eq":["ny_it201.has_pension_income",{"const":true}],"op":"test"},{"eq":["ny_it201.gov_pension_if_income",{"const":false}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** Pension or IRA income, or a disability pension in wages, and No to the government pension question
+- **Encoded (Bool):** helper "Pension, annuity or IRA income on line 9 or 10, or a disability pension in wages" = true and helper "The government pension question, asked only with pension or IRA income or a disability pension in wages; otherwise no" = false
+- Expr: `{"all":[{"eq":["ny_it201.gov_pension_candidate",{"const":true}],"op":"test"},{"eq":["ny_it201.gov_pension_if_income",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.gov_pension_other`
@@ -810,14 +853,14 @@
 ## (gate) — `ny_it201.gov_pension_other_if_no`
 
 - **Authored helper label:** Asked only after a No to the government pension question; otherwise no
-- **Encoded (Bool):** Choose — [helper "Pension or IRA income, and No to the government pension question" = true → helper "A pension from the MTA, MABSTOA, the Long Island Rail Road or a SUNY, CUNY or State Education Department plan"] [helper "Pension or IRA income, and No to the government pension question" = false → helper "No"]
+- **Encoded (Bool):** Choose — [helper "Pension or IRA income, or a disability pension in wages, and No to the government pension question" = true → helper "A pension from the MTA, MABSTOA, the Long Island Rail Road or a SUNY, CUNY or State Education Department plan"] [helper "Pension or IRA income, or a disability pension in wages, and No to the government pension question" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.gov_said_no",{"const":true}],"op":"test"},"then":"ny_it201.ask.gov_pension_other"},{"guard":{"eq":["ny_it201.gov_said_no",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (helper) — `ny_it201.gov_pension_any`
 
 - **Authored helper label:** A New York State or local or federal government pension (either question)
-- **Encoded (Bool):** (helper "The government pension question, asked only with pension or IRA income; otherwise no" = true or helper "Asked only after a No to the government pension question; otherwise no" = true)
+- **Encoded (Bool):** (helper "The government pension question, asked only with pension or IRA income or a disability pension in wages; otherwise no" = true or helper "Asked only after a No to the government pension question; otherwise no" = true)
 - Expr: `{"any":[{"eq":["ny_it201.gov_pension_if_income",{"const":true}],"op":"test"},{"eq":["ny_it201.gov_pension_other_if_no",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -1787,7 +1830,7 @@
 ## (gate) — `ny_it201.gate.use_tax_abode`
 
 - **Authored helper label:** Use tax owed with a New York abode for only part of the year (the chart amount is prorated by months)
-- **Encoded (Bool):** Choose — [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return." = true → helper "Was there a month of 2025 in which you maintained a permanent place of abode in New York State (for sales and use tax purposes) for no more than half the month?"] [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return." = false → helper "No"]
+- **Encoded (Bool):** Choose — [helper "Owes New York sales or use tax on purchases (an untaxed purchase other than a vehicle or vessel taxed at the DMV)" = true → helper "Was there a month of 2025 in which you maintained a permanent place of abode in New York State (for sales and use tax purposes) for no more than half the month?"] [helper "Owes New York sales or use tax on purchases (an untaxed purchase other than a vehicle or vessel taxed at the DMV)" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.ask.owes_use_tax",{"const":true}],"op":"test"},"then":"ny_it201.ask.abode_part_year"},{"guard":{"eq":["ny_it201.ask.owes_use_tax",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -1808,14 +1851,14 @@
 ## (gate) — `ny_it201.gate.use_tax_st141`
 
 - **Authored helper label:** Use tax that must be calculated on Form ST-141
-- **Encoded (Bool):** helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return." = true and (helper "Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?" = true or helper "The exact-amount wish (asked only after a No to the large or business purchase; otherwise no)" = true)
+- **Encoded (Bool):** helper "Owes New York sales or use tax on purchases (an untaxed purchase other than a vehicle or vessel taxed at the DMV)" = true and (helper "Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?" = true or helper "The exact-amount wish (asked only after a No to the large or business purchase; otherwise no)" = true)
 - Expr: `{"all":[{"eq":["ny_it201.ask.owes_use_tax",{"const":true}],"op":"test"},{"any":[{"eq":["ny_it201.ask.use_tax_st141",{"const":true}],"op":"test"},{"eq":["ny_it201.use_tax_exact_if_small",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## 59 — `ny_it201.line59`
 
 - **IRS:** Sales or use tax (do not leave blank)
-- **Encoded (NonNegDollars):** Choose — [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return." = false → helper "No sales or use tax owed"] [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return." = true → column (chart) (ny_it201.sut.chart)]
+- **Encoded (NonNegDollars):** Choose — [helper "Owes New York sales or use tax on purchases (an untaxed purchase other than a vehicle or vessel taxed at the DMV)" = false → helper "No sales or use tax owed"] [helper "Owes New York sales or use tax on purchases (an untaxed purchase other than a vehicle or vessel taxed at the DMV)" = true → column (chart) (ny_it201.sut.chart)]
 - **Refusal:** when ny_it201.gate.use_tax_abode is true, cannot complete Line 59 for a part-year abode. The chart amount prorated by months of a New York abode is not computed by this tool. Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "Count any period you maintained the abode for more than one-half of a month as one month." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - **Refusal:** when ny_it201.gate.use_tax_st141 is true, cannot complete Form ST-141, Individual Purchaser's Periodic Report of Sales and Use Tax. An exact use tax calculation, an item of $1,000 or more, or business purchases are outside this tool (decision B3). Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.ask.owes_use_tax",{"const":false}],"op":"test"},"then":"ny_it201.zero_sut"},{"guard":{"eq":["ny_it201.ask.owes_use_tax",{"const":true}],"op":"test"},"then":"ny_it201.sut.chart"}],"op":"choose"}`
@@ -2145,8 +2188,8 @@
 ## (question) — `ny_it201.ask.est_any`
 
 - **Authored helper label:** Paid New York income tax for 2025 in advance, or had a 2024 refund applied
-- **Encoded (Bool):** Input — Apart from tax taken out of your pay, did you (or, on a joint return, your spouse) pay New York income tax for 2025 ahead of time, or have a 2024 New York refund applied to it?
-- Expr: `{"op":"input","source":"Apart from tax taken out of your pay, did you (or, on a joint return, your spouse) pay New York income tax for 2025 ahead of time, or have a 2024 New York refund applied to it?"}`
+- **Encoded (Bool):** Input — Apart from tax taken out of your pay, did you (or, on a joint return, your spouse) pay New York income tax for 2025 ahead of time, have a 2024 New York refund applied to it, or have estimated tax passed to you by an estate or trust?
+- Expr: `{"op":"input","source":"Apart from tax taken out of your pay, did you (or, on a joint return, your spouse) pay New York income tax for 2025 ahead of time, have a 2024 New York refund applied to it, or have estimated tax passed to you by an estate or trust?"}`
 - Cite: [ny_it201i] p. 22, Line 75: Total estimated tax payments and amount paid with Form IT-370, "your 2025 estimated tax payments for New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.line75_amount`
@@ -2237,7 +2280,7 @@
 ## (helper) — `ny_it201.est_penalty_late`
 
 - **Authored helper label:** Estimated tax payments with a late or short installment
-- **Encoded (Bool):** Choose — [helper "Estimated tax payments (line 75) more than zero" = true → helper "Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year's required payment?"] [helper "Estimated tax payments (line 75) more than zero" = false → helper "No"]
+- **Encoded (Bool):** Choose — [helper "Estimated tax payments (line 75) more than zero" = true → helper "Was any 2025 New York estimated tax installment skipped, paid late, or smaller than one quarter of the year's required payment?"] [helper "Estimated tax payments (line 75) more than zero" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.estimated_payments_positive",{"const":true}],"op":"test"},"then":"ny_it201.ask.est_late"},{"guard":{"eq":["ny_it201.estimated_payments_positive",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 

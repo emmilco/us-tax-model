@@ -16,7 +16,7 @@ sets:
     says: A filer aged 25 to 64 with a social security number, whose home was in the United States, with no child.
     answers:
       person[taxpayer].eic_ssn: true
-      f1040.tax_exempt_interest: 0
+      f1040.tax_exempt_any: false
       eic.died_this_year: false
       person[taxpayer].birth_year: 1980
       eic.us_home: true

@@ -132,6 +132,52 @@
    }
   },
   {
+   "printed": "2",
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "cde94f99c56b69d8105d3a9d14179430d99e1c1375627e6d05437bbaa104b9ae",
+   "ruling": "Ruling: scope; f1040s2 p. 112, Line 2, \"See the Instructions for Form 6251 to see if you must file the form\". The project refuses alternative minimum tax through the computed s2.amt screen and enters zero otherwise; the reply figures Form 6251 where the project refuses, and the differences are those refusals. Triage executable-triage-v2 (.transcription/triage/2025/s2.json): 2741 of 3472 comparisons agree, 1862 of 2290 in scope; completed {\"candidate-refuses\": 50, \"candidate-unknown\": 280}. Project stands.",
+   "context": "0c79aab4a8d4e50021b8468fe26285cad41771b775e01fc8411e09ae4b31b0a2",
+   "date": "2026-11-17",
+   "run": "833f3d3843b50d553f9da62c46eb803493478c159c0031a3f4baaa30e7e86457",
+   "subject_key": "24445e3e4100214fc0bb6083efe0aaae4568dcca712362b4bcde7baa54754355",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@s2",
+     "fixture:classm.f2441.4.deepseek@s2",
+     "fixture:classm.f2441.5.deepseek@s2",
+     "fixture:classm.w2.1.deepseek@s2",
+     "fixture:classm.f8889.1.deepseek@s2",
+     "fixture:classm.f8889.3.deepseek@s2",
+     "fixture:classm.f8889.5.deepseek@s2",
+     "fixture:classm.f4952.4.deepseek@s2",
+     "fixture:classm.g28.2.deepseek@s2",
+     "fixture:classm.s2.1.deepseek@s2",
+     "fixture:classm.s2.2.deepseek@s2",
+     "fixture:classm.s2.3.deepseek@s2",
+     "fixture:classm.s2.1@s2",
+     "fixture:audit.dependent.listed_not_dependent_no_tin@s2",
+     "fixture:t091.absence.other_tests_unchanged@s2",
+     "fixture:stage8.mut.hoh_niece_17@s2",
+     "fixture:stage9.eic.mut.classm_f8995a_2_line2_zero@s2",
+     "fixture:f1116.c1_unlimited@s2",
+     "fixture:f1116.c2_carryover_generated@s2",
+     "fixture:stage14.s179.refuse_orphan@s2",
+     "fixture:sales.loss.mfs.0@s2",
+     "partial:stage14.asset.hy_5yr-s2.iso_vested@s2",
+     "partial:stage14.asset.bonus_100-s2.iso_vested@s2",
+     "partial:stage14.asset.prior_7yr-s2.iso_vested@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "3",
    "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
    "second_expr_sha256": "182b441bc4a1347b3c594dfb643c92519039d031ece3239f28a56d53b37a46f5",
@@ -205,6 +251,52 @@
      "partial:stage14.asset.qip-s2.household_help@s2",
      "partial:stage14.asset.done-s2.household_help@s2",
      "partial:stage14.asset.refuse_class-s2.household_help@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s2.other",
+   "project_expr_sha256": "d62506e2ff0574905727c3b934e8161ae16616c8ef4c13471f2ad0fb992bbe79",
+   "second_expr_sha256": "c385c56a09de7f199ff88278b8379aaf19cfe8bc25054913b1a9e61a11dce38f",
+   "ruling": "Ruling: model error; i1040gi p. 111, Line 1y, \"Other additions to tax\". The reply keeps the screening reading the earlier ruling refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/s2.json): 1913 of 3472 comparisons agree, 1913 of 2713 in scope; completed {\"candidate-unknown\": 36, \"value\": 256}. Project stands.",
+   "context": "0c79aab4a8d4e50021b8468fe26285cad41771b775e01fc8411e09ae4b31b0a2",
+   "date": "2026-11-17",
+   "run": "833f3d3843b50d553f9da62c46eb803493478c159c0031a3f4baaa30e7e86457",
+   "subject_key": "15c6da89731302eb0d56c0d32a25d44520da534f3a7bbf1ceecf1473e63d6cf5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s2",
+     "fixture:stage14.asset.mq_7yr@s2",
+     "fixture:stage14.asset.mq_mixed@s2",
+     "fixture:stage14.asset.mq_not@s2",
+     "fixture:stage14.asset.bonus_100@s2",
+     "fixture:stage14.asset.bonus_40_before@s2",
+     "fixture:stage14.asset.refuse_qip_2017@s2",
+     "fixture:stage14.asset.refuse_ads_past_gds@s2",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s2",
+     "fixture:stage14.asset.refuse_class@s2",
+     "fixture:stage14.asset.refuse_listed_low@s2",
+     "fixture:stage14.asset.refuse_s179_over@s2",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s2",
+     "fixture:classm.f8889.3.deepseek@s2",
+     "fixture:classm.f8889.4.deepseek@s2",
+     "fixture:classm.f8960.3.deepseek@s2",
+     "fixture:classm.clcw_next_year.3.deepseek@s2",
+     "fixture:classm.f1095a.1.deepseek@s2",
+     "partial:stage14.asset.hy_5yr-s2.household_help@s2",
+     "partial:stage14.asset.hy_5yr-s2.hsa_testing@s2",
+     "partial:stage14.asset.hy_5yr-s2.lookback@s2",
+     "partial:stage14.asset.hy_5yr-s2.other_tax@s2",
+     "partial:stage14.asset.bonus_100-s2.household_help@s2",
+     "partial:stage14.asset.bonus_100-s2.hsa_testing@s2"
     ],
     "policy": "executable-triage-v2"
    }

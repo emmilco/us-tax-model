@@ -247,17 +247,17 @@ changes:
     - set:
         line: sa.charity_limited
         field: label
-        from: Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication
-          526 before answering.
-        to: Are any charitable deductions reduced by income limits (other than the 0.5% floor, which this tool figures), or
-          carried over from a prior year? Determine under Publication 526 before answering.
+        from: Are any of the 2025 charitable deductions reduced by income limits? Determine under Publication 526 before
+          answering.
+        to: Are any of the 2026 charitable deductions reduced by income limits (other than the 0.5% floor, which this tool
+          figures)? Determine under Publication 526 before answering.
     - set:
         line: sa.charity_limited
         field: expr.source
-        from: Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication
-          526 before answering.
-        to: Are any charitable deductions reduced by income limits (other than the 0.5% floor, which this tool figures), or
-          carried over from a prior year? Determine under Publication 526 before answering.
+        from: Are any of the 2025 charitable deductions reduced by income limits? Determine under Publication 526 before
+          answering.
+        to: Are any of the 2026 charitable deductions reduced by income limits (other than the 0.5% floor, which this tool
+          figures)? Determine under Publication 526 before answering.
     - set:
         line: sa.charity_limited
         field: cite.locator

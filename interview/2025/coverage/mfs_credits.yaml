@@ -9,6 +9,7 @@ sets:
     answers:
       f1040.status: mfs
       household.married_dec31: true
+      household.spouse_cp_domicile: false
       household.mfs_living: together_late
       sa.spouse_itemizes: false
       sa.spouse_extra: false

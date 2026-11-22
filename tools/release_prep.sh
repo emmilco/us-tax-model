@@ -12,6 +12,8 @@
 #    written here, so the two cannot drift. A name the steps script does not declare stops the run (exit 2).
 #    A New York step the year skips is listed as SKIP. As in check-all, a step that exits 0 without a line
 #    tools/step_output.py requires of it fails.
+# 3. tools/worktree_gc.py check --fail (step `worktrees`): a removable or stale linked worktree fails the release, as
+#    in tools/release.sh; remove it, archive it, or lock it with a reason starting "keep".
 #
 # Every step runs, unless --fail-fast stops at the first failure. Each step's output goes to
 # <git dir>/release-prep/<step>.log (rewritten by each run); a failing step's log is printed. The run ends with one
@@ -105,6 +107,14 @@ else
     [ "$rc" != 2 ] || echo "release-prep: no build to check; the other steps were not run"
     finish
   fi
+fi
+
+t0=$(date +%s)
+if python3 tools/worktree_gc.py check --fail > "$logs/worktrees.log" 2>&1; then
+  record worktrees PASS $(( $(date +%s) - t0 ))
+else
+  record worktrees FAIL $(( $(date +%s) - t0 ))
+  [ "$fail_fast" = 0 ] || finish
 fi
 
 for name in $PREP_STEPS; do

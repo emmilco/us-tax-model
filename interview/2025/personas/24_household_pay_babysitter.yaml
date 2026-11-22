@@ -1,0 +1,15 @@
+# Predicted end (hand-derived; unverified until draft-walk and a values run):
+#   person[taxpayer].household_wages $4,900 to Form 1040 line 1b; line 1z $56,900; no Schedule SE, no Form 4137 or 8919.
+#   AGI $56,900; standard deduction $15,750; taxable income $41,150; tax $4,703 (Tax Table, +/- $1).
+name: 24_household_pay_babysitter
+who: A single person, 31, with one job (one Form W-2, $52,000 of wages) who also babysat for two families in 2025, paid $2,300 by one and $2,600 by the other, neither of which gave a W-2.
+extends: 01_single_w2
+end: complete
+answers:
+  scope.pay_no_w2: true
+  scope.household_pay: true
+  scope.contractor_pay: false
+  scope.tips_unreported: false
+  scope.strike_pay: false
+  scope.wages_no_form: false
+  person[taxpayer].household_wages: 490000

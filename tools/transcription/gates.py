@@ -98,6 +98,36 @@ def wording(line):
     return {"prompt": (line.get("expr") or {}).get("source", ""), "help": ""}
 
 
+_TICKS = None
+
+
+def ticks():
+    """{input template: {"heading", "tick"}} for the questions the interview shows as a box of a tick-box group: the
+    group's heading and the label beside the box (ui/app.ts renderGroup), from the built profiles as `questions`."""
+    global _TICKS
+    if _TICKS is None:
+        _TICKS = {}
+        for name in ("interview-full.json", "interview-ny.json"):
+            path = os.path.join(ROOT, "canonical", str(Y), name)
+            if os.path.exists(path):
+                with open(path, encoding="utf-8") as f:
+                    profile = json.load(f)
+                headings = {g["id"]: g["heading"] for g in profile.get("groups", [])}
+                for q in profile["questions"]:
+                    if q.get("group") in headings:
+                        _TICKS[q["input"]] = {"heading": headings[q["group"]], "tick": q.get("tick") or q["prompt"].split("\n", 1)[0]}
+                    else:
+                        _TICKS.pop(q["input"], None)
+    return _TICKS
+
+
+def shown(line):
+    """What a filer sees of an input's question: `wording` with "asked" (whether a profile asks it) and, for a box of a
+    tick-box group, "heading" and "tick". The gate subjects use `wording` alone, so they do not depend on this."""
+    asked = line["id"] in questions()
+    return {**wording(line), "asked": asked, **(ticks().get(line["id"], {}) if asked else {})}
+
+
 def subject(unit, lines, english):
     """The unit's subject hash: what its reviews judge (see the module docstring). `english(doc, line id)` gives a
     line's rendered English."""

@@ -2015,6 +2015,22 @@
   {
    "printed": "14",
    "project_expr_sha256": "a1d7fd8abddd71973e6342dc8fa7c11c949d8c18e0e5af41bf1a6f41bd6fe683",
+   "second_expr_sha256": "02db89f051ca932f5750e24308ea6f89e4159293623b2ed83a03afbcccecd1e1",
+   "ruling": "Ruling: representation; i8863 p. 8, Line 14: \"Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11b.\" All 3,130 comparisons agree (3,081 of 3,081 in scope); the model's disagreement is about how the amount is displayed, not what it is. Triage executable-triage-v2 (.transcription/triage/2025/f8863.json): no value difference. Project stands.",
+   "context": "74c8fcfd60bc389021ed9102d717eab6ac5aed3cfb1cb4bc42068a0315c0bf0f",
+   "date": "2026-11-17",
+   "run": "e26649ab02e7e338815ddcb2a8098204da57407d7a48a45c3ee9001a738f42de",
+   "subject_key": "035ab260f5ed35f056440556c57caa1c4783a92d0c39ec29994b894f952498e1",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14",
+   "project_expr_sha256": "a1d7fd8abddd71973e6342dc8fa7c11c949d8c18e0e5af41bf1a6f41bd6fe683",
    "second_expr_sha256": "c02f52f78f7685a2b9669e0b426700e9afdb187ede892324a233f2ef29800ff3",
    "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,885/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-unknown\": 16, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
    "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",

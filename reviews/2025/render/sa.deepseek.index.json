@@ -4,124 +4,133 @@
  "family": "deepseek",
  "base": "3c071e9e71405706ad89665e8d6cd35f0c9734a81531ca9888e4a2a8a4327c12",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "lines judged": "29",
+  "match / mismatch / unclear / missing": "19 / 10 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-17); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "d086babfbc0d15b8aac737bc42149afefa325d9bf8d214f1ac542e4e716ebecb",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040sca p. 2, Line 1: \"Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.\" As the prior ruling: the restatement leaves that person out because the case cannot reach line 1: a filer who, or whose joint spouse, can be claimed as a dependent is refused by sa.dependent (\"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien?\"), on the deduction line Form 1040 line 12e reads, so no completed return has that person's expenses to enter (PENDING-4 of the ptc-sa package). The R4 restructuring moved the people into a list without adding or removing one; nothing else in the restatement is objected to.",
-   "subject_key": "7f83d84ba9e0a9d1407bbaa86888b7b06c0c0a37a57e602ea30a187c02cbba6e"
+   "ruling": "Ruling: representation; i1040sca p. 1: the line shows the deductible amount; the 7.5% floor is the source's, and the gross expenses are the input. Project stands.",
+   "subject_key": "ac816809ba4bd7bd8e111e2891216502f95f1fd7cb1ee202b601625e19ecf097"
   },
   {
    "key": "5a",
-   "record": "d086babfbc0d15b8aac737bc42149afefa325d9bf8d214f1ac542e4e716ebecb",
-   "status": "MATCH",
-   "subject_key": "8def08ae141f4b0f53b1e1d2721e7b2b9c2e62e7ffcaf6e0a805a8aedd88e338"
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sca p. 3: a general sales tax election is refused (the tool computes income taxes only). Project stands.",
+   "subject_key": "c3b07b7a6c13a69bb982876ac5d64a543efd6d490a0d0215d30b486bcab2040a"
   },
   {
    "key": "5b",
-   "record": "d086babfbc0d15b8aac737bc42149afefa325d9bf8d214f1ac542e4e716ebecb",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "ca8f0f62dac5d3741e7553139454974633e3f342288ac26b6df04edba4158183"
+   "subject_key": "08d0ce0ac8b2fef64c33fdd49c88e4fd0625478f22ce7fcffb122dd1b639a618"
   },
   {
    "key": "5c",
-   "record": "3c071e9e71405706ad89665e8d6cd35f0c9734a81531ca9888e4a2a8a4327c12",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "845e080a1f7f4d9b665080611363c58ae0660cca4c92c7dc5d893ca103f28da6"
+   "subject_key": "c4c20061f5f14795de8983ee191a15df9efe167028107b1d975d87860435e4e0"
   },
   {
    "key": "8a",
-   "record": "3c071e9e71405706ad89665e8d6cd35f0c9734a81531ca9888e4a2a8a4327c12",
-   "status": "MATCH",
-   "subject_key": "982c84389423fb384b00e48a9ab395bfa6f0ce1b1f994029f083ee9335d9d81d"
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sca p. 8: a mortgage-debt or use limit is refused (the tool's mortgage-limit screen). Project stands.",
+   "subject_key": "dd2a0684499486e291cdc8b5dab970f7f2a99806875d3aba69c6e18c257bfa08"
   },
   {
    "key": "11",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
-   "status": "MATCH",
-   "subject_key": "5b00e404ec48c0a56f13e45bcc7825e4fecaeeba7656ecc3d45a0cb2cfcd8b16"
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040sa p. 1: a charitable contribution limit is refused (the tool's charitable-limit screen). Project stands.",
+   "subject_key": "2afe6d0ef56cdbf5b983db14d954f9b31de3c7f6b13fda6f418a0d5d342e8264"
   },
   {
-   "key": "2",
-   "record": "3c071e9e71405706ad89665e8d6cd35f0c9734a81531ca9888e4a2a8a4327c12",
+   "key": "2 (sa.line2)",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.sa_medical_negative_agi. The model says the restatement floors Form 1040 line 11b at zero. Schedule A (2025) line 2: \"Enter amount from Form 1040 or 1040-SR, line 11b\"; the project floors adjusted gross income at zero for the 7.5% medical-expense limitation and displays that floored amount, the recorded reading for a negative AGI, not a new defect. Unchanged by the backlog packages.",
+   "ruling": "Ruling: representation; Form 1040 line 11b cannot be negative, so the floor restates the form. Project stands.",
    "subject_key": "848f098d6161d92e9371a9258715ac09d3268d371b950e6b0324053cec68fd38"
   },
   {
-   "key": "3",
-   "record": "3c071e9e71405706ad89665e8d6cd35f0c9734a81531ca9888e4a2a8a4327c12",
+   "key": "3 (sa.line3)",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "15380c1ef5e867ff2088dd9db42591929f6c30da4b925d7a6b334a38d61da515"
+   "subject_key": "e00c95fb4fe93ea5a791c4d221db4e517cd21a51263ac592332c0688d6a5a713"
   },
   {
    "key": "4",
-   "record": "d086babfbc0d15b8aac737bc42149afefa325d9bf8d214f1ac542e4e716ebecb",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "58dabc29639d2fa2af4b9a29af44c21f228fe94f4372e64e25090b4192e8b5a7"
+   "subject_key": "551ca47bbc4759626d5f315f4c93d09c4add54efd224cdb021a2bfb758a72ad3"
   },
   {
    "key": "5d",
-   "record": "d086babfbc0d15b8aac737bc42149afefa325d9bf8d214f1ac542e4e716ebecb",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "d83eda7bd28151e707dbbb5b7a7407e70c396184fac9bde26180954e050bae75"
+   "subject_key": "fe2d6f8ef717a2951484bcdc2db12f3f2ab1f3bb0840eff1267fd2fe4af05d62"
   },
   {
    "key": "5e",
-   "record": "3c071e9e71405706ad89665e8d6cd35f0c9734a81531ca9888e4a2a8a4327c12",
-   "status": "MATCH",
-   "subject_key": "2a482532ba3df16762ad0e70c50d1c7a8b13e4cbb4beb1a189314a2ad723c635"
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040sa p. 1: excluded Puerto Rico, Form 2555 and Form 4563 income is refused. Project stands.",
+   "subject_key": "375455ae0aea7128cf3fb64c3f5914ba73907882c0fe732da66235fe0bc61642"
   },
   {
    "key": "6",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
-   "status": "MATCH",
-   "subject_key": "748e118d34813bcb481e20cef1f8ed3ee0df07796cd8e9484a435f5dda74e8d3"
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040sa: foreign income taxes and generation-skipping tax are refused. Project stands.",
+   "subject_key": "c26d24dfcb6d28f5ce7430a4a157b15316dea2c9a1bafdf2a3b437d17f46b6c5"
   },
   {
    "key": "8b",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "33a7fa9d1fa643e1a67a22de1628156624dc91a1ff5b6901be1b0b3bf09bc8f9"
+   "subject_key": "94b1acc9c6db6725c9d5f0d7adbf405367f524ff894a9a087feefe41fbfbc75e"
   },
   {
    "key": "8c",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "aaaf7117c809072210e839724c73eb358f01fb740f9eec96e25a940d6cf984ec"
+   "subject_key": "22d233d48d83ad9e35fc36ca065b05207ddf12426fcc398d101126b19abe7cc9"
   },
   {
    "key": "13",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "31be719bc4bd8cd8082af4f29693bf53201cdf5668a62106147a1d861ca6661b"
+   "subject_key": "0d7df76f4b2fc322aa1df83a0b01f5e6ddba428e92cfac31d8e308f21a29dba2"
   },
   {
    "key": "15",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
-   "status": "MATCH",
-   "subject_key": "fbecdf3e0b21b3d11c925d1d7a391d51557ba09b807dd868513a9ac6e08a5be3"
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sca p. 11: casualty and theft losses are refused. Project stands.",
+   "subject_key": "4c25271321378e52c93230212a548b6aea8716db740536c3d14a82d04401a8ad"
   },
   {
    "key": "16",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
-   "status": "MATCH",
-   "subject_key": "22ccdbbad2ff7bc9c8abbece4518590544a071d21af74ec4100d870122ef90cb"
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040sa p. 11: a net qualified disaster loss is refused; the line reads gambling losses. Project stands.",
+   "subject_key": "9a95baa4a211cb6b6c5006b28e3b4c81b35c9c6081091190a40555258749e4ee"
   },
   {
    "key": "7",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "180876ad4bb16f409e36d2a3398e35ba6e7d6b3869f0c5f2e982e28389166b66"
+   "subject_key": "07c0b46f14d073bf588b47ed61c8fad2a0b79ccab8007ca1d2c71184b651b2d2"
   },
   {
    "key": "8e",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "7d71265dc1619bf36e58a21a150edb754658a868f53effcb60e60197bb03a933"
+   "subject_key": "19055a7fe52b5ca609499fc532ce7761a6283a3f69adb6798069d191c97117c6"
   },
   {
    "key": "9",
@@ -137,48 +146,84 @@
   },
   {
    "key": "12",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "20786293fc28f32a36a2a93408a8ee63e85b2245651595490722763183256446"
+   "subject_key": "72c881e9b2b7dfc80d55516af7037156fa997bfc074c2eeaf1a8693544fefc9a"
   },
   {
    "key": "14",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "3654f0c36b36f4b90976f610148c98ca4af1d94d06a746023aa5dc700ed762a8"
+   "subject_key": "623bf9bfe6b7cf64fa0408538a2d9b7844956a692d6314413e3765a9db2fec5a"
   },
   {
    "key": "17",
-   "record": "4ee666d656c36e6b61641d8035c4920a8275214a806029372f6844faeb445cd9",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
    "status": "MATCH",
-   "subject_key": "93f0a5482faa7648f75b4d7091e17cc98ef4f1bca6680990b480779b20ec6205"
+   "subject_key": "41c5b526a476c2998376ce3d5e112a8ba39770b5696dd5efa14c9c4f93df155a"
+  },
+  {
+   "key": "2 (sa.dep_line2)",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; Schedule 1 lines 6, 8t and 8u are refused (scope.schedule1). Project stands.",
+   "subject_key": "d3010db82acc05abdf47b290c3e26006dc3df1c44dea6c80056c8332615105f3"
+  },
+  {
+   "key": "3 (sa.dep_line3)",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MATCH",
+   "subject_key": "280e471bbcd97b8264752fb5b2fadbb5665d68d9508dd33b243486b79bad2a0a"
+  },
+  {
+   "key": "4a",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MATCH",
+   "subject_key": "021878b5816cc5ab8fcee44dad40c097bdb8d2455d5a6423ea1cf2d0f96b72fe"
+  },
+  {
+   "key": "4b",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MATCH",
+   "subject_key": "33aa3e42a2ad9a64329316a63aeb6490301faf0503690ec1bfa55af323fae3d7"
+  },
+  {
+   "key": "4c",
+   "record": "856c03c009dbd95a249f4c5b4faf8483957235ccef6e4b01203d4b383bd45d8d",
+   "status": "MATCH",
+   "subject_key": "d17a800d3d17021437850aca7d3c2d92b8af98af32f089a3dd5adcd00c9f0e12"
   }
  ],
  "subjects": {
-  "1": "bc543d18c1c8382a87fd9fde6b505b3e376a88b6670b28bba3984f94d38afe8f",
-  "5a": "f2f69af0bc697b740a40ac764b09f46f7cf84249bf260e2ab5ef730c33fd3191",
-  "5b": "57583553381fef1a1ee0e33ded0f3a76b6158e675c20c003ae9727361c5bc59a",
-  "5c": "b27b09ae6c5c4cee8fcb75c29e6b8737d1303a8b51aad78dab435c9d4b5aa421",
-  "8a": "1c28a67e90f31c4f151d3cdb3cf2616a83042dcf7bae1c50e24481d52615b564",
-  "11": "c2aab6e511f279fdf09a05e882a2075ee331c4279a3ba1a7e28e9d2105df4724",
-  "2": "4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e",
-  "3": "5e24c8422623eea02699f8e25a3375d4b4a5f93310c9c241875983aa685b0cf0",
-  "4": "b0566af27490727e00272391ce682101893fd7c95b6458fecdb03fa5e2e9ca55",
-  "5d": "c934cb7f9555055754465bd7bcf8aea0421f71eb26be966d3bddbd13c798c2e3",
-  "5e": "e7daa6499b8e1a3edb3981ba2fee13b425abaed672ba46f872697e8e87c4f0d9",
-  "6": "539ba00c09245d16fa37c5b290cef68a5fc71b2a93e25ea62675e85f160a1be4",
-  "8b": "05566f488e21764d11f4a6e0004d6eb10d3a9601be2dd4629910acdb6570606a",
-  "8c": "e6135e168326c32add7095c85cb0e91bd2465ac83ef4852f609e8cc68e2706db",
-  "13": "9f10b8086456b0315ac123fba0bf336accd65f36a56876ecae85f0a333015bd2",
-  "15": "6d2cf7dd5293c6a26c7cad9bcd3e26a00acffc6e9a25a7ad79afa24a3f7d1e05",
-  "16": "552f0ea7e49e59515f1f267c8b1b97cf367d4a7725c521f1f7980d54c80d06f0",
-  "7": "df3ed48aca7b4098a0da0e4055dda563985c0d0a7d408a9850f8417184766fb3",
-  "8e": "f3fb1aa906da9d35c842761860f307f0351eee53f8a7dfe30cae860ab33a4540",
+  "1": "53111d3d2f7860af027f4cf985619202f31d446b2de961232b715e23a386a469",
+  "5a": "fd56fa7bc183d0c8e2064b037e3f9ac35ac9e0c02d8a5f77fe210c8812110831",
+  "5b": "bd23e371b7d19343483c22d9b56706392bcb9df2ed6bd8fade5ad8847e57a762",
+  "5c": "9727f5441c3477fe0d2cb79a93b93266726e1b065e0c896692a71e3d730c6c80",
+  "8a": "0e0e49979252859854e2cce3f047999eb1920aa7ffb6a2a8aa713df1364590ba",
+  "11": "07a45f19ea414ad5c604f64f319b6afe430afec8a21f9d1d28117db1853170fa",
+  "2 (sa.line2)": "4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e",
+  "3 (sa.line3)": "915c7f2a9b0042dab3a9e56be066227e30b5b060fc4824080ce27e96eaa3e71f",
+  "4": "69400b689008aae8f0c9a5e9e4ab38a55cf9c1d97db59c6943dbe2d896c6a5b2",
+  "5d": "7f88fb40e2d2c4aa877c02c94fca39fe8e001739d17a0711bd09a5c9e3b7bdeb",
+  "5e": "8c2bb6456a87bbb101ea5ef1eb4321d3d7e6760f4bab5581e92b6eb48c6ab7b4",
+  "6": "9bb4539bad455c2c292420b749171edc9b1356974c96c0ffacfd845232e9e148",
+  "8b": "f39b39784afaba2e962426df655f7ffc607b716cd4a2f0c4e1bc88ec09a13ccc",
+  "8c": "fc9498ee9d8b5a80f4d84f1588d946c4941d92ca8df96081618a0b448d54b767",
+  "13": "c867e3c84747925be01b2d6f06422b86bc0153229fdbad3cbeab55d4eb05e055",
+  "15": "4736961b81e69c9cd5851615f6921c3b7e302ad0aadf6b88cd2652dac8fe8f2c",
+  "16": "5a8f641a584769bfba0c0416e38e039bab0f21a118b5b12725ffe59622d94d7e",
+  "7": "1d59e882ba98ae7a8dcf5a3c807217a18fd242122626f5a1ea0b0d30f7d3399e",
+  "8e": "a1c3eaa8769af3038750e36dd1ffbdb9801945aaeb0ae10a2eaf1b402c4fdf0c",
   "9": "59551c58e6058836eb81aa7e7079bae6d30cf931898c086363bac3d61c09d8af",
   "10": "92b522a02b3747cf7e857a9a1c388ed33e2503712bdf226862aea42adeee02e9",
-  "12": "99eee96a61f7fd147edcda7b0c342361af7eb1d80f77849083a6c4024925ad3f",
-  "14": "ed6587e1050f57de9c134cd44a28d603f3edb8f0ff70be9f65fa37cb5b66a87e",
-  "17": "e91ca8edc48acf4cbed4ed622292fefa2d28727c4dccdfe8ae5114a77b4fa112"
+  "12": "1c6f594b88b7bde3173c449caa2bf0a064534a29ab50962912191795f01ee06f",
+  "14": "09594ec9f531977fac4775eaa7aa8d0590d9a4c367feb9b34febdba4bbb296f8",
+  "17": "4970dd623a8b361e5a2cf9f147dd293f4e4963d198a4b949f3cf26071f58b944",
+  "2 (sa.dep_line2)": "f61df01beb9d98c04f23918b262b9064ec9bf2e34522103b322b9ccbf7ec5190",
+  "3 (sa.dep_line3)": "bb2a121adcb5f0e32bbd434e9b4a7b6b80ca36b93a3d446dfd5683b45c539313",
+  "4a": "9841bdd28de3be44b498d2e5c93d69a3ceb154f08165210b8b4314b2adc47e9a",
+  "4b": "c827351e10f28b0f9c12b208d0fc3bad584ba6fc106cc517a80096b1fa479880",
+  "4c": "9032f6928ad468e2e05dfc130005a016f7ed3bd1c320edb5065139c5b4ae2912"
  },
  "__rest__": "ac772d777e129a58b4d78fdc4d9997382ee870e6cbf12e65c65dde7b7e719585"
 }

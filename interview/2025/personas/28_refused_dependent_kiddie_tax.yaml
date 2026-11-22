@@ -1,0 +1,12 @@
+# Predicted end: refused at scope.other_line16, told at scope.f8615 (Form 8615, tax on a child's unearned income, is
+# not prepared). Mirrors coverage row scope.f8615. The answers stop at the refusal; later answers would be stale.
+name: 28_refused_dependent_kiddie_tax
+who: A full-time student, 20, whom the parents support and claim as a dependent, with $3,000 from a summer job and $4,000 of dividends from shares her grandparents gave her.
+end: { refused: scope.other_line16 }
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 2005
+  sa.dependent: true
+  scope.unearned_2700: true
+  scope.f8615: true

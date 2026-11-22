@@ -346,8 +346,9 @@ form:
     expr:
       op: input
       source: The costs incurred for qualified long-term care services provided for this person during the days of the LTC
-        period (necessary diagnostic, preventive, therapeutic, treating and rehabilitative services, and maintenance or
-        personal care, under a plan of care prescribed by a licensed health care practitioner); zero if none
+        period (necessary diagnostic, preventive, therapeutic, curing, treating, mitigating and rehabilitative services, and
+        maintenance or personal care services, required to treat a chronically ill person under a plan of care prescribed by
+        a licensed health care practitioner); zero if none
     cite:
       doc: i8853
       locator: 'p. 9, Line 22, "Qualified LTC services are necessary diagnostic, preventive, therapeutic, curing, treating,
@@ -402,6 +403,7 @@ form:
       doc: i8853
       locator: 'p. 9, Line 24, "Enter the reimbursements you received or expect to receive through insurance or otherwise for
         qualified LTC services provided for the insured for LTC periods in 2025"'
+    ambiguity: amb.2025.f8853c_line24_public
   - id: f8853c.line24_if_periodic
     printed: (gate)
     label: Line 24, asked only when line 20 is more than zero (zero otherwise)
@@ -486,6 +488,7 @@ form:
     cite:
       doc: f8853
       locator: Form 8853 (2025), line 25, "Per diem limitation. Subtract line 24 from line 23"
+    ambiguity: amb.2025.f8853c_line25_floor
     refuses:
     - when: f8853c.contract_before_ltc_date_if_reimbursed
       form: Form 8853, line 24 (reimbursements under a contract issued before August 1, 1996)

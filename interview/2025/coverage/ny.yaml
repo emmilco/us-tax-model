@@ -141,7 +141,7 @@ rows:
     answers:
       ny_it201.ask.item_c: true
     expect:
-      asks: ny_it201.ask.owes_use_tax
+      asks: ny_it201.ask.bought_untaxed
   - id: ny.special_code_abroad
     design: lane ny, item G code E3 or E5 (ny_it201.ask.special_code taken apart)
     situation: A city resident working in London on April 15, 2026, filing in June.
@@ -196,7 +196,17 @@ rows:
     design: lane ny, ny_it201.ask.out_of_state_bond_interest asked only with tax-exempt interest
     situation: A filer with a national tax-free bond fund.
     answers:
+      f1040.tax_exempt_any: true
       f1040.tax_exempt_interest: 40000
+      ny_it201.ask.out_of_state_bond_interest: true
+    expect:
+      refused: ny_it201.gate.line20
+  - id: ny.other_state_bonds_premium
+    design: lane ny, BUG-0857; the line 20 question opens on the federal Yes even when bond premium leaves line 2a at zero
+    situation: A filer whose other-state bonds were bought at a premium that, amortized, equals their interest.
+    answers:
+      f1040.tax_exempt_any: true
+      f1040.tax_exempt_interest: 0
       ny_it201.ask.out_of_state_bond_interest: true
     expect:
       refused: ny_it201.gate.line20
@@ -312,7 +322,8 @@ rows:
     design: lane ny, ny_it201.ask.use_tax_exact after a No to the large or business purchase
     situation: A filer who wants the use tax worked out from receipts.
     answers:
-      ny_it201.ask.owes_use_tax: true
+      ny_it201.ask.bought_untaxed: true
+      ny_it201.ask.use_tax_dmv_only: false
       ny_it201.ask.use_tax_st141: false
       ny_it201.ask.use_tax_exact: true
       ny_it201.ask.abode_part_year: false
@@ -322,11 +333,34 @@ rows:
     design: lane ny, ny_it201.ask.use_tax_st141
     situation: A filer who bought a $1,500 television out of state.
     answers:
-      ny_it201.ask.owes_use_tax: true
+      ny_it201.ask.bought_untaxed: true
+      ny_it201.ask.use_tax_dmv_only: false
       ny_it201.ask.abode_part_year: false
       ny_it201.ask.use_tax_st141: true
     expect:
       refused: ny_it201.gate.use_tax_st141
+  - id: ny.use_tax_vehicle_only
+    design: trimfollow B-F2, ny_it201.ask.use_tax_dmv_only (a vehicle whose tax is paid at the DMV owes nothing on line 59)
+    situation: A filer whose only purchase without New York sales tax was a car bought from a private seller and registered at the DMV.
+    answers:
+      ny_it201.ask.bought_untaxed: true
+      ny_it201.ask.use_tax_dmv_only: true
+    expect:
+      proceeds:
+        ny_it201.ask.use_tax_dmv_only: true
+      not_asked: [ny_it201.ask.use_tax_st141, ny_it201.ask.abode_part_year]
+  - id: ny.use_tax_vehicle_and_small
+    design: trimfollow B-F2 (a car taxed at the DMV beside small online purchases; the chart applies, the car is not a large purchase)
+    situation: A filer who registered a car at the DMV and also bought $300 of goods online without paying sales tax.
+    answers:
+      ny_it201.ask.bought_untaxed: true
+      ny_it201.ask.use_tax_dmv_only: false
+      ny_it201.ask.use_tax_st141: false
+      ny_it201.ask.use_tax_exact: false
+      ny_it201.ask.abode_part_year: false
+    expect:
+      proceeds:
+        ny_it201.ask.use_tax_st141: false
   - id: ny.contributions
     design: lane ny, ny_it201.ask.contributions on the tick-box screen ny_filing
     situation: A filer who wants to give to a New York charity fund on the return.

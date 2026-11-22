@@ -132,6 +132,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -468,6 +469,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -676,6 +678,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -816,6 +819,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -967,6 +971,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -1105,6 +1110,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -1268,6 +1274,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -1501,6 +1508,7 @@
         "scope.business_before": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -1590,6 +1598,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -1720,6 +1729,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -1862,6 +1872,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -2007,6 +2018,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -2037,6 +2049,7 @@
         "$retirement@person[taxpayer]": [],
         "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
@@ -2364,6 +2377,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -2525,6 +2539,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -2663,6 +2678,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -2824,6 +2840,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -2962,6 +2979,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -3122,6 +3140,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -3263,6 +3282,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -3471,6 +3491,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -3601,6 +3622,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -3743,6 +3765,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -3877,6 +3900,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -5769,6 +5793,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -5914,6 +5939,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -5944,6 +5970,7 @@
         "$retirement@person[taxpayer]": [],
         "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
@@ -6266,6 +6293,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -6429,6 +6457,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -6570,6 +6599,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -6778,6 +6808,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -6933,6 +6964,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -7084,6 +7116,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -7246,6 +7279,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -7454,6 +7488,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -7607,6 +7642,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -7758,6 +7794,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -7787,7 +7824,7 @@
         "ny_it201"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 f65070c926102e2b5304e7dfc483d38b4a622f04a2baf54796f9d59e44a62fd7; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.owes_use_tax:true, ny_it201.ask.use_tax_st141:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.abode_part_year:false, ny_it201.ask.prior_full_year:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#0, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#0, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#0, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#0, ny_it201.hh_city_t5#0, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#0, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#0, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#2, ny_it201.gate.use_tax_abode#0, ny_it201.gate.use_tax_abode:false, ny_it201.ask.use_tax_exact:false, ny_it201.use_tax_exact_if_small#1, ny_it201.use_tax_exact_if_small:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#1, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor; dropped after ruling: ny_it201.tax_table; dropped after ruling: ny_it201.tax_low; dropped after ruling: ny_it201.line39; dropped after ruling: ny_it201.line44; dropped after ruling: ny_it201.line46; dropped after ruling: ny_it201.city_tax_table; dropped after ruling: ny_it201.line47a; dropped after ruling: ny_it201.line49; dropped after ruling: ny_it201.line52; dropped after ruling: ny_it201.line54; dropped after ruling: ny_it201.line58; dropped after ruling: ny_it201.line61; dropped after ruling: ny_it201.line62; dropped after ruling: ny_it201.stc_rr_excess_product; dropped after ruling: ny_it201.stc_rr_high; dropped after ruling: ny_it201.stc_rr; dropped after ruling: ny_it201.tax_due; dropped after ruling: ny_it201.line80",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 19aaff5a7f3e72a602be4f06879cfe7708a4d8b1253ab523091a0e36764e457a; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.bought_untaxed:true, ny_it201.ask.use_tax_dmv_only:false, ny_it201.use_tax_dmv_only_if_bought#0, ny_it201.use_tax_dmv_only_if_bought:false, ny_it201.use_tax_not_dmv:true, ny_it201.ask.owes_use_tax#0, ny_it201.ask.owes_use_tax:true, ny_it201.ask.use_tax_st141:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.abode_part_year:false, ny_it201.ask.prior_full_year:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#0, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_candidate:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#0, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#0, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#0, ny_it201.hh_city_t5#0, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#0, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#0, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#2, ny_it201.gate.use_tax_abode#0, ny_it201.gate.use_tax_abode:false, ny_it201.ask.use_tax_exact:false, ny_it201.use_tax_exact_if_small#1, ny_it201.use_tax_exact_if_small:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#1, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor",
       "inputs": {
         "$interest": [
           "bank_a"
@@ -7806,7 +7843,7 @@
         "person[taxpayer].w2[emp_b].box5": 4000000,
         "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.owes_use_tax": true,
+        "ny_it201.ask.bought_untaxed": true,
         "ny_it201.ask.prior_full_year": true,
         "$ny_it2": [
           "w0"
@@ -7816,14 +7853,18 @@
         "$dependent": [],
         "div.any": false,
         "f1040.status": "single",
-        "f1040.tax_exempt_interest": 0,
+        "f1040.digital_assets": false,
+        "f1040.tax_exempt_any": false,
         "f1040.withheld_other_any": false,
         "f1040.estimated_any": false,
         "$f1095a": [],
+        "$f1116col": [],
+        "$f1116sbyr": [],
         "f2441.benefits": false,
         "f2441.care": false,
         "f4952.has_interest": false,
         "f5695.any": false,
+        "$f8853c": [],
         "f8863.paid": false,
         "f8959.territory_w2": false,
         "$gift": [],
@@ -7848,6 +7889,7 @@
         "ny_it201.ask.resident_credit": false,
         "ny_it201.ask.other_credits": false,
         "ny_it201.ask.other_taxes": false,
+        "ny_it201.ask.use_tax_dmv_only": false,
         "ny_it201.ask.use_tax_st141": false,
         "ny_it201.ask.contributions": false,
         "ny_it201.ask.noncustodial": false,
@@ -7871,7 +7913,11 @@
         "person[taxpayer].x_edu_account": false,
         "person[taxpayer].x_archer_excess": false,
         "person[taxpayer].inherited_account": false,
+        "$f4137row@person[taxpayer]": [],
         "$f8889@person[taxpayer]": [],
+        "$f8919firm@person[taxpayer]": [],
+        "$k1p@person[taxpayer]": [],
+        "$k1s@person[taxpayer]": [],
         "$otjob@person[taxpayer]": [],
         "$retirement@person[taxpayer]": [],
         "$sc@person[taxpayer]": [],
@@ -7884,11 +7930,12 @@
         "qbi.prior_form": false,
         "qbi.coop_patron": false,
         "refund.any": false,
+        "$rental": [],
+        "$royalty": [],
         "s1.uc_any": false,
         "s1.ltc_payout": false,
         "s1.nqdc_pension": false,
         "s1.inmate_wages": false,
-        "s1.digital_income": false,
         "s1.winnings_any": false,
         "s1.alaska_any": false,
         "s1.jury_any": false,
@@ -7942,6 +7989,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
         "scope.rental": false,
@@ -7968,11 +8016,10 @@
         "sd.small_business_stock": false,
         "sd.trader_election": false,
         "sd.casualty": false,
+        "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false,
-        "sd.qof": false,
-        "f1040.digital_assets": false
+        "ssb.any": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -8147,6 +8194,14 @@
           "kind": "money",
           "cents": 3200000
         },
+        "ny_it201.tax_low": {
+          "kind": "money",
+          "cents": 159700
+        },
+        "ny_it201.line39": {
+          "kind": "money",
+          "cents": 159700
+        },
         "ny_it201.hh_agi": {
           "kind": "money",
           "cents": 4000000
@@ -8154,6 +8209,90 @@
         "ny_it201.hh_people": {
           "kind": "count",
           "value": 1
+        },
+        "ny_it201.hh_state_p1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_t2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_t5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_t1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_t4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_by_status": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_by_status": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line40": {
+          "kind": "money",
+          "cents": 0
         },
         "ny_it201.line41": {
           "kind": "money",
@@ -8167,13 +8306,33 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line44": {
+          "kind": "money",
+          "cents": 159700
+        },
         "ny_it201.line45": {
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line46": {
+          "kind": "money",
+          "cents": 159700
+        },
         "ny_it201.line47": {
           "kind": "money",
           "cents": 3200000
+        },
+        "ny_it201.line47a": {
+          "kind": "money",
+          "cents": 112600
+        },
+        "ny_it201.line48": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line49": {
+          "kind": "money",
+          "cents": 112600
         },
         "ny_it201.line50": {
           "kind": "money",
@@ -8183,9 +8342,17 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line52": {
+          "kind": "money",
+          "cents": 112600
+        },
         "ny_it201.line53": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line54": {
+          "kind": "money",
+          "cents": 112600
         },
         "ny_it201.line55": {
           "kind": "money",
@@ -8198,6 +8365,10 @@
         "ny_it201.line57": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line58": {
+          "kind": "money",
+          "cents": 112600
         },
         "ny_it201.sut.b1": {
           "kind": "money",
@@ -8251,6 +8422,14 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line61": {
+          "kind": "money",
+          "cents": 273300
+        },
+        "ny_it201.line62": {
+          "kind": "money",
+          "cents": 273300
+        },
         "ny_it201.line63": {
           "kind": "money",
           "cents": 0
@@ -8287,13 +8466,29 @@
           "kind": "money",
           "cents": 6300
         },
+        "ny_it201.stc_rr_low": {
+          "kind": "money",
+          "cents": 5500
+        },
         "ny_it201.stc_rr_excess": {
           "kind": "money",
           "cents": 2000000
         },
+        "ny_it201.stc_rr_excess_product": {
+          "kind": "money",
+          "cents": 4600
+        },
         "ny_it201.stc_rr_base": {
           "kind": "money",
           "cents": 2100
+        },
+        "ny_it201.stc_rr_high": {
+          "kind": "money",
+          "cents": 6700
+        },
+        "ny_it201.stc_rr": {
+          "kind": "money",
+          "cents": 6700
         },
         "ny_it201.line69a": {
           "kind": "money",
@@ -8331,6 +8526,10 @@
           "kind": "money",
           "cents": 13000
         },
+        "ny_it201.tax_due": {
+          "kind": "money",
+          "cents": 260300
+        },
         "ny_it201.prepayments": {
           "kind": "money",
           "cents": 0
@@ -8354,6 +8553,34 @@
         "ny_it201.line82": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.overpaid_before_penalty": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line77": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line79": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line78": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line78a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line78b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line80": {
+          "kind": "money",
+          "cents": 260300
         }
       }
     },
@@ -8363,7 +8590,7 @@
         "ny_it201"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 6be9f33317bbb83898d12d653ce6c317c380fb0260383400e321c11b3143c0b0; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.ask.spouse_resident:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#1, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#1, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#1, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#1, ny_it201.hh_city_t5#1, ny_it201.hh_state_in_range:true, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#1, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#1, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#1, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:floor, ny_it201.stc_rr_low_band:true, ny_it201.stc_rr#0, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor, ny_it201.spouse_not_resident:false; dropped after ruling: ny_it201.tax_table; dropped after ruling: ny_it201.tax_low; dropped after ruling: ny_it201.line39; dropped after ruling: ny_it201.line44; dropped after ruling: ny_it201.line46; dropped after ruling: ny_it201.city_tax_table; dropped after ruling: ny_it201.line47a; dropped after ruling: ny_it201.line49; dropped after ruling: ny_it201.line52; dropped after ruling: ny_it201.line54; dropped after ruling: ny_it201.line58; dropped after ruling: ny_it201.sut.top_product; dropped after ruling: ny_it201.sut.top; dropped after ruling: ny_it201.line61; dropped after ruling: ny_it201.line62; dropped after ruling: ny_it201.stc_rr_low; dropped after ruling: ny_it201.stc_rr; dropped after ruling: ny_it201.tax_due; dropped after ruling: ny_it201.line80",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 ff7adcba2b1e446a960a9feca0902ee61c9d4df079f3fe7bc14746ee93b34f40; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.bought_untaxed:false, ny_it201.use_tax_dmv_only_if_bought#1, ny_it201.use_tax_dmv_only_if_bought:false, ny_it201.use_tax_not_dmv:true, ny_it201.ask.owes_use_tax#1, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.ask.spouse_resident:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#1, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_candidate:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#1, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#1, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#1, ny_it201.hh_city_t5#1, ny_it201.hh_state_in_range:true, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#1, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#1, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#1, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:floor, ny_it201.stc_rr_low_band:true, ny_it201.stc_rr#0, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor, ny_it201.spouse_not_resident:false; dropped after ruling: ny_it201.sut.top_product; dropped after ruling: ny_it201.sut.top; dropped after ruling: ny_it201.stc_rr_low; dropped after ruling: ny_it201.stc_rr",
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
@@ -8407,10 +8634,13 @@
         "$dcprov": [],
         "$dependent": [],
         "div.any": false,
-        "f1040.tax_exempt_interest": 0,
+        "f1040.digital_assets": false,
+        "f1040.tax_exempt_any": false,
         "f1040.withheld_other_any": false,
         "f1040.estimated_any": false,
         "$f1095a": [],
+        "$f1116col": [],
+        "$f1116sbyr": [],
         "f2441.benefits": false,
         "f2441.care": false,
         "f4952.has_interest": false,
@@ -8441,6 +8671,7 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
+        "$f8853c": [],
         "f8863.paid": false,
         "f8959.territory_w2": false,
         "$gift": [],
@@ -8460,7 +8691,7 @@
         "ny_it201.ask.resident_credit": false,
         "ny_it201.ask.other_credits": false,
         "ny_it201.ask.other_taxes": false,
-        "ny_it201.ask.owes_use_tax": false,
+        "ny_it201.ask.bought_untaxed": false,
         "ny_it201.ask.contributions": false,
         "ny_it201.ask.noncustodial": false,
         "ny_it201.ask.late_penalty": false,
@@ -8478,7 +8709,11 @@
         "person[taxpayer].x_edu_account": false,
         "person[taxpayer].x_archer_excess": false,
         "person[taxpayer].inherited_account": false,
+        "$f4137row@person[taxpayer]": [],
         "$f8889@person[taxpayer]": [],
+        "$f8919firm@person[taxpayer]": [],
+        "$k1p@person[taxpayer]": [],
+        "$k1s@person[taxpayer]": [],
         "$otjob@person[taxpayer]": [],
         "$retirement@person[taxpayer]": [],
         "$sc@person[taxpayer]": [],
@@ -8493,7 +8728,11 @@
         "person[spouse].x_edu_account": false,
         "person[spouse].x_archer_excess": false,
         "person[spouse].inherited_account": false,
+        "$f4137row@person[spouse]": [],
         "$f8889@person[spouse]": [],
+        "$f8919firm@person[spouse]": [],
+        "$k1p@person[spouse]": [],
+        "$k1s@person[spouse]": [],
         "$otjob@person[spouse]": [],
         "$retirement@person[spouse]": [],
         "$sc@person[spouse]": [],
@@ -8506,11 +8745,12 @@
         "qbi.prior_form": false,
         "qbi.coop_patron": false,
         "refund.any": false,
+        "$rental": [],
+        "$royalty": [],
         "s1.uc_any": false,
         "s1.ltc_payout": false,
         "s1.nqdc_pension": false,
         "s1.inmate_wages": false,
-        "s1.digital_income": false,
         "s1.winnings_any": false,
         "s1.alaska_any": false,
         "s1.jury_any": false,
@@ -8564,6 +8804,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
         "scope.rental": false,
@@ -8590,11 +8831,10 @@
         "sd.small_business_stock": false,
         "sd.trader_election": false,
         "sd.casualty": false,
+        "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false,
-        "sd.qof": false,
-        "f1040.digital_assets": false
+        "ssb.any": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -8768,6 +9008,38 @@
         "ny_it201.line38": {
           "kind": "money",
           "cents": 1200000
+        },
+        "ny_it201.tax_low": {
+          "kind": "money",
+          "cents": 48100
+        },
+        "ny_it201.tcw.top": {
+          "kind": "money",
+          "cents": 130800
+        },
+        "ny_it201.tcw.mfj": {
+          "kind": "money",
+          "cents": 48000
+        },
+        "ny_it201.tcw.single": {
+          "kind": "money",
+          "cents": 48000
+        },
+        "ny_it201.tcw.hoh": {
+          "kind": "money",
+          "cents": 48000
+        },
+        "ny_it201.tcw.by_status": {
+          "kind": "money",
+          "cents": 48000
+        },
+        "ny_it201.tax_high": {
+          "kind": "money",
+          "cents": 48000
+        },
+        "ny_it201.line39": {
+          "kind": "money",
+          "cents": 48100
         },
         "ny_it201.hh_agi": {
           "kind": "money",
@@ -8873,17 +9145,33 @@
           "kind": "money",
           "cents": 2500
         },
+        "ny_it201.line44": {
+          "kind": "money",
+          "cents": 45600
+        },
         "ny_it201.line45": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line46": {
+          "kind": "money",
+          "cents": 45600
         },
         "ny_it201.line47": {
           "kind": "money",
           "cents": 1200000
         },
+        "ny_it201.line47a": {
+          "kind": "money",
+          "cents": 37000
+        },
         "ny_it201.line48": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line49": {
+          "kind": "money",
+          "cents": 37000
         },
         "ny_it201.line50": {
           "kind": "money",
@@ -8893,9 +9181,17 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line52": {
+          "kind": "money",
+          "cents": 37000
+        },
         "ny_it201.line53": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line54": {
+          "kind": "money",
+          "cents": 37000
         },
         "ny_it201.line55": {
           "kind": "money",
@@ -8908,6 +9204,10 @@
         "ny_it201.line57": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line58": {
+          "kind": "money",
+          "cents": 37000
         },
         "ny_it201.sut.b1": {
           "kind": "money",
@@ -8952,6 +9252,14 @@
         "ny_it201.line60": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line61": {
+          "kind": "money",
+          "cents": 82600
+        },
+        "ny_it201.line62": {
+          "kind": "money",
+          "cents": 82600
         },
         "ny_it201.line63": {
           "kind": "money",
@@ -9041,6 +9349,10 @@
           "kind": "money",
           "cents": 14600
         },
+        "ny_it201.tax_due": {
+          "kind": "money",
+          "cents": 68000
+        },
         "ny_it201.prepayments": {
           "kind": "money",
           "cents": 0
@@ -9088,6 +9400,10 @@
         "ny_it201.line78b": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line80": {
+          "kind": "money",
+          "cents": 68000
         }
       }
     },
@@ -9097,7 +9413,7 @@
         "ny_it201"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 268ebd80ab77be693ecf8e14e43ad531bba0f355ca166af7a4b8c36e3cfdf381; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:true, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#0, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:true, ny_it201.item_c:true, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#0, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:true, ny_it201.line34#0, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#0, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#0, ny_it201.hh_city_t5#0, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#0, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#0, ny_it201.line40#0, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#0, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#2, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:false, ny_it201.line69#1, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#0, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor; dropped after ruling: ny_it201.std_deduction; dropped after ruling: ny_it201.tax_table; dropped after ruling: ny_it201.tax_low; dropped after ruling: ny_it201.line39; dropped after ruling: ny_it201.line44; dropped after ruling: ny_it201.line46; dropped after ruling: ny_it201.city_tax_table; dropped after ruling: ny_it201.line47a; dropped after ruling: ny_it201.line49; dropped after ruling: ny_it201.line52; dropped after ruling: ny_it201.line54; dropped after ruling: ny_it201.line58; dropped after ruling: ny_it201.line61; dropped after ruling: ny_it201.line62; dropped after ruling: ny_it201.stc_rr_excess_product; dropped after ruling: ny_it201.stc_rr_high; dropped after ruling: ny_it201.stc_rr; dropped after ruling: ny_it201.tax_due; dropped after ruling: ny_it201.line80",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 accae733ecb98da20b23544da0a2093325f9e582792bb76099a438d7ab50063c; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:true, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.bought_untaxed:false, ny_it201.use_tax_dmv_only_if_bought#1, ny_it201.use_tax_dmv_only_if_bought:false, ny_it201.use_tax_not_dmv:true, ny_it201.ask.owes_use_tax#1, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#0, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:true, ny_it201.item_c:true, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_candidate:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#0, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:true, ny_it201.line34#0, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#0, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#0, ny_it201.hh_city_t5#0, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#0, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#0, ny_it201.line40#0, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#0, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#2, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:false, ny_it201.line69#1, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#0, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor",
       "inputs": {
         "$interest": [
           "bank_a"
@@ -9126,14 +9442,18 @@
         "$dependent": [],
         "div.any": false,
         "f1040.status": "single",
-        "f1040.tax_exempt_interest": 0,
+        "f1040.digital_assets": false,
+        "f1040.tax_exempt_any": false,
         "f1040.withheld_other_any": false,
         "f1040.estimated_any": false,
         "$f1095a": [],
+        "$f1116col": [],
+        "$f1116sbyr": [],
         "f2441.benefits": false,
         "f2441.care": false,
         "f4952.has_interest": false,
         "f5695.any": false,
+        "$f8853c": [],
         "f8863.paid": false,
         "f8959.territory_w2": false,
         "$gift": [],
@@ -9157,7 +9477,7 @@
         "ny_it201.ask.resident_credit": false,
         "ny_it201.ask.other_credits": false,
         "ny_it201.ask.other_taxes": false,
-        "ny_it201.ask.owes_use_tax": false,
+        "ny_it201.ask.bought_untaxed": false,
         "ny_it201.ask.contributions": false,
         "ny_it201.ask.noncustodial": false,
         "ny_it201.ask.late_penalty": false,
@@ -9178,7 +9498,11 @@
         "person[taxpayer].x_edu_account": false,
         "person[taxpayer].x_archer_excess": false,
         "person[taxpayer].inherited_account": false,
+        "$f4137row@person[taxpayer]": [],
         "$f8889@person[taxpayer]": [],
+        "$f8919firm@person[taxpayer]": [],
+        "$k1p@person[taxpayer]": [],
+        "$k1s@person[taxpayer]": [],
         "$otjob@person[taxpayer]": [],
         "$retirement@person[taxpayer]": [],
         "$sc@person[taxpayer]": [],
@@ -9191,11 +9515,12 @@
         "qbi.prior_form": false,
         "qbi.coop_patron": false,
         "refund.any": false,
+        "$rental": [],
+        "$royalty": [],
         "s1.uc_any": false,
         "s1.ltc_payout": false,
         "s1.nqdc_pension": false,
         "s1.inmate_wages": false,
-        "s1.digital_income": false,
         "s1.winnings_any": false,
         "s1.alaska_any": false,
         "s1.jury_any": false,
@@ -9249,6 +9574,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
         "scope.rental": false,
@@ -9275,11 +9601,10 @@
         "sd.small_business_stock": false,
         "sd.trader_election": false,
         "sd.casualty": false,
+        "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false,
-        "sd.qof": false,
-        "f1040.digital_assets": false
+        "ssb.any": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -9426,6 +9751,10 @@
           "kind": "money",
           "cents": 4000000
         },
+        "ny_it201.std_deduction": {
+          "kind": "money",
+          "cents": 800000
+        },
         "ny_it201.std_deduction_dependent": {
           "kind": "money",
           "cents": 310000
@@ -9449,6 +9778,38 @@
         "ny_it201.line38": {
           "kind": "money",
           "cents": 3690000
+        },
+        "ny_it201.tax_low": {
+          "kind": "money",
+          "cents": 186600
+        },
+        "ny_it201.tcw.top": {
+          "kind": "money",
+          "cents": 402200
+        },
+        "ny_it201.tcw.mfj": {
+          "kind": "money",
+          "cents": 186500
+        },
+        "ny_it201.tcw.single": {
+          "kind": "money",
+          "cents": 186500
+        },
+        "ny_it201.tcw.hoh": {
+          "kind": "money",
+          "cents": 186500
+        },
+        "ny_it201.tcw.by_status": {
+          "kind": "money",
+          "cents": 186500
+        },
+        "ny_it201.tax_high": {
+          "kind": "money",
+          "cents": 186500
+        },
+        "ny_it201.line39": {
+          "kind": "money",
+          "cents": 186600
         },
         "ny_it201.hh_agi": {
           "kind": "money",
@@ -9554,17 +9915,33 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line44": {
+          "kind": "money",
+          "cents": 186600
+        },
         "ny_it201.line45": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line46": {
+          "kind": "money",
+          "cents": 186600
         },
         "ny_it201.line47": {
           "kind": "money",
           "cents": 3690000
         },
+        "ny_it201.line47a": {
+          "kind": "money",
+          "cents": 131300
+        },
         "ny_it201.line48": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line49": {
+          "kind": "money",
+          "cents": 131300
         },
         "ny_it201.line50": {
           "kind": "money",
@@ -9574,9 +9951,17 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line52": {
+          "kind": "money",
+          "cents": 131300
+        },
         "ny_it201.line53": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line54": {
+          "kind": "money",
+          "cents": 131300
         },
         "ny_it201.line54a": {
           "kind": "money",
@@ -9609,6 +9994,10 @@
         "ny_it201.line57": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line58": {
+          "kind": "money",
+          "cents": 131300
         },
         "ny_it201.sut.b1": {
           "kind": "money",
@@ -9662,6 +10051,14 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line61": {
+          "kind": "money",
+          "cents": 317900
+        },
+        "ny_it201.line62": {
+          "kind": "money",
+          "cents": 317900
+        },
         "ny_it201.line63": {
           "kind": "money",
           "cents": 0
@@ -9698,13 +10095,29 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.stc_rr_low": {
+          "kind": "money",
+          "cents": 6300
+        },
         "ny_it201.stc_rr_excess": {
           "kind": "money",
           "cents": 2490000
         },
+        "ny_it201.stc_rr_excess_product": {
+          "kind": "money",
+          "cents": 5700
+        },
         "ny_it201.stc_rr_base": {
           "kind": "money",
           "cents": 2100
+        },
+        "ny_it201.stc_rr_high": {
+          "kind": "money",
+          "cents": 7800
+        },
+        "ny_it201.stc_rr": {
+          "kind": "money",
+          "cents": 7800
         },
         "ny_it201.line69a": {
           "kind": "money",
@@ -9741,6 +10154,10 @@
         "ny_it201.line76": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.tax_due": {
+          "kind": "money",
+          "cents": 317900
         },
         "ny_it201.prepayments": {
           "kind": "money",
@@ -9789,6 +10206,10 @@
         "ny_it201.line78b": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line80": {
+          "kind": "money",
+          "cents": 317900
         }
       }
     },
@@ -9798,7 +10219,7 @@
         "ny_it201"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 fbfbb7f5273428e130f37449abefa1f63848df07d2418c7d624ba999537409bb; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#2, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.ask.spouse_itemizes:false, ny_it201.spouse_itemizes_if_mfs#2, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#3, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#0, ny_it201.hh_city_t5#0, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#4, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#4, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#2, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor; dropped after ruling: ny_it201.tax_table; dropped after ruling: ny_it201.tax_low; dropped after ruling: ny_it201.line39; dropped after ruling: ny_it201.line44; dropped after ruling: ny_it201.line46; dropped after ruling: ny_it201.city_tax_table; dropped after ruling: ny_it201.line47a; dropped after ruling: ny_it201.line49; dropped after ruling: ny_it201.line52; dropped after ruling: ny_it201.line54; dropped after ruling: ny_it201.line58; dropped after ruling: ny_it201.sut.top_product; dropped after ruling: ny_it201.sut.top; dropped after ruling: ny_it201.line61; dropped after ruling: ny_it201.line62; dropped after ruling: ny_it201.stc_rr_low; dropped after ruling: ny_it201.stc_rr_excess_product; dropped after ruling: ny_it201.stc_rr_high; dropped after ruling: ny_it201.stc_rr; dropped after ruling: ny_it201.tax_due; dropped after ruling: ny_it201.line80",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 634a7fb174d43e1cd2a4bf0c086cce671fbdcddb52d9d0890b0bb9da47f2e0db; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.bought_untaxed:false, ny_it201.use_tax_dmv_only_if_bought#1, ny_it201.use_tax_dmv_only_if_bought:false, ny_it201.use_tax_not_dmv:true, ny_it201.ask.owes_use_tax#1, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#2, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_candidate:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.ask.spouse_itemizes:false, ny_it201.spouse_itemizes_if_mfs#2, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#3, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#0, ny_it201.hh_city_t5#0, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#4, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#4, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#2, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor; dropped after ruling: ny_it201.sut.top_product; dropped after ruling: ny_it201.sut.top; dropped after ruling: ny_it201.stc_rr_low; dropped after ruling: ny_it201.stc_rr_excess_product; dropped after ruling: ny_it201.stc_rr_high; dropped after ruling: ny_it201.stc_rr",
       "inputs": {
         "f1040.status": "mfs",
         "person[taxpayer].birth_year": 1950,
@@ -9814,22 +10235,28 @@
         "$ny_it2": [
           "w0"
         ],
+        "household.married_dec31": true,
         "$carloan": [],
         "$dcprov": [],
         "$dependent": [],
         "div.any": false,
-        "f1040.tax_exempt_interest": 0,
+        "f1040.digital_assets": false,
+        "f1040.tax_exempt_any": false,
         "f1040.withheld_other_any": false,
         "f1040.estimated_any": false,
         "$f1095a": [],
+        "$f1116col": [],
+        "$f1116sbyr": [],
         "f2441.benefits": false,
         "f2441.care": false,
         "f4952.has_interest": false,
         "f5695.any": false,
+        "$f8853c": [],
         "f8863.paid": false,
         "f8959.territory_w2": false,
         "$gift": [],
         "household.community_property": false,
+        "household.spouse_cp_domicile": false,
         "$interest": [],
         "ny_it2[w0].state_withheld": 0,
         "ny_it2[w0].yonkers_withheld": 0,
@@ -9846,7 +10273,7 @@
         "ny_it201.ask.resident_credit": false,
         "ny_it201.ask.other_credits": false,
         "ny_it201.ask.other_taxes": false,
-        "ny_it201.ask.owes_use_tax": false,
+        "ny_it201.ask.bought_untaxed": false,
         "ny_it201.ask.contributions": false,
         "ny_it201.ask.noncustodial": false,
         "ny_it201.ask.late_penalty": false,
@@ -9866,19 +10293,26 @@
         "person[taxpayer].x_edu_account": false,
         "person[taxpayer].x_archer_excess": false,
         "person[taxpayer].rmd_missed": false,
+        "$f4137row@person[taxpayer]": [],
         "$f8889@person[taxpayer]": [],
+        "$f8919firm@person[taxpayer]": [],
+        "$k1p@person[taxpayer]": [],
+        "$k1s@person[taxpayer]": [],
         "$otjob@person[taxpayer]": [],
         "$retirement@person[taxpayer]": [],
         "$sc@person[taxpayer]": [],
         "$tipjob@person[taxpayer]": [],
+        "person[taxpayer].w2[a].box2": 0,
+        "person[taxpayer].w2[a].box4": 0,
         "qbi.prior_form": false,
         "qbi.coop_patron": false,
         "refund.any": false,
+        "$rental": [],
+        "$royalty": [],
         "s1.uc_any": false,
         "s1.ltc_payout": false,
         "s1.nqdc_pension": false,
         "s1.inmate_wages": false,
-        "s1.digital_income": false,
         "s1.winnings_any": false,
         "s1.alaska_any": false,
         "s1.jury_any": false,
@@ -9934,6 +10368,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
         "scope.rental": false,
@@ -9960,14 +10395,9 @@
         "sd.small_business_stock": false,
         "sd.trader_election": false,
         "sd.casualty": false,
-        "sd.carryover": false,
-        "sli.any": false,
-        "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false,
-        "household.married_dec31": true,
-        "household.mfs_living": "together_late",
-        "f8962.mfs_exception": false
+        "sd.carryover": false,
+        "ssb.any": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -10142,6 +10572,38 @@
           "kind": "money",
           "cents": 4000000
         },
+        "ny_it201.tax_low": {
+          "kind": "money",
+          "cents": 203700
+        },
+        "ny_it201.tcw.top": {
+          "kind": "money",
+          "cents": 436000
+        },
+        "ny_it201.tcw.mfj": {
+          "kind": "money",
+          "cents": 203600
+        },
+        "ny_it201.tcw.single": {
+          "kind": "money",
+          "cents": 203600
+        },
+        "ny_it201.tcw.hoh": {
+          "kind": "money",
+          "cents": 203600
+        },
+        "ny_it201.tcw.by_status": {
+          "kind": "money",
+          "cents": 203600
+        },
+        "ny_it201.tax_high": {
+          "kind": "money",
+          "cents": 203600
+        },
+        "ny_it201.line39": {
+          "kind": "money",
+          "cents": 203700
+        },
         "ny_it201.hh_agi": {
           "kind": "money",
           "cents": 4800000
@@ -10246,17 +10708,33 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line44": {
+          "kind": "money",
+          "cents": 203700
+        },
         "ny_it201.line45": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line46": {
+          "kind": "money",
+          "cents": 203700
         },
         "ny_it201.line47": {
           "kind": "money",
           "cents": 4000000
         },
+        "ny_it201.line47a": {
+          "kind": "money",
+          "cents": 143200
+        },
         "ny_it201.line48": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line49": {
+          "kind": "money",
+          "cents": 143200
         },
         "ny_it201.line50": {
           "kind": "money",
@@ -10266,9 +10744,17 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line52": {
+          "kind": "money",
+          "cents": 143200
+        },
         "ny_it201.line53": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line54": {
+          "kind": "money",
+          "cents": 143200
         },
         "ny_it201.line54a": {
           "kind": "money",
@@ -10301,6 +10787,10 @@
         "ny_it201.line57": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line58": {
+          "kind": "money",
+          "cents": 143200
         },
         "ny_it201.sut.b1": {
           "kind": "money",
@@ -10345,6 +10835,14 @@
         "ny_it201.line60": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line61": {
+          "kind": "money",
+          "cents": 346900
+        },
+        "ny_it201.line62": {
+          "kind": "money",
+          "cents": 346900
         },
         "ny_it201.line63": {
           "kind": "money",
@@ -10426,6 +10924,10 @@
           "kind": "money",
           "cents": 14800
         },
+        "ny_it201.tax_due": {
+          "kind": "money",
+          "cents": 332100
+        },
         "ny_it201.prepayments": {
           "kind": "money",
           "cents": 0
@@ -10473,6 +10975,10 @@
         "ny_it201.line78b": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line80": {
+          "kind": "money",
+          "cents": 332100
         }
       }
     },
@@ -10482,88 +10988,60 @@
         "ny_it201"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 19464d981f03e590a63f09b05952249b05b8fb89a4720b951de862dec1c37b75; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.ask.spouse_resident:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#1, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#1, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#1, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#1, ny_it201.hh_city_t5#1, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#1, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#1, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#3, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor, ny_it201.spouse_not_resident:false; dropped after ruling: ny_it201.sut.top_product; dropped after ruling: ny_it201.sut.top; dropped after ruling: ny_it201.stc_rr_low; dropped after ruling: ny_it201.stc_rr_excess_product; dropped after ruling: ny_it201.stc_rr_high; dropped after ruling: ny_it201.stc_rr",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 a97029734757d125137b1782336f082269b0019547b04fba320f81679c7775b6; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.bought_untaxed:true, ny_it201.ask.use_tax_dmv_only:true, ny_it201.use_tax_dmv_only_if_bought#0, ny_it201.use_tax_dmv_only_if_bought:true, ny_it201.use_tax_not_dmv:false, ny_it201.ask.owes_use_tax#0, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#0, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_candidate:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#0, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#0, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#0, ny_it201.hh_city_t5#0, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#0, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#0, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#2, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor; dropped after ruling: ny_it201.sut.top_product; dropped after ruling: ny_it201.sut.top; dropped after ruling: ny_it201.stc_rr_low; dropped after ruling: ny_it201.stc_rr_excess_product; dropped after ruling: ny_it201.stc_rr_high; dropped after ruling: ny_it201.stc_rr",
       "inputs": {
-        "f1040.status": "mfj",
-        "$person": [
-          "taxpayer",
-          "spouse"
+        "$interest": [
+          "bank_a"
         ],
-        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
-          "e0"
+          "emp_a",
+          "emp_b"
         ],
-        "person[taxpayer].w2[e0].box1": 5432500,
-        "person[taxpayer].w2[e0].box4": 744000,
-        "person[taxpayer].w2[e0].box5": 5432500,
-        "person[taxpayer].w2[e0].box6": 174000,
-        "$w2@person[spouse]": [
-          "e0"
-        ],
-        "f5695.any": true,
-        "f5695.doors": true,
-        "f5695.windows": true,
-        "f5695.central_ac": true,
-        "f5695.line19a": 100000,
-        "f5695.line19d_i": 100000,
-        "f5695.line20a_i": 220000,
-        "f5695.line22a": 500000,
-        "f5695.line17a": true,
-        "f5695.line17b": true,
-        "f5695.line17c": true,
-        "f5695.line21a": true,
-        "f5695.line21b": true,
-        "f5695.qmid_doors": true,
-        "f5695.qmid_windows": true,
-        "f5695.qmid_ac": true,
+        "person[taxpayer].w2[emp_a].box1": 800000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 800000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 800000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
         "ny_it201.ask.city_resident": true,
-        "ny_it201.ask.spouse_resident": true,
+        "ny_it201.ask.bought_untaxed": true,
         "ny_it201.ask.prior_full_year": true,
         "$ny_it2": [
           "w0"
         ],
+        "ny_it201.ask.use_tax_dmv_only": true,
         "$carloan": [],
         "$dcprov": [],
         "$dependent": [],
         "div.any": false,
-        "f1040.tax_exempt_interest": 0,
+        "f1040.status": "single",
+        "f1040.digital_assets": false,
+        "f1040.tax_exempt_any": false,
         "f1040.withheld_other_any": false,
         "f1040.estimated_any": false,
         "$f1095a": [],
+        "$f1116col": [],
+        "$f1116sbyr": [],
         "f2441.benefits": false,
         "f2441.care": false,
         "f4952.has_interest": false,
-        "f5695.solar": false,
-        "f5695.solar_water": false,
-        "f5695.wind": false,
-        "f5695.geothermal": false,
-        "f5695.insulation": false,
-        "f5695.panel": false,
-        "f5695.audit": false,
-        "f5695.heat_pump": false,
-        "f5695.hp_water_heater": false,
-        "f5695.water_heater": false,
-        "f5695.furnace": false,
-        "f5695.biomass": false,
-        "f5695.business_use": false,
-        "f5695.line5a": false,
-        "f5695.line7a": false,
-        "f5695.line17e": false,
-        "f5695.line19d_ii": 0,
-        "f5695.line19e": 0,
-        "f5695.line20a_ii": 0,
-        "f5695.line20a_iii": 0,
-        "f5695.line20a_iv": 0,
-        "f5695.line20b": 0,
-        "f5695.b_new_home": false,
-        "f5695.line22b": 0,
-        "f5695.joint_occupancy": false,
-        "f5695.separate_homes": false,
-        "f5695.condo": false,
+        "f5695.any": false,
+        "$f8853c": [],
         "f8863.paid": false,
         "f8959.territory_w2": false,
         "$gift": [],
-        "$interest": [],
+        "household.ever_married": true,
+        "household.married_dec31": false,
+        "household.community_property": false,
+        "household.spouse_died_this_year": false,
+        "interest[bank_a].amount": 0,
+        "interest[bank_a].penalty": 0,
         "ny_it2[w0].state_withheld": 0,
         "ny_it2[w0].yonkers_withheld": 0,
         "ny_it2[w0].city_withheld": 0,
@@ -10579,7 +11057,6 @@
         "ny_it201.ask.resident_credit": false,
         "ny_it201.ask.other_credits": false,
         "ny_it201.ask.other_taxes": false,
-        "ny_it201.ask.owes_use_tax": false,
         "ny_it201.ask.contributions": false,
         "ny_it201.ask.noncustodial": false,
         "ny_it201.ask.late_penalty": false,
@@ -10588,56 +11065,38 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.est_any": false,
         "$oi8z": [],
+        "$person": [
+          "taxpayer"
+        ],
         "person[taxpayer].role": "taxpayer",
         "person[taxpayer].birth_year": 1980,
         "person[taxpayer].blind": false,
         "person[taxpayer].eligible_educator": false,
         "person[taxpayer].rrta": false,
-        "person[taxpayer].sav_student": false,
         "person[taxpayer].ira_owner": false,
-        "person[taxpayer].sav_able": false,
-        "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].x_edu_account": false,
         "person[taxpayer].x_archer_excess": false,
         "person[taxpayer].inherited_account": false,
+        "$f4137row@person[taxpayer]": [],
         "$f8889@person[taxpayer]": [],
+        "$f8919firm@person[taxpayer]": [],
+        "$k1p@person[taxpayer]": [],
+        "$k1s@person[taxpayer]": [],
         "$otjob@person[taxpayer]": [],
         "$retirement@person[taxpayer]": [],
         "$sc@person[taxpayer]": [],
         "$tipjob@person[taxpayer]": [],
-        "person[taxpayer].w2[e0].box2": 0,
-        "person[taxpayer].w2[e0].box12_any": false,
-        "person[spouse].role": "spouse",
-        "person[spouse].birth_year": 1980,
-        "person[spouse].blind": false,
-        "person[spouse].eligible_educator": false,
-        "person[spouse].rrta": false,
-        "person[spouse].sav_student": false,
-        "person[spouse].ira_owner": false,
-        "person[spouse].sav_able": false,
-        "person[spouse].sav_voluntary": 0,
-        "person[spouse].x_edu_account": false,
-        "person[spouse].x_archer_excess": false,
-        "person[spouse].inherited_account": false,
-        "$f8889@person[spouse]": [],
-        "$otjob@person[spouse]": [],
-        "$retirement@person[spouse]": [],
-        "$sc@person[spouse]": [],
-        "$tipjob@person[spouse]": [],
-        "person[spouse].w2[e0].box1": 0,
-        "person[spouse].w2[e0].box2": 0,
-        "person[spouse].w2[e0].box4": 0,
-        "person[spouse].w2[e0].box5": 0,
-        "person[spouse].w2[e0].box6": 0,
-        "person[spouse].w2[e0].box12_any": false,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "person[taxpayer].w2[emp_b].box7": 0,
         "qbi.prior_form": false,
         "qbi.coop_patron": false,
         "refund.any": false,
+        "$rental": [],
+        "$royalty": [],
         "s1.uc_any": false,
         "s1.ltc_payout": false,
         "s1.nqdc_pension": false,
         "s1.inmate_wages": false,
-        "s1.digital_income": false,
         "s1.winnings_any": false,
         "s1.alaska_any": false,
         "s1.jury_any": false,
@@ -10691,6 +11150,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
         "scope.rental": false,
@@ -10717,11 +11177,853 @@
         "sd.small_business_stock": false,
         "sd.trader_election": false,
         "sd.casualty": false,
+        "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false,
+        "ssb.any": false
+      },
+      "expect": {
+        "ny_it201.item_c": {
+          "kind": "bool",
+          "value": false
+        },
+        "ny_it201.item_h_count": {
+          "kind": "count",
+          "value": 0
+        },
+        "ny_it201.line1": {
+          "kind": "money",
+          "cents": 4800000
+        },
+        "ny_it201.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line17": {
+          "kind": "money",
+          "cents": 4800000
+        },
+        "ny_it201.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line19": {
+          "kind": "money",
+          "cents": 4800000
+        },
+        "ny_it201.line19_agrees": {
+          "kind": "bool",
+          "value": true
+        },
+        "ny_it201.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line22": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line24": {
+          "kind": "money",
+          "cents": 4800000
+        },
+        "ny_it201.line25": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line26": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line27": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line28": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line29": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line30": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line32": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line33": {
+          "kind": "money",
+          "cents": 4800000
+        },
+        "ny_it201.std_deduction": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "ny_it201.std_deduction_dependent": {
+          "kind": "money",
+          "cents": 310000
+        },
+        "ny_it201.line34": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "ny_it201.line35": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "ny_it201.line36": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line37": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "ny_it201.line38": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "ny_it201.tax_low": {
+          "kind": "money",
+          "cents": 203700
+        },
+        "ny_it201.tcw.top": {
+          "kind": "money",
+          "cents": 436000
+        },
+        "ny_it201.tcw.mfj": {
+          "kind": "money",
+          "cents": 203600
+        },
+        "ny_it201.tcw.single": {
+          "kind": "money",
+          "cents": 203600
+        },
+        "ny_it201.tcw.hoh": {
+          "kind": "money",
+          "cents": 203600
+        },
+        "ny_it201.tcw.by_status": {
+          "kind": "money",
+          "cents": 203600
+        },
+        "ny_it201.tax_high": {
+          "kind": "money",
+          "cents": 203600
+        },
+        "ny_it201.line39": {
+          "kind": "money",
+          "cents": 203700
+        },
+        "ny_it201.hh_agi": {
+          "kind": "money",
+          "cents": 4800000
+        },
+        "ny_it201.hh_people": {
+          "kind": "count",
+          "value": 1
+        },
+        "ny_it201.hh_state_p1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_p7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_p7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_t2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_t5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_t1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_t4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_state_by_status": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.hh_city_by_status": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line40": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line41": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line42": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line43": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line44": {
+          "kind": "money",
+          "cents": 203700
+        },
+        "ny_it201.line45": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line46": {
+          "kind": "money",
+          "cents": 203700
+        },
+        "ny_it201.line47": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "ny_it201.line47a": {
+          "kind": "money",
+          "cents": 143200
+        },
+        "ny_it201.line48": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line49": {
+          "kind": "money",
+          "cents": 143200
+        },
+        "ny_it201.line50": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line51": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line52": {
+          "kind": "money",
+          "cents": 143200
+        },
+        "ny_it201.line53": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line54": {
+          "kind": "money",
+          "cents": 143200
+        },
+        "ny_it201.line54a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line54b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line54c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line54d": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line54e": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line55": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line56": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line57": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line58": {
+          "kind": "money",
+          "cents": 143200
+        },
+        "ny_it201.sut.b1": {
+          "kind": "money",
+          "cents": 300
+        },
+        "ny_it201.sut.b2": {
+          "kind": "money",
+          "cents": 600
+        },
+        "ny_it201.sut.b3": {
+          "kind": "money",
+          "cents": 1000
+        },
+        "ny_it201.sut.b4": {
+          "kind": "money",
+          "cents": 1500
+        },
+        "ny_it201.sut.b5": {
+          "kind": "money",
+          "cents": 1800
+        },
+        "ny_it201.sut.b6": {
+          "kind": "money",
+          "cents": 2600
+        },
+        "ny_it201.sut.b7": {
+          "kind": "money",
+          "cents": 3400
+        },
+        "ny_it201.sut.cap": {
+          "kind": "money",
+          "cents": 12500
+        },
+        "ny_it201.sut.chart": {
+          "kind": "money",
+          "cents": 1000
+        },
+        "ny_it201.line59": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line60": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line61": {
+          "kind": "money",
+          "cents": 346900
+        },
+        "ny_it201.line62": {
+          "kind": "money",
+          "cents": 346900
+        },
+        "ny_it201.line63": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line64": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line65": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line66": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line67": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line68": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.stc_income": {
+          "kind": "money",
+          "cents": 4800000
+        },
+        "ny_it201.stc_fixed_amount": {
+          "kind": "money",
+          "cents": 6300
+        },
+        "ny_it201.line69": {
+          "kind": "money",
+          "cents": 6300
+        },
+        "ny_it201.stc_rr_excess": {
+          "kind": "money",
+          "cents": 2800000
+        },
+        "ny_it201.stc_rr_base": {
+          "kind": "money",
+          "cents": 2100
+        },
+        "ny_it201.line69a": {
+          "kind": "money",
+          "cents": 8500
+        },
+        "ny_it201.line70": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line70a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line71": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line72": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line73": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line74": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line75": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line76": {
+          "kind": "money",
+          "cents": 14800
+        },
+        "ny_it201.tax_due": {
+          "kind": "money",
+          "cents": 332100
+        },
+        "ny_it201.prepayments": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.safe_harbor_100": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.safe_harbor_110": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.safe_harbor": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line81": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line82": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.overpaid_before_penalty": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line77": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line79": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line78": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line78a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line78b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line80": {
+          "kind": "money",
+          "cents": 332100
+        }
+      }
+    },
+    {
+      "id": "classm.ny_it201.6",
+      "covers": [
+        "ny_it201"
+      ],
+      "evidence": "M",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 564f1f6ccbefaf8e31639b2d907c484bf5e37087d074032ce7cee79868c7afc2; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.bought_untaxed:false, ny_it201.use_tax_dmv_only_if_bought#1, ny_it201.use_tax_dmv_only_if_bought:false, ny_it201.use_tax_not_dmv:true, ny_it201.ask.owes_use_tax#1, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.ask.spouse_resident:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#1, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_candidate:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#1, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#1, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#1, ny_it201.hh_city_t5#1, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#1, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#1, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#3, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor, ny_it201.spouse_not_resident:false; dropped after ruling: ny_it201.sut.top_product; dropped after ruling: ny_it201.sut.top; dropped after ruling: ny_it201.stc_rr_low; dropped after ruling: ny_it201.stc_rr_excess_product; dropped after ruling: ny_it201.stc_rr_high; dropped after ruling: ny_it201.stc_rr",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5432500,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 5432500,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 100000,
+        "f5695.line20a_i": 220000,
+        "f5695.line22a": 500000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_doors": true,
+        "f5695.qmid_windows": true,
+        "f5695.qmid_ac": true,
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.spouse_resident": true,
+        "ny_it201.ask.prior_full_year": true,
+        "$ny_it2": [
+          "w0"
+        ],
+        "$carloan": [],
+        "$dcprov": [],
+        "$dependent": [],
+        "div.any": false,
+        "f1040.digital_assets": false,
+        "f1040.tax_exempt_any": false,
+        "f1040.withheld_other_any": false,
+        "f1040.estimated_any": false,
+        "$f1095a": [],
+        "$f1116col": [],
+        "$f1116sbyr": [],
+        "f2441.benefits": false,
+        "f2441.care": false,
+        "f4952.has_interest": false,
+        "f5695.solar": false,
+        "f5695.solar_water": false,
+        "f5695.wind": false,
+        "f5695.geothermal": false,
+        "f5695.insulation": false,
+        "f5695.panel": false,
+        "f5695.audit": false,
+        "f5695.heat_pump": false,
+        "f5695.hp_water_heater": false,
+        "f5695.water_heater": false,
+        "f5695.furnace": false,
+        "f5695.biomass": false,
+        "f5695.business_use": false,
+        "f5695.line5a": false,
+        "f5695.line7a": false,
+        "f5695.line17e": false,
+        "f5695.line19d_ii": 0,
+        "f5695.line19e": 0,
+        "f5695.line20a_ii": 0,
+        "f5695.line20a_iii": 0,
+        "f5695.line20a_iv": 0,
+        "f5695.line20b": 0,
+        "f5695.b_new_home": false,
+        "f5695.line22b": 0,
+        "f5695.joint_occupancy": false,
+        "f5695.separate_homes": false,
+        "f5695.condo": false,
+        "$f8853c": [],
+        "f8863.paid": false,
+        "f8959.territory_w2": false,
+        "$gift": [],
+        "$interest": [],
+        "ny_it2[w0].state_withheld": 0,
+        "ny_it2[w0].yonkers_withheld": 0,
+        "ny_it2[w0].city_withheld": 0,
+        "ny_it201.ask.yonkers": false,
+        "ny_it201.ask.moved_in": false,
+        "ny_it201.ask.moved_out": false,
+        "ny_it201.ask.abroad": false,
+        "ny_it201.ask.installment": false,
+        "ny_it201.ask.decedent": false,
+        "ny_it201.ask.item_c": false,
+        "ny_it201.ask.it225": false,
+        "ny_it201.ask.itemize": false,
+        "ny_it201.ask.resident_credit": false,
+        "ny_it201.ask.other_credits": false,
+        "ny_it201.ask.other_taxes": false,
+        "ny_it201.ask.bought_untaxed": false,
+        "ny_it201.ask.contributions": false,
+        "ny_it201.ask.noncustodial": false,
+        "ny_it201.ask.late_penalty": false,
+        "ny_it201.ask.prior_agi_high": false,
+        "ny_it201.ask.prior_year_tax": 0,
+        "ny_it201.ask.public_job": false,
+        "ny_it201.ask.est_any": false,
+        "$oi8z": [],
+        "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].birth_year": 1980,
+        "person[taxpayer].blind": false,
+        "person[taxpayer].eligible_educator": false,
+        "person[taxpayer].rrta": false,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].ira_owner": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].x_edu_account": false,
+        "person[taxpayer].x_archer_excess": false,
+        "person[taxpayer].inherited_account": false,
+        "$f4137row@person[taxpayer]": [],
+        "$f8889@person[taxpayer]": [],
+        "$f8919firm@person[taxpayer]": [],
+        "$k1p@person[taxpayer]": [],
+        "$k1s@person[taxpayer]": [],
+        "$otjob@person[taxpayer]": [],
+        "$retirement@person[taxpayer]": [],
+        "$sc@person[taxpayer]": [],
+        "$tipjob@person[taxpayer]": [],
+        "person[taxpayer].w2[e0].box2": 0,
+        "person[taxpayer].w2[e0].box12_any": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].birth_year": 1980,
+        "person[spouse].blind": false,
+        "person[spouse].eligible_educator": false,
+        "person[spouse].rrta": false,
+        "person[spouse].sav_student": false,
+        "person[spouse].ira_owner": false,
+        "person[spouse].sav_able": false,
+        "person[spouse].sav_voluntary": 0,
+        "person[spouse].x_edu_account": false,
+        "person[spouse].x_archer_excess": false,
+        "person[spouse].inherited_account": false,
+        "$f4137row@person[spouse]": [],
+        "$f8889@person[spouse]": [],
+        "$f8919firm@person[spouse]": [],
+        "$k1p@person[spouse]": [],
+        "$k1s@person[spouse]": [],
+        "$otjob@person[spouse]": [],
+        "$retirement@person[spouse]": [],
+        "$sc@person[spouse]": [],
+        "$tipjob@person[spouse]": [],
+        "person[spouse].w2[e0].box1": 0,
+        "person[spouse].w2[e0].box2": 0,
+        "person[spouse].w2[e0].box4": 0,
+        "person[spouse].w2[e0].box5": 0,
+        "person[spouse].w2[e0].box6": 0,
+        "person[spouse].w2[e0].box12_any": false,
+        "qbi.prior_form": false,
+        "qbi.coop_patron": false,
+        "refund.any": false,
+        "$rental": [],
+        "$royalty": [],
+        "s1.uc_any": false,
+        "s1.ltc_payout": false,
+        "s1.nqdc_pension": false,
+        "s1.inmate_wages": false,
+        "s1.winnings_any": false,
+        "s1.alaska_any": false,
+        "s1.jury_any": false,
+        "s1.hobby_any": false,
+        "s1.scholarship_any": false,
+        "s1.alimony_any": false,
+        "s1.cod_any": false,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "s2.options_any": false,
+        "s2.iso_vested": false,
+        "s2.w2_marks": false,
+        "s2.household_help": false,
+        "s2.hsa_testing": false,
+        "s2.credit_recapture": false,
+        "s2.other_tax": false,
+        "s3.adoption_any": false,
+        "s3.credit_bond": false,
+        "s3.disability_retired": false,
+        "s3.ev": false,
+        "s3.farmland": false,
+        "s3.foreign_any": false,
+        "s3.kerosene": false,
+        "s3.prior_other_forms": false,
+        "s3.repaid_income": false,
+        "s3.line10": 0,
+        "sa.gifts": false,
+        "sa.gift_carryover": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.elect_itemize": false,
+        "sa.medical_any": false,
+        "sa.medical_premiums": false,
+        "sa.state_tax_any": false,
+        "sa.state_tax_other_any": false,
+        "sa.home_owner": false,
+        "sa.home_other": false,
+        "sa.personal_property_tax_any": false,
+        "sa.sales_tax_wish": false,
+        "sa.estate_tax_income": false,
+        "sa.bond_premium": false,
+        "sa.debt_instrument_loss": false,
+        "sa.pension_unrecovered": false,
+        "sa.impairment_work": false,
+        "$sales": [],
+        "sb.account_any": false,
+        "sb.asset_any": false,
+        "sb.trust_any": false,
+        "sb.company_any": false,
+        "sb.territory_any": false,
+        "scope.noncitizen": false,
+        "scope.chapter11": false,
+        "scope.treaty": false,
+        "scope.armed_forces": false,
+        "scope.f8814": false,
+        "scope.rental": false,
+        "scope.k1": false,
+        "scope.farm": false,
+        "scope.pay_no_w2": false,
+        "scope.medicaid_waiver": false,
+        "scope.religious_work": false,
+        "scope.w2_marks": false,
+        "scope.artist_official": false,
+        "scope.recovery": false,
+        "scope.disaster_distribution": false,
+        "scope.excess_deferral": false,
+        "scope.archer_msa": false,
+        "scope.education_recapture": false,
+        "scope.foreign_shares": false,
+        "scope.reforestation": false,
+        "scope.attorney_fees": false,
+        "scope.business_before": false,
+        "scope.nol": false,
+        "sd.sold_other": false,
+        "sd.sec1256": false,
+        "sd.condemned": false,
+        "sd.small_business_stock": false,
+        "sd.trader_election": false,
+        "sd.casualty": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "sd.carryover": false,
+        "sli.any": false,
+        "ssb.any": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -10872,10 +12174,6 @@
           "kind": "money",
           "cents": 1605000
         },
-        "ny_it201.std_deduction_dependent": {
-          "kind": "money",
-          "cents": 310000
-        },
         "ny_it201.line34": {
           "kind": "money",
           "cents": 1605000
@@ -10896,35 +12194,7 @@
           "kind": "money",
           "cents": 3827500
         },
-        "ny_it201.tax_table": {
-          "kind": "money",
-          "cents": 177300
-        },
         "ny_it201.tax_low": {
-          "kind": "money",
-          "cents": 177300
-        },
-        "ny_it201.tcw.top": {
-          "kind": "money",
-          "cents": 417200
-        },
-        "ny_it201.tcw.mfj": {
-          "kind": "money",
-          "cents": 177300
-        },
-        "ny_it201.tcw.single": {
-          "kind": "money",
-          "cents": 177300
-        },
-        "ny_it201.tcw.hoh": {
-          "kind": "money",
-          "cents": 177300
-        },
-        "ny_it201.tcw.by_status": {
-          "kind": "money",
-          "cents": 177300
-        },
-        "ny_it201.tax_high": {
           "kind": "money",
           "cents": 177300
         },
@@ -11004,14 +12274,6 @@
           "kind": "money",
           "cents": 0
         },
-        "ny_it201.hh_state_t1": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.hh_city_t4": {
-          "kind": "money",
-          "cents": 0
-        },
         "ny_it201.hh_state_by_status": {
           "kind": "money",
           "cents": 0
@@ -11047,10 +12309,6 @@
         "ny_it201.line47": {
           "kind": "money",
           "cents": 3827500
-        },
-        "ny_it201.city_tax_table": {
-          "kind": "money",
-          "cents": 129200
         },
         "ny_it201.line47a": {
           "kind": "money",
@@ -11260,26 +12518,6 @@
           "kind": "money",
           "cents": 0
         },
-        "ny_it201.line77": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.line79": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.line78": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.line78a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.line78b": {
-          "kind": "money",
-          "cents": 0
-        },
         "ny_it201.line80": {
           "kind": "money",
           "cents": 286500
@@ -11287,12 +12525,12 @@
       }
     },
     {
-      "id": "classm.ny_it201.6",
+      "id": "classm.ny_it201.7",
       "covers": [
         "ny_it201"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 c3dcf49e8fca4782ae072f749cb290fae890ceaab2307c28ec50ef21521a6da4; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.ask.spouse_resident:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#1, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#1, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#1, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#1, ny_it201.hh_city_t5#1, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#1, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#1, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#4, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor, ny_it201.spouse_not_resident:false; dropped after ruling: ny_it201.tax_table; dropped after ruling: ny_it201.tax_low; dropped after ruling: ny_it201.line39; dropped after ruling: ny_it201.line44; dropped after ruling: ny_it201.line46; dropped after ruling: ny_it201.city_tax_table; dropped after ruling: ny_it201.line47a; dropped after ruling: ny_it201.line49; dropped after ruling: ny_it201.line52; dropped after ruling: ny_it201.line54; dropped after ruling: ny_it201.line58; dropped after ruling: ny_it201.line61; dropped after ruling: ny_it201.line62; dropped after ruling: ny_it201.tax_due; dropped after ruling: ny_it201.line80",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 c27c588bfeda11e89cb9f5d9a918be5d23385c7e0c9d0ab393ae8e1bbfb8839f; pages ny_it201i 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30,31,32 (05f677379d60); ny_it201 1,2,3,4 (c924371c32a9); ny_it201i-html 1 (63863fe461c3); ny_it216i 1 (aaccbcdb1a41); ny_it214i 1,2,3 (7ae21f8419eb); ny_it270i 1 (66b713fa6ae5); branches ny_it201.ask.city_resident:true, ny_it201.ask.yonkers:false, ny_it201.state_resident_if_not_city#0, ny_it201.state_resident_if_not_city:false, ny_it201.active_duty_if_armed_forces#1, ny_it201.active_duty_if_armed_forces:false, ny_it201.ask.moved_in:false, ny_it201.ask.moved_out:false, ny_it201.moved:false, ny_it201.bab_if_interest#1, ny_it201.bab_if_interest:false, ny_it201.ask.abroad:false, ny_it201.ask.installment:false, ny_it201.ask.special_code:false, ny_it201.ask.decedent:false, ny_it201.ask.item_c:false, ny_it201.ask.it225:false, ny_it201.ask.itemize:false, ny_it201.ask.resident_credit:false, ny_it201.ask.other_credits:false, ny_it201.ask.other_taxes:false, ny_it201.ask.bought_untaxed:false, ny_it201.use_tax_dmv_only_if_bought#1, ny_it201.use_tax_dmv_only_if_bought:false, ny_it201.use_tax_not_dmv:true, ny_it201.ask.owes_use_tax#1, ny_it201.ask.owes_use_tax:false, ny_it201.ask.contributions:false, ny_it201.ask.noncustodial:false, ny_it201.ask.late_penalty:false, ny_it201.ask.prior_agi_high:false, ny_it201.ask.prior_full_year:true, ny_it201.ask.spouse_resident:true, ny_it201.gate.part_year_state:false, ny_it201.gate.part_year_city:false, ny_it201.gate.spouse_nonresident#1, ny_it201.gate.spouse_nonresident:false, ny_it201.gate.special_accrual#1, ny_it201.gate.special_accrual:false, ny_it201.gate.yonkers:false, ny_it201.gate.special_code:false, ny_it201.gate.decedent:false, ny_it201.item_c_if_not_federal#1, ny_it201.item_c_if_not_federal:false, ny_it201.item_c:false, ny_it201.line19_agrees:true, ny_it201.has_tax_exempt:false, ny_it201.gate.line20#1, ny_it201.gate.line20:false, ny_it201.ask.public_job:false, ny_it201.public_job_if_w2#0, ny_it201.public_job_if_w2:false, ny_it201.gate.line21#1, ny_it201.gate.line21:false, ny_it201.has_edu_account:false, ny_it201.ny_529_if_account#1, ny_it201.ny_529_if_account:false, ny_it201.gate.line22#1, ny_it201.gate.line22:false, ny_it201.gate.it225:false, ny_it201.has_other_income:false, ny_it201.inflation_if_other_income#1, ny_it201.inflation_if_other_income:false, ny_it201.gate.line25:false, ny_it201.no:false, ny_it201.has_pension_income:false, ny_it201.gov_pension_candidate:false, ny_it201.gov_pension_if_income#1, ny_it201.gov_pension_if_income:false, ny_it201.gov_said_no:false, ny_it201.gov_pension_other_if_no#1, ny_it201.gov_pension_other_if_no:false, ny_it201.gov_pension_any:false, ny_it201.gate.line26:false, ny_it201.has_line28_income:false, ny_it201.gate.line28#1, ny_it201.gate.line28:false, ny_it201.pension_59_known:false, ny_it201.pension_exclusion_if_young#1, ny_it201.pension_exclusion_after_gov#1, ny_it201.gate.line29#1, ny_it201.gate.line29:false, ny_it201.gate.line30#1, ny_it201.gate.line30:false, ny_it201.spouse_itemizes_if_mfs#1, ny_it201.spouse_itemizes_if_mfs:false, ny_it201.gate.itemize:false, ny_it201.dependent_single:false, ny_it201.line34#1, ny_it201.line35:positive, ny_it201.line37:positive, ny_it201.agi_table_range:true, ny_it201.ti_table_range:true, ny_it201.tax_low#0, ny_it201.tcw.mfj#0, ny_it201.tcw.single#0, ny_it201.tcw.hoh#0, ny_it201.tcw.by_status#1, ny_it201.agi_top:false, ny_it201.tax_high#1, ny_it201.line39#0, ny_it201.hh_agi:positive, ny_it201.hh_state_t2#1, ny_it201.hh_city_t5#1, ny_it201.hh_state_in_range:false, ny_it201.gate.hh_state_mfs:false, ny_it201.gate.hh_state_over7:false, ny_it201.hh_state_by_status#1, ny_it201.hh_city_in_range:false, ny_it201.gate.hh_city_mfs:false, ny_it201.gate.hh_city_over7:false, ny_it201.hh_city_by_status#1, ny_it201.line40#1, ny_it201.gate.resident_credit:false, ny_it201.gate.other_credits:false, ny_it201.line44:positive, ny_it201.gate.other_taxes:false, ny_it201.city_table_range:true, ny_it201.line47a#0, ny_it201.line48#1, ny_it201.line49:positive, ny_it201.gate.city_credits#1, ny_it201.gate.city_credits:false, ny_it201.line54:positive, ny_it201.mctmt_possible:false, ny_it201.gate.mctmt#1, ny_it201.gate.mctmt:false, ny_it201.sut.top:left, ny_it201.sut.chart#4, ny_it201.gate.use_tax_abode#1, ny_it201.gate.use_tax_abode:false, ny_it201.gate.use_tax_st141:false, ny_it201.line59#0, ny_it201.gate.contributions:false, ny_it201.gate.child_credit:false, ny_it201.federal_care:false, ny_it201.gate.dependent_care#1, ny_it201.gate.dependent_care:false, ny_it201.gate.eic:false, ny_it201.gate.noncustodial:false, ny_it201.low_income:false, ny_it201.gate.real_property#1, ny_it201.gate.real_property:false, ny_it201.gate.college_tuition#1, ny_it201.gate.college_tuition:false, ny_it201.stc_fixed_eligible:true, ny_it201.line69#0, ny_it201.gate.stc_rr_income:false, ny_it201.stc_rr_excess:positive, ny_it201.stc_rr_low_band:false, ny_it201.stc_rr#1, ny_it201.line69a#1, ny_it201.gate.it270:false, ny_it201.has_other_payments:false, ny_it201.gate.other_withholding#1, ny_it201.gate.other_withholding:false, ny_it201.ask.est_any:false, ny_it201.line75#1, ny_it201.tax_due:positive, ny_it201.safe_harbor#0, ny_it201.tax_due_positive:true, ny_it201.est_penalty_balance#0, ny_it201.est_penalty_balance:false, ny_it201.est_below_safe_harbor:false, ny_it201.estimated_payments_positive:false, ny_it201.est_penalty_late#1, ny_it201.est_penalty_late:false, ny_it201.gate.estimated_penalty:false, ny_it201.gate.late#0, ny_it201.gate.late:false, ny_it201.overpaid_before_penalty:floor, ny_it201.line77:floor, ny_it201.has_overpayment:false, ny_it201.apply_if_overpaid#1, ny_it201.apply_if_overpaid:false, ny_it201.line79_wanted#1, ny_it201.line79#1, ny_it201.gate.line79_over:false, ny_it201.line78:floor, ny_it201.has_refund:false, ny_it201.gate.refund_529#1, ny_it201.gate.refund_529:false, ny_it201.line78b:floor, ny_it201.spouse_not_resident:false; dropped after ruling: ny_it201.stc_rr_excess_product; dropped after ruling: ny_it201.stc_rr_high; dropped after ruling: ny_it201.stc_rr",
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
@@ -11336,10 +12574,13 @@
         "$dcprov": [],
         "$dependent": [],
         "div.any": false,
-        "f1040.tax_exempt_interest": 0,
+        "f1040.digital_assets": false,
+        "f1040.tax_exempt_any": false,
         "f1040.withheld_other_any": false,
         "f1040.estimated_any": false,
         "$f1095a": [],
+        "$f1116col": [],
+        "$f1116sbyr": [],
         "f2441.benefits": false,
         "f2441.care": false,
         "f4952.has_interest": false,
@@ -11370,6 +12611,7 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
+        "$f8853c": [],
         "f8863.paid": false,
         "f8959.territory_w2": false,
         "$gift": [],
@@ -11389,7 +12631,7 @@
         "ny_it201.ask.resident_credit": false,
         "ny_it201.ask.other_credits": false,
         "ny_it201.ask.other_taxes": false,
-        "ny_it201.ask.owes_use_tax": false,
+        "ny_it201.ask.bought_untaxed": false,
         "ny_it201.ask.contributions": false,
         "ny_it201.ask.noncustodial": false,
         "ny_it201.ask.late_penalty": false,
@@ -11407,7 +12649,11 @@
         "person[taxpayer].x_edu_account": false,
         "person[taxpayer].x_archer_excess": false,
         "person[taxpayer].inherited_account": false,
+        "$f4137row@person[taxpayer]": [],
         "$f8889@person[taxpayer]": [],
+        "$f8919firm@person[taxpayer]": [],
+        "$k1p@person[taxpayer]": [],
+        "$k1s@person[taxpayer]": [],
         "$otjob@person[taxpayer]": [],
         "$retirement@person[taxpayer]": [],
         "$sc@person[taxpayer]": [],
@@ -11422,7 +12668,11 @@
         "person[spouse].x_edu_account": false,
         "person[spouse].x_archer_excess": false,
         "person[spouse].inherited_account": false,
+        "$f4137row@person[spouse]": [],
         "$f8889@person[spouse]": [],
+        "$f8919firm@person[spouse]": [],
+        "$k1p@person[spouse]": [],
+        "$k1s@person[spouse]": [],
         "$otjob@person[spouse]": [],
         "$retirement@person[spouse]": [],
         "$sc@person[spouse]": [],
@@ -11435,11 +12685,12 @@
         "qbi.prior_form": false,
         "qbi.coop_patron": false,
         "refund.any": false,
+        "$rental": [],
+        "$royalty": [],
         "s1.uc_any": false,
         "s1.ltc_payout": false,
         "s1.nqdc_pension": false,
         "s1.inmate_wages": false,
-        "s1.digital_income": false,
         "s1.winnings_any": false,
         "s1.alaska_any": false,
         "s1.jury_any": false,
@@ -11493,6 +12744,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
         "scope.rental": false,
@@ -11519,11 +12771,10 @@
         "sd.small_business_stock": false,
         "sd.trader_election": false,
         "sd.casualty": false,
+        "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false,
-        "sd.qof": false,
-        "f1040.digital_assets": false
+        "ssb.any": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -11674,10 +12925,6 @@
           "kind": "money",
           "cents": 1605000
         },
-        "ny_it201.std_deduction_dependent": {
-          "kind": "money",
-          "cents": 310000
-        },
         "ny_it201.line34": {
           "kind": "money",
           "cents": 1605000
@@ -11697,6 +12944,14 @@
         "ny_it201.line38": {
           "kind": "money",
           "cents": 6499900
+        },
+        "ny_it201.tax_low": {
+          "kind": "money",
+          "cents": 324100
+        },
+        "ny_it201.line39": {
+          "kind": "money",
+          "cents": 324100
         },
         "ny_it201.hh_agi": {
           "kind": "money",
@@ -11770,23 +13025,11 @@
           "kind": "money",
           "cents": 0
         },
-        "ny_it201.hh_state_t1": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.hh_city_t4": {
-          "kind": "money",
-          "cents": 0
-        },
         "ny_it201.hh_state_by_status": {
           "kind": "money",
           "cents": 0
         },
         "ny_it201.hh_city_by_status": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.line40": {
           "kind": "money",
           "cents": 0
         },
@@ -11802,17 +13045,29 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line44": {
+          "kind": "money",
+          "cents": 324100
+        },
         "ny_it201.line45": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line46": {
+          "kind": "money",
+          "cents": 324100
         },
         "ny_it201.line47": {
           "kind": "money",
           "cents": 6499900
         },
-        "ny_it201.line48": {
+        "ny_it201.line47a": {
           "kind": "money",
-          "cents": 0
+          "cents": 230800
+        },
+        "ny_it201.line49": {
+          "kind": "money",
+          "cents": 230800
         },
         "ny_it201.line50": {
           "kind": "money",
@@ -11822,9 +13077,17 @@
           "kind": "money",
           "cents": 0
         },
+        "ny_it201.line52": {
+          "kind": "money",
+          "cents": 230800
+        },
         "ny_it201.line53": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line54": {
+          "kind": "money",
+          "cents": 230800
         },
         "ny_it201.line55": {
           "kind": "money",
@@ -11837,6 +13100,10 @@
         "ny_it201.line57": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line58": {
+          "kind": "money",
+          "cents": 230800
         },
         "ny_it201.sut.b1": {
           "kind": "money",
@@ -11866,18 +13133,6 @@
           "kind": "money",
           "cents": 3400
         },
-        "ny_it201.sut.top_product": {
-          "kind": "money",
-          "cents": 1400
-        },
-        "ny_it201.sut.cap": {
-          "kind": "money",
-          "cents": 12500
-        },
-        "ny_it201.sut.top": {
-          "kind": "money",
-          "cents": 1400
-        },
         "ny_it201.sut.chart": {
           "kind": "money",
           "cents": 1800
@@ -11889,6 +13144,14 @@
         "ny_it201.line60": {
           "kind": "money",
           "cents": 0
+        },
+        "ny_it201.line61": {
+          "kind": "money",
+          "cents": 554900
+        },
+        "ny_it201.line62": {
+          "kind": "money",
+          "cents": 554900
         },
         "ny_it201.line63": {
           "kind": "money",
@@ -11926,29 +13189,13 @@
           "kind": "money",
           "cents": 12500
         },
-        "ny_it201.stc_rr_low": {
-          "kind": "money",
-          "cents": 11100
-        },
         "ny_it201.stc_rr_excess": {
           "kind": "money",
           "cents": 4339900
         },
-        "ny_it201.stc_rr_excess_product": {
-          "kind": "money",
-          "cents": 9900
-        },
         "ny_it201.stc_rr_base": {
           "kind": "money",
           "cents": 3700
-        },
-        "ny_it201.stc_rr_high": {
-          "kind": "money",
-          "cents": 13600
-        },
-        "ny_it201.stc_rr": {
-          "kind": "money",
-          "cents": 13600
         },
         "ny_it201.line69a": {
           "kind": "money",
@@ -11986,15 +13233,15 @@
           "kind": "money",
           "cents": 26100
         },
+        "ny_it201.tax_due": {
+          "kind": "money",
+          "cents": 528800
+        },
         "ny_it201.prepayments": {
           "kind": "money",
           "cents": 0
         },
         "ny_it201.safe_harbor_100": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.safe_harbor_110": {
           "kind": "money",
           "cents": 0
         },
@@ -12010,29 +13257,9 @@
           "kind": "money",
           "cents": 0
         },
-        "ny_it201.overpaid_before_penalty": {
+        "ny_it201.line80": {
           "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.line77": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.line79": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.line78": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.line78a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "ny_it201.line78b": {
-          "kind": "money",
-          "cents": 0
+          "cents": 528800
         }
       }
     },
@@ -12167,6 +13394,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -12375,6 +13603,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -12515,6 +13744,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -12666,6 +13896,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -12804,6 +14035,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -12967,6 +14199,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -13200,6 +14433,7 @@
         "scope.business_before": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -13289,6 +14523,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -13426,6 +14661,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -13461,6 +14697,7 @@
         "$dependent": [],
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_cp_domicile": false,
         "s8812.puerto_rico": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 0,
@@ -13568,6 +14805,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -13718,6 +14956,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -13748,6 +14987,7 @@
         "$retirement@person[taxpayer]": [],
         "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
@@ -14078,6 +15318,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -14286,6 +15527,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -14424,6 +15666,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -14585,6 +15828,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -14727,6 +15971,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -14878,6 +16123,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -15020,6 +16266,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -15171,6 +16418,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -15313,6 +16561,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -15464,6 +16713,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -15606,6 +16856,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -15757,6 +17008,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -15905,6 +17157,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -16113,6 +17366,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -16256,6 +17510,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -16464,6 +17719,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -16607,6 +17863,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -16815,6 +18072,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -16953,6 +18211,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -17113,6 +18372,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -17258,6 +18518,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -17418,6 +18679,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -17558,6 +18820,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -17718,6 +18981,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -17858,6 +19122,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -18018,6 +19283,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -18156,6 +19422,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -18317,6 +19584,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -18452,6 +19720,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -20344,6 +21613,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -20478,6 +21748,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -22294,6 +23565,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -22428,6 +23700,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -24206,6 +25479,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -24351,6 +25625,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -25873,6 +27148,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -26011,6 +27287,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -27671,6 +28948,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -27814,6 +29092,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -28022,6 +29301,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -28162,6 +29442,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -28322,6 +29603,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
@@ -28463,6 +29745,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -28493,6 +29776,7 @@
         "$retirement@person[taxpayer]": [],
         "$retirement@person[spouse]": [],
         "ssb.benefits": 0,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
@@ -28815,6 +30099,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
         "scope.pay_no_w2": false,
@@ -28978,6 +30263,7 @@
         "ny_it201.ask.moved_out": false,
         "ny_it201.ask.abroad": false,
         "ny_it201.ask.installment": false,
+        "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,

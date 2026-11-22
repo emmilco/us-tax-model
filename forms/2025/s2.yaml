@@ -19,10 +19,10 @@ form:
     - id: s2.options_any
       printed: (helper)
       type: Bool
-      label: "In 2025, did you (or, on a joint return, your spouse) exercise stock options from an employer?"
+      label: "In 2025, did you (or, on a joint return, your spouse) exercise employee stock options, including options inherited or received in a divorce?"
       expr:
         op: input
-        source: "In 2025, did you (or, on a joint return, your spouse) exercise stock options from an employer?"
+        source: "In 2025, did you (or, on a joint return, your spouse) exercise employee stock options, including options inherited or received in a divorce?"
       cite:
         doc: f1040s2
         locator: "Schedule 2 (2025), lines 2, 3, 11, 12 and 21"
@@ -206,7 +206,7 @@ form:
         op: test
         all:
         - op: test
-          gt: [f1040.tax_exempt_interest, { const: 0 }]
+          gt: [f1040.tax_exempt_interest_if_any, { const: 0 }]
         - op: test
           eq: [s2.amt_could, { const: true }]
       cite:
@@ -236,7 +236,7 @@ form:
         - op: test
           eq: [s2.amt_pab_ask, { const: true }]
         - op: test
-          gt: [s2.amt_pab_if_could, f1040.tax_exempt_interest]
+          gt: [s2.amt_pab_if_could, f1040.tax_exempt_interest_if_any]
       cite:
         doc: i6251
         locator: 'p. 3, Line 2g—Interest From Private Activity Bonds, "the interest on which isn’t includible in gross income for the regular tax"'
@@ -733,7 +733,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: The most the questions not yet answered could add to line 4 (all tax-exempt interest, all deducted home mortgage interest)
-      expr: { op: sum, of: [f1040.tax_exempt_interest, s2.amt_mortgage] }
+      expr: { op: sum, of: [f1040.tax_exempt_interest_if_any, s2.amt_mortgage] }
       cite:
         doc: i6251
         locator: 'p. 3, Line 2g, "Enter on line 2g interest income from “specified private activity bonds”"; p. 8, Line 3, Mortgage Interest, "include that deducted interest on line 3"'
@@ -881,13 +881,14 @@ form:
       printed: (helper)
       type: Bool
       gated_by: s2.amt_boat_if_could
-      label: "Is any of the home mortgage interest you (or, on a joint return, your spouse) deduct for a boat, a motor home or another recreational vehicle that was not your main home?"
+      label: "Is any of the home mortgage interest you (or, on a joint return, your spouse) deduct for a dwelling that was not your main home for all of 2025 and is a boat, a motor home or another recreational vehicle, or a house, apartment, condominium or mobile home used on a transient basis (rented out for short stays)?"
       expr:
         op: input
-        source: "Is any of the home mortgage interest you (or, on a joint return, your spouse) deduct for a boat, a motor home or another recreational vehicle that was not your main home?"
+        source: "Is any of the home mortgage interest you (or, on a joint return, your spouse) deduct for a dwelling that was not your main home for all of 2025 and is a boat, a motor home or another recreational vehicle, or a house, apartment, condominium or mobile home used on a transient basis (rented out for short stays)?"
       cite:
         doc: i6251
-        locator: 'p. 8, Line 3, Mortgage Interest, "If you deducted home mortgage interest on Schedule A for a dwelling that isn’t a principal residence (within the meaning of section 121) or qualified dwelling for AMT, include that deducted interest on line 3", "A qualified dwelling for AMT doesn’t include house boats and recreational vehicles"'
+        locator: 'p. 8, Line 3, Mortgage Interest, "If you deducted home mortgage interest on Schedule A for a dwelling that isn’t a principal residence (within the meaning of section 121) or qualified dwelling for AMT, include that deducted interest on line 3", "A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis", "A qualified dwelling for AMT doesn’t include house boats and recreational vehicles"'
+      ambiguity: amb.2025.amt_transient
     - id: s2.amt_boat_ask
       printed: (gate)
       type: Bool
@@ -1114,10 +1115,10 @@ form:
       printed: (helper)
       type: Bool
       gated_by: s2.lookback_if_business
-      label: "Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025 or for property depreciated under the income forecast method (Form 8697 or Form 8866)?"
+      label: "Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025, or whose price or costs were adjusted in 2025 after it was finished, or for property depreciated under the income forecast method (Form 8697 or Form 8866)?"
       expr:
         op: input
-        source: "Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025 or for property depreciated under the income forecast method (Form 8697 or Form 8866)?"
+        source: "Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025, or whose price or costs were adjusted in 2025 after it was finished, or for property depreciated under the income forecast method (Form 8697 or Form 8866)?"
       cite:
         doc: f1040s2
         locator: "Schedule 2 (2025), line 17n"

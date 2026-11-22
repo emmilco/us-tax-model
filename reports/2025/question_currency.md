@@ -39,7 +39,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 | unruled | `scveh.lease_smr_before#1` | verdict WIDE with 1 finding(s); adjudicate and rule with subject_sha c9e11cf2369f | ruled: No defect: the 2025 conversion is refused by design. |
 | unruled | `scveh.placed_date#1` | verdict WRONG_FIGURE with 3 finding(s); adjudicate and rule with subject_sha 7e04dbbb63c8 | ruled: Lows: line 43 shows a year where the form asks month/day/year; no computation reads it. |
 
-## Due at the next full pass (1058)
+## Due at the next full pass (1097)
 
 - `asset.acquired_before_bonus_date` (asset): never reviewed; run question_review.py --inputs asset.acquired_before_bonus_date
 - `asset.ads_required` (asset): never reviewed; run question_review.py --inputs asset.ads_required
@@ -52,6 +52,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `asset.got_other` (asset): never reviewed; run question_review.py --inputs asset.got_other
 - `asset.industry` (asset): never reviewed; run question_review.py --inputs asset.industry
 - `asset.industry_item` (asset): never reviewed; run question_review.py --inputs asset.industry_item
+- `asset.industry_use` (asset): never reviewed; run question_review.py --inputs asset.industry_use
 - `asset.kind_excluded` (asset): never reviewed; run question_review.py --inputs asset.kind_excluded
 - `asset.listed` (asset): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs asset.listed
 - `asset.long_production` (asset): never reviewed; run question_review.py --inputs asset.long_production
@@ -172,6 +173,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `f1040.line26` (f1040): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f1040.line26
 - `f1040.line3a` (f1040): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f1040.line3a
 - `f1040.status` (f1040): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f1040.status
+- `f1040.tax_exempt_any` (f1040): never reviewed; run question_review.py --inputs f1040.tax_exempt_any
 - `f1040.tax_exempt_interest` (f1040): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f1040.tax_exempt_interest
 - `f1040.withheld_other_any` (f1040): never reviewed; run question_review.py --inputs f1040.withheld_other_any
 - `f1095a.b_blank` (f1095a): never reviewed; run question_review.py --inputs f1095a.b_blank
@@ -365,6 +367,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `f8919firm.wages` (f8919firm): never reviewed; run question_review.py --inputs f8919firm.wages
 - `f8959.territory_w2` (f8959): never reviewed; run question_review.py --inputs f8959.territory_w2
 - `f8960.allocated_taxes` (f8960): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f8960.allocated_taxes
+- `f8960.election_6013g` (f8960): never reviewed; run question_review.py --inputs f8960.election_6013g
 - `f8960.prior_2i` (f8960): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f8960.prior_2i
 - `f8960.refund` (f8960): never reviewed; run question_review.py --inputs f8960.refund
 - `f8960.unsupported` (f8960): never reviewed; run question_review.py --inputs f8960.unsupported
@@ -410,6 +413,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `household.mfs_living` (household): never reviewed; run question_review.py --inputs household.mfs_living
 - `household.qss_eligible` (household): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs household.qss_eligible
 - `household.rdp` (household): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs household.rdp
+- `household.spouse_cp_domicile` (household): never reviewed; run question_review.py --inputs household.spouse_cp_domicile
 - `household.spouse_died_this_year` (household): never reviewed; run question_review.py --inputs household.spouse_died_this_year
 - `interest.amount` (interest): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs interest.amount
 - `ira.care_payments` (ira): never reviewed; run question_review.py --inputs ira.care_payments
@@ -418,6 +422,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `ira.fellowship` (ira): never reviewed; run question_review.py --inputs ira.fellowship
 - `ira.mfs_spouse_covered` (ira): never reviewed; run question_review.py --inputs ira.mfs_spouse_covered
 - `k1p.b19_other` (k1p): never reviewed; run question_review.py --inputs k1p.b19_other
+- `k1p.basis_carry` (k1p): never reviewed; run question_review.py --inputs k1p.basis_carry
 - `k1p.basis_short` (k1p): never reviewed; run question_review.py --inputs k1p.basis_short
 - `k1p.box1` (k1p): never reviewed; run question_review.py --inputs k1p.box1
 - `k1p.box14a` (k1p): never reviewed; run question_review.py --inputs k1p.box14a
@@ -436,7 +441,9 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `k1p.box9c` (k1p): never reviewed; run question_review.py --inputs k1p.box9c
 - `k1p.decisions` (k1p): never reviewed; run question_review.py --inputs k1p.decisions
 - `k1p.dist_over` (k1p): never reviewed; run question_review.py --inputs k1p.dist_over
+- `k1p.dwelling` (k1p): never reviewed; run question_review.py --inputs k1p.dwelling
 - `k1p.five_of_ten` (k1p): never reviewed; run question_review.py --inputs k1p.five_of_ten
+- `k1p.fuel_prior_year` (k1p): never reviewed; run question_review.py --inputs k1p.fuel_prior_year
 - `k1p.general` (k1p): never reviewed; run question_review.py --inputs k1p.general
 - `k1p.has_b1` (k1p): never reviewed; run question_review.py --inputs k1p.has_b1
 - `k1p.has_b14a` (k1p): never reviewed; run question_review.py --inputs k1p.has_b14a
@@ -454,6 +461,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `k1p.has_b9a` (k1p): never reviewed; run question_review.py --inputs k1p.has_b9a
 - `k1p.has_b9bc` (k1p): never reviewed; run question_review.py --inputs k1p.has_b9bc
 - `k1p.hours500` (k1p): never reviewed; run question_review.py --inputs k1p.hours500
+- `k1p.interest_buy` (k1p): never reviewed; run question_review.py --inputs k1p.interest_buy
 - `k1p.most_hours` (k1p): never reviewed; run question_review.py --inputs k1p.most_hours
 - `k1p.nearly_all` (k1p): never reviewed; run question_review.py --inputs k1p.nearly_all
 - `k1p.not_at_risk` (k1p): never reviewed; run question_review.py --inputs k1p.not_at_risk
@@ -481,11 +489,14 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `k1p.r_b7` (k1p): never reviewed; run question_review.py --inputs k1p.r_b7
 - `k1p.r_disposed` (k1p): never reviewed; run question_review.py --inputs k1p.r_disposed
 - `k1p.r_foreign` (k1p): never reviewed; run question_review.py --inputs k1p.r_foreign
+- `k1p.re_pro` (k1p): never reviewed; run question_review.py --inputs k1p.re_pro
+- `k1p.risk_carry` (k1p): never reviewed; run question_review.py --inputs k1p.risk_carry
 - `k1p.t4` (k1p): never reviewed; run question_review.py --inputs k1p.t4
 - `k1p.t6` (k1p): never reviewed; run question_review.py --inputs k1p.t6
 - `k1p.t7` (k1p): never reviewed; run question_review.py --inputs k1p.t7
 - `k1p.tenth` (k1p): never reviewed; run question_review.py --inputs k1p.tenth
 - `k1p.trader` (k1p): never reviewed; run question_review.py --inputs k1p.trader
+- `k1p.upe` (k1p): never reviewed; run question_review.py --inputs k1p.upe
 - `k1p.work` (k1p): never reviewed; run question_review.py --inputs k1p.work
 - `k1p.z_other` (k1p): never reviewed; run question_review.py --inputs k1p.z_other
 - `k1s.active` (k1s): never reviewed; run question_review.py --inputs k1s.active
@@ -534,7 +545,9 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `k1s.box8c` (k1s): never reviewed; run question_review.py --inputs k1s.box8c
 - `k1s.box9` (k1s): never reviewed; run question_review.py --inputs k1s.box9
 - `k1s.disposed` (k1s): never reviewed; run question_review.py --inputs k1s.disposed
+- `k1s.dwelling` (k1s): never reviewed; run question_review.py --inputs k1s.dwelling
 - `k1s.hours500` (k1s): never reviewed; run question_review.py --inputs k1s.hours500
+- `k1s.interest_buy` (k1s): never reviewed; run question_review.py --inputs k1s.interest_buy
 - `k1s.most_hours` (k1s): never reviewed; run question_review.py --inputs k1s.most_hours
 - `k1s.mp_other` (k1s): never reviewed; run question_review.py --inputs k1s.mp_other
 - `k1s.multi` (k1s): never reviewed; run question_review.py --inputs k1s.multi
@@ -542,8 +555,10 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `k1s.past_years` (k1s): never reviewed; run question_review.py --inputs k1s.past_years
 - `k1s.prior_any` (k1s): never reviewed; run question_review.py --inputs k1s.prior_any
 - `k1s.qbi_stmt` (k1s): never reviewed; run question_review.py --inputs k1s.qbi_stmt
+- `k1s.re_pro` (k1s): never reviewed; run question_review.py --inputs k1s.re_pro
 - `k1s.risk_carry` (k1s): never reviewed; run question_review.py --inputs k1s.risk_carry
 - `k1s.tenth` (k1s): never reviewed; run question_review.py --inputs k1s.tenth
+- `k1s.trader` (k1s): never reviewed; run question_review.py --inputs k1s.trader
 - `k1s.v_other` (k1s): never reviewed; run question_review.py --inputs k1s.v_other
 - `k1s.work` (k1s): never reviewed; run question_review.py --inputs k1s.work
 - `ltc.age` (ltc): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ltc.age
@@ -700,6 +715,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `rental.has_supplies` (rental): never reviewed; run question_review.py --inputs rental.has_supplies
 - `rental.has_taxes` (rental): never reviewed; run question_review.py --inputs rental.has_taxes
 - `rental.has_utilities` (rental): never reviewed; run question_review.py --inputs rental.has_utilities
+- `rental.held_for_sale` (rental): never reviewed; run question_review.py --inputs rental.held_for_sale
 - `rental.kind` (rental): never reviewed; run question_review.py --inputs rental.kind
 - `rental.not_at_risk` (rental): never reviewed; run question_review.py --inputs rental.not_at_risk
 - `rental.not_for_profit` (rental): never reviewed; run question_review.py --inputs rental.not_for_profit
@@ -708,6 +724,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `rental.prior_amt` (rental): never reviewed; run question_review.py --inputs rental.prior_amt
 - `rental.prior_any` (rental): never reviewed; run question_review.py --inputs rental.prior_any
 - `rental.prior_not_active` (rental): never reviewed; run question_review.py --inputs rental.prior_not_active
+- `rental.prior_ws51` (rental): never reviewed; run question_review.py --inputs rental.prior_ws51
 - `rental.rents` (rental): never reviewed; run question_review.py --inputs rental.rents
 - `rental.services` (rental): never reviewed; run question_review.py --inputs rental.services
 - `rental.short_stays` (rental): never reviewed; run question_review.py --inputs rental.short_stays
@@ -768,13 +785,24 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `royalty.amt16` (royalty): never reviewed; run question_review.py --inputs royalty.amt16
 - `royalty.amt19` (royalty): never reviewed; run question_review.py --inputs royalty.amt19
 - `royalty.business` (royalty): never reviewed; run question_review.py --inputs royalty.business
+- `royalty.capital` (royalty): never reviewed; run question_review.py --inputs royalty.capital
 - `royalty.depletion` (royalty): never reviewed; run question_review.py --inputs royalty.depletion
+- `royalty.depreciation` (royalty): never reviewed; run question_review.py --inputs royalty.depreciation
 - `royalty.expenses_any` (royalty): never reviewed; run question_review.py --inputs royalty.expenses_any
 - `royalty.line4` (royalty): never reviewed; run question_review.py --inputs royalty.line4
+- `royalty.not_at_risk` (royalty): never reviewed; run question_review.py --inputs royalty.not_at_risk
+- `royalty.vehicle` (royalty): never reviewed; run question_review.py --inputs royalty.vehicle
+- `rprop.ads` (rprop): never reviewed; run question_review.py --inputs rprop.ads
 - `rprop.basis` (rprop): never reviewed; run question_review.py --inputs rprop.basis
+- `rprop.basis_changed` (rprop): never reviewed; run question_review.py --inputs rprop.basis_changed
+- `rprop.coop` (rprop): never reviewed; run question_review.py --inputs rprop.coop
+- `rprop.credit` (rprop): never reviewed; run question_review.py --inputs rprop.credit
+- `rprop.disposed` (rprop): never reviewed; run question_review.py --inputs rprop.disposed
+- `rprop.exchanged` (rprop): never reviewed; run question_review.py --inputs rprop.exchanged
+- `rprop.fast` (rprop): never reviewed; run question_review.py --inputs rprop.fast
 - `rprop.kind` (rprop): never reviewed; run question_review.py --inputs rprop.kind
 - `rprop.month` (rprop): never reviewed; run question_review.py --inputs rprop.month
-- `rprop.screen` (rprop): never reviewed; run question_review.py --inputs rprop.screen
+- `rprop.qip` (rprop): never reviewed; run question_review.py --inputs rprop.qip
 - `rprop.year` (rprop): never reviewed; run question_review.py --inputs rprop.year
 - `s1.alaska_any` (s1): never reviewed; run question_review.py --inputs s1.alaska_any
 - `s1.alaska_dividend` (s1): never reviewed; run question_review.py --inputs s1.alaska_dividend
@@ -785,7 +813,16 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `s1.alimony_unsupported` (s1): never reviewed; run question_review.py --inputs s1.alimony_unsupported
 - `s1.cod_amount` (s1): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs s1.cod_amount
 - `s1.cod_any` (s1): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs s1.cod_any
-- `s1.cod_unsupported` (s1): never reviewed; run question_review.py --inputs s1.cod_unsupported
+- `s1.cod_bankrupt` (s1): never reviewed; run question_review.py --inputs s1.cod_bankrupt
+- `s1.cod_business` (s1): never reviewed; run question_review.py --inputs s1.cod_business
+- `s1.cod_gift` (s1): never reviewed; run question_review.py --inputs s1.cod_gift
+- `s1.cod_interest` (s1): never reviewed; run question_review.py --inputs s1.cod_interest
+- `s1.cod_joint_other` (s1): never reviewed; run question_review.py --inputs s1.cod_joint_other
+- `s1.cod_not_liable` (s1): never reviewed; run question_review.py --inputs s1.cod_not_liable
+- `s1.cod_price_cut` (s1): never reviewed; run question_review.py --inputs s1.cod_price_cut
+- `s1.cod_property` (s1): never reviewed; run question_review.py --inputs s1.cod_property
+- `s1.cod_stockholder` (s1): never reviewed; run question_review.py --inputs s1.cod_stockholder
+- `s1.cod_student_home` (s1): never reviewed; run question_review.py --inputs s1.cod_student_home
 - `s1.digital_amount` (s1): never reviewed; run question_review.py --inputs s1.digital_amount
 - `s1.digital_income` (s1): never reviewed; run question_review.py --inputs s1.digital_income
 - `s1.gambling_pro` (s1): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs s1.gambling_pro
@@ -957,6 +994,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `sc.statutory` (sc): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs sc.statutory
 - `sc.tips_ot` (sc): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs sc.tips_ot
 - `sc.travel_meals` (sc): never reviewed; run question_review.py --inputs sc.travel_meals
+- `sche.accrual` (sche): never reviewed; run question_review.py --inputs sche.accrual
 - `sche.grouped` (sche): never reviewed; run question_review.py --inputs sche.grouped
 - `sche.qbi_business` (sche): never reviewed; run question_review.py --inputs sche.qbi_business
 - `sche.re_pro` (sche): never reviewed; run question_review.py --inputs sche.re_pro
@@ -1002,6 +1040,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `scope.se_plan_other` (scope): never reviewed; run question_review.py --inputs scope.se_plan_other
 - `scope.strike_pay` (scope): never reviewed; run question_review.py --inputs scope.strike_pay
 - `scope.tips_unreported` (scope): never reviewed; run question_review.py --inputs scope.tips_unreported
+- `scope.treaty` (scope): never reviewed; run question_review.py --inputs scope.treaty
 - `scope.unearned_2700` (scope): never reviewed; run question_review.py --inputs scope.unearned_2700
 - `scope.w2_marks` (scope): never reviewed; run question_review.py --inputs scope.w2_marks
 - `scope.wages_no_form` (scope): never reviewed; run question_review.py --inputs scope.wages_no_form

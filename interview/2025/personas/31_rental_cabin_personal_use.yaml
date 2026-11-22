@@ -1,0 +1,61 @@
+# Predicted end (hand-derived; unverified until draft-walk and a values run; cents may differ by $0.01):
+#   Not used as a home: 14 personal days is not more than the larger of 14 or 10% of 180. Expenses divided by
+#   180 / 194 = 0.927835. Line 3 $19,500; line 9 $1,113.40; line 12 $5,567.01; line 16 $2,783.51; line 17 $1,670.10;
+#   line 18 $6,747.22 (MACRS $7,272 = $200,000 x 3.636%, year 5); line 20 $17,881.24; line 21 $1,618.76 income.
+#   No Form 8582 limit (income). AGI about $53,619; taxable income about $37,869; tax $4,307 (Tax Table, +/- $1).
+name: 31_rental_cabin_personal_use
+who: A single person, 31, with one job (one Form W-2, $52,000 of wages) who owns a lake cabin bought in July 2021, rented it by the month for 180 days of 2025 for $19,500, and stayed there herself for 14 days.
+extends: 01_single_w2
+end: complete
+answers:
+  scope.rental: true
+  scope.rent_personal: false
+  $rental: [cabin]
+  rental[cabin].kind: vacation
+  rental[cabin].days_fair: 180
+  rental[cabin].personal_any: true
+  rental[cabin].days_personal: 14
+  rental[cabin].days_overlap: 0
+  rental[cabin].short_stays: true
+  rental[cabin].stay7: false
+  rental[cabin].services: false
+  rental[cabin].under_tenth: false
+  rental[cabin].not_for_profit: false
+  rental[cabin].depletion: false
+  rental[cabin].part_home: false
+  rental[cabin].active: true
+  rental[cabin].rents: 1950000
+  rental[cabin].has_mortgage: true
+  rental[cabin].has_taxes: true
+  rental[cabin].has_insurance: true
+  rental[cabin].has_utilities: true
+  rental[cabin].has_repairs: false
+  rental[cabin].has_other_interest: false
+  rental[cabin].has_management: false
+  rental[cabin].has_commissions: false
+  rental[cabin].has_cleaning: false
+  rental[cabin].has_supplies: false
+  rental[cabin].has_advertising: false
+  rental[cabin].has_legal: false
+  rental[cabin].has_other: false
+  rental[cabin].vehicle: false
+  rental[cabin].amt9: 120000
+  rental[cabin].amt12: 600000
+  rental[cabin].amt16: 300000
+  rental[cabin].amt17: 180000
+  rental[cabin].prior_any: false
+  $rprop@rental[cabin]: [cabin_bldg]
+  rental[cabin].rprop[cabin_bldg].kind: residential
+  rental[cabin].rprop[cabin_bldg].month: m7
+  rental[cabin].rprop[cabin_bldg].year: y2021
+  rental[cabin].rprop[cabin_bldg].basis: 20000000
+  rental[cabin].rprop[cabin_bldg].disposed: false
+  rental[cabin].rprop[cabin_bldg].fast: false
+  rental[cabin].rprop[cabin_bldg].ads: false
+  rental[cabin].rprop[cabin_bldg].basis_changed: false
+  rental[cabin].rprop[cabin_bldg].credit: false
+  rental[cabin].rprop[cabin_bldg].coop: false
+  $royalty: []
+  sche.re_pro: false
+  sche.grouped: false
+  sche.qbi_business: false

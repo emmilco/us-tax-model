@@ -436,19 +436,25 @@ form:
         Safety Officers, Simplified Method'
   - id: retirement.ira_basis
     printed: (helper)
-    label: 'Have you ever put money into a traditional IRA that you did not deduct on a tax return?'
+    label: 'A traditional IRA of the owner holds basis: nondeductible contributions, after-tax money rolled over from a
+      work plan, or basis that came with an IRA in a divorce transfer or from a decedent'
     type: Bool
     gated_by: retirement.ira_basis_if_trad
     expr:
       op: input
-      source: 'Have you ever put money into a traditional IRA that you did not deduct on a tax return?'
+      source: 'Does any traditional IRA of yours hold money you already paid tax on, such as contributions you did not
+        deduct, after-tax money rolled over from a work plan, or basis that came with an IRA from a spouse in a divorce or
+        from someone who died?'
     cite:
-      doc: i1040gi
-      locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
-        Safety Officers, Simplified Method'
+      doc: i8606
+      locator: 'p. 2, Who Must File, "You received distributions from a traditional IRA in 2025 and your basis in these IRAs
+        is more than zero", "You or your spouse transferred all or part of their traditional IRA in 2025 to the other spouse
+        under a divorce or separation agreement where the transfer resulted in a change in the basis", and "You received
+        a distribution from an inherited traditional IRA that has a basis"; p. 9, Line 2, "You rolled over any nontaxable
+        portion of your qualified retirement plan to a traditional IRA"'
   - id: retirement.ira_basis_if_trad
     printed: (gate)
-    label: 'Have you ever put money into a traditional IRA that you did not deduct on a tax return? Asked only with a traditional IRA (false otherwise)'
+    label: 'A traditional IRA of the owner holds basis (money already taxed), asked only with a traditional IRA (false otherwise)'
     type: Bool
     expr:
       op: choose

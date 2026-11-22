@@ -7,7 +7,7 @@ Findings: 0; ruled 0; in the baseline to be worked off 0.
 | Kind | Line | Detail | Status |
 | --- | --- | --- | --- |
 
-## Due at the next full pass (55)
+## Due at the next full pass (56)
 
 - `ny_it2.city_withheld` (ny_it2): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it2.city_withheld
 - `ny_it2.state_withheld` (ny_it2): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it2.state_withheld
@@ -20,6 +20,7 @@ Findings: 0; ruled 0; in the baseline to be worked off 0.
 - `ny_it201.ask.active_duty` (ny_it201): never reviewed; run question_review.py --inputs ny_it201.ask.active_duty
 - `ny_it201.ask.apply_any` (ny_it201): never reviewed; run question_review.py --inputs ny_it201.ask.apply_any
 - `ny_it201.ask.bab` (ny_it201): never reviewed; run question_review.py --inputs ny_it201.ask.bab
+- `ny_it201.ask.bought_untaxed` (ny_it201): never reviewed; run question_review.py --inputs ny_it201.ask.bought_untaxed
 - `ny_it201.ask.city_credits` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.city_credits
 - `ny_it201.ask.city_resident` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.city_resident
 - `ny_it201.ask.college_tuition` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.college_tuition
@@ -45,7 +46,6 @@ Findings: 0; ruled 0; in the baseline to be worked off 0.
 - `ny_it201.ask.other_taxes` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.other_taxes
 - `ny_it201.ask.other_withholding` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.other_withholding
 - `ny_it201.ask.out_of_state_bond_interest` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.out_of_state_bond_interest
-- `ny_it201.ask.owes_use_tax` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.owes_use_tax
 - `ny_it201.ask.pension_exclusion` (ny_it201): never reviewed; run question_review.py --inputs ny_it201.ask.pension_exclusion
 - `ny_it201.ask.prior_agi_high` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.prior_agi_high
 - `ny_it201.ask.prior_full_year` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.prior_full_year
@@ -59,6 +59,7 @@ Findings: 0; ruled 0; in the baseline to be worked off 0.
 - `ny_it201.ask.spouse_resident` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.spouse_resident
 - `ny_it201.ask.state_resident` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.state_resident
 - `ny_it201.ask.us_obligation_interest` (ny_it201): never reviewed; run question_review.py --inputs ny_it201.ask.us_obligation_interest
+- `ny_it201.ask.use_tax_dmv_only` (ny_it201): never reviewed; run question_review.py --inputs ny_it201.ask.use_tax_dmv_only
 - `ny_it201.ask.use_tax_exact` (ny_it201): never reviewed; run question_review.py --inputs ny_it201.ask.use_tax_exact
 - `ny_it201.ask.use_tax_st141` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.use_tax_st141
 - `ny_it201.ask.yonkers` (ny_it201): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs ny_it201.ask.yonkers

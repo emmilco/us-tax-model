@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "1010f263c8f41ec0c945cac94086498094214fe15eae85aabcb3a38886492c58",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "7 / 2 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-17); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,35 +23,34 @@
   },
   {
    "key": "royalty.loss",
-   "record": "1010f263c8f41ec0c945cac94086498094214fe15eae85aabcb3a38886492c58",
+   "record": "b17d8950b00aec44c3a75e7a592a2fa83f70235d2d221af33d01693be3a733fa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage (8 of 8 inputs agree, too few generated royalty entries for the mechanical rule): line 21 is line 4 less line 20, so the reply's line 4 less line 20 floored at zero (or its negation) is the project's line 21 form exactly.",
-   "subject_key": "262196aa1dcff49c277b1897e1e98d24c6ee061e68b37beb8d82eb3522453aae"
+   "ruling": "Ruling: representation; f1040se Schedule E (2025), line 25: \"Add royalty losses from line 21.\" The candidate's line is the project's line 21 (line 4 less line 20, floored at zero, or its negation); all 9 differences are on refused or incomplete records (3 project refusals, 6 project-unknown), none on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/royalty.json): 21 of 30 comparisons agree, 18 of 24 in scope. Project stands.",
+   "subject_key": "2faf4ed089965eb44d79006ee7ad0066dd8860551bd2c4f53c560623b69d590a"
   },
   {
    "key": "royalty.loss_abs",
-   "record": "1010f263c8f41ec0c945cac94086498094214fe15eae85aabcb3a38886492c58",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage (8 of 8 inputs agree, too few generated royalty entries for the mechanical rule): line 21 is line 4 less line 20, so the reply's line 4 less line 20 floored at zero (or its negation) is the project's line 21 form exactly.",
-   "subject_key": "5fbb7666095877bc2e24d10dc4fc90eb6ffb6da8a5aae11d663b5e5fa2fc4d1d"
+   "record": "b17d8950b00aec44c3a75e7a592a2fa83f70235d2d221af33d01693be3a733fa",
+   "status": "AGREE",
+   "subject_key": "15d34f6633dda610df8140faaea96f9a458a595cc4730a4673299ba7aaf56c86"
   },
   {
    "key": "10",
-   "record": "1010f263c8f41ec0c945cac94086498094214fe15eae85aabcb3a38886492c58",
+   "record": "b17d8950b00aec44c3a75e7a592a2fa83f70235d2d221af33d01693be3a733fa",
    "status": "AGREE",
-   "subject_key": "eb575b760a5f7da0a218408caa4bee1dfe9a230efbe5ff10cf1d34663a8e127f"
+   "subject_key": "b3e9e329403591b74409ef7ee528416dc4a659080dee9df927cb1cc91313a8d5"
   },
   {
    "key": "16",
-   "record": "8c3d16ce31bb1e9787fc3f84fc0e3b0cb87044ea2d5efcdb591649e99ee79616",
+   "record": "b17d8950b00aec44c3a75e7a592a2fa83f70235d2d221af33d01693be3a733fa",
    "status": "AGREE",
-   "subject_key": "10369437bcc0c22bb83554bfa064b8ec67ec1b14e561ec0cc151e5c42087ddc5"
+   "subject_key": "e6d623fac577288eeb9f08373c302310c3df4cfa070221165f714755934b6099"
   },
   {
    "key": "19",
-   "record": "1010f263c8f41ec0c945cac94086498094214fe15eae85aabcb3a38886492c58",
+   "record": "b17d8950b00aec44c3a75e7a592a2fa83f70235d2d221af33d01693be3a733fa",
    "status": "AGREE",
-   "subject_key": "4705f4bbc061472fb7143fd1c27b6b20fa329293524bcf235e8ee6f70f3b044c"
+   "subject_key": "e71e7897d0c7558e37e150e9efaeb2193c8d67c90b655c92ea1a5d27c17c96b4"
   },
   {
    "key": "20",
@@ -60,28 +60,28 @@
   },
   {
    "key": "21",
-   "record": "8c3d16ce31bb1e9787fc3f84fc0e3b0cb87044ea2d5efcdb591649e99ee79616",
+   "record": "b17d8950b00aec44c3a75e7a592a2fa83f70235d2d221af33d01693be3a733fa",
    "status": "AGREE",
-   "subject_key": "b4dbc3d0c9b74af60de0c734cc4e7d9c4e5a45ea5e44a2275f9a41fc8dd8be94"
+   "subject_key": "8f480825f38e82f3c736dfcf4bd54bc5e208ed480408c0777b2739aa54c87a38"
   }
  ],
  "subjects": {
   "royalty.one": "087790c7e4150ce46c970eabedf9b63c93b709cbdef844aba99e24a357de0e80",
   "royalty.income": "a1e317697ca5eb57c9382a11b74ced3ed528b61f590036798863bb0014035ded",
-  "royalty.loss": "7fe8534ed368efa5f2dd71aa796341d7d03b32350291dc107272f0dd25d05063",
-  "royalty.loss_abs": "1f1fde93b0bb9b70b758dadae37ad97a835f5ac486bbc5a5a2c7539bc714fa90",
-  "10": "afbfe17208dd40312a57e0d29044453df438eb731339297ac93f0196a72f6ea2",
-  "16": "3f41d72a5ecd359f8a1f6eedbcddc6d68a01ddf0fc11577640010b2d71c55fca",
-  "19": "0534fa84af35fad03e0bae4e890ba2ea8c3a1116222305e11affafcf0c0dc769",
+  "royalty.loss": "ab152c7cc27a50dcaa1b23e5869713314500ff16c64ac705034ebf528a4c663e",
+  "royalty.loss_abs": "08143ea758be7459b3747ff17c93f864fef7077235c91468c664b5f038a9ceeb",
+  "10": "649aa7cadec046bbf5ba132740ed0654be5421a0016bf84accb415ae5e07c041",
+  "16": "653da24140ab654bf2e9248880ee105cb1e0ff032ce72797629a379b7cb40690",
+  "19": "427df5ca9db4218f96005b72d18d557450e8cc0c29ce310817f721853cff4edd",
   "20": "d050fc0b8936cb958d30b399c53d50df139d12a89301723f18af1f2a01a33445",
-  "21": "81c4aa347f4a64e96d449d11a5817aa26f15ed87acf00a7551ac45cce39a24e9"
+  "21": "86c354cf18f130a2b406e80997591af80a779f49011054501781c88b23866769"
  },
  "__rest__": "bbab31f8dab17823573d6370537511b60f80a3bf67dd0de833e3c2124c262112",
  "foreign": {
   "royalty.one": "b73e7687d788af2c790018fb776ff120b6a1d1a416c0ce64bf3da4e4fba466df",
   "royalty.income": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "royalty.loss": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "royalty.loss_abs": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "royalty.loss": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "royalty.loss_abs": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "10": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "16": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "19": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

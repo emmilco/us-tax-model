@@ -8,14 +8,14 @@
    "key": "1",
    "record": "d811a7a2c09ded0c3ae9662f94273b2de19c5809b1b17b5e82c393040719351a",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: representation; the second takes line 1 as a single supplied amount, while the project computes it from the filer's traditional IRA contributions and the deduction worksheet, as the second's own note says the instructions allow.",
    "subject_key": "b97e9c260a0d895a5bfc4608847cc53a8b63bda5e15861a8752f4bcab99d6f86"
   },
   {
    "key": "2",
    "record": "d811a7a2c09ded0c3ae9662f94273b2de19c5809b1b17b5e82c393040719351a",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: representation; the second takes line 2 as a single supplied total basis, while the project computes it from the filer's basis input (person.ira_basis) and its other IRA inputs; whether each adjustment the second names (excess returned, divorce transfers, rollovers of nontaxable amounts) is asked or refused is not settled by this comparison and is not a transcription difference.",
    "subject_key": "03091ff367d473a5f0c686ce608cc182bc70306e8486c73cd9e05ec16f564b82"
   },
   {
@@ -28,7 +28,7 @@
    "key": "3 (question)",
    "record": "d811a7a2c09ded0c3ae9662f94273b2de19c5809b1b17b5e82c393040719351a",
    "status": "DISAGREE",
-   "ruling": "Ruling: open",
+   "ruling": "Ruling: representation; the second makes the Part I question after line 3 a supplied answer; the project derives it from the distribution and conversion inputs it already asks (person.ira_dist and the rest).",
    "subject_key": "b214d56de18b37c19975345f249e5af44fe9e4936e962355df13750f2e80ea27"
   },
   {

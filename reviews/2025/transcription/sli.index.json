@@ -5,7 +5,7 @@
  "base": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
  "head_rows": {
   "agree / disagree / missing": "3 / 6 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-17); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,10 +17,10 @@
   },
   {
    "key": "1",
-   "record": "7f79185008aff6b592f45f2002b0a83bb5a8792fe4ecd4f31709df44e6ac9079",
+   "record": "35dc1d4c38f595bb848e1675c216b969259f6ab9b1389618c0b3f70d601e0c93",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the worksheet's line 1 (interest paid less unqualified and assisted parts, at most $2,500; i1040gi p. 98, Student Loan Interest Deduction Worksheet, line 1) is the same in both on every return the interview reaches. The project asks sli.any only on a return that is not married filing separately (sli.any_if_not_mfs; the deduction is not allowed on a separate return), the reply reads it on every return. Triage 6e21762b3daa: 3,021/3,116 agree; the 29 value differences are all separate returns (classm.tcw.4, .9, .15, classm.clcw_next_year.3, classm.retirement.4.deepseek, mutation.t2.f8962_months_r4 and others) whose fixtures still carry an sli.any answer the interview no longer asks; the deduction is 0 on them in both; the rest are 40 project-refuses (Pub. 970 exception), 13 project-unknown, 13 candidate-unknown.",
-   "subject_key": "4f2d5e1b415f4f259862676c196f8b897e1d16df2bafc3d2c2d2ddb57397c90e"
+   "ruling": "Ruling: representation; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 1: \"Enter the total interest you paid in 2025 on qualified student loans ... Don't enter more than $2,500\"; p. 98, \"Don't include any amount paid from a distribution of earnings made from a qualified tuition program.\" Both take the interest less the unqualified and assisted amounts, floored at zero and capped at $2,500; subtracting the two in turn from a zero-floored amount equals subtracting their sum. The completed-return differences are the candidate's sli.any gate input (15); the 26 value witnesses are on records the project refuses. Triage executable-triage-v2 (.transcription/triage/2025/sli.json): 3,209 of 3,309 agree, 3,209 of 3,270 in scope. Project stands.",
+   "subject_key": "953ffecbcffc9c3eeb35977ca49b5d09b4398a6d87e61b03fda868df80a444a1"
   },
   {
    "key": "2",
@@ -83,6 +83,6 @@
  "__rest__": "cdbf85c374e333f356e978a01b3319b841c43b9a1e74b210b748829916056fb7",
  "foreign": {
   "sli.deduction": "385f206b6b7a949df44736035f94e5ed70d62e1b7d5a9a9e66b69f02827714d9",
-  "1": "1387204e0b9dfd4af8ac8facf54f367d312ccb0575d09a0c69ff44e82aa1cc10"
+  "1": "58fb9d2b5bdae2fa757c0d9c367d5185d9086a00c7e2e9f8c504077dcc0f046d"
  }
 }

@@ -1,0 +1,27 @@
+{
+ "kind": "render",
+ "form": "f8853c",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "20",
+   "restated": "Add line 18 and helper \"Line 19, asked only when payments were made at a set rate (zero otherwise)\".",
+   "model": "IRS line 20 says 'Add lines 18 and 19'; the restatement adds line 18 plus line 19 only when payments were at a set rate, an extra condition not in the IRS text.",
+   "ruling": "Ruling: representation; f8853: the “asked only when” gating is how the interview reaches line 19; the printed amount is lines 18 and 19. Project stands.",
+   "context": "2692053d23543f171d7329deeda6ec5a15daa86956889fe66aad8a9c16e1efce",
+   "date": "2026-11-17",
+   "run": "eadf3f11b18968676180a760bbfecfc0ce2a4f291b6eb3e3f611022948e4dd00",
+   "subject_key": "1c848bac11602a06131df5d802aaacd4947972984cabc1ca296e0d8eb0a70798"
+  },
+  {
+   "printed": "25",
+   "restated": "Subtract helper \"Line 24, asked only when line 20 is more than zero (zero otherwise)\" from line 23. If zero or less, enter -0-.",
+   "model": "IRS line 25 says 'Subtract line 24 from line 23'; the restatement adds 'If zero or less, enter -0-,' which is not in the IRS line.",
+   "ruling": "Ruling: representation; f8853: the zero floor is the line's nonnegativity; the printed amount is line 23 less line 24. Project stands.",
+   "context": "2692053d23543f171d7329deeda6ec5a15daa86956889fe66aad8a9c16e1efce",
+   "date": "2026-11-17",
+   "run": "eadf3f11b18968676180a760bbfecfc0ce2a4f291b6eb3e3f611022948e4dd00",
+   "subject_key": "9859b8a930c0079b5fb4b226a37e0bef156277ad1ba69ab0ed28fa2c76eae6e4"
+  }
+ ]
+}

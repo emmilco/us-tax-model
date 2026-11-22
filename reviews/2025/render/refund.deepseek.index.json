@@ -2,54 +2,75 @@
  "kind": "render",
  "form": "refund",
  "family": "deepseek",
- "base": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+ "base": "7a483891d6fa8f0033c315d2723af966b05a8766a7e91b79db1ba656bddb9abb",
  "lines": [
   {
    "key": "1",
-   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "record": "7a483891d6fa8f0033c315d2723af966b05a8766a7e91b79db1ba656bddb9abb",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi p. 89, Line 1, Exception: \"1. You received a refund in 2025 that is for a tax year other than 2024\", \"2. You received a refund other than an income tax refund, such as a general sales tax or real property tax refund, in 2025 of an amount deducted or credit claimed in an earlier year\" and \"5. You made your last payment of 2024 estimated state or local income tax in 2025\". Exceptions 1 and 5 are refused by refund.not_2024 (\"Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025 or before 2024?\", PENDING-5 of the credits-misc package having added \"or before 2024\"), whose refusal sits on refund.taxable, the line Schedule 1 line 1 enters, so no such refund reaches line 1 on a completed return; the model saw only line 1's refusals (refund.exc_tax, refund.exc_who). Exception 2 is outside refund.received (\"State or local income tax refunds, credits or offsets\") and refused by scope.schedule1 (\"a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund\"). The cap at line 5d is amb.2025.refund_cap_5d."
+   "ruling": "Ruling: scope; i1040gi p. 90: the Pub. 525 exceptions (a refund for another year, a 2024 payment made in 2025) are refused at refund.received_*. Project stands.",
+   "subject_key": "de520d4310f930654b3603c6a2e3a50e0558b6a13a9fd777d1ff9d0476347a25"
   },
   {
    "key": "2",
-   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
-   "status": "MATCH"
+   "record": "7a483891d6fa8f0033c315d2723af966b05a8766a7e91b79db1ba656bddb9abb",
+   "status": "MATCH",
+   "subject_key": "be2eabe3af855a95440ac8e42366e07b95c806e4693243e5f17057b3c640d2b7"
   },
   {
    "key": "3",
-   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
-   "status": "MATCH"
+   "record": "7a483891d6fa8f0033c315d2723af966b05a8766a7e91b79db1ba656bddb9abb",
+   "status": "MATCH",
+   "subject_key": "d27b1d820d0c432df476e431e9a3f9d5d3c97fa92a98ff9e1bc71b6bdbd47237"
   },
   {
    "key": "4",
-   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
-   "status": "MATCH"
+   "record": "7a483891d6fa8f0033c315d2723af966b05a8766a7e91b79db1ba656bddb9abb",
+   "status": "MATCH",
+   "subject_key": "e1b4ebc142b2a710b278ccfba880250aa5a964ce54149e3e12fe724fdd9483f0"
   },
   {
    "key": "5",
-   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
-   "status": "MATCH"
+   "record": "7a483891d6fa8f0033c315d2723af966b05a8766a7e91b79db1ba656bddb9abb",
+   "status": "MATCH",
+   "subject_key": "edcae3e94e435ee74a57dd1d4b8322f3b6db9fd2c13b91772f4e5deda896baf3"
   },
   {
    "key": "6",
-   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "record": "7a483891d6fa8f0033c315d2723af966b05a8766a7e91b79db1ba656bddb9abb",
    "status": "MISMATCH",
-   "ruling": "Ruling: representation; i1040gi p. 90, worksheet line 6: \"Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)\" and its footnote \"*If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\"; p. 33, Line 12d: \"Don’t check any boxes for your spouse if your filing status is head of household\". Each per-box helper is refund.per_box when its box is checked and zero otherwise, and refund.per_box is $1,550, or $1,950 when the 2024 status was single or head of household (refund.box_married, refund.box_unmarried), so the sum is the number of boxes times the amount. The married filing separately condition for the spouse boxes is in the spouse questions themselves (refund.spouse_born, refund.spouse_blind: \"answer yes only if your spouse also had no income, wasn't filing a return, and couldn't be claimed as a dependent on another person's return\"), as the footnote says; zeroing the spouse boxes for single, head of household and qualifying surviving spouse is the recorded reading amb.2025.refund_boxes_2024. Unchanged by the backlog packages."
+   "ruling": "Ruling: scope; i1040gi p. 90: married filing separately is refused (s3.mfs). Project stands.",
+   "subject_key": "762dd13abc8cb88d63b479f5cdd5321aa80cb60b86288d32b89147ba080e1471"
   },
   {
    "key": "7",
-   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
-   "status": "MATCH"
+   "record": "7a483891d6fa8f0033c315d2723af966b05a8766a7e91b79db1ba656bddb9abb",
+   "status": "MATCH",
+   "subject_key": "3402c0c8936dbe8b710b30f39017b6021067943ac7b113dc11bbc864e7849768"
   },
   {
    "key": "8",
-   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
-   "status": "MATCH"
+   "record": "7a483891d6fa8f0033c315d2723af966b05a8766a7e91b79db1ba656bddb9abb",
+   "status": "MATCH",
+   "subject_key": "5e2f7bee08ebd3db973b91b3a5d91b7e607d4d58441074e4d9eb369d80d52f74"
   },
   {
    "key": "9",
-   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
-   "status": "MATCH"
+   "record": "7a483891d6fa8f0033c315d2723af966b05a8766a7e91b79db1ba656bddb9abb",
+   "status": "MATCH",
+   "subject_key": "91824c9671e1332ba87175b457323c8d60dd935f0a2f8dbeb37149afcfc2c7a8"
   }
- ]
+ ],
+ "subjects": {
+  "1": "acaceba8388335decc72c9b0c5e0ec99def64a542895bf4798fcaabc614d111a",
+  "2": "34562088c4d7570ac525b4c19b926af56d468e636400770325c931a8c582fe1c",
+  "3": "f6b6191b0826ef873a07757b76f1ece3da43306bea5d3218765c85d0d294a5ab",
+  "4": "1c5e3cdc4327598989d65b011ce5931d796509d16a93609b218d451232289c41",
+  "5": "c2aa03b1776c93f69517515f9576e86ddbc821852e8a0a25184242877b6690d6",
+  "6": "dfcb1e386609829b602089371d5ad2d5f087c27e6c6b2d8afa2b099d46b3b62a",
+  "7": "45153661dbdea8aec9d870359ddc8243ff57567c177304e40b151c426a29bad2",
+  "8": "6fcc5d245ff0a0dd2c4c2fae22127bf8694d7eebd27213d1f78ecfd87877bfff",
+  "9": "52731ed038a374ddf4f0a2b7ea2f2dc3db38e88eac3f36e286f25c129fd4b568"
+ },
+ "__rest__": "c121ffc332423895e973e95cd731af6fa1258995447b712788de1a215a491ee2"
 }

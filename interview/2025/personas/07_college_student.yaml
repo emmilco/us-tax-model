@@ -30,7 +30,7 @@ answers:
   person[taxpayer].edu_mat: 60000
   f8863.ban: false
   person[taxpayer].eic_ssn: true
-  f1040.tax_exempt_interest: 0
+  f1040.tax_exempt_any: false
   eic.died_this_year: false
   scope.w2_marks: false
   s2.w2_marks: false

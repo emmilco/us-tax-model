@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "32",
   "agree / disagree / missing": "6 / 26 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "5 (latest 2026-11-16); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -79,10 +79,10 @@
   },
   {
    "key": "ira.excl_gate",
-   "record": "cc86fdb32f98c13f72a0c4cc85dc1a035bdbf7ac3a1e9d4103ff48e03ac0ad63",
+   "record": "db613f330bb122c6702e935d56919c46539d78cc742fc556c6ec566e893232c3",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; executable triage 2,978/2,999 agree; 12 candidate-unknown, 7 project-unknown, 2 value (refused returns only). The reply encodes a different exclusion, the joint traditional-and-Roth one (i1040gi p. 95, Line 20, 'If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don't use the IRA Deduction Worksheet'), which the project carries in its own gate ira.both_kinds. This gate's label and cite are the excluded-income rule: i1040gi p. 96, 'If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A'.",
-   "subject_key": "20d5c997820817157a2e0289d3ffff8dd8ea0c9ec91e08659bcaa5df21619b81"
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3201 values compared, none different or missing: 2569 on 2569 fixture cases, 500 on 500 generated returns seed 20261026, 132 on 132 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "c421f74f4b76396773f8629e297cfedde9395e6fb75b470e77084772a1b3214b"
   },
   {
    "key": "ira.line20",
@@ -271,7 +271,7 @@
   "ira.over_comp": "21ac5f64a33a76f7f7d620e36f73fe5cd5c6bdd243ccff3085d36d54488fc324",
   "ira.special_gate": "72f9b6dd1bccc9866f4dd2eb123aef4bb4a61a4ac92b37991aed27caaf4d4486",
   "ira.combat_gate": "c289dc6646202069a3209e5c65de4e8f83116a3ce4588fefabd1e4474be36c78",
-  "ira.excl_gate": "29ca9ba1c65b729b50aec02092a387d9e3cd179be7654bba2eb8b78ac5aa8b38",
+  "ira.excl_gate": "cf211430fec52c22d1b6cf296c0a0a0661a1ce6d2e3409aca87a2f4ad8390b07",
   "ira.line20": "5c16bbd2c3580c26e60a0627c1651f2d3a296698fbdc1da90687d87346d59cb1",
   "1a": "56e5fd0b21db506d083633eca3607caf6fd4d06ee50b4af9ae5a2b7962550473",
   "2a": "9a8f7688747d160360f39eb540fd50ee37d5af02a9ba81ec8b2c948c8cfcc840",

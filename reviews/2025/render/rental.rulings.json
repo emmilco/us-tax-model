@@ -33,6 +33,17 @@
    "subject_key": "60f1a6f210f15ef63d77ad6a29c96807f87d91ee4b6b19d501e194e2480ef894"
   },
   {
+   "printed": "12",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Mortgage interest paid to banks, etc., asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Mortgage interest paid to banks, etc.: the rental part (rental days over total days of use)\"]",
+   "model": "The input is capped at the Form 1098 box 1 amount. The instructions say 'If you paid more mortgage interest than is shown on your Form 1098 ... If you can, enter the entire deductible amount on line 12'; that excess is neither asked for nor refused.",
+   "ruling": "Ruling: finding; deductible mortgage interest above the Form 1098 amount (i1040se p. 6, Line 12) has no question (BUG-0995)",
+   "context": "85034f01f9749e2a4b8e2ec7e0a825cc512f036fcab5ee572156e4fdbb7f7682",
+   "date": "2026-11-22",
+   "run": "bd1c067f178ce297f49a0fe8d56fb1679856d0dd49a222d845b27a0dd4e486bb",
+   "severity": "low",
+   "subject_key": "f11c49bdcbdeaa2d99f075aabce31709e9872d34dffc614b14da9c396e63cac7"
+  },
+  {
    "printed": "13",
    "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Other interest, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Other interest: the rental part (rental days over total days of use)\"]",
    "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
@@ -115,6 +126,17 @@
   },
   {
    "printed": "2 (rental.days_personal)",
+   "restated": "Input — How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row, or for less if you then sold or traded it.",
+   "model": "The restatement counts every day used by 'your family or another owner' with no exceptions. The IRS text excludes family use where 'the unit is rented at a fair rental price to that person as his or her main home', and owner use 'under a “shared equity” financing agreement'. It also says 'working substantially full time repairing and maintaining' where the restatement says 'mostly repairing'.",
+   "ruling": "Ruling: finding; the question omits p527 p. 26's exceptions for a family member renting at a fair rent as a main home and for shared-equity use (BUG-0994)",
+   "context": "85034f01f9749e2a4b8e2ec7e0a825cc512f036fcab5ee572156e4fdbb7f7682",
+   "date": "2026-11-22",
+   "run": "bd1c067f178ce297f49a0fe8d56fb1679856d0dd49a222d845b27a0dd4e486bb",
+   "severity": "low",
+   "subject_key": "0906b4ce9bba91cd985df5f08200994e178e7cab562f56313f9a9b3c3e7c570e"
+  },
+  {
+   "printed": "2 (rental.days_personal)",
    "restated": "Input — How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row.",
    "model": "The main-home exclusion requires 12 months or more in a row. The IRS also allows a shorter period: 'for at least 12 consecutive months (or for a period of less than 12 consecutive months at the end of which you sold or exchanged it)'. The restatement also does not except family members renting it at a fair price 'as his or her main home'.",
    "ruling": "Ruling: finding; i1040se p. 4, Line 2 excludes main-home days around a rental of 'at least 12 consecutive months (or for a period of less than 12 consecutive months at the end of which you sold or exchanged it)'; the question names only the 12-month case. A 2025 sale of a listed building already refuses at rprop.screen, so the gap is a shorter rental ended by a later sale or exchange: low (BUG-0772). The family point is representation: the question asks days 'used that way', the use defined at rental.personal_any, whose help says family renting at a fair rent as their main home is not personal use.",
@@ -133,6 +155,16 @@
    "date": "2026-11-15",
    "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
    "subject_key": "056bb9423a1ca89aff64ef0bf356e6d2429576c6b3407e527ddeb5b5d257b95a"
+  },
+  {
+   "printed": "20",
+   "restated": "Add line 5, line 7, line 8, line 9, line 10, line 11, line 12, line 13, line 14, line 15, line 16, line 17, line 18, and line 19.",
+   "model": "The sum of lines 5–19 is correct, but lines 5–20 are still filled in when the property is excluded. The IRS text says 'do not report the rental income and do not deduct any rental expenses' and the property 'shouldn't be reported on Schedule E'.",
+   "ruling": "Ruling: representation; an excluded property's lines are figured but its column is not carried to Schedule E: the Schedule E totals sum only rentals with rental.reported true (forms/2025/sche.yaml), so nothing is reported for it, as the instructions require.",
+   "context": "85034f01f9749e2a4b8e2ec7e0a825cc512f036fcab5ee572156e4fdbb7f7682",
+   "date": "2026-11-22",
+   "run": "bd1c067f178ce297f49a0fe8d56fb1679856d0dd49a222d845b27a0dd4e486bb",
+   "subject_key": "53103dc9c4e242aed98d4a2af31b5c9cfdc27a81431ca8ce0eb478e5fc0e468c"
   },
   {
    "printed": "5",

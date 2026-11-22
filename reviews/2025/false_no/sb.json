@@ -619,108 +619,58 @@
    ]
   },
   "gate:sb.has_income": {
-   "subject_sha": "cb4df016f065363d624d6bbd081f896156ac6f69b09d89d3a895c8f39fbea621",
+   "subject_sha": "b57dbf12447e50f2f6dfe4be6e9fb380158736e3b36459d209bff27104de1904",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer bought a brokered CD on the secondary market in a brokerage account and paid the seller accrued interest. Alternatively, they hold a multi-year CD for which the bank issued a Form 1099-OID and they bought it at a premium.",
-       "why_no": "The help says 'Interest from a bank account, a certificate of deposit or a fund is not what this asks about,' and a CD is not a 'bond or note.' Following the help, the filer truthfully answers No.",
+       "pattern": "5",
+       "who": "A filer who cashed series EE or I U.S. savings bonds issued after 1989 and uses all of the interest for qualified higher education expenses, leaving no taxable interest.",
+       "why_no": "They read the gate as requiring taxable investment income above zero; after the full savings bond exclusion they have zero taxable interest, dividends, and capital gain distributions.",
        "line": "sb.bonds_any_if_income",
-       "irs_text": "i1040sb p. 2: 'If you received a Form 1099 for interest as a purchaser of a bond with accrued interest, follow the rules earlier under Nominees ... identify the amount to be subtracted as \"Accrued Interest.\"' and 'If you are reporting OID in an amount less than the amount shown in box 1 or box 8 of Form 1099-OID ... \"OID Adjustment.\"'",
+       "irs_text": "Use Schedule B (Form 1040) if any of the following applies. ... You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989. (i1040sb p. 1)",
        "severity": "high",
-       "fix": "Drop CDs from the exclusion in the help. Add: 'Answer Yes if you bought a CD, bond or note from another investor (not newly issued), paid accrued interest when buying it, or received a Form 1099-OID.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer holds individual corporate or Treasury bonds in an ordinary brokerage account, where the broker holds them in street name. The filer paid accrued interest on purchase or wants to elect amortizable bond premium.",
-       "why_no": "'Own bonds or notes directly (not through a fund)' can be read as bonds registered in their own name or held at TreasuryDirect, not bonds held by a broker. The help's exclusion of 'interest from ... a fund' reinforces that reading for brokerage holdings.",
-       "line": "sb.bonds_any_if_income",
-       "irs_text": "i1040sb p. 2: 'Amortizable bond premium. If you elect to reduce your interest income on a taxable bond by the amount of taxable amortizable bond premium, follow the rules earlier under Nominees ... \"ABP Adjustment.\"'",
-       "severity": "medium",
-       "fix": "Say 'own individual bonds, notes or Treasury bills, including ones held in a brokerage account (not shares of a bond fund or ETF).'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "In 2025 a parent redeemed Series EE or I bonds issued after 1989 and had the proceeds sent straight into a 529 plan for a dependent, or paid tuition with them.",
-       "why_no": "'Cash in U.S. savings bonds' reads as receiving cash. A filer who redeemed electronically and rolled the money into a 529 plan may say they did not cash them in.",
-       "line": "sb.bonds_any_if_income",
-       "irs_text": "i1040sb p. 2, Line 3: 'If, during 2025, you cashed series EE or I U.S. savings bonds issued after 1989 and you paid qualified higher education expenses ... you may be able to exclude part or all of the interest.'",
-       "severity": "medium",
-       "fix": "Ask 'redeem, cash in, or have proceeds of U.S. savings bonds paid to you or to a 529/education account.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer inherited a parent's bank or brokerage account partway through 2025. The institution issued one Form 1099-INT or 1099-DIV under the filer's SSN covering the whole year, including interest earned before the death, which belongs to the decedent or the estate.",
-       "why_no": "Under 'Does any of the interest or dividends ... belong to someone else,' the account is now entirely theirs, so they answer No. The help's example (a living joint owner) does not suggest pre-death income.",
-       "line": "sb.nominee_if_income",
-       "irs_text": "i1040sb p. 1: 'If you received a Form 1099-INT that includes interest you received as a nominee (that is, in your name, but the interest actually belongs to someone else), report the total on line 1 ... enter \"Nominee Distribution\".'",
-       "severity": "medium",
-       "fix": "Add to the help: 'Answer Yes if a form in your name includes income earned before you acquired the account (for example, before the owner's death) or income that belongs to an estate, trust, child or other person.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A married filer files separately and holds a joint bank account with their spouse. The Form 1099-INT is in the filer's SSN, and half the interest is the spouse's.",
-       "why_no": "The question's only example is 'the other owner of a joint account who is not your spouse,' and the help says joint-account income with a spouse is 'all yours.' A filer filing separately takes this to mean the spouse's share does not count and answers No.",
-       "line": "sb.nominee_if_income",
-       "irs_text": "i1040sb p. 2: 'If you received interest as a nominee, you must give the actual owner a Form 1099-INT (unless the owner is your spouse)' (a spouse can be the actual owner; the nominee subtraction on p. 1 still applies).",
-       "severity": "medium",
-       "fix": "Condition the help on filing status: 'On a joint return, your spouse's share is yours. If you file separately, your spouse's share belongs to someone else; answer Yes.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer's only Form 1099-INT or 1099-DIV is in their SSN but belongs entirely to someone else, for example a relative's account or a child's custodial account opened under the parent's SSN. They have no interest or dividends of their own.",
-       "why_no": "Asked for 'Taxable interest from all payers' or ordinary dividends, they enter 0 because none of it is taxable to them. The gate turns false, the nominee question is never asked, and the amount on the 1099 never appears on Schedule B.",
-       "line": "sb.nominee_if_income",
-       "irs_text": "i1040sb p. 1: 'report the total on line 1. Do this even if you later distributed some or all of this income to others.'",
-       "severity": "medium",
-       "fix": "Ask the source helpers as 'total shown on all Forms 1099-INT/1099-OID/1099-DIV in your or your spouse's name, even if some belongs to someone else.' Alternatively, ask the nominee question whenever any such form was received."
+       "fix": "Add cashing series EE/I savings bonds or claiming the savings bond interest exclusion as an independent gate trigger, and ask sb.bonds_any before the income threshold."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A filer sold a house with seller financing and receives interest from an individual buyer, who issues no Form 1099-INT. Or a filer's only interest-type income is on a Form 1099-OID (zero-coupon bond, long-term CD) that they would reduce for acquisition premium.",
-       "why_no": "The gate helper 'Taxable interest from all payers' sounds like Form 1099-INT amounts. With no 1099-INT, the filer enters 0, the gate is false, and the bonds/seller-financing question is never asked.",
+       "who": "A filer who sold a home or other property on a seller-financed mortgage to a buyer who used it as a personal residence and received interest, but no Form 1099-INT was issued.",
+       "why_no": "They read 'taxable interest from all payers' as interest reported on a Form 1099 and enter zero because no payer sent a form.",
        "line": "sb.bonds_any_if_income",
-       "irs_text": "i1040sb p. 1: 'Seller-financed mortgages. If you sold your home or other property and the buyer used the property as a personal residence, list first any interest the buyer paid you ... Be sure to show the buyer's name, address, and SSN.'",
-       "severity": "medium",
-       "fix": "Make the interest helper explicitly include interest with no form (seller-financed notes, private loans) and Form 1099-OID amounts. Alternatively, ask the bonds/loans question before the gate rather than behind it."
+       "irs_text": "Use Schedule B (Form 1040) if any of the following applies. ... You received interest from a seller-financed mortgage and the buyer used the property as a personal residence. (i1040sb p. 1); 'Report on line 1 all of your taxable interest. Taxable interest generally should be shown on your Forms 1099-INT...' (p. 1)",
+       "severity": "high",
+       "fix": "Ask directly about seller-financed mortgage interest and taxable interest not reported on a Form 1099; do not rely only on 'from all payers' as a form test."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer cashed EE or I savings bonds, and their only interest is in Form 1099-INT box 3, which is exempt from state tax. They paid tuition and expect the interest to be excluded.",
-       "why_no": "They read 'Taxable interest' as excluding savings bond interest, which they think of as tax-exempt or excludable, so they enter 0. The gate is false and the Form 8815 path behind the bonds question is never reached.",
-       "line": "sb.bonds_any_if_income",
-       "irs_text": "i1040sb p. 1, Line 1: 'Include interest from series EE, H, HH, and I U.S. savings bonds.'",
-       "severity": "medium",
-       "fix": "State in the interest helper: 'Include U.S. savings bond and Treasury interest (Form 1099-INT box 3) even if you expect to exclude it for education.'"
+       "who": "A filer who received interest or ordinary dividends reported on a Form 1099 in their name but belonging entirely to another person, such as a joint account with a non-spouse.",
+       "why_no": "They treat the amount as the other person's income, not their own taxable interest or ordinary dividends, so they report zero investment income for the gate.",
+       "line": "sb.nominee_if_income",
+       "irs_text": "Use Schedule B (Form 1040) if any of the following applies. ... You received interest or ordinary dividends as a nominee. (i1040sb p. 1)",
+       "severity": "high",
+       "fix": "Add receipt as a nominee as an independent gate trigger, or ask the nominee question before requiring that the interest or dividends be the filer's own taxable income."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer bought Treasury bills or other short-term discount obligations from another investor in a brokerage account.",
-       "why_no": "'Bonds or notes' read literally excludes 'bills', so the filer answers No.",
+       "pattern": "8",
+       "who": "A filer who owns a taxable bond with original issue discount or amortizable bond premium and reports net taxable interest of zero after the Schedule B adjustment.",
+       "why_no": "They enter the net amount after reducing interest for OID or bond premium, not the gross amount before the Schedule B adjustment, so the gate sees zero.",
        "line": "sb.bonds_any_if_income",
-       "irs_text": "i1040sb p. 2: 'If you are reporting OID in an amount less than the amount shown in box 1 or box 8 of Form 1099-OID ... \"OID Adjustment.\"'",
-       "severity": "low",
-       "fix": "List 'bonds, notes, bills, CDs or other debt instruments you hold individually'."
+       "irs_text": "Use Schedule B (Form 1040) if any of the following applies. ... You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID. ... You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium. (i1040sb p. 1)",
+       "severity": "medium",
+       "fix": "Ask separately whether a Form 1099-OID or Form 1099-INT was reduced for OID or amortizable bond premium, or gate on the gross Form 1099 amount before adjustments."
       }
      ],
-     "prompt_sha": "1f9890219ca244abb9a483d733dc6dba7552a20b014d2fbec37cdaba341ea7b6",
+     "prompt_sha": "69303eb3749a76fd39c7cfa3eba66e41a6e196bbc24a6ddc6ef0547c457ca474",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-opus-5-5",
-     "cost": 0.179736,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_sb.has_income.cb4df016f065.1.response.txt"
+     "model": "deepseek-flash",
+     "cost": 0,
+     "date": "2026-11-18",
+     "response": ".transcription/false_no/gate_sb.has_income.b57dbf12447e.1.response.txt"
     }
    ],
    "condition": "sb.has_income",

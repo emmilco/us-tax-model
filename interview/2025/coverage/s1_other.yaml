@@ -261,6 +261,54 @@ rows:
     "f8853c[mom].nonqualified": true
   expect:
     refused: f8853c[mom].nonqualified_if_periodic
+- id: s1o.ltc_reimbursed_to_provider
+  design: BUG-0873 (line 24 counts reimbursements paid straight to the care provider)
+  situation: A person was paid $160,600 at a set daily rate for their mother's care costing $120,000, and a second policy paid $30,000 of the nursing home's bills straight to the home.
+  uses: [ltc_entry]
+  answers:
+    "f8853c[mom].periodic": true
+    "f8853c[mom].line17": 16060000
+    "f8853c[mom].nonqualified": false
+    "f8853c[mom].line19": 0
+    "f8853c[mom].others_paid": false
+    "f8853c[mom].rate_changed": false
+    "f8853c[mom].days": 365
+    "f8853c[mom].line22": 12000000
+    "f8853c[mom].line24": 3000000
+    "f8853c[mom].contract_before_ltc_date": false
+    "person[taxpayer].sav_student": false
+    "person[taxpayer].sav_voluntary": 0
+    "person[taxpayer].sav_able": false
+  expect:
+    proceeds: {"f8853c[mom].line24": 3000000}
+- id: s1o.ltc_others_accelerated
+  design: BUG-0873 (line 15, an accelerated death benefit paid to someone else)
+  situation: A person was paid at a set rate under a policy on their mother, and their brother was paid a life insurance benefit early because she was ill.
+  uses: [ltc_entry]
+  answers:
+    "f8853c[mom].periodic": true
+    "f8853c[mom].line17": 16060000
+    "f8853c[mom].nonqualified": false
+    "f8853c[mom].line19": 0
+    "f8853c[mom].others_paid": true
+  expect:
+    refused: f8853c[mom].others_paid_if_periodic
+- id: s1o.ltc_weekly_per_diem
+  design: BUG-0873 (a fixed amount per week is a per diem payment)
+  situation: A person was paid a fixed $3,080 a week in 2025 by a long-term care policy on their mother, for care costing $120,000.
+  uses: [ltc_entry]
+  answers:
+    "f8853c[mom].periodic": true
+    "f8853c[mom].line17": 16060000
+    "f8853c[mom].nonqualified": false
+    "f8853c[mom].line19": 0
+    "f8853c[mom].others_paid": false
+    "f8853c[mom].rate_changed": false
+    "f8853c[mom].days": 365
+    "f8853c[mom].line22": 12000000
+    "f8853c[mom].line24": 0
+  expect:
+    proceeds: {"f8853c[mom].line17": 16060000}
 - id: s1o.inmate_amount
   design: scout-s1-other 3.5, line 8u, refused by s1.line8_other (computing it waits for the W-2 part of the pay to be asked; see TASKS.md)
   situation: A person was paid $800 in 2025 for work done while in prison.

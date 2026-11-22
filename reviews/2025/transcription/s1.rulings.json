@@ -243,40 +243,11 @@
    "printed": "5",
    "project_expr_sha256": "95a020fb901bd722135bae914d7d034f7ad89e0f86955809120cafe0a06ea17f",
    "second_expr_sha256": "53f1971e434491b39c896ed5f09e569c96bbcead08999adb0812fefe4aec0b65",
-   "ruling": "Ruling: representation; the project reads Schedule E line 41 only when scope.rental is Yes (else 0), the reply always. When there is no rental, royalty, partnership, S corporation, estate or trust income the Schedule E chain is not asked, so line 5 is 0 either way (f1040s1 line 5; i1040se p. 1). Triage 4e8342b3a4f8: 2,111/4,000 agree with no value difference: 1,854 candidate-unknown (Schedule E inputs such as sche.re_pro unasked), 27 candidate-refuses, 8 project-unknown (scope.rental unanswered).",
-   "context": "730fceb181cf1a4e3da4a69a072749962856fcee9f8246a0a3aa32e255ef6ff7",
-   "date": "2026-11-15",
-   "run": "cb309bcdd57b99d360d11d9c91115c4c07931632c6d84d8bcb1765e508d22e33",
-   "subject_key": "6d6bdb5707e2748cfd19a8a1706c439c2d30c06f288b221f2c648e5e96a0ad37",
-   "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "candidate-refuses",
-     "candidate-unknown",
-     "project-unknown"
-    ],
-    "witnesses": [
-     "fixture:classm.f2441.1.deepseek@s1",
-     "fixture:classm.f2441.2.deepseek@s1",
-     "fixture:classm.f2441.3.deepseek@s1",
-     "fixture:classm.f2441.4.deepseek@s1",
-     "fixture:classm.f2441.5.deepseek@s1",
-     "fixture:classm.f2441.6.deepseek@s1",
-     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@s1",
-     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@s1",
-     "fixture:stage16.cleanup.refuse.f1040_line16@s1",
-     "fixture:stage16.cleanup.refuse.scope_credits@s1",
-     "fixture:ss.single.over@s1",
-     "fixture:ss.multi.over@s1",
-     "generated:20261026.8@s1",
-     "generated:20261026.16@s1",
-     "generated:20261026.18@s1",
-     "generated:20261026.39@s1",
-     "generated:20261026.48@s1",
-     "generated:20261026.91@s1"
-    ],
-    "policy": "executable-triage-v2"
-   }
+   "ruling": "Ruling: representation; f1040s1 p. 1, General Instructions, \"Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties\". The candidate reads re_pro directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): 2111 of 4000 comparisons agree, 2093 of 3955 in scope; completed {\"candidate-unknown\": 262}. Project stands.",
+   "context": "6344f210d63837348361b26d8d56b60a5315c9a6667d7978b2e824e6a8f1361a",
+   "date": "2026-11-17",
+   "run": "5b3cc09636fe16ef8ad0d1e0aa3796ab31fd1aa4d410fb41818c6bdd5cb42e81",
+   "subject_key": "62617bbf8483e8c62db0219501bc521e9f1f9dec25771cd5c788faf75356d9fd"
   },
   {
    "printed": "7",
@@ -366,6 +337,16 @@
    }
   },
   {
+   "printed": "8a",
+   "project_expr_sha256": "777ad51f547261af4808652342687113fd4f00b73631ef7d4810e18649af6886",
+   "second_expr_sha256": "76706930a1854c50385ec116d298ce7c168aba7796b86ce04772372c80b3fa3c",
+   "ruling": "Ruling: representation; i1040gi p. 91, Line 8a, \"Enter any deduction for an NOL from an earlier year. Enter the amount in the preprinted parentheses (as a negative number)\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): None of None comparisons agree; completed {}. Project stands.",
+   "context": "6344f210d63837348361b26d8d56b60a5315c9a6667d7978b2e824e6a8f1361a",
+   "date": "2026-11-17",
+   "run": "5b3cc09636fe16ef8ad0d1e0aa3796ab31fd1aa4d410fb41818c6bdd5cb42e81",
+   "subject_key": "262cb38dde03fa970d80f5f3e429be1add9037ccce296d07ceadb4711f5b5e95"
+  },
+  {
    "printed": "8c",
    "project_expr_sha256": "62c7ec1a6b5ae1073e682c10e74e33263a1d247218db03240673ad0d0c4490b9",
    "second_expr_sha256": "de81a41ab483dfcaf1f9ecf456af13fd54c4debf2bd9c0727191fcdf871d4652",
@@ -383,73 +364,31 @@
    "printed": "8c",
    "project_expr_sha256": "9bd13b80e005cfb36f3673e9c79b51a86a367bfce0b72e48e64b32ac4db5bec5",
    "second_expr_sha256": "fd2f662203a49c204a20e37a5fe71913684763a1f392034ad461091d64a3e5cc",
-   "ruling": "Ruling: representation; equivalent: i1040gi p. 91, Line 8c, 'Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable'. The reply enters s1.cod_amount when s1.cod_any is Yes; the project enters it through s1.cod_figured, which is s1.cod_amount when it is above $0 and $0 otherwise; s1.cod_amount is NonNegDollars, so the values are equal. Triage executable-triage-v2 (`.transcription/triage/2025/s1.json`, pass 92bfb4f93b24; 2,028 fixtures, 500 generated returns seed 20261026, 1,087 partial records): 3,614 of 3,615 agree; the one difference is candidate-unknown on an incomplete record (mutation.t2.s1.cod_none_with_alimony: cod_any Yes, amount $0), where the reply's own screen asks s1.cod_unsupported whenever a debt was canceled and the project asks it only when the amount is above $0 (s1.cod_refused is read only then). No value differs. Project stands.",
-   "context": "48c3623564e093cd82977ca7fbb9af236df645d0d4ba82f26c5e3e1119474f95",
-   "date": "2026-11-15",
-   "run": "d20005a96d08f05739d74fd156cfdd3f276f87ec284076add0a284ff4f6f937a",
-   "subject_key": "dd639c8d9b4461908abde791e3952c2c264432389df1bbab9b2a9dc08348aca0",
-   "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "candidate-unknown"
-    ],
-    "witnesses": [
-     "fixture:mutation.t2.s1.cod_none_with_alimony@s1"
-    ],
-    "policy": "executable-triage-v2"
-   }
+   "ruling": "Ruling: representation; f1040s1 p. 91, Line 8c, \"Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable\". The candidate reads cod_unsupported directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): 4047 of 4048 comparisons agree, 4045 of 4046 in scope; completed {}. Project stands.",
+   "context": "6344f210d63837348361b26d8d56b60a5315c9a6667d7978b2e824e6a8f1361a",
+   "date": "2026-11-17",
+   "run": "5b3cc09636fe16ef8ad0d1e0aa3796ab31fd1aa4d410fb41818c6bdd5cb42e81",
+   "subject_key": "f6ca9d2deb1e23aa61234d2ad07fcc2a2c9967e7ea07d7d0ec0892280511cebe"
   },
   {
    "printed": "8k",
    "project_expr_sha256": "e11dc2479039ecb667cb09288cb64a0a9f7859277481d3a73ba4de819c608dc5",
    "second_expr_sha256": "17c12605377279db02348ffce6add1259e2bbc01a2b6ac5ab141985234933188",
-   "ruling": "Ruling: representation; the reply reads s1.stock_options directly, the project only beneath its parent question s2.options_any (an option exercised in 2025), as the interview asks it (i1040gi p. 92, Line 8k). Triage 4e8342b3a4f8: 2,610/4,000 agree with no value difference; all 1,390 differences are candidate-unknown (s1.stock_options unasked because the parent was No or unanswered).",
-   "context": "730fceb181cf1a4e3da4a69a072749962856fcee9f8246a0a3aa32e255ef6ff7",
-   "date": "2026-11-15",
-   "run": "cb309bcdd57b99d360d11d9c91115c4c07931632c6d84d8bcb1765e508d22e33",
-   "subject_key": "00e253a6440c255c3d6921a9c85f07059fe051bd0f122699074451e1842f9de5",
-   "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "candidate-unknown"
-    ],
-    "witnesses": [
-     "fixture:classm.f2441.1.deepseek@s1",
-     "fixture:classm.f2441.2.deepseek@s1",
-     "fixture:classm.f2441.3.deepseek@s1",
-     "fixture:classm.f2441.4.deepseek@s1",
-     "fixture:classm.f2441.5.deepseek@s1",
-     "fixture:classm.f2441.6.deepseek@s1"
-    ],
-    "policy": "executable-triage-v2"
-   }
+   "ruling": "Ruling: representation; f1040s1 p. 91, Line 8k, \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h\". The candidate reads stock_options directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): 2610 of 4000 comparisons agree, 2610 of 4000 in scope; completed {\"candidate-unknown\": 209}. Project stands.",
+   "context": "6344f210d63837348361b26d8d56b60a5315c9a6667d7978b2e824e6a8f1361a",
+   "date": "2026-11-17",
+   "run": "5b3cc09636fe16ef8ad0d1e0aa3796ab31fd1aa4d410fb41818c6bdd5cb42e81",
+   "subject_key": "5688c8916874c7feeb6599f986c65b9c0119b369d98737c145e13f79e236dbd6"
   },
   {
    "printed": "8v",
    "project_expr_sha256": "da8d6e40ef786367b551201dc9830db3389f276b55c0052982796472a54ef81f",
    "second_expr_sha256": "10a669665c72758e4b51956183ee220aba8a6b0ae16fff90c0add03930910b37",
-   "ruling": "Ruling: representation; the reply reads s1.digital_income directly, the project only beneath f1040.digital_assets (the page 1 digital asset question; i1040gi p. 92, Line 8v). Triage 4e8342b3a4f8: 3,921/4,000 agree; 78 candidate-unknown (the question not asked), and the one value difference is fixture s1.line8v.not_asked, which answers f1040.digital_assets No and s1.digital_income Yes: the interview never asks the second after a No to the first, and the project gives 0 as it must.",
-   "context": "730fceb181cf1a4e3da4a69a072749962856fcee9f8246a0a3aa32e255ef6ff7",
-   "date": "2026-11-15",
-   "run": "cb309bcdd57b99d360d11d9c91115c4c07931632c6d84d8bcb1765e508d22e33",
-   "subject_key": "461f632c7e501605444c9979273a0308318f6925c81af5b416758d90cd6ad0ae",
-   "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "candidate-unknown",
-     "value"
-    ],
-    "witnesses": [
-     "fixture:classm.f8889.1.deepseek@s1",
-     "fixture:classm.f8889.2.deepseek@s1",
-     "fixture:classm.dependent.1.deepseek@s1",
-     "fixture:classm.dependent.2.deepseek@s1",
-     "fixture:classm.dependent.3.deepseek@s1",
-     "fixture:classm.dependent.4.deepseek@s1",
-     "fixture:s1.line8v.not_asked@s1"
-    ],
-    "policy": "executable-triage-v2"
-   }
+   "ruling": "Ruling: representation; f1040s1 p. 92, Line 8v, \"report this income on line 8v\". The reply reads s1.digital_income directly where the project reads it only beneath f1040.digital_assets (i1040gi p. 92, Line 8v); no amount differs on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): 3921 of 4000 comparisons agree, 3921 of 4000 in scope; completed {\"candidate-unknown\": 33, \"value\": 1}. Project stands.",
+   "context": "6344f210d63837348361b26d8d56b60a5315c9a6667d7978b2e824e6a8f1361a",
+   "date": "2026-11-17",
+   "run": "5b3cc09636fe16ef8ad0d1e0aa3796ab31fd1aa4d410fb41818c6bdd5cb42e81",
+   "subject_key": "654fe43cf3671c1b7baf63a0dd350ccfda9c8bfbf2bb109a984418824cba18f6"
   },
   {
    "printed": "8z",

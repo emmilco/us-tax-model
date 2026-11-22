@@ -11,6 +11,16 @@
    "subject_key": "84f14ce3cfa6421bdb621f1123d78211a5160887405196db4e8d302ec1e13d15"
   },
   {
+   "printed": "12e",
+   "restated": "Enter the amount from sa helper \"Deduction selected for Form 1040 line 12e\".",
+   "model": "The dependent standard deduction uses earned income of Form 1040 line 1z plus Schedule 1 lines 3 and 8r, less line 15. The worksheet says earned income is \"the amount(s) you reported on Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15\". Lines 6, 8t and 8u are left out. The restatement also does not apply \"Exception 3—Dual-status alien ... your standard deduction is zero\".",
+   "ruling": "Ruling: scope; i1040gi pp. 34–35: the worksheet's lines 6, 8t and 8u are outside the tool (scope.schedule1 refuses them), and a dual-status alien return is refused. Project stands.",
+   "context": "c9ee319b2d0ece519ad3e94ffaa4e489a07d700830b3fa234826b6258e29dbfd",
+   "date": "2026-11-17",
+   "run": "e728a96659e71552568e75d53358a5a531228cf6ff295285cbbd8ff0083eefbc",
+   "subject_key": "cf9141f28853760b273626b0ac25738c8cbd383ddcaadd46830ff51f6e38cd37"
+  },
+  {
    "printed": "13a",
    "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
    "model": "Form 8995 is chosen only by comparing taxable income before the QBI deduction with the threshold. The IRS also requires 'You aren't a patron in a specified agricultural or horticultural cooperative' before Form 8995 can be used, and the program has no test or refusal for patrons.",
@@ -110,6 +120,16 @@
   {
    "printed": "1a",
    "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The restatement adds every W-2 box 1 amount with no exclusions. The instructions remove some box 1 amounts from line 1a: \"If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a\". They also say that box 1 amounts from a nonqualified deferred compensation or nongovernmental section 457 plan \"do not include this amount on Form 1040, line 1a\", and statutory employees report box 1 on Schedule C. No refusal covers these cases.",
+   "ruling": "Ruling: scope; i1040gi pp. 23–24: inmate wages, nonqualified deferred compensation and section 457 amounts are behind the s1.line8_other screen (8t, 8u), and a statutory employee's box 1 is behind the Schedule C refusal. Project stands.",
+   "context": "c9ee319b2d0ece519ad3e94ffaa4e489a07d700830b3fa234826b6258e29dbfd",
+   "date": "2026-11-17",
+   "run": "e728a96659e71552568e75d53358a5a531228cf6ff295285cbbd8ff0083eefbc",
+   "subject_key": "8b398a0fd565cf1a7e47f735c382b50965aee93a482d7a72bc39b20a7f371f71"
+  },
+  {
+   "printed": "1a",
+   "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The sum of W-2 box 1 matches 'Enter the total amount from Form(s) W-2, box 1', including a spouse's amount on a joint return. However, the IRS also says inmate wages and nonqualified or section 457 pensions in box 1 do not go on line 1a, and a married-filing-separately filer in a community property state must follow state law; the material shown does not reveal whether a screen handles these cases.",
    "ruling": "Ruling: scope; the model asks whether the cases i1040gi keeps off line 1a are screened. i1040gi p. 23, \"If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a\". The nonqualified deferred compensation and section 457 pension sentence is on p. 24. Both are behind s1.line8_other, whose question names \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t); wages earned while incarcerated (8u)\", and Schedule 1 refuses on it. Married filing separately is refused for the whole return (s3.mfs). A married head of household filer in a community property state is refused by household.hoh_community_property. A registered domestic partner who lived in a community property state and does not file jointly is refused at line 1a itself (household.rdp_community_property, i1040gi p. 23, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income\"). Within scope, box 1 holds none of these amounts. Same reading as the round-2 ruling of this line.",
    "context": "c95f5c394958abe4c7136dee37a4c7edc82896a723fcf892637bdbbd4223adf0",
@@ -132,6 +152,16 @@
    "date": "2026-11-15",
    "run": "bd2dc12ba1657229ff8314b1c8d8ca6024506244df8387fa0f78974eb3dfbfb8",
    "subject_key": "be719df4ffd3947c6acabd71f5ed3d140c2f54e0a9cd136c7758cd8f9dcc4377"
+  },
+  {
+   "printed": "1z",
+   "restated": "Add line 1a, line 1b, line 1c, line 1d, line 1e, line 1g, and line 1h.",
+   "model": "The form says \"Add lines 1a through 1h\", which includes line 1f (\"Employer-provided adoption benefits from Form 8839, line 31\"). The restatement leaves out line 1f, and no refusal excludes adoption benefits.",
+   "ruling": "Ruling: scope; f1040: line 1f adoption benefits are outside the tool (Form 8839 is refused, scope.adoption_benefits); the remaining lines are the ones the tool computes. Project stands.",
+   "context": "c9ee319b2d0ece519ad3e94ffaa4e489a07d700830b3fa234826b6258e29dbfd",
+   "date": "2026-11-17",
+   "run": "e728a96659e71552568e75d53358a5a531228cf6ff295285cbbd8ff0083eefbc",
+   "subject_key": "8ecc4660a245b46e8d3027e43c6512358f1f5046e8a0ba41ab7a10ca2ab2ada8"
   },
   {
    "printed": "1z",

@@ -559,16 +559,18 @@ form:
     printed: (helper)
     type: Bool
     gated_by: s1.digital_income_if_assets
-    label: "Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income that is not wages, business income or a capital gain, such as from staking, from mining not as a business or from a hard fork?"
+    label: "Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income that is not wages, business income or a capital gain, such as from staking, from mining not as a business, from a hard fork or from an airdrop?"
     expr:
       op: input
-      source: "Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income that is not wages, business income or a capital gain, such as from staking, from mining not as a business or from a hard fork?"
+      source: "Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income that is not wages, business income or a capital gain, such as from staking, from mining not as a business, from a hard fork or from an airdrop?"
     cite:
       doc: i1040gi
       locator: 'p. 92, Line 8v, "If, in 2025, you received ordinary income in connection with digital assets that isn’t
         reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining,
         which aren’t wages reported on line 1a or capital gain or loss reported on Form 8949 and Schedule D), report this
-        income on line 8v."'
+        income on line 8v."; rr-2019-24 p. 5, Holding (2), "A taxpayer has gross income, ordinary in character, under § 61 as a
+        result of an airdrop of a new cryptocurrency following a hard fork if the taxpayer receives units of new
+        cryptocurrency"'
   - id: s1.digital_income_if_assets
     printed: (gate)
     type: Bool
@@ -1328,26 +1330,158 @@ form:
       locator: p. 91, Line 8c
   - id: s1.cod_unsupported
     printed: (gate)
-    label: 'Does any of these apply to a canceled debt: an exception or exclusion (Form 982), a business, rental or farm debt,
-      a foreclosure, repossession or abandonment, deductible interest or other deductible debt, a debt you were not personally liable for, or a debt owed jointly with someone who is not on this return?'
+    label: 'A canceled debt is excluded or excepted from income (Form 982), a business, rental or farm debt, canceled in
+      a foreclosure, repossession or abandonment, deductible, nonrecourse, or owed jointly with someone not on this return
+      (true when any of the canceled-debt screening questions is answered Yes)'
     type: Bool
     expr:
-      op: input
-      source: |-
-        Does any of these apply to a canceled debt?
-
-        - it was canceled in a bankruptcy case or while you (or, on a joint return, your spouse) were insolvent, or is otherwise excluded from income (Form 982, for example qualified principal residence indebtedness)
-        - it was a student loan, was canceled as a gift or inheritance, was a reduction of the price of property you bought from the seller, or was owed to a corporation in which you hold stock
-        - it was a business, rental or farm debt
-        - it was canceled in connection with a foreclosure, repossession or abandonment of property (Form 1099-C box 7, or a Form 1099-A)
-        - it includes interest (Form 1099-C box 3) or any other amount (for example an unpaid medical bill) that would have been deductible if you had paid it
-        - you (or, on a joint return, your spouse) were not personally liable for it (box 5)
-        - you (or, on a joint return, your spouse) were liable for it together with someone who is not on this return
+      op: test
+      any:
+      - op: test
+        eq:
+        - s1.cod_bankrupt
+        - const: true
+      - op: test
+        eq:
+        - s1.cod_student_home
+        - const: true
+      - op: test
+        eq:
+        - s1.cod_gift
+        - const: true
+      - op: test
+        eq:
+        - s1.cod_price_cut
+        - const: true
+      - op: test
+        eq:
+        - s1.cod_stockholder
+        - const: true
+      - op: test
+        eq:
+        - s1.cod_business
+        - const: true
+      - op: test
+        eq:
+        - s1.cod_property
+        - const: true
+      - op: test
+        eq:
+        - s1.cod_interest
+        - const: true
+      - op: test
+        eq:
+        - s1.cod_not_liable
+        - const: true
+      - op: test
+        eq:
+        - s1.cod_joint_other
+        - const: true
     cite:
       doc: p4681
       locator: p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled
         debt being nontaxable"; p. 4, Persons who each receive a Form 1099-C showing the full amount of debt; p. 6, Exclusions,
         "If a canceled debt is excluded from your income, it is nontaxable"; p. 6, Deductible Debt, "If you use the cash method of accounting, you don’t realize income from the cancellation of debt if the payment of the debt would have been a deductible expense."
+  - id: s1.cod_bankrupt
+    printed: (helper)
+    type: Bool
+    label: "A canceled debt was canceled in a title 11 bankruptcy case or while insolvent, or is otherwise excluded from income (Form 982)"
+    expr:
+      op: input
+      source: "Was a canceled debt canceled in a bankruptcy case, or while you (or, on a joint return, your spouse) owed more than everything you owned?"
+    cite:
+      doc: p4681
+      locator: 'p. 6, Bankruptcy, "Debt canceled in a title 11 bankruptcy case isn’t included in your income"; p. 6, Insolvency, "Don’t include a canceled debt in income to the extent that you were insolvent immediately before the cancellation"'
+  - id: s1.cod_student_home
+    printed: (helper)
+    type: Bool
+    label: "A canceled debt was a student loan or a debt on the main home (qualified principal residence indebtedness)"
+    expr:
+      op: input
+      source: "Was a canceled debt a student loan, or a loan on your (or, on a joint return, your spouse's) main home?"
+    cite:
+      doc: p4681
+      locator: 'p. 4, Student Loans, "Cancellation of certain other loans after December 31, 2020, and before January 1, 2026"; p. 2, "Qualified principal residence indebtedness can be excluded from income for discharges before January 1, 2026"'
+  - id: s1.cod_gift
+    printed: (helper)
+    type: Bool
+    label: "A canceled debt was canceled as a gift, bequest, devise or inheritance"
+    expr:
+      op: input
+      source: "Was a canceled debt forgiven as a gift, a bequest or an inheritance?"
+    cite:
+      doc: p4681
+      locator: 'p. 4, Gifts, Bequests, Devises, and Inheritances, "In most cases, you don’t have income from canceled debt if the debt is canceled as a gift, bequest, devise, or inheritance"'
+  - id: s1.cod_price_cut
+    printed: (helper)
+    type: Bool
+    label: "A canceled debt was owed to the seller of property bought and was a reduction of its price"
+    expr:
+      op: input
+      source: "Was a canceled debt owed to the seller of property you bought, who reduced what you owed for it?"
+    cite:
+      doc: p4681
+      locator: 'p. 6, Price Reduced After Purchase, "If debt you owe the seller for the purchase of property is reduced by the seller at a time when you aren’t insolvent and the reduction doesn’t occur in a title 11 bankruptcy case, the reduction doesn’t result in cancellation of debt income"'
+  - id: s1.cod_stockholder
+    printed: (helper)
+    type: Bool
+    label: "A canceled debt was owed to a corporation in which the debtor is a stockholder"
+    expr:
+      op: input
+      source: "Was a canceled debt owed to a corporation in which you (or, on a joint return, your spouse) hold stock?"
+    cite:
+      doc: p4681
+      locator: 'p. 4, Stockholder Debt, "If you are a stockholder in a corporation and the corporation cancels or forgives your debt to it, the canceled debt is a constructive distribution"'
+  - id: s1.cod_business
+    printed: (helper)
+    type: Bool
+    label: "A canceled debt was a business, rental or farm debt"
+    expr:
+      op: input
+      source: "Was a canceled debt a business, rental or farm debt?"
+    cite:
+      doc: p4681
+      locator: 'p. 8, Qualified Farm Indebtedness; p. 9, Qualified Real Property Business Indebtedness; p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"'
+  - id: s1.cod_property
+    printed: (helper)
+    type: Bool
+    label: "A canceled debt was canceled in connection with a foreclosure, repossession or abandonment of property"
+    expr:
+      op: input
+      source: "Was a canceled debt canceled in connection with a foreclosure, repossession or abandonment of property (Form 1099-C box 7, or a Form 1099-A)?"
+    cite:
+      doc: p4681
+      locator: 'p. 4, Sales or Other Dispositions (Such as Foreclosures and Repossessions); p. 4, Abandonments'
+  - id: s1.cod_interest
+    printed: (helper)
+    type: Bool
+    label: "A canceled debt includes interest or another amount that would have been deductible if paid"
+    expr:
+      op: input
+      source: "Does a canceled debt include interest (Form 1099-C box 3) or another amount that would have been deductible if you had paid it?"
+    cite:
+      doc: p4681
+      locator: 'p. 4, Interest included in canceled debt, "Whether the interest portion of the canceled debt must be included in your income depends on whether the interest would be deductible if you paid it"; p. 6, Deductible Debt, "you don’t realize income from the cancellation of debt if the payment of the debt would have been a deductible expense"'
+  - id: s1.cod_not_liable
+    printed: (helper)
+    type: Bool
+    label: "The debtor was not personally liable for a canceled debt (nonrecourse debt)"
+    expr:
+      op: input
+      source: "Were you (or, on a joint return, your spouse) not personally liable for a canceled debt (Form 1099-C box 5)?"
+    cite:
+      doc: p4681
+      locator: 'p. 3, "Debt for which you are personally liable is recourse debt. All other debt is nonrecourse debt"'
+  - id: s1.cod_joint_other
+    printed: (helper)
+    type: Bool
+    label: "A canceled debt was owed jointly with someone who is not on this return"
+    expr:
+      op: input
+      source: "Were you (or, on a joint return, your spouse) liable for a canceled debt together with someone who is not on this return?"
+    cite:
+      doc: p4681
+      locator: 'p. 4, Persons who each receive a Form 1099-C showing the full amount of debt, "If you and another person were jointly and severally liable for a canceled debt, each of you may get a Form 1099-C showing the entire amount of the canceled debt"'
   - id: s1.cod_refused
     printed: (helper)
     label: Canceled nonbusiness debt, before the screen for exceptions, exclusions and other debts
@@ -1577,12 +1711,13 @@ form:
   - id: s1.nol_not_married
     printed: (gate)
     gated_by: s1.nol_not_married_if_joint
-    label: Were the two of you not married to each other in a year the loss came from, or in a year since?
+    label: Were the two of you not married to each other in a year the loss came from or was carried back to, or in a year
+      since?
     type: Bool
     expr:
       op: input
-      source: Were you and your spouse not married to each other in the year any of the loss arose, or in any year from then
-        to 2025?
+      source: Were you and your spouse not married to each other in a year any of the loss arose or was carried back to, or in
+        any year from then to 2025?
     cite:
       doc: i172
       locator: 'p. 3, Change in Marital Status, "If you and your spouse were not married to each other in all years involved in
@@ -1614,11 +1749,12 @@ form:
   - id: s1.nol_was_joint
     printed: (gate)
     gated_by: s1.nol_was_joint_if_separate
-    label: Was a joint return filed for a year the loss came from, or for a year since?
+    label: Was a joint return filed for a year the loss came from or was carried back to, or for a year since?
     type: Bool
     expr:
       op: input
-      source: Did you file a joint return for the year any of the loss arose, or for any year from then to 2024?
+      source: Did you file a joint return for a year any of the loss arose or was carried back to, or for any year from then
+        to 2024?
     cite:
       doc: i172
       locator: 'p. 3, Joint to separate returns, "If you and your spouse file separate returns for a tax year, but filed a joint

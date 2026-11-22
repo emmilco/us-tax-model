@@ -49,7 +49,8 @@ interview:
   - ny_it201.ask.mctmt
   - ny_it201.ask.other_credits
   - ny_it201.ask.other_taxes
-  - ny_it201.ask.owes_use_tax
+  - ny_it201.ask.bought_untaxed
+  - ny_it201.ask.use_tax_dmv_only
   - ny_it201.ask.use_tax_st141
   - ny_it201.ask.use_tax_exact
   - ny_it201.ask.abode_part_year

@@ -1,0 +1,17 @@
+{
+ "kind": "render",
+ "form": "tipjob",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1(b)",
+   "restated": "Choose — [helper \"Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?\" = true → helper \"Qualified tips from this employer, as entered\"] [helper \"Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The worksheet column (b) says \"reported by this employer on Form W-2, or reported by you to this employer on Form(s) 4070\"; the restatement asks for W-2 box 7 or a box 14/separate-statement amount but omits the Form(s) 4070 amount.",
+   "ruling": "Ruling: scope; i1040gi p. 104: Form 4070 amounts are outside the tool; it reads the W-2 box 7 and box 14 amount. Project stands.",
+   "context": "1b36631a605faae085fb9d67142105a0a4fd3ea465cf7afcfdb1f45e80fc7325",
+   "date": "2026-11-17",
+   "run": "e612498b24812b7cf5bb9aa7e09ff0d57b6a4455e850e5e7d83fd4b062e8244c",
+   "subject_key": "6b21012d0635c2699067e972c66ad3a829546b33b840912b8257530de39190ef"
+  }
+ ]
+}

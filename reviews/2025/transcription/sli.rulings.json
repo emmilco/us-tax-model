@@ -74,6 +74,52 @@
    }
   },
   {
+   "printed": "1",
+   "project_expr_sha256": "dc41380d6bbb762dc68fc9b3e51723c375498692af6192f858c0336658792e67",
+   "second_expr_sha256": "665426cc8167c10c1d3eeb3b4da9a1ec5a024311c6a10c96604158bd2b58290c",
+   "ruling": "Ruling: representation; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 1: \"Enter the total interest you paid in 2025 on qualified student loans ... Don't enter more than $2,500\"; p. 98, \"Don't include any amount paid from a distribution of earnings made from a qualified tuition program.\" Both take the interest less the unqualified and assisted amounts, floored at zero and capped at $2,500; subtracting the two in turn from a zero-floored amount equals subtracting their sum. The completed-return differences are the candidate's sli.any gate input (15); the 26 value witnesses are on records the project refuses. Triage executable-triage-v2 (.transcription/triage/2025/sli.json): 3,209 of 3,309 agree, 3,209 of 3,270 in scope. Project stands.",
+   "context": "e1cc2059586b0a34228832d952d061c26272bb94f957aba656de652e2aead9cc",
+   "date": "2026-11-17",
+   "run": "497492a8a03532f4a6f47870fe3e77833656e2016a9ad47245a3803b87eb3337",
+   "subject_key": "33a74c671d2b58f9f14cfe2d04bfdcfe634760cbd5896a4ecc9f08be1bfbf06f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sli",
+     "fixture:classm.eic.6.deepseek@sli",
+     "fixture:classm.retirement.4.deepseek@sli",
+     "fixture:classm.f5329.3.deepseek@sli",
+     "fixture:classm.dependent.5.deepseek@sli",
+     "fixture:classm.dcprov.1@sli",
+     "fixture:classm.f2441.2@sli",
+     "fixture:classm.f2441.11@sli",
+     "fixture:classm.f2441.12@sli",
+     "fixture:classm.ira.1@sli",
+     "fixture:classm.ira.3@sli",
+     "fixture:classm.s179.4@sli",
+     "fixture:classm.tcw.4@sli",
+     "fixture:classm.tcw.9@sli",
+     "fixture:classm.tcw.15@sli",
+     "fixture:classm.clcw_next_year.3@sli",
+     "fixture:classm.f5329.3@sli",
+     "fixture:stage19.mut.classm_f5329_3_dependent_no_ein@sli",
+     "fixture:stage21.choose.eic_limit_status_unanswered@sli",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sli",
+     "fixture:stage16.cleanup.refuse.f1040_line16@sli",
+     "fixture:stage16.cleanup.refuse.scope_credits@sli",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@sli",
+     "fixture:mutation.t2.f8962_months_r4@sli"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "5",
    "project_expr_sha256": "8483af9700758061844c6df5132a102046e5c18826438dbe534b383021eff469",
    "second_expr_sha256": "b3fad40fe31fbf817e9caa137b93a373229c2b838aab5781605f23a852c1048c",

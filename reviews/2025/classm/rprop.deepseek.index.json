@@ -1,0 +1,28 @@
+{
+ "kind": "classm",
+ "form": "rprop",
+ "family": "deepseek",
+ "base": "fba9852b0ae7075e38f22835cf7a86ddea3c240503c989fff8e4e5bba78a7adb",
+ "lines": [
+  {
+   "key": "case classm.rprop.1",
+   "record": "fba9852b0ae7075e38f22835cf7a86ddea3c240503c989fff8e4e5bba78a7adb",
+   "status": null
+  },
+  {
+   "key": "classm.rprop.1 — rental[a].rprop[b].dep",
+   "record": "fba9852b0ae7075e38f22835cf7a86ddea3c240503c989fff8e4e5bba78a7adb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rprop.1 — rental[a].rprop[c].dep",
+   "record": "fba9852b0ae7075e38f22835cf7a86ddea3c240503c989fff8e4e5bba78a7adb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rprop.1 — rental[b].rprop[d].dep",
+   "record": "fba9852b0ae7075e38f22835cf7a86ddea3c240503c989fff8e4e5bba78a7adb",
+   "status": "AGREE"
+  }
+ ]
+}

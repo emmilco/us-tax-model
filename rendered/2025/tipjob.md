@@ -27,9 +27,9 @@
 
 ## (helper) — `tipjob.listed`
 
-- **Authored helper label:** Were the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?
-- **Encoded (Bool):** Input — Is the work you got these tips for on the IRS list of jobs that customarily get tips? Restaurant, bar and hotel staff, hairdressers and barbers, and taxi and delivery drivers are on it.
-- Expr: `{"op":"input","source":"Is the work you got these tips for on the IRS list of jobs that customarily get tips? Restaurant, bar and hotel staff, hairdressers and barbers, and taxi and delivery drivers are on it."}`
+- **Authored helper label:** Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?
+- **Encoded (Bool):** Input — Were any of these tips for a job on the IRS list of tipped jobs (such as server, bartender, cook, hairdresser or driver; not manager)?
+- Expr: `{"op":"input","source":"Were any of these tips for a job on the IRS list of tipped jobs (such as server, bartender, cook, hairdresser or driver; not manager)?"}`
 - Cite: [i1040gi] pp. 101-103, Schedule 1-A, Qualified Tips, "Occupations that customarily and regularly received tips"; "Do not include tips received in occupations that are not included on this list"; tipped-occupations, the list of occupations by Treasury Tipped Occupation Code (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `tipjob.other_work`
@@ -42,7 +42,7 @@
 ## (gate) — `tipjob.other_work_if_listed`
 
 - **Authored helper label:** Whether some of this employer's tips were received in an occupation not on the list, asked only where the tips were received in a listed occupation (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Were the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = true → helper "Were some of the tips from this employer received in an occupation that is not on the IRS list?"] [helper "Were the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = false → helper "Year parameter s3.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = true → helper "Were some of the tips from this employer received in an occupation that is not on the IRS list?"] [helper "Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = false → helper "Year parameter s3.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["tipjob.listed",{"const":true}],"op":"test"},"then":"tipjob.other_work"},{"guard":{"eq":["tipjob.listed",{"const":false}],"op":"test"},"then":"tipjob.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 103, Schedule 1-A, "Determining the amount of qualified tips received by an employee for 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -56,7 +56,7 @@
 ## (gate) — `tipjob.charged_if_listed`
 
 - **Authored helper label:** Whether this employer's tips include amounts not paid voluntarily or not paid in cash, asked only where the tips were received in a listed occupation (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Were the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = true → helper "Do the tips from this employer include amounts not paid voluntarily, not determined by the customer or subject to negotiation (service charges, automatic gratuities), or amounts not paid in a cash medium (cash, check, credit or debit card, gift card, tokens readily exchangeable for a fixed amount such as casino chips, or a payment app)?"] [helper "Were the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = false → helper "Year parameter s3.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = true → helper "Do the tips from this employer include amounts not paid voluntarily, not determined by the customer or subject to negotiation (service charges, automatic gratuities), or amounts not paid in a cash medium (cash, check, credit or debit card, gift card, tokens readily exchangeable for a fixed amount such as casino chips, or a payment app)?"] [helper "Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = false → helper "Year parameter s3.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["tipjob.listed",{"const":true}],"op":"test"},"then":"tipjob.charged"},{"guard":{"eq":["tipjob.listed",{"const":false}],"op":"test"},"then":"tipjob.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 103, Schedule 1-A, "Determining the amount of qualified tips received by an employee for 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -70,7 +70,7 @@
 ## (gate) — `tipjob.unlawful_if_listed`
 
 - **Authored helper label:** Whether any of this employer's tips were received for an unlawful service, prostitution or pornographic activity, asked only where the tips were received in a listed occupation (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Were the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = true → helper "Were any of the tips from this employer received while performing a service that is a felony or misdemeanor under applicable law, or for prostitution or pornographic activity?"] [helper "Were the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = false → helper "Year parameter s3.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = true → helper "Were any of the tips from this employer received while performing a service that is a felony or misdemeanor under applicable law, or for prostitution or pornographic activity?"] [helper "Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = false → helper "Year parameter s3.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["tipjob.listed",{"const":true}],"op":"test"},"then":"tipjob.unlawful"},{"guard":{"eq":["tipjob.listed",{"const":false}],"op":"test"},"then":"tipjob.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 103, Schedule 1-A, "Determining the amount of qualified tips received by an employee for 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -84,7 +84,7 @@
 ## 1(b) — `tipjob.amount`
 
 - **IRS:** Amount of qualified tips reported by this employer on Form W-2, or reported by you to this employer on Form(s) 4070
-- **Encoded (NonNegDollars):** Choose — [helper "Were the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = true → helper "Qualified tips from this employer, as entered"] [helper "Were the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = false → helper "Year parameter sales.zero"]
+- **Encoded (NonNegDollars):** Choose — [helper "Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = true → helper "Qualified tips from this employer, as entered"] [helper "Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = false → helper "Year parameter sales.zero"]
 - **Refusal:** when tipjob.mixed is true, cannot complete Qualified tips from an employer where some tips were not qualified tips. Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool. Cite: [i1040gi] p. 103, "If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list ... are considered qualified tips. Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["tipjob.listed",{"const":true}],"op":"test"},"then":"tipjob.tips"},{"guard":{"eq":["tipjob.listed",{"const":false}],"op":"test"},"then":"tipjob.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); pp. 103-104, paragraphs 1 through 3 (2025; printed date 2026-02-25; sha256 482e9c48)

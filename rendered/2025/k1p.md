@@ -2,7 +2,7 @@
 
 - Document: `k1p` (form, tax year 2025)
 - Collection: keyed entries within person; [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
-- Note: One entry per Schedule K-1 (Form 1065) a person received. Boxes 1 to 3 are each one activity; box 1 is passive unless the partner materially participated (tests 1, 2, 3 or 5), boxes 2 and 3 are passive, and box 2 goes in Part IV of Form 8582 when a general partner actively participated and owned a tenth. The Form 8582 columns (a) to (c) and (e) of each activity, the Schedule E line 28 columns (h), (i) and (k), and the portfolio, self-employment, withholding and section 199A amounts are figured here and totalled on the person. Refused: publicly traded partnerships, boxes 4b, 7, 10 to 13 (other than 13 AE), 14 B and C, 15 (other than O), 16, 17, 20 (codes other than A, B, N, Z, AG), 21, 22 and 23, foreign partnerships, a sale of the interest, property distributions and distributions above basis, trading partnerships, material participation by tests 4, 6 or 7, losses above basis or not at risk, and the held-back losses Form 8582 does not take here.
+- Note: One entry per Schedule K-1 (Form 1065) a person received. Boxes 1 to 3 are each one activity; box 1 is passive unless the partner materially participated (tests 1, 2, 3 or 5), boxes 2 and 3 are passive, and box 2 goes in Part IV of Form 8582 when a general partner actively participated and owned a tenth. The Form 8582 columns (a) to (c) and (e) of each activity, the Schedule E line 28 columns (h), (i) and (k), and the portfolio, self-employment, withholding and section 199A amounts are figured here and totalled on the person. Refused: publicly traded partnerships, boxes 4b, 7, 10 to 13 (other than 13 AE), 14 B and C, 15 (other than O), 16, 17, 20 (codes other than A, B, N, Z, AG), 21, 22 and 23, foreign partnerships, a sale of the interest, property distributions and distributions above basis, trading partnerships, material participation by tests 4, 6 or 7, losses above basis or not at risk, losses carried from earlier years by the basis or at-risk limits, the held-back losses Form 8582 does not take here, unreimbursed partnership expenses, interest on money borrowed to buy into the partnership, a fuel tax credit from it claimed in 2024, a real estate professional's box 2 when no rental of the filer's own is listed (Schedule E Part I asks it then), and a rented home a partner used personally.
 
 ## (helper) — `k1p.zero`
 
@@ -474,6 +474,20 @@
 - Expr: `{"op":"input","source":"In 2025, did you sell, trade or give up any of your share of this partnership?"}`
 - Cite: [i1065sk1] p. 2, Sale or Exchange of Partnership Interest, "Generally, a partner who sells or exchanges a partnership interest" (2025; sha256 659063e0)
 
+## (helper) — `k1p.upe`
+
+- **Authored helper label:** Unreimbursed partnership expenses paid under the partnership agreement
+- **Encoded (Bool):** Input — Did you pay, without being paid back, partnership expenses that the partnership agreement required you to pay?
+- Expr: `{"op":"input","source":"Did you pay, without being paid back, partnership expenses that the partnership agreement required you to pay?"}`
+- Cite: [i1040se] p. 10, Unreimbursed Partnership Expenses, "You can deduct unreimbursed ordinary and necessary partnership expenses you paid on behalf of the partnership on Schedule E if you were required to pay these expenses under the partnership agreement" (2025; sha256 ad71de35)
+
+## (helper) — `k1p.interest_buy`
+
+- **Authored helper label:** Interest on money borrowed to buy the interest or put capital into the partnership (debt-financed acquisition)
+- **Encoded (Bool):** Input — Did you pay interest in 2025 on money borrowed to buy your share or put money into the partnership?
+- Expr: `{"op":"input","source":"Did you pay interest in 2025 on money borrowed to buy your share or put money into the partnership?"}`
+- Cite: [i1040se] p. 9, Domestic Partnerships, "If you used loan proceeds to buy an interest in, or make a contribution to the capital of, a partnership (debt-financed acquisition), report your share of deductible partnership interest expense on either Schedule A or Schedule E" (2025; sha256 ad71de35)
+
 ## (helper) — `k1p.b19_other`
 
 - **Authored helper label:** Box 19 shows a code other than A
@@ -533,8 +547,8 @@
 ## (helper) — `k1p.work`
 
 - **Authored helper label:** Worked in the business in 2025
-- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) do any work in the partnership's business?
-- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) do any work in the partnership's business?"}`
+- **Encoded (Bool):** Input — In 2025, did you (or your spouse, whether or not you file jointly) do any work in the partnership's business?
+- Expr: `{"op":"input","source":"In 2025, did you (or your spouse, whether or not you file jointly) do any work in the partnership's business?"}`
 - Cite: [i1065sk1] p. 9, Work counted toward material participation, "any work that you or your spouse does in connection with an activity held through a partnership" (2025; sha256 659063e0)
 
 ## (gate) — `k1p.work_if_b1`
@@ -575,8 +589,8 @@
 ## (helper) — `k1p.most_hours`
 
 - **Authored helper label:** More than 100 hours and no one worked more (test 3)
-- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) work in it more than 100 hours in 2025, and at least as many hours as anyone else, employees included?
-- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) work in it more than 100 hours in 2025, and at least as many hours as anyone else, employees included?"}`
+- **Encoded (Bool):** Input — Did you (or your spouse, whether or not you file jointly) work in it more than 100 hours in 2025, and at least as many hours as anyone else, employees included?
+- Expr: `{"op":"input","source":"Did you (or your spouse, whether or not you file jointly) work in it more than 100 hours in 2025, and at least as many hours as anyone else, employees included?"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "You participated in the activity for more than 100 hours during the tax year, and your participation in the activity for the tax year wasn’t less than the participation in the activity of any other individual" (2025; sha256 659063e0)
 
 ## (gate) — `k1p.most_hours_if_gp`
@@ -596,8 +610,8 @@
 ## (helper) — `k1p.nearly_all`
 
 - **Authored helper label:** Substantially all the work (test 2)
-- **Encoded (Bool):** Input — Did you (and, on a joint return, your spouse) do nearly all of the work in it in 2025, counting the work of employees and anyone else?
-- Expr: `{"op":"input","source":"Did you (and, on a joint return, your spouse) do nearly all of the work in it in 2025, counting the work of employees and anyone else?"}`
+- **Encoded (Bool):** Input — Did you (and your spouse, whether or not you file jointly) do nearly all of the work in it in 2025, counting the work of employees and anyone else?
+- Expr: `{"op":"input","source":"Did you (and your spouse, whether or not you file jointly) do nearly all of the work in it in 2025, counting the work of employees and anyone else?"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "constituted substantially all the participation in the activity of all individuals" (2025; sha256 659063e0)
 
 ## (gate) — `k1p.nearly_all_if_asked`
@@ -609,85 +623,85 @@
 
 ## (helper) — `k1p.ask_five`
 
-- **Authored helper label:** Worked 500 hours or less and tests 2 and 3 not met
-- **Encoded (Bool):** helper "Worked in the business, 500 hours or less" = true and helper "Asked only of a general partner who worked 500 hours or less (false otherwise)" = false and helper "Asked only when test 3 is not met (false otherwise)" = false
-- Expr: `{"all":[{"eq":["k1p.under500",{"const":true}],"op":"test"},{"eq":["k1p.most_hours_if_gp",{"const":false}],"op":"test"},{"eq":["k1p.nearly_all_if_asked",{"const":false}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** Box 1 shows an amount and tests 1, 2 and 3 are not met (no work in 2025 is needed for tests 5 and 6)
+- **Encoded (Bool):** helper "Box 1 shows an amount: ordinary business income (loss)" = true and helper "Asked only of a partner who worked in the business (false otherwise)" = false and helper "Asked only of a general partner who worked 500 hours or less (false otherwise)" = false and helper "Asked only when test 3 is not met (false otherwise)" = false
+- Expr: `{"all":[{"eq":["k1p.has_b1",{"const":true}],"op":"test"},{"eq":["k1p.hours500_if_work",{"const":false}],"op":"test"},{"eq":["k1p.most_hours_if_gp",{"const":false}],"op":"test"},{"eq":["k1p.nearly_all_if_asked",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year" (2025; sha256 659063e0)
 
 ## (helper) — `k1p.five_of_ten`
 
 - **Authored helper label:** Materially participated in 5 of the 10 preceding years (test 5)
-- **Encoded (Bool):** Input — In at least 5 of the years 2015 to 2024, did you materially participate in this business (its income or loss was nonpassive on your return)?
-- Expr: `{"op":"input","source":"In at least 5 of the years 2015 to 2024, did you materially participate in this business (its income or loss was nonpassive on your return)?"}`
+- **Encoded (Bool):** Input — In at least 5 of the years 2015 to 2024, did you (or your spouse, whether or not you file jointly) materially participate in this business?
+- Expr: `{"op":"input","source":"In at least 5 of the years 2015 to 2024, did you (or your spouse, whether or not you file jointly) materially participate in this business?"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year" (2025; sha256 659063e0)
 
 ## (gate) — `k1p.five_of_ten_if_asked`
 
-- **Authored helper label:** Asked only when tests 1 to 3 are not met (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Worked 500 hours or less and tests 2 and 3 not met" = true → helper "Materially participated in 5 of the 10 preceding years (test 5)"] [helper "Worked 500 hours or less and tests 2 and 3 not met" = false → helper "No (false)"]
+- **Authored helper label:** Asked only when box 1 shows an amount and tests 1 to 3 are not met (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Box 1 shows an amount and tests 1, 2 and 3 are not met (no work in 2025 is needed for tests 5 and 6)" = true → helper "Materially participated in 5 of the 10 preceding years (test 5)"] [helper "Box 1 shows an amount and tests 1, 2 and 3 are not met (no work in 2025 is needed for tests 5 and 6)" = false → helper "No (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["k1p.ask_five",{"const":true}],"op":"test"},"then":"k1p.five_of_ten"},{"guard":{"eq":["k1p.ask_five",{"const":false}],"op":"test"},"then":"k1p.no"}],"op":"choose"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year" (2025; sha256 659063e0)
 
 ## (helper) — `k1p.ask_other`
 
-- **Authored helper label:** Worked in the business but met none of tests 1, 2, 3 and 5
-- **Encoded (Bool):** helper "Worked 500 hours or less and tests 2 and 3 not met" = true and helper "Asked only when tests 1 to 3 are not met (false otherwise)" = false
+- **Authored helper label:** Box 1 shows an amount and none of tests 1, 2, 3 and 5 is met
+- **Encoded (Bool):** helper "Box 1 shows an amount and tests 1, 2 and 3 are not met (no work in 2025 is needed for tests 5 and 6)" = true and helper "Asked only when box 1 shows an amount and tests 1 to 3 are not met (false otherwise)" = false
 - Expr: `{"all":[{"eq":["k1p.ask_five",{"const":true}],"op":"test"},{"eq":["k1p.five_of_ten_if_asked",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1065sk1] p. 9, Material participation, "You must determine if you materially participated (a) in each trade or business activity held through the partnership" (2025; sha256 659063e0)
 
 ## (helper) — `k1p.t6`
 
 - **Authored helper label:** Personal service activity, 3 earlier years (test 6)
-- **Encoded (Bool):** Input — Is it a business of services in health, law, engineering, architecture, accounting, actuarial science, performing arts or consulting, in which you materially participated in any 3 years before 2025?
-- Expr: `{"op":"input","source":"Is it a business of services in health, law, engineering, architecture, accounting, actuarial science, performing arts or consulting, in which you materially participated in any 3 years before 2025?"}`
+- **Encoded (Bool):** Input — Is it a service business (health, law, engineering, architecture, accounting, actuarial science, performing arts or consulting) in which you (or your spouse, whether or not you file jointly) materially participated in any 3 earlier years?
+- Expr: `{"op":"input","source":"Is it a service business (health, law, engineering, architecture, accounting, actuarial science, performing arts or consulting) in which you (or your spouse, whether or not you file jointly) materially participated in any 3 earlier years?"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "The activity was a personal service activity and you materially participated in the activity for any 3 tax years" (2025; sha256 659063e0)
 
 ## (gate) — `k1p.t6_if_asked`
 
 - **Authored helper label:** Asked only when tests 1, 2, 3 and 5 are not met (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Worked in the business but met none of tests 1, 2, 3 and 5" = true → helper "Personal service activity, 3 earlier years (test 6)"] [helper "Worked in the business but met none of tests 1, 2, 3 and 5" = false → helper "No (false)"]
+- **Encoded (Bool):** Choose — [helper "Box 1 shows an amount and none of tests 1, 2, 3 and 5 is met" = true → helper "Personal service activity, 3 earlier years (test 6)"] [helper "Box 1 shows an amount and none of tests 1, 2, 3 and 5 is met" = false → helper "No (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["k1p.ask_other",{"const":true}],"op":"test"},"then":"k1p.t6"},{"guard":{"eq":["k1p.ask_other",{"const":false}],"op":"test"},"then":"k1p.no"}],"op":"choose"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "The activity was a personal service activity and you materially participated in the activity for any 3 tax years" (2025; sha256 659063e0)
 
 ## (helper) — `k1p.ask_other_gp`
 
-- **Authored helper label:** A general partner who met none of tests 1, 2, 3 and 5
-- **Encoded (Bool):** helper "Worked in the business but met none of tests 1, 2, 3 and 5" = true and helper "General partner or LLC member-manager (item G)" = true
-- Expr: `{"all":[{"eq":["k1p.ask_other",{"const":true}],"op":"test"},{"eq":["k1p.general",{"const":true}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** A general partner who worked in the business in 2025 and met none of tests 1, 2, 3 and 5
+- **Encoded (Bool):** helper "Box 1 shows an amount and none of tests 1, 2, 3 and 5 is met" = true and helper "Asked only when box 1 shows an amount (false otherwise)" = true and helper "General partner or LLC member-manager (item G)" = true
+- Expr: `{"all":[{"eq":["k1p.ask_other",{"const":true}],"op":"test"},{"eq":["k1p.work_if_b1",{"const":true}],"op":"test"},{"eq":["k1p.general",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1065sk1] p. 9, Limited partners, "If you’re a limited partner, you must meet item 1, 5, or 6 above to qualify as having materially participated" (2025; sha256 659063e0)
 
 ## (helper) — `k1p.t4`
 
 - **Authored helper label:** Significant participation activities over 500 hours (test 4)
-- **Encoded (Bool):** Input — In 2025, did your work in it and in other businesses where you worked more than 100 hours add up to more than 500 hours?
-- Expr: `{"op":"input","source":"In 2025, did your work in it and in other businesses where you worked more than 100 hours add up to more than 500 hours?"}`
+- **Encoded (Bool):** Input — In 2025, did your work (with your spouse's, whether or not you file jointly) in it and in other businesses where you worked over 100 hours add up to over 500 hours?
+- Expr: `{"op":"input","source":"In 2025, did your work (with your spouse's, whether or not you file jointly) in it and in other businesses where you worked over 100 hours add up to over 500 hours?"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "The activity was a significant participation activity for the tax year" (2025; sha256 659063e0)
 
 ## (gate) — `k1p.t4_if_gp`
 
-- **Authored helper label:** Asked only of a general partner who met none of tests 1, 2, 3 and 5 (false otherwise)
-- **Encoded (Bool):** Choose — [helper "A general partner who met none of tests 1, 2, 3 and 5" = true → helper "Significant participation activities over 500 hours (test 4)"] [helper "A general partner who met none of tests 1, 2, 3 and 5" = false → helper "No (false)"]
+- **Authored helper label:** Asked only of a general partner who worked in the business and met none of tests 1, 2, 3 and 5 (false otherwise)
+- **Encoded (Bool):** Choose — [helper "A general partner who worked in the business in 2025 and met none of tests 1, 2, 3 and 5" = true → helper "Significant participation activities over 500 hours (test 4)"] [helper "A general partner who worked in the business in 2025 and met none of tests 1, 2, 3 and 5" = false → helper "No (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["k1p.ask_other_gp",{"const":true}],"op":"test"},"then":"k1p.t4"},{"guard":{"eq":["k1p.ask_other_gp",{"const":false}],"op":"test"},"then":"k1p.no"}],"op":"choose"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "The activity was a significant participation activity for the tax year" (2025; sha256 659063e0)
 
 ## (helper) — `k1p.t7`
 
 - **Authored helper label:** Regular, continuous and substantial participation (test 7)
-- **Encoded (Bool):** Input — Did you work in it in 2025 on a regular, continuous and substantial basis, for more than 100 hours?
-- Expr: `{"op":"input","source":"Did you work in it in 2025 on a regular, continuous and substantial basis, for more than 100 hours?"}`
+- **Encoded (Bool):** Input — Did you (or your spouse, whether or not you file jointly) work in it in 2025 on a regular, continuous and substantial basis, for more than 100 hours?
+- Expr: `{"op":"input","source":"Did you (or your spouse, whether or not you file jointly) work in it in 2025 on a regular, continuous and substantial basis, for more than 100 hours?"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "Based on all the facts and circumstances, you participated in the activity on a regular, continuous, and substantial basis during the tax year" (2025; sha256 659063e0)
 
 ## (gate) — `k1p.t7_if_gp`
 
-- **Authored helper label:** Asked only of a general partner who met none of tests 1, 2, 3 and 5 (false otherwise)
-- **Encoded (Bool):** Choose — [helper "A general partner who met none of tests 1, 2, 3 and 5" = true → helper "Regular, continuous and substantial participation (test 7)"] [helper "A general partner who met none of tests 1, 2, 3 and 5" = false → helper "No (false)"]
+- **Authored helper label:** Asked only of a general partner who worked in the business and met none of tests 1, 2, 3 and 5 (false otherwise)
+- **Encoded (Bool):** Choose — [helper "A general partner who worked in the business in 2025 and met none of tests 1, 2, 3 and 5" = true → helper "Regular, continuous and substantial participation (test 7)"] [helper "A general partner who worked in the business in 2025 and met none of tests 1, 2, 3 and 5" = false → helper "No (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["k1p.ask_other_gp",{"const":true}],"op":"test"},"then":"k1p.t7"},{"guard":{"eq":["k1p.ask_other_gp",{"const":false}],"op":"test"},"then":"k1p.no"}],"op":"choose"}`
 - Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "Based on all the facts and circumstances, you participated in the activity on a regular, continuous, and substantial basis during the tax year" (2025; sha256 659063e0)
 
 ## (helper) — `k1p.material`
 
 - **Authored helper label:** Materially participated in the trade or business (box 1) by test 1, 2, 3 or 5
-- **Encoded (Bool):** (helper "Asked only of a partner who worked in the business (false otherwise)" = true or helper "Asked only of a general partner who worked 500 hours or less (false otherwise)" = true or helper "Asked only when test 3 is not met (false otherwise)" = true or helper "Asked only when tests 1 to 3 are not met (false otherwise)" = true)
+- **Encoded (Bool):** (helper "Asked only of a partner who worked in the business (false otherwise)" = true or helper "Asked only of a general partner who worked 500 hours or less (false otherwise)" = true or helper "Asked only when test 3 is not met (false otherwise)" = true or helper "Asked only when box 1 shows an amount and tests 1 to 3 are not met (false otherwise)" = true)
 - Interpretation: amb.2025.k1p_material_tests
 - Expr: `{"any":[{"eq":["k1p.hours500_if_work",{"const":true}],"op":"test"},{"eq":["k1p.most_hours_if_gp",{"const":true}],"op":"test"},{"eq":["k1p.nearly_all_if_asked",{"const":true}],"op":"test"},{"eq":["k1p.five_of_ten_if_asked",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1065sk1] p. 9, Material participation, "You must determine if you materially participated (a) in each trade or business activity held through the partnership" (2025; sha256 659063e0)
@@ -702,8 +716,8 @@
 ## (helper) — `k1p.decisions`
 
 - **Authored helper label:** Helped make management decisions for the rental real estate
-- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) help make decisions for its rental real estate in 2025, such as approving tenants, rents or repairs?
-- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) help make decisions for its rental real estate in 2025, such as approving tenants, rents or repairs?"}`
+- **Encoded (Bool):** Input — Did you (or your spouse, whether or not you file jointly) help make decisions for its rental real estate in 2025, such as approving tenants, rents or repairs?
+- Expr: `{"op":"input","source":"Did you (or your spouse, whether or not you file jointly) help make decisions for its rental real estate in 2025, such as approving tenants, rents or repairs?"}`
 - Cite: [i1065sk1] p. 11, Special allowance for a rental real estate activity, "Management decisions that can count as active participation include approving new tenants, deciding rental terms, approving capital or repair expenditures" (2025; sha256 659063e0)
 
 ## (gate) — `k1p.decisions_if_asked`
@@ -716,8 +730,8 @@
 ## (helper) — `k1p.tenth`
 
 - **Authored helper label:** Owned at least 10% by value all year
-- **Encoded (Bool):** Input — All through 2025, did you (and, on a joint return, your spouse) own at least a tenth (by value) of all the interests in that rental real estate?
-- Expr: `{"op":"input","source":"All through 2025, did you (and, on a joint return, your spouse) own at least a tenth (by value) of all the interests in that rental real estate?"}`
+- **Encoded (Bool):** Input — All through 2025, did you (and your spouse, whether or not you file jointly) own at least a tenth (by value) of all the interests in that rental real estate?
+- Expr: `{"op":"input","source":"All through 2025, did you (and your spouse, whether or not you file jointly) own at least a tenth (by value) of all the interests in that rental real estate?"}`
 - Cite: [i1065sk1] p. 11, Special allowance for a rental real estate activity, "your interest (including your spouse’s interest) in the activity was less than 10% (by value) of all interests in the activity" (2025; sha256 659063e0)
 
 ## (gate) — `k1p.tenth_if_decisions`
@@ -733,6 +747,48 @@
 - **Encoded (Bool):** helper "Asked only of a general partner with an amount in box 2 (false otherwise)" = true and helper "Asked only when the partner helped make management decisions (false otherwise)" = true
 - Expr: `{"all":[{"eq":["k1p.decisions_if_asked",{"const":true}],"op":"test"},{"eq":["k1p.tenth_if_decisions",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i8582] p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV" (2025; sha256 76787e11)
+
+## (helper) — `k1p.re_pro`
+
+- **Authored helper label:** Real estate professional (box 2 may be nonpassive)
+- **Encoded (Bool):** Input — Did you (or your spouse) work more than 750 hours in 2025 in real estate businesses, and more than half of all your work time?
+- Expr: `{"op":"input","source":"Did you (or your spouse) work more than 750 hours in 2025 in real estate businesses, and more than half of all your work time?"}`
+- Cite: [i1065sk1] p. 14, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity" (2025; sha256 659063e0)
+
+## (helper) — `k1p.ask_re_pro`
+
+- **Authored helper label:** Box 2 shows an amount and no rental or royalty of your own is listed
+- **Encoded (Bool):** helper "Box 2 shows an amount: net rental real estate income (loss)" = true and scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?" = false
+- Expr: `{"all":[{"eq":["k1p.has_b2",{"const":true}],"op":"test"},{"eq":["scope.rental",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i1065sk1] p. 14, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity" (2025; sha256 659063e0)
+
+## (gate) — `k1p.re_pro_if_b2`
+
+- **Authored helper label:** Asked only when box 2 shows an amount and no rental or royalty of your own is listed (false otherwise; Schedule E Part I asks it then, and a Yes there refuses the return)
+- **Encoded (Bool):** Choose — [helper "Box 2 shows an amount and no rental or royalty of your own is listed" = true → helper "Real estate professional (box 2 may be nonpassive)"] [helper "Box 2 shows an amount and no rental or royalty of your own is listed" = false → helper "No (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["k1p.ask_re_pro",{"const":true}],"op":"test"},"then":"k1p.re_pro"},{"guard":{"eq":["k1p.ask_re_pro",{"const":false}],"op":"test"},"then":"k1p.no"}],"op":"choose"}`
+- Cite: [i1065sk1] p. 14, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity" (2025; sha256 659063e0)
+
+## (helper) — `k1p.dwelling`
+
+- **Authored helper label:** A rented home used personally by a partner beyond the greater of 14 days or 10% of the fair-rental days
+- **Encoded (Bool):** Input — In 2025, did you or another partner use one of its rental homes personally for over 14 days and over a tenth of the days it was rented at a fair price?
+- Expr: `{"op":"input","source":"In 2025, did you or another partner use one of its rental homes personally for over 14 days and over a tenth of the days it was rented at a fair price?"}`
+- Cite: [i1065sk1] p. 11, Special rules for certain other activities, "The rental of a dwelling unit any partner used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value" (2025; sha256 659063e0)
+
+## (helper) — `k1p.ask_dwelling`
+
+- **Authored helper label:** Box 2 or box 3 shows an amount
+- **Encoded (Bool):** (helper "Box 2 shows an amount: net rental real estate income (loss)" = true or helper "Box 3 shows an amount: other net rental income (loss)" = true)
+- Expr: `{"any":[{"eq":["k1p.has_b2",{"const":true}],"op":"test"},{"eq":["k1p.has_b3",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1065sk1] p. 11, Special rules for certain other activities, "The rental of a dwelling unit any partner used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value" (2025; sha256 659063e0)
+
+## (gate) — `k1p.dwelling_if_rent`
+
+- **Authored helper label:** Asked only when box 2 or box 3 shows an amount (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Box 2 or box 3 shows an amount" = true → helper "A rented home used personally by a partner beyond the greater of 14 days or 10% of the fair-rental days"] [helper "Box 2 or box 3 shows an amount" = false → helper "No (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["k1p.ask_dwelling",{"const":true}],"op":"test"},"then":"k1p.dwelling"},{"guard":{"eq":["k1p.ask_dwelling",{"const":false}],"op":"test"},"then":"k1p.no"}],"op":"choose"}`
+- Cite: [i1065sk1] p. 11, Special rules for certain other activities, "The rental of a dwelling unit any partner used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value" (2025; sha256 659063e0)
 
 ## (helper) — `k1p.has_activity`
 
@@ -903,6 +959,27 @@
 - **Encoded (Bool):** Choose — [helper "A loss in box 1, 2, 3, 8, 9a or 14 (code A)" = true → helper "Some investment not at risk"] [helper "A loss in box 1, 2, 3, 8, 9a or 14 (code A)" = false → helper "No (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["k1p.any_loss",{"const":true}],"op":"test"},"then":"k1p.not_at_risk"},{"guard":{"eq":["k1p.any_loss",{"const":false}],"op":"test"},"then":"k1p.no"}],"op":"choose"}`
 - Cite: [i1065sk1] p. 8, At-Risk Limitations, "you’ll have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity" (2025; sha256 659063e0)
+
+## (helper) — `k1p.basis_carry`
+
+- **Authored helper label:** Losses from this partnership not allowed in an earlier year because of the basis limitation
+- **Encoded (Bool):** Input — Was a loss from this partnership held back on an earlier return because your basis was too low?
+- Expr: `{"op":"input","source":"Was a loss from this partnership held back on an earlier return because your basis was too low?"}`
+- Cite: [i1065sk1] p. 13, "If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your net income, loss, or credits for this year" (2025; sha256 659063e0)
+
+## (helper) — `k1p.risk_carry`
+
+- **Authored helper label:** A loss from this partnership not allowed in an earlier year because of the at-risk limitation
+- **Encoded (Bool):** Input — Was a loss from this partnership held back on an earlier return by the at-risk rules (Form 6198)?
+- Expr: `{"op":"input","source":"Was a loss from this partnership held back on an earlier return by the at-risk rules (Form 6198)?"}`
+- Cite: [i1065sk1] p. 13, "If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your net income, loss, or credits for this year" (2025; sha256 659063e0)
+
+## (helper) — `k1p.fuel_prior_year`
+
+- **Authored helper label:** A credit for federal tax on fuels claimed on the 2024 return from this partnership's information
+- **Encoded (Bool):** Input — Did your 2024 return claim a credit for federal tax on gasoline or other fuels, using this partnership's information?
+- Expr: `{"op":"input","source":"Did your 2024 return claim a credit for federal tax on gasoline or other fuels, using this partnership's information?"}`
+- Cite: [i1040se] p. 9, Domestic Partnerships, "If you claimed a credit for federal tax on gasoline or other fuels on your 2024 Form 1040, 1040-SR, or 1040-NR based on information received from the partnership, enter as income in column (h) or column (k), whichever applies, the amount of the credit claimed for 2024" (2025; sha256 ad71de35)
 
 ## (helper) — `k1p.se_loss_not_material`
 
@@ -1199,6 +1276,8 @@
 - **Refusal:** when k1p.r_b2223 is true, cannot complete A partnership with more than one activity (boxes 22 and 23). A Schedule K-1 with this item is outside this tool. Cite: [i1065sk1] p. 9, Material participation, "If the partnership had more than one activity, it’ll attach a statement to your Schedule K-1 that identifies each activity" (2025; sha256 659063e0)
 - **Refusal:** when k1p.r_foreign is true, cannot complete Schedule E, line 28, column (c) (foreign partnership; Form 8865). A Schedule K-1 from a foreign partnership is outside this tool. Cite: [i1040se] p. 9, Foreign Partnerships, "you may have to file Form 8865" (2025; sha256 ad71de35)
 - **Refusal:** when k1p.r_disposed is true, cannot complete Sale or other disposition of a partnership interest (Form 8949, section 751). A sale or other disposition of a partnership interest is outside this tool. Cite: [i1065sk1] p. 2, Sale or Exchange of Partnership Interest, "Generally, a partner who sells or exchanges a partnership interest" (2025; sha256 659063e0)
+- **Refusal:** when k1p.upe is true, cannot complete Schedule E, line 28, unreimbursed partnership expenses (and box 14, code A reduced by them). Partnership expenses you paid yourself under the partnership agreement are outside this tool. Cite: [i1040se] p. 10, Unreimbursed Partnership Expenses, "You can deduct unreimbursed ordinary and necessary partnership expenses you paid on behalf of the partnership on Schedule E if you were required to pay these expenses under the partnership agreement" (2025; sha256 ad71de35)
+- **Refusal:** when k1p.interest_buy is true, cannot complete Schedule E, line 28, interest on money borrowed to buy into a partnership (debt-financed acquisition). Interest on money borrowed to buy into a partnership is outside this tool. Cite: [i1040se] p. 9, Domestic Partnerships, "If you used loan proceeds to buy an interest in, or make a contribution to the capital of, a partnership (debt-financed acquisition), report your share of deductible partnership interest expense on either Schedule A or Schedule E" (2025; sha256 ad71de35)
 - **Refusal:** when k1p.b19_other_if_any is true, cannot complete Schedule K-1 (Form 1065) box 19, codes other than A (distributions of property). A distribution of property other than money is outside this tool. Cite: [i1065sk1] p. 25, Box 19. Distributions, "Code A. Cash and marketable securities other than for services" (2025; sha256 659063e0)
 - **Refusal:** when k1p.dist_over_if_any is true, cannot complete Gain on a distribution above basis (Form 8949). Money taken out of a partnership above your basis is outside this tool. Cite: [i1065sk1] p. 25, Box 19. Distributions, "exceed the adjusted basis of your partnership interest immediately before the distribution, the excess is treated as gain from the sale or exchange of your partnership interest" (2025; sha256 659063e0)
 - **Refusal:** when k1p.z_other_if_z is true, cannot complete Section 199A dividends or cooperative items from a partnership (Form 8995-A). Section 199A dividends or cooperative items from a partnership are outside this tool. Cite: [i1065sk1] p. 30, Section 199A dividends, "The amount reported reflects your distributive share of the partnership’s net section 199A dividends" (2025; sha256 659063e0)
@@ -1206,8 +1285,13 @@
 - **Refusal:** when k1p.t6_if_asked is true, cannot complete Material participation by test 6 (personal service activity). Material participation by the personal service test is outside this tool. Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "The activity was a personal service activity and you materially participated in the activity for any 3 tax years" (2025; sha256 659063e0)
 - **Refusal:** when k1p.t4_if_gp is true, cannot complete Material participation by test 4 (significant participation activities). Material participation by the significant participation test is outside this tool. Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "The activity was a significant participation activity for the tax year" (2025; sha256 659063e0)
 - **Refusal:** when k1p.t7_if_gp is true, cannot complete Material participation by test 7 (facts and circumstances). Material participation by the facts and circumstances test is outside this tool. Cite: [i1065sk1] p. 9, Individuals (other than limited partners), "Based on all the facts and circumstances, you participated in the activity on a regular, continuous, and substantial basis during the tax year" (2025; sha256 659063e0)
+- **Refusal:** when k1p.re_pro_if_b2 is true, cannot complete Schedule K-1 (Form 1065) box 2 of a real estate professional (Schedule E, line 43). Rental real estate from a partnership held by a real estate professional is outside this tool. Cite: [i1065sk1] p. 14, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity" (2025; sha256 659063e0)
+- **Refusal:** when k1p.dwelling_if_rent is true, cannot complete Rental of a home a partner used personally (nonpassive; Form 8582 does not apply). A partnership's rental of a home a partner used personally for more than the limit is outside this tool. Cite: [i1065sk1] p. 11, Special rules for certain other activities, "The rental of a dwelling unit any partner used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value" (2025; sha256 659063e0)
 - **Refusal:** when k1p.basis_short_if_loss is true, cannot complete Partnership losses above basis (basis limitation). Losses from a partnership above your basis in it are outside this tool. Cite: [i1065sk1] p. 3, Basis Limitations, "a partner may only claim their share of a partnership loss (including a capital loss) to the extent it doesn’t exceed their adjusted basis in the partnership" (2025; sha256 659063e0)
 - **Refusal:** when k1p.not_at_risk_if_loss is true, cannot complete Form 6198 (at-risk limitations). A partnership loss with an amount not at risk is outside this tool. Cite: [i1065sk1] p. 8, At-Risk Limitations, "you’ll have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity" (2025; sha256 659063e0)
+- **Refusal:** when k1p.basis_carry is true, cannot complete Schedule E, line 28, column (i), a loss carried from an earlier year by the basis limitation. A partnership loss carried from an earlier year by the basis limitation is outside this tool. Cite: [i1065sk1] p. 13, "If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your net income, loss, or credits for this year" (2025; sha256 659063e0)
+- **Refusal:** when k1p.risk_carry is true, cannot complete Form 6198 (at-risk limitations), a loss carried from an earlier year. A partnership loss carried from an earlier year by the at-risk limitation is outside this tool. Cite: [i1065sk1] p. 13, "If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your net income, loss, or credits for this year" (2025; sha256 659063e0)
+- **Refusal:** when k1p.fuel_prior_year is true, cannot complete Schedule E, line 28, a 2024 fuel tax credit from the partnership taken into income. A fuel tax credit from a partnership claimed on your 2024 return is outside this tool. Cite: [i1040se] p. 9, Domestic Partnerships, "If you claimed a credit for federal tax on gasoline or other fuels on your 2024 Form 1040, 1040-SR, or 1040-NR based on information received from the partnership, enter as income in column (h) or column (k), whichever applies, the amount of the credit claimed for 2024" (2025; sha256 ad71de35)
 - **Refusal:** when k1p.se_loss_not_material is true, cannot complete Schedule K-1 box 14, code A loss without material participation. A self-employment loss from a partnership business you did not materially participate in is outside this tool. Cite: [i1065sk1] p. 22, Code A. Net earnings (loss) from self-employment, "If the amount in this box is a loss, enter only the deductible amount on Schedule SE" (2025; sha256 659063e0)
 - **Refusal:** when k1p.former_passive is true, cannot complete Form 8582, former passive activity (held-back loss from a business you now materially participate in). A held-back loss from a business you now materially participate in is outside this tool. Cite: [i8582] p. 8, Former Passive Activities, "A prior-year unallowed loss from a former passive activity is allowed to the extent of current year income from the activity" (2025; sha256 76787e11)
 - **Refusal:** when k1p.prior_not_active_if is true, cannot complete Form 8582, Part IV (prior-year loss from a year without active participation). A held-back rental loss from a year without active participation is outside this tool. Cite: [i8582] p. 10, Part IV, "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year" (2025; sha256 76787e11)

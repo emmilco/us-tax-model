@@ -1031,15 +1031,15 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.spouse_relative_joint
+            - dependent.household_all_year
             - const: true
-          then: dependent.spouse_relative_joint
+          then: dependent.household_all_year
         - guard:
             op: test
             eq:
-            - dependent.spouse_relative_joint
+            - dependent.household_all_year
             - const: false
-          then: dependent.household_all_year
+          then: dependent.spouse_relative_joint
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
@@ -1056,15 +1056,15 @@ form:
         - guard:
             op: test
             eq:
-            - dependent.spouse_relative_joint
+            - dependent.qr_other_lawful
             - const: true
-          then: dependent.spouse_relative_joint
+          then: dependent.qr_other_lawful
         - guard:
             op: test
             eq:
-            - dependent.spouse_relative_joint
+            - dependent.qr_other_lawful
             - const: false
-          then: dependent.qr_other_lawful
+          then: dependent.spouse_relative_joint
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
@@ -1188,7 +1188,7 @@ form:
 
           A relationship established by marriage is not ended by death or divorce.
 
-          (Asked only on a joint return, for a person who is not one of these relatives of yours.)
+          (Asked only on a joint return, for a person who is not one of these relatives of yours and who did not live with you all year as a member of your household.)
       cite:
         doc: p501
         locator: p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse. Also, the person doesn’t need to be related to the spouse who provides support."; p. 19, Relatives who don't have to live with you, "Your child, stepchild, or foster child, or a descendant of any of them" through "mother-in-law, brother-in-law, or sister-in-law." and "Any of these relationships that were established by marriage aren’t ended by death or divorce."
@@ -2290,19 +2290,47 @@ form:
       printed: (gate)
       label: Is this dependent required to file a 2025 return because of their income (Chart B in the Form 1040 instructions)?
       type: Bool
+      gated_by: dependent.ptc_files_if_own_money
       expr:
         op: input
         source: 'Is this dependent required to file a 2025 income tax return because of their income, by Chart B in the Form
-          1040 instructions (unearned income over $1,350, earned income over $15,750, or gross income over the larger of $1,350
-          and earned income up to $15,300 plus $450, for a single dependent under 65 and not blind)? Answer no if the dependent
-          files only to claim a refund of withheld or estimated tax.'
+          1040 instructions (for a single dependent under 65 and not blind: unearned income over $1,350, earned income, which
+          includes taxable scholarship and fellowship grants, over $15,750, or gross income over the larger of $1,350 and earned
+          income up to $15,300 plus $450; higher limits for a dependent 65 or older or blind, and other limits for a married
+          dependent)? Answer no if the dependent files only to claim a refund of withheld or estimated tax.'
       cite:
         doc: i8962
         locator: 'p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their
           income meets the income tax return filing threshold.", "Do not include the modified AGI of dependents who are filing
           a tax return only to claim a refund of tax withheld or estimated tax."; i1040gi p. 10, Chart B—For Children and Other
-          Dependents, "Your unearned income was over $1,350."'
+          Dependents, "Your unearned income was over $1,350.", "Earned income includes salaries, wages, tips, professional
+          fees, and taxable scholarship and fellowship grants.", "Were you either age 65 or older or blind?"'
       ambiguity: amb.2025.ptc_dependent_filing
+    - id: dependent.ptc_files_if_own_money
+      printed: (gate)
+      label: Whether this dependent is required to file because of their income, asked only of a dependent with income,
+        funds or property of their own (false for one with none)
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - dependent.own_money
+                - const: true
+            then: dependent.ptc_files
+          - guard:
+              op: test
+              eq:
+                - dependent.own_money
+                - const: false
+            then: dependent.no
+      cite:
+        doc: i8962
+        locator: 'p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their
+          income meets the income tax return filing threshold."; i1040gi p. 10, Chart B—For Children and Other Dependents,
+          "Your unearned income was over $1,350.", "Your earned income was over $15,750."'
     - id: dependent.ptc_magi
       printed: (helper)
       label: This dependent's modified AGI (Worksheet 1-2)
@@ -2327,13 +2355,13 @@ form:
           - guard:
               op: test
               eq:
-                - dependent.ptc_files
+                - dependent.ptc_files_if_own_money
                 - const: true
             then: dependent.ptc_magi
           - guard:
               op: test
               eq:
-                - dependent.ptc_files
+                - dependent.ptc_files_if_own_money
                 - const: false
             then: dependent.zero
       cite:

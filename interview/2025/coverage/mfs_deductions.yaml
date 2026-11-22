@@ -9,6 +9,7 @@ sets:
       f1040.status: mfs
       household.community_property: false
       household.married_dec31: true
+      household.spouse_cp_domicile: false
       sa.spouse_itemizes: false
       sa.spouse_extra: false
 rows:

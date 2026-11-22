@@ -1,0 +1,27 @@
+{
+ "kind": "render",
+ "form": "k1s",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "(screen) (k1s.not_at_risk)",
+   "restated": "Input — Did you pay for your shares, or for loans to the corporation, with money borrowed on terms that protect you from loss (a loan you are not personally liable for, or one someone guarantees for you), or borrowed from another owner of the corporation or someone related to one?",
+   "model": "The IRS at-risk rules exclude nonrecourse debt 'except for certain qualified nonrecourse financing' and exclude indebtedness from a related person 'other than a creditor'; the restatement treats any nonrecourse or related-party borrowing as not at risk.",
+   "ruling": "Ruling: scope; the screen refuses conservatively: qualified nonrecourse financing and creditor exceptions are outside the tool, so the return is refused rather than mis-computed. Project stands.",
+   "context": "c0f1f07e51fdc0dfbeb5af02e370a84a8c522b060c364ab589f8ef5e4a5cc1f3",
+   "date": "2026-11-17",
+   "run": "b39273a80cdcc94a0f3dbacacfc761bfbdf3b4353e5947a53dcc93eb976e14d3",
+   "subject_key": "bb557b393d446ccdd1ed6d56d17a5a297874063faedc49282e94b93714973b31"
+  },
+  {
+   "printed": "(screen) (k1s.re_pro)",
+   "restated": "Input — Did you (or your spouse) work more than 750 hours in 2025 in real estate businesses, and more than half of all your work time?",
+   "model": "The IRS requires the more-than-750-hours and more-than-half tests in real property trades or businesses 'in which you materially participated'; the restatement omits that material-participation condition.",
+   "ruling": "Ruling: scope; the screen refuses conservatively: a real-estate-professional claim is refused rather than computed without the material-participation test. Project stands.",
+   "context": "c0f1f07e51fdc0dfbeb5af02e370a84a8c522b060c364ab589f8ef5e4a5cc1f3",
+   "date": "2026-11-17",
+   "run": "b39273a80cdcc94a0f3dbacacfc761bfbdf3b4353e5947a53dcc93eb976e14d3",
+   "subject_key": "59048108f5976863e1f32ad30f36014e62e091055676e54aa0d04bde4d19b659"
+  }
+ ]
+}

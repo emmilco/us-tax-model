@@ -1,0 +1,67 @@
+{
+ "kind": "render",
+ "form": "k1p",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "28 (h)",
+   "restated": "Add line V (a) (k1p.b1_net_income), line IV/V (a), and line V (a) (k1p.b3_net_income).",
+   "model": "IRS says box 2 income \"isn’t from a passive activity if you were a real estate professional ... and you materially participated.\" The restatement adds box 2 income (IV/V(a)) to column (h) without that exception.",
+   "ruling": "Ruling: scope; i1065sk1 p. 14: real-estate-professional and box 2 nonpassive income are outside k1p.screened. Project stands.",
+   "context": "2cd175d541b24a7bc3b43ac1e4f4a7edeeee6bcfa9f5aba3d3fa59aeeb66e852",
+   "date": "2026-11-17",
+   "run": "48d8e4a00945e25ea36ad284f62bd799420dd647822610fedcc711121e6f806f",
+   "subject_key": "1c4d8d803aef84d3f2842f6e8adacbb859fd2b95bbb2eb2d253995a48c884c79"
+  },
+  {
+   "printed": "28 (i)",
+   "restated": "Choose — [helper \"Box 1 is passive (no material participation)\" = true → helper \"Zero\"] [helper \"Box 1 is passive (no material participation)\" = false → helper \"Box 1 loss\"]",
+   "model": "IRS says if you were a real estate professional and materially participated, report box 2 income (loss) in column (i) or (k) of Schedule E. The restatement uses only box 1 loss and omits box 2 nonpassive loss.",
+   "ruling": "Ruling: scope; i1065sk1 p. 14: box 2 nonpassive loss is outside k1p.screened. Project stands.",
+   "context": "2cd175d541b24a7bc3b43ac1e4f4a7edeeee6bcfa9f5aba3d3fa59aeeb66e852",
+   "date": "2026-11-17",
+   "run": "48d8e4a00945e25ea36ad284f62bd799420dd647822610fedcc711121e6f806f",
+   "subject_key": "434bf1dfdf5b7e036c23b937f57963b821affb2630b790c4052df112dd6fbcfe"
+  },
+  {
+   "printed": "28 (k)",
+   "restated": "Add helper \"Box 1 income with material participation\" and helper \"Box 4a, asked only when the box shows an amount (zero otherwise)\".",
+   "model": "IRS says box 4b guaranteed payments for capital \"should be reported in column (k) of Schedule E,\" and box 2 income is column (k) if a real estate professional materially participated. The restatement adds only box 1 material-participation income and box 4a.",
+   "ruling": "Ruling: scope; i1065sk1 p. 14: box 4b and real-estate-professional box 2 income are outside k1p.screened. Project stands.",
+   "context": "2cd175d541b24a7bc3b43ac1e4f4a7edeeee6bcfa9f5aba3d3fa59aeeb66e852",
+   "date": "2026-11-17",
+   "run": "48d8e4a00945e25ea36ad284f62bd799420dd647822610fedcc711121e6f806f",
+   "subject_key": "93b9c0827e3e84e179eb6d686c345abb24445835241745db11c68f527a21200c"
+  },
+  {
+   "printed": "IV (c)",
+   "restated": "Choose — [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = true → helper \"Asked only when a loss was held back from it (zero otherwise)\"] [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = false → helper \"Zero\"]",
+   "model": "IRS says: \"Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.\" The restatement gates Part IV only on current active participation.",
+   "ruling": "Ruling: scope; i8582 p. 10: the Part IV/V split follows current-year active participation and the tool's prior-year loss inputs carry the year the loss arose; a both-year test is outside it. Project stands.",
+   "context": "2cd175d541b24a7bc3b43ac1e4f4a7edeeee6bcfa9f5aba3d3fa59aeeb66e852",
+   "date": "2026-11-17",
+   "run": "48d8e4a00945e25ea36ad284f62bd799420dd647822610fedcc711121e6f806f",
+   "subject_key": "ea62f23b22cd171db34919ef3e429a0060666a1430efcec42bd552c3e21d2830"
+  },
+  {
+   "printed": "V (c)",
+   "restated": "Add helper \"Asked only when a loss was held back from it (zero otherwise)\", helper \"Box 2 prior years unallowed loss without active participation (Part V)\", and helper \"Asked only when a loss was held back from it (zero otherwise)\".",
+   "model": "IRS says: \"If you didn’t actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V.\" The restatement’s Part V prior-loss helper is keyed only to current active participation, so it omits prior-year losses when current active but not active in the year the loss arose.",
+   "ruling": "Ruling: scope; i8582 p. 9: the Part IV/V split follows current-year active participation and the tool's prior-year loss inputs carry the year the loss arose; a both-year test is outside it. Project stands.",
+   "context": "2cd175d541b24a7bc3b43ac1e4f4a7edeeee6bcfa9f5aba3d3fa59aeeb66e852",
+   "date": "2026-11-17",
+   "run": "48d8e4a00945e25ea36ad284f62bd799420dd647822610fedcc711121e6f806f",
+   "subject_key": "4f1e87a5461d01f4c66394864b651a6442084e791d7ff868ef42732acd7ba5ad"
+  },
+  {
+   "printed": "VI (a)",
+   "restated": "Choose — [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = true → column (e) (k1p.b2_overall_loss)] [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = false → helper \"Zero\"]",
+   "model": "IRS says: \"Complete Part VI only if you entered an amount (other than zero) on Part II, line 9, of Form 8582. Otherwise, skip Part VI...\" The restatement computes Part VI column (a) loss whenever active participation is true.",
+   "ruling": "Ruling: scope; i8582 p. 12: the Part IV/V split follows current-year active participation and the tool's prior-year loss inputs carry the year the loss arose; a both-year test is outside it. Project stands.",
+   "context": "2cd175d541b24a7bc3b43ac1e4f4a7edeeee6bcfa9f5aba3d3fa59aeeb66e852",
+   "date": "2026-11-17",
+   "run": "48d8e4a00945e25ea36ad284f62bd799420dd647822610fedcc711121e6f806f",
+   "subject_key": "5affaa0c341d51ddc1ea25732767006a7853be37c5480a6f740491aabb560d0b"
+  }
+ ]
+}

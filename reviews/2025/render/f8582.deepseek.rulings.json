@@ -1,0 +1,103 @@
+{
+ "kind": "render",
+ "form": "f8582",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "1a",
+   "restated": "Enter the amount from helper \"Part IV, column (a) total: net income\".",
+   "model": "IRS Part IV caution says 'Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV'; the helper classifies Part IV solely by active participation.",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "context": "217083cb1949d9c3cb2917beafe7354faf6ad8c0d6fc582838bd67477cd1a96a",
+   "date": "2026-11-17",
+   "run": "588a8abda6b28d9dcfacb47afdba6695f0f484b92d578434b59ebb5c6d70ac84",
+   "severity": "high",
+   "subject_key": "37f2d405486f78de00f780ed1a5a4500db667e21ef457036d9a5d77e2a6a5ec7"
+  },
+  {
+   "printed": "1b",
+   "restated": "Subtract helper \"Part IV, column (b) total: net loss\" from helper \"Zero\".",
+   "model": "Same Part IV/V classification error: the IRS requires MFS-lived-with-spouse rentals to use Part V, but the helper puts every actively participated Schedule E rental in Part IV.",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "context": "217083cb1949d9c3cb2917beafe7354faf6ad8c0d6fc582838bd67477cd1a96a",
+   "date": "2026-11-17",
+   "run": "588a8abda6b28d9dcfacb47afdba6695f0f484b92d578434b59ebb5c6d70ac84",
+   "severity": "high",
+   "subject_key": "1594b8312ffa2a32763541f49ea3426282fcec0f5892a0e422990037087bc5e6"
+  },
+  {
+   "printed": "1c",
+   "restated": "Subtract helper \"Part IV, column (c) total: prior years unallowed losses\" from helper \"Zero\".",
+   "model": "Same Part IV/V classification error for prior-year unallowed losses; the IRS MFS-lived-with-spouse caution requires Part V rather than Part IV.",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "context": "217083cb1949d9c3cb2917beafe7354faf6ad8c0d6fc582838bd67477cd1a96a",
+   "date": "2026-11-17",
+   "run": "588a8abda6b28d9dcfacb47afdba6695f0f484b92d578434b59ebb5c6d70ac84",
+   "severity": "high",
+   "subject_key": "82ac0e92bc9b6e54171c67fd39dd607a11f18b2b414acba7cc6e56d9a52f2ba6"
+  },
+  {
+   "printed": "2a",
+   "restated": "Enter the amount from helper \"Part V, column (a) total: net income\".",
+   "model": "IRS Part V covers 'Passive trade or business activities' and 'Rental activities other than rental real estate activities,' and MFS-lived-with-spouse active rentals; the helper only sums non-active Schedule E rentals.",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "context": "217083cb1949d9c3cb2917beafe7354faf6ad8c0d6fc582838bd67477cd1a96a",
+   "date": "2026-11-17",
+   "run": "588a8abda6b28d9dcfacb47afdba6695f0f484b92d578434b59ebb5c6d70ac84",
+   "severity": "high",
+   "subject_key": "b817dc814818e4b2b22fa05dd0e79d39377f6d15587d6cb8593c088f18450ee2"
+  },
+  {
+   "printed": "2b",
+   "restated": "Subtract helper \"Part V, column (b) total: net loss\" from helper \"Zero\".",
+   "model": "IRS Part V is not limited to non-active Schedule E rentals; the helper omits passive trade/business, other rental activities, and MFS-lived-with-spouse active rentals.",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "context": "217083cb1949d9c3cb2917beafe7354faf6ad8c0d6fc582838bd67477cd1a96a",
+   "date": "2026-11-17",
+   "run": "588a8abda6b28d9dcfacb47afdba6695f0f484b92d578434b59ebb5c6d70ac84",
+   "severity": "high",
+   "subject_key": "d0206aa1b800010db9c316cde7202d611d7602de304974f3cf20aee375584691"
+  },
+  {
+   "printed": "2c",
+   "restated": "Subtract helper \"Part V, column (c) total: prior years unallowed losses\" from helper \"Zero\".",
+   "model": "Same Part V scope error for prior-year unallowed losses; the helper only includes non-active Schedule E rentals.",
+   "ruling": "Ruling: finding; i8582 p. 10, Part IV, Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don’t qualify under the active participation rule and must use Part V instead of Part IV.\" The restatement’s Part IV classification (rental.part4 = rental.active) omits the caution, and the engine computes the case in Part IV: classm.f8582.4 hand-work expects line 2b -$213.20 while the project computes line 1b -$213.20 (BUG-0933).",
+   "context": "217083cb1949d9c3cb2917beafe7354faf6ad8c0d6fc582838bd67477cd1a96a",
+   "date": "2026-11-17",
+   "run": "588a8abda6b28d9dcfacb47afdba6695f0f484b92d578434b59ebb5c6d70ac84",
+   "severity": "high",
+   "subject_key": "24f59ee1a41cc68a3f3f8ffeb5f79cf844b1c21094bb881e2f7f0e98e2fff49d"
+  },
+  {
+   "printed": "3",
+   "restated": "Add line 1d and line 2d.",
+   "model": "IRS line 3 says 'Combine lines 1d and 2d and subtract any prior year unallowed CRD'; the restatement only adds line 1d and line 2d.",
+   "ruling": "Ruling: scope; f8582 p. 10: a commercial revitalization deduction is outside the tool; its line is the sum of lines 1d and 2d. Project stands.",
+   "context": "217083cb1949d9c3cb2917beafe7354faf6ad8c0d6fc582838bd67477cd1a96a",
+   "date": "2026-11-17",
+   "run": "588a8abda6b28d9dcfacb47afdba6695f0f484b92d578434b59ebb5c6d70ac84",
+   "subject_key": "cedf4e35328edfb4521965d57abac89283580c941fe201c65bbef43f16b034ef"
+  },
+  {
+   "printed": "6",
+   "restated": "Subtract helper \"Adjustments for modified adjusted gross income: Schedule 1 line 26 less lines 15, 20 and 21\" from helper \"Income for modified adjusted gross income: Form 1040 lines 1z to 5b and 7a, Schedule 1 additional income other than line 5, and royalty income or loss\". If zero or less, enter -0-.",
+   "model": "IRS line 6 says to 'combine all the amounts used to figure adjusted gross income, except don’t take into account' listed items; the helper omits Schedule 1 line 5 income and omits Schedule 1 lines 12, 14, and 23 from the line 26 less 15/20/21 adjustments.",
+   "ruling": "Ruling: scope; i8582 p. 11: Schedule 1 line 5 rental income and lines 12, 14 and 23 are outside the tool (scope.rental and scope.schedule1 refuse them); the royalty part is read. Project stands.",
+   "context": "217083cb1949d9c3cb2917beafe7354faf6ad8c0d6fc582838bd67477cd1a96a",
+   "date": "2026-11-17",
+   "run": "588a8abda6b28d9dcfacb47afdba6695f0f484b92d578434b59ebb5c6d70ac84",
+   "subject_key": "7ac63c3dc8136b6b527f74deda1c3c910e4a77960da075d910f317430c83fd65"
+  },
+  {
+   "printed": "9",
+   "restated": "Enter the smaller of line 4 or line 8.",
+   "model": "IRS line 9 says 'If line 3 includes any CRD, see instructions,' which can add the CRD worksheet amount; the restatement only takes the smaller of line 4 or line 8.",
+   "ruling": "Ruling: scope; f8582 p. 11: a commercial revitalization deduction is outside the tool; its line is the smaller of line 4 or line 8. Project stands.",
+   "context": "217083cb1949d9c3cb2917beafe7354faf6ad8c0d6fc582838bd67477cd1a96a",
+   "date": "2026-11-17",
+   "run": "588a8abda6b28d9dcfacb47afdba6695f0f484b92d578434b59ebb5c6d70ac84",
+   "subject_key": "f335a32910b1185cfb1fd696cc7262a14cc4129631d2a8d46b6af40269eb670d"
+  }
+ ]
+}

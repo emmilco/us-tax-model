@@ -6,30 +6,36 @@
    "printed": "1",
    "project_expr_sha256": "00ceea1807c5f5eac78c1e467bfdbdfe0a65a33285184ab9f7547eae01d71e47",
    "second_expr_sha256": "9392bf00c3faea6e3264824feff3eb8729578e5464960556cc284878b41ec306",
-   "ruling": "Ruling: representation; the same smaller-of (i1040gi p. 90, worksheet line 1, \"Enter the income tax refund from Form(s) 1099-G ... But don't enter more than ... your 2024 Schedule A, line 5d\"); the project reads the refund through refund.received_if_worksheet (zero off the worksheet path), the reply reads refund.received under a shown_when on the worksheet path. Triage: 2,602/3,291 agree, no value differs; 101 project-unknown on completed returns where the reply's line is hidden (worksheet not used, refund.exc_tax or refund.two_returns unasked), the rest unknowns on incomplete or refused returns, 20 candidate-unknown. The reply's cap note is the chosen reading of amb.2025.refund_cap_5d.",
-   "context": "9560b9978869ff8e663aa2a1dc567dc74e8fc6306e4c1e7bce87d1f87d490f8c",
-   "date": "2026-11-15",
-   "run": "daaf299b30d35bae29cbd2200aba1bad109d0ad30b005ddd1fc3d4627447a247",
-   "subject_key": "e7822b55d0a13e1c14904f3482245039a6dc61d8395f74e813bfd9a290a9f770",
+   "ruling": "Ruling: representation; i1040gi p. 90, worksheet line 1: \"But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d.\" Both enter the refund capped at the 2024 Schedule A line 5d amount; the difference is which question carries it. The project reads refund.received only when its worksheet parent question is answered yes; the candidate reads refund.received, box 8 and other-year refunds directly, so on completed returns its differences are those unasked inputs (candidate-unknown 67, project-unknown 19). The 2 value witnesses are on incomplete mutation records, as the 2026-11-16 ruling found. Triage executable-triage-v2 (.transcription/triage/2025/refund.json): 3,602 of 3,834 agree. Project stands.",
+   "context": "a8346a8881627ce5d78f54a248e5c0b223ee58c36a4af284bcbdb1fc7c45172b",
+   "date": "2026-11-17",
+   "run": "41999f40ec23bc7f5e2dbf9e5e0177e64f3af75c253cc5bfad66367983ed4e30",
+   "subject_key": "d7c92fe36519874542b9a6c3b5ca7c9c5718b2f28bd8f86db477e70c43d8d608",
    "triage": {
     "verdict": "differs",
     "kinds": [
+     "candidate-refuses",
      "candidate-unknown",
-     "project-unknown"
+     "project-unknown",
+     "value"
     ],
     "witnesses": [
-     "fixture:classm.f2441.1.deepseek@refund",
-     "fixture:classm.f2441.2.deepseek@refund",
-     "fixture:classm.f2441.3.deepseek@refund",
-     "fixture:classm.f2441.4.deepseek@refund",
-     "fixture:classm.f2441.5.deepseek@refund",
-     "fixture:classm.f2441.6.deepseek@refund",
-     "fixture:classm.refund.1@refund",
+     "fixture:classm.w2.1.deepseek@refund",
+     "fixture:classm.g28.2.deepseek@refund",
+     "fixture:classm.clcw_next_year.2.deepseek@refund",
+     "fixture:classm.s2.2.deepseek@refund",
+     "fixture:classm.s2.3.deepseek@refund",
+     "fixture:classm.f1040.2.deepseek@refund",
+     "fixture:classm.refund.2@refund",
      "fixture:classm.refund.4@refund",
-     "fixture:classm.refund.5@refund",
-     "fixture:classm.refund.7@refund",
-     "fixture:mutation.t2.refund.mfs_box@refund",
-     "fixture:mutation.t2.refund.qss_box@refund"
+     "fixture:classm.refund.6@refund",
+     "fixture:mutation.t2.refund.not_itemized@refund",
+     "fixture:mutation.m3.refund.sales_tax_2024@refund",
+     "fixture:stage16.refuse.refund.box8@refund",
+     "fixture:stage16.refuse.refund.not_2024@refund",
+     "partial:stage14.asset.hy_5yr-refund.received@refund",
+     "partial:stage14.asset.hy_5yr-refund.box8@refund",
+     "partial:stage14.asset.hy_5yr-refund.other_year@refund"
     ],
     "policy": "executable-triage-v2"
    }
