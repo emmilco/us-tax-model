@@ -1383,6 +1383,116 @@
           "value": false
         }
       }
+    },
+    {
+      "id": "adlow.f4952.royalty_refused",
+      "covers": [
+        "f4952.royalty_held"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane adlow (adversarial-business.md L1), predicted by hand before the evaluator was run: f4952 p. 3, Line 4a, gross income from property held for investment includes royalties, which line 4a (Form 1040 lines 2b and 3b) leaves out. Margin interest $8,000, ordinary dividends $1,000, one royalty property with $10,000 on Schedule E line 4: before the change line 4a was $1,000 and line 8 $1,000 (source: line 4a $11,000, line 8 $8,000); now lines 4a and 8 are refused by f4952.royalty_held. The same return without the royalty (stage4 cases) is unchanged.",
+      "inputs": {
+        "div.any": true,
+        "f4952.has_interest": true,
+        "f4952.line1": 800000,
+        "sb.ordinary_dividends": 100000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 9940000,
+        "person[taxpayer].w2[a].box3": 9940000,
+        "person[taxpayer].w2[a].box5": 9940000,
+        "person[taxpayer].w2[a].box2": 1000000,
+        "scope.rental": true,
+        "$royalty": [
+          "r"
+        ],
+        "royalty[r].line4": 1000000,
+        "royalty[r].expenses_any": false
+      },
+      "expect": {
+        "f4952.line4a": {
+          "kind": "refusal",
+          "gate": "f4952.royalty_held",
+          "form": "Form 4952 with royalty income",
+          "remedy": "Royalties are gross income from property held for investment on line 4a, and their expenses can be investment expenses on line 5; this tool counts only interest and dividends there. Prepare Form 4952 with the royalty income and expenses.",
+          "cite": {
+            "doc": "f4952",
+            "locator": "p. 3, Line 4a, \"Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties\"",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-28",
+            "snapshot": "5113c1669c7ca4ab49b3e6322c675e14f53d6053b49e59fea27677dbc210df03"
+          }
+        },
+        "f4952.line8": {
+          "kind": "refusal",
+          "gate": "f4952.royalty_held",
+          "form": "Form 4952 with royalty income",
+          "remedy": "Royalties are gross income from property held for investment on line 4a, and their expenses can be investment expenses on line 5; this tool counts only interest and dividends there. Prepare Form 4952 with the royalty income and expenses.",
+          "cite": {
+            "doc": "f4952",
+            "locator": "p. 3, Line 4a, \"Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties\"",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-28",
+            "snapshot": "5113c1669c7ca4ab49b3e6322c675e14f53d6053b49e59fea27677dbc210df03"
+          }
+        }
+      }
+    },
+    {
+      "id": "adlow.f4952.carryover_no_2024_form",
+      "covers": [
+        "f4952.carryover",
+        "f4952.prior_7"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0833 part 2 (amb.2025.f4952_no_2024_form, decided by owner delegation 2026-11-22, option a), predicted by hand before the evaluator was run. A filer who filed no 2024 Form 4952 (standard deduction taken for 2024) answers the reworded f4952.carryover Yes and enters for f4952.prior_7 what line 7 of a correct 2024 Form 4952 would show (f4952 p. 1, line 7, \"Subtract line 6 from line 3. If zero or less, enter -0-\"), here $2,000. No 2025 investment interest; taxable interest $5,000, no dividends. Predicted: line 2 $2,000, line 3 $2,000, line 4a $5,000, line 6 $5,000, line 7 $0, line 8 $2,000; the form is required because there is a carryover from 2024 (f4952 p. 3, Who Must File, Exception).",
+      "inputs": {
+        "f4952.has_interest": true,
+        "f4952.line1": 0,
+        "f4952.carryover": true,
+        "f4952.prior_7": 200000,
+        "$interest": [
+          "bank"
+        ],
+        "interest[bank].amount": 500000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "f4952.line2": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f4952.line3": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f4952.line4a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f4952.line6": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f4952.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f4952.line8": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f4952.required": {
+          "kind": "bool",
+          "value": true
+        }
+      }
     }
   ]
 }

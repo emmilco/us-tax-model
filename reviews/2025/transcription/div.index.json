@@ -5,7 +5,7 @@
  "base": "3a15ed464ec0c4e2a869b1a15dfbe0440a3dd97a9abbf9ddcd4d29cf7f919dcf",
  "head_rows": {
   "agree / disagree / missing": "2 / 3 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,17 +23,17 @@
   },
   {
    "key": "div.box2b_if_capital_gain",
-   "record": "40b03853341b69a6ae454c70e927278ca30bb5cc83fe3dc3ed0440ef4347c736",
+   "record": "e39ce23905e06e2e99a160b38ab8e6ee0051beab87267193ea540359c7ac8c47",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1099div p. 5, Instructions for Recipient: \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\". The project asks box 2b only when capital gain distributions (box 2a, sd.distributions) are above zero and a Form 1099-DIV shows an amount in the less common boxes (div.capital_gain_boxes); with box 2a zero, box 2b, a portion of it, is zero. The reply tests div.any and div.other_boxes only and so reads div.box2b where the interview does not ask it. executable triage (.transcription/triage/2025/div.json, executable-triage-v2): 2,916 of 2,974 agree; 4 candidate-unknown, 54 project-unknown, all on incomplete or refused returns; no value difference. Project stands.",
-   "subject_key": "2239cae74ece883d4c2242b3305bce524f1062f2b69e3ddef49c66702bafd165"
+   "ruling": "Ruling: representation; f1099div p. 5, Instructions for Recipient: \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\". As the earlier ruling of this line: the project asks box 2b only when box 2a (sd.distributions) is above zero and a Form 1099-DIV shows an amount in the less common boxes (div.capital_gain_boxes); the reply drops the box 2a parent and reads div.box2b where it is not asked. With box 2a zero, box 2b, a portion of it, is zero, so the values agree. Rerun only because the less-common-boxes question no longer lists boxes 2e and 2f (BUG-1130).",
+   "subject_key": "127e9cbe84384fef959524c6910674ebfa68173c5208772aa22c19ca38da38f2"
   },
   {
    "key": "div.box2d_if_capital_gain",
-   "record": "40b03853341b69a6ae454c70e927278ca30bb5cc83fe3dc3ed0440ef4347c736",
+   "record": "e39ce23905e06e2e99a160b38ab8e6ee0051beab87267193ea540359c7ac8c47",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1099div p. 5, Instructions for Recipient: \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\". As box 2b: the project asks box 2d only when box 2a is above zero (div.capital_gain_boxes); the reply drops that parent and reads div.box2d where it is not asked. executable triage (.transcription/triage/2025/div.json, executable-triage-v2): 2,916 of 2,974 agree; 4 candidate-unknown, 54 project-unknown, all on incomplete or refused returns; no value difference. Project stands.",
-   "subject_key": "3f09d94cff6732c14623e329a41bf4c58484950aeeeeeebc45080a32ab643311"
+   "ruling": "Ruling: representation; f1099div p. 5, Instructions for Recipient: \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\". As box 2b and the earlier ruling of this line: the project asks box 2d only when box 2a is above zero (div.capital_gain_boxes); the reply drops that parent. With box 2a zero, box 2d is zero; the values agree. Rerun only because the less-common-boxes question no longer lists boxes 2e and 2f (BUG-1130).",
+   "subject_key": "891b10107496f8eb47370641ee52bbc29081f412b8da3f8493bc5d2aca469292"
   },
   {
    "key": "div.box12_if_dividends",
@@ -45,8 +45,8 @@
  "subjects": {
   "div.has_ordinary": "51c58c1de7464bc47824ab0732e2e7831ea30d020938580b7f2bd8eee2826ad4",
   "div.zero": "023fca92bb2ca85c42b5ddf6296460a606a9efbc6b93efb54dd6aa7da46b1887",
-  "div.box2b_if_capital_gain": "eca821b6729cc9058f3361cc58d4c0ea5efdf0e57a676ba941d497e88901ad69",
-  "div.box2d_if_capital_gain": "53077916f4780325880e3567c6417b96a009aa97d1296edfef326e411033a12a",
+  "div.box2b_if_capital_gain": "5b01d33070664437daab26fda05fac0061cd8e416cbb6043cc9b060fcf26bee0",
+  "div.box2d_if_capital_gain": "134c42d3f4c00f4c2f0dbe6a0fd92fcb71677806591da83239914a6ff5aee833",
   "div.box12_if_dividends": "907369ac765cea6c8f02a3615d6c58d64cbf9f6577e290e6c91a2ad6c0015b1b"
  },
  "__rest__": "ab9ea5065d1d3f1a23ab77de1d140198c1b1c4bc6363087c360e4f5384b11029",

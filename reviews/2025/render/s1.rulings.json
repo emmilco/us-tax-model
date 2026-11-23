@@ -398,6 +398,16 @@
    "subject_key": "bac561a898e0b3a4bf60b336150fdb84ebd5b6295a0c1eed5a2ede09ab62f4e4"
   },
   {
+   "printed": "8a",
+   "restated": "Subtract helper \"The net operating loss carried into 2025, asked only after a Yes to the question on a loss carried into 2025 (zero otherwise)\" from helper \"Year parameter sales.zero\".",
+   "model": "The restatement enters the full unused NOL carried into 2025, but for losses from 2018 or later the deduction 'cannot exceed ... the lesser of: (a) the NOLs carried to the year from tax years beginning after December 31, 2017, or (b) 80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions'. No refusal excludes cases where the 80% limit applies; the sign ('Enter the amount in the preprinted parentheses (as a negative number)') and the other refusals are otherwise consistent with the text.",
+   "ruling": "Ruling: scope; i1040gi p. 91, Line 8a, and the 80% limit. The limit is handled on s1.nol_limit (forms/2025/s1.yaml; amb.2025.s1_nol_limit_test): the deduction is computed where the 80% limit cannot bind and refused where it may. The restatement of line 8a does not show that line. (carried over from reviews/2025/render/s1.index.json at f4d8ea31, review of 2026-11-03)",
+   "context": "4c8b02ee2f78a57444b1e5a4661492e668d862d36b1b25b383ecc9bd89fbad76",
+   "date": "2026-11-23",
+   "run": "0d1f80bacfda5600ece7d7ede121f46d34bf2f68a0dc069208d44ff615682897",
+   "subject_key": "efd28ab983273a7f6c5267fb35b183aab633fded364394ecc23713f5d23c5ffb"
+  },
+  {
    "printed": "8e",
    "restated": "Choose — [helper \"Did you (or, on a joint return, your spouse) receive in 2025 payments under a long-term care insurance contract, or accelerated death benefits under a life insurance contract (Form 1099-LTC; Form 8853)?\" = true → helper \"Form 8853, line 26, added for every Section C\"] [helper \"Did you (or, on a joint return, your spouse) receive in 2025 payments under a long-term care insurance contract, or accelerated death benefits under a life insurance contract (Form 1099-LTC; Form 8853)?\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The instructions say 'Enter the total of the amounts from Form 8853, lines 8, 12, and 26'. The restatement adds only line 26 from Section C. It omits taxable Archer MSA (line 8) and Medicare Advantage MSA (line 12) distributions, and no refusal is shown for them.",

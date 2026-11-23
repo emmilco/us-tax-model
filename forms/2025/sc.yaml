@@ -115,6 +115,7 @@ form:
       - qualified sound recording production costs you elect to deduct under section 181
       - prior year unallowed passive activity losses from this activity
       - services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee
+      - income for services you performed while outside the United States (income not effectively connected with a trade or business within the United States)
       - Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income
       - an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)
       - licenses or other costs you must amortize (for example, some liquor licenses)
@@ -139,6 +140,7 @@ form:
         - qualified sound recording production costs you elect to deduct under section 181
         - prior year unallowed passive activity losses from this activity
         - services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee
+        - income for services you performed while outside the United States (income not effectively connected with a trade or business within the United States)
         - Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income
         - an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)
         - licenses or other costs you must amortize (for example, some liquor licenses)
@@ -153,7 +155,10 @@ form:
         p. 6, Line 6, recapture; p. 14, Line 31, "prior year unallowed passive activity losses"; p. 6, Installment sales,
         "If you use the installment method, attach a statement to your return"; p. 9, Line 23, "But some licenses, such as
         liquor licenses, may have to be amortized"; p. 9, Line 24a, "Other rules apply to luxury water travel"; p463 p. 12,
-        Luxury Water Travel, "there is a daily limit on the amount you can deduct"; i4562 p. 4, "If the section
+        Luxury Water Travel, "there is a daily limit on the amount you can deduct"; i8995 p. 2, "QBI doesn’t include any of
+        the following", "Income that isn’t effectively connected with the conduct of a trade or business within the United
+        States"; i1116 p. 5, "Foreign source income generally includes", "Compensation for services performed outside the
+        United States"; i4562 p. 4, "If the section
         179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the
         property’s recovery period"; i8995 p. 2, "there is a presumption that you’re providing services as an employee for
         purposes of section 199A for the 3-year period after ceasing to be an employee", and p. 3, Determining if information
@@ -2511,6 +2516,43 @@ form:
       doc: f7206
       locator: Form 7206 (2025), line 14, "Enter the smaller of line 3 or line 13 here and on Schedule 1 (Form 1040), line
         17"
+  - id: sc.f7206_unused
+    printed: (helper)
+    label: Health insurance of this business not deducted on Schedule 1, line 17 (line 3 minus line 14), which counts as a
+      medical expense on Schedule A
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: sc.f7206_line3
+      take: sc.f7206_line14
+    cite:
+      doc: i7206
+      locator: p. 2, "any medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as
+        medical expenses on Schedule A (Form 1040) if you itemize deductions"; f7206 Form 7206 (2025), lines 3 and 14
+  - id: sc.f7206_unused_if_uses
+    printed: (gate)
+    label: Health insurance of this business not deducted on Schedule 1, line 17, figured only when health insurance is
+      established under this business (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.hi_uses
+          - const: true
+        then: sc.f7206_unused
+      - guard:
+          op: test
+          eq:
+          - sc.hi_uses
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i7206
+      locator: p. 2, "any medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as
+        medical expenses on Schedule A (Form 1040) if you itemize deductions"
   - id: sc.qbi_has
     printed: (helper)
     label: This business has a net profit

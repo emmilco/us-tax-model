@@ -3,6 +3,11 @@
  "form": "f1040",
  "family": "claude",
  "base": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
+ "head_rows": {
+  "lines judged": "66",
+  "match / mismatch / unclear / missing": "61 / 5 / 0 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-23); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "Filing Status",
@@ -159,6 +164,12 @@
    "subject_key": "e249f2f204991ead0df8403da9f499d883469fc83b7d39bd68132855bb976ba0"
   },
   {
+   "key": "7b",
+   "record": "4eba8c5ca4c9a0cb02b76b616fb572a851f91febda76190c87a3a0f28d0430df",
+   "status": "MATCH",
+   "subject_key": "947db3e151c221f3620bcd64a4c0a4aabd5397343ecdfa72684b68cd9866f36a"
+  },
+  {
    "key": "8",
    "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
@@ -196,8 +207,9 @@
   },
   {
    "key": "12e",
-   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
-   "status": "MATCH",
+   "record": "8e9e0f97d9c91c98e7562bdb170a17e6fb8fb1ba927b916441bd2012a20fc80e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi pp. 34-35, Standard Deduction Worksheet for Dependents, earned income footnote (Form 1040 line 1z and Schedule 1 lines 3, 6, 8r, 8t and 8u, less line 15), and Exception 3, dual-status alien. As ruled on 2026-11-17: Schedule 1 lines 6, 8t and 8u are outside the tool (the Schedule 1 refusal scope.schedule1 on forms/2025/scope.yaml lists the Schedule 1 items it computes, and these are not among them), and a nonresident or dual-status alien return is refused (forms/2025/scope.yaml, i1040gi p. 8, \"Most nonresident aliens and dual-status aliens have different filing requirements\"). This pass was forced because a new refusal (household.qss_child_not_all_year, through household.qss_fails) reaches line 12e; the reply raises nothing about the filing-status refusals. Project stands.",
    "subject_key": "53127771241cb7161fccae244e2ff5c5842f0fafc7229a1b419b3e851e6d5af3"
   },
   {
@@ -214,7 +226,7 @@
   },
   {
    "key": "14",
-   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
+   "record": "8e9e0f97d9c91c98e7562bdb170a17e6fb8fb1ba927b916441bd2012a20fc80e",
    "status": "MATCH",
    "subject_key": "2392b806b73434f2ac58a2a884a58daa60c209179d4548d3a5cbe09346bc357b"
   },
@@ -425,6 +437,7 @@
   "6c": "39f3fa35ea53da9a3950ed1e0d318dfbf500019d3c18ff0a7288dff2bacef715",
   "6d": "9796eed4c9fa5787a64f033cfaaff1457d413f2e449525f53150b2d9873f85ae",
   "7a": "0d66d2dac105404d9ccc0a87cd6cc1890d895d64a56d675b3953d768ff90c497",
+  "7b": "c166d616abd1e7a3672e6b54dbc0c12792d0a6b80b60230029f757b256883a14",
   "8": "a42edcad6b686d6a14fc6fe265fcd8d634b143446c75ca4bde2c0bcec8c02a3a",
   "9": "ae6119935dc43602719f142cc0698b3fe8821beef465e8438012705c58ca3031",
   "10": "4530ea57e270b30dbeb7901b5515647693a7231b8435745678fd61e01501f9a8",

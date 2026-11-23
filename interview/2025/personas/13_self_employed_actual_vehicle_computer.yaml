@@ -53,7 +53,9 @@ answers:
   f1040.line26: 1200000
   scope.se_plan_other: false
   scope.income_averaging: false
+  qbi.unreported_loss: false
   qbi.suspended: false
+  qbi.coop_patron: false
   s2.lookback: false
   s2.amt_business: false
   person[taxpayer].sc[design_studio].scveh[van].method: actual

@@ -3,7 +3,7 @@
 The operations that take the 2025 definitions to 2026, one file per form they act on, applied by
 `tools/year_changes.py` (format and checks: `tools/README.md`, "Year changes as operations"; design:
 `docs/2026-11-14_year_change_operations.md`). check-all applies them to `forms/2025`, `interview/2025`,
-`ambiguities/2025.yaml` and the archived pages of `sources/2026` on every run (138 entries, 1,277 operations); `tools/year_diff.py --from 2025 --to 2026 --adopt` applies them to the
+`ambiguities/2025.yaml` and the archived pages of `sources/2026` on every run (141 entries, 1,317 operations); `tools/year_diff.py --from 2025 --to 2026 --adopt` applies them to the
 adopted copy. Nothing here is read by the build.
 
 | File | Entries | Operations | Change-map entries |
@@ -24,8 +24,8 @@ adopted copy. Nothing here is read by the build.
 | `f2441.yaml` | 4 | 43 | C-CRED-10, C-CRED-11, C-MFS-F2441-01, C-CRED-12 |
 | `f4562.yaml` | 1 | 5 | C-BUS-11 |
 | `f5329.yaml` | 3 | 15 | C-SCHED-11, C-PEOP-03, C-PEOP-04, C-PEOP-05 |
-| `f5695.interview.yaml` | 1 | 28 | C-CRED-01 |
-| `f5695.yaml` | 8 | 335 | C-CRED-01, C-CRED-02, C-CRED-03, C-CRED-04, C-CRED-05, C-CRED-06, C-CRED-07, C-CRED-08 |
+| `f5695.interview.yaml` | 1 | 29 | C-CRED-01 |
+| `f5695.yaml` | 8 | 338 | C-CRED-01, C-CRED-02, C-CRED-03, C-CRED-04, C-CRED-05, C-CRED-06, C-CRED-07, C-CRED-08 |
 | `f8582.yaml` | 1 | 2 | C-X1SCHE-F8582-01 |
 | `f8863.wording.yaml` | 1 | 8 | C-CRED-17 |
 | `f8863.yaml` | 1 | 7 | C-CRED-18 |
@@ -44,6 +44,7 @@ adopted copy. Nothing here is read by the build.
 | `otjob.yaml` | 1 | 5 | C-SCHED-05 |
 | `person.ambiguity.yaml` | 3 | 7 | C-CRED-18+C-PEOP-16, C-CRED-20, C-CRED-16 |
 | `person.edu.yaml` | 3 | 39 | C-CRED-18+C-PEOP-16, C-CRED-20, C-PEOP-17 |
+| `person.ira.yaml` | 1 | 7 | C-PEOP-08+BUG-1032 |
 | `person.page1.yaml` | 1 | 2 | C-PRI-06 |
 | `person.retirement.yaml` | 6 | 24 | C-SCHED-11, C-PEOP-03, C-PEOP-04, C-PEOP-05, C-PEOP-06, C-PEOP-08, C-PEOP-11 |
 | `person.s1a.yaml` | 2 | 7 | C-SCHED-03, C-SCHED-05 |
@@ -55,7 +56,7 @@ adopted copy. Nothing here is read by the build.
 | `retirement.yaml` | 4 | 24 | C-PEOP-04, C-PEOP-11, C-PEOP-05, C-PEOP-07 |
 | `s1a.yaml` | 6 | 188 | C-SCHED-01, C-SCHED-02, C-SCHED-03, C-SCHED-04, C-SCHED-05, C-SCHED-08 |
 | `s2.x2-paynow2.yaml` | 1 | 9 | C-X2-S2-01 |
-| `s2.yaml` | 4 | 37 | C-SCHED-10, C-SCHED-11, C-PEOP-03, C-SCHED-13, C-PEOP-12 |
+| `s2.yaml` | 6 | 66 | C-SCHED-10, C-SCHED-11, C-PEOP-03, C-SCHED-13, C-PEOP-12, C-LAW-02+BUG-1031, BUG-1167 |
 | `s3.yaml` | 2 | 12 | C-SCHED-12, C-SCHED-39 |
 | `s3a.yaml` | 1 | 2 | C-PRI-05 |
 | `s8812.yaml` | 7 | 20 | C-SCHED-16, C-SCHED-17, C-SCHED-18, C-SCHED-19, C-SCHED-20, C-SCHED-23, C-CRED-05, C-SCHED-26 |
@@ -77,7 +78,11 @@ vehicle lines, Form W-2 and the new Schedule 3-A), which stay there as the recor
 written by the 2026 preparation lanes straight from the change map (`research/ty2026/changes.md`) against the 2025
 forms as they stand, each with the entry's 2026 quotes as evidence (lane notes `docs/provisional/lanes/ty26-o*.md`
 and `ty26-w1.md`, the wording-only entries); `tcw.yaml` carries a defect the parameter lane found rather than a
-change-map entry (BUG-0647: the 2026 joint 12% bracket ends above the Tax Table's $100,000 boundary).
+change-map entry (BUG-0647: the 2026 joint 12% bracket ends above the Tax Table's $100,000 boundary). Three entries
+also carry defects: in `s2.yaml`, C-LAW-02 with BUG-1031 (the AMT exemption phase-out and separate-return add-back
+read the new `amt.phaseout_rate`, 50% in 2026, while Form 6251 line 37 keeps `amt.rate_25`) and BUG-1167
+(two locators whose quotes the 2026 drafts reword); in `person.ira.yaml`, C-PEOP-08 with BUG-1032 (the IRA deduction
+reduction labels print the 2026 rates, which follow the 2026 contribution limits).
 
 Each proposal was compared, line id by line id, with the 2025 file it was copied from (the blob its `.diff` names),
 and every difference became an operation, grouped by the change-map entry it carries out. Every operation was then
@@ -99,7 +104,7 @@ in its `note`):
   casualty losses is re-based on the help of `sd.casualty`.
 - `s3a.line4` reads the 2026 Schedule 2 line 20, which the Schedule 2 renumbering (C-SCHED-10, `s2.yaml`) adds.
 
-The operations read twelve parameters the 2025 file does not define (`niit.s68_threshold`, `qbi.min_active`,
+The operations read thirteen parameters the 2025 file does not define (`amt.phaseout_rate`, `niit.s68_threshold`, `qbi.min_active`,
 `qbi.min_deduction`, `sa.gambling_rate`, `sa.gift_floor_rate`, `sa.limit_screen`, `sc.bonus_rate_phase_down`,
 `sc.mileage_rate_h1`, `sc.mileage_rate_h2` and the new joint Tax Computation Worksheet row `tcw.mfj.b0.*`): the 2026
 parameters must define them, and the staged `research/ty2026/params-2026.proposed.yaml` does. The ambiguity register
@@ -116,7 +121,7 @@ the form's own file (`tools/README.md`, "Year changes as operations").
 ## The 135 change-map entries by operation kind
 
 Each entry of `research/ty2026/changes.md` by the operations it needs and what it needs outside them, read from the
-entry's kind, touched ids and notes, before any operation was written. "Written" marks the 90 entries whose
+entry's kind, touched ids and notes, before any operation was written. "Written" marks the 91 entries whose
 operations are in this directory; the files, not this classification, say what the operations are (written against
 the current forms, several entries classified "—" took citation or wording operations).
 
@@ -256,4 +261,4 @@ the current forms, several entries classified "—" took citation or wording ope
 | C-BUS-17 | Form 7206 and its instructions: years only; i1040gi cites unverifiable | — | year literals |  |
 | C-BUS-18 | Schedule E, Form 8582, the K-1s and Form 6198: archived, not encoded | — | not encoded |  |
 | C-LAW-01 | Hazardous duty areas: the Sinai Peninsula treatment made permanent;... | — | not encoded |  |
-| C-LAW-02 | Alternative minimum tax: exemption amounts permanent, phase-out thr... | — | not encoded |  |
+| C-LAW-02 | Alternative minimum tax: exemption amounts permanent, phase-out thr... | set expr, set label, set cite | parameters/enums/tables | yes |

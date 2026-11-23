@@ -1,5 +1,5 @@
 # The limit on qualified long-term care premiums for each person covered, by age at the end of 2026.
-# Written by tools/extract_printed_tables.py from sources/2026/f7206.pdf (sha256 66d95039b0ee); checked by its --check (check-all).
+# Written by tools/extract_printed_tables.py from sources/2026/f7206.pdf (sha256 863c82bd31b6); checked by its --check (check-all).
 table:
   id: "ltc_limit"
   kind: "keyed"

@@ -109,9 +109,10 @@ put("s179.max", D(2560000), RP, 21, "section 4.24, Election to Expense Certain D
     "the aggregate cost of any § 179 property that a taxpayer elects to treat as an expense cannot exceed $2,560,000")
 put("s179.suv_limit", D(32000), RP, 21, "section 4.24", "the cost of any sport utility vehicle that may be taken into account under § 179 cannot exceed $32,000.")
 put("s179.threshold", D(4090000), RP, 21, "section 4.24", "the cost of § 179 property placed in service during the 2026 taxable year exceeds $4,090,000.")
-put("qbi.threshold", {"single": D(201750), "hoh": D(201750), "qss": D(201750), "mfs": D(201775), "mfj": D(403500)}, "f8995", 2,
-    "Form 8995 (2026), line 1 caption", "is at or below $201,750 ($201,775 if married filing separately; $403,500 if married filing jointly)",
-    "draft form; the same amounts are in rp-25-32 section 4.26 (final). The 2025 value used one amount for married filing separately and single; 2026 does not")
+put("qbi.threshold", {"single": D(201750), "hoh": D(201750), "qss": D(201750), "mfs": D(201775), "mfj": D(403500)}, RP, 22,
+    "section 4.26, Qualified Business Income",
+    "Married Individuals Filing Joint Returns $403,500 ... Married Individuals Filing Separate $201,775 ... All Other Returns $201,750",
+    "the threshold amounts under section 199A(e)(2); the Form 8995 draft (p. 2, line 1 caption) prints the same amounts. The 2025 value used one amount for married filing separately and single; 2026 does not")
 put("sli.base_other", D(85000), RP, 23, "section 4.29, Interest on Education Loans",
     "modified adjusted gross income in excess of $85,000 ($175,000 for joint returns)")
 put("sli.base_joint", D(175000), RP, 23, "section 4.29, Interest on Education Loans",
@@ -151,9 +152,10 @@ put("se.wage_base", D(184500), "f1040sse", 1, "Schedule SE (2026), line 7", "ear
 # ---- SALT (statute, final; the draft Schedule A prints the same) ----
 put("sa.salt_base", D(40400), "plaw-119-21", 99, "section 70120, section 164(b)(7)(A)(ii)",
     "in the case of any taxable year beginning in calendar year 2026, $40,400")
-put("sa.salt_threshold", {"single": D(505000), "hoh": D(505000), "qss": D(505000), "mfj": D(505000), "mfs": D(252500)}, "f1040sa", 2,
-    "Schedule A (2026), line 5e", "$505,000 ($252,500 if married filing separately)",
-    "draft form; the statute (plaw-119-21 p. 99, final) prints '$505,000' and 'half the threshold amount in the case of a married individual filing a separate return'")
+put("sa.salt_threshold", {"single": D(505000), "hoh": D(505000), "qss": D(505000), "mfj": D(505000), "mfs": D(252500)}, "plaw-119-21", 99,
+    "section 70120, section 164(b)(7)(B)",
+    "the threshold amount (half the threshold amount in the case of a married individual filing a separate return) ... in the case of any taxable year beginning in calendar year 2026, $505,000",
+    "the married-filing-separately amount is half the printed $505,000; the Schedule A draft (p. 2, line 5e) prints \"$505,000 ($252,500 if married filing separately)\"")
 put("sa.salt_floor", D(10000), "plaw-119-21", 99, "section 164(b)(7)(B)(iii)", "shall not result in the applicable limitation amount being less than $10,000.")
 put("sa.salt_rate", R(3, 10), "plaw-119-21", 99, "section 164(b)(7)(B)(i)", "the applicable limitation amount shall be reduced by 30 percent of the excess")
 put("sa.half", R(1, 2), "plaw-119-21", 99, "section 164(b)(7)(B)(i)", "half the threshold amount in the case of a married individual filing a separate return",
@@ -163,7 +165,9 @@ put("sa.half", R(1, 2), "plaw-119-21", 99, "section 164(b)(7)(B)(i)", "half the 
 put("dc.exclusion_max", D(7500), "i2441", 7, "Line 21",
     "The maximum amount is increased to $7,500 (previously $5,000). For married employees filing separate returns",
     "the instruction for the line that reads it (lane O4); What's New (p. 2) prints the same amount")
-put("f5329.cap_abuse", D(10500), "p590b", 29, "Distributions to domestic abuse victims", "must not exceed the lesser of $10,500 for 2026 or 50% of the present value of the IRA.")
+put("f5329.cap_abuse", D(10500), N, 5, "section 72(t)(2)(K)(ii)(I), distributions to victims of domestic abuse",
+    "domestic abuse from applicable eligible retirement plans is increased from $10,300 to $10,500",
+    "Pub. 590-B (2026, draft) p. 29 prints the same amount")
 put("ctc.threshold", ST(200000, 400000, 200000, 200000, 200000), "f1040s8812", 1, "Schedule 8812 (2026), line 9",
     "Married filing jointly—$400,000 . . . . . . . . . . . . . . . . . . . . . . • All other filing statuses—$200,000")
 put("ptc.months", 12, "i1095a", 2, "Part III", "Add the amounts on lines 21 through 32 and enter on line 33.", "structural: twelve monthly lines")
@@ -192,8 +196,9 @@ put("f5329.cap_emergency", D(1000), "p590b", 29, "Emergency personal expense dis
 
 put("sc.ho_rate", D(5), "i1040sc", 14, "Simplified Method Worksheet, line 3a", "3a. Maximum allowable amount . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3a. $5")
 
-put("ira.limit_50", D(8600), "i8606", 6, "IRA contribution limit", "the smaller of $7,500 ($8,600 if age 50 or older at the end of 2026) or your taxable compensation",
-    "the 2025 value cites the IRA Deduction Worksheet (Form 1040 instructions, not posted)")
+put("ira.limit_50", D(8600), "i1099r", 22, "IRA regular contribution limit",
+    "The annual IRA regular contribution limit of $7,500 is increased to $8,600 for participants age 50 or older",
+    "the 2025 value cites the IRA Deduction Worksheet (Form 1040 instructions, not posted); n-25-67 (final) prints the parts ($7,500 and the $1,100 catch-up), the i8606 draft (p. 6) the same $8,600")
 KBH = "combined taxable compensation of both you and your spouse is less than $15,000 ($16,100 if one spouse is age 50 or older at the end of 2026; $17,200 if both spouses are age 50 or older at the end of 2026"
 put("ira.kbh_none", D(15000), "i8606", 6, "Kay Bailey Hutchison Spousal IRA limit", KBH)
 put("ira.kbh_one", D(16100), "i8606", 6, "Kay Bailey Hutchison Spousal IRA limit", KBH)
@@ -252,8 +257,9 @@ put("sa.dep_min", D(1350), RP, 18, "section 4.14(2), Standard deduction for a de
 put("sa.dep_add", D(450), RP, 18, "section 4.14(2), Standard deduction for a dependent",
     "cannot exceed the greater of (1) $1,350, or (2) the sum of $450 and",
     "the 2025 value cites the Standard Deduction Worksheet for Dependents (Form 1040 instructions, not posted), which applies this rule")
-put("ctc.age_limit", 17, "i1040s8812", 3, "Qualifying child for the CTC and ACTC", "under age 17 at the end of 2026",
-    "the 2025 value cites the Form 1040 instructions' Step 3 (not posted)")
+put("ctc.age_limit", 17, "f1040s8812", 1, "Schedule 8812 (2026), line 4",
+    "Number of qualifying children under age 17 with the required social security number",
+    "the 2025 value cites the Form 1040 instructions' Step 3 (not posted); the i1040s8812 draft (p. 3) prints \"under age 17 at the end of 2026\"")
 put("f1116.exception_ceiling", {"single": D(201775), "mfs": D(201775), "hoh": D(201750), "mfj": D(403550), "qss": D(403550)},
     "i1116", 11, "Adjustment exception (qualified dividends)",
     "a. $403,550 if married filing jointly or qualifying ... b. $201,775 if married filing separately, ... c. $201,775 if single, or ... d. $201,750 if head of household.",
@@ -286,6 +292,36 @@ put("f1116.high_tax_rate", R(37, 100), RP, 11, "section 4.01, Tax Rate Tables (t
     "plus 37% of the excess over $640,600",
     "the highest rate of tax specified in section 1 (cfr-26-1-904-4); the 2025 value cites the Form 1040 instructions' Tax Computation Worksheet (not posted)")
 
+put("f5329.simple_rate", R(25, 100), "f5329", 1, "Form 5329 (2026), line 4",
+    "include 25% of that amount on line 4 instead of 10%",
+    "the i5329 draft (p. 6, Line 4) prints \"you must multiply that amount by 25% instead of 10%.\"")
+
+# ---- Values a final source fixes (audit of 2026-11-22) ----
+put("sdtw.ordinary_ceiling", ST(201775, 403550, 201775, 201750), RP, 11, "section 4.01, Tax Rate Tables",
+    "Over $105,700 but not over $201,750 ... Over $105,700 but not over $201,775",
+    "the top of the 24% bracket, the Schedule D Tax Worksheet's ceiling in 2025 as well (i1040sd 2026 not posted): Table 2 (head of household, "
+    "p. 11) $201,750; Table 3 (single, p. 11) and Table 4 (married filing separately, p. 12) $201,775; Table 1 (joint and surviving spouse, "
+    "p. 10, \"Over $211,400 but not over $403,550\") $403,550. Head of household is $25 below single in 2026 (equal in 2025). The i1116 "
+    "draft p. 11 prints the same four amounts (f1116.exception_ceiling)")
+put("sli.divisor_other", D(15000), RP, 23, "section 4.29, Interest on Education Loans",
+    "in excess of $85,000 ($175,000 for joint returns), and is completely phased out for taxpayers with modified adjusted gross income of $100,000 or more ($205,000 or more for joint returns)",
+    "the width of the phase-out range, $100,000 less $85,000 (the worksheet that prints the divisor is in the Form 1040 instructions, not posted)")
+put("sli.divisor_joint", D(30000), RP, 23, "section 4.29, Interest on Education Loans",
+    "in excess of $85,000 ($175,000 for joint returns), and is completely phased out for taxpayers with modified adjusted gross income of $100,000 or more ($205,000 or more for joint returns)",
+    "the width of the joint phase-out range, $205,000 less $175,000")
+put("clcw.prior_limit", D(3000), "f1040sd", 3, "Schedule D (2026), line 21", "($3,000), or if married filing separately, ($1,500)",
+    "the capital loss limit of section 1211(b), not indexed: the Capital Loss Carryover Worksheet (i1040sd 2026, not posted) reads the prior year's limit, the same $3,000; the quote sd.loss_limit cites")
+put("clcw.prior_limit_mfs", D(1500), "f1040sd", 3, "Schedule D (2026), line 21", "($3,000), or if married filing separately, ($1,500)",
+    "as clcw.prior_limit, for married filing separately")
+
+# Values not printed as one figure in their quote: check_params.py checks the quote on its page, not the amount.
+DERIVED_V = {
+ "sdtw.ordinary_ceiling": "the top of the 24% bracket of each 2026 rate table (rp-25-32 section 4.01 Tables 1 to 4, pp. 10-12); the quote prints the head-of-household and single rows",
+ "sli.divisor_other": "the width of the printed phase-out range ($100,000 less $85,000)",
+ "sli.divisor_joint": "the width of the printed joint phase-out range ($205,000 less $175,000)",
+ "sa.salt_threshold": "married filing separately: half the printed threshold amount ($505,000 / 2)",
+}
+
 # ---- Structural counts and rates whose 2025 quote is printed unchanged in 2026 (filled from the auto-match) ----
 AUTO = json.loads((Path(__file__).with_name("params_auto.json")).read_text()) if Path(__file__).with_name("params_auto.json").exists() else {}
 
@@ -298,16 +334,17 @@ for pid, quote in (("ret.catchup_under50", "that generally applies for individua
 
 # ---- Parameters known to have no 2026 source ----
 NONE_NOTES = {
- "sli.divisor_other": "rp-25-32 section 4.29 prints the range ($85,000 to $100,000) but not its width, which the worksheet (Form 1040 instructions, not posted) prints",
- "sli.divisor_joint": "as sli.divisor_other ($175,000 to $205,000)",
- "amt.rate_25": ("declined: in 2026 the rate this parameter carries splits. The Exemption Worksheet (i6251 p. 10, draft, "
-                 "\"Multiply line 4 by 50% (0.50)\") and the separate-return add-back (i6251 p. 10, \"include 50% of the excess of "
-                 "the amount on line 4 over $640,200\") use 50% (P.L. 119-21 section 70107; read by s2.amt_mfs_over's and s2.amt_ex_over's "
-                 "products and their s2.amt_h_* copies), while Form 6251 line 37 (unrecaptured section 1250 gain, s2.amt_l37_rate) "
-                 "keeps 25%. No one value is right for all five readers in forms/2025/s2.yaml: a 2026 operation must give the phase-out and the add-back their own rate parameter first"),
- "sdtw.ordinary_ceiling": ("i1040sd 2026 not posted; the 2026 Form 1116 instructions (draft, p. 11-12) print $201,775 single and "
-                           "separate, $201,750 head of household and $403,550 joint for the related adjustment exception, but no archived "
-                           "source prints the Schedule D Tax Worksheet's own amount"),
+ "amt.rate_25": ("Form 6251 line 37 (\"Multiply line 36 by 25% (0.25)\" on the 2025 form), read after C-LAW-02's "
+                 "operations by s2.amt_l37_rate alone (the exemption phase-out and the separate-return add-back read "
+                 "amt.phaseout_rate). No 2026 Form 6251 is archived and the 2026 i6251 draft does not print line 37's "
+                 "rate; P.L. 119-21 section 70107 amends section 55(d) only. Fill from the final Form 6251"),
+ "refund.std_single": ("i1040gi 2026 not posted (the State and Local Income Tax Refund Worksheet). Inferred, not checked "
+                       "against a 2026 worksheet: the 2026 worksheet prints the prior year's (2025) standard deduction, "
+                       "$15,750 (single or married filing separately), as the 2025 worksheet printed 2024's; rp-25-32 p. 10"),
+ "refund.std_joint": "as refund.std_single; inferred $31,500 (married filing jointly or qualifying surviving spouse, the 2025 amount)",
+ "refund.std_hoh": "as refund.std_single; inferred $23,625 (head of household, the 2025 amount)",
+ "refund.box_married": "as refund.std_single; inferred $1,600 per box (the 2025 additional amount for the married, params/2025.yaml sa.standard_extra)",
+ "refund.box_unmarried": "as refund.std_single; inferred $2,000 per box (the 2025 additional amount for the unmarried, params/2025.yaml sa.standard_extra)",
  "qc.age_limit": "i1040gi 2026 not posted; the ages 19 and 24 printed in the 2026 Form 8814 and 8615 instructions belong to other rules",
  "qc.student_age_limit": "as qc.age_limit",
 }
@@ -343,6 +380,13 @@ NEW = {
      "i8960", 21, "Worksheet for the section 68 limitation, line 2",
      "Enter $768,700 if married filing jointly or qualifying surviving spouse; $640,600 if head of household or single; $384,350 if married filing separately",
      "where the 37% bracket begins (rp-25-32 pp. 10-12, final, prints the same amounts); read by the 2026 NIIT operations (lane O7)"),
+ "amt.phaseout_rate": ("Rate", R(50, 100), "i6251", 10, "Exemption Worksheet—Line 5, line 5",
+     "Multiply line 4 by 50% (0.50)",
+     "the rate of the exemption phase-out (Exemption Worksheet line 5) and of the married-filing-separately add-back "
+     "(i6251 p. 10, Line 4: \"include 50% of the excess of the amount on line 4 over $640,200\"); P.L. 119-21 section "
+     "70107(c) (plaw-119-21 p. 93, final) substitutes 50 percent for 25 percent for taxable years beginning after "
+     "December 31, 2025; read by s2.amt_mfs_quarter, s2.amt_ex_cut, s2.amt_h_mfs_quarter and s2.amt_h_ex_cut "
+     "(changes/2026/s2.yaml, C-LAW-02, BUG-1031); Form 6251 line 37 keeps amt.rate_25"),
 }
 # The joint-return 12% row the 2026 Tax Computation Worksheet needs ($100,000 to $100,800; changes/2026/tcw.yaml,
 # BUG-0647): the first rate-table row over the Tax Table boundary, by the D8 rule of tools/propose_params.py.
@@ -477,6 +521,9 @@ for pid, (t, value, docid, page, heading, quote, note) in NEW.items():
                      "source": status, "new_in_2026": True, "note": note}
     if pid == "tcw.mfj.b0.subtract":
         out_vals[pid]["derived"] = "the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)"
+
+for pid, rule in DERIVED_V.items():
+    out_vals[pid]["derived"] = rule
 
 doc ={"params": {"tax_year": 2026, "status": "proposed (research/ty2026; not read by the build)",
                   "enums": {"note": "every enumeration of params/2025.yaml unchanged except those below (each in full, with its "

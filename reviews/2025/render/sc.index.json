@@ -3,6 +3,9 @@
  "form": "sc",
  "family": "claude",
  "base": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "(screen) (sc.statutory)",
@@ -30,9 +33,9 @@
   },
   {
    "key": "(screen) (sc.special)",
-   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
+   "record": "c7f72b30f0132ca9f1caec9d2ced59539ddc56617ea5278f6baa40a2c636df8b",
    "status": "MATCH",
-   "subject_key": "5edb55f2b96088b35ef625807e18960f6696bc622e32cf8a9037a47209258617"
+   "subject_key": "3af5a3c571e7e01425944c66c2681682f6442e8448564e9cf0ec212d42ef2ca5"
   },
   {
    "key": "1 (sc.line1)",
@@ -461,7 +464,7 @@
   "G": "9336293c87a3010625acd5ec878f0a51d8d1235bfa2fce813a1742c7fecd6965",
   "(screen) (sc.spouse_owned)": "50e12d17c0ac2c9df9a2a093f8ecbf7b395ecf60a6ae926d89771d9bbbdd97ee",
   "F": "850c72afbafe568e811ab4c7885d487c620942d44aa76f069627a2cfd1fcb2df",
-  "(screen) (sc.special)": "5476ff4c20fe2c0da304ad04e9d1519eccb11f3b6c8295a1dd5e581685857501",
+  "(screen) (sc.special)": "c4586c79f15e5a0b25d94f84dc99302a205b4be5a39cd65d089611051d961ec0",
   "1 (sc.line1)": "eeefbe45a31dc7155cc295f02d69f7710b67680e063f0721d6f162c987e3fe9b",
   "2 (sc.line2)": "a740eed3e32368c0a0975232c06d42726848f95d06bb1bddc037583ac496e10b",
   "3 (sc.line3)": "0863922faa22fdfa5a866e99ab59a4ed0e2e5d5f5d67b1d33ad7cdb1923b2d96",

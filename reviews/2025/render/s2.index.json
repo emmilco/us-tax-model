@@ -6,7 +6,7 @@
  "head_rows": {
   "lines judged": "15",
   "match / mismatch / unclear / missing": "15 / 0 / 0 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,7 +23,7 @@
   },
   {
    "key": "2",
-   "record": "38390a9a1bcb408db167d0f734cc3ef49757cb4b10c69e94b97fcdf713428610",
+   "record": "5ac03cb1a77a7f2168cd131d663d58942e6fcd60601de9a1edd950e4399d1cb5",
    "status": "MATCH",
    "subject_key": "0ce2ff4a3150f75f43960a588da4c644eac72ea19db30f1eb0f37b71ce228762"
   },

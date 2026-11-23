@@ -4,19 +4,19 @@
  "family": "claude",
  "base": "8c585d8b7f7abc45557a9e733c20ba63a60f1929b5b063ac5708fccd89f3cedc",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "3",
-   "record": "6e0fed96d9e6be3a1685dddb46d7a024ab6e4329bb9a1c27d680c5cdc35aa0b0",
+   "record": "f3a767eb3a2fdab09abb020cd6906a86e1ae61cc88e1dd3463d8ed1d3deab02b",
    "status": "MISMATCH",
-   "ruling": "Ruling: representation; restatement accepted. i8995 p. 3, \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income\", their qualified portion is treated as a loss carryforward (Line 3). The project asks those losses at qbi.suspended (\"In 2025, are you (or, on a joint return, your spouse) deducting a business loss or expense of an earlier year that a tax limit kept you from deducting then?\") and refuses a Yes through qbi.unsupported on qbi.deduction, so on every return it completes line 3 is the earlier Form 8995 line 16 carryforward alone. The reworded source (BUG-0849: the latest Form 8995 from 2024 or earlier) is what occasioned this review.",
-   "subject_key": "a65c0153887ab96c8269cac6d4e9c33afb9a780d45115ab3f9c9708dbfeaea71"
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Losses or deductions suspended in an earlier year by another provision and allowed this year (i8995 p. 3) are refused through qbi.unsupported (qbi.suspended), whose refusal on qbi.eligible reaches Form 8995 line 15; the one exception, a section 179 carryover from 2018 or later, is deducted on the return's only Schedule C (s179.carryover) and so enters line 2 instead of line 3, which gives the same line 4 and line 16 (line 4 combines lines 2 and 3). Within scope line 3 is the latest form's line 16 (or Schedule C (Form 8995-A) line 6) carryforward, taken as printed (owner ruling 1a); an unreported earlier loss is refused by qbi.unreported_loss.",
+   "subject_key": "60945f8d5168e76d7cdb70beb07a55482b4079bdb5c04e76616e797da993971c"
   }
  ],
  "subjects": {
-  "3": "c73a1107285c5be3a59b2b00e83ce4e8adf2d1179d1d0928e4cb4bff9e622384"
+  "3": "c85428da3e303a8701a86569d0dbe4dc70459c51096d1f794a98b735619407b7"
  },
  "__rest__": "546a30709e9e27a978182a906d0d3d96e948369d9feb18da096bbc01aa40368b"
 }

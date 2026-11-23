@@ -24,20 +24,6 @@
 - Expr: `{"op":"input","source":"Collectibles (28%) gain, box 2d"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
-## (helper) — `div.box2e`
-
-- **Authored helper label:** Section 897 ordinary dividends, box 2e
-- **Encoded (NonNegDollars):** Input — Section 897 ordinary dividends, box 2e
-- Expr: `{"op":"input","source":"Section 897 ordinary dividends, box 2e"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
-
-## (helper) — `div.box2f`
-
-- **Authored helper label:** Section 897 capital gain, box 2f
-- **Encoded (NonNegDollars):** Input — Section 897 capital gain, box 2f
-- Expr: `{"op":"input","source":"Section 897 capital gain, box 2f"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
-
 ## (helper) — `div.box3`
 
 - **Authored helper label:** Nondividend distributions/return of capital, box 3
@@ -124,10 +110,10 @@
 
 ## (helper) — `div.unsupported`
 
-- **Authored helper label:** Unsupported section 897, liquidation or unreconciled basis/excess distribution
-- **Encoded (Bool):** (helper "Section 897 ordinary dividends, box 2e, when ordinary dividends (box 1a) are above zero and a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise" > $0 or helper "Section 897 capital gain, box 2f, when capital gain distributions (box 2a) are above zero and a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise" > $0 or helper "Cash liquidation distributions, box 9, when a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise" > $0 or helper "Noncash liquidation distributions, box 10, when a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise" > $0 or helper "Nondividend distributions/return of capital, box 3, when a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise" > $0 and helper "For box 3, basis reductions applied, when nondividend distributions (box 3) are above zero; false otherwise" = false)
-- Expr: `{"any":[{"gt":["div.box2e_if_ordinary",{"const":0}],"op":"test"},{"gt":["div.box2f_if_capital_gain",{"const":0}],"op":"test"},{"gt":["div.box9_if_dividends",{"const":0}],"op":"test"},{"gt":["div.box10_if_dividends",{"const":0}],"op":"test"},{"all":[{"gt":["div.box3_if_dividends",{"const":0}],"op":"test"},{"eq":["div.basis_reconciled_if_return_of_capital",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
-- Cite: [f1099div] p. 5, Instructions for Recipient, boxes 2e, 2f, 3, 9 and 10, "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation distributions" (January 2024 (continuous-use form); sha256 4ea1de80)
+- **Authored helper label:** Unsupported liquidation or unreconciled basis/excess distribution
+- **Encoded (Bool):** (helper "Cash liquidation distributions, box 9, when a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise" > $0 or helper "Noncash liquidation distributions, box 10, when a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise" > $0 or helper "Nondividend distributions/return of capital, box 3, when a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise" > $0 and helper "For box 3, basis reductions applied, when nondividend distributions (box 3) are above zero; false otherwise" = false)
+- Expr: `{"any":[{"gt":["div.box9_if_dividends",{"const":0}],"op":"test"},{"gt":["div.box10_if_dividends",{"const":0}],"op":"test"},{"all":[{"gt":["div.box3_if_dividends",{"const":0}],"op":"test"},{"eq":["div.basis_reconciled_if_return_of_capital",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [f1099div] p. 5, Instructions for Recipient, boxes 3, 9 and 10, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation distributions" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.bad_special`
 
@@ -144,7 +130,7 @@
 - **Refusal:** when div.section1202 is true, cannot complete Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. Cite: [i1040sd] p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax (2025; printed date 2025-12-11; sha256 650643a6)
 - **Refusal:** when div.bad_special is true, cannot complete Form 1099-DIV corrected amounts. Boxes 2b, 2c and 2d are portions of box 2a. Correct inconsistent supplied amounts. Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 - **Refusal:** when div.amt is true, cannot complete Form 6251. Review private activity bond interest for the alternative minimum tax; Form 6251 is outside scope. Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
-- **Refusal:** when div.unsupported is true, cannot complete Form 1099-DIV special distribution treatment. Prepare the required section 897/liquidation treatment or reconcile return-of-capital basis and any excess gain. Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
+- **Refusal:** when div.unsupported is true, cannot complete Form 1099-DIV special distribution treatment. Prepare the required liquidation treatment or reconcile return-of-capital basis and any excess gain. Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 - **Refusal:** when div.bad_components is true, cannot complete Form 1099-DIV dividend components. Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends. Cite: [f1099div] Instructions for Recipient, boxes 1a, 1b and 5 (January 2024 (continuous-use form); sha256 4ea1de80)
 - Interpretation: amb.2025.box2c_scope
 - Expr: `{"op":"param","ref":"sales.zero"}`
@@ -176,14 +162,14 @@
 - **Authored helper label:** Ordinary dividends (box 1a) are above zero
 - **Encoded (Bool):** sb helper "Total ordinary dividends, Form 1099-DIV box 1a, when you or your spouse received dividends or other distributions; zero otherwise" > $0
 - Expr: `{"gt":["sb.ordinary_dividends_if_dividends",{"const":0}],"op":"test"}`
-- Cite: [f1099div] p. 5, Instructions for Recipient, boxes 1b, 2e and 5, "Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates", "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)", "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A" (January 2024 (continuous-use form); sha256 4ea1de80)
+- Cite: [f1099div] p. 5, Instructions for Recipient, boxes 1b and 5, "Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates", "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (gate) — `div.has_capital_gain`
 
 - **Authored helper label:** Capital gain distributions (box 2a) are above zero
 - **Encoded (Bool):** sd helper "Capital gain distributions, generally Form 1099-DIV box 2a, when you or your spouse received dividends or other distributions; zero otherwise" > $0
 - Expr: `{"gt":["sd.distributions_if_dividends",{"const":0}],"op":"test"}`
-- Cite: [f1099div] p. 5, Instructions for Recipient, boxes 2b, 2c, 2d and 2f, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI" (January 2024 (continuous-use form); sha256 4ea1de80)
+- Cite: [f1099div] p. 5, Instructions for Recipient, boxes 2b, 2c and 2d, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (gate) — `div.has_return_of_capital`
 
@@ -208,31 +194,24 @@
 
 ## (gate) — `div.other_boxes`
 
-- **Authored helper label:** An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV
-- **Encoded (Bool):** Input — Look at your (or, on a joint return, your spouse's) Forms 1099-DIV for 2025. Does any of them show an amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13?
-- Expr: `{"op":"input","source":"Look at your (or, on a joint return, your spouse's) Forms 1099-DIV for 2025. Does any of them show an amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13?"}`
+- **Authored helper label:** An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV
+- **Encoded (Bool):** Input — Look at your (or, on a joint return, your spouse's) Forms 1099-DIV for 2025. Does any of them show an amount in box 2b, 2c, 2d, 3, 9, 10 or 13?
+- Expr: `{"op":"input","source":"Look at your (or, on a joint return, your spouse's) Forms 1099-DIV for 2025. Does any of them show an amount in box 2b, 2c, 2d, 3, 9, 10 or 13?"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.other_boxes_if_dividends`
 
-- **Authored helper label:** An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise
-- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?" = true → helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV"] [helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?" = false → helper "No answer needed where the question is not asked"]
+- **Authored helper label:** An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?" = true → helper "An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV"] [helper "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?" = false → helper "No answer needed where the question is not asked"]
 - Expr: `{"alternatives":[{"guard":{"eq":["div.any",{"const":true}],"op":"test"},"then":"div.other_boxes"},{"guard":{"eq":["div.any",{"const":false}],"op":"test"},"then":"div.no"}],"op":"choose"}`
-- Cite: [f1099div] p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain", "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain", "Box 3. Shows a return of capital", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax" (January 2024 (continuous-use form); sha256 4ea1de80)
+- Cite: [f1099div] p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain", "Box 3. Shows a return of capital", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax"; boxes 2e and 2f are not asked: "Note: Boxes 2e and 2f apply only to foreign persons and entities whose income maintains its character when passed through or distributed to its direct or indirect foreign owners or beneficiaries" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.capital_gain_boxes`
 
 - **Authored helper label:** An amount in one of those boxes, when capital gain distributions (box 2a) are above zero; false otherwise
-- **Encoded (Bool):** Choose — [helper "Capital gain distributions (box 2a) are above zero" = true → helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise"] [helper "Capital gain distributions (box 2a) are above zero" = false → helper "No answer needed where the question is not asked"]
+- **Encoded (Bool):** Choose — [helper "Capital gain distributions (box 2a) are above zero" = true → helper "An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise"] [helper "Capital gain distributions (box 2a) are above zero" = false → helper "No answer needed where the question is not asked"]
 - Expr: `{"alternatives":[{"guard":{"eq":["div.has_capital_gain",{"const":true}],"op":"test"},"then":"div.other_boxes_if_dividends"},{"guard":{"eq":["div.has_capital_gain",{"const":false}],"op":"test"},"then":"div.no"}],"op":"choose"}`
-- Cite: [f1099div] p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain", "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain", "Box 3. Shows a return of capital", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax" (January 2024 (continuous-use form); sha256 4ea1de80)
-
-## (helper) — `div.ordinary_boxes`
-
-- **Authored helper label:** An amount in one of those boxes, when ordinary dividends (box 1a) are above zero; false otherwise
-- **Encoded (Bool):** Choose — [helper "Ordinary dividends (box 1a) are above zero" = true → helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise"] [helper "Ordinary dividends (box 1a) are above zero" = false → helper "No answer needed where the question is not asked"]
-- Expr: `{"alternatives":[{"guard":{"eq":["div.has_ordinary",{"const":true}],"op":"test"},"then":"div.other_boxes_if_dividends"},{"guard":{"eq":["div.has_ordinary",{"const":false}],"op":"test"},"then":"div.no"}],"op":"choose"}`
-- Cite: [f1099div] p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain", "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain", "Box 3. Shows a return of capital", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax" (January 2024 (continuous-use form); sha256 4ea1de80)
+- Cite: [f1099div] p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain", "Box 3. Shows a return of capital", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.box2b_if_capital_gain`
 
@@ -255,38 +234,24 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["div.capital_gain_boxes",{"const":true}],"op":"test"},"then":"div.box2d"},{"guard":{"eq":["div.capital_gain_boxes",{"const":false}],"op":"test"},"then":"div.zero"}],"op":"choose"}`
 - Cite: [f1099div] p. 5, Instructions for Recipient, "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles" (January 2024 (continuous-use form); sha256 4ea1de80)
 
-## (helper) — `div.box2f_if_capital_gain`
-
-- **Authored helper label:** Section 897 capital gain, box 2f, when capital gain distributions (box 2a) are above zero and a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise
-- **Encoded (NonNegDollars):** Choose — [helper "An amount in one of those boxes, when capital gain distributions (box 2a) are above zero; false otherwise" = true → helper "Section 897 capital gain, box 2f"] [helper "An amount in one of those boxes, when capital gain distributions (box 2a) are above zero; false otherwise" = false → helper "No amount in a box whose condition does not hold"]
-- Expr: `{"alternatives":[{"guard":{"eq":["div.capital_gain_boxes",{"const":true}],"op":"test"},"then":"div.box2f"},{"guard":{"eq":["div.capital_gain_boxes",{"const":false}],"op":"test"},"then":"div.zero"}],"op":"choose"}`
-- Cite: [f1099div] p. 5, Instructions for Recipient, "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI" (January 2024 (continuous-use form); sha256 4ea1de80)
-
-## (helper) — `div.box2e_if_ordinary`
-
-- **Authored helper label:** Section 897 ordinary dividends, box 2e, when ordinary dividends (box 1a) are above zero and a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise
-- **Encoded (NonNegDollars):** Choose — [helper "An amount in one of those boxes, when ordinary dividends (box 1a) are above zero; false otherwise" = true → helper "Section 897 ordinary dividends, box 2e"] [helper "An amount in one of those boxes, when ordinary dividends (box 1a) are above zero; false otherwise" = false → helper "No amount in a box whose condition does not hold"]
-- Expr: `{"alternatives":[{"guard":{"eq":["div.ordinary_boxes",{"const":true}],"op":"test"},"then":"div.box2e"},{"guard":{"eq":["div.ordinary_boxes",{"const":false}],"op":"test"},"then":"div.zero"}],"op":"choose"}`
-- Cite: [f1099div] p. 5, Instructions for Recipient, "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)" (January 2024 (continuous-use form); sha256 4ea1de80)
-
 ## (helper) — `div.box3_if_dividends`
 
 - **Authored helper label:** Nondividend distributions/return of capital, box 3, when a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise
-- **Encoded (NonNegDollars):** Choose — [helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = true → helper "Nondividend distributions/return of capital, box 3"] [helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = false → helper "No amount in a box whose condition does not hold"]
+- **Encoded (NonNegDollars):** Choose — [helper "An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = true → helper "Nondividend distributions/return of capital, box 3"] [helper "An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = false → helper "No amount in a box whose condition does not hold"]
 - Expr: `{"alternatives":[{"guard":{"eq":["div.other_boxes_if_dividends",{"const":true}],"op":"test"},"then":"div.box3"},{"guard":{"eq":["div.other_boxes_if_dividends",{"const":false}],"op":"test"},"then":"div.zero"}],"op":"choose"}`
 - Cite: [f1099div] p. 5, Instructions for Recipient, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.box9_if_dividends`
 
 - **Authored helper label:** Cash liquidation distributions, box 9, when a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise
-- **Encoded (NonNegDollars):** Choose — [helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = true → helper "Cash liquidation distributions, box 9"] [helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = false → helper "No amount in a box whose condition does not hold"]
+- **Encoded (NonNegDollars):** Choose — [helper "An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = true → helper "Cash liquidation distributions, box 9"] [helper "An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = false → helper "No amount in a box whose condition does not hold"]
 - Expr: `{"alternatives":[{"guard":{"eq":["div.other_boxes_if_dividends",{"const":true}],"op":"test"},"then":"div.box9"},{"guard":{"eq":["div.other_boxes_if_dividends",{"const":false}],"op":"test"},"then":"div.zero"}],"op":"choose"}`
 - Cite: [f1099div] p. 5, Instructions for Recipient, "Boxes 9 and 10. Show cash and noncash liquidation distributions" (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.box10_if_dividends`
 
 - **Authored helper label:** Noncash liquidation distributions, box 10, when a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise
-- **Encoded (NonNegDollars):** Choose — [helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = true → helper "Noncash liquidation distributions, box 10"] [helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = false → helper "No amount in a box whose condition does not hold"]
+- **Encoded (NonNegDollars):** Choose — [helper "An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = true → helper "Noncash liquidation distributions, box 10"] [helper "An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = false → helper "No amount in a box whose condition does not hold"]
 - Expr: `{"alternatives":[{"guard":{"eq":["div.other_boxes_if_dividends",{"const":true}],"op":"test"},"then":"div.box10"},{"guard":{"eq":["div.other_boxes_if_dividends",{"const":false}],"op":"test"},"then":"div.zero"}],"op":"choose"}`
 - Cite: [f1099div] p. 5, Instructions for Recipient, "Boxes 9 and 10. Show cash and noncash liquidation distributions" (January 2024 (continuous-use form); sha256 4ea1de80)
 
@@ -300,7 +265,7 @@
 ## (helper) — `div.box13_if_dividends`
 
 - **Authored helper label:** Specified private activity bond interest dividends, box 13, when a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise
-- **Encoded (NonNegDollars):** Choose — [helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = true → helper "Specified private activity bond interest dividends, box 13"] [helper "An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = false → helper "No amount in a box whose condition does not hold"]
+- **Encoded (NonNegDollars):** Choose — [helper "An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = true → helper "Specified private activity bond interest dividends, box 13"] [helper "An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise" = false → helper "No amount in a box whose condition does not hold"]
 - Expr: `{"alternatives":[{"guard":{"eq":["div.other_boxes_if_dividends",{"const":true}],"op":"test"},"then":"div.box13"},{"guard":{"eq":["div.other_boxes_if_dividends",{"const":false}],"op":"test"},"then":"div.zero"}],"op":"choose"}`
 - Cite: [f1099div] p. 5, Instructions for Recipient, "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12" (January 2024 (continuous-use form); sha256 4ea1de80)
 

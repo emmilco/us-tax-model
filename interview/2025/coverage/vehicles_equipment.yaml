@@ -52,7 +52,9 @@ sets:
       person[taxpayer].sc[design_studio].ho_sqft: 180
       scope.se_plan_other: false
       scope.income_averaging: false
+      qbi.unreported_loss: false
       qbi.suspended: false
+      qbi.coop_patron: false
       s2.lookback: false
       s2.amt_business: false
       $scveh@person[taxpayer].sc[design_studio]: []

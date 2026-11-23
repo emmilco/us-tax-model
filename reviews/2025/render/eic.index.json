@@ -3,82 +3,85 @@
  "form": "eic",
  "family": "claude",
  "base": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "(Step 5, 1)",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "45edb90c49368983c122c5c6c27ea6c72006429c7688ed750d51bc63018483af"
   },
   {
    "key": "(Step 5, 2)",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "9ba15b839d7c3a633eff2e92e42bf25545838ab6e878483895aa80bb4a13bbb4"
   },
   {
    "key": "(Step 5, 3)",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "17d2ec24848bf7cec75d26c892519a0dc948b4a8a93621c363485519c9f46c5e"
   },
   {
    "key": "(Step 5, 4)",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "5be4f64d4abe525e0082a0fc45426cbb196102c0bc000db70746b1b69cac3eab"
   },
   {
    "key": "(Step 5, 5)",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "9fff5a418addc96a6d1b82540e0a15ea973d271da28ea8382cb049b99900fcfb"
   },
   {
    "key": "4b",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "9bf6756d4f147dd907995eda8dea8c85e237509f26c6189ad368ca5dcfca5fa7"
   },
   {
    "key": "6 (eic.wsb_6)",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "487f17ba52fdd353283147e1aa361ce690f99ae5df742914321d843deff9afc4"
   },
   {
    "key": "1",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "06dd128189737165b1292a185cf94f85ab3d179043eca44765fe4d21738d3891"
   },
   {
    "key": "2",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "ef1f33087765601a7e851fb4d9adaa510989edecbccd80eb6db150e79b65602b"
   },
   {
    "key": "3",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "793eb810c351a8d2f373e2711a84dc0ea81ee3548083583a1b88e56d711b73c3"
   },
   {
    "key": "4",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "61f17be74f2c9b727a37b330be7be04440bfa583d340107f014b7df96c398508"
   },
   {
    "key": "5",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "7e85563b05141427e0f3b634a456604533e5f92833e34d21a9c6aca04ac7fda8"
   },
   {
    "key": "6 (eic.line6)",
-   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
+   "record": "4d0b5709b05be8d9d7d0d1e4af430ec5401503e3d6256d8d93def4940eb4c56c",
    "status": "MATCH",
    "subject_key": "38874d56e215f31edc6f729c8d81c0eab9350cfc180543bdaa37f776c1dcfd63"
   }

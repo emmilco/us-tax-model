@@ -4,14 +4,14 @@
  "family": "claude",
  "base": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "83dfe6733143619117abf2004478fac6fa7b6238e2c0fcb75d62a147ce7da6b8",
+   "record": "16a0d16956fa777b50be858fa5f5201be8d43cf8cad6bb18ec77c0e015935959",
    "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; as the 2026-11-15 rulings on this line. The zero for refunds of both spouses' 2024 tax on separate 2024 returns is the chosen reading of amb.2025.refund_two_returns (the worksheet tests one 2024 return; refused by refund.two_itemized_if_two on refund.taxable when both itemized with income taxes), and the cap at 2024 Schedule A line 5d is amb.2025.refund_cap_5d. Exceptions 1 and 5 (i1040gi p. 89, \"1. You received a refund in 2025 that is for a tax year other than 2024\", \"5. You made your last payment of 2024 estimated state or local income tax in 2025\") are refused by refund.not_prior_year on refund.taxable, the line Schedule 1 line 1 enters. Repeat disagreement; no value moves.",
+   "ruling": "Ruling: ambiguity; as the 2026-11-15 rulings on this line. The zero for refunds of both spouses' 2024 tax on separate 2024 returns is the chosen reading of amb.2025.refund_two_returns (the worksheet tests one 2024 return; refused by refund.two_itemized_if_two on refund.taxable when both itemized with income taxes), and the cap at 2024 Schedule A line 5d is amb.2025.refund_cap_5d. Exceptions 1 and 5 (i1040gi p. 89, \"1. You received a refund in 2025 that is for a tax year other than 2024\", \"5. You made your last payment of 2024 estimated state or local income tax in 2025\") are refused by refund.not_prior_year on refund.taxable, the line Schedule 1 line 1 enters. Repeat disagreement; no value moves. (carried over from reviews/2025/render/refund.index.json at f4d8ea31, review of 2026-11-15)",
    "subject_key": "de520d4310f930654b3603c6a2e3a50e0558b6a13a9fd777d1ff9d0476347a25"
   },
   {

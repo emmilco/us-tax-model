@@ -35,6 +35,16 @@
    "subject_key": "25c44cff28899bb74c2cd42114ba71421ca760c418b1beab161c229ec724a3ad"
   },
   {
+   "printed": "3",
+   "restated": "Input — The qualified business loss carryforward from line 16 of your latest Form 8995 from 2024 or earlier (or, if that form was a Form 8995-A, from line 6 of Schedule C (Form 8995-A) attached to it), entered as a positive amount (zero if none)",
+   "model": "The restatement takes only the prior-year Form 8995 line 16 or Schedule C (Form 8995-A) line 6 carryforward. The instructions also require including previously suspended losses that are now allowed: \"the qualified portion of the loss or deduction allowed under each provision is treated as a qualified net loss carryforward from a separate trade or business ... See Line 3\" (line 3: \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\").",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Losses or deductions suspended in an earlier year by another provision and allowed this year (i8995 p. 3) are refused through qbi.unsupported (qbi.suspended), whose refusal on qbi.eligible reaches Form 8995 line 15; the one exception, a section 179 carryover from 2018 or later, is deducted on the return's only Schedule C (s179.carryover) and so enters line 2 instead of line 3, which gives the same line 4 and line 16 (line 4 combines lines 2 and 3). Within scope line 3 is the latest form's line 16 (or Schedule C (Form 8995-A) line 6) carryforward, taken as printed (owner ruling 1a); an unreported earlier loss is refused by qbi.unreported_loss.",
+   "context": "5c06af33e35fc5c54ddf8da8ec7772f4635724d5801e4eb982031af861d1d88e",
+   "date": "2026-11-23",
+   "run": "e571ad6291329d3be31a26173cb3a755de689b4208b62237130abb04225f887a",
+   "subject_key": "9a84be98ad6a703e26ed56a5f13fa638839d17eaf9caf631d304fbb799cdddea"
+  },
+  {
    "printed": "deduction",
    "restated": "Choose — [helper \"Taxable income before QBI exceeds the Form 8995 threshold\" = true → f8995a line 39] [helper \"Taxable income before QBI exceeds the Form 8995 threshold\" = false → f8995 line 15]",
    "model": "The Form 8995 branch matches: line 15 is the 'Qualified business income deduction. Enter the smaller of line 10 or line 14.' But none of the Form 8995-A form or instruction text is provided. Without it, I can't confirm that line 39 ('Add f8995a.line37, f8995a.line38') is the final QBI deduction for a filer with only dividends above the threshold.",

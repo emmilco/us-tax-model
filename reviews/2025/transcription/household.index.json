@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
  "head_rows": {
-  "printed lines compared": "25",
-  "agree / disagree / missing": "7 / 18 / 0",
-  "line-scoped reviews": "9 (latest 2026-11-22); see Line-scoped reviews"
+  "printed lines compared": "26",
+  "agree / disagree / missing": "7 / 19 / 0",
+  "line-scoped reviews": "11 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -28,12 +28,6 @@
    "status": "DISAGREE",
    "ruling": "Ruling: representation; i8889 p. 4, \"If you and your spouse each have separate HSAs, complete a separate Form 8889 for each\". Both count persons with a Form 8889 and test for two (0 < n against 1 <= n on an integral count). No difference. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,300 of 2,300 agree; none; on returns the full interview completes: none. Project stands.",
    "subject_key": "1839eccec76a1a2bf109956108ca3bcc4d57db6b53fb21ed4c9a01cec64dc8d3"
-  },
-  {
-   "key": "household.hsa_split_count",
-   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
-   "status": "AGREE",
-   "subject_key": "4a1d46db9898fe85c761784b93218eb3cbc613c71ca5ef30f22258755d0ee1d8"
   },
   {
    "key": "household.hsa_agreed_count",
@@ -111,16 +105,17 @@
   },
   {
    "key": "household.hoh_fails",
-   "record": "858377273d912ed05a619f9c8eebb46a50ab14fad27fac9401f3a0fa7b02047c",
+   "record": "3f7f90969d67954bea549fd68f184e1caaac9bc31ac1b3fb27bd1338681a5fb6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation and scope; i1040gi p. 14, Head of Household, and p501 pp. 9-10, Tests 1 and 2, as the earlier rulings of this line. Read without triage (the household triage record predates this pass). The line was rerun because household.cp_any, which reaches it through household.hoh_cp_married and household.hoh_community_property, gained household.cp_retirement (BUG-0950); the disagreement remains the reply's own reconstruction of the qualifying-person tests from the dependent answers, and neither side's Test 1 or Test 2 reading changed in this pass.",
-   "subject_key": "f09e2cabdecca73776607b5eaeb6cd05cc324c4bbd48b0bd01c045e1ddc28648"
+   "ruling": "Ruling: scope; i1040gi p. 14, Head of Household, \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\"; p501 p. 6, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\" Ruled by reading: triage.py refuses the form (a stale line-scoped section of household.all_tin names household.widowed_2025). This pass re-reviews the line because a refusal was added to it (household.hoh_missed_mfs, head of household fits a married filer filing separately who lived apart and is considered unmarried); the line's expression is unchanged. The reply's test is the project's, as ruled on 2026-11-14 and 2026-11-15: head of household checked, and neither Test 1 nor Test 2 with the home cost paid, or married at the end of 2025 and not considered unmarried. It reads household.married_dec31 and household.considered_unmarried raw where the project gates them through household.unmarried, folds in a spouse who died in 2025, which the project ends at the same Form 1040 line 12e through household.widowed_this_year, and carries none of the refusals on household.hoh_eligible (household.hoh_absence, p501 p. 9; household.hoh_community_property). Same refusal outcome on every return the project completes. Project stands.",
+   "subject_key": "0c5668a5bb45ef3b548ad5acb2c92733f48028030d77cb2ee27e79ff22316576"
   },
   {
    "key": "household.qss_fails",
-   "record": "c2037f7dce8b78a6935157e3aa1954a52fc061148a3f652e5f2ffb9e8d846b01",
-   "status": "AGREE",
-   "subject_key": "5bbbc45da16662277c521dbaa94845cb737c97e6cb68d1211e0bfc3bb72346c8"
+   "record": "3252b480b0e004514a4de633c15fcf67d5b1b2e6868164f22f8330ac93d28747",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 15, Qualifying Surviving Spouse, \"You can check the 'Qualifying surviving spouse' box ... if all of the following apply\". Ruled by reading. This pass re-reviews the line because a refusal was added to it (household.qss_child_not_all_year, a child listed but none who lived with the filer all year); the line's expression is unchanged. The reply's test is the project's test without its first operand, f1040.status = qss: it is true on any return whose household.qss_eligible is No, and unknown on every other filing status, where household.qss_eligible is never asked. The gate is the qualifying-surviving-spouse status line's own test, so the status condition belongs to it, as the reply's note itself reads it (\"the qualifying surviving spouse status\"). As the same omission was ruled on household.hoh_fails. Project stands.",
+   "subject_key": "d0a2f9c16853eaa992c1e98f1056d0eecd13c2a3d2f52e7304dfe5933f080a07"
   },
   {
    "key": "household.widowed_this_year",
@@ -176,13 +171,24 @@
    "status": "DISAGREE",
    "ruling": "Ruling: representation; i1040gi p. 14, Married Filing Separately, 'Different rules apply to people in community property states; see Pub. 555', and p555 pp. 5-6 (Pensions; Civil service retirement; Military retirement pay). The reply's (community_property, or spouse_cp_domicile, or cp_retirement) and status mfs is the project's value on every completed return: the project asks household.spouse_cp_domicile only after a No to household.community_property and household.cp_retirement only after a No to both, and gives household.no on every other status. Read without triage (the household triage record predates this pass).",
    "subject_key": "bf2980f97e93eb00a2107965c0d73d63dcc6a31d7dc353a7e8bc80a2c4d7270e"
+  },
+  {
+   "key": "household.hsa_family_sum",
+   "record": "7e8fcee2391f97730943327d2c49e0de644afbae5d8da8e473045f965398cb6c",
+   "status": "AGREE",
+   "subject_key": "2e70f133efd65fd94fbaac75ccdd516a1fa9e4fef6544ca611d773a21894b8f4"
+  },
+  {
+   "key": "household.hsa_self_sum",
+   "record": "7e8fcee2391f97730943327d2c49e0de644afbae5d8da8e473045f965398cb6c",
+   "status": "AGREE",
+   "subject_key": "adb9d82e1de3358980dd1daaa3d0c1f208d8149ea75a27abbefe91a1d9a8205c"
   }
  ],
  "subjects": {
   "household.persons": "051f56aed77ac065bdcc00895a0e699ac8f949543491df2f2b7868a8b9123bd2",
   "household.roster_bad": "bc52e5ce65b6eab8937b527e5086e630dc54d1dc9c73bfad942c25138118f7ee",
   "household.hsa_both": "09ffc95f78a86ec051d152745f229d228dbd57c22f76733efec28059d1a080c9",
-  "household.hsa_split_count": "1b3d4587ff65d664f0bac78aaac8fbaf8d6fc209ea0d6fd1b403158c000bf84b",
   "household.hsa_agreed_count": "3d1960a8e76f2da1770bb3012f6d001a4a6a4a689e1ef5c386cbf99732f4ff73",
   "household.hsa_step1_sum": "1fece38e47b55ebe85dd98adf3393ed0a87805d9c5da12cd11169c3aaa3dacad",
   "household.hsa_share_sum": "138cbed91d7485649cecaa1bb38bf2b8936ec59e97a66a8580e15a0561027ea9",
@@ -194,8 +200,8 @@
   "household.married": "7797a97c6f7d1f92e9aeacf90b0228f01b64886317ff4af7e7ec13d17bcc7161",
   "household.ctc_disallowed_claim": "ee3b3554dd5ac6ccdd4664421c2c2092138a851d7d7937b4db24eb21ddf724ba",
   "household.eic_disallowed_claim": "77b822135b27ab6e7b5c950dad556162237369336af8b5aa9426e04536558108",
-  "household.hoh_fails": "7815df71b9360e34c1532765780ceba513c3fa14d4359d167030cbd4dc7d57e3",
-  "household.qss_fails": "49db0cd4d57e1d8f68ff7615a282d68a1900f30e202c0c01e4293d18fbb0dbb1",
+  "household.hoh_fails": "f7279118a09be4ff39f6d93f7e071af529c7bb5367fa401cbbf128fe778a8312",
+  "household.qss_fails": "6090ea4bfe816ce7cb892cfb4bbdba55e79adef300756b68814bf01e3cec1100",
   "household.widowed_this_year": "8abbe182d333f715cac8ac03b86fa35d20710670f069ca3553d886ecd038ec3f",
   "household.cp_marriage_ended": "83e4be6740c94293c155d28d8590ba7f4308a54c56a7e701fe3c2c988fd98f9b",
   "household.rdp_community_property": "cc8a52a6955f6574bf7ec6c447c5931cfa116075bab6cf8102a17d25bc12e442",
@@ -203,7 +209,9 @@
   "household.mfs": "176699ddce9a83f1c9416ba78656a2b56ac77d598593dc578bb1ded5ce97b640",
   "household.mfs_apart_all_year": "150855687ea4442b9580dca4458459bcc97dc1c45144c635d8704aeeeacc2fcc",
   "household.mfs_apart_last6": "37bc6bbe8bf82e257a31c0237e7f4eb50b91c411faaa32d19257f5e80eefd060",
-  "household.mfs_community_property": "86897d883d6fa2b369df8350ec0f1c806531d68fdc6b0c3fb0e5a6763ebb144b"
+  "household.mfs_community_property": "86897d883d6fa2b369df8350ec0f1c806531d68fdc6b0c3fb0e5a6763ebb144b",
+  "household.hsa_family_sum": "b34cfa3d5f9e1e36bde25106fe1bbdbd493869858acd6292e675079e9726a081",
+  "household.hsa_self_sum": "d1eb33bc530f98b0cfcc8d71b3ed10369e2b0c96161fbb0299d3d5da5a9e65f1"
  },
  "__rest__": "92bf81ae283c1e0d5fa92ecd444c292ac15487a8e6ed56b6d46422a82d26927b",
  "foreign": {
@@ -216,7 +224,7 @@
   "household.ctc_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
   "household.eic_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
   "household.hoh_fails": "2bcdd7bd8ce4c26397bdd083f1f71af1e5ab7419cfe50a9057777dbf354b6fd9",
-  "household.qss_fails": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.qss_fails": "22adfdaa36fa4310744da7e45cb6322d90a5e8a624fd02ebc4310b64296ed95a",
   "household.widowed_this_year": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.cp_marriage_ended": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.rdp_community_property": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
@@ -224,6 +232,8 @@
   "household.mfs": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.mfs_apart_all_year": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.mfs_apart_last6": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
-  "household.mfs_community_property": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0"
+  "household.mfs_community_property": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.hsa_family_sum": "0db288e895d868b111fef97c9a80439ee2e66bf7b39bf1c584bcbcfe40102844",
+  "household.hsa_self_sum": "1f9a4fe4eb28668e34fd9f3358e0e670135b2b0cbb038d884566162d5cb466a1"
  }
 }

@@ -41,28 +41,6 @@ form:
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
-    - id: div.box2e
-      printed: (helper)
-      type: NonNegDollars
-      label: Section 897 ordinary dividends, box 2e
-      gated_by: div.box2e_if_ordinary
-      expr:
-        op: input
-        source: Section 897 ordinary dividends, box 2e
-      cite:
-        doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
-    - id: div.box2f
-      printed: (helper)
-      type: NonNegDollars
-      label: Section 897 capital gain, box 2f
-      gated_by: div.box2f_if_capital_gain
-      expr:
-        op: input
-        source: Section 897 capital gain, box 2f
-      cite:
-        doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
     - id: div.box3
       printed: (helper)
       type: NonNegDollars
@@ -212,18 +190,10 @@ form:
     - id: div.unsupported
       printed: (helper)
       type: Bool
-      label: Unsupported section 897, liquidation or unreconciled basis/excess distribution
+      label: Unsupported liquidation or unreconciled basis/excess distribution
       expr:
         op: test
         any:
-          - op: test
-            gt:
-              - div.box2e_if_ordinary
-              - const: 0
-          - op: test
-            gt:
-              - div.box2f_if_capital_gain
-              - const: 0
           - op: test
             gt:
               - div.box9_if_dividends
@@ -244,9 +214,7 @@ form:
                   - const: false
       cite:
         doc: f1099div
-        locator: p. 5, Instructions for Recipient, boxes 2e, 2f, 3, 9 and 10, "Box 2e. Shows the portion of the amount
-          in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897
-          gain", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the
+        locator: p. 5, Instructions for Recipient, boxes 3, 9 and 10, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the
           distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation
           distributions"
     - id: div.bad_special
@@ -311,7 +279,7 @@ form:
             locator: Instructions for Recipient, boxes 1–16
         - when: div.unsupported
           form: Form 1099-DIV special distribution treatment
-          remedy: Prepare the required section 897/liquidation treatment or reconcile return-of-capital basis
+          remedy: Prepare the required liquidation treatment or reconcile return-of-capital basis
             and any excess gain.
           cite:
             doc: f1099div
@@ -380,7 +348,7 @@ form:
           - const: 0
       cite:
         doc: f1099div
-        locator: 'p. 5, Instructions for Recipient, boxes 1b, 2e and 5, "Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates", "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)", "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A"'
+        locator: 'p. 5, Instructions for Recipient, boxes 1b and 5, "Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates", "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A"'
     - id: div.has_capital_gain
       printed: (gate)
       type: Bool
@@ -392,7 +360,7 @@ form:
           - const: 0
       cite:
         doc: f1099div
-        locator: 'p. 5, Instructions for Recipient, boxes 2b, 2c, 2d and 2f, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI"'
+        locator: 'p. 5, Instructions for Recipient, boxes 2b, 2c and 2d, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles"'
     - id: div.has_return_of_capital
       printed: (gate)
       type: Bool
@@ -429,17 +397,17 @@ form:
       printed: (gate)
       type: Bool
       gated_by: div.other_boxes_if_dividends
-      label: 'An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV'
+      label: 'An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV'
       expr:
         op: input
-        source: "Look at your (or, on a joint return, your spouse's) Forms 1099-DIV for 2025. Does any of them show an amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13?"
+        source: "Look at your (or, on a joint return, your spouse's) Forms 1099-DIV for 2025. Does any of them show an amount in box 2b, 2c, 2d, 3, 9, 10 or 13?"
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
     - id: div.other_boxes_if_dividends
       printed: (helper)
       type: Bool
-      label: 'An amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise'
+      label: 'An amount in box 2b, 2c, 2d, 3, 9, 10 or 13 of any Form 1099-DIV, when you or your spouse owned shares or received a Form 1099-DIV; false otherwise'
       expr:
         op: choose
         alternatives:
@@ -457,7 +425,7 @@ form:
             then: div.no
       cite:
         doc: f1099div
-        locator: 'p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain", "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain", "Box 3. Shows a return of capital", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax"'
+        locator: 'p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain", "Box 3. Shows a return of capital", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax"; boxes 2e and 2f are not asked: "Note: Boxes 2e and 2f apply only to foreign persons and entities whose income maintains its character when passed through or distributed to its direct or indirect foreign owners or beneficiaries"'
     - id: div.capital_gain_boxes
       printed: (helper)
       type: Bool
@@ -479,29 +447,7 @@ form:
             then: div.no
       cite:
         doc: f1099div
-        locator: 'p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain", "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain", "Box 3. Shows a return of capital", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax"'
-    - id: div.ordinary_boxes
-      printed: (helper)
-      type: Bool
-      label: 'An amount in one of those boxes, when ordinary dividends (box 1a) are above zero; false otherwise'
-      expr:
-        op: choose
-        alternatives:
-          - guard:
-              op: test
-              eq:
-                - div.has_ordinary
-                - const: true
-            then: div.other_boxes_if_dividends
-          - guard:
-              op: test
-              eq:
-                - div.has_ordinary
-                - const: false
-            then: div.no
-      cite:
-        doc: f1099div
-        locator: 'p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain", "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain", "Box 3. Shows a return of capital", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax"'
+        locator: 'p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain", "Box 3. Shows a return of capital", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax"'
     - id: div.box2b_if_capital_gain
       printed: (helper)
       type: NonNegDollars
@@ -568,50 +514,6 @@ form:
       cite:
         doc: f1099div
         locator: 'p. 5, Instructions for Recipient, "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles"'
-    - id: div.box2f_if_capital_gain
-      printed: (helper)
-      type: NonNegDollars
-      label: 'Section 897 capital gain, box 2f, when capital gain distributions (box 2a) are above zero and a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise'
-      expr:
-        op: choose
-        alternatives:
-          - guard:
-              op: test
-              eq:
-                - div.capital_gain_boxes
-                - const: true
-            then: div.box2f
-          - guard:
-              op: test
-              eq:
-                - div.capital_gain_boxes
-                - const: false
-            then: div.zero
-      cite:
-        doc: f1099div
-        locator: 'p. 5, Instructions for Recipient, "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI"'
-    - id: div.box2e_if_ordinary
-      printed: (helper)
-      type: NonNegDollars
-      label: 'Section 897 ordinary dividends, box 2e, when ordinary dividends (box 1a) are above zero and a Form 1099-DIV shows an amount in one of the less common boxes; zero otherwise'
-      expr:
-        op: choose
-        alternatives:
-          - guard:
-              op: test
-              eq:
-                - div.ordinary_boxes
-                - const: true
-            then: div.box2e
-          - guard:
-              op: test
-              eq:
-                - div.ordinary_boxes
-                - const: false
-            then: div.zero
-      cite:
-        doc: f1099div
-        locator: 'p. 5, Instructions for Recipient, "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)"'
     - id: div.box3_if_dividends
       printed: (helper)
       type: NonNegDollars

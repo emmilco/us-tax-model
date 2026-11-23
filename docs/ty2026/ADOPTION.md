@@ -13,9 +13,9 @@ to date on 2026-11-15, after the 2026 preparation lanes (`docs/provisional/lanes
 |---|---|---|
 | 1 | `sources/2026/` (121 documents, 68 IRS drafts), `tools/sources/2026.json`, `reports/2026/archive_refresh_2026-11-04.md`, the refresh of 2026-11-14 (`archive_refresh_2026-11-14.md`: three finals, two reposted drafts, five new drafts), the 22 documents added on 2026-11-15 for the coverage expansion, and the refresh of 2026-11-22 (ten finals, posted 2026-11-17 to 2026-11-20: f8889, f8880, f8863, f5329, i1040sb, f7206, p915, f8919, f1045 and i1045; two new drafts, p969 and i6251; Notice 2026-5; the catalog rows name the drafts they supersede) | archive verified (`python3 tools/fetch_sources.py --year 2026`) |
 | 2 | `reports/2026/year_diff_from_2025.{md,html}`; `reports/2026/worklist_split.md` and `research/ty2026/worklist.json` (`research/ty2026/split_worklist.py`) | 2,236 worklist items: 426 of kind (a), 1,810 of kind (b) as the script splits them; counting the 16 items of C-PEOP-23 and C-PEOP-24 as kind (b) (owner decision 2026-11-04), 410 of kind (a) and 1,826 of kind (b) |
-| 3 | `research/ty2026/changes.md` (135 entries, with C-LAW-01 and C-LAW-02 and the statute read) and `changes.verification.md` (2 high, 11 medium, 7 low; all applied) | 823 quotes checked by `research/ty2026/check_quotes.py`, 0 not printed (2026-11-22, against the refreshed archive) |
-| 4 | `research/ty2026/params-2026.proposed.yaml` (`build_params.py`, `check_params.py`), merged with the mechanical proposal `reports/2026/params_proposal_from_2025.{md,yaml}` (`tools/propose_params.py`); the staged tables `research/ty2026/tables-2026/` (`dc_rate`, `ltc_limit`, `savers_rate`, `rate_schedule`) | 344 values (2026-11-22, with the parameters the coverage expansion added to 2025): 159 from final sources, 84 from drafts, 14 derived (the `age.*` years of birth, `moves_with_year`), 87 with no 2026 source (`amt.rate_25` declined: its 2026 readers need two rates, T-320); 12 of them new in 2026 (every parameter the operations read that 2025 lacks); 15 retired (`sc.mileage_rate`, `sc.bonus_rate_40`, `ptc.repay_*`, ten `f5695.*`) |
-| 5 | `changes/2026/` (138 entries, 1,277 operations, carrying out 90 of the change map's entries; `changes/2026/README.md`), from the proposals of `research/ty2026/forms-proposed/` (Form 1040, Schedule A, Form W-2, new Schedule 3-A, the Schedule C vehicle lines) and the change map; `research/ty2026/fixtures-proposed/2026-predicted.json` (22 cases) | `python3 tools/year_changes.py --check`: all apply to the 2025 forms; 122 of the 138 entries rest on drafts (2026-11-22: eight entries flipped to `verified: final` after their evidence and locators were checked against the finals: C-PEOP-02, C-SCHED-16, C-CRED-16 (three files), C-PEOP-17, C-PEOP-19, C-PEOP-21) |
+| 3 | `research/ty2026/changes.md` (135 entries, with C-LAW-01 and C-LAW-02 and the statute read) and `changes.verification.md` (2 high, 11 medium, 7 low; all applied) | 827 quotes checked by `research/ty2026/check_quotes.py`, 0 not printed (2026-11-23, against the refreshed archive; C-LAW-02 rewritten with its operations) |
+| 4 | `research/ty2026/params-2026.proposed.yaml` (`build_params.py`, `check_params.py`), merged with the mechanical proposal `reports/2026/params_proposal_from_2025.{md,yaml}` (`tools/propose_params.py`); the staged tables `research/ty2026/tables-2026/` (`dc_rate`, `ltc_limit`, `savers_rate`, `rate_schedule`) | 346 values (2026-11-23, with the parameters the coverage expansion added to 2025): 168 from final sources, 82 from drafts, 14 derived (the `age.*` years of birth, `moves_with_year`), 82 with no 2026 source (`amt.rate_25` keeps no 2026 value: line 37 only, waiting for the 2026 Form 6251; the phase-out reads `amt.phaseout_rate`, BUG-1031); 13 of them new in 2026 (every parameter the operations read that 2025 lacks); filled on 2026-11-23 from final sources the audit of 2026-11-22 named: `sdtw.ordinary_ceiling`, `sli.divisor_*` (from rp-25-32), `clcw.prior_limit*` (the Schedule D draft, line 21), and six re-cited from draft to final (`qbi.threshold`, `sa.salt_threshold`, `ira.limit_50`, `f5329.cap_abuse`, `f5329.simple_rate`, `ctc.age_limit`); `refund.std_*` and `refund.box_*` stay unsourced until the 2026 Form 1040 instructions (their inferred values are in their notes); `savers_rate` and `ltc_limit` re-extracted from the final Forms 8880 and 7206 (values unchanged); 15 retired (`sc.mileage_rate`, `sc.bonus_rate_40`, `ptc.repay_*`, ten `f5695.*`) |
+| 5 | `changes/2026/` (141 entries, 1,317 operations, carrying out 91 of the change map's entries; `changes/2026/README.md`), from the proposals of `research/ty2026/forms-proposed/` (Form 1040, Schedule A, Form W-2, new Schedule 3-A, the Schedule C vehicle lines) and the change map; `research/ty2026/fixtures-proposed/2026-predicted.json` (22 cases) | `python3 tools/year_changes.py --check`: all apply to the 2025 forms; 125 of the 141 entries rest on drafts (2026-11-23; on 2026-11-22: eight entries flipped to `verified: final` after their evidence and locators were checked against the finals: C-PEOP-02, C-SCHED-16, C-CRED-16 (three files), C-PEOP-17, C-PEOP-19, C-PEOP-21) |
 
 ## Order of work when the final documents publish
 
@@ -28,11 +28,11 @@ to date on 2026-11-15, after the 2026 preparation lanes (`docs/provisional/lanes
 2. **Rerun the year diff** against the finals: `python3 tools/year_diff.py --from 2025 --to 2026`, then
    `python3 research/ty2026/split_worklist.py`. Kind (b) items whose document has now posted become kind (a); read
    each one the way `changes.md` was written.
-3. **Verify every draft-sourced item against the final** (the list below): the change map entries, the 84 draft
+3. **Verify every draft-sourced item against the final** (the list below): the change map entries, the 82 draft
    parameters, the operations (an entry is marked `verified: final` once checked; `year_changes.py --check` notes
    each entry whose documents are all final) and the draft-sourced fixture cases. Run
    `python3 research/ty2026/check_quotes.py` and `python3 research/ty2026/check_params.py` after refetching: a quote
-   that is no longer printed on its page is the first sign a draft changed. Then fill the 87 parameters with no
+   that is no longer printed on its page is the first sign a draft changed. Then fill the 82 parameters with no
    source from the final instructions (`build_params.py`, the `V` table). `python3 tools/propose_params.py --from 2025
    --to 2026 --write --compare research/ty2026/params-2026.proposed.yaml` reads every 2025 parameter at its cited
    place in the 2026 archive and lists, beside the hand-made proposal, what it found, what changed and what it
@@ -89,7 +89,7 @@ years").
 
 ## Definition changes in the order to do them (from `changes.md`)
 
-The order of 2026-11-04. The definition changes are now written as operations for 90 entries
+The order of 2026-11-04. The definition changes are now written as operations for 91 entries
 (`changes/2026/README.md`, column "Written"). Of the rest, all but three change no definition (parameters, year
 literals, page moves, no change, not encoded) or wait for a document. Three were classified as wording changes and
 have no operation: C-PRI-11 (its lines cite only i1040gi; line 14 is a definition change left for a later lane),
@@ -117,7 +117,7 @@ remaining wording-only entries last.
   those resting on the final Schedule C, Schedule SE and its instructions, Form 4952, Form 1095-A, the 1099-R and W-2
   instructions, Rev. Procs. 2025-32, 2025-19, 2025-25 and 2026-15, Notices 2025-67 and 2026-10, IRB 2026-29 and
   Public Law 119-21). The corrections in `changes.verification.md` apply first.
-- **Parameters**: the 84 with `source: draft` in `params-2026.proposed.yaml` (the 70 first staged came from Schedules 1-A, 8812, A, D, Forms
+- **Parameters**: the 82 with `source: draft` in `params-2026.proposed.yaml` (the 70 first staged came from Schedules 1-A, 8812, A, D, Forms
   8863, 2441, 8959, 8995, 8880, 5329, 8962, 8889 and the instructions for 8889, 1040-SC, 8606, 2441, 8960, 1116, 1095-A,
   5329, and Pub. 590-B). Also the Tax Computation Worksheet rows taken from the rate tables (confirm against the
   worksheet), the EIC limits taken from Rev. Proc. 2025-32 (confirm against the Form 1040 instructions' EIC steps), and
@@ -125,7 +125,7 @@ remaining wording-only entries last.
   in Rev. Proc. 2025-32 (C-SCHED-30; confirmed by the final Rev. Proc. p. 22, so not a draft error). The dependent
   care exclusion: the final W-2 instructions (p. 19) still print "$5,000 exclusion" against the Form 2441 draft's
   $7,500 (C-CRED-11).
-- **Operations**: the 122 entries of `changes/2026/` marked `verified: draft` (of 138, on 2026-11-22), among them those from
+- **Operations**: the 125 entries of `changes/2026/` marked `verified: draft` (of 141, on 2026-11-23), among them those from
   `forms-proposed/` (Form 1040 and Schedule 3-A rest on drafts; Schedule A on a draft and the statute; the W-2
   codes on the final instructions; the mileage split on final guidance, with its layout from the draft Schedule C
   instructions).
@@ -183,8 +183,8 @@ instructions for Form 8962 and Form 8582, and Publications 525, 590-A and 925; n
    `changes.md`, section "Public Law 119-21: the provisions in force for 2026": the heading, amended Code sections and effective date of
    every Title VII tax section, and the full text of the individual provisions (sections 70101 to 70120, 70424, 70425,
    70437 to 70506, and the parts of the others that name an encoded form); 61 provisions listed with quotes, each pointing to its entry; two new statute-sourced entries
-   (C-LAW-01, section 70118, hazardous duty areas; C-LAW-02, section 70107, AMT), both not encoded and changing nothing
-   computed; no further rule of the section 71304 kind (a computed change with no entry) was found.
+   (C-LAW-01, section 70118, hazardous duty areas; C-LAW-02, section 70107, AMT), C-LAW-01 not encoded and changing
+   nothing computed; C-LAW-02 changes the computed AMT screen (operations in `changes/2026/s2.yaml`, BUG-1031); no further rule of the section 71304 kind (a computed change with no entry) was found.
 7. **Agent use**: step 3 used five Opus agents (logged in `research/costs/agent_runs.jsonl`, token counts only; no
    dollar cost was shown in this environment). Is that the right trade for the adoption's own reviews?
    **Decision:** five Opus agents was fine. (The decisions above were applied in one session without agents.)

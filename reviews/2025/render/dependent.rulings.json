@@ -156,6 +156,16 @@
   {
    "printed": "2(d)",
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The helper tells the filer to include expenses paid with dependent care benefits and leaves Form 2441 to subtract them. The IRS text says not to: 'If you completed Part III, don't include in column (d) any benefits shown on line 28.' Line 30 repeats this ('Don't include in column (d) any benefits shown on line 28 above'), so the column (d) amount, and the line 30 total, would be overstated.",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner's decision, Stage 15 decision 6). Column (d) shows each person's expenses before excluding the dependent care benefits, and f2441.line30 subtracts line 28 once from the total, since the instructions give no rule for dividing line 28 among the qualifying persons; the model reads the unchosen reading, as ruled on this line before. The second objection is a model error: the disabled person who could be claimed as a dependent except for gross income of $5,200 or more, a joint return, or the filer being claimable is refused on Form 2441 at f2441.nondependent_gate (\"Qualifying person who is not your dependent (Form 2441)\", i2441 p. 1, Qualifying Person(s), \"or could claim as a dependent except\"), a refusal in f2441, which the dependent review was not given. Project stands. (carried over from reviews/2025/render/dependent.index.json at 870cc146, review of 2026-11-07)",
+   "context": "e1fb3c85a74e73810e37281dc0d4a2086fdc16124322a95ff6e253670c5282d4",
+   "date": "2026-11-23",
+   "run": "f732c2a69938b9a64b15ea15d33188cd7bbe5dab5acec00cd467a11ce2f06865",
+   "subject_key": "41b9b3d16e753cfd9b4b07be0199588fddb2d675747ca18b4fcfe81ed49a5ea3"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The helper tells the filer to include expenses paid with dependent care benefits and relies on Form 2441 to subtract them later. The IRS text excludes them from this column: 'If you completed Part III, don't include in column (d) any benefits shown on line 28' (also Form 2441, line 30: 'Don't include in column (d) any benefits shown on line 28 above'), and Pub. 503 adds that 'you can't count the expenses that are reimbursed as work-related expenses.'",
    "ruling": "Ruling: ambiguity; existing owner ruling amb.2025.dc_line30 (Stage15 decision6), not a new approval. Archived f2441 (2025) p.2 Line30 directs exclusion of line28 benefits from column(d) and summation of the net expenses; the instructions do not prescribe their allocation among people. The recorded project choice keeps per-person expenses gross and subtracts total line28 once at f2441.line30, rather than allocating reimbursements to displayed columns. The reviewer correctly identifies the literal column difference. Retain the explicitly recorded interpretation and its limitation; do not claim identical column presentation or classify the objection as model error. The age-at-care change does not alter this separate choice.",
    "context": "0288bb00bec9fc6d0814949cb5b890476640dc02998515d5a2c060819f4c2d17",

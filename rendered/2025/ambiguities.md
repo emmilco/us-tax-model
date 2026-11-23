@@ -131,6 +131,16 @@
 - Status: Owner decision, 2026-10-29 (keep the first reading).
 - Cite: [i8889] p. 7, Line 6, Steps 1 to 4; p. 4, Line 3, rule 4 (2025; sha256 da6f2f58)
 
+## amb.2025.hsa_split_spouse_eligible
+
+- Text at issue: Form 8889 instructions p. 7, Line 6, Step 1, "Refigure the contribution limit ... only for the months you were treated as having family coverage", for spouses with separate HSAs when one spouse was not an eligible individual in some of those months (for example, enrolled in Medicare), against Pub. 969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals."
+- Candidate readings: Step 1 counts every month you were treated as having family coverage, and the whole amount is divided with the spouse, whether or not the spouse was an eligible individual in that month. | Step 1 counts only the months both spouses were eligible individuals treated as having family coverage; for a month in which only you were an eligible individual with family coverage, the family amount is yours alone and is added in Step 4 ("any other contribution limits").
+- **Chosen:** The second (f8889.step1_shared, f8889.alone, f8889.split). Because the tool records month counts, not the months themselves, the two spouses' months are matched only when the counts are equal, when one spouse was treated as having family coverage all year and the other had no eligible month of self-only coverage, or when one spouse had no eligible month; other patterns are refused (f8889.family_months_bad).
+- Reason: Pub. 969 limits the married rules to months both spouses are eligible individuals, and the Form 8889 instructions state the treated-as-family rule only "if you and your spouse are both eligible individuals" (p. 4). Under the first reading a spouse on Medicare with an old HSA halves the other spouse's limit for months the Medicare spouse could not contribute at all. On the witness (joint; you on family coverage all year, your spouse eligible January to June only, the limit split equally) your line 6 is $4,275 under the first reading and $6,412.50 under the second; your spouse's is $2,137.50 under both. Found by the 2026-11-22 adversarial scout of education credits and HSAs (M1).
+
+- Status: Decided by the owner 2026-11-23 (the shared-months reading, as built in lane fx-eduhsa).
+- Cite: [i8889] p. 4, How To Complete Part I; p. 7, Line 6, Steps 1 to 4; p969 p. 6, Rules for married people (2025; sha256 da6f2f58)
+
 ## amb.2025.sli_ratio_places
 
 - Text at issue: The Student Loan Interest Deduction Worksheet, line 7, says "Enter the result as a decimal (rounded to at least three places)".
@@ -1372,9 +1382,9 @@
 
 - Text at issue: f4952 p. 1, Part I, line 2: "Disallowed investment interest expense from 2024 Form 4952, line 7". A filer who carried disallowed investment interest into 2024 and filed no 2024 Form 4952 (for example because the standard deduction was taken for 2024) has no 2024 line 7 to read.
 - Candidate readings: Ask only for an amount on line 7 of a 2024 Form 4952; such a filer answers No and enters no carryforward. | Use the amount a 2024 Form 4952 would have shown on line 7 had one been completed (the carryforward, treated as 2024 investment interest, less the part the 2024 net investment income could have absorbed). | Use line 7 of the latest Form 4952 filed.
-- **Chosen:** The first (f4952.carryover asks only about a 2024 Form 4952), until the owner rules on a refusing question for this case.
+- **Chosen:** The second (f4952.carryover and f4952.prior_7 ask for line 7 of a 2024 Form 4952 or what line 7 of a correct 2024 Form 4952 would show, line 3 less line 6, not below zero), by rewording with no new input, as sd.carryover and clcw.prior_11 ask for a correct 2024 return.
 - Reason: Pub. 550: "You can carry over the amount of investment interest you could not deduct because of this limit to the next tax year. The interest carried over is treated as investment interest paid or accrued in that next year." The third reading carries the whole earlier amount past a year whose net investment income could have absorbed it, so it can overstate line 2; it is not used. The second follows the quoted rule but asks the filer to complete a form for a past year. The first can understate the deduction, for a filer whose 2024 net investment income did not absorb the carryforward; it cannot overstate it.
-- Status: Planning lane plan-med-income (BUG-0833), redrafted in lane v2-income after the wording red team (A6), 2026-11-16; for the owner.
+- Status: Decided by owner delegation 2026-11-22, option (a) (the second reading, by rewording); applied in lane adlow (BUG-0833 part 2).
 - Cite: [p550] p. 47, Limit on Deduction, "You can carry over the amount of investment interest you could not deduct because of this limit to the next tax year. The interest carried over is treated as investment interest paid or accrued in that next year." (2025 returns; printed date 2026-03-05; sha256 83552968)
 
 ## amb.2025.amt_transient

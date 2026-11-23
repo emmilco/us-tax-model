@@ -2421,8 +2421,6 @@
         "div.box2b": 0,
         "div.box2c": 0,
         "div.box2d": 0,
-        "div.box2e": 0,
-        "div.box2f": 0,
         "div.box3": 0,
         "div.box9": 0,
         "div.box10": 0,
@@ -2896,6 +2894,56 @@
             "snapshot": "b0999b12d9dc4b13868501a9c1879011c00d2fc035f13a1391251d355a6242c8",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "sa.sehi_unused.medical",
+      "covers": [
+        "sa.line1_total",
+        "sa.sehi_unused"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Health insurance above the Form 7206 limit (i7206 p. 2, \"any medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as medical expenses on Schedule A\"). Wages $30,000; Schedule C line 1 $5,000; premiums $8,000 under the business. Form 7206 line 14 is $4,646.76 (the profit less the deductible part of SE tax, $353.24), so $3,353.24 is not deducted. AGI is $30,000 + $5,000 - $353.24 - $4,646.76 = $30,000.00; line 3 is $2,250.00. Other medical costs $1,000, so line 1 is $4,353.24 and line 4 $2,103.24 by hand.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 3000000,
+        "person[taxpayer].w2[a].box3": 3000000,
+        "person[taxpayer].w2[a].box5": 3000000,
+        "person[taxpayer].w2[a].box4": 186000,
+        "person[taxpayer].w2[a].box6": 43500,
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 500000,
+        "person[taxpayer].sc[f].hi_uses": true,
+        "person[taxpayer].sc[f].f7206_line1": 800000,
+        "sa.elect_itemize": true,
+        "sa.medical_any": true,
+        "sa.line1": 100000
+      },
+      "expect": {
+        "person[taxpayer].sc[f].f7206_line14": {
+          "kind": "money",
+          "cents": 464676
+        },
+        "sa.sehi_unused": {
+          "kind": "money",
+          "cents": 335324
+        },
+        "sa.agi": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "sa.line1_total": {
+          "kind": "money",
+          "cents": 435324
+        },
+        "sa.line4": {
+          "kind": "money",
+          "cents": 210324
         }
       }
     }

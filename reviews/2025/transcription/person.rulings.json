@@ -2942,6 +2942,26 @@
    }
   },
   {
+   "printed": "person.hsa_family",
+   "project_expr_sha256": "e0bce57278988a51ba61a2280bfde0adda8913b0d60d459a5e885c130791993a",
+   "second_expr_sha256": "107697471758ce68361c33878ff8fe216428cca88fad7acb292f6672de552f48",
+   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1, \"the months you were treated as having family coverage\"; p969 p. 6, Rules for married people, Caution. person.hsa_family is a per-person roll-up of the Form 8889 helper f8889.step1_total (the $8,550 family amount for each month treated as family coverage, before the division between spouses), read by household.hsa_family_sum so that each spouse's form can find the other's family months. The reply was not given the Form 8889 collection's fields and, as its note says, guessed a per-person annual maximum with the $1,000 age-55 amount; that amount belongs on line 7 for a married filer with family coverage (i8889 p. 5, Line 3, Note), so the guess is not the quantity the consumer needs. Project stands.",
+   "context": "714dfa33acd205fdcae215837b3b12b6d2c5a29d4fe501da16e416885c5a5a3a",
+   "date": "2026-11-23",
+   "run": "90f8a8e8736938b6fafbf319effe13d4b27ef961c9a9537ac0ed0f259420d55d",
+   "subject_key": "d4c3e6c958d095b2886b278272c935bd47c52915d8560f52bbc40eaf21c5d5df"
+  },
+  {
+   "printed": "person.hsa_self",
+   "project_expr_sha256": "b1b1fd0a94714bf78f90d11eb0ed8788b834e509b85ab71a36de419a196c8ed3",
+   "second_expr_sha256": "5fde9000aba672aed51a28c422585a4c9c297edc65c2b46c6cbb16d18564b0ad",
+   "ruling": "Ruling: interface gap; i8889 p. 4, How To Complete Part I, and p. 7, Line 6, Step 4. person.hsa_self is a per-person roll-up of the Form 8889 helper f8889.step4_total (the self-only amount for each eligible month without family coverage), read by household.hsa_self_sum so that each spouse's form can tell whether the other had eligible self-only months. The reply was not given the Form 8889 collection's fields and, as its note says, guessed a per-person self-only annual maximum with the $1,000; it is not the monthly sum the consumer tests. Project stands.",
+   "context": "714dfa33acd205fdcae215837b3b12b6d2c5a29d4fe501da16e416885c5a5a3a",
+   "date": "2026-11-23",
+   "run": "90f8a8e8736938b6fafbf319effe13d4b27ef961c9a9537ac0ed0f259420d55d",
+   "subject_key": "c2e220f5dd9b41a3bffb1aecadabfee6334d9de6a8338c70e9029283e7c671a2"
+  },
+  {
    "printed": "person.hsa_share",
    "project_expr_sha256": "227a6e0da9a78e591295aab6525dfb01c697760e7beb153e3bd1e9e8037ee05d",
    "second_expr_sha256": "c3f5b18523f25d7d48088e63dda91b50f53fb591e336245ad29346037d2fdcc5",

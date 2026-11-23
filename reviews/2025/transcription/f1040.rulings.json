@@ -111,6 +111,52 @@
   {
    "printed": "16",
    "project_expr_sha256": "9e2cade2b1ff2eb7d96740bd471c58e13c0525cc09eb02b9884656a50679195f",
+   "second_expr_sha256": "a4281198af3a875e5b07b6cc47abfd10694d3a2bb74235b3975fde3e8fe3d556",
+   "ruling": "Ruling: representation; i1040gi p. 36, Line 16: the worksheet choice is the Schedule D Tax Worksheet first, else the Qualified Dividends and Capital Gain Tax Worksheet, else the tax on line 15 (amb.2025.sd4952_selection); the candidate's note lists the line 16 additions that are refused, as the project refuses them (scope.other_line16 and the retirement screens). As the earlier ruling, no value differs on any completed return: triage executable-triage-v2 (.transcription/triage/2025/f1040.json, 2026-11-23) has 2,584 of 3,510 agree, and on completed returns only candidate-unknown (344) and candidate-refuses (2), which come from the candidate's own transcription of the worksheet gates and their inputs. Project stands.",
+   "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
+   "date": "2026-11-23",
+   "run": "ef8e080d1e716e021dbea005b72421e457710f9a1047b95dfda91362dddb8c2c",
+   "subject_key": "9b910c0d0072ccabb9571e79003c4fbd1d6a30109d07781a349978f60c2d031c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@f1040",
+     "fixture:classm.f4952.2.deepseek@f1040",
+     "fixture:classm.f8960.1.deepseek@f1040",
+     "fixture:classm.f8960.2.deepseek@f1040",
+     "fixture:classm.clcw.2.deepseek@f1040",
+     "fixture:classm.s2.1.deepseek@f1040",
+     "fixture:classm.s2.2.deepseek@f1040",
+     "fixture:classm.retirement.3.deepseek@f1040",
+     "fixture:classm.asset.1@f1040",
+     "fixture:classm.asset.2@f1040",
+     "fixture:classm.carloan.3@f1040",
+     "fixture:classm.f4562.1@f1040",
+     "fixture:classm.f8995a.2@f1040",
+     "fixture:classm.s179.3@f1040",
+     "fixture:classm.scveh.5@f1040",
+     "fixture:stage8.hoh.parent.died_not_half@f1040",
+     "fixture:audit.dependent.claimed_no_tin@f1040",
+     "fixture:audit.dependent.hoh_test1_no_tin@f1040",
+     "fixture:stage8.mut.hoh_child_months_unanswered_absence@f1040",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@f1040",
+     "fixture:stage8.mut.mfj_married_unanswered_line1a@f1040",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@f1040",
+     "fixture:xsa.f8582_mfs_together_late@f1040",
+     "fixture:xsa.f8582_mfs_apart_last6@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "9e2cade2b1ff2eb7d96740bd471c58e13c0525cc09eb02b9884656a50679195f",
    "second_expr_sha256": "bba0fe74d463ae5ab913dfecbce99dd758a1affb7e95cc4c708cfb51d0bf3f5d",
    "ruling": "Ruling: representation; i1040gi p. 36, Line 16: the worksheet choice is the Schedule D Tax Worksheet first, else the Qualified Dividends and Capital Gain Tax Worksheet, else the tax on line 15 (amb.2025.sd4952_selection). This reply tests sd.line15 > 0 and sd.line16 > 0, which forms/2025/sd.yaml defines as its sd.line17 test; no value differs anywhere in the sample (3,199 of 3,422 comparisons agree; the differences are 157 project refusals, 64 project-unknown and 2 candidate-refuses on refused or incomplete records). Project stands.",
    "context": "b9e49e9f11734ca0f98f34844e11f874facaf228e593051625173809e080cd88",
@@ -283,35 +329,30 @@
    "printed": "1e",
    "project_expr_sha256": "449c76a476a44ac7ae42e2f49228ddfb8aa4bcd350decdd2892f6eb4f86783f0",
    "second_expr_sha256": "546128c8bd2836b498512e9ce0c873668055cd1642d1ef9b835e8c87637b6bca",
-   "ruling": "Ruling: model error — i1040gi p. 24 line 1e applies to taxable dependent-care benefits; without benefits, Form 2441 Part III is not completed. The candidate always reads f2441.line26, introducing unrelated student/disabled and income prerequisites. Triage has 6 completed candidate-refuses and 88 completed candidate-unknown records; incomplete/refused value differences are inactive Part III values where the project correctly emits zero, not supported benefit calculations. Evidence: triage/f1040.json, executable-triage-v2, 2240 comparisons, 793 agreements; differences by return state {\"completed\": {\"candidate-refuses\": 6, \"candidate-unknown\": 88}, \"incomplete\": {\"candidate-refuses\": 5, \"candidate-unknown\": 733, \"value\": 8}, \"refused\": {\"candidate-refuses\": 263, \"candidate-unknown\": 341, \"value\": 3}}. Sample witnesses: {\"id\": \"classm.s3.3.deepseek\", \"kind\": \"fixture\"}, {\"id\": \"classm.f5695.8.deepseek\", \"kind\": \"fixture\"}.",
-   "context": "a2c696c2f3bfad7d7819266b4c6cd2fbcb6fc1e19f4c7ff874c4f77032bf55c7",
-   "subject_key": "40b490fb243090ba14e9d9a202055ccf8095d3f8f93191aabbcdf07c017b36c5",
+   "ruling": "Ruling: model error — i1040gi p. 24 line 1e applies to taxable dependent-care benefits; without benefits, Form 2441 Part III is not completed. The candidate always reads f2441.line26, introducing unrelated student/disabled and income prerequisites. Triage has 6 completed candidate-refuses and 88 completed candidate-unknown records; incomplete/refused value differences are inactive Part III values where the project correctly emits zero, not supported benefit calculations. Evidence: triage/f1040.json, executable-triage-v2, 2240 comparisons, 793 agreements; differences by return state {\"completed\": {\"candidate-refuses\": 6, \"candidate-unknown\": 88}, \"incomplete\": {\"candidate-refuses\": 5, \"candidate-unknown\": 733, \"value\": 8}, \"refused\": {\"candidate-refuses\": 263, \"candidate-unknown\": 341, \"value\": 3}}. Sample witnesses: {\"id\": \"classm.s3.3.deepseek\", \"kind\": \"fixture\"}, {\"id\": \"classm.f5695.8.deepseek\", \"kind\": \"fixture\"}. (carried over from reviews/2025/transcription/f1040.index.json at 870cc146, review of 2026-11-01)",
+   "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
+   "date": "2026-11-23",
+   "run": "ef8e080d1e716e021dbea005b72421e457710f9a1047b95dfda91362dddb8c2c",
+   "subject_key": "d3fcdfb5629d71d46c06362aadeddd0bafabc1902d4afd40888036792bc6d7f2",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
-     "candidate-unknown",
-     "value"
+     "candidate-unknown"
     ],
     "witnesses": [
-     "fixture:classm.f4952.3.deepseek@f1040",
-     "fixture:classm.g28.2.deepseek@f1040",
-     "fixture:classm.clcw.1.deepseek@f1040",
-     "fixture:classm.clcw.2.deepseek@f1040",
-     "fixture:classm.clcw26.3.deepseek@f1040",
-     "fixture:classm.dependent.1.deepseek@f1040",
-     "fixture:classm.s8812.4.deepseek@f1040",
-     "fixture:classm.f5695.3.deepseek@f1040",
-     "fixture:classm.f5695.4.deepseek@f1040",
-     "fixture:classm.f5695.5.deepseek@f1040",
-     "fixture:classm.f5695.6.deepseek@f1040",
-     "fixture:classm.f5695.9.deepseek@f1040",
-     "fixture:stage18.blind.p6@f1040",
-     "fixture:stage18.blind.p10@f1040",
-     "fixture:stage18.blind.p20@f1040",
-     "fixture:stage18.refuse.year_of_marriage@f1040",
-     "fixture:stage18.mut.family_of_20@f1040",
-     "fixture:stage18.refuse.family_over_20@f1040"
+     "fixture:stage14.asset.refuse_qip_2017@f1040",
+     "fixture:stage14.asset.refuse_ads_past_gds@f1040",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f1040",
+     "fixture:stage14.asset.refuse_class@f1040",
+     "fixture:stage14.asset.refuse_listed_low@f1040",
+     "fixture:stage14.asset.refuse_s179_over@f1040",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f1040",
+     "fixture:classm.f8889.1.deepseek@f1040",
+     "fixture:classm.f8889.3.deepseek@f1040",
+     "fixture:classm.f8889.4.deepseek@f1040",
+     "fixture:classm.f8889.5.deepseek@f1040",
+     "fixture:classm.f4952.1.deepseek@f1040"
     ],
     "policy": "executable-triage-v2"
    }
@@ -385,6 +426,22 @@
   {
    "printed": "28 (box)",
    "project_expr_sha256": "ccb50a42ff6a2f921da43da60548ec9cf8ecff78c1793447655c7bcee3bd64ea",
+   "second_expr_sha256": "2eefe81ce6a271860e248abc81d12ece4d341b33afe94e0438b1a32ebaaf3ab8",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3510 values compared, none different or missing: 2639 on 2639 fixture cases, 500 on 500 generated returns seed 20261026, 371 on 371 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
+   "date": "2026-11-23",
+   "run": "ef8e080d1e716e021dbea005b72421e457710f9a1047b95dfda91362dddb8c2c",
+   "subject_key": "d8b6827068aff0ec59cc57d413f3ea7a0e1b99838cf0d87e8ae8d1de0a5bbaa1",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "28 (box)",
+   "project_expr_sha256": "ccb50a42ff6a2f921da43da60548ec9cf8ecff78c1793447655c7bcee3bd64ea",
    "second_expr_sha256": "7ca0a0571a129f6ab7c748789d0cace3108b6f4d661e4c7c3471359ae7d4836a",
    "ruling": "Ruling: representation — Form 1040 line 28 box and i1040gi p. 61; BUG-0174 records the owner's disclosed design limit that the ACTC opt-out is not asked. Both expressions evaluate to constant false (false == true vs 0 != 0). All 2240 comparisons agree. Evidence: triage/f1040.json, executable-triage-v2, 2240 comparisons, 2240 agreements; differences by return state {}.",
    "context": "a2c696c2f3bfad7d7819266b4c6cd2fbcb6fc1e19f4c7ff874c4f77032bf55c7",
@@ -436,6 +493,41 @@
    }
   },
   {
+   "printed": "29",
+   "project_expr_sha256": "40b9671f588c2720e17d9769e463d5327ff79dda81e6d6606e50a7982d2e2e54",
+   "second_expr_sha256": "c4a3f817b39cc760d45f740c0ead129019e59aaa6e97340269c53727dd4712ed",
+   "ruling": "Ruling: model error; as the earlier ruling: Form 1040 line 29 (i1040gi p. 61; i8863 p. 3) copies the refundable American opportunity credit only when education credits apply (not married filing separately, f8863.paid, no person barred by the saver's-credit student test); the candidate reads f8863.line8 unconditionally, needing Form 8863 inputs or tripping its refusals when no credit is claimed. Triage executable-triage-v2 (2026-11-23): 2,049 of 3,510 agree; completed returns: 331 candidate-unknown and 2 candidate-refuses, no value difference. Project stands.",
+   "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
+   "date": "2026-11-23",
+   "run": "ef8e080d1e716e021dbea005b72421e457710f9a1047b95dfda91362dddb8c2c",
+   "subject_key": "89e5aa6ddf8e46ee7dd39cc6e63a5706798b5b1cece77e2433d34e46fd91ebb7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f1040",
+     "fixture:stage14.asset.refuse_ads_past_gds@f1040",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f1040",
+     "fixture:stage14.asset.refuse_class@f1040",
+     "fixture:stage14.asset.refuse_listed_low@f1040",
+     "fixture:stage14.asset.refuse_s179_over@f1040",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f1040",
+     "fixture:classm.f8889.2.deepseek@f1040",
+     "fixture:classm.f8889.5.deepseek@f1040",
+     "fixture:classm.f4952.1.deepseek@f1040",
+     "fixture:classm.f4952.2.deepseek@f1040",
+     "fixture:classm.f4952.3.deepseek@f1040",
+     "generated:20261026.13@f1040",
+     "generated:20261026.470@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "2a",
    "project_expr_sha256": "e34c7c428e6265cfb2de735b4363df69375a2aad0c3ba72f48fedc7aacc0703a",
    "second_expr_sha256": "ca4321ba35be42102840d0c9e4564f6c488e8783cd8bfda49a897d4d1308691c",
@@ -461,11 +553,101 @@
   },
   {
    "printed": "34",
+   "project_expr_sha256": "16319c97e24d8924d544d4a1efedda2ba3100177fffe73ab1ba940fa2cdd2940",
+   "second_expr_sha256": "d015a7ea7db7328bbb5c2de86007198ab42f282ba785e2955ec8db7ef85b9c90",
+   "ruling": "Ruling: representation; equivalent: Form 1040 line 34, \"If line 33 is more than line 24, subtract line 24 from line 33. This is the amount you overpaid.\" The values are identical (line 33 less line 24, not below zero); the candidate adds a display condition (shown only when line 33 is more than line 24), while the project shows line 34 always, as $0 when nothing is overpaid. Triage executable-triage-v2 (2026-11-23): 2,996 of 3,510 agree and no completed return differs in value; the candidate's unknowns (344) and refusals (5) come from its own transcription of lines 24 and 33 and the adoption refusal gates it lists. Project stands.",
+   "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
+   "date": "2026-11-23",
+   "run": "ef8e080d1e716e021dbea005b72421e457710f9a1047b95dfda91362dddb8c2c",
+   "subject_key": "c496b1aa90bf62024a6d62298d3a64c0ce41e9f4212c23fbb69bcbdd37a1bfc7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.1.deepseek@f1040",
+     "fixture:classm.f8960.2.deepseek@f1040",
+     "fixture:classm.clcw.2.deepseek@f1040",
+     "fixture:classm.s2.1.deepseek@f1040",
+     "fixture:classm.s2.2.deepseek@f1040",
+     "fixture:classm.s2.3.deepseek@f1040",
+     "fixture:classm.s2.4.deepseek@f1040",
+     "fixture:classm.carloan.3@f1040",
+     "fixture:classm.f4562.1@f1040",
+     "fixture:classm.f8995a.2@f1040",
+     "fixture:classm.sdtw.4@f1040",
+     "fixture:classm.clcw.2@f1040",
+     "fixture:stage8.hoh.parent.died_not_half@f1040",
+     "fixture:stage8.mut.parent_no_tin_nonresident@f1040",
+     "fixture:stage8.mut.parent_lives_with_you_mexico_resident@f1040",
+     "fixture:stage15.mut.dc_parent_part_year_born_died_unanswered@f1040",
+     "fixture:stage8.mut.mfj_married_unanswered_line1a@f1040",
+     "fixture:mutation.t2.no_senior_part5@f1040",
+     "fixture:xsa.f8582_mfs_together_late@f1040",
+     "fixture:xsa.f8582_mfs_apart_last6@f1040",
+     "fixture:xsa.f8582_mfs_apart_all_year@f1040",
+     "fixture:stage5.return.refund_combat_pay_no_children@f1040",
+     "fixture:stage21.t068.orphan_with_wages_refused@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "34",
    "project_expr_sha256": "322a454079d7b3f44160fb6afa99d3b9cd44f949afd22101bb2362ebc63a49e4",
    "second_expr_sha256": "9044b33331fadfbfacb5c116d1c1d9817cf7368ea50478b24531a67fb31a0fe5",
    "ruling": "Ruling: model error; Not executable: the reply fails validation (`../triage/f1040.json`, state invalid: f1040.line16 \"model changed a published result type\", NonNegDollars for the published Dollars), so triage runs none of its lines: line 34 reads line 24 and so line 16. Form 1040 (2025), line 34: \"If line 33 is more than line 24, subtract line 24 from line 33. This is the amount you overpaid\"; the expression itself is the form's.",
    "context": "d02e2d5273e20d18522e3766e71ec809e68e1f7967f23246f9666322fcf577c4",
    "subject_key": "b2883a4f2ce17a1d5e6f2c39815fd88b4f1144b150f686bf383e17971296e253"
+  },
+  {
+   "printed": "37",
+   "project_expr_sha256": "3be0cd6c2494a2f52114a2d4fe47f0ea07f1d433bc527cd912a2ed9c742f5fa1",
+   "second_expr_sha256": "3a5055dfe1604156d593e1878cb8824ce9d0552bc2f600b58690e8a82819434c",
+   "ruling": "Ruling: representation; equivalent: Form 1040 line 37, \"Subtract line 33 from line 24. This is the amount you owe.\" The values are identical (line 24 less line 33, not below zero); the candidate adds a display condition (shown only when line 24 is more than line 33), while the project shows line 37 always, as $0 when nothing is owed. Line 38 is not figured (the standing notice), which the candidate's note also states. Triage executable-triage-v2 (2026-11-23): 2,996 of 3,510 agree and no completed return differs in value; differences as on line 34. Project stands.",
+   "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
+   "date": "2026-11-23",
+   "run": "ef8e080d1e716e021dbea005b72421e457710f9a1047b95dfda91362dddb8c2c",
+   "subject_key": "f1154e455357e42e6537e2f36e7a6ddfe5de79dfeda85b7efa39779b1a981287",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.1.deepseek@f1040",
+     "fixture:classm.f8960.2.deepseek@f1040",
+     "fixture:classm.clcw.2.deepseek@f1040",
+     "fixture:classm.s2.1.deepseek@f1040",
+     "fixture:classm.s2.2.deepseek@f1040",
+     "fixture:classm.s2.3.deepseek@f1040",
+     "fixture:classm.s2.4.deepseek@f1040",
+     "fixture:classm.carloan.3@f1040",
+     "fixture:classm.f4562.1@f1040",
+     "fixture:classm.f8995a.2@f1040",
+     "fixture:classm.sdtw.4@f1040",
+     "fixture:classm.clcw.2@f1040",
+     "fixture:stage8.hoh.parent.died_not_half@f1040",
+     "fixture:stage8.mut.parent_no_tin_nonresident@f1040",
+     "fixture:stage8.mut.parent_lives_with_you_mexico_resident@f1040",
+     "fixture:stage15.mut.dc_parent_part_year_born_died_unanswered@f1040",
+     "fixture:stage8.mut.mfj_married_unanswered_line1a@f1040",
+     "fixture:mutation.t2.no_senior_part5@f1040",
+     "fixture:xsa.f8582_mfs_together_late@f1040",
+     "fixture:xsa.f8582_mfs_apart_last6@f1040",
+     "fixture:xsa.f8582_mfs_apart_all_year@f1040",
+     "fixture:stage5.return.refund_combat_pay_no_children@f1040",
+     "fixture:stage21.t068.orphan_with_wages_refused@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "37",
@@ -624,14 +806,14 @@
    }
   },
   {
-   "printed": "6d",
-   "project_expr_sha256": "3e14d331cec309d49e48d6dbfaf8d0318f3c4b59cd1af105d51928dcf82dcd13",
-   "second_expr_sha256": "576c0df96f7198f45b7c86bd965159af0645e799ab1fa9187698a0cc6d6f7652",
-   "ruling": "Ruling: ambiguity; amb.2025.mfs_lived_apart_boxes (coordinator decision under the owner's delegation, lane mfs-l1). i1040gi p. 31, Line 6d: \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d. If you don't check the box on line 6d, you may get a math error notice from the IRS.\" The instruction sits under Lines 6a-6d (social security benefits); the project checks the box only on a return with benefits (ssb.has_benefits), the reply on every separate return lived apart all year. Triage d366a5e05a41: 3,175/3,215 agree; the 3 value differences are exactly that case (MFS, apart all year, ssb.has_benefits false: project false, reply true); the other 37 are the reply's unknown status on returns that never answer it (29 incomplete, 8 refused). The chosen reading stands.",
-   "context": "5fd2e4025f04e9245f81e05d11bfa66d515ad0950487bdd4256e5faff69bfdd0",
-   "date": "2026-11-15",
-   "run": "c4d720a075091243aa4a6f9e3f94acd186e5765aeb0b5be9440cc24eecd237b3",
-   "subject_key": "9a01ef3c8bf3eb92f52ac6e965d7add406ac5387ab0d64dad693a36e932eb643",
+   "printed": "6c",
+   "project_expr_sha256": "f4b7feec9f78265d1d0585586680e98938271980e005fbbb96b8767f68c19884",
+   "second_expr_sha256": "46026976723915d15a08fb905e19183008a59d865d6e320daeb6dba9a9926708",
+   "ruling": "Ruling: model error; as the earlier ruling: the printed line 6c is the lump-sum election (i1040gi p. 31); with zero benefits there is no election to make, so the project also requires ssb.line1 above zero and does not ask the election. The candidate reads the election alone, needing an unasked answer. Triage executable-triage-v2 (2026-11-23): 2,775 of 3,510 agree; completed returns: 329 candidate-unknown, no value difference. Project stands.",
+   "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
+   "date": "2026-11-23",
+   "run": "ef8e080d1e716e021dbea005b72421e457710f9a1047b95dfda91362dddb8c2c",
+   "subject_key": "b0dbc361deec4aecb3cc722b0eda73f34423b79ec84e0e1cdb330afabbe10d40",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -639,15 +821,49 @@
      "value"
     ],
     "witnesses": [
-     "fixture:stage21.choose.eic_limit_status_unanswered@f1040",
+     "fixture:classm.f2441.1.deepseek@f1040",
+     "fixture:classm.f2441.2.deepseek@f1040",
+     "fixture:classm.f2441.3.deepseek@f1040",
+     "fixture:classm.f2441.4.deepseek@f1040",
+     "fixture:classm.f2441.5.deepseek@f1040",
+     "fixture:classm.f2441.6.deepseek@f1040",
+     "fixture:mutation.t2.mfj_no_overtime_part3@f1040",
+     "fixture:mutation.t2.s1a.line13_magi_first@f1040",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_three_jobs@f1040",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_one_job@f1040",
+     "generated:20261026.441@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6d",
+   "project_expr_sha256": "3e14d331cec309d49e48d6dbfaf8d0318f3c4b59cd1af105d51928dcf82dcd13",
+   "second_expr_sha256": "576c0df96f7198f45b7c86bd965159af0645e799ab1fa9187698a0cc6d6f7652",
+   "ruling": "Ruling: ambiguity; amb.2025.mfs_lived_apart_boxes (coordinator decision under the owner's delegation, lane mfs-l1). i1040gi p. 31, Line 6d: \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d. If you don't check the box on line 6d, you may get a math error notice from the IRS.\" The instruction sits under Lines 6a-6d (social security benefits); the project checks the box only on a return with benefits (ssb.has_benefits), the reply on every separate return lived apart all year. Triage d366a5e05a41: 3,175/3,215 agree; the 3 value differences are exactly that case (MFS, apart all year, ssb.has_benefits false: project false, reply true); the other 37 are the reply's unknown status on returns that never answer it (29 incomplete, 8 refused). The chosen reading stands. (carried over from reviews/2025/transcription/f1040.index.json at 870cc146, review of 2026-11-01)",
+   "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
+   "date": "2026-11-23",
+   "run": "ef8e080d1e716e021dbea005b72421e457710f9a1047b95dfda91362dddb8c2c",
+   "subject_key": "52799e3abb28cd42e382a8f25baefe8eff6935655b7536db50c8402c5ac1027f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.s2.5.deepseek@f1040",
+     "fixture:classm.f1040.8.deepseek@f1040",
+     "fixture:classm.sa.2.deepseek@f1040",
+     "fixture:classm.sa.4.deepseek@f1040",
+     "fixture:classm.sa.5.deepseek@f1040",
+     "fixture:classm.asset.2.deepseek@f1040",
+     "fixture:classm.s1.13.deepseek@f1040",
+     "fixture:classm.s1.13@f1040",
+     "fixture:classm.person.23@f1040",
+     "fixture:mint.f2441.line_a.mfs_apart_all_year@f1040",
      "fixture:mfs.ira.apart_not_covered@f1040",
-     "fixture:mfs.ira.apart_covered@f1040",
-     "fixture:mutation.t2.eic.mfs_child_line5_skip@f1040",
-     "fixture:mutation.t2.sd.line7a_gain_no_status@f1040",
-     "partial:stage14.asset.hy_5yr-f1040.status@f1040",
-     "partial:stage14.asset.bonus_100-f1040.status@f1040",
-     "partial:stage14.asset.prior_7yr-f1040.status@f1040",
-     "partial:stage14.asset.qip-f1040.status@f1040"
+     "fixture:mfs.ira.apart_covered@f1040"
     ],
     "policy": "executable-triage-v2"
    }
@@ -764,6 +980,91 @@
      "fixture:t264.f4952.unsupported_with_interest@f1040",
      "fixture:mutation.m4.qbi.reit_loss_carryforward@f1040",
      "fixture:mutation.m4.qbi.suspended_losses@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1040.gate.qdcg_applies",
+   "project_expr_sha256": "fdaf7b951655f411153997e2c8c48caed813acc8e16020fb61ad7108b7deb575",
+   "second_expr_sha256": "ef5925eafe487a1f9ca63216d42f6701bea5835fb1c1200d137162223213d633",
+   "ruling": "Ruling: representation; i1040sd p. 15: \"Complete this worksheet only if line 18 or line 19 of Schedule D is more than zero and lines 15 and 16 of Schedule D are gains or if you file Form 4952 and you have an amount on line 4g,\" with the Exception for a zero-or-less line 15 or 16 and no qualified dividends. As the earlier ruling: the project's gate is the trigger shared by both capital gain worksheets and the candidate makes it exclusive of the Schedule D Tax Worksheet, so on completed returns with that worksheet in force it answers false where the project answers true (every sampled value witness has f1040.gate.sdtw true); line 16 takes sdtw.line47 first, so no tax changes. Triage executable-triage-v2 (.transcription/triage/2025/f1040.json, 2026-11-23): 2,702 of 3,510 agree; completed returns: 22 value (that pattern), 332 candidate-unknown, 2 candidate-refuses. Project stands.",
+   "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
+   "date": "2026-11-23",
+   "run": "ef8e080d1e716e021dbea005b72421e457710f9a1047b95dfda91362dddb8c2c",
+   "subject_key": "6a0749b40fb49fb31fe5fdbd8176316051eb5c1541db6e2d5c01012a82d76c14",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.2.deepseek@f1040",
+     "fixture:classm.f8960.1.deepseek@f1040",
+     "fixture:classm.f8960.2.deepseek@f1040",
+     "fixture:classm.u1250.2.deepseek@f1040",
+     "fixture:classm.clcw.2.deepseek@f1040",
+     "fixture:classm.clcw_next_year.3.deepseek@f1040",
+     "fixture:classm.s2.1.deepseek@f1040",
+     "fixture:classm.s2.2.deepseek@f1040",
+     "fixture:classm.s2.3.deepseek@f1040",
+     "fixture:classm.retirement.3.deepseek@f1040",
+     "fixture:classm.f5329.2.deepseek@f1040",
+     "fixture:classm.asset.1@f1040",
+     "fixture:classm.asset.2@f1040",
+     "fixture:classm.carloan.3@f1040",
+     "fixture:classm.f4562.1@f1040",
+     "fixture:classm.f8995a.2@f1040",
+     "fixture:classm.s179.3@f1040",
+     "fixture:classm.sdtw.2@f1040",
+     "fixture:classm.sdtw.4@f1040",
+     "fixture:classm.sdtw.5@f1040",
+     "fixture:classm.u1250.2@f1040",
+     "fixture:stage8.hoh.parent.died_not_half@f1040",
+     "fixture:audit.dependent.claimed_no_tin@f1040",
+     "fixture:audit.dependent.hoh_test1_no_tin@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1040.gate.sdtw",
+   "project_expr_sha256": "502792f26d40195b33b76705428f6de714a1f86772611dccc7c9c634e5e49290",
+   "second_expr_sha256": "b7f513a178c645e6dd8f7d19dbc5bd030f3f4cf44681de97e5dddaedc0ad8fd1",
+   "ruling": "Ruling: representation; i1040sd p. 15, the same trigger and Exception. As the earlier ruling: the project conditions both worksheet branches on the shared trigger; the candidate's differences are refusals and unknowns on records the project refuses or that are incomplete. Triage executable-triage-v2 (2026-11-23): 3,148 of 3,510 agree; no completed return differs in value (13 candidate-unknown, 2 candidate-refuses). Project stands.",
+   "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
+   "date": "2026-11-23",
+   "run": "ef8e080d1e716e021dbea005b72421e457710f9a1047b95dfda91362dddb8c2c",
+   "subject_key": "444e3bb9023994105284c8cbf25a558162a1ff05658f045f5ca30fd22fb3ab9c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw.2.deepseek@f1040",
+     "fixture:classm.clcw_next_year.3.deepseek@f1040",
+     "fixture:classm.s2.2.deepseek@f1040",
+     "fixture:classm.s2.7.deepseek@f1040",
+     "fixture:classm.f8880.2.deepseek@f1040",
+     "fixture:classm.f1040.2.deepseek@f1040",
+     "fixture:classm.eic.2.deepseek@f1040",
+     "fixture:classm.retirement.3.deepseek@f1040",
+     "fixture:classm.sa.1.deepseek@f1040",
+     "fixture:classm.asset.1@f1040",
+     "fixture:classm.asset.2@f1040",
+     "fixture:classm.carloan.3@f1040",
+     "fixture:classm.f4562.1@f1040",
+     "fixture:classm.f8995a.2@f1040",
+     "fixture:classm.s179.3@f1040",
+     "fixture:stage8.hoh.parent.died_not_half@f1040",
+     "fixture:audit.dependent.claimed_no_tin@f1040",
+     "fixture:audit.dependent.hoh_test1_no_tin@f1040"
     ],
     "policy": "executable-triage-v2"
    }

@@ -6,30 +6,30 @@
  "head_rows": {
   "lines judged": "25",
   "match / mismatch / unclear / missing": "22 / 2 / 1 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1a",
-   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "31670d9c2dcde80c4878a078c28732fcb9b6ac00e33c6dd47aa7d6ee58bd4134"
   },
   {
    "key": "1b",
-   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "5974ba484ddccd06534b201b6191069f51fda93d12da3b911fcf6f0668094188"
   },
   {
    "key": "2a",
-   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "ec63d5913097c524f9059cd16674dae27f6b80299ca98867bbe4f2db0d6c5352"
   },
   {
    "key": "2b",
-   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "ed8e37647c2981ac6a739193293ec3a22049061eff864bb95e05240626bd2e05"
   },
@@ -54,25 +54,25 @@
   },
   {
    "key": "6a",
-   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "4cdfdc7a8c8595b4e07ac30d7f762eacdb2cf32daa87624d18b6c25b04a27962"
   },
   {
    "key": "6b",
-   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "79e045ce563d61ca98cc8a58415fe85d4751400c90cf19b3d5e9db3ea6734802"
   },
   {
    "key": "7a",
-   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "35a396471292619cf835547beca126292cfc7a9715753bf9e2cb15dd7628a5e5"
   },
   {
    "key": "7b",
-   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "f13a129186db500f0622527a038ffb084943b932c83f8cb436e3b07fcb7b54b9"
   },
@@ -97,7 +97,7 @@
   },
   {
    "key": "(screen) (ira.special)",
-   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "b777a2dbf054bb460411ffbb14c6d5df0783e025c823657ea6bc8cf1bad0859e"
   },
@@ -115,9 +115,9 @@
   },
   {
    "key": "(screen) (ira.reservist_repaid)",
-   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "UNCLEAR",
-   "ruling": "Ruling: interface gap; Pub. 590-A p. 9, Qualified reservist repayments, When repayment contributions can be made: \"You can't make these repayment contributions later than the date that is 2 years after your active duty period ends.\" A repayment made in 2025 therefore follows active duty that ended in 2023 or later, so the person served in the reserves after the start of 2022 and scope.armed_forces (\"Since the start of 2022, did you ... serve in the U.S. armed forces, the reserves or the National Guard?\") is Yes for every such filer; the gate loses no 2025 repayment. That page was not given to the reviewer, whose UNCLEAR says only that the pages given do not set the repayment period. The English states the screen correctly. Project stands.",
+   "ruling": "Ruling: representation; Pub. 590-A, Qualified reservist repayments, \"You can't make these repayment contributions later than the date that is 2 years after your active duty period ends\" (sources/2025/p590a.cols.txt:297). A repayment made in 2025 therefore needs an active duty period that ended in 2023 or later, so the filer served at some time since 2022, which is what scope.armed_forces asks ('In the armed forces, Coast Guard, reserves or National Guard since 2022'); the gate drops no filer who can repay in 2025. The reply was not given that page. Project stands.",
    "subject_key": "b0b504cabc30677e1a09949f17025b5d72a77a13746408767778b2637cb01e33"
   },
   {
@@ -134,25 +134,25 @@
   },
   {
    "key": "11a",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "d9f9a84db674e939fb86cf5215acde98254a34608c40daf89b7d885f519ae7a8"
   },
   {
    "key": "11b",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "a6eae3997c0e5f9570a5ef1adc50f8f7b00d47cdc002bc0697f774285b942d15"
   },
   {
    "key": "12a",
-   "record": "99d0d4721377f3041fb7600c4da7ad492e9b5456f15cb15aa481f832b1d8f2d3",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "0a5a8a8b4ccd5d0ee602de733ac27104e21d949821e21ddb7ddfb88558240e93"
   },
   {
    "key": "12b",
-   "record": "99d0d4721377f3041fb7600c4da7ad492e9b5456f15cb15aa481f832b1d8f2d3",
+   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
    "status": "MATCH",
    "subject_key": "5c02b7ad4535cdbd555683ce48adca8216c64522a24c653e3d1a2270fffcfc9d"
   },

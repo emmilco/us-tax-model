@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
  "head_rows": {
-  "match / mismatch / unclear / missing": "31 / 6 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "36 / 1 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,34 +22,31 @@
   },
   {
    "key": "2 (box)",
-   "record": "502e0bc6267f0c1361a15c544b8e053796a3face85d8e1e0e05728bd46a131bd",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; restatement accepted. i2441 p. 1, Qualifying Person(s), 2, \"Your disabled spouse who wasn't physically or mentally able to care for themselves\". Care of a disabled spouse is refused before line 2 is reached: f2441.unable (\"In 2025, was there a time when you (or, on a joint return, your spouse) could not care for yourself ...\", help \"Answer Yes too if some of the care you paid for was for your husband or wife. A Yes ends the interview here.\"), so on every return the project completes the qualifying persons are the dependent entries the count reads, and the box is checked exactly when there are more than three.",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
+   "status": "MATCH",
    "subject_key": "09f6029f5e25e2cc47d907a2745e7b8f45d93a94a517b7653e9ced96bb0c9893"
   },
   {
    "key": "3",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
    "status": "MATCH",
    "subject_key": "5635a85a58fb3d3e46861fa41b34738f29ea93bd6fda934e1c08c4771f4cbbeb"
   },
   {
    "key": "4",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 pp. 4-5, Lines 4 and 5 (earned income starts from Form 1040 line 1z). The line 1z items the rendering leaves out are refused on the return: employer adoption benefits (line 1f, scope.adoption_benefits_if_adoption) and excess elective deferrals and corrective distributions (line 1h, scope.excess_deferral_if_w2) are tests of scope.other_income, which refuses at Form 1040 line 1z; statutory-employee and self-employment cases are screened (sc.statutory, person.se_screened). Same as the goal-1 and earlier rounds.",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
+   "status": "MATCH",
    "subject_key": "6d29166b10325a27783aebada45340d7825db9e6f394095d1f5782650f02e8f8"
   },
   {
    "key": "5",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 pp. 4-5, Line 5. The branches are right (the model agrees); the spouse's amount omits only line 1z items refused by scope.other_income (see line 4).",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
+   "status": "MATCH",
    "subject_key": "83016a412a5691d9e97686d55513bb6d8603572225234ae2b59603bd79f133fa"
   },
   {
    "key": "6",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
    "status": "MATCH",
    "subject_key": "c8422c058adc8c3e42c24327e87659110b630168db7ed6359c0e8b55a1321403"
   },
@@ -140,7 +137,7 @@
   },
   {
    "key": "16",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
    "status": "MATCH",
    "subject_key": "59e72a1f6acda03737e26780dbee9dbe6def00d3f5296c8a3c6322bfea57e4d1"
   },
@@ -152,21 +149,19 @@
   },
   {
    "key": "18",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 5, Line 18 (earned income figured as for lines 4 and 5, less the line 12 benefits). As line 4: the omitted line 1f and 1h items are refused by scope.other_income.",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
+   "status": "MATCH",
    "subject_key": "a4378ca09a27550014daa3fbc68a3707358060863aa268bc4fe8945e80395490"
   },
   {
    "key": "19",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i2441 p. 6, Line 19. The three branches follow the instructions (the model agrees); the joint-return spouse amount omits only items refused by scope.other_income (see line 4).",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
+   "status": "MATCH",
    "subject_key": "1e84f6be3a30b70b76ea579d8f8779aec8b94bf65f208a1b8d85be04bf61ed53"
   },
   {
    "key": "20",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
    "status": "MATCH",
    "subject_key": "6c58741c30325bf636fc2168e9c6b764eb2c3b3fb906bcf8a2ee19a95de3e266"
   },
@@ -208,7 +203,7 @@
   },
   {
    "key": "27",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
    "status": "MATCH",
    "subject_key": "2d65ac1886296e0da0d0e665982b7094bdc2cd553f76745d38485e0b9cf59e95"
   },
@@ -226,7 +221,7 @@
   },
   {
    "key": "30",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
+   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
    "status": "MATCH",
    "subject_key": "196762a6a836225fcf5ae83eea298bafbb8e0aa7b4f2e0d267492045cd2d0fa1"
   },

@@ -78,13 +78,15 @@ form:
       printed: (helper)
       type: Bool
       gated_by: qbi.suspended_if_business
-      label: "Do you (or, on a joint return, your spouse) have losses or deductions of a trade or business that were suspended in an earlier year by another provision (such as the at-risk or passive activity limits) and are allowed in calculating taxable income this year?"
+      label: "Do you (or, on a joint return, your spouse) have losses or deductions of a trade or business that were suspended in an earlier year by another provision (such as the at-risk or passive activity limits) and are allowed in calculating taxable income this year? Leave out a section 179 deduction carried over from 2018 or later and deducted on this return's Schedule C, which is already counted in that Schedule C's profit or loss."
       expr:
         op: input
-        source: "Do you (or, on a joint return, your spouse) have losses or deductions of a trade or business that were suspended in an earlier year by another provision (such as the at-risk or passive activity limits) and are allowed in calculating taxable income this year?"
+        source: "Do you (or, on a joint return, your spouse) have losses or deductions of a trade or business that were suspended in an earlier year by another provision (such as the at-risk or passive activity limits) and are allowed in calculating taxable income this year? Leave out a section 179 deduction carried over from 2018 or later and deducted on this return's Schedule C, which is already counted in that Schedule C's profit or loss."
       cite:
         doc: f8995
-        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4; i8995 p. 3, "Such Code provisions include, but aren’t limited
+          to, sections 163(j), 179, 461(l), 465, 469, 704(d), and 1366(d)", "In general, losses and deductions incurred prior
+          to 2018 are not qualified losses or deductions"
     - id: qbi.suspended_if_business
       printed: (gate)
       type: Bool
@@ -117,6 +119,86 @@ form:
       cite:
         doc: f8995
         locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.has_amount
+      printed: (gate)
+      type: Bool
+      label: The return has a Schedule C or qualified section 199A dividends, so that Form 8995 or 8995-A could be filed
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - s1.has_sc
+          - const: true
+        - op: test
+          gt:
+          - qbi.dividends_if_ordinary
+          - param: sales.zero
+      cite:
+        doc: i8995
+        locator: 'p. 1, Who Can Take the Deduction, "Individuals and eligible estates and trusts that have QBI use Form 8995
+          to figure the QBI deduction if: • You have QBI, qualified REIT dividends, or qualified PTP income or loss"'
+    - id: qbi.coop_patron_if_amount
+      printed: (gate)
+      type: Bool
+      label: Whether you are a patron of an agricultural or horticultural cooperative, asked only when the return has a
+        Schedule C or qualified section 199A dividends (false otherwise)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - qbi.has_amount
+            - const: true
+          then: qbi.coop_patron
+        - guard:
+            op: test
+            eq:
+            - qbi.has_amount
+            - const: false
+          then: qbi.no
+      cite:
+        doc: i8995
+        locator: 'p. 1, Who Can Take the Deduction, "You have QBI, qualified REIT dividends, or qualified PTP income or loss
+          (all defined later); and", "You aren’t a patron in a specified agricultural or horticultural cooperative"'
+    - id: qbi.unreported_loss
+      printed: (helper)
+      type: Bool
+      gated_by: qbi.unreported_loss_if_business
+      label: "Did you (or, on a joint return, your spouse) have a qualified business net loss in any year from 2018 to 2024 whose return included neither Form 8995 nor Form 8995-A?"
+      expr:
+        op: input
+        source: "Did you (or, on a joint return, your spouse) have a qualified business net loss (the qualified business income of all your trades or businesses together less than zero) in any year from 2018 to 2024 whose return included neither Form 8995 nor Form 8995-A?"
+      cite:
+        doc: i8995a
+        locator: 'p. 6, Schedule C (Form 8995-A), "This includes prior year loss carryforwards even if the loss was unreported
+          or the trade or business that generated the loss is no longer in existence"; i8995 p. 5, Line 16, "This amount will
+          offset QBI in later tax years regardless of whether"; i8995 p. 3, "In general, losses and deductions incurred prior
+          to 2018 are not qualified losses or deductions"'
+    - id: qbi.unreported_loss_if_business
+      printed: (gate)
+      type: Bool
+      label: "Whether a qualified business net loss of 2018 to 2024 was never reported on Form 8995 or 8995-A, asked only when the return has a Schedule C (false without one)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - s1.has_sc
+            - const: true
+          then: qbi.unreported_loss
+        - guard:
+            op: test
+            eq:
+            - s1.has_sc
+            - const: false
+          then: qbi.no
+      cite:
+        doc: i8995a
+        locator: 'p. 6, Schedule C (Form 8995-A), "This includes prior year loss carryforwards even if the loss was unreported
+          or the trade or business that generated the loss is no longer in existence"'
     - id: qbi.unsupported
       printed: (helper)
       type: Bool
@@ -134,7 +216,7 @@ form:
           - const: true
         - op: test
           eq:
-          - qbi.coop_patron
+          - qbi.coop_patron_if_amount
           - const: true
       cite:
         doc: i8995
@@ -161,6 +243,13 @@ form:
         doc: f8995
         locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
       refuses:
+        - when: qbi.unreported_loss_if_business
+          form: Form 8995, line 3, a qualified business loss of 2018 to 2024 never reported on Form 8995 or 8995-A
+          remedy: A business loss of an earlier year that no Form 8995 or 8995-A carried forward is outside this tool.
+          cite:
+            doc: i8995a
+            locator: 'p. 6, Schedule C (Form 8995-A), "This includes prior year loss carryforwards even if the loss was
+              unreported or the trade or business that generated the loss is no longer in existence"'
         - when: qbi.unsupported
           form: Forms 8995 / 8995-A business or PTP path
           remedy: Only section 199A dividend income without loss carryovers is supported.
@@ -174,13 +263,15 @@ form:
       gated_by: qbi.carryforward_if_prior_form
       expr:
         op: input
-        source: The qualified business loss carryforward from line 16 of your latest Form 8995 from 2024 or earlier (or the
-          corresponding line of that Form 8995-A), entered as a positive amount (zero if none)
+        source: The qualified business loss carryforward from line 16 of your latest Form 8995 from 2024 or earlier (or, if
+          that form was a Form 8995-A, from line 6 of Schedule C (Form 8995-A) attached to it), entered as a positive amount
+          (zero if none)
       cite:
         doc: i8995
         locator: 'p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating
           taxable income in the current year"; p. 5, Line 16, "This is the amount to be carried forward to the next year" (owner:
-          the printed amount)'
+          the printed amount); i8995a p. 6, Line 6, "The amount reported on this line must be reported in the next tax year on
+          Schedule C (Form 8995-A), line 2, or Form 8995, line 3"'
     - id: qbi.carryforward_if_prior_form
       printed: (gate)
       type: NonNegDollars

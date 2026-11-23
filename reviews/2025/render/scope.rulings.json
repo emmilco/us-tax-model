@@ -145,6 +145,16 @@
   },
   {
    "printed": "other_line16",
+   "restated": "(helper \"The answer to scope.f8615, asked only when the question scope.unearned_2700 is answered Yes (false otherwise)\" = true or helper \"Are you (or, on a joint return, your spouse) reporting a child's 2025 interest or dividends on your own return instead of filing a return for the child?\" = true or helper \"In 2025, was tuition or a fee refunded, or tax-free aid given, to a student for a year for which you (or, on a joint return, your spouse) had already claimed an education credit?\" = true or helper \"The answer to scope.income_averaging, asked only when a business (Schedule C) is listed (false otherwise)\" = true or helper \"The answer to scope.pfic, asked only when the question scope.foreign_shares is answered Yes (false otherwise)\" = true or helper \"The answer to scope.cfc, asked only when the question scope.foreign_shares is answered Yes (false otherwise)\" = true or helper \"The answer to scope.f8978, asked only when the question scope.business_before is answered Yes (false otherwise)\" = true)",
+   "model": "The line 16 instructions also list 'Tax from Form 4972 (relating to lump-sum distributions)' and 'Triggering event under section 965(i)'. Neither is among the ORed screens here. The IRS text given cannot show whether another screen excludes them.",
+   "ruling": "Ruling: scope; i1040gi Line 16 lists 'Tax from Form 4972' and 'Triggering event under section 965(i)' (sources/2025/i1040gi.cols.txt:846). Neither needs a screen here: a lump-sum distribution reaches Form 4972 only from a Form 1099-R, and each 1099-R asks retirement.lump_sum, refused through retirement.special ('Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)'); a section 965(i) deferral is open only to S corporation shareholders, whose income or loss from the S corporation for 2025 is refused at scope.k1 (Schedule K-1), and a net 965 liability in installments is refused at s3.section965. Project stands.",
+   "context": "d06f4bbacc2f4137bdb80c4656256c6cff5b4c902c5325c9fb6375b6acb0d02e",
+   "date": "2026-11-23",
+   "run": "5423465f09a526bbe7ff1c4b76215b5045aff190193c857b201a1d4dcfb41200",
+   "subject_key": "c2b7dbeea447171d0b4d855edaa6ec680307034368a72569ea2556081a70c040"
+  },
+  {
+   "printed": "other_line16",
    "restated": "Input — Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?",
    "model": "This is a filer-answered scope question, and its label and restatement agree. Form 1040 line 16 shows 'Check if any from Form(s): 1 8814 2 4972 3', which is consistent with the question. However, the line 16 instructions are not provided, so the other listed items (Form 8615, section 962 election, Form 8621, Form 8978, education credit recapture) cannot be verified.",
    "ruling": "Ruling: unclear for want of text; restatement accepted. A filer-answered scope question whose wording the model found consistent with the Form 1040 lines it could see; the items it lists are the refusals recorded in spec 2.1 and on the lines that read this question, each cited there. The Schedule 1 and Schedule 3 instructions are cited by those lines, not by the question.",

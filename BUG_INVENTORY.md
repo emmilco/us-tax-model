@@ -13356,3 +13356,523 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Siblings checked:** `person.sav_ineligible`, `f8863.claimed_count`, `sli.claimed_count` (readers; no form changed); persona 20_dependent_student (never asked sav_claimed on next; no Saver's credit answers to contradict) and persona 28 (refused before); no other persona answers sa.dependent true.
 - **Severity:** low
 - **Tags:** persona, test data, dependent filer; fixed
+
+## BUG-1129 — A main-home sale that must be reported (Form 1099-S, or gain over the exclusion) is dropped silently after the real-estate tick
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout capital (claude-opus-5-5, judgment), 2026-11-22, finding F1; reproduced by walk in the fx-capital lane
+- **Source:** i1040sd p. 2, Sale of Your Home: 'Report the sale or exchange of your main home on Form 8949 if: You can't exclude all of your gain from income, or You received a Form 1099-S for the sale or exchange. Any gain you can't exclude is taxable.'; i8949 p. 9, code H: 'Report the sale or exchange on Form 8949 as you would if you weren't taking the exclusion. Then enter the amount of excluded (nontaxable) gain as a negative number (in parentheses) in column (g).'
+- **Symptom:** Persona home_sale (single, W-2 $90,000, main home sold for $720,000 on a $400,000 basis, Form 1099-S): sd.sold_other Yes with the business, installment and like-kind follow-ups No completes with no question about the sale; line 7a $0, line 16 $11,255 against $21,755 with the $70,000 taxable gain. The $sales prompt named only securities and crypto, so land, a second home or an inherited house could be left off the same way; the code list has no code H.
+- **Where:** forms/2025/sd.yaml (sd.sold_other children, sd.count refusals); interview/2025/questions.yaml (sd.home_sale, $sales)
+- **Fix:** New child of sd.sold_other, sd.home_sale ('Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?'), asked first among the children; Yes refuses on sd.home_sale_if_sold (on sd.count, so lines 7a and 16 refuse) with the code H / code L remedy. A home sale with its whole gain excluded and no Form 1099-S is not reported and still completes. The $sales prompt now names land and its help a second home or an inherited house, which are reported among the sales (box C/F; a personal-use loss takes code L, which refuses as an other code). Fixtures (predicted by hand): sales.home_sale_reportable (refusal at f1040.line7a and line16, gate sd.home_sale_if_sold), sales.home_sale_excluded (line16 $11,255). Coverage rows sales.home_sold_reportable (new) and sales.home_sold_nothing_special (now answers sd.home_sale No); README coverage table and docs/COVERAGE.md name the refusal.
+- **Fix lines:** sd.home_sale, sd.home_sale_if_sold, sd.count
+- **Siblings checked:** sd.business_property_if_sold, sd.installment_if_sold, sd.like_kind_if_sold (same parent; unchanged); sales.code (code H is not named among the other codes; a home listed in the sales list with code none would overstate the gain, but the home question now precedes the list)
+- **Severity:** medium
+- **Tags:** forms, sd, interview, coverage, fixed, adversarial scout
+
+## BUG-1130 — Form 1099-DIV boxes 2e and 2f refuse every filer, though they apply only to foreign persons
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout capital (claude-opus-5-5, judgment), 2026-11-22, finding F2; reproduced with the evaluator in the fx-capital lane
+- **Source:** f1099div p. 5, Instructions for Recipient: 'Box 2e. Shows the portion of the amount in box 1a that is section 897 gain ...', 'Box 2f. Shows the portion of the amount in box 2a that is section 897 gain ...', 'Note: Boxes 2e and 2f apply only to foreign persons and entities whose income maintains its character when passed through or distributed to its direct or indirect foreign owners or beneficiaries.'; i1040gi p. 31, Line 7a, Exception 1 (boxes 2b, 2c and 2d only)
+- **Symptom:** W-2 $80,000, ordinary dividends $2,000 with box 2e $300: f1040.line16 refused at div.unsupported ('Prepare the required section 897/liquidation treatment ...'); with box 2a $1,000 and box 2f $400, lines 7a and 16 refused. The amounts are already inside boxes 1a and 2a, so a U.S. filer reports nothing more.
+- **Where:** forms/2025/div.yaml (div.unsupported, div.box2e, div.box2f)
+- **Fix:** Boxes 2e and 2f are no longer asked or tested: div.box2e, div.box2f, their gated copies and div.ordinary_boxes (read only by box 2e) are removed, div.unsupported tests boxes 3, 9 and 10 only, the less-common-boxes question lists 2b, 2c, 2d, 3, 9, 10 and 13, and the remedy no longer names section 897. The inputs are removed from fixtures (zeros, mostly), defaults, the div adapter contract and tools/engines/generate_cases.py. Fixtures (predicted by hand): div.box2e_not_asked (line16 $9,495), and mutation.m3.div.box2e_no_capital_gain now expects div.screen $0.
+- **Fix lines:** div.unsupported, div.other_boxes
+- **Siblings checked:** div.screen (the refusing line; it refuses on div.unsupported for boxes 3, 9 and 10 as before), div.other_boxes_if_dividends (its label drops 2e and 2f; value unchanged), div.bad_special (2b to 2d still checked against 2a), div.capital_gain_boxes, div.has_ordinary (still read by f1040 and qbi)
+- **Severity:** low
+- **Tags:** forms, div, over-refusal, fixed, adversarial scout
+
+## BUG-1131 — Form 1040 line 7b box 'Schedule D not required' has no line
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout capital (claude-opus-5-5, judgment), 2026-11-22, finding F3 (reading); confirmed against the source in the fx-capital lane
+- **Source:** f1040 (2025) p. 1, line 7b, 'Check if: Schedule D not required'; i1040gi p. 33, Line 7a, 'If Exception 1 applies, enter your total capital gain distributions (from box 2a of Form(s) 1099-DIV) on line 7a and check the box “Schedule D not required” on line 7b.'
+- **Symptom:** With capital gain distributions only (Schedule D not filed), the return the tool describes omits the box the IRS reads to know Schedule D was left off on purpose. No tax effect.
+- **Where:** forms/2025/f1040.yaml
+- **Fix:** New line f1040.line7b_sd_not_required (printed 7b): true when Schedule D is not filed (sd.filed false) and line 7a is above zero. The second box (child's capital gain, Form 8814) stays unmodelled: Form 8814 is refused. Fixtures (predicted by hand): sales.line7b_distributions_only (true), sales.line7b_unrecaptured_1250 (false: box 2b requires Schedule D), sales.home_sale_excluded (false: line 7a $0).
+- **Fix lines:** f1040.line7b_sd_not_required
+- **Siblings checked:** sd.filed, f1040.line7a
+- **Severity:** low
+- **Tags:** forms, f1040, fixed, adversarial scout
+
+## BUG-1132 — Form 8889 line 6 divides the family limit with a spouse for months the spouse was not an eligible individual
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout eduhsa (claude-opus-5-5, judgment), 2026-11-22, .claude/scouts-2026-11-22/adversarial-education-hsa.md; reproduced and fixed by lane fx-eduhsa (claude-opus-5-5, judgment) (M1)
+- **Source:** p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"; i8889 p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan"; i8889 p. 7, Line 6, Steps 1 to 4
+- **Symptom:** Joint; you on family HDHP coverage all year (line 2 $6,412.50), your spouse eligible January to June only (6 family months, not eligible December 1, line 2 $2,137.50), equal allocation. Step 1 took your 12 family months and halved them: your line 6 $4,275, Schedule 1 line 13 $6,412.50, and $2,137.50 of your contribution an excess, with no warning. Correct: the 6 shared months are split ($2,137.50 each) and your other 6 family months are yours alone ($4,275): your line 6 $6,412.50, Schedule 1 line 13 $8,550. An agreed allocation was refused, so there was no path to the right figure. Mismatched month counts were also accepted silently under an equal allocation.
+- **Fix:** Step 1 now counts only the family months both spouses were treated as having (f8889.step1_shared, the smaller of the two spouses' family amounts, read from household.hsa_family_sum); the remaining family months are added at the full family amount in Step 4 (f8889.alone); the reading is registered as amb.2025.hsa_split_spouse_eligible (lane reading, for the owner). Because the data holds month counts, the months are matched only when the counts are equal, one spouse was treated as family all year and the other had no eligible self-only month, or one spouse had no eligible month; other patterns refuse line 6 (f8889.family_months_bad, a new situation gate in tools/coverage/tree.json). Walked: the witness now gives $6,412.50 / $2,137.50 / $8,550 (fixture fxeduhsa.hsa_spouse_eligible_half_year); fxeduhsa.refuse.hsa_family_months_unmatched (9 and 6 family months) refuses both forms. stage13.refuse.hsa_family_one_spouse now refuses both forms at family_months_bad (before: yours at allocation_bad, the spouse's line 6 $4,300).
+- **Fix lines:** f8889.step1_shared, f8889.step1_line3, f8889.alone, f8889.line6_split, f8889.family_months_bad, f8889.line6
+- **Siblings checked:** f8889.step1, f8889.alone_total, f8889.share_raw, f8889.step4, f8889.line7, household.hsa_step1_sum, household.hsa_share_sum (the Step 1 to 4 chain; line 7 reads married_family, not split, and is unaffected; the agreed-allocation sums are unchanged, both spouses' Step 1 now equal by construction)
+- **Severity:** medium
+- **Tags:** forms, f8889, household, person, adversarial scout, fixed
+
+## BUG-1133 — Form 8889 line 6 refused, with a wrong remedy, when the spouse with an HSA was never an eligible individual
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout eduhsa (claude-opus-5-5, judgment), 2026-11-22, .claude/scouts-2026-11-22/adversarial-education-hsa.md; reproduced and fixed by lane fx-eduhsa (claude-opus-5-5, judgment) (L2, the M1 variant)
+- **Source:** p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"
+- **Symptom:** Joint; you on family coverage all year; your spouse has a Form 8889 (an old HSA) but was on Medicare all year (0 eligible months). household.hsa_split_count was 1, so line 6, line 13 and Schedule 1 line 13 were refused, with a remedy telling the filer to count family months the same way for both spouses, which is untrue for an ineligible spouse. Correct: no spouse rule; your line 6 is line 5, $8,550.
+- **Fix:** f8889.split now also requires the spouse to have been treated as having family coverage at some time (f8889.spouse_family_any); the one-spouse condition (household.hsa_split_count, person.hsa_split) is removed from f8889.allocation_bad, which can no longer hold, and its remedy now speaks only to the allocation. Walked: fixture fxeduhsa.hsa_spouse_never_eligible, line 6 $8,550, Schedule 1 line 13 $8,550, nothing refused.
+- **Fix lines:** f8889.split, f8889.spouse_family_any, f8889.allocation_bad, f8889.share
+- **Siblings checked:** f8889.line6, person.hsa_agreed, person.hsa_share, person.hsa_step1 (unchanged: they read f8889.split; the over-allocated and mixed-method fixtures still refuse at f8889.allocation_bad, with the remedy text updated)
+- **Severity:** low
+- **Tags:** forms, f8889, refusal remedy, adversarial scout, fixed
+
+## BUG-1134 — Student loan interest paid by an employer under an educational assistance program is deducted
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout eduhsa (claude-opus-5-5, judgment), 2026-11-22, .claude/scouts-2026-11-22/adversarial-education-hsa.md; reproduced and fixed by lane fx-eduhsa (claude-opus-5-5, judgment) (M2)
+- **Source:** p970 p. 33, No Double Benefit Allowed, "For payments made after March 27, 2020, do not deduct as interest on a student loan any interest paid by your employer under an educational assistance program"; p970 p. 30, chapter 4 reminder
+- **Symptom:** sli.interest points the filer to Form 1098-E box 1, which includes interest the employer paid; the only exclusion question, sli.assisted_any, named health-worker repayment programs and 529 earnings. A filer whose $2,000 of interest was all paid under a section 127 plan answers No and deducts $2,000 (s1.line21).
+- **Fix:** sli.assisted_any now asks about an employer's educational assistance plan as well (prompt, labels of the assisted lines, p970 p. 33 cite); its help says to count employer payments left out of W-2 box 1 and that payments added to box 1 remain the filer's (p970 p. 33, Interest paid by others, Example 1). Amounts unchanged for the same answers; a filer who now answers Yes and enters the employer's part gets no deduction for it.
+- **Fix lines:** sli.assisted_any, sli.assisted, sli.not_counted
+- **Siblings checked:** sli.assisted_any_if_any, sli.assisted_if_some (labels and cites updated)
+- **Severity:** medium
+- **Tags:** forms, sli, interview, adversarial scout, fixed
+
+## BUG-1135 — Student loan interest on a loan the filer is not legally obligated to pay is counted
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout eduhsa (claude-opus-5-5, judgment), 2026-11-22, .claude/scouts-2026-11-22/adversarial-education-hsa.md; reproduced and fixed by lane fx-eduhsa (claude-opus-5-5, judgment) (L1)
+- **Source:** p970 p. 33, Don't Include as Interest, "Interest you paid on a loan if, under the terms of the loan, you aren't legally obligated to make interest payments"; p. 32, Can You Claim the Deduction, "You are legally obligated to pay interest on a qualified student loan"
+- **Symptom:** A parent paying interest on a loan only the child signed answers Yes to sli.any, and none of the sli.unqualified_any items excludes it, so the parent deducts it.
+- **Fix:** sli.unqualified_any gains the item "a loan you were not legally bound to repay, such as one only your child signed"; labels and cites of the unqualified lines name the condition (p970 p. 33). Reading-level fix; no amount changes for existing answers.
+- **Fix lines:** sli.unqualified_any, sli.unqualified, sli.not_counted
+- **Siblings checked:** sli.unqualified_any_if_any, sli.unqualified_if_some (labels and cites updated); the student's own case (Interest paid by others) unchanged
+- **Severity:** low
+- **Tags:** forms, sli, adversarial scout, fixed
+
+## BUG-1136 — A ban on the American opportunity credit, or a Form 8862 case, refuses the lifetime learning credit too
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout eduhsa (claude-opus-5-5, judgment), 2026-11-22 (L3); confirmed by reading in lane fx-eduhsa, not fixed
+- **Source:** i8863 p. 3, American Opportunity Credit, "Caution: Don't claim the American opportunity credit for 2 years ... or 10 years ..."; i8863 p. 1, Form 8862 may be required (for the American opportunity credit)
+- **Symptom:** f8863.line7 refuses on f8863.ban_refused, and lines 9, the Credit Limit Worksheet and line 19 read line 7, so a filer within an AOC ban (or one who would need Form 8862) gets no education credit at all, though the lifetime learning credit is still allowed for the same and other students. Over-refusal on a rare return.
+- **Where:** forms/2025/f8863.yaml f8863.ban, f8863.ban_refused, f8863.line7; per-student AOC eligibility person.edu_aoc / dependent.edu_aoc (Part III lines 23 to 26)
+- **Proposed fix:** treat a ban (and, by the filer's choice, a Form 8862 case) as making each student ineligible for the AOC, so the expenses go to Part III line 31 and the LLC. This needs the ban question moved ahead of the per-student AOC test (today it is gated on line 1, which the per-student test feeds, so a direct reference would cycle), and touches person.yaml and dependent.yaml, which other lanes in flight edit; left for a later unit.
+- **Proposed fix lines:** f8863.line7, person.edu_aoc, dependent.edu_aoc
+- **Severity:** low
+- **Tags:** forms, f8863, over-refusal, adversarial scout
+
+## BUG-1137 — Schedule C pay for work done outside the United States is counted as qualified business income
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout setax (claude-opus-5-5), finding M1 (.claude/scouts-2026-11-22/adversarial-se-qbi.md); confirmed by lane fx-seqbi (claude-opus-5-5, judgment), 2026-11-23
+- **Source:** i8995 p. 2, Determining Your Qualified Business Income, "QBI doesn’t include any of the following", "Income that isn’t effectively connected with the conduct of a trade or business within the United States"; i1116 p. 5, Income From Sources Outside the United States, "Foreign source income generally includes ... Compensation for services performed outside the United States"
+- **Symptom:** A sole proprietor paid for work done while abroad (no Form 2555 exclusion, no foreign tax) has that income counted as qualified business income. Evaluator, wages $60,000 and Schedule C line 1 $80,000: Form 8995 line 2 $74,348.18, deduction $14,869.64, Form 1040 line 16 $17,741.85; with $20,000 of it earned abroad the deduction is about $11,152 (scout's figure), so tax is understated by about $818.
+- **Where:** forms/2025/sc.yaml (sc.special; sc.qbi reads the whole net profit); interview/2025/questions.yaml (sc.special). No question asked where the work was done; sa.excluded_income covers only Form 2555/4563/Puerto Rico and ftc.all_passive only foreign tax paid.
+- **Fix:** sc.special gains the item "income for services you performed while outside the United States (income not effectively connected with a trade or business within the United States)" (bank: "part of its income is pay for work you did while outside the United States"); a Yes refuses through sc.special as the other items do. Apportioning QBI would need an allocation of expenses the tool does not ask for. The item is placed after the former-employee item so as not to touch the start-up-costs hunk of the adversarial-fixes branch. No amount or refusal of an existing fixture changes (same gate, same wording). Inference not in the archive: that pay for services performed abroad is not effectively connected for a U.S. person's own business (IRC 864(c)(4); i8995 points to IRS.gov/ECI, not archived); the cost of a wrong reading is a refusal, not a wrong amount.
+- **Fix lines:** sc.special
+- **Siblings checked:** sc.screened (reads sc.special, refusal unchanged); sc.special (the only per-business screen of QBI items); qbi.unsupported and sa.excluded_income (return-level screens, unchanged: they ask other facts)
+- **Severity:** medium
+- **Tags:** sc, qbi, f8995, refusal, fixed
+
+## BUG-1138 — qbi.coop_patron is asked of every filer and refuses a cooperative patron with no QBI, who files no Form 8995
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout setax (claude-opus-5-5), finding L1; reproduced by lane fx-seqbi (claude-opus-5-5, judgment), 2026-11-23: persona 01_single_w2 plus qbi.coop_patron true was refused at qbi.unsupported after 126 answers
+- **Source:** i8995 p. 1, Who Can Take the Deduction, "Individuals and eligible estates and trusts that have QBI use Form 8995 to figure the QBI deduction if: • You have QBI, qualified REIT dividends, or qualified PTP income or loss (all defined later); and ... • You aren’t a patron in a specified agricultural or horticultural cooperative"
+- **Symptom:** qbi.coop_patron is asked of every filer and a Yes refuses, so a filer with wages only who buys from a farm cooperative is refused although such a filer files no Form 8995 or 8995-A.
+- **Where:** forms/2025/qbi.yaml (qbi.coop_patron, qbi.unsupported); fixture stage4.refuse.qbi (W-2 only) encoded the over-refusal
+- **Fix:** new gates qbi.has_amount (the return has a Schedule C or qualified section 199A dividends) and qbi.coop_patron_if_amount; qbi.unsupported reads the gate, so the question is asked and refuses only when the return could file Form 8995 or 8995-A. amb.2025.qbi_cooperative_patron (refuse any patron, specified or not) is unchanged for those filers. Fixtures: stage4.refuse.qbi restated with a Schedule C of $10,000 (same refusal); new qbi.coop_patron.no_qbi (W-2-only patron, deduction $0, no refusal; predicted by hand). Coverage: business.qbi_coop_patron restated to a business owner; new business.qbi_coop_patron_no_business (not asked); one_business set answers qbi.coop_patron false.
+- **Fix lines:** qbi.coop_patron_if_amount, qbi.has_amount, qbi.unsupported
+- **Siblings checked:** qbi.prior_form and qbi.reit_loss (also asked of a filer with no QBI or section 199A dividends; a No is the typical answer and no value or refusal is wrong, so left as they are); qbi.suspended_if_business (already gated on a Schedule C)
+- **Severity:** low
+- **Tags:** qbi, over-refusal, interview, fixed
+
+## BUG-1139 — Self-employed health insurance above the Form 7206 limit is lost from Schedule A line 1
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout setax (claude-opus-5-5), finding L2; reproduced by lane fx-seqbi (claude-opus-5-5, judgment), 2026-11-23: evaluator, Schedule C line 1 $5,000, premiums $8,000, itemizing with $1,000 of other medical costs: Form 7206 line 14 $4,646.76 and Schedule A line 1 $1,000.00
+- **Source:** i7206 p. 2, "However, any medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as medical expenses on Schedule A (Form 1040) if you itemize deductions"
+- **Symptom:** The Schedule A medical question (order 200) tells the filer to leave out "premiums you deduct as self-employed health insurance (Schedule 1, line 17)" before the business's health insurance is asked (order 252), and nothing carries the part above the Form 7206 limit to Schedule A, so a filer following the help loses it from the medical deduction.
+- **Where:** forms/2025/sa.yaml (sa.line1, sa.line1_if_medical, sa.line4); interview/2025/questions.yaml (sa.line1)
+- **Fix:** new sc.f7206_unused (line 3 minus line 14) and gate sc.f7206_unused_if_uses (zero without health insurance under the business), person.sehi_unused and sa.sehi_unused (sums); printed line 1 is now sa.line1_total = sa.line1_if_medical (now a gate) + sa.sehi_unused; sa.line4 reads it in place of sa.line1_if_medical (its rule, line 1 less line 3, is unchanged, so it is not a fix line; the transcription and render logs of f1116 and s2, whose lines read line 4, already answer their current subjects per rerun_all --dry-run). sa.line1's source and help now say to leave out insurance entered for the self-employed health insurance deduction, since the part not deducted is added. Fixture sa.sehi_unused.medical (predicted by hand: line 1 $4,353.24, line 4 $2,103.24).
+- **Fix lines:** sa.line1, sa.line1_total, sa.sehi_unused, person.sehi_unused, sc.f7206_unused, sc.f7206_unused_if_uses
+- **Siblings checked:** sa.line1_if_medical (now the gate beneath line 1, value unchanged); sa.line17 and f1116.line3a_itemized (read the larger total, as the source requires); person.x_c05_min and s2.e05_over (Form 5329 exception 05 reads Schedule A line 4, medical expenses over 7.5% of AGI, which now includes the carried premiums, as i5329 p. 5 "unreimbursed medical expenses" does); sa.medical_any and sa.medical_premiums (their gate does not hold back the carried amount, which is added outside it); ltc.amount (Form 7206 line 2 is already limited by age, the same limit Schedule A applies); sc.hi_screened (the premium tax credit case stays refused, so no Form 8962 interaction)
+- **Severity:** low
+- **Tags:** sa, sc, f7206, fixed
+
+## BUG-1140 — qbi.suspended refuses a section 179 carryover the Schedule C already deducts
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout setax (claude-opus-5-5), finding L3; confirmed by reading, lane fx-seqbi (claude-opus-5-5, judgment), 2026-11-23
+- **Source:** i8995 p. 3, "Such Code provisions include, but aren’t limited to, sections 163(j), 179, 461(l), 465, 469, 704(d), and 1366(d)"; "In general, losses and deductions incurred prior to 2018 are not qualified losses or deductions and are not included in QBI in the year they are included in calculating taxable income"
+- **Symptom:** qbi.suspended ("deducting a business loss or expense of an earlier year that a tax limit kept you from deducting then") is truthfully answered Yes by a filer whose section 179 carryover the tool already deducts on the Schedule C (s179.carryover), and the return is refused, though Form 8995 lines 2 and 3 add to the same total either way.
+- **Where:** forms/2025/qbi.yaml (qbi.suspended); interview/2025/questions.yaml (qbi.suspended help)
+- **Fix:** the line's text and the help leave out a section 179 deduction carried over from 2018 or later and deducted on the return's Schedule C. A carryover from before 2018 is not a qualified deduction (i8995 p. 3) and the tool would wrongly subtract it from QBI, so it still answers Yes and is refused. Wording only; no fixture value changes.
+- **Fix lines:** qbi.suspended
+- **Siblings checked:** s179.carryover (the deduction's own question, unchanged), qbi.suspended_if_business
+- **Severity:** low
+- **Tags:** qbi, over-refusal, wording, fixed
+
+## BUG-1141 — qbi.carryforward names a Form 8995-A line that does not exist
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout setax (claude-opus-5-5), finding L4; confirmed by reading f8995a (2025), lane fx-seqbi (claude-opus-5-5, judgment), 2026-11-23
+- **Source:** i8995a p. 6, Line 6, "The amount reported on this line must be reported in the next tax year on Schedule C (Form 8995-A), line 2, or Form 8995, line 3"; f8995a (2025) has no line titled "Total qualified business (loss) carryforward"
+- **Symptom:** qbi.carryforward asks a Form 8995-A filer for "the line of that name on Form 8995-A", which does not exist; the carryforward is on Schedule C (Form 8995-A), line 6.
+- **Where:** forms/2025/qbi.yaml (qbi.carryforward); interview/2025/questions.yaml (qbi.carryforward)
+- **Fix:** the source and the prompt name line 6 of Schedule C (Form 8995-A) when the latest form was a Form 8995-A (zero when it had no Schedule C). Wording only.
+- **Fix lines:** qbi.carryforward
+- **Siblings checked:** qbi.carryforward_if_prior_form (gate, unchanged); qbi.reit_loss (names Form 8995 line 17 and the corresponding Form 8995-A line, which exists: line 40), f8995.line3
+- **Severity:** low
+- **Tags:** qbi, wording, fixed
+
+## BUG-1142 — Closure: BUG-1061 is fixed (an unreported earlier business loss now refuses)
+
+- **Date:** 2026-11-23
+- **Closes:** BUG-1061
+- **Closure:** fixed
+- **Caught by:** lane fx-seqbi (claude-opus-5-5, judgment), 2026-11-23; reproduced first with the scout's witness (wages $60,000, Schedule C $40,000): with qbi.prior_form No the deduction is $7,434.82 and Form 1040 line 16 $11,189.00; entering the $10,000 loss gives $5,434.82 and $11,629.00, $440 of tax
+- **Source:** i8995a p. 6, "This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence"; i8995 p. 5, Line 16, "This amount will offset QBI in later tax years regardless of whether"; i8995 p. 3, "In general, losses and deductions incurred prior to 2018 are not qualified losses or deductions"
+- **Fix:** refused, not computed (the loss of an unreported year needs that year's QBI, which the filer cannot read off any form). New question qbi.unreported_loss, asked with a Schedule C (gate qbi.unreported_loss_if_business), order 296 seq 3, right after the carryforward: "In any year from 2018 to 2024 whose tax return had no Form 8995 or 8995-A, did your (or, on a joint return, your spouse's) businesses lose money overall?" A Yes refuses at qbi.eligible (first refusal entry, form "Form 8995, line 3, a qualified business loss of 2018 to 2024 never reported on Form 8995 or 8995-A"), told on its own answer. qbi.reit_loss, qbi.suspended and qbi.coop_patron move to seq 4 to 6. Fixtures qbi.unreported_loss.refuse and qbi.unreported_loss.none (predicted by hand); default false; coverage row business.qbi_unreported_loss and the one_business set answers it false. Over-refuses a filer whose unreported loss a later year used up; the filer cannot tell that without the same computation.
+- **Fix lines:** qbi.unreported_loss, qbi.unreported_loss_if_business, qbi.eligible
+- **Siblings checked:** qbi.prior_form, qbi.carryforward_if_prior_form (the reported carryforward, unchanged), qbi.reit_loss_if_prior_form (a REIT or PTP loss needs a form to exist; unchanged)
+- **Severity:** low
+- **Tags:** qbi, f8995, false-no, refusal, closure, fixed
+
+## BUG-1143 — Form 8853 screen: scope.archer_msa asks whether you put money into an Archer MSA, so a contribution by the employer reads as No
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-accounts.md L3), confirmed by lane adlow (claude-opus-5-5) by reading the form and the interview entry
+- **Source:** i8853 p. 1, Who Must File: "You (or your employer) made contributions for 2025 to your Archer MSA" and "your spouse (or their employer) made contributions for 2025 to your spouse's Archer MSA"
+- **Symptom:** The only Archer MSA screen for a person with no HSA asks "did you (or, on a joint return, your spouse) put money into, or take money out of, an Archer MSA"; a filer whose employer made the contribution can answer No, so Form 8853 is not refused and an employer excess over the Section A limit is left out of income. f8889.archer, the screen for HSA holders, names "you, your employer or anyone else". Rare: no new Archer MSAs since 2007.
+- **Where:** forms/2025/scope.yaml (scope.archer_msa label and source); interview/2025/questions.yaml (scope.archer_msa tick). scope is claimed by bugfix-other, so not fixed in lane adlow.
+- **Proposed fix:** Word it as f8889.archer does: "did anyone (you, your employer or anyone else) put money into an Archer MSA or Medicare Advantage MSA for you (or, on a joint return, your spouse) for 2025, including amounts put in during 2026 for 2025, or did you take money out of one in 2025?"
+- **Proposed fix lines:** `scope.archer_msa`
+- **Severity:** low
+- **Tags:** forms, scope, f8853, wording, adversarial review, lane-adlow
+
+## BUG-1144 — Trump accounts: a parent of a child born in 2025 is never told of the Form 4547 election and the $1,000 pilot contribution
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-accounts.md L2), confirmed by lane adlow (claude-opus-5-5): grep of forms/2025 and interview/2025 finds no Trump account or Form 4547 text
+- **Source:** i1040gi p. 6, What's New, Trump accounts and new Form 4547: "If the child was born after 2024 and before 2029, is a U.S. citizen, and meets certain other requirements, the authorized individual may also elect to receive a $1,000 pilot program contribution to the child's Trump account. Both elections can be made on Form 4547, which can be filed at the same time as the authorized individual's 2025 income tax return."
+- **Symptom:** No line of the 2025 return changes (contributions start in 2026), but a parent of a child born in 2025 preparing the return here is never pointed to the election.
+- **Where:** no form or notice; candidate homes are the dependent help or a values-sheet notice keyed on a dependent born in 2025 (forms/2025/dependent.yaml).
+- **Proposed fix:** Owner's choice: (A) a standing notice when a listed dependent was born in 2025, quoting i1040gi p. 6; or (B) one sentence in the dependent help. No refusal.
+- **Severity:** low
+- **Tags:** notice, dependent, adversarial review, owner decision, lane-adlow
+
+## BUG-1145 — Estimated tax penalty notice says the IRS will always figure it, but the instructions name cases where the filer must file Form 2210
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-tax-payments.md L2), confirmed by lane adlow (claude-opus-5-5): engine/src/output.ts prints "Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38)." on every values sheet (seen in this lane's evaluations)
+- **Source:** i1040gi p. 65, Line 38 TIP: "you can leave line 38 blank and the IRS will figure the penalty and send you a bill ... There are situations where the IRS can't figure your penalty for you and you must file Form 2210. See Form 2210 for details." Form 2210 and its instructions are not archived (sources/2025 has no f2210 or i2210).
+- **Symptom:** A filer in a must-file situation (for example one using the annualized income installment method, or asking for a waiver) is told nothing is needed. No amount on lines 1a to 37 changes.
+- **Where:** engine/src/output.ts (the standing notice); spec/spec.md section on scope.
+- **Proposed fix:** Archive Form 2210 and its 2025 instructions; then reword the notice to "the IRS will generally figure it; in the cases the Form 2210 instructions list you must file Form 2210 yourself (i1040gi p. 65)", or screen the must-file boxes and refuse them.
+- **Severity:** low
+- **Tags:** notice, f1040, source archive, adversarial review, lane-adlow
+
+## BUG-1146 — Refund routing (Form 1040 lines 35b to 35d, Form 8888) is neither asked nor mentioned, although paper refund checks are being phased out
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-tax-payments.md L3), confirmed by lane adlow (claude-opus-5-5): no line, input or notice for lines 35b to 35d or Form 8888 in forms/2025, interview/2025 or engine/src
+- **Source:** i1040gi p. 62: "Starting in October 2025, the IRS will generally stop issuing paper checks for federal disbursements, including tax refunds, unless an exception applies"; lines 35b to 35d (routing and account number, account type); Form 8888 to split a refund.
+- **Symptom:** A filer due a refund gets no prompt that direct-deposit details are effectively required. Consistent with the non-goal of filing (spec 2.3), so no amount is wrong.
+- **Where:** forms/2025/f1040.yaml (no line 35b to 35d); values-sheet notices.
+- **Proposed fix:** When line 34 is above zero, add a notice citing i1040gi p. 62 that lines 35b to 35d (or Form 8888) must be completed on the filed return. No data collection.
+- **Severity:** low
+- **Tags:** notice, f1040, scope, adversarial review, lane-adlow
+
+## BUG-1147 — Schedule A: the personal-use share of a rental's real estate tax is not carried to Schedule A, and the mortgage interest help can draw in interest on a place that is not a home
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-business.md L2, suspected), confirmed in the encoding by lane adlow (claude-opus-5-5); the Schedule A outcome depends on how the filer reads two help texts, so it is inferred
+- **Source:** p527 p. 25, Personal Use of Dwelling Unit: "Only your rental expenses may be deducted on Schedule E ... Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize"; p936 p. 4, Second home rented out: "If you don't use the home long enough, it is considered rental property and not a second home."
+- **Symptom:** rental.line16 and rental.line12 put taxes and interest times fair days over total days on Schedule E and carry the rest nowhere. The sa.line5b question asks for tax on real estate "not used for business" and its help says to count only the tax for the rest of the year of a rented home; sa.mortgage_interest says to count interest for the rest of the year. A rental with 10 personal days out of 210 used days (not a home under the 14-day / 10% test) can lose its personal tax share ($286 of $6,000 in the scout's case) or add about $329 of interest that p936 does not allow as home mortgage interest.
+- **Where:** forms/2025/rental.yaml (rental.line12, rental.line16); interview/2025/questions.yaml (sa.line5b, sa.mortgage_interest help). rental is claimed by bugfix-rental and sa by bugfix-other, so not fixed in lane adlow.
+- **Proposed fix:** Add to Schedule A real estate tax, mechanically, the sum over reported non-home rentals of rental.amt16_if_any less rental.line16; in the sa.mortgage_interest help, say that a place rented out and used personally 14 days or less (or under 10% of the rented days) is not a home here, so none of its interest is counted.
+- **Proposed fix lines:** `sa.line5b` (or a new Schedule A addend), `rental.line16`
+- **Severity:** low
+- **Tags:** forms, sa, rental, adversarial review, lane-adlow
+
+## BUG-1148 — QBI rental question asks whether the filer treats a rental as a business, with only the safe harbor as example, though section 162 status is a fact
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-business.md L3, suspected), wording confirmed by lane adlow (claude-opus-5-5) in forms/2025/sche.yaml (sche.qbi_business) and its interview entry; whether it misleads is inferred
+- **Source:** i8995 pp. 1-2, Trade or business: "Rental real estate that doesn't meet the requirements of the safe harbor may still be treated as a trade or business for purposes of the QBI deduction if it's a section 162 trade or business"; the standard: "your primary purpose for engaging in the activity is for income or profit and you're involved in the activity with continuity and regularity."
+- **Symptom:** "Do you treat a rental as a business ...(for example, 250 hours or more a year of rental services, with separate books)?" invites No from an owner who never elected the safe harbor but manages rentals regularly; the rental's income or loss is then left out of QBI (in the scout's case, a $10,000 rental loss left out overstates the deduction by $2,000). Yes refuses, so a No is the only path that computes.
+- **Where:** forms/2025/sche.yaml (sche.qbi_business); interview/2025/questions.yaml. sche is claimed by bugfix-other, so not fixed in lane adlow.
+- **Proposed fix:** Reword: "Is renting out any of these a business: you do it to make money and are involved in it regularly and continuously (for example, 250 hours or more a year of rental services with separate books)?" Yes still refuses.
+- **Proposed fix lines:** `sche.qbi_business`
+- **Severity:** low
+- **Tags:** forms, sche, f8995, wording, adversarial review, lane-adlow
+
+## BUG-1149 — Form 8960 screen refuses every Schedule C filer above the threshold for "business income", although income of a non-passive trade or business is not net investment income
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-business.md L4, over-refusal), confirmed by lane adlow (claude-opus-5-5) by reading forms/2025/f8960.yaml (f8960.unsupported list, first item "annuity, business or pass-through income")
+- **Source:** i8960 (2025), Line 4a: "total income from Schedules C, E, and F (Form 1040) is entered on line 4a. Nonpassive income not subject to NIIT is entered as a negative amount on line 4b"; Line 4b, "Adjustment for Net Income or Loss Derived in the Ordinary Course of a Non-Section 1411 Trade or Business or Otherwise Excepted".
+- **Symptom:** A Schedule C filer who materially participates (sc.passive Yes is already required) with AGI above the threshold answers Yes truthfully and is refused at f8960.line1. Such income nets to zero on line 4c, but the source puts it on line 4a and backs it out on line 4b, which the tool does not compute (f8960.line4a is Schedule 1 line 5 only); the scout's statement that it appears on no Form 8960 line does not hold. A coverage loss, not a wrong amount; docs/COVERAGE.md lists "a business or pass-through" as not covered.
+- **Where:** forms/2025/f8960.yaml (f8960.unsupported); interview help "Yes if any item the question lists applies". f8960 is claimed by bugfix-other, so not changed in lane adlow.
+- **Proposed fix:** Owner coverage choice. To cover it: add the nonpassive Schedule C net profit or loss to f8960.line4a and its negative to line 4b, then narrow the screen item to "income from a business you did not materially participate in, a business of trading financial instruments or commodities, or a partnership, S corporation, estate or trust" (the two non-K-1 cases are already refused by sc.passive and sd.trader_election).
+- **Proposed fix lines:** `f8960.unsupported`, `f8960.line4a`, `f8960.line4b`
+- **Severity:** low
+- **Tags:** forms, f8960, over-refusal, coverage, adversarial review, lane-adlow
+
+## BUG-1150 — State paid family leave benefits: no question collects them (suspected; the governing ruling is not archived)
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-income.md S1, suspected), confirmed by lane adlow (claude-opus-5-5) only as far as the gap in the questions: s1.uc_any asks about "unemployment benefits", and no question names paid family or medical leave benefits
+- **Source:** Only i1040gi p. 89, Schedule 1 line 7 TIP, is archived: "Beginning in 2025, if you made contributions to a governmental paid family leave program, you will now include the full amount of those contributions in your income". It concerns contributions, not benefits. Rev. Rul. 2025-4 and the 2025 Instructions for Form 1099-G are not archived.
+- **Symptom:** If a state reports taxable family-leave benefits on Form 1099-G and the filer reads "unemployment benefits" narrowly, the income is left out with no refusal. Not verified against a source that states how benefits are reported.
+- **Where:** interview/2025/questions.yaml (s1.uc_any, s1.uc_unsupported help); forms/2025/s1.yaml.
+- **Proposed fix:** Archive Rev. Rul. 2025-4 and the 2025 Instructions for Form 1099-G; then decide whether the benefits belong on Schedule 1 line 7 or line 8z, or need a refusal, and name them in the question.
+- **Severity:** low (suspected)
+- **Tags:** s1, source archive, suspected, adversarial review, lane-adlow
+
+## BUG-1151 — New York small business modification (IT-225 S-201) is never reached for a sole proprietor with employees
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-ny-refusals.md M1), confirmed by lane adlow (claude-opus-5-5) by reading: ny_it201.line31 is ny.zero, refused only through gate.it225 = ask.it225, whose interview help names a disability income exclusion, an accumulation distribution, Holocaust reparations and a wrongful-conviction award, not a business subtraction; nothing in forms/ny reads sc.line26 or sc.line26_if_employees
+- **Source:** ny_it225i, S-201: "you may deduct an amount equal to 15% of the net items of income, gain, loss, and deduction attributable to that business that are included in your federal adjusted gross income"; "a small business means: a sole proprietor who employs one or more persons during the tax year, and has net business income or net farm income of greater than zero but less than $250,000"
+- **Symptom:** A New York filer with one Schedule C, net profit $100,000 and wages paid to an employee answers No to the IT-225 question; line 31 is $0 with no refusal, so about $15,000 x (6% State + 3.876% City), roughly $1,480, of tax is overstated.
+- **Where:** forms/ny/2025/ny_it201.yaml (ny_it201.line31, gate.it225); interview/ny/2025/questions.yaml (ask.it225 help). ny_it201 is claimed by bugfix-other (and edited by ny-schedule-e), so not fixed in lane adlow.
+- **Proposed fix:** Refuse line 31 (IT-225 S-201) when any Schedule C has sc.line26_if_employees above zero and a net profit above zero and below $250,000; or compute 15% of the qualifying Schedule C net profit. Add "a business with employees (the small business modification)" to the ask.it225 help.
+- **Proposed fix lines:** `ny_it201.line31`, `ny_it201.gate.it225`
+- **Severity:** medium
+- **Tags:** ny, it201, it225, adversarial review, lane-adlow
+
+## BUG-1152 — New York: Tier 2 and supplemental railroad retirement annuities (IT-225 S-122) are taxed with no subtraction and no refusal for a recipient under 59 1/2
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-ny-refusals.md M2, suspected), confirmed by lane adlow (claude-opus-5-5) by reading: the federal 1099-R list accepts a Form RRB-1099-R; the New York pension questions (ask.gov_pension, ask.gov_pension_other) name federal, New York public, MTA, MABSTOA, LIRR, SUNY, CUNY and State Education Department plans, not the Railroad Retirement Board; line 31 is reached only through ask.it225
+- **Source:** ny_it225i, S-122: "Enter supplemental annuity or Tier 2 benefits received under the Railroad Retirement Act of 1974, or benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)."
+- **Symptom:** A railroad annuitant under 59 1/2 with a taxable Tier 2 amount of $12,000 answers No to the pension questions and to IT-225; IT-201 line 10 carries the $12,000 and line 31 is $0, overstating New York tax by about $1,180. Railroad Unemployment Insurance Act benefits (federal Schedule 1 line 7) have the same gap. Not evaluated: the RRB-1099-R record shape was not traced.
+- **Where:** forms/ny/2025/ny_it201.yaml (line 31, ask.gov_pension_other); interview/ny/2025/questions.yaml. ny_it201 is claimed by bugfix-other, so not fixed in lane adlow.
+- **Proposed fix:** Ask, when any Form 1099-R entry is an RRB-1099-R or Schedule 1 line 7 is above zero: "Was any of it a Tier 2 or supplemental annuity from the Railroad Retirement Board, or railroad unemployment benefits?" A Yes refuses line 31 (IT-225 S-122). Or add railroad annuities to ask.gov_pension_other, whose Yes already refuses.
+- **Proposed fix lines:** `ny_it201.line31`, `ny_it201.ask.gov_pension_other`
+- **Severity:** medium (suspected)
+- **Tags:** ny, it201, it225, adversarial review, lane-adlow
+
+## BUG-1153 — New York withholding question is asked only with retirement, unemployment or gambling income, so New York tax withheld on other forms is never asked
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-ny-refusals.md L2, suspected), confirmed by lane adlow (claude-opus-5-5) by reading ny_it201.has_other_payments (f1040.line4a, f1040.line5a, s1.line7, s1.line9 only)
+- **Source:** ny_it201i p. 21, Lines 72, 73, and 74: "Enter on the appropriate line your total New York State, New York City, and Yonkers tax withheld from any of the following:" Form IT-2, IT-1099-R, 1099-G, W-2G. The source does not name Forms 1099-NEC, 1099-MISC, 1099-INT or 1099-DIV, so their treatment is unsettled.
+- **Symptom:** New York tax withheld on a nonemployee or investment payment is never asked about; the filer is credited with less withholding than was taken (an overpayment, not an understatement).
+- **Where:** forms/ny/2025/ny_it201.yaml (ny_it201.has_other_payments, ask.other_withholding). Claimed by bugfix-other, so not fixed in lane adlow.
+- **Proposed fix:** Read s1.has_sc (and f1040.line2b, line3b) in has_other_payments, or add a sentence to the ask.other_withholding help naming those forms; first settle with the owner whether New York credits such withholding on lines 72 to 74.
+- **Proposed fix lines:** `ny_it201.has_other_payments`
+- **Severity:** low (suspected)
+- **Tags:** ny, it201, withholding, adversarial review, lane-adlow
+
+## BUG-1154 — A Roth-only IRA contributor skips every mechanical excess-contribution check, and the Roth income limit is never tested
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-accounts.md M1), reproduced by lane adlow (claude-opus-5-5) with the evaluator: single, born 1985, W-2 $50,000, Roth contribution $8,000, no traditional, person.ira_extra_left No: no refusal, Schedule 2 line 8 $0, line 24 $3,875; the same case with an $8,000 traditional contribution is refused by person.ira_over_limit
+- **Source:** p590a p. 2, What's New: Roth contributions phase out for MFJ/QSS at modified AGI $236,000 to $246,000, for single, HOH or MFS living apart at $150,000 to $165,000, and for MFS who lived with the spouse at $0 to $10,000; p590a p. 43: "A 6% excise tax applies to any excess contribution to a Roth IRA"; i5329 p. 7, Part IV, lines 19 and 23; i8606 p. 4, Modified AGI for Roth IRA purposes.
+- **Symptom:** person.ira_over_limit requires person.ira_has (traditional contributions), and ira.over_comp and ira.kbh_short require ira.any_trad, all attached to person.ira_line11 on the traditional path, so a person with only Roth contributions is checked only by the self-assessed person.ira_extra_left, whose help gives no thresholds. A $1,000 excess (Part IV tax $60) in the reproduced case, and a $7,000 excess (tax $420) for a filer with no compensation or an MFS filer living with the spouse, go unrefused.
+- **Where:** forms/2025/person.yaml (person.ira_over_limit, person.ira_line11), forms/2025/ira.yaml (ira.over_comp, ira.kbh_short); interview help of person.ira_extra_left. person is claimed by bugfix-other and ira by bugfix-older, so not fixed in lane adlow.
+- **Proposed fix:** (1) Drop the person.ira_has condition from person.ira_over_limit (ira_own_total already includes Roth). (2) Test ira.over_comp and ira.kbh_short whenever any IRA contribution is made. (3) Add a mechanical Roth screen refusing when sav_roth > 0 and modified AGI for Roth purposes (i8606 p. 4) reaches $236,000 (MFJ/QSS), $150,000 (single, HOH, MFS apart), or is above $0 for MFS living with the spouse. (4) Attach these refusals to a line every return with Roth contributions reads (Schedule 2 line 8 or the Form 8880 line 1 path), not only person.ira_line11. (5) Add the thresholds and the MFS $10,000 rule to the person.ira_extra_left help.
+- **Proposed fix lines:** `person.ira_over_limit`, `ira.over_comp`, `ira.kbh_short`, `person.ira_extra_left`
+- **Severity:** medium
+- **Tags:** forms, person, ira, f5329, adversarial review, lane-adlow
+
+## BUG-1155 — Form 5329: an IRA distribution may claim the employer-plan-only exceptions 13, 14, 15, 17 and 18
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-accounts.md L1), reproduced by lane adlow (claude-opus-5-5) with the evaluator on fixture stage21.refuse.wrong_kind (IRA, code 1, box 1 $3,000, exception amount $3,000): exception e01 is refused by retirement.wrong_kind; e13, e14, e15, e17 and e18 are accepted with Schedule 2 line 8 $0, where the $300 additional tax is due
+- **Source:** i5329 p. 5, exceptions table: 13 "Distributions from a section 457 plan, which aren't from a rollover from a qualified retirement plan"; 14 "Distributions from a plan maintained by an employer if ..."; 15 "Distributions that are dividends paid with respect to stock described in section 404(k)"; 17 "phased retirement annuity payments made to federal employees"; 18 "Permissible withdrawals under section 414(w) from eligible automatic contribution arrangements".
+- **Symptom:** retirement.wrong_kind refuses only 01 and 06 on an IRA and 07, 08 and 09 on a plan; the interview asks for "the number from the table", so a filer can pick an employer-plan exception for an IRA and lose the 10% tax.
+- **Where:** forms/2025/retirement.yaml (retirement.wrong_kind and its remedy). retirement is claimed by bugfix-older, so not fixed in lane adlow.
+- **Proposed fix:** Add e13, e14, e15, e17 and e18 to the IRA branch of retirement.wrong_kind and update the remedy. Also consider e16 (annuity contracts, investment before August 14, 1982), which the evaluator also accepts on an IRA; whether it can apply to an individual retirement annuity was not settled.
+- **Proposed fix lines:** `retirement.wrong_kind`
+- **Severity:** low
+- **Tags:** forms, retirement, f5329, adversarial review, lane-adlow
+
+## BUG-1156 — IRA Deduction Worksheet line 8 counts only W-2 box 1 and alimony, so household-employee pay, tip income and Form 8919 wages cause a false excess-contribution refusal
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-income.md L2), reproduced by lane adlow (claude-opus-5-5) with the evaluator: single, household-employee wages $5,000 with no W-2 (Form 1040 line 1b $5,000), traditional IRA $4,000: ira.line8 $0, ira.line10 $0, Schedule 1 line 20 refused by ira.over_comp
+- **Source:** p590a p. 6, What Is Compensation?: "Wages, salaries, tips, professional fees, bonuses, and other amounts you receive for providing personal services are compensation." i1040gi p. 98, IRA worksheet line 8: "Wages, salaries, tips, etc. Generally, this is the amount reported in box 1 of Form W-2."
+- **Symptom:** ira.line8 = ira.wages (W-2 box 1) + Schedule 1 line 2a, so pay on Form 1040 lines 1b, 1c and 1g (and strike benefits in line 1h) is not compensation and ira.over_comp (or ira.kbh_short on a joint return) refuses a lawful contribution. A refusal, not a wrong amount: line 12 is the smallest of 7a, 10 and 11a, and whenever line 10 binds over_comp refuses first.
+- **Where:** forms/2025/ira.yaml (ira.line8). ira is claimed by bugfix-older, so not fixed in lane adlow.
+- **Proposed fix:** Add f1040.line1b, f1040.line1c, f1040.line1g and the strike benefits in person.line1h to ira.line8, citing p590a p. 6; or record an ambiguity on the worksheet's "Generally".
+- **Proposed fix lines:** `ira.line8`
+- **Severity:** low
+- **Tags:** forms, ira, over-refusal, adversarial review, lane-adlow
+
+## BUG-1157 — Form 4952 line 4a leaves out royalty income the return already holds; a return with Form 4952 and a royalty is now refused
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-business.md L1), reproduced by lane adlow (claude-opus-5-5) with the evaluator: margin interest $8,000, ordinary dividends $1,000, one royalty with $10,000 on Schedule E line 4, f4952.unsupported No: line 4a $1,000, line 8 $1,000, $7,000 carried forward, no refusal
+- **Source:** f4952 p. 3, Line 4a: "Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties"
+- **Symptom:** f4952.line4a is Form 1040 lines 2b plus 3b only. Royalties are encoded (business royalties are refused by royalty.business, so every royalty left is investment property), but they reached Form 4952 only if the filer answered Yes to the last clause of the long f4952.unsupported question. In the reproduced case the source gives line 4a $11,000 and line 8 $8,000, so $7,000 of deduction was deferred.
+- **Where:** forms/2025/f4952.yaml (f4952.line4a)
+- **Fix:** New gate f4952.royalty_held: when scope.rental is Yes, Form 4952 is used (f4952.used) and Schedule E lists a royalty property (sche.royalty_count > 0), through the helper f4952.royalty_used; false when no rental or royalty is reported. f4952.line4a refuses on it, so lines 4c to 8 and Schedule A line 9 are refused with it. Refusal rather than computation: line 5 would also need the royalty expenses that are investment expenses, a reading left for a later coverage change.
+- **Fix lines:** `f4952.line4a`, `f4952.royalty_held`, `f4952.royalty_used`
+- **Siblings checked:** `f4952.line4a` (the only reader of the new gate and the only line on the same anchor; generated by the sibling tool). Line 4a's other omission, annuities, was not changed (nonqualified annuity income is not separately encoded); f8960.line9a reads line 8 and is refused with it.
+- **Regression predictions:** new `adlow.f4952.royalty_refused` (lines 4a and 8 refused by f4952.royalty_held), predicted by hand before evaluation; the stage4 and class M Form 4952 cases, which list no royalty, are unchanged; classm.f4952.3 answers scope.rental Yes with no royalty roster, so its inputs gain "$royalty": [] (input ripple; expectations unchanged).
+- **Severity:** low
+- **Tags:** forms, f4952, fixed, adversarial review, lane-adlow
+
+## BUG-1158 — Form 1040 lines 35a and 36 accepted a split larger than the overpayment on line 34, or a split when nothing was overpaid
+
+- **Caught by:** the adversarial scout of 2026-11-22 (adversarial-tax-payments.md L1), reproduced by lane adlow (claude-opus-5-5) with the evaluator on fixture stage13.wages_both: withholding $10,000 gives line 34 $1,054 and lines 35a and 36 of $1,054 each both print; with no withholding (line 34 $0, line 37 $8,946) lines 35a $300 and 36 $500 still print
+- **Source:** i1040gi p. 65, Line 38: "Lines 35a, 36, and 38 must equal line 34. If the penalty is more than the overpayment on line 34, enter -0- on lines 35a and 36."
+- **Symptom:** f1040.line35a and f1040.line36 are unconstrained inputs, asked only on the direct-input path (the whole-return interview's targets stop at lines 24, 33, 34 and 37), so an impossible split was printed without a refusal.
+- **Where:** forms/2025/f1040.yaml (f1040.line35a, f1040.line36)
+- **Fix:** New consistency gate f1040.split_bad (f1040.split_total, lines 35a plus 36, more than line 34; line 38 is not computed, so the total may not exceed line 34), carried by the values-sheet line f1040.split_checked, which refuses on it; the gate is registered in interview/2025/conflict_checks.yaml. The refusal sits on a separate line because a refusal on lines 35a or 36 themselves would make the gate read the line it guards (a cycle), and nothing else reads lines 35a and 36. Asking line 36 in the whole-return interview was not done (it would add an interview target; the inputs key is claimed by another branch).
+- **Fix lines:** `f1040.split_total`, `f1040.split_bad`, `f1040.split_checked`
+- **Siblings checked:** `f1040.split_bad`, `f1040.split_total` (generated by the sibling tool, same anchor); lines 35a and 36 have no readers.
+- **Regression predictions:** new `adlow.f1040.split_over` and `adlow.f1040.split_nothing_overpaid` (check line refused by f1040.split_bad) and `adlow.f1040.split_within` (lines 35a $544 and 36 $500 against line 34 $1,054: check line $1,044, no refusal), predicted by hand before evaluation; no existing case changes.
+- **Severity:** low
+- **Tags:** forms, f1040, fixed, adversarial review, lane-adlow
+
+## BUG-1159 — Closure: BUG-0833 is fixed: the investment interest carryforward question also asks for what a correct 2024 Form 4952 would show
+
+- **Closes:** BUG-0833
+- **Closure:** fixed
+- **Evidence:** Part (1): the f4952.line1 prompt reads "Leave out interest on money used to buy, build or improve your home" (interview/2025/questions.yaml), so home equity interest used for investments is no longer excluded. Part (2): amb.2025.f4952_no_2024_form decided by owner delegation 2026-11-22, option (a), the second reading, by rewording with no new input: f4952.carryover (form label and source, and the interview prompt and new help) asks for line 7 of a 2024 Form 4952 "or would a correct one show it", and f4952.prior_7 asks for that line 7 "or what line 7 of a correct 2024 Form 4952 would show (line 3 less line 6, not below zero)", following sd.carryover and clcw.prior_11; after the false-no review of gate:f4952.carryover_if_interest (2026-11-23, claude-opus-5-5) the label, source and prompt also name a carryforward from an earlier year not yet used, and the help gives the example of 2024 or earlier interest above that year's investment income with the standard deduction taken and no Form 4952 filed; checked against f4952 p. 1, line 7, "Subtract line 6 from line 3. If zero or less, enter -0-", and p. 3, Who Must File, "You don't have any carryover of disallowed investment interest expense from 2024". New hand-predicted fixture adlow.f4952.carryover_no_2024_form (carryforward $2,000 with no 2024 form, taxable interest $5,000: line 2 $2,000, line 6 $5,000, line 8 $2,000, line 7 $0, Form 4952 required). Lane adlow (claude-opus-5-5).
+- **Tags:** f4952, closure, lane-adlow
+
+## BUG-1160 — Married filing separately is computed for a filer who lived apart from the spouse and is considered unmarried with a child, though head of household fits
+
+- **Date:** 2026-11-23
+- **Caught by:** the adversarial household review of 2026-11-22 (claude-opus-5-5, read-only scout), finding M1; reproduced on lane hh (claude-opus-5-5, judgment) by walking the interview on the tree of next (9a2b3e9c)
+- **Source:** i1040gi p. 15, Married persons who live apart: a married person is considered unmarried if they lived apart from the spouse for the last 6 months of 2025, file a separate return, paid over half the cost of keeping up the home, the home was the main home of their child, stepchild or foster child for more than half of 2025, and they can claim the child (or could but for the rule for children of divorced or separated parents); p. 14, Married Filing Separately, TIP: 'You may be able to file as head of household if you had a child living with you and you lived apart from your spouse during the last 6 months of 2025'; p. 13, Filing Status, 'The ones that will usually give you the lowest tax are listed last'; p501 p. 7, 'If you qualify to file as head of household, instead of as married filing separately, your tax may be lower'
+- **Symptom:** Walk on next: one filer, married filing separately, married at the end of 2025, lived apart from the spouse all year, one child age 6 who lived with them all year and whom they claim, a W-2 of $30,000 with $2,000 withheld. The return completed as married filing separately (Form 1040 line 12e $15,750, line 16 $1,475); household.home_cost and household.considered_unmarried were never asked. household.hoh_missed, the gate that refuses single when head of household fits, tests f1040.status = single only.
+- **Where:** forms/2025/household.yaml (household.hoh_missed, the refusals of household.hoh_fails)
+- **Fix:** New gate household.hoh_missed_mfs, refusing 'Head of household filing status fits you' on household.hoh_fails beside household.hoh_missed: married filing separately, a dependent listed, lived apart from the spouse for the last 6 months of 2025 (household.mfs_apart_last6), Test 2 met (household.hoh_missed_test2, which asks household.home_cost), and considered unmarried (household.unmarried, which asks household.considered_unmarried). Each condition is a nested choice, so each question is asked only after the one before it holds: a married filer filing separately with no one listed is asked nothing new, one who lived with the spouse late in 2025 is not asked the home cost or the considered-unmarried question. The considered-unmarried question already words the living-apart rule (child, stepchild or foster child; dependent), so a grandchild's filer answers No and keeps married filing separately. Hand-predicted fixtures hh.household.mfs_apart_child_hoh_missed (refused), hh.household.mfs_apart_not_considered_unmarried (line 12e $15,750) and hh.household.mfs_together_hoh_not_missed (line 12e $15,750, the question unread); coverage rows mfs.apart_entitled_hoh, mfs.apart_not_unmarried and mfs.together_child_not_asked_unmarried. Input ripple: class M cases classm.f2441.12 (adds dependent[a].absence_no_return false and household.considered_unmarried false, the case's child read as one that does not make the filer considered unmarried, such as a grandchild; its values unchanged) and classm.sdtw.3 (adds dependent[dep_a].born_died and placed false; values unchanged). The defaults reason of household.considered_unmarried names the new asker. A married filer filing separately who lists anyone is now asked when the spouses lived together (household.mfs_living, the first off-ramp) right after the dependents list; the coverage set spouse_lives_with_child (interview/2025/coverage/dependents.yaml) answers it together_late for its four rows.
+- **Fix lines:** `household.hoh_missed_mfs`, `household.hoh_missed_mfs_listed`, `household.hoh_missed_mfs_apart`, `household.hoh_missed_mfs_test2`, `household.hoh_fails` (refusal added), `household.hoh_missed_test2` (label)
+- **Siblings checked:** `dependent.claimed`, `dependent.hoh_test1`, `dependent.hoh_test2`, `dependent.hoh_test2_lived`, `dependent.parent_home_paid`, `f1040.line12e`, `f1040.line1a`, `household.any_test2_person`, `household.considered_unmarried`, `household.considered_unmarried_if_married`, `household.dependents_any`, `household.dependents_listed`, `household.ever_married`, `household.filing_status_conflict`, `household.hoh_eligible`, `household.hoh_missed`, `household.hoh_missed_cost`, `household.hoh_missed_person`, `household.home_cost`, `household.joint_unmarried`, `household.marriage_possible`, `household.mfs`, `household.mfs_apart_last6`, `household.mfs_community_property`, `household.mfs_living`, `household.mfs_living_if_mfs`, `household.mfs_spouse_notice`, `household.no_spouse_died`, `household.not_married`, `household.status_states_marriage`, `household.test1_met`, `household.test1_persons`, `household.test2_lived_persons`, `household.test2_met`, `household.test2_persons`, `household.unmarried`, `household.widowed_this_year`, `question:f1040.status`, `question:household.mfs_living`, `sa.spouse_itemizes`
+- **Severity:** medium
+- **Tags:** forms, household, MFS, filing status, adversarial review; review debt: household transcription and render for the changed lines; fixed
+
+## BUG-1161 — Qualifying surviving spouse is accepted on its own Yes with no listed child who lived with the filer all year
+
+- **Date:** 2026-11-23
+- **Caught by:** the adversarial household review of 2026-11-22 (claude-opus-5-5, read-only scout), finding M2; reproduced on lane hh (claude-opus-5-5, judgment) by walking the interview on the tree of next (9a2b3e9c)
+- **Source:** i1040gi p. 15, Qualifying Surviving Spouse, '2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim' and '3. This child lived in your home for all of 2025'; the dependents question (interview/2025/questions.yaml, $dependent) asks every filer to list the children who lived with them
+- **Symptom:** Two walks on next, both completed as qualifying surviving spouse with Form 1040 line 12e $31,500 and joint rates: (a) household.qss_eligible Yes and no one listed; (b) the same with one child, age 10, who lived with the filer 5 months (dependent.qualifying_child false). household.qss_fails is f1040.status = qss and household.qss_eligible = false, so the five tests rest on one attestation and are never compared with the people listed.
+- **Where:** forms/2025/household.yaml (household.qss_fails, household.qss_eligible)
+- **Proposed fix:** A consistency gate beside household.qss_fails (status qss, household.qss_eligible Yes, and no listed person with dependent.relationship child and dependent.lived_all_year Yes), with its explanation in interview/2025/conflict_checks.yaml. A necessary condition only: the child enum also holds foster children and grandchildren, which the attestation still covers. Not made in lane hh: 75 existing fixtures are qualifying-surviving-spouse returns with no such child and would be refused (38 class M cases in classm.json, classm.deepseek.json and classm.gpt.json, 15 mutation cases, 4 New York it201 cases, 18 others in carloan, eic, f8959, f8960, f8962, household, qdcg, s3, sa and sd). About 6 of them (a child listed with 12 months and no lived_all_year stated) need only lived_all_year true; the rest need a child added, which changes their amounts. The owner decides between that ripple, a narrower gate (a child listed, none of whom lived with the filer all year: walk (b) only, about 6 fixtures), and a notice instead of a refusal.
+- **Proposed fix lines:** household.qss_fails (a new gate beside it); interview/2025/conflict_checks.yaml
+- **Severity:** medium
+- **Tags:** forms, household, QSS, filing status, adversarial review; owner decision (fixture ripple)
+
+## BUG-1162 — The single-to-head-of-household refusal tells a filer widowed in 2023 or 2024 to choose head of household, though qualifying surviving spouse may give a lower tax
+
+- **Date:** 2026-11-23
+- **Caught by:** the adversarial household review of 2026-11-22 (claude-opus-5-5, read-only scout), finding L1 (read from the expressions); reproduced on lane hh (claude-opus-5-5, judgment) by walking the interview on the tree of next (9a2b3e9c)
+- **Source:** i1040gi p. 13, Single, 'You were widowed before January 1, 2025, and didn’t remarry before the end of 2025. But if you have a child, you may be able to use the qualifying surviving spouse filing status'; p. 13, Filing Status, 'The ones that will usually give you the lowest tax are listed last'
+- **Symptom:** Walk: single, ever married, not married at the end of 2025, spouse did not die in 2025, one child age 10 who lived with the filer all year, over half the cost of the home paid. Refused at household.hoh_missed with the remedy 'Go back and choose head of household', which is decided without the year of the spouse's death; a filer widowed in 2023 or 2024 is steered past qualifying surviving spouse.
+- **Where:** forms/2025/household.yaml (the household.hoh_missed refusal on household.hoh_fails)
+- **Fix:** The remedy adds 'If your spouse died in 2023 or 2024 and you did not remarry, look first at the line about being widowed (qualifying surviving spouse), which may give a lower tax', and the cite adds the i1040gi p. 13 Single passage. Wording only: no value or refusal changes for the same inputs; the remedy text in the fixture b1mutB.household.single_child_hoh_missed follows.
+- **Fix lines:** `household.hoh_fails` (the household.hoh_missed refusal's remedy and cite)
+- **Siblings checked:** `dependent.claimed`, `dependent.hoh_test1`, `dependent.hoh_test2`, `dependent.hoh_test2_lived`, `dependent.parent_home_paid`, `f1040.line12e`, `f1040.line1a`, `household.any_test2_person`, `household.considered_unmarried`, `household.considered_unmarried_if_married`, `household.dependents_any`, `household.dependents_listed`, `household.ever_married`, `household.filing_status_conflict`, `household.hoh_eligible`, `household.hoh_missed`, `household.hoh_missed_cost`, `household.hoh_missed_mfs`, `household.hoh_missed_mfs_apart`, `household.hoh_missed_mfs_listed`, `household.hoh_missed_mfs_test2`, `household.hoh_missed_person`, `household.hoh_missed_test2`, `household.home_cost`, `household.joint_unmarried`, `household.marriage_possible`, `household.mfs`, `household.mfs_apart_last6`, `household.mfs_community_property`, `household.mfs_living`, `household.mfs_living_if_mfs`, `household.mfs_spouse_notice`, `household.no_spouse_died`, `household.not_married`, `household.status_states_marriage`, `household.test1_met`, `household.test1_persons`, `household.test2_lived_persons`, `household.test2_met`, `household.test2_persons`, `household.unmarried`, `household.widowed_this_year`, `question:f1040.status`, `question:household.mfs_living`, `sa.spouse_itemizes`
+- **Severity:** low
+- **Tags:** forms, household, filing status, wording, adversarial review; review debt: household render for the changed refusal; fixed
+
+## BUG-1163 — Fix of BUG-1161, narrow: qualifying surviving spouse refused when a child is listed but none lived with the filer all year
+
+- **Date:** 2026-11-23
+- **Caught by:** BUG-1161 (adversarial household review, finding M2); the narrow gate chosen under the owner's delegation, relayed by the wave coordinator on 2026-11-23
+- **Source:** i1040gi p. 15, Qualifying Surviving Spouse, '3. This child lived in your home for all of 2025'
+- **Symptom:** Walk (b) of BUG-1161: qualifying surviving spouse, the five tests answered Yes, one child (age 10) listed who lived with the filer 5 months; the return completed with Form 1040 line 12e $31,500.
+- **Where:** forms/2025/household.yaml (household.qss_fails)
+- **Fix:** New consistency gate household.qss_child_not_all_year, refusing on household.qss_fails: status qualifying surviving spouse (new helper household.qss), household.qss_eligible Yes, at least one person listed with dependent.relationship child, and none of them with dependent.lived_all_year Yes. Explained in interview/2025/conflict_checks.yaml. Walk (b) now refuses at that gate; walk (a), no one listed, still completes (BUG-1164). Hand-predicted fixtures hh.household.qss_child_part_year_refused (refused) and hh.household.qss_child_all_year_computes (line 12e $31,500); coverage row opening.widowed_child_part_year. Input ripple: stage21.pending1.qss_valid_computes and the four New York cases ny.status.qss.* state dependent[daughter].lived_all_year true (each already had 12 months; values unchanged).
+- **Fix lines:** `household.qss`, `household.qss_children_listed`, `household.qss_children_all_year`, `household.qss_child_conflict`, `household.qss_child_conflict_if_claimed`, `household.qss_child_not_all_year`, `household.qss_fails` (refusal added)
+- **Siblings checked:** `f1040.line12e`, `household.qss_eligible`, `question:f1040.status`
+- **Severity:** medium
+- **Tags:** forms, household, QSS, filing status, consistency check, adversarial review; review debt: household transcription and render for the changed lines; fixed
+
+## BUG-1164 — Qualifying surviving spouse with no one listed is accepted without a word
+
+- **Date:** 2026-11-23
+- **Caught by:** BUG-1161, walk (a); left open by BUG-1163 under the owner's delegated choice of the narrow gate
+- **Source:** i1040gi p. 15, Qualifying Surviving Spouse, items 2 and 3 (a child or stepchild who lived in your home for all of 2025); the dependents question asks every filer to list the children who lived with them
+- **Symptom:** Qualifying surviving spouse, household.qss_eligible Yes, no one listed: the return completes with joint rates and Form 1040 line 12e $31,500, and nothing tells the filer that the status needs a child who lived with them all year (walked again on lane hh after BUG-1163).
+- **Where:** forms/2025/household.yaml (household.qss_fails); interview/2025/full.yaml (notices)
+- **Proposed fix:** A notice, not a refusal: a helper household.qss_no_child_notice (status qualifying surviving spouse, the tests answered Yes, no one listed as a child) listed among the interview's notices, telling the filer that this status needs a child or stepchild who lived with them all of 2025 and that the child belongs on the list of people who lived with them. A refusal was set aside because about 69 existing fixtures (38 class M) are qualifying-surviving-spouse returns with no one listed.
+- **Proposed fix lines:** household.qss_no_child_notice (new); interview/2025/full.yaml
+- **Severity:** low
+- **Tags:** forms, household, QSS, notice, adversarial review; owner-delegated decision of 2026-11-23
+
+## BUG-1165 — The opening help lets a filer widowed in 2025 who remarried in 2025 choose a joint return with the deceased spouse
+
+- **Date:** 2026-11-23
+- **Caught by:** the adversarial household review of 2026-11-22 (claude-opus-5-5, read-only scout), finding L2 (read from the help); reproduced on lane hh (claude-opus-5-5, judgment) by walking the interview on next (9a2b3e9c)
+- **Source:** i1040gi p. 13, Married Filing Jointly, 'Your spouse died in 2025 and you didn’t remarry in 2025'; p501 p. 6, Spouse died during the year, 'If you remarried before the end of the tax year, you can file a joint return with your new spouse. Your deceased spouse’s filing status is married filing separately for that year.'
+- **Symptom:** The help of 'Who is this tax return for?' ($person) said 'If your husband or wife died during 2025, you can still choose “together”' with no remarriage caveat. Walk: a couple filing together who say they were married at the end of 2025 is asked nothing about a death (household.married_dec31 Yes makes household.joint_unmarried false, so household.spouse_died_this_year is not asked), so a filer who remarried in 2025 and follows the help files jointly with the deceased spouse unchecked.
+- **Where:** interview/2025/questions.yaml ($person, help)
+- **Fix:** The help now reads 'If your husband or wife died during 2025, you can still choose “together”, unless you remarried in 2025 (then file with your new husband or wife).' Wording only: no value or refusal changes for the same inputs.
+- **Fix lines:** question `$person` (help only), which records `person.role`
+- **Siblings checked:** `f2441.line18`, `f2441.line4`, `f2441.spouse_earned`, `f2441.spouse_earned_b`, `f8863.kid`, `f8880.inelig_a`, `f8880.inelig_b`, `f8880.line1a`, `f8880.line1b`, `f8880.line2a`, `f8880.line2b`, `f8880.prior_own_a`, `f8880.prior_own_b`, `household.spouses`, `household.taxpayer_work_ssn_count`, `household.taxpayers`, `ira.cov_spouse`, `ira.cov_you`, `ira.line11a`, `ira.line11b`, `ira.line12a`, `ira.line12b`, `ira.line2a_sum`, `ira.line2b_sum`, `ira.line6a_sum`, `ira.line6b_sum`, `ira.line7a_sum`, `ira.line7b_sum`, `person.dc_1e_mine`, `person.spouse_senior_work_ssn`, `s1a.died_before_65_count`, `s1a.spouse_died_before_65_count`, `sa.age65_count`, `scope.under24_count`
+- **Severity:** low
+- **Tags:** interview, wording, filing status, adversarial review; review debt: the question's screen review under the sampled-review rules; fixed
+
+## BUG-1166 — The filing-status help sends a married filer whose spouse was a nonresident alien to married filing separately, though they may be considered unmarried for head of household
+
+- **Date:** 2026-11-23
+- **Caught by:** the adversarial household review of 2026-11-22 (claude-opus-5-5, read-only scout), finding L3 (wording); confirmed on lane hh (claude-opus-5-5, judgment) against the help and the source
+- **Source:** i1040gi p. 14, Head of Household, 'You are married and your spouse was a nonresident alien at any time during the year and the election to treat the alien spouse as a resident alien is not made'
+- **Symptom:** The help of 'Which of these fits you on December 31, 2025?' (f1040.status) says to take the first true line, whose first line is married filing separately, with an exception only for living apart with a child. A married filer whose spouse was a nonresident alien, with no election, may be considered unmarried and file as head of household (household.considered_unmarried admits this), but the help steers them to married filing separately, and the lane-hh gate household.hoh_missed_mfs does not catch them unless they also lived apart.
+- **Where:** interview/2025/questions.yaml (f1040.status, help and cite)
+- **Fix:** The help's exception now also covers 'your husband or wife was a nonresident alien at some time in 2025 and the two of you did not choose to be treated as residents', and the cite adds the i1040gi p. 14 passage. Wording only: no value or refusal changes for the same inputs.
+- **Fix lines:** question `f1040.status` (help and cite only)
+- **Siblings checked:** `clcw_next_year.decedent_notice`, `dependent.spouse_relative_joint`, `eic.check_27c`, `eic.limit`, `eic.line1_table0`, `eic.line1_table1`, `eic.line1_table2`, `eic.line1_table3`, `eic.line3_table0`, `eic.line3_table1`, `eic.line3_table2`, `eic.line3_table3`, `eic.line5_threshold`, `eic.married_rules`, `eic.status_mfj`, `eic.status_mfs`, `eic.step3`, `eic.step4_dependent`, `eic.top_limit`, `f1040.line6d`, `f1040.non_sdtw_tax`, `f2441.attrib_gate`, `f2441.joint`, `f2441.spouse_died_gate`, `f5695.separate_homes_joint`, `f8863.kid_needed`, `f8880.joint`, `f8880.line9`, `f8960.joint_noncitizen`, `f8962.marriage`, `household.ask_spouse_cp_domicile`, `household.cp_marriage_ended`, `household.filing_status_conflict`, `household.hoh_community_property`, `household.hoh_fails`, `household.hoh_missed`, `household.marriage_possible`, `household.mfs`, `household.mfs_community_property`, `household.qss`, `household.qss_fails`, `household.rdp_community_property`, `household.roster_ok`, `household.status_states_marriage`, `household.widowed_this_year`, `ira.joint`, `ira.joint_type`, `ny_it201.city_tax_schedule`, `ny_it201.city_tax_table`, `ny_it201.dependent_single`, `ny_it201.gate.hh_city_mfs`, `ny_it201.gate.hh_city_over7`, `ny_it201.gate.hh_state_mfs`, `ny_it201.gate.hh_state_over7`, `ny_it201.gate.spouse_nonresident`, `ny_it201.hh_city_by_status`, `ny_it201.hh_city_p1`, `ny_it201.hh_city_p2`, `ny_it201.hh_city_p3`, `ny_it201.hh_city_p4`, `ny_it201.hh_city_p5`, `ny_it201.hh_city_p6`, `ny_it201.hh_city_p7`, `ny_it201.hh_city_t4`, `ny_it201.hh_state_by_status`, `ny_it201.hh_state_p1`, `ny_it201.hh_state_p2`, `ny_it201.hh_state_p3`, `ny_it201.hh_state_p4`, `ny_it201.hh_state_p5`, `ny_it201.hh_state_p6`, `ny_it201.hh_state_p7`, `ny_it201.hh_state_t1`, `ny_it201.spouse_count`, `ny_it201.spouse_itemizes_if_mfs`, `ny_it201.tax_schedule`, `ny_it201.tax_table`, `ny_it201.tcw.by_status`, `ny_it201.tcw.w1`, `ny_it201.tcw.w10`, `ny_it201.tcw.w12`, `ny_it201.tcw.w13`, `ny_it201.tcw.w14`, `ny_it201.tcw.w15`, `ny_it201.tcw.w2`, `ny_it201.tcw.w3`, `ny_it201.tcw.w4`, `ny_it201.tcw.w5`, `ny_it201.tcw.w7`, `ny_it201.tcw.w8`, `ny_it201.tcw.w9`, `qdcg.line22`, `qdcg.line24`, `refund.joint`, `s1.nol_joint`, `s1.nol_separate`, `s179.mfs`, `s179.separate`, `s1a.line13_claim`, `s1a.line17_calc`, `s1a.line21_claim`, `s1a.line26_calc`, `s1a.line32_calc`, `s1a.line36a_claim`, `s1a.line9_calc`, `s1a.ot_max`, `s1a.ot_ssn`, `s1a.part2_ssn`, `s1a.part3_ssn`, `s1a.part5`, `s1a.tip_ssn`, `s2.amt_mfs`, `sa.dep_qss`, `sa.mfs`, `scope.under24_if_not_joint`, `sdtw.line44`, `sdtw.line46`, `sli.divisor`, `sli.eligible`, `sli.line5`, `ssb.line10`, `ssb.line8`, `ssb.mfs_together`
+- **Severity:** low
+- **Tags:** interview, wording, filing status, adversarial review; review debt: the question's screen review under the sampled-review rules; fixed
+
+## BUG-1167 — The 2026 drafts reword two quotes of s2's cites (i6251 'AMTI', i1099int comma), which relocation cannot carry
+
+- **Date:** 2026-11-23.
+- **Caught by:** scout lane wk1 (claude-opus-5-5, judgment), checking every i6251 cite of the applied 2026 s2.yaml against the 2026 archive (.claude/wave-2026-11-22/ty2026-ops-ready.md, section 1); confirmed by lane ty26-ops (claude-opus-5-5, judgment) with citations.pages_with on sources/2026.
+- **Symptom:** Two quotes of forms/2025/s2.yaml are not printed on any page of their 2026 document, so adoption's citations.py --strict --year 2026 would fail on them and citations.py --relocate (which moves pages, not words) cannot fix them: s2.iso_vested cites i6251 p. 4 "you may elect to include in AMT income the excess of the stock’s FMV ...", which the 2026 draft prints as "include in AMTI" (sources/2026/i6251, p. 5); s2.amt_pab cites i1099int p. 1 "... in box 11 on Form 1099-OID, and the tax-exempt stated interest ...", which the 2026 draft prints without the comma (sources/2026/i1099int, p. 3). Their other quotes are printed one page later (i6251 pp. 2, 4, 5).
+- **Tags:** TY2026, year changes, citations, Schedule 2, Form 6251, fixed
+- **Fix:** changes/2026/s2.yaml, entry BUG-1167: set cite.locator of s2.iso_vested (i6251 p. 5 (draft) "AMTI"; p. 2 (draft) Who Must File) and s2.amt_pab (i6251 p. 4 (draft); i1099int p. 3 (draft), no comma), written for the 2026 pages.
+- **Fix lines:** s2.iso_vested, s2.amt_pab
+- **Siblings checked:** s2.amt, s2.amt_could, s2.amt_tmt_over, s2.iso_if_options, s2.amt_l4, s2.amt_pab_ask, s2.amt_pab_over, s2.amt_pab_if_could
+- **Sibling sweep:** every i6251 and i1099int quote of forms/2025/s2.yaml with the 2026 operations applied (60 quotes) is printed on some page of the 2026 archive (checked with the citations module's pages_with), so the others are page moves for relocation; the 17 locators the two 2026 entries of s2 set have every quote on their cited page; the 7 i6251 quotes of the person.amt_dep lines (forms/2025/person) are printed in 2026 too.
+- **Regression predictions:** year_changes.py --check applies the entry and finds every evidence quote on its page; values unchanged in 2025 and 2026.
+
+## BUG-1168 — Closure of BUG-1031: amt.phaseout_rate for the AMT exemption phase-out and add-back
+
+- **Date:** 2026-11-23.
+- **Caught by:** lane ty26-ops (claude-opus-5-5, judgment), applying .claude/wave-2026-11-22/ty2026-ops-ready.md unit A.
+- **Closes:** BUG-1031
+- **Closure:** fixed
+- **Fix:** changes/2026/s2.yaml, entry C-LAW-02+BUG-1031 (27 operations: 4 expr.rate.param, 10 label, 13 cite.locator): s2.amt_mfs_quarter, s2.amt_ex_cut, s2.amt_h_mfs_quarter and s2.amt_h_ex_cut read the new parameter amt.phaseout_rate (2026: 50/100, i6251 p. 10 draft; P.L. 119-21 sec. 70107(c), final), staged in research/ty2026/build_params.py; the labels and cites of the paragraph and worksheet re-based on the 2026 draft's amounts; s2.amt_l37_rate keeps amt.rate_25 (no 2026 value until the 2026 Form 6251). research/ty2026/changes.md C-LAW-02 rewritten (kind: rule change). forms/2025 untouched. The ids s2.amt_mfs_quarter and s2.amt_h_mfs_quarter, false from 2026 (the products are 50%), are not renamed: year_changes.py has no rename (ids are kept, spec 4.3; a renamed line is a new line), so a rename is a 2025-tree change for a later unit.
+- **Fix lines:** s2.amt_mfs_quarter, s2.amt_ex_cut, s2.amt_h_mfs_quarter, s2.amt_h_ex_cut
+- **Siblings checked:** s2.amt_mfs_add, s2.amt_l5, s2.amt_h_mfs_add, s2.amt_h5, s2.amt_mfs, s2.amt_mfs_over, s2.amt_mfs_max, s2.amt_l4_mfs, s2.amt_exemption, s2.amt_ex_over, s2.amt_h4_mfs, s2.amt_h_mfs_over, s2.amt_h_ex_over
+- **Sibling sweep:** the generated siblings whose labels or cites print a 2025 amount or the 25% rate are set by the entry; s2.amt_ex_over, s2.amt_h_ex_over, s2.amt_h4_mfs and s2.amt_h5 print neither, and their quotes are printed in the 2026 i6251 (page moves). Left: the Form 6251 (2025) cites of s2.amt_l4m and s2.amt_h4m ("more than $900,350") and s2.amt_l37_rate, until a 2026 Form 6251 is archived.
+- **Evidence:** year_changes.py --check: 141 entries, 1,317 operations, all apply (static checks of the applied 2026 tree with the staged parameters report only the 67 T-353 ids); check_params.py exit 0; check_quotes.py 827 quotes, 0 not found; every locator the entry sets has its quotes on its cited 2026 page (citations.segments, on_pages).
+- **Tags:** TY2026, year changes, parameters, AMT, Schedule 2, closure, fixed
+
+## BUG-1169 — Closure of BUG-1032: the IRA deduction reduction labels print the 2026 rates
+
+- **Date:** 2026-11-23.
+- **Caught by:** lane ty26-ops (claude-opus-5-5, judgment), applying .claude/wave-2026-11-22/ty2026-ops-ready.md unit B.
+- **Closes:** BUG-1032
+- **Closure:** fixed
+- **Fix:** changes/2026/person.ira.yaml, entry C-PEOP-08+BUG-1032 (7 label operations): person.ira_p70, ira_p80, ira_p35, ira_p40 print 75%, 86%, 37.5% and 43%, and person.ira_prod_wide and ira_prod_joint print the same rates and "at the end of 2026", and person.ira_wide (which names the rule) prints "75% or 86%" (p590a p. 19, Worksheet 1-2 line 4, draft). Filed under C-PEOP-08 (owner-delegated decision 2026-11-22): the rates are the 2026 contribution limits over the unchanged range widths. Values unchanged (the rates are the parameters ira.rate_70/80/35/40, staged for 2026). The parameter ids, which name the 2025 rates, are not renamed here.
+- **Fix lines:** person.ira_p70, person.ira_p80, person.ira_p35, person.ira_p40, person.ira_prod_wide, person.ira_prod_joint, person.ira_wide
+- **Siblings checked:** person.ira_prod, person.ira_full, person.ira_wide
+- **Sibling sweep:** person.ira_prod reads the two products and prints no rate; person.ira_full prints the range widths ($10,000 or $20,000), unchanged in 2026; person.ira_wide printed "70% or 80%" and is fixed in the same entry (found by a grep of the labels of forms/2025 person and ira for 70%, 80%, 35%, 40%: no other). The other lines on the IRA Deduction Worksheet anchor print no 2025 rate; their limit changes are C-PEOP-08 in changes/2026 ira and person.retirement, and their i1040gi cites wait for the 2026 Form 1040 instructions.
+- **Evidence:** year_changes.py --check: all apply (the seven from labels match forms/2025/person.yaml; both p590a quotes printed on p. 19).
+- **Tags:** TY2026, year changes, labels, IRA deduction, person, closure, fixed
+
+## BUG-1170 — siblings.py --check re-tests entries already committed on next whenever a later commit changes any form
+
+- **Date:** 2026-11-23.
+- **Caught by:** integration 4 (claude-opus-5-5, judgment), 2026-11-23.
+- **Severity:** low; tool, no amount affected.
+- **Where:** tools/siblings.py, check loop (entry_base, review_logs_due).
+- **Symptom:** On int4 (six lanes on next ed6c46ea), siblings --check failed for BUG-1125, BUG-1126 and BUG-1128, committed on next, with 'no review log changed since ed6c46ea^ for sibling form(s)'; the same check passes on ed6c46ea itself. A committed entry is measured from the parent of the commit that added it to the working tree, so any later commit that changes a form of the year makes its sibling forms due again although the entry's own change is unchanged.
+- **Proposed fix:** Check only entries added or changed in the commit under test (pending entries and entries the tree appends over HEAD); a committed entry keeps the verdict of the commit that added it.
+- **Proposed fix lines:** none (tool change: tools/siblings.py).
+- **Tags:** tool, siblings, verification
+
+## BUG-1171 — rule.py --amend cannot set the drop flag on an already-ruled class M section
+
+- **Date:** 2026-11-23.
+- **Caught by:** integration 4 (claude-opus-5-5, judgment), 2026-11-23.
+- **Severity:** low; tool, review bookkeeping.
+- **Where:** tools/transcription/rule.py (--amend refuses a change of drop; plain rule.py changes only open sections).
+- **Symptom:** Lane fx-eduhsa ruled classm.f8889.3 spouse lines 7, 8 and 12 as ambiguity (amb.2025.hsa_line7_months, project stands) without drop, so the model's non-chosen values stayed in fixtures/2025/classm.json and test-fixtures failed. No tool sets the drop flag on a ruled section; the earlier rulings of the same ambiguity (classm.f8889.2, .4) drop. Integration 4 removed the three expectations from the fixture case by hand, leaving the rulings as they are; a class M rerun would restore the model values.
+- **Proposed fix:** Let --amend set drop on an ambiguity or model-error ruling (removing the line from the fixture and suffixing [dropped]), or add a reopen command; then re-rule the three lines with drop.
+- **Proposed fix lines:** none (tool change: tools/transcription/rule.py).
+- **Tags:** tool, class M, rulings, fixtures
+
+## BUG-1172 — worktree_data.py carry-back refuses when main's ledger holds every base row with other lanes' rows interleaved
+
+- **Date:** 2026-11-23.
+- **Caught by:** integration 4 (claude-opus-5-5, judgment), 2026-11-23.
+- **Severity:** medium; review data of three landed lanes cannot be carried back (cost rows and raw files stranded in their worktrees).
+- **Where:** tools/worktree_data.py, plan() (ledger prefix test).
+- **Symptom:** fx-seqbi, fx-eduhsa and fx-capital (cloned from int2) are refused: 'the main ledger no longer begins with the ledger as cloned or last carried'. Main's .transcription/costs.jsonl holds every int2 row, in order and without duplicates, but 149 rows of other lanes are interleaved from row 6211 on (main was rewritten after int2's carry-back), so the byte-prefix test fails although the append-only intent holds. Not carried: 18, 22 and 17 ledger rows and 110, 124 and 79 files; int2 itself is refused the same way.
+- **Proposed fix:** Accept when the base rows are a sub-multiset of main's rows in order of appearance, and append only the worktree's post-clone rows not already present in main.
+- **Proposed fix lines:** none (tool change: tools/worktree_data.py).
+- **Tags:** tool, worktrees, cost ledger, review data

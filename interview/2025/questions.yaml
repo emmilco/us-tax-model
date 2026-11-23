@@ -576,8 +576,9 @@ bank:
     order: 100
     seq: 1
     help: Choose “together” if you are married and the two of you are filing one return, even if only one of you had
-      income. If your husband or wife died during 2025, you can still choose “together”. If you are married but each
-      of you files a separate return, choose “Just me”.
+      income. If your husband or wife died during 2025, you can still choose “together”, unless you remarried in 2025
+      (then file with your new husband or wife). If you are married but each of you files a separate return, choose
+      “Just me”.
     prompt: Who is this tax return for?
     choices:
     - label: Just me
@@ -626,16 +627,6 @@ bank:
     seq: 12
     help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
       someone else's name, and any amount received without a form.
-  - input: div.box2e
-    order: 272
-    seq: 13
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
-      someone else's name, and any amount received without a form.
-  - input: div.box2f
-    order: 272
-    seq: 14
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
-      someone else's name, and any amount received without a form.
   - input: div.box3
     order: 272
     seq: 15
@@ -663,9 +654,10 @@ bank:
     order: 100
     seq: 2
     help: 'Take the first line that is true for you, with one exception: if you are married but lived apart from your
-      husband or wife for the last six months of 2025 and your child lived with you, look at the line about paying for
-      a home before the first line. If a court decree of divorce or legal separation was final by December 31, 2025,
-      you were not married. If you pick one of the lines about a child or relative, later questions check the details
+      husband or wife for the last six months of 2025 and your child lived with you, or your husband or wife was a
+      nonresident alien at some time in 2025 and the two of you did not choose to be treated as residents, look at the
+      line about paying for a home before the first line. If a court decree of divorce or legal separation was final
+      by December 31, 2025, you were not married. If you pick one of the lines about a child or relative, later questions check the details
       (who lived with you, for how long, who paid for the home). If they do not fit, you will be told, and you can
       come back and choose again.'
     prompt: Which of these fits you on December 31, 2025?
@@ -676,8 +668,9 @@ bank:
         file a joint return even if only one had income"; p. 14, Married Filing Separately, "if you are married at the
         end of 2025 and file a separate return"; p. 14, Head of Household, "if you are unmarried and provide a home for
         certain other persons"; p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6
-        months of 2025"; p. 15, Qualifying Surviving Spouse, "Your spouse died in 2023 or 2024 and you didn’t remarry
-        before the end of 2025"
+        months of 2025"; p. 14, Head of Household, "You are married and your spouse was a nonresident alien at any time
+        during the year and the election to treat the alien spouse as a resident alien is not made"; p. 15, Qualifying
+        Surviving Spouse, "Your spouse died in 2023 or 2024 and you didn’t remarry before the end of 2025"
     value_labels:
       mfs: Married, and filing apart from my husband or wife (married filing separately)
       qss: Widowed in 2023 or 2024, not remarried, and my child lived with me all of 2025 (qualifying surviving spouse)
@@ -715,13 +708,19 @@ bank:
   - input: f4952.carryover
     order: 276
     seq: 4
+    help: Answer Yes even if you filed no 2024 Form 4952 or left the carryforward off it, when a correct 2024 Form 4952
+      would show an amount on line 7 (line 3 less line 6, not below zero). For example, interest paid in 2024 or an
+      earlier year that was more than that year's investment income, and not used since, counts even if you took the
+      standard deduction and filed no Form 4952.
     prompt: Does a 2024 Form 4952 of yours (or, on a joint return, of your spouse's), on a joint or a separate 2024 return,
-      show an amount on line 7 (investment interest that could not be deducted in 2024)?
+      show an amount on line 7 (investment interest from 2024 or an earlier year that could not be deducted yet), or
+      would a correct one show it?
   - input: f4952.prior_7
     order: 276
     seq: 6
-    help: The amount on line 7 of the Form 4952 filed for 2024. If you and your spouse each filed one on a separate 2024
-      return, add the two amounts.
+    help: The amount on line 7 of the Form 4952 filed for 2024, or, if none was filed or it left the carryforward out, what
+      line 7 of a correct 2024 Form 4952 would show (line 3 less line 6, not below zero). If you and your spouse each filed
+      one on a separate 2024 return, add the two amounts.
   - input: f4952.unsupported
     order: 276
     seq: 7
@@ -1550,7 +1549,8 @@ bank:
     
       - premiums a retired public safety officer paid with a tax-free distribution from a retirement plan
     
-      - premiums you deduct as self-employed health insurance (Schedule 1, line 17)
+      - health insurance you will enter for a business''s self-employed health insurance deduction; any part of it that deduction
+      cannot take is added here for you
     
       - the housework part of pay to someone who did both nursing and housework
     
@@ -1705,20 +1705,20 @@ bank:
       and raffle tickets.
   - input: $sales
     order: 274
-    seq: 10
+    seq: 11
     help: Your broker's statement (Form 1099-B, or Form 1099-DA for crypto) lists each sale. Swapping one crypto for another,
-      or paying with it, is a sale. So is a taxable sale of other property, such as land; a sale inside a retirement account
+      or paying with it, is a sale. So is a sale of a second home or an inherited house; a sale inside a retirement account
       is not.
-    prompt: In 2025, did you (or, on a joint return, your spouse) sell or trade stocks, bonds, options, fund shares or crypto
-      outside a retirement account? Add one entry for each sale, or leave the list empty if there were none.
+    prompt: In 2025, did you (or, on a joint return, your spouse) sell or trade stocks, bonds, options, fund shares, crypto
+      or land outside a retirement account? Add one entry for each sale, or leave the list empty if there were none.
   - input: sd.route_each
     order: 274
-    seq: 11
+    seq: 12
     help: A sale whose basis the broker reported to the IRS, and that needs no adjustment, may be added to a total on
       Schedule D instead of being listed on Form 8949. Most people answer No.
   - input: sales.box
     order: 274
-    seq: 12
+    seq: 13
     help: With no statement, count from the day after you got the property through the day you sold it; more than one year
       is long-term, and inherited property is always long-term. Crypto never goes under C or F; with no Form 1099-DA,
       choose I or L.
@@ -1738,14 +1738,14 @@ bank:
       L: Crypto or another digital asset on no form, owned for more than one year (box L)
   - input: sales.route
     order: 274
-    seq: 19
+    seq: 20
     prompt: How should this sale appear on the return? The tax is the same either way.
     value_labels:
       detail: Listed on its own line (Form 8949)
       aggregate: Added to the Schedule D total without being listed (only with basis reported to the IRS and nothing to adjust)
   - input: sales.code
     order: 274
-    seq: 17
+    seq: 18
     prompt: Does anything need adjusting for this sale?
     value_labels:
       none: No, the figures are right and there is no wash sale
@@ -1757,7 +1757,7 @@ bank:
         checked, a sale reported to you that is really someone else's, or a loss on something you owned for personal use
   - input: sales.special
     order: 274
-    seq: 13
+    seq: 14
     help: A broker's statement marks a collectible or an opportunity zone fund (QOF) with a checkbox in box 3. A return with a
       sale of this kind is outside what this tool prepares; a Yes ends the interview here.
     prompt: |-
@@ -1773,30 +1773,30 @@ bank:
       - an investment in an opportunity zone fund, or a gain you put off by investing in one
   - input: sales.aggregate_eligible
     order: 274
-    seq: 20
+    seq: 21
     prompt: Is all this true of this sale? No adjustment shown, Ordinary box unchecked, no figure needs changing, not a collectible, not an opportunity zone fund.
     help: A corrected statement counts if none of its own figures needs changing.
   - input: sales.proceeds
     order: 274
-    seq: 14
+    seq: 15
     help: If you received more than the statement shows, enter what you received. The premium for a call option you wrote
       that was exercised is part of the proceeds.
     prompt: Proceeds of this sale (box 1d of Form 1099-B or box 1f of Form 1099-DA). With no statement, the sale price less
       commissions and fees; for a swap, the value of what you received.
   - input: sales.reported_basis
     order: 274
-    seq: 15
+    seq: 16
     prompt: Cost or other basis the statement shows for this sale (box 1e of Form 1099-B or box 1g of Form 1099-DA).
   - input: sales.correct_basis
     order: 274
-    seq: 16
+    seq: 17
     help: Adjust for stock splits, for a return of capital, and for a wash sale loss added when you bought. Fund shares
       held by a custodian may use the average cost the fund reports. For crypto, what you paid with its fees.
     prompt: Your basis in what you sold. If you bought it, what it cost you with commissions and fees. If you inherited it,
       usually its value on the date of death. If it was a gift, usually what the giver paid.
   - input: sales.wash_loss
     order: 274
-    seq: 18
+    seq: 19
     help: Enter the right amount even if the broker's differs or is missing. It cannot exceed this sale's loss, so enter
       blocks sold the same day as separate sales. Buying for your IRA, or by your spouse, counts too.
     prompt: How much of the loss on this sale is not allowed as a wash sale (box 1g of Form 1099-B)? A wash sale is a sale at a
@@ -2243,18 +2243,23 @@ bank:
     group: sales_rare
     tick: Sold real estate or business property, or any sale paid over years
     help: Real estate includes a home you lived in, and an oil, gas or mineral interest such as a royalty. Business property is anything used in a business or rented out, such as equipment, a vehicle or a building. A payment in 2025 on a sale made in an earlier year counts.
-  - input: sd.business_property
+  - input: sd.home_sale
     order: 274
     seq: 7
+    help: Gain of up to $250,000 ($500,000 on a joint return) is usually excluded if you owned the home and lived in it
+      for 2 of the 5 years before the sale (see Pub. 523). A Yes ends the interview here.
+  - input: sd.business_property
+    order: 274
+    seq: 8
     help: Its sale is figured on Form 4797. A return with this is outside what this tool prepares; a Yes ends the interview here.
   - input: sd.installment
     order: 274
-    seq: 8
+    seq: 9
     help: An installment sale is figured on Form 6252. A return with this is outside what this tool prepares; a Yes ends the interview here. If you sold in 2025 and choose to report the whole gain this
       year, answer No.
   - input: sd.like_kind
     order: 274
-    seq: 9
+    seq: 10
     help: A like-kind exchange is reported on Form 8824. A return with this is outside what this tool prepares; a Yes ends the interview here.
   - input: sd.sec1256
     order: 274
@@ -4845,8 +4850,9 @@ bank:
   - input: sli.assisted_any
     order: 244
     seq: 5
-    help: The programs are the National Health Service Corps Loan Repayment Program and state programs that repay or forgive
-      loans for work where health services are short.
+    help: Count loan payments an employer made under its education assistance plan and left out of box 1 of your W-2;
+      payments added to box 1 count as yours. The health programs are the National Health Service Corps Loan Repayment
+      Program and state programs that repay or forgive loans for work where health services are short.
   - input: sli.assisted
     order: 244
     seq: 6
@@ -5104,6 +5110,7 @@ bank:
       - you chose to deduct the costs of producing a sound recording
       - it has losses of earlier years that the passive activity rules held back
       - you do work in it for a business that employed you within the last 3 years, much the same work as when you were its employee
+      - part of its income is pay for work you did while outside the United States
       - it is a hobby, or an occasional activity not run for profit
       - it received a Form 1099-PATR from a cooperative with amounts not reported as qualified
       - it has a license or other cost that must be written off over several years, such as some liquor licenses
@@ -6095,25 +6102,34 @@ bank:
   - input: qbi.carryforward
     order: 296
     seq: 2
-    prompt: What loss does line 16 of the latest such Form 8995 show (“Total qualified business (loss) carryforward”), or the
-      line of that name on Form 8995-A? Give it as a positive amount; zero if the line is empty.
-  - input: qbi.reit_loss
+    prompt: What loss does line 16 of the latest such Form 8995 show (“Total qualified business (loss) carryforward”), or, if it
+      was a Form 8995-A, line 6 of its Schedule C? Give it as a positive amount; zero if the line is empty or there is no Schedule C.
+  - input: qbi.unreported_loss
     order: 296
     seq: 3
+    help: Count a year when the businesses' profits together, less the deductions for half of self-employment tax, self-employed
+      health insurance and retirement plans, were below zero. A Yes is outside what this tool prepares and ends the interview
+      here.
+    prompt: In any year from 2018 to 2024 whose tax return had no Form 8995 or 8995-A, did your (or, on a joint return, your
+      spouse's) businesses lose money overall?
+  - input: qbi.reit_loss
+    order: 296
+    seq: 4
     help: REIT dividends are dividends of real estate funds; a PTP is a publicly traded partnership. A Yes is outside what
       this tool prepares and ends the interview here.
     prompt: Does that form also show a loss on the line “Total qualified REIT dividends and PTP (loss) carryforward” (line
       17 of Form 8995)?
   - input: qbi.suspended
     order: 296
-    seq: 4
-    help: Examples are a loss held back by the at-risk rules or by the passive activity rules. An ordinary expense of 2025
-      is not one. A Yes is outside what this tool prepares and ends the interview here.
+    seq: 5
+    help: Examples are a loss held back by the at-risk or passive activity rules. Leave out a 2025 expense, and a section 179
+      deduction carried over from 2018 or later that you entered for your business. A Yes is outside what this tool prepares
+      and ends the interview here.
     prompt: In 2025, are you (or, on a joint return, your spouse) deducting a business loss or expense of an earlier year
       that a tax limit kept you from deducting then?
   - input: qbi.coop_patron
     order: 296
-    seq: 5
+    seq: 6
     help: This means an agricultural or horticultural cooperative; a person who sells to it, buys from it or belongs to it
       is its “patron”. A Yes is outside what this tool prepares and ends the interview here.
     prompt: In 2025, did you (or, on a joint return, your spouse) sell to, buy from or belong to a farm cooperative, or get

@@ -488,6 +488,24 @@ form:
             locator: 'p. 16, How To Report Digital Asset Transactions, "If, in 2025, you disposed of any digital asset,
               which you held as a capital asset, through a sale, trade, exchange, payment, or other transfer, check “Yes”
               and use Form 8949 to calculate your capital gain or loss"'
+    - id: f1040.line7b_sd_not_required
+      printed: 7b
+      label: 'Check if: Schedule D not required'
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - sd.filed
+          - const: false
+        - op: test
+          gt:
+          - f1040.line7a
+          - const: 0
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 7a, "If Exception 1 applies, enter your total capital gain distributions (from box 2a of Form(s) 1099-DIV) on line 7a and check the box “Schedule D not required” on line 7b."'
     - id: f1040.line8
       printed: "8"
       label: Additional income from Schedule 1, line 10
@@ -1245,6 +1263,52 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 36
+    - id: f1040.split_total
+      printed: (helper)
+      label: Lines 35a and 36 together
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line35a
+          - f1040.line36
+      cite:
+        doc: i1040gi
+        locator: p. 65, Line 38, "Lines 35a, 36, and 38 must equal line 34"
+    - id: f1040.split_checked
+      printed: (helper)
+      label: Lines 35a and 36 together, checked against the overpayment on line 34
+      display: 'Shown on the values sheet to check the refund and the amount applied to 2026 against line 34: nothing else
+        reads lines 35a and 36.'
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: f1040.split_total
+      cite:
+        doc: i1040gi
+        locator: p. 65, Line 38, "Lines 35a, 36, and 38 must equal line 34"
+      refuses:
+        - when: f1040.split_bad
+          form: Form 1040 lines 35a and 36
+          remedy: Lines 35a and 36 are parts of the overpayment on line 34; correct them so that together they are not
+            more than line 34.
+          cite:
+            doc: i1040gi
+            locator: p. 65, Line 38, "Lines 35a, 36, and 38 must equal line 34. If the penalty is more than the
+              overpayment on line 34, enter -0- on lines 35a and 36."
+    - id: f1040.split_bad
+      printed: (gate)
+      label: Lines 35a and 36 together are more than the overpayment on line 34
+      type: Bool
+      expr:
+        op: test
+        gt:
+          - f1040.split_total
+          - f1040.line34
+      cite:
+        doc: i1040gi
+        locator: p. 65, Line 38, "Lines 35a, 36, and 38 must equal line 34. If the penalty is more than the overpayment on
+          line 34, enter -0- on lines 35a and 36."
     - id: f1040.line37
       printed: "37"
       label: Subtract line 33 from line 24. This is the amount you owe

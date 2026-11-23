@@ -79,7 +79,7 @@ rows:
     scope.artist_official: false
     scope.excess_deferral: false
     f8960.refund: false
-    qbi.coop_patron: false
+    qbi.prior_form: false
   expect:
     refused: s2.amt
 - id: other.amt_pab

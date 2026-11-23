@@ -134,3 +134,70 @@ rows:
       household.community_property: false
     expect:
       asks: household.spouse_cp_domicile
+  - id: mfs.apart_entitled_hoh
+    design: adversarial household review M1 (lane hh; married, lived apart, keeps up a home for their child)
+    situation: A married person filing apart, who did not live with their husband or wife at any time in 2025, paid more
+      than half the cost of the home of their young child and says they are considered unmarried; they are told head of
+      household fits.
+    uses: [separate]
+    answers:
+      $dependent: [kid]
+      dependent[kid].relationship: child
+      dependent[kid].age: 6
+      dependent[kid].lived_all_year: true
+      dependent[kid].younger: true
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: true
+      dependent[kid].divorced_rule: false
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+      dependent[kid].citizen_ssn: true
+      dependent[kid].absence_no_return: false
+      household.mfs_living: apart_all_year
+      household.home_cost: true
+      household.considered_unmarried: true
+    expect:
+      refused: household.hoh_missed_mfs
+  - id: mfs.apart_not_unmarried
+    design: adversarial household review M1 (lane hh; the same household, not considered unmarried)
+    situation: The same married person filing apart says they are not considered unmarried (for instance, the child is a
+      grandchild), and goes on past the household questions.
+    uses: [separate]
+    answers:
+      $dependent: [kid]
+      dependent[kid].relationship: child
+      dependent[kid].age: 6
+      dependent[kid].lived_all_year: true
+      dependent[kid].younger: true
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: true
+      dependent[kid].divorced_rule: false
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+      dependent[kid].citizen_ssn: true
+      dependent[kid].absence_no_return: false
+      household.mfs_living: apart_all_year
+      household.home_cost: true
+      household.considered_unmarried: false
+    expect:
+      asks: person[taxpayer].work_ssn
+  - id: mfs.together_child_not_asked_unmarried
+    design: adversarial household review M1 (lane hh; the spouses lived together late in 2025)
+    situation: A married person filing apart who lived with their husband or wife in the second half of 2025 and lists
+      their young child is not asked about the cost of the home or whether they are considered unmarried.
+    uses: [separate]
+    answers:
+      $dependent: [kid]
+      dependent[kid].relationship: child
+      dependent[kid].age: 6
+      dependent[kid].lived_all_year: true
+      dependent[kid].younger: true
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: false
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+      dependent[kid].citizen_ssn: true
+      household.mfs_living: together_late
+    expect:
+      asks: person[taxpayer].work_ssn
+      not_asked: [household.home_cost, household.considered_unmarried]

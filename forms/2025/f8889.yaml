@@ -1716,7 +1716,7 @@ form:
       locator: 'p. 7, Line 6, Step 1, "Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage"'
   - id: f8889.step1_total
     printed: (helper)
-    label: 'Step 1: the family amount for each month treated as having family coverage'
+    label: 'The family amount for each month you were treated as having family coverage'
     type: NonNegDollars
     expr:
       op: choose
@@ -1738,11 +1738,11 @@ form:
       locator: 'p. 7, Line 6, Step 1, "Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
   - id: f8889.step1_line3
     printed: (helper)
-    label: 'Step 1: refigured line 3 (the total divided by 12)'
+    label: 'Step 1: refigured line 3 (the shared family amount divided by 12)'
     type: Dollars
     expr:
       op: multiply_rate
-      amount: f8889.step1_total
+      amount: f8889.step1_shared
       rate:
         param: hsa.twelfth
     cite:
@@ -1836,16 +1836,11 @@ form:
       locator: 'p. 7, Line 6, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)"; p. 7, Line 6, Step 3, "Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1"'
   - id: f8889.allocation_bad
     printed: (gate)
-    label: 'The spouses allocation cannot be checked or does not hold: only one spouse treated as having family coverage, only one using an agreed allocation, or an agreed allocation with different Step 1 limits or with more than the Step 1 limit allocated in total'
+    label: 'The spouses allocation cannot be checked or does not hold: only one using an agreed allocation, or an agreed allocation with different Step 1 limits or with more than the Step 1 limit allocated in total'
     type: Bool
     expr:
       op: test
       any:
-      - op: test
-        eq:
-        - household.hsa_split_count
-        - const: 1
-          type: Count
       - op: test
         eq:
         - household.hsa_agreed_count
@@ -1883,10 +1878,8 @@ form:
     refuses:
     - when: f8889.allocation_bad
       form: Form 8889 line 6 for spouses with separate HSAs
-      remedy: Count the months treated as family coverage the same way for both spouses (if either had family coverage while
-        both were eligible, both are treated as having it), use the same allocation method on both Forms 8889, and allocate
-        no more than the Step 1 limit between you. An agreed allocation between spouses whose Step 1 limits differ is
-        outside this tool.
+      remedy: Use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit (the family
+        amount for the months you were both eligible individuals treated as having family coverage) between you.
       cite:
         doc: i8889
         locator: 'p. 4, Line 3, rule 1; p. 7, Line 6, Steps 1 to 3'
@@ -2019,21 +2012,175 @@ form:
     cite:
       doc: i8889
       locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3. Enter the total on line 6"'
+  - id: f8889.spouse_family_total
+    printed: (helper)
+    label: 'Your spouse''s family amount for each month your spouse was treated as having family coverage (zero without a
+      spouse''s Form 8889)'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: household.hsa_family_sum
+      take: f8889.step1_total
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 1, "the months you were treated as having family coverage"; p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"'
+    ambiguity: amb.2025.hsa_split_spouse_eligible
+  - id: f8889.spouse_self_total
+    printed: (helper)
+    label: 'Your spouse''s self-only amount for each of your spouse''s eligible months without family coverage (zero without
+      a spouse''s Form 8889)'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: household.hsa_self_sum
+      take: f8889.step4_total
+    cite:
+      doc: i8889
+      locator: 'p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an
+        HDHP with family coverage, you both are treated as having only the family coverage plan"'
+  - id: f8889.step1_shared
+    printed: (helper)
+    label: 'Step 1: the family amount for each month both spouses were eligible individuals treated as having family coverage
+      (the smaller of your and your spouse''s family amounts)'
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8889.step1_total
+      - f8889.spouse_family_total
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 1, "Refigure the contribution limit that would have been entered on line 5 if you had
+        entered on line 3 the total of the worksheet amounts only for the months you were treated as having family
+        coverage"; p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"'
+    ambiguity: amb.2025.hsa_split_spouse_eligible
+  - id: f8889.alone_total
+    printed: (helper)
+    label: 'The family amount for each month you were treated as having family coverage while your spouse was not an
+      eligible individual'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8889.step1_total
+      take: f8889.step1_shared
+    cite:
+      doc: p969
+      locator: 'p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are
+        eligible individuals"; i8889 p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax
+        year and add that amount to the result in Step 3"'
+    ambiguity: amb.2025.hsa_split_spouse_eligible
+  - id: f8889.alone
+    printed: (helper)
+    label: 'Step 4: the family limit for the months your spouse was not an eligible individual (the total divided by 12)'
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8889.alone_total
+      rate:
+        param: hsa.twelfth
+    cite:
+      doc: p969
+      locator: 'p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are
+        eligible individuals"; i8889 p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax
+        year and add that amount to the result in Step 3"'
+    ambiguity: amb.2025.hsa_split_spouse_eligible
+  - id: f8889.family_months_ok
+    printed: (helper)
+    label: 'The two spouses'' family months can be matched: the same family amount for both, one spouse treated as having
+      family coverage all year while the other had no eligible month of self-only coverage, or one spouse with no eligible
+      month at all'
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - f8889.step1_total
+        - f8889.spouse_family_total
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f8889.step1_total
+          - f8889.family_year
+        - op: test
+          eq:
+          - f8889.spouse_self_total
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f8889.spouse_family_total
+          - f8889.family_year
+        - op: test
+          eq:
+          - f8889.step4_total
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f8889.spouse_family_total
+          - const: 0
+        - op: test
+          eq:
+          - f8889.spouse_self_total
+          - const: 0
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f8889.step1_total
+          - const: 0
+        - op: test
+          eq:
+          - f8889.step4_total
+          - const: 0
+    cite:
+      doc: i8889
+      locator: 'p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an
+        HDHP with family coverage, you both are treated as having only the family coverage plan"; p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"'
+    ambiguity: amb.2025.hsa_split_spouse_eligible
+  - id: f8889.family_months_bad
+    printed: (gate)
+    label: 'Both spouses have a Form 8889 and their months of family coverage cannot be matched: different family amounts,
+      neither spouse treated as having family coverage all year with the other having no eligible month of self-only
+      coverage, and each spouse with an eligible month'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - household.hsa_both
+        - const: true
+      - op: test
+        eq:
+        - f8889.family_months_ok
+        - const: false
+    cite:
+      doc: i8889
+      locator: 'p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an
+        HDHP with family coverage, you both are treated as having only the family coverage plan"; p. 7, Line 6, Step 1;
+        p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"'
   - id: f8889.line6_split
     printed: (helper)
-    label: 'Line 6 for spouses with separate HSAs: Step 3 plus Step 4'
+    label: 'Line 6 for spouses with separate HSAs: Step 3 plus Step 4 (the self-only months and the family months without an
+      eligible spouse)'
     type: NonNegDollars
     expr:
       op: sum
       of:
       - f8889.share
       - f8889.step4
+      - f8889.alone
     cite:
       doc: i8889
       locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3. Enter the total on line 6"'
   - id: f8889.split
     printed: (helper)
-    label: 'Spouses with separate HSAs, treated as having family coverage at any time during 2025'
+    label: 'Spouses with separate HSAs, both treated as having family coverage at some time during 2025'
     type: Bool
     expr:
       op: choose
@@ -2043,7 +2190,7 @@ form:
           eq:
           - f8889.married_family
           - const: true
-        then: household.hsa_both
+        then: f8889.spouse_family_any
       - guard:
           op: test
           eq:
@@ -2052,7 +2199,29 @@ form:
         then: f8889.no
     cite:
       doc: i8889
-      locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025'
+      locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025;
+        p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"'
+    ambiguity: amb.2025.hsa_split_spouse_eligible
+  - id: f8889.spouse_family_any
+    printed: (helper)
+    label: 'Your spouse has a Form 8889 and was treated as having family coverage at some time during 2025'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - household.hsa_both
+        - const: true
+      - op: test
+        gt:
+        - f8889.spouse_family_total
+        - const: 0
+    cite:
+      doc: p969
+      locator: 'p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are
+        eligible individuals"'
+    ambiguity: amb.2025.hsa_split_spouse_eligible
   - id: f8889.line6
     printed: '6'
     label: Enter the amount from line 5. But if you and your spouse each have separate HSAs and had family coverage under
@@ -2077,6 +2246,17 @@ form:
       doc: f8889
       locator: Form 8889 (2025), line 6; i8889 p. 7, Line 6 (spouses with separate HSAs and family coverage take
         f8889.line6_split)
+    refuses:
+    - when: f8889.family_months_bad
+      form: Form 8889 line 6 for spouses with separate HSAs whose months of family coverage differ
+      remedy: Count the months treated as family coverage the same way for both of you (in a month you were both eligible
+        individuals and either had family coverage, both are treated as having it). Months in which only one of you was an
+        eligible individual are that spouse's alone; this tool can match them only when one of you was treated as having
+        family coverage all year, or one of you was never an eligible individual in 2025. Other patterns are outside this
+        tool.
+      cite:
+        doc: i8889
+        locator: 'p. 4, How To Complete Part I; p. 7, Line 6, Steps 1 to 4; p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"'
   - id: f8889.additional
     printed: (helper)
     label: 'Year parameter hsa.additional ($1,000)'

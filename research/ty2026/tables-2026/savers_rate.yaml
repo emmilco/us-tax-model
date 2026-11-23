@@ -1,6 +1,6 @@
 # The saver's credit rate (Form 8880, line 9) by line 8 and filing status, as printed. Columns as printed:
 # married filing jointly; head of household; single, married filing separately or qualifying surviving spouse.
-# Written by tools/extract_printed_tables.py from sources/2026/f8880.pdf (sha256 97a6b5b3df44); checked by its --check (check-all).
+# Written by tools/extract_printed_tables.py from sources/2026/f8880.pdf (sha256 a85be44f0743); checked by its --check (check-all).
 table:
   id: "savers_rate"
   kind: "rate_bands"

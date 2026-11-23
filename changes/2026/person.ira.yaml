@@ -1,0 +1,60 @@
+changes:
+  tax_year: 2026
+  form: person
+  entries:
+  - change:
+    - C-PEOP-08
+    - BUG-1032
+    evidence:
+    - doc: p590a
+      page: 19
+      quote: All others, multiply line 3 by 75% (0.75) (by 86% (0.86) if you are age 50 or older)
+    - doc: p590a
+      page: 19
+      quote: multiply line 3 by 37.5% (0.375) (by 43% (0.43) if you are age 50
+    verified: draft
+    note: 'The four rates of the IRA deduction reduction are parameters (ira.rate_70, ira.rate_80, ira.rate_35, ira.rate_40),
+      staged for 2026 at 75%, 86%, 37.5% and 43% from Pub. 590-A Worksheet 1-2, line 4 (draft), which figures the same
+      reduction as the IRA Deduction Worksheet of the Form 1040 instructions (2026 edition not posted). The labels of the
+      four helpers, of the two lines that choose between them and of person.ira_wide (which names the rule) print the 2026
+      rates (BUG-1032); values are unchanged. The i1040gi
+      cites (p. 98, "multiply by 70% (0.70)") wait for the 2026 Form 1040 instructions; the worksheet keeps its line 6 and
+      line 7 numbering until then.'
+    operations:
+    - set:
+        line: person.ira_p70
+        field: label
+        from: Line 6 multiplied by 70% (0.70)
+        to: Line 6 multiplied by 75% (0.75)
+    - set:
+        line: person.ira_p80
+        field: label
+        from: Line 6 multiplied by 80% (0.80)
+        to: Line 6 multiplied by 86% (0.86)
+    - set:
+        line: person.ira_p35
+        field: label
+        from: Line 6 multiplied by 35% (0.35)
+        to: Line 6 multiplied by 37.5% (0.375)
+    - set:
+        line: person.ira_p40
+        field: label
+        from: Line 6 multiplied by 40% (0.40)
+        to: Line 6 multiplied by 43% (0.43)
+    - set:
+        line: person.ira_prod_wide
+        field: label
+        from: Line 6 multiplied by 70% (0.70), or by 80% (0.80) for a person age 50 or older at the end of 2025
+        to: Line 6 multiplied by 75% (0.75), or by 86% (0.86) for a person age 50 or older at the end of 2026
+    - set:
+        line: person.ira_prod_joint
+        field: label
+        from: Line 6 multiplied by 35% (0.35), or by 40% (0.40) for a person age 50 or older at the end of 2025
+        to: Line 6 multiplied by 37.5% (0.375), or by 43% (0.43) for a person age 50 or older at the end of 2026
+    - set:
+        line: person.ira_wide
+        field: label
+        from: This column takes the single rule (70% or 80%, the $10,000 threshold) — not married filing jointly or qualifying
+          surviving spouse, or the column of a person who wasn't covered by a retirement plan
+        to: This column takes the single rule (75% or 86%, the $10,000 threshold) — not married filing jointly or qualifying
+          surviving spouse, or the column of a person who wasn't covered by a retirement plan

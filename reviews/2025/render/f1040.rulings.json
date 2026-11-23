@@ -13,6 +13,26 @@
   {
    "printed": "12e",
    "restated": "Enter the amount from sa helper \"Deduction selected for Form 1040 line 12e\".",
+   "model": "The dependent earned income on the Standard Deduction Worksheet for Dependents adds only Form 1040 line 1z and Schedule 1 lines 3 and 8r, but the IRS footnote says it is the total of 'Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15'. The restatement also has no case or refusal for 'Exception 3—Dual-status alien. Line 12c. If you checked the box on line 12c, your standard deduction is zero', so a dual-status alien would get a positive standard deduction.",
+   "ruling": "Ruling: scope; i1040gi pp. 34-35, Standard Deduction Worksheet for Dependents, earned income footnote (Form 1040 line 1z and Schedule 1 lines 3, 6, 8r, 8t and 8u, less line 15), and Exception 3, dual-status alien. As ruled on 2026-11-17: Schedule 1 lines 6, 8t and 8u are outside the tool (the Schedule 1 refusal scope.schedule1 on forms/2025/scope.yaml lists the Schedule 1 items it computes, and these are not among them), and a nonresident or dual-status alien return is refused (forms/2025/scope.yaml, i1040gi p. 8, \"Most nonresident aliens and dual-status aliens have different filing requirements\"). This pass was forced because a new refusal (household.qss_child_not_all_year, through household.qss_fails) reaches line 12e; the reply raises nothing about the filing-status refusals. Project stands.",
+   "context": "3bfc783aa9ca3bf6ed44b73773516dd5e8f4faf1fa7ce99a1ed3be8aee36ff7d",
+   "date": "2026-11-23",
+   "run": "3a8007866be580646466f4e2612cafac5962a5ff3739a1ecc164ce4125606dcf",
+   "subject_key": "63fefacdd70f9c1c7fc6902299188e7da725c5a45c75576d4fd5bdad04c2e088"
+  },
+  {
+   "printed": "12e",
+   "restated": "Enter the amount from sa helper \"Deduction selected for Form 1040 line 12e\".",
+   "model": "The dependent standard deduction uses earned income from Form 1040 line 1z and Schedule 1 lines 3 and 8r, less line 15. The IRS footnote says earned income is 'the total of the amount(s) you reported on Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15', so lines 6, 8t and 8u are left out. Also, there is no refusal or zeroing for 'Exception 3—Dual-status alien... If you checked the box on line 12c, your standard deduction is zero'.",
+   "ruling": "Ruling: scope; i1040gi pp. 34-35, Standard Deduction Worksheet for Dependents, earned income footnote (Form 1040 line 1z and Schedule 1 lines 3, 6, 8r, 8t and 8u, less line 15), and Exception 3, dual-status alien. As ruled on 2026-11-17: Schedule 1 lines 6, 8t and 8u are outside the tool (the Schedule 1 refusal scope.schedule1 on forms/2025/scope.yaml lists the Schedule 1 items it computes, and these are not among them), and a nonresident or dual-status alien return is refused (forms/2025/scope.yaml, i1040gi p. 8, \"Most nonresident aliens and dual-status aliens have different filing requirements\"). This pass was forced because a new refusal (household.hoh_missed_mfs, through household.hoh_fails) reaches line 12e; the reply raises nothing about the filing-status refusals. Project stands.",
+   "context": "7cdee65d34c90fdde924dbb485b77af6519318f29c09f2185125c5f32ccabc51",
+   "date": "2026-11-23",
+   "run": "58f99620d723f3ac34a7b4b9794daa3bf3d9e934f2c0496cf1f82cdd8198159d",
+   "subject_key": "27978412b631b3857b80796bafe7deeae9ae583f59fab7754b5502586f6b92cf"
+  },
+  {
+   "printed": "12e",
+   "restated": "Enter the amount from sa helper \"Deduction selected for Form 1040 line 12e\".",
    "model": "The dependent standard deduction uses earned income of Form 1040 line 1z plus Schedule 1 lines 3 and 8r, less line 15. The worksheet says earned income is \"the amount(s) you reported on Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15\". Lines 6, 8t and 8u are left out. The restatement also does not apply \"Exception 3—Dual-status alien ... your standard deduction is zero\".",
    "ruling": "Ruling: scope; i1040gi pp. 34–35: the worksheet's lines 6, 8t and 8u are outside the tool (scope.schedule1 refuses them), and a dual-status alien return is refused. Project stands.",
    "context": "c9ee319b2d0ece519ad3e94ffaa4e489a07d700830b3fa234826b6258e29dbfd",

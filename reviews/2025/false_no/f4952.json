@@ -2,58 +2,59 @@
  "form": "f4952",
  "reviews": {
   "gate:f4952.carryover_if_interest": {
-   "subject_sha": "e5bcd45bcc16914a8dc4d6ea80cc151402a67cedc4975aea6e6d68f4243993d7",
+   "subject_sha": "2c040e230d6687558ab0d83ca807acc7adc6515a065dea669343b5d536bba58f",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A filer whose 2023 Form 4952 showed a carryover on line 7. They took the standard deduction in 2024 and filed no 2024 Form 4952, so the disallowed interest still carries forward into 2025, where they itemize.",
-       "why_no": "The child question asks only about 'line 7 of a 2024 Form 4952 of either of you'. No 2024 Form 4952 exists, so the truthful answer is no, even though a carryover from 2024 into 2025 exists.",
+       "who": "A filer whose 2024 investment interest was more than their 2024 net investment income, but who filed no 2024 Form 4952. They took the standard deduction, believed the form was not required, or a preparer left it off.",
+       "why_no": "The outer question asks whether they 'have investment interest expense carried forward from an earlier year'. With no 2024 Form 4952 and no deduction claimed, they believe nothing was 'disallowed' or 'carried forward' and answer no. The inner question's 'what line 7 of a correct 2024 Form 4952 would show' never appears, because the outer no stops the gate first.",
        "line": "f4952.line2",
-       "irs_text": "f4952 p. 3, Who Must File: 'You don't have any carryover of disallowed investment interest expense from 2024'; p. 1, Part I, line 2: 'Disallowed investment interest expense from 2024 Form 4952, line 7'",
-       "severity": "high",
-       "fix": "Ask whether either spouse has investment interest expense disallowed in any earlier year that has not yet been deducted. Say this includes a carryover from a year in which no Form 4952 was filed, for example because the standard deduction was taken. Then ask for the amount: line 7 of the last Form 4952 filed, less any part deducted since."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A filer who was required to file Form 4952 for 2024 but left it off the return in error. On a joint return, the case can also be one spouse whose 2024 carryover was figured but never put on a filed form.",
-       "why_no": "The child question ties the yes to a filed 2024 Form 4952's line 7. Without a filed form, the filer truthfully answers no, though the IRS text treats the carryover as a fact ('carryover ... from 2024'), not as a document.",
-       "line": "f4952.line2",
-       "irs_text": "f4952 p. 3: 'Use Form 4952 to figure ... the amount you can carry forward to future years'; 'You don't have any carryover of disallowed investment interest expense from 2024'",
+       "irs_text": "f4952 p. 1, line 7: 'Disallowed investment interest expense to be carried forward to 2026. Subtract line 6 from line 3'; line 2: 'Disallowed investment interest expense from 2024 Form 4952, line 7'",
        "severity": "medium",
-       "fix": "Ask about the carryover as a fact. Ask for line 7 of the 2024 Form 4952 when one was filed; otherwise ask the filer to figure the 2024 amount (line 3 minus line 6 for 2024)."
+       "fix": "Move the fact-based wording into the outer question: 'In 2024 or an earlier year, did you or your spouse have interest on money borrowed for investments (including margin interest or interest shown on a Schedule K-1) that was more than your investment income, even if you filed no Form 4952 or took the standard deduction?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose prior-year software produced Form 4952 automatically, for example from margin interest or Schedule K-1 investment interest. The software carried an amount to line 7, but the filer never noticed it.",
-       "why_no": "The parent question asks, in its own words, whether 'either of you have investment interest expense carried forward from an earlier year'. A filer who never saw the carryover answers no from memory, without checking the prior return. The parent question does not point to line 7 or to the 2024 return.",
+       "who": "A filer whose only investment interest in 2024 was margin interest on a brokerage statement, or investment interest passed through on a partnership or S corporation Schedule K-1. Some of it was disallowed on the 2024 Form 4952 that their software or preparer produced.",
+       "why_no": "They never 'borrowed money for investments' in their own view. The K-1 interest was the entity's, and margin is an account feature. The words 'investment interest expense carried forward' do not match anything they remember, so they answer no to both clauses.",
        "line": "f4952.line2",
-       "irs_text": "f4952 p. 1, Part I, line 2: 'Disallowed investment interest expense from 2024 Form 4952, line 7'",
+       "irs_text": "f4952 p. 3, Line 1: 'Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation'; p. 1, line 2",
        "severity": "medium",
-       "fix": "In the parent question's help, tell the filer to check whether either spouse's 2024 return (joint or separate) included Form 4952 and whether its line 7 is more than zero. Add that margin interest and K-1 investment interest can produce one."
+       "fix": "Name the sources in the gate: 'margin interest on a brokerage account, investment interest shown on a Schedule K-1, or other interest on loans used to buy investments'. Also tell the filer to check line 7 of any 2024 Form 4952 in their return, including forms the software or preparer produced."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose disallowed investment interest arose in 2022 or 2023 and is still unused. Their 2024 return omitted Form 4952 because they had no new investment interest in 2024.",
+       "why_no": "The gate's line label reads 'Investment interest expense disallowed in 2024 and carried forward'. They had no investment interest in 2024, so nothing was disallowed that year, and they answer no.",
+       "line": "f4952.line2",
+       "irs_text": "f4952 p. 3, Who Must File: 'You don't have any carryover of disallowed investment interest expense from 2024'; p. 1, line 7 (carryforward is line 3, which includes line 2's prior carryover, less line 6)",
+       "severity": "medium",
+       "fix": "Relabel the gate: 'Investment interest expense disallowed in 2024 or any earlier year and not yet deducted'. State in the outer question that a carryover can persist through years with no new interest and no Form 4952 filed."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer whose only link to investment interest is a carryover, or K-1 investment interest from a partnership or S corporation, where they personally borrowed nothing.",
-       "why_no": "The parent question begins 'pay or accrue any interest in 2025 on money borrowed for investments' and ends 'Answer Yes if any of these applies:', but the list is not shown. A filer may read the list as the whole rule and skip the carryover clause. Without the list, it cannot be confirmed that it names carryovers.",
+       "who": "Any filer shown the outer question. The question ends 'Answer Yes if any of these applies:' but its list does not appear in the gate as reviewed.",
+       "why_no": "If the list names only current-year borrowing, such as margin loans, a filer with only a carryforward may read the list as the whole rule and answer no.",
        "line": "f4952.line2",
-       "irs_text": "f4952 p. 3: 'Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation'; 'You don't have any carryover of disallowed investment interest expense from 2024'",
+       "irs_text": "f4952 p. 1, Part I, line 2",
        "severity": "low",
-       "fix": "Make sure the list after 'Answer Yes if any of these applies' names, as its own item, a carryover shown on line 7 of any spouse's 2024 Form 4952 or left over from an earlier year."
+       "fix": "Make sure the list includes a separate item: 'investment interest you could not deduct in an earlier year (line 7 of a prior Form 4952, or an amount that should have been there)'."
       }
      ],
-     "prompt_sha": "61828ebd699d1ff57d88f7dc4eb43a6816ead9c99164c99cb47999800f5410e4",
+     "prompt_sha": "4b8db8ef888cfdadcec1e9ccf5a5c56b391e8d9b384342256a0d84355b52ead8",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.0931,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f4952.carryover_if_interest.e5bcd45bcc16.1.response.txt"
+     "cost": 0.10450000000000001,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_f4952.carryover_if_interest.2c040e230d66.1.response.txt",
+     "rerun_reason": "BUG-0833 part 2: f4952.carryover reworded (owner delegation 2026-11-22, option a), final wording after the false-no sample of 2026-11-23"
     }
    ],
    "condition": "f4952.carryover_if_interest",
@@ -77,6 +78,7 @@
      "how": "whole document",
      "locators": [
       "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+      "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\", and line 7, \"Subtract line 6 from line 3. If zero or less, enter -0-\"",
       "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"; p. 3, Who Must File, \"You don’t have any carryover of disallowed investment interest expense from 2024\"",
       "pp. 1, 3–4, Investment Interest Expense Deduction"
      ],

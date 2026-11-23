@@ -273,31 +273,38 @@
 - Expr: `{"gt":["person.hsa_forms",{"const":1,"type":"Count"}],"op":"test"}`
 - Cite: [i8889] p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; sha256 da6f2f58)
 
-## (helper) — `person.hsa_split`
+## (helper) — `person.hsa_family`
 
-- **Authored helper label:** This persons Form 8889 uses the spouse rule of line 6
-- **Encoded (Count):** Add f8889.one over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"f8889","field":"f8889.one","op":"sum_over","where":{"eq":["f8889.split",{"const":true}],"op":"test"}}`
-- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
+- **Authored helper label:** This persons family amount for each month treated as having family coverage (Form 8889)
+- **Encoded (NonNegDollars):** Add f8889.step1_total over every confirmed f8889 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8889","field":"f8889.step1_total","op":"sum_over"}`
+- Cite: [i8889] p. 7, Line 6, Step 1, "Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage"; p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals" (2025; sha256 da6f2f58)
+
+## (helper) — `person.hsa_self`
+
+- **Authored helper label:** This persons self-only amount for each eligible month without family coverage (Form 8889)
+- **Encoded (NonNegDollars):** Add f8889.step4_total over every confirmed f8889 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8889","field":"f8889.step4_total","op":"sum_over"}`
+- Cite: [i8889] p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan"; p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year" (2025; sha256 da6f2f58)
 
 ## (helper) — `person.hsa_agreed`
 
 - **Authored helper label:** This persons Form 8889 uses an agreed allocation under the spouse rule of line 6
-- **Encoded (Count):** Add f8889.one over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true and helper "Do you and your spouse divide the family contribution limit equally, or by a different allocation you both agree on?" = 'agreed', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Count):** Add f8889.one over every confirmed f8889 entry for which helper "Spouses with separate HSAs, both treated as having family coverage at some time during 2025" = true and helper "Do you and your spouse divide the family contribution limit equally, or by a different allocation you both agree on?" = 'agreed', within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"f8889","field":"f8889.one","op":"sum_over","where":{"all":[{"eq":["f8889.split",{"const":true}],"op":"test"},{"eq":["f8889.allocation",{"const":"agreed"}],"op":"test"}],"op":"test"}}`
 - Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
 
 ## (helper) — `person.hsa_step1`
 
 - **Authored helper label:** This persons Step 1 limit under the spouse rule of line 6
-- **Encoded (NonNegDollars):** Add f8889.step1 over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add f8889.step1 over every confirmed f8889 entry for which helper "Spouses with separate HSAs, both treated as having family coverage at some time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"f8889","field":"f8889.step1","op":"sum_over","where":{"eq":["f8889.split",{"const":true}],"op":"test"}}`
 - Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
 
 ## (helper) — `person.hsa_share`
 
 - **Authored helper label:** This persons part of the Step 1 limit under the spouse rule of line 6
-- **Encoded (NonNegDollars):** Add f8889.share_raw over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add f8889.share_raw over every confirmed f8889 entry for which helper "Spouses with separate HSAs, both treated as having family coverage at some time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"f8889","field":"f8889.share_raw","op":"sum_over","where":{"eq":["f8889.split",{"const":true}],"op":"test"}}`
 - Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
 
@@ -1453,6 +1460,13 @@
 - **Encoded (NonNegDollars):** Add sc.f7206_line14 over every confirmed sc entry, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"sc","field":"sc.f7206_line14","op":"sum_over"}`
 - Cite: [f7206] Form 7206 (2025), line 14 (2025; created 2025-10-02; sha256 822203c9)
+
+## (helper) — `person.sehi_unused`
+
+- **Authored helper label:** Health insurance of this person's businesses not deducted on Schedule 1, line 17 (Form 7206, line 3 minus line 14, each business)
+- **Encoded (NonNegDollars):** Add sc.f7206_unused_if_uses over every confirmed sc entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"sc","field":"sc.f7206_unused_if_uses","op":"sum_over"}`
+- Cite: [i7206] p. 2, "any medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as medical expenses on Schedule A (Form 1040) if you itemize deductions" (2025; sha256 9cbf92b3)
 
 ## (helper) — `person.amt_dep_f17`
 

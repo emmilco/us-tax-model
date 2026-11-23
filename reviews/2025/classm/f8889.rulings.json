@@ -360,6 +360,39 @@
   },
   {
    "case": "classm.f8889.3",
+   "printed": "person[spouse].f8889[hsa].line12",
+   "project": "$5,279.17",
+   "model": "$5,112.50",
+   "ruling": "Ruling: ambiguity; inherited from lines 7 and 8 (amb.2025.hsa_line7_months); line 11 is zero on both sides. Project stands.",
+   "context": "9e55503be746d91431ef583a46bb240f99a5ae1a38daff0911a7e006a81d6375",
+   "date": "2026-11-23",
+   "run": "27a32faac2428ce3d457c9c83fce3481872a51c2cd70ccf617c4bb496726462e",
+   "subject_key": "8effa66502a3a0b20dae684ec6ba9e46c457612452d69c5586faf8c3525a9f89"
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[spouse].f8889[hsa].line7",
+   "project": "$1,000.00",
+   "model": "$833.33",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (chosen: count every month the person was, or was considered, an eligible individual); i8889 p. 7, Additional Contribution Amount Worksheet, \"$1,000 x number of months eligible\". The spouse (born 1950) was eligible all 12 months, 10 of them with family coverage: the project counts 12 months ($1,000), the model only the 10 family months ($833.33), the recorded alternative reading. Line 6 agrees on both sides ($4,279.17; both spouses have 10 family months, so this lane's spouse-eligibility change does not reach the case). Project stands.",
+   "context": "9e55503be746d91431ef583a46bb240f99a5ae1a38daff0911a7e006a81d6375",
+   "date": "2026-11-23",
+   "run": "27a32faac2428ce3d457c9c83fce3481872a51c2cd70ccf617c4bb496726462e",
+   "subject_key": "cd265ad177781aca7996dbe7e88d7389748d020d4f41d9bb8441d965db1c5692"
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[spouse].f8889[hsa].line8",
+   "project": "$5,279.17",
+   "model": "$5,112.50",
+   "ruling": "Ruling: ambiguity; inherited from line 7 (amb.2025.hsa_line7_months): $4,279.17 + $1,000 in the project, + $833.33 in the model. Project stands.",
+   "context": "9e55503be746d91431ef583a46bb240f99a5ae1a38daff0911a7e006a81d6375",
+   "date": "2026-11-23",
+   "run": "27a32faac2428ce3d457c9c83fce3481872a51c2cd70ccf617c4bb496726462e",
+   "subject_key": "b1676c1a2a300aa1c7b1433df9011f9ae86e558bb7fc680c6f84d404d66b36f2"
+  },
+  {
+   "case": "classm.f8889.3",
    "printed": "person[taxpayer].f8889[hsa].family_dec_year",
    "project": "$102,600.00",
    "model": "$0.00",

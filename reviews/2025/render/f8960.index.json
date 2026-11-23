@@ -4,12 +4,12 @@
  "family": "claude",
  "base": "85e4f1f2d25ebcc50a9d7c62bbf753993819137414db5d15cfd4c4b4a87e54a0",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "7f0b4395eebb3effa9bdaeb917f912350fa4c0fae8cfbe5b51b282dfb01b91f3",
+   "record": "eac08eebe891c71b99a00af144b9abf0ddd6f9ccc62a3fed0d05dbdfe18d72d2",
    "status": "MATCH",
    "subject_key": "22aa753c558e88ea5d5b456db48ce4451129b94807f6c3e2ee909d2b14d6c531"
   },
@@ -148,7 +148,7 @@
   },
   {
    "key": "16",
-   "record": "7f0b4395eebb3effa9bdaeb917f912350fa4c0fae8cfbe5b51b282dfb01b91f3",
+   "record": "eac08eebe891c71b99a00af144b9abf0ddd6f9ccc62a3fed0d05dbdfe18d72d2",
    "status": "MATCH",
    "subject_key": "928b457fa684e5ca44ae4c8beaef84d6a8877c231f69cef6dcaf426126a75082"
   },

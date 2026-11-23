@@ -5,8 +5,8 @@
  "base": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
  "head_rows": {
   "lines judged": "88",
-  "match / mismatch / unclear / missing": "78 / 6 / 4 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "78 / 5 / 5 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -102,43 +102,43 @@
   },
   {
    "key": "under24_count",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
    "status": "MATCH",
    "subject_key": "5300a06250f7ad7dc363125852649e655bcb26de17f06a72cba54cd8c744c222"
   },
   {
    "key": "under24",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
    "status": "MATCH",
    "subject_key": "706557920e3ffd3f71199f45b32645205d5ddffa8ff4fa805ca3ed85506441d6"
   },
   {
    "key": "under24_if_not_joint",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
    "status": "MATCH",
    "subject_key": "e590e4674484e5f1326cbaf0caa629a7bd1c24a34b7ee23bdb064976e2f4cc9d"
   },
   {
    "key": "unearned_2700",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
    "status": "MATCH",
    "subject_key": "0aaa73fc677f5fe94cacece4a0e7e5b59a47e5644379c8f9eeb5cbd8986bda8f"
   },
   {
    "key": "unearned_2700_if_under24",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
    "status": "MATCH",
    "subject_key": "5a6d3ac5296633334f7d4073647844e4dae4dbdaa3747341a032b53926e63c42"
   },
   {
    "key": "f8615",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
    "status": "MATCH",
    "subject_key": "d3e872823931fc27d9f79348fe3c5ff45b0b4c77b498fba803b658a7a940471b"
   },
   {
    "key": "f8615_if_unearned_2700",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
    "status": "MATCH",
    "subject_key": "6c1ec7bb30a38ae86ba298731d512f0e1023e3e670109fd4292d22f5b78b0186"
   },
@@ -512,9 +512,9 @@
   },
   {
    "key": "other_line16",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi p. 34, Line 16. Form 4972 is refused by retirement.lump_sum (coverage row scope.lump_sum) and a section 965(i) triggering event by s3.section965; the screen collects the remaining line 16 items.",
+   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: scope; i1040gi Line 16 lists 'Tax from Form 4972' and 'Triggering event under section 965(i)' (sources/2025/i1040gi.cols.txt:846). Neither needs a screen here: a lump-sum distribution reaches Form 4972 only from a Form 1099-R, and each 1099-R asks retirement.lump_sum, refused through retirement.special ('Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)'); a section 965(i) deferral is open only to S corporation shareholders, whose income or loss from the S corporation for 2025 is refused at scope.k1 (Schedule K-1), and a net 965 liability in installments is refused at s3.section965. Project stands.",
    "subject_key": "64da5a6cf03589409148a3f1ad98f55ac28f6384def263496a6085ac849d41d2"
   },
   {
@@ -531,7 +531,7 @@
   },
   {
    "key": "ready_other_line16",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
    "status": "MATCH",
    "subject_key": "a15e2888adc005582fb839b690b4afd2a41ca95d1afc5aa1689b6d6a1bf142f2"
   },
@@ -543,7 +543,7 @@
   },
   {
    "key": "ready",
-   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
    "status": "MATCH",
    "subject_key": "c0a2f96ed58acce41142b7f663109ef01894f848eae0fa92698803c3bb4ef537"
   }

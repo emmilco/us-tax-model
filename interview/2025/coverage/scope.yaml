@@ -110,6 +110,7 @@ rows:
   situation: "A person sold equipment used in a business (Form 4797)."
   answers:
     "sd.sold_other": true
+    "sd.home_sale": false
     "sd.business_property": true
   expect:
     refused: sd.other_forms

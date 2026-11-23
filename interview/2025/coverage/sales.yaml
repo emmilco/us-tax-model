@@ -9,6 +9,7 @@ rows:
     situation: A person sold a building they had rented out.
     answers:
       sd.sold_other: true
+      sd.home_sale: false
       sd.business_property: true
     expect:
       refused: sd.other_forms
@@ -17,6 +18,7 @@ rows:
     situation: A person sold land in 2023 and is paid for it over ten years, reporting the gain as the payments arrive.
     answers:
       sd.sold_other: true
+      sd.home_sale: false
       sd.business_property: false
       sd.installment: true
     expect:
@@ -26,16 +28,28 @@ rows:
     situation: A person traded investment land for other land in a like-kind exchange.
     answers:
       sd.sold_other: true
+      sd.home_sale: false
       sd.business_property: false
       sd.installment: false
       sd.like_kind: true
     expect:
       refused: sd.other_forms
-  - id: sales.home_sold_nothing_special
-    design: MAP 2.8, sd.sold_other (the parent does not refuse)
-    situation: A person sold real estate that was never rented or used in a business, for one payment, with no exchange.
+  - id: sales.home_sold_reportable
+    design: sd.home_sale (Form 8949 with code H; i1040sd p. 2, Sale of Your Home)
+    situation: A person sold the home she had lived in for ten years at a gain of $320,000, more than the $250,000 she can
+      exclude, and got a Form 1099-S from the closing agent.
     answers:
       sd.sold_other: true
+      sd.home_sale: true
+    expect:
+      refused: sd.home_sale_if_sold
+  - id: sales.home_sold_nothing_special
+    design: MAP 2.8, sd.sold_other (the parent does not refuse); sd.home_sale (a home sale with its whole gain excluded and no Form 1099-S is not reported)
+    situation: A person sold the home they lived in, never rented or used in a business, for one payment, with no exchange,
+      no Form 1099-S and a gain they can exclude in full.
+    answers:
+      sd.sold_other: true
+      sd.home_sale: false
       sd.business_property: false
       sd.installment: false
       sd.like_kind: false
@@ -50,7 +64,7 @@ rows:
     expect:
       proceeds:
         sd.sold_other: false
-      not_asked: [sd.business_property, sd.installment, sd.like_kind]
+      not_asked: [sd.home_sale, sd.business_property, sd.installment, sd.like_kind]
   - id: sales.futures
     design: MAP 2.8, sd.other_forms (Form 6781)
     situation: A person traded futures contracts, reported in boxes 8 to 11 of a Form 1099-B.

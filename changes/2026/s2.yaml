@@ -393,3 +393,238 @@ changes:
         to: p. 2 (draft), Part I, line 1a, "Excess advance premium tax credit repayment. Attach Form 8962"; f8962 p. 2 (draft),
           line 27, "Excess advance payment of PTC. If line 25 is greater than line 24, subtract line 24 from line 25. Enter
           the difference here and on Schedule 2 (Form 1040), line 1a"
+  - change:
+    - C-LAW-02
+    - BUG-1031
+    evidence:
+    - doc: i6251
+      page: 10
+      quote: Multiply line 4 by 50% (0.50)
+    - doc: i6251
+      page: 10
+      quote: Otherwise, include 50% of the excess of the amount on line 4 over $640,200
+    - doc: i6251
+      page: 10
+      quote: If line 4 is $780,400 or more, include an additional $70,100
+    - doc: i6251
+      page: 10
+      quote: If your filing status is married filing separately and line 4 is more than $640,200, you must include an additional
+        amount on line 4
+    - doc: i6251
+      page: 10
+      quote: For example, if the amount on line 4 is $660,200, enter $670,200 instead
+    - doc: i6251
+      page: 10
+      quote: Enter $90,100 if single or head of household; $140,200 if married filing jointly or qualifying surviving spouse;
+        or $70,100 if married filing separately
+    - doc: i6251
+      page: 2
+      quote: increases the phaseout amounts from 25% to 50%
+    - doc: plaw-119-21
+      page: 93
+      quote: (c) MODIFICATION OF PHASEOUT AMOUNT.—Section 55(d)(4)(A)(ii) is amended
+    verified: draft
+    note: 'P.L. 119-21 section 70107(c) doubles the rate of the exemption phase-out (Exemption Worksheet line 5) and of
+      the married-filing-separately add-back to line 4 (25% to 50%); Form 6251 line 37 (s2.amt_l37_rate) keeps 25% and
+      keeps reading amt.rate_25. The four products that phase the exemption out or add the separate-return amount back read
+      the new parameter amt.phaseout_rate (BUG-1031). The labels and quotes that print the 2025 dollar amounts of the same
+      paragraph and worksheet ($900,350, $1,174,350, $68,500, $920,350, $88,100, $137,000) are re-based on the 2026 draft
+      instructions. Not changed here: the Form 6251 (2025) cites of s2.amt_l4m and s2.amt_l37_rate (no 2026 Form 6251 is
+      archived), and the page moves of quotes still printed (citations.py --relocate).'
+    operations:
+    - set:
+        line: s2.amt_mfs
+        field: cite.locator
+        from: p. 9, Line 4—Alternative Minimum Taxable Income, "If your filing status is married filing separately and line
+          4 is more than $900,350, you must include an additional amount on line 4"
+        to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "If your filing status is married filing separately
+          and line 4 is more than $640,200, you must include an additional amount on line 4"
+    - set:
+        line: s2.amt_mfs_over
+        field: label
+        from: Line 4 over $900,350
+        to: Line 4 over $640,200
+    - set:
+        line: s2.amt_mfs_over
+        field: cite.locator
+        from: p. 9, Line 4—Alternative Minimum Taxable Income, "Otherwise, include 25% of the excess of the amount on line
+          4 over $900,350"
+        to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "Otherwise, include 50% of the excess of the amount
+          on line 4 over $640,200"
+    - set:
+        line: s2.amt_mfs_quarter
+        field: label
+        from: 25% of line 4 over $900,350
+        to: 50% of line 4 over $640,200
+    - set:
+        line: s2.amt_mfs_quarter
+        field: expr.rate.param
+        from: amt.rate_25
+        to: amt.phaseout_rate
+    - set:
+        line: s2.amt_mfs_quarter
+        field: cite.locator
+        from: p. 9, Line 4—Alternative Minimum Taxable Income, "Otherwise, include 25% of the excess of the amount on line
+          4 over $900,350"
+        to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "Otherwise, include 50% of the excess of the amount
+          on line 4 over $640,200"
+    - set:
+        line: s2.amt_mfs_max
+        field: label
+        from: Year parameter amt.mfs_addback_max ($68,500)
+        to: Year parameter amt.mfs_addback_max ($70,100)
+    - set:
+        line: s2.amt_mfs_max
+        field: cite.locator
+        from: p. 9, Line 4—Alternative Minimum Taxable Income, "If line 4 is $1,174,350 or more, include an additional $68,500"
+        to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "If line 4 is $780,400 or more, include an additional
+          $70,100"
+    - set:
+        line: s2.amt_mfs_add
+        field: label
+        from: The additional amount for married filing separately, not more than $68,500
+        to: The additional amount for married filing separately, not more than $70,100
+    - set:
+        line: s2.amt_mfs_add
+        field: cite.locator
+        from: p. 9, Line 4—Alternative Minimum Taxable Income, "If line 4 is $1,174,350 or more, include an additional $68,500"
+        to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "If line 4 is $780,400 or more, include an additional
+          $70,100"
+    - set:
+        line: s2.amt_l4_mfs
+        field: cite.locator
+        from: p. 9, Line 4—Alternative Minimum Taxable Income, "For example, if the amount on line 4 is $920,350, enter $925,350
+          instead"
+        to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "For example, if the amount on line 4 is $660,200, enter
+          $670,200 instead"
+    - set:
+        line: s2.amt_exemption
+        field: label
+        from: 'Exemption Worksheet line 1: $88,100 if single or head of household; $137,000 if married filing jointly or qualifying
+          surviving spouse; $68,500 if married filing separately'
+        to: 'Exemption Worksheet line 1: $90,100 if single or head of household; $140,200 if married filing jointly or qualifying
+          surviving spouse; $70,100 if married filing separately'
+    - set:
+        line: s2.amt_exemption
+        field: cite.locator
+        from: p. 9, Exemption Worksheet—Line 5, line 1, "Enter $88,100 if single or head of household; $137,000 if married
+          filing jointly or qualifying surviving spouse; or $68,500 if married filing separately"
+        to: p. 10 (draft), Exemption Worksheet—Line 5, line 1, "Enter $90,100 if single or head of household; $140,200 if married
+          filing jointly or qualifying surviving spouse; or $70,100 if married filing separately"
+    - set:
+        line: s2.amt_ex_cut
+        field: label
+        from: 'Exemption Worksheet line 5: 25% of its line 4'
+        to: 'Exemption Worksheet line 5: 50% of its line 4'
+    - set:
+        line: s2.amt_ex_cut
+        field: expr.rate.param
+        from: amt.rate_25
+        to: amt.phaseout_rate
+    - set:
+        line: s2.amt_ex_cut
+        field: cite.locator
+        from: p. 9, Exemption Worksheet—Line 5, line 5, "Multiply line 4 by 25% (0.25)"
+        to: p. 10 (draft), Exemption Worksheet—Line 5, line 5, "Multiply line 4 by 50% (0.50)"
+    - set:
+        line: s2.amt_l5
+        field: cite.locator
+        from: p. 9, Exemption Worksheet—Line 5, line 6, "Subtract line 5 from line 1. If zero or less, enter -0-. Also, enter
+          this amount on Form 6251, line 5"
+        to: p. 10 (draft), Exemption Worksheet—Line 5, line 6, "Subtract line 5 from line 1. If zero or less, enter -0-. Also
+          enter this amount on Form 6251, line 5"
+    - set:
+        line: s2.amt_h_mfs_over
+        field: label
+        from: That line 4 over $900,350
+        to: That line 4 over $640,200
+    - set:
+        line: s2.amt_h_mfs_over
+        field: cite.locator
+        from: p. 9, Line 4—Alternative Minimum Taxable Income, "Otherwise, include 25% of the excess of the amount on line
+          4 over $900,350"
+        to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "Otherwise, include 50% of the excess of the amount
+          on line 4 over $640,200"
+    - set:
+        line: s2.amt_h_mfs_quarter
+        field: label
+        from: 25% of that excess
+        to: 50% of that excess
+    - set:
+        line: s2.amt_h_mfs_quarter
+        field: expr.rate.param
+        from: amt.rate_25
+        to: amt.phaseout_rate
+    - set:
+        line: s2.amt_h_mfs_quarter
+        field: cite.locator
+        from: p. 9, Line 4—Alternative Minimum Taxable Income, "Otherwise, include 25% of the excess of the amount on line
+          4 over $900,350"
+        to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "Otherwise, include 50% of the excess of the amount
+          on line 4 over $640,200"
+    - set:
+        line: s2.amt_h_mfs_add
+        field: label
+        from: Its additional amount for married filing separately, not more than $68,500
+        to: Its additional amount for married filing separately, not more than $70,100
+    - set:
+        line: s2.amt_h_mfs_add
+        field: cite.locator
+        from: p. 9, Line 4—Alternative Minimum Taxable Income, "If line 4 is $1,174,350 or more, include an additional $68,500"
+        to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "If line 4 is $780,400 or more, include an additional
+          $70,100"
+    - set:
+        line: s2.amt_h_ex_cut
+        field: label
+        from: 25% of that excess
+        to: 50% of that excess
+    - set:
+        line: s2.amt_h_ex_cut
+        field: expr.rate.param
+        from: amt.rate_25
+        to: amt.phaseout_rate
+    - set:
+        line: s2.amt_h_ex_cut
+        field: cite.locator
+        from: p. 9, Exemption Worksheet—Line 5, line 5, "Multiply line 4 by 25% (0.25)"
+        to: p. 10 (draft), Exemption Worksheet—Line 5, line 5, "Multiply line 4 by 50% (0.50)"
+  - change:
+    - BUG-1167
+    evidence:
+    - doc: i6251
+      page: 5
+      quote: you may elect to include in AMTI the excess of the stock’s FMV (determined without regard to any lapse restriction)
+        over the exercise price upon the transfer to you
+    - doc: i1099int
+      page: 3
+      quote: For a specified private activity bond with OID, report the tax-exempt OID in box 11 on Form 1099-OID and the
+        tax-exempt stated interest in boxes 8 and 9 on Form 1099-INT
+    verified: draft
+    note: 'The 2026 drafts reword one quote of each cite (i6251 prints "AMTI" for "AMT income"; i1099int drops the comma
+      before "and the tax-exempt stated interest"), which citations.py --relocate cannot carry. Each locator is written
+      for the 2026 pages; its other quotes are printed one page later than in 2025.'
+    operations:
+    - set:
+        line: s2.iso_vested
+        field: cite.locator
+        from: 'p. 4, Line 2i—Exercise of Incentive Stock Options, "when your rights in the acquired stock first become transferable
+          or when these rights are no longer subject to a substantial risk of forfeiture", "you may elect to include in AMT
+          income the excess of the stock’s FMV (determined without regard to any lapse restriction) over the exercise price
+          upon the transfer to you"; p. 1, Who Must File, "Attach Form 6251 to your return if any of the following statements
+          are true"'
+        to: 'p. 5 (draft), Line 2i—Exercise of Incentive Stock Options, "when your rights in the acquired stock first become
+          transferable or when these rights are no longer subject to a substantial risk of forfeiture", "you may elect to
+          include in AMTI the excess of the stock’s FMV (determined without regard to any lapse restriction) over the exercise
+          price upon the transfer to you"; p. 2 (draft), Who Must File, "Attach Form 6251 to your return if any of the following
+          statements are true"'
+    - set:
+        line: s2.amt_pab
+        field: cite.locator
+        from: 'p. 3, Line 2g—Interest From Private Activity Bonds, "Each payer of this type of interest should send you a Form
+          1099-INT showing the amount of this interest in box 9"; i1099int p. 1, "For a specified private activity bond with
+          OID, report the tax-exempt OID in box 11 on Form 1099-OID, and the tax-exempt stated interest in boxes 8 and 9 on
+          Form 1099-INT"'
+        to: 'p. 4 (draft), Line 2g—Interest From Private Activity Bonds, "Each payer of this type of interest should send you
+          a Form 1099-INT showing the amount of this interest in box 9"; i1099int p. 3 (draft), "For a specified private activity
+          bond with OID, report the tax-exempt OID in box 11 on Form 1099-OID and the tax-exempt stated interest in boxes 8
+          and 9 on Form 1099-INT"'

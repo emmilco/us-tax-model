@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "ef9063a56aaf4a0ae0e237fbe4777370bbc4464e92426b8d737ef2412907a761",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -411,7 +411,7 @@
   },
   {
    "key": "30",
-   "record": "4c63b02880ae1993af49bc5389a0cd44a64b513688776825dc39c0806f6f6089",
+   "record": "53f3069ff3215e172ae0190aeb64652c403116962b2c48782a3a2d0f0736386d",
    "status": "MATCH",
    "subject_key": "e65bb5970d74fae8a46b1b2c6a1db177b7ee270bd5e15559c4deaabcd797ca6d"
   },

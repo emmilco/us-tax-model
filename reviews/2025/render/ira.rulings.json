@@ -13,6 +13,16 @@
    "subject_key": "3d86aa23bee61a3ac2612e1f3dcb53593ee41c5eeb7fcee073a84a738b42af1f"
   },
   {
+   "printed": "(screen) (ira.reservist_repaid)",
+   "restated": "scope helper \"The answer to scope.reservist_repaid, asked only when the question scope.armed_forces is answered Yes (false otherwise)\" = true",
+   "model": "The provided text says only 'Don't include any repayments of qualified reservist distributions'. It gives no time window linking the repayment to the period of service. Nothing provided supports asking the question only when the filer served in 2022 or later.",
+   "ruling": "Ruling: representation; Pub. 590-A, Qualified reservist repayments, \"You can't make these repayment contributions later than the date that is 2 years after your active duty period ends\" (sources/2025/p590a.cols.txt:297). A repayment made in 2025 therefore needs an active duty period that ended in 2023 or later, so the filer served at some time since 2022, which is what scope.armed_forces asks ('In the armed forces, Coast Guard, reserves or National Guard since 2022'); the gate drops no filer who can repay in 2025. The reply was not given that page. Project stands.",
+   "context": "eb9b78ec91666b8ad57b99b8280928b98e39ac1702a3f4b66b30b0e1db272c14",
+   "date": "2026-11-23",
+   "run": "67c99fd59afcb74cb0b6e4b97171839d83f2e42151d90ad5515acfdcb21462ab",
+   "subject_key": "9b9362ef3798ce56f460d19327e3face1f92b2a0475ad60b41a3b41025920e01"
+  },
+  {
    "printed": "12a",
    "restated": "Add person.ira_deduction over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The IRS says \"On line 12a, enter the smallest of line 7a, 10, or 11a.\" The restatement sums a filer-supplied person.ira_deduction instead of taking that minimum. There is also no refusal for the caution \"If married filing jointly and line 10 is less than $14,000 ... stop here and use the worksheet in Pub. 590-A.\"",

@@ -9,7 +9,7 @@ Over 286 complete returns (the Stage 5 and New York fixtures, generated returns 
 
 | Template | Returns | First return: input |
 |---|---|---|
-| `dependent.born_died` | 1 | ny: generated returns: ny.generated.1395: dependent[dep_a].born_died |
-| `dependent.kidnapped` | 2 | ny: generated returns: ny.generated.1379: dependent[dep_a].kidnapped |
-| `dependent.months` | 2 | ny: generated returns: ny.generated.1379: dependent[dep_a].months |
-| `dependent.placed` | 1 | ny: generated returns: ny.generated.1395: dependent[dep_a].placed |
+| `dependent.born_died` | 2 | ny: generated returns: ny.generated.1130: dependent[dep_a].born_died |
+| `dependent.kidnapped` | 1 | ny: generated returns: ny.generated.1395: dependent[dep_b].kidnapped |
+| `dependent.months` | 1 | ny: generated returns: ny.generated.1395: dependent[dep_a].months |
+| `dependent.placed` | 2 | ny: generated returns: ny.generated.1130: dependent[dep_a].placed |

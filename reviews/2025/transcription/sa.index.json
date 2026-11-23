@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "35",
   "agree / disagree / missing": "20 / 15 / 0",
-  "line-scoped reviews": "7 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "8 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -52,10 +52,10 @@
   },
   {
    "key": "1",
-   "record": "fba34f8f1350b43c882992d209ef7c69b877d4916bf1fbb6b65dafb071dbebd3",
+   "record": "fd8c5800cda37fb8052c12bd29d2a764c9a7c84777220bec31041de0dd30a0e1",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (4317 values compared, none different or missing: 2569 on 2569 fixture cases, 500 on 500 generated returns seed 20261026, 1248 on 1248 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
-   "subject_key": "8c0df8647144731e62a5bfd97d58d6d2036ae9679ed9cab2a27afbb3e4199ec5"
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (4405 values compared, none different or missing: 2664 on 2664 fixture cases, 500 on 500 generated returns seed 20261026, 1241 on 1241 partial records; every alternative of the 1 differing choose line(s) reached taken; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "175f3c4bbf537d4f95b6c64bada5c0caf809f49f65ea925cb64903ff2c9e7f03"
   },
   {
    "key": "5a",
@@ -104,9 +104,9 @@
   },
   {
    "key": "4",
-   "record": "7280d83cd542ec875ef200b25e65b0f17c03e0e1d4458542693a2649f1849213",
+   "record": "fd8c5800cda37fb8052c12bd29d2a764c9a7c84777220bec31041de0dd30a0e1",
    "status": "AGREE",
-   "subject_key": "a9c5286163eb3ece38ca47564dd3956fd29104480354ab7ae5781cd71d39c4d5"
+   "subject_key": "f5ddadfc253191331685c2db713b8aac06615f148f8e45161944bfdb22ccd551"
   },
   {
    "key": "5d",
@@ -242,7 +242,7 @@
   "sa.itemizes": "9cacc4822331cd8634b93293f7663534ce5e36eab56b4723b181552ef7c4cccd",
   "sa.deduction": "8e29997b24ac7b299d65d2660e4e42927094541cd9a91ee205bf49f2357f152e",
   "sa.mfs_spouse_itemizes": "5e58e8e56fc8bba413fa4722e1b031f8b6aff3a5a260b525f12c39e36f1b8a43",
-  "1": "5347efbc16c3b42370edee7c2dc6ab8e56dabf1a61cb4d0caebc3bb63953429e",
+  "1": "e0442d128bf301cd55938fecc35a50e9850a2d7dd5f969f29c6434b3dcbe0e04",
   "5a": "6af90a76e5d7e457dd7adea0bb919b9806a921f2d8b531105636f3c9b4e0e0fd",
   "5b": "ef1d0e093770f8d89583f0a9c95a7d4eff01e7880774e723fc8cfbcba22b7b5d",
   "5c": "299d30680db43a236a6ad8191c87fc4cbb3bdbbc79a0c49fcf7c138a03014016",
@@ -250,7 +250,7 @@
   "11": "87a46150869dedabf3b1a6fe30f7e228e885f3e00e03d857782f0032403fd73c",
   "2 (sa.line2)": "6ed9e8826b6917afade8428ad8ba0ef06fdbb723500482b53bce904f69e95014",
   "3 (sa.line3)": "4606a9bdca74892e9959452bafe144fe3a9c24d25b48c83ee961469221a4b4c3",
-  "4": "e9b7517b9f7833c2e462420a42ca3c19aa8262a2a117a7c5f5e37d329a145988",
+  "4": "9750221e9bfda46b9d16da4170f21eb3116b20c1101898517fd2eba570131128",
   "5d": "c34cedc9a41efb5b3c441383a78fb012ce878fc05348c560ac921b0484f591ce",
   "5e": "0762d68e00b9d72f8d0f0038205ed4ce3626ba29164c5743fb3d673cc4d286ef",
   "6": "be57cf64d4666b715c4697d7e0048f57b21dd5873d56600186b3c0d0baa9ce05",
@@ -278,7 +278,7 @@
   "sa.itemizes": "9968d84f10dffe3128b9d95850464a95edf67471477002365d0359afe44fb508",
   "sa.deduction": "9968d84f10dffe3128b9d95850464a95edf67471477002365d0359afe44fb508",
   "sa.mfs_spouse_itemizes": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
-  "1": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "1": "5eb74b07245bef696c9c3f143a4c96fbdb97ad8d416dbe522414a622e946e980",
   "5a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "5b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "5c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

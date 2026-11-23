@@ -14062,7 +14062,8 @@
         "person[taxpayer].w2[emp_a].box5": 4705000,
         "person[taxpayer].w2[emp_a].box6": 89900,
         "household.qss_eligible": true,
-        "ny_it201.ask.city_resident": true
+        "ny_it201.ask.city_resident": true,
+        "dependent[daughter].lived_all_year": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: federal AGI 47,050.00 is under the federal earned income credit's limit 50,434.00 (or the credit is claimed), so lines 65 and 70 refuse (decision B9). Filing status qss (target taxable income $30,000).",
@@ -14128,7 +14129,8 @@
         "person[taxpayer].w2[emp_a].box5": 8705000,
         "person[taxpayer].w2[emp_a].box6": 89900,
         "household.qss_eligible": true,
-        "ny_it201.ask.city_resident": true
+        "ny_it201.ask.city_resident": true,
+        "dependent[daughter].lived_all_year": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: schedule). A dependent on item H with federal AGI within $5,000 of the highest IT-270 threshold: line 70a refuses (decision B10), so lines 76 to 80 are not asserted. Filing status qss (target taxable income $70,000).",
@@ -14281,7 +14283,8 @@
         "ny_it201.ask.prior_full_year": true,
         "$ny_it2": [
           "w0"
-        ]
+        ],
+        "dependent[daughter].lived_all_year": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status qss, f1040.line1z 157,050.00, f1040.line11a 157,050.00, eic.limit 50,434.00. Filing status qss (target taxable income $140,000). Taxable income reached (line 38): $140,000; New York AGI (line 33): $157,050.",
@@ -14453,7 +14456,8 @@
         "ny_it201.ask.prior_full_year": true,
         "$ny_it2": [
           "w0"
-        ]
+        ],
+        "dependent[daughter].lived_all_year": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-161550). Federal amounts copied (from the federal encoding): status qss, f1040.line1z 217,050.00, f1040.line11a 217,050.00, eic.limit 50,434.00. Filing status qss (target taxable income $200,000). Taxable income reached (line 38): $200,000; New York AGI (line 33): $217,050.",

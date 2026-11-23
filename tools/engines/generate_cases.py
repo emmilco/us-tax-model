@@ -63,7 +63,7 @@ def gen_case(rng, i):
         "f1040.status": "single", "$person": ["taxpayer"], "person[taxpayer].role": "taxpayer", "person[taxpayer].rrta": False,
         "sb.nominee": False, "sb.bonds_any": False, "sb.bond_special": False, "sb.form5471": False, "sb.line7a": False, "sb.fbar_required": False, "sb.form8938": False, "sb.line8": False,
         "sb.account_any": False, "sb.asset_any": False, "sb.trust_any": False, "sb.company_any": False, "sb.territory_any": False,
-        "div.other_boxes": False, "div.box2c": 0, "div.box2e": 0, "div.box2f": 0, "div.box3": 0,
+        "div.other_boxes": False, "div.box2c": 0, "div.box3": 0,
         "div.box9": 0, "div.box10": 0, "div.box13": 0, "div.basis_reconciled": True,
         "sd.other_forms": False, "sd.carryover": False,
         "qbi.unsupported": False,
@@ -824,8 +824,7 @@ def redraft_answers(case):
     # No digital asset received or disposed of (the generator draws boxes A, B, D and E only).
     inputs["f1040.digital_assets"] = False
     # Form 1099-DIV: the boxes other than 1a, 1b, 2a, 5, 7 and 12 are asked beneath their own parent.
-    inputs["div.other_boxes"] = any(inputs.get(f"div.{b}", 0) for b in ("box2b", "box2c", "box2d", "box2e", "box2f", "box3",
-                                                                        "box9", "box10", "box13"))
+    inputs["div.other_boxes"] = any(inputs.get(f"div.{b}", 0) for b in ("box2b", "box2c", "box2d", "box3", "box9", "box10", "box13"))
     # Foreign tax on a return with no dividends and no interest was paid to another country directly: the foreign
     # question is Yes (and none of the Schedule 3 items beneath it applies, nor a carryover of unused foreign tax), so the
     # foreign tax is asked.

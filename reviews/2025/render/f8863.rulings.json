@@ -3,6 +3,16 @@
  "form": "f8863",
  "rulings": [
   {
+   "printed": "(CLW 5)",
+   "restated": "Add s3 line 1 and s3 line 2.",
+   "model": "The IRS line is 'Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l'. The restatement adds only lines 1 and 2, and its refusal gate s3.other_credit covers line 6d (the elderly-credit question) but asks nothing about a Form 8978 amount, so a line 6l amount would be silently left out.",
+   "ruling": "Ruling: scope; i8863 Credit Limit Worksheet line 5, \"Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l\" (sources/2025/i8863.cols.txt:133). Line 6d (the elderly or disabled credit) is refused by the Schedule 3 elderly-credit screen, as the reply notes, and a line 6l amount comes only from Form 8978, which a partner files after a partnership's Form 8986: scope.f8978 (asked after scope.business_before; a partner receiving Form 8986 held the share in an earlier year) refuses through scope.other_line16 at Form 1040 line 16 (Forms 8814, 4972, 8615, 8621 or 8978). So lines 6d and 6l are zero on every completed return and lines 1 and 2 are the whole sum. Project stands.",
+   "context": "b0c61a43222b2a1c6f1d6da72372d55e58cb18a7c0660a7b930a99a4dc880cf1",
+   "date": "2026-11-23",
+   "run": "9fa1c8d82551117e451ee6aa12ad262c29d23c43cb39899b7686cf7ffc75c6db",
+   "subject_key": "b00484bcdd0b50fbb59648ce31c6542caf45c100039355e972e101eb5e47493f"
+  },
+  {
    "printed": "1",
    "restated": "Choose — [helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → helper \"All Parts III, line 30\"] [helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → helper \"Zero\"]",
    "model": "The total of Parts III, line 30 is right. The gate checks only that expenses were paid and that the filer isn't a dependent, so a married filing separately return still gets a credit, while the instructions say 'You cannot claim an education credit on a 2025 tax return if ... 2. Your filing status is married filing separately.'",

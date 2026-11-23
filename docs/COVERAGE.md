@@ -14,26 +14,26 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 316 of the 332 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 319 of the 336 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 85.9% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **380 refusal gates**: 332 tax situations the tool does not prepare, grouped by topic below, and 48 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **387 refusal gates**: 336 tax situations the tool does not prepare, grouped by topic below, and 51 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (69)
 - [Household and dependents](#household-and-dependents) (20)
 - [Interest and dividends](#interest-and-dividends) (4)
-- [Sales and capital gains](#sales-and-capital-gains) (5)
+- [Sales and capital gains](#sales-and-capital-gains) (6)
 - [Retirement distributions](#retirement-distributions) (7)
 - [Social Security](#social-security) (3)
-- [Self-employment](#self-employment) (30)
+- [Self-employment](#self-employment) (31)
 - [State and local tax refunds](#state-and-local-tax-refunds) (9)
 - [Other income and alimony](#other-income-and-alimony) (47)
 - [IRA contributions](#ira-contributions) (12)
-- [Health savings accounts](#health-savings-accounts) (12)
-- [Itemized deductions](#itemized-deductions) (9)
+- [Health savings accounts](#health-savings-accounts) (13)
+- [Itemized deductions](#itemized-deductions) (10)
 - [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (8)
 - [Earned income credit](#earned-income-credit) (3)
 - [Child and dependent care](#child-and-dependent-care) (11)
@@ -41,7 +41,7 @@ The data holds **380 refusal gates**: 332 tax situations the tool does not prepa
 - [Home energy credits](#home-energy-credits) (8)
 - [Premium tax credit](#premium-tax-credit) (8)
 - [Partnership and S corporation Schedules K-1](#partnership-and-s-corporation-schedules-k-1) (62)
-- [Entry checks](#entry-checks) (48)
+- [Entry checks](#entry-checks) (51)
 
 ### Filing status, residency, wages, accounts and other taxes
 
@@ -644,9 +644,9 @@ The data holds **380 refusal gates**: 332 tax situations the tool does not prepa
   - *Not covered:* Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope.
     *Source:* [i1040sd] p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax
   - *Refused at:* `div.screen`
-- **`div.unsupported`**: Do you have section 897 amounts, liquidation distributions, or return-of-capital distributions not yet reconciled with your basis?
-  - *The data asks or tests:* Unsupported section 897, liquidation or unreconciled basis/excess distribution (`test`)
-  - *Not covered:* Form 1099-DIV special distribution treatment. Prepare the required section 897/liquidation treatment or reconcile return-of-capital basis and any excess gain.
+- **`div.unsupported`**: Do you have liquidation distributions, or return-of-capital distributions not yet reconciled with your basis?
+  - *The data asks or tests:* Unsupported liquidation or unreconciled basis/excess distribution (`test`)
+  - *Not covered:* Form 1099-DIV special distribution treatment. Prepare the required liquidation treatment or reconcile return-of-capital basis and any excess gain.
     *Source:* [f1099div] Instructions for Recipient, boxes 1–16
   - *Refused at:* `div.screen`
 
@@ -678,6 +678,11 @@ The data holds **380 refusal gates**: 332 tax situations the tool does not prepa
   - *Not covered:* Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice.
     *Source:* [f1040sd] Schedule D (2025), Parts I–III
   - *Refused at:* `sd.count`, `sd.line4`, `sd.line5`, `sd.line6`, `sd.line11`, `sd.line12`, `sd.line14`
+- **`sd.home_sale_if_sold`**: Did you sell your main home and either get a Form 1099-S for it or have a gain you cannot exclude in full?
+  - *The data asks or tests:* Whether the sale of a main home must be reported on Form 8949 (a Form 1099-S, or gain beyond the exclusion), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one) (`choose`)
+  - *Not covered:* Form 8949, sale of your main home. Report the sale of your main home on Form 8949, with code H and the excluded gain in column (g), or with code L for a loss on a home sold with a Form 1099-S. This tool does not prepare it.
+    *Source:* [i8949] p. 9, code H, "Report the sale or exchange on Form 8949 as you would if you weren't taking the exclusion. Then enter the amount of excluded (nontaxable) gain as a negative number (in parentheses) in column (g)."; i1040sd p. 2, How To Report the Sale of Your Main Home
+  - *Refused at:* `sd.count`
 - **`sd.f2439_if_dividends`**: Did a mutual fund or REIT send you a Form 2439 for tax it paid on long-term gains it kept? The gain goes on Schedule D line 11 and the tax paid is a credit on Schedule 3 line 13a.
   - *The data asks or tests:* Whether a fund or REIT sent a Form 2439 (undistributed long-term capital gains), asked only when you or your spouse received dividends or other distributions (false otherwise) (`choose`)
   - *Not covered:* Form 2439 (tax paid on undistributed capital gains, Schedule 3 line 13a). Tax a fund or REIT paid on gains it kept (Form 2439, box 2) is a credit on line 13a; this tool does not prepare it.
@@ -788,6 +793,11 @@ The data holds **380 refusal gates**: 332 tax situations the tool does not prepa
   - *Not covered:* Form 6198 (At-Risk Limitations). A loss with amounts not at risk is outside this tool.
     *Source:* [i1040sc] p. 15, Line 32, Some investment is not at risk, "Be sure to attach Form 6198"
   - *Refused at:* `sc.loss_allowed`
+- **`qbi.unreported_loss_if_business`**: Did your businesses lose money overall in a year from 2018 to 2024 whose return had no Form 8995 or 8995-A (an unreported qualified business loss carried forward)?
+  - *The data asks or tests:* Whether a qualified business net loss of 2018 to 2024 was never reported on Form 8995 or 8995-A, asked only when the return has a Schedule C (false without one) (`choose`)
+  - *Not covered:* Form 8995, line 3, a qualified business loss of 2018 to 2024 never reported on Form 8995 or 8995-A. A business loss of an earlier year that no Form 8995 or 8995-A carried forward is outside this tool.
+    *Source:* [i8995a] p. 6, Schedule C (Form 8995-A), "This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence"
+  - *Refused at:* `qbi.eligible`
 - **`s1.ebl`**: Are your Schedule C losses above the excess business loss threshold (Form 461)?
   - *The data asks or tests:* The Schedule C losses are more than the excess business loss threshold (`test`)
   - *Not covered:* Form 461 (Limitation on Business Losses). A Schedule C loss above the excess business loss threshold is outside this tool.
@@ -1339,6 +1349,11 @@ The data holds **380 refusal gates**: 332 tax situations the tool does not prepa
   - *Not covered:* Form 8889 line 6 on a married filing separately return, with a spouse who has an HSA. When you had family coverage and your husband or wife has an HSA of their own, the family contribution limit is divided between you (equally unless you both agree otherwise), and this tool figures that division only on a joint return.
     *Source:* [i8889] p. 7, Line 6, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6"
   - *Refused at:* `f8889.line13_figured`
+- **`f8889.family_months_bad`**: Do you and your spouse both have HSAs and different months of family coverage, with neither of you on family coverage all year and both eligible at some time?
+  - *The data asks or tests:* Both spouses have a Form 8889 and their months of family coverage cannot be matched: different family amounts, neither spouse treated as having family coverage all year with the other having no eligible month of self-only coverage, and each spouse with an eligible month (`test`)
+  - *Not covered:* Form 8889 line 6 for spouses with separate HSAs whose months of family coverage differ. Count the months treated as family coverage the same way for both of you (in a month you were both eligible individuals and either had family coverage, both are treated as having it). Months in which only one of you was an eligible individual are that spouse's alone; this tool can match them only when one of you was treated as having family coverage all year, or one of you was never an eligible individual in 2025. Other patterns are outside this tool.
+    *Source:* [i8889] p. 4, How To Complete Part I; p. 7, Line 6, Steps 1 to 4; p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"
+  - *Refused at:* `f8889.line6`
 
 ### Itemized deductions
 
@@ -1390,6 +1405,11 @@ The data holds **380 refusal gates**: 332 tax situations the tool does not prepa
   - *Not covered:* Form 4952 alternative allocation. Only the default capital-gain-first allocation is supported; alternative allocation and Form 1116 coordination are outside scope.
     *Source:* [f4952] pp. 1, 3–4, Investment Interest Expense Deduction
   - *Refused at:* `f4952.line2`, `f4952.election_checked`, `f4952.line5`, `f4952.required_test`
+- **`f4952.royalty_held`**: Do you deduct investment interest on Form 4952 and also have royalty income on Schedule E?
+  - *The data asks or tests:* Form 4952 is used and a royalty property is reported on Schedule E (false when no rental or royalty is reported) (`choose`)
+  - *Not covered:* Form 4952 with royalty income. Royalties are gross income from property held for investment on line 4a, and their expenses can be investment expenses on line 5; this tool counts only interest and dividends there. Prepare Form 4952 with the royalty income and expenses.
+    *Source:* [f4952] p. 3, Line 4a, "Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties"
+  - *Refused at:* `f4952.line4a`
 - **`sa.mfs_spouse_extra`**: On a married filing separately return, are you checking age or blindness boxes for your spouse?
   - *The data asks or tests:* Married filing separately and claiming age or blindness boxes for your spouse (asked only when the spouse is not itemizing on a separate return; otherwise no) (`choose`)
   - *Not covered:* Standard Deduction Chart spouse boxes on a separate return. Checking age or blindness boxes for your spouse on a married filing separately return is outside this tool.
@@ -1986,6 +2006,11 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *Not covered:* Form 1099-INT box 9. Private activity bond interest (box 9) is part of tax-exempt interest (box 8); correct the amounts entered.
     *Source:* [i6251] p. 3, Line 2g—Interest From Private Activity Bonds, "Each payer of this type of interest should send you a Form 1099-INT showing the amount of this interest in box 9"
   - *Refused at:* `s2.amt_l4`
+- **`f1040.split_bad`**
+  - *The data asks or tests:* Lines 35a and 36 together are more than the overpayment on line 34 (`test`)
+  - *Not covered:* Form 1040 lines 35a and 36. Lines 35a and 36 are parts of the overpayment on line 34; correct them so that together they are not more than line 34.
+    *Source:* [i1040gi] p. 65, Line 38, "Lines 35a, 36, and 38 must equal line 34. If the penalty is more than the overpayment on line 34, enter -0- on lines 35a and 36."
+  - *Refused at:* `f1040.split_checked`
 - **`f8960.bad_allocation`**
   - *The data asks or tests:* Claimed NIIT tax allocation exceeds the Schedule A tax deduction (`choose`)
   - *Not covered:* Form 8960 line 9b. Correct the allocation: the amount allocated to net investment income cannot exceed the allowed Schedule A tax deduction.
@@ -2014,10 +2039,20 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *Not covered:* Qualifying surviving spouse filing status. Qualifying surviving spouse is checked but the tests are not met; your spouse must have died in 2023 or 2024 and you must not have remarried before the end of 2025, a child or stepchild (not a foster child) you can claim as a dependent must have lived in your home all year, you must have paid over half the cost of keeping up your home, and you must have been able to file jointly the year your spouse died; or the qualifying child was presumed kidnapped, whose rule (Pub. 501) is outside this tool.
     *Source:* [i1040gi] p. 15, Qualifying Surviving Spouse; p501 p. 11, Kidnapped child, "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped."
   - *Refused at:* `f1040.line12e`
+- **`household.qss_child_not_all_year`**
+  - *The data asks or tests:* Qualifying surviving spouse checked and its tests answered Yes, but a child is listed and none of the children listed lived with you for all of 2025 (`choose`)
+  - *Not covered:* Qualifying surviving spouse filing status. Qualifying surviving spouse needs a child or stepchild of yours who lived in your home for all of 2025, but none of the children you listed lived with you all year. Correct the answer about where the child lived, or choose another filing status.
+    *Source:* [i1040gi] p. 15, Qualifying Surviving Spouse, "3. This child lived in your home for all of 2025"
+  - *Refused at:* `household.qss_fails`
 - **`household.hoh_missed`**
   - *The data asks or tests:* Single checked, though you were unmarried and Test 2 of head of household is met (Test 1, a parent's separate home, is not checked) (`test`)
-  - *Not covered:* Head of household filing status fits you. You chose single, but your answers meet the head of household tests (you were unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than single on the same income. Go back and choose head of household.
-    *Source:* [i1040gi] p. 13, Filing Status, "The ones that will usually give you the lowest tax are listed last"; p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies"
+  - *Not covered:* Head of household filing status fits you. You chose single, but your answers meet the head of household tests (you were unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than single on the same income. Go back and choose head of household. If your spouse died in 2023 or 2024 and you did not remarry, look first at the line about being widowed (qualifying surviving spouse), which may give a lower tax.
+    *Source:* [i1040gi] p. 13, Filing Status, "The ones that will usually give you the lowest tax are listed last"; p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025. But if you have a child, you may be able to use the qualifying surviving spouse filing status"; p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies"
+  - *Refused at:* `household.hoh_fails`
+- **`household.hoh_missed_mfs`**
+  - *The data asks or tests:* Married filing separately checked, though a dependent is listed, you lived apart from your spouse for the last 6 months of 2025, Test 2 of head of household is met, and you are considered unmarried (each asked only after the one before it holds) (`choose`)
+  - *Not covered:* Head of household filing status fits you. You chose married filing separately, but your answers meet the head of household tests (you lived apart from your spouse for the last 6 months of 2025 and are considered unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than married filing separately on the same income. Go back and choose head of household.
+    *Source:* [i1040gi] p. 13, Filing Status, "The ones that will usually give you the lowest tax are listed last"; p. 14, Married Filing Separately, "You may be able to file as head of household if you had a child living with you and you lived apart from your spouse during the last 6 months of 2025"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply"
   - *Refused at:* `household.hoh_fails`
 - **`household.filing_status_conflict`**
   - *The data asks or tests:* The filing status conflicts with the marriage facts entered (`choose`)
@@ -2151,8 +2186,8 @@ These refuse a return when entered figures contradict each other, or when an ent
     *Source:* [i8889] p. 3, "If, during the tax year, you are the beneficiary of two or more HSAs or you are a beneficiary of an HSA and you have your own HSA, you must complete a separate Form 8889 for each HSA"
   - *Refused at:* `person.hsa_deduction`
 - **`f8889.allocation_bad`**
-  - *The data asks or tests:* The spouses allocation cannot be checked or does not hold: only one spouse treated as having family coverage, only one using an agreed allocation, or an agreed allocation with different Step 1 limits or with more than the Step 1 limit allocated in total (`test`)
-  - *Not covered:* Form 8889 line 6 for spouses with separate HSAs. Count the months treated as family coverage the same way for both spouses (if either had family coverage while both were eligible, both are treated as having it), use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit between you. An agreed allocation between spouses whose Step 1 limits differ is outside this tool.
+  - *The data asks or tests:* The spouses allocation cannot be checked or does not hold: only one using an agreed allocation, or an agreed allocation with different Step 1 limits or with more than the Step 1 limit allocated in total (`test`)
+  - *Not covered:* Form 8889 line 6 for spouses with separate HSAs. Use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit (the family amount for the months you were both eligible individuals treated as having family coverage) between you.
     *Source:* [i8889] p. 4, Line 3, rule 1; p. 7, Line 6, Steps 1 to 3
   - *Refused at:* `f8889.share`
 - **`f8889.bad_months`**

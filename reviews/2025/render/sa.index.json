@@ -5,16 +5,15 @@
  "base": "2aa18159549a41f9135273157b0a699abdfb3be6b4e06cf349973e6ddeef99de",
  "head_rows": {
   "lines judged": "29",
-  "match / mismatch / unclear / missing": "19 / 9 / 1 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-22); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "20 / 8 / 1 / 0",
+  "line-scoped reviews": "6 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "2c2c8ac784827c6dbea76fc7c3691336440ed4358bb92893dda5e032b1032d20",
-   "status": "MISMATCH",
-   "ruling": "Ruling: finding; i1040sca p. 1, 'You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income'. The parent question's tick and help compare with 7.5% of 'income', so a filer with adjustments whose costs fall between 7.5% of adjusted gross income and 7.5% of income can answer No. Filed as BUG-1087.",
-   "subject_key": "ac816809ba4bd7bd8e111e2891216502f95f1fd7cb1ee202b601625e19ecf097"
+   "record": "96ca1949648339ec1c0e62e6ec2480dd6140facb384d5f375ded22bfa117537e",
+   "status": "MATCH",
+   "subject_key": "9eb811e1ffaee734cada89edfe6b758d7874454c7267f9f5a256bdc2950ecd60"
   },
   {
    "key": "5a",
@@ -63,9 +62,9 @@
   },
   {
    "key": "4",
-   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
+   "record": "96ca1949648339ec1c0e62e6ec2480dd6140facb384d5f375ded22bfa117537e",
    "status": "MATCH",
-   "subject_key": "551ca47bbc4759626d5f315f4c93d09c4add54efd224cdb021a2bfb758a72ad3"
+   "subject_key": "e89c581f016d7fd1d5fa96567a3a8ea6d26411b9fc8c9bea7873e6ffab52c7a8"
   },
   {
    "key": "5d",
@@ -157,9 +156,9 @@
   },
   {
    "key": "17",
-   "record": "2c2c8ac784827c6dbea76fc7c3691336440ed4358bb92893dda5e032b1032d20",
+   "record": "96ca1949648339ec1c0e62e6ec2480dd6140facb384d5f375ded22bfa117537e",
    "status": "MATCH",
-   "subject_key": "41c5b526a476c2998376ce3d5e112a8ba39770b5696dd5efa14c9c4f93df155a"
+   "subject_key": "56b90648cc051dcc9d377b7325b9324eeb6c7d2de39ac338b4b81a27172ddbd5"
   },
   {
    "key": "2 (sa.dep_line2)",
@@ -195,7 +194,7 @@
   }
  ],
  "subjects": {
-  "1": "53111d3d2f7860af027f4cf985619202f31d446b2de961232b715e23a386a469",
+  "1": "8eb3fbc24f42ec6dff0abc6281a3e4ddde4f8da0bae9fcbd1c917f717bb9e40c",
   "5a": "fd56fa7bc183d0c8e2064b037e3f9ac35ac9e0c02d8a5f77fe210c8812110831",
   "5b": "bd23e371b7d19343483c22d9b56706392bcb9df2ed6bd8fade5ad8847e57a762",
   "5c": "9727f5441c3477fe0d2cb79a93b93266726e1b065e0c896692a71e3d730c6c80",
@@ -203,7 +202,7 @@
   "11": "4aa986f00a213972fa94e5c2898da305642ede20d71a6f0e0630fb7491986933",
   "2 (sa.line2)": "4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e",
   "3 (sa.line3)": "915c7f2a9b0042dab3a9e56be066227e30b5b060fc4824080ce27e96eaa3e71f",
-  "4": "69400b689008aae8f0c9a5e9e4ab38a55cf9c1d97db59c6943dbe2d896c6a5b2",
+  "4": "fa17cba921907dcce829816bc113fef4b6d3075b759757bc9ef55da5ee674303",
   "5d": "7f88fb40e2d2c4aa877c02c94fca39fe8e001739d17a0711bd09a5c9e3b7bdeb",
   "5e": "8c2bb6456a87bbb101ea5ef1eb4321d3d7e6760f4bab5581e92b6eb48c6ab7b4",
   "6": "9bb4539bad455c2c292420b749171edc9b1356974c96c0ffacfd845232e9e148",
@@ -218,7 +217,7 @@
   "10": "92b522a02b3747cf7e857a9a1c388ed33e2503712bdf226862aea42adeee02e9",
   "12": "1c6f594b88b7bde3173c449caa2bf0a064534a29ab50962912191795f01ee06f",
   "14": "09594ec9f531977fac4775eaa7aa8d0590d9a4c367feb9b34febdba4bbb296f8",
-  "17": "4970dd623a8b361e5a2cf9f147dd293f4e4963d198a4b949f3cf26071f58b944",
+  "17": "61b445d6b098bf15adf0f39c20dd86872bcc283515ae5806ea119b2777b3736e",
   "2 (sa.dep_line2)": "f61df01beb9d98c04f23918b262b9064ec9bf2e34522103b322b9ccbf7ec5190",
   "3 (sa.dep_line3)": "bb2a121adcb5f0e32bbd434e9b4a7b6b80ca36b93a3d446dfd5683b45c539313",
   "4a": "9841bdd28de3be44b498d2e5c93d69a3ceb154f08165210b8b4314b2adc47e9a",

@@ -1073,7 +1073,8 @@
         "person[taxpayer].w2[emp_a].box4": 384400,
         "person[taxpayer].w2[emp_a].box5": 6200000,
         "person[taxpayer].w2[emp_a].box6": 89900,
-        "household.qss_eligible": true
+        "household.qss_eligible": true,
+        "dependent[daughter].lived_all_year": true
       },
       "expect": {
         "household.qss_fails": {
@@ -1892,13 +1893,13 @@
           "kind": "refusal",
           "gate": "household.hoh_missed",
           "form": "Head of household filing status fits you",
-          "remedy": "You chose single, but your answers meet the head of household tests (you were unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than single on the same income. Go back and choose head of household.",
+          "remedy": "You chose single, but your answers meet the head of household tests (you were unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than single on the same income. Go back and choose head of household. If your spouse died in 2023 or 2024 and you did not remarry, look first at the line about being widowed (qualifying surviving spouse), which may give a lower tax.",
           "cite": {
             "doc": "i1040gi",
             "revision": "2025; printed date 2026-02-25",
             "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025,
-            "locator": "p. 13, Filing Status, \"The ones that will usually give you the lowest tax are listed last\"; p. 14, Head of Household, \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\""
+            "locator": "p. 13, Filing Status, \"The ones that will usually give you the lowest tax are listed last\"; p. 13, Single, \"You were widowed before January 1, 2025, and didn’t remarry before the end of 2025. But if you have a child, you may be able to use the qualifying surviving spouse filing status\"; p. 14, Head of Household, \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\""
           }
         }
       }
@@ -2384,6 +2385,259 @@
             "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "hh.household.mfs_apart_child_hoh_missed",
+      "covers": [
+        "household:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane hh (adversarial household finding M1), predicted by hand before recording. A married filer takes married filing separately, lived apart from their spouse all of 2025, paid over half the cost of the home, and lists a 6-year-old child who lived with them all 12 months and whom they claim; they answer that they are considered unmarried. i1040gi p. 15, Married persons who live apart (lived apart the last 6 months, a separate return, over half the cost of the home, the home of their child for more than half the year, the child their dependent), makes them considered unmarried, and Test 2 of p. 14 is met by the same child, so head of household fits; p501 p. 7 says the tax may be lower than married filing separately. Married filing separately is refused at household.hoh_missed_mfs and the refusal reaches Form 1040 line 12e through household.hoh_fails.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 200000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "household.community_property": false,
+        "household.mfs_living": "apart_all_year",
+        "household.home_cost": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 6,
+        "dependent[kid].lived_all_year": true,
+        "dependent[kid].months": 12,
+        "dependent[kid].younger": true,
+        "dependent[kid].other_claimant": false,
+        "dependent[kid].parents_apart": true,
+        "dependent[kid].divorced_rule": false,
+        "dependent[kid].ever_married": false,
+        "dependent[kid].own_money": false,
+        "dependent[kid].citizen_ssn": true,
+        "dependent[kid].absence_no_return": false,
+        "household.considered_unmarried": true
+      },
+      "expect": {
+        "household.hoh_missed_mfs": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.hoh_missed_mfs",
+          "form": "Head of household filing status fits you",
+          "remedy": "You chose married filing separately, but your answers meet the head of household tests (you lived apart from your spouse for the last 6 months of 2025 and are considered unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than married filing separately on the same income. Go back and choose head of household.",
+          "cite": {
+            "doc": "i1040gi",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025,
+            "locator": "p. 13, Filing Status, \"The ones that will usually give you the lowest tax are listed last\"; p. 14, Married Filing Separately, \"You may be able to file as head of household if you had a child living with you and you lived apart from your spouse during the last 6 months of 2025\"; p. 15, Married persons who live apart, \"Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply\""
+          }
+        }
+      }
+    },
+    {
+      "id": "hh.household.mfs_apart_not_considered_unmarried",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane hh (adversarial household finding M1), predicted by hand before recording. The household of hh.household.mfs_apart_child_hoh_missed, but the filer answers that they are not considered unmarried (for instance, the child listed is a grandchild, not a child, stepchild or foster child: i1040gi p. 15, Married persons who live apart). Head of household does not fit, so married filing separately is not refused, and Form 1040 line 12e is the 2025 married filing separately standard deduction, $15,750 (i1040gi, Standard Deduction Chart).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 200000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "household.community_property": false,
+        "household.mfs_living": "apart_all_year",
+        "household.home_cost": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 6,
+        "dependent[kid].lived_all_year": true,
+        "dependent[kid].months": 12,
+        "dependent[kid].younger": true,
+        "dependent[kid].other_claimant": false,
+        "dependent[kid].parents_apart": true,
+        "dependent[kid].divorced_rule": false,
+        "dependent[kid].ever_married": false,
+        "dependent[kid].own_money": false,
+        "dependent[kid].citizen_ssn": true,
+        "dependent[kid].absence_no_return": false,
+        "household.considered_unmarried": false
+      },
+      "expect": {
+        "household.hoh_missed_mfs": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        }
+      }
+    },
+    {
+      "id": "hh.household.mfs_together_hoh_not_missed",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane hh (adversarial household finding M1), predicted by hand before recording. The household of hh.household.mfs_apart_child_hoh_missed, but the spouses lived together at some time from July through December 2025 (household.mfs_living together_late), so the living-apart route to considered unmarried (i1040gi p. 15, \"You lived apart from your spouse for the last 6 months of 2025\") is closed whatever the other answers: household.hoh_missed_mfs is false without reading household.considered_unmarried (stated null, so unknown), and Form 1040 line 12e is the 2025 married filing separately standard deduction, $15,750.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 200000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "household.community_property": false,
+        "household.mfs_living": "together_late",
+        "household.home_cost": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 6,
+        "dependent[kid].lived_all_year": true,
+        "dependent[kid].months": 12,
+        "dependent[kid].younger": true,
+        "dependent[kid].other_claimant": false,
+        "dependent[kid].parents_apart": true,
+        "dependent[kid].divorced_rule": false,
+        "dependent[kid].ever_married": false,
+        "dependent[kid].own_money": false,
+        "dependent[kid].citizen_ssn": true,
+        "dependent[kid].absence_no_return": false,
+        "household.considered_unmarried": null
+      },
+      "expect": {
+        "household.hoh_missed_mfs": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        }
+      }
+    },
+    {
+      "id": "hh.household.qss_child_part_year_refused",
+      "covers": [
+        "household:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane hh (adversarial household finding M2, the narrow gate the owner chose), predicted by hand before recording. A filer takes qualifying surviving spouse and answers Yes to its five tests, but the only person listed is their child, age 10, who lived with them 5 months of 2025. i1040gi p. 15, Qualifying Surviving Spouse, item 3, \"This child lived in your home for all of 2025\": no child listed lived with the filer all year, so the answers conflict and the return is refused at household.qss_child_not_all_year, reaching Form 1040 line 12e through household.qss_fails.",
+      "inputs": {
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "person[taxpayer].birth_year": 1980,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 200000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 10,
+        "dependent[kid].younger": true,
+        "dependent[kid].citizen_ssn": true,
+        "dependent[kid].lived_all_year": false,
+        "dependent[kid].months": 5
+      },
+      "expect": {
+        "household.qss_child_not_all_year": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.qss_child_not_all_year",
+          "form": "Qualifying surviving spouse filing status",
+          "remedy": "Qualifying surviving spouse needs a child or stepchild of yours who lived in your home for all of 2025, but none of the children you listed lived with you all year. Correct the answer about where the child lived, or choose another filing status.",
+          "cite": {
+            "doc": "i1040gi",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025,
+            "locator": "p. 15, Qualifying Surviving Spouse, \"3. This child lived in your home for all of 2025\""
+          }
+        }
+      }
+    },
+    {
+      "id": "hh.household.qss_child_all_year_computes",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane hh (adversarial household finding M2), predicted by hand before recording. The filer of hh.household.qss_child_part_year_refused, but the child lived with them all of 2025: the gate is false and Form 1040 line 12e is the 2025 qualifying surviving spouse standard deduction, $31,500 (i1040gi, Standard Deduction Chart).",
+      "inputs": {
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "person[taxpayer].birth_year": 1980,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 200000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 10,
+        "dependent[kid].younger": true,
+        "dependent[kid].citizen_ssn": true,
+        "dependent[kid].lived_all_year": true,
+        "dependent[kid].months": 12
+      },
+      "expect": {
+        "household.qss_child_not_all_year": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 3150000
         }
       }
     }

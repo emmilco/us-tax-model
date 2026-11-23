@@ -101,14 +101,49 @@
    }
   },
   {
+   "printed": "qbi.deduction",
+   "project_expr_sha256": "eff57d092e4908ef749d96ef4765810ef214e89592c4e39b9928b73823f24c25",
+   "second_expr_sha256": "6523a99e03a8cb4f41a38c85286a7d181c0e6f69d5f33944a304d3a56ef77ce9",
+   "ruling": "Ruling: representation; f8995 p. 1, \"Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)\". As ruled on 2026-11-14 and 2026-11-22: both choose Form 8995 line 15 at or under the threshold and Form 8995-A above it; the reply reads Form 8995 line 11 where the project reads qbi.taxable_before through qbi.use_8995a, the same figure (Form 8995 line 11 is qbi.taxable_before). The reply's note on patrons, suspended losses and a REIT/PTP carryforward describes refusals the project makes through qbi.unsupported (now asking the patron question only with a Schedule C or section 199A dividends, i8995 p. 1, Who Can Take the Deduction). No change to the data.",
+   "context": "bfa3c2401c4eef6cf207a76826fc8f308a32d064906352ae68b1c1c95bbfbdd1",
+   "date": "2026-11-23",
+   "run": "486347e4bba12aa632ba4d714ae2bb8176240aa2c0a913a5ef4418bccb58f0a3",
+   "subject_key": "0867c249962659b30c1516cd0c56655b132186795f71858619f63de3768dd20f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@qbi",
+     "fixture:classm.f2441.4.deepseek@qbi",
+     "fixture:classm.f2441.5.deepseek@qbi",
+     "fixture:classm.w2.1.deepseek@qbi",
+     "fixture:classm.f8889.1.deepseek@qbi",
+     "fixture:classm.f8889.5.deepseek@qbi",
+     "fixture:classm.f4952.4.deepseek@qbi",
+     "fixture:classm.f8960.1.deepseek@qbi",
+     "fixture:classm.f8960.2.deepseek@qbi",
+     "fixture:classm.g28.2.deepseek@qbi",
+     "fixture:classm.clcw.1.deepseek@qbi",
+     "fixture:classm.clcw_next_year.1.deepseek@qbi",
+     "fixture:mutation.m4.qbi.reit_loss_carryforward@qbi",
+     "fixture:qbi.coop_patron.no_qbi@qbi"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "qbi.eligible",
    "project_expr_sha256": "cf6ef81da51e57f972ea5d89200516dbcd25bb1a79d076b1b226901d074f92a6",
    "second_expr_sha256": "8e43bd4b72d2ddc02364a776e8d0809aab64b5047b195f8fb5b1ceb43db3ae28",
-   "ruling": "Ruling: representation; f1099div p. 5, Box 5, \"Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\". As ruled on 2026-11-14 and 2026-11-15: the project copies qbi.dividends_if_ordinary, asked only when box 1a is above zero, while the reply copies qbi.dividends directly; box 5 is a portion of box 1a, so where box 1a is zero box 5 is zero, and the two agree wherever the interview asks the amount. The line is unchanged; the review was occasioned by the change to qbi.taxable_before (BUG-0100).",
-   "context": "94010fd3a269a0b33335683560ba75d250b999b33915a22b14d09f2251ffcab0",
-   "date": "2026-11-22",
-   "run": "b42a3d761421a197d02578b1bcd71d6ba9a7fb58f31d1129abecc6128acb8ddc",
-   "subject_key": "dc4898e666bde9130dbce1f57b0b053c533cd269a8d681aede4994ca76147b1d",
+   "ruling": "Ruling: representation; f1099div p. 5, Box 5, \"Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\". As ruled on 2026-11-14, 2026-11-15 and 2026-11-22: the project copies qbi.dividends_if_ordinary, asked only when box 1a is above zero, while the reply copies qbi.dividends directly; box 5 is a portion of box 1a, so the two agree wherever the interview asks the amount. The review was occasioned by the new refusal entry on this line (qbi.unreported_loss_if_business, BUG-1061, i8995a p. 6), which the reply's expression does not carry and the refusal comparison covers; the value expression is unchanged.",
+   "context": "bfa3c2401c4eef6cf207a76826fc8f308a32d064906352ae68b1c1c95bbfbdd1",
+   "date": "2026-11-23",
+   "run": "486347e4bba12aa632ba4d714ae2bb8176240aa2c0a913a5ef4418bccb58f0a3",
+   "subject_key": "d5527e57850132257ff13e39ada283db3c73e7fc90cd8a4b42ff7d0fca177947",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -120,10 +155,10 @@
      "fixture:classm.f8889.3.deepseek@qbi",
      "fixture:classm.f8889.4.deepseek@qbi",
      "fixture:classm.f8889.5.deepseek@qbi",
+     "fixture:classm.f4952.2.deepseek@qbi",
      "fixture:classm.f4952.3.deepseek@qbi",
      "fixture:classm.f4952.4.deepseek@qbi",
      "fixture:classm.f8960.1.deepseek@qbi",
-     "fixture:classm.dependent.1.deepseek@qbi",
      "fixture:classm.s2.2.deepseek@qbi",
      "fixture:classm.s2.5.deepseek@qbi",
      "fixture:classm.s2.6.deepseek@qbi",
@@ -132,9 +167,9 @@
      "fixture:classm.dcprov.1@qbi",
      "fixture:mutation.t2.qss_s1a_car@qbi",
      "fixture:mutation.t2.f8880.inherited_ira@qbi",
-     "fixture:mutation.t2.eic.mfs_step1_agi_stop@qbi",
-     "fixture:mutation.t2.eic.qss_step1_agi_stop@qbi",
-     "fixture:mutation.m4.qbi.reit_loss_carryforward@qbi"
+     "fixture:mutation.m4.qbi.reit_loss_carryforward@qbi",
+     "fixture:mutation.m4.qbi.suspended_losses@qbi",
+     "fixture:stage4.refuse.qbi@qbi"
     ],
     "policy": "executable-triage-v2"
    }

@@ -76,6 +76,17 @@
   {
    "printed": "40",
    "restated": "Choose — [line C = true → helper \"Zero\"] [line C = false → column (40)]",
+   "model": "Item C Yes giving zero is correct. But the married-filing-separately refusal tests only the filer's own line 19 against $32,000, while table 3 uses 'federal adjusted gross income ... total from both returns'. If the spouse has a negative AGI, the total can fall within the credit rows when the filer's own AGI does not, and the program then enters 0 instead of refusing.",
+   "ruling": "Ruling: finding; the same defect as BUG-0762 (low), already recorded on this line and line 48: IT-201-I web edition, New York State household credit table 3 (filing status 3), 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'This amount could be 0 or a negative amount.' ny_it201.gate.hh_state_mfs tests only this return's line 19 against $32,000, so a spouse's negative AGI can leave a credit the tool enters as $0 without refusing. The reply is right; no new bug (BUG-0762).",
+   "context": "ce741caec027188d271154e718bf5bf96ef1b389c35461bc4731d04d9cfb1bae",
+   "date": "2026-11-23",
+   "run": "41e53c1c1a5e508b01b1d1f91983012243f17b43263848e94556ac5c6f9b4443",
+   "severity": "low",
+   "subject_key": "f87ed3f38d0480bde8e8697b28b388d8979a81a280e9431dcd2160102710624b"
+  },
+  {
+   "printed": "40",
+   "restated": "Choose — [line C = true → helper \"Zero\"] [line C = false → column (40)]",
    "model": "The married-filing-separately refusal only fires when the filer's own line 19 is $32,000 or less, but table 3 uses federal AGI \"total from both returns\", and Note 2 says the amount \"could be 0 or a negative amount\". A spouse's negative AGI can bring the total within the credit rows while the program enters $0 without refusing.",
    "ruling": "Ruling: finding; the same defect as BUG-0762 (low), already recorded on line 48 and its sibling line 40: IT-201-I web edition, New York State household credit table 3 (filing status 3), 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'This amount could be 0 or a negative amount.' The refusal ny_it201.gate.hh_state_mfs tests only this return's line 19 against $32,000, so a spouse's negative AGI can leave a credit the tool enters as $0 without refusing. The reply is right; no new bug (BUG-0762)",
    "context": "38b93375818be4685a2955332d79f886c33d39c322c67545718f6c95b195ebbd",
@@ -83,6 +94,17 @@
    "run": "1b9a9ba41e73dbdc614a86693be1e684c013a06d8067a073c41b38e6972ec307",
    "severity": "low",
    "subject_key": "728802c64b422e21448c3f7d1b71d85e28f88df6a7e625269547f54c0699e67e"
+  },
+  {
+   "printed": "48",
+   "restated": "Choose — [line C = true → helper \"Zero\"] [line C = false → column (48)]",
+   "model": "Item C Yes giving zero is correct. But the married-filing-separately refusal tests only the filer's own line 19 against $22,500, while table 6 uses 'federal adjusted gross income (see Note 4) total from both returns'. If the spouse has a loss, the total can fall within the credit rows while the program enters 0 instead of refusing.",
+   "ruling": "Ruling: finding; the same defect as BUG-0762 (low), already recorded on this line and line 40: IT-201-I web edition, New York City household credit table 6 (filing status 3), 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'This amount could be 0 or a negative amount.' ny_it201.gate.hh_city_mfs tests only this return's line 19 against $22,500, so a spouse's loss can leave a credit the tool enters as $0 without refusing. The reply is right; no new bug (BUG-0762).",
+   "context": "ce741caec027188d271154e718bf5bf96ef1b389c35461bc4731d04d9cfb1bae",
+   "date": "2026-11-23",
+   "run": "41e53c1c1a5e508b01b1d1f91983012243f17b43263848e94556ac5c6f9b4443",
+   "severity": "low",
+   "subject_key": "903cef2235d39d41ab7a9776262edf4c70190d8251207aaa58379b0cc71dadde"
   },
   {
    "printed": "48",

@@ -48,10 +48,10 @@ below for the kind of work you are doing, then the top of `TASKS.md`.
 
 - **Last release:** `r2026.11.16.1` (2026-11-16), the newest release tag before this commit; `git describe --tags
   --match 'r*'` gives the commits after it (a file cannot name the commit that holds it).
-- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,128 entries (highest BUG-1128), 77 open, 4 of them covered by
+- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,172 entries (highest BUG-1172), 93 open, 4 of them covered by
   a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 73 rows not done; scoreboard 692 of 3,911 computed lines
   (17.7%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
-  153 ambiguity entries, 149 linked to a line (`ambiguities/2025.yaml`).
+  154 ambiguity entries, 150 linked to a line (`ambiguities/2025.yaml`).
 <!-- /figures:handoff-state -->
 
 - **On `main`** when this entry was written, oldest first: `c556c598` (the coverage report lists at most 8 cases per

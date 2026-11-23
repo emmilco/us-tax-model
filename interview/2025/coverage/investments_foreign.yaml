@@ -225,7 +225,7 @@ rows:
     expect:
       proceeds:
         div.any: true
-      not_asked: [f1040.line3a, qbi.dividends, div.box2b, div.box2e, div.box3, div.box9, div.box10, div.box13]
+      not_asked: [f1040.line3a, qbi.dividends, div.box2b, div.box3, div.box9, div.box10, div.box13]
   - id: dividends.ordinary_fund
     design: old bullets 1 and 2 (a Form 1099-DIV; dividends from stock or a mutual fund, reinvested or not)
     situation: A person holds an index fund whose Form 1099-DIV shows $1,000 in box 1a, $800 in box 1b and $200 in box 2a, and nothing in the less common boxes.
@@ -243,7 +243,7 @@ rows:
     expect:
       proceeds:
         div.other_boxes: false
-      not_asked: [div.box2b, div.box2c, div.box2d, div.box2e, div.box2f, div.box3, div.box9, div.box10, div.box13]
+      not_asked: [div.box2b, div.box2c, div.box2d, div.box3, div.box9, div.box10, div.box13]
   - id: dividends.liquidation
     design: old bullet 3 (liquidation distributions)
     situation: A person received a liquidation distribution in shares of another company, box 10 of a Form 1099-DIV, and no dividends.

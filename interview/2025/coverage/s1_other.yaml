@@ -199,7 +199,7 @@ rows:
     "s1.nol_before_limit_date": false
     "s1.nol_ebl": false
     "s1.nol_was_joint": false
-    "qbi.coop_patron": false
+    "qbi.prior_form": false
   expect:
     refused: s1.nol_limit
 - id: s1o.ltc_per_diem

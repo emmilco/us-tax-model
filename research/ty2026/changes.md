@@ -2404,12 +2404,13 @@ in section 71304).
 
 ### C-LAW-02. Alternative minimum tax: exemption amounts permanent, phase-out threshold re-based and its rate doubled (sec. 70107; statute-sourced)
 
-- **Kind:** not encoded (statute-sourced)
+- **Kind:** rule change (statute-sourced; operations in `changes/2026/s2.yaml`, C-LAW-02 with BUG-1031)
+- **2026 (draft):** `i6251` p. 10: "Multiply line 4 by 50% (0.50)"; "Otherwise, include 50% of the excess of the amount on line 4 over $640,200"; "If line 4 is $780,400 or more, include an additional $70,100"; p. 2: "increases the phaseout amounts from 25% to 50%"
 - **2026 (statute, final):** `plaw-119-21` p. 92: "Section 55(d)(4) is amended"; "2018 (2026, in the case of the $1,000,000 amount in subparagraph (A)(ii)(I))"; p. 93: "by substituting ‘50 percent’ for ‘25 per- cent’"; "shall apply to taxable years beginning after December 31, 2025"
-- **2025:** the 2025 encoding refuses the AMT on the filer's answer (`s2.amt`, "Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?")
-- **Touches:** `s2.amt` (the refusal question) and the refusals that read it (Form 6251)
+- **2025:** the 2025 encoding computes Form 6251 lines 4 to 7 and 10 at their largest as a screen (T-307): `s2.amt_tmt_over` (line 7 greater than line 10) is one of the conditions of `s2.amt`, on which Schedule 2 line 2 refuses (Form 6251). The exemption phase-out (`s2.amt_ex_cut`, `s2.amt_h_ex_cut`) and the married-filing-separately add-back (`s2.amt_mfs_quarter`, `s2.amt_h_mfs_quarter`) read `amt.rate_25`, which line 37 (`s2.amt_l37_rate`) also reads.
+- **Touches:** `s2.amt_mfs_quarter`, `s2.amt_ex_cut`, `s2.amt_h_mfs_quarter`, `s2.amt_h_ex_cut` (rate), their labels and cites, the labels and cites of `s2.amt_mfs`, `s2.amt_mfs_over`, `s2.amt_mfs_max`, `s2.amt_mfs_add`, `s2.amt_l4_mfs`, `s2.amt_exemption`, `s2.amt_l5`, `s2.amt_h_mfs_over`, `s2.amt_h_mfs_add`; new parameter `amt.phaseout_rate`
 - **Worklist items:** none (found by the statute read; the 2026 exemption amounts are the `rp-25-32` section .07 row of the priority What's New table)
-- **Notes:** From 2026 the exemption phases out faster (50 percent) from a threshold re-based to 2025, so more filers may owe AMT. The encoding does not compute Form 6251 and relies on the filer's answer; the question's help must point to the 2026 Form 1040 instructions' worksheet (not posted) at adoption. Nothing computed changes.
+- **Notes:** From 2026 the exemption phases out at 50 percent of the excess (and the separate-return add-back is 50 percent), while Form 6251 line 37 keeps 25 percent: `amt.rate_25` can no longer serve both (BUG-1031). Something computed changes: the AMT screen. Carried at 25%, the exemption of a filer above the phase-out start would be too large and a return that owes the AMT could be figured instead of refused. The exemption amounts and thresholds are parameters (`rp-25-32` section 4.10). The 2026 Form 6251 (line 37, and line 4's "see instructions" amount) is not archived.
 
 ### Every provision in force for 2026 that touches the encoding
 

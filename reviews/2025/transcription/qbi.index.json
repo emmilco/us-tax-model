@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "7",
   "agree / disagree / missing": "3 / 4 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,16 +17,16 @@
   },
   {
    "key": "qbi.eligible",
-   "record": "a7d4006cf25d172b7c23e5dd42eb6de4f4770d2945e07047527f62677cda190d",
+   "record": "a0ccf34664be4e77ccd69add40ad453c08310a6fba0d6c81b4c5f3b47a093b19",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1099div p. 5, Box 5, \"Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\". As ruled on 2026-11-14 and 2026-11-15: the project copies qbi.dividends_if_ordinary, asked only when box 1a is above zero, while the reply copies qbi.dividends directly; box 5 is a portion of box 1a, so where box 1a is zero box 5 is zero, and the two agree wherever the interview asks the amount. The line is unchanged; the review was occasioned by the change to qbi.taxable_before (BUG-0100).",
-   "subject_key": "692c5f4651c342213ed93b5201d12d7d7c464254c41de1622549501b0ee3bc4c"
+   "ruling": "Ruling: representation; f1099div p. 5, Box 5, \"Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\". As ruled on 2026-11-14, 2026-11-15 and 2026-11-22: the project copies qbi.dividends_if_ordinary, asked only when box 1a is above zero, while the reply copies qbi.dividends directly; box 5 is a portion of box 1a, so the two agree wherever the interview asks the amount. The review was occasioned by the new refusal entry on this line (qbi.unreported_loss_if_business, BUG-1061, i8995a p. 6), which the reply's expression does not carry and the refusal comparison covers; the value expression is unchanged.",
+   "subject_key": "e8071951429ff32f348a875ccba07f588de52e6db423c3fe6ad631e6c9180350"
   },
   {
    "key": "qbi.carryforward_if_prior_form",
-   "record": "a7d4006cf25d172b7c23e5dd42eb6de4f4770d2945e07047527f62677cda190d",
+   "record": "a0ccf34664be4e77ccd69add40ad453c08310a6fba0d6c81b4c5f3b47a093b19",
    "status": "AGREE",
-   "subject_key": "653f6300c66b529c18e475f2ebd60e8e53e7452229a3c8f937157932a9af03e8"
+   "subject_key": "b996860da0a835d99a4935f908a8f85bec4ffa93e3de02ca41373a569e35dc3f"
   },
   {
    "key": "qbi.taxable_before",
@@ -44,10 +44,10 @@
   },
   {
    "key": "qbi.deduction",
-   "record": "a7d4006cf25d172b7c23e5dd42eb6de4f4770d2945e07047527f62677cda190d",
+   "record": "a0ccf34664be4e77ccd69add40ad453c08310a6fba0d6c81b4c5f3b47a093b19",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f8995 p. 1, \"Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)\". As ruled on 2026-11-14: both choose Form 8995 line 15 at or under the threshold and Form 8995-A above it; the reply figures taxable income before the deduction from line 11a less the Schedule A choice where the project reads qbi.taxable_before (line 11b less the same choice and line 13b, the zero behind the Schedule 1-A refusal), equal in value wherever the project completes; the reply reads qbi.suspended, qbi.reit_loss and the cooperative answer directly where the project refuses them through qbi.unsupported. qbi.taxable_before is now signed (BUG-0100), which moves no comparison with the threshold: a negative amount is below it on both sides.",
-   "subject_key": "157342cee85d2b4f61e6694f0f298bf20462e96e414b54f61b94e833954b979f"
+   "ruling": "Ruling: representation; f8995 p. 1, \"Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)\". As ruled on 2026-11-14 and 2026-11-22: both choose Form 8995 line 15 at or under the threshold and Form 8995-A above it; the reply reads Form 8995 line 11 where the project reads qbi.taxable_before through qbi.use_8995a, the same figure (Form 8995 line 11 is qbi.taxable_before). The reply's note on patrons, suspended losses and a REIT/PTP carryforward describes refusals the project makes through qbi.unsupported (now asking the patron question only with a Schedule C or section 199A dividends, i8995 p. 1, Who Can Take the Deduction). No change to the data.",
+   "subject_key": "0f9b2254ecdc3116cb2ae5c2b1f2b06f4c041acf3689d0bc37b80e126797cafb"
   },
   {
    "key": "qbi.dividends_if_ordinary",
@@ -58,11 +58,11 @@
  ],
  "subjects": {
   "qbi.zero": "d351e905679017dd4f47fae49b296df613ed439c812435776e137e37960346b9",
-  "qbi.eligible": "2f1f93304661490e3da2a656ddd382158ea18de0c16436cd345f0f6e7f226073",
-  "qbi.carryforward_if_prior_form": "8be8aefca6404be08ddfadfe8dd4e09fa708bde8f3fdefac45002e90e977b91a",
+  "qbi.eligible": "195e47dd8941efb50a636d22ac9d686c9f61540ac229d53fe898e8704f8d4b60",
+  "qbi.carryforward_if_prior_form": "d207269547c5c636ab0d88aa1a3c50341adddc51820a559e5806ab65df4fc078",
   "qbi.taxable_before": "9258e4952d87f6c37e1f49ac697fbfad761a3c99e4311010a0f43341b748c4a3",
   "qbi.net_capital_gain": "7a116174b72815c5db82b7c6151c282b32fc369ff97504259084e21f7e00f4e4",
-  "qbi.deduction": "db133e8e8a92e02835cfe420f4a41e82ccad52a7d001bd061b5fcc6218af84c9",
+  "qbi.deduction": "96cd301921436762147641310106c6ac0014d3799caa20060fcf5426736de34a",
   "qbi.dividends_if_ordinary": "2ab19b6e5b9e0ff946a290b08d30f9559a4d352a41efa4cd0ade557fb6639111"
  },
  "__rest__": "3ecd850aa0c9743f71e02cf3a8fda571cbba92fac4295ed77a1231fbce2a3a92",

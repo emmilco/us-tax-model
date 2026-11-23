@@ -8076,37 +8076,36 @@
    "subject_sha": "5e91949592dbdfdc3f6f710bff3894958a7c8fa79c3cf170607e50d6ab6c3716"
   },
   "unruled:gate:f4952.carryover_if_interest#1": {
-   "class": "defect (medium): the carryforward is asked only from a 2024 Form 4952",
-   "reason": "Findings 0 and 1 are BUG-0833 item 2; the parent question names a carryforward; K-1 refused.",
+   "class": "no gate defect; BUG-0833 part 2 fixed by the reworded question (owner delegation 2026-11-22, option a)",
+   "reason": "Each story is answered by the parent tick, which names any earlier year and margin loans, and by the reworded child question and help; K-1 interest is refused.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "f4952 p. 3, 'carryover of disallowed investment interest expense from 2024'. No 2024 Form 4952 after a standard-deduction year: a truthful No.",
-     "bug": "BUG-0833"
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The parent f4952.has_interest is the tick 'Interest paid on money borrowed to buy investments, in 2025 or before' (prompt 'In 2025 or an earlier year, did you ... pay interest on money borrowed to buy investments'), a fact this filer can answer Yes to; f4952.carryover then asks whether a correct 2024 Form 4952 would show line 7, and its help gives this exact case: 'interest paid in 2024 or an earlier year that was more than that year's investment income ... counts even if you took the standard deduction and filed no Form 4952'."
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "A 2024 Form 4952 that should have been filed: the same wording.",
-     "bug": "BUG-0833"
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Schedule K-1 investment interest is refused (scope.k1, k1p.r_b13 and the k1s box 11/12 screen); margin interest is named in the parent prompt ('such as a margin loan from a broker')."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR)",
-     "evidence": "f4952.has_interest asks 'In 2025 or an earlier year' and its help says 'Interest of an earlier year counts only if you could not deduct all of it then'."
+     "class": "covered",
+     "evidence": "The parent tick reads 'in 2025 or before' with help 'Interest of an earlier year counts only if you could not deduct all of it then'; the child prompt asks about 'investment interest from 2024 or an earlier year that could not be deducted yet', and its source says line 2 of a correct 2024 form brings in any earlier year's amount not yet used. The gate line's label ('disallowed in 2024 and carried forward') is the form's mechanics: an unused earlier amount enters 2024 line 3 through line 2 and, unabsorbed, is disallowed on 2024 line 7 (f4952 p. 1, lines 2, 3 and 7)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Any Schedule K-1 (partnership, S corporation, estate or trust) is a Yes to scope.k1 ('A Yes ends the interview here'), refused through scope.schedule1; a K-3 is refused too (k1p.r_b16, k1s.box14). The entity-level case never reaches this question."
+     "class": "covered",
+     "evidence": "The tick list's item is 'Interest paid on money borrowed to buy investments, in 2025 or before', which names earlier years, not only current borrowing."
     }
    ],
-   "subject_sha": "e5bcd45bcc16914a8dc4d6ea80cc151402a67cedc4975aea6e6d68f4243993d7"
+   "subject_sha": "2c040e230d6687558ab0d83ca807acc7adc6515a065dea669343b5d536bba58f",
+   "adjudication": "lane adlow, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:f4952.has_interest#1": {
    "reason": "K-1, mixed-use, carryforward and personal-interest cases are handled by the other refusals, the help, and the roster wording.",

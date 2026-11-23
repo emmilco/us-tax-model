@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "ce620459cc556d041469f29727d04cdc79561880edb04933ff505533e5509a56",
  "head_rows": {
-  "lines judged": "97",
-  "match / mismatch / unclear / missing": "95 / 1 / 1 / 0",
-  "line-scoped reviews": "9 (latest 2026-11-22); see Line-scoped reviews"
+  "lines judged": "108",
+  "match / mismatch / unclear / missing": "106 / 1 / 1 / 0",
+  "line-scoped reviews": "12 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -52,12 +52,6 @@
    "subject_key": "7d0575f057bf58278f600d996e86b3dc899c9d481bdd4aad88f9f82e031f259b"
   },
   {
-   "key": "hsa_split_count",
-   "record": "ce620459cc556d041469f29727d04cdc79561880edb04933ff505533e5509a56",
-   "status": "MATCH",
-   "subject_key": "128dc2a649f04b412933d48bb2ec9b0845d528cd8f83e30a9693e3d8e099ad6a"
-  },
-  {
    "key": "hsa_agreed_count",
    "record": "ce620459cc556d041469f29727d04cdc79561880edb04933ff505533e5509a56",
    "status": "MATCH",
@@ -65,15 +59,15 @@
   },
   {
    "key": "hsa_step1_sum",
-   "record": "e04849ad906a7f3f9f7b6914a6419ab0c57976198a8db369831c824748a72b6a",
+   "record": "fc319bc7260e1f41673e55b8d93cc933a46e7bbe75faf7f702a1040706c81b38",
    "status": "MATCH",
-   "subject_key": "e2a24ff1ee5d2e113fe80ed9e5f027c982b70d503585641327bedfb3aa7e4128"
+   "subject_key": "1d4b3a28644ecb0f8d5881f0ecc91a533a797e1902c354d85059ec074342e1f9"
   },
   {
    "key": "hsa_share_sum",
-   "record": "e04849ad906a7f3f9f7b6914a6419ab0c57976198a8db369831c824748a72b6a",
+   "record": "fc319bc7260e1f41673e55b8d93cc933a46e7bbe75faf7f702a1040706c81b38",
    "status": "MATCH",
-   "subject_key": "64ab750a97f26f1142ae2dbb869c507b8f5cb97cbb1854383698820b26d8076b"
+   "subject_key": "10a795d8505256b39d622db0c19b3b980178c973177949563ac3d722374ee0c6"
   },
   {
    "key": "work_ssn_count",
@@ -221,25 +215,25 @@
   },
   {
    "key": "community_property",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "be51e095303376e3a9b77bc4869e1b09e9fc41c62bcbaa490868643100908f8f"
   },
   {
    "key": "spouse_cp_domicile",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "1400151a1534d7d7fecc872667c0960fb80e111e6937f78f275efb493512c9f9"
   },
   {
    "key": "ask_spouse_cp_domicile",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "0c54e1cf1f59a60744433f32939bad74496c2531a84820c9587cbd4d3a1f3467"
   },
   {
    "key": "spouse_cp_domicile_if_asked",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "110881cc7200e148f4385952bad13244b5f7cd54f41f1473f8fadabd4ee4bee4"
   },
@@ -402,15 +396,15 @@
   },
   {
    "key": "hoh_eligible",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "12b78e69ff6dbfa86e4817555ab3b39e2d5582ee7f23731d7f876a15e6948c25"
   },
   {
    "key": "hoh_fails",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
-   "subject_key": "eaad10c70219c07e4ba1957111799b9af337f4fa18133bc5055bae3be3f1c684"
+   "subject_key": "e3b704fd791ccc34f5d2e4d897cb4dd273f7e6be285c18debfe35e6dcd079354"
   },
   {
    "key": "dependents_listed",
@@ -444,15 +438,15 @@
   },
   {
    "key": "hoh_missed_test2",
-   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
-   "subject_key": "0c9fd8bfc39b89fc5a8040ca538e050e1b457b64256d10c3eb1f978dae50d90d"
+   "subject_key": "51d5200f94782d1b7c8cc14dd6e8303a0be7f3ace0767ab62f3ec8a9dab59c90"
   },
   {
    "key": "hoh_missed",
-   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
-   "subject_key": "13821287aadf4a685128fd61872b9752096f72022a4c31338a0a263bf52d1156"
+   "subject_key": "de05841889cb2d0afc557b2fc7c24a096168084fa2c5ef77d5408f1a3f7ffd35"
   },
   {
    "key": "qss_eligible",
@@ -462,9 +456,9 @@
   },
   {
    "key": "qss_fails",
-   "record": "f5065857d8f98b191aee06b2d90605ef64eb76e16533a42a1d1836c21955039e",
+   "record": "8344c7d0d445a4ec8016cb46ad6d89e7c291c75369f75f4fe9a593003e11f081",
    "status": "MATCH",
-   "subject_key": "5ece9703d035da247c0d5062ae9959ed5a506ee8348791fc17fa43400c3ed4a9"
+   "subject_key": "0e10c35591cc8a0ed838d568e26080f304b9764b7180289789cc6857b0107bca"
   },
   {
    "key": "rdp",
@@ -492,37 +486,37 @@
   },
   {
    "key": "cp_married",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "8e72cc29558af6eb4af1e56652698e6e1129971b9e6ed74d266454341d664867"
   },
   {
    "key": "cp_married_if_ever_married",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "e47c75e766d567999238606eef2fae79f26d1fce211d476790c611e1a44e43cf"
   },
   {
    "key": "cp_not_joint",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "46c81d6090474ccd9c202d1173bc4209aff943140354322ba0b04c756d464d67"
   },
   {
    "key": "cp_unmarried",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "a87194b00e9df80a5c7f31fea4f974016940e849508bf631690b4b2be3769454"
   },
   {
    "key": "cp_marriage_ended",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "f2a46391f8d178fd62ef28660090082906a012984abc922071b0e5fb3bb2c21c"
   },
   {
    "key": "rdp_community_property",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "31cb366e1345bbf56f34d74784c79a67d56776005c58b496b4a8b152b6e2149c"
   },
@@ -559,7 +553,7 @@
   },
   {
    "key": "mfs_living",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "304956db30bfb3c1424d692e6452b51e75a6688a0c6aca38a85880011657141a"
   },
@@ -571,7 +565,7 @@
   },
   {
    "key": "mfs_living_if_mfs",
-   "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
    "status": "MATCH",
    "subject_key": "0cfe06b43c78e8cb8f890f7ae967af58382b1da46e9d357c4088e173080413ab"
   },
@@ -592,6 +586,78 @@
    "record": "519b391b1c851759bce16cea72c37b2ae5d9dc2492821777a181d85bf7876584",
    "status": "MATCH",
    "subject_key": "926246afc17a502c0bce46dfc4314c9be33e50ed6f13203d6ba96b5573acbc94"
+  },
+  {
+   "key": "hoh_missed_mfs",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
+   "status": "MATCH",
+   "subject_key": "12357ab6c8779f142b62e31c473d957abda127ec9040cab358929958133f8908"
+  },
+  {
+   "key": "hoh_missed_mfs_listed",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
+   "status": "MATCH",
+   "subject_key": "b372c188ff7b4fcaeac6a8998297b711adad106f3eb74db6d012151948c899fd"
+  },
+  {
+   "key": "hoh_missed_mfs_apart",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
+   "status": "MATCH",
+   "subject_key": "25484dc44be643eb6a865d01112f0407ecfe89bec476bf6d53d350251b036d58"
+  },
+  {
+   "key": "hoh_missed_mfs_test2",
+   "record": "61cefd18ab0b33d00994e52468c592b34d4b7c78acc8a0c64e83356ecf09901a",
+   "status": "MATCH",
+   "subject_key": "31c4709485eb1598da7c3d019a1451cfee680ecc596b904a2995701b8104fb7d"
+  },
+  {
+   "key": "qss",
+   "record": "8344c7d0d445a4ec8016cb46ad6d89e7c291c75369f75f4fe9a593003e11f081",
+   "status": "MATCH",
+   "subject_key": "b5accefc9b0cfc3f598fbb429acb9cf9e39109575173ed695ed2c0db5de44340"
+  },
+  {
+   "key": "qss_children_listed",
+   "record": "8344c7d0d445a4ec8016cb46ad6d89e7c291c75369f75f4fe9a593003e11f081",
+   "status": "MATCH",
+   "subject_key": "ad8a51c2f5ee1bad70a115b53cac520a1b1e3da18f3f23a8e331905a2c2f0388"
+  },
+  {
+   "key": "qss_children_all_year",
+   "record": "8344c7d0d445a4ec8016cb46ad6d89e7c291c75369f75f4fe9a593003e11f081",
+   "status": "MATCH",
+   "subject_key": "92a127f752f83f2e1e87d6a257872d7b5634d767bc55f5b239ba3b4ceeddeae7"
+  },
+  {
+   "key": "qss_child_conflict",
+   "record": "8344c7d0d445a4ec8016cb46ad6d89e7c291c75369f75f4fe9a593003e11f081",
+   "status": "MATCH",
+   "subject_key": "6892aa05e4241454d05f555a8617312c14cfd41a43e1b6aaf5930621bdbc1804"
+  },
+  {
+   "key": "qss_child_conflict_if_claimed",
+   "record": "8344c7d0d445a4ec8016cb46ad6d89e7c291c75369f75f4fe9a593003e11f081",
+   "status": "MATCH",
+   "subject_key": "abf315760f678903b207676a6d278be340378b88f4b7c6e65e8088cf09e4a702"
+  },
+  {
+   "key": "qss_child_not_all_year",
+   "record": "8344c7d0d445a4ec8016cb46ad6d89e7c291c75369f75f4fe9a593003e11f081",
+   "status": "MATCH",
+   "subject_key": "82c6b10b9c046e0f9673e7a9f1e01a10e7e7015618829a0f963fd1a588873c1c"
+  },
+  {
+   "key": "hsa_family_sum",
+   "record": "fc319bc7260e1f41673e55b8d93cc933a46e7bbe75faf7f702a1040706c81b38",
+   "status": "MATCH",
+   "subject_key": "64d7db8e50c4e34c43dfa831973c9d30f9b2a6685a65938bed0743e4a94905ea"
+  },
+  {
+   "key": "hsa_self_sum",
+   "record": "fc319bc7260e1f41673e55b8d93cc933a46e7bbe75faf7f702a1040706c81b38",
+   "status": "MATCH",
+   "subject_key": "fbfce7bae02c8fc8e628915154f2e0d9411ad520440ff280490ac7878c20488f"
   }
  ],
  "subjects": {
@@ -602,10 +668,9 @@
   "roster_bad": "501936c6ef5679e96feaa3764a0e8bf479365597fda6f7e0cd72b40cbc7331fe",
   "hsa_people": "b712295f60780bb4df59fbe5983088cc1b27b031df2a712b045322c2222f71fd",
   "hsa_both": "5643d209813ddc56e96f1c0472f68ae949bcd0394600aaa6e8ebeeafc65e7309",
-  "hsa_split_count": "3650b4b4a5e850662cd14bacdd8455fcd39fc3200f4799f02194eaa975e17ed8",
   "hsa_agreed_count": "441f9eca79300f70379e218b893f92e2029c444a4d07020be12c94cadf8dc0ec",
-  "hsa_step1_sum": "63d87e001b474b51683f0b19f4d425dafea6559f4eb8b4e146261a2a52b22432",
-  "hsa_share_sum": "6309badae86f25e4bf8c0c2ce1cd80334f7c18bda6600ebb0801db91903efa89",
+  "hsa_step1_sum": "4b611448e138080d03789e061eef180eefedfdf87bfa223a1be04f87b95b2fae",
+  "hsa_share_sum": "0d58aab36c64bcf5963df75ea18ba60cd727fafb3dee5782ec13e96a086598cd",
   "work_ssn_count": "efdfc01b4332a0ffb4659f0de610718d633f11889eb5aa52bdb47482a52102fe",
   "any_work_ssn": "8cf5c050a092dedf06e47acf5700fc9d4570bc0bf751538a98207bfe6dff1288",
   "eic_ssn_count": "9e4db7de07306c30eea28273af6049c0e51d09f93fe3c09705d4308faf50400d",
@@ -661,16 +726,16 @@
   "any_test2_person": "baf0ec71040dd3145be45d60fed584bbf6631a035c14509b744e80468a26856a",
   "test2_met": "c881d6a2152f1c03d4cf7b315dbd05daf300764f4264101b12ba0a048c647ad7",
   "hoh_eligible": "1678f317691e5527b811107afe12341c7a48f00c8cc843ebb5a3afce117fb8ad",
-  "hoh_fails": "1ba6b0eea2cc9077944ad142ed7424828d12aa7de19d069cd3c9af632ac2d211",
+  "hoh_fails": "63ee792fd7c86b734bec195d14fe168a68ea5b7d6a3b6800bca0232a97282686",
   "dependents_listed": "483582a5449233a18797fe6cc3b8b6a54518162c05e3ebd2405f2e4846b9da9c",
   "dependents_any": "d735ea2863499e4e9966cf253403d3679101b2ded6546801a9d25ddf6f72b644",
   "hoh_missed_cost": "b86ae46e0b8f682209f0ca909ce7b3be52a19e781b8aa9bc292a11858998ea5f",
   "test2_lived_persons": "8a57c6b640256a5e15ec61d920e24ebbf38fc2a714b02f4573754c1541522f0c",
   "hoh_missed_person": "c8f5ac66fecf3a3dd410e1afbf114ffc9dbe082fbb0cfd07412ab615e745b10e",
-  "hoh_missed_test2": "c1cb7aaaf5d5551368520b3b86b412fd74bfacb400d42d09abf0040d9af13228",
-  "hoh_missed": "272ea9dd0173725802d5bdd8d020b6d4765d02d12fca065bf4a93139d3c0bfcc",
+  "hoh_missed_test2": "1b265cdc8df523933a0ecfe686018ba3ccff27ad94ff2bdf1934970f844d1fdd",
+  "hoh_missed": "8124d5434444b8343231c9b651cd155eb1cade17356454ff26e562cee6dc6d45",
   "qss_eligible": "a60fbc2d99325bfe450cb0a60b674633604e0387ca4b5c31aa53252d60ec8690",
-  "qss_fails": "876bc8582890356064ee02a68759c1f5e14ac51780b4b94dc1a51c90085770cb",
+  "qss_fails": "b3e3e7fa3d855e3e0c4145d8bcbe9283b923ac169189d8e1df1645cbd1a0a3db",
   "rdp": "f5b3282a090b3ea7717369f71c18e431a3f483e60e79e3e3374419283293fa99",
   "spouse_died_this_year": "6f6c4b3b2298bd0a3e2bd2bb221b3ffa13a4518a140bb0000f6634e3ecd8a157",
   "spouse_died_this_year_if_ever_married": "bd2484ed60f6f9f1b059b71e03984da1f227922d17c7e66dbff5547fe54730fe",
@@ -691,7 +756,19 @@
   "mfs_living_if_mfs": "7f6b764a0a29c3ec5795deb64eb62ef81446e7dcbb50e12834f74490f480cddd",
   "mfs_apart_all_year": "881d50a49df3a56b0ae84e67a88ec581239deb4dac3b6b0d8eb019fd68725c66",
   "mfs_apart_last6": "e07eadaeecea3709d5c3368b33c84fa744ecb79d426506b218d531be561486c8",
-  "mfs_community_property": "46dc4e50467bcbdcf80ed9e7f2276009aea4680166208f2d98ebc289d527e4ee"
+  "mfs_community_property": "46dc4e50467bcbdcf80ed9e7f2276009aea4680166208f2d98ebc289d527e4ee",
+  "hoh_missed_mfs": "8f4916bc072d8b5f76a1815caa9aa5a2a592727683c6f57a92d35ef8368bd8d0",
+  "hoh_missed_mfs_listed": "cc140c99375ceae8b5de84e692e3df0d3d19babee859029584d15337765f8aba",
+  "hoh_missed_mfs_apart": "edba01c13c5c2fbf1548752ce4ad98e14fdc985462fc2f6f1b2a60916ee16a97",
+  "hoh_missed_mfs_test2": "c8194e2184a39e4e9aeaeb71d98e9c2ba7b3ff12bfbf30afd0b7e61c7935d1ac",
+  "qss": "5f92dded25be4a234f2d77a6eea0ecec0af92b7e4563cbff42ba9673d1ba2d46",
+  "qss_children_listed": "284bdc4d015c1e3dd3922176a3b33dd5f3c26ae6f86a65f390aa926b6636eb35",
+  "qss_children_all_year": "9b8b3877a635f039905c17ed568f9548f7bc02adbac6de0ef7e4ef8e24290eff",
+  "qss_child_conflict": "5b8d42acbaf7df8902037df1636a78971280638f6075b5711d08fa6e9e94a3cf",
+  "qss_child_conflict_if_claimed": "24ae864ba3f90fd941ec46e1587304c1548eae0cdfd06ba636f63355822200fa",
+  "qss_child_not_all_year": "f860ba62345339686af627e95f0e41b348ee41d587634f07ca552e605f331257",
+  "hsa_family_sum": "58fb2c220ba977fcc46054db7cefd013b53bee806cf4862be1a27ca25b0736e2",
+  "hsa_self_sum": "16b5cb5be3ec5d1616bfcc78fde05f46a4425a14702e9ede222f81737a40fd72"
  },
  "__rest__": "cb5c9ecba569eb410b0a79967c0b3d9cd7c9c97721476ca24d67e84169c728d8"
 }

@@ -136,29 +136,37 @@ form:
       printed: (helper)
       type: Bool
       gated_by: f4952.carryover_if_interest
-      label: Do you (or, on a joint return, your spouse) have investment interest expense disallowed in 2024 and carried
-        forward (line 7 of a 2024 Form 4952 of either of you, on a joint or a separate return)?
+      label: Do you (or, on a joint return, your spouse) have investment interest expense disallowed in 2024 or an earlier
+        year and carried forward to 2025 (line 7 of a 2024 Form 4952 of either of you, on a joint or a separate return, or
+        what line 7 of a correct 2024 Form 4952 would show, line 3 less line 6, not below zero)?
       expr:
         op: input
-        source: Do you (or, on a joint return, your spouse) have investment interest expense that was disallowed in 2024 and
-          carried forward to 2025 (an amount on line 7 of a 2024 Form 4952 of either of you, on a joint or a separate 2024
-          return)?
+        source: Do you (or, on a joint return, your spouse) have investment interest expense that was disallowed in 2024 or an
+          earlier year and carried forward to 2025 (an amount on line 7 of a 2024 Form 4952 of either of you, on a joint or a
+          separate 2024 return, or what line 7 of a correct 2024 Form 4952 would show, line 3 less line 6, not below zero,
+          if none was filed or it left the carryforward out; line 2 of a correct 2024 form brings in any earlier year's
+          amount not yet used)?
       cite:
         doc: f4952
-        locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"
+        locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7", and line 7,
+          "Subtract line 6 from line 3. If zero or less, enter -0-"; p. 3, Who Must File, "You don’t have any carryover of
+          disallowed investment interest expense from 2024"
       ambiguity: amb.2025.f4952_no_2024_form
     - id: f4952.prior_7
       printed: (helper)
       type: NonNegDollars
       gated_by: f4952.line2
-      label: The amount on line 7 of the 2024 Form 4952 (on a joint return, both spouses' amounts if each filed one)
+      label: The amount on line 7 of the 2024 Form 4952, or what line 7 of a correct 2024 Form 4952 would show (on a joint
+        return, both spouses' amounts if each filed one)
       expr:
         op: input
-        source: The amount on line 7 of the 2024 Form 4952 (disallowed investment interest expense carried forward to 2025);
-          on a joint return, add both spouses' amounts if each filed a separate 2024 return with one
+        source: The amount on line 7 of the 2024 Form 4952 (disallowed investment interest expense carried forward to 2025),
+          or what line 7 of a correct 2024 Form 4952 would show (line 3 less line 6, not below zero) if none was filed or it
+          left the carryforward out; on a joint return, add both spouses' amounts if each filed a separate 2024 return
       cite:
         doc: f4952
-        locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"
+        locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7", and line 7,
+          "Subtract line 6 from line 3. If zero or less, enter -0-"
     - id: f4952.unsupported
       printed: (helper)
       type: Bool
@@ -217,6 +225,63 @@ form:
         of:
           - f1040.line2b
           - f1040.line3b
+      cite:
+        doc: f4952
+        locator: p. 3, Line 4a, "Gross income from property held for investment includes income, unless derived in the
+          ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund
+          dividends), annuities, and royalties"
+      refuses:
+        - when: f4952.royalty_held
+          form: Form 4952 with royalty income
+          remedy: Royalties are gross income from property held for investment on line 4a, and their expenses can be
+            investment expenses on line 5; this tool counts only interest and dividends there. Prepare Form 4952 with
+            the royalty income and expenses.
+          cite:
+            doc: f4952
+            locator: p. 3, Line 4a, "Gross income from property held for investment includes income, unless derived in
+              the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund
+              dividends), annuities, and royalties"
+    - id: f4952.royalty_held
+      printed: (gate)
+      type: Bool
+      label: Form 4952 is used and a royalty property is reported on Schedule E (false when no rental or royalty is
+        reported)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - scope.rental
+                - const: true
+            then: f4952.royalty_used
+          - guard:
+              op: test
+              eq:
+                - scope.rental
+                - const: false
+            then: f4952.no
+      cite:
+        doc: f4952
+        locator: p. 3, Line 4a, "Gross income from property held for investment includes income, unless derived in the
+          ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund
+          dividends), annuities, and royalties"
+    - id: f4952.royalty_used
+      printed: (helper)
+      type: Bool
+      label: Form 4952 is used and at least one royalty property is listed
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f4952.used
+              - const: true
+          - op: test
+            gt:
+              - sche.royalty_count
+              - const: 0
+                type: Count
       cite:
         doc: f4952
         locator: p. 3, Line 4a, "Gross income from property held for investment includes income, unless derived in the

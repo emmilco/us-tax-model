@@ -54,12 +54,19 @@
 - Expr: `{"eq":["household.hsa_people",{"const":2,"type":"Count"}],"op":"test"}`
 - Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
 
-## (helper) — `household.hsa_split_count`
+## (helper) — `household.hsa_family_sum`
 
-- **Authored helper label:** Number of Forms 8889 using the spouse rule of line 6
-- **Encoded (Count):** Add person.hsa_split over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.hsa_split","op":"sum_over"}`
-- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
+- **Authored helper label:** Both spouses family amounts for the months each was treated as having family coverage, added together
+- **Encoded (NonNegDollars):** Add person.hsa_family over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.hsa_family","op":"sum_over"}`
+- Cite: [i8889] p. 7, Line 6, Step 1, "Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage"; p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals" (2025; sha256 da6f2f58)
+
+## (helper) — `household.hsa_self_sum`
+
+- **Authored helper label:** Both spouses self-only amounts for their eligible months without family coverage, added together
+- **Encoded (NonNegDollars):** Add person.hsa_self over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.hsa_self","op":"sum_over"}`
+- Cite: [i8889] p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan"; p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year" (2025; sha256 da6f2f58)
 
 ## (helper) — `household.hsa_agreed_count`
 
@@ -501,7 +508,8 @@
 
 - **Authored helper label:** Head of household checked without meeting its tests
 - **Encoded (Bool):** f1040 line Filing Status = 'hoh' and helper "Unmarried or considered unmarried, and Test 1 or Test 2 applies" = false
-- **Refusal:** when household.hoh_missed is true, cannot complete Head of household filing status fits you. You chose single, but your answers meet the head of household tests (you were unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than single on the same income. Go back and choose head of household. Cite: [i1040gi] p. 13, Filing Status, "The ones that will usually give you the lowest tax are listed last"; p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when household.hoh_missed is true, cannot complete Head of household filing status fits you. You chose single, but your answers meet the head of household tests (you were unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than single on the same income. Go back and choose head of household. If your spouse died in 2023 or 2024 and you did not remarry, look first at the line about being widowed (qualifying surviving spouse), which may give a lower tax. Cite: [i1040gi] p. 13, Filing Status, "The ones that will usually give you the lowest tax are listed last"; p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025. But if you have a child, you may be able to use the qualifying surviving spouse filing status"; p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when household.hoh_missed_mfs is true, cannot complete Head of household filing status fits you. You chose married filing separately, but your answers meet the head of household tests (you lived apart from your spouse for the last 6 months of 2025 and are considered unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than married filing separately on the same income. Go back and choose head of household. Cite: [i1040gi] p. 13, Filing Status, "The ones that will usually give you the lowest tax are listed last"; p. 14, Married Filing Separately, "You may be able to file as head of household if you had a child living with you and you lived apart from your spouse during the last 6 months of 2025"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"all":[{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},{"eq":["household.hoh_eligible",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -542,7 +550,7 @@
 
 ## (helper) — `household.hoh_missed_test2`
 
-- **Authored helper label:** Test 2 met on a single return: asked only when a dependent is listed (false with none)
+- **Authored helper label:** Test 2 met on a single or married filing separately return: asked only when a dependent is listed (false with none)
 - **Encoded (Bool):** Choose — [helper "At least one person is listed as a dependent" = true → helper "You paid over half the cost of keeping up your home and a person who qualifies you under Test 2 lived with you (the home cost asked first, so the dependent tests are read only when it was paid)"] [helper "At least one person is listed as a dependent" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["household.dependents_any",{"const":true}],"op":"test"},"then":"household.hoh_missed_cost"},{"guard":{"eq":["household.dependents_any",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year" (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -550,9 +558,37 @@
 ## (gate) — `household.hoh_missed`
 
 - **Authored helper label:** Single checked, though you were unmarried and Test 2 of head of household is met (Test 1, a parent's separate home, is not checked)
-- **Encoded (Bool):** f1040 line Filing Status = 'single' and helper "Unmarried, or considered unmarried under the head of household rules, at the end of 2025" = true and helper "Test 2 met on a single return: asked only when a dependent is listed (false with none)" = true
+- **Encoded (Bool):** f1040 line Filing Status = 'single' and helper "Unmarried, or considered unmarried under the head of household rules, at the end of 2025" = true and helper "Test 2 met on a single or married filing separately return: asked only when a dependent is listed (false with none)" = true
 - Expr: `{"all":[{"eq":["f1040.status",{"const":"single"}],"op":"test"},{"eq":["household.unmarried",{"const":true}],"op":"test"},{"eq":["household.hoh_missed_test2",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `household.hoh_missed_mfs`
+
+- **Authored helper label:** Married filing separately checked, though a dependent is listed, you lived apart from your spouse for the last 6 months of 2025, Test 2 of head of household is met, and you are considered unmarried (each asked only after the one before it holds)
+- **Encoded (Bool):** Choose — [helper "Filing status married filing separately" = true → helper "Married filing separately: a dependent is listed, and the rest of the head of household test holds (false with no one listed)"] [helper "Filing status married filing separately" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.mfs",{"const":true}],"op":"test"},"then":"household.hoh_missed_mfs_listed"},{"guard":{"eq":["household.mfs",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 14, Head of Household, "You are married but lived apart from your spouse for the last 6 months of 2025 and you meet the other rules under Married persons who live apart" and "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies"; p501 p. 7, Married Filing Separately, "If you qualify to file as head of household, instead of as married filing separately, your tax may be lower" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.hoh_missed_mfs_listed`
+
+- **Authored helper label:** Married filing separately: a dependent is listed, and the rest of the head of household test holds (false with no one listed)
+- **Encoded (Bool):** Choose — [helper "At least one person is listed as a dependent" = true → helper "Married filing separately with a dependent listed: you lived apart from your spouse for the last 6 months of 2025, and the rest of the head of household test holds"] [helper "At least one person is listed as a dependent" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.dependents_any",{"const":true}],"op":"test"},"then":"household.hoh_missed_mfs_apart"},{"guard":{"eq":["household.dependents_any",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025", "You paid over half the cost of keeping up your home for 2025" and "Your home was the main home of your child, stepchild, or foster child for more than half of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.hoh_missed_mfs_apart`
+
+- **Authored helper label:** Married filing separately with a dependent listed: you lived apart from your spouse for the last 6 months of 2025, and the rest of the head of household test holds
+- **Encoded (Bool):** Choose — [helper "Married filing separately, and your spouse did not live with you at any time in the last 6 months of 2025" = true → helper "Married filing separately and living apart: Test 2 of head of household is met and you are considered unmarried (the considered-unmarried question asked only once Test 2 is met)"] [helper "Married filing separately, and your spouse did not live with you at any time in the last 6 months of 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.mfs_apart_last6",{"const":true}],"op":"test"},"then":"household.hoh_missed_mfs_test2"},{"guard":{"eq":["household.mfs_apart_last6",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025", "You paid over half the cost of keeping up your home for 2025" and "Your home was the main home of your child, stepchild, or foster child for more than half of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.hoh_missed_mfs_test2`
+
+- **Authored helper label:** Married filing separately and living apart: Test 2 of head of household is met and you are considered unmarried (the considered-unmarried question asked only once Test 2 is met)
+- **Encoded (Bool):** Choose — [helper "Test 2 met on a single or married filing separately return: asked only when a dependent is listed (false with none)" = true → helper "Unmarried, or considered unmarried under the head of household rules, at the end of 2025"] [helper "Test 2 met on a single or married filing separately return: asked only when a dependent is listed (false with none)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.hoh_missed_test2",{"const":true}],"op":"test"},"then":"household.unmarried"},{"guard":{"eq":["household.hoh_missed_test2",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025", "You paid over half the cost of keeping up your home for 2025" and "Your home was the main home of your child, stepchild, or foster child for more than half of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.qss_eligible`
 
@@ -571,8 +607,51 @@
 
 - **Authored helper label:** Qualifying surviving spouse checked without meeting its tests
 - **Encoded (Bool):** f1040 line Filing Status = 'qss' and helper "Do all five qualifying surviving spouse tests apply to you?" = false
+- **Refusal:** when household.qss_child_not_all_year is true, cannot complete Qualifying surviving spouse filing status. Qualifying surviving spouse needs a child or stepchild of yours who lived in your home for all of 2025, but none of the children you listed lived with you all year. Correct the answer about where the child lived, or choose another filing status. Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"all":[{"eq":["f1040.status",{"const":"qss"}],"op":"test"},{"eq":["household.qss_eligible",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "use joint return tax rates for 2025 if all of the following apply" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.qss`
+
+- **Authored helper label:** Filing status qualifying surviving spouse
+- **Encoded (Bool):** f1040 line Filing Status = 'qss'
+- Expr: `{"eq":["f1040.status",{"const":"qss"}],"op":"test"}`
+- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "You can check the “Qualifying surviving spouse” box in the Filing Status section on page 1 of Form 1040 or 1040-SR" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.qss_children_listed`
+
+- **Authored helper label:** Number of people listed as your child (son, daughter, stepchild, foster child or a descendant of one)
+- **Encoded (Count):** Add dependent.one over every confirmed dependent entry for which helper "Relationship to you" = 'child', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"eq":["dependent.relationship",{"const":"child"}],"op":"test"}}`
+- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.qss_children_all_year`
+
+- **Authored helper label:** Number of people listed as your child who lived with you for all of 2025
+- **Encoded (Count):** Add dependent.one over every confirmed dependent entry for which helper "Relationship to you" = 'child' and helper "Lived with you for all of 2025 (for a person born, adopted or placed with you in 2025, or who died in 2025, all of their part of the year)?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"all":[{"eq":["dependent.relationship",{"const":"child"}],"op":"test"},{"eq":["dependent.lived_all_year",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.qss_child_conflict`
+
+- **Authored helper label:** A child is listed, but no child listed lived with you for all of 2025
+- **Encoded (Bool):** helper "Number of people listed as your child (son, daughter, stepchild, foster child or a descendant of one)" > 0 (a count) and helper "Number of people listed as your child who lived with you for all of 2025" = 0 (a count)
+- Expr: `{"all":[{"gt":["household.qss_children_listed",{"const":0,"type":"Count"}],"op":"test"},{"eq":["household.qss_children_all_year",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.qss_child_conflict_if_claimed`
+
+- **Authored helper label:** Qualifying surviving spouse tests answered Yes, and a child is listed but none lived with you all of 2025 (false when the tests were answered No)
+- **Encoded (Bool):** Choose — [helper "Do all five qualifying surviving spouse tests apply to you?" = true → helper "A child is listed, but no child listed lived with you for all of 2025"] [helper "Do all five qualifying surviving spouse tests apply to you?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.qss_eligible",{"const":true}],"op":"test"},"then":"household.qss_child_conflict"},{"guard":{"eq":["household.qss_eligible",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `household.qss_child_not_all_year`
+
+- **Authored helper label:** Qualifying surviving spouse checked and its tests answered Yes, but a child is listed and none of the children listed lived with you for all of 2025
+- **Encoded (Bool):** Choose — [helper "Filing status qualifying surviving spouse" = true → helper "Qualifying surviving spouse tests answered Yes, and a child is listed but none lived with you all of 2025 (false when the tests were answered No)"] [helper "Filing status qualifying surviving spouse" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.qss",{"const":true}],"op":"test"},"then":"household.qss_child_conflict_if_claimed"},{"guard":{"eq":["household.qss",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.rdp`
 

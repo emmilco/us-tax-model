@@ -835,14 +835,6 @@
    "subject_key": "e9f2ce60ef6dc55f0e17c7bc3e2ad8af8f4330007e62b0256e11e93b02a11e87"
   },
   {
-   "printed": "household.qss_fails",
-   "project_expr_sha256": "28b3cbbd296b4f3c1833b514781f6bc121068ae2f866e7125d08f51b29252ff6",
-   "second_expr_sha256": "536e28f08259475f4b1de3a394eec17bbc6862d7a3a66b16e2a335ffd686b0a5",
-   "ruling": "Ruling: model error; i1040gi p. 15, Qualifying Surviving Spouse: \"You can check the 'Qualifying surviving spouse' box ... if all of the following apply\". The project line is unchanged by T-091 (BUG-0264 to BUG-0266 reword only the household.qss_eligible question; the new dependent gate dependent.hoh_absence reaches household only through dependent.hoh_test2 in household.test2_persons); only the wording of household.qss_eligible changed (test 3 now carries p501 p. 9's expected-return condition), and that is an input the reply reads unchanged. The fresh reply (its fix-round-5 reply had the status test) tests only qss_eligible eq false and drops the f1040.status test, so it needs household.qss_eligible from every filer, where the project asks it only of a filer claiming qualifying surviving spouse. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,408 fixtures, 500 generated returns seed 20261026, 211 partial records; 2,119 comparisons): 624 of 2,119 agree; 1,495 candidate-unknown; on returns the full interview completes: 201 candidate-unknown. Every completed-return difference was enumerated with the witness cap lifted (triage.mjs run directly; scratch /private/var/folders/kw/rp67pf8d5ng588lqp7d_gb240000gn/T/opencode/adj-t091-household/household.full.json; the uncapped rerun reproduces the recorded counts exactly): all 201 are household.qss_eligible asked of a filer whose status is not qss (113 single, 47 joint, 41 head of household; for example classm.s3.2.deepseek, classm.f8889.1.deepseek, classm.f4952.1.deepseek); no value difference. Project stands.",
-   "context": "19443a904446761a811dd36f0bc80df111a554be1384b1ff164b6465d6e23aa0",
-   "subject_key": "5382f6e06f18039c99c777b200fa26ffeee9c6ccf8bd4ed54324e8b8ef6e40ba"
-  },
-  {
    "printed": "household.rdp_community_property",
    "project_expr_sha256": "750097ad59a8e5a6accd7c6cff0af83e423618f50ad20384b17fc02f09f79188",
    "second_expr_sha256": "68406fbaf93536908147a4b37446b9844d45ed8a06e6fbe65dae76822390228e",
@@ -1014,6 +1006,26 @@
    "date": "2026-11-14",
    "run": "fef3948830bfa08d2e8fb58ab1152419d9d8ec6ff0e8540fb07576aa9ffa07d4",
    "subject_key": "9807644855bc7675c1a620885c0bab00a4aafffe307136bde90c6c5c4dd400d7"
+  },
+  {
+   "printed": "household.hoh_fails",
+   "project_expr_sha256": "35423cbdb0f3fe8a855c696a7091a1acd768b5c6e1f1182ee5c0f5fa8151d8a4",
+   "second_expr_sha256": "961826a6cd84fde4f2e94011df3411e768313ad20c08c5205ac106da3bceaf77",
+   "ruling": "Ruling: scope; i1040gi p. 14, Head of Household, \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\"; p501 p. 6, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\" Ruled by reading: triage.py refuses the form (a stale line-scoped section of household.all_tin names household.widowed_2025). This pass re-reviews the line because a refusal was added to it (household.hoh_missed_mfs, head of household fits a married filer filing separately who lived apart and is considered unmarried); the line's expression is unchanged. The reply's test is the project's, as ruled on 2026-11-14 and 2026-11-15: head of household checked, and neither Test 1 nor Test 2 with the home cost paid, or married at the end of 2025 and not considered unmarried. It reads household.married_dec31 and household.considered_unmarried raw where the project gates them through household.unmarried, folds in a spouse who died in 2025, which the project ends at the same Form 1040 line 12e through household.widowed_this_year, and carries none of the refusals on household.hoh_eligible (household.hoh_absence, p501 p. 9; household.hoh_community_property). Same refusal outcome on every return the project completes. Project stands.",
+   "context": "574fa0f8c063732dba2a4de2bd0833fa5c6555262ab4ebfb67f2dc646433fcf4",
+   "date": "2026-11-23",
+   "run": "e92310b5bf273731a55c9cc3f654410c1e1617cd480b204689027df092eb35f7",
+   "subject_key": "ccd79789b149d05c42680081f6aaa548356eda68bfa50312f8fa153a502e853d"
+  },
+  {
+   "printed": "household.qss_fails",
+   "project_expr_sha256": "28b3cbbd296b4f3c1833b514781f6bc121068ae2f866e7125d08f51b29252ff6",
+   "second_expr_sha256": "536e28f08259475f4b1de3a394eec17bbc6862d7a3a66b16e2a335ffd686b0a5",
+   "ruling": "Ruling: model error; i1040gi p. 15, Qualifying Surviving Spouse, \"You can check the 'Qualifying surviving spouse' box ... if all of the following apply\". Ruled by reading. This pass re-reviews the line because a refusal was added to it (household.qss_child_not_all_year, a child listed but none who lived with the filer all year); the line's expression is unchanged. The reply's test is the project's test without its first operand, f1040.status = qss: it is true on any return whose household.qss_eligible is No, and unknown on every other filing status, where household.qss_eligible is never asked. The gate is the qualifying-surviving-spouse status line's own test, so the status condition belongs to it, as the reply's note itself reads it (\"the qualifying surviving spouse status\"). As the same omission was ruled on household.hoh_fails. Project stands.",
+   "context": "f538060ac6c17e4e892742e0d6a4d9646c5384666628e6aa76620fb91e0df757",
+   "date": "2026-11-23",
+   "run": "eed3dc450db27b495876a210a94f7867924adcfcbbf648398a9adc5536989303",
+   "subject_key": "548bf509f00aef2d7fc291dc04e76e771c8b8ef8baea6561db6df50351ca93ab"
   }
  ]
 }

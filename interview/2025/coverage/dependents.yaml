@@ -38,8 +38,9 @@ sets:
       household.cp_retirement: false
       $dependent: [kid]
   spouse_lives_with_child:
-    says: The young child also lived with the filer's husband or wife for more than half of 2025; the child has no money of their own, has never married, and the parents are not apart.
+    says: The young child also lived with the filer's husband or wife for more than half of 2025, and the husband or wife lived with the filer late in 2025; the child has no money of their own, has never married, and the parents are not apart.
     answers:
+      household.mfs_living: together_late
       dependent[kid].other_claimant: true
       dependent[kid].parents_apart: false
       dependent[kid].ever_married: false

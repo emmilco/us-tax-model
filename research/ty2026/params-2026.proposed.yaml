@@ -328,12 +328,10 @@ params:
       type: Rate
       value: null
       source: none
-      note: 'declined: in 2026 the rate this parameter carries splits. The Exemption Worksheet (i6251 p. 10, draft, "Multiply
-        line 4 by 50% (0.50)") and the separate-return add-back (i6251 p. 10, "include 50% of the excess of the amount on
-        line 4 over $640,200") use 50% (P.L. 119-21 section 70107; read by s2.amt_mfs_over''s and s2.amt_ex_over''s products
-        and their s2.amt_h_* copies), while Form 6251 line 37 (unrecaptured section 1250 gain, s2.amt_l37_rate) keeps 25%.
-        No one value is right for all five readers in forms/2025/s2.yaml: a 2026 operation must give the phase-out and the
-        add-back their own rate parameter first'
+      note: Form 6251 line 37 ("Multiply line 36 by 25% (0.25)" on the 2025 form), read after C-LAW-02's operations by s2.amt_l37_rate
+        alone (the exemption phase-out and the separate-return add-back read amt.phaseout_rate). No 2026 Form 6251 is archived
+        and the 2026 i6251 draft does not print line 37's rate; P.L. 119-21 section 70107 amends section 55(d) only. Fill
+        from the final Form 6251
     amt.mfs_addback_start:
       type: Dollars
       value: 64020000
@@ -1421,11 +1419,12 @@ params:
       type: Count
       value: 17
       cite:
-        doc: i1040s8812
-        locator: p. 3, Qualifying child for the CTC and ACTC
-        quote: under age 17 at the end of 2026
-      source: draft
-      note: the 2025 value cites the Form 1040 instructions' Step 3 (not posted)
+        doc: f1040s8812
+        locator: p. 1, Schedule 8812 (2026), line 4
+        quote: Number of qualifying children under age 17 with the required social security number
+      source: final
+      note: the 2025 value cites the Form 1040 instructions' Step 3 (not posted); the i1040s8812 draft (p. 3) prints "under
+        age 17 at the end of 2026"
     qr.gross_income_limit:
       type: NonNegDollars
       value: 530000
@@ -1609,11 +1608,11 @@ params:
         num: 25
         den: 100
       cite:
-        doc: i5329
-        locator: p. 6, Line 4
-        quote: you must multiply that amount by 25% instead of 10%.
-      source: draft
-      note: 2025 quote printed unchanged in the 2026 edition
+        doc: f5329
+        locator: p. 1, Form 5329 (2026), line 4
+        quote: include 25% of that amount on line 4 instead of 10%
+      source: final
+      note: the i5329 draft (p. 6, Line 4) prints "you must multiply that amount by 25% instead of 10%."
     f5329.excess_rate:
       type: Rate
       value:
@@ -1648,10 +1647,11 @@ params:
       type: NonNegDollars
       value: 1050000
       cite:
-        doc: p590b
-        locator: p. 29, Distributions to domestic abuse victims
-        quote: must not exceed the lesser of $10,500 for 2026 or 50% of the present value of the IRA.
-      source: draft
+        doc: n-25-67
+        locator: p. 5, section 72(t)(2)(K)(ii)(I), distributions to victims of domestic abuse
+        quote: domestic abuse from applicable eligible retirement plans is increased from $10,300 to $10,500
+      source: final
+      note: Pub. 590-B (2026, draft) p. 29 prints the same amount
     f5329.cap_emergency:
       type: NonNegDollars
       value: 100000
@@ -1766,21 +1766,42 @@ params:
       note: 2025 quote printed unchanged in the 2026 edition
     clcw.prior_limit_mfs:
       type: NonNegDollars
-      value: null
-      source: none
-      note: 2025 source `i1040sd` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 150000
+      cite:
+        doc: f1040sd
+        locator: p. 3, Schedule D (2026), line 21
+        quote: ($3,000), or if married filing separately, ($1,500)
+      source: draft
+      note: as clcw.prior_limit, for married filing separately
     clcw.prior_limit:
       type: NonNegDollars
-      value: null
-      source: none
-      note: 2025 source `i1040sd` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 300000
+      cite:
+        doc: f1040sd
+        locator: p. 3, Schedule D (2026), line 21
+        quote: ($3,000), or if married filing separately, ($1,500)
+      source: draft
+      note: 'the capital loss limit of section 1211(b), not indexed: the Capital Loss Carryover Worksheet (i1040sd 2026, not
+        posted) reads the prior year''s limit, the same $3,000; the quote sd.loss_limit cites'
     sdtw.ordinary_ceiling:
       type: NonNegDollars
-      value: null
-      source: none
-      note: i1040sd 2026 not posted; the 2026 Form 1116 instructions (draft, p. 11-12) print $201,775 single and separate,
-        $201,750 head of household and $403,550 joint for the related adjustment exception, but no archived source prints
-        the Schedule D Tax Worksheet's own amount
+      value:
+        single: 20177500
+        mfj: 40355000
+        mfs: 20177500
+        hoh: 20175000
+        qss: 40355000
+      cite:
+        doc: rp-25-32
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
+        quote: Over $105,700 but not over $201,750 ... Over $105,700 but not over $201,775
+      source: final
+      note: 'the top of the 24% bracket, the Schedule D Tax Worksheet''s ceiling in 2025 as well (i1040sd 2026 not posted):
+        Table 2 (head of household, p. 11) $201,750; Table 3 (single, p. 11) and Table 4 (married filing separately, p. 12)
+        $201,775; Table 1 (joint and surviving spouse, p. 10, "Over $211,400 but not over $403,550") $403,550. Head of household
+        is $25 below single in 2026 (equal in 2025). The i1116 draft p. 11 prints the same four amounts (f1116.exception_ceiling)'
+      derived: the top of the 24% bracket of each 2026 rate table (rp-25-32 section 4.01 Tables 1 to 4, pp. 10-12); the quote
+        prints the head-of-household and single rows
     sdtw.rate15:
       type: Rate
       value: null
@@ -1881,12 +1902,14 @@ params:
         mfj: 50500000
         mfs: 25250000
       cite:
-        doc: f1040sa
-        locator: p. 2, Schedule A (2026), line 5e
-        quote: $505,000 ($252,500 if married filing separately)
-      source: draft
-      note: draft form; the statute (plaw-119-21 p. 99, final) prints '$505,000' and 'half the threshold amount in the case
-        of a married individual filing a separate return'
+        doc: plaw-119-21
+        locator: p. 99, section 70120, section 164(b)(7)(B)
+        quote: the threshold amount (half the threshold amount in the case of a married individual filing a separate return)
+          ... in the case of any taxable year beginning in calendar year 2026, $505,000
+      source: final
+      note: the married-filing-separately amount is half the printed $505,000; the Schedule A draft (p. 2, line 5e) prints
+        "$505,000 ($252,500 if married filing separately)"
+      derived: 'married filing separately: half the printed threshold amount ($505,000 / 2)'
     sa.salt_rate:
       type: Rate
       value:
@@ -2001,12 +2024,13 @@ params:
         mfs: 20177500
         mfj: 40350000
       cite:
-        doc: f8995
-        locator: p. 2, Form 8995 (2026), line 1 caption
-        quote: is at or below $201,750 ($201,775 if married filing separately; $403,500 if married filing jointly)
-      source: draft
-      note: draft form; the same amounts are in rp-25-32 section 4.26 (final). The 2025 value used one amount for married
-        filing separately and single; 2026 does not
+        doc: rp-25-32
+        locator: p. 22, .26 Qualified Business Income, section 4.26
+        quote: Married Individuals Filing Joint Returns $403,500 ... Married Individuals Filing Separate $201,775 ... All
+          Other Returns $201,750
+      source: final
+      note: the threshold amounts under section 199A(e)(2); the Form 8995 draft (p. 2, line 1 caption) prints the same amounts.
+        The 2025 value used one amount for married filing separately and single; 2026 does not
     qbi.rate:
       type: Rate
       value:
@@ -2110,27 +2134,30 @@ params:
       type: NonNegDollars
       value: null
       source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      note: 'i1040gi 2026 not posted (the State and Local Income Tax Refund Worksheet). Inferred, not checked against a 2026
+        worksheet: the 2026 worksheet prints the prior year''s (2025) standard deduction, $15,750 (single or married filing
+        separately), as the 2025 worksheet printed 2024''s; rp-25-32 p. 10'
     refund.std_joint:
       type: NonNegDollars
       value: null
       source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      note: as refund.std_single; inferred $31,500 (married filing jointly or qualifying surviving spouse, the 2025 amount)
     refund.std_hoh:
       type: NonNegDollars
       value: null
       source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      note: as refund.std_single; inferred $23,625 (head of household, the 2025 amount)
     refund.box_married:
       type: NonNegDollars
       value: null
       source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      note: as refund.std_single; inferred $1,600 per box (the 2025 additional amount for the married, params/2025.yaml sa.standard_extra)
     refund.box_unmarried:
       type: NonNegDollars
       value: null
       source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      note: as refund.std_single; inferred $2,000 per box (the 2025 additional amount for the unmarried, params/2025.yaml
+        sa.standard_extra)
     sli.max:
       type: NonNegDollars
       value: 250000
@@ -2157,15 +2184,27 @@ params:
       source: final
     sli.divisor_other:
       type: NonNegDollars
-      value: null
-      source: none
-      note: rp-25-32 section 4.29 prints the range ($85,000 to $100,000) but not its width, which the worksheet (Form 1040
-        instructions, not posted) prints
+      value: 1500000
+      cite:
+        doc: rp-25-32
+        locator: p. 23, .29 Interest on Education Loans, section 4.29
+        quote: in excess of $85,000 ($175,000 for joint returns), and is completely phased out for taxpayers with modified
+          adjusted gross income of $100,000 or more ($205,000 or more for joint returns)
+      source: final
+      note: the width of the phase-out range, $100,000 less $85,000 (the worksheet that prints the divisor is in the Form
+        1040 instructions, not posted)
+      derived: the width of the printed phase-out range ($100,000 less $85,000)
     sli.divisor_joint:
       type: NonNegDollars
-      value: null
-      source: none
-      note: as sli.divisor_other ($175,000 to $205,000)
+      value: 3000000
+      cite:
+        doc: rp-25-32
+        locator: p. 23, .29 Interest on Education Loans, section 4.29
+        quote: in excess of $85,000 ($175,000 for joint returns), and is completely phased out for taxpayers with modified
+          adjusted gross income of $100,000 or more ($205,000 or more for joint returns)
+      source: final
+      note: the width of the joint phase-out range, $205,000 less $175,000
+      derived: the width of the printed joint phase-out range ($205,000 less $175,000)
     hsa.no_last_month:
       type: Bool
       value: null
@@ -2824,11 +2863,12 @@ params:
       type: NonNegDollars
       value: 860000
       cite:
-        doc: i8606
-        locator: p. 6, IRA contribution limit
-        quote: the smaller of $7,500 ($8,600 if age 50 or older at the end of 2026) or your taxable compensation
-      source: draft
-      note: the 2025 value cites the IRA Deduction Worksheet (Form 1040 instructions, not posted)
+        doc: i1099r
+        locator: p. 22, IRA regular contribution limit
+        quote: The annual IRA regular contribution limit of $7,500 is increased to $8,600 for participants age 50 or older
+      source: final
+      note: the 2025 value cites the IRA Deduction Worksheet (Form 1040 instructions, not posted); n-25-67 (final) prints
+        the parts ($7,500 and the $1,100 catch-up), the i8606 draft (p. 6) the same $8,600
     ira.line2:
       type: NonNegDollars
       value:
@@ -3194,6 +3234,22 @@ params:
       new_in_2026: true
       note: where the 37% bracket begins (rp-25-32 pp. 10-12, final, prints the same amounts); read by the 2026 NIIT operations
         (lane O7)
+    amt.phaseout_rate:
+      type: Rate
+      value:
+        num: 50
+        den: 100
+      cite:
+        doc: i6251
+        locator: p. 10, Exemption Worksheet—Line 5, line 5
+        quote: Multiply line 4 by 50% (0.50)
+      source: draft
+      new_in_2026: true
+      note: 'the rate of the exemption phase-out (Exemption Worksheet line 5) and of the married-filing-separately add-back
+        (i6251 p. 10, Line 4: "include 50% of the excess of the amount on line 4 over $640,200"); P.L. 119-21 section 70107(c)
+        (plaw-119-21 p. 93, final) substitutes 50 percent for 25 percent for taxable years beginning after December 31, 2025;
+        read by s2.amt_mfs_quarter, s2.amt_ex_cut, s2.amt_h_mfs_quarter and s2.amt_h_ex_cut (changes/2026/s2.yaml, C-LAW-02,
+        BUG-1031); Form 6251 line 37 keeps amt.rate_25'
     tcw.mfj.b0.upper:
       type: Dollars
       value: 10080000
@@ -3263,9 +3319,6 @@ params:
   - sales.detail
   - sales.one
   - edu.no
-  - clcw.prior_limit_mfs
-  - clcw.prior_limit
-  - sdtw.ordinary_ceiling
   - sdtw.rate15
   - sdtw.rate20
   - sdtw.rate25
@@ -3281,8 +3334,6 @@ params:
   - refund.std_hoh
   - refund.box_married
   - refund.box_unmarried
-  - sli.divisor_other
-  - sli.divisor_joint
   - hsa.no_last_month
   - hsa.no
   - hsa.yes

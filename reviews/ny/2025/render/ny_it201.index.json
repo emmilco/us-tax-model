@@ -4,15 +4,14 @@
  "family": "claude",
  "base": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
  "head_rows": {
-  "match / mismatch / unclear / missing": "155 / 12 / 1 / 0",
-  "line-scoped reviews": "10 (latest 2026-11-22); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "158 / 10 / 0 / 0",
+  "line-scoped reviews": "10 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "C",
-   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.item_c. IT-201-I p. 5, Item C: 'If you can be claimed as a dependent on another taxpayer's federal return, you must mark an X in the Yes box.' The project marks item C Yes on a federal Yes to sa.dependent ('Can someone claim you or your spouse as a dependent'), else asks New York's own question. The reply's case, a joint return where only the spouse can be claimed (possible only where the joint return is filed just to claim a refund), is one New York's text does not settle: item C speaks of 'you', and neither the form nor the instructions say how a joint return treats a spouse who can be claimed. The registered ambiguity covers how item C relates to the federal answer; this spouse facet belongs with it (noted for the owner's list). The earlier round's premise that a federal Yes refuses the federal return no longer holds (the Standard Deduction Worksheet for Dependents is computed, sa.standard_amount), so this is ruled on the text, not on scope.",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
+   "status": "MATCH",
    "subject_key": "3a46a3a761bac3c1bc1fe8ff3d2857fa6adb2940fe882758ffbf012208604d7a"
   },
   {
@@ -23,7 +22,7 @@
   },
   {
    "key": "1",
-   "record": "70ef3ceb6e8328cb4f6666aa516d39289d1ad86e19b76b02f48938c1d3e01ba2",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "8de967dc069a50ccd0519dde233739217a926da50d0eae902b95f3fb7ffbb520"
   },
@@ -244,7 +243,7 @@
   },
   {
    "key": "34",
-   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "d756322d1f0c9347e4c26bac6175b5a9fefc4258bd80155aeb62dcdf6b7a0bcf"
   },
@@ -274,97 +273,97 @@
   },
   {
    "key": "(39) (ny_it201.tax_table)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "7c1b498f58072766442f15aec78cc505fa3c87c0ffe7622ab47d8a1005ac0e29"
   },
   {
    "key": "(39) (ny_it201.tax_schedule)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "a275af920c8e2252436f2305506f13c790271f55885d78143491c73b38451f36"
   },
   {
    "key": "(39) (ny_it201.tax_low)",
-   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "aed02e28a4f9d47051fbf2ef20c07f47c090c21c23208fb92695f10e3296005a"
   },
   {
    "key": "(39) (ny_it201.tcw.w1)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "bafefc64e1e8bfee107cdab29e96c065dbf6dee8ca22c12b894b696ea9fdc172"
   },
   {
    "key": "(39) (ny_it201.tcw.w7)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "428cfc3a8c658ec83f7e3f556d21c0d90dad90d084f43d039bfe79b2cb4b7003"
   },
   {
    "key": "(39) (ny_it201.tcw.w12)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "f4125a6fef410902ca64d22ff2c89068f6e01cb5ff06504ee959b96cba1d7b24"
   },
   {
    "key": "(39) (ny_it201.tcw.w2)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "f2bd0c9da6721e9cea710e2a45b970185c6a799f073ba94f4595a734eb0db42a"
   },
   {
    "key": "(39) (ny_it201.tcw.w3)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "f5689d794f6b726d96482600a72d4c7b22c908f9e68d4d8a7e0d84dd31f28405"
   },
   {
    "key": "(39) (ny_it201.tcw.w4)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "6776ceeaae278b0f269fae48c86c55bf8b2a42a10282a1507077eb7acca9623d"
   },
   {
    "key": "(39) (ny_it201.tcw.w5)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "df7e55d4478ab219308bac579aa277df69a4016ce45a79be0c152cd24ea82c33"
   },
   {
    "key": "(39) (ny_it201.tcw.w8)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "e44e4db861d24c40eacaa8ba1f318ab8e126df795c82943dc18b79bb59b97030"
   },
   {
    "key": "(39) (ny_it201.tcw.w9)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "e7ec49902f318ca5a7ac578d7ab92826c9cccaceb6847eab28ad2f083b11c30d"
   },
   {
    "key": "(39) (ny_it201.tcw.w10)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "4ac3d46aa43eeffac73e8efb1520a7ee36912ad81cc1048adf1fc1d88ac70383"
   },
   {
    "key": "(39) (ny_it201.tcw.w13)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "ce92cbe5e955978793e6081511aa38b4f03cc2c5f82855ebefdb026bf08b5df9"
   },
   {
    "key": "(39) (ny_it201.tcw.w14)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "10299969fd3acbd6823dc612d2e0902df545c3899fae0a51874c8af097a6d83a"
   },
   {
    "key": "(39) (ny_it201.tcw.w15)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "506cb69a6b67d3f11fa862d900ff84f15d143dddddf9e1ac688d1d5e28f14ce7"
   },
@@ -376,37 +375,37 @@
   },
   {
    "key": "(39) (ny_it201.tcw.mfj)",
-   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "03de36b70b51831899a1ef1e17fff2082cf84b03915b0cd67464da4920941f92"
   },
   {
    "key": "(39) (ny_it201.tcw.single)",
-   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "03de36b70b51831899a1ef1e17fff2082cf84b03915b0cd67464da4920941f92"
   },
   {
    "key": "(39) (ny_it201.tcw.hoh)",
-   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "03de36b70b51831899a1ef1e17fff2082cf84b03915b0cd67464da4920941f92"
   },
   {
    "key": "(39) (ny_it201.tcw.by_status)",
-   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "99ea825ac47ab37c881cb61b92f688b2b824891128212057fbaab603a62960a9"
   },
   {
    "key": "(39) (ny_it201.tax_high)",
-   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "1f5118feb5bcafd236682224c97ef729f8d889e142fccf2b5bc479b367f3f2d7"
   },
   {
    "key": "39",
-   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "1711637c14c318d26ba52c3e4f8a006742ce54f465ccc9abb73af39fdc824e92"
   },
@@ -418,135 +417,135 @@
   },
   {
    "key": "(column)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "2ed0aa2c5eb2e13322189dd06621865d6f3b4851b7ac8fb4f4a987bf243b990d"
   },
   {
    "key": "(table 2, column 1)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "4656e70684c1b66f9eb14a84768ff3b3fa61f3d2f9b685de13b10cb7521ef253"
   },
   {
    "key": "(table 5, column 1)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "8a5e01cb40d83e0009fa4587077a2e9cf73fc92f85d6030ad3ff35abb78ac650"
   },
   {
    "key": "(table 2, column 2)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "848a07b8254730a065b438768b38923ead065b170b7cc018c4b8c4fde91ca8f3"
   },
   {
    "key": "(table 5, column 2)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "90d2009973c9d62f5e7c974debe6eec280c11c08e2ce0d512ff8c5c3c7a75869"
   },
   {
    "key": "(table 2, column 3)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "c11fe4a867a742f315a8acc869f44e759bb2554f49dd47c549c5a939bca10ec4"
   },
   {
    "key": "(table 5, column 3)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "ae43c00d629e268b28892f12ac698f8f1f77909cd61832ebe2554ef1c25ebf39"
   },
   {
    "key": "(table 2, column 4)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "bbfa07cac8608fc8b2a580579a36fe22c4d9782183eab116e69e136c7d615c3e"
   },
   {
    "key": "(table 5, column 4)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "4cf3034739df46032e8659ed5001bc03e4875335ce5d6a8279d96f9269bbc98f"
   },
   {
    "key": "(table 2, column 5)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "b6e203e6f9552d1d944c31672457686af9b0d10f8cceeb57ea6cf7bf4b232c60"
   },
   {
    "key": "(table 5, column 5)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "901c3e3ca0bcc62361ec382fd9f121e72f10461e4704b2f895ed10b7f4197040"
   },
   {
    "key": "(table 2, column 6)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "81e750eeabae8c13a4018c9b2c2e11684a2bf30f531f540d4a07089a3e6f6559"
   },
   {
    "key": "(table 5, column 6)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "84c415e27dec4a8e1e2f058cbd1c56ea4cc9665aad524504d2c1331696b1c5e1"
   },
   {
    "key": "(table 2, column 7)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "69171c7939a902318ce3c3cf2e1e829ed3292af6a544cf80ff41af685e46ae51"
   },
   {
    "key": "(table 5, column 7)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "cbaf70a4baf190e38cc61d08ced4282a411448747b61058296925a841a0ff2db"
   },
   {
    "key": "(table 2)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "e920e193aa5b6a549a4c4b288a06979f3f369c6b2fa47301efd7e68511a9b7c4"
   },
   {
    "key": "(table 5)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "bb9bcfd4cc506d93b65b224407bb4d877f213c41181af66be83b2e7a1caf06ea"
   },
   {
    "key": "(table 1)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "3b08c8c00cfeec3335ef0b3cfc10acf2c7d2c39e24b710cef3c14c2ecf24e863"
   },
   {
    "key": "(table 4)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "762eed5229b13a3ca80d1b49fba5c2d3cc9fb364e92855ea096ec8d28662f185"
   },
   {
    "key": "(40)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "4924b026b427f566a4802588477135688188d507b26e5044f6f7bb7f2af600fc"
   },
   {
    "key": "(48)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "02507a25ce3751f8c85909b5ae60b15fcf333860ccc74874338160bd2e6824ec"
   },
   {
    "key": "40",
-   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MISMATCH",
-   "ruling": "Ruling: finding; the same defect as BUG-0762 (low), already recorded on line 48 and its sibling line 40: IT-201-I web edition, New York State household credit table 3 (filing status 3), 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'This amount could be 0 or a negative amount.' The refusal ny_it201.gate.hh_state_mfs tests only this return's line 19 against $32,000, so a spouse's negative AGI can leave a credit the tool enters as $0 without refusing. The reply is right; no new bug (BUG-0762)",
+   "ruling": "Ruling: finding; the same defect as BUG-0762 (low), already recorded on this line and line 48: IT-201-I web edition, New York State household credit table 3 (filing status 3), 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'This amount could be 0 or a negative amount.' ny_it201.gate.hh_state_mfs tests only this return's line 19 against $32,000, so a spouse's negative AGI can leave a credit the tool enters as $0 without refusing. The reply is right; no new bug (BUG-0762).",
    "subject_key": "23517b4d37238c9dc562091fb6d6bc71a759d67fbc47ad037e9c4b0d560ddaee"
   },
   {
@@ -593,27 +592,27 @@
   },
   {
    "key": "(47a) (ny_it201.city_tax_table)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "c7780f24f710b2335c04a83c23ca904f44fefa484752011feb50d762a35e6db0"
   },
   {
    "key": "(47a) (ny_it201.city_tax_schedule)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "9c1013eb0c51e74a4f7ddbafbbc43befad074107c2fe2792ed6628ec835d67e7"
   },
   {
    "key": "47a",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "36362701a5772d7ac863363773248075c63e96ba2c510305b31f0a4652de951b"
   },
   {
    "key": "48",
-   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MISMATCH",
-   "ruling": "Ruling: finding; two points. (1) City residence: scope; the form is for a full-year New York City resident only: ny_it201.gate.part_year_city ('Not a New York City resident for all of 2025', ny_it201.ask.city_resident No) refuses every other filer at line 50 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'), and a part-year resident is refused there too, so Table 2 is never reached. (2) Married filing separately: the reply is right, and it is BUG-0762 (low), already recorded: IT-201-I web edition, New York City household credit table 6, 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'could be 0 or a negative amount'; ny_it201.gate.hh_city_mfs tests only this return's line 19 against $22,500. No new bug (BUG-0762)",
+   "ruling": "Ruling: finding; the same defect as BUG-0762 (low), already recorded on this line and line 40: IT-201-I web edition, New York City household credit table 6 (filing status 3), 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'This amount could be 0 or a negative amount.' ny_it201.gate.hh_city_mfs tests only this return's line 19 against $22,500, so a spouse's loss can leave a credit the tool enters as $0 without refusing. The reply is right; no new bug (BUG-0762).",
    "subject_key": "5cabc4c635056cb22596d217605eef8e57007df44c578f1c4de637e073aa326b"
   },
   {
@@ -825,7 +824,7 @@
   },
   {
    "key": "67",
-   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
    "status": "MATCH",
    "subject_key": "5dff29f9e703c08102867145b67dd05cf16d4b98461a78532782bd1963988210"
   },
@@ -849,9 +848,8 @@
   },
   {
    "key": "69",
-   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; IT-201-I pp. 20–21, Line 69, 'If you are not a New York City resident or part-year resident, you do not qualify to claim this credit.' The restatement has no residence condition because the form is for a full-year New York City resident only: ny_it201.gate.part_year_city ('Not a New York City resident for all of 2025', ny_it201.ask.city_resident No) refuses every other filer at line 50 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'), and a part-year resident is refused there too, so Table 2 is never reached.",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
+   "status": "MATCH",
    "subject_key": "380f8a8948a47bebb6d0465be0ff5052756b8d901f23a12432734875d0e1cfd7"
   },
   {
@@ -892,9 +890,8 @@
   },
   {
    "key": "69a",
-   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; IT-201-I pp. 20–21, Line 69a, 'If you are not a New York City resident or part-year resident, you do not qualify to claim this credit.' The restatement has no residence condition because the form is for a full-year New York City resident only: ny_it201.gate.part_year_city ('Not a New York City resident for all of 2025', ny_it201.ask.city_resident No) refuses every other filer at line 50 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only').",
+   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
+   "status": "MATCH",
    "subject_key": "f1b18bf7a0331ddd2c7b98723428e7452bc35fa5eac4d35313fcc9fe0f9943a1"
   },
   {

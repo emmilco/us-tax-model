@@ -30,6 +30,11 @@ conflicts:
   household.roster_bad: >-
     The people entered do not match the filing status: a return has one taxpayer, and a spouse only when married
     filing jointly.
+  household.qss_child_not_all_year: >-
+    The answer that all five qualifying surviving spouse tests apply does not match the children listed: the tests
+    need a child or stepchild of yours who lived with you for all of 2025, but none of the children listed lived with
+    you all year. Correct the answer about where the child lived, or choose another line under "Which of these fits
+    you on December 31, 2025?".
   household.filing_status_conflict: >-
     The filing status does not match the answers about your marriage: a person married at the end of 2025 cannot file
     as single, and filing jointly needs a marriage at the end of 2025 or a spouse's death during 2025.
@@ -39,6 +44,10 @@ conflicts:
   f4952.bad_dividends: >-
     The qualified dividends on Form 4952 line 4b are part of the gross investment income on line 4a, but they are more
     than line 4a.
+  f1040.split_bad: >-
+    The amount to be refunded (Form 1040 line 35a) and the amount to be applied to 2026 estimated tax (line 36) are
+    parts of the overpayment on line 34, but together they are more than line 34. When nothing is overpaid, both are
+    zero.
   f4952.bad_election: >-
     The amount elected on Form 4952 line 4g is more than lines 4b and 4e together.
   person.x_two23: >-

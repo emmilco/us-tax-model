@@ -41,6 +41,8 @@ sets:
       person[taxpayer].sc[shop].hi_uses: false
       person[taxpayer].plan: none
       person[taxpayer].se_screen: false
+      qbi.unreported_loss: false
+      qbi.coop_patron: false
 rows:
   - id: business.none
     design: lane 6a, step 1 (the off-ramp)
@@ -267,12 +269,39 @@ rows:
     expect:
       refused: qbi.unsupported
   - id: business.qbi_coop_patron
-    design: lane 6a, step 2 (qbi.unsupported item 4, a patron of an agricultural or horticultural cooperative)
-    situation: A person with no business is a patron of a farm cooperative.
+    design: lane 6a, step 2 (qbi.unsupported item 4, a patron of an agricultural or horticultural cooperative); BUG-1138 (asked only with a business or section 199A dividends)
+    situation: A business owner is a patron of a farm cooperative.
+    uses: [one_business]
     answers:
       qbi.coop_patron: true
+      qbi.suspended: false
+      s2.lookback: false
+      s2.amt_business: false
+      scope.se_plan_other: false
+      scope.income_averaging: false
     expect:
       refused: qbi.unsupported
+  - id: business.qbi_coop_patron_no_business
+    design: BUG-1138 (qbi.coop_patron asked only with a business or section 199A dividends)
+    situation: A person with no business and no real estate fund dividends files no Form 8995 and is not asked about farm cooperatives.
+    answers:
+      qbi.prior_form: false
+    expect:
+      proceeds:
+        qbi.prior_form: false
+      not_asked: [qbi.coop_patron]
+  - id: business.qbi_unreported_loss
+    design: BUG-1061 (qbi.unreported_loss, a business loss of 2018 to 2024 never put on a Form 8995)
+    situation: A business owner whose business lost money in an earlier year, when no Form 8995 was filed, has a loss carried forward the tool cannot figure.
+    uses: [one_business]
+    answers:
+      qbi.unreported_loss: true
+      s2.lookback: false
+      s2.amt_business: false
+      scope.se_plan_other: false
+      scope.income_averaging: false
+    expect:
+      refused: qbi.unreported_loss_if_business
   - id: business.qbi_other_income
     design: lane 6a, step 2 (qbi.unsupported item 1, other qualified business or PTP income, now told at the scope question)
     situation: A person has business income from a partnership, an S corporation or a rental, reported on a Schedule K-1 or Schedule E.

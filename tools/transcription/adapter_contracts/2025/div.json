@@ -31,8 +31,6 @@
     "div.box2b": 0,
     "div.box2c": 0,
     "div.box2d": 0,
-    "div.box2e": 0,
-    "div.box2f": 0,
     "div.box3": 0,
     "div.box9": 0,
     "div.box10": 0,
@@ -108,28 +106,6 @@
       "expect": {
         "kind": "refusal",
         "gate": "div.amt"
-      },
-      "adapter": "div.screen"
-    },
-    {
-      "id": "section897-ordinary",
-      "inputs": {
-        "div.box2e": 100
-      },
-      "expect": {
-        "kind": "refusal",
-        "gate": "div.unsupported"
-      },
-      "adapter": "div.screen"
-    },
-    {
-      "id": "section897-capital",
-      "inputs": {
-        "div.box2f": 100
-      },
-      "expect": {
-        "kind": "refusal",
-        "gate": "div.unsupported"
       },
       "adapter": "div.screen"
     },

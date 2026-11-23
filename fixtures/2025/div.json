@@ -26,6 +26,43 @@
           "value": false
         }
       }
+    },
+    {
+      "id": "div.box2e_not_asked",
+      "covers": [
+        "div.unsupported",
+        "div.other_boxes"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before running the evaluator. Single, W-2 wages $80,000; one Form 1099-DIV with ordinary dividends (box 1a) of $2,000, none qualified, and $300 in box 2e (section 897 ordinary dividends). Box 2e is a portion of box 1a and applies only to foreign persons (f1099div p. 5, \"Note: Boxes 2e and 2f apply only to foreign persons and entities\"), so it is not asked; the filer answers the less-common-boxes question Yes for it and enters $0 in the boxes asked. Nothing refuses: AGI $82,000; taxable income $82,000 - $15,750 = $66,250; Tax Table row $66,250-$66,300 (midpoint $66,275): $1,192.50 + 12% x $36,550 + 22% x $17,800 = $9,494.50, so $9,495.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 8000000,
+        "person[taxpayer].w2[a].box5": 8000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 200000,
+        "div.other_boxes": true
+      },
+      "expect": {
+        "div.unsupported": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8200000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 6625000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 949500
+        }
+      }
     }
   ]
 }

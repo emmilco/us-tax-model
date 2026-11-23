@@ -127,6 +127,39 @@ form:
       cite:
         doc: i1040sd
         locator: 'p. 1, Other Forms You May Have To File, "Use Form 8824 to report like-kind exchanges."'
+    - id: sd.home_sale
+      printed: (gate)
+      label: 'Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?'
+      type: Bool
+      gated_by: sd.home_sale_if_sold
+      expr:
+        op: input
+        source: 'Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?'
+      cite:
+        doc: i1040sd
+        locator: 'p. 2, Sale of Your Home, "Report the sale or exchange of your main home on Form 8949 if: • You can’t exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange."'
+    - id: sd.home_sale_if_sold
+      printed: (gate)
+      label: 'Whether the sale of a main home must be reported on Form 8949 (a Form 1099-S, or gain beyond the exclusion), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sd.sold_other
+                - const: true
+            then: sd.home_sale
+          - guard:
+              op: test
+              eq:
+                - sd.sold_other
+                - const: false
+            then: sd.no
+      cite:
+        doc: i1040sd
+        locator: 'p. 2, Sale of Your Home, "Report the sale or exchange of your main home on Form 8949 if: • You can’t exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange."'
     - id: sd.sec1256
       printed: (gate)
       label: 'In 2025, did you (or, on a joint return, your spouse) trade futures, foreign currency contracts or options on a stock index (section 1256 contracts, shown in boxes 8 to 11 of a Form 1099-B), or hold offsetting positions taxed as a straddle?'
@@ -383,6 +416,13 @@ form:
         locator: p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9,
           and 10"
       refuses:
+        - when: sd.home_sale_if_sold
+          form: Form 8949, sale of your main home
+          remedy: Report the sale of your main home on Form 8949, with code H and the excluded gain in column (g), or
+            with code L for a loss on a home sold with a Form 1099-S. This tool does not prepare it.
+          cite:
+            doc: i8949
+            locator: 'p. 9, code H, "Report the sale or exchange on Form 8949 as you would if you weren''t taking the exclusion. Then enter the amount of excluded (nontaxable) gain as a negative number (in parentheses) in column (g)."; i1040sd p. 2, How To Report the Sale of Your Main Home'
         - when: sd.other_forms
           form: Schedule D additional source forms
           remedy: Prepare the required source forms; their gains/losses are outside the supported securities

@@ -399,7 +399,7 @@ form:
           - the housework part of pay to someone who did both nursing and housework (only the nursing help counts)
           - meals while away from home for medical care, other than hospital care, which includes its meals and lodging (other lodging for medical care counts at no more than $50 a night for each person who meets the Pub. 502 lodging requirements)
 
-          Reduce health insurance premiums by any self-employed health insurance deduction on Schedule 1 (Form 1040), line 17.
+          Leave out health insurance entered for a business's self-employed health insurance deduction (Form 7206, lines 1 and 2); the part of it not deducted on Schedule 1 (Form 1040), line 17 is added to line 1 separately.
 
           For Marketplace coverage on a Form 1095-A, include the total premiums (including the part paid by advance payments of the premium tax credit), minus the premium tax credit allowed on Form 8962, line 24, and minus any excess advance payments you do not have to repay because of the repayment limit (Form 8962, line 27 minus line 29); advance payments you do repay count as premiums you paid.
 
@@ -451,7 +451,7 @@ form:
           p. 13, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are
           equal to the tax-free distribution from your Archer MSA"'
     - id: sa.line1_if_medical
-      printed: "1"
+      printed: (gate)
       type: NonNegDollars
       label: Medical and dental expenses (zero when your costs were not more than 7.5% of income and you paid for no health insurance with money already taxed)
       expr:
@@ -472,6 +472,34 @@ form:
       cite:
         doc: i1040sca
         locator: 'p. 1, Medical and Dental Expenses, "If you received a distribution from a health savings account or a medical savings account in 2025, see Pub. 969 to figure your deduction", "Certain medical expenses paid out of a deceased taxpayer''s estate can be claimed on the deceased taxpayer''s final return", "You can''t include insurance premiums paid by making a pretax reduction to your employee compensation", "If you are a retired public safety officer, you can''t include any premiums you paid to the extent they were paid for with a tax-free distribution from your retirement plan", "If you paid someone to do both nursing and housework, you can deduct only the cost of the nursing help", "Hospital care (including meals and lodging), clinic costs, and lab fees", "Lodging expenses (but not meals) while away from home to receive medical care"; p. 2, "Don''t deduct more than $50 a night for each person who meets the requirements in Pub. 502 under Lodging", "Limit on long-term care premiums you can include. The amount you can include for qualified long-term care insurance contracts (as defined in Pub. 502) depends on the age at the end of 2025 of the person for whom the premiums were paid", Line 1 Medical and Dental Expenses, "Enter the total of your medical and dental expenses after you reduce these expenses by any payments received from insurance or other sources", "If advance payments of the premium tax credit were made or you think you may be eligible to claim a premium tax credit, fill out Form 8962 before filling out Schedule A, line 1", "self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17", "You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them", "Your child whom you don''t claim as a dependent because of the rules for children of divorced or separated parents", "Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return", "You can''t deduct any premiums attributable to this individual unless this individual is a person described under Whose medical and dental expenses can you include, earlier", "However, if you had family coverage when you added this individual to your policy and your premiums didn''t increase, you can enter on line 1 the full amount of your medical and dental insurance premiums", "If you received a reimbursement in 2025 for prior year medical or dental expenses, don''t reduce your 2025 expenses by this amount", "don’t include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2", "Also, don''t include any other medical and dental expenses paid by the plan unless the amount paid is included in box 1 of your Form(s) W-2"; p502 p. 12, Premium Tax Credit, "You can’t include in medical expenses the amount of health insurance premiums paid by or through the premium tax credit", "You also can’t include in medical expenses any amount of advance payments of the premium tax credit made that you did not have to pay back", "However, any amount of advance payments of the premium tax credit that you did have to pay back can be included in medical expenses", "You are treated as paying $5,100 ($8,700 less the allowed premium tax credit of $3,600)"; i8962 p. 2, "You cannot deduct the portion of your health insurance premium on your tax return that is paid for by the PTC or APTC (after you determine how much of any excess APTC you must repay)"; p969 p. 9, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA"; p969 p. 13, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your Archer MSA"'
+    - id: sa.sehi_unused
+      printed: (helper)
+      type: NonNegDollars
+      label: Health insurance of the return's businesses not deducted on Schedule 1, line 17 (Form 7206, line 3 minus line 14)
+      expr:
+        op: sum_over
+        collection: person
+        field: person.sehi_unused
+      cite:
+        doc: i7206
+        locator: p. 2, "any medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as
+          medical expenses on Schedule A (Form 1040) if you itemize deductions"
+    - id: sa.line1_total
+      printed: "1"
+      type: NonNegDollars
+      label: Medical and dental expenses, including health insurance of a business not deducted on Schedule 1, line 17
+      expr:
+        op: sum
+        of:
+          - sa.line1_if_medical
+          - sa.sehi_unused
+      cite:
+        doc: i1040sca
+        locator: 'p. 2, Line 1 Medical and Dental Expenses, "Enter the total of your medical and dental expenses after you
+          reduce these expenses by any payments received from insurance or other sources", "self-employed health insurance
+          deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17"; i7206 p. 2, "any
+          medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as medical expenses
+          on Schedule A (Form 1040) if you itemize deductions"'
     - id: sa.state_tax_any
       printed: (helper)
       type: Bool
@@ -1308,10 +1336,10 @@ form:
     - id: sa.line4
       printed: "4"
       type: NonNegDollars
-      label: Subtract sa.line3 from sa.line1_if_medical; if zero or less, enter zero
+      label: Subtract sa.line3 from sa.line1_total; if zero or less, enter zero
       expr:
         op: subtract_floor0
-        from: sa.line1_if_medical
+        from: sa.line1_total
         take: sa.line3
       cite:
         doc: f1040sa

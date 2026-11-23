@@ -201,7 +201,7 @@
           "kind": "refusal",
           "gate": "person[spouse].f8889[hsa].allocation_bad",
           "form": "Form 8889 line 6 for spouses with separate HSAs",
-          "remedy": "Count the months treated as family coverage the same way for both spouses (if either had family coverage while both were eligible, both are treated as having it), use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit between you. An agreed allocation between spouses whose Step 1 limits differ is outside this tool.",
+          "remedy": "Use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit (the family amount for the months you were both eligible individuals treated as having family coverage) between you.",
           "cite": {
             "doc": "i8889",
             "locator": "p. 4, Line 3, rule 1; p. 7, Line 6, Steps 1 to 3",
@@ -311,7 +311,7 @@
           "kind": "refusal",
           "gate": "person[spouse].f8889[hsa].allocation_bad",
           "form": "Form 8889 line 6 for spouses with separate HSAs",
-          "remedy": "Count the months treated as family coverage the same way for both spouses (if either had family coverage while both were eligible, both are treated as having it), use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit between you. An agreed allocation between spouses whose Step 1 limits differ is outside this tool.",
+          "remedy": "Use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit (the family amount for the months you were both eligible individuals treated as having family coverage) between you.",
           "cite": {
             "doc": "i8889",
             "locator": "p. 4, Line 3, rule 1; p. 7, Line 6, Steps 1 to 3",

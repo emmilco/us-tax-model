@@ -4,8 +4,9 @@
  "family": "claude",
  "base": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
  "head_rows": {
-  "agree / disagree / missing": "21 / 34 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "printed lines compared": "56",
+  "agree / disagree / missing": "22 / 34 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -253,10 +254,16 @@
    "subject_key": "ca4bcd6882811e0c23fe4a4af7e5c5abb3fda9f934db040474fc03abb021b897"
   },
   {
-   "key": "3 (sc.line3)",
-   "record": "4fe86642e3c10535aa7736c6461117c6fa92611faa4569c77d39225e2f5d205a",
+   "key": "sc.f7206_unused_if_uses",
+   "record": "338978a666c2c99d78a7ef5bf4fa0412f27ef62fe37717ba75738bab444948d6",
    "status": "AGREE",
-   "subject_key": "302b69a5fadbbfc8382dc8d6886ae36d5d5e52609935a9dcde6462d5f17760f2"
+   "subject_key": "ea1def25cfb4bf351960bd4d1a3d522d87bfad022b48c5d04cc48337159d1bee"
+  },
+  {
+   "key": "3 (sc.line3)",
+   "record": "338978a666c2c99d78a7ef5bf4fa0412f27ef62fe37717ba75738bab444948d6",
+   "status": "AGREE",
+   "subject_key": "b6efe878e030cb713442a3b9a2e64361b87547c28453bd8ca09bf8109518f0a8"
   },
   {
    "key": "4 (sc.line4)",
@@ -511,7 +518,8 @@
   "sc.mq_total": "8fffb3718207a976666fec05c4d838d71dfe57e342398c8c51ab7cd6f81de5a5",
   "sc.cost179": "16b87f1be299748b61d29f032baf97b674ca4cb68ad633cc75fe209405ca7d17",
   "sc.profit_pos": "f8643c070bbe59001d28cdc7c669edafa0cdb42ea8970dbaa86ed124702a764c",
-  "3 (sc.line3)": "71e6de13f6aba8ced0e98193b6ba912280722eb4312bd1b89c3628b593a8a7c6",
+  "sc.f7206_unused_if_uses": "f8884c7df07ee2521733b70983cc341af6e029638fd56ba493e59618dfc6a31d",
+  "3 (sc.line3)": "a976af8eeabdf45e1ba798d8b7a34e3630c6aacb00376f46e483425b5afc50c3",
   "4 (sc.line4)": "7bd4b774295ebb6907a73453b94e3cafbd8443e8b7f82eae3bd48576d59b5abe",
   "5 (sc.line5)": "2a876599a38c0e45f4ccade66e1189a489827ebc4cc3945cfc862edf3c0bb799",
   "7 (sc.line7)": "09eae94478e71d8e240d442e9d9774723b9003fed0741bd2ab34184e75ef219f",
@@ -548,6 +556,7 @@
  "__rest__": "c47815e7189ca7c445692449dd063df97f10ec16a5290e8cca0c4b96530a9e2e",
  "foreign": {
   "sc.line31_pre179": "5901b1de22d6b693c2b0e6eb7c54a1c9630f1ab6c8a0cf133033f513785c0747",
+  "sc.f7206_unused_if_uses": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "3 (sc.line3)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "24b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "28": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

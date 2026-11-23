@@ -317,7 +317,7 @@ rows:
     f1116.reduction: false
     f1116.loss_accounts: false
     sa.foreign_tax_deduct: false
-    qbi.coop_patron: false
+    qbi.prior_form: false
     f1116sb.prior_year: none
   expect:
     proceeds:
@@ -367,7 +367,7 @@ rows:
     f1116.reduction: false
     f1116.loss_accounts: false
     sa.foreign_tax_deduct: false
-    qbi.coop_patron: false
+    qbi.prior_form: false
     f1116sb.prior_year: form_room
   expect:
     refused: f1116sb.carryback
@@ -415,7 +415,7 @@ rows:
     f1116.reduction: false
     f1116.loss_accounts: false
     sa.foreign_tax_deduct: false
-    qbi.coop_patron: false
+    qbi.prior_form: false
     f1116sb.prior_year: none
   expect:
     proceeds:

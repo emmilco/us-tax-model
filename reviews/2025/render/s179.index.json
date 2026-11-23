@@ -5,7 +5,7 @@
  "base": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
  "head_rows": {
   "match / mismatch / unclear / missing": "12 / 0 / 1 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -35,7 +35,7 @@
   },
   {
    "key": "5",
-   "record": "8fde149931104a06341c11571c0e8d069ecdc5484b0fe3f45a55f3396000cdd5",
+   "record": "d8906452f666cdc228f5a92e04b4fc9e5178dfb259e069f9a57424a28fa5864c",
    "status": "MATCH",
    "subject_key": "3c5d3fb5546596aeeceb13d17eb2c91a04b78710b654776161664f34d27989d7"
   },

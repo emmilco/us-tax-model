@@ -7518,6 +7518,159 @@
           "gate": "sd.other_forms"
         }
       }
+    },
+    {
+      "id": "sales.home_sale_reportable",
+      "covers": [
+        "sd.home_sale",
+        "sd.home_sale_if_sold",
+        "sd.count"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before running the evaluator. Single, W-2 wages $90,000; sold her main home of ten years for $720,000 with a basis of $400,000 (gain $320,000, $70,000 over the $250,000 exclusion) and a Form 1099-S. Real estate sold (sd.sold_other Yes) and the home question answered Yes: the sale belongs on Form 8949 with code H (i1040sd p. 2, Sale of Your Home, \"Report the sale or exchange of your main home on Form 8949 if: You can’t exclude all of your gain from income, or You received a Form 1099-S for the sale or exchange\"; i8949 p. 9, code H), which this tool does not prepare, so line 7a and the tax refuse on sd.home_sale_if_sold instead of leaving the gain off.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 9000000,
+        "person[taxpayer].w2[a].box5": 9000000,
+        "sd.sold_other": true,
+        "sd.home_sale": true
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "sd.home_sale_if_sold",
+          "form": "Form 8949, sale of your main home",
+          "remedy": "Report the sale of your main home on Form 8949, with code H and the excluded gain in column (g), or with code L for a loss on a home sold with a Form 1099-S. This tool does not prepare it.",
+          "cite": {
+            "doc": "i8949",
+            "locator": "p. 9, code H, \"Report the sale or exchange on Form 8949 as you would if you weren't taking the exclusion. Then enter the amount of excluded (nontaxable) gain as a negative number (in parentheses) in column (g).\"; i1040sd p. 2, How To Report the Sale of Your Main Home",
+            "revision": "2025; printed date 2026-01-20",
+            "snapshot": "f077991c83b086810c46cbad3755e0f126cb8dfd88cf8bf8ab2d5605d6e7ab45",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line16": {
+          "kind": "refusal",
+          "gate": "sd.home_sale_if_sold",
+          "form": "Form 8949, sale of your main home",
+          "remedy": "Report the sale of your main home on Form 8949, with code H and the excluded gain in column (g), or with code L for a loss on a home sold with a Form 1099-S. This tool does not prepare it.",
+          "cite": {
+            "doc": "i8949",
+            "locator": "p. 9, code H, \"Report the sale or exchange on Form 8949 as you would if you weren't taking the exclusion. Then enter the amount of excluded (nontaxable) gain as a negative number (in parentheses) in column (g).\"; i1040sd p. 2, How To Report the Sale of Your Main Home",
+            "revision": "2025; printed date 2026-01-20",
+            "snapshot": "f077991c83b086810c46cbad3755e0f126cb8dfd88cf8bf8ab2d5605d6e7ab45",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "sales.home_sale_excluded",
+      "covers": [
+        "sd.home_sale",
+        "sd.home_sale_if_sold",
+        "f1040.line7b_sd_not_required"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before running the evaluator. Single, W-2 wages $90,000; sold her main home with the whole gain excluded and no Form 1099-S, so the sale is not reported (i1040sd p. 2, Sale of Your Home, \"Report the sale or exchange of your main home on Form 8949 if: You can’t exclude all of your gain from income, or You received a Form 1099-S for the sale or exchange\"; i8949 p. 9, code H). Answers: real estate sold Yes, home question No, business, installment and like-kind No. Nothing refuses; line 7a $0; AGI $90,000; taxable income $90,000 - $15,750 = $74,250; Tax Table row $74,250-$74,300 (midpoint $74,275): $1,192.50 + 12% x $36,550 + 22% x $25,800 = $11,254.50, so $11,255. Line 7b is not checked (no capital gain distributions on line 7a).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 9000000,
+        "person[taxpayer].w2[a].box5": 9000000,
+        "sd.sold_other": true,
+        "sd.home_sale": false,
+        "sd.business_property": false,
+        "sd.installment": false,
+        "sd.like_kind": false
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 9000000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 7425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1125500
+        },
+        "f1040.line7b_sd_not_required": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "sales.line7b_distributions_only",
+      "covers": [
+        "f1040.line7b_sd_not_required"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before running the evaluator. W-2 wages $61,750 and capital gain distributions (box 2a) of $4,000, nothing else: Exception 1 applies (i1040gi p. 31, Line 7a), Schedule D is not filed, line 7a is $4,000 and the box “Schedule D not required” on line 7b is checked (i1040gi p. 33, \"If Exception 1 applies, enter your total capital gain distributions (from box 2a of Form(s) 1099-DIV) on line 7a and check the box “Schedule D not required” on line 7b\").",
+      "inputs": {
+        "div.any": true,
+        "sd.distributions": 400000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6175000
+      },
+      "expect": {
+        "sd.filed": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line7b_sd_not_required": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "sales.line7b_unrecaptured_1250",
+      "covers": [
+        "f1040.line7b_sd_not_required"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before running the evaluator. As sales.line7b_distributions_only, with $1,000 of the $4,000 in box 2b (unrecaptured section 1250 gain): Exception 1 condition 2 fails (i1040gi p. 31), Schedule D is filed, line 7a is still $4,000 (Schedule D line 13 to line 16) and line 7b is not checked.",
+      "inputs": {
+        "div.any": true,
+        "sd.distributions": 400000,
+        "div.other_boxes": true,
+        "div.box2b": 100000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6175000
+      },
+      "expect": {
+        "sd.filed": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line7b_sd_not_required": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

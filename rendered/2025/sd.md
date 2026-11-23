@@ -59,6 +59,20 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["sd.sold_other",{"const":true}],"op":"test"},"then":"sd.like_kind"},{"guard":{"eq":["sd.sold_other",{"const":false}],"op":"test"},"then":"sd.no"}],"op":"choose"}`
 - Cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 8824 to report like-kind exchanges." (2025; printed date 2025-12-11; sha256 650643a6)
 
+## (gate) — `sd.home_sale`
+
+- **Authored helper label:** Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?
+- **Encoded (Bool):** Input — Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?
+- Expr: `{"op":"input","source":"Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?"}`
+- Cite: [i1040sd] p. 2, Sale of Your Home, "Report the sale or exchange of your main home on Form 8949 if: • You can’t exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange." (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (gate) — `sd.home_sale_if_sold`
+
+- **Authored helper label:** Whether the sale of a main home must be reported on Form 8949 (a Form 1099-S, or gain beyond the exclusion), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you (or, on a joint return, your spouse) sold, in 2025 or before, comes in a year after the year of the sale." = true → helper "Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?"] [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you (or, on a joint return, your spouse) sold, in 2025 or before, comes in a year after the year of the sale." = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sd.sold_other",{"const":true}],"op":"test"},"then":"sd.home_sale"},{"guard":{"eq":["sd.sold_other",{"const":false}],"op":"test"},"then":"sd.no"}],"op":"choose"}`
+- Cite: [i1040sd] p. 2, Sale of Your Home, "Report the sale or exchange of your main home on Form 8949 if: • You can’t exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange." (2025; printed date 2025-12-11; sha256 650643a6)
+
 ## (gate) — `sd.sec1256`
 
 - **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) trade futures, foreign currency contracts or options on a stock index (section 1256 contracts, shown in boxes 8 to 11 of a Form 1099-B), or hold offsetting positions taxed as a straddle?
@@ -175,6 +189,7 @@
 
 - **Authored helper label:** Count screened transactions
 - **Encoded (Count):** Add sales.one over every confirmed sales entry, within the current person when parent-bound. An unanswered roster is unknown.
+- **Refusal:** when sd.home_sale_if_sold is true, cannot complete Form 8949, sale of your main home. Report the sale of your main home on Form 8949, with code H and the excluded gain in column (g), or with code L for a loss on a home sold with a Form 1099-S. This tool does not prepare it. Cite: [i8949] p. 9, code H, "Report the sale or exchange on Form 8949 as you would if you weren't taking the exclusion. Then enter the amount of excluded (nontaxable) gain as a negative number (in parentheses) in column (g)."; i1040sd p. 2, How To Report the Sale of Your Main Home (2025; printed date 2026-01-20; sha256 f077991c)
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.one","op":"sum_over"}`
 - Cite: [f1040sd] p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10" (2025; created 2025-10-06; sha256 90564c8b)

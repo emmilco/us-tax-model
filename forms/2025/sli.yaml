@@ -94,7 +94,7 @@ form:
       locator: p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan'
   - id: sli.unqualified_any
     printed: (helper)
-    label: Any of that interest was on a loan that is not a qualified student loan
+    label: Any of that interest was on a loan that is not a qualified student loan, or one you were not legally obligated to pay
     type: Bool
     gated_by: sli.unqualified_any_if_any
     expr:
@@ -106,6 +106,7 @@ form:
         - a loan used partly for something other than school costs
         - a loan taken out for someone who was not you, your spouse or your dependent at the time
         - a loan for study not toward a degree, certificate or similar credential, or at a school that is not a college, university or eligible vocational school
+        - a loan you were not legally bound to repay, such as one only your child signed
     cite:
       doc: i1040gi
       locator: pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses
@@ -114,10 +115,10 @@ form:
         borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified
         higher education expenses, 'The expenses must be for education in a degree, certificate, or similar program at an
         eligible educational institution. An eligible educational institution includes most colleges, universities, and
-        certain vocational schools.'
+        certain vocational schools.'; p970 p. 33, Don’t Include as Interest, "Interest you paid on a loan if, under the terms of the loan, you aren’t legally obligated to make interest payments"
   - id: sli.unqualified_any_if_any
     printed: (gate)
-    label: Whether any of the interest was on a loan that is not a qualified student loan, asked only when interest was paid on a student loan (false otherwise)
+    label: Whether any of the interest was on a loan that is not a qualified student loan, or one you were not legally obligated to pay, asked only when interest was paid on a student loan (false otherwise)
     type: Bool
     expr:
       op: choose
@@ -140,10 +141,10 @@ form:
         for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a)
         any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who
         borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified
-        higher education expenses
+        higher education expenses; p970 p. 33, Don’t Include as Interest, "Interest you paid on a loan if, under the terms of the loan, you aren’t legally obligated to make interest payments"
   - id: sli.unqualified
     printed: (helper)
-    label: The part of that interest paid on loans that are not qualified student loans
+    label: The part of that interest paid on loans that are not qualified student loans, or that you were not legally obligated to pay
     type: NonNegDollars
     gated_by: sli.unqualified_if_some
     expr:
@@ -155,10 +156,10 @@ form:
         for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a)
         any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who
         borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified
-        higher education expenses
+        higher education expenses; p970 p. 33, Don’t Include as Interest, "Interest you paid on a loan if, under the terms of the loan, you aren’t legally obligated to make interest payments"
   - id: sli.unqualified_if_some
     printed: (gate)
-    label: The interest on loans that are not qualified student loans, asked only when there is such a loan (zero otherwise)
+    label: The interest on loans that are not qualified student loans, or that you were not legally obligated to pay, asked only when there is such a loan (zero otherwise)
     type: NonNegDollars
     expr:
       op: choose
@@ -181,24 +182,26 @@ form:
         for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a)
         any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who
         borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified
-        higher education expenses
+        higher education expenses; p970 p. 33, Don’t Include as Interest, "Interest you paid on a loan if, under the terms of the loan, you aren’t legally obligated to make interest payments"
   - id: sli.assisted_any
     printed: (helper)
-    label: Any of that interest was paid from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance
+    label: Any of that interest was paid by an employer under an educational assistance program, from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance
     type: Bool
     gated_by: sli.assisted_any_if_any
     expr:
       op: input
-      source: Was any of that interest paid for you (or, on a joint return, your spouse) by a loan repayment program for health workers, or with tax-free earnings of a 529 plan?
+      source: Was any of that interest paid for you (or, on a joint return, your spouse) by an employer's educational assistance plan, by a loan repayment program for health workers, or with tax-free earnings of a 529 plan?
     cite:
       doc: i1040gi
       locator: p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified
         tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid
         on a student loan to the extent payments were made through your participation in any of the above programs" and
-        "The National Health Service Corps (NHSC) Loan Repayment Program"
+        "The National Health Service Corps (NHSC) Loan Repayment Program"; p970 p. 33, No Double Benefit Allowed, "For
+        payments made after March 27, 2020, do not deduct as interest on a student loan any interest paid by your employer
+        under an educational assistance program"
   - id: sli.assisted_any_if_any
     printed: (gate)
-    label: Whether any of the interest was paid from tax-free qualified tuition program earnings or through tax-free loan repayment assistance, asked only when interest was paid on a student loan (false otherwise)
+    label: Whether any of the interest was paid by an employer under an educational assistance program, from tax-free qualified tuition program earnings or through tax-free loan repayment assistance, asked only when interest was paid on a student loan (false otherwise)
     type: Bool
     expr:
       op: choose
@@ -220,10 +223,12 @@ form:
       locator: p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified
         tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid
         on a student loan to the extent payments were made through your participation in any of the above programs" and
-        "The National Health Service Corps (NHSC) Loan Repayment Program"
+        "The National Health Service Corps (NHSC) Loan Repayment Program"; p970 p. 33, No Double Benefit Allowed, "For
+        payments made after March 27, 2020, do not deduct as interest on a student loan any interest paid by your employer
+        under an educational assistance program"
   - id: sli.assisted
     printed: (helper)
-    label: The part of that interest paid from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance
+    label: The part of that interest paid by an employer under an educational assistance program, from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance
     type: NonNegDollars
     gated_by: sli.assisted_if_some
     expr:
@@ -234,10 +239,12 @@ form:
       locator: p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified
         tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid
         on a student loan to the extent payments were made through your participation in any of the above programs" and
-        "The National Health Service Corps (NHSC) Loan Repayment Program"
+        "The National Health Service Corps (NHSC) Loan Repayment Program"; p970 p. 33, No Double Benefit Allowed, "For
+        payments made after March 27, 2020, do not deduct as interest on a student loan any interest paid by your employer
+        under an educational assistance program"
   - id: sli.assisted_if_some
     printed: (gate)
-    label: The interest paid from tax-free qualified tuition program earnings or loan repayment assistance, asked only when there is some (zero otherwise)
+    label: The interest paid by an employer under an educational assistance program, from tax-free qualified tuition program earnings or through loan repayment assistance, asked only when there is some (zero otherwise)
     type: NonNegDollars
     expr:
       op: choose
@@ -259,10 +266,12 @@ form:
       locator: p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified
         tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid
         on a student loan to the extent payments were made through your participation in any of the above programs" and
-        "The National Health Service Corps (NHSC) Loan Repayment Program"
+        "The National Health Service Corps (NHSC) Loan Repayment Program"; p970 p. 33, No Double Benefit Allowed, "For
+        payments made after March 27, 2020, do not deduct as interest on a student loan any interest paid by your employer
+        under an educational assistance program"
   - id: sli.not_counted
     printed: (helper)
-    label: Interest that is not counted (on loans that are not qualified student loans, and paid from tax-free earnings or repayment assistance)
+    label: Interest that is not counted (on loans that are not qualified student loans or that you were not legally obligated to pay, and paid by an employer's educational assistance program, from tax-free earnings or through repayment assistance)
     type: NonNegDollars
     expr:
       op: sum
@@ -275,7 +284,7 @@ form:
         for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a)
         any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who
         borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified
-        higher education expenses
+        higher education expenses; p970 p. 33, Don’t Include as Interest, "Interest you paid on a loan if, under the terms of the loan, you aren’t legally obligated to make interest payments", and No Double Benefit Allowed, "do not deduct as interest on a student loan any interest paid by your employer under an educational assistance program"
   - id: sli.qualified
     printed: (helper)
     label: Total interest you paid in 2025 on qualified student loans

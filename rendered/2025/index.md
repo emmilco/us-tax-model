@@ -11,9 +11,9 @@ Review these renderings line by line against the archived IRS sources in `source
 | clcw_next_year.md | worksheet | 28 |
 | dcprov.md | worksheet | 6 |
 | dependent.md | worksheet | 210 |
-| div.md | form | 43 |
+| div.md | form | 38 |
 | eic.md | worksheet | 107 |
-| f1040.md | form | 82 |
+| f1040.md | form | 86 |
 | f1095a.md | form | 90 |
 | f1116.md | form | 79 |
 | f1116col.md | form | 39 |
@@ -23,7 +23,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | f4137.md | form | 16 |
 | f4137row.md | form | 2 |
 | f4562.md | form | 15 |
-| f4952.md | form | 37 |
+| f4952.md | form | 39 |
 | f5329.md | form | 22 |
 | f5695.md | form | 235 |
 | f7203.md | form | 61 |
@@ -32,7 +32,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | f8853c.md | form | 31 |
 | f8863.md | form | 49 |
 | f8880.md | form | 50 |
-| f8889.md | form | 177 |
+| f8889.md | form | 185 |
 | f8919.md | form | 11 |
 | f8919firm.md | form | 2 |
 | f8959.md | form | 27 |
@@ -43,7 +43,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | ftc.md | form | 25 |
 | g28.md | form | 9 |
 | gift.md | form | 8 |
-| household.md | form | 97 |
+| household.md | form | 108 |
 | interest.md | form | 2 |
 | ira.md | worksheet | 67 |
 | k1p.md | form | 179 |
@@ -52,8 +52,8 @@ Review these renderings line by line against the archived IRS sources in `source
 | mq.md | worksheet | 7 |
 | oi8z.md | worksheet | 10 |
 | otjob.md | form | 12 |
-| person.md | worksheet | 474 |
-| qbi.md | form | 22 |
+| person.md | worksheet | 476 |
+| qbi.md | form | 26 |
 | qdcg.md | worksheet | 27 |
 | rec.md | worksheet | 74 |
 | refund.md | form | 60 |
@@ -68,14 +68,14 @@ Review these renderings line by line against the archived IRS sources in `source
 | s2.md | form | 131 |
 | s3.md | form | 91 |
 | s8812.md | form | 92 |
-| sa.md | form | 128 |
+| sa.md | form | 130 |
 | sales.md | form | 31 |
 | sb.md | form | 38 |
-| sc.md | form | 170 |
+| sc.md | form | 172 |
 | sche.md | form | 30 |
 | scope.md | form | 88 |
 | scveh.md | form | 188 |
-| sd.md | form | 83 |
+| sd.md | form | 85 |
 | sdtw.md | worksheet | 75 |
 | se.md | def | 30 |
 | sli.md | form | 37 |

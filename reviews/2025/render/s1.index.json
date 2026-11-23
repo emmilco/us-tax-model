@@ -6,7 +6,7 @@
  "head_rows": {
   "lines judged": "36",
   "match / mismatch / unclear / missing": "29 / 7 / 0 / 0",
-  "line-scoped reviews": "8 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "9 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -121,9 +121,9 @@
   },
   {
    "key": "8a",
-   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
+   "record": "f5842af66b35d8613326cb3f1344306075c5c71ff315303009a9b059505057e9",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi p. 91, Line 8a, and the 80% limit. The limit is handled on s1.nol_limit (forms/2025/s1.yaml; amb.2025.s1_nol_limit_test): the deduction is computed where the 80% limit cannot bind and refused where it may. The restatement of line 8a does not show that line.",
+   "ruling": "Ruling: scope; i1040gi p. 91, Line 8a, and the 80% limit. The limit is handled on s1.nol_limit (forms/2025/s1.yaml; amb.2025.s1_nol_limit_test): the deduction is computed where the 80% limit cannot bind and refused where it may. The restatement of line 8a does not show that line. (carried over from reviews/2025/render/s1.index.json at f4d8ea31, review of 2026-11-03)",
    "subject_key": "c59a89c38daae92bcdfa540f2f26acb3539ced66fa66dcf29256d3b5ef8d4e22"
   },
   {

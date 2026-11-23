@@ -5,22 +5,22 @@
  "base": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
  "head_rows": {
   "agree / disagree / missing": "3 / 6 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "sli.deduction",
-   "record": "e32b2952abec7b4c9f191205e6c2bcfb7966e4be8e757847afd9d2f62d4afe8c",
+   "record": "02c9713d194bfad6fc2f0e49a8110df3f448836cd225a283eab83828ef02b8a4",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 98, Schedule 1, line 21: the deduction is allowed only if \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.\" The reply leaves out that condition, saying no supplied input states it; the request's person collection carries person.sav_claimed, which the project counts in sli.claimed_count (sli.eligible). As ruled on 2026-11-10, 2026-11-14 and 2026-11-15, completed returns where a person on the return is claimed (stage11.sli.claimed, stage11.sli.spouse_claimed) take $0 in the project and the worksheet amount in the reply. The review was occasioned by the reworded list of unqualified loans (BUG-0881); the expression is unchanged.",
-   "subject_key": "71017b7cb934173e737bba29f2d77c8c7b9dbec9d2b96b58624ec8b2f17d6975"
+   "ruling": "Ruling: model error; i1040gi p. 98, Schedule 1, line 21: the deduction is allowed only if \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.\" The reply drops that condition (its note says no input answers 'claimed'); the request's person collection carries person.sav_claimed, which the project counts in sli.claimed_count. Same point as the earlier rulings on this line. The review was occasioned by the reworded sli.assisted_any (employer educational assistance, p970 p. 33) and sli.unqualified_any (a loan the filer was not legally obligated to pay, p970 p. 33); the reply's exclusions match the project's on both. Project stands.",
+   "subject_key": "0c0246ec09f5cedcae284edefe387639798891e787fddefc87b1b112bc73968c"
   },
   {
    "key": "1",
-   "record": "e32b2952abec7b4c9f191205e6c2bcfb7966e4be8e757847afd9d2f62d4afe8c",
+   "record": "02c9713d194bfad6fc2f0e49a8110df3f448836cd225a283eab83828ef02b8a4",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 1, \"Enter the total interest you paid in 2025 on qualified student loans ... Don't enter more than $2,500\". As ruled on 2026-11-14, -15 and -17: both take the interest less the unqualified and assisted amounts, floored at zero and capped at $2,500 (subtracting the two in turn from a zero-floored amount equals subtracting their sum); the project asks sli.any only on a return that is not married filing separately (sli.any_if_not_mfs), the reply reads it on every return, and sli.unqualified_any and sli.assisted_any only after sli.any. The new item of sli.unqualified_any (study not toward a credential, or at a school that is not eligible; i1040gi p. 99) changes its wording, not this expression.",
-   "subject_key": "67b55b9b0fbc05366cbec9f66b0fa9428a8c6a2195514a5e2f85f6b56aea57a0"
+   "ruling": "Ruling: representation; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 1, and p970 p. 33, Don't Include as Interest and No Double Benefit Allowed. Both take the interest less the unqualified amount (now including a loan the filer was not legally obligated to pay) and less the assisted amount (now including interest an employer paid under an educational assistance program), floored at zero and capped at $2,500; subtracting the two in turn with a zero floor equals subtracting their sum. The project asks the exclusions only after sli.any on a return not married filing separately (sli.any_if_not_mfs); the reply reads them directly, and the deduction is zero on a separate return under both. Same point as the earlier rulings on this line. Project stands.",
+   "subject_key": "67f623622c1cd2df61fc090bf2626ac92ec1bc11e419b0461b50231e8cad12db"
   },
   {
    "key": "2",
@@ -70,8 +70,8 @@
   }
  ],
  "subjects": {
-  "sli.deduction": "e5111bb0e7c74b699b49bc2cbe90f96f08fc3087aef1e54b1c73d52a280cfdb3",
-  "1": "c1d34be3026a44cdb4795dd276106f7d4272d638420441be569ba320185b2e55",
+  "sli.deduction": "74643bb1a222fd8021d16943bc690efe0c7b6e643b290eedda97f5ddf88c0c2b",
+  "1": "01cd03ba17c968eea210bdb914c6d47b7fb3bb8c355b2dbbe35911b4f965f5fa",
   "2": "03b76842d0b2c01ed25446bb350441f94e4e87fe6f19ca18a3ea8ee9d0f06a4d",
   "3": "3a2f5cd698d5de7f0de48e3a76ddcbbd07c2f0b49b90c745ef539cc95ad9986d",
   "4": "7525f5f108db9d3ec62d4c245aeea6b7186ca4e6c389a61b6e16750c48e330f2",
