@@ -276,58 +276,6 @@
     }
    ]
   },
-  "f5695.line12": {
-   "subject_sha": "c2021a3d598910c097412378bb1ff52959cecbde61b9664eab662c11865497a2",
-   "samples": [
-    {
-     "verdict": "MATCH",
-     "findings": [],
-     "prompt_sha": "193ad558db2dd969a630c20eff9ba5dcef2b8521ece986c311b9ff218231754a",
-     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
-     "model": "claude-opus-5-5",
-     "cost": 0.041608,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/f5695.line12.c2021a3d5989.1.response.txt"
-    }
-   ],
-   "type": "NonNegDollars",
-   "readers": 1,
-   "brief": false,
-   "used": [
-    {
-     "doc": "f5695",
-     "revision": "2025; created 2025-03-20",
-     "text_sha256": "1c89f7c11b231339ff7a89fa317bc09812a99ede918d596cece2556d410e1b44",
-     "pages": [
-      1,
-      2,
-      3,
-      4
-     ],
-     "how": "whole document",
-     "locators": [
-      "Form 5695 (2025), line 12; , Purpose of Form, \"Also use Form 5695 to take any residential clean energy credit carryforward from 2024\"",
-      "Form 5695 (2025), line 13"
-     ],
-     "cols_pages": [],
-     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
-    },
-    {
-     "doc": "i5695",
-     "revision": "2025",
-     "text_sha256": "15c0251e5eda4f529e6767445001f7e30092a93fbb2788c6a82f9a4913c07852",
-     "pages": [
-      1
-     ],
-     "how": "pages named by another document's citation",
-     "locators": [],
-     "cols_pages": [
-      1
-     ],
-     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
-    }
-   ]
-  },
   "f5695.line17a": {
    "subject_sha": "b3b1c36b8e97e75c43d1f50e79c7350769bfb14ad871b8987effbf42e347953f",
    "samples": [

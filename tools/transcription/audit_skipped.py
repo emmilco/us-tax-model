@@ -78,7 +78,9 @@ def reclassify(text, cases, doc):
         if row is None or not is_blank(row["value"]):
             continue
         if cid not in cases:
-            raise ValueError(f"{cid}: no matching fixture case")
+            # A case removed from the fixture (all of it refused or unusable) holds no assertion to drop; its log
+            # section is left as written.
+            continue
         key = fixture_key(handle, cases[cid], doc, bits[2].strip())
         if key in cases[cid]["expect"]:
             cases[cid]["expect"].pop(key)

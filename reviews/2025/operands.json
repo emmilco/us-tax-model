@@ -78,6 +78,10 @@
   },
   "operands:sche.line23e": {
    "reason": "Total of line 20 for all properties: sche.rent_exp (the sum of rental.line20 over reported rental properties) plus sche.roy_exp (the sum of royalty.line20 over royalty properties). The line is the total of that line over the Schedule E properties, as a sum over the collection (rental and royalty); the resolver checks same-form operands and does not read a collection sum as the per-property line it totals."
+  },
+  "operands:s8812.line22": {
+   "reason": "Schedule 8812 line 22 names Schedule 1 line 15 and Schedule 2 lines 5, 6 and 13. Lines 5 and 6 are the operands s2.tip_ss_tax and s2.wage_ss_tax (printed 5 and 6 on Schedule 2), lines of another form that the resolver does not match to the bare numbers; line 13 (uncollected social security and Medicare tax) is out of scope and refused through s2.other, the refusal declared on the line.",
+   "refusal": "s2.other"
   }
  },
  "baseline": {

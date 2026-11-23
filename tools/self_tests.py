@@ -115,11 +115,18 @@ def workers():
     return max(1, ((os.cpu_count() or 2) - 2) // runs)
 
 
+# The settings a check-all run (release mode above all) gives its own steps. A self-test sets up the cases it tests
+# and expects the tool's defaults otherwise, so they are not passed on: ENGINE_CACHE=verify makes the cache
+# self-tests miss every reuse they test, and AGENT_RUNS_FOLD=0 stops the fold the check_all_bg self-test expects.
+RUN_SETTINGS = ("ENGINE_CACHE", "AGENT_RUNS_FOLD", "CHECK_ALL_RELEASE", "CHECK_ALL_ALLOW_OPEN_BUGS")
+
+
 def run_one(test, year_args):
     name, _, year_aware, cmd = test
     t0 = time.monotonic()
+    env = {k: v for k, v in os.environ.items() if k not in RUN_SETTINGS}
     r = subprocess.run(cmd + (year_args if year_aware else []), cwd=ROOT, stdin=subprocess.DEVNULL,
-                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env)
     return r.returncode, r.stdout.decode("utf-8", errors="replace"), time.monotonic() - t0
 
 

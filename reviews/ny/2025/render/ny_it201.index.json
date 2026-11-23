@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
  "head_rows": {
-  "match / mismatch / unclear / missing": "156 / 11 / 1 / 0",
-  "line-scoped reviews": "12 (latest 2026-11-23); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "159 / 9 / 0 / 0",
+  "line-scoped reviews": "13 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -163,9 +163,9 @@
   },
   {
    "key": "23",
-   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
+   "record": "5d4660767d401b25b8adfe58bc7f6ec0a13bebabde775aa819f8627ff96a16d5",
    "status": "MATCH",
-   "subject_key": "26e3200234d3e3b35821c86c45d38e8ffac7616bea3d54a3bafa8ccb93851d1a"
+   "subject_key": "26f6d2ec568653c1274f7364d032e3c9ae101f8b03b52cee9b6127fd9d2f34c6"
   },
   {
    "key": "24",
@@ -212,9 +212,9 @@
   },
   {
    "key": "31",
-   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
+   "record": "5d4660767d401b25b8adfe58bc7f6ec0a13bebabde775aa819f8627ff96a16d5",
    "status": "MATCH",
-   "subject_key": "b74881b2ec5ede50128fa86309e519b704eeab8140b8624916137eef949c0b86"
+   "subject_key": "77d54199231552b4e790933ed81f5389b13053df934ac762e88214ee6c124cff"
   },
   {
    "key": "32",
@@ -1052,7 +1052,7 @@
   "20": "dc06870eaafc93226819af71fc84c6dd78ca58a05ddf5ec8db7818baf68a6574",
   "21": "f01a36bdb31465e9a137d0f9623fdb1e39ebf9a9ffe3683a77dd6990e57e1a71",
   "22": "ea9d668f7c04d9f4b31c034178eb7993ef0b42d94e1ca479060acda45da16549",
-  "23": "820353d08c6d4f56fc604f56a9a5cb746b5d8ac60be678c3c10e6f5606d9aad1",
+  "23": "a1f6ad3f5d7fab3f109596a2b7684aaaa8101e214dcc107a17eced618413c219",
   "24": "f7a0263f2a30f359e60c1bfc9e59a19812c52e9ee918d8de85e0a448949be548",
   "25": "99cd040d7a0677c6e4d12e3736600093ed000b1ccefd70f6bb3ad25319c6c76c",
   "26": "2b49ddb28b5f71d87b436e32ea2bf4aea9e1d88f2118258ae923dd4baf4951e2",
@@ -1060,7 +1060,7 @@
   "28": "cd1497e374ccd23df6b6751daacfeef278ea9507593abce5e9d8fd26b835f3bc",
   "29": "a71c1d7c0df37512eda2d2e47decf614f5de51a2cec409d8f4696324592ed882",
   "30": "c6a12a400b0137fc6bb2fd148c65803ce4c963a6ea008b4538e96e5137823552",
-  "31": "17fef7b4487d4f6a6921e593573fbfba569b7aedc01d03e15235ed425b3faf7b",
+  "31": "4bf0516ede760f6a0f243574b1e861b9c69e4e3fe262df916d4859be287e90c7",
   "32": "a33b2904d54a52278bd14eaf408184a61411dd2e101c201816cf2add3ef9665c",
   "33": "7b96b7c994a8e9a524d0193eb82a7a320ca68169b98c81a7b8f3f5cf2cfaf050",
   "(table) (ny_it201.std_deduction)": "0e8766c3c819e055d3d598b209b3e55c2835cd45cf104996847a451f3ecd7c3b",
