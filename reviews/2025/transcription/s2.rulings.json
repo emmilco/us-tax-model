@@ -88,6 +88,52 @@
   {
    "printed": "2",
    "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "56fcbd89c8fd0871d98be59f7b43874ea85a5bbe33e0c6a9a8871873820bc9f1",
+   "ruling": "Ruling: scope; f1040s2 line 2, 'See the Instructions for Form 6251 to see if you must file the form', as the ruling of 2026-11-17: the project refuses the alternative minimum tax through its computed s2.amt screen and enters zero otherwise; the reply figures Form 6251 where the project refuses. executable triage (.transcription/triage/2025/s2.json, this pass): 2,855/3,509 agree; differences {\"candidate-refuses\": 85, \"candidate-unknown\": 409, \"project-refuses\": 150, \"project-unknown\": 10}; on completed returns {\"candidate-refuses\": 52, \"candidate-unknown\": 158}; no value differs on a completed return. Rerun for the s2.amt_business and s2.amt_pab wording (BUG-0946, BUG-0980).",
+   "context": "c8a93fcc760a57bd1bdfb2824bb82bd49a70d1ce086dbf5db23e0c7999248977",
+   "date": "2026-11-22",
+   "run": "820179e4a1c579e54f48ff430c0401be9af95fa89c55097cee446654b1346c39",
+   "subject_key": "8e0256b13ec355096e2d99cb014759b417e7902a06e661d5dad4647486dbcb2f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@s2",
+     "fixture:classm.f2441.4.deepseek@s2",
+     "fixture:classm.f2441.5.deepseek@s2",
+     "fixture:classm.w2.1.deepseek@s2",
+     "fixture:classm.f8889.1.deepseek@s2",
+     "fixture:classm.f8889.3.deepseek@s2",
+     "fixture:classm.f8889.5.deepseek@s2",
+     "fixture:classm.f4952.4.deepseek@s2",
+     "fixture:classm.f8960.1.deepseek@s2",
+     "fixture:classm.f8960.2.deepseek@s2",
+     "fixture:classm.g28.2.deepseek@s2",
+     "fixture:classm.s2.1.deepseek@s2",
+     "fixture:classm.s2.1@s2",
+     "fixture:audit.dependent.listed_not_dependent_no_tin@s2",
+     "fixture:t091.absence.other_tests_unchanged@s2",
+     "fixture:stage8.mut.hoh_niece_17@s2",
+     "fixture:stage9.eic.mut.classm_f8995a_2_line2_zero@s2",
+     "fixture:f1116.c1_unlimited@s2",
+     "fixture:f1116.c2_carryover_generated@s2",
+     "fixture:stage14.s179.refuse_orphan@s2",
+     "fixture:sales.loss.mfs.0@s2",
+     "partial:stage14.asset.hy_5yr-s2.iso_vested@s2",
+     "partial:stage14.asset.bonus_100-s2.iso_vested@s2",
+     "partial:stage14.asset.prior_7yr-s2.iso_vested@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2",
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
    "second_expr_sha256": "86d6a5c2f4a993017e735d49b7969d300974e39bd7559aa0b3663fce018ca1cc",
    "ruling": "Ruling: scope; f1040s2 line 2 and i6251 Who Must File. The project does not figure the alternative minimum tax: line 2 is $0 and refuses (Form 6251) when the computed screen s2.amt may be true (docs/2026-11-15_amt_computed_screen.md); the reply computes Form 6251 inline with its own refusals. Triage (pass fbc614250ee5): 2,411/2,922 agree; no value difference; completed: 55 candidate-unknown (the reply reads s2.amt_business and s2.amt_boat, asked only under their parents) and 28 candidate-refuses (the reply's own scope, e.g. the AMT foreign tax credit, s2.h_has_ftc); the rest on incomplete or refused records. The screen itself is not ruled here.",
    "context": "e7f6edb0bce47ea58ef489f1e5d009e45447c7050ff90044d3e1767ffd8018ed",

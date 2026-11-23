@@ -25,9 +25,12 @@ Copies fixtures/<from>/ to fixtures/<to>/ (refusing to overwrite) and re-derives
   - the test-data defaults (defaults.json) follow the year's operations (changes/<to>/,
     tools/year_changes.py): each new input takes the default and reason its add_question
     states, placed after the default of the question it is placed after; the default of an
-    input the operations remove (remove_line, remove_question) is dropped, and a case that
-    still states a removed input is marked "not evaluated" and listed. The cases resolve
-    against the carried defaults.
+    input the operations remove (remove_line, remove_question) is dropped. A case's answer to
+    a removed input that equals the input's unconditional from-year default says what the
+    default said and is dropped with it; a case that still states a removed input otherwise
+    is marked "not evaluated" and listed (the engine's fixture loader leaves such a case out,
+    and test-fixtures fails while any remain). An expectation on a removed line is dropped and
+    listed. The cases resolve against the carried defaults.
 
 Writes reports/<to>/fixtures_from_<from>.md.
 
@@ -133,7 +136,22 @@ def self_test():
            and added == ["f.new", "f.newer"] and dropped == ["f.b", "f.c"])
     print("fixtures-year self-test: defaults follow the operations (new inputs added after their anchors, removed ones "
           "dropped): " + ("as expected" if ok2 else f"WRONG ({got}; added {added}; dropped {dropped})"))
-    return 0 if ok and all(refused) and ok2 else 1
+    # An answer to a removed input that equals its unconditional from-year default is dropped; one that differs, or
+    # answers an input whose default is conditional, marks the case; an expectation on a removed line is dropped.
+    removed = {"f.any", "w2.miles", "f.cond", "f.placed"}
+    defaults = plain_defaults({"defaults": [{"input": "f.any", "value": False, "reason": "r"},
+                                            {"input": "w2.miles", "value": 0, "reason": "r"},
+                                            {"input": "f.cond", "value": False, "reason": "r", "withheld": {"when": []}},
+                                            {"input": "f.placed", "value": "y2025", "reason": "r"}]})
+    inputs = {"f.any": False, "person[taxpayer].w2[a].miles": 12, "person[taxpayer].w2[b].miles": 0, "f.cond": False,
+              "f.placed": "y2026", "f.kept": 3}
+    got3 = removed_answers(inputs, removed, defaults, 1)
+    want3 = (["f.cond", "person[taxpayer].w2[a].miles"], ["f.any", "f.placed", "person[taxpayer].w2[b].miles"])
+    got4 = removed_expectations({"f.line13": 1, "f.line14": 2, "person[taxpayer].w2[a].miles": 0}, removed | {"f.line13"})
+    ok3 = got3 == want3 and got4 == ({"f.line14": 2}, ["f.line13", "person[taxpayer].w2[a].miles"])
+    print("fixtures-year self-test: answers to removed inputs equal to their default dropped, others marked; "
+          "expectations on removed lines dropped: " + ("as expected" if ok3 else f"WRONG ({got3}; {got4})"))
+    return 0 if ok and all(refused) and ok2 and ok3 else 1
 
 
 def carry_defaults(d, ops):
@@ -155,6 +173,31 @@ def carry_defaults(d, ops):
         added.append(b["input"])
     d["defaults"] = defaults
     return added, dropped, removed
+
+
+def plain_defaults(d):
+    """The unconditional test-data defaults of a defaults document, input -> value (an entry with a `withheld`
+    condition is left out: whether it applies depends on the case)."""
+    return {x["input"]: x["value"] for x in (d or {}).get("defaults", []) if "withheld" not in x}
+
+
+def removed_answers(inputs, removed, defaults, shift):
+    """A case's answers to the inputs the year removes, split: (those that differ from the input's from-year
+    default, those that equal it). An answer equal to the default says what the default said, so it can be dropped
+    and the case evaluated; one that differs makes the case not evaluated until it is moved."""
+    gone, said = [], []
+    for k in sorted(inputs):
+        if template(k) not in removed:
+            continue
+        default = defaults.get(template(k), ())
+        (said if default != () and json.dumps(inputs[k]) == json.dumps(shift_year(k, default, shift)) else gone).append(k)
+    return gone, said
+
+
+def removed_expectations(expect, removed):
+    """A case's expectations split: (those on lines the year keeps, the keys of those on lines it removes)."""
+    return ({k: v for k, v in expect.items() if template(k) not in removed},
+            sorted(k for k in expect if template(k) in removed))
 
 
 def comparable(value):
@@ -237,6 +280,7 @@ def main():
     if problems:
         sys.exit("fixtures: the year changes do not load: " + "; ".join(problems))
     d = json.loads((src / "defaults.json").read_text(encoding="utf-8")) if (src / "defaults.json").exists() else None
+    from_defaults = plain_defaults(d)
     new_defaults, dropped_defaults, removed_inputs = carry_defaults(d, ops) if d else ([], [], set())
     carried = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
     if d:
@@ -247,7 +291,7 @@ def main():
                 if jurisdiction.J == "ny" else []) + ([Path(carried.name)] if d else [])
 
     dropped, kept, rerecorded, reasons = [], 0, 0, collections.Counter()
-    all_cases, stating = [], []
+    all_cases, stating, marked, answers_dropped = [], [], [], []
     for name, (data, _) in files.items():
         data["tax_year"] = t
         cases = []
@@ -257,9 +301,17 @@ def main():
                 continue
             c["inputs"] = {k: shift_year(k, v, t - f) for k, v in c["inputs"].items()}
             cases.append(c)
-            gone = sorted(k for k in c["inputs"] if template(k) in removed_inputs)
+            # An answer to a removed input that is its from-year default says what the default said: dropped.
+            gone, said = removed_answers(c["inputs"], removed_inputs, from_defaults, t - f)
+            for k in said:
+                del c["inputs"][k]
+            if said:
+                answers_dropped.append((name, c["id"], said))
+                c["evidence_note"] = (f"Carried from {f}: dropped {', '.join(said)} (the {f} default; the {t} operations "
+                                      f"remove the input). " + c.get("evidence_note", "")).strip()
             if gone:  # an answer to an input the year removes: not evaluated until it is moved to its successor
                 stating += [(name, c["id"], k) for k in gone]
+                marked.append((name, c["id"]))
                 c["evidence_note"] = (f"Carried from {f}: was \u201c{c.get('evidence')}\u201d; states "
                                       f"{', '.join(gone)}, which the {t} operations remove. Earlier note: "
                                       f"{c.get('evidence_note', '')}").strip()
@@ -278,7 +330,7 @@ def main():
         c["resolved"] = resolved[c["id"]]
     results = evaluate(all_cases, t)
 
-    failed = []
+    failed, expect_dropped = [], []
     for c in all_cases:
         del c["file"]
         derivations = results[c["id"]]
@@ -291,7 +343,12 @@ def main():
             continue
         changed, resting = [], set()
         new_expect = {}
-        for key, old in (c.get("expect") or {}).items():
+        expect, gone_lines = removed_expectations(c.get("expect") or {}, removed_inputs)
+        if gone_lines:  # a line the year removes: nothing to expect of it
+            expect_dropped += [(c["id"], k) for k in gone_lines]
+            c["evidence_note"] = (f"Carried from {f}: dropped the expectation of {', '.join(gone_lines)}, removed by the "
+                                  f"{t} operations. " + c.get("evidence_note", "")).strip()
+        for key, old in expect.items():
             new = (derivations.get(key) or {}).get("value", {"kind": "unknown"})
             new_expect[key] = new
             if comparable(new) != comparable(old):
@@ -339,20 +396,31 @@ def main():
     out = [f"# Fixtures carried from {f} to {t}", "",
            f"Generated by `tools/fixtures_year.py`. {kept + rerecorded} cases carried: {kept} kept their evidence, "
            f"{rerecorded} re-recorded ({', '.join(f'{k} {v}' for k, v in reasons.items()) or 'none'}); "
-           f"{len(dropped)} official examples dropped; {len(failed)} could not be evaluated.", ""]
+           f"{len(dropped)} official examples dropped; {len(failed) + len(marked)} marked not evaluated in {t} "
+           f"({len(marked)} stating a removed input, {len(failed)} the {t} data rejects); "
+           f"{len(answers_dropped)} cases had answers to a removed input equal to its {f} default dropped; "
+           f"{len(expect_dropped)} expectations on removed lines dropped.", ""]
     if failed:
         out += [f"## Cases the {t} data rejects ({len(failed)})", "",
                 "Their inputs are not valid for the new year (often a year value the new year's definitions do not "
                 "yet list); their expected values are the old year's until they evaluate.", ""]
         out += [f"- `{cid}`: {err}" for cid, err in failed] + [""]
+    if expect_dropped:
+        out += [f"## Expectations dropped on lines the {t} operations remove ({len(expect_dropped)})", ""]
+        out += [f"- `{cid}`: `{k}`" for cid, k in expect_dropped] + [""]
     if dropped:
         out += ["## Official examples to find for the new year", ""] + [f"- `{n}`: `{cid}`" for n, cid in dropped] + [""]
     out += ["## Test-data defaults", "",
             f"Added from the year's operations (add_question default): {', '.join(f'`{i}`' for i in new_defaults) or 'none'}. "
             f"Dropped with their inputs: {', '.join(f'`{i}`' for i in dropped_defaults) or 'none'}.", ""]
+    if answers_dropped:
+        by_input = collections.Counter(k for _, _, said in answers_dropped for k in said)
+        out += [f"Answers to a removed input equal to its {f} default, dropped ({sum(by_input.values())} in "
+                f"{len(answers_dropped)} cases): " + ", ".join(f"`{k}` {n}" for k, n in by_input.most_common()) + ".", ""]
     if stating:
-        out += [f"Answers to an input the operations remove ({len(stating)}): their cases are marked not evaluated, "
-                "until the answer is moved to the input that replaces it or the case is re-derived:", ""]
+        out += [f"Answers to an input the operations remove that differ from its {f} default ({len(stating)}, in "
+                f"{len(marked)} cases): their cases are marked not evaluated, until the answer is moved to the input "
+                "that replaces it or the case is re-derived:", ""]
         out += [f"- `{n}` `{cid}`: `{k}`" for n, cid, k in stating[:200]] + ([f"- and {len(stating) - 200} more"]
                                                                               if len(stating) > 200 else []) + [""]
     out += ["## Class M hand-work", ""]
@@ -366,8 +434,10 @@ def main():
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text("\n".join(out) + "\n", encoding="utf-8")
     print(f"fixtures {f} -> {t}: defaults {len(new_defaults)} added, {len(dropped_defaults)} dropped "
-          f"({len(stating)} case answers name a removed input)")
-    print(f"fixtures {f} -> {t}: {kept} kept, {rerecorded} re-recorded, {len(failed)} not evaluated, {len(dropped)} official examples dropped; "
+          f"({sum(len(x[2]) for x in answers_dropped)} case answers to a removed input were its default and dropped; "
+          f"{len(stating)} differ from it; {len(expect_dropped)} expectations on removed lines dropped)")
+    print(f"fixtures {f} -> {t}: {kept} kept, {rerecorded} re-recorded, {len(failed) + len(marked)} not evaluated "
+          f"({len(marked)} stating a removed input, {len(failed)} rejected), {len(dropped)} official examples dropped; "
           f"hand-work: {'skipped' if a.no_hand_work else len(hand)} document(s); report: {report.relative_to(ROOT)}")
 
 

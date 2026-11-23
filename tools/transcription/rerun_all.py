@@ -11,7 +11,9 @@ themselves; this driver only schedules and summarises.
 
 The forms of a kind are those with a log of any model family; each tool writes the log of
 the family `--model` names (families.py), so a second family's run leaves the Claude logs as
-they are.
+they are. In a year whose reviews a year carry carried from an earlier year, the forms logged in
+that year, required by check_logs in this one, and left with no log (no line carried) are added,
+and run whole.
 
 Only callable families (families.json) run. A `--model` of a family that is not callable is refused unless
 `--uncallable-family FAMILY --uncallable-family-reason TEXT` names that family; the reason is passed to
@@ -90,11 +92,54 @@ class Breaker:
             self.opened.setdefault(family, job)
 
 
+def logged_forms(reviews_dir, kind):
+    """The forms with a log of the kind (any family) under a year's reviews directory, as rulings.forms_with_logs
+    reads them."""
+    d = os.path.join(str(reviews_dir), kind)
+    names = os.listdir(d) if os.path.isdir(d) else []
+    stems = {n[:-len(".index.json")] for n in names if n.endswith(".index.json")} | {n[:-3] for n in names if n.endswith(".md")}
+    return {families.split_stem(s)[0] for s in stems}
+
+
+def earlier_review_year(kind, year=None):
+    """The latest year before `year` (default this one) with logs of the kind, or None: the year a year carry
+    (year_carry.py) carried this year's reviews from."""
+    year = int(year or Y)
+    have = [int(n) for n in os.listdir(os.path.dirname(str(jurisdiction.ypath("reviews", year))))
+            if n.isdigit() and int(n) < year and logged_forms(jurisdiction.ypath("reviews", n), kind)] \
+        if os.path.isdir(os.path.dirname(str(jurisdiction.ypath("reviews", year)))) else []
+    return max(have) if have else None
+
+
+def carried_due(logged, earlier, expected):
+    """The forms a year carry left with no log of the kind: logged in the earlier year (`earlier`), expected by
+    check_logs in this year (`expected`), and not logged in this year. year_carry writes a log only for a form
+    with a carried line, so these are the forms whose every line is due; their review runs whole."""
+    return sorted((set(earlier) & set(expected)) - set(logged))
+
+
+def expected_forms(kind):
+    """The forms check_logs requires a log of the kind for in this year (the same lists, so its 'missing' and
+    this plan agree)."""
+    import contextlib, io
+    with contextlib.redirect_stdout(io.StringIO()):  # its "not expected" notes are check_logs' to print
+        import check_logs
+        return {"transcription": check_logs.transcription_forms, "classm": check_logs.classm_forms}.get(kind, lambda: check_logs.forms)()
+
+
 def forms_for(kind):
-    """The forms with a log of the kind; in New York mode also the New York documents whose first review
-    is pending (pending.py), so the first run reviews them."""
+    """The forms with a log of the kind; after a year carry also the forms logged in the earlier year that the
+    carry left with no log here (carried_due), so the forms that changed most are planned; in New York mode
+    also the New York documents whose first review is pending (pending.py), so the first run reviews them."""
     import rulings
     logged = {form for form, _ in rulings.forms_with_logs(kind)}
+    earlier = earlier_review_year(kind)
+    if earlier is not None:
+        due = carried_due(logged, logged_forms(jurisdiction.ypath("reviews", earlier), kind), expected_forms(kind))
+        if due:
+            print(f"{kind}: {len(due)} form(s) with a {earlier} log and none for {Y} (no line carried; reviewed whole): "
+                  + ", ".join(due), flush=True)
+        logged |= set(due)
     if jurisdiction.NY:
         import pending
         logged |= pending.listed(kind)

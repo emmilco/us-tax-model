@@ -14,15 +14,15 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 308 of the 324 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 316 of the 332 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 85.9% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **372 refusal gates**: 324 tax situations the tool does not prepare, grouped by topic below, and 48 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **380 refusal gates**: 332 tax situations the tool does not prepare, grouped by topic below, and 48 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
-- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (68)
+- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (69)
 - [Household and dependents](#household-and-dependents) (20)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (5)
@@ -30,15 +30,15 @@ The data holds **372 refusal gates**: 324 tax situations the tool does not prepa
 - [Social Security](#social-security) (3)
 - [Self-employment](#self-employment) (30)
 - [State and local tax refunds](#state-and-local-tax-refunds) (9)
-- [Other income and alimony](#other-income-and-alimony) (42)
+- [Other income and alimony](#other-income-and-alimony) (47)
 - [IRA contributions](#ira-contributions) (12)
 - [Health savings accounts](#health-savings-accounts) (12)
-- [Itemized deductions](#itemized-deductions) (8)
+- [Itemized deductions](#itemized-deductions) (9)
 - [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (8)
 - [Earned income credit](#earned-income-credit) (3)
 - [Child and dependent care](#child-and-dependent-care) (11)
 - [Education credits](#education-credits) (5)
-- [Home energy credits](#home-energy-credits) (7)
+- [Home energy credits](#home-energy-credits) (8)
 - [Premium tax credit](#premium-tax-credit) (8)
 - [Partnership and S corporation Schedules K-1](#partnership-and-s-corporation-schedules-k-1) (62)
 - [Entry checks](#entry-checks) (48)
@@ -254,7 +254,7 @@ The data holds **372 refusal gates**: 324 tax situations the tool does not prepa
     *Source:* [i1116] p. 19, Line 12, "You may have to reduce the foreign taxes you paid or accrued by the following items."
   - *Refused at:* `f1116.line35`
 - **`f1116.loss_accounts`**: Does an earlier Form 1116 leave a loss account to recapture?
-  - *The data asks or tests:* Does an earlier Form 1116 leave an overall foreign loss, separate limitation loss or overall domestic loss account still to recapture? (`input`)
+  - *The data asks or tests:* Does an earlier year, with or without a Form 1116, leave an overall foreign loss, separate limitation loss or overall domestic loss account still to recapture? (`input`)
   - *Not covered:* Form 1116, line 16. Recapturing a foreign or domestic loss account on line 16 is not figured by this tool.
     *Source:* [i1116] p. 20, Line 16, "You are required to increase or decrease the amount on line 15 by the following adjustments."
   - *Refused at:* `f1116.line35`
@@ -512,6 +512,11 @@ The data holds **372 refusal gates**: 324 tax situations the tool does not prepa
   - *Not covered:* Form 8960, line 1 checkboxes (section 6013(g) or 6013(h) election). A joint return made by choosing to treat a nonresident spouse as a U.S. resident needs a further choice for the net investment income tax (to apply that election to it, or to figure it as if filing separately); this is outside this tool.
     *Source:* [i8960] p. 3, "If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes, but don’t elect to apply the joint return election for NIIT purposes, then, for NIIT purposes, you’ll be treated under the default method as married filing separately"
   - *Refused at:* `f8960.line1`
+- **`f8960.election_between`**: On a joint return made with a section 6013(g) or 6013(h) election, is your adjusted gross income over $125,000 but not over $250,000?
+  - *The data asks or tests:* A section 6013(g) or 6013(h) joint return whose adjusted gross income is over the separate-filing threshold and not over the joint one (asked only then, line 1 refusing above it; no otherwise) (`choose`)
+  - *Not covered:* Form 8960, line 1 checkboxes (section 6013(g) or 6013(h) election). A joint return made by choosing to treat a nonresident spouse as a U.S. resident needs a further choice for the net investment income tax (to apply that election to it, or to figure it as if filing separately, with the $125,000 threshold); this is outside this tool.
+    *Source:* [i8960] p. 3, "If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes, but don’t elect to apply the joint return election for NIIT purposes, then, for NIIT purposes, you’ll be treated under the default method as married filing separately" and "uses the applicable threshold for married filing separately ($125,000)"
+  - *Refused at:* `f8960.line16`
 
 ### Household and dependents
 
@@ -733,7 +738,7 @@ The data holds **372 refusal gates**: 324 tax situations the tool does not prepa
   - *The data asks or tests:* A situation in which the Social Security Benefits Worksheet of the Form 1040 instructions does not apply: a traditional IRA contribution for 2025 by a person covered by a retirement plan, or repayments (box 4) that are more than the benefits (box 3). The excluded income of Forms 2555 and 4563 and of Puerto Rico, the savings bond interest of Form 8815 and employer adoption benefits are asked about at their own questions. (`test`)
   - *Not covered:* Pub. 915 or Pub. 590-A worksheet. The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication.
     *Source:* [i1040gi] p. 31, Lines 6a and 6b, Exception
-  - *Refused at:* `ssb.line2`
+  - *Refused at:* `ssb.benefits`
 - **`ssb.terror_disability`**: Are any Social Security benefits disability payments for injuries from a terrorist attack?
   - *The data asks or tests:* Are any of the social security or railroad retirement benefits on your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (for the September 11 attacks, any injury eligible for coverage by the September 11 Victim Compensation Fund, whether or not you made a claim)? (`input`)
   - *Not covered:* Pub. 3920 (disability payments for injuries from a terrorist attack). Excluding disability payments for injuries from a terrorist attack is outside this tool.
@@ -1031,11 +1036,36 @@ The data holds **372 refusal gates**: 324 tax situations the tool does not prepa
   - *Not covered:* Form 8582 exceptions, or Schedule C (property held mainly for sale, or offered in business hours to many customers). Property held mainly to sell, as an investment or by a real estate dealer, and property offered during business hours to many customers may not be a rental activity, and are outside this tool.
     *Source:* [i8582] p. 3, Exceptions, "The rental of property is incidental to an activity of holding property for investment"; i1040se p. 6, "Do not use Schedule E to report income and expenses from rentals of real estate you held for sale to customers in the ordinary course of your business as a real estate dealer"
   - *Refused at:* `rental.line21_full`
+- **`rental.business_incidental`**: Was the rental mainly used in a business the filer or spouse owns a part of, with rent under 2% of its cost or value?
+  - *The data asks or tests:* Rental incidental to a trade or business activity the filer owns an interest in (mainly used in it, gross rent under 2% of the smaller of unadjusted basis and value) (`input`)
+  - *Not covered:* Form 8582 exceptions (rental incidental to a trade or business). Property mainly used in a business you or your spouse own, and rented for under 2% of its cost or value, is not a rental activity under the passive activity rules and is outside this tool.
+    *Source:* [i8582] p. 3, Exceptions, "The rental of property is incidental to a trade or business activity if"
+  - *Refused at:* `rental.line21_full`
+- **`rental.mortgage_excess_if_mortgage`**: Was more mortgage interest paid on the rental than its Forms 1098 show?
+  - *The data asks or tests:* Mortgage interest beyond Form 1098, asked only when there was mortgage interest (false otherwise) (`choose`)
+  - *Not covered:* Schedule E, line 12 (mortgage interest beyond Form 1098, with a statement). Mortgage interest beyond what Form 1098 shows needs a statement explaining the difference and is outside this tool.
+    *Source:* [i1040se] p. 7, Line 12, "If you paid more mortgage interest than is shown on your Form 1098 or similar statement"
+  - *Refused at:* `rental.line12`
+- **`rental.bought_lease`**: Did the filer pay to buy a lease (a leasehold) on the rental or its land?
+  - *The data asks or tests:* Cost of buying a leasehold for rental purposes (`input`)
+  - *Not covered:* Schedule E, line 19 (cost of a leasehold bought for rental purposes). The cost of a lease you bought, which is spread over the lease's term, is outside this tool.
+    *Source:* [p527] p. 5, Rental of property, "If you buy a leasehold for rental purposes, you can deduct an equal part of the cost each year over the term of the lease"
+  - *Refused at:* `rental.line19`
+- **`rental.nondep_income`**: Does a rental of land, or of property whose buildings were under 30% of its cost, have net income while Form 8582 limits other losses?
+  - *The data asks or tests:* Net passive income from a rental of nondepreciable property, recharacterized as nonpassive, on a return that must file Form 8582 (`test`)
+  - *Not covered:* Form 8582 (rental of nondepreciable property, income recharacterized as nonpassive). Net income from renting land, or property whose buildings were under 30% of its cost, is treated as nonpassive when Form 8582 limits other losses, and is outside this tool.
+    *Source:* [p925] p. 16, Rental of Nondepreciable Property, "less than 30% of the unadjusted basis of the property is subject to depreciation"
+  - *Refused at:* `rental.line22`
 - **`rental.prior_ws51_if_any`**: Does a rental's carried-over loss include costs carried over from a year you also used the place as a home (Pub. 527, Worksheet 5-1)?
   - *The data asks or tests:* Asked only when a loss or cost was carried over (false otherwise) (`choose`)
-  - *Not covered:* Pub. 527, Worksheet 5-1 (expenses carried over from a year of home use). Rental costs carried over from an earlier year's Worksheet 5-1, when you also used the place as a home, are outside this tool.
+  - *Not covered:* Pub. 527, Worksheet 5-1 (expenses carried over from a year of home use). Rental costs carried over from an earlier year's Worksheet 5-1, when the place counted as your home, are outside this tool.
     *Source:* [p527] p. 28, "This limitation will apply to expenses carried forward to another year even if you don’t use the property as your home for that subsequent year"
   - *Refused at:* `rental.prior_loss`
+- **`f8582.prior_crd_if_prior`**: Does a rental loss held back on an earlier Form 8582 include a commercial revitalization deduction (CRD)?
+  - *The data asks or tests:* A prior-year unallowed commercial revitalization deduction, asked only when a loss held back on an earlier return is carried into 2025 (no otherwise) (`choose`)
+  - *Not covered:* Form 8582, line 3 and the line 9 Worksheet (prior-year unallowed commercial revitalization deduction). A commercial revitalization deduction held back on an earlier return is applied through the line 9 Worksheet and its own Parts VI to VIII; that is outside this tool.
+    *Source:* [i8582] p. 10, Line 3, "If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real estate activities, treat that dollar amount as negative and combine with lines 1d and 2d"
+  - *Refused at:* `f8582.line3`
 - **`rprop.personal`**: Is depreciable property of the rental something other than a building, such as an appliance or a fence?
   - *The data asks or tests:* Personal property or a land improvement in a rental (`test`)
   - *Not covered:* Form 4562 (personal property or land improvements in a rental). Appliances, carpet, furniture, fences and other property that is not a building are outside this tool.
@@ -1043,7 +1073,7 @@ The data holds **372 refusal gates**: 324 tax situations the tool does not prepa
   - *Refused at:* `rprop.dep`
 - **`rprop.screen`**: Is a building of the rental depreciated another way, disposed of, or with a changed basis?
   - *The data asks or tests:* Depreciation of this property outside the tables this tool uses (`test`)
-  - *Not covered:* Form 4562 (real property outside the mid-month tables). Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, cooperative stock, or property received in a like-kind exchange or an involuntary conversion is outside this tool.
+  - *Not covered:* Form 4562 (real property outside the mid-month tables). Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, cooperative stock, a farm building or a motor fuels outlet, or property received other than by purchase or construction (in a like-kind exchange or an involuntary conversion, as a gift or an inheritance, from a spouse or former spouse, or for services) is outside this tool.
     *Source:* [i4562] p. 11, Column (f)—Method
   - *Refused at:* `rprop.dep`
 - **`rprop.early_nonres`**: Is nonresidential real property placed in service before 1994 depreciated?
@@ -1087,7 +1117,7 @@ The data holds **372 refusal gates**: 324 tax situations the tool does not prepa
     *Source:* [i1040se] p. 3, Real estate professionals
   - *Refused at:* `sche.line26`
 - **`sche.grouped`**: Do you treat two or more rentals as one activity?
-  - *The data asks or tests:* Rentals grouped as one activity (`input`)
+  - *The data asks or tests:* A rental grouped with another activity (`input`)
   - *Not covered:* Form 8582 (activities grouped). Rentals treated as one activity are outside this tool.
     *Source:* [i8582] p. 1, Grouping of Activities
   - *Refused at:* `sche.line26`
@@ -1338,6 +1368,8 @@ The data holds **372 refusal gates**: 324 tax situations the tool does not prepa
     - conservation or partial interests
     - property with restrictions on its use
     - property other than qualified appreciated stock given to a private nonoperating foundation
+    - stock given to a private nonoperating foundation, where you and your family have contributed more than 10% of the value of the corporation's outstanding stock
+    - taxidermy property that you prepared, stuffed or mounted, or paid to have prepared, stuffed or mounted
     - tangible personal property held more than 1 year and worth more than its cost or other basis, that the charity puts to an unrelated use
     - a clothing or household item over $500 not in good used condition (`input`)
   - *Not covered:* Form 8283 special treatment. This contribution requires unsupported appraisal or special-property treatment.
@@ -1363,6 +1395,11 @@ The data holds **372 refusal gates**: 324 tax situations the tool does not prepa
   - *Not covered:* Standard Deduction Chart spouse boxes on a separate return. Checking age or blindness boxes for your spouse on a married filing separately return is outside this tool.
     *Source:* [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart
   - *Refused at:* `sa.standard`
+- **`sa.mfs_joint_paid_if_itemizing`**: On a married filing separately return that itemizes, were any of the expenses paid jointly with your spouse?
+  - *The data asks or tests:* Itemized expenses paid jointly with the spouse, asked only on a married filing separately return that itemizes (otherwise no) (`choose`)
+  - *Not covered:* Schedule A on a separate return, expenses paid jointly with the spouse (Pub. 504, Table 1). On a married filing separately return, itemized deductions paid from money held with your spouse, or state income tax on a joint state return, are divided between you under Pub. 504; that is outside this tool.
+    *Source:* [i1040sca] p. 1, "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions"
+  - *Refused at:* `sa.deduction`
 
 ### Tips, overtime, car loans and seniors
 
@@ -1536,6 +1573,11 @@ The data holds **372 refusal gates**: 324 tax situations the tool does not prepa
   - *Not covered:* Form 5695 Part I for a constructed or reconstructed home whose original use did not begin in 2025. Costs of constructing or reconstructing a home are treated as paid when your original use of the home begins; a home first used in another year is outside this tool.
     *Source:* [i5695] p. 1, Costs, "costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins"
   - *Refused at:* `f5695.line6a`
+- **`f5695.reconstruct_later_if_part2`**: Are energy efficiency improvements part of rebuilding a home you did not begin to live in, or live in again, during 2025?
+  - *The data asks or tests:* Part II costs connected with reconstructing a home first used after 2025, asked only when Part II is completed (no otherwise) (`choose`)
+  - *Not covered:* Form 5695 Part II for a reconstructed home whose original use did not begin in 2025. Costs connected with reconstructing your home are treated as paid when your original use of the rebuilt home begins, and the energy efficient home improvement credit ends after 2025; such costs are outside this tool.
+    *Source:* [i5695] p. 1, Costs, "in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins"
+  - *Refused at:* `f5695.line30`
 - **`f5695.joint_occupancy`**: Did you occupy the home jointly with someone other than your joint-return spouse?
   - *The data asks or tests:* Did you occupy any home for which you enter Part II costs jointly with someone other than your spouse on a joint return (whether or not the other occupant claims the credit)? (`input`)
   - *Not covered:* Form 5695 Part II for joint occupants (line 32a). Allocating the credit limits among joint occupants by the amounts each paid, with the statement line 32a requires, is outside this tool.

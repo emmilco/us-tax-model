@@ -1305,6 +1305,46 @@ form:
         construction of a home are treated as being paid when your original use of the constructed home begins"; fs-2025-05
         question 7, "If such construction or reconstruction is completed and taxpayer’s original use of the structure
         begins after December 31, 2025, the expenditure will be treated as made after December 31, 2025"
+  - id: f5695.reconstruct_later
+    printed: (helper)
+    gated_by: f5695.reconstruct_later_if_part2
+    label: Part II costs connected with reconstructing a home whose original use by you did not begin in 2025?
+    type: Bool
+    expr:
+      op: input
+      source: Are any of the Part II costs (energy efficiency improvements, residential energy property or a home energy
+        audit) connected with the reconstruction of a home whose original use by you did not begin in 2025 (for example, a
+        home rebuilt in 2025 that you first lived in again in 2026)?
+    cite:
+      doc: i5695
+      locator: p. 1, Costs, "For purposes of both credits, costs are treated as being paid when the original installation of
+        the item is completed, or, in the case of costs connected with the reconstruction of your home, when your original
+        use of the reconstructed home begins"; p. 1, What’s New, Termination of credits, "You can’t claim energy efficient home improvement credits
+        for expenditures or property placed in service after December 31, 2025"
+  - id: f5695.reconstruct_later_if_part2
+    printed: (gate)
+    label: Part II costs connected with reconstructing a home first used after 2025, asked only when Part II is completed
+      (no otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.part2_any
+          - const: true
+        then: f5695.reconstruct_later
+      - guard:
+          op: test
+          eq:
+          - f5695.part2_any
+          - const: false
+        then: f5695.no
+    cite:
+      doc: i5695
+      locator: p. 1, Costs, "in the case of costs connected with the reconstruction of your home, when your original use of
+        the reconstructed home begins"
   - id: f5695.line1
     printed: "1"
     label: Qualified solar electric property costs
@@ -4552,6 +4592,14 @@ form:
         doc: i5695
         locator: p. 3, Married taxpayers with more than one home, "Complete lines 17a through 30 of a separate Form 5695 for
           each main home"
+    - when: f5695.reconstruct_later_if_part2
+      form: Form 5695 Part II for a reconstructed home whose original use did not begin in 2025
+      remedy: Costs connected with reconstructing your home are treated as paid when your original use of the rebuilt home
+        begins, and the energy efficient home improvement credit ends after 2025; such costs are outside this tool.
+      cite:
+        doc: i5695
+        locator: p. 1, Costs, "in the case of costs connected with the reconstruction of your home, when your original use of
+          the reconstructed home begins"
     - when: f5695.sec_a_new_home
       form: Form 5695 Part II, Section A, with improvements related to the construction of the main home (line 17e Yes)
       remedy: Separating improvements related to the construction of a home from those that are not is outside this tool.

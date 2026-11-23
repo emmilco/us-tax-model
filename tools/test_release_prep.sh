@@ -95,6 +95,15 @@ has "$CALLS" "tools/self_tests.py --group code"
 has "$tmp/out" "release reviews: not complete; failed:"
 has "$tmp/out" "  check_screens.py --release --jurisdiction ny"
 
+# --allow-open-bugs reaches every review check, and only with it.
+run "[2025]" --allow-open-bugs
+exits 0
+has "$CALLS" "tools/transcription/check_completeness.py --release --allow-open-bugs"
+has "$CALLS" "tools/transcription/check_false_no.py --release --jurisdiction ny --allow-open-bugs"
+[ "$(grep -c -- '--release.*--allow-open-bugs' "$CALLS" || true)" = 6 ] || fail "expected the six review checks given --allow-open-bugs"
+run "[2025]"
+lacks "$CALLS" "--allow-open-bugs"
+
 # --fail-fast stops at the first failure.
 FAIL="tools/check_limits.py --jurisdiction ny" run "[2025]" --fail-fast
 exits 1

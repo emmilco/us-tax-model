@@ -5,16 +5,16 @@ changes:
   - change: C-CRED-16
     evidence:
     - doc: f8880
-      page: 3
+      page: 2
       quote: (a) was born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was
         a student.
     - doc: f8880
-      page: 3
+      page: 2
       quote: You were a student if during any part of 5 calendar months of 2026
     - doc: f8880
-      page: 3
+      page: 2
       quote: received after 2023 and before the due date of your 2026 return
-    verified: draft
+    verified: final
     note: Every year moves by one; the birth-year test itself reads age.cut_18, which the parameter lane moves.
     operations:
     - set:
@@ -27,7 +27,7 @@ changes:
         field: cite.locator
         from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
           was born after January 1, 2008"
-        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+        to: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
           born after January 1, 2009"
     - set:
         line: person.sav_ineligible
@@ -41,7 +41,7 @@ changes:
         field: cite.locator
         from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
           was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"
-        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+        to: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
           born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"
     - set:
         line: person.sav_dist
@@ -53,7 +53,7 @@ changes:
         field: cite.locator
         from: p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
           2022 and before the due date of your 2025 return (including extensions)"
-        to: p. 3, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+        to: p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
           2023 and before the due date of your 2026 return (including extensions)"
     - set:
         line: person.sav_student
@@ -79,7 +79,7 @@ changes:
         from: 'p. 2, Who Can Take This Credit, "You were a student if during any part of 5 calendar months of 2025 you: •
           Were enrolled as a full-time student at a school; or • Took a full-time, on-farm training course given by a school
           or a state, county, or local government agency"'
-        to: 'p. 3, Who Can Take This Credit, "You were a student if during any part of 5 calendar months of 2026 you: • Were
+        to: 'p. 2, Who Can Take This Credit, "You were a student if during any part of 5 calendar months of 2026 you: • Were
           enrolled as a full-time student at a school; or • Took a full-time, on-farm training course given by a school or
           a state, county, or local government agency"'
     - set_question:
@@ -92,14 +92,14 @@ changes:
   - change: C-PEOP-21
     evidence:
     - doc: f8880
-      page: 3
+      page: 2
       quote: Reminders Permanent credit for Achieving a Better Life Experience (ABLE) account contributions. P.L. 119-21 made
         permanent the credit for contributions by a designated beneficiary to their ABLE account.
     - doc: f8880
-      page: 3
+      page: 2
       quote: Exception. Don’t include your spouse’s distributions with yours when entering an amount on line 4 if you and
         your spouse didn’t file a joint return for the year the distribution was received.
-    verified: draft
+    verified: final
     note: 'The ABLE refusals cite the Reminders, where the 2026 form moves the paragraph. person.sav_claimed''s i1040gi segment
       and person.sav_line1''s Pub. 590-A refusal citation are left as they are: the 2026 i1040gi and Pub. 590-A are not archived
       (C-PEOP-23, C-PEOP-24). The ambiguity amb.2025.savers_2026_joint stays linked; its register text moves by a year with
@@ -121,7 +121,7 @@ changes:
         from: p. 2, Who Can Take This Credit, "(b) is claimed as a dependent on someone else’s 2025 tax return"; i1040gi p.
           98, Line 21, "You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else's (such as your
           parent’s) 2025 tax return"
-        to: p. 3, Who Can Take This Credit, "(b) is claimed as a dependent on someone else’s 2026 tax return"; i1040gi p.
+        to: p. 2, Who Can Take This Credit, "(b) is claimed as a dependent on someone else’s 2026 tax return"; i1040gi p.
           98, Line 21, "You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else's (such as your
           parent’s) 2025 tax return"
     - set_question:
@@ -228,7 +228,7 @@ changes:
         from: p. 2, Line 4, "If you’re filing a joint return, include both spouses’ amounts in both columns. Exception. Don’t
           include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse didn’t file
           a joint return for the year the distribution was received"
-        to: p. 3, Line 4, "If you’re filing a joint return, include both spouses’ amounts in both columns. Exception. Don’t
+        to: p. 2, Line 4, "If you’re filing a joint return, include both spouses’ amounts in both columns. Exception. Don’t
           include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse didn’t file
           a joint return for the year the distribution was received"
     - set:
@@ -250,7 +250,7 @@ changes:
             are outside this tool.
           cite:
             doc: f8880
-            locator: p. 3, Reminders, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
+            locator: p. 2, Reminders, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
               ABLE accounts"
     - set:
         line: person.sav_prior_other
@@ -331,7 +331,7 @@ changes:
           2022 and before the due date of your 2025 return (including extensions)"; "Exception. Don’t include your spouse’s
           distributions with yours when entering an amount on line 4 if you and your spouse didn’t file a joint return for
           the year the distribution was received"
-        to: p. 3, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+        to: p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
           2023 and before the due date of your 2026 return (including extensions)"; "Exception. Don’t include your spouse’s
           distributions with yours when entering an amount on line 4 if you and your spouse didn’t file a joint return for
           the year the distribution was received"
@@ -354,7 +354,7 @@ changes:
             are outside this tool.
           cite:
             doc: f8880
-            locator: p. 3, Reminders, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
+            locator: p. 2, Reminders, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
               ABLE accounts"
     - set:
         line: person.sav_line1
@@ -398,5 +398,5 @@ changes:
             are outside this tool.
           cite:
             doc: f8880
-            locator: p. 3, Reminders, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
+            locator: p. 2, Reminders, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
               ABLE accounts"

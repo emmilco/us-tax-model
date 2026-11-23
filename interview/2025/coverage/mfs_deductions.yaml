@@ -10,6 +10,7 @@ sets:
       household.community_property: false
       household.married_dec31: true
       household.spouse_cp_domicile: false
+      household.cp_retirement: false
       sa.spouse_itemizes: false
       sa.spouse_extra: false
 rows:
@@ -19,9 +20,20 @@ rows:
     uses: [mfs_filer]
     answers:
       sa.spouse_itemizes: true
+      sa.mfs_joint_paid: false
     expect:
       proceeds:
         sa.spouse_itemizes: true
+  - id: mfs_ded.joint_paid
+    design: BUG-0972 (Pub. 504 Table 1, expenses paid jointly on separate returns)
+    situation: A separate filer, whose husband or wife itemizes, paid deductible costs from the couple's joint checking
+      account.
+    uses: [mfs_filer]
+    answers:
+      sa.spouse_itemizes: true
+      sa.mfs_joint_paid: true
+    expect:
+      refused: sa.mfs_joint_paid_if_itemizing
       not_asked: [sa.spouse_extra]
   - id: mfs_ded.spouse_extra
     design: scout-mfs.md 1.2 (spouse's age or blindness boxes on a separate return stay refused, decision D4)

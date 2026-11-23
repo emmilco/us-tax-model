@@ -89,6 +89,10 @@ READERS = {
     ("tools/check_agent_runs.py", "research/costs/*"): ("docs", ["check_agent_runs", "bookkeeping_self_tests"]),
     ("tools/check_agent_runs.py", "research/audits/*"): ("none", "the quoted component is research/costs"),
     # The hook writes the agent-run ledger outside check-all; its self-test writes a temporary one.
+    ("tools/agent_runs_fold.py", "research/costs/*"): ("none", "it appends to the ledger before check-all takes its tree, not as a step; its self-test (bookkeeping_self_tests) uses a temporary repository"),
+    ("tools/agent_runs_fold.py", "research/audits/*"): ("none", "the quoted component is research/costs"),
+    ("tools/check_all.sh", "research/costs/*"): ("none", "a comment on the agent-run fold, which runs before the tree is taken, not as a step"),
+    ("tools/check_all_bg.sh", "research/costs/*"): ("none", "a comment on the agent-run fold, which runs before the snapshot is taken, not as a step"),
     ("tools/claude_hooks/agents.py", "research/costs/*"): ("none", "a Claude Code hook writes the ledger; its self-test uses a temporary directory"),
     ("tools/claude_hooks/agents.py", "research/audits/*"): ("none", "the quoted component is research/costs"),
     # Pinned open-defect survivors must name an open entry.
@@ -114,6 +118,14 @@ READERS = {
         "tools/check_instruction_cites.py", "tools/check_limits.py", "tools/check_operands.py", "tools/check_signs.py",
         "tools/citations.py", "tools/fixtures_year.py", "tools/jurisdiction.py",
         "tools/transcription/question_review.py", "tools/transcription/screen_review.py"]},
+    ("tools/transcription/check_logs.py", "docs/*"): ("none", "a docstring naming its `docs` argument (a manifest mapping), not a path"),
+    # The open-bug gate reads the inventory (bug_status.read_tree) only under --release (tools/release_reviews.sh).
+    ("tools/transcription/samples.py", "reports/bug_status.md"):
+        ("none", "imports bug_status for the release gate (open_defects), which only the checks' --release runs; no check-all step does"),
+    ("tools/transcription/test_samples.py", "reports/bug_status.md"): ("none", "imports bug_status and derives entries from an inventory it builds"),
+    ("tools/year_changes.py", "docs/*"): _COMMENT,
+    ("tools/year_changes.py", "research/costs/*"): ("none", "the quoted component is research/ty<year> (staged parameters and tables)"),
+    ("tools/year_changes.py", "research/audits/*"): ("none", "the quoted component is research/ty<year> (staged parameters and tables)"),
 }
 
 # (file, idiom) -> why the enumeration stays inside named, non-allowlisted directories.
@@ -142,6 +154,7 @@ WALKERS = {
     ("tools/siblings.py", "--name-only"): "git diff over reviews/<year> logs; the unscoped one serves --reviews-since, not a step",
     ("tools/siblings.py", ".rglob("): "the --input ripple over its listed source directories; not a step",
     ("tools/year_changes.py", ".rglob("): "the files of interview/<year> only",
+    ("tools/year_diff.py", ".rglob("): "the .yaml files under the from-year's forms/, tables/ and interview/ directories (adoption), and under a temporary tree (its self-test)",
     ("tools/year_shared_refs.py", ".rglob("): "the files of tools/ and engine/src/ (SCAN_DIRS), outside every docs-tier path",
     ("tools/transcription/carry.py", "ls-tree"): "lists forms/ and tables/ directories at a revision",
     ("tools/transcription/carry.py", "--name-only"): "the ls-tree listings above",

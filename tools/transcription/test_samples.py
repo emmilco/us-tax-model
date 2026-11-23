@@ -79,6 +79,31 @@ class SampleTests(unittest.TestCase):
         found, _, _, _ = self._findings({"f": rec(1, grandfathered=True)}, release=True)
         self.assertEqual(found, [])
 
+    def test_release_refuses_rulings_confirming_open_medium_or_high_bugs(self):
+        import bug_status
+        inventory = "".join(f"## {b} — t\n\n- **Symptom:** s\n{extra}\n" for b, extra in [
+            ("BUG-0001", "- **Severity:** medium; wording.\n"), ("BUG-0002", "- **Severity:** low.\n"),
+            ("BUG-0003", "- **Severity:** high.\n- **Fix:** done.\n"), ("BUG-0004", ""), ("BUG-0005", "- **Severity:** high.\n")])
+        entries, _ = bug_status.derive(inventory, {}, "", "")
+        rulings = {
+            "unruled:a#1": {"class": "real gap", "bug": "BUG-0001"},                       # open medium: refused
+            "unruled:b#1": {"class": "real gap", "bug": "BUG-0002"},                       # open low: accepted
+            "unruled:c#1": {"class": "defect: x (BUG-0003)", "bugs": []},                 # fixed high: accepted
+            "unruled:d#1": {"class": "no gate defect", "bugs": ["BUG-0004"]},              # open, no severity: refused
+            "unruled:e#1": {"class": "no gate defect", "reason": "as BUG-0005 records",   # context only: accepted
+                            "findings": [{"class": "covered", "evidence": "BUG-0005"}]},
+            "unruled:f#1": {"class": "no gate defect", "findings": [{"class": "defect", "evidence": "see BUG-0005"}]},
+        }
+        self.assertEqual(samples.open_defects(rulings, entries),
+                         [("unruled:a#1", "BUG-0001", "medium"), ("unruled:d#1", "BUG-0004", None), ("unruled:f#1", "BUG-0005", "high")])
+        with mock.patch("builtins.print") as out:
+            self.assertEqual(samples.release_open_bugs(rulings, allow=False, entries=entries), 1)
+            self.assertEqual(samples.release_open_bugs(rulings, allow=True, entries=entries), 0)
+        allowed = [c.args[0] for c in out.call_args_list if c.args[0].startswith("  allowed open bug: ")]
+        self.assertEqual(len(allowed), 3)
+        self.assertEqual(samples.release_open_bugs({k: rulings[k] for k in ("unruled:b#1", "unruled:c#1", "unruled:e#1")},
+                                                   allow=False, entries=entries), 0)
+
     def test_claims_keyed_by_sample(self):
         r = rec(0)
         r["samples"] = [{"claims": [{"item": "a", "quote": "q"}]}, {"claims": [{"item": "a", "quote": "q"}, {"item": "b"}]}]

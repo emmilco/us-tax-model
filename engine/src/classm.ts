@@ -20,7 +20,8 @@ import { loadInterview } from "./interview.js";
 import { branchKeys, templateKey } from "./branches.js";
 import { isHelperLine } from "./util.js";
 import { loadCases } from "./fixtures.js";
-import { NY_MODE } from "./year.js";
+import { notEvaluatedCases } from "./fixture-inputs.js";
+import { NY_MODE, YEAR } from "./year.js";
 import type { CanonicalData, Expr, FormDoc, Inputs, Line, Operand, TestExpr } from "./types.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -486,6 +487,10 @@ export function classmJobs(args: string[]): void {
   // Seed with existing non-M facts as well; expected values never enter a job.
   // With --ny the seeds are every New York fixture (fixtures/ny/<year>/): the random corpus supplies no New York
   // answers, so they are the only returns a New York job can be built on, whichever document a fixture covers.
+  // A case the year carry marked not evaluated is no seed (loadFixtureCases leaves it out): its inputs need not be
+  // valid for the year. Listed, so a review built while such cases remain says what it did not see.
+  const marked = includeFixtures ? notEvaluatedCases(NY_MODE ? "ny" : "federal") : [];
+  if (marked.length > 0) console.error(`classm-jobs: ${marked.length} fixture case(s) marked "not evaluated in ${YEAR}" not used as seeds: ${marked.slice(0, 10).map((m) => m.id).join(", ")}${marked.length > 10 ? ", ..." : ""}`);
   const seeds = includeFixtures ? loadCases().cases
     .filter((c) => c.evidence !== "M" && (NY_MODE || !only || c.covers.some((id) => only.includes(id))))
     .map((c) => c.inputs) : [];

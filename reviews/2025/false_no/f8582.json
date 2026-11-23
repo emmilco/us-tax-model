@@ -1,0 +1,90 @@
+{
+ "form": "f8582",
+ "reviews": {
+  "gate:f8582.has_prior": {
+   "subject_sha": "391169bac51f454006a2e0e2476704ec209f0ae6ef3ebcdb6057d152e98326e2",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer whose only held-back commercial revitalization deduction comes from a passive activity that is not rental real estate. For example, a passive trade or business that owns a qualified revitalization building, carrying an unallowed CRD from earlier years, with no listed rental that has a loss held back.",
+       "why_no": "The gate counts only 'rentals listed with a loss held back on an earlier return.' The filer has no such rental, so the count is zero and the CRD question is never asked. That no is truthful.",
+       "line": "f8582.prior_crd_if_prior (the refusal that a Yes to f8582.prior_crd would trigger is missed)",
+       "irs_text": "i8582 p. 10, Part V: \"If you have prior-year unallowed CRD from passive activities other than rental real estate activities, include that amount in Part V. Add \"CRD\" after the name of the activity.\"",
+       "severity": "high",
+       "fix": "Widen the gate to any passive activity, rental or not, with a loss or deduction held back on an earlier return. Or ask the CRD question on its own: 'Did your (or your spouse's) 2024 Form 8582 show any amount marked \"CRD\" that was not allowed, for any activity?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord whose rental had positive net income on Schedule E. Part of a commercial revitalization deduction on that building was disallowed in an earlier year and is still carried.",
+       "why_no": "The per-rental helper asks about a 'loss held back.' The filer sees a profitable rental and a 'deduction', not a 'loss', and answers no. The parenthetical 'including a commercial revitalization deduction' sits in the gate label and may not be in the per-rental question the filer actually sees.",
+       "line": "f8582.prior_crd_if_prior",
+       "irs_text": "i8582 p. 10, Line 3: \"If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real estate activities, treat that dollar amount as negative and combine with lines 1d and 2d.\"",
+       "severity": "medium",
+       "fix": "In the per-rental question, say 'a loss or deduction (including a CRD) that your 2024 Form 8582 did not allow,' and point to Parts VII and VIII of the 2024 Form 8582."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "An owner of a commercial building in a renewal community that sat vacant or unrented in 2025, with no 2025 income or expense, but with a prior-year unallowed CRD still carried.",
+       "why_no": "The building had no 2025 rental activity, so the filer does not list it as a rental. The gate counts only 'rentals listed,' so the carried CRD never raises the count.",
+       "line": "f8582.prior_crd_if_prior",
+       "irs_text": "i8582 p. 1, Reminders: \"If you have prior-year unallowed CRDs limited by the passive loss rules, you may continue to include them in the calculations\"; p. 1, Purpose: \"PALs not allowed in the current year are carried forward until they're allowed\"",
+       "severity": "medium",
+       "fix": "Ask whether any activity, including one with no 2025 income or expenses, has a loss or CRD carried from an earlier year. Or tell the filer to list every activity with a carryover even if it was idle in 2025."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer, or a spouse on a 2025 joint return, who carries a CRD disallowed in 2023 or earlier but filed no 2024 Form 8582. For example, they omitted the form, filed no 2024 return, or the spouse filed separately or was unmarried in 2024 and the filer reads the question only against their own documents.",
+       "why_no": "The question and help tie the answer to 'your 2024 Form 8582' and its Parts VII and VIII. A filer with no such form, or who cannot see the spouse's form, answers no even though the deduction still carries.",
+       "line": "f8582.prior_crd_if_prior",
+       "irs_text": "i8582 p. 1, Reminders: \"If you have prior-year unallowed CRDs limited by the passive loss rules, you may continue to include them in the calculations\"",
+       "severity": "medium",
+       "fix": "Ask about the fact, not the form: 'Do you or your spouse have any commercial revitalization deduction from an earlier year that was not allowed and has not been used since?' Name the 2024 Form 8582 only as the place to look, and add help for a missing form or a spouse's separate 2024 return."
+      }
+     ],
+     "prompt_sha": "7ac04551b3fcddb16926d71ba2372e517a0a8097c5021745670dbb09e4eca97d",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.089424,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_f8582.has_prior.391169bac51f.1.response.txt"
+    }
+   ],
+   "condition": "f8582.has_prior",
+   "lines": [
+    "f8582.prior_crd_if_prior"
+   ],
+   "inputs": [
+    "f8582.prior_crd"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      1,
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Reminders, \"If you have prior-year unallowed CRDs limited by the passive loss rules, you may continue to include them in the calculations\"",
+      "p. 1, Reminders, \"If you have prior-year unallowed CRDs limited by the passive loss rules, you may continue to include them in the calculations\"; p. 10, Line 3, \"enter “CRD” and the dollar amount of the CRD (as a negative) on the dotted line\"",
+      "p. 10, Line 3, \"If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real estate activities, treat that dollar amount as negative\""
+     ],
+     "cols_pages": [
+      1,
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  }
+ }
+}

@@ -123,6 +123,7 @@ rows:
       household.community_property: false
       household.spouse_died_this_year: false
       household.spouse_cp_domicile: false
+      household.cp_retirement: false
     expect:
       refused: household.hoh_fails
   - id: household.couple_not_asked_ever_married
@@ -191,6 +192,22 @@ rows:
       household.community_property: false
     expect:
       asks: household.spouse_cp_domicile
+  - id: household.hoh_married_asks_cp_retirement
+    design: BUG-0950 (retirement pay earned while married and domiciled in a community property state)
+    situation: A married parent living apart from their husband or wife, who counts as unmarried, and neither of whom
+      lived or had a permanent home in a community property state in 2025, is next asked about retirement pay earned
+      while living in one.
+    answers:
+      $person: [taxpayer]
+      f1040.status: hoh
+      household.ever_married: true
+      household.married_dec31: true
+      household.spouse_died_this_year: false
+      household.considered_unmarried: true
+      household.community_property: false
+      household.spouse_cp_domicile: false
+    expect:
+      asks: household.cp_retirement
   - id: household.never_married_not_asked_spouse_state
     design: lane A1-jr, candidate 1 (a person never married is not asked about a husband or wife's state)
     situation: A person who has never been married files as single and is not asked about a husband or wife's state.

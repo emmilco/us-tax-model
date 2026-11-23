@@ -454,6 +454,7 @@ rows:
     f1116.loss_accounts: false
     sa.foreign_tax_deduct: false
     scope.attorney_fees: false
+    scope.trade_act_repaid: false
   expect:
     refused: f1116.high_taxed
 - id: ftc1116.tax_mismatch

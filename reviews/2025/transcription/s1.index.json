@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "42",
   "agree / disagree / missing": "25 / 17 / 0",
-  "line-scoped reviews": "7 (latest 2026-11-17); see Line-scoped reviews"
+  "line-scoped reviews": "8 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -76,9 +76,9 @@
   },
   {
    "key": "3",
-   "record": "d84d0c201ca6347ba1696b81a13602efc1182d2417aecd44686f5835658b4668",
+   "record": "60f3062cc30f1da2939517b9dfba2ef83de5433fd5588efd1bfd2bcd472d8cbd",
    "status": "AGREE",
-   "subject_key": "d419a2e7f1122a709f3491e26639ef6776b604167c0553244b4e5414108e1d0a"
+   "subject_key": "1e911fb86d4a366088f9eb7212c573e4cff063444d62ceb34015fdb78f29aca6"
   },
   {
    "key": "8k",
@@ -184,10 +184,10 @@
   },
   {
    "key": "5",
-   "record": "d84d0c201ca6347ba1696b81a13602efc1182d2417aecd44686f5835658b4668",
+   "record": "60f3062cc30f1da2939517b9dfba2ef83de5433fd5588efd1bfd2bcd472d8cbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040s1 p. 1, General Instructions, \"Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties\". The candidate reads re_pro directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): 2111 of 4000 comparisons agree, 2093 of 3955 in scope; completed {\"candidate-unknown\": 262}. Project stands.",
-   "subject_key": "a6b67c4c31958e9e027ee1c5362573e78b75f8f82b7c9bacf8ef22a36220d021"
+   "ruling": "Ruling: representation; f1040s1 line 5 and i1040se p. 1, as the ruling of 2026-11-17; rerun only because scope.rental and scope.schedule1 (scope.remic, BUG-0977) changed. Read without new triage (the s1 triage record predates this pass); the reply reads the Schedule E answers without their parent questions.",
+   "subject_key": "0387663db4eac757f21fb1f8b677102053a52eea2cf592420406e281d1ab2e38"
   },
   {
    "key": "10",
@@ -332,7 +332,7 @@
   "7": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "7 (box)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "7 (amount repaid)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "3": "e098429f3cba2ecd6f96a00fc9cd45cae7bf1d0e6008954ccec9de9b6b0a81a4",
+  "3": "7bd07170a6335eac7c18e66c2105b656c1777dff4a338ce291188cc9b130ecfa",
   "8k": "dc1d7dbdeebf0e03ea04e258ee081a709616b592efdcca1866f2b68cb3c5b868",
   "8e": "7872673caca1d365b475a70b988fc32d20e307cb5602130b09ddd12df6869b65",
   "8v": "8ad59ee21212289d55e9b04644b1887b76f4bba07fb369b815df80c59375c07b",
@@ -348,7 +348,7 @@
   "8a": "1aa4410e52a1ee814fc4f9d404939bfeba60656d9bcf0aceddd2a694b6701ac9",
   "8s": "0a701c83a4087c557fc3a1cbdf90bd0c59ab685ae364a7b145acffcf5eab1ed6",
   "9": "c581079fc619e65dbdf1d0669d689494d527ce2b3fb32c8a0dcb5b555cc88c75",
-  "5": "6e8ab22af7f2b77ffa3cfcaa29d406814f4baa9e32db2cec95a619885d895f1a",
+  "5": "b8b2ce06b1fa037a839deff095d5b15ee756d99af1c5c772b17ea99131054a4b",
   "10": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "19a": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "20 (box)": "08927003e7927682732d357290954820e20041dd23ee8bfb5dc68beacc369d3b",

@@ -2257,6 +2257,135 @@
           "cents": 3000000
         }
       }
+    },
+    {
+      "id": "household.refuse.mfs_cp_retirement",
+      "covers": [
+        "household.mfs_community_property"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane bugfix-other, predicted by hand from the archived sources before running the evaluator. BUG-0950. mfs.household.community_property, but the filer did not live or have a permanent home in a community property state in 2025, nor did the husband or wife; the filer receives a pension earned while the two were married and domiciled in one. p555 p. 5, Pensions, and p. 6, Civil service retirement (\"Even if you now live in a noncommunity property state ... it may be community income\"): the community income rules are outside this tool, so household.cp_any is true through household.cp_retirement and Form 1040 line 1a refuses at household.mfs_community_property, with the same refusal as mfs.household.community_property.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "household.community_property": false,
+        "household.spouse_cp_domicile": false,
+        "household.cp_retirement": true
+      },
+      "expect": {
+        "household.mfs_community_property": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line1a": {
+          "kind": "refusal",
+          "gate": "household.mfs_community_property",
+          "form": "Community income on a married filing separately return (Form 8958; Pub. 555)",
+          "remedy": "A married person who files a separate return, where either spouse lived in or had a permanent home in a community property state, may have to report half of the community income of both spouses under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025,
+            "locator": "p. 14, Married Filing Separately, \"Different rules apply to people in community property states; see Pub. 555\"; p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555.\""
+          }
+        },
+        "household.cp_any": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "household.refuse.hoh_cp_retirement",
+      "covers": [
+        "household:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane bugfix-other, predicted by hand from the archived sources before running the evaluator. BUG-0950. audit.household.hoh_community_property, but neither spouse lived or had a permanent home in a community property state in 2025; the filer, married and considered unmarried, receives military retirement pay for service while the two were married and domiciled in one. p555 p. 6, Military retirement pay (\"military retirement pay for services performed during marriage and domicile in a community property state is community income\"): household.cp_any is true through household.cp_retirement, so household.hoh_community_property is true and the head of household line refuses, with the same refusal values as audit.household.hoh_community_property.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "s3.foreign_any": true,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.considered_unmarried": true,
+        "household.married_dec31": true,
+        "household.community_property": false,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "household.spouse_cp_domicile": false,
+        "household.cp_retirement": true
+      },
+      "expect": {
+        "household.hoh_community_property": {
+          "kind": "bool",
+          "value": true
+        },
+        "household.hoh_eligible": {
+          "kind": "refusal",
+          "gate": "household.hoh_community_property",
+          "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
+          "remedy": "A married person filing as head of household, where either spouse lived in or had a permanent home in a community property state, may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.hoh_community_property",
+          "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
+          "remedy": "A married person filing as head of household, where either spouse lived in or had a permanent home in a community property state, may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line37": {
+          "kind": "refusal",
+          "gate": "household.hoh_community_property",
+          "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
+          "remedy": "A married person filing as head of household, where either spouse lived in or had a permanent home in a community property state, may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

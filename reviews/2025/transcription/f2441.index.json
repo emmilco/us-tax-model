@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "38",
   "agree / disagree / missing": "29 / 9 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-16); see Line-scoped reviews"
+  "line-scoped reviews": "5 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -44,10 +44,10 @@
   },
   {
    "key": "2 (box)",
-   "record": "d8c907b6f929a24b99a6782275128501c54c76781f5cd444c9901d24863ed90b",
+   "record": "dcb3f3b30864bcf77677c6ef76ebc23b10f8d26511d25b93183436d649da55bf",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i2441 p. 3, Line 2: check the box with more than three qualifying persons. Both count qualifying persons against three (the project's threshold parameter dc.providers_listed = 3, the naming defect already filed as BUG-0760, low). A qualifying person who is not a dependent is refused by the project (f2441.nondependent_gate), so the reply's count of dependents only is complete on every computed return. Triage: 3,212/3,236 agree; 21 project-unknown, 2 project-refuses, 1 candidate-refuses, all on refused or incomplete returns; no value differs. No change.",
-   "subject_key": "81a31a4a06c9b6f5d734caeaefba1dc7a8ec85a012c70f163dc8c0f2e23bd02c"
+   "ruling": "Ruling: representation; i2441 p. 3, Line 2, \"If you have more than three qualifying persons, check the box on line 2\". The reply's expression differs from the project's only in the counted field: it sums dependent.one where the project sums dependent.dc_count, which is defined as param dependent.one (dependent.yaml); the where clause and the threshold (dc.persons_listed, 3) are the same, so the two agree on every input. Review occasioned by BUG-0760 (the box now reads its own parameter).",
+   "subject_key": "6395bf9c4c5b0c2b3e8456de9184e8995ec2a6e400086fffd3a9b7c17aa6c35a"
   },
   {
    "key": "3",
@@ -253,7 +253,7 @@
   "f2441.one_box10": "432b4a11aa75590fdfc586c72cb283de95f04a134ce663c04ed9188848288f0d",
   "A": "78aee136f9e7bd2acf228c6fada349038bc53ad5df6d1db4aeeff06d4e1fc5b0",
   "1 (box)": "125b56f833e772576953537cca65df4e5a2b2bc1487c2c774b28dd63b1f32edd",
-  "2 (box)": "a784397c4ca08d38afcd7c5a63269196bae9671224343ba3a1eebf400f7955c9",
+  "2 (box)": "dfe380ac17087e85143036413aa6565e0ef6b8334f5ab69af2ddf4674c4a7771",
   "3": "9457afd88bbc3fcf6ed840bcf9c5c0279af8a565bdb0fe4b675ee5cc0f54b322",
   "4": "817ad4dab764872f129396a49b86a3877c912c599e7fd20323cc3c328399f5f5",
   "5": "122bd1229f639a3ec31701df6b4a537e213b100e96217644a4b58b4b2cf5d561",

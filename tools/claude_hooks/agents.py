@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 """Claude Code hooks on agent launches: the brief states model and class, mechanical work runs on Sonnet and judgment
-on Opus (Fable may run either class; Sonnet may run adjudication), and every run gets its row in research/costs/agent_runs.jsonl (checked by tools/check_agent_runs.py).
+on Opus (Fable may run either class; Sonnet may run adjudication), and every run gets its row in the pending file
+<git common dir>/agent-runs/pending.jsonl, untracked, from which tools/agent_runs_fold.py moves finished rows into the
+tracked ledger research/costs/agent_runs.jsonl (checked by tools/check_agent_runs.py).
 
 - PreToolUse on Agent: refuses a launch without an explicit `model`, or whose prompt lacks the lines
   `Class: mechanical|judgment`, `Year: <tax year>` and `Jurisdiction: us|ny`; refuses mechanical work on a model other
   than Sonnet and judgment work on a model other than Opus; Fable is allowed for both classes. A judgment brief with the
   line `Work: adjudication` (ruling review findings against the sources) may also run on Sonnet (owner, 2026-11-21).
-- PostToolUse on Agent: appends the run's ledger row (date, description, model, class, year, jurisdiction, agent_id).
-- SubagentStop: totals the token usage, tool uses and duration in the agent's transcript into its row.
+- PostToolUse on Agent: appends the run's row (date, description, model, class, year, jurisdiction, agent_id) to the
+  pending file.
+- SubagentStop: totals the token usage, tool uses and duration in the agent's transcript into its pending row; a row
+  with `tool_uses` is finished, and only finished rows are folded.
 
-Reads the hook payload on stdin. The ledger path is relative to $CLAUDE_PROJECT_DIR (or the working directory).
+Reads the hook payload on stdin. The pending file is found from $CLAUDE_PROJECT_DIR (or the working directory) with
+`git rev-parse --git-common-dir`, so every worktree of the clone shares it and no hook writes a tracked file; when git
+cannot resolve a common dir, rows go to the tracked ledger instead.
 """
 import datetime
 import fcntl
@@ -18,6 +24,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 import sys
 import tempfile
 
@@ -29,8 +36,54 @@ ANY_CLASS = ("fable",)  # models allowed for either class
 ADJUDICATION = re.compile(r"\bWork:\**\s*adjudication\b", re.I)  # judgment work Sonnet may also run
 
 
+def project_dir():
+    return os.environ.get("CLAUDE_PROJECT_DIR") or os.getcwd()
+
+
+def tracked_ledger(root=None):
+    """The tracked ledger of a checkout."""
+    return os.path.join(root or project_dir(), "research", "costs", "agent_runs.jsonl")
+
+
+def git(root, *args):
+    """`git -C root args` (stdout stripped), or None when git is missing or fails. Git's location variables are
+    dropped so that `root` alone decides the repository."""
+    env = {k: v for k, v in os.environ.items() if k not in ("GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE")}
+    try:
+        out = subprocess.run(["git", "-C", root, *args], capture_output=True, text=True, timeout=30, env=env)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return out.stdout.strip() if out.returncode == 0 else None
+
+
+def pending(root=None):
+    """The pending file: <git common dir of root>/agent-runs/pending.jsonl, or the tracked ledger when git cannot
+    resolve a common dir."""
+    root = root or project_dir()
+    common = git(root, "rev-parse", "--git-common-dir")
+    if not common:
+        return tracked_ledger(root)
+    return os.path.join(os.path.realpath(os.path.join(root, common)), "agent-runs", "pending.jsonl")
+
+
 def ledger():
-    return os.path.join(os.environ.get("CLAUDE_PROJECT_DIR") or os.getcwd(), "research", "costs", "agent_runs.jsonl")
+    """Where the hook writes rows."""
+    return pending()
+
+
+def read_rows(path):
+    return [json.loads(l) for l in open(path, encoding="utf-8") if l.strip()] if os.path.exists(path) else []
+
+
+def write_rows(path, rows):
+    with open(path + ".tmp", "w", encoding="utf-8") as f:
+        f.writelines(json.dumps(r, ensure_ascii=False) + "\n" for r in rows)
+    os.replace(path + ".tmp", path)
+
+
+def is_finished(row):
+    """Whether SubagentStop has totalled the row."""
+    return "tool_uses" in row
 
 
 def brief(prompt):
@@ -63,20 +116,19 @@ def refusal(tool_input):
     return "Agent launch refused (project CLAUDE.md, cost rules): " + "; ".join(problems) + "."
 
 
-def locked_rows(fn):
-    """Apply fn to the ledger's rows (a list of dicts) under a lock and write them back."""
-    path = ledger()
+def locked_rows(fn, path=None):
+    """Apply fn to the rows (a list of dicts) of path (the hook's file by default) under a lock and write them back,
+    unless fn returns False."""
+    path = os.path.realpath(path or ledger())
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    # The lock lives outside the working tree, so it is never committed: one per ledger path.
+    # The lock lives outside the working tree, so it is never committed: one per file path.
     lock_path = os.path.join(tempfile.gettempdir(), "agent_runs-" + hashlib.sha256(path.encode()).hexdigest()[:16] + ".lock")
     with open(lock_path, "w") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
-        rows = [json.loads(l) for l in open(path, encoding="utf-8") if l.strip()] if os.path.exists(path) else []
+        rows = read_rows(path)
         if fn(rows) is False:
             return
-        with open(path + ".tmp", "w", encoding="utf-8") as f:
-            f.writelines(json.dumps(r, ensure_ascii=False) + "\n" for r in rows)
-        os.replace(path + ".tmp", path)
+        write_rows(path, rows)
 
 
 def launched(payload):
@@ -165,22 +217,36 @@ def self_test():
         got = refusal(ti)
         if (want is None) != (got is None) or (want and want not in got):
             bad.append((ti, got))
-    with tempfile.TemporaryDirectory() as d, mock.patch.dict(os.environ, {"CLAUDE_PROJECT_DIR": d}):
-        row = launched({"tool_input": {"description": "Rule claims", "model": "opus",
-                                       "prompt": "Class: judgment\nYear: 2025\nJurisdiction: us"},
-                        "tool_response": {"status": "async_launched", "agentId": "a1", "resolvedModel": "claude-opus-5-5"}})
-        locked_rows(lambda rows: rows.append(row))
-        tp = os.path.join(d, "t.jsonl")
-        with open(tp, "w") as f:
-            for i, ts in enumerate(("2026-11-10T10:00:00Z", "2026-11-10T10:00:30Z")):
-                f.write(json.dumps({"type": "assistant", "timestamp": ts, "message": {
-                    "usage": {"input_tokens": 10, "output_tokens": 5}, "content": [{"type": "tool_use"}]}}) + "\n")
-        locked_rows(lambda rows: finished({"agent_id": "a1", "agent_transcript_path": tp}, rows))
-        rows = [json.loads(l) for l in open(ledger())]
-        want = {"model": "claude-opus-5-5", "class": "judgment", "year": 2025, "jurisdiction": "us", "agent_id": "a1",
-                "usage": {"input_tokens": 20, "output_tokens": 10}, "tool_uses": 2, "duration_ms": 30000}
-        if len(rows) != 1 or any(rows[0].get(k) != v for k, v in want.items()):
-            bad.append(("ledger", rows))
+    launch = {"tool_input": {"description": "Rule claims", "model": "opus",
+                             "prompt": "Class: judgment\nYear: 2025\nJurisdiction: us"},
+              "tool_response": {"status": "async_launched", "agentId": "a1", "resolvedModel": "claude-opus-5-5"}}
+    want = {"model": "claude-opus-5-5", "class": "judgment", "year": 2025, "jurisdiction": "us", "agent_id": "a1",
+            "usage": {"input_tokens": 20, "output_tokens": 10}, "tool_uses": 2, "duration_ms": 30000}
+    for repo in (True, False):
+        with tempfile.TemporaryDirectory() as d, mock.patch.dict(os.environ, {"CLAUDE_PROJECT_DIR": d}):
+            d = os.path.realpath(d)
+            if repo and git(d, "init", "-q") is None:
+                bad.append(("git init", d))
+                continue
+            expect = os.path.join(d, ".git", "agent-runs", "pending.jsonl") if repo else tracked_ledger(d)
+            if os.path.realpath(ledger()) != expect:
+                bad.append(("path", repo, ledger(), expect))
+                continue
+            locked_rows(lambda rows: rows.append(launched(launch)))
+            rows = read_rows(expect)
+            if len(rows) != 1 or is_finished(rows[0]):
+                bad.append(("launch row", repo, rows))
+            tp = os.path.join(d, "t.jsonl")
+            with open(tp, "w") as f:
+                for ts in ("2026-11-10T10:00:00Z", "2026-11-10T10:00:30Z"):
+                    f.write(json.dumps({"type": "assistant", "timestamp": ts, "message": {
+                        "usage": {"input_tokens": 10, "output_tokens": 5}, "content": [{"type": "tool_use"}]}}) + "\n")
+            locked_rows(lambda rows: finished({"agent_id": "a1", "agent_transcript_path": tp}, rows))
+            rows = read_rows(expect)
+            if len(rows) != 1 or not is_finished(rows[0]) or any(rows[0].get(k) != v for k, v in want.items()):
+                bad.append(("stopped row", repo, rows))
+            if repo and os.path.exists(tracked_ledger(d)):
+                bad.append(("the hook wrote the tracked ledger in a repository", d))
     print("agents hook self-test: " + ("ok" if not bad else f"FAILED: {bad}"))
     return 1 if bad else 0
 

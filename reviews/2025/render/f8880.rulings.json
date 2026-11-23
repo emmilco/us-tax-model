@@ -43,6 +43,16 @@
   {
    "printed": "(CLW 2)",
    "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
+   "model": "The worksheet says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l', but the restatement adds only lines 1, 2 and 3. It omits 6d (credit for the elderly or the disabled) and 6l, and no refusal names them.",
+   "ruling": "Ruling: scope; as the prior rulings on this line. f8880 p. 2, Credit Limit Worksheet, \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". Lines 6d and 6l are refused through scope.credits on Schedule 3 line 8, so on every return that reaches the worksheet they are zero; the line's citation says so. Repeat disagreement; no value moves.",
+   "context": "fbb76546f006916135572eadecafcb40c96561eae6097ade1b6506d064606eb4",
+   "date": "2026-11-22",
+   "run": "87f2b36371322de020dfd9589634d5b30263905ce61e1f96303476d5d89ccbad",
+   "subject_key": "ae3cb1f4d5464d4c90d8da88c3855cc72352e8cd9d049540f01c9adb8acda7bd"
+  },
+  {
+   "printed": "(CLW 2)",
+   "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
    "model": "The worksheet says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l'. The restatement adds only Schedule 3 lines 1, 2 and 3, leaving out 6d and 6l.",
    "ruling": "Ruling: scope; the English is the source within the slice, as the prior rulings. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". Lines 6d and 6l are refused through scope.credits on Schedule 3 line 8, so on every return that reaches the worksheet they are zero; the line's citation says so.",
    "context": "2bc96c188f94d348c0a0f6d9645230a90268b4249d8c6f8f9acd46ea943f3267",

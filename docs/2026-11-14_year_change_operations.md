@@ -49,7 +49,10 @@ one entry's evidence, so the evidence is stated once.
 | `set_question` | `input`, `field`, `from`, `to` | one field of a bank entry (`help`, `prompt`) |
 
 Ids survive renumbering (spec 4.3), so a line that moves to another printed number is a `set` of `printed`, never
-a new line. `field` is a path of mapping keys; a list is replaced whole (a sum's `of`), so an operation never
+a new line. An id that names the old number (`f1040.line13b` printed `13a`) is renamed first, in the earlier year's tree,
+to an id that names no number (`tools/rename_ids.py` with `tools/year_free_names.json`): the build refuses an id
+`<doc>.line<N>` printed as another number (`engine/src/check.ts` `lineIdProblems`; decided on the owner's behalf,
+2026-11-22, T-346). `field` is a path of mapping keys; a list is replaced whole (a sum's `of`), so an operation never
 depends on a list position.
 
 An entry may also list the lines it `awaits` (`{line, change}`): lines that another change, not yet written as

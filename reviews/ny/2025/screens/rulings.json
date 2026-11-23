@@ -417,22 +417,31 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:ny_it201.ask.owes_use_tax#1": {
-   "reason": "Both findings are answered by the abode question's help and by the fact that only full-year New York City residents reach the question.",
+   "reason": "The shown purchase question names the spouse; the rest only widens.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
+     "kind": "UNCLEAR",
      "class": "model error",
-     "evidence": "The help reads 'The chart amount is for a full year and is cut by months without a New York home' (interview/ny/2025/questions.yaml:254-256), so a month with no home is a month with a home for 'half the month or less'. A January 10-June 30 abode gives July-December months with no home; the filer answers Yes and is refused. The page counts only a part-month over half as a month (ny_it201i p. 18, 'Count any period you maintained the abode for more than one-half of a month as one month')."
+     "evidence": "The question the filer answers (ny_it201.ask.bought_untaxed) reads 'In 2025, did you (or, on a joint return, your spouse) buy anything taxable in New York without paying New York sales tax'; the reviewer read the helper label.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "WIDE",
-     "class": "model error",
-     "evidence": "The tool is asked only of full-year New York City residents (ny_it201.gate.part_year_city), whose locality is New York City, so 'a lower rate than New York City's' is the p. 18 test: 'You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid.' The reviewer's example compares the other state's rate with an 8.0% county, which is not the locality of a city resident; if the other state's rate is not below the city's the filer answers No, and a mistaken Yes only costs coverage."
+     "class": "accepted WIDE",
+     "evidence": "A purchase made before New York residence opens the question; any untaxed-use answer only adds the chart amount where the source does (ny_it201i p. 18).",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "ny_it201.ask.use_tax_dmv_only asks 'Was every such purchase a vehicle, boat, trailer or snowmobile whose tax you pay at the DMV'; trailers and snowmobiles are named.",
+     "bugs": []
     }
    ],
-   "subject_sha": "832fee71d69cb3667dd3a35941ce3afdc5e3dbc5fde41fd5c8b7c7ab562eba3b",
+   "subject_sha": "bfe26148dd9043ed9c0788cba77fa5fce31b145535f675a52a4de2108c3229e7",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:ny_it201.estimated_payments_positive#1": {

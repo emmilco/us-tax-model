@@ -161,11 +161,11 @@
    "printed": "sche.any",
    "project_expr_sha256": "1c6bfa745fdf667622172c771fadf71d9bb72cc189e9f7ff367b875288447131",
    "second_expr_sha256": "e7d36ec321686440740bcbea45defe0f2cbd417349c12fa5073419ea1a54bc19",
-   "ruling": "Ruling: representation; i1040se p. 5: \"If you did use the unit as a home and rented the unit out for fewer than 15 days in 2025, do not report the rental income and do not deduct any rental expenses.\" The candidate counts the rentals and royalties it reads as reported (sche.h_rental_reported_count, sche.h_royalty_count); its 176 completed-return differences are the $rental roster withheld by partial records, and the project's scope.rental gate refuses those returns upstream. No value or refusal difference on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/sche.json): 2,056 of 3,117 agree. Project stands.",
-   "context": "06aa59700f2faf9bc6d64cf4a91ae4d782a5437df11242d3afd31de201b6223e",
-   "date": "2026-11-17",
-   "run": "c0cdaf7250fab5427bb1250ef7e82a9c8176d29e70c49900fdb332228ee7c4d6",
-   "subject_key": "1f43bc4a30756bb0d4dc069c89cdbb7ff4c806a39325600112ea45448b392c77",
+   "ruling": "Ruling: representation; i1040se p. 5, as the ruling of 2026-11-17; rerun only for scope.rental's wording (BUG-0952). executable triage (.transcription/triage/2025/sche.json, this pass): 2,145/3,191 agree; differences {\"candidate-unknown\": 1037, \"project-unknown\": 9}; on completed returns {\"candidate-unknown\": 128}; the differences are the reply unknown where it reads inputs the interview never asks; no value differs.",
+   "context": "7c321f9d55b58f0e8fad1ee558d7ccef0f9ae0d150044b03e6abbe7da9b71746",
+   "date": "2026-11-22",
+   "run": "425b691c23d55e7db7dd819386b364147c520f07034203765b956d006d5d28c4",
+   "subject_key": "febacae064983371beafea0074d0c003d47f4b7c24432ccccf2ab018828578e7",
    "triage": {
     "verdict": "differs",
     "kinds": [

@@ -29,7 +29,11 @@ or anchor is gone, the value it expects to replace has changed (stale), it is al
 another operation, it leaves a reference dangling or a gated input read outside its gate, a new input has no
 question or a question outlives its input, or its evidence is not printed where it says.
 
-    year_changes.py [--year N] --check             apply changes/<N+1> to the year-N tree; exit 1 on a failure
+    year_changes.py [--year N] --check [--no-static]   apply changes/<N+1> to the year-N tree; exit 1 on a failure;
+                                                       when they apply, run the engine's static checks
+                                                       (engine/src/check.ts, `main.js check`) on the tree they
+                                                       produce, with the staged parameters and tables of
+                                                       research/ty<N+1>/ (static_check)
     year_changes.py [--year N] --check --against DIR   the same on DIR's forms/<N>, interview/<N>, params/<N>.yaml
     year_changes.py [--year N] --record EDITED.yaml    print the operations that turn forms/<N>/<form>.yaml into
                                                        EDITED.yaml (evidence to be written by hand)
@@ -917,9 +921,10 @@ def check_evidence(entries, archive, r):
 
 # ---------------------------------------------------------------- the check
 
-def check(year, against=None, quiet=False, adopting=False):
+def check(year, against=None, quiet=False, adopting=False, static=False):
     """Apply changes/<year+1> to the year's tree (or the tree under `against`); print the result; return
-    (status, result). `adopting`: awaited lines must exist."""
+    (status, result). `adopting`: awaited lines must exist. `static`: when the operations apply, also run the
+    engine's static checks on the tree they produce (static_check; federal, this checkout only)."""
     import citations as C
     to = int(year) + 1
     directory = ypath("changes", to)
@@ -937,6 +942,16 @@ def check(year, against=None, quiet=False, adopting=False):
             r.notes.append(f"{len(refs)} reference(s) in {len({x[0] for x in refs})} year-shared file(s) (code and tool "
                            "data) name ids these operations remove or gates they retire: tools/year_shared_refs.py "
                            f"--year {year} lists them, as adoption does in {ypath('reports', to).relative_to(ROOT)}/")
+    if static and r.state is not None and not r.failures and ops:
+        if jurisdiction.NY or against:
+            r.notes.append("static checks of the applied tree: run federally on this checkout only")
+        else:
+            errors, notes = static_check(year, r)
+            static_findings(errors, to, adopting, r)
+            r.notes += [f"static checks of the applied {to} tree: {n}" for n in notes]
+            if not errors:
+                r.notes.append(f"static checks of the applied {to} tree (engine/src/check.ts: references, cycles, "
+                               "types, guard tiling, gates, citations, tables): pass")
     where = f"{against}/" if against else ""
     rel_dir = directory.relative_to(ROOT)
     head = (f"year changes {to}: {len(entries)} entries, {len(ops)} operations in {rel_dir} "
@@ -957,6 +972,158 @@ def check(year, against=None, quiet=False, adopting=False):
         for n in r.notes:
             print(f"  note: {n}")
     return (1 if r.failures else 0), r
+
+
+# ---------------------------------------------------------------- static checks of the applied tree
+
+# Fields of a staged parameter that record its preparation, not its value (dropped at adoption: docs/ty2026/ADOPTION.md).
+STAGED_ONLY = ("source", "note", "derived", "new_in_2026", "unsourced", "retired")
+NOT_ARCHIVED = "0" * 64  # the snapshot given to a citation of a document the new year's archive does not hold
+
+
+def staged_params(year, to):
+    """The parameters of the applied tree: params/<year>.yaml with the staged values of
+    research/ty<to>/params-<to>.proposed.yaml laid over it (an entry's value, type and citation, its preparation
+    fields dropped; an entry staged with no value keeps the year's), the enumerations it changes replaced, and the
+    parameters it retires removed; params/<year>.yaml alone when nothing is staged."""
+    base = load_yaml(Path(jurisdiction.params_file(year)).read_text(encoding="utf-8"))["params"]
+    params = {"tax_year": int(to), "enums": copy.deepcopy(base.get("enums") or {}),
+              "values": copy.deepcopy(base.get("values") or {})}
+    staged_file = ROOT / "research" / f"ty{to}" / f"params-{to}.proposed.yaml"
+    if jurisdiction.NY or not staged_file.exists():
+        return params, None
+    staged = load_yaml(staged_file.read_text(encoding="utf-8"))["params"]
+    for name, entry in (staged.get("values") or {}).items():
+        if entry.get("value") is None and name in params["values"]:
+            continue  # no source for the new year yet: the year's value stands in
+        params["values"][name] = {**params["values"].get(name, {}), **{k: v for k, v in entry.items() if k not in STAGED_ONLY}}
+    for name in staged.get("retired") or {}:
+        params["values"].pop(name, None)
+    for name, entry in ((staged.get("enums") or {}).get("changed") or {}).items():
+        params["enums"][name] = {k: v for k, v in entry.items() if k not in STAGED_ONLY}
+    return params, staged_file
+
+
+def staged_tables(year, to):
+    """The tables of the applied tree: tables/<year>/ with the staged tables of research/ty<to>/tables-<to>/ in
+    place of those of the same id."""
+    tables = {}
+    dirs = [ypath("tables", year)]
+    staged_dir = ROOT / "research" / f"ty{to}" / f"tables-{to}"
+    if not jurisdiction.NY and staged_dir.is_dir():
+        dirs.append(staged_dir)
+    for d in dirs:
+        for p in sorted(Path(d).glob("*.yaml")):
+            table = load_yaml(p.read_text(encoding="utf-8"))["table"]
+            tables[table["id"]] = table
+    return list(tables.values()), staged_dir if len(dirs) > 1 else None
+
+
+def canonical_of(year, r):
+    """The canonical data (engine/src/types.ts CanonicalData) of the tree the operations produce from `year`, as
+    the build would make it for year+1, with three differences: the parameters and tables are the staged ones
+    (staged_params, staged_tables), and a citation of a document the year+1 archive does not hold is given an
+    all-zero snapshot and a revision saying so, since the build's snapshot check cannot apply to it yet. Returns
+    (data, notes)."""
+    to = int(year) + 1
+    st = r.state
+    archive = {}
+    for d in jurisdiction.read_dirs("sources", to):
+        path = Path(d) / "manifest.json"
+        if path.exists():
+            m = json.loads(path.read_text(encoding="utf-8"))
+            archive.update({e["id"]: e for e in (m["documents"] if isinstance(m, dict) else m)})
+    unarchived = set()
+
+    def fill(cite):
+        if not isinstance(cite, dict) or "doc" not in cite or "locator" not in cite:
+            return cite
+        entry = archive.get(cite["doc"])
+        if entry is None:
+            unarchived.add(cite["doc"])
+        out = {"doc": cite["doc"], "tax_year": to, "locator": cite["locator"],
+               "revision": (entry or {}).get("revision") or ("?" if entry else f"not archived for {to}"),
+               "snapshot": entry["sha256"] if entry else NOT_ARCHIVED}
+        if "quote" in cite:
+            out["quote"] = cite["quote"]
+        return out
+
+    forms, defs = [], []
+    for fid, f in sorted(st.forms.items()):
+        doc = copy.deepcopy(f["doc"])
+        doc["tax_year"] = to
+        if (doc.get("collection") or {}).get("cite") is not None:
+            doc["collection"]["cite"] = fill(doc["collection"]["cite"])
+        for line in doc.get("lines") or []:
+            line["cite"] = fill(line.get("cite"))
+            for refusal in line.get("refuses") or []:
+                refusal["cite"] = fill(refusal.get("cite"))
+        (defs if f["key"] == "def" else forms).append(doc)
+    params, staged_file = staged_params(year, to)
+    for group in ("values", "enums"):
+        for entry in params[group].values():
+            if isinstance(entry, dict) and "cite" in entry:
+                entry["cite"] = fill(entry["cite"])
+    tables, staged_dir = staged_tables(year, to)
+    for t in tables:
+        t["cite"] = fill(t.get("cite"))
+    register = {"tax_year": to, "entries": [{**copy.deepcopy(e), "cite": fill(e.get("cite"))} for e in st.register]}
+    notes = []
+    if staged_file:
+        notes.append(f"parameters: {Path(jurisdiction.params_file(year)).relative_to(ROOT)} with the staged values of "
+                     f"{staged_file.relative_to(ROOT)}")
+    if staged_dir:
+        notes.append(f"tables: {ypath('tables', year).relative_to(ROOT)} with the staged tables of {staged_dir.relative_to(ROOT)}")
+    if unarchived:
+        notes.append(f"{len(unarchived)} cited document(s) not archived for {to}, their snapshot check skipped: "
+                     + ", ".join(sorted(unarchived)))
+    return {"forms": forms, "defs": defs, "tables": tables, "params": params, "register": register}, notes
+
+
+# engine/src/check.ts lineIdProblems: an id `.line<N>` that names another number than the line prints.
+ID_DRIFT = re.compile(r"^\S+: the id names line \S+, but the line is printed ")
+
+
+def static_findings(errors, to, adopting, r):
+    """Record the engine's static errors on the applied tree in `r`: each fails, except an id that names another
+    printed number (ID_DRIFT), which `--check` counts in a note (renaming them is T-353, due before adoption) and
+    adoption (`adopting`) fails like the rest."""
+    drift = [e for e in errors if ID_DRIFT.match(e)]
+    for e in errors:
+        if adopting or e not in drift:
+            r.fail(None, f"static check of the applied {to} tree: {e}")
+    if drift and not adopting:
+        ids = ", ".join(e.split(":", 1)[0] for e in drift[:5]) + (", ..." if len(drift) > 5 else "")
+        r.notes.append(f"static checks of the applied {to} tree: {len(drift)} id(s) name another printed number "
+                       f"({ids}); rename them before adoption (T-353), which refuses them")
+
+
+def static_check(year, r):
+    """The engine's static checks (engine/src/check.ts runChecks: references, cycles, types, guard tiling, gates,
+    citations, tables) on the tree the operations produce from `year` (canonical_of), through `main.js check`.
+    Returns (errors, notes); errors holds one entry naming the problem when the engine cannot be run."""
+    import subprocess
+    main = ROOT / "engine" / "dist" / "main.js"
+    if not main.exists():
+        return [f"engine/dist/main.js is not built (npm run compile)"], []
+    data, notes = canonical_of(year, r)
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
+        json.dump(data, f)
+        path = f.name
+    out = path + ".out"
+    try:
+        with open(out, "w", encoding="utf-8") as f:  # a file, not a pipe: the engine exits before a pipe drains
+            run = subprocess.run(["node", str(main), "check", path, "--year", str(year)], cwd=ROOT, stdout=f,
+                                 stderr=subprocess.PIPE, text=True)
+        text = Path(out).read_text(encoding="utf-8")
+    finally:
+        Path(path).unlink()
+        Path(out).unlink(missing_ok=True)
+    try:
+        result = json.loads(text.strip().splitlines()[-1])
+    except (ValueError, IndexError):
+        return [f"main.js check did not report (exit {run.returncode}): {(run.stderr or text).strip()[:500]}"], notes
+    return result["errors"], notes
 
 
 # ---------------------------------------------------------------- writing an adopted year
@@ -1855,6 +2022,69 @@ def self_test():
         status = status or (0 if ok else 1)
         print("year-changes self-test: operations recorded from an edited copy reproduce it: "
               + ("as expected" if ok else "WRONG"))
+    status = static_findings_self_test() or status
+    status = static_self_test() or status
+    return status
+
+
+def static_findings_self_test():
+    """static_findings: an id-drift error is a counted note naming T-353 under --check and a failure in adoption;
+    every other static error fails in both."""
+    drift = "f9.line4: the id names line 4, but the line is printed 5; give it an id that names no number (tools/rename_ids.py)"
+    other = "f9.line6: declared count but computes money"
+    status = 0
+    for adopting, want_fail, want_note in ((False, 1, True), (True, 2, False)):
+        r = Result()
+        static_findings([drift, other], 2026, adopting, r)
+        noted = any("1 id(s) name another printed number (f9.line4)" in n and "T-353" in n for n in r.notes)
+        ok = len(r.failures) == want_fail and noted == want_note and any("f9.line6" in m for _, m in r.failures)
+        status = status or (0 if ok else 1)
+        print(f"year-changes self-test: id drift {'in adoption fails' if adopting else 'under --check is a counted note'}, "
+              f"other static errors fail: " + ("ok" if ok else f"WRONG (failures {r.failures}, notes {r.notes})"))
+    return status
+
+
+def static_self_test():
+    """static_check on this checkout's applied next year with one planted defect per kind the operations' own
+    checks cannot see (a line declared Count that computes money; a line that reads itself), each found by the
+    engine and named by its line. Runs only where the engine is built and there are operations."""
+    import taxyear
+    year = taxyear.Y
+    if jurisdiction.NY or not (ROOT / "engine" / "dist" / "main.js").exists():
+        print("year-changes self-test: static checks of the applied tree: skipped (New York, or the engine is not built)")
+        return 0
+    _, r = check(year, quiet=True)
+    if r.failures or r.state is None or not r.touched:
+        print("year-changes self-test: static checks of the applied tree: skipped (no operations apply)")
+        return 0
+    status = 0
+    drift_lid = next((l for l in sorted(r.touched) if re.search(r"\.line\d+[a-z]?$", l)
+                      and re.match(r"^\d", str((r.state.line(l) or {}).get("printed", "")))), None)
+    if drift_lid:
+        dline = r.state.line(drift_lid)
+        dsaved = copy.deepcopy(dline)
+        number = int(re.search(r"\.line(\d+)", drift_lid).group(1))
+        dline["printed"] = str(number + 100)
+        errors, _ = static_check(year, r)
+        dline.clear(); dline.update(copy.deepcopy(dsaved))
+        ok = any(ID_DRIFT.match(e) and e.startswith(f"{drift_lid}:") for e in errors)
+        status = status or (0 if ok else 1)
+        print(f"year-changes self-test: static checks of the applied tree, an id naming another printed number "
+              f"({drift_lid}): " + ("found" if ok else f"WRONG ({'; '.join(errors[:3]) or 'nothing found'})"))
+    lid = next(l for l in sorted(r.touched) if (r.state.line(l) or {}).get("type") in ("Dollars", "NonNegDollars")
+               and (r.state.line(l).get("expr") or {}).get("op") in ("sum", "copy", "subtract"))
+    line = r.state.line(lid)
+    saved = copy.deepcopy(line)
+    plants = [("a line declared Count that computes money", lambda: line.update(type="Count"), "declared count"),
+              ("a line that reads itself", lambda: line.update(expr={"op": "copy", "from": lid}), "cycle")]
+    for name, plant, needle in plants:
+        plant()
+        errors, _ = static_check(year, r)
+        line.clear(); line.update(copy.deepcopy(saved))
+        ok = any(needle in e and lid in e for e in errors)
+        status = status or (0 if ok else 1)
+        print(f"year-changes self-test: static checks of the applied tree, {name} ({lid}): "
+              + ("found" if ok else f"WRONG ({'; '.join(errors[:3]) or 'nothing found'})"))
     return status
 
 
@@ -1862,6 +2092,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--against", help="a checkout or export whose forms/, interview/ and params/ to check instead")
+    ap.add_argument("--no-static", action="store_true", help="skip the engine's static checks of the applied tree")
     ap.add_argument("--record", metavar="EDITED_YAML")
     ap.add_argument("--self-test", action="store_true")
     a = ap.parse_args()
@@ -1871,7 +2102,7 @@ def main():
         sys.stdout.write(dump(record(taxyear.Y, a.record), False))
         return
     if a.check:
-        sys.exit(check(taxyear.Y, a.against)[0])
+        sys.exit(check(taxyear.Y, a.against, static=not a.no_static)[0])
     ap.error("one of --check, --record, --self-test")
 
 

@@ -4,7 +4,7 @@
 // No model-generated JavaScript, commands, tools, paths or network calls are executed.
 import { readFileSync } from 'node:fs';
 import { executableCandidate } from './candidate_runtime.mjs';
-import { difference, displayed, recordWitness, same } from './triage_rules.mjs';
+import { branchSides, coverBranches, difference, displayed, recordWitness, same, untakenBranches } from './triage_rules.mjs';
 import { evaluate, allTargets } from '../../engine/dist/eval.js';
 import { loadCases } from '../../engine/dist/fixtures.js';
 import { sampleReturns } from '../../engine/dist/generate.js';
@@ -74,6 +74,14 @@ const stats = new Map(pairs.map(pair => [pair.handle, { handle: pair.handle, pro
   candidate_shown_when: pair.candidate_shown_when ?? null,
   compared: 0, agree: 0, differ: 0, absent: 0, invalid: 0, in_scope: 0, in_scope_agree: 0, kinds: {}, kinds_by_return: {}, sources: {}, witnesses: [], completed_witnesses: [] }]));
 const returnCounts = { completed: 0, refused: 0, incomplete: 0 };
+const docOf = data => [...data.forms, ...data.defs].find(doc => doc.id === form);
+
+// Branch coverage of the lines where the two sides differ (triage_rules.mjs branchSides): per pair, the differing
+// choose lines either side reached on a compared input and the alternatives taken.
+const differing = branchSides({ project: docOf(context)?.lines ?? [], candidate: docOf(runtime)?.lines ?? [] }, localOf);
+const formKey = new RegExp(`^(?:${escaped}|(?:.*\\.)?${escaped}\\[[^\\]]*\\])\\.(.+)$`);
+const ownLine = key => formKey.exec(key)?.[1];
+const coverage = new Map(pairs.map(pair => [pair.handle, { reached: new Set(), taken: new Set() }]));
 const known = value => value && !['refusal', 'unknown'].includes(value.kind);
 
 function run(source, inputs) {
@@ -120,6 +128,9 @@ function run(source, inputs) {
     if (!a || !b) { s.absent += 1; continue; }
     if (known(a) || a.kind === 'hidden') reached = true;
     s.compared += 1;
+    const cov = coverage.get(handle);
+    coverBranches(cov, differing, 'project', project.derivations, `${prefix}.${localOf(s.project)}`, ownLine);
+    coverBranches(cov, differing, 'candidate', model.derivations, `${prefix}.${localOf(s.candidate)}`, ownLine);
     s.sources[source.kind] = (s.sources[source.kind] ?? 0) + 1;
     const inScope = a.kind !== 'refusal' && b.kind !== 'refusal';
     if (inScope) s.in_scope += 1;
@@ -219,5 +230,8 @@ for (const base of reachedBases.filter((_, i) => i % 4 === 0).slice(0, partialBa
 }
 process.stdout.write(JSON.stringify({ state: 'evaluated', errors, invalid_lines: [...invalid],
   bank: { fixtures: fixtures.length, generated, seed, partial_bases: partialBases, partial_records: partials, evaluation_failures: failures.length, return_states: returnCounts },
-  failures: failures.slice(0, 20), lines: [...stats.values()] }));
+  failures: failures.slice(0, 20), lines: [...stats.values()].map(line => {
+    const missed = untakenBranches(coverage.get(line.handle), differing);
+    return { ...line, branches: { differing_choose_lines: coverage.get(line.handle).reached.size, untaken: missed.length, untaken_examples: missed.slice(0, 8) } };
+  }) }));
 }

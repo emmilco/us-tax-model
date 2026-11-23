@@ -253,10 +253,11 @@ form:
     gated_by: f8863.ban_refused
     expr:
       op: input
-      source: Was your American opportunity credit denied or reduced, for a reason other than a math or clerical error, for
-        a tax year after 2015, so that Form 8862 is required (it is not, if since then you filed Form 8862 with the return
-        for a later year and the credit was allowed), or are you within 2 years of a final determination that a claim was due to reckless or intentional disregard
-        of the rules, or within 10 years of one that it was due to fraud?
+      source: Was your (or, on a joint return, your spouse's) American opportunity credit denied or reduced, for a reason
+        other than a math or clerical error, for a tax year after 2015, so that Form 8862 is required (it is not, if since
+        then the credit was claimed with Form 8862 on the return for a later year and allowed), or are you (or, on a joint
+        return, your spouse) within 2 years of a final determination that a claim was due to reckless or intentional
+        disregard of the rules, or within 10 years of one that it was due to fraud?
     cite:
       doc: i8863
       locator: 'p. 3, American Opportunity Credit, "Caution: Don’t claim the American opportunity credit for 2 years after

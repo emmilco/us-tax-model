@@ -6,7 +6,11 @@ of TY+1, list which compared lines of each review carry to TY+1 and which need a
 write the carried entries into TY+1's indexes and the rulings they show into TY+1's rulings sidecars. Run it
 from the TY+1 tree; --from names the TY tree.
 
-A line carries only when its year-carry key is equal in both years. The key hashes four things:
+A line carries only when its year-carry key is equal in both years and the review tools' policy versions
+are the same for both (always so within one checkout; rename_carry.py compares another commit's). The key
+hashes three things, and is recorded on each carried index line (`year_key`), so check_logs.py can recompute
+it and find a carried line whose source text, values or subject changed after the carry; a policy version
+change applies to carried lines as to any other, at their next review, and is not part of the key:
 
 1. the line's subject as its review kind sees it: for transcription the line and its in-document reach
    (subjects.reach; citations and wording left out, an input's question kept) and the interface (id,
@@ -17,11 +21,11 @@ A line carries only when its year-carry key is equal in both years. The key hash
    prompt and the compared expression show the year's value); a table's value is its data, every field but
    its title, citation and tax year (table_value), so a table carries when only its year moved;
 3. the cited source text, at anchor-section granularity, of every line of the reach and every foreign line
-   it names: for each cited page segment, the text from the cited anchor heading to the next anchor any
-   citation of the same document names on those pages, else the cited pages whole; a citation naming no
-   page stands for its whole document. Never only the quoted words, so a paragraph added under the same
-   heading changes the key;
-4. the policy versions of the review tools.
+   it names: for each cited page segment, the text (read through archive_text, normalized as citations.norm
+   normalizes a page) from the cited anchor's heading to the next heading of an anchor any citation of the
+   same document names, else the cited pages whole (anchor_section); a citation naming no page stands for
+   its whole document. Never only the quoted words, so a paragraph added under the same heading changes the
+   key; a cross-reference in the section's prose to another anchor is not a heading and does not end it.
 
 With --jurisdiction ny the reviews carried are New York's (reviews/ny/<year>/), and each tree is read across both
 jurisdictions as the New York review tools read it: the federal and New York forms (a New York line names federal
@@ -48,6 +52,7 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 import yaml  # noqa: E402
 from taxyear import Y  # noqa: E402  (--year: the tax year TY+1 of this tree)
 import jurisdiction  # noqa: E402  (--jurisdiction ny: New York's reviews)
+import archive_text  # noqa: E402
 
 _Loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 YEAR_WINDOW = (-10, 1)  # years from TY-10 to TY+1 may be normalized
@@ -135,14 +140,17 @@ class Tree:
         return self._c["__tables"]
 
     def pages(self, doc):
-        """The pages of an archived document's reading-order text, else None."""
-        key = "__pages " + doc
+        """The pages of an archived document's reading-order text (its cols_file, else its text_file), read
+        through archive_text.read so that a draft's cover and watermarks are removed; None when the document or
+        its text layer is not archived."""
+        key = f"__pages {doc}"
         if key not in self._c:
             m = json.loads(self.read(*self.dir("sources", doc), "manifest.json") or "{}")
             entries = m["documents"] if isinstance(m, dict) else m
             d = next((e for e in entries if e.get("id") == doc), None)
-            name = d and (d.get("cols_file") or d.get("text_file"))
-            text = self.read(*self.dir("sources", doc), name) if name else None
+            layer = d and next((k for k in ("cols_file", "text_file") if d.get(k)), None)
+            archive = self.path(*self.dir("sources", doc))
+            text = archive_text.read(archive, d, layer) if layer and os.path.exists(os.path.join(archive, d[layer])) else None
             self._c[key] = text.split("\f") if text is not None else None
         return self._c[key]
 
@@ -253,19 +261,68 @@ def section_texts(tree, line):
     return out
 
 
+# The last word of a line whose sentence runs on into the next line, with any lowercase word ending in "ing"
+# ("subtracting"): a known anchor at the start of the next line is a cross-reference in that sentence
+# ("Subtract" / "Line 4 from Line 3"), not a heading.
+RUNS_ON = {"a", "add", "an", "and", "as", "at", "by", "combine", "enter", "from", "in", "include", "includes",
+           "including", "into", "is", "less", "minus", "of", "on", "or", "plus", "see", "subtract", "than", "the",
+           "to", "under", "with"}
+
+
+def _lines(text):
+    """The extracted lines of a text, each normalized as citations.norm normalizes a page (a word broken across
+    a line end joined first), as (raw line, normalized line); empty lines dropped."""
+    import citations
+    text = re.sub(r"(\w)-[ \t]*\n\s*(\w)", r"\1\2", re.sub("\u00ad\\s*", "", text))
+    return [(raw.strip(), n) for raw in text.split("\n") if (n := citations.norm(raw))]
+
+
+def _keys(anchor):
+    """The normalized phrases that may print an anchor, most specific first (citations.anchor_keys)."""
+    import citations
+    return [k[0] for k in citations.anchor_keys(anchor) if len(k) == 1]
+
+
+def _word_at(line, at, key):
+    """Whether `key` is printed in `line` at `at` as whole words."""
+    end = at + len(key)
+    return (at == 0 or not line[at - 1].isalnum()) and (end == len(line) or not line[end].isalnum())
+
+
+def _heading(lines, i, keys):
+    """Whether line i is a heading printing one of `keys`: it starts with the key as whole words, does not start
+    with a lowercase letter, and does not continue the sentence of the line before (RUNS_ON)."""
+    raw, n = lines[i]
+    if raw[:1].islower():
+        return False
+    last = lines[i - 1][0].split()[-1] if i else ""
+    if last in RUNS_ON or re.fullmatch(r"[a-z]+ing", last):
+        return False
+    return any(n.startswith(k) and _word_at(n, 0, k) for k in keys)
+
+
 def anchor_section(text, anchor, known):
-    """The text of the cited pages from the anchor heading to the next known anchor after it, else the
-    pages whole (normalized whitespace)."""
-    flat = _norm_space(text)
-    if not anchor:
-        return flat
-    at = flat.find(_norm_space(anchor))
-    if at < 0:
-        return flat
-    start = at + len(_norm_space(anchor))
-    ends = [flat.find(_norm_space(k), start) for k in known if k and _norm_space(k) != _norm_space(anchor)]
-    ends = [e for e in ends if e >= 0]
-    return flat[at:min(ends)] if ends else flat[at:]
+    """The cited section of the cited pages, normalized line by line as citations.norm normalizes a page: from
+    the anchor's heading to the next heading of another known anchor, else to the end of the pages. A heading is
+    a line that starts with the anchor as whole words (_heading). A compound anchor ("Lines 4a-5b") whose own
+    words are not a heading starts at the heading of its first member (citations.anchor_keys) and runs to the
+    end of the pages, since the sections it spans are headed by other known anchors. An anchor printed on the
+    pages only inside a line, or not at all, gives the pages whole: the section it names may have begun on an
+    earlier page. A known anchor printed inside a line, as a cross-reference in the section's prose ("Subtract
+    Line 4 from Line 3"), never ends the section."""
+    lines = _lines(text)
+    flat = lambda rows: " ".join(n for _, n in rows)
+    keys = _keys(anchor) if anchor else []
+    for k in keys:
+        start = next((i for i in range(len(lines)) if _heading(lines, i, [k])), None)
+        if start is None:
+            continue
+        if k != keys[0]:
+            return flat(lines[start:])
+        others = {o for a in known if a for o in _keys(a)} - set(keys)
+        end = next((i for i in range(start + 1, len(lines)) if _heading(lines, i, others)), len(lines))
+        return flat(lines[start:end])
+    return flat(lines)
 
 
 # ---------------------------------------------------------------- lockstep normalization
@@ -334,7 +391,7 @@ def project_pair(old, new, ty, evidence):
 
 
 def policies():
-    """The policy versions of the review tools (part 4 of the key)."""
+    """The policy versions of the review tools (compared beside the key)."""
     import transcribe as T
     import triage
     return {"prompt": T.PROMPT_POLICY, "comparison": T.COMPARISON_POLICY, "types": T.TYPE_VALIDATION_POLICY,
@@ -372,8 +429,8 @@ def compare_parts(ty, old, new):
             why.append("values changed: " + ", ".join(k for k in diff if k not in unset))
     if old.get("policies") != new.get("policies"):
         why.append("policy versions changed")
-    key_a = _sha([sa, old["values"], cited_a, old.get("policies")])
-    key_b = _sha([sb, new["values"], cited_b, new.get("policies")])
+    key_a = _sha([sa, old["values"], cited_a])
+    key_b = _sha([sb, new["values"], cited_b])
     return (not why, "; ".join(why) or None, key_a, key_b)
 
 
@@ -445,11 +502,39 @@ def compared_keys(kind, tree, doc):
     return dict(T.line_keys(doc))
 
 
+def carry_keys(kind, old, new, fid, keys):
+    """{log key: (carries, reason, year key)} of the given log keys of a document's review of the kind, from
+    tree `old` to tree `new`; the year key is the new year's (compare_parts), None where the line does not
+    carry. Class M judges the document whole, so every key gets the document's result."""
+    doc_old, doc_new = old.docs().get(fid), new.docs().get(fid)
+    if doc_new is None or doc_old is None:
+        why = f"{fid} is not a document of {new.year if doc_new is None else old.year}"
+        return {k: (False, why, None) for k in keys}
+    if kind == "classm":
+        ok, why, _, kb = compare_parts(old.year, parts(kind, old, fid, None), parts(kind, new, fid, None))
+        return {k: (ok, why, kb if ok else None) for k in keys}
+    if kind == "render" and new.read(*new.dir("rendered", fid), fid + ".md") is None:
+        return {k: (False, f"no rendering of the form in {new.year}", None) for k in keys}
+    keys_old, keys_new = compared_keys(kind, old, doc_old), compared_keys(kind, new, doc_new)
+    out = {}
+    for k in keys:
+        lid = keys_old.get(k)
+        if lid is None or keys_new.get(k) != lid:
+            out[k] = (False, "the line is not compared under the same key in both years", None)
+            continue
+        a, b = parts(kind, old, fid, lid), parts(kind, new, fid, lid)
+        if a is None or b is None:
+            out[k] = (False, f"no {kind} subject in {old.year if a is None else new.year}", None)
+            continue
+        ok, why, _, kb = compare_parts(old.year, a, b)
+        out[k] = (ok, why, kb if ok else None)
+    return out
+
+
 def plan(kind, old, new):
     """{form: {"carry": [(key, line id, year key)], "review": [(key, line id, reason)]}} for every form of
     the TY tree with an index of the kind."""
     import families
-    import transcribe as T
     out = {}
     d = old.path(*old.dir("reviews"), kind)
     stems = sorted(n[:-len(".index.json")] for n in os.listdir(d) if n.endswith(".index.json")) if os.path.isdir(d) else []
@@ -460,31 +545,19 @@ def plan(kind, old, new):
         index = json.loads(old.read(*old.dir("reviews"), kind, stem + ".index.json"))
         rec = out.setdefault(fid, {"carry": [], "review": []})
         doc_old, doc_new = old.docs().get(fid), new.docs().get(fid)
-        if doc_new is None:
-            rec["review"] += [(l["key"], None, f"{fid} is not a document of {new.year}") for l in index["lines"]]
-            continue
-        if kind == "classm":
-            a, b = parts(kind, old, fid, None), parts(kind, new, fid, None)
-            ok, why, ka, kb = compare_parts(old.year, a, b)
-            for l in index["lines"]:
-                (rec["carry"] if ok else rec["review"]).append((l["key"], None, kb if ok else why))
-            continue
-        keys_old, keys_new = compared_keys(kind, old, doc_old), compared_keys(kind, new, doc_new)
-        if kind == "render" and new.read(*new.dir("rendered", fid), fid + ".md") is None:
-            rec["review"] += [(l["key"], None, f"no rendering of the form in {new.year}") for l in index["lines"]]
-            continue
+        result = carry_keys(kind, old, new, fid, [l["key"] for l in index["lines"]])
+        ids = compared_keys(kind, old, doc_old) if doc_old is not None and kind != "classm" else {}
         for l in index["lines"]:
-            lid = keys_old.get(l["key"])
-            if lid is None or keys_new.get(l["key"]) != lid:
-                rec["review"].append((l["key"], lid, "the line is not compared under the same key in both years")); continue
-            a, b = parts(kind, old, fid, lid), parts(kind, new, fid, lid)
-            if a is None or b is None:
-                rec["review"].append((l["key"], lid, f"no {kind} subject in {old.year if a is None else new.year}")); continue
-            ok, why, ka, kb = compare_parts(old.year, a, b)
+            ok, why, key = result[l["key"]]
             if ok:
-                rec["carry"].append((l["key"], lid, kb))
+                rec["carry"].append((l["key"], ids.get(l["key"]), key))
             else:
-                rec["review"].append((l["key"], lid, why))
+                rec["review"].append((l["key"], ids.get(l["key"]), why))
+        if doc_new is None or kind == "classm" or (doc_old is None):
+            continue
+        if kind == "render" and new.read(*new.dir("rendered", fid), fid + ".md") is None:
+            continue
+        keys_new = compared_keys(kind, new, doc_new)
         for k in sorted(set(keys_new) - {l["key"] for l in index["lines"]}):
             rec["review"].append((k, keys_new[k], "a compared line with no review in " + old.year))
         rec["rest"] = rest_carries(old, new, doc_old, doc_new)
@@ -521,7 +594,7 @@ def write(kind, old, new_year, result):
         index = json.loads(old.read(*old.dir("reviews"), kind, fid + ".index.json"))
         carried = {k: key for k, _, key in rec["carry"]}
         lines = [year_marked(l, old.year, carried[l["key"]]) for l in index["lines"] if l["key"] in carried]
-        out = {**index, "lines": lines, "carried_from": old.year}
+        out = {**index, "lines": lines, "carried_from": old.year, "base_sources": index.get("base_sources") or old.year}
         if kind != "classm" and index.get("subjects") is not None:
             cur, rest = subjects.current_line_subjects(kind, fid, new_year)
             out["subjects"] = {k: v for k, v in cur.items() if k in carried}
@@ -603,8 +676,13 @@ def renderings_carry(text_old, text_new, ty, evidence):
 def year_marked(line, from_year, year_key):
     """An index line as carried to TY+1: marked `carried` {from, year_key}; a line shown from a renamed record
     section (`section`) keeps the rename carry that maps that section to its key (review_store.check) and is
-    marked `year_carried` instead."""
+    marked `year_carried` instead. A line already carried from an earlier year keeps, as `sources`, the year
+    whose archive its record was made against, which check_logs.py checks the record's source pages against."""
+    prev = line.get("year_carried") or line.get("carried")
+    prev = prev if prev and "year_key" in prev else None
     mark = {"from": from_year, "year_key": year_key}
+    if prev:
+        mark["sources"] = prev.get("sources") or prev["from"]
     return {**line, "year_carried": mark} if line.get("section") else {**line, "carried": mark}
 
 
@@ -671,9 +749,11 @@ def self_test():
     def line_parts(subject, cited, vals=None):
         return {"subject": subject, "values": vals or {}, "cited": cited, "policies": pol}
 
-    known = {"Line 5", "Line 6"}
-    sec = lambda text: [("i1 Line 5", anchor_section(text, "Line 5", known))]
-    base = "Line 5 Enter the amount from your 2025 Form W-2. Line 6 Add lines 4 and 5."
+    known = {"Line 3", "Line 4", "Line 5", "Line 6", "Line 19"}
+    sec = lambda text, anchor="Line 5": [("i1 " + anchor, anchor_section(text, anchor, known))]
+    base = "Line 5 Enter the amount from your 2025 Form W-2.\nLine 6 Add lines 4 and 5."
+    xref = "Line 4 Enter your wages.\nLine 5 Subtract Line 4 from Line 3.\nDo not enter less than zero.\nLine 6 Add lines 4 and 5."
+    wrapped = "Line 5 Enter the amount figured by subtracting\nLine 4 from Line 3.\nDo not enter less than zero.\nLine 6 Add."
     cases = [
         ("unchanged but the year: rolling 2025 -> 2026 in source and project", True,
          line_parts('{"source": "Amount paid in 2025"}', sec(base)),
@@ -684,6 +764,21 @@ def self_test():
         ("a paragraph added under the next heading only", True,
          line_parts("s", sec(base)),
          line_parts("s", sec(base + " Include line 4 only once."))),
+        ("a sentence changed after a cross-reference to another known anchor in the section", False,
+         line_parts("s", sec(xref)),
+         line_parts("s", sec(xref.replace("less than zero.", "less than zero. If zero, skip line 6.")))),
+        ("a sentence changed after a cross-reference wrapped to the start of a line", False,
+         line_parts("s", sec(wrapped)),
+         line_parts("s", sec(wrapped.replace("less than zero.", "more than $500.")))),
+        ("a sentence changed under the next heading, the section holding a cross-reference", True,
+         line_parts("s", sec(xref)),
+         line_parts("s", sec(xref.replace("Add lines 4 and 5.", "Add lines 4 and 5 and enter the total.")))),
+        ("the anchor printed with other spacing and case; text under the next heading changed", True,
+         line_parts("s", sec("CHART \u2014 LINE 18a Use the chart.\nLine 19 Enter.", "Chart—Line 18a")),
+         line_parts("s", sec("CHART \u2014 LINE 18a Use the chart.\nLine 19 Enter, unless you file Form 2555.", "Chart—Line 18a"))),
+        ("the anchor printed with other spacing and case; text under it changed", False,
+         line_parts("s", sec("CHART \u2014 LINE 18a Use the chart.\nLine 19 Enter.", "Chart—Line 18a")),
+         line_parts("s", sec("CHART \u2014 LINE 18a Use the chart, unless you file Form 2555.\nLine 19 Enter.", "Chart—Line 18a"))),
         ("a changed parameter value", False,
          line_parts("s", sec(base), {"param s1a.tip_limit": 25000}),
          line_parts("s", sec(base), {"param s1a.tip_limit": 25750})),
@@ -750,10 +845,39 @@ def self_test():
     for b in bad:
         print("year-carry self-test: WRONG", b, file=sys.stderr)
     print(f"year-carry self-test: {n - len(bad)}/{n} near-miss pairs as expected")
+    drafts = pages_self_test()
+    print("year-carry self-test: a draft's pages read without its cover and watermarks: "
+          + ("as expected" if not drafts else "WRONG: " + "; ".join(drafts)))
     side = sidecar_self_test()
     print("year-carry self-test: rulings sidecar and line marks written with the carried index: "
           + ("as expected" if not side else "WRONG: " + "; ".join(side)))
-    return 1 if bad or side else 0
+    return 1 if bad or side or drafts else 0
+
+
+def pages_self_test():
+    """Tree.pages in a scratch tree: a draft's reading-order text is read through archive_text (cover page
+    emptied, watermarks removed), a final edition's as extracted. Returns what went wrong."""
+    import tempfile
+    page = "Line 5 Enter TREASURY/IRS AND OMB USE ONLY DRAFT the amount."
+    with tempfile.TemporaryDirectory() as tmp:
+        tree = Tree(tmp, "2025")
+        archive = tree.path("sources", "2025")
+        os.makedirs(archive)
+        for name in ("d.cols.txt", "f.cols.txt"):
+            with open(os.path.join(archive, name), "w", encoding="utf-8") as f:
+                f.write(archive_text.DRAFT_COVER + "\f" + page)
+        with open(os.path.join(archive, "manifest.json"), "w", encoding="utf-8") as f:
+            json.dump({"documents": [{"id": "d", "file": "d.pdf", "text_file": "d.txt", "cols_file": "d.cols.txt", "draft": True},
+                                     {"id": "f", "file": "f.pdf", "cols_file": "f.cols.txt"}]}, f)
+        draft, final, absent = tree.pages("d"), tree.pages("f"), tree.pages("x")
+    bad = []
+    if draft is None or draft[0] != "" or "DRAFT" in "".join(draft):
+        bad.append(f"draft read as {draft}")
+    if final != [archive_text.DRAFT_COVER, page]:
+        bad.append(f"final edition read as {final}")
+    if absent is not None:
+        bad.append(f"a document not archived read as {absent}")
+    return bad
 
 
 def sidecar_self_test():
@@ -789,6 +913,10 @@ def sidecar_self_test():
     if renamed["carried"].get("by") != "rename" or renamed.get("year_carried") != {"from": "2025", "year_key": "h"} \
             or plain["carried"] != {"from": "2025", "year_key": "h"}:
         bad.append(f"index lines marked as {renamed} and {plain}")
+    again, renamed_again = year_marked(plain, "2026", "i"), year_marked(renamed, "2026", "i")
+    if again["carried"] != {"from": "2026", "year_key": "i", "sources": "2025"} \
+            or renamed_again["year_carried"] != {"from": "2026", "year_key": "i", "sources": "2025"}:
+        bad.append(f"lines carried a second year marked as {again} and {renamed_again}")
     return bad
 
 

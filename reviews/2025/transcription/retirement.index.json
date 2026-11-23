@@ -6,15 +6,15 @@
  "head_rows": {
   "printed lines compared": "27",
   "agree / disagree / missing": "1 / 26 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-17); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "retirement.dis_wages",
-   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage 3,414/3,506 agree; 50 candidate-refuses, 42 project-unknown, no value differs, nothing completed. Same test (a plan disability pension paid before the minimum retirement age); the reply reads retirement.dis_early and retirement.disability outside the project's gates, so it refuses or the project is unknown only where the interview does not ask them. p575 (disability pensions are wages until minimum retirement age), as x2-paynow2 encodes.",
-   "subject_key": "e7e3b4cc58e3dfa73e321789b07d1fd5ed75068f2c23483f5e4b5a4cfb98fc49"
+   "ruling": "Ruling: representation; p575, a disability pension is wages until the minimum retirement age, as ruled on 2026-11-15. Triage (executable-triage-v2): 3,595 of 3,645 agree; 47 project-unknown on incomplete and 3 on refused returns, no value differs and no completed return differs. The reply reads retirement.dis_early and retirement.disability outside the project's gates, so the two differ only where the interview does not ask them. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "960f381e75ddae3188bf334fde1ddeb2309123a5084f1f3e0ffda48949e43046"
   },
   {
    "key": "retirement.one",
@@ -31,73 +31,73 @@
   },
   {
    "key": "retirement.has_rollover",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 30, Rollovers: \"Use lines 5a and 5b to report a rollover, including a direct rollover, from one qualified employer’s plan to another or to an IRA. ... Also check box 1 on line 5c.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 2588 of 3834 comparisons agree, 2588 of 3508 in scope; completed {\"candidate-unknown\": 33, \"value\": 40}. Project stands.",
-   "subject_key": "3c714e9902a50a889e3178218d71d12f9861c3f7c958ff121e5ad7d1fc07228b"
+   "ruling": "Ruling: model error; i1040gi p. 30, Rollovers: \"Use lines 5a and 5b to report a rollover, including a direct rollover, from one qualified employer's plan to another or to an IRA.\" The reply keeps the reading the 2026-11-17 ruling on this line refused. Triage (executable-triage-v2): 2,638 of 3,645 agree; completed returns: 37 candidate-unknown and 1 value difference. Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "518d79f78b36961ef95da43e37ee35cfac99078ffc0d7185211b7652d32030bb"
   },
   {
    "key": "retirement.taxable",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 27-30, lines 4b and 5b. The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 2724 of 3834 comparisons agree, 2507 of 3426 in scope; completed {\"candidate-refuses\": 5, \"candidate-unknown\": 128, \"value\": 1}. Project stands.",
-   "subject_key": "d3cf52a4b17b22e1f58690361631967a6752f8e8842841ea9c64b1381c05e738"
+   "ruling": "Ruling: model error; the reply fails the host's validation on this line: triage (.transcription/triage/2025/retirement.json, executable-triage-v2) reports \"reference 'retirement.special' does not resolve\" and \"comparison operands have incompatible types\" for its gate, so the line as written does not execute; the reference names no line of the request. Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "ee57d0158fbaa00587f40bdb5bf90111a95bb495b0b2893872c808bce8447ce5"
   },
   {
    "key": "retirement.amount_a",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 27-30, lines 4a and 5a. The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 2679 of 3834 comparisons agree, 2616 of 3448 in scope; completed {\"candidate-refuses\": 5, \"candidate-unknown\": 115}. Project stands.",
-   "subject_key": "e41e3323280d10580ba56317a620433f16145ef895300be45aa1b2b3fce2ce85"
+   "ruling": "Ruling: model error; the reply fails the host's validation on this line: triage (.transcription/triage/2025/retirement.json, executable-triage-v2) reports \"reference 'retirement.special' does not resolve\" and \"comparison operands have incompatible types\" for its gate, so the line as written does not execute; the reference names no line of the request. Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "554cf9781b78a6009a61133ae70f9c886a2ad114ea2966cc55f8ec7c4ac37520"
   },
   {
    "key": "retirement.sav_amount",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f8880 p. 2, Line 4, \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 2614 of 3834 comparisons agree, 2613 of 3518 in scope; completed {\"candidate-unknown\": 49, \"value\": 1}. Project stands.",
-   "subject_key": "ecb0afba2935d3c619d2cd6375515da3e9dbb97e3a02fee4ab01686a07b67e7f"
+   "ruling": "Ruling: model error; the reply fails the host's validation on this line: triage (.transcription/triage/2025/retirement.json, executable-triage-v2) reports \"reference 'retirement.special' does not resolve\" and \"comparison operands have incompatible types\" for its gate, so the line as written does not execute; the reference names no line of the request. Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "816632db6afcf22b67c66701fee6b507b5e4325eae2742a8c4370ffd3aae3f54"
   },
   {
    "key": "retirement.l1",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5329 p. 3, Line 1, \"Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:\". The candidate reads roth_moved directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3548 of 3834 comparisons agree, 3502 of 3781 in scope; completed {\"candidate-unknown\": 61}. Project stands.",
-   "subject_key": "bb353365307469c9b3cf085bea176b82d9196e75a7bc935d302e87a63dd7cd1f"
+   "ruling": "Ruling: model error; the reply fails the host's validation on this line: triage (.transcription/triage/2025/retirement.json, executable-triage-v2) reports \"reference 'retirement.code_screen' does not resolve\" and \"comparison operands have incompatible types\" for its gate, so the line as written does not execute; the reference names no line of the request. Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "abc6c3df7fc5d48ceab98e27266fac5af93d17001ad14cfe0023bcd6971ada74"
   },
   {
    "key": "retirement.l2",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3053 of 3834 comparisons agree, 3053 of 3781 in scope; completed {\"candidate-unknown\": 67, \"value\": 16}. Project stands.",
-   "subject_key": "10ebf27c3267044237644a7a26b9771a91b46782e692c5df8d240c7f98b2f325"
+   "ruling": "Ruling: model error; the reply fails the host's validation on this line: triage (.transcription/triage/2025/retirement.json, executable-triage-v2) reports \"reference 'retirement.code_screen' does not resolve\" and \"comparison operands have incompatible types\" for its gate, so the line as written does not execute; the reference names no line of the request. Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "532e3d02b295468c5be61adc9e20b02e0424e3424a2e51d0351481870e375341"
   },
   {
    "key": "retirement.l2_e05",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3488 of 3834 comparisons agree, 3488 of 3834 in scope; completed {\"candidate-unknown\": 1, \"value\": 3}. Project stands.",
-   "subject_key": "9c864f57277b4d04dd8ad72d1125f9161e5531129ce8abba0a737357e6d92135"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23).\" The reply keeps the reading the 2026-11-17 ruling on this line refused; the completed-return amounts differ as the triage witnesses show (.transcription/triage/2025/retirement.json, executable-triage-v2). Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "da870d12bd45b627d957d8f30d500077cca268fb9f9b66bfef4912946d8e96ca"
   },
   {
    "key": "retirement.l2_e09",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3382 of 3834 comparisons agree, 3382 of 3834 in scope; completed {\"candidate-unknown\": 4, \"value\": 328}. Project stands.",
-   "subject_key": "9b9f43b4dc1d8aef17d942ab7a73042d06904e7637ed8719e1958e7bd4e96156"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23).\" The reply keeps the reading the 2026-11-17 ruling on this line refused; the completed-return amounts differ as the triage witnesses show (.transcription/triage/2025/retirement.json, executable-triage-v2). Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "318a84e0d1713556b54749011998588a153f1b812369ab16b38f3b02afa9be27"
   },
   {
    "key": "retirement.l2_e19",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3383 of 3834 comparisons agree, 3383 of 3834 in scope; completed {\"candidate-unknown\": 4, \"value\": 329}. Project stands.",
-   "subject_key": "98708b51398c86d501f35dbbbca1f886ecb92ef61c727e2929b32491c0a88696"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23).\" The reply keeps the reading the 2026-11-17 ruling on this line refused; the completed-return amounts differ as the triage witnesses show (.transcription/triage/2025/retirement.json, executable-triage-v2). Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "e3e297f418b76b72fa7e000fea236ec3a023766462433d92e5a88ab298ea080f"
   },
   {
    "key": "retirement.l2_e22",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3805 of 3834 comparisons agree, 3805 of 3834 in scope; completed {\"candidate-unknown\": 2, \"value\": 2}. Project stands.",
-   "subject_key": "889a190da2bc8095fa69f5716e309fc672883b28ee0ece2b84a483d8ebaf8721"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23).\" The reply keeps the reading the 2026-11-17 ruling on this line refused; the completed-return amounts differ as the triage witnesses show (.transcription/triage/2025/retirement.json, executable-triage-v2). Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "bb1c2b8543194671caba50c15b00dfda010d9e7296c12738ad261935557500c4"
   },
   {
    "key": "retirement.is_e23",
@@ -108,24 +108,24 @@
   },
   {
    "key": "retirement.l2_e23",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; p590b p. 28, Emergency personal expense distributions, Distribution limits: \"You are limited to taking one emergency personal expense distribution per calendar year\". The reply keeps the reading the earlier ruling on this line refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3539 of 3834 comparisons agree, 3539 of 3834 in scope; completed {\"candidate-unknown\": 2, \"value\": 3}. Project stands.",
-   "subject_key": "17ea4b278597d03fa01844fc270c8bf08ea9197efd891a3b314f074fa8f6ae2e"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23).\" The reply keeps the reading the 2026-11-17 ruling on this line refused; the completed-return amounts differ as the triage witnesses show (.transcription/triage/2025/retirement.json, executable-triage-v2). Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "abf0d5d501fa407b29c16f4bda1a5d298d556e32b1f92e8e155b3444372adad2"
   },
   {
    "key": "retirement.l1_s",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5329 p. 5, Line 4, \"If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%.\". The candidate reads rollover, rollover_property, rollover_qdro, roth_moved directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3823 of 3834 comparisons agree, 3823 of 3833 in scope; completed {}. Project stands.",
-   "subject_key": "ffb1252335b673f9609fce3e8bb751b5d8a5a357879d3fd786d11383fbf1061c"
+   "ruling": "Ruling: model error; i5329 p. 3, Line 1, the early distributions includible in income, and p. 5, Line 4, \"If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25%\". Code S itself marks an early distribution with no known exception (the project's retirement.early); the reply instead tests retirement.under59, which the interview asks only with code 7 (retirement.under59_if_code7) and which is therefore false for a code S distribution, so it takes zero. Completed-return witness stage21.blind.e2: project $4,000.00, reply $0.00 (triage executable-triage-v2). Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "559faaed1a0222ec95f7d90d2d810a52dc25df4ad44a0c28e985c1878729d909"
   },
   {
    "key": "retirement.l2_s",
-   "record": "940f51f31875c7f1af7f49a8e9a90beda8614331b92c19286921cbda1b97a8ce",
+   "record": "68db5dd94a5387fee230417ac504a03fc4381d1392abc7f06d1b602120604255",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\". As the round-3 ruling: a code S distribution's 25%/10% branch is a scope the project does not take; no value stands against it. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json): 3783 of 3834 comparisons agree, 3783 of 3834 in scope; completed {\"value\": 2}. Project stands.",
-   "subject_key": "a591da567184a3aa04aa892ecae9217df771c19d6da5cac321e09a59c41ef860"
+   "ruling": "Ruling: model error; i5329 p. 3, Line 1, the early distributions includible in income, and p. 5, Line 4, \"If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25%\". Code S itself marks an early distribution with no known exception (the project's retirement.early); the reply instead tests retirement.under59, which the interview asks only with code 7 (retirement.under59_if_code7) and which is therefore false for a code S distribution, so it takes zero. Completed-return witness stage21.mut.simple_e23_within_cap: project $800.00, reply $0.00 (triage executable-triage-v2). Project stands. This review was occasioned by the reworded disability, rollover, death and code 4 questions (BUG-0875, BUG-0878, BUG-0881); the project's expression is unchanged.",
+   "subject_key": "1804b4d24c8319adc79c51a13e97224e909f6eaceb28d608d7413e1f5653e4af"
   },
   {
    "key": "(SMW 1)",
@@ -199,23 +199,23 @@
   }
  ],
  "subjects": {
-  "retirement.dis_wages": "b6f45a3ec750d43297c306ca33a3b5519325e7ce083c4513470372717199aba2",
+  "retirement.dis_wages": "25cdb567620ce0d9819de262ff609473dce5a473236d212927ae68c98ff400ca",
   "retirement.one": "76b9f2cffa363962328538b47981396fbfe500bba0758d5db5018ea61d1d0a64",
   "retirement.is_ira": "346a3e8d9e9bd5fd570df6652d6d72eac3cf20ec1a8149eb316e81b972dcde84",
-  "retirement.has_rollover": "1360b1a53fa3917d016b7ffd0e3702b947de024baa466d692e3aa380d94ff2ca",
-  "retirement.taxable": "91c15c18524cdd1e2b8d6e14e6abf309ded13a0aabc9e67703a8ec9bb8148fb2",
-  "retirement.amount_a": "80a34533a85e54b116d7dabb391ff78730f08ce25c87c5d9e854aa45d397919d",
-  "retirement.sav_amount": "1bec5581518bd39e620d839e576044f9e3ea0753e57a6175578130e83184a478",
-  "retirement.l1": "6c4c4c07c51ac83d497f9fc5aaad3451b9fbb8fd85c99a7022fc060b136518e0",
-  "retirement.l2": "ccc494885d0b53d43bdd6d2ec07720b0a15acff4fa97263ffa8374903102a3a8",
-  "retirement.l2_e05": "55655404e5f453831e6b334fd9cb267be285327488131766f0c82fad6dc6aa70",
-  "retirement.l2_e09": "20b9a56cc131f30c202104470ad31757b9e4c396fd41ed41d33c23f1a5568749",
-  "retirement.l2_e19": "7fb168b29718a9d1b4f1b5d9849af72c3e06dff8a9c17b2ca0988ff80eb00ae4",
-  "retirement.l2_e22": "da5daef1201a102b09d832ff36196e30706bc306787b942002ed7b756b4bf895",
+  "retirement.has_rollover": "a51d8e9cb253c7ccfa9b878b2a6f931538c80edeb00055f50d211d058f8cc24f",
+  "retirement.taxable": "a6c12bdd9054fe9064fca4fcc76db35c6c7fa3e3929f2954ecc31b5543929657",
+  "retirement.amount_a": "e2f20b5396afdbe88e710fb0d2ee772be58ef6199d6235ce77cc08530a9ae3c2",
+  "retirement.sav_amount": "35cf2dc0185efdf66a44fdd4c5c18ec042f4456174303d8e1ceeb48cb63388a3",
+  "retirement.l1": "c6c7daf1000015c95a3a8359f151e4317d06e4f5d08ea05e5c3d81e4d5762a24",
+  "retirement.l2": "8d1e250ee0be730c73be606ec18e5206f62d51392b958561ba50959767cdc764",
+  "retirement.l2_e05": "fc332674d0cdc25495e5eca0fa077feac885db9544a76a3781743cd32b9d68e2",
+  "retirement.l2_e09": "c8966233308edc6210d33834b2e44406616b814a6f9e280706569f60599464fb",
+  "retirement.l2_e19": "9fb3016f005f5742d41ec631305692b1713027e65811bc91d59c5c31a0da4d5b",
+  "retirement.l2_e22": "af706f7e7321293e0587c5df56ead978e4a72cd66023667e0de39d5dd551e478",
   "retirement.is_e23": "d7026551843db7349d62b187ebdb7eb262f1ddd4f11baade3a052fa8c16388ff",
-  "retirement.l2_e23": "489533189965d47d86a848989755da2cca8f2769464ff411056c51d5dcac3973",
-  "retirement.l1_s": "6ff420cee325b03881420b8174772b6c5911cee49c3fd212337ed76a21426563",
-  "retirement.l2_s": "860ea3c352318a5222b828a305d8d657d32e05ac9e96a4d7df1fabb91f2394db",
+  "retirement.l2_e23": "77368a3fa2554bc509f57c040303b923315ce8f56a1e0a51163d59f574348992",
+  "retirement.l1_s": "324264835d497ab9c13fe6a3f383552185fe9c9c806728917bae838c2311ccc1",
+  "retirement.l2_s": "b4c9121400ea6a27477cb189d8804d08a6b5e816ed83133ca18cf1f9179549b9",
   "(SMW 1)": "6cb93b92e8867cf90e78cb740ae19ccc1230fc61c1a98abbbd651d5549f07b82",
   "(SMW 2)": "db87ae5f86ff35815b8daee3e086d080c5c024071aff0254b4367df9cb2aa9c0",
   "(SMW 4)": "8784980b8e3f69dd647b676bb94b7e6d9d1357c614f923f963940b11defab806",

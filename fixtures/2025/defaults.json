@@ -1379,6 +1379,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "f5695.reconstruct_later",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "f5695.doors",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -1700,6 +1705,11 @@
     },
     {
       "input": "f7203.loans",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8582.prior_crd",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2209,6 +2219,11 @@
     },
     {
       "input": "household.spouse_cp_domicile",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "household.cp_retirement",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -4868,6 +4883,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "sa.mfs_joint_paid",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "sa.spouse_itemizes",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -5303,6 +5323,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "scope.trade_act_repaid",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "scope.business_before",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -5369,6 +5394,11 @@
     },
     {
       "input": "scope.farm",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.remic",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -5994,6 +6024,31 @@
     },
     {
       "input": "w2.g_governmental",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "rental.business_incidental",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "rental.land_heavy",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "rental.mortgage_excess",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "rental.bought_lease",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "rprop.short_class",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     }

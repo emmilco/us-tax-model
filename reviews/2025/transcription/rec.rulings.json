@@ -122,30 +122,39 @@
    "printed": "2",
    "project_expr_sha256": "d7fbf352e293febbd373f217af7ec17560324c0254be4997d637bd5e1bc8430b",
    "second_expr_sha256": "cb68578e378b841a2b2ab8ad4299e28e10cc35390e4c514056f6934c221bc31d",
-   "ruling": "Ruling: representation; the reply reads the worksheet's inputs without their parent questions (scope.recovery, refund.itemized, the rec_kinds ticks), so it is unknown where the interview never asks them; no value differs on any completed return (p525 p. 27, line 2).",
-   "context": "bdb53c28677d80731fe3f10e36539b64e6362e3ccb2ea94f020cd73beae509e9",
-   "date": "2026-11-15",
-   "run": "6742516e7b773a1edb69a1410808d85328c77d933ec0003909b9224aed4c19ea",
-   "subject_key": "27c5d3aef6f9335efb7c9411891b7594728305dd618d39c1c59aa10f75b5243b",
+   "ruling": "Ruling: representation; the reply reads the worksheet's inputs without their parent questions, so it is unknown where the interview never asks them; executable triage (.transcription/triage/2025/rec.json, this pass): 2,476/3,347 agree; differences {\"candidate-refuses\": 32, \"candidate-unknown\": 829, \"project-unknown\": 9, \"value\": 1}; on completed returns {\"candidate-unknown\": 180}; no value differs on a completed return.",
+   "context": "d9da6849555ea7e4ef6641a75b21dd562fe046d40a6e5c091a1a73d969f6d843",
+   "date": "2026-11-22",
+   "run": "6cd6a092e274de9b51f7202c63acc9166a4136883c8e2519c4c5e79550ef0b2d",
+   "subject_key": "17ee0ac8a83b9a7e3a0ebe1461eb90202e4bfc67512c5e468b40bd75ed6600a0",
    "triage": {
     "verdict": "differs",
     "kinds": [
+     "candidate-refuses",
      "candidate-unknown",
-     "project-unknown"
+     "project-unknown",
+     "value"
     ],
     "witnesses": [
-     "fixture:classm.f8889.1.deepseek@rec",
-     "fixture:classm.f8889.5.deepseek@rec",
-     "fixture:classm.f4952.3.deepseek@rec",
-     "fixture:classm.f4952.4.deepseek@rec",
-     "fixture:classm.f8960.2.deepseek@rec",
-     "fixture:classm.dependent.1.deepseek@rec",
+     "fixture:classm.f2441.1.deepseek@rec",
+     "fixture:classm.f2441.2.deepseek@rec",
+     "fixture:classm.f2441.3.deepseek@rec",
+     "fixture:classm.f2441.4.deepseek@rec",
+     "fixture:classm.f2441.5.deepseek@rec",
+     "fixture:classm.f2441.6.deepseek@rec",
      "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@rec",
      "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@rec",
      "fixture:stage16.cleanup.refuse.f1040_line16@rec",
      "fixture:stage16.cleanup.refuse.scope_credits@rec",
+     "fixture:mexist.f8960.line5d.no_gains@rec",
+     "fixture:x2s1o.rec.refuse.not_2024@rec",
+     "fixture:x2s1o.rec.refuse.sales_tax@rec",
      "fixture:ss.single.over@rec",
-     "fixture:ss.multi.over@rec"
+     "generated:20261026.11@rec",
+     "generated:20261026.21@rec",
+     "generated:20261026.25@rec",
+     "generated:20261026.31@rec",
+     "generated:20261026.475@rec"
     ],
     "policy": "executable-triage-v2"
    }
@@ -178,11 +187,11 @@
    "printed": "2a:2",
    "project_expr_sha256": "867082e5472b6fb21eccd9cc46db3b2679972621bcaa03a84ac2eaeb93d5b324",
    "second_expr_sha256": "b8c288d74e053c2e86593db49ca1281281b20712c12d5e630e00355e0835e784",
-   "ruling": "Ruling: representation; the reply drops the parent gate (scope.recovery and refund.itemized). Its one completed value difference (rec.not_itemized, project $0, reply $300) is a non-itemizer for whom Worksheet 2 is not used (p525 p. 27, Recoveries of Itemized Deductions).",
-   "context": "bdb53c28677d80731fe3f10e36539b64e6362e3ccb2ea94f020cd73beae509e9",
-   "date": "2026-11-15",
-   "run": "6742516e7b773a1edb69a1410808d85328c77d933ec0003909b9224aed4c19ea",
-   "subject_key": "91acba620cbf118a662e284546866ad80156542f31046e59584941cd678fbbcb",
+   "ruling": "Ruling: representation; as the ruling of 2026-11-15: the reply drops the parent gate (scope.recovery and refund.itemized); its completed value difference is rec.not_itemized, a non-itemizer for whom Worksheet 2 is not used (p525 p. 27); executable triage (.transcription/triage/2025/rec.json, this pass): 2,555/3,347 agree; differences {\"candidate-unknown\": 781, \"project-unknown\": 9, \"value\": 2}; on completed returns {\"candidate-unknown\": 152, \"value\": 1}.",
+   "context": "d9da6849555ea7e4ef6641a75b21dd562fe046d40a6e5c091a1a73d969f6d843",
+   "date": "2026-11-22",
+   "run": "6cd6a092e274de9b51f7202c63acc9166a4136883c8e2519c4c5e79550ef0b2d",
+   "subject_key": "da9f2b8949ce137526ff3ffe7a83aed2623651b3ef2bc5ffa9e62d54ad077a31",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -191,19 +200,20 @@
      "value"
     ],
     "witnesses": [
-     "fixture:classm.f8889.1.deepseek@rec",
-     "fixture:classm.f8889.5.deepseek@rec",
-     "fixture:classm.f4952.3.deepseek@rec",
-     "fixture:classm.f4952.4.deepseek@rec",
-     "fixture:classm.f8960.2.deepseek@rec",
-     "fixture:classm.dependent.1.deepseek@rec",
+     "fixture:classm.f2441.1.deepseek@rec",
+     "fixture:classm.f2441.2.deepseek@rec",
+     "fixture:classm.f2441.3.deepseek@rec",
+     "fixture:classm.f2441.4.deepseek@rec",
+     "fixture:classm.f2441.5.deepseek@rec",
+     "fixture:classm.f2441.6.deepseek@rec",
      "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@rec",
      "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@rec",
      "fixture:stage16.cleanup.refuse.f1040_line16@rec",
      "fixture:stage16.cleanup.refuse.scope_credits@rec",
+     "fixture:mexist.f8960.line5d.no_gains@rec",
      "fixture:rec.not_itemized@rec",
      "fixture:ss.single.over@rec",
-     "fixture:ss.multi.over@rec"
+     "generated:20261026.387@rec"
     ],
     "policy": "executable-triage-v2"
    }
@@ -504,6 +514,52 @@
   {
    "printed": "rec.path",
    "project_expr_sha256": "9d744c7780f5c12b5c6f0055ac7a9c947af20fc4defbfdf80845c7e179aa5402",
+   "second_expr_sha256": "4c722ebd60d7671a4a881cba076cafe462f9c98be1d7718f1f9e6003da7054f8",
+   "ruling": "Ruling: model error; p525 p. 27, Recoveries of Itemized Deductions: Worksheet 2 is used when the recovered amount was deducted as an itemized deduction in 2024. The reply adds its own test (rec.h_less) and gives false on the official example fixture rec.ex30 (p525 p. 26, Example 30), where the project gives true; executable triage (.transcription/triage/2025/rec.json, this pass): 2,643/3,347 agree; differences {\"candidate-refuses\": 39, \"candidate-unknown\": 639, \"project-unknown\": 9, \"value\": 17}; on completed returns {\"candidate-unknown\": 145, \"value\": 13}. Rerun only because scope.recovery was reworded (BUG-0982).",
+   "context": "d9da6849555ea7e4ef6641a75b21dd562fe046d40a6e5c091a1a73d969f6d843",
+   "date": "2026-11-22",
+   "run": "6cd6a092e274de9b51f7202c63acc9166a4136883c8e2519c4c5e79550ef0b2d",
+   "subject_key": "eb183473858a250c2343db0cb1423b006b0b7d665afcd5f2c6392135ee55e370",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@rec",
+     "fixture:classm.f2441.2.deepseek@rec",
+     "fixture:classm.f2441.3.deepseek@rec",
+     "fixture:classm.f2441.4.deepseek@rec",
+     "fixture:classm.f2441.5.deepseek@rec",
+     "fixture:classm.f2441.6.deepseek@rec",
+     "fixture:classm.rec.1@rec",
+     "fixture:classm.rec.3@rec",
+     "fixture:classm.rec.4@rec",
+     "fixture:classm.rec.5@rec",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@rec",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@rec",
+     "fixture:stage16.cleanup.refuse.f1040_line16@rec",
+     "fixture:stage16.cleanup.refuse.scope_credits@rec",
+     "fixture:mexist.f8960.line5d.no_gains@rec",
+     "fixture:rec.ex30@rec",
+     "fixture:rec.ex32@rec",
+     "fixture:x2s1o.rec.refuse.not_2024@rec",
+     "fixture:x2s1o.rec.refuse.sales_tax@rec",
+     "fixture:x2s1o.rec.refuse.amt_2024@rec",
+     "fixture:x2s1o.rec.refuse.nol_negative@rec",
+     "fixture:mrental.rec.amt_2024_split_refused@rec",
+     "fixture:mrental.rec.prior_dependent_refused@rec",
+     "fixture:ss.single.over@rec"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "rec.path",
+   "project_expr_sha256": "9d744c7780f5c12b5c6f0055ac7a9c947af20fc4defbfdf80845c7e179aa5402",
    "second_expr_sha256": "fee62ba78f04c87b8b1fc4084ca71f91b92526afe2d614b51bdafd1f5a53248a",
    "ruling": "Ruling: model error; the reply's path is any recovery kind ticked, without the 2024 itemizing test. On fixture rec.not_itemized (a property tax refund, no itemized deductions for 2024) the project says false and the reply true (41 value differences, 1 completed). p525 p. 27, Worksheet 2 is 'Recoveries of Itemized Deductions' and 'A recovery is included in income only to the extent of the deduction amount that reduced your tax in the prior year': a filer who did not itemize has no itemized deduction to recover, so the project's gate (scope.recovery then refund.itemized) is right.",
    "context": "bdb53c28677d80731fe3f10e36539b64e6362e3ccb2ea94f020cd73beae509e9",
@@ -570,6 +626,91 @@
      "fixture:classm.f8960.2.deepseek@rec",
      "fixture:classm.dependent.1.deepseek@rec",
      "fixture:x2s1o.rec.refuse.nol_negative@rec"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "rec.to_line1",
+   "project_expr_sha256": "09695e228be6d8b97976c73f1e14b0ed0f3e8a65a985eb6faf417ddede073d54",
+   "second_expr_sha256": "d54e5cf68dac58cfd59f1a5b6f4b87d168e17288167b5c58be8e6cae496b747b",
+   "ruling": "Ruling: model error; as rec.path: the reply computes the line 1 share where the project's path is false (stage16.refund.f3, project $0, reply $3,000) and refuses through its own gate elsewhere; executable triage (.transcription/triage/2025/rec.json, this pass): 2,394/3,347 agree; differences {\"candidate-refuses\": 52, \"candidate-unknown\": 884, \"project-unknown\": 9, \"value\": 8}; on completed returns {\"candidate-unknown\": 209, \"value\": 8}.",
+   "context": "d9da6849555ea7e4ef6641a75b21dd562fe046d40a6e5c091a1a73d969f6d843",
+   "date": "2026-11-22",
+   "run": "6cd6a092e274de9b51f7202c63acc9166a4136883c8e2519c4c5e79550ef0b2d",
+   "subject_key": "8ce26f104c4c1705adafed2499b0a8186fd8ff55ebb6e46f1895000c1be467b0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@rec",
+     "fixture:classm.f2441.2.deepseek@rec",
+     "fixture:classm.f2441.3.deepseek@rec",
+     "fixture:classm.f2441.4.deepseek@rec",
+     "fixture:classm.f2441.5.deepseek@rec",
+     "fixture:classm.f2441.6.deepseek@rec",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@rec",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@rec",
+     "fixture:stage16.cleanup.refuse.f1040_line16@rec",
+     "fixture:stage16.cleanup.refuse.scope_credits@rec",
+     "fixture:mexist.f8960.line5d.no_gains@rec",
+     "fixture:x2s1o.rec.refuse.not_2024@rec",
+     "fixture:x2s1o.rec.refuse.nonitemized@rec",
+     "fixture:x2s1o.rec.refuse.sales_tax@rec",
+     "fixture:x2s1o.rec.refuse.two_returns@rec",
+     "fixture:stage16.refund.f3@rec",
+     "fixture:stage16.refund.f5@rec",
+     "fixture:stage16.refund.f6@rec",
+     "fixture:stage16.refund.f8@rec",
+     "fixture:stage16.refund.f9@rec",
+     "fixture:stage16.refund.f10@rec",
+     "fixture:stage16.refuse.refund.exc_tax@rec",
+     "fixture:stage16.refuse.refund.exc_who@rec",
+     "fixture:ss.single.over@rec"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "rec.to_line8z",
+   "project_expr_sha256": "36ec804aa5921d99933b6c6499c602d993e673c1732a3bf236fca7601214b30a",
+   "second_expr_sha256": "8d7a21b89df5221b7fa2636e348320d1937e1121d95086f692ea5e34df63f30e",
+   "ruling": "Ruling: model error; as the ruling of 2026-11-15: the reply refuses through its own gate where the project computes; executable triage (.transcription/triage/2025/rec.json, this pass): 2,410/3,347 agree; differences {\"candidate-refuses\": 44, \"candidate-unknown\": 884, \"project-unknown\": 9}; on completed returns {\"candidate-unknown\": 209}; no value differs where both compute.",
+   "context": "d9da6849555ea7e4ef6641a75b21dd562fe046d40a6e5c091a1a73d969f6d843",
+   "date": "2026-11-22",
+   "run": "6cd6a092e274de9b51f7202c63acc9166a4136883c8e2519c4c5e79550ef0b2d",
+   "subject_key": "c02c4daed03220c8043986e3ecfd86993538f9ff1523ed5453d5dd300ded19d5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@rec",
+     "fixture:classm.f2441.2.deepseek@rec",
+     "fixture:classm.f2441.3.deepseek@rec",
+     "fixture:classm.f2441.4.deepseek@rec",
+     "fixture:classm.f2441.5.deepseek@rec",
+     "fixture:classm.f2441.6.deepseek@rec",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@rec",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@rec",
+     "fixture:stage16.cleanup.refuse.f1040_line16@rec",
+     "fixture:stage16.cleanup.refuse.scope_credits@rec",
+     "fixture:mexist.f8960.line5d.no_gains@rec",
+     "fixture:stage16.refuse.refund.exc_tax@rec",
+     "fixture:stage16.refuse.refund.exc_who@rec",
+     "fixture:ss.single.over@rec",
+     "generated:20261026.11@rec",
+     "generated:20261026.17@rec",
+     "generated:20261026.21@rec",
+     "generated:20261026.25@rec"
     ],
     "policy": "executable-triage-v2"
    }

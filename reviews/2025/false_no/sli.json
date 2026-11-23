@@ -2,68 +2,48 @@
  "form": "sli",
  "reviews": {
   "gate:sli.any_if_not_mfs": {
-   "subject_sha": "e69c80ca57cda5542e85d14678f7d8494c47b95a785ade09b89b3d06051d46a6",
+   "subject_sha": "ba7154702967f4c984983a5ba6d1f159f1ef7c48eee9ad7b9490d932d24ae231",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who paid 2025 interest on a general-purpose bank or credit-union personal loan that they used only to pay their own tuition and fees. It is a signature or consolidation loan, not one marketed as a student loan, and no Form 1098-E came.",
-       "why_no": "The gate asks about interest on 'a student loan'. The filer takes that to mean a product labeled as a student loan (federal Direct, Sallie Mae, and the like), not an ordinary personal loan.",
+       "pattern": "6",
+       "who": "A filer or spouse who paid 2025 interest on a general-purpose loan, such as a bank personal loan or a loan from a non-related individual, that was taken out solely to pay college tuition, fees, room and board. The lender called it a personal loan and sent no Form 1098-E.",
+       "why_no": "\"Paid interest on a student loan\" reads as a loan labeled or marketed as a student loan, such as a federal Direct, PLUS or private education loan. A borrower whose loan paperwork says personal loan answers no, and nothing in the gate tells them the label does not matter.",
        "line": "sli.interest_if_any",
-       "irs_text": "i1040gi p. 98, Qualified student loan: 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students. 1. Yourself or your spouse.'",
+       "irs_text": "i1040gi p. 98, Qualified student loan: \"A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students.\"",
        "severity": "medium",
-       "fix": "Ask: 'Did you (or, on a joint return, your spouse) pay interest in 2025 on any loan taken out to pay college or vocational school costs? This includes personal loans, refinanced loans and loans for a dependent, not only loans called student loans.' Then let sli.unqualified_any screen out mixed-use and related-party loans."
+       "fix": "Ask: \"In 2025, did you (or your spouse) pay interest on any loan taken out to pay college or vocational school costs (tuition, fees, room and board, books) for you, your spouse or a dependent? Count it even if the lender didn't call it a student loan or send a Form 1098-E.\" Sort out non-qualifying loans afterward with sli.unqualified_any."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A parent who borrowed in their own name to pay a dependent child's college costs, such as a Parent PLUS loan or a private parent loan, and paid interest on it in 2025.",
-       "why_no": "The parent reads 'paid interest on a student loan' as a loan made to a student. They think of this as the child's college debt, or as a parent loan, not as their own student loan.",
+       "who": "A former student, not claimable as anyone's dependent, whose parent or other relative made the 2025 payments on the student's own qualified student loan as a gift.",
+       "why_no": "\"You (or your spouse) paid interest\" is literally false, because the parent paid. Yet the IRS treats a payment someone else makes on your behalf as paid by you when you aren't a dependent. The gate's words and help give no hint of this.",
        "line": "sli.interest_if_any",
-       "irs_text": "i1040gi pp. 98–99, Qualified student loan: 'any loan you took out to pay the qualified higher education expenses for ... 2. Any person who was your dependent when the loan was taken out.'",
+       "irs_text": "i1040gi p. 98, Line 21: \"You paid interest in 2025 on a qualified student loan\". Pub. 970 (not in the snapshots above) treats interest paid on your behalf by another person as paid by you if you are not claimed as a dependent.",
        "severity": "medium",
-       "fix": "Add to the gate or its help: 'Count a loan you took out for your spouse or for someone who was your dependent, such as a Parent PLUS loan.'"
+       "fix": "Add help: \"Count interest someone else (such as a parent) paid on your loan as paid by you, unless someone can claim you as a dependent. Don't count payments your employer or a loan repayment program made; those are asked about next.\""
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A homeowner who drew on a home equity line of credit or home equity loan in a past year only to pay a dependent's tuition, and paid interest on it in 2025.",
-       "why_no": "The filer thinks of the debt as a mortgage or home equity loan, not as a 'student loan'. The gate gives no sign that the purpose of a loan, not its label, decides the question.",
+       "pattern": "4",
+       "who": "A borrower whose 2025 payments partly covered interest that had accrued and been capitalized during school or deferment. The loan servicer reports little or nothing in box 1 of Form 1098-E, or sends no form.",
+       "why_no": "The filer sees only principal reduction on the statement and no reported interest, so they treat the payments as principal. They answer no to having paid interest.",
        "line": "sli.interest_if_any",
-       "irs_text": "i1040gi p. 98: 'A qualified student loan is any loan you took out to pay the qualified higher education expenses' for the eligible students listed.",
-       "severity": "medium",
-       "fix": "Same as the first finding: define the gate by what the loan was used for ('any loan used only to pay school costs'), and state in help that a loan's name or security does not decide it."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A borrower who was in forbearance or deferment and whose unpaid interest was capitalized into principal. In 2025 they made payments that the servicer's statement shows mostly as principal, and the Form 1098-E box 1 amount is small or zero.",
-       "why_no": "The filer reads 'paid interest' literally. They believe their 2025 payments went to principal, so they answer no.",
-       "line": "sli.interest_if_any",
-       "irs_text": "i1040gi p. 99, worksheet line 1: 'Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21).' The capitalized-interest rule is in Pub. 970, which is cited but not reproduced here.",
+       "irs_text": "i1040gi p. 99, Student Loan Interest Deduction Worksheet line 1: \"Enter the total interest you paid in 2025 on qualified student loans\"",
        "severity": "low",
-       "fix": "Add help to the gate: 'Count any 2025 payment on a school loan, even if your statement shows it as principal; we will ask for the interest amount next.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A student who is legally obligated on their own qualified student loan, where a parent or other relative (not an employer) made the 2025 payments directly to the servicer.",
-       "why_no": "The gate's verb is 'paid', and the student did not personally make the payments.",
-       "line": "sli.interest_if_any",
-       "irs_text": "i1040gi p. 98: 'You paid interest in 2025 on a qualified student loan'. The rule that treats payment by a third party as paid by the borrower is in Pub. 970, which is cited but not reproduced here.",
-       "severity": "low",
-       "fix": "Ask: 'Was interest paid in 2025, by you or by anyone else other than an employer, on a school loan you (or your spouse) owe?'"
+       "fix": "Add help: \"Payments can include interest that was added to the loan balance earlier (capitalized interest). If you made any payment on a student loan in 2025, answer yes and check the lender's statement.\""
       }
      ],
-     "prompt_sha": "5d901d8f185d064069c738c5073f7b39f9f2a55aadec543aa2e26e49db9d49eb",
+     "prompt_sha": "a226f7767618295a9268ef1c5e55f74de452c09997dbb60f1e78ec5998f07abd",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.111204,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_sli.any_if_not_mfs.e69c80ca57cd.1.response.txt"
+     "cost": 0.09614,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_sli.any_if_not_mfs.ba7154702967.1.response.txt"
     }
    ],
    "condition": "sli.any_if_not_mfs",
@@ -91,7 +71,8 @@
       "p. 98, Schedule 1, line 21, \"Your filing status is any status except married filing separately\"",
       "p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; , Student loan repayment assistance, \"You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs\" and \"The National Health Service Corps (NHSC) Loan Repayment Program\"",
       "p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan'",
-      "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses"
+      "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses",
+      "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses, 'The expenses must be for education in a degree, certificate, or similar program at an eligible educational institution. An eligible educational institution includes most colleges, universities, and certain vocational schools.'"
      ],
      "cols_pages": [
       98

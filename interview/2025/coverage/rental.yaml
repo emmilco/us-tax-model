@@ -35,6 +35,8 @@ sets:
       rental[house].depletion: false
       rental[house].part_home: false
       rental[house].held_for_sale: false
+      rental[house].business_incidental: false
+      rental[house].land_heavy: false
       rental[house].active: true
       rental[house].rents: 1800000
       rental[house].has_mortgage: true
@@ -49,7 +51,9 @@ sets:
       rental[house].has_supplies: false
       rental[house].has_advertising: false
       rental[house].has_legal: false
+      rental[house].mortgage_excess: false
       rental[house].has_other: false
+      rental[house].bought_lease: false
       rental[house].vehicle: false
       rental[house].amt12: 600000
       rental[house].amt16: 240000
@@ -151,9 +155,24 @@ rows:
     rental[house].prior_amt: 500000
     rental[house].prior_not_active: false
     rental[house].prior_ws51: false
+    f8582.prior_crd: false
   expect:
     proceeds:
       rental[house].prior_amt: 500000
+- id: rental.prior_crd
+  design: BUG-0944 (prior-year unallowed commercial revitalization deduction)
+  situation: A person whose 2024 Form 8582 carried a held-back loss marked "CRD" for a building enters the loss.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].prior_any: true
+    rental[house].prior_amt: 500000
+    rental[house].prior_not_active: false
+    rental[house].prior_ws51: false
+    f8582.prior_crd: true
+  expect:
+    refused: f8582.prior_crd_if_prior
 - id: rental.short_stay
   design: scout-schedule-e.md §4 (lane x1-sche)
   situation: A person rents a whole house to vacationers for 3 nights at a time.
@@ -251,6 +270,150 @@ rows:
     rental[house].held_for_sale: true
   expect:
     refused: rental[house].held_for_sale
+- id: rental.business_incidental
+  design: BUG-0943 (i8582 exception for a rental incidental to a trade or business)
+  situation: A person rents out, for a token rent, a warehouse her own business has mainly used for years.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: commercial
+    rental[house].business_incidental: true
+  expect:
+    refused: rental[house].business_incidental
+- id: rental.mortgage_excess
+  design: BUG-0995 (mortgage interest beyond the Form 1098 amount)
+  situation: A person paid more mortgage interest on her rental house than her lender's Form 1098 shows.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].mortgage_excess: true
+  expect:
+    refused: rental[house].mortgage_excess_if_mortgage
+- id: rental.bought_lease
+  design: BUG-0992 (the cost of a leasehold bought for rental purposes)
+  situation: A person paid to take over a lease on a shop, which she sublets.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: commercial
+    rental[house].bought_lease: true
+  expect:
+    refused: rental[house].bought_lease
+- id: rental.nondep_land
+  design: BUG-0953 (rental of nondepreciable property, Pub. 925 p. 16)
+  situation: A person earning $160,000 rents out a house at a loss and a lot to a farmer at a profit; the lot's income is
+    not passive while Form 8582 limits the house's loss.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    $rental:
+    - house
+    - lot
+    rental[lot].kind: land
+    rental[lot].days_fair: 365
+    rental[lot].personal_any: false
+    rental[lot].short_stays: false
+    rental[lot].services: false
+    rental[lot].under_tenth: false
+    rental[lot].not_for_profit: false
+    rental[lot].depletion: false
+    rental[lot].part_home: false
+    rental[lot].held_for_sale: false
+    rental[lot].business_incidental: false
+    rental[lot].active: true
+    rental[lot].rents: 1000000
+    rental[lot].has_mortgage: false
+    rental[lot].has_other_interest: false
+    rental[lot].has_taxes: true
+    rental[lot].has_insurance: false
+    rental[lot].has_management: false
+    rental[lot].has_commissions: false
+    rental[lot].has_repairs: false
+    rental[lot].has_cleaning: false
+    rental[lot].has_utilities: false
+    rental[lot].has_supplies: false
+    rental[lot].has_advertising: false
+    rental[lot].has_legal: false
+    rental[lot].has_other: false
+    rental[lot].bought_lease: false
+    rental[lot].vehicle: false
+    rental[lot].amt16: 100000
+    rental[lot].prior_any: false
+    $rprop@rental[lot]: []
+    person[taxpayer].w2[job].box1: 16000000
+    person[taxpayer].w2[job].box5: 16000000
+    rental[house].rents: 600000
+    rental[house].not_at_risk: false
+    $oi8z: []
+  expect:
+    refused: rental[lot].nondep_income
+- id: rental.nondep_land_alone
+  design: BUG-0953 (rental of nondepreciable property, Pub. 925 p. 16)
+  situation: A person rents a lot to a farmer at a profit and has no other rental; the return is completed.
+  uses:
+  - one_w2
+  answers:
+    scope.rental: true
+    scope.rent_personal: false
+    $rental:
+    - lot
+    rental[lot].kind: land
+    rental[lot].days_fair: 365
+    rental[lot].personal_any: false
+    rental[lot].short_stays: false
+    rental[lot].services: false
+    rental[lot].under_tenth: false
+    rental[lot].not_for_profit: false
+    rental[lot].depletion: false
+    rental[lot].part_home: false
+    rental[lot].held_for_sale: false
+    rental[lot].business_incidental: false
+    rental[lot].active: true
+    rental[lot].rents: 1000000
+    rental[lot].has_mortgage: false
+    rental[lot].has_other_interest: false
+    rental[lot].has_taxes: true
+    rental[lot].has_insurance: false
+    rental[lot].has_management: false
+    rental[lot].has_commissions: false
+    rental[lot].has_repairs: false
+    rental[lot].has_cleaning: false
+    rental[lot].has_utilities: false
+    rental[lot].has_supplies: false
+    rental[lot].has_advertising: false
+    rental[lot].has_legal: false
+    rental[lot].has_other: false
+    rental[lot].bought_lease: false
+    rental[lot].vehicle: false
+    rental[lot].amt16: 100000
+    rental[lot].prior_any: false
+    $rprop@rental[lot]: []
+    person[taxpayer].w2[job].box1: 16000000
+    person[taxpayer].w2[job].box5: 16000000
+    $royalty: []
+    sche.re_pro: false
+    sche.grouped: false
+    sche.qbi_business: false
+    sche.accrual: false
+  expect:
+    proceeds:
+      rental[lot].rents: 1000000
+- id: rental.rprop_short_class
+  design: BUG-0955 (farm buildings and motor fuels outlets are 10-, 15- or 20-year property)
+  situation: A person rents out a farm and depreciates its barn, built in 2010.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: commercial
+    rental[house].rprop[bldg].kind: nonresidential
+    rental[house].rprop[bldg].short_class: true
+  expect:
+    refused: rental[house].rprop[bldg].screen
 - id: rental.vehicle
   design: scout-schedule-e.md §4 (lane x1-sche)
   situation: A person drives to the rental and deducts car costs.
@@ -305,6 +468,7 @@ rows:
   answers:
     rental[house].kind: commercial
     rental[house].rprop[bldg].kind: nonresidential
+    rental[house].rprop[bldg].short_class: false
     rental[house].rprop[bldg].year: y1990
   expect:
     refused: rental[house].rprop[bldg].early_nonres
@@ -387,6 +551,7 @@ rows:
   answers:
     rental[house].kind: commercial
     rental[house].rprop[bldg].kind: nonresidential
+    rental[house].rprop[bldg].short_class: false
     rental[house].rprop[bldg].year: y2019
     rental[house].rprop[bldg].qip: true
   expect:
@@ -401,6 +566,7 @@ rows:
   answers:
     rental[house].kind: commercial
     rental[house].rprop[bldg].kind: nonresidential
+    rental[house].rprop[bldg].short_class: false
     rental[house].rprop[bldg].year: y2010
   expect:
     proceeds:

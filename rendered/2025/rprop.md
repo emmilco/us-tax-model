@@ -2,7 +2,7 @@
 
 - Document: `rprop` (form, tax year 2025)
 - Collection: keyed entries within rental; [p946] p. 3, Additions and Improvements (For use in preparing 2025 returns; sha256 07fadfb2)
-- Note: One entry per building, or improvement to one, of a rental property; depreciated by Table A-6 (residential rental property, 27.5 years) or Table A-7a (nonresidential real property, 39 years), mid-month convention, straight line. Refused: personal property and land improvements, ADS and other methods, basis changes, dispositions, qualified improvement property, basis reduced by a credit or deduction, cooperative stock, and nonresidential real property placed in service before 1994.
+- Note: One entry per building, or improvement to one, of a rental property; depreciated by Table A-6 (residential rental property, 27.5 years) or Table A-7a (nonresidential real property, 39 years), mid-month convention, straight line. Refused: personal property and land improvements, ADS and other methods, basis changes, dispositions, qualified improvement property, basis reduced by a credit or deduction, cooperative stock, farm buildings and motor fuels outlets (10-, 15- and 20-year property), property not bought or built (exchanges, involuntary conversions, gifts, inheritances, spouse transfers, pay for services), and nonresidential real property placed in service before 1994.
 
 ## (helper) — `rprop.zero`
 
@@ -21,6 +21,20 @@
   - personal: something other than a building or part of one, such as an appliance, carpet, furniture, a fence or a driveway
 - Expr: `{"op":"input","source":"What is this?\n\n- residential: a building (or an improvement to one) whose rent comes mostly (80% or more) from homes\n- nonresidential: any other building, such as shops or offices, or an improvement to one\n- personal: something other than a building or part of one, such as an appliance, carpet, furniture, a fence or a driveway"}`
 - Cite: [i4562] p. 10, Residential rental property (2025; sha256 5c1c95b7)
+
+## (screen) — `rprop.short_class`
+
+- **Authored helper label:** A farm building, single purpose agricultural or horticultural structure, or retail motor fuels outlet (10-, 15- or 20-year property), or an improvement to one
+- **Encoded (Bool):** Input — Is it a farm building (such as a barn, a silo or a greenhouse), or a building where gasoline or other motor fuel is sold (such as a gas station or a store with fuel pumps), or an improvement to one?
+- Expr: `{"op":"input","source":"Is it a farm building (such as a barn, a silo or a greenhouse), or a building where gasoline or other motor fuel is sold (such as a gas station or a store with fuel pumps), or an improvement to one?"}`
+- Cite: [i4562] p. 10, "Any section 1250 property that is a retail motor fuels outlet"; "Farm buildings (other than single purpose agricultural or horticultural structures)"; "Any single purpose agricultural or horticultural structure"; "Nonresidential real property is any real property that is neither residential rental property nor property with a class life of less than 27.5 years"; p946 p. 31, Retail motor fuels outlet, "used to a substantial extent in the retail marketing of petroleum or petroleum products" (2025; sha256 5c1c95b7)
+
+## (gate) — `rprop.short_class_if_nonres`
+
+- **Authored helper label:** Farm building or motor fuels outlet, asked only of nonresidential real property (false otherwise)
+- **Encoded (Bool):** Choose — [column (a) = 'nonresidential' → helper "A farm building, single purpose agricultural or horticultural structure, or retail motor fuels outlet (10-, 15- or 20-year property), or an improvement to one"] [column (a) = 'residential' → helper "Year parameter household.no (false)"] [column (a) = 'personal' → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["rprop.kind",{"const":"nonresidential"}],"op":"test"},"then":"rprop.short_class"},{"guard":{"eq":["rprop.kind",{"const":"residential"}],"op":"test"},"then":"rprop.no"},{"guard":{"eq":["rprop.kind",{"const":"personal"}],"op":"test"},"then":"rprop.no"}],"op":"choose"}`
+- Cite: [i4562] p. 10, "Any section 1250 property that is a retail motor fuels outlet"; "Farm buildings (other than single purpose agricultural or horticultural structures)"; "Any single purpose agricultural or horticultural structure"; "Nonresidential real property is any real property that is neither residential rental property nor property with a class life of less than 27.5 years"; p946 p. 31, Retail motor fuels outlet, "used to a substantial extent in the retail marketing of petroleum or petroleum products" (2025; sha256 5c1c95b7)
 
 ## (b) — `rprop.month`
 
@@ -60,8 +74,8 @@
 ## (screen) — `rprop.qip`
 
 - **Authored helper label:** Qualified improvement property (an improvement to an interior portion of a building that is nonresidential real property, placed in service after the building was first placed in service; not an enlargement, an elevator or escalator, or the internal structural framework)
-- **Encoded (Bool):** Input — Is it an improvement to the inside of the building, made after the building was first placed in service by anyone, and not an enlargement, an elevator or escalator, or the internal structural framework?
-- Expr: `{"op":"input","source":"Is it an improvement to the inside of the building, made after the building was first placed in service by anyone, and not an enlargement, an elevator or escalator, or the internal structural framework?"}`
+- **Encoded (Bool):** Input — Is any part of it an improvement to the inside of the building, made after the building was first placed in service by anyone, other than an enlargement, an elevator or escalator, or the internal structural framework?
+- Expr: `{"op":"input","source":"Is any part of it an improvement to the inside of the building, made after the building was first placed in service by anyone, other than an enlargement, an elevator or escalator, or the internal structural framework?"}`
 - Cite: [p946] p. 16, Qualified improvement property; p. 31, Qualified improvement property (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (gate) — `rprop.qip_if_new_nonres`
@@ -115,16 +129,16 @@
 
 ## (screen) — `rprop.exchanged`
 
-- **Authored helper label:** Acquired in a like-kind exchange or an involuntary conversion (carryover basis)
-- **Encoded (Bool):** Input — Did you get it in a trade for other property (a like-kind exchange), or to replace property that was destroyed, stolen or taken by a government (an involuntary conversion)?
-- Expr: `{"op":"input","source":"Did you get it in a trade for other property (a like-kind exchange), or to replace property that was destroyed, stolen or taken by a government (an involuntary conversion)?"}`
-- Cite: [i4562] p. 9, "Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted" (2025; sha256 5c1c95b7)
+- **Authored helper label:** Acquired other than by purchase or construction (like-kind exchange, involuntary conversion, gift, inheritance, transfer from a spouse or former spouse, or for services)
+- **Encoded (Bool):** Input — Did you get it other than by buying or building it, such as in a trade for other property (a like-kind exchange), to replace property destroyed, stolen or taken by a government (an involuntary conversion), as a gift or an inheritance, from your spouse or former spouse, or as pay for work?
+- Expr: `{"op":"input","source":"Did you get it other than by buying or building it, such as in a trade for other property (a like-kind exchange), to replace property destroyed, stolen or taken by a government (an involuntary conversion), as a gift or an inheritance, from your spouse or former spouse, or as pay for work?"}`
+- Cite: [i4562] p. 9, "Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted"; p527 p. 11, Basis Other Than Cost, "You can’t use cost as a basis for property that you received" (2025; sha256 5c1c95b7)
 
 ## (helper) — `rprop.screen`
 
 - **Authored helper label:** Depreciation of this property outside the tables this tool uses
-- **Encoded (Bool):** (helper "Retired from service in 2025 (sold or exchanged, converted to personal use, abandoned or destroyed)" = true or helper "A special depreciation allowance or section 179 deduction claimed, or depreciated by a method other than straight line over 27.5 or 39 years" = true or helper "Depreciated under the alternative depreciation system (ADS), elected or required" = true or helper "Basis adjusted after it was placed in service for anything other than depreciation or an improvement depreciated as a separate item (for example a casualty loss or an easement)" = true or helper "Basis reduced by a credit or deduction (for example the disabled access credit, the deduction for removal of barriers to the disabled and the elderly, or the section 179D deduction)" = true or helper "Stock in a cooperative housing corporation" = true or helper "Acquired in a like-kind exchange or an involuntary conversion (carryover basis)" = true or helper "Qualified improvement property, asked only of nonresidential real property placed in service after 2017 (false otherwise)" = true)
-- Expr: `{"any":[{"eq":["rprop.disposed",{"const":true}],"op":"test"},{"eq":["rprop.fast",{"const":true}],"op":"test"},{"eq":["rprop.ads",{"const":true}],"op":"test"},{"eq":["rprop.basis_changed",{"const":true}],"op":"test"},{"eq":["rprop.credit",{"const":true}],"op":"test"},{"eq":["rprop.coop",{"const":true}],"op":"test"},{"eq":["rprop.exchanged",{"const":true}],"op":"test"},{"eq":["rprop.qip_if_new_nonres",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** (helper "Retired from service in 2025 (sold or exchanged, converted to personal use, abandoned or destroyed)" = true or helper "A special depreciation allowance or section 179 deduction claimed, or depreciated by a method other than straight line over 27.5 or 39 years" = true or helper "Depreciated under the alternative depreciation system (ADS), elected or required" = true or helper "Basis adjusted after it was placed in service for anything other than depreciation or an improvement depreciated as a separate item (for example a casualty loss or an easement)" = true or helper "Basis reduced by a credit or deduction (for example the disabled access credit, the deduction for removal of barriers to the disabled and the elderly, or the section 179D deduction)" = true or helper "Stock in a cooperative housing corporation" = true or helper "Acquired other than by purchase or construction (like-kind exchange, involuntary conversion, gift, inheritance, transfer from a spouse or former spouse, or for services)" = true or helper "Qualified improvement property, asked only of nonresidential real property placed in service after 2017 (false otherwise)" = true or helper "Farm building or motor fuels outlet, asked only of nonresidential real property (false otherwise)" = true)
+- Expr: `{"any":[{"eq":["rprop.disposed",{"const":true}],"op":"test"},{"eq":["rprop.fast",{"const":true}],"op":"test"},{"eq":["rprop.ads",{"const":true}],"op":"test"},{"eq":["rprop.basis_changed",{"const":true}],"op":"test"},{"eq":["rprop.credit",{"const":true}],"op":"test"},{"eq":["rprop.coop",{"const":true}],"op":"test"},{"eq":["rprop.exchanged",{"const":true}],"op":"test"},{"eq":["rprop.qip_if_new_nonres",{"const":true}],"op":"test"},{"eq":["rprop.short_class_if_nonres",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i4562] p. 11, Column (f)—Method (2025; sha256 5c1c95b7)
 
 ## (gate) — `rprop.personal`
@@ -160,7 +174,7 @@
 - **Authored helper label:** Depreciation deduction
 - **Encoded (NonNegDollars):** Multiply column (c) by helper "Rate from Table A-6 or A-7a for the month placed in service and the year of recovery".
 - **Refusal:** when rprop.personal is true, cannot complete Form 4562 (personal property or land improvements in a rental). Appliances, carpet, furniture, fences and other property that is not a building are outside this tool. Cite: [i4562] p. 9, Lines 19a Through 19j (2025; sha256 5c1c95b7)
-- **Refusal:** when rprop.screen is true, cannot complete Form 4562 (real property outside the mid-month tables). Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, cooperative stock, or property received in a like-kind exchange or an involuntary conversion is outside this tool. Cite: [i4562] p. 11, Column (f)—Method (2025; sha256 5c1c95b7)
+- **Refusal:** when rprop.screen is true, cannot complete Form 4562 (real property outside the mid-month tables). Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, cooperative stock, a farm building or a motor fuels outlet, or property received other than by purchase or construction (in a like-kind exchange or an involuntary conversion, as a gift or an inheritance, from a spouse or former spouse, or for services) is outside this tool. Cite: [i4562] p. 11, Column (f)—Method (2025; sha256 5c1c95b7)
 - **Refusal:** when rprop.early_nonres is true, cannot complete Form 4562 (nonresidential real property placed in service before 1994). Nonresidential real property placed in service before 1994 is outside this tool. Cite: [p946] p. 74, Table A-7, "Straight Line—31.5 Years" (For use in preparing 2025 returns; sha256 07fadfb2)
 - Interpretation: amb.2025.rental_prior_depreciation_tables
 - Expr: `{"amount":"rprop.basis","op":"multiply_rate","rate":"rprop.rate"}`

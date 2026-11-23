@@ -58,7 +58,7 @@ interface Ctx {
   byId: Map<string, FormDoc>;
   inputs: Inputs;
   memo: Map<string, Derivation>;
-  /** Every key memoized, in order, so that an evaluation can be undone (chooseUnresolved). */
+  /** Every key memoized, in order, so that an evaluation can be undone (forget). */
   memoLog: string[];
   inProgress: Set<string>;
   errors: string[];
@@ -206,6 +206,12 @@ export function enclosingKey(instKey: string | null, docId: string): string | nu
   return at < 0 ? null : segs.slice(0, at + 1).join(".");
 }
 
+/** Undo the evaluation since `mark` (a length of `ctx.memoLog`): every line memoized since then is forgotten, so the
+ * memo and its log are again as they were at the mark. */
+function forget(ctx: Ctx, mark: number): void {
+  for (const key of ctx.memoLog.splice(mark)) ctx.memo.delete(key);
+}
+
 function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
   const key = canonicalKey(frame, lineId);
   const memo = ctx.memo.get(key);
@@ -255,12 +261,12 @@ function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
     // With `ahead`, past the first unanswered gate: `settled` once a later gate refuses whatever that answer is.
     let settled = false;
     for (const refusal of line.refuses ?? []) {
-      const before = refusal.when_known ? new Map(ctx.memo) : null;
+      const mark = ctx.memoLog.length;
       const gate = evalLine(ctx, frame, refusal.when);
-      if (before && gate.value.kind === "unknown") {
-        // An unanswered consistency check does not create an interview dependency.
+      if (refusal.when_known && gate.value.kind === "unknown") {
+        // An unanswered consistency check does not create an interview dependency: the lines it read are forgotten.
         // Its expression must still determine the amount without assumed answers.
-        ctx.memo = before;
+        forget(ctx, mark);
         gateNotes.push(`Check for ${refusal.form} awaits supplied figures; no answer was assumed.`);
         continue;
       }
@@ -528,7 +534,7 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       if (amount.kind !== "money" || count.kind !== "count") {
         return d({ kind: "unknown", reason: "multiply_count operands wrong" }, "multiply_count", ops);
       }
-      return d({ kind: "money", cents: amount.cents * count.value }, "multiply_count", ops);
+      return d({ kind: "money", cents: safeNumber(BigInt(amount.cents) * BigInt(count.value)) }, "multiply_count", ops);
     }
     case "prorate": {
       const amount = evalOperand(ctx, frame, expr.amount, ops);
@@ -555,7 +561,7 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       if (expr.unit !== undefined) {
         // One rounding of the exact product, half-up to a multiple of `unit` cents.
         if (!(Number.isInteger(expr.unit) && expr.unit > 0)) return d({ kind: "unknown", reason: "multiply_rate unit is not a positive integer" }, "multiply_rate", ops);
-        const cents = safeNumber(BigInt(multiplyRateHalfUp(amount.cents, rate.num, rate.den * expr.unit)) * BigInt(expr.unit));
+        const cents = safeNumber(BigInt(multiplyRateHalfUp(amount.cents, rate.num, safeNumber(BigInt(rate.den) * BigInt(expr.unit)))) * BigInt(expr.unit));
         return d({ kind: "money", cents }, "multiply_rate", ops, [], [`exact product rounded once, half-up to a multiple of ${expr.unit} cents`]);
       }
       const cents = multiplyRateHalfUp(amount.cents, rate.num, rate.den);
@@ -737,7 +743,7 @@ function chooseUnresolved(
     der.paths = paths;
     return der;
   }
-  for (const key of ctx.memoLog.splice(mark)) ctx.memo.delete(key);
+  forget(ctx, mark);
   const der = d(unknown, "choose", ops, guardsNotTaken, notes);
   der.paths = paths;
   return der;

@@ -2846,6 +2846,58 @@
           "value": true
         }
       }
+    },
+    {
+      "id": "sa.refuse.mfs_joint_paid",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane bugfix-other, predicted by hand from the archived sources before running the evaluator. BUG-0972. mfs.sa.spouse_itemizes_return (married filing separately, the spouse itemizes, state income tax withheld $3,000) with a Yes to the question whether the itemized costs were paid from an account held with the husband or wife or the two file a joint state return. i1040sca p. 1, \"If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504\"; p504 p. 5, Table 1 divides such expenses (half of jointly paid medical costs; a gross-income fraction of state tax on a joint state return), which this tool does not apply. The return is married filing separately and itemizes (the spouse itemizes, so the standard deduction is zero), so the question is asked and line 12e (sa.deduction) refuses at sa.mfs_joint_paid_if_itemizing.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$person": [
+          "taxpayer"
+        ],
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box2": 600000,
+        "person[taxpayer].w2[e0].box3": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "sa.spouse_itemizes": true,
+        "sa.state_tax_any": true,
+        "sa.line5a": 300000,
+        "sa.mfs_joint_paid": true
+      },
+      "expect": {
+        "sa.itemizes": {
+          "kind": "bool",
+          "value": true
+        },
+        "sa.mfs_itemizing": {
+          "kind": "bool",
+          "value": true
+        },
+        "sa.deduction": {
+          "kind": "refusal",
+          "gate": "sa.mfs_joint_paid_if_itemizing",
+          "form": "Schedule A on a separate return, expenses paid jointly with the spouse (Pub. 504, Table 1)",
+          "remedy": "On a married filing separately return, itemized deductions paid from money held with your spouse, or state income tax on a joint state return, are divided between you under Pub. 504; that is outside this tool.",
+          "cite": {
+            "doc": "i1040sca",
+            "locator": "p. 1, \"If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions\"",
+            "revision": "2025; printed date 2025-12-08",
+            "snapshot": "b0999b12d9dc4b13868501a9c1879011c00d2fc035f13a1391251d355a6242c8",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

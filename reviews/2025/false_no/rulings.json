@@ -237,53 +237,49 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:sa.gifts#1": {
-   "reason": "Carryovers, volunteer mileage, appreciated property, tax-credit gifts and the organization kinds are covered by the question, its help or the every-filer carryover question; fraternal orders are a wording point.",
+   "reason": "Carryovers and memberships are covered; hosting a student or foster child is a defect.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "sa.gift_carryover is asked of every filer (sa.gift_carryover_if_no_gifts) and refuses sa.line13 (i1040sca p. 11, Line 13)."
+     "evidence": "sa.gift_carryover is asked of every filer (sa.gift_carryover_if_no_gifts) and refuses sa.line13 (i1040sca p. 11, Line 13).",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The prompt includes 'or spend your own money doing volunteer work for one' and the sa.line11 prompt 'out-of-pocket volunteer costs such as mileage'."
+     "class": "defect",
+     "evidence": "p526 p. 6, Expenses Paid for Student Living With You, 'up to $50 a month'; the shown question and help do not name hosting, though the encoded sa.gifts source does. BUG-1090.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "Gifts of appreciated property are 'things' to charity, which answers Yes; a gift of the use of property is a partial interest that Pub. 526 p. 6 disallows ('You own a 10-story office building and donate rent-free use of the top floor ... can't take a deduction'), and gift.special refuses 'conservation or partial interests'."
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "p526, Foster parents under Out-of-Pocket Expenses in Giving Services; the encoded sa.gifts source names 'a foster child placed by a charitable organization' but the shown question does not. Same bug, BUG-1090.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "A gift to a foreign charity still draws a Yes ('a charity'); the amount question then limits line 11 to U.S. charities, which the gate does not decide."
+     "evidence": "The gate help counts 'a payment that got you something back', and sa.line11's help handles membership perks of $75 or less (p526 p. 5).",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The shown help lists 'churches, schools, nonprofit hospitals, veterans' groups and governments' and does not name fraternal orders' charitable work, which i1040sca p. 9 includes; a filer may not count a lodge's charity fund as a charity. The form-level wording of sa.gifts names it, so adding it to the interview help would close this."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The gate says 'to a charity' and the help gives broad examples; organizations preventing cruelty to children or animals are charities in the ordinary reading."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "A payment earning a state credit is still a gift; the gate help says 'Count a payment that got you something back' and sa.line11 leaves out 'any part earning a state tax credit', with the credit applied handled in sa.state_tax_other."
+     "class": "out of scope",
+     "evidence": "A charitable contribution reported on a K-1 is refused by scope.k1.",
+     "bugs": []
     }
    ],
-   "subject_sha": "db7c127f3c2f842a7ec1bfe77ee80c40889d642ed3c5a24c6a3fbc23831d25d5",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "a5de0a1725275b95b34666d54db7eede0a46e411840dce349cfebca4a333e821",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
+   "bugs": [
+    "BUG-1090"
+   ]
   },
   "unruled:gate:s179.wc_ask#1": {
    "class": "no gate defect; one finding designed out, one wording point accepted (low)",
@@ -2011,59 +2007,62 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude Opus agents, RUBRIC2)"
   },
   "unruled:gate:qbi.prior_form#1": {
-   "class": "false no: carryforward from a year before 2024 (low)",
-   "reason": "false no: carryforward from a year before 2024 (low)",
+   "class": "Suspended losses are asked separately; PTP cases are refused with every K-1; one real narrow reading: a Schedule C loss year with no Form 8995 filed.",
+   "reason": "Suspended losses are asked separately; PTP cases are refused with every K-1; one real narrow reading: a Schedule C loss year with no Form 8995 filed.",
+   "subject_sha": "a67ace58a98074144e332e6a412b83bc114b417abafa7d289d202b5f43c14a08",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i8995 p. 5, Line 16; qbi.prior_form asks only about the 2024 return.",
-     "bug": "BUG-0849"
+     "class": "covered",
+     "evidence": "qbi.suspended is asked on every return with a Schedule C (qbi.suspended_if_business), whether or not a Form 8995 was filed, and refuses (i8995 p. 3); other activities' QBI is refused by the scope questions.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
      "class": "defect",
-     "evidence": "qbi.prior_form help 'If there was no 2024 return ... the answer is No'.",
-     "bug": "BUG-0849"
+     "evidence": "i8995 p. 4, Line 4, 'If you have a qualified business net loss for the year ... The loss will be carried forward to next year', and p. 5, Line 16, 'regardless of whether the trade(s) or business(es) that generated the loss is still in existence'. A sole proprietor whose earlier net loss year had no Form 8995 attached truthfully answers No, and the carryforward is dropped.",
+     "bugs": [
+      {
+       "title": "qbi.prior_form asks whether a form was filed, not whether a business had a net loss carried forward",
+       "source": "i8995 p. 4, Line 4, \"If you have a qualified business net loss for the year ... The loss will be carried forward to next year.\"; p. 5, Line 16, \"This amount will offset QBI in later tax years regardless of whether the trade(s) or business(es) that generated the loss is still in existence.\"",
+       "symptom": "A sole proprietor whose earlier net-loss year had no Form 8995 attached truthfully answers No to qbi.prior_form; the carryforward (Form 8995 line 3) is dropped and the QBI deduction overstated.",
+       "where": "interview/2025/questions.yaml (qbi.prior_form); forms/2025/qbi.yaml (qbi.prior_form)",
+       "fix": "Proposed fix: a refusing question asked with a Schedule C: 'Did a business of yours have a net loss in any year from 2018 to 2024 that a later year has not used up?' (needs the inputs claim), or help on qbi.prior_form: 'Answer Yes too if a business of yours had a net loss in a year since 2018, even with no Form 8995 that year.'",
+       "severity": "low"
+      }
+     ]
     },
     {
      "n": 2,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "A released K-1 loss: K-1s refuse at scope.k1; Schedule C releases at qbi.suspended."
+     "class": "out of scope",
+     "evidence": "scope.k1 refuses every Schedule K-1 ('Income or a loss from a partnership, S corporation, estate or trust ... A Yes ends the interview here'), so a partner's or PTP holder's case is refused upstream.",
+     "bugs": []
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "A PTP is refused (k1p.ptp; scope.k1)."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A form attached by software that the filer does not remember: the help names the title and that it is filed 'for a business or for dividends of real estate funds'; low.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The form is named by its title; not filed."
+     "class": "out of scope",
+     "evidence": "A prior Form 8995 filed only for PTP income came with a Schedule K-1; scope.k1 refuses every Schedule K-1 ('Income or a loss from a partnership, S corporation, estate or trust ... A Yes ends the interview here'), so a partner's or PTP holder's case is refused upstream.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "A line 17 PTP loss carryforward on a 2024 form filed for fund dividends is not recognized from the help; same entry.",
-     "bug": "BUG-0849"
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Amended return; rare; not filed."
+     "class": "accepted residual",
+     "evidence": "A 2024 return not yet filed or amended: the tool prepares 2025 from the filed 2024 return; rare; low.",
+     "bugs": []
     }
-   ],
-   "bugs": [
-    "BUG-0849"
-   ],
-   "subject_sha": "3b4481c62281cc1cd5e6f8ec60d38512800a4c40bf0d61e4673f23d03975ff04"
+   ]
   },
   "unruled:gate:k1s.active_if_b2#1": {
    "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
@@ -2716,25 +2715,25 @@
   },
   "unruled:gate:asset.claims_bonus#1": {
    "class": "no gate defect; 60% and QPP cases refused before the gate, election-out wording covered, fiscal year recorded (BUG-0565), spouse transfer refused",
-   "reason": "asset.claims_bonus is computed from asset.placed and asset.bonus_choice (\u2260 none), not a yes/no about \"the full or 40% allowance\": a 60% claimant would not choose \"No: I elect not to take any special allowance\". Aircraft, long-production property and QPP are refused (asset.kind_excluded, asset.long_production). The choice wording states the election out. Converted property: asset.placed help counts from the conversion year, and p946 says converted property may be qualified property. Fiscal-year wording is BUG-0565 (5). A spouse transfer is an acquisition from a relative, refused by asset.got_other.",
+   "reason": "asset.claims_bonus is computed from asset.placed and asset.bonus_choice (≠ none), not a yes/no about \"the full or 40% allowance\": a 60% claimant would not choose \"No: I elect not to take any special allowance\". Aircraft, long-production property and QPP are refused (asset.kind_excluded, asset.long_production). The choice wording states the election out. Converted property: asset.placed help counts from the conversion year, and p946 says converted property may be qualified property. Fiscal-year wording is BUG-0565 (5). A spouse transfer is an acquisition from a relative, refused by asset.got_other.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "i4562 p. 6, 60% for \"Property with a long production period and certain aircraft\". Out of scope: an aircraft is refused by asset.kind_excluded (tick 'A building, land, a vehicle, an aircraft, a film or a recording') and property with a long production period or qualified production property by asset.long_production (tick 'Built to order over a long period, or \u201cqualified production property\u201d'); both feed asset.screen, so asset.screened refuses through asset.cost. Also, asset.claims_bonus is not a yes/no the filer answers: it is asset.bonus_choice \u2260 'none' (choices 'Yes: the special depreciation allowance', 'The 40% allowance...', 'No: I elect not to take any special allowance'), so a filer taking 60% would not pick 'none'."
+     "evidence": "i4562 p. 6, 60% for \"Property with a long production period and certain aircraft\". Out of scope: an aircraft is refused by asset.kind_excluded (tick 'A building, land, a vehicle, an aircraft, a film or a recording') and property with a long production period or qualified production property by asset.long_production (tick 'Built to order over a long period, or “qualified production property”'); both feed asset.screen, so asset.screened refuses through asset.cost. Also, asset.claims_bonus is not a yes/no the filer answers: it is asset.bonus_choice ≠ 'none' (choices 'Yes: the special depreciation allowance', 'The 40% allowance...', 'No: I elect not to take any special allowance'), so a filer taking 60% would not pick 'none'."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "i4562 p. 7, QPP \"by designating up to 100% of the depreciable basis\". A used nonresidential building is refused by asset.kind_excluded (\"A building, land, ...\") and QPP by asset.long_production (\"... or \u201cqualified production property\u201d\"); either Yes refuses through asset.screened before asset.used_before matters."
+     "evidence": "i4562 p. 7, QPP \"by designating up to 100% of the depreciable basis\". A used nonresidential building is refused by asset.kind_excluded (\"A building, land, ...\") and QPP by asset.long_production (\"... or “qualified production property”\"); either Yes refuses through asset.screened before asset.used_before matters."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "i4562 p. 7, \"Election out. You can elect, for any class of property, to not deduct any special depreciation allowance\". The filer does not answer \"is claimed\": asset.bonus_choice asks \"For property of this kind that you began using in 2025, do you take the special (\u201cbonus\u201d) depreciation allowance?\" with the choices \"Yes: the special depreciation allowance\", the 40% election, and \"No: I elect not to take any special allowance\". Only an election out gives No, so a filer who made no choice is asked asset.used_before."
+     "evidence": "i4562 p. 7, \"Election out. You can elect, for any class of property, to not deduct any special depreciation allowance\". The filer does not answer \"is claimed\": asset.bonus_choice asks \"For property of this kind that you began using in 2025, do you take the special (“bonus”) depreciation allowance?\" with the choices \"Yes: the special depreciation allowance\", the 40% election, and \"No: I elect not to take any special allowance\". Only an election out gives No, so a filer who made no choice is asked asset.used_before."
     },
     {
      "n": 3,
@@ -2874,7 +2873,7 @@
      "n": 0,
      "kind": "FALSE_NO",
      "class": "model error",
-     "evidence": "i4562 p. 14, listed property recapture. The gate is not inverted. asset.use_changed_if_earlier is Choose [placed_this_year = false \u2192 asset.use_changed] [= true \u2192 false]: the question is asked exactly for property placed in service before 2025. Evaluated: an asset placed in 2023 with asset.use_changed = Yes gives use_changed_if_earlier true and asset.screened true (refused); with No, $576 of line 17 depreciation; a 2025 asset gives false and is not asked. The review prompt said 'When the condition holds: Choose ... Otherwise: false, and the question below is not asked', the polarity reversal recorded as BUG-0800 (tools/transcription/gates.py)."
+     "evidence": "i4562 p. 14, listed property recapture. The gate is not inverted. asset.use_changed_if_earlier is Choose [placed_this_year = false → asset.use_changed] [= true → false]: the question is asked exactly for property placed in service before 2025. Evaluated: an asset placed in 2023 with asset.use_changed = Yes gives use_changed_if_earlier true and asset.screened true (refused); with No, $576 of line 17 depreciation; a 2025 asset gives false and is not asked. The review prompt said 'When the condition holds: Choose ... Otherwise: false, and the question below is not asked', the polarity reversal recorded as BUG-0800 (tools/transcription/gates.py)."
     },
     {
      "n": 1,
@@ -2929,508 +2928,518 @@
    "subject_sha": "66740d215f2c82dd00a36559b25b21ab3cb0430924f36e0536aea07bb6eb9e7f"
   },
   "unruled:gate:rental.has_advertising#1": {
-   "class": "defect: accrual-method expenses are not asked (low); the other findings are covered or wording",
-   "reason": "(1) defect, low: no method question, every amount 'paid in 2025' (BUG-0786). (2) covered: royalty roster. (3) listing fees and signs: wording. (4) ads paid by a manager out of rent: wording. (5) covered: group heading.",
+   "reason": "Advertising gate: the filer sees the tick-box screen.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "Pub. 527 (2025) p. 4, When To Deduct: 'You generally deduct your rental expenses in the year you pay them. If you use the accrual method, see Pub. 538.' The rental form asks no accounting method and refuses none; every expense amount is 'paid in 2025' and the group heading says 'pay ... in 2025', so an accrual-method landlord's expense incurred in 2025 and paid in 2026 is left out. Rare for an individual landlord; low.",
-     "bug": "BUG-0786"
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The gate is a box: the filer sees the box on the tick-box screen headed \"In 2025, did you pay any of these for this rental, or did a tenant pay any in place of rent?\" (interview/2025/questions.yaml groups rental_costs_a/b/c), not the bare source label the review prompt shows."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Royalties are not columns of the rental roster: the $rental prompt asks for houses, rooms, buildings or land rented out, its help says 'Royalties are asked about next', and each royalty is its own $royalty entry (forms/2025/royalty.yaml) asked royalty.expenses_any ('Did you pay any costs for it, such as fees, taxes or production costs?'), then royalty.amt10 (legal and professional fees) and royalty.amt19 (other costs) into line 20. The rental gate is never asked of a royalty."
+     "class": "presentation",
+     "evidence": "Listing fees and signs are advertising in the box's plain meaning; if entered under other costs, only the line changes (advertising is taken whole, other costs divided only with personal use)."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Listing-site fees, promoted posts and signs are advertising in ordinary use; the tick is the line's own word. Examples in a help line would remove the doubt. Low; no bug."
+     "evidence": "A manager's charge on the owner statement is paid for the owner; the rents help says amounts paid for you count as costs."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A fee an agent, manager or platform kept from rent is still an expense the filer paid (i1040se p. 6: 'You can deduct all ordinary and necessary expenses, such as ... management fees, agents' commissions'). Nothing in the tick or the rent help names fees withheld from payouts; a filer who enters the net payout as rent and ticks No gets the same net income (line 3 and the expense line both lower), and one who enters the gross 1099 amount and ticks No loses the fee. A help sentence ('include fees taken out of rent before it reached you; enter rent before those fees') would settle it. Wording; no bug filed."
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The filer does not see the bare label the reviewer saw: the box is a tick on the screen headed 'Did you pay any of these for this rental in 2025?' (rental_costs_a) or 'Did you pay any of these for it in 2025?' (rental_costs_b), interview/2025/questions.yaml groups, so the gate asks a yes/no about paying, in 2025."
+     "class": "out of scope",
+     "evidence": "The tool prepares cash-basis rentals; an accrual-basis filer is refused by sche.accrual."
     }
    ],
-   "bugs": [
-    "BUG-0786"
-   ],
-   "subject_sha": "ca7079a0252c3504ee48405001db38384a8ac22e8732e76d796ea4f3aac3b065"
+   "subject_sha": "3150213892af39beb1fb3810550af66aa559ee140cc1e91e9209871eac4310be",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.has_cleaning#1": {
-   "class": "defect: accrual-method expenses are not asked (low); the rest is wording or covered",
-   "reason": "(1) platform-netted cleaning fees: wording. (2) gardening, snow, pest or pool service: reach line 19 through the 'Other costs of renting it' tick if not ticked here; wording. (3) accrual: BUG-0786. (4) covered: the heading asks what was paid, which excludes own labor.",
+   "reason": "Cleaning gate: as the screen ruling.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "A fee an agent, manager or platform kept from rent is still an expense the filer paid (i1040se p. 6: 'You can deduct all ordinary and necessary expenses, such as ... management fees, agents' commissions'). Nothing in the tick or the rent help names fees withheld from payouts; a filer who enters the net payout as rent and ticks No gets the same net income (line 3 and the expense line both lower), and one who enters the gross 1099 amount and ticks No loses the fee. A help sentence ('include fees taken out of rent before it reached you; enter rent before those fees') would settle it. Wording; no bug filed."
+     "evidence": "The guest fee is in rents and the cleaner is paid by the host: the host paid for cleaning."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Pub. 527 (2025) p. 4 lists 'Cleaning and maintenance' as one type; a filer who does not count lawn or pest service here can tick 'Other costs of renting it' (rental.has_other, rental_costs_c), so the amount reaches line 20 (line 19 instead of 7). Examples in help would place it on line 7. Low; no bug."
+     "evidence": "Costs a manager pays for the owner are the owner's; the rents help covers amounts paid for you."
     },
     {
      "n": 2,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "Pub. 527 (2025) p. 4, When To Deduct: 'You generally deduct your rental expenses in the year you pay them. If you use the accrual method, see Pub. 538.' The rental form asks no accounting method and refuses none; every expense amount is 'paid in 2025' and the group heading says 'pay ... in 2025', so an accrual-method landlord's expense incurred in 2025 and paid in 2026 is left out. Rare for an individual landlord; low.",
-     "bug": "BUG-0786"
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The filer does not see the bare label the reviewer saw: the box is a tick on the screen headed 'Did you pay any of these for this rental in 2025?' (rental_costs_a) or 'Did you pay any of these for it in 2025?' (rental_costs_b), interview/2025/questions.yaml groups, so the gate asks a yes/no about paying, in 2025. i1040se p. 6: 'Do not deduct the value of your own labor'; a question about what was paid leaves own labor out, and a filer who paid for part of the work ticks Yes for that part."
-    }
-   ],
-   "bugs": [
-    "BUG-0786"
-   ],
-   "subject_sha": "b97a781ea44caa78008d716790b2ca8977fbc860ffbcf2b6cfbac176efe7bb9c"
-  },
-  "unruled:gate:rental.has_commissions#1": {
-   "reason": "Commissions tick: findings misread the per-property list or are refused or caught by other ticks.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick 'Commissions' is asked of each property, and the list includes the spouse's (interview/2025/questions.yaml:7103 lists each property \"you (or, on a joint return, your spouse) rented out or offered for rent in 2025\"); it does not ask who paid."
-    },
-    {
-     "n": 1,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Renting part of a home is refused by rental.part_home ('Is it a room, unit or part of a building you live in or use yourself, or lived in during 2025?'), i1040se p. 6, 'Renting out part of your home'."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "A leasing or finder's fee paid to an agent is an agents' commission (i1040se p. 6: 'agents\u2019 commissions'), and the amount question says 'for example to an agent who found a renter'; a fee a filer will not call a commission is taken by the 'Management fees' or 'Other costs of renting it' ticks, so line 20 keeps it."
+     "evidence": "Part of a building the filer lives in is refused by rental.part_home."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The property list asks for each property 'rented out or offered for rent in 2025' (interview/2025/questions.yaml:7103 lists each property \"you (or, on a joint return, your spouse) rented out or offered for rent in 2025\"), so a property sold during 2025 is an entry and its 2025 commissions are asked."
+     "class": "presentation",
+     "evidence": "Lawn, pest and snow service are maintenance or other costs; any box on the screen takes them, divided by the same ratio."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "Supplies have their own box."
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     }
    ],
-   "subject_sha": "c90315c41c43c4d977e97eedc444dc36fb0ff51080d584c61660e95c7e2a60ec",
+   "subject_sha": "4aeea7b8cc66cb31a00ab103edf66a0f47ecaa74a6ebbc90a01afd0ed82ae5aa",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+  },
+  "unruled:gate:rental.has_commissions#1": {
+   "reason": "Commissions gate.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "open residual",
+     "evidence": "The archived i1040se and p527 do not state that a lease commission is spread over the lease term (p527 p. 4 lists commissions among rental expenses); settling it needs Pub. 535 or the regulations, not archived."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A commission netted from rent is paid for the owner; the rents help covers it."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Accrual-basis filers are refused by sche.accrual."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
+    }
+   ],
+   "subject_sha": "668fffca575a9414a5bcdf8273ece3c3931f487816f67c9a26243601f8b49e45",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.has_insurance#1": {
-   "reason": "Insurance tick: the filer sees 'Insurance covering 2025, even if paid earlier'; no finding loses an amount.",
+   "reason": "Insurance gate: the box names coverage paid earlier.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "model error",
-     "evidence": "The tick is asked of each property, and the list includes the spouse's (interview/2025/questions.yaml:7103 lists each property \"you (or, on a joint return, your spouse) rented out or offered for rent in 2025\"); it does not ask whose policy it is."
+     "evidence": "The box reads \"Insurance covering 2025, even if paid earlier\" (p527 p. 5)."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick the filer sees is 'Insurance covering 2025, even if paid earlier' (interview/2025/questions.yaml, rental.has_insurance), matching p527 p. 5: 'For each year of coverage, you can deduct only the part of the premium payment that applies to that year.'"
+     "class": "presentation",
+     "evidence": "Escrowed premiums are paid by the filer through the lender."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Renting a room or part of the home is refused by rental.part_home (i1040se p. 6, 'Renting out part of your home')."
+     "evidence": "Part of a building the filer lives in is refused by rental.part_home."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick asks whether there was 'Insurance covering 2025', not who wrote the check; a premium paid from escrow is the filer's insurance (i1040se p. 6: 'You can deduct all ordinary and necessary expenses, such as ... insurance')."
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "'Insurance covering 2025' is not limited to a property policy; landlord liability coverage for the rental is insurance covering 2025 for it (i1040se p. 6)."
+     "class": "presentation",
+     "evidence": "Flood, liability or rent-loss policies are insurance in the box's plain meaning."
     }
    ],
-   "subject_sha": "b8479d3a5f5533e8289866960df206bc3a3592b249f47b062896091b8ba505fa",
+   "subject_sha": "5bf16170cfaa9236d6436a5bbc65af036ee95e118b81546a8e547ce9e4c84b9f",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.has_legal#1": {
-   "reason": "Legal-fees tick names tax preparation; royalty fees are asked on the royalty entry.",
+   "reason": "Legal gate: the box names tax preparation.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "Royalty properties have their own entry; royalty.amt10 asks 'Legal and other professional fees for it, paid in 2025' (i1040se p. 6, Line 10: 'related to your rental real estate or royalty properties')."
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The box reads \"Legal or other professional fees, such as tax preparation\"."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick reads 'Legal or other professional fees, such as tax preparation' (interview/2025/questions.yaml, rental.has_legal), matching i1040se p. 6, Line 10: 'fees for tax advice and the preparation of tax forms'."
+     "class": "covered",
+     "evidence": "Royalty fees are asked on the royalty entry (royalty.amt10)."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick is asked of each property and the list includes the spouse's (interview/2025/questions.yaml:7103 lists each property \"you (or, on a joint return, your spouse) rented out or offered for rent in 2025\"); it does not ask who paid."
+     "class": "presentation",
+     "evidence": "Fees a manager pays for the owner are the owner's costs."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The list asks for each property 'rented out or offered for rent in 2025' (interview/2025/questions.yaml:7103 lists each property \"you (or, on a joint return, your spouse) rented out or offered for rent in 2025\"), so a property sold in 2025 is an entry and its 2025 fees are asked."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick names 'tax preparation' and the amount asks 'such as tax preparation for the rental', which invites the rental part of a combined fee (i1040se p. 6, Line 10: 'related to your rental real estate')."
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     }
    ],
-   "subject_sha": "6d6420b5b30f638004ec67b5b9153c7d2cddeafa92f4aeda1bc907b8b3ed9206",
+   "subject_sha": "979f37f00a04e38222e0abfc1d9071a48bbe4c9edee5d79e300683fa40b510ba",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.has_loss#1": {
-   "reason": "The gate is right for current-year losses; a prior at-risk carryover (BUG-0781) and the gated question's wording (BUG-0939) are the real gaps.",
+   "reason": "At-risk gate: the carryover gap is a defect, filed; dispositions are refused.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "i1040se p. 3 includes 'loss on the disposition of assets'; a 2025 disposition of rental property is refused by rprop.disposed ('Sold, traded, given away, torn out, or no longer rented, in 2025') and by sd.business_property ('used in a business or rented out') through sd.other_forms (Form 4797)."
+     "class": "defect",
+     "evidence": "p925 p. 19: \"You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year.\" No question asks for a Form 6198 carryover. Filed as BUG-1113."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i6198 p. 2, Part I: 'If you have losses or deductions from an earlier tax year that you could not deduct because of the at-risk rules, include those amounts on the appropriate form or schedule of your current year tax return'. No cost question takes them (each asks what was 'paid in 2025'), rental.prior_amt asks only the Form 8582 Part VII figure, and with a 2025 gain the gate never asks rental.not_at_risk. Same issue as BUG-0781 ('Also not reached: a Form 6198 carryover in a later profit year'); not filed again."
+     "class": "out of scope",
+     "evidence": "A 2025 disposition is refused by rprop.disposed."
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "Mineral property is not a rental entry ($rental lists 'house, apartment, room, building or piece of land'); a royalty or mineral interest is its own royalty entry with royalty.not_at_risk, whose bank-loan wording defect is BUG-0954 (i1040se p. 3: 'other than mineral property')."
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Personal property in a rental is refused (rprop.personal); royalties are their own entries."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "rental.not_at_risk is asked per rental entry ('For this rental property \u2014') of a roster listing 'you (or, on a joint return, your spouse)'s properties; under rule 4 the bare 'you' is not a defect, as in the earlier ruling of this gate."
+     "class": "accepted residual",
+     "evidence": "A fee-earning lender (i1040se p. 3, Qualified person) is rare; cost: an at-risk limit missed."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040se p. 3: 'Cash, property, or borrowed amounts used in the activity (or contributed ...) that are protected against loss by a guarantee, stop-loss agreement, or other similar arrangement'; the question names only 'a guarantee or stop-loss agreement' on 'money you put in'. Same issue as BUG-0939; not filed again."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040se p. 3: a qualified person cannot be 'Related to you (unless ... commercially reasonable ...)' or 'A person who receives a fee due to your investment'; the help 'A mortgage from a bank ... or another regular lender is at risk' gives such a regular lender's nonrecourse loan a truthful No (a non-lender relative is caught by 'anyone but a bank or regular lender'). Same issue as BUG-0939; not filed again."
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     }
    ],
-   "subject_sha": "43ee072ac95405698eb0e320b0870d9a266f96a32df6d35f345be716a8d73da3",
+   "subject_sha": "3b9e8ec6eafe4b459f9e50f5dc0df68eb36ae23000134e005c4cd882d7e8c03b",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
    "bugs": [
-    "BUG-0781",
-    "BUG-0939"
+    "BUG-1113"
    ]
   },
   "unruled:gate:rental.has_management#1": {
-   "class": "defect: accrual-method expenses are not asked (low); fees kept from rent and co-host fees are wording",
-   "reason": "(1) manager's fee kept from rent: wording. (2) co-host or vacation-rental manager: wording. (3) covered: royalty roster. (4) accrual: BUG-0786. (5) covered: group heading.",
+   "reason": "Management gate.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "A fee an agent, manager or platform kept from rent is still an expense the filer paid (i1040se p. 6: 'You can deduct all ordinary and necessary expenses, such as ... management fees, agents' commissions'). Nothing in the tick or the rent help names fees withheld from payouts; a filer who enters the net payout as rent and ticks No gets the same net income (line 3 and the expense line both lower), and one who enters the gross 1099 amount and ticks No loses the fee. A help sentence ('include fees taken out of rent before it reached you; enter rent before those fees') would settle it. Wording; no bug filed."
+     "evidence": "A fee netted from rent is paid for the owner; the rents help covers it."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "A co-host's or vacation-rental company's share for running the rental is a management fee in ordinary use; a help line naming co-hosts would remove the doubt. Low; no bug."
+     "evidence": "Platform and co-host fees are management or commissions, both on the screen; only the line changes."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Royalties are not columns of the rental roster: the $rental prompt asks for houses, rooms, buildings or land rented out, its help says 'Royalties are asked about next', and each royalty is its own $royalty entry (forms/2025/royalty.yaml) asked royalty.expenses_any ('Did you pay any costs for it, such as fees, taxes or production costs?'), then royalty.amt10 (legal and professional fees) and royalty.amt19 (other costs) into line 20. The rental gate is never asked of a royalty."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "Pub. 527 (2025) p. 4, When To Deduct: 'You generally deduct your rental expenses in the year you pay them. If you use the accrual method, see Pub. 538.' The rental form asks no accounting method and refuses none; every expense amount is 'paid in 2025' and the group heading says 'pay ... in 2025', so an accrual-method landlord's expense incurred in 2025 and paid in 2026 is left out. Rare for an individual landlord; low.",
-     "bug": "BUG-0786"
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The filer does not see the bare label the reviewer saw: the box is a tick on the screen headed 'Did you pay any of these for this rental in 2025?' (rental_costs_a) or 'Did you pay any of these for it in 2025?' (rental_costs_b), interview/2025/questions.yaml groups, so the gate asks a yes/no about paying, in 2025."
-    }
-   ],
-   "bugs": [
-    "BUG-0786"
-   ],
-   "subject_sha": "3a375dcda752e8293a892fd6454a7e210cd951a6769cd320edf254d233dad059"
-  },
-  "unruled:gate:rental.has_mortgage#1": {
-   "reason": "Mortgage tick: interest on other loans is asked at 'Other interest', except a loan on another property with a Form 1098.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "An unsecured loan, credit card or line of credit spent on the rental has no Form 1098 in the filer's name and is asked by rental.has_other_interest ('Other interest on loans for it') and rental.amt13 (i1040se p. 7: 'If the recipient was not a financial institution or you did not receive a Form 1098 ... report ... on line 13')."
-    },
-    {
-     "n": 1,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i1040se p. 6: 'You allocate loan proceeds by tracing disbursements to specific uses.' A home equity loan on the residence is not 'Mortgage interest on it shown on Form 1098' and is excluded from amt13 by 'no Form 1098 in your name', so its traced interest is dropped."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Renting part of a home or an attached unit is refused by rental.part_home ('Is it a room, unit or part of a building you live in or use yourself ...'), i1040se p. 6."
+     "evidence": "Royalty administration fees belong to the royalty entry (royalty.amt19)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Interest to a seller or private lender with no Form 1098 is line 13 by i1040se p. 7 ('If the recipient was not a financial institution or you did not receive a Form 1098 ... report your deductible mortgage interest on line 13'), and is asked by rental.amt13 ('no Form 1098 in your name')."
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "model error",
-     "evidence": "The tick is asked of each property and the list includes the spouse's (interview/2025/questions.yaml:7103 lists each property \"you (or, on a joint return, your spouse) rented out or offered for rent in 2025\"); it does not ask who paid."
+     "evidence": "The gate is a box: the filer sees the box on the tick-box screen headed \"In 2025, did you pay any of these for this rental, or did a tenant pay any in place of rent?\" (interview/2025/questions.yaml groups rental_costs_a/b/c), not the bare source label the review prompt shows."
     }
    ],
-   "subject_sha": "bb3ab4d91aa95b45255758fe5244367ba5d378c2fbd7db034dfb0adbc954d501",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0938"
-   ]
+   "subject_sha": "68b7b0e2efef52912294ecbd7d97081e3aed76eec00402704e328bf31109d853",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+  },
+  "unruled:gate:rental.has_mortgage#1": {
+   "reason": "Mortgage gate.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A home with personal use is refused (rental.ws51) or its interest divided; the rental.amt12 help says the rest goes with home mortgage interest."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The box reads \"Mortgage interest on a Form 1098\", whatever the loan is called."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The screen heading reads \"In 2025, did you pay any of these\"."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Rule 4: asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "Form 1098 box 1 shows the interest; the amount question names it."
+    }
+   ],
+   "subject_sha": "2eeced2be1108a0d8dfb19f448ef5ab0be47a5c1f7e48ba2df8b1345a534643d",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.has_other#1": {
-   "reason": "Other-costs tick: car lease payments are refused; the barrier-removal deduction is an election refused on the improvement.",
+   "reason": "Other-costs gate.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Auto lease payments go on line 19 only 'If you deduct actual auto expenses' (i1040se p. 6), and every car, truck or travel cost is refused by rental.vehicle ('Car, truck or travel costs for it')."
+     "evidence": "The section 179D deduction is refused by rprop.credit."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The filer sees the box on the tick-box screen headed \"In 2025, did you pay any of these for this rental, or did a tenant pay any in place of rent?\" (interview/2025/questions.yaml), not the bare source label the review prompt shows."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "i1040se p. 6: 'You can also elect to deduct up to $15,000 of qualified costs ... to remove architectural or transportation barriers'. It is an election: without it the cost is an improvement listed with the buildings (the amt19 help), which is right, and a building or improvement with that deduction is refused by rprop.credit ('a credit or special deduction for part of its cost, like for disabled access or barrier removal')."
+     "evidence": "Accrual-basis filers are refused by sche.accrual; a prepaid multi-year service contract is a rare residual."
     }
    ],
-   "subject_sha": "b63f6b019c8f42cf47448b80d7e34ef99a88cc4b901ad677419023e8c098fc4a",
+   "subject_sha": "c7c43fabd6fc1091b9f11fe70c98e40076395f96c8206895c11857f73f4f153b",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.has_other_interest#1": {
-   "reason": "Other-interest tick: points and loans on another property are missed; the rest is covered or a line placement.",
+   "reason": "Other-interest gate: the box names borrowed money and a home equity loan.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "presentation",
-     "evidence": "i1040se p. 7: 'Points, including loan origination fees, charged only for the use of money must be deducted over the life of the loan.' amt12 takes only Form 1098 box 1, and the tick 'Other interest on loans for it' does not name points, so a filer with only points answers No. Validation (coordinator, 2026-11-21): rental.amt13's question names points and loan fees ('for points or loan fees, only 2025's share'); only the tick label does not, so no amount is lost."
+     "class": "covered",
+     "evidence": "The box reads \"Other interest on money borrowed for it\", which a seller-financed or private loan is; rental.amt13 names a loan with no Form 1098 in the filer's name."
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
+     "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "The tick is 'Other interest on loans for it' beside 'Mortgage interest on a Form 1098'; a seller-financed loan with no Form 1098 is a loan for it with no Form 1098, which amt13 asks ('no Form 1098 in your name'), as i1040se p. 7 requires ('report your deductible mortgage interest on line 13')."
+     "evidence": "rental.amt13 names \"a loan with no Form 1098 in your name\", the co-borrower case of i1040se p. 7."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040se p. 6: 'You allocate loan proceeds by tracing disbursements to specific uses.' A home equity loan on the residence has a Form 1098 in the filer's name, so amt13 ('no Form 1098 in your name') excludes it and amt12 ('on it') does not take it."
+     "class": "covered",
+     "evidence": "\"even a home equity loan\" in the box; rental.amt13 asks for interest on money borrowed and spent on it."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "Neither the tick nor amt13 requires the whole loan to be for the rental; a filer with interest partly for the rental ticks Yes, and i1040se p. 6 allocates by tracing."
+     "class": "covered",
+     "evidence": "rental.amt13 names points and loan fees spread over the loan."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick is asked of each property and the list includes the spouse's (interview/2025/questions.yaml:7103 lists each property \"you (or, on a joint return, your spouse) rented out or offered for rent in 2025\"); amt13's 'no Form 1098 in your name' follows i1040se p. 7 ('other than your spouse if you file a joint return')."
+     "class": "out of scope",
+     "evidence": "Vehicle costs are refused by rental.vehicle."
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Points paid in an earlier year are still 'deducted over the life of the loan' (i1040se p. 7); amt13 asks 'only 2025's share, spread evenly over the loan', but the tick names only 'Other interest', so a filer who paid nothing new answers No and the share is dropped. Validation (coordinator, 2026-11-21): rental.amt13's question names points and loan fees ('for points or loan fees, only 2025's share'); only the tick label does not, so no amount is lost."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A co-owner whose Form 1098 went to the other owner and who enters the share at amt12 ('Mortgage interest on it shown on Form 1098 (box 1), your share') puts it on line 12 instead of line 13 (i1040se p. 7, Note); both lines are divided the same way, so line 20 is unchanged."
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     }
    ],
-   "subject_sha": "d6ea782a226e965c244ca375331b2be89a09aad99ac4b4a33663fc21b1a58eae",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0938"
-   ]
+   "subject_sha": "3a65f21cb5d3b04e0666eeaec640edf00d9a3281e137014d944c9a062ec9cefc",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.has_repairs#1": {
-   "class": "defect (shared with other expense gates): an expense a tenant paid is counted in rent but not asked as an expense; the rest covered or low",
-   "reason": "(0) Upkeep: asked by \"Cleaning and maintenance\". (1) A partial roof or furnace fix read as an improvement: low wording residual of rental.amt14's help. (2) A repair the tenant paid in place of rent: rents include it, the expense gate asks only what the filer paid; filed as a defect shared by the expense gates. (3) Timing: the heading asks what was paid in 2025.",
+   "reason": "Repairs gate.",
    "findings": [
     {
      "n": 0,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "i1040se p. 7, Line 14. The same screen has the tick \"Cleaning and maintenance\" (rental.has_cleaning, Schedule E line 7), so upkeep with nothing broken is asked there; a filer who ticks either gets the amount deducted (line 7 or 14), and the tax is the same."
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "i1040se p. 7, Line 14: improvements include \"replacing an entire HVAC system\". The help of rental.amt14 says \"A new roof, a new furnace or an addition is an improvement, not a repair\"; a patch is not a new roof, so a careful reader keeps it as a repair. Low wording point, recorded."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "p527, Rental Income, Expenses paid by tenant: \"If your tenant pays any of your expenses, those payments are rental income. Because you must include this amount in income, you can also deduct the expenses if they are deductible rental expenses.\" rental.rents asks for rent \"including advance rent and expenses a tenant paid for you\" (help: \"repairs a tenant paid for in place of rent\"), but the expense gates ask \"Did you pay any of these\"; a No sets the amount to rental.zero, so the expense is in income and not deducted.",
-     "bug": "BUG-0789"
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The heading reads \"Did you pay any of these for it in 2025?\" and rental.amt14 asks \"Repairs (not improvements), paid in 2025\": an invoice paid in January 2025 is a 2025 payment for a cash-basis filer."
-    }
-   ],
-   "subject_sha": "8a6bfffa3522568f075a9513c0b1f257caf4aa34b8e8a3d705873674ad4d54e2"
-  },
-  "unruled:gate:rental.has_supplies#1": {
-   "reason": "Supplies tick: part-home cases are refused; the rest are misreadings.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "Renting part of a home is refused by rental.part_home (i1040se p. 6, 'Renting out part of your home'); for a property with personal-use days the tick asks only 'Supplies' for it and line 15 divides the amount by the day ratio itself."
-    },
-    {
-     "n": 1,
-     "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "i1040se p. 6: 'Enter your rental and royalty expenses for each property in the appropriate column.' The tick asks for supplies for this property, which includes its part of a bulk purchase; nothing asks for a separate purchase."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick is asked of each property and the list includes the spouse's (interview/2025/questions.yaml:7103 lists each property \"you (or, on a joint return, your spouse) rented out or offered for rent in 2025\"); it does not ask who paid."
-    },
-    {
-     "n": 3,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Supplies a manager pays out of collected rent are either entered here or left out of rents received; either way line 21 (rents less expenses) is the same, only lines 3 and 15 differ."
+     "evidence": "Upkeep has the \"Cleaning and maintenance\" box; both are divided alike."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The screen heading says \"In 2025, did you pay\"."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The rents help tells the filer to include repairs a tenant paid and enter them again as costs."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The gate is a box: the filer sees the box on the tick-box screen headed \"In 2025, did you pay any of these for this rental, or did a tenant pay any in place of rent?\" (interview/2025/questions.yaml groups rental_costs_a/b/c), not the bare source label the review prompt shows."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A partial repair answered under improvements is depreciated rather than deducted; rare."
     }
    ],
-   "subject_sha": "4388c5b3f2c1e384356d80dd0694d7e3d984da95704714180a9f71185a80daa2",
+   "subject_sha": "ebfd3beeba26ce8997d4f8def452743d06b6a82354a0434513f59b391e0d4b8c",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+  },
+  "unruled:gate:rental.has_supplies#1": {
+   "reason": "Supplies gate.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "Small items are supplies or maintenance, both boxes on the screen."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Part of a home is refused by rental.part_home."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The rents help covers amounts paid for the owner."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Royalty costs are asked on the royalty entry."
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Accrual-basis filers are refused by sche.accrual."
+    }
+   ],
+   "subject_sha": "397b757f05094b85ee06fd8d571e0adf71f0fb0651301bc01734388d3532a797",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.has_taxes#1": {
-   "reason": "Taxes tick: royalty withholding is asked on the royalty entry; part-home cases are refused.",
+   "reason": "Taxes gate.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "i1040se p. 6: 'Include taxes withheld by the producer on line 16.' royalty.amt16 asks 'Taxes on it paid in 2025, such as severance or production taxes, including any the payer withheld'."
+     "evidence": "Producer-withheld taxes on royalties are asked on the royalty entry (royalty.amt16; i1040se p. 6, Line 4)."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Renting a room or part of the home is refused by rental.part_home (i1040se p. 6, 'Renting out part of your home')."
-    }
-   ],
-   "subject_sha": "e8c414076f012cb0042b9cfed8381479375ed9bc0b444086df4300b33b3d7515",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
-  },
-  "unruled:gate:rental.has_utilities#1": {
-   "reason": "Utilities tick: telephone calls go under 'Other costs'; the other findings misread the per-property list.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Rental telephone calls (i1040se p. 7, Line 17) are taken by 'Other costs of renting it' (rental.amt19) if not ticked as utilities; both lines are divided by the same ratio, so line 20 is right."
-    },
-    {
-     "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "Royalty telephone costs belong to the royalty entry, whose rental.amt19 counterpart royalty.amt19 asks 'Other costs of it ... paid in 2025' (i1040se p. 7, Line 17: 'related to your rental activities or royalty income')."
+     "class": "presentation",
+     "evidence": "Escrowed tax is paid by the filer through the lender."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "A tenant paying the owner's utility bill in place of rent is covered by the rents help: 'Include ... repairs or bills a tenant paid for you in place of rent; enter those again below as costs', and amt17 says 'paid in 2025 by you or by a tenant in place of rent'. A tenant paying their own utilities gives the owner no expense."
+     "class": "out of scope",
+     "evidence": "Part of a building the filer lives in is refused by rental.part_home."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick is asked of each property and the list includes the spouse's (interview/2025/questions.yaml:7103 lists each property \"you (or, on a joint return, your spouse) rented out or offered for rent in 2025\"); it does not ask who paid."
+     "class": "out of scope",
+     "evidence": "Cooperative housing is refused by rprop.coop."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The list asks for each property 'rented out or offered for rent in 2025' (interview/2025/questions.yaml:7103 lists each property \"you (or, on a joint return, your spouse) rented out or offered for rent in 2025\"), so a property sold in 2025 is an entry."
+     "class": "presentation",
+     "evidence": "Payroll or license taxes land under other costs if not taxes; no total changes."
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick asks only 'Utilities' for this property; nothing says the bill must be all rental, and line 17 is divided by the day ratio by the tool (p527 p. 25, 'divide your expenses between the rental use and the personal use based on the number of days')."
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     }
    ],
-   "subject_sha": "d95e1da7b7aa5dca1d31b8ee7f6c543b1de864be1241d7a9d1b32a89213e7993",
+   "subject_sha": "39b432b3a90213126171da09ec3184044550cb2f0088878e146b6a274756eee3",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+  },
+  "unruled:gate:rental.has_utilities#1": {
+   "reason": "Utilities gate.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "Phone costs land under the other-costs box if not utilities; same division."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Royalty costs are asked on the royalty entry."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The rents help and rental.amt17 (\"by you or by a tenant in place of rent\") cover tenant-paid bills."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The heading asks what the filer paid; division for personal use is the tool's."
+    }
+   ],
+   "subject_sha": "1c0d892eaf1442b163137867c5966aaf3d836340e3a34ef29816b347d7c7b6f5",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.prior_and_active#1": {
@@ -3465,28 +3474,34 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.prior_any#1": {
-   "reason": "Prior-loss question explicitly takes Worksheet 5-1 costs and the spouse's returns.",
+   "reason": "Prior-loss gate.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "rental.prior_any's help says 'Yes also for costs carried over from a year you also used the place as a home', so a Worksheet 5-1-only carryover (p527 p. 28) is a Yes and reaches rental.prior_ws51."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "\"held back (not deducted)\" covers the part carried forward."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "Same help text: 'Yes also for costs carried over from a year you also used the place as a home' (p527 p. 28, 'carried forward to the next year and treated as rental expenses for the same property')."
+     "class": "covered",
+     "evidence": "The help says \"Yes also for costs carried over from a year it counted as your home through personal use\"."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The question reads 'any of your (or, on a joint return, your spouse's) earlier returns, even a separate one' (i8582 p. 10: 'You find these amounts in Part VII, column (c), of your 2024 Form 8582')."
+     "class": "covered",
+     "evidence": "The help names personal use, and rental.prior_ws51 names \"a co-owner, a relative, or anyone paying below a fair rent\"."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The question asks about \"any of your ... earlier returns\"; Form 8582 is where to look."
     }
    ],
-   "subject_sha": "c326ee216edb632b525aad2292bae4e43f3f1250eb6e96dc043952d794631fa4",
+   "subject_sha": "a618163de1221d3cca2a5a5f5ce8b9e99e4209cf32854bacea6d6c6f45a336ee",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.short_stays#1": {
@@ -3706,60 +3721,46 @@
    "subject_sha": "dac4c6089efb62d8eeefb1c5a207045268634c14cd090a42cc7d2b226a1faf7a"
   },
   "unruled:gate:scveh.placed_this_year#1": {
-   "class": "no gate defect; finding 0 misreads the gate's polarity; one open residual on prior_low_use's own wording (conversion-year proration)",
-   "reason": "(0) The three earlier-year lines ask when scveh.placed_this_year is false (forms/2025/scveh.yaml, prior_bonus_if_earlier, prior_smr_if_earlier, prior_low_use_if_earlier: guard false then the question, true then scveh.no), so they are asked of every pre-2025 vehicle: model error. (1) scveh.year is keyed on scveh.placed, asked 'In what year did you start using it in the business?', the conversion year. (2) trade-ins are refused (scveh.got_other in scveh.screen). (3) the earlier conversion year's business use is prorated by months (i4562 p. 14, Column (c); p463 p. 25-26); the tick 'Half or less of its use was for business' does not say so, and a No is not refused: open residual, BUG-0792 (BUG-0072 covered only a 2025 conversion). (4) investment or related-person use counted as business in an earlier year: low wording point. (5) spouse's earlier claim: the ticks are passive ('A special (bonus) depreciation allowance was claimed for it', 'The standard mileage rate was used for it'). (6) allowable but unclaimed bonus: low. (7) binding contract before September 28, 2017: low.",
+   "class": "As ruled for the earlier subject of this unit: the earlier-year questions are on the false branch; the remaining readings are known residuals.",
+   "reason": "As ruled for the earlier subject of this unit: the earlier-year questions are on the false branch; the remaining readings are known residuals.",
+   "subject_sha": "c8ce1ef5d1e868de42fab9e90d507334f2c80425610269afc29fcb5f538c1226",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "scveh.prior_bonus_if_earlier, scveh.prior_smr_if_earlier and scveh.prior_low_use_if_earlier: guard scveh.placed_this_year = false then the question; = true then scveh.no (labels: 'asked only of a vehicle placed in service before 2025'). Each Yes refuses through scveh.screen."
+     "class": "accepted residual",
+     "evidence": "i4562 p. 13, depreciation includes 'Any special depreciation allowance available for the property (unless you elected not to claim it)'. A qualifying vehicle that took no bonus and filed no election is rare; as the earlier ruling.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
+     "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "i4562 p. 14, Column (b), 'treat the property as placed in service on the date of conversion'. scveh.year = keyed_lookup recovery_year on scveh.placed; prompt 'In what year did you start using it in the business?'. A 2025 conversion is refused by scveh.screen."
+     "evidence": "The earlier-year ticks are passive ('A special (bonus) depreciation allowance was claimed for it', 'The standard mileage rate was used for it'), so a spouse's earlier claim is caught; and scveh is a per-vehicle entry (RUBRIC2 rule 4).",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "p946 p. 63, trade-in. scveh.got_other ('Did you get this vehicle with a trade-in, in an exchange, ...') is in scveh.screen ('you acquired it in a trade-in or from a related person') and refuses."
+     "class": "accepted residual",
+     "evidence": "i4562 p. 14, qualified business use excludes investment use; the tick's wording is low, and 2025 investment use is refused by scveh.investment.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "open residual",
-     "evidence": "i4562 p. 14, Column (c): 'If during the tax year you convert property used solely for personal purposes to business/investment use ... Multiply that percentage by the number of months you use the property in your business ... and divide the result by 12'; p463 p. 26 example (80% x 6/12 = 40%). scveh.prior_low_use (tick 'Half or less of its use was for business', no help) gives no such rule; a vehicle converted in mid-2019 to 2024 with prorated use of 50% or less is answered No, and nothing else refuses it (scveh.screen refuses only a 2025 conversion, BUG-0072). The 2025 depreciation then follows the accelerated table instead of ADS straight line.",
-     "bug": "BUG-0792"
+     "class": "covered",
+     "evidence": "i4562 p. 14, Column (b), 'treat the property as placed in service on the date of conversion'. scveh.year is the recovery year from scveh.placed, asked as the year the vehicle was placed in business use.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "i4562 p. 14, qualified business use excludes investment use. Wording of the gated question's tick, low; 2025 investment use is refused by scveh.investment."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The ticks under 'In an earlier year, was any of these true of it?' are passive: 'A special (bonus) depreciation allowance was claimed for it', 'The standard mileage rate was used for it' (interview/2025/questions.yaml); a spouse's claim is included."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "i4562 p. 13, depreciation includes 'Any special depreciation allowance available for the property (unless you elected not to claim it)'. A qualifying vehicle depreciated without bonus and without an election-out statement: low."
-    },
-    {
-     "n": 7,
-     "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "Binding contract signed before September 28, 2017 and delivery after: a narrow population; low."
+     "evidence": "Binding contract before September 28, 2017 and delivery in 2025: a narrow population; low, as the earlier ruling.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "7430aeeb42d1c8cbaef3701ab310b7b60aef4ef1b74710b0d26b457b80323695"
+   ]
   },
   "unruled:gate:scveh.smr_always#1": {
    "class": "no gate defect; the help covers any earlier year, the fleet bar is asked separately",
@@ -3846,44 +3847,46 @@
    "subject_sha": "c92247358f9256075756853769124c5cf3889b8f94f6801e77a4ed5890c215f4"
   },
   "unruled:gate:f2441.benefits#1": {
-   "class": "defect: a spouse's own business, a partnership's program and care of a disabled spouse are not named",
-   "reason": "BUG-0799; the box 10 and grace-period readings are answered by the help.",
+   "class": "Spouse phrase and partner cases; the partner path is refused with every K-1.",
+   "reason": "Spouse phrase and partner cases; the partner path is refused with every K-1.",
+   "subject_sha": "a0e7234800c208be64d97fcecb645de85b2b2bc7615227946ed0a67447eaa14e",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i2441 p. 5, Line 12. The prompt pairs 'your (or, on a joint return, your spouse's) employer' with 'your own business'; a spouse's sole proprietorship is not named.",
-     "bug": "BUG-0799"
+     "class": "presentation",
+     "evidence": "The spouse phrase precedes 'employer, or your own business or partnership'; on a joint return the shown wording reads 'your or your spouse's employer, or your own business or partnership', and the help names a partnership K-1. A spouse's own sole-proprietor program is rare; low. A partner's case is refused: scope.k1 refuses every Schedule K-1 ('Income or a loss from a partnership, S corporation, estate or trust ... A Yes ends the interview here'), so a partner's or PTP holder's case is refused upstream.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i2441 p. 1, K-1 box 13 code O; a partner has no employer and the help points only to box 10 of a W-2.",
-     "bug": "BUG-0799"
+     "class": "covered",
+     "evidence": "The help says: 'Count ... money left in a 2024 dependent care account used early in 2025' (i2441 p. 5, Line 13), whichever employer held it.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The prompt asks whether an employer 'help[ed] pay for the care', and the help names 'care your employer provided itself, such as a day care at work' and 'If you are not sure, answer Yes'. Low."
+     "class": "out of scope",
+     "evidence": "Benefits received as a partner come on Schedule K-1 box 13 code O (i2441 p. 1); scope.k1 refuses every Schedule K-1 ('Income or a loss from a partnership, S corporation, estate or trust ... A Yes ends the interview here'), so a partner's or PTP holder's case is refused upstream.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The help: 'Count money left in a 2024 dependent care account that you used early in 2025'."
+     "class": "presentation",
+     "evidence": "A sole proprietor's own plan: the prompt says 'your own business or partnership, help pay for the care'; 'help pay' over 'pay' is low.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i2441 p. 1, 'Your disabled spouse'; the prompt says 'care of a child or dependent'.",
-     "bug": "BUG-0799"
+     "class": "accepted residual",
+     "evidence": "Care of a disabled non-dependent parent through the program: rare, and f2441.care_other asks about care for anyone other than the filer's children under 13; low.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "064041ce9432d2434eb09dea24aa0f2a3b0d29ebd05aa49dcc17bfcfb5d9bc41"
+   ]
   },
   "unruled:gate:f2441.care_other_or_claimable#1": {
    "class": "no gate defect",
@@ -3917,103 +3920,108 @@
    "subject_sha": "bf415e5859462e04e86c92d5af16d67ed96429624089379f6c0a8f3f53a2be49"
   },
   "unruled:gate:f2441.mfs_married#1": {
-   "class": "defect: the spouse-earnings question says zero 'if they had a loss'",
-   "reason": "Line A is computed from three tests, not one answer; the loss wording and the help are BUG-0799.",
+   "class": "Line A is computed from three tests, not one answer; the self-employment loss and the help are BUG-0799, fixed.",
+   "reason": "Line A is computed from three tests, not one answer; the self-employment loss and the help are BUG-0799, fixed.",
+   "subject_sha": "f1545de6134c59f39ed78eaf4d9b463177502ff140482e398dbdadb85166ad31",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
      "class": "model error",
-     "evidence": "f2441.line_a is not a single answer: it requires household.mfs_apart_last6 and then f2441.line_a_home (the qualifying person's main home for more than half of 2025 and more than half the cost of keeping it up)."
+     "evidence": "f2441.line_a is not a single answer: it requires household.mfs_apart_last6 and the qualifying-person and cost tests (i2441 p. 2), as ruled for the earlier subject.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i2441 p. 4, 'You must reduce your earned income by any loss from self-employment'. f2441.mfs_spouse_earned says 'Zero if none, or if they had a loss', so wages less a smaller loss can be entered as zero, zeroing line 19.",
-     "bug": "BUG-0799"
+     "class": "accepted residual",
+     "evidence": "i2441 p. 5, Line 18, the combat-pay election; a separate filer whose spouse has nontaxable combat pay is rare; low.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "The help ('unless you lived apart ... and kept up a home') restates part of the line A tests after they were found not met. Low within the bug.",
-     "bug": "BUG-0799"
+     "class": "presentation",
+     "evidence": "The help of the deemed-income question states the consequence of a Yes; a filer unsure of a partial month is told the rule by the question (i2441 p. 4); low.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The filer's own student or disabled status is asked by f2441.student / f2441.unable, and f2441.line18 refuses on f2441.student_disabled (deemed earned income is outside the tool)."
+     "evidence": "The filer's own student or disabled status is asked by f2441.student and f2441.unable, and f2441.line18 refuses on f2441.student_disabled, as ruled for the earlier subject.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "16a1a3bab233ba1839189f0b8c2a74d47a7dc4bed2f5d26a0e377c60c6b58ae2"
+   ]
   },
   "unruled:gate:f5695.any#1": {
-   "reason": "Opener names the spouse and its help counts rebuilt homes, co-op shares, panels and audits; only the second-home reading remains.",
+   "reason": "The help covers audits, rebuilt and new homes; second homes are a known residual.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Solar roof tiles and shingles make electricity, so \"anything installed at home that saves or makes energy\" covers them, and the child tick f5695.solar has the help \"Solar roof tiles and shingles count\" (questions.yaml:6098). Naming them in the opener would be clearer; no rule change."
+     "class": "covered",
+     "evidence": "f5695.any's help says 'An electric panel, wiring or energy audit counts' and 'If in doubt, answer Yes'; f5695.audit follows.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "A wind turbine \"makes energy\"; the opener says \"anything ... that saves or makes energy\" and the colon list gives examples, with \"If in doubt, answer Yes\" (questions.yaml:6092). Adding \"a wind turbine\" would be clearer."
+     "evidence": "A wind turbine 'makes energy'; the colon list gives examples and 'If in doubt, answer Yes'. Naming it would be clearer.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Air sealing and weatherstripping \"save energy\" and are insulation-class property; the child question is \"Did that include insulation or air sealing?\" (forms f5695.insulation). Wording only."
+     "evidence": "Air sealing saves energy and the child question is 'Did that include insulation or air sealing?'; wording only.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Skylights are windows for this purpose and the child question is \"Did that include exterior windows or skylights?\" (forms f5695.windows). Wording only."
+     "class": "model error",
+     "evidence": "A replacement furnace, water heater or air conditioner is 'heating, cooling or hot-water equipment' installed in 2025, which the opener lists by name.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "The opener says \"anything installed at home\" and its help does not say that a second home counts (i5695 p. 2, \"The home doesn't have to be your main home\"); a filer who reads \"home\" as the main home could answer No with only a second-home solar, wind, geothermal or battery installation, although the help ends \"If in doubt, answer Yes\" and f5695.line1 says \"it need not be your main home\". Cost: a Part I credit for second-home-only filers who read \"home\" narrowly."
+     "evidence": "i5695 p. 2, 'The home doesn't have to be your main home'; 'installed at home' can be read as the main home. Cost: Part I property at a second home may be left out.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Out of scope for Part II: f5695.separate_homes_joint asks a joint filer \"Did you and your spouse both own and live apart in separate main homes in 2025?\" and a Yes refuses f5695.line30 (forms/2025/f5695.yaml:4518; i5695 p. 3 requires \"a separate Form 5695 for each main home\"). Otherwise the opener f5695.any and its child question \"Did that include ...?\" cover the spouse (\"you (or, on a joint return, your spouse)\")."
+     "class": "presentation",
+     "evidence": "Equipment in the yard or an outbuilding is installed at the home ('in connection with your home', i5695 p. 2); 'at home' is wording only.",
+     "bugs": []
     },
     {
      "n": 6,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "f5695.any help (questions.yaml:6092): \"Count work finished in 2025, work on a new or rebuilt home you moved into in 2025\", which implements i5695 p. 1, Costs: \"in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins\"."
+     "evidence": "The help counts 'work on a new or rebuilt home you moved into in 2025' (i5695 p. 1, construction costs paid 'when your original use of the constructed home begins').",
+     "bugs": []
     },
     {
      "n": 7,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The help says \"An electric panel, wiring or energy audit counts\" under \"Count ...\", and the audit and panel children (f5695.audit, f5695.panel) are only reached through this opener, so the help is read as a Yes for an audit-only filer."
+     "class": "presentation",
+     "evidence": "'have anything installed' includes do-it-yourself work; the cost questions take costs with no installer test, and 'If in doubt, answer Yes'.",
+     "bugs": []
     },
     {
      "n": 8,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "\"have anything installed\" is read as installed work including do-it-yourself work (i5695 does not require a contractor); the cost questions take costs \"after any rebate\" with no installer test. Wording only; \"If in doubt, answer Yes\"."
-    },
-    {
-     "n": 9,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Same help: \"An electric panel, wiring or energy audit counts\" (questions.yaml:6092); f5695.panel is \"An electrical panel, circuits or wiring, put in in 2024 or 2025\"."
+     "evidence": "The help says 'Count work finished in 2025'; a home sold after the work still had it installed; wording only.",
+     "bugs": []
     }
    ],
-   "subject_sha": "2c3ae96e6c51b1a1a8414db49a265fdc82a77eb706a226217ee84abdc3cc76e4",
+   "subject_sha": "7eb031f221b76f74d2e23374a02b964786acc060d6564905b46778730c653257",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:f5695.audit_if_any#1": {
@@ -4087,7 +4095,7 @@
      "n": 0,
      "kind": "UNCLEAR",
      "class": "model error",
-     "evidence": "s3.prior_other_forms asks for 'any separate form (a page headed \u201cForm\u201d and a four-digit number)'; Form 5695 is such a page."
+     "evidence": "s3.prior_other_forms asks for 'any separate form (a page headed “Form” and a four-digit number)'; Form 5695 is such a page."
     },
     {
      "n": 1,
@@ -4561,24 +4569,32 @@
    "subject_sha": "24267310a904df109d484835831611fdb1511aaffacd748658f43ef25b9932b4"
   },
   "unruled:gate:f5695.part2_any#1": {
-   "class": "defect: association share (BUG-0796)",
-   "reason": "Every kind must be answered before the part is figured.",
+   "reason": "Condo shares are named in the opener's help; the kind questions are unpersonal; every kind is asked.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i5695 p. 2, Association or cooperative costs: 'you are treated as having paid your proportionate share'. Neither f5695.any nor the ticks mention an association's or cooperative's work; f5695.condo comes only after a Yes.",
-     "bug": "BUG-0796"
+     "class": "covered",
+     "evidence": "f5695.any's help says 'Count ... your share of condo or co-op work' (i5695 p. 2, 'you are treated as having paid your proportionate share'), and the kind questions ('Did that include exterior windows or skylights?') follow that answer.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "model error",
-     "evidence": "f5695.kinds_answered requires every tick answered; the interview asks each, so a partial set does not arise."
+     "evidence": "f5695.any names the spouse ('did you (or, on a joint return, your spouse) have anything installed'), and the kind questions ask 'Did that include ...' with no 'you'.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "f5695.kinds_answered requires every tick answered; the interview asks each kind, so a partial set does not arise.",
+     "bugs": []
     }
    ],
-   "subject_sha": "01fd5cf0ea707abb6be3f27a84068c63c93d9923868b88d9fec0ae3747ac493b"
+   "subject_sha": "409ebaadfc59aa6720ee7d3ba76fbb334537d10deb049483e13d453cd0c7b703",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:f5695.solar_if_any#1": {
    "class": "defect: construction and reconstruction timing and association share (BUG-0796)",
@@ -4805,56 +4821,32 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:f8863.aoc_claimed#1": {
-   "reason": "The gate is true whenever a credit is computed, so the ban question is always asked when it matters; the spouse-wording gap of the gated question is ruled at unruled:f8863.ban#1 n=0.",
+   "reason": "The gate is every computed credit; the remaining points are the source's own terms.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "f8863.ban_refused is true when lines 1 and 4 are positive, i.e. when the credit (100% of the first $2,000 and 25% of the next $2,000, i8863 p. 3) is computed, and then f8863.ban refuses on a denial or ban.",
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "f8863.ban asks whether the IRS 'denied or reduced' the credit; an agreed or default reduction is a reduction (i8863 p. 1, 'denied or reduced for any reason other than a math or clerical error').",
      "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "Form 8862 is needed \"for the next tax year for which you claim the credit\" (i8863 p. 1); the gate is that claim (positive computed credit), so f8863.ban is asked.",
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "'Math or clerical error' is the source's own classification (i8863 p. 1); the tool asks the filer to apply it. Cost: a filer who misclassifies a notice claims the credit without Form 8862.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The 2- and 10-year bans (i8863 p. 3) are in the form's f8863.ban source and the prompt (\"or barred you from claiming it\"), asked whenever a credit is computed.",
-     "bugs": []
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "\"The next tax year for which you claim the credit\" (i8863 p. 1) is any year with a positive computed credit, which is the gate.",
-     "bugs": []
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "The prompt's \"more than a math error\" and \"ever\" are wider than i8863 p. 1 (\"other than a math or clerical error ... after 2015\"); the over-refusal changes no value.",
-     "bugs": []
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The gate holds for every positive computed credit; the only wording gap (joint filers' spouses) is ruled as a defect at unruled:f8863.ban#1 n=0.",
+     "class": "model error",
+     "evidence": "The help's year limit is for 'a denial or reduction'; bars are asked separately ('or barred you') and the help adds 'A bar running out is not enough'.",
      "bugs": []
     }
    ],
-   "subject_sha": "4947ccc54292ed40adcd818dcb1a7574e6e742cf785076f1b04fec1591143d00",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0986"
-   ]
+   "subject_sha": "a6fd0ab52f4d667f74681d70f22c059468e4b98bf19840b8714fe16afd57e982",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:f8962.aptc#1": {
    "class": "no gate defect",
@@ -5348,29 +5340,32 @@
    "subject_sha": "32dba6de11da073b6a9b71079d1da1cdb13df95a02b5546397ce62134d39ce53"
   },
   "unruled:gate:person.mw_has_1099#1": {
-   "class": "no gate defect; without a Form 1099 the payments are treated the same way the Schedule C route would",
-   "reason": "The business question only moves nontaxable payments between line 1d/8s and Schedule C; the amounts net to the same tax. The other findings are about recognizing the payments as Medicaid waiver payments, which the scope question's help names.",
+   "reason": "Without a Form 1099 the route changes no tax.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "presentation",
-     "evidence": "Without a Form 1099 the payments not in W-2 box 1 are person.mw_other: they go on line 1d only if the person chooses them as earned income (person.mw_other_1d) and are then excluded on Schedule 1 line 8s (person.line8s), or else stay out of income. i1040sc p. 6 nets excludable Medicaid waiver payments to zero on Schedule C ('report the nontaxable and excludable amount as an expense in Part V'). The tax and the earned-income choice are the same; only the form the amounts would appear on differs (amb.2025.mw_all_nontaxable)."
+     "evidence": "Payments not on a Form 1099 are person.mw_other: on line 1d only if chosen as earned income and excluded on line 8s (person.line8s), else out of income; these in-home care payments are excludable either way, so the Schedule C route gives the same tax.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
+     "kind": "FALSE_NO",
      "class": "presentation",
-     "evidence": "scope.medicaid_waiver asks 'did a state Medicaid program pay you ... to care for someone who lives in your home?', help 'These are Medicaid waiver payments, also called difficulty of care payments'. A caregiver who does not recognize the pay reports it as ordinary income, which overstates tax (the filer's loss)."
+     "evidence": "Same as finding 0 for payments on Form 1099-K: they are person.mw_other, with the same tax as the Schedule C route.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "As finding 0: a home-care sole proprietor who answers No because no Schedule C has been prepared gets line 1d and Schedule 1 line 8s amounts with the same tax."
+     "evidence": "scope.medicaid_waiver's help says 'These are Medicaid waiver payments, also called difficulty of care payments'; a caregiver who does not recognize them reports them as business income, which is the Schedule C route.",
+     "bugs": []
     }
    ],
-   "subject_sha": "58f03b9062769beb4c889ce33cddb8f17d58e1e676137c496cc938b9582a4f9a"
+   "subject_sha": "666398655386085169ce30cc97682ac39b856e280465860a93e1483ed1c54b3a",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:person.mw_has_not_box1#1": {
    "class": "no gate defect; the not-in-box-1 question names Forms 1099 and no form",
@@ -6121,87 +6116,74 @@
    "subject_sha": "60622aa5f8d625f71b871c413feb503fa61f200dd3eda8021d0d518ea30fd212"
   },
   "unruled:gate:rec.joint_any#1": {
-   "reason": "State-refund-only, other refunds, AMT/credits and earlier years are each asked elsewhere.",
+   "reason": "State refunds, earlier years and third-party reimbursements are each asked.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "A state-refund-only joint filer is asked refund.two_itemized (refund.two_returns_if_joint), which refuses when either separate 2024 return itemized."
+     "evidence": "refund.two_returns_if_joint and refund.two_itemized ask a joint couple with separate 2024 returns about their state refunds and refuse (i1040gi p. 90).",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "scope.recovery help: 'a refund of property tax, sales tax or mortgage interest (Form 1098 box 4), or medical costs or a deducted bad debt paid back' covers Worksheet 2 lines 1b and 2."
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "A state refund for a year before 2024 is refused by refund.other_year and refund.not_prior_year (p525 p. 24).",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "AMT and unused credits are asked by refund.exc_tax ('you owed alternative minimum tax; your credits came to more than the tax') and refused."
+     "evidence": "scope.recovery's help names 'medical costs or a deducted bad debt paid back'; an insurer's reimbursement is money back for a deduction.",
+     "bugs": []
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "A recovery from a year other than 2024 is refused by rec.before_prior_year and, for the state refund, refund.other_year."
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A recovery of a 2023 deduction is refused by rec.before_prior_year ('for something paid or deducted before 2024'), before rec.two_returns matters.",
+     "bugs": []
     }
    ],
-   "subject_sha": "fca8f00c87f2e364564d2a1d70ce5ab44a0199a06c6a0e64613b56a17cb4c0a8",
+   "subject_sha": "90a68d46220778e909d68949f7d20df19abbe5f0d332f3c05841574a7e57c87f",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rec.path#1": {
-   "reason": "Same wording issue as the screen packet for negative taxable income; the other items are covered.",
+   "reason": "The itemizing question's help covers the spouse's separate return; credits and insurers are named.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "A recovery from more than one year is refused by rec.before_prior_year; Worksheet 2 line 2 amounts are asked by rec.has_other."
+     "class": "model error",
+     "evidence": "refund.itemized's help: 'On separate 2024 returns, answer for the return of the one who got the money back'; rec.two_returns's help sends a couple where only one got money back to 'the next questions ... about that return'.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "scope.recovery help names Form 1098 box 4, which shows a 'refund or credit' (p525 p. 24); rec.has_mortgage asks about a refund or credit."
+     "evidence": "scope.recovery's help names 'mortgage interest (Form 1098 box 4)', and rec.has_mortgage asks 'a refund or credit of home mortgage interest' (p525 p. 24).",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "rec.has_mortgage asks about 'a refund or credit of home mortgage interest' (the same item as finding 1)."
+     "evidence": "scope.recovery's help names medical costs 'paid back', and rec.has_medical asks about 'a reimbursement, for example from insurance'.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "p525 Example 32 (standard deduction limit) is figured in rec.line6 to rec.line9 (rec.line8 'Subtract line 7 from line 6')."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "p525 p. 25 Example 33 (negative taxable income, 'You must include $50 ... rather than $250') applies only if rec.path is reached; a filer with $0 2024 tax reads the scope.recovery wording 'lowered your tax' as No and never reaches rec.line10 / rec.line11_negative."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "p525 Example 34 (recovery limited to the amount deducted) is figured by rec.medical_deducted and rec.other_deducted."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "p525 p. 27 footnote 2 (general sales tax refunds) is refused by rec.sales_tax."
+     "evidence": "scope.recovery's help names 'a refund of property tax'; the exclusion is only for an income tax refund, and rec.has_property_tax asks about real estate tax refunds.",
+     "bugs": []
     }
    ],
-   "subject_sha": "9aeb594050b2e1de4983de3cb3c40631a28d36df7bac1c7154ed1e1cdd2ebee4",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0982"
-   ]
+   "subject_sha": "30a00cc68e447078e10704dd46e4cd560e2a40f45025ffca2c3c7ac6f11cf8b3",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:refund.two_returns_if_joint#1": {
    "class": "no gate defect; other-year refunds are refused, the rest residual",
@@ -6291,32 +6273,39 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:s2.amt_pab_ask#1": {
-   "reason": "The gate is false only when line 7 cannot exceed line 10 even if all tax-exempt interest were private activity bond interest; the shown question asks for box 9 only.",
+   "reason": "Box 13 dividends and K-1 interest are refused; small uncovered amounts are residual.",
    "findings": [
     {
      "n": 0,
+     "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "i6251 p. 3-4: exempt-interest dividends 'should be reported to you in box 13 of Form 1099-DIV'. Box 13 is refused by div.amt, whatever this gate says.",
-     "kind": "FALSE_NO"
+     "evidence": "Specified private activity bond interest dividends are 'reported to you in box 13 of Form 1099-DIV' (i6251 p. 4); div.box13 asks it and div.amt refuses any amount.",
+     "bugs": []
     },
     {
      "n": 1,
-     "class": "covered",
-     "evidence": "The gate's bound s2.amt_h4 includes all f1040.tax_exempt_interest_if_any; a filer cannot have more private activity bond interest than that, so a false gate means AMT cannot apply (i6251 p. 3, 'Enter on line 2g interest income from specified private activity bonds').",
-     "kind": "FALSE_NO"
+     "kind": "FALSE_NO",
+     "class": "accepted residual",
+     "evidence": "The question adds box 9 of Forms 1099-INT; private activity bond interest with no form (under $10, or a payer not reporting) is entered as zero. Cost: such interest is left off line 2g of the AMT test.",
+     "bugs": []
     },
     {
      "n": 2,
-     "class": "defect",
-     "evidence": "i1099int (General Instructions, Reporting interest and OID, pp. 1-2): 'For a specified private activity bond with OID, report the tax-exempt OID in box 11 on Form 1099-OID, and the tax-exempt stated interest in boxes 8 and 9 on Form 1099-INT.' The gate counts tax-exempt OID (f1040.tax_exempt_interest), but when it asks, s2.amt_pab says 'Add up box 9 of your Forms 1099-INT', so private activity bond OID is entered as zero and line 4's bound is understated.",
-     "kind": "FALSE_NO"
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Private activity bond interest on a K-1 is refused by scope.k1.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "The gate tests total tax-exempt interest net of premium; premium on other bonds can bring it to zero while private activity bond interest remains. Cost: the AMT question is skipped in that rare case.",
+     "bugs": []
     }
    ],
-   "subject_sha": "05128a5224861503f4597b9b48d57ce4f84f524242a6b5c473170372fa8a751a",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0980"
-   ]
+   "subject_sha": "183c65c81080ade3143be86b08651fc9b4ba0567f1c9a5adc9df4fee6053a7a5",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:s2.household_help#1": {
    "reason": "The gate's words match Schedule H's household-employee test ('household work ... in or around your home', employer controls the work); no filer is excluded.",
@@ -6760,70 +6749,45 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:scope.recovery#1": {
-   "reason": "Earlier-year income tax refunds and carryovers are refused elsewhere; a price adjustment is unsettled.",
+   "reason": "Earlier-year income tax refunds are refused; a price adjustment is unsettled; the rest are named.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "p525 p. 24 treats an increased carryover as a tax benefit, but an NOL carried into 2025 is refused at scope.nol ('A loss still being carried into 2025') and a credit carryover at s3.prior_forms_if_forms ('A credit carried over from an earlier year is outside this tool')."
+     "evidence": "refund.other_year asks whether a refund is 'for a tax year other than 2024' and refund.not_prior_year refuses (p525 p. 24).",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "open residual",
-     "evidence": "p525 p. 28: 'You had a recovery if there was a downward price adjustment or similar adjustment on the item for which you claimed a credit.' The gate asks money 'paid back'; rec.nonitemized's help names 'a rebate on something you took a credit for' but not a price cut without payment. Settle by whether such a filer answers Yes; fix candidate: add 'or a later price cut' to the help."
+     "evidence": "Bill credits and Form 1098 box 4 credits are named in the help; a downward price adjustment on a credited item (p525 p. 28) is not. Settled by whether a filer with a price cut but no cash answers Yes; add it to the help.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The help names this exact case: 'a refund of ... mortgage interest (Form 1098 box 4)'."
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The help excludes only amounts 'deductible only by itemizing' when the filer 'did not itemize that year'; a Schedule C expense or student loan interest is not one, and a vendor refund of a business expense is business income.",
+     "bugs": []
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "Refused on the refund form: refund.other_year, 'Is any of these refunds for a tax year other than 2024', and refund.not_prior_year (i1040gi p. 89, Line 1, item 1)."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The help names 'a refund of property tax, sales tax'; rec.sales_tax refuses (p525 p. 24, Example 27).",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The examples are introduced 'For example'; insurance reimbursement of a deducted casualty loss is money back for a deduction, and rec.before_prior_year's help names 'a 2023 casualty loss reimbursed in 2025'."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The help excludes only amounts 'deductible only by itemizing' when the filer 'did not itemize that year'; a nonitemized deduction is not deductible only by itemizing."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The question already names the spouse ('were you (or, on a joint return, your spouse) paid back'), and the web tick under 'Did any of these happen to you (or, on a joint return, your spouse)?' has no 'your tax' clause."
-    },
-    {
-     "n": 7,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "A deduction that took itemized deductions above the standard deduction did lower the tax, so the filer answers Yes; p525 p. 25, Example 32, is then figured on rec (Worksheet 2)."
-    },
-    {
-     "n": 8,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The exclusion says 'state or local income tax refund', and the help lists 'a refund of ... sales tax'."
-    },
-    {
-     "n": 9,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The gate's condition is the tax benefit rule itself (p525 p. 28, 'If inclusion of the recovery doesn't change your total tax, you don't include the recovery'); a truthful No leaves no amount, and the web tick asks only 'Money back for a deduction or credit'."
+     "class": "accepted residual",
+     "evidence": "Whether an amount was deducted is a fact of the filer's own 2024 return, which Worksheet 2 itself uses (p525 p. 27). Cost: a filer who does not check their return may leave a taxable recovery out.",
+     "bugs": []
     }
    ],
-   "subject_sha": "196a0cfbdf1964230c9f5563e5e252c1800dddfd94f27f75df4685dc1b79e540",
+   "subject_sha": "43b1fe94b4a954bb522e2ed5a34b2949eb197cb3bc7cbe3de8bcda1135180afb",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:scope.religious_work#1": {
@@ -6846,44 +6810,39 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:scope.rental#1": {
-   "reason": "One defect (rent received in 2025 for an earlier rental); barter rent unsettled; the rest are answered by the wording.",
+   "reason": "K-1 owners are refused; platform rentals are renting; barter and lease-cancellation payments are residual.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "p527 p. 3: cash basis taxpayers 'report income on your return in the year you actually or constructively receive it, regardless of when it was earned'; the gate asks 'In 2025, did you ... rent out, or offer for rent', which a filer whose renting ended in 2024 truthfully answers No."
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "An S corporation owner-employee has a K-1, refused by scope.k1.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The question says 'rent out ... anything you own or lease', and the help counts 'a car or equipment'; leasing equipment to a contractor is renting it out."
+     "class": "open residual",
+     "evidence": "i1040se p. 5, 'If you received services or property instead of money as rent, report the fair market value'; neither the question nor its help mentions rent paid in goods or services. Settled by whether a filer who lent equipment for hay or labor answers No; add 'in money or in goods or services' to the help.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "model error",
-     "evidence": "The help says a rental counts 'even for a few days', and 'anything' includes a trailer; no business is required."
+     "evidence": "The question asks whether the filer 'rent[s] out ... anything you own or lease', and the help counts a car or equipment; renting through a platform is renting out.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The question asks about 'anything you own or lease'; the help's items are examples, and rent_personal asks 'something other than a building, a room or land, such as a car, a trailer or equipment'."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "open residual",
-     "evidence": "i1040se p. 5: 'If you received services or property instead of money as rent, report the fair market value'; neither the question nor its help mentions rent paid in services. Settle by whether a filer who lent equipment for services answers No; fix candidate: help 'Count rent paid in services or goods'."
+     "class": "accepted residual",
+     "evidence": "p527 p. 3, 'If your tenant pays you to cancel a lease, the amount you receive is rent'; the question asks 'receive rent for', which a filer may not apply to a cancellation payment. Cost: a cancellation payment that is the year's only rent may be left out.",
+     "bugs": []
     }
    ],
-   "subject_sha": "bee1dfbac974fabda3ca949a72c4c29104cd3abeacf01a8eeaab1c45dcd10bbf",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0952"
-   ]
+   "subject_sha": "87bd6240b227108f0309b1b61f959a4ec3e8c9ccb50755aa21cd69a257afc401",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:scope.strike_pay_if_pay#1": {
    "class": "defect: non-union funds and lockout (BUG-0906); gifts and in-kind support residual",
@@ -7211,67 +7170,76 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:s1.has_sc#1": {
-   "reason": "All non-Schedule-C sources are refused upstream (scope.k1, scope.farm, sche.qbi_business, rental.vehicle). Two real wording gaps remain inside the Schedule C path: the car-loan question omits the spouse, and the AMT question says 'newsletter' where the source says 'other periodical'.",
+   "reason": "Non-Schedule-C sources are refused upstream; a closed business's look-back interest is a defect.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "i8995 p. 3 lists 'sections 163(j), 179, 461(l), 465, 469, 704(d), and 1366(d)'. Without a Schedule C, suspended business losses come through a K-1 (scope.k1), a farm (scope.farm) or a rental treated as a business (sche.qbi_business, 'A rental treated as a trade or business is outside this tool'), all refused."
+     "evidence": "Schedule F is refused by scope.farm, and vehicle expenses of a Schedule E rental by rental.vehicle (i1040gi p. 110).",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "i6251 p. 7 ('IDCs from oil, gas, and geothermal wells are a preference'; circulation and mining costs): outside Schedule C these come through a K-1 (scope.k1), Schedule F (scope.farm) or a working interest, which royalty.yaml refuses."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "carloan.col_ii_input is asked per loan; the spouse's Schedule C is a business on the return, and rental use is refused by rental.vehicle.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "f1040s2 p. 2, line 17n, 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866': through a partnership this is refused by scope.k1, forecast-method property on a royalty by royalty.yaml's depreciation refusal, and a Schedule C long-term contract by sc.method_other."
+     "evidence": "K-1 losses are refused by scope.k1, PTPs with them, Schedule F by scope.farm (i8995 p. 3).",
+     "bugs": []
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "i1040gi p. 36: 'If you had income from farming or fishing, your tax may be less if you choose ... Schedule J.' Farming is refused by scope.farm and partnership farming or fishing by scope.k1. Schedule J is an election, so not making it still gives a correct return."
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "qbi.suspended asks about 'a business loss or expense of an earlier year that a tax limit kept you from deducting then', not only the current business.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "A farmer, with or without a Schedule C, answers Yes to scope.farm ('income or a loss from farming ... A Yes ends the interview here'), so the fishing-only wording never decides a farmer's return. i1040sj p. 1: 'your trade or business of farming or fishing'."
+     "evidence": "Partnership IDCs and an S corporation's circulation costs come through a K-1 (scope.k1).",
+     "bugs": []
     },
     {
      "n": 5,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "i1040gi p. 93: 'If you were self-employed or a partner, you may be able to take this deduction.' A partner's plan rests on K-1 earnings, refused by scope.k1."
+     "kind": "UNCLEAR",
+     "class": "accepted WIDE",
+     "evidence": "A prior-year mining or circulation cost gives only a negative 2025 adjustment (i6251 p. 7, 'If the AMT deduction is more than the regular tax deduction, enter the difference as a negative amount'); the tool does not prepare Form 6251 and its AMT test is an upper bound, so leaving it out can only refuse more.",
+     "bugs": []
     },
     {
      "n": 6,
      "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "i1040gi p. 110: 'the QPVLI ... deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)'. Schedule F is refused by scope.farm, K-1 activity by scope.k1, and car expenses of a Schedule E rental by rental.vehicle ('Car, truck and travel expenses of a rental are outside this tool')."
+     "class": "defect",
+     "evidence": "f1040s2 line 17n look-back interest; i6251 p. 7 'for the tax year the contract is completed or adjusted'. K-1 contracts are refused by scope.k1, but s2.lookback is asked only with a 2025 Schedule C, so a closed sole proprietorship's contract adjusted in 2025 is never asked. Filed as BUG-1092.",
+     "bugs": []
     },
     {
      "n": 7,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "i1040gi p. 110 subtracts 'the QPVLI, if any, that was deducted elsewhere on your return', which on a joint return includes the spouse's Schedule C. But the prompt reads 'How much of this loan's 2025 interest do you deduct as an expense of your own business?' with no 'or, on a joint return, your spouse' (rubric rule 4). If the spouse's business deducts the interest, the answer can be zero and the interest is deducted twice. Re-ruled (coordinator, 2026-11-21, owner: apply the wording rule as written): covered. carloan.col_ii_input is asked per roster entry (carloan is a collection whose list gathers the spouse's items), and interview/README.md's spouse-phrase rule does not apply to a question asked per roster entry."
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "scope.farm refuses farming, including 'a share of crops or livestock from land you let a farmer use' (Form 4835), and partnership fishing is refused by scope.k1.",
+     "bugs": []
     },
     {
      "n": 8,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i6251 p. 7: 'Circulation costs (expenditures to establish, maintain, or increase the circulation of a newspaper, magazine, or other periodical) deducted in full for the regular tax'. The s2.amt_business prompt names only 'a newspaper, magazine or newsletter', so a publisher of another periodical, such as a journal or bulletin, truthfully answers No and Form 6251 line 2o is left out."
+     "class": "out of scope",
+     "evidence": "A partner's plan rests on K-1 earnings (scope.k1); a Schedule F farmer is refused by scope.farm.",
+     "bugs": []
     }
    ],
-   "subject_sha": "f9cfd0dcb5889b50969fa56fa1e170bbba6c096c37849d83725b043f66f67a02",
+   "subject_sha": "1260022589b4171bf1e44c37aa2b0553c8df2f480bbf1a69b7f9e4adcd660b09",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
    "bugs": [
-    "BUG-0946"
+    "BUG-1092"
    ]
   },
   "unruled:gate:s1.hobby_any#1": {
@@ -7873,7 +7841,7 @@
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "tipjob rows are entries under a person and the roster question reads \"For this person (you, or your spouse on a joint return) \u2014 At which employers did you get tips in 2025?\" (i1040gi p. 101, \"You (and/or your spouse if filing a joint return) received qualified tips\"); per-person roster entries are outside the joint-return wording rule.",
+     "evidence": "tipjob rows are entries under a person and the roster question reads \"For this person (you, or your spouse on a joint return) — At which employers did you get tips in 2025?\" (i1040gi p. 101, \"You (and/or your spouse if filing a joint return) received qualified tips\"); per-person roster entries are outside the joint-return wording rule.",
      "bugs": []
     },
     {
@@ -8227,43 +8195,52 @@
    "subject_sha": "c51a59c3811a76f2614db36a4ede921a6cbcb76127041876872d724b2f0d6f61"
   },
   "unruled:gate:ftc.carryover_if_asked#1": {
-   "reason": "Most readings are covered by the wording; one is a real narrow loss from the help's pointer to 2024 line 8.",
+   "class": "As ruled for the earlier subject: known residuals of the carryover screen, with BUG-0827 and BUG-0964 open.",
+   "reason": "As ruled for the earlier subject: known residuals of the carryover screen, with BUG-0827 and BUG-0964 open.",
+   "subject_sha": "38fc348194f44b4589b69d1e1c2ee5363a38835fe1c886c7dd1eb2182eb47330",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "i1116 p. 19 (territory taxes carried). The carryover question's help ties the answer to the form, not to the word 'foreign': 'your 2024 Schedule B (Form 1116) shows it on line 8', and Schedule B carries territory taxes with foreign taxes."
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A carryover from before 2024 with no 2024 Schedule B: open as BUG-0827 (blocked in this lane: it needs a new input while another lane holds the inputs claim).",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1116sb p. 2: when an estimated carryback 'differs from the actual carryback amount, the difference will be entered on line 2a of your subsequent year Schedule B' (example: carryover rises from $80 to $85). The ftc.carryover help points only to 2024 Schedule B line 8; a filer whose estimated carryback took the whole 2024 excess sees zero there, answers No, and the extra carryover (and the f1116sb.changed refusal) is lost."
+     "class": "covered",
+     "evidence": "The outer condition is s3.foreign_any, asked 'Have you (or, on a joint return, your spouse) ever paid income tax to another country ...', which names the spouse and any year.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "p514 p. 39, situation 1. The carryover question asks whether foreign tax 'that you ... could not use as a credit in an earlier year' is carried into 2025; a share of an ex-joint carryover is the filer's own unused tax, and a Yes reaches f1116sb.split, whose help names divorce and a spouse's death."
+     "class": "accepted residual",
+     "evidence": "p514 p. 39, situation 1: a former spouse's joint-year carryover is caught by f1116sb.split once the carryover question is reached; a filer who reads the tax as the ex-spouse's is rare; as the earlier ruling.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "i1116 p. 19, Line 10. The question reads 'Is any foreign tax that you ... could not use as a credit in an earlier year carried into 2025?'; it asks about tax carried in, not tax left after 2025."
+     "class": "accepted residual",
+     "evidence": "i1116sb p. 2, Line 7 (the estimated carryback that proves smaller): open as BUG-0964 (ftc.carryover help), which the ftc lane holds; the f1116sb.changed help now names it (BUG-0834).",
+     "bugs": []
     },
     {
      "n": 4,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "p514 p. 39, situations 2 and 3: the allocation is made for the intervening year. Into 2025 the tool reads each year's carryover from the 2024 Schedule B line 8 with the spouse's amount added on a joint return (f1116sbyr.amount), and a 2025 return that is not joint after a 2024 joint return answers f1116sb.split Yes."
+     "evidence": "The carryover question's help points to the checkable fact, line 8 of the 2024 Schedule B (Form 1116) (i1116 p. 19, Line 10).",
+     "bugs": []
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "s3.foreign_any's help: 'Count foreign tax a fund paid for you (Form 1099-DIV box 7) only if you once filed Form 1116 for it'.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "ffe2dc5eeafc129d5abbe5ee70cf4396a5fbe4479608f0bf130d46cbe64db07a",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0964"
    ]
   },
   "unruled:gate:sb.bonds_any_if_income#1": {
@@ -8399,56 +8376,53 @@
    "subject_sha": "f2e0d92c830c4d2167462e9fad7c1d1d01bcebf1ceaf3079ba38457a5cf84516"
   },
   "unruled:gate:sd.sold_other#1": {
-   "reason": "Earlier installment payments, condemnations, section 1244 stock and trader elections are covered; the installment clause omits the spouse.",
+   "reason": "Condemnations, special stock, K-1 sales and abandoned assets are asked or refused; inherited notes and related-party exchanges are unsettled.",
    "findings": [
     {
      "n": 0,
-     "kind": "UNCLEAR",
+     "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "i1040sd p. 6: 'any payment received in 2025 from a sale made in an earlier year'. The gate's second sentence says 'Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale', which a 2025 payment on a 2021 sale meets."
+     "evidence": "sd.condemned asks about property 'taken by a government, or sold under threat of that'; a Schedule C asset abandoned or scrapped is refused by asset.ended_this_year ('sell, give away or scrap it').",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "Same issue as the screen finding: the gate is asked once per return and its installment sentence says 'anything you sold' without the spouse, so a joint filer can leave out the spouse's earlier installment sale (i1040sd p. 6)."
+     "class": "covered",
+     "evidence": "sd.small_business_stock (section 1244 or 1242 stock) and sd.trader_election (mark-to-market) ask and refuse (i1040sd p. 1, items 4 to 6).",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "i1040sd p. 1, involuntary conversion. sd.condemned asks about business or investment property 'taken by a government, or sold under threat of that' and refuses through sd.other_forms."
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A section 1231 gain on a K-1 is refused by scope.k1.",
+     "bugs": []
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "i1040sd p. 1, section 1242 and 1244 stock. sd.small_business_stock asks 'lose money on stock that a small company issued to you, a loss you claim as an ordinary loss ... (section 1244 or section 1242 stock)' and refuses."
+     "kind": "UNCLEAR",
+     "class": "open residual",
+     "evidence": "i1040sd p. 6 speaks of 'a sale made in an earlier year that you reported on the installment method'; an heir or former spouse collecting on another's note is not named. Settled by the Form 6252 instructions on inherited or transferred installment obligations, which are not archived.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "i1040sd p. 1, mark-to-market traders. sd.trader_election asks 'Do you ... trade securities or commodities as a business, under a mark-to-market election' and refuses."
+     "class": "open residual",
+     "evidence": "Form 8824's two-year related-party rule could require 2025 reporting of a 2024 exchange; i8824 is the source that settles it, and the gate asks only about 2025 sales or trades.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The help says 'Real estate includes a home you lived in, and ...', an inclusion, not a definition; vacant investment land is real estate."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The help says 'Business property is anything used in a business or rented out, such as equipment, a vehicle or a building'; a car used for rideshare is a vehicle used in a business."
+     "class": "out of scope",
+     "evidence": "Breeding or dairy livestock is farming, refused by scope.farm; standing timber is real estate and a geothermal interest is 'oil, gas or mineral' property in the help's sense (i1040sd p. 1, 'Oil, gas, geothermal, or other mineral property').",
+     "bugs": []
     }
    ],
-   "subject_sha": "f0eb20505dae243d635e6131e9940ec69aeccd4f0f402eccbfad03e55320482d",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0963"
-   ]
+   "subject_sha": "569d74896aa5a18d4959700ec4c7786ab219c78e00029dde81c476a58e5abf6f",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:f8853c.has_line17#1": {
    "class": "no gate defect; the box 4 and box 3 readings follow the payee statement the line instructions name; low wording points",
@@ -8771,30 +8745,46 @@
    "subject_sha": "6e63251169dcfb054ef48de548216eeafe8d2346d17a3abb9a157a43bf97427f"
   },
   "unruled:gate:ira.mfs_cov_matters#1": {
-   "class": "defect (low, wording): 'covered by a retirement plan at work' may leave out a self-employed spouse's plan",
-   "reason": "(0) defect, low: BUG-0881. (1) covered: the help gives box 13 as a sign ('should be ticked'), the question asks the fact. (2) presentation: the help's list says what 'counts', not all that counts.",
+   "class": "(0) plan-year rule not in the archived pages; the rest as ruled for the earlier subject.",
+   "reason": "(0) plan-year rule not in the archived pages; the rest as ruled for the earlier subject.",
+   "subject_sha": "4b7621e62d8ed4a81adca0ef430eb5c74b5319bd0dadb22395f4310123d9b383",
    "findings": [
     {
      "n": 0,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040gi p. 96, covered 'at work or through self-employment'. The prompt 'Was your husband or wife covered by a retirement plan at work in 2025?' and its Form W-2 pointer may lead a filer whose spouse has only a solo 401(k) or SEP of their own business to answer No; the full deduction is then taken instead of the separate-return phase-out.",
-     "bug": "BUG-0881"
+     "kind": "FALSE_NO",
+     "class": "accepted residual",
+     "evidence": "The plan-year rule is in Pub. 590-A, not among the archived pages; a spouse who left a fiscal-year plan in 2024 is rare; low.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The question asks whether the spouse was covered; the help says the W-2 box 'should be ticked' if so, a sign, not the test."
+     "evidence": "The question asks the fact; the help says the W-2 box 'should be ticked' if so, a sign, not the test, as ruled for the earlier subject.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "The help 'A pension, a 401(k) or 403(b), or a SEP or SIMPLE IRA counts, even if they put nothing in' gives examples; a TSP or governmental pension is a pension or 401(k)-type plan. Low."
+     "evidence": "The help gives examples of what counts ('A pension, a 401(k) or 403(b), a solo 401(k) or Keogh, or a SEP or SIMPLE IRA counts'); a governmental pension is a pension; low.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "i1040gi p. 96, 'unless you lived apart from your spouse for all of 2025'; the living-together answer is asked as a fact of the year; low.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "Contributions for 2025 include those made by April 15, 2026, as the IRA questions say elsewhere; low.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "2dbf7204b958314240129f6081106cf3b267ab011539e3fc733a2b5629d529ae"
+   ]
   },
   "unruled:gate:retirement.born_before_averaging_date_if_plan#1": {
    "class": "no gate defect; the question asks about the person who earned the balance",
@@ -8816,7 +8806,7 @@
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) \u2014 In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
+     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) — In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
     }
    ],
    "subject_sha": "34886951b38c6e7090e4a36e83de1cb995bdbe4378e2f735949ae7111f69b871"
@@ -8866,68 +8856,99 @@
    "subject_sha": "cff5c4b51507fb5e008187923c479b09a1fbd81f8ea2483514013c3bd3cf0cf0"
   },
   "unruled:gate:retirement.dis_early_if_disability#1": {
-   "class": "defect (low, wording): the disability tick is in the present tense; the joint-return reading is covered",
-   "reason": "(0) covered: per person. (1) defect, low: 'You get this pension because you became disabled' misses a disability pension that stopped in 2025 (BUG-0881). (2) presentation: the help says to ask the plan or employer for its minimum retirement age.",
+   "class": "Per-entry question; the age readings are low.",
+   "reason": "Per-entry question; the age readings are low.",
+   "subject_sha": "ba42ff87617981798f3dcefccae674637a87a0d4cda608f77058da1cef49afda",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) \u2014 In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
-    },
-    {
-     "n": 1,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i1040gi p. 28, line 1h, 'Disability pensions received before you reach the minimum retirement age set by your employer'. The tick 'You get this pension because you became disabled' is present tense; payments that stopped during 2025 are ticked No and go to lines 5a/5b instead of line 1h (earned income understated for the EIC and IRA compensation).",
-     "bug": "BUG-0881"
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The help says 'The plan or the employer can tell you its minimum retirement age.' Low."
-    }
-   ],
-   "subject_sha": "fc182d42b594ecad137ca2d7b3781cc924199d0625c31b6661e1b98de771795f"
-  },
-  "unruled:gate:retirement.disability_if_plan#1": {
-   "class": "defect (low, wording): the disability tick is in the present tense; code 3 from a plan is refused; the plan-provision point is BUG-0878",
-   "reason": "(0) covered: per person. (1) defect, low: present tense (BUG-0881). (2, 3) presentation, low: a military disability retirement or an early retirement taken because of a disability answers the tick as worded. (4) covered: code 3 other than from an IRA is refused by retirement.bad_code.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) \u2014 In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
+     "evidence": "retirement is a per-entry list: the Form 1099-R list is asked per person ('For this person (you, or your spouse on a joint return) ...'), and the per-person frame shows the spouse's entry 'About your spouse', so 'you' in a question about that entry is the person it was issued to (interview/README.md, the per-person frame; RUBRIC2 rule 4).",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "Same tick, 'You get this pension because you became disabled'; a pension that was a disability pension for part of 2025 and is now a regular pension is ticked No.",
-     "bug": "BUG-0881"
+     "class": "presentation",
+     "evidence": "'Were you younger than the earliest age ...' asks about the time of the payments; the No path's refusal for a year in which the age was reached is stated in the help ('A year in which you reached that age is outside what this tool prepares'); low.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "i1040gi p. 28, 'For details on military disability pensions, see Pub. 525'. A retiree whose retired pay is a disability retirement gets it because of a disability and ticks Yes; retired pay for service with a separate VA rating is not a disability pension. Low."
+     "class": "accepted residual",
+     "evidence": "The plan's minimum retirement age: the existing help says 'The plan or the employer can tell you its minimum retirement age' (i1040gi p. 28).",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "i1040gi p. 30, terrorist attack. A pension or early retirement taken because of the disability is a pension received because the person became disabled; a 401(k) lump sum is not a disability pension. Low."
+     "class": "model error",
+     "evidence": "The reviewer's own reading leads to a wrong yes, not a wrong no; a Yes only asks the next question.",
+     "bugs": []
+    }
+   ]
+  },
+  "unruled:gate:retirement.disability_if_plan#1": {
+   "class": "Per-entry question; the plan wording added by BUG-0878 may leave a military or uncertain filer unsure, filed as a low defect.",
+   "reason": "Per-entry question; the plan wording added by BUG-0878 may leave a military or uncertain filer unsure, filed as a low defect.",
+   "subject_sha": "3362630cdc380cebe833e3d022eb2d6c8918607bf08ba1945afbc92b3515abc3",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "retirement is a per-entry list: the Form 1099-R list is asked per person ('For this person (you, or your spouse on a joint return) ...'), and the per-person frame shows the spouse's entry 'About your spouse', so 'you' in a question about that entry is the person it was issued to (interview/README.md, the per-person frame; RUBRIC2 rule 4).",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "retirement is a per-entry list: the Form 1099-R list is asked per person ('For this person (you, or your spouse on a joint return) ...'), and the per-person frame shows the spouse's entry 'About your spouse', so 'you' in a question about that entry is the person it was issued to (interview/README.md, the per-person frame; RUBRIC2 rule 4). The military and terrorist-attack questions follow the same entry.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "i1040gi p. 28, 'For details on military disability pensions, see Pub. 525'; the BUG-0878 wording 'under a plan that provides for disability retirement' may lead a military disability retiree (DFAS) to answer No; the question has no help naming it.",
+     "bugs": [
+      {
+       "title": "retirement.disability: the plan-terms wording gives no checkable sign (box 7 code 3) and does not name military disability retired pay",
+       "source": "i1040gi p. 30, \"If you receive payments from a retirement or profit-sharing plan that does not provide for disability retirement, do not treat those payments as disability payments.\"; i1040gi p. 28, \"For details on military disability pensions, see Pub. 525.\"",
+       "symptom": "After BUG-0878 the question asks whether the payment was made 'under a plan that provides for disability retirement'; a filer cannot check the plan's terms, and a military disability retiree may answer No, so line 1h, the military and terrorist-attack questions are skipped.",
+       "where": "interview/2025/questions.yaml (retirement.disability); forms/2025/retirement.yaml (retirement.disability)",
+       "fix": "Proposed fix: help on retirement.disability: 'Code 3 in box 7 of the Form 1099-R means disability. Count military disability retired pay.'",
+       "severity": "low"
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "i1040gi p. 30, 'If you receive payments from a retirement or profit-sharing plan that does not provide for disability retirement, do not treat those payments as disability payments.' The filer cannot check the plan's terms; code 3 in box 7 is the checkable sign and is not named. Same bug as finding 2.",
+     "bugs": [
+      {
+       "title": "retirement.disability: the plan-terms wording gives no checkable sign (box 7 code 3) and does not name military disability retired pay (same bug as finding 2)",
+       "source": "i1040gi p. 30, \"If you receive payments from a retirement or profit-sharing plan that does not provide for disability retirement, do not treat those payments as disability payments.\"; i1040gi p. 28, \"For details on military disability pensions, see Pub. 525.\"",
+       "symptom": "After BUG-0878 the question asks whether the payment was made 'under a plan that provides for disability retirement'; a filer cannot check the plan's terms, and a military disability retiree may answer No, so line 1h, the military and terrorist-attack questions are skipped.",
+       "where": "interview/2025/questions.yaml (retirement.disability); forms/2025/retirement.yaml (retirement.disability)",
+       "fix": "Proposed fix: help on retirement.disability: 'Code 3 in box 7 of the Form 1099-R means disability. Count military disability retired pay.'",
+       "severity": "low"
+      }
+     ]
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement.bad_code refuses 'code 3 other than from an IRA', so a plan payment coded 3 is refused whatever the tick."
+     "class": "presentation",
+     "evidence": "i1040gi p. 30, the terrorist-attack example; a pension started early because of disability is 'paid ... because you became disabled'; low.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "9f9834714901d87bb5bc31f1d484ba29db0dab108c52c15d58599282991f9916"
+   ]
   },
   "unruled:gate:retirement.is_code2#1": {
    "class": "no gate defect; combined codes are refused, a modified series is screened; wording lows",
@@ -8968,7 +8989,7 @@
   },
   "unruled:gate:retirement.is_code7#1": {
    "class": "no gate defect; combined codes are refused and the age question is per person",
-   "reason": "(0) covered: retirement.bad_code. (1) covered: per person. (2) presentation, low: 59\u00bd by payment date is not glossed. (3) covered: codes 1, J and S take the exception list, where exception 12 is entered.",
+   "reason": "(0) covered: retirement.bad_code. (1) covered: per person. (2) presentation, low: 59½ by payment date is not glossed. (3) covered: codes 1, J and S take the exception list, where exception 12 is entered.",
    "findings": [
     {
      "n": 0,
@@ -8980,91 +9001,92 @@
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) \u2014 In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
+     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) — In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "'Were you under age 59\u00bd when you received any of this money?' asks about any payment; the date of 59\u00bd is not glossed. Low."
+     "evidence": "'Were you under age 59½ when you received any of this money?' asks about any payment; the date of 59½ is not glossed. Low."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "i5329 p. 5, exception 12. A code 1 distribution goes to retirement.exception, which takes 'the number from the table in the Form 5329 instructions', so a miscoded payment at 59\u00bd or older is entered there; this gate's line is not read as the age for it."
+     "evidence": "i5329 p. 5, exception 12. A code 1 distribution goes to retirement.exception, which takes 'the number from the table in the Form 5329 instructions', so a miscoded payment at 59½ or older is entered there; this gate's line is not read as the age for it."
     }
    ],
    "subject_sha": "ad63a69a80d57d7c6ed393c2d84df18375d7cc881854128a12878ddab40c202b"
   },
   "unruled:gate:retirement.is_death#1": {
-   "class": "open residual: a surviving spouse treating an inherited IRA as their own (BUG-0878); combined codes refused",
-   "reason": "(0) open residual: the code 4 question does not catch a spouse who elected or is deemed to treat the IRA as their own, BUG-0878 (completeness claim retirement#1.3). (1) covered: retirement.bad_code. (2) covered: per person.",
+   "class": "(0) per-entry frame; (1) two codes are refused; (2) a rollover into one's own IRA ends the code 4 form.",
+   "reason": "(0) per-entry frame; (1) two codes are refused; (2) a rollover into one's own IRA ends the code 4 form.",
+   "subject_sha": "6a2454da68932ae87edafef2959b7eff484d6eaab1ef757750093e9ed62cde98",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "open residual",
-     "evidence": "p590b p. 5, 'You will be considered to have chosen to treat the IRA as your own if: Contributions ... are made to the inherited IRA, or You don't take the required minimum distribution'. retirement.not_beneficiary asks only whether the money came 'some other way'; recorded as BUG-0878.",
-     "bug": "BUG-0878"
+     "class": "covered",
+     "evidence": "retirement is a per-entry list: the Form 1099-R list is asked per person ('For this person (you, or your spouse on a joint return) ...'), and the per-person frame shows the spouse's entry 'About your spouse', so 'you' in a question about that entry is the person it was issued to (interview/README.md, the per-person frame; RUBRIC2 rule 4). The BUG-0878 wording now asks the surviving spouse case.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "retirement.code offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', and retirement.bad_code refuses 'a distribution code other than 7, 4, 2, 1, S, 3, G or Q'; a combined code is refused, not read as the single code."
+     "evidence": "retirement.code offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', and retirement.bad_code refuses it, as ruled for the earlier subject.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) \u2014 In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
+     "class": "accepted residual",
+     "evidence": "p590b p. 5 lists the deemed elections; a spouse who rolled the inherited IRA into an IRA of their own receives distributions from that IRA, not code 4 payments; low.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "f3c1cac93c2d53e41dc0a23ffff717798d4240be169806d5a21552ac73a48296"
+   ]
   },
   "unruled:gate:retirement.is_ira#1": {
-   "class": "no gate defect; the account kind is chosen by the IRA/SEP/SIMPLE box and has only three values",
-   "reason": "(0, 1, 2) covered: the options name SEP and SIMPLE IRAs and tie each to the IRA/SEP/SIMPLE box. (3, 4) model error: there is no 'not sure' or 'other' value; an annuity is under the plan option. (5) covered: per person.",
+   "class": "As ruled for the earlier subject: the options name SEP and SIMPLE IRAs and tie each to the IRA/SEP/SIMPLE box.",
+   "reason": "As ruled for the earlier subject: the options name SEP and SIMPLE IRAs and tie each to the IRA/SEP/SIMPLE box.",
+   "subject_sha": "027f5a686d2ca2c390ed7c0f0535795ef1c6e956552e59bcd76f315527fcae6d",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement.account options: 'A traditional IRA, a SEP IRA or a SIMPLE IRA (the box \"IRA/SEP/SIMPLE\" is ticked)' and 'A pension, an annuity, or a 401(k), 403(b) or 457(b) plan (the box \"IRA/SEP/SIMPLE\" is not ticked)'; the help points to the box."
+     "class": "model error",
+     "evidence": "retirement.account has three values; 'A pension, an annuity, or a 401(k), 403(b) or 457(b) plan' names an annuity, so a commercial annuity is the plan option and asks cost_any.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Same options; a SEP or SIMPLE IRA has the box ticked and is the IRA option, so retirement.charity_hsa is asked."
+     "evidence": "retirement.account: 'A traditional IRA, a SEP IRA or a SIMPLE IRA (the box \"IRA/SEP/SIMPLE\" is ticked)'.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Same: an inherited IRA's form has the box ticked."
+     "evidence": "Same options and the help 'The form has a small box marked \"IRA/SEP/SIMPLE\" next to box 7'; an individual retirement annuity has the box ticked.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The values are plan, traditional_ira and roth_ira only; a commercial annuity is named in the plan option ('A pension, an annuity ...'), which asks cost_any."
+     "class": "covered",
+     "evidence": "The plan option names 403(b) and 457(b) plans and 'the box \"IRA/SEP/SIMPLE\" is not ticked'.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "There is no 'not sure' or 'other account' value; a 403(b) or 457(b) is named in the plan option."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) \u2014 In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
+     "evidence": "retirement is a per-entry list: the Form 1099-R list is asked per person ('For this person (you, or your spouse on a joint return) ...'), and the per-person frame shows the spouse's entry 'About your spouse', so 'you' in a question about that entry is the person it was issued to (interview/README.md, the per-person frame; RUBRIC2 rule 4).",
+     "bugs": []
     }
-   ],
-   "subject_sha": "0917ceea514e4f0fd3f5c563d92c54f2ce61e82c9dbab8173b03fb097f6a9a67"
+   ]
   },
   "unruled:gate:retirement.is_trad#1": {
    "reason": "Basis sources are listed in the question text; contributions are asked at person level.",
@@ -9110,55 +9132,46 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:retirement.plan_death#1": {
-   "class": "no gate defect; combined codes refused; the beneficiary wording is BUG-0875",
-   "reason": "(0) presentation, low: a payer reports a beneficiary's payment with code 4; a miscoded survivor payment is rare. (1) covered: retirement.bad_code. (2) out of scope: the list is of Forms 1099-R. (3, 4) defect, low: BUG-0875. (5, 6) presentation, low.",
+   "class": "As ruled for the earlier subject; the beneficiary wording is fixed by BUG-0875, the several-beneficiaries case by BUG-0508's help.",
+   "reason": "As ruled for the earlier subject; the beneficiary wording is fixed by BUG-0875, the several-beneficiaries case by BUG-0508's help.",
+   "subject_sha": "9d2d3283c614f31290b0a185c21d4015f31645224a4058b771f48dfd03b890ca",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "presentation",
-     "evidence": "Code 4 is the payer's code for a payment to a beneficiary (i5329 p. 5, exception 04 'Distributions due to death'); a survivor payment coded 7 is a payer error. Low."
+     "evidence": "Code 4 is the payer's code for a payment to a beneficiary (i5329 p. 5, exception 04); a survivor payment coded otherwise is a payer error; low.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "retirement.code offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', and retirement.bad_code refuses 'a distribution code other than 7, 4, 2, 1, S, 3, G or Q'; a combined code is refused, not read as the single code."
+     "evidence": "retirement.code offers 'two codes together (such as 7D or 4G)', refused by retirement.bad_code.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "A foreign pension with no Form 1099-R is not an entry of the retirement list ('List each Form 1099-R you received'); this gate cannot reach it."
+     "evidence": "The list is of Forms 1099-R ('List each Form 1099-R you received'); an RRB-1099-R or other format is not an entry this gate reaches.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040gi p. 30, 'If you are the beneficiary of an employee who died, see Pub. 575'. retirement.ben_before_retire's '(before retiring)' points a former employee's beneficiary to No; BUG-0875.",
-     "bug": "BUG-0875"
+     "class": "model error",
+     "evidence": "Both helpers are per entry: retirement.is_ira and retirement.is_death read the entry's own account and code (forms/2025/retirement.yaml, a per-entry collection).",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040gi p. 29, 'deceased employee or former employee who died before August 21, 1996'; retirement.death_exclusion names only 'the employee'; BUG-0875.",
-     "bug": "BUG-0875"
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "'Is this pension shared among more than one beneficiary?' asks about the pension, not the check. Low."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "'guaranteed for a set period ... not a survivor's pension paid for your own life' contrasts the two cases. Low."
+     "evidence": "'guaranteed for a set period ... not a survivor's pension paid for your own life' contrasts the two cases; low.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "cfa090a2e4f282506cf825bb4f828a3df4cb8ef4402c7efabb9696fd5af21c04"
+   ]
   },
   "unruled:gate:retirement.put_back#1": {
    "class": "no gate defect; conversions, direct Roth rollovers and same-account redeposits are reached",
@@ -9186,7 +9199,7 @@
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) \u2014 In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
+     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) — In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
     },
     {
      "n": 4,
@@ -9216,64 +9229,69 @@
    "subject_sha": "ead135a3a7a30241619c6fbbe82abddc6c5238aad81a8e739aeb67352b554a97"
   },
   "unruled:gate:retirement.rollover_any#1": {
-   "class": "defect (low, wording): the rollover question's 60 days omits the encoded 120-day first-home recontribution; other findings covered or low",
-   "reason": "(0, 1, 4) presentation, low (overstatement only). (2) covered: a plan loan offset refuses at retirement.loan_offset. (3) covered: a direct rollover is code G; a nonspouse transfer is 4G, refused. (5) defect, low: BUG-0881.",
+   "class": "As ruled for the earlier subject; the 120-day first-home case is now in the question (BUG-0881).",
+   "reason": "As ruled for the earlier subject; the 120-day first-home case is now in the question (BUG-0881).",
+   "subject_sha": "98242381ab0ee6f302bdd6889491df00fa92717f3792b9ad3c45a8881037e673",
    "findings": [
     {
      "n": 0,
-     "kind": "UNCLEAR",
+     "kind": "FALSE_NO",
      "class": "presentation",
-     "evidence": "A repayment of a birth or adoption, emergency or domestic abuse distribution; repayments are screened at retirement.early_screen ('it repays ...') and a disaster repayment at retirement.disaster. A later repayment left out overstates tax. Low."
+     "evidence": "A 60-day rollover with other money is a rollover of the amount; 'this money' read narrowly overstates income only; low.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "presentation",
-     "evidence": "A rollover not yet made when filing; same as gate:retirement.put_back#1 finding 5. Low."
+     "class": "covered",
+     "evidence": "retirement.loan_offset ('Part of it is an unpaid plan loan taken off your balance') refuses every plan loan offset.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement.loan_offset ('Part of it is an unpaid plan loan taken off your balance') refuses every plan loan offset."
+     "class": "presentation",
+     "evidence": "Property sold and the proceeds rolled over: 'this money' read narrowly; overstatement only; low.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "A direct rollover is code G, which sets retirement.put_back without this question; a nonspouse beneficiary's trustee transfer is coded 4G, refused by retirement.bad_code."
+     "evidence": "The rollover question now names a first-home IRA withdrawal put back within 120 days (BUG-0881); birth or adoption repayments are screened at retirement.early_screen.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Property rolled over in kind; 'this money' read narrowly. Low."
+     "class": "covered",
+     "evidence": "A direct rollover is code G, which sets retirement.put_back without this question; a nonspouse transfer is 4G, refused by retirement.bad_code.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "p590b p. 28, first home, 'contribute the amount ... to an IRA within 120 days'. The encoded line retirement.rollover_if_any takes it, but the question says 'within 60 days' and the help 'A later deposit counts only under an IRS waiver'. Tax overstated.",
-     "bug": "BUG-0881"
+     "class": "presentation",
+     "evidence": "A deposit made in 2026 for a 2025 distribution within 60 days: the question asks 'within 60 days of receiving it', which includes it; low.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "25726078e56335bc6bad1a819a5d119b35a7b778523d04ac1fc52bb6a3fb1a9a"
+   ]
   },
   "unruled:gate:retirement.under59_if_code7#1": {
    "class": "no gate defect; per person, and other codes take the exception list",
-   "reason": "(0) covered: per person. (1, 2) presentation, low: 59\u00bd by payment date not glossed. (3) covered: codes 1 and 2 reach retirement.exception and retirement.code2_partial.",
+   "reason": "(0) covered: per person. (1, 2) presentation, low: 59½ by payment date not glossed. (3) covered: codes 1 and 2 reach retirement.exception and retirement.code2_partial.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) \u2014 In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
+     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) — In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "'Were you under age 59\u00bd when you received any of this money?' asks about any payment; the date is not glossed. Low."
+     "evidence": "'Were you under age 59½ when you received any of this money?' asks about any payment; the date is not glossed. Low."
     },
     {
      "n": 2,
@@ -9291,43 +9309,32 @@
    "subject_sha": "b4edd9c6464e68f284563ff31e22878d04d8d88bdf9ccf4ed058bd868385d7e0"
   },
   "unruled:gate:sli.any_if_not_mfs#1": {
-   "class": "defect (low, wording): a loan not called a student loan (BUG-0876); other findings covered or low",
-   "reason": "(0, 2) defect, low: BUG-0876. (1) covered: a parent loan is a student loan by name and the help says 'If you are not sure whether a loan counts, answer Yes'. (3) covered: the amount is box 1 of Form 1098-E. (4) presentation, low.",
+   "class": "(0) fixed by BUG-0876's help; (1, 2) as ruled for the earlier subject.",
+   "reason": "(0) fixed by BUG-0876's help; (1, 2) as ruled for the earlier subject.",
+   "subject_sha": "ba7154702967f4c984983a5ba6d1f159f1ef7c48eee9ad7b9490d932d24ae231",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040gi p. 98, 'any loan you took out to pay the qualified higher education expenses'. The tick 'Paid interest on a student loan' turns on the name; BUG-0876.",
-     "bug": "BUG-0876"
+     "class": "covered",
+     "evidence": "sli.any help (BUG-0876): 'A loan counts by what it paid for, not by its name: a personal loan or credit line used only for college costs counts.' (i1040gi p. 98).",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "A Parent PLUS loan is a student loan by name; the help 'If you are not sure whether a loan counts, answer Yes: the questions that follow sort it out.'"
+     "class": "presentation",
+     "evidence": "Payments by a relative on the student's own loan: the third-party rule is in Pub. 970, which is not in the archived pages; low.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "A home equity loan used only for tuition; same point, BUG-0876.",
-     "bug": "BUG-0876"
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "sli.interest takes 'box 1 of Form 1098-E', which includes capitalized interest paid; a filer who paid on the loan ticks it."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Payments by a relative on the student's own loan; the third-party rule is in Pub. 970. Low."
+     "evidence": "sli.interest takes box 1 of Form 1098-E, which includes capitalized interest paid; a filer who made payments on a student loan ticks the box.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "e69c80ca57cda5542e85d14678f7d8494c47b95a785ade09b89b3d06051d46a6"
+   ]
   },
   "unruled:gate:sli.assisted_any_if_any#1": {
    "class": "no gate defect; the question asks whether interest was paid by a program or a 529 plan, for the filer or spouse",
@@ -9417,42 +9424,39 @@
    "subject_sha": "b2df206acba61f515e40cc6baf524bb1a81d69ac9a71a7c0213edc248793faa4"
   },
   "unruled:gate:ssb.any#1": {
-   "class": "defect (low): a person who only repaid benefits answers No and the repayment refusal is not asked",
-   "reason": "(0) defect, low: BUG-0879 (a probe walk with ssb.any false completed the return without asking ssb.repaid_more). (1, 2) covered: the question points to Form SSA-1099 or RRB-1099. (3) presentation, low: treaty benefits with no form are not named. (4) covered: box 5 includes back pay paid in 2025.",
+   "class": "(0) covered by the question's form pointer; the rest as ruled for the earlier subject.",
+   "reason": "(0) covered by the question's form pointer; the rest as ruled for the earlier subject.",
+   "subject_sha": "e6025debbd80ac7053a5f3ada7ffe365fecb29e602411699dec1426555d9d961",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i1040gi p. 31, 'if your total repayments in 2025 exceed your total benefits received in 2025 by more than $3,000, you may be able to take an itemized deduction or a credit'. A person with box 3 zero and box 4 positive answers No to 'get social security benefits ... in 2025'; ssb.repaid_more is then not asked (interview-coverage probe) and the Pub. 915 refusal is missed. Tax overstated only.",
-     "bug": "BUG-0879"
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The question ends 'Form SSA-1099 or Form RRB-1099 reports them'; benefits withheld for premiums or recovered are in box 3 and box 5 of that form (i1040gi p. 31).",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The question ends 'Form SSA-1099 or Form RRB-1099 reports them'; benefits withheld for premiums are in box 3 and box 5 of that form."
+     "evidence": "SSDI and survivor benefits are reported on Form SSA-1099, which the question names (i1040gi p. 31).",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "SSDI and survivor benefits are reported on Form SSA-1099, which the question names."
+     "evidence": "ssb.benefits takes box 5, which includes back pay paid in 2025, and ssb.prior_year_pay then asks about it (i1040gi p. 31, Line 6c).",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Canadian or German benefits treated as U.S. social security under a treaty (Pub. 915, not in the excerpt). Rare; low."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "ssb.benefits takes box 5 of the forms, which includes back pay paid in 2025; ssb.prior_year_pay then asks about it."
+     "evidence": "'Railroad retirement benefits treated as social security' is followed by 'Form ... RRB-1099 reports them', the checkable fact; low.",
+     "bugs": []
     }
-   ],
-   "subject_sha": "8689ecbea6a8dfff4f4ee69dc114708271916faa926c3478612d31c73311a98b"
+   ]
   },
   "unruled:gate:ssb.prior_year_pay#1": {
    "class": "no gate defect; the lump-sum election is optional and a No yields a correct return without it",
@@ -9517,41 +9521,39 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude Opus agents, RUBRIC2)"
   },
   "unruled:gate:k1p.ask_re_pro#1": {
-   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
+   "reason": "K-1 returns are refused.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "bugs": []
     }
    ],
-   "subject_sha": "f1a666c78c1ebc10f4a26b85b079b66b55b53226c721216e4192ae45af536c26",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude Opus agents, RUBRIC2)"
+   "subject_sha": "5308bdd7612223cc207b83dd84ef5efdf76f96176d5b0733fb55cdcd4b9185c8",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:k1s.ask_dwelling#1": {
    "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
@@ -9597,72 +9599,79 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude Opus agents, RUBRIC2)"
   },
   "unruled:gate:k1s.ask_re_pro#1": {
-   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
+   "reason": "K-1 returns are refused.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "bugs": []
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "bugs": []
     }
    ],
-   "subject_sha": "919c7ba1ffcdd342780a5d05c2efdb6db209d6fcfd5e1051d30bd820af3c7f86",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude Opus agents, RUBRIC2)"
+   "subject_sha": "4417f7bb73a00b4fa3b8a6d678eee77db872f1cbc55804572baec59bc68769cc",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:royalty.has_loss#1": {
-   "reason": "gate:royalty.has_loss: computed gate equals the at-risk trigger.",
+   "reason": "Royalty at-risk gate: the carryover gap is filed.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "i1040se p. 3 counts \"loss on the disposition of assets\"; dispositions of royalty or mineral property are refused by sd.other_forms (Form 4797) through sd.business_property (\"or was it oil, gas or mineral property\")."
+     "class": "defect",
+     "evidence": "p925 p. 19: a loss disallowed by the at-risk limits is \"a deduction from the same activity in the next tax year\"; filed as BUG-1113."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "i1040se p. 3 needs \"A loss from an activity\" and amounts not at risk; the royalty entry is the activity and royalty.has_loss is \"line 21 < $0\", the same loss, so the gate cannot be false when the condition holds."
+     "class": "out of scope",
+     "evidence": "A royalty disposition is refused on the forms that report it."
     },
     {
      "n": 2,
      "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "i1040se p. 7, Line 21 applies Form 6198 only to a deductible loss, which is exactly royalty.has_loss (line 21 below zero)."
+     "class": "defect",
+     "evidence": "p925 p. 19 at-risk recapture when the amount at risk falls below zero; no question asks it. Recorded with BUG-1113 (the same missing Form 6198 history)."
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The nonrecourse-loan text concerns the gated question, not the gate, which holds for any loss; the bank-loan wording defect of that question is ruled at unruled:royalty.not_at_risk#1 finding 0."
+     "evidence": "Rule 4: asked per royalty entry (\"For this royalty —\") of the $royalty roster, which lists the spouse's royalties."
     },
     {
      "n": 4,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The protected and related-lender amounts are asked by the gated royalty.not_at_risk whenever line 21 is a loss; the \"other similar arrangement\" omission is ruled at unruled:royalty.not_at_risk#1 finding 1."
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "Seller financing without liability is money borrowed without liability; protected property contributions are rare."
     }
    ],
-   "subject_sha": "7ed14d3bef5aff610ebf712a1cb98b74efa6bdb49bc37070a96f785fe00fdd9a",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "29bf5190845d7c6f821477b1696bb2c405049930d5b7779c91cf245b4684250c",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
+   "bugs": [
+    "BUG-1113"
+   ]
   },
   "unruled:gate:dependent.ptc_files_if_own_money#1": {
    "reason": "Form 8814 is refused return-wide; the help states the combined Chart B test.",
@@ -9677,7 +9686,7 @@
      "n": 1,
      "kind": "UNCLEAR",
      "class": "model error",
-     "evidence": "i1040gi p. 10, Chart B: 'Your gross income was more than the larger of\u2014 $1,350, or Your earned income (up to $15,300) plus $450.' The gated question dependent.ptc_files shows this help: 'Total limit with both kinds: the larger of $1,350 and their pay (up to $15,300) plus $450', and its source states the gross-income test."
+     "evidence": "i1040gi p. 10, Chart B: 'Your gross income was more than the larger of— $1,350, or Your earned income (up to $15,300) plus $450.' The gated question dependent.ptc_files shows this help: 'Total limit with both kinds: the larger of $1,350 and their pay (up to $15,300) plus $450', and its source states the gross-income test."
     }
    ],
    "subject_sha": "a28a4ded777bae9a6bfa534666562df9d4134f8d132e6fa9b986854bccbda655",
@@ -9783,158 +9792,259 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:household.ask_spouse_cp_domicile#1": {
-   "reason": "One defect (retirement pay earned under an earlier community-property domicile); basis of inherited community property unsettled.",
+   "reason": "RDPs living in the states are refused; a married filer is still married.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "RDPs are refused by household.rdp_community_property (p555 p. 2, 'RDPs in Nevada, Washington, or California must generally follow state community property laws'); household.rdp is asked regardless of marriage."
+     "evidence": "A never-married RDP domiciled in California, Nevada or Washington lives there, so household.rdp_community_property refuses (p555 p. 2, 'RDPs ... must generally follow state community property laws'); the partner's pension case outside those states is the defect ruled with the screen packet (BUG-1089).",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "accepted residual",
-     "evidence": "amb.2025.mfs_community_property chose the refusal 'for the nine states the instructions list'; a spouse domiciled in a foreign community property country (p555 p. 2, 'or the law of the foreign country') is computed without the split. Cost: a rare separate return abroad may misallocate income."
-    },
-    {
-     "n": 2,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "A filer domiciled in one of the states answers Yes to household.community_property ('did you live or have your permanent home in Arizona, California, ...'), and household.cp_any takes that answer before the spouse question is read."
-    },
-    {
-     "n": 3,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "p555 p. 6: 'Even if you now live in a noncommunity property state and you receive a civil service annuity, it may be community income if it is based on services you performed while married ... and domiciled in a community property state', and military retirement pay for such service 'is considered to be received half by the member ... and half by the spouse'. Both questions ask only about 2025, so a separate return with such pay is computed, not refused."
-    },
-    {
-     "n": 4,
-     "kind": "FALSE_NO",
-     "class": "open residual",
-     "evidence": "p555 p. 9, Death of spouse: 'the total fair market value (FMV) of the community property, including the part that belongs to you, generally becomes the basis of the entire property.' Basis is not a line of this gate; it is entered at sales.basis, whose prompt says only 'If you inherited it, usually its value on the date of death'. Settle by checking whether sales.basis leads a surviving spouse to use FMV for their own half."
-    },
-    {
-     "n": 5,
      "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "amb.2025.mfs_community_property: 'The question on the husband or wife is not asked after a marriage that ended in 2025 ... Such a return, where only the former husband or wife lived in or had a permanent home in one of the states, is computed without the split' (coordinator, 2026-11-16). On the joint return of the year of death no split arises."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The help 'A Yes ends the interview here' states the refusal truthfully; a filer who answers No to avoid it is not answering truthfully, and the refusal is the intended outcome (amb.2025.mfs_community_property)."
+     "class": "out of scope",
+     "evidence": "A married head of household filer in a community property state is refused by household.hoh_cp_married; the gate's helper counts a filer who 'has been married at some time', which a still-married filer is.",
+     "bugs": []
     }
    ],
-   "subject_sha": "d40bffa2af88a4395b098ea619257c5799b1df45d86723fb6b78373219afc38f",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0950"
-   ]
+   "subject_sha": "6c7028b2baba14ea67258e65245d5cd007a47c4695e04f2f993129e10fced6a4",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rprop.new_nonres#1": {
-   "reason": "gate:rprop.new_nonres holds for every post-2017 nonresidential improvement; a mixed renovation entered as one item is answered No by rprop.qip.",
+   "reason": "QIP gate.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "model error",
-     "evidence": "QIP is entered as rprop.kind nonresidential (\"Another building, such as shops or offices, or an improvement to one\"), so the gate is true and rprop.qip is asked; the i4562 p. 10 15-year class follows a Yes, which refuses."
+     "evidence": "rprop.kind offers residential, nonresidential or something else; there is no 15-year choice, so an interior renovation is entered as nonresidential and reaches rprop.qip."
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The gate is true for an improvement placed in service after 2017 (rprop.recovery_year <= 8), and \"after the date the building was first placed in service by any person\" (p946 p. 31) is asked in rprop.qip."
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A tenant's build-out in space it rents is not a rental entry of this roster in the ordinary case; rare."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "rprop.qip asks the three exclusions of p946 p. 31 (\"not an enlargement, an elevator or escalator, or the internal structural framework\")."
+     "evidence": "$rprop asks \"the building and each improvement to it ..., one entry each\"."
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "p946 p. 16: QIP \"does not include the cost of any improvement attributable to\" the enlargement, elevators or framework, so the rest of a renovation stays QIP. rprop.qip asks whether \"it\" is an interior improvement \"and not an enlargement ... or the internal structural framework\"; a renovation entered as one item that includes framework work is answered No, and its interior part is depreciated over 39 years instead of being refused as QIP."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "rprop.kind's residential choice states the 80% test."
     }
    ],
-   "subject_sha": "cea1e9f94b4aead0af1970ba2c26aa5013f83df84f217d1132e468f00a34991f",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0959"
-   ]
+   "subject_sha": "19a3e83f81ef1ed352a939b53ff378a2b350ea8a51637036d1829a28cf63caca",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:asset.industry_any#1": {
-   "reason": "The smart-meter provider gap (ruled with the screen packet) is the only false-no; the other situations are reached by asset.industry or asset.industry_use.",
+   "reason": "Energy, recycling and utility items are reached; a dealer whose floor plan loan ended is unsettled.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "Energy property under 168(e)(3)(B)(vi) is 5-year property (i4562 p. 10); the tool computes it with the 5-year class (asset.class offers cDEF_energy, Table B-2 D, E and F) and asset.basis_changed asks about credits that reduce basis, so a business with solar equipment that answers No to both gates still gets the right recovery period.",
+     "evidence": "Energy property is 5-year property (i4562 p. 10) and asset.class offers cDEF_energy (Table B-2, D, E and F), so with the gate false it is depreciated over 5 years; the gate only decides whether the item refuses.",
      "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "p946 p. 31: a smart electric meter is placed in service \"by a supplier of electric energy or a provider of electric energy services\"; neither asset.industry (utility or energy producer) nor asset.industry_use names it, so a provider that is not a utility or producer answers No to both (same defect as the screen packet).",
-     "bugs": [
-      {
-       "title": "Smart electric meter and smart grid property is not reached for a provider of electrical energy services (same defect as unruled:gate:asset.industry_any#1 screen n=0)",
-       "source": "p946 p. 31, \"A qualified smart electric meter is any time-based meter and related communication equipment, which is placed in service by a supplier of electric energy or a provider of electric energy services\"; i4562 p. 10, \"10-year property includes ... Any qualified smart electric meter property\"",
-       "symptom": "Same as the screen packet: smart meters of a provider that is not a utility or producer are depreciated as ordinary property.",
-       "where": "forms/2025/asset.yaml:259; interview/2025/questions.yaml:5747",
-       "fix": "Proposed fix: the single rewording proposed in the screen packet closes both.",
-       "severity": "low"
-      }
-     ]
+     "kind": "UNCLEAR",
+     "class": "open residual",
+     "evidence": "asset.industry asks for 'a dealer that finances its stock with a loan secured by it' (present tense) while section 168(k)(9)(B) property is used in a business that 'has had' floor plan financing (i4562 p. 7). Settled by whether a dealer whose loan ended during 2025 answers Yes; 'finances or financed in 2025' would close it.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "asset.industry_use asks \"machinery or equipment used only to collect, distribute or recycle reusable or recyclable materials\" whatever the business (i4562 p. 6, Qualified reuse and recycling property).",
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "asset.industry does not use the term: it asks for 'a dealer that finances its stock with a loan secured by it', which describes a revolving inventory line secured by the units.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Initial clearing and grading land improvements for gas utility or electric transmission and distribution plants belong to utilities, and asset.industry asks \"Is your business a utility or energy producer\" (i4562 p. 10).",
+     "evidence": "asset.industry asks 'Is your business a utility'; furnishing water, sewage disposal, gas or steam at regulated rates is a utility business, and a landlord's incidental water system is not such a business (i4562 p. 7, 168(k)(9)(A)).",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Qualified rent-to-own property is held by a rent-to-own dealer (i4562 p. 10, \"qualified rent-to-own property (as defined in section 168(i)(14))\"); asset.industry asks \"Is your business ... a rent-to-own dealer\".",
+     "evidence": "asset.industry_use asks about 'machinery or equipment used only to collect, distribute or recycle' with help 'Equipment used only to collect or recycle materials counts even if recycling is not your business' (i4562 p. 6).",
      "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Same rent-to-own dealer path as n=4: asset.industry asks about a rent-to-own dealer and asset.industry_item then asks the section 168(i)(14) question.",
+     "evidence": "asset.industry asks whether the business is 'a motor racing track'; a business owning a racing facility's grandstands and parking is part of that complex (p946 p. 31).",
      "bugs": []
     },
     {
      "n": 6,
      "kind": "UNCLEAR",
-     "class": "open residual",
-     "evidence": "asset.industry asks for \"a dealer that finances its stock with a loan secured by it\" while the gated item text covers floor plan financing on vehicles, boats, farm machinery or trailers \"held for sale or lease\"; whether a non-dealer lessor is meant needs the text of IRC 168(k)(9)(B) and 163(j)(9), which i4562 p. 7 only names and the archive does not hold. Archiving those sections would settle it.",
+     "class": "covered",
+     "evidence": "Initial clearing and grading improvements for gas or electric utility property belong to a utility, which asset.industry asks about (i4562 p. 10).",
      "bugs": []
     }
    ],
-   "subject_sha": "8e906b0b6e175dac76dc7676653ca148fc543b3df262b72878497b8fec23d7bb",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0988"
-   ]
+   "subject_sha": "e1d7e7c0dbbc2529f4e37c7548afbb5d2b70448d4fc8b68a5c72b18ebbf80f4c",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+  },
+  "unruled:gate:rental.is_land#1": {
+   "reason": "Nondepreciable-property gate.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "rental.land_heavy_if_built asks rental.land_heavy when rental.is_land is false and is false when it is true; rental.nondep is true for land through rental.is_land itself (rendered/2025/rental.md), so land and a building with under 30% depreciable are both caught (p925 p. 16)."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Inherited, gifted or exchanged buildings are refused by rprop.exchanged."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The refusal follows from rental.nondep_gain, which counts prior-year unallowed losses (p925 p. 16), whatever the filer expects."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "Land with a small fence or paving is still under 30% depreciable, so rental.is_land gives the right answer."
+    }
+   ],
+   "subject_sha": "21d1f0bfec1c3c971fc832b41165e7218a735ef2e942c22c17f525c7498349d8",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+  },
+  "unruled:gate:rprop.kind#1": {
+   "reason": "Property-kind gate.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Housing provided free to farm workers is not a rental entry (no rent); a farm is refused by scope.farm."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A mostly-residential building with a fuel outlet is rare."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The filer sees \"Another building, such as shops or offices\", not the class-life definition."
+    }
+   ],
+   "subject_sha": "4791fb34b7db5245e2ace1c169d571a0fb4353f02011a68b39f8fa892fe9ca35",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+  },
+  "unruled:gate:f8582.has_prior#1": {
+   "reason": "Non-rental CRDs are refused as passive businesses; a carried CRD is on the 2024 Form 8582.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "A passive trade or business is refused by scope.passive ('a business that you owned but did not help run (a passive activity)'), so its carried CRD (i8582 p. 10, Part V) is outside the tool.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "rental.prior_any asks whether a loss from this rental was 'held back (not deducted)' on an earlier return, help 'Look for Form 8582 in your 2024 return'; a carried CRD is on that form, marked CRD.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "scope.passive's help counts 'a loss held back in an earlier year ... from a rental you no longer had in 2025'; a building offered for rent is listed under scope.rental ('rent out, offer for rent').",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "A CRD carried into 2025 must appear on the 2024 Form 8582 (i8582 p. 10, Line 3), and rental.prior_any names 'any of your (or, on a joint return, your spouse's) earlier returns, even a separate one'.",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "391169bac51f454006a2e0e2476704ec209f0ae6ef3ebcdb6057d152e98326e2",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+  },
+  "unruled:gate:sa.mfs_itemizing#1": {
+   "reason": "Casualty losses and community property are refused; the rest are wording or the filer's own facts.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Casualty losses are refused through sd.casualty and sd.other_forms (sa.yaml, line 15).",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "presentation",
+     "evidence": "'Was any amount ... paid from an account you hold with your husband or wife' asks where the money came from when paid; a joint account closed later is still the source. The tense could be 'held'.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "FALSE_NO",
+     "class": "model error",
+     "evidence": "p504 p. 5, Table 1: a joint state return with joint liability allows 'the state income tax you alone paid'; a 2024 joint balance paid from the filer's own account is that, and one paid from a joint account answers Yes.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "household.mfs_community_property refuses separate returns with community property domicile.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "A joint credit card is an account held with the spouse, and the help says 'costs paid from shared money ... are divided under rules this tool does not apply'.",
+     "bugs": []
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A combined same-form state return or a joint local return is not a 'joint 2025 state income tax return'. Cost: a separate filer on such a return may deduct their own payment without the Table 1 allocation (p504 p. 5).",
+     "bugs": []
+    },
+    {
+     "n": 6,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The help says 'On a separate return you deduct what you alone paid'; amounts the spouse paid from their own account are not the filer's.",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "a3c0d9afffb526bec82a07a59bfc9f43fed7294166a6830f36bd5b8c571c8053",
+   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   }
  },
  "baseline": {}

@@ -177,7 +177,9 @@ bank:
   - id: rental_costs_b
     heading: "In 2025, did you pay any of these for it, or did a tenant pay any in place of rent?"
   - id: rental_costs_c
-    heading: "And did you pay either of these for it, or did a tenant pay either in place of rent?"
+    heading: "And did you pay any of these for it, or did a tenant pay any in place of rent?"
+  - id: rental_use
+    heading: "Is either of these true of this rental?"
   - id: rprop_facts
     heading: "Is any of these true of it?"
   - id: royalty_rare
@@ -496,8 +498,10 @@ bank:
     order: 264
     seq: 82
     group: k1p_rental
-    tick: Over 750 hours, and most of your work time, in real estate
+    tick: "One person: over 750 hours and most work time in real estate"
     help: A Yes ends the interview here.
+    prompt: Did you (or, on a joint return, your spouse) work more than 750 hours in 2025 in real estate businesses, and more
+      than half of your own work time? On a joint return, one spouse must meet both alone.
   - input: k1p.dwelling
     order: 264
     seq: 83
@@ -851,18 +855,19 @@ bank:
     order: 280
     seq: 15
     group: foreign_credit
-    tick: A foreign or U.S. loss to recapture from an earlier Form 1116
-    help: An earlier Form 1116 shows such a loss as an overall foreign loss, separate limitation loss or overall domestic
-      loss account. A Yes ends the interview here.
-    prompt: Does an earlier Form 1116 of your (or, on a joint return, your spouse's) return leave a foreign or U.S. loss
-      account still to recapture?
+    tick: A foreign or U.S. loss from an earlier year still to recapture
+    help: Count it even from a year with no Form 1116. A Form 1116 shows such a loss as an overall foreign loss, separate
+      limitation loss or overall domestic loss account. A Yes ends the interview here.
+    prompt: In an earlier year, did a loss from abroad reduce your (or, on a joint return, your spouse's) U.S. income or other
+      foreign income, or a U.S. loss reduce foreign income, and is it not yet recaptured?
   - input: f1116sb.changed
     order: 280
     seq: 16
     group: foreign_credit
     tick: A change since your 2024 return to the foreign tax carried
-    help: For example a carryback to 2023 that differs from the estimate on the 2024 Schedule B (Form 1116), a change in
-      foreign tax for an earlier year, or an IRS audit. A Yes ends the interview here.
+    help: For example a carryback to 2023 that differs from the estimate on the 2024 Schedule B (Form 1116), a carryback
+      made without an estimate, a correction of an error on its line 8, a change in foreign tax for an earlier year, or an
+      IRS audit. A Yes ends the interview here.
     prompt: "Since you filed your 2024 return, has anything changed the foreign tax carried from it?"
   - input: f1116sb.split
     order: 280
@@ -902,8 +907,9 @@ bank:
   - input: f1116sb.prior_year
     order: 280
     seq: 21
-    help: Foreign tax above this year's limit is first carried back to 2024 if that year had room under its limit, on an
-      amended 2024 return. The last two answers end the interview here.
+    help: Foreign tax above this year's limit is first carried back to a 2024 return with room under its limit. If you two
+      filed separate 2024 returns and either had room, choose “Form 1116, with line 24 less than line 23”. The last two
+      answers end the interview here.
     prompt: Your foreign tax is more than this year's limit. How did your (or, on a joint return, your spouse's) 2024 return
       treat foreign tax on investment income?
     value_labels:
@@ -976,6 +982,11 @@ bank:
       - the charity is restricted in how it may use it
 
       - it went to a private foundation that is not an operating foundation, and it is not publicly traded stock
+
+      - it is stock given to a private foundation that is not an operating foundation, and you and your family have given
+        away more than 10% of the value of that company''s stock
+
+      - it is a stuffed or mounted animal that you prepared, or paid to have prepared
 
       - it is art or other belongings you owned over a year, now worth more than you paid, that the charity will not use
         for its charitable purpose
@@ -1098,7 +1109,7 @@ bank:
     order: 267
     seq: 2
     help: "These costs are figured differently for the alternative minimum tax (Form 6251). A Yes ends the interview here."
-    prompt: "Do you (or, on a joint return, your spouse) deduct in a business costs of gaining or keeping readers for a newspaper, magazine or newsletter, exploring for or developing a mine, or drilling an oil, gas or geothermal well?"
+    prompt: "Do you (or, on a joint return, your spouse) deduct in a business costs of gaining or keeping readers for a newspaper, magazine, newsletter or other periodical, exploring for or developing a mine, or drilling an oil, gas or geothermal well?"
   - input: s2.credit_recapture
     order: 291
     seq: 1
@@ -1109,8 +1120,8 @@ bank:
   - input: s2.amt_pab
     order: 291
     seq: 4
-    prompt: "How much of your (or, on a joint return, your spouse's) tax-exempt interest is from private activity bonds? Add up box 9 of your Forms 1099-INT. Zero if none."
-    help: "Box 9 is a part of box 8. This interest is taxed by the alternative minimum tax, which this tool checks from your answers."
+    prompt: "How much of your (or, on a joint return, your spouse's) tax-exempt interest is from private activity bonds? Add up box 9 of your Forms 1099-INT and any tax-exempt OID (Form 1099-OID box 11) on a private activity bond. Zero if none."
+    help: "Box 9 is a part of box 8. Box 11 of Form 1099-OID does not say whether the bond is a private activity bond; the bond's description on your statement does. The alternative minimum tax counts this interest."
   - input: s2.amt_boat
     order: 291
     seq: 5
@@ -1310,16 +1321,16 @@ bank:
     order: 290
     seq: 3
     group: rare_credits
-    tick: Paid back more than $3,000 of income from an earlier year
-    help: Add up everything you paid back in 2025, for example wages or a bonus you had to return. For social security benefits,
+    tick: Paid back over $3,000 in all of income from an earlier year
+    help: Add up everything you (or, on a joint return, your spouse) paid back in 2025, for example wages or a bonus you had to return. For social security benefits,
       count only what you paid back above the benefits you received in 2025.
-    prompt: In 2025, did you (or, on a joint return, your spouse) pay back more than $3,000 that you had reported as income
-      in an earlier year?
+    prompt: In 2025, did you (or, on a joint return, your spouse) pay back more than $3,000 in total that you had reported as
+      income in an earlier year?
   - input: ftc.carryover
     order: 279
     seq: 5
-    help: Foreign tax you could not use as a credit in an earlier year is carried to later years; your 2024 Schedule B (Form
-      1116) shows it on line 8. If you have never filed Form 1116, the answer is No.
+    help: Your 2024 Schedule B (Form 1116) shows foreign tax carried forward on line 8. Answer Yes also if its line 7
+      estimated a carryback to 2023 larger than the real one. If you have never filed Form 1116, the answer is No.
     prompt: Is any foreign tax that you (or, on a joint return, your spouse) could not use as a credit in an earlier year
       carried into 2025?
   - input: sc.business_credit
@@ -1335,11 +1346,12 @@ bank:
     order: 251
     seq: 4
     group: biz_refused
-    tick: It wants federal fuel tax back for fuel used off the road
+    tick: It wants fuel tax back, for off-road, export or another untaxed use
     help: The credit is claimed on Form 4136. Fuel in a vehicle used for personal driving, commuting or ride sharing does
       not count.
-    prompt: For this business — Did this business use gasoline, diesel or another taxed fuel off the road, such as in equipment
-      or a boat, and want the federal fuel tax back?
+    prompt: For this business — Did this business use gasoline, diesel or another taxed fuel in a way the fuel tax does not
+      apply to, such as off the road in equipment, in a commercial fishing boat, a bus or an aircraft, or exported, and want
+      the federal fuel tax back?
   - input: sa.gambling_losses
     order: 200
     seq: 85
@@ -1350,16 +1362,16 @@ bank:
     seq: 40
     help: The limits are 20%, 30%, 50% or 60% of your income, by the kind of gift and of charity (Publication 526, "Limits
       on Deductions"). A Yes ends the interview here.
-    prompt: Were your 2025 gifts to charity so large that the law limits what you can deduct? (This can happen only when they
-      are more than 20% of your income.)
+    prompt: Were all your (or, on a joint return, your spouse's) 2025 gifts to charity, added together, so large that the law
+      limits what you can deduct? (This can happen only when they total more than 20% of your income.)
   - input: sa.excluded_income
     order: 113
     seq: 4
     group: "about_you"
-    tick: "Leaving out income earned abroad, in Puerto Rico or in American Samoa"
+    tick: "Excluding income earned abroad, Puerto Rico or American Samoa; deducting housing abroad"
     prompt: Do you (or, on a joint return, your spouse) leave out of this return any income earned abroad, in Puerto Rico
-      or in American Samoa?
-    help: "Pay received in 2025 for work done abroad in 2024 counts. These are the exclusions of Form 2555 (foreign earned income), Form 4563 (American Samoa) and Puerto Rico. A Yes ends the interview here."
+      or in American Samoa, or deduct housing costs abroad (Form 2555)?
+    help: "Pay received in 2025 for work done abroad in 2024 counts, as does a self-employed person's foreign housing deduction. These are Form 2555, Form 4563 (American Samoa) and Puerto Rico. A Yes ends the interview here."
   - input: sa.dependent
     order: 111
     seq: 1
@@ -1374,6 +1386,11 @@ bank:
       A Yes ends the interview here.
     prompt: Did your husband or wife have no income in 2025, with no 2025 return filed for them, and were they born before
       January 2, 1961, or blind at the end of 2025?
+  - input: sa.mfs_joint_paid
+    order: 200
+    seq: 88
+    help: On a separate return you deduct what you alone paid; costs paid from shared money, or tax on a joint state return,
+      are divided under rules this tool does not apply. A Yes ends the interview here.
   - input: person.birth_year
     order: 110
     seq: 1
@@ -1628,12 +1645,13 @@ bank:
     order: 200
     seq: 3
     group: paid_2025
-    tick: Paid other state or local income tax, or a state disability fund
-    help: Count tax taken out of a pension, IRA, unemployment pay, winnings, 1099-NEC or 1099-MISC; SDI, SUI or FLI from pay;
+    tick: Paid other state or local income tax, or a state insurance fund
+    help: Count tax taken out of a pension, IRA, unemployment pay, winnings, 1099-NEC or 1099-MISC; SDI, SUI or FLI from pay,
+      or Washington's supplemental workers' compensation fund;
       U.S. territory income tax; a state tax credit for a charity gift, applied to your tax.
     prompt: In 2025, did you (or, on a joint return, your spouse) pay state or local income tax not taken from pay (such as
-      estimated payments, or a past refund applied to 2025), or pay into a state disability, unemployment or family leave
-      fund?
+      estimated payments, or a past refund applied to 2025), or pay into a state disability, unemployment, workers'
+      compensation or family leave fund?
   - input: sa.line5c
     order: 200
     seq: 32
@@ -1669,16 +1687,18 @@ bank:
     order: 200
     seq: 9
     group: paid_more
-    tick: Paid for your own health insurance, not through a job (Medicare, COBRA)
-    help: Medicare premiums are usually taken out of social security benefits; Form SSA-1099 shows them. Insurance paid for
-      by a deduction from your pay at a job does not count. A Yes asks for your medical costs for the year.
-    prompt: 'In 2025, did you (or, on a joint return, your spouse) pay for health insurance yourselves, not through a job: for
-      example Medicare, a Marketplace plan, COBRA or long-term care insurance?'
+    tick: Paid for health insurance yourselves, not from pay before tax (Medicare, COBRA)
+    help: Medicare premiums are usually taken out of social security benefits; Form SSA-1099 shows them. Most insurance at a
+      job is taken from pay before tax and does not count. A Yes asks for your medical costs for the year.
+    prompt: 'In 2025, did you (or, on a joint return, your spouse) pay for health insurance yourselves, other than from pay
+      before tax: for example Medicare, a Marketplace plan, COBRA, long-term care insurance, or insurance at a job taken
+      from pay after tax?'
   - input: sa.line11
     order: 200
     seq: 41
-    help: If you got something back, such as a dinner, count the part above its value. Leave out tuition, club dues, gifts
-      to people, refunded gifts, any part earning a state tax credit, and gifts with no bank record or receipt.
+    help: If you got something back, such as a dinner, count the part above its value; member perks for $75 a year or less,
+      or a token item the charity says you need not count, are not taken off. Leave out tuition, club dues, gifts to people,
+      refunded gifts, any part earning a state tax credit, and gifts with no bank record or receipt.
     prompt: How much money did you (or, on a joint return, your spouse) give in 2025 to U.S. charities, including ones that
       work abroad? Include payroll deductions and out-of-pocket volunteer costs such as mileage. Leave out political gifts
       and raffle tickets.
@@ -1742,7 +1762,7 @@ bank:
     prompt: |-
       Is this sale any of these?
 
-      - a collectible (art, antiques, coins, stamps, gems, gold or silver), or shares of a fund that holds gold, silver or other metals
+      - a collectible (art, rugs, antiques, coins, stamps, gems, wine or other alcoholic drinks, or gold, silver, platinum or other metal bullion), or shares of a fund that holds gold, silver or other metals
       - an NFT (non-fungible token) of art, a gem or another collectible
       - small business stock on which you exclude part of the gain (section 1202)
       - real estate you once rented out or took a home office deduction for
@@ -1797,28 +1817,28 @@ bank:
     seq: 1
     group: outside_us
     tick: An account in another country, or the power to sign for one
-    help: Count an account you closed during 2025, however little was in it, and an account of your employer, a relative
-      or an organization that you could sign for. If you are not sure, answer Yes.
+    help: Count an account closed during 2025, however small; one of your employer, a relative or an organization that
+      you could sign for; and one of a company, partnership or trust you own more than half of. If unsure, answer Yes.
   - input: sb.asset_any
     order: 285
     seq: 2
     group: outside_us
     tick: Other property abroad, or money owed to you by someone abroad
-    help: "For example shares of a foreign company not held in a U.S. brokerage account, a life insurance policy from a foreign insurer, a loan to a relative abroad, or a share of an estate abroad, even if nothing has been paid yet."
+    help: "For example shares of a foreign company not held in a U.S. brokerage account, a foreign life insurance policy, a loan to a relative abroad, or a share of an estate abroad, even if nothing has been paid yet. Count what your single-member LLC holds."
   - input: sb.trust_any
     order: 285
     seq: 3
     group: outside_us
     tick: A tie to a trust or family foundation abroad
-    help: A foundation such as a Stiftung or an Anstalt, a waqf, or any arrangement that holds property for beneficiaries
-      counts as a trust. If you are not sure, answer Yes.
+    help: Count selling or lending to it, and a loan from it. A trust counts as abroad if anyone outside the United States
+      can veto its decisions. A Stiftung, an Anstalt or a waqf counts as a trust. If unsure, answer Yes.
   - input: sb.company_any
     order: 285
     seq: 4
     group: outside_us
     tick: A foreign company you help run, or own 10% or more of
-    help: Count a subsidiary of your employer abroad that you are a director, officer or manager of. Your family here is
-      your spouse, children, grandchildren and parents.
+    help: Count 10% of its shares' value or votes, including shares held for you through another company or a trust, and a
+      subsidiary of your employer abroad that you help run. Your family is your spouse, children, grandchildren and parents.
   - input: sb.territory_any
     order: 285
     seq: 5
@@ -1917,8 +1937,8 @@ bank:
     order: 130
     seq: 1
     group: "own_income"
-    tick: "Anything you own or lease rented or offered for rent, or royalties"
-    help: "A house, an apartment, a room, land or a vacation home counts, even for a few days; so does a car or equipment, even one you lease and rent on to others."
+    tick: "Rent or royalties, or anything you own or lease rented or offered"
+    help: "A house, an apartment, a room, land or a vacation home counts, even for a few days; so does a car or equipment, even one you lease and rent on to others. Rent received in 2025 for an earlier year counts."
   - input: scope.k1
     order: 130
     seq: 2
@@ -1931,6 +1951,12 @@ bank:
     group: "own_income"
     tick: "Income or a loss from farming"
     help: "Count a farm you run and a share of crops or livestock from land you let a farmer use. A Yes ends the interview here."
+  - input: scope.remic
+    order: 130
+    seq: 4
+    group: "own_income"
+    tick: "A residual interest in a REMIC (reported on Schedule Q)"
+    help: "A real estate mortgage investment conduit sends a holder of a residual interest a Schedule Q (Form 1066) each quarter. Interest on a Form 1099-INT or 1099-OID is not this. A Yes ends the interview here."
   - input: scope.pay_no_w2
     order: 146
     seq: 1
@@ -1947,9 +1973,9 @@ bank:
     order: 146
     seq: 20
     group: "pay_kinds"
-    tick: "Pay from a household for home, garden or driving work, no W-2"
-    help: "Such as a nanny, carer, cleaner, gardener or private driver, even in a home you share. A household that pays you less than $2,800 in a year need not give you a W-2."
-    prompt: "In 2025, were you (or, on a joint return, your spouse) paid by a household, with no W-2, for work in or around its home or for its members?"
+    tick: "Household pay for home, garden or driving work, not on a W-2"
+    help: "Such as a nanny, carer, cleaner, gardener or private driver, even in a home you share. Count cash beyond what a household's W-2 shows. A household that pays you less than $2,800 in a year need not give you a W-2."
+    prompt: "In 2025, were you (or, on a joint return, your spouse) paid by a household for work in or around its home or for its members, and not all of it on a W-2 from that household?"
   - input: scope.contractor_pay
     order: 146
     seq: 21
@@ -1974,7 +2000,7 @@ bank:
     order: 146
     seq: 24
     group: "pay_kinds"
-    tick: "Other wages from an employer that gave you no W-2"
+    tick: "Other wages from an employer, not on any W-2"
     help: "For example when an employer never sent a W-2. Ask the employer for it first; a Yes ends the interview here."
     prompt: "In 2025, did an employer pay you (or, on a joint return, your spouse) other wages for which you have no W-2?"
   - input: person.household_wages
@@ -2099,7 +2125,7 @@ bank:
     seq: 6
     group: "money_b"
     tick: "Money back for a deduction or credit (not state/local income tax refund)"
-    help: "For example a refund of property tax, sales tax or mortgage interest (Form 1098 box 4), or medical costs or a deducted bad debt paid back. Not counted if deductible only by itemizing and you did not itemize that year."
+    help: "For example a refund of property tax, sales tax or mortgage interest (Form 1098 box 4), or medical costs or a deducted bad debt paid back. Count it even if your tax that year was zero. Not counted if deductible only by itemizing and you did not itemize that year."
   - input: scope.disaster_distribution
     order: 193
     seq: 1
@@ -2112,7 +2138,7 @@ bank:
     seq: 5
     group: "w2_jobs"
     tick: "More pay put into retirement plans at work than the yearly limit"
-    help: "Count each person's jobs together; the limit is higher from age 50. A 457(b) plan (box 12 code G) has a limit of its own: count it apart. A Yes ends the interview here."
+    help: "Count each person's jobs together. With only SIMPLE plans the limit is $16,500 ($17,600 in some); it is higher from age 50. A 457(b) plan (box 12 code G) has a limit of its own: count it apart. A Yes ends the interview here."
   - input: scope.archer_msa
     order: 193
     seq: 2
@@ -2155,6 +2181,10 @@ bank:
     order: 295
     seq: 2
     help: "A Yes ends the interview here: this tool cannot prepare a return with it."
+  - input: scope.trade_act_repaid
+    order: 295
+    seq: 3
+    help: "Trade readjustment allowances are paid under the Trade Act of 1974 to workers who lost their jobs to foreign trade. A Yes ends the interview here: this tool cannot prepare a return with it."
   - input: scope.business_before
     order: 258
     seq: 1
@@ -2210,8 +2240,8 @@ bank:
     order: 274
     seq: 1
     group: sales_rare
-    tick: Sold real estate or business property, or any sale paid later
-    help: Real estate includes a home you lived in, and an oil, gas or mineral interest such as a royalty. Business property is anything used in a business or rented out, such as equipment, a vehicle or a building.
+    tick: Sold real estate or business property, or any sale paid over years
+    help: Real estate includes a home you lived in, and an oil, gas or mineral interest such as a royalty. Business property is anything used in a business or rented out, such as equipment, a vehicle or a building. A payment in 2025 on a sale made in an earlier year counts.
   - input: sd.business_property
     order: 274
     seq: 7
@@ -2498,7 +2528,7 @@ bank:
     order: 120
     seq: 21
     help: "Answer Yes whichever parent you are. A release that was taken back still counts for 2025 unless the other parent was told in writing in 2024 or earlier. A Yes ends the interview here."
-    prompt: "Has the parent this child lived with for more of 2025 given the right to claim the child to the other parent, by signing Form 8332 or under a divorce decree or separation agreement?"
+    prompt: "Has the parent this child lived with for more of 2025 given the right to claim the child to the other parent, by signing Form 8332 or a similar statement, or under a divorce decree or separation agreement?"
   - input: dependent.married
     order: 120
     seq: 22
@@ -2613,8 +2643,8 @@ bank:
     seq: 2
     group: "care_help"
     tick: "An employer's help with care costs, such as a dependent care account"
-    help: "Box 10 of a W-2 shows it. Count money left in a 2024 dependent care account that you used early in 2025, and care your employer provided itself, such as a day care at work. If you are not sure, answer Yes."
-    prompt: "In 2025, did your (or, on a joint return, your spouse's) employer, or your own business, help pay for the care of a child or dependent, for example through a dependent care account at work?"
+    help: "Box 10 of a W-2, or box 13 code O of a partnership's K-1, shows it. Count care of a husband or wife unable to care for themselves, money left in a 2024 dependent care account used early in 2025, and care your employer provided itself. If unsure, answer Yes."
+    prompt: "In 2025, did your (or, on a joint return, your spouse's) employer, or your own business or partnership, help pay for the care of a child, a dependent or a disabled spouse, for example through a dependent care account at work?"
   - input: f2441.student
     order: 155
     seq: 8
@@ -2687,8 +2717,8 @@ bank:
   - input: f2441.mfs_spouse_earned
     order: 156
     seq: 8
-    help: "On a separate return the tax-free part of your benefits is limited by your husband's or wife's earnings too, unless you lived apart from them for the last 6 months of 2025 and kept up a home for the person cared for."
-    prompt: "How much did your husband or wife earn from work in 2025? Count wages and net earnings from self-employment, but not the dependent care benefits in box 10 of their W-2s. Zero if none, or if they had a loss."
+    help: "On a separate return the tax-free part of your benefits is limited by your husband's or wife's earnings too."
+    prompt: "How much did your husband or wife earn from work in 2025? Count wages and net earnings from self-employment, less any self-employment loss, but not the dependent care benefits in box 10 of their W-2s. Enter zero if the total is zero or less."
   - input: f2441.plans_differ
     order: 156
     seq: 3
@@ -2808,6 +2838,14 @@ bank:
     prompt: At any time in 2025 while you were married, did your husband or wife live in, or have their permanent home in,
       Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or Wisconsin?
     help: Their permanent home is the state they mean to return to when away. A Yes ends the interview here.
+  - input: household.cp_retirement
+    order: 103
+    seq: 5
+    prompt: In 2025, did you or your husband or wife receive a pension, annuity or military retirement pay earned while the
+      two of you were married and either of you lived or had your permanent home in Arizona, California, Idaho, Louisiana,
+      Nevada, New Mexico, Texas, Washington or Wisconsin?
+    help: Count a civil service (CSRS or FERS) annuity or military retirement pay for work done there while married, even
+      if you both live elsewhere now. A Yes ends the interview here.
   - input: household.rdp
     order: 103
     seq: 3
@@ -3473,10 +3511,11 @@ bank:
   - input: f8863.ban
     order: 242
     seq: 1
-    help: 'Answer No only if, after the denial or bar, you filed Form 8862 for this credit with a later year''s return and
-      it was allowed. A bar running out is not enough. A Yes ends the interview here.'
-    prompt: Has the IRS ever denied or reduced an American opportunity credit you claimed, for more than a math error, or
-      barred you from claiming it?
+    help: 'Count only a denial or reduction for 2016 or a later year. Answer No only if, after the last denial or bar, you
+      filed Form 8862 for this credit with a later year''s return and it was allowed. A bar running out is not enough. A Yes
+      ends the interview here.'
+    prompt: Has the IRS ever denied or reduced an American opportunity credit you (or, on a joint return, your spouse)
+      claimed, for more than a math or clerical error, or barred you (or, on a joint return, your spouse) from claiming it?
   - input: person.edu_fulltime
     order: 243
     seq: 4
@@ -3671,7 +3710,7 @@ bank:
       life or for ten years or more: those cannot be rolled over. A later deposit counts only under an IRS waiver. Money put
       into a SIMPLE IRA in your first two years in it counts only if it came from another SIMPLE IRA.'
     prompt: How much of this money did you put into a pension, a 401(k) or similar plan, or an IRA within 60 days of receiving
-      it?
+      it (120 days for a first-home IRA withdrawal put back because the purchase fell through)?
   - input: retirement.rollover_property
     order: 170
     seq: 16
@@ -3713,7 +3752,7 @@ bank:
     order: 170
     seq: 26
     group: plan_payment
-    tick: You get this pension because you became disabled
+    tick: Some of it was paid under the plan's disability retirement terms
   - input: retirement.dis_early
     order: 170
     seq: 29
@@ -3809,6 +3848,8 @@ bank:
   - input: retirement.combined_age
     order: 170
     seq: 49
+    help: If the payments go on after the first person's death to more than one person, use the age of the youngest of them.
+      If there is no main annuitant and the payments go to you and others, add the ages of the oldest and the youngest.
   - input: retirement.months
     order: 170
     seq: 50
@@ -3883,10 +3924,10 @@ bank:
     order: 145
     seq: 2
     group: "w2_jobs"
-    tick: "In box 11, money paid to you from a deferred pay plan"
-    help: "Box 11 is headed “Nonqualified plans” and is empty on most W-2s. A Yes ends the interview here."
-    prompt: Does box 11 of any W-2 show money paid to you (or, on a joint return, your spouse) from an employer's deferred
-      pay plan?
+    tick: "Box 11 amount, or other pay from a nonqualified deferred pay plan"
+    help: "Box 11 is headed “Nonqualified plans” and is empty on most W-2s. A 401(k), 403(b) or government plan is not such a plan. A Yes ends the interview here."
+    prompt: In 2025, were you (or, on a joint return, your spouse) paid from an employer's nonqualified deferred pay plan or
+      non-government 457 plan? Such pay is usually in box 11 of a W-2; count it even if box 11 is blank.
   - input: s1.stock_options
     order: 146
     seq: 13
@@ -4049,8 +4090,9 @@ bank:
   - input: oi8z.amount
     order: 294
     seq: 3
-    help: For damages or a settlement, count the whole taxable part, including any share your lawyer kept, and leave out
-      damages paid for medical care of emotional distress.
+    help: For damages or a settlement, count the whole taxable part, including any share your lawyer kept. Leave out damages
+      paid for medical care of emotional distress, and damages for a personal injury or sickness paid under an agreement,
+      decree or award in effect by September 13, 1995.
     prompt: How much of it is income for 2025?
   - input: oi8z.injury
     order: 294
@@ -4104,8 +4146,8 @@ bank:
     seq: 2
     help: A checked box 8 means the refund is of a tax charged only on business income. If taxable it belongs on Schedule C or
       F, outside what this tool prepares; a Yes ends the interview here.
-    prompt: Is box 8 checked on the Form 1099-G that shows the refund, or was the refund of a state or local tax charged only
-      on income from a business?
+    prompt: Is box 8 checked on any of your (or, on a joint return, your spouse's) Forms 1099-G that show a refund, or was any
+      refund of a state or local tax charged only on income from a business?
   - input: refund.itemized
     order: 165
     seq: 7
@@ -4587,7 +4629,8 @@ bank:
     help: Answer No if you were not married at any time in 2025. A plan covering more than one person includes one for an
       employee and a child, and counts even if it did not cover you. A Yes ends the interview here.
     prompt: For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce
-      or death, while the other person had a high-deductible plan covering more than one person?
+      or death, and in any month of 2025 while you were married did the other person have a high-deductible plan
+      covering more than one person?
   - input: f8889.months_eligible
     order: 190
     seq: 15
@@ -4788,12 +4831,12 @@ bank:
     seq: 6
     group: home_school
     tick: Paid interest on a student loan
-    help: 'If you are not sure whether a loan counts, answer Yes: the questions that follow sort it out.'
+    help: 'A loan counts by what it paid for, not by its name: a personal loan or credit line used only for college costs
+      counts. If you are not sure, answer Yes: the questions that follow sort it out.'
   - input: sli.unqualified_any
     order: 244
     seq: 3
-    help: School costs are tuition, fees, room and board, books, supplies and the like, for a degree or certificate program.
-      Someone you could have claimed as a dependent but for that person's income or joint return, or because you could be
+    help: School costs are tuition, fees, room and board, books, supplies and the like. Someone you could have claimed as a dependent but for that person's income or joint return, or because you could be
       claimed yourself, counts as your dependent here.
   - input: sli.unqualified
     order: 244
@@ -5479,6 +5522,8 @@ bank:
     seq: 32
     group: veh_prior
     tick: Half or less of its use was for business
+    help: For the year you started using it for business after personal use, figure that year's share as the business share
+      of the later miles times the business months, divided by 12.
   - input: scveh.cost
     order: 255
     seq: 33
@@ -5729,9 +5774,10 @@ bank:
     order: 257
     seq: 4
     group: asset_kind
-    tick: A building, land, a vehicle, boat or aircraft, a film or recording
+    tick: A building, land, vehicle, boat, aircraft, film, recording, patent or copyright
     help: A car, truck or van is entered with the business's vehicles, not here. An improvement to the inside of a
-      business building may be listed, with qualified improvement property as its kind.
+      business building may be listed, with qualified improvement property as its kind. A license, contract right or
+      franchise counts too; software does not.
   - input: asset.software
     order: 257
     seq: 5
@@ -5757,9 +5803,10 @@ bank:
     order: 257
     seq: 8
     group: asset_kind
-    tick: Recycling equipment, a gas gathering or power line, or a racetrack
+    tick: Recycling equipment, a gas gathering or power line, smart meter or racetrack
     help: Equipment used only to collect or recycle materials counts even if recycling is not your business. A power line
-      counts if it carries 69 kilovolts or more; a racetrack, if open to paying spectators.
+      counts if it carries 69 kilovolts or more; a racetrack, if open to paying spectators; a smart meter or smart grid
+      equipment, if your business supplies electricity or electric energy services.
   - input: asset.cost
     order: 257
     seq: 11
@@ -6039,15 +6086,16 @@ bank:
   - input: qbi.prior_form
     order: 296
     seq: 1
-    help: The form is titled “Qualified Business Income Deduction”. It is filed with a business, and also for dividends of
-      real estate funds. If there was no 2024 return, or it has neither form, the answer is No.
-    prompt: Does your (or, on a joint return, your spouse's) 2024 tax return include Form 8995 or Form 8995-A, the form for
-      the deduction for business income?
+    help: The form is titled “Qualified Business Income Deduction” and is filed for a business or for dividends of real
+      estate funds. A loss on it carries forward until used, even after the business ends. If no return of yours has
+      either form, answer No.
+    prompt: Did your (or, on a joint return, your spouse's) 2024 tax return, or any earlier one, include Form 8995 or Form
+      8995-A, the form for the deduction for business income?
   - input: qbi.carryforward
     order: 296
     seq: 2
-    prompt: What loss does line 16 of that 2024 Form 8995 show (“Total qualified business (loss) carryforward”), or the line
-      of that name on Form 8995-A? Give it as a positive amount; zero if the line is empty.
+    prompt: What loss does line 16 of the latest such Form 8995 show (“Total qualified business (loss) carryforward”), or the
+      line of that name on Form 8995-A? Give it as a positive amount; zero if the line is empty.
   - input: qbi.reit_loss
     order: 296
     seq: 3
@@ -6089,7 +6137,7 @@ bank:
     seq: 4
     group: home_school
     tick: Had solar, insulation, windows, doors or heating equipment installed at home
-    help: Count work finished in 2025, work on a new or rebuilt home you moved into in 2025, and your share of condo or co-op work. An electric panel, wiring or energy audit counts. If in doubt, answer Yes.
+    help: Count work finished in 2025 (on a rebuilt home, only if you moved into it in 2025), work on a new or rebuilt home you moved into in 2025, and your share of condo or co-op work. An electric panel, wiring or energy audit counts. If in doubt, answer Yes.
   - input: f5695.solar
     order: 230
     seq: 2
@@ -6178,6 +6226,14 @@ bank:
       and ends the interview here.'
     prompt: Was any of the solar, wind, geothermal or battery equipment put in a home being built or rebuilt that you did
       not begin to live in during 2025?
+  - input: f5695.reconstruct_later
+    order: 230
+    seq: 29
+    help: 'Costs of rebuilding a home count in the year you first live in the rebuilt home, whether or not you lived there
+      before, and this credit ends after 2025. Work on a home you live in while it is renovated is not a rebuild: answer No.
+      A Yes ends the interview here.'
+    prompt: Was any of this work or equipment for a home being rebuilt that you did not begin to live in, or to live in
+      again, during 2025?
   - input: f5695.line1
     order: 230
     seq: 24
@@ -6339,11 +6395,11 @@ bank:
     seq: 50
     help: A second home or a home you rent counts.
     prompt: Was the heating, cooling, hot-water or electrical equipment installed at a home in the United States that you
-      lived in during 2025?
+      (or, on a joint return, your spouse) lived in during 2025?
   - input: f5695.line21b
     order: 230
     seq: 51
-    prompt: Was it new, not used by anyone before you?
+    prompt: Was it new, not used by anyone before you (or, on a joint return, your spouse)?
   - input: f5695.b_new_home
     order: 230
     seq: 52
@@ -6566,9 +6622,9 @@ bank:
   - input: ira.mfs_spouse_covered
     order: 180
     seq: 21
-    help: A pension, a 401(k) or 403(b), or a SEP or SIMPLE IRA counts, even if they put nothing in. If they were, the
+    help: A pension, a 401(k) or 403(b), a solo 401(k) or Keogh, or a SEP or SIMPLE IRA counts, even if they put nothing in. If they were, the
       "Retirement plan" box in box 13 of their Form W-2 should be ticked.
-    prompt: Was your husband or wife covered by a retirement plan at work in 2025?
+    prompt: Was your husband or wife covered by a retirement plan in 2025, at a job or through their own business?
   - input: person.ira_extra_left
     order: 180
     seq: 15
@@ -7052,8 +7108,10 @@ bank:
     order: 264
     seq: 180
     group: k1s_activity
-    tick: Over 750 hours, and most of your work time, in real estate
+    tick: "One person: over 750 hours and most work time in real estate"
     help: Outside what this tool prepares; a Yes ends the interview here.
+    prompt: Did you (or, on a joint return, your spouse) work more than 750 hours in 2025 in real estate businesses, and more
+      than half of your own work time? On a joint return, one spouse must meet both alone.
   - input: k1s.dwelling
     order: 264
     seq: 181
@@ -7090,14 +7148,14 @@ bank:
       basis.'
   - input: scope.rent_personal
     order: 130
-    seq: 4
+    seq: 5
     help: 'Furniture or appliances rented with a home count as part of the home: answer No for them. A Yes ends the interview
       here.'
   - input: $rental
     order: 130
     seq: 11
-    prompt: List each house, apartment, room, building or piece of land you (or, on a joint return, your spouse) rented out
-      or offered for rent in 2025, one entry each.
+    prompt: List each house, apartment, room, building or piece of land you (or, on a joint return, your spouse) rented out,
+      offered for rent or received rent for in 2025, one entry each.
     help: A short label will do, such as the street address. List a home you rented out only a few days too. Royalties are asked
       about next.
   - input: rental.kind
@@ -7129,8 +7187,9 @@ bank:
     seq: 15
     help: A swap is an arrangement that lets you use someone else's home in return. Also leave out days a co-owner rented it
       from you as their main home at a fair rent under a shared equity financing agreement.
-    prompt: For this rental property — How many days was it used that way? Leave out days spent mostly on repairs, and main-home
-      days before or after renting it (or trying to) for 12 months in a row, or less if you then sold it.
+    prompt: For this rental property — How many days was it used that way? Leave out days a relative rented it at a fair
+      rent as their main home, days spent mostly on repairs, and main-home days before or after renting it (or trying to)
+      for 12 months in a row, or less if you then sold it.
   - input: rental.days_overlap
     order: 130
     seq: 16
@@ -7183,175 +7242,209 @@ bank:
     tick: Held mainly to sell, or open to the public in set hours
     help: For example, land kept for its rising value with a small farm or hunting lease, or a parking lot. Yes also if you
       hold it for sale to customers as a real estate dealer. A Yes ends the interview here.
-  - input: rental.active
+  - input: rental.business_incidental
     order: 130
     seq: 25
+    group: rental_use
+    tick: Used mainly by a business of yours, rent under 2% of value
+    help: A business you or your spouse own any part of counts. Count 2025 or at least 2 of the 5 years before. Rent is
+      compared with the smaller of its cost (before depreciation) and its value. A Yes ends the interview here.
+  - input: rental.land_heavy
+    order: 130
+    seq: 26
+    group: rental_use
+    tick: Its buildings were under 30% of what it cost, the rest land
+    help: Use the split between land and buildings of what you paid, as for depreciation, counting buildings added later.
+      A Yes ends the interview only if it makes money and other rental losses are limited.
+  - input: rental.active
+    order: 130
+    seq: 27
     help: Most owners answer Yes. Answer No only if someone else made all these decisions, for example under a lease you have
       no say in.
   - input: rental.rents
     order: 130
-    seq: 26
+    seq: 28
     help: Form 1099-MISC box 1 may show it. Include a security deposit you kept, and repairs or bills a tenant paid for you
       in place of rent; enter those again below as costs.
   - input: rental.has_mortgage
     order: 130
-    seq: 27
+    seq: 29
     group: rental_costs_a
     tick: Mortgage interest on a Form 1098
   - input: rental.has_other_interest
     order: 130
-    seq: 28
+    seq: 30
     group: rental_costs_a
-    tick: Other interest on loans for it
+    tick: Other interest on money borrowed for it, even a home equity loan
   - input: rental.has_taxes
     order: 130
-    seq: 29
+    seq: 31
     group: rental_costs_a
     tick: Property tax or other taxes
   - input: rental.has_insurance
     order: 130
-    seq: 30
+    seq: 32
     group: rental_costs_a
     tick: Insurance covering 2025, even if paid earlier
   - input: rental.has_management
     order: 130
-    seq: 31
+    seq: 33
     group: rental_costs_a
     tick: Management fees
   - input: rental.has_commissions
     order: 130
-    seq: 32
+    seq: 34
     group: rental_costs_a
     tick: Commissions
   - input: rental.has_repairs
     order: 130
-    seq: 33
+    seq: 35
     group: rental_costs_b
     tick: Repairs
   - input: rental.has_cleaning
     order: 130
-    seq: 34
+    seq: 36
     group: rental_costs_b
     tick: Cleaning and maintenance
   - input: rental.has_utilities
     order: 130
-    seq: 35
+    seq: 37
     group: rental_costs_b
     tick: Utilities
   - input: rental.has_supplies
     order: 130
-    seq: 36
+    seq: 38
     group: rental_costs_b
     tick: Supplies
   - input: rental.has_advertising
     order: 130
-    seq: 37
+    seq: 39
     group: rental_costs_b
     tick: Advertising
   - input: rental.has_legal
     order: 130
-    seq: 38
+    seq: 40
     group: rental_costs_b
     tick: Legal or other professional fees, such as tax preparation
+  - input: rental.mortgage_excess
+    order: 130
+    seq: 41
+    group: rental_costs_c
+    tick: More mortgage interest than your Form 1098 shows
+    help: If more than one lender sent you a Form 1098 for it, add them together first. A Yes ends the interview here.
   - input: rental.has_other
     order: 130
-    seq: 39
+    seq: 42
     group: rental_costs_c
     tick: Other costs of renting it
+  - input: rental.bought_lease
+    order: 130
+    seq: 43
+    group: rental_costs_c
+    tick: You paid to buy a lease on it or its land
+    help: For example, you paid to take over a lease on space you then sublet, or bought a ground lease under a building
+      you rent out. Count a lease that ended during 2025. A Yes ends the interview here.
   - input: rental.vehicle
     order: 130
-    seq: 40
+    seq: 44
     group: rental_costs_c
     tick: Car, truck or travel costs for it
     help: A Yes ends the interview here.
   - input: rental.amt5
     order: 130
-    seq: 41
+    seq: 45
   - input: rental.amt7
     order: 130
-    seq: 42
+    seq: 46
   - input: rental.amt8
     order: 130
-    seq: 43
-  - input: rental.amt9
-    order: 130
-    seq: 44
-    help: If it was your home for part of 2025 and you did not count those days as days you used it, enter only the part
-      for the days it was rented or offered for rent.
-  - input: rental.amt10
-    order: 130
-    seq: 45
-    help: 'Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to
-      its cost, not deducted now.'
-  - input: rental.amt11
-    order: 130
-    seq: 46
-  - input: rental.amt12
-    order: 130
     seq: 47
-    help: If it was also your home in 2025, and those days are not counted as days you used it, enter only the part for days
-      it was rented or offered for rent; the rest goes with your home mortgage interest.
-  - input: rental.amt13
+  - input: rental.amt9
     order: 130
     seq: 48
     help: If it was your home for part of 2025 and you did not count those days as days you used it, enter only the part
       for the days it was rented or offered for rent.
-  - input: rental.amt14
+  - input: rental.amt10
     order: 130
     seq: 49
-    help: 'A new roof, a new furnace or an addition is an improvement, not a repair: list it with the buildings below.'
-  - input: rental.amt15
+    help: 'Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to
+      its cost, not deducted now.'
+  - input: rental.amt11
     order: 130
     seq: 50
-  - input: rental.amt16
+  - input: rental.amt12
     order: 130
     seq: 51
     help: If it was also your home in 2025, and those days are not counted as days you used it, enter only the part for days
-      it was rented or offered for rent; the rest goes with your home's property tax.
-  - input: rental.amt17
+      it was rented or offered for rent; the rest goes with your home mortgage interest.
+  - input: rental.amt13
     order: 130
     seq: 52
-  - input: rental.amt19
+    help: 'If it was your home for part of 2025 and those days are not counted as days you used it, enter only the part for
+      days it was rented or offered for rent. Not loan commissions, abstract or recording fees: they are part of its cost
+      (below).'
+  - input: rental.amt14
     order: 130
     seq: 53
-    help: 'Not something that lasts more than a year, such as an appliance, furniture or an improvement: list it with the
-      buildings below.'
-  - input: rental.prior_any
+    help: 'A new roof, a new furnace or an addition is an improvement, not a repair: list it with the buildings below.'
+  - input: rental.amt15
     order: 130
     seq: 54
-    help: Look for Form 8582 in your 2024 return. Yes also for costs carried over from a year you also used the place as a
-      home. Answer No if your rentals had no loss before 2025.
-  - input: rental.prior_amt
+  - input: rental.amt16
     order: 130
     seq: 55
-  - input: rental.prior_not_active
+    help: If it was also your home in 2025, and those days are not counted as days you used it, enter only the part for days
+      it was rented or offered for rent; the rest goes with your home's property tax. Charges to maintain or repair such
+      lines count.
+  - input: rental.amt17
     order: 130
     seq: 56
+  - input: rental.amt19
+    order: 130
+    seq: 57
+    help: 'Not something that lasts more than a year, such as an appliance, furniture, an improvement, or equipment you
+      lease to own: list it with the buildings below. Not loan costs: points go with other interest; mortgage commissions
+      and recording fees are part of its cost.'
+  - input: rental.prior_any
+    order: 130
+    seq: 58
+    help: Look for Form 8582 in your 2024 return. Yes also for costs carried over from a year it counted as your home
+      through personal use. Answer No if none of your rentals had a loss before 2025.
+  - input: rental.prior_amt
+    order: 130
+    seq: 59
+  - input: rental.prior_not_active
+    order: 130
+    seq: 60
     help: A Yes ends the interview here.
   - input: rental.prior_ws51
     order: 130
-    seq: 57
-    prompt: "For this rental property — Was any of it rental costs carried over from an earlier year when you also used the place as a home?"
-    help: Such costs are carried over when the rent did not cover them in a year you used the place yourself (Pub. 527,
-      Worksheet 5-1). A Yes ends the interview here.
+    seq: 61
+    prompt: "For this rental property — Did any of the held-back loss come from rental costs carried over from an earlier year when the place counted as your home through personal use (by you, a co-owner, a relative, or anyone paying below a fair rent)?"
+    help: Such costs carry over when the rent did not cover them in a year it was used personally more than 14 days and more
+      than 10% of the days rented (Pub. 527, Worksheet 5-1). A Yes ends the interview here.
   - input: $rprop
     order: 130
-    seq: 58
+    seq: 62
     prompt: For this rental property — List the building and each improvement to it you depreciate (such as a new roof or furnace),
       one entry each; leave the list empty for land only.
     help: Your earlier depreciation schedule lists them. Land is never depreciated.
   - input: rprop.kind
     order: 130
-    seq: 59
+    seq: 63
     prompt: "For this building or improvement — What is it?"
     value_labels:
       residential: "A building with 80% or more of its rent from homes or apartments, or an improvement to one"
       nonresidential: Another building, such as shops or offices, or an improvement to one
       personal: Something else, such as an appliance, carpet, furniture, a fence or a driveway
     help: Something else ends the interview here.
+  - input: rprop.short_class
+    order: 130
+    seq: 64
+    help: These are depreciated over 10, 15 or 20 years, not 39. A Yes ends the interview here.
   - input: rprop.month
     order: 130
-    seq: 60
+    seq: 65
     value_labels:
       m1: January
       m2: February
@@ -7367,7 +7460,7 @@ bank:
       m12: December
   - input: rprop.year
     order: 130
-    seq: 61
+    seq: 66
     value_labels:
       y2025: '2025'
       y2024: '2024'
@@ -7411,76 +7504,77 @@ bank:
       before1987: Before 1987
   - input: rprop.qip
     order: 130
-    seq: 62
-    help: A new roof or an addition is not an improvement to the inside. A Yes ends the interview here.
+    seq: 67
+    help: Yes if any part of the cost is such an improvement, even if the rest is not. A new roof or an addition alone is
+      No. A Yes ends the interview here.
   - input: rprop.basis
     order: 130
-    seq: 63
-    help: For a building you bought, the price (with closing costs) less the part for the land; your property tax bill’s split
-      of land and building may be used.
+    seq: 68
+    help: For a building you bought, the price plus closing costs such as title insurance, legal and recording fees, surveys
+      and transfer taxes, less the land's part. Not points, other loan fees, fire insurance or escrow.
     prompt: For this building or improvement — Your share of its cost, without the land. If you used it yourself before renting
       it, enter the smaller of its value then and what you paid plus improvements, both without land.
   - input: rprop.exchanged
     order: 130
-    seq: 64
-    prompt: "For this building or improvement — Did you get it in a trade for other property (a like-kind or 1031 exchange), or to replace property that was destroyed, stolen or taken by a government?"
+    seq: 69
+    prompt: "For this building or improvement — Did you get it other than by buying or building it: in a trade (a like-kind or 1031 exchange), to replace property destroyed, stolen or taken by a government, as a gift or an inheritance, from your spouse or former spouse, or as pay for work?"
     help: An improvement you paid for is No. A Yes ends the interview here.
   - input: rprop.disposed
     order: 130
-    seq: 65
+    seq: 70
     group: rprop_facts
     tick: Sold, traded, given away, torn out, or no longer rented, in 2025
     help: Yes also if you began living in it. No if it only stood empty for a while between tenants. A Yes ends the interview
       here.
   - input: rprop.fast
     order: 130
-    seq: 66
+    seq: 71
     group: rprop_facts
     tick: Bonus depreciation or section 179 taken for it, or another method used
     help: Bonus depreciation is the special depreciation allowance. Most rentals are depreciated straight line over 27.5 years
       (homes) or 39 years (other buildings). A Yes ends the interview here.
   - input: rprop.ads
     order: 130
-    seq: 67
+    seq: 72
     group: rprop_facts
     tick: Depreciated over 30 or 40 years (the alternative system, ADS)
     help: ADS is required, for example, for a building outside the United States. A Yes ends the interview here.
   - input: rprop.basis_changed
     order: 130
-    seq: 68
+    seq: 73
     group: rprop_facts
     tick: A casualty, easement or other event changed its cost after renting began
     help: Improvements entered as entries of their own do not count. A Yes ends the interview here.
   - input: rprop.credit
     order: 130
-    seq: 69
+    seq: 74
     group: rprop_facts
     tick: A tax credit or special deduction taken for part of its cost
     help: Others include the energy efficient commercial building deduction. Yearly depreciation does not count. A Yes ends
       the interview here.
   - input: rprop.coop
     order: 130
-    seq: 70
+    seq: 75
     group: rprop_facts
     tick: A co-op apartment (stock in a cooperative housing corporation), not a condo
     help: A Yes ends the interview here.
   - input: rental.not_at_risk
     order: 130
-    seq: 71
-    help: A mortgage from a bank, a government or another regular lender is at risk. A loan from the seller, a co-owner, or a
-      relative of either is a Yes. A Yes ends the interview here.
+    seq: 76
+    help: A lender's mortgage is at risk only if it cannot be turned into a share of ownership. Yes for a loan from the
+      seller, a co-owner, a relative of either, or a company one of them controls. A Yes ends the interview here.
   - input: $royalty
     order: 130
-    seq: 74
+    seq: 79
     prompt: List each source of royalties you (or, on a joint return, your spouse) received in 2025, such as a book, a song,
       a patent or an oil or gas lease, one entry each; leave the list empty if none.
     help: Form 1099-MISC box 2 reports royalties.
   - input: royalty.line4
     order: 130
-    seq: 75
+    seq: 80
   - input: royalty.business
     order: 130
-    seq: 76
+    seq: 81
     group: royalty_rare
     tick: From your own business, creative work or services, or a working interest
     help: For example, a self-employed photographer's or songwriter's own work, or name, image and likeness pay for
@@ -7488,60 +7582,63 @@ bank:
     prompt: "For this royalty — Did it come from your own business or services (your own creative work or invention, or name, image and likeness pay), or from a working interest in oil, gas or other minerals?"
   - input: royalty.depletion
     order: 130
-    seq: 77
+    seq: 82
     group: royalty_rare
     tick: You claim depletion for it
     help: A Yes ends the interview here.
   - input: royalty.capital
     order: 130
-    seq: 78
+    seq: 83
     group: royalty_rare
     tick: From selling a patent, or from coal or iron ore
     help: Such payments may count as a sale, not a royalty. A Yes ends the interview here.
   - input: royalty.vehicle
     order: 130
-    seq: 79
+    seq: 84
     group: royalty_rare
     tick: Car, truck or travel costs for it
     help: A Yes ends the interview here.
   - input: royalty.depreciation
     order: 130
-    seq: 80
+    seq: 85
     group: royalty_rare
     tick: You depreciate something for it, such as a bought copyright
     help: A Yes ends the interview here.
   - input: royalty.expenses_any
     order: 130
-    seq: 81
+    seq: 86
   - input: royalty.amt10
     order: 130
-    seq: 82
+    seq: 87
     help: 'Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to
       its cost, not deducted now.'
   - input: royalty.amt16
     order: 130
-    seq: 83
+    seq: 88
   - input: royalty.amt19
     order: 130
-    seq: 84
+    seq: 89
     help: Not the value of your own work, and not something that lasts more than a year, such as equipment or an improvement.
   - input: royalty.not_at_risk
     order: 130
-    seq: 85
-    help: A loan from a bank, a government or another regular lender is at risk. A loan from the payer of the royalty or
-      a relative is a Yes. A Yes ends the interview here.
+    seq: 90
+    help: A loan you must repay yourself is at risk; one repaid only from the property or its royalties is not, whoever lent
+      it. A loan from the payer of the royalty, a relative, or a company either controls is a Yes. A Yes ends the interview
+      here.
   - input: sche.re_pro
     order: 130
     seq: 98
     group: rental_return
-    tick: Over 750 hours, and most of your work time, in real estate
+    tick: "One person: over 750 hours and most work time in real estate"
     help: Real estate work includes building, buying, renting out, managing or brokering it, including running your own
       rentals. Work as an employee counts only if you own more than 5% of the employer. A Yes ends the interview here.
+    prompt: Did you (or, on a joint return, your spouse) work more than 750 hours in 2025 in real estate businesses, and more
+      than half of your own work time? On a joint return, one spouse must meet both alone.
   - input: sche.grouped
     order: 130
     seq: 99
     group: rental_return
-    tick: You treat two or more rentals as one activity
+    tick: A rental grouped with another rental or a business as one activity
     help: A Yes ends the interview here.
   - input: sche.qbi_business
     order: 130
@@ -7558,3 +7655,8 @@ bank:
     tick: You keep your rental books on the accrual method
     help: Most landlords use the cash method, counting rent when received and costs when paid. A Yes ends the interview
       here.
+  - input: f8582.prior_crd
+    order: 130
+    seq: 102
+    help: Such a deduction is marked "CRD" among the losses your 2024 Form 8582 did not allow (Parts VII and VIII). A CRD that
+      2024 allowed in full does not count. A Yes ends the interview here.

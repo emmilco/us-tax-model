@@ -731,6 +731,76 @@ form:
       cite:
         doc: f8960
         locator: p. 1, Part III, line 16, "Enter the smaller of line 12 or line 15"
+      refuses:
+        - when: f8960.election_between
+          form: Form 8960, line 1 checkboxes (section 6013(g) or 6013(h) election)
+          remedy: A joint return made by choosing to treat a nonresident spouse as a U.S. resident needs a further choice
+            for the net investment income tax (to apply that election to it, or to figure it as if filing separately, with
+            the $125,000 threshold); this is outside this tool.
+          cite:
+            doc: i8960
+            locator: 'p. 3, "If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax
+              purposes, but don’t elect to apply the joint return election for NIIT purposes, then, for NIIT purposes, you’ll
+              be treated under the default method as married filing separately" and "uses the applicable threshold for
+              married filing separately ($125,000)"'
+    - id: f8960.separate_threshold
+      printed: (helper)
+      type: NonNegDollars
+      label: Half the line 14 threshold (on a joint return, the married filing separately threshold of $125,000)
+      expr:
+        op: multiply_rate
+        amount: f8960.line14
+        rate:
+          param: sa.half
+      cite:
+        doc: i8960
+        locator: 'p. 2, Application to Individuals, the applicable threshold amounts; p. 3, "uses the applicable threshold
+          for married filing separately ($125,000)"'
+    - id: f8960.between
+      printed: (helper)
+      type: Bool
+      label: Adjusted gross income is more than half the line 14 threshold but Form 8960 is not otherwise filed (on a joint
+        return, more than the $125,000 threshold that applies when the net investment income tax is figured as if filing
+        separately, and not more than $250,000)
+      expr:
+        op: test
+        all:
+          - op: test
+            gt:
+              - sa.agi
+              - f8960.separate_threshold
+          - op: test
+            eq:
+              - f8960.used
+              - const: false
+      cite:
+        doc: i8960
+        locator: 'p. 3, "The U.S. citizen or resident spouse figures his or her NII and MAGI separately and uses the
+          applicable threshold for married filing separately ($125,000)"'
+    - id: f8960.election_between
+      printed: (gate)
+      type: Bool
+      label: A section 6013(g) or 6013(h) joint return whose adjusted gross income is over the separate-filing threshold
+        and not over the joint one (asked only then, line 1 refusing above it; no otherwise)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f8960.between
+                - const: true
+            then: f8960.election_6013g_if_joint
+          - guard:
+              op: test
+              eq:
+                - f8960.between
+                - const: false
+            then: f8960.no
+      cite:
+        doc: i8960
+        locator: 'p. 3, Filing separately with nonresident spouse for NIIT purposes, "you’ll be treated under the default
+          method as married filing separately"'
     - id: f8960.line17
       printed: "17"
       type: NonNegDollars

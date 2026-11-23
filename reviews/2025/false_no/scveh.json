@@ -282,98 +282,68 @@
    ]
   },
   "gate:scveh.placed_this_year": {
-   "subject_sha": "7430aeeb42d1c8cbaef3701ab310b7b60aef4ef1b74710b0d26b457b80323695",
+   "subject_sha": "c8ce1ef5d1e868de42fab9e90d507334f2c80425610269afc29fcb5f538c1226",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "Any filer with a vehicle placed in service for business before 2025 (for example a 2021 car still being depreciated) that had bonus depreciation, the standard mileage rate, or 50%-or-less business use in an earlier year.",
-       "why_no": "For this vehicle the computed gate scveh.placed_this_year is false, so the tool sets all three lines to false and never asks the questions. But each line yields a value only on its placed_this_year = false branch. Under the true branch it returns household.no. As wired, the three 'earlier-year' questions can never be asked of any vehicle, including the vehicles they were written for.",
-       "line": "scveh.prior_bonus_if_earlier; scveh.prior_low_use_if_earlier; scveh.prior_smr_if_earlier",
-       "irs_text": "p463 p. 25: 'If you used the standard mileage rate in the first year of business use and change to the actual expenses method in a later year, you can't depreciate your car under the MACRS rules. You must use straight line depreciation'; 'If your business use is 50% or less, you must use the straight line method'",
+       "pattern": "8",
+       "who": "A sole proprietor placed a qualifying car in service in 2023 and never claimed bonus depreciation on it. They also never attached an election-out statement, so the special allowance was allowable even though it was not taken.",
+       "why_no": "The question asks 'Did you claim a special ('bonus') depreciation allowance'. They did not claim it, so they truthfully answer no. The IRS text, however, treats the allowance as taken unless the filer elected out.",
+       "line": "scveh.prior_bonus_if_earlier",
+       "irs_text": "i4562 p. 13, MACRS recapture: depreciation includes 'Any special depreciation allowance available for the property (unless you elected not to claim it)'; p946 p. 63: 'you would still reduce your basis by the maximum amount allowable'",
        "severity": "high",
-       "fix": "Gate these three lines on NOT placed_this_year (or on 'Year of recovery in 2025' > 1), not on placed_this_year. Otherwise every pre-2025 vehicle silently gets MACRS accelerated rates and no straight-line switch or SMR basis reduction."
+       "fix": "Ask: 'Was a special (bonus) depreciation allowance claimed for this vehicle in an earlier year, or was it available and you did not attach a statement electing out of it for that year?' Add help explaining that the allowance counts unless an election-out statement was filed."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer who bought a car for personal use in 2016 and began using it in their business in 2025.",
-       "why_no": "If 'Year of recovery in 2025' is computed from the purchase date the filer entered, the car looks like it is in its 9th or 10th year. The gate is then false, and the acquisition-date question is never asked. Under IRS rules the car is placed in service on the date of conversion, so 2025 is recovery year 1. It was also acquired before September 28, 2017, which bars bonus depreciation and the $20,200 first-year limit.",
-       "line": "scveh.acquired_before_bonus_date_if_this_year",
-       "irs_text": "i4562 p. 14, Column (b): 'If property held for personal use is converted to business/investment use, treat the property as placed in service on the date of conversion'; i4562 p. 16, Table 2 note: 'If you take the special depreciation allowance for qualified passenger automobiles acquired after September 27, 2017, and placed in service in 2025, the limit is $20,200.'",
-       "severity": "medium",
-       "fix": "Compute recovery year from the date the vehicle was first used for business or investment (conversion date), not from the purchase date. Ask for that date explicitly, with help text saying a personal car converted this year counts as placed in service this year."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer who traded in an older business car for a new one in 2025 without making the election out of the like-kind-exchange rules.",
-       "why_no": "The carryover basis keeps the old car's recovery period and placed-in-service date, so a recovery-year helper keyed to the old car gives a year other than 1. The excess basis, however, is 'newly placed in service' in 2025. The gate may misclassify the vehicle, so either the acquisition-date question or the earlier-year questions are skipped for the wrong component.",
-       "line": "scveh.acquired_before_bonus_date_if_this_year",
-       "irs_text": "p946 p. 63: 'depreciate the carryover basis separately as if the trade-in did not occur. Depreciate the part of the new automobile's basis that exceeds its carryover basis (excess basis) as if it were newly placed in service property.'",
-       "severity": "medium",
-       "fix": "For trade-in vehicles, evaluate the gate separately for the carryover and excess basis components. The excess basis is always year 1, so ask the acquisition and bonus questions for it. Ask the earlier-year questions about the traded-in car's history."
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A married couple files jointly. Before the marriage, or on an earlier separate return, the spouse placed the vehicle in service and either claimed bonus depreciation or used the standard mileage rate for it. The filer answering never did either.",
+       "why_no": "Each question says 'Did you claim…' or 'Did you use the standard mileage rate…'. The filer reads 'you' as themselves alone and truthfully answers no.",
+       "line": "scveh.prior_bonus_if_earlier; scveh.prior_smr_if_earlier",
+       "irs_text": "p463 p. 25, Exception: 'If you used the standard mileage rate in the first year of business use and change to the actual expenses method in a later year, you can't depreciate your car under the MACRS rules.'",
+       "severity": "high",
+       "fix": "Ask 'Did you, your spouse, or anyone else on a return for this vehicle claim…' or 'use the standard mileage rate for it in an earlier year?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who converted a car to business use in mid-2024 and drove it 80% for business for the last six months of that year.",
-       "why_no": "They read 'was half or less of its use for business' as their 80% business share and answer no. For a conversion year, however, the annual business-use percentage is prorated by months: 80% x 6/12 = 40%.",
+       "who": "A filer drove the car about 30% for their business and about 30% for an investment or rental activity in an earlier year. Commuting miles were also mixed in with the business miles.",
+       "why_no": "The question asks whether 'half or less of its use [was] for business'. The filer combines business and investment miles, or counts commuting, gets more than half, and answers no. Qualified business use excludes investment use, and commuting is not business use.",
        "line": "scveh.prior_low_use_if_earlier",
-       "irs_text": "p463 p. 26 Example: 'This gives you a business-use percentage of 80% (12,000 ÷ 15,000) for that period. Your business use for the year is 40% (80% (0.80) × 6/12).'",
+       "irs_text": "i4562 p. 14, Qualified business use: 'it does not include any of the following. • Investment use.'; p463 p. 25: 'It doesn't include use for the production of income (investment use)'",
        "severity": "medium",
-       "fix": "Help text: 'In the year you started using it for business, count the months before that as 0% business use. If you started mid-year, multiply your business share by the number of business months and divide by 12.'"
+       "fix": "Ask about trade-or-business miles only, 'not counting investment use, commuting, or use by a 5% owner or related person as compensation', and add this to the help text."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer whose car was used more than 50% overall in an earlier year, but much of that use was investment use (driving to rental properties), commuting, or use by a 5% owner or related person as compensation.",
-       "why_no": "They count all of that as 'business' and answer no. Qualified business use excludes investment use and these other uses, so qualified business use was 50% or less. Straight-line ADS was then required, and recapture may apply.",
-       "line": "scveh.prior_low_use_if_earlier",
-       "irs_text": "i4562 p. 14: 'Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following. • Investment use. ... Your percentage of qualified business use may be smaller than the business/investment use percentage.'",
-       "severity": "medium",
-       "fix": "Ask: 'In any earlier year, was half or less of its miles driven for your trade or business, not counting commuting, investment or rental-property trips, or use by an owner or relative as pay?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A married couple filing jointly where the spouse's sole proprietorship claimed bonus depreciation or the standard mileage rate on the shared vehicle in an earlier year.",
-       "why_no": "The questions say 'Did you claim...' and 'Did you use the standard mileage rate...'. The filer answering did not claim it personally and answers no.",
-       "line": "scveh.prior_bonus_if_earlier; scveh.prior_smr_if_earlier",
-       "irs_text": "p463 p. 25: 'If you used the standard mileage rate in the first year of business use and change to the actual expenses method in a later year, you can't depreciate your car under the MACRS rules.'",
-       "severity": "medium",
-       "fix": "Ask 'Did you or your spouse (on any return) claim...' and 'Did you or your spouse use the standard mileage rate for this vehicle in any earlier year?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer whose prior-year return depreciated a qualifying post-September 27, 2017 vehicle without taking bonus depreciation and without attaching an election-out statement.",
-       "why_no": "They truthfully did not 'claim' a bonus allowance and answer no. The allowance was still allowable unless they elected out, and allowable depreciation reduces basis and counts for recapture.",
-       "line": "scveh.prior_bonus_if_earlier",
-       "irs_text": "i4562 p. 13: 'Depreciation, for this purpose, includes ... Any special depreciation allowance available for the property (unless you elected not to claim it).'",
-       "severity": "low",
-       "fix": "Add help text: 'If the vehicle qualified for bonus depreciation in its first year and you did not attach a statement electing out, answer yes even if you did not deduct it,' or ask a separate question about the election out."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer who signed a binding purchase contract for a vehicle in mid-September 2017 but took delivery in October 2017, then first used it for business in 2025.",
-       "why_no": "'Did you get it before September 28, 2017?' reads as asking when they took possession, so they answer no. Property acquired under a binding contract entered before September 28, 2017 is treated as acquired before that date, which bars the post-2017 bonus allowance and higher limits.",
+       "pattern": "1",
+       "who": "A filer bought a car for personal use in 2016 and converted it to business use in 2025. They enter the 2016 purchase date as the vehicle's date.",
+       "why_no": "The gate is computed from the recovery year. If that comes from the original purchase date rather than the conversion date, the gate reads 'not placed in service in 2025'. The tool then never asks 'Did you get it before September 28, 2017?', and the vehicle can wrongly receive the 2025 bonus allowance and the $20,200 limit. It also gets the prior-year questions instead.",
        "line": "scveh.acquired_before_bonus_date_if_this_year",
-       "irs_text": "i4562 p. 6: 'Certain qualified property (defined below) acquired after September 27, 2017, and before January 20, 2025 ... is limited to a special depreciation allowance of 40%'",
+       "irs_text": "i4562 p. 14, Column (b): 'If property held for personal use is converted to business/investment use, treat the property as placed in service on the date of conversion.'; i4562 p. 6: qualified property must be 'acquired after September 27, 2017'",
+       "severity": "medium",
+       "fix": "Compute the recovery year from the business-use conversion date, and ask for that date explicitly. Ask the acquisition-date question whenever the conversion date falls in 2025, whatever the purchase date."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer signed a written binding contract for a vehicle before September 28, 2017 and took delivery later. They placed it in service in 2025.",
+       "why_no": "'Did you get it before September 28, 2017?' reads as taking delivery, so they answer no. Under a pre-date binding contract, the vehicle is treated as acquired before that date.",
+       "line": "scveh.acquired_before_bonus_date_if_this_year",
+       "irs_text": "i4562 p. 7, Exceptions: 'Property described in section 168(k)(9)(A) or 168(k)(9)(B)'; p. 5: 'certain qualified property acquired after September 27, 2017'",
        "severity": "low",
        "fix": "Ask: 'Did you get it, or sign a binding contract to buy it, before September 28, 2017?'"
       }
      ],
-     "prompt_sha": "621676eff3aa93e859b5bdbb25ab3bba405f48060d05a815f93b588d1b4bfbea",
+     "prompt_sha": "43e185961b8d5052422ddf8cb2221131f067acfda705ff00dcb269862d6c6e5d",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.309348,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_scveh.placed_this_year.7430aeeb42d1.1.response.txt"
+     "cost": 0.269212,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_scveh.placed_this_year.c8ce1ef5d1e8.1.response.txt"
     }
    ],
    "condition": "scveh.placed_this_year",

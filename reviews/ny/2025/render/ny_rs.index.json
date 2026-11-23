@@ -2,710 +2,710 @@
  "kind": "render",
  "form": "ny_rs",
  "family": "claude",
- "base": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+ "base": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
  "lines": [
   {
    "key": "(line 38)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "bcc512a60c54fcd7b61fbbfc50b463cf936fe3138d7fd9ba173ae8d05fb6c1be"
   },
   {
    "key": "(band 1) (single.b1.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "df388ffa99a7f8b98dfa469a7089b5be1ba39d41ab2daef2b449fca00dab5e06"
   },
   {
    "key": "(band 1) (single.b1.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "f0d3fde1bd1307524791e535a3e94e8715f3602744cd2c26173c7a7b3669a0cb"
   },
   {
    "key": "(band 1) (single.b1.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "cc877bb66cd200831531d06ef29465bede317c087013ee865685a693acd85fc3"
   },
   {
    "key": "The tax is (single.b1.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "4409d548683d1472188dea9ba4561a9425620c0647078874f524318c8cf86feb"
   },
   {
    "key": "(band 2) (single.b2.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "1023d91cf6f0df5a80725de49facef084aad6f5e7e0e0a38482df80e21a6dc15"
   },
   {
    "key": "(band 2) (single.b2.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "cd1e0618ffe0e78416ddf7a309696c37c024ce74359482fac574ff992e8e3653"
   },
   {
    "key": "(band 2) (single.b2.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "6eb2b0d816047118ea81054c076fc82155c0fd8121d1d8ce6353d0625df100dc"
   },
   {
    "key": "The tax is (single.b2.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "1d7d38fa7f94763806a932f4a24ed33c45191f4aee58adee66f6cdb8a959b6d7"
   },
   {
    "key": "(band 3) (single.b3.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "83ac2b7706cc2fb46a81f73b5dabbc1a2eea6e64267a4a7b5dc4b98095b50262"
   },
   {
    "key": "(band 3) (single.b3.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "60fc63b78649a69ed0587e1ad49bcc27e26a7e3dfc2a392937bc2cff9b92a908"
   },
   {
    "key": "(band 3) (single.b3.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "3dcc0e1d0b409629f32e003b29615e1a72e333ceeb944a1afedbdfb64f3ba9cf"
   },
   {
    "key": "The tax is (single.b3.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "c6e09124a02ec0bd7c83658a197d752853c86a2e719e1bc4ae56a78c2c676c6d"
   },
   {
    "key": "(band 4) (single.b4.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "6c5ebcabfe5f422448974ff4048d0a88824926abe0d27c8cadd25d00f87604c6"
   },
   {
    "key": "(band 4) (single.b4.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "ea1464ff2f07bba00270d44f62413345e0215ccfc7caad3899938045f5d3de1b"
   },
   {
    "key": "(band 4) (single.b4.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "378dd063f1a384b36b8cede43f25ed4e6daac874052921cd729de80386ae4eab"
   },
   {
    "key": "The tax is (single.b4.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "fc6c4ef10c9432f8747a20f36a2b7f42e228195bb504ebe5c7812cf88f806a36"
   },
   {
    "key": "(band 5) (single.b5.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "5298f09272f44f62c000087ef9a0d4a2346166bfae1373d94b509d3a581ecc4b"
   },
   {
    "key": "(band 5) (single.b5.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "b122b68183163b9e5e6d5700e0386c6f45c5e118ab0292d095096ac006148a77"
   },
   {
    "key": "(band 5) (single.b5.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "6135468314dbf4c5b4c777accd9b1fbfe546a1a36dcf8cfe513db5a515c21874"
   },
   {
    "key": "The tax is (single.b5.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "224907760dc96a91b2fd287040aec65b96dea759c24735d8794f9caa850f7c52"
   },
   {
    "key": "(band 6) (single.b6.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "53f06cbec22e56bed26e0481fee08f4849aff7be2a44cad0ea84a6c0cca8d67b"
   },
   {
    "key": "(band 6) (single.b6.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "4ad37a4c394ee305aba5859aa4a03630f4e2a48946020a1654c137c926bd15aa"
   },
   {
    "key": "(band 6) (single.b6.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "1b9cd2eb658e45e8a69aeac024cc924bdd4e5ba6d7aae4b32947cd497ce56a05"
   },
   {
    "key": "The tax is (single.b6.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "08446e45a265b31d3e220ba0cbf30bbe2a97d0ab3e38817eaf4be18fac2b405b"
   },
   {
    "key": "(band 7) (single.b7.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "37ff6ddf1220654fceeb8534f946e5b2c369c8c013bd6178ecdc063cdef498a8"
   },
   {
    "key": "(band 7) (single.b7.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "1a45067408ac9bc382d9153dbe927bf54b77b403193891f514a4d0d5871fc995"
   },
   {
    "key": "(band 7) (single.b7.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "aae5602e43bd8aff1162db5d7000192c7258d6cc292cf3631727d6783de7f34e"
   },
   {
    "key": "The tax is (single.b7.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "5210fb044e9827aa7fb3ef7201e243dc84fc34ade88fc83e9b6a29c9335b55da"
   },
   {
    "key": "(band 8) (single.b8.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "3bca2358b52f08068e07e89c8b05e255be125dbfc6af71345f2c6c4953276945"
   },
   {
    "key": "(band 8) (single.b8.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "ee9b88869d1d522f8564e9b7d1bb017eb8873a703c30c731bc78aa4d6c0a0404"
   },
   {
    "key": "(band 8) (single.b8.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "714cc7df2002811c51a5e47c62288a6043509b176b507dbce0d37f0408b32e9c"
   },
   {
    "key": "The tax is (single.b8.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "fa8420baed57895f8469b459a335f48e428bd3cb43a2ac7c6594deced3a08499"
   },
   {
    "key": "(band 9) (single.b9.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "2e9972723311cc2f4794ae2dcae3c1bec719cdc010fc5359d2ffd98f7d314426"
   },
   {
    "key": "(band 9) (single.b9.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "2b222415c7d69f3da1fde132bacc689f59229909a95f3fc898fa3f7f645dd2f0"
   },
   {
    "key": "(band 9) (single.b9.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "163e8675039c3ea74f658fee7b71422f6be9f28ced8cf3bafd5c791f78e46b7e"
   },
   {
    "key": "The tax is (single.b9.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "60f5014e130a3163cf83f498de5f1d19fade680e1366b0009061aeb3856986cc"
   },
   {
    "key": "The tax is (single.result)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "44c47240ae2a626719b909f7f22c224d7ce00b955fbf0997d3fa025efe87df4e"
   },
   {
    "key": "(band 1) (mfj.b1.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "5e242f5c533e9f3850182ec28b7eec3f5b655da9cf955f5b73876e8b3915c945"
   },
   {
    "key": "(band 1) (mfj.b1.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "f0d3fde1bd1307524791e535a3e94e8715f3602744cd2c26173c7a7b3669a0cb"
   },
   {
    "key": "(band 1) (mfj.b1.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "e276fb4b869512cfa7ede613a813489f41c7c11191dbe0281ffca45f07e84e55"
   },
   {
    "key": "The tax is (mfj.b1.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "5019da6c28f76183ac433eb2744cc853f8f063711d5103daeb323b5e2f468998"
   },
   {
    "key": "(band 2) (mfj.b2.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "24ecb9e7777b2e4523d8a04a9ba4ae6dddb6c5f3e7ae4d54ae5d36b8288a5016"
   },
   {
    "key": "(band 2) (mfj.b2.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "cd1e0618ffe0e78416ddf7a309696c37c024ce74359482fac574ff992e8e3653"
   },
   {
    "key": "(band 2) (mfj.b2.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "3342f787bddbad4def886dca426dd578f083cf3b2674fce9888317578e7906a3"
   },
   {
    "key": "The tax is (mfj.b2.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "eed24a0f092a1315a75252b72aae8516d694787d71cf0728d8637034676d6816"
   },
   {
    "key": "(band 3) (mfj.b3.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "d2b1e4b9d29c5b6a70f40bcfec5314b5612e27e0afb4ea50838207df6eae1cdf"
   },
   {
    "key": "(band 3) (mfj.b3.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "60fc63b78649a69ed0587e1ad49bcc27e26a7e3dfc2a392937bc2cff9b92a908"
   },
   {
    "key": "(band 3) (mfj.b3.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "f6d5837addc4e58d1a0fae50746920c26814bb996624c7da6996c8502f2c1a84"
   },
   {
    "key": "The tax is (mfj.b3.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "11de90f03242e6c28c505d7f3f082dce5313f8f7fba423cf01c8859bda445b89"
   },
   {
    "key": "(band 4) (mfj.b4.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "4ab61c11ace686267ba937bdbb126dbef9efc49b4939c37de8bc8471207e50a1"
   },
   {
    "key": "(band 4) (mfj.b4.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "ea1464ff2f07bba00270d44f62413345e0215ccfc7caad3899938045f5d3de1b"
   },
   {
    "key": "(band 4) (mfj.b4.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "2734c2e901446ea917f14a2c8e8fdf34613e6681d331fadff4c45a0c3b6f2bd7"
   },
   {
    "key": "The tax is (mfj.b4.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "6082a94d3e1ce30a8ab154cf4437d881f8d99358bc747d3503ae54fb7ed31a27"
   },
   {
    "key": "(band 5) (mfj.b5.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "946a6ef8b15548496322bd0dd78cafb9c111e897c193ebabadde943a527a0058"
   },
   {
    "key": "(band 5) (mfj.b5.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "b122b68183163b9e5e6d5700e0386c6f45c5e118ab0292d095096ac006148a77"
   },
   {
    "key": "(band 5) (mfj.b5.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "c0d8064cafd785990773a250c6872ce6e43c7fda4061ab1ff85efece8a9d0f7b"
   },
   {
    "key": "The tax is (mfj.b5.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "c4e8370aa6e6c66bfa64ef4d440ac996d0929133c6d733fadce0f538444f1f8e"
   },
   {
    "key": "(band 6) (mfj.b6.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "3d2536597b11a53ed62ec3830f383ac0e8036207d9bb18f37f049353f3cbea67"
   },
   {
    "key": "(band 6) (mfj.b6.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "4ad37a4c394ee305aba5859aa4a03630f4e2a48946020a1654c137c926bd15aa"
   },
   {
    "key": "(band 6) (mfj.b6.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "5840f1bf98cc8db974def8eef1d447f9f45fc46716b0520af4dfc766365d9de3"
   },
   {
    "key": "The tax is (mfj.b6.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "9610b519a06da36deb0f977138506845d3c220d2f9abde4f0a7d90a986851ab0"
   },
   {
    "key": "(band 7) (mfj.b7.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "54a29d57dc089d0a70de36f6b6ba0fd53f60cabfdaef83e583feb2b5fc976cca"
   },
   {
    "key": "(band 7) (mfj.b7.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "1a45067408ac9bc382d9153dbe927bf54b77b403193891f514a4d0d5871fc995"
   },
   {
    "key": "(band 7) (mfj.b7.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "8624f81bebc6af9b8b7d05f8d3cb4a2c9751383f179ddf405ce537b0ef38383e"
   },
   {
    "key": "The tax is (mfj.b7.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "c5dc9fa4e9bcc927b5576d627732a44d6963725b1056eed8213e65064db38577"
   },
   {
    "key": "(band 8) (mfj.b8.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "362fb2b32c5c58dc3e5688de669b9d6a8bc1adad227a8bbac1d9f0b10d95e7c6"
   },
   {
    "key": "(band 8) (mfj.b8.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "ee9b88869d1d522f8564e9b7d1bb017eb8873a703c30c731bc78aa4d6c0a0404"
   },
   {
    "key": "(band 8) (mfj.b8.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "1b4351476e45f24d350a878b8f6d7555ce8e5968b9a930fcaf256588a9949041"
   },
   {
    "key": "The tax is (mfj.b8.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "90040772eec76dab4cdde24d8b2040b2d7b78cbb1519b11e63ccb0f6833002a1"
   },
   {
    "key": "(band 9) (mfj.b9.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "be5919b66308d1011195de7a3ba4ca66a5f982b46222015a9c6e4d81dcc90a95"
   },
   {
    "key": "(band 9) (mfj.b9.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "2b222415c7d69f3da1fde132bacc689f59229909a95f3fc898fa3f7f645dd2f0"
   },
   {
    "key": "(band 9) (mfj.b9.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "702c91795ccbd50cdfcf2eab554feb835f1d5b5a14b7300dc1deff891173611d"
   },
   {
    "key": "The tax is (mfj.b9.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "5233865430cbea66bdbfc0bf63dad4441cee9c6333f049c062f71299d6bd8171"
   },
   {
    "key": "The tax is (mfj.result)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "44c47240ae2a626719b909f7f22c224d7ce00b955fbf0997d3fa025efe87df4e"
   },
   {
    "key": "(band 1) (hoh.b1.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "85a9e3dd558011f07891490eb8f9fa7bb48cd2274b7b822a719c5d65954a7b37"
   },
   {
    "key": "(band 1) (hoh.b1.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "f0d3fde1bd1307524791e535a3e94e8715f3602744cd2c26173c7a7b3669a0cb"
   },
   {
    "key": "(band 1) (hoh.b1.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "22493559b216afbcee5e3aa91530bc9e3e77b340b0ff56277466eb0909fe90d2"
   },
   {
    "key": "The tax is (hoh.b1.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "fdc8253a9060ab85eb0fd157d196516a553a405636bb5f9f01820925ddb42006"
   },
   {
    "key": "(band 2) (hoh.b2.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "ddaf480deef23f6898ccf8ae06dda1df00f2e9b84a3566ff56cb7b40cbdd738b"
   },
   {
    "key": "(band 2) (hoh.b2.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "cd1e0618ffe0e78416ddf7a309696c37c024ce74359482fac574ff992e8e3653"
   },
   {
    "key": "(band 2) (hoh.b2.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "ec908969d4a1e8c80ebaa76017bf18477eb92b218bd7748a2d81698fde735f8d"
   },
   {
    "key": "The tax is (hoh.b2.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "d312f1817ccd31d37f67e08e8d369d949ba965a3a463bf742fb8d89c42a28277"
   },
   {
    "key": "(band 3) (hoh.b3.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "dc31f2589d7f261cf8e6431fdcb3c1e497435dd9e3bf111b74ad88ca4de2896e"
   },
   {
    "key": "(band 3) (hoh.b3.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "60fc63b78649a69ed0587e1ad49bcc27e26a7e3dfc2a392937bc2cff9b92a908"
   },
   {
    "key": "(band 3) (hoh.b3.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "a291e336b26f66760a8540a7ecc4c17b2cbf9ee149438aced28ca410bef226c2"
   },
   {
    "key": "The tax is (hoh.b3.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "8759f8bd50e594589da8cd1e43f832c01f117eab8480edc607359f8919c66d86"
   },
   {
    "key": "(band 4) (hoh.b4.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "18e7063e08170fe67c01d8781181fb13e95d430dc94b1b8606630634a465af5d"
   },
   {
    "key": "(band 4) (hoh.b4.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "ea1464ff2f07bba00270d44f62413345e0215ccfc7caad3899938045f5d3de1b"
   },
   {
    "key": "(band 4) (hoh.b4.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "e421f31c7fb4a77ded3ee2b473e56982d74f42af78ba73bede0ad9161e283b49"
   },
   {
    "key": "The tax is (hoh.b4.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "f22b917583061f0c9b866451e674f1ee74abdc74ff84f2a183d1b2176ebef977"
   },
   {
    "key": "(band 5) (hoh.b5.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "f5c2cbdc329d5281dd53487ca9ff87d49b92295769584df0263455f23c793dcc"
   },
   {
    "key": "(band 5) (hoh.b5.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "b122b68183163b9e5e6d5700e0386c6f45c5e118ab0292d095096ac006148a77"
   },
   {
    "key": "(band 5) (hoh.b5.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "5f940bccd80cc0ace39e83069a6388431d58ce27df34fc18d91ee7a6fea4e726"
   },
   {
    "key": "The tax is (hoh.b5.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "dded15294f4b10942fcee81964be2ade29f5af63886ace2d0c7e013148a13ce8"
   },
   {
    "key": "(band 6) (hoh.b6.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "9570238fcbbc4d2eb8603d1c248bccc21542e3d8b138b4bc933685ab555bc95a"
   },
   {
    "key": "(band 6) (hoh.b6.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "4ad37a4c394ee305aba5859aa4a03630f4e2a48946020a1654c137c926bd15aa"
   },
   {
    "key": "(band 6) (hoh.b6.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "be50fa50ae2d47de1b85a124d6d89266d15920cb482ecc7101eb2c176f9b153c"
   },
   {
    "key": "The tax is (hoh.b6.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "b8ed19cf7cec5107599c0e1a8b6ed9954f4d96f40bd5300df68e8210a6cd5ecd"
   },
   {
    "key": "(band 7) (hoh.b7.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "ed58f06f119cd87a98dfb6474b2f0f715e8ce9d0811d273564bf04bfedff652c"
   },
   {
    "key": "(band 7) (hoh.b7.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "1a45067408ac9bc382d9153dbe927bf54b77b403193891f514a4d0d5871fc995"
   },
   {
    "key": "(band 7) (hoh.b7.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "469f89d8be895b3ebcc3730ef8c26af76b9f7555f45cc3d6c168de1bb7843140"
   },
   {
    "key": "The tax is (hoh.b7.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "2db68e4694089258ba44b66253ba55ddcc47c7d36b8c98164076678269703233"
   },
   {
    "key": "(band 8) (hoh.b8.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "f7cfdb6155586492dbb7461397f004047a2472288087ddf58ea7121f6be7cbb8"
   },
   {
    "key": "(band 8) (hoh.b8.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "ee9b88869d1d522f8564e9b7d1bb017eb8873a703c30c731bc78aa4d6c0a0404"
   },
   {
    "key": "(band 8) (hoh.b8.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "51705b8b7b1a270d9b5ac7ece9e5fa3635241c116c15f2cc683dd0b0d7e1d857"
   },
   {
    "key": "The tax is (hoh.b8.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "18488490fc57160fabb3831f97e90c1683803b90c4a23678480462e611dc252d"
   },
   {
    "key": "(band 9) (hoh.b9.excess)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "d2b248c391a4bed232b5ca8c96d72726a49a74a117edef51c1873b07cc921919"
   },
   {
    "key": "(band 9) (hoh.b9.product)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule. (carried over from reviews/ny/2025/render/ny_rs.index.json at 26f283ec, review of 2026-11-04)",
    "subject_key": "2b222415c7d69f3da1fde132bacc689f59229909a95f3fc898fa3f7f645dd2f0"
   },
   {
    "key": "(band 9) (hoh.b9.base)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "2adbb50d17aa24ec093fbd50c10480ca48314d1f9cdd21fa10bd6d0121e33927"
   },
   {
    "key": "The tax is (hoh.b9.tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "a268720db90c833b36814827c3632c182ad974d6a1f6e8292d295863790fc50b"
   },
   {
    "key": "The tax is (hoh.result)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "44c47240ae2a626719b909f7f22c224d7ce00b955fbf0997d3fa025efe87df4e"
   },
   {
    "key": "The tax is (tax)",
-   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "record": "3cc17da664f97f8b793ebcd794cfcb3b686995adec7b4d476e0b21b3426f4502",
    "status": "MATCH",
    "subject_key": "a5f2c5b7c373b0af2194b2201b665810c682674ede22c15dcb47d1cb836ed705"
   }

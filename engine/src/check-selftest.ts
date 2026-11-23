@@ -1,14 +1,19 @@
 // Self-test of the check rules that have no failing case in the shipped data: each rule must
 // flag a constructed violation and pass the corresponding clean case.
 import assert from "node:assert/strict";
-import { checkExpressionTypes, registerLinkProblems, tableBandMonoProblems } from "./check.js";
+import { checkExpressionTypes, lineIdProblems, registerLinkProblems, tableBandMonoProblems } from "./check.js";
+import { carryoverProblems } from "./carryover.js";
+import type { CarryoverMap } from "./carryover.js";
 import { entrySyntax } from "./interview.js";
 import { gateProblems } from "./gates.js";
 import { dropNyConflicts } from "./build.js";
 import { evaluate } from "./eval.js";
 import type { CanonicalData, Line, RegisterEntry, TableDoc } from "./types.js";
 import { flatText, indentRest, parseStructured, textSummary } from "./text.js";
-import { DEFAULTS_ALONE, consistencyProblems, defaultsProblems, resolveInputs, tableOf } from "./fixture-inputs.js";
+import { DEFAULTS_ALONE, consistencyProblems, defaultsProblems, loadFixtureCases, notEvaluatedCases, resolveInputs, tableOf } from "./fixture-inputs.js";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import type { CheckedCase, DefaultEntry, DefaultsFile, Rule, Test } from "./fixture-inputs.js";
 
 function table(bands: { at_least: number; less_than: number; tax: number[] }[]): TableDoc {
@@ -102,6 +107,92 @@ export function valueText(v: { kind: string; [k: string]: unknown }): string {
   if (v.kind === "unknown") return "unknown";
   if (v.kind === "money") return `money:${String(v["cents"])}`;
   return `${v.kind}:${String(v["value"])}`;
+}
+
+/** A document `k` for the evaluations the evaluator forgets. `k.amount` (an input) carries an explicit consistency
+ * check (`when_known`) on `k.check`, which reads `k.x`; `k.sel` takes `k.amount` when `k.flag` is true and `k.zero`
+ * when it is false; `k.later` reads `k.check` itself, after `k.sel`. `k.prod` is `k.big` times the count `k.n`. */
+function forgetData(): CanonicalData {
+  const l = (id: string, type: string, expr: unknown, extra: object = {}) => ({ id, printed: "1", label: id, type, expr, cite: null, ...extra });
+  const eq = (ref: string, v: unknown) => ({ op: "test", eq: [ref, { const: v }] });
+  const lines = [
+    l("k.flag", "Bool", { op: "input", source: "Flag?" }),
+    l("k.x", "NonNegDollars", { op: "input", source: "X?" }),
+    l("k.check", "Bool", eq("k.x", 0)),
+    l("k.amount", "NonNegDollars", { op: "input", source: "Amount?" }, { refuses: [{ when: "k.check", when_known: true, form: "Checked", remedy: "x", cite: null }] }),
+    l("k.zero", "NonNegDollars", { op: "param", ref: "z" }),
+    l("k.sel", "NonNegDollars", { op: "choose", alternatives: [{ guard: eq("k.flag", true), then: "k.amount" }, { guard: eq("k.flag", false), then: "k.zero" }] }),
+    l("k.later", "Bool", { op: "copy", from: "k.check" }),
+    l("k.big", "NonNegDollars", { op: "input", source: "Big?" }),
+    l("k.n", "Count", { op: "input", source: "N?" }),
+    l("k.prod", "NonNegDollars", { op: "multiply_count", amount: "k.big", count: "k.n" }),
+  ];
+  return { forms: [{ id: "k", kind: "form", tax_year: 2025, title: "k", lines }], defs: [], tables: [],
+    params: { tax_year: 2025, enums: {}, values: { z: { type: "NonNegDollars", value: 0, cite: null } } },
+    register: { tax_year: 2025, entries: [] } } as unknown as CanonicalData;
+}
+
+/** The evaluations the evaluator forgets, and its exact products. An unanswered consistency check leaves no line it
+ * read among the derivations, nor does a choose whose guard is unanswered, the check's lines included; a line read
+ * again afterwards is evaluated again; and the derivations do not depend on the order of the targets. A product
+ * beyond the exact range of a JSON number is an error, not a rounded amount. Returns the number of cases. */
+function forgetSelfTest(): number {
+  const data = forgetData();
+  const keys = (inputs: Record<string, unknown>, targets: string[]) => [...evaluate(data, inputs as never, targets).derivations.keys()].sort();
+  const cases: [Record<string, unknown>, string[], string[]][] = [
+    [{}, ["k.sel"], ["k.flag", "k.sel"]],
+    [{ "k.flag": true }, ["k.sel"], ["k.amount", "k.flag", "k.sel"]],
+    [{ "k.flag": true, "k.amount": 5 }, ["k.sel", "k.later"], ["k.amount", "k.check", "k.flag", "k.later", "k.sel", "k.x"]],
+    [{}, ["k.sel", "k.later"], ["k.check", "k.flag", "k.later", "k.sel", "k.x"]],
+  ];
+  for (const [inputs, targets, want] of cases) {
+    assert.deepEqual(keys(inputs, targets), want, `derivations of ${targets.join(", ")} on ${JSON.stringify(inputs)}`);
+    assert.deepEqual(keys(inputs, [...targets].reverse()), want, `derivations of ${[...targets].reverse().join(", ")} on ${JSON.stringify(inputs)}`);
+  }
+  const refused = evaluate(data, { "k.flag": true, "k.x": 0, "k.amount": 5 } as never, ["k.sel"]).values.get("k.sel")!;
+  assert.equal(valueText(refused as never), "refusal:k.check");
+  const big = 2 ** 52 + 1;
+  assert.equal(valueText(evaluate(data, { "k.big": big, "k.n": 1 } as never, ["k.prod"]).values.get("k.prod")! as never), `money:${big}`);
+  assert.throws(() => evaluate(data, { "k.big": big, "k.n": 3 } as never, ["k.prod"]), /exceeds exact JSON number range/);
+  return 2 * cases.length + 3;
+}
+
+/** Line ids that name another printed number, and the carryover map's checks, on a small document set: a form `y`
+ * (top level), a collection `p` and a collection `q` within each entry of `p`. Returns the number of cases. */
+function idsAndCarryoverSelfTest(): number {
+  const l = (id: string, printed: string, type: string, op = "input") => ({ id, printed, label: id, type, expr: op === "input" ? { op, source: "x" } : { op: "param", ref: "z" }, cite: null });
+  const docs = [
+    { id: "y", kind: "form", tax_year: 2025, title: "y", lines: [l("y.line13a", "13a", "NonNegDollars", "param"), l("y.line19a", "19a(g)", "Dollars", "param"),
+      l("y.line1a", "1(a)", "Dollars", "param"), l("y.line9w", "9", "NonNegDollars", "param"), l("y.line4", "(helper)", "NonNegDollars", "param"),
+      l("y.prior", "(helper)", "NonNegDollars"), l("y.signed_prior", "(helper)", "Dollars"), l("y.any", "(helper)", "Bool")] },
+    { id: "p", kind: "form", tax_year: 2025, title: "p", collection: { cite: null }, lines: [l("p.line2", "2", "NonNegDollars", "param"), l("p.prior", "(helper)", "NonNegDollars")] },
+    { id: "q", kind: "form", tax_year: 2025, title: "q", collection: { parent: "p", cite: null }, lines: [l("q.line3", "3", "NonNegDollars", "param"), l("q.prior", "(helper)", "NonNegDollars")] },
+  ];
+  const data = { forms: docs, defs: [], tables: [], params: { tax_year: 2025, enums: {}, values: {} }, register: { tax_year: 2025, entries: [] } } as unknown as CanonicalData;
+  assert.deepEqual(lineIdProblems(data), []);
+  const drifted = { ...data, forms: [{ ...docs[0]!, lines: [l("y.line13b", "13a", "NonNegDollars", "param"), l("y.line1", "10", "NonNegDollars", "param")] }] } as unknown as CanonicalData;
+  const drift = lineIdProblems(drifted).join("\n");
+  assert.match(drift, /y\.line13b: the id names line 13b, but the line is printed 13a/);
+  assert.match(drift, /y\.line1: the id names line 1, but the line is printed 10/);
+  const map = (carryovers: unknown[], tax_year = 2025) => ({ tax_year, carryovers }) as CarryoverMap;
+  const problems = (m: CarryoverMap) => carryoverProblems(data, m, 2025, "c").join("\n");
+  assert.equal(problems(map([{ from: "y.line13a", to: "y.prior", how: "copy" }, { from: "y.line19a", to: "y.prior", how: "negate" },
+    { from: "y.line13a", to: "y.any", how: "nonzero" }, { from: "y.line13a", to: "y.signed_prior", how: "copy" },
+    { from: "p.line2", to: "p.prior", how: "copy" }, { from: "q.line3", to: "p.prior", how: "copy" }, { from: "q.line3", to: "q.prior", how: "copy" }])), "");
+  const bad: [unknown, RegExp][] = [
+    [{ from: "y.nowhere", to: "y.prior", how: "copy" }, /from names no line/],
+    [{ from: "y.line13a", to: "y.line4", how: "copy" }, /to is not an input/],
+    [{ from: "y.line19a", to: "y.prior", how: "copy" }, /copy does not turn a Dollars into a NonNegDollars answer/],
+    [{ from: "y.line13a", to: "y.prior", how: "negate" }, /negate does not turn a NonNegDollars/],
+    [{ from: "y.line13a", to: "y.prior", how: "double" }, /how must be copy, negate or nonzero/],
+    [{ from: "p.line2", to: "y.prior", how: "copy" }, /from is a line of each entry of p, and to is one answer for the return/],
+    [{ from: "y.line13a", to: "p.prior", how: "copy" }, /to is in collection p, which does not enclose y/],
+    [{ from: "p.line2", to: "q.prior", how: "copy" }, /to is in collection q, which does not enclose p/],
+  ];
+  for (const [entry, re] of bad) assert.match(problems(map([entry])), re, JSON.stringify(entry));
+  assert.match(problems(map([{ from: "y.line13a", to: "y.prior", how: "copy" }, { from: "y.line13a", to: "y.prior", how: "copy" }])), /given twice/);
+  assert.match(problems(map([], 2024)), /tax_year 2024, but the build is for 2025/);
+  return 3 + 1 + bad.length + 2;
 }
 
 /** The fixtures' test-data defaults (fixture-inputs.ts) on a small document set: a form `h`, a collection `p` and a
@@ -213,6 +304,25 @@ function defaultsSelfTest(): number {
   return n;
 }
 
+/** A case the year carry marked "not evaluated in <year>" is left out of the evaluated fixtures and listed apart,
+ * though it states an input the year does not declare; an unmarked case is loaded as before. */
+function markedCasesSelfTest(): number {
+  const forms = [{ id: "h", kind: "form", tax_year: 2026, title: "h", lines: [{ id: "h.amount", printed: "1", label: "h", type: "NonNegDollars", expr: { op: "input", source: "h?" }, cite: null }] }];
+  const data = { forms, defs: [], tables: [], params: { tax_year: 2026, enums: {}, values: {} }, register: { tax_year: 2026, entries: [] } } as unknown as CanonicalData;
+  const dir = mkdtempSync(join(tmpdir(), "marked-"));
+  try {
+    writeFileSync(join(dir, "classm_t.json"), JSON.stringify({ tax_year: 2026, cases: [
+      { id: "kept", covers: ["h"], evidence: "re-recorded for 2026 (engine)", inputs: { "h.amount": 5 } },
+      { id: "marked", covers: ["h"], evidence: "not evaluated in 2026", inputs: { "h.amount": 5, "gone.any": false } },
+      { id: "worded", covers: ["h"], evidence: "R; not evaluated in 2026 was once its note", inputs: { "h.amount": 1 } }] }));
+    assert.deepEqual(loadFixtureCases("federal", data, dir).map((c) => c.id), ["kept", "worded"]);
+    assert.deepEqual(notEvaluatedCases("federal", dir), [{ id: "marked", file: "classm_t.json" }]);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+  return 2;
+}
+
 export function runCheckSelfTest(): void {
   // tableBand_mono's condition
   assert.deepEqual(tableBandMonoProblems(table([{ at_least: 0, less_than: 5, tax: [0, 0] }, { at_least: 5, less_than: 9, tax: [1, 0] }, { at_least: 9, less_than: 12, tax: [1, 2] }])), []);
@@ -301,6 +411,8 @@ export function runCheckSelfTest(): void {
   assert.deepEqual(typedAsked({ "c.flag": false, "c.kind": "b" }), []);
   assert.deepEqual(typedAsked({ "c.flag": true, "c.kind": "a" }), ["c.pick", "c.yes"]);
   const typedCount = 1 + chooseCases.length + TYPED_CHOOSE_CASES.length + 4 + 3;
+  const forgetCount = forgetSelfTest();
+  const idsCount = idsAndCarryoverSelfTest();
   // Structured text (text.ts): the subset parses to its blocks; everything else is a named problem; plain text is untouched.
   const good = "Any of these?\n\nWork:\n- wages (Form W-2)\n- tips, for example:\n  - cash tips\n\nA closing note, with a colon:\n\n- a list after a blank line";
   const parsed = parseStructured(good);
@@ -343,6 +455,7 @@ export function runCheckSelfTest(): void {
   assert.deepEqual(Object.keys(conflicts), ["w2.g_bad", "ny_it201.gate.x"]);
   assert.deepEqual(dropNyConflicts(conflicts, false), ["ny_it201.gate.x"]);
   assert.deepEqual(conflicts, { "w2.g_bad": "a" });
+  console.log(`fixtures self-test: ${markedCasesSelfTest()} cases passed (a case marked not evaluated by the year carry is left out and listed)`);
   console.log(`defaults self-test: ${defaultsSelfTest()} cases passed (conditional withholding, condition and rule validation, consistency violations)`);
-  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + typedCount + 10 + bad.length + 2} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, Bool and enum choose, structured text, New York conflict checks without New York definitions)`);
+  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + typedCount + forgetCount + idsCount + 10 + bad.length + 2} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, Bool and enum choose, forgotten evaluations and exact products, line ids and the carryover map, structured text, New York conflict checks without New York definitions)`);
 }

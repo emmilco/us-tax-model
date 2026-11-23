@@ -19,22 +19,22 @@
 
 ## (helper) — `qbi.prior_form`
 
-- **Authored helper label:** Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?
-- **Encoded (Bool):** Input — Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?
-- Expr: `{"op":"input","source":"Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?"}`
+- **Authored helper label:** Did your (or, on a joint return, your spouse's) 2024 return, or any earlier one, include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?
+- **Encoded (Bool):** Input — Did your (or, on a joint return, your spouse's) 2024 return, or any earlier one, include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?
+- Expr: `{"op":"input","source":"Did your (or, on a joint return, your spouse's) 2024 return, or any earlier one, include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?"}`
 - Cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
 
 ## (helper) — `qbi.reit_loss`
 
-- **Authored helper label:** Does your (or, on a joint return, your spouse's) 2024 Form 8995 or Form 8995-A show a qualified REIT dividends and PTP (loss) carryforward (2024 Form 8995, line 17, or the corresponding line of Form 8995-A)?
-- **Encoded (Bool):** Input — Does your (or, on a joint return, your spouse's) 2024 Form 8995 or Form 8995-A show a qualified REIT dividends and PTP (loss) carryforward (2024 Form 8995, line 17, or the corresponding line of Form 8995-A)?
-- Expr: `{"op":"input","source":"Does your (or, on a joint return, your spouse's) 2024 Form 8995 or Form 8995-A show a qualified REIT dividends and PTP (loss) carryforward (2024 Form 8995, line 17, or the corresponding line of Form 8995-A)?"}`
+- **Authored helper label:** Does the latest of your (or, on a joint return, your spouse's) Forms 8995 or 8995-A, from 2024 or earlier, show a qualified REIT dividends and PTP (loss) carryforward (Form 8995, line 17, or the corresponding line of Form 8995-A)?
+- **Encoded (Bool):** Input — Does the latest of your (or, on a joint return, your spouse's) Forms 8995 or 8995-A, from 2024 or earlier, show a qualified REIT dividends and PTP (loss) carryforward (Form 8995, line 17, or the corresponding line of Form 8995-A)?
+- Expr: `{"op":"input","source":"Does the latest of your (or, on a joint return, your spouse's) Forms 8995 or 8995-A, from 2024 or earlier, show a qualified REIT dividends and PTP (loss) carryforward (Form 8995, line 17, or the corresponding line of Form 8995-A)?"}`
 - Cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
 
 ## (gate) — `qbi.reit_loss_if_prior_form`
 
-- **Authored helper label:** Whether the 2024 Form 8995 or 8995-A carries forward a REIT or PTP loss, asked only when the 2024 return includes that form (false without it)
-- **Encoded (Bool):** Choose — [helper "Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?" = true → helper "Does your (or, on a joint return, your spouse's) 2024 Form 8995 or Form 8995-A show a qualified REIT dividends and PTP (loss) carryforward (2024 Form 8995, line 17, or the corresponding line of Form 8995-A)?"] [helper "Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?" = false → helper "Year parameter s3.no (false)"]
+- **Authored helper label:** Whether the latest Form 8995 or 8995-A, from 2024 or earlier, carries forward a REIT or PTP loss, asked only when a return of 2024 or earlier includes that form (false without it)
+- **Encoded (Bool):** Choose — [helper "Did your (or, on a joint return, your spouse's) 2024 return, or any earlier one, include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?" = true → helper "Does the latest of your (or, on a joint return, your spouse's) Forms 8995 or 8995-A, from 2024 or earlier, show a qualified REIT dividends and PTP (loss) carryforward (Form 8995, line 17, or the corresponding line of Form 8995-A)?"] [helper "Did your (or, on a joint return, your spouse's) 2024 return, or any earlier one, include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?" = false → helper "Year parameter s3.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["qbi.prior_form",{"const":true}],"op":"test"},"then":"qbi.reit_loss"},{"guard":{"eq":["qbi.prior_form",{"const":false}],"op":"test"},"then":"qbi.no"}],"op":"choose"}`
 - Cite: [i8995] p. 4, Line 7, "Include here the qualified portion of PTP (loss) carryforward allowed in calculating taxable income in the current year" (2025; printed date 2026-01-26; sha256 875843ba)
 
@@ -62,7 +62,7 @@
 ## (helper) — `qbi.unsupported`
 
 - **Authored helper label:** Any of these: a prior-year REIT or PTP loss carryforward; losses or deductions suspended in an earlier year by another provision and allowed this year; being a patron of any agricultural or horticultural cooperative, specified or not. Qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses is refused by the scope questions on Schedule E, Schedule K-1 and Schedule F income
-- **Encoded (Bool):** (helper "Whether the 2024 Form 8995 or 8995-A carries forward a REIT or PTP loss, asked only when the 2024 return includes that form (false without it)" = true or helper "Whether losses or deductions suspended in an earlier year are allowed this year, asked only when the return has a Schedule C (false without one)" = true or helper "Are you (or, on a joint return, your spouse) a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?" = true)
+- **Encoded (Bool):** (helper "Whether the latest Form 8995 or 8995-A, from 2024 or earlier, carries forward a REIT or PTP loss, asked only when a return of 2024 or earlier includes that form (false without it)" = true or helper "Whether losses or deductions suspended in an earlier year are allowed this year, asked only when the return has a Schedule C (false without one)" = true or helper "Are you (or, on a joint return, your spouse) a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?" = true)
 - Interpretation: amb.2025.qbi_cooperative_patron
 - Expr: `{"any":[{"eq":["qbi.reit_loss_if_prior_form",{"const":true}],"op":"test"},{"eq":["qbi.suspended_if_business",{"const":true}],"op":"test"},{"eq":["qbi.coop_patron",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i8995] p. 4, Line 7, "Include here the qualified portion of PTP (loss) carryforward allowed in calculating taxable income in the current year"; p. 3, Determining Your Qualified Business Income, "When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income"; p. 1, Who Can Take the Deduction, "You aren’t a patron in a specified agricultural or horticultural cooperative"; p. 3, Determining Your Qualified Business Income, "If you received qualified payments reported to you on Form 1099-PATR from a specified agricultural or horticultural cooperative, you must reduce your QBI by the patron reduction and use Form 8995-A" (2025; printed date 2026-01-26; sha256 875843ba)
@@ -85,21 +85,21 @@
 ## 3 — `qbi.carryforward`
 
 - **IRS:** Qualified business net (loss) carryforward from the prior year (as a positive amount)
-- **Encoded (NonNegDollars):** Input — The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your 2024 Form 8995-A), entered as a positive amount (zero if none)
-- Expr: `{"op":"input","source":"The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your 2024 Form 8995-A), entered as a positive amount (zero if none)"}`
+- **Encoded (NonNegDollars):** Input — The qualified business loss carryforward from line 16 of your latest Form 8995 from 2024 or earlier (or the corresponding line of that Form 8995-A), entered as a positive amount (zero if none)
+- Expr: `{"op":"input","source":"The qualified business loss carryforward from line 16 of your latest Form 8995 from 2024 or earlier (or the corresponding line of that Form 8995-A), entered as a positive amount (zero if none)"}`
 - Cite: [i8995] p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year"; p. 5, Line 16, "This is the amount to be carried forward to the next year" (owner: the printed amount) (2025; printed date 2026-01-26; sha256 875843ba)
 
 ## (gate) — `qbi.carryforward_if_prior_form`
 
-- **Authored helper label:** The qualified business loss carryforward, asked only when the 2024 return includes Form 8995 or 8995-A (zero without it)
-- **Encoded (NonNegDollars):** Choose — [helper "Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?" = true → line 3] [helper "Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?" = false → helper "Year parameter sales.zero"]
+- **Authored helper label:** The qualified business loss carryforward, asked only when a return of 2024 or earlier includes Form 8995 or 8995-A (zero without it)
+- **Encoded (NonNegDollars):** Choose — [helper "Did your (or, on a joint return, your spouse's) 2024 return, or any earlier one, include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?" = true → line 3] [helper "Did your (or, on a joint return, your spouse's) 2024 return, or any earlier one, include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["qbi.prior_form",{"const":true}],"op":"test"},"then":"qbi.carryforward"},{"guard":{"eq":["qbi.prior_form",{"const":false}],"op":"test"},"then":"qbi.zero"}],"op":"choose"}`
 - Cite: [i8995] p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year"; p. 5, Line 16, "This is the amount to be carried forward to the next year" (2025; printed date 2026-01-26; sha256 875843ba)
 
 ## (gate) — `qbi.business_any`
 
 - **Authored helper label:** Business income or a carryforward with taxable income above the Form 8995 threshold
-- **Encoded (Bool):** (f8995 line 2 ≠ $0 (sales.zero) or helper "The qualified business loss carryforward, asked only when the 2024 return includes Form 8995 or 8995-A (zero without it)" > $0 (sales.zero))
+- **Encoded (Bool):** (f8995 line 2 ≠ $0 (sales.zero) or helper "The qualified business loss carryforward, asked only when a return of 2024 or earlier includes Form 8995 or 8995-A (zero without it)" > $0 (sales.zero))
 - Expr: `{"any":[{"ne":["f8995.line2",{"param":"sales.zero"}],"op":"test"},{"gt":["qbi.carryforward_if_prior_form",{"param":"sales.zero"}],"op":"test"}],"op":"test"}`
 - Cite: [i8995] p. 1, Who Can Take the Deduction (owner: Form 8995-A with business income refused) (2025; printed date 2026-01-26; sha256 875843ba)
 
@@ -120,9 +120,9 @@
 
 ## (helper) — `qbi.taxable_before`
 
-- **Authored helper label:** Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero
-- **Encoded (NonNegDollars):** Subtract helper "Form 1040 lines 12e and 13b, the deductions taken before the QBI deduction" from sa helper "Form 1040 line 11b adjusted gross income". If zero or less, enter -0-.
-- Expr: `{"from":"sa.agi","op":"subtract_floor0","take":"qbi.deductions_before"}`
+- **Authored helper label:** Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, negative when the deductions are more than adjusted gross income
+- **Encoded (Dollars):** Subtract helper "Form 1040 lines 12e and 13b, the deductions taken before the QBI deduction" from sa helper "Form 1040 line 11b adjusted gross income".
+- Expr: `{"from":"sa.agi","op":"subtract","take":"qbi.deductions_before"}`
 - Cite: [i8995-correction] Correction to 2025 Form 8995 instructions, Line 11, "Enter your taxable income figured before any QBI deduction", "Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b" (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; sha256 926735a0)
 
 ## (helper) — `qbi.net_capital_gain`
@@ -142,7 +142,7 @@
 ## (helper) — `qbi.use_8995a`
 
 - **Authored helper label:** Taxable income before QBI exceeds the Form 8995 threshold
-- **Encoded (Bool):** helper "Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero" > helper "Year parameter qbi.threshold"
+- **Encoded (Bool):** helper "Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, negative when the deductions are more than adjusted gross income" > helper "Year parameter qbi.threshold"
 - Expr: `{"gt":["qbi.taxable_before","qbi.threshold"],"op":"test"}`
 - Cite: [f8995] p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)"; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
 

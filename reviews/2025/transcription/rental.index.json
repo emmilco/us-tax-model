@@ -5,7 +5,7 @@
  "base": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
  "head_rows": {
   "agree / disagree / missing": "5 / 30 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,10 +16,10 @@
   },
   {
    "key": "rental.reported",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"do not report the rental income and do not deduct any rental expenses\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1221 of 1221 comparisons agree, 1221 of 1221 in scope; completed {}. Project stands.",
-   "subject_key": "c2c44ed06a950bf3fff87d191c2cd6daf89a8836990ac8b0c79201aa1eb45ea5"
+   "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"do not report the rental income and do not deduct any rental expenses\". The reply reads rental.personal_any as a separate operand where the project folds it into the personal-day count; executable triage .transcription/triage/2025/rental.json: 2666 of 2666 comparisons agree. Project stands.",
+   "subject_key": "85eacb1289e62acc277bc0218733e5413f868bb18cac905e03b932443bd01dd8"
   },
   {
    "key": "rental.part4",
@@ -92,101 +92,101 @@
   },
   {
    "key": "5",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; p527 p. 31, Line 2d, \"Enter the total of your rental expenses that are directly related only to the rental activity\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1215 of 1221 comparisons agree, 1215 of 1221 in scope; completed {\"project-unknown\": 1}. Project stands.",
-   "subject_key": "b7b0ff50ee787be51627b969b19a2530b01401a38863bae228c81540b2a41214"
+   "ruling": "Ruling: representation; p527 p. 31, Line 2d, advertising taken whole. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2647 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "subject_key": "230b7f3aa521a2ba6991506e9ab9c0014991828a5f4b9a4abfa755ffbbd4d51f"
   },
   {
    "key": "7",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1199 of 1221 comparisons agree, 1199 of 1221 in scope; completed {\"project-unknown\": 1}. Project stands.",
-   "subject_key": "0fcfaada6c47c17df28b699948c93899c4e744e15d6675f04e0e2a16fee6c36a"
+   "ruling": "Ruling: representation; p527 p. 25, Dividing Expenses. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2579 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "subject_key": "4bbe377659d7572cf388629c6f87d8551f0381c024a9fbfb47d82522e5621d6b"
   },
   {
    "key": "8",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; p527 p. 31, Line 2d, \"Enter the total of your rental expenses that are directly related only to the rental activity\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1215 of 1221 comparisons agree, 1215 of 1221 in scope; completed {\"project-unknown\": 1}. Project stands.",
-   "subject_key": "395a8f96357c3949685c1619e6eac6086af155109bec8d7b912fc52776a0544a"
+   "ruling": "Ruling: representation; p527 p. 31, Line 2d, commissions taken whole. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2647 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "subject_key": "b0cf0d3de0d7f8db1b35d1fe7923d8ca9893bb59144f024e15699badb552e3ff"
   },
   {
    "key": "9",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". No value differs but by the use-ratio rounding (amb.2025.rental_use_ratio_places); the other differences are refusals and unknowns on refused or incomplete returns. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1197 of 1221 comparisons agree, 1197 of 1221 in scope; completed {\"project-unknown\": 1, \"value\": 1}. Project stands.",
-   "subject_key": "7ca987a478328ae18f9195ae4a2fe72667e30b7af25eff1e0b64e19ef323241d"
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 25, Dividing Expenses, \"divide your expenses between the rental use and the personal use based on the number of days used for each purpose\"). The reply divides by the same fraction at four places; on completed returns the only value differences are that rounding (x1sche.f8.personal_use_not_home $1,428.57 vs $1,428.60); the rest are partial records the reply hides behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2578 of 2666 agree; completed: 1 value, 3 project-unknown). Project stands.",
+   "subject_key": "3698fed1f06f0ccbba5832fd9e2f67ac87bd619d56111cbfd687e6a11a13b36f"
   },
   {
    "key": "10",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". The reply enters the $800.00 expense unprorated where the project divides it (its amount $760.00) between personal and rental use (p527 p. 26, Dividing Expenses, \"Your rental expenses are 85/99 (86%)\"); the project's amount stands. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1194 of 1221 comparisons agree, 1194 of 1221 in scope; completed {\"project-unknown\": 1, \"value\": 1}. Project stands.",
-   "subject_key": "5e9e4798725de3434292929b6b66c6a9b6182d52cf9bbaf19f0a360022f35d08"
+   "ruling": "Ruling: model error; amb.2025.rental_direct_expenses (chosen: advertising and commissions taken whole, every other line divided; p527 p. 31, Worksheet 5-1 Line 2d, and p. 25, Dividing Expenses). The reply takes this line whole on a unit with personal use; the project divides it by rental days over days of use (mrental.rental.shared_costs_divided: $760.00 divided vs $800.00 whole). The rest are partial records the reply hides (executable triage .transcription/triage/2025/rental.json: 2626 of 2666 agree; completed: 1 value, 3 project-unknown). Project stands.",
+   "subject_key": "aa586a22e0a31554e6d68e9156b22b357f4b779abccd096b65318f20738806bf"
   },
   {
    "key": "11",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". The reply enters the $800.00 management fee unprorated where the project divides it (its amount $720.00) between personal and rental use (p527 p. 26, Dividing Expenses, \"Your rental expenses are 85/99 (86%)\"); the project's amount stands. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1153 of 1221 comparisons agree, 1153 of 1221 in scope; completed {\"project-unknown\": 1, \"value\": 15}. Project stands.",
-   "subject_key": "cad22012a4ceeafcd4926c78eae7eff59c6b2e36835c496e4bba040d47ec81b5"
+   "ruling": "Ruling: model error; amb.2025.rental_direct_expenses (chosen: advertising and commissions taken whole, every other line divided; p527 p. 31, Worksheet 5-1 Line 2d, and p. 25, Dividing Expenses). The reply takes this line whole on a unit with personal use; the project divides it by rental days over days of use (rj.rental.rental_only_costs_whole_with_personal_use: $720.00 divided vs $800.00 whole). The rest are partial records the reply hides (executable triage .transcription/triage/2025/rental.json: 2626 of 2666 agree; completed: 1 value, 3 project-unknown). Project stands.",
+   "subject_key": "bd9d265fe17f1549c2706a7299aec379da860a9d91100564a3e3fd9c356835c8"
   },
   {
    "key": "12",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "efd48cc92f3e8ac89c7c9bf9fe2e56e85c75f1586da8a8932994bdc92bfe3407",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". No value differs but by the use-ratio rounding (amb.2025.rental_use_ratio_places); the other differences are refusals and unknowns on refused or incomplete returns. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1202 of 1221 comparisons agree, 1202 of 1221 in scope; completed {\"project-unknown\": 1, \"value\": 1}. Project stands.",
-   "subject_key": "58ac93311612af7d90f3db54d44fd174e7e40e385ac28eaa031af5b194b20f23"
+   "ruling": "Ruling: representation; i1040se p. 7, Line 12. On completed returns the only differences are a partial record where the reply reads rental.part_home ungated (candidate-unknown) and one where the project waits on the unanswered tick rental.has_mortgage; no completed value differs (executable triage .transcription/triage/2025/rental.json: 2582 of 2666 agree). Project stands.",
+   "subject_key": "4586f5fc628cbf88aaef12aeabd603024e25fc2e9d387fc4ff619b3b9fe39c71"
   },
   {
    "key": "13",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1195 of 1221 comparisons agree, 1195 of 1221 in scope; completed {\"project-unknown\": 1}. Project stands.",
-   "subject_key": "ccf3c2a66dc6a73c717bbeeed0028d6c4ff2eaafc2f7b5a5e34f4ccf5b91e901"
+   "ruling": "Ruling: representation; p527 p. 25, Dividing Expenses. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2579 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "subject_key": "f601fe4874cfa668630554ee47dccc8f8a7f8dfb0482414701550a187db9f1f7"
   },
   {
    "key": "14",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1198 of 1221 comparisons agree, 1198 of 1221 in scope; completed {\"project-unknown\": 1}. Project stands.",
-   "subject_key": "a85cca3bcc31a37d081ca1ca68570bbe47dbbd79c2b3ab1530551050d6f01955"
+   "ruling": "Ruling: representation; p527 p. 25, Dividing Expenses. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2579 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "subject_key": "6b45d31a3ce6d04813effc58da7cec644af8cf3e3a38c759b70828d349aa95ba"
   },
   {
    "key": "15",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1195 of 1221 comparisons agree, 1195 of 1221 in scope; completed {\"project-unknown\": 1}. Project stands.",
-   "subject_key": "ab588857adecb55fa9cff979c961e7ab82ac2532da3f520067b2d70b6528f8d7"
+   "ruling": "Ruling: representation; p527 p. 25, Dividing Expenses. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2579 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "subject_key": "dcc2b30d1489d071bd8f487fbd855760407076abe70020d8cd16619e6319e2c1"
   },
   {
    "key": "16",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". No value differs but by the use-ratio rounding (amb.2025.rental_use_ratio_places); the other differences are refusals and unknowns on refused or incomplete returns. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1117 of 1221 comparisons agree, 1117 of 1221 in scope; completed {\"candidate-hides-shown\": 1, \"project-unknown\": 1, \"value\": 3}. Project stands.",
-   "subject_key": "d1612c132986172f34190e9aa3bf2b602874766b1af289e5a1be0dcd172120d7"
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 25, Dividing Expenses, \"divide your expenses between the rental use and the personal use based on the number of days used for each purpose\"). The reply divides by the same fraction at four places; on completed returns the only value differences are that rounding (x1sche.f8 $2,857.14 vs $2,857.20, x1sche.f16 $3,000.00 vs $2,999.96, x1sche.f17 $2,000.00 vs $2,000.02); the rest are partial records the reply hides behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2528 of 2666 agree; completed: 22 value, all the three rounding fixtures and their partials, 1 candidate-hides-shown, 3 project-unknown). Project stands.",
+   "subject_key": "0d43523a94856c2ff51cec93a15466021b8d5a1b15853c3f88c08aa6ab37ad92"
   },
   {
    "key": "17",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". No value differs but by the use-ratio rounding (amb.2025.rental_use_ratio_places); the other differences are refusals and unknowns on refused or incomplete returns. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1197 of 1221 comparisons agree, 1197 of 1221 in scope; completed {\"project-unknown\": 1, \"value\": 1}. Project stands.",
-   "subject_key": "9b8e514ad46f201bac03fd065264d85af707caf2f24235b37fab838e520bdb93"
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 25, Dividing Expenses, \"divide your expenses between the rental use and the personal use based on the number of days used for each purpose\"). The reply divides by the same fraction at four places; on completed returns the only value differences are that rounding (x1sche.f8.personal_use_not_home $2,000.00 vs $2,000.04); the rest are partial records the reply hides behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2578 of 2666 agree; completed: 1 value, 3 project-unknown). Project stands.",
+   "subject_key": "c43bef37d289bae3a42e24030ac8613ee61eb6fc575fe7053e261cac5a86db06"
   },
   {
    "key": "19",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "efd48cc92f3e8ac89c7c9bf9fe2e56e85c75f1586da8a8932994bdc92bfe3407",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040se p. 5, Line 2, \"If you rented out a dwelling unit that you also used for personal purposes\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1195 of 1221 comparisons agree, 1195 of 1221 in scope; completed {\"project-unknown\": 1}. Project stands.",
-   "subject_key": "815378c9d11255b5defc32b5af1a520e4d9d7fd86809dc767f435d3cd7aeacff"
+   "ruling": "Ruling: representation; i1040se p. 7, Line 19. The only completed differences are partial records where the reply reads rental.part_home and rental.vehicle ungated, or the project waits on the unanswered tick rental.has_other; no value differs (executable triage .transcription/triage/2025/rental.json: 2549 of 2666 agree). Project stands.",
+   "subject_key": "34c6e06133c0081cccde06bf71b6d2f8b2d13dd65121e47f7ca461b1715b9640"
   },
   {
    "key": "18",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; i1040se p. 7, Line 18, \"Depreciation is the annual deduction you must take to recover the cost or other basis of business or investment property\". amb.2025.rental_use_ratio_places: the fraction of fair-rental days over total days carried to six places; the differences are cents from that rounding, as the earlier ruling found. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1197 of 1221 comparisons agree, 1148 of 1170 in scope; completed {\"candidate-hides-shown\": 1, \"value\": 1}. Project stands.",
-   "subject_key": "71f8417683f410306426615b2fdd6ade74f649f532810a303e2beabc186c17bb"
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 25, Dividing Expenses, \"divide your expenses between the rental use and the personal use based on the number of days used for each purpose\"). The reply divides by the same fraction at four places; on completed returns the only value differences are that rounding (x1sche.f8 $7,618.29 vs $7,618.44); the rest are partial records the reply hides behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2514 of 2666 agree; completed: 1 value, 1 candidate-hides-shown (mrental.rental.excluded_home_with_costs, an excluded home whose line 18 no Schedule E line reads: line 21 is zero for an excluded property)). Project stands.",
+   "subject_key": "1e44174a08437759cf07152b8eebfec4df5232df7b04b44ddeb15fb81967cac3"
   },
   {
    "key": "20",
@@ -196,17 +196,17 @@
   },
   {
    "key": "3",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"do not report the rental income and do not deduct any rental expenses\". The candidate reads held_for_sale, not_for_profit, part_home, services directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1047 of 1221 comparisons agree, 1047 of 1126 in scope; completed {}. Project stands.",
-   "subject_key": "a22832b6df29eaca549552f1b6833cc4b383de85031b9da968cdd7f0abffbeba"
+   "ruling": "Ruling: representation; i1040se p. 5, Line 2. The reply reads the screens the project refuses on line 21 directly; executable triage .transcription/triage/2025/rental.json: 2563 of 2666 agree, no completed return differs (the differences are candidate-unknown and candidate-refuses on partial or refused records). Project stands.",
+   "subject_key": "91bc8beff2a54a62380006d6ac9e664297ec2ad98c034f4f918ff4b01be5c440"
   },
   {
    "key": "21",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "efd48cc92f3e8ac89c7c9bf9fe2e56e85c75f1586da8a8932994bdc92bfe3407",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"do not report the rental income and do not deduct any rental expenses\". No value differs but by the use-ratio rounding (amb.2025.rental_use_ratio_places); the other differences are refusals and unknowns on refused or incomplete returns. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1002 of 1221 comparisons agree, 874 of 973 in scope; completed {\"value\": 19}. Project stands.",
-   "subject_key": "c2216223e4485046e7880f233aa478e1a3ad935392068d9bd1e1f8f18506bf97"
+   "ruling": "Ruling: representation; i1040se p. 7, Line 21. The 17 completed differences are candidate-unknown: the reply reads rental.not_at_risk (or part_home) where the project asks it only of a loss (rental.not_at_risk_if_loss) or refuses earlier; no completed value differs (executable triage .transcription/triage/2025/rental.json: 2288 of 2666 agree). Project stands.",
+   "subject_key": "ce0b03620036bb60298531d26ca5d12670137abee8476c2cc488eca69e130a5f"
   },
   {
    "key": "IV/V (a)",
@@ -224,10 +224,10 @@
   },
   {
    "key": "IV/V (c)",
-   "record": "6d628091a1dc90d8d332c2f2305af11afd7a6bf1f6f1894fb51963d781437cf4",
+   "record": "efd48cc92f3e8ac89c7c9bf9fe2e56e85c75f1586da8a8932994bdc92bfe3407",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i8582 p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1212 of 1221 comparisons agree, 1211 of 1218 in scope; completed {\"project-refuses\": 1}. Project stands.",
-   "subject_key": "f66fdc4ba55ba6011c011f1eb959cb7910a05b50bceef7d4864ce52e7d38826e"
+   "ruling": "Ruling: scope; i8582 p. 10, Part IV. The one completed difference, mrental.rental.excluded_home_beside_a_loss, is a return the project refuses through its cited screens; no value differs (executable triage .transcription/triage/2025/rental.json: 2595 of 2666 agree). Project stands.",
+   "subject_key": "7731722130e6cc900549018d81c3761f56bf86ec7f38030065dad632e9cc96f9"
   },
   {
    "key": "IV/V (e)",
@@ -280,40 +280,40 @@
   },
   {
    "key": "22",
-   "record": "9d89f5a61564efd357a740d0c2ee0c977e7f9da39c63eb7b223dbefc3d95647b",
+   "record": "bc9cdcca3dd702869d2f7a357cdc00adb858ed9bbf524a0fb41e738616b4ccf8",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; the second adds a path for a dwelling used as a home whose line 21 loss is not passive, which the project refuses upstream (rental.ws51 refuses a dwelling used as a home and rented 15 days or more); otherwise both take the Form 8582 allowed loss including the prior-year unallowed loss allowed this year.",
-   "subject_key": "feece3dc80e63e5ed84ddfe5f3d2bd524652ad150fe97e82a44e1bf75f25209a"
+   "ruling": "Ruling: model error; i8582 p. 13, Part VIII, \"Use Part VIII for any activity listed in Part VII\" (BUG-0934, owner-approved 2026-11-22). The reply takes line 22 from Part VIII column (c), which is zero for a loss not listed in Part VII, so a fully allowed loss becomes 0 (classm.rental.4, mrental.f8582.part5_income_and_loss, x1sche.f13.part4_and_part5: -$6,000.00 vs $0); the project's line 22 is the loss with its prior-year unallowed loss less the Part VII unallowed loss (rental.loss_after_p7), confirmed by those hand-predicted fixtures. The rest are the use-ratio rounding (x1sche.f8) and refused or partial records. executable triage .transcription/triage/2025/rental.json: 2255 of 2666 agree. Project stands.",
+   "subject_key": "269c32b012b14fbc57b82f76e7c598dec7110625e6027408f3ea8080aa93f4fe"
   }
  ],
  "subjects": {
   "rental.one": "b9fbcf21690af74a365df08559d059c5a568143e2b24006c78050121b625b76f",
-  "rental.reported": "efed4c524a5e914e29cc7fddf6c2af8024869f4bf51f5a4617bfe263bebca97d",
+  "rental.reported": "5208fba5bbc3bf4b1b0de458f948199feb51060b1a89cefca86d7fe4ff24fd20",
   "rental.part4": "767d62f208383371b223e247021966ae8f19f32eacb16d87477e49fd2824c71d",
   "rental.dep_prior": "a73e3e95ba6633e7f5737757e904ce57de05ff1f6b90dcfcad3192f4c10ec7bf",
   "rental.dep_res25": "8c3c691e93bb972d9bb0f09a7b1337615809196a98688147f6ec6453fe961c67",
   "rental.dep_non25": "01d7dab6a1f88ae1b659088aa2dd65ed48260208bda74be9cad5869106bfc1ea",
   "rental.needs_4562": "1fda4fecb4720af69333117f4f925a4a090bbdd01b439a6a1e4de8231a0b91e1",
-  "5": "cc648050b936c7137b09f47b3409e6919ddc5f1ef5225882220de38fea055d5a",
-  "7": "b9508cb4252a4465b7a30abbf6ec1c21dd9fef6c16da45e1c6fe50334ffcc577",
-  "8": "131e6d129579a9ad457aa0abbc19eae6d7c6c1f6e06c6cd372fcc0997c0d6e63",
-  "9": "16d95a22cfe5468aaf6ea224217ae144d462862ec3b9f89b4baab2a1882d2338",
-  "10": "14dd6874af15132f58669673f97542252721336d5e04a4354eecb52c35429614",
-  "11": "625cec6801a1e07d906af7b983672df11632a8421a61244362d287929a3fe766",
-  "12": "8f66a84ed79c4a4e54c8a573cbbc8db17c053cb3a2bb72bc35d248b401ea73a9",
-  "13": "92e7d7470c090da333aa0c0fedbdfd766ebdb51592ed58fd3d28b43e7a0ab3ec",
-  "14": "4596201bc5bbfd83b5d4fa502d7f7330a6dcb6425eb7e1f4fca2ff4160b71672",
-  "15": "4e7d456c3381d0e686356d2db99805cf390937a20028557f6694ad9362b76219",
-  "16": "c0730eee34219175466cd53afe297f647e3abcfb392e81c9ec005adc8839fb21",
-  "17": "139b63ad8b7c6f7f2d8806c36e53c1f49116d70172aae48816f0efb76d4c4bb7",
-  "19": "65a749bdeb7909ca4c46eb74a43fc482fe7c4736bdcbe896d1558b52ed01aa25",
-  "18": "8a32381574ab0303ebcc7f4fe5497a94c4afed71bab6c17e5ce73765bb06cea1",
+  "5": "21bcfd04e0c63ba8dc98d230748f89a1bb7b6fb471bb3e91474ee724456b9c37",
+  "7": "cb946b4fea1f9fa7abec6229302f780059edc0b55d4a7286d1c983dd969b028f",
+  "8": "534401bdcd94dd6dafe56039aa8f4d36fc61db0ef147895df59c18fe01d23a44",
+  "9": "42ea02cde26d39afc7643ee3935efaa7d8071dfc1868657431fadbb13542a69b",
+  "10": "b1b17da688334c32e95c108a25a2400b4b704085aab2d7770970047b92295122",
+  "11": "9a03b1aa00aff786bfd91643aac8bad795f5b06490d84200fafd487a871a6918",
+  "12": "a5312166fad53148c0d9c9296ff46e067488469fd31097f4ecc176a42d4b0d49",
+  "13": "5f7b944decb308426b83983daff0762429dadd80f5185ead3a77d3eb29d1b3ba",
+  "14": "4230e249c5486d72b45b042929af999d67e947a9e7110aa9988b400ef7ead300",
+  "15": "33eaf6d9e0925246b9f2f6d101a5498bceb1f362b9e44d2467db8c2cfe9d1db0",
+  "16": "9c2525bdfae8a50804c6541c66bf750ccd7adc680ee6629068c03307893f64e9",
+  "17": "e6f465ea674e8e55b0aa9e801f1bc9c2314686853260ce93de80d27e96b8350c",
+  "19": "daf019ddd586b461055b015db083f8b0a2e6999bebf9372003495d70681070a5",
+  "18": "a1b97d4550146a8a8ee9a3d0810fe4235963edf84ec631349d0131bcd95318a2",
   "20": "9fae51be2187c26a216a5c7f25f4886f757c37c8301449080edc18634736bb2c",
-  "3": "30cebcccd80a227627c2f94415449edddc37280b9854e972e6395ee07e3c86ed",
-  "21": "db65d97d44a538c9a6b77d560775e081ef8fde5947ab0508bd12246645f3039a",
+  "3": "39e05fc3687425f5b18a46a943afebdf19f27275182e60efb4726c3d61483f93",
+  "21": "0bc614fe5aef4d91f9fccda780ff6322e9f369af7baa129acd57ab052bc81543",
   "IV/V (a)": "542aa13d5e47f6d86293679a8be6aad914b6fcf4ab076669af13636e707b5e23",
   "IV/V (b)": "0b6dfeaf22871f8b93196a29ebbb94e8ea6c5abbe4a08c2fe45f64a927f7b329",
-  "IV/V (c)": "5237dc0142e55e6b84e11aa0b8721202278712f1371e295f859f53767baece6f",
+  "IV/V (c)": "2f02da88411e864e0c10ce01fdce4f8b4072b1dc5dbe576e11468edf39b99f5f",
   "IV/V (e)": "c82a04e8328c6f6e621f068eeda3e2174a0707521b66fa40e02b24da3c0c316e",
   "VI (a)": "7ddac19649e970ace64fe26dd3f42115a9c250df90d353a77a48e7f3e51008b4",
   "VI (c)": "dec139193dfff28af8ace0c40738f3b5c0d6a658c7928e4938a59465c31c66c7",
@@ -321,7 +321,7 @@
   "VII (c)": "19ce1ac193efe6604091fe89d23df8a0bbdad91daa9031ddd2526162d8680912",
   "VIII (c)": "5ea4d10e2d3101facbde66aa224080d8e2b45f52aac0df83edd1a252c311e944",
   "VIII (b)": "1fe4a47bc248dbc9d1513a53c124a0a0544bc85c085c749bf044bd9de9ad7cec",
-  "22": "5c9ee06e39949d0b3e9b11baf5f71a0634d09f9fb1b884981825ede34b91da51"
+  "22": "02b5041327512fd30caf1450809fa9eb4a6a7fd1da81ed393c17d598c6ecd8c4"
  },
  "__rest__": "681b60bdc083dd78ae7323ddba5dff4f81f79a641a3270f0466ad5585a33a196",
  "foreign": {
@@ -338,7 +338,7 @@
   "9": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "10": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "11": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "12": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "12": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "13": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "14": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "15": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
@@ -359,6 +359,6 @@
   "VII (c)": "6a4f6627f830623a208e2d7faf93ab4f53f699a037d2bfa9835b3853ee6c1454",
   "VIII (c)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "VIII (b)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "22": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5"
+  "22": "6ecbee296dd7ba1374e6b9a7b89baf85ce2188b65537984bba677d0cf7aa3caa"
  }
 }

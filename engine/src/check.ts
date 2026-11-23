@@ -140,6 +140,7 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
     }
   }
   ctx.errors.push(...registerLinkProblems(data));
+  ctx.errors.push(...lineIdProblems(data));
   for (const id of MONOTONE_TABLES) {
     const table = data.tables.find((t) => t.id === id);
     if (!table) { ctx.errors.push(`table ${id}: spec 6.3 claims tableBand_mono for it, but there is no such table`); continue; }
@@ -1266,4 +1267,24 @@ function checkTable(ctx: Ctx, table: TableDoc): void {
       });
     }
   }
+}
+
+/** The lines whose id names a printed line number other than their own: an id `<doc>.line<N>` (N a number with at
+ * most one letter) of a printed line whose number is another, or whose letter is another when both have one (the
+ * printed `13a` named `f1040.line13b`). Parentheses in the printed number are left out (`1(a)` is `1a`, `19a(g)` is
+ * `19a`), and a helper's or gate's marker names no number. A line renumbered by a year's change is renamed to an id
+ * that names no number (tools/rename_ids.py) rather than keep one that names another. */
+export function lineIdProblems(data: CanonicalData): string[] {
+  const problems: string[] = [];
+  for (const doc of [...data.forms, ...data.defs]) {
+    for (const line of doc.lines) {
+      const id = /\.line(\d+)([a-z]?)$/.exec(line.id);
+      const printed = /^(\d+)([a-z]?)/.exec(String(line.printed).toLowerCase().replace(/[()]/g, ""));
+      if (!id || !printed || String(line.printed).startsWith("(")) continue;
+      if (id[1] !== printed[1] || (id[2] && printed[2] && id[2] !== printed[2])) {
+        problems.push(`${line.id}: the id names line ${id[1]}${id[2]}, but the line is printed ${line.printed}; give it an id that names no number (tools/rename_ids.py)`);
+      }
+    }
+  }
+  return problems;
 }

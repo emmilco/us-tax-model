@@ -65,7 +65,7 @@
    ]
   },
   "gate:s2.amt_pab_ask": {
-   "subject_sha": "05128a5224861503f4597b9b48d57ce4f84f524242a6b5c473170372fa8a751a",
+   "subject_sha": "183c65c81080ade3143be86b08651fc9b4ba0567f1c9a5adc9df4fee6053a7a5",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -73,40 +73,50 @@
       {
        "kind": "FALSE_NO",
        "pattern": "4",
-       "who": "A filer whose specified private activity bond interest is paid as exempt-interest dividends by a mutual fund or other regulated investment company and is not reported in box 9 of a Form 1099-INT.",
-       "why_no": "The gated question says to add 'box 9 of your Forms 1099-INT' and the help says 'Box 9 is a part of box 8'; the filer has no 1099-INT box 9, so answers zero or none even though the fund's exempt-interest dividend includes line 2g interest.",
+       "who": "A filer (or spouse) whose only tax-exempt income is exempt-interest dividends from a municipal bond mutual fund or ETF. The fund reports part of those dividends as specified private activity bond interest dividends on Form 1099-DIV.",
+       "why_no": "The question has them add only box 9 of Forms 1099-INT and box 11 of Form 1099-OID, and ends 'Zero if none.' They have no 1099-INT box 9 and no 1099-OID, so they truthfully enter zero. The help covers only those two forms.",
        "line": "s2.amt_pab_if_could (Form 6251 line 2g)",
-       "irs_text": "i6251 p. 3, Line 2g: 'Exempt-interest dividends paid by a mutual fund or other regulated investment company are treated as interest income' on line 2g; f6251 p. 1 line 2g: 'Interest from specified private activity bonds exempt from the regular tax'.",
+       "irs_text": "i6251 p. 3, Line 2g: 'Exempt-interest dividends paid by a mutual fund or other regulated investment company are treated as interest income'; i1099int p. 1: 'Report exempt-interest dividends from a mutual fund or other regulated investment company (RIC) on Form 1099-DIV.'",
        "severity": "high",
-       "fix": "Ask for specified private activity bond interest from all sources, expressly including mutual-fund/RIC exempt-interest dividends and not limiting the answer to Form 1099-INT box 9."
+       "fix": "Add 'plus the private activity bond part of exempt-interest dividends from mutual funds or ETFs (Form 1099-DIV, the specified private activity bond interest dividends box, which is part of the exempt-interest dividends box).' Also confirm that the gate's tax-exempt interest helper includes exempt-interest dividends, so the question is reached."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "4",
-       "who": "A partner, S corporation shareholder, or trust or estate beneficiary whose specified private activity bond interest is reported on a Schedule K-1, with no Form 1099-INT box 9.",
-       "why_no": "The question directs the filer to 'Add up box 9 of your Forms 1099-INT'; the Schedule K-1 code for specified private activity bond interest is not a 1099-INT box 9, so the filer enters zero.",
+       "who": "A filer who holds a private activity bond directly and received less than $10 of tax-exempt interest, or whose payer did not issue a Form 1099-INT. Examples are a privately placed bond or a payer that is excused from reporting.",
+       "why_no": "The question has them add up box 9 of their Forms 1099-INT. With no form, the sum is zero, and the question says 'Zero if none.' The instructions say a payer 'should' send a form, but the amount counts whether or not a form arrives.",
        "line": "s2.amt_pab_if_could (Form 6251 line 2g)",
-       "irs_text": "i6251 p. 3, Line 2g: 'Enter on line 2g interest income from “specified private activity bonds”'; f6251 p. 1 line 2g: 'Interest from specified private activity bonds exempt from the regular tax'.",
+       "irs_text": "i6251 p. 3: 'Enter on line 2g interest income from \"specified private activity bonds\"... Each payer of this type of interest should send you a Form 1099-INT'; i1099int p. 1: File Form 1099-INT for 'amounts reportable in boxes 1, 3, or 8 of at least $10'",
        "severity": "high",
-       "fix": "Include Schedule K-1 statements and say the amount is not limited to Form 1099-INT box 9; name the pass-through code or ask a broad 'any specified private activity bond interest' question."
+       "fix": "Ask for the fact rather than the form: 'How much tax-exempt interest did you or your spouse get from private activity bonds? This is usually in box 9 of Form 1099-INT, but include it even if you got no form.'"
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer with tax-exempt OID from a zero-coupon specified private activity bond, reported on a Form 1099-OID, who receives no cash interest and has no Form 1099-INT box 9.",
-       "why_no": "The gate helper says 'tax-exempt interest and tax-exempt OID ... when any was received'; a zero-coupon PAB pays no cash, and the gated question says add box 9 of Forms 1099-INT. The filer answers zero.",
+       "pattern": "4",
+       "who": "A partner or S corporation shareholder (or spouse) whose Schedule K-1 passes through tax-exempt interest that includes private activity bond interest. The K-1 shows it as a tax-exempt or AMT item, not on a Form 1099.",
+       "why_no": "The question names only Forms 1099-INT and 1099-OID, so a filer whose only private activity bond interest comes on a K-1 enters zero.",
        "line": "s2.amt_pab_if_could (Form 6251 line 2g)",
-       "irs_text": "i6251 p. 3, Line 2g: 'Enter on line 2g interest income from “specified private activity bonds”'; the gate itself treats 'tax-exempt OID' as within the amount.",
+       "irs_text": "i6251 p. 3: 'Enter on line 2g interest income from \"specified private activity bonds\"'; f6251 line 2g: 'Interest from specified private activity bonds exempt from the regular tax'",
        "severity": "high",
-       "fix": "Use 'accrued or received' for OID and include tax-exempt OID from Form 1099-OID or other statements, not only Form 1099-INT box 9."
+       "fix": "Add 'and any private activity bond interest shown on a Schedule K-1 from a partnership or S corporation.' Estate and trust K-1 amounts already go to line 2j. Also make sure the gate's tax-exempt interest helper counts K-1 tax-exempt interest."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer whose amortized bond premium on tax-exempt bonds (Form 1099-INT box 13) equals or exceeds the tax-exempt interest on some bonds. The bonds include private activity bonds, and the filer has other tax-exempt interest that is not private activity bond interest.",
+       "why_no": "The gate tests tax-exempt interest 'net of amortized premium.' Depending on how the netting is aggregated, the net can reach zero or be understated even though some box 9 interest remains. In that case the gate never asks the question.",
+       "line": "s2.amt_pab_if_could (Form 6251 line 2g)",
+       "irs_text": "i6251 p. 3: 'interest income from \"specified private activity bonds\" reduced (but not below zero) by any deduction that would have been allowable if the interest were includible in gross income'",
+       "severity": "low",
+       "fix": "Open the gate when gross tax-exempt interest (1099-INT box 8, 1099-OID box 11, exempt-interest dividends, K-1 tax-exempt interest) is above zero, before any premium is netted."
       }
      ],
-     "prompt_sha": "5f9b590eae7f7ca1ab89bf607586142fc8b91c1a8deff8355583b8ae5017ac76",
+     "prompt_sha": "7bbbff5dcf923b664c4bed7a7bf73c9cf739742cf3d2029a36c90a28d729c0a4",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_s2.amt_pab_ask.05128a522486.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.11646400000000001,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_s2.amt_pab_ask.183c65c81080.1.response.txt"
     }
    ],
    "condition": "s2.amt_pab_ask",
@@ -126,7 +136,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 3, Line 2g—Interest From Private Activity Bonds, \"Each payer of this type of interest should send you a Form 1099-INT showing the amount of this interest in box 9\"",
+      "p. 3, Line 2g—Interest From Private Activity Bonds, \"Each payer of this type of interest should send you a Form 1099-INT showing the amount of this interest in box 9\"; , \"For a specified private activity bond with OID, report the tax-exempt OID in box 11 on Form 1099-OID, and the tax-exempt stated interest in boxes 8 and 9 on Form 1099-INT\"",
       "p. 3, Line 2g—Interest From Private Activity Bonds, \"Enter on line 2g interest income from “specified private activity bonds”\""
      ],
      "cols_pages": [
@@ -148,6 +158,20 @@
      ],
      "cols_pages": [],
      "cols_sha256": "e501bb7ac3373c8ed84384941c8974e37c2176dd992dd402089b0be5cd87c7dd"
+    },
+    {
+     "doc": "i1099int",
+     "revision": "January 2024 (continuous-use instructions)",
+     "text_sha256": "b36466d283744091c6bcc9886321971153ec53d9f0931459f7ef0ef8e7625eb8",
+     "pages": [
+      1
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "0dec64518f7cfa8ed72b507e6843c749182c3f2678249f7b545d2a1ba2edede1"
     }
    ]
   },

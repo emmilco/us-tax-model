@@ -3,9 +3,9 @@
 # check-all: each run keeps its own record, log and step times (runs/<tree>-<timestamp>/), `last` and `log` follow
 # the newest, --status [TREE] reads them, only the newest 50 run directories are kept, a background
 # run waits for a check-all slot while another holds it, and tools/commit_tested.sh can name the
-# tree it commits; the preflight (tools/preflight.sh, a stub here) runs first, in the worktree, so what it
-# regenerates is in the snapshot, and a failing preflight starts no run. (The slot lock itself:
-# tools/check_slot.py --self-test.)
+# tree it commits; the agent-run fold runs before the snapshot unless AGENT_RUNS_FOLD=0, and the preflight
+# (tools/preflight.sh, a stub here) runs first, in the worktree, so what it regenerates is in the snapshot, and a
+# failing preflight starts no run. (The slot lock itself: tools/check_slot.py --self-test.)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/check-bg-test.XXXXXX")"
@@ -21,6 +21,13 @@ cp "$ROOT/tools/green.sh" "$ROOT/tools/check_all_bg.sh" "$ROOT/tools/check_slot.
 cat > tools/worktree_data.py <<'PY'
 import sys
 sys.exit(0)
+PY
+# A stub fold that, like tools/agent_runs_fold.py on main, changes a tracked file.
+cat > tools/agent_runs_fold.py <<'PY'
+import sys
+assert sys.argv[1:] == ["--if-main"], sys.argv
+with open("ledger.txt", "a") as f:
+    f.write("folded\n")
 PY
 cat > tools/check_all.sh <<'SH'
 #!/usr/bin/env bash
@@ -55,9 +62,11 @@ tools/check_all_bg.sh --help | grep -q "check_all_bg.sh \[--wait\]" || fail "--h
 ! tools/check_all_bg.sh --bogus 2>/dev/null || fail "an unknown argument was accepted"
 [ ! -d "$state/runs" ] || fail "--help or an unknown argument started a run"
 tools/check_all_bg.sh --wait > out1.txt 2>&1 || { cat out1.txt; fail "first run failed"; }
+[ "$(git show "$(get "$state/last" snapshot):ledger.txt")" = folded ] || fail "the fold did not run before the snapshot was taken"
 echo two > f.txt
 sleep 1
-tools/check_all_bg.sh --wait > out2.txt 2>&1 || { cat out2.txt; fail "second run failed"; }
+AGENT_RUNS_FOLD=0 tools/check_all_bg.sh --wait > out2.txt 2>&1 || { cat out2.txt; fail "second run failed"; }
+[ "$(cat ledger.txt)" = folded ] || fail "AGENT_RUNS_FOLD=0 did not skip the fold"
 [ "$(ls -1d "$state"/runs/*/ | wc -l)" -eq 2 ] || fail "expected two run directories"
 t1="$(get "$(ls -1d "$state"/runs/*/ | head -n 1)status" snapshot)"
 for d in "$state"/runs/*/; do

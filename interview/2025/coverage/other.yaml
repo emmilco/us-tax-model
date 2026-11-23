@@ -219,6 +219,25 @@ rows:
     scope.excess_deferral: false
   expect:
     refused: f8960.election_6013g_if_joint
+- id: other.niit_6013g_between
+  design: BUG-0997 (Form 8960 with a section 6013(g) election, adjusted gross income between $125,000 and $250,000)
+  situation: A U.S. citizen and her spouse, a nonresident alien she chose to treat as a resident, file jointly with $200,000 of pay.
+  uses: [one_w2]
+  answers:
+    "$person": ["taxpayer", "spouse"]
+    "household.married_dec31": true
+    "scope.noncitizen": true
+    "scope.nonresident": false
+    person[taxpayer].w2[job].box1: 20000000
+    person[taxpayer].w2[job].box5: 20000000
+    f8960.election_6013g: true
+    s2.w2_marks: false
+    s1.nqdc_pension: false
+    scope.w2_marks: false
+    scope.artist_official: false
+    scope.excess_deferral: false
+  expect:
+    refused: f8960.election_between
 - id: other.digital_income
   design: s1.line8_other, line 8v; end restated by lane x1-digital (line 8v computed, beneath the Form 1040 digital asset question)
   situation: A person received crypto from staking.

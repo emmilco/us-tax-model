@@ -315,13 +315,16 @@ def missing_siblings(fix, siblings, checked):
     return siblings - fix - checked
 
 
-def review_logs_due(siblings, logged_forms, year_forms_changed):
+def review_logs_due(siblings, logged_forms, year_forms_changed, ids=None):
     """The sibling forms whose review log is due but did not change since the entry's base. None is due
     when the change since the base touched no form of the year (it is written, for example, as next year's
-    operations in changes/<year>/): no line subject a review judged has changed."""
+    operations in changes/<year>/): no line subject a review judged has changed. A line's form is the document
+    that defines it (`ids`, from index()), which a line id's prefix need not name (tcw defines mfj.*)."""
     if not year_forms_changed:
         return []
-    return sorted({target.split(".")[0] for target in siblings} - logged_forms)
+    def form(target):
+        return ids[target][0]["id"] if ids and target in ids else target.split(".")[0]
+    return sorted({form(target) for target in siblings} - logged_forms)
 
 
 def line_ids_at(rev):
@@ -433,7 +436,7 @@ def check(docs, ids):
             year_forms_changed[base] = bool(subprocess.run(
                 ["git", "diff", "--name-only", base, "--", f"forms/{Y}"],
                 capture_output=True, text=True, check=False).stdout.strip())
-        unrefreshed = review_logs_due(siblings, logged[base], year_forms_changed[base])
+        unrefreshed = review_logs_due(siblings, logged[base], year_forms_changed[base], ids)
         if unrefreshed:
             problems.append(f"{bug}: no review log changed since {base} for sibling form(s): "
                             f"{', '.join(unrefreshed)}")
@@ -481,6 +484,10 @@ def self_test(docs, ids):
     assert missing_siblings({"a.x"}, {"a.y", "b.z"}, {"b.z"}) == {"a.y"}, "an omitted sibling"
     assert review_logs_due({"a.x", "b.y"}, {"a"}, True) == ["b"], "a sibling form's log is due after a form change"
     assert review_logs_due({"a.x", "b.y"}, set(), False) == [], "no log is due when no form of the year changed"
+    tcw = {"mfj.result": ({"id": "tcw"}, {}), "hoh.result": ({"id": "tcw"}, {})}
+    assert review_logs_due({"mfj.result", "hoh.result", "b.y"}, {"tcw"}, True, tcw) == ["b"], \
+        "a line whose id prefix is not a form is due under the document that defines it"
+    assert review_logs_due({"mfj.result"}, set(), True, tcw) == ["tcw"], "its document's log is the one due"
     assert unknown_siblings({"a.x", "a.gone", "a.typo"}, {"a.x"}, {"a.x", "a.gone"}) == ({"a.gone"}, {"a.typo"}), \
         "a sibling line removed since a committed entry was written is reported, not failed; an unknown one fails"
     assert unknown_siblings({"a.gone"}, {"a.x"}, None) == (set(), {"a.gone"}), "a pending entry's unknown line fails"

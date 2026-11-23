@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
  "head_rows": {
-  "agree / disagree / missing": "16 / 14 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "17 / 13 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -131,10 +131,9 @@
   },
   {
    "key": "18",
-   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply's value is unknown on every return (1,032 completed candidate-unknown: its h_line18_ws branch for the Worksheet for Line 18, refused here by f1116.adjust, yields no value). Its shown_when (line 17 above zero) follows Form 1116 line 17, '(If the result is zero or less, skip line 18 and enter -0- on line 19.)': the project shows line 18 there; filed as a low finding on display only (BUG-0912), the value stays needed by f1116.us_loss.",
-   "subject_key": "e9482a3e8085e6365cfb8a884d2063147ee22106a02e58625b664d5d35d6b4b7"
+   "record": "aaddf62deaef33032913a108738cfaf907bebac1bd5ce2f55b0eab8f5e2a918c",
+   "status": "AGREE",
+   "subject_key": "a0246b81951c98b0806c106f0924309465ebf342603aff621a9dd9cd3b891536"
   },
   {
    "key": "20",
@@ -198,9 +197,9 @@
   },
   {
    "key": "35",
-   "record": "e83665a19d2765b3d3b336848c37038325ad2c266ae57487d3f3ab15f0b14bfa",
+   "record": "aaddf62deaef33032913a108738cfaf907bebac1bd5ce2f55b0eab8f5e2a918c",
    "status": "AGREE",
-   "subject_key": "d039eab7fe46b7c8dbf7519b57c2a61ca48bcd7abb93d5ee51977f9f93ecdb07"
+   "subject_key": "a7ac4c9808720415dd701abb4e3467a0677360a9c050d4f736ed1d1ac8038737"
   }
  ],
  "subjects": {
@@ -223,7 +222,7 @@
   "15": "346e12842c6aeb33a8daa6082da14070450696fd127deb6fb82a5c5162b15b48",
   "16": "c49f6d8c7a1fe57c93e28863ba23df07019cfda2e48edd167fee347ecea35a8a",
   "17": "1fe866dcb2b09e6ded7a49ee20b601ee034a39e5aaa2714d45ffbb05c75acf00",
-  "18": "b0d63004df2ce815747758cccd39d35d061eb46f80fef1ed3835d744c0e7e973",
+  "18": "07b7a1056818cf504ee86764fa1ac3655f76ac39132f1da5571cd4ca5dbee7f3",
   "20": "df8f2cf66230b13575ab21d0fce5a2a86ccbc8a9999839a16109eec9fd254111",
   "21": "eb5e8ca4879af1f3c6b8df86b430488fc57b3d1870afec6880a32b9697ade359",
   "22": "e964e5d524b820394febcd5f0ba3475c789515ee64b55edf46bab9e013aef581",
@@ -233,7 +232,7 @@
   "32": "bc1cb75029a817fef623ca102e8b402cb0c472dc4744ef7e31f2b99cfd8bc6aa",
   "33": "2b9533860865bd8969408089841242687522dcbecd43c6c28302181151dea5ba",
   "34": "8efe8f7dafe0f9273661ccf64e8b653b49476cd550eb813c097726d45ff1ccd8",
-  "35": "5af4042177fd66b2901f24a5ba05d78a38c7e4b65da3d1e7af21c7b061ee7e02"
+  "35": "61fe46681d26bf592e746e67f7cedeb48620d42ce362679997ec6bebe6a22a54"
  },
  "__rest__": "16b2fa9a12e1e39f4ae68a9c3835a066fc107ba134255e3442748fdb141148ee",
  "foreign": {

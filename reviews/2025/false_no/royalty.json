@@ -103,68 +103,68 @@
    ]
   },
   "gate:royalty.has_loss": {
-   "subject_sha": "7ed14d3bef5aff610ebf712a1cb98b74efa6bdb49bc37070a96f785fe00fdd9a",
+   "subject_sha": "29bf5190845d7c6f821477b1696bb2c405049930d5b7779c91cf245b4684250c",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer owns a royalty interest used in a trade or business or for production of income and disposes of it in 2025 at a loss, while current royalty operations are break-even or income; the disposition loss is reported on Form 4797 or Schedule D, not Schedule E line 21.",
-       "why_no": "The tool computes Line 21 is a loss as false because Schedule E line 21 is not negative; the disposition loss does not appear on that line.",
+       "pattern": "1",
+       "who": "A filer whose royalty activity produced a loss in 2024 that Form 6198 disallowed because part of the investment was a nonrecourse loan. In 2025, this year's royalties less expenses come out slightly positive on line 21, before the carried-over loss is counted.",
+       "why_no": "The gate is computed as line 21 < $0 from this year's figures alone. If the prior-year disallowed loss is not part of line 21, the condition is false and the at-risk question is never asked.",
        "line": "royalty.not_at_risk_if_loss",
-       "irs_text": "i1040se p. 3: The at-risk rules in most cases limit the amount of loss (including loss on the disposition of assets) you can claim to the amount you could actually lose in the activity.",
-       "severity": "high",
-       "fix": "Gate on any loss from the royalty activity, including a disposition loss reported outside line 21; do not require line 21 < 0."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer has two royalty activities, one with a current loss financed by nonrecourse debt and one with enough income that the combined Schedule E line 21 is zero or positive.",
-       "why_no": "The computed gate looks only at net line 21; because that net is not a loss, the tool never asks about the loss activity.",
-       "line": "royalty.not_at_risk_if_loss",
-       "irs_text": "i1040se p. 3: In most cases, you must complete Form 6198 to figure your loss if you have a loss from an activity carried on as a trade or business or for the production of income, and amounts in the activity for which you are not at risk.",
-       "severity": "high",
-       "fix": "Ask separately for each royalty activity and gate on any activity-level loss, not the net line 21."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "Married filing jointly; the spouse, not the filer, put nonrecourse or stakeholder money into the royalty activity that has a line 21 loss.",
-       "why_no": "The gated question asks Was any money you put in and the help speaks to you; the filer truthfully answers no for himself, though the spouse's amount makes the line true on the joint return.",
-       "line": "royalty.not_at_risk_if_loss",
-       "irs_text": "i1040se p. 7: If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss.",
-       "severity": "high",
-       "fix": "Say you or your spouse and apply the at-risk question separately to each spouse's royalty activity."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "8",
-       "who": "A filer has a line 21 royalty loss and a nonrecourse loan from a bank or regular lender used to acquire or finance the royalty, not qualified real-property financing.",
-       "why_no": "The question asks about borrowing without personal liability from anyone but a bank or regular lender, and the help says A loan from a bank, a government or another regular lender is at risk, so the filer answers no.",
-       "line": "royalty.not_at_risk_if_loss",
-       "irs_text": "i1040se p. 3: Nonrecourse loans used to finance the activity, to acquire property used in the activity, or to acquire your interest in the activity that are not secured by your own property (other than property used in the activity) are not at risk.",
-       "severity": "high",
-       "fix": "Remove the bank or regular-lender carve-out for nonrecourse debt; ask about any loan without personal liability, including a bank loan, except qualified nonrecourse real-property financing."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer is a partner or member in a royalty activity; the entity, not the filer personally, borrowed nonrecourse funds or funds from a stakeholder or related person to finance the activity, and the filer has a line 21 loss.",
-       "why_no": "The gated question asks whether money you put in was borrowed, so the filer reads it as personal borrowing and answers no; entity-level debt is not money the filer put in.",
-       "line": "royalty.not_at_risk_if_loss",
-       "irs_text": "i1040se p. 3: Cash, property, or borrowed amounts used in the activity (or contributed to the activity, or used to acquire your interest in the activity) that are nonrecourse, protected, or from a person with an interest are not at risk.",
+       "irs_text": "i1040se p. 3, At-Risk Rules: 'In most cases, you must complete Form 6198 to figure your loss if you have: • A loss from an activity ... and • Amounts in the activity for which you are not at risk.' A loss disallowed in an earlier year stays a loss of the activity in later years.",
        "severity": "medium",
-       "fix": "Ask about debt used by the royalty activity or pass-through entity, not only money the filer personally borrowed and contributed."
+       "fix": "Before computing the gate, ask whether any loss from this royalty was limited or disallowed in an earlier year (Form 6198 or Form 8582 carryover). Count that amount in the gate test, or open the gate whenever such a carryover exists."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer who sold or abandoned a royalty interest in 2025 at a loss. The interest was bought with a nonrecourse note. Royalty income for the part of the year it was held makes line 21 zero or positive, and the disposition loss is reported on Form 4797 or Schedule D.",
+       "why_no": "The gate tests only line 21. The disposition loss never reaches line 21, so the at-risk question is not asked.",
+       "line": "royalty.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 3, At-Risk Rules: 'The at-risk rules in most cases limit the amount of loss (including loss on the disposition of assets) you can claim to the amount you could actually lose in the activity.'",
+       "severity": "medium",
+       "fix": "Widen the gate: 'Line 21 is a loss, or you (or your spouse) sold, exchanged, abandoned, or otherwise disposed of all or part of this royalty property in 2025 at a loss.'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer with positive line 21 whose amount at risk dropped below zero this year. For example, a recourse loan was converted to nonrecourse, or cash was withdrawn from the activity after losses had been deducted in earlier years.",
+       "why_no": "Line 21 is not a loss, so the gate is false. Under the at-risk rules, a negative amount at risk still requires Form 6198 and recapture of earlier deducted losses.",
+       "line": "royalty.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 3: 'use Form 6198 to figure your loss'; i1040se p. 7, Line 21: 'If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss.' The recapture itself comes from the Form 6198 instructions, which are not quoted here.",
+       "severity": "low",
+       "fix": "Ask whether any earlier-year loss from this royalty was deducted and the financing or the owner's investment changed this year (debt became nonrecourse, guarantee added, money withdrawn). Refuse on a yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse co-owns the royalty interest and financed the spouse's share with a loan repayable only from the royalties, or a loan from the lessee.",
+       "why_no": "The question asks 'Was any money you put in borrowed without personal liability.' The filer answers for their own money only.",
+       "line": "royalty.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 3: 'Nonrecourse loans used to finance the activity, to acquire property used in the activity, or to acquire your interest in the activity ... are not at risk.'",
+       "severity": "medium",
+       "fix": "Ask: 'Was any money you or your spouse put in ...'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer who bought a royalty or mineral interest on seller financing: a note to the seller, secured only by the interest, with no personal liability. Or a filer who contributed property, not cash, that is protected by a stop-loss or buy-back agreement.",
+       "why_no": "The question says 'money you put in borrowed'. A seller-financed purchase does not feel like borrowing money, and contributed property is not 'money'. The help speaks of a 'loan', which the filer does not connect to an installment purchase.",
+       "line": "royalty.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 3: 'Nonrecourse loans used ... to acquire your interest in the activity' and 'Cash, property, or borrowed amounts used in the activity (or contributed to the activity, or used to acquire your interest in the activity) that are protected against loss by a guarantee, stop-loss agreement, or other similar arrangement.'",
+       "severity": "medium",
+       "fix": "Reword: 'Did you or your spouse buy this royalty interest, or put money or property into it, using a loan or seller-financed note you are not personally liable to repay (including a note to the seller); or is any cash, property, or loan protected from loss by a guarantee, stop-loss, buy-back, or similar arrangement; or did any of it come from someone else with a stake in it, or a relative of theirs?'"
       }
      ],
-     "prompt_sha": "478714878391ff3c12b6ba39c943a0ed506e29c3d5ac08da02b9c868ca061a1f",
+     "prompt_sha": "4c5f932515c7ac6e30f46b0d9dc0e58466a536c4a716c37dcce8f0e5ad0d6951",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_royalty.has_loss.7ed14d3bef5a.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.103456,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_royalty.has_loss.29bf5190845d.1.response.txt"
     }
    ],
    "condition": "royalty.has_loss",

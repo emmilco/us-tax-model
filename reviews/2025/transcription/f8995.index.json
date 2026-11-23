@@ -4,8 +4,7 @@
  "family": "claude",
  "base": "1422c10c247a2a54480e13c3a883e0e66025c389329afdb0c4f7cf5ca790cd36",
  "head_rows": {
-  "agree / disagree / missing": "12 / 4 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -80,9 +79,10 @@
   },
   {
    "key": "11",
-   "record": "1422c10c247a2a54480e13c3a883e0e66025c389329afdb0c4f7cf5ca790cd36",
-   "status": "AGREE",
-   "subject_key": "62ae95d8da3a59d8bfc7e35c65802199156f3a937f146b468d276eda933ef706"
+   "record": "f0a4243785aa2e3857a32e8d2c5654c082fd005b506701abbd7fa41c6288c213",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3136 values compared, none different or missing: 2636 on 2636 fixture cases, 500 on 500 generated returns seed 20261026, 0 on 0 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "dc8e40e1ce911d5b3a6977ba0ffe1bc3b98cada096ae666efc51b0bcb79d6804"
   },
   {
    "key": "12",
@@ -92,9 +92,9 @@
   },
   {
    "key": "13",
-   "record": "1422c10c247a2a54480e13c3a883e0e66025c389329afdb0c4f7cf5ca790cd36",
+   "record": "f0a4243785aa2e3857a32e8d2c5654c082fd005b506701abbd7fa41c6288c213",
    "status": "AGREE",
-   "subject_key": "87d8197ff0627b3251ba178a56dca23a7f06f57f4e9b5374d23f54c4e8cc6bf4"
+   "subject_key": "6f06b9c4fe6ce241b04f991489fbd3761d76048f7e243e2e718baaba89965848"
   },
   {
    "key": "14",
@@ -121,14 +121,16 @@
   "8": "9abc63ad074cfa9d51b49352e830a690e8337f1987c805bb4ac0609398f4f180",
   "9": "141b91b5b3040a485f40c73df2be366587f335b574e8c0bc5f8e229de58866e5",
   "10": "2793cda33ef829fbdb1341d94c5fa72a23a8e804cc3e7b1477077c7a148c7293",
-  "11": "65f5f7144fe1bd4181af4850689f76f6d8487a3a518116111669456118941b57",
+  "11": "effd405723ffe5b71571d0594d83361ddd85d36d1c3c87d903191789fb369b08",
   "12": "c0916a4fc97f300bd73e0e35d253efd0b38b8fc06efbe29fbf1311d20556d6f8",
-  "13": "1137b9888f075b888200f3fb6f1645b5552741d1983cf304beab42570a23c0e8",
+  "13": "99febf87109468e03a89d089eb9a06e1cdccf9d921b7531c84de1050a3d5b236",
   "14": "c3c4dcf442682caf63fa8525b6ccf77ad4ade02f785ee018a22d212da89a3486",
   "15": "4cbe417a814f3d4c8634728773d773327072da1220d46d6dd5a77a902d745da9"
  },
  "__rest__": "6883a7f29857fc976b4e5bfc92a9938f4f89739ea851cfd0f82630d407014c65",
  "foreign": {
-  "3": "5b7487d0bfccfc5c51ecd92a19239c1688231e80ee63423e8aed0767c75fdf25"
+  "3": "5b7487d0bfccfc5c51ecd92a19239c1688231e80ee63423e8aed0767c75fdf25",
+  "11": "52a3a1010f68338f0f01f35b8712094c8595b539c15d2c517d834fe93a28b075",
+  "13": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
  }
 }

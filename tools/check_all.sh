@@ -19,6 +19,9 @@
 # nothing else writes during the run, also adds its tree to the release list, which lets tools/release.sh tag
 # that tree without running the suite again. Start such a run with
 # `CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full`.
+# On the branch next, or in the main worktree on the branch main, it first folds the finished agent-run rows into
+# research/costs/agent_runs.jsonl (tools/agent_runs_fold.py), so they are part of the tree it tests and
+# the commit that follows; AGENT_RUNS_FOLD=0 skips the fold (tools/release.sh sets it).
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 . tools/green.sh
@@ -54,6 +57,7 @@ timeout 300 python3 tools/worktree_gc.py check || true  # listed, not failed: a 
 year_of() { python3 -I -c 'import sys; sys.path.insert(0, "tools"); import taxyear; print(taxyear.Y)' "$@"; }
 year="$(year_of "$@")"
 default_year="$(year_of)"
+if [ "${AGENT_RUNS_FOLD:-1}" != 0 ]; then python3 tools/agent_runs_fold.py --if-main || exit 1; fi
 before="$(worktree_tree)"
 tools/check_all_steps.sh --tier "$tier" "$@"
 after="$(worktree_tree)"

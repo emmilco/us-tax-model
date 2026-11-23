@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "98",
   "agree / disagree / missing": "0 / 98 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -109,17 +109,17 @@
   },
   {
    "key": "11(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. For a filer who is not an applicable taxpayer because household income is below 100% (classm.f8962.3, a completed return), i8962 p. 9 says \"skip lines 7 and 8, and go to line 9\"; the instruction to \"skip columns (a) through (e), and complete only column (f)\" (p. 16) is given for married filing separately without Exception 2 and for the monthly lines. The project enters columns (a) and (b) from Form 1095-A line 33; the reply leaves them blank. Column (f) and line 24 ($0.00) agree, so no amount reaching Schedule 2 differs. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,205/3,310 agree; kinds {\"candidate-hides-shown\": 16, \"candidate-refuses\": 3, \"candidate-unknown\": 71, \"project-refuses\": 10, \"project-unknown\": 5}; on completed returns {\"candidate-hides-shown\": 4, \"candidate-unknown\": 12, \"project-unknown\": 1}. No change.",
-   "subject_key": "9dbab04144df0dfb90ef462fcd1fe000654e8a6df0e26c4fd5f7b4e2de7e1e91"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "cccce5a299299e76f3d086aa83a5480238e98c2abe7c9b1b441d0209c83d885f"
   },
   {
    "key": "11(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. For a filer who is not an applicable taxpayer because household income is below 100% (classm.f8962.3, a completed return), i8962 p. 9 says \"skip lines 7 and 8, and go to line 9\"; the instruction to \"skip columns (a) through (e), and complete only column (f)\" (p. 16) is given for married filing separately without Exception 2 and for the monthly lines. The project enters columns (a) and (b) from Form 1095-A line 33; the reply leaves them blank. Column (f) and line 24 ($0.00) agree, so no amount reaching Schedule 2 differs. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,205/3,310 agree; kinds {\"candidate-hides-shown\": 16, \"candidate-refuses\": 3, \"candidate-unknown\": 71, \"project-refuses\": 10, \"project-unknown\": 5}; on completed returns {\"candidate-hides-shown\": 4, \"candidate-unknown\": 12, \"project-unknown\": 1}. No change.",
-   "subject_key": "f4ef95d288dee84abd286212f6af2ef5bad201423096470c12190d463f52304d"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "9f6766c4240a2d6cd5aedc5ccea934cf21814d653b76c3af78c31f3e34867483"
   },
   {
    "key": "11(c)",
@@ -151,17 +151,17 @@
   },
   {
    "key": "12(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,178/3,310 agree; kinds {\"candidate-hides-shown\": 14, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "1bc4f2a4f1737fd803a16d06a4ebc0efcdd1a63d7f70d2ab46997cf0fdb3280e"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "39d990ce0450d019bb18bc5eb1a5721521ca4751d7cd965c11544728e9de7b93"
   },
   {
    "key": "12(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,178/3,310 agree; kinds {\"candidate-hides-shown\": 14, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "15cfb29ed4b40f34dfe6126d818e9223d63e6db1973427831af7192c384470a0"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "b44d9f96f1e68ced4d5eb2e654aa0884a2ec9d76d3d18a94b883be4559e49ad0"
   },
   {
    "key": "12(c)",
@@ -193,17 +193,17 @@
   },
   {
    "key": "13(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,178/3,310 agree; kinds {\"candidate-hides-shown\": 14, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "8e1548f37f62e2c6e46ec34e9fbbe4e34c66da7c71a8c381c635c074fb68ba49"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "f6f612a94da369f62051a53e79e4888abf2e819a41435bb71a6a7d5ae2e7eb6f"
   },
   {
    "key": "13(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,178/3,310 agree; kinds {\"candidate-hides-shown\": 14, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "eb629ca8c7af1b5ba86627dc00dbb5ca4bb8f70338d8fbd2ee7c48bac3a9c990"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "d321a421289638e4d832a6cdc2b7c3e88953daa3151e7d6bafb98440a2c61f77"
   },
   {
    "key": "13(c)",
@@ -235,17 +235,17 @@
   },
   {
    "key": "14(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,168/3,310 agree; kinds {\"candidate-hides-shown\": 24, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "cbf75cf75b38256d8b4ef121e88136ec592c3ddf1d6690a84542cd3a0e25b480"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "4688b9755785178cec1c39d3d32be0b7458e02b8d6a1b05af4bd9875826a7f72"
   },
   {
    "key": "14(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,168/3,310 agree; kinds {\"candidate-hides-shown\": 24, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "0a784b91f492b29b55c4715e9a07ebd316da12fc666e2057c4dbc8392456bbb5"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "1aca948df1e74cbf1c30e87ae6aa7375cce96a45fcbeddeb114f4e3befcb3418"
   },
   {
    "key": "14(c)",
@@ -277,17 +277,17 @@
   },
   {
    "key": "15(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,178/3,310 agree; kinds {\"candidate-hides-shown\": 14, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "01ab0fba4726b8b095f43553fab3a3c7046f2ad5692dff42c9971b2125a92c8e"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "be01beda37680ec63b6bc3369b4a6b887d98c445ee8a7d80c570b7ba1159abe9"
   },
   {
    "key": "15(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,178/3,310 agree; kinds {\"candidate-hides-shown\": 14, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "1bfbc253e20b19a4db07c29a272cf416573da0c91914d567825d3baddb220bf5"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "e09b93e0b568d87d81e63235a8622280aae3343ae44268047745270cd07518c2"
   },
   {
    "key": "15(c)",
@@ -319,17 +319,17 @@
   },
   {
    "key": "16(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,168/3,310 agree; kinds {\"candidate-hides-shown\": 24, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "46fdb91b782ad1ee4f2443cc4d738b0b2a59458af9e113228b3d6db4a41967a4"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "c49843b5feea77ecc34675b9c08e9c0557cd7d1c5ada672fbcb2dbf7c7aee883"
   },
   {
    "key": "16(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,168/3,310 agree; kinds {\"candidate-hides-shown\": 24, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "1c6afebb1526602223819057b08510e676cb5f443a1a5c4a3875816f614a5365"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "8b85b35f926aca55c19de7f881367920c1a1e4df4d8ea640d66045fab5f90962"
   },
   {
    "key": "16(c)",
@@ -361,17 +361,17 @@
   },
   {
    "key": "17(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "1079fccd5c2f305415e90fa0190824b699004579d4a680a01066825d35fe877d"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "e8637eaf28996876c96e0a47eb53acb936a6ca3acb99964496b6b633e40be4b4"
   },
   {
    "key": "17(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "57a335e58e0bdf68955a212888949b3266d4b8e60ab77837388a5cd620e842f0"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "252bfab972a551ad6d3ab932b2616fe59d33c6603a989c309051e4e43e57e4aa"
   },
   {
    "key": "17(c)",
@@ -403,17 +403,17 @@
   },
   {
    "key": "18(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "55ed80619a9d42d9b8bfd7848cef8512201f9ff0b7ffc5c50dfb9a1e93f6261f"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "c55bedd17ddc65e9a923def20155cdc5f4fe53896e616a099899d1401c6e3aa8"
   },
   {
    "key": "18(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "4d3ec5393b2c0befcd3e3c377728e7849e1d089653d138d7df11cd9044cd7887"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "b08ac427420b9777f7e78f89331821659cb3dfbe6c375e24768a2b934451d22c"
   },
   {
    "key": "18(c)",
@@ -445,17 +445,17 @@
   },
   {
    "key": "19(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "4e5909414cc3cdc75af9d18ec733c7326769d26896f0ceb57be5f12b42202214"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "001d98e7a09b3ef13b00a1c6dee6e46a9594e2b7e822bf2d3f1d0daff7332590"
   },
   {
    "key": "19(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "6f0a372aef04b491445afe70eb49b989beb394bea20962ebba8483d27ac6b836"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "3d337593b5560d870bdf25fbcc2bd369d9ccd83b0c38960887c7eb89c9163021"
   },
   {
    "key": "19(c)",
@@ -487,17 +487,17 @@
   },
   {
    "key": "20(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "5e7cad75fbbcbb4b02a8f27eff6ea09e26ffc59d0ea4b9365bd588a61179b11e"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "95eff09f501c220da6f6044af73ade0a84446d0d4d25b33825b345bd84fe48ba"
   },
   {
    "key": "20(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "a0958630645e039d842aba1400a4bfd5e762b3727260221611da0e32ce373e57"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "e3af6f680a4662d50d06540573a48ec192b6f8f84d3a0e3d8800f5ea9b474b43"
   },
   {
    "key": "20(c)",
@@ -529,17 +529,17 @@
   },
   {
    "key": "21(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "b9e331a45c6c85a7ddb0fd0750c67835b79bc7e75dcad3e2b2175f76a06f74fc"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "8026b79d19f9a7139b399f7c0d6d636c0694120fef5146a87e9e9112685fab50"
   },
   {
    "key": "21(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "af1053200d336a442b2d0c734bc87c3e69499fbdbdd9d004a4398dd6a77c88bb"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "a1737e97bffc0363f08a4b576b3819e260952d4554980d0805ee6e4f513b9d0e"
   },
   {
    "key": "21(c)",
@@ -571,17 +571,17 @@
   },
   {
    "key": "22(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "b2018a251647ac8c1dda82c17c7dfaf991842e8927224a3ba8f415db31c850d1"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "3b2743ab994679e8848911a481e117332f57cff1a0e0ba8ef1ad356f1a3c748a"
   },
   {
    "key": "22(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "c92e0ba9586d1e31f5502022105d9f8bd31c05b918578bba4e8c69f6af96f2c6"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "94f62f34f33dd1a9adea60ca5f16944efa2ff2533626c496374518a54098cc90"
   },
   {
    "key": "22(c)",
@@ -613,17 +613,17 @@
   },
   {
    "key": "23(a)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "fe85f92642b02e446bc5799dad1ed985e75eb1d1873367cacdcb8b08d6c01ae0"
+   "ruling": "Ruling: representation; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\" The reply leaves a void or superseded Form 1095-A out of the sum; the project refuses any return with such a form entered (f8962.void_form, a refusal on f8962.line24 citing the same sentence), so on every return the project completes no such form is entered and the two sums are the same; they differ only on returns the project refuses. This review was occasioned by a presentation change (BUG-0770: columns (a) and (b) are shown only when the return is not married filing separately without Exception 2); the expression is unchanged.",
+   "subject_key": "70fef75010dcd62f9d0e0f96695530441485973023578c4911dcab1d4d08ec42"
   },
   {
    "key": "23(b)",
-   "record": "6aed4b18ef13127b2de4b5a407433ece7b264fa9aa1d8259dcbc876f782519aa",
+   "record": "11ed92a970e8383479478dbd6251bbd4385bf122801b7304b64bfdc7c66d7dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8962 pp. 9-16, Part II. The reply reads inputs the interview does not ask on that path (f8962.married_this_year where no marriage is reported, the monthly Form 1095-A amounts where every month is the same, f8962.no_family, f8962.other_coverage), so it is unknown there (e.g. classm.s2.3, classm.sc.1, classm.f2441.1); where both evaluate the amounts agree. Refusals differ only in placement and only on refused returns: the reply refuses on f8962.shared_policy (stage18.refuse.allocation) where the project refuses at f8962.alloc, and the project refuses on other documents' gates the reply does not read (classm.eic.6.deepseek: sa.excluded_income; classm.asset.2). Project-unknowns are partial records or fixtures that withhold the filing status or a Form 1095-A answer. Triage executable-triage-v2 (reply 29d54994b82a): 3,167/3,310 agree; kinds {\"candidate-hides-shown\": 25, \"candidate-refuses\": 3, \"candidate-unknown\": 72, \"project-refuses\": 39, \"project-unknown\": 4}; on completed returns {\"candidate-unknown\": 12}. No change.",
-   "subject_key": "566594980c5e885fe8d73fb9cea538010a4823f6048f480d92acba319ca484fe"
+   "ruling": "Ruling: model error; the reply enters column (b) of a Form 1095-A only when f1095a.b_counted is answered yes, also when it is the only form; the source gives the one-form rule only for several forms (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the interview asks f1095a.b_counted only then: model error, as ruled before on these lines. Its exclusion of a void or superseded form is representation: the project refuses any return with such a form (f8962.void_form on f8962.line24; i8962 p. 2). This review was occasioned by a presentation change (BUG-0770); the expression is unchanged.",
+   "subject_key": "b057d86766ab8937e9317edfaf3ad540c33cac4d7a7c048cf874473d34514eaa"
   },
   {
    "key": "23(c)",
@@ -711,80 +711,80 @@
   "8b": "8fbd6a1718979b0f85f8df07c4816e175436af1aef6c57dea152750571cb8ec5",
   "9": "8b5ae6b22eca30874096cdf89957fb68020fe4d38441f97a0f4bb1b579963d47",
   "10": "45d0d0e5605e731a29d9fe42930a784889aa65591897ea6552253187b71198bd",
-  "11(a)": "c5881813fc20b14208075aecbbe191663311452ad577dcefce987b8e26f92991",
-  "11(b)": "dcc06db2fe4312597d1f98d5842325b7d13d8ab89e756de8d410598bc18b7a2f",
+  "11(a)": "95b3fb946bf36c96897a37c203ccbfa97e7c1d0ddf87f71bb4b68959a07a72db",
+  "11(b)": "b0c2359236b45817660189e210ae6aa42b100e463dd047dba4e17cae4d591594",
   "11(c)": "485f98a18799f07bd9476e282e216154eaf002ac604c0bc3e11c4051909a2454",
   "11(d)": "80df6bcb2679322dde964013611237fa2d7a1d1bc0038667b0b1af337f4dbd1f",
   "11(e)": "76b0bf9e97f929b4fab89c1e3852227d417f0e2e89938a4edb3e80dbd832f087",
   "11(f)": "a16ce826fbc247afd4cc10c0ac641c224ee4d999f4a1e9c91464045a2ce1c17d",
-  "12(a)": "9d8a26091c967b72208cd837473eaf30b7200fa6c13e4053b73137d8c30285ce",
-  "12(b)": "a3c0af122d88a2b2de896c8fdd416fc2da9a554e273adc933717eb8923abe348",
+  "12(a)": "9333574c2aa0f7cb8d485783d6a5317338b5fb4bc60e066042806434b59f29f5",
+  "12(b)": "095823e67cf36d2bd66f6460bc116200fb245b2b1b7e8ad9a06315243801a590",
   "12(c)": "74c61b15dd9d8631859f98f2e943e9f5c587f3d9535404975646401eb619257c",
   "12(d)": "cca06a24f9d4291b226ab60b8f7b0587f57a5d1f592a59bea813691f8f20a24b",
   "12(e)": "9b95dffad192ab335031d91609b8de51b49285eabfd64bd7dab863966d4d3990",
   "12(f)": "89b6e2c7fee3f272d12ab7f6ce7443f6081e17cd6e881f12a4243b08121b4c6f",
-  "13(a)": "8a16ceb72f88d93a1445a88b320879ecf8450cf5e99029685a74768f5c57fc7e",
-  "13(b)": "0d8dd8bd1ac6556b3d9a41a41689347fe8e7b6895abbd89c41c06573e64341e6",
+  "13(a)": "670adc01a5e44a447bd605ef8eef4cf6826d9dca0ceef3a208862149f2c5c956",
+  "13(b)": "f77abd48dee7c8dfec8fb0a58aa56acfe306119cdc5eafe1fbeab69f1f590c16",
   "13(c)": "57d2b87a0fba0165c7b39fbf7d05425f66fcc559a921e271ec51c7fd330d6b00",
   "13(d)": "aec7e4d8492ec006b8c735695197c01d5b875367416a718df416142ed32623ba",
   "13(e)": "2d106050b117572e2d29a794e5d2b726f3850861133932175bef4b0aa1840344",
   "13(f)": "4fa48efd5d453810cdd97a48b8330893c0ba30c667333b0a27ecb46fa1720a47",
-  "14(a)": "a1fd93be1e55ff9789dcfc83288589ad6ef7256ab9088232afe841c50e5c739a",
-  "14(b)": "4e3b55a2546ad69d46a3e3f8631a1346a96cdbdd04427010d52b0bd715a4dd05",
+  "14(a)": "fd7f85f5e208a4180e9b4b09120dc9cb92eab7589c21e558aa279f8526c9fcf0",
+  "14(b)": "a721166a1a124578a6401d9623f5064fbabfc57ffb2fdf93735d6d2ca5bb8ac1",
   "14(c)": "7cf1705211f0e37443358ddeecc5f547337c345d4a79bdbeffd02b4e42eb0ea7",
   "14(d)": "86ba3e6674219333d637f2883480dd3becf9e293d9b1e5eb36fd733df3e6d983",
   "14(e)": "71a7beb13f8fadefc4439786b0c96c2bc5deec5b066ab2f66605cef0235cab70",
   "14(f)": "6f036c538bf6ab1499312f033c52a3cdf7b820d6993329211b661d49bc22bfa6",
-  "15(a)": "ac3c278c5b15de9b6ab67317736936d90015a6786d49652c27038f1541bbfe7f",
-  "15(b)": "8ff0c11bf301d200cddeceb9cd95414f66d1004e21de420b48c12af6b8c24e3b",
+  "15(a)": "8713cd3b8845916977bfd506a2502287d7b53a4742553f3a0965c63b1eeed69b",
+  "15(b)": "87f109b055915a680f507b005bee9546ee6cd32f60a50d88d93da893e29d4994",
   "15(c)": "7c6b33806053e8bb4448c682fc50797f2db51b8d6b43b507d4afec3d5c67d06a",
   "15(d)": "1a639e95d7021147cbdb9c0a377b4df984f45144cc4d89ccd1ebc2eb4ccc2425",
   "15(e)": "272fc0bbec68b6cdf2b332bdfdb37cda8f97ba960890353414571e44ae327b70",
   "15(f)": "466e6e0102f9b225f77d0e7a19dbbcdb1d74f45bbb0cdc743a03ee34b2c8d098",
-  "16(a)": "3830c06d94c958c79b582c701e8c9bf1a5464a829f382c9bbe2535086de1b041",
-  "16(b)": "39c343a10139490c75c7cfdd9398c7dad82dab99b11e146a885284c8ba624805",
+  "16(a)": "b77565898fec9c8cd9d0fcab3ac2f67e25bb1adcb9a71d84f4cddfd51ca6cfda",
+  "16(b)": "e5c8dc3448e75e370abbf10fea45326440111947f84de6e90c6eb528501eb944",
   "16(c)": "7e03ff6988e53ada0be308a09f6ab9d04c2e824c7d60c6b6d77c8833d1853e95",
   "16(d)": "36faf8f6d6f80badf024cc681cae162b527be760e4788bc8feaddddc6c05ea72",
   "16(e)": "d2474669d7b0cec6a6253ebcb375b6e8959a8929e0fa2da046a9953f1f59665b",
   "16(f)": "b807a15182ea71a60cf997905c13e7f4d0c49f9a7b0749a022bb2d4729ac0b22",
-  "17(a)": "38b8408e6486888532a52ea59f1ea56be7a6b344f09365d885ef1509193f7cc2",
-  "17(b)": "fc49769815cefe88c84c45a0c76e5f51c3d22129b2e19ff993eba1fe1c76eddf",
+  "17(a)": "54d435d6d21c9b37b15d4a38d0f7a63dcd6837a930ec99e53ed7f6acef788e36",
+  "17(b)": "b8d0b38a8d70acc6ad0ace9d50444e38bf9607920a20b4686fb8e7f7893c3344",
   "17(c)": "9776cb3e02a523298a5d2a89212444d20ad13bceb1cc7f1443773b21bc24c3e8",
   "17(d)": "875e8a35d845e8680ffe37a2bb0d8399cb214552680e3b7cea0f2efe849364d6",
   "17(e)": "9a0e31ba14d8b7ae92f318abc2b1361445b8b0bd9c64f21608e89da3d269599e",
   "17(f)": "caaa99b8523e77396c3de31e286e719dc1c8d47ac2e067aede9822f91a8dfa0d",
-  "18(a)": "e6eb4ad10ffbe838def4592c95015a0afe8750f77e939750a574fd54c63273b6",
-  "18(b)": "84b0f5ed477f304caefbe0d021d09c8605ebfc5fed729281cd5e3265cb6273dc",
+  "18(a)": "88755db48ba0c799ad6386ebd3b98856c6ea1970eaa3462c915d9566c6aeb2d9",
+  "18(b)": "d1601187a894987c558c3dec4ddd855393ca5b5b0162185523694a2177ebb4a2",
   "18(c)": "109c0c3c55cd5a28565a17ee78b77e5583a8873381e8f35f92e7838a69eb8167",
   "18(d)": "47e2f89635fab311bebe58881fcef9bc20ad8c5c9f845573391022eed012d22b",
   "18(e)": "1e06d05a2afcb746c6eae6c6303d185a421918a0a898b66bb7ac5175ae3ae9c1",
   "18(f)": "e04823141a5f3f9737bf814aa68c4a96f9e815d34ac2ddd6f29978ff28427343",
-  "19(a)": "f6193147cbbc159ab726015fbd45bf85c86adafa6f0ae723bf144954f40ebd45",
-  "19(b)": "9165573a71653077c7f91a0f607e1a1cb472602e8fc25e2ed5155bfb1bfa6726",
+  "19(a)": "2edec248e2a9c1ff705bb01bbcce7700029db9a0b38a3c54106dad7d20dea3e9",
+  "19(b)": "0834825f201bdb60acbd6221b627ff0ae4d3a45f01c22c98f008ca28222ce5bd",
   "19(c)": "c23e9040d268bb7c4631f4e1309e5fa7e5e02dee99c10e599c77a2149947b844",
   "19(d)": "a6ab7bedda759b3b3ca9f036c35cd866ed083e1c79e129310e0bfa961b8d4076",
   "19(e)": "bf4e76711d1fe9b303aa0ca0265dd55397aa5919bdca0ac98fd667a367503014",
   "19(f)": "721ceccdc7b292063c47080fefe2d0c2e601429b122ccf9f85c6c1f9e0ec8e66",
-  "20(a)": "3fabc88329f9ea70f6ed18028df6452be615294175edc4c95d5e7e08ab3b8a4f",
-  "20(b)": "a8af2ecd030ba96dd4d6a8ddae8c743d30e98f294dc8fa334658ced42715fb0e",
+  "20(a)": "666e9337a86cfb5fb6a450156a6895879b9357483edce58c42819bf419e488b9",
+  "20(b)": "b1efe289b3cf2ae638ab01377ae6bd609790e313c105558a92ca7ecfb753d608",
   "20(c)": "ab4eb35d35cb9fe2070402bea5ec49fa5e179b7779cf44eee7543965f6b7dc2d",
   "20(d)": "05c83bcd4516c340da1226679fa0bc3dbb927ee126b563f7f06825a230367e20",
   "20(e)": "973cea2c92aaa2a9031a0e9f35d6e491e282886f1f073b94ca442647224c22b8",
   "20(f)": "f0dda961b0ad42c9f2c1bc951716168805f493623583f73d50cd46279c3a13d0",
-  "21(a)": "1417839c9eef22833bee5dda4d161ac6c9a9e6b159c322026577beb9d17a19ac",
-  "21(b)": "f8df85b5af4a503f96ef34e3deefc1e4b5d70b3511ae90c40747333d821362ce",
+  "21(a)": "5ec240d90f61c3c140512c8353fd8e091a03e91eaec93e5ad8b4b444be744853",
+  "21(b)": "14217b83375db7c02bdc21982dd6e439f0cbf8647a6acc32a2b415fa7f0d4ebf",
   "21(c)": "764f171df5834920e3745ae211b18490ba501e3d6dc2813b97463869175d2336",
   "21(d)": "8a9ca9431430c78f364244d69c560b2202413aafcf86891fc2269a344c2b66b4",
   "21(e)": "6d03b1cbc830b6dcee6d8e37546424c70fbf82970adb2abc9a87a11bbca55659",
   "21(f)": "08aaf45d0937057570bc13a0e20c612000731a3c8afcc354286b90940ce2561e",
-  "22(a)": "34349063faf7ada0bd2bf17a168fc4aa411e8b6d481a3ef5c7bb73c20c885755",
-  "22(b)": "6abd56452421f853c0ec6c5955645fe5df6d298e8d32b3095125522fb0886d01",
+  "22(a)": "6584ea8ad57f1005bf030cdd17e9a068eddf69257256191df8a70003db2a99f5",
+  "22(b)": "68cecdbdf05983e9398f74a56d99292f4ef6575d22c044e7dbbc22ea367b3400",
   "22(c)": "aedb588d948f64c71056ea2f6f5a7e844463a1442b70c0f76e3a80f77257e3b0",
   "22(d)": "d0ac714fd85647749e55f0a288548d80b47c9e8af0b7f061e7942b04eb42a145",
   "22(e)": "9545af49a6ab0727edede73a0486b1e0b4152469299de8241db40d8114c979d0",
   "22(f)": "111e04404f686a8fcca9a6ae9f538aad37a66159bdd8c2ea9beb88412ab78877",
-  "23(a)": "b13e2f27e6aa4fdd5b302964de0bef4470f4d399c7e5d55d4e7d4454b5a1623c",
-  "23(b)": "f76833d0ce657232e2e31a8c7c83af5f02fa1b670ace5f94add6603c1561dc71",
+  "23(a)": "0d838ce3c814e9f178f52a7a7c2815bbb008884d4fc6905e83f07928bae02d91",
+  "23(b)": "608dd7106afe8c9c9399d6f33ee5a8afa408f40df722963d6b940cf4208925e3",
   "23(c)": "907b2c10621b83a80fd65aa7c1d9a10fc88402ff5bc86f5ebb35b645bccf49f7",
   "23(d)": "769a8ab61a5e8296ab7651f64949700a818d5cf3048f87b2a0cdd8f748eb1aa3",
   "23(e)": "d05e4b9c124b18b39990b5ed88edc42a1299c2715c5f9acaec54812213c9374c",

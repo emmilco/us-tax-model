@@ -11,8 +11,21 @@ form:
   collection:
     cite: { doc: ny_it201i, locator: 'p. 21, Lines 72, 73, and 74, "You must complete a W-2 record for each W-2 you receive, even if it does not show any New York State, New York City (NYC), or Yonkers wages or tax withheld."' }
   lines:
+    - id: ny_it2.h_state_shown
+      printed: "(helper)"
+      label: "This W-2 shows New York State tax withheld, so box 17a is completed (blank otherwise)"
+      type: Bool
+      expr: { op: test, gt: ["ny_it2.state_withheld", { const: 0 }] }
+      cite: { doc: ny_it2, locator: 'p. 2, Boxes 15a through 17a, "If you have no New York State wages or withholding, leave boxes 16a and 17a blank."' }
+    - id: ny_it2.h_city_shown
+      printed: "(helper)"
+      label: "This W-2 shows New York City tax withheld, so box 19 for New York City is completed (blank otherwise)"
+      type: Bool
+      expr: { op: test, gt: ["ny_it2.city_withheld", { const: 0 }] }
+      cite: { doc: ny_it2, locator: 'p. 2, Boxes 18 through 20, "Complete the locality boxes 18 through 20 only for NYC or Yonkers (or both) wages and withholding, if reported on federal Form W-2."' }
     - id: ny_it2.state_withheld
       printed: "17a"
+      shown_when: ny_it2.h_state_shown
       label: "NYS income tax withheld"
       type: NonNegDollars
       expr: { op: input, source: "New York State income tax withheld on this Form W-2 (box 17 for New York State; the corrected amount if you received a Form W-2c for it; 0 if none)" }
@@ -31,12 +44,14 @@ form:
       cite: { doc: ny_it201i, locator: 'p. 21, Lines 72, 73, and 74, "Enter on the appropriate line your total New York State, New York City, and Yonkers tax withheld from any of the following:"' }
     - id: ny_it2.state_whole
       printed: "17a (whole dollars)"
+      shown_when: ny_it2.h_state_shown
       label: "NYS income tax withheld, in whole dollars"
       type: NonNegDollars
       expr: { op: round, of: "ny_it2.state_withheld", unit: 100, rule: half_up }
       cite: { doc: ny_it2, locator: 'p. 2, Entering whole dollar amounts, "drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar"' }
     - id: ny_it2.city_withheld
       printed: "19"
+      shown_when: ny_it2.h_city_shown
       label: "Local income tax withheld (New York City)"
       type: NonNegDollars
       expr: { op: input, source: "Form W-2 box 19, local income tax withheld for New York City (the corrected amount if you received a Form W-2c for it; 0 if none)" }
@@ -48,6 +63,7 @@ form:
           cite: { doc: ny_it201i, locator: 'p. 17, Line 55: Yonkers resident income tax surcharge, "If you were a resident of Yonkers, did you enter an amount that is more than 0 on line 46?"' }
     - id: ny_it2.city_whole
       printed: "19 (whole dollars)"
+      shown_when: ny_it2.h_city_shown
       label: "Local income tax withheld (New York City), in whole dollars"
       type: NonNegDollars
       expr: { op: round, of: "ny_it2.city_withheld", unit: 100, rule: half_up }

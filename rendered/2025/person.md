@@ -706,8 +706,8 @@
 ## (helper) — `person.mw_business`
 
 - **Authored helper label:** Do you run a business of providing home care services, as a sole proprietor?
-- **Encoded (Bool):** Input — Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?
-- Expr: `{"op":"input","source":"Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?"}`
+- **Encoded (Bool):** Input — Do you run a business of your own that provides home care? (Its pay belongs on a business schedule, Schedule C.)
+- Expr: `{"op":"input","source":"Do you run a business of your own that provides home care? (Its pay belongs on a business schedule, Schedule C.)"}`
 - Cite: [i1040gi] p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `person.mw_business_if_1099`

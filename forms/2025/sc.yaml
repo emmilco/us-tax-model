@@ -177,7 +177,7 @@ form:
       source: Does this business claim a credit for federal excise tax paid on fuel used for a nontaxable purpose, such as an off-highway business use (Form 4136)?
     cite:
       doc: i1040gi
-      locator: p. 117, Line 12, "Enter any credit for federal excise taxes paid on fuels that are ultimately used for a nontaxable purpose (for example, an off-highway business use)"; i4136 p. 2, Part I—Information About Your Business, "You must have owned or operated a business and conducted a business activity with qualifying use of qualifying fuels"
+      locator: p. 117, Line 12, "Enter any credit for federal excise taxes paid on fuels that are ultimately used for a nontaxable purpose (for example, an off-highway business use)"; i4136 p. 2, Part I—Information About Your Business, "You must have owned or operated a business and conducted a business activity with qualifying use of qualifying fuels"; i4136 p. 3, Type of Use Table, "The following table lists the nontaxable uses of fuels"
   - id: sc.screened
     printed: (gate)
     label: Something on this Schedule C is outside this tool

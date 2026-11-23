@@ -1649,7 +1649,7 @@ form:
       label: "Do you run a business of providing home care services, as a sole proprietor?"
       expr:
         op: input
-        source: "Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?"
+        source: "Do you run a business of your own that provides home care? (Its pay belongs on a business schedule, Schedule C.)"
       cite:
         doc: i1040gi
         locator: 'p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts"'

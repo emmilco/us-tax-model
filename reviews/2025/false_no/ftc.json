@@ -181,68 +181,78 @@
    ]
   },
   "gate:ftc.carryover_if_asked": {
-   "subject_sha": "ffe2dc5eeafc129d5abbe5ee70cf4396a5fbe4479608f0bf130d46cbe64db07a",
+   "subject_sha": "38fc348194f44b4589b69d1e1c2ee5363a38835fe1c886c7dd1eb2182eb47330",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer whose only carryover is unused tax paid to a U.S. territory, such as Puerto Rico or Guam, and who has a 2025 carryback-estimate adjustment or a prior joint-return allocation to report.",
-       "why_no": "The gate asks about 'foreign taxes'; the filer reads that as excluding U.S. territory taxes and answers no.",
-       "line": "f1116sb.changed_if_carry / f1116sb.split_if_carry",
-       "irs_text": "i1116 p. 19: 'You can carry back 1 year and then forward 10 years any foreign tax you paid or accrued to any foreign country or U.S. territory'; line 10 says to enter unused foreign taxes from another tax year eligible to be carried forward to or back to 2025.",
-       "severity": "high",
-       "fix": "Say 'foreign country or U.S. territory' in the gate and in the helper."
-      },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer with 2024 excess foreign taxes who estimated a carryback to 2023 equal to the full excess, so the 2024 Schedule B showed no 2025 carryover; the actual carryback is later lower, leaving an unused amount carried to 2025.",
-       "why_no": "They answer no because the 2024 return 'claimed' no carryover to 2025, since line 8 was zero, and they do not see the later carryback adjustment as creating a carryover.",
-       "line": "f1116sb.changed_if_carry",
-       "irs_text": "i1116sb p. 2, Line 2a example: estimated carryback of $20 versus actual $15 leaves a $5 excess entered on line 2a and increases the carryover to $85; i1116 p. 19 line 10 says to enter unused foreign taxes eligible to be carried forward to 2025.",
+       "who": "A filer who worked abroad in 2019 and paid foreign tax above the limit, so the excess is still within its 10-year carryforward. They had no foreign income from 2020 to 2024, so they filed no Form 1116 or Schedule B and their 2024 return was a plain Form 1040 with schedules. In 2025 they have foreign-source income with little or no foreign tax, which creates an excess limitation that can use the old carryover.",
+       "why_no": "The outer gate reads \"has paid income tax to a foreign country or a U.S. territory\" in the present perfect, with no year named in the filer-facing wording. A filer reads it as this year or recent years and answers no. Their 2024 return has no extra form, so the carryover question is never asked.",
+       "line": "ftc.carryover_if_asked (and with it f1116sb.changed_if_carry, f1116sb.split_if_carry)",
+       "irs_text": "i1116 p. 19, Line 10: \"You can carry back 1 year and then forward 10 years any foreign tax you paid or accrued ... that is more than the limitation.\"",
        "severity": "medium",
-       "fix": "Ask whether any prior-year carryover balance or estimated carryback changed, even if the prior return showed zero, and route line 2a adjustments into the changed question."
+       "fix": "Ask: \"In any year from 2015 through 2025, did you or your spouse pay or accrue income tax to a foreign country or U.S. territory, including foreign tax withheld on dividends or interest shown on a Form 1099?\" Also ask whether any return from 2015 through 2024 included Form 1116."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A divorced filer carrying unused foreign tax from an earlier joint return with the ex-spouse, now filing single, where Pub. 514 requires an allocation between the spouses.",
-       "why_no": "The gate says 'your (or, on a joint return, your spouse's),' and the filer no longer has that spouse or is not on a joint return now, so they answer no instead of treating the allocated ex-joint carryover as theirs.",
-       "line": "f1116sb.split_if_carry",
-       "irs_text": "p514 p. 39: 'You may have to allocate an unused foreign tax or excess limit for a tax year in which you and your spouse filed a joint return.' Situation 1 covers current separate returns carrying unused foreign tax from an earlier joint return.",
+       "who": "A married couple filing jointly for 2025. Before the marriage, the spouse filed separate returns with Form 1116 and an unused foreign tax. The filer named on the return never paid foreign tax, and the filer's own 2024 return was a plain Form 1040.",
+       "why_no": "The outer gate speaks of \"a filer who has paid income tax to a foreign country\" and \"whose 2024 return includes a form\". It names no spouse, unlike the inner question. The primary filer answers for themselves and their own 2024 return, so the spouse's carryover is never asked about.",
+       "line": "ftc.carryover_if_asked (and f1116sb.changed_if_carry)",
+       "irs_text": "p514 p. 39, Joint and separate returns in different years: \"If you and your spouse file a joint return for the current tax year, but file separate returns for all the other tax years ... your separate carrybacks or carryovers will be a joint carryback or carryover to the current tax year.\"",
        "severity": "medium",
-       "fix": "Ask about carryovers from any earlier joint return, including with a former or deceased spouse, and state that the filer's allocated share is included."
+       "fix": "Word every part of the outer gate as \"you or your spouse\": \"Did you or your spouse ever pay foreign or territory income tax, and did either of your 2024 returns (joint or separate) include a form besides Form 1040 and its schedules?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A divorced or widowed filer, single or married filing separately for 2025, whose 2023 joint return with a former spouse claimed foreign tax on a jointly owned foreign account and created an unused foreign tax. The filer's 2024 return was a separate plain Form 1040.",
+       "why_no": "The filer thinks of the foreign tax as the ex-spouse's or as belonging to the joint return. They answer no to \"has paid income tax to a foreign country\", or to \"your ... unused foreign taxes\". The split question, whose help describes exactly this case, is never reached, so the refusal is missed.",
+       "line": "f1116sb.split_if_carry (missed refusal), ftc.carryover_if_asked",
+       "irs_text": "p514 p. 39, Allocations Between Spouses: \"1. You and your spouse file separate returns for the current tax year, to which you carry an unused foreign tax from a tax year for which you and your spouse filed a joint return.\"",
+       "severity": "medium",
+       "fix": "Add to the outer gate: \"Did you file a joint return in any year from 2015 through 2024 that included Form 1116 or reported foreign tax?\" Then ask the split question whenever the answer is yes, before asking whether a carryover is claimed."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose 2024 Schedule B (Form 1116) showed excess foreign tax, estimated on line 7 as carried back in full to 2023, so line 8 was zero. The actual carryback, found when 2023 was amended, was smaller (as in the Sam example).",
+       "why_no": "The filer sees that the 2024 Schedule B carried nothing forward and believes all of it went back to 2023. They answer no to \"Are any of your ... unused foreign taxes carried to 2025\". In fact the excess returns as a line 2a adjustment and a carryover to 2025.",
+       "line": "f1116sb.changed_if_carry (missed refusal), ftc.carryover_if_asked",
+       "irs_text": "i1116sb p. 2, Line 7: \"If an estimated amount is entered on line 7 and this amount differs from the actual carryback amount, the difference will be entered on line 2a of your subsequent year Schedule B.\"",
+       "severity": "medium",
+       "fix": "Ask the change question whenever the 2024 return included Form 1116 or Schedule B (Form 1116), not only when a carryover is claimed. Also add help that says: \"Count amounts estimated as carried back to 2023 that turned out smaller, and any foreign tax redetermined or adjusted since you filed.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer who used software for 2024 and paid foreign tax above the credit limitation on Form 1116. They do not know the excess became a carryover.",
+       "why_no": "\"Unused foreign taxes ... carried to 2025\" is a legal result the filer does not track. They remember claiming the credit and answer no.",
+       "line": "ftc.carryover_if_asked",
+       "irs_text": "i1116 p. 19, Line 10: \"The amount of foreign taxes carried forward to the current tax year is the amount in column (xiv) of Schedule B (Form 1116), line 3.\"",
+       "severity": "medium",
+       "fix": "Ask something the filer can check: \"Did your (or your spouse's) 2024 return include Schedule B (Form 1116), or a Form 1116 where line 14 was more than line 24, or any earlier Form 1116 with foreign taxes above the credit?\" Classify after a yes."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer with a prior-year foreign tax carryover that is fully used in 2025, or with no 2025 excess limitation so none is used, and who also has a Schedule B line 2 adjustment or a prior joint-return allocation.",
-       "why_no": "They read 'unused foreign taxes carried to 2025' as taxes still unused after 2025, or as a credit actually claimed or used on the 2025 return, so they answer no when nothing remains to carry to 2026.",
-       "line": "f1116sb.changed_if_carry / f1116sb.split_if_carry",
-       "irs_text": "i1116 p. 19 Line 10: 'Enter the unused foreign taxes ... eligible to be carried forward to or back to 2025'; Schedule B line 4 separately shows the carryover used in the current year.",
+       "who": "A filer whose only foreign tax was withheld by a foreign fund, shown on Form 1099-DIV, in an earlier year when they filed Form 1116 and created a carryover. Their 2024 return had no extra form.",
+       "why_no": "The filer does not see fund withholding on a 1099 as having \"paid income tax to a foreign country\", so the gate closes.",
+       "line": "ftc.carryover_if_asked",
+       "irs_text": "i1116 p. 19: \"If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV, 1099-INT, or similar statement ...\"",
        "severity": "medium",
-       "fix": "Ask 'Was any foreign tax from an earlier year available to carry into 2025, even if fully used in 2025?' and avoid the 'unused'/'claimed' ambiguity."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer whose carryover involves a joint return in some but not all years: either current joint with the same spouse after an intervening separate year (Pub. 514 situation 3), or current separate with unused tax originating in a separate year but passing through a joint year (situation 2).",
-       "why_no": "The split question asks only about foreign tax carried from an earlier joint return 'with someone you are not filing jointly with now'; the situation-3 filer is still filing jointly with that spouse, and the situation-2 filer's unused tax originated in a separate year, so both answer no.",
-       "line": "f1116sb.split_if_carry",
-       "irs_text": "p514 p. 39, Allocations Between Spouses, situations 2 and 3: allocation is needed when carrying through a joint year to a separate current year, or through a separate year to a joint current year.",
-       "severity": "high",
-       "fix": "Ask whether any year in the carryover period had a joint return with a spouse not on the current return, or whether any intervening year had a different filing status; state that Pub. 514 allocation can apply even if the current return is joint with the same spouse or the unused tax arose in a separate year."
+       "fix": "State in the gate's help that foreign tax withheld on dividends or interest (Form 1099-DIV box 7, Form 1099-INT box 6) counts as foreign tax paid."
       }
      ],
-     "prompt_sha": "6a6b966de95c942d8a62c755320c452ad8e7e692661df0788ff2827df6b725a1",
+     "prompt_sha": "af91021b3d54e079746863c5caee684e555a355649892b164579b29449242f9d",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_ftc.carryover_if_asked.ffe2dc5eeafc.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.18426800000000002,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_ftc.carryover_if_asked.38fc348194f4.1.response.txt"
     }
    ],
    "condition": "ftc.carryover_if_asked",

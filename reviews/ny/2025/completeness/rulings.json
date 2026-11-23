@@ -6,11 +6,6 @@
    "evidence": "ny_it201i p. 4, Item A: \"One spouse is a New York State resident and the other is a nonresident or part-year resident. In this case, you must either: file separate New York returns ... or file jointly, as if you both were New York State residents\". A joint federal return reaches this only through ny_it201.ask.spouse_resident ('Did your husband or wife also live in New York City for all of 2025?', asked on a joint return): a No makes ny_it201.spouse_not_resident true, and ny_it201.gate.spouse_nonresident (a choice on f1040.status: mfj reads spouse_not_resident; single, mfs, hoh and qss give no) refuses ny_it201.line1 ('Separate New York returns, or a joint return taxing both as residents'); a refused IT-201 is a refused New York profile, so the status item of this form is never produced for that case. A federal separate return keeps New York status 3, which the exception does not change.",
    "subject_sha": "49be96ed2f36f64e529cd0f69e8a38df784fb1a8fc429a11cf69756ee87b7f4a"
   },
-  "unruled:ny_it2#1.1": {
-   "class": "out of scope",
-   "evidence": "ny_it201i p. 21: \"If you received foreign income but did not receive a federal Form W-2, you must complete Form IT-2\" (ny_it2 p. 2: \"foreign earned income\"). Form IT-2 is the wage and withholding record. Wages with no W-2 are refused federally: scope.pay_no_w2 ('wages, tips or strike benefits that are not on a W-2') leads to scope.wages_no_form ('did an employer pay you ... wages for which you have no W-2, other than the kinds of pay just asked about?'), whose Yes (scope.wages_no_form_if_pay) is in scope.other_income, which refuses; a nonresident alien is refused by the same line (scope.nonresident_if_noncitizen). So no W-2-less foreign wages reach New York and no W-2-less IT-2 record is needed; self-employment income is not wages and goes on Schedule C, not Form IT-2. As BUG-0749 (c) records.",
-   "subject_sha": "1356bcdf5aa88e24be7bb6cf80bfc72b3d7f051943f6b9d9f9dc3979a26ba588"
-  },
   "unruled:ny_rs#1.1": {
    "class": "out of scope",
    "gate": "ny_it201.gate.spouse_nonresident",
@@ -18,48 +13,31 @@
    "subject_sha": "c9d8750c329d3459bf28a7aed9754844cd5c17bc7949e7dc23f64dbeefe34b7d"
   },
   "unruled:ny_it201#1.1": {
-   "class": "covered",
-   "evidence": "The encoding is ny_it201.line37 = subtract_floor0(line35, line36), so a negative result is $0 and line 38 copies it; the note on line 37 says 'a blank is read as zero', matching ny_it201i p. 11 'If line 36 is more than line 35, leave line 37 and line 38 blank'.",
-   "subject_sha": "2de63d55925a41ddbfe45a50625869a712fa81c813bbec3cc97f575f30c0b833",
-   "line": "ny_it201.line37"
+   "class": "real gap",
+   "evidence": "ny_it201i p. 5: a federal joint filer whose spouse's 'address or whereabouts ... is unknown', or who 'refuses to sign a joint New York return' with evidence of alienation, 'may file a separate New York return'; only ny_it201.gate.spouse_nonresident is encoded. BUG-1095.",
+   "subject_sha": "d8891ef31e3e6c0b6886e9ee6c32869a7f873ee17de7f9f669c313302dfb2801",
+   "bug": "BUG-1095"
   },
   "unruled:ny_it201#1.2": {
    "class": "out of scope",
-   "evidence": "The Line 47 worksheet is for a filer who contributed to a Charitable Gifts Trust Fund account 'and' claimed an itemized deduction for it on Form IT-196 (ny_it201i p. 13; worksheet line 4 'Enter your itemized deduction amount (Form IT-201, line 34)'). Itemizing is refused: ny_it201.gate.itemize refuses ny_it201.line34 (Form IT-196), so a standard-deduction filer takes the 'No' path 'enter the line 38 amount on line 47'.",
-   "subject_sha": "2de63d55925a41ddbfe45a50625869a712fa81c813bbec3cc97f575f30c0b833",
-   "gate": "ny_it201.gate.itemize"
+   "evidence": "ny_it201i p. 6, codes C7 and M4 to M9 concern servicemembers and their spouses; ny_it201.ask.active_duty is asked when either served in the armed forces, with help 'Military residence rules are outside this tool; a Yes ends the New York part here'.",
+   "subject_sha": "d8891ef31e3e6c0b6886e9ee6c32869a7f873ee17de7f9f669c313302dfb2801",
+   "gate": "ny_it201.active_duty_if_armed_forces"
   },
   "unruled:ny_it201#1.3": {
    "class": "wrong",
-   "evidence": "ny_it201.line48 has the guard ny_it201.item_c = true then ny_it201.zero, matching ny_it201i p. 13 'If you marked the Yes box at item C... you do not qualify for this credit'; the reviewer missed it.",
-   "subject_sha": "2de63d55925a41ddbfe45a50625869a712fa81c813bbec3cc97f575f30c0b833"
+   "evidence": "ny_it201i p. 20: ny_it201.line69a's first alternative is guard ny_it201.item_c = true then ny_it201.zero_stc, so item C Yes gives no rate-reduction credit; the reviewer read only the income gate.",
+   "subject_sha": "d8891ef31e3e6c0b6886e9ee6c32869a7f873ee17de7f9f669c313302dfb2801"
   },
   "unruled:ny_it201#1.4": {
    "class": "wrong",
-   "evidence": "ny_it201.line69a has the guard ny_it201.item_c = true then ny_it201.zero_stc (and the $500,000 refusal), matching ny_it201i p. 20 'you marked Yes at item C... or your income... is more than $500,000, you do not qualify'; the reviewer read only the refusal gate.",
-   "subject_sha": "2de63d55925a41ddbfe45a50625869a712fa81c813bbec3cc97f575f30c0b833"
+   "evidence": "ny_it201i p. 11, 'If line 36 is more than line 35, leave line 37 and line 38 blank': ny_it201.line37 is subtract_floor0(line35, line36), so it is never negative.",
+   "subject_sha": "d8891ef31e3e6c0b6886e9ee6c32869a7f873ee17de7f9f669c313302dfb2801"
   },
-  "unruled:ny_it201#1.5": {
-   "class": "covered",
-   "evidence": "The tool is only for full-year New York City residents (ny_it201.gate.part_year_city), whose locality is New York City: 'its rate of tax is higher than the rate of tax originally paid' (ny_it201i p. 18) is the help 'Count a purchase taxed below New York City's rate' in ny_it201.ask.bought_untaxed. The IT-135 trigger (line 59 of $1,700 or more) cannot arise: the chart amount is at most $125 (ny_it201.sut.cap) and an item of $1,000 or more is refused by ny_it201.gate.use_tax_st141.",
-   "subject_sha": "2de63d55925a41ddbfe45a50625869a712fa81c813bbec3cc97f575f30c0b833",
-   "line": "ny_it201.line59"
-  },
-  "unruled:ny_it201#1.6": {
+  "unruled:ny_it2#1.1": {
    "class": "out of scope",
-   "evidence": "The Form IT-280 election disclaims a spouse's debt after the return is processed (ny_it201i p. 22: 'complete Form IT-280... and submit it with your original return'); it changes how the refund is applied, not any IT-201 line amount, and it cannot reach IRS or other-state debts. No encoded line value changes.",
-   "subject_sha": "2de63d55925a41ddbfe45a50625869a712fa81c813bbec3cc97f575f30c0b833"
-  },
-  "unruled:ny_it201#1.7": {
-   "class": "out of scope",
-   "evidence": "Innocent spouse relief is requested on Form IT-285 after filing (ny_it201i p. 32: 'Do not file Form IT-285 with your return'); it does not change any amount on Form IT-201 line 80.",
-   "subject_sha": "2de63d55925a41ddbfe45a50625869a712fa81c813bbec3cc97f575f30c0b833"
-  },
-  "unruled:ny_it201#1.8": {
-   "class": "out of scope",
-   "evidence": "ny_it201i p. 5 says 'In most cases, you must use the same filing status you used on your federal return' and the unknown-whereabouts and refusing-spouse exceptions say 'you may file a separate New York return'; they are optional alternatives to the federal status the tool uses (f1040.status, with ny_it201.gate.spouse_nonresident for a nonresident spouse), so the tool's joint return stays valid and no amount is wrong.",
-   "subject_sha": "2de63d55925a41ddbfe45a50625869a712fa81c813bbec3cc97f575f30c0b833",
-   "gate": "ny_it201.gate.spouse_nonresident"
+   "subject_sha": "945379abe6438f10cd70e344611fdf1734198a74033fc40d4628aa2afc667b0e",
+   "evidence": "ny_it201i p. 21, 'If you received foreign income but did not receive a federal Form W-2, you must complete Form IT-2.' Foreign pay with no Form W-2 is refused federally by scope.pay_no_w2 ('Wages, tips, or strike or lockout pay not on a W-2'), and income excluded as earned abroad by sa.excluded_income, so no New York return reaches IT-2 with such income."
   }
  },
  "baseline": {}

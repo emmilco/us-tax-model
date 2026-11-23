@@ -4,14 +4,14 @@
  "family": "claude",
  "base": "aeb709409efba936375810f79fef256b49b08f5a529531d77b533f86344b595a",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "17a",
-   "record": "a1b6bab5b37464bbf1db99c1a3f5c7fbf8902589788a2810fdddb7e95b4abee5",
+   "record": "41f998bc837d09605fd91eac48ad1ab8aab6d6426424539e62e62cf172e5aa4d",
    "status": "MATCH",
-   "subject_key": "2b0c54e0a944f6bcf7494996ef175b0360ad736498d29a143f671231006b9ce1"
+   "subject_key": "e71d6fd6dd1a46ec220f722c8aed2236bbfe5b5021bc46f6ebc8f23ebbab028f"
   },
   {
    "key": "19 (Yonkers)",
@@ -21,29 +21,29 @@
   },
   {
    "key": "17a (whole dollars)",
-   "record": "a1b6bab5b37464bbf1db99c1a3f5c7fbf8902589788a2810fdddb7e95b4abee5",
+   "record": "41f998bc837d09605fd91eac48ad1ab8aab6d6426424539e62e62cf172e5aa4d",
    "status": "MATCH",
-   "subject_key": "6672da08be749b1658c90123838f6aaf11350687996893ab0e239bdaf710834b"
+   "subject_key": "197b5f5d75698d0cb482f1e612a3dd832d2e7f7d9e0e32e2e34d6937b9dd933b"
   },
   {
    "key": "19",
-   "record": "a1b6bab5b37464bbf1db99c1a3f5c7fbf8902589788a2810fdddb7e95b4abee5",
+   "record": "41f998bc837d09605fd91eac48ad1ab8aab6d6426424539e62e62cf172e5aa4d",
    "status": "MATCH",
-   "subject_key": "f85aaf36f3e1ac9a8c2a7b19b013231e6ac51c344b0d01792fc5d4601f125e61"
+   "subject_key": "595cbb56ceec110bc438de22dfe2c1246ad6a66a4a9cce72f33d250079f071b1"
   },
   {
    "key": "19 (whole dollars)",
-   "record": "a1b6bab5b37464bbf1db99c1a3f5c7fbf8902589788a2810fdddb7e95b4abee5",
+   "record": "41f998bc837d09605fd91eac48ad1ab8aab6d6426424539e62e62cf172e5aa4d",
    "status": "MATCH",
-   "subject_key": "d4df5caa14ae935c9d44d136fe41b41947b0e3f3166860be38924123ee533930"
+   "subject_key": "2ec89353eeca55bcea5b28cade35aa39250deb4869a138fca7295527783778a6"
   }
  ],
  "subjects": {
-  "17a": "7d228404ccc545c62e6e408e8a3c6a31a662a7b0b2aba36299a2b0f874d20620",
+  "17a": "83f7d74eee6ef9c76194ec96e711b56f9de10f83d579ae38a37b44a13f93db20",
   "19 (Yonkers)": "d8914d0f0e79e7184790b547c0e472057dcbcfc9b8cfbf3f998b2a5ce1b89bce",
-  "17a (whole dollars)": "373e87fc9c17244f110a789b89aa7d951f4a46ce11f8073c8bd0e727b2c89271",
-  "19": "ee2aaf3bc171a854ae8edfdf20727f3fdef44a2e97a9fa07d7b81a4c792d3c64",
-  "19 (whole dollars)": "2dfcff49f12797b162f1a65014a2e36cb581664dc975ad0376377c37fea0d28a"
+  "17a (whole dollars)": "7c26767573509c68c7d283e4f19818f386e44c53585abcafc622f97316d83d09",
+  "19": "02e2b5838dd3ff8f405fc59a1e30eb84bca01c471e58f1e7127ecf218fab6e41",
+  "19 (whole dollars)": "a384d00d32df5e5e0dd8609f31b22f7d984730d2ac646175af57c4f06ec2eab6"
  },
  "__rest__": "7f81808e16a3ebcf41cacb68d9a14af68fedf63abaf5e1f8751b95630ee7ab75"
 }

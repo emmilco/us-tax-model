@@ -73,54 +73,68 @@
    ]
   },
   "gate:ny_it201.ask.bought_untaxed": {
-   "subject_sha": "9bbba148a8e3c935e84ab61c780672193ad37a2d6936656df8ba86d572ce4831",
+   "subject_sha": "04f47910c9b9b46a8cbdc705a686bdce17ab24cc9e8177b27b2a29539bc55dbe",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A New York resident who bought a $4,000 sofa in New Hampshire in 2024 while a New York resident, stored it out of state, and first brought it into New York for use in 2025; no New York sales tax was paid.",
-       "why_no": "The gate asks 'In 2025, did you ... buy'; they did not buy anything in 2025, so they answer no. The line also reaches a purchase made earlier and first used in New York this year.",
-       "line": "ny_it201.use_tax_dmv_only_if_bought",
-       "irs_text": "ny_it201i p. 18: 'You owe sales or compensating use tax if you: ... purchased an item or service outside New York State that is subject to tax in New York State (and you were a resident of New York State at the time of purchase) with subsequent use in New York State.'",
-       "severity": "high"
+       "pattern": "6",
+       "who": "A New York City resident buys furniture in a lower-rate New York county, such as one at 8%, pays that county's tax, and brings it home to NYC (8.875%). The same applies when a seller ships to a NY address but charges the rate of the wrong locality.",
+       "why_no": "The question asks whether they bought anything 'without paying New York sales tax, such as online or out of state'. They paid New York sales tax, and the purchase was neither online nor out of state, so no is truthful. Only the help mentions a purchase 'taxed below the combined state and local rate', and the examples steer away from purchases inside New York.",
+       "line": "ny_it201.use_tax_dmv_only_if_bought (forced false), so no use tax goes to IT-201 line 59 although the difference in locality rates is owed",
+       "irs_text": "ny_it201i p. 18: 'You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid.'",
+       "severity": "high",
+       "fix": "Widen the question: 'In 2025, did you (or your spouse) buy anything taxable that you used in New York without paying the full sales tax rate of the place in New York where you lived, including a purchase where tax was charged at a lower rate (another state, another NY county, or a seller that charged too little)?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A non-NYC New York resident who buys a $3,000 item in a New York locality with a lower combined rate than their home locality, or from an online seller that collects the lower rate, and uses it at home; they paid New York State and local sales tax, but less than their home locality's rate.",
-       "why_no": "The gate asks whether they bought without paying New York sales tax; they did pay New York sales tax, just at a lower local rate, so they answer no. The help's 'Count a purchase taxed below New York City's rate' reads as an NYC-only rule and does not tell them to compare to their own locality's rate.",
-       "line": "ny_it201.use_tax_dmv_only_if_bought",
-       "irs_text": "ny_it201i p. 18: 'You may also owe an additional local tax if you use property or services in another locality in New York State, other than the locality to which you paid tax. You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid.'",
-       "severity": "medium"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A New Jersey income-tax resident who owns a Manhattan apartment (a permanent place of abode) and buys taxable goods online from a no-tax state, delivered to that apartment, for use there.",
-       "why_no": "They know they are not a New York income-tax resident and answer no to buying taxable goods in New York; the instructions make a person with a New York permanent place of abode a sales-tax resident even if not an income-tax resident.",
-       "line": "ny_it201.use_tax_dmv_only_if_bought",
-       "irs_text": "ny_it201i p. 18: 'For sales and use tax purposes, a resident includes persons who have a permanent place of abode in the state. Accordingly, you may be a resident for sales tax purposes even though you may not be a resident for income tax purposes.'",
-       "severity": "medium"
+       "who": "A Manhattan resident buys a laptop in Pennsylvania, pays 6% Pennsylvania sales tax, and brings it home.",
+       "why_no": "They did pay sales tax, and read 'without paying New York sales tax' as 'without paying sales tax'. The rule that tax paid elsewhere only earns a credit, and the rest is still owed, appears only in help they may skip.",
+       "line": "ny_it201.use_tax_dmv_only_if_bought (forced false); line 59 omits the use tax that remains after the credit",
+       "irs_text": "ny_it201i p. 18: 'purchased an item or service outside New York State that is subject to tax in New York State ... with subsequent use in New York State' and 'You may be entitled to a credit for sales tax paid to another state.'",
+       "severity": "medium",
+       "fix": "Put it in the question: 'Count a purchase even if another state charged tax, when its rate was lower than your New York rate.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "7",
-       "who": "A sole proprietor who buys $5,000 of taxable equipment online for a business that is not registered for New York sales tax, and the seller charges no New York tax.",
-       "why_no": "The help says 'Leave out purchases of a business registered for sales tax'; the filer reads that as leaving out business purchases generally, or does not know whether the business is registered, and answers no.",
-       "line": "ny_it201.use_tax_dmv_only_if_bought",
-       "irs_text": "ny_it201i p. 18: 'You may not use this line to report: ... any sales and use tax on business purchases if the business is registered for sales and use tax purposes. You must report this tax on the business\u2019s sales tax return.' The same page says the chart may not be used for purchases related to a business not registered for sales tax purposes.",
-       "severity": "medium"
+       "who": "A filer buys digital software, prewritten software downloads, or taxable services such as information services or out-of-state repair of property kept in NY. Sellers charged no tax.",
+       "why_no": "The question asks the filer to decide what is 'taxable in New York'. Many people assume downloads and services are not taxable, or that they only buy 'things', so they answer no.",
+       "line": "ny_it201.use_tax_dmv_only_if_bought (forced false); line 59 drops the chart amount or the ST-141 amount",
+       "irs_text": "ny_it201i p. 18: 'You owe sales or compensating use tax if you: purchased an item or service subject to tax that is delivered to you in New York State without payment of New York State and local tax to the seller'",
+       "severity": "medium",
+       "fix": "Ask about a fact the filer can check: 'Did any online, catalog, TV, out-of-state or reservation seller (including software and services) not charge you New York tax?' Classify taxability after a yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A landlord with rental real estate, or a holder of royalty interests, not registered for sales tax, buys appliances or equipment for the rental from an out-of-state seller who charges no tax.",
+       "why_no": "The filer sees these as business or rental costs, not personal purchases. The help's 'Leave out purchases of a business' reads as covering them, although only a business registered for sales tax is excluded.",
+       "line": "ny_it201.use_tax_dmv_only_if_bought (forced false); line 59 omits use tax that must be computed on ST-141",
+       "irs_text": "ny_it201i p. 18: 'You must use Form ST-141 ... if ... You owe sales or use tax for purchases related to a business not registered for sales tax purposes, rental real estate, or royalty activities.'",
+       "severity": "medium",
+       "fix": "State it: 'Include purchases for a rental property, royalty activity, or a business that is not registered to collect sales tax.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A resident buys an item out of state in late December 2024 and first brings it into New York or uses it there in 2025. Or an order placed in 2024 is delivered in 2025.",
+       "why_no": "'In 2025, did you ... buy' points to the purchase date, so they answer no.",
+       "line": "ny_it201.use_tax_dmv_only_if_bought (forced false); line 59",
+       "irs_text": "ny_it201i p. 18: 'purchased an item or service outside New York State ... with subsequent use in New York State'",
+       "severity": "low",
+       "fix": "Ask: 'In 2025, did you buy, receive, or first bring into New York anything ...' and add 'unless you already reported it on an earlier return'."
       }
      ],
-     "prompt_sha": "35417d8cc535c74f72f45d8b601658dbca3f782f2022222a20762458353d9829",
+     "prompt_sha": "c79d1e80b8fe8d4732130689a802c8b723094abdc24e898aa0fefd20c5a9349b",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/ny/false_no/gate_ny_it201.ask.bought_untaxed.9bbba148a8e3.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.11729200000000001,
+     "date": "2026-11-22",
+     "response": ".transcription/ny/false_no/gate_ny_it201.ask.bought_untaxed.04f47910c9b9.1.response.txt"
     }
    ],
    "condition": "ny_it201.ask.bought_untaxed",
@@ -141,7 +155,7 @@
      "how": "cited pages",
      "locators": [
       "p. 18, Line 59: Sales or use tax, \"You may not use this line to report:\" and \"any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department\"",
-      "p. 18, Line 59: Sales or use tax, \"You owe sales or compensating use tax if you:\""
+      "p. 18, Line 59: Sales or use tax, \"You owe sales or compensating use tax if you:\"; \"You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid\""
      ],
      "cols_pages": [
       18
@@ -326,7 +340,7 @@
    ]
   },
   "gate:ny_it201.ask.owes_use_tax": {
-   "subject_sha": "832fee71d69cb3667dd3a35941ce3afdc5e3dbc5fde41fd5c8b7c7ab562eba3b",
+   "subject_sha": "bfe26148dd9043ed9c0788cba77fa5fce31b145535f675a52a4de2108c3229e7",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -334,70 +348,60 @@
       {
        "kind": "FALSE_NO",
        "pattern": "3",
-       "who": "Married filing jointly; the spouse, not the filer, bought taxable personal goods online delivered to their New York home and no New York sales tax was collected. They maintained a New York abode for only part of 2025.",
-       "why_no": "The gate asks whether 'you' bought the goods; the filer truthfully answers no for themselves and the wording never says 'you or your spouse'.",
-       "line": "ny_it201.gate.use_tax_abode",
-       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'Report your sales or use tax liability on this line' and 'You owe sales or compensating use tax if you: \u2022 purchased an item or service subject to tax...'",
+       "who": "A married couple filing a joint IT-201. Only the spouse bought an untaxed item, for example a laptop delivered to their Monroe County home by an out-of-state seller who collected no New York tax.",
+       "why_no": "The gate is worded for one person ('rate where you lived in New York'). The filer did not buy anything untaxed and truthfully answers no.",
+       "line": "ny_it201.gate.use_tax_abode (and line 59 itself, which the same gate zeroes)",
+       "irs_text": "ny_it201i p. 18, Line 59: 'You owe sales or compensating use tax if you: • purchased an item or service subject to tax that is delivered to you in New York State without payment of New York State and local tax to the seller'",
        "severity": "high",
-       "fix": "Ask 'Did you or your spouse buy...' and include either spouse's untaxed purchases in the line 59 and abode-proration computation."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A New York resident bought a taxable item out of state in 2023, stored it, and first brought it into New York in 2025; the filer maintained a New York abode for only part of 2025.",
-       "why_no": "In the annual return context the filer reads 'Bought' as asking about purchases made in 2025, so they say no because the purchase was years earlier.",
-       "line": "ny_it201.gate.use_tax_abode",
-       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'purchased an item or service outside New York State ... with subsequent use in New York State.'",
-       "severity": "medium",
-       "fix": "Ask whether in 2025 the filer first used or brought into New York any taxable item purchased without New York tax, regardless of the purchase year."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A part-year New York abode holder who is not a New York income tax resident bought taxable goods online delivered to the New York apartment and paid no New York tax; they think nonresidents do not owe New York use tax.",
-       "why_no": "The gate says 'taxable in New York' without telling them that a permanent place of abode makes them a New York sales-tax resident, so they answer no because they are not a New York resident for income tax.",
-       "line": "ny_it201.gate.use_tax_abode",
-       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'For sales and use tax purposes, a resident includes persons who have a permanent place of abode in the state. Accordingly, you may be a resident for sales tax purposes even though you may not be a resident for income tax purposes.'",
-       "severity": "medium",
-       "fix": "State that a permanent place of abode makes the filer a New York sales-tax resident for these purchases; ask whether goods were delivered to or used at that New York home."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer bought a taxable laptop online delivered to New York and paid no sales tax; they had no vehicle or vessel purchase. When asked 'Not every untaxed purchase was a vehicle or vessel taxed at the DMV,' they answer no.",
-       "why_no": "The double-negative helper is read as asking whether they had a vehicle or vessel; they say no, although the statement is true for their laptop purchase.",
-       "line": "ny_it201.gate.use_tax_abode",
-       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'You owe sales or compensating use tax if you: \u2022 purchased an item or service subject to tax that is delivered to you in New York State without payment of New York State and local tax to the seller...'",
-       "severity": "medium",
-       "fix": "Replace the helper with 'Were all of your untaxed purchases vehicles or vessels taxed at the DMV?' (yes -> no; no -> yes) or ask directly whether there was any untaxed purchase other than a DMV-taxed vehicle or vessel."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "An individual bought personal goods online from a New York seller that collected no tax, and the individual also owns a business registered for New York sales tax. They read 'other than purchases of a business registered for sales tax' as excluding them because they have a registered business.",
-       "why_no": "The phrase 'purchases of a business registered for sales tax' is ambiguous; they take it to exclude personal purchases or purchases from a registered seller.",
-       "line": "ny_it201.gate.use_tax_abode",
-       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'You may not use this line to report: \u2022 any sales and use tax on business purchases if the business is registered for sales and use tax purposes.'",
-       "severity": "medium",
-       "fix": "Say 'other than business purchases made by a business registered for New York sales tax' and add that personal purchases by an owner remain reportable."
+       "fix": "Ask 'Did you or your spouse buy goods or services ...' for every per-return use-tax question."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer bought taxable goods from a television shopping channel (or on an Indian reservation other than Oneida) and paid no New York tax; they read the gate's examples 'online, by catalog, or out of state' as the complete list.",
-       "why_no": "The examples omit categories the instructions expressly name, so the filer takes the list as exhaustive and answers no.",
-       "line": "ny_it201.gate.use_tax_abode",
-       "irs_text": "ny_it201i p. 18, Line 59: Sales or use tax: 'An unpaid sales or use tax liability commonly occurs if you made purchases through the Internet, by catalog, from television shopping channels, or on an Indian reservation (except for purchases subject to Oneida Nation taxes)...'",
+       "who": "A New York resident who bought untaxed cigarettes, fuel or other goods on an Indian reservation in New York (not an Oneida Nation purchase), or bought from a television shopping channel that charged no New York tax.",
+       "why_no": "The examples are 'online, by catalog, or out of state and brought into New York'. A reservation purchase made inside New York, or a TV-channel order, does not match them, and the filer takes the list as complete.",
+       "line": "ny_it201.gate.use_tax_abode (and line 59)",
+       "irs_text": "ny_it201i p. 18: 'An unpaid sales or use tax liability commonly occurs if you made purchases through the Internet, by catalog, from television shopping channels, or on an Indian reservation (except for purchases subject to Oneida Nation taxes)'",
        "severity": "medium",
-       "fix": "Add television shopping and Indian reservation purchases to the examples, or drop the examples and use the broad 'purchased an item or service subject to tax' wording."
+       "fix": "Add to the examples 'from a television shopping channel, or on an Indian reservation in New York (other than Oneida Nation purchases)', and say the list is not complete."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A New York resident who bought goods abroad and brought them home or had them shipped through customs, paying foreign VAT but no New York tax.",
+       "why_no": "'Out of state' reads as another U.S. state. Having paid tax abroad, the filer believes they did pay sales tax.",
+       "line": "ny_it201.gate.use_tax_abode (and line 59)",
+       "irs_text": "ny_it201i p. 18: 'purchased an item or service outside New York State that is subject to tax in New York State (and you were a resident of New York State at the time of purchase) with subsequent use in New York State' ... 'routine audits based on information received from third parties, including the U.S. Customs Service'",
+       "severity": "medium",
+       "fix": "Say 'outside New York State, including in another country', and state that foreign VAT or other foreign tax is not New York sales tax."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A resident who ordered items online from sellers that collected no tax, or paid an out-of-state shop to repair an item, and cannot tell whether those purchases are 'taxable in New York'.",
+       "why_no": "The gate asks for a legal classification ('goods or services taxable in New York'). Unsure filers assume online purchases or services are not taxable and answer no.",
+       "line": "ny_it201.gate.use_tax_abode (and line 59)",
+       "irs_text": "ny_it201i p. 18, Example 1: 'You purchased a computer over the Internet that was delivered to your house in Monroe County, New York, from an out-of-state company and did not pay sales tax to that company.'",
+       "severity": "medium",
+       "fix": "First ask a fact the filer can check: 'Did you or your spouse buy anything delivered to or brought into New York on which the seller charged no New York sales tax, or a lower rate than your New York locality?' Settle taxability afterwards, with guidance."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A resident who paid sales tax in another state, or in a lower-rate New York locality, on an item brought home to a higher-rate New York locality where they lived at the time of purchase.",
+       "why_no": "The filer thinks 'I paid sales tax' and does not compare rates. The lower-rate clause sits in a long sentence and is easy to miss.",
+       "line": "ny_it201.gate.use_tax_abode (and line 59)",
+       "irs_text": "ny_it201i p. 18: 'You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid.'",
+       "severity": "low",
+       "fix": "Ask the lower-rate case as its own question: 'Did you pay sales tax somewhere else at a lower rate than where you lived in New York?'"
       }
      ],
-     "prompt_sha": "cb76e5e504c759d14cbf983e1b4c490025863bd3fafff536b8e60fcb21645532",
+     "prompt_sha": "507a6c90af40f88a97d5f9cfbef2759cae8a41f6010a91684644c96b279e8115",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/ny/false_no/gate_ny_it201.ask.owes_use_tax.832fee71d69c.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.094756,
+     "date": "2026-11-22",
+     "response": ".transcription/ny/false_no/gate_ny_it201.ask.owes_use_tax.bfe26148dd90.1.response.txt"
     }
    ],
    "condition": "ny_it201.ask.owes_use_tax",
@@ -437,7 +441,7 @@
       {
        "kind": "FALSE_NO",
        "pattern": "2",
-       "who": "A filer (or joint filer and spouse) with no New York estimated tax payments on line 75, whose only prepayment is wage withholding that is less than the required annual payment\u2014for example, a wage earner with a large bonus or investment income, or a self-employed filer with no withholding.",
+       "who": "A filer (or joint filer and spouse) with no New York estimated tax payments on line 75, whose only prepayment is wage withholding that is less than the required annual payment—for example, a wage earner with a large bonus or investment income, or a self-employed filer with no withholding.",
        "why_no": "The computed gate requires 'Estimated tax payments (line 75) more than zero'; with line 75 at zero it is false, so the tool never asks whether any estimated installment was skipped and treats the late/short-installment line as no.",
        "line": "ny_it201.est_penalty_late",
        "irs_text": "ny_it201i p. 23, Line 81: 'You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year.'",
@@ -492,9 +496,9 @@
        "who": "A married couple filing jointly where only the spouse's employer provided dependent care benefits (for example, through the spouse's dependent care FSA, W-2 box 10), or only the spouse paid the daycare provider from the spouse's own account.",
        "why_no": "The gate is computed from the f2441 helpers 'Did you pay for the care of a qualifying person so you could work or look for work?' and 'Did you receive dependent care benefits?', which say only 'you'. The filer truthfully answers no for themselves. The displayed text says 'you (or your spouse)', but the inputs that drive the condition do not.",
        "line": "ny_it201.gate.dependent_care",
-       "irs_text": "ny_it216i p. 1: 'The care was provided so you (and your spouse, if you were married) could work or look for work.'; 'Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 \u2013 Dependent care benefits.'",
+       "irs_text": "ny_it216i p. 1: 'The care was provided so you (and your spouse, if you were married) could work or look for work.'; 'Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits.'",
        "severity": "high",
-       "fix": "Word both f2441 helpers as 'Did you or your spouse pay for\u2026' and 'Did you or your spouse receive dependent care benefits (for example, Form W-2 box 10 or a dependent care FSA)?', or ask a per-return gate that names the spouse."
+       "fix": "Word both f2441 helpers as 'Did you or your spouse pay for…' and 'Did you or your spouse receive dependent care benefits (for example, Form W-2 box 10 or a dependent care FSA)?', or ask a per-return gate that names the spouse."
       },
       {
        "kind": "UNCLEAR",
@@ -502,7 +506,7 @@
        "who": "An employee whose employer paid the care provider directly, ran an on-site daycare, or reimbursed care through a dependent care FSA funded by salary reduction. The employee never handed over money for care and never thinks of having 'received' a benefit.",
        "why_no": "'Did you pay for the care' reads as no because the FSA or employer paid. 'Did you receive dependent care benefits' reads as no because no cash was received, and nothing points the filer to Form W-2 box 10.",
        "line": "ny_it201.gate.dependent_care",
-       "irs_text": "ny_it216i p. 1: 'Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 \u2013 Dependent care benefits.'",
+       "irs_text": "ny_it216i p. 1: 'Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits.'",
        "severity": "medium",
        "fix": "Add help: 'Include care paid through a dependent care FSA or flexible spending plan, care your employer paid for or provided on site, and any amount in Form W-2 box 10.'"
       },
@@ -562,7 +566,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 1, Who qualifies, \"If you qualify to claim the federal child and dependent care credit, you can claim the New York State credit (whether you actually claim the federal credit or not).\" and \"The care was provided so you (and your spouse, if you were married) could work or look for work.\" and \"Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 \u2013 Dependent care benefits.\""
+      "p. 1, Who qualifies, \"If you qualify to claim the federal child and dependent care credit, you can claim the New York State credit (whether you actually claim the federal credit or not).\" and \"The care was provided so you (and your spouse, if you were married) could work or look for work.\" and \"Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits.\""
      ],
      "cols_pages": [
       1
@@ -610,7 +614,7 @@
        "who": "A retiree whose pension is from the MTA Police 20-Year Retirement Program, MABSTOA, or the Long Island Rail Road and is included in federal AGI on line 9 or 10.",
        "why_no": "The question says 'New York State or local government job'; a public authority such as the MTA, MABSTOA, or LIRR is not the state or a local government, and the help names no public authority.",
        "line": "ny_it201.gov_pension_if_income",
-       "irs_text": "ny_it201i p. 9: 'Certain public authorities, including: \u2022 Metropolitan Transit Authority (MTA) Police 20-Year Retirement Program; \u2022 Manhattan and Bronx Surface Transit Operating Authority (MABSTOA); and \u2022 Long Island Railroad Company.'",
+       "irs_text": "ny_it201i p. 9: 'Certain public authorities, including: • Metropolitan Transit Authority (MTA) Police 20-Year Retirement Program; • Manhattan and Bronx Surface Transit Operating Authority (MABSTOA); and • Long Island Railroad Company.'",
        "severity": "high",
        "fix": "Name the MTA Police 20-Year Retirement Program, MABSTOA, and LIRR in the question or help, or ask about a 'New York public authority' pension."
       },
@@ -691,7 +695,7 @@
        "who": "A retired New York City employee, teacher, police officer, or NYS and Local Retirement System member receives a local/state pension included in federal AGI. They answer No to the initial question because they do not think their city, school, police, or retirement-system pension is the kind of 'New York State or local government pension plan' meant; the gated question then names only MTA/MABSTOA/LIRR/SUNY/CUNY/SED, so they truthfully answer No.",
        "why_no": "The gated question's list is read as complete; their local or state retirement-system plan is not one of the named plans.",
        "line": "ny_it201.gov_pension_other_if_no",
-       "irs_text": "ny_it201i p. 9, Line 26: 'New York State... \u2013 Local governments within the state.'",
+       "irs_text": "ny_it201i p. 9, Line 26: 'New York State... – Local governments within the state.'",
        "severity": "high",
        "fix": "Broaden the gated question to any New York State or local government pension plan, including NYCERS, NYSTRS, NYS and Local Retirement System, police/fire, and other state/local plans."
       },
@@ -741,7 +745,7 @@
        "who": "A retired MTA Police officer receives a line-of-duty disability pension reported in W-2 wages. The filer does not describe it as a 'disability pension in wages' (it is called disability retirement or injury pay), so the gate helper is false and the gated question is never asked.",
        "why_no": "The helper says 'disability pension in wages'; the filer thinks their line-of-duty disability retirement is not a pension.",
        "line": "ny_it201.gov_pension_other_if_no",
-       "irs_text": "ny_it201i p. 9, Line 26: 'pension you received\u2014or any distributions made to you from a pension plan ... as an officer, employee, or beneficiary ... MTA Police 20-Year Retirement Program'",
+       "irs_text": "ny_it201i p. 9, Line 26: 'pension you received—or any distributions made to you from a pension plan ... as an officer, employee, or beneficiary ... MTA Police 20-Year Retirement Program'",
        "severity": "high",
        "fix": "Ask a broad question about any W-2 wage amount that is a disability retirement or line-of-duty pension from a government employer, with examples."
       },
@@ -802,7 +806,7 @@
        "who": "A filer (or the filer's spouse on a joint return) who is only the beneficiary of a New York 529 account owned by someone else, and who in 2025 received a withdrawal from that account that was partly included in federal adjusted gross income.",
        "why_no": "The gate counts persons who had a 529, Coverdell, or ABLE account, and the gated question asks whether the filer owns a New York 529 account. The help says an account someone else owns for you counts as No. A beneficiary who does not own the account answers No, so the tool treats the line 30 amount as zero.",
        "line": "ny_it201.ny_529_if_account",
-       "irs_text": "ny_it201i p. 10: Beneficiary During 2025, did you, as a beneficiary, receive a withdrawal from one or more tuition savings accounts established under New York\u2019s 529 college savings program? ... enter that amount on line 30.",
+       "irs_text": "ny_it201i p. 10: Beneficiary During 2025, did you, as a beneficiary, receive a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program? ... enter that amount on line 30.",
        "severity": "high",
        "fix": "Broaden the gate and the question to cover both account owners and beneficiaries: ask whether the filer or spouse owned a New York 529 account or received a beneficiary withdrawal in 2025, and compute line 30 from contributions plus any qualified distribution included in federal AGI."
       }
@@ -832,7 +836,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 10, Line 30, \"During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York\u2019s 529 college savings program?\""
+      "p. 10, Line 30, \"During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?\""
      ],
      "cols_pages": [
       10
@@ -1339,7 +1343,7 @@
        "who": "A general partner or member of an LLC taxed as a partnership, such as a Manhattan law-firm partner, with $200,000 of net earnings from self-employment reported on Schedule K-1 and no Schedule C. On a joint return, the spouse may be the partner.",
        "why_no": "The gate is computed from Schedule C alone: more than one Schedule C, or Schedule C net profit over $50,000. With no Schedule C the count is zero, the gate is false, and the MCTMT question is never asked.",
        "line": "ny_it201.gate.mctmt",
-       "irs_text": "ny_it201i p. 15: \"For purposes of the MCTMT, self-employed individuals include: \u2022 Sole proprietors \u2022 Partners in partnerships \u2022 Members of limited liability companies (LLCs) that are treated as partnerships \u2022 Partners of limited liability partnerships (LLPs)\"",
+       "irs_text": "ny_it201i p. 15: \"For purposes of the MCTMT, self-employed individuals include: • Sole proprietors • Partners in partnerships • Members of limited liability companies (LLCs) that are treated as partnerships • Partners of limited liability partnerships (LLPs)\"",
        "severity": "high",
        "fix": "Count a person in the helper if they have any partnership or LLC self-employment earnings (federal Schedule K-1, box 14, code A), or Schedule SE net earnings over $50,000. Simpler: ask whether you or your spouse had any self-employment or partnership earnings from business in the MCTD."
       },
@@ -1359,7 +1363,7 @@
        "who": "A Suffolk or Orange County farmer whose Schedule F shows $90,000 of net farm profit and who has no Schedule C.",
        "why_no": "The helper looks only at Schedule C. Farm income goes on Schedule F but is still net earnings from self-employment, so the gate is false.",
        "line": "ny_it201.gate.mctmt",
-       "irs_text": "ny_it201i p. 15: \"If an individual\u2019s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\"",
+       "irs_text": "ny_it201i p. 15: \"If an individual’s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\"",
        "severity": "high",
        "fix": "Base the helper on each person's Schedule SE net earnings from self-employment, which covers Schedule C, Schedule F and partnership earnings. Do not base it on Schedule C."
       },
@@ -1369,7 +1373,7 @@
        "who": "A Connecticut-resident partner in a Manhattan partnership, or a consultant whose own office is in New Jersey but whose business is allocated partly to NYC.",
        "why_no": "The question asks whether earnings \"come from business done in New York City or the nearby counties.\" The filer thinks of their own work as done elsewhere and does not see that the partnership's or business's allocation percentage puts the earnings in a zone.",
        "line": "ny_it201.gate.mctmt",
-       "irs_text": "ny_it201i p. 15: \"To calculate your MCTMT net earnings base you must multiply your net earnings from self-employment from each source by the specific zone\u2019s allocation percentage for each source\"",
+       "irs_text": "ny_it201i p. 15: \"To calculate your MCTMT net earnings base you must multiply your net earnings from self-employment from each source by the specific zone’s allocation percentage for each source\"",
        "severity": "medium",
        "fix": "Ask whether any business or partnership you or your spouse earned self-employment income from had business activity in the five NYC boroughs or the listed counties, wherever you live or work. Then compute or ask the allocated amount."
       }
@@ -1401,7 +1405,7 @@
      "locators": [
       "p. 15, Lines 54a through 54e, \"Did you or your spouse have net earnings from self-employment allocated to Zone 1 or Zone 2, or both that exceed $50,000?\"",
       "p. 15, Lines 54a through 54e, \"If Yes, you are subject to MCTMT. Go to lines 54a and 54b, as applicable.\"",
-      "p. 15, Lines 54a through 54e, \"If an individual\u2019s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\""
+      "p. 15, Lines 54a through 54e, \"If an individual’s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\""
      ],
      "cols_pages": [
       15
@@ -1567,9 +1571,9 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 10, Line 30, \"During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York\u2019s 529 college savings program?\"",
+      "p. 10, Line 30, \"During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?\"",
       "p. 10, Line 30, \"as an account owner, made contributions, enter the amount up to $5,000 ($10,000 for married taxpayers filing a joint return) on line 1 of the Line 30 worksheet\"",
-      "p. 8, Line 22, \"Did you make a nonqualified withdrawal during 2025 from an account established under New York\u2019s 529 college savings program?\"; ny_it225i p. 8, A-103, \"If you are filing a joint return, include the applicable amounts from all existing accounts owned by you and your spouse\"",
+      "p. 8, Line 22, \"Did you make a nonqualified withdrawal during 2025 from an account established under New York’s 529 college savings program?\"; ny_it225i p. 8, A-103, \"If you are filing a joint return, include the applicable amounts from all existing accounts owned by you and your spouse\"",
       "p. 8, Line 22, \"If Yes, the withdrawal is a nonqualified withdrawal and you must complete the Line 22 worksheet.\""
      ],
      "cols_pages": [
@@ -1589,22 +1593,22 @@
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A filer, or a spouse on a joint return, born between January 1 and July 1, 1966, who received a taxable IRA, 401(k) or private pension distribution in the second half of 2025, after turning 59\u00bd during the year.",
-       "why_no": "The gate counts only recipients born in 1965 or earlier. Its helper text claims that this means '59\u00bd or older at some time in 2025', but a person born in the first half of 1966 reaches 59\u00bd between July and December 2025. The computed count is therefore 0, and that person is never asked.",
+       "who": "A filer, or a spouse on a joint return, born between January 1 and July 1, 1966, who received a taxable IRA, 401(k) or private pension distribution in the second half of 2025, after turning 59½ during the year.",
+       "why_no": "The gate counts only recipients born in 1965 or earlier. Its helper text claims that this means '59½ or older at some time in 2025', but a person born in the first half of 1966 reaches 59½ between July and December 2025. The computed count is therefore 0, and that person is never asked.",
        "line": "ny_it201.pension_exclusion_if_young (and the line 29 exclusion or refusal it leads to)",
-       "irs_text": "ny_it201i p. 9, Line 29: 'If you became 59\u00bd during 2025, enter only the amount you received after you became 59\u00bd, but not more than $20,000.'",
+       "irs_text": "ny_it201i p. 9, Line 29: 'If you became 59½ during 2025, enter only the amount you received after you became 59½, but not more than $20,000.'",
        "severity": "high",
-       "fix": "Count recipients born before July 2, 1966, not 'in 1965 or earlier'. Better, ask the line 29 question whenever any taxable pension, annuity or IRA income exists, and let the filer give the date they turned 59\u00bd."
+       "fix": "Count recipients born before July 2, 1966, not 'in 1965 or earlier'. Better, ask the line 29 question whenever any taxable pension, annuity or IRA income exists, and let the filer give the date they turned 59½."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A filer under 59\u00bd (born after mid-1966) who received taxable distributions as the beneficiary of a deceased parent's IRA or pension, where the decedent would have qualified for the exclusion.",
+       "who": "A filer under 59½ (born after mid-1966) who received taxable distributions as the beneficiary of a deceased parent's IRA or pension, where the decedent would have qualified for the exclusion.",
        "why_no": "The gate checks only the recipient's own birth year, so no recipient is counted. The beneficiary clause exists only inside the gated question, and that question is reached only through this gate. In addition, the line's 'Otherwise: false, and the question below is not asked' means that when the gate is false the question is never asked at all. The beneficiary branch is unreachable.",
        "line": "ny_it201.pension_exclusion_if_young",
        "irs_text": "ny_it201i p. 9, Line 29: 'If you received pension and annuity income and are married, or received pension and annuity income as a beneficiary, see Married taxpayers or Beneficiaries below.'",
        "severity": "high",
-       "fix": "Make the gate 'any person had taxable pension, annuity or IRA income' (count > 0), with no age filter. Then ask whether the recipient turned 59\u00bd by December 31, 2025, or received the money as the beneficiary of someone who died."
+       "fix": "Make the gate 'any person had taxable pension, annuity or IRA income' (count > 0), with no age filter. Then ask whether the recipient turned 59½ by December 31, 2025, or received the money as the beneficiary of someone who died."
       },
       {
        "kind": "FALSE_NO",
@@ -1614,15 +1618,15 @@
        "line": "ny_it201.pension_exclusion_if_young",
        "irs_text": "ny_it201i p. 9, Line 29: 'Did you enter an amount of pension income or annuity income, or both ... that was not from a New York State or local government pension plan or federal government pension plan?'",
        "severity": "high",
-       "fix": "Invert the gate so the question is asked when no recipient is known to be 59\u00bd. Alternatively, drop the gate and ask whenever taxable pension, annuity or IRA income exists, since the tool must refuse or compute in either case."
+       "fix": "Invert the gate so the question is asked when no recipient is known to be 59½. Alternatively, drop the gate and ask whenever taxable pension, annuity or IRA income exists, since the tool must refuse or compute in either case."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer 59\u00bd or older whose only qualifying income is periodic distributions from a government 457 plan, a 403(b) or a 401(k), which they do not think of as 'pension or IRA money'.",
+       "who": "A filer 59½ or older whose only qualifying income is periodic distributions from a government 457 plan, a 403(b) or a 401(k), which they do not think of as 'pension or IRA money'.",
        "why_no": "The question says 'that pension or IRA money', and the help mentions only 'such income'. A filer with a 401(k) or 457 plan may read this as excluding their plan.",
        "line": "ny_it201.pension_exclusion_if_young",
-       "irs_text": "ny_it201i p. 9, Line 29: qualifying income includes 'periodic distributions from government (IRC \u00a7 457) deferred compensation plans' and 'a qualified cash or deferred profit-sharing or stock bonus plan [IRC \u00a7 401(k)]'.",
+       "irs_text": "ny_it201i p. 9, Line 29: qualifying income includes 'periodic distributions from government (IRC § 457) deferred compensation plans' and 'a qualified cash or deferred profit-sharing or stock bonus plan [IRC § 401(k)]'.",
        "severity": "low",
        "fix": "Name the plan types in the question: 'pension, annuity, IRA, 401(k), 403(b), Keogh, or government 457 plan distributions'."
       }
@@ -1653,7 +1657,7 @@
      "how": "cited pages",
      "locators": [
       "p. 9, Line 29, \"Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10) that was not from a New York State or local government pension plan or federal government pension plan?\"",
-      "p. 9, Line 29, \"If Yes, and you were 59\u00bd before January 1, 2025, enter the qualifying pension and annuity income included in your 2025 federal adjusted gross income, but not more than $20,000.\""
+      "p. 9, Line 29, \"If Yes, and you were 59½ before January 1, 2025, enter the qualifying pension and annuity income included in your 2025 federal adjusted gross income, but not more than $20,000.\""
      ],
      "cols_pages": [
       9

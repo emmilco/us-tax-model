@@ -19,10 +19,10 @@
 
 ## (helper) — `sche.grouped`
 
-- **Authored helper label:** Rentals grouped as one activity
-- **Encoded (Bool):** Input — Do you treat two or more of your rentals as one activity?
-- Expr: `{"op":"input","source":"Do you treat two or more of your rentals as one activity?"}`
-- Cite: [i8582] p. 1, Grouping of Activities (2025; sha256 76787e11)
+- **Authored helper label:** A rental grouped with another activity
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) treat a rental and another activity, such as another rental or a business, as one activity?
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) treat a rental and another activity, such as another rental or a business, as one activity?"}`
+- Cite: [i8582] p. 1, Grouping of Activities; p. 6, Limitation on grouping certain activities, "A rental activity with a trade or business activity unless the activities being grouped together make up an appropriate economic unit" (2025; sha256 76787e11)
 
 ## (helper) — `sche.qbi_business`
 
@@ -151,7 +151,7 @@
 
 - **IRS:** Total income or (loss). Combine lines 26, 32, 37, 39, and 40
 - **Encoded (Dollars):** Enter the amount from line 26.
-- Note: Parts II to IV and line 40 are refused (scope.k1, scope.farm).
+- Note: Parts II to IV and line 40 are refused (scope.k1, scope.remic, scope.farm).
 - Expr: `{"from":"sche.line26","op":"copy"}`
 - Cite: [f1040se] Schedule E (2025), line 41 (2025; sha256 c5e2c8fa)
 
@@ -215,6 +215,6 @@
 ## (gate) — `sche.any`
 
 - **Authored helper label:** Schedule E is filed (a rental reported or a royalty listed)
-- **Encoded (Bool):** Choose — [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?" = true → helper "A rental is reported, or a royalty is listed"] [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?" = false → helper "No (false)"]
+- **Encoded (Bool):** Choose — [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?" = true → helper "A rental is reported, or a royalty is listed"] [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?" = false → helper "No (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.rental",{"const":true}],"op":"test"},"then":"sche.any_listed"},{"guard":{"eq":["scope.rental",{"const":false}],"op":"test"},"then":"sche.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 40, Step 2, "You are filing Schedule E" (2025; printed date 2026-02-25; sha256 482e9c48)

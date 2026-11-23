@@ -5,7 +5,7 @@ changes:
   - change: C-PRI-20
     evidence:
     - doc: f8889
-      page: 2
+      page: 1
       quote: enter $4,400 ($8,750 for family coverage)
     - doc: rp-25-19
       page: 2
@@ -182,7 +182,7 @@ changes:
         from: Form 8889 (2025), line 3; i8889 p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual
           for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for
           a family HDHP on line 3"
-        to: p. 2, line 3, "enter $4,400 ($8,750 for family coverage)"; i8889 p. 5, Line 3, rule 3, "If you were, or were considered,
+        to: p. 1, line 3, "enter $4,400 ($8,750 for family coverage)"; i8889 p. 5, Line 3, rule 3, "If you were, or were considered,
           an eligible individual for the entire year and you did not change your type of coverage, enter $4,400 for a self-only
           HDHP or $8,750 for a family HDHP on line 3"
     - set:

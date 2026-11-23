@@ -43,36 +43,24 @@
  },
  {
   "screen": "gate:ny_it201.ask.bought_untaxed",
-  "subject_sha": "9bbba148a8e3c935e84ab61c780672193ad37a2d6936656df8ba86d572ce4831",
+  "subject_sha": "04f47910c9b9b46a8cbdc705a686bdce17ab24cc9e8177b27b2a29539bc55dbe",
   "samples": [
    {
-    "verdict": "SOURCE",
+    "verdict": "COVERS",
     "findings": [
      {
-      "kind": "SOURCE",
-      "situation": "A filer uses goods in a New York locality whose rate is higher than the rate originally paid, but the gate's helper tests against New York City's rate rather than that second locality's rate.",
-      "irs_text": "ny_it201i p. 18: 'You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid.'",
-      "why": "The cited condition compares the second locality's rate with the rate originally paid; the gate helper substitutes New York City's rate as the threshold, so the stated condition and the gate differ."
-     },
-     {
-      "kind": "SOURCE",
-      "situation": "A filer purchased taxable goods outside New York while not a New York resident at the time, then later used them in New York.",
-      "irs_text": "ny_it201i p. 18: 'purchased an item or service outside New York State that is subject to tax in New York State (and you were a resident of New York State at the time of purchase) with subsequent use in New York State.'",
-      "why": "The cited condition expressly requires New York residency at the time of the out-of-state purchase; the gate asks only whether the filer bought taxable goods without paying New York sales tax and does not ask about residency at purchase."
-     },
-     {
       "kind": "WIDE",
-      "situation": "A filer bought goods out of state, paid another state's sales tax at a rate equal to or higher than New York's, and brought the goods into New York.",
-      "irs_text": "ny_it201i p. 18: 'You may be entitled to a credit for sales tax paid to another state.'",
-      "why": "The gate can be answered Yes because no New York sales tax was paid, but the cited credit may reduce the New York use tax to zero."
+      "situation": "A New York resident bought an item out of state and paid that state's sales tax at a rate equal to or higher than the New York combined rate. The filer answers yes and is asked the DMV question, but the credit for the other state's tax leaves no New York use tax due.",
+      "irs_text": "ny_it201i p. 18: \"Note: You may be entitled to a credit for sales tax paid to another state. See the exact calculation method in the instructions for Form ST-141\"",
+      "why": "The gate counts any purchase made without New York tax, even when the credit for tax paid to another state removes the liability. This only costs an extra question."
      }
     ],
-    "prompt_sha": "b5ba4fa505fb31804ae80e8eab9ddbad87cbfbdd665dd23f736fa2dd02a47e66",
+    "prompt_sha": "6e63d1d7864004d5e86f650814720eb2fb7f89dd35d7ec73da06f39a2672face",
     "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/ny/screens/gate_ny_it201.ask.bought_untaxed.9bbba148a8e3.1.response.txt"
+    "cost": 0.043312,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-22",
+    "response": ".transcription/ny/screens/gate_ny_it201.ask.bought_untaxed.04f47910c9b9.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -94,7 +82,7 @@
     "how": "cited pages",
     "locators": [
      "p. 18, Line 59: Sales or use tax, \"You may not use this line to report:\" and \"any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV). If you will not be registering or titling it at the DMV, you should remit the tax directly to the Tax Department\"",
-     "p. 18, Line 59: Sales or use tax, \"You owe sales or compensating use tax if you:\""
+     "p. 18, Line 59: Sales or use tax, \"You owe sales or compensating use tax if you:\"; \"You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid\""
     ],
     "cols_pages": [
      18
@@ -224,30 +212,36 @@
  },
  {
   "screen": "gate:ny_it201.ask.owes_use_tax",
-  "subject_sha": "832fee71d69cb3667dd3a35941ce3afdc5e3dbc5fde41fd5c8b7c7ab562eba3b",
+  "subject_sha": "bfe26148dd9043ed9c0788cba77fa5fce31b145535f675a52a4de2108c3229e7",
   "samples": [
    {
-    "verdict": "NARROW",
+    "verdict": "UNCLEAR",
     "findings": [
      {
-      "kind": "NARROW",
-      "situation": "A filer maintained a New York permanent place of abode from January 10 through June 30, 2025; January 10–31 is more than half of January, so the gated question is truthfully answered no, but the text counts January as a month and requires prorating the chart amount.",
-      "irs_text": "ny_it201i p. 18: 'If you maintained a permanent place of abode in New York State for sales and use tax purposes for only part of the year, multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12. (Count any period you maintained the abode for more than one-half of a month as one month.)'",
-      "why": "The question asks only whether there was a month with a New York home for half the month or less; it misses a part-year abode whose only partial month is more than half, which the text counts as a full month and prorates."
+      "kind": "UNCLEAR",
+      "situation": "On a joint return, only the spouse bought an item online with no New York tax, and the filer reading the helper question thinks only of their own purchases and answers no.",
+      "irs_text": "ny_it201i p. 18, Line 59: 'Report your sales or use tax liability on this line. You owe sales or compensating use tax if you: • purchased an item or service subject to tax that is delivered to you in New York State without payment of New York State and local tax to the seller'",
+      "why": "Line 59 on a joint IT-201 carries the use tax liability of both spouses. The helper question (and the 'where you lived' clause) never mentions the spouse, so a truthful no can drop the spouse's purchases and zero the abode proration line."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer paid another state's sales tax at 8.5% on an item brought into a New York locality taxed at 8.0%, so the gate's 'lower rate than New York City's' branch is true even though no New York use tax remains after the credit.",
-      "irs_text": "ny_it201i p. 18: 'You may be entitled to a credit for sales tax paid to another state. See the exact calculation method in the instructions for Form ST-141...' and 'You owe use tax to the second locality if you were a resident of that locality at the time of the purchase, and its rate of tax is higher than the rate of tax originally paid.'",
-      "why": "The gate treats any rate below New York City's as owing use tax, but the cited text allows a credit for tax paid elsewhere and requires the second locality's rate to exceed the rate already paid."
+      "situation": "A filer bought an item out of state while not a New York resident and later brought it into New York.",
+      "irs_text": "ny_it201i p. 18, Line 59: 'purchased an item or service outside New York State that is subject to tax in New York State (and you were a resident of New York State at the time of purchase) with subsequent use in New York State'",
+      "why": "The helper's 'out of state and brought into New York' does not require New York residence at the time of purchase, so the gate can open where no use tax is owed. This leans to yes and does not change the verdict."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer's only untaxed purchase was a trailer, ATV or snowmobile whose tax is paid at the DMV.",
+      "irs_text": "ny_it201i p. 18, Line 59: 'any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV).'",
+      "why": "The helper's 'vehicle or vessel' could be read as not covering trailers or snowmobiles, so the gate could open with no line 59 amount. This errs toward yes."
      }
     ],
-    "prompt_sha": "4646d37da4e4aca1f7e0b0ba33102d5be4fe71cd707c6d1ea43813f85f50d204",
+    "prompt_sha": "53373e8fd71a164783e173ec043e73822835b43fc2985dea83b6fefd361faf0d",
     "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/ny/screens/gate_ny_it201.ask.owes_use_tax.832fee71d69c.1.response.txt"
+    "cost": 0.070576,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-22",
+    "response": ".transcription/ny/screens/gate_ny_it201.ask.owes_use_tax.bfe26148dd90.1.response.txt"
    }
   ],
   "kind": "gate",

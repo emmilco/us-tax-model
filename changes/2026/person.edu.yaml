@@ -163,7 +163,7 @@ changes:
         field: cite.locator
         from: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications,
           "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)."
-        to: p. 3, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 5, Student qualifications,
+        to: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 5, Student qualifications,
           "5. You (or your spouse if filing jointly) and the student (if the student is a dependent on your tax return) must
           have been issued valid SSNs before the due date of your 2026 return (including extensions)."
     - set:
@@ -341,7 +341,7 @@ changes:
   - change: C-PEOP-17
     evidence:
     - doc: f8863
-      page: 3
+      page: 2
       quote: 24 Was the student enrolled at least half-time for at least 1 academic period that began or is treated as having
         begun in 2026
     - doc: i8863
@@ -376,7 +376,7 @@ changes:
           began or is treated as having begun in 2025 at an eligible educational institution in a program leading toward a
           postsecondary degree, certificate, or other recognized postsecondary educational credential?"; i8863 p. 8, Line
           24
-        to: p. 3, Part III, line 24, "Was the student enrolled at least half-time for at least 1 academic period that began
+        to: p. 2, Part III, line 24, "Was the student enrolled at least half-time for at least 1 academic period that began
           or is treated as having begun in 2026 at an eligible educational institution in a program leading toward a postsecondary
           degree, certificate, or other recognized postsecondary educational credential?"; i8863 p. 9, Line 24
     - set_question:

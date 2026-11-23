@@ -3,6 +3,9 @@
  "form": "rec",
  "family": "claude",
  "base": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "2a:1",
@@ -13,9 +16,9 @@
   },
   {
    "key": "2a:2",
-   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "record": "d200a0f57159192cecc63a358388b7ab8578a0b5cb15319516296edca95acd64",
    "status": "MATCH",
-   "subject_key": "eb1d0fdb6c07e1e9374035b099db5c641f3d228197b967c5c5f85c3be00a71f3"
+   "subject_key": "1f1093663e2b045bcc3b58d8965c8fc61ed5e436798b38ca054a3483e67145bc"
   },
   {
    "key": "2a:6",
@@ -67,10 +70,10 @@
   },
   {
    "key": "2",
-   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "record": "d200a0f57159192cecc63a358388b7ab8578a0b5cb15319516296edca95acd64",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; a recovered general sales tax deduction (p525 footnote 2, 'If you deducted state and local general sales taxes and received a refund of those taxes, include the amount on line 2') is refused (rec.sales_tax_if_any, form note: 'of general sales tax ... refused'), so no completed return drops one.",
-   "subject_key": "cd04a70a7a2da56413765b026b48a56df45dea9725679693ac74b16296367227"
+   "ruling": "Ruling: scope; p525 p. 27, Worksheet 2, line 2, footnote 2. A refund of general sales tax is refused: rec.sales_tax (asked among the recovery kinds) refuses through rec.sales_tax_if_any (forms/2025/rec.yaml), as the form's note says ('a recovery ... of general sales tax ... refused'). The restatement shows line 2 without that refusal, which sits on another line.",
+   "subject_key": "616ede7c5ba71b3aecf01f03d08d47e3042683a5918e1f0f40f3563a2dd2703e"
   },
   {
    "key": "3",
@@ -142,7 +145,7 @@
  ],
  "subjects": {
   "2a:1": "f3a90f3c165fc9ffb9ada38f676517898d72b98895279b5dfc4299ca6efe60f3",
-  "2a:2": "5d161e3705bed873d08e46543e80c4b2dc33b37cee17f2536c676ab1db59bfe5",
+  "2a:2": "6d0887a83373e76296edb5da621b1caef8965fa8233f0ac3dc84b3aea584577a",
   "2a:6": "142c8ff123e342b691f277f44d1d57e09fb4f8d6f7742ab4f4b25a5b58c3ae7b",
   "2a:3": "b69325e9e4efae3a42e0662e567b0a1bc9e7f8c1964edf03efbbf31a76e2d08a",
   "2a:4": "203156299f79eaf70cd3be9fff45a3367d483825953b075dd463c7cb19b1d211",
@@ -151,7 +154,7 @@
   "2a:8": "0db4afa4b40b9c3066c75a666db40fb23442ff018de8800e85d7b8822ae773c3",
   "1a": "d204edf4888f960a6d0839b9a6822f8eddcbc08ac49540e38f7759fd74f7262e",
   "1b": "41e1ce4eac6aa5e2663df043e1ddc2c34a0718ea561d3201fd72f2ff5b99de34",
-  "2": "ccbdd65a438ba1b99c7ab4638e8c322de0517723dae3aad48c4e5ff2c6d5bd1b",
+  "2": "f43e63ca6e4fd467cf94121f6fe05a1f3e99adea64d9a905c8ee4af507f9a9c3",
   "3": "998872651a88ed23d08247bce603fdcb7705f804305cbe20c6e86c6c205f3c15",
   "4": "619a6df00c908d320044652fd0f9aca6d84c4058f50231f313117cd67af03861",
   "5": "10d9319980bdb6a96bf262bfe4df9cf0620ff82a36c3c425d4ce1cd489d677fa",

@@ -8,14 +8,14 @@ form:
   lines:
   - id: ssb.any
     printed: (helper)
-    label: 'Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them.'
+    label: 'In 2025, did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, or pay any of them back? Form SSA-1099 or Form RRB-1099 reports them.'
     type: Bool
     expr:
       op: input
-      source: 'Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them.'
+      source: 'In 2025, did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, or pay any of them back? Form SSA-1099 or Form RRB-1099 reports them.'
     cite:
       doc: i1040gi
-      locator: p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b
+      locator: 'p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b, "Box 4 will show the amount of any benefits you repaid in 2025"'
   - id: ssb.no
     printed: (helper)
     label: Year parameter s3.no (false)
@@ -38,6 +38,14 @@ form:
     cite:
       doc: i1040gi
       locator: p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b
+    refuses:
+    - when: ssb.pub915
+      form: Pub. 915 or Pub. 590-A worksheet
+      remedy: The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet
+        in the publication.
+      cite:
+        doc: i1040gi
+        locator: p. 31, Lines 6a and 6b, Exception
   - id: ssb.ira_covered
     printed: (helper)
     label: 'Did you (or, on a joint return, your spouse) put money into a traditional IRA for 2025 while covered by a retirement plan at work or through self-employment?'
@@ -198,13 +206,6 @@ form:
       doc: i1040gi
       locator: p. 32, Social Security Benefits Worksheet, line 2
     refuses:
-    - when: ssb.pub915
-      form: Pub. 915 or Pub. 590-A worksheet
-      remedy: The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet
-        in the publication.
-      cite:
-        doc: i1040gi
-        locator: p. 31, Lines 6a and 6b, Exception
     - when: ssb.lump_sum
       form: Lump-Sum Election (Pub. 915)
       remedy: The lump-sum election method is outside this tool.

@@ -5,8 +5,8 @@
  "base": "0aa1f08e60389455d6c3c7d69036cebc2452f8ec5d75a8a5c0d7b772dd24a030",
  "head_rows": {
   "printed lines compared": "21",
-  "agree / disagree / missing": "6 / 15 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "5 / 16 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -31,15 +31,16 @@
   },
   {
    "key": "1",
-   "record": "9f4cb065457a28fb3a19ed7854990cd246e788a92c7344fd6ca75b2a59cac718",
-   "status": "AGREE",
-   "subject_key": "738de9fa1ec39e8c43aca3780852c259618b2d9e6372b7204312d17e9075bf47"
+   "record": "24d4326a63d7b5944a871980f29a8112f75d11e0904a120f3381e35663f554b1",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the two expressions are the same function of the Bool ssb.any: the project gives 0 on false and ssb.benefits on true, the second gives ssb.benefits on true and 0 otherwise (ne true is false for a Bool). Worksheet line 1, i1040gi p. 32, \"Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099\"; the exceptions the second names are refused (ssb.pub915, now tested on ssb.benefits, ssb.terror_disability, sa.excluded_income).",
+   "subject_key": "523ae2d8aa70b0052d9274fb00466e6ca580a745cd18e95ba182fe8f5a3fe7b4"
   },
   {
    "key": "2",
-   "record": "9f4cb065457a28fb3a19ed7854990cd246e788a92c7344fd6ca75b2a59cac718",
+   "record": "24d4326a63d7b5944a871980f29a8112f75d11e0904a120f3381e35663f554b1",
    "status": "AGREE",
-   "subject_key": "9a830fd83661348936daf2893cb6983cbaa23862497fd92f663debe7a516235f"
+   "subject_key": "e8ef72b46db7b430c58df0a4ec2c786fd82878a32683c693481592d3da49815c"
   },
   {
    "key": "3",
@@ -155,8 +156,8 @@
   "ssb.lump_sum": "afebd3626bdfee2a2d4a5b88e7e9935987232b7815042b6c6e53efd3cfa56f85",
   "ssb.lived_apart": "420de99ed4162707ebe07036c5b897b028e230503b6481f0f6148db66fe5838d",
   "ssb.has_benefits": "93481a8c549c4df9d5ce12871063ca88c64c3091e445ec5c540a5cecdd71d515",
-  "1": "7ccd6d5d9f180d66b5cbd7600b94e66d898d3b1d0b57e3329fbe18674c621d7a",
-  "2": "874eaa16f20af2f22c031b34556c2ffa8d6d3318319e7361ea599068f4319bc3",
+  "1": "370f5a7a42dcdc102ec625cc9e02baae77eaf0923c1b40960d35da095f7da119",
+  "2": "844fdda2e32916b95d5541440e58e19d82e8e6650bda755ee6340d5b349e6da4",
   "3": "a2cdc624483dc3839e03343dd07ddfb7623427bbf7aa11fb62374dee4811a8b2",
   "4": "42300b844db21a635dc8e82a1e4d71f9b7283c6a1e2bd8fb6ec5a74033fc97ab",
   "5": "3e4a2531fb2be20399d6f85aba35256f4eca403025eb075ec52e40d16a4e1c80",

@@ -6,8 +6,9 @@ form:
   note: 'One entry per building, or improvement to one, of a rental property; depreciated by Table A-6 (residential rental
     property, 27.5 years) or Table A-7a (nonresidential real property, 39 years), mid-month convention, straight line. Refused:
     personal property and land improvements, ADS and other methods, basis changes, dispositions, qualified improvement property, basis reduced by a credit or
-    deduction, cooperative stock, and nonresidential
-    real property placed in service before 1994.'
+    deduction, cooperative stock, farm buildings and motor fuels outlets (10-, 15- and 20-year property), property not
+    bought or built (exchanges, involuntary conversions, gifts, inheritances, spouse transfers, pay for services), and
+    nonresidential real property placed in service before 1994.'
   lines:
   - id: rprop.zero
     printed: (helper)
@@ -37,6 +38,49 @@ form:
     cite:
       doc: i4562
       locator: p. 10, Residential rental property
+  - id: rprop.short_class
+    printed: (screen)
+    label: A farm building, single purpose agricultural or horticultural structure, or retail motor fuels outlet (10-,
+      15- or 20-year property), or an improvement to one
+    type: Bool
+    gated_by: rprop.short_class_if_nonres
+    expr:
+      op: input
+      source: Is it a farm building (such as a barn, a silo or a greenhouse), or a building where gasoline or other motor
+        fuel is sold (such as a gas station or a store with fuel pumps), or an improvement to one?
+    cite: &id101
+      doc: i4562
+      locator: p. 10, "Any section 1250 property that is a retail motor fuels outlet"; "Farm buildings (other than single
+        purpose agricultural or horticultural structures)"; "Any single purpose agricultural or horticultural structure";
+        "Nonresidential real property is any real property that is neither residential rental property nor property with
+        a class life of less than 27.5 years"; p946 p. 31, Retail motor fuels outlet, "used to a substantial extent in the retail marketing of petroleum
+        or petroleum products"
+  - id: rprop.short_class_if_nonres
+    printed: (gate)
+    label: Farm building or motor fuels outlet, asked only of nonresidential real property (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rprop.kind
+          - const: nonresidential
+        then: rprop.short_class
+      - guard:
+          op: test
+          eq:
+          - rprop.kind
+          - const: residential
+        then: rprop.no
+      - guard:
+          op: test
+          eq:
+          - rprop.kind
+          - const: personal
+        then: rprop.no
+    cite: *id101
   - id: rprop.month
     printed: (b)
     label: Month placed in service
@@ -107,8 +151,8 @@ form:
     gated_by: rprop.qip_if_new_nonres
     expr:
       op: input
-      source: Is it an improvement to the inside of the building, made after the building was first placed in service by
-        anyone, and not an enlargement, an elevator or escalator, or the internal structural framework?
+      source: Is any part of it an improvement to the inside of the building, made after the building was first placed in
+        service by anyone, other than an enlargement, an elevator or escalator, or the internal structural framework?
     cite:
       doc: p946
       locator: p. 16, Qualified improvement property; p. 31, Qualified improvement property
@@ -207,17 +251,20 @@ form:
       locator: p. 8, Cooperative apartments
   - id: rprop.exchanged
     printed: (screen)
-    label: Acquired in a like-kind exchange or an involuntary conversion (carryover basis)
+    label: Acquired other than by purchase or construction (like-kind exchange, involuntary conversion, gift, inheritance,
+      transfer from a spouse or former spouse, or for services)
     type: Bool
     expr:
       op: input
-      source: Did you get it in a trade for other property (a like-kind exchange), or to replace property that was destroyed,
-        stolen or taken by a government (an involuntary conversion)?
+      source: Did you get it other than by buying or building it, such as in a trade for other property (a like-kind
+        exchange), to replace property destroyed, stolen or taken by a government (an involuntary conversion), as a gift or
+        an inheritance, from your spouse or former spouse, or as pay for work?
     cite:
       doc: i4562
       locator: p. 9, "Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange
         or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged
-        or involuntarily converted"
+        or involuntarily converted"; p527 p. 11, Basis Other Than Cost, "You can’t use cost as a basis for property that
+        you received"
   - id: rprop.screen
     printed: (helper)
     label: Depreciation of this property outside the tables this tool uses
@@ -256,6 +303,10 @@ form:
       - op: test
         eq:
         - rprop.qip_if_new_nonres
+        - const: true
+      - op: test
+        eq:
+        - rprop.short_class_if_nonres
         - const: true
     cite:
       doc: i4562
@@ -339,8 +390,9 @@ form:
     - when: rprop.screen
       form: Form 4562 (real property outside the mid-month tables)
       remedy: Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property
-        with a credit or deduction for part of its cost, cooperative stock, or property received in a like-kind exchange or
-        an involuntary conversion is outside this tool.
+        with a credit or deduction for part of its cost, cooperative stock, a farm building or a motor fuels outlet, or
+        property received other than by purchase or construction (in a like-kind exchange or an involuntary conversion, as
+        a gift or an inheritance, from a spouse or former spouse, or for services) is outside this tool.
       cite:
         doc: i4562
         locator: p. 11, Column (f)—Method

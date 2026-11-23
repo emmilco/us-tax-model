@@ -2,68 +2,58 @@
  "form": "ssb",
  "reviews": {
   "gate:ssb.any": {
-   "subject_sha": "8689ecbea6a8dfff4f4ee69dc114708271916faa926c3478612d31c73311a98b",
+   "subject_sha": "e6025debbd80ac7053a5f3ada7ffe365fecb29e602411699dec1426555d9d961",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A retiree, or the spouse on a joint return, got no benefits in 2025 but repaid in 2025 an overpayment of benefits received in an earlier year. Form SSA-1099 shows box 3 of 0, box 4 with the repayment, and a negative box 5.",
-       "why_no": "\"Did you ... get social security benefits ... in 2025?\" is truthfully no. Nothing was received in 2025; the only event was a repayment.",
-       "line": "ssb.benefits_if_any (net benefits, a negative box 5). The excess-repayment deduction or credit that depends on it is also lost.",
-       "irs_text": "\"Box 4 will show the amount of any benefits you repaid in 2025 ... if your total repayments in 2025 exceed your total benefits received in 2025 by more than $3,000, you may be able to take an itemized deduction or a credit for part of the excess repayments if they were for benefits you included in income in an earlier year.\" (i1040gi 2025 p. 31, Lines 6a and 6b, Exception)",
-       "severity": "high",
-       "fix": "Gate on the form, not on receipt: \"Did you (or, on a joint return, your spouse) get a Form SSA-1099 or RRB-1099 for 2025, or receive or repay any social security or railroad retirement (tier 1) benefits in 2025?\" Then allow a negative box 5 and route excess repayments to Pub. 915."
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A retiree, or on a joint return the spouse, whose 2025 monthly benefit went entirely to Medicare Part B/D premiums, federal tax withholding, a levy or garnishment, or recovery of an earlier overpayment. No benefit money reached their bank account in 2025.",
+       "why_no": "\"did you ... get social security benefits\": they received no payment, so they read the deductions as never having been benefits they got. Help text that names only the form does not fix this if they have misplaced it or did not look at it.",
+       "line": "ssb.benefits_if_any",
+       "irs_text": "i1040gi p. 31: \"You should receive a Form SSA-1099 showing in box 3 the total social security benefits paid to you\"; p. 32 worksheet line 1: \"Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099\"",
+       "severity": "medium",
+       "fix": "Add to help: \"Answer yes even if your benefits were used to pay Medicare premiums, withheld for tax, or kept by SSA to recover an overpayment, so you received no money. Box 3 of Form SSA-1099 still counts these amounts.\""
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A Medicare beneficiary whose whole monthly benefit went to Part B/D premiums, an overpayment recovery, or a federal debt offset or garnishment, so no deposit arrived in 2025.",
-       "why_no": "\"get social security benefits\" reads as money deposited to them. They never \"got\" anything because it was all withheld.",
+       "who": "A filer or spouse who received Social Security Disability Insurance (SSDI) in 2025, possibly as a retroactive award, and does not think of disability payments as 'social security benefits'.",
+       "why_no": "\"social security benefits\" reads to many people as retirement benefits. SSDI is a disability payment, and the help never names disability or survivor benefits.",
        "line": "ssb.benefits_if_any",
-       "irs_text": "\"You should receive a Form SSA-1099 showing in box 3 the total social security benefits paid to you.\" Worksheet line 1: \"Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099.\" (i1040gi 2025 pp. 31-32)",
+       "irs_text": "i1040gi p. 31: \"disability payments (including Social Security Disability Insurance (SSDI) payments)\" ... \"You must report the remaining $12,000 on line 6a.\"",
        "severity": "medium",
-       "fix": "Add help text: \"Answer yes even if your benefits were withheld for Medicare premiums, withheld to repay an overpayment, or offset for a debt, so you received no payment. Answer yes if you received any Form SSA-1099 or RRB-1099.\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer or spouse who received Social Security Disability Insurance (SSDI), survivor, spousal, or child-in-care benefits, or tier 1 railroad benefits, and thinks of \"social security\" as their own retirement benefit.",
-       "why_no": "\"social security benefits\" is read as retirement benefits only. SSDI is perceived as \"disability\" and survivor benefits as a widow's payment.",
-       "line": "ssb.benefits_if_any",
-       "irs_text": "\"Disability payments ... (including Social Security Disability Insurance (SSDI) payments)\" are discussed under Lines 6a and 6b Social Security Benefits. The example says SSDI \"You must report the remaining $12,000 on line 6a.\" (i1040gi 2025 p. 31)",
-       "severity": "medium",
-       "fix": "Help text: \"Includes retirement, disability (SSDI), survivor, and spouse benefits, and railroad retirement tier 1 benefits; does not include SSI.\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A U.S. resident who receives Canadian CPP/OAS or German social security benefits that a tax treaty treats as U.S. social security benefits, with no Form SSA-1099 or RRB-1099.",
-       "why_no": "The question says \"Form SSA-1099 or Form RRB-1099 reports them\", and the filer has neither form.",
-       "line": "ssb.benefits_if_any",
-       "irs_text": "The excerpt only covers \"Lines 6a and 6b Social Security Benefits\" (i1040gi 2025 p. 31). The treaty rule is in Pub. 915, which is not excerpted, so this finding is not confirmed by the text given.",
-       "severity": "medium",
-       "fix": "Add: \"Also answer yes if you received Canadian or German social security benefits that a treaty treats as U.S. social security (see Pub. 915).\" Then ask for those amounts separately, because there is no box 5."
+       "fix": "Reword: \"... get social security benefits (retirement, survivor, or disability (SSDI), including a back-payment for earlier years) ...\". Also note that SSI is not included."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer who received in 2025 a retroactive lump-sum award covering benefits for 2023-2024.",
-       "why_no": "They may read \"benefits ... in 2025\" as benefits for 2025 and leave out back pay for earlier years.",
+       "who": "A filer awarded benefits late, who in 2025 received a lump-sum back payment covering 2023–2024 and no other benefits in 2025.",
+       "why_no": "\"In 2025\": they treat the lump sum as benefits for earlier years, not 2025 benefits.",
        "line": "ssb.benefits_if_any",
-       "irs_text": "\"If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year, you may be able to reduce the taxable amount with the lump-sum election.\" (i1040gi 2025 p. 31, Line 6c)",
+       "irs_text": "i1040gi p. 31, Line 6c: \"If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year...\"",
+       "severity": "medium",
+       "fix": "Say \"received in 2025, including any lump-sum payment for earlier years\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A railroad retiree, or the spouse, who received Form RRB-1099 (tier 1 social security equivalent benefits) and cannot tell whether their railroad annuity is 'treated as social security'.",
+       "why_no": "\"railroad retirement benefits treated as social security\" is a legal classification. The filer thinks of the annuity as a pension and answers no.",
+       "line": "ssb.benefits_if_any",
+       "irs_text": "i1040gi p. 31: \"If you received railroad retirement benefits treated as social security, you should receive a Form RRB-1099.\"",
        "severity": "low",
-       "fix": "Help text: \"Include benefits paid to you in 2025 even if they were for an earlier year (back pay).\""
+       "fix": "Ask about the fact the filer can check: \"Did you get a Form RRB-1099 (not only RRB-1099-R) from the Railroad Retirement Board?\""
       }
      ],
-     "prompt_sha": "5dd52f79a9197ae942f1c61ad0dabccb702198f9f09651e64fb9d46eaa668136",
+     "prompt_sha": "494b366a3d7292e428a75df752650370fc6b6328b32d6304b8cb8256f2fa8920",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.09754399999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_ssb.any.8689ecbea6a8.1.response.txt"
+     "cost": 0.088168,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_ssb.any.e6025debbd80.1.response.txt"
     }
    ],
    "condition": "ssb.any",
@@ -84,7 +74,8 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b"
+      "p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b",
+      "p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b, \"Box 4 will show the amount of any benefits you repaid in 2025\""
      ],
      "cols_pages": [
       31

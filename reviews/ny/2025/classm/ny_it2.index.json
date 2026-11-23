@@ -2,21 +2,26 @@
  "kind": "classm",
  "form": "ny_it2",
  "family": "claude",
- "base": "e0cc0688f3e73a2ae3522186fdd9bd224a3fda25be8c38531407dbfa7aa6a1b6",
+ "base": "af955f0dc6ba9984fbc9021441fee1e4ca0ff43a7f1f65f400a17a345d9c7c3e",
  "lines": [
   {
    "key": "case classm.ny_it2.1",
-   "record": "e0cc0688f3e73a2ae3522186fdd9bd224a3fda25be8c38531407dbfa7aa6a1b6",
+   "record": "af955f0dc6ba9984fbc9021441fee1e4ca0ff43a7f1f65f400a17a345d9c7c3e",
    "status": null
   },
   {
    "key": "classm.ny_it2.1 — ny_it2[w0].state_whole",
-   "record": "e0cc0688f3e73a2ae3522186fdd9bd224a3fda25be8c38531407dbfa7aa6a1b6",
+   "record": "af955f0dc6ba9984fbc9021441fee1e4ca0ff43a7f1f65f400a17a345d9c7c3e",
    "status": "AGREE"
   },
   {
    "key": "classm.ny_it2.1 — ny_it2[w0].city_whole",
-   "record": "e0cc0688f3e73a2ae3522186fdd9bd224a3fda25be8c38531407dbfa7aa6a1b6",
+   "record": "af955f0dc6ba9984fbc9021441fee1e4ca0ff43a7f1f65f400a17a345d9c7c3e",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_it2.1 — ny_it2[w1].state_whole",
+   "record": "af955f0dc6ba9984fbc9021441fee1e4ca0ff43a7f1f65f400a17a345d9c7c3e",
    "status": "AGREE"
   }
  ]

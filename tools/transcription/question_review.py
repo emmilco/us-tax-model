@@ -215,7 +215,8 @@ def build_prompt(inp, doc, line, wording, ambiguities, reading, gate_text, enum_
     for a in ambiguities:
         facts.append(f"Recorded reading {a['id']}: {indent_rest(str(a.get('text_at_issue', '')).strip(), '  ')} "
                      f"Chosen: {indent_rest(str(a.get('chosen', '')).strip(), '  ')}")
-    gate = (f"\nThe question is asked only when this holds; otherwise it is not asked and its value is zero, "
+    gate = (f"\nThe question is asked only when this holds (or, where it says so, only when it is false); otherwise "
+            f"it is not asked and its value is zero, "
             f"no or the else value of its gate (the gate is reviewed separately):\n  {indent_rest(gate_text, '  ')}\n"
             if gate_text else "")
     items = reader_items(inp, reading, english, brief)

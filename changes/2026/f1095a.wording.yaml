@@ -7,45 +7,45 @@ changes:
     - doc: i1095a
       page: 2
       quote: Add the amounts on lines 21 through 32 and enter on line 33.
-    verified: draft
+    verified: final
     operations:
     - set:
         line: f1095a.line33a
         field: cite.locator
         from: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
-        to: p. 3, "Add the amounts on lines 21 through 32 and enter on line 33."
+        to: p. 2, "Add the amounts on lines 21 through 32 and enter on line 33."
     - set:
         line: f1095a.line33b
         field: cite.locator
         from: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
-        to: p. 3, "Add the amounts on lines 21 through 32 and enter on line 33."
+        to: p. 2, "Add the amounts on lines 21 through 32 and enter on line 33."
     - set:
         line: f1095a.line33c
         field: cite.locator
         from: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
-        to: p. 3, "Add the amounts on lines 21 through 32 and enter on line 33."
+        to: p. 2, "Add the amounts on lines 21 through 32 and enter on line 33."
     - set:
         line: f1095a.yr_a_monthly
         field: cite.locator
         from: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
-        to: p. 3, "Add the amounts on lines 21 through 32 and enter on line 33."
+        to: p. 2, "Add the amounts on lines 21 through 32 and enter on line 33."
     - set:
         line: f1095a.yr_a_uniform
         field: cite.locator
         from: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
-        to: p. 3, "Add the amounts on lines 21 through 32 and enter on line 33."
+        to: p. 2, "Add the amounts on lines 21 through 32 and enter on line 33."
     - set:
         line: f1095a.yr_b_monthly
         field: cite.locator
         from: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
-        to: p. 3, "Add the amounts on lines 21 through 32 and enter on line 33."
+        to: p. 2, "Add the amounts on lines 21 through 32 and enter on line 33."
     - set:
         line: f1095a.yr_b_uniform
         field: cite.locator
         from: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
-        to: p. 3, "Add the amounts on lines 21 through 32 and enter on line 33."
+        to: p. 2, "Add the amounts on lines 21 through 32 and enter on line 33."
     - set:
         line: f1095a.yr_c_monthly
         field: cite.locator
         from: p. 2, "Total the amounts on lines 21 through 32 and enter on line 33."
-        to: p. 3, "Add the amounts on lines 21 through 32 and enter on line 33."
+        to: p. 2, "Add the amounts on lines 21 through 32 and enter on line 33."

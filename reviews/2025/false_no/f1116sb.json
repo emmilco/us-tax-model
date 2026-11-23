@@ -2,68 +2,17 @@
  "form": "f1116sb",
  "reviews": {
   "gate:f1116sb.generated": {
-   "subject_sha": "5e91949592dbdfdc3f6f710bff3894958a7c8fa79c3cf170607e50d6ab6c3716",
+   "subject_sha": "f6cdd48330c5e79f6976619900151124145a3fcc5bea8e2d76960ad45d60998b",
    "samples": [
     {
-     "verdict": "UNCLEAR",
-     "findings": [
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer whose 2025 excess foreign tax, and so the line 6 carryover, is in the general category, such as foreign wages taxed above the US limit. Their 2024 return had general-category foreign income with room left under the limit, but no foreign tax on investment income.",
-       "why_no": "The question and the answer list ask only about 'foreign tax on investment income' / 'passive income'. This filer truthfully picks 'no foreign income' (none was passive), which ends the interview. Carryback is figured separately for each category, and the general category had room in 2024.",
-       "line": "f1116sb.prior_year_if_excess",
-       "irs_text": "p514 p. 37: 'Figure your carrybacks or carryovers separately for each separate limit income category'; 'The excess limit in each category is the amount by which the limit is more than the qualified taxes paid or accrued for that category.'",
-       "severity": "medium",
-       "fix": "Ask about the same separate category as the Schedule B whose line 6 is above zero, using the category name ('foreign tax on [wages/business income | investment income] in 2024'). Do not hard-code passive income."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer whose 2024 return reported foreign-source investment income on which no foreign tax was withheld, so they filed no Form 1116 and claimed no credit. That year therefore had an excess limit.",
-       "why_no": "They choose 'foreign income with the tax deducted or no credit taken', since they took no credit. That answer ends the interview. But 2024 was not a deduction year, and its unused limit can absorb the carryback on an amended 2024 return with Form 1116.",
-       "line": "f1116sb.prior_year_if_excess",
-       "irs_text": "p514 p. 37: 'You are considered to have paid this unused foreign tax first in 2024 (the first preceding tax year) up to the excess limit in that year'; i1116 p. 19: 'You can't carry a credit back to a tax year for which you claimed a deduction, rather than a credit'",
-       "severity": "medium",
-       "fix": "Split the final answer into 'deducted foreign taxes on Schedule A (itemized)' and 'had foreign income but paid no foreign tax / took no credit'. Route the second answer to the room-left path, so the 2024 limit is figured on an amended return."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer who deducted foreign taxes on the 2024 return and can still amend 2024 to switch to the credit, which is allowed within 10 years of the due date.",
-       "why_no": "They truthfully answer 'tax deducted', describing how the 2024 return as filed treated the tax. The interview ends and the carryback is dropped. The help never says the 2024 choice can still be changed, which would make 2024 an eligible carryback year.",
-       "line": "f1116sb.prior_year_if_excess",
-       "irs_text": "p514 p. 38: 'you will get no tax benefit for them unless you file an amended return to change your choice from deducting the taxes to claiming the credit. You have 10 years from the regular due date of the return for the deduction year to make this change.'",
-       "severity": "medium",
-       "fix": "For the 'deducted' answer, add to the help: 'You may still amend 2024 to claim the credit instead. If you will, answer as if 2024 used Form 1116.' Or ask a follow-up question before ending the interview."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A married couple filing jointly for 2025 who filed separate returns for 2024, where only one spouse's 2024 return had foreign income with room under its limit.",
-       "why_no": "The question asks about 'your (or, on a joint return, your spouse's) 2024 return' in the singular. The filer answers for their own separate 2024 return ('no foreign income'), which ends the interview. The spouse's 2024 room is never considered.",
-       "line": "f1116sb.prior_year_if_excess",
-       "irs_text": "p514 p. 37: 'you can treat the unused foreign tax of a tax year as though the tax were paid or accrued in your first preceding ... tax years up to the amount of any excess limit in those years'; p. 38, Married Couples: 'you must figure the unused foreign tax or excess limit ... on the basis of your combined income'",
-       "severity": "medium",
-       "fix": "Ask first whether the 2024 return was joint or separate. If separate, ask the question for each spouse's 2024 return and continue if either one had room."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer whose 2024 Form 1116 showed line 24 equal to line 23 only because both were zero or nearly so, or who cannot locate the 2024 form and guesses.",
-       "why_no": "The choices require the filer to compare 2024 Form 1116 lines 24 and 23 themselves. A filer with the old return at hand but unsure which line is which may pick 'limit used up', which still continues the interview but records 2024 as having no room.",
-       "line": "f1116sb.prior_year_if_excess",
-       "irs_text": "i1116sb p. 2, Line 7: 'In order to carry back amounts to the first preceding tax year, that first preceding tax year must be an excess limitation year'",
-       "severity": "low",
-       "fix": "Ask for the 2024 Form 1116 line 22 and line 23 amounts for the category, and compute the excess limit."
-      }
-     ],
-     "prompt_sha": "90e7fcd37d574db894e4fbc1904be5a7735e3631a882574e70386eb1eefc3eb2",
+     "verdict": "SOUND",
+     "findings": [],
+     "prompt_sha": "42615b653d4b8a86d6f329d9125305fb2b06a2a8a1a80e645116893c7872679d",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.132244,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f1116sb.generated.5e91949592db.1.response.txt"
+     "cost": 0.080812,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_f1116sb.generated.f6cdd48330c5.1.response.txt"
     }
    ],
    "condition": "f1116sb.generated",

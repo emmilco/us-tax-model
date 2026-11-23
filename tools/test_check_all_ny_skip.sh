@@ -5,6 +5,8 @@
 # year it has not adopted, no ny_* step runs, each is listed in its wave as skipped with the reason, the run
 # counts them at its start and end, and the New York render runs only when forms/ny/<year>/ exists. Then the light
 # tier: the interview checks get the change's --forms scope, none skips them, all runs all but interview_rules unscoped.
+# Every other adopted year is built and its fixtures run (its Lean comparison in the full tier), New York's where it
+# has adopted it.
 set -euo pipefail
 here="$(cd "$(dirname "$0")/.." && pwd)"
 tmp="$(mktemp -d)"
@@ -48,10 +50,11 @@ has "$calls" "node engine/dist/main.js render --ny --year 2025"
 lacks "$tmp/out" "New York steps skipped"; lacks "$tmp/out" "skipped: New York"
 adopted_steps="$(grep -c '^== ny_' "$tmp/out" || true)"
 
-# Not adopted, no New York definitions: no New York step runs, each is listed as skipped, with the counts.
+# Not adopted, no New York definitions: no New York step runs for 2026, each is listed as skipped, with the counts.
+# (2025, the other adopted year, still has its New York fixtures run: below.)
 run "[2025]" --year 2026
-lacks "$calls" "jurisdiction ny"
-lacks "$calls" "--ny"
+lacks "$calls" "jurisdiction ny --year 2026"
+lacks "$calls" "--ny --year 2026"
 lacks "$calls" "extract_ny_"
 has "$tmp/out" "render --ny skipped: no forms/ny/2026/"
 has "$tmp/out" "check-all: New York steps skipped for 2026: New York has not adopted 2026 (years.json ny_adopted: 2025)"
@@ -65,7 +68,7 @@ has "$calls" "tools/citations.py --strict --year 2026"
 # Not adopted, but its definitions exist: still skipped, the render runs, and the reason says to adopt it.
 mkdir -p "$repo/forms/ny/2026"
 run "[2025]" --year 2026
-lacks "$calls" "jurisdiction ny"
+lacks "$calls" "jurisdiction ny --year 2026"
 has "$calls" "node engine/dist/main.js render --ny --year 2026"
 has "$tmp/out" "add 2026 to ny_adopted to check it"
 
@@ -73,6 +76,37 @@ has "$tmp/out" "add 2026 to ny_adopted to check it"
 run "[2025, 2026]" --year 2026
 has "$calls" "tools/citations.py --strict --jurisdiction ny --year 2026"
 lacks "$tmp/out" "New York steps skipped"; lacks "$tmp/out" "skipped: New York"
+
+# The other adopted years (the shared code's checks): with 2025 and 2026 adopted, a 2026 run builds 2025 and runs its
+# fixtures, federal and (New York having adopted 2025) New York, but not its Lean comparison in the light tier; a 2025
+# run does the same for 2026, without New York, which has not adopted 2026; a year that is the only one adopted has none.
+printf 'import os\nprint(os.environ.get("SCOPE", "all"))\n' > "$repo/tools/change_scope.py"
+runl() {  # runl NY_ADOPTED ARGS...: run() in the light tier, the change's scope all
+  printf '{"adopted": [2025, 2026], "ny_adopted": %s}\n' "$1" > "$repo/years.json"; shift
+  : > "$calls"
+  (cd "$repo" && PATH="$tmp/bin:$PATH" SCOPE=all bash tools/check_all_steps.sh --tier light "$@") > "$tmp/out" 2>&1 || {
+    fail "the light run failed:"; sed 's/^/  /' "$tmp/out" >&2; return 0; }
+}
+runl "[2025]" --year 2026
+has "$calls" "node engine/dist/main.js build --year 2025"
+has "$calls" "node engine/dist/main.js test-fixtures --year 2025"
+has "$calls" "node engine/dist/main.js test-fixtures --ny --year 2025"
+lacks "$calls" "compare --year 2025"
+has "$tmp/out" "== y2025_build"
+runl "[2025]" --year 2025
+has "$calls" "node engine/dist/main.js build --year 2026"
+has "$calls" "node engine/dist/main.js test-fixtures --year 2026"
+lacks "$calls" "test-fixtures --ny --year 2026"
+printf '{"adopted": [2025], "ny_adopted": [2025]}\n' > "$repo/years.json"
+: > "$calls"
+(cd "$repo" && PATH="$tmp/bin:$PATH" SCOPE=all bash tools/check_all_steps.sh --tier light --year 2025) > "$tmp/out" 2>&1 || fail "the one-year run failed"
+lacks "$calls" "build --year 2026"
+lacks "$tmp/out" "== y20"
+printf '{"adopted": [2025, 2026], "ny_adopted": [2025]}\n' > "$repo/years.json"
+: > "$calls"
+(cd "$repo" && PATH="$tmp/bin:$PATH" bash tools/check_all_steps.sh --tier full --print-steps --year 2026) > "$tmp/out" 2>&1 || fail "the full-tier step list failed"
+has "$tmp/out" "y2025_compare"
+has "$tmp/out" "y2025_ny_compare"
 
 # Listed without definitions: the run refuses before any step.
 rmdir "$repo/forms/ny/2026"

@@ -6,8 +6,20 @@
 # Every check runs, each under its own "== <check> (<seconds> s)" line, so one run lists every due item; the
 # script then fails naming the checks that failed (exit 1). A failed compile, build or render stops it before the
 # checks (exit 2).
+# A ruling that confirms an open bug of medium or high severity fails its check (samples.open_defects) unless
+# --allow-open-bugs is given; each check then lists those rulings on lines beginning "allowed open bug:", which
+# tools/release.sh records in the release.
+#
+#   tools/release_reviews.sh [--allow-open-bugs]
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
+allow=""
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --allow-open-bugs) allow=" --allow-open-bugs"; shift ;;
+    *) echo "release reviews: unknown argument '$1' (usage: tools/release_reviews.sh [--allow-open-bugs])" >&2; exit 2 ;;
+  esac
+done
 t0=$(date +%s)
 if ! { npm run -s compile >/dev/null && node engine/dist/main.js build >/dev/null &&
        node engine/dist/main.js render >/dev/null && node engine/dist/main.js render --ny >/dev/null; }; then
@@ -22,7 +34,7 @@ for check in "check_completeness.py --release" "check_completeness.py --release 
   t0=$(date +%s)
   rc=0
   # shellcheck disable=SC2086
-  python3 tools/transcription/$check || rc=$?
+  python3 tools/transcription/$check$allow || rc=$?
   echo "== $check ($(( $(date +%s) - t0 )) s)$([ "$rc" = 0 ] || echo ": FAILED (exit $rc)")"
   [ "$rc" = 0 ] || failed+=("$check")
 done

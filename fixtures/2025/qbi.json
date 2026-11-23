@@ -225,7 +225,7 @@
         "qbi.zero_income"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Explicitly calculated regression expectations; human review pending.",
+      "evidence_note": "Explicitly calculated regression expectations; human review pending. Restated for BUG-0100 (lane older open bugs, 2026-11-22): Form 8995 line 11 / Form 8995-A line 33 is line 11a minus lines 12e and 13b with no floor (i8995 p. 4, Line 11; i8995a p. 5), so the recorded 0, which followed the floored helper, becomes the signed difference; the later line's floor (line 13 / line 35) keeps it at zero there.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "a"
@@ -236,7 +236,7 @@
       "expect": {
         "qbi.taxable_before": {
           "kind": "money",
-          "cents": 0
+          "cents": -1575000
         },
         "qbi.deduction": {
           "kind": "money",
@@ -278,6 +278,38 @@
             "snapshot": "6df1301c1ce74ef391219094831accd22cfeac26ce510f4499c4834484f55d97",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "qbi.reg.taxable_before_negative",
+      "covers": [
+        "f8995.line11",
+        "qbi.taxable_before"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0100: Form 8995 line 11 is Form 1040 line 11a minus lines 12e and 13b with no floor (i8995 p. 4, Line 11). Predicted by hand before evaluating: $1,000 of qualified REIT dividends, single, standard deduction $15,750 (params/2025.yaml), so line 11 = 1,000 - 15,750 = -$14,750; line 12 (net capital gain) $0; line 13 = line 11 less line 12, not below zero, $0; line 14 $0; line 15 (the smaller of line 10, $200, and line 14) $0.",
+      "inputs": {
+        "div.any": true,
+        "qbi.dividends": 100000,
+        "sb.ordinary_dividends": 100000
+      },
+      "expect": {
+        "f8995.line11": {
+          "kind": "money",
+          "cents": -1475000
+        },
+        "f8995.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8995.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 0
         }
       }
     }

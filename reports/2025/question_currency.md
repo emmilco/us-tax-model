@@ -39,7 +39,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 | unruled | `scveh.lease_smr_before#1` | verdict WIDE with 1 finding(s); adjudicate and rule with subject_sha c9e11cf2369f | ruled: No defect: the 2025 conversion is refused by design. |
 | unruled | `scveh.placed_date#1` | verdict WRONG_FIGURE with 3 finding(s); adjudicate and rule with subject_sha 7e04dbbb63c8 | ruled: Lows: line 43 shows a year where the form asks month/day/year; no computation reads it. |
 
-## Due at the next full pass (1097)
+## Due at the next full pass (1108)
 
 - `asset.acquired_before_bonus_date` (asset): never reviewed; run question_review.py --inputs asset.acquired_before_bonus_date
 - `asset.ads_required` (asset): never reviewed; run question_review.py --inputs asset.ads_required
@@ -326,6 +326,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `f5695.qmid_hp` (f5695): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f5695.qmid_hp
 - `f5695.qmid_wh` (f5695): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f5695.qmid_wh
 - `f5695.qmid_windows` (f5695): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f5695.qmid_windows
+- `f5695.reconstruct_later` (f5695): never reviewed; run question_review.py --inputs f5695.reconstruct_later
 - `f5695.separate_homes` (f5695): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs f5695.separate_homes
 - `f5695.solar` (f5695): never reviewed; run question_review.py --inputs f5695.solar
 - `f5695.solar_water` (f5695): never reviewed; run question_review.py --inputs f5695.solar_water
@@ -336,6 +337,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `f7203.line1` (f7203): never reviewed; run question_review.py --inputs f7203.line1
 - `f7203.line2` (f7203): never reviewed; run question_review.py --inputs f7203.line2
 - `f7203.loans` (f7203): never reviewed; run question_review.py --inputs f7203.loans
+- `f8582.prior_crd` (f8582): never reviewed; run question_review.py --inputs f8582.prior_crd
 - `f8853c.contract_before_ltc_date` (f8853c): never reviewed; run question_review.py --inputs f8853c.contract_before_ltc_date
 - `f8853c.days` (f8853c): never reviewed; run question_review.py --inputs f8853c.days
 - `f8853c.line17` (f8853c): never reviewed; run question_review.py --inputs f8853c.line17
@@ -406,6 +408,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `household.community_property` (household): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs household.community_property
 - `household.considered_unmarried` (household): never reviewed; run question_review.py --inputs household.considered_unmarried
 - `household.cp_married` (household): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs household.cp_married
+- `household.cp_retirement` (household): never reviewed; run question_review.py --inputs household.cp_retirement
 - `household.credit_disallowed` (household): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs household.credit_disallowed
 - `household.ever_married` (household): never reviewed; run question_review.py --inputs household.ever_married
 - `household.home_cost` (household): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs household.home_cost
@@ -698,6 +701,8 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `rental.amt7` (rental): never reviewed; run question_review.py --inputs rental.amt7
 - `rental.amt8` (rental): never reviewed; run question_review.py --inputs rental.amt8
 - `rental.amt9` (rental): never reviewed; run question_review.py --inputs rental.amt9
+- `rental.bought_lease` (rental): never reviewed; run question_review.py --inputs rental.bought_lease
+- `rental.business_incidental` (rental): never reviewed; run question_review.py --inputs rental.business_incidental
 - `rental.days_fair` (rental): never reviewed; run question_review.py --inputs rental.days_fair
 - `rental.days_overlap` (rental): never reviewed; run question_review.py --inputs rental.days_overlap
 - `rental.days_personal` (rental): never reviewed; run question_review.py --inputs rental.days_personal
@@ -717,6 +722,8 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `rental.has_utilities` (rental): never reviewed; run question_review.py --inputs rental.has_utilities
 - `rental.held_for_sale` (rental): never reviewed; run question_review.py --inputs rental.held_for_sale
 - `rental.kind` (rental): never reviewed; run question_review.py --inputs rental.kind
+- `rental.land_heavy` (rental): never reviewed; run question_review.py --inputs rental.land_heavy
+- `rental.mortgage_excess` (rental): never reviewed; run question_review.py --inputs rental.mortgage_excess
 - `rental.not_at_risk` (rental): never reviewed; run question_review.py --inputs rental.not_at_risk
 - `rental.not_for_profit` (rental): never reviewed; run question_review.py --inputs rental.not_for_profit
 - `rental.part_home` (rental): never reviewed; run question_review.py --inputs rental.part_home
@@ -803,6 +810,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `rprop.kind` (rprop): never reviewed; run question_review.py --inputs rprop.kind
 - `rprop.month` (rprop): never reviewed; run question_review.py --inputs rprop.month
 - `rprop.qip` (rprop): never reviewed; run question_review.py --inputs rprop.qip
+- `rprop.short_class` (rprop): never reviewed; run question_review.py --inputs rprop.short_class
 - `rprop.year` (rprop): never reviewed; run question_review.py --inputs rprop.year
 - `s1.alaska_any` (s1): never reviewed; run question_review.py --inputs s1.alaska_any
 - `s1.alaska_dividend` (s1): never reviewed; run question_review.py --inputs s1.alaska_dividend
@@ -905,6 +913,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `sa.line5c` (sa): the question, its wording or help, or its readers changed since its samples; run question_review.py --inputs sa.line5c
 - `sa.medical_any` (sa): never reviewed; run question_review.py --inputs sa.medical_any
 - `sa.medical_premiums` (sa): never reviewed; run question_review.py --inputs sa.medical_premiums
+- `sa.mfs_joint_paid` (sa): never reviewed; run question_review.py --inputs sa.mfs_joint_paid
 - `sa.mortgage_interest` (sa): never reviewed; run question_review.py --inputs sa.mortgage_interest
 - `sa.mortgage_other_use` (sa): never reviewed; run question_review.py --inputs sa.mortgage_other_use
 - `sa.mortgage_over_limit` (sa): never reviewed; run question_review.py --inputs sa.mortgage_over_limit
@@ -1033,6 +1042,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `scope.recovery` (scope): never reviewed; run question_review.py --inputs scope.recovery
 - `scope.reforestation` (scope): never reviewed; run question_review.py --inputs scope.reforestation
 - `scope.religious_work` (scope): never reviewed; run question_review.py --inputs scope.religious_work
+- `scope.remic` (scope): never reviewed; run question_review.py --inputs scope.remic
 - `scope.rent_personal` (scope): never reviewed; run question_review.py --inputs scope.rent_personal
 - `scope.rental` (scope): never reviewed; run question_review.py --inputs scope.rental
 - `scope.reservist_expenses` (scope): never reviewed; run question_review.py --inputs scope.reservist_expenses
@@ -1040,6 +1050,7 @@ Findings: 32; ruled 32; in the baseline to be worked off 0.
 - `scope.se_plan_other` (scope): never reviewed; run question_review.py --inputs scope.se_plan_other
 - `scope.strike_pay` (scope): never reviewed; run question_review.py --inputs scope.strike_pay
 - `scope.tips_unreported` (scope): never reviewed; run question_review.py --inputs scope.tips_unreported
+- `scope.trade_act_repaid` (scope): never reviewed; run question_review.py --inputs scope.trade_act_repaid
 - `scope.treaty` (scope): never reviewed; run question_review.py --inputs scope.treaty
 - `scope.unearned_2700` (scope): never reviewed; run question_review.py --inputs scope.unearned_2700
 - `scope.w2_marks` (scope): never reviewed; run question_review.py --inputs scope.w2_marks

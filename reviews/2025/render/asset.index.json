@@ -6,7 +6,7 @@
  "head_rows": {
   "lines judged": "33",
   "match / mismatch / unclear / missing": "32 / 1 / 0 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-17); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,9 +23,9 @@
   },
   {
    "key": "(screen) (asset.kind_excluded)",
-   "record": "9de760b867dceb8649241446e9b893a291408f82324bc0d3371c7dd31287d012",
+   "record": "476f441fb64d393482a1241ce643fb796bf69d3780582ec8457ce8729d6a9bf0",
    "status": "MATCH",
-   "subject_key": "dbc2215611c08f9bca0030f4fabefad3897d511b1879aaf65c91acee473d06f4"
+   "subject_key": "a0f4d2e6b36c96f2c9fabfdb117b343df61e978a2cfa568d9365c761a6adad9d"
   },
   {
    "key": "(screen) (asset.software)",
@@ -47,9 +47,9 @@
   },
   {
    "key": "(screen) (asset.industry_use)",
-   "record": "9de760b867dceb8649241446e9b893a291408f82324bc0d3371c7dd31287d012",
+   "record": "476f441fb64d393482a1241ce643fb796bf69d3780582ec8457ce8729d6a9bf0",
    "status": "MATCH",
-   "subject_key": "49adc51d38e2dd1edcf951bd3ab9b0885cc100e3a244efc064ff2b0772c03e89"
+   "subject_key": "fe272cb9a68a2f309ab88c91f88f2ee6aaa865ccf5fe5eeb18e7d9e1ea26858f"
   },
   {
    "key": "(screen) (asset.industry_item)",
@@ -131,9 +131,9 @@
   },
   {
    "key": "(screen) (asset.screen)",
-   "record": "9de760b867dceb8649241446e9b893a291408f82324bc0d3371c7dd31287d012",
+   "record": "476f441fb64d393482a1241ce643fb796bf69d3780582ec8457ce8729d6a9bf0",
    "status": "MATCH",
-   "subject_key": "bc60e16273c8dc2283412d330e04e843fcda8126c8eb6a9e12169c933e5a1f19"
+   "subject_key": "c3a3df89dc05d297d67576d8e85140ef5600392cc9aa04fc65089104045050e5"
   },
   {
    "key": "(b)",
@@ -212,11 +212,11 @@
  "subjects": {
   "(a)": "e7ddc5c08fd4fdfb949997e3fd3aaa39b70c52428a85a8e87272ea5c37bda358",
   "(d)": "b92ddb258734975b9f3862acfd79b1bee56e7844fd13894f7e35d6be7c8d8e54",
-  "(screen) (asset.kind_excluded)": "e14054b3dbe624128f9d4cc8935fe9eedc4e48569d9e2c648bf92a9b46e31456",
+  "(screen) (asset.kind_excluded)": "876deb950a0f80a240b8eabb28a4a023ad78bea3961dada13672bde88cfb8f96",
   "(screen) (asset.software)": "9c6e3ddf1ddd68085b5c69bb9f290bf0b613527fc9801623a2a4c7ecb4967f4a",
   "(screen) (asset.software_spread)": "1685bdc21554a5eb7d41b6667aabdbd69d9febabcd7e31fda51a900576f84a2c",
   "(screen) (asset.industry)": "ce2d519f9b7418e89762ee713cd0919485bbed6cbad065d2dc8e09073ad3e26c",
-  "(screen) (asset.industry_use)": "015207f97a987368135b12fc9c943433799cac5338fcd4c125fcbdb0c0c4f9d8",
+  "(screen) (asset.industry_use)": "2a386b9ce5ae2e07d7d85cd5e12c9be3d07a75779519d3a2ca441d5d280762c2",
   "(screen) (asset.industry_item)": "e0be08b68eb9947a04593e7be3cd2c8d6c64edf2a42ac2aa8bc11e759dff1ccd",
   "(screen) (asset.long_production)": "62956280f8c966c7ce57243213edb4b4832c15f386b5df5132c6811c8cef4b8f",
   "(screen) (asset.got_other)": "7d5c84359526463d6faa2199afc6f811569f8f0ab9b28bc8035ddd8942436dee",
@@ -230,7 +230,7 @@
   "(screen) (asset.ads_required)": "1d98ba7709ea3c2c4e2e25a95b97a7186c4a072df7a42eb97ef4fbc0d18a261f",
   "(screen) (asset.outside_use)": "057bbc627ac1ea1f57f87d3d3839450cee8a345f9aef6f67bfcddafb96cbdaf0",
   "(screen) (asset.qbu_low)": "32091f6e2cfdbf48e73f3f4313ab0e8b18b8b1009fd99e9e47bef71f5a232fba",
-  "(screen) (asset.screen)": "2bc8542cf73818882de04712320dfcde4ea71bb3569a36837e6d6c0c4af06529",
+  "(screen) (asset.screen)": "7891948d7e7ce3317e885530a59879ea2c593cc2b2c690e3210cdaf2dad4e15b",
   "(b)": "11c2b67acc1cf618b82feacbaddb645adda0fb28a8d1efc758cf7952f6f6cfd8",
   "(c)": "d73586c607b01c97ecdfab67f565e7b67aaf3ed18e11df61d97bab267ebb8f74",
   "6(c)": "084dddb1873a0f47ceb66432c36955190ec9664cc738b5f474619c191e8ecce7",

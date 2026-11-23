@@ -100,7 +100,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)\u2014Classification of property and Column (f)\u2014Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
      ],
      "cols_pages": [
       6,
@@ -135,7 +135,7 @@
    ]
   },
   "gate:asset.industry_any": {
-   "subject_sha": "8e906b0b6e175dac76dc7676653ca148fc543b3df262b72878497b8fec23d7bb",
+   "subject_sha": "e1d7e7c0dbbc2529f4e37c7548afbb5d2b70448d4fc8b68a5c72b18ebbf80f4c",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -143,80 +143,80 @@
       {
        "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "A manufacturer, retailer, or landlord that installs solar, wind, or other energy property for its own business use (or leases it to a tenant) but is not in the business of producing energy for sale.",
-       "why_no": "The gate asks whether the business is a utility or an energy producer, and the item helper omits energy property; the filer truthfully says no to both because it is an ordinary business with energy equipment, not an energy producer.",
-       "line": "asset.industry_item_if_industry (energy property specified in section 168(e)(3)(B)(vi))",
-       "irs_text": "i4562 p. 10: '5-year property includes ... Certain energy property specified in section 168(e)(3)(B)(vi).'",
+       "who": "A sole proprietor, farmer, or landlord who put solar panels, a fuel cell, a microturbine, combined heat and power equipment, or a geothermal heat pump system on a store, barn, or rental building in 2025 or an earlier year. The equipment supplies the business's own power, and the filer does not sell electricity.",
+       "why_no": "Their business is not 'a utility' or 'an energy producer'. The item list names 'recycling equipment, a natural gas gathering line, electric transmission property, a smart electric meter or smart grid equipment, or a race track' and does not name solar or other energy property. Both helpers truthfully return false.",
+       "line": "asset.industry_item_if_industry (energy property specified in section 168(e)(3)(B)(vi), which is 5-year property)",
+       "irs_text": "i4562 p. 10: '5-year property includes the following. ... Certain energy property specified in section 168(e)(3)(B)(vi).'",
        "severity": "high",
-       "fix": "Add energy property specified in section 168(e)(3)(B)(vi) to the item helper, or broaden the gate to any business with energy property and classify after a broad yes."
+       "fix": "Add to the item helper: 'solar, wind, fuel cell, microturbine, combined heat and power, geothermal or other energy equipment (energy property), whatever the business.' Or ask the item question for every asset."
       },
       {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A business that provides electric energy services, such as a metering-services or demand-response company, but does not generate or sell electricity and is not a utility; it places qualified smart electric meters or smart grid equipment in service.",
-       "why_no": "The gate asks whether the business is a utility or an energy producer and lists only recycling equipment, natural gas gathering lines, electric transmission property, and race tracks; a service provider answers no to both because it is a service provider, not a producer, and smart meters/grid are not on the item list.",
-       "line": "asset.industry_item_if_industry (qualified smart electric meter or qualified smart electric grid system property)",
-       "irs_text": "p946 p. 31: 'A qualified smart electric meter is any time-based meter and related communication equipment, which is placed in service by a supplier of electric energy or a provider of electric energy services'; the same page defines qualified smart electric grid system property similarly.",
-       "severity": "high",
-       "fix": "Add qualified smart electric meter and qualified smart electric grid system property to the item helper, or add 'provider of electric energy services' to the business helper."
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A car, boat, RV, or farm-equipment dealer that used a floor plan line earlier in 2025, or in a year whose interest still counts under section 163(j)(1)(C), and had paid it off by the time of filing.",
+       "why_no": "'one with floor plan financing' is in the present tense. The section 168(k)(9)(B) exclusion covers a business that 'has had' floor plan financing indebtedness.",
+       "line": "asset.industry_item_if_industry (section 168(k)(9)(B) property, which bars the special depreciation allowance)",
+       "irs_text": "i4562 p. 7, Exceptions: 'Qualified property does not include: ... Property described in section 168(k)(9)(A) or 168(k)(9)(B)'",
+       "severity": "medium",
+       "fix": "Ask 'Has the business had, at any time, a loan to buy vehicles, boats, farm machinery, trailers or campers held for sale or lease, secured by that inventory, whose interest you counted in the business interest limit?'"
       },
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A small boat, trailer, or farm-machinery dealer that finances inventory through a lender's revolving inventory line secured by the units. The dealer has never heard the term 'floor plan financing'.",
+       "why_no": "The gate uses the legal term 'floor plan financing' without describing the loan. The dealer does not recognize its inventory loan under that name.",
+       "line": "asset.industry_item_if_industry (section 168(k)(9)(B) property)",
+       "irs_text": "i4562 p. 7, Exceptions: 'Property described in section 168(k)(9)(A) or 168(k)(9)(B)'",
+       "severity": "medium",
+       "fix": "Describe the fact in the gate: 'a loan used to buy motor vehicles, boats, farm machinery or equipment, or trailers or campers held for sale or lease, and secured by them'."
+      },
+      {
+       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A waste hauler or distributor that is not a recycler and uses machinery or equipment exclusively to collect or distribute recyclable materials; or a non-recycler business that buys software or an appurtenance necessary to operate recycling equipment.",
-       "why_no": "The gate asks whether the business is a recycler and whether the item is recycling equipment; a collector/distributor says it does not recycle, and software/appurtenance is not 'equipment' to the filer, so both helpers are answered no.",
+       "who": "A filer whose business pipes steam, carries gas by pipeline, or provides water or sewage disposal at rates a state commission or local government approves. One example is a mobile-home park or small community water and sewer system with regulated rates.",
+       "why_no": "The filer reads 'a utility' as an electric or gas company and sees their own business as a landlord or pipeline operator. 'Energy producer' does not fit either.",
+       "line": "asset.industry_item_if_industry (section 168(k)(9)(A) property, which bars the special depreciation allowance)",
+       "irs_text": "i4562 p. 7, Exceptions: 'Qualified property does not include: ... Property described in section 168(k)(9)(A)'",
+       "severity": "medium",
+       "fix": "Replace 'a utility' with: 'a business that sells electricity, water, sewage disposal, gas or steam through a local system, or moves gas or steam by pipeline, at rates set or approved by a government body, utility commission, or electric cooperative board'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A scrap collector or hauler who owns a baler, compactor, sorting line, or the software that runs it, used only to collect or distribute recyclable materials. The filer does not process the materials.",
+       "why_no": "The filer reads 'a recycler' and 'recycling equipment' as covering only equipment that reprocesses materials. The qualifying property also includes machinery used to collect or distribute recyclables, and its software.",
        "line": "asset.industry_item_if_industry (qualified reuse and recycling property)",
-       "irs_text": "i4562 p. 6: 'Qualified reuse and recycling property includes any machinery and equipment ... along with any appurtenance, that is used exclusively to collect, distribute, or recycle qualified reuse and recyclable materials. This includes software necessary to operate such equipment.'",
-       "severity": "high",
-       "fix": "Use 'qualified reuse and recycling property, including appurtenances and software used exclusively to collect, distribute, or recycle' as the item helper, or broaden the business helper to collectors/distributors."
+       "irs_text": "i4562 p. 6: 'any machinery and equipment ... used exclusively to collect, distribute, or recycle qualified reuse and recyclable materials. This includes software necessary to operate such equipment.'",
+       "severity": "low",
+       "fix": "Word it as 'machinery, equipment or its software used only to collect, distribute or recycle recyclable materials (not trucks or other transport equipment)'."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A landlord or developer that owns land and makes initial clearing and grading improvements on property leased or dedicated to a gas utility or an electric utility transmission and distribution plant, but is not itself a utility or energy producer.",
-       "why_no": "The business is real estate rental/development, not a utility, and the item helper omits land improvements; the filer answers no even though the property is an initial clearing and grading land improvement for utility property.",
-       "line": "asset.industry_item_if_industry (initial clearing and grading land improvement for gas utility property or electric utility transmission and distribution plants)",
-       "irs_text": "i4562 p. 10: '15-year property includes ... Initial clearing and grading land improvements for gas utility property'; and '20-year property includes ... Initial clearing and grading land improvements for electric utility transmission and distribution plants.'",
-       "severity": "medium",
-       "fix": "Add initial clearing and grading land improvements for utility property to the item helper, or state that the gate looks to the use of the property by the utility rather than the filer's own business label."
+       "who": "A filer who owns the grandstands, parking lot, or concession buildings at a racing facility open to the public, but not the track surface.",
+       "why_no": "'a race track' and 'a motorsports complex' read as the track itself. The filer's property is the surrounding facility.",
+       "line": "asset.industry_item_if_industry (motorsports entertainment complex)",
+       "irs_text": "p946 p. 31: 'Motorsports entertainment complex. This is a racing track facility permanently situated on land that hosts one or more racing events ...'",
+       "severity": "low",
+       "fix": "Say 'a racing track facility, including its grandstands, parking and other facilities, open to the public for paid admission'."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A joint filer whose spouse owns or operates a listed business, for example a recycling company or rent-to-own dealership, and the property placed in service belongs to that spouse's business.",
-       "why_no": "The gate says 'The business is a utility, an energy producer, a recycler, ...' without 'you or your spouse'; the filer answers no because the business is the spouse's, not the filer's own.",
-       "line": "asset.industry_item_if_industry (any listed category, e.g., qualified reuse and recycling property or qualified rent-to-own property)",
-       "irs_text": "i4562 p. 10: '3-year property includes ... Any qualified rent-to-own property (as defined in section 168(i)(14))'; p. 6 describes qualified reuse and recycling property.",
-       "severity": "medium",
-       "fix": "State the gate as 'you or your spouse' and make clear that a business or item owned or used by either spouse on a joint return counts."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A furniture or appliance retailer that regularly offers rent-to-own contracts but does not think of itself as a 'rent-to-own dealer' because rent-to-own is only part of its business.",
-       "why_no": "The gate asks whether the business is a rent-to-own dealer; the filer reads that as a dedicated rent-to-own store and answers no, and the item helper does not mention rent-to-own property.",
-       "line": "asset.industry_item_if_industry (qualified rent-to-own property)",
-       "irs_text": "i4562 p. 10: '3-year property includes ... Any qualified rent-to-own property (as defined in section 168(i)(14)).' p946 p. 31 describes the rent-to-own dealer contract terms.",
-       "severity": "medium",
-       "fix": "Ask whether the business is regularly engaged in rent-to-own contracts (not whether it is primarily a 'rent-to-own dealer'), or add qualified rent-to-own property to the item helper."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A car, boat, farm-equipment, or trailer dealer with floor plan financing indebtedness whose interest is taken into account under section 163(j)(1)(C), but who does not recognize the term 'floor plan financing' or reads it as consumer vehicle financing.",
-       "why_no": "The gate asks whether the business is 'one with floor plan financing' without the later parenthetical definition; the filer answers no because it does not use that label for its inventory loan.",
-       "line": "asset.industry_item_if_industry (property described in section 168(k)(9)(B))",
-       "irs_text": "i4562 p. 7: 'Property described in section 168(k)(9)(A) or 168(k)(9)(B)' is the property that must be identified; the gated question itself defines floor plan financing as a loan used to buy motor vehicles, boats, farm machinery or equipment, or trailers or campers held for sale or lease, secured by them.",
-       "severity": "medium",
-       "fix": "Define 'floor plan financing' in the gate help, or ask whether the business has an inventory loan secured by vehicles/equipment held for sale and interest taken into account under section 163(j)(1)(C)."
+       "pattern": "6",
+       "who": "A filer with land clearing and grading done for a gas utility site or an electric transmission and distribution plant. The filer does not see the business as 'a utility'.",
+       "why_no": "The item list does not mention initial clearing and grading land improvements. A filer who reads 'utility' narrowly answers no to both helpers.",
+       "line": "asset.industry_item_if_industry (initial clearing and grading land improvement for utility property)",
+       "irs_text": "i4562 p. 10: 'Initial clearing and grading land improvements for gas utility property.' and 'Initial clearing and grading land improvements for electric utility transmission and distribution plants.'",
+       "severity": "low",
+       "fix": "Add 'initial clearing and grading of land for gas utility property or electric transmission and distribution plants' to the item helper."
       }
      ],
-     "prompt_sha": "b222f352093b50d86b743023310eba9c26f037d257c33f11fac5a592eb41c92a",
+     "prompt_sha": "2ed2bf195ead8b0080edf03d141338b2557ee33a0a286b3c4600a09b50fb2d3a",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_asset.industry_any.8e906b0b6e17.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.19098,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_asset.industry_any.e1d7e7c0dbbc.1.response.txt"
     }
    ],
    "condition": "asset.industry_any",
@@ -244,7 +244,7 @@
      "how": "cited pages",
      "locators": [
       "p. 6, Qualified reuse and recycling property",
-      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)\u2014Classification of property and Column (f)\u2014Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
      ],
      "cols_pages": [
       6,
@@ -310,7 +310,7 @@
        "who": "A filer leases a party bouncy castle only in their leasing business to a 5% owner and does not report the lease value as income to that owner; qualified business use is 0%.",
        "why_no": "The gate asks whether entertainment/recreation property is 'not used only in your business'; because the bouncy castle is used only in the filer's leasing business, the filer answers no.",
        "line": "asset.qbu_low_if_listed",
-       "irs_text": "i4562 p. 3: 'Any property used for entertainment or recreational purposes (such as photographic, phonographic, communication, and video recording equipment).' The exception is narrower: 'Photographic, phonographic, communication, or video equipment used exclusively in a taxpayer\u2019s trade or business...' p. 14: qualified business use does not include 'Leasing the property to a 5% owner or related person if the value ... is not reported as income to the individual.'",
+       "irs_text": "i4562 p. 3: 'Any property used for entertainment or recreational purposes (such as photographic, phonographic, communication, and video recording equipment).' The exception is narrower: 'Photographic, phonographic, communication, or video equipment used exclusively in a taxpayer’s trade or business...' p. 14: qualified business use does not include 'Leasing the property to a 5% owner or related person if the value ... is not reported as income to the individual.'",
        "severity": "high",
        "fix": "Limit the business/regular-establishment exception to the four equipment types; for other entertainment/recreation property, ask listed-property status without that exception."
       },
@@ -327,8 +327,8 @@
       {
        "kind": "FALSE_NO",
        "pattern": "other",
-       "who": "An employee owns a pre-2018 laptop and keeps it only at the employer\u2019s office; she uses it 40% for employer work and 60% for personal browsing there.",
-       "why_no": "The gate asks only whether the computer is 'not used only at your regular place of business'; she reads the employer\u2019s office as her regular place and answers no.",
+       "who": "An employee owns a pre-2018 laptop and keeps it only at the employer’s office; she uses it 40% for employer work and 60% for personal browsing there.",
+       "why_no": "The gate asks only whether the computer is 'not used only at your regular place of business'; she reads the employer’s office as her regular place and answers no.",
        "line": "asset.qbu_low_if_listed",
        "irs_text": "i4562 p. 3: the computer exception requires 'Any computer or peripheral equipment used exclusively at a regular business establishment and owned or leased by the person operating the establishment.' Because she owns it, the exception does not apply; p. 14 line 27 covers listed property used 50% or less.",
        "severity": "high",
@@ -350,7 +350,7 @@
        "who": "A filer uses a video camera exclusively to manage a stock portfolio, which the filer calls their investment business, and has no trade or business use.",
        "why_no": "The gate asks 'not used only in your business'; the filer calls the investing activity a business and answers no.",
        "line": "asset.qbu_low_if_listed",
-       "irs_text": "i4562 p. 3 exception 1 requires use 'exclusively in a taxpayer\u2019s trade or business or at the taxpayer\u2019s regular business establishment'; p. 14 says qualified business use generally is 'any use in your trade or business' and excludes investment use.",
+       "irs_text": "i4562 p. 3 exception 1 requires use 'exclusively in a taxpayer’s trade or business or at the taxpayer’s regular business establishment'; p. 14 says qualified business use generally is 'any use in your trade or business' and excludes investment use.",
        "severity": "medium",
        "fix": "Say 'trade or business' and state that investment or hobby use is not a trade or business for this test."
       }
@@ -389,8 +389,8 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 3, Listed Property and its Exceptions, \"a portion of the taxpayer\u2019s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home\"; p. 13, Part V",
-      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)\u2014Classification of property and Column (f)\u2014Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+      "p. 3, Listed Property and its Exceptions, \"a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home\"; p. 13, Part V",
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
      ],
      "cols_pages": [
       3,
@@ -448,7 +448,7 @@
        "who": "A filer whose vehicle (or other listed property) placed in service in 2023 is still driven the same share of miles for business purposes. In 2025, however, that use is now leasing to a related person or a 5% owner with no income reported, or it is now investment use or compensation use.",
        "why_no": "The question asks whether 'the business share of its use' has changed. The miles or hours used for the business look the same, so the filer answers no. The recapture test uses qualified business use, which excludes investment use, leasing to a related person, and certain compensation use, so that percentage can drop below 50% while the filer's 'business share' seems unchanged.",
        "line": "asset.use_changed_if_earlier",
-       "irs_text": "i4562 (2025) p. 14, Qualified business use: \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following. \u2022 Investment use. \u2022 Leasing the property to a 5% owner or related person ... Your percentage of qualified business use may be smaller than the business/investment use percentage.\"",
+       "irs_text": "i4562 (2025) p. 14, Qualified business use: \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following. • Investment use. • Leasing the property to a 5% owner or related person ... Your percentage of qualified business use may be smaller than the business/investment use percentage.\"",
        "severity": "medium",
        "fix": "Ask for this year's use percentage and the placed-in-service-year percentage as numbers, together with the kinds of use (trade or business, investment, leased to a relative or 5% owner, provided as pay). Then compute whether qualified business use fell from over 50% to 50% or less, instead of asking whether the 'business share changed'."
       },
@@ -506,7 +506,7 @@
      "how": "cited pages",
      "locators": [
       "p. 9, Lines 19a Through 19j, \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\"; p. 9, Line 17, \"For tangible property placed in service in tax years beginning before 2025 and depreciated under MACRS\"",
-      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)\u2014Classification of property and Column (f)\u2014Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
      ],
      "cols_pages": [
       6,
@@ -619,7 +619,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)\u2014Classification of property and Column (f)\u2014Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
      ],
      "cols_pages": [
       6,

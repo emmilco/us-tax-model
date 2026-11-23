@@ -5,19 +5,19 @@ changes:
   - change: C-CRED-16
     evidence:
     - doc: f8880
-      page: 2
+      page: 1
       quote: designated beneficiary for 2026. Do not include rollover contributions
     - doc: f8880
-      page: 2
+      page: 1
       quote: 4 Certain distributions received after 2023 and before the due date (including extensions) of your 2026 tax return
     - doc: f8880
-      page: 3
+      page: 2
       quote: (a) was born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was
         a student.
     - doc: f8880
-      page: 3
+      page: 2
       quote: Example. You received a distribution of $5,000 from a qualified retirement plan in 2026.
-    verified: draft
+    verified: final
     note: Every year of the form moves by one. The amounts of the AGI limit and the line 9 bands, and the citations that quote
       them (f8880.past9, f8880.can_take), are C-CRED-15's (the parameter lane). The ambiguity amb.2025.savers_2026_joint stays
       linked; its register text moves by a year with the register operations (plan D4, lane R3).
@@ -116,7 +116,7 @@ changes:
         from: p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
           2022 and before the due date of your 2025 return (including extensions)"; "If you’re filing a joint return, include
           both spouses’ amounts in both columns"
-        to: p. 3, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
+        to: p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
           2023 and before the due date of your 2026 return (including extensions)"; "If you’re filing a joint return, include
           both spouses’ amounts in both columns"
     - set:
@@ -125,7 +125,7 @@ changes:
         from: p. 2, Line 4, "Example. You received a distribution of $5,000 from a qualified retirement plan in 2025. Your
           spouse received a distribution of $2,000 from a Roth IRA in 2023. You and your spouse file a joint return in 2025,
           but didn’t file a joint return in 2023. You would include $5,000 in column (a) and $7,000 in column (b)"
-        to: p. 3, Line 4, "Example. You received a distribution of $5,000 from a qualified retirement plan in 2026. Your spouse
+        to: p. 2, Line 4, "Example. You received a distribution of $5,000 from a qualified retirement plan in 2026. Your spouse
           received a distribution of $2,000 from a Roth IRA in 2024. You and your spouse file a joint return in 2026, but
           didn’t file a joint return in 2024. You would include $5,000 in column (a) and $7,000 in column (b)"
     - set:
@@ -133,40 +133,40 @@ changes:
         field: cite.locator
         from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
           was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"
-        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+        to: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
           born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"
     - set:
         line: f8880.inelig_b
         field: cite.locator
         from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
           was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"
-        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+        to: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
           born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"
     - set:
         line: f8880.elig_a
         field: cite.locator
         from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
           was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"
-        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+        to: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
           born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"
     - set:
         line: f8880.elig_b
         field: cite.locator
         from: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a)
           was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"
-        to: p. 3, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
+        to: p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
           born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"
     - set:
         line: f8880.line3a_counted
         field: cite.locator
         from: p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was
           born after January 1, 2008"
-        to: p. 3, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was
+        to: p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was
           born after January 1, 2009"
     - set:
         line: f8880.line3b_counted
         field: cite.locator
         from: p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was
           born after January 1, 2008"
-        to: p. 3, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was
+        to: p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was
           born after January 1, 2009"

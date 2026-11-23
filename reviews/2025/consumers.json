@@ -3709,6 +3709,150 @@
    "question_phrase": "rent out, or offer for rent, anything you own or lease, or receive royalties",
    "source_phrase": "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional",
    "reason": "k1s.ask_re_pro asks the real-estate-professional question here only when no rental of your own is listed, because with an own rental Schedule E Part I asks it; the answer only routes where that question is asked, and the page's rule is applied by the real-estate-professional question itself."
+  },
+  "consumer:rental.kind@p925:p16": {
+   "verdict": "same",
+   "question_phrase": "land: land only",
+   "source_phrase": "less than 30% of the unadjusted basis of the property is subject to depreciation",
+   "reason": "Land only has nothing subject to depreciation, so the kind the filer chose settles the p925 test for land; rental.is_land reads it."
+  },
+  "consumer:rental.has_mortgage@i1040se:p7": {
+   "verdict": "same",
+   "question_phrase": "Mortgage interest on a Form 1098",
+   "source_phrase": "If you paid more mortgage interest than is shown on your Form 1098 or similar statement",
+   "reason": "The excess question presupposes a Form 1098, which is what the box asks; rental.mortgage_excess_if_mortgage asks it only then."
+  },
+  "consumer:rental.bought_lease@i1040se:p5": {
+   "verdict": "same",
+   "question_phrase": "pay ... to buy a lease on it ... (a leasehold)",
+   "source_phrase": "If you rented out a dwelling unit that you also used for personal purposes",
+   "reason": "rental.line19 cites the personal-use division; a bought leasehold is refused before any division, so the page needs nothing of the question beyond what it asks."
+  },
+  "consumer:rental.bought_lease@i1040se:p7": {
+   "verdict": "same",
+   "question_phrase": "pay ... to buy a lease on it ... (a leasehold)",
+   "source_phrase": "Enter on line 19 any ordinary and necessary expenses not listed on lines 5 through 18",
+   "reason": "The cost of a bought leasehold would be a line 19 expense spread over the lease (p527 p. 5); the question asks exactly that cost and refuses it."
+  },
+  "consumer:rental.prior_any@i8582:p1": {
+   "verdict": "same",
+   "question_phrase": "a loss from this rental held back (not deducted) on any of your earlier returns",
+   "source_phrase": "prior-year unallowed CRDs limited by the passive loss rules",
+   "reason": "f8582.prior_count counts rentals with a loss held back on an earlier return, which is the prior-year unallowed loss (CRD included) the page says may continue to be carried; it only decides whether the CRD question is asked."
+  },
+  "consumer:household.community_property@p555:p6": {
+   "verdict": "same",
+   "question_phrase": "live in, or have your permanent home (domicile) in, a community property state at any time in 2025",
+   "source_phrase": "domiciled in a community property state",
+   "reason": "household.cp_any is true on a Yes as before; p555 p. 6 (retirement pay earned while domiciled there) is cited for household.cp_retirement, asked only after a No, so the input keeps its own 2025 domicile meaning."
+  },
+  "consumer:scope.remic@i1040gi:p25": {
+   "verdict": "same",
+   "question_phrase": "hold a residual interest in a real estate mortgage investment conduit (REMIC), reported to you on Schedule Q",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.remic answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.remic@i1040gi:p93": {
+   "verdict": "same",
+   "question_phrase": "hold a residual interest in a real estate mortgage investment conduit (REMIC), reported to you on Schedule Q",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.remic answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.remic@i1040gi:p99": {
+   "verdict": "same",
+   "question_phrase": "hold a residual interest in a real estate mortgage investment conduit (REMIC), reported to you on Schedule Q",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.remic answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.remic@i1040gi:p100": {
+   "verdict": "same",
+   "question_phrase": "hold a residual interest in a real estate mortgage investment conduit (REMIC), reported to you on Schedule Q",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.remic answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.remic@i1040sf:p2": {
+   "verdict": "same",
+   "question_phrase": "hold a residual interest in a real estate mortgage investment conduit (REMIC), reported to you on Schedule Q",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.remic answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.remic@i1040sse:p1": {
+   "verdict": "same",
+   "question_phrase": "hold a residual interest in a real estate mortgage investment conduit (REMIC), reported to you on Schedule Q",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.remic answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.archer_msa@i1040se:p11": {
+   "verdict": "same",
+   "question_phrase": "money put into or taken from an Archer or Medicare Advantage MSA",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.archer_msa answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.farm@i1040se:p11": {
+   "verdict": "same",
+   "question_phrase": "income or a loss from farming",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.farm answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.attorney_fees@i1040se:p11": {
+   "verdict": "same",
+   "question_phrase": "pay a lawyer or court costs to win a claim of unlawful discrimination or a whistleblower award",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.attorney_fees answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.trade_act_repaid@i1040gi:p25": {
+   "verdict": "same",
+   "question_phrase": "pay back supplemental unemployment benefits from an employer’s fund in order to qualify for trade readjustment allowances",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.trade_act_repaid answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.trade_act_repaid@i1040gi:p93": {
+   "verdict": "same",
+   "question_phrase": "pay back supplemental unemployment benefits from an employer’s fund in order to qualify for trade readjustment allowances",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.trade_act_repaid answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.trade_act_repaid@i1040gi:p100": {
+   "verdict": "same",
+   "question_phrase": "pay back supplemental unemployment benefits from an employer’s fund in order to qualify for trade readjustment allowances",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.trade_act_repaid answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.trade_act_repaid@i1040se:p1": {
+   "verdict": "same",
+   "question_phrase": "pay back supplemental unemployment benefits from an employer’s fund in order to qualify for trade readjustment allowances",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.trade_act_repaid answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.trade_act_repaid@i1040se:p11": {
+   "verdict": "same",
+   "question_phrase": "pay back supplemental unemployment benefits from an employer’s fund in order to qualify for trade readjustment allowances",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.trade_act_repaid answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.trade_act_repaid@i1040sf:p2": {
+   "verdict": "same",
+   "question_phrase": "pay back supplemental unemployment benefits from an employer’s fund in order to qualify for trade readjustment allowances",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.trade_act_repaid answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.trade_act_repaid@i1040sse:p1": {
+   "verdict": "same",
+   "question_phrase": "pay back supplemental unemployment benefits from an employer’s fund in order to qualify for trade readjustment allowances",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.trade_act_repaid answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.reforestation@i1040se:p11": {
+   "verdict": "same",
+   "question_phrase": "paid to plant or replant trees",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.reforestation answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:scope.k1@i1040se:p11": {
+   "verdict": "same",
+   "question_phrase": "income or a loss from a partnership, an S corporation, an estate or a trust",
+   "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
+   "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.k1 answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
   }
  },
  "baseline": {

@@ -17,7 +17,7 @@ page; the build adds the tax year, revision and content hash of the archived sou
 `sources/<year>/` from its manifest (`spec/spec.md` section 5, `engine/src/build.ts`). **Guarantees:**
 the build fails if any line, parameter, gate or question lacks a complete citation or cites a document
 absent from the manifest, and `tools/citations.py` verifies every quote and locator
-against the archived text; `reports/2025/citations.md` reports <!-- figures:trust-citations -->7,506 anchors and 8,261 quotes<!-- /figures:trust-citations --> with 0
+against the archived text; `reports/2025/citations.md` reports <!-- figures:trust-citations -->7,580 anchors and 8,347 quotes<!-- /figures:trust-citations --> with 0
 findings without a recorded ruling, and no computed-line locator too coarse to verify (the check runs
 with `--strict`). **Does not guarantee:** that the expression says what the cited page says. A
 citation proves a line points at a page, not that it was read correctly.
@@ -78,7 +78,7 @@ determinism, but as its own docstring says, their force comes from the definitio
 total, not from the proofs, and they say nothing about acyclicity (a cycle gives an error value at evaluation time). Both evaluators run over every fixture and over 400 generated whole returns (the
 generator and corpus of the properties check, `engine/src/generate.ts`);
 `reports/2025/evaluator_agreement.md` reports 2,168 cases, 6,114,183 line values compared, 0
-differences, and counts the values by kind (an unknown is compared by kind only). That is the federal run: its cases give no New York answers, so the New York documents' lines it compares are mostly unknown; `reports/ny/2025/evaluator_agreement.md` is the run on New York fixtures and on the same generated returns with New York answers, and each report counts the New York lines apart. **Guarantees:** the proved atom properties hold, and two independently written evaluators
+differences, and counts the values by kind (an unknown is compared on the missing input it names, the lower bound of a partial count and whether it awaits a refusal gate's answer, the parts the interview reads; not on its reason). That is the federal run: its cases give no New York answers, so the New York documents' lines it compares are mostly unknown; `reports/ny/2025/evaluator_agreement.md` is the run on New York fixtures and on the same generated returns with New York answers, and each report counts the New York lines apart. **Guarantees:** the proved atom properties hold, and two independently written evaluators
 of the same data compute the same values. **Does not guarantee:** that the TypeScript evaluator is
 formally verified (it is not), or anything about whether
 the data matches the IRS text. Both evaluators read the same files, so agreement shows the evaluators

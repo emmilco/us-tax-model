@@ -4,6 +4,16 @@
  "rulings": [
   {
    "printed": "armed_forces",
+   "restated": "Input — In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?",
+   "model": "The text covers reservist travel (Sch 1 line 12), military PCS moves (line 14) and repayments of qualified reservist distributions, but gives no date window. Nothing in the text supports or rules out the 'In 2022 or later' cutoff, which would hide the follow-ups from earlier service members.",
+   "ruling": "Ruling: representation; the parent question's window is the project's design: its children are 2025 reservist travel, a 2025 military move, and the repayment of a qualified reservist distribution, which the archived text describes without a date window; the restatement cannot check the window against the text, and it is not a computed value. Left as the project's reading.",
+   "context": "a991603a672ab1cf31adf3f6c5e65e5422102a618bd8fdc636b87cdbafa18134",
+   "date": "2026-11-22",
+   "run": "e6f19eeca34e3d0a266d34315bdeefc306cc36b5a9e7dc22fab3d64404425724",
+   "subject_key": "f6b3e797c5690985843f3a2bb25a7c6a8183a3dae96f5ec2e62af70d973c4473"
+  },
+  {
+   "printed": "armed_forces",
    "restated": "Input — Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?",
    "model": "This gates the reservist travel, military move and qualified reservist repayment questions. Nothing in the given text supports the 'since the start of 2022' cutoff, and the text points to Pub. 590-A for repayment timing, which is not provided.",
    "ruling": "Ruling: interface gap; the window is decided by p590a p. 9, Qualified reservist repayments, \"You can't make these repayment contributions later than the date that is 2 years after your active duty period ends\", which the reviewer was not given. A 2025 repayment (scope.reservist_repaid) needs an active duty period ending after the start of 2023, so service at some time since the start of 2022; the other two children ask about 2025 travel (Schedule 1 line 12) and a 2025 move (line 14), which need 2025 service. The gate is no narrower than the source. Project stands.",
@@ -21,6 +31,16 @@
    "date": "2026-11-14",
    "run": "d757e4dd502203def03c50be44cc54571618eb1edb1bee17dabf1c96cccb7f3b",
    "subject_key": "90dc1c12477d50be6feac15bf7a0f4f22577daaddf8d7261c9a10558ff0db77d"
+  },
+  {
+   "printed": "cfc_if_foreign_shares",
+   "restated": "Choose — [helper \"In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?\" = true → helper \"Was any of it a foreign company in which U.S. owners together hold more than half (a 'controlled foreign corporation')?\"] [helper \"In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?\" = false → helper \"Year parameter household.no (false)\"]",
+   "model": "The text mentions a 'controlled foreign corporation' (section 962, Sch 1 lines 8n/8o) but does not define it. The 'U.S. owners together hold more than half' test cannot be checked against it.",
+   "ruling": "Ruling: representation; the plain definition restates IRC section 957 (more than 50% owned by U.S. shareholders), which is not archived; a Yes refuses.",
+   "context": "a991603a672ab1cf31adf3f6c5e65e5422102a618bd8fdc636b87cdbafa18134",
+   "date": "2026-11-22",
+   "run": "e6f19eeca34e3d0a266d34315bdeefc306cc36b5a9e7dc22fab3d64404425724",
+   "subject_key": "d9400e7e6eda196c88043d04b74b260f6724ce4bc212829c8c4ac1ecb840f9a6"
   },
   {
    "printed": "credits",
@@ -87,11 +107,31 @@
    "subject_key": "0018851c156cedbd82f43227ead337e268672ec1e92f61e0f5dbdebd8a7b5c48"
   },
   {
+   "printed": "medicaid_waiver",
+   "restated": "Input — In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?",
+   "model": "Line 1d says 'Enter your taxable Medicaid waiver payments that were not reported on Form(s) W-2', plus nontaxable payments if elected, and does not limit this to care of someone living in your home. The 'living in your home' condition would miss taxable waiver payments.",
+   "ruling": "Ruling: representation; i1040gi p. 24, Line 1d. The question asks about care of someone living in the filer's home because difficulty of care payments are for such care; pay for caring for someone who does not live with the filer is paid work in someone's home, which the question's help sends to scope.pay_no_w2, where it is asked and reported.",
+   "context": "a991603a672ab1cf31adf3f6c5e65e5422102a618bd8fdc636b87cdbafa18134",
+   "date": "2026-11-22",
+   "run": "e6f19eeca34e3d0a266d34315bdeefc306cc36b5a9e7dc22fab3d64404425724",
+   "subject_key": "1740370f920dd80c3d418398b6379e639271e2dcd6a9c04df2e19a97fa5972e1"
+  },
+  {
    "printed": "other_income",
    "restated": "Input — Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?",
    "model": "This fits the Form 1040 income lines shown: 1b–1d and 1f–1h are screened, and 1e is left to Form 2441 ('Taxable dependent care benefits from Form 2441, line 26'). Nonresident alien status and passive-activity rules aren't in the text given. Line 1i, 'Nontaxable combat pay election', isn't named and is covered only by the general phrase 'other … return treatment'.",
    "ruling": "Ruling: unclear for want of text; restatement accepted. A filer-answered scope question; the model found its income items consistent with Form 1040 lines 1b to 1h, line 1e being left to Form 2441 (\"Taxable dependent care benefits from Form 2441, line 26\"). Line 1i needs no mention here: it is the nontaxable combat pay election for the EIC (i1040gi p. 25, Line 1i, \"If you elect to include your nontaxable combat pay in your earned income when figuring the EIC, enter the amount on line 1i\"), and any nontaxable combat pay is refused through s8812.combat_pay (on eic.step5_line4, Schedule 8812 line 18b and Form 2441 lines 4, 5, 18 and 19), so line 1i is never above zero. Nonresident alien status and passive activities are refusals recorded in spec 2.1. No change.",
    "subject_key": "29733f0c80933663e00e97fa45a89a6361f2491983fe4048658e2c04cc4ca400"
+  },
+  {
+   "printed": "other_line16",
+   "restated": "(helper \"The answer to scope.f8615, asked only when the question scope.unearned_2700 is answered Yes (false otherwise)\" = true or helper \"Are you (or, on a joint return, your spouse) reporting a child's 2025 interest or dividends on your own return instead of filing a return for the child?\" = true or helper \"In 2025, was tuition or a fee refunded, or tax-free aid given, to a student for a year for which you (or, on a joint return, your spouse) had already claimed an education credit?\" = true or helper \"The answer to scope.income_averaging, asked only when a business (Schedule C) is listed (false otherwise)\" = true or helper \"The answer to scope.pfic, asked only when the question scope.foreign_shares is answered Yes (false otherwise)\" = true or helper \"The answer to scope.cfc, asked only when the question scope.foreign_shares is answered Yes (false otherwise)\" = true or helper \"The answer to scope.f8978, asked only when the question scope.business_before is answered Yes (false otherwise)\" = true)",
+   "model": "Line 16 also includes 'Tax from Form 4972 (relating to lump-sum distributions)' and a 'Triggering event under section 965(i)'. Neither is among the screening questions ORed here.",
+   "ruling": "Ruling: scope; i1040gi p. 34, Line 16. Form 4972 is refused by retirement.lump_sum (coverage row scope.lump_sum) and a section 965(i) triggering event by s3.section965; the screen collects the remaining line 16 items.",
+   "context": "a991603a672ab1cf31adf3f6c5e65e5422102a618bd8fdc636b87cdbafa18134",
+   "date": "2026-11-22",
+   "run": "e6f19eeca34e3d0a266d34315bdeefc306cc36b5a9e7dc22fab3d64404425724",
+   "subject_key": "c2b7dbeea447171d0b4d855edaa6ec680307034368a72569ea2556081a70c040"
   },
   {
    "printed": "other_line16",
@@ -141,6 +181,16 @@
    "subject_key": "92856a34f9c404a371e7750a5ced0b6ac5ae05831e9a95d6fa7a36d64fb32fe2"
   },
   {
+   "printed": "pfic_if_foreign_shares",
+   "restated": "Choose — [helper \"In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?\" = true → helper \"Was any of it a fund, or a company whose income or assets are mostly investments, set up outside the United States (a 'passive foreign investment company')?\"] [helper \"In 2025, did you (or, on a joint return, your spouse) hold shares or options in a company or fund set up abroad, not through a U.S. fund?\" = false → helper \"Year parameter household.no (false)\"]",
+   "model": "The text refers only to 'Any tax from Form 8621, line 16e, relating to a section 1291 fund' and does not define a passive foreign investment company. The restated definition ('income or assets are mostly investments') cannot be checked against it.",
+   "ruling": "Ruling: representation; the plain definition restates IRC section 1297 (income or asset test of passive income or investment assets), which is not archived; the archived i1040gi text names only Form 8621. A Yes refuses.",
+   "context": "a991603a672ab1cf31adf3f6c5e65e5422102a618bd8fdc636b87cdbafa18134",
+   "date": "2026-11-22",
+   "run": "e6f19eeca34e3d0a266d34315bdeefc306cc36b5a9e7dc22fab3d64404425724",
+   "subject_key": "8df2a8b79db477a360ca503dba3d072b6884be4ff0e6140b31da8d53197bb927"
+  },
+  {
    "printed": "ready",
    "restated": "true = true",
    "model": "The MFS refusal matches the text: 'Spouse itemizes on a separate return' (12b), line 6d's 'married filing separately and lived apart', and the instruction that MFS filers 'can't take … the student loan interest deduction, or the education credits' and get EIC and dependent care credit only 'in very limited circumstances'. The other refusals depend on Schedule 1, Schedule 3 and line 16 instructions that aren't provided, and the Schedule 1 refusal's list of supported items doesn't match the carve-outs in the schedule1 question.",
@@ -177,6 +227,16 @@
    "date": "2026-11-15",
    "run": "04fccfb8e48f62a0a16750cc76323381860bcfaa7c7f197bf4e7583a61bed8ad",
    "subject_key": "f3b915b60e88e19c56a8cadaeedb539320072cf889f4db0abd7682e6fcb8a385"
+  },
+  {
+   "printed": "schedule1",
+   "restated": "(helper \"The answer to scope.reservist_expenses, asked only when the question scope.armed_forces is answered Yes (false otherwise)\" = true or helper \"The answer to scope.military_move, asked only when the question scope.armed_forces is answered Yes (false otherwise)\" = true or helper \"The answer to scope.rent_personal, asked only when the question scope.rental is answered Yes (false otherwise)\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it.\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) have income or a loss from farming?\" = true or helper \"The answer to scope.clergy, asked only when the question scope.religious_work is answered Yes (false otherwise)\" = true or helper \"The answer to scope.church_exempt_wages, asked only when the question scope.religious_work is answered Yes (false otherwise)\" = true or helper \"The answer to scope.w2_marks, asked only when a Form W-2 is listed (false otherwise)\" = true or helper \"The answer to scope.performer_expenses, asked only when the question scope.artist_official is answered Yes (false otherwise)\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) put money into, or take money out of, an Archer MSA or a Medicare Advantage MSA (older kinds of medical savings account, not a health savings account)?\" = true or helper \"The answer to scope.se_plan_other, asked only when a business (Schedule C) is listed (false otherwise)\" = true or helper \"Do you (or, on a joint return, your spouse) own or lease timber land on which you paid to plant or replant trees, in 2025 or in the seven years before?\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) pay a lawyer or court costs to win a claim of unlawful discrimination or a whistleblower award?\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) pay back supplemental unemployment benefits from an employer's fund in order to qualify for trade readjustment allowances?\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) hold a residual interest in a real estate mortgage investment conduit (REMIC), reported to you on Schedule Q?\" = true)",
+   "model": "The OR omits scope.recovery: Pub 525 says a taxable recovery goes on 'Schedule 1 (Form 1040), line 1' or other income, and it is not among the supported items. It also omits real-estate rental and royalty income ('Use Schedule E... to report income or loss from rental real estate, royalties'), which flows to Schedule 1. Unless other gates catch these, they escape refusal.",
+   "ruling": "Ruling: scope; i1040gi pp. 93-100 (Schedule 1 lines 8 to 24z). The screen is the project's aggregate of the Schedule 1 items it does not compute; this pass added scope.trade_act_repaid (line 24e, BUG-0948) and scope.remic (Schedule E Part IV, BUG-0977). Items the restatement finds missing are refused on their own lines (s1.line8_other for the line 8 items, the other screens cited in the locator).",
+   "context": "a991603a672ab1cf31adf3f6c5e65e5422102a618bd8fdc636b87cdbafa18134",
+   "date": "2026-11-22",
+   "run": "e6f19eeca34e3d0a266d34315bdeefc306cc36b5a9e7dc22fab3d64404425724",
+   "subject_key": "49117ba3cf2b64fc72f5435862cedfacacd6ffb628d8ebaf14112ac6bb47ccdf"
   },
   {
    "printed": "schedule1",
@@ -221,6 +281,16 @@
    "ruling": "Ruling: interface gap; f1040 (2025) line 8, \"Additional income from Schedule 1, line 10\", and line 10, \"Adjustments to income from Schedule 1, line 26\". The pages given were Form 1040 pp. 1-2 and i1040gi pp. 14, 36 and 43; Schedule 1 and its instructions, which would decide the carved-out items and the line 8s, 12, 14 and 23 references, are not among them (a coverage gap of the review). The changed text is checked: BUG-0233 replaced \"clergy income\" with \"income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner\", which is i1040gi p. 43, Clergy, \"The following instructions apply to ministers, members of religious orders who have not taken a vow of poverty, and Christian Science practitioners\", word for word, as the model confirms; it widens the screen to the two groups the old word could be read to leave out, so no filer who passed before now passes wrongly. The line numbers were checked against Schedule 1 in the earlier rulings (f1040s1 p. 1, line 8s; p. 2, lines 12, 14 and 23). Restatement accepted.",
    "context": "28aa4530debee805dc45efec578ee518ff6b9e5ce659b8c2843c6020732e7186",
    "subject_key": "de98672379be9325b8d8f39584237f81317338199df64af5f01156647d468cf9"
+  },
+  {
+   "printed": "tips_unreported_if_pay",
+   "restated": "Choose — [helper \"In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?\" = true → helper \"In 2025, did you (or, on a joint return, your spouse) get cash or card tips at a job that were not reported in full to the employer, or tips that were not money, such as tickets or other items of value?\"] [helper \"In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?\" = false → helper \"Year parameter household.no (false)\"]",
+   "model": "Line 1c also requires 'any allocated tips shown in box 8 on your Form(s) W-2 unless you can prove that your unreported tips are less than the amount in box 8'. The question asks only about tips not reported to the employer and noncash tips, and allocated tips sit on a W-2, so a filer may answer No.",
+   "ruling": "Ruling: scope; i1040gi p. 24, Line 1c. Allocated tips in W-2 box 8 are refused by s2.w2_marks ('Does any Form W-2 ... show an amount in box 8 (allocated tips) ...'); this question covers tips not on a W-2.",
+   "context": "a991603a672ab1cf31adf3f6c5e65e5422102a618bd8fdc636b87cdbafa18134",
+   "date": "2026-11-22",
+   "run": "e6f19eeca34e3d0a266d34315bdeefc306cc36b5a9e7dc22fab3d64404425724",
+   "subject_key": "fafa0d050e60b5d1b62e6cfb621a280271e64069b24a5db75ef21081a3795d73"
   },
   {
    "printed": "w2_marks",

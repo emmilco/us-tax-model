@@ -3,6 +3,10 @@
  "form": "f8995a",
  "family": "claude",
  "base": "f3edf56d997c5708cc2913e320b70719df0c7a71aae66b92c3aacf4e72ce4b55",
+ "head_rows": {
+  "agree / disagree / missing": "10 / 4 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "27",
@@ -57,10 +61,9 @@
   },
   {
    "key": "33",
-   "record": "f3edf56d997c5708cc2913e320b70719df0c7a71aae66b92c3aacf4e72ce4b55",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; i8995a p. 5, Taxable income before QBI deduction (line 33 points there, i8995a p. 7): \"Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b\" (the same sentence the reviewer had, i8995 p. 4, Line 11). Arithmetic is identical: the project takes sa.agi (f1040.line11b, a copy of line 11a) less sa.deduction (the expression f1040.line12e copies) and line 13b, floored at zero; the candidate takes 11a minus 12e minus 13b, floored. The only difference is that the candidate reads f1040.line12e itself, which carries the project's cited refusal household.hoh_fails (i1040gi p. 14, Head of Household). Triage executable-triage-v1 (triage/f8995a.json): 1,540 of 1,583 agree, all 1,037 non-refusing comparisons agree; the 43 differences are all candidate-refuses (classm.f8995.1, classm.sales.1, classm.sa.6, stage8.hoh.fails.child_half_year: household.hoh_fails; stage15.refuse.dependent.dc_no_tin, $6,375.00 against a refusal, and audit.dependent.claimed_no_tin, $96,375.00: dependent claimed_no_tin through the same gate). On each, the project's own f1040.line12e refuses, so lines 14 and 15 and the return are refused and the project's line 33 value is never printed. Project stands.",
-   "subject_key": "312deb366d3f67fd1d0fb41bb640eeb55e02500b4e9a8bc209d644e3fbdf990e"
+   "record": "10d5a7f59e8133b39d1e51fceae3e7802d8c5a1cb05ca9bbe0ca12f9cc4bad31",
+   "status": "AGREE",
+   "subject_key": "34d70ad89d57642e1cd137a204b80fded6a093c20923b391a39a3fbc5819dd47"
   },
   {
    "key": "34",
@@ -71,9 +74,9 @@
   },
   {
    "key": "35",
-   "record": "f3edf56d997c5708cc2913e320b70719df0c7a71aae66b92c3aacf4e72ce4b55",
+   "record": "10d5a7f59e8133b39d1e51fceae3e7802d8c5a1cb05ca9bbe0ca12f9cc4bad31",
    "status": "AGREE",
-   "subject_key": "dda8d5f8032352a3e2e64c6a7b121af50ac6f2143c98d4cdde53eb25d399a8d5"
+   "subject_key": "d368a1cff1e7201888cc53eb9707f4478b7fcb1bf7e5420ef408566361c8b785"
   },
   {
    "key": "36",
@@ -103,12 +106,16 @@
   "30": "eac655c384732e031d9fc2305bb40f02f919b6e5a7762cdbdaa4e0419b99e742",
   "31": "987d2ec1b8714e7c2c7fc2efb281b128d8d78a3e903b971146def797716c92c1",
   "32": "884196358a9e8e5832e52537eb7d47d8bc579c6f8c395b50d57bd814ab5a7269",
-  "33": "574d08e3b1ea9f23f087d29a5f55720f80593cf3f40a888ba2a6ab2d43c0c310",
+  "33": "ad62c200c34139d57b1e63be531bf7d17f521934e92c8cdecb1d477349de194e",
   "34": "224ec1a58bfc706d4d23795782f669089a7674993abc6a2eee10e41cd43d1bda",
-  "35": "3813638592a8e14121617f94d093f8c13dcb784b2ca2a58af518cad1d903b822",
+  "35": "8e4ae7ad46e447f5bcc676babe3efae59a3ab3935b2fe1d553152ae5dfb7fe47",
   "36": "9fe11095c0a392191c99494432cfb3dc55058c768e1d932053a660aefd524ecb",
   "37": "c65b4d41c90070711e1a009e0696fbaf666c82affb0b9ad73cc7f293e800c850",
   "39": "8a37e359ebc6a9a1bd9f5d7230f7ad3112f9f6492a78e1417b697dc523165d84"
  },
- "__rest__": "eb332829d5eb65ad4d51c57c582660ea3c9a57d746eaa3cf8644789fb1af9e9a"
+ "__rest__": "eb332829d5eb65ad4d51c57c582660ea3c9a57d746eaa3cf8644789fb1af9e9a",
+ "foreign": {
+  "33": "52a3a1010f68338f0f01f35b8712094c8595b539c15d2c517d834fe93a28b075",
+  "35": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

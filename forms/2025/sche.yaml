@@ -29,14 +29,16 @@ form:
       locator: p. 3, Real estate professionals
   - id: sche.grouped
     printed: (helper)
-    label: Rentals grouped as one activity
+    label: A rental grouped with another activity
     type: Bool
     expr:
       op: input
-      source: Do you treat two or more of your rentals as one activity?
+      source: Do you (or, on a joint return, your spouse) treat a rental and another activity, such as another rental or a
+        business, as one activity?
     cite:
       doc: i8582
-      locator: p. 1, Grouping of Activities
+      locator: p. 1, Grouping of Activities; p. 6, Limitation on grouping certain activities, "A rental activity with a trade
+        or business activity unless the activities being grouped together make up an appropriate economic unit"
   - id: sche.qbi_business
     printed: (helper)
     label: A rental treated as a trade or business
@@ -274,7 +276,7 @@ form:
     cite:
       doc: f1040se
       locator: Schedule E (2025), line 41
-    note: Parts II to IV and line 40 are refused (scope.k1, scope.farm).
+    note: Parts II to IV and line 40 are refused (scope.k1, scope.remic, scope.farm).
   - id: sche.loss_prelimit
     printed: (helper)
     label: Rental net losses and royalty losses on line 21, before the passive activity limit (positive)

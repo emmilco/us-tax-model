@@ -787,6 +787,31 @@
   },
   {
    "printed": "3",
+   "project_expr_sha256": "95dd3648ac6270cce2c6fd987404a22c3ac658a1a3ffe5f14d797292915f560b",
+   "second_expr_sha256": "f48bcb9c58460ff1540acf4016ebc8d23340eee17019834e52f5add74f1cd8e2",
+   "ruling": "Ruling: representation; i8582 p. 10, Line 3. Both sum lines 1d and 2d and refuse a prior-year unallowed CRD; the reply refuses on f8582.prior_crd directly, the project on f8582.prior_crd_if_prior, asked when any rental listed has a loss held back on an earlier return (f8582.has_prior from f8582.prior_count), so the reply is unknown where the question is never asked. Executable triage (.transcription/triage/2025/f8582.json, this pass): 3,155/3,162 agree; differences {\"candidate-unknown\": 7}; on completed returns none; no value differs.",
+   "context": "2d6157555a9cb0440711429f104bda06e86908c317c39d771b1a59e5e03725a1",
+   "date": "2026-11-22",
+   "run": "491487d49256f93fa3e4c0d81d04a6edb850b52f41f8b612dc29d0c34aae31bc",
+   "subject_key": "ae64cff53a817a76684d689d9f6244ebc549a4103c8ee91a19ffec54a62310e2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.4.deepseek@f8582",
+     "fixture:classm.royalty.2.deepseek@f8582",
+     "fixture:classm.rental.2.deepseek@f8582",
+     "fixture:classm.f8582.4@f8582",
+     "fixture:classm.rental.2@f8582",
+     "fixture:classm.rental.4@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
    "project_expr_sha256": "a52b5f2a46511f732e909e3d46d49f532ec3826a4f2baa9a8f7fef9a49f5a206",
    "second_expr_sha256": "1dee596b45adc51dbdc0281cd3a9114b4ef17b84ec2d82e1b2a5170976b6e65a",
    "ruling": "Ruling: model error; i8582 p. 1, Who Must File, Exception: \"you don't have to file Form 8582 if you meet the following exception. ... You actively participated in rental real estate activities ... and you meet all of the following conditions\". The reply still declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582. Triage executable-triage-v2 (.transcription/triage/2025/f8582.json): 2674 of 3069 comparisons agree, 2657 of 2729 in scope; completed {\"candidate-refuses\": 15, \"candidate-shows-skipped\": 33, \"candidate-unknown\": 11}. Project stands.",
@@ -1560,6 +1585,52 @@
      "fixture:classm.person.23@f8582",
      "fixture:stage10.ss.mfs_apart@f8582",
      "fixture:mfs.m6.ssb_apart@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8582.required",
+   "project_expr_sha256": "99dd4bc85cb0ac0b92903f2f293945da41d0c7805aaee0d9c6a94251828cbab1",
+   "second_expr_sha256": "f5b3d98b80dedf9668c13e80ee7cf5b8ace2d42ab10dff4bbf351170c7678abd",
+   "ruling": "Ruling: model error; i8582 p. 1, Who Must File and Exception. The reply leaves out the filing exception (its note says so), so it requires Form 8582 where the exception holds (mf.f8582.exception_part2_not_shown); its other completed differences are K-1 returns (x2k1p.*, classm.k1s.5.deepseek), which the project refuses at scope.k1 until the K-1 wiring (T-352) sums K-1 amounts into Form 8582. Executable triage .transcription/triage/2025/f8582.json: 2754 of 3145 agree. Project stands.",
+   "context": "ca8b3167ec226666af0e605d8c3a9958778cbeebe4b18e7e856a7f15d71a4ab5",
+   "date": "2026-11-22",
+   "run": "05db2ce0b9da3c18fa7a4e69f9ca426c768fe23220cdc79913abe215a62f46c0",
+   "subject_key": "42d1a031ca055d84fdc357612ab18e843ff060b0f4057269adb54eb1ee84e44f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8582",
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.g28.2.deepseek@f8582",
+     "fixture:classm.clcw.1.deepseek@f8582",
+     "fixture:classm.clcw.4.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.k1s.1.deepseek@f8582",
+     "fixture:classm.k1s.2.deepseek@f8582",
+     "fixture:classm.k1s.3.deepseek@f8582",
+     "fixture:classm.k1s.5.deepseek@f8582",
+     "fixture:classm.k1s.7.deepseek@f8582",
+     "fixture:classm.k1s.9.deepseek@f8582",
+     "fixture:classm.k1p.1.deepseek@f8582",
+     "fixture:mint.eic.step2_other.schedule_e_low_income@f8582",
+     "fixture:mf.f8582.exception_part2_not_shown@f8582",
+     "fixture:mint.f8962.show_applicable.no_1095a@f8582",
+     "fixture:x2k1p.fk3_limited_rental_loss@f8582",
+     "fixture:x2k1p.fk3b_general_active@f8582",
+     "fixture:x2k1p.refuse_ptp@f8582",
+     "fixture:x2k1p.refuse_box10@f8582",
+     "fixture:x2k1p.refuse_multi@f8582",
+     "fixture:x2k1p.refuse_disposed@f8582",
+     "fixture:x2k1p.refuse_dist_over@f8582",
+     "fixture:x2k1p.refuse_trader@f8582"
     ],
     "policy": "executable-triage-v2"
    }

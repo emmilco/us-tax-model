@@ -27,7 +27,7 @@ changes:
               param: tcw.mfj.b0.rate
           cite:
             doc: rp-25-32
-            locator: 'p. 10, section 4.01, Table 1 (married individuals filing joint returns and surviving spouses), "Over
+            locator: 'p. 10, .01 Tax Rate Tables, section 4.01, Table 1 (married individuals filing joint returns and surviving spouses), "Over
               $24,800 but not over $100,800", "plus 12% of the excess over $24,800" (the 2026 Tax Computation Worksheet, Form
               1040 instructions, not posted: the row covers $100,000 to $100,800)'
     - add_line:
@@ -44,7 +44,7 @@ changes:
               param: tcw.mfj.b0.subtract
           cite:
             doc: rp-25-32
-            locator: 'p. 10, section 4.01, Table 1, "Over $24,800 but not over $100,800", "$2,480 plus 12% of the excess over
+            locator: 'p. 10, .01 Tax Rate Tables, section 4.01, Table 1, "Over $24,800 but not over $100,800", "$2,480 plus 12% of the excess over
               $24,800" (subtraction amount: 12% of $24,800 less $2,480)'
     - set:
         line: mfj.result

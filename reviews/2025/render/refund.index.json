@@ -3,13 +3,16 @@
  "form": "refund",
  "family": "claude",
  "base": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1",
-   "record": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
+   "record": "83dfe6733143619117abf2004478fac6fa7b6238e2c0fcb75d62a147ce7da6b8",
    "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; render MISMATCH. The cap is the registered ambiguity amb.2025.refund_cap_5d: i1040gi p. 90, worksheet line 1, 'But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d'; line 5d is the total of 5a, 5b and 5c, and the project chose the cap as printed (line 5d), the reply the income tax part. The exceptions the reply names are not omitted: 1 ('a refund in 2025 that is for a tax year other than 2024') and 5 ('You made your last payment of 2024 estimated state or local income tax in 2025') refuse at refund.not_prior_year (remedy: Pub. 525), and 2 ('a refund other than an income tax refund') is now computed by Pub. 525 Worksheet 2 (rec, refund.taxable), as i1040gi p. 89 directs; line 1's own refusals are only those the worksheet itself raises (refund.exc_tax, refund.exc_who).",
-   "subject_key": "f441ab9a2fc382fa0d40de93f0618e057dddc82ca161367d05eafbcb70c7ae44"
+   "ruling": "Ruling: ambiguity; as the 2026-11-15 rulings on this line. The zero for refunds of both spouses' 2024 tax on separate 2024 returns is the chosen reading of amb.2025.refund_two_returns (the worksheet tests one 2024 return; refused by refund.two_itemized_if_two on refund.taxable when both itemized with income taxes), and the cap at 2024 Schedule A line 5d is amb.2025.refund_cap_5d. Exceptions 1 and 5 (i1040gi p. 89, \"1. You received a refund in 2025 that is for a tax year other than 2024\", \"5. You made your last payment of 2024 estimated state or local income tax in 2025\") are refused by refund.not_prior_year on refund.taxable, the line Schedule 1 line 1 enters. Repeat disagreement; no value moves.",
+   "subject_key": "de520d4310f930654b3603c6a2e3a50e0558b6a13a9fd777d1ff9d0476347a25"
   },
   {
    "key": "2",
@@ -62,7 +65,7 @@
   }
  ],
  "subjects": {
-  "1": "ada3de34f67fb8c820489c93d347d9fba3c465d018e05cccb9b58a9ec81924a4",
+  "1": "acaceba8388335decc72c9b0c5e0ec99def64a542895bf4798fcaabc614d111a",
   "2": "34562088c4d7570ac525b4c19b926af56d468e636400770325c931a8c582fe1c",
   "3": "f6b6191b0826ef873a07757b76f1ece3da43306bea5d3218765c85d0d294a5ab",
   "4": "1c5e3cdc4327598989d65b011ce5931d796509d16a93609b218d451232289c41",

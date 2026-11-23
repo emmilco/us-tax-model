@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "168",
   "agree / disagree / missing": "85 / 83 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "7 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -831,10 +831,10 @@
   },
   {
    "key": "59",
-   "record": "190d9e07cef7745f8788e949fac03f15857e047c2d89daa3ba931d7b6dc67c5c",
+   "record": "c393341d06bfe03a7b396f59356ef74addce2f150723285bf852a4d084323911",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the same rule: the project's ny_it201.ask.owes_use_tax is an untaxed purchase that was not all paid at the DMV (bought_untaxed and not use_tax_dmv_only), the second's two-question guard; both give 0 when none is owed and the chart otherwise, and both refuse Form ST-141 and the part-year abode proration.",
-   "subject_key": "3eb2f679a20f6d97365bb4ce80efc14d333a1074f17dd4cfed7b527080ec68c2"
+   "ruling": "Ruling: representation; ny_it201i p. 18, Line 59. Both give the chart amount when a purchase was made without (or below) New York tax and not every such purchase is a DMV item, and zero otherwise; the project nests the DMV question under its parent gate, the reply tests the two answers side by side. Executable triage (.transcription/triage/ny/2025/ny_it201.json, this pass): 5,266/5,267 agree; differences {\"project-unknown\": 1}; on completed returns none. Rerun for the wording of ny_it201.ask.bought_untaxed (BUG-0935).",
+   "subject_key": "f6117c34befc5941dd07d8a29be00ca8a303eaaed76072ff4563b8ebaacfbea5"
   },
   {
    "key": "60",
@@ -1228,7 +1228,7 @@
   "(chart) (ny_it201.sut.cap)": "bc3867caeff5c2ce46a56af458bf69baf597cced77741c5a77da1d6cd50bfe65",
   "(chart) (ny_it201.sut.top)": "3f337836dcc9231409008d5ffa2d8fd4efd0f392d18987ef2eb91f6b587d3fc7",
   "(chart) (ny_it201.sut.chart)": "f490093538fc554603fa13fbad139b3e32a8a2596400e226d1e3bc28d80f8fbc",
-  "59": "2667f716c4d510623cb83cb001c7be01b7c6d3f6d40a2cc62b236be8d112f567",
+  "59": "3d9772483eac4b1a161645720c368f8b0d731b3afd6ec07dfac2f448d8aaf8bf",
   "60": "178b3aea541212cd6e1b0cd15cbe019527381140b66487bac2fd04adfdd4a50b",
   "61": "0b1b43168dba06f33619b3fe34032977426efaeca1c9b52368dfb6046db94791",
   "62": "6f15d5a82c661c9f283180e613bb2b496ada9cadd3c892cb5f65dcbf5a2ca901",

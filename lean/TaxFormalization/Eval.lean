@@ -429,7 +429,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       else if op == "input" then
         match objGet ctx.inputs (keyOf frame lineId) with
         | some v => pure (if strGet line "type" == some "Count" then mkCount (v.getInt?.toOption.getD 0) else inputValue v)
-        | none => pure (unknown s!"no input supplied for {lineId}")
+        | none => pure ((unknown s!"no input supplied for {lineId}").setObjVal! "input" (Json.str (keyOf frame lineId)))
       else eval ctx fuel frame (.expr expr op)
     | none =>
       -- cross-document reference
@@ -511,9 +511,9 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
           match missing with
           -- An entry whose unknown traces back to a refusal gate awaiting its answer may become a
           -- refusal rather than a count: the known entries then bound nothing.
-          | some v => return if isCount && !gatePending then Json.mkObj [("kind", Json.str "unknown"), ("reason", Json.str "partial count"), ("lowerBound", Json.num (JsonNumber.fromInt total))] else markPending v gatePending
+          | some v => return if isCount && !gatePending then v.setObjVal! "lowerBound" (Json.num (JsonNumber.fromInt total)) else markPending v gatePending
           | none => return if isCount then mkCount total else mkMoney total
-        | _ => return unknown "collection roster not confirmed"
+        | _ => return (unknown "collection roster not confirmed").setObjVal! "input" (Json.str rosterKey)
     | "sum" =>
       match objGet expr "of" with
       | some (.arr refs) =>

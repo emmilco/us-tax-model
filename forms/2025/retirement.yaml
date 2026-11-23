@@ -547,19 +547,19 @@ form:
         Safety Officers, Simplified Method'
   - id: retirement.disability
     printed: (helper)
-    label: 'Do you get this pension because you became disabled?'
+    label: 'Was any of this paid to you because you became disabled, under a plan that provides for disability retirement?'
     type: Bool
     gated_by: retirement.disability_if_plan
     expr:
       op: input
-      source: 'Do you get this pension because you became disabled?'
+      source: 'Was any of this paid to you because you became disabled, under a plan that provides for disability retirement?'
     cite:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
         Safety Officers, Simplified Method'
   - id: retirement.disability_if_plan
     printed: (gate)
-    label: 'Do you get this pension because you became disabled? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)'
+    label: 'Was any of this paid to you because you became disabled, under a plan that provides for disability retirement? Asked only with a pension, annuity or plan (not an IRA) (false otherwise)'
     type: Bool
     expr:
       op: choose
@@ -876,19 +876,19 @@ form:
         Safety Officers, Simplified Method'
   - id: retirement.death_exclusion
     printed: (helper)
-    label: 'Did the employee die before August 21, 1996, so that a death benefit exclusion applies to these payments?'
+    label: 'Did the person who earned this pension (an employee or a former employee, a retiree included) die before August 21, 1996, so that a death benefit exclusion applies to these payments?'
     type: Bool
     gated_by: retirement.death_exclusion_if_death
     expr:
       op: input
-      source: 'Did the employee die before August 21, 1996, so that a death benefit exclusion applies to these payments?'
+      source: 'Did the person who earned this pension (an employee or a former employee, a retiree included) die before August 21, 1996, so that a death benefit exclusion applies to these payments?'
     cite:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
         Safety Officers, Simplified Method'
   - id: retirement.death_exclusion_if_death
     printed: (gate)
-    label: 'Did the employee die before August 21, 1996, so that a death benefit exclusion applies to these payments? Asked only with a payment from a plan after a death (code 4) (false otherwise)'
+    label: 'Did the person who earned this pension (an employee or a former employee, a retiree included) die before August 21, 1996, so that a death benefit exclusion applies to these payments? Asked only with a payment from a plan after a death (code 4) (false otherwise)'
     type: Bool
     expr:
       op: choose
@@ -911,19 +911,19 @@ form:
         Safety Officers, Simplified Method'
   - id: retirement.ben_before_retire
     printed: (helper)
-    label: 'Did the person who died do so before starting to draw this pension (before retiring)?'
+    label: 'Did the person who died do so before this pension''s payments to them began (its annuity starting date), even if they had already stopped working?'
     type: Bool
     gated_by: retirement.ben_before_retire_if_death
     expr:
       op: input
-      source: 'Did the person who died do so before starting to draw this pension (before retiring)?'
+      source: 'Did the person who died do so before this pension''s payments to them began (its annuity starting date), even if they had already stopped working?'
     cite:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
         Safety Officers, Simplified Method'
   - id: retirement.ben_before_retire_if_death
     printed: (gate)
-    label: 'Did the person who died do so before starting to draw this pension (before retiring)? Asked only with a payment from a plan after a death (code 4) (false otherwise)'
+    label: 'Did the person who died do so before this pension''s payments to them began (its annuity starting date), even if they had already stopped working? Asked only with a payment from a plan after a death (code 4) (false otherwise)'
     type: Bool
     expr:
       op: choose
@@ -2697,12 +2697,12 @@ form:
       locator: 'p. 5, Line 2, "Enter on line 2 the amount that you can exclude."'
   - id: retirement.not_beneficiary
     printed: (helper)
-    label: 'Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way?'
+    label: 'Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way, or are you the surviving spouse and have you made the IRA your own (by choosing to, by putting money into it, or by not taking a required minimum distribution from it as a beneficiary)?'
     type: Bool
     gated_by: retirement.not_beneficiary_if_death
     expr:
       op: input
-      source: 'Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way?'
+      source: 'Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way, or are you the surviving spouse and have you made the IRA your own (by choosing to, by putting money into it, or by not taking a required minimum distribution from it as a beneficiary)?'
     cite:
       doc: i5329
       locator: 'p. 5, Line 2, "Enter on line 2 the amount that you can exclude."'

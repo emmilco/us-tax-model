@@ -39,6 +39,39 @@
    "subject_key": "4f2509f92da9cfd574d18f2e1e365c7ad785e165f96af2986c6e4f4991a2ca72"
   },
   {
+   "case": "classm.f8962.10",
+   "printed": "11(f)",
+   "project": "$4,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: model error; the case enters one Form 1095-A with f1095a[form_1].c_total $4,000.00 (its line 33C, the annual advance payment), and f8962 line 11(f) is \"Annual advance payment of PTC (Form(s) 1095-A, line 33C)\". The model entered $0.00, so its line 25 and line 26 follow from the misread input; the project's $4,000.00, line 25 $4,000.00 and line 26 $426.00 stand.",
+   "context": "dfbf189737d3074d0ee6bf90d60f3ffba91766c9cc9d8d4cb09ab640fa4af00a",
+   "date": "2026-11-22",
+   "run": "f4d94c24fe183b034248d5eebd7543e0814fb52a5430be93fb67f769b6628f86",
+   "subject_key": "00eca6894aee4d90b324165716a041ef0641194332d6bb8c854f33708902b8d3"
+  },
+  {
+   "case": "classm.f8962.10",
+   "printed": "25",
+   "project": "$4,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: model error; the case enters one Form 1095-A with f1095a[form_1].c_total $4,000.00 (its line 33C, the annual advance payment), and f8962 line 11(f) is \"Annual advance payment of PTC (Form(s) 1095-A, line 33C)\". The model entered $0.00, so its line 25 and line 26 follow from the misread input; the project's $4,000.00, line 25 $4,000.00 and line 26 $426.00 stand.",
+   "context": "dfbf189737d3074d0ee6bf90d60f3ffba91766c9cc9d8d4cb09ab640fa4af00a",
+   "date": "2026-11-22",
+   "run": "f4d94c24fe183b034248d5eebd7543e0814fb52a5430be93fb67f769b6628f86",
+   "subject_key": "a98b5d95e77f6433f446ff36d5ca1b299bdafef29800549bdfd73cce2beee5b9"
+  },
+  {
+   "case": "classm.f8962.10",
+   "printed": "26",
+   "project": "$426.00",
+   "model": "$4,426.00",
+   "ruling": "Ruling: model error; the case enters one Form 1095-A with f1095a[form_1].c_total $4,000.00 (its line 33C, the annual advance payment), and f8962 line 11(f) is \"Annual advance payment of PTC (Form(s) 1095-A, line 33C)\". The model entered $0.00, so its line 25 and line 26 follow from the misread input; the project's $4,000.00, line 25 $4,000.00 and line 26 $426.00 stand.",
+   "context": "dfbf189737d3074d0ee6bf90d60f3ffba91766c9cc9d8d4cb09ab640fa4af00a",
+   "date": "2026-11-22",
+   "run": "f4d94c24fe183b034248d5eebd7543e0814fb52a5430be93fb67f769b6628f86",
+   "subject_key": "a5608310e6483afb4f913091b7c8cab48e18f8f1cc64490a746f32b7c847e8ff"
+  },
+  {
    "case": "classm.f8962.3",
    "printed": "4",
    "project": "$20,440.00",

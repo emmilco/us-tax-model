@@ -758,7 +758,7 @@
 ## (helper) — `k1p.ask_re_pro`
 
 - **Authored helper label:** Box 2 shows an amount and no rental or royalty of your own is listed
-- **Encoded (Bool):** helper "Box 2 shows an amount: net rental real estate income (loss)" = true and scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, or receive royalties?" = false
+- **Encoded (Bool):** helper "Box 2 shows an amount: net rental real estate income (loss)" = true and scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?" = false
 - Expr: `{"all":[{"eq":["k1p.has_b2",{"const":true}],"op":"test"},{"eq":["scope.rental",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1065sk1] p. 14, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity" (2025; sha256 659063e0)
 

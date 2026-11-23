@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
  "head_rows": {
-  "match / mismatch / unclear / missing": "23 / 2 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "21 / 4 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -125,9 +125,10 @@
   },
   {
    "key": "needs1116",
-   "record": "608a9a49d8ee77987dafb36c5cb320f6b7e444115b98c41ce84be2554d569592",
-   "status": "MATCH",
-   "subject_key": "62a29300341a56ff72742942d2290ee8b209f59354673b0f0e4907953d744137"
+   "record": "0adc0cb00491e9f92dfaa758be7118717259fa340502708e3efe22fb2413aaab",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 115, Schedule 3 line 1, \"You aren't filing Form 4563 or excluding income from sources within Puerto Rico\" is the condition the reply finds tested (the BUG-0769 fix). sa.excluded_income also names Form 2555, which neither i1116 pp. 1-2 nor Schedule 3 lists; a Form 2555 filer with foreign tax is therefore sent to Form 1116, where f1116.reduction (foreign taxes on income excluded on Form 2555 or 4563, line 12) refuses. The extra condition turns an election credit into a refusal, never into a different amount on a completed return.",
+   "subject_key": "8d6577b7121da852c1e3b877c8b57deed8ca9a7a6cb8d0ef0283a28916a06d3f"
   },
   {
    "key": "carryover_no_tax",
@@ -150,9 +151,10 @@
   },
   {
    "key": "credit_tax",
-   "record": "608a9a49d8ee77987dafb36c5cb320f6b7e444115b98c41ce84be2554d569592",
-   "status": "MATCH",
-   "subject_key": "0953945728e7317c6aa9fb626612a942269a63a5846ba4752a72a5df3c454a01"
+   "record": "0adc0cb00491e9f92dfaa758be7118717259fa340502708e3efe22fb2413aaab",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the Form 4972 subtraction is the regular_tax ruling (i1116 p. 25, Line 20, \"less any tax included on line 16 from Form 4972\"; Form 4972 tax is refused at Form 1040 line 16 by scope.other_line16, so nothing is subtracted on a computed return), and the Form 2555 condition is the needs1116 ruling (a Form 2555 filer with foreign tax is refused at f1116.reduction). The Form 1116 branch matches, as the reply says.",
+   "subject_key": "63c4ffa5c31a6a2942a65c2461848a4aa76f7480af4a6893ec9e6a4998c1d877"
   },
   {
    "key": "credit",
@@ -181,11 +183,11 @@
   "statements_if_tax": "f52f6527e19122c10b5da7bde766fdbc31ddff96746bf3b7cf64c9829f9a87e9",
   "eligible_if_tax": "bf0d699e072c7ca051bf19adea2f6384d66d3d59cee326a1f3a36b1916440424",
   "elect_if_tax": "c52c943568505a4a5ecd4cdedf8a5d5f2a3cadffba3d8633e722ee7195c92ee5",
-  "needs1116": "c6acdcc92f81cec4f4f5c5883dd3d38e1ba762a7ec0346ed8c6481e578e61499",
+  "needs1116": "da4538ecdc6cc5d467bb0d23dbbf7ae5d6823ccabdbbcedf0a36f9dc2f4424c4",
   "carryover_no_tax": "330dffd3fe126e8280796d6628eaee7d50e1adf1e1b10e0f643d8240f6e0b6d7",
   "regular_tax": "9708e41122ecdaf9ac692bbfdc199dc4e05b00233f3861a7c8094d89caed5945",
   "limited": "b2e74af5b9682a4aeef2f0226855242cf098442526b2e5edfb260d3296514681",
-  "credit_tax": "a2683c174c89a8cbb65779fee68874cfaa07f62cd9f904e15146ba801427aa70",
+  "credit_tax": "2a12750526e09fb1f9a7a50187cae79075355c70e8c88fa02a88cbdad454de74",
   "credit": "cb27cc2a621b02abaa7fa80c927f4aa52ab7aae6884cb1b38dca8ee73b671656"
  },
  "__rest__": "ef08dea3f16551b6ced17254950d5a0c4ee28f6a2065659aa454c41344463759"

@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "29cf1035310bf2a9c4c07fcc8cc16d9bdeae086cb10e09861198262962224649",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-17); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -46,16 +46,16 @@
   },
   {
    "key": "(g)",
-   "record": "63fec88b1d14b20de1168b3786aff0034098eb9719ffbacb4eb5325f1c6d4468",
+   "record": "e7794c40ba9066dd1b20be063b1b6f1c13fd165342f1d2c3e1eab97f69a5bab4",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i4562 p. 12, Column (g)—Depreciation deduction: the project multiplies rprop.basis by the Table A rate. The candidate reaches the same amount through its own h_figured helper; its 13 completed-return differences come from reading rprop.qip as an input where the project computes it (rprop.qip_if_new_nonres, i4562 p. 10), so the candidate is unknown on records the project answers. No value difference on a completed return; the 1 refusal is the project's cited rprop.personal screen. Triage executable-triage-v2 (.transcription/triage/2025/rprop.json): 228 of 289 comparisons agree, 226 of 286 in scope. Project stands.",
-   "subject_key": "ddc0ac15740be2292a62eaeaf92b7ffd45ae5afd8ced1c75804e41f4334811e4"
+   "ruling": "Ruling: representation; i4562 p. 10. The reply reads rprop.short_class for every building, where the project asks it only of nonresidential property (rprop.short_class_if_nonres: a residential building is neither a farm building nor a motor fuels outlet), and computes personal property on a 5-year half-year basis, which the project refuses (rprop.personal; i4562 p. 9, Lines 19a Through 19j). The only differences are candidate-unknown on returns that do not answer rprop.short_class (17 completed, 3 incomplete, 2 refused); no completed value differs (executable triage .transcription/triage/2025/rprop.json: 104 of 126 agree). Project stands.",
+   "subject_key": "7cc46a387d6f779cef2bb095f66fa4f0010443be6701df8bef21a4da3c702e5a"
   }
  ],
  "subjects": {
   "rprop.placed_this_year": "26db829a53d0959062cda93cac672fa2c664df0826a6366bc4c2bc7080b1e3e5",
   "rprop.placed_this_year_cent": "44941b3619573f97c8a25080d44b041cf859869ebb7ebc3a63d9216efc575066",
-  "(g)": "1760916c0dc9dcac8b6f72685e883615df77293dff9cb813793f53feaae407ed"
+  "(g)": "917628cf464c94f79e006d98ca364df548b7c6430f5111e31c5f23d7f2e8952d"
  },
  "__rest__": "04074d1bd28d0960353d4983f0f9a29b2cebb3d8a61264d2b28fe23f6f9b12a1",
  "foreign": {

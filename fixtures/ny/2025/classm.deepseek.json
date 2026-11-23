@@ -7684,7 +7684,13 @@
         "f1040.digital_assets": false,
         "household.married_dec31": true,
         "household.mfs_living": "together_late",
-        "f8962.mfs_exception": false
+        "f8962.mfs_exception": false,
+        "f8582.prior_crd": false,
+        "scope.trade_act_repaid": false,
+        "f5695.reconstruct_later": false,
+        "household.cp_retirement": false,
+        "scope.remic": false,
+        "sa.mfs_joint_paid": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -25132,7 +25138,9 @@
         "ny_it201.ask.apply_any": false,
         "ny_it201.ask.est_any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -27262,7 +27270,9 @@
         "ny_it201.ask.apply_any": false,
         "ny_it201.ask.est_any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -27846,7 +27856,9 @@
         "ny_it201.ask.apply_any": false,
         "ny_it201.ask.est_any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -28302,7 +28314,9 @@
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
         "ny_it201.ask.est_any": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -29017,7 +29031,9 @@
         "ny_it201.ask.apply_any": false,
         "ny_it201.ask.est_any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -29696,7 +29712,10 @@
         "f1040.digital_assets": false,
         "household.married_dec31": true,
         "household.mfs_living": "together_late",
-        "f8962.mfs_exception": false
+        "f8962.mfs_exception": false,
+        "household.cp_retirement": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -30295,7 +30314,9 @@
         "ny_it201.ask.apply_any": false,
         "ny_it201.ask.est_any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it201.item_c": {

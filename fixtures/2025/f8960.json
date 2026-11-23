@@ -1489,6 +1489,60 @@
           }
         }
       }
+    },
+    {
+      "id": "f8960.refuse.election_6013g_between_thresholds",
+      "covers": [
+        "f8960"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane bugfix-other, predicted by hand from the archived sources before running the evaluator. BUG-0997. mf.f8960.election_6013g_refused with wages of $200,000 (Form W-2 boxes 1 and 5; box 4 is 6.2% of the $176,100 wage base, $10,918.20; box 6 is 1.45% of $200,000, $2,900, none over the $200,000 Additional Medicare threshold), so adjusted gross income is $200,000. Married filing jointly; the spouse is a nonresident alien the couple chose to treat as a resident (section 6013(g)). i8960 p. 3: unless the couple also elects to apply that election for the net investment income tax, the U.S. citizen spouse figures it as married filing separately with the $125,000 threshold, so tax may be owed although adjusted gross income is under the $250,000 joint threshold. Form 8960 is not otherwise filed here ($200,000 is not over $250,000, so f8960.used is false and line 1 is not read), but adjusted gross income is over half the joint threshold ($125,000), so f8960.between is true and line 16 refuses at f8960.election_between.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "scope.noncitizen": true,
+        "scope.nonresident": false,
+        "f8960.election_6013g": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 20000000,
+        "person[taxpayer].w2[emp_a].box2": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 1091820,
+        "person[taxpayer].w2[emp_a].box5": 20000000,
+        "person[taxpayer].w2[emp_a].box6": 290000
+      },
+      "expect": {
+        "f8960.used": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8960.separate_threshold": {
+          "kind": "money",
+          "cents": 12500000
+        },
+        "f8960.between": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8960.line16": {
+          "kind": "refusal",
+          "gate": "f8960.election_between",
+          "form": "Form 8960, line 1 checkboxes (section 6013(g) or 6013(h) election)",
+          "remedy": "A joint return made by choosing to treat a nonresident spouse as a U.S. resident needs a further choice for the net investment income tax (to apply that election to it, or to figure it as if filing separately, with the $125,000 threshold); this is outside this tool.",
+          "cite": {
+            "doc": "i8960",
+            "locator": "p. 3, \"If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes, but don’t elect to apply the joint return election for NIIT purposes, then, for NIIT purposes, you’ll be treated under the default method as married filing separately\" and \"uses the applicable threshold for married filing separately ($125,000)\"",
+            "revision": "2025; printed date 2026-02-04",
+            "snapshot": "b10fbb23ff4a053db197285497a00914c558e3ae0cdf5c956b7c0c7867376428",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

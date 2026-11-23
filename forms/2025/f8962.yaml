@@ -1282,10 +1282,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_annual_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 11 are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_annual
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 15, Line 11, "If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line11a
     printed: 11(a)
     label: Annual enrollment premiums (Form(s) 1095-A, line 33A)
-    shown_when: f8962.show_annual
+    shown_when: f8962.show_annual_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1297,7 +1316,7 @@ form:
   - id: f8962.line11b
     printed: 11(b)
     label: Annual applicable SLCSP premium (Form(s) 1095-A, line 33B)
-    shown_when: f8962.show_annual
+    shown_when: f8962.show_annual_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1405,10 +1424,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_jan_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 12 (January) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_jan
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line12a
     printed: 12(a)
     label: 'January: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_jan
+    shown_when: f8962.show_jan_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1421,7 +1459,7 @@ form:
   - id: f8962.line12b
     printed: 12(b)
     label: 'January: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_jan
+    shown_when: f8962.show_jan_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1533,10 +1571,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_feb_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 13 (February) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_feb
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line13a
     printed: 13(a)
     label: 'February: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_feb
+    shown_when: f8962.show_feb_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1546,7 +1603,7 @@ form:
   - id: f8962.line13b
     printed: 13(b)
     label: 'February: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_feb
+    shown_when: f8962.show_feb_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1658,10 +1715,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_mar_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 14 (March) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_mar
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line14a
     printed: 14(a)
     label: 'March: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_mar
+    shown_when: f8962.show_mar_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1671,7 +1747,7 @@ form:
   - id: f8962.line14b
     printed: 14(b)
     label: 'March: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_mar
+    shown_when: f8962.show_mar_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1783,10 +1859,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_apr_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 15 (April) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_apr
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line15a
     printed: 15(a)
     label: 'April: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_apr
+    shown_when: f8962.show_apr_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1796,7 +1891,7 @@ form:
   - id: f8962.line15b
     printed: 15(b)
     label: 'April: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_apr
+    shown_when: f8962.show_apr_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1908,10 +2003,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_may_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 16 (May) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_may
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line16a
     printed: 16(a)
     label: 'May: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_may
+    shown_when: f8962.show_may_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -1921,7 +2035,7 @@ form:
   - id: f8962.line16b
     printed: 16(b)
     label: 'May: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_may
+    shown_when: f8962.show_may_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2033,10 +2147,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_jun_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 17 (June) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_jun
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line17a
     printed: 17(a)
     label: 'June: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_jun
+    shown_when: f8962.show_jun_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2046,7 +2179,7 @@ form:
   - id: f8962.line17b
     printed: 17(b)
     label: 'June: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_jun
+    shown_when: f8962.show_jun_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2158,10 +2291,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_jul_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 18 (July) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_jul
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line18a
     printed: 18(a)
     label: 'July: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_jul
+    shown_when: f8962.show_jul_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2171,7 +2323,7 @@ form:
   - id: f8962.line18b
     printed: 18(b)
     label: 'July: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_jul
+    shown_when: f8962.show_jul_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2283,10 +2435,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_aug_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 19 (August) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_aug
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line19a
     printed: 19(a)
     label: 'August: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_aug
+    shown_when: f8962.show_aug_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2296,7 +2467,7 @@ form:
   - id: f8962.line19b
     printed: 19(b)
     label: 'August: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_aug
+    shown_when: f8962.show_aug_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2408,10 +2579,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_sep_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 20 (September) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_sep
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line20a
     printed: 20(a)
     label: 'September: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_sep
+    shown_when: f8962.show_sep_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2421,7 +2611,7 @@ form:
   - id: f8962.line20b
     printed: 20(b)
     label: 'September: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_sep
+    shown_when: f8962.show_sep_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2533,10 +2723,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_oct_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 21 (October) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_oct
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line21a
     printed: 21(a)
     label: 'October: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_oct
+    shown_when: f8962.show_oct_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2546,7 +2755,7 @@ form:
   - id: f8962.line21b
     printed: 21(b)
     label: 'October: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_oct
+    shown_when: f8962.show_oct_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2658,10 +2867,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_nov_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 22 (November) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_nov
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line22a
     printed: 22(a)
     label: 'November: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_nov
+    shown_when: f8962.show_nov_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2671,7 +2899,7 @@ form:
   - id: f8962.line22b
     printed: 22(b)
     label: 'November: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_nov
+    shown_when: f8962.show_nov_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2783,10 +3011,29 @@ form:
     cite:
       doc: i8962
       locator: p. 10, "If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9."
+  - id: f8962.show_dec_ab
+    printed: (helper)
+    label: Columns (a) and (b) of line 23 (December) are completed (the line is used and the return is not married filing separately
+      without Exception 2)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_dec
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_barred
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 16, Lines 12 Through 23, "If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."'
   - id: f8962.line23a
     printed: 23(a)
     label: 'December: monthly enrollment premiums (Form(s) 1095-A, column A)'
-    shown_when: f8962.show_dec
+    shown_when: f8962.show_dec_ab
     type: NonNegDollars
     expr:
       op: sum_over
@@ -2796,7 +3043,7 @@ form:
   - id: f8962.line23b
     printed: 23(b)
     label: 'December: monthly applicable SLCSP premium (Form(s) 1095-A, column B)'
-    shown_when: f8962.show_dec
+    shown_when: f8962.show_dec_ab
     type: NonNegDollars
     expr:
       op: sum_over

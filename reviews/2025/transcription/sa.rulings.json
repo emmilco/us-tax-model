@@ -720,6 +720,83 @@
   {
    "printed": "sa.deduction",
    "project_expr_sha256": "a0120d3b9cd12e82d0c6baace3effbc075c5dc6ffa091455447e8c7ab4f2fffe",
+   "second_expr_sha256": "63f35aa171244f4d2800e1a384e7b5ff7895e1971569ca092541a4be59163a75",
+   "ruling": "Ruling: representation; i1040gi pp. 34-35, line 12e, and i1040sca p. 1 ('If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504'). Both select line 17 or the standard deduction as before; the difference is the new refusal of jointly paid expenses on a separate return (BUG-0972), which the reply attaches to the question itself where the project asks it only on a married filing separately return that itemizes. executable triage (.transcription/triage/2025/sa.json, this pass): 4,187/4,202 agree; differences {\"project-refuses\": 5, \"project-unknown\": 10}; on completed returns none; no value differs.",
+   "context": "c8f8883ec9c4a5e538f2a57f75bdf9e8c1938af03445310c17e7e4a230aa158e",
+   "date": "2026-11-22",
+   "run": "75c39caba9c22fb880408e440d68763eca31d0391904ba6722c1821d5108ecba",
+   "subject_key": "4eab1e8248cb80d9c2037b8a656ba9012fa70e8efaf90c48c267c7e27f5c84b5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sa",
+     "fixture:classm.eic.2.deepseek@sa",
+     "fixture:classm.eic.8.deepseek@sa",
+     "fixture:classm.sa.4.deepseek@sa",
+     "fixture:classm.sa.5.deepseek@sa",
+     "fixture:classm.sa.1@sa",
+     "fixture:classm.sa.5@sa",
+     "fixture:stage4.refuse.standard.spouse_extra@sa",
+     "fixture:dep.qss_refused@sa",
+     "fixture:mexist.sa.itemizes.qss_dependent@sa",
+     "fixture:sa.refuse.mfs_joint_paid@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sa.deduction",
+   "project_expr_sha256": "a0120d3b9cd12e82d0c6baace3effbc075c5dc6ffa091455447e8c7ab4f2fffe",
+   "second_expr_sha256": "de0df45143abc9007b538f510d3799175800b769a39ed827d8189d59c3c7ed9c",
+   "ruling": "Ruling: model error; i1040gi p. 34, Line 12e, 'In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions', and line 12b (a separate filer whose spouse itemizes has a zero standard deduction). The reply's own larger-of helper gives the standard deduction where line 17 is larger: on stage21.t067.smw_hidden_ira (a hand-predicted fixture) line 17 is $45,242.70 and the reply enters $31,500; it also declares refusals of its own (for example at f4952.has_interest on classm.f8960.1). Executable triage (.transcription/triage/2025/sa.json, this pass): 3,240/4,194 agree; differences {\"candidate-refuses\": 735, \"candidate-unknown\": 190, \"project-refuses\": 14, \"value\": 15}; on completed returns {\"candidate-refuses\": 87, \"candidate-unknown\": 154, \"value\": 6}.",
+   "context": "e456b2ea10826408fa0fd9aa72ba91e10a83feb55130eba460e55127d797a426",
+   "date": "2026-11-22",
+   "run": "bddc7a11a83f062a42385dc85d07caeca87bd5158cd5c2689f8aab5d1983b232",
+   "subject_key": "66a342b84f91f5f88df26fb9e81a5c3fef8b78b63178c2773c4086f40707e5ab",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@sa",
+     "fixture:classm.f4952.1.deepseek@sa",
+     "fixture:classm.f4952.3.deepseek@sa",
+     "fixture:classm.f8960.1.deepseek@sa",
+     "fixture:classm.f8960.2.deepseek@sa",
+     "fixture:classm.g28.1.deepseek@sa",
+     "fixture:classm.s2.1.deepseek@sa",
+     "fixture:classm.s2.2.deepseek@sa",
+     "fixture:classm.s2.3.deepseek@sa",
+     "fixture:classm.s2.5.deepseek@sa",
+     "fixture:classm.s2.6.deepseek@sa",
+     "fixture:classm.s2.8.deepseek@sa",
+     "fixture:classm.s3.2.deepseek@sa",
+     "fixture:classm.s3.4.deepseek@sa",
+     "fixture:classm.f8962.1.deepseek@sa",
+     "fixture:classm.f8863.1.deepseek@sa",
+     "fixture:classm.f8962.4.gpt@sa",
+     "fixture:classm.otjob.3@sa",
+     "fixture:classm.sdtw.2@sa",
+     "fixture:mutation.m3.sa.carryover_no_gifts@sa",
+     "fixture:stage4.refuse.gift.sectionB@sa",
+     "fixture:stage4.refuse.gift.special@sa",
+     "fixture:dep.qss_refused@sa",
+     "fixture:mexist.sa.itemizes.qss_dependent@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sa.deduction",
+   "project_expr_sha256": "a0120d3b9cd12e82d0c6baace3effbc075c5dc6ffa091455447e8c7ab4f2fffe",
    "second_expr_sha256": "f5a71cae45af0e609dbcd23742825273582b020f0e42929b6ef51cf6e9ea2415",
    "ruling": "Ruling: representation; the deduction for Form 1040 line 12e is Schedule A line 17 when itemizing and the standard deduction (including the dependents worksheet) otherwise in both (i1040gi p. 33, Line 12e). Triage 8d1c7332dffb: 3,201/4,083 agree with no value difference: 728 candidate-unknown, 116 candidate-refuses, 22 project-refuses, 16 project-unknown, from the same unasked inputs and one-sided refusals as sa.itemizes. Separately, the worksheet's earned income omits Schedule 1 line 8u (BUG-0767, ruled on line 2 (sa.dep_line2)); no return in triage exercises it.",
    "context": "5acadf16dd520747d59daea4fa0268765afe32978e0eba0e18456f0a2749e239",

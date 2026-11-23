@@ -2,7 +2,7 @@
  "form": "sa",
  "reviews": {
   "gate:sa.gifts": {
-   "subject_sha": "db7c127f3c2f842a7ec1bfe77ee80c40889d642ed3c5a24c6a3fbc23831d25d5",
+   "subject_sha": "a5de0a1725275b95b34666d54db7eede0a46e411840dce349cfebca4a333e821",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -10,80 +10,60 @@
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A joint filer who made no 2025 charitable gifts but has a charitable contribution carryover from 2024 because the earlier deduction exceeded the income limits.",
-       "why_no": "The gate asks only whether they gave in 2025; they truthfully read that as no because all gifts were in an earlier year.",
+       "who": "A filer whose 2023 cash gifts exceeded 60% of AGI and who carries the excess into 2025, but who gave nothing new in 2025. Their 2025 AGI is low enough that the carryover is again limited.",
+       "why_no": "The gate asks 'In 2025, did you ... give money or things to a charity'. They gave nothing in 2025, so the truthful answer is no. The gate's own citation names the line 13 carryover, but its words do not.",
        "line": "sa.charity_limited_if_gifts",
-       "irs_text": "i1040sca p. 11, Line 13: \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits ... enter the amount of your carryover that you are allowed to deduct this year.\"",
+       "irs_text": "i1040sca p. 11, Line 13: 'Generally, the same limits apply this year to your carryover amounts as applied to those amounts in the earlier year ... After applying those limits, enter the amount of your carryover that you are allowed to deduct this year.'",
        "severity": "high",
-       "fix": "Broaden the gate to include a prior-year charitable carryover and ask whether the 2025 charitable deduction, including carryover, is limited, not only whether 2025 gifts were made."
+       "fix": "Broaden the gate: 'Did you or your spouse give to charity in 2025, or do you have charitable gifts from 2020–2024 that you could not fully deduct (a carryover)?' Alternatively, ask the limit question whenever a carryover is entered, and refuse if the carryover is limited."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who did no cash or property donation but drove 1,000 miles for a charity and claims the 14-cents-per-mile volunteer rate; there is no actual gas or parking receipt.",
-       "why_no": "They read 'give money or things' and 'spend your own money' as not covering a standard mileage allowance; they say they only drove and gave no money.",
+       "who": "A couple who host a foreign high-school exchange student in 2025 under a written agreement with a qualified nonprofit program. They pay for the student's food, clothing and transportation.",
+       "why_no": "They read 'give money or things to a charity' and 'volunteer work for one' as not covering costs of feeding a student who lives in their own home. The help text never mentions hosting a student.",
        "line": "sa.line11_if_gifts",
-       "irs_text": "i1040sca p. 9, Amounts You Can Deduct: \"If you drove to and from the volunteer work, you can take the actual cost of gas and oil or 14 cents a mile.\"",
+       "irs_text": "p526 p. 6, Expenses Paid for Student Living With You: 'You may be able to deduct some expenses of having a student live with you ... You can deduct up to $50 a month for each full calendar month the student lives with you.'",
        "severity": "medium",
-       "fix": "State in the gate that out-of-pocket volunteer costs, including mileage at 14 cents per mile and parking/tolls, count even if no cash was given directly."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer who let a qualified charity use office space rent-free for 2025 and made no cash or tangible-property gift.",
-       "why_no": "They truthfully say no because they did not give money or a thing; they gave the use of property, which the gate's wording does not mention.",
-       "line": "sa.charity_limited_if_gifts",
-       "irs_text": "i1040sca p. 10, Limit on the amount you can deduct: \"You gave gifts of property that increased in value or gave gifts of the use of property.\"",
-       "severity": "medium",
-       "fix": "Include gifts of property and gifts of the use of property in the gate, or ask broadly whether the filer made any charitable contribution."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer who gave cash to a qualifying Canadian, Israeli, or Mexican charity, or to a U.S. organization that transfers funds to foreign charities, and knows the general rule that gifts to foreign organizations are not deductible.",
-       "why_no": "They read the gate's list of charities as U.S. charities and the general foreign-organization rule as a no; they answer no because the funds went to a foreign charity.",
-       "line": "sa.line11_if_gifts",
-       "irs_text": "i1040sca p. 10, Amounts You Can't Deduct: \"Gifts to foreign organizations. However, you may be able to deduct gifts to certain U.S. organizations that transfer funds to foreign charities and certain Canadian, Israeli, and Mexican charities.\"",
-       "severity": "medium",
-       "fix": "Add qualifying foreign charities and U.S. organizations that transfer funds abroad to the gate/help, and do not limit the line 11 wording to U.S. charities."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer who paid a fraternal order an amount that the order used for its charitable purposes, and made no other charitable gifts.",
-       "why_no": "The gate's examples omit fraternal orders, and the instructions elsewhere say dues or bills paid to lodges and fraternal orders are not deductible; the filer answers no as a dues payment.",
-       "line": "sa.line11_if_gifts",
-       "irs_text": "i1040sca p. 9, Examples of Qualified Charitable Organizations: \"Fraternal orders if the gifts will be used for the purposes listed under Gifts to Charity.\"",
-       "severity": "medium",
-       "fix": "Mention fraternal orders when the gift is used for charitable purposes, and distinguish non-deductible dues."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer who gave cash to a nonprofit scientific research institute or an organization that prevents cruelty to animals, not one of the listed church/school/hospital/veterans/government examples.",
-       "why_no": "They treat the gate help's list as the whole category of qualifying charities and answer no because their donee is not on the list.",
-       "line": "sa.line11_if_gifts",
-       "irs_text": "i1040sca p. 9, Gifts to Charity: \"organizations that are religious, charitable, educational, scientific, or literary in purpose\" and \"organizations that work to prevent cruelty to children or animals.\"",
-       "severity": "low",
-       "fix": "Say the examples are not exhaustive and include scientific, literary, and animal-cruelty-prevention organizations."
+       "fix": "Add to the gate's help: 'Count costs of hosting a student under a written agreement with a charity's exchange program, and unreimbursed costs of being a foster parent placed by a charity.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who paid $1,000 to a charity in a state tax-credit program, received a $600 state tax credit, and claims only the remaining $400 as a charitable deduction.",
-       "why_no": "They see the payment as buying a tax credit or receiving a benefit, not as a gift to charity, so they answer no to the gate.",
+       "who": "A foster parent placed by a nonprofit agency who pays unreimbursed costs for the foster child.",
+       "why_no": "They see fostering as family care, not as 'volunteer work' for a charity or a gift, so they answer no.",
        "line": "sa.line11_if_gifts",
-       "irs_text": "i1040sca p. 10, Amounts You Can't Deduct: \"Certain contributions to charitable organizations to the extent that you receive a state or local tax credit in return for your contribution.\"",
+       "irs_text": "p526 p. 6: 'But see Foster parents under Out-of-Pocket Expenses in Giving Services, later, if you provide the home as a foster parent.'; i1040sca p. 9: 'Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work'",
        "severity": "medium",
-       "fix": "Tell filers to count the portion of a state tax-credit payment that is not offset by the credit, and not to treat the whole payment as non-charitable."
+       "fix": "Name foster-parent out-of-pocket costs in the gate's help, as with the whaling captain example."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who paid $150 for a public-radio or museum membership and received benefits worth less than the payment. They made no other gifts.",
+       "why_no": "They think of the payment as membership dues, not as giving to a charity. The help mentions only a fundraising dinner as a payment that got something back.",
+       "line": "sa.line11_if_gifts",
+       "irs_text": "p526 p. 5, Membership fees or dues: 'You may be able to deduct membership fees or dues you pay to a qualified organization. However, you can deduct only the amount that is more than the value of the benefits you receive.'",
+       "severity": "medium",
+       "fix": "Add to the help: 'Count membership fees paid to a charity (such as a museum, zoo or public broadcaster), and payments for charity event tickets or auction items above their value.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A partner in a partnership, or a shareholder in an S corporation, whose Schedule K-1 reports a share of cash charitable contributions made by the entity. The partner made no gifts personally.",
+       "why_no": "'Did you ... give money or things to a charity' reads as personal giving. The entity made the gift, so the partner truthfully answers no.",
+       "line": "sa.line11_if_gifts",
+       "irs_text": "i1040sca p. 10, Line 11: 'Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)'",
+       "severity": "medium",
+       "fix": "Add to the gate: 'or did a Schedule K-1 from a partnership or S corporation report charitable contributions passed through to you?'"
       }
      ],
-     "prompt_sha": "ffcb8d8c995ad0da4e37c68ab5ec6bebaa6cd6acd7da5986e4ce2a8129ce610d",
+     "prompt_sha": "b85f42ec9067a4c84c61f2ab9f79bbfc3ff6168619b29cc8e7502fb9ac4021d5",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_sa.gifts.db7c127f3c2f.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.12406800000000001,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_sa.gifts.a5de0a172527.1.response.txt"
     }
    ],
    "condition": "sa.gifts",
@@ -108,7 +88,7 @@
      "how": "cited pages",
      "locators": [
       "p. 10, Limit on the amount you can deduct, \"See Pub. 526 to figure the amount of your deduction if any of the following applies\"; p. 11, Line 13, \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct\"",
-      "p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\", \"14 cents a mile\", \"But don't deduct any amounts that were repaid to you\", Gifts from which you benefit, \"you can generally only deduct the amount that is more than the value of the benefit\", Gifts of $250 or more; p. 10, Amounts You Can't Deduct, \"Political contributions\", \"Cost of raffle, bingo, or lottery tickets\", \"Cost of tuition\", \"Value of your time or services\", \"Gifts to foreign organizations. However, you may be able to deduct gifts to certain U.S. organizations that transfer funds to foreign charities\"; Line 11, \"Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)\", Recordkeeping, \"you must maintain as a record of the contribution a bank record (such as a canceled check or credit card statement) or a written record from the charity\"",
+      "p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\", \"14 cents a mile\", \"But don't deduct any amounts that were repaid to you\", Gifts from which you benefit, \"you can generally only deduct the amount that is more than the value of the benefit. But this rule doesn't apply to certain membership benefits provided in return for an annual payment of $75 or less or to certain items or benefits of token value\", Gifts of $250 or more; , Membership fees or dues, \"Both you and the organization can disregard the following membership benefits if you get them in return for an annual payment of $75 or less\"; , Token items, \"You don’t have to reduce your contribution by the value of any benefit you receive if both of the following are true\"; p. 10, Amounts You Can't Deduct, \"Political contributions\", \"Cost of raffle, bingo, or lottery tickets\", \"Cost of tuition\", \"Value of your time or services\", \"Gifts to foreign organizations. However, you may be able to deduct gifts to certain U.S. organizations that transfer funds to foreign charities\"; Line 11, \"Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)\", Recordkeeping, \"you must maintain as a record of the contribution a bank record (such as a canceled check or credit card statement) or a written record from the charity\"",
       "p. 9, Gifts to Charity, \"You can deduct contributions or gifts you gave to organizations that are religious, charitable, educational, scientific, or literary in purpose\", \"Certain whaling captains may be able to deduct expenses paid in 2025 for Native Alaskan subsistence bowhead whale hunting activities\" and \"Federal, state, and local governments if the gifts are solely for public purposes\"; p. 9, Gifts from which you benefit, \"If you made a gift and received a benefit in return\"; p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\"; p. 11, Line 13, \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct\""
      ],
      "cols_pages": [
@@ -132,6 +112,22 @@
      ],
      "cols_pages": [],
      "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    },
+    {
+     "doc": "p526",
+     "revision": "2025 returns; printed date 2026-02-05",
+     "text_sha256": "2886d40c1e518b1ab7ced3fb73c99a10360ddfc80ae98e9164a09f66c0d3a5c1",
+     "pages": [
+      5,
+      6
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      5,
+      6
+     ],
+     "cols_sha256": "f95b6955fefaad988c4dacf20b5169ea5d8cd4a54fe8b1ff85a7f5cc1b721a0e"
     }
    ]
   },
@@ -673,6 +669,130 @@
      "locators": [],
      "cols_pages": [],
      "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    }
+   ]
+  },
+  "gate:sa.mfs_itemizing": {
+   "subject_sha": "a3c0d9afffb526bec82a07a59bfc9f43fed7294166a6830f36bd5b8c571c8053",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A married-filing-separately filer who itemizes and owns a home with the spouse as tenants by the entirety. The home was damaged in a federally declared disaster in 2025, and the filer entered the full casualty loss.",
+       "why_no": "The question asks only whether an amount was 'paid from an account you hold with your husband or wife'. A casualty loss is not a payment from any account, so the filer truthfully answers no.",
+       "line": "sa.mfs_joint_paid_if_itemizing (the refusal is missed, and the full loss is deducted instead of half)",
+       "irs_text": "p504 p. 5, Table 1: casualty loss 'resulting from a federally declared disaster on a home you own as tenants by the entirety' → 'half of the loss, subject to the deduction limits. Neither spouse may report the total casualty loss.'",
+       "severity": "high",
+       "fix": "Add a clause: 'or does any casualty or theft loss you entered involve property you own together with your husband or wife?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A spouse who separated during 2025. Medical bills were paid early in 2025 from a joint checking account that was closed before the return was prepared.",
+       "why_no": "The question uses the present tense, 'an account you hold with your husband or wife'. On the day of the interview the filer holds no joint account, so the answer is no.",
+       "line": "sa.mfs_joint_paid_if_itemizing",
+       "irs_text": "p504 p. 5, Table 1: medical expenses 'paid with funds deposited in a joint checking account in which you and your spouse have an equal interest' → 'half of the total medical expenses ... unless you can show that you alone paid the expenses'",
+       "severity": "high",
+       "fix": "Ask: 'Was any amount you entered paid from an account you held, at the time of payment, with your husband or wife (even if it is now closed)?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A couple filing separate 2025 state returns who paid the balance due on their joint 2024 state income tax return in April 2025. The filer deducts that payment as 2025 state income tax.",
+       "why_no": "The question asks only about 'a joint 2025 state income tax return'. They do not file one, so the answer is no, but a 2025 state tax deduction includes a payment toward a joint return for an earlier year.",
+       "line": "sa.mfs_joint_paid_if_itemizing",
+       "irs_text": "p504 p. 5, Table 1: state income tax where you 'file a joint state income tax return and you're liable for only your own share of state income tax' → 'the smaller of ... the state income tax you alone paid ... or the total state income tax you and your spouse paid ... multiplied by' a gross-income fraction",
+       "severity": "high",
+       "fix": "Ask: 'or did you pay in 2025 any state or local income tax (withholding, estimates, or a balance due) for a year in which the two of you filed or will file a joint state or local return?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A married-filing-separately itemizer in a community property state such as California or Texas. Deductible expenses were paid from a checking account in the filer's name alone, funded with community wages.",
+       "why_no": "The account is not one the filer holds 'with your husband or wife', so the truthful answer is no. Under community property rules, the money and the expenses are still shared.",
+       "line": "sa.mfs_joint_paid_if_itemizing (a refusal is missed for an allocation the tool does not apply)",
+       "irs_text": "p504 p. 5, Table 1 caption: 'Caution: If you live in a community property state, these rules don't apply. See Community Property.'",
+       "severity": "high",
+       "fix": "Ask about the money, not who holds the account: 'or do you live in a community property state (AZ, CA, ID, LA, NV, NM, TX, WA, WI) or were any expenses paid with money that belongs to both of you?' Or gate community property filers out earlier."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A married-filing-separately itemizer who paid medical bills or charitable gifts with a joint credit card, cash from a shared household fund, or a joint HSA-like or brokerage cash account.",
+       "why_no": "The filer reads 'account' as a bank checking or savings account and does not think of a credit card or a cash pool as an account held with the spouse.",
+       "line": "sa.mfs_joint_paid_if_itemizing",
+       "irs_text": "i1040sca p. 1: 'If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim'",
+       "severity": "medium",
+       "fix": "Ask: 'Was any amount you entered paid with money or credit you share with your husband or wife (a joint bank account, joint credit card, or shared cash)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A couple who file one state return with both spouses on it but compute separate tax, as a state 'combined' return or as 'married filing separately on the same return' (for example in Iowa or Delaware). Another case is a couple who file a joint city or local income tax return.",
+       "why_no": "The filer does not regard a combined or same-form return as a 'joint' return, and reads 'state income tax return' as excluding a local income tax return.",
+       "line": "sa.mfs_joint_paid_if_itemizing",
+       "irs_text": "p504 p. 5, Table 1: state income tax where you 'file a joint state income tax return' → allocation by the gross-income fraction",
+       "severity": "medium",
+       "fix": "Ask: 'or do the two of you file a single state or local income tax return together (joint, combined, or both of you on the same form)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A married-filing-separately itemizer whose own medical bills or property tax were paid by the spouse from the spouse's own account. The filer entered those amounts as their own.",
+       "why_no": "No account is held with the spouse, so the answer is no. The help text says 'you deduct what you alone paid', but it does not prompt the filer to remove amounts the spouse paid alone.",
+       "line": "sa.mfs_joint_paid_if_itemizing",
+       "irs_text": "p504 p. 5, Table 1: property tax and mortgage interest on property held as tenants by the entirety → 'the property tax you alone paid' / 'the mortgage interest you alone paid'",
+       "severity": "low",
+       "fix": "Add to the help: 'Enter only amounts paid from your own money; leave out anything your husband or wife paid from their own account.'"
+      }
+     ],
+     "prompt_sha": "790f12091e0ae58ac183dae8d56fcd69f372057f8e992b841befce3c8acfe445",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.110596,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_sa.mfs_itemizing.a3c0d9afffb5.1.response.txt"
+    }
+   ],
+   "condition": "sa.mfs_itemizing",
+   "lines": [
+    "sa.mfs_joint_paid_if_itemizing"
+   ],
+   "inputs": [
+    "sa.mfs_joint_paid"
+   ],
+   "used": [
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, \"If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions\"; , Table 1, medical expenses \"paid with funds deposited in a joint checking account in which you and your spouse have an equal interest\", \"half of the total medical expenses, subject to certain limits, unless you can show that you alone paid the expenses\"; , Table 1, state income tax, \"file a joint state income tax return and you’re liable for only your own share of state income tax\"",
+      "p. 1, \"If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "p504",
+     "revision": "2025",
+     "text_sha256": "ab5181b8bd02383ed4b695d9d83000d78ca95964cb0345629815c6e68a309da1",
+     "pages": [
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "0d985ad253efcd055a01931d1edec50db41ac80ff214206dbb1d969cbaf7fd65"
     }
    ]
   },

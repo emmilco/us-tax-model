@@ -179,7 +179,7 @@ the instruction that requires it.
 | **Credits** | ✓ The child tax credit, the earned income credit, and the child and dependent care, education, saver's, home energy and premium tax credits | ✗ Other credits, such as the adoption, clean vehicle, elderly or disabled, or business credits: 0.9% of returns |
 | **Foreign** | ✓ Foreign tax on investment income, within the small-amount election | ✗ Foreign accounts or assets that require an FBAR or Form 8938: not measured |
 
-Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 324 situations the tool refuses, and says exactly what this table leaves out.
+Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 332 situations the tool refuses, and says exactly what this table leaves out.
 <!-- coverage-tree:end -->
 
 ### Exact arithmetic
@@ -262,7 +262,7 @@ prepared, and the instruction behind it.
 
 **What it earns.** Every number traces to a cited place on an archived IRS page, pinned by content hash,
 usually with the governing sentence quoted. A
-citation checker verifies every quote and locator against the archived text: <!-- figures:readme-citations -->7,506 anchors and 8,261 quotes<!-- /figures:readme-citations -->,
+citation checker verifies every quote and locator against the archived text: <!-- figures:readme-citations -->7,580 anchors and 8,347 quotes<!-- /figures:readme-citations -->,
 with no finding left unruled.
 
 **Where it stops.** A citation proves that a line points at a page. It does not prove that the line
@@ -392,7 +392,7 @@ Around the stack sit tests of whether the tests are any good.
   arithmetic ("Add lines 1 through 3") must match the line's operands, a limit sentence ("can't be more
   than") must be tied to the line that enforces it, and four more of the kind. Findings that predate a
   check are held in a baseline and come due when the line they concern changes.
-- **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (<!-- figures:readme-bugs -->997 so far<!-- /figures:readme-bugs -->)
+- **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (<!-- figures:readme-bugs -->1,118 so far<!-- /figures:readme-bugs -->)
   with how it was caught, its root cause, and *why the existing checks missed it*. It is
   append-only; the suite fails if its committed history changes.
 - **The commit guard.** A git hook, enabled per clone, refuses any commit whose tree is not exactly a

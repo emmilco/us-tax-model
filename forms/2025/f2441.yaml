@@ -594,7 +594,7 @@ form:
         op: test
         gt:
           - f2441.qp_count
-          - param: dc.providers_listed
+          - param: dc.persons_listed
       cite:
         doc: i2441
         locator: 'p. 3, Line 2, "If you have more than three qualifying persons, check the box on line 2 and attach a statement to your return with the required information"'

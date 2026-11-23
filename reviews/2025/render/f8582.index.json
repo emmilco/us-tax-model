@@ -5,7 +5,7 @@
  "base": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
  "head_rows": {
   "match / mismatch / unclear / missing": "20 / 0 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -58,15 +58,15 @@
   },
   {
    "key": "3",
-   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "record": "fa47368c5fd84281a9aa883861b50bf5c9133e2ddcb7cdbe2bcb2f98525a9458",
    "status": "MATCH",
-   "subject_key": "7e32fd0c0d1c33f92d1bc0ea78d2c57ae24069db5bfb6693708813e28bd9d448"
+   "subject_key": "0dff7eb03cf51767e29f2c1f3b725fc8adef876f68ea4e5fe5e93f7df33774e4"
   },
   {
    "key": "4",
-   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
+   "record": "22774226b17a20ecda54af786572e649f3aa07db03691f10d09b0a119733a393",
    "status": "MATCH",
-   "subject_key": "1ced976a51a51ede3489f8d220afe4b106536a38445e3811d7837fe440466310"
+   "subject_key": "d17961479169d92c1338e654c6c7c4cd47edb35493d4552d890805a786974cc4"
   },
   {
    "key": "5",
@@ -124,9 +124,9 @@
   },
   {
    "key": "VII worksheet C",
-   "record": "46cc1fb09f618927c3e71c3cdd010b10160db9e7c210923a7b2b48b0363fec2f",
+   "record": "22774226b17a20ecda54af786572e649f3aa07db03691f10d09b0a119733a393",
    "status": "MATCH",
-   "subject_key": "5d216ff0f4d833fe3d6860efeb2e77768ecd3c860fdc5c4c80d3fa44a1be550b"
+   "subject_key": "f933ee2ba718e0712d3ae3805b75aef0e6a5e9a47fe9dd20ea64d4fb3d0026b1"
   }
  ],
  "subjects": {
@@ -138,8 +138,8 @@
   "2b": "c96437ae84e819303051c593ade92eec9e4cd1c6b06f28707f30f6feb2c499f5",
   "2c": "21a22a44ad182a92b8f74d35354f9019e54ba3b5a10ce794ae8f3584bb56ed04",
   "2d": "fc3995dee2909f428509ed44302835e03587ea73d4add9927ebc3b6cc9404b08",
-  "3": "deec39dd383f11d1d192b5e088d0d3a4220343b21395d235dc644d17314fa9d0",
-  "4": "8bb6969e450094debe4ca1a0585d663e8d3de6db5051eeab8f2b60948d9f2ab6",
+  "3": "c19de2723e20ad65296e152fdd97478223468618b9a75f7beaef54f7542c3193",
+  "4": "2c880106f9816e446a6c0741ce2d8b14bd93c3d3d7229c1dc3ef155c2e8de86f",
   "5": "a0803b093a3917b66caabb760a451acf039d80e6c0bd66442bf363c1166ebc0d",
   "6": "67c92b48ac2f8f85fbd1772ae765d2c46df76bdb3becef0fcad5eb024280c941",
   "7": "12d9497d1fa001707a187f38dcdd5f49b9e13f0bfa67487b656b15c325301ca5",
@@ -149,7 +149,7 @@
   "11": "e474ea9bfdfa44317c699a7abdb3769b788e370e76a411cf260f0ffea82eb753",
   "VI (a) total": "01dc0a0b84b9f7f1f7167e3ebd897e55cc3f442b96e301b53fc2188746509b1f",
   "VII (a) total": "2b1fddeef8331d67bf69367376ef14b2dd69394fcf6997531ee8459f930384de",
-  "VII worksheet C": "cf32f9dc0032b842537bd3f1e13e9affeee129f64fa0c38528b58452d2ca99a2"
+  "VII worksheet C": "57b627332989dfcd7059491636fe028c3c1b89be74dc8b734f2cf042304a8e98"
  },
  "__rest__": "4bd6500b643c93b7d13a548ba3bf7cc991c4e9c46e977ae29b2e186e57caaba0"
 }

@@ -245,7 +245,11 @@ This is a deliberate network step like the source fetcher; it is not run by
 `check-all`. `check_logs.py` runs in `check-all` and fails on an open ruling,
 a missing log, a log made against a different source snapshot, or a log whose
 subject has changed. Every form has a log; a new form fails `check-all` until
-it has one.
+it has one. Source snapshots are checked per record: each record's own source-page table against the archive
+of the year it was made in, which is this year's except for a record carried across a tax year
+(`year_carry.py`: the year its index lines' marks name, or the index's `base_sources` for its base record). A
+line carried across a tax year is also checked against `year_carry.py`'s current key from the year it was
+carried from: a line whose cited text, values or subject changed after the carry is stale.
 
 Each log records the hash of its subject, what that kind of review judges
 (`subjects.py`): for a transcription the form's definition, for a render
@@ -401,15 +405,20 @@ writes; also normalized in a transcription document's own fields) and any other 
 interfaces, the values of the parameters, enums and tables its reach reads (a table's data: not its title,
 citation or tax year), the cited source text at
 anchor-section granularity over its reach and the foreign lines it names (never only the quoted words; a
-citation naming no page stands for its whole document), and the review tools' policy versions. Year
+citation naming no page stands for its whole document), and the review tools' policy versions. The source
+text is read through `tools/archive_text.py` (a draft's cover and watermarks removed) and normalized as
+`citations.norm` normalizes a page; a section runs from the cited anchor's heading (a line that starts with
+it) to the next heading of another cited anchor, so a cross-reference in the section's prose ("Subtract Line 4
+from Line 3") never ends it; an anchor printed only inside a line, or not at all, gives the cited pages whole. Year
 literals are normalized in lockstep: only where the year moved by exactly +1 between the two years'
 texts, within ten years before the tax year; the project's own year is normalized only where its cited
 source moved that year and kept it nowhere unchanged in the same context. So a fixed statutory date the
 project wrongly incremented, a rolling year the project failed to move, and a birth-year cutoff all need
 a review. The report lists every carried line for spot review and separates the lines that wait only on
 a TY+1 source not yet archived or a TY+1 parameter not yet set. `--self-test` (in check-all) runs
-near-miss pairs: a paragraph added under the same heading, a changed parameter value, an incremented
-fixed date, a rolling year not moved, a moved birth year; and the sidecar written from a carried log. With `--jurisdiction ny` it carries New York's
+near-miss pairs: a paragraph added under the same heading, a sentence changed after a cross-reference to
+another anchor (on the same line and wrapped to the next), an anchor printed in other case and spacing, a changed parameter value, an incremented
+fixed date, a rolling year not moved, a moved birth year; a draft's pages read without its watermarks; and the sidecar written from a carried log. With `--jurisdiction ny` it carries New York's
 reviews (`reviews/ny/<year>/`), reading each tree across both jurisdictions as the New York review tools
 do: federal and New York forms, both parameter files and table directories, and each document's sources
 and rendering in its own jurisdiction's directory; it refuses a TY+1 with no New York data.

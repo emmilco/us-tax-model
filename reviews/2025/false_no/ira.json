@@ -87,48 +87,68 @@
    ]
   },
   "gate:ira.mfs_cov_matters": {
-   "subject_sha": "2dbf7204b958314240129f6081106cf3b267ab011539e3fc733a2b5629d529ae",
+   "subject_sha": "4b7621e62d8ed4a81adca0ef430eb5c74b5319bd0dadb22395f4310123d9b383",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A married-filing-separately filer, not covered by a plan, who lived with the spouse part of 2025. The spouse is self-employed with no Form W-2 and has a solo 401(k), Keogh/defined-benefit plan, or SEP for the business.",
-       "why_no": "The question says 'retirement plan at work', which reads as an employer's plan. The help points to box 13 of a Form W-2, which the spouse never got. A filer whose spouse 'works for themselves' answers no.",
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer married filing separately, not covered, who lived with their spouse part of 2025. The spouse left an employer in late 2024. That employer's plan runs on a fiscal year that ended in 2025, and the spouse was eligible, or had contributions allocated, for that plan year.",
+       "why_no": "The question asks whether the spouse was covered 'in 2025, at a job'. The spouse did not work there in 2025, so the filer truthfully answers no. Coverage actually depends on the plan year that ends within 2025, not on work done in 2025.",
        "line": "ira.mfs_spouse_covered_if_asked",
-       "irs_text": "i1040gi p. 96: 'covered by a retirement plan (qualified pension, profit-sharing (including 401(k)), annuity, SEP, SIMPLE, etc.) at work or through self-employment'; 'You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan.'",
-       "severity": "medium",
-       "fix": "Ask: 'Was your husband or wife covered by a retirement plan in 2025, either at a job or through their own business (for example a solo 401(k), Keogh, SEP or SIMPLE)?' Add to the help: 'Self-employed people with no Form W-2 count if their business had such a plan.'"
+       "irs_text": "i1040gi p. 96: \"If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025\" (the plan-year rule is in Pub. 590-A, Were You Covered by a Retirement Plan?)",
+       "severity": "high",
+       "fix": "Ask 'Was your spouse covered by a retirement plan for any plan year ending in 2025 (including a plan at a job they left in 2024)?' Add help: 'If their employer's plan year ends during 2025, count it even if they no longer worked there in 2025.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "An MFS filer whose spouse was an active participant in an employer pension in 2025, but whose spouse's W-2 box 13 'Retirement plan' was left unchecked in error, or who cannot see the spouse's W-2.",
-       "why_no": "The help says that if the spouse was covered, the box 'should be ticked'. A filer who sees an unticked box, or has heard the box is the test, answers no.",
+       "who": "A separated filer, married filing separately, whose spouse is in an employer pension or 401(k). The spouse's W-2 box 13 is not ticked because of an employer error, or the filer cannot see the spouse's W-2.",
+       "why_no": "The help says that if the spouse was covered, 'the \"Retirement plan\" box in box 13 of their Form W-2 should be ticked'. A filer who sees no tick, or cannot check, reads the box as the test and answers no.",
        "line": "ira.mfs_spouse_covered_if_asked",
-       "irs_text": "i1040gi p. 96: 'If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025.'",
-       "severity": "low",
-       "fix": "Make clear that the fact controls, not the form: 'Answer yes if your spouse took part in such a plan, even if box 13 is not ticked or you have not seen their W-2.'"
+       "irs_text": "i1040gi p. 96: \"The 'Retirement plan' box in box 13 of your Form W-2 should be checked if you were covered by a plan at work even if you weren't vested in the plan.\"",
+       "severity": "medium",
+       "fix": "Make clear the plan fact controls, not the box: 'Answer yes if they were in such a plan even if box 13 is not ticked; if you don't know, ask them or answer yes.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "An MFS filer whose spouse was covered by a plan the help does not name: a federal employee in FERS/TSP, a member of the uniformed services, a state or local government employee with a governmental pension, or a participant in a profit-sharing or annuity plan.",
-       "why_no": "The help lists 'a pension, a 401(k) or 403(b), or a SEP or SIMPLE IRA'. A filer may read that list as complete and not recognize TSP, military retirement, or a profit-sharing plan as a 'retirement plan at work'.",
+       "who": "A filer whose spouse is covered by a governmental plan (a state or local pension or the federal FERS system), the Thrift Savings Plan, a 403(a) annuity, or a 501(c)(18) plan, and who reads the help's list as complete.",
+       "why_no": "The help lists 'a pension, a 401(k) or 403(b), a solo 401(k) or Keogh, or a SEP or SIMPLE IRA'. A filer may not recognize the TSP or a government retirement system in that list and answer no.",
        "line": "ira.mfs_spouse_covered_if_asked",
-       "irs_text": "i1040gi p. 96: 'qualified pension, profit-sharing (including 401(k)), annuity, SEP, SIMPLE, etc.'",
-       "severity": "low",
-       "fix": "Widen the help: 'This includes any employer pension or savings plan, such as a 401(k), 403(b), the federal Thrift Savings Plan, military or government pensions, profit-sharing or annuity plans, and SEP or SIMPLE IRAs, even if your spouse put nothing in or was not vested.'"
+       "irs_text": "i1040gi p. 96: \"profit-sharing (including 401(k)), annuity, SEP, SIMPLE, etc.) at work or through self-employment\"",
+       "severity": "medium",
+       "fix": "Add to the help: 'including a government or military retirement system, the Thrift Savings Plan, or a 403(a) annuity; these examples are not the whole list.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer married filing separately who separated from their spouse in early January 2025, or whose spouse moved back briefly, and who thinks of the year as 'living apart'.",
+       "why_no": "The gate turns on whether they 'lived with your spouse at some time in 2025'. A filer who lived apart for nearly all the year may answer that they did not, so the computed gate is false and the spouse-coverage question is never asked. The IRS exception requires living apart for all of 2025.",
+       "line": "ira.mfs_spouse_covered_if_asked",
+       "irs_text": "i1040gi p. 96: \"you are considered covered by a plan unless you lived apart from your spouse for all of 2025\"",
+       "severity": "medium",
+       "fix": "Ask 'Did you live apart from your spouse for every day of 2025?' and help with: 'If you lived together even one day (for example, January 1), answer no.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer, married filing separately, who made their 2025 traditional IRA contribution in March 2026, before the filing deadline.",
+       "why_no": "The gate's input is about contributions 'for 2025'. If it is asked or read as contributions made in 2025, the filer answers no, and the spouse-coverage question is skipped.",
+       "line": "ira.mfs_spouse_covered_if_asked",
+       "irs_text": "i1040gi p. 96: \"If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025\"",
+       "severity": "medium",
+       "fix": "Word the contribution gate as 'Did you contribute to a traditional IRA for 2025, including contributions made from January 1 through April 15, 2026 and designated for 2025?'"
       }
      ],
-     "prompt_sha": "82d26644ac6db630174ba0cb4827bba5bfa3a1424f6305d09644842c22b6053b",
+     "prompt_sha": "0c6eb5865691007cd74bd7b7c2f3e8d29b04eaf9cf808d859d71a3989102fedc",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.06540399999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_ira.mfs_cov_matters.2dbf7204b958.1.response.txt"
+     "cost": 0.08590400000000001,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_ira.mfs_cov_matters.4b7621e62d8e.1.response.txt"
     }
    ],
    "condition": "ira.mfs_cov_matters",

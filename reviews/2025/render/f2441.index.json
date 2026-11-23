@@ -3,6 +3,10 @@
  "form": "f2441",
  "family": "claude",
  "base": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
+ "head_rows": {
+  "match / mismatch / unclear / missing": "31 / 6 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "A",
@@ -18,9 +22,10 @@
   },
   {
    "key": "2 (box)",
-   "record": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
-   "status": "MATCH",
-   "subject_key": "20ac044ee2385db9fbbcd4ad8f3ee7a727676db6cd5076763d4471525439b914"
+   "record": "502e0bc6267f0c1361a15c544b8e053796a3face85d8e1e0e05728bd46a131bd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; restatement accepted. i2441 p. 1, Qualifying Person(s), 2, \"Your disabled spouse who wasn't physically or mentally able to care for themselves\". Care of a disabled spouse is refused before line 2 is reached: f2441.unable (\"In 2025, was there a time when you (or, on a joint return, your spouse) could not care for yourself ...\", help \"Answer Yes too if some of the care you paid for was for your husband or wife. A Yes ends the interview here.\"), so on every return the project completes the qualifying persons are the dependent entries the count reads, and the box is checked exactly when there are more than three.",
+   "subject_key": "09f6029f5e25e2cc47d907a2745e7b8f45d93a94a517b7653e9ced96bb0c9893"
   },
   {
    "key": "3",
@@ -235,7 +240,7 @@
  "subjects": {
   "A": "eee2ea3c2a8f5d9999555a26ea8929300bb76fe40fb9f4d0784a4a33f1a19805",
   "1 (box)": "8405e947cd23ff80885b4fc0cf65e6eb5365827101834331b0aa5dc360d5196e",
-  "2 (box)": "01bd7dcf999ffc991268d93a4c9d8560afe27a3794ecbf364b3bbed03bc37bf4",
+  "2 (box)": "9f20227fe4c6b3ab67d7e69e04693310f785307a5da5219e7ef39d13675c6b7f",
   "3": "5053656075b0727eba360d068b0b6df22d25a879074622ba931603a0f04609aa",
   "4": "dec360c614fb6ed54aea47d08f1c03adbe50e059a77d50be3bf261d30ec0b4a6",
   "5": "2bb63e2d6174ebb22957dc73320f7731f6a39fc58f49aec1b3ac27501a3d48c9",

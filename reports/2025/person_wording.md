@@ -569,19 +569,19 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?
+> For this person (you, or your spouse on a joint return) — Do you run a business of your own that provides home care? (Its pay belongs on a business schedule, Schedule C.)
 
 Shown on a one-person return:
 
-> Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?
+> Do you run a business of your own that provides home care? (Its pay belongs on a business schedule, Schedule C.)
 
 Shown for you on a couple's return:
 
-> About you — Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?
+> About you — Do you run a business of your own that provides home care? (Its pay belongs on a business schedule, Schedule C.)
 
 Shown for your spouse:
 
-> About your spouse — Does your spouse run a business of your spouse's own that provides home care, with this pay reported on a business schedule (Schedule C)?
+> About your spouse — Does your spouse run a business of your spouse's own that provides home care? (Its pay belongs on a business schedule, Schedule C.)
 
 **Help, as stored**
 
@@ -2129,19 +2129,19 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce or death, while the other person had a high-deductible plan covering more than one person?
+> For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person?
 
 Shown on a one-person return:
 
-> Did a marriage of yours end during 2025, by divorce or death, while the other person had a high-deductible plan covering more than one person?
+> Did a marriage of yours end during 2025, by divorce or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person?
 
 Shown for you on a couple's return:
 
-> About you — Did a marriage of yours end during 2025, by divorce or death, while the other person had a high-deductible plan covering more than one person?
+> About you — Did a marriage of yours end during 2025, by divorce or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person?
 
 Shown for your spouse:
 
-> About your spouse — Did a marriage of your spouse's end during 2025, by divorce or death, while the other person had a high-deductible plan covering more than one person?
+> About your spouse — Did a marriage of your spouse's end during 2025, by divorce or death, and in any month of 2025 while your spouse was married did the other person have a high-deductible plan covering more than one person?
 
 **Help, as stored**
 

@@ -87,6 +87,7 @@ TESTS = [
     ("green_self_test", "bookkeeping", False, ["bash", "tools/hooks/test_green.sh"]),
     ("siblings_self_test", "bookkeeping", False, ["python3", "tools/siblings.py", "--self-test"]),
     ("check_agent_runs_self_test", "bookkeeping", False, ["python3", "tools/check_agent_runs.py", "--self-test"]),
+    ("agent_runs_fold_self_test", "bookkeeping", False, ["python3", "tools/agent_runs_fold.py", "--self-test"]),
     ("claims_self_test", "bookkeeping", False, ["python3", "tools/claims.py", "--self-test"]),
     ("merge_classm_self_test", "bookkeeping", False, ["python3", "tools/merge_classm.py", "--self-test"]),
     ("bug_inventory_self_test", "bookkeeping", False, ["python3", "tools/check_bug_inventory.py", "--self-test"]),

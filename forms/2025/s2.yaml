@@ -191,13 +191,13 @@ form:
       printed: (helper)
       type: NonNegDollars
       gated_by: s2.amt_pab_if_could
-      label: "Of your (or, on a joint return, your spouse's) tax-exempt interest, how much is from private activity bonds: the total of box 9 of your Forms 1099-INT? Zero if none."
+      label: "Of your (or, on a joint return, your spouse's) tax-exempt interest, how much is from private activity bonds: box 9 of your Forms 1099-INT, plus any tax-exempt OID (Form 1099-OID box 11) on a private activity bond? Zero if none."
       expr:
         op: input
-        source: "Of your (or, on a joint return, your spouse's) tax-exempt interest, how much is from private activity bonds: the total of box 9 of your Forms 1099-INT? Zero if none."
+        source: "Of your (or, on a joint return, your spouse's) tax-exempt interest, how much is from private activity bonds: box 9 of your Forms 1099-INT, plus any tax-exempt OID (Form 1099-OID box 11) on a private activity bond? Zero if none."
       cite:
         doc: i6251
-        locator: 'p. 3, Line 2g—Interest From Private Activity Bonds, "Each payer of this type of interest should send you a Form 1099-INT showing the amount of this interest in box 9"'
+        locator: 'p. 3, Line 2g—Interest From Private Activity Bonds, "Each payer of this type of interest should send you a Form 1099-INT showing the amount of this interest in box 9"; i1099int p. 1, "For a specified private activity bond with OID, report the tax-exempt OID in box 11 on Form 1099-OID, and the tax-exempt stated interest in boxes 8 and 9 on Form 1099-INT"'
     - id: s2.amt_pab_ask
       printed: (gate)
       type: Bool
@@ -921,10 +921,10 @@ form:
       printed: (helper)
       type: Bool
       gated_by: s2.amt_business_if_sc
-      label: "Do you (or, on a joint return, your spouse) deduct in a business costs of building the readership of a newspaper, magazine or newsletter, costs of exploring for or developing a mine, or costs of drilling an oil, gas or geothermal well?"
+      label: "Do you (or, on a joint return, your spouse) deduct in a business costs of building the readership of a newspaper, magazine, newsletter or other periodical, costs of exploring for or developing a mine, or costs of drilling an oil, gas or geothermal well?"
       expr:
         op: input
-        source: "Do you (or, on a joint return, your spouse) deduct in a business costs of building the readership of a newspaper, magazine or newsletter, costs of exploring for or developing a mine, or costs of drilling an oil, gas or geothermal well?"
+        source: "Do you (or, on a joint return, your spouse) deduct in a business costs of building the readership of a newspaper, magazine, newsletter or other periodical, costs of exploring for or developing a mine, or costs of drilling an oil, gas or geothermal well?"
       cite:
         doc: i6251
         locator: 'p. 7, Line 2o—Circulation Costs, "Circulation costs (expenditures to establish, maintain, or increase the circulation of a newspaper, magazine, or other periodical) deducted in full for the regular tax"; p. 7, Line 2q—Mining Costs, "Mining exploration and development costs deducted in full for the regular tax"; p. 7, Line 2t—Intangible Drilling Costs (IDCs), "IDCs from oil, gas, and geothermal wells are a preference"'

@@ -639,6 +639,67 @@ def extend_year_enums(text, f, t):
     return out, done
 
 
+def enum_typed_ids(nodes, names):
+    """Each id in `nodes` (parsed definitions, walked whole) whose type is Enum(<name>) for a name in `names`,
+    with that name."""
+    out, stack = {}, list(nodes)
+    while stack:
+        n = stack.pop()
+        if isinstance(n, dict):
+            m = re.fullmatch(r"Enum\((\w+)\)", str(n.get("type", "")))
+            if m and m.group(1) in names and isinstance(n.get("id"), str):
+                out[n["id"]] = m.group(1)
+            stack.extend(n.values())
+        elif isinstance(n, list):
+            stack.extend(n)
+    return out
+
+
+def extend_year_labels(bank_text, typed, before, f, t):
+    """The question bank's text with y<t>: '<t>' labelled first (the labels run newest first) in the value_labels
+    of every question whose input is typed by an enum adoption extended with the year (`typed`: input id -> enum,
+    from enum_typed_ids; `before`: enum -> its from-year values), and the inputs labelled. Each such question's
+    labels must be exactly the enum's from-year values, each labelled with its own year, newest first: otherwise
+    the rule does not apply and it is an error."""
+    bank = ((yaml.safe_load(bank_text) or {}).get("bank") or {}).get("questions") or []
+    lines = bank_text.split("\n")
+    done = []
+    for q in bank:
+        name = typed.get(q.get("input"))
+        if name is None or not q.get("value_labels"):
+            continue
+        labels = q["value_labels"]
+        if sorted(labels) != sorted(before[name]) or any(labels[k] != k[1:] for k in labels) or next(iter(labels)) != f"y{f}":
+            raise ValueError(f"question {q['input']}: its value_labels are not the {name} years each labelled by its "
+                             f"year, newest (y{f}) first; label y{t} by hand")
+        i = next(i for i, l in enumerate(lines) if re.match(rf"^\s*- input: {re.escape(q['input'])}\s*$", l))
+        j = next(j for j in range(i + 1, len(lines)) if re.match(r"^\s+value_labels:\s*$", lines[j]))
+        m = re.match(rf"^(\s+)y{f}: '{f}'\s*$", lines[j + 1])
+        if not m:
+            raise ValueError(f"question {q['input']}: value_labels does not open with y{f}: '{f}' on its own line")
+        lines.insert(j + 1, f"{m.group(1)}y{t}: '{t}'")
+        done.append(q["input"])
+    out = "\n".join(lines)
+    after = {q.get("input"): q.get("value_labels") for q in ((yaml.safe_load(out) or {}).get("bank") or {}).get("questions") or []}
+    for inp in done:  # the edit is the declared one: the labels gain y<t> first and nothing else changes
+        assert list(after[inp]) == [f"y{t}"] + list(next(q for q in bank if q.get("input") == inp)["value_labels"]), inp
+    return out, done
+
+
+def year_enum_rules(params_text, forms_dir, bank_text, f, t):
+    """The year-valued enums extended (extend_year_enums) and the questions asking them labelled
+    (extend_year_labels): (params text, enums extended, bank text, inputs labelled). Raises ValueError where a rule
+    does not apply."""
+    text, extended = extend_year_enums(params_text, f, t)
+    if not extended or not bank_text:
+        return text, extended, bank_text, []
+    before = {n: yaml.safe_load(params_text)["params"]["enums"][n]["values"] for n in extended}
+    typed = enum_typed_ids([yaml.safe_load(q.read_text(encoding="utf-8")) for q in sorted(Path(forms_dir).glob("*.yaml"))],
+                           set(extended))
+    btext, labelled = extend_year_labels(bank_text, typed, before, f, t)
+    return text, extended, btext, labelled
+
+
 def extend_recovery_year(text, f, t):
     """The recovery_year table's text re-derived for year t: each row's value is t less the year placed in service,
     plus 1 (year 1 is the year placed in service), a row for y<t> is added before the first, and the year in the
@@ -667,6 +728,38 @@ def extend_recovery_year(text, f, t):
     return "\n".join(lines)
 
 
+def definition_files(pairs):
+    """The (source, copy) file pairs of the from-year definitions: a directory pair gives every .yaml file under it
+    (subdirectories included, at the same relative path, as year_changes.year_tree reads them), a file pair itself."""
+    files = []
+    for src, dst in pairs:
+        if src.is_dir():
+            files += [(p, dst / p.relative_to(src)) for p in sorted(src.rglob("*.yaml"))]
+        elif src.exists():
+            files.append((src, dst))
+    return files
+
+
+def unplanned_definitions(files, tree, interview_src):
+    """The files the year operations read in the from-year tree (year_changes.Tree) that `files` does not copy:
+    adoption would then fail on them half done, so it refuses first."""
+    planned = {p for p, _ in files}
+    read = [d["path"] for d in tree.forms.values()] + [interview_src / rel for rel in tree.others]
+    read += [tree.bank_path] if tree.bank_text else []
+    return sorted(str(p) for p in read if Path(p) not in planned)
+
+
+def copy_definitions(files, f, t):
+    """Write each planned copy (definition_files) with the year replaced where it names the tax year."""
+    def convert(text):
+        text = re.sub(rf"(?m)^(\s*tax_year:\s*){f}\b", rf"\g<1>{t}", text)
+        return re.sub(rf"\((?:Rev\. )?{f}\)", f"({t})", text)
+
+    for p, q in files:
+        q.parent.mkdir(parents=True, exist_ok=True)
+        q.write_text(convert(p.read_text(encoding="utf-8")), encoding="utf-8")
+
+
 def adopt(from_year, to_year):
     """Copy the from-year definitions to the to-year (refusing to overwrite), with the
     year replaced where it names the year, and relocate their pages."""
@@ -681,35 +774,41 @@ def adopt(from_year, to_year):
     if not (ypath("sources", t) / "manifest.json").exists():
         sys.exit(f"adopt: archive the {t} sources first (tools/fetch_sources.py --year {t} --fetch)")
     import year_changes
-    if year_changes.check(f, adopting=True)[0]:
+    if year_changes.check(f, adopting=True, static=True)[0]:
         sys.exit(f"adopt: the operations of {ypath('changes', t).relative_to(ROOT)} do not all apply to the {f} "
-                 "definitions (above); mend them first")
+                 "definitions, or the tree they produce fails the engine's static checks (above); mend them first")
 
-    def convert(text):
-        text = re.sub(rf"(?m)^(\s*tax_year:\s*){f}\b", rf"\g<1>{t}", text)
-        return re.sub(rf"\((?:Rev\. )?{f}\)", f"({t})", text)
-
+    files = definition_files(pairs)
+    missed = unplanned_definitions(files, year_changes.year_tree(f), jurisdiction.interview_dir(f))
+    if missed:
+        sys.exit(f"adopt: the year operations read {len(missed)} file(s) the copy would leave out: " + ", ".join(missed[:5]))
+    params_f, bank_f = jurisdiction.params_file(f), jurisdiction.interview_dir(f) / "questions.yaml"
+    try:  # the rules by year, tried on the from-year texts so a refusal leaves nothing half written
+        year_enum_rules(params_f.read_text(encoding="utf-8") if params_f.exists() else "params: {}", ypath("forms", f),
+                        bank_f.read_text(encoding="utf-8") if bank_f.exists() else "", f, t)
+    except ValueError as e:
+        sys.exit(f"adopt: {e}")
     for src, dst in pairs:
         if src.is_dir():
             dst.mkdir(parents=True)
-            for p in sorted(src.glob("*.yaml")):
-                (dst / p.name).write_text(convert(p.read_text(encoding="utf-8")), encoding="utf-8")
-        elif src.exists():
-            dst.write_text(convert(src.read_text(encoding="utf-8")), encoding="utf-8")
+    copy_definitions(files, f, t)
     # Year-valued enums and the table derived from them move by rule, not by judgment.
     params_t = jurisdiction.params_file(t)
     if params_t.exists():
-        text, extended = extend_year_enums(params_t.read_text(encoding="utf-8"), f, t)
+        bank_t = jurisdiction.interview_dir(t) / "questions.yaml"
+        text, extended, btext, labelled = year_enum_rules(params_t.read_text(encoding="utf-8"), ypath("forms", t),
+                                                          bank_t.read_text(encoding="utf-8") if bank_t.exists() else "", f, t)
         params_t.write_text(text, encoding="utf-8")
         if extended:
             print(f"adopt: enums extended by y{t}: {', '.join(extended)}")
+        if labelled:
+            bank_t.write_text(btext, encoding="utf-8")
+            print(f"adopt: y{t} labelled in the value_labels of {', '.join(labelled)}")
     recovery = ypath("tables", t) / f"{RECOVERY_TABLE}.yaml"
     if recovery.exists():
         recovery.write_text(extend_recovery_year(recovery.read_text(encoding="utf-8"), f, t), encoding="utf-8")
         print(f"adopt: {RECOVERY_TABLE} re-derived for {t}, with a row for y{t}")
     carried = carry_reviews(f, t) + carry_contracts(f, t)
-    files = [(p, dst / p.name) for src, dst in pairs if src.is_dir() for p in sorted(src.glob("*.yaml"))]
-    files += [(src, dst) for src, dst in pairs if src.is_file()]
     literals = year_literal_report(files, f, t, jurisdiction.params_file(f))
     (ypath("reports", t)).mkdir(parents=True, exist_ok=True)
     (ypath("reports", t) / f"year_literals_from_{f}.json").write_text(json.dumps(literals, indent=1, ensure_ascii=False) + "\n")
@@ -841,21 +940,22 @@ def carry_self_test():
                 bad.append("copied over an existing to-year file")
         finally:
             ROOT, ypath = saved
-        # A carried baseline entry holds where adoption only moved the year's marks, and comes due on any other change.
+        # A carried baseline entry holds where adoptions only moved the year's marks, however many, and comes due on any
+        # other change.
         import baseline_check as B
         line = lambda year, text: {"id": "x.l", "cite": {"tax_year": year, "locator": f"Form X ({year}), line 1"}, "text": text}
         finding = lambda year, text: {"kind": "k", "line": "x.l", "form": "x", "detail": "d", "subject": B.line_subject(line(year, text))}
-        rulings = Path(tmp) / "baseline" / "2026" / "k.json"
-        rulings.parent.mkdir(parents=True)
-        rulings.write_text(json.dumps({"rulings": {}, "baseline": {"k:x.l": B.subject_hash(finding(2025, "a"), {})}}))
         import contextlib, io
-        with contextlib.redirect_stdout(io.StringIO()):
-            held = B.run("k", [], [finding(2026, "a")], rulings, Path(tmp) / "r.md", "t", "l")
-            due = B.run("k", [], [finding(2026, "b")], rulings, Path(tmp) / "r.md", "t", "l")
-            twice = B.run("k", [], [finding(2027, "a")], rulings, Path(tmp) / "r.md", "t", "l")
-        if (held, due, twice) != (0, 1, 1):
-            bad.append(f"carried baseline entry: year marks moved {held}, text changed {due}, two years moved {twice} "
-                       "(want 0, 1, 1)")
+        outcomes = []
+        for year, text in ((2026, "a"), (2026, "b"), (2027, "a"), (2027, "b"), (2025 + B.YEARS_BACK + 1, "a")):
+            rulings = Path(tmp) / "baseline" / str(year) / "k.json"
+            rulings.parent.mkdir(parents=True, exist_ok=True)
+            rulings.write_text(json.dumps({"rulings": {}, "baseline": {"k:x.l": B.subject_hash(finding(2025, "a"), {})}}))
+            with contextlib.redirect_stdout(io.StringIO()):
+                outcomes.append(B.run("k", [], [finding(year, text)], rulings, Path(tmp) / "r.md", "t", "l"))
+        if outcomes != [0, 1, 0, 1, 1]:
+            bad.append(f"carried baseline entry: year marks moved one year, text changed, marks moved two years, two "
+                       f"years and text changed, beyond YEARS_BACK: {outcomes} (want 0, 1, 0, 1, 1)")
     print("year-diff self-test: adoption carries review rulings, baselines, twin declarations and contract banks: "
           + ("as expected" if not bad else "WRONG: " + "; ".join(bad)))
     return 1 if bad else 0
@@ -1032,6 +1132,7 @@ def self_test_literals():
 
 
 def self_test_year_rules():
+    import tempfile
     params = ("params:\n  tax_year: 2025\n  values: {}\n  enums:\n    placed_year:\n      values: [y2024, y2025]\n"
               "      extends_with_year: true\n      cite: {doc: p946, locator: p. 39}\n"
               "    quarter:\n      values: [q1, y2025]\n      cite: {doc: p946, locator: p. 41}\n")
@@ -1058,7 +1159,52 @@ def self_test_year_rules():
         pass
     print("year-diff self-test: adoption extends enums declared extends_with_year and re-derives recovery_year "
           "(a from-year row off the rule refused): " + ("as expected" if ok else f"WRONG\n{text}\n{out}"))
-    return 0 if ok else 1
+    status = 0 if ok else 1
+    # The questions asking an extended enum gain the year's label, first; a question with other labels is refused.
+    form = {"form": {"id": "x", "lines": [{"id": "x.placed", "type": "Enum(placed_year)"}, {"id": "x.q", "type": "Enum(quarter)"}]}}
+    bank = ("bank:\n  questions:\n  - input: x.q\n    value_labels:\n      q1: 'Q1'\n      y2025: '2025'\n"
+            "  - input: x.placed\n    order: 1\n    value_labels:\n      y2025: '2025'\n      y2024: '2024'\n  - input: x.other\n")
+    with tempfile.TemporaryDirectory() as tmp:
+        (Path(tmp) / "x.yaml").write_text(yaml.safe_dump(form))
+        _, ext, btext, labelled = year_enum_rules(params, tmp, bank, 2025, 2026)
+        qs = {q["input"]: q.get("value_labels") for q in yaml.safe_load(btext)["bank"]["questions"]}
+        ok = labelled == ["x.placed"] and list(qs["x.placed"].items()) == [("y2026", "2026"), ("y2025", "2025"), ("y2024", "2024")]
+        ok = ok and qs["x.q"] == {"q1": "Q1", "y2025": "2025"} and btext.replace("      y2026: '2026'\n", "", 1) == bank
+        for wrong in (bank.replace("y2024: '2024'", "y2024: 'last year'"), bank.replace("      y2024: '2024'\n", "")):
+            try:
+                year_enum_rules(params, tmp, wrong, 2025, 2026)
+                ok = False
+            except ValueError:
+                pass
+    print("year-diff self-test: adoption labels the extended year in the value_labels of the questions asking that enum "
+          "(other questions untouched; labels off the rule refused): " + ("as expected" if ok else f"WRONG\n{btext}"))
+    status = status or (0 if ok else 1)
+    # Adoption copies every definition file the year operations read, subdirectories of interview/<year>/ included.
+    import year_changes
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        for rel, body in (("forms/2025/x.yaml", "form:\n  id: x\n  tax_year: 2025\n  lines: []\n"),
+                          ("interview/2025/questions.yaml", "bank:\n  questions: []\n"),
+                          ("interview/2025/full.yaml", "interview:\n  questions: []\n"),
+                          ("interview/2025/coverage/c.yaml", "cover: (2025)\n"),
+                          ("interview/2025/personas/p/q.yaml", "interview:\n  tax_year: 2025\n  questions: []\n")):
+            (root / rel).parent.mkdir(parents=True, exist_ok=True)
+            (root / rel).write_text(body)
+        pairs = [(root / "forms/2025", root / "forms/2026"), (root / "interview/2025", root / "interview/2026")]
+        files = definition_files(pairs)
+        tree = year_changes.Tree(root / "forms/2025", root / "interview/2025", root / "params.yaml")
+        missed = unplanned_definitions(files, tree, root / "interview/2025")
+        shallow = [(p, q) for p, q in files if p.parent.name in ("2025",)]
+        refused = unplanned_definitions(shallow, tree, root / "interview/2025")
+        copy_definitions(files, 2025, 2026)
+        got = sorted(str(p.relative_to(root)) for p in (root / "interview/2026").rglob("*.yaml"))
+        ok = (not missed and len(refused) == 2 and got == ["interview/2026/coverage/c.yaml", "interview/2026/full.yaml",
+              "interview/2026/personas/p/q.yaml", "interview/2026/questions.yaml"]
+              and (root / "interview/2026/coverage/c.yaml").read_text() == "cover: (2026)\n"
+              and "tax_year: 2026" in (root / "interview/2026/personas/p/q.yaml").read_text())
+    print("year-diff self-test: adoption copies the interview subdirectories (a copy of the top level only refused "
+          "before anything is written): " + ("as expected" if ok else f"WRONG: missed {missed}, refused {refused}, copied {got}"))
+    return status or (0 if ok else 1)
 
 
 def main():

@@ -75,6 +75,60 @@
    }
   },
   {
+   "printed": "10",
+   "project_expr_sha256": "4e8491d227a028c961f42327ed0ba4544d2d8c58d075246cea733e1ec1fd4ec6",
+   "second_expr_sha256": "89773736f2cd85ca2d9c486d0e80e0cc422f3e72f56aa642a456f1fe674ff5df",
+   "ruling": "Ruling: model error; amb.2025.rental_direct_expenses (chosen: advertising and commissions taken whole, every other line divided; p527 p. 31, Worksheet 5-1 Line 2d, and p. 25, Dividing Expenses). The reply takes this line whole on a unit with personal use; the project divides it by rental days over days of use (mrental.rental.shared_costs_divided: $760.00 divided vs $800.00 whole). The rest are partial records the reply hides (executable triage .transcription/triage/2025/rental.json: 2626 of 2666 agree; completed: 1 value, 3 project-unknown). Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "4e5acfc2c7432fa43f9005e288d76d28d48bcd7ebbbd0a71172d0d727900ce79",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:mrental.rental.shared_costs_divided@rental[a]",
+     "partial:mrental.f8582.part5_income_and_loss-rental[a].personal_any@rental[a]",
+     "partial:mrental.f8582.part5_income_and_loss-rental[b].personal_any@rental[b]",
+     "partial:mrental.f8582.part5_income_and_loss-rental[c].personal_any@rental[c]",
+     "partial:mrental.f8582.loss_over_25000-rental[a].personal_any@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "11",
+   "project_expr_sha256": "9a606bb81240900fd839fa85e2306ea830e063ccfcfba2d62c27d72a80fbf3ed",
+   "second_expr_sha256": "2df46a222dac8033cabd95be18761464a098c18cf22a5d2a5ccbe9936e97adf8",
+   "ruling": "Ruling: model error; amb.2025.rental_direct_expenses (chosen: advertising and commissions taken whole, every other line divided; p527 p. 31, Worksheet 5-1 Line 2d, and p. 25, Dividing Expenses). The reply takes this line whole on a unit with personal use; the project divides it by rental days over days of use (rj.rental.rental_only_costs_whole_with_personal_use: $720.00 divided vs $800.00 whole). The rest are partial records the reply hides (executable triage .transcription/triage/2025/rental.json: 2626 of 2666 agree; completed: 1 value, 3 project-unknown). Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "a871fcdb75bd919c74f2e6a890e55d98f39406d96f43f864f45193e93437bc0e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:rj.rental.rental_only_costs_whole_with_personal_use@rental[a]",
+     "partial:mrental.f8582.part5_income_and_loss-rental[a].personal_any@rental[a]",
+     "partial:mrental.f8582.part5_income_and_loss-rental[b].personal_any@rental[b]",
+     "partial:mrental.f8582.part5_income_and_loss-rental[c].personal_any@rental[c]",
+     "partial:mrental.f8582.loss_over_25000-rental[a].personal_any@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "11",
    "project_expr_sha256": "9a606bb81240900fd839fa85e2306ea830e063ccfcfba2d62c27d72a80fbf3ed",
    "second_expr_sha256": "3c88228f67bc2179df846a5a82b8399550e20b722f058841973b8ea81b8b88b4",
@@ -229,6 +283,121 @@
    }
   },
   {
+   "printed": "12",
+   "project_expr_sha256": "bf3a25124c426a9ea654987a190053ab813f4cf9d7b566c96e270139fc5ed23a",
+   "second_expr_sha256": "f2decc9e5fd0b340f5b120ea22e0d180c6deffe41843a880046e565d6019dd88",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 25, Dividing Expenses, \"divide your expenses between the rental use and the personal use based on the number of days used for each purpose\"). The reply divides by the same fraction at four places; on completed returns the only value differences are that rounding (x1sche.f8.personal_use_not_home $11,428.57 vs $11,428.80); the rest are partial records the reply hides behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2535 of 2666 agree; completed: 1 value, 3 project-unknown). Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "eea84d69db62bdc8f169071e56727cfea8e63387d567f1107a647d199766163c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "fixture:xsa.rental_then_home_june@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.s1.14-rental[a].part_home@rental[a]",
+     "partial:classm.sche.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_mortgage@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].days_fair@rental[a]",
+     "partial:xsa.rental_then_home_june-rental[a].kind@rental[a]",
+     "partial:xsa.rental_then_home_june-rental[a].rents@rental[a]",
+     "partial:xsa.rental_then_home_june-rental[a].has_insurance@rental[a]",
+     "partial:xsa.rental_then_home_june-rental[a].amt9@rental[a]",
+     "partial:bfr.rental.mortgage_excess_refused-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "12",
+   "project_expr_sha256": "bf3a25124c426a9ea654987a190053ab813f4cf9d7b566c96e270139fc5ed23a",
+   "second_expr_sha256": "f586e321bc31fa9dbe4c6698bb96c4f4f588398209b069538d3bb3f4493bb464",
+   "ruling": "Ruling: representation; i1040se p. 7, Line 12. On completed returns the only differences are a partial record where the reply reads rental.part_home ungated (candidate-unknown) and one where the project waits on the unanswered tick rental.has_mortgage; no completed value differs (executable triage .transcription/triage/2025/rental.json: 2582 of 2666 agree). Project stands.",
+   "context": "06be7a635446b33b163140e5e6835cba33f74015b2fc211473a34bee08017ec0",
+   "date": "2026-11-22",
+   "run": "1d1a1273a302345d7124a9e0fa50bc37391c55655ea2c08c2a29b2e220a3bac2",
+   "subject_key": "42afb4ee392d1883c574e657a92f77305047c394ff1fb2b4ecb5a8e9c46de606",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.s1.14-rental[a].part_home@rental[a]",
+     "partial:classm.sche.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_mortgage@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "13",
+   "project_expr_sha256": "576521f9ca434915a0df8e6f475ce1ad3f67d95f7536383347734eb6b08fed49",
+   "second_expr_sha256": "3501a612e59dc9e6c48f4b47554b0c24a3599bc0d4ea1115d7301308c91c0e4c",
+   "ruling": "Ruling: representation; p527 p. 25, Dividing Expenses. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2579 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "924fe0be5ac1791cb1e673d3076cdc2806244bc4924e0c3f30038efe68b37675",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.royalty.2.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.s1.14-rental[a].part_home@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_other_interest@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "13",
    "project_expr_sha256": "576521f9ca434915a0df8e6f475ce1ad3f67d95f7536383347734eb6b08fed49",
    "second_expr_sha256": "3ba285bfc321f497907634e7c3f1254d5b91846a5792dc76c06f99b3440b7f53",
@@ -319,6 +488,42 @@
      "partial:x1sche.f4.two_properties-rental[a].personal_any@rental[a]",
      "partial:x1sche.f4.two_properties-rental[b].personal_any@rental[b]",
      "partial:x1sche.f10.part5-rental[a].personal_any@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14",
+   "project_expr_sha256": "13d2506ff68eff29abf564004af0b35ab5b6b0a3c6429e7631211cf69b6212e7",
+   "second_expr_sha256": "35fb93013ae82bb183a1426f23163c05b0f1966bd4e7ed3a40f0e17d5015e584",
+   "ruling": "Ruling: representation; p527 p. 25, Dividing Expenses. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2579 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "95f9d41ee03a0d6a0b36c4dcc55a2d46a45fc9bdbdaed3cce3ea2ff43a50a859",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.royalty.2.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.s1.14-rental[a].part_home@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_repairs@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].days_fair@rental[a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -439,6 +644,42 @@
    }
   },
   {
+   "printed": "15",
+   "project_expr_sha256": "8c7ec1f70442ed6fd027431d9950c52aca112c8c283fb507fa58d584c1d357f9",
+   "second_expr_sha256": "fab69c9305ed37febcb4b2eb513277ff04b64600cfe0de7d0ea79094515d9f29",
+   "ruling": "Ruling: representation; p527 p. 25, Dividing Expenses. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2579 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "488254fcea8341863b10a948750dea63d1ed31f96b23ec2ce3efda31f267041e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.royalty.2.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.s1.14-rental[a].part_home@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_supplies@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "16",
    "project_expr_sha256": "6a9428d142861314cd3509d1fc848e8dc61f0793e4c1c994ea727db873ad4fbc",
    "second_expr_sha256": "67ad186e7961f4fb7b5820218faf404fc99c241c86e5ef613f53214f6303c4b8",
@@ -497,6 +738,51 @@
      "partial:x1sche.f4.two_properties-rental[b].personal_any@rental[b]",
      "partial:x1sche.f10.part5-rental[a].personal_any@rental[a]",
      "partial:x1sche.f14.two_losses_phaseout-rental[a].personal_any@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "6a9428d142861314cd3509d1fc848e8dc61f0793e4c1c994ea727db873ad4fbc",
+   "second_expr_sha256": "d6ccc1ec4dd39771a077dd0397bfeb09920d1758133845bbdef1446282d593ec",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 25, Dividing Expenses, \"divide your expenses between the rental use and the personal use based on the number of days used for each purpose\"). The reply divides by the same fraction at four places; on completed returns the only value differences are that rounding (x1sche.f8 $2,857.14 vs $2,857.20, x1sche.f16 $3,000.00 vs $2,999.96, x1sche.f17 $2,000.00 vs $2,000.02); the rest are partial records the reply hides behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2528 of 2666 agree; completed: 22 value, all the three rounding fixtures and their partials, 1 candidate-hides-shown, 3 project-unknown). Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "c272adeb5351f05a2b17cf5aee5e100b1f13748ff8c5f1db091d65e74a687f02",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:x1sche.f16.home_test_edges@rental[a]",
+     "fixture:x1sche.f17.home_tenth_edge@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "fixture:mrental.rental.excluded_home_with_costs@rental[a]",
+     "fixture:mrental.rental.home_15_days_totals_refused@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.royalty.2.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.s1.14-rental[a].part_home@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].days_fair@rental[a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -603,6 +889,44 @@
    }
   },
   {
+   "printed": "17",
+   "project_expr_sha256": "7b61257cf2021108f203335b8046dc58882d14f14c2d8894d72956fd1d8e137e",
+   "second_expr_sha256": "e9932b830475db2c9596c00fa4236285fd47cd190db55fa2e2b185d84ec96071",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 25, Dividing Expenses, \"divide your expenses between the rental use and the personal use based on the number of days used for each purpose\"). The reply divides by the same fraction at four places; on completed returns the only value differences are that rounding (x1sche.f8.personal_use_not_home $2,000.00 vs $2,000.04); the rest are partial records the reply hides behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2578 of 2666 agree; completed: 1 value, 3 project-unknown). Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "eba990d54cacd90e9cc504acc328d3c50c98468f7311279c6f3113f75734a1de",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.royalty.2.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.s1.14-rental[a].part_home@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_utilities@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "18",
    "project_expr_sha256": "3bd6438e8c37bb8ddc5338ed2f5e38fcdf4960e2bee42900df152c6d281541c8",
    "second_expr_sha256": "0dd7b042261c6424c9ecda391899d9434ba75cddcc9a31ea9c3acf05635a4736",
@@ -693,6 +1017,76 @@
    }
   },
   {
+   "printed": "18",
+   "project_expr_sha256": "3bd6438e8c37bb8ddc5338ed2f5e38fcdf4960e2bee42900df152c6d281541c8",
+   "second_expr_sha256": "d55acd08fbc8a98f8250693273ba34cd6adbcbe7616fadaf5acd7e91d299be73",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 25, Dividing Expenses, \"divide your expenses between the rental use and the personal use based on the number of days used for each purpose\"). The reply divides by the same fraction at four places; on completed returns the only value differences are that rounding (x1sche.f8 $7,618.29 vs $7,618.44); the rest are partial records the reply hides behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2514 of 2666 agree; completed: 1 value, 1 candidate-hides-shown (mrental.rental.excluded_home_with_costs, an excluded home whose line 18 no Schedule E line reads: line 21 is zero for an excluded property)). Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "db904949202688975b84d159127daff769ce5e73f56f4e66db08ef34f63b2c4a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:x1sche.r4.vehicle@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "fixture:mrental.rental.excluded_home_with_costs@rental[a]",
+     "fixture:mrental.rental.refusals_tenth_profit_depletion@rental[c]",
+     "partial:classm.f8582.1.deepseek-rental[a].depletion@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].vehicle@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].depletion@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[b].vehicle@rental[b]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "19",
+   "project_expr_sha256": "a97a9104da0de8520f7a09d97593a11547c640c659f59ce2679b8e6120fce945",
+   "second_expr_sha256": "0c2117b13b91cfb80dad9572ec5ee18b29eaf5e39605da1ad9041516ccd302f7",
+   "ruling": "Ruling: representation; i1040se p. 7, Line 19. The only completed differences are partial records where the reply reads rental.part_home and rental.vehicle ungated, or the project waits on the unanswered tick rental.has_other; no value differs (executable triage .transcription/triage/2025/rental.json: 2549 of 2666 agree). Project stands.",
+   "context": "06be7a635446b33b163140e5e6835cba33f74015b2fc211473a34bee08017ec0",
+   "date": "2026-11-22",
+   "run": "1d1a1273a302345d7124a9e0fa50bc37391c55655ea2c08c2a29b2e220a3bac2",
+   "subject_key": "e91369720574c6121ee583ab3529e9f2dd69c257de22a733837d2b75d1701d20",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x1sche.r4.vehicle@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].vehicle@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[b].vehicle@rental[b]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].vehicle@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_other@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "19",
    "project_expr_sha256": "a97a9104da0de8520f7a09d97593a11547c640c659f59ce2679b8e6120fce945",
    "second_expr_sha256": "5ff455d93c1268b614ea945dbd6d22c78971fc37b031e08f29da9ce1a9bd3c41",
@@ -717,6 +1111,43 @@
      "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
      "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
      "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "19",
+   "project_expr_sha256": "a97a9104da0de8520f7a09d97593a11547c640c659f59ce2679b8e6120fce945",
+   "second_expr_sha256": "80ce13049220f5467d10406a4011aaae6d16035fd53f29bdca5960a503046ed5",
+   "ruling": "Ruling: representation; p527 p. 25, Dividing Expenses; the reply does not carry the bought-leasehold refusal on line 19, which the project refuses (BUG-0992). The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2579 of 2666 agree; completed: 4 project-unknown partials, among them rental.bought_lease withheld). No completed return's value differs. Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "ec734bbb2ec6f36ad61bd64d3a2c15a912b606deac1eeac70ea8417b6a4ed799",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.s1.14-rental[a].part_home@rental[a]",
+     "partial:classm.sche.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_other@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].bought_lease@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].days_fair@rental[a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -766,51 +1197,44 @@
    "printed": "21",
    "project_expr_sha256": "c012fc53dabe4c444eeddd669c74c0f83cd889b3c2ade2cdbbb1f4e1045cec19",
    "second_expr_sha256": "6fa2c0eaad03e95d756bd97d3a9d2a29a9ac2053059cb871de5621640a450146",
-   "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"do not report the rental income and do not deduct any rental expenses\". No value differs but by the use-ratio rounding (amb.2025.rental_use_ratio_places); the other differences are refusals and unknowns on refused or incomplete returns. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1002 of 1221 comparisons agree, 874 of 973 in scope; completed {\"value\": 19}. Project stands.",
-   "context": "b6de3627e316883145b97c5b6443ef7fd88012019e6f90f39d27cff1fb332b05",
-   "date": "2026-11-17",
-   "run": "c3517064c50c1446082123fd2f4e99960ea3cd73ce2614d80e997872f9c5035c",
-   "subject_key": "3353caabb1f8140620aea074a205b58514dc0f23c9e8e0f27551a8b13980d1fd",
+   "ruling": "Ruling: representation; i1040se p. 7, Line 21. The 17 completed differences are candidate-unknown: the reply reads rental.not_at_risk (or part_home) where the project asks it only of a loss (rental.not_at_risk_if_loss) or refuses earlier; no completed value differs (executable triage .transcription/triage/2025/rental.json: 2288 of 2666 agree). Project stands.",
+   "context": "06be7a635446b33b163140e5e6835cba33f74015b2fc211473a34bee08017ec0",
+   "date": "2026-11-22",
+   "run": "1d1a1273a302345d7124a9e0fa50bc37391c55655ea2c08c2a29b2e220a3bac2",
+   "subject_key": "5e6fc37598eb48dfe59609f2bd5c3a8ddc1d44e1d198791120cdec817211e313",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
      "candidate-unknown",
      "project-refuses",
-     "project-unknown",
-     "value"
+     "project-unknown"
     ],
     "witnesses": [
-     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
-     "fixture:x1sche.f16.home_test_edges@rental[a]",
-     "fixture:x1sche.f17.home_tenth_edge@rental[a]",
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
      "fixture:x1sche.f18.home_refused@rental[a]",
      "fixture:x1sche.f19.overlap_days@rental[a]",
      "fixture:x1sche.f20.exactly_15_days@rental[a]",
      "fixture:x1sche.r1.short_stay@rental[a]",
+     "fixture:x1sche.r2.services@rental[a]",
      "fixture:x1sche.r3.self_rental@rental[a]",
-     "fixture:x1sche.r4.vehicle@rental[a]",
      "fixture:x1sche.r6.not_at_risk@rental[a]",
-     "fixture:mrental.rental.shared_costs_divided@rental[a]",
-     "fixture:rj.rental.rental_only_costs_whole_with_personal_use@rental[a]",
-     "partial:classm.s1.14-rental[a].kind@rental[a]",
-     "partial:classm.s1.14-rental[a].short_stays@rental[a]",
-     "partial:classm.s1.14-rental[a].under_tenth@rental[a]",
-     "partial:classm.s1.14-rental[a].vehicle@rental[a]",
-     "partial:classm.sche.1-rental[a].kind@rental[a]",
-     "partial:classm.sche.1-rental[a].short_stays@rental[a]",
-     "partial:classm.rental.3-rental[a].not_at_risk@rental[a]",
-     "partial:mint.eic.step2_other.schedule_e_low_income-rental[a].not_at_risk@rental[a]",
-     "partial:mrental.f8582.loss_one_cent_over_25000-rental[a].not_at_risk@rental[a]",
-     "partial:mint.f8962.show_applicable.no_1095a-rental[a].not_at_risk@rental[a]",
-     "partial:x1sche.f4.two_properties-rental[b].not_at_risk@rental[b]",
-     "partial:x1sche.f10.part5-rental[a].not_at_risk@rental[a]",
-     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
-     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
-     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
-     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]",
-     "partial:x1sche.r6.not_at_risk-rental[a].days_personal@rental[a]",
-     "partial:rj.rental.rental_only_costs_whole_with_personal_use-rental[a].stay7@rental[a]"
+     "fixture:mrental.rental.excluded_home_with_costs@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].kind@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].kind@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[a].short_stays@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].services@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].under_tenth@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].not_for_profit@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].not_at_risk@rental[a]",
+     "partial:mrental.f8582.part5_income_and_loss-rental[a].not_at_risk@rental[a]",
+     "partial:mrental.f8582.part5_income_and_loss-rental[c].not_at_risk@rental[c]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].short_stays@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].services@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].under_tenth@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].not_for_profit@rental[a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -893,6 +1317,57 @@
   },
   {
    "printed": "22",
+   "project_expr_sha256": "d0c28a42bd8da7e00b2cd86405c748f3bfdf9ae178d865d9aa7a201ed0b2e310",
+   "second_expr_sha256": "89ed6779cf995267c4585e2f817c8b603e53135914e4f4658065229e01304be2",
+   "ruling": "Ruling: model error; i8582 p. 13, Part VIII, \"Use Part VIII for any activity listed in Part VII\" (BUG-0934, owner-approved 2026-11-22). The reply takes line 22 from Part VIII column (c), which is zero for a loss not listed in Part VII, so a fully allowed loss becomes 0 (classm.rental.4, mrental.f8582.part5_income_and_loss, x1sche.f13.part4_and_part5: -$6,000.00 vs $0); the project's line 22 is the loss with its prior-year unallowed loss less the Part VII unallowed loss (rental.loss_after_p7), confirmed by those hand-predicted fixtures. The rest are the use-ratio rounding (x1sche.f8) and refused or partial records. executable triage .transcription/triage/2025/rental.json: 2255 of 2666 agree. Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "eaaacd957b1a611ad7cdd09050d892d007a22a21c9e6042512fb9625e2e50abd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:classm.rental.4@rental[a]",
+     "fixture:mrental.f8582.part5_income_and_loss@rental[a]",
+     "fixture:mrental.f8582.magi_one_cent_over@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:x1sche.f7.royalty_magi@rental[a]",
+     "fixture:x1sche.f13.part4_and_part5@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r1.short_stay@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:mrental.rental.excluded_home_beside_a_loss@rental[a]",
+     "fixture:mf.sche.accrual_refused@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].kind@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].kind@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].kind@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[b].active@rental[b]",
+     "partial:mrental.f8582.part5_income_and_loss-rental[a].not_at_risk@rental[c]",
+     "partial:mrental.f8582.part5_income_and_loss-rental[c].not_at_risk@rental[a]",
+     "partial:x1sche.f13.part4_and_part5-rental[a].not_at_risk@rental[b]",
+     "partial:x1sche.f13.part4_and_part5-rental[b].not_at_risk@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].short_stays@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].services@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].under_tenth@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].not_for_profit@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "22",
    "project_expr_sha256": "e0f0da295d48ae3a1d81660ad692f34042fb4ab3da9d44ee3a22f3a003b566f2",
    "second_expr_sha256": "79a8ed5067851418da07003f928fc1b8f2a8830f8ff2dd160fe88019751f36e5",
    "ruling": "Ruling: representation; triage 505/596: the one completed difference is the ratio rounding (x1sche.f8 -$1,332.57 vs -$1,333.08, amb.2025.rental_use_ratio_places); the rest are project refusals (home, self-rental, rental.ws51) or the reply's refusal of a real estate professional where the project refuses at sche.re_pro, and partial records. The reply's shown_when (h_show22) hides nothing the project shows on a completed return.",
@@ -967,6 +1442,65 @@
      "partial:classm.sche.1-rental[a].not_for_profit@rental[a]",
      "partial:x1sche.r2.services-rental[a].kind@rental[a]",
      "partial:x1sche.r2.services-rental[a].rents@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
+   "project_expr_sha256": "142d7ce62642f6c3f183c4f4962508448014d0596bc16e091dd6c9a50f1c7f3e",
+   "second_expr_sha256": "54e507351591c7f1b7e4535f711960ad280517f91ca3851a6ed5da6d4e892ce8",
+   "ruling": "Ruling: representation; i1040se p. 5, Line 2. The reply reads the screens the project refuses on line 21 directly; executable triage .transcription/triage/2025/rental.json: 2563 of 2666 agree, no completed return differs (the differences are candidate-unknown and candidate-refuses on partial or refused records). Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "05d65c2cabe8f7ac0f6f72014c319f39343234d3508f2927d3548cd51f109266",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:x1sche.r2.services@rental[a]",
+     "fixture:mrental.rental.refusals_tenth_profit_depletion@rental[b]",
+     "fixture:mf.rental.held_for_sale_refused@rental[a]",
+     "fixture:mf.sche.accrual_refused@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].services@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].not_for_profit@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].held_for_sale@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].services@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[b].not_for_profit@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[b].held_for_sale@rental[b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5",
+   "project_expr_sha256": "579a57f537412c2e60ec5252b2f1669cd4e5dff5071805da153e9ef9c007f3b5",
+   "second_expr_sha256": "d6893473914f0babd45950410411c23b586341b8b929db26c0363c00845b9cf0",
+   "ruling": "Ruling: representation; p527 p. 31, Line 2d, advertising taken whole. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2647 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "e6ad9b15901b5d1489a73e34509dd5fffacb812c26f890f8ed13d41ec1a2e144",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].personal_any@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].personal_any@rental[b]",
+     "partial:classm.royalty.2.deepseek-rental[a].personal_any@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].personal_any@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].personal_any@rental[b]",
+     "partial:classm.s1.14-rental[a].personal_any@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_advertising@rental[a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1099,6 +1633,42 @@
   {
    "printed": "7",
    "project_expr_sha256": "65c433e3c1d81ed810c80c5b08c2fa4b917b24c24da1093241cb312df62d42f6",
+   "second_expr_sha256": "b6517e9759374043851d380996d50513f26787e35bcf68bdf79949b1c945cbee",
+   "ruling": "Ruling: representation; p527 p. 25, Dividing Expenses. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2579 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "6fa41042ba5912b6b73fdbb04f748e7d9a5e57b1e08eefd66226fcdab2a1a2f7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.royalty.2.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.s1.14-rental[a].part_home@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_cleaning@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "65c433e3c1d81ed810c80c5b08c2fa4b917b24c24da1093241cb312df62d42f6",
    "second_expr_sha256": "e1da9da911fc809eaee75de2e9f06218478ef0cbc67a43adeae7d95f7cfb07ea",
    "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Executable triage: 596/596 agree (36 fixtures, 560 partial records; no generated return reaches a rental entry), as no compared case has a fraction that differs at the fifth place.",
    "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
@@ -1184,6 +1754,35 @@
    }
   },
   {
+   "printed": "8",
+   "project_expr_sha256": "992cf54090e07cbe47c07c83b98146ef2e6aaf7080c2b9ee92edf77420f3a0da",
+   "second_expr_sha256": "4a5d14dacbfba45177834552e36ae1bf549daa1d17ebf5f071c2f3a6ecf979ac",
+   "ruling": "Ruling: representation; p527 p. 31, Line 2d, commissions taken whole. The reply re-derives the reported (not excluded) test and the personal-use branch inside the line, where the project zeros an excluded property's lines at line 21 (rental.excluded) and gates the amount on its tick; on completed returns the only differences are partial records where the reply hides the line behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2647 of 2666 agree; completed: 3 project-unknown partials). No completed return's value differs. Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "4b878c338851bac9705b4b04cee47b91da809ae7bdc3a6f937a441cce51420ae",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].personal_any@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].personal_any@rental[b]",
+     "partial:classm.royalty.2.deepseek-rental[a].personal_any@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].personal_any@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].personal_any@rental[b]",
+     "partial:classm.s1.14-rental[a].personal_any@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_commissions@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "9",
    "project_expr_sha256": "5c7515405e6d12c475b695af9738bbb01be2136e4de1135c984c87ec28e8df90",
    "second_expr_sha256": "16c7ccb48b42067167982be3243f5dd2fbc6661ff3cdcd7120a4ec90d0181056",
@@ -1228,6 +1827,44 @@
      "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
      "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
      "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "5c7515405e6d12c475b695af9738bbb01be2136e4de1135c984c87ec28e8df90",
+   "second_expr_sha256": "2bab6795df02830eaed92007b9aa0242250a655051f38ebb9abd5aaf0d3f26bd",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 25, Dividing Expenses, \"divide your expenses between the rental use and the personal use based on the number of days used for each purpose\"). The reply divides by the same fraction at four places; on completed returns the only value differences are that rounding (x1sche.f8.personal_use_not_home $1,428.57 vs $1,428.60); the rest are partial records the reply hides behind an input the project does not need (executable triage .transcription/triage/2025/rental.json: 2578 of 2666 agree; completed: 1 value, 3 project-unknown). Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "56a70c1601146e1d4b15ffbe662145582461320da04c5442e64d6d5d53672680",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.royalty.2.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].part_home@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].part_home@rental[b]",
+     "partial:classm.s1.14-rental[a].part_home@rental[a]",
+     "partial:x1sche.f9.excluded_home-rental[a].has_insurance@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].rents@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].has_taxes@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].amt16@rental[a]",
+     "partial:xfix.r10.part_home-rental[a].days_fair@rental[a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1367,11 +2004,11 @@
    "printed": "IV/V (c)",
    "project_expr_sha256": "2c7466b0e9dc063c8ab65b9bcdabf707dd57a849612873ef571b70fc44400fc0",
    "second_expr_sha256": "dcda2b3e823b07435ef11fd0edc3a1b0e9a0cbe1bfd640b2aae66dd32c56156b",
-   "ruling": "Ruling: scope; i8582 p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json): 1212 of 1221 comparisons agree, 1211 of 1218 in scope; completed {\"project-refuses\": 1}. Project stands.",
-   "context": "b6de3627e316883145b97c5b6443ef7fd88012019e6f90f39d27cff1fb332b05",
-   "date": "2026-11-17",
-   "run": "c3517064c50c1446082123fd2f4e99960ea3cd73ce2614d80e997872f9c5035c",
-   "subject_key": "7743dcac5b9113121fb1a6bd6de333956e1ed0a065acc1cb261f04711dd37489",
+   "ruling": "Ruling: scope; i8582 p. 10, Part IV. The one completed difference, mrental.rental.excluded_home_beside_a_loss, is a return the project refuses through its cited screens; no value differs (executable triage .transcription/triage/2025/rental.json: 2595 of 2666 agree). Project stands.",
+   "context": "06be7a635446b33b163140e5e6835cba33f74015b2fc211473a34bee08017ec0",
+   "date": "2026-11-22",
+   "run": "1d1a1273a302345d7124a9e0fa50bc37391c55655ea2c08c2a29b2e220a3bac2",
+   "subject_key": "9b93fa0fafed5cf1031b30b1c28c1df27a8aea16a11e876dbb975f7d2dfef4c9",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1381,12 +2018,16 @@
     "witnesses": [
      "fixture:mrental.rental.excluded_home_beside_a_loss@rental[a]",
      "fixture:mrental.rental.prior_loss_inactive_year@rental[a]",
-     "partial:classm.s1.14-rental[a].personal_any@rental[a]",
-     "partial:classm.sche.1-rental[a].personal_any@rental[a]",
-     "partial:classm.rental.3-rental[a].personal_any@rental[a]",
-     "partial:mrental.f8582.part4_prior_loss_net_gain-rental[a].active@rental[a]",
-     "partial:mrental.f8582.part4_prior_loss_net_gain-rental[a].prior_not_active@rental[a]",
-     "partial:x1sche.f18.home_refused-rental[a].days_fair@rental[a]"
+     "partial:classm.f8582.1.deepseek-rental[b].active@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[a].personal_any@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].personal_any@rental[b]",
+     "partial:classm.royalty.2.deepseek-rental[a].personal_any@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[a].personal_any@rental[a]",
+     "partial:classm.rprop.1.deepseek-rental[b].personal_any@rental[b]",
+     "partial:mrental.rental.prior_loss_inactive_year-rental[a].kind@rental[a]",
+     "partial:mrental.rental.prior_loss_inactive_year-rental[a].rents@rental[a]",
+     "partial:mrental.rental.prior_loss_inactive_year-rental[a].has_taxes@rental[a]",
+     "partial:mrental.rental.prior_loss_inactive_year-rental[a].amt16@rental[a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1889,6 +2530,22 @@
    "date": "2026-11-17",
    "run": "c3517064c50c1446082123fd2f4e99960ea3cd73ce2614d80e997872f9c5035c",
    "subject_key": "e6ae3f26035917dffd60d3bd92fa3a4cf4884ef63d939a25498b05241077d985",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "rental.reported",
+   "project_expr_sha256": "7817cf7ae4d1b3dff5d6cc72e6105386191bd7e111b5c3d5c74a9350f499aa7a",
+   "second_expr_sha256": "4f1e0746a645c0d027be6e8cb7893d5fb58637f89e5d5e4989f910231eab00f1",
+   "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"do not report the rental income and do not deduct any rental expenses\". The reply reads rental.personal_any as a separate operand where the project folds it into the personal-day count; executable triage .transcription/triage/2025/rental.json: 2666 of 2666 comparisons agree. Project stands.",
+   "context": "0b8910a880570782cc668ffe070ca3bf121f919147cb7f2508ce3c849e72a8d4",
+   "date": "2026-11-22",
+   "run": "93fd964af9b28c060c6f01c1f565e7828b10153c921c6be8adcf3cbeff52e9be",
+   "subject_key": "9be53bd7db32029c700555be44924d4729da7a32b4810fe37b62a719aa953eac",
    "triage": {
     "verdict": "agrees on sample",
     "kinds": [],

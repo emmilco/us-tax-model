@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-17); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,10 +22,10 @@
   },
   {
    "key": "sche.any",
-   "record": "ea06768141404dc4b9528758cdd20e870b3fe9d5673844fb972a474cb9e1fe5e",
+   "record": "9a5301d7c2ad510c7f43fde62baa76a6d32c458f323e354b4897ddc542926e86",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040se p. 5: \"If you did use the unit as a home and rented the unit out for fewer than 15 days in 2025, do not report the rental income and do not deduct any rental expenses.\" The candidate counts the rentals and royalties it reads as reported (sche.h_rental_reported_count, sche.h_royalty_count); its 176 completed-return differences are the $rental roster withheld by partial records, and the project's scope.rental gate refuses those returns upstream. No value or refusal difference on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/sche.json): 2,056 of 3,117 agree. Project stands.",
-   "subject_key": "48c5132e5caf05d9c9d6fde94d842d0404f14ebcc81fbf9839b7e557f4dd907a"
+   "ruling": "Ruling: representation; i1040se p. 5, as the ruling of 2026-11-17; rerun only for scope.rental's wording (BUG-0952). executable triage (.transcription/triage/2025/sche.json, this pass): 2,145/3,191 agree; differences {\"candidate-unknown\": 1037, \"project-unknown\": 9}; on completed returns {\"candidate-unknown\": 128}; the differences are the reply unknown where it reads inputs the interview never asks; no value differs.",
+   "subject_key": "09fdfe4c043d3f9cc7b2c41f462e380f90d3c9bd05d602348421e8c775da0028"
   },
   {
    "key": "23a",
@@ -77,9 +77,9 @@
   },
   {
    "key": "26",
-   "record": "ea06768141404dc4b9528758cdd20e870b3fe9d5673844fb972a474cb9e1fe5e",
+   "record": "9a5301d7c2ad510c7f43fde62baa76a6d32c458f323e354b4897ddc542926e86",
    "status": "AGREE",
-   "subject_key": "a680ca29702a2fa0b0a86b9bd08d2da7a7bb54b97716f2e0404d4e1ecd25f731"
+   "subject_key": "6ef76298d938d5de74a6bb5f0556b80ccc63d4c1607a79cb1987b5101beec6a8"
   },
   {
    "key": "41",
@@ -99,14 +99,14 @@
   "23e": "fe896446c749b3077cb9b3e710260b1ae0300abe59635c05686ea5bf630e5bed",
   "24": "f65c4e47dd7c175f3243e99bb95c7a8f86756cc07d2b4d80827106f4a533d762",
   "25": "7192bcd2d08471534d166589776b5d69fc122d95fdaf5f14d0c80cc5e9f327eb",
-  "26": "19b5bee40740aa2441ae7c1339305c781edbc554c1d28c3b0b62c72e433ea3a7",
+  "26": "01779218385c5a427072476e500ef89996a98665e13a87bc744032b9e936ab27",
   "41": "b6afbc989a773ceb33c9679fb51a12b2cb05d802905af99447d4eea456cd0c99"
  },
  "__rest__": "5a4d6c7a20564da55dd7ba0a76a8e4cf5b3891b1517ff484715ecca4a2ca59cc",
  "foreign": {
   "sche.loss_prelimit": "76f73d926d4faefcf39b8a68145a631d7efbe3459f9049fd1a872431256bfd02",
   "sche.nonpassive_net": "037d1d84ac2ddad3fa092e9b692d8472b7af48e29bb266201189600987d37928",
-  "sche.any": "d2e3fe10096628b17c322cfb8535e0eaddd98e23ed1496a7512df7b11c1251e0",
+  "sche.any": "f2fce1dc6ffd26cc97b2383de232b8aca8b65ee3f59a20c9f599ef4bf6cd8fb8",
   "23a": "ee5491ab7f0f9b901724702032f410866f224bdc5c49f20bad8b5cb5ba27a85d",
   "23b": "1622789cde471de84db346066fd6458c6d6d2e8ab6082cc6177f866d2d88bb45",
   "23c": "245a16b2b38c12cbb339c8e536f2bcda284a6be9c6811ad3412cecff2a84d6f0",

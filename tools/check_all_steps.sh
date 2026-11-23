@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # The steps of check-all for one tax year: pass --year N to check a year other
 # than the default (the newest adopted year in years.json); every year-aware step
-# receives the same arguments. tools/check_all.sh runs this and guards it.
+# receives the same arguments. A last stage builds and runs the fixtures of every
+# other adopted year (below). tools/check_all.sh runs this and guards it.
 #
 # Compile first: review tools and every build consumer import engine/dist. Then
 # build and render, beside only the engine self-check and the Lean build: canonical/
@@ -87,7 +88,7 @@ in_tier() {
   if [[ "$release_steps" == *" $1 "* ]] && [ "${CHECK_ALL_RELEASE:-}" != 1 ]; then return 1; fi
   case "$tier" in
     full) return 0 ;;
-    light) [[ "$light_steps" == *" $1 "* ]] ;;
+    light) [[ "$light_steps" == *" $1 "* ]] || [[ "$1" == y[0-9]*_build || "$1" == y[0-9]*_test_fixtures || "$1" == y[0-9]*_ny_test_fixtures ]] ;;
     docs) [[ "$docs_steps" == *" $1 "* ]] ;;
   esac
 }
@@ -289,9 +290,13 @@ jstep limits "--jurisdiction ny" python3 tools/check_limits.py
 step twins python3 tools/check_twins.py "$@"
 jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py
 # The release gate of the sampled reviews, the checks of tools/release_reviews.sh (release mode only).
-jstep release_completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py --release
-jstep release_screens "--jurisdiction ny" python3 tools/transcription/check_screens.py --release
-jstep release_false_no "--jurisdiction ny" python3 tools/transcription/check_false_no.py --release
+# A ruling that confirms an open bug of medium or high severity fails them unless the release allows it
+# (tools/release.sh --allow-open-bugs sets CHECK_ALL_ALLOW_OPEN_BUGS=1).
+open_bugs=()
+[ "${CHECK_ALL_ALLOW_OPEN_BUGS:-}" = 1 ] && open_bugs=(--allow-open-bugs)
+jstep release_completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py --release ${open_bugs[@]+"${open_bugs[@]}"}
+jstep release_screens "--jurisdiction ny" python3 tools/transcription/check_screens.py --release ${open_bugs[@]+"${open_bugs[@]}"}
+jstep release_false_no "--jurisdiction ny" python3 tools/transcription/check_false_no.py --release ${open_bugs[@]+"${open_bugs[@]}"}
 # No id of either jurisdiction's build carries a year, but for the ids listed in tools/year_ids.json (spec 4.3).
 step year_ids python3 tools/check_year_ids.py "$@"
 # No old id of tools/year_free_names.json is left in the fixtures (defaults included), coverage rows, personas or the
@@ -351,6 +356,27 @@ wave wave3
 # rewrite the reports they quote: written from the reports this run wrote, then checked.
 step doc_figures sh -c 'python3 tools/doc_figures.py && python3 tools/doc_figures.py --check'
 wave wave4
+
+# Every other adopted tax year (years.json `adopted`, the run's year left out). The engine, the Lean evaluator and the
+# tools are shared by every year, so a change to them must not break a year this run does not check: each other year
+# is built with this run's engine and its fixtures evaluated, federally and, where New York has adopted that year,
+# for New York; the full tier also compares each with the Lean evaluator. A change confined to one year's directories
+# (forms/<year>/, params/, tables/, fixtures/, interview/, reviews/) needs only that year's run (--year); the steps
+# here are the shared code's. Steps are named y<year>_<check>; each writes only canonical/<year>/ and its reports.
+other_years="$(python3 -I -c 'import json, sys; print(" ".join(str(y) for y in sorted(json.load(open("years.json"))["adopted"]) if str(y) != sys.argv[1]))' "$year")"
+for y in $other_years; do
+  step "y${y}_build" "${node[@]}" build --year "$y"
+done
+wave other_years_build
+for y in $other_years; do
+  step "y${y}_test_fixtures" "${node[@]}" test-fixtures --year "$y"
+  step "y${y}_compare" "${node[@]}" compare --year "$y"
+  if python3 tools/jurisdiction.py --ny-status --year "$y" > /dev/null; then
+    step "y${y}_ny_test_fixtures" "${node[@]}" test-fixtures --ny --year "$y"
+    step "y${y}_ny_compare" "${node[@]}" compare --ny --year "$y"
+  fi
+done
+wave other_years
 if [ "$print_steps" = 0 ] && [ "${#skipped[@]}" -gt 0 ]; then
   echo "check-all: ${#skipped[@]} New York steps skipped for $year (${skipped[*]}): $ny_skip"
 fi

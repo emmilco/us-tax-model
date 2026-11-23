@@ -28,6 +28,7 @@ sets:
       f5695.line7a: false
       f5695.insulation: false
       f5695.doors: false
+      f5695.reconstruct_later: false
       f5695.windows: false
       f5695.panel: false
       f5695.audit: false
@@ -169,6 +170,17 @@ rows:
     f5695.construction_later: true
   expect:
     refused: f5695.construction_later
+- id: energy_reconstruct_later
+  design: BUG-0969 (Part II costs on a reconstructed home)
+  situation: A heat pump was put in a house being rebuilt after a fire, which the owner first lived in again in 2026.
+  uses: [work_done]
+  answers:
+    f5695.heat_pump: true
+    f5695.business_use: false
+    f5695.joint_occupancy: false
+    f5695.reconstruct_later: true
+  expect:
+    refused: f5695.reconstruct_later_if_part2
 - id: l8b.energy_joint_occupancy
   design: lane 8b notes, home energy (a home shared with another occupant)
   situation: Insulation was put in a home the owner shares with a housemate.

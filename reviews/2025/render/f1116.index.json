@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "f90804ebdc2aa2e422340be01a87e0d32a7f30281aba1fdadded4ecfca32dcf2",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "27 / 0 / 1 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -111,9 +112,9 @@
   },
   {
    "key": "18",
-   "record": "f90804ebdc2aa2e422340be01a87e0d32a7f30281aba1fdadded4ecfca32dcf2",
+   "record": "3629063ef5937e2ebdbc4dd2a140c295114593f5560c4622475f45dfd5e84458",
    "status": "MATCH",
-   "subject_key": "2d8d8c3a10fb2c2ba5b25a01bf1b2f6a651d1e5223d96e60c3c03c957135bbd7"
+   "subject_key": "aecdba143090722e440c6ac08b7d3ee1875513e99a0ae821b92607223cae5a79"
   },
   {
    "key": "20",
@@ -123,10 +124,9 @@
   },
   {
    "key": "21",
-   "record": "f90804ebdc2aa2e422340be01a87e0d32a7f30281aba1fdadded4ecfca32dcf2",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; the four-place rounding of line 19 is the register's chosen reading amb.2025.f1116_ratio_places ('Round lines 3f, the worksheet's line 3 and line 19 half-up to four decimal places'); i1116 p. 25, Line 19, 'Divide line 17 by line 18', states no precision, as the reviewer says.",
-   "subject_key": "7188e20e8c4126c3dc1c8277c53c5243849f346ced6a8577786739c6c6f5e4af"
+   "record": "3629063ef5937e2ebdbc4dd2a140c295114593f5560c4622475f45dfd5e84458",
+   "status": "MATCH",
+   "subject_key": "f5a43fa2d0d6de79448cbdcd419c067737fa13db66b8895e7e0eed2bf03eac4b"
   },
   {
    "key": "22",
@@ -173,9 +173,9 @@
   },
   {
    "key": "35",
-   "record": "d7b5469f2143f6d850ec845f123cd2fe6e33eb7c5d710dcd05b6c21bb1974950",
+   "record": "3629063ef5937e2ebdbc4dd2a140c295114593f5560c4622475f45dfd5e84458",
    "status": "MATCH",
-   "subject_key": "da9e8743484b248081fd397db854a4d12f2eb4c7e4030d22c92dadb384c966bc"
+   "subject_key": "46fee80672ee335572fbb58594b46636ff1c05c09af15fdc626dc4f00b91d8ad"
   }
  ],
  "subjects": {
@@ -196,9 +196,9 @@
   "15": "803ad6362dda484e7d168f87bc97e6f3f881b0af5cdc2770c60a05869fb1408e",
   "16": "a6d271ebb1c54734560796d9279c73b02a9f317091036ab0273674a9ec5ee561",
   "17": "7343ff7daff916dfba0760b6542c31d7ba5be3c27f5c1db64ecb15fe227afef2",
-  "18": "b9827db39a1073e61f64730982496cd3324f1cee4d46ed6f8729c90aeaddcbd8",
+  "18": "796448cc1d812fcff07dcd92d25890e8c064558bcf741d26b74fc9372d4ab825",
   "20": "a8f5ed3d8d6158812eb44af57deba260b67a4e7ed7e05ff954e4131fa5adc3ed",
-  "21": "1082557603fc4e0e9b407dddd483877e1efae90bda6533612ccc36186cb78a36",
+  "21": "6ae342ccbf35eeb9c7f68d98e50866379d9cc3de59626cd3e6e46144736099b7",
   "22": "29b071b72f1693cde96814f9a203a4db7d2f52439a4edd4797dabf3b86e246c7",
   "23": "792057c7f7fd8e5837ed5b97e383dce4c74fcef4a43b4302c2270628817c5429",
   "24": "9ee95c0edd5404e59c200449574ff0765f06f9a1f07959175c47b5cbc2aa3d57",
@@ -206,7 +206,7 @@
   "32": "8fd6f9617560c60453c4f2ae3567dfb8cead89a73e29fbe7276904ad06a20d88",
   "33": "2d12ac9256fc8b550ae5b7cb8d305c074bad5a7194b788f01b8305269ba7f044",
   "34": "ce049cb74fe83b6a84641a2159aa6a4d97020d330bade12e1afdbbc7083b5933",
-  "35": "e16f2f3c5669cf6b8a6efb62096bf956137c725dd109a5e041432b35fdfd1fd8"
+  "35": "fd58ed28024746c0429e73b5de8622ba339256bbcb77272642eb580bf1324e50"
  },
  "__rest__": "879015c91186e0b5161c39493dee55734ab32129c342a101563ecff9a3cd6353"
 }

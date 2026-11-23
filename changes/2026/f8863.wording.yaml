@@ -5,7 +5,7 @@ changes:
   - change: C-CRED-17
     evidence:
     - doc: f8863
-      page: 2
+      page: 1
       quote: Enter the amount from Form 1040 or 1040-SR, line 11a.
     - doc: i8863
       page: 9
@@ -31,7 +31,7 @@ changes:
         line: f8863.line3
         field: cite.locator
         from: p. 1, Part I, line 3, "Enter the amount from Form 1040 or 1040-SR, line 11b."
-        to: p. 2, Part I, line 3, "Enter the amount from Form 1040 or 1040-SR, line 11a."
+        to: p. 1, Part I, line 3, "Enter the amount from Form 1040 or 1040-SR, line 11a."
     - set:
         line: f8863.line3
         field: refuses

@@ -922,7 +922,7 @@
    ]
   },
   "gate:person.mw_has_1099": {
-   "subject_sha": "58f03b9062769beb4c889ce33cddb8f17d58e1e676137c496cc938b9582a4f9a",
+   "subject_sha": "666398655386085169ce30cc97682ac39b856e280465860a93e1483ed1c54b3a",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -930,40 +930,40 @@
       {
        "kind": "FALSE_NO",
        "pattern": "4",
-       "who": "A sole proprietor who runs a home-care business and receives Medicaid waiver payments without a Form 1099-MISC or 1099-NEC. For example, a payer paid under the reporting threshold, paid through a card processor and issued a Form 1099-K, or never sent a form.",
-       "why_no": "The helper asks for Medicaid waiver payments 'on Form 1099-MISC or 1099-NEC'. With no such form, the filer truthfully enters $0. The business question, whose Yes ends the interview, is then never asked.",
-       "line": "person.mw_business_if_1099",
-       "irs_text": "i1040gi p. 24, Line 1d: 'If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts' (not conditioned on any Form 1099)",
+       "who": "A sole proprietor who runs a home-care business and was paid Medicaid waiver payments directly by the state, a managed-care plan or a family. No Form 1099-MISC or 1099-NEC was issued, for example because the payer did not file one or the amount was under the reporting threshold.",
+       "why_no": "The helper asks for Medicaid waiver payments 'on Form 1099-MISC or 1099-NEC'. With no such form, the filer truthfully enters $0, so the gate is false and the business question is never asked.",
+       "line": "person.mw_business_if_1099 (and the refusal a Yes to person.mw_business would trigger)",
+       "irs_text": "i1040gi p. 24, Line 1d: 'If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts' (these amounts are Medicaid waiver payments not reported on Form W-2, with or without a Form 1099)",
        "severity": "high",
-       "fix": "Ask about the business whenever any Medicaid waiver payments were not reported in W-2 box 1, however they were reported or if no form was received: 'Did you (or your spouse) receive Medicaid waiver payments for home care that were not in box 1 of a Form W-2, whether or not you got a Form 1099?' Or gate on any home-care business income."
+       "fix": "Gate the business question on any Medicaid waiver payments not reported in W-2 box 1, whether or not a 1099 was received. Ask it before the 1099 amount: 'Were you (or your spouse) paid Medicaid waiver payments that were not reported in box 1 of a Form W-2, whether or not you got a Form 1099?' Then ask the business question."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A home-care sole proprietor whose Medicaid waiver payments were sent through a payment app or card processor and reported on Form 1099-K, not on a 1099-MISC or 1099-NEC.",
+       "why_no": "The helper names only Form 1099-MISC and 1099-NEC, so the filer enters $0 for those forms. The gate is false and the business question is skipped.",
+       "line": "person.mw_business_if_1099 (missed refusal)",
+       "irs_text": "i1040gi p. 24, Line 1d: 'If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts'",
+       "severity": "high",
+       "fix": "Do not tie the gate to particular information returns. Ask about the fact (Medicaid waiver payments received outside W-2 box 1) and ask the business question whenever that amount is above zero."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A self-employed caregiver who gets a Form 1099-NEC or 1099-MISC from a home-care agency, fiscal intermediary or state program. The form does not say the money is Medicaid waiver funding.",
-       "why_no": "The filer does not see agency or contractor pay as 'Medicaid waiver payments', so they enter $0 for that helper. The sole-proprietor refusal is then skipped.",
-       "line": "person.mw_business_if_1099",
+       "who": "A self-employed caregiver paid on Form 1099-NEC by a fiscal intermediary or home-care agency who does not know the money is a 'Medicaid waiver payment', for example IHSS-type or self-directed program pay labeled as caregiver fees.",
+       "why_no": "The filer does not see the 1099-NEC income as 'Medicaid waiver payments', so they enter $0 in the helper and the gate is false.",
+       "line": "person.mw_business_if_1099 (missed refusal)",
        "irs_text": "i1040gi p. 24, Line 1d: 'If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts'",
        "severity": "medium",
-       "fix": "Ask a checkable fact first: 'Were you paid to provide care in your home or a client's home (including through a state program, agency, or fiscal intermediary)?' Then classify Medicaid waiver status and business status after a yes."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A home-care sole proprietor filing for the first time with this tool who has not yet prepared a Schedule C.",
-       "why_no": "The gated question adds 'with this pay reported on a business schedule (Schedule C)'. A filer who has not filed or prepared a Schedule C may answer no even though they are a sole proprietor in the business.",
-       "line": "person.mw_business_if_1099",
-       "irs_text": "i1040gi p. 24, Line 1d: 'If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts'",
-       "severity": "low",
-       "fix": "Drop the Schedule C clause and ask: 'Do you run your own home-care business as a sole proprietor (separate from being paid as an individual caregiver)?'"
+       "fix": "Add help that names the payers. For example: 'Pay for caring for someone in your home under a state Medicaid program (including self-directed, consumer-directed or IHSS-type programs), often paid through a fiscal intermediary or agency.' Also ask the home-care business question whenever the filer reports home-care or caregiver income on a Form 1099."
       }
      ],
-     "prompt_sha": "58a51f299780db0ffd420e337d717947229ccd29af920de2731520ddc36619fb",
+     "prompt_sha": "4079444be896da0069bb622eff3c732774f72de675c3b7b74959bfa91256be64",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.057032,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_person.mw_has_1099.58f03b906276.1.response.txt"
+     "cost": 0.066008,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_person.mw_has_1099.666398655386.1.response.txt"
     }
    ],
    "condition": "person.mw_has_1099",

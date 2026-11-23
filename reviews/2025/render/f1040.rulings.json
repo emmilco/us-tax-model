@@ -77,6 +77,16 @@
   {
    "printed": "1a",
    "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "It adds W-2 box 1 with no screen for the amounts the instructions move off line 1a: 'If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a', and box 1 pension or annuity from a nonqualified or nongovernmental 457 plan, 'do not include this amount on Form 1040, line 1a ... reported on Schedule 1, line 8t.' Statutory-employee W-2s are refused through scope.w2_marks, but no refusal names these two cases.",
+   "ruling": "Ruling: scope; as the 2026-11-17 ruling on this line. i1040gi pp. 23-24: inmate wages (Schedule 1 line 8u) and nonqualified deferred compensation or section 457 amounts in box 1 (line 8t) are behind the s1.line8_other screen, and a statutory employee's box 1 is behind the Schedule C refusal. Project stands.",
+   "context": "804eafe15878ad8f99602b3b897161050828eae25a65b6d5f7a1dc1a4cc66a03",
+   "date": "2026-11-22",
+   "run": "f856e0c21b123799e9bb919608bc799c7aa683dd35ce977f40421174996fdc20",
+   "subject_key": "745596576f91de152b494f55e02a4729901b8626f3021a2f97c64af74f912510"
+  },
+  {
+   "printed": "1a",
+   "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The restatement adds all W-2 box 1 amounts, and no visible refusal covers two carve-outs. The IRS says of inmate wages 'Do not report these wages on line 1a' and of nonqualified or nongovernmental section 457 pensions in box 1 'do not include this amount on Form 1040, line 1a.'",
    "ruling": "Ruling: scope — i1040gi pp. 23–24 route incarcerated wages to Schedule 1 line 8u and the specified nonqualified/nongovernmental 457 pensions to line 8t. s1.line8_other explicitly asks both categories and refuses them on Schedule 1. The line1a sum is not used to certify a completed return in those regimes; the model missed the downstream scope screen.",
    "context": "392795f9530c446fd88f9849fac96e36c9e282435dcb64bb7a307d17a103d941",
@@ -384,6 +394,17 @@
    "subject_key": "8aef244c6b75155ac621d5388d9851e799bd398dc4fc2167f3bd03ea1ae20e86"
   },
   {
+   "printed": "4a",
+   "restated": "Add person.ira_amount_a over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Each IRA distribution's box 1 is included only when an exception applies. With more than one distribution the instructions say 'figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b. Enter the total amount of those distributions on line 4a.' The restatement leaves fully taxable distributions out of the 4a total.",
+   "ruling": "Ruling: finding; i1040gi p. 26, \"If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don't make an entry on line 4a\", against p. 27, More than one distribution, \"Enter the total amount of those distributions on line 4a\". With one exception distribution and one fully taxable, the project leaves the fully taxable box 1 off line 4a; the paragraph can be read either way and the reading is not registered. Line 4b and the tax do not move (BUG-1118).",
+   "context": "804eafe15878ad8f99602b3b897161050828eae25a65b6d5f7a1dc1a4cc66a03",
+   "date": "2026-11-22",
+   "run": "f856e0c21b123799e9bb919608bc799c7aa683dd35ce977f40421174996fdc20",
+   "severity": "low",
+   "subject_key": "fc8859196fc9c2261246d6727c8e183c21bae38e50fa82b8a75683a26ffa8ad9"
+  },
+  {
    "printed": "4c",
    "restated": "helper \"Number of IRA distributions with a rollover\" > 0 (a count)",
    "model": "Line 4c is restated as a single rollover flag, which covers only box 1. The IRS also says 'If Exception 3 applies to you, check box 2 on line 4c' (QCD) and 'If Exception 4 applies ... check box 3' (HFD or another word or code), and no refusal names those cases.",
@@ -431,6 +452,26 @@
    "model": "Worksheet line 18 is the normal source (\"Also enter this amount on Form 1040 or 1040-SR, line 6b\"). However, line 6c lets the filer elect the lump-sum method, which per the instructions may \"reduce the taxable amount\" via Pub. 915. Pub. 915 is not provided, and the program still enters line 18 with no refusal.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. The lump-sum election is refused on the Social Security Benefits Worksheet: ssb.line2 refuses when ssb.lump_sum ('Lump-Sum Election (Pub. 915)'; i1040gi p. 31, Line 6c), and line 18 is figured through line 2, so with the election made line 6b is a refusal, not line 18 (checked: stage10.ss.top with ssb.lump_sum true gives f1040.line6b refused on ssb.lump_sum, line 6c checked). Without the election line 18 is the taxable amount the worksheet says to enter on line 6b (i1040gi p. 32).",
    "subject_key": "3cf8fed29a48489f8452122cf645795cf47f50e976582357b97a596282e213df"
+  },
+  {
+   "printed": "6c",
+   "restated": "ssb helper \"Any social security benefits (otherwise the worksheet is not needed)\" = true and ssb helper \"The lump-sum election method is chosen for a benefit payment that was for an earlier year (asked only when the benefits include such a payment; false otherwise)\" = true",
+   "model": "The box is checked when the filer elects the lump-sum method, but 6b is still the regular worksheet line 18 and no Pub. 915 lump-sum computation or refusal is applied. The instructions tie the box to reducing the taxable amount: 'you may be able to reduce the taxable amount with the lump-sum election. See Lump-Sum Election in Pub. 915.'",
+   "ruling": "Ruling: scope; i1040gi p. 31, Line 6c, \"you may be able to reduce the taxable amount with the lump-sum election. See Lump-Sum Election in Pub. 915\". When the election is made (ssb.lump_sum) the return is refused on Social Security Benefits Worksheet line 2 (\"Lump-Sum Election (Pub. 915)\", \"The lump-sum election method is outside this tool\"), so no completed return has the box checked with line 6b from the regular worksheet.",
+   "context": "804eafe15878ad8f99602b3b897161050828eae25a65b6d5f7a1dc1a4cc66a03",
+   "date": "2026-11-22",
+   "run": "f856e0c21b123799e9bb919608bc799c7aa683dd35ce977f40421174996fdc20",
+   "subject_key": "15990cec969950225877d1207a53b7dd0beb88765d4132d0472334e2099c78c5"
+  },
+  {
+   "printed": "6d",
+   "restated": "line Filing Status = 'mfs' and ssb helper \"Any social security benefits (otherwise the worksheet is not needed)\" = true and ssb helper \"Married filing separately, and you lived apart from your spouse for all of 2025\" = true",
+   "model": "The box is checked only when social security benefits are greater than zero. The instruction has no benefits condition: 'If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d.'",
+   "ruling": "Ruling: ambiguity; i1040gi p. 31, Line 6d, \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d\": whether the box is checked on a return with no benefits is the registered ambiguity amb.2025.mfs_lived_apart_boxes, recorded on f1040.line6d; the project's choice stands.",
+   "context": "804eafe15878ad8f99602b3b897161050828eae25a65b6d5f7a1dc1a4cc66a03",
+   "date": "2026-11-22",
+   "run": "f856e0c21b123799e9bb919608bc799c7aa683dd35ce977f40421174996fdc20",
+   "subject_key": "06ecab322b39fd6de4211e6abf763cfa18dca729b0f61b88d92dd373d4914aac"
   },
   {
    "printed": "7a",

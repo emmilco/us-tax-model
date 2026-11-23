@@ -2,86 +2,83 @@
  "kind": "render",
  "form": "eic",
  "family": "claude",
- "base": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
- "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
- },
+ "base": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
  "lines": [
   {
    "key": "(Step 5, 1)",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "45edb90c49368983c122c5c6c27ea6c72006429c7688ed750d51bc63018483af"
   },
   {
    "key": "(Step 5, 2)",
-   "record": "3f556f68a48055b17ebe2a950f03d1bdb25196e816c4c3ba8094006bb10157a7",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "9ba15b839d7c3a633eff2e92e42bf25545838ab6e878483895aa80bb4a13bbb4"
   },
   {
    "key": "(Step 5, 3)",
-   "record": "3f556f68a48055b17ebe2a950f03d1bdb25196e816c4c3ba8094006bb10157a7",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "17d2ec24848bf7cec75d26c892519a0dc948b4a8a93621c363485519c9f46c5e"
   },
   {
    "key": "(Step 5, 4)",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "5be4f64d4abe525e0082a0fc45426cbb196102c0bc000db70746b1b69cac3eab"
   },
   {
    "key": "(Step 5, 5)",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "9fff5a418addc96a6d1b82540e0a15ea973d271da28ea8382cb049b99900fcfb"
   },
   {
    "key": "4b",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "9bf6756d4f147dd907995eda8dea8c85e237509f26c6189ad368ca5dcfca5fa7"
   },
   {
    "key": "6 (eic.wsb_6)",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "487f17ba52fdd353283147e1aa361ce690f99ae5df742914321d843deff9afc4"
   },
   {
    "key": "1",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "06dd128189737165b1292a185cf94f85ab3d179043eca44765fe4d21738d3891"
   },
   {
    "key": "2",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "ef1f33087765601a7e851fb4d9adaa510989edecbccd80eb6db150e79b65602b"
   },
   {
    "key": "3",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "793eb810c351a8d2f373e2711a84dc0ea81ee3548083583a1b88e56d711b73c3"
   },
   {
    "key": "4",
-   "record": "93504c11cada994861765fee48b040205521d66aa6ec87cb785cc09bdda8dbb5",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "61f17be74f2c9b727a37b330be7be04440bfa583d340107f014b7df96c398508"
   },
   {
    "key": "5",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "7e85563b05141427e0f3b634a456604533e5f92833e34d21a9c6aca04ac7fda8"
   },
   {
    "key": "6 (eic.line6)",
-   "record": "93504c11cada994861765fee48b040205521d66aa6ec87cb785cc09bdda8dbb5",
+   "record": "cebbcbe37585743eeb2e2d5351f62b41ea53e1c4e2604796a1b58f9588c18ebe",
    "status": "MATCH",
    "subject_key": "38874d56e215f31edc6f729c8d81c0eab9350cfc180543bdaa37f776c1dcfd63"
   }

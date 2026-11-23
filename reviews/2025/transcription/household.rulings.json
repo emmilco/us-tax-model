@@ -602,6 +602,16 @@
   },
   {
    "printed": "household.hoh_fails",
+   "project_expr_sha256": "35423cbdb0f3fe8a855c696a7091a1acd768b5c6e1f1182ee5c0f5fa8151d8a4",
+   "second_expr_sha256": "94dff71348d15683de2403462080b77a0f91868cbafc72d5d882e157509d8643",
+   "ruling": "Ruling: representation and scope; i1040gi p. 14, Head of Household, and p501 pp. 9-10, Tests 1 and 2, as the earlier rulings of this line. Read without triage (the household triage record predates this pass). The line was rerun because household.cp_any, which reaches it through household.hoh_cp_married and household.hoh_community_property, gained household.cp_retirement (BUG-0950); the disagreement remains the reply's own reconstruction of the qualifying-person tests from the dependent answers, and neither side's Test 1 or Test 2 reading changed in this pass.",
+   "context": "8a259678fb0fb327065fa57c766f93cf80b8212dbc080b9863fc46a2a71b0cea",
+   "date": "2026-11-22",
+   "run": "795a3cd72d66f37cb608d78cd6dd7799822a9c9eae55cd2733073172c102a8b1",
+   "subject_key": "c25f80e0053f85c699a9da1824b25685fc911caf29c4eddd378669163b45c4cc"
+  },
+  {
+   "printed": "household.hoh_fails",
    "project_expr_sha256": "440171d42039b5e36a90d917d462b7c0c502a288a99908f2c44aa6b126c6d9c2",
    "second_expr_sha256": "1adb2bdc2a071e84830ccc4d32b3fcbd03953193ad43968e2c25fc5a7afda873",
    "ruling": "Ruling: scope; i1040gi p. 14, Head of Household: \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\"; i1040gi p. 23 (amb.2025.hoh_community_property). R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). The reply writes the project's test inline (status head of household, and the unmarried test fails or neither Test 1 nor Test 2 applies) and drops the household.hoh_community_property refusal the project carries on household.hoh_eligible; it reads household.unmarried as the project does. The differences are that cited refusal (refused records) and partial records withholding household.community_property. executable-triage-v2 on this pass's reply (`.transcription/household.lines-d801bd4b40fd.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 235 partial records; 2,373 comparisons): 2,368 of 2,373 agree; differences on returns the full interview completes: none; no completed-return value difference. Project stands.",
@@ -793,6 +803,16 @@
    "date": "2026-11-17",
    "run": "b780f5bb53223d15287c5ce971c1050bf0944df771b496cfe43cd918bb21060a",
    "subject_key": "8c5bb4ae51002375479fa4ed6f7f9e85e883facbe4b6168fd7725d6a6918c779"
+  },
+  {
+   "printed": "household.mfs_community_property",
+   "project_expr_sha256": "0041395d2bc93f25d3cc6b97c4ad12d2fc6fb2469656bbd2254ae8a9b030126f",
+   "second_expr_sha256": "99644b48a1706436b361200f3bfa52276810eb5d5f9c268652ba7bb9ba086160",
+   "ruling": "Ruling: representation; i1040gi p. 14, Married Filing Separately, 'Different rules apply to people in community property states; see Pub. 555', and p555 pp. 5-6 (Pensions; Civil service retirement; Military retirement pay). The reply's (community_property, or spouse_cp_domicile, or cp_retirement) and status mfs is the project's value on every completed return: the project asks household.spouse_cp_domicile only after a No to household.community_property and household.cp_retirement only after a No to both, and gives household.no on every other status. Read without triage (the household triage record predates this pass).",
+   "context": "8a259678fb0fb327065fa57c766f93cf80b8212dbc080b9863fc46a2a71b0cea",
+   "date": "2026-11-22",
+   "run": "795a3cd72d66f37cb608d78cd6dd7799822a9c9eae55cd2733073172c102a8b1",
+   "subject_key": "86dd0400cacaa6ae5be6eca3723221eb06fafa3103907df71cb340890cab6c5b"
   },
   {
    "printed": "household.mfs_community_property",

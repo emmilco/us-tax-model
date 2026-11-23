@@ -243,11 +243,11 @@
    "printed": "5",
    "project_expr_sha256": "95a020fb901bd722135bae914d7d034f7ad89e0f86955809120cafe0a06ea17f",
    "second_expr_sha256": "53f1971e434491b39c896ed5f09e569c96bbcead08999adb0812fefe4aec0b65",
-   "ruling": "Ruling: representation; f1040s1 p. 1, General Instructions, \"Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties\". The candidate reads re_pro directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): 2111 of 4000 comparisons agree, 2093 of 3955 in scope; completed {\"candidate-unknown\": 262}. Project stands.",
-   "context": "6344f210d63837348361b26d8d56b60a5315c9a6667d7978b2e824e6a8f1361a",
-   "date": "2026-11-17",
-   "run": "5b3cc09636fe16ef8ad0d1e0aa3796ab31fd1aa4d410fb41818c6bdd5cb42e81",
-   "subject_key": "62617bbf8483e8c62db0219501bc521e9f1f9dec25771cd5c788faf75356d9fd"
+   "ruling": "Ruling: representation; f1040s1 line 5 and i1040se p. 1, as the ruling of 2026-11-17; rerun only because scope.rental and scope.schedule1 (scope.remic, BUG-0977) changed. Read without new triage (the s1 triage record predates this pass); the reply reads the Schedule E answers without their parent questions.",
+   "context": "f46c9fecbbc1777b5498a55d039829c1e581d306a2aed57aa1a97f634c63e7c4",
+   "date": "2026-11-22",
+   "run": "eae70770f3fdc29742f7c016073652d1cf8b4ae638d66b6273984c33349e930b",
+   "subject_key": "b5881a7e2b6e68fb3cea610dda6d3cbd68d57c21399435255501104afa03d00a"
   },
   {
    "printed": "7",

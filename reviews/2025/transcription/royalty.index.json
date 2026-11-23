@@ -5,7 +5,7 @@
  "base": "1010f263c8f41ec0c945cac94086498094214fe15eae85aabcb3a38886492c58",
  "head_rows": {
   "agree / disagree / missing": "7 / 2 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-17); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,16 +23,16 @@
   },
   {
    "key": "royalty.loss",
-   "record": "b17d8950b00aec44c3a75e7a592a2fa83f70235d2d221af33d01693be3a733fa",
+   "record": "9b5f9ef3d600a3808b324d4b4a12efbb025e4e842b67808b6e6b49e060ed3ccc",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040se Schedule E (2025), line 25: \"Add royalty losses from line 21.\" The candidate's line is the project's line 21 (line 4 less line 20, floored at zero, or its negation); all 9 differences are on refused or incomplete records (3 project refusals, 6 project-unknown), none on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/royalty.json): 21 of 30 comparisons agree, 18 of 24 in scope. Project stands.",
-   "subject_key": "2faf4ed089965eb44d79006ee7ad0066dd8860551bd2c4f53c560623b69d590a"
+   "ruling": "Ruling: representation; equivalent on executable triage (.transcription/triage/2025/royalty.json: 68 of 68 agree). Project stands.",
+   "subject_key": "d9964d14ecfae184a714be58a7a1a21d638958f9a0fbdc9d16d14d4c7096394d"
   },
   {
    "key": "royalty.loss_abs",
-   "record": "b17d8950b00aec44c3a75e7a592a2fa83f70235d2d221af33d01693be3a733fa",
+   "record": "9b5f9ef3d600a3808b324d4b4a12efbb025e4e842b67808b6e6b49e060ed3ccc",
    "status": "AGREE",
-   "subject_key": "15d34f6633dda610df8140faaea96f9a458a595cc4730a4673299ba7aaf56c86"
+   "subject_key": "231b2449c7721b524c5ba1ee93de725ca4d0826ee6785a6f0031143b5251f770"
   },
   {
    "key": "10",
@@ -68,8 +68,8 @@
  "subjects": {
   "royalty.one": "087790c7e4150ce46c970eabedf9b63c93b709cbdef844aba99e24a357de0e80",
   "royalty.income": "a1e317697ca5eb57c9382a11b74ced3ed528b61f590036798863bb0014035ded",
-  "royalty.loss": "ab152c7cc27a50dcaa1b23e5869713314500ff16c64ac705034ebf528a4c663e",
-  "royalty.loss_abs": "08143ea758be7459b3747ff17c93f864fef7077235c91468c664b5f038a9ceeb",
+  "royalty.loss": "8d17ca5f64981a92451b2d90103b511cb0078114f2ba412fd0be2aa5e56ece6b",
+  "royalty.loss_abs": "223dd4b6ca04dfad33aae27967c2eebf635dc22763efd958911a361ec74a59dd",
   "10": "649aa7cadec046bbf5ba132740ed0654be5421a0016bf84accb415ae5e07c041",
   "16": "653da24140ab654bf2e9248880ee105cb1e0ff032ce72797629a379b7cb40690",
   "19": "427df5ca9db4218f96005b72d18d557450e8cc0c29ce310817f721853cff4edd",

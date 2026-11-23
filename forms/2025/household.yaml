@@ -733,10 +733,80 @@ form:
       cite:
         doc: p555
         locator: 'p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both"'
+    - id: household.cp_retirement
+      printed: (helper)
+      type: Bool
+      gated_by: household.cp_retirement_if_asked
+      label: In 2025, either spouse received a pension, annuity or military retirement pay earned while the two were married
+        and living in a community property state
+      expr:
+        op: input
+        source: In 2025, did you or your husband or wife receive a pension, annuity or military retirement pay earned while
+          the two of you were married and either of you lived or had your permanent home in a community property state
+          (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or Wisconsin)?
+      cite:
+        doc: p555
+        locator: 'p. 5, Pensions, "distributions from pensions will be characterized as community or separate income
+          depending on the respective periods of participation in the pension while married (or during the registered
+          domestic partnership) and domiciled in a community property state"; p. 6, Civil service retirement, "Even if you
+          now live in a noncommunity property state and you receive a civil service annuity, it may be community income if
+          it is based on services you performed while married (or during the registered domestic partnership) and domiciled
+          in a community property state"; p. 6, Military retirement pay, "military retirement pay for services performed
+          during marriage and domicile in a community property state is community income"'
+    - id: household.cp_retirement_if_asked
+      printed: (helper)
+      label: 'Retirement pay earned while married and living in a community property state, asked only where a marriage is
+        possible and the filing status is not qualifying surviving spouse (false otherwise)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.ask_spouse_cp_domicile
+            - const: true
+          then: household.cp_retirement
+        - guard:
+            op: test
+            eq:
+            - household.ask_spouse_cp_domicile
+            - const: false
+          then: household.no
+      cite:
+        doc: p555
+        locator: 'p. 6, Civil service retirement, "Even if you now live in a noncommunity property state and you receive a
+          civil service annuity, it may be community income"'
+    - id: household.cp_spouse_or_retirement
+      printed: (helper)
+      label: 'Your husband or wife lived in, or had a permanent home in, a community property state in 2025, or (asked when
+        neither of you did) retirement pay was earned while married and living in one'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.spouse_cp_domicile_if_asked
+            - const: true
+          then: household.spouse_cp_domicile_if_asked
+        - guard:
+            op: test
+            eq:
+            - household.spouse_cp_domicile_if_asked
+            - const: false
+          then: household.cp_retirement_if_asked
+      cite:
+        doc: p555
+        locator: 'p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see
+          if you have community property, community income, or both"; p. 6, Civil service retirement, "Even if you now live
+          in a noncommunity property state and you receive a civil service annuity, it may be community income"'
     - id: household.cp_any
       printed: (helper)
       label: 'You lived in, or had your permanent home in, a community property state in 2025, or (asked when you did not)
-        your husband or wife did'
+        your husband or wife did, or (asked when neither did) retirement pay received in 2025 was earned while married and
+        living in one'
       type: Bool
       expr:
         op: choose
@@ -752,10 +822,10 @@ form:
             eq:
             - household.community_property
             - const: false
-          then: household.spouse_cp_domicile_if_asked
+          then: household.cp_spouse_or_retirement
       cite:
         doc: p555
-        locator: 'p. 2, Domicile, "The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both. If you and your spouse (or your RDP) have different domiciles, check the laws of each"'
+        locator: 'p. 2, Domicile, "The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both. If you and your spouse (or your RDP) have different domiciles, check the laws of each"; p. 6, Civil service retirement, "Even if you now live in a noncommunity property state and you receive a civil service annuity, it may be community income if it is based on services you performed while married (or during the registered domestic partnership) and domiciled in a community property state"'
     - id: household.hoh_cp_married
       printed: (helper)
       label: 'Filing as head of household: married at the end of 2025, and you or your husband or wife lived in, or had a

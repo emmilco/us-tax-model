@@ -17,6 +17,16 @@ form:
     cite:
       doc: i8582
       locator: p. 1, Part I
+  - id: f8582.no
+    printed: (helper)
+    label: Year parameter sa.no (no)
+    type: Bool
+    expr:
+      op: param
+      ref: sa.no
+    cite:
+      doc: i8582
+      locator: p. 10, Line 3
   - id: f8582.line1a_rental
     printed: (helper)
     label: 'Part IV, column (a): net income of the Schedule E rentals'
@@ -296,7 +306,16 @@ form:
     cite:
       doc: f8582
       locator: 'Form 8582 (2025), line 3; i8582 p. 10, Line 3, "If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real estate activities, treat that dollar amount as negative and combine with lines 1d and 2d"'
-    note: Prior-year unallowed commercial revitalization deductions are not asked (none can arise after 2009).
+    note: Prior-year unallowed commercial revitalization deductions are refused (f8582.prior_crd).
+    refuses:
+    - when: f8582.prior_crd_if_prior
+      form: Form 8582, line 3 and the line 9 Worksheet (prior-year unallowed commercial revitalization deduction)
+      remedy: A commercial revitalization deduction held back on an earlier return is applied through the line 9 Worksheet
+        and its own Parts VI to VIII; that is outside this tool.
+      cite:
+        doc: i8582
+        locator: 'p. 10, Line 3, "If you have prior-year unallowed commercial revitalization deductions (CRD) from rental
+          real estate activities, treat that dollar amount as negative and combine with lines 1d and 2d"'
   - id: f8582.loss1d
     printed: (helper)
     label: The loss on line 1d, as a positive amount
@@ -701,3 +720,74 @@ form:
       doc: i8582
       locator: p. 1, Who Must File
     ambiguity: amb.2025.f8582_shown
+  - id: f8582.prior_count
+    printed: (helper)
+    label: Number of rentals listed with a loss held back on an earlier return
+    type: Count
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.one
+      where:
+        op: test
+        eq:
+        - rental.prior_any
+        - const: true
+    cite:
+      doc: i8582
+      locator: p. 1, Reminders, "If you have prior-year unallowed CRDs limited by the passive loss rules, you may continue to
+        include them in the calculations"
+  - id: f8582.has_prior
+    printed: (helper)
+    label: A loss held back on an earlier return (including a commercial revitalization deduction, which line 3 takes
+      directly) is carried into 2025 for a rental listed
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8582.prior_count
+      - const: 0
+        type: Count
+    cite:
+      doc: i8582
+      locator: p. 1, Reminders, "If you have prior-year unallowed CRDs limited by the passive loss rules, you may continue to
+        include them in the calculations"
+  - id: f8582.prior_crd
+    printed: (helper)
+    gated_by: f8582.prior_crd_if_prior
+    label: Was any of the loss held back on your (or, on a joint return, your spouse's) 2024 Form 8582 a commercial
+      revitalization deduction (marked "CRD")?
+    type: Bool
+    expr:
+      op: input
+      source: Was any of the loss held back on your (or, on a joint return, your spouse's) 2024 Form 8582 a commercial
+        revitalization deduction (marked "CRD" on line 3 or after an activity's name)?
+    cite:
+      doc: i8582
+      locator: 'p. 1, Reminders, "If you have prior-year unallowed CRDs limited by the passive loss rules, you may continue to
+        include them in the calculations"; p. 10, Line 3, "enter “CRD” and the dollar amount of the CRD (as a negative) on
+        the dotted line"'
+  - id: f8582.prior_crd_if_prior
+    printed: (gate)
+    label: A prior-year unallowed commercial revitalization deduction, asked only when a loss held back on an earlier return
+      is carried into 2025 (no otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8582.has_prior
+          - const: true
+        then: f8582.prior_crd
+      - guard:
+          op: test
+          eq:
+          - f8582.has_prior
+          - const: false
+        then: f8582.no
+    cite:
+      doc: i8582
+      locator: 'p. 10, Line 3, "If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real
+        estate activities, treat that dollar amount as negative"'

@@ -5,6 +5,8 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
+import { carryoverProblems } from "./carryover.js";
+import type { CarryoverMap } from "./carryover.js";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ValidateFunction } from "ajv";
 import { isMarkedLine, stableStringify } from "./util.js";
@@ -492,6 +494,14 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   const checkResult = runChecks(data);
   errors.push(...checkResult.errors);
   stats.push(...checkResult.stats);
+
+  // The cross-year carryover map: the lines of this year the next year's return takes as answers (carryover.ts).
+  const CARRYOVER = join(ROOT, "carryover", `${YEAR}.yaml`);
+  if (existsSync(CARRYOVER)) {
+    const map = parseYaml(readFileSync(CARRYOVER, "utf8")) as CarryoverMap;
+    errors.push(...carryoverProblems(data, map, YEAR, `carryover/${YEAR}.yaml`));
+    stats.push(`carryovers to ${YEAR + 1}: ${Array.isArray(map?.carryovers) ? map.carryovers.length : 0}`);
+  }
 
   // A line no other line reads must be an interview target or say why it is shown (display);
   // a line marked display must not be read. Unread helpers are how dead logic hides. Every line

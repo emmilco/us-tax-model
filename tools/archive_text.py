@@ -89,24 +89,44 @@ AS_EXTRACTED = ["tools/ocr_audit.py", "tools/check_extraction.py", "tools/extrac
 # manifest, page classification, PDF or spreadsheets), or that names a .txt file under
 # sources/: a text layer read past this module. The archive directory is ARCHIVE, SOURCES or
 # self.sources, or any name the file binds to a path through "sources" (SRC = ROOT /
-# "sources" / Y). (A line scan: a layer path built in one place and read in another escapes it.)
+# "sources" / Y; sub = ("sources", year)). A text layer is named by its manifest key or by any
+# name the file binds to a lookup of that key (name = d.get("cols_file")). A helper called read
+# (self.read(*parts), not this module's) that is given a path under the archive directory and a
+# layer's file name reads the layer too, so a file name looked up on one line and read through a
+# helper on the next is found. (A line scan: a layer path passed through a function's parameters
+# escapes it.)
 OPENS = re.compile(r"read_text\(|\bopen\(")
+WRITES = re.compile(r"\bopen\(.*,\s*[\"'][wax]b?\+?[\"']")  # an open for writing, which reads nothing
+HELPER_READ = re.compile(r"\bread\(")
 LAYER = re.compile(r"text_file|cols_file|\bARCHIVE\b|\bSOURCES\b|self\.sources\b")
+ARCHIVE_DIR = re.compile(r"\bARCHIVE\b|\bSOURCES\b|self\.sources\b|[\"']sources[\"']")
 NOT_LAYER = re.compile(r"manifest|\.json|pages_file|\.pdf|\.xls")
 LAYER_PATH = re.compile(r"(?:[\"']sources[\"']|\bARCHIVE\b|\bSOURCES\b).*\.txt[\"']")
 BINDS_ARCHIVE = re.compile(r"^\s*((?:self\.)?[A-Za-z_]\w*)\s*=[^=].*[\"']sources[\"']")
+BINDS_LAYER = re.compile(r"^\s*((?:self\.)?[A-Za-z_]\w*)\s*=[^=](?!.*\bread)(?!.*\bopen\().*"
+                         r"(?:\.get\(\s*[\"'](?:text|cols)_file[\"']|\[\s*[\"'](?:text|cols)_file[\"']\s*\])")
 
 
 def direct_reads(name, text):
     """(line number, line) of each line of a tool's source that reads an archived text layer
     itself."""
-    bound = {m.group(1) for line in text.split("\n") if (m := BINDS_ARCHIVE.match(line))}
-    layer = re.compile(LAYER.pattern + "".join(rf"|(?<![\w.]){re.escape(b)}\b" for b in sorted(bound)))
+    rows = text.split("\n")
+
+    def names(binds):
+        bound = sorted({m.group(1) for m in map(binds.match, rows) if m})
+        return "".join(rf"|(?<![\w.]){re.escape(b)}\b" for b in bound)
+
+    archive, layer_names = names(BINDS_ARCHIVE), names(BINDS_LAYER)
+    layer = re.compile(LAYER.pattern + archive + layer_names)
+    archive_dir = re.compile(ARCHIVE_DIR.pattern + archive)
+    named_layer = re.compile(r"text_file|cols_file" + layer_names)
     out = []
-    for n, line in enumerate(text.split("\n"), 1):
+    for n, line in enumerate(rows, 1):
         if "archive_text." in line:
             continue
-        if (OPENS.search(line) and layer.search(line) and not NOT_LAYER.search(line)) or LAYER_PATH.search(line):
+        reads = (OPENS.search(line) and layer.search(line) and not (WRITES.search(line) and "read_text(" not in line)) or \
+            (HELPER_READ.search(line) and archive_dir.search(line) and named_layer.search(line))
+        if (reads and not NOT_LAYER.search(line)) or LAYER_PATH.search(line):
             out.append((n, line))
     return out
 
@@ -142,6 +162,22 @@ def self_test():
     ok = found == [3, 4]
     status = status or (0 if ok else 1)
     print(f"archive-text self-test, a read through a name bound to sources/: {'found' if ok else f'WRONG, lines {found}'}")
+    # A layer's file name looked up on one line and read through a helper on the next is found;
+    # a helper read of the manifest, a wrapper's read by layer key with no archive path, and an
+    # open for writing are passed.
+    helper = ('d = next(e for e in entries if e["id"] == doc)\n'
+              'name = d and (d.get("cols_file") or d.get("text_file"))\n'
+              'text = self.read(*self.dir("sources", doc), name) if name else None\n'
+              'sub = ("sources", "ny", year)\n'
+              'text = super().read(*sub, name)\n'
+              'm = json.loads(self.read(*self.dir("sources", doc), "manifest.json") or "{}")\n'
+              'pages = self.read(doc, "cols_file").split("\\f")\n'
+              'with open(os.path.join(SOURCES, name), "w") as f:\n')
+    found = [n for n, _ in direct_reads("helper.py", helper)]
+    ok = found == [3, 5]
+    status = status or (0 if ok else 1)
+    print(f"archive-text self-test, a layer looked up on one line and read through a helper on the next: "
+          f"{'found' if ok else f'WRONG, lines {found}'}")
     # No other tool opens an archived text layer itself.
     direct = []
     for path in sorted(ROOT.glob("tools/**/*.py")):

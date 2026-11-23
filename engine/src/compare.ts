@@ -12,6 +12,7 @@ import { loadCases } from "./fixtures.js";
 import { CORPUS_SEED, CORPUS_SIZE, corpusReturns } from "./generate.js";
 import { coverageCorpus } from "./properties.js";
 import type { CanonicalData, Inputs } from "./types.js";
+import { GATE_PENDING } from "./eval.js";
 import type { Value } from "./eval.js";
 import { NY_MODE, YEAR, YEAR_ARGS, yearPath } from "./year.js";
 import { reportName, reportPath } from "./year.js";
@@ -111,7 +112,13 @@ export function corpusSelfTest(): number {
 function normalize(v: Value | Record<string, unknown>): string {
   const val = v as { kind?: string; cents?: number; value?: unknown };
   if (val.kind === "refusal") { const r = v as Record<string, unknown>; return `refusal:${r.gate}:${r.form}:${r.remedy}:${JSON.stringify(Object.entries(r.cite as Record<string, unknown>).sort())}`; }
-  if (val.kind === "unknown") return "unknown";
+  if (val.kind === "unknown") {
+    // What the interview reads from an unknown: the missing input it names, the lower bound of a partial count and
+    // whether it awaits a refusal gate's answer (the TypeScript value's GATE_PENDING mark, the Lean value's gatePending).
+    const u = v as { input?: unknown; lowerBound?: unknown; gatePending?: unknown; [GATE_PENDING]?: unknown };
+    const pending = u[GATE_PENDING] === true || u.gatePending === true;
+    return `unknown${u.input !== undefined ? `:input=${String(u.input)}` : ""}${u.lowerBound !== undefined ? `:lowerBound=${String(u.lowerBound)}` : ""}${pending ? ":gatePending" : ""}`;
+  }
   if (val.kind === "money") return `money:${val.cents}`;
   if (val.kind === "rate") { const r = v as { num?: number; den?: number }; return `rate:${r.num}/${r.den}`; }
   return `${val.kind}:${JSON.stringify(val.value)}`;
@@ -328,14 +335,22 @@ function typedChooseAgreement(): string[] {
 const VALUE_KINDS = ["money", "count", "rate", "bool", "enum", "refusal", "unknown"];
 
 /** Values that differ from `v`, a Lean value of the given kind, each with what was changed: one per field the
- * comparison reads (a refusal's gate, form, remedy and citation; a rate's numerator and denominator). For an
- * unknown, whose reason is not compared, the differing value is a known amount. */
+ * comparison reads (a refusal's gate, form, remedy and citation; a rate's numerator and denominator; an unknown's
+ * missing input, lower bound and gate-pending mark). For an unknown, whose reason is not compared, a known amount
+ * differs as well. */
 function differingValues(kind: string, v: Record<string, unknown>): [string, Record<string, unknown>][] {
   if (kind === "money") return [["a money amount one cent higher", { ...v, cents: (v.cents as number) + 1 }]];
   if (kind === "count") return [["a count one higher", { ...v, value: (v.value as number) + 1 }]];
   if (kind === "bool") return [["the other Bool", { ...v, value: !v.value }]];
   if (kind === "enum") return [["another enum value", { ...v, value: `${v.value}_planted` }]];
-  if (kind === "unknown") return [["a known amount where the line is unknown", { kind: "money", cents: 0 }]];
+  if (kind === "unknown") {
+    return [
+      ["a known amount where the line is unknown", { kind: "money", cents: 0 }],
+      ["an unknown naming another missing input", { ...v, input: `${String(v.input ?? "")}_planted` }],
+      ["an unknown with another lower bound", { ...v, lowerBound: typeof v.lowerBound === "number" ? v.lowerBound + 1 : 0 }],
+      [v.gatePending === true ? "an unknown not awaiting a gate" : "an unknown awaiting a gate", { ...v, gatePending: v.gatePending !== true }],
+    ];
+  }
   if (kind === "rate") {
     return [["a rate with another numerator", { ...v, num: (v.num as number) + 1 }], ["a rate with another denominator", { ...v, den: (v.den as number) + 1 }]];
   }
@@ -482,7 +497,8 @@ export function compareEvaluators(): number {
   report.push("");
   report.push(`Every fixture case and ${generated.length} generated whole returns${NY_MODE ? " with New York answers" : ""} (\`generate.ts\` \`${NY_MODE ? "nyReturnArbitrary" : "sampleReturns"}\`, fast-check, seed ${CORPUS_SEED}: the corpus of the properties check) were evaluated`);
   report.push("by both independently written evaluators; every root form line and every line of every confirmed collection entry");
-  report.push("was compared (money cents, counts, rates, booleans, enums, full refusals; unknowns compared by kind).");
+  report.push("was compared (money cents, counts, rates, booleans, enums, full refusals; for an unknown, the missing input it names,");
+  report.push("the lower bound of a partial count and whether it awaits a refusal gate's answer).");
   report.push("");
   if (NY_MODE) {
     report.push("This is the New York run. Its cases are the New York fixture cases and the generated returns of the federal run,");
@@ -509,7 +525,8 @@ export function compareEvaluators(): number {
   report.push(`| Result | ${failures === 0 ? "**agreement on every value**" : "**DIFFERENCES FOUND**"} |`);
   report.push("");
   report.push("Line values compared, by the kind of the value. An unknown is a line with no value (an answer it needs was not");
-  report.push("given, for example); the two evaluators agree that it is unknown, and its reason is not compared.");
+  report.push("given, for example); the two evaluators agree that it is unknown, on the missing input it names, on the lower bound of a");
+  report.push("partial count and on whether it awaits a refusal gate's answer, which the interview reads; its reason is not compared.");
   report.push("");
   report.push("The last two columns count, among them, the lines of the New York documents.");
   report.push("");

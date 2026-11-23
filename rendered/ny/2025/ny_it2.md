@@ -3,10 +3,25 @@
 - Document: `ny_it2` (form, tax year 2025)
 - Collection: keyed entries; [ny_it201i] p. 21, Lines 72, 73, and 74, "You must complete a W-2 record for each W-2 you receive, even if it does not show any New York State, New York City (NYC), or Yonkers wages or tax withheld." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
+## (helper) — `ny_it2.h_state_shown`
+
+- **Authored helper label:** This W-2 shows New York State tax withheld, so box 17a is completed (blank otherwise)
+- **Encoded (Bool):** line 17a > $0
+- Expr: `{"gt":["ny_it2.state_withheld",{"const":0}],"op":"test"}`
+- Cite: [ny_it2] p. 2, Boxes 15a through 17a, "If you have no New York State wages or withholding, leave boxes 16a and 17a blank." (Form IT-2 (2025), Summary of W-2 Statements; final 2025 edition (footer 'IT-2 (2025) (back)'); PDF modified 2025-09-26; sha256 45f6a7b5)
+
+## (helper) — `ny_it2.h_city_shown`
+
+- **Authored helper label:** This W-2 shows New York City tax withheld, so box 19 for New York City is completed (blank otherwise)
+- **Encoded (Bool):** line 19 > $0
+- Expr: `{"gt":["ny_it2.city_withheld",{"const":0}],"op":"test"}`
+- Cite: [ny_it2] p. 2, Boxes 18 through 20, "Complete the locality boxes 18 through 20 only for NYC or Yonkers (or both) wages and withholding, if reported on federal Form W-2." (Form IT-2 (2025), Summary of W-2 Statements; final 2025 edition (footer 'IT-2 (2025) (back)'); PDF modified 2025-09-26; sha256 45f6a7b5)
+
 ## 17a — `ny_it2.state_withheld`
 
 - **IRS:** NYS income tax withheld
 - **Encoded (NonNegDollars):** Input — New York State income tax withheld on this Form W-2 (box 17 for New York State; the corrected amount if you received a Form W-2c for it; 0 if none)
+- **Shown on the values sheet only when:** This W-2 shows New York State tax withheld, so box 17a is completed (blank otherwise) (`ny_it2.h_state_shown`)
 - Expr: `{"op":"input","source":"New York State income tax withheld on this Form W-2 (box 17 for New York State; the corrected amount if you received a Form W-2c for it; 0 if none)"}`
 - Cite: [ny_it2] p. 1, W-2 Record 1, "Box 17a NYS income tax withheld" (Form IT-2 (2025), Summary of W-2 Statements; final 2025 edition (footer 'IT-2 (2025) (back)'); PDF modified 2025-09-26; sha256 45f6a7b5)
 
@@ -28,6 +43,7 @@
 
 - **IRS:** NYS income tax withheld, in whole dollars
 - **Encoded (NonNegDollars):** Round line 17a to the nearest multiple of (half up) $1.
+- **Shown on the values sheet only when:** This W-2 shows New York State tax withheld, so box 17a is completed (blank otherwise) (`ny_it2.h_state_shown`)
 - Expr: `{"of":"ny_it2.state_withheld","op":"round","rule":"half_up","unit":100}`
 - Cite: [ny_it2] p. 2, Entering whole dollar amounts, "drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar" (Form IT-2 (2025), Summary of W-2 Statements; final 2025 edition (footer 'IT-2 (2025) (back)'); PDF modified 2025-09-26; sha256 45f6a7b5)
 
@@ -36,6 +52,7 @@
 - **IRS:** Local income tax withheld (New York City)
 - **Encoded (NonNegDollars):** Input — Form W-2 box 19, local income tax withheld for New York City (the corrected amount if you received a Form W-2c for it; 0 if none)
 - **Refusal:** when ny_it2.yonkers_gate is true, cannot complete Yonkers tax withheld (Form IT-201 line 74). Yonkers withholding means Yonkers tax may be owed, which is outside this tool. Cite: [ny_it201i] p. 17, Line 55: Yonkers resident income tax surcharge, "If you were a resident of Yonkers, did you enter an amount that is more than 0 on line 46?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+- **Shown on the values sheet only when:** This W-2 shows New York City tax withheld, so box 19 for New York City is completed (blank otherwise) (`ny_it2.h_city_shown`)
 - Expr: `{"op":"input","source":"Form W-2 box 19, local income tax withheld for New York City (the corrected amount if you received a Form W-2c for it; 0 if none)"}`
 - Cite: [ny_it2] p. 1, W-2 Record 1, "Box 19 Local income tax withheld" (Form IT-2 (2025), Summary of W-2 Statements; final 2025 edition (footer 'IT-2 (2025) (back)'); PDF modified 2025-09-26; sha256 45f6a7b5)
 
@@ -43,5 +60,6 @@
 
 - **IRS:** Local income tax withheld (New York City), in whole dollars
 - **Encoded (NonNegDollars):** Round line 19 to the nearest multiple of (half up) $1.
+- **Shown on the values sheet only when:** This W-2 shows New York City tax withheld, so box 19 for New York City is completed (blank otherwise) (`ny_it2.h_city_shown`)
 - Expr: `{"of":"ny_it2.city_withheld","op":"round","rule":"half_up","unit":100}`
 - Cite: [ny_it2] p. 2, Entering whole dollar amounts, "drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar" (Form IT-2 (2025), Summary of W-2 Statements; final 2025 edition (footer 'IT-2 (2025) (back)'); PDF modified 2025-09-26; sha256 45f6a7b5)

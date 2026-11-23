@@ -2,405 +2,399 @@
  "kind": "render",
  "form": "f1040",
  "family": "claude",
- "base": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
- "head_rows": {
-  "lines judged": "65",
-  "match / mismatch / unclear / missing": "60 / 5 / 0 / 0",
-  "line-scoped reviews": "7 (latest 2026-11-17); see Line-scoped reviews"
- },
+ "base": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
  "lines": [
   {
    "key": "Filing Status",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "821a994a2038d3f1db713493df4827f8d41876778c3dc4da6ad24861057217ef"
   },
   {
    "key": "Digital Assets",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "71dc0ed5701787125189e9ba5ccd0c9e2c85c0239eac24bb098ef432894edcad"
   },
   {
    "key": "1a",
-   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi pp. 23–24: inmate wages, nonqualified deferred compensation and section 457 amounts are behind the s1.line8_other screen (8t, 8u), and a statutory employee's box 1 is behind the Schedule C refusal. Project stands.",
+   "ruling": "Ruling: scope; as the 2026-11-17 ruling on this line. i1040gi pp. 23-24: inmate wages (Schedule 1 line 8u) and nonqualified deferred compensation or section 457 amounts in box 1 (line 8t) are behind the s1.line8_other screen, and a statutory employee's box 1 is behind the Schedule C refusal. Project stands.",
    "subject_key": "27f059c9f471319d0748001da19e2470a544b7ed948d7226d3b1291be325ce02"
   },
   {
    "key": "1b",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "4c19adefa16b924b35cefb9db60d829b0ef9eb7d3801468eadaee35b7d1c4a10"
   },
   {
    "key": "1c",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "233bc27440e370a775cd8ca64322e8fbab969bdbf69ec9276b516f77e75e5109"
   },
   {
    "key": "1d",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "015d612da0f91afeb440ec10981e7d9ee8612f305d6809d2ad419d91db16b342"
   },
   {
    "key": "1e",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "d5ef22c78afd0ef5f6f109bbcdf2677760c4d7ffd5f520a87e049470dd07e00f"
   },
   {
    "key": "1g",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "a3eff1b11632315fe0ec855efefd5544ed26903e0b167710cb508176bce6bce5"
   },
   {
    "key": "1h",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; the model says line 1h omits excess elective deferrals (i1040gi p. 24, Line 1h). A filer whose elective deferrals exceeded the limit answers scope.excess_deferral (asked when a W-2 is listed, scope.excess_deferral_if_w2), which is a disjunct of scope.other_income, and f1040 refuses on scope.other_income (\"Form 1040 additional income/return forms\"), so line 1h never completes with an excess deferral. Within scope the line's strike benefits and disability pensions before minimum retirement age are the listed items.",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
+   "status": "MATCH",
    "subject_key": "b826cdfb7552e8184af5e615c7d73cc59114ce45158bfc263cacd900531ec802"
   },
   {
    "key": "1z",
-   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; f1040: line 1f adoption benefits are outside the tool (Form 8839 is refused, scope.adoption_benefits); the remaining lines are the ones the tool computes. Project stands.",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
+   "status": "MATCH",
    "subject_key": "04b291483a418613d77d7e65cc12b4733de94c901647712c43d9e86c0c314c02"
   },
   {
    "key": "2a",
-   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "7d578e91c0d651eccc046afe11ab99f6e1c8a8af903698aa52c25db4656a440f"
   },
   {
    "key": "2b",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "5fcc23954b692569dc31edd39ea34ba57901711568268f9735580b422e2adf0b"
   },
   {
    "key": "3b",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "fc0d919dc7faf6fd5ac65cb5e848228df75d29999a29cc62284e92cd2106738c"
   },
   {
    "key": "3a",
-   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "6a4268625d70be5a9739c21eb14dbb013455a500b6660a028de86d03a0afaf02"
   },
   {
    "key": "4a",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
-   "status": "MATCH",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i1040gi p. 26, \"If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don't make an entry on line 4a\", against p. 27, More than one distribution, \"Enter the total amount of those distributions on line 4a\". With one exception distribution and one fully taxable, the project leaves the fully taxable box 1 off line 4a; the paragraph can be read either way and the reading is not registered. Line 4b and the tax do not move (BUG-1118).",
    "subject_key": "a28c1d2d1d899a3c9b47a283668ddb707c18323b70e203d8109645e207e34eb4"
   },
   {
    "key": "4b",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "6620cadac0eb1b28001d7d8cedfd87e8954994a18a874f7f585e6db170935a35"
   },
   {
    "key": "4c",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "65dd2eedde6095c32437eb186806035694176d2be3b1fdddc2b7a12a3e3d79a4"
   },
   {
    "key": "5a",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "b76b5a16b1954031c1d380c5bd5ea6b5098986fb0cb9acbc6b754561d87863fa"
   },
   {
    "key": "5b",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "ec85e20a66ce88520e36db64b23fe5b475dbb850a0805b24a1221022a2d44945"
   },
   {
    "key": "5c",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "faa6d5a633865d9447f56acba882229790b9fbe485ef62cb3e4a379353fc1665"
   },
   {
    "key": "6a",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "3c9c39fcb7e8eae4ef7b851ec424f4dd09a3454888081f205f0696886e9d3ebb"
   },
   {
    "key": "6b",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "d86997f8ac54a6d770580153f56807e9982af844a479111f1e56657854524caf"
   },
   {
    "key": "6c",
-   "record": "c1459c5c68b4683b937c7ce1957f783d73097cac7e93613c6fd7ba195c1347e7",
-   "status": "MATCH",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 31, Line 6c, \"you may be able to reduce the taxable amount with the lump-sum election. See Lump-Sum Election in Pub. 915\". When the election is made (ssb.lump_sum) the return is refused on Social Security Benefits Worksheet line 2 (\"Lump-Sum Election (Pub. 915)\", \"The lump-sum election method is outside this tool\"), so no completed return has the box checked with line 6b from the regular worksheet.",
    "subject_key": "7532ae0e6e78d781b65d15d2b809834982656e83218d5e01d9b6f8eae92d4000"
   },
   {
    "key": "6d",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
-   "status": "MATCH",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; i1040gi p. 31, Line 6d, \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d\": whether the box is checked on a return with no benefits is the registered ambiguity amb.2025.mfs_lived_apart_boxes, recorded on f1040.line6d; the project's choice stands.",
    "subject_key": "6662030df7a8a1a4573fffb1b7d1e82c1d17c0ad2618003683a6189d9abd5f34"
   },
   {
    "key": "7a",
-   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "e249f2f204991ead0df8403da9f499d883469fc83b7d39bd68132855bb976ba0"
   },
   {
    "key": "8",
-   "record": "2582a02f993770d93878eaccd2f970c6947401ad7ab5471be11d933184f3a797",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "a0943fae316ad24e6c300f3097b0449bdad9dab3a6b6341d175888610610b81d"
   },
   {
    "key": "9",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "f2c6d4fe575bd0732d0c7ac325754eff8ade5a4d8c9384751dc71735d85abc05"
   },
   {
    "key": "10",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "8a370d1449f8f47d0e15fa61b6f0e96449dc43e4092ac8de1d61296517252810"
   },
   {
    "key": "11a",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "a2565bb845cb974ed446b0df31ea3b5f270943a234756eedd7630f8745da751e"
   },
   {
    "key": "11b",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "32592108731abba0dc0ba828c4a253f46fd14c001b6e21d9e94468a6d214fc91"
   },
   {
    "key": "12b",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "3ac809a42af0ee01b5f89fc262f9065a06d1ff984b60088bca5bd1a1636fb74e"
   },
   {
    "key": "12e",
-   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi pp. 34–35: the worksheet's lines 6, 8t and 8u are outside the tool (scope.schedule1 refuses them), and a dual-status alien return is refused. Project stands.",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
+   "status": "MATCH",
    "subject_key": "53127771241cb7161fccae244e2ff5c5842f0fafc7229a1b419b3e851e6d5af3"
   },
   {
    "key": "13a",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "e258352b596023db5e54802197df09cb01780ab8d6b70ddbd7aa52ea71c3d100"
   },
   {
    "key": "13b",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "0f90650ca430b6e91289701897da2d2d5481f86c2e6516f5ebb818dbd36aca29"
   },
   {
    "key": "14",
-   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "2392b806b73434f2ac58a2a884a58daa60c209179d4548d3a5cbe09346bc357b"
   },
   {
    "key": "15",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "529dfbf02244cce5a0570f12789d45769cee7929b24ae5f5f209aaba235dfa0f"
   },
   {
    "key": "16",
-   "record": "c4b873cddfda1a8e57e266e7523d2c7f9b08ed473cfb2e212241b592946ba1f8",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "82d7b0a6f325e58a8b82017a073472ca9f75b84ae2df611a2c6df5a641435544"
   },
   {
    "key": "17",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "45b00d9cc0e82d68ec0ebff411154ac4865f412bcf690ede798a3752e74b543d"
   },
   {
    "key": "18",
-   "record": "2582a02f993770d93878eaccd2f970c6947401ad7ab5471be11d933184f3a797",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "9f2f23b34d2c954de77e2ca2ae97a48e77e13482535277e87b5efa622f00a7b0"
   },
   {
    "key": "19",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "661ccf6fabacdfc5dbeed2679b49c1aaaa34dc4213b748a5632cae37de70e51e"
   },
   {
    "key": "20",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "87f9a4c891ad603b013b63a33ef42efdc16e0e87e7596fb2113586ea46e21fca"
   },
   {
    "key": "21",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "e78210c213e00048312b24026d843d2132e9a009cd106de05c02a2261e74fb5f"
   },
   {
    "key": "22",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "b7625788ce9d141ec0fb0b6a14319f1ace11c791eef0514ffd26dc6378d7b134"
   },
   {
    "key": "23",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "565b62d0d2099e28f8bde9131d9cdd1b983a66f38a14863f602c82c80f97f629"
   },
   {
    "key": "24",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "8a9088c903bd76123f037f69f6223cbcc803b93e11c44db7676c5cc1892640e6"
   },
   {
    "key": "25a",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "2c184e8afa2c53003fbdabbd8d99953b958c052d0887c3ddc169b23662b41314"
   },
   {
    "key": "25b",
-   "record": "4f86841b3eb3e832c598731ab3d3ed608f6e180e252d8db208a2b1f5dc445b28",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "8691a9c651af8a6b888f454353ce5d16d185039a695789a3b376ec7986aa4fda"
   },
   {
    "key": "25c",
-   "record": "c1459c5c68b4683b937c7ce1957f783d73097cac7e93613c6fd7ba195c1347e7",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "7525152502051075a49c853d87d3a65bf19294715fadd4b3014407b2931c6345"
   },
   {
    "key": "25d",
-   "record": "c1459c5c68b4683b937c7ce1957f783d73097cac7e93613c6fd7ba195c1347e7",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "e00f99aecfb58e6ee066356d0f654619ef6eedd6a7c7bd88b727dd35102766cc"
   },
   {
    "key": "26",
-   "record": "4f86841b3eb3e832c598731ab3d3ed608f6e180e252d8db208a2b1f5dc445b28",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "97bedb5c612db69c64aee2e0915d023ea30ce3fda22bb54b33b28f2b45f20973"
   },
   {
    "key": "27a",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "bf43f55d097b1a5e46a1c995d6d792d9aebf9e6e659449289508fc523e3ee32e"
   },
   {
    "key": "27b",
-   "record": "6bebe585daf860b5f9e750e2302640e3cc7637f41a1c5aac9ed430c68c1b9778",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "a20b031558459071118df4ff950aae7fa88c05a96a615ae379e7cd552566a31d"
   },
   {
    "key": "27c",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "171d8b40e4a452ee0dba6c4bee06fb2fec98e4faef3369b23c6152cea5853410"
   },
   {
    "key": "Dependents (separated spouses)",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.separated_spouses_box (owner's decision, 2026-10-26). The model compares the restatement with the printed box wording, which has no EIC conditions. The only instructions for the box are the earned income credit's: i1040gi p. 41, Step 3, question 6, \"No. Check the box in the Dependents section that discusses the special rule for separated spouses on page 1 of Form 1040 or 1040-SR\", and p. 44, Special rule for separated spouses, \"If you meet these requirements, make sure you check the box in the Dependents section\". The register records both readings (checked only under the EIC special rule, or whenever the printed condition holds) and the first is chosen; the rendered English states the chosen reading (eic.separated_box) accurately. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
+   "status": "MATCH",
    "subject_key": "0b5bd74ffa4a6f74166572e4ee73a64075c3a6138c5360a76f16c995a061ab7b"
   },
   {
    "key": "28",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "b9a6b7bffe1cf49c42ad8901287d1a5cdb07dbf867fff6b95ff2f1d43d88edac"
   },
   {
    "key": "28 (box)",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "71d929f4d0e57acacf3d490441222411409e25718323efb656b75393099439be"
   },
   {
    "key": "29",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "bf8e122c641398ff6ab64893a96a2d0f48b107de070f9a3cb608e494918f4608"
   },
   {
    "key": "30",
-   "record": "fe652e56ac94a2053d575d852a028d157e2a1a60f4fbfe98c3b728c16230e090",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "a77c5f400120c8a43715ce63bb349a77994c1ca35516d6d143d98d0459b55eec"
   },
   {
    "key": "31",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "6e7bd6f7e4b96c2ae7ad40d1d733de8156425caf28fc5cdac2d22d1be075670b"
   },
   {
    "key": "32",
-   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "a10728aa07e83fed3c13866224298f691aee1c44f12a988b26dcaff455926a70"
   },
   {
    "key": "33",
-   "record": "c1459c5c68b4683b937c7ce1957f783d73097cac7e93613c6fd7ba195c1347e7",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "7d69c483028e994509cb303fbca82260f570c0861a862109e217e1fff95203f8"
   },
   {
    "key": "34",
-   "record": "c1459c5c68b4683b937c7ce1957f783d73097cac7e93613c6fd7ba195c1347e7",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "4c47c87ef6fa4b5565ba8df2d5e7189daed4b7ddb3ed59011e4a8b62dc294891"
   },
   {
    "key": "35a",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "8d1fc4c19a6c03deb960c6cf7e9bccc441522b7020e9873c344ae2784abf0162"
   },
   {
    "key": "36",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "f9353794e510e213d059e32845b29cdef528d551751d4b8d31b2777f7e460044"
   },
   {
    "key": "37",
-   "record": "c1459c5c68b4683b937c7ce1957f783d73097cac7e93613c6fd7ba195c1347e7",
+   "record": "6252bc4cee1928472b3c3bba7fe3bc5f43b013e8611897bb7aa219da8536173c",
    "status": "MATCH",
    "subject_key": "7740fe40ac498751d532d6cab36d708e7d7b4cd29e9b8cce426bef7f9531de73"
   }

@@ -7,10 +7,10 @@ changes:
     - C-PEOP-03
     evidence:
     - doc: f5329
-      page: 2
+      page: 1
       quote: Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 5
     - doc: f5329
-      page: 3
+      page: 2
       quote: Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2026 (including
         2026 contributions made in 2027). Include this amount on Schedule 2 (Form 1040), line 18
     - doc: f1040s2
@@ -31,14 +31,14 @@ changes:
         field: cite.locator
         from: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
           line 8"
-        to: p. 2, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
+        to: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
           line 5"
     - set:
         line: f5329.tax10
         field: cite.locator
         from: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
           line 8"
-        to: p. 2, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
+        to: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
           line 5"
     - set:
         line: f5329.l4
@@ -52,7 +52,7 @@ changes:
         field: cite.locator
         from: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
           line 8"; i5329 p. 5, Line 4, "you must multiply that amount by 25% instead of 10%"
-        to: p. 2, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
+        to: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040),
           line 5"; i5329 p. 6, Line 4, "you must multiply that amount by 25% instead of 10%"
     - set:
         line: f5329.l49
@@ -66,7 +66,7 @@ changes:
         field: cite.locator
         from: p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
           on December 31, 2025 (including 2025 contributions made in 2026)."
-        to: p. 3, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
+        to: p. 2, Part VII, line 49, "Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs
           on December 31, 2026 (including 2026 contributions made in 2027). Include this amount on Schedule 2 (Form 1040),
           line 18"
     - set:

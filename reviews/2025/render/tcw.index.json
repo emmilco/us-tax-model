@@ -2,237 +2,332 @@
  "kind": "render",
  "form": "tcw",
  "family": "claude",
- "base": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
+ "base": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
  "lines": [
   {
    "key": "(a)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "7753ce22aee7db9ab85bdf213917acb1f41042aaaef3d927ab5b227f7cac3773"
   },
   {
    "key": "(c) (single.row1.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "f9183fafe453248d121c990196460906ed4be8141a8a84a2706c6d412d9f2b46"
   },
   {
    "key": "Tax (single.row1.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "d602da729e12da8418bbcde0c78cf001ef486555fbabac66f62152a8c9d2fa94"
   },
   {
    "key": "(c) (single.row2.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "3291815d739aa9dd5066f8a080bbd545c2514dd4426d207c122f328aced189dc"
   },
   {
    "key": "Tax (single.row2.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "7ce7e1557f7ccec0042afa47813741a12077655626c7c74bc7efe17dcfb1ab7e"
   },
   {
    "key": "(c) (single.row3.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "6c9f5efe393c9a415dc291361ba8058311039268cd14c03e3d37dae21234215a"
   },
   {
    "key": "Tax (single.row3.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "e7d944c0d20c0d5acc662d1a74e17fa415cd63a9873bef1fbe567c3e48be1997"
   },
   {
    "key": "(c) (single.row4.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "4672028c96a9d665e865db9998db13f9120453d289e843a2561203134cba7422"
   },
   {
    "key": "Tax (single.row4.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "ec24be6f56842cdcfdfdc4e18868be6cbfcc8bbcec0fe90093f486e5a183b2e5"
   },
   {
    "key": "(c) (single.row5.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "f48e2d7ed0fc7d5263102b6054909fae1916b484a32fcf1c4d4b7b298a5a78ad"
   },
   {
    "key": "Tax (single.row5.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "8331f79c383ea6279dfa6c055346acdc98fdaa7dec0615ff855e184c5c7fe394"
   },
   {
    "key": "Tax (single.result)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "4010b8ba901a64ed23538a15a3f5686a5af0539bb434356159ba26c47d89b974"
   },
   {
    "key": "(c) (mfj.row1.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "7c2340216efb3b015a1b6160bb32df1826c7468e4c241b1a0b3c31f5ca835c82"
   },
   {
    "key": "Tax (mfj.row1.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "d97687cac322f6cc9829f2f6f91ac7e0ca56f56c2c54fb62dce6f83b0d19d01a"
   },
   {
    "key": "(c) (mfj.row2.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "2bc9cced29d25da643f88eaeb396c003684cf05531a1eb1c691f34420a6d3563"
   },
   {
    "key": "Tax (mfj.row2.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "07277a27f5b47080f5882fa4d8bd7b6f5e32742ccf120b1da7822464126e45f7"
   },
   {
    "key": "(c) (mfj.row3.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "0ed59b4fdad7454d37693271e6ec9efc78a9032e25ed274959579dfe8f1856e4"
   },
   {
    "key": "Tax (mfj.row3.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "4e27024d597e9a03e1e6ee39493b4b3700ad3386d6fe7048c5c9f4c036b925fc"
   },
   {
    "key": "(c) (mfj.row4.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "7f00a1166d1cd7f5b8f27c984c7883c1784daddd688076b0678f24ec3e90efa3"
   },
   {
    "key": "Tax (mfj.row4.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "f73e8c96e4eb0e41cbc4ec7217dd1343cd73b380c6d49b223357f7d6f3ce294b"
   },
   {
    "key": "(c) (mfj.row5.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "834a4792de242e59c111307142be4a7d3328fc06c36eb102067a6e19ed14a7a2"
   },
   {
    "key": "Tax (mfj.row5.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "285493d391a592e4762c7c79f12288b402ebe4895f11aca469d2a2815eeeb55f"
   },
   {
    "key": "Tax (mfj.result)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "4010b8ba901a64ed23538a15a3f5686a5af0539bb434356159ba26c47d89b974"
   },
   {
    "key": "(c) (mfs.row1.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "3587c1966da2b3ae3cc6032b8789a451467f52156dd23838bc22b46b88db5a64"
   },
   {
    "key": "Tax (mfs.row1.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "c4fe39b6a843a5aa4dcda89568a01f34ea0aeba0ddaa42637030e9614bf3553f"
   },
   {
    "key": "(c) (mfs.row2.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "91e7e636f402353ab34624b1c1113c58e2097d54a5c200550fbea030b1ebbe4b"
   },
   {
    "key": "Tax (mfs.row2.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "bab91c51cbeeea333fdd809dd83c6bf3ee20a605fb1e5fc90eed2158179f6d25"
   },
   {
    "key": "(c) (mfs.row3.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "f06d554b5e210df50525c62a2306a4aa7ebe8903a25328c8bb2d9dd5ab838de6"
   },
   {
    "key": "Tax (mfs.row3.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "2b0ec7758620e061680f93343e8b466ecc04397be27da994c524dcb7511fa657"
   },
   {
    "key": "(c) (mfs.row4.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "300b48181f78f0d6e22fa20dac362e6eac3500ac3140154278bf8e6f69cb2abf"
   },
   {
    "key": "Tax (mfs.row4.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "afbcc843ead9ad11ca54d4dc248bb2b771e96c193027e01120bea0b3766d4efe"
   },
   {
    "key": "(c) (mfs.row5.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "ab155d534492775711b21ac2136fb679e7d905e4da9d2e08ef3de922e2fdf155"
   },
   {
    "key": "Tax (mfs.row5.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "21917ff903edf2a26e6fc90112b00b38c8b64f42e8f36fe5fa5e0ab717b883f5"
   },
   {
    "key": "Tax (mfs.result)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "4010b8ba901a64ed23538a15a3f5686a5af0539bb434356159ba26c47d89b974"
   },
   {
    "key": "(c) (hoh.row1.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "94af4d4b70dce430cf0ddf5b0e196eaf7162b5078b5aec66e31bedd950e77ab3"
   },
   {
    "key": "Tax (hoh.row1.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "78293cff3368c81a8478f53dd5b8ce583d2c8bbecaff4c9ad26933b43809d3f2"
   },
   {
    "key": "(c) (hoh.row2.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "cec00b90ae67d17c43f3e0ce876fcb365342c237462796ce6eb8fa63b6611da5"
   },
   {
    "key": "Tax (hoh.row2.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "a96a85f5762c4a88b539983566aa4ce1164d8f019dc06871688ec078c9203a45"
   },
   {
    "key": "(c) (hoh.row3.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "c55da4d2350809cc574c1497b85ae1f49c079585bb9cdff97838210fcd19dc3b"
   },
   {
    "key": "Tax (hoh.row3.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "dbd66f68a568bd503ab9b8e778e3d20564ddfa1a7b4837cae7cc64027aa018f8"
   },
   {
    "key": "(c) (hoh.row4.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "fad0eb51df7f0464c1d82fa49d61802019d382874e12365c6b89630208737da1"
   },
   {
    "key": "Tax (hoh.row4.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "808019b45e5e6d0b180b9e6e994203cd6927cc7091227250a3300fb55f3adfa6"
   },
   {
    "key": "(c) (hoh.row5.product)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "b42061188587a75176dd9b5a8d8f72bf95a1f265405e54b5c0d42e50f43d2698"
   },
   {
    "key": "Tax (hoh.row5.tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "ce64df720b11dab508a7d970ad3b4cfb42d8294589d8dc42a9c8e29d71d95014"
   },
   {
    "key": "Tax (hoh.result)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "4010b8ba901a64ed23538a15a3f5686a5af0539bb434356159ba26c47d89b974"
   },
   {
    "key": "Tax (tax)",
-   "record": "8f812138cf63edeadf22b7940791c3ddb191787232eeaa1e05d7847f1378c510",
-   "status": "MATCH"
+   "record": "6cd457610d13458a7d3a873791bdd1971402367f88758b58fd343b46f688d167",
+   "status": "MATCH",
+   "subject_key": "ecf69bf7745e566455399831b369ac50cb014e2d55128d5adcd5b44163b0437d"
   }
- ]
+ ],
+ "subjects": {
+  "(a)": "9e858f0236e227cdb4c6b0db10ed629f500142c651a996f9084fe2d3711a036e",
+  "(c) (single.row1.product)": "33a0ee15accebb930d035ea75328002e039aa744d7b17285d770d5c29f8b33b7",
+  "Tax (single.row1.tax)": "93b61645a5bea26debf554653f34f182d01c476aa279e01bf52a93d4b12b2ab0",
+  "(c) (single.row2.product)": "f103c77eaef012514303f827bd57e1f1fe4421f2af458f6326d0a3084a1ee7a4",
+  "Tax (single.row2.tax)": "933344d5ba5bd30238316d19564c0a7b81ca585d95fc373d1603c5372eaef093",
+  "(c) (single.row3.product)": "8006ce1bc1c537cd6370f43c1c8a1b4e1705438d4dc496839173121080db6317",
+  "Tax (single.row3.tax)": "b7823569b869c068c0d64dc0935a4772fbab6b0adfea7093c1c64448f70c1804",
+  "(c) (single.row4.product)": "7dd6f9ee124182cd1ba90a1ae512162285407bc0b20787041508dbd0caf99c67",
+  "Tax (single.row4.tax)": "e1d50c7e883222251198efb05f786c37745bbb1c5da85d62959c6a650b5bbf93",
+  "(c) (single.row5.product)": "c15fde6f0b315c5a01ac1e488426e4da89425fb06749d452149516d2f8db214e",
+  "Tax (single.row5.tax)": "dae5c4925f69bf09bf726399e5695d6da26378669e1664d5200d6c33fef08726",
+  "Tax (single.result)": "f0a2b1e3c91272c358a90a0a6dc82f91cb0d073cfc76c1c76affb3e403b1a36f",
+  "(c) (mfj.row1.product)": "9031f3cb69dee17def22c4bd1ee71f07207219924a1e0a72d80ca7ccf2365e7e",
+  "Tax (mfj.row1.tax)": "9071df0a6cd96ca986e8345d41bb49299cc5a1f542bad7e7a41d70c0907df56c",
+  "(c) (mfj.row2.product)": "306bd8fa89192364aed1beb985fe2130f54ad4a0960b62adce55a1a7a645b895",
+  "Tax (mfj.row2.tax)": "72cc7a06dd9b142d74bd0495f7f671ebc91dd1918286bd0aef3f7093cc31b466",
+  "(c) (mfj.row3.product)": "b4d23df794c29fd0d2697fe91b6a09930eaa6b7225992c68fd7b8524963bdee2",
+  "Tax (mfj.row3.tax)": "c465ee489eacd1e5cb2336e4aa3b9c1bdd30bc070a46ad12c2391a8688446f0b",
+  "(c) (mfj.row4.product)": "5772c676faac7d666536bd49caf40ee7bfda4e34bae2019e9f945e2bce33c307",
+  "Tax (mfj.row4.tax)": "8b7efa3514efd457426143c893b9f6437be92ce717e59618b71d89a1ee4f42c6",
+  "(c) (mfj.row5.product)": "f441ae5d836967b2e503a7f2e8ed7dddc51cd4e75e5a1640b8252c039550f0ea",
+  "Tax (mfj.row5.tax)": "f4dbb810467654a84983bdafaadb5f282a52678d5e3e4a6e43ad4651acb3d38e",
+  "Tax (mfj.result)": "f0a2b1e3c91272c358a90a0a6dc82f91cb0d073cfc76c1c76affb3e403b1a36f",
+  "(c) (mfs.row1.product)": "e1da9c84c7f338fa225dd5bd11ae0fbc2582eb3db0a903fc99da1ac45a7e51ff",
+  "Tax (mfs.row1.tax)": "f05b56c6e395299d00f2db84cab2dc2845ed69ff586cf1f99432a9a7ca116d0a",
+  "(c) (mfs.row2.product)": "52abf366e1f2e5ad87c5b08eb2a084386d1a8fb1cf0b97213de643768034ea2a",
+  "Tax (mfs.row2.tax)": "6a41eef40a2f7d1232053cc5687826b9127ff4c000c620b35e96ebf5fe6d0532",
+  "(c) (mfs.row3.product)": "75bbd7e4308210dcadf0fdc262bc5d5d64677c62b2987bcc8373b260e385d87e",
+  "Tax (mfs.row3.tax)": "462559d9093ea75d5dee3132d67acdf6a700f77faf64cc690f5228f0c5095944",
+  "(c) (mfs.row4.product)": "106db7a5b189d5d73f95c3092080d0aaeae9a09633763b19de0f8ec613289336",
+  "Tax (mfs.row4.tax)": "4ec67a44d6dc513b2cd671ab8c02854dae69e74e96219949d4c86a6ebd33d77b",
+  "(c) (mfs.row5.product)": "da031cce1644ace271c8656de458e517c42dfb28f453ce15d04bcd4acd998e22",
+  "Tax (mfs.row5.tax)": "4e61b5f6facdec60556e4c58aefb34ecbb8465f956be8eb9fd3a303ddbc3ad4f",
+  "Tax (mfs.result)": "f0a2b1e3c91272c358a90a0a6dc82f91cb0d073cfc76c1c76affb3e403b1a36f",
+  "(c) (hoh.row1.product)": "e063ae3cac4787c04f21358d2c92f5bbb311ce8c43312b1be53ed69ea58f2d38",
+  "Tax (hoh.row1.tax)": "eb9cb6531e8851440e4707136d5cedfda4d4d530cbdd8fbcadc87ce539a9096d",
+  "(c) (hoh.row2.product)": "ad35ff2fba563c824a233f5ce88b9263231a34ad3fd3bd4bd3889d8b4cde4c94",
+  "Tax (hoh.row2.tax)": "59214f748e779bb75af6a523efe1ba0606a35f012326ab6a4d9d25782ce84526",
+  "(c) (hoh.row3.product)": "c46d1fbd74a73748cf8cec642aa0da71d3c76fafd082a181ae84a34e05340661",
+  "Tax (hoh.row3.tax)": "e41c5daafcc475ad6beb9ee9654ae2f9cd4ead08704853c7a451e5fd8668f177",
+  "(c) (hoh.row4.product)": "ce714c743f132380d6976887286589a74c5a3b6e1e8851efcf8e165ac983b496",
+  "Tax (hoh.row4.tax)": "44bac43a5ea4e18919a6051379b18ad3bd5d926883ddd2de5f8fa32cbb6d0ceb",
+  "(c) (hoh.row5.product)": "7fc1710b0ffa8ef0d4e88e69edf184b80d049a0c704ff91d653b27af166907ea",
+  "Tax (hoh.row5.tax)": "6c5f13a4accc3353103984c43c7d039121ed485e3c660fe80ae40217f5152e5f",
+  "Tax (hoh.result)": "f0a2b1e3c91272c358a90a0a6dc82f91cb0d073cfc76c1c76affb3e403b1a36f",
+  "Tax (tax)": "ad5413a18c485435c13f0aa9598b84188c3ad5b6c8a21cc6ff6fe1c45bf69fec"
+ },
+ "__rest__": "3c4c6fe2f2c5f3320c21430ef7ab68a209cb285b00b05faa46fcd5190934892d"
 }

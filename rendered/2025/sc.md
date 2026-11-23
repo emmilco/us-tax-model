@@ -110,7 +110,7 @@
 - **Authored helper label:** Does this business claim a credit for federal excise tax paid on fuel used for a nontaxable purpose, such as an off-highway business use (Form 4136)?
 - **Encoded (Bool):** Input — Does this business claim a credit for federal excise tax paid on fuel used for a nontaxable purpose, such as an off-highway business use (Form 4136)?
 - Expr: `{"op":"input","source":"Does this business claim a credit for federal excise tax paid on fuel used for a nontaxable purpose, such as an off-highway business use (Form 4136)?"}`
-- Cite: [i1040gi] p. 117, Line 12, "Enter any credit for federal excise taxes paid on fuels that are ultimately used for a nontaxable purpose (for example, an off-highway business use)"; i4136 p. 2, Part I—Information About Your Business, "You must have owned or operated a business and conducted a business activity with qualifying use of qualifying fuels" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 117, Line 12, "Enter any credit for federal excise taxes paid on fuels that are ultimately used for a nontaxable purpose (for example, an off-highway business use)"; i4136 p. 2, Part I—Information About Your Business, "You must have owned or operated a business and conducted a business activity with qualifying use of qualifying fuels"; i4136 p. 3, Type of Use Table, "The following table lists the nontaxable uses of fuels" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `sc.screened`
 

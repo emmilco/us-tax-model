@@ -44,6 +44,45 @@
   {
    "printed": "28 (h)",
    "project_expr_sha256": "9b20ab77d25f4d178f4c40a021a46e985cbefea980bc116ddd654e6a310acdc0",
+   "second_expr_sha256": "70a91830270ff6297ed38a22373a14bcbebbe08227fb2a4c5e32e18a919dec43",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,385/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 87}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 16}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "de53f26c7a86ddbe57b29dd7d51c276395f2767116d828589e69446e41012fc3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.7.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box8_stmt@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box16ef@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box4_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box4@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box16d_any@person[taxpayer].k1s[acme]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "28 (h)",
+   "project_expr_sha256": "9b20ab77d25f4d178f4c40a021a46e985cbefea980bc116ddd654e6a310acdc0",
    "second_expr_sha256": "ec64d6baf7abbe3781e3ce101927262accb50a1eec2f46dbcac662f9fbafc9c3",
    "ruling": "Ruling: model error; Triage (rerun after BUG-0913/-02): 186/256 agree; 9 candidate-unknown, 5 project-refuses, 55 project-unknown, 1 value. The value differences are fixtures k1s.material_by_earlier_years and classm.k1s.8 (box 1 $12,000, no work in 2025, k1s.past_years Yes): the reply counts test 5/6 only when the shareholder also worked in 2025 (it ANDs k1s.work with the tests), so it puts the $12,000 in passive column (h) instead of nonpassive column (k). i1120ssk p. 4, test 5: \"You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year\"; no participation in the current year is required. The project is right; the rest are project-refuses/unknown on records the project refuses or never builds.",
    "context": "e4bc307c0d46025fb5e042022c795496fd7122005964cded5fb06df704473e33",
@@ -112,6 +151,45 @@
      "partial:classm.k1s.1-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
      "partial:classm.k1s.1-person[taxpayer].k1s[acme].box17v_any@person[taxpayer].k1s[acme]",
      "partial:classm.k1s.1-person[taxpayer].k1s[acme].box4_any@person[taxpayer].k1s[acme]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "28 (i)",
+   "project_expr_sha256": "343fc7b98f7f4ccc248e7e0e805967bca4ef43795131a3146c3514fcadb3246a",
+   "second_expr_sha256": "af10a8bf28fb728287659dd207f7b4a80a7eab44f471e931ddf27052642eeebb",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,380/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 92}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 13}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "1c948fe17923444720c235736a56e647e61aa9c5e1f23e7764b8301789b8f7e9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.7.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box8_stmt@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box16ef@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box16ef@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].prior_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].trader@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].prior_any@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -275,14 +353,53 @@
    }
   },
   {
+   "printed": "28 (k)",
+   "project_expr_sha256": "2e0eee2e3ab09ee83d5c265d7d0db09253ec926d18c2b046945565294071399e",
+   "second_expr_sha256": "6119fc0cd868d87cdf7ee1e6a25428de0ca83888427927786a271c2aa3fab5d6",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,354/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 118}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 21}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "222aa301362b98f2a497f0edc3bf584fb6ea8d0d17465af8e061fa0ab022dfad",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.7.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box8_stmt@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box16ef@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box2_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box2@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box4_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box4@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box16d_any@person[taxpayer].k1s[acme]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "k1s.backup",
    "project_expr_sha256": "072ea5e09062a121de7972588702d45f10c8ef6b5da44da806e3c8d401dcd455",
    "second_expr_sha256": "404c0c1e2dce4a80c1f4e75f328a8b41e2ad62b0fd6953c210155f3dd7d4e0bd",
-   "ruling": "Ruling: scope; i1120ssk p. 13, Code O. Backup withholding, \"Include this amount in the total you enter on Form 1040 or 1040-SR, line 25c\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 339 of 559 comparisons agree, 339 of 531 in scope; completed {\"project-refuses\": 5, \"project-unknown\": 108}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "4697589cdf67c43a3b8d3a7eb572d385a426435e95d7be690e51d56a453842d0",
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,264/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 225}; on completed returns {\"project-unknown\": 53}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "577ef1d9a55e3fbb0e3553ed4ba6b21d8c638272c20bb51bb7ea4b22be197a70",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -296,12 +413,12 @@
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16d_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16d@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]"
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].hours500@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -458,11 +575,11 @@
    "printed": "k1s.g28",
    "project_expr_sha256": "e01defb2f074f129acce20ff07db12b091c1cf617a22078214acdbd673f8706f",
    "second_expr_sha256": "857479e6a1fc87b577e8c8503e3129d9792c5ba42f1fd20b3dc571a18bbb2893",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 8b. Collectibles (28%) Gain (Loss), \"report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 353 of 559 comparisons agree, 351 of 531 in scope; completed {\"project-refuses\": 5, \"project-unknown\": 125}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "620411edadcb80288abbcffc7f999a5a5331368d963942afd756e41addbcf657",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,240/1,517 agree; differences {\"project-refuses\": 27, \"project-unknown\": 250}; on completed returns {\"project-unknown\": 34}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "8b140e3a71e6685efe29bb1f0ed32b1298c2cefb2fa23d49a9891798b65f5785",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -470,18 +587,18 @@
      "project-unknown"
     ],
     "witnesses": [
+     "fixture:classm.f7203.1@person[taxpayer].k1s[acme]",
+     "fixture:classm.f7203.2@person[taxpayer].k1s[acme]",
+     "fixture:classm.f7203.3@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
      "fixture:mk1.k1s.refuse_disposed@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16d_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16d@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box17v_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]"
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].hours500@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].multi@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -527,11 +644,11 @@
    "printed": "k1s.int",
    "project_expr_sha256": "f4fb5794dfefb3445e1e89d20a9b2fc312e300130198cf03af0b8519985a00f7",
    "second_expr_sha256": "fa992864c11d8208e5d4c17a63b40179765cf58972826294db1948e20c22179c",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 4. Interest Income, \"Report interest income on Form 1040 or 1040-SR, line 2b\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 287 of 559 comparisons agree, 287 of 531 in scope; completed {\"project-refuses\": 5, \"project-unknown\": 163}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "19d2bb80c7bd3d285f4a8c85b98bc5fd60093962c63e7ae69c5a660eac963e07",
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,138/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 351}; on completed returns {\"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "5f8f20e6e12356e313ab4cf6e765dae0049b6b89fb64bd654b1283f8ffe4ee5e",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -548,9 +665,9 @@
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]"
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box2_any@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -559,32 +676,30 @@
    "printed": "k1s.lt",
    "project_expr_sha256": "cb1abb73f8efeaf466742b51d4e07819ba372ed615d3499c63f8a956a55ce812",
    "second_expr_sha256": "21ba9f36e88cce85d95bb0df7b19db3af9b67a654c9389e2c0f8e394f2020496",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 8a. Net Long-Term Capital Gain (Loss), \"report the net long-term capital gain (loss) on Schedule D (Form 1040), line 12\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 352 of 559 comparisons agree, 350 of 531 in scope; completed {\"candidate-unknown\": 1, \"project-refuses\": 5, \"project-unknown\": 125}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "4c4fb47def3ff352768e74b711dd86df2c3aa2d2bab7ee6df900cebf2a62625c",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,310/1,517 agree; differences {\"project-refuses\": 22, \"project-unknown\": 185}; on completed returns {\"project-unknown\": 24}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "3b03383b311b94be2338b075b2463acf02fc23dda2caa3eed07291163443d75d",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "candidate-unknown",
      "project-refuses",
      "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.k1s.2@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
-     "fixture:mk1.k1s.refuse_disposed@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16d_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16d@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box17v_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]"
+     "fixture:mk1.k1s.refuse_box6@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].hours500@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].multi@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box6@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box9@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box11_12@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -630,42 +745,37 @@
    "printed": "k1s.nonpassive",
    "project_expr_sha256": "ce38cf2e7f6957e3048d2230356e66c3e667a3d40ef12c7ca5bf93f4507b8465",
    "second_expr_sha256": "47adf26ffd54d61d385649ee2a8f3d7388496b9fc8af2d7c7ab74d004be00657",
-   "ruling": "Ruling: model error; i1120ssk p. 4, test 5: \"You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year\". The reply keeps the test 5/past-years reading the earlier ruling refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 470 of 559 comparisons agree, 453 of 531 in scope; completed {\"candidate-unknown\": 24, \"project-refuses\": 4, \"project-unknown\": 27, \"value\": 2}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "0476b69afc81a4b83a89adabe00514cebc05c09ceae9bdfa1de90969b76329d0",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,380/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 92}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 13}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "664126ffa8464ba0a86af49cbad3c03210530e30b2e811d83af89d98b386ae3e",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-unknown",
      "project-refuses",
-     "project-unknown",
-     "value"
+     "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.k1s.1@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.2@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.3@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.4@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.5@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.6@person[taxpayer].k1s[acme]",
-     "fixture:k1s.loss_over_basis_prorata@person[taxpayer].k1s[acme]",
-     "fixture:k1s.loss_over_basis_ratio_rounding@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.7.deepseek@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
-     "fixture:k1s.refuse_qbi_basis_cut@person[taxpayer].k1s[acme]",
      "fixture:mk1.k1s.refuse_box8_stmt@person[taxpayer].k1s[acme]",
-     "fixture:mk1.k1s.refuse_v_other@person[taxpayer].k1s[acme]",
-     "fixture:mk1.k1s.refuse_f7203_election@person[taxpayer].k1s[acme]",
-     "fixture:mk1.k1s.f7203_loss_over_basis_line14@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16d_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16d@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box17v_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box4_any@person[taxpayer].k1s[acme]"
+     "fixture:mk1.k1s.refuse_box16ef@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box16ef@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].prior_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].trader@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].prior_any@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -674,11 +784,11 @@
    "printed": "k1s.ord_div",
    "project_expr_sha256": "12f51ce10d1eca7124d4c9ffe175937b64bb1f9bced63698f2e35dde37f5cdb6",
    "second_expr_sha256": "2aeefab6ce93ef16f865897f42bc7829bd64834707a471406e297a3007f1ed0e",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 5a. Ordinary Dividends, \"Report ordinary dividends on Form 1040 or 1040-SR, line 3b\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 289 of 559 comparisons agree, 289 of 531 in scope; completed {\"project-refuses\": 5, \"project-unknown\": 162}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "9f635a046428d260ee8a7f4ba1f793cb075d0c607b90a1c3352463d5a85ad553",
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,138/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 351}; on completed returns {\"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "ae75edaae1e757c8c0ddee9ae57be31f2798aa7178efc1962a388feb33a1db66",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -695,9 +805,48 @@
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]"
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box2_any@person[taxpayer].k1s[acme]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1s.p4_income",
+   "project_expr_sha256": "f435a08f5069a57d2b7e57847da227c4ff95ef2d44a0c901e16939bf51fb4b02",
+   "second_expr_sha256": "933405c10cdbfd6e04809b0ca933ea2dee3faf7daaffe4414094f848ad1fcc1d",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,336/1,517 agree; differences {\"candidate-unknown\": 13, \"project-refuses\": 19, \"project-unknown\": 149}; on completed returns {\"project-unknown\": 35}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "decf3da661f2640b3e0e78924bd7311012f1abb9acad708c3f29a4457fde8a9c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.8.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box6@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].hours500@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -891,6 +1040,84 @@
    }
   },
   {
+   "printed": "k1s.p4_loss",
+   "project_expr_sha256": "bd2524e3190bbc97d121f0c11548194112444d7ba4b2bdeed27fe6a9fd985147",
+   "second_expr_sha256": "f51974bcea09d11029d5c51eed9844093f0f34a4ed4c4f84d7990cd914e366ba",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,341/1,517 agree; differences {\"candidate-unknown\": 13, \"project-refuses\": 19, \"project-unknown\": 144}; on completed returns {\"project-unknown\": 35}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "d23fb0b96925e1b96a5fcbea2add2199e20d6f9dd04a3ed49da37fd343aaca5c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.8.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box6@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].hours500@person[taxpayer].k1s[acme]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1s.p4_prior",
+   "project_expr_sha256": "f143a979d0e0715ad2f52e2e3e47b9a9561c75977891483d6554efffabca30a7",
+   "second_expr_sha256": "7df59871c230563de5b6ac3cff008f13ee146f2fa11499bac40ef12f1a99c547",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,334/1,517 agree; differences {\"candidate-unknown\": 13, \"project-refuses\": 19, \"project-unknown\": 151}; on completed returns {\"project-unknown\": 35}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "4bed7e49fb551b951c6020b0f0fb7aefc7aa22e89122d2ba45b5c1a7d91de9f9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.8.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box6@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].hours500@person[taxpayer].k1s[acme]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "k1s.p4_prior",
    "project_expr_sha256": "f143a979d0e0715ad2f52e2e3e47b9a9561c75977891483d6554efffabca30a7",
    "second_expr_sha256": "911163c44e035a810e3fbb3f18e401a7e639635ba19db7c8767b2f6c3bd60f36",
@@ -1076,6 +1303,45 @@
    }
   },
   {
+   "printed": "k1s.p5_income",
+   "project_expr_sha256": "96b65d641ddd4d14c943b2b9f2b77691de303e41f333948903043d22a934167f",
+   "second_expr_sha256": "df237693daf9933ad35a968c6735ad01894cd68fb53f203484864fa489d7ff9f",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,361/1,517 agree; differences {\"candidate-unknown\": 27, \"project-refuses\": 19, \"project-unknown\": 110}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 24}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "4d60d36419c20cd3af1121c71b15f6a90cacf99d0b62068fd67959eecbccec42",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.8.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box6@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box4_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box5_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box6@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box7_any@person[taxpayer].k1s[acme]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "k1s.p5_loss",
    "project_expr_sha256": "3832b2a8a58d97c497008428e308e9ce3eba0fc7da7a8660dc8b63c222ee8223",
    "second_expr_sha256": "55f71eece7d1f7b3b289b60819eb4bb092a1e691a3cbbf7b0a6a6577ddce11c3",
@@ -1193,6 +1459,45 @@
    }
   },
   {
+   "printed": "k1s.p5_loss",
+   "project_expr_sha256": "3832b2a8a58d97c497008428e308e9ce3eba0fc7da7a8660dc8b63c222ee8223",
+   "second_expr_sha256": "87aa3c9160d96521f514ecfa0dadbfcf5d46ff49bd001471f18b734eaae9c94b",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,394/1,517 agree; differences {\"candidate-unknown\": 27, \"project-refuses\": 19, \"project-unknown\": 77}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 12}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "cd119d53cdb0e523ecb2ee037ce685596daf1d0651399ffa2582e7db8307cd23",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.8.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box6@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box6@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box13_other@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box14@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box15@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].prior_any@person[taxpayer].k1s[acme]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "k1s.p5_prior",
    "project_expr_sha256": "1a4f6edaf144a9e5fe93a5c3ca9fa47463c04a60b1c004573bd9afdc1d374d8a",
    "second_expr_sha256": "0d2daf006f67c0e9c25b9beb0be80a48b0096424b45ccd2b96412bb056291bff",
@@ -1265,6 +1570,45 @@
   {
    "printed": "k1s.p5_prior",
    "project_expr_sha256": "1a4f6edaf144a9e5fe93a5c3ca9fa47463c04a60b1c004573bd9afdc1d374d8a",
+   "second_expr_sha256": "9e7270ace5a260835a39371026b32a148ea05563f738797680716185124cb276",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,337/1,517 agree; differences {\"candidate-unknown\": 21, \"project-refuses\": 19, \"project-unknown\": 140}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 30}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "288bc80e0e252eac591e0c85c3af7883d0cefd70176f596538380d33eec30844",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.8.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.1@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.8@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
+     "fixture:mk1.k1s.refuse_box6@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box2_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box4_any@person[taxpayer].k1s[acme]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1s.p5_prior",
+   "project_expr_sha256": "1a4f6edaf144a9e5fe93a5c3ca9fa47463c04a60b1c004573bd9afdc1d374d8a",
    "second_expr_sha256": "ebf3b439dd8694395becd04a7986e52a039703ce408bf09f0b2977c9faf5797f",
    "ruling": "Ruling: representation; 156/307 agree on executable triage (k1s.json; fixtures reaching k1s, generated returns do not reach it: scope.k1 refuses every K-1 filer); differs: 45 project-refuses, 106 project-unknown; no value differs. project-refuses: the project's k1s.ok carries every refusal (boxes 6, 9-15, 16 E/F, 17 other, more than one activity, disposition, at-risk, basis and at-risk carryovers, tests 2, 4 and 7, Form 7203 loans, election, distribution above basis, capital loss limited) and the reply's own screen omits some of them (e.g. box 15, the f7203 refusals), which changes nothing on a return the project refuses; project-unknown: partial records withholding a gating answer the project asks and the reply does not read. The reply's notes on MFS and the real estate professional exception are out of scope: MFS is refused (s3.mfs) and a real estate professional by sche.re_pro.",
    "context": "3f7d5b019bee13bf61ba62da0f0657cd84d24e9f91eaf06d26768bfd30a724a7",
@@ -1298,44 +1642,37 @@
    "printed": "k1s.qbi",
    "project_expr_sha256": "245147e91a771c421b7cf6003ad7464519c86e38711d5a0d50fd2c9115c5519b",
    "second_expr_sha256": "58d6e439f52e766de722e0a3db329f1d4ea9e22fb9d75016651f36088a799fea",
-   "ruling": "Ruling: scope; i1120ssk p. 17, Code V. Section 199A information, \"When determining QBI or qualified PTP income, you must include only those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable income for the tax year\". On completed returns the reply refuses K-1s the project computes (its own refusal on the line); the project's scope is the narrower and is cited. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 401 of 559 comparisons agree, 388 of 485 in scope; completed {\"candidate-refuses\": 3, \"candidate-unknown\": 25, \"project-refuses\": 4, \"project-unknown\": 44}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "5861c5f4ba57c6a1911f9efc8ef8946aeb5e8723dbfd4413ccc87e42114f8ee3",
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,237/1,517 agree; differences {\"candidate-unknown\": 25, \"project-refuses\": 30, \"project-unknown\": 225}; on completed returns {\"candidate-unknown\": 2, \"project-unknown\": 53}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "7205f0315e71c206a84225a3800c4b7dac2529cc7a3b4f287f2a1045065b7aac",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "candidate-refuses",
      "candidate-unknown",
      "project-refuses",
      "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.k1s.2@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.3@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.4@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.5@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.6@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.7@person[taxpayer].k1s[acme]",
-     "fixture:k1s.loss_over_basis_prorata@person[taxpayer].k1s[acme]",
-     "fixture:k1s.loss_over_basis_ratio_rounding@person[taxpayer].k1s[acme]",
-     "fixture:k1s.passive_rental_prior_loss@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.1.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.7.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
+     "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
-     "fixture:k1s.refuse_qbi_basis_cut@person[taxpayer].k1s[acme]",
-     "fixture:mk1.k1s.refuse_box6@person[taxpayer].k1s[acme]",
-     "fixture:mk1.k1s.passive_box1_loss_box2_income@person[taxpayer].k1s[acme]",
-     "fixture:mk1.k1s.box2_loss_box3_income@person[taxpayer].k1s[acme]",
-     "fixture:mk1.k1s.box3_loss_box7_gain@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16d_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16d@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box4_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box5_any@person[taxpayer].k1s[acme]"
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].hours500@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1344,11 +1681,11 @@
    "printed": "k1s.qual_div",
    "project_expr_sha256": "2caea45edc9f2dbe9a904478b03b8b472fe356eab643f4fcda98687b07139df3",
    "second_expr_sha256": "09deb319184ab38dc0452a33b2525f830469c64cb0ba6ea226b9cba6b06aedd8",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 5b. Qualified Dividends, \"Report any qualified dividends on Form 1040 or 1040-SR, line 3a\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 287 of 559 comparisons agree, 287 of 531 in scope; completed {\"project-refuses\": 5, \"project-unknown\": 163}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "3b527f1dd7386282af491cacb5ab2399b9b8614a9eb2006a5b22f0e0d638a87d",
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,137/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 352}; on completed returns {\"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "7c6430251345fd1a6e74ffa0a34561840dd70a851ba002c8c91362d80815e072",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1365,9 +1702,9 @@
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]"
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box2_any@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1376,32 +1713,30 @@
    "printed": "k1s.st",
    "project_expr_sha256": "13925ac327d252de45fd30d9e5b30563a2345eefe102d916dea7e1922a2d0150",
    "second_expr_sha256": "74c65683fd3917cdb8ca4a9ea64eb311a30697e974d89e9baf8d192838d8104c",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 7. Net Short-Term Capital Gain (Loss), \"report the net short-term capital gain (loss) on Schedule D (Form 1040), Capital Gains and Losses, line 5\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 352 of 559 comparisons agree, 350 of 531 in scope; completed {\"candidate-unknown\": 1, \"project-refuses\": 5, \"project-unknown\": 125}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "bfccb44597e104bd4a78d5ef0c1ac9d87011d623c04c50af0ab3dc12d2a60275",
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,310/1,517 agree; differences {\"project-refuses\": 22, \"project-unknown\": 185}; on completed returns {\"project-unknown\": 24}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "52af04a8361dd163dc34d6798014bddfb892e99ee8393c9b84bea6b284668c81",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "candidate-unknown",
      "project-refuses",
      "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.k1s.2@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
-     "fixture:mk1.k1s.refuse_disposed@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16d_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16d@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box17v_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]"
+     "fixture:mk1.k1s.refuse_box6@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].hours500@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].multi@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box6@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box9@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box11_12@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1447,11 +1782,11 @@
    "printed": "k1s.taxexempt",
    "project_expr_sha256": "975fcb8a35ac1678f34345a97c6dcf02d9d6e3d20503f5997d11296fdf8d220e",
    "second_expr_sha256": "f73ba65d94f597fa376861c60444ac418ddc271c3d1f6d49884ee3fcc76e93d3",
-   "ruling": "Ruling: scope; i1120ssk p. 15, Code A. Tax-exempt interest income, \"Individual shareholders include this amount on Form 1040 or 1040-SR, line 2a\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 295 of 559 comparisons agree, 295 of 531 in scope; completed {\"candidate-unknown\": 8, \"project-refuses\": 5, \"project-unknown\": 141}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "64e316c0ef1713ce75a493f7bcb158f12fa17f5dcd7006eecdb56468d3c6b324",
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,179/1,517 agree; differences {\"candidate-unknown\": 21, \"project-refuses\": 28, \"project-unknown\": 289}; on completed returns {\"candidate-unknown\": 2, \"project-unknown\": 53}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "b4903aa066e76ade3196d38859300afaee899176855c5f91fab0d43a97edf44c",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1460,24 +1795,24 @@
      "project-unknown"
     ],
     "witnesses": [
+     "fixture:classm.k1s.2.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.7.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.8.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.9.deepseek@person[taxpayer].k1s[acme]",
      "fixture:classm.f7203.2@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.2@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.5@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.6@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.7@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.8@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16d_any@person[taxpayer].k1s[acme]",
-     "partial:classm.k1s.1-person[taxpayer].k1s[acme].box16d@person[taxpayer].k1s[acme]",
-     "partial:k1s.passive_investor_portfolio-person[taxpayer].k1s[acme].box16a_any@person[taxpayer].k1s[acme]"
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box2_any@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box2@person[taxpayer].k1s[acme]",
+     "partial:classm.k1s.1.deepseek-person[taxpayer].k1s[acme].box4_any@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1486,11 +1821,11 @@
    "printed": "k1s.u1250",
    "project_expr_sha256": "d7f350783d136e6e5d13bc55878ef9fbb68d6dad1892836eccc31c7dea9c4f24",
    "second_expr_sha256": "a8c86bb9c00b5863d8b790df9d3c519581d0e52f51a228e90f64d2d26987ea75",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 8c. Unrecaptured Section 1250 Gain, \"Report unrecaptured section 1250 gain from the sale or exchange of the corporation’s business assets on line 5\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 335 of 559 comparisons agree, 334 of 531 in scope; completed {\"candidate-unknown\": 10, \"project-refuses\": 5, \"project-unknown\": 103}. Project stands.",
-   "context": "8bf3aa64e5ea752d12e207543991e783258cade2f79c74eb14070c910902588a",
-   "date": "2026-11-17",
-   "run": "ec1afbd324b9842060ad696a3a0d8313e9407aa1f67a00d8b50e6ca2f92774db",
-   "subject_key": "bddfd1ef26701076db3d5b580f1ff63bc18bf175c64947ef4a0cb954a2a996d9",
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,249/1,517 agree; differences {\"candidate-unknown\": 25, \"project-refuses\": 27, \"project-unknown\": 216}; on completed returns {\"candidate-unknown\": 2, \"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "context": "e881ecc3aeed9c9e199b08bb1b985e0eadb29edeaa362b397e69787226c660a9",
+   "date": "2026-11-22",
+   "run": "4452bdfe63d858ca193842e3ad27150b2114cb0bd8643986e2a00119fd598696",
+   "subject_key": "215d517ec9ca12fa808f54a35094bd850fde9a6a5bbaf8302d1bd97d3e95637d",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1499,24 +1834,24 @@
      "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.k1s.1@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.3@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.4@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.5@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.6@person[taxpayer].k1s[acme]",
-     "fixture:classm.k1s.7@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.1.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.3.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.5.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.6.deepseek@person[taxpayer].k1s[acme]",
+     "fixture:classm.k1s.7.deepseek@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_capital_loss_limited@person[taxpayer].k1s[acme]",
      "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16d_any@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box16d@person[taxpayer].k1s[acme]",
-     "partial:k1s.owner_distribution-person[taxpayer].k1s[acme].box17_any@person[taxpayer].k1s[acme]"
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box1@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3_any@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].box3@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].work@person[taxpayer].k1s[acme]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].hours500@person[taxpayer].k1s[acme]"
     ],
     "policy": "executable-triage-v2"
    }

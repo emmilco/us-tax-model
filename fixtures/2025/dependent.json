@@ -6912,7 +6912,8 @@
         "person[taxpayer].retirement[r2].box5": 265700,
         "dependent[dep_a].edu": true,
         "dependent[dep_a].edu_1098t": true,
-        "dependent[dep_a].edu_line24": true
+        "dependent[dep_a].edu_line24": true,
+        "dependent[dep_a].edu_tin_issued": true
       },
       "expect": {
         "dependent[dep_a].edu_show24": {

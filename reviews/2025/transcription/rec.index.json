@@ -4,38 +4,29 @@
  "family": "claude",
  "base": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-17); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "rec.path",
-   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "record": "8a937239d2bb95f9dd8347174d3894842d0a133f0982b595ef105907eeea3fd5",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply's path is any recovery kind ticked, without the 2024 itemizing test. On fixture rec.not_itemized (a property tax refund, no itemized deductions for 2024) the project says false and the reply true (41 value differences, 1 completed). p525 p. 27, Worksheet 2 is 'Recoveries of Itemized Deductions' and 'A recovery is included in income only to the extent of the deduction amount that reduced your tax in the prior year': a filer who did not itemize has no itemized deduction to recover, so the project's gate (scope.recovery then refund.itemized) is right.",
-   "subject_key": "176083537f301959cf45fed661249c585312691edff7c2af3a5619a0d0a300ac"
+   "ruling": "Ruling: model error; p525 p. 27, Recoveries of Itemized Deductions: Worksheet 2 is used when the recovered amount was deducted as an itemized deduction in 2024. The reply adds its own test (rec.h_less) and gives false on the official example fixture rec.ex30 (p525 p. 26, Example 30), where the project gives true; executable triage (.transcription/triage/2025/rec.json, this pass): 2,643/3,347 agree; differences {\"candidate-refuses\": 39, \"candidate-unknown\": 639, \"project-unknown\": 9, \"value\": 17}; on completed returns {\"candidate-unknown\": 145, \"value\": 13}. Rerun only because scope.recovery was reworded (BUG-0982).",
+   "subject_key": "2c2dad0e066e9e4f6614b9dae5aae56448dcf6873810e33e5e740b9d39743b1b"
   },
   {
    "key": "rec.to_line1",
-   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "record": "8a937239d2bb95f9dd8347174d3894842d0a133f0982b595ef105907eeea3fd5",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply refuses through its own gate rec.h_ti_conflict on 1,095 completed returns where the project computes (stage14.asset.hy_5yr: project $0, no recovery at all); its value branches follow the p525 p. 27 split ('If line 11 equals line 3 ... line 1a on Schedule 1, line 1'; 'If line 11 is less than line 3 and either line 1a or line 1b or line 2 is zero ...'), which the project's line B gives on every return that reaches it (no value difference).",
-   "subject_key": "fdf51b12dc4283003e4cd68c99f8c5be3f7efe05ed77e4fc17192c8eddc6321a"
+   "ruling": "Ruling: model error; as rec.path: the reply computes the line 1 share where the project's path is false (stage16.refund.f3, project $0, reply $3,000) and refuses through its own gate elsewhere; executable triage (.transcription/triage/2025/rec.json, this pass): 2,394/3,347 agree; differences {\"candidate-refuses\": 52, \"candidate-unknown\": 884, \"project-unknown\": 9, \"value\": 8}; on completed returns {\"candidate-unknown\": 209, \"value\": 8}.",
+   "subject_key": "189ce982954e8d38758829cac1c491746915c517eac65eb473ba0fc3a153edaa"
   },
   {
    "key": "rec.to_line8z",
-   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "record": "8a937239d2bb95f9dd8347174d3894842d0a133f0982b595ef105907eeea3fd5",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as rec.to_line1: the reply refuses through its own rec.h_ti_conflict on 1,095 completed returns where the project computes $0; no value differs where both compute.",
-   "subject_key": "701c99dc0ccaa25eed3bc16bc5dd0d7fcd5984c9e2c3b2943cdf0fa7217d4dbe",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "rec.not_2024": "rec.before_prior_year",
-     "rec.not_2024_if_any": "rec.before_prior_year_if_any"
-    },
-    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
-    "was": "b80787bbe866cf1f823500ce6cae723f45f868490843bc6fb606418c50b80c74"
-   }
+   "ruling": "Ruling: model error; as the ruling of 2026-11-15: the reply refuses through its own gate where the project computes; executable triage (.transcription/triage/2025/rec.json, this pass): 2,410/3,347 agree; differences {\"candidate-refuses\": 44, \"candidate-unknown\": 884, \"project-unknown\": 9}; on completed returns {\"candidate-unknown\": 209}; no value differs where both compute.",
+   "subject_key": "8c1d55348209b3bd02729e0a1659f079612898e74509c7627fc622fae33b9092"
   },
   {
    "key": "2a:1",
@@ -46,10 +37,10 @@
   },
   {
    "key": "2a:2",
-   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "record": "8a937239d2bb95f9dd8347174d3894842d0a133f0982b595ef105907eeea3fd5",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply drops the parent gate (scope.recovery and refund.itemized). Its one completed value difference (rec.not_itemized, project $0, reply $300) is a non-itemizer for whom Worksheet 2 is not used (p525 p. 27, Recoveries of Itemized Deductions).",
-   "subject_key": "ac99d3aca51363e9b042ecde8ab05cbecfd14713b9432fd5b925171240c34f14"
+   "ruling": "Ruling: representation; as the ruling of 2026-11-15: the reply drops the parent gate (scope.recovery and refund.itemized); its completed value difference is rec.not_itemized, a non-itemizer for whom Worksheet 2 is not used (p525 p. 27); executable triage (.transcription/triage/2025/rec.json, this pass): 2,555/3,347 agree; differences {\"candidate-unknown\": 781, \"project-unknown\": 9, \"value\": 2}; on completed returns {\"candidate-unknown\": 152, \"value\": 1}.",
+   "subject_key": "4bcdde24384e3c7f4277bace51d11aa3d0c1b66704fc3861c5c0cc04edf832d7"
   },
   {
    "key": "2a:6",
@@ -106,10 +97,10 @@
   },
   {
    "key": "2",
-   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "record": "8a937239d2bb95f9dd8347174d3894842d0a133f0982b595ef105907eeea3fd5",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the worksheet's inputs without their parent questions (scope.recovery, refund.itemized, the rec_kinds ticks), so it is unknown where the interview never asks them; no value differs on any completed return (p525 p. 27, line 2).",
-   "subject_key": "aeee173e509704bc14179acf89a7b8ac9c14f61f26b551303d6c8069a9bdb8f5"
+   "ruling": "Ruling: representation; the reply reads the worksheet's inputs without their parent questions, so it is unknown where the interview never asks them; executable triage (.transcription/triage/2025/rec.json, this pass): 2,476/3,347 agree; differences {\"candidate-refuses\": 32, \"candidate-unknown\": 829, \"project-unknown\": 9, \"value\": 1}; on completed returns {\"candidate-unknown\": 180}; no value differs on a completed return.",
+   "subject_key": "96659e6060cfc5eb91db3eef257aef7ccc6192aa91133db919142046cf267dac"
   },
   {
    "key": "3",
@@ -213,11 +204,11 @@
  },
  "__rest__": "eb42786d08ac98e21bfc9498bf503ea728c02c7c1a49fa672307b8770b9f340f",
  "foreign": {
-  "rec.path": "3ad1d51a4db54d8198dfe373a52f716c48eb3637cab9e256bb0be6c7b99caad6",
-  "rec.to_line1": "71859a847677ecaaa85c97c329bc9bf904f77e2cebd5f4859076f45ddbf36325",
-  "rec.to_line8z": "3cbcdbefbb42b5eeccf1226158f4edc3dd71280e6bd18f3ff24499208f4eb4ab",
+  "rec.path": "ad970d4beb250a837b86ce09c851a4664b3a48079616e28137ebb4b29d295876",
+  "rec.to_line1": "f50c01a1dba1570162fcefa876a68be3f4d778aa4e08e9c5478a160df5f205c1",
+  "rec.to_line8z": "6d35953707b7af008df882add39156a0cd5d849d906eb5c68c7e812836bc9949",
   "2a:1": "767a8559f7bba7e1db2ba2c0034c620a737b72c2546955adc2f5babe20b75725",
-  "2a:2": "71859a847677ecaaa85c97c329bc9bf904f77e2cebd5f4859076f45ddbf36325",
+  "2a:2": "f50c01a1dba1570162fcefa876a68be3f4d778aa4e08e9c5478a160df5f205c1",
   "2a:6": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "2a:3": "d181699b9f7a7204d666f2f1cfba2ca7572b6529929a9b446ee1a9cd509bf00f",
   "2a:4": "5a6d8b9862d80ce2d8c0411a21b4224d435ee9815a22ea3add4aa23a30219ea1",
@@ -226,7 +217,7 @@
   "2a:8": "1cc109966732f3ae1f52f853b67a824d793bfec0d6191f6245843ae13c061557",
   "1a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "1b": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "2": "71859a847677ecaaa85c97c329bc9bf904f77e2cebd5f4859076f45ddbf36325",
+  "2": "f50c01a1dba1570162fcefa876a68be3f4d778aa4e08e9c5478a160df5f205c1",
   "3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "4": "aa2a422c8d5a8c7faa4981cbdab0c7dd2ba037594f274575c336f13a7a89d7c0",
   "5": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

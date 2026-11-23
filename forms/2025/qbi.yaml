@@ -34,10 +34,10 @@ form:
     - id: qbi.prior_form
       printed: (helper)
       type: Bool
-      label: "Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?"
+      label: "Did your (or, on a joint return, your spouse's) 2024 return, or any earlier one, include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?"
       expr:
         op: input
-        source: "Does your (or, on a joint return, your spouse's) 2024 return include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?"
+        source: "Did your (or, on a joint return, your spouse's) 2024 return, or any earlier one, include Form 8995 or Form 8995-A (Qualified Business Income Deduction)?"
       cite:
         doc: f8995
         locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
@@ -45,17 +45,17 @@ form:
       printed: (helper)
       type: Bool
       gated_by: qbi.reit_loss_if_prior_form
-      label: "Does your (or, on a joint return, your spouse's) 2024 Form 8995 or Form 8995-A show a qualified REIT dividends and PTP (loss) carryforward (2024 Form 8995, line 17, or the corresponding line of Form 8995-A)?"
+      label: "Does the latest of your (or, on a joint return, your spouse's) Forms 8995 or 8995-A, from 2024 or earlier, show a qualified REIT dividends and PTP (loss) carryforward (Form 8995, line 17, or the corresponding line of Form 8995-A)?"
       expr:
         op: input
-        source: "Does your (or, on a joint return, your spouse's) 2024 Form 8995 or Form 8995-A show a qualified REIT dividends and PTP (loss) carryforward (2024 Form 8995, line 17, or the corresponding line of Form 8995-A)?"
+        source: "Does the latest of your (or, on a joint return, your spouse's) Forms 8995 or 8995-A, from 2024 or earlier, show a qualified REIT dividends and PTP (loss) carryforward (Form 8995, line 17, or the corresponding line of Form 8995-A)?"
       cite:
         doc: f8995
         locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
     - id: qbi.reit_loss_if_prior_form
       printed: (gate)
       type: Bool
-      label: "Whether the 2024 Form 8995 or 8995-A carries forward a REIT or PTP loss, asked only when the 2024 return includes that form (false without it)"
+      label: "Whether the latest Form 8995 or 8995-A, from 2024 or earlier, carries forward a REIT or PTP loss, asked only when a return of 2024 or earlier includes that form (false without it)"
       expr:
         op: choose
         alternatives:
@@ -174,8 +174,8 @@ form:
       gated_by: qbi.carryforward_if_prior_form
       expr:
         op: input
-        source: The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your
-          2024 Form 8995-A), entered as a positive amount (zero if none)
+        source: The qualified business loss carryforward from line 16 of your latest Form 8995 from 2024 or earlier (or the
+          corresponding line of that Form 8995-A), entered as a positive amount (zero if none)
       cite:
         doc: i8995
         locator: 'p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating
@@ -184,7 +184,7 @@ form:
     - id: qbi.carryforward_if_prior_form
       printed: (gate)
       type: NonNegDollars
-      label: The qualified business loss carryforward, asked only when the 2024 return includes Form 8995 or 8995-A (zero without it)
+      label: The qualified business loss carryforward, asked only when a return of 2024 or earlier includes Form 8995 or 8995-A (zero without it)
       expr:
         op: choose
         alternatives:
@@ -253,10 +253,10 @@ form:
         locator: 'Correction to 2025 Form 8995 instructions, Line 11, "Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b"'
     - id: qbi.taxable_before
       printed: (helper)
-      type: NonNegDollars
-      label: Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero
+      type: Dollars
+      label: Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, negative when the deductions are more than adjusted gross income
       expr:
-        op: subtract_floor0
+        op: subtract
         from: sa.agi
         take: qbi.deductions_before
       cite:

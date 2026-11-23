@@ -2,7 +2,7 @@
 
 - Document: `rental` (form, tax year 2025)
 - Collection: keyed entries; [i1040se] p. 5, Line 1a (2025; sha256 ad71de35)
-- Note: One entry per rental real estate property (Schedule E types 1 to 5). Its expenses, other than advertising and commissions, are divided by days when it had personal use but was not used as a home; a home rented fewer than 15 days is left out. Its Form 8582 worksheet columns (Parts IV to VIII) are figured here and totalled on Form 8582. Refused: self-rental and other property, average stays of 7 days or less, significant services, less than 10% owned, not for profit, depletion, part of a property the filer lives in, property held mainly for sale or offered in business hours, car and travel expenses, a home used personally and rented 15 days or more, a held-back loss from a year without active participation, and a loss with amounts not at risk.
+- Note: One entry per rental real estate property (Schedule E types 1 to 5). Its expenses, other than advertising and commissions, are divided by days when it had personal use but was not used as a home; a home rented fewer than 15 days is left out. Its Form 8582 worksheet columns (Parts IV to VIII) are figured here and totalled on Form 8582. Refused: self-rental and other property, average stays of 7 days or less, significant services, less than 10% owned, not for profit, depletion, part of a property the filer lives in, property held mainly for sale or offered in business hours, property incidental to the filer's own business, car and travel expenses, mortgage interest beyond Form 1098, the cost of a bought leasehold, a home used personally and rented 15 days or more, a held-back loss from a year without active participation, a loss with amounts not at risk, and net income from a rental of nondepreciable property when Form 8582 is required.
 
 ## (helper) — `rental.zero`
 
@@ -57,15 +57,15 @@
 ## (helper) — `rental.personal_any`
 
 - **Authored helper label:** Any day of personal use in 2025
-- **Encoded (Bool):** Input — On any day in 2025, did you, your family or another owner use it, or did anyone stay free, below a fair rent or under a home swap?
-- Expr: `{"op":"input","source":"On any day in 2025, did you, your family or another owner use it, or did anyone stay free, below a fair rent or under a home swap?"}`
+- **Encoded (Bool):** Input — On any day in 2025, did you, another owner or a relative of either use it, or did anyone stay free, below a fair rent or under a home swap?
+- Expr: `{"op":"input","source":"On any day in 2025, did you, another owner or a relative of either use it, or did anyone stay free, below a fair rent or under a home swap?"}`
 - Cite: [p527] p. 26, What is a day of personal use?, "A day of personal use of a dwelling unit is any day that the unit is used by any of the following persons" (2025; sha256 20c826e9)
 
 ## 2 — `rental.days_personal`
 
 - **IRS:** Personal use days
-- **Encoded (Count):** Input — How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row, or for less if you then sold or traded it.
-- Expr: `{"op":"input","source":"How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row, or for less if you then sold or traded it."}`
+- **Encoded (Count):** Input — How many days in 2025 was it used that way (by you, another owner or a relative of either, or by anyone staying free, below a fair rent or under a home swap)? Leave out days a relative rented it at a fair rent as their main home, days another owner rented it as their main home at a fair rent under a shared equity financing agreement, days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row, or for less if you then sold or traded it.
+- Expr: `{"op":"input","source":"How many days in 2025 was it used that way (by you, another owner or a relative of either, or by anyone staying free, below a fair rent or under a home swap)? Leave out days a relative rented it at a fair rent as their main home, days another owner rented it as their main home at a fair rent under a shared equity financing agreement, days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row, or for less if you then sold or traded it."}`
 - Cite: [p527] p. 26, What is a day of personal use?; i1040se p. 5, Line 2, "For each property listed on line 1a, report the number of days in the year each property was rented at fair rental value and the number of days of personal use" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.days_overlap`
@@ -251,6 +251,34 @@
 - Expr: `{"op":"input","source":"Do you hold it mainly to sell at a gain rather than to rent (as an investment, or for sale to customers as a real estate dealer), or do you make it available during set business hours for use by many customers, such as a parking lot?"}`
 - Cite: [i8582] p. 3, Exceptions, "The rental of property is incidental to an activity of holding property for investment"; p. 4, "You customarily make the rental property available during defined business hours for nonexclusive use by various customers" (2025; sha256 76787e11)
 
+## (helper) — `rental.business_incidental`
+
+- **Authored helper label:** Rental incidental to a trade or business activity the filer owns an interest in (mainly used in it, gross rent under 2% of the smaller of unadjusted basis and value)
+- **Encoded (Bool):** Input — Was it mainly used in a business you or your spouse owned a part of in 2025, in 2025 or in 2 of the 5 years before, with 2025 rent under 2% of the smaller of its cost and its value?
+- Expr: `{"op":"input","source":"Was it mainly used in a business you or your spouse owned a part of in 2025, in 2025 or in 2 of the 5 years before, with 2025 rent under 2% of the smaller of its cost and its value?"}`
+- Cite: [i8582] p. 3, Exceptions, "The rental of property is incidental to a trade or business activity if" (2025; sha256 76787e11)
+
+## (helper) — `rental.is_land`
+
+- **Authored helper label:** Land only (nothing on it subject to depreciation)
+- **Encoded (Bool):** line 1b = 'land'
+- Expr: `{"eq":["rental.kind",{"const":"land"}],"op":"test"}`
+- Cite: [p925] p. 16, Rental of Nondepreciable Property, "less than 30% of the unadjusted basis of the property is subject to depreciation" (2025; sha256 dda751f0)
+
+## (helper) — `rental.land_heavy`
+
+- **Authored helper label:** Less than 30% of the unadjusted basis of the property subject to depreciation
+- **Encoded (Bool):** Input — Was less than 30% of what it cost (before depreciation) for its buildings and other things that wear out, the rest being for the land?
+- Expr: `{"op":"input","source":"Was less than 30% of what it cost (before depreciation) for its buildings and other things that wear out, the rest being for the land?"}`
+- Cite: [p925] p. 16, Rental of Nondepreciable Property, "less than 30% of the unadjusted basis of the property is subject to depreciation" (2025; sha256 dda751f0)
+
+## (gate) — `rental.land_heavy_if_built`
+
+- **Authored helper label:** Less than 30% subject to depreciation, asked only when the property is not land only (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Land only (nothing on it subject to depreciation)" = false → helper "Less than 30% of the unadjusted basis of the property subject to depreciation"] [helper "Land only (nothing on it subject to depreciation)" = true → helper "No (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["rental.is_land",{"const":false}],"op":"test"},"then":"rental.land_heavy"},{"guard":{"eq":["rental.is_land",{"const":true}],"op":"test"},"then":"rental.no"}],"op":"choose"}`
+- Cite: [p925] p. 16, Rental of Nondepreciable Property, "less than 30% of the unadjusted basis of the property is subject to depreciation" (2025; sha256 dda751f0)
+
 ## (helper) — `rental.vehicle`
 
 - **Authored helper label:** Car, truck or travel expenses for the rental (line 6)
@@ -267,10 +295,10 @@
 
 ## (helper) — `rental.rents`
 
-- **Authored helper label:** Rents received (your share)
-- **Encoded (NonNegDollars):** Input — Rent received for it in 2025 (your share), including advance rent and expenses a tenant paid for you
-- Expr: `{"op":"input","source":"Rent received for it in 2025 (your share), including advance rent and expenses a tenant paid for you"}`
-- Cite: [i1040se] p. 4, Line 3 (2025; sha256 ad71de35)
+- **Authored helper label:** Rents and other rental income received (your share)
+- **Encoded (NonNegDollars):** Input — Rent and other income from it in 2025 (your share), including advance rent, bills a tenant paid for you, and the value of goods or work you got in place of rent
+- Expr: `{"op":"input","source":"Rent and other income from it in 2025 (your share), including advance rent, bills a tenant paid for you, and the value of goods or work you got in place of rent"}`
+- Cite: [i1040se] p. 4, Line 3; p. 5, Line 3, "If you received services or property instead of money as rent, report the fair market value of the services or property as rental income on line 3" (2025; sha256 ad71de35)
 
 ## (helper) — `rental.has_advertising`
 
@@ -282,8 +310,8 @@
 ## (helper) — `rental.amt5`
 
 - **Authored helper label:** Advertising paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Advertising for renters, paid in 2025
-- Expr: `{"op":"input","source":"Advertising for renters, paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Advertising for renters, paid in 2025 (your share)
+- Expr: `{"op":"input","source":"Advertising for renters, paid in 2025 (your share)"}`
 - Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt5_if_any`
@@ -311,8 +339,8 @@
 ## (helper) — `rental.amt7`
 
 - **Authored helper label:** Cleaning and maintenance paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Cleaning and maintenance (not repairs), paid in 2025
-- Expr: `{"op":"input","source":"Cleaning and maintenance (not repairs), paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Cleaning and maintenance (not repairs), paid in 2025 (your share)
+- Expr: `{"op":"input","source":"Cleaning and maintenance (not repairs), paid in 2025 (your share)"}`
 - Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt7_if_any`
@@ -347,8 +375,8 @@
 ## (helper) — `rental.amt8`
 
 - **Authored helper label:** Commissions paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Commissions paid, for example to an agent who found a renter, paid in 2025
-- Expr: `{"op":"input","source":"Commissions paid, for example to an agent who found a renter, paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Commissions paid, for example to an agent who found a renter, paid in 2025 (your share)
+- Expr: `{"op":"input","source":"Commissions paid, for example to an agent who found a renter, paid in 2025 (your share)"}`
 - Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt8_if_any`
@@ -376,8 +404,8 @@
 ## (helper) — `rental.amt9`
 
 - **Authored helper label:** Insurance for 2025 coverage, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Insurance on it for 2025 coverage, paid in 2025 or paid earlier for more than one year (only the part for 2025)
-- Expr: `{"op":"input","source":"Insurance on it for 2025 coverage, paid in 2025 or paid earlier for more than one year (only the part for 2025)"}`
+- **Encoded (NonNegDollars):** Input — Insurance on it for 2025 coverage, paid in 2025 or paid earlier for more than one year (only the part for 2025; your share)
+- Expr: `{"op":"input","source":"Insurance on it for 2025 coverage, paid in 2025 or paid earlier for more than one year (only the part for 2025; your share)"}`
 - Cite: [p527] p. 5, Insurance premiums paid in advance, "For each year of coverage, you can deduct only the part of the premium payment that applies to that year" (2025; sha256 20c826e9)
 
 ## (gate) — `rental.amt9_if_any`
@@ -412,8 +440,8 @@
 ## (helper) — `rental.amt10`
 
 - **Authored helper label:** Legal and other professional fees paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Legal fees and other professional fees, such as tax preparation for the rental, paid in 2025
-- Expr: `{"op":"input","source":"Legal fees and other professional fees, such as tax preparation for the rental, paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Legal fees and other professional fees, such as tax preparation for the rental, paid in 2025 (your share)
+- Expr: `{"op":"input","source":"Legal fees and other professional fees, such as tax preparation for the rental, paid in 2025 (your share)"}`
 - Cite: [i1040se] p. 6, Line 10 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt10_if_any`
@@ -448,8 +476,8 @@
 ## (helper) — `rental.amt11`
 
 - **Authored helper label:** Management fees paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Management fees, paid in 2025
-- Expr: `{"op":"input","source":"Management fees, paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Management fees, paid in 2025 (your share)
+- Expr: `{"op":"input","source":"Management fees, paid in 2025 (your share)"}`
 - Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt11_if_any`
@@ -507,8 +535,23 @@
 
 - **IRS:** Mortgage interest paid to banks, etc.
 - **Encoded (NonNegDollars):** Choose — [helper "Any day of personal use in 2025" = false → helper "Mortgage interest paid to banks, etc., asked only when ticked (zero otherwise)"] [helper "Any day of personal use in 2025" = true → helper "Mortgage interest paid to banks, etc.: the rental part (rental days over total days of use)"]
+- **Refusal:** when rental.mortgage_excess_if_mortgage is true, cannot complete Schedule E, line 12 (mortgage interest beyond Form 1098, with a statement). Mortgage interest beyond what Form 1098 shows needs a statement explaining the difference and is outside this tool. Cite: [i1040se] p. 7, Line 12, "If you paid more mortgage interest than is shown on your Form 1098 or similar statement" (2025; sha256 ad71de35)
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.personal_any",{"const":false}],"op":"test"},"then":"rental.amt12_if_any"},{"guard":{"eq":["rental.personal_any",{"const":true}],"op":"test"},"then":"rental.div12"}],"op":"choose"}`
 - Cite: [i1040se] p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"; p. 6, Lines 12 and 13, "In most cases, to determine the interest expense allocable to your rental activities, you must have records to show how the proceeds of each debt were used" (2025; sha256 ad71de35)
+
+## (helper) — `rental.mortgage_excess`
+
+- **Authored helper label:** Mortgage interest paid beyond the amount shown on Form 1098
+- **Encoded (Bool):** Input — Did you pay more mortgage interest on it in 2025 than your Forms 1098 for it show in total?
+- Expr: `{"op":"input","source":"Did you pay more mortgage interest on it in 2025 than your Forms 1098 for it show in total?"}`
+- Cite: [i1040se] p. 7, Line 12, "If you paid more mortgage interest than is shown on your Form 1098 or similar statement" (2025; sha256 ad71de35)
+
+## (gate) — `rental.mortgage_excess_if_mortgage`
+
+- **Authored helper label:** Mortgage interest beyond Form 1098, asked only when there was mortgage interest (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Mortgage interest paid to banks, etc.: any" = true → helper "Mortgage interest paid beyond the amount shown on Form 1098"] [helper "Mortgage interest paid to banks, etc.: any" = false → helper "No (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["rental.has_mortgage",{"const":true}],"op":"test"},"then":"rental.mortgage_excess"},{"guard":{"eq":["rental.has_mortgage",{"const":false}],"op":"test"},"then":"rental.no"}],"op":"choose"}`
+- Cite: [i1040se] p. 7, Line 12, "If you paid more mortgage interest than is shown on your Form 1098 or similar statement" (2025; sha256 ad71de35)
 
 ## (helper) — `rental.has_other_interest`
 
@@ -520,8 +563,8 @@
 ## (helper) — `rental.amt13`
 
 - **Authored helper label:** Other interest paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Other interest on loans for it (no Form 1098 in your name), paid in 2025 and not for a later year; for points or loan fees, only 2025's share, spread evenly over the loan
-- Expr: `{"op":"input","source":"Other interest on loans for it (no Form 1098 in your name), paid in 2025 and not for a later year; for points or loan fees, only 2025's share, spread evenly over the loan"}`
+- **Encoded (NonNegDollars):** Input — Other interest paid in 2025 on money borrowed and spent on it (your share), such as a home equity loan on another home or a loan with no Form 1098 in your name; not interest for a later year; for points or loan fees, only 2025's share, spread evenly over the loan
+- Expr: `{"op":"input","source":"Other interest paid in 2025 on money borrowed and spent on it (your share), such as a home equity loan on another home or a loan with no Form 1098 in your name; not interest for a later year; for points or loan fees, only 2025's share, spread evenly over the loan"}`
 - Cite: [i1040se] p. 6, Lines 12 and 13 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt13_if_any`
@@ -556,8 +599,8 @@
 ## (helper) — `rental.amt14`
 
 - **Authored helper label:** Repairs paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Repairs (not improvements), paid in 2025
-- Expr: `{"op":"input","source":"Repairs (not improvements), paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Repairs (not improvements), paid in 2025 (your share)
+- Expr: `{"op":"input","source":"Repairs (not improvements), paid in 2025 (your share)"}`
 - Cite: [i1040se] p. 7, Line 14 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt14_if_any`
@@ -592,8 +635,8 @@
 ## (helper) — `rental.amt15`
 
 - **Authored helper label:** Supplies paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Supplies, paid in 2025
-- Expr: `{"op":"input","source":"Supplies, paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Supplies, paid in 2025 (your share)
+- Expr: `{"op":"input","source":"Supplies, paid in 2025 (your share)"}`
 - Cite: [i1040se] p. 6, General Instructions for Lines 5 Through 21 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt15_if_any`
@@ -628,8 +671,8 @@
 ## (helper) — `rental.amt16`
 
 - **Authored helper label:** Taxes paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Property tax and other taxes on it, paid in 2025
-- Expr: `{"op":"input","source":"Property tax and other taxes on it, paid in 2025"}`
+- **Encoded (NonNegDollars):** Input — Property tax and other taxes on it, paid in 2025 (your share), not charges for putting in streets, sidewalks, or water or sewer lines
+- Expr: `{"op":"input","source":"Property tax and other taxes on it, paid in 2025 (your share), not charges for putting in streets, sidewalks, or water or sewer lines"}`
 - Cite: [i1040se] p. 6, Line 16 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt16_if_any`
@@ -664,8 +707,8 @@
 ## (helper) — `rental.amt17`
 
 - **Authored helper label:** Utilities paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Utilities for it, paid in 2025 by you or by a tenant in place of rent
-- Expr: `{"op":"input","source":"Utilities for it, paid in 2025 by you or by a tenant in place of rent"}`
+- **Encoded (NonNegDollars):** Input — Utilities for it, paid in 2025 by you or by a tenant in place of rent (your share)
+- Expr: `{"op":"input","source":"Utilities for it, paid in 2025 by you or by a tenant in place of rent (your share)"}`
 - Cite: [i1040se] p. 7, Line 17 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt17_if_any`
@@ -695,21 +738,21 @@
 - **Authored helper label:** Other: any
 - **Encoded (Bool):** Input — Other
 - Expr: `{"op":"input","source":"Other"}`
-- Cite: [i1040se] p. 6, Line 19 (2025; sha256 ad71de35)
+- Cite: [i1040se] p. 7, Line 19 (2025; sha256 ad71de35)
 
 ## (helper) — `rental.amt19`
 
 - **Authored helper label:** Other paid in 2025, before any division for personal use
-- **Encoded (NonNegDollars):** Input — Other costs of renting it (not depreciation), paid in 2025
-- Expr: `{"op":"input","source":"Other costs of renting it (not depreciation), paid in 2025"}`
-- Cite: [i1040se] p. 6, Line 19 (2025; sha256 ad71de35)
+- **Encoded (NonNegDollars):** Input — Other costs of renting it (not depreciation), paid in 2025 (your share)
+- Expr: `{"op":"input","source":"Other costs of renting it (not depreciation), paid in 2025 (your share)"}`
+- Cite: [i1040se] p. 7, Line 19 (2025; sha256 ad71de35)
 
 ## (gate) — `rental.amt19_if_any`
 
 - **Authored helper label:** Other, asked only when ticked (zero otherwise)
 - **Encoded (NonNegDollars):** Choose — [helper "Other: any" = true → helper "Other paid in 2025, before any division for personal use"] [helper "Other: any" = false → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.has_other",{"const":true}],"op":"test"},"then":"rental.amt19"},{"guard":{"eq":["rental.has_other",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
-- Cite: [i1040se] p. 6, Line 19 (2025; sha256 ad71de35)
+- Cite: [i1040se] p. 7, Line 19 (2025; sha256 ad71de35)
 
 ## (helper) — `rental.div19`
 
@@ -723,8 +766,16 @@
 
 - **IRS:** Other
 - **Encoded (NonNegDollars):** Choose — [helper "Any day of personal use in 2025" = false → helper "Other, asked only when ticked (zero otherwise)"] [helper "Any day of personal use in 2025" = true → helper "Other: the rental part (rental days over total days of use)"]
+- **Refusal:** when rental.bought_lease is true, cannot complete Schedule E, line 19 (cost of a leasehold bought for rental purposes). The cost of a lease you bought, which is spread over the lease's term, is outside this tool. Cite: [p527] p. 5, Rental of property, "If you buy a leasehold for rental purposes, you can deduct an equal part of the cost each year over the term of the lease" (2025; sha256 20c826e9)
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.personal_any",{"const":false}],"op":"test"},"then":"rental.amt19_if_any"},{"guard":{"eq":["rental.personal_any",{"const":true}],"op":"test"},"then":"rental.div19"}],"op":"choose"}`
 - Cite: [i1040se] p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"; p. 7, Line 19, "Enter on line 19 any ordinary and necessary expenses not listed on lines 5 through 18" (2025; sha256 ad71de35)
+
+## (helper) — `rental.bought_lease`
+
+- **Authored helper label:** Cost of buying a leasehold for rental purposes
+- **Encoded (Bool):** Input — Did you pay, in 2025 or earlier, to buy a lease on it, or on the land under it, that you held at any time in 2025, for renting it out (a leasehold)?
+- Expr: `{"op":"input","source":"Did you pay, in 2025 or earlier, to buy a lease on it, or on the land under it, that you held at any time in 2025, for renting it out (a leasehold)?"}`
+- Cite: [p527] p. 5, Rental of property, "If you buy a leasehold for rental purposes, you can deduct an equal part of the cost each year over the term of the lease" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.dep_full`
 
@@ -759,7 +810,7 @@
 ## (helper) — `rental.line21_full`
 
 - **Authored helper label:** Rents less total expenses
-- **Encoded (Dollars):** Subtract line 20 from helper "Rents received (your share)".
+- **Encoded (Dollars):** Subtract line 20 from helper "Rents and other rental income received (your share)".
 - **Refusal:** when rental.self_rental is true, cannot complete Schedule E, Part I, property type 7 or 8 (self-rental or other). Property rented to a business you or your spouse run, and property of another type, are outside this tool. Cite: [i1040se] p. 5, Self-rental (2025; sha256 ad71de35)
 - **Refusal:** when rental.stay7_if_short is true, cannot complete Schedule C or Schedule E with Form 8582 (not a rental activity: average stay of 7 days or less). A rental whose average stay is 7 days or less is not a rental activity under the passive activity rules and is outside this tool. Cite: [i8582] p. 3, Exceptions, "Figure the average period of customer use for a class of property by dividing the total number of days in all rental periods by the number of rentals" (2025; sha256 76787e11)
 - **Refusal:** when rental.services is true, cannot complete Schedule C (rental with significant services). A rental where you provide significant services, such as maid service, is reported on Schedule C; this tool does not prepare it. Cite: [i1040se] p. 5, Line 3, "If you provided significant services to the renter" (2025; sha256 ad71de35)
@@ -768,6 +819,7 @@
 - **Refusal:** when rental.depletion is true, cannot complete Schedule E, line 18 (depletion). Depletion is outside this tool. Cite: [i1040se] p. 6, Line 18, "Depletion" (2025; sha256 ad71de35)
 - **Refusal:** when rental.part_home is true, cannot complete Schedule E, Part I (rental of part of a property you also live in). Renting out part of a home or building you also live in, such as a room, is outside this tool. Cite: [i1040se] p. 6, Renting out part of your home (2025; sha256 ad71de35)
 - **Refusal:** when rental.held_for_sale is true, cannot complete Form 8582 exceptions, or Schedule C (property held mainly for sale, or offered in business hours to many customers). Property held mainly to sell, as an investment or by a real estate dealer, and property offered during business hours to many customers may not be a rental activity, and are outside this tool. Cite: [i8582] p. 3, Exceptions, "The rental of property is incidental to an activity of holding property for investment"; i1040se p. 6, "Do not use Schedule E to report income and expenses from rentals of real estate you held for sale to customers in the ordinary course of your business as a real estate dealer" (2025; sha256 76787e11)
+- **Refusal:** when rental.business_incidental is true, cannot complete Form 8582 exceptions (rental incidental to a trade or business). Property mainly used in a business you or your spouse own, and rented for under 2% of its cost or value, is not a rental activity under the passive activity rules and is outside this tool. Cite: [i8582] p. 3, Exceptions, "The rental of property is incidental to a trade or business activity if" (2025; sha256 76787e11)
 - **Refusal:** when rental.vehicle is true, cannot complete Schedule E, line 6 (auto and travel). Car, truck and travel expenses of a rental are outside this tool. Cite: [i1040se] p. 4, Line 6 (2025; sha256 ad71de35)
 - **Refusal:** when rental.ws51 is true, cannot complete Pub. 527, Worksheet 5-1 (dwelling unit used as a home). A home you also lived in or used for more than the greater of 14 days or 10% of the days rented, and rented 15 days or more, is outside this tool. Cite: [p527] p. 28, Used as a home and rented 15 days or more (2025; sha256 20c826e9)
 - Expr: `{"from":"rental.rents","op":"subtract","take":"rental.line20"}`
@@ -776,7 +828,7 @@
 ## 3 — `rental.line3`
 
 - **IRS:** Rents received
-- **Encoded (NonNegDollars):** Choose — [helper "Used as a home and rented fewer than 15 days: not reported" = true → helper "Zero"] [helper "Used as a home and rented fewer than 15 days: not reported" = false → helper "Rents received (your share)"]
+- **Encoded (NonNegDollars):** Choose — [helper "Used as a home and rented fewer than 15 days: not reported" = true → helper "Zero"] [helper "Used as a home and rented fewer than 15 days: not reported" = false → helper "Rents and other rental income received (your share)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.excluded",{"const":true}],"op":"test"},"then":"rental.zero"},{"guard":{"eq":["rental.excluded",{"const":false}],"op":"test"},"then":"rental.rents"}],"op":"choose"}`
 - Cite: [i1040se] p. 5, Line 2, "do not report the rental income and do not deduct any rental expenses" (2025; sha256 ad71de35)
 
@@ -825,8 +877,8 @@
 ## (helper) — `rental.prior_ws51`
 
 - **Authored helper label:** Part of the carryover is expenses carried over from a year the filer also used it as a home (Worksheet 5-1)
-- **Encoded (Bool):** Input — Was any of it rental costs carried over from an earlier year when you also used the place as a home (Pub. 527, Worksheet 5-1)?
-- Expr: `{"op":"input","source":"Was any of it rental costs carried over from an earlier year when you also used the place as a home (Pub. 527, Worksheet 5-1)?"}`
+- **Encoded (Bool):** Input — Did any of the held-back loss come from rental costs carried over from an earlier year when the place counted as your home through personal use (by you, a co-owner, a relative, or anyone paying below a fair rent) (Pub. 527, Worksheet 5-1)?
+- Expr: `{"op":"input","source":"Did any of the held-back loss come from rental costs carried over from an earlier year when the place counted as your home through personal use (by you, a co-owner, a relative, or anyone paying below a fair rent) (Pub. 527, Worksheet 5-1)?"}`
 - Cite: [p527] p. 28, "The excess expenses that can’t be used to offset income from other sources are carried forward to the next year and treated as rental expenses for the same property" (2025; sha256 20c826e9)
 
 ## (gate) — `rental.prior_ws51_if_any`
@@ -862,7 +914,7 @@
 - **IRS:** Prior years unallowed loss
 - **Encoded (NonNegDollars):** Choose — [helper "The property is reported on Schedule E (not excluded)" = true → helper "Prior years unallowed loss, asked only when a loss was held back (zero otherwise)"] [helper "The property is reported on Schedule E (not excluded)" = false → helper "Zero"]
 - **Refusal:** when rental.prior_not_active_if_both is true, cannot complete Form 8582, Part IV and Part V (prior-year loss from a year without active participation). A held-back loss from a year in which you did not actively participate is outside this tool. Cite: [i8582] p. 4, Part IV (2025; sha256 76787e11)
-- **Refusal:** when rental.prior_ws51_if_any is true, cannot complete Pub. 527, Worksheet 5-1 (expenses carried over from a year of home use). Rental costs carried over from an earlier year's Worksheet 5-1, when you also used the place as a home, are outside this tool. Cite: [p527] p. 28, "This limitation will apply to expenses carried forward to another year even if you don’t use the property as your home for that subsequent year" (2025; sha256 20c826e9)
+- **Refusal:** when rental.prior_ws51_if_any is true, cannot complete Pub. 527, Worksheet 5-1 (expenses carried over from a year of home use). Rental costs carried over from an earlier year's Worksheet 5-1, when the place counted as your home, are outside this tool. Cite: [p527] p. 28, "This limitation will apply to expenses carried forward to another year even if you don’t use the property as your home for that subsequent year" (2025; sha256 20c826e9)
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.reported",{"const":true}],"op":"test"},"then":"rental.prior_amt_if_any"},{"guard":{"eq":["rental.reported",{"const":false}],"op":"test"},"then":"rental.zero"}],"op":"choose"}`
 - Cite: [i8582] p. 10, Part IV, "You find these amounts in Part VII, column (c), of your 2024 Form 8582" (2025; sha256 76787e11)
 
@@ -976,8 +1028,8 @@
 ## (helper) — `rental.not_at_risk`
 
 - **Authored helper label:** Some investment not at risk
-- **Encoded (Bool):** Input — Was any money you put in borrowed without personal liability from anyone but a bank or regular lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it?
-- Expr: `{"op":"input","source":"Was any money you put in borrowed without personal liability from anyone but a bank or regular lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it?"}`
+- **Encoded (Bool):** Input — Is any money you put in, or any debt on it, owed by no one personally (other than a mortgage on it from a bank, government or other regular lender), protected from loss by a guarantee, stop-loss or similar arrangement, or lent by someone with a stake in it?
+- Expr: `{"op":"input","source":"Is any money you put in, or any debt on it, owed by no one personally (other than a mortgage on it from a bank, government or other regular lender), protected from loss by a guarantee, stop-loss or similar arrangement, or lent by someone with a stake in it?"}`
 - Cite: [i1040se] p. 3, At-Risk Rules, "In most cases, you are not at risk for amounts such as the following", and Qualified nonrecourse financing (2025; sha256 ad71de35)
 
 ## (gate) — `rental.not_at_risk_if_loss`
@@ -994,11 +1046,33 @@
 - Expr: `{"lt":["rental.line21",{"const":0}],"op":"test"}`
 - Cite: [i1040se] p. 7, Line 21 (2025; sha256 ad71de35)
 
+## (helper) — `rental.nondep`
+
+- **Authored helper label:** Rental of nondepreciable property: land only, or less than 30% of the unadjusted basis subject to depreciation
+- **Encoded (Bool):** (helper "Land only (nothing on it subject to depreciation)" = true or helper "Less than 30% subject to depreciation, asked only when the property is not land only (false otherwise)" = true)
+- Expr: `{"any":[{"eq":["rental.is_land",{"const":true}],"op":"test"},{"eq":["rental.land_heavy_if_built",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [p925] p. 16, Rental of Nondepreciable Property, "less than 30% of the unadjusted basis of the property is subject to depreciation" (2025; sha256 dda751f0)
+
+## (helper) — `rental.nondep_gain`
+
+- **Authored helper label:** Net passive income including prior-year unallowed losses (net income less the prior years unallowed loss)
+- **Encoded (NonNegDollars):** Subtract line IV/V (c) from line IV/V (a). If zero or less, enter -0-.
+- Expr: `{"from":"rental.net_income","op":"subtract_floor0","take":"rental.prior_loss"}`
+- Cite: [p925] p. 16, Rental of Nondepreciable Property, "If you have net passive income (including prior-year unallowed losses) from renting property in a rental activity" (2025; sha256 dda751f0)
+
+## (gate) — `rental.nondep_income`
+
+- **Authored helper label:** Net passive income from a rental of nondepreciable property, recharacterized as nonpassive, on a return that must file Form 8582
+- **Encoded (Bool):** helper "Rental of nondepreciable property: land only, or less than 30% of the unadjusted basis subject to depreciation" = true and helper "Net passive income including prior-year unallowed losses (net income less the prior years unallowed loss)" > $0 and f8582 helper "Form 8582 must be filed" = true
+- Expr: `{"all":[{"eq":["rental.nondep",{"const":true}],"op":"test"},{"gt":["rental.nondep_gain",{"const":0}],"op":"test"},{"eq":["f8582.required",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [p925] p. 15, Recharacterization of Passive Income, "If the result is net income, don’t enter any of the income or losses from the activity or property on Form 8582 or its separate parts, as they are recharacterized as nonpassive"; p. 16, Rental of Nondepreciable Property (2025; sha256 dda751f0)
+
 ## 22 — `rental.line22`
 
 - **IRS:** Deductible rental real estate loss after limitation, if any, on Form 8582
 - **Encoded (Dollars):** Subtract helper "Loss with prior-year unallowed loss, less the Part VII unallowed loss (the loss line 22 reports)" from helper "Zero".
 - **Refusal:** when rental.not_at_risk_if_loss is true, cannot complete Form 6198 (at-risk limits). A rental loss with an amount not at risk is outside this tool. Cite: [i1040se] p. 2, At-Risk Rules (2025; sha256 ad71de35)
+- **Refusal:** when rental.nondep_income is true, cannot complete Form 8582 (rental of nondepreciable property, income recharacterized as nonpassive). Net income from renting land, or property whose buildings were under 30% of its cost, is treated as nonpassive when Form 8582 limits other losses, and is outside this tool. Cite: [p925] p. 16, Rental of Nondepreciable Property, "less than 30% of the unadjusted basis of the property is subject to depreciation" (2025; sha256 dda751f0)
 - Expr: `{"from":"rental.zero","op":"subtract","take":"rental.loss_after_p7"}`
 - Cite: [i1040se] p. 8, Line 22 (2025; sha256 ad71de35)
 

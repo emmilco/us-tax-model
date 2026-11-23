@@ -35,6 +35,7 @@ sets:
       f1040.status: mfs
       household.married_dec31: true
       household.spouse_cp_domicile: false
+      household.cp_retirement: false
       $dependent: [kid]
   spouse_lives_with_child:
     says: The young child also lived with the filer's husband or wife for more than half of 2025; the child has no money of their own, has never married, and the parents are not apart.

@@ -263,7 +263,7 @@ params:
         qss: 9890000
       cite:
         doc: rp-25-32
-        locator: p. 13, section 4.03, Maximum Capital Gains Rate
+        locator: p. 13, .03 Maximum Capital Gains Rate, section 4.03
         quote: Married Individuals Filing Joint Returns and $98,900 $613,700 Surviving Spouse Married Individuals Filing Separate
           Returns $49,450 $306,850 Heads of Household $66,200 $579,600 All Other Individuals $49,450 $545,500
       source: final
@@ -278,7 +278,7 @@ params:
         qss: 61370000
       cite:
         doc: rp-25-32
-        locator: p. 13, section 4.03, Maximum Capital Gains Rate
+        locator: p. 13, .03 Maximum Capital Gains Rate, section 4.03
         quote: Married Individuals Filing Joint Returns and $98,900 $613,700 Surviving Spouse Married Individuals Filing Separate
           Returns $49,450 $306,850 Heads of Household $66,200 $579,600 All Other Individuals $49,450 $545,500
       source: final
@@ -293,12 +293,121 @@ params:
       value: null
       source: none
       note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+    amt.exemption:
+      type: Dollars
+      value:
+        single: 9010000
+        mfj: 14020000
+        mfs: 7010000
+        hoh: 9010000
+        qss: 14020000
+      cite:
+        doc: rp-25-32
+        locator: p. 16, .10 Exemption Amounts for Alternative Minimum Tax, section 4.10
+        quote: Joint Returns or Surviving Spouses $140,200 Unmarried Individuals (other than Surviving Spouses) $90,100 Married
+          Individuals Filing Separate Returns $70,100
+      source: final
+      note: i6251 p. 10 (draft), Exemption Worksheet line 1, prints the same amounts
+    amt.phaseout_start:
+      type: Dollars
+      value:
+        single: 50000000
+        mfj: 100000000
+        mfs: 50000000
+        hoh: 50000000
+        qss: 100000000
+      cite:
+        doc: rp-25-32
+        locator: p. 17, .10 Exemption Amounts for Alternative Minimum Tax, section 4.10, Threshold Phaseout Amount
+        quote: Joint Returns or Surviving Spouses $1,000,000 $1,280,400 Unmarried Individuals (other than $500,000 $680,200
+          Surviving Spouses) Married Individuals Filing Separate $500,000 $640,200
+      source: final
+      note: the threshold phaseout amounts (section 55(d)(2) as amended by P.L. 119-21 section 70107); i6251 p. 10 (draft),
+        Exemption Worksheet line 3, prints the same amounts
+    amt.rate_25:
+      type: Rate
+      value: null
+      source: none
+      note: 'declined: in 2026 the rate this parameter carries splits. The Exemption Worksheet (i6251 p. 10, draft, "Multiply
+        line 4 by 50% (0.50)") and the separate-return add-back (i6251 p. 10, "include 50% of the excess of the amount on
+        line 4 over $640,200") use 50% (P.L. 119-21 section 70107; read by s2.amt_mfs_over''s and s2.amt_ex_over''s products
+        and their s2.amt_h_* copies), while Form 6251 line 37 (unrecaptured section 1250 gain, s2.amt_l37_rate) keeps 25%.
+        No one value is right for all five readers in forms/2025/s2.yaml: a 2026 operation must give the phase-out and the
+        add-back their own rate parameter first'
+    amt.mfs_addback_start:
+      type: Dollars
+      value: 64020000
+      cite:
+        doc: i6251
+        locator: p. 10, read by tools/propose_params.py
+        quote: if your filing status is married filing separately and line 4 is more than $640,200, you must include an additional
+          amount on line 4.
+      source: draft
+      note: read by tools/propose_params.py at the place the 2025 citation names
+    amt.mfs_addback_max:
+      type: Dollars
+      value: 7010000
+      cite:
+        doc: i6251
+        locator: p. 10, read by tools/propose_params.py
+        quote: if line 4 is $780,400 or more, include an additional $70,100.
+      source: draft
+      note: read by tools/propose_params.py at the place the 2025 citation names
+    amt.bracket:
+      type: Dollars
+      value:
+        single: 24450000
+        mfj: 24450000
+        mfs: 12225000
+        hoh: 24450000
+        qss: 24450000
+      cite:
+        doc: rp-25-32
+        locator: p. 16, .10 Exemption Amounts for Alternative Minimum Tax, section 4.10, the excess taxable income above which
+          the 28 percent rate applies
+        quote: Married Individuals Filing Separate Returns $122,250 All Other Taxpayers $244,500
+      source: final
+      note: i6251 p. 11 (draft), Line 7, prints the same amounts
+    amt.bracket_subtract:
+      type: Dollars
+      value:
+        single: 489000
+        mfj: 489000
+        mfs: 244500
+        hoh: 489000
+        qss: 489000
+      cite:
+        doc: i6251
+        locator: p. 11, Line 7
+        quote: multiplying line 6 by 28% (0.28) and subtracting $4,890 ($2,445 if married filing separately)
+      source: draft
+      note: 2% of amt.bracket ($244,500; $122,250), as in 2025
+    amt.rate_26:
+      type: Rate
+      value:
+        num: 26
+        den: 100
+      cite:
+        doc: i6251
+        locator: p. 11, Line 7
+        quote: multiplying line 6 by 26% (0.26)
+      source: draft
+    amt.rate_28:
+      type: Rate
+      value:
+        num: 28
+        den: 100
+      cite:
+        doc: i6251
+        locator: p. 11, Line 7
+        quote: multiplying line 6 by 28% (0.28)
+      source: draft
     tcw.single.b1.upper:
       type: Dollars
       value: 10570000
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: Over $50,400 but not over $105,700
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -310,7 +419,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 22% of the excess over $50,400
       source: final
     tcw.single.b1.subtract:
@@ -318,7 +427,7 @@ params:
       value: 528800
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 22% of the excess over $50,400
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -329,7 +438,7 @@ params:
       value: 20177500
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: Over $105,700 but not over $201,775
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -341,7 +450,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 24% of the excess over $105,700
       source: final
     tcw.single.b2.subtract:
@@ -349,7 +458,7 @@ params:
       value: 740200
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 24% of the excess over $105,700
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -360,7 +469,7 @@ params:
       value: 25622500
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: Over $201,775 but not over $256,225
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -372,7 +481,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 32% of the excess over $201,775
       source: final
     tcw.single.b3.subtract:
@@ -380,7 +489,7 @@ params:
       value: 2354400
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 32% of the excess over $201,775
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -391,7 +500,7 @@ params:
       value: 64060000
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: Over $256,225 but not over $640,600
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -403,7 +512,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 35% of the excess over $256,225
       source: final
     tcw.single.b4.subtract:
@@ -411,7 +520,7 @@ params:
       value: 3123075
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 35% of the excess over $256,225
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -424,7 +533,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 37% of the excess over $640,600
       source: final
     tcw.single.b5.subtract:
@@ -432,7 +541,7 @@ params:
       value: 4404275
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 37% of the excess over $640,600
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -443,7 +552,7 @@ params:
       value: 21140000
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: Over $100,800 but not over $211,400
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -455,7 +564,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 22% of the excess over $100,800
       source: final
     tcw.mfj.b1.subtract:
@@ -463,7 +572,7 @@ params:
       value: 1057600
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 22% of the excess over $100,800
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -476,7 +585,7 @@ params:
       value: 40355000
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: Over $211,400 but not over $403,550
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -488,7 +597,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 24% of the excess over $211,400
       source: final
     tcw.mfj.b2.subtract:
@@ -496,7 +605,7 @@ params:
       value: 1480400
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 24% of the excess over $211,400
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -509,7 +618,7 @@ params:
       value: 51245000
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: Over $403,550 but not over $512,450
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -521,7 +630,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 32% of the excess over $403,550
       source: final
     tcw.mfj.b3.subtract:
@@ -529,7 +638,7 @@ params:
       value: 4708800
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 32% of the excess over $403,550
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -542,7 +651,7 @@ params:
       value: 76870000
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: Over $512,450 but not over $768,700
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -554,7 +663,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 35% of the excess over $512,450
       source: final
     tcw.mfj.b4.subtract:
@@ -562,7 +671,7 @@ params:
       value: 6246150
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 35% of the excess over $512,450
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -577,7 +686,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 37% of the excess over $768,700
       source: final
     tcw.mfj.b5.subtract:
@@ -585,7 +694,7 @@ params:
       value: 7783550
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 37% of the excess over $768,700
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -597,7 +706,7 @@ params:
       value: 10570000
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: Over $50,400 but not over $105,700
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -609,7 +718,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 22% of the excess over $50,400
       source: final
     tcw.mfs.b1.subtract:
@@ -617,7 +726,7 @@ params:
       value: 528800
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 22% of the excess over $50,400
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -628,7 +737,7 @@ params:
       value: 20177500
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: Over $105,700 but not over $201,775
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -640,7 +749,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: plus 24% of the excess over $105,700
       source: final
     tcw.mfs.b2.subtract:
@@ -648,7 +757,7 @@ params:
       value: 740200
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: plus 24% of the excess over $105,700
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -659,7 +768,7 @@ params:
       value: 25622500
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: Over $201,775 but not over $256,225
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -671,7 +780,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: plus 32% of the excess over $201,775
       source: final
     tcw.mfs.b3.subtract:
@@ -679,7 +788,7 @@ params:
       value: 2354400
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: plus 32% of the excess over $201,775
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -690,7 +799,7 @@ params:
       value: 38435000
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: Over $256,225 but not over $384,350
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -702,7 +811,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: plus 35% of the excess over $256,225
       source: final
     tcw.mfs.b4.subtract:
@@ -710,7 +819,7 @@ params:
       value: 3123075
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: plus 35% of the excess over $256,225
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -723,7 +832,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: plus 37% of the excess over $384,350
       source: final
     tcw.mfs.b5.subtract:
@@ -731,7 +840,7 @@ params:
       value: 3891775
       cite:
         doc: rp-25-32
-        locator: p. 12, section 4.01, Tax Rate Tables
+        locator: p. 12, .01 Tax Rate Tables, section 4.01
         quote: plus 37% of the excess over $384,350
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -742,7 +851,7 @@ params:
       value: 10570000
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: Over $67,450 but not over $105,700
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -754,7 +863,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 22% of the excess over $67,450
       source: final
     tcw.hoh.b1.subtract:
@@ -762,7 +871,7 @@ params:
       value: 709900
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Tax Rate Tables
+        locator: p. 10, .01 Tax Rate Tables, section 4.01
         quote: plus 22% of the excess over $67,450
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -773,7 +882,7 @@ params:
       value: 20175000
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: Over $105,700 but not over $201,750
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -785,7 +894,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 24% of the excess over $105,700
       source: final
     tcw.hoh.b2.subtract:
@@ -793,7 +902,7 @@ params:
       value: 921300
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 24% of the excess over $105,700
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -804,7 +913,7 @@ params:
       value: 25620000
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: Over $201,750 but not over $256,200
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -816,7 +925,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 32% of the excess over $201,750
       source: final
     tcw.hoh.b3.subtract:
@@ -824,7 +933,7 @@ params:
       value: 2535300
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 32% of the excess over $201,750
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -835,7 +944,7 @@ params:
       value: 64060000
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: Over $256,200 but not over $640,600
       source: final
       note: 'the row''s upper limit is the bracket boundary of the rate table; the 2026 Tax Computation Worksheet itself is
@@ -847,7 +956,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 35% of the excess over $256,200
       source: final
     tcw.hoh.b4.subtract:
@@ -855,7 +964,7 @@ params:
       value: 3303900
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 35% of the excess over $256,200
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -868,7 +977,7 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 37% of the excess over $640,600
       source: final
     tcw.hoh.b5.subtract:
@@ -876,7 +985,7 @@ params:
       value: 4585100
       cite:
         doc: rp-25-32
-        locator: p. 11, section 4.01, Tax Rate Tables
+        locator: p. 11, .01 Tax Rate Tables, section 4.01
         quote: plus 37% of the excess over $640,600
       source: final
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
@@ -903,7 +1012,7 @@ params:
       value: 220000
       cite:
         doc: rp-25-32
-        locator: p. 14, section 4.05(1), Child Tax Credit, maximum amount
+        locator: p. 14, .05 Child Tax Credit, section 4.05(1), Child Tax Credit, maximum amount
         quote: the maximum amount of the credit allowed under § 24(a) is $2,200.
       source: final
     odc.per_dependent:
@@ -913,7 +1022,7 @@ params:
         doc: f1040s8812
         locator: p. 1, Schedule 8812 (2026)
         quote: Multiply line 6 by $500
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     ctc.threshold:
       type: NonNegDollars
@@ -927,7 +1036,7 @@ params:
         doc: f1040s8812
         locator: p. 1, Schedule 8812 (2026), line 9
         quote: Married filing jointly—$400,000 . . . . . . . . . . . . . . . . . . . . . . • All other filing statuses—$200,000
-      source: draft
+      source: final
     ctc.phaseout_rate:
       type: Rate
       value:
@@ -937,8 +1046,13 @@ params:
         doc: f1040s8812
         locator: p. 1, Schedule 8812 (2026)
         quote: Multiply line 10 by 5% (0.05)
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
+    household.mfs_living_else:
+      type: Enum(mfs_living)
+      value: null
+      source: none
+      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
     household.no:
       type: Bool
       value: null
@@ -959,7 +1073,7 @@ params:
       value: 170000
       cite:
         doc: rp-25-32
-        locator: p. 14, section 4.05(2), Refundable portion
+        locator: p. 14, .05 Child Tax Credit, section 4.05(2), Refundable portion
         quote: § 24(d)(1)(A) to determine the amount of the credit under § 24 that may be refundable is $1,700.
       source: final
     actc.earned_floor:
@@ -969,14 +1083,14 @@ params:
         doc: f1040s8812
         locator: p. 2, Schedule 8812 (2026)
         quote: Is the amount on line 18a more than $2,500?
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     eic.limit0.other:
       type: NonNegDollars
       value: 1954000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Completed Phaseout Amount (All other filing statuses)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Completed Phaseout Amount (All other filing statuses)
         quote: Completed Phaseout $51,593 $58,629 $62,974 $19,540
       source: final
       note: the completed phaseout amount; the Form 1040 instructions' EIC Step 1 (not posted) prints the 'less than' amounts
@@ -985,7 +1099,7 @@ params:
       value: 2682000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Completed Phaseout Amount (Married Filing Jointly)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Completed Phaseout Amount (Married Filing Jointly)
         quote: Completed Phaseout $58,863 $65,899 $70,244 $26,820
       source: final
       note: the completed phaseout amount; the Form 1040 instructions' EIC Step 1 (not posted) prints the 'less than' amounts
@@ -994,7 +1108,7 @@ params:
       value: 5159300
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Completed Phaseout Amount (All other filing statuses)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Completed Phaseout Amount (All other filing statuses)
         quote: Completed Phaseout $51,593 $58,629 $62,974 $19,540
       source: final
       note: the completed phaseout amount; the Form 1040 instructions' EIC Step 1 (not posted) prints the 'less than' amounts
@@ -1003,7 +1117,7 @@ params:
       value: 5886300
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Completed Phaseout Amount (Married Filing Jointly)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Completed Phaseout Amount (Married Filing Jointly)
         quote: Completed Phaseout $58,863 $65,899 $70,244 $26,820
       source: final
       note: the completed phaseout amount; the Form 1040 instructions' EIC Step 1 (not posted) prints the 'less than' amounts
@@ -1012,7 +1126,7 @@ params:
       value: 5862900
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Completed Phaseout Amount (All other filing statuses)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Completed Phaseout Amount (All other filing statuses)
         quote: Completed Phaseout $51,593 $58,629 $62,974 $19,540
       source: final
       note: the completed phaseout amount; the Form 1040 instructions' EIC Step 1 (not posted) prints the 'less than' amounts
@@ -1021,7 +1135,7 @@ params:
       value: 6589900
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Completed Phaseout Amount (Married Filing Jointly)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Completed Phaseout Amount (Married Filing Jointly)
         quote: Completed Phaseout $58,863 $65,899 $70,244 $26,820
       source: final
       note: the completed phaseout amount; the Form 1040 instructions' EIC Step 1 (not posted) prints the 'less than' amounts
@@ -1030,7 +1144,7 @@ params:
       value: 6297400
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Completed Phaseout Amount (All other filing statuses)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Completed Phaseout Amount (All other filing statuses)
         quote: Completed Phaseout $51,593 $58,629 $62,974 $19,540
       source: final
       note: the completed phaseout amount; the Form 1040 instructions' EIC Step 1 (not posted) prints the 'less than' amounts
@@ -1039,7 +1153,7 @@ params:
       value: 7024400
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Completed Phaseout Amount (Married Filing Jointly)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Completed Phaseout Amount (Married Filing Jointly)
         quote: Completed Phaseout $58,863 $65,899 $70,244 $26,820
       source: final
       note: the completed phaseout amount; the Form 1040 instructions' EIC Step 1 (not posted) prints the 'less than' amounts
@@ -1048,7 +1162,7 @@ params:
       value: 1220000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(2), Excessive Investment Income
+        locator: p. 15, .06 Earned Income Credit, section 4.06(2), Excessive Investment Income
         quote: investment income exceeds $12,200.
       source: final
     eic.ws_threshold0.other:
@@ -1056,7 +1170,7 @@ params:
       value: 1086000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Threshold Phaseout Amount
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Threshold Phaseout Amount
         quote: Threshold Phaseout Amount $23,890 $23,890 $23,890 $10,860
       source: final
     eic.ws_threshold0.joint:
@@ -1064,7 +1178,7 @@ params:
       value: 1814000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Threshold Phaseout Amount
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Threshold Phaseout Amount
         quote: Threshold Phaseout Amount $31,160 $31,160 $31,160 $18,140
       source: final
     eic.ws_threshold1.other:
@@ -1072,7 +1186,7 @@ params:
       value: 2389000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Threshold Phaseout Amount
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Threshold Phaseout Amount
         quote: Threshold Phaseout Amount $23,890 $23,890 $23,890 $10,860
       source: final
       note: EIC Worksheet A line 5 (Form 1040 instructions, not posted) prints the same amount in 2025
@@ -1081,7 +1195,7 @@ params:
       value: 3116000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Threshold Phaseout Amount
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Threshold Phaseout Amount
         quote: Threshold Phaseout Amount $31,160 $31,160 $31,160 $18,140
       source: final
       note: EIC Worksheet A line 5 (Form 1040 instructions, not posted) prints the same amount in 2025
@@ -1095,7 +1209,8 @@ params:
       value: 868000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Earned Income Credit (columns One, Two, Three or More, None)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Earned Income Credit (columns One, Two, Three or More,
+          None)
         quote: Earned Income Amount $13,020 $18,290 $18,290 $8,680
       source: final
     eic.maximum0:
@@ -1103,7 +1218,8 @@ params:
       value: 66400
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Earned Income Credit (columns One, Two, Three or More, None)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Earned Income Credit (columns One, Two, Three or More,
+          None)
         quote: Maximum Amount of Credit $4,427 $7,316 $8,231 $664
       source: final
     eic.earned_amount1:
@@ -1111,7 +1227,8 @@ params:
       value: 1302000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Earned Income Credit (columns One, Two, Three or More, None)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Earned Income Credit (columns One, Two, Three or More,
+          None)
         quote: Earned Income Amount $13,020 $18,290 $18,290 $8,680
       source: final
     eic.maximum1:
@@ -1119,7 +1236,8 @@ params:
       value: 442700
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Earned Income Credit (columns One, Two, Three or More, None)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Earned Income Credit (columns One, Two, Three or More,
+          None)
         quote: Maximum Amount of Credit $4,427 $7,316 $8,231 $664
       source: final
     eic.earned_amount2:
@@ -1127,7 +1245,8 @@ params:
       value: 1829000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Earned Income Credit (columns One, Two, Three or More, None)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Earned Income Credit (columns One, Two, Three or More,
+          None)
         quote: Earned Income Amount $13,020 $18,290 $18,290 $8,680
       source: final
     eic.maximum2:
@@ -1135,7 +1254,8 @@ params:
       value: 731600
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Earned Income Credit (columns One, Two, Three or More, None)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Earned Income Credit (columns One, Two, Three or More,
+          None)
         quote: Maximum Amount of Credit $4,427 $7,316 $8,231 $664
       source: final
     eic.earned_amount3:
@@ -1143,7 +1263,8 @@ params:
       value: 1829000
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Earned Income Credit (columns One, Two, Three or More, None)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Earned Income Credit (columns One, Two, Three or More,
+          None)
         quote: Earned Income Amount $13,020 $18,290 $18,290 $8,680
       source: final
     eic.maximum3:
@@ -1151,7 +1272,8 @@ params:
       value: 823100
       cite:
         doc: rp-25-32
-        locator: p. 15, section 4.06(1), Earned Income Credit (columns One, Two, Three or More, None)
+        locator: p. 15, .06 Earned Income Credit, section 4.06(1), Earned Income Credit (columns One, Two, Three or More,
+          None)
         quote: Maximum Amount of Credit $4,427 $7,316 $8,231 $664
       source: final
     smw.table1_360:
@@ -1206,34 +1328,64 @@ params:
       note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
     ssb.base_single:
       type: NonNegDollars
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 2500000
+      cite:
+        doc: p915
+        locator: p. 17, Worksheet 1, Figuring Your Taxable Benefits, line 9
+        quote: Married filing jointly, enter $32,000; or ... apart from your spouse for all of 2026, enter $25,000
+      source: final
+      note: 'Pub. 915 Worksheet 1 is the worksheet the Form 1040 instructions (not posted) reproduce: confirm against them'
     ssb.base_joint:
       type: NonNegDollars
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 3200000
+      cite:
+        doc: p915
+        locator: p. 17, Worksheet 1, Figuring Your Taxable Benefits, line 9
+        quote: Married filing jointly, enter $32,000; or ... apart from your spouse for all of 2026, enter $25,000
+      source: final
+      note: 'Pub. 915 Worksheet 1 is the worksheet the Form 1040 instructions (not posted) reproduce: confirm against them'
     ssb.adjust_single:
       type: NonNegDollars
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 900000
+      cite:
+        doc: p915
+        locator: p. 17, Worksheet 1, Figuring Your Taxable Benefits, line 11
+        quote: Enter $12,000 if married filing jointly; or $9,000 if single, head of household, qualifying surviving spouse,
+          or
+      source: final
+      note: 'Pub. 915 Worksheet 1 is the worksheet the Form 1040 instructions (not posted) reproduce: confirm against them'
     ssb.adjust_joint:
       type: NonNegDollars
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 1200000
+      cite:
+        doc: p915
+        locator: p. 17, Worksheet 1, Figuring Your Taxable Benefits, line 11
+        quote: Enter $12,000 if married filing jointly; or $9,000 if single, head of household, qualifying surviving spouse,
+          or
+      source: final
+      note: 'Pub. 915 Worksheet 1 is the worksheet the Form 1040 instructions (not posted) reproduce: confirm against them'
     ssb.half:
       type: Rate
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value:
+        num: 1
+        den: 2
+      cite:
+        doc: p915
+        locator: p. 17, Worksheet 1, Figuring Your Taxable Benefits, lines 2 and 14
+        quote: Multiply line 13 by 50% (0.50)
+      source: final
+      note: 'Pub. 915 Worksheet 1 is the worksheet the Form 1040 instructions (not posted) reproduce: confirm against them'
     ssb.rate85:
       type: Rate
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value:
+        num: 85
+        den: 100
+      cite:
+        doc: p915
+        locator: p. 17, Worksheet 1, Figuring Your Taxable Benefits, lines 16 and 18
+        quote: Multiply line 12 by 85% (0.85)
+      source: final
+      note: 'Pub. 915 Worksheet 1 is the worksheet the Form 1040 instructions (not posted) reproduce: confirm against them'
     actc.rate:
       type: Rate
       value:
@@ -1243,7 +1395,7 @@ params:
         doc: f1040s8812
         locator: p. 2, Schedule 8812 (2026)
         quote: Multiply the amount on line 19 by 15% (0.15)
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     actc.three_children:
       type: NonNegDollars
@@ -1252,29 +1404,34 @@ params:
         doc: f1040s8812
         locator: p. 2, Schedule 8812 (2026)
         quote: On line 16b, is the amount $5,100 or more?
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     qc.age_limit:
       type: Count
       value: null
       source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      note: i1040gi 2026 not posted; the ages 19 and 24 printed in the 2026 Form 8814 and 8615 instructions belong to other
+        rules
     qc.student_age_limit:
       type: Count
       value: null
       source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      note: as qc.age_limit
     ctc.age_limit:
       type: Count
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 17
+      cite:
+        doc: i1040s8812
+        locator: p. 3, Qualifying child for the CTC and ACTC
+        quote: under age 17 at the end of 2026
+      source: draft
+      note: the 2025 value cites the Form 1040 instructions' Step 3 (not posted)
     qr.gross_income_limit:
       type: NonNegDollars
       value: 530000
       cite:
         doc: rp-25-32
-        locator: p. 20, section 4.23, Gross Income Limitation for a Qualifying Relative
+        locator: p. 20, .23 Gross Income Limitation for a Qualifying Relative, section 4.23
         quote: the exemption amount referred to in § 152(d)(1)(B) is $5,300.
       source: final
     dc.limit_one:
@@ -1313,6 +1470,15 @@ params:
         quote: The maximum amount is increased to $7,500 (previously $5,000). For married employees filing separate returns
       source: draft
       note: the instruction for the line that reads it (lane O4); What's New (p. 2) prints the same amount
+    dc.exclusion_max_mfs:
+      type: NonNegDollars
+      value: 375000
+      cite:
+        doc: i2441
+        locator: p. 7, Line 21
+        quote: married employees filing separate returns, the maximum amount is increased to $3,750 (previously $2,500)
+      source: draft
+      note: What's New (p. 2) prints the same amount; the separate-return half of dc.exclusion_max ($7,500)
     dc.child_age:
       type: Count
       value: 13
@@ -1325,14 +1491,31 @@ params:
       note: 2025 quote printed unchanged in the 2026 edition
     dc.providers_listed:
       type: Count
-      value: null
-      source: none
-      note: 2025 source `i2441` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 3
+      cite:
+        doc: i2441
+        locator: p. 4, Lines 1a through 1e
+        quote: If you have more than three care providers, check the box at the top of Part I
+      source: draft
+      note: Form 2441 Part I is relaid out as lines 1a to 1e in 2026 (draft); the count of providers it lists is unchanged
+    dc.persons_listed:
+      type: Count
+      value: 3
+      cite:
+        doc: i2441
+        locator: p. 4, Line 2
+        quote: If you have more than three qualifying persons, check the box on line 2
+      source: draft
+      note: Form 2441 (2026, draft) line 2 prints the same count
     dc.one:
       type: Count
-      value: null
-      source: none
-      note: 2025 source `i2441` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 1
+      cite:
+        doc: i2441
+        locator: p. 4, Lines 1a through 1e
+        quote: Complete lines 1a through 1e for each person or organization that provided the care.
+      source: draft
+      note: one entry per care provider, as in 2025; Form 2441 Part I is relaid out as lines 1a to 1e in 2026 (draft)
     dependent.one:
       type: Count
       value: 1
@@ -1340,7 +1523,7 @@ params:
         doc: f1040s8812
         locator: p. 1, Schedule 8812 (2026)
         quote: Number of qualifying children
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     person.one:
       type: Count
@@ -1405,9 +1588,9 @@ params:
       value: 12
       cite:
         doc: i1095a
-        locator: p. 3, Part III
+        locator: p. 2, Part III
         quote: Add the amounts on lines 21 through 32 and enter on line 33.
-      source: draft
+      source: final
       note: 'structural: twelve monthly lines'
     f5329.early_rate:
       type: Rate
@@ -1416,9 +1599,9 @@ params:
         den: 100
       cite:
         doc: f5329
-        locator: p. 2, Part I
+        locator: p. 1, Part I
         quote: Additional tax. Enter 10% (0.10) of line 3.
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     f5329.simple_rate:
       type: Rate
@@ -1438,9 +1621,9 @@ params:
         den: 100
       cite:
         doc: f5329
-        locator: p. 3, Part VII
+        locator: p. 2, Part VII
         quote: Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2026
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     f5329.cap_first_home:
       type: NonNegDollars
@@ -1492,9 +1675,9 @@ params:
         qss: 9000000
       cite:
         doc: f8863
-        locator: p. 2, Part I
+        locator: p. 1, Part I
         quote: Enter $180,000 if married filing jointly; or $90,000 if single, head of household,
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     edu.phaseout_range:
       type: NonNegDollars
@@ -1506,27 +1689,27 @@ params:
         qss: 1000000
       cite:
         doc: f8863
-        locator: p. 2, Part I
+        locator: p. 1, Part I
         quote: Enter $20,000 if married filing jointly; or $10,000 if single, head of household,
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     aoc.expense_cap:
       type: NonNegDollars
       value: 400000
       cite:
         doc: f8863
-        locator: p. 3, Part III
+        locator: p. 2, Part III
         quote: Don’t enter more than $4,000
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     aoc.full_band:
       type: NonNegDollars
       value: 200000
       cite:
         doc: f8863
-        locator: p. 3, Part III
+        locator: p. 2, Part III
         quote: Subtract $2,000 from line 27. If zero or less, enter -0-
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     aoc.second_rate:
       type: Rate
@@ -1535,9 +1718,9 @@ params:
         den: 100
       cite:
         doc: f8863
-        locator: p. 3, Part III
+        locator: p. 2, Part III
         quote: Multiply line 28 by 25% (0.25)
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     aoc.refundable_rate:
       type: Rate
@@ -1546,18 +1729,18 @@ params:
         den: 100
       cite:
         doc: f8863
-        locator: p. 2, Part I
+        locator: p. 1, Part I
         quote: Refundable American opportunity credit. Multiply line 7 by 40% (0.40).
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     llc.expense_cap:
       type: NonNegDollars
       value: 1000000
       cite:
         doc: f8863
-        locator: p. 2, Part II
+        locator: p. 1, Part II
         quote: Enter the smaller of line 10 or $10,000
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     llc.rate:
       type: Rate
@@ -1566,9 +1749,9 @@ params:
         den: 100
       cite:
         doc: f8863
-        locator: p. 2, Part II
+        locator: p. 1, Part II
         quote: Multiply line 11 by 20% (0.20)
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     ptc.twelfth:
       type: Rate
@@ -1595,7 +1778,9 @@ params:
       type: NonNegDollars
       value: null
       source: none
-      note: 2025 source `i1040sd` has no 2026 edition archived and no other archived 2026 source prints this value
+      note: i1040sd 2026 not posted; the 2026 Form 1116 instructions (draft, p. 11-12) print $201,775 single and separate,
+        $201,750 head of household and $403,550 joint for the related adjustment exception, but no archived source prints
+        the Schedule D Tax Worksheet's own amount
     sdtw.rate15:
       type: Rate
       value: null
@@ -1637,9 +1822,9 @@ params:
         den: 100
       cite:
         doc: f8889
-        locator: p. 2, Form 8889 (2026)
+        locator: p. 1, Form 8889 (2026)
         quote: Enter 20% (0.20) of the distributions included on line 16 that are subject to the additional 20% tax
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     medicare.additional_rate:
       type: Rate
@@ -1734,7 +1919,7 @@ params:
         qss: 3220000
       cite:
         doc: rp-25-32
-        locator: p. 18, section 4.14(1), Standard Deduction
+        locator: p. 18, .14 Standard Deduction, section 4.14(1)
         quote: Married Individuals Filing Joint Returns and Surviving Spouses $32,200 (§ 1(j)(2)(A)) Heads of Households (§
           1(j)(2)(B)) $24,150 Unmarried Individuals (other than Surviving Spouses and Heads of $16,100 Households) (§ 1(j)(2)(C))
           Married Individuals Filing Separate Returns (§ 1(j)(2)(D)) $16,100
@@ -1749,10 +1934,30 @@ params:
         qss: 165000
       cite:
         doc: rp-25-32
-        locator: p. 18, section 4.14(3), Aged or blind
+        locator: p. 18, .14 Standard Deduction, section 4.14(3), Aged or blind
         quote: the additional standard deduction amount under § 63(f) for the aged or the blind is $1,650. The additional
           standard deduction amount is increased to $2,050 if the individual is also unmarried and not a surviving spouse.
       source: final
+    sa.dep_min:
+      type: NonNegDollars
+      value: 135000
+      cite:
+        doc: rp-25-32
+        locator: p. 18, .14 Standard Deduction, section 4.14(2), Standard deduction for a dependent
+        quote: cannot exceed the greater of (1) $1,350, or (2) the sum of $450 and
+      source: final
+      note: the 2025 value cites the Standard Deduction Worksheet for Dependents (Form 1040 instructions, not posted), which
+        applies this rule
+    sa.dep_add:
+      type: NonNegDollars
+      value: 45000
+      cite:
+        doc: rp-25-32
+        locator: p. 18, .14 Standard Deduction, section 4.14(2), Standard deduction for a dependent
+        quote: cannot exceed the greater of (1) $1,350, or (2) the sum of $450 and
+      source: final
+      note: the 2025 value cites the Standard Deduction Worksheet for Dependents (Form 1040 instructions, not posted), which
+        applies this rule
     sa.no:
       type: Bool
       value: null
@@ -1830,12 +2035,75 @@ params:
       value: null
       source: none
       note: 2025 source `i1116` has no 2026 edition archived and no other archived 2026 source prints this value
+    f1116.interest_threshold:
+      type: NonNegDollars
+      value: 500000
+      cite:
+        doc: i1116
+        locator: p. 21, read by tools/propose_params.py
+        quote: if your gross foreign source income (including income excluded on form 2555) doesn't exceed $5,000, you can
+          allocate all of your interest expense to u.s. source income.
+      source: draft
+      note: read by tools/propose_params.py at the place the 2025 citation names
+    f1116.exception_ceiling:
+      type: NonNegDollars
+      value:
+        single: 20177500
+        mfs: 20177500
+        hoh: 20175000
+        mfj: 40355000
+        qss: 40355000
+      cite:
+        doc: i1116
+        locator: p. 11, Adjustment exception (qualified dividends)
+        quote: a. $403,550 if married filing jointly or qualifying ... b. $201,775 if married filing separately, ... c. $201,775
+          if single, or ... d. $201,750 if head of household.
+      source: draft
+      note: the head-of-household amount differs from the single amount in 2026 (the 2026 rate tables' 32% bracket starts,
+        rp-25-32 pp. 10-12); in 2025 they were equal
+    f1116.exception_qd_limit:
+      type: NonNegDollars
+      value: 2000000
+      cite:
+        doc: i1116
+        locator: p. 11, read by tools/propose_params.py
+        quote: the amount of your foreign source capital gain distributions plus the amount of your foreign source qualified
+          dividends is less than $20,000.
+      source: draft
+      note: read by tools/propose_params.py at the place the 2025 citation names
+    f1116.high_tax_rate:
+      type: Rate
+      value:
+        num: 37
+        den: 100
+      cite:
+        doc: rp-25-32
+        locator: p. 11, .01 Tax Rate Tables, section 4.01, Tax Rate Tables (the highest rate of section 1)
+        quote: plus 37% of the excess over $640,600
+      source: final
+      note: the highest rate of tax specified in section 1 (cfr-26-1-904-4); the 2025 value cites the Form 1040 instructions'
+        Tax Computation Worksheet (not posted)
+    f1116.withholding_split:
+      type: Rate
+      value: null
+      source: none
+      note: 2025 source `cfr-26-1-904-4` has no 2026 edition archived and no other archived 2026 source prints this value
+    f1116sb.prior_none:
+      type: Enum(ftc_prior_year)
+      value: null
+      source: none
+      note: 2025 source `p514` has no 2026 edition archived and no other archived 2026 source prints this value
+    ftc.yes:
+      type: Bool
+      value: null
+      source: none
+      note: 2025 source `i1116` has no 2026 edition archived and no other archived 2026 source prints this value
     s1.educator_max:
       type: NonNegDollars
       value: 35000
       cite:
         doc: rp-25-32
-        locator: p. 17, section 4.12, Certain Expenses of Elementary and Secondary School Teachers
+        locator: p. 17, .12 Certain Expenses of Elementary and Secondary School Teachers, section 4.12
         quote: supplementary materials used by the eligible educator in the classroom is $350.
       source: final
     refund.std_single:
@@ -1868,7 +2136,7 @@ params:
       value: 250000
       cite:
         doc: rp-25-32
-        locator: p. 23, section 4.29, Interest on Education Loans
+        locator: p. 23, .29 Interest on Education Loans, section 4.29
         quote: the $2,500 maximum deduction for interest paid on qualified education loans
       source: final
     sli.base_other:
@@ -1876,7 +2144,7 @@ params:
       value: 8500000
       cite:
         doc: rp-25-32
-        locator: p. 23, section 4.29, Interest on Education Loans
+        locator: p. 23, .29 Interest on Education Loans, section 4.29
         quote: modified adjusted gross income in excess of $85,000 ($175,000 for joint returns)
       source: final
     sli.base_joint:
@@ -1884,7 +2152,7 @@ params:
       value: 17500000
       cite:
         doc: rp-25-32
-        locator: p. 23, section 4.29, Interest on Education Loans
+        locator: p. 23, .29 Interest on Education Loans, section 4.29
         quote: modified adjusted gross income in excess of $85,000 ($175,000 for joint returns)
       source: final
     sli.divisor_other:
@@ -1935,6 +2203,11 @@ params:
       note: 2025 source `i8889` has no 2026 edition archived and no other archived 2026 source prints this value
     hsa.year_family:
       type: Enum(hsa_coverage)
+      value: null
+      source: none
+      note: 2025 source `i8889` has no 2026 edition archived and no other archived 2026 source prints this value
+    hsa.inh_spouse_earlier:
+      type: Enum(hsa_inherited)
       value: null
       source: none
       note: 2025 source `i8889` has no 2026 edition archived and no other archived 2026 source prints this value
@@ -2064,9 +2337,15 @@ params:
       note: 2025 quote printed unchanged in the 2026 edition
     s1a.hundred_per_thousand:
       type: Rate
-      value: null
-      source: none
-      note: 2025 source `f1040s1a` has no 2026 edition archived and no other archived 2026 source prints this value
+      value:
+        num: 1
+        den: 10
+      cite:
+        doc: f1040s1a
+        locator: p. 2, Schedule 1-A (2026), lines 13 and 14
+        quote: Divide line 12 by $1,000. ... Multiply line 13 by $100
+      source: draft
+      note: $100 for each whole $1,000; lines 25 and 26 (p. 3) print the same for overtime
     s1a.ot_max_other:
       type: NonNegDollars
       value: 1250000
@@ -2126,9 +2405,15 @@ params:
       note: 2025 quote printed unchanged in the 2026 edition
     s1a.two_hundred_per_thousand:
       type: Rate
-      value: null
-      source: none
-      note: 2025 source `f1040s1a` has no 2026 edition archived and no other archived 2026 source prints this value
+      value:
+        num: 1
+        den: 5
+      cite:
+        doc: f1040s1a
+        locator: p. 4, Schedule 1-A (2026), line 35
+        quote: Multiply line 34 by $200
+      source: draft
+      note: $200 for each $1,000 (line 34, rounded up)
     s1a.senior_amount:
       type: NonNegDollars
       value: 600000
@@ -2285,7 +2570,7 @@ params:
       value: 256000000
       cite:
         doc: rp-25-32
-        locator: p. 21, section 4.24, Election to Expense Certain Depreciable Assets
+        locator: p. 21, .24 Election to Expense Certain Depreciable Assets, section 4.24
         quote: the aggregate cost of any § 179 property that a taxpayer elects to treat as an expense cannot exceed $2,560,000
       source: final
     s179.mfs_share:
@@ -2298,7 +2583,7 @@ params:
       value: 409000000
       cite:
         doc: rp-25-32
-        locator: p. 21, section 4.24
+        locator: p. 21, .24 Election to Expense Certain Depreciable Assets, section 4.24
         quote: the cost of § 179 property placed in service during the 2026 taxable year exceeds $4,090,000.
       source: final
     s179.suv_limit:
@@ -2306,7 +2591,7 @@ params:
       value: 3200000
       cite:
         doc: rp-25-32
-        locator: p. 21, section 4.24
+        locator: p. 21, .24 Election to Expense Certain Depreciable Assets, section 4.24
         quote: the cost of any sport utility vehicle that may be taken into account under § 179 cannot exceed $32,000.
       source: final
     se.rate_9235:
@@ -2370,6 +2655,46 @@ params:
         quote: Multiply line 12 by 50% (0.50)
       source: final
       note: 2025 quote printed unchanged in the 2026 edition
+    f4137.rate_062:
+      type: Rate
+      value:
+        num: 62
+        den: 1000
+      cite:
+        doc: f4137
+        locator: p. 2, Form 4137 (2026), line 11
+        quote: Multiply line 10 by 0.062 (social security tax rate)
+      source: draft
+    f4137.rate_0145:
+      type: Rate
+      value:
+        num: 145
+        den: 10000
+      cite:
+        doc: f4137
+        locator: p. 2, Form 4137 (2026), line 12
+        quote: Multiply line 6 by 0.0145 (Medicare tax rate)
+      source: draft
+    f8919.rate_062:
+      type: Rate
+      value:
+        num: 62
+        den: 1000
+      cite:
+        doc: f8919
+        locator: p. 1, Form 8919 (2026), line 11
+        quote: Multiply line 10 by 0.062 (social security tax rate)
+      source: final
+    f8919.rate_0145:
+      type: Rate
+      value:
+        num: 145
+        den: 10000
+      cite:
+        doc: f8919
+        locator: p. 1, Form 8919 (2026), line 12
+        quote: Multiply line 6 by 0.0145 (Medicare tax rate)
+      source: final
     ret.comp_limit:
       type: NonNegDollars
       value: 36000000
@@ -2437,6 +2762,15 @@ params:
       value: null
       source: none
       note: 2025 source `p560` has no 2026 edition archived and no other archived 2026 source prints this value
+    f8853c.per_diem_limit:
+      type: NonNegDollars
+      value: 43000
+      cite:
+        doc: rp-25-32
+        locator: p. 34, read by tools/propose_params.py
+        quote: chronically ill individual, is $430
+      source: final
+      note: read by tools/propose_params.py at the place the 2025 citation names
     s1.ebl_threshold:
       type: NonNegDollars
       value:
@@ -2447,7 +2781,7 @@ params:
         qss: 25600000
       cite:
         doc: rp-25-32
-        locator: p. 23, section 4.31, Threshold for Excess Business Loss
+        locator: p. 23, .31 Threshold for Excess Business Loss, section 4.31
         quote: the amount under § 461(l)(3)(A)(ii)(II) is $256,000 ($512,000 for joint returns).
       source: final
     savers.cap:
@@ -2455,9 +2789,9 @@ params:
       value: 200000
       cite:
         doc: f8880
-        locator: p. 2, Form 8880 (2026)
+        locator: p. 1, Form 8880 (2026)
         quote: In each column, enter the smaller of line 5 or $2,000
-      source: draft
+      source: final
       note: 2025 quote printed unchanged in the 2026 edition
     savers.no_credit:
       type: Bool
@@ -2476,7 +2810,7 @@ params:
         doc: f8880
         locator: p. 2, Form 8880 (2026), caution
         quote: is more than $40,250 ($60,375 if head of household; $80,500 if married filing jointly).
-      source: draft
+      source: final
       note: draft form; the same limits are in n-25-67 p. 3-4 (final)
     ira.limit:
       type: NonNegDollars
@@ -2512,6 +2846,18 @@ params:
       note: the upper ends of the phase-out ranges, which the 2025 IRA Deduction Worksheet line 2 printed; the 2026 worksheet
         (Form 1040 instructions) is not posted; the qualifying-surviving-spouse amount follows section 219(g)(3)(B)(i) ('a
         joint return or as a qualifying widow(er)')
+    ira.line2_apart:
+      type: NonNegDollars
+      value: 9100000
+      cite:
+        doc: p590a
+        locator: p. 15, Table 1-2, single or head of household, and its footnote
+        quote: $91,000 or more ... If you didn’t live with your spouse at any time during the year, your filing status is
+          considered Single for this purpose
+      source: draft
+      note: 'the single upper limit, which applies to a separate filer who lived apart all year; n-25-67 p. 4 (final) prints
+        the same $91,000. Pub. 590-A Worksheet 1-2 figures the same reduction as the IRA Deduction Worksheet the 2025 value
+        cites (Form 1040 instructions, not posted): confirm against that worksheet'
     ira.line2_not_covered:
       type: NonNegDollars
       value: 25200000
@@ -2522,39 +2868,92 @@ params:
       source: final
     ira.full_narrow:
       type: NonNegDollars
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 1000000
+      cite:
+        doc: p590a
+        locator: p. 19, Worksheet 1-2, Figuring Your Reduced IRA Deduction for 2026, line 3
+        quote: Subtract line 2 from line 1. If line 3 is $10,000 or more ($20,000 or more if married filing jointly or qualifying
+          surviving spouse and you are covered by an employer plan), stop here.
+      source: draft
+      note: 'Pub. 590-A Worksheet 1-2 figures the same reduction as the IRA Deduction Worksheet the 2025 value cites (Form
+        1040 instructions, not posted): confirm against that worksheet'
     ira.full_joint:
       type: NonNegDollars
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 2000000
+      cite:
+        doc: p590a
+        locator: p. 19, Worksheet 1-2, Figuring Your Reduced IRA Deduction for 2026, line 3
+        quote: Subtract line 2 from line 1. If line 3 is $10,000 or more ($20,000 or more if married filing jointly or qualifying
+          surviving spouse and you are covered by an employer plan), stop here.
+      source: draft
+      note: 'Pub. 590-A Worksheet 1-2 figures the same reduction as the IRA Deduction Worksheet the 2025 value cites (Form
+        1040 instructions, not posted): confirm against that worksheet'
     ira.rate_70:
       type: Rate
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value:
+        num: 75
+        den: 100
+      cite:
+        doc: p590a
+        locator: p. 19, Worksheet 1-2, line 4
+        quote: All others, multiply line 3 by 75% (0.75) (by 86% (0.86) if you are age 50 or older).
+      source: draft
+      note: 'the rate is the 2026 contribution limit over the phase-out range ($7,500 or $8,600 over $10,000 or $20,000),
+        so it changes with ira.limit; the parameter''s name keeps the 2025 rate. Pub. 590-A Worksheet 1-2 figures the same
+        reduction as the IRA Deduction Worksheet the 2025 value cites (Form 1040 instructions, not posted): confirm against
+        that worksheet'
     ira.rate_80:
       type: Rate
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value:
+        num: 86
+        den: 100
+      cite:
+        doc: p590a
+        locator: p. 19, Worksheet 1-2, line 4
+        quote: All others, multiply line 3 by 75% (0.75) (by 86% (0.86) if you are age 50 or older).
+      source: draft
+      note: 'the rate is the 2026 contribution limit over the phase-out range ($7,500 or $8,600 over $10,000 or $20,000),
+        so it changes with ira.limit; the parameter''s name keeps the 2025 rate. Pub. 590-A Worksheet 1-2 figures the same
+        reduction as the IRA Deduction Worksheet the 2025 value cites (Form 1040 instructions, not posted): confirm against
+        that worksheet'
     ira.rate_35:
       type: Rate
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value:
+        num: 375
+        den: 1000
+      cite:
+        doc: p590a
+        locator: p. 19, Worksheet 1-2, line 4
+        quote: multiply line 3 by 37.5% (0.375) (by 43% (0.43) if you are age 50
+      source: draft
+      note: 'the rate is the 2026 contribution limit over the phase-out range ($7,500 or $8,600 over $10,000 or $20,000),
+        so it changes with ira.limit; the parameter''s name keeps the 2025 rate. Pub. 590-A Worksheet 1-2 figures the same
+        reduction as the IRA Deduction Worksheet the 2025 value cites (Form 1040 instructions, not posted): confirm against
+        that worksheet'
     ira.rate_40:
       type: Rate
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value:
+        num: 43
+        den: 100
+      cite:
+        doc: p590a
+        locator: p. 19, Worksheet 1-2, line 4
+        quote: multiply line 3 by 37.5% (0.375) (by 43% (0.43) if you are age 50
+      source: draft
+      note: 'the rate is the 2026 contribution limit over the phase-out range ($7,500 or $8,600 over $10,000 or $20,000),
+        so it changes with ira.limit; the parameter''s name keeps the 2025 rate. Pub. 590-A Worksheet 1-2 figures the same
+        reduction as the IRA Deduction Worksheet the 2025 value cites (Form 1040 instructions, not posted): confirm against
+        that worksheet'
     ira.min:
       type: NonNegDollars
-      value: null
-      source: none
-      note: 2025 source `i1040gi` has no 2026 edition archived and no other archived 2026 source prints this value
+      value: 20000
+      cite:
+        doc: p590a
+        locator: p. 19, Worksheet 1-2, line 4
+        quote: However, if the result is less than $200, enter $200.
+      source: draft
+      note: 'Pub. 590-A Worksheet 1-2 figures the same reduction as the IRA Deduction Worksheet the 2025 value cites (Form
+        1040 instructions, not posted): confirm against that worksheet'
     ira.kbh_none:
       type: NonNegDollars
       value: 1500000
@@ -2582,6 +2981,103 @@ params:
         quote: combined taxable compensation of both you and your spouse is less than $15,000 ($16,100 if one spouse is age
           50 or older at the end of 2026; $17,200 if both spouses are age 50 or older at the end of 2026
       source: draft
+    rental.one:
+      type: Count
+      value: null
+      source: none
+      note: 2025 source `i1040se` has no 2026 edition archived and no other archived 2026 source prints this value
+    rental.day_cents:
+      type: NonNegDollars
+      value: null
+      source: none
+      note: 2025 source `p527` has no 2026 edition archived and no other archived 2026 source prints this value
+    rental.tenth_cents:
+      type: NonNegDollars
+      value: null
+      source: none
+      note: 2025 source `p527` has no 2026 edition archived and no other archived 2026 source prints this value
+    rental.home_days:
+      type: NonNegDollars
+      value: null
+      source: none
+      note: 2025 source `p527` has no 2026 edition archived and no other archived 2026 source prints this value
+    rental.min_rental_days:
+      type: Count
+      value: 15
+      cite:
+        doc: i1040se
+        locator: p. 7, read by tools/propose_params.py
+        quote: if you did use the unit as a home and rented the unit out for fewer than 15 days in 2026
+      source: draft
+      note: read by tools/propose_params.py at the place the 2025 citation names
+    f8582.phaseout_end:
+      type: NonNegDollars
+      value:
+        single: 15000000
+        mfj: 15000000
+        mfs: 7500000
+        hoh: 15000000
+        qss: 15000000
+      cite:
+        doc: i8582
+        locator: p. 12, Line 5
+        quote: enter $75,000 on line 5 instead of $150,000
+      source: draft
+      note: f8582 p. 2 (draft), line 5, prints "Enter $150,000"
+    f8582.special_max:
+      type: NonNegDollars
+      value:
+        single: 2500000
+        mfj: 2500000
+        mfs: 1250000
+        hoh: 2500000
+        qss: 2500000
+      cite:
+        doc: i8582
+        locator: p. 5, Special allowance for rental real estate activities
+        quote: 'The maximum special allowance is: • $25,000 for single individuals and married individuals filing a joint
+          return for the tax year; • $12,500 for married individuals who file separate returns'
+      source: draft
+      note: f8582 p. 2 (draft), line 8, prints "Do not enter more than $25,000"
+    f8582.rate:
+      type: Rate
+      value:
+        num: 50
+        den: 100
+      cite:
+        doc: f8582
+        locator: p. 2, read by tools/propose_params.py
+        quote: multiply line 7 by 50% (0.50)
+      source: draft
+      note: read by tools/propose_params.py at the place the 2025 citation names
+    f8582.exception_magi:
+      type: NonNegDollars
+      value:
+        single: 10000000
+        mfj: 10000000
+        mfs: 5000000
+        hoh: 10000000
+        qss: 10000000
+      cite:
+        doc: i8582
+        locator: p. 3, read by tools/propose_params.py
+        quote: was not more than $100,000 ($50,000 if married filing separately)
+      source: draft
+      note: read by tools/propose_params.py at the place the 2025 citation names
+    f8582.exception_loss:
+      type: NonNegDollars
+      value:
+        single: 2500000
+        mfj: 2500000
+        mfs: 1250000
+        hoh: 2500000
+        qss: 2500000
+      cite:
+        doc: i8582
+        locator: p. 3, read by tools/propose_params.py
+        quote: wasn't more than $25,000 ($12,500 if married filing separately)
+      source: draft
+      note: read by tools/propose_params.py at the place the 2025 citation names
     sc.mileage_rate_h1:
       type: Rate
       value:
@@ -2703,12 +3199,12 @@ params:
       value: 10080000
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Table 1 (married filing jointly and surviving spouses)
+        locator: p. 10, .01 Tax Rate Tables, section 4.01, Table 1 (married filing jointly and surviving spouses)
         quote: Over $24,800 but not over $100,800
       source: final
       new_in_2026: true
-      note: Tax Computation Worksheet Section B row for $100,000 to $100,800 (changes/2026/tcw.yaml, BUG-0647);
-        the 2026 worksheet (Form 1040 instructions, not posted) is to confirm the row
+      note: Tax Computation Worksheet Section B row for $100,000 to $100,800 (changes/2026/tcw.yaml, BUG-0647); the 2026 worksheet
+        (Form 1040 instructions, not posted) is to confirm the row
     tcw.mfj.b0.rate:
       type: Rate
       value:
@@ -2716,29 +3212,31 @@ params:
         den: 100
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Table 1 (married filing jointly and surviving spouses)
+        locator: p. 10, .01 Tax Rate Tables, section 4.01, Table 1 (married filing jointly and surviving spouses)
         quote: $2,480 plus 12% of the excess over $24,800
       source: final
       new_in_2026: true
-      note: Tax Computation Worksheet Section B row for $100,000 to $100,800 (changes/2026/tcw.yaml, BUG-0647);
-        the 2026 worksheet (Form 1040 instructions, not posted) is to confirm the row
+      note: Tax Computation Worksheet Section B row for $100,000 to $100,800 (changes/2026/tcw.yaml, BUG-0647); the 2026 worksheet
+        (Form 1040 instructions, not posted) is to confirm the row
     tcw.mfj.b0.subtract:
       type: Dollars
       value: 49600
       cite:
         doc: rp-25-32
-        locator: p. 10, section 4.01, Table 1 (married filing jointly and surviving spouses)
+        locator: p. 10, .01 Tax Rate Tables, section 4.01, Table 1 (married filing jointly and surviving spouses)
         quote: $2,480 plus 12% of the excess over $24,800
       source: final
       new_in_2026: true
-      note: 'Tax Computation Worksheet Section B row for $100,000 to $100,800 (changes/2026/tcw.yaml, BUG-0647);
-        derived: rate x lower limit ($24,800) less base ($2,480); the 2026 worksheet (Form 1040 instructions, not posted)
-        is to confirm the row'
+      note: 'Tax Computation Worksheet Section B row for $100,000 to $100,800 (changes/2026/tcw.yaml, BUG-0647); derived:
+        rate x lower limit ($24,800) less base ($2,480); the 2026 worksheet (Form 1040 instructions, not posted) is to confirm
+        the row'
       derived: the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)
   unsourced:
   - ordinary.table_boundary
   - qdcg.rate_15
   - qdcg.rate_20
+  - amt.rate_25
+  - household.mfs_living_else
   - household.no
   - s3.no
   - s8812.no
@@ -2753,17 +3251,8 @@ params:
   - smw.table2_310
   - smw.table2_260
   - smw.table2_210
-  - ssb.base_single
-  - ssb.base_joint
-  - ssb.adjust_single
-  - ssb.adjust_joint
-  - ssb.half
-  - ssb.rate85
   - qc.age_limit
   - qc.student_age_limit
-  - ctc.age_limit
-  - dc.providers_listed
-  - dc.one
   - person.one
   - ss.one
   - ss.zero
@@ -2784,6 +3273,9 @@ params:
   - sa.no
   - f4952.no
   - ftc.no
+  - f1116.withholding_split
+  - f1116sb.prior_none
+  - ftc.yes
   - refund.std_single
   - refund.std_joint
   - refund.std_hoh
@@ -2799,14 +3291,13 @@ params:
   - hsa.cov_changed
   - hsa.year_self_only
   - hsa.year_family
+  - hsa.inh_spouse_earlier
   - hsa.year_same
   - hsa.year_counts_hold
   - hsa.year_months
-  - s1a.hundred_per_thousand
   - s1a.ot_third
   - s1a.ot_half
   - s1a.ot_quarter
-  - s1a.two_hundred_per_thousand
   - sc.one_cent
   - sc.hundred_cents
   - sc.fifty_cents
@@ -2824,13 +3315,10 @@ params:
   - ret.match_rate
   - ret.nonelective_rate
   - savers.no_credit
-  - ira.full_narrow
-  - ira.full_joint
-  - ira.rate_70
-  - ira.rate_80
-  - ira.rate_35
-  - ira.rate_40
-  - ira.min
+  - rental.one
+  - rental.day_cents
+  - rental.tenth_cents
+  - rental.home_days
   retired:
     sc.mileage_rate: replaced by sc.mileage_rate_h1 (72.5 cents) and sc.mileage_rate_h2 (76 cents), Rate values in dollars
       per mile (C-BUS-01; owner decision 2026-11-04)

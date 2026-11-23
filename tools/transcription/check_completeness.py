@@ -23,10 +23,11 @@ reviews/<year>/completeness/completeness.json holds the samples run against one 
 - A sample whose response did not parse is listed and does not count toward the milestone.
 
 `--release` is the release gate (tools/release.sh): it also fails on every due form and every form short of the
-milestone's samples. Forms with no cited instruction pages, or whose prompt exceeds the size limit, are not reviewed
+milestone's samples, and on every ruling that confirms an open bug of medium or high severity (samples.open_defects)
+unless `--allow-open-bugs` is given; the allowed ones are listed for the release to record. Forms with no cited instruction pages, or whose prompt exceeds the size limit, are not reviewed
 and are named in the output. A New York form listed as pending (pending.py) is reported, not failed.
 
-    check_completeness.py [--release] [--baseline] [--self-test]
+    check_completeness.py [--release [--allow-open-bugs]] [--baseline] [--self-test]
 """
 import json
 import os
@@ -155,7 +156,7 @@ def findings(forms, mani, records, release=False):
     return out, notes, due, shas
 
 
-def check(rebaseline=False, release=False):
+def check(rebaseline=False, release=False, allow_open_bugs=False):
     forms = baseline_check.load_forms(Path(ROOT) / "canonical" / Y)
     records = read_records(str(RECORD))
     found, notes, due, shas = findings(forms, manifest(), records, release)
@@ -197,6 +198,8 @@ def check(rebaseline=False, release=False):
     if due and not release:
         with open(REPORT, "a", encoding="utf-8") as out:
             out.write("\n## Due at the next release\n\n" + "".join(f"- `{f}`: {why}\n" for f, why in due))
+    if release:
+        status = samples.release_open_bugs({**good, **carry}, allow_open_bugs) or status
     return 1 if errors else status
 
 
@@ -255,4 +258,5 @@ if __name__ == "__main__":
         sys.exit(self_test())
     import build_fresh
     build_fresh.require()
-    sys.exit(check(rebaseline="--baseline" in sys.argv, release="--release" in sys.argv))
+    sys.exit(check(rebaseline="--baseline" in sys.argv, release="--release" in sys.argv,
+                   allow_open_bugs="--allow-open-bugs" in sys.argv))

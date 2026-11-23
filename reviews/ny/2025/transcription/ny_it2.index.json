@@ -4,27 +4,26 @@
  "family": "claude",
  "base": "d2e8a1eafd94a1084c45428c8fa9f55ec84c5b5aadd132827b35f63396f79a55",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "2 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "17a (whole dollars)",
-   "record": "8395bcf0f870d08300403260af0743263800a13bb700df2768ddcdf77d6d2395",
-   "status": "DISAGREE",
-   "ruling": "Ruling: finding; IT-2 (2025) p. 2, Boxes 15a through 17a: \"If you have no New York State wages or withholding, leave boxes 16a and 17a blank.\" The reply shows the whole-dollar box only when the amount is more than zero; the project shows it on every W-2 record, $0 when there is no withholding. The record is required for every W-2 (the basis of the 2026-11-04 model-error ruling), the box is not. Value expressions identical (half-up; \"drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar\"); presentation only. (BUG-0763)",
-   "subject_key": "ffc3075c7a9d14ca83925107b0d6fbf3df3bb489e4c70f8b2a5b3898f3e60a23"
+   "record": "bec7b01bc7f7cb6eb645b4f7a2a26c3c866d548afe044ad15de95c3bf1ced2e2",
+   "status": "AGREE",
+   "subject_key": "353a56308e4ed1e1a388c4c3a2b94462bccada6e915cd4aeb12be6c901a8ae7e"
   },
   {
    "key": "19 (whole dollars)",
-   "record": "8395bcf0f870d08300403260af0743263800a13bb700df2768ddcdf77d6d2395",
-   "status": "DISAGREE",
-   "ruling": "Ruling: finding; IT-2 (2025) p. 2, Boxes 18 through 20: \"Complete the locality boxes 18 through 20 only for NYC or Yonkers (or both) wages and withholding, if reported on federal Form W-2.\" The reply shows the whole-dollar box only when the amount is more than zero; the project shows it on every W-2 record, $0 when there is no withholding. The record is required for every W-2 (the basis of the 2026-11-04 model-error ruling), the box is not. Value expressions identical (half-up; \"drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar\"); presentation only. (BUG-0763)",
-   "subject_key": "b2ff387a6e2ae829e189960f2f15f21b42b6a3f6c39ababe0237220d870b7a77"
+   "record": "bec7b01bc7f7cb6eb645b4f7a2a26c3c866d548afe044ad15de95c3bf1ced2e2",
+   "status": "AGREE",
+   "subject_key": "2c526d5302c39cde8224caded25f2e497cd8b62001e916594d23ee54d21fc1c6"
   }
  ],
  "subjects": {
-  "17a (whole dollars)": "aed6e8f6a31fe2bcf2e978c84dd160e78ac0c486f6d232cc0fe231124bfabaf2",
-  "19 (whole dollars)": "8971042be0e6c876d8170ddc07f7d7df4039491e1bb0edb01054856c1dda8f67"
+  "17a (whole dollars)": "8482dd33ce494ce94cf9de6094eb90e113b166594d8270d32754cb449eabb8a2",
+  "19 (whole dollars)": "8d580659e91a202b089aec61671e7656c249ffb758284e53e6418380c3fe282f"
  },
  "__rest__": "563acf0600ec1c8f1741f1d64d2bad8c9b36d45c64ada15fec51979356f9b8d0",
  "foreign": {

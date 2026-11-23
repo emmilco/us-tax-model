@@ -14,6 +14,9 @@ subject is reviewed by SAMPLES_PER_MILESTONE independent samples, and their find
   subject changes.
 - A change to the reviewer's instructions does not make a subject due; it applies at the subject's next sample.
 - A finding whose item and normalised quote equal those of a ruled finding on the same subject carries that ruling.
+- A ruling that confirms an open bug of medium or high severity (or of none recorded) counts as ruled between releases,
+  but a release is refused while one stands unless `--allow-open-bugs` is given, and the release records them
+  (`open_defects`, `release_open_bugs`).
 """
 import json
 import re
@@ -94,3 +97,62 @@ def carried(found, rulings):
         if f["kind"] == "unruled" and k not in rulings and src:
             out[k] = {**rulings[src], "carried_from": src}
     return out
+
+
+BUG_ID = re.compile(r"BUG-\d{4}")
+# The severities an open bug may have and still not hold a release back; an open bug of any other severity, or of none
+# recorded, holds it back unless the release allows open bugs.
+RELEASE_SEVERITIES = ("low",)
+
+
+def confirmed_bugs(ruling):
+    """The bug ids a ruling confirms as defects: its `bug` (a completeness real gap) and `bugs` fields, the ids its own
+    class names, and the ids in a finding it classes a defect or a real gap. An id named only in its reason, or in a
+    finding classed otherwise (covered, out of scope, model error), is context, not a confirmation."""
+    if not isinstance(ruling, dict):
+        return set()
+    ids = set(BUG_ID.findall(str(ruling.get("bug") or "")))
+    ids |= {b for b in ruling.get("bugs") or [] if isinstance(b, str) and BUG_ID.fullmatch(b)}
+    ids |= set(BUG_ID.findall(str(ruling.get("class") or "")))
+    for f in ruling.get("findings") or []:
+        if isinstance(f, dict) and re.match(r"(defect|real gap)\b", str(f.get("class") or "")):
+            ids |= set(BUG_ID.findall(json.dumps(f)))
+    return ids
+
+
+def severity(entry):
+    """The first word of a bug entry's Severity field when it is a severity (low, medium, high, critical), else None."""
+    m = re.match(r"[\s*]*(low|medium|high|critical)\b", entry.fields.get("Severity", ""), re.I)
+    return m.group(1).lower() if m else None
+
+
+def open_defects(rulings, entries=None):
+    """[(ruling key, bug id, severity)] for each bug a ruling confirms (confirmed_bugs) that is open in the inventory
+    (tools/bug_status.py) and whose severity is not one a release accepts (RELEASE_SEVERITIES): medium, high, or none
+    recorded. `entries` are bug_status's entries (read from the tree when None)."""
+    if entries is None:
+        import bug_status
+        entries, _ = bug_status.read_tree()
+    by_id = {e.id: e for e in entries}
+    out = []
+    for key in sorted(rulings):
+        for bug in sorted(confirmed_bugs(rulings[key])):
+            e = by_id.get(bug)
+            if e is not None and e.status == "open" and severity(e) not in RELEASE_SEVERITIES:
+                out.append((key, bug, severity(e)))
+    return out
+
+
+def release_open_bugs(rulings, allow, entries=None):
+    """The release gate on open defects: print each ruling that confirms an open bug a release does not accept
+    (open_defects) and return 1, or with `allow` (the release's --allow-open-bugs) print them as allowed, each on a
+    line beginning "allowed open bug:", which tools/release.sh records in the release, and return 0."""
+    found = open_defects(rulings, entries)
+    for key, bug, sev in found:
+        what = f"{key} confirms {bug}, open, severity {sev or 'not recorded'}"
+        print(f"  allowed open bug: {what}" if allow else f"  open bug: {what}")
+    if found and not allow:
+        print(f"  {len(found)} ruling(s) confirm open bugs of medium or high severity (or none recorded); fix the bugs, "
+              "or release with --allow-open-bugs, which the release records")
+        return 1
+    return 0

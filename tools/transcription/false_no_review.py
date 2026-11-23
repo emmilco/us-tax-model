@@ -87,8 +87,9 @@ PATTERNS = f"""1. A narrow time frame. "In {Y}" or the present tense, where the 
 
 def build_prompt(unit, lines, excerpt):
     condition, items = gates.describe(unit, lines, encoded_english)
-    return jurisdiction.preface(f"""A tax preparation tool asks some questions only when a gate condition holds. When the condition does
-not hold (the filer answers no, or the computed condition is false), the tool never asks the gated
+    return jurisdiction.preface(f"""A tax preparation tool asks some questions only on one branch of a gate condition: when the condition
+holds, or, where the gate condition below says so, when it is false. On the other branch (the filer
+answers no, or the computed condition takes the other value), the tool never asks the gated
 questions below and treats each gated line as zero. A wrong no is silent: nothing later in the
 return shows the amount it dropped. A joint return is in scope, and the filer may be anyone who
 files a United States individual return.

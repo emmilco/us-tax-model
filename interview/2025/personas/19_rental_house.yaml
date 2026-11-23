@@ -32,6 +32,8 @@ answers:
   rental[house].not_for_profit: false
   rental[house].depletion: false
   rental[house].part_home: false
+  rental[house].business_incidental: false
+  rental[house].land_heavy: false
   rental[house].held_for_sale: false
   rental[house].active: true
   rental[house].rents: 1800000
@@ -71,4 +73,6 @@ answers:
   rental[house].has_advertising: false
   rental[house].has_legal: false
   rental[house].has_other: false
+  rental[house].mortgage_excess: false
+  rental[house].bought_lease: false
   rental[house].vehicle: false

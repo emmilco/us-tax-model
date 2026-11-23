@@ -1,59 +1,145 @@
 {
  "form": "rprop",
  "reviews": {
+  "gate:rprop.kind": {
+   "subject_sha": "4791fb34b7db5245e2ace1c169d571a0fb4353f02011a68b39f8fa892fe9ca35",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A farmer, or a joint filer whose spouse farms, put up a house on the farm for hired workers. The workers live there free as part of their pay, so no rent is paid.",
+       "why_no": "Asked 'What is it?' with residential, nonresidential, personal or something else, the filer sees a dwelling and picks 'residential'. The only definition cited is the residential rental one, so they never test the 80%-of-rent rule. That rule fails here because there is no rent. The farm-building question is then never asked.",
+       "line": "rprop.short_class_if_nonres (false; the 20-year farm-building class and the refusal a Yes leads to are both skipped, and the building is depreciated over 27.5 years)",
+       "irs_text": "i4562 p. 10: 'Residential rental property is a building in which 80% or more of the total rent is from dwelling units.' and '20-year property includes ... Farm buildings (other than single purpose agricultural or horticultural structures).'",
+       "severity": "medium",
+       "fix": "Ask the farm-building and motor-fuels question before the residential/nonresidential split, for every building or improvement. Or add help to 'residential': 'Only if 80% or more of the building's rent comes from dwelling units. A house you provide free to farm workers, or any farm building, is not residential.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer rents out a mixed-use building. It has a convenience store with fuel pumps on the ground floor and apartments above, and most of the rent comes from the apartments.",
+       "why_no": "The filer picks 'residential' because most of the rent is from dwelling units, as the cited definition says. Whether the building is a retail motor fuels outlet (the floor-space or 1,400-square-foot tests) is then never asked, because that question is reached only through 'nonresidential'.",
+       "line": "rprop.short_class_if_nonres (false; the possible 15-year retail motor fuels outlet class and the refusal it leads to are skipped)",
+       "irs_text": "i4562 p. 10: '15-year property includes ... Any section 1250 property that is a retail motor fuels outlet (whether or not food or other convenience items are sold there).' p946 p. 31: '50% or more of the floor space in the property is devoted to petroleum marketing sales' or 'It is not larger than 1,400 square feet.'",
+       "severity": "medium",
+       "fix": "Ask the motor-fuels and farm question for residential and nonresidential buildings alike. Or have the gate say 'if any part of the building sells motor fuel or is used in farming, choose nonresidential'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer with a barn, greenhouse or gas station reads the nonresidential definition. Because a 10-, 15- or 20-year building has a class life of less than 27.5 years, they decide it is not 'nonresidential'.",
+       "why_no": "The definition says nonresidential real property is 'neither residential rental property nor property with a class life of less than 27.5 years'. The filer picks 'something else', or 'personal' if part of the building is used personally.",
+       "line": "rprop.short_class_if_nonres (no wrong amount when 'something else' ends the interview with the same refusal; 'personal' would drop the refusal silently)",
+       "irs_text": "i4562 p. 10: 'Nonresidential real property is any real property that is neither residential rental property nor property with a class life of less than 27.5 years.'",
+       "severity": "low",
+       "fix": "Use plain labels for the options, such as 'a business, farm or commercial building (including a barn, greenhouse or gas station)', rather than the legal class name."
+      }
+     ],
+     "prompt_sha": "b09f1a6c0842d7d8bdcae56aceba3ccb6f71439e9b4e69c3638d65fe09706f86",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08716399999999999,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_rprop.kind.4791fb34b7db.1.response.txt"
+    }
+   ],
+   "condition": "rprop.kind",
+   "lines": [
+    "rprop.short_class_if_nonres"
+   ],
+   "inputs": [
+    "rprop.short_class"
+   ],
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, \"Any section 1250 property that is a retail motor fuels outlet\"; \"Farm buildings (other than single purpose agricultural or horticultural structures)\"; \"Any single purpose agricultural or horticultural structure\"; \"Nonresidential real property is any real property that is neither residential rental property nor property with a class life of less than 27.5 years\"; , Retail motor fuels outlet, \"used to a substantial extent in the retail marketing of petroleum or petroleum products\"",
+      "p. 10, Residential rental property"
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      31
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
   "gate:rprop.new_nonres": {
-   "subject_sha": "cea1e9f94b4aead0af1970ba2c26aa5013f83df84f217d1132e468f00a34991f",
+   "subject_sha": "19a3e83f81ef1ed352a939b53ff378a2b350ea8a51637036d1829a28cf63caca",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "7",
-       "who": "A filer with a qualifying interior improvement to a nonresidential building placed in service after 2017 who correctly treats the improvement as 15-year qualified improvement property on Form 4562.",
-       "why_no": "The gate requires column(a) = 'nonresidential'; the filer reads that as the 39-year real-property class and answers/classifies the asset as 15-year property, so the gate is false and the QIP question is never asked.",
+       "pattern": "5",
+       "who": "An owner who renovated the interior of an office building in 2023 and correctly listed the renovation as its own asset under the 15-year class, because i4562 lists qualified improvement property there.",
+       "why_no": "The gate needs column (a) = 'nonresidential'. A filer who has already classified the improvement correctly as 15-year property never meets the gate, so the QIP question and its refusal are never reached.",
        "line": "rprop.qip_if_new_nonres",
-       "irs_text": "i4562 p. 10: '15-year property includes ... Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017.'",
+       "irs_text": "i4562 (2025) p. 10, 15-year property: \"Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017.\"",
        "severity": "high",
-       "fix": "Do not require column(a) = 'nonresidential' to ask the QIP question; ask the factual interior-improvement question for improvements to nonresidential buildings and classify QIP as 15-year property after a yes."
+       "fix": "Also gate on column (a) = '15-year' (or any class other than residential rental) and on any row the filer describes as an improvement to a building. Better, ask first whether the row is a building or an improvement to a non-residential building, and only then classify."
       },
       {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer who makes a qualifying interior improvement in 2025 to a nonresidential building that was first placed in service years earlier, for example in 2010.",
-       "why_no": "The gate says 'Nonresidential real property placed in service after 2017' and uses a recovery-year count of 8 or less; the filer truthfully says the building was placed in service before 2018, so the gate is false even though the improvement itself was placed in service after 2017.",
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A tenant who paid in 2021 for build-out of leased retail or office space and lists it as a leasehold improvement to a building they do not own.",
+       "why_no": "The tenant does not see their own row as 'nonresidential real property', since the building is the landlord's. They choose another class, such as 15-year or 'other', so column (a) is not 'nonresidential' and the gate is false. QIP covers improvements made and placed in service by the taxpayer, whoever owns the building.",
        "line": "rprop.qip_if_new_nonres",
-       "irs_text": "p946 p. 31: 'Qualified improvement property. Generally, this is any improvement to an interior part of a building that is nonresidential real property, and the improvement is ... placed in service by you after 2017 and after the date the building was first placed in service by any person.'",
-       "severity": "high",
-       "fix": "Gate the question on the improvement's placed-in-service date, not the building's; ask it for any interior improvement placed in service after 2017 even if the building was first placed in service earlier."
+       "irs_text": "p946 (2025) p. 31: \"any improvement to an interior part of a building that is nonresidential real property, and the improvement is section 1250 property, is made by you, and is placed in service by you after 2017\"",
+       "severity": "medium",
+       "fix": "Ask, apart from classification: 'Did you (or your spouse) pay for work on the inside of a commercial building you own or lease, placed in service after 2017?' Route a yes to the QIP question whatever column (a) says."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "An owner of an office building placed in service in 2009 who added the cost of a 2022 interior remodel to the building's existing row instead of listing it as a new asset.",
+       "why_no": "The helper 'Year of recovery in 2025' is figured from the building's 2009 date, so the count is greater than 8 and the gate is false. The post-2017 improvement inside that basis is never examined.",
+       "line": "rprop.qip_if_new_nonres",
+       "irs_text": "p946 (2025) p. 31: \"placed in service by you after 2017 and after the date the building was first placed in service by any person\"",
+       "severity": "medium",
+       "fix": "For every nonresidential building row, whatever its year, ask: 'Since 2018, have you (or your spouse) added the cost of any improvement to this building? If so, list each improvement separately with its own date.' Then apply the year test to each improvement's own date."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose qualifying QIP is an interior addition, such as new interior walls or partitions that do not enlarge the building's footprint.",
-       "why_no": "The help says 'A new roof or an addition is not an improvement to the inside'; the filer reads 'addition' as any added interior construction and answers no.",
+       "who": "An owner of a mixed-use building with apartments upstairs and shops on the ground floor, where less than 80% of the rent comes from the apartments, who renovated a shop interior in 2020.",
+       "why_no": "Because the building has apartments, the filer marks column (a) 'residential rental'. The 80%-of-rent test makes it nonresidential, but the filer does not apply it, so the gate is false.",
        "line": "rprop.qip_if_new_nonres",
-       "irs_text": "p946 p. 31: QIP is 'any improvement to an interior part of a building that is nonresidential real property' and excludes only 'The enlargement of the building,' 'Any elevator or escalator,' and 'The internal structural framework of the building.'",
+       "irs_text": "i4562 (2025) p. 10: \"Residential rental property is a building in which 80% or more of the total rent is from dwelling units. Nonresidential real property is any real property that is neither residential rental property nor ...\"",
        "severity": "medium",
-       "fix": "Change the help to say an enlargement or building addition outside the existing footprint is not inside, while interior partitions and interior additions can be QIP."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "8",
-       "who": "A filer who has a qualifying interior QIP as part of a larger project that also includes a new roof or a building enlargement.",
-       "why_no": "The single yes/no question requires the improvement to be inside and 'not an enlargement'; the filer answers no because part of the project is a roof or enlargement, dropping the otherwise qualifying interior portion.",
-       "line": "rprop.qip_if_new_nonres",
-       "irs_text": "p946 p. 31: QIP includes 'any improvement to an interior part' and excludes only expenditures 'attributable to' the enlargement, elevator/escalator, or internal structural framework, so the interior portion can still be QIP.",
-       "severity": "medium",
-       "fix": "Ask separately or allow allocation, so the filer can report the cost of the interior QIP portion and exclude only the costs attributable to the roof, enlargement, elevator/escalator, or internal structural framework."
+       "fix": "Before using column (a), ask for the share of rent from dwelling units (or whether any part is rented for non-dwelling use). Compute the residential or nonresidential class from that answer instead of trusting a label the filer chose."
       }
      ],
-     "prompt_sha": "992d5229862e32eec6721e7b3b8dd9422de3f5a98a43238ada834da50a0bbde3",
+     "prompt_sha": "a4135528ed4fc8fc3eb0c7ed24c8204b3e26d89b801b90e71c55995611176633",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_rprop.new_nonres.cea1e9f94b4a.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.099024,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_rprop.new_nonres.19a3e83f81ef.1.response.txt"
     }
    ],
    "condition": "rprop.new_nonres",

@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "136",
   "agree / disagree / missing": "57 / 79 / 0",
-  "line-scoped reviews": "8 (latest 2026-11-16); see Line-scoped reviews"
+  "line-scoped reviews": "9 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -267,24 +267,24 @@
   },
   {
    "key": "person.line1d",
-   "record": "72b452b6b597b5b03225a4c0ceef2b1ab4d5086cd3d5db7e9d2385bb946a51d6",
+   "record": "5676e013abeb0d78639db325fcc9520727711e73f9f2b19826da5edc0c9bdee3",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 24, Line 1d, \"enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC\". The candidate reads mw_business directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/person.json): 3455 of 5785 comparisons agree, 3455 of 5783 in scope; completed {\"candidate-unknown\": 397}. Project stands.",
-   "subject_key": "94b0b9b1f588f1314885e5e0142b2683c17448088ed8788d58a37151d78e5e8d"
+   "ruling": "Ruling: representation; i1040gi p. 24, Line 1d, and p. 92, Line 8s. The reply reads the Medicaid waiver answers without their parent gates, so it is unknown where the interview never asks them; executable triage (.transcription/triage/2025/person.json, this pass): 3,468/5,596 agree; differences {\"candidate-refuses\": 5, \"candidate-unknown\": 2117, \"project-refuses\": 1, \"project-unknown\": 5}; on completed returns {\"candidate-unknown\": 212}; no value differs on a completed return. Rerun only for the wording of person.mw_business (BUG-0962).",
+   "subject_key": "76ab80b706496e7b66f16fa2730665e654e4a0c778ff040dd2231c2141b2f86f"
   },
   {
    "key": "person.line8s",
-   "record": "72b452b6b597b5b03225a4c0ceef2b1ab4d5086cd3d5db7e9d2385bb946a51d6",
+   "record": "5676e013abeb0d78639db325fcc9520727711e73f9f2b19826da5edc0c9bdee3",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 92, Line 8s, \"Then, on line 8s, enter the total amount of the nontaxable payments reported on Form 1040 or 1040-SR, line 1a or 1d\". The candidate reads mw_box1 directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/person.json): 3441 of 5785 comparisons agree, 3441 of 5783 in scope; completed {\"candidate-unknown\": 404}. Project stands.",
-   "subject_key": "a14757e15f9c86d92a2c28914fae70cf3633950f55b10b3e2fe18a8a12fdf6fd"
+   "ruling": "Ruling: representation; i1040gi p. 24, Line 1d, and p. 92, Line 8s. The reply reads the Medicaid waiver answers without their parent gates, so it is unknown where the interview never asks them; executable triage (.transcription/triage/2025/person.json, this pass): 3,452/5,596 agree; differences {\"candidate-refuses\": 5, \"candidate-unknown\": 2129, \"project-refuses\": 1, \"project-unknown\": 5, \"value\": 4}; on completed returns {\"candidate-unknown\": 219}; no value differs on a completed return. Rerun only for the wording of person.mw_business (BUG-0962).",
+   "subject_key": "569e8aa513e11a90abb8ef16aee9af14a82ecd43fbbf54333a0e26a913cd683d"
   },
   {
    "key": "person.mw_not_earned",
-   "record": "72b452b6b597b5b03225a4c0ceef2b1ab4d5086cd3d5db7e9d2385bb946a51d6",
+   "record": "5676e013abeb0d78639db325fcc9520727711e73f9f2b19826da5edc0c9bdee3",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 42, Step 5, \"Enter the Medicaid waiver payment amounts excluded from income on Schedule 1, line 8s, unless you choose to include these amounts in earned income, in which case enter -0-\". The candidate reads mw_earned directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/person.json): 3442 of 5785 comparisons agree, 3442 of 5783 in scope; completed {\"candidate-unknown\": 403}. Project stands.",
-   "subject_key": "c816348b4f4917ff37d4d62da4f7c48e74b17eb05f33e4606acfcd9ca7d59041"
+   "ruling": "Ruling: representation; i1040gi p. 24, Line 1d, and p. 92, Line 8s. The reply reads the Medicaid waiver answers without their parent gates, so it is unknown where the interview never asks them; executable triage (.transcription/triage/2025/person.json, this pass): 3,454/5,596 agree; differences {\"candidate-refuses\": 5, \"candidate-unknown\": 2128, \"project-refuses\": 1, \"project-unknown\": 5, \"value\": 3}; on completed returns {\"candidate-unknown\": 218}; no value differs on a completed return. Rerun only for the wording of person.mw_business (BUG-0962).",
+   "subject_key": "d7d23454f0ffb74f3abe815bcd9f00350cf2794c3445539471eba4f8b0cae31d"
   },
   {
    "key": "person.ira_amount_a",
@@ -501,17 +501,17 @@
   },
   {
    "key": "person.dc_earned",
-   "record": "72b452b6b597b5b03225a4c0ceef2b1ab4d5086cd3d5db7e9d2385bb946a51d6",
+   "record": "5676e013abeb0d78639db325fcc9520727711e73f9f2b19826da5edc0c9bdee3",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i2441 p. 4, Lines 4 and 5: \"If filing jointly, figure your and your spouse's earned income separately\". The reply keeps the line 1e attribution reading the earlier ruling refused; one completed-return amount differs. Triage executable-triage-v2 (.transcription/triage/2025/person.json): 3534 of 5785 comparisons agree, 3055 of 5282 in scope; completed {\"candidate-unknown\": 404, \"value\": 1}. Project stands.",
-   "subject_key": "87e864de1ad423d466415b5aff65b36586b8a16a0ff9ccf08e2c2218d944bf79"
+   "ruling": "Ruling: model error; i2441 p. 4, Earned income: 'Earned income for figuring the credit generally includes the following amounts. 1. The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z', and line 1z includes line 1e (taxable dependent care benefits). The reply's own line 1z helper leaves out line 1e: on stage9.eic.line5_skipped (box 1 $3,000, line 1e $2,000) the project gives $5,000 and the reply $3,000. executable triage (.transcription/triage/2025/person.json, this pass): 3,492/5,596 agree; differences {\"candidate-refuses\": 23, \"candidate-unknown\": 1957, \"project-refuses\": 23, \"project-unknown\": 76, \"value\": 25}; on completed returns {\"candidate-unknown\": 233, \"value\": 11}.",
+   "subject_key": "f3c51c7a0cca48356cf939a10ef705d48525a2fc6e06b098820e995dd56ce35b"
   },
   {
    "key": "person.dc_earned_b",
-   "record": "72b452b6b597b5b03225a4c0ceef2b1ab4d5086cd3d5db7e9d2385bb946a51d6",
+   "record": "5676e013abeb0d78639db325fcc9520727711e73f9f2b19826da5edc0c9bdee3",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i2441 p. 5, Line 18, \"for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12\". The candidate reads tips_noncash directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/person.json): 3544 of 5785 comparisons agree, 3077 of 5301 in scope; completed {\"candidate-unknown\": 404}. Project stands.",
-   "subject_key": "13120c276040d519386358d005ca8c8229f2a66644de38fd859df4fc95230833"
+   "ruling": "Ruling: representation; as the ruling of 2026-11-15 on this line; executable triage (.transcription/triage/2025/person.json, this pass): 3,518/5,596 agree; differences {\"candidate-refuses\": 26, \"candidate-unknown\": 1964, \"project-refuses\": 7, \"project-unknown\": 71, \"value\": 10}; on completed returns {\"candidate-unknown\": 233, \"value\": 1}. The single completed value difference is the line 1e attribution the dc_earned ruling of this pass describes (the reply's line 1z helper without line 1e).",
+   "subject_key": "e1cea55836a1932cdee5fe031926604d0a631217a2f1c9fb310c7e5926898f85"
   },
   {
    "key": "person.sav_ineligible",
@@ -945,9 +945,9 @@
   "person.line1c": "cf1e22b2602fbf5c32773f1dc755aaabc6f33e3ddcf2879a3c7d06e71b476cef",
   "person.f4137_filed": "1d39b5f9cdb14a3686d134c081b28f84352ec134a3b6e852c83b264c3a95b29e",
   "person.household_wages_if_pay": "dc33af18a0a6e58501444175bd1b956a6e3bfd08067bc0758e9cd190123a1425",
-  "person.line1d": "15ed625d62d1a444a5129b9bdf294b63fa999ade6426e23b79b0f151c0f30bb4",
-  "person.line8s": "fa67bcf4f2b112909799e6742f6f02ecb20f04d0e666bd09a5e4a74edb625126",
-  "person.mw_not_earned": "30a816e4dcd2f647df64c166853f422cf23adc72ec84418efd3b3073ae9d6c80",
+  "person.line1d": "64df6483360213af2b90e8d70e123f2301dd0ee5f22d1238af5e39bdbc443a06",
+  "person.line8s": "294b78e71a1ef73efadb99cf55381412e6011367587bc18d57868eceb4689e78",
+  "person.mw_not_earned": "723d910ecb16cdf4dba2599cf784a064f764753b5ab7c317dcfcf0b0874cd2ae",
   "person.ira_amount_a": "f4e1df5681daaf1d59066c65892bbe9c32c27c33f6b690e54ba15c0d047fe8fe",
   "person.ira_taxable": "b004c85e3196980273c6d9a0c3c9b13a2afa1f8f9dc5baa72725782eb0b34eec",
   "person.ira_rollovers": "53e32c0d52e2313d82f1e4f14e395aea91bf9c011edfd8ee26fb5afb65b84d90",
@@ -981,8 +981,8 @@
   "person.sc_1a": "0df5e4e32af4bb76d530313ede5a439f7bd4e22b041f13041490f8548f5199f2",
   "person.dc_benefits": "637bcf9be95f6a0efab4ca9bbc7870e86eb3e2983b3d266cb1877fd576785be7",
   "person.dc_has_box10": "e2e636a67d0a92c317a5bd31d21b15e3d4cd77afcc6dde843394fd4c64f1a53e",
-  "person.dc_earned": "4f313b20ac1bf38d2fd98a19ba61cb755c2dd70b109443e1b1a155cbe592f091",
-  "person.dc_earned_b": "0f4aff0b35e5d9ff54239c59ee601e709e7ce0f48d41f2ee9b5773c4635f953f",
+  "person.dc_earned": "b6c534ffc0b71f3246e0d6560c6efe6672aad96a4aa2151f8eba695526824855",
+  "person.dc_earned_b": "a051097b88e6b10bcf00ab7af1f664ce88cd9e7d2116b1ee55273fec41dc6572",
   "person.sav_ineligible": "203a87adff7cccb2ce86a4faee67c8ff2c7c613f1107051cdec6272ed1501a4f",
   "person.sav_roth_if_ira_owner": "2f4e435ee73de97994fc13e14250a732015190faae6e3144218f1acdbf29affc",
   "person.sav_line1": "3a9d7fdbeb70a82b28755d80084e695ee57d1b990e6f8b6fd84465adf4a6b27c",

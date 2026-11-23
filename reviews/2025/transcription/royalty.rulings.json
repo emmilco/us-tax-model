@@ -38,28 +38,15 @@
    "printed": "royalty.loss",
    "project_expr_sha256": "4a811cb927e274fecf8a4230624cb368416492e4f7f804e4a7d94c5947c990e6",
    "second_expr_sha256": "d0692cf21c7089213b1e8084645d770bc728951cfb77f8f0b4849f3beb441524",
-   "ruling": "Ruling: representation; f1040se Schedule E (2025), line 25: \"Add royalty losses from line 21.\" The candidate's line is the project's line 21 (line 4 less line 20, floored at zero, or its negation); all 9 differences are on refused or incomplete records (3 project refusals, 6 project-unknown), none on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/royalty.json): 21 of 30 comparisons agree, 18 of 24 in scope. Project stands.",
-   "context": "f0217af5cca2f3b91d080f1100d5e65aa6359d5089984727cd12bbb67d5d06bd",
-   "date": "2026-11-17",
-   "run": "1bae8ed8a603887e54b80decea91cc0e22b7bde05ec60a99c9b3284b4e9b9c4c",
-   "subject_key": "dcabe72255bfd7b896e4752bad094b7911bd80990bbc445ae2eed74f9d45f04f",
+   "ruling": "Ruling: representation; equivalent on executable triage (.transcription/triage/2025/royalty.json: 68 of 68 agree). Project stands.",
+   "context": "857213b8253a3482908e0d76f488e24f734ae71d9d464e212d0a55e804f328ba",
+   "date": "2026-11-22",
+   "run": "e719b760a9fecc206e47b16b467e4e2c2087396c432d8a6c69756868377df0c3",
+   "subject_key": "2eb983e17751d57f245f8fbc0a7a603b7ca297f5a2b7420cd9d87d06e5d69dfc",
    "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "project-refuses",
-     "project-unknown"
-    ],
-    "witnesses": [
-     "fixture:mrental.royalty.refusals@royalty[s]",
-     "fixture:mf.royalty.vehicle_refused@royalty[r]",
-     "fixture:mf.royalty.depreciation_refused@royalty[r]",
-     "partial:classm.royalty.1-royalty[r].depletion@royalty[r]",
-     "partial:classm.royalty.1-royalty[r].vehicle@royalty[r]",
-     "partial:classm.royalty.1-royalty[r].depreciation@royalty[r]",
-     "partial:mrental.sche.ebl_counts_royalty_loss-royalty[r].depletion@royalty[r]",
-     "partial:mrental.sche.ebl_counts_royalty_loss-royalty[r].vehicle@royalty[r]",
-     "partial:mrental.sche.ebl_counts_royalty_loss-royalty[r].depreciation@royalty[r]"
-    ],
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
     "policy": "executable-triage-v2"
    }
   },

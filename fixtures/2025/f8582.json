@@ -540,6 +540,62 @@
           "cents": -600000
         }
       }
+    },
+    {
+      "id": "f8582.refuse.prior_crd",
+      "covers": [
+        "f8582"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane bugfix-other, predicted by hand from the archived sources before running the evaluator. BUG-0944. mrental.f8582.part5_prior_loss (rental b carries a $2,000 prior-year unallowed loss into Part V column (c)) with a Yes to the question whether any of the loss held back on the 2024 Form 8582 was a commercial revitalization deduction. i8582 p. 10, Line 3: prior-year unallowed CRD is entered on line 3 as a negative amount and then runs through the line 9 Worksheet and separate Parts VI to VIII, which this tool does not prepare. Part V column (c) is $2,000, more than zero, so f8582.has_prior is true, the question is asked, and line 3 refuses at f8582.prior_crd_if_prior.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 9000000,
+        "person[taxpayer].w2[a].box3": 9000000,
+        "person[taxpayer].w2[a].box5": 9000000,
+        "$rental": [
+          "a",
+          "b"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 400000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 1000000,
+        "rental[b].kind": "sfr",
+        "rental[b].rents": 500000,
+        "rental[b].has_taxes": true,
+        "rental[b].amt16": 100000,
+        "rental[b].active": false,
+        "rental[b].prior_any": true,
+        "rental[b].prior_amt": 200000,
+        "f8582.prior_crd": true
+      },
+      "expect": {
+        "f8582.p5c": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8582.has_prior": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8582.line3": {
+          "kind": "refusal",
+          "gate": "f8582.prior_crd_if_prior",
+          "form": "Form 8582, line 3 and the line 9 Worksheet (prior-year unallowed commercial revitalization deduction)",
+          "remedy": "A commercial revitalization deduction held back on an earlier return is applied through the line 9 Worksheet and its own Parts VI to VIII; that is outside this tool.",
+          "cite": {
+            "doc": "i8582",
+            "locator": "p. 10, Line 3, \"If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real estate activities, treat that dollar amount as negative and combine with lines 1d and 2d\"",
+            "revision": "2025",
+            "snapshot": "76787e11a385d1205faf70a07924cdec4efd5e66628e6f47e5316d29e6035f71",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

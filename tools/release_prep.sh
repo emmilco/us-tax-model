@@ -2,9 +2,9 @@
 # The checks a candidate tree runs before its release-mode full check (tools/release.sh): the ones that fail in
 # minutes, where the full check fails only when the wave holding the defect ends.
 #
-#   tools/release_prep.sh [--fail-fast]
+#   tools/release_prep.sh [--fail-fast] [--allow-open-bugs]
 #
-# 1. tools/release_reviews.sh: it compiles, builds and renders the working tree, then runs every release check of
+# 1. tools/release_reviews.sh (given --allow-open-bugs when this run is): it compiles, builds and renders the working tree, then runs every release check of
 #    the sampled reviews, each separately, so one run lists every due item. A failed compile, build or render
 #    stops the run here, since the steps below read the build.
 # 2. The check-all steps named in PREP_STEPS, one after another, cheapest first, each with the command that
@@ -34,11 +34,13 @@ PREP_STEPS="check_bug_inventory bug_status check_agent_runs doc_figures limits n
   check_logs ny_check_logs bookkeeping_self_tests ny_test_fixtures test_fixtures coverage interview_rules self_tests"
 
 fail_fast=0
+allow=()
 orig=("$@")
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --fail-fast) fail_fast=1; shift ;;
-    *) echo "release-prep: unknown argument '$1' (usage: tools/release_prep.sh [--fail-fast])" >&2; exit 2 ;;
+    --allow-open-bugs) allow=(--allow-open-bugs); shift ;;
+    *) echo "release-prep: unknown argument '$1' (usage: tools/release_prep.sh [--fail-fast] [--allow-open-bugs])" >&2; exit 2 ;;
   esac
 done
 if [ -z "${CHECK_ALL_SLOT:-}" ]; then
@@ -98,7 +100,7 @@ finish() {
 
 t0=$(date +%s)
 rc=0
-tools/release_reviews.sh > "$logs/release_reviews.log" 2>&1 || rc=$?
+tools/release_reviews.sh ${allow[@]+"${allow[@]}"} > "$logs/release_reviews.log" 2>&1 || rc=$?
 if [ "$rc" = 0 ]; then
   record release_reviews PASS $(( $(date +%s) - t0 ))
 else

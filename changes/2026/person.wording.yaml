@@ -88,9 +88,9 @@ changes:
   - change: C-PEOP-19
     evidence:
     - doc: f8889
-      page: 2
+      page: 1
       quote: Also include this amount in the total on Schedule 2 (Form 1040), Part II, line 13c
-    verified: draft
+    verified: final
     operations:
     - set:
         line: person.hsa_addtax

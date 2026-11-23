@@ -320,5 +320,31 @@ class Guards(unittest.TestCase):
         self.assertEqual([r.get("rerun_reason") for r in rows], ["owner asked", None])
 
 
+class CarriedYear(unittest.TestCase):
+    """After a year carry, the forms logged in the earlier year that the carry left with no log are planned."""
+
+    def test_forms_with_no_carried_line_are_planned(self):
+        import rulings
+        with tempfile.TemporaryDirectory() as tmp:
+            top = Path(tmp) / "reviews"
+            for year, names in (("2025", ["a.index.json", "b.index.json", "b.deepseek.index.json", "c.index.json", "gone.index.json"]),
+                                ("2026", ["a.index.json"])):
+                (top / year / "render").mkdir(parents=True)
+                for n in names:
+                    (top / year / "render" / n).write_text("{}")
+            (top / "store").mkdir()
+            ypath = lambda t, year, *rest: top.joinpath(str(year), *rest)  # noqa: E731
+            self.assertEqual(RA.logged_forms(top / "2025", "render"), {"a", "b", "c", "gone"})
+            with patch.object(RA.jurisdiction, "ypath", ypath), patch.object(RA.jurisdiction, "NY", False), \
+                    patch.object(RA, "Y", 2026), patch.object(RA, "expected_forms", return_value={"a", "b", "c", "new"}), \
+                    patch.object(rulings, "forms_with_logs", return_value=[("a", "claude")]), \
+                    contextlib.redirect_stdout(io.StringIO()) as out:
+                self.assertEqual(RA.earlier_review_year("render"), 2025)
+                self.assertEqual(RA.forms_for("render"), ["a", "b", "c"])  # not 'gone' (no 2026 definition), not 'new' (no log)
+            self.assertIn("2 form(s) with a 2025 log and none for 2026", out.getvalue())
+            with patch.object(RA.jurisdiction, "ypath", ypath), patch.object(RA, "Y", 2025):
+                self.assertIsNone(RA.earlier_review_year("render"))  # a first year adds nothing
+
+
 if __name__ == "__main__":
     unittest.main()

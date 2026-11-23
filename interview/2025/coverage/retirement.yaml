@@ -686,6 +686,15 @@ rows:
       ssb.repaid_more: true
     expect:
       refused: ssb.pub915
+  - id: ssb.repaid_only
+    design: "ssb.pub915: repayments (box 4) with no benefits paid (box 3 zero)"
+    situation: "A person was paid no social security in 2025 but paid back benefits received in an earlier year."
+    answers:
+      ssb.any: true
+      ssb.benefits: 0
+      ssb.repaid_more: true
+    expect:
+      refused: ssb.pub915
   - id: ssb.ira_covered
     design: "ssb.pub915: a traditional IRA contribution by a person covered by a retirement plan"
     situation: "A person with benefits still works, is covered by the employer's plan and put money into a traditional IRA."

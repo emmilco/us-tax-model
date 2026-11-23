@@ -190,7 +190,7 @@ Each line of a form or worksheet is one record:
 
 | Field | Content |
 |---|---|
-| `id` | Stable identifier that survives renumbering between years |
+| `id` | Stable identifier that survives renumbering between years; an id that names a printed line number (`<doc>.line<N>`) names the line's own number, so a line renumbered between years takes an id that names no number (the build checks it) |
 | `printed` | The line number or letter as printed in this revision |
 | `label` | The IRS wording for the line |
 | `type` | One of the types in 4.1 |
@@ -467,7 +467,7 @@ Expected values are never written as formulas of the parameters: an expectation 
 
 - One definition file per form per revision; one parameter file per tax year.
 - Draft IRS documents are marked as drafts and cannot back a release.
-- Moving to a new year is a reviewed diff of the definition files and of the rendered English. Line renumbering shows as a change to `printed` with `id` unchanged.
+- Moving to a new year is a reviewed diff of the definition files and of the rendered English. Line renumbering shows as a change to `printed` with `id` unchanged, except that an id naming the old number is first renamed to one that names no number (`tools/rename_ids.py`), since the build refuses an id `<doc>.line<N>` printed as another number.
 - Fixtures are pinned to a revision and are never carried forward without re-derivation.
 - The atom vocabulary and the data schema are versioned separately from the form data.
 

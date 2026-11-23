@@ -1217,15 +1217,19 @@ form:
         source: |-
           Gifts you (or, on a joint return, your spouse) made to charity in 2025 in money (cash, check, card or payroll deduction), including out-of-pocket costs of volunteer work (the actual cost of gas and oil or 14 cents a mile, plus parking and tolls).
 
-          Count only what you paid above the value of any benefit you received in return, and only gifts for which you keep a bank record or a written record from the charity (and, for a gift of $250 or more, the charity's written acknowledgment).
+          Count only what you paid above the value of any benefit you received in return, and only gifts for which you keep a bank record or a written record from the charity (and, for a gift of $250 or more, the charity's written acknowledgment). Membership benefits received for an annual payment of $75 or less, and an item of token value that the charity says need not be subtracted, are not subtracted.
 
           Leave out: the part of a gift for which you received a state or local tax credit; political contributions; raffle, bingo or lottery tickets; tuition; dues to clubs, lodges or similar groups; payments for the right to buy college athletic tickets; gifts to individuals or to groups run for profit or to lobby; gifts to foreign organizations (a gift to a U.S. organization that transfers funds to a foreign charity is not left out); travel away from home with a significant element of personal pleasure; the value of your time; and amounts repaid to you.
       cite:
         doc: i1040sca
         locator: 'p. 9, Amounts You Can Deduct, "Contributions can be in cash, property, or out-of-pocket expenses you paid to
           do volunteer work", "14 cents a mile", "But don''t deduct any amounts that were repaid to you", Gifts from which you
-          benefit, "you can generally only deduct the amount that is more than the value of the benefit", Gifts of $250 or
-          more; p. 10, Amounts You Can''t Deduct, "Political contributions", "Cost of raffle, bingo, or lottery tickets",
+          benefit, "you can generally only deduct the amount that is more than the value of the benefit. But this rule doesn''t
+          apply to certain membership benefits provided in return for an annual payment of $75 or less or to certain items or
+          benefits of token value", Gifts of $250 or more; p526 p. 5, Membership fees or dues, "Both you and the organization
+          can disregard the following membership benefits if you get them in return for an annual payment of $75 or less";
+          p526 p. 6, Token items, "You don’t have to reduce your contribution by the value of any benefit you receive if both
+          of the following are true"; p. 10, Amounts You Can''t Deduct, "Political contributions", "Cost of raffle, bingo, or lottery tickets",
           "Cost of tuition", "Value of your time or services", "Gifts to foreign organizations. However, you may be able to
           deduct gifts to certain U.S. organizations that transfer funds to foreign charities"; Line 11, "Enter on line 11 the total value of gifts you made in
           cash or by check (including out-of-pocket expenses)", Recordkeeping, "you must maintain as a record of the
@@ -2228,6 +2232,74 @@ form:
       cite:
         doc: i1040gi
         locator: pp. 34–35, line 12e and Standard Deduction Chart
+      refuses:
+        - when: sa.mfs_joint_paid_if_itemizing
+          form: Schedule A on a separate return, expenses paid jointly with the spouse (Pub. 504, Table 1)
+          remedy: On a married filing separately return, itemized deductions paid from money held with your spouse, or
+            state income tax on a joint state return, are divided between you under Pub. 504; that is outside this tool.
+          cite:
+            doc: i1040sca
+            locator: 'p. 1, "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub.
+              504 to figure the portion of joint expenses that you can claim as itemized deductions"'
+    - id: sa.mfs_joint_paid
+      printed: (helper)
+      type: Bool
+      gated_by: sa.mfs_joint_paid_if_itemizing
+      label: Was any amount you entered for these deductions paid from an account you hold with your husband or wife, or do
+        the two of you file a joint 2025 state income tax return?
+      expr:
+        op: input
+        source: Was any amount you entered for these deductions paid from an account you hold with your husband or wife, or
+          do the two of you file a joint 2025 state income tax return?
+      cite:
+        doc: i1040sca
+        locator: 'p. 1, "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504
+          to figure the portion of joint expenses that you can claim as itemized deductions"; p504 p. 5, Table 1, medical
+          expenses "paid with funds deposited in a joint checking account in which you and your spouse have an equal
+          interest", "half of the total medical expenses, subject to certain limits, unless you can show that you alone
+          paid the expenses"; p504 p. 5, Table 1, state income tax, "file a joint state income tax return and you’re liable
+          for only your own share of state income tax"'
+    - id: sa.mfs_itemizing
+      printed: (helper)
+      type: Bool
+      label: Married filing separately and itemizing deductions
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - sa.mfs
+          - const: true
+        - op: test
+          eq:
+          - sa.itemizes
+          - const: true
+      cite:
+        doc: i1040sca
+        locator: 'p. 1, "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504"'
+    - id: sa.mfs_joint_paid_if_itemizing
+      printed: (gate)
+      type: Bool
+      label: Itemized expenses paid jointly with the spouse, asked only on a married filing separately return that itemizes
+        (otherwise no)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.mfs_itemizing
+                - const: true
+            then: sa.mfs_joint_paid
+          - guard:
+              op: test
+              eq:
+                - sa.mfs_itemizing
+                - const: false
+            then: sa.no
+      cite:
+        doc: i1040sca
+        locator: 'p. 1, "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504"'
     - id: sa.mfs_spouse_itemizes
       printed: (helper)
       type: Bool

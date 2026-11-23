@@ -656,6 +656,12 @@ changes:
     - remove_line:
         line: f5695.part2_some
     - remove_line:
+        line: f5695.reconstruct_later_if_part2
+    - remove_line:
+        line: f5695.reconstruct_later
+    - remove_question:
+        input: f5695.reconstruct_later
+    - remove_line:
         line: f5695.part2_any
     - remove_line:
         line: f5695.line17a

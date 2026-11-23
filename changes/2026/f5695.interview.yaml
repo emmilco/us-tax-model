@@ -86,6 +86,10 @@ changes:
     - remove_interview_item:
         file: coverage/education_energy.yaml
         list: rows
+        item: energy_reconstruct_later
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
         item: l8b.energy_joint_occupancy
     - remove_interview_item:
         file: coverage/education_energy.yaml
@@ -118,6 +122,7 @@ changes:
             f5695.line7a: false
             f5695.insulation: false
             f5695.doors: false
+            f5695.reconstruct_later: false
             f5695.windows: false
             f5695.panel: false
             f5695.audit: false

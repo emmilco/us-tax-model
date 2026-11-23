@@ -48,6 +48,7 @@ rows:
       household.married_dec31: true
       household.community_property: false
       household.spouse_cp_domicile: false
+      household.cp_retirement: false
       sa.spouse_itemizes: false
       sa.spouse_extra: false
     expect:

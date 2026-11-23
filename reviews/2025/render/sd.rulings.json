@@ -33,6 +33,16 @@
   {
    "printed": "12",
    "restated": "Enter the amount from helper \"No amount on an inapplicable line\".",
+   "model": "Line 12 is 'Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. The program enters $0 without asking about or refusing for Schedule K-1 amounts.",
+   "ruling": "Ruling: scope; f1040sd line 12, as line 5: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1.",
+   "context": "bad9f66b8b0f3f340fef2a21a372f125c8600aca623454d6a341e542897f692b",
+   "date": "2026-11-22",
+   "run": "aef90e516b295e1c2ef1b5be485efaa360de0d8f8d81203e4875870299c16196",
+   "subject_key": "8a596d075cd84ac9fa8e28c0205313c35e1060b7ace28a898139097d71fe8f3d"
+  },
+  {
+   "printed": "12",
+   "restated": "Enter the amount from helper \"No amount on an inapplicable line\".",
    "model": "Line 12 is 'Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. The restatement enters $0, and no condition in sd.other_forms checks for K-1 capital gains or losses, so such amounts are omitted without a refusal.",
    "ruling": "Ruling: finding; f1040sd line 12, \"Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1\". The value is right: a Schedule K-1 is asked of everyone by scope.k1, which refuses Form 1040 line 8 through scope.schedule1, so no completed return has a K-1 capital gain and line 12 is $0 on every computed return. The reply is right that sd.other_forms tests no K-1 case: its label still says \"or capital gains or losses on a Schedule K-1\", stale since the redraft moved the K-1 words to scope.k1 (MAP 2.7), so the refusal the line shows names a test that does not exist. Low (BUG-0638).",
    "context": "2c04d1e7c33e636af5a04fc6a8cd3451588dba58d6b5019b9a088fcb3ecf0827",
@@ -178,6 +188,16 @@
    "model": "The IRS line says 'with Box C or Box I checked', but only classification 'C' is summed and there is no refusal for I.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data.",
    "subject_key": "eff681e466923c6e4e1602df8e97424b7cfe1e125c88d0c2425a9a5e82c4ab4b"
+  },
+  {
+   "printed": "5",
+   "restated": "Enter the amount from helper \"No amount on an inapplicable line\".",
+   "model": "Line 5 is 'Net short-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. The program enters $0, but neither the gate nor any input asks about Schedule K-1 amounts, so a filer with K-1 capital gains gets zero with no refusal.",
+   "ruling": "Ruling: scope; f1040sd line 5. A Schedule K-1 amount is refused by scope.k1 through scope.schedule1 (the line's cite says so); the K-1 forms land unwired, so the line is zero on every completed return.",
+   "context": "bad9f66b8b0f3f340fef2a21a372f125c8600aca623454d6a341e542897f692b",
+   "date": "2026-11-22",
+   "run": "aef90e516b295e1c2ef1b5be485efaa360de0d8f8d81203e4875870299c16196",
+   "subject_key": "71c8f31de2bd53b1d2b031fd72961ec7f4736f7a21ce8081a940e2cb24433ca6"
   },
   {
    "printed": "5",

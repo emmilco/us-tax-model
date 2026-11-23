@@ -384,6 +384,42 @@
     "gift.deduction"
    ],
    "reason": "gift.deduction asks for the deduction for the item or group 'after required valuation/basis reductions', so the filer enters the amount already limited by this rule (Pub. 526 pp. 18-19); the encoding does not recompute it"
+  },
+  "limit:p925:p15:8335637b": {
+   "enforced_by": [
+    "rental.nondep_income"
+   ],
+   "reason": "The cap on recharacterized income across the significant-participation, nondepreciable-rental and equity-financed-lending rules arises only when income is recharacterized; the tool recharacterizes nothing: a rental of nondepreciable property with net income on a return that must file Form 8582 is refused by rental.nondep_income, and the other passive activities are refused by scope.passive."
+  },
+  "limit:p526:p5:5b42088c": {
+   "enforced_by": [
+    "sa.line11"
+   ],
+   "reason": "A payment for a benefit is deductible only above the benefit's value; sa.line11 asks for what was paid above the value of any benefit received (Pub. 526 p. 5), so the filer enters the amount already limited."
+  },
+  "limit:p526:p5:28642446": {
+   "enforced_by": [
+    "sa.line11"
+   ],
+   "reason": "The example applies the state tax credit reduction; sa.line11 leaves out the part of a gift for which a state or local tax credit is received (the 15% exception is BUG-1086)."
+  },
+  "limit:p526:p12:3e54b522": {
+   "enforced_by": [
+    "gift.special"
+   ],
+   "reason": "Vehicle gifts are refused by gift.special (the 'it is a vehicle' item), so the vehicle statement rules never apply to a completed return."
+  },
+  "limit:p526:p12:bedfb712": {
+   "enforced_by": [
+    "gift.special"
+   ],
+   "reason": "As the vehicle statement rule: vehicle gifts are refused by gift.special."
+  },
+  "limit:p526:p12:1cfca873": {
+   "enforced_by": [
+    "gift.special"
+   ],
+   "reason": "Taxidermy property is refused by gift.special (BUG-0985), so the basis limit never applies to a completed return."
   }
  },
  "baseline": {

@@ -2,161 +2,132 @@
  "kind": "render",
  "form": "f8880",
  "family": "claude",
- "base": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
- "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
- },
+ "base": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
  "lines": [
   {
    "key": "1(a)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "6b9e4fd22b541d88fca6d1774e4a4a0e6d4e74cbd24cc04dfeedbddf2fcb2861"
   },
   {
    "key": "1(b)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: representation; as the prior ruling. f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\". The roster has a spouse entry only on a joint return (the $person question: \"Who is on this return: just you, or you and your spouse on a joint return?\"), so the spouse sum is zero on any other return.",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
+   "status": "MATCH",
    "subject_key": "4830d00a010f0b448972815332cfc973885b51dc86d0fc9270ed009d0934102d"
   },
   {
    "key": "2(a)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "9b7affc8171a6e15ceff2046050d5fbe73def956f955793eb5feb3a37144f70f"
   },
   {
    "key": "2(b)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: representation; as line 1(b) and the prior ruling. f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\"; the roster has a spouse entry only on a joint return.",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
+   "status": "MATCH",
    "subject_key": "1f579c91798390936bed0c394f61644fbdb09d03a320870942421ac7effb0a21"
   },
   {
    "key": "3(a)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "74bc0ca61e57f99d5a51d8efbcd717881cb9842b7b33cbad7ff95bc6a2f8bf6a"
   },
   {
    "key": "3(b)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "f869420b5e0f281a2230223d0100352304645f2e8b9be70b5e2f5815f219b373"
   },
   {
    "key": "4(a)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
-   "subject_key": "84f32f4069e6bd97677f6093af7396d32376ff233ba4d5201b6d02e25b36535d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f8880.dist_2025": "f8880.dist_this_year"
-    },
-    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
-    "was": "01404c47cda68e85c0a5c1970092e48df311ab813d410e25a246bb5983dec4df"
-   }
+   "subject_key": "84f32f4069e6bd97677f6093af7396d32376ff233ba4d5201b6d02e25b36535d"
   },
   {
    "key": "4(b)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
-   "subject_key": "6a7f461af4aaa83cf27bb24d95b261e3ad151ea1a7c861e893c2caed5c285635",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f8880.dist_2025": "f8880.dist_this_year"
-    },
-    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
-    "was": "ba25f6d7c95f45909701a8acdd7f52e3e0552108474c1fe7f979aa786a51e5b5"
-   }
+   "subject_key": "6a7f461af4aaa83cf27bb24d95b261e3ad151ea1a7c861e893c2caed5c285635"
   },
   {
    "key": "5(a)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
-   "subject_key": "fb4c82fd4591de1a60d78a4a5fbe23d26f5afb28e70306c3ae982987dee2d4e6",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f8880.dist_2025": "f8880.dist_this_year"
-    },
-    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
-    "was": "59c3401d76338f1a9bdc20648fe25a7e1457e28df15b51fa5a2bc117218b4577"
-   }
+   "subject_key": "fb4c82fd4591de1a60d78a4a5fbe23d26f5afb28e70306c3ae982987dee2d4e6"
   },
   {
    "key": "5(b)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "76418c1408b6a56920277ef0c28cf51068cdd310307e0ad5011c8288642f44ce"
   },
   {
    "key": "6(a)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "a374775b55d7e21972f3ce1d2496bf0e111742b9ac8c096c441c8b2dd9e07b5b"
   },
   {
    "key": "6(b)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "169f5afbcb546844caea15ccb4cd2c6f46c1a239f516c683ffea52c78ca997d0"
   },
   {
    "key": "7",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "a4fc745d3aac5daccf18ce9219dabd035b174bf2c283a81a1dbb85ed62ba63ef"
   },
   {
    "key": "8",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "82a8077b07e48cb89e67adba443df741de1b13c48661500289e50b1429d24482"
   },
   {
    "key": "9",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "fe7652db69e709d643a3537fc2b21400c0f6506ad0d3e836d7f6ae3a87b3ad8b"
   },
   {
    "key": "10",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "0cbfca88ee753f9d2212ddec43607d95658e3c85812933a3b1425d6d28d3990f"
   },
   {
    "key": "(CLW 1)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "a9ba3ae038af576190641b89e8ce9b97db89ffec022df697d88c6888973e9173"
   },
   {
    "key": "(CLW 2)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the English is the source within the slice, as the prior rulings. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". Lines 6d and 6l are refused through scope.credits on Schedule 3 line 8, so on every return that reaches the worksheet they are zero; the line's citation says so.",
+   "ruling": "Ruling: scope; as the prior rulings on this line. f8880 p. 2, Credit Limit Worksheet, \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". Lines 6d and 6l are refused through scope.credits on Schedule 3 line 8, so on every return that reaches the worksheet they are zero; the line's citation says so. Repeat disagreement; no value moves.",
    "subject_key": "70f161461a959f3c464386b7e78d52ec35013224cf4d7c1ef0b5e1da139424a1"
   },
   {
    "key": "(CLW 3)",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "1ced7822e341073d24a7b3c7f771fc2345ed457eefbfee66c3da7bff688966b0"
   },
   {
    "key": "11",
-   "record": "7b05a3f8988d508a411f2c34ce9b5aa9f5f42d2633936fa7e64b0ae3f5433f66",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "6ae42f6c4e03c0bdef1d94a0e2a477c2655adcc36eb1a50a8d40ea62416b7c55"
   },
   {
    "key": "12",
-   "record": "2071d001951375f825a26a3e62a28a97096ade0e27d48fa6a206115eb9814827",
+   "record": "ba7b985391559ca59306b9793f38f568293b86d52c84b6f423e03861cfe2a724",
    "status": "MATCH",
    "subject_key": "92343e823ede6a0e2c29abda56cb21782adac773cb645c35696d4b5f8c894cc9"
   }

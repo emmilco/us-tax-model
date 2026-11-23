@@ -23,6 +23,9 @@ answers:
   rental[cabin].not_for_profit: false
   rental[cabin].depletion: false
   rental[cabin].part_home: false
+  rental[cabin].held_for_sale: false
+  rental[cabin].business_incidental: false
+  rental[cabin].land_heavy: false
   rental[cabin].active: true
   rental[cabin].rents: 1950000
   rental[cabin].has_mortgage: true
@@ -38,6 +41,8 @@ answers:
   rental[cabin].has_advertising: false
   rental[cabin].has_legal: false
   rental[cabin].has_other: false
+  rental[cabin].mortgage_excess: false
+  rental[cabin].bought_lease: false
   rental[cabin].vehicle: false
   rental[cabin].amt9: 120000
   rental[cabin].amt12: 600000
@@ -55,7 +60,9 @@ answers:
   rental[cabin].rprop[cabin_bldg].basis_changed: false
   rental[cabin].rprop[cabin_bldg].credit: false
   rental[cabin].rprop[cabin_bldg].coop: false
+  rental[cabin].rprop[cabin_bldg].exchanged: false
   $royalty: []
   sche.re_pro: false
   sche.grouped: false
   sche.qbi_business: false
+  sche.accrual: false

@@ -5,7 +5,7 @@
  "base": "3820de89b16e07ec18b8f2948a1ba4c707e6b244b7c5f94165ef67ba0ac1f02b",
  "head_rows": {
   "agree / disagree / missing": "2 / 26 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-16); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -64,10 +64,10 @@
   },
   {
    "key": "7",
-   "record": "ee70bfe04381b319194685a95f203a4217951786db156b7ddfcea22ccbd98ae9",
+   "record": "58b7b5f6c4cdb3eb8407cf841313ba2d07d54580045bef54e767ada0fb3c2c0b",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,879/2,930 agree; kinds {\"candidate-refuses\": 3, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 22, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-shows-skipped\": 1, \"candidate-unknown\": 4}. Project right under the source; no change.",
-   "subject_key": "bc6e18f0689e2b092f49a290b76b267ec6d88df43fb39ca86391cf65dacd74ad"
+   "ruling": "Ruling: representation and scope; f8863 p. 1, lines 6 and 7 ('rounded to at least three places'; amb.2025.edu_ratio_places on both sides), as the earlier rulings. This line was rerun only for the spouse wording of f8863.ban (BUG-0986); executable triage (.transcription/triage/2025/f8863.json, this pass): 3,196/3,199 agree; differences {\"project-refuses\": 1, \"project-unknown\": 2}; on completed returns none; no value differs.",
+   "subject_key": "b17c761e94ed17c676d60404ebf16baea616b96a179db240888e24eb8d5d17d2"
   },
   {
    "key": "7 (box)",
@@ -212,7 +212,7 @@
   "3": "a8a4db3ef1d9a06fecebd936e0269a0a7a59fbeaf55d387369613bfc0dfc7f49",
   "4": "e3b45c194532d4cca221d75a9664d0a99ee2bf4f3573823f016a6f651a084413",
   "5": "11fe58bdc70fc6b8e454633634f77823a6bf08bc1fbf2cabd17c9fb9fdcdcd19",
-  "7": "bdbe04e8d99b293a5cf8fbddcdbf92f1aa63b5a73f2b95cf0d7ea81a92dc3e9d",
+  "7": "aa51f4a6a426cf1dc6ef84e553f2028a59044854442d4d73c4ecd3741387ea56",
   "7 (box)": "f6a93660c154c4f09258270cb9549ce6499189b8a28e2959011cd34710a864b7",
   "8": "4e0975c1c20a0f9935f9a3d1ef8ec1a5eeefd86ce1d2a3a0079e7b22bd3b71b3",
   "9": "8ec862d147e41f337fefabeab5d9da25470cb192d0d0799535718cb913530bc5",

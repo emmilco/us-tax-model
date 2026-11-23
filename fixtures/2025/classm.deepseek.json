@@ -729,7 +729,9 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f2441.line1_box": {
@@ -1547,7 +1549,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f2441.line1_box": {
@@ -2008,7 +2012,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f2441.line1_box": {
@@ -6992,7 +6998,9 @@
         "dependent[dep_b].ever_married": true,
         "dependent[dep_b].parents_apart": false,
         "dependent[dep_b].citizen_ssn": false,
-        "dependent[dep_b].supported_view": "unsure"
+        "dependent[dep_b].supported_view": "unsure",
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8960.line1": {
@@ -7303,7 +7311,9 @@
         "dependent[dep_a].ever_married": false,
         "dependent[dep_a].parents_apart": false,
         "dependent[dep_a].own_money": false,
-        "dependent[dep_a].citizen_ssn": false
+        "dependent[dep_a].citizen_ssn": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8960.line1": {
@@ -15863,7 +15873,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "clcw_next_year.line1": {
@@ -16553,7 +16565,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "clcw_next_year.line1": {
@@ -17554,7 +17568,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "clcw_next_year.line1": {
@@ -19121,7 +19137,9 @@
         "person[taxpayer].f8889[hsa].mistake_repaid": false,
         "person[taxpayer].f8889[hsa].loan": false,
         "person[taxpayer].f8889[hsa].ira_prior": false,
-        "person[taxpayer].f8889[hsa].testing_prior": false
+        "person[taxpayer].f8889[hsa].testing_prior": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s2.line1a": {
@@ -19394,7 +19412,9 @@
         "person[taxpayer].f8889[hsa].testing_prior": false,
         "dependent[dep_a].ever_married": false,
         "dependent[dep_a].parents_apart": false,
-        "dependent[dep_a].citizen_ssn": false
+        "dependent[dep_a].citizen_ssn": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s2.line1a": {
@@ -19821,7 +19841,9 @@
         "dependent[dep_a].ever_married": false,
         "dependent[dep_a].parents_apart": true,
         "dependent[dep_a].citizen_ssn": true,
-        "dependent[dep_a].supported_view": "under_half"
+        "dependent[dep_a].supported_view": "under_half",
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s2.line1a": {
@@ -20133,7 +20155,9 @@
         "dependent[dep_a].parents_apart": true,
         "dependent[dep_a].own_money": true,
         "dependent[dep_a].self_support_view": "unsure",
-        "dependent[dep_a].citizen_ssn": false
+        "dependent[dep_a].citizen_ssn": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s2.line1a": {
@@ -20374,7 +20398,10 @@
         "sd.casualty": false,
         "sd.qof": false,
         "sd.carryover": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "household.cp_retirement": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s2.line1a": {
@@ -20641,7 +20668,9 @@
         "person[spouse].x_edu_account": false,
         "person[spouse].x_archer_excess": false,
         "person[spouse].inherited_account": false,
-        "person[spouse].ira_owner": false
+        "person[spouse].ira_owner": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s2.line1a": {
@@ -20925,7 +20954,9 @@
         "person[taxpayer].f8889[hsa].mistake_repaid": false,
         "person[taxpayer].f8889[hsa].loan": false,
         "person[taxpayer].f8889[hsa].ira_prior": false,
-        "person[taxpayer].f8889[hsa].testing_prior": false
+        "person[taxpayer].f8889[hsa].testing_prior": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s2.line1a": {
@@ -21157,7 +21188,9 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s2.line1a": {
@@ -21469,7 +21502,9 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s2.line1a": {
@@ -21906,7 +21941,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s3.line1": {
@@ -22291,7 +22328,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s3.line1": {
@@ -23075,7 +23114,9 @@
         "ssb.any": false,
         "sd.qof": false,
         "household.home_cost": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s3.line1": {
@@ -24367,7 +24408,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8962.line1": {
@@ -24944,7 +24987,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8962.line1": {
@@ -25657,7 +25702,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8962.line1": {
@@ -26221,7 +26268,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8962.line1": {
@@ -26703,7 +26752,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8962.line1": {
@@ -28248,7 +28299,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8880.line1a": {
@@ -28621,7 +28674,9 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8880.line1a": {
@@ -29038,7 +29093,9 @@
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
         "household.home_cost": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8880.line1a": {
@@ -29328,7 +29385,9 @@
         "dependent[dep_c].ever_married": false,
         "dependent[dep_c].parents_apart": false,
         "dependent[dep_c].own_money": false,
-        "dependent[dep_c].citizen_ssn": true
+        "dependent[dep_c].citizen_ssn": true,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f1040.line1a": {
@@ -29796,7 +29855,9 @@
         "person[taxpayer].f8889[hsa].mistake_repaid": false,
         "person[taxpayer].f8889[hsa].loan": false,
         "person[taxpayer].f8889[hsa].ira_prior": false,
-        "person[taxpayer].f8889[hsa].testing_prior": false
+        "person[taxpayer].f8889[hsa].testing_prior": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f1040.line1a": {
@@ -30189,7 +30250,9 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f1040.line1a": {
@@ -30655,7 +30718,9 @@
         "dependent[dep_c].ever_married": false,
         "dependent[dep_c].parents_apart": true,
         "dependent[dep_c].citizen_ssn": true,
-        "dependent[dep_c].supported_view": "over_half"
+        "dependent[dep_c].supported_view": "over_half",
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f1040.line1a": {
@@ -31128,7 +31193,10 @@
         "dependent[dep_c].ever_married": false,
         "dependent[dep_c].parents_apart": false,
         "dependent[dep_c].own_money": false,
-        "dependent[dep_c].citizen_ssn": false
+        "dependent[dep_c].citizen_ssn": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false,
+        "household.cp_retirement": false
       },
       "expect": {
         "f1040.line1a": {
@@ -31572,7 +31640,9 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f1040.line1a": {
@@ -32028,7 +32098,9 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f1040.line1a": {
@@ -32413,7 +32485,11 @@
         "sd.casualty": false,
         "sd.qof": false,
         "sd.carryover": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "household.cp_retirement": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false,
+        "sa.mfs_joint_paid": false
       },
       "expect": {
         "f1040.line1a": {
@@ -33170,7 +33246,9 @@
         "ssb.any": false,
         "sd.qof": false,
         "s2.amt_business": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s8812.line1": {
@@ -33619,7 +33697,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s8812.line1": {
@@ -34005,7 +34085,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s8812.line1": {
@@ -34570,7 +34652,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "s8812.line1": {
@@ -35045,7 +35129,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -35596,7 +35682,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line5b": {
@@ -35983,7 +36071,10 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "f5695.reconstruct_later": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -36442,7 +36533,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -36790,7 +36883,10 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "f5695.reconstruct_later": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -37169,7 +37265,10 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "f5695.reconstruct_later": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -37676,7 +37775,9 @@
         "person[taxpayer].retirement[r1].cost_any": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -38153,7 +38254,9 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -38562,7 +38665,10 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "f5695.reconstruct_later": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -38933,7 +39039,10 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "f5695.reconstruct_later": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -39308,7 +39417,10 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "f5695.reconstruct_later": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -39681,7 +39793,10 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "f5695.reconstruct_later": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -40055,7 +40170,9 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -40430,7 +40547,9 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line5b": {
@@ -40779,7 +40898,9 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line13": {
@@ -41115,7 +41236,10 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "f5695.reconstruct_later": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -41491,7 +41615,10 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "f5695.reconstruct_later": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -41866,7 +41993,10 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "f5695.reconstruct_later": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f5695.line6a": {
@@ -42319,7 +42449,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8863.line1": {
@@ -42746,7 +42878,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8863.line1": {
@@ -43025,7 +43159,9 @@
         "sd.qof": false,
         "f1040.tax_exempt_any": false,
         "f1040.tax_exempt_interest": 0,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8863.line1": {
@@ -43503,7 +43639,9 @@
         "ssb.prior_year_pay": false,
         "sd.qof": false,
         "household.home_cost": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8863.line1": {
@@ -45408,7 +45546,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "eic.step5_line1": {
@@ -46139,7 +46279,10 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "household.mfs_living": "apart_last6",
-        "f8962.mfs_exception": false
+        "f8962.mfs_exception": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false,
+        "household.cp_retirement": false
       },
       "expect": {
         "eic.step5_line1": {
@@ -47043,7 +47186,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "eic.step5_line1": {
@@ -47746,7 +47891,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "eic.step5_line1": {
@@ -49681,7 +49828,7 @@
         "eic"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: deepseek-flash; prompt sha256 cda756dd5c1df6474be6ac34d86c30dd4dcf8cb99647f5bea223aa14828786a3; pages i1040gi 40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60 (6024dc94dd1f); branches eic.qc_of_another:false, eic.died_2025:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#2, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#2, eic.line5_blank:false, eic.show5:true, eic.line5#1, eic.smaller:right, eic.after_line4#1, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:true, eic.clergy:false; Form 8889 coverage_year completed as changed (the recorded month answers are asked and used)",
+      "evidence_note": "Class M: deepseek-flash; prompt sha256 cda756dd5c1df6474be6ac34d86c30dd4dcf8cb99647f5bea223aa14828786a3; pages i1040gi 40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60 (6024dc94dd1f); branches eic.qc_of_another:false, eic.died_2025:false, eic.age_range:true, eic.us_home:true, eic.has_qc:true, eic.married_rules:true, eic.top_limit#2, eic.below_top:true, eic.limit_other#1, eic.limit_joint#1, eic.limit#2, eic.step1_income:true, eic.step1_ssn:true, eic.step1_foreign:true, eic.step1_resident:true, eic.gain_7a:floor, eic.step2_income:true, eic.step2_other:true, eic.same_home:false, eic.legally_separated:false, eic.step3_married:true, eic.step3:true, eic.step4:false, eic.step34:true, eic.reached_step5:true, eic.self_employed:false, eic.show_wsb4b:false, eic.show_wsb6:false, eic.wsb_6:positive, eic.earned_for_limit#0, eic.step5_income:true, eic.eligible:true, eic.line1#0, eic.line1_in_table:true, eic.line1_table#1, eic.line2#0, eic.show3:true, eic.line4:false, eic.threshold_other#1, eic.threshold_joint#1, eic.line5_threshold#2, eic.line5_blank:false, eic.show5:true, eic.line5#1, eic.smaller:right, eic.after_line4#1, eic.line6#1, eic.credit#0, eic.reached_step3:true, eic.check_27c:false, eic.wsb_4b_positive:true, eic.wsb_line5_stop:false, eic.separated_box:true, eic.clergy:false; Form 8889 coverage_year completed as changed (the recorded month answers are asked and used) Restated for BUG-0753 (lane older open bugs, 2026-11-22): dep_c, aged 3, is younger than the filer born 1965 (dependent[dep_c].younger true; i1040gi p. 18, Age test), so dep_a and dep_c are two qualifying children; eic.line2, line5 and line6 recomputed by hand from the archived two-child table (tables/2025/eic_2.yaml, bands 25,100-25,150 and 23,600-23,650, column other than joint): $6,778, $7,094 and the smaller, $6,778.",
       "inputs": {
         "qbi.prior_form": false,
         "qbi.coop_patron": false,
@@ -50239,7 +50386,7 @@
         "dependent[dep_b].eic_ssn": false,
         "dependent[dep_c].relationship": "child",
         "dependent[dep_c].age": 3,
-        "dependent[dep_c].younger": false,
+        "dependent[dep_c].younger": true,
         "dependent[dep_c].student": false,
         "dependent[dep_c].disabled": false,
         "dependent[dep_c].spouse_relative": false,
@@ -50395,7 +50542,10 @@
         "f1040.digital_assets": false,
         "sa.mortgage_over_limit_mfs": false,
         "household.mfs_living": "apart_last6",
-        "f8962.mfs_exception": false
+        "f8962.mfs_exception": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false,
+        "household.cp_retirement": false
       },
       "expect": {
         "eic.step5_line1": {
@@ -50424,7 +50574,7 @@
         },
         "eic.line2": {
           "kind": "money",
-          "cents": 404400
+          "cents": 677800
         },
         "eic.line3": {
           "kind": "money",
@@ -50436,11 +50586,11 @@
         },
         "eic.line5": {
           "kind": "money",
-          "cents": 428400
+          "cents": 709400
         },
         "eic.line6": {
           "kind": "money",
-          "cents": 404400
+          "cents": 677800
         }
       }
     },
@@ -56485,7 +56635,9 @@
         "dependent[dep_c].parents_apart": false,
         "dependent[dep_c].own_money": true,
         "dependent[dep_c].citizen_ssn": true,
-        "dependent[dep_c].supported_view": "over_half"
+        "dependent[dep_c].supported_view": "over_half",
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -56743,7 +56895,10 @@
         "sd.casualty": false,
         "sd.qof": false,
         "sd.carryover": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "household.cp_retirement": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -57123,7 +57278,9 @@
         "dependent[dep_a].ever_married": false,
         "dependent[dep_a].parents_apart": false,
         "dependent[dep_a].citizen_ssn": false,
-        "dependent[dep_a].supported_view": "unsure"
+        "dependent[dep_a].supported_view": "unsure",
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -57388,7 +57545,10 @@
         "sd.casualty": false,
         "sd.qof": false,
         "sd.carryover": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "household.cp_retirement": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -57658,7 +57818,10 @@
         "sd.casualty": false,
         "sd.qof": false,
         "sd.carryover": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "household.cp_retirement": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -57940,7 +58103,9 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -58345,7 +58510,9 @@
         "dependent[dep_b].ever_married": true,
         "dependent[dep_b].parents_apart": false,
         "dependent[dep_b].citizen_ssn": false,
-        "dependent[dep_b].supported_view": "unsure"
+        "dependent[dep_b].supported_view": "unsure",
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -58635,7 +58802,9 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -61923,7 +62092,15 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false,
+        "rental[a].mortgage_excess": false,
+        "rental[b].business_incidental": false,
+        "rental[b].land_heavy": false,
+        "rental[b].bought_lease": false,
+        "f8582.prior_crd": false
       },
       "expect": {
         "f8582.line1a": {
@@ -62411,7 +62588,11 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false,
+        "f8582.prior_crd": false
       },
       "expect": {
         "f8582.line1a": {
@@ -62691,7 +62872,12 @@
         "sd.casualty": false,
         "sd.qof": false,
         "sd.carryover": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false,
+        "rental[a].mortgage_excess": false,
+        "household.cp_retirement": false
       },
       "expect": {
         "f8582.line1a": {
@@ -63424,7 +63610,15 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false,
+        "rental[a].mortgage_excess": false,
+        "rental[b].business_incidental": false,
+        "rental[b].land_heavy": false,
+        "rental[b].bought_lease": false,
+        "f8582.prior_crd": false
       },
       "expect": {
         "rental[a].line5": {
@@ -63860,7 +64054,12 @@
         "sd.casualty": false,
         "sd.qof": false,
         "sd.carryover": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false,
+        "rental[a].mortgage_excess": false,
+        "household.cp_retirement": false
       },
       "expect": {
         "rental[a].line5": {
@@ -64166,7 +64365,11 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false,
+        "f8582.prior_crd": false
       },
       "expect": {
         "rental[a].line5": {
@@ -66942,7 +67145,14 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false,
+        "rental[b].business_incidental": false,
+        "rental[b].land_heavy": false,
+        "rental[b].bought_lease": false,
+        "rental[b].rprop[d].short_class": false
       },
       "expect": {
         "rental[a].rprop[b].dep": {
@@ -67181,7 +67391,15 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false,
+        "rental[a].mortgage_excess": false,
+        "rental[b].business_incidental": false,
+        "rental[b].land_heavy": false,
+        "rental[b].bought_lease": false,
+        "f8582.prior_crd": false
       },
       "expect": {
         "sche.line23a": {
@@ -70935,7 +71153,11 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false,
+        "rental[a].mortgage_excess": false
       },
       "expect": {
         "s1.line7_box": {

@@ -5,8 +5,8 @@
  "base": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
  "head_rows": {
   "lines judged": "36",
-  "match / mismatch / unclear / missing": "30 / 6 / 0 / 0",
-  "line-scoped reviews": "7 (latest 2026-11-15); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "29 / 7 / 0 / 0",
+  "line-scoped reviews": "8 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -35,15 +35,16 @@
   },
   {
    "key": "3",
-   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
+   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
    "status": "MATCH",
-   "subject_key": "3a1d838d8e89b044e2763de6aca52ae818eefa02e31a896fbc0299c8d4ae952e"
+   "subject_key": "6bde95d4e2409d643b827838866dddac69f61cf5628b45326d6a3a29d93ba474"
   },
   {
    "key": "8k",
-   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
-   "status": "MATCH",
-   "subject_key": "1036b27d2f0679248bb5c7e90e102e38e43dfbd3c62d28c447bbd432d5202cec"
+   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; i1040gi p. 91, Line 8k. The income asked is the compensation income from options or from shares bought with them that is not on a W-2 (for example an early disposition of incentive stock option shares, which i1040gi treats as income from the exercise not reported on line 1h); the help says the gain on the sale itself is asked with sales of investments. The gate s2.options_any asks about options exercised or shares from them sold, as its label says.",
+   "subject_key": "c3842472f6c66858644660c99abbac49c8848aa1e3b4c5d521b877505f8e4dcc"
   },
   {
    "key": "8e",
@@ -54,9 +55,9 @@
   },
   {
    "key": "8v",
-   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
+   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
    "status": "MATCH",
-   "subject_key": "82951d0a15890761acf72959e06177f491d18d823e509a654366e96f02e4a58f"
+   "subject_key": "97e29f4bb72de9b4ca64fff639752bd8cdf523f9701ae6565d4806ca5f547095"
   },
   {
    "key": "8b",
@@ -108,9 +109,9 @@
   },
   {
    "key": "8c",
-   "record": "2ac264028df9bfe15461822fdde4b705840e4480ea20f652e20c0ff20183b487",
+   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
    "status": "MATCH",
-   "subject_key": "e6abc94673c7ff5b2e56743df81e527f3a198f969cbd0d0c6dfc1861a1ad10ae"
+   "subject_key": "7180a49c5dacf6a4b7384e9a467249bbccb41ff1123edf999db39d85bc8c11ed"
   },
   {
    "key": "8f",
@@ -120,19 +121,10 @@
   },
   {
    "key": "8a",
-   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
+   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the model says the 80% limit on post-2017 NOLs (i172 p. 2, \"80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions\") is never applied. It is not applied as arithmetic: the return is refused at Form 1040 line 15 whenever the limit may bind (f1040.line15 refuses when s1.nol_limit, the sufficiency test N > 4T of amb.2025.s1_nol_limit_test, owner decision D3), so every computed return has a deduction the limit does not reduce. The restatement shows line 8a alone, without the line 15 refusal.",
-   "subject_key": "8ea977181433daf5f1f8a135c6d132406d7cba4cb52454c6d42494324194ed15",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s1.nol_pre2018": "s1.nol_before_limit_date",
-     "s1.nol_pre2018_if_nol": "s1.nol_before_limit_date_if_nol"
-    },
-    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
-    "was": "2833267f41abbf49c46528874008a3524e5de6982364582e6dfb99e6a229a254"
-   }
+   "ruling": "Ruling: scope; i1040gi p. 91, Line 8a, and the 80% limit. The limit is handled on s1.nol_limit (forms/2025/s1.yaml; amb.2025.s1_nol_limit_test): the deduction is computed where the 80% limit cannot bind and refused where it may. The restatement of line 8a does not show that line.",
+   "subject_key": "c59a89c38daae92bcdfa540f2f26acb3539ced66fa66dcf29256d3b5ef8d4e22"
   },
   {
    "key": "8s",
@@ -157,16 +149,16 @@
   },
   {
    "key": "5",
-   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
+   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
    "status": "MATCH",
-   "subject_key": "642bbc341044252c6028b35589f25a106ee9efbecd48edfeaf4ce851244d33fd"
+   "subject_key": "dff8b734e78f1283033973b0318df3d26143c7b865f42ca6eccd07dafa60dbd1"
   },
   {
    "key": "10",
-   "record": "e72a2ad6a335bb022500e9d5c6680bec5b4cc2ebeacecb56691ab922400c83a1",
+   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the helper s1.line10_ex5 adds lines 1, 2a, 3, 7 and 9, and line 10 adds line 5, so lines 4 and 6 are left out, as the model says. Both refuse the return elsewhere, as the line's citation names: line 4 (Other gains or losses, Form 4797) by sd.other_forms on Schedule D, line 6 (farm income, Schedule F) by scope.schedule1 at Form 1040 line 8 (scope.farm). The line 10 total is therefore right on every completed return (f1040s1 line 10, 'Combine lines 1 through 7 and 9'). The helper's label names lines 4 and 6 although it does not add them; a reader is not misled into a wrong amount, because a filer with either line is refused. Same ruling as the earlier round (adjudication/s1.md, render line 10, scope).",
-   "subject_key": "822c89361482da3dad119f399328d3144aa058a0038723f653a5805a06420aee"
+   "ruling": "Ruling: scope; f1040s1 line 10. Line 4 (Form 4797 gains) is refused by sd.other_forms on Schedule D and line 6 (farm income) by scope.farm through scope.schedule1, as the line's cite says ('line 4 is refused by sd.other_forms ..., line 6 by scope.schedule1'); the helper adds the lines the tool computes.",
+   "subject_key": "76caf16b55c30d733409f6232a5c16ec105dd215cf133aa619b3dd27c29dac6b"
   },
   {
    "key": "11",
@@ -254,10 +246,10 @@
   "7": "0aa7e18fa41397e9c171ffac098cfbea679e107ade4d0789644fb7a869935a82",
   "7 (box)": "09b7c34093b1ada499b0dd9b024a5725401b1b3c053bf7a088ca9b4b4fe0fa61",
   "7 (amount repaid)": "684c11973a74fbcaca801a35d11dedc198af1f3f9c8045e0b24173854c36a5a6",
-  "3": "3e424d4e592de39a050c1bdc07c4723850d0241f0a5a6696530c098732016f55",
-  "8k": "4b1bc2070e2ddc3d294b19420152080039bb88a7fd12df1a0dbd51c6d383aead",
+  "3": "6c6d599a805f5a1e51720b9c2f16cfffd504171dfcd8da8d26e03617e4db9eca",
+  "8k": "79703a7ee8550d8f1d19717276b642375b605709355919902d9b2138aee37cc5",
   "8e": "d5cd00ae0c81f94ed4c7013603e0261f9210b3899839ac562b445ad9bf9336a8",
-  "8v": "62d41387353c01fbba21287dc1ff7fe1482afd692a7994a185ffcb6e00376860",
+  "8v": "dd44167abc6561937393d2f9ac3d84c0a80ca0055156949de0f044ccd84cc4a1",
   "8b": "cc86673029995e183bbe1b99c0d9fab9a8e94421f7f4fa29ed2b1dcaeedb9ec8",
   "8g": "1565127f4954ac0df1c1dd4dfc11ed29f439a77d206ac1cab6b259c676adb9b3",
   "8h": "80b6c80b9281d97b3e5ed1441f830a5cd8349c82557cb07fc2b4d9d68b7781c5",
@@ -266,13 +258,13 @@
   "8r": "25bb17eeabc46e59f3b84ce777b6fbabe4bee372eebd99c2a6ae5e24ce3822e9",
   "8z": "d34ab5762ec738a0b3d8021fd20bdfdd4830d80fd7572c3a0a373cee4e0a25a8",
   "2a": "978f6fd9d84dccac3569cc51b677eb4899a483919ee31adc82908e98379c6d53",
-  "8c": "a683b5e3a96931b8975920a5a908da75b5cf7b9741566a302efee18ae43a2b06",
+  "8c": "a2434e6a595e5ebbe2861b7e80c1c2db35a3d21a6371698d9d8c2b30d342474e",
   "8f": "61cd1ea00f9720c8fa0491e4eabe0184235cd502525725831f06f21d546abb4a",
-  "8a": "2432bc9f89da09af9462fcf8549f08c9ec3322d6fc8bdeaf616d7eb5788a613f",
+  "8a": "af1ba828bbe165b9e77f8067806271de812f15f2c5d063a0c695247717d742cc",
   "8s": "0c94351cf75aec1a858c09699d1d65a754072228774a78b3179d6fce37a0be19",
   "9": "643e9ab07699d048abd15c9a3bf998b00858c85f8491cec4dbe072f89090712d",
-  "5": "b937bcccb37f5c3779ca579d5520cd5de4e2868b7fd53f8b105829eb048d36ea",
-  "10": "2442f878aee1fabaa2fda3f4f0187dba6de72c09279e974d27c5883801878306",
+  "5": "a9e6ebdb42b6de6c103d705147060752e0721ae895bbde2559b255c1d05abd39",
+  "10": "fcc54cf49f3e59dda55b153b56dd977fa4cf17c82f08e751b73a1d3bdb3f7a40",
   "11": "444b97633e80dc22f7362c42b60b247a91d3290a3d4917b7429f07dec9ebf99d",
   "13": "d28511b7f2c281e110c89fdb0b05daddf7fd81c5cd68febefceddfd95320e99c",
   "15": "2862a9af51da579f2eeae0fca7a1e5fd656c4e385c5dde00e4cedea04abf6f88",

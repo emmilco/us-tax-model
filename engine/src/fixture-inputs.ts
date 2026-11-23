@@ -447,10 +447,24 @@ export function resolveCase(c: { id: string; inputs: Record<string, unknown> }, 
   return resolveInputs(c.inputs, data, c.id, j, takesDefaults(file) ? table ?? defaultTable(j) : new Map());
 }
 
-/** Every case of one jurisdiction's fixtures, with the file it is in, its inputs resolved. */
-export function loadFixtureCases(j: Jurisdiction, data: CanonicalData): (Omit<StatedCase, "inputs"> & { inputs: Inputs; file: string })[] {
-  const dir = j === "ny" ? nyPath("fixtures") : yearPath("fixtures");
+/** Whether the year carry (tools/fixtures_year.py) marked a case "not evaluated in <year>": it states an input the
+ * year removed, or the year's data rejected it, so it cannot be evaluated until it is moved or re-derived. */
+export function markedNotEvaluated(c: { evidence?: string }): boolean {
+  return /^not evaluated in \d{4}$/.test(c.evidence ?? "");
+}
+
+/** The cases of one jurisdiction's fixtures marked not evaluated (markedNotEvaluated), with their files: the cases
+ * loadFixtureCases leaves out, for the commands that evaluate fixtures to list. */
+export function notEvaluatedCases(j: Jurisdiction, dir = j === "ny" ? nyPath("fixtures") : yearPath("fixtures")): { id: string; file: string }[] {
+  return !existsSync(dir) ? [] : caseFiles(dir).flatMap((f) => (JSON.parse(readFileSync(join(dir, f), "utf8")) as { cases: StatedCase[] }).cases
+    .filter(markedNotEvaluated).map((c) => ({ id: c.id, file: f })));
+}
+
+/** Every case of one jurisdiction's fixtures that can be evaluated, with the file it is in, its inputs resolved; a
+ * case marked not evaluated (markedNotEvaluated) is left out, since its inputs need not be valid for the year. */
+export function loadFixtureCases(j: Jurisdiction, data: CanonicalData, dir = j === "ny" ? nyPath("fixtures") : yearPath("fixtures")): (Omit<StatedCase, "inputs"> & { inputs: Inputs; file: string })[] {
   return caseFiles(dir).flatMap((f) => (JSON.parse(readFileSync(join(dir, f), "utf8")) as { cases: StatedCase[] }).cases
+    .filter((c) => !markedNotEvaluated(c))
     .map((c) => ({ ...c, file: f, inputs: resolveCase(c, f, data, j) })));
 }
 

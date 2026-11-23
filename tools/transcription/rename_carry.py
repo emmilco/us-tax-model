@@ -440,18 +440,6 @@ def _jtree_class():
                 self._c["__tables"], self._c["__ny_tables"] = out, ny
             return self._c["__tables"]
 
-        def pages(self, doc):
-            key = f"__pages {doc}"
-            if key not in self._c:
-                sub = ("sources", "ny", self.year) if doc and jurisdiction.is_ny(doc) else ("sources", self.year)
-                m = json.loads(super().read(*sub, "manifest.json") or "{}")
-                entries = m["documents"] if isinstance(m, dict) else m
-                d = next((e for e in entries if e.get("id") == doc), None)
-                name = d and (d.get("cols_file") or d.get("text_file"))
-                text = super().read(*sub, name) if name else None
-                self._c[key] = text.split("\f") if text is not None else None
-            return self._c[key]
-
     return JTree
 
 

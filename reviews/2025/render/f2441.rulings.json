@@ -223,6 +223,16 @@
   },
   {
    "printed": "2 (box)",
+   "restated": "helper \"Number of qualifying persons\" > 3 (dc.persons_listed)",
+   "model": "The IRS says to check the box \"If you have more than three qualifying persons,\" and a qualifying person includes \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year.\" The count only adds confirmed dependent entries, and no refusal covers a disabled spouse, so a filer with three qualifying dependents plus a disabled spouse would not get the box checked.",
+   "ruling": "Ruling: representation; restatement accepted. i2441 p. 1, Qualifying Person(s), 2, \"Your disabled spouse who wasn't physically or mentally able to care for themselves\". Care of a disabled spouse is refused before line 2 is reached: f2441.unable (\"In 2025, was there a time when you (or, on a joint return, your spouse) could not care for yourself ...\", help \"Answer Yes too if some of the care you paid for was for your husband or wife. A Yes ends the interview here.\"), so on every return the project completes the qualifying persons are the dependent entries the count reads, and the box is checked exactly when there are more than three.",
+   "context": "d528e5216a166891d3ac43a5518f677d03a2cff2ece6a6476f7dd9477baf4bff",
+   "date": "2026-11-22",
+   "run": "58981c697b7ade6f220873d4aaf5fd75c517753f59fd8fb0759deb605ef793ba",
+   "subject_key": "764131e923f4db2cdaaeb575130f06e1114df3181476ad4452fb1373025b3da0"
+  },
+  {
+   "printed": "2 (box)",
    "restated": "helper \"Number of qualifying persons\" > 3 (dc.providers_listed)",
    "model": "The count only includes confirmed dependents, so a disabled spouse never counts and no refusal names that case. The instructions list as a qualifying person \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year,\" and such a spouse can push the count above three.",
    "ruling": "Ruling: scope; i2441 p. 1, Qualifying Person(s), \"Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year\". The case is refused, not omitted: f2441.student_disabled asks whether you or your spouse was a full-time student or not able to care for yourself, \"(This includes paying for the care of your spouse who was not able to care for themselves.)\", and its refusal on lines 4, 5, 18 and 19 names \"a disabled spouse as a qualifying person\" as outside this tool (i2441 p. 4, If You or Your Spouse Was a Student or Disabled). The reviewer's \"no refusal names this case\" is wrong. No change to the data.",

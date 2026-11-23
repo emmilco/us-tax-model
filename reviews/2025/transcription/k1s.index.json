@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "ea7785f8968d154e82c701f1261057987af1f478091d41656c2939faf23a7150",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-16); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -116,122 +116,122 @@
   },
   {
    "key": "k1s.p4_income",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i8582 p. 10, Part IV, \"Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 394 of 559 comparisons agree, 386 of 531 in scope; completed {\"candidate-unknown\": 6, \"project-refuses\": 4, \"project-unknown\": 78}. Project stands.",
-   "subject_key": "1e310e95ffcf8196182918d793fd16138c505fb7d8acfc11233dcdf81777ace4"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,336/1,517 agree; differences {\"candidate-unknown\": 13, \"project-refuses\": 19, \"project-unknown\": 149}; on completed returns {\"project-unknown\": 35}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "3dccc6e9d15333023aeb1fda88df875e6120b062ab0bea5de10119cbb211433b"
   },
   {
    "key": "k1s.p4_loss",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8582 p. 10, Part IV, \"Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV\". The differences are the project's refusals (k1s.ok carries every K-1 refusal) and inputs withheld on partial records; no value differs on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 449 of 559 comparisons agree, 439 of 531 in scope; completed {\"candidate-unknown\": 6, \"project-refuses\": 4, \"project-unknown\": 53, \"value\": 1}. Project stands.",
-   "subject_key": "fa8ec8ded7dfe320ce46d9900d10ff757ec801fa0d5c879892aaa32ae1e28aaf"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,341/1,517 agree; differences {\"candidate-unknown\": 13, \"project-refuses\": 19, \"project-unknown\": 144}; on completed returns {\"project-unknown\": 35}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "374a662203aa8a081a0e96e3c95fb27f6588c00454afb6c9b6b94f2d792e112e"
   },
   {
    "key": "k1s.p4_prior",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i8582 p. 10, Part IV, \"Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 394 of 559 comparisons agree, 386 of 531 in scope; completed {\"candidate-unknown\": 6, \"project-refuses\": 4, \"project-unknown\": 78}. Project stands.",
-   "subject_key": "e92e8a27db3262f96d584e7d9f9fa5ec5e66c5f9ef28a1b3ca479d489deb1fa4"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,334/1,517 agree; differences {\"candidate-unknown\": 13, \"project-refuses\": 19, \"project-unknown\": 151}; on completed returns {\"project-unknown\": 35}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "dec4f14512c7b8ffccad8d591ecf5da6cd8438482fe233f5125da369c8cab9fd"
   },
   {
    "key": "k1s.p5_income",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i8582 p. 10, Part V, \"Use Part V to figure the amounts to enter on Part I, lines 2a through 2c\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 410 of 559 comparisons agree, 402 of 531 in scope; completed {\"candidate-unknown\": 16, \"project-refuses\": 4, \"project-unknown\": 59}. Project stands.",
-   "subject_key": "2b9880be8595598b6568821b7a454bbe41cda8645510df42f1097a10f0eafe98"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,361/1,517 agree; differences {\"candidate-unknown\": 27, \"project-refuses\": 19, \"project-unknown\": 110}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 24}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "a69a23847f34ecd8c98bff1b49370757e8dabcd6cab70834ece5cb712aab3a35"
   },
   {
    "key": "k1s.p5_loss",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8582 p. 10, Part V, \"Use Part V to figure the amounts to enter on Part I, lines 2a through 2c\". The differences are the project's refusals (k1s.ok carries every K-1 refusal) and inputs withheld on partial records; no value differs on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 441 of 559 comparisons agree, 431 of 531 in scope; completed {\"candidate-unknown\": 16, \"project-refuses\": 4, \"project-unknown\": 48, \"value\": 1}. Project stands.",
-   "subject_key": "27bef9f39b0926a8370681dba22ac806f9072bcb44d50f843e6f806d8a771d64"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,394/1,517 agree; differences {\"candidate-unknown\": 27, \"project-refuses\": 19, \"project-unknown\": 77}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 12}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "1235f21d55347d44f7d34d2185f4a3dac0f744bd39ea7b3e5d99e553278ec790"
   },
   {
    "key": "k1s.p5_prior",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i8582 p. 10, Part V, \"Use Part V to figure the amounts to enter on Part I, lines 2a through 2c\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 393 of 559 comparisons agree, 385 of 531 in scope; completed {\"candidate-unknown\": 13, \"project-refuses\": 4, \"project-unknown\": 72}. Project stands.",
-   "subject_key": "eb86175a0fac8da6f47102d6ad17bca39df7c96287c413b068b66fc37679d0d5"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,337/1,517 agree; differences {\"candidate-unknown\": 21, \"project-refuses\": 19, \"project-unknown\": 140}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 30}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "c116fe34fd1d066d8d18c4dfeb1d69b4cd39c461f55a0150148d8c65b20a3a37"
   },
   {
    "key": "k1s.int",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 4. Interest Income, \"Report interest income on Form 1040 or 1040-SR, line 2b\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 287 of 559 comparisons agree, 287 of 531 in scope; completed {\"project-refuses\": 5, \"project-unknown\": 163}. Project stands.",
-   "subject_key": "9cde55d8f65ea9c99f267169b3b6b48d252953b5281cd8a516a62ad492a71c55"
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,138/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 351}; on completed returns {\"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "cc6dcf106fcdde659d4026a73428727f46ec17425d4aa65c99aeacf8723fd7e0"
   },
   {
    "key": "k1s.ord_div",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 5a. Ordinary Dividends, \"Report ordinary dividends on Form 1040 or 1040-SR, line 3b\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 289 of 559 comparisons agree, 289 of 531 in scope; completed {\"project-refuses\": 5, \"project-unknown\": 162}. Project stands.",
-   "subject_key": "915a317484307de33a9864545c9becc2587ccc7989d0ac08c0c565063059820e"
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,138/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 351}; on completed returns {\"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "c457ee7dea603dc5bc1055f09dd228d5d94c0f8091250c651d6298eb52b5b573"
   },
   {
    "key": "k1s.qual_div",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 5b. Qualified Dividends, \"Report any qualified dividends on Form 1040 or 1040-SR, line 3a\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 287 of 559 comparisons agree, 287 of 531 in scope; completed {\"project-refuses\": 5, \"project-unknown\": 163}. Project stands.",
-   "subject_key": "8d366408120810042479ce3ebc2131dbe4c534e01e7f98cf9147a98f1ea69a13"
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,137/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 352}; on completed returns {\"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "66dc635a043f40573ee293cc53286b6e08d6ded17556270c6c44949f42047b0d"
   },
   {
    "key": "k1s.st",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 7. Net Short-Term Capital Gain (Loss), \"report the net short-term capital gain (loss) on Schedule D (Form 1040), Capital Gains and Losses, line 5\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 352 of 559 comparisons agree, 350 of 531 in scope; completed {\"candidate-unknown\": 1, \"project-refuses\": 5, \"project-unknown\": 125}. Project stands.",
-   "subject_key": "07cdb67d9b9447b76202f02c3a707c951da2a728e937fed7a46bc11e55070634"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,310/1,517 agree; differences {\"project-refuses\": 22, \"project-unknown\": 185}; on completed returns {\"project-unknown\": 24}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "609db0f5f21cb1235be21da9d664c04fb4f0a05346f1b31e7e0b53df61dfdff9"
   },
   {
    "key": "k1s.lt",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 8a. Net Long-Term Capital Gain (Loss), \"report the net long-term capital gain (loss) on Schedule D (Form 1040), line 12\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 352 of 559 comparisons agree, 350 of 531 in scope; completed {\"candidate-unknown\": 1, \"project-refuses\": 5, \"project-unknown\": 125}. Project stands.",
-   "subject_key": "9a53a7e3b35e2eb40afa30d3e0a1e5c1dd5a67f1585d58d1f96ab22652f7fd1a"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,310/1,517 agree; differences {\"project-refuses\": 22, \"project-unknown\": 185}; on completed returns {\"project-unknown\": 24}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "8baf3500650e5bab423fa18363fadc13fdbaccdece4dc2e28f9adf649a8c49be"
   },
   {
    "key": "k1s.g28",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 8b. Collectibles (28%) Gain (Loss), \"report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 353 of 559 comparisons agree, 351 of 531 in scope; completed {\"project-refuses\": 5, \"project-unknown\": 125}. Project stands.",
-   "subject_key": "f780cf1b98ea23411e8d1e44ca3f7ecbfd365b11f36e4bb48b95926b685c8f46"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,240/1,517 agree; differences {\"project-refuses\": 27, \"project-unknown\": 250}; on completed returns {\"project-unknown\": 34}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "b4ca32b82344a5e6bb8838b1b145cd701eeeb7868c96a597f17aae5d084c5d2a"
   },
   {
    "key": "k1s.u1250",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 7, Box 8c. Unrecaptured Section 1250 Gain, \"Report unrecaptured section 1250 gain from the sale or exchange of the corporation’s business assets on line 5\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 335 of 559 comparisons agree, 334 of 531 in scope; completed {\"candidate-unknown\": 10, \"project-refuses\": 5, \"project-unknown\": 103}. Project stands.",
-   "subject_key": "fba5b94bb586b09c9547395296eb7e539de8b7f18d8fe22e77d1b15336953445"
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,249/1,517 agree; differences {\"candidate-unknown\": 25, \"project-refuses\": 27, \"project-unknown\": 216}; on completed returns {\"candidate-unknown\": 2, \"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "a30ff98a2361b4ca7886c8bd5c3e08baeb62ece800c54e3aa926198d59a7ff43"
   },
   {
    "key": "k1s.backup",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 13, Code O. Backup withholding, \"Include this amount in the total you enter on Form 1040 or 1040-SR, line 25c\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 339 of 559 comparisons agree, 339 of 531 in scope; completed {\"project-refuses\": 5, \"project-unknown\": 108}. Project stands.",
-   "subject_key": "784a8b85be111700addc9995b8adbafb5dc14a65dfd2c6b95e5c1d0610e0f10d"
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,264/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 225}; on completed returns {\"project-unknown\": 53}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "337c43e711944d0263b76709194d806d84437090e518f9b1238b370cba76e583"
   },
   {
    "key": "k1s.taxexempt",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 15, Code A. Tax-exempt interest income, \"Individual shareholders include this amount on Form 1040 or 1040-SR, line 2a\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 295 of 559 comparisons agree, 295 of 531 in scope; completed {\"candidate-unknown\": 8, \"project-refuses\": 5, \"project-unknown\": 141}. Project stands.",
-   "subject_key": "e490ceb02d98e827440ff01ab3c011d2e06029873fce9bc82196e8a70f51e3a4"
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,179/1,517 agree; differences {\"candidate-unknown\": 21, \"project-refuses\": 28, \"project-unknown\": 289}; on completed returns {\"candidate-unknown\": 2, \"project-unknown\": 53}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "e806029b4e80a3473a8827a195cba03797608465e3aaef2b6eea5d3221c854a2"
   },
   {
    "key": "k1s.nonpassive",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1120ssk p. 4, test 5: \"You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year\". The reply keeps the test 5/past-years reading the earlier ruling refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 470 of 559 comparisons agree, 453 of 531 in scope; completed {\"candidate-unknown\": 24, \"project-refuses\": 4, \"project-unknown\": 27, \"value\": 2}. Project stands.",
-   "subject_key": "c3f27837ee59411602c8194a4b43abae3937d42f3cabdae790202fadc324061c"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,380/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 92}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 13}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "6c9a83ef99665695b4131b524d36fcf76ebb7ca3f20c84becb646af6a0a01de2"
   },
   {
    "key": "k1s.qbi",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 17, Code V. Section 199A information, \"When determining QBI or qualified PTP income, you must include only those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable income for the tax year\". On completed returns the reply refuses K-1s the project computes (its own refusal on the line); the project's scope is the narrower and is cited. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 401 of 559 comparisons agree, 388 of 485 in scope; completed {\"candidate-refuses\": 3, \"candidate-unknown\": 25, \"project-refuses\": 4, \"project-unknown\": 44}. Project stands.",
-   "subject_key": "7f88603ddb331f82fc4419c6164ac6529b860fac19a046f43fae10fc12b59eb2"
+   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,237/1,517 agree; differences {\"candidate-unknown\": 25, \"project-refuses\": 30, \"project-unknown\": 225}; on completed returns {\"candidate-unknown\": 2, \"project-unknown\": 53}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "ec44e39cb1e0435a27788fa5a0fb3d0a1f7f5309962d43a98dfbc700d1fcdf3f"
   },
   {
    "key": "k1s.one",
@@ -247,24 +247,24 @@
   },
   {
    "key": "28 (k)",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 6, Box 1. Ordinary Business Income (Loss), \"Report box 1 income (loss) from corporate trade or business activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 424 of 559 comparisons agree, 409 of 531 in scope; completed {\"candidate-unknown\": 24, \"project-refuses\": 4, \"project-unknown\": 50}. Project stands.",
-   "subject_key": "2cf1385726b85444419db41ac4612ae4f7cc799f9ea0c18e34b9a585cf646632"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,354/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 118}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 21}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "00cd98bf5286f777e9593ba915bf997fccce5040ef6bbddeaff9213dadf09282"
   },
   {
    "key": "28 (i)",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk p. 6, Box 1. Ordinary Business Income (Loss), \"Report box 1 income (loss) from corporate trade or business activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28\". The differences are the project's refusals (k1s.ok carries every K-1 refusal) and inputs withheld on partial records; no value differs on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 470 of 559 comparisons agree, 453 of 531 in scope; completed {\"candidate-unknown\": 24, \"project-refuses\": 4, \"project-unknown\": 27, \"value\": 2}. Project stands.",
-   "subject_key": "a4fbc89f3e5c81c17d775981d71cfb3872923acb8b46e61c638fa79b65c6f6ca"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,380/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 92}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 13}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "25ba0b43bbbcdb5145e926e92897504c5be0cfbc478d4a885bcdca653f03ecfe"
   },
   {
    "key": "28 (h)",
-   "record": "80e52d7ad8a2cd8e9f0fe813f1338bb95df1e5f247a37fa2d58d6f963cafa573",
+   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk p. 6, Box 1. Ordinary Business Income (Loss), \"If income is reported in box 1, report the income in column (h) of Schedule E (Form 1040), line 28\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1s.json): 436 of 559 comparisons agree, 422 of 531 in scope; completed {\"candidate-unknown\": 25, \"project-refuses\": 4, \"project-unknown\": 39}. Project stands.",
-   "subject_key": "6f72a449cde0a7e3df44c2dcff6d1cb541ef05bda41c5b697108214db3133958"
+   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,385/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 87}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 16}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
+   "subject_key": "0e911096847d63fd214e68920effa080e6e328ce93a1a19b812d73ff759b45f1"
   }
  ],
  "subjects": {
@@ -327,27 +327,27 @@
   "k1s.gain8": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "k1s.loss8": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "k1s.f7203_required": "e63a9a6eb12146b7ecb709d9f6aee9c8def33e1f13164200fd954d2b87e4c2d8",
-  "k1s.p4_income": "045eb6cd812b1287a9ef1e63fc754f9ffbf3a2355feb1c0bede1ea669505028c",
-  "k1s.p4_loss": "045eb6cd812b1287a9ef1e63fc754f9ffbf3a2355feb1c0bede1ea669505028c",
-  "k1s.p4_prior": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.p5_income": "9a9faee8d0e33d4aa724c8bc23bd27aaa8886828663477bf4140260c0c5c515a",
-  "k1s.p5_loss": "9a9faee8d0e33d4aa724c8bc23bd27aaa8886828663477bf4140260c0c5c515a",
-  "k1s.p5_prior": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.int": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.ord_div": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.qual_div": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.st": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.lt": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.g28": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.u1250": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.backup": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.taxexempt": "1ea2d8c51a8ef2d6b4486e37ecffd23500cbcbb4bc7f764823f96be711a81ddc",
-  "k1s.nonpassive": "de01b96e4f0d6fc3232477f4715fb09c6c07e3fb91c16de99dd9f54b8153d1cc",
-  "k1s.qbi": "f38e7e6cf9481fc41096d8c409628a368cf1cb9a6610e12f6f2cbe78c79c6ad1",
+  "k1s.p4_income": "77b188d360148e11d5fb0c85ddd4bae48de3964c98ebdb3767179093c2ce64aa",
+  "k1s.p4_loss": "77b188d360148e11d5fb0c85ddd4bae48de3964c98ebdb3767179093c2ce64aa",
+  "k1s.p4_prior": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.p5_income": "4d9ecdf49cb89e7fdffa2ea706b5a9bba1fab512dd0cdb003efc4ea3c078f3a8",
+  "k1s.p5_loss": "4d9ecdf49cb89e7fdffa2ea706b5a9bba1fab512dd0cdb003efc4ea3c078f3a8",
+  "k1s.p5_prior": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.int": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.ord_div": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.qual_div": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.st": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.lt": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.g28": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.u1250": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.backup": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.taxexempt": "04e7e269b338bda03fc32d54d12a632fc29ee79eb0f002eedec78c016b6fa159",
+  "k1s.nonpassive": "03e37253c6ccb65de93bff41d672e4cb147e243237b21432bccab6d0950d6c96",
+  "k1s.qbi": "957ba3fb11a7452f277331cbfee50b34b0bbe0672bfe911bb08a054e4e9ddbde",
   "k1s.one": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "k1s.sche_any": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "28 (k)": "de01b96e4f0d6fc3232477f4715fb09c6c07e3fb91c16de99dd9f54b8153d1cc",
-  "28 (i)": "de01b96e4f0d6fc3232477f4715fb09c6c07e3fb91c16de99dd9f54b8153d1cc",
-  "28 (h)": "9a9faee8d0e33d4aa724c8bc23bd27aaa8886828663477bf4140260c0c5c515a"
+  "28 (k)": "03e37253c6ccb65de93bff41d672e4cb147e243237b21432bccab6d0950d6c96",
+  "28 (i)": "03e37253c6ccb65de93bff41d672e4cb147e243237b21432bccab6d0950d6c96",
+  "28 (h)": "4d9ecdf49cb89e7fdffa2ea706b5a9bba1fab512dd0cdb003efc4ea3c078f3a8"
  }
 }

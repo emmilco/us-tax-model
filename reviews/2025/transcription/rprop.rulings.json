@@ -47,6 +47,58 @@
   {
    "printed": "(g)",
    "project_expr_sha256": "77bcb7c94e864d5d51560455a989584e75ae49936fb4b60a9a68b1cf480acfdf",
+   "second_expr_sha256": "8ac61b30d6b10fa9423e2ac93a8192def0a69baa2d8e65a057deea8ebd6e2828",
+   "ruling": "Ruling: representation; i4562 p. 10. The reply reads rprop.short_class for every building, where the project asks it only of nonresidential property (rprop.short_class_if_nonres: a residential building is neither a farm building nor a motor fuels outlet), and computes personal property on a 5-year half-year basis, which the project refuses (rprop.personal; i4562 p. 9, Lines 19a Through 19j). The only differences are candidate-unknown on returns that do not answer rprop.short_class (17 completed, 3 incomplete, 2 refused); no completed value differs (executable triage .transcription/triage/2025/rprop.json: 104 of 126 agree). Project stands.",
+   "context": "2d04607c4e9c16a8766bc397ded0d5191ad8bb30e8ae64d9c5f5cae5fe21015b",
+   "date": "2026-11-22",
+   "run": "daa434dc4a48126ff3165fedb081133634e64c1183b68375afd26126d1a89a62",
+   "subject_key": "ce8d4c1775b5b6ee3bf6658b83bee6a64782eaec1fa76259ad9b964e10c953bd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.2.deepseek@rental[a].rprop[b]",
+     "fixture:classm.f8582.4.deepseek@rental[a].rprop[b]",
+     "fixture:classm.rental.2.deepseek@rental[a].rprop[b]",
+     "fixture:classm.rprop.1.deepseek@rental[a].rprop[b]",
+     "fixture:classm.rprop.1.deepseek@rental[a].rprop[c]",
+     "fixture:classm.s1.14.deepseek@rental[a].rprop[b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(g)",
+   "project_expr_sha256": "77bcb7c94e864d5d51560455a989584e75ae49936fb4b60a9a68b1cf480acfdf",
+   "second_expr_sha256": "9a7a350ca019eb51144937afb564b39a27d7bd1695d3f3794cd3f27a11f3d7e7",
+   "ruling": "Ruling: representation; i4562 p. 10. The reply reads rprop.short_class for every building, where the project asks it only of nonresidential property (rprop.short_class_if_nonres: a residential building is neither a farm building nor a motor fuels outlet); the only differences are candidate-unknown on returns that do not answer it and one project refusal; no completed value differs (executable triage .transcription/triage/2025/rprop.json: 103 of 126 agree). Project stands.",
+   "context": "a55d4d422fcd3eb5d80c95751cfe3eca952416711fee39170208b9c565835603",
+   "date": "2026-11-22",
+   "run": "9eb2157412afa7028c8eb845a370d32c72f90815c43f2afbb627eb872371acbe",
+   "subject_key": "ce8d4c1775b5b6ee3bf6658b83bee6a64782eaec1fa76259ad9b964e10c953bd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.2.deepseek@rental[a].rprop[b]",
+     "fixture:classm.f8582.4.deepseek@rental[a].rprop[b]",
+     "fixture:classm.rental.2.deepseek@rental[a].rprop[b]",
+     "fixture:classm.rprop.1.deepseek@rental[a].rprop[b]",
+     "fixture:classm.rprop.1.deepseek@rental[a].rprop[c]",
+     "fixture:classm.s1.14.deepseek@rental[a].rprop[b]",
+     "fixture:x1sche.r9.nonres_before_1994@rental[a].rprop[b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(g)",
+   "project_expr_sha256": "77bcb7c94e864d5d51560455a989584e75ae49936fb4b60a9a68b1cf480acfdf",
    "second_expr_sha256": "d34513594380a1e1b1f8a5bbc99a20428f5ead0a52e627d5b74765d2dc0bb350",
    "ruling": "Ruling: representation; i4562 p. 12, Column (g)—Depreciation deduction: the project multiplies rprop.basis by the Table A rate. The candidate reaches the same amount through its own h_figured helper; its 13 completed-return differences come from reading rprop.qip as an input where the project computes it (rprop.qip_if_new_nonres, i4562 p. 10), so the candidate is unknown on records the project answers. No value difference on a completed return; the 1 refusal is the project's cited rprop.personal screen. Triage executable-triage-v2 (.transcription/triage/2025/rprop.json): 228 of 289 comparisons agree, 226 of 286 in scope. Project stands.",
    "context": "b668560753d3bf3b713d03555f0cad753deae1d0da866ee0dc5dda0123084421",

@@ -253,6 +253,26 @@ class AdvisoryStaleLogs(unittest.TestCase):
                 self.assertTrue(check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"]))
 
 
+class CarriedSnapshotRows(unittest.TestCase):
+    """check_logs.py: a year-carried log's source-snapshot rows are read against the year it was carried from too;
+    a row matching neither year's text is stale, and a log not carried is held to this year's alone."""
+
+    def test_carried_rows_match_either_year(self):
+        import check_logs
+        a, b, c, x = ("a" * 64, "b" * 64, "c" * 64, "e" * 64)
+        row = lambda sha, cols: f"| i1 | Instructions | 2025 | p. 1 | {sha} | cols | {cols} |"
+        now = {"i1": {"text_sha256": b, "cols_sha256": c}}
+        before = {"i1": {"text_sha256": a, "cols_sha256": x}}
+        log = "\n".join(["# log", row(a, x)]) + "\n"
+        self.assertEqual(check_logs.snapshot_problems("render", log, now, before), [])
+        self.assertEqual(check_logs.snapshot_problems("render", log, now, {}),
+                         ["render log was made against a different snapshot of i1",
+                          "render log was made against a different reading-order text of i1"])
+        self.assertEqual(check_logs.snapshot_problems("render", "# log\n" + row(b, c) + "\n", now, before), [])
+        self.assertEqual(check_logs.snapshot_problems("render", "# log\n" + row("d" * 64, c) + "\n", now, before),
+                         ["render log was made against a different snapshot of i1"])
+
+
 class RenderedTextGuard(unittest.TestCase):
     """render_compare.py refuses, --dry-run included, when rendered/ is not what the build renders to."""
 
@@ -1579,6 +1599,28 @@ class TranscriptionVisibility(unittest.TestCase):
 class TriageWitnesses(unittest.TestCase):
     """T-070 (2), T-070 (3), T-083."""
 
+    def test_branch_coverage_counts_only_the_choose_lines_where_the_sides_differ(self):
+        """triage_rules branchSides, coverBranches, untakenBranches: a choose both sides share needs no coverage; the
+        reply's own choose and a project choose the reply writes otherwise need each alternative taken; lines of
+        other documents are not followed."""
+        out = node_module(
+            "import { branchSides, coverBranches, untakenBranches } from './triage_rules.mjs';"
+            "const ch = (g) => ({ op: 'choose', alternatives: [{ guard: g, then: 'x.a' }, { guard: { not: g }, then: 'x.b' }] });"
+            "const shared = { id: 'x.s', expr: ch('x.g') }, mine = { id: 'x.l', expr: ch('x.h') };"
+            "const differing = branchSides({ project: [shared, mine], candidate: [shared, { id: 'x.l', expr: ch('x.k') }, { id: 'x.c', expr: ch('x.g') }] }, id => id.slice(2));"
+            "const local = key => key.startsWith('x.') ? key.slice(2) : undefined;"
+            "const der = (op, taken, operands = []) => ({ op, takenGuardIndex: taken, operands: operands.map(ref => ({ ref })) });"
+            "const cov = { reached: new Set(), taken: new Set() };"
+            "const p = new Map([['x.l', der('choose', 0, ['x.s', 'y.o'])], ['x.s', der('choose', 1)], ['y.o', der('copy', undefined, ['x.c'])]]);"
+            "coverBranches(cov, differing, 'project', p, 'x.l', local);"
+            "const first = untakenBranches(cov, differing);"
+            "coverBranches(cov, differing, 'project', new Map([['x.l', der('choose', 1)]]), 'x.l', local);"
+            "const c = new Map([['x.l', der('choose', 0, ['x.c'])], ['x.c', der('choose', 0)]]);"
+            "coverBranches(cov, differing, 'candidate', c, 'x.l', local);"
+            "console.log(JSON.stringify([[...differing.project.keys()], [...differing.candidate.keys()].sort(), first, untakenBranches(cov, differing)]))")
+        self.assertEqual(out, [["l"], ["c", "l"], ["project l alternative 1"],
+                               ["candidate c alternative 1", "candidate l alternative 1"]])
+
     def test_refused_or_unknown_visibility_is_not_a_shown_amount(self):
         out = node_module("import { displayed } from './triage_rules.mjs';"
                           "const v = { kind: 'money', cents: 500 };"
@@ -2414,7 +2456,8 @@ class TriageRulings(unittest.TestCase):
         run = rulings.section_run("transcription", text, "2", next(c for k, _, c in rulings.log_sections(
             "transcription", text, with_content=True) if k[0] == "2"))
         good = {"handle": "2", "triage": "agrees on sample", "compared": 600, "agree": 600, "differ": 0, "absent": 0,
-                "invalid": 0, "sources": {"fixture": 80, "generated": 500, "partial": 20}}
+                "invalid": 0, "sources": {"fixture": 80, "generated": 500, "partial": 20},
+                "branches": {"differing_choose_lines": 1, "untaken": 0, "untaken_examples": []}}
         rec = {"policy": TR.POLICY,
                "subject_sha256": "a" * 64, "response_sha256": run, "state": "evaluated", "errors": [],
                "bank": {"fixtures": 1768, "generated": 500, "seed": 20261026, "partial_records": 40, "evaluation_failures": 0,
@@ -2481,7 +2524,10 @@ class TriageRulings(unittest.TestCase):
                  "an evaluation failure": dict(bank={"evaluation_failures": 2}),
                  "an earlier version of the form": dict(subject_sha256="b" * 64),
                  "another reply": dict(response_sha256="c" * 64),
-                 "another triage policy": dict(policy="executable-triage-v0")}
+                 "another triage policy": dict(policy="executable-triage-v0"),
+                 "an alternative of a differing line never taken": dict(line={"branches": {
+                     "differing_choose_lines": 1, "untaken": 1, "untaken_examples": ["candidate x.s2 alternative 1"]}}),
+                 "a record without branch coverage": dict(line={"branches": None})}
         for name, kw in cases.items():
             with self.subTest(name):
                 self.triage(**kw)
@@ -3406,6 +3452,30 @@ class GateUnits(unittest.TestCase):
         with patch.object(G, "_QUESTIONS", {"div.any": {"prompt": "Any dividends or fund distributions?", "help": "Not sure is yes."}}):
             self.assertNotEqual(base, G.subject(unit, lines, ENGLISH))
 
+    def test_a_question_asked_on_the_false_branch_is_described_as_asked_when_the_condition_does_not_hold(self):
+        lines = _gate_lines()
+        held, _ = G.describe(G.units(lines)["gate:div.has_1a"], lines, ENGLISH)
+        self.assertNotIn("Polarity", held)
+        gate = lines["div.box1b"][1]["expr"]["alternatives"]
+        gate[0]["guard"]["eq"][1], gate[1]["guard"]["eq"][1] = {"const": False}, {"const": True}
+        unit = G.units(lines)["gate:div.has_1a"]
+        condition, items = G.describe(unit, lines, ENGLISH)
+        self.assertIn("asked when this condition is FALSE", condition)
+        self.assertIn("When the condition does NOT hold: English of div.box1b", items[0])
+        self.assertIn("When it holds: zero, and the question below is not asked.", items[0])
+        self.assertNotIn("When the condition holds", items[0])
+        # The other unit keeps the plain framing, and a unit with both kinds says each item states its branch.
+        cond_any, items_any = G.describe(G.units(lines)["gate:div.any"], lines, ENGLISH)
+        self.assertNotIn("Polarity", cond_any)
+        self.assertIn("When the condition holds: English of div.box1a", items_any[0])
+        lines["div.box1a"][1]["expr"]["alternatives"] = [
+            {"guard": {"op": "test", "eq": ["div.any", {"const": False}]}, "then": "div.box1a_amount"},
+            {"guard": {"op": "test", "eq": ["div.any", {"const": True}]}, "then": "div.zero"}]
+        mixed, items_mixed = G.describe(G.units(lines)["gate:div.any"], lines, ENGLISH)
+        self.assertIn("some gated questions below are asked when this condition is FALSE", mixed)
+        self.assertIn("When the condition does NOT hold", items_mixed[0])
+        self.assertIn("When the condition holds", items_mixed[1])
+
     def test_a_marker_whose_gate_line_is_not_a_choose_makes_no_unit(self):
         lines = _gate_lines()
         lines["div.box2a"][1]["expr"] = {"op": "sum", "of": ["div.box2a_amount"]}
@@ -3918,6 +3988,129 @@ class ReviewStore(unittest.TestCase):
             self.store.parse_record(content)
         with self.assertRaisesRegex(ValueError, "reserved"):
             self.store.write_record(ident, [("shared", "x")])
+
+
+class YearCarriedLogs(unittest.TestCase):
+    """A review carried across a synthetic tax year: check_logs.py checks each record's source pages against the
+    archive of the year it was made in and each carried line's year-carry key against year_carry's current one,
+    and an ingest in the new year keeps a record the earlier year's index still names."""
+    PAGE = "Line 1 Enter the amount.\nLine 2 Add line 1 to itself.\nDo not enter less than zero.\n"
+    SHAS = {"2025": ("a" * 64, "b" * 64), "2026": ("c" * 64, "d" * 64)}
+
+    def form(self, year):
+        cite = lambda line: {"doc": "ix", "locator": f"ix p. 1, Line {line}"}
+        return {"form": {"id": "x", "kind": "form", "title": "X", "tax_year": int(year), "lines": [
+            {"id": "x.a", "printed": "1", "label": "Amount", "type": "Dollars",
+             "expr": {"op": "input", "source": "Amount"}, "cite": cite(1)},
+            {"id": "x.b", "printed": "2", "label": "Twice line 1", "type": "Dollars",
+             "expr": {"op": "sum", "of": ["x.a", "x.a"]}, "cite": cite(2)}]}}
+
+    def write_year(self, year, page=None):
+        for d in ("forms", "sources"):
+            Path(self.root, d, year).mkdir(parents=True, exist_ok=True)
+        Path(self.root, "forms", year, "x.yaml").write_text(yaml.safe_dump(self.form(year)))
+        Path(self.root, "sources", year, "ix.cols.txt").write_text(page or self.PAGE)
+        text, cols = self.SHAS[year]
+        Path(self.root, "sources", year, "manifest.json").write_text(json.dumps({"documents": [
+            {"id": "ix", "file": "ix.pdf", "text_file": "ix.txt", "cols_file": "ix.cols.txt",
+             "text_sha256": text, "cols_sha256": cols}]}))
+
+    def log(self, year, date="2025-12-01"):
+        text, cols = self.SHAS[year]
+        head = ("# Transcription agreement — x\n\n| field | value |\n| --- | --- |\n| date | " + date + " |\n"
+                "| prompt sha256 | " + ("e" if year == "2025" else "9") * 64 + " |\n| subject sha256 | " + "5" * 64 + " |\n\n"
+                "## Source pages given to the model\n\n| document | revision | pages | selection | text sha256 | "
+                "reading-order pages | cols sha256 |\n| --- | --- | --- | --- | --- | --- | --- |\n"
+                f"| ix | {year} | 1 | whole document | {text} | 1 | {cols} |\n")
+        return head + "\n## Lines\n\n### 2 — two\nStatus: **AGREE**\n\n\n## Raw second transcription\n\n```yaml\nlines: [a]\n```\n"
+
+    def setUp(self):
+        import check_logs
+        import review_store
+        import year_carry
+        self.check_logs, self.store, self.year_carry = check_logs, review_store, year_carry
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = self.temp.name
+        reviews_top = Path(self.root, "reviews")
+        manifests = lambda year: {e["id"]: e for e in json.loads(
+            Path(self.root, "sources", str(year), "manifest.json").read_text())["documents"]}
+        stack = contextlib.ExitStack()
+        for target, name, value in ((review_store, "REVIEWS_TOP", str(reviews_top)), (rulings, "STORE_ELSEWHERE", True),
+                                    (rulings, "REVIEWS", str(reviews_top / "2026")), (check_logs, "ROOT", self.root),
+                                    (check_logs, "Y", "2026"), (check_logs, "manifest", manifests),
+                                    (review_store, "state", lambda *a: None)):
+            stack.enter_context(patch.object(target, name, value))
+        self.addCleanup(stack.close)
+        self.write_year("2025")
+        self.write_year("2026")
+
+    def carry(self):
+        """The 2025 review of x carried into 2026 as year_carry.write marks it: its index lines marked with the
+        2026 year-carry key, its base record named as made in 2025."""
+        with patch.object(rulings, "REVIEWS", str(Path(self.root, "reviews", "2025"))):
+            rulings.write_log("transcription", "x", self.log("2025"))
+            index = json.loads(Path(self.store.index_path("transcription", "x")).read_text())
+        Y = self.year_carry
+        got = Y.carry_keys("transcription", Y.Tree(self.root, "2025"), Y.Tree(self.root, "2026"), "x", ["2"])
+        self.assertTrue(got["2"][0], got)
+        carried = {**index, "lines": [Y.year_marked(l, "2025", got["2"][2]) for l in index["lines"]],
+                   "carried_from": "2025", "base_sources": "2025"}
+        path = Path(self.store.index_path("transcription", "x"))
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(carried))
+        return carried
+
+    def faults(self):
+        return self.check_logs.log_faults("transcription", "x", families.DEFAULT, rulings.read_log("transcription", "x"))[1]
+
+    def test_a_carried_record_is_checked_against_the_archive_it_was_made_against(self):
+        self.carry()
+        self.assertEqual(self.faults(), [])
+        # read against this year's archive, as every row was before, the same record is stale
+        self.assertTrue(self.check_logs.snapshot_faults("transcription", rulings.read_log("transcription", "x"), "2026"))
+
+    def test_a_carried_record_whose_own_archive_moved_is_stale(self):
+        self.carry()
+        self.SHAS = {**self.SHAS, "2025": ("f" * 64, "b" * 64)}
+        self.write_year("2025")
+        self.assertEqual(self.faults(), ["transcription log was made against a different snapshot of ix (record "
+                                         + self.store.load_index("transcription", "x")["base"][:12] + ", 2025 sources)"])
+
+    def test_a_record_not_carried_is_checked_against_this_years_archive(self):
+        index = self.carry()
+        bare = {**{k: v for k, v in index.items() if k not in ("carried_from", "base_sources")},
+                "lines": [{k: v for k, v in l.items() if k != "carried"} for l in index["lines"]]}
+        Path(self.store.index_path("transcription", "x")).write_text(json.dumps(bare))
+        self.assertIn("transcription log was made against a different snapshot of ix", self.faults())
+
+    def test_a_carried_line_whose_new_source_text_changed_since_the_carry_is_stale(self):
+        self.carry()
+        self.write_year("2026", self.PAGE.replace("less than zero.", "less than zero. If zero, stop here."))
+        (fault,) = self.faults()
+        self.assertIn("carries lines from 2025 that no longer carry: 2 (cited text changed", fault)
+        self.write_year("2026")  # the text the carry was judged on again: current
+        self.assertEqual(self.faults(), [])
+
+    def test_a_carried_line_whose_recorded_key_differs_is_stale(self):
+        index = self.carry()
+        index["lines"][0]["carried"]["year_key"] = "0" * 64
+        Path(self.store.index_path("transcription", "x")).write_text(json.dumps(index))
+        self.assertIn("its year-carry key changed since the carry", self.faults()[0])
+
+    def test_an_ingest_in_the_new_year_keeps_marks_and_records_another_year_names(self):
+        index = self.carry()
+        base = index["base"]
+        text = rulings.read_log("transcription", "x")
+        rulings.write_log("transcription", "x", text)  # the same log stored again: marks and base year kept
+        again = self.store.load_index("transcription", "x")
+        self.assertEqual((again["base_sources"], again["lines"][0]["carried"]), ("2025", index["lines"][0]["carried"]))
+        rulings.write_log("transcription", "x", self.log("2026", "2026-12-01"))  # a new 2026 review of the form
+        fresh = self.store.load_index("transcription", "x")
+        self.assertNotEqual(fresh["base"], base)
+        self.assertNotIn("base_sources", fresh)
+        self.assertTrue(Path(self.store.record_path("transcription", base)).exists())  # the 2025 index names it
+        self.assertEqual(self.faults(), [])
 
 
 # The tests run against a fixed families.json, not the live one, so that which family the owner makes callable does

@@ -89,6 +89,7 @@
 | `dc.limit_one` | NonNegDollars | $3,000 | [f2441] Form 2441 (2025), lines 3 and 27 (2025; created 2025-03-18; sha256 6c3c2d19) |
 | `dc.limit_two` | NonNegDollars | $6,000 | [f2441] Form 2441 (2025), lines 3 and 27 (2025; created 2025-03-18; sha256 6c3c2d19) |
 | `dc.one` | Count | 1 | [i2441] p. 2, Line 1, "Complete columns (a) through (e) for each person or organization that provided the care" (2025; sha256 86f0669e) |
+| `dc.persons_listed` | Count | 3 | [i2441] p. 3, Line 2, "If you have more than three qualifying persons, check the box on line 2 and attach a statement to your return with the required information" (2025; sha256 86f0669e) |
 | `dc.persons_two` | Count | 2 | [f2441] Form 2441 (2025), lines 3 and 27 (2025; created 2025-03-18; sha256 6c3c2d19) |
 | `dc.providers_listed` | Count | 3 | [i2441] p. 2, Line 1, "If you have more than three care providers, check the box above line 1 and attach a statement to your return with the required information" (2025; sha256 86f0669e) |
 | `dependent.one` | Count | 1 | [f1040s8812] Schedule 8812 (2025), lines 4 and 6, "Number of qualifying children" and "Number of other dependents" (2025; created 2025-07-30; sha256 6936462d) |

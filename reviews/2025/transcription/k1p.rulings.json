@@ -1298,6 +1298,45 @@
   {
    "printed": "k1p.screened",
    "project_expr_sha256": "8514593afc86b029ddc172da57d286d63b0f769b6abfed8c63f7cc368e848875",
+   "second_expr_sha256": "abbf011ace9a7607326ebebcd0b7224721fded849acf8874dc1007d61475779a",
+   "ruling": "Ruling: model error; as the earlier rulings, the line is 'This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)', true by construction with the K-1's refusals declared on it; the reply defines the inverse (true when any screening input is Yes). executable triage (.transcription/triage/2025/k1p.json, this pass): 209/796 agree; differences {\"project-refuses\": 38, \"project-unknown\": 118, \"value\": 431}; on completed returns {\"project-unknown\": 67, \"value\": 237}. The line was rerun only because scope.rental, read by k1p.ask_re_pro, was reworded (BUG-0952).",
+   "context": "9cfc9eb93bcbc677db0a4aab5444875cfc993ba752cac119a6545d21c02434d9",
+   "date": "2026-11-22",
+   "run": "0b31152c6b1947294a15844e29721b0e48dbb88d5358a19f87c5edc6afbde37a",
+   "subject_key": "56115a152c9358146c0d0a5150773cf32a004506d3eb70496bc727df5e666d81",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.fk2_general_material@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.fk3_limited_rental_loss@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3b_general_active@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3c_general_under_tenth@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3d_rental_income_active@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk7_portfolio_only@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_ptp@person[taxpayer].k1p[mlp]",
+     "fixture:x2k1p.refuse_box10@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_multi@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_disposed@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_dist_over@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].box1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].work@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b14a@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].box14a@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1p.screened",
+   "project_expr_sha256": "8514593afc86b029ddc172da57d286d63b0f769b6abfed8c63f7cc368e848875",
    "second_expr_sha256": "bc5a6823eb8e72832bbb87d26776ea3f742017356ebdc2244e505d64c9128c57",
    "ruling": "Ruling: model error; i1065sk1 p. 14, Codes, \"report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E\". The reply still defines the inverse of the line (true where the K-1 has items the tool does not support), false on every supported K-1. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 311 of 1519 comparisons agree, 311 of 1003 in scope; completed {\"project-refuses\": 55, \"project-unknown\": 101, \"value\": 290}. Project stands.",
    "context": "062b41270d752ada76b185f2bbc679f328f4d11bc94b9bd61241fe2706af8ea4",

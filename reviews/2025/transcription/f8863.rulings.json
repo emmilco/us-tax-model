@@ -3239,6 +3239,29 @@
   {
    "printed": "7",
    "project_expr_sha256": "845eadcd1fd6c66f8c19b7421ae42dc42ea9bf64e1991d600296fba08501f33c",
+   "second_expr_sha256": "3b37536f6c0b5590578d31fe20098621be6203321d841b2ac8ce24e3ed9d775c",
+   "ruling": "Ruling: representation and scope; f8863 p. 1, lines 6 and 7 ('rounded to at least three places'; amb.2025.edu_ratio_places on both sides), as the earlier rulings. This line was rerun only for the spouse wording of f8863.ban (BUG-0986); executable triage (.transcription/triage/2025/f8863.json, this pass): 3,196/3,199 agree; differences {\"project-refuses\": 1, \"project-unknown\": 2}; on completed returns none; no value differs.",
+   "context": "9ff7ca9a9d552ddbdb2c16e0788dec3cf4d06a107f53bd799bf85882fc51103b",
+   "date": "2026-11-22",
+   "run": "2a53f94396b59f1b1b9671e22ec96cdf4c079611e3463c19158ac2227e90960d",
+   "subject_key": "cd6b47b4df48c89683624d7531abd2d6a9bb551d43c936e1d09681014f3080a5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage19.refuse.ban@f8863",
+     "partial:classm.s3.2.deepseek-f8863.ban@f8863",
+     "partial:classm.f8962.1.deepseek-f8863.ban@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "845eadcd1fd6c66f8c19b7421ae42dc42ea9bf64e1991d600296fba08501f33c",
    "second_expr_sha256": "8e49feb7ebe99acb843e3a7268608d352c7074031b90ee1058d2ba327924ec04",
    "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,879/2,930 agree; kinds {\"candidate-refuses\": 3, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 22, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-shows-skipped\": 1, \"candidate-unknown\": 4}. Project right under the source; no change.",
    "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",

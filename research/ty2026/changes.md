@@ -275,7 +275,7 @@ What's New section; their changes were read line by line against the 2025 forms 
 ### C-PRI-20. Form 8889: 2026 HSA contribution limits
 
 - **Kind:** amount (parameter)
-- **2026:** `f8889` p. 2 (draft): "enter $4,400 ($8,750 for family coverage)"; `rp-25-19` p. 2 (final): "is $4,400"; "is $8,750"
+- **2026:** `f8889` p. 1 (draft): "enter $4,400 ($8,750 for family coverage)"; `rp-25-19` p. 2 (final): "is $4,400"; "is $8,750"
 - **2025:** `f8889` p. 1: "enter $4,300 ($8,550 for family coverage)"
 - **Touches:** `hsa.self_only`, `hsa.family`, `hsa.self_only_55`, `hsa.family_55` (parameters); `f8889.self_amount`, `f8889.family_amount`, `f8889.age55_line3`, `f8889.age55_unmarried`, `f8889.married_family`, `f8889.line7_applies`, `f8889.line17a` (their quotes print the 2025 dollar amounts)
 - **Worklist items:** `hsa.family`, `hsa.family_55`, `hsa.self_only`, `hsa.self_only_55`, `f8889.self_amount`, `f8889.family_amount`, `f8889.age55_line3`, `f8889.age55_unmarried`, `f8889.married_family`, `f8889.line7_applies`, `f8889.line17a`
@@ -284,7 +284,7 @@ What's New section; their changes were read line by line against the 2025 forms 
 ### C-PRI-21. Form 8889: Schedule 2 line references renumbered
 
 - **Kind:** wording only (cross-reference)
-- **2026:** `f8889` p. 2 (draft): "1040), Part II, line 13c"; "1040), Part II, line 13d"
+- **2026:** `f8889` p. 1 (draft): "1040), Part II, line 13c"; "1040), Part II, line 13d"
 - **2025:** `f8889` p. 1: "1040), Part II, line 17c"; "1040), Part II, line 17d"
 - **Touches:** `f8889.line17b` (label and cite); `s2.line17c` (Schedule 2's own renumbering is in the SCHED section); Form 8889 Part III (line 21) is not encoded
 - **Worklist items:** `f8889.rollover` (its nearby text includes the moved lines)
@@ -670,7 +670,7 @@ Notable points:
 
 - **Kind:** rule (definition change)
 - **2026:** `f1040s2` p. 2 (draft): "5 Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here"; p. 3: "18 Additional tax on excess contributions or accumulations in IRAs or other tax-favored accounts. Attach Form 5329"
-- **2026:** `f5329` p. 2 (draft): "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 5"; p. 3: "Include this amount on Schedule 2 (Form 1040), line 18"
+- **2026:** `f5329` p. 1 (draft): "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 5"; p. 3: "Include this amount on Schedule 2 (Form 1040), line 18"
 - **2026:** `i5329` p. 2 (draft): "However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329. Instead, see the instructions for Schedule 2 (Form 1040), line 5,"
 - **2025:** `f1040s2` p. 1: "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here"
 - **2025:** `i5329` p. 1: "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
@@ -1320,7 +1320,7 @@ instructions point instead to Fact Sheet 2025-05, which is also not archived.
 ### C-CRED-15. Saver's credit AGI limits and line 9 bands re-indexed
 
 - **Kind:** amount (parameter)
-- **2026:** `f8880` p. 2 (draft): "The amount on Form 1040, 1040-SR, or 1040-NR, line 11a, is more than $40,250 ($60,375 if head of household; $80,500 if married filing jointly)."; `f8880` p. 2 (draft): "$80,500 --- 0.0 0.0 0.0" (band edges $24,250, $26,250, $36,375, $39,375, $40,250, $48,500, $52,500, $60,375, $80,500, rates unchanged)
+- **2026:** `f8880` p. 2 (draft): "The amount on Form 1040, 1040-SR, or 1040-NR, line 11a, is more than $40,250 ($60,375 if head of household; $80,500 if married filing jointly)."; `f8880` p. 1 (draft): "$80,500 --- 0.0 0.0 0.0" (band edges $24,250, $26,250, $36,375, $39,375, $40,250, $48,500, $52,500, $60,375, $80,500, rates unchanged)
 - **2025:** `f8880` p. 1: "The amount on Form 1040, 1040-SR, or 1040-NR, line 11a, is more than $39,500 ($59,250 if head of household; $79,000 if married filing jointly)."; `f8880` p. 1: "$79,000 --- 0.0 0.0 0.0" (band edges $23,750, $25,500, $35,625, $38,250, $39,500, $47,500, $51,000, $59,250, $79,000)
 - **Touches:** parameter `savers.agi_limit` (single/mfs/qss 3950000 to 4025000; hoh 5925000 to 6037500; mfj 7900000 to 8050000); `f8880.agi_limit`, `f8880.past9`; table `savers_rate` (`tables/2025/savers_rate.yaml`), read by `f8880.line9`
 - **Worklist items:** `f8880.agi_limit` (line), `f8880.past9` (line), `savers.agi_limit` (parameter)
@@ -1329,7 +1329,7 @@ instructions point instead to Fact Sheet 2025-05, which is also not archived.
 ### C-CRED-16. Form 8880 year roll (age cutoff, distribution testing period) and ABLE reminder
 
 - **Kind:** wording only
-- **2026:** `f8880` p. 2 (draft): "(a) was born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"; `f8880` p. 2 (draft): "Certain distributions received after 2023 and before the due date (including extensions) of your 2026 tax return"; `f8880` p. 3 (draft): "P.L. 119-21 made permanent the credit for contributions by a designated beneficiary to their ABLE account."
+- **2026:** `f8880` p. 2 (draft): "(a) was born after January 1, 2009; (b) is claimed as a dependent on someone else’s 2026 tax return; or (c) was a student"; `f8880` p. 1 (draft): "Certain distributions received after 2023 and before the due date (including extensions) of your 2026 tax return"; `f8880` p. 2 (draft): "P.L. 119-21 made permanent the credit for contributions by a designated beneficiary to their ABLE account."
 - **2025:** `f8880` p. 1: "(a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"; `f8880` p. 1: "Certain distributions received after 2022 and before the due date (including extensions) of your 2025 tax return"; `f8880` p. 2: "P.L. 119-21, commonly known as the One Big Beautiful Bill Act, makes permanent the credit for contributions by a designated beneficiary to their ABLE account."
 - **Touches:** `person.sav_born`, `person.sav_ineligible`, `f8880.inelig_a`, `f8880.inelig_b`, `person.sav_dist`, `f8880.dist_2025`, `f8880.prior_joint`, `f8880.prior_own_a`, `f8880.prior_own_b`, `f8880.line4a`, `f8880.line4b` (years in prompts, labels and cites)
 - **Worklist items:** none
@@ -1338,7 +1338,7 @@ instructions point instead to Fact Sheet 2025-05, which is also not archived.
 ### C-CRED-17. Form 8863 lines 3 and 14 read Form 1040 line 11a instead of 11b
 
 - **Kind:** wording only (cross-reference)
-- **2026:** `f8863` p. 2 (draft): "Enter the amount from Form 1040 or 1040-SR, line 11a."; `i8863` p. 9 (draft): "Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11a."; `i8863` p. 4 (draft): "add to the amount on your Form 1040 or 1040-SR, line 11a, the amount of income you excluded."
+- **2026:** `f8863` p. 1 (draft): "Enter the amount from Form 1040 or 1040-SR, line 11a."; `i8863` p. 9 (draft): "Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11a."; `i8863` p. 4 (draft): "add to the amount on your Form 1040 or 1040-SR, line 11a, the amount of income you excluded."
 - **2025:** `f8863` p. 1: "Enter the amount from Form 1040 or 1040-SR, line 11b."; `i8863` p. 8: "Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11b."; `i8863` p. 3: "add to the amount on your Form 1040 or 1040-SR, line 11b, the amount of income you excluded."
 - **Touches:** `f8863.line3`, `f8863.line14` (and their refusals on `sa.excluded_income`)
 - **Worklist items:** `f8863.line3` (line), `f8863.line3` (refusal), `f8863.line14` (line), `f8863.line14` (refusal)
@@ -1348,7 +1348,7 @@ instructions point instead to Fact Sheet 2025-05, which is also not archived.
 ### C-CRED-18. Education credits: valid SSN required for the taxpayer and a dependent student
 
 - **Kind:** rule (definition change)
-- **2026:** `i8863` p. 2 (draft): "Beginning in tax year 2026, you must have a valid social security number (SSN) to claim the American opportunity credit or the lifetime learning credit. If you are filing a joint return, only one spouse must have a valid SSN."; `i8863` p. 3 (draft): "You may be able to claim an education credit if you and the student meet the identification requirement and you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."; `i8863` p. 3 (draft): "A valid SSN to claim an education credit is one that is valid for employment and that is issued by the Social"; `i8863` p. 4 (draft): "5. You (or your spouse if filing jointly) and the student (if the student is a dependent on your tax return) have not been issued valid SSNs before the due date of your 2026 return (including extensions)."; `f8863` p. 2 (draft): "Before you begin: A valid social security number (SSN) is now required to claim an education credit."
+- **2026:** `i8863` p. 2 (draft): "Beginning in tax year 2026, you must have a valid social security number (SSN) to claim the American opportunity credit or the lifetime learning credit. If you are filing a joint return, only one spouse must have a valid SSN."; `i8863` p. 3 (draft): "You may be able to claim an education credit if you and the student meet the identification requirement and you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."; `i8863` p. 3 (draft): "A valid SSN to claim an education credit is one that is valid for employment and that is issued by the Social"; `i8863` p. 4 (draft): "5. You (or your spouse if filing jointly) and the student (if the student is a dependent on your tax return) have not been issued valid SSNs before the due date of your 2026 return (including extensions)."; `f8863` p. 1 (draft): "Before you begin: A valid social security number (SSN) is now required to claim an education credit."
 - **2025:** `i8863` p. 2: "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."; `i8863` p. 3: "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)."
 - **Touches:** `f8863.paid`, `dependent.edu_tin_issued`, `dependent.edu_llc_tin_refused`, `dependent.edu_student`; `person.work_ssn` (an existing "SSN valid for employment, issued before the due date" input that matches the 2026 definition)
 - **Worklist items:** `f8863.paid` (line)
@@ -1357,7 +1357,7 @@ instructions point instead to Fact Sheet 2025-05, which is also not archived.
 ### C-CRED-19. Education credit MAGI limits and phaseout range unchanged
 
 - **Kind:** wording only
-- **2026:** `i8863` p. 4 (draft): "The amount of your credit is gradually reduced (phased out) if your MAGI is between $80,000 and $90,000 ($160,000 and $180,000 if you file a joint return)."; `f8863` p. 2 (draft): "Enter $20,000 if married filing jointly; or $10,000 if single, head of household,"; `i8863` p. 2 (draft): "The lifetime learning credit and the American opportunity credit MAGI limits are $180,000 if you’re married filing jointly ($90,000 if you’re filing single, head of household, or qualifying surviving spouse)."
+- **2026:** `i8863` p. 4 (draft): "The amount of your credit is gradually reduced (phased out) if your MAGI is between $80,000 and $90,000 ($160,000 and $180,000 if you file a joint return)."; `f8863` p. 1 (draft): "Enter $20,000 if married filing jointly; or $10,000 if single, head of household,"; `i8863` p. 2 (draft): "The lifetime learning credit and the American opportunity credit MAGI limits are $180,000 if you’re married filing jointly ($90,000 if you’re filing single, head of household, or qualifying surviving spouse)."
 - **2025:** `i8863` p. 3: "The amount of your credit is gradually reduced (phased out) if your MAGI is between $80,000 and $90,000 ($160,000 and $180,000 if you file a joint return)."; `f8863` p. 1: "Enter $20,000 if married filing jointly; or $10,000 if single, head of household,"
 - **Touches:** parameters `edu.phaseout_range`, `edu.magi_limit`
 - **Worklist items:** `edu.phaseout_range` (parameter)
@@ -1662,7 +1662,7 @@ items"; the coverage table and `worklist.json` give 16, and 33 could not be repr
 ### C-PEOP-02. Form 1095-A line 33: "Total" becomes "Add"
 
 - **Kind:** wording only
-- **2026:** `i1095a` p. 3 (draft): "Add the amounts on lines 21 through 32 and enter on line 33."
+- **2026:** `i1095a` p. 2 (draft): "Add the amounts on lines 21 through 32 and enter on line 33."
 - **2025:** `i1095a` p. 2: "Total the amounts on lines 21 through 32 and enter on line 33."
 - **Touches:** f1095a.line33a, f1095a.line33b, f1095a.line33c, f1095a.yr_a_monthly, f1095a.yr_a_uniform, f1095a.yr_b_monthly, f1095a.yr_b_uniform, f1095a.yr_c_monthly, ptc.months
 - **Worklist items:** f1095a.line33a, f1095a.line33b, f1095a.line33c, f1095a.yr_a_monthly, f1095a.yr_a_uniform, f1095a.yr_b_monthly, f1095a.yr_b_uniform, f1095a.yr_c_monthly, ptc.months
@@ -1673,7 +1673,7 @@ items"; the coverage table and `worklist.json` give 16, and 33 could not be repr
 ### C-PEOP-03. Form 5329 taxes now go to Schedule 2 line 5 (early distributions) and line 18 (excess contributions)
 
 - **Kind:** rule (definition change)
-- **2026:** `f5329` p. 2 (draft): "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 5" ... `f1040s2` p. 2 (draft): "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here" ... `f1040s2` p. 3 (draft): "Additional tax on excess contributions or accumulations in IRAs or other tax-favored accounts."
+- **2026:** `f5329` p. 1 (draft): "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 5" ... `f1040s2` p. 2 (draft): "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here" ... `f1040s2` p. 3 (draft): "Additional tax on excess contributions or accumulations in IRAs or other tax-favored accounts."
 - **2025:** `f5329` p. 1: "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 8"
 - **Touches:** f5329.l4, f5329.rate10, f5329.tax10, f5329.tax, f5329.l49, person.x_tax, s2.line8, s2.line8_file, s2.line8_box
 - **Worklist items:** f5329.l4, f5329.rate10, f5329.tax10
@@ -1701,7 +1701,7 @@ items"; the coverage table and `worklist.json` give 16, and 33 could not be repr
 ### C-PEOP-05. New early-distribution exception 24: qualified long-term care distributions (exception range 01–24)
 
 - **Kind:** rule (definition change)
-- **2026:** `i5329` p. 5 (draft): "exception number (01–24). If more than one exception applies, enter 99." ... `i5329` p. 2 (draft): "Beginning with distributions made after December 29, 2025, a distribution from your employer’s defined contribution plan for or with respect to certified long-term care insurance is not subject to the 10% additional tax on early distributions if certain requirements are met." ... `p590b` p. 30 (draft): "if the individual covered by the long-term care coverage is the spouse of the em­ ployee, this exception applies only if the employee and employee’s spouse file a joint return." ... `n-25-67` p. 5: "The limitation under section 401(a)(39)(B)(i)(III) on a qualified long-term care distribution from a qualified defined contribution plan with respect to certified long-term care insurance remains $2,600."
+- **2026:** `i5329` p. 5 (draft): "exception number (01–24). If more than one exception applies, enter 99." ... `i5329` p. 2 (draft): "Beginning with distributions made after December 29, 2025, a distribution from your employer’s defined contribution plan for or with respect to certified long-term care insurance is not subject to the 10% additional tax on early distributions if certain requirements are met." ... `i5329` p. 6 (draft): "if the individual covered by the long-term care coverage is the spouse of the employee, this exception applies only if the employee and employee’s spouse file a joint return." ... `n-25-67` p. 5: "The limitation under section 401(a)(39)(B)(i)(III) on a qualified long-term care distribution from a qualified defined contribution plan with respect to certified long-term care insurance remains $2,600."
 - **2025:** `i5329` p. 5: "In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99."
 - **Touches:** f5329.l2, retirement.early_screen, retirement.screen_refused, retirement.exception, retirement.has_exception, retirement.exc_amount, retirement.exc_capped, retirement.l2, retirement.wrong_kind, person.x_capped_sum, person.x_l2_all, person.x_limited_sum, person.x_other_exc (enum early_exception)
 - **Worklist items:** f5329.l2, retirement.early_screen, retirement.screen_refused, retirement.exception, retirement.has_exception, retirement.exc_amount, retirement.exc_capped, retirement.l2, person.x_capped_sum, person.x_l2_all, person.x_limited_sum, person.x_other_exc
@@ -1709,7 +1709,7 @@ items"; the coverage table and `worklist.json` give 16, and 33 could not be repr
   `retirement.early_screen` question refuses only "a qualified long-term care distribution made December 30 or 31, 2025".
   For 2026 it must cover every such distribution unless e24 is built. Building e24 would need a joint-return condition
   for spouse coverage, and a cap of the lesser of premiums, "10% of the present value of the employee’s nonforfeit­ able
-  accrued benefit" and $2,600 (p590b p. 30 (draft)).
+  accrued benefit" and $2,600 (p575 p. 30 (draft); the p590b draft reposted on 2026-11-09 no longer prints this exception).
   Exceptions 01–23 keep their numbers (i5329 p. 6 (draft) lists 19–23 as in 2025). Rewrite the locators to "(01–24)".
   Doubt: i1099r p. 1 says "For tax years after 2026, participants will be able to receive qualified long-term care
   distributions", while i5329 (draft) and p575 p. 3 (draft) say distributions "made after December 29, 2025" qualify.
@@ -1774,7 +1774,7 @@ items"; the coverage table and `worklist.json` give 16, and 33 could not be repr
 ### C-PEOP-11. Trump accounts: a new kind of traditional IRA, excluded from Form 8606 and taxed on new Form 5329 Parts X–XI
 
 - **Kind:** rule (definition change)
-- **2026:** `f8606` p. 2 (draft): "Note: Except where stated otherwise, “traditional IRA” includes traditional SEP IRAs and traditional SIMPLE IRAs but does not include Trump accounts." ... `i8606` p. 2 (draft): "traditional IRAs do not include Trump accounts, a type of traditional IRA introduced in PL-119-21, the One Big Beautiful Bill Act." ... `f5329` p. 2 (draft): "from a qualified retirement plan (including an IRA and Trump account (after the growth period of the Trump account))" ... `f5329` p. 4 (draft): "Additional Tax on Excess Contributions to Trump Accounts During the Growth Period."
+- **2026:** `f8606` p. 1 (draft): "Note: Except where stated otherwise, “traditional IRA” includes traditional SEP IRAs and traditional SIMPLE IRAs but does not include Trump accounts." ... `i8606` p. 2 (draft): "traditional IRAs do not include Trump accounts, a type of traditional IRA introduced in PL-119-21, the One Big Beautiful Bill Act." ... `f5329` p. 1 (draft): "from a qualified retirement plan (including an IRA and Trump account (after the growth period of the Trump account))" ... `f5329` p. 3 (draft): "Additional Tax on Excess Contributions to Trump Accounts During the Growth Period."
 - **2025:** `f8606` p. 1: "Note: Except where stated otherwise, “traditional IRA” includes traditional SEP IRAs and traditional SIMPLE IRAs." (no Trump account counterpart)
 - **Touches:** retirement.account (enum retirement_account), retirement.bad_code, person.ira_contrib, person.ira_basis, person.ira_8606_line2
 - **Worklist items:** none (What's New items in i8606, p590b and the f8606/f5329 form faces)
@@ -1848,7 +1848,7 @@ items"; the coverage table and `worklist.json` give 16, and 33 could not be repr
 ### C-PEOP-17. Education items: the year changes and the line 24 question moves a page
 
 - **Kind:** wording only
-- **2026:** `f8863` p. 3 (draft): "Was the student enrolled at least half-time for at least 1 academic period that began or is treated as having begun in 2026 at an eligible educational institution in a program leading toward a postsecondary degree, certificate, or other recognized postsecondary educational credential?" ... `i8863` p. 9 (draft): "you were a full-time student for 2026 if during any part of any 5 calendar months during the year you were enrolled as a full-time student at an eligible educational institution (defined earlier) or took a full-time, on-farm training course given by such an institution or by a state, county, or local government agency."
+- **2026:** `f8863` p. 2 (draft): "Was the student enrolled at least half-time for at least 1 academic period that began or is treated as having begun in 2026 at an eligible educational institution in a program leading toward a postsecondary degree, certificate, or other recognized postsecondary educational credential?" ... `i8863` p. 9 (draft): "you were a full-time student for 2026 if during any part of any 5 calendar months during the year you were enrolled as a full-time student at an eligible educational institution (defined earlier) or took a full-time, on-farm training course given by such an institution or by a state, county, or local government agency."
 - **2025:** `f8863` p. 2: "Was the student enrolled at least half-time for at least one academic period that began or is treated as having begun in 2025 at an eligible educational institution in a program leading toward a postsecondary degree, certificate, or other recognized postsecondary educational credential?" ... `i8863` p. 7: "you were a full-time student for 2025 if during any part of any 5 calendar months during the year you were enrolled as a full-time student at an eligible educational institution (defined earlier), or took a full-time, on-farm training course given by such an institution or by a state, county, or local government agency."
 - **Touches:** dependent.edu_line24, person.edu_line24, person.edu_fulltime
 - **Worklist items:** dependent.edu_line24, person.edu_line24, person.edu_fulltime
@@ -1868,7 +1868,7 @@ items"; the coverage table and `worklist.json` give 16, and 33 could not be repr
 ### C-PEOP-19. Form 8889 line 17b now routes to Schedule 2 line 13c
 
 - **Kind:** wording only
-- **2026:** `f8889` p. 2 (draft): "Also include this amount in the total on Schedule 2 (Form 1040), Part II, line 13c"
+- **2026:** `f8889` p. 1 (draft): "Also include this amount in the total on Schedule 2 (Form 1040), Part II, line 13c"
 - **2025:** `f8889` p. 1: "Also, include this amount in the total on Schedule 2 (Form 1040), Part II, line 17c"
 - **Touches:** person.hsa_addtax, s2.line17c
 - **Worklist items:** person.hsa_addtax
@@ -1889,7 +1889,7 @@ items"; the coverage table and `worklist.json` give 16, and 33 could not be repr
 ### C-PEOP-21. Form 8880: the ABLE and saver's-match notes move from "What's New" to "Reminders"; years move
 
 - **Kind:** wording only
-- **2026:** `f8880` p. 3 (draft): "Permanent credit for Achieving a Better Life Experience (ABLE) account contributions. P.L. 119-21 made permanent the credit for contributions by a designated beneficiary to their ABLE account. See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts." ... `f8880` p. 3 (draft): "(b) is claimed as a dependent on someone else’s 2026 tax return;"
+- **2026:** `f8880` p. 2 (draft): "Permanent credit for Achieving a Better Life Experience (ABLE) account contributions. P.L. 119-21 made permanent the credit for contributions by a designated beneficiary to their ABLE account. See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts." ... `f8880` p. 2 (draft): "(b) is claimed as a dependent on someone else’s 2026 tax return;"
 - **2025:** `f8880` p. 2: "Permanent credit for Achieving a Better Life Experience (ABLE) account contributions. P.L. 119-21, commonly known as the One Big Beautiful Bill Act, makes permanent the credit for contributions by a designated beneficiary to their ABLE account. See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts." ... `f8880` p. 2: "(b) is claimed as a dependent on someone else’s 2025 tax return;"
 - **Touches:** person.sav_line1, person.sav_prior_joint, person.sav_prior_other, person.sav_claimed, person.sav_able (ambiguity amb.2025.savers_2026_joint)
 - **Worklist items:** person.sav_line1, person.sav_prior_joint, person.sav_prior_other, person.sav_claimed
@@ -2286,7 +2286,7 @@ cannot be re-verified for 2026 and are flagged in the entries.
 ### C-BUS-16. Form 7206 line 2 long-term care premium limits
 
 - **Kind:** amount (parameter)
-- **2026:** `f7206` p. 2 (draft): "$500— if that person is age 40 or younger $930— if age 41 to 50 $1,860— if age 51 to 60 $4,960— if age 61 to 70 $6,200— if age 71 or older"; `i7206` p. 3 (draft): "a. Age 40 or younger — $500. b. Age 41 to 50 — $930. c. Age 51 to 60 — $1,860. d. Age 61 to 70 — $4,960. e. Age 71 or older — $6,200."
+- **2026:** `f7206` p. 1 (draft): "$500— if that person is age 40 or younger $930— if age 41 to 50 $1,860— if age 51 to 60 $4,960— if age 61 to 70 $6,200— if age 71 or older"; `i7206` p. 3 (draft): "a. Age 40 or younger — $500. b. Age 41 to 50 — $930. c. Age 51 to 60 — $1,860. d. Age 61 to 70 — $4,960. e. Age 71 or older — $6,200."
 - **2025:** `f7206` p. 1: "$480— if that person is age 40 or younger $900— if age 41 to 50 $1,800— if age 51 to 60 $4,810— if age 61 to 70 $6,020— if age 71 or older"
 - **Touches:** table `ltc_limit`, `ltc.limit`, `ltc.amount`
 - **Worklist items:** none
@@ -2296,7 +2296,7 @@ cannot be re-verified for 2026 and are flagged in the entries.
 ### C-BUS-17. Form 7206 and its instructions: years only; i1040gi cites unverifiable
 
 - **Kind:** wording only
-- **2026:** `f7206` p. 2 (draft): "Amounts for any month you were eligible to participate in a health plan subsidized by your employer or your spouse’s employer or the employer of either your dependent or your child who was under the age of 27 at the end of 2026."; `i7206` p. 3 (draft): "See Pub. 974 if the insurance plan was considered to be established under your business and was obtained through the Marketplace, and advance payments of the premium tax credit were made or you are claiming the premium tax credit."
+- **2026:** `f7206` p. 1 (draft): "Amounts for any month you were eligible to participate in a health plan subsidized by your employer or your spouse’s employer or the employer of either your dependent or your child who was under the age of 27 at the end of 2026."; `i7206` p. 3 (draft): "See Pub. 974 if the insurance plan was considered to be established under your business and was obtained through the Marketplace, and advance payments of the premium tax credit were made or you are claiming the premium tax credit."
 - **2025:** `f7206` p. 1: "Amounts for any month you were eligible to participate in a health plan subsidized by your employer or your spouse’s employer or the employer of either your dependent or your child who was under the age of 27 at the end of 2025."; `i7206` p. 2: "See Pub. 974 if the insurance plan was considered to be established under your business and was obtained through the Marketplace, and advance payments of the premium tax credit were made or you are claiming the premium tax credit."
 - **Touches:** `sc.f7206_line1` (line and refusal), `sc.hi_screen`, `sc.hi_uses`, `sc.hi_screened`
 - **Worklist items:** sc.f7206_line1 (line), sc.f7206_line1 (refusal), sc.hi_screen

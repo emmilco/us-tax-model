@@ -3,6 +3,38 @@
  "form": "ssb",
  "rulings": [
   {
+   "printed": "1",
+   "project_expr_sha256": "832d25dd0a1f908e1cd10de74fbc983f86b4db8cd039ef0bd0abc762081c320f",
+   "second_expr_sha256": "0265c9accee0ca70deb12b5236adb402210c8f3a0828b574b20c2e08cb7acbf2",
+   "ruling": "Ruling: representation; the two expressions are the same function of the Bool ssb.any: the project gives 0 on false and ssb.benefits on true, the second gives ssb.benefits on true and 0 otherwise (ne true is false for a Bool). Worksheet line 1, i1040gi p. 32, \"Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099\"; the exceptions the second names are refused (ssb.pub915, now tested on ssb.benefits, ssb.terror_disability, sa.excluded_income).",
+   "context": "6a2d773fd28e4f052092975d71f5c3787c6d111bf930c93a1e935a0c1748c972",
+   "date": "2026-11-22",
+   "run": "2ad3c9f3e08abae4c36ee8a0e91262bb676f4a3cab65a708ad8df8bf6442f21e",
+   "subject_key": "4407df08b454a6a3918d24cec67394e0fe086d55201aa2e497d1780a6309ab12",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@ssb",
+     "fixture:classm.f2441.2.deepseek@ssb",
+     "fixture:classm.f2441.3.deepseek@ssb",
+     "fixture:classm.f2441.4.deepseek@ssb",
+     "fixture:classm.f2441.5.deepseek@ssb",
+     "fixture:classm.f2441.6.deepseek@ssb",
+     "fixture:classm.clcw.2.deepseek@ssb",
+     "fixture:classm.aqee.1.deepseek@ssb",
+     "fixture:classm.eic.4.deepseek@ssb",
+     "fixture:classm.eic.6.deepseek@ssb",
+     "fixture:classm.f5329.3.deepseek@ssb",
+     "fixture:classm.f8962.1.gpt@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "10",
    "project_expr_sha256": "4b7d9e60e1cbb10a634c8b31c08e906438878e4f7158bc84561fa172d1dc401a",
    "second_expr_sha256": "1041226472c058cd2558668df0362ece4041380f772c0831ee3bc6b651aa5399",

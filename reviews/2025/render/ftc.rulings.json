@@ -28,6 +28,16 @@
    "subject_key": "bd93eb3a7191de0332d9b71246977d6f00bc7bd637b46617ea90f2e687b93b35"
   },
   {
+   "printed": "credit_tax",
+   "restated": "Choose — [helper \"Foreign tax fails a condition of the election, so the credit is figured on Form 1116\" = false → helper \"Smaller of ftc.taxes_if_asked, ftc.regular_tax\"] [helper \"Foreign tax fails a condition of the election, so the credit is figured on Form 1116\" = true → f1116 line 35]",
+   "model": "The election credit is the smaller of foreign tax or regular tax, and i1116 defines regular tax by the line 20 instructions: \"the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.\" The program's regular tax omits the Form 4972 subtraction, and the line also inherits the Form 2555 condition from needs1116. The Form 1116 branch, which uses f1116 line 35, matches.",
+   "ruling": "Ruling: scope; the Form 4972 subtraction is the regular_tax ruling (i1116 p. 25, Line 20, \"less any tax included on line 16 from Form 4972\"; Form 4972 tax is refused at Form 1040 line 16 by scope.other_line16, so nothing is subtracted on a computed return), and the Form 2555 condition is the needs1116 ruling (a Form 2555 filer with foreign tax is refused at f1116.reduction). The Form 1116 branch matches, as the reply says.",
+   "context": "01a732bd9b3290eda7423243f9c3a1e2a5008e0167753b28c92ff6d8ddfee4cf",
+   "date": "2026-11-22",
+   "run": "e13055f6b3bc44aa006f6400c277cf26cd48b9ecffc24a4eeb55dae661b21be8",
+   "subject_key": "53c8c5773158af32a1259e93904891be426e54378957864b9736de51dcebaf06"
+  },
+  {
    "printed": "elect",
    "restated": "Choose — [helper \"Whether a foreign tax credit carried from another year is claimed, asked only of a filer who has paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules (false otherwise)\" = true → helper \"Year parameter ftc.no (false)\"] [helper \"Whether a foreign tax credit carried from another year is claimed, asked only of a filer who has paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules (false otherwise)\" = false → helper \"Year parameter ftc.yes (true)\"]",
    "model": "The IRS makes the election optional ('You may be able to claim ... By making this election') and says that if made, 'You can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies'. The program elects automatically whenever the conditions are met. This forfeits any 2025 excess that Form 1116 would carry back or forward. The restatement's 'never less' reasoning covers only the current-year credit.",
@@ -71,6 +81,16 @@
    "model": "The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax. See the instructions for line 20, later, for how to figure your regular tax.' Those line 20 instructions are not provided, so it cannot be confirmed that Form 1040 line 16 equals 'regular tax' for this purpose.",
    "ruling": "Ruling: representation; project retained. Regular tax for the election is \"your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))\", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data.",
    "subject_key": "1164621abfa5261aaef8ca1d65520198d56a36f3d03dd58ffc5ea10acbc88563"
+  },
+  {
+   "printed": "needs1116",
+   "restated": "helper \"Positive foreign taxes\" = true and (helper \"Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise\" > helper \"Year parameter ftc.limit\" or helper \"Whether all foreign-source gross income was passive category income, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or helper \"Whether all foreign income and taxes were reported on qualified payee statements, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or helper \"Whether the creditability, holding-period, related-payment and reduction rules are met, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or helper \"Whether the election without Form 1116 is made, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or sa helper \"Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or exclude income from sources within Puerto Rico?\" = true)",
+   "model": "The text sends Form 4563 filers and those excluding Puerto Rico income to Form 1116 (Schedule 3 item 4: \"You aren't filing Form 4563 or excluding income from sources within Puerto Rico\"). Neither i1116's election conditions nor Schedule 3 list filing Form 2555, yet the program also denies the election to Form 2555 filers. The other conditions (the $300/$600 limit, passive income, qualified payee statements, creditability and the election itself) match.",
+   "ruling": "Ruling: scope; i1040gi p. 115, Schedule 3 line 1, \"You aren't filing Form 4563 or excluding income from sources within Puerto Rico\" is the condition the reply finds tested (the BUG-0769 fix). sa.excluded_income also names Form 2555, which neither i1116 pp. 1-2 nor Schedule 3 lists; a Form 2555 filer with foreign tax is therefore sent to Form 1116, where f1116.reduction (foreign taxes on income excluded on Form 2555 or 4563, line 12) refuses. The extra condition turns an election credit into a refusal, never into a different amount on a completed return.",
+   "context": "01a732bd9b3290eda7423243f9c3a1e2a5008e0167753b28c92ff6d8ddfee4cf",
+   "date": "2026-11-22",
+   "run": "e13055f6b3bc44aa006f6400c277cf26cd48b9ecffc24a4eeb55dae661b21be8",
+   "subject_key": "e8839254c3e125561baa36e1906e743aba3bb1b3313747da4909899f89042977"
   },
   {
    "printed": "needs1116",

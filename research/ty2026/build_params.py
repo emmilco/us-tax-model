@@ -21,11 +21,29 @@ R = lambda n, d: {"num": n, "den": d}
 ST = lambda single, mfj, mfs, hoh, qss=None: {"single": D(single), "mfj": D(mfj), "mfs": D(mfs), "hoh": D(hoh),
                                                "qss": D(mfj if qss is None else qss)}
 
+# Rev. Proc. 2025-32 prints its section 4 as "SECTION 4. 2026 ADJUSTED ITEMS" and then each subsection as ".NN <heading>",
+# so "section 4.NN" is not printed text: a locator anchors on the printed ".NN <heading>" (citations.py checks the
+# anchor on the cited page or the IN_FORCE pages before it), the section number kept after it.
+RP_HEADINGS = {"01": "Tax Rate Tables", "03": "Maximum Capital Gains Rate", "05": "Child Tax Credit",
+               "06": "Earned Income Credit", "10": "Exemption Amounts for Alternative Minimum Tax", "12": "Certain Expenses of Elementary and Secondary School Teachers",
+               "14": "Standard Deduction", "23": "Gross Income Limitation for a Qualifying Relative",
+               "24": "Election to Expense Certain Depreciable Assets", "26": "Qualified Business Income",
+               "29": "Interest on Education Loans", "31": "Threshold for Excess Business Loss"}
+
+def printed_anchor(doc, heading):
+    """A locator heading "section 4.NN[(k)][, rest]" of Rev. Proc. 2025-32 led by the printed ".NN <heading>"."""
+    m = re.fullmatch(r"section 4\.(\d\d)(\(\d+\))?(?:, (.*))?", heading)
+    if doc != "rp-25-32" or not m:
+        return heading
+    nn, sub, rest = m.groups()
+    printed = RP_HEADINGS[nn]
+    return ", ".join([f".{nn} {printed}", f"section 4.{nn}{sub or ''}"] + ([rest] if rest and rest != printed else []))
+
 # id -> (value, doc, page, locator heading, quote, note)
 V = {}
 def put(pid, value, doc, page, heading, quote, note=None):
     assert pid in P25["values"], pid
-    V[pid] = (value, doc, page, heading, quote, note)
+    V[pid] = (value, doc, page, printed_anchor(doc, heading), quote, note)
 
 # ---- Rev. Proc. 2025-32 (final) ----
 RP = "rp-25-32"
@@ -148,7 +166,7 @@ put("dc.exclusion_max", D(7500), "i2441", 7, "Line 21",
 put("f5329.cap_abuse", D(10500), "p590b", 29, "Distributions to domestic abuse victims", "must not exceed the lesser of $10,500 for 2026 or 50% of the present value of the IRA.")
 put("ctc.threshold", ST(200000, 400000, 200000, 200000, 200000), "f1040s8812", 1, "Schedule 8812 (2026), line 9",
     "Married filing jointly—$400,000 . . . . . . . . . . . . . . . . . . . . . . • All other filing statuses—$200,000")
-put("ptc.months", 12, "i1095a", 3, "Part III", "Add the amounts on lines 21 through 32 and enter on line 33.", "structural: twelve monthly lines")
+put("ptc.months", 12, "i1095a", 2, "Part III", "Add the amounts on lines 21 through 32 and enter on line 33.", "structural: twelve monthly lines")
 put("s1a.tips_max", D(25000), "f1040s1a", 2, "Schedule 1-A (2026), Part II", "Enter the smaller of the amount on line 8 or $25,000",
     "Schedule 1-A is renumbered in 2026 (SCHED section of the change map)")
 put("s1a.ot_max_other", D(12500), "f1040s1a", 3, "Schedule 1-A (2026), Part III", "Enter the smaller of the amount on line 20 or $12,500 ($25,000 if married filing jointly)")
@@ -181,6 +199,93 @@ put("ira.kbh_none", D(15000), "i8606", 6, "Kay Bailey Hutchison Spousal IRA limi
 put("ira.kbh_one", D(16100), "i8606", 6, "Kay Bailey Hutchison Spousal IRA limit", KBH)
 put("ira.kbh_both", D(17200), "i8606", 6, "Kay Bailey Hutchison Spousal IRA limit", KBH)
 
+# ---- IRA deduction reduction (Pub. 590-A Worksheet 1-2, draft; the encoded worksheet is the Form 1040 instructions'
+# IRA Deduction Worksheet, not posted, which figures the same reduction) ----
+IRA_NOTE = ("Pub. 590-A Worksheet 1-2 figures the same reduction as the IRA Deduction Worksheet the 2025 value cites "
+            "(Form 1040 instructions, not posted): confirm against that worksheet")
+put("ira.full_narrow", D(10000), "p590a", 19, "Worksheet 1-2, Figuring Your Reduced IRA Deduction for 2026, line 3",
+    "Subtract line 2 from line 1. If line 3 is $10,000 or more ($20,000 or more if married filing jointly or qualifying surviving spouse and you are covered by an employer plan), stop here.", IRA_NOTE)
+put("ira.full_joint", D(20000), "p590a", 19, "Worksheet 1-2, Figuring Your Reduced IRA Deduction for 2026, line 3",
+    "Subtract line 2 from line 1. If line 3 is $10,000 or more ($20,000 or more if married filing jointly or qualifying surviving spouse and you are covered by an employer plan), stop here.", IRA_NOTE)
+IRA_RATE = ("the rate is the 2026 contribution limit over the phase-out range ($7,500 or $8,600 over $10,000 or $20,000), "
+            "so it changes with ira.limit; the parameter's name keeps the 2025 rate. " + IRA_NOTE)
+put("ira.rate_70", R(75, 100), "p590a", 19, "Worksheet 1-2, line 4", "All others, multiply line 3 by 75% (0.75) (by 86% (0.86) if you are age 50 or older).", IRA_RATE)
+put("ira.rate_80", R(86, 100), "p590a", 19, "Worksheet 1-2, line 4", "All others, multiply line 3 by 75% (0.75) (by 86% (0.86) if you are age 50 or older).", IRA_RATE)
+put("ira.rate_35", R(375, 1000), "p590a", 19, "Worksheet 1-2, line 4", "multiply line 3 by 37.5% (0.375) (by 43% (0.43) if you are age 50", IRA_RATE)
+put("ira.rate_40", R(43, 100), "p590a", 19, "Worksheet 1-2, line 4", "multiply line 3 by 37.5% (0.375) (by 43% (0.43) if you are age 50", IRA_RATE)
+put("ira.min", D(200), "p590a", 19, "Worksheet 1-2, line 4", "However, if the result is less than $200, enter $200.", IRA_NOTE)
+put("ira.line2_apart", D(91000), "p590a", 15, "Table 1-2, single or head of household, and its footnote",
+    "$91,000 or more ... If you didn’t live with your spouse at any time during the year, your filing status is considered Single for this purpose",
+    "the single upper limit, which applies to a separate filer who lived apart all year; n-25-67 p. 4 (final) prints the same $91,000. " + IRA_NOTE)
+
+# ---- Social security benefits (Pub. 915 Worksheet 1, final; the encoded worksheet is the Form 1040 instructions', not posted) ----
+SSB_NOTE = "Pub. 915 Worksheet 1 is the worksheet the Form 1040 instructions (not posted) reproduce: confirm against them"
+SSB_BASE = "Married filing jointly, enter $32,000; or ... apart from your spouse for all of 2026, enter $25,000"
+SSB_ADJ = "Enter $12,000 if married filing jointly; or $9,000 if single, head of household, qualifying surviving spouse, or"
+put("ssb.base_single", D(25000), "p915", 17, "Worksheet 1, Figuring Your Taxable Benefits, line 9", SSB_BASE, SSB_NOTE)
+put("ssb.base_joint", D(32000), "p915", 17, "Worksheet 1, Figuring Your Taxable Benefits, line 9", SSB_BASE, SSB_NOTE)
+put("ssb.adjust_single", D(9000), "p915", 17, "Worksheet 1, Figuring Your Taxable Benefits, line 11", SSB_ADJ, SSB_NOTE)
+put("ssb.adjust_joint", D(12000), "p915", 17, "Worksheet 1, Figuring Your Taxable Benefits, line 11", SSB_ADJ, SSB_NOTE)
+put("ssb.half", R(1, 2), "p915", 17, "Worksheet 1, Figuring Your Taxable Benefits, lines 2 and 14", "Multiply line 13 by 50% (0.50)", SSB_NOTE)
+put("ssb.rate85", R(85, 100), "p915", 17, "Worksheet 1, Figuring Your Taxable Benefits, lines 16 and 18", "Multiply line 12 by 85% (0.85)", SSB_NOTE)
+
+# ---- Alternative minimum tax (C-LAW-02; Form 6251 2026 not posted) ----
+put("amt.exemption", ST(90100, 140200, 70100, 90100), RP, 16, "section 4.10, Exemption Amounts for Alternative Minimum Tax",
+    "Joint Returns or Surviving Spouses $140,200 Unmarried Individuals (other than Surviving Spouses) $90,100 Married Individuals Filing Separate Returns $70,100",
+    "i6251 p. 10 (draft), Exemption Worksheet line 1, prints the same amounts")
+put("amt.bracket", ST(244500, 244500, 122250, 244500), RP, 16, "section 4.10, the excess taxable income above which the 28 percent rate applies",
+    "Married Individuals Filing Separate Returns $122,250 All Other Taxpayers $244,500",
+    "i6251 p. 11 (draft), Line 7, prints the same amounts")
+put("amt.phaseout_start", ST(500000, 1000000, 500000, 500000), RP, 17, "section 4.10, Threshold Phaseout Amount",
+    "Joint Returns or Surviving Spouses $1,000,000 $1,280,400 Unmarried Individuals (other than $500,000 $680,200 Surviving Spouses) Married Individuals Filing Separate $500,000 $640,200",
+    "the threshold phaseout amounts (section 55(d)(2) as amended by P.L. 119-21 section 70107); i6251 p. 10 (draft), Exemption Worksheet line 3, prints the same amounts")
+put("amt.bracket_subtract", ST(4890, 4890, 2445, 4890), "i6251", 11, "Line 7",
+    "multiplying line 6 by 28% (0.28) and subtracting $4,890 ($2,445 if married filing separately)",
+    "2% of amt.bracket ($244,500; $122,250), as in 2025")
+put("amt.rate_26", R(26, 100), "i6251", 11, "Line 7", "multiplying line 6 by 26% (0.26)")
+put("amt.rate_28", R(28, 100), "i6251", 11, "Line 7", "multiplying line 6 by 28% (0.28)")
+
+# ---- Other parameters read by hand from the refreshed archive ----
+put("sa.dep_min", D(1350), RP, 18, "section 4.14(2), Standard deduction for a dependent",
+    "cannot exceed the greater of (1) $1,350, or (2) the sum of $450 and",
+    "the 2025 value cites the Standard Deduction Worksheet for Dependents (Form 1040 instructions, not posted), which applies this rule")
+put("sa.dep_add", D(450), RP, 18, "section 4.14(2), Standard deduction for a dependent",
+    "cannot exceed the greater of (1) $1,350, or (2) the sum of $450 and",
+    "the 2025 value cites the Standard Deduction Worksheet for Dependents (Form 1040 instructions, not posted), which applies this rule")
+put("ctc.age_limit", 17, "i1040s8812", 3, "Qualifying child for the CTC and ACTC", "under age 17 at the end of 2026",
+    "the 2025 value cites the Form 1040 instructions' Step 3 (not posted)")
+put("f1116.exception_ceiling", {"single": D(201775), "mfs": D(201775), "hoh": D(201750), "mfj": D(403550), "qss": D(403550)},
+    "i1116", 11, "Adjustment exception (qualified dividends)",
+    "a. $403,550 if married filing jointly or qualifying ... b. $201,775 if married filing separately, ... c. $201,775 if single, or ... d. $201,750 if head of household.",
+    "the head-of-household amount differs from the single amount in 2026 (the 2026 rate tables' 32% bracket starts, rp-25-32 pp. 10-12); in 2025 they were equal")
+put("f8582.special_max", {"single": D(25000), "mfj": D(25000), "mfs": D(12500), "hoh": D(25000), "qss": D(25000)}, "i8582", 5,
+    "Special allowance for rental real estate activities",
+    "The maximum special allowance is: • $25,000 for single individuals and married individuals filing a joint return for the tax year; • $12,500 for married individuals who file separate returns",
+    "f8582 p. 2 (draft), line 8, prints \"Do not enter more than $25,000\"")
+put("f8582.phaseout_end", {"single": D(150000), "mfj": D(150000), "mfs": D(75000), "hoh": D(150000), "qss": D(150000)}, "i8582", 12,
+    "Line 5", "enter $75,000 on line 5 instead of $150,000", "f8582 p. 2 (draft), line 5, prints \"Enter $150,000\"")
+put("dc.exclusion_max_mfs", D(3750), "i2441", 7, "Line 21",
+    "married employees filing separate returns, the maximum amount is increased to $3,750 (previously $2,500)",
+    "What's New (p. 2) prints the same amount; the separate-return half of dc.exclusion_max ($7,500)")
+put("dc.providers_listed", 3, "i2441", 4, "Lines 1a through 1e", "If you have more than three care providers, check the box at the top of Part I",
+    "Form 2441 Part I is relaid out as lines 1a to 1e in 2026 (draft); the count of providers it lists is unchanged")
+put("dc.persons_listed", 3, "i2441", 4, "Line 2", "If you have more than three qualifying persons, check the box on line 2",
+    "Form 2441 (2026, draft) line 2 prints the same count")
+put("dc.one", 1, "i2441", 4, "Lines 1a through 1e", "Complete lines 1a through 1e for each person or organization that provided the care.",
+    "one entry per care provider, as in 2025; Form 2441 Part I is relaid out as lines 1a to 1e in 2026 (draft)")
+put("f8919.rate_062", R(62, 1000), "f8919", 1, "Form 8919 (2026), line 11", "Multiply line 10 by 0.062 (social security tax rate)")
+put("f8919.rate_0145", R(145, 10000), "f8919", 1, "Form 8919 (2026), line 12", "Multiply line 6 by 0.0145 (Medicare tax rate)")
+put("f4137.rate_062", R(62, 1000), "f4137", 2, "Form 4137 (2026), line 11", "Multiply line 10 by 0.062 (social security tax rate)")
+put("f4137.rate_0145", R(145, 10000), "f4137", 2, "Form 4137 (2026), line 12", "Multiply line 6 by 0.0145 (Medicare tax rate)")
+put("s1a.hundred_per_thousand", R(1, 10), "f1040s1a", 2, "Schedule 1-A (2026), lines 13 and 14",
+    "Divide line 12 by $1,000. ... Multiply line 13 by $100",
+    "$100 for each whole $1,000; lines 25 and 26 (p. 3) print the same for overtime")
+put("s1a.two_hundred_per_thousand", R(1, 5), "f1040s1a", 4, "Schedule 1-A (2026), line 35", "Multiply line 34 by $200",
+    "$200 for each $1,000 (line 34, rounded up)")
+put("f1116.high_tax_rate", R(37, 100), RP, 11, "section 4.01, Tax Rate Tables (the highest rate of section 1)",
+    "plus 37% of the excess over $640,600",
+    "the highest rate of tax specified in section 1 (cfr-26-1-904-4); the 2025 value cites the Form 1040 instructions' Tax Computation Worksheet (not posted)")
+
 # ---- Structural counts and rates whose 2025 quote is printed unchanged in 2026 (filled from the auto-match) ----
 AUTO = json.loads((Path(__file__).with_name("params_auto.json")).read_text()) if Path(__file__).with_name("params_auto.json").exists() else {}
 
@@ -195,6 +300,16 @@ for pid, quote in (("ret.catchup_under50", "that generally applies for individua
 NONE_NOTES = {
  "sli.divisor_other": "rp-25-32 section 4.29 prints the range ($85,000 to $100,000) but not its width, which the worksheet (Form 1040 instructions, not posted) prints",
  "sli.divisor_joint": "as sli.divisor_other ($175,000 to $205,000)",
+ "amt.rate_25": ("declined: in 2026 the rate this parameter carries splits. The Exemption Worksheet (i6251 p. 10, draft, "
+                 "\"Multiply line 4 by 50% (0.50)\") and the separate-return add-back (i6251 p. 10, \"include 50% of the excess of "
+                 "the amount on line 4 over $640,200\") use 50% (P.L. 119-21 section 70107; read by s2.amt_mfs_over's and s2.amt_ex_over's "
+                 "products and their s2.amt_h_* copies), while Form 6251 line 37 (unrecaptured section 1250 gain, s2.amt_l37_rate) "
+                 "keeps 25%. No one value is right for all five readers in forms/2025/s2.yaml: a 2026 operation must give the phase-out and the add-back their own rate parameter first"),
+ "sdtw.ordinary_ceiling": ("i1040sd 2026 not posted; the 2026 Form 1116 instructions (draft, p. 11-12) print $201,775 single and "
+                           "separate, $201,750 head of household and $403,550 joint for the related adjustment exception, but no archived "
+                           "source prints the Schedule D Tax Worksheet's own amount"),
+ "qc.age_limit": "i1040gi 2026 not posted; the ages 19 and 24 printed in the 2026 Form 8814 and 8615 instructions belong to other rules",
+ "qc.student_age_limit": "as qc.age_limit",
 }
 
 # ---- Parameters new in 2026 (no 2025 counterpart), and 2025 parameters they replace ----
@@ -347,7 +462,7 @@ for pid, p25 in P25["values"].items():
         heading = a["heading"].replace("(2025)", "(2026)")
         e = {"type": p25["type"], "value": p25["value"], "cite": {"doc": a["doc"], "locator": f"p. {a['page']}, {heading}", "quote": a["quote"]},
              "source": status, "note": "2025 quote printed unchanged in the 2026 edition"}
-    elif mechanical(pid, p25):
+    elif pid not in NONE_NOTES and mechanical(pid, p25):
         e = mechanical(pid, p25)
     else:
         e = {"type": p25["type"], "value": None, "source": "none",
@@ -358,7 +473,7 @@ for pid, p25 in P25["values"].items():
 for pid, (t, value, docid, page, heading, quote, note) in NEW.items():
     assert pid not in P25["values"], pid
     status = "draft" if MAN.get(docid, {}).get("draft") else "final"
-    out_vals[pid] = {"type": t, "value": value, "cite": {"doc": docid, "locator": f"p. {page}, {heading}", "quote": quote},
+    out_vals[pid] = {"type": t, "value": value, "cite": {"doc": docid, "locator": f"p. {page}, {printed_anchor(docid, heading)}", "quote": quote},
                      "source": status, "new_in_2026": True, "note": note}
     if pid == "tcw.mfj.b0.subtract":
         out_vals[pid]["derived"] = "the 2026 rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit less base)"

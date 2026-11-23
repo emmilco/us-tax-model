@@ -3,7 +3,7 @@
 # release mode of its exact tree (reusing the recorded one, or running it), fast-forwards main to it, and puts the
 # annotated tag r<YYYY>.<MM>.<DD>.<n> on it.
 #
-#   tools/release.sh [--push] [-F <file>] [<commit>]
+#   tools/release.sh [--push] [--allow-open-bugs] [-F <file>] [<commit>]
 #
 # <commit> defaults to the tip of next. HEAD must be that commit, in a worktree whose working tree is HEAD's tree
 # (`git add -A` would commit nothing): on next itself, or detached at an earlier commit of next. main must be an
@@ -13,9 +13,8 @@
 # checks that fail in minutes.
 #
 # When the commit's tree is already in the release list (tools/green.sh: a green full run in release mode,
-# CHECK_ALL_RELEASE=1 with ENGINE_CACHE=verify, in tools/check_all_bg.sh's snapshot worktree), nothing is run again:
-# that run included the release checks of the sampled reviews (tools/check_all_steps.sh, release_steps), so
-# tools/release_reviews.sh is skipped too. Otherwise tools/release_reviews.sh runs first (on a fresh build; a form due
+# CHECK_ALL_RELEASE=1 with ENGINE_CACHE=verify, in tools/check_all_bg.sh's snapshot worktree), the run is not
+# repeated; tools/release_reviews.sh still runs, so that open bugs a release allows are named in its tag. Otherwise tools/release_reviews.sh runs first (on a fresh build; a form due
 # or short of samples, or an unruled finding, promotes nothing), then the release-mode full run
 # (tools/check_all_bg.sh --wait --tier full; ENGINE_CACHE=verify reruns every outside engine and compares its stored
 # record). A run that is not green promotes nothing; the failing step's log names what broke. Either way a linked
@@ -31,19 +30,28 @@
 # highest <n> among the day's local tags. The promoted tree is recorded under <git common dir>/release-ready/, which
 # tools/hooks/pre-push requires of a pushed release tag. --push pushes main and the tag to origin, through
 # tools/hooks/pre-push; without it nothing is pushed.
+#
+# A sampled-review ruling that confirms an open bug of medium or high severity promotes nothing, unless --allow-open-bugs
+# is given: tools/release_reviews.sh and the release checks of the full run (CHECK_ALL_ALLOW_OPEN_BUGS=1) then pass
+# it on, and the tag message lists each such ruling and bug ("allowed open bug:" lines of tools/release_reviews.sh).
+#
+# A release does not fold agent-run rows (AGENT_RUNS_FOLD=0): the tree it tests is HEAD's as committed, and the
+# hooks write only the untracked pending file, so agents may run meanwhile.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 . tools/green.sh
 die() { echo "release: $*" >&2; exit 1; }
 
 push=0
+allow=()
 msg=""
 target=""
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --push) push=1; shift ;;
+    --allow-open-bugs) allow=(--allow-open-bugs); shift ;;
     -F) [ "$#" -ge 2 ] || die "-F needs a file"; msg="$2"; shift 2 ;;
-    -*) die "unknown argument '$1' (usage: tools/release.sh [--push] [-F <file>] [<commit>])" ;;
+    -*) die "unknown argument '$1' (usage: tools/release.sh [--push] [--allow-open-bugs] [-F <file>] [<commit>])" ;;
     *) [ -z "$target" ] || die "one commit at most"; target="$1"; shift ;;
   esac
 done
@@ -63,14 +71,26 @@ python3 tools/worktree_gc.py check --fail || die "linked worktrees need removal,
 common="$(cd "$(git rev-parse --git-common-dir)" && pwd)"
 last="$common/check-all-bg/last"
 get() { sed -n "s/^$1=//p" "$last"; }
+reviews_out="$(mktemp)"
+trap 'rm -f "$reviews_out"' EXIT
+allowed=""
 head_tree="$(git rev-parse 'HEAD^{tree}')"
 if is_release_green "$head_tree" && is_green "$head_tree"; then
-  echo "release: tree $head_tree already passed a full run in release mode, its sampled-review checks included; not running it, or tools/release_reviews.sh, again"
+  echo "release: tree $head_tree already passed a full run in release mode; not running it again"
+  # The sampled reviews are checked again (minutes): the run cannot say whether it allowed open bugs, and the tag
+  # must list the ones a release allows (--allow-open-bugs).
+  if ! tools/release_reviews.sh ${allow[@]+"${allow[@]}"} 2>&1 | tee "$reviews_out"; then
+    die "the sampled reviews are not complete for a release (above); nothing promoted"
+  fi
+  allowed="$(sed -n 's/^ *allowed open bug: //p' "$reviews_out")"
   tested="$head_tree"
 else
-  tools/release_reviews.sh || die "the sampled reviews are not complete for a release (above); nothing promoted"
+  if ! tools/release_reviews.sh ${allow[@]+"${allow[@]}"} 2>&1 | tee "$reviews_out"; then
+    die "the sampled reviews are not complete for a release (above); nothing promoted"
+  fi
+  allowed="$(sed -n 's/^ *allowed open bug: //p' "$reviews_out")"
   [ "$(worktree_tree)" = "$(git rev-parse 'HEAD^{tree}')" ] || die "the review check changed the working tree; nothing promoted"
-  if ! CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full; then
+  if ! AGENT_RUNS_FOLD=0 CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify CHECK_ALL_ALLOW_OPEN_BUGS="${allow:+1}" tools/check_all_bg.sh --wait --tier full; then
     die "the full run did not pass; nothing promoted (log: $common/check-all-bg/log)"
   fi
   [ "$(get status)" = green ] && [ "$(get tier)" = full ] || die "the full run is $(get status), not green; nothing promoted"
@@ -84,7 +104,7 @@ fi
 if [ "$tested" != "$(git rev-parse 'HEAD^{tree}')" ]; then
   if [ -z "$msg" ]; then
     msg="$(mktemp)"
-    trap 'rm -f "$msg"' EXIT
+    trap 'rm -f "$msg" "$reviews_out"' EXIT
     printf 'Release reports: full check-all run in release mode on %s\n\nThe files a release-mode run rewrites and the light tier does not: mutation, evaluator\nagreement, the engine differential, evidence, the interview length report, figures.\n' \
       "$(git rev-parse --short "$tip")" > "$msg"
   fi
@@ -111,7 +131,14 @@ for t in $(git tag -l "r$day.*"); do
   if [[ "$k" =~ ^[0-9]+$ ]] && [ "$k" -gt "$n" ]; then n="$k"; fi
 done
 name="r$day.$((n + 1))"
-git tag -a "$name" -m "Release $name: full check-all green in release mode on tree $tested" "$commit"
+tag_msg="Release $name: full check-all green in release mode on tree $tested"
+if [ -n "$allowed" ]; then
+  tag_msg="$tag_msg
+
+Released with open bugs of medium or high severity that sampled-review rulings confirm (--allow-open-bugs):
+$(printf '%s\n' "$allowed" | sed 's/^/- /')"
+fi
+git tag -a "$name" -m "$tag_msg" "$commit"
 mkdir -p "$common/release-ready" && : > "$common/release-ready/$tested"
 echo "release: main fast-forwarded from $(git rev-parse --short "$old_main") to $(git rev-parse --short "$commit"); tagged $name (tree $tested)"
 if [ -z "$(git symbolic-ref -q HEAD || true)" ] && ! git merge-base --is-ancestor "$commit" next; then

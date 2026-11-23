@@ -7,48 +7,44 @@
    "printed": "21",
    "project": "$549.46",
    "model": "$548.82",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept six places (3,426.70 / 94,250 = 0.036358; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "2dc3718e8a48159318072eb37be26bcd184a74beabbfec90dd631478f8a00e49",
-   "subject_key": "31576fcd945a4480fafb2dfa57607abb8efdfc7c64855582fbf15dc9d4442d8c"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "839367f24cffe688900fbcd6ee6767d7aa7aefee7b949488bd205aa17750c879",
+   "subject_key": "5d400f2d7dff43fce60c5c689e8f92ca04a482284474e0653bcd7ec3199ea97e"
   },
   {
    "case": "classm.f1116.1",
    "printed": "23",
    "project": "$549.46",
    "model": "$548.82",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept six places (3,426.70 / 94,250 = 0.036358; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "2dc3718e8a48159318072eb37be26bcd184a74beabbfec90dd631478f8a00e49",
-   "subject_key": "e5ad20c2123d0c06dbedb752e9b8496b9c7a9820944bd3e3ff8446c61569207c"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "839367f24cffe688900fbcd6ee6767d7aa7aefee7b949488bd205aa17750c879",
+   "subject_key": "1104ff81f402c693f2f6f5edebdb9ec7bdbd33c630df25d7c73544c5398bf552"
   },
   {
    "case": "classm.f1116.2",
    "printed": "21",
    "project": "$959.18",
    "model": "$958.20",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept full places (5,082.20 / 139,000 = 0.036563; 0.0366 at four places). The readings differ by cents ($959.18 v. $958.20); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "519e82e9233b845659ab68db10975268eefdd5492d74eac473bbca2ebbd1e78a",
-   "subject_key": "31576fcd945a4480fafb2dfa57607abb8efdfc7c64855582fbf15dc9d4442d8c"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "0a192d9aad78a73e28688aea8c2a0da49b24a902258dab1479d09a187d3e010a",
+   "subject_key": "5d400f2d7dff43fce60c5c689e8f92ca04a482284474e0653bcd7ec3199ea97e"
   },
   {
    "case": "classm.f1116.2",
    "printed": "23",
    "project": "$959.18",
    "model": "$958.20",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept full places (5,082.20 / 139,000 = 0.036563; 0.0366 at four places). The readings differ by cents ($959.18 v. $958.20); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "519e82e9233b845659ab68db10975268eefdd5492d74eac473bbca2ebbd1e78a",
-   "subject_key": "e5ad20c2123d0c06dbedb752e9b8496b9c7a9820944bd3e3ff8446c61569207c"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "0a192d9aad78a73e28688aea8c2a0da49b24a902258dab1479d09a187d3e010a",
+   "subject_key": "1104ff81f402c693f2f6f5edebdb9ec7bdbd33c630df25d7c73544c5398bf552"
   },
   {
    "case": "classm.f1116.2",
@@ -79,84 +75,77 @@
    "printed": "21",
    "project": "$549.46",
    "model": "$548.82",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
-   "subject_key": "31576fcd945a4480fafb2dfa57607abb8efdfc7c64855582fbf15dc9d4442d8c"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "03c132fa98ef859332f11f5cf5466929c3bd9d616f8bde268e8e025ce803136f",
+   "subject_key": "5d400f2d7dff43fce60c5c689e8f92ca04a482284474e0653bcd7ec3199ea97e"
   },
   {
    "case": "classm.f1116.3",
    "printed": "23",
    "project": "$549.46",
    "model": "$548.82",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
-   "subject_key": "e5ad20c2123d0c06dbedb752e9b8496b9c7a9820944bd3e3ff8446c61569207c"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "03c132fa98ef859332f11f5cf5466929c3bd9d616f8bde268e8e025ce803136f",
+   "subject_key": "1104ff81f402c693f2f6f5edebdb9ec7bdbd33c630df25d7c73544c5398bf552"
   },
   {
    "case": "classm.f1116.3",
    "printed": "24",
    "project": "$549.46",
    "model": "$548.82",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
-   "subject_key": "318dcb15644597b907e2732da01c5eafd88a0e7fcc9e094dbbc738d60aac7959"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "03c132fa98ef859332f11f5cf5466929c3bd9d616f8bde268e8e025ce803136f",
+   "subject_key": "0653e73db4a317a017df89331e7dcd5368d99f6fefd3b3450f68bb2853d88f5c"
   },
   {
    "case": "classm.f1116.3",
    "printed": "27",
    "project": "$549.46",
    "model": "$548.82",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
-   "subject_key": "4604bdfc5b65d11ad006698e5e3a32306a447d8bf8813233ad02a86709f72f95"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "03c132fa98ef859332f11f5cf5466929c3bd9d616f8bde268e8e025ce803136f",
+   "subject_key": "a0abcacf13fb0bc2f77c01c62e2b939070243a2fcab3b1e409ef9ff2a9f0cdd7"
   },
   {
    "case": "classm.f1116.3",
    "printed": "32",
    "project": "$549.46",
    "model": "$548.82",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
-   "subject_key": "ef9400ce4de154dd2211ec7e9323a5d7d54f203826b42a8cc24b6155f6435803"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "03c132fa98ef859332f11f5cf5466929c3bd9d616f8bde268e8e025ce803136f",
+   "subject_key": "b2afb9053a56621fd5f07a3dedb5bbfd99a8fe99fe35e753c9550c2fd94b12a3"
   },
   {
    "case": "classm.f1116.3",
    "printed": "33",
    "project": "$549.46",
    "model": "$548.82",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
-   "subject_key": "f8e38cfb9b8b9272af3b727bb843d662a9d674a29336e5c778f6cdebcaadebdd"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "03c132fa98ef859332f11f5cf5466929c3bd9d616f8bde268e8e025ce803136f",
+   "subject_key": "e3cd2685f571178dc5c76ea3d6b9ecf9e76f6a03e67f18a6914bdffa51ed3d00"
   },
   {
    "case": "classm.f1116.3",
    "printed": "35",
    "project": "$549.46",
    "model": "$548.82",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
-   "drop": true,
-   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
-   "date": "2026-11-15",
-   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
-   "subject_key": "1a9610ceee2c8c8e3bdb25443b5b3261d6ea70fad51547b1ef02cea466da8464"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (chosen: round line 19 half-up to four decimal places, as Form 1116 line 3f, \"round off the result to at least four decimal places\"). The model kept the ratio at full precision (3,426.70 / 94,250 = 0.036358; 5,082.20 / 139,000 = 0.0365626), the recorded second reading; the project rounds it to 0.0364 and 0.0366. The difference is that of the recorded reading, not an arithmetic error on either side; the fixture keeps the project's value. Review occasioned by the line 18 shown_when (BUG-0912), which moves no value.",
+   "context": "a5da7ca4466459c0f07f6e369be8529858429394fb71b2571235e376768a6163",
+   "date": "2026-11-22",
+   "run": "03c132fa98ef859332f11f5cf5466929c3bd9d616f8bde268e8e025ce803136f",
+   "subject_key": "74fa0c1afc74716e5a3600ac595e01e46da4643c7bdd2da40af2e2c5dd451d8b"
   }
  ]
 }

@@ -3030,7 +3030,8 @@
         "person[taxpayer].w2[emp_a].box2": 496000,
         "person[taxpayer].w2[emp_a].box4": 384400,
         "person[taxpayer].w2[emp_a].box5": 6200000,
-        "person[taxpayer].w2[emp_a].box6": 89900
+        "person[taxpayer].w2[emp_a].box6": 89900,
+        "dependent[daughter].edu_tin_issued": true
       },
       "expect": {
         "f8863.eligible": {

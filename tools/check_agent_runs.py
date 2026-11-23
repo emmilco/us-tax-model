@@ -1,20 +1,29 @@
 #!/usr/bin/env python3
 """Fail unless the agent-run ledger's rows carry their required fields.
 
-    check_agent_runs.py [--file PATH]     validate research/costs/agent_runs.jsonl (or PATH)
+    check_agent_runs.py [--file PATH] [--pending PATH]
+                                          validate research/costs/agent_runs.jsonl (or PATH)
     check_agent_runs.py --self-test
 
 A row dated on or after CUTOFF must have `model` (a non-empty string), `class` ("mechanical" or
 "judgment"), `year` (an integer tax year) and `jurisdiction` ("us" or "ny"). Earlier rows are exempt, but
 a `year` or `jurisdiction` they do carry must still be well formed. Every line must be a JSON object
 with a `date` (YYYY-MM-DD).
+
+It also warns, without failing, when the hook's untracked pending file (<git common dir>/agent-runs/pending.jsonl,
+tools/claude_hooks/agents.py) holds finished rows dated before yesterday: rows that tools/agent_runs_fold.py, run
+by tools/check_all.sh on next or in the main worktree on main, has not yet moved into the ledger.
 """
 import argparse
+import datetime
 import json
 import re
 import sys
 import tempfile
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "claude_hooks"))
+import agents  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER = ROOT / "research" / "costs" / "agent_runs.jsonl"
@@ -58,6 +67,16 @@ def problems(text, cutoff=CUTOFF):
     return out
 
 
+def stale_pending(path, today=None):
+    """The number of finished rows in the pending file at path dated before yesterday (0 when it is absent)."""
+    cutoff = ((today or datetime.date.today()) - datetime.timedelta(days=1)).isoformat()
+    try:
+        rows = agents.read_rows(str(path))
+    except (OSError, json.JSONDecodeError):
+        return 0
+    return sum(1 for r in rows if agents.is_finished(r) and str(r.get("date", "")) < cutoff)
+
+
 def self_test():
     ok = {"date": "2026-11-10", "model": "claude-sonnet-5-5", "class": "mechanical", "year": 2025, "jurisdiction": "us"}
     line = lambda r: json.dumps(r) + "\n"
@@ -93,17 +112,36 @@ def self_test():
         path.write_text(line(old) + line({**ok, "jurisdiction": "ca"}))
         if main(["--file", str(path)]) != 1:
             sys.exit("check_agent_runs self-test: an invalid file must fail")
+        pending = Path(d, "pending.jsonl")
+        done = {**ok, "tool_uses": 1}
+        today = datetime.date(2026, 11, 12)
+        if stale_pending(pending, today) != 0:
+            sys.exit("check_agent_runs self-test: an absent pending file must give no warning")
+        pending.write_text(line(done) + line({**done, "date": "2026-11-11"}) + line({**ok, "date": "2026-11-01"})
+                           + line({**done, "date": "2026-11-12"}))
+        if stale_pending(pending, today) != 1:
+            sys.exit("check_agent_runs self-test: only finished pending rows dated before yesterday are stale")
+        path.write_text(line(ok))
+        if main(["--file", str(path), "--pending", str(pending)]) != 0:
+            sys.exit("check_agent_runs self-test: stale pending rows must warn, not fail")
     print("check_agent_runs self-test OK")
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--file", default=str(LEDGER))
+    ap.add_argument("--pending", default=None, help="the hook's pending file (default: the clone's)")
     ap.add_argument("--self-test", action="store_true")
     a = ap.parse_args(argv)
     if a.self_test:
         self_test()
         return 0
+    pending = a.pending or agents.pending(str(ROOT))
+    stale = stale_pending(pending) if Path(pending).resolve() != LEDGER.resolve() else 0
+    if stale:
+        print(f"warning: {pending} holds {stale} finished agent-run row(s) dated before yesterday; fold them into the "
+              "ledger with tools/agent_runs_fold.py (on next, or in the main worktree on main) or a check-all run there",
+              file=sys.stderr)
     found = problems(Path(a.file).read_text(encoding="utf-8"))
     for p in found:
         print(f"{a.file}: {p}", file=sys.stderr)

@@ -40,11 +40,25 @@ from taxyear import Y  # noqa: E402
 import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York documents and reviews/ny/<year>/)
 FORMS = str(jurisdiction.ypath("forms", Y))
 REVIEWS = str(jurisdiction.ypath("reviews", Y))
-docs = {}
-# A New York log also records the federal pages it was given (a federal line's interface and its source).
-for _sources in jurisdiction.read_dirs("sources", Y):
-    m = json.load(open(os.path.join(str(_sources), "manifest.json")))
-    docs.update({d["id"]: d for d in (m["documents"] if isinstance(m, dict) else m)})
+_MANIFESTS = {}
+
+
+def manifest(year):
+    """{document id: manifest entry} of a tax year's archive, across the directories the jurisdiction reads (a
+    New York log also records the federal pages it was given: a federal line's interface and its source); {} for
+    a year with no archive."""
+    year = str(year)
+    if year not in _MANIFESTS:
+        out = {}
+        for d in jurisdiction.read_dirs("sources", year):
+            path = os.path.join(str(d), "manifest.json")
+            if os.path.exists(path):
+                m = json.load(open(path, encoding="utf-8"))
+                out.update({e["id"]: e for e in (m["documents"] if isinstance(m, dict) else m)})
+        _MANIFESTS[year] = out
+    return _MANIFESTS[year]
+
+
 # Documents whose first review of a kind is not yet run (pending.py; New York only): reported, not failed.
 PENDING = pending.load()
 
@@ -118,13 +132,96 @@ def log_faults(kind, fid, family, text):
         state = subjects.log_state(kind, fid, Y, text)
     if state:
         stale.append(state)
-    for row in re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M):
-        doc_id, sha, cols_sha = row
-        if doc_id in docs and docs[doc_id]["text_sha256"] != sha:
-            stale.append(f"{kind} log was made against a different snapshot of {doc_id}")
-        if doc_id in docs and cols_sha and cols_sha != "-" and docs[doc_id].get("cols_sha256") != cols_sha:
-            stale.append(f"{kind} log was made against a different reading-order text of {doc_id}")
-    return opened, stale
+    index = review_store.load_index(kind, fid, family)
+    if index is None:  # a plain log file (a test's): every row against this year's archive
+        stale += snapshot_faults(kind, text, Y)
+    else:
+        for sha, year, rows in record_sources(kind, index):
+            stale += snapshot_faults(kind, rows, year, f" (record {sha[:12]}, {year} sources)" if str(year) != str(Y) else "")
+        stale += carry_faults(kind, fid, index)
+    return opened, list(dict.fromkeys(stale))
+
+
+SNAPSHOT_ROW = re.compile(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", re.M)
+
+
+def snapshot_faults(kind, text, year, where=""):
+    """Why the source-page rows in `text` no longer answer the archive of `year`: a row naming an archived
+    document with another text or reading-order hash."""
+    return snapshot_problems(kind, text, manifest(year), {}, where)
+
+
+def snapshot_problems(kind, text, docs, carried_docs, where=""):
+    """The source-snapshot rows in `text` that match no archived text: each row naming a document of `docs` is read
+    against it and, where `carried_docs` (another year's archive) has the document, against that too; a row matching
+    neither is stale. `where` is appended to each finding."""
+    out = []
+    for doc_id, sha, cols_sha in SNAPSHOT_ROW.findall(text):
+        if doc_id not in docs:
+            continue
+        years = [docs[doc_id]] + ([carried_docs[doc_id]] if doc_id in carried_docs else [])
+        if not any(d["text_sha256"] == sha for d in years):
+            out.append(f"{kind} log was made against a different snapshot of {doc_id}{where}")
+        if cols_sha and cols_sha != "-" and not any(d.get("cols_sha256") == cols_sha for d in years):
+            out.append(f"{kind} log was made against a different reading-order text of {doc_id}{where}")
+    return out
+
+
+def year_mark(line):
+    """The tax-year carry mark of an index line (year_carry.year_marked: `carried` without `by`, or
+    `year_carried` beside a rename carry), else None."""
+    mark = line.get("year_carried") or line.get("carried")
+    return mark if mark and "year_key" in mark else None
+
+
+def record_sources(kind, index):
+    """[(record sha, year, source-page rows)] of the records an index names: each record's own source-page
+    table (a whole-form record's header, a line-scoped pass's block), and the tax year whose archive it was
+    made against. A record backing a line carried across a tax year was made against the archive of the year
+    its mark names (`sources`, else `from`); the base record of an index written by a year carry, against
+    `base_sources`; every other record, against this year's."""
+    years = {}
+    for l in index["lines"]:
+        mark = year_mark(l)
+        years.setdefault(l["record"], set()).add(str(mark.get("sources") or mark["from"]) if mark else str(Y))
+    base_year = str(index.get("base_sources") or Y)
+    years.setdefault(index["base"], set()).add(base_year)
+    out = []
+    for sha, ys in sorted(years.items()):
+        ident, parts = review_store.load_record(kind, sha)
+        rows = parts.get("head" if ident["scope"] == "whole" else "block", "")
+        for year in sorted(ys):
+            out.append((sha, year, rows))
+    return out
+
+
+def carry_faults(kind, fid, index, root=None):
+    """Why the lines of an index carried across a tax year no longer carry: for each source year F the marks
+    name, year_carry recomputes each carried line's key from F's tree to this year's (both in this checkout,
+    or under `root`), and a line that no longer carries, or whose key is not the one its mark recorded, is
+    stale (its cited text, parameters, subject or what it reads changed since the carry)."""
+    marked = {}
+    for l in index["lines"]:
+        mark = year_mark(l)
+        if mark:
+            marked.setdefault(str(mark["from"]), []).append((l["key"], mark["year_key"]))
+    if not marked:
+        return []
+    import year_carry as YC
+    out = []
+    for f, lines in sorted(marked.items()):
+        now = YC.carry_keys(kind, YC.Tree(root or ROOT, f), YC.Tree(root or ROOT, str(Y)), fid, [k for k, _ in lines])
+        moved = []
+        for key, recorded in lines:
+            ok, why, got = now.get(key, (False, "not compared in both years", None))
+            if not ok:
+                moved.append(f"{key} ({why})")
+            elif got != recorded:
+                moved.append(f"{key} (its year-carry key changed since the carry)")
+        if moved:
+            out.append(f"the {kind} log carries lines from {f} that no longer carry: {'; '.join(moved)}; "
+                       f"rerun them: {'transcribe.py' if kind == 'transcription' else 'render_compare.py' if kind == 'render' else 'classm.py'} --form {fid}")
+    return out
 
 
 def check(kind, logs, optional_env, expected=None):

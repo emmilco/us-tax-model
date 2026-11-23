@@ -34,7 +34,11 @@ The Lean toolchain has since been pinned (`lean/lean-toolchain`, v4.29.1); Node 
 
 `npm run check-all` runs `tools/check_all.sh`, which runs the suite
 (`tools/check_all_steps.sh`, for the default year or the one given with
-`npm run check-all -- --year N`) and, when it passes, writes the hash of the tested
+`npm run check-all -- --year N`; with more than one year in `years.json` `adopted`, its last stage
+builds every other adopted year with the run's engine and runs that year's fixtures, federal and, where New York
+has adopted the year, New York's, and in the full tier its Lean comparison: the engine and tools are shared by
+every year, so a change to them is checked against each; a change confined to one year's directories needs only
+that year's run) and, when it passes, writes the hash of the tested
 working tree to its tier's marker and list of green trees (the last 50 of the clone):
 `.git/check-all-green` and `.git/check-all-green-trees` for the full tier,
 `check-all-green-light` and `check-all-green-light-trees` for light, and the same with
@@ -44,6 +48,18 @@ raw review file the review logs reference (`.transcription/`, `.classm/`) is mis
 (`python3 tools/worktree_data.py check`; `check --list` prints every reference): a
 linked worktree has none of them, and the review checks would otherwise pass on what
 little it has.
+
+The agent-run ledger, `research/costs/agent_runs.jsonl`, is tracked, but no hook writes it: the Claude Code hook
+(`tools/claude_hooks/agents.py`, under "Process hooks") writes each agent run's row to the untracked pending file
+`<git common dir>/agent-runs/pending.jsonl`, shared by every worktree of the clone, and totals the row when the agent
+stops. `python3 tools/agent_runs_fold.py` (`--dry-run` first if you like) moves the finished rows (those with
+`tool_uses`) to the end of the ledger, skipping any `agent_id` the ledger already holds, and leaves unfinished rows
+pending. It refuses unless run on the branch `next` (any worktree) or in the main worktree on `main`, so a lane
+branch never gains ledger rows to conflict on merge. `tools/check_all.sh` and `tools/check_all_bg.sh`, run there, fold first,
+before taking the tree they test, so the folded rows are part of the tested tree and of the commit that follows;
+elsewhere they skip the fold, and `AGENT_RUNS_FOLD=0` skips it anywhere. Agents starting and stopping therefore
+leave the working tree as it is. The `check_agent_runs` step checks the ledger and warns, without failing, when the
+pending file holds finished rows dated before yesterday. `--self-test` runs in check-all.
 
 A linked worktree (an agent's) gets its git-ignored data from the main worktree with
 `python3 tools/worktree_data.py clone <worktree>`: complete copy-on-write clones
@@ -149,7 +165,8 @@ commands follow `PROPERTY_RUNS`.
 What each run covers. Both evaluators read the whole canonical build, so each run compares
 the lines of every document, federal and New York. `compare` runs on the federal fixture cases
 and the federal generated returns, none of which gives a New York answer: there most New York
-lines are unknown (compared by kind only) and the rest have values that need no New York answer
+lines are unknown (compared on the missing input each names, a partial count's lower bound and the
+gate-pending mark, not on the reason) and the rest have values that need no New York answer
 (constants, figures from federal lines, refusals). `ny_compare` runs on the New York fixture
 cases and on the same generated returns with New York answers added, and so compares the New
 York lines with answers and the federal lines again. The New York lines stay in the federal run:
@@ -222,18 +239,21 @@ tier is below the one the commit needs, if HEAD has moved since the snapshot or 
 regenerated `reports/` and `rendered/` files into the working tree where it still holds
 the snapshot's version.
 
-`tools/release.sh [--push] [-F <file>] [<commit>]` makes a release: it promotes a commit of `next` (its tip by
+`tools/release.sh [--push] [--allow-open-bugs] [-F <file>] [<commit>]` makes a release: it promotes a commit of `next` (its tip by
 default) to `main`. HEAD must be that commit, with a clean working tree (on `next`, or detached at an earlier commit of
 `next`), and `main` must be its ancestor. When the commit's exact tree is already release-green (a green full run in
 release mode, `CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full`, in the snapshot
-worktree, recorded in the release list of `tools/green.sh`), nothing is run again: that run included the sampled
-reviews' release checks, so `tools/release_reviews.sh` is skipped too. Otherwise it runs `tools/release_reviews.sh`
-(fail fast), then that release-mode run. When the run rewrote files (it rewrites the reports the light tier does not),
+worktree, recorded in the release list of `tools/green.sh`), that run is not repeated, but `tools/release_reviews.sh`
+still runs. Otherwise it runs `tools/release_reviews.sh` (fail fast), then that release-mode run. A sampled-review
+ruling that confirms an open bug of medium or high severity (or none recorded) promotes nothing unless
+`--allow-open-bugs` is given; it is passed to `tools/release_reviews.sh` and, as `CHECK_ALL_ALLOW_OPEN_BUGS=1`, to the
+run's release steps, and the tag message lists each allowed ruling and bug. When the run rewrote files (it rewrites the reports the light tier does not),
 `tools/commit_tested.sh` commits the tested tree on HEAD (`-F <file>` gives the message) and that commit is promoted.
 It then fast-forwards `main` to the commit (`git merge --ff-only` in the worktree holding `main`, or by moving the ref
 when none does), tags it `r<YYYY>.<MM>.<DD>.<n>`, records the tree as release-ready, and with `--push` pushes `main`
 and the tag. A red run, a sampled-review gap, a removable or stale worktree, or a `main` that is not an ancestor
-promotes nothing.
+promotes nothing. A release does not fold agent-run rows (it runs with `AGENT_RUNS_FOLD=0`): it tests
+the commit as committed, and agents may run meanwhile, since their rows go to the untracked pending file.
 
 `tools/release_prep.sh [--fail-fast]` is the recommended first step of a release: run it on the candidate tree as
 soon as its content is final, before the release-mode full check. A defect the full check would report only when
@@ -420,7 +440,10 @@ enforces these rules (self-tests: `tools/transcription/test_rerun_all.py`):
   disagreement whose triage record, for that very reply and the current form,
   shows the project's line and the reply's agreeing on every input run (no value different, missing
   or invalid; compared on fixture cases and on at least 500 generated returns; no evaluation
-  failure): "representation; equivalent on executable triage, ruled mechanically", with the counts.
+  failure; every alternative of every choose line where the two sides differ, that either side reached,
+  taken on some compared input, as the record's `branches` counts it, so that agreement on a sample that
+  never took the differing branch rules nothing): "representation; equivalent on executable triage,
+  ruled mechanically", with the counts.
   One in ten of those (`AUDIT_EVERY`), chosen by a hash of the disagreement's identity, so a rerun
   holds the same ones, is left open and printed as held for adjudication; an agent rules it, so a
   broken rule shows. A disagreement an earlier finding, defect or unsettled ruling answered is never
@@ -628,7 +651,11 @@ once. Screen, false-no and question rulings are per sample (`unruled:<unit>#<k>`
 verdict and findings equal a ruled sample's. A claim equal to a ruled claim of the same form and
 subject (item and normalised quote) carries that ruling. Between releases a form whose subject changed is due:
 listed by check-all, not failed. `--release` of the completeness, screen and false-no checks is the release gate
-(`tools/release_reviews.sh`): it fails while any subject is due or short of `SAMPLES_PER_MILESTONE` samples.
+(`tools/release_reviews.sh`): it fails while any subject is due or short of `SAMPLES_PER_MILESTONE` samples, and while an
+accepted or carried ruling confirms an open bug of medium or high severity (or of none recorded) in `BUG_INVENTORY.md`
+(`samples.open_defects`: the ruling's `bug` or `bugs`, its class, or a finding it classes a defect or a real gap),
+unless the release is made with `--allow-open-bugs` (`tools/release.sh`, `release_prep.sh` and `release_reviews.sh`
+pass it on), which lists each such ruling and bug in the tag message.
 `check_questions.py` lists due questions (a count on the console, the list in `reports/<year>/question_currency.md`)
 and fails on unruled samples and orphans; its `--release` mode joins the release gate once the first full pass is
 ruled (owner decision 2026-11-10). A question's subject is its line, interview wording and help, and its direct
@@ -762,8 +789,12 @@ split file may build on lines the form's own file adds; collisions are found acr
 type accepts: a Bool, an integer, non-negative unless `Dollars`, or a value of its enum) and a one-line `reason`, as
 `fixtures/<year>/defaults.json` holds them ("Test-data defaults"). The check fails a new input without them;
 `fixtures_year.py` writes them into the new year's `defaults.json`, after the default of the question the new one is
-placed after, drops the defaults of inputs the operations remove, resolves the cases against the result, and marks
-"not evaluated" (and lists) the cases that still state a removed input.
+placed after, drops the defaults of inputs the operations remove, resolves the cases against the result, drops a
+case's answer to a removed input where it equals that input's unconditional from-year default (it says what the
+default said), marks "not evaluated in <year>" (and lists) the cases that still state a removed input, and drops (and
+lists) an expectation on a removed line. The engine's fixture loader leaves the marked cases out (`classm-jobs`,
+`mutate` and the other commands that evaluate every case see none of them), and `test-fixtures` names them and fails
+while any remain.
 
 **The register.** After the operations, every line's `ambiguity` names a register entry, an added entry is linked by
 a line or says why not (`unlinked`), an entry whose last linking line goes is removed or given an `unlinked` reason,
@@ -783,7 +814,9 @@ declared. Adoption writes these files block by block (an entry of an id-keyed li
 keeping comments, and refuses if the written text does not load as the applied data.
 
 **Year-valued enums.** An enum whose values are years declares `extends_with_year: true` in the parameters
-(`placed_year`); `year_diff.py --adopt` adds `y<to-year>` to it, and re-derives the `recovery_year` table (each row
+(`placed_year`); `year_diff.py --adopt` adds `y<to-year>` to it, labels it first in the `value_labels` of every
+question whose input has that enum type (refusing, before it writes anything, labels that are not each year labelled
+by itself, newest first), and re-derives the `recovery_year` table (each row
 the to-year less the year placed in service, plus 1, after checking every from-year row follows that rule; a row for
 `y<to-year>`). Tables keyed by such an enum whose cells are printed amounts (`auto_limit`,
 `auto_limit_first_nobonus`) get their new rows from the new year's Pub. 946, not by rule.
@@ -797,7 +830,19 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   parameters the operations read that the year does not define, awaited lines, and entries whose documents are all
   final now. `--against DIR` checks another tree's `forms/`, `interview/` and `params/` read-only (an exported branch).
   It also notes how many references in year-shared files name a line the operations remove, or a refusal gate no
-  refusal uses after them (below).
+  refusal uses after them (below). When every operation applies, it runs the engine's static checks
+  (`engine/src/check.ts` through `main.js check`: references, cycles, types, guard tiling, gates, citations, tables)
+  on the tree the operations produce, federally and on this checkout (`--no-static` skips them): the applied forms
+  and register, the year's parameters with the staged values of `research/ty<N+1>/params-<N+1>.proposed.yaml` laid
+  over them (a value staged as none keeps the year's; retired parameters removed; changed enumerations replaced), the
+  year's tables with the staged ones of `research/ty<N+1>/tables-<N+1>/` in their place, and every citation filled
+  from the new year's archive; a citation of a document not yet archived for the new year gets an all-zero snapshot,
+  so its snapshot check is skipped and the document is named in a note. A static error fails the step, naming the
+  line, except an id that names another number than the line prints (`lineIdProblems`), which `--check` counts in a
+  note (renaming them is T-353) and `year_diff.py --adopt`, which runs the same checks, refuses. It is not the build:
+  schema validation, the interview and refusal-note checks, display rules and test-data defaults still wait for
+  adoption. `--self-test` plants a type error, a self-reading line and an id that names another printed number in the
+  applied tree, and checks that id drift is a note under `--check` and a failure in adoption.
 - `year_shared_refs.py [--year N]` lists those references: code and tool data kept for every year (under `tools/`
   and `engine/src/`, not under a year directory) that name such an id: the id itself (also inside a key such as a
   mutation pin's), an instance id (`dependent[{k}].x`), the local name as a quoted string in a file that builds the
@@ -832,6 +877,19 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   due where the new year changed anything else.
 - `--self-test` (in check-all) plants each failure in a synthetic tree, and checks that writing equals applying in
   memory and keeps untouched blocks byte for byte.
+- `year_rehearse.sh [--from 2025] [--to 2026] [--dest DIR] [--stand-in-sources] [--reuse-build]` rehearses the
+  whole adoption on what is archived today, in a scratch copy outside the repository (default
+  `/tmp/year-rehearse-<to>`), and writes nothing in the repository. In order: build the from-year,
+  `year_diff.py --adopt`, the staged parameters (`research/ty<to>/params-<to>.proposed.yaml`, in the
+  `params/<from>.yaml` format: staged values with their cites, the from-year value where no to-year source prints one,
+  `retired` removed, `enums.changed` applied) and tables (`research/ty<to>/tables-<to>/`), `citations.py --strict`,
+  build and render the to-year (and rebuild the from-year), `fixtures_year.py --no-hand-work`, `test-fixtures`,
+  `year_carry.py` without and with `--write`, `review_store.py check`, `check_logs.py`, `rerun_all.py --dry-run`
+  (which also plans, whole, the forms the carry left with no to-year log), and a digest of the reports adoption
+  writes. Logs go to `DIR/out/` (one per step, `summary.tsv`). `--stand-in-sources` retries a to-year build that
+  fails only on unarchived documents with their from-year editions, so the carry and the estimate are a lower bound
+  for the forms that cite them. No model is called. A run takes hours on a loaded machine (each build of 2025 walks
+  the interview); `--reuse-build` keeps an earlier copy's from-year build.
 
 ## Process hooks
 
@@ -942,7 +1000,9 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   drift on a copy of the year's data.
 - **Claude Code hooks** (`tools/claude_hooks/`): `bash_guard.py` refuses `pgrep -f` waits and hand copies into review data; `agents.py` refuses an agent
   launch without an explicit model or without `Class:`, `Year:` and `Jurisdiction:` in its brief (mechanical on Sonnet,
-  judgment on Opus; Fable is allowed for either class), and writes and completes the run's row in `research/costs/agent_runs.jsonl`. They are enabled per
+  judgment on Opus; Fable is allowed for either class), and writes and completes the run's row in the untracked pending file `<git common dir>/agent-runs/pending.jsonl`,
+  from which `tools/agent_runs_fold.py` moves finished rows into `research/costs/agent_runs.jsonl` (under "Commit
+  guard"). They are enabled per
   clone by `.claude/settings.json` (git-excluded), which holds the following. Each command ends in `|| true`: a deny is
   printed as JSON, and a missing or broken script (python exits 2, which a PreToolUse hook reads as a block) must not
   stop every call.

@@ -26,6 +26,16 @@
   {
    "printed": "(c)",
    "restated": "Input — Its basis for depreciation: what you paid for the building or improvement, not the land (for a home you lived in before renting it, the smaller of its value and your adjusted basis when you began renting it); your share",
+   "model": "The restatement leaves out the business-use step. The instructions say \"multiply the cost or other basis of the property by the percentage of business/investment use,\" and \"your share\" does not clearly capture that. The rule for a converted home (the smaller of its value and your adjusted basis) is also not stated anywhere in the text given.",
+   "ruling": "Ruling: model error; i4562 p. 11, Column (c), \"multiply the cost or other basis of the property by the percentage of business/investment use\". A rental building's personal use is handled by dividing the depreciation by rental days over days of use (rental.div18; p527 p. 25, Dividing Expenses), not in its basis, and a unit used as a home is refused (rental.ws51); the converted-home rule (the lesser of value and adjusted basis when renting began; p527 p. 10 and p. 23, Property Changed to Rental Use) is stated in the restated input itself. Project stands.",
+   "context": "a1d82bae210bc4f547e0921df18c5ba374b77c306958245896e3cb1c0935495d",
+   "date": "2026-11-22",
+   "run": "d9a7fe502590174c43e030482f95e5958ce25b0720ccf8f743ba0b4b3474f7ae",
+   "subject_key": "ee87c5a2a26ce32196f20344f9f329c9bfac57dabd154fff5aca45c9c6f9b979"
+  },
+  {
+   "printed": "(c)",
+   "restated": "Input — Its basis for depreciation: what you paid for the building or improvement, not the land (for a home you lived in before renting it, the smaller of its value and your adjusted basis when you began renting it); your share",
    "model": "The text says to 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property' (for example, 'Deduction for removal of barriers to the disabled and the elderly' and 'Disabled access credit'). The restatement uses what you paid (your share) without the business-use percentage or those subtractions; only section 179 and special allowance are screened out. Its land exclusion and converted-home rule are not in the text given.",
    "ruling": "Ruling: finding; i1040se p. 6, 'If you rent out only part of your home or other property, deduct the part of your expenses that applies to the rented part', and i4562 Column (c), 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property'. rprop.basis asks what was paid for the building with no rented-part share and no credit reduction, and nothing refuses a room rented in the filer's home (BUG-0920). The land exclusion and converted-home rule the reply calls absent are i1040se Line 18 / p527 basis rules, cited correctly.",
    "context": "d1e56eebfc60e10cd72d00f2a2dab58d7da608c02f4bc3662e1b780b093aaba5",
@@ -33,6 +43,17 @@
    "run": "4d4d459f8393b3ec32735cb73d2a01063b12b85b80d0371fcc98889b14df4328",
    "severity": "medium",
    "subject_key": "ceac7222191219cda197a5280f4f3dd8a45c20bb3c8ef87e3e99a3b4c31a4f25"
+  },
+  {
+   "printed": "(screen) (rprop.short_class)",
+   "restated": "Input — Is it a farm building (such as a barn, a silo or a greenhouse), or a building used mainly to sell gasoline or other motor fuel, or an improvement to one?",
+   "model": "The restatement asks about a building \"used mainly to sell gasoline,\" but Pub. 946 says a retail motor fuels outlet is real property \"used to a substantial extent in the retail marketing of petroleum\" that meets any one of three tests, such as \"It is not larger than 1,400 square feet.\" A qualifying outlet not used mainly for fuel would wrongly pass this screen and be depreciated over 39 years.",
+   "ruling": "Ruling: finding; p946 p. 31, Retail motor fuels outlet: real property \"used to a substantial extent in the retail marketing of petroleum or petroleum products\" that meets one of three tests, not only a building used mainly to sell fuel. Fixed in this lane (bugfix-rental, BUG-0955): the question now asks about \"a building where gasoline or other motor fuel is sold (such as a gas station or a store with fuel pumps)\", which also refuses an outlet whose fuel sales are not its main use (conservative: a building with pumps that meets none of the three tests is refused too).",
+   "context": "a1d82bae210bc4f547e0921df18c5ba374b77c306958245896e3cb1c0935495d",
+   "date": "2026-11-22",
+   "run": "d9a7fe502590174c43e030482f95e5958ce25b0720ccf8f743ba0b4b3474f7ae",
+   "severity": "low",
+   "subject_key": "7e80d7d13616eec0f964c67627e721429007f7cc3bae281417bf7249c7054306"
   }
  ]
 }

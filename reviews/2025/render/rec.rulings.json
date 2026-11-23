@@ -13,6 +13,16 @@
    "subject_key": "77710933ff3edb1ffe56828990d23dc38b031fd891895b2b978f68977de5aaf5"
   },
   {
+   "printed": "2",
+   "restated": "Add helper \"Mortgage interest refunded (zero without one)\", helper \"Medical reimbursements counted, not more than the 2024 medical deduction\", and helper \"Other refunds counted, not more than the 2024 deduction for them\".",
+   "model": "Footnote 2 to Worksheet 2 line 2 says: 'If you deducted state and local general sales taxes and received a refund of those taxes, include the amount on line 2, but don't enter more than the excess of your sales tax deduction over your state and local income tax you could have deducted.' The restatement adds only mortgage, medical and 'other' refunds, and the 'other' input explicitly excludes sales tax, so a sales tax refund is left out with no refusal naming that case.",
+   "ruling": "Ruling: scope; p525 p. 27, Worksheet 2, line 2, footnote 2. A refund of general sales tax is refused: rec.sales_tax (asked among the recovery kinds) refuses through rec.sales_tax_if_any (forms/2025/rec.yaml), as the form's note says ('a recovery ... of general sales tax ... refused'). The restatement shows line 2 without that refusal, which sits on another line.",
+   "context": "6926b0eb4ad57bdfe237d5c43a08eecb8de4abad96d7e8d902e550ad851d54dc",
+   "date": "2026-11-22",
+   "run": "5a0a0cd3f26a945c31dd6f6e6131028236d68d6207f92adace5bc39187a8bdf1",
+   "subject_key": "92bbee983c3aa9a7fcc396b879f3db64a4def13229e6c27ad94e47469de79fcd"
+  },
+  {
    "printed": "2a:1",
    "restated": "Choose — [refund helper \"Any state or local income tax refund received in 2025\" = false → helper \"Year parameter sales.zero\"] [refund helper \"Any state or local income tax refund received in 2025\" = true → refund helper \"State or local income tax refunds, credits or offsets received in 2025 (zero when you did not itemize deductions for 2024 or deducted general sales taxes, since none of the refund is then taxable)\"]",
    "model": "Worksheet 2a line 1 says only \"Enter the income tax refund from Form(s) 1099-G (or similar statement)\". Zero is right when you didn't itemize or deducted sales taxes, but the program also enters zero when the refunds were of both spouses' tax on separate 2024 returns. The text doesn't cover that case, and no refusal names it as excluded.",

@@ -16,6 +16,7 @@ sets:
       household.married_dec31: true
       household.community_property: false
       household.spouse_cp_domicile: false
+      household.cp_retirement: false
       sa.spouse_itemizes: false
       sa.spouse_extra: false
 rows:
@@ -51,6 +52,7 @@ rows:
       household.spouse_died_this_year: true
       household.community_property: false
       household.spouse_cp_domicile: false
+      household.cp_retirement: false
       sa.spouse_itemizes: false
       sa.spouse_extra: false
     expect:
@@ -74,6 +76,8 @@ rows:
     answers:
       ssb.any: true
       ssb.benefits: 2000000
+      ssb.repaid_more: false
+      ssb.ira_covered: false
     expect:
       asks: household.mfs_living
   - id: mfs.ssb_apart_all_year
@@ -104,6 +108,19 @@ rows:
       household.married_dec31: true
       household.community_property: false
       household.spouse_cp_domicile: true
+    expect:
+      refused: household.mfs_community_property
+  - id: mfs.cp_retirement
+    design: BUG-0950 (retirement pay earned while married and domiciled in a community property state)
+    situation: A married person in Ohio filing apart from their husband or wife receives a federal (FERS) annuity for work
+      done in California while the two of them were married and lived there.
+    answers:
+      $person: [taxpayer]
+      f1040.status: mfs
+      household.married_dec31: true
+      household.community_property: false
+      household.spouse_cp_domicile: false
+      household.cp_retirement: true
     expect:
       refused: household.mfs_community_property
   - id: mfs.spouse_cp_domicile_asked

@@ -407,6 +407,45 @@
   },
   {
    "printed": "scope.schedule1",
+   "project_expr_sha256": "6575fd839383b717d1689dcce36a2542d6b118d163141fc877ce2ce0621262c9",
+   "second_expr_sha256": "0ba1af1859f83daff715e48f739a4b1d5a7e365e9c38b195bb9ff2e211d3ee40",
+   "ruling": "Ruling: model error; as the earlier rulings, the reply's screen keeps only some Schedule 1 items (reservist, moving, performer, Archer MSA, reforestation, Trade Act repayment, attorney fees) and leaves out the personal-property rental, K-1, farm, REMIC (scope.remic, BUG-0977), clergy, church wages, W-2 marks and SE plan operands the project's screen holds, each cited in its locator (i1040se p. 1 and p. 11; i1040sf p. 2; i1040sse p. 1). executable triage (.transcription/triage/2025/scope.json, this pass): 4,219/4,660 agree; differences {\"candidate-unknown\": 11, \"project-unknown\": 287, \"value\": 143}; on completed returns {\"candidate-unknown\": 4}.",
+   "context": "d02125c76733d3a58701b8aa746357b83bb551f8df8edca94e381aa2de634ba0",
+   "date": "2026-11-22",
+   "run": "84d3279ae1faa75ba1d2d2ed27765c684d9cd04082579e73f2f26893549f8897",
+   "subject_key": "49c0bf678b32f68a5e536626e0736dc813a91a10cfb9ebb6cf8977a9a5e8eb5f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.s2.9.deepseek@scope",
+     "fixture:classm.f4952.2@scope",
+     "fixture:classm.s179.1@scope",
+     "fixture:classm.s2.8@scope",
+     "fixture:classm.tipjob.1@scope",
+     "fixture:classm.eic.9@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1.step5@scope",
+     "fixture:t264.eic.step2_schedule1@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1@scope",
+     "fixture:x2k1p.refuse_ptp@scope",
+     "fixture:x2k1p.refuse_box10@scope",
+     "fixture:x2k1p.refuse_multi@scope",
+     "partial:stage14.asset.hy_5yr-scope.armed_forces@scope",
+     "partial:stage14.asset.hy_5yr-scope.rental@scope",
+     "partial:stage14.asset.hy_5yr-scope.k1@scope",
+     "partial:stage14.asset.hy_5yr-scope.farm@scope",
+     "partial:stage14.asset.hy_5yr-scope.remic@scope",
+     "partial:stage14.asset.hy_5yr-scope.religious_work@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.schedule1",
    "project_expr_sha256": "c6534c13567f2f559e145c4b06a2e5113366fc22147b5b2c852c55419e013f18",
    "second_expr_sha256": "02fd528b57c465bde2816e8172e9c4e592e0093c763773d46c70db81d4b8d295",
    "ruling": "Ruling: model error; i1040se p. 1, \"Use Schedule E (Form 1040) to report income or loss from rental real estate ... partnerships, S corporations\". The reply keeps the reading the earlier ruling refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4003 of 4732 comparisons agree, 4003 of 4732 in scope; completed {\"candidate-unknown\": 228, \"value\": 4}. Project stands.",

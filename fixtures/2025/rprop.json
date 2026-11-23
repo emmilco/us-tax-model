@@ -89,6 +89,53 @@
           "value": true
         }
       }
+    },
+    {
+      "id": "bfr.rprop.farm_building_refused",
+      "covers": [
+        "rprop",
+        "rental"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0955, predicted by hand before running: a barn on a rented farm, entered as nonresidential real property placed in service April 2019 with basis $100,000, is 20-year property (i4562 p. 10, Farm buildings), not 39-year: a Yes to rprop.short_class refuses at rprop.screen.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].kind": "commercial",
+        "rental[a].days_fair": 365,
+        "rental[a].rents": 1200000,
+        "rental[a].rprop[b].kind": "nonresidential",
+        "rental[a].rprop[b].month": "m4",
+        "rental[a].rprop[b].year": "y2019",
+        "rental[a].rprop[b].basis": 10000000,
+        "rental[a].rprop[b].short_class": true
+      },
+      "expect": {
+        "rental[a].rprop[b].dep": {
+          "kind": "refusal",
+          "gate": "rental[a].rprop[b].screen",
+          "form": "Form 4562 (real property outside the mid-month tables)",
+          "remedy": "Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, cooperative stock, a farm building or a motor fuels outlet, or property received other than by purchase or construction (in a like-kind exchange or an involuntary conversion, as a gift or an inheritance, from a spouse or former spouse, or for services) is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 11, Column (f)—Method",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

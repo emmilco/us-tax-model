@@ -5,10 +5,10 @@
 
 ## (helper) — `ssb.any`
 
-- **Authored helper label:** Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them.
-- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them.
-- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them."}`
-- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** In 2025, did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, or pay any of them back? Form SSA-1099 or Form RRB-1099 reports them.
+- **Encoded (Bool):** Input — In 2025, did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, or pay any of them back? Form SSA-1099 or Form RRB-1099 reports them.
+- Expr: `{"op":"input","source":"In 2025, did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, or pay any of them back? Form SSA-1099 or Form RRB-1099 reports them."}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b, "Box 4 will show the amount of any benefits you repaid in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.no`
 
@@ -21,6 +21,7 @@
 
 - **Authored helper label:** Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099
 - **Encoded (NonNegDollars):** Input — Total of box 5 (net benefits) of all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099 for 2025
+- **Refusal:** when ssb.pub915 is true, cannot complete Pub. 915 or Pub. 590-A worksheet. The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication. Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"op":"input","source":"Total of box 5 (net benefits) of all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099 for 2025"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -83,7 +84,7 @@
 ## (gate) — `ssb.benefits_if_any`
 
 - **Authored helper label:** Net benefits, asked only of a filer who got social security or railroad retirement benefits (none otherwise)
-- **Encoded (NonNegDollars):** Choose — [helper "Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them." = true → helper "Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099"] [helper "Did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, in 2025? Form SSA-1099 or Form RRB-1099 reports them." = false → helper "No amount"]
+- **Encoded (NonNegDollars):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, or pay any of them back? Form SSA-1099 or Form RRB-1099 reports them." = true → helper "Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099"] [helper "In 2025, did you (or, on a joint return, your spouse) get social security benefits, or railroad retirement benefits treated as social security, or pay any of them back? Form SSA-1099 or Form RRB-1099 reports them." = false → helper "No amount"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ssb.any",{"const":true}],"op":"test"},"then":"ssb.benefits"},{"guard":{"eq":["ssb.any",{"const":false}],"op":"test"},"then":"ssb.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -105,7 +106,6 @@
 
 - **IRS:** Multiply line 1 by 50% (0.50)
 - **Encoded (NonNegDollars):** Multiply line 1 by 1/2 (ssb.half).
-- **Refusal:** when ssb.pub915 is true, cannot complete Pub. 915 or Pub. 590-A worksheet. The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication. Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when ssb.lump_sum is true, cannot complete Lump-Sum Election (Pub. 915). The lump-sum election method is outside this tool. Cite: [i1040gi] p. 31, Line 6c (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when ssb.terror_disability is true, cannot complete Pub. 3920 (disability payments for injuries from a terrorist attack). Excluding disability payments for injuries from a terrorist attack is outside this tool. Cite: [i1040gi] p. 31, Lines 6a and 6b, Disability payments (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"amount":"ssb.line1","op":"multiply_rate","rate":{"param":"ssb.half"}}`

@@ -136,6 +136,44 @@
   {
    "printed": "(screen)",
    "project_expr_sha256": "356ac354eee9eb09e0e5d5d18bcf0ea1a597de7b6637a353d59a5a0a7b2798cc",
+   "second_expr_sha256": "0d8759a79a32069ce394eb2978427037ffa59221029c66644179db3e3a980683",
+   "ruling": "Ruling: scope; i4562 pp. 8-12, Part III, and p. 8, Line 16. The IRS text defines no screen: the project's asset.screen is its aggregate of the item's refusal questions (now including asset.kind_excluded's intangibles, BUG-0984), and the reply chooses its own set (software spread past 2025, used property with a special allowance, the industry list only behind asset.industry). The two differ in which property is refused, not in any computed amount, as in the ruling of 2026-11-14; executable triage (.transcription/triage/2025/asset.json, this pass): 1,193/2,604 agree; differences {\"candidate-unknown\": 407, \"project-unknown\": 526, \"value\": 478}; on completed returns {\"candidate-unknown\": 22, \"value\": 138}. The completed value differences are returns the reply refuses and the project computes from hand-predicted fixtures (for example stage14.asset.hy_5yr, a 5-year half-year item).",
+   "context": "29a8a94937fa1b764fea1c37d37aa50254d0f51e4ad68f0cd092417c1106612f",
+   "date": "2026-11-22",
+   "run": "0c838137eaf66bee664d59b67025b21d5950e3fa44f0b040f26d53848da4af61",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].sc[desk].asset[sofa]",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@person[taxpayer].sc[desk].asset[pc]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_1]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a].asset[item_2]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "fixture:classm.asset.1.deepseek@person[taxpayer].sc[d].asset[cam]",
+     "fixture:classm.asset.1.deepseek@person[taxpayer].sc[d].asset[pc]",
+     "fixture:classm.asset.2.deepseek@person[taxpayer].sc[biz_a].asset[item_1]",
+     "generated:20261026.1@person[taxpayer].sc[biz_b].asset[item_1]",
+     "generated:20261026.3@person[taxpayer].sc[biz_a].asset[item_1]",
+     "generated:20261026.3@person[taxpayer].sc[biz_a].asset[item_2]",
+     "generated:20261026.7@person[spouse].sc[biz_a].asset[item_1]",
+     "generated:20261026.9@person[taxpayer].sc[biz_a].asset[item_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(screen)",
+   "project_expr_sha256": "356ac354eee9eb09e0e5d5d18bcf0ea1a597de7b6637a353d59a5a0a7b2798cc",
    "second_expr_sha256": "5e0b10f84d4c8ece312a5317402d24ae0bc424ebf08e74706143decc0672750d",
    "ruling": "Ruling: scope; i4562 p. 7, Election out: \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year.\" The candidate's screen adds a refusal for property placed in service in 2025 whose class has no uniform special-allowance choice (h_this_year and bonus_same false) and narrows acquired_before_bonus_date to property placed in service in 2025. The project computes the allowance on asset.bonus and asset.bonus_same and keeps the other property of the class on its 100%/40% path, so no computed amount differs; the same screen disagreement was ruled scope on 2026-11-16 (reviews/2025/transcription/adjudication/asset.md), and this reply reaches it from the same triage witnesses. Triage executable-triage-v2 (triage/asset.json): 1,157 of 2,715 comparisons agree; the 6 completed-return witnesses are single properties with bonus_choice none and the fixture default bonus_same false, project false / candidate true. Project stands.",
    "context": "243f3e768991cc4af271328c8c9d2a4ad9887e2ef55aad92b238bbc3c248cc02",

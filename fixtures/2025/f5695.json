@@ -4533,6 +4533,56 @@
           "cents": 120000
         }
       }
+    },
+    {
+      "id": "f5695.refuse.part2_reconstruct_later",
+      "covers": [
+        "f5695"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane bugfix-other, predicted by hand from the archived sources before running the evaluator. BUG-0969. stage15.f5695.s3 (insulation and a heat pump, Part II) where the work was done on a home being rebuilt that the owner first lived in again in 2026. i5695 p. 1, Costs: costs connected with the reconstruction of your home are treated as paid when your original use of the reconstructed home begins (2026), and What’s New, Termination of credits: no energy efficient home improvement credit for expenditures after December 31, 2025. Part II is completed, so the question is asked; business use, joint occupancy and separate homes are No (single), so line 30 refuses at f5695.reconstruct_later_if_part2.",
+      "inputs": {
+        "f1040.estimated_any": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7000000,
+        "person[taxpayer].w2[emp_a].box4": 434000,
+        "person[taxpayer].w2[emp_a].box5": 7000000,
+        "person[taxpayer].w2[emp_a].box6": 101500,
+        "f5695.any": true,
+        "f5695.insulation": true,
+        "f5695.heat_pump": true,
+        "f5695.line18a": 100000,
+        "f5695.line29a": 1000000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_hp": true,
+        "f5695.reconstruct_later": true
+      },
+      "expect": {
+        "f5695.part2_any": {
+          "kind": "bool",
+          "value": true
+        },
+        "f5695.line30": {
+          "kind": "refusal",
+          "gate": "f5695.reconstruct_later_if_part2",
+          "form": "Form 5695 Part II for a reconstructed home whose original use did not begin in 2025",
+          "remedy": "Costs connected with reconstructing your home are treated as paid when your original use of the rebuilt home begins, and the energy efficient home improvement credit ends after 2025; such costs are outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 1, Costs, \"in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

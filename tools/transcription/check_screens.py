@@ -21,10 +21,11 @@ input with their English and wording, citations included).
   next sample. They are counted, not failed.
 
 `--release` is the release gate (tools/release_reviews.sh): it also fails on every due unit and every unit short of the
-milestone's samples, and writes no report. Findings that existed when the check was introduced form the baseline
+milestone's samples, and on every ruling that confirms an open bug of medium or high severity (samples.open_defects)
+unless `--allow-open-bugs` is given, and writes no report. Findings that existed when the check was introduced form the baseline
 (tools/baseline_check.py), each held while its subject is unchanged.
 
-    check_screens.py [--release] [--baseline]
+    check_screens.py [--release [--allow-open-bugs]] [--baseline]
 """
 import json
 import tempfile
@@ -97,7 +98,7 @@ def gate_findings(lines, reviewed):
 accepted, carried = samples.accepted, samples.carried
 
 
-def check(rebaseline=False, release=False):
+def check(rebaseline=False, release=False, allow_open_bugs=False):
     forms = baseline_check.load_forms(Path(ROOT) / "canonical" / Y)
     found, shas = findings()
     due = [f for f in found if f["kind"] == "due"]
@@ -125,6 +126,8 @@ def check(rebaseline=False, release=False):
     if due and not release:
         with open(REPORT, "a", encoding="utf-8") as out:
             out.write("\n## Due at the next release\n\n" + "".join(f"- `{f['line']}`: {f['detail']}\n" for f in due))
+    if release:
+        status = samples.release_open_bugs({**good, **carry}, allow_open_bugs) or status
     return status
 
 
@@ -132,4 +135,5 @@ if __name__ == "__main__":
     os.chdir(ROOT)
     import build_fresh
     build_fresh.require(rendered=True)  # the subjects include each line's rendered English
-    sys.exit(check(rebaseline="--baseline" in sys.argv, release="--release" in sys.argv))
+    sys.exit(check(rebaseline="--baseline" in sys.argv, release="--release" in sys.argv,
+                   allow_open_bugs="--allow-open-bugs" in sys.argv))

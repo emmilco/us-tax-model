@@ -152,8 +152,10 @@ changes:
     - set:
         line: qbi.taxable_before
         field: label
-        from: Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero
-        to: Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e, 12f and 13a, floored at zero
+        from: Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, negative when the deductions
+          are more than adjusted gross income
+        to: Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e, 12f and 13a, negative when the
+          deductions are more than adjusted gross income
     - set:
         line: qbi.taxable_before
         field: cite

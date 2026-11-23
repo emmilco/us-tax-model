@@ -185,58 +185,58 @@
    ]
   },
   "gate:k1s.ask_re_pro": {
-   "subject_sha": "919c7ba1ffcdd342780a5d05c2efdb6db209d6fcfd5e1051d30bd820af3c7f86",
+   "subject_sha": "4417f7bb73a00b4fa3b8a6d678eee77db872f1cbc55804572baec59bc68769cc",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A shareholder who materially participates in the S corporation’s rental real estate but works fewer than 750 hours for that S corporation; they meet the 750-hour and more-than-half test through other real estate work, such as 800 hours as a real estate broker or in another rental.",
-       "why_no": "They read the question’s opening 'For this S corporation' as limiting the 750-hour test to work for this S corporation, so they answer no even though their total real estate work makes them a real estate professional.",
+       "pattern": "5",
+       "who": "A filer who truthfully answers yes to the rent or royalty scope question, but whose rental or royalty does not go on Schedule E Part I. Examples: a home rented under 15 days, personal property rented and reported on Schedule 1, royalties earned as a self-employed author on Schedule C, or a rental with substantial services on Schedule C. They also get a K-1 (1120-S) with a box 2 amount.",
+       "why_no": "The computed gate uses the scope answer, not whether a rental is actually listed on Schedule E Part I. A truthful yes to 'rent out, offer for rent, or receive rent for, anything ... or receive royalties' sets the gate false. Schedule E Part I then has no property row and never asks the real estate professional question either.",
        "line": "k1s.re_pro_if_b2",
-       "irs_text": "i1120ssk p. 6, Box 2: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
+       "irs_text": "i1120ssk (2025) p. 6, Box 2: \"the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"",
        "severity": "high",
-       "fix": "Remove the 'For this S corporation' limitation or add: 'Hours in any real property trade or business count, not only hours for this S corporation.'"
+       "fix": "Compute the gate from what is listed, not from the scope answer: box2_any = true and no Schedule E Part I property or royalty row exists (the gate's own label says 'is listed'). Alternatively, ask k1s.re_pro whenever box2_any is true and reuse one shared answer with Schedule E."
       },
       {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer with an S corporation K-1 box 2 amount who is a real estate professional and materially participates in that rental activity, but who also rents out personal property such as equipment or a vehicle.",
-       "why_no": "They truthfully answer yes to the scope helper because it asks whether they rent out or offer for rent 'anything you own or lease'; the computed gate is then false and the S-corporation real-estate-professional line is treated as no.",
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A shareholder whose only rental real estate is held inside the S corporation. A box 2 amount shows on their K-1.",
+       "why_no": "They read 'rent out ... anything you own' as covering property they own through the corporation and answer yes. The gate goes false, they list no rental of their own on Schedule E Part I, and the real estate professional question is never asked.",
        "line": "k1s.re_pro_if_b2",
-       "irs_text": "i1120ssk p. 6, Box 2: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
-       "severity": "high",
-       "fix": "Limit the helper to real property rentals or royalties actually listed on Schedule E Part I, or ask the S-corporation RE-professional question whenever box 2 has an amount."
+       "irs_text": "i1120ssk (2025) p. 6, Box 2: \"Generally, the income (loss) reported in box 2 is a passive activity amount for all shareholders. However, the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional\"",
+       "severity": "medium",
+       "fix": "Add help to the scope question: 'Do not count rentals or royalties you hold only through a partnership, S corporation, estate, or trust; those come from your Schedule K-1.' Also broaden the gate as in the finding above."
       },
       {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer with an S corporation K-1 box 2 amount who is a real estate professional and materially participates in that rental activity, and who offered their own vacation home or other real property for rent but did not actually rent it or list any rental income.",
-       "why_no": "They truthfully answer yes to the scope helper because it asks whether they 'offer for rent' property they own; the gate is then false even though no rental or royalty of their own is listed, so the S-corporation question is never asked.",
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who works full time in real estate brokerage, development, construction, or property management outside this S corporation, and spends little or no time in this S corporation.",
+       "why_no": "The prefix 'For this S corporation —' suggests counting only hours worked in or for this corporation. The 750-hour and more-than-half tests count all real property trades or businesses, so the filer may truthfully report under 750 hours here and answer no.",
        "line": "k1s.re_pro_if_b2",
-       "irs_text": "i1120ssk p. 6, Box 2: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
-       "severity": "high",
-       "fix": "Gate on an actual rental or royalty listed on Schedule E Part I, not on an offer for rent; do not suppress the S-corporation question merely because property was offered for rent."
+       "irs_text": "i1120ssk (2025) p. 6, Box 2: \"isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"",
+       "severity": "medium",
+       "fix": "Reword: 'Counting all your work in 2025, not only for this S corporation, did you (or your spouse) work more than 750 hours in real property businesses (development, construction, rental, management, brokerage, and similar), and was that more than half of all the hours you worked?'"
       },
       {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "On a joint return, one spouse owns the S corporation K-1 with box 2 rental real estate and is a real estate professional who materially participates, while the other spouse has a small rental condo or receives royalties.",
-       "why_no": "The scope helper asks whether 'you (or, on a joint return, your spouse)' rented or received royalties; the spouse’s unrelated rental/royalty makes the computed gate false, so the S-corporation RE-professional question for the shareholder-spouse is never asked.",
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A real estate professional whose K-1 box 2 is blank this year, but who carries suspended passive losses from earlier years' box 2 amounts from the same S corporation rental.",
+       "why_no": "The gate needs a box 2 amount this year. With none, the question is never asked, even though status in the current year affects how those prior-year suspended losses from the activity are treated.",
        "line": "k1s.re_pro_if_b2",
-       "irs_text": "i1120ssk p. 6, Box 2: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
-       "severity": "high",
-       "fix": "Do not use either spouse’s separate rental/royalty to suppress the S-corporation shareholder’s RE-professional question; ask it per shareholder and per activity."
+       "irs_text": "i1120ssk (2025) p. 6: \"If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations ... take them into account in determining your income, loss, or credits for this year.\"",
+       "severity": "low",
+       "fix": "Extend the gate to box2_any or a prior-year suspended box 2 passive loss carryover being entered for this S corporation."
       }
      ],
-     "prompt_sha": "b15dab7abffcda4a09c7f3ba94428a25a5d1be3301410d299b69d94b7ebf0afb",
+     "prompt_sha": "83c0d31424035deaed9a42c931d583fe79e27650cd6500271aee187809472b41",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_k1s.ask_re_pro.919c7ba1ffcd.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.078212,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_k1s.ask_re_pro.4417f7bb73a0.1.response.txt"
     }
    ],
    "condition": "k1s.ask_re_pro",

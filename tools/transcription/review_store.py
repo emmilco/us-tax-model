@@ -28,8 +28,13 @@ A verdict carried across a proven rename of line ids (rename_carry.py) is marked
 record section it was judged under (`section`, the old key); the view shows that section under the new key.
 A whole-form subject carried the same way is `subject_carried` ({"subject", "was", "carried"}): state() reads
 `subject` in place of the base record's header subject only while `was` is that header's; year_carry.py writes one
-(`carried` {"by": "year"}) for a render index with no line subjects whose rendering moved only the year. ingest() keeps a
-line's `carried` and `section` while the line's verdict still comes from the same record.
+(`carried` {"by": "year"}) for a render index with no line subjects whose rendering moved only the year. A line
+carried across a tax year (year_carry.py) is marked `carried` {"from", "year_key"} (`year_carried` beside a rename
+carry), and an index written by a year carry names the year its base record was made in (`base_sources`);
+check_logs.py checks each record's source pages against the archive of the year it was made in. ingest() keeps a
+line's `carried`, `year_carried` and `section` while the line's verdict still comes from the same record, and
+`base_sources` while the base record is the same. Records are shared by every year's indexes: ingest() removes a
+record only when no index of any year or jurisdiction names it.
 
 The per-form log is a view, generated, not committed: view() assembles it from the index and the records it
 names, byte for byte as the review tools wrote it; ingest() takes a log a tool wrote (or rule.py ruled) and
@@ -630,7 +635,7 @@ def recorded_subject(kind, index):
 
 def ingest(kind, form, family, text):
     """Store a log a review tool wrote: new records for the passes the index does not yet hold, and the
-    index; the view must reproduce `text` exactly. Records the index no longer names are removed."""
+    index; the view must reproduce `text` exactly. Records no index names any longer (named_records) are removed."""
     old = load_index(kind, form, family)
     p = parse(kind, text)
     by_pid, base = {}, None
@@ -703,10 +708,14 @@ def ingest(kind, form, family, text):
             # the same verdict from the same record: a carry across a rename still describes it
             if was.get("section"):
                 line["section"] = was["section"]
-            if was.get("carried") and was.get("subject_key") == line.get("subject_key"):
-                line["carried"] = was["carried"]
+            for mark in ("carried", "year_carried"):
+                if was.get(mark) and was.get("subject_key") == line.get("subject_key"):
+                    line[mark] = was[mark]
         lines.append(line)
     index = {"kind": kind, "form": form, "family": family, "base": base[0]}
+    if old is not None and old["base"] == base[0]:
+        # the same base record: the year a carried base was made in still describes it
+        index.update({k: old[k] for k in ("carried_from", "base_sources") if k in old})
     rows = _head_rows(base[1]["head"], p["head"])
     if rows:
         index["head_rows"] = rows
@@ -728,10 +737,32 @@ def ingest(kind, form, family, text):
         json.dump(index, f, indent=1, ensure_ascii=False)
         f.write("\n")
     keep = {index["base"]} | {l["record"] for l in index["lines"]}
-    for sha in old_records - keep:
+    gone = old_records - keep
+    if gone:
+        gone -= named_records(kind)  # another year's or jurisdiction's index (a carried review) still names it
+    for sha in gone:
         if os.path.exists(record_path(kind, sha)):
             os.remove(record_path(kind, sha))
     return index
+
+
+def named_records(kind):
+    """The records of the kind that any index sharing this store names, in every year and jurisdiction."""
+    reviews = _reviews()
+    if _inside(reviews, REVIEWS_TOP):
+        tops = [os.path.join(REVIEWS_TOP, y) for y in os.listdir(REVIEWS_TOP) if y.isdigit()]
+        ny = os.path.join(REVIEWS_TOP, "ny")
+        tops += [os.path.join(ny, y) for y in os.listdir(ny) if y.isdigit()] if os.path.isdir(ny) else []
+    else:  # a test's reviews directory, with its own store beside it
+        tops = [reviews]
+    out = set()
+    for top in tops:
+        d = os.path.join(top, kind)
+        for name in sorted(os.listdir(d)) if os.path.isdir(d) else []:
+            if name.endswith(".index.json"):
+                index = json.loads(_read(os.path.join(d, name)))
+                out |= {index["base"]} | {l["record"] for l in index["lines"]}
+    return out
 
 
 # ---------------------------------------------------------------- commands

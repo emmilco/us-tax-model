@@ -20,11 +20,11 @@ form:
         locator: Schedule D (2025), Parts I–III
     - id: sd.sold_other
       printed: (gate)
-      label: 'In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale.'
+      label: 'In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you (or, on a joint return, your spouse) sold, in 2025 or before, comes in a year after the year of the sale.'
       type: Bool
       expr:
         op: input
-        source: 'In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale.'
+        source: 'In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you (or, on a joint return, your spouse) sold, in 2025 or before, comes in a year after the year of the sale.'
       cite:
         doc: i1040sd
         locator: 'p. 1, Other Forms You May Have To File; p. 1, "To report a gain from Form 2439 or 6252 or Part I of Form 4797" and "To report a gain or loss from Form 4684, 6781, or 8824"'

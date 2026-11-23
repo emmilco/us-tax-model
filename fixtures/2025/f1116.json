@@ -34,6 +34,10 @@
         "f1116col[ric].tax_div": 32000
       },
       "expect": {
+        "f1116.line18_shown": {
+          "kind": "bool",
+          "value": true
+        },
         "ftc.credit": {
           "kind": "money",
           "cents": 32000

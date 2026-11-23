@@ -5,6 +5,17 @@
   {
    "printed": "1",
    "restated": "Choose — [helper \"Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)\" = true → helper \"Unreimbursed eligible medical and dental expenses\"] [helper \"Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Line 1 is set to $0 unless the filer says costs were 'more than 7.5% of your income' or paid after-tax premiums. The IRS text says 'Enter the total of your medical and dental expenses after you reduce these expenses by any payments received', measured against '7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b', so a gate keyed to 'income' rather than AGI can zero expenses that should be entered.",
+   "ruling": "Ruling: finding; i1040sca p. 1, 'You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income'. The parent question's tick and help compare with 7.5% of 'income', so a filer with adjustments whose costs fall between 7.5% of adjusted gross income and 7.5% of income can answer No. Filed as BUG-1087.",
+   "context": "321b90b8968c712cf23324a446bc3aa70519a58332587ddb4eca153724cdcb12",
+   "date": "2026-11-22",
+   "run": "f98a3c956779792828e2ee6adff497da1b69a2fd9458f37a51f027da874b8b5c",
+   "severity": "low",
+   "subject_key": "cd1da692c812b99cf15a6286ae3f5c3e52b7a30a0900c635441ffee4b7680625"
+  },
+  {
+   "printed": "1",
+   "restated": "Choose — [helper \"Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)\" = true → helper \"Unreimbursed eligible medical and dental expenses\"] [helper \"Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The program's list of people whose expenses count leaves out the IRS's fifth category: \"Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.\" Zeroing the line when the filer says costs were not over 7.5% and no after-tax premiums were paid does not change line 4.",
    "ruling": "Ruling: scope; as the prior rulings. i1040sca p. 2, Line 1: \"Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.\" The case cannot reach line 1: a filer who, or whose joint spouse, can be claimed as a dependent is refused by sa.dependent on sa.standard and sa.deduction, the deduction Form 1040 line 12e reads, so no completed return has that person's expenses. The reply agrees the zero for a filer whose costs were not over 7.5% leaves line 4 unchanged. Project stands.",
    "context": "d2b291d5725ba9cbc0992169b82987aa6aea2c542b7c594a138c3ded86ab9a0f",
@@ -39,6 +50,17 @@
    "subject_key": "bc15534d58d87fe27baadaf5f35135d39bf9e8337a9fc90e2201d834a710cf2d"
   },
   {
+   "printed": "11",
+   "restated": "Choose — [helper \"Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:\" = true → helper \"Gifts to charity in cash or by check, card or payroll deduction, including out-of-pocket volunteer costs, less the value of benefits received and the amounts that can't be deducted\"] [helper \"Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The helper always leaves out 'the part of a gift for which you received a state or local tax credit'. Schedule A says to disallow it only 'to the extent' of the credit, 'See Pub. 526 for more details and exceptions', and Pub. 526 says 'If the state or local tax credit ... doesn't exceed 15% of your payment amount ... your charitable contribution deduction isn't reduced.'",
+   "ruling": "Ruling: finding; p526 p. 5, Exception, 'If the state or local tax credit you receive or expect to receive doesn't exceed 15% of your payment amount ... your charitable contribution deduction isn't reduced'. The line 11 source leaves out every credit-earning part. Filed as BUG-1086.",
+   "context": "321b90b8968c712cf23324a446bc3aa70519a58332587ddb4eca153724cdcb12",
+   "date": "2026-11-22",
+   "run": "f98a3c956779792828e2ee6adff497da1b69a2fd9458f37a51f027da874b8b5c",
+   "severity": "low",
+   "subject_key": "8510bdcb9d3e64aa07d246a87b3821f64dd0a09351aa9b4ffe3c06a7fe47ac30"
+  },
+  {
    "printed": "12",
    "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 12 is \"Other than by cash or check,\" but the restatement sums gift.allowed, which the glossary does not define. Without that definition, the per-gift amount cannot be checked against the IRS property-gift rules.",
@@ -65,6 +87,16 @@
    "model": "Line 12 is gifts 'Other than by cash or check.' The value gift.allowed and the gift entries it is summed over are not defined in the text given, so it cannot be confirmed that only noncash gifts are counted and that the cash gifts on line 11 are excluded.",
    "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and `gift.allowed` is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input. No change to the data.",
    "subject_key": "0992b6685f6af44b68986d3a083db6ae0eff1326ff489603ce3741349fc2d878"
+  },
+  {
+   "printed": "15",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 15 is fixed at $0, but no refusal covers 'Casualty and theft loss(es) from a federally declared disaster ... Attach Form 4684 and enter the amount from line 18 of that form.'",
+   "ruling": "Ruling: scope; f1040sa line 15. Every casualty or theft loss is refused by sd.casualty ('In 2025, was your ... property damaged, destroyed or stolen, leaving a loss that insurance did not cover ...'), asked in the Schedule A topic (bank group paid_more); line 15 stays zero on any completed return. The restatement does not show that refusal, which sits on Schedule D's screen.",
+   "context": "321b90b8968c712cf23324a446bc3aa70519a58332587ddb4eca153724cdcb12",
+   "date": "2026-11-22",
+   "run": "f98a3c956779792828e2ee6adff497da1b69a2fd9458f37a51f027da874b8b5c",
+   "subject_key": "91eeda5e90d9fc5b1801ed4bad64fed63886a365b0888e9e670c85f5eee66c95"
   },
   {
    "printed": "15",
@@ -126,6 +158,16 @@
    "date": "2026-11-15",
    "run": "e675147531c33062e611c7a68429c71211a057a25e5ba3947203544d2ae158b1",
    "subject_key": "f4030bc6a1b5bb5237c045ff3126e5b54a5af24de5594c1f1295efe9271edef1"
+  },
+  {
+   "printed": "16",
+   "restated": "Choose — [s1 helper \"Any gambling winnings\" = true → helper \"Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b\"] [s1 helper \"Any gambling winnings\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Only gambling losses are computed, and the refusals cover estate tax on income in respect of a decedent, bond premium, debt-instrument losses, pension and impairment items. Line 16 also lists 'Casualty and theft losses of income-producing property ... from Form 4684, lines 32 and 38b, or Form 4797, line 18a', 'Deduction for repayment of amounts under a claim of right if over $3,000', and a net qualified disaster loss, none of which is handled or refused.",
+   "ruling": "Ruling: scope; i1040sca line 16. Casualty and theft losses of income-producing property and a net qualified disaster loss are refused by sd.casualty; a repayment under a claim of right over $3,000 is refused through s3.repaid_income (scope.yaml and s3.yaml cite p525 p. 36, Repayments); the other items are refused by sa.unsupported. Only gambling losses are computed.",
+   "context": "321b90b8968c712cf23324a446bc3aa70519a58332587ddb4eca153724cdcb12",
+   "date": "2026-11-22",
+   "run": "f98a3c956779792828e2ee6adff497da1b69a2fd9458f37a51f027da874b8b5c",
+   "subject_key": "4ef5df5054faa3b00476ff5d86caf7fb06839e0865f56322eb7f552a4f748e12"
   },
   {
    "printed": "16",
@@ -221,6 +263,17 @@
    "date": "2026-11-07",
    "run": "9aa8d1e8c1601c032e68ed58f7108abb8a8b1fcc1b896c777f161fab5137ad5b",
    "subject_key": "857d83a68ab5a0197dac2b7ca9a4996598a4695c957c7dc37aea320e1dc86f49"
+  },
+  {
+   "printed": "6",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 6 is fixed at $0 and the refusals only cover the foreign income tax deduction. The IRS line also includes 'generation-skipping tax (GST) imposed on certain income distributions', which no refusal or computation covers.",
+   "ruling": "Ruling: finding; i1040sca p. 7, Line 6, 'generation-skipping tax (GST) imposed on certain income distributions'. Line 6 is zero and only the foreign income tax deduction is screened. Filed as BUG-1085.",
+   "context": "321b90b8968c712cf23324a446bc3aa70519a58332587ddb4eca153724cdcb12",
+   "date": "2026-11-22",
+   "run": "f98a3c956779792828e2ee6adff497da1b69a2fd9458f37a51f027da874b8b5c",
+   "severity": "low",
+   "subject_key": "9c97eed87e3cfd6f30f66c4b57d3095f776cbaeef34dc537cb9efa2c581a723c"
   },
   {
    "printed": "6",

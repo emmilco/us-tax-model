@@ -4,20 +4,20 @@
  "family": "claude",
  "base": "6213cbf0bd74c7287c8df74632c3e9e60ca2c1ec5669254a3943f68c6fce9264",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "e698f9c3d0a997d4c7ace4ef7ad0aeb787a6ed5271f8d63dfac3f27357dae931",
+   "record": "c7b6846becc241eabfe86a8142a178358860f1cf722488e155e3c36f9acc7d84",
    "status": "MATCH",
-   "subject_key": "60e6f86c0574d21577a2afab5bbdb89934ddc3dd9eb3b0449d3589475d5a2b20"
+   "subject_key": "9cdd0d24f5abf6b1e4d4db598d0e7d181d79fc38d5440ca1eaafd818e74000af"
   },
   {
    "key": "2",
-   "record": "e698f9c3d0a997d4c7ace4ef7ad0aeb787a6ed5271f8d63dfac3f27357dae931",
+   "record": "c7b6846becc241eabfe86a8142a178358860f1cf722488e155e3c36f9acc7d84",
    "status": "MATCH",
-   "subject_key": "ed73518531dfaa3f335b79004be55c4164b1dc7220a7bd268811546bb73b08ed"
+   "subject_key": "a4a51322150edeacf4a8696242392224199b640a93e5cb135bfb9efc5b1caea9"
   },
   {
    "key": "3",
@@ -33,9 +33,9 @@
   },
   {
    "key": "5",
-   "record": "6213cbf0bd74c7287c8df74632c3e9e60ca2c1ec5669254a3943f68c6fce9264",
+   "record": "c7b6846becc241eabfe86a8142a178358860f1cf722488e155e3c36f9acc7d84",
    "status": "MATCH",
-   "subject_key": "119b74ba52156dfcfcfd2a0e59e44c8beee474a84a5901c7413b8a5fbf64be04"
+   "subject_key": "e5c2a084a65da00dbc9e6ed871fab6277b5f9ff3c0633e60626483f12c05bae1"
   },
   {
    "key": "6",
@@ -87,9 +87,9 @@
   },
   {
    "key": "14",
-   "record": "c5e216ca5da9046e9e9650506eeb2cfe54eec9d430442045b7d6b4bbc23414d0",
+   "record": "c7b6846becc241eabfe86a8142a178358860f1cf722488e155e3c36f9acc7d84",
    "status": "MATCH",
-   "subject_key": "80e8bbc6d0a1a38a798c2abb07854ba76a316de9b29aab4fd3af35c496596220"
+   "subject_key": "e53836539941028a20744530192afc3910a456f8232368f0349c2531899c8602"
   },
   {
    "key": "15",
@@ -117,11 +117,11 @@
   }
  ],
  "subjects": {
-  "1": "a5554a47cd081a7c0790a35ef0b8c2678bc9efdb4c8a4040879282eef28e4d16",
-  "2": "db0a1ad1d45c757774eb78e66a8a981d7b452dc81b95d636d49d2611188fd363",
+  "1": "ae50917d9855e73d8400df4951753f686f55a342021a4fd90508676932de4775",
+  "2": "4e6c4cb5becc57812c9022ee5d29955c2dd026ec1ef1260066b7d3c2d32c3e5d",
   "3": "04a638edf0cfaadaf2e62796865d9920e7b6a2fe2d8f0b64cd604f34f13b8f52",
   "4": "aa744040bb91dc6c31d93efc105025d1cdcdb1cbd76995d1f6175b0967ff6d95",
-  "5": "44f9f14f0311182e2b2f3ecbcd93f14c54fd4b5d05dff78bdeeeac9acb468225",
+  "5": "a87d39d80b159cff98550293e21e31c6ace6ffb82493092c7974b5a22d62f220",
   "6": "feb322d09d1595d8ae244a98f90048f926e8506f3995211bfc87d33a6fc351cb",
   "7": "152433cd6dd9464b00bf9db4a45eec5b53f906d1652cd5e9bdebeded584f0b4f",
   "8": "538d898c1b3a16dcffd7fdc820865f437b7a7201d6f24f47ccc8635d91402d8e",
@@ -130,7 +130,7 @@
   "11": "e493cef3008a752abbfa3f39d5bb2a86be51f5d4a09c598129c363effbe76ec6",
   "12": "23a3ed2ef9769c4bd181c1935fe380f7e894df0be969f85535c1b366712efd43",
   "13": "3b41141dcf12fe6a46ffd559b888de52cf278553d128a8025534bbf667a4e6dc",
-  "14": "829698b340cb990f8ba20f832f928b48f56c85ca141e11a7d8d2ec7b6eade7ba",
+  "14": "406673d6bea3d360ef240dfbb1a809f80264386b18935e98116deebff7b0f3c8",
   "15": "0de672202e97284f3a651f35a5b384206f74b45434a10e0a32b016216f83fd96",
   "16": "e6c3a635a3cf116456e97d124ffe1914e8d83a52d3390c334902bd51d3cc7ccc",
   "17": "b1655c659e2f3bef1abc7071018ba5e7a88cd456e85c575aabbf231ead264046",

@@ -1397,6 +1397,12 @@ params:
       cite:
         doc: i2441
         locator: 'p. 2, Line 1, "If you have more than three care providers, check the box above line 1 and attach a statement to your return with the required information"'
+    dc.persons_listed:
+      type: Count
+      value: 3
+      cite:
+        doc: i2441
+        locator: 'p. 3, Line 2, "If you have more than three qualifying persons, check the box on line 2 and attach a statement to your return with the required information"'
     dc.one:
       type: Count
       value: 1

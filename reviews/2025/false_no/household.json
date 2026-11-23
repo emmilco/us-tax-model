@@ -104,95 +104,47 @@
    ]
   },
   "gate:household.ask_spouse_cp_domicile": {
-   "subject_sha": "d40bffa2af88a4395b098ea619257c5799b1df45d86723fb6b78373219afc38f",
+   "subject_sha": "6c7028b2baba14ea67258e65245d5cd007a47c4695e04f2f993129e10fced6a4",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A registered domestic partner in California, Nevada, or Washington who files single or head of household and has never been married.",
-       "why_no": "The gate requires a possible marriage; an RDP is not married for federal tax purposes, and the gated question asks only about a husband or wife, so the truthful answer is no or no spouse.",
-       "line": "household.spouse_cp_domicile_if_asked",
-       "irs_text": "p555 p. 2: 'RDPs in Nevada, Washington, or California must generally follow state community property laws and report half the combined community income of the individual and his or her RDP.'",
+       "pattern": "3",
+       "who": "A registered domestic partner domiciled in California, Nevada or Washington who has never been married. They file single or head of household, and their partner had wages or receives a pension earned during the partnership.",
+       "why_no": "The gate's helper counts a marriage only when the filing status states one, or a single or head of household filer 'has been married at some time'. An RDP who has never married truthfully says no, so the gate is false and neither question is asked. Even if it were asked, 'husband or wife' and 'while the two of you were married' leave the partner out.",
+       "line": "household.spouse_cp_domicile_if_asked (and household.cp_retirement_if_asked)",
+       "irs_text": "p555 p. 2, Registered domestic partners: 'RDPs in Nevada, Washington, or California must generally follow state community property laws and report half the combined community income of the individual and his or her RDP ... They can use the single filing status or, if they qualify, the head of household filing status.'",
        "severity": "high",
-       "fix": "Treat an RDP in a community property state as within the gate and ask about the RDP's domicile, not only a husband or wife."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A married filer whose spouse or RDP is domiciled in a foreign country with community property law, or a filer and spouse with different domiciles one of which is such a foreign country.",
-       "why_no": "The question lists only nine U.S. states; the spouse did not live in or have a permanent home in any listed state, so the filer answers no.",
-       "line": "household.spouse_cp_domicile_if_asked",
-       "irs_text": "p555 p. 2: 'The law of the state, or the law of the foreign country, where you are domiciled will determine if you have community property, community income, or both.'",
-       "severity": "high",
-       "fix": "Ask whether either spouse or RDP was domiciled in any community property jurisdiction, including a foreign country, or add an 'other foreign community property country' branch."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A married filer who is domiciled in a community property state but whose spouse or RDP is domiciled in a non-community-property state.",
-       "why_no": "The question asks only whether the husband or wife lived in or had a permanent home in a listed state; the spouse did not, so the filer answers no even though the filer's own domicile is in a community property state.",
-       "line": "household.spouse_cp_domicile_if_asked",
-       "irs_text": "p555 p. 2: 'If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both.'",
-       "severity": "high",
-       "fix": "Ask about either spouse's or RDP's domicile, including the filer's own, not just the husband's or wife's."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A married filer who now lives in a non-community-property state and receives a civil service annuity or military retirement pay based on service performed while married and domiciled in a community property state in an earlier year.",
-       "why_no": "The question asks only about 2025 while married; the spouse did not live in or have a permanent home in a listed state in 2025, so the filer answers no.",
-       "line": "household.spouse_cp_domicile_if_asked",
-       "irs_text": "p555 p. 6: 'Even if you now live in a noncommunity property state and you receive a civil service annuity, it may be community income if it is based on services you performed while married ... and domiciled in a community property state.' Also p555 p. 6: military retirement pay is community income when based on services performed during marriage and domicile in a community property state.",
-       "severity": "high",
-       "fix": "Ask about domicile during prior years of marriage or service, especially when retirement pay is received, or separately ask whether any retirement pay is based on service in a community property state."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer, including a qualifying surviving spouse, who in 2025 sells property inherited from a spouse or RDP who had lived in a community property state and whose domicile affects the inherited basis.",
-       "why_no": "The gate excludes qualifying surviving spouse, and the question asks only whether the husband or wife lived in or had a permanent home in a listed state in 2025 while married; a deceased spouse or an earlier-year domicile makes the truthful answer no.",
-       "line": "household.spouse_cp_domicile_if_asked",
-       "irs_text": "p555 p. 2: 'Community property laws also affect your basis in property you inherit from a married person who lived in a community property state.'",
-       "severity": "high",
-       "fix": "Do not exclude qualifying surviving spouse from the community-property or basis question; ask separately whether the filer inherited property from a spouse or RDP who was domiciled in a community property state, regardless of the year."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer who was married earlier in 2025 but divorced or widowed by year-end and now files as single or head of household, or as married filing jointly for the year of death.",
-       "why_no": "They read 'husband or wife' as the current spouse and answer no because they have no current husband or wife, although the question says 'while you were married' and the former or deceased spouse lived in a listed state during the marriage.",
-       "line": "household.spouse_cp_domicile_if_asked",
-       "irs_text": "p555 p. 2: 'If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both.'",
-       "severity": "medium",
-       "fix": "Say 'your spouse or former spouse, including a deceased spouse, at any time during 2025 while you were married' and add a help example for divorce or death during the year."
+       "fix": "Make the gate true also for a filer who was in a registered domestic partnership (or civil union) at any time in 2025. Ask both questions about 'your husband, wife or registered domestic partner' and say 'while married or in a registered domestic partnership'. Note in the help that RDPs in CA, NV and WA follow community property law."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose spouse or RDP did live in or have a permanent home in a listed community property state in 2025 while married, but who wants to finish the electronic interview.",
-       "why_no": "The help says 'A Yes ends the interview here'; the filer reads a yes as aborting or refusing the return, so they answer no to keep going.",
+       "who": "A married filer in Texas, California or another community property state who files head of household as 'considered unmarried' because they lived apart from their spouse for the last six months of 2025. Or a filer filing single under a separation decree whose state treats income up to divorce as community income.",
+       "why_no": "The tool and the filing-status rules have told them they are 'considered unmarried' or treated as single. If the helper asks about a past or former marriage, they read it as asking about an earlier, ended marriage and answer no, even though they are still married. The gate is then false.",
        "line": "household.spouse_cp_domicile_if_asked",
-       "irs_text": "p555 p. 2: 'If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both.'",
+       "irs_text": "p555 p. 5: 'Check your state law if you are separated but don't meet the conditions discussed in Spouses living apart all year ... In some states, the income you earn after you are separated and before a divorce decree is issued continues to be community income.'",
        "severity": "medium",
-       "fix": "Remove the warning that a yes ends the interview or explain that a yes opens the required community-property questions; do not make the truthful answer appear to terminate the return."
+       "fix": "Word the helper's question as 'Were you legally married at any time in 2025, or have you ever been married, even if you lived apart, are separated, or file as unmarried or head of household?' Also make the gate true whenever the filer qualified for head of household as 'considered unmarried'."
       }
      ],
-     "prompt_sha": "4feda74017cd243b59cd67d49517f4d1d3cfc204c02d60fd6569de1b0ca1243c",
+     "prompt_sha": "b7c6197cd307a0e20b358e7201d7c786940cf2f872e0c40982b7bb8593f6e836",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_household.ask_spouse_cp_domicile.d40bffa2af88.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.097912,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_household.ask_spouse_cp_domicile.6c7028b2baba.1.response.txt"
     }
    ],
    "condition": "household.ask_spouse_cp_domicile",
    "lines": [
+    "household.cp_retirement_if_asked",
     "household.spouse_cp_domicile_if_asked"
    ],
    "inputs": [
+    "household.cp_retirement",
     "household.spouse_cp_domicile"
    ],
    "used": [
@@ -202,15 +154,19 @@
      "text_sha256": "2dd22ea2d7de4975655ee6396abc0e0308c9a2a55ac3d3545dd5898316da88a2",
      "pages": [
       2,
+      5,
       6
      ],
      "how": "cited pages",
      "locators": [
       "p. 2, Domicile, \"If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both\"",
-      "p. 2, Domicile, \"If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both\"; p. 6, Military retirement pay, \"Active military pay earned while married and domiciled in a community property state is also community income\""
+      "p. 2, Domicile, \"If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both\"; p. 6, Military retirement pay, \"Active military pay earned while married and domiciled in a community property state is also community income\"",
+      "p. 5, Pensions, \"distributions from pensions will be characterized as community or separate income depending on the respective periods of participation in the pension while married (or during the registered domestic partnership) and domiciled in a community property state\"; p. 6, Civil service retirement, \"Even if you now live in a noncommunity property state and you receive a civil service annuity, it may be community income if it is based on services you performed while married (or during the registered domestic partnership) and domiciled in a community property state\"; p. 6, Military retirement pay, \"military retirement pay for services performed during marriage and domicile in a community property state is community income\"",
+      "p. 6, Civil service retirement, \"Even if you now live in a noncommunity property state and you receive a civil service annuity, it may be community income\""
      ],
      "cols_pages": [
       2,
+      5,
       6
      ],
      "cols_sha256": "3f3fcfee62061de0f01cb468367f8da77c98aa006c9e6d23c3e0045e740ed99d"

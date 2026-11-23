@@ -3,7 +3,7 @@
 The operations that take the 2025 definitions to 2026, one file per form they act on, applied by
 `tools/year_changes.py` (format and checks: `tools/README.md`, "Year changes as operations"; design:
 `docs/2026-11-14_year_change_operations.md`). check-all applies them to `forms/2025`, `interview/2025`,
-`ambiguities/2025.yaml` and the archived pages of `sources/2026` on every run (130 entries, 1,256 operations); `tools/year_diff.py --from 2025 --to 2026 --adopt` applies them to the
+`ambiguities/2025.yaml` and the archived pages of `sources/2026` on every run (138 entries, 1,277 operations); `tools/year_diff.py --from 2025 --to 2026 --adopt` applies them to the
 adopted copy. Nothing here is read by the build.
 
 | File | Entries | Operations | Change-map entries |
@@ -16,14 +16,17 @@ adopted copy. Nothing here is read by the build.
 | `dependent.dc.yaml` | 1 | 1 | C-PEOP-18 |
 | `dependent.edu.yaml` | 3 | 36 | C-CRED-18+C-PEOP-16, C-CRED-20, C-PEOP-17 |
 | `f1040.page1.yaml` | 1 | 5 | C-PRI-06 |
+| `f1040.x1-digital.yaml` | 1 | 1 | C-X1-F1040-01 |
 | `f1040.yaml` | 8 | 32 | C-PRI-01, C-PRI-02, C-PRI-18, C-PRI-08, C-PRI-04, C-PRI-03, C-PRI-07, C-PRI-05 |
 | `f1095a.wording.yaml` | 1 | 8 | C-PEOP-02 |
+| `f1116.yaml` | 1 | 2 | C-X1-F1116-01 |
 | `f2441.wording.yaml` | 2 | 5 | C-CRED-13, C-CRED-14 |
-| `f2441.yaml` | 3 | 40 | C-CRED-10, C-CRED-11, C-CRED-12 |
+| `f2441.yaml` | 4 | 43 | C-CRED-10, C-CRED-11, C-MFS-F2441-01, C-CRED-12 |
 | `f4562.yaml` | 1 | 5 | C-BUS-11 |
 | `f5329.yaml` | 3 | 15 | C-SCHED-11, C-PEOP-03, C-PEOP-04, C-PEOP-05 |
 | `f5695.interview.yaml` | 1 | 28 | C-CRED-01 |
 | `f5695.yaml` | 8 | 335 | C-CRED-01, C-CRED-02, C-CRED-03, C-CRED-04, C-CRED-05, C-CRED-06, C-CRED-07, C-CRED-08 |
+| `f8582.yaml` | 1 | 2 | C-X1SCHE-F8582-01 |
 | `f8863.wording.yaml` | 1 | 8 | C-CRED-17 |
 | `f8863.yaml` | 1 | 7 | C-CRED-18 |
 | `f8880.yaml` | 1 | 20 | C-CRED-16 |
@@ -31,8 +34,9 @@ adopted copy. Nothing here is read by the build.
 | `f8889.yaml` | 3 | 40 | C-PRI-20, C-PRI-22, C-PRI-23 |
 | `f8959.yaml` | 2 | 23 | C-SCHED-13, C-SCHED-15 |
 | `f8960.wording.yaml` | 1 | 6 | C-SCHED-29 |
+| `f8960.x1-digital.yaml` | 1 | 1 | C-X1-F8960-01 |
 | `f8960.yaml` | 2 | 8 | C-SCHED-27, C-SCHED-28 |
-| `f8962.yaml` | 3 | 17 | C-PEOP-12, C-PEOP-14, C-PEOP-27 |
+| `f8962.yaml` | 4 | 20 | C-PEOP-12, C-PEOP-14, C-PEOP-27, C-MFS-F8962-01 |
 | `f8995.yaml` | 1 | 12 | C-SCHED-31 |
 | `f8995a.yaml` | 1 | 4 | C-SCHED-32 |
 | `household.wording.yaml` | 1 | 5 | C-PEOP-01 |
@@ -46,16 +50,18 @@ adopted copy. Nothing here is read by the build.
 | `person.sav.yaml` | 2 | 27 | C-CRED-16, C-PEOP-21 |
 | `person.wording.yaml` | 4 | 11 | C-PEOP-01, C-PEOP-10, C-PEOP-19, C-PEOP-20 |
 | `qbi.yaml` | 3 | 12 | C-SCHED-31, C-SCHED-32, C-SCHED-33 |
+| `rental.yaml` | 1 | 2 | C-X1SCHE-RENTAL-01 |
 | `retirement.wording.yaml` | 1 | 2 | C-PEOP-07 |
 | `retirement.yaml` | 4 | 24 | C-PEOP-04, C-PEOP-11, C-PEOP-05, C-PEOP-07 |
 | `s1a.yaml` | 6 | 188 | C-SCHED-01, C-SCHED-02, C-SCHED-03, C-SCHED-04, C-SCHED-05, C-SCHED-08 |
+| `s2.x2-paynow2.yaml` | 1 | 9 | C-X2-S2-01 |
 | `s2.yaml` | 4 | 37 | C-SCHED-10, C-SCHED-11, C-PEOP-03, C-SCHED-13, C-PEOP-12 |
 | `s3.yaml` | 2 | 12 | C-SCHED-12, C-SCHED-39 |
 | `s3a.yaml` | 1 | 2 | C-PRI-05 |
 | `s8812.yaml` | 7 | 20 | C-SCHED-16, C-SCHED-17, C-SCHED-18, C-SCHED-19, C-SCHED-20, C-SCHED-23, C-CRED-05, C-SCHED-26 |
 | `sa.yaml` | 6 | 34 | C-PRI-14, C-PRI-16, C-PRI-17, C-PRI-15, C-PRI-18 |
 | `sc.wording.yaml` | 3 | 10 | C-BUS-03, C-BUS-05, C-BUS-08 |
-| `sc.yaml` | 4 | 28 | C-BUS-02, C-BUS-04, C-BUS-06, C-BUS-11 |
+| `sc.yaml` | 4 | 26 | C-BUS-02, C-BUS-04, C-BUS-06, C-BUS-11 |
 | `scope.credits.yaml` | 1 | 1 | C-SCHED-39 |
 | `scope.wording.yaml` | 1 | 2 | C-PEOP-20 |
 | `scveh.wording.yaml` | 1 | 8 | C-BUS-03 |

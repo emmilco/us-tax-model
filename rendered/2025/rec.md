@@ -27,7 +27,7 @@
 ## (gate) — `rec.before_prior_year_if_any`
 
 - **Authored helper label:** A recovery for something paid or deducted before 2024, asked only after a Yes to the question on money paid back (no otherwise)
-- **Encoded (Bool):** Choose — [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?" = true → helper "Was any of the money paid back for something paid or deducted before 2024?"] [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?" = false → helper "Year parameter sa.no (no)"]
+- **Encoded (Bool):** Choose — [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount you deducted or took a credit for on an earlier year's return, other than a state or local income tax refund?" = true → helper "Was any of the money paid back for something paid or deducted before 2024?"] [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount you deducted or took a credit for on an earlier year's return, other than a state or local income tax refund?" = false → helper "Year parameter sa.no (no)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.recovery",{"const":true}],"op":"test"},"then":"rec.before_prior_year"},{"guard":{"eq":["scope.recovery",{"const":false}],"op":"test"},"then":"rec.no"}],"op":"choose"}`
 - Cite: [p525] p. 27, Worksheet 2, "complete a separate worksheet for each year. Use information from your tax return for the year the expense was deducted" (2025; sha256 39b0fa5e)
 
@@ -41,7 +41,7 @@
 ## (gate) — `rec.nonitemized_if_any`
 
 - **Authored helper label:** A recovery of a deduction taken without itemizing or of a credit, asked only after a Yes to the question on money paid back (no otherwise)
-- **Encoded (Bool):** Choose — [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?" = true → helper "Was any of the money paid back for a deduction taken without itemizing, or for a credit?"] [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?" = false → helper "Year parameter sa.no (no)"]
+- **Encoded (Bool):** Choose — [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount you deducted or took a credit for on an earlier year's return, other than a state or local income tax refund?" = true → helper "Was any of the money paid back for a deduction taken without itemizing, or for a credit?"] [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount you deducted or took a credit for on an earlier year's return, other than a state or local income tax refund?" = false → helper "Year parameter sa.no (no)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.recovery",{"const":true}],"op":"test"},"then":"rec.nonitemized"},{"guard":{"eq":["scope.recovery",{"const":false}],"op":"test"},"then":"rec.no"}],"op":"choose"}`
 - Cite: [p525] p. 28, Nonitemized Deduction Recoveries, "This section discusses recovery of deductions other than itemized deductions"; p. 28, Amounts Recovered for Credits, "you must increase your 2024 tax by the amount of the recovery" (2025; sha256 39b0fa5e)
 
@@ -55,14 +55,14 @@
 ## (gate) — `rec.sales_tax_if_any`
 
 - **Authored helper label:** A refund of general sales tax, asked only after a Yes to the question on money paid back (no otherwise)
-- **Encoded (Bool):** Choose — [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?" = true → helper "Was any of the money paid back a refund of general sales tax?"] [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?" = false → helper "Year parameter sa.no (no)"]
+- **Encoded (Bool):** Choose — [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount you deducted or took a credit for on an earlier year's return, other than a state or local income tax refund?" = true → helper "Was any of the money paid back a refund of general sales tax?"] [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount you deducted or took a credit for on an earlier year's return, other than a state or local income tax refund?" = false → helper "Year parameter sa.no (no)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.recovery",{"const":true}],"op":"test"},"then":"rec.sales_tax"},{"guard":{"eq":["scope.recovery",{"const":false}],"op":"test"},"then":"rec.no"}],"op":"choose"}`
 - Cite: [p525] p. 24, Example 27, "The maximum refund that you may have to include in income is $500 because it’s less than the excess of the tax deducted" (2025; sha256 39b0fa5e)
 
 ## (helper) — `rec.joint_any`
 
 - **Authored helper label:** Money paid back on a joint 2025 return
-- **Encoded (Bool):** scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?" = true and refund helper "Married filing jointly for 2025" = true
+- **Encoded (Bool):** scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount you deducted or took a credit for on an earlier year's return, other than a state or local income tax refund?" = true and refund helper "Married filing jointly for 2025" = true
 - Expr: `{"all":[{"eq":["scope.recovery",{"const":true}],"op":"test"},{"eq":["refund.joint",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [p525] p. 27, Worksheet 2, "Use information from your tax return for the year the expense was deducted" (2025; sha256 39b0fa5e)
 
@@ -85,7 +85,7 @@
 ## (helper) — `rec.path`
 
 - **Authored helper label:** Worksheet 2 is used — money was paid back for 2024 and you itemized deductions for 2024
-- **Encoded (Bool):** Choose — [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?" = false → helper "Year parameter sa.no (no)"] [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?" = true → refund helper "Did you itemize deductions on Schedule A for 2024?"]
+- **Encoded (Bool):** Choose — [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount you deducted or took a credit for on an earlier year's return, other than a state or local income tax refund?" = false → helper "Year parameter sa.no (no)"] [scope helper "In 2025, were you (or, on a joint return, your spouse) paid back an amount you deducted or took a credit for on an earlier year's return, other than a state or local income tax refund?" = true → refund helper "Did you itemize deductions on Schedule A for 2024?"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.recovery",{"const":false}],"op":"test"},"then":"rec.no"},{"guard":{"eq":["scope.recovery",{"const":true}],"op":"test"},"then":"refund.itemized"}],"op":"choose"}`
 - Cite: [p525] p. 24, Deductions not itemized, "If you didn’t itemize deductions for the year for which you received the recovery of an expense that was deductible only if you itemized, don’t include any of the recovery amount in your income"; p. 24, Itemized Deduction Recoveries, statement 2, "You received a refund other than an income tax refund, such as a general sales tax or real property tax refund" (2025; sha256 39b0fa5e)
 

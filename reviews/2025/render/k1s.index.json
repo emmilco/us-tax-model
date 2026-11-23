@@ -2,378 +2,397 @@
  "kind": "render",
  "form": "k1s",
  "family": "claude",
- "base": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
- "head_rows": {
-  "match / mismatch / unclear / missing": "60 / 1 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
- },
+ "base": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
  "lines": [
   {
    "key": "18, 19",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "89521ba38ee8e6db25a44ea5b3bb1ba6b34846e310df500cd2f4bde34feceb3a"
   },
   {
    "key": "(screen) (k1s.disposed)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "94ccc6b6c4c7154fd9e5b6362f9e2555fc85ce4286f17babd9119e821a50c4cc"
   },
   {
    "key": "1 (k1s.box1_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "be2cc6aa5ed597dddf502707e9df9dac2907b472fa49178f6524f41f8224c6e2"
   },
   {
    "key": "2 (k1s.box2_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "678cddd21b1b19c3c0419b2dc067f5d962a1e39b8d17c05dafa5d7961930d139"
   },
   {
    "key": "3 (k1s.box3_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "657de336a22b3da5aa82b05432f557cf04fdb85d5609fd4628c2a257ea3dcbce"
   },
   {
    "key": "4 (k1s.box4_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "3fffd5103b962d3e21687ef3873fa5b68faa4f631d70064f75d72b225b0e0154"
   },
   {
    "key": "5a (k1s.box5_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "d1d30bffb3139a689f89c866aa5923dde0f1ad4a64f9f8d73d236a156246eaee"
   },
   {
    "key": "1 (k1s.box1)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "c21e6cd243fc801051225020f6e35288a1af3e14ffdeb9cedaf9d79899274b9f"
   },
   {
    "key": "2 (k1s.box2)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "3ceecb27d776e1e3c8559925e3b90e3b839191183d42de4dd6d5edc5bc16f044"
   },
   {
    "key": "3 (k1s.box3)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "f53042c2517de48beb6b7094a87ac552b66572137aac85a5a6dc5606fa594028"
   },
   {
    "key": "4 (k1s.box4)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "fa37384e71b41769b54400dbaf143e6d30c334f6b318ff8f954e3af0feb838e8"
   },
   {
    "key": "5a (k1s.box5a)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "8b14b61a06c8e638e839f6b9b9c77ae01c668a535a7ab017068dc93221ab8e81"
   },
   {
    "key": "5b",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "e20590847a950e3ff1572cddef0599c099d827347155c483168ee222a2c45596"
   },
   {
    "key": "6",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "814753b2d18ffa822296d39c1cc30fa1ded34ff6f55655b3abd7d7dd31dd0c95"
   },
   {
    "key": "7 (k1s.box7_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "44b9e8abb50323a1b0b7766d63d9d21d5c814dfe743593d388d070ca5ab6de7b"
   },
   {
    "key": "8a (k1s.box8_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "39b3a520a6529a847ef59d1449f2eab212793ed884a25a06ceff541b17d60c39"
   },
   {
    "key": "9",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "dda5a49a7c3c5ca8d16a88c7c1f3a6a86c4f646d3bd5d4a1c199a4cf580ea727"
   },
   {
    "key": "10",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "3cada9b626688ac01131c8d1914004ac5092c89f7edc1be3e528b19d855dd662"
   },
   {
    "key": "11, 12",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "cc19788a438f22392290d82738c120a31fe575722da64a3f321947f6d59298a7"
   },
   {
    "key": "7 (k1s.box7)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "e96eb10b1c2742f12c5f49cc9981ca795618f67ef4071b970449960c1e3a5987"
   },
   {
    "key": "8a (k1s.box8a)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "63cdf88aeafd2edc1f14f8568d05cbda4ad49e37eb7e5fffbc735eda5e72770d"
   },
   {
    "key": "8b",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "70bd1a340ca22cc2a434c4df647c8fbfa390b55ac180dc27e12478bd0cce7b52"
   },
   {
    "key": "8c",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "d39d2b7e63c3b86b752b80ed504a22ebbcab82016cd4f03303e539f8ad54dff4"
   },
   {
    "key": "(screen) (k1s.box8_stmt)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "f0bea88d976a9240bb8b308a2fda8d667f71d5b0dec66bd651e5d8431a190fb9"
   },
   {
    "key": "13 O (k1s.box13o_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "5d796345b62f905565f7a6c0f47effeb6fc370cb6cd4a20be44d2d8d679cdce5"
   },
   {
    "key": "13",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "ce01520a85580dbd0ce26832978504ef8927f118753c67a2d2982f65721af817"
   },
   {
    "key": "14",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "82f867065021c837e21937e8cb59a829c6bab0c8c42297e6898cdb5b7e21046f"
   },
   {
    "key": "15",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "696b605c0cbf3be01bcd8f879d9a5eb32e9952fc780a1a621de8b700b955182c"
   },
   {
    "key": "16",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "6e0337e8d2dc25e056601034f3f175a0364b3123af63593cab35fe8c28df317a"
   },
   {
    "key": "17 (k1s.box17_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "fd416d85c11f1d06664be5fff39cbb0971f3dbf9dce1d9dc1cfa440966625aa5"
   },
   {
    "key": "13 O (k1s.box13o)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "3b0c23afd1ce5fa0f3fc9f2609e781a99c20c53a052b10c31d5ca6b968bee6cd"
   },
   {
    "key": "16 A (k1s.box16a_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "22681ab7bac749bdb16de2cc701473e7acffd67eb0c65c5c7fce0d9299996962"
   },
   {
    "key": "16 B (k1s.box16b_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "90e16b5bfa844b82172a06ced837d6be6db6cc361a5b31d4c294d5cc6049cfa6"
   },
   {
    "key": "16 C (k1s.box16c_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "37b50199412a3c87710a5ace22377cae21b99cf6fa0e12d507553948c1dbc3f1"
   },
   {
    "key": "16 D (k1s.box16d_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "84ad94bde6702d7fa8a7d6ca8c4844e34e1ebcc5efa02330043c4e1a541c1d2b"
   },
   {
    "key": "16 E, F",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "26b230b2f1acf8fc0523058d17c3e6ae14e833827a90c3c7dd86db166e8a2369"
   },
   {
    "key": "16 A (k1s.box16a)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "f8d1afff72ab60ca62c2143ce78b0e36f4a660edb1dd96f7eb50220c87a1a5cd"
   },
   {
    "key": "16 B (k1s.box16b)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "d2307b1382d4d1995483d504dd0ab9863b707830b33b6aa23685ae0daad00064"
   },
   {
    "key": "16 C (k1s.box16c)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "f28bb61f4ff2ca21b60420d947225f785cde4214b0382d16624d3a35cd1ddfe3"
   },
   {
    "key": "16 D (k1s.box16d)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "adb70314640ba66c8dea1997761e1d9eed58ec31f96cd2cc7a7400575d405723"
   },
   {
    "key": "17 V (k1s.box17v_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "5bc0cb7d23fed8f0f443fcd28cc424aa4e7310534455836773b196a6834ad0fd"
   },
   {
    "key": "17 (k1s.box17_other)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "e2189e920e60c7a87a34e7582b21afb089365a8bb9908d21bb532b437cc59a22"
   },
   {
    "key": "17 V (k1s.qbi_stmt)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "c3ab39b22b985cf50f9d2c501d380135ac93aeced3124527212b546b58222bd0"
   },
   {
    "key": "17 V (k1s.v_other)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "f4c324e2e531b7cbf0a2b773db3e68b096fcec59c70d0262bb441769409d9ce3"
   },
   {
    "key": "(screen) (k1s.work)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
-   "subject_key": "4dbac90b5337b8f88b1d0702cebfc2459de5d90b99107f57762f75336d31a4ce"
+   "subject_key": "81308159db6db75518da192cc932ba96ae3ae10a914fa3e69eb1c4eca059d318"
   },
   {
    "key": "(screen) (k1s.hours500)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
-   "subject_key": "45e2c315e7c02f6fe74021130079364051e6abe4c5b01bbd01db3ecb78082da6"
+   "subject_key": "ee4e800d7c0426b6e517bb9ddbf20a6b7e520221a61306a065af2d6a9e5407a9"
   },
   {
    "key": "(screen) (k1s.most_hours)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
-   "subject_key": "b9305810c17fc174fea4c31e2ac9000015c30433a4fa37bf4b815d966490b244"
+   "subject_key": "6e5ee9bfc64bce907b90abaca8587b80314799e39898b4211e5908fb62c1f705"
   },
   {
    "key": "(screen) (k1s.past_years)",
-   "record": "a9c38d171b0012c5908c9841fbd3693d8740f99be944ba1dfeaca225b3233a11",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
-   "subject_key": "22ab133ac8e6edeb92992427cb42a544c27eb44b3755b30b5396f11df46d14c2"
+   "subject_key": "ff51bcf507bb61e87f034bf6ecbd27181d849b65bb11ba209b14a45426f57d28"
   },
   {
    "key": "(screen) (k1s.mp_other)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
-   "subject_key": "6daca250fd110ea88fe88dbfd10c78cdfef549ac5d5b2453177e02a0f2dfc5cb"
+   "subject_key": "d583d1a9a4e0eccf1e6a412e6479fa8f4090b6625eeea2b862f8175eb667e80c"
   },
   {
    "key": "(screen) (k1s.active)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
-   "subject_key": "f9f4e189cc46ed1525fc91bd97aff018ed8207d840a44cf34976946a747605a9"
+   "subject_key": "1d080b4dbd88e93f8e072ae0c64ff7cf0d0e743dcda94d2a57973ab938ca5065"
   },
   {
    "key": "(screen) (k1s.tenth)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
-   "subject_key": "ac137b5b772bde20c915e2e4b2d3efa733b7af9b3b08774dbd044bba2e29da05"
+   "subject_key": "f9425cdc098b7af52e6e6ee19721181b7396b3e4cb67c793ddfa40e1ab312a50"
   },
   {
    "key": "(screen) (k1s.prior_any)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "fa258b0b386eee7521db899abefe550fba3ad7678f7850a39515d4eed2a5ad69"
   },
   {
    "key": "(screen) (k1s.basis_carry)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "987257584a6f3fed457ba976c5b7d49b6ee31fcfa4efb4b7723f4b97b2a53938"
   },
   {
    "key": "(screen) (k1s.risk_carry)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "4e4b186b62be3fd2c262e7692fbf8c6863283228a17b457dbf838bf60b5c724f"
   },
   {
    "key": "(c) (k1s.b1_prior)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "9b168e2c88a052b2e9aa2509754a4a34f2182de163d8399aa8a0e2d91587e1b8"
   },
   {
    "key": "(c) (k1s.b2_prior)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "b5c826d39bfa17e4c23a74b9a84ca459d99141e7f87ac98696628f9a3e6a4089"
   },
   {
    "key": "(c) (k1s.b3_prior)",
-   "record": "e06d311c5949c89eb41e4193f5c94ccc9ec20c7582c918a5f53830e1b3d03de7",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "1aa2bb6b75d8c8aecb5f42d8a226c137aa3d665d536d7a1729f3b18083dd6c38"
   },
   {
    "key": "(screen) (k1s.not_at_risk)",
-   "record": "a9c38d171b0012c5908c9841fbd3693d8740f99be944ba1dfeaca225b3233a11",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
    "subject_key": "0f99326b8a0cc7264410634aa4470563a8843ca2d118f9ff4bacdd4879fe7ace"
   },
   {
-   "key": "28 (k)",
-   "record": "a9c38d171b0012c5908c9841fbd3693d8740f99be944ba1dfeaca225b3233a11",
+   "key": "(screen) (k1s.trader)",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
-   "subject_key": "31fc5c63648738ecd0fda922bbce553eb3daf6e815d7578dbdec5c3465fa6f7a"
+   "subject_key": "bf9d69f9f72fc50425e0a0b21e0622c904426add24bee4a0a45d3c268d99f67f"
+  },
+  {
+   "key": "(screen) (k1s.re_pro)",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
+   "status": "MATCH",
+   "subject_key": "a40c33458db162d4063fb5463bf654c4cdbd97ca059b9e34882926e0bcf748f6"
+  },
+  {
+   "key": "(screen) (k1s.dwelling)",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
+   "status": "MATCH",
+   "subject_key": "8624315a64f274f2584943b80268c6771a07c179571dddb844eb8c6c282524a1"
+  },
+  {
+   "key": "(screen) (k1s.interest_buy)",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
+   "status": "MATCH",
+   "subject_key": "88b29254438eac83ea09df0eae584020375f132a2c88792a70cc248059d209d9"
+  },
+  {
+   "key": "28 (k)",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
+   "status": "MATCH",
+   "subject_key": "4082912939461e9ad995fa4b697f07a6c1c8c25e0d0ea34cf8a572eaede77590"
   },
   {
    "key": "28 (i)",
-   "record": "a9c38d171b0012c5908c9841fbd3693d8740f99be944ba1dfeaca225b3233a11",
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
    "status": "MATCH",
-   "subject_key": "29abb209b0101ef104a8d90f2086000ba49667d00c06de577a50aea9ded446bb"
+   "subject_key": "4e16b184c143c42286517599e333c8780939f6fcb36456198528673e72b12b4e"
   },
   {
    "key": "28 (h)",
-   "record": "a9c38d171b0012c5908c9841fbd3693d8740f99be944ba1dfeaca225b3233a11",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; as in the first round of this line. A real estate professional who materially participated reports box 2 in column (i) or (k) (i1120ssk, box 2); the K-1 forms leave that case to sche.re_pro, which refuses a real estate professional (lane x1-sche, 'Schedule E, line 43 (real estate professional)'; scout-k1 R-K20), and in this tree scope.k1 still refuses every K-1 filer. The line was re-reviewed only because k1s.past_years (test 5/6) changed wording this round (BUG-0913); the reply raises nothing about that change.",
-   "subject_key": "209c77bed34101d53c367420d43aff10892225b0a993cc753937ca59625d92c4"
+   "record": "c60803f58ccf285889a12adabb0a5ecda04e75ccf2800061c55ad568baa438a7",
+   "status": "MATCH",
+   "subject_key": "2c36bc3cb1de1ac657bcade54eab565016485bb65026fdd803ab16be50fd2564"
   }
  ],
  "subjects": {
@@ -421,13 +440,13 @@
   "17 (k1s.box17_other)": "a01ddc4cf600e189ed6b33509f5a753b11c51b0a26ff623b10d1bdca4bc40099",
   "17 V (k1s.qbi_stmt)": "a9d6d1ee0868ebd062a30e726ab07085b7b1fd4d442a90e3a87f16671bfe20db",
   "17 V (k1s.v_other)": "6b3b1f6e239c6a45c81c2927ca14f79694ab15639951a6909ea6f8a78bb4ff5b",
-  "(screen) (k1s.work)": "ebee84ef0cfde5b5f7e70d00b4055e4bae93b0464770518bb66a489046147488",
-  "(screen) (k1s.hours500)": "1816d904bef56d031941118c4a362f224b8c37ea12ab0da61755ccd49810694c",
-  "(screen) (k1s.most_hours)": "4f33b2b01f089eba201f9086b7edb337caf1e045b9d738b9fdc27dad060c9cc2",
-  "(screen) (k1s.past_years)": "90a76a19385efc92c7854978213e6d57ca841c671cb98086ef38b22ede68930c",
-  "(screen) (k1s.mp_other)": "13df9c22fa588cba0725d5c84185e2857ccb55858e554df3e20ec2b7e8a00132",
-  "(screen) (k1s.active)": "8d68dc2611ce215adc86f66bf901d3e375779d800fcbe1686a9522d4531181e6",
-  "(screen) (k1s.tenth)": "3034df0207a6b58049ac24514a7726874be10661be63351899e63aa9361030e9",
+  "(screen) (k1s.work)": "4d4fd958d873d1009ac14875d015ff7a236512ca5b1ba3fa65f1114dab4a7ec3",
+  "(screen) (k1s.hours500)": "a5511ba77aa33f4a0c4fd0eeccae085892e0f44056cf9b0addb3d02833d42ec0",
+  "(screen) (k1s.most_hours)": "0e0aaede198a7ffcbae09283b9c984170246f34d4a79704aca5415b7a3a2dd1e",
+  "(screen) (k1s.past_years)": "edeaebc6f39385354d7843bc156b41795b63a2f8c0237d90d213a674dc8f8097",
+  "(screen) (k1s.mp_other)": "142f416cd15a3f92549f52ae76e574ca1d04b110353c086dc221fd6a75fb2fea",
+  "(screen) (k1s.active)": "f96f4b61cfdef9c31218634e2418fef9505f992b7268713576c495d5f42898df",
+  "(screen) (k1s.tenth)": "64a2df849982976a90b4071481c6b96b8f477596bede3c122c281b44d678315b",
   "(screen) (k1s.prior_any)": "b03d0ad98932961f994bd54a0722e630ce85a34491300dbc53cff8b8ae422a9f",
   "(screen) (k1s.basis_carry)": "b706909cc9ee5e19b56c264a4a3360f6dde5b6ae9b2e971759cd72713e0e3480",
   "(screen) (k1s.risk_carry)": "205bf5619fb2836a97ae042c7f2fc5d68b374195b7571d0610a873255a70c30f",
@@ -435,9 +454,13 @@
   "(c) (k1s.b2_prior)": "102a5e70844faf0099530ad0691e3321ab2dc4d19a9ed81461c6374a8a4b2340",
   "(c) (k1s.b3_prior)": "9b46b1f755caabcca64716ea80e3515f0f1104598836d4b6351b7683c3e9d746",
   "(screen) (k1s.not_at_risk)": "94eaef44ac8a6448d864d5e76365f323eb03c3f89ac27ed4e180611153ed64dc",
-  "28 (k)": "ac2c369e6c131bdc30b7efd4b6ad26133d8086c3e6bc41c9851af0bc68550ef5",
-  "28 (i)": "ef6a93257259df23a5f1e1881b3a9495f6f70dd96d212521e2facf2c66a0620f",
-  "28 (h)": "c47a6886fe4a123a463768f28819713d1a5f1c8d9d68cb0a61d6b0143cab4eb8"
+  "(screen) (k1s.trader)": "efd6b54f25375dd89533c7594a4e991697ec2301f85d01b6522e45aeeb527a39",
+  "(screen) (k1s.re_pro)": "baa4edd112ca775ed67c847a57f0578e1fbe90d89a721c11b36ba43e80742a5a",
+  "(screen) (k1s.dwelling)": "bb54c917d41df516833b86b17bb6157d8124506845c262f68c801599512a1dc0",
+  "(screen) (k1s.interest_buy)": "1e3e65f24da22b0e3be3c8874db65d0fa46295a3369f50c2ad58e41f7d00f380",
+  "28 (k)": "f37655cd7e446e88575484bf7086ff69c347d689abe84c54d4f244137f4b4245",
+  "28 (i)": "e3efb66be07ec252335caa74c5c789eb5d906706b13526ec765f903d8afcb873",
+  "28 (h)": "8d52bd6ce06eb1a42843a40b287fe547519498f786716f1f26dbdbbf8966d5ac"
  },
- "__rest__": "019132c59a05739e014ba5ce6e220e256abbe61366ea6571ff0ce993e659bdaa"
+ "__rest__": "6264dea79c7c944b6cf8c12045eb164efb7b562c76503892898afa0e53ecd9db"
 }

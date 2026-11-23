@@ -1640,14 +1640,18 @@
         "rental[a].rprop[b].month": "m3",
         "rental[a].rprop[b].year": "y2019",
         "rental[a].rprop[b].basis": 5000000,
-        "rental[a].rprop[b].qip": true
+        "rental[a].rprop[b].qip": true,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false,
+        "rental[a].rprop[b].short_class": false
       },
       "expect": {
         "rental[a].rprop[b].dep": {
           "kind": "refusal",
           "gate": "rental[a].rprop[b].screen",
           "form": "Form 4562 (real property outside the mid-month tables)",
-          "remedy": "Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, cooperative stock, or property received in a like-kind exchange or an involuntary conversion is outside this tool.",
+          "remedy": "Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, cooperative stock, a farm building or a motor fuels outlet, or property received other than by purchase or construction (in a like-kind exchange or an involuntary conversion, as a gift or an inheritance, from a spouse or former spouse, or for services) is outside this tool.",
           "cite": {
             "doc": "i4562",
             "locator": "p. 11, Column (f)—Method",
@@ -2951,14 +2955,17 @@
         "rental[a].rents": 500000,
         "rental[a].prior_any": true,
         "rental[a].prior_amt": 200000,
-        "rental[a].prior_ws51": true
+        "rental[a].prior_ws51": true,
+        "rental[a].business_incidental": false,
+        "rental[a].land_heavy": false,
+        "rental[a].bought_lease": false
       },
       "expect": {
         "rental[a].prior_loss": {
           "kind": "refusal",
           "gate": "rental[a].prior_ws51_if_any",
           "form": "Pub. 527, Worksheet 5-1 (expenses carried over from a year of home use)",
-          "remedy": "Rental costs carried over from an earlier year's Worksheet 5-1, when you also used the place as a home, are outside this tool.",
+          "remedy": "Rental costs carried over from an earlier year's Worksheet 5-1, when the place counted as your home, are outside this tool.",
           "cite": {
             "doc": "p527",
             "locator": "p. 28, \"This limitation will apply to expenses carried forward to another year even if you don’t use the property as your home for that subsequent year\"",
@@ -3016,6 +3023,421 @@
           "value": false
         },
         "rental[a].allowed": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "bfr.rental.mortgage_excess_refused",
+      "covers": [
+        "rental"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0995, predicted by hand before running: i1040se p. 7, Line 12, interest paid beyond the Form 1098 amount needs Pub. 334 and an attached statement; a Yes to rental.mortgage_excess (asked because mortgage interest was ticked) refuses Schedule E line 12.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "$rprop@rental[a]": [],
+        "rental[a].kind": "sfr",
+        "rental[a].days_fair": 365,
+        "rental[a].rents": 1800000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 600000,
+        "rental[a].mortgage_excess": true
+      },
+      "expect": {
+        "rental[a].line12": {
+          "kind": "refusal",
+          "gate": "rental[a].mortgage_excess_if_mortgage",
+          "form": "Schedule E, line 12 (mortgage interest beyond Form 1098, with a statement)",
+          "remedy": "Mortgage interest beyond what Form 1098 shows needs a statement explaining the difference and is outside this tool.",
+          "cite": {
+            "doc": "i1040se",
+            "locator": "p. 7, Line 12, \"If you paid more mortgage interest than is shown on your Form 1098 or similar statement\"",
+            "revision": "2025",
+            "snapshot": "ad71de356a6250383ab08097582e982c3c3964792be2d4f5e4bd851816867975",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "bfr.rental.bought_lease_refused",
+      "covers": [
+        "rental"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0992, predicted by hand before running: p527 p. 5, the cost of a leasehold bought for rental purposes is deducted in equal parts over the lease term; a Yes to rental.bought_lease refuses Schedule E line 19.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "$rprop@rental[a]": [],
+        "rental[a].kind": "commercial",
+        "rental[a].days_fair": 365,
+        "rental[a].rents": 2400000,
+        "rental[a].has_other": true,
+        "rental[a].amt19": 100000,
+        "rental[a].bought_lease": true
+      },
+      "expect": {
+        "rental[a].line19": {
+          "kind": "refusal",
+          "gate": "rental[a].bought_lease",
+          "form": "Schedule E, line 19 (cost of a leasehold bought for rental purposes)",
+          "remedy": "The cost of a lease you bought, which is spread over the lease's term, is outside this tool.",
+          "cite": {
+            "doc": "p527",
+            "locator": "p. 5, Rental of property, \"If you buy a leasehold for rental purposes, you can deduct an equal part of the cost each year over the term of the lease\"",
+            "revision": "2025",
+            "snapshot": "20c826e98dce23d20f80ab89da7e668a8ee7162a2194f480ce417cff651201d6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "bfr.rental.business_incidental_refused",
+      "covers": [
+        "rental"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0943, predicted by hand before running: i8582 p. 3, Exceptions, a rental incidental to a trade or business the filer owns an interest in is not a rental activity; a Yes to rental.business_incidental refuses line 21.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "$rprop@rental[a]": [],
+        "rental[a].kind": "commercial",
+        "rental[a].days_fair": 365,
+        "rental[a].rents": 100000,
+        "rental[a].business_incidental": true
+      },
+      "expect": {
+        "rental[a].line21": {
+          "kind": "refusal",
+          "gate": "rental[a].business_incidental",
+          "form": "Form 8582 exceptions (rental incidental to a trade or business)",
+          "remedy": "Property mainly used in a business you or your spouse own, and rented for under 2% of its cost or value, is not a rental activity under the passive activity rules and is outside this tool.",
+          "cite": {
+            "doc": "i8582",
+            "locator": "p. 3, Exceptions, \"The rental of property is incidental to a trade or business activity if\"",
+            "revision": "2025",
+            "snapshot": "76787e11a385d1205faf70a07924cdec4efd5e66628e6f47e5316d29e6035f71",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "bfr.rental.other_interest_home_equity",
+      "covers": [
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0938, predicted by hand before running: a house rented all 365 days, no personal use, rent $20,000; interest of $1,500 on a home equity loan on the filer's own home whose money was spent on the rental (i1040se p. 6, interest is allocated by tracing the loan proceeds) entered as other interest; property tax $3,000; no buildings listed. Line 13 $1,500, line 16 $3,000, line 20 $4,500, line 21 $20,000 - $4,500 = $15,500.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "$rprop@rental[a]": [],
+        "rental[a].kind": "sfr",
+        "rental[a].days_fair": 365,
+        "rental[a].rents": 2000000,
+        "rental[a].has_other_interest": true,
+        "rental[a].amt13": 150000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 300000
+      },
+      "expect": {
+        "rental[a].line13": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "rental[a].line16": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "rental[a].line20": {
+          "kind": "money",
+          "cents": 450000
+        },
+        "rental[a].line21": {
+          "kind": "money",
+          "cents": 1550000
+        }
+      }
+    },
+    {
+      "id": "bfr.rental.relative_fair_rent_main_home",
+      "covers": [
+        "rental"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0994, predicted by hand before running: a house rented all 365 days at a fair price to the filer's son as his main home (p527 pp. 26-27, not personal use); the filer answers that a relative used it but counts 0 personal days. Not used as a home, no Worksheet 5-1 refusal; the use ratio is 365/365, so insurance of $1,200 is taken whole: line 9 $1,200, line 21 $14,400 - $1,200 = $13,200.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "$rprop@rental[a]": [],
+        "rental[a].kind": "sfr",
+        "rental[a].days_fair": 365,
+        "rental[a].personal_any": true,
+        "rental[a].days_personal": 0,
+        "rental[a].days_overlap": 0,
+        "rental[a].rents": 1440000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 120000
+      },
+      "expect": {
+        "rental[a].home": {
+          "kind": "bool",
+          "value": false
+        },
+        "rental[a].line9": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "rental[a].line21": {
+          "kind": "money",
+          "cents": 1320000
+        }
+      }
+    },
+    {
+      "id": "bfr.rental.nondep_land_income_refused",
+      "covers": [
+        "rental",
+        "f8582"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0953, predicted by hand before running. Single, W-2 wages $160,000. Rental a: line 21 $10,000 - $1,000 = $9,000. Rental b, a house, both actively managed: rent $12,000 less mortgage interest $15,000 and tax $7,000 = -$10,000. Form 8582 has a passive deduction and MAGI $160,000 > $100,000, so the filing exception fails and Form 8582 is required (f8582.required). Rental a is land only (Pub. 925 p. 16, less than 30% of unadjusted basis depreciable), with net passive income $9,000 > 0: recharacterized as nonpassive, refused at rental[a].nondep_income on line 22.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 16000000,
+        "person[taxpayer].w2[a].box3": 16000000,
+        "person[taxpayer].w2[a].box5": 16000000,
+        "$rental": [
+          "a",
+          "b"
+        ],
+        "$rprop@rental[a]": [],
+        "$rprop@rental[b]": [],
+        "rental[a].kind": "land",
+        "rental[a].days_fair": 365,
+        "rental[a].rents": 1000000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 100000,
+        "rental[b].kind": "sfr",
+        "rental[b].days_fair": 365,
+        "rental[b].rents": 1200000,
+        "rental[b].has_mortgage": true,
+        "rental[b].amt12": 1500000,
+        "rental[b].has_taxes": true,
+        "rental[b].amt16": 700000
+      },
+      "expect": {
+        "rental[a].line22": {
+          "kind": "refusal",
+          "gate": "rental[a].nondep_income",
+          "form": "Form 8582 (rental of nondepreciable property, income recharacterized as nonpassive)",
+          "remedy": "Net income from renting land, or property whose buildings were under 30% of its cost, is treated as nonpassive when Form 8582 limits other losses, and is outside this tool.",
+          "cite": {
+            "doc": "p925",
+            "locator": "p. 16, Rental of Nondepreciable Property, \"less than 30% of the unadjusted basis of the property is subject to depreciation\"",
+            "revision": "2025",
+            "snapshot": "dda751f07a7059488659c18d3e81afaa1463528b0951b0f8351fa16137cda5d3",
+            "tax_year": 2025
+          }
+        },
+        "rental[a].nondep_gain": {
+          "kind": "money",
+          "cents": 900000
+        }
+      }
+    },
+    {
+      "id": "bfr.rental.nondep_land_income_alone",
+      "covers": [
+        "rental",
+        "f8582",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0953, predicted by hand before running: rental a alone (land, line 21 $9,000), W-2 $160,000. No passive deduction, so Form 8582 is not required and the land income needs no recharacterization: not refused; Schedule E line 26 $9,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 16000000,
+        "person[taxpayer].w2[a].box3": 16000000,
+        "person[taxpayer].w2[a].box5": 16000000,
+        "$rental": [
+          "a"
+        ],
+        "$rprop@rental[a]": [],
+        "rental[a].kind": "land",
+        "rental[a].days_fair": 365,
+        "rental[a].rents": 1000000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 100000
+      },
+      "expect": {
+        "rental[a].nondep_income": {
+          "kind": "bool",
+          "value": false
+        },
+        "rental[a].line21": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "sche.line26": {
+          "kind": "money",
+          "cents": 900000
+        }
+      }
+    },
+    {
+      "id": "bfr.rental.nondep_house_on_costly_land_refused",
+      "covers": [
+        "rental",
+        "f8582"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0953, predicted by hand before running. Single, W-2 wages $160,000. Rental a: line 21 $10,000 - $1,000 = $9,000. Rental b, a house, both actively managed: rent $12,000 less mortgage interest $15,000 and tax $7,000 = -$10,000. Form 8582 has a passive deduction and MAGI $160,000 > $100,000, so the filing exception fails and Form 8582 is required (f8582.required). Rental a is a house whose buildings were under 30% of its cost (rental.land_heavy Yes): net passive income $9,000 is recharacterized, refused at rental[a].nondep_income.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 16000000,
+        "person[taxpayer].w2[a].box3": 16000000,
+        "person[taxpayer].w2[a].box5": 16000000,
+        "$rental": [
+          "a",
+          "b"
+        ],
+        "$rprop@rental[a]": [],
+        "$rprop@rental[b]": [],
+        "rental[a].kind": "sfr",
+        "rental[a].days_fair": 365,
+        "rental[a].rents": 1000000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 100000,
+        "rental[b].kind": "sfr",
+        "rental[b].days_fair": 365,
+        "rental[b].rents": 1200000,
+        "rental[b].has_mortgage": true,
+        "rental[b].amt12": 1500000,
+        "rental[b].has_taxes": true,
+        "rental[b].amt16": 700000,
+        "rental[a].land_heavy": true
+      },
+      "expect": {
+        "rental[a].line22": {
+          "kind": "refusal",
+          "gate": "rental[a].nondep_income",
+          "form": "Form 8582 (rental of nondepreciable property, income recharacterized as nonpassive)",
+          "remedy": "Net income from renting land, or property whose buildings were under 30% of its cost, is treated as nonpassive when Form 8582 limits other losses, and is outside this tool.",
+          "cite": {
+            "doc": "p925",
+            "locator": "p. 16, Rental of Nondepreciable Property, \"less than 30% of the unadjusted basis of the property is subject to depreciation\"",
+            "revision": "2025",
+            "snapshot": "dda751f07a7059488659c18d3e81afaa1463528b0951b0f8351fa16137cda5d3",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "bfr.rental.nondep_house_not_land_heavy",
+      "covers": [
+        "rental",
+        "f8582",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0953, predicted by hand before running. Single, W-2 wages $160,000. Rental a: line 21 $10,000 - $1,000 = $9,000. Rental b, a house, both actively managed: rent $12,000 less mortgage interest $15,000 and tax $7,000 = -$10,000. Form 8582 has a passive deduction and MAGI $160,000 > $100,000, so the filing exception fails and Form 8582 is required (f8582.required). Rental a is a house whose buildings were 30% or more of its cost: no recharacterization. Form 8582 Part IV: income $9,000, loss $10,000, line 3 -$1,000; MAGI $160,000 >= $150,000 gives no special allowance, so the allowed loss is the passive income, $9,000: rental b line 22 -$9,000 and Schedule E line 26 $9,000 - $9,000 = $0.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 16000000,
+        "person[taxpayer].w2[a].box3": 16000000,
+        "person[taxpayer].w2[a].box5": 16000000,
+        "$rental": [
+          "a",
+          "b"
+        ],
+        "$rprop@rental[a]": [],
+        "$rprop@rental[b]": [],
+        "rental[a].kind": "sfr",
+        "rental[a].days_fair": 365,
+        "rental[a].rents": 1000000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 100000,
+        "rental[b].kind": "sfr",
+        "rental[b].days_fair": 365,
+        "rental[b].rents": 1200000,
+        "rental[b].has_mortgage": true,
+        "rental[b].amt12": 1500000,
+        "rental[b].has_taxes": true,
+        "rental[b].amt16": 700000,
+        "rental[a].land_heavy": false
+      },
+      "expect": {
+        "rental[a].nondep_income": {
+          "kind": "bool",
+          "value": false
+        },
+        "rental[b].line22": {
+          "kind": "money",
+          "cents": -900000
+        },
+        "sche.line26": {
           "kind": "money",
           "cents": 0
         }

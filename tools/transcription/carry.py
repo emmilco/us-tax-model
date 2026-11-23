@@ -66,7 +66,12 @@ executable triage record (triage.py, .transcription/triage/) when that record
 evaluated the very reply the section records, on the current form, and found
 the project's line and the reply's agreeing on every input it ran: no value
 different, missing or invalid, compared on fixture cases and on at least
-MIN_GENERATED generated returns, with no evaluation failure. The ruling is
+MIN_GENERATED generated returns, with no evaluation failure, and every
+alternative of every choose line where the two sides differ that either side
+reached taken on some compared input (the record's `branches`; a record without
+them is from before they were counted, and rules nothing until triage reruns).
+Agreement on a sample that never took the branch where the two differ is no
+evidence for that branch. The ruling is
 "representation; equivalent on executable triage, ruled mechanically" with the
 counts it rests on. One in AUDIT_EVERY such disagreements, chosen by a hash of
 the disagreement's identity (not by time, so a rerun chooses the same ones), is
@@ -477,7 +482,8 @@ def held_for_audit(kind, form, family, sec):
 
 def triage_equivalence(record, line, subject):
     """(ruling text, None) when the triage line shows the project's line and the reply's agreeing on every
-    fixture case and every generated return run, else (None, why). `record` is the form's triage record,
+    fixture case and every generated return run, having taken every alternative of the choose lines where they
+    differ, else (None, why). `record` is the form's triage record,
     `line` its line for the section and the reply the section records (rulings.triage_line), `subject` the
     form's current transcription subject."""
     import triage
@@ -496,10 +502,17 @@ def triage_equivalence(record, line, subject):
         return None, "triage: not every input evaluated alike"
     if (bank.get("generated") or 0) < MIN_GENERATED or not sources.get("fixture") or not sources.get("generated"):
         return None, "triage: the line was not compared on the fixtures and enough generated returns"
+    branches = line.get("branches")
+    if not isinstance(branches, dict):
+        return None, "triage record without branch coverage; rerun triage"
+    if branches.get("untaken"):
+        return None, (f"triage: {branches['untaken']} alternative(s) of the lines where the two differ never taken on the sample "
+                      f"({', '.join(branches.get('untaken_examples') or [])})")
     return (f"{TRIAGE_RULING}: the project's line and the reply's agree on every input triage ran "
             f"({line['compared']} values compared, none different or missing: {sources.get('fixture', 0)} on "
             f"{bank.get('fixtures')} fixture cases, {sources.get('generated', 0)} on {bank['generated']} generated returns "
             f"seed {bank.get('seed')}, {sources.get('partial', 0)} on {bank.get('partial_records', 0)} partial records; "
+            f"every alternative of the {branches.get('differing_choose_lines', 0)} differing choose line(s) reached taken; "
             f"policy {record['policy']}). No agent read the source; one in {AUDIT_EVERY} such disagreements is "
             "held for adjudication instead."), None
 

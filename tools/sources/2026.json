@@ -123,10 +123,8 @@
   },
   {
     "id": "i1040sb",
-    "url": "https://www.irs.gov/pub/irs-dft/i1040sb--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-08-12"
+    "url": "https://www.irs.gov/pub/irs-pdf/i1040sb.pdf",
+    "description": "Final 2026 edition (checked 2026-11-22); supersedes the IRS draft (2026 edition, posted 2026-08-12)"
   },
   {
     "id": "f1040s8812",
@@ -154,10 +152,8 @@
   },
   {
     "id": "f8889",
-    "url": "https://www.irs.gov/pub/irs-dft/f8889--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-05-07"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8889.pdf",
+    "description": "Final 2026 edition (checked 2026-11-22); supersedes the IRS draft (2026 edition, posted 2026-05-07)"
   },
   {
     "id": "i8889",
@@ -209,10 +205,8 @@
   },
   {
     "id": "f7206",
-    "url": "https://www.irs.gov/pub/irs-dft/f7206--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-05-19"
+    "url": "https://www.irs.gov/pub/irs-pdf/f7206.pdf",
+    "description": "Final 2026 edition (checked 2026-11-22); supersedes the IRS draft (2026 edition, posted 2026-05-19)"
   },
   {
     "id": "i7206",
@@ -223,10 +217,8 @@
   },
   {
     "id": "f8880",
-    "url": "https://www.irs.gov/pub/irs-dft/f8880--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-05-14"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8880.pdf",
+    "description": "Final 2026 edition (checked 2026-11-22); supersedes the IRS draft (2026 edition, posted 2026-05-14)"
   },
   {
     "id": "f2441",
@@ -343,10 +335,8 @@
   },
   {
     "id": "f8863",
-    "url": "https://www.irs.gov/pub/irs-dft/f8863--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-05-26"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8863.pdf",
+    "description": "Final 2026 edition (checked 2026-11-22); supersedes the IRS draft (2026 edition, posted 2026-05-26)"
   },
   {
     "id": "i8863",
@@ -357,10 +347,8 @@
   },
   {
     "id": "f5329",
-    "url": "https://www.irs.gov/pub/irs-dft/f5329--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-08-06"
+    "url": "https://www.irs.gov/pub/irs-pdf/f5329.pdf",
+    "description": "Final 2026 edition (checked 2026-11-22); supersedes the IRS draft (2026 edition, posted 2026-08-06)"
   },
   {
     "id": "i5329",
@@ -625,10 +613,8 @@
   },
   {
     "id": "p915",
-    "url": "https://www.irs.gov/pub/irs-dft/p915--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-08-21"
+    "url": "https://www.irs.gov/pub/irs-pdf/p915.pdf",
+    "description": "Final 2026 edition (checked 2026-11-22); supersedes the IRS draft (2026 edition, posted 2026-08-21)"
   },
   {
     "id": "f1099da",
@@ -698,10 +684,8 @@
   },
   {
     "id": "f8919",
-    "url": "https://www.irs.gov/pub/irs-dft/f8919--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-05-18"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8919.pdf",
+    "description": "Final 2026 edition (checked 2026-11-22); supersedes the IRS draft (2026 edition, posted 2026-05-18)"
   },
   {
     "id": "f461",
@@ -719,17 +703,13 @@
   },
   {
     "id": "f1045",
-    "url": "https://www.irs.gov/pub/irs-dft/f1045--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-06-23"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1045.pdf",
+    "description": "Final 2026 edition (checked 2026-11-22); supersedes the IRS draft (2026 edition, posted 2026-06-23)"
   },
   {
     "id": "i1045",
-    "url": "https://www.irs.gov/pub/irs-dft/i1045--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-06-18"
+    "url": "https://www.irs.gov/pub/irs-pdf/i1045.pdf",
+    "description": "Final 2026 edition (checked 2026-11-22); supersedes the IRS draft (2026 edition, posted 2026-06-18)"
   },
   {
     "id": "f8990",
@@ -757,5 +737,27 @@
     "draft": true,
     "draft_edition": "2026",
     "draft_posted": "2026-07-07"
+  },
+  {
+    "id": "p969",
+    "url": "https://www.irs.gov/pub/irs-dft/p969--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-11-17",
+    "description": "Publication 969 (2026), Health Savings Accounts and Other Tax-Favored Health Plans: the 2026 counterpart of the 2025 catalog's p969, cited by the Form 8889 and Schedule A definitions"
+  },
+  {
+    "id": "i6251",
+    "url": "https://www.irs.gov/pub/irs-dft/i6251--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-11-09",
+    "description": "Instructions for Form 6251 (2026), Alternative Minimum Tax: the 2026 counterpart of the 2025 catalog's i6251, cited by the 2025 definitions and parameters (C-LAW-02)"
+  },
+  {
+    "id": "n-26-05",
+    "url": "https://www.irs.gov/pub/irs-drop/n-26-05.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Notice 2026-5: expanded availability of health savings accounts under Public Law 119-21 (HSA eligibility; cited by the 2026 Instructions for Form 8889); final guidance"
   }
 ]

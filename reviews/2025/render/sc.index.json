@@ -2,473 +2,456 @@
  "kind": "render",
  "form": "sc",
  "family": "claude",
- "base": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
- "head_rows": {
-  "match / mismatch / unclear / missing": "70 / 5 / 0 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
- },
+ "base": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
  "lines": [
   {
    "key": "(screen) (sc.statutory)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "828769a0be6f8f4007809d49c55847995f1facd9d4667cb1a5cbe19be8cf87a7"
   },
   {
    "key": "G",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "0a0752d8be1e09c5e6e3bbf60dcd15cbc933f985f08be1a0f89897b875ec5a9f"
   },
   {
    "key": "(screen) (sc.spouse_owned)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "120a5c4edfc3d01c919c85d36de1456d9f0df24db5c40bc341d48835ad186442"
   },
   {
    "key": "F",
-   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "6a0eea962d6612cb81ca97c6a857db8a618ade7e02983acbee1e3be11bf5726c"
   },
   {
    "key": "(screen) (sc.special)",
-   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "5edb55f2b96088b35ef625807e18960f6696bc622e32cf8a9037a47209258617"
   },
   {
    "key": "1 (sc.line1)",
-   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "293ac5289f9a2b1dff2a41ee428fe68cf41e7d4eeaad66d99022fa3d07a770b7"
   },
   {
    "key": "2 (sc.line2)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "b61b02172daac4bde5961c742e71727528a79e9941f749a6a788b6e9cd0d531c"
   },
   {
    "key": "3 (sc.line3)",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "e5e0a117003bae4101aaa9dab800bd95dbb8058bc498f322578c0d61fadebb47"
   },
   {
    "key": "4 (sc.line4)",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "65e839d0dd74c06af240fc9eaf07b730d87ebee9a25867f83b5ee3f7c881935f"
   },
   {
    "key": "5 (sc.line5)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "f4f5ba6228737c8d9af852acd97b5638d3ff7d59274a3232993710d2a8d0621e"
   },
   {
    "key": "6",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "28d346a81d1532080040cc28d664db6037f15be2851e3900b0256dc4c74f95a5"
   },
   {
    "key": "7 (sc.line7)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "a97294db49bc2bba50742b5fed65c022bc912c7d614b3c9464e484d6ef8a0bf4"
   },
   {
    "key": "8 (sc.line8)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "0938d56c35cc9d0839e6cc6106c45730dea6de79e11f402b565c3279f3a20df0"
   },
   {
    "key": "9 (sc.line9)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "a31914fe59076d6f875753469ffc176352d13e3b4e47dc00e227fcade9e53975"
   },
   {
    "key": "10 (sc.line10)",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "03e065eadbd23110e7f02d91f38b55eacb413a8651b2a6f82c1e362da6b9dedb"
   },
   {
    "key": "11",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "4ca540024db4cda032f58b38c1c091d45363bfe7ce977a5b54a89c468e6bcbef"
   },
   {
    "key": "12 (sc.line12)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "6847c1ff14894be8781bee6d8b98f834b30c3dc65251f13fa6fc494d85aa520a"
   },
   {
    "key": "13 (sc.line13)",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
-   "subject_key": "3feb6399acbfcf16a79111893b4646f83869cfaa8989a085deaea30a018bb528",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "asset.bonus_2025": "asset.bonus_this_year",
-     "asset.dep_2025": "asset.dep_this_year"
-    },
-    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
-    "was": "3082abe1cee4f9f4d14c5a32ae01a0d82e9cd1dbff21a4a6bfb8e57c6b3eabde"
-   }
+   "subject_key": "3feb6399acbfcf16a79111893b4646f83869cfaa8989a085deaea30a018bb528"
   },
   {
    "key": "14 (sc.line14)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "e64860132dac6c66a08639726c9ec585598c160f03644518d915f1e1c6c0f483"
   },
   {
    "key": "15",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MISMATCH",
-   "ruling": "Ruling: representation; as the earlier ruling on this line. i1040sc p. 8, Line 15, \"Deduct on line 14 amounts paid for employee accident and health insurance\". Employee health insurance belongs on line 14, whose question names \"accident and health plans\" for employees (sc.line14); a filer who put it on line 15 would get the same deduction, since lines 14 and 15 are read only by the line 28 total (sc.line28, sc.line28_pre179). The added exclusion of a listed vehicle's insurance (i1040sc p. 7, Line 9, \"gasoline, oil, repairs, insurance, license plates, etc.\"), which the model accepts, is this round's change. No value changes.",
+   "ruling": "Ruling: representation; as the earlier ruling on this line. i1040sc p. 8, Line 15, \"Deduct on line 14 amounts paid for employee accident and health insurance\". Employee health insurance belongs on line 14, whose question names \"accident and health plans\" for employees (sc.line14); a filer who put it on line 15 would get the same deduction, since lines 14 and 15 are read only by the line 28 total (sc.line28, sc.line28_pre179). The added exclusion of a listed vehicle's insurance (i1040sc p. 7, Line 9, \"gasoline, oil, repairs, insurance, license plates, etc.\"), which the model accepts, is this round's change. No value changes. (carried over from reviews/2025/render/sc.index.json at acde74b5, review of 2026-11-03)",
    "subject_key": "e3801883489fca7d9bdb6daf1f28bf4c4e8fc108ccf54285f9d21a77cf83cc2d"
   },
   {
    "key": "16a",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "003823c5fd7d2333b4ae7153fc537adb6e5f34f5ebaf6465bb3a61cf78e7a750"
   },
   {
    "key": "16b",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "c1deb211082f02d1dacc3ee1d6fb0038c33b9773018d44cb90d64b38a985d0e8"
   },
   {
    "key": "17",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "1268d2d1e718225aebe83bf861df30f85f3087007510daae00c8a933b870f6a5"
   },
   {
    "key": "18",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "3075bdbc384851ed42e45740190cc955653678765ad478d62ed330d240caade8"
   },
   {
    "key": "19",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "2eff878283afa2e43c84486da3c4780ae0b0ae2b55aa9856d527a4a4ce7c6a9c"
   },
   {
    "key": "20a",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "9c7b99432f480ca6c1a0d5c2016e3ee0e7f5be75e6ccb6fc64485174e1b9c639"
   },
   {
    "key": "20b",
-   "record": "ecc43b164324d92dbb1dac7d162776bda23fc0341323f3f5bebbd8b81929a643",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "5b176c37a96d5caebc208a2fb7c5e5c97dbc13f3e0cfcbf2409ef3cf944c64d6"
   },
   {
    "key": "21",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "b231019015bfeefe68597b2a4b5b84bed5ae0b9cb9b043a9f9ad2d8ba1596839"
   },
   {
    "key": "22",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "eb445eb6dd16284419762a51cb86ca8c691c1a20e1a1979708d8ca5d3142b26d"
   },
   {
    "key": "23",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
-   "status": "MISMATCH",
-   "ruling": "Ruling: finding (low; pre-existing, not introduced by this change); i1040sc p. 9, Line 23, \"Taxes assessed to pay for improvements, such as paving and sewers\" is in the do-not-deduct list and the question does not name it: recorded in BUG-0529 (sc.line23, special assessments). The Form 8846 reduction of the employer social security and Medicare taxes (\"Reduce your deduction by the amount shown on Form 8846, line 4\") is outside the tool: sc.special lists \"wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)\" and a Yes refuses through sc.screened. This round added only the listed vehicle's license plates (i1040sc p. 7, Line 9), which the model accepts.",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
+   "status": "MATCH",
    "subject_key": "7201dcf72e23de11034809b482c950aa1fc8ddc8485c36b7977c3f6e37ebda75"
   },
   {
    "key": "24a",
-   "record": "ccb6ef563298e14ff768e93e52ec436781c149378851d46f820d3336b20c9201",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "6b2f7648a12cf9148b6a59c3a29d0f9714c5db925f96cf4e8d4cb015df323103"
   },
   {
    "key": "24b",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "1332c062972c403cd4adb72c1f5458f88e5472a4f22c3283b4e8444cf1b61848"
   },
   {
    "key": "25",
-   "record": "ecc43b164324d92dbb1dac7d162776bda23fc0341323f3f5bebbd8b81929a643",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "718ff08e659090fa388c990fbf3c09e93936d5328e125b879272465969fd61bc"
   },
   {
    "key": "26",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040sc p. 10, Line 26, \"reduced by the amount of the following credit(s)\" (Forms 5884, 8844, 8932, 8994). Wages reduced by an employment credit are refused: sc.special lists \"wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)\", and a Yes makes sc.screened true, which refuses sc.line1. On every computed return no credit applies, so the line is total wages. The accounting-method wording added this round the model accepts.",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
+   "status": "MATCH",
    "subject_key": "337f096a7edcaf9aa54394b9887ca00c717dc4a78e7e789f74e5b9881f79583f"
   },
   {
    "key": "27a",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "d1b429fe3b088151f4af2c0650ceda616e8b6cba3ec35c6a1afb4d60267e0d42"
   },
   {
    "key": "48",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "fd7b6d1dc575ae4b968bb114e3392df8494a3beefc34c43e9f7b8e7f3e78e5e4"
   },
   {
    "key": "27b",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "0939552455d4c6715940e538bd7f1099bfc2437d5293678175943a7a2a58c3c2"
   },
   {
    "key": "28",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "fbd92c7761cee5c721cc61e12380ccf1d27f6543545b335ea861874998abbee8"
   },
   {
    "key": "29",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "90dc87d79fc973d7ab82904817e7e65f9928d977c2dc07fd253c0a06b463b18a"
   },
   {
    "key": "(screen) (sc.ho_uses)",
-   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "26f609b239cff2c3c3ec606ca6f2eb586bc7e8a8971c10a45706b23480ff5e5b"
   },
   {
    "key": "(screen) (sc.ho_other)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "ed6d1a758e606969c81250d83bd08ff7985619fe5e1802d045809d436c1e5de2"
   },
   {
    "key": "30(b)",
-   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "07d4e775e0d437bb5cbc38e0e757e109ef1a7a21daae06bba230a705347096bf"
   },
   {
    "key": "30(a)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "1530603020a24a67d3b7cdf31307aa39b09b75cfd81a296f2f6073d2e832b5b5"
   },
   {
    "key": "3a",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "520b563b6662b71234b0be4bd99d0f98aee7ba88346f9b1eddec594a0e571bec"
   },
   {
    "key": "4 (sc.ho_line4)",
-   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "6595ea87842a0e021ce4418d79f05292814ebcd3f5e0dfdb0c42f89a1378bcae"
   },
   {
    "key": "1 (sc.ho_line1)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "11592e4a69cb4ffbbf3cdd59a211ef615344cc8f5df6fa38ac0f58adf086870a"
   },
   {
    "key": "5 (sc.ho_line5)",
-   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040sc p. 11, Instructions for the Simplified Method Worksheet, Line 1: lines B and D are gains and losses \"shown on Form 8949 (and included on Schedule D) or Form 4797\", and \"If some of the income is from a place of business other than your home, you must first determine the part of your gross income ... from the business use of your home\". Both cases are refused before line 5 is reached: the home-office screen sc.ho_other asks whether \"some of this business's gross income is from a place of business other than your home; you have a gain or loss on Form 8949 or Form 4797 related to this business\", and a Yes sets sc.ho_screened, which refuses at sc.ho_sqft (line 30(b)), the input every simplified-method line reads (rendered/2025/sc.md, (screen) sc.ho_other). With B and D zero, line E equals line A, Schedule C line 29, which is what the English states (sc.ho_line1's cite says so). The restated line 5 is otherwise the worksheet's smaller of line 1 and line 4, with the Pub. 946 two-limit case refused (sc.ho_both_limits).",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
+   "status": "MATCH",
    "subject_key": "026baac5862e7772e979684eab3e9066afff00c1e00fd78565e8a34084b78484"
   },
   {
    "key": "30",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "7c6b316e80b8d932024eab269b9a993f59f7bced35022a49eef11761226e43e4"
   },
   {
    "key": "31",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "df39d0633026901a8a50a060db7dbeb30a1345543043291c35c65fca4b440f53"
   },
   {
    "key": "32",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "9230ba0ca1e6a789fbb7757b88b88bb7a1a34b7d7a9647daa55cb77e17ac9d80"
   },
   {
    "key": "33",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "1674567053dd83aa05b64aa937560c3749fccb860619ddb59eea4d0a63bbd757"
   },
   {
    "key": "35",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "c686ea5932ee8e8c7cb52749c40092a4ba7f920e4ded539882e9319525e0db7d"
   },
   {
    "key": "36",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "73a7da9b75d97bd674127c5715f06ab0effa08f71f938c00ef5137eb8d32154f"
   },
   {
    "key": "37",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "936845031fa364f9368c96837c67e9a8b8ba04931c40d43ca7d8c73fefbe5919"
   },
   {
    "key": "38",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "ca1f5790d99fa8c5ae1c00911be2d9f807e6e9da00978382d039a31e111912e3"
   },
   {
    "key": "39",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "faa7dc8c0deb10dcb716586789e6f549b75b20ad969979e0815275cd00129ff8"
   },
   {
    "key": "40",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "ec52f21caa40380ae4004df77f5078cd40088ccac5c5c9a340082c6799ddf2e8"
   },
   {
    "key": "41",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "dc8de7f8e5d81fcc0ecc2b96484958cd264c81c0ee9c2b657d57392015cd097c"
   },
   {
    "key": "42",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "76b421ca9044e65d85b95111a4fd9957aa6ba28a3b8daebc4e04ad0210e2e9c1"
   },
   {
    "key": "12 (sc.s179_allowed)",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "1d706080e7d317ee8c0cbae4f4da0d6464a03b9333f0433821717deff7430d37"
   },
   {
    "key": "(screen) (sc.hi_uses)",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "c31e31ced0329b0b8e070859088201021611a13c5497e37dd885b0577b72f082"
   },
   {
    "key": "(screen) (sc.hi_screen)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "57ae6f527db405e8f1b6804ea87b1b0ba878cea39812b418aec089e72772c2d4"
   },
   {
    "key": "1 (sc.f7206_line1)",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "c6e5b3e61f2469bd07bdeb36410abd27945d9d5d876717ea2569d324b346be76"
   },
   {
    "key": "2 (sc.f7206_line2)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "dcfa786abf3e31a204ffc9f9d5c106433f159f8fa8652ce6e5ed1e4c12ac304b"
   },
   {
    "key": "3 (sc.f7206_line3)",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "713e78c991f8a61e0ad75a8e93b77358026627060762bba7c00c7c9870e716d3"
   },
   {
    "key": "4 (sc.f7206_line4)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "215e8b3c39968197c4eaf398f69a64ddc3bfe97df00b03291cd18d13c9f14ded"
   },
   {
    "key": "5 (sc.f7206_line5)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "2a1b5ecb453f373996cce3ce4be6d4b8442a7e36b72d95ee2f803f3a296ba46e"
   },
   {
    "key": "7 (sc.f7206_line7)",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; owner's ruling (amb.2025.f7206_line15_person, T-041); restatement accepted, as the earlier rulings on this line. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to \"the same trade or business\", so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed. Line 7 did not change this round; it is in scope through its rendered glossary.",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
+   "status": "MATCH",
    "subject_key": "6fa127a53fd450777cc00cdeea1527408c86425125fd8c200b3dbb2e93d0f43a"
   },
   {
    "key": "8 (sc.f7206_line8)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "6f6b83686888b16d5089610f57d3d87e3f7f82791d65f637368673a960a3b839"
   },
   {
    "key": "9 (sc.f7206_line9)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "7ab0d34af6c929114b40c194083145342dd217ad22f827b4cac0015ca650c3ad"
   },
   {
    "key": "10 (sc.f7206_line10)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "bb805b1cf73b4646dd918313e5871364719e1bbc0fe4daa4015613f8d5b14e89"
   },
   {
    "key": "13 (sc.f7206_line13)",
-   "record": "0a38add75b17a778687cc2ce34f63b5e948f961cc21f7f8c8e7fe9893483eefa",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "ad4647bd2302276727f4fb15ce912365f9430c330c99e5aebf0d680e547b025f"
   },
   {
    "key": "14 (sc.f7206_line14)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "8c3a276a2272386db9fbbfdf5878af1f3e561c497b97f49f7cff82fe1f0c9a92"
   },
   {
    "key": "1(c)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "049adf7cc419a2f5d265ee39f17841fe3ea6ba72c9e94fd2e7ad90525f755344"
   },
   {
    "key": "(screen) (sc.tips_ot)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "30dcc9f765cbb4b530455b8b192c6a6f5b328ede34d5a097405ec1387ce38a5b",
    "status": "MATCH",
    "subject_key": "93c1854f755adace9a4c275b70fae575a7044b3e8d79e9a12133660afda61853"
   }

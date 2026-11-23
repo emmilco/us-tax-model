@@ -105,13 +105,16 @@ form:
         - a loan from a relative, or from someone who borrowed the money from an employer's plan
         - a loan used partly for something other than school costs
         - a loan taken out for someone who was not you, your spouse or your dependent at the time
+        - a loan for study not toward a degree, certificate or similar credential, or at a school that is not a college, university or eligible vocational school
     cite:
       doc: i1040gi
       locator: pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses
         for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a)
         any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who
         borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified
-        higher education expenses
+        higher education expenses, 'The expenses must be for education in a degree, certificate, or similar program at an
+        eligible educational institution. An eligible educational institution includes most colleges, universities, and
+        certain vocational schools.'
   - id: sli.unqualified_any_if_any
     printed: (gate)
     label: Whether any of the interest was on a loan that is not a qualified student loan, asked only when interest was paid on a student loan (false otherwise)

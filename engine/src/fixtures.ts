@@ -17,7 +17,7 @@ import { differentialClassC } from "./differential.js";
 import type { FormDoc, Inputs, Line, LineRef } from "./types.js";
 import type { Value } from "./eval.js";
 import { NY_MODE, YEAR, YEAR_ARGS, reportName, reportPath, yearPath } from "./year.js";
-import { loadFixtureCases } from "./fixture-inputs.js";
+import { loadFixtureCases, notEvaluatedCases } from "./fixture-inputs.js";
 export { caseFiles, loadFixtureCases, walkedCases } from "./fixture-inputs.js";
 import { mapPool, run } from "./pool.js";
 
@@ -80,7 +80,16 @@ export async function testFixtures(): Promise<number> {
     rmSync(tmp, { recursive: true, force: true });
   }
   console.log(`\nfixtures: ${cases - failures}/${cases} passed through the command-line program`);
-  return failures;
+  // A case the year carry marked not evaluated is not run, and fails the run until it is moved or re-derived.
+  const marked = notEvaluatedCases(NY_MODE ? "ny" : "federal");
+  if (marked.length > 0) {
+    const byFile = new Map<string, number>();
+    for (const m of marked) byFile.set(m.file, (byFile.get(m.file) ?? 0) + 1);
+    console.error(`fixtures: ${marked.length} case(s) marked "not evaluated in ${YEAR}" by the year carry, not run `
+      + `(${[...byFile].map(([f, n]) => `${f} ${n}`).join(", ")}; reports/${YEAR}/fixtures_from_${YEAR - 1}.md lists why); `
+      + `each is to be moved to the inputs the year asks or re-derived: ${marked.slice(0, 10).map((m) => m.id).join(", ")}${marked.length > 10 ? ", ..." : ""}`);
+  }
+  return failures + marked.length;
 }
 
 export function reviewStage5(): void {

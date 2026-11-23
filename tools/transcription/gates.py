@@ -154,8 +154,26 @@ def else_text(gate, inp, lines):
     return "zero"
 
 
+def asked_when_false(gate, inp, cond):
+    """True when the gate line takes its gated input on the branch where `cond` is false: the alternative whose `then`
+    is the input is guarded by `cond = false`. The question is then asked when the condition does not hold."""
+    if not cond:
+        return False
+    for a in gate["expr"].get("alternatives", []):
+        if a.get("then") != inp["id"]:
+            continue
+        g = a.get("guard") or {}
+        pair = g.get("eq") if g.get("op") == "test" else None
+        if isinstance(pair, list) and len(pair) == 2 and cond in pair:
+            other = pair[1] if pair[0] == cond else pair[0]
+            return isinstance(other, dict) and set(other) == {"const"} and other["const"] is False
+    return False
+
+
 def describe(unit, lines, english):
-    """The condition and gated lines as a prompt gives them: (condition text, [gated line items])."""
+    """The condition and gated lines as a prompt gives them: (condition text, [gated line items]). A gated input reached
+    on the condition's false branch (asked_when_false) is described as asked when the condition does NOT hold, and the
+    condition text says which of the unit's questions are asked that way."""
     cond = unit["condition"]
     if cond:
         cdoc, cline = lines[cond]
@@ -169,12 +187,21 @@ def describe(unit, lines, english):
                          f"\n  Computed as: {indent_rest(english(cdoc, cond), '    ')}\n  Cited: {cline['cite']['doc']} {cline['cite']['locator']}")
     else:
         condition = "The guards of the gate line below (more than one line decides it)."
+    negated = [asked_when_false(gate, inp, cond) for _, gate, inp in unit["gates"]]
+    if all(negated):
+        condition += ("\n  Polarity: the gated questions below are asked when this condition is FALSE (the gate's "
+                      "\"= false\" branch); when it is true they are not asked.")
+    elif any(negated):
+        condition += ("\n  Polarity: some gated questions below are asked when this condition is FALSE; each item says "
+                      "on which branch its question is asked.")
     items = []
-    for gdoc, gate, inp in unit["gates"]:
+    for (gdoc, gate, inp), neg in zip(unit["gates"], negated):
         w = wording(inp)
+        asked, other = (("When the condition does NOT hold", "When it holds") if neg
+                        else ("When the condition holds", "Otherwise"))
         items.append(f"""- Line `{gate['id']}` (document {gdoc}, printed {gate['printed']}): {indent_rest(gate['label'], '    ')}
-  When the condition holds: {indent_rest(english(gdoc, gate['id']), '    ')}
-  Otherwise: {else_text(gate, inp, lines)}, and the question below is not asked.
+  {asked}: {indent_rest(english(gdoc, gate['id']), '    ')}
+  {other}: {else_text(gate, inp, lines)}, and the question below is not asked.
   Gated question (input `{inp['id']}`): {indent_rest(w['prompt'], '    ')}""" + (f"\n  Help shown with it: {indent_rest(w['help'], '    ')}" if w["help"] else "") + f"""
   Cited: {gate['cite']['doc']} {gate['cite']['locator']}; the input cites {inp['cite']['doc']} {inp['cite']['locator']}""")
     return condition, items

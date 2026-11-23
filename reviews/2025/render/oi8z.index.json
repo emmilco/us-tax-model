@@ -2,19 +2,19 @@
  "kind": "render",
  "form": "oi8z",
  "family": "claude",
- "base": "885e3234ac4395670f2fba4fb41d14fb71577e0ab265c9bcdf0436e390fe96b5",
+ "base": "0953fd8511c6cf6b26b6a7b73694a5869e2c99a5f16f4cdea8b8a05404966668",
  "lines": [
   {
    "key": "8z (type)",
-   "record": "885e3234ac4395670f2fba4fb41d14fb71577e0ab265c9bcdf0436e390fe96b5",
+   "record": "0953fd8511c6cf6b26b6a7b73694a5869e2c99a5f16f4cdea8b8a05404966668",
    "status": "MATCH",
    "subject_key": "1e59770393411e1ab2a41f02f0e149130d149107a8fc77c243a9109663d11c34"
   },
   {
    "key": "8z (amount)",
-   "record": "885e3234ac4395670f2fba4fb41d14fb71577e0ab265c9bcdf0436e390fe96b5",
+   "record": "0953fd8511c6cf6b26b6a7b73694a5869e2c99a5f16f4cdea8b8a05404966668",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the model says a loss on certain corrective distributions of excess deferrals cannot be held by the NonNegDollars amount, and that Pub. 525 Recoveries is not shown. An item of kind corrective_distribution is refused at the entry by oi8z.figured (oi8z.taxable refuses when oi8z.figured: \"a corrective distribution, disaster relief payments, insurance dividends, or any other kind\"), and an item of kind recovery by oi8z.recovery (i1040gi p. 92, Line 8z, \"See Recoveries in Pub. 525 for details on how to figure the amount to report\"); recoveries of 2024 itemized deductions are figured on form rec. Every kind the line computes is an income amount, so NonNegDollars is right for the computed cases.",
+   "ruling": "Ruling: scope; the model says a loss on certain corrective distributions of excess deferrals cannot be held by the NonNegDollars amount, and that Pub. 525 Recoveries is not shown. An item of kind corrective_distribution is refused at the entry by oi8z.figured (oi8z.taxable refuses when oi8z.figured: \"a corrective distribution, disaster relief payments, insurance dividends, or any other kind\"), and an item of kind recovery by oi8z.recovery (i1040gi p. 92, Line 8z, \"See Recoveries in Pub. 525 for details on how to figure the amount to report\"); recoveries of 2024 itemized deductions are figured on form rec. Every kind the line computes is an income amount, so NonNegDollars is right for the computed cases. (carried over from reviews/2025/render/oi8z.index.json at deca6831, review of 2026-11-15)",
    "subject_key": "9a60e24da2f6bac1b449280f8f3e9cacbc35a431f78d0b7ab6eecfa77872530d"
   }
  ],

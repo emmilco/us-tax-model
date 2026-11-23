@@ -165,6 +165,8 @@ rows:
     "rental[house].depletion": false
     "rental[house].part_home": false
     "rental[house].held_for_sale": false
+    "rental[house].business_incidental": false
+    "rental[house].land_heavy": false
     "rental[house].active": true
     "rental[house].rents": 1800000
     "rental[house].has_mortgage": true
@@ -179,7 +181,9 @@ rows:
     "rental[house].has_supplies": false
     "rental[house].has_advertising": false
     "rental[house].has_legal": false
+    "rental[house].mortgage_excess": false
     "rental[house].has_other": false
+    "rental[house].bought_lease": false
     "rental[house].vehicle": false
     "rental[house].amt12": 600000
     "rental[house].amt16": 240000
@@ -349,6 +353,20 @@ rows:
   situation: "A person paid a lawyer in a job discrimination case that was settled in 2025."
   answers:
     "scope.attorney_fees": true
+  expect:
+    refused: scope.schedule1
+- id: scope.trade_act_repaid
+  design: "BUG-0948 (Schedule 1 line 24e)"
+  situation: "A laid-off factory worker paid back supplemental unemployment benefits from her employer's fund in 2025 to qualify for trade readjustment allowances."
+  answers:
+    "scope.trade_act_repaid": true
+  expect:
+    refused: scope.schedule1
+- id: scope.remic
+  design: "BUG-0977 (Schedule E Part IV, Schedule Q)"
+  situation: "A person holds a residual interest in a REMIC and receives a Schedule Q each quarter."
+  answers:
+    "scope.remic": true
   expect:
     refused: scope.schedule1
 - id: scope.estate_excess_deductions

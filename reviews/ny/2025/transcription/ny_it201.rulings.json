@@ -1763,20 +1763,18 @@
    "printed": "59",
    "project_expr_sha256": "2c5961622050a268ad3d453ff17e0e6f2ed0951e1c5d01964343c37dc772997a",
    "second_expr_sha256": "3914b05361f162bca3a72cab061717f87e109846dd12414e81aad8a8d8e22e16",
-   "ruling": "Ruling: representation; the same rule: the project's ny_it201.ask.owes_use_tax is an untaxed purchase that was not all paid at the DMV (bought_untaxed and not use_tax_dmv_only), the second's two-question guard; both give 0 when none is owed and the chart otherwise, and both refuse Form ST-141 and the part-year abode proration.",
-   "context": "ef4cda24afe999c72eb1837c76a9938721c88c759b32ce51f083ffa375ebbeaa",
+   "ruling": "Ruling: representation; ny_it201i p. 18, Line 59. Both give the chart amount when a purchase was made without (or below) New York tax and not every such purchase is a DMV item, and zero otherwise; the project nests the DMV question under its parent gate, the reply tests the two answers side by side. Executable triage (.transcription/triage/ny/2025/ny_it201.json, this pass): 5,266/5,267 agree; differences {\"project-unknown\": 1}; on completed returns none. Rerun for the wording of ny_it201.ask.bought_untaxed (BUG-0935).",
+   "context": "a0774ac26961b9f55121f95be04bc40565aa5e0cbc8801511d8cc6b517bf02d0",
    "date": "2026-11-22",
-   "run": "dc95fa816536cf27eb65ca402669fa9defd280879dbf37515f882ce1d79f799c",
-   "subject_key": "9a0e8b5be9cc375fb1aaa48294aba1c4de6de5bf0348f8fa3a450cec012258e4",
+   "run": "220f00a6d3f98538b49563318d7ed5e16f1271e7d6989bac56b5643bd298e856",
+   "subject_key": "d3ad62d2166b40d19ae4c38d017ce106d39fc7fae0ac0e3b34cec7bfad1b93d1",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "project-refuses",
      "project-unknown"
     ],
     "witnesses": [
-     "generated:20261026.211@ny_it201",
-     "partial:generated 20261026/68-ny_it201.ask.bought_untaxed@ny_it201"
+     "partial:generated 20261026/16-ny_it201.ask.bought_untaxed@ny_it201"
     ],
     "policy": "executable-triage-v2"
    }

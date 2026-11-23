@@ -5,8 +5,8 @@
  "base": "eff62ea2b6448f2908312be12f5a06c3f61bcc70b33c71bea09d681208069cf2",
  "head_rows": {
   "printed lines compared": "7",
-  "agree / disagree / missing": "2 / 5 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "3 / 4 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,24 +17,23 @@
   },
   {
    "key": "qbi.eligible",
-   "record": "229dca6b8aef4e4f5242aa5b28a7d3e59f1e82da44e125e328707e9c07032493",
+   "record": "a7d4006cf25d172b7c23e5dd42eb6de4f4770d2945e07047527f62677cda190d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/qbi.json (log sha matches): 2,193/2,716 agree; 501 candidate-unknown, 11 project-unknown, 5 candidate-refuses, 5 project-refuses, 1 value; completed: 36 candidate-unknown. The reply takes the smaller of qbi.dividends and the box 1a total; box 5 is a portion of box 1a (f1099div), and the project refuses a return whose box 5 exceeds box 1a, so the cap never binds where the project completes. The only value witness is stage4.refuse.div.components (box 5 $1.00, box 1a $0.50), a return the project refuses. All 36 completed-return differences are candidate-unknowns: the reply reads qbi.suspended and the other screens of its own refusal list without their parent gates (classm.f1040.1.deepseek: \"no input supplied for qbi.suspended\"). Same as the landing-round ruling.",
-   "subject_key": "d5a37e0bc7ee086623280eec1965978829b253057cada6ef21054bcdb2746d10"
+   "ruling": "Ruling: representation; f1099div p. 5, Box 5, \"Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\". As ruled on 2026-11-14 and 2026-11-15: the project copies qbi.dividends_if_ordinary, asked only when box 1a is above zero, while the reply copies qbi.dividends directly; box 5 is a portion of box 1a, so where box 1a is zero box 5 is zero, and the two agree wherever the interview asks the amount. The line is unchanged; the review was occasioned by the change to qbi.taxable_before (BUG-0100).",
+   "subject_key": "692c5f4651c342213ed93b5201d12d7d7c464254c41de1622549501b0ee3bc4c"
   },
   {
    "key": "qbi.carryforward_if_prior_form",
-   "record": "ca7bddff9ff4ce9fb991db10627b6a2e6fc9ee95fb651446ba07556a48780687",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent. i8995 p. 3, Line 3 (the prior year's Form 8995 line 16 carryforward). Both give line 3 when qbi.prior_form is true and zero otherwise; the reply orders the two guards the other way (\"ne true\" for a Bool answer is \"eq false\"). executable triage (.transcription/triage/2025/qbi.json, executable-triage-v2): 2,672 of 2,672 agree. Project stands.",
-   "subject_key": "895f285c2250c72c38f2362f7dd06fbe90b932e49e449ba616a026b273a6f4aa"
+   "record": "a7d4006cf25d172b7c23e5dd42eb6de4f4770d2945e07047527f62677cda190d",
+   "status": "AGREE",
+   "subject_key": "653f6300c66b529c18e475f2ebd60e8e53e7452229a3c8f937157932a9af03e8"
   },
   {
    "key": "qbi.taxable_before",
-   "record": "eff62ea2b6448f2908312be12f5a06c3f61bcc70b33c71bea09d681208069cf2",
+   "record": "a7d4006cf25d172b7c23e5dd42eb6de4f4770d2945e07047527f62677cda190d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. As ruled before: the project reads Form 1040 line 11b (line 11a for a filer without the Schedule 1-A deduction, which is refused) and subtracts the Schedule A choice plus line 13b, the zero behind the Schedule 1-A refusal, as the corrected instruction reads (i8995-correction); the second subtracts lines 12e and 13b from line 11a directly, equal in value within the slice. Stage 14 did not change this line.",
-   "subject_key": "3c56a6269ba976d428566b5ce84d3a2c4df32df97963b42aad13c8f49af81e7d"
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3310 values compared, none different or missing: 2636 on 2636 fixture cases, 500 on 500 generated returns seed 20261026, 174 on 174 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "fbcd376f8a3b3234a86ad6261ab2ad2e093d3632ce6f98801d553dbb2d5e5b9d"
   },
   {
    "key": "qbi.net_capital_gain",
@@ -45,10 +44,10 @@
   },
   {
    "key": "qbi.deduction",
-   "record": "ca7bddff9ff4ce9fb991db10627b6a2e6fc9ee95fb651446ba07556a48780687",
+   "record": "a7d4006cf25d172b7c23e5dd42eb6de4f4770d2945e07047527f62677cda190d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f8995 p. 1: \"Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)\"; i8995 p. 1, a patron of a specified cooperative uses Form 8995-A. Both choose Form 8995 line 15 at or under the threshold and Form 8995-A above it. The reply routes a cooperative patron to Form 8995-A and refuses suspended losses (qbi.suspended) and a REIT/PTP carryforward (qbi.reit_loss) by reading those answers directly; the project refuses all three through qbi.unsupported (amb.2025.qbi_cooperative_patron), asking qbi.suspended only with a Schedule C and qbi.reit_loss only with a 2024 Form 8995. executable triage (.transcription/triage/2025/qbi.json, executable-triage-v2): 1,992 of 2,672 agree; 476 candidate-unknown (34 completed, e.g. classm.f2441.1.deepseek: qbi.suspended not asked, project $0) and 204 project-refuses on refused returns; no value difference. Project stands.",
-   "subject_key": "fb9eed384528b8dacdac3c6d6d3e134fec16616d277b8ff06a4838f29bb39bb8"
+   "ruling": "Ruling: representation; f8995 p. 1, \"Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)\". As ruled on 2026-11-14: both choose Form 8995 line 15 at or under the threshold and Form 8995-A above it; the reply figures taxable income before the deduction from line 11a less the Schedule A choice where the project reads qbi.taxable_before (line 11b less the same choice and line 13b, the zero behind the Schedule 1-A refusal), equal in value wherever the project completes; the reply reads qbi.suspended, qbi.reit_loss and the cooperative answer directly where the project refuses them through qbi.unsupported. qbi.taxable_before is now signed (BUG-0100), which moves no comparison with the threshold: a negative amount is below it on both sides.",
+   "subject_key": "157342cee85d2b4f61e6694f0f298bf20462e96e414b54f61b94e833954b979f"
   },
   {
    "key": "qbi.dividends_if_ordinary",
@@ -59,17 +58,18 @@
  ],
  "subjects": {
   "qbi.zero": "d351e905679017dd4f47fae49b296df613ed439c812435776e137e37960346b9",
-  "qbi.eligible": "0f409248911bf9c1e034102fa0bfd9c8da70c4c712875e18de8906ebf62bf006",
-  "qbi.carryforward_if_prior_form": "1ceb06b67e3225a6a1b9de6a11ad97967b49a75d25a28acdd682b11650f1254e",
-  "qbi.taxable_before": "b83f0cad61a74d71f14d043cea5f54ced08d9f944f7c5fa4e5bb4d6b5a4302f0",
+  "qbi.eligible": "2f1f93304661490e3da2a656ddd382158ea18de0c16436cd345f0f6e7f226073",
+  "qbi.carryforward_if_prior_form": "8be8aefca6404be08ddfadfe8dd4e09fa708bde8f3fdefac45002e90e977b91a",
+  "qbi.taxable_before": "9258e4952d87f6c37e1f49ac697fbfad761a3c99e4311010a0f43341b748c4a3",
   "qbi.net_capital_gain": "7a116174b72815c5db82b7c6151c282b32fc369ff97504259084e21f7e00f4e4",
-  "qbi.deduction": "2132cb147b2970dea95941ab4cff40fe3152bad7286a86450e5042e9bec680d3",
+  "qbi.deduction": "db133e8e8a92e02835cfe420f4a41e82ccad52a7d001bd061b5fcc6218af84c9",
   "qbi.dividends_if_ordinary": "2ab19b6e5b9e0ff946a290b08d30f9559a4d352a41efa4cd0ade557fb6639111"
  },
  "__rest__": "3ecd850aa0c9743f71e02cf3a8fda571cbba92fac4295ed77a1231fbce2a3a92",
  "foreign": {
   "qbi.eligible": "4bfc1a1aa5dda838516e4599a6eec85b4f8560ebb38f8d7050d1ad79ba1ffbad",
   "qbi.carryforward_if_prior_form": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "qbi.taxable_before": "fa21960f64d1e5fc66b04a5e53d8f2add94ec48d3edf75e1bfdda92b6095e773",
   "qbi.net_capital_gain": "108c0b63626e81123a19c71dbe5d2b7018d5e76ea04202a93685cfac2616d4a9",
   "qbi.deduction": "5454d042ed63496d219120300e2f7144b07a93b7b836d54944114d9d5155f207",
   "qbi.dividends_if_ordinary": "e66873f691171d72092552d4220f3c910ccd051a8111596cd19a931d5e006938"

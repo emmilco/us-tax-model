@@ -127,6 +127,171 @@ proposal:
       den: 100
     status: not found
     reason: no 2026 edition of i1040gi archived
+  amt.exemption:
+    type: Dollars
+    from_value:
+      single: 8810000
+      hoh: 8810000
+      mfj: 13700000
+      qss: 13700000
+      mfs: 6850000
+    status: not found
+    reason: no printed text at “Single or head of household . . . . . $ 626,350 . . . . . $ 88,100 Married filin” reads the
+      from-year value alone; no 2026 edition of f6251 archived
+  amt.phaseout_start:
+    type: Dollars
+    from_value:
+      single: 62635000
+      hoh: 62635000
+      mfj: 125270000
+      qss: 125270000
+      mfs: 62635000
+    status: changed
+    value:
+      single: 50000000
+      hoh: 50000000
+      mfj: 100000000
+      qss: 100000000
+      mfs: 50000000
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: i6251
+      pages:
+      - 10
+      from_text: 4 2. 3. enter $626,350 if single or head of household; $1,252,700 if married filing jointly or qualifying
+        surviving spouse; or $626,350 if married filing separately 3. 4. subtract
+      read:
+      - 4 2. 3. enter $500,000 if single or head of household; $1,000,000 if married filing jointly or qualifying surviving
+        spouse; or $500,000 if married filing separately 3. 4. subtract
+      draft: true
+    - how: quote
+      matched: printed once
+      doc: i6251
+      pages:
+      - 10
+      from_text: form 6251, line 4 2. 3. enter $626,350 if single or head of household; $1,252,700 if married filing jointly
+        or qualifying surviving spouse; or $626,350 if married filing separately 3. 4. subtract line 3 from
+      read:
+      - form 6251, line 4 2. 3. enter $500,000 if single or head of household; $1,000,000 if married filing jointly or qualifying
+        surviving spouse; or $500,000 if married filing separately 3. 4. subtract line 3 from
+      draft: true
+    draft: true
+  amt.rate_25:
+    type: Rate
+    from_value:
+      num: 25
+      den: 100
+    status: changed
+    value:
+      num: 50
+      den: 100
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: i6251
+      pages:
+      - 10
+      from_text: enter-0-4. 1. 5. multiply line 4 by 25% (0.25) 5. 6. subtract
+      read:
+      - enter-0-4. 1. 5. multiply line 4 by 50% (0.50) 5. 6. subtract
+      draft: true
+    - how: quote
+      matched: printed once
+      doc: i6251
+      pages:
+      - 10
+      from_text: zero or less, enter-0-4. 1. 5. multiply line 4 by 25% (0.25) 5. 6. subtract line 5 from
+      read:
+      - zero or less, enter-0-4. 1. 5. multiply line 4 by 50% (0.50) 5. 6. subtract line 5 from
+      draft: true
+    - how: quote
+      matched: printed once
+      doc: i6251
+      pages:
+      - 10
+      from_text: less, enter-0-4. 5. multiply line 4 by 25% (0.25) 5. 6. subtract
+      read:
+      - less, enter-0-4. 5. multiply line 4 by 50% (0.50) 5. 6. subtract
+      draft: true
+    - how: quote
+      matched: printed once
+      doc: i6251
+      pages:
+      - 10
+      from_text: if zero or less, enter-0-4. 5. multiply line 4 by 25% (0.25) 5. 6. subtract line 5 from
+      read:
+      - if zero or less, enter-0-4. 5. multiply line 4 by 50% (0.50) 5. 6. subtract line 5 from
+      draft: true
+    draft: true
+  amt.mfs_addback_start:
+    type: Dollars
+    from_value: 90035000
+    status: changed
+    value: 64020000
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: i6251
+      pages:
+      - 10
+      from_text: If your filing status is married filing separately and line 4 is more than $900,350, you must include an
+        additional amount on line 4.
+      read:
+      - if your filing status is married filing separately and line 4 is more than $640,200, you must include an additional
+        amount on line 4.
+      draft: true
+    draft: true
+  amt.mfs_addback_max:
+    type: Dollars
+    from_value: 6850000
+    status: changed
+    value: 7010000
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: i6251
+      pages:
+      - 10
+      from_text: If line 4 is $1,174,350 or more, include an additional $68,500.
+      read:
+      - if line 4 is $780,400 or more, include an additional $70,100.
+      draft: true
+    draft: true
+  amt.bracket:
+    type: Dollars
+    from_value:
+      single: 23910000
+      hoh: 23910000
+      mfj: 23910000
+      qss: 23910000
+      mfs: 11955000
+    status: not found
+    reason: no 2026 edition of f6251 archived
+  amt.bracket_subtract:
+    type: Dollars
+    from_value:
+      single: 478200
+      hoh: 478200
+      mfj: 478200
+      qss: 478200
+      mfs: 239100
+    status: not found
+    reason: no 2026 edition of f6251 archived
+  amt.rate_26:
+    type: Rate
+    from_value:
+      num: 26
+      den: 100
+    status: not found
+    reason: no 2026 edition of f6251 archived
+  amt.rate_28:
+    type: Rate
+    from_value:
+      num: 28
+      den: 100
+    status: not found
+    reason: no 2026 edition of f6251 archived
   tcw.single.b1.upper:
     type: Dollars
     from_value: 10335000
@@ -1279,7 +1444,7 @@ proposal:
       from_text: social security number multiply line 4 by $2,200 number of other
       read:
       - social security number multiply line 4 by $2,200 number of other
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f1040s8812
@@ -1289,7 +1454,7 @@ proposal:
         any
       read:
       - with the required social security number multiply line 4 by $2,200 number of other dependents, including any
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f1040s8812
@@ -1298,7 +1463,7 @@ proposal:
       from_text: number 4 5 multiply line 4 by $2,200 5 6 number
       read:
       - number 4 5 multiply line 4 by $2,200 5 6 number
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f1040s8812
@@ -1307,8 +1472,7 @@ proposal:
       from_text: required social security number 4 5 multiply line 4 by $2,200 5 6 number of other dependents,
       read:
       - required social security number 4 5 multiply line 4 by $2,200 5 6 number of other dependents
-      draft: true
-    draft: true
+      draft: false
   odc.per_dependent:
     type: NonNegDollars
     from_value: 50000
@@ -1323,7 +1487,7 @@ proposal:
       from_text: on line 4. multiply line 6 by $500 add lines 5
       read:
       - on line 4. multiply line 6 by $500 add lines 5
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f1040s8812
@@ -1332,7 +1496,7 @@ proposal:
       from_text: anyone you included on line 4. multiply line 6 by $500 add lines 5 and 7 enter
       read:
       - anyone you included on line 4. multiply line 6 by $500 add lines 5 and 7 enter
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f1040s8812
@@ -1341,7 +1505,7 @@ proposal:
       from_text: line 4. 7 multiply line 6 by $500 7 8 add
       read:
       - line 4. 7 multiply line 6 by $500 7 8 add
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f1040s8812
@@ -1350,8 +1514,7 @@ proposal:
       from_text: you included on line 4. 7 multiply line 6 by $500 7 8 add lines 5 and
       read:
       - you included on line 4. 7 multiply line 6 by $500 7 8 add lines 5 and
-      draft: true
-    draft: true
+      draft: false
   ctc.threshold:
     type: NonNegDollars
     from_value:
@@ -1376,8 +1539,7 @@ proposal:
       from_text: Married filing jointly—$400,000; All other filing statuses—$200,000
       read:
       - married filing jointly-$400,000 all other filing statuses-$200,000
-      draft: true
-    draft: true
+      draft: false
   ctc.phaseout_rate:
     type: Rate
     from_value:
@@ -1396,8 +1558,12 @@ proposal:
       from_text: Multiply line 10 by 5% (0.05)
       read:
       - multiply line 10 by 5% (0.05)
-      draft: true
-    draft: true
+      draft: false
+  household.mfs_living_else:
+    type: Enum(mfs_living)
+    from_value: together_late
+    status: not found
+    reason: not a printed figure (a flag, an enumeration value or a zero)
   household.no:
     type: Bool
     from_value: false
@@ -1420,15 +1586,41 @@ proposal:
     value: 170000
     evidence:
     - how: quote
-      matched: in order
+      matched: printed once
       doc: f1040s8812
       pages:
       - 2
-      from_text: x $1,700
+      from_text: page 2 . . 15 16a x $1,700. enter the result. if zero,
       read:
-      - x $1,700
-      draft: true
-    draft: true
+      - page 2 . . 15 16a x $1,700. enter the result. if zero
+      draft: false
+    - how: quote
+      matched: printed once
+      doc: f1040s8812
+      pages:
+      - 2
+      from_text: 'required social security number: page 2 . . 15 16a x $1,700. enter the result. if zero, stop here; you cannot'
+      read:
+      - 'required social security number: page 2 . . 15 16a x $1,700. enter the result. if zero, stop here; you cannot'
+      draft: false
+    - how: quote
+      matched: printed once
+      doc: f1040s8812
+      pages:
+      - 2
+      from_text: 'social security number: x $1,700. enter the'
+      read:
+      - 'social security number: x $1,700. enter the'
+      draft: false
+    - how: quote
+      matched: printed once
+      doc: f1040s8812
+      pages:
+      - 2
+      from_text: 'with the required social security number: x $1,700. enter the result. if zero,'
+      read:
+      - 'with the required social security number: x $1,700. enter the result. if zero'
+      draft: false
   actc.earned_floor:
     type: NonNegDollars
     from_value: 250000
@@ -1443,8 +1635,7 @@ proposal:
       from_text: Is the amount on line 18a more than $2,500?
       read:
       - is the amount on line 18a more than $2,500?
-      draft: true
-    draft: true
+      draft: false
   eic.limit0.other:
     type: NonNegDollars
     from_value: 1910400
@@ -1866,8 +2057,7 @@ proposal:
       from_text: Multiply the amount on line 19 by 15% (0.15)
       read:
       - multiply the amount on line 19 by 15% (0.15)
-      draft: true
-    draft: true
+      draft: false
   actc.three_children:
     type: NonNegDollars
     from_value: 510000
@@ -1882,8 +2072,7 @@ proposal:
       from_text: On line 16b, is the amount $5,100 or more?
       read:
       - on line 16b, is the amount $5,100 or more?
-      draft: true
-    draft: true
+      draft: false
   qc.age_limit:
     type: Count
     from_value: 19
@@ -1947,6 +2136,12 @@ proposal:
     status: not found
     reason: “For 2025, the maximum amount that can be excluded from your income through a dependent car” is not printed in
       the 2026 edition of i2441
+  dc.exclusion_max_mfs:
+    type: NonNegDollars
+    from_value: 250000
+    status: not found
+    reason: “For 2025, the maximum amount that can be excluded from your income through a dependent car” is not printed in
+      the 2026 edition of i2441
   dc.child_age:
     type: Count
     from_value: 13
@@ -1966,6 +2161,11 @@ proposal:
       draft: true
     draft: true
   dc.providers_listed:
+    type: Count
+    from_value: 3
+    status: not found
+    reason: the citation quotes no printed figure of the value (a count or a fraction stated in words, a table cell)
+  dc.persons_listed:
     type: Count
     from_value: 3
     status: not found
@@ -2051,8 +2251,14 @@ proposal:
       10 at least 200% but less” is not printed in the 2026 edition of rp-25-32; “less than 200% $375 $750 10 at” is not printed
       in the 2026 edition of rp-25-32; “heads of household) less than 200% $375 $750 10 at least 200% but” is not printed
       in the 2026 edition of rp-25-32; “than 200% $375 $750 10 at least” is not printed in the 2026 edition of rp-25-32; “of
-      household) less than 200% $375 $750 10 at least 200% but less” is not printed in the 2026 edition of rp-25-32; no 2026
-      edition of i8962 archived'
+      household) less than 200% $375 $750 10 at least 200% but less” is not printed in the 2026 edition of rp-25-32; “status
+      of single-$375 for any other” is not printed in the 2026 edition of i8962; “for a filing status of single-$375 for any
+      other filing status-less than” is not printed in the 2026 edition of i8962; “least 300 but less than 400 $750 $975 $1,950
+      $1,625 $3,250 400 or” is not printed in the 2026 edition of i8962; “less than 300 at least 300 but less than 400 $750
+      $975 $1,950 $1,625 $3,250 400 or more le” is not printed in the 2026 edition of i8962; “less than 200 $375 $750 amount
+      of” is not printed in the 2026 edition of i8962; “result is the less than 200 $375 $750 amount of your ptc that” is
+      not printed in the 2026 edition of i8962; “than 200 $375 $750 amount of your” is not printed in the 2026 edition of
+      i8962; “is the less than 200 $375 $750 amount of your ptc that is” is not printed in the 2026 edition of i8962'
   ptc.repay_300:
     type: NonNegDollars
     from_value:
@@ -2069,7 +2275,14 @@ proposal:
       printed in the 2026 edition of rp-25-32; “than 200% $375 $750 10 at least 200% but less $975 $1,950 than 300% at least
       300% but less” is not printed in the 2026 edition of rp-25-32; “but less $975 $1,950 than 300% at” is not printed in
       the 2026 edition of rp-25-32; “at least 200% but less $975 $1,950 than 300% at least 300% but” is not printed in the
-      2026 edition of rp-25-32; no 2026 edition of i8962 archived
+      2026 edition of rp-25-32; “300 but less than 400 $750 $975 $1,950 $1,625 $3,250 400 or more” is not printed in the 2026
+      edition of i8962; “than 300 at least 300 but less than 400 $750 $975 $1,950 $1,625 $3,250 400 or more leave l” is not
+      printed in the 2026 edition of i8962; “but less than 400 $750 $975 $1,950 $1,625 $3,250 400 or more leave” is not printed
+      in the 2026 edition of i8962; “300 at least 300 but less than 400 $750 $975 $1,950 $1,625 $3,250 400 or more leave line
+      2” is not printed in the 2026 edition of i8962; “tax you 300 $975 $1,950 must pay” is not printed in the 2026 edition
+      of i8962; “the amount of tax you 300 $975 $1,950 must pay with your tax” is not printed in the 2026 edition of i8962;
+      “you 300 $975 $1,950 must pay with” is not printed in the 2026 edition of i8962; “amount of tax you 300 $975 $1,950
+      must pay with your tax return” is not printed in the 2026 edition of i8962
   ptc.repay_400:
     type: NonNegDollars
     from_value:
@@ -2087,7 +2300,15 @@ proposal:
       the 2026 edition of rp-25-32; “less $975 $1,950 than 300% at least 300% but less $1,625 $3,250 than 400% .08 rehabilitati”
       is not printed in the 2026 edition of rp-25-32; “but less $1,625 $3,250 than 400% .08” is not printed in the 2026 edition
       of rp-25-32; “at least 300% but less $1,625 $3,250 than 400% .08 rehabilitation expenditures treated” is not printed
-      in the 2026 edition of rp-25-32; no 2026 edition of i8962 archived
+      in the 2026 edition of rp-25-32; “less than 400 $750 $975 $1,950 $1,625 $3,250 400 or more leave line” is not printed
+      in the 2026 edition of i8962; “at least 300 but less than 400 $750 $975 $1,950 $1,625 $3,250 400 or more leave line
+      28 bl” is not printed in the 2026 edition of i8962; “than 400 $750 $975 $1,950 $1,625 $3,250 400 or more leave line
+      28” is not printed in the 2026 edition of i8962; “least 300 but less than 400 $750 $975 $1,950 $1,625 $3,250 400 or
+      more leave line 28 blank” is not printed in the 2026 edition of i8962; “on schedule 3 (form 1040), 400 $1,625 $3,250
+      line 9. skip lines 27” is not printed in the 2026 edition of i8962; “amount from line 26 on schedule 3 (form 1040),
+      400 $1,625 $3,250 line 9. skip lines 27 thr” is not printed in the 2026 edition of i8962; “schedule 3 (form 1040), 400
+      $1,625 $3,250 line 9. skip lines 27 through” is not printed in the 2026 edition of i8962; “from line 26 on schedule
+      3 (form 1040), 400 $1,625 $3,250 line 9. skip lines 27 through 29” is not printed in the 2026 edition of i8962
   ptc.months:
     type: Count
     from_value: 12
@@ -2098,9 +2319,21 @@ proposal:
     from_value:
       num: 10
       den: 100
-    status: not found
-    reason: “Additional tax. Enter 10% (0.10) of line 3.” is printed in the 2026 edition of f5329 with different figures in
-      more than one place
+    status: unchanged
+    value:
+      num: 10
+      den: 100
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: f5329
+      pages:
+      - 1
+      from_text: Additional tax. Enter 10% (0.10) of line 3.
+      read:
+      - additional tax. enter 10% (0.10) of line 3.
+      - additional tax. enter 10% (0.10) of line 7.
+      draft: false
   f5329.simple_rate:
     type: Rate
     from_value:
@@ -2135,12 +2368,11 @@ proposal:
       matched: printed once
       doc: f5329
       pages:
-      - 3
+      - 2
       from_text: Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2025
       read:
       - additional tax. enter 6% (0.06) of the smaller of line 48 or the value of your hsas on december 31, 2026
-      draft: true
-    draft: true
+      draft: false
   f5329.cap_first_home:
     type: NonNegDollars
     from_value: 1000000
@@ -2232,82 +2464,82 @@ proposal:
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: iii, line 30 enter $180,000 if married filing jointly; or $90,000 if single, head of household, 2 or
       read:
       - iii, line 30 enter $180,000 if married filing jointly; or $90,000 if single, head of household, 2 or
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: from all parts iii, line 30 enter $180,000 if married filing jointly; or $90,000 if single, head of household,
         2 or qualifying surviving spouse
       read:
       - from all parts iii, line 30 enter $180,000 if married filing jointly; or $90,000 if single, head of household, 2 or
         qualifying surviving spouse
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: by 20% (0.20) enter $180,000 if married filing jointly; or $90,000 if single, head of household, 13 or
       read:
       - by 20% (0.20) enter $180,000 if married filing jointly; or $90,000 if single, head of household, 13 or
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: multiply line 11 by 20% (0.20) enter $180,000 if married filing jointly; or $90,000 if single, head of household,
         13 or qualifying surviving spouse
       read:
       - multiply line 11 by 20% (0.20) enter $180,000 if married filing jointly; or $90,000 if single, head of household,
         13 or qualifying surviving spouse
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: . 1 2 enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying
       read:
       - . 1 2 enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: line 30 . . 1 2 enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying
         surviving spouse 2
       read:
       - line 30 . . 1 2 enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving
         spouse 2
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: (0.20) 12 13 enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying
       read:
       - (0.20) 12 13 enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: 11 by 20% (0.20) 12 13 enter $180,000 if married filing jointly; or $90,000 if single, head of household,
         or qualifying surviving spouse 13
       read:
       - 11 by 20% (0.20) 12 13 enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying
         surviving spouse 13
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: i8863
@@ -2340,83 +2572,82 @@ proposal:
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: education 4 credit enter $20,000 if married filing jointly; or $10,000 if single, head of household, 5 or
       read:
       - education 4 credit enter $20,000 if married filing jointly; or $10,000 if single, head of household, 5 or
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: can't take any education 4 credit enter $20,000 if married filing jointly; or $10,000 if single, head of
         household, 5 or qualifying surviving spouse
       read:
       - can't take any education 4 credit enter $20,000 if married filing jointly; or $10,000 if single, head of household,
         5 or qualifying surviving spouse
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: to line 19 enter $20,000 if married filing jointly; or $10,000 if single, head of household, 16 or
       read:
       - to line 19 enter $20,000 if married filing jointly; or $10,000 if single, head of household, 16 or
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: 18, and go to line 19 enter $20,000 if married filing jointly; or $10,000 if single, head of household, 16
         or qualifying surviving spouse
       read:
       - 18, and go to line 19 enter $20,000 if married filing jointly; or $10,000 if single, head of household, 16 or qualifying
         surviving spouse
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: credit 4 5 enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying
       read:
       - credit 4 5 enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: take any education credit 4 5 enter $20,000 if married filing jointly; or $10,000 if single, head of household,
         or qualifying surviving spouse 5
       read:
       - take any education credit 4 5 enter $20,000 if married filing jointly; or $10,000 if single, head of household, or
         qualifying surviving spouse 5
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: 19 15 16 enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying
       read:
       - 19 15 16 enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: go to line 19 15 16 enter $20,000 if married filing jointly; or $10,000 if single, head of household, or
         qualifying surviving spouse 16
       read:
       - go to line 19 15 16 enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying
         surviving spouse 16
-      draft: true
-    draft: true
+      draft: false
   aoc.expense_cap:
     type: NonNegDollars
     from_value: 400000
@@ -2427,12 +2658,11 @@ proposal:
       matched: printed once
       doc: f8863
       pages:
-      - 3
+      - 2
       from_text: Don’t enter more than $4,000
       read:
       - don't enter more than $4,000
-      draft: true
-    draft: true
+      draft: false
   aoc.full_band:
     type: NonNegDollars
     from_value: 200000
@@ -2443,11 +2673,11 @@ proposal:
       matched: printed once
       doc: f8863
       pages:
-      - 3
+      - 2
       from_text: Subtract $2,000 from line 27. If zero or less, enter -0-
       read:
       - subtract $2,000 from line 27. if zero or less, enter-0-
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: i8863
@@ -2474,39 +2704,38 @@ proposal:
       matched: printed once
       doc: f8863
       pages:
-      - 3
+      - 2
       from_text: or less, enter-0-multiply line 28 by 25% (0.25) if line 28
       read:
       - or less, enter-0-multiply line 28 by 25% (0.25) if line 28
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 3
+      - 2
       from_text: 27. if zero or less, enter-0-multiply line 28 by 25% (0.25) if line 28 is zero, enter
       read:
       - 27. if zero or less, enter-0-multiply line 28 by 25% (0.25) if line 28 is zero, enter
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 3
+      - 2
       from_text: less, enter-0-28 29 multiply line 28 by 25% (0.25) 29 30 if
       read:
       - less, enter-0-28 29 multiply line 28 by 25% (0.25) 29 30 if
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 3
+      - 2
       from_text: if zero or less, enter-0-28 29 multiply line 28 by 25% (0.25) 29 30 if line 28 is
       read:
       - if zero or less, enter-0-28 29 multiply line 28 by 25% (0.25) 29 30 if line 28 is
-      draft: true
-    draft: true
+      draft: false
   aoc.refundable_rate:
     type: Rate
     from_value:
@@ -2521,12 +2750,11 @@ proposal:
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: Refundable American opportunity credit. Multiply line 7 by 40% (0.40).
       read:
       - refundable american opportunity credit. multiply line 7 by 40% (0.40).
-      draft: true
-    draft: true
+      draft: false
   llc.expense_cap:
     type: NonNegDollars
     from_value: 1000000
@@ -2537,11 +2765,11 @@ proposal:
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: Enter the smaller of line 10 or $10,000
       read:
       - enter the smaller of line 10 or $10,000
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: i8863
@@ -2566,38 +2794,38 @@ proposal:
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: 10 or $10,000 multiply line 11 by 20% (0.20) enter $180,000 if
       read:
       - 10 or $10,000 multiply line 11 by 20% (0.20) enter $180,000 if
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: smaller of line 10 or $10,000 multiply line 11 by 20% (0.20) enter $180,000 if married filing jointly;
       read:
       - smaller of line 10 or $10,000 multiply line 11 by 20% (0.20) enter $180,000 if married filing jointly
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: $10,000 11 12 multiply line 11 by 20% (0.20) 12 13 enter
       read:
       - $10,000 11 12 multiply line 11 by 20% (0.20) 12 13 enter
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8863
       pages:
-      - 2
+      - 1
       from_text: line 10 or $10,000 11 12 multiply line 11 by 20% (0.20) 12 13 enter $180,000 if married
       read:
       - line 10 or $10,000 11 12 multiply line 11 by 20% (0.20) 12 13 enter $180,000 if married
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: i8863
@@ -2742,12 +2970,11 @@ proposal:
       matched: printed once
       doc: f8889
       pages:
-      - 2
+      - 1
       from_text: Enter 20% (0.20) of the distributions included on line 16 that are subject to the additional 20% tax
       read:
       - enter 20% (0.20) of the distributions included on line 16 that are subject to the additional 20% tax
-      draft: true
-    draft: true
+      draft: false
   medicare.additional_rate:
     type: Rate
     from_value:
@@ -2901,6 +3128,16 @@ proposal:
       qss: 160000
     status: not found
     reason: no 2026 edition of i1040gi archived
+  sa.dep_min:
+    type: NonNegDollars
+    from_value: 135000
+    status: not found
+    reason: no 2026 edition of i1040gi archived
+  sa.dep_add:
+    type: NonNegDollars
+    from_value: 45000
+    status: not found
+    reason: no 2026 edition of i1040gi archived
   sa.no:
     type: Bool
     from_value: false
@@ -3007,6 +3244,77 @@ proposal:
     from_value: false
     status: not found
     reason: not a printed figure (a flag, an enumeration value or a zero)
+  f1116.interest_threshold:
+    type: NonNegDollars
+    from_value: 500000
+    status: unchanged
+    value: 500000
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: i1116
+      pages:
+      - 21
+      from_text: If your gross foreign source income (including income excluded on Form 2555) doesn’t exceed $5,000, you can
+        allocate all of your interest expense to U.S. source income.
+      read:
+      - if your gross foreign source income (including income excluded on form 2555) doesn't exceed $5,000, you can allocate
+        all of your interest expense to u.s. source income.
+      draft: true
+    draft: true
+  f1116.exception_ceiling:
+    type: NonNegDollars
+    from_value:
+      single: 19730000
+      mfs: 19730000
+      hoh: 19730000
+      mfj: 39460000
+      qss: 39460000
+    status: not found
+    reason: 'the places the citation names give different values: single: [''20175000'', ''20177500'']; mfs: [''20175000'',
+      ''20177500'']; hoh: [''20175000'', ''20177500'']'
+  f1116.exception_qd_limit:
+    type: NonNegDollars
+    from_value: 2000000
+    status: unchanged
+    value: 2000000
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: i1116
+      pages:
+      - 11
+      from_text: The amount of your foreign source capital gain distributions plus the amount of your foreign source qualified
+        dividends is less than $20,000.
+      read:
+      - the amount of your foreign source capital gain distributions plus the amount of your foreign source qualified dividends
+        is less than $20,000.
+      draft: true
+    draft: true
+  f1116.high_tax_rate:
+    type: Rate
+    from_value:
+      num: 37
+      den: 100
+    status: not found
+    reason: no 2026 edition of i1040gi archived
+  f1116.withholding_split:
+    type: Rate
+    from_value:
+      num: 15
+      den: 100
+    status: not found
+    reason: no printed text at cfr-26-1-904-4 p. 4 reads the from-year value alone
+  f1116sb.prior_none:
+    type: Enum(ftc_prior_year)
+    from_value: none
+    status: not found
+    reason: not a printed figure (a flag, an enumeration value or a zero)
+  ftc.yes:
+    type: Bool
+    from_value: true
+    status: not found
+    reason: not a printed figure (a flag, an enumeration value or a zero)
   s1.educator_max:
     type: NonNegDollars
     from_value: 30000
@@ -3100,6 +3408,11 @@ proposal:
   hsa.year_family:
     type: Enum(hsa_coverage)
     from_value: family
+    status: not found
+    reason: not a printed figure (a flag, an enumeration value or a zero)
+  hsa.inh_spouse_earlier:
+    type: Enum(hsa_inherited)
+    from_value: spouse_earlier
     status: not found
     reason: not a printed figure (a flag, an enumeration value or a zero)
   hsa.year_same:
@@ -3943,6 +4256,137 @@ proposal:
       read:
       - deduction for one-half of self-employment tax. multiply line 12 by 50% (0.50). enter here and on schedule
       draft: false
+  f4137.rate_062:
+    type: Rate
+    from_value:
+      num: 62
+      den: 1000
+    status: not found
+    reason: “compensation (subject to 6.2% 8 rate) (see instructions)” is not printed in the 2026 edition of f4137; “railroad
+      retirement (rrta) compensation (subject to 6.2% 8 rate) (see instructions) subtra” is not printed in the 2026 edition
+      of f4137; “tips remains at 6.2%. ▲ !” is not printed in the 2026 edition of f4137; “must pay on tips remains at 6.2%.
+      ▲ ! caution reminder a” is not printed in the 2026 edition of f4137; “railroad retirement (rrta) compensation (subject
+      to 6.2% rate) (see instructions) 8 9 subt” is not printed in the 2026 edition of f4137; “must pay on tips remains at
+      6.2%. ▲ ! form 1099-misc, miscellaneous” is not printed in the 2026 edition of f4137; “unlike the uncollected subject
+      to the 6.2% rate for 2025. portion of the” is not printed in the 2026 edition of f4137
+  f4137.rate_0145:
+    type: Rate
+    from_value:
+      num: 145
+      den: 10000
+    status: unchanged
+    value:
+      num: 145
+      den: 10000
+    evidence:
+    - how: page
+      matched: printed once
+      doc: f4137
+      pages:
+      - 3
+      from_text: the regular (1.45%) medicare tax,
+      read:
+      - the regular (1.45%) medicare tax
+      draft: true
+    - how: page
+      matched: printed once
+      doc: f4137
+      pages:
+      - 3
+      from_text: uncollected portion of the regular (1.45%) medicare tax, the uncollected additional
+      read:
+      - uncollected portion of the regular (1.45%) medicare tax, the uncollected additional
+      draft: true
+    - how: page
+      matched: printed once
+      doc: f4137
+      pages:
+      - 3
+      from_text: only to the 1.45% medicare tax, subtract
+      read:
+      - only to the 1.45% medicare tax, subtract
+      draft: true
+    - how: page
+      matched: printed once
+      doc: f4137
+      pages:
+      - 3
+      from_text: pay was subject only to the 1.45% medicare tax, subtract the amount of
+      read:
+      - pay was subject only to the 1.45% medicare tax, subtract the amount of
+      draft: true
+    - how: page
+      matched: printed once
+      doc: f4137
+      pages:
+      - 3
+      from_text: 6. enter '1.45% tips' and the
+      read:
+      - 6. enter '1.45% tips' and the
+      draft: true
+    - how: page
+      matched: printed once
+      doc: f4137
+      pages:
+      - 3
+      from_text: entry on line 6. enter '1.45% tips' and the amount you subtracted
+      read:
+      - entry on line 6. enter '1.45% tips' and the amount you subtracted
+      draft: true
+    - how: page
+      matched: printed once
+      doc: f4137
+      pages:
+      - 3
+      from_text: 2025. portion of the regular (1.45%) medicare tax, the uncollected line
+      read:
+      - 2026. portion of the regular (1.45%) medicare tax, the uncollected line
+      draft: true
+    - how: page
+      matched: printed once
+      doc: f4137
+      pages:
+      - 3
+      from_text: code b. subject only to the 1.45% medicare tax, subtract the amount of
+      read:
+      - code b. subject only to the 1.45% medicare tax, subtract the amount of
+      draft: true
+    - how: page
+      matched: printed once
+      doc: f4137
+      pages:
+      - 3
+      from_text: medicare enter '1.45% tips' and the
+      read:
+      - medicare enter '1.45% tips' and the
+      draft: true
+    - how: page
+      matched: printed once
+      doc: f4137
+      pages:
+      - 3
+      from_text: medicare, and additional medicare enter '1.45% tips' and the amount you subtracted
+      read:
+      - medicare, and additional medicare enter '1.45% tips' and the amount you subtracted
+      draft: true
+    draft: true
+  f8919.rate_062:
+    type: Rate
+    from_value:
+      num: 62
+      den: 1000
+    status: not found
+    reason: “retirement (rrta) compensation (subject to the 6.2% rate), and unreported tips subject to” is not printed in
+      the 2026 edition of f8919; “is the amount subject to the 6.2% rate for 2025. ▲ ! caution” is not printed in the 2026
+      edition of f8919; “for more information. subject to the 6.2% rate for 2025. specific instructions lines” is not printed
+      in the 2026 edition of f8919
+  f8919.rate_0145:
+    type: Rate
+    from_value:
+      num: 145
+      den: 10000
+    status: not found
+    reason: no printed text at f8919 p. 1 reads the from-year value alone
   ret.comp_limit:
     type: NonNegDollars
     from_value: 35000000
@@ -3987,6 +4431,21 @@ proposal:
       den: 100
     status: not found
     reason: no 2026 edition of p560 archived
+  f8853c.per_diem_limit:
+    type: NonNegDollars
+    from_value: 42000
+    status: changed
+    value: 43000
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: rp-25-32
+      pages:
+      - 34
+      from_text: chronically ill individual, is $420
+      read:
+      - chronically ill individual, is $430
+      draft: false
   s1.ebl_threshold:
     type: NonNegDollars
     from_value:
@@ -4179,12 +4638,11 @@ proposal:
       matched: printed once
       doc: f8880
       pages:
-      - 2
+      - 1
       from_text: In each column, enter the smaller of line 5 or $2,000
       read:
       - in each column, enter the smaller of line 5 or $2,000
-      draft: true
-    draft: true
+      draft: false
   savers.no_credit:
     type: Bool
     from_value: false
@@ -4210,42 +4668,41 @@ proposal:
       matched: printed once
       doc: f8880
       pages:
+      - 1
       - 2
-      - 3
       from_text: The amount on Form 1040, 1040-SR, or 1040-NR, line 11a, is more than $39,500 ($59,250 if head of household;
         $79,000 if married filing jointly)
       read:
       - the amount on form 1040, 1040-sr, or 1040-nr, line 11a, is more than $40,250 ($60,375 if head of household; $80,500
         if married filing jointly)
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8880
       pages:
-      - 2
+      - 1
       from_text: '0.1 0.0 0.0 $79,000---0.0 0.0 0.0 note: if line'
       read:
       - '0.1 0.0 0.0 $80,500---0.0 0.0 0.0 note: if line'
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8880
       pages:
-      - 2
+      - 1
       from_text: '0.1 0.0 $59,250 0.1 0.0 0.0 $79,000---0.0 0.0 0.0 note: if line 9 is zero,'
       read:
       - '0.1 0.0 $60,375 0.1 0.0 0.0 $80,500---0.0 0.0 0.0 note: if line 9 is zero'
-      draft: true
+      draft: false
     - how: quote
       matched: printed once
       doc: f8880
       pages:
-      - 2
+      - 1
       from_text: '0.0 $59,250 $79,000 0.1 0.0 0.0 $79,000---0.0 0.0 0.0 note: if line 9 is zero,'
       read:
       - '0.0 $60,375 $80,500 0.1 0.0 0.0 $80,500---0.0 0.0 0.0 note: if line 9 is zero'
-      draft: true
-    draft: true
+      draft: false
   ira.limit:
     type: NonNegDollars
     from_value: 700000
@@ -4264,6 +4721,11 @@ proposal:
       mfs: 1000000
       mfj: 14600000
       qss: 14600000
+    status: not found
+    reason: no 2026 edition of i1040gi archived
+  ira.line2_apart:
+    type: NonNegDollars
+    from_value: 8900000
     status: not found
     reason: no 2026 edition of i1040gi archived
   ira.line2_not_covered:
@@ -4329,3 +4791,158 @@ proposal:
     from_value: 1600000
     status: not found
     reason: no 2026 edition of i1040gi archived
+  rental.one:
+    type: Count
+    from_value: 1
+    status: not found
+    reason: the citation quotes no printed figure of the value (a count or a fraction stated in words, a table cell)
+  rental.day_cents:
+    type: NonNegDollars
+    from_value: 1
+    status: not found
+    reason: no printed text at p527 p. 25 reads the from-year value alone
+  rental.tenth_cents:
+    type: NonNegDollars
+    from_value: 10
+    status: not found
+    reason: no printed text at p527 p. 26 reads the from-year value alone
+  rental.home_days:
+    type: NonNegDollars
+    from_value: 14
+    status: not found
+    reason: no printed text at p527 p. 26 reads the from-year value alone
+  rental.min_rental_days:
+    type: Count
+    from_value: 15
+    status: unchanged
+    value: 15
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: i1040se
+      pages:
+      - 7
+      from_text: If you did use the unit as a home and rented the unit out for fewer than 15 days in 2025
+      read:
+      - if you did use the unit as a home and rented the unit out for fewer than 15 days in 2026
+      draft: true
+    draft: true
+  f8582.phaseout_end:
+    type: NonNegDollars
+    from_value:
+      single: 15000000
+      mfj: 15000000
+      mfs: 7500000
+      hoh: 15000000
+      qss: 15000000
+    status: not found
+    reason: “$75,000 on line 5 instead of $150,000. line 6. to figure modified” is not printed in the 2026 edition of i8582;
+      “5 instead of $150,000. worksheet for” is not printed in the 2026 edition of i8582; “$75,000 on line 5 instead of $150,000.
+      worksheet for special allowance for” is not printed in the 2026 edition of i8582
+  f8582.special_max:
+    type: NonNegDollars
+    from_value:
+      single: 2500000
+      mfj: 2500000
+      mfs: 1250000
+      hoh: 2500000
+      qss: 2500000
+    status: unchanged
+    value:
+      single: 2500000
+      mfj: 2500000
+      mfs: 1250000
+      hoh: 2500000
+      qss: 2500000
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: i8582
+      pages:
+      - 12
+      from_text: Don’t enter more than $12,500 on line 8
+      read:
+      - don't enter more than $12,500 on line 8
+      draft: true
+    - how: quote
+      matched: printed once
+      doc: f8582
+      pages:
+      - 2
+      from_text: Do not enter more than $25,000
+      read:
+      - do not enter more than $25,000
+      draft: true
+    draft: true
+  f8582.rate:
+    type: Rate
+    from_value:
+      num: 50
+      den: 100
+    status: unchanged
+    value:
+      num: 50
+      den: 100
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: f8582
+      pages:
+      - 2
+      from_text: Multiply line 7 by 50% (0.50)
+      read:
+      - multiply line 7 by 50% (0.50)
+      draft: true
+    draft: true
+  f8582.exception_magi:
+    type: NonNegDollars
+    from_value:
+      single: 10000000
+      mfj: 10000000
+      mfs: 5000000
+      hoh: 10000000
+      qss: 10000000
+    status: unchanged
+    value:
+      single: 10000000
+      mfj: 10000000
+      mfs: 5000000
+      hoh: 10000000
+      qss: 10000000
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: i8582
+      pages:
+      - 3
+      from_text: was not more than $100,000 ($50,000 if married filing separately)
+      read:
+      - was not more than $100,000 ($50,000 if married filing separately)
+      draft: true
+    draft: true
+  f8582.exception_loss:
+    type: NonNegDollars
+    from_value:
+      single: 2500000
+      mfj: 2500000
+      mfs: 1250000
+      hoh: 2500000
+      qss: 2500000
+    status: unchanged
+    value:
+      single: 2500000
+      mfj: 2500000
+      mfs: 1250000
+      hoh: 2500000
+      qss: 2500000
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: i8582
+      pages:
+      - 3
+      from_text: wasn’t more than $25,000 ($12,500 if married filing separately)
+      read:
+      - wasn't more than $25,000 ($12,500 if married filing separately)
+      draft: true
+    draft: true

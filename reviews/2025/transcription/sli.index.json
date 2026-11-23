@@ -5,22 +5,22 @@
  "base": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
  "head_rows": {
   "agree / disagree / missing": "3 / 6 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-17); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "sli.deduction",
-   "record": "7f79185008aff6b592f45f2002b0a83bb5a8792fe4ecd4f31709df44e6ac9079",
+   "record": "e32b2952abec7b4c9f191205e6c2bcfb7966e4be8e757847afd9d2f62d4afe8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply leaves out the dependent condition. i1040gi p. 98, Schedule 1, line 21: you can take the deduction only if \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"; the project tests it with sli.claimed_count (person.sav_claimed) in sli.eligible, and the reply's own note says it did not encode it. Triage 6e21762b3daa: 2,478/3,116 agree; all 8 value differences are returns where the filer or the spouse is claimed on another return (person.sav_claimed true: classm.sli.3, dep.sli_claimed_no_deduction, stage11.sli.claimed, stage11.sli.spouse_claimed, stage16.sd.line17_no_skips_19 and three mutation cases), where the project's 0 is right; the other 630 are candidate-refuses (522) and candidate-unknown (108) on refused or incomplete returns. The separate-return zero is the same in both.",
-   "subject_key": "507850c76d6bffa1bf761f6c9e142bb547f76932b946ac10139e0bb35d6bbd76"
+   "ruling": "Ruling: model error; i1040gi p. 98, Schedule 1, line 21: the deduction is allowed only if \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.\" The reply leaves out that condition, saying no supplied input states it; the request's person collection carries person.sav_claimed, which the project counts in sli.claimed_count (sli.eligible). As ruled on 2026-11-10, 2026-11-14 and 2026-11-15, completed returns where a person on the return is claimed (stage11.sli.claimed, stage11.sli.spouse_claimed) take $0 in the project and the worksheet amount in the reply. The review was occasioned by the reworded list of unqualified loans (BUG-0881); the expression is unchanged.",
+   "subject_key": "71017b7cb934173e737bba29f2d77c8c7b9dbec9d2b96b58624ec8b2f17d6975"
   },
   {
    "key": "1",
-   "record": "35dc1d4c38f595bb848e1675c216b969259f6ab9b1389618c0b3f70d601e0c93",
+   "record": "e32b2952abec7b4c9f191205e6c2bcfb7966e4be8e757847afd9d2f62d4afe8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 1: \"Enter the total interest you paid in 2025 on qualified student loans ... Don't enter more than $2,500\"; p. 98, \"Don't include any amount paid from a distribution of earnings made from a qualified tuition program.\" Both take the interest less the unqualified and assisted amounts, floored at zero and capped at $2,500; subtracting the two in turn from a zero-floored amount equals subtracting their sum. The completed-return differences are the candidate's sli.any gate input (15); the 26 value witnesses are on records the project refuses. Triage executable-triage-v2 (.transcription/triage/2025/sli.json): 3,209 of 3,309 agree, 3,209 of 3,270 in scope. Project stands.",
-   "subject_key": "953ffecbcffc9c3eeb35977ca49b5d09b4398a6d87e61b03fda868df80a444a1"
+   "ruling": "Ruling: representation; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 1, \"Enter the total interest you paid in 2025 on qualified student loans ... Don't enter more than $2,500\". As ruled on 2026-11-14, -15 and -17: both take the interest less the unqualified and assisted amounts, floored at zero and capped at $2,500 (subtracting the two in turn from a zero-floored amount equals subtracting their sum); the project asks sli.any only on a return that is not married filing separately (sli.any_if_not_mfs), the reply reads it on every return, and sli.unqualified_any and sli.assisted_any only after sli.any. The new item of sli.unqualified_any (study not toward a credential, or at a school that is not eligible; i1040gi p. 99) changes its wording, not this expression.",
+   "subject_key": "67b55b9b0fbc05366cbec9f66b0fa9428a8c6a2195514a5e2f85f6b56aea57a0"
   },
   {
    "key": "2",
@@ -70,8 +70,8 @@
   }
  ],
  "subjects": {
-  "sli.deduction": "5d1703a83517b96ebf64e59d54d1513d995e3180e874256e1b1759e97cc7fb22",
-  "1": "c1987ca474efa927dbf037ca125fc6a1c03ecde88b734ce39c61f983f9953b13",
+  "sli.deduction": "e5111bb0e7c74b699b49bc2cbe90f96f08fc3087aef1e54b1c73d52a280cfdb3",
+  "1": "c1d34be3026a44cdb4795dd276106f7d4272d638420441be569ba320185b2e55",
   "2": "03b76842d0b2c01ed25446bb350441f94e4e87fe6f19ca18a3ea8ee9d0f06a4d",
   "3": "3a2f5cd698d5de7f0de48e3a76ddcbbd07c2f0b49b90c745ef539cc95ad9986d",
   "4": "7525f5f108db9d3ec62d4c245aeea6b7186ca4e6c389a61b6e16750c48e330f2",

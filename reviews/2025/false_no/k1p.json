@@ -752,68 +752,58 @@
    ]
   },
   "gate:k1p.ask_re_pro": {
-   "subject_sha": "f1a666c78c1ebc10f4a26b85b079b66b55b53226c721216e4192ae45af536c26",
+   "subject_sha": "5308bdd7612223cc207b83dd84ef5efdf76f96176d5b0733fb55cdcd4b9185c8",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A filer with a Box 2 amount who is a real estate professional and materially participated in the partnership rental real estate, and who also rents out a separate duplex or vacation home, or receives oil-and-gas or other royalties.",
-       "why_no": "They truthfully answer yes to the parent scope question 'did you rent out ... anything you own or lease, or receive royalties'; the computed gate requires no rental or royalty of their own, so the K-1 re_pro question is skipped and the gated line is silently set to No.",
-       "line": "k1p.re_pro_if_b2",
-       "irs_text": "i1065sk1 p. 14: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
-       "severity": "high",
-       "fix": "Drop the 'no rental or royalty of your own' condition and ask the K-1 Box 2 real-estate-professional/material-participation question whenever Box 2 shows an amount."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "On a joint return, a filer with a Box 2 amount who is a real estate professional and materially participated in the partnership rental real estate, while the spouse separately rents out a property or receives royalties.",
-       "why_no": "The parent scope question includes the spouse, so the filer truthfully answers yes because of the spouse's rental or royalty; the computed gate becomes false and the filer's own K-1 re_pro line is set to No.",
-       "line": "k1p.re_pro_if_b2",
-       "irs_text": "i1065sk1 p. 14: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
-       "severity": "high",
-       "fix": "Do not let a spouse's unrelated rental or royalty activity suppress the K-1 Box 2 real-estate-professional question; ask it based on the Box 2 activity and the filer's or spouse's real-estate-professional hours."
-      },
-      {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer with a Box 2 amount who is a real estate professional and materially participated, but who does not personally own or lease rental real estate; they see the K-1's 'net rental real estate income' and believe they rented out a property.",
-       "why_no": "They answer yes to the scope helper because the K-1 reports rental real estate income, so the tool treats the gate as false and skips the K-1 re_pro question; the property is actually owned by the partnership, not the filer.",
+       "pattern": "5",
+       "who": "A filer with a box 2 amount who correctly answers yes to the scope question only because they received royalties (oil, gas, book or patent), rented out personal property such as equipment, or rented a home for fewer than 15 days. They own no rental real estate of their own. They or their spouse work full time as a real estate developer or broker.",
+       "why_no": "The computed gate is false because the scope helper is true, so this question is never asked. The line note says Schedule E Part I asks it instead. But Schedule E Part I may ask the real estate professional question only when a rental real estate property is listed. A royalty-only filer, a personal-property renter, or a filer whose under-15-day rental is excluded from Schedule E would then never be asked anywhere.",
        "line": "k1p.re_pro_if_b2",
-       "irs_text": "i1065sk1 p. 14: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
+       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"the income (loss) in box 2 isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"; item 3: \"report box 2 income (loss) in column (i) or (k) of Schedule E (Form 1040), line 28.\"",
        "severity": "medium",
-       "fix": "Clarify that the scope helper asks only about rental or royalty activities owned or leased directly by the filer or spouse, not a partnership's rental real estate reported in Box 2; or remove the condition."
+       "fix": "Base the gate on whether Schedule E Part I will actually ask the real estate professional question for a listed real estate property, not on the broad scope helper. One option: ask here whenever box 2 is nonzero and no rental real estate property is listed in Part I. Another: confirm that Part I asks the question whenever any K-1 box 2 amount exists, even with only royalties or personal-property rentals listed."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer who materially participated in the partnership's Box 2 rental real estate but whose more-than-750 real-estate hours are in another real estate business, such as brokerage or construction, not in the K-1 partnership.",
-       "why_no": "They read 'On this Schedule K-1' as asking whether they worked more than 750 hours for this partnership and answer no, although the real estate professional test counts hours in any real property trade or business and the Box 2 activity only needs material participation.",
+       "who": "A spouse on a joint return works 2,000 hours a year as a general contractor, home builder, property manager, leasing agent, or mortgage-free real estate broker through their own company. The other spouse holds a partnership interest that reports a box 2 amount, and the working spouse materially participates in it.",
+       "why_no": "\"Real estate businesses\" reads to many filers as owning or investing in buildings. A contractor, builder, renovator, property manager or broker may not think construction, redevelopment, management, leasing or brokerage is a \"real estate business\", so they answer no.",
        "line": "k1p.re_pro_if_b2",
-       "irs_text": "i1065sk1 p. 14: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
+       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"",
        "severity": "medium",
-       "fix": "Ask the real-estate-professional hours question without limiting it to this K-1 activity, and ask material participation in the Box 2 activity separately."
+       "fix": "List the qualifying trades in the question: \"real estate businesses (developing, redeveloping, building, rebuilding, acquiring, converting, renting, operating, managing, leasing, or brokering real property), including through a company you own at least 5% of, or this partnership\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A real estate professional who sees the help text \"A Yes ends the interview here\" next to the question and wants to finish the return in this tool.",
+       "why_no": "The help tells the filer that a yes stops the interview, which invites a no from anyone who is unsure or close to the 750-hour line. It gives no explanation that a no is correct only if neither spouse meets both tests.",
+       "line": "k1p.re_pro_if_b2",
+       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"the income (loss) in box 2 isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"",
+       "severity": "medium",
+       "fix": "Explain the consequence neutrally, for example: \"This tool can't treat box 2 as nonpassive. If either of you meets both tests, answer Yes; the return must be prepared another way.\" Also add the two tests to the help: more than 750 hours, and more than half of that person's total work hours, each met by one spouse alone."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "other",
-       "who": "On a joint return, one spouse meets the real estate professional tests (for example, 800 real-estate hours and 100 other work hours), but the other spouse has 1,000 hours of non-real-estate work; the filer with the Box 2 amount materially participated.",
-       "why_no": "They read 'more than half of all your work time' as combined household work time, so 800/1,900 fails; the real estate professional test is applied spouse-by-spouse, and the qualifying spouse makes the answer yes.",
+       "who": "A partner in a partnership with several rental real estate activities. Box 2 nets to zero or shows only \"STMT\", while the attached statement shows income in one activity and a loss in another. The partner is a real estate professional who materially participates in the loss activity.",
+       "why_no": "The helper \"Box 2 shows an amount\" may be false when the printed net is zero or the box shows only STMT. The gate then never asks the question, even though the per-activity amounts on the statement would be nonpassive.",
        "line": "k1p.re_pro_if_b2",
-       "irs_text": "i1065sk1 p. 14: 'the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional ... and you materially participated in the activity'",
-       "severity": "medium",
-       "fix": "State that on a joint return either spouse may qualify separately; do not combine the spouses' work hours for the more-than-half test."
+       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"If the partnership had more than one rental real estate activity, it'll attach a statement identifying the income or loss from each activity.\"",
+       "severity": "low",
+       "fix": "Treat box 2 as showing an amount whenever it is nonzero, shows STMT, or has an attached statement listing rental real estate activities."
       }
      ],
-     "prompt_sha": "6c3ba42580cf18e9fb3d4a21353552d5b0f32edc26f3cbefb62154eac3b67233",
+     "prompt_sha": "b74f6dfeda3e0dc612d8081c887f8cdaf9f18711edb8b784529d144540aed3ac",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_k1p.ask_re_pro.f1a666c78c1e.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.09446,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_k1p.ask_re_pro.5308bdd76122.1.response.txt"
     }
    ],
    "condition": "k1p.ask_re_pro",

@@ -512,7 +512,7 @@
    ]
   },
   "gate:s1.has_sc": {
-   "subject_sha": "f9cfd0dcb5889b50969fa56fa1e170bbba6c096c37849d83725b043f66f67a02",
+   "subject_sha": "1260022589b4171bf1e44c37aa2b0553c8df2f480bbf1a69b7f9e4adcd660b09",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -520,100 +520,100 @@
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A filer with no Schedule C but a 2025 allowed prior-year suspended business loss from a partnership, S corporation, PTP, or Schedule F farm.",
-       "why_no": "The gate asks only whether the return has a Schedule C; without one the tool marks qbi.suspended false even though the question covers any trade or business loss suspended by at-risk, passive, or similar limits.",
-       "line": "qbi.suspended_if_business",
-       "irs_text": "i8995 p. 3: 'When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward...' It lists sections 163(j), 179, 461(l), 465, 469, 704(d), and 1366(d).",
-       "severity": "high",
-       "fix": "Gate on any trade or business (Schedule C, Schedule E partnership/S corporation, Schedule F, or PTP), not only Schedule C, and ask the suspended-loss question whenever such a business exists."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A filer with no Schedule C but a partnership/S corporation K-1 or Schedule F showing IDCs, mining costs, or circulation costs deducted for regular tax.",
-       "why_no": "The gate requires a Schedule C, so the tool marks s2.amt_business false without asking; the question is not limited to Schedule C and these AMT preferences can arise through other business interests.",
-       "line": "s2.amt_business_if_sc",
-       "irs_text": "i6251 p. 7: 'IDCs from oil, gas, and geothermal wells are a preference'; 'Circulation costs ... deducted in full for the regular tax' must be capitalized and amortized over 3 years for the AMT; mining exploration and development costs are also covered.",
-       "severity": "high",
-       "fix": "Gate on any business or farm interest that can produce these AMT adjustments, not only Schedule C."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A filer with no Schedule C but a long-term contract through a partnership/S corporation, or a film, book, or similar property depreciated under the income forecast method on Schedule E.",
-       "why_no": "The gate requires a Schedule C, so the tool treats s2.lookback false without asking; Schedule 2 line 17n applies to look-back interest from Form 8697 or 8866 regardless of whether the activity is on Schedule C.",
-       "line": "s2.lookback_if_business",
-       "irs_text": "f1040s2 p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866.'",
-       "severity": "high",
-       "fix": "Ask whenever the filer has any long-term contract or income-forecast property, or gate on any business/royalty activity, not only Schedule C."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A farmer or fishing-business owner with no Schedule C, such as farming reported on Schedule F or farming/fishing income through a partnership, who elects Schedule J income averaging.",
-       "why_no": "The gate requires a Schedule C; without one the tool marks scope.income_averaging false and never asks, although Schedule J is available for farming or fishing income.",
-       "line": "scope.income_averaging_if_business",
-       "irs_text": "i1040gi p. 36: 'If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J'; i1040sj p. 1: 'all or part of your 2025 taxable income from your trade or business of farming or fishing'.",
-       "severity": "high",
-       "fix": "Gate on farming or fishing income/business, not on Schedule C, and ask about farming or fishing."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A farmer with a farming business, including farming income on Schedule F or alongside a Schedule C, who chooses Schedule J averaging.",
-       "why_no": "The gated question asks 'Is your business fishing' and omits farming, so a farmer truthfully answers no even though Schedule J covers farming or fishing.",
-       "line": "scope.income_averaging_if_business",
-       "irs_text": "i1040sj p. 1: 'all or part of your 2025 taxable income from your trade or business of farming or fishing'.",
-       "severity": "high",
-       "fix": "Change the question to 'farming or fishing' and include farming in the help."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A partner in a partnership with no Schedule C who contributes to a qualified plan, such as a solo 401(k) or other qualified plan, based on the partnership business.",
-       "why_no": "The gate requires a Schedule C, so the tool marks scope.se_plan_other false; the cited line 16 applies to self-employed filers or partners.",
-       "line": "scope.se_plan_other_if_business",
-       "irs_text": "i1040gi p. 93: 'If you were self-employed or a partner, you may be able to take this' (Line 16, Self-Employed SEP, SIMPLE, and Qualified Plans).",
-       "severity": "high",
-       "fix": "Gate on self-employment or partnership business income, not only Schedule C; ask about the filer's or spouse's own-business plan."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A filer with no Schedule C but vehicle loan interest deducted on Schedule F farm or Schedule E rental/partnership/S corporation activity.",
-       "why_no": "The gate requires a Schedule C and the printed line says 'Interest deducted on Schedule C', so the tool treats carloan.sc_interest as zero; the cited QPVLI instruction requires entering interest deducted elsewhere on the return, including Schedule E or F.",
+       "who": "A farmer who files Schedule F, or a landlord who files Schedule E, and no Schedule C. Part of the car loan's interest is deducted on that schedule, and the filer also claims QPVLI on Schedule 1-A.",
+       "why_no": "The gate is computed as 'Number of Schedules C > 0'. With no Schedule C the question is never asked, and column (ii) is set to zero.",
        "line": "carloan.sc_interest",
-       "irs_text": "i1040gi p. 110: 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)'.",
+       "irs_text": "i1040gi p. 110, Line 22: \"On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F).\"",
        "severity": "high",
-       "fix": "Broaden the gate and line to any QPVLI deducted elsewhere on the return (Schedule C, E, or F), not only Schedule C."
+       "fix": "Gate column (ii) on whether the return has a Schedule C, E, or F (or any business or rental schedule). Ask 'How much of this loan's 2025 interest is deducted anywhere else on your return, such as for a business, farm or rental? Zero if none.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A joint filer whose spouse, not the filer, deducted vehicle loan interest on the spouse's Schedule C.",
-       "why_no": "The gated input asks 'How much ... do you deduct' and does not say 'you or your spouse'; the filer can answer zero for himself even though the spouse's Schedule C makes the return's line non-zero.",
+       "pattern": "6",
+       "who": "A Schedule C filer who also has a rental on Schedule E, and the vehicle is used partly for the rental. Or, on a joint return, a filer whose spouse's Schedule C deducts the interest.",
+       "why_no": "The question asks about interest deducted 'as an expense of your own business'. A rental is not read as 'business', and 'you' is read as excluding the spouse.",
        "line": "carloan.sc_interest",
-       "irs_text": "i1040gi p. 110: 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)'.",
+       "irs_text": "i1040gi p. 110: \"if you deducted some or all of the interest ... on Schedule C, Schedule E, or Schedule F, then you can't deduct that same interest as QPVLI on Schedule 1-A.\"",
        "severity": "medium",
-       "fix": "Add 'you or your spouse' and ask for the joint return's Schedule C/E/F interest deducted elsewhere."
+       "fix": "Ask: 'How much of this loan's 2025 interest do you (or, on a joint return, your spouse) deduct anywhere else on the return — for a business, farm, or rental property? Zero if none.'"
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A publisher of a trade journal, professional magazine, or other periodical not described as a newspaper, magazine, or newsletter who deducts circulation costs for regular tax.",
-       "why_no": "The question lists only newspaper, magazine, or newsletter; the IRS line covers 'newspaper, magazine, or other periodical', so a filer with another periodical answers no even though the AMT adjustment applies.",
-       "line": "s2.amt_business_if_sc",
-       "irs_text": "i6251 p. 7: 'Circulation costs (expenditures to establish, maintain, or increase the circulation of a newspaper, magazine, or other periodical) deducted in full for the regular tax' must be capitalized and amortized over 3 years for the AMT.",
+       "pattern": "5",
+       "who": "A partner or S corporation shareholder with no Schedule C. A passive or at-risk loss from 2022 on the K-1 activity is freed in 2025, for example on sale of the interest. Or a PTP holder, or a Schedule F farmer, whose suspended loss is allowed in 2025.",
+       "why_no": "The gate counts only Schedules C. With none, the question is never asked and the answer is set to false. No refusal follows.",
+       "line": "qbi.suspended_if_business",
+       "irs_text": "i8995 p. 3: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward\"; i8995 p. 4, Line 3: \"even if the loss was from a trade or business that is no longer in existence\"; Line 7 (PTP).",
        "severity": "high",
-       "fix": "Use the IRS list: newspaper, magazine, or other periodical; do not substitute newsletter for other periodical."
+       "fix": "Ask whenever the return has any trade or business income or loss (Schedule C, E with K-1 or PTP, or F, or Form 4835), or when a K-1 is entered. Better, ask every filer. Include 'from a partnership, S corporation, publicly traded partnership, farm, or a business you no longer have'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose sole proprietorship closed in 2024 with an at-risk loss carried over. The filer has a 2025 Schedule C for a new, unrelated business.",
+       "why_no": "The question asks about 'a business loss or expense of an earlier year'. The filer reads it as the current business only and answers no for the closed one.",
+       "line": "qbi.suspended_if_business",
+       "irs_text": "i8995 p. 4, Line 3: \"Include here the qualified portion of trade or business (loss) carryforward ... even if the loss was from a trade or business that is no longer in existence.\"",
+       "severity": "medium",
+       "fix": "Add to the help: 'Count a loss from any business, including one you have closed or sold, and from a partnership or S corporation.'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "An investor with no Schedule C who holds an oil and gas working interest through a partnership. The K-1 passes through intangible drilling costs, which are deducted in full on Schedule E. Also a shareholder in an S corporation publisher that expenses circulation costs.",
+       "why_no": "The question is reached only through a Schedule C. Without one it is never asked, and the answer is set to false.",
+       "line": "s2.amt_business_if_sc",
+       "irs_text": "i6251 p. 7, Line 2t: \"IDCs from oil, gas, and geothermal wells are a preference to the extent that the excess IDCs are more than 65% of the net income from the wells\"; Line 2o and Line 2q (circulation and mining costs deducted in full).",
+       "severity": "high",
+       "fix": "Ask all filers, or any filer with Schedule C, E (K-1 or royalties) or F. Word it as: 'Do you (or your spouse) deduct, directly or through a partnership, S corporation, estate or trust, ...'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A Schedule C filer who deducted mining exploration or circulation costs in full in 2023 or 2024 and has none in 2025. For AMT, those costs are still being amortized, which gives a negative AMT adjustment in 2025.",
+       "why_no": "The present-tense 'Do you ... deduct in a business costs of ...' is read as 2025 deductions only, so the filer answers no.",
+       "line": "s2.amt_business_if_sc",
+       "irs_text": "i6251 p. 7, Line 2q: \"Mining exploration and development costs deducted in full for the regular tax ... must be capitalized and amortized over 10 years for the AMT ... If the AMT deduction is more than the regular tax deduction, enter the difference as a negative amount.\"",
+       "severity": "medium",
+       "fix": "Ask: 'In 2025 or any earlier year, did you (or your spouse) deduct in full ...'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner or S corporation shareholder with no Schedule C whose entity finished a long-term contract in 2025. The K-1 supplies Form 8697 information. Also an owner, through Schedule E, of a film depreciated by the income forecast method. Also a filer whose contracting sole proprietorship closed in 2024 and whose contract's price was adjusted in 2025.",
+       "why_no": "The gate is false without a Schedule C, so the question is never asked and the refusal is missed.",
+       "line": "s2.lookback_if_business",
+       "irs_text": "f1040s2 Schedule 2 (2025), line 17n: \"Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866\"; i6251 p. 7, Line 2p Note: \"you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted.\"",
+       "severity": "high",
+       "fix": "Ask all filers, or any filer with Schedule C, E or F. Add 'including through a partnership or S corporation (see your Schedule K-1), or for a business you no longer have'."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A farmer who files Schedule F and no Schedule C, with high 2025 farm income. Also a fisherman whose share comes through a partnership K-1, and a crop-share landlord who files Form 4835.",
+       "why_no": "The gate counts only Schedules C, so the Schedule J choice is never offered. Even with a Schedule C, the question asks 'Is your business fishing', which leaves out farming.",
+       "line": "scope.income_averaging_if_business",
+       "irs_text": "i1040gi p. 36: \"If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J\"; i1040sj p. 1: \"your trade or business of farming or fishing\", including leasing land on a crop-share basis.",
+       "severity": "medium",
+       "fix": "Gate on Schedule C, F, Form 4835, or a K-1 with farming or fishing income, or ask all filers. Ask: 'Do you (or your spouse) have income from a farming or fishing business, and do you choose to average it over three years (Schedule J)?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner with net self-employment earnings from a K-1 and no Schedule C. The partner contributed to a Keogh or solo 401(k) for 2025 and deducts it on Schedule 1, line 16. Also a Schedule F farmer who does the same.",
+       "why_no": "The question is reached only through a Schedule C, so it is never asked and the refusal is missed.",
+       "line": "scope.se_plan_other_if_business",
+       "irs_text": "i1040gi p. 93, Line 16: \"If you were self-employed or a partner, you may be able to take this deduction\"; f1040s1 line 16: \"Self-employed SEP, SIMPLE, and qualified plans\".",
+       "severity": "high",
+       "fix": "Gate on any self-employment income (Schedule C, F, K-1 self-employment earnings, or Schedule SE), or ask all filers. Change 'your own business' to 'a business you own or are a partner in'."
       }
      ],
-     "prompt_sha": "5633961f02a21f51f4063542dcba14572a494d43c69b6f03c691e7320eec4dbf",
+     "prompt_sha": "19bcc4c4eed23f292038852211d93dd827d8d2db1020790bbb769d97f86f86fe",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_s1.has_sc.f9cfd0dcb588.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.24409999999999998,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_s1.has_sc.1260022589b4.1.response.txt"
     }
    ],
    "condition": "s1.has_sc",

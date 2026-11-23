@@ -10,9 +10,10 @@ entry or ruling that no longer fails is an error.
 
 A year's rulings and baseline are carried to the next year at adoption (year_diff.py --adopt), byte for byte. Adoption
 moves two marks of the year in every subject without changing what it says: each citation's `tax_year` and a
-"(<year>)" edition in a locator. An entry therefore also holds when its subject, with those two marks moved back one
-year, hashes as recorded (year_back); any other change makes it due. The match reaches back one year only: an entry
-still recorded with the hash of two years before comes due.
+"(<year>)" edition in a locator. An entry therefore also holds when its subject, with those two marks moved back by
+any number of years up to YEARS_BACK, hashes as recorded (year_back); any other change makes it due. So an entry
+carried through several adoptions unchanged keeps holding without being re-hashed, and the recorded hash is in effect
+year-invariant; a rebaseline records the current year's hash.
 """
 import hashlib
 import json
@@ -49,21 +50,26 @@ def line_subject(line):
     return json.dumps(line, sort_keys=True)
 
 
-def subject_hash(f, hashes, year=None):
-    """The hash of a finding's subject; with `year`, of the subject with that year's adoption marks moved back
-    (year_back; `hashes` then holds the forms' hashes moved back the same way)."""
+# How many years back a baseline entry's recorded hash may have been made: an entry carried unchanged through this
+# many adoptions still holds.
+YEARS_BACK = 10
+
+
+def subject_hash(f, hashes, year=None, back=1):
+    """The hash of a finding's subject; with `year`, of the subject with that year's adoption marks moved back `back`
+    years (year_back; `hashes` then holds the forms' hashes moved back the same way)."""
     if "subject" in f:
         text = str(f["subject"])
-        return hashlib.sha256((year_back(text, year) if year else text).encode()).hexdigest()[:16]
+        return hashlib.sha256((year_back(text, year, back) if year else text).encode()).hexdigest()[:16]
     return hashes[f["form"]]
 
 
-def year_back(text, year):
-    """A subject's text with the marks adoption moves to `year` moved back one year: a `tax_year` field and a
+def year_back(text, year, back=1):
+    """A subject's text with the marks adoption moves to `year` moved back `back` years: a `tax_year` field and a
     "(<year>)" edition."""
     year = int(year)
-    text = re.sub(rf'("tax_year": ){year}(?!\d)', rf"\g<1>{year - 1}", text)
-    return re.sub(rf"\({year}\)", f"({year - 1})", text)
+    text = re.sub(rf'("tax_year": ){year}(?!\d)', rf"\g<1>{year - back}", text)
+    return re.sub(rf"\({year}\)", f"({year - back})", text)
 
 
 def forms_year(forms):
@@ -91,10 +97,14 @@ def run(name, forms, found, rulings_path, report_path, title, legend, rebaseline
     recorded = data.get("baseline", {})
     current = {key(f): f for f in found}
     year = forms_year(forms) or year_of(rulings_path)
-    moved = {fid: hashlib.sha256(year_back(json.dumps(f, sort_keys=True), year).encode()).hexdigest()[:16]
-             for fid, f in ((f["id"], f) for f in forms)} if year else {}
-    baseline = {k for k, h in recorded.items() if k in current and h in
-                (subject_hash(current[k], hashes), year and subject_hash(current[k], moved, year))}
+    texts = {f["id"]: json.dumps(f, sort_keys=True) for f in forms}
+    moved = {b: {fid: hashlib.sha256(year_back(t, year, b).encode()).hexdigest()[:16] for fid, t in texts.items()}
+             for b in range(1, YEARS_BACK + 1)} if year else {}
+
+    def holds(k, h):
+        f = current[k]
+        return h == subject_hash(f, hashes) or any(h == subject_hash(f, moved[b], year, b) for b in moved)
+    baseline = {k for k, h in recorded.items() if k in current and holds(k, h)}
     changed = {k for k in recorded if k in current and k not in baseline}
     new = [f for f in found if key(f) not in rulings and key(f) not in baseline]
     stale = sorted(set(recorded) - set(current)) + sorted(set(rulings) - set(current))

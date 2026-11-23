@@ -211,10 +211,10 @@ changes:
       quote: 18 Additional tax on excess contributions or accumulations in IRAs or other tax-favored accounts. Attach Form
         5329
     - doc: f5329
-      page: 2
+      page: 1
       quote: Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 5
     - doc: f5329
-      page: 3
+      page: 2
       quote: Include this amount on Schedule 2 (Form 1040), line 18
     - doc: i5329
       page: 2
@@ -256,7 +256,7 @@ changes:
         from: p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required.
           If not required, check here"
         to: p. 2 (draft), Part II, line 5, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required.
-          If not required, check here"; f5329 p. 2 (draft), line 4, "Include this amount on Schedule 2 (Form 1040), line 5"
+          If not required, check here"; f5329 p. 1, line 4, "Include this amount on Schedule 2 (Form 1040), line 5"
     - set:
         line: s2.line8_box
         field: printed
@@ -291,7 +291,7 @@ changes:
           cite:
             doc: f1040s2
             locator: Schedule 2 (2026), line 18 (draft), "Additional tax on excess contributions or accumulations in IRAs
-              or other tax-favored accounts. Attach Form 5329"; f5329 p. 3 (draft), "Include this amount on Schedule 2 (Form
+              or other tax-favored accounts. Attach Form 5329"; f5329 p. 2, "Include this amount on Schedule 2 (Form
               1040), line 18"
   - change: C-SCHED-13
     evidence:

@@ -167,7 +167,7 @@ form:
           10); i8995 pp. 3–4
     - id: f8995.line11
       printed: "11"
-      type: NonNegDollars
+      type: Dollars
       label: 'Taxable income before qualified business income deduction (see instructions)'
       expr:
         op: copy

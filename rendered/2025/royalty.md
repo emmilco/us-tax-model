@@ -167,8 +167,8 @@
 ## (helper) — `royalty.not_at_risk`
 
 - **Authored helper label:** Some investment not at risk
-- **Encoded (Bool):** Input — Was any money you put in borrowed without personal liability from anyone but a bank or regular lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it?
-- Expr: `{"op":"input","source":"Was any money you put in borrowed without personal liability from anyone but a bank or regular lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it?"}`
+- **Encoded (Bool):** Input — Was any money you put in borrowed without personal liability (from any lender, a bank included), protected from loss by a guarantee, stop-loss agreement or similar arrangement, or lent by someone with a stake in it or a relative of such a person?
+- Expr: `{"op":"input","source":"Was any money you put in borrowed without personal liability (from any lender, a bank included), protected from loss by a guarantee, stop-loss agreement or similar arrangement, or lent by someone with a stake in it or a relative of such a person?"}`
 - Cite: [i1040se] p. 3, At-Risk Rules, "In most cases, you must complete Form 6198 to figure your loss if you have" (2025; sha256 ad71de35)
 
 ## (gate) — `royalty.not_at_risk_if_loss`

@@ -744,7 +744,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8962.line1": {
@@ -1244,7 +1246,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8962.line1": {
@@ -2145,7 +2149,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8962.line1": {
@@ -2787,7 +2793,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8962.line1": {
@@ -3921,7 +3929,9 @@
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f8962.line1": {

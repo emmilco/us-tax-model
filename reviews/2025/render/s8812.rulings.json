@@ -21,6 +21,17 @@
    "subject_key": "612891f5a3eefcab34cb1e3ffd3c8a8e10a29b72f47b983f8460505e01a41e6a"
   },
   {
+   "printed": "(CLW B 8)",
+   "restated": "Enter the amount from line 22.",
+   "model": "The worksheet says 'Enter the total of any amounts from — Schedule 1, line 15; Schedule 2, line 5; Schedule 2, line 6; and Schedule 2, line 13'. The restatement copies line 22, which carries only Schedule 1 line 15. The Schedule 2 line 5 and line 6 amounts from Forms 4137 and 8919 are neither included nor refused.",
+   "ruling": "Ruling: finding; i1040s8812 p. 5, Credit Limit Worksheet B, line 8, \"Enter the total of any amounts from\" Schedule 1 line 15 and Schedule 2 lines 5, 6 and 13. It copies line 22 and carries the same omission of Schedule 2 lines 5 and 6 (BUG-1114).",
+   "context": "56534485a744c3e81b2f1e0b4ef4a436176bb43c63a026348455291d4603d8f0",
+   "date": "2026-11-22",
+   "run": "6498d0920ce4452800479df3bfb9f958ce5cce3c1ace37b399cc730df6329844",
+   "severity": "medium",
+   "subject_key": "b965a00d422ac6893bd97b179440a38e772134b94241bf948bbc86a66fc989e9"
+  },
+  {
    "printed": "16b",
    "restated": "Add dependent.actc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The IRS line is \"Number of qualifying children under age 17 with the required social security number: x $1,700\". The restatement sums dependent.actc_amount, which is not defined, and does not restrict the sum to line-4 children.",
@@ -195,6 +206,17 @@
    "model": "The restatement uses worksheet line 4 minus Form 8959 line 22, which is only worksheet line 6. The worksheet says \"Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812.\" Line 7 is covered by the Schedule 1 refusal, but the Tier 1 RRTA amounts on lines 11 and 15 are left out and no refusal names them.",
    "ruling": "Ruling: scope; project retained. The Tier 1 RRTA amounts on lines 11 and 15 of the Additional Medicare Tax and RRTA Tax Worksheet are outside the slice: `person.rrta` refuses the per-person Medicare totals that Form 8959 line 19 sums, and this line reads that total, so a return with RRTA compensation refuses here. No change to the data.",
    "subject_key": "3a16b1873e7fcc5f7aef59301217dbd65a248657699a78568de8436a22556bb0"
+  },
+  {
+   "printed": "22",
+   "restated": "Enter the amount from s1 line 15.",
+   "model": "The form says 'Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form 1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13'. The restatement enters only Schedule 1 line 15. Its s2.other refusal does not catch unreported tips (Form 4137, Schedule 2 line 5) or Form 8919 wages (Schedule 2 line 6), and the tool otherwise computes both of those forms.",
+   "ruling": "Ruling: finding; f1040s8812 line 22, \"Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form 1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13\". The reply is right: line 13 is refused through s2.other (s2.w2_marks_if_w2), but lines 5 and 6 are computed from Forms 4137 and 8919 and s2.other does not test them, so a Part II-B return with either tax understates line 22 (BUG-1114, medium).",
+   "context": "56534485a744c3e81b2f1e0b4ef4a436176bb43c63a026348455291d4603d8f0",
+   "date": "2026-11-22",
+   "run": "6498d0920ce4452800479df3bfb9f958ce5cce3c1ace37b399cc730df6329844",
+   "severity": "medium",
+   "subject_key": "7c75c4460f574c21fcef12dc13c0d48ac8dbcc4db48e04fa2f12b4aef99c3e25"
   },
   {
    "printed": "4",

@@ -5,8 +5,8 @@
  "base": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
  "head_rows": {
   "printed lines compared": "57",
-  "agree / disagree / missing": "21 / 36 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "25 / 32 / 0",
+  "line-scoped reviews": "6 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -44,10 +44,10 @@
   },
   {
    "key": "sd.filed",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 31, Line 7a, Exception 1: \"You don't have to file Form 8949 or Schedule D if you aren't deferring any capital gain by investing in a qualified opportunity fund and both of the following apply. You have no capital losses, and your only capital gains are capital gain distributions from Form(s) 1099-DIV, box 2a ...; and None of the Form(s) 1099-DIV ... have an amount in box 2b ..., box 2c ..., or box 2d\". The project files Schedule D for any sale, any 1099-DIV box 2b or 2d amount (this merge's change, read from div.box2b_if_capital_gain and div.box2d_if_capital_gain) or a capital loss carryover (sd.line6 or sd.line14 below zero); box 2c is screened by div.section1202. The reply drops the box 2b and 2d tests (its note says its interface had no input for them, so a return whose only items are box 2b or 2d distributions would wrongly skip Schedule D), files on a Yes to sd.carryover even when the carryover worksheet leaves no loss (then there is no capital loss and Exception 1 can apply), and adds sd.qof, which the project refuses (sd other forms refusal, i1040sd p. 1, Form 8997), so it never differs on a computed return; lines 4, 5, 11 and 12 are zero after screening on both sides. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source. Project stands.",
-   "subject_key": "0d4187637d3e6aea343f8da2da81edb9b76703b1e5d2acdd968aaef7db50c781"
+   "ruling": "Ruling: scope; i1040gi p. 31, Line 7a, Exception 1. The completed value differences are K-1 fixtures (for example x2k1p.fk7_portfolio_only) where the reply carries the K-1's capital gain to lines 5 and 12 and so files Schedule D; the project keeps lines 5 and 12 at zero until the K-1 wiring (a Schedule K-1 is refused by scope.k1 through scope.schedule1 in the interview). executable triage (.transcription/triage/2025/sd.json, this pass): 2,660/3,574 agree; differences {\"candidate-refuses\": 66, \"candidate-unknown\": 633, \"project-refuses\": 83, \"project-unknown\": 109, \"value\": 23}; on completed returns {\"candidate-unknown\": 85, \"value\": 15}. Rerun only for sd.sold_other's wording (BUG-0963).",
+   "subject_key": "df25f52e9fe0330eeae16c4691012057a9a9542b4bcdbeff2e72189f4f898a74"
   },
   {
    "key": "sd.zero",
@@ -84,257 +84,253 @@
   },
   {
    "key": "1a(d)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "cee10fdda342698f0334ea80b3b4e9709218ba25ba6e48fa59ba8c3e63f7f1d5"
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
+   "status": "AGREE",
+   "subject_key": "99994221a7382fbd4a0c3f9876d83b09daede21bd464588ac32e7a034a155929"
   },
   {
    "key": "1a(e)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "ef4c73d127f85a71d8deacd812f11a4c7ddc495637c59f36f612fd64be2a223f"
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
+   "status": "AGREE",
+   "subject_key": "49a30238316e2ff4b19887b9aa32b3d3ad711eb168e8e19e8cc789162c5ab6cd"
   },
   {
    "key": "1a(g)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "8bd05d96e6f0edb17035b30ce6fdf0e42a1deee0e4cd0713b3c52474b91c84d7"
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
+   "status": "AGREE",
+   "subject_key": "0d9b56739cde70cd3aae144d19cd6e9f11dc01beea66e1a31eb4711e378473ac"
   },
   {
    "key": "1a(h)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: the reply's line 1a (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 1a, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "ead07741c8f0da53f46e1a3bed0dfa040618b401ad5803a176d948fa38bf1a87"
+   "ruling": "Ruling: representation; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,151/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 320}; on completed returns none; no completed return differs.",
+   "subject_key": "bfdb0c0803a3d8df19f6198fd49acb25bb88f2e4caa8d050e222dc8145b674a1"
   },
   {
    "key": "1b(d)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "AGREE",
-   "subject_key": "0ae4307636e3cd6416ed00782c5ce65423943e35412c95ca788af8056b2a08bb"
+   "subject_key": "f9928d5390335fc67577ccf844d2e62b0124a8bc806f83b16fb56510ccb15ce5"
   },
   {
    "key": "1b(e)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "AGREE",
-   "subject_key": "a6872e7418d66c5608fcfcbcbcd28d66d7b714f2a67db5a3bf2758c78d286e1e"
+   "subject_key": "bfb89b478eb688609647a79f5453ea4e0d9cc906a1309ef60a0991d670e7bc72"
   },
   {
    "key": "1b(g)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "AGREE",
-   "subject_key": "cc023329e2cd70673bb8da1b0dd1e1c052c83054e7697f313feb62a5f18bb3df"
+   "subject_key": "4b50a4cf3367959b1f2261dacbb254444270294e0278af67f526255e7186cd57"
   },
   {
    "key": "1b(h)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: the reply's line 1b (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 1b, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "d7dd431ab0fb5484a1b8d727a2f2e8fb66fcb24cc80d9b11bd118f2de1374f88"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,151/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 320}; on completed returns none; no completed return differs.",
+   "subject_key": "8ef3bfc9dffcc00ebc9e2bb08cbcabada1c22d66ee2deb716f8b5d26f21c8018"
   },
   {
    "key": "2(d)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box B/H entries; the project adds the condition that the entry is on the detail route (Form 8949). Box B/H entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (B/H) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "2f2861e2d317d7fe69aaa0a56493565a8f2af556eaf615537f226ec629bf9e5a"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "b6aaff425b2588e319627d5cf740ac320b5197e98c990ddbcb5c1817c02f9e0e"
   },
   {
    "key": "2(e)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box B/H entries; the project adds the condition that the entry is on the detail route (Form 8949). Box B/H entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (B/H) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "48eab14a912d6d90952cac7ddf480dfc56f7bfec6c219978547d59f1231d6961"
+   "ruling": "Ruling: representation; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "512568dd13ae9ca28dbf3e6f53120019d25ed50d373812ec0d60adc929f52d0b"
   },
   {
    "key": "2(g)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box B/H entries; the project adds the condition that the entry is on the detail route (Form 8949). Box B/H entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (B/H) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "ccd3f610865f9cb336360cc1db5e1f02db4cb49ef093f29a89d2affc777670fd"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "6a916128a50784887ee2afa16860fe673c25d59e6cef1c3ed06645c179efae1d"
   },
   {
    "key": "2(h)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: the reply's line 2 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 2, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "7cec7f630c67210825c7060cabd4d11b43c88ed2e7bf67cf23fbad8d389683d2"
+   "ruling": "Ruling: representation; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "8be3603e51932f77274bf3d79607246ea90c04d04f2137ca6f922ab49b49956a"
   },
   {
    "key": "3(d)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box C/I entries; the project adds the condition that the entry is on the detail route (Form 8949). Box C/I entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (C/I) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "05de74a46f7324cf507f5abb75f0c696531ac60dd5888471033dfd3f3ccb9fe3"
+   "ruling": "Ruling: representation; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "8589fbd939424aa7c2c94e09facacd1ea6495a1612a46d0d208ce6b65318482c"
   },
   {
    "key": "3(e)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box C/I entries; the project adds the condition that the entry is on the detail route (Form 8949). Box C/I entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (C/I) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "24ebaa89683a81fa93d63f21c59ce1182577e79edad4058894602e1a8d895a1d"
+   "ruling": "Ruling: representation; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "e159c633a4a15dd0d0f474bc27a7c9220a8b342994b8fe3a1233e69fba594da4"
   },
   {
    "key": "3(g)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box C/I entries; the project adds the condition that the entry is on the detail route (Form 8949). Box C/I entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (C/I) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "1954f52791e6811c88acc07d28df2c4dfd91ef3e8cddc991aae6823a3b7946ea"
+   "ruling": "Ruling: representation; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "320b793bf823931b744d90e2f7949f91187bbbf9fc8b8526ff659a1d5e3f0fdc"
   },
   {
    "key": "3(h)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: the reply's line 3 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 3, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "73a80d787156b19d1610c540908f1b3cb67cd478e6b0ccc3f405e6f3e7ab09f1"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "bb9c78b995a83cb3d43fd8acdd780b03e4ecf4076db907a168125fcf8ddaffcb"
   },
   {
    "key": "8a(d)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "ed224c1fc2676ad586aab3a666e2244cf07a551d4b7b8b3c587273e4f0be6aef"
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
+   "status": "AGREE",
+   "subject_key": "ba6ce624beae1fedf40d0712887870560a1d8c6e73f385f28194eb72ab7f9e00"
   },
   {
    "key": "8a(e)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "bc0fc686a38e70fb942b0268df3e0b4960af34c322feb5820041a8a72ef668ed"
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
+   "status": "AGREE",
+   "subject_key": "cd20d8ad76291c2cdd5eafae2b46d9c16f383e385b46ae5cc8856453cd9409a9"
   },
   {
    "key": "8a(g)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "211f17fc0c6838d19fea3f93a90cd2b9c85ff0a464afb62db763059866bd77b4"
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
+   "status": "AGREE",
+   "subject_key": "0fc3f5d4847b62615a3c29d96ba528bddd3564b07eb7613753900258b33f140b"
   },
   {
    "key": "8a(h)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: the reply's line 8a (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 8a, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "66428175ca2eaf529fa3aee2683993415ca35172905794831e0b41f332ecd0f0"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,155/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 316}; on completed returns none; no completed return differs.",
+   "subject_key": "bf8966932d80b77fcc2549e582247637d27745e43b75b0806c1396e85d3d68ad"
   },
   {
    "key": "8b(d)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "AGREE",
-   "subject_key": "607433a32a2b6a31f6cf8120d7aea635a3c4b90df9dd8e5ad79de6a16464c0a6"
+   "subject_key": "6adcc477abba5e54bbe4520d3bf7344bad68992f755cf49b3f9b627a0972eeeb"
   },
   {
    "key": "8b(e)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "AGREE",
-   "subject_key": "83ebfc2342825261c12b728f32f7dc3ba09f0c5855369803c64f20147876c943"
+   "subject_key": "74dad00093419a9886c0a83b8b6704eb80ba6eac7dafd5c07a56706208c9c9e9"
   },
   {
    "key": "8b(g)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "AGREE",
-   "subject_key": "0a4f1bb838de7ee9e260dc1f8207384b8055ccaf0e65ae2a9d1dc09751cf520c"
+   "subject_key": "f33170858f1f699d1516ef53a49c82b2556428dc36fba3dd02430de86f4347f3"
   },
   {
    "key": "8b(h)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: the reply's line 8b (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 8b, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "f6cdc28ecb3f60de4deb99721faa17f1a73a1e87bf64a17d43a7207c0eac7196"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,155/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 316}; on completed returns none; no completed return differs.",
+   "subject_key": "afc379fbc573c4b18432a48fdc1b92c6a63d6f62f051060c0ab551372477d6c9"
   },
   {
    "key": "9(d)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box E/K entries; the project adds the condition that the entry is on the detail route (Form 8949). Box E/K entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (E/K) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "7973236f96fdbcd6d45c381bcc25246f8f77d50ebc54a42348f9a272ee8f5be5"
+   "ruling": "Ruling: representation; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "b1d173597fe978741e6bf2729bdbdf154d7f5e102e703cfe6ac3f47df123ba4d"
   },
   {
    "key": "9(e)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box E/K entries; the project adds the condition that the entry is on the detail route (Form 8949). Box E/K entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (E/K) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "6dfd1fdd4bf0ec06fbd9e4c14e76ddb6b1590170defcb29a1a389d72c239579a"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "00a200151a013d61c98d92d371b151dea01dc03c937bab60b03500eb6c24c332"
   },
   {
    "key": "9(g)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box E/K entries; the project adds the condition that the entry is on the detail route (Form 8949). Box E/K entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (E/K) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "3b502bfd0751fa2759f90cac2d8d28faf6190199c1b99748fc41d67071a3a92b"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "0e51ba3c4be1a120f4ef80187e1a3c1da8421204640ce4e2efb0a9c6bb4cb487"
   },
   {
    "key": "9(h)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: the reply's line 9 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 9, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "dedfea7682a4cd52fe1ba18d1255dc47b9adcdcbe310d2c86a9f7f862d33aef9"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "07cde65c6401df656d165a78737150393375eacaf2f10bf7b4185e660d834772"
   },
   {
    "key": "10(d)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box F/L entries; the project adds the condition that the entry is on the detail route (Form 8949). Box F/L entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (F/L) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "f24b160610ca94365ab5ad0c5220c9f857ac801bfb5be20edcb82e7d5bbe147d"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "00fec1093244fe4415630d54756fbd82b99c70fc7aaf334480cef8890868bae6"
   },
   {
    "key": "10(e)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box F/L entries; the project adds the condition that the entry is on the detail route (Form 8949). Box F/L entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (F/L) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "a796dfc12a2de8c39f968719aa23d35c76569e907e94a57964cf6e1e262e330b"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "4fb163edb513a50301575dfc587b0044cb7fa4fb122a697241196747e623e2ac"
   },
   {
    "key": "10(g)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box F/L entries; the project adds the condition that the entry is on the detail route (Form 8949). Box F/L entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (F/L) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "7ba65a9377fe8d82bd545b8ebd4db8a781758f2c9fd5e80b6e15353556406720"
+   "ruling": "Ruling: scope; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "05dd46f73bd4640a8c6642639f74974be6f0e64631293782591243afd5e24ac9"
   },
   {
    "key": "10(h)",
-   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: the reply's line 10 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 10, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
-   "subject_key": "0143984b35a6cbe6f70cecabbf0ca80f6099d74f8d3bb59b12af3f2aac4ed9fa"
+   "ruling": "Ruling: representation; f1040sd p. 1 (the line's box totals), as the earlier rulings of this line: the reply adds the digital-asset boxes or drops the detail-route test, where the project sums its box behind sd.screen, which refuses digital-asset sales. Rerun only for sd.sold_other's wording (BUG-0963). executable triage (.transcription/triage/2025/sd.json, this pass): 3,150/3,574 agree; differences {\"project-refuses\": 103, \"project-unknown\": 321}; on completed returns none; no completed return differs.",
+   "subject_key": "88229e3ffa642a3f8605396efae313ca3c64cb9e8e32968aa8adbcf1355c6c9c"
   },
   {
    "key": "4",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "AGREE",
-   "subject_key": "cf9a938b9840664f90a235b078a4472c93d1433ec4972d7c00e270c35bb21ec5"
+   "subject_key": "60a08c856e31bd06db5f77c2c50039ab018ccdb1b9216bd1e3a019af943cb923"
   },
   {
    "key": "5",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
-   "status": "AGREE",
-   "subject_key": "aae14fe3c21d0ea80e2ec503dea8f1cb46e5d97a63e0a667f7ee90415f0a62a4"
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd lines 5 and 12 (Schedule K-1 gains). The project enters zero: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1 in the interview, and the K-1 forms land unwired; the reply carries the K-1 amounts (completed value differences only on K-1 fixtures that answer scope.k1 No, such as x2k1p.gains_withholding). executable triage (.transcription/triage/2025/sd.json, this pass): 2,248/3,574 agree; differences {\"candidate-refuses\": 66, \"candidate-unknown\": 1053, \"project-refuses\": 84, \"project-unknown\": 117, \"value\": 6}; on completed returns {\"candidate-unknown\": 128, \"value\": 2}.",
+   "subject_key": "068c9f7c5a05fd466c5e5ee2aace3ba9585b78fdd888249f79591e8e47bc6455"
   },
   {
    "key": "6",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "AGREE",
-   "subject_key": "8ad7bfa8db4e0083794891ce34d40deff03040eff8190936af7efd9e77f1d218"
+   "subject_key": "e259acdd32d62f6529cbe0b0f5042589847fd464188141e04fda6dceb423d0e0"
   },
   {
    "key": "11",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "AGREE",
-   "subject_key": "a879f056c76141f3362aced3b211776132f6a846bf6e119879283c9fbf85ea9c"
+   "subject_key": "f893f830a35ad6d254ddc8a21469a938b672d420a5ab0a919f5fbdab756334ce"
   },
   {
    "key": "12",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
-   "status": "AGREE",
-   "subject_key": "ee5bf5eb41146e34e2a5f684723ab92a322a9bcfa634be20ce4586ad2d5dbd64"
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd lines 5 and 12 (Schedule K-1 gains). The project enters zero: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1 in the interview, and the K-1 forms land unwired; the reply carries the K-1 amounts (completed value differences only on K-1 fixtures that answer scope.k1 No, such as x2k1p.gains_withholding). executable triage (.transcription/triage/2025/sd.json, this pass): 2,247/3,574 agree; differences {\"candidate-refuses\": 66, \"candidate-unknown\": 1053, \"project-refuses\": 84, \"project-unknown\": 117, \"value\": 7}; on completed returns {\"candidate-unknown\": 128, \"value\": 4}.",
+   "subject_key": "4f913dc47d9e322272cc26bc3cf18865aaf77737fefd69c2667c4b6f5badc59f"
   },
   {
    "key": "14",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "9851233e79b5cacc4ba48c19ebeb4103fbbfc5762db41c94e11a00002a79a8e8",
    "status": "AGREE",
-   "subject_key": "1621868c60ce0d8a1fd1c17140a11f2ae898080116158d68624f830a1178e540"
+   "subject_key": "4b96ed2ce07bd9a85b218a6929971e5668c7f409069577b054050108eeeabe84"
   },
   {
    "key": "13",
@@ -394,50 +390,50 @@
   "sd.line19": "b653bf85615a8a9a33689a866188bc4740382a75c6c28c008f27bbd7bf9181a4",
   "sd.filing4952": "c463919a506118918868fb38826faafbd33315376d7f29963f6e818120502b75",
   "sd.investment_election": "a3d91ae14f27d51f584ab503205e59279759a061e193355b00ebdf9732585be4",
-  "sd.filed": "5a8c3754309489e91237c0dfae36ae75c3eea81635978fcbe8ff851923c8b85b",
+  "sd.filed": "3b3c82356cbd1c82172c6e4a79b9bdc5abd8eefeb53bab699ebdcde514cf34c6",
   "sd.zero": "ce16c7c938fea13ef80d3f7cf152cea6dd84d856dea677c44b6e24fbc5cc60fd",
   "sd.has_loss": "1e2c8c7df8ec4dc8a21e5ed72420311c4ae2a7b2895ded86e2213151661ada7f",
   "sd.to1040": "c6be714faee43a2731a8e84b3fdbc9673314f85a90a3ddff50bd1fcc4a556678",
   "sd.net_gain": "9975d7415b27cc117455a94113d2867f95c94c61be4bc016b9faae8e92704ab9",
   "sd.distributions_if_dividends": "e298b33df964936239e1aa4a899b76c8308e3041094d52235a155aab067750ae",
-  "1a(d)": "f6423ab371b401b1353bd688b325d3a685277507afb3bf8748a9c5faea0af0c1",
-  "1a(e)": "e280eacd1bf4c932744e3683237219aeeb20a955c32b60a28cea1a7b783e674a",
-  "1a(g)": "72d1f291be6d864a005ac03f7dfe3353fe3f41e8cb105a4cbe72ee72f0571f55",
-  "1a(h)": "b0bfafbe15ca095d56b2186d0afdd9a8a74ecac1347a50f9ed9978a9670f1317",
-  "1b(d)": "a897cb9a9fe67e83f223640472026256d1e31bd4229a30f7365d958e3bfe24bb",
-  "1b(e)": "ef87d67232f828d66942961ce454ed7ebc80a14103abc7b0e9852189ab863388",
-  "1b(g)": "ebc39ca04a1ed304f9f67b514b333138884968805b1b54bc39b64d0c042abce5",
-  "1b(h)": "bb3f82f08404e6684132a8a0e7ab48fe0e126a9cc945092a5ffa6587263fafb2",
-  "2(d)": "43c1d813d2165bbdfd874775ce0c3b6eb33f42bcc7d6d782db1c55e96722bce6",
-  "2(e)": "7a33876fe9fd5c3983abb7d0211efd773fb18ebbfc6519acbd923298c2d377e6",
-  "2(g)": "1ba6a3753a831a3dccee2e7b94acbdd87f3bcd72e36de5c2da92f308491a2d32",
-  "2(h)": "ecbcb4a8e231925005294dd2b8f3ae62f98646352b78452951b4a92cd9cc9b1e",
-  "3(d)": "e44d7c11dafd05386127052d832ffee50f25b0dce8b680069969647620be4337",
-  "3(e)": "241575f1ac64b27ada4f1e6c47b815468982b31f2a0fa19134dd7f593436ed0a",
-  "3(g)": "ba6364a84f85a710fc0c6ee4bc46c721458a634c39f55f2a6830a0ddce3b5030",
-  "3(h)": "bfea082d4efa92b1816fbd867546969b737bd9bc3369adb94cea4decf51c4066",
-  "8a(d)": "7524aea3629009ccb23fb69b649a8fa56ac8e88c8990de7b305740c87d085ece",
-  "8a(e)": "e3d4cfed83e1bbd8d9740b5690cf6f13b487f5fe51bda1ab954d9baabae84864",
-  "8a(g)": "a94e1f5d4f47015367c2b24ec113534d8b1d932f5ab024e4af4bf8c29d5ba039",
-  "8a(h)": "9768e16300de865d7500d0fca10bf567403e54858a5ae5bd683f8d6c45c80964",
-  "8b(d)": "6c5453b98b2901da47cb02f210086129cf6215c3597a9af936e013b9fab5d0b6",
-  "8b(e)": "92a3242b219a6abdfcc560f0c5afcf45c05d8645ebb25595dfa07c66f852b334",
-  "8b(g)": "af5efcd89deb351858b26db5eeedd3ae8bb09187ded41a1ddde363b8c4b920ad",
-  "8b(h)": "9dadeeb5189c99f725de3f20778e74d2c229ae8cdfe89abf044fe4894ca68547",
-  "9(d)": "add2ded997f801ef8a6878ead396ea1e5c5414f6fb6535411e5fcb8b5054fbeb",
-  "9(e)": "d8674cd764ab7a670c0ae6eb469558d81265a0c55b78203b56e43b0558d97c17",
-  "9(g)": "6df884c8c6eacecccea25db7300eb74e5ea73f43ba8c12266c8aad6b653b7476",
-  "9(h)": "4a45cfa97cf1dc671fcb972f2a73353aacc36b1b78fb300ee296d6cfae47adda",
-  "10(d)": "42ae10c67802838c3e714995c4c45e74c316b253b4e456465058c06c2eef5df4",
-  "10(e)": "a2a2c51f97ec4e1d3d4356fd29b121b4e17c3c8c903490792d7b39a69994ef24",
-  "10(g)": "1851fbfe580e52636b47d0b5b813f57ddf3b21d242774ffd271e13dcd044fbd2",
-  "10(h)": "86db5cf0481476c2eefbbc867058e14ed68284e35171a8e646dec2f63a54978e",
-  "4": "66d00814b2a95c27a060e36fced1df100821a291580bc89fe2323371d35852d5",
-  "5": "4691d7d6611ec07de43a9ccc60c17aabed10bdd4aacbaa9bf1b20abda2ed25eb",
-  "6": "af2c8f24c7f4b5b4e7adc5f0f8f51b303846d9df0442c320feecee89f86b5f4d",
-  "11": "dcf6b8c021a4501a372401a4508a851adcb03b8ab7504b8955145c093dff8e3b",
-  "12": "2cef8e8994858c129488f2dc2a09732d430a75080310c16636de1d4a402f1672",
-  "14": "7a24fbe145c5d0f067b64274a62fe389032d9c0760a37b3cab8a5738fb686f15",
+  "1a(d)": "05d28afaea9f727f5e74a0f0f741f71f51a872e35bf5464d3f54bc62e5cb2350",
+  "1a(e)": "69f5f84159a3e92ec7d73f823e3c65293e80f5da316e13bbf7eda05a582156d7",
+  "1a(g)": "1601694f5df8163b7e288b46c786cd3ba1bff44c0f7093ecfe309bcf49bf69ed",
+  "1a(h)": "e46f745e3cdf198d9b83a63b03b508e32acf36bb2f8f239506ad61b8c514968c",
+  "1b(d)": "4842e87e0293ca7044916b20b10dab9861a41f19da7ae07a7f426778c383ad7f",
+  "1b(e)": "ed1aecd8b2c1f521b931f2188460f3929c9f2e2c0c855e257d57613a2a42904e",
+  "1b(g)": "5258184276c59568e980702c5946c2b668a218db62a8cf7e7e3af55ee9f89a78",
+  "1b(h)": "ac89fdb2eb7fcc6c687f297888288f16cb54d0d417f645fe8a3d47eca659cd04",
+  "2(d)": "b9f5c14916159c8055dcd8126acf9129248e789b3008a73dd3dddc335d31788c",
+  "2(e)": "97470bc459f119e55ef503fe809718b8708a2c6e598c05116d3fbcdea3e4de0d",
+  "2(g)": "42059e6228ada92d91eb83ba5dfb17a39c521123a02b4622f3f2b6371a72de34",
+  "2(h)": "243fd85e9c85535fe98c1538c4c43c5efda7d963ce52e03722c46e9a1b852124",
+  "3(d)": "b2b770dbe6ca9880385c7115e4fb7023f5b58510d053ffdff362b0e3e09631aa",
+  "3(e)": "214a640544ff344281ff5cd6008a801699de71d99cd3663c59b847e7a032640a",
+  "3(g)": "a7c3af9d4921cedd1b66382c59306564949e83d794bc65c4c58456a486a43098",
+  "3(h)": "66c355cc43aaff65a0609ce5ce69dceac303f97278dff3d64216da6e081b5123",
+  "8a(d)": "7d7013d7e7fd824c7675291f834f4e02d964c16af8bef5bade0b00907f8ee94a",
+  "8a(e)": "d7d39e8ccdbe33b879c733799f2b168eaadf8ba1bf1c745da6fdff8cd2e27e5b",
+  "8a(g)": "6310dcc47b992d7a69c7b195154050b6091f4e05f2d4856ba01e5ce878e755c6",
+  "8a(h)": "449b59922cb3d99554d1599ce494624213552f29c3b3c5b7c81de23ce17e9266",
+  "8b(d)": "a8cec1521a45478e35ff7baae7fe4fd4ca4dbdbbccd7a532f4866b855e058178",
+  "8b(e)": "e34682b950007306f4e57a009b5c1dcb2fbcee6f27fbc40c8d10c66e686003bb",
+  "8b(g)": "f25ebe4d68eb362b202aafff703697a23bc7359856782c16cbb4488b4191adeb",
+  "8b(h)": "c72e006da6fff9da309a735290130205824cdf31dc0219d5dfb9dd1c428385ac",
+  "9(d)": "5fdd158888bf28d9c23081457b78b11546e93e31333a113786a4f772bd75d0f6",
+  "9(e)": "35ea0c8f530ea704d718542341ce51f20cccd81074230a7acde3bbf1baef14f4",
+  "9(g)": "e0c2860f828621b71e7303244f10f5ca8296ce074fea822264b80630fcaaff6a",
+  "9(h)": "550decffb1ee8fe14f185c097496a970bde21d9f1101c1beab97d7e09dd7d0e9",
+  "10(d)": "1e834c4b306d7bd61af92a7db3d7fe08511cb235cf821dd4d744e08930522a2b",
+  "10(e)": "e2e4ebedb0b535d9b5c26ac1f4bdb264171b7faea2e295b6943349c3f122d187",
+  "10(g)": "1c768e89d9d9ab6aa874256b039739d04cbcf84517f4cb480f6fb4d475e909f7",
+  "10(h)": "3a497fa17a7cce7fc9657c45cb0cc62ac6960eb22fd5a567896833019e57ff35",
+  "4": "c7bd63acfd833e64d6e9c0920d6b47c070d7887e3bce6097f173a07c1e5ca911",
+  "5": "f5e8385cceab7746e80aa4c9d590c2a530712814896d9662fc8bcb99c8142c0b",
+  "6": "3aca8f14bccb65211b408b2ad0c5f0f569da1a7c5b2de28b2c9ac0f4e0b64e3c",
+  "11": "ef2e09a518b06a5d78916c297e181b1236559fda2e97498b8aea77b0834d633c",
+  "12": "905dcd2ac23ccbdca924b9b1a0a578f148440874e0b466fc6ad30420b290ad0a",
+  "14": "8ee1a3d5c5543ed1ebc1189ac5a73e1a7a74d4226dc811c43aaf06efffa0c152",
   "13": "919862ce6dea30eb0676331db28b397ec864ae318355df9f2156e996cae20b36",
   "7": "a9899e1cb09a90f27e64f53f7ca4eb6bf3bb50aeead5c209cd3f6ae267790ef3",
   "15": "0db746e2ca06bdedba11c108bf05789daab7e6242607bc4d0572996b6b0cdc01",

@@ -120,6 +120,41 @@
    }
   },
   {
+   "printed": "1",
+   "project_expr_sha256": "dc41380d6bbb762dc68fc9b3e51723c375498692af6192f858c0336658792e67",
+   "second_expr_sha256": "6a260effc1908c69bc4cd91fb039e0f3998bea26f419a9422d0cb289242ce012",
+   "ruling": "Ruling: representation; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 1, \"Enter the total interest you paid in 2025 on qualified student loans ... Don't enter more than $2,500\". As ruled on 2026-11-14, -15 and -17: both take the interest less the unqualified and assisted amounts, floored at zero and capped at $2,500 (subtracting the two in turn from a zero-floored amount equals subtracting their sum); the project asks sli.any only on a return that is not married filing separately (sli.any_if_not_mfs), the reply reads it on every return, and sli.unqualified_any and sli.assisted_any only after sli.any. The new item of sli.unqualified_any (study not toward a credential, or at a school that is not eligible; i1040gi p. 99) changes its wording, not this expression.",
+   "context": "42ea0157e924ab6f6fc954e98156259c7c19cd50ebe9999d6729d11f819e02f9",
+   "date": "2026-11-22",
+   "run": "d43150bb8f12ac6b8dfc78bd28cfb300a148b4fcd0327b549763954592512113",
+   "subject_key": "d56243f51524412b15d54ffda71cb25507f671f1f39567a385026fc60ab64cd4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.1.deepseek@sli",
+     "fixture:classm.f8960.2.deepseek@sli",
+     "fixture:classm.s2.2.deepseek@sli",
+     "fixture:classm.s2.3.deepseek@sli",
+     "fixture:classm.s2.4.deepseek@sli",
+     "fixture:classm.s2.5.deepseek@sli",
+     "fixture:classm.retirement.4.deepseek@sli",
+     "fixture:classm.tcw.4@sli",
+     "fixture:classm.tcw.9@sli",
+     "fixture:classm.tcw.15@sli",
+     "fixture:classm.clcw_next_year.3@sli",
+     "fixture:stage21.choose.eic_limit_status_unanswered@sli",
+     "fixture:mutation.t2.f8962_months_r4@sli",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@sli"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "5",
    "project_expr_sha256": "8483af9700758061844c6df5132a102046e5c18826438dbe534b383021eff469",
    "second_expr_sha256": "b3fad40fe31fbf817e9caa137b93a373229c2b838aab5781605f23a852c1048c",
@@ -151,11 +186,11 @@
    "printed": "sli.deduction",
    "project_expr_sha256": "0cf76ae395c95f9f760baa575dfd0d5a519411143a1112af64dcdc07b1d98140",
    "second_expr_sha256": "63a0dfab6eab45fc93a662c2ef3475c02f3599ac62cf5cd6ebe78358f0a9fa90",
-   "ruling": "Ruling: model error; the reply leaves out the dependent condition. i1040gi p. 98, Schedule 1, line 21: you can take the deduction only if \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"; the project tests it with sli.claimed_count (person.sav_claimed) in sli.eligible, and the reply's own note says it did not encode it. Triage 6e21762b3daa: 2,478/3,116 agree; all 8 value differences are returns where the filer or the spouse is claimed on another return (person.sav_claimed true: classm.sli.3, dep.sli_claimed_no_deduction, stage11.sli.claimed, stage11.sli.spouse_claimed, stage16.sd.line17_no_skips_19 and three mutation cases), where the project's 0 is right; the other 630 are candidate-refuses (522) and candidate-unknown (108) on refused or incomplete returns. The separate-return zero is the same in both.",
-   "context": "cf338c47afaf731291b737d211d52589072c3d0a9770a17636e29e2885528b5a",
-   "date": "2026-11-15",
-   "run": "4bbe68ff7f86b06aac2fbc30e7a324ae34d88283b954edf155938b1380677e6a",
-   "subject_key": "4b1fb53d27540ca32ad63412df885a9af09b2f49f042f5d98e697c47aea883b0",
+   "ruling": "Ruling: model error; i1040gi p. 98, Schedule 1, line 21: the deduction is allowed only if \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.\" The reply leaves out that condition, saying no supplied input states it; the request's person collection carries person.sav_claimed, which the project counts in sli.claimed_count (sli.eligible). As ruled on 2026-11-10, 2026-11-14 and 2026-11-15, completed returns where a person on the return is claimed (stage11.sli.claimed, stage11.sli.spouse_claimed) take $0 in the project and the worksheet amount in the reply. The review was occasioned by the reworded list of unqualified loans (BUG-0881); the expression is unchanged.",
+   "context": "42ea0157e924ab6f6fc954e98156259c7c19cd50ebe9999d6729d11f819e02f9",
+   "date": "2026-11-22",
+   "run": "d43150bb8f12ac6b8dfc78bd28cfb300a148b4fcd0327b549763954592512113",
+   "subject_key": "0eca2353b904af68594f598d44259bfcff814a691dd45ebc300b2e1c12030c3f",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -171,11 +206,11 @@
      "fixture:stage14.asset.refuse_listed_low@sli",
      "fixture:stage14.asset.refuse_s179_over@sli",
      "fixture:stage14.mut.asset_2025_listed_unanswered@sli",
-     "fixture:classm.f8889.1.deepseek@sli",
      "fixture:classm.f8889.3.deepseek@sli",
      "fixture:classm.f8889.4.deepseek@sli",
      "fixture:classm.f8889.5.deepseek@sli",
-     "fixture:classm.asset.3@sli",
+     "fixture:classm.f8960.1.deepseek@sli",
+     "fixture:classm.f8960.2.deepseek@sli",
      "fixture:classm.sli.3@sli",
      "fixture:mutation.t2.sli.qss_divisor@sli",
      "fixture:mutation.t2.sli.hoh_divisor@sli",

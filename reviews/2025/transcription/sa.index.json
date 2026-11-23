@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "35",
   "agree / disagree / missing": "20 / 15 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-17); see Line-scoped reviews"
+  "line-scoped reviews": "7 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -38,10 +38,10 @@
   },
   {
    "key": "sa.deduction",
-   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
+   "record": "6a9c50c5a0cc1172d3dfaf8432c68666cbad74a3a70f339aa4188f979b0f0e4b",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the deduction for Form 1040 line 12e is Schedule A line 17 when itemizing and the standard deduction (including the dependents worksheet) otherwise in both (i1040gi p. 33, Line 12e). Triage 8d1c7332dffb: 3,201/4,083 agree with no value difference: 728 candidate-unknown, 116 candidate-refuses, 22 project-refuses, 16 project-unknown, from the same unasked inputs and one-sided refusals as sa.itemizes. Separately, the worksheet's earned income omits Schedule 1 line 8u (BUG-0767, ruled on line 2 (sa.dep_line2)); no return in triage exercises it.",
-   "subject_key": "4d2be937fc176225547b94b5d820cfa47acc3cea057bf7b3e9dbe92a9da67bb6"
+   "ruling": "Ruling: model error; i1040gi p. 34, Line 12e, 'In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions', and line 12b (a separate filer whose spouse itemizes has a zero standard deduction). The reply's own larger-of helper gives the standard deduction where line 17 is larger: on stage21.t067.smw_hidden_ira (a hand-predicted fixture) line 17 is $45,242.70 and the reply enters $31,500; it also declares refusals of its own (for example at f4952.has_interest on classm.f8960.1). Executable triage (.transcription/triage/2025/sa.json, this pass): 3,240/4,194 agree; differences {\"candidate-refuses\": 735, \"candidate-unknown\": 190, \"project-refuses\": 14, \"value\": 15}; on completed returns {\"candidate-refuses\": 87, \"candidate-unknown\": 154, \"value\": 6}.",
+   "subject_key": "4f0f6d84f03e32c969cc3613b575bc8eb0444d7fe370ced47b507db629d139af"
   },
   {
    "key": "sa.mfs_spouse_itemizes",
@@ -86,9 +86,9 @@
   },
   {
    "key": "11",
-   "record": "fba34f8f1350b43c882992d209ef7c69b877d4916bf1fbb6b65dafb071dbebd3",
+   "record": "6e9e02e506eb9d53a5e69fe5bac5f9fc27d29506d1481237b897505968e4bb45",
    "status": "AGREE",
-   "subject_key": "2bc9665f1cc9a94e690ec7dbfb030c2c985403d1d40a8bffc65d1716b76bedbd"
+   "subject_key": "282a348a5097d58d697b54d214ae637c8dcb616d55ea4aca4b898fc65832bb66"
   },
   {
    "key": "2 (sa.line2)",
@@ -240,14 +240,14 @@
   "sa.agi": "7ac40a0d224f103b5668b2d9b355ac1ecb9b68c3d5235bd8ae09b20888315bc8",
   "sa.home_asked": "eb6a1053925958f7475e0ff4f85f3756be7cc44d809aac2158af603028439c1e",
   "sa.itemizes": "9cacc4822331cd8634b93293f7663534ce5e36eab56b4723b181552ef7c4cccd",
-  "sa.deduction": "2034f42e21efe1a53f511925d4dfc1e8fd20d7a2213daea2337e08876ffa4927",
+  "sa.deduction": "8e29997b24ac7b299d65d2660e4e42927094541cd9a91ee205bf49f2357f152e",
   "sa.mfs_spouse_itemizes": "5e58e8e56fc8bba413fa4722e1b031f8b6aff3a5a260b525f12c39e36f1b8a43",
   "1": "5347efbc16c3b42370edee7c2dc6ab8e56dabf1a61cb4d0caebc3bb63953429e",
   "5a": "6af90a76e5d7e457dd7adea0bb919b9806a921f2d8b531105636f3c9b4e0e0fd",
   "5b": "ef1d0e093770f8d89583f0a9c95a7d4eff01e7880774e723fc8cfbcba22b7b5d",
   "5c": "299d30680db43a236a6ad8191c87fc4cbb3bdbbc79a0c49fcf7c138a03014016",
   "8a": "125b7869c745d46a5427c1827ae80b8eb3c67673a5645cb0a5a43c65bfb4b174",
-  "11": "b3974b0a722c79e8e6e9e0cdf6a475f86606ff39a105b54f0bd3233ce8139b22",
+  "11": "87a46150869dedabf3b1a6fe30f7e228e885f3e00e03d857782f0032403fd73c",
   "2 (sa.line2)": "6ed9e8826b6917afade8428ad8ba0ef06fdbb723500482b53bce904f69e95014",
   "3 (sa.line3)": "4606a9bdca74892e9959452bafe144fe3a9c24d25b48c83ee961469221a4b4c3",
   "4": "e9b7517b9f7833c2e462420a42ca3c19aa8262a2a117a7c5f5e37d329a145988",

@@ -5,7 +5,7 @@
  "base": "7d74f0e3064f755a76d15839a999abd92d5111e00d37241b0883880a8844cf23",
  "head_rows": {
   "agree / disagree / missing": "21 / 4 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-16); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -151,10 +151,10 @@
   },
   {
    "key": "16",
-   "record": "7d74f0e3064f755a76d15839a999abd92d5111e00d37241b0883880a8844cf23",
+   "record": "150e5a69eb073e17870db62e5c737cfd23b708e32d4815d0038701ff00702428",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i8960 p. 1, \"Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount\"; f8960 p. 1, line 16, \"Enter the smaller of line 12 or line 15\". The candidate's smaller of lines 12 and 15 is the project's amount on every return (with MAGI, which is AGI in scope, not above line 14, line 15 is $0 and both give $0; no value difference). It figures line 12 on every return, so it asks or refuses on the Form 8960 screens (f8960.unsupported, f8960.refund, f8960.allocated_taxes) of filers who do not file the form, answers the source does not need; the project gates line 12 on the new f8960.used (BUG-0401). Triage executable-triage-v2 (`../triage/f8960.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 121 partial records): 908 of 2,186 agree; on completed returns 202 candidate-unknown, 16 candidate-refuses, no value. No error introduced by BUG-0401: f8960.used compares sa.agi (Form 1040 line 11b) with line 14, the same comparison line 15 makes from line 13.",
-   "subject_key": "35cdf2e7a3383cef0f17f7861e18552c59ba4c0dd2ef31b9d75edcc74bdb44b8"
+   "ruling": "Ruling: representation; f8960 p. 1, line 16, 'Enter the smaller of line 12 or line 15'. When modified AGI is not over line 14, line 15 is zero and the smaller of lines 12 and 15 is zero, which the project states with its choose; the same amount on both sides. The differences are the reply refusing or unknown through lines it reads (line 12 carries line 1's refusals) where the project, under the joint threshold, reads neither and refuses a 6013(g)/(h) return only through f8960.election_between (BUG-0997). executable triage (.transcription/triage/2025/f8960.json, this pass): 2,895/3,216 agree; differences {\"candidate-refuses\": 125, \"candidate-unknown\": 195, \"project-refuses\": 1}; on completed returns {\"candidate-refuses\": 5, \"candidate-unknown\": 138}; no value differs.",
+   "subject_key": "667af88f91aeed2d53263e87c5ea429ee79ad3a537dfe36cbdef27b331fffc0b"
   },
   {
    "key": "17",
@@ -187,7 +187,7 @@
   "13": "bc12541cad72993bb5237ad755b05b46f18bd5805374ad1436a8350e7ef4dca7",
   "14": "49b709d36cb619de8a00bfb88ecc6f53fa8cc50461868ee8c9adacb5815b9fc0",
   "15": "9734c7aaabf22158ca298cc36e38c0ceea2eb5f4ca1994017daa39e7c4d64ab1",
-  "16": "9c95245ace043cb960caf2614f0e135ba6e89ab758879e6b81f635bb8cd137c1",
+  "16": "d8b7713e332120418f204a87aee301410fe657df46e01a683df9623ce402e870",
   "17": "eb4ac73ac91268bf57a6e4abf800ce47772fbe4eb994d56a9138c83c631b473a"
  },
  "__rest__": "73388d963a9c9dea5ee759f77fa89a5a3666817a1263a5f3ec916692f31d724e",
@@ -205,6 +205,7 @@
   "4c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "9b": "c99e78a5918933ad29e72bbcf1b26f4185149795019223f99783988c5cab1d87",
-  "13": "6638ccb6b97e627056d0787f5e6391d59a37aab66c48d44960cf59124922852a"
+  "13": "6638ccb6b97e627056d0787f5e6391d59a37aab66c48d44960cf59124922852a",
+  "16": "f2c76d58e74b85191131c3a9109ff4c5d64877eb1d7b210846a120a1ab76779c"
  }
 }

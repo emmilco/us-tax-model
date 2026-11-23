@@ -176,46 +176,45 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:ny_it201.ask.owes_use_tax#1": {
-   "reason": "The computed gate follows the bought-untaxed question, which covers each listed situation.",
+   "reason": "The shown question names the spouse; the examples are examples.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "ny_it201.ask.bought_untaxed ('buy anything taxable in New York without paying New York sales tax, such as online or out of state') feeds this gate; ny_it201i p. 18 'You owe sales or compensating use tax if you: purchased an item or service subject to tax that is delivered to you in New York State without payment...'."
+     "class": "model error",
+     "evidence": "ny_it201.ask.bought_untaxed reads 'did you (or, on a joint return, your spouse) buy anything taxable in New York without paying New York sales tax'.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The same question says 'such as online or out of state' and counts a purchase taxed below New York City's rate; ny_it201i p. 18 'purchased an item or service outside New York State... with subsequent use in New York State'."
+     "evidence": "The help names 'an untaxed purchase on an Indian reservation (unless Oneida Nation tax was paid)'; a TV shopping order is one bought 'such as online or out of state'.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Only full-year New York City residents reach this gate (ny_it201.gate.part_year_city), who are sales-tax residents too (ny_it201i p. 18: 'a resident includes persons who have a permanent place of abode in the state')."
+     "class": "model error",
+     "evidence": "Foreign VAT is not New York sales tax; the question asks whether New York sales tax was paid.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The question's 'buy anything taxable in New York without paying New York sales tax, such as online' is the p. 18 'delivered to you in New York State without payment of New York State and local tax to the seller'."
+     "class": "accepted residual",
+     "evidence": "Taxability is the source's own test (ny_it201i p. 18, 'subject to tax'). Cost: an unsure filer may leave a taxable purchase out.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The help 'Leave out purchases of a business registered for sales tax' matches p. 18 'You may not use this line to report: any sales and use tax on business purchases if the business is registered'; unregistered-business purchases are counted and refused by ny_it201.gate.use_tax_st141."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "'Count... an untaxed purchase on an Indian reservation (unless Oneida Nation tax was paid)' is in the help, and the catalog, Internet and television-channel purchases of p. 18 are 'anything taxable... without paying New York sales tax'."
+     "evidence": "The help counts 'a purchase taxed below the combined state and local rate where you lived'.",
+     "bugs": []
     }
    ],
-   "subject_sha": "832fee71d69cb3667dd3a35941ce3afdc5e3dbc5fde41fd5c8b7c7ab562eba3b",
+   "subject_sha": "bfe26148dd9043ed9c0788cba77fa5fce31b145535f675a52a4de2108c3229e7",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:ny_it201.estimated_payments_positive#1": {
@@ -665,34 +664,45 @@
    "subject_sha": "93c17895b363cd9e87ba2d884478d78f0ae31ae1d2e56349cdd6ba9c78c98ad8"
   },
   "unruled:gate:ny_it201.ask.bought_untaxed#1": {
-   "reason": "The question text names out-of-state, online, lower-rate and Indian-reservation purchases and the unregistered-business exclusion.",
+   "reason": "Lower-rate and out-of-state tax cases are in the help or the wording; taxability is the source's own test.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "ny_it201.ask.bought_untaxed: 'did you (or, on a joint return, your spouse) buy anything taxable in New York without paying New York sales tax, such as online or out of state?' covers purchases outside New York for use in New York (ny_it201i p. 18, 'purchased an item or service outside New York State... with subsequent use in New York State')."
+     "evidence": "The help says 'Count a purchase taxed below the combined state and local rate where you lived' (ny_it201i p. 18).",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Only full-year New York City residents reach the question (ny_it201.gate.part_year_city), so the second locality is New York City and the help 'Count a purchase taxed below New York City's rate' is the p. 18 test ('its rate of tax is higher than the rate of tax originally paid')."
+     "class": "model error",
+     "evidence": "Pennsylvania tax is not 'New York sales tax'; the question asks whether the filer bought 'without paying New York sales tax', which is Yes.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "The filer here is a full-year New York City resident (ny_it201.gate.part_year_city), who is also a resident for sales and use tax (ny_it201i p. 18: 'a resident includes persons who have a permanent place of abode in the state'); a part-year or non-city filer is refused earlier."
+     "class": "accepted residual",
+     "evidence": "The source's own test is 'an item or service subject to tax' (ny_it201i p. 18); the tool asks the filer to apply it. Cost: an untaxed taxable download or service may be left out.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The help says 'Leave out purchases of a business registered for sales tax' (p. 18 excludes only those), so unregistered-business purchases are counted, and ny_it201.ask.use_tax_st141 then asks about 'a rental, royalties or a business not registered for sales tax' and refuses (ny_it201.gate.use_tax_st141)."
+     "class": "model error",
+     "evidence": "The help says 'Leave out purchases of a business registered for sales tax'; a landlord not registered is not left out.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A December 2024 purchase first used in New York in 2025 is read as a 2024 purchase. Cost: its use tax may be left off the 2025 return.",
+     "bugs": []
     }
    ],
-   "subject_sha": "9bbba148a8e3c935e84ab61c780672193ad37a2d6936656df8ba86d572ce4831",
+   "subject_sha": "04f47910c9b9b46a8cbdc705a686bdce17ab24cc9e8177b27b2a29539bc55dbe",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:ny_it201.gov_pension_candidate#1": {

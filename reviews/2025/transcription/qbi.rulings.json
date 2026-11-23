@@ -65,14 +65,50 @@
    "subject_key": "2c9af7d7c3528952295af45db858993694c164f191c6af9da5471d0b9a441fef"
   },
   {
+   "printed": "qbi.deduction",
+   "project_expr_sha256": "eff57d092e4908ef749d96ef4765810ef214e89592c4e39b9928b73823f24c25",
+   "second_expr_sha256": "53fa078884c2fe90f11cc76121258d25bb6895d151098472a2c813f533f08e21",
+   "ruling": "Ruling: representation; f8995 p. 1, \"Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)\". As ruled on 2026-11-14: both choose Form 8995 line 15 at or under the threshold and Form 8995-A above it; the reply figures taxable income before the deduction from line 11a less the Schedule A choice where the project reads qbi.taxable_before (line 11b less the same choice and line 13b, the zero behind the Schedule 1-A refusal), equal in value wherever the project completes; the reply reads qbi.suspended, qbi.reit_loss and the cooperative answer directly where the project refuses them through qbi.unsupported. qbi.taxable_before is now signed (BUG-0100), which moves no comparison with the threshold: a negative amount is below it on both sides.",
+   "context": "94010fd3a269a0b33335683560ba75d250b999b33915a22b14d09f2251ffcab0",
+   "date": "2026-11-22",
+   "run": "b42a3d761421a197d02578b1bcd71d6ba9a7fb58f31d1129abecc6128acb8ddc",
+   "subject_key": "8d0261afd641c42510b57399d3f71b40fd8962455ff455dc05663390e6f70840",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@qbi",
+     "fixture:classm.f2441.2.deepseek@qbi",
+     "fixture:classm.f2441.3.deepseek@qbi",
+     "fixture:classm.f2441.4.deepseek@qbi",
+     "fixture:classm.f2441.5.deepseek@qbi",
+     "fixture:classm.f2441.6.deepseek@qbi",
+     "fixture:classm.w2.1.deepseek@qbi",
+     "fixture:classm.f8889.1.deepseek@qbi",
+     "fixture:classm.f8889.5.deepseek@qbi",
+     "fixture:classm.f4952.4.deepseek@qbi",
+     "fixture:classm.g28.2.deepseek@qbi",
+     "fixture:classm.clcw.1.deepseek@qbi",
+     "fixture:mutation.m4.qbi.reit_loss_carryforward@qbi",
+     "fixture:mutation.m4.qbi.suspended_losses@qbi",
+     "generated:20261026.25@qbi"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "qbi.eligible",
    "project_expr_sha256": "cf6ef81da51e57f972ea5d89200516dbcd25bb1a79d076b1b226901d074f92a6",
    "second_expr_sha256": "8e43bd4b72d2ddc02364a776e8d0809aab64b5047b195f8fb5b1ceb43db3ae28",
-   "ruling": "Ruling: representation; f1099div p. 5: \"Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\". The project copies qbi.dividends_if_ordinary, asked only when ordinary dividends (box 1a) are above zero, and carries the qbi.unsupported refusal (REIT/PTP carryforward, suspended losses, cooperative patron; amb.2025.qbi_cooperative_patron); the reply copies qbi.dividends directly and leaves those cases to other screens. executable triage (.transcription/triage/2025/qbi.json, executable-triage-v2): 2,372 of 2,672 agree; 151 candidate-unknown (13 completed: box 5 not asked, project $0), 125 project-unknown and 24 project-refuses on incomplete or refused returns; no value difference. Project stands.",
-   "context": "b1f68e68d03d928a25d9dbf62ecebd4a9eabbac0ac398f18ecd9a226a0644db4",
-   "date": "2026-11-14",
-   "run": "09303a6259aaa31269049404c026daf70245b195d6bb1782b7fdae8e1512fb8b",
-   "subject_key": "5ff5bb7a07ec41279fb0a24d1ad4ecf58bc3b45561ec8dac629d2a103d12e47c",
+   "ruling": "Ruling: representation; f1099div p. 5, Box 5, \"Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\". As ruled on 2026-11-14 and 2026-11-15: the project copies qbi.dividends_if_ordinary, asked only when box 1a is above zero, while the reply copies qbi.dividends directly; box 5 is a portion of box 1a, so where box 1a is zero box 5 is zero, and the two agree wherever the interview asks the amount. The line is unchanged; the review was occasioned by the change to qbi.taxable_before (BUG-0100).",
+   "context": "94010fd3a269a0b33335683560ba75d250b999b33915a22b14d09f2251ffcab0",
+   "date": "2026-11-22",
+   "run": "b42a3d761421a197d02578b1bcd71d6ba9a7fb58f31d1129abecc6128acb8ddc",
+   "subject_key": "dc4898e666bde9130dbce1f57b0b053c533cd269a8d681aede4994ca76147b1d",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -86,19 +122,19 @@
      "fixture:classm.f8889.5.deepseek@qbi",
      "fixture:classm.f4952.3.deepseek@qbi",
      "fixture:classm.f4952.4.deepseek@qbi",
-     "fixture:classm.f8960.2.deepseek@qbi",
-     "fixture:classm.sa.1.deepseek@qbi",
-     "fixture:classm.sa.2.deepseek@qbi",
-     "fixture:classm.sa.3.deepseek@qbi",
-     "fixture:classm.sa.4.deepseek@qbi",
-     "fixture:classm.sa.6.deepseek@qbi",
+     "fixture:classm.f8960.1.deepseek@qbi",
+     "fixture:classm.dependent.1.deepseek@qbi",
+     "fixture:classm.s2.2.deepseek@qbi",
+     "fixture:classm.s2.5.deepseek@qbi",
+     "fixture:classm.s2.6.deepseek@qbi",
+     "fixture:classm.s2.8.deepseek@qbi",
+     "fixture:classm.s2.9.deepseek@qbi",
      "fixture:classm.dcprov.1@qbi",
-     "fixture:classm.f2441.1@qbi",
-     "fixture:classm.tipjob.1@qbi",
      "fixture:mutation.t2.qss_s1a_car@qbi",
      "fixture:mutation.t2.f8880.inherited_ira@qbi",
      "fixture:mutation.t2.eic.mfs_step1_agi_stop@qbi",
-     "fixture:mutation.t2.eic.qss_step1_agi_stop@qbi"
+     "fixture:mutation.t2.eic.qss_step1_agi_stop@qbi",
+     "fixture:mutation.m4.qbi.reit_loss_carryforward@qbi"
     ],
     "policy": "executable-triage-v2"
    }
@@ -165,6 +201,22 @@
    "second_expr_sha256": "9a10d769c1cdf3b3cb6d08a8295f0b3beed7235e9152910652646b457169ce0b",
    "ruling": "Ruling: representation; project retained. As ruled before: the project reads Form 1040 line 11b (line 11a for a filer without the Schedule 1-A deduction, which is refused) and subtracts the Schedule A choice plus line 13b, the zero behind the Schedule 1-A refusal, as the corrected instruction reads (i8995-correction); the second subtracts lines 12e and 13b from line 11a directly, equal in value within the slice. Stage 14 did not change this line.",
    "subject_key": "9194ac1b1459618c1f087b58cf64c650a25be3d3bdc868caf2aef26912370a21"
+  },
+  {
+   "printed": "qbi.taxable_before",
+   "project_expr_sha256": "97606ce9b85db0954f51934bc56810d846752bef9ae49f7d50710a6a437eddb9",
+   "second_expr_sha256": "1795a2e7c0f9c86f7c9072d4ddbace51457efc37372ca06c1e402bf388fa791b",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3310 values compared, none different or missing: 2636 on 2636 fixture cases, 500 on 500 generated returns seed 20261026, 174 on 174 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "94010fd3a269a0b33335683560ba75d250b999b33915a22b14d09f2251ffcab0",
+   "date": "2026-11-22",
+   "run": "b42a3d761421a197d02578b1bcd71d6ba9a7fb58f31d1129abecc6128acb8ddc",
+   "subject_key": "02442874fd0ae35caf5eabef1f3d9950dde26bc3eb860dabc47c2755cab9bc11",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "qbi.taxable_before",

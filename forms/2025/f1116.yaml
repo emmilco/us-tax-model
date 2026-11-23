@@ -57,15 +57,16 @@ form:
     - id: f1116.loss_accounts
       printed: (helper)
       type: Bool
-      label: Does an earlier Form 1116 leave an overall foreign loss, separate limitation loss or overall domestic loss
-        account still to recapture?
+      label: Does an earlier year, with or without a Form 1116, leave an overall foreign loss, separate limitation loss or
+        overall domestic loss account still to recapture?
       expr:
         op: input
-        source: Does an earlier Form 1116 leave an overall foreign loss, separate limitation loss or overall domestic loss
-          account still to recapture?
+        source: In an earlier year, with or without a Form 1116, did a foreign loss reduce U.S. income or foreign income of
+          another category, or a U.S. loss reduce foreign income, leaving an overall foreign loss, separate limitation loss
+          or overall domestic loss account still to recapture?
       cite:
         doc: i1116
-        locator: 'p. 20, Line 16, "You are required to increase or decrease the amount on line 15 by the following adjustments."'
+        locator: 'p. 20, Line 16, "You are required to increase or decrease the amount on line 15 by the following adjustments."; p. 21, Recapture of prior-year overall foreign loss accounts, "If you had an overall foreign loss in a prior year that offset U.S. source income, a part of your foreign income (in the same category as the loss) is recharacterized as U.S. source income in each following tax year."'
     - id: f1116.other_category
       printed: (gate)
       type: Bool
@@ -925,6 +926,18 @@ form:
       cite:
         doc: f1116
         locator: 'p. 2, Part III, line 17, "Combine the amounts on lines 15 and 16. This is your net foreign source"'
+    - id: f1116.line18_shown
+      printed: (helper)
+      type: Bool
+      label: Line 17 is more than zero, so line 18 is completed (otherwise line 18 is skipped and line 19 is zero)
+      expr:
+        op: test
+        gt:
+          - f1116.line17
+          - const: 0
+      cite:
+        doc: f1116
+        locator: 'p. 2, Part III, line 17, "(If the result is zero or less, skip line 18 and enter -0- on line 19.)"'
     - id: f1116.line18_less14
       printed: (helper)
       type: Dollars
@@ -950,6 +963,7 @@ form:
         locator: 'p. 23, Line 18, "Individuals: Enter on line 18 the sum of (i) Form 1040, 1040-SR, or 1040-NR, line 11b, minus Form 1040, 1040-SR, or 1040-NR, line 14; and (ii) Schedule 1-A (Form 1040), line 37."'
     - id: f1116.line18
       printed: '18'
+      shown_when: f1116.line18_shown
       type: NonNegDollars
       label: Individuals, the sum of (i) Form 1040 line 11b minus line 14 and (ii) Schedule 1-A line 37; zero if zero or
         less

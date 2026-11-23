@@ -135,14 +135,16 @@ form:
   - id: asset.kind_excluded
     printed: (screen)
     label: 'Real property (a building or a structural component, other than qualified improvement property) or land; a
-      car, truck or other vehicle; a boat; an aircraft; a film, videotape or sound recording'
+      car, truck or other vehicle; a boat; an aircraft; a film, videotape or sound recording; intangible property other
+      than computer software (a patent, copyright, license, contract right or franchise)'
     type: Bool
     expr:
       op: input
-      source: 'Is this a building or part of one, land, a vehicle, a boat, an aircraft, a film or a recording?'
+      source: 'Is this a building or part of one, land, a vehicle, a boat, an aircraft, a film or a recording, or something
+        you cannot touch other than software, such as a patent, copyright, license, contract right or franchise?'
     cite:
       doc: i4562
-      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+      locator: p. 8, Line 16, "Intangible property, other than section 197 intangibles, including the following"; pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
         MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
         168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
         p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
@@ -278,19 +280,20 @@ form:
         rules apply for determining the basis, recovery period, depreciation method, and convention"
   - id: asset.industry_use
     printed: (screen)
-    label: The item is recycling equipment, a natural gas gathering line, electric transmission property or a race track,
-      whatever the business
+    label: The item is recycling equipment, a natural gas gathering line, electric transmission property, a smart electric
+      meter or smart grid equipment, or a race track, whatever the business
     type: Bool
     expr:
       op: input
       source: Is this item machinery or equipment used only to collect, distribute or recycle reusable or recyclable
-        materials, a natural gas gathering line, an electric transmission line, or a race track open to the public for the
-        price of admission?
+        materials, a natural gas gathering line, an electric transmission line, a smart electric meter or smart electric
+        grid equipment, or a race track open to the public for the price of admission?
     cite:
       doc: p946
       locator: Qualified Reuse and Recycling Property, "Unless you elect out, you must take a 50% special depreciation
         allowance for qualified reuse and recycling property"; p. 31, "Any natural gas gathering line placed in service after
-        April 11, 2005, is treated as 7-year property" and "Motorsports entertainment complex"
+        April 11, 2005, is treated as 7-year property" and "Motorsports entertainment complex"; p. 31, Qualified smart
+        electric meter, "placed in service by a supplier of electric energy or a provider of electric energy services"
   - id: asset.industry_any
     printed: (helper)
     label: A business of one of the listed kinds, or an item of one of the listed kinds

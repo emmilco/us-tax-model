@@ -27,10 +27,10 @@ changes:
   - change: C-CRED-16
     evidence:
     - doc: f8880
-      page: 3
+      page: 2
       quote: Don’t include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse
         didn’t file a joint return for the year the distribution was received
-    verified: draft
+    verified: final
     note: The entry stays linked (f8880.prior_joint, person.sav_prior_joint); its text moves by a year. The id is kept.
     operations:
     - set_ambiguity:
@@ -70,5 +70,5 @@ changes:
         field: cite.locator
         from: 'p. 2, Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount on
           line 4 if you and your spouse didn’t file a joint return for the year the distribution was received"'
-        to: 'p. 3 (draft), Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount
+        to: 'p. 2, Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount
           on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received"'

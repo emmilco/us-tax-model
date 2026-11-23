@@ -2,28 +2,24 @@
  "kind": "render",
  "form": "sales",
  "family": "claude",
- "base": "29aed0840712a4ca34448653ed8da8b97746531a1f715f6421ad92d801e2dd67",
- "head_rows": {
-  "match / mismatch / unclear / missing": "2 / 1 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
- },
+ "base": "a6bf7efb7994c2d6ef35317517d17be206c8032a26b895f951b60db180beb182",
  "lines": [
   {
    "key": "(e)",
-   "record": "f1f6a5fec12e8a9240bb75fa147ec70bc240b0bc55ee54c1a5b70a3615a8169a",
+   "record": "a6bf7efb7994c2d6ef35317517d17be206c8032a26b895f951b60db180beb182",
    "status": "MATCH",
    "subject_key": "0dd971f0270b5890a5cdb0c6690028aa6f45764fff2ecb8087c853b298d7cf5a"
   },
   {
    "key": "(g)",
-   "record": "f1f6a5fec12e8a9240bb75fa147ec70bc240b0bc55ee54c1a5b70a3615a8169a",
+   "record": "a6bf7efb7994c2d6ef35317517d17be206c8032a26b895f951b60db180beb182",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; as in the goal-1 and landing render rulings: an entry with any code other than none, B, W or BW (code E, D, O, N, L and the rest, the 'other' choice of sales.code) is refused at sales.one by sales.bad_code (\"Only applicable B and W adjustments are supported\"; i8949 pp. 7-11, columns (e) through (h)), so (g) never stands for an entry that needs another code's adjustment. The code B part (signed per the worksheet) and the code W part (i8949 p. 10, code W, \"enter the correct amount of the nondeductible loss as a positive number in column (g)\") match, as the reviewer says; this merge's change to (g) only added boxes G and J to the code B test.",
+   "ruling": "Ruling: scope; as in the goal-1 and landing render rulings: an entry with any code other than none, B, W or BW (code E, D, O, N, L and the rest, the 'other' choice of sales.code) is refused at sales.one by sales.bad_code (\"Only applicable B and W adjustments are supported\"; i8949 pp. 7-11, columns (e) through (h)), so (g) never stands for an entry that needs another code's adjustment. The code B part (signed per the worksheet) and the code W part (i8949 p. 10, code W, \"enter the correct amount of the nondeductible loss as a positive number in column (g)\") match, as the reviewer says; this merge's change to (g) only added boxes G and J to the code B test. (carried over from reviews/2025/render/sales.index.json at deca6831, review of 2026-11-03)",
    "subject_key": "0bbfe8b13bd8b5a8e72dbfe8a184c471b1fa7aeed4b6bd79c268b98168cf4b14"
   },
   {
    "key": "(h)",
-   "record": "f1f6a5fec12e8a9240bb75fa147ec70bc240b0bc55ee54c1a5b70a3615a8169a",
+   "record": "a6bf7efb7994c2d6ef35317517d17be206c8032a26b895f951b60db180beb182",
    "status": "MATCH",
    "subject_key": "9d8e318a0f66f166c5f2a33ad88141725eb7b4a65741dbf7d3ab188a5c65992c"
   }

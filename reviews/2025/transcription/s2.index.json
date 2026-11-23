@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "17",
   "agree / disagree / missing": "14 / 3 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-17); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -37,10 +37,10 @@
   },
   {
    "key": "2",
-   "record": "7f24498b1b4a8dd2478df9ea3600e9e33bf11e1896a19f66445a1a26f876540d",
+   "record": "b85f53823885076b9aa3cea605da538562e840724c57daa6e0cb10b1af8dd072",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040s2 p. 112, Line 2, \"See the Instructions for Form 6251 to see if you must file the form\". The project refuses alternative minimum tax through the computed s2.amt screen and enters zero otherwise; the reply figures Form 6251 where the project refuses, and the differences are those refusals. Triage executable-triage-v2 (.transcription/triage/2025/s2.json): 2741 of 3472 comparisons agree, 1862 of 2290 in scope; completed {\"candidate-refuses\": 50, \"candidate-unknown\": 280}. Project stands.",
-   "subject_key": "68a37ccac418d5092e6f8c714f492b6ac501c2916a134f65f6a4ca4a88c981f9"
+   "ruling": "Ruling: scope; f1040s2 line 2, 'See the Instructions for Form 6251 to see if you must file the form', as the ruling of 2026-11-17: the project refuses the alternative minimum tax through its computed s2.amt screen and enters zero otherwise; the reply figures Form 6251 where the project refuses. executable triage (.transcription/triage/2025/s2.json, this pass): 2,855/3,509 agree; differences {\"candidate-refuses\": 85, \"candidate-unknown\": 409, \"project-refuses\": 150, \"project-unknown\": 10}; on completed returns {\"candidate-refuses\": 52, \"candidate-unknown\": 158}; no value differs on a completed return. Rerun for the s2.amt_business and s2.amt_pab wording (BUG-0946, BUG-0980).",
+   "subject_key": "4f4a1f5a1627acd697dd94201afe49d67840fe65d53003e99e2e0519b9102801"
   },
   {
    "key": "3",
@@ -120,7 +120,7 @@
   "s2.line8_file": "deb8be263885897cf5058b90185a21cfbad1938e3b0c9298cb84098d5a29294d",
   "1a": "45c38ce8fdfae6506bcf62fdeee06baaffe971d62e9f9cdb5cbb53c45888473b",
   "1z": "33d872e88e513fc79c3fba1a08807a2e2dba942d5af1890a2bf7ffb33623e9d5",
-  "2": "f34b908df8ab8d55184a4931d2b5d6e57c70e23818476b85fdb76cbc28184705",
+  "2": "0a230042c72ae79dd5a1f28eef189a9a39d1e420860e1428d2beae441d80beba",
   "3": "7ab9b1b03d4566d66f61819570d3d1f50e8cef92e15293d3637f871dfcc2e150",
   "4": "953ef54c0b1d62d61d6b53201beb0d3ad1e1265d162735865c2ae696027a420c",
   "5": "6bd6e5be7ca48e5b0d354c7a7975c3d59856c6de1ab596825db1f7b0c0d6dfb0",

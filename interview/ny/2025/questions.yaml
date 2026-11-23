@@ -117,9 +117,9 @@ bank:
   - input: ny_it201.ask.out_of_state_bond_interest
     order: 272
     seq: 30
-    prompt: Did any of your tax-free interest or dividends come from bonds issued outside New York, or from a fund that holds
-      them?
-    help: National tax-free bond funds hold other states' bonds; part of a New York fund may too (see its year-end statement). Bonds of New York, its cities and agencies, or a U.S. territory are No. A Yes ends the interview here.
+    prompt: Did any of your (or, on a joint return, your spouse's) tax-free interest or dividends come from bonds issued outside
+      New York, or from a fund that holds them?
+    help: National tax-free bond funds hold other states' bonds; part of a New York fund may too (see its year-end statement). Bonds of New York, its cities and agencies, or a U.S. territory are No. A Yes ends the New York part here.
   - input: ny_it201.ask.gov_pension
     order: 1010
     seq: 30
@@ -130,6 +130,8 @@ bank:
   - input: ny_it201.ask.gov_pension_other
     order: 1010
     seq: 31
+    prompt: Was any of it from the MTA, MABSTOA, the Long Island Rail Road, a SUNY, CUNY or State Education Department plan
+      (such as TIAA), or the government of a U.S. territory (such as Puerto Rico or Guam) or of Washington, D.C.?
     help: These public plans count as government pensions in New York.
   - input: ny_it201.ask.pension_exclusion
     order: 1010
@@ -145,13 +147,13 @@ bank:
   - input: ny_it201.ask.529_nonqualified
     order: 180
     seq: 41
-    prompt: In 2025, did you take money out of that New York 529 account for anything but college, career training or student
+    prompt: In 2025, did you (or, on a joint return, your spouse) take money out of that New York 529 account for anything but college, career training or student
       loans? School tuition before college and a move to another state's plan count.
     help: "Career training is No only if paid from July 4, 2025, to an eligible school; loans, only the student's or a sibling's. No too: a Roth IRA or ABLE rollover, the student's death or disability, or a move between family members' New York accounts."
   - input: ny_it201.ask.529_owner
     order: 180
     seq: 42
-    prompt: In 2025, did you put money into that New York 529 account, or take any out?
+    prompt: In 2025, did you (or, on a joint return, your spouse) put money into that New York 529 account, or take any out?
     help: New York lets an account owner deduct up to $5,000 of contributions ($10,000 on a joint return); this tool does not
       compute it, so a Yes ends the New York part here.
   - input: ny_it201.ask.inflation_check
@@ -207,7 +209,7 @@ bank:
   - input: ny_it201.ask.city_credits
     order: 1030
     seq: 50
-    prompt: Did your business pay New York City unincorporated business tax for 2025?
+    prompt: Did your (or, on a joint return, your spouse's) business pay New York City unincorporated business tax for 2025?
     help: New York City gives a credit for part of that tax, which this tool does not compute.
   - input: ny_it201.ask.mctmt
     order: 1030
@@ -235,7 +237,7 @@ bank:
     order: 1040
     seq: 10
     prompt: In 2025, did you (or, on a joint return, your spouse) buy anything taxable in New York without paying New York sales tax, such as online or out of state?
-    help: Count a purchase taxed below New York City's rate, and an untaxed purchase on an Indian reservation (unless Oneida Nation tax was paid). Leave out purchases of a business registered for sales tax. Purchases under $1,000 are charged from a chart.
+    help: Count a purchase taxed below the combined state and local rate where you lived, and an untaxed purchase on an Indian reservation (unless Oneida Nation tax was paid). Leave out purchases of a business registered for sales tax. Purchases under $1,000 are charged from a chart.
   - input: ny_it201.ask.use_tax_dmv_only
     order: 1040
     seq: 15

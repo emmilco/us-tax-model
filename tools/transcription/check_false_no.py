@@ -16,9 +16,10 @@ wording and line, each gate line and gated input with their English and wording,
 - A logged review whose gate no longer exists is an `orphan` (fails).
 
 `--release` is the release gate (tools/release_reviews.sh): it also fails on every due gate and every gate short of the
-milestone's samples, and writes no report. Accepted as in the other source-coverage checks (tools/baseline_check.py).
+milestone's samples, and on every ruling that confirms an open bug of medium or high severity (samples.open_defects)
+unless `--allow-open-bugs` is given, and writes no report. Accepted as in the other source-coverage checks (tools/baseline_check.py).
 
-    check_false_no.py [--release] [--jurisdiction ny]
+    check_false_no.py [--release [--allow-open-bugs]] [--jurisdiction ny]
 """
 import json
 import os
@@ -62,7 +63,7 @@ def findings(lines=None, reviewed=None):
     return out, shas
 
 
-def check(release=False):
+def check(release=False, allow_open_bugs=False):
     forms = baseline_check.load_forms(Path(ROOT) / "canonical" / Y)
     found, shas = findings()
     due = [f for f in found if f["kind"] == "due"]
@@ -86,6 +87,8 @@ def check(release=False):
     if due and not release:
         with open(REPORT, "a", encoding="utf-8") as out:
             out.write("\n## Due at the next release\n\n" + "".join(f"- `{f['line']}`: {f['detail']}\n" for f in due))
+    if release:
+        status = samples.release_open_bugs({**good, **carry}, allow_open_bugs) or status
     return status
 
 
@@ -93,4 +96,4 @@ if __name__ == "__main__":
     os.chdir(ROOT)
     import build_fresh
     build_fresh.require(rendered=True)  # the subjects include each line's rendered English
-    sys.exit(check(release="--release" in sys.argv))
+    sys.exit(check(release="--release" in sys.argv, allow_open_bugs="--allow-open-bugs" in sys.argv))

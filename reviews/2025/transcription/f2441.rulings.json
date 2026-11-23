@@ -509,6 +509,34 @@
   },
   {
    "printed": "2 (box)",
+   "project_expr_sha256": "b6e791972abffdecc79e1f14e93c2d8ecf86dc5c4c7a96323b346ca0d288bc9d",
+   "second_expr_sha256": "72064b02e461d50b993e4a2e835258c01157a714683f98a39c073e127fb31a52",
+   "ruling": "Ruling: representation; i2441 p. 3, Line 2, \"If you have more than three qualifying persons, check the box on line 2\". The reply's expression differs from the project's only in the counted field: it sums dependent.one where the project sums dependent.dc_count, which is defined as param dependent.one (dependent.yaml); the where clause and the threshold (dc.persons_listed, 3) are the same, so the two agree on every input. Review occasioned by BUG-0760 (the box now reads its own parameter).",
+   "context": "43b0c52d5d11820029c2ad21c83c6065b096886ef771d959ed3585e28ceac10a",
+   "date": "2026-11-22",
+   "run": "d4f9579116ab76ad16a105ce901d4788f091f4f2e895369f972a9af7baf8590f",
+   "subject_key": "eb8656393dc82d0d58cca20c11da882ebad5599161ee7f5ebfb9d7880f31604b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@f2441",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f2441",
+     "fixture:stage16.cleanup.refuse.f1040_line16@f2441",
+     "fixture:stage16.cleanup.refuse.scope_credits@f2441",
+     "fixture:stage15.refuse.f2441.nondependent@f2441",
+     "fixture:dep.care_parent_claimable_refused@f2441",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@f2441",
+     "fixture:t264.f4952.unsupported_with_interest@f2441"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2 (box)",
    "project_expr_sha256": "c0d4149bc2dcf1f1887619ca33ba2c8de0ffff39ccdd744d9293e5c397d36acf",
    "second_expr_sha256": "ac5c563821133abc0dda1200ffebae05e3e9cacb1444a9648ad6ba7ce635a721",
    "ruling": "Ruling: representation; replacing only sum_over field dependent.dc_count with dependent.one makes the two canonical trees exactly equal, including the qualifying-person predicate. Both Count fields are unconditional copies of the same dependent.one parameter. f2441 (2025) p. 1 line 2 box and i2441 p. 3 Line 2 count qualifying persons, not all dependents. No predicate or amount is changed.",

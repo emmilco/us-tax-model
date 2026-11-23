@@ -113,7 +113,8 @@ def screen_gate(screen, lines):
 def gate_note(gate):
     if not gate:
         return ""
-    return ("\nThe filer is asked this question only when its gate condition holds; otherwise it is not asked and the "
+    return ("\nThe filer is asked this question only on one branch of its gate condition (when it holds, unless the "
+            "condition below says the question is asked when it is false); otherwise it is not asked and the "
             "answer is no (the lines then compute as shown). The gate condition is reviewed separately.\n"
             f"Gate condition: {gate}\n")
 
@@ -196,14 +197,16 @@ Use an empty list when the question covers the lines exactly. No prose before or
 
 def build_gate_prompt(unit, lines, excerpt):
     condition, items = gates.describe(unit, lines, encoded_english)
-    return jurisdiction.preface(f"""A tax preparation tool asks some questions only when a gate condition holds. When the condition does
-not hold, the tool never asks the gated questions below and treats each gated line as zero. The
-condition is either a question the filer answers (answered no, the gated lines are zero) or a
-condition the tool computes from earlier answers.
+    return jurisdiction.preface(f"""A tax preparation tool asks some questions only on one branch of a gate condition: when the condition
+holds, or, where the gate condition below says so, when it is false. On the other branch, the tool
+never asks the gated questions below and treats each gated line as zero. The condition is either a
+question the filer answers (answered no, the gated lines are zero) or a condition the tool computes
+from earlier answers.
 
 The gate is right only if, in every situation the IRS text below gives one of the gated lines an
-amount (or makes it matter), the condition holds: a filer who reads the question and answers it
-truthfully answers yes, or the computed condition is true. Where the cited text states the
+amount (or makes it matter), that line's question is reached: a filer who reads the condition's
+question and answers it truthfully answers yes, or the computed condition takes the value on which
+the item below says its question is asked. Where the cited text states the
 condition itself ("Use this form if...", "Who must file"), the gate must be that condition.
 Gate questions deliberately lean to yes: a wrong yes costs a few questions, a wrong no silently
 drops an amount. A joint return is in scope: the question must cover the spouse.
@@ -219,8 +222,9 @@ drops an amount. A joint return is in scope: the question must cover the spouse.
 # Your task
 
 Read the IRS text below. Report:
-- NARROW: a situation the IRS text gives a gated line an amount (or a refusal) in which the
-  condition is false: a filer could truthfully answer no, or the computed condition is false.
+- NARROW: a situation the IRS text gives a gated line an amount (or a refusal) in which that
+  line's question is not reached: a filer could truthfully answer no, or the computed condition
+  takes the value on which the question is not asked.
   Quote the IRS text and say why the condition misses it.
 - SOURCE: the cited text states a condition, and the gate's condition differs from it (another
   threshold, time frame, person or event). Quote both.

@@ -35,6 +35,10 @@
 # tools/worktree_data.py clone <worktree> clones it in). node_modules, .engines and
 # lean/.lake, which are installs, come from the main worktree when the worktree it
 # runs in has none.
+#
+# Run on the branch next, or in the main worktree on the branch main, it first folds the finished agent-run rows into
+# research/costs/agent_runs.jsonl (tools/agent_runs_fold.py), before taking the snapshot, so the
+# tested tree holds them; AGENT_RUNS_FOLD=0 skips the fold (tools/release.sh sets it).
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 . tools/green.sh
@@ -220,6 +224,7 @@ fi
 python3 tools/worktree_data.py check || exit 1
 timeout 300 python3 tools/worktree_gc.py check || true  # listed, not failed: a release fails on it (release.sh)
 refuse_sizing_env || exit 2
+if [ "${AGENT_RUNS_FOLD:-1}" != 0 ]; then python3 tools/agent_runs_fold.py --if-main || exit 1; fi
 if [ "${CHECK_ALL_PREFLIGHT:-}" != done ]; then
   # shellcheck disable=SC2046
   tools/preflight.sh --tier "$(tier_of "$@")" $(year_args "$@") || exit 1

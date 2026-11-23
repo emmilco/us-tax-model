@@ -3,17 +3,20 @@
  "form": "qbi",
  "family": "claude",
  "base": "8c585d8b7f7abc45557a9e733c20ba63a60f1929b5b063ac5708fccd89f3cedc",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "3",
-   "record": "8c585d8b7f7abc45557a9e733c20ba63a60f1929b5b063ac5708fccd89f3cedc",
+   "record": "6e0fed96d9e6be3a1685dddb46d7a024ab6e4329bb9a1c27d680c5cdc35aa0b0",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i8995 p. 3, Determining Your Qualified Business Income: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion of the loss or deduction allowed under each provision is treated as a qualified net loss carryforward from a separate trade or business ... See Line 3\"; i8995 p. 4, Line 3: \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\". That case is screened: qbi.unsupported asks about \"losses or deductions suspended in an earlier year by another provision and allowed this year\" and refuses on qbi.eligible (\"Forms 8995 / 8995-A business or PTP path\"), so on a completed return line 3 is only the prior-year carryforward, which i8995 p. 5, Line 16 describes as \"the amount to be carried forward to the next year\". Same result as the archived prior ruling, rechecked against the current rendering. Incidental: the line's cite quotes \"enter the amount from line 16 of your 2024 Form 8995\", which is not in the archived i8995 (see findings.md F2; citation only).",
-   "subject_key": "840f082650e555fd6d77ee15a90d1cbc51e5b51b81c1ebae143a4bab504bf304"
+   "ruling": "Ruling: representation; restatement accepted. i8995 p. 3, \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income\", their qualified portion is treated as a loss carryforward (Line 3). The project asks those losses at qbi.suspended (\"In 2025, are you (or, on a joint return, your spouse) deducting a business loss or expense of an earlier year that a tax limit kept you from deducting then?\") and refuses a Yes through qbi.unsupported on qbi.deduction, so on every return it completes line 3 is the earlier Form 8995 line 16 carryforward alone. The reworded source (BUG-0849: the latest Form 8995 from 2024 or earlier) is what occasioned this review.",
+   "subject_key": "a65c0153887ab96c8269cac6d4e9c33afb9a780d45115ab3f9c9708dbfeaea71"
   }
  ],
  "subjects": {
-  "3": "3824f40b2d7d402084e93cc175627f04b959707d9f9eeb7b6836c80f0f309e9c"
+  "3": "c73a1107285c5be3a59b2b00e83ce4e8adf2d1179d1d0928e4cb4bff9e622384"
  },
  "__rest__": "546a30709e9e27a978182a906d0d3d96e948369d9feb18da096bbc01aa40368b"
 }

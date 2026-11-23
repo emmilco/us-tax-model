@@ -2,7 +2,8 @@
 
 Every fixture case and 400 generated whole returns (`generate.ts` `sampleReturns`, fast-check, seed 7: the corpus of the properties check) were evaluated
 by both independently written evaluators; every root form line and every line of every confirmed collection entry
-was compared (money cents, counts, rates, booleans, enums, full refusals; unknowns compared by kind).
+was compared (money cents, counts, rates, booleans, enums, full refusals; for an unknown, the missing input it names,
+the lower bound of a partial count and whether it awaits a refusal gate's answer).
 
 This is the federal run. Its cases are the federal fixture cases and federal generated returns; none gives a New York
 answer. Both evaluators read the whole build, federal and New York documents alike, so the lines of the New York
@@ -20,7 +21,8 @@ and 403763 have a value (a constant, a figure from federal lines only, or a refu
 | Result | **agreement on every value** |
 
 Line values compared, by the kind of the value. An unknown is a line with no value (an answer it needs was not
-given, for example); the two evaluators agree that it is unknown, and its reason is not compared.
+given, for example); the two evaluators agree that it is unknown, on the missing input it names, on the lower bound of a
+partial count and on whether it awaits a refusal gate's answer, which the interview reads; its reason is not compared.
 
 The last two columns count, among them, the lines of the New York documents.
 

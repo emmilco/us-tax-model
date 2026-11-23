@@ -102,7 +102,7 @@ Every process rule is either enforced by a tool or marked advisory. No new prose
 | Carry repeat disagreements mechanically | `carry.py` | enforced |
 | Review data moves only through the tool | `worktree_data.py` clone, fill, carry-back; hand copies into it refused by `tools/claude_hooks/bash_guard.py` | enforced |
 | Background waits on a pid or a status, never `pgrep -f` | `tools/claude_hooks/bash_guard.py` (Claude Code hook) | enforced for `pgrep -f`; timeouts and one wait per task advisory |
-| Mechanical agent work runs on Sonnet | `tools/claude_hooks/agents.py` (Claude Code hooks) | enforced: a launch needs a model and `Class:`, `Year:`, `Jurisdiction:` in its brief; the `agent_runs.jsonl` row is written at launch and completed with usage at the end |
+| Mechanical agent work runs on Sonnet | `tools/claude_hooks/agents.py` (Claude Code hooks) | enforced: a launch needs a model and `Class:`, `Year:`, `Jurisdiction:` in its brief; the run's row is written to the untracked pending file at launch, completed with usage at the end, and folded into `agent_runs.jsonl` by `tools/agent_runs_fold.py` before a check-all run on `main` |
 | Two lanes never edit the same form at once | `tools/claims.py`, checked by `pre-commit` (owner, 2026-11-10) | enforced at commit; a merge releases the merged branch's claims; `inputs` is one claim |
 | Fixture defaults are visible test data | `defaults_guard.mjs`, commit-msg hook | enforced |
 | No case takes a default its other answers contradict | consistency rules in `fixtures/<year>/defaults.json`, checked by the build (`consistencyProblems`) | enforced for the declared rules; known violations are listed as `open` with their reasons |

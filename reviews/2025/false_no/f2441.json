@@ -2,7 +2,7 @@
  "form": "f2441",
  "reviews": {
   "gate:f2441.benefits": {
-   "subject_sha": "064041ce9432d2434eb09dea24aa0f2a3b0d29ebd05aa49dcc17bfcfb5d9bc41",
+   "subject_sha": "a0e7234800c208be64d97fcecb645de85b2b2bc7615227946ed0a67447eaa14e",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -10,60 +10,60 @@
       {
        "kind": "FALSE_NO",
        "pattern": "3",
-       "who": "A married couple filing jointly where the spouse is a sole proprietor whose business runs a dependent care assistance program that paid for their child's day care in 2025. The filer has a W-2 job with no dependent care benefits.",
-       "why_no": "The question says \"your (or, on a joint return, your spouse's) employer, or your own business\". The spouse is named only next to \"employer\". The spouse's business is not \"your own business\", and the spouse has no employer, so the literal answer is no.",
-       "line": "scope.care_benefits_other_if_benefits (refusal missed: sole-proprietorship benefits not in box 10)",
-       "irs_text": "i2441 p. 5, Line 12: \"If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership.\" i2441 p. 1: \"if you (or your spouse if filing jointly) received any dependent care benefits for 2025, you must use Form 2441\"",
+       "who": "A married couple filing jointly. The spouse is a partner (or a sole proprietor) whose partnership or business runs a dependent care assistance program that paid for their child's 2025 daycare. The spouse's Schedule K-1 shows box 13 code O. The filer has W-2 wages with an empty box 10.",
+       "why_no": "The gate extends to the spouse only for the employer: 'your (or, on a joint return, your spouse's) employer, or your own business or partnership'. The parenthetical does not reach 'your own business or partnership', so the filer truthfully answers no, because the business or partnership is the spouse's, not theirs.",
+       "line": "scope.care_benefits_other_if_benefits (forced false, so the refusal for non-box-10 benefits never happens and Part III line 12/22/24 amounts are silently dropped)",
+       "irs_text": "i2441 p. 1: 'if you (or your spouse if filing jointly) received any dependent care benefits for 2025, you must use Form 2441'; i2441 p. 5, Line 12: 'If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership.'",
        "severity": "high",
-       "fix": "Ask: \"In 2025, did an employer of yours (or your spouse's, if filing jointly), or a business or partnership that you or your spouse own or are a partner in, help pay for ...\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A minority or service partner in a law or accounting firm whose partnership's dependent care program paid toward their child's care. The amount is reported on Schedule K-1 (Form 1065), box 13, code O, and the partner has no W-2.",
-       "why_no": "A partner is not an employee, so the partnership is not \"your employer\". A partner with a small stake does not think of a large firm as \"your own business\". The help, \"Box 10 of a W-2 shows it\", points only to a W-2, which the partner does not have.",
-       "line": "scope.care_benefits_other_if_benefits (refusal missed: partnership benefits not in box 10)",
-       "irs_text": "i2441 p. 1, Dependent Care Benefits: \"Benefits you received as a partner should be shown in box 13 of your Schedule K-1 (Form 1065) with code O.\" i2441 p. 5, Line 12: \"include amounts you received under a dependent care assistance program from your sole proprietorship or partnership\"",
-       "severity": "medium",
-       "fix": "Name partnerships in the question and add to the help: \"Schedule K-1 (Form 1065), box 13, code O also shows it.\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "An employee whose employer paid the child's day care provider directly, or provided an on-site or sponsored day care slot, but left box 10 of the W-2 blank.",
-       "why_no": "The help says \"Box 10 of a W-2 shows it.\" A filer can read that as the test: box 10 is blank, so the answer is no. This happens even though the employer did help pay.",
-       "line": "scope.care_benefits_other_if_benefits (refusal missed: employer benefits not in box 10)",
-       "irs_text": "i2441 p. 1: \"Dependent care benefits may include: • Amounts your employer paid directly to either you or your care provider ... • The fair market value of care in a daycare facility provided or sponsored by your employer\"; i1040gi p. 24, Line 1e: \"Dependent care benefits should be shown in box 10\"",
-       "severity": "medium",
-       "fix": "Change the help to: \"Box 10 of a W-2 usually shows it, but answer Yes even if box 10 is blank when an employer or business paid you or your care provider, or provided the care.\""
+       "fix": "Ask: 'In 2025, did an employer, business or partnership of yours (or, on a joint return, of your spouse) pay for or provide care for a child, dependent or disabled spouse, including through a dependent care account (FSA) or money left in a 2024 account?' Also say in the help that a K-1 code O or W-2 box 10 issued to either spouse counts."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer who left a job in late 2024 and in early 2025 spent the 2024 dependent care account balance under the former employer's grace period. They had no dependent care benefits from any employer during 2025.",
-       "why_no": "The question begins \"In 2025, did your ... employer ... help pay\". The filer had no such employer in 2025 and the money was set aside in 2024. The help line on 2024 money is easy to pass over when the question's own words say \"In 2025\".",
-       "line": "scope.care_benefits_other_if_benefits (refusal missed: grace-period carryover)",
-       "irs_text": "i2441 p. 5, Line 13: \"Enter on line 13 the amount you carried forward and used in 2025 during the grace period.\"",
-       "severity": "low",
-       "fix": "Put the carryover in the question itself: \"... or did you use money left in a 2024 dependent care account (from any employer, including a former one) during 2025?\""
+       "who": "A filer (or spouse) who left an employer in late 2024 and had no 2025 election, or works for a different employer in 2025. In January to March 2025 they used the leftover 2024 dependent care FSA balance under the old plan's grace period.",
+       "why_no": "'In 2025, did your ... employer ... help pay' reads as the current or 2025 employer, and the money was set aside in 2024. The help mentions 'money left in a 2024 dependent care account', but a filer with no 2025 employer, or a new employer that offered nothing, reads 'your employer' as not including the former one.",
+       "line": "scope.care_benefits_other_if_benefits (grace-period amount belongs on Form 2441 line 13, which should trigger the refusal)",
+       "irs_text": "i2441 p. 5, Line 13: 'your employer may have permitted you to carry forward any unused amount from 2024 to use during a grace period in 2025 ... Enter on line 13 the amount you carried forward and used in 2025 during the grace period.'",
+       "severity": "medium",
+       "fix": "Add to the question: 'including any employer, current or former, or money from a 2024 dependent care account (yours or your spouse's) used in 2025 under a grace period.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer whose business's dependent care program, not reported in box 10, paid for adult day care for a disabled spouse who is not a dependent.",
-       "why_no": "The question asks about \"care of a child or dependent\". A spouse is neither, so the filer answers no.",
+       "who": "A limited partner or small-percentage LLC member in a partnership that offers a dependent care assistance program to its partners. The partnership reimbursed their 2025 child care, and the K-1 shows box 13 code O.",
+       "why_no": "'your own business or partnership' reads as a partnership the filer owns or runs. A passive or minority partner does not think of the firm as 'my own partnership'. They also may not see 'help pay' in a reimbursement they think of as a partnership perk or draw.",
        "line": "scope.care_benefits_other_if_benefits",
-       "irs_text": "i2441 p. 1, Qualifying Person(s): \"2. Your disabled spouse who wasn't physically or mentally able to care for themselves\"",
+       "irs_text": "i2441 p. 1, Definitions: 'Benefits you received as a partner should be shown in box 13 of your Schedule K-1 (Form 1065) with code O.'",
+       "severity": "medium",
+       "fix": "Replace 'your own business or partnership' with 'a business you own, or any partnership or LLC you are a partner or member in'. State in the question text, not only in the help, that a K-1 with box 13 code O for either spouse means Yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A sole proprietor who set up a dependent care assistance program in their own business and had the business pay their child's 2025 care. No W-2 or K-1 shows it.",
+       "why_no": "'help pay' suggests someone else contributing, but the money is the filer's own. The help names only W-2 box 10 and K-1 code O as places that 'show it', so a filer with no form may conclude there is nothing to report.",
+       "line": "scope.care_benefits_other_if_benefits",
+       "irs_text": "f2441 p. 2, line 22: 'Is any amount on line 12 or 13 from your sole proprietorship or partnership?'; i2441 p. 5, Line 12: 'include amounts you received under a dependent care assistance program from your sole proprietorship'",
        "severity": "low",
-       "fix": "Ask about \"care of a child, a dependent, or a spouse who could not care for themselves\"."
+       "fix": "Use 'pay for or provide' instead of 'help pay for'. Add to the help: 'If your own business paid for this care under a dependent care plan, answer Yes even though no form reports it.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A sole proprietor or partner whose program paid for day care of a disabled parent who lived with them. The parent had $5,200 or more of gross income, so the filer cannot claim them as a dependent.",
+       "why_no": "The gate lists 'a child, a dependent or a disabled spouse'. The parent is not the filer's dependent and not a spouse, so the filer answers no.",
+       "line": "scope.care_benefits_other_if_benefits",
+       "irs_text": "i2441 p. 1, Qualifying Person(s): 'Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more'",
+       "severity": "low",
+       "fix": "Say 'care of a child, a dependent, or any other person (including a spouse or parent) who couldn't care for themselves'."
       }
      ],
-     "prompt_sha": "1af3dcc93e60626f2043cd4759afa680f541658a2113cf915f19cbb88fbafc4d",
+     "prompt_sha": "751b8528a22ba0a5942cbbf00cf6bcf4cfe849d7e1bd60f302a193991d2144ca",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.14038,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f2441.benefits.064041ce9432.1.response.txt"
+     "cost": 0.16015600000000002,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_f2441.benefits.a0e7234800c2.1.response.txt"
     }
    ],
    "condition": "f2441.benefits",
@@ -234,58 +234,58 @@
    ]
   },
   "gate:f2441.mfs_married": {
-   "subject_sha": "16a1a3bab233ba1839189f0b8c2a74d47a7dc4bed2f5d26a0e377c60c6b58ae2",
+   "subject_sha": "f1545de6134c59f39ed78eaf4d9b463177502ff140482e398dbdadb85166ad31",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A married filer filing separately lived apart from their spouse for the last 6 months of 2025. But the child lived mainly in the spouse's home for most of the year, or the spouse paid more than half the cost of keeping up the home. The filer received dependent care benefits in W-2 box 10.",
-       "why_no": "The gate is computed from line A. A filer who reads the line A question as 'did you live apart from your spouse' checks it, so the gate turns false. The tool then never asks for the spouse's earned income, but the three tests (living apart, the qualifying person's main home, and more than half the cost) were not all met.",
-       "line": "f2441.mfs_spouse_earned_if_married",
-       "irs_text": "i2441 p. 2, Married Persons Filing Separately: \"all of the following apply ... lived apart ... Your home was the qualifying person's main home for more than half of 2025 ... You paid more than half of the cost\"; p. 5, Line 19: \"No. Enter your spouse's earned income on line 19\"",
+       "pattern": "other",
+       "who": "A married filer on a separate return who took dependent care benefits through a cafeteria plan. They lived apart from their spouse only from September, or their spouse paid most of the household costs, or the child lived mainly with the spouse. They check line A because they read 'meet the requirements to claim the credit' as items 2 through 5.",
+       "why_no": "The gate is computed from line A. The line A instruction asks whether you 'meet the requirements to claim the credit', and a filer can read that as the general items 2-5 or as 'separated'. They check the box without meeting all three unmarried tests, and the computed gate turns false.",
+       "line": "f2441.mfs_spouse_earned_if_married (and f2441.mfs_spouse_deemed_if_married)",
+       "irs_text": "i2441 p. 5, Line 19: 'Are you considered unmarried under that rule? ... No. Enter your spouse's earned income on line 19'; p. 2: 'You lived apart from your spouse during the last 6 months of 2025. • Your home was the qualifying person's main home for more than half of 2025. • You paid more than half of the cost of keeping up that home'",
        "severity": "medium",
-       "fix": "Do not derive the gate from a single line A answer. Ask the three tests separately (lived apart July through December, qualifying person's main home with you more than half the year, you paid more than half the home's cost). Set line A, and the gate, only when all three are yes. Otherwise ask for the spouse's earned income."
+       "fix": "Do not compute the gate from a bare line A checkbox. Ask the three tests as separate factual questions (lived apart every day July through December 2025; child's main home was yours more than half the year; you paid more than half the home's upkeep), and set line A only when all three are yes."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A married filer filing separately whose spouse earned $40,000 in wages and also ran a side business with a $3,000 net loss.",
-       "why_no": "The question says 'Zero if none, or if they had a loss.' The filer reads 'they had a loss' as covering any self-employment loss and enters 0. Line 19 then becomes 0, which wipes out the exclusion, when the spouse's earned income is $37,000.",
+       "who": "A married filer on a separate return, not considered unmarried, who claims the dependent care exclusion. Their spouse is a deployed service member whose pay is mostly nontaxable combat pay (W-2 box 12 code Q), with little or no box 1 wages.",
+       "why_no": "The question says 'Count wages and net earnings from self-employment'. The filer counts box 1 wages only and leaves out combat pay, which can be elected into earned income. They enter zero or a small amount, which caps the exclusion wrongly.",
        "line": "f2441.mfs_spouse_earned_if_married",
-       "irs_text": "i2441 p. 4, Lines 4 and 5: \"You must reduce your earned income by any loss from self-employment\"; p. 5, Line 18: earned income \"is determined in the same way as earned income for figuring the credit\"",
+       "irs_text": "i2441 p. 5, Line 18: 'You can elect to include your nontaxable combat pay in earned income when figuring your exclusion or deduction ... (line 19 for your spouse if filing jointly)'",
        "severity": "medium",
-       "fix": "Reword: 'Add your husband's or wife's wages and net self-employment earnings, subtracting any self-employment loss. Enter zero only if the total is zero or less.'"
+       "fix": "Ask separately whether the spouse received nontaxable combat pay (W-2 box 12 code Q), and resolve whether the election applies on a separate return. If it is unclear, stop and refuse rather than taking the amount as zero."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A married filer filing separately who lived apart from their spouse in the second half of 2025 and paid some of the home's costs. However, they did not meet the more-than-half-cost test or the main-home test, so line A was not checked.",
-       "why_no": "The help says the limit applies 'unless you lived apart from them for the last 6 months of 2025 and kept up a home for the person cared for'. This filer believes they did both, so they conclude the spouse's earnings don't limit them and enter 0 or their own income. The help leaves out the more-than-half tests, and it contradicts the gate, which already found them not considered unmarried.",
-       "line": "f2441.mfs_spouse_earned_if_married",
-       "irs_text": "i2441 p. 5, Line 19: \"Are you considered unmarried under that rule? ... No. Enter your spouse's earned income on line 19\"",
+       "pattern": "other",
+       "who": "A married filer on a separate return whose spouse was enrolled full time for one semester (five calendar months), or was disabled for part of the year. The filer reads the help text 'A Yes ends the interview here' and wants to finish the return.",
+       "why_no": "The help warns that a yes ends the interview, which pushes the filer toward no. A filer who is unsure whether a partial-year disability or one semester 'counts' picks no to continue. The refusal is then missed, and the spouse's earned income is taken without the $250/$500-per-month deemed amount.",
+       "line": "f2441.mfs_spouse_deemed_if_married",
+       "irs_text": "i2441 p. 4: 'For each month or part of a month your spouse was a student or was disabled, they are considered to have worked and earned income. Their earned income for each month is considered to be at least $250 ($500 ...)'",
        "severity": "medium",
-       "fix": "Remove the 'unless' clause, since the question is shown only after the tool has found the filer is not considered unmarried. Say instead: 'Because you did not meet all the tests to be treated as unmarried, the tax-free part of your benefits is limited by your husband's or wife's earnings.'"
+       "fix": "Remove 'A Yes ends the interview here' from the help. State the test neutrally: 'Count any month in which your spouse was disabled for any part of the month, or enrolled full time for some part of each of at least 5 months in 2025.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A married filer filing separately who was themselves a full-time student or disabled in 2025, and whose spouse also was a student or disabled in some of the same months.",
-       "why_no": "The gated question asks only about the 'husband or wife'. The cited rule applies to 'you or your spouse', and when both qualify in the same month only one of them may take deemed income. The filer's own status is not asked here, so the interaction may go unhandled if line 18 deemed income is figured elsewhere.",
+       "who": "A married filer on a separate return, not considered unmarried, who was a full-time student themselves for five months in 2025. Their spouse was neither a student nor disabled.",
+       "why_no": "The gated question asks only about 'your husband or wife'. The filer truthfully answers no, but the line 19 instruction points to the deemed-income rules if 'you or your spouse' was a student or disabled. It also has a both-spouses-same-month limit that can affect the figures.",
        "line": "f2441.mfs_spouse_deemed_if_married",
-       "irs_text": "i2441 p. 5, Line 19: \"If you or your spouse was a full-time student or disabled in 2025, see the instructions for lines 4 and 5\"; p. 4: \"If, in the same month, both you and your spouse were either students or disabled, only one of you can be treated as having earned income in that month\"",
+       "irs_text": "i2441 p. 5, Line 19: 'No. Enter your spouse's earned income on line 19. If you or your spouse was a full-time student or disabled in 2025, see the instructions for lines 4 and 5'",
        "severity": "low",
-       "fix": "Ask 'In 2025, were you, or your husband or wife, a full-time student or unable to care for yourselves...'. Then refuse, or apply the one-spouse-per-month rule, on a yes for either person."
+       "fix": "Confirm that the filer's own student or disabled status is asked elsewhere for line 18. If it is not, ask 'Were you or your husband or wife a full-time student or unable to care for themselves in 2025?'"
       }
      ],
-     "prompt_sha": "90a4fa7d824f715cf203f0b4d4a06b50c3a1b5b4795378ab9b0f97c9f0173749",
+     "prompt_sha": "e75008d530e5505e91716a474911294ab05e38370e9a34e5add1fccf4ae3857c",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.138068,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f2441.mfs_married.16a1a3bab233.1.response.txt"
+     "cost": 0.108764,
+     "date": "2026-11-22",
+     "response": ".transcription/false_no/gate_f2441.mfs_married.f1545de6134c.1.response.txt"
     }
    ],
    "condition": "f2441.mfs_married",
