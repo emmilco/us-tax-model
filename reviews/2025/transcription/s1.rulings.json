@@ -347,6 +347,16 @@
    "subject_key": "262cb38dde03fa970d80f5f3e429be1add9037ccce296d07ceadb4711f5b5e95"
   },
   {
+   "printed": "8a",
+   "project_expr_sha256": "777ad51f547261af4808652342687113fd4f00b73631ef7d4810e18649af6886",
+   "second_expr_sha256": "f64dd7fd0d55b5fa8da50c140c2c8609011bae1a5575cfd251e5b9c4afd8e32f",
+   "ruling": "Ruling: representation; i1040gi p. 91, Line 8a, \"Enter any deduction for an NOL from an earlier year\" (in parentheses, as a negative number). Zero less the gated NOL amount on both sides; the guards differ only in form for a Bool answer. Project stands.",
+   "context": "64b5d1f521c31c76918db3ca5706f7692d2b3eb13722d8b60493af3749afc590",
+   "date": "2026-11-22",
+   "run": "09c6fa28be6eff804d0a5053b8d349794ac2296f50bc210c17de0ef23933f592",
+   "subject_key": "24479bda8582298bbeb01bd03ba7c27b78046e462471c24b84c4ee62b292ea92"
+  },
+  {
    "printed": "8c",
    "project_expr_sha256": "62c7ec1a6b5ae1073e682c10e74e33263a1d247218db03240673ad0d0c4490b9",
    "second_expr_sha256": "de81a41ab483dfcaf1f9ecf456af13fd54c4debf2bd9c0727191fcdf871d4652",
@@ -485,6 +495,26 @@
     "witnesses": [],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "s1.nol_amount_if_nol",
+   "project_expr_sha256": "87b6788a3fc18f3cdd5f2e51b5f93b43c6f37f608c94167b05eb364eea8a1372",
+   "second_expr_sha256": "e1083166ed8e126bfc209a44d2dc04eab7172eff0b025cd72293d334e32f4fda",
+   "ruling": "Ruling: representation; i1040gi p. 91, Line 8a. The reply's guards (scope.nol true, scope.nol not true) are the project's two (true, false) for a Bool answer; the same input on the same branch. Re-reviewed only because the scope.nol wording changed. Project stands.",
+   "context": "64b5d1f521c31c76918db3ca5706f7692d2b3eb13722d8b60493af3749afc590",
+   "date": "2026-11-22",
+   "run": "09c6fa28be6eff804d0a5053b8d349794ac2296f50bc210c17de0ef23933f592",
+   "subject_key": "de1afd32037e6a0e997802c31e8597d1af2746267a853dc21d69706ea073032a"
+  },
+  {
+   "printed": "s1.nol_limit",
+   "project_expr_sha256": "230d26f90a8fde5f0df9ffc760c387d9baf4d93c42819c5e6922f7d860fabeed",
+   "second_expr_sha256": "6ccee3d46a400bcaed5b73c067899a2a744c5319255dc99611253844e3b2c0c2",
+   "ruling": "Ruling: model error; i172 p. 2, \"80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions\". The reply flags every NOL deduction; the project flags only where the limit may bind (N > 4T, amb.2025.s1_nol_limit_test, owner decision D3), and the flag refuses at Form 1040 line 15, so the reply refuses returns the limit cannot affect. The earlier ruling on this line ruled the same test representation where the reply kept it. Project stands.",
+   "context": "64b5d1f521c31c76918db3ca5706f7692d2b3eb13722d8b60493af3749afc590",
+   "date": "2026-11-22",
+   "run": "09c6fa28be6eff804d0a5053b8d349794ac2296f50bc210c17de0ef23933f592",
+   "subject_key": "428d9b00968d5467f67ddbb0c6eab960cc89f74744a9c80374e07c60413d9ae1"
   },
   {
    "printed": "s1.nol_limit",

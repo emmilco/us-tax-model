@@ -194,6 +194,60 @@
     }
    ]
   },
+  "ny_it201.ask.alimony_later": {
+   "subject_sha": "8d610226fa02844fd6166b88796522f40c73c221fd082bef82b98af452786e25",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer's divorce instrument was signed in 2018 or earlier, then modified after 2018 with a provision saying the Tax Law § 612(w) modifications apply. The filer answers the federal gate No because the modification adopts post-2018 treatment. But the help says 'an agreement made after 2018', so the filer answers No here even though the payments are applicable alimony.",
+       "source_text": "ny_it225i p. 10, A-119: \"This also applies to any divorce or separation instrument executed on or before December 31, 2018, and modified after December 31, 2018, if the modification to the instrument expressly provides that the addition and subtraction modifications contained in Tax Law § 612(w) apply.\"",
+       "why": "The question and help only cover instruments executed after 2018. They leave out a modified pre-2019 instrument that expressly elects § 612(w), which the text also treats as applicable alimony, so the line gets a No where it needs a Yes.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The gate leads here when the filer had no alimony at all in 2023 through 2025, or when none of it was under a pre-2019 agreement. The question then asks about 'any of that alimony', and nothing in the question itself says what 'that alimony' refers to.",
+       "source_text": "Question: \"Did you (or, on a joint return, your spouse) pay or receive any of that alimony in 2025?\"; ny_it225i p. 10, A-119: \"An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument ... that was executed after December 31, 2018.\"",
+       "why": "Read alone, 'that alimony' could mean any alimony the filer reported earlier, including amounts from other years. It could also mean only applicable alimony paid or received in 2025. Only the help points to the post-2018 instrument definition, so a filer could give a different answer depending on which reading they take.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "3bd0752f7994efe994705d4c2e56d46fd577470cff0ea96f564250f20a1eaed3",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.074952,
+     "date": "2026-11-23",
+     "response": ".transcription/ny/questions/ny_it201.ask.alimony_later.8d610226fa02.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it225i",
+     "revision": "2025",
+     "text_sha256": "a536603d330d3ed7cb005555b0c1bd4e1ae48673f40827b8f3426c73abbb9d46",
+     "pages": [
+      10,
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, A-119, \"An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018.\"; p. 18, S-136, \"If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid.\"",
+      "p. 10, A-119, \"a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018\""
+     ],
+     "cols_pages": [
+      10,
+      18
+     ],
+     "cols_sha256": "6cac12fb00550d49e37f4cad6e4dbbd91d39ed9d6d1c372116571ca85101af8f"
+    }
+   ]
+  },
   "ny_it201.ask.city_credits": {
    "subject_sha": "6e2e81d231fca93413fcd1fbd9f38edf748eb0d93a8fb048626304a6ba3955b0",
    "samples": [
@@ -699,6 +753,49 @@
     }
    ]
   },
+  "ny_it201.ask.nyc_flex": {
+   "subject_sha": "029aa9ab25e345f771bbd735ffa4ebc1b3adf6c1858141f8d2cd845ccf68ce01",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose W-2 comes from a public employer in a city other than New York City, such as the City of Buffalo or Yonkers schools, shows a section 125 cafeteria-plan deferral, and the filer answers Yes because the question says \"another city public employer\".",
+       "source_text": "ny_it225i p. 7, A-101: \"a flexible benefits program established by New York City or certain other New York City public employers\"; question: \"from New York City or another city public employer\"",
+       "why": "A-101 covers only flexible benefits programs set up by New York City or other New York City public employers, such as CUNY, NYC Transit or the Housing Authority. \"Another city public employer\" reads naturally as an employer in any city, so a Yes from an upstate city employee would trigger an addition the tax text does not require.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "b10ebeb70d06295ff96476f5b1b9b8843e74e83f7d9839cc9ea5fd5c986b2a03",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.048304,
+     "date": "2026-11-23",
+     "response": ".transcription/ny/questions/ny_it201.ask.nyc_flex.029aa9ab25e3.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it225i",
+     "revision": "2025",
+     "text_sha256": "a536603d330d3ed7cb005555b0c1bd4e1ae48673f40827b8f3426c73abbb9d46",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, A-101, \"If any federal Form W-2 wage and tax statement shows that an amount was deducted or deferred from your salary under a flexible benefits program established by New York City or certain other New York City public employers on your or a decedent’s behalf, then enter that amount.\"",
+      "p. 7, A-101, \"established by New York City or certain other New York City public employers\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "6cac12fb00550d49e37f4cad6e4dbbd91d39ed9d6d1c372116571ca85101af8f"
+    }
+   ]
+  },
   "ny_it201.ask.other_credits": {
    "subject_sha": "17bc13afa68d2d2330907bfb72a22226c199259ddea6304711a91e3b670037f5",
    "samples": [
@@ -855,6 +952,58 @@
       7
      ],
      "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "ny_it201.ask.prior_168k": {
+   "subject_sha": "845e5e106f2821b082e70ec61d551cad79a0e8a71f1819dbf564d0d6a32e3540",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose only bonus-depreciated property is resurgence zone property or New York Liberty Zone property under IRC § 1400L(b)(2) truthfully answers Yes, and the New York part ends, even though New York follows the federal depreciation for that property.",
+       "source_text": "ny_it225i p. 20, S-213: \"With the exception of resurgence zone property and New York liberty zone property described in IRC § 1400L(b)(2), New York State does not follow the federal depreciation rules for IRC § 168(k) property\"",
+       "why": "The question and its help cover all bonus depreciation and do not mention the two excepted kinds of property, so they bring in a Yes the line must not have.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who took bonus depreciation only on property placed in service from January through May 2003, and who still had it in 2025, answers Yes to \"Since 2003\".",
+       "source_text": "ny_it225i p. 20, S-213: \"IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003\"; question: \"Since 2003, have you ... taken bonus depreciation\"",
+       "why": "New York decouples only for property placed in service on or after June 1, 2003. Property placed in service earlier in 2003 is outside the rule but falls inside the wording.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "1c52116a4b8ab768cb45015767e9241349d225891b1c61ad4e6fae321e30095b",
+     "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
+     "model": "claude-opus-5-5",
+     "cost": 0.0462,
+     "date": "2026-11-23",
+     "response": ".transcription/ny/questions/ny_it201.ask.prior_168k.845e5e106f28.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "ny_it225i",
+     "revision": "2025",
+     "text_sha256": "a536603d330d3ed7cb005555b0c1bd4e1ae48673f40827b8f3426c73abbb9d46",
+     "pages": [
+      20
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 20, S-213, \"New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003.\"",
+      "p. 20, S-213, \"complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter\""
+     ],
+     "cols_pages": [
+      20
+     ],
+     "cols_sha256": "6cac12fb00550d49e37f4cad6e4dbbd91d39ed9d6d1c372116571ca85101af8f"
     }
    ]
   },

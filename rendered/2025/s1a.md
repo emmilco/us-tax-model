@@ -95,6 +95,20 @@
 - Expr: `{"gt":["s1a.tip_employers",{"param":"ss.one"}],"op":"test"}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 4a, "If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `s1a.tips_over_count`
+
+- **Authored helper label:** Number of people with a valid SSN whose qualified tips entered are more than their Medicare wages and tips (W-2 box 5)
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true and helper "The qualified tips reported on this person's Forms W-2 or 4070 (worksheet column (b)) are more than the person's Medicare wages and tips (W-2 box 5), of which they are a part" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.work_ssn",{"const":true}],"op":"test"},{"eq":["person.tips_over_wages",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [f1040s1a] p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5" (2025; created 2025-11-04; sha256 64f97b38)
+
+## (gate) — `s1a.tips_over_wages`
+
+- **Authored helper label:** For someone on the return, the qualified tips entered are more than the Medicare wages and tips (W-2 box 5) that include them (not tested on a return with Form 4137 tips, which is refused at s1a.f4137)
+- **Encoded (Bool):** helper "Someone on the return has tips on Form 4137" = false and helper "Number of people with a valid SSN whose qualified tips entered are more than their Medicare wages and tips (W-2 box 5)" > 0 (a count)
+- Expr: `{"all":[{"eq":["s1a.f4137",{"const":false}],"op":"test"},{"gt":["s1a.tips_over_count",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
+- Cite: [f1040s1a] p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5" (2025; created 2025-11-04; sha256 64f97b38)
+
 ## (helper) — `s1a.tip_ssn_count`
 
 - **Authored helper label:** Number of people with a valid SSN who received qualified tips
@@ -170,6 +184,7 @@
 
 - **Authored helper label:** Figured: If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c
 - **Encoded (NonNegDollars):** Choose — [helper "Tips from more than one employer" = true → helper "Worksheet line 2. Add lines 1A through 1E, column (d)"] [helper "Tips from more than one employer" = false → helper "Line 4c with one employer: the larger of line 4a or line 4b"]
+- **Refusal:** when s1a.tips_over_wages is true, cannot complete Schedule 1-A, Part II (qualified tips larger than the Medicare wages and tips that include them). The tips entered for a person are more than that person's Form W-2 box 5 Medicare wages and tips, which include them. Correct the tip amounts or the Forms W-2. Cite: [f1040s1a] p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5" (2025; created 2025-11-04; sha256 64f97b38)
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.tip_multi",{"const":true}],"op":"test"},"then":"s1a.tip_total"},{"guard":{"eq":["s1a.tip_multi",{"const":false}],"op":"test"},"then":"s1a.line4c_one"}],"op":"choose"}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 4c, and the Qualified Tips From More Than One Employer Worksheet (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -365,6 +380,20 @@
 - Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) receive overtime pay as an employee in 2025 that you want to deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the \"half\" of time-and-a-half)? (Overtime reported on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if", "You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `s1a.ot_over_count`
+
+- **Authored helper label:** Number of people with a valid SSN whose qualified overtime amounts entered are more than their Medicare wages and tips (W-2 box 5)
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true and helper "The qualified overtime compensation entered for this person is more than the person's Medicare wages and tips (W-2 box 5), of which it is a part" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.work_ssn",{"const":true}],"op":"test"},{"eq":["person.ot_over_wages",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [f1040s1a] p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5" (2025; created 2025-11-04; sha256 64f97b38)
+
+## (gate) — `s1a.ot_over_wages`
+
+- **Authored helper label:** For someone on the return, the qualified overtime amounts entered are more than the Medicare wages and tips (W-2 box 5) that include them
+- **Encoded (Bool):** helper "Number of people with a valid SSN whose qualified overtime amounts entered are more than their Medicare wages and tips (W-2 box 5)" > 0 (a count)
+- Expr: `{"gt":["s1a.ot_over_count",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [f1040s1a] p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5" (2025; created 2025-11-04; sha256 64f97b38)
+
 ## (helper) — `s1a.ot_ssn_count`
 
 - **Authored helper label:** Number of people with a valid SSN who received qualified overtime compensation
@@ -390,6 +419,7 @@
 
 - **Authored helper label:** Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions
 - **Encoded (NonNegDollars):** Add person.ot_total over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Refusal:** when s1a.ot_over_wages is true, cannot complete Schedule 1-A, Part III (qualified overtime compensation larger than the Medicare wages and tips that include it). The overtime compensation entered for a person is more than that person's Form W-2 box 5 Medicare wages and tips, which include it. Correct the overtime amounts or the Forms W-2. Cite: [f1040s1a] p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5" (2025; created 2025-11-04; sha256 64f97b38)
 - Expr: `{"collection":"person","field":"person.ot_total","op":"sum_over","where":{"eq":["person.work_ssn",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 

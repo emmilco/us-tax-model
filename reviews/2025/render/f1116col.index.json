@@ -2,61 +2,61 @@
  "kind": "render",
  "form": "f1116col",
  "family": "claude",
- "base": "7938718accc7f22011774bcd6cc8446264a8928b0a33a6471a873e6ad32f0d67",
+ "base": "5211091730b1a58ef64c2f601c33bdca9532fc978a5ac84f9a3c155ee0aab6c8",
  "lines": [
   {
    "key": "1a",
-   "record": "7938718accc7f22011774bcd6cc8446264a8928b0a33a6471a873e6ad32f0d67",
+   "record": "5211091730b1a58ef64c2f601c33bdca9532fc978a5ac84f9a3c155ee0aab6c8",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; a return that must adjust foreign qualified dividends is refused on Form 1116 line 35 by f1116.adjust ('Form 1116, Worksheet for Line 18'), so line 1a is unadjusted exactly where the adjustment exception applies (i1116, Foreign Qualified Dividends and Capital Gains (Losses): adjustment exception). The render review sees the column line without the refusal on f1116.line35.",
+   "ruling": "Ruling: scope; as the ruling of 2026-11-15: a return that must adjust foreign qualified dividends or capital gain distributions is refused on Form 1116 line 35 by f1116.adjust ('Form 1116, Worksheet for Line 18'), so line 1a is unadjusted exactly where the adjustment exception applies (i1116, Foreign Qualified Dividends and Capital Gains (Losses)). The render review sees the column line without that refusal. Re-reviewed whole (owner-delegated precedent) only because siblings --check required a log of this sibling form of BUG-1181, whose change is interview wording. Project stands.",
    "subject_key": "c282f3b354b6100e1c608942f9962285e263511965d72d8a2c5abfb6c5e0961b"
   },
   {
    "key": "3d",
-   "record": "7938718accc7f22011774bcd6cc8446264a8928b0a33a6471a873e6ad32f0d67",
+   "record": "5211091730b1a58ef64c2f601c33bdca9532fc978a5ac84f9a3c155ee0aab6c8",
    "status": "MATCH",
    "subject_key": "2f4f7159f18737ffc1d6a27abfb03b77898b27d35c6b11347f1091e543ecd7ab"
   },
   {
    "key": "3g",
-   "record": "7938718accc7f22011774bcd6cc8446264a8928b0a33a6471a873e6ad32f0d67",
+   "record": "5211091730b1a58ef64c2f601c33bdca9532fc978a5ac84f9a3c155ee0aab6c8",
    "status": "MATCH",
    "subject_key": "a4177e7eee5b6b26f0e4a7280d717ee39a6438ccbf3713d75ff709b00a2e5445"
   },
   {
    "key": "4a",
-   "record": "7938718accc7f22011774bcd6cc8446264a8928b0a33a6471a873e6ad32f0d67",
+   "record": "5211091730b1a58ef64c2f601c33bdca9532fc978a5ac84f9a3c155ee0aab6c8",
    "status": "MATCH",
    "subject_key": "dd98d23ebfa78920ef8f7ada12771b19c1c29324e1ffeebce96d50135a514cb7"
   },
   {
    "key": "6",
-   "record": "7938718accc7f22011774bcd6cc8446264a8928b0a33a6471a873e6ad32f0d67",
+   "record": "5211091730b1a58ef64c2f601c33bdca9532fc978a5ac84f9a3c155ee0aab6c8",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; lines 2, 4b and 5 are zero on every return prepared: line 2 holds no interest ('Don't include any interest expense on line 2', i1116 p. 17) and its state and local income tax is refused (f1116.itemized_unread, 'Form 1116, line 2 (state and local income tax)'); line 4b is zero when gross foreign source income is $5,000 or less ('you can allocate all of your interest expense to U.S. source income', i1116 p. 18, Line 4a) and other interest above that is refused (f1116.asset_method, 'Form 1116, line 4b (asset method)'); line 5 losses cannot arise in a dividend/interest column, foreign gains and loss accounts being refused (f1116.foreign_gain, f1116.loss_accounts). The label says so.",
+   "ruling": "Ruling: scope; as the ruling of 2026-11-15: lines 2, 4b and 5 are zero on every return prepared. Line 2 holds no interest (i1116 p. 17) and its state and local income tax is refused (f1116.itemized_unread); line 4b is zero when gross foreign source income is $5,000 or less (i1116 p. 18, Line 4a) and other interest above that is refused (f1116.asset_method); line 5 losses cannot arise in a dividend or interest column. Re-reviewed whole only for siblings --check (BUG-1181). Project stands.",
    "subject_key": "5457e4dd941fb817bf79ac6ed93f1b061dd5bc1472a2c2b484c777291aab7967"
   },
   {
    "key": "7",
-   "record": "7938718accc7f22011774bcd6cc8446264a8928b0a33a6471a873e6ad32f0d67",
+   "record": "5211091730b1a58ef64c2f601c33bdca9532fc978a5ac84f9a3c155ee0aab6c8",
    "status": "MATCH",
    "subject_key": "ec6fe00a4c430278da04e251f2958b6737429dfd55d3ef2396f804cab4c0ff7e"
   },
   {
    "key": "(q)",
-   "record": "7938718accc7f22011774bcd6cc8446264a8928b0a33a6471a873e6ad32f0d67",
+   "record": "5211091730b1a58ef64c2f601c33bdca9532fc978a5ac84f9a3c155ee0aab6c8",
    "status": "MATCH",
    "subject_key": "93d76d152e199d72468ef85e087dd1880de3e1b8de650a7169471d82d78d78eb"
   },
   {
    "key": "(s)",
-   "record": "7938718accc7f22011774bcd6cc8446264a8928b0a33a6471a873e6ad32f0d67",
+   "record": "5211091730b1a58ef64c2f601c33bdca9532fc978a5ac84f9a3c155ee0aab6c8",
    "status": "MATCH",
    "subject_key": "abe52ea752b28165d44870986e0ff822050f0e60d1e51f01513fdcbc22ee60d7"
   },
   {
    "key": "(u)",
-   "record": "7938718accc7f22011774bcd6cc8446264a8928b0a33a6471a873e6ad32f0d67",
+   "record": "5211091730b1a58ef64c2f601c33bdca9532fc978a5ac84f9a3c155ee0aab6c8",
    "status": "MATCH",
    "subject_key": "15aabb784ebfbd49419da4a81c520b1c4b79330a2a3118c5d78e418e40f317b9"
   }

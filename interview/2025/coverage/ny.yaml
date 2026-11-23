@@ -5,6 +5,45 @@ tax_year: 2025
 part: The New York part (Form IT-201, full-year New York City resident)
 profile: ny
 sets:
+  one_business:
+    says: One person with one business that took in $90,000, with no vehicle, no equipment listed, no home office, no health insurance and no retirement plan (as in business.yaml).
+    answers:
+      $sc@person[taxpayer]: [shop]
+      $asset@person[taxpayer].sc[shop]: []
+      $scveh@person[taxpayer].sc[shop]: []
+      person[taxpayer].sc[shop].line1: 9000000
+      person[taxpayer].sc[shop].line2: 0
+      person[taxpayer].sc[shop].line6: 0
+      person[taxpayer].sc[shop].tips_ot: false
+      person[taxpayer].sc[shop].spouse_owned: false
+      person[taxpayer].sc[shop].statutory: false
+      person[taxpayer].sc[shop].passive: true
+      person[taxpayer].sc[shop].method_other: false
+      person[taxpayer].sc[shop].special: false
+      person[taxpayer].sc[shop].business_credit: false
+      person[taxpayer].sc[shop].fuel_credit: false
+      person[taxpayer].sc[shop].line8: 0
+      person[taxpayer].sc[shop].line11: 0
+      person[taxpayer].sc[shop].line10: 0
+      person[taxpayer].sc[shop].line18: 0
+      person[taxpayer].sc[shop].line22: 0
+      person[taxpayer].sc[shop].line20b: 0
+      person[taxpayer].sc[shop].rent_equipment: 0
+      person[taxpayer].sc[shop].line25: 0
+      person[taxpayer].sc[shop].line15: 0
+      person[taxpayer].sc[shop].line17: 0
+      person[taxpayer].sc[shop].line23: 0
+      person[taxpayer].sc[shop].line21: 0
+      person[taxpayer].sc[shop].line16a: 0
+      person[taxpayer].sc[shop].line16b: 0
+      person[taxpayer].sc[shop].travel_meals: false
+      person[taxpayer].sc[shop].employees: false
+      person[taxpayer].sc[shop].line48: 0
+      person[taxpayer].sc[shop].goods: false
+      person[taxpayer].sc[shop].ho_uses: false
+      person[taxpayer].sc[shop].hi_uses: false
+      person[taxpayer].plan: none
+      person[taxpayer].se_screen: false
   one_w2:
     says: One person with one job (a Form W-2 of $52,000), New York State and City tax taken out of it.
     answers:
@@ -182,8 +221,19 @@ rows:
     answers:
       ny_it201.ask.public_job: true
       ny_it201.ask.414h: false
+      ny_it201.ask.nyc_flex: false
     expect:
       asks: ny_it201.ask.it225
+  - id: ny.nyc_flex
+    design: lane fx-ny, ny_it201.ask.nyc_flex beneath ny_it201.ask.public_job, after ny_it201.ask.414h
+    situation: A city hospital clerk without a 414(h) contribution whose W-2 shows money set aside for the city's flexible benefits plan.
+    uses: [one_w2]
+    answers:
+      ny_it201.ask.public_job: true
+      ny_it201.ask.414h: false
+      ny_it201.ask.nyc_flex: true
+    expect:
+      refused: ny_it201.gate.nyc_flex
   - id: ny.treasury_interest
     design: lane ny, ny_it201.ask.us_obligation_interest on the tick-box screen ny_interest
     situation: A filer with Treasury bill interest.
@@ -284,6 +334,58 @@ rows:
     expect:
       asks: ny_it201.ask.city_resident
       not_asked: [ny_it201.ask.529_owner, ny_it201.ask.529_nonqualified]
+  - id: ny.alimony_later
+    design: lane fx-ny, ny_it201.ask.alimony_later beneath the federal alimony questions, asked only after a No to an agreement of 2018 or earlier
+    situation: A person who received alimony in 2025 under a divorce agreement made in 2020.
+    uses: [one_w2]
+    answers:
+      s1.alimony_any: true
+      s1.alimony: false
+      ny_it201.ask.alimony_later: true
+    expect:
+      refused: ny_it201.gate.alimony_later
+  - id: ny.alimony_later_not_in_2025
+    design: lane fx-ny, a post-2018 agreement whose payments ended before 2025 goes on
+    situation: A person who paid alimony under a 2019 agreement only in 2023.
+    uses: [one_w2]
+    answers:
+      s1.alimony_any: true
+      s1.alimony: false
+      ny_it201.ask.alimony_later: false
+      ny_it201.ask.public_job: false
+    expect:
+      asks: ny_it201.ask.it225
+  - id: ny.alimony_old_agreement
+    design: lane fx-ny, alimony under an agreement of 2018 or earlier is federal income and the New York question is not asked
+    situation: A person who received $12,000 of alimony in 2025 under a 2015 divorce agreement.
+    uses: [one_w2]
+    answers:
+      s1.alimony_any: true
+      s1.alimony: true
+      s1.alimony_received: 1200000
+      s1.alimony_paid: 0
+      s1.alimony_unsupported: false
+      ny_it201.ask.public_job: false
+    expect:
+      asks: ny_it201.ask.it225
+      not_asked: [ny_it201.ask.alimony_later]
+  - id: ny.prior_168k
+    design: lane fx-ny, ny_it201.ask.prior_168k asked only with a Schedule C or rental or royalty property
+    situation: A self-employed person who took bonus depreciation on equipment in 2021, deducting it in full, and still has it.
+    uses: [one_business]
+    answers:
+      scope.se_plan_other: false
+      scope.income_averaging: false
+      s2.lookback: false
+      s2.amt_business: false
+      qbi.suspended: false
+      qbi.unreported_loss: false
+      qbi.coop_patron: false
+      ny_it201.ask.us_obligation_interest: false
+      ny_it201.ask.bab: false
+      ny_it201.ask.prior_168k: true
+    expect:
+      refused: ny_it201.gate.prior_168k
   - id: ny.it225
     design: lane ny, ny_it201.ask.it225 (kept as one question)
     situation: A filer with a New York modification on Form IT-225.

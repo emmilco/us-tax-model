@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
  "head_rows": {
-  "match / mismatch / unclear / missing": "158 / 10 / 0 / 0",
-  "line-scoped reviews": "10 (latest 2026-11-23); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "156 / 11 / 1 / 0",
+  "line-scoped reviews": "12 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,9 +22,9 @@
   },
   {
    "key": "1",
-   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
+   "record": "944bf5198f257050f05f974676384b9f06312e7b1ea07de1b5b048b01b975298",
    "status": "MATCH",
-   "subject_key": "8de967dc069a50ccd0519dde233739217a926da50d0eae902b95f3fb7ffbb520"
+   "subject_key": "c5085c88c0a6e2dad5d7f5904bbd9b4e8115c5300316b9814430111e8f2be733"
   },
   {
    "key": "2",
@@ -83,17 +83,16 @@
   },
   {
    "key": "11",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
-   "status": "MISMATCH",
-   "ruling": "Ruling: model error; the line is zero because the federal return it copies cannot hold Schedule E income: this tool refuses it on the federal return (scope.schedule1, \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; the federal encoding has no Schedule 1 line 5 (\"Rental real estate, royalties, partnerships, S corporations, trusts, etc. Attach Schedule E\"); f1040s1 p. 1), and the New York return is computed only from a computed federal return. The rendering's note says so. Not a defect.",
-   "subject_key": "36ffbd9f78cea9c59c538e596c3d9c6ae3e13c4edcf3f95ebfa51ed060b154cb"
+   "record": "944bf5198f257050f05f974676384b9f06312e7b1ea07de1b5b048b01b975298",
+   "status": "MATCH",
+   "subject_key": "5468af39d3ee34f8646b6f8e434bc40015969ef26da0e92720969c8f8c74ea84"
   },
   {
    "key": "12",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
    "status": "MISMATCH",
-   "ruling": "Ruling: model error; line 12 is the rental real estate included in line 11, and line 11 is always zero because the federal return refuses Schedule E (scope.schedule1; no federal Schedule 1 line 5), so line 12 is zero too. Not a defect.",
-   "subject_key": "7fccdc8af99340cf01f1e99439a6454d27a9548ca98b6fb236c846168e51ad79"
+   "ruling": "Ruling: scope; Schedule E line 41 carries Parts II to V only for partnerships, S corporations, estates and trusts, REMICs and farm rentals, and the federal return refuses each (scope.k1, scope.remic, scope.farm, which feed scope.schedule1, a refusal gate of f1040.line9 and line 10; sche.line41 note: 'Parts II to IV and line 40 are refused'). Where line 12 is reached, line 41 is Part I only, so line 41 less its royalties is the rental real estate amount.",
+   "subject_key": "175c0d642c24aac49be1b6d0a23926ad631d4e9274981f94d264c3fc5d69cb06"
   },
   {
    "key": "13",
@@ -122,9 +121,9 @@
   },
   {
    "key": "17",
-   "record": "06f728b5357c24dcf2275f43fc1c3106765199e1c3c5f695482223849003da2c",
+   "record": "944bf5198f257050f05f974676384b9f06312e7b1ea07de1b5b048b01b975298",
    "status": "MATCH",
-   "subject_key": "be4ba0a8b565ae894cf54429ae5c52fef26408e342a764dd63413c49a84b2206"
+   "subject_key": "f238a86daf31dfd309df9cfeb57b0ea1faffb6fbbf4a488e5d5f06cde2e40340"
   },
   {
    "key": "18",
@@ -134,15 +133,15 @@
   },
   {
    "key": "19",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
    "status": "MATCH",
-   "subject_key": "a822510abe1b5d80844a82cf73ab07843c400004f646a1e153e52baf70a6d2be"
+   "subject_key": "785e5f60cd8a0c9306c506d1a0f628e1d50797341cce2b81e08a76d45361e28c"
   },
   {
    "key": "(check)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
    "status": "MATCH",
-   "subject_key": "925a8e4d8bc0ae89a1eb419730f9be702e9d38e458f12d4e1c671b47f5fb211b"
+   "subject_key": "fb5cd9092a5bb351a513792e9bada3ac33d186649c8797afc16dac7d175feeb6"
   },
   {
    "key": "20",
@@ -164,15 +163,15 @@
   },
   {
    "key": "23",
-   "record": "f1f5223c0e7d85cfdd2fce9fb9107b64c3110901ff5c959979706b79033ed3a0",
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
    "status": "MATCH",
-   "subject_key": "593ed7dc8be7e3c4ceecaf73faaead2952c87dd78bee40c5c24b06a6c297d10e"
+   "subject_key": "26e3200234d3e3b35821c86c45d38e8ffac7616bea3d54a3bafa8ccb93851d1a"
   },
   {
    "key": "24",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
    "status": "MATCH",
-   "subject_key": "87adc63e4f38be30301d26b2a2ecab88265057a75411980b1551a7ee91d44aa4"
+   "subject_key": "407b970e2585ae38195fb0cb62a364fb2247f8745b6e7a1caa691f059d46e80a"
   },
   {
    "key": "25",
@@ -194,9 +193,9 @@
   },
   {
    "key": "28",
-   "record": "f1f5223c0e7d85cfdd2fce9fb9107b64c3110901ff5c959979706b79033ed3a0",
+   "record": "944bf5198f257050f05f974676384b9f06312e7b1ea07de1b5b048b01b975298",
    "status": "MATCH",
-   "subject_key": "57bde6e40279a3149252c756c019f71d6e651af139500692e1f2fcafd923be31"
+   "subject_key": "b6c70d8b7c33b785b9c3ffbf28802ff1fdcd39b26ba2034293f9fade40ca1237"
   },
   {
    "key": "29",
@@ -213,15 +212,15 @@
   },
   {
    "key": "31",
-   "record": "f1f5223c0e7d85cfdd2fce9fb9107b64c3110901ff5c959979706b79033ed3a0",
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
    "status": "MATCH",
-   "subject_key": "edd8ef389758fd634bad97f564fbf26e7e63374df1960f459e57dae10cb27025"
+   "subject_key": "b74881b2ec5ede50128fa86309e519b704eeab8140b8624916137eef949c0b86"
   },
   {
    "key": "32",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
    "status": "MATCH",
-   "subject_key": "cc921a63386c7d92e5a583380c318201d33f86214b2521255a7658749d48d9ff"
+   "subject_key": "fe58d7764c8f995ee5e71ef7c0e693cd809a8d65e9dacb06cc9595de2e4c18d8"
   },
   {
    "key": "33",
@@ -411,9 +410,10 @@
   },
   {
    "key": "(Note 1)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
-   "status": "MATCH",
-   "subject_key": "ef13802f20b0c2aa22028763065a97bc196a4e7d405df5e13c2d7419afacc7dd"
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; special condition code A6 (Build America Bond interest) is refused: ny_it201.ask.bab (asked with interest) feeds ny_it201.ask.special_code, the item G refusal, so the household credit is never computed on a return that would subtract Build America Bond interest. Subtracting $0 is the line 19 amount on every return reached.",
+   "subject_key": "93fdd86d9baad07539e9c716c32abd5c4c355c437db1a6b31939daedca6e1e35"
   },
   {
    "key": "(column)",
@@ -543,10 +543,9 @@
   },
   {
    "key": "40",
-   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
-   "status": "MISMATCH",
-   "ruling": "Ruling: finding; the same defect as BUG-0762 (low), already recorded on this line and line 48: IT-201-I web edition, New York State household credit table 3 (filing status 3), 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'This amount could be 0 or a negative amount.' ny_it201.gate.hh_state_mfs tests only this return's line 19 against $32,000, so a spouse's negative AGI can leave a credit the tool enters as $0 without refusing. The reply is right; no new bug (BUG-0762).",
-   "subject_key": "23517b4d37238c9dc562091fb6d6bc71a759d67fbc47ad037e9c4b0d560ddaee"
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
+   "status": "MATCH",
+   "subject_key": "de422e171942c1418774c84244b0574538ac09bceba3773bb3e96637d557f066"
   },
   {
    "key": "41",
@@ -610,10 +609,10 @@
   },
   {
    "key": "48",
-   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
    "status": "MISMATCH",
-   "ruling": "Ruling: finding; the same defect as BUG-0762 (low), already recorded on this line and line 40: IT-201-I web edition, New York City household credit table 6 (filing status 3), 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'This amount could be 0 or a negative amount.' ny_it201.gate.hh_city_mfs tests only this return's line 19 against $22,500, so a spouse's loss can leave a credit the tool enters as $0 without refusing. The reply is right; no new bug (BUG-0762).",
-   "subject_key": "5cabc4c635056cb22596d217605eef8e57007df44c578f1c4de637e073aa326b"
+   "ruling": "Ruling: scope; a joint return on which only one spouse was a New York City resident all year is refused at line 1 by ny_it201.gate.spouse_nonresident (ny_it201.ask.spouse_resident), and every other non-resident case by gate.part_year_city and gate.part_year_state, so line 48 is reached only for full-year City residents (IT-201-I, Line 48, 'NYC residents only').",
+   "subject_key": "653eb074b342e5044ab29d0870442f6834877fbf19c47b7319ae6ce7c15274ce"
   },
   {
    "key": "49",
@@ -836,9 +835,9 @@
   },
   {
    "key": "(69) (ny_it201.stc_income)",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
    "status": "MATCH",
-   "subject_key": "122085aad86ca45e6da5965db564eddc23437fd4e6930f7c353aa5435a1ce48c"
+   "subject_key": "4235e45f11116a5488884e5c8ff5859b4fd8d3e10b3cd603a4f88fcf2711f4d8"
   },
   {
    "key": "(69) (ny_it201.stc_fixed_amount)",
@@ -902,9 +901,9 @@
   },
   {
    "key": "70a",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
    "status": "MATCH",
-   "subject_key": "604d4cfc6402acf3e68601b1e0c04fd4676970e4a92d0474ce963ae85dd66ff6"
+   "subject_key": "f97638598271845f298ed1d78f59de4983dc4d29053bcf9182d691b9fe63c158"
   },
   {
    "key": "71",
@@ -1030,7 +1029,7 @@
  "subjects": {
   "C": "5a5c945c24f437b06b84e0310ff52e9bcf017d0a9aa92b57a82b4273643e745e",
   "H (count)": "0c8c87a494445eedac6b11398976eaa3cc695158ad2d7d62ac07fde93f319b62",
-  "1": "a4be5973eb4e356946d76731e4729c1ceb6435cd39d3ed719076e382e9c88b0a",
+  "1": "e36f02efaf5cfbbaf153a28dc20085ca562fd2aedd23498271e7ad482d0f86cd",
   "2": "41a22296c262da3dae545c48ee34e0f1f178cb656d50b89b46b262cac4e8812b",
   "3": "ec9f1eece2ab7d441953cd351e87aea12bb92fc22ece65ed1f45d255fdff67fe",
   "4": "e1d3337da945c87972767038058bedf0ab6eef7a7fc10340c3622f29f03e99ff",
@@ -1040,29 +1039,29 @@
   "8": "6f160cf0e4c77dd6a181f583dafdb27927047a023c3bfc494088abace52fb537",
   "9": "d97d6666d0cdb46cec05d3972a3e516f4fa1ebb03582f1d5bb4130fb7212d223",
   "10": "4b80cf7fc52861a084bcdb382925656131fa1c39857710b601d457aab7552a9f",
-  "11": "727ca2184449f1657e5b53a38aa4398bc08085b62d016cb37247916ddd9ccb08",
-  "12": "0395ac8976a63d93a5362b42d969940f459e1dd2d3110f9d107b670d9d4a0c26",
+  "11": "06309a502fd04a8a6afc2c06ad495a2a9012ada8f3a9c51bfc4f9a40fc69d9a6",
+  "12": "7f9856d09661d8e94afa5af79660340aa1146697131443dc2954ca8aef5b74bd",
   "13": "4ec1d54b039900ad9ea6933aa4d08f174c02f00535843d7760c0f68736fb9c7b",
   "14": "f2e176edc8c5592ca3ca6e1917bb32bb9bb18c62297265e75d27fda732d7f271",
   "15": "6968d1daf494ca8e847660489861948862d0563ece3c7bd8f78c0ec38e50357d",
   "16": "4879f5d4641ca8a93f394cec8939fc80fa2e91beb132f6cd83c33c4317e0fcac",
-  "17": "99fd6ccbf6bb1c256f6cabede61bb4138fbc4c0f61a6e1384892a921c83c2717",
+  "17": "b64c6835cc91ec0878e6f4b55f9c7e60063904dc53df4e071422ecaf719176e0",
   "18": "68c2887413c1d5fabba2464c31aca95b30c51525af6b38f3ee0dfd0316c83a24",
-  "19": "b0aa3430c68b45677572a3564afe889901b01ac11bd0d8d7857c92c693075be7",
-  "(check)": "e7b435db21cbeac2bafd631ffe088b75c31a59e2a427e92c2a1bebb82a0f9b6f",
+  "19": "4b211863b6b26987c76bccb8572b099220f62051b162eb66f25694f92586b578",
+  "(check)": "bdcc138f05b5f6b980d2cffdddaf1363ace1ab745c3c12d1ad59ab394b49d028",
   "20": "dc06870eaafc93226819af71fc84c6dd78ca58a05ddf5ec8db7818baf68a6574",
   "21": "f01a36bdb31465e9a137d0f9623fdb1e39ebf9a9ffe3683a77dd6990e57e1a71",
   "22": "ea9d668f7c04d9f4b31c034178eb7993ef0b42d94e1ca479060acda45da16549",
-  "23": "b3c38c1fd770b2eec0b797c1a06e2b68e129d6f22b6d6318df12d2be08bf2481",
-  "24": "8c9a6ce3ad8284582054a2a18d11a3530b7d42fd1eceb4ffc225cf6f95bb5315",
+  "23": "820353d08c6d4f56fc604f56a9a5cb746b5d8ac60be678c3c10e6f5606d9aad1",
+  "24": "f7a0263f2a30f359e60c1bfc9e59a19812c52e9ee918d8de85e0a448949be548",
   "25": "99cd040d7a0677c6e4d12e3736600093ed000b1ccefd70f6bb3ad25319c6c76c",
   "26": "2b49ddb28b5f71d87b436e32ea2bf4aea9e1d88f2118258ae923dd4baf4951e2",
   "27": "ef46a52e6b14e33021b324fe149004c417bc54ee7800843188ba1fc4fba78e36",
-  "28": "e976f69bc014eb3a6c6815a625b667d9cfb7fa6abde46e1a53129f34baf16433",
+  "28": "cd1497e374ccd23df6b6751daacfeef278ea9507593abce5e9d8fd26b835f3bc",
   "29": "a71c1d7c0df37512eda2d2e47decf614f5de51a2cec409d8f4696324592ed882",
   "30": "c6a12a400b0137fc6bb2fd148c65803ce4c963a6ea008b4538e96e5137823552",
-  "31": "2cb57b37eb4572c727ec519964a7f712f4424c772d6c2981bb708dcee754946e",
-  "32": "f594bf709a4c5f0afd174d32acc1943f10ecc5b329502bdd0a5c8af0954befc6",
+  "31": "17fef7b4487d4f6a6921e593573fbfba569b7aedc01d03e15235ed425b3faf7b",
+  "32": "a33b2904d54a52278bd14eaf408184a61411dd2e101c201816cf2add3ef9665c",
   "33": "7b96b7c994a8e9a524d0193eb82a7a320ca68169b98c81a7b8f3f5cf2cfaf050",
   "(table) (ny_it201.std_deduction)": "0e8766c3c819e055d3d598b209b3e55c2835cd45cf104996847a451f3ecd7c3b",
   "(table) (ny_it201.std_deduction_dependent)": "0fcde989e3b289b6a1609ebb5c9889f90e37528033509cc51d2e0c05e7da9310",
@@ -1094,7 +1093,7 @@
   "(39) (ny_it201.tcw.by_status)": "1a5586a8598f3c464d57180e53c15ba5c242348b528a5fd9c29870fda42970d7",
   "(39) (ny_it201.tax_high)": "bd49c6fe1d68ffdfea8d051d504637bb6e9e7f5f301fa55ed26e0bd341fd6e0b",
   "39": "b01d0f039f30bbfd4500ef40ad8d36d40a2ddae40e12d5b786607aad96da3d22",
-  "(Note 1)": "c2232bfddb8e1503259af7718a9e339e36b83ae47bd9e757d31c74a52cf924b9",
+  "(Note 1)": "a7734db24eb80c1f2c5b2eb2c1fa7bb216b297c5db4f6616f980162c52706374",
   "(column)": "bf4968e8b23937a8c339f0a41929770c2dcfa778a0ff2f693977a941806753f2",
   "(table 2, column 1)": "762f3e134de576ae4a7d7e36d261483fe77cd0ded71299a39bc0acbd688c5ae1",
   "(table 5, column 1)": "9a76d6b116983a75167d52314ac1b8a11cf0b9f64623a6b5dbdb03c710916c00",
@@ -1116,7 +1115,7 @@
   "(table 4)": "3bada7525cd785b2bc159137d40feb4a1d7e118d0bce8c44b5023bfe8e5edf6d",
   "(40)": "5b7b0c67337989723dbdc71cc86b9847b5ed126547cbde9341d020162b85c8bc",
   "(48)": "be511286c5c784fd8d72020f389fccbbb129504aed32cb20b32446ec3aac31cc",
-  "40": "ffab7712c9f5b1857e92a3641a082d9d5efe27d86b0fb2198713c0822e90e79b",
+  "40": "6508000bf9198c8092f49829d36187b98758ed1c4c8f42bd5694686fceed2e97",
   "41": "185247ce6f2ec8c2451df0e33eed2cf73dbe399cf3d1515151f0372fa8040793",
   "42": "38e7e54fbb206e02ea396710bf968ace785c38da186476e2966f9dfa145165a6",
   "43": "0ce88c0c67a3d1a4c17d47409bdb3950bae1670b9c7809c9044bf8a22d001994",
@@ -1127,7 +1126,7 @@
   "(47a) (ny_it201.city_tax_table)": "a7fa356eefc0bcfdec2a0c5004f0c51b39bd516823e6749b0e748546dc612c80",
   "(47a) (ny_it201.city_tax_schedule)": "f307de98fbb6466a67c1e78bb7fe74deb1c590cd502323d04626dd2591d234cf",
   "47a": "05e571c7eda86eea3ee225d8e9917433078f45ba8b9e0789163160f85dbceb24",
-  "48": "e5aed86f6c12936911f60f8fa54fbfad8b4f579b651259de831adfaf27f9b902",
+  "48": "431eef21d18425f5db0d8a5faf577ec2dacddab75cf3447ea8658af6bf0f3255",
   "49": "8eeb7186e42775f3ec6e0cff74306a2a6a677e6cbbbaf6925fad91c0d8879ff3",
   "50": "459b49222e30a4359e91a309b6f34d09333434b80aa65f4551682fbb70343c9c",
   "51": "8b1fd4bb72bfb5c2d5a4502acb07bd37eea75f6065a8179aba83d0b42e18b01c",
@@ -1164,7 +1163,7 @@
   "66": "cf60c0a98c5c05ec04a370d0a624eb29cc64db709fb89aa6f704ec61e0df3e10",
   "67": "8ab7f0b40f7d954ca9d78c5c8f5e56e1837c9ab419aaa698eb995acb19478562",
   "68": "e680d3a3ae264aa0290ebcde42e05c1f309d384957910f5560237a625f2e34e7",
-  "(69) (ny_it201.stc_income)": "de1338d480c5b810312817bdaa6a5606ab07a34e682b98b42fca2f9d1e6755ce",
+  "(69) (ny_it201.stc_income)": "848e45aa42e10ff3706ac1fd24962ecad7bbbc496968d7ae5ab04d9550ef6540",
   "(69) (ny_it201.stc_fixed_amount)": "80e4e2f2e9ac6f0a884ce75d1933e434933d02746b7c88132e94c79f57afb892",
   "69": "565d315aefd29f63d991b0a6ccc515c61ca46b25c6c818a7b668c9fc4d0de5bc",
   "(69a) (ny_it201.stc_rr_low)": "850101ea8025450936011493501f8c8efa608dd9cf54fe0943d3c676e9532167",
@@ -1175,7 +1174,7 @@
   "(69a) (ny_it201.stc_rr)": "8c5bf23f63c83a37aec3e27a01fb326a6b830b2f21ebc3d68a0bafddf2f9d2a9",
   "69a": "2b8ac19ee61dd23e430ae32cad7d04daa06c906b267a5c19c9f5448f242ec897",
   "70": "c1b77882bfa478597244335ac2467c270683611a99bd0edc816291b96e9130cb",
-  "70a": "67cd8ff3610b8af9e0e65ce00d0a23f3618f35a40567f56c441582890222445e",
+  "70a": "4a41a57446c3c192b3e44a902a5cf74e44f6250191de741ef8c16ef21e76cee1",
   "71": "2ad8ca4d4503d4801c04677fcd31020bd46fafb81af8441cb7093d5c6f99d010",
   "72": "057dfba7d5dfe7d6627bac7666ff8797b8ed356c6c6dac9015c8d6f2df249fa7",
   "73": "1b9dc4473c2d6bcdb5a987d6246afdaef52c1fba5541847ae6da59ee03ea7c54",

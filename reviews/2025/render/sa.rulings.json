@@ -4,6 +4,17 @@
  "rulings": [
   {
    "printed": "1",
+   "restated": "Choose — [helper \"Medical and dental costs are asked (they were more than 7.5% of income, health insurance was paid for with money already taxed, or an exception 05 to the additional tax on an early retirement distribution is claimed)\" = true → helper \"Unreimbursed eligible medical and dental expenses\"] [helper \"Medical and dental costs are asked (they were more than 7.5% of income, health insurance was paid for with money already taxed, or an exception 05 to the additional tax on an early retirement distribution is claimed)\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The expense definition follows the line 1 instructions, but the gate sets line 1 to $0 unless the filer says costs were more than 7.5% of their 'income'. The IRS threshold is 'the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b'. A filer measuring against a larger income figure could answer no when expenses exceed 7.5% of AGI, and that zeroes line 1 and line 4.",
+   "ruling": "Ruling: finding; already filed as BUG-1087 (open): i1040sca p. 1, the 7.5% floor is of adjusted gross income, while the sa.medical_any tick and help say 'income'. The new exception 05 branch of the gate (BUG-1195) is not part of the finding. No new defect.",
+   "context": "43203f06b87ddcd0a24e125fab3be0be4a0de302251d27961c4c98e079d7c9fb",
+   "date": "2026-11-23",
+   "run": "2ed171ce9a1d9bae91609bb0072911ad0a0f5af8fbceef0113664143a6be66b8",
+   "severity": "low",
+   "subject_key": "3c2057a2919738cad4f0adbad75063fad452db013e4cba14d9a9ea2b87125511"
+  },
+  {
+   "printed": "1",
    "restated": "Choose — [helper \"Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)\" = true → helper \"Unreimbursed eligible medical and dental expenses\"] [helper \"Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)\" = false → helper \"Year parameter sales.zero\"]",
    "model": "Line 1 is set to $0 unless the filer says costs were 'more than 7.5% of your income' or paid after-tax premiums. The IRS text says 'Enter the total of your medical and dental expenses after you reduce these expenses by any payments received', measured against '7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b', so a gate keyed to 'income' rather than AGI can zero expenses that should be entered.",
    "ruling": "Ruling: finding; i1040sca p. 1, 'You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income'. The parent question's tick and help compare with 7.5% of 'income', so a filer with adjustments whose costs fall between 7.5% of adjusted gross income and 7.5% of income can answer No. Filed as BUG-1087.",
@@ -61,6 +72,17 @@
    "subject_key": "8510bdcb9d3e64aa07d246a87b3821f64dd0a09351aa9b4ffe3c06a7fe47ac30"
   },
   {
+   "printed": "11",
+   "restated": "Choose — [helper \"Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:\" = true → helper \"Gifts to charity in cash or by check, card or payroll deduction, including out-of-pocket volunteer costs, less the value of benefits received and the amounts that can't be deducted\"] [helper \"Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The input leaves out the whole part of a gift for which a state or local tax credit was received. Pub. 526 says: 'If the state or local tax credit you receive or expect to receive doesn't exceed 15% of your payment amount ... your charitable contribution deduction isn't reduced.' The input also excludes all gifts to foreign organizations, but the instructions allow gifts to 'certain Canadian, Israeli, and Mexican charities.'",
+   "ruling": "Ruling: finding; p526 p. 5, Exception, 'If the state or local tax credit you receive or expect to receive doesn't exceed 15% of your payment amount ... your charitable contribution deduction isn't reduced'. The line 11 source leaves out every credit-earning part. Already filed as BUG-1086 (open); the foreign-organization point is the source's own rule (i1040sca p. 10, gifts to foreign organizations), with the Canadian, Israeli and Mexican treaty charities a narrow residual within BUG-1086's review. Re-reviewed only as a reader of the changed lines.",
+   "context": "f23a53d1d79861f759655b85365d45e82a9de1f03ee5adb020a77b93e430cd33",
+   "date": "2026-11-23",
+   "run": "403e177b4e896c868aeded94fcb49567790526c9e6d154ac467adc61ead3bca0",
+   "severity": "low",
+   "subject_key": "e7c9e358f2d01d7d0baa370b0aa4a76a83cf2d49a2e3ac610d49b779084333ed"
+  },
+  {
    "printed": "12",
    "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 12 is \"Other than by cash or check,\" but the restatement sums gift.allowed, which the glossary does not define. Without that definition, the per-gift amount cannot be checked against the IRS property-gift rules.",
@@ -87,6 +109,16 @@
    "model": "Line 12 is gifts 'Other than by cash or check.' The value gift.allowed and the gift entries it is summed over are not defined in the text given, so it cannot be confirmed that only noncash gifts are counted and that the cash gifts on line 11 are excluded.",
    "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and `gift.allowed` is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input. No change to the data.",
    "subject_key": "0992b6685f6af44b68986d3a083db6ae0eff1326ff489603ce3741349fc2d878"
+  },
+  {
+   "printed": "15",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 15 is always zero, and none of the listed refusals covers casualty or theft losses. The form says 'Casualty and theft loss(es) from a federally declared disaster ... Attach Form 4684 and enter the amount from line 18 of that form.'",
+   "ruling": "Ruling: scope; i1040sca p. 11, Line 15, 'Complete and attach Form 4684 to figure the amount of your loss'. A casualty or theft is refused before Schedule A: sd.casualty (asked of every filer) feeds sd.other_forms, refused on sd.count, so line 15 is $0 on every computed return. Same ruling as the earlier rounds.",
+   "context": "f23a53d1d79861f759655b85365d45e82a9de1f03ee5adb020a77b93e430cd33",
+   "date": "2026-11-23",
+   "run": "403e177b4e896c868aeded94fcb49567790526c9e6d154ac467adc61ead3bca0",
+   "subject_key": "9cdba499e4c7e98bbfb4a681d5ef1d52cb9b80b059f117ca1eb42afdd44353e4"
   },
   {
    "printed": "15",
@@ -138,6 +170,16 @@
    "run": "4b948fe4e820036b9ef4549b55e40d952c80ab2f8313256f8f040449fe645449",
    "severity": "low",
    "subject_key": "0c9a4c47c10591a9136238431463817908b5748103ad74558a6429f78165272f"
+  },
+  {
+   "printed": "16",
+   "restated": "Choose — [s1 helper \"Any gambling winnings\" = true → helper \"Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b\"] [s1 helper \"Any gambling winnings\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Gambling losses are limited to Schedule 1, line 8b winnings, which is correct. But the following items on the line 16 list are neither computed nor refused: 'Casualty and theft losses of income-producing property ... from Form 4684, lines 32 and 38b, or Form 4797, line 18a', 'Deduction for repayment of amounts under a claim of right if over $3,000', and a net qualified disaster loss from Form 4684, line 15.",
+   "ruling": "Ruling: scope; i1040sca p. 11, Line 16 list. The gambling limit matches, as the model says. Casualty and theft losses of income-producing property (Form 4684 lines 32 and 38b, Form 4797 line 18a) and a net qualified disaster loss (Form 4684 line 15) are refused through sd.casualty and sd.business_property into sd.other_forms; the claim-of-right repayment over $3,000 by s3.repaid_income (Schedule 3 and scope refusals); the other listed items by sa.unsupported. Same ruling as the earlier rounds.",
+   "context": "f23a53d1d79861f759655b85365d45e82a9de1f03ee5adb020a77b93e430cd33",
+   "date": "2026-11-23",
+   "run": "403e177b4e896c868aeded94fcb49567790526c9e6d154ac467adc61ead3bca0",
+   "subject_key": "a3916a91133d99e519d076398222c7ec1e76cb04ea100f14862705da1d92a15a"
   },
   {
    "printed": "16",
@@ -215,6 +257,17 @@
   {
    "printed": "2 (sa.dep_line2)",
    "restated": "Enter the larger of helper \"Earned income plus $450\" or helper \"Year parameter sa.dep_min ($1,350)\".",
+   "model": "Taking the larger of earned income plus $450 or $1,350 is equivalent to the worksheet's over-$900 test. But earned income is built only from Form 1040 line 1z and Schedule 1 lines 3 and 8r, less line 15. The worksheet says earned income is 'Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15', so lines 6, 8t and 8u are missing.",
+   "ruling": "Ruling: finding; medium; the model is right in part: the worksheet's earned income is 'Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15' (i1040gi p. 35, Standard Deduction Worksheet for Dependents) and sa.dep_earned_sum leaves out 6, 8t and 8u. Lines 6 and 8t are refused before this worksheet; line 8u is not. Already filed as BUG-0767 (open). Same ruling as the earlier round.",
+   "context": "f23a53d1d79861f759655b85365d45e82a9de1f03ee5adb020a77b93e430cd33",
+   "date": "2026-11-23",
+   "run": "403e177b4e896c868aeded94fcb49567790526c9e6d154ac467adc61ead3bca0",
+   "severity": "medium",
+   "subject_key": "00b719db3aa1610aa3698f186d030769068b3bb99b6ed201ca9b41bb669cabea"
+  },
+  {
+   "printed": "2 (sa.dep_line2)",
+   "restated": "Enter the larger of helper \"Earned income plus $450\" or helper \"Year parameter sa.dep_min ($1,350)\".",
    "model": "The larger-of structure equals the worksheet's test of earned income over $900. But the worksheet defines earned income as 'Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15'. The helper leaves out Schedule 1 lines 6, 8t and 8u.",
    "ruling": "Ruling: finding; medium; the model is right in part: the worksheet's earned income is \"Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15\" (i1040gi p. 35, Standard Deduction Worksheet for Dependents) and sa.dep_earned_sum leaves out 6, 8t and 8u. Lines 6 (Schedule F, scope.farm in scope.schedule1) and 8t (s1.nqdc_pension_if_w2 in s1.line8_other) are still refused, so they are zero on every computed return (amb.2025.sa_dep_earned). Line 8u is not: lane x2-s1o made it computed, so a dependent filer with wages earned while an inmate has line 2 too small. (BUG-0767)",
    "context": "b13f7321dd73f0bfd114fa4c96861a71d9824ae7e2d5466b42762c227acc6ac5",
@@ -232,6 +285,16 @@
    "date": "2026-11-15",
    "run": "a5961ac39a521fbd2e9884a613f19c06e72a3bc73dc776410b29ebb25f85edd7",
    "subject_key": "8ab36294f63d783dc455aafaa0822dbfe693f04f0923badc38189c1167fc72b6"
+  },
+  {
+   "printed": "2 (sa.line2)",
+   "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
+   "model": "The form says 'Enter amount from Form 1040 or 1040-SR, line 11b' with no floor. The restatement floors adjusted gross income at zero, which changes line 2 (and line 3) when adjusted gross income is negative.",
+   "ruling": "Ruling: ambiguity; amb.2025.sa_medical_negative_agi: the project floors adjusted gross income at zero for the 7.5% medical limit (a negative line 2 would raise line 4 above the expenses), the recorded reading; same ruling as the earlier rounds. f1040sa line 2, 'Enter amount from Form 1040 or 1040-SR, line 11b'.",
+   "context": "f23a53d1d79861f759655b85365d45e82a9de1f03ee5adb020a77b93e430cd33",
+   "date": "2026-11-23",
+   "run": "403e177b4e896c868aeded94fcb49567790526c9e6d154ac467adc61ead3bca0",
+   "subject_key": "fe1679419b07cc621cb55d67db6d01429bf2925c92ac1804037ad2ed7dfb2421"
   },
   {
    "printed": "4b",
@@ -263,6 +326,16 @@
    "date": "2026-11-07",
    "run": "9aa8d1e8c1601c032e68ed58f7108abb8a8b1fcc1b896c777f161fab5137ad5b",
    "subject_key": "857d83a68ab5a0197dac2b7ca9a4996598a4695c957c7dc37aea320e1dc86f49"
+  },
+  {
+   "printed": "6",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 6 is always zero, and only the foreign-tax deduction case is refused. The instructions also say to include 'generation-skipping tax (GST) imposed on certain income distributions', and no refusal names that case.",
+   "ruling": "Ruling: scope; refusal located elsewhere. i1040sca, Line 6, 'Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.' The foreign tax deduction is refused by sa.foreign_tax_deduct. The GST deduction (section 164(a)(4)) is for tax on income distributions from a trust, which reach the beneficiary on a Schedule K-1 (Form 1041), refused by scope.k1. Same ruling as the earlier round.",
+   "context": "f23a53d1d79861f759655b85365d45e82a9de1f03ee5adb020a77b93e430cd33",
+   "date": "2026-11-23",
+   "run": "403e177b4e896c868aeded94fcb49567790526c9e6d154ac467adc61ead3bca0",
+   "subject_key": "fdcae77e2afa46da09072780eadc625541cfb071f28020a2d0eaa476a88e6fa3"
   },
   {
    "printed": "6",
@@ -330,6 +403,16 @@
   {
    "printed": "8a",
    "restated": "Choose — [helper \"You owned a home or other real estate, or paid interest on a loan secured by a home\" = true → helper \"Home mortgage interest and points reported to you on Form 1098 for a loan secured by your main home or second home (only your share of a loan shared with someone other than your spouse; not reduced by a refund of overpaid interest)\"] [helper \"You owned a home or other real estate, or paid interest on a loan secured by a home\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The input never applies the mortgage interest credit reduction, and no refusal names it. The instructions say: 'If you are claiming the mortgage interest credit ... subtract the amount shown on Form 8396, line 3, from the total deductible interest you paid on your home mortgage. Enter the result on line 8a.'",
+   "ruling": "Ruling: scope; refusal located elsewhere. i1040sca p. 8, Line 8a, 'subtract the amount shown on Form 8396, line 3, from the total deductible interest'. A mortgage credit certificate is asked by s3.mcc when mortgage interest is entered and refuses Schedule 3 line 7 and the return through s3.mcc_if_interest (Form 8396), so no computed return reaches line 8a with the credit (fixture redesign.credits.refuse.mcc). Same ruling as the earlier round; the line was re-reviewed because lane fx-itemized changed the mortgage interest help (a rented property's interest is left out).",
+   "context": "f23a53d1d79861f759655b85365d45e82a9de1f03ee5adb020a77b93e430cd33",
+   "date": "2026-11-23",
+   "run": "403e177b4e896c868aeded94fcb49567790526c9e6d154ac467adc61ead3bca0",
+   "subject_key": "ce2d4237a6dbb59f6ff57fcd6e16dcba32a373b497ded0e648e86dd4d82f4218"
+  },
+  {
+   "printed": "8a",
+   "restated": "Choose — [helper \"You owned a home or other real estate, or paid interest on a loan secured by a home\" = true → helper \"Home mortgage interest and points reported to you on Form 1098 for a loan secured by your main home or second home (only your share of a loan shared with someone other than your spouse; not reduced by a refund of overpaid interest)\"] [helper \"You owned a home or other real estate, or paid interest on a loan secured by a home\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The restatement enters Form 1098 interest and points and never subtracts the mortgage interest credit, and no refusal covers that case. The IRS text says: \"If you are claiming the mortgage interest credit ... subtract the amount shown on Form 8396, line 3, from the total deductible interest you paid on your home mortgage. Enter the result on line 8a.\"",
    "ruling": "Ruling: scope; refusal located elsewhere. i1040sca p. 8, Line 8a, 'subtract the amount shown on Form 8396, line 3, from the total deductible interest'. A mortgage credit certificate is asked by s3.mcc when mortgage interest is entered and refuses Schedule 3 line 7 and the return through s3.mcc_if_interest (Form 8396), so no computed return reaches line 8a with the credit (fixture redesign.credits.refuse.mcc). The shared-interest point of the earlier round is now in the input's label ('only your share of a loan shared with someone other than your spouse'). Project stands on the English.",
    "context": "1895474afe4707c9aaabb939ebe405978b2d1cb0a3d2c225d83f4001b0ef80c4",
@@ -344,6 +427,16 @@
    "ruling": "Ruling: representation; the model asks whether a filer may deduct investment interest without Form 4952 and get zero. f4952 (2025) p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense. Exception. You don’t have to file Form 4952 if all of the following apply\" (investment income from interest and ordinary dividends less qualified dividends above the expense, no other deductible investment expenses, no 2024 carryover). Such a filer still has investment interest on Form 4952 line 1 above zero, so f4952.used is true and f4952.line8 is the smaller of lines 3 and 6, which under the exception's first condition is the whole interest: the form is used as the computation, whether or not it is filed (f4952.required). Line 8 is zero only with no investment interest, no carryforward and no election, when there is nothing to deduct. Inspected in forms/2025/f4952.yaml (f4952.used, f4952.line8) after PENDING-6 of the credits-misc package.",
    "context": "50e2a8ed5a308d0da8690dbf2495a56110f7e520f752c6e6bff54867dfaffa33",
    "subject_key": "901cf756de526130de6c8606a5fa27f98d7603d754dc16bdb2ba5a1edb8a46a5"
+  },
+  {
+   "printed": "9",
+   "restated": "Enter the amount from f4952 line 8.",
+   "model": "The restatement takes Form 4952 line 8, which is labeled 'zero when Form 4952 is not used'. The instructions excuse some filers from filing Form 4952 but still allow their investment interest. The text given does not show whether such a filer's interest reaches Form 4952 line 8.",
+   "ruling": "Ruling: representation; f4952 (2025) p. 3, Who Must File, 'Exception. You don't have to file Form 4952 if all of the following apply'. The exception only excuses the form; the deduction is the same amount Form 4952 gives, and the project figures it through Form 4952 for every filer with investment interest (f4952.has_interest), so a filer the exception excuses reaches line 9 with the same value. Same ruling as the earlier round.",
+   "context": "f23a53d1d79861f759655b85365d45e82a9de1f03ee5adb020a77b93e430cd33",
+   "date": "2026-11-23",
+   "run": "403e177b4e896c868aeded94fcb49567790526c9e6d154ac467adc61ead3bca0",
+   "subject_key": "76c53a086be6504b6fee67aeb6a142eac8ca187a79fc46711051b713e514a3eb"
   }
  ]
 }

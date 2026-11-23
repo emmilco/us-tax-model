@@ -14,8 +14,11 @@ into a linked worktree (an agent's) from the main worktree, and carry back what 
     worktree_data.py carry-back <worktree> [--main DIR] [--dry-run] [--prefer-worktree PATH...]
         bring back into the main worktree what the worktree changed since its clone:
           ledgers (costs.jsonl): the rows the worktree appended after the clone point are appended to the
-            main ledger. Refused unless the worktree's ledger and the main one both still begin with the
-            ledger as cloned (an edited or truncated ledger is not appended to)
+            main ledger, but for a row main already holds (the same line, as when the rows came back through
+            another worktree first). Refused unless the worktree's ledger still begins with the ledger as
+            cloned or last carried, and every row of main's ledger as cloned or last carried is still in
+            main's, in its order (rows other worktrees appended may now sit between them). Nothing in the
+            main ledger is rewritten or dropped
           other review files: a file the worktree changed or added since the base is copied into the main
             worktree when the main copy is still the base's (or absent in both base and main) or already
             equal to the worktree's; a file both changed differently is a conflict, and any conflict refuses
@@ -170,6 +173,15 @@ def prefix(data):
     return {"length": len(data), "sha256": hashlib.sha256(data).hexdigest()}
 
 
+def rows(data):
+    """The ledger's rows, each with its newline (a last row without one is kept as it is)."""
+    return data.splitlines(keepends=True)
+
+
+def row_hashes(data):
+    return [hashlib.sha256(r).hexdigest() for r in rows(data)]
+
+
 def base_of(worktree, main, skip):
     """The base record: the hash of each untracked review file of the worktree, and for each ledger the
     prefix carried so far in the worktree's copy and the prefix the main copy must still begin with."""
@@ -177,8 +189,9 @@ def base_of(worktree, main, skip):
     mn = files(main, skip)
     for rel, p in files(worktree, skip).items():
         if is_ledger(rel):
-            out["ledgers"][rel] = {"worktree": prefix(p.read_bytes()),
-                                   "main": prefix(mn[rel].read_bytes() if rel in mn else b"")}
+            m = mn[rel].read_bytes() if rel in mn else b""
+            out["ledgers"][rel] = {"worktree": prefix(p.read_bytes()), "main": prefix(m),
+                                   "main_rows": row_hashes(m)}
         else:
             out["files"][rel] = sha(p)
     return out
@@ -186,6 +199,46 @@ def base_of(worktree, main, skip):
 
 def begins(data, p):
     return len(data) >= p["length"] and hashlib.sha256(data[: p["length"]]).hexdigest() == p["sha256"]
+
+
+def base_main_rows(b, w):
+    """The hashes of main's ledger rows as cloned or last carried, or None when the base cannot say: the
+    base's own list, or, for a base without one whose main and worktree prefixes are the same bytes (a
+    clone not yet carried), the rows of the worktree's prefix."""
+    if "main_rows" in b:
+        return b["main_rows"]
+    if b["main"] == b["worktree"] and begins(w, b["worktree"]):
+        return row_hashes(w[: b["worktree"]["length"]])
+    return None
+
+
+def keeps_in_order(m, base_rows):
+    """Whether every base row is in main's ledger m, in the base's order (other rows may sit between)."""
+    i = 0
+    for h in row_hashes(m):
+        if i < len(base_rows) and h == base_rows[i]:
+            i += 1
+    return i == len(base_rows)
+
+
+def new_rows(added, m, base_rows):
+    """The rows of `added` not already in main: a row counts as present while main holds more copies of
+    the same line than the base rows and the earlier rows of `added` account for."""
+    spare = {}
+    for r in rows(m):
+        spare[r] = spare.get(r, 0) + 1
+    by_hash = {hashlib.sha256(r).hexdigest(): r for r in spare}
+    for h in base_rows:
+        r = by_hash.get(h)
+        if r is not None:
+            spare[r] -= 1
+    out = []
+    for r in rows(added):
+        if spare.get(r, 0) > 0:
+            spare[r] -= 1
+        else:
+            out.append(r)
+    return b"".join(out)
 
 
 def dirty_tracked(worktree):
@@ -235,8 +288,16 @@ def plan(main, worktree, base, skip):
         if not begins(w, b["worktree"]):
             conflicts.append(f"{rel}: the worktree's ledger no longer begins with the ledger as cloned or last carried")
             continue
-        if not begins(m, b["main"]):
-            conflicts.append(f"{rel}: the main ledger no longer begins with the ledger as cloned or last carried")
+        base_rows = base_main_rows(b, w)
+        if base_rows is None:
+            if not begins(m, b["main"]):
+                conflicts.append(f"{rel}: the main ledger no longer begins with the ledger as cloned or last carried "
+                                 "(and the base does not record its rows)")
+                continue
+            base_rows = row_hashes(m[: b["main"]["length"]])
+        elif not begins(m, b["main"]) and not keeps_in_order(m, base_rows):
+            conflicts.append(f"{rel}: the main ledger no longer holds every row of the ledger as cloned or last "
+                             "carried, in order")
             continue
         added = w[b["worktree"]["length"]:]
         if added:
@@ -246,7 +307,9 @@ def plan(main, worktree, base, skip):
             if m and not m.endswith(b"\n"):
                 conflicts.append(f"{rel}: the main ledger does not end with a newline")
                 continue
-            appends[rel] = added
+            added = new_rows(added, m, base_rows)
+            if added:
+                appends[rel] = added
     for rel, p in sorted(wt.items()):
         if is_ledger(rel):
             if rel not in base["ledgers"]:
@@ -371,7 +434,8 @@ def self_test():
         _self_test()
     print("worktree_data self-test: check (present, a receipt missing a file, prose left out), clone, carry-back "
           "(ledger rows with rows on both sides, changed files, tracked files left out, both-changed refusal, "
-          "rewritten ledgers, repeated carry, no base, --prefer-worktree), fill (adds missing, never overwrites, skips ledgers, "
+          "rewritten ledgers, repeated carry, no base, --prefer-worktree, interleaved main ledger accepted, missing or "
+          "reordered base row refused, rows already in main not duplicated), fill (adds missing, never overwrites, skips ledgers, "
           "dry run, carry-back after) ok")
     return 0
 
@@ -478,6 +542,53 @@ def _self_test():
             raise AssertionError("carried back without a base")
         except SystemExit:
             pass
+        # Interleaved main ledger: every base row still in main, in order, with other worktrees' rows between
+        # them and one of this worktree's rows already carried through another worktree.
+        lm, lw, lb = t / "lmain", t / "lwt", t / "lbase.json"
+        (lm / ".transcription").mkdir(parents=True)
+        (lw / ".transcription").mkdir(parents=True)
+        led_m, led_w = lm / ".transcription" / LEDGER, lw / ".transcription" / LEDGER
+        led_m.write_text("b1\nb2\nb3\n")
+        led_w.write_text("b1\nb2\nb3\n")
+        old = base_of(lw, lm, frozenset())
+        del old["ledgers"][".transcription/" + LEDGER]["main_rows"]  # a base written before rows were recorded
+        lb.write_text(json.dumps(old))
+        led_w.write_text("b1\nb2\nb3\nw1\nw2\n")
+        led_m.write_text("b1\nx1\nb2\nb3\nx2\nw1\n")
+        assert carry_back(lm, lw, lb, skip=frozenset()) == 0, "an interleaved main ledger is accepted"
+        assert led_m.read_text() == "b1\nx1\nb2\nb3\nx2\nw1\nw2\n", "only the row main lacks is appended"
+        assert carry_back(lm, lw, lb, skip=frozenset()) == 0
+        assert led_m.read_text() == "b1\nx1\nb2\nb3\nx2\nw1\nw2\n", "nothing appended twice"
+        # The base now records main's rows: a later interleaving is accepted, and only new rows travel.
+        led_m.write_text("x0\nb1\nx1\nb2\nb3\nx2\nw1\nx3\nw2\n")
+        led_w.write_text("b1\nb2\nb3\nw1\nw2\nw3\n")
+        assert carry_back(lm, lw, lb, skip=frozenset()) == 0
+        assert led_m.read_text() == "x0\nb1\nx1\nb2\nb3\nx2\nw1\nx3\nw2\nw3\n"
+        # A post-clone row already in main once is skipped once; a second identical row still travels.
+        led_w.write_text("b1\nb2\nb3\nw1\nw2\nw3\nx9\nx9\n")
+        led_m.write_text(led_m.read_text() + "x9\n")
+        assert carry_back(lm, lw, lb, skip=frozenset()) == 0
+        assert led_m.read_text().count("x9\n") == 2, led_m.read_text()
+        # A missing or reordered base row refuses, and nothing is written.
+        for bad in ("x0\nb1\nb2\nb3\nx2\nw1\nx3\nw2\nw3\nx9\nx9\n",          # x1 (a base row now) missing
+                    "b1\nx0\nx1\nb2\nb3\nx2\nw1\nx3\nw2\nw3\nx9\nx9\n"):      # x0 and b1 reordered
+            led_m.write_text(bad)
+            with open(led_w, "a") as f:
+                f.write("w4\n")
+            assert carry_back(lm, lw, lb, skip=frozenset()) == 1, bad
+            assert led_m.read_text() == bad, "a refusal writes nothing"
+        # An old base (no recorded rows) after an interleaving refuses a missing or reordered cloned row.
+        lb.write_text(json.dumps(old))
+        led_w.write_text("b1\nb2\nb3\nw1\n")
+        for bad in ("b1\nx1\nb3\n", "b2\nb1\nb3\n"):
+            led_m.write_text(bad)
+            assert carry_back(lm, lw, lb, skip=frozenset()) == 1, bad
+            assert led_m.read_text() == bad
+        # The worktree's own ledger must still begin with the base.
+        led_m.write_text("b1\nx1\nb2\nb3\n")
+        led_w.write_text("b1\nb3\nb2\nw1\n")
+        assert carry_back(lm, lw, lb, skip=frozenset()) == 1
+        assert led_m.read_text() == "b1\nx1\nb2\nb3\n"
         # fill: adds a missing file, never overwrites a differing one, skips ledgers, and leaves
         # carry-back with nothing to bring back for an untouched filled file.
         fm, fw, fb = t / "fmain", t / "fwt", t / "fbase.json"

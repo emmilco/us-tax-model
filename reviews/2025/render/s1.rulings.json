@@ -475,6 +475,36 @@
    "run": "2c5415e8f6162d6dc449262582f1da40d781239ace0ae86e6a90453269bf2cf3",
    "severity": "low",
    "subject_key": "3bab8f2dc10d5b780706ee29a480af8d7f17c16e63e6899eef726efa30896026"
+  },
+  {
+   "printed": "10",
+   "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
+   "model": "The IRS line says 'Combine lines 1 through 7 and 9.' The helper is labeled 'Lines 1 through 4, 6, 7 and 9', but it adds only lines 1, 2a, 3, 7 and 9, so lines 4 ('Other gains or (losses)') and 6 ('Farm income or (loss)') are left out. No refusal is shown that excludes Form 4797/4684 gains or Schedule F income.",
+   "ruling": "Ruling: scope; as the ruling of 2026-11-22: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10). Project stands.",
+   "context": "11eba3755b0655a673f7fc2e1f592f1331247c48b4100da7da128098da5be94d",
+   "date": "2026-11-23",
+   "run": "67e7f39a4561ab37575cdfe803f9c4919f4cca513e46831fce1e841b84b4ae48",
+   "subject_key": "a20c3d0be4835397e965266edcfea1b02374c8efe9db933becce8891d2604ff8"
+  },
+  {
+   "printed": "10",
+   "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
+   "model": "The form says 'Combine lines 1 through 7 and 9.' The helper's label says it covers lines 1 through 4, 6, 7 and 9, but it adds only lines 1, 2a, 3, 7 and 9. It omits line 4 (other gains or losses) and line 6 (farm income), and no refusal names those exclusions.",
+   "ruling": "Ruling: scope; as the earlier ruling: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10, \"Combine lines 1 through 7 and 9\"). Project stands.",
+   "context": "1336b42f9ca97e84511a06436c13c9099c430474df2cb95b52c47f947c793d61",
+   "date": "2026-11-22",
+   "run": "efba1c9c8065b6087b8fb951fbd8a8ce747ebab36d40ef24286082a105187a5f",
+   "subject_key": "9d716505258ba1bc7df1481a6639708687b3eafee277487ee98a2fe8e0ec91ec"
+  },
+  {
+   "printed": "8a",
+   "restated": "Subtract helper \"The net operating loss carried into 2025, asked only after a Yes to the question on a loss carried into 2025 (zero otherwise)\" from helper \"Year parameter sales.zero\".",
+   "model": "The restatement enters the full unused NOL carried into 2025 as a negative amount and refuses only pre-2018 losses. For losses from 2018 on, Form 172 says the deduction 'cannot exceed the sum of ... (2) the lesser of: (a) the NOLs carried to the year from tax years beginning after December 31, 2017, or (b) 80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions'. The 80% limit is neither applied nor refused.",
+   "ruling": "Ruling: scope; as the earlier ruling: i172 p. 2, the 80% limit on post-2017 NOLs is not applied as arithmetic; the return is refused at Form 1040 line 15 wherever the limit may bind (s1.nol_limit, amb.2025.s1_nol_limit_test, owner decision D3), so every computed return deducts an NOL the limit does not reduce. Project stands.",
+   "context": "1336b42f9ca97e84511a06436c13c9099c430474df2cb95b52c47f947c793d61",
+   "date": "2026-11-22",
+   "run": "efba1c9c8065b6087b8fb951fbd8a8ce747ebab36d40ef24286082a105187a5f",
+   "subject_key": "6ade29ed999f5760cfb3ddfc7487f5903f47738f3a71393d8f47f8fb15893c06"
   }
  ]
 }

@@ -82,6 +82,10 @@
         "f1040.line11a": {
           "kind": "money",
           "cents": 18000000
+        },
+        "s2.ss8_notice": {
+          "kind": "bool",
+          "value": false
         }
       }
     },
@@ -285,6 +289,42 @@
         "person[taxpayer].f8919[form].files": {
           "kind": "bool",
           "value": false
+        }
+      }
+    },
+    {
+      "id": "advfix.f8919.reason_g_ss8_notice",
+      "covers": [
+        "f8919firm.reason",
+        "s2.ss8_notice"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Scout t333-judgment-records-2 F6. One firm paid $10,000 as a contractor; the filer believes they were an employee and none of codes A, C or H applies, so reason code G (f8919 p. 1, \"enter reason code G and file Form SS-8 on or before the date you file your tax return\"). Predicted: column (c) G, the SS-8 notice shown; line 6 $10,000; no W-2, so line 10 $10,000, line 11 $620.00, line 12 $145.00, line 13 $765.00 (Schedule 2 line 6).",
+      "inputs": {
+        "scope.pay_no_w2": true,
+        "scope.contractor_pay": true,
+        "$f8919firm@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].f8919firm[firm].reason": "g",
+        "person[taxpayer].f8919firm[firm].wages": 1000000
+      },
+      "expect": {
+        "s2.ss8_notice": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8919[form].line6": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].f8919[form].line13": {
+          "kind": "money",
+          "cents": 76500
+        },
+        "s2.line6": {
+          "kind": "money",
+          "cents": 76500
         }
       }
     }

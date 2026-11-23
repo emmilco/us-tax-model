@@ -752,58 +752,58 @@
    ]
   },
   "gate:k1p.ask_re_pro": {
-   "subject_sha": "5308bdd7612223cc207b83dd84ef5efdf76f96176d5b0733fb55cdcd4b9185c8",
+   "subject_sha": "ea5b153683e8cc9bf02bd7f5997a20ed0d82635bf069911364e0434694ac0456",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A filer with a box 2 amount who correctly answers yes to the scope question only because they received royalties (oil, gas, book or patent), rented out personal property such as equipment, or rented a home for fewer than 15 days. They own no rental real estate of their own. They or their spouse work full time as a real estate developer or broker.",
-       "why_no": "The computed gate is false because the scope helper is true, so this question is never asked. The line note says Schedule E Part I asks it instead. But Schedule E Part I may ask the real estate professional question only when a rental real estate property is listed. A royalty-only filer, a personal-property renter, or a filer whose under-15-day rental is excluded from Schedule E would then never be asked anywhere.",
-       "line": "k1p.re_pro_if_b2",
-       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"the income (loss) in box 2 isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"; item 3: \"report box 2 income (loss) in column (i) or (k) of Schedule E (Form 1040), line 28.\"",
-       "severity": "medium",
-       "fix": "Base the gate on whether Schedule E Part I will actually ask the real estate professional question for a listed real estate property, not on the broad scope helper. One option: ask here whenever box 2 is nonzero and no rental real estate property is listed in Part I. Another: confirm that Part I asks the question whenever any K-1 box 2 amount exists, even with only royalties or personal-property rentals listed."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A spouse on a joint return works 2,000 hours a year as a general contractor, home builder, property manager, leasing agent, or mortgage-free real estate broker through their own company. The other spouse holds a partnership interest that reports a box 2 amount, and the working spouse materially participates in it.",
-       "why_no": "\"Real estate businesses\" reads to many filers as owning or investing in buildings. A contractor, builder, renovator, property manager or broker may not think construction, redevelopment, management, leasing or brokerage is a \"real estate business\", so they answer no.",
-       "line": "k1p.re_pro_if_b2",
-       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"",
+       "who": "A general contractor, home builder, developer or property manager who works full time in that trade and holds a partnership interest whose K-1 shows a box 2 amount. On a joint return, the spouse could be the one in that trade.",
+       "why_no": "\"Real estate businesses\" reads as brokerage, selling or investing in property. A builder, remodeler, developer or property manager does not think of the job as a real estate business and answers no. The question and help never list the real property trades that count.",
+       "line": "k1p.re_pro_if_b2 (stays false, so the box 2 amount is treated as passive instead of refusing the return)",
+       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"the income (loss) in box 2 isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"",
        "severity": "medium",
-       "fix": "List the qualifying trades in the question: \"real estate businesses (developing, redeveloping, building, rebuilding, acquiring, converting, renting, operating, managing, leasing, or brokering real property), including through a company you own at least 5% of, or this partnership\"."
+       "fix": "Ask: \"Did you (or your spouse) work more than 750 hours in 2025 in real property businesses: developing, building, rebuilding, buying, converting, renting, operating, managing, leasing or brokering real estate, and was that more than half of all the hours you worked? On a joint return, one spouse must meet both alone.\""
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A real estate professional who sees the help text \"A Yes ends the interview here\" next to the question and wants to finish the return in this tool.",
-       "why_no": "The help tells the filer that a yes stops the interview, which invites a no from anyone who is unsure or close to the 750-hour line. It gives no explanation that a no is correct only if neither spouse meets both tests.",
+       "who": "A partner who spends most of the working year managing and leasing real estate held through several partnerships, with no rental property in their own name, and who thinks of this as handling investments rather than work.",
+       "why_no": "\"Work ... in real estate businesses\" and \"your own work time\" sound like a job or employment. Hours spent managing one's own partnership-held rentals do not feel like work time in a business, so the filer answers no.",
        "line": "k1p.re_pro_if_b2",
-       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"the income (loss) in box 2 isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"",
+       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity\"",
        "severity": "medium",
-       "fix": "Explain the consequence neutrally, for example: \"This tool can't treat box 2 as nonpassive. If either of you meets both tests, answer Yes; the return must be prepared another way.\" Also add the two tests to the help: more than 750 hours, and more than half of that person's total work hours, each met by one spouse alone."
+       "fix": "Add help: \"Count hours you spent managing, leasing or operating real estate, including property held through partnerships, as well as hours in a job or your own business.\""
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A partner in a partnership with several rental real estate activities. Box 2 nets to zero or shows only \"STMT\", while the attached statement shows income in one activity and a loss in another. The partner is a real estate professional who materially participates in the loss activity.",
-       "why_no": "The helper \"Box 2 shows an amount\" may be false when the printed net is zero or the box shows only STMT. The gate then never asks the question, even though the per-activity amounts on the statement would be nonpassive.",
+       "pattern": "8",
+       "who": "Any filer who might qualify but is unsure.",
+       "why_no": "The help \"A Yes ends the interview here\" says only what a Yes costs. It invites an unsure filer to answer no so the interview continues.",
        "line": "k1p.re_pro_if_b2",
-       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"If the partnership had more than one rental real estate activity, it'll attach a statement identifying the income or loss from each activity.\"",
+       "irs_text": "i1065sk1 (2025) p. 14, Box 2, item 3: \"If you were a real estate professional and you materially participated in the activity, report box 2 income (loss) in column (i) or (k) of Schedule E\"",
        "severity": "low",
-       "fix": "Treat box 2 as showing an amount whenever it is nonzero, shows STMT, or has an attached statement listing rental real estate activities."
+       "fix": "Change the help to say why a Yes ends the interview: \"If so, your box 2 income or loss may not be passive, which this tool can't handle. Answer yes if you might qualify.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer whose K-1 shows a box 2 amount and who also rented out personal property, such as equipment or a vehicle, outside a business. That filer answers yes to the scope question.",
+       "why_no": "The yes to the rental scope question makes the gate false. The real estate professional question is then left to Schedule E Part I, which a personal property rental reported on Schedule 1 may never open.",
+       "line": "k1p.re_pro_if_b2",
+       "irs_text": "i1065sk1 (2025) p. 14, Box 2: \"the income (loss) in box 2 isn't from a passive activity if you were a real estate professional\"",
+       "severity": "low",
+       "fix": "Ask the question whenever box 2 shows an amount and Schedule E Part I will not ask it, rather than whenever no rental or royalty of the filer's own is listed."
       }
      ],
-     "prompt_sha": "b74f6dfeda3e0dc612d8081c887f8cdaf9f18711edb8b784529d144540aed3ac",
+     "prompt_sha": "7daf62a172ac54ad69ec86ba675020df20136560faaefa773e88ec5c150da769",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.09446,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_k1p.ask_re_pro.5308bdd76122.1.response.txt"
+     "cost": 0.073104,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_k1p.ask_re_pro.ea5b153683e8.1.response.txt"
     }
    ],
    "condition": "k1p.ask_re_pro",

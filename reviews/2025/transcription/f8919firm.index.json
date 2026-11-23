@@ -3,7 +3,32 @@
  "form": "f8919firm",
  "family": "claude",
  "base": "1ff2bebe2f1f08b6db77504692c6a5dbb58cb27f9832ead643011ec87a76acd4",
- "lines": [],
- "subjects": {},
- "__rest__": "edc926e65f56a1f6547dd965921091c4ad50d07ab13e4bc7ba1fb85b1adcedd2"
+ "head_rows": {
+  "printed lines compared": "2",
+  "agree / disagree / missing": "2 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "f8919firm.one",
+   "record": "81193e143ebec9e06eb58add6505224bc620cf7eb8eee727db9c22251549a8d7",
+   "status": "AGREE",
+   "subject_key": "dcf24b8eddb073d6317a30e8cfbe5c76653d6dca43db941ca03a7ce6776f4258"
+  },
+  {
+   "key": "f8919firm.code_g",
+   "record": "81193e143ebec9e06eb58add6505224bc620cf7eb8eee727db9c22251549a8d7",
+   "status": "AGREE",
+   "subject_key": "8e4b9edb949f83969c558c930be26343409fff55cb27165f3eb1974228f93957"
+  }
+ ],
+ "subjects": {
+  "f8919firm.one": "023b9ad8bcb149cc0feec7bfee209494ecececa4a77ae708148c20ba7fa3e221",
+  "f8919firm.code_g": "33110fccac6b9f991ea901840e75341e841af32e52311f9e18c693b818dbeb52"
+ },
+ "__rest__": "edc926e65f56a1f6547dd965921091c4ad50d07ab13e4bc7ba1fb85b1adcedd2",
+ "foreign": {
+  "f8919firm.one": "9ac49f1c686239336a69e4c7977f9f969daa6457aa35dd98c3620129ed2279f6",
+  "f8919firm.code_g": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

@@ -12,6 +12,7 @@ answers:
   scope.strike_pay: false
   scope.wages_no_form: false
   $f8919firm@person[taxpayer]: [warehouse]
+  person[taxpayer].f8919firm[warehouse].reason: g
   person[taxpayer].f8919firm[warehouse].wages: 800000
   person[taxpayer].w2[acme].box3: 5200000
   person[taxpayer].w2[acme].box7: 0

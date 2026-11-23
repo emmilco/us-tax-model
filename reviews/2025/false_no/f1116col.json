@@ -2,7 +2,7 @@
  "form": "f1116col",
  "reviews": {
   "gate:f1116col.has_div": {
-   "subject_sha": "2110e410ef5b05bd8736a9fc50178ccd1d8c88919cf10d594111f83cb43b5932",
+   "subject_sha": "11d05fde05864a669a00b4ad0dbbd8b742a5514e9bc8b71be5eaf6e29a7c5968",
    "samples": [
     {
      "verdict": "UNCLEAR",
@@ -10,50 +10,50 @@
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose RIC column comes from an international bond fund. The fund's foreign source income and foreign tax are reported on Form 1099-DIV (box 7) and on the fund's year-end statement.",
-       "why_no": "The helper asks whether the column's income is \"dividends, interest or both\". Because the fund holds foreign bonds and its statement calls the income interest, the filer answers \"interest\", although the fund paid it as a dividend reported on Form 1099-DIV.",
-       "line": "f1116col.tax_div_if_div (q) and f1116col.div_income_if_div",
-       "irs_text": "i1116 p. 11: \"Total all income, in the applicable category, passed through from the mutual fund or other RIC and enter the total in a single column in Part I. Enter 'RIC' on line i.\" i1116 p. 19: \"If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV ... complete columns (q) through (u)\"",
+       "who": "An investor holds an international bond fund or a foreign-bond ETF. The fund's foreign income came from interest on foreign bonds and passed through as fund distributions. The fund reports it on Form 1099-DIV, with foreign tax withheld in box 7 and foreign source income on its year-end statement.",
+       "why_no": "The helper asks whether the column's foreign income is 'dividends, interest or both'. The filer knows the fund holds bonds and that the foreign income is foreign interest, so they choose 'interest'. That leaves has_div false, even though everything was paid to them as RIC dividends on a 1099-DIV.",
+       "line": "f1116col.tax_div_if_div (and f1116col.div_income_if_div)",
+       "irs_text": "i1116 p. 19, Tip: 'If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV ... Enter \"1099 taxes\" in column (l) of Part II, and complete columns (q) through (u)'",
        "severity": "medium",
-       "fix": "Ask by the form, not the label: \"Was any of this column's foreign income or foreign tax reported on Form 1099-DIV, or as a dividend on a fund statement, Schedule K-1 or a foreign broker's statement?\" If yes, set has_div, whatever the fund holds."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A partner, S corporation shareholder or trust beneficiary whose Schedule K-1 (or K-3) passes through foreign-source dividends and foreign tax withheld on them, with no Form 1099-DIV of their own.",
-       "why_no": "The filer thinks of the income as partnership, S corporation or trust income, not dividends they received, and the help points only to Form 1099-DIV. They answer \"neither\" or treat the income as other income, so dividends are never asked for this column.",
-       "line": "f1116col.tax_div_if_div (q) and f1116col.div_income_if_div",
-       "irs_text": "i1116 p. 11: \"Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i\"; f1116 p. 1, Part II: \"Taxes withheld at source on: ... (q) Dividends\"",
-       "severity": "medium",
-       "fix": "Make the gate's help say that dividends include those passed through on Schedule K-1 or K-3 (partnership, S corporation, estate or trust), and those from foreign brokers without a Form 1099."
+       "fix": "Ask by document, not by economic character: 'Did any of this column's foreign income or foreign tax come from Form 1099-DIV, a fund's year-end statement, or dividends on foreign shares?' Add help: 'Fund distributions, including bond funds, are dividends here even if the fund earned interest.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A filer who holds ADRs of a foreign company through a U.S. broker. The dividend is paid by a U.S. depositary bank, and the 1099-DIV shows foreign tax withheld.",
-       "why_no": "The payer is a U.S. bank, so the filer believes the dividend is not foreign income and answers that this column's foreign income has no dividends.",
-       "line": "f1116col.tax_div_if_div (q)",
-       "irs_text": "i1116 p. 19: \"If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV ... complete columns (q) through (u) for each foreign country indicated in Part I.\"",
+       "who": "A partner or LLC member gets a Schedule K-1 and K-3 from an investment partnership or hedge fund. The K-3 reports foreign-source dividends with foreign tax withheld at source. The filer also has foreign bank interest in the same country.",
+       "why_no": "The filer thinks of the amount as 'partnership income from a K-1', not as dividends they received. The helper's dividends, interest or both choice reads as asking what they personally received, so they pick 'interest' for the bank interest. The dividends and the tax withheld on them, passed through on the K-3, are dropped.",
+       "line": "f1116col.tax_div_if_div (and f1116col.div_income_if_div)",
+       "irs_text": "i1116 p. 11, Lines 1a and 1b: 'Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i'",
        "severity": "medium",
-       "fix": "Add to the gate's help: \"Count dividends from foreign companies even if paid through a U.S. broker or depositary (ADRs), and any dividend where Form 1099-DIV box 7 shows foreign tax.\""
+       "fix": "Broaden the helper's help: 'Count dividends you received directly and dividends passed through to you on Schedule K-1/K-3 from a partnership, S corporation, estate or trust (you or your spouse).'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer's column for one country has foreign dividends together with other passive income, such as royalties, rents or gains on foreign shares. Or a filer received substitute payments in lieu of foreign dividends on loaned shares (Form 1099-MISC), with foreign tax withheld.",
+       "why_no": "Only three choices are offered: 'dividends, interest or both'. A column that is mostly royalties or rents with some dividends fits none of them, so the filer may pick 'interest' or stop at the closest wrong option. Substitute payments are not labeled 'dividends' on the filer's form.",
+       "line": "f1116col.tax_div_if_div",
+       "irs_text": "f1116 p. 1, Part II: 'Taxes withheld at source on: (q) Dividends (r) Rents and royalties (s) Interest'",
+       "severity": "medium",
+       "fix": "Replace the three-way choice with independent yes/no questions, one per column (q), (r) and (s): 'Was any foreign tax withheld on dividends (including fund distributions and payments in lieu of dividends)?' and so on. Offer an 'other or none' option so that no choice forces a wrong no."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A married couple filing jointly. Only the spouse holds the foreign fund or the foreign shares that pay dividends to this column's country; the filer's own foreign income in that country is interest.",
-       "why_no": "If the helper's wording says \"your\" foreign income, the filer describes only their own holdings and answers \"interest\".",
-       "line": "f1116col.tax_div_if_div (q) and f1116col.div_income_if_div",
-       "irs_text": "i1116 p. 11: \"Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i\"",
+       "who": "A married couple files jointly. The spouse alone holds foreign shares or a foreign-stock fund, with tax withheld, in a column that also has the filer's own foreign interest.",
+       "why_no": "The helper speaks of 'the column's foreign income' without saying 'you or your spouse'. The filer describes their own income, which is interest, and answers 'interest'.",
+       "line": "f1116col.tax_div_if_div",
+       "irs_text": "i1116 p. 19, Tip: 'complete columns (q) through (u) for each foreign country indicated in Part I'",
        "severity": "low",
-       "fix": "Word the helper as \"Does the foreign income of this column (yours or your spouse's) include dividends, interest or both?\""
+       "fix": "Word the helper as 'Did you or your spouse receive dividends from sources in this country (or from funds reporting foreign tax)?'"
       }
      ],
-     "prompt_sha": "e2d6158e8ed95c994aa1efaef7040722441750f2aa0930c23695ee4c0c858813",
+     "prompt_sha": "7ee9ff68d41c3db9be94dedf9e032fe01c5ab0652379e2ee808857b3adac1356",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.106152,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f1116col.has_div.2110e410ef5b.1.response.txt"
+     "cost": 0.099488,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_f1116col.has_div.11d05fde0586.1.response.txt"
     }
    ],
    "condition": "f1116col.has_div",

@@ -37,6 +37,30 @@ form:
     cite:
       doc: f8919
       locator: 'p. 1, Total wages, "(f) Total wages", "withholding and not", "reported on Form W-2"'
+  - id: f8919firm.one
+    printed: (helper)
+    label: One firm
+    type: Count
+    expr:
+      op: param
+      ref: person.one
+    cite:
+      doc: f8919
+      locator: 'p. 2, Lines 1 through 5, "Complete a separate line for each firm"'
+  - id: f8919firm.code_g
+    printed: (helper)
+    label: Reason code G (Form SS-8 filed with no reply yet, or filed by the date of the return)
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8919firm.reason
+      - const: g
+    cite:
+      doc: f8919
+      locator: 'p. 1, Reason codes, "If none of the reason codes apply to you, but you believe you should have been treated
+        as an employee, enter reason code G and file Form SS-8 on or before the date you file your tax return"; p. 2,
+        "Don’t attach Form SS-8 to your tax return. Form SS-8 must be filed separately"'
   collection:
     parent: person
     cite:

@@ -369,6 +369,23 @@ params:
         locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
           January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)" (the earliest year of birth
           accepted: 125 years before the tax year; a consistency bound, not a rule of the instructions)'
+    age.over59h_all_year:
+      type: Count
+      moves_with_year: 1
+      value: 1964
+      cite:
+        doc: i5329
+        locator: 'p. 5, Line 2, exception 12, "Distributions incorrectly indicated as early distributions by code 1, J, or S
+          in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older." (the latest
+          year of birth of a person who was 59 1/2 or older on every day of the tax year)'
+    age.under59h_all_year:
+      type: Count
+      moves_with_year: 1
+      value: 1967
+      cite:
+        doc: i5329
+        locator: 'p. 5, Line 2, exception 12, "Include on line 2 the amount you received when you were age 59 1/2 or older."
+          (the earliest year of birth of a person who was under age 59 1/2 on every day of the tax year)'
     age.cut_65:
       type: Count
       moves_with_year: 1
@@ -1765,6 +1782,24 @@ params:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), line 3
+    sa.gift_total_limit_rate:
+      type: Rate
+      value:
+        num: 60
+        den: 100
+      cite:
+        doc: p526
+        locator: 'p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited
+          to no more than 60% of your AGI"'
+    sa.gift_property_limit_rate:
+      type: Rate
+      value:
+        num: 30
+        den: 100
+      cite:
+        doc: p526
+        locator: 'p. 25, "Your noncash contributions of capital gain property to 50% limit organizations is limited to 30%
+          of your AGI"'
     sa.salt_base:
       type: NonNegDollars
       value: 4000000

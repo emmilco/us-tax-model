@@ -5,8 +5,8 @@
  "base": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
  "head_rows": {
   "printed lines compared": "168",
-  "agree / disagree / missing": "85 / 83 / 0",
-  "line-scoped reviews": "7 (latest 2026-11-22); see Line-scoped reviews"
+  "agree / disagree / missing": "83 / 85 / 0",
+  "line-scoped reviews": "9 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -25,10 +25,10 @@
   },
   {
    "key": "1",
-   "record": "190d9e07cef7745f8788e949fac03f15857e047c2d89daa3ba931d7b6dc67c5c",
+   "record": "a048e856bf4f001d0cd409d135fe4d6923a8c81dfd13f28999ecf135a19efd66",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\": the project rounds federal line 1z half up, the second copies it with cents.",
-   "subject_key": "17bc49dd595a45c4afbf8acb7bbade87aabf7ee9c8d0379e23d4f88f3a86b411"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents. Same reference otherwise.",
+   "subject_key": "7db1be580e343159e234c23edfeeffd13bb775beeb9ea9cea15e209bf0ee8842"
   },
   {
    "key": "2",
@@ -94,15 +94,17 @@
   },
   {
    "key": "11",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
-   "status": "AGREE",
-   "subject_key": "fe0961dc1c84f38171c5bc4463552271d2796edc08ec162f06d89ff096d91153"
+   "record": "a048e856bf4f001d0cd409d135fe4d6923a8c81dfd13f28999ecf135a19efd66",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap; project retained. IT-201 p. 2, line 11, \"Rental real estate, royalties, partnerships, S corporations, trusts, etc. (submit copy of federal Schedule E, Form 1040)\", is the label of federal Schedule 1 line 5, and IT-201-I p. 7, Lines 1 through 19, \"The calculation of your New York State, New York City, and Yonkers income tax is based on the information you reported on your federal income tax return\". The request's federal catalog did not offer s1.line5 (the label rule credits \"federal\" only before the phrase; here it follows), so the reply entered 0 and itself notes \"The real figure must come from a federal Schedule 1 line 5 interface once one is supplied.\" Tool gap recorded as BUG-1219.",
+   "subject_key": "92c81088c17a9c506cf8cfbe1929f843c11328815782cb7eeec3f21ee61e5f11"
   },
   {
    "key": "12",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
-   "status": "AGREE",
-   "subject_key": "22a9bf883941d7e1fedf0c885b82911037bdfb8f503beac7dda0337fa4806f93"
+   "record": "2fdf5bf8a314ef43ec5f47a46bca32ecfd4118aec448226e7c52b0e1ea480bc9",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap; project retained. IT-201 p. 2, line 12, \"Rental real estate included in line 11\", is the rental real estate part of line 11, which is federal Schedule 1 line 5 (Schedule E line 41 when the return has rental or royalty property). The request's federal catalog offered no Schedule E interface, so the reply entered 0 and itself notes that the line needs a source; the project takes Schedule E line 41 less its royalties (Parts II to V are refused federally: scope.k1, scope.remic, scope.farm). Same tool gap as line 11, BUG-1219.",
+   "subject_key": "ef2d6888630b4024c03f881855f0630da5aa2a817fe030dc43ddefadbd198f2d"
   },
   {
    "key": "13",
@@ -133,9 +135,9 @@
   },
   {
    "key": "17",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "a048e856bf4f001d0cd409d135fe4d6923a8c81dfd13f28999ecf135a19efd66",
    "status": "AGREE",
-   "subject_key": "e97348baec4d1fecb95e9b22929a99cc6ce4b00ccae301c422d93937f4906a18"
+   "subject_key": "0a14b299c88dc4331eaf38b74e31d062c0c92149b6e9458da2c14b08ed00fc5a"
   },
   {
    "key": "18",
@@ -146,9 +148,9 @@
   },
   {
    "key": "19",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "2fdf5bf8a314ef43ec5f47a46bca32ecfd4118aec448226e7c52b0e1ea480bc9",
    "status": "AGREE",
-   "subject_key": "85de7bcbb2e2723160a586a9d47c39181c44db3ca1f7e2cd71239075c4fdd8b3"
+   "subject_key": "b6cbb72f241f4bcc4af85ea3af6d96f0e3c3bf811208df8873ab2c9b8f89780b"
   },
   {
    "key": "(check)",
@@ -177,9 +179,9 @@
   },
   {
    "key": "23",
-   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
+   "record": "2fdf5bf8a314ef43ec5f47a46bca32ecfd4118aec448226e7c52b0e1ea480bc9",
    "status": "AGREE",
-   "subject_key": "b8cac36d392af5413c6a602e95879f73560883947880d810bb4f2fed758171da"
+   "subject_key": "71ac0665b35106ac4398492df99820b3007140219bfaf80ff39bdeeb2fb1e64d"
   },
   {
    "key": "24",
@@ -208,9 +210,9 @@
   },
   {
    "key": "28",
-   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
+   "record": "a048e856bf4f001d0cd409d135fe4d6923a8c81dfd13f28999ecf135a19efd66",
    "status": "AGREE",
-   "subject_key": "aa0c22c9852a8c53422a8265f0fb06b25f66d980579ac32b921ce5913803e811"
+   "subject_key": "a30220491b4b80add4009bcd40cb926e821d58ebf2af240f200b46ba1caa5540"
   },
   {
    "key": "29",
@@ -226,9 +228,9 @@
   },
   {
    "key": "31",
-   "record": "cce94c0fbd4a7cb8b4efa8fc68b736b8afc5c3b30f1cb004fd83bb6a4b289a90",
+   "record": "2fdf5bf8a314ef43ec5f47a46bca32ecfd4118aec448226e7c52b0e1ea480bc9",
    "status": "AGREE",
-   "subject_key": "5f0f6e1c7d7ba5863a720a0e43d750b107b040b3945d6088e8f68b9060dbcdae"
+   "subject_key": "bf39b24e42813f1218d3b645c85b27186bc42744d0caae5f008cb157468524aa"
   },
   {
    "key": "32",
@@ -1104,7 +1106,7 @@
  "subjects": {
   "C": "6d30a98bb9aa0b6fd436a4a8e490ae176b89a0d1fd2cfc3fd57273b95d1f3357",
   "H (count)": "c775556cf6baebf885155f3e0e760fff74624401c1c24b030e770258031b62a5",
-  "1": "89fd78d4afac30ad3a09eeb069802785a14bd0366b1254de4fbe425d510941fc",
+  "1": "47c68f65a8abae4432174cf9885397b19b5b5a9f00e34cf310f6843bb864aec9",
   "2": "0ab699890c51786638b6f0c1b93f2c9a51e56b9ec03cfab26033df0c734de77c",
   "3": "69f377530fe78842ed6435d2451a374c955c9ac4c0f217290631c73ceb170a92",
   "4": "f5190222dc5ddab58aa5d89b74a4dc3d317370884faacfd2008a57428b329152",
@@ -1114,28 +1116,28 @@
   "8": "ddca4f9241dc13a80dac3054c79ba47e742d66a2d4527a43e24a0175bcd2ad86",
   "9": "fa2de10ec03aa64ccf1542f423302a72ecd9b6c9cd67bb1ca30525561821dea3",
   "10": "58fda5324f2827306aedd0ae09b732627ff98aa73f9a7a54cab70f75d94a145e",
-  "11": "8eb82d5beb69c0454a6c759554cac2f83ac3ac26c85bb799d78878dddb7180dd",
-  "12": "f93d792cc48f087f11a780f631740b170a99108e3903ab2a66a22cf6a57e9100",
+  "11": "0a7a0336f3a5868c851fea440e763e3fc624f38feed876ff58a8498ede34ebd8",
+  "12": "c27ee79b72b801ee5b8e7c19ab2fc7f37ab29027ba7e854eeb11ab41d0aaebe8",
   "13": "e6186fd24690d86a5662edc53a2960ff2b88573c971dc46b90c11ca9fa80ebb7",
   "14": "3536134c20a3b32dca75e377fb677f868f982518f57d8a268f0a92801417d4cd",
   "15": "c8a6c6974deaaa30601d06a52ca8e95d8be9498c9c8cec9e86578122a31204dc",
   "16": "fcae79e9430e49ca07e2ca670c5fa11acdd4f2ca6b7b9bb2fedc8be3fa2fa601",
-  "17": "2c6c63d22fd2ea3acdab25328125be88d1dffce895245f87fbcd2f975f169735",
+  "17": "8d9d03d8929605f83720f346d4ea927ee762fd83f369c6eeda1d1ddc9321f2fd",
   "18": "54565592a271f37c5e115a816c787c5dadc2b582917534dfd27eae600c5d37c4",
-  "19": "05b98a40f529d1582546ba909de6efb73514a3ff483e36e56facd9ab865be2f9",
+  "19": "e37e067dbc46e871cdf88453880ec46857a78cba0fc5772cc8620a6313bbe0ac",
   "(check)": "1a6b59c6fdf31c7e7e5420d0e6c5fd77e83f07151a7c3183325eff1eabf29586",
   "20": "42691a56eba5edda83a517e30d0261274e9bfcd92e34fab195c9e10041d1a784",
   "21": "06841fce0a4e3edee47ff767ba6c58c45db7caa12c20cde92b83df9a8d85e11a",
   "22": "a93983c52ee61491c0902ce4afa11c63b61161f733d65b8ce96053036dff9e3c",
-  "23": "61aa6b4bda933cc879dfdd7550a3481d5042edbd63d4fbc30b03d8c20f109797",
+  "23": "8e892b82669a9c028e15656e02bc7bae303cdf2925a13190045a9d9c7d5a3da6",
   "24": "21c0d2dfdd9596d93a352afde0aed197eaace4975ae4b553cc352faebfc98614",
   "25": "22d42978b4bd41c1cfcf85a153a4409e402ed476fb4a445d79068f77f8ae7476",
   "26": "f8c014fec1932d1e1e5bfabdb38a5a5948b5ae3f988e1f8c8529822c43185b9a",
   "27": "3408d939107960440ca6f29c6127ff6b3b38dcb7addc6b2f81154360af68bc35",
-  "28": "7fd68f93cf749ca15ba16a6446e53452ccb6af569fc8540e28edeebc5ca718c8",
+  "28": "a31d52f015f3b810541fa9df125f1d6051ff3722cb1664f49d68d33e6d8c39d3",
   "29": "3f1d8a4c15a9cca519b4d24fce10710da6eab436a461c385402f8a67b8ee9687",
   "30": "1787c3024f67869c18f84392ee05550baa25ce3da541f5da200f1dc3110acb39",
-  "31": "25fd35723def188075cb71b8421dc520ad0c65c8f339f83543586f24756c3db3",
+  "31": "5ebe6c7e41ee750eab0fd3149c573965d3f5d3d4e1daa6605cf01da1ded74db3",
   "32": "ebbcaf666cfcea9cf9853233fe4f7e1b523ff86345bf133e3fa5bcf60d74792b",
   "33": "a0c21f6f0a8e7e815639bafc8edc228d1c12f5a0edb74e134b42188ab7914b5d",
   "(table) (ny_it201.std_deduction)": "3e8b1b4b2e252ed6b695dc85b7a73edab55b2b040929199658937ce7a7fe82b2",
@@ -1285,20 +1287,20 @@
   "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "9": "1524937991a344954550454584d2ce7b46c7885d971a17fcb987d2dceba6d55d",
   "10": "f71b1a0c84b4acc28c4bb0fef0e2a1f63a1ecbd09df4eb1eba0633999ccff642",
-  "11": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "12": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "11": "7c13655df9a0eaf5f4620e10f95fa8a4aaf61e72471df33e0b20f7a109ba69bc",
+  "12": "386a512044d769b72b2c75b1823cce0f6556a4fde1f723a0e9e43d3b891230c3",
   "13": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "14": "096009a19b5ac466d447ac37369ae95778eab9caf54d79a809755fcf0f70a887",
   "15": "43f56340cb28bacf1d63358e7e8e4bf5bfc4a2f2429661c0847274bac424b2a9",
   "16": "8443dbeb6aa83ef657979612f13fd1dae5afcad9bfee7703bebace5f243ff8bd",
   "17": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "18": "e0436ca291374ee6b9ca824a57b73cdc61e0895908ace373530866803bfe056d",
-  "19": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "19": "6d41e4e13caaba2306b7554eeb9238e86ac64fbdd47dc4696d7e1414b37dd1d3",
   "(check)": "6d41e4e13caaba2306b7554eeb9238e86ac64fbdd47dc4696d7e1414b37dd1d3",
   "20": "0a46eddabdfb6f0dd910935a3e8bfa790fee011da550a270e372908b59c5eae2",
   "21": "c1088979c2a298c9a2467541a0fb4206a6f902404d1907a7647812d0080022db",
   "22": "71e4a666035403e9f7c48121aa70d3ca15214ae749d8722aa4aedf04684a07f6",
-  "23": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "23": "112e65a29742c52a46fd70cd09b6227421c040fa1252ff7255b73301e86163b3",
   "24": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "25": "b890442df145227fdfff07ae2b0435f0feff77d8b8702b065a88afe79d24bd1e",
   "26": "5b9ad06b2c2532b64ebb2d7353040650aef3a015bfbd2ad21700ebd909ea93d0",
@@ -1306,7 +1308,7 @@
   "28": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "29": "54f4b998141bc42a46ac3c49e79a52ec82f735f9bb7bba5b27d1559dee791164",
   "30": "71e4a666035403e9f7c48121aa70d3ca15214ae749d8722aa4aedf04684a07f6",
-  "31": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "31": "cb580310a2bbdaeb78cf59fcf74026b849d41128bc316724021cb41e36d475c8",
   "32": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "33": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "(table) (ny_it201.std_deduction)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",

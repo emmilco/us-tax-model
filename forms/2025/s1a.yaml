@@ -178,6 +178,49 @@ form:
       doc: i1040gi
       locator: p. 104, Schedule 1-A, line 4a, "If you received qualified tips as an employee with respect to employment with
         more than one employer, enter -0- on line 4a"
+  - id: s1a.tips_over_count
+    printed: (helper)
+    label: Number of people with a valid SSN whose qualified tips entered are more than their Medicare wages and tips (W-2 box 5)
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.work_ssn
+          - const: true
+        - op: test
+          eq:
+          - person.tips_over_wages
+          - const: true
+    cite: 
+      doc: f1040s1a
+      locator: 'p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and tips
+        shown in box 5"'
+  - id: s1a.tips_over_wages
+    printed: (gate)
+    label: For someone on the return, the qualified tips entered are more than the Medicare wages and tips (W-2 box 5) that include them (not tested on a return with Form 4137 tips, which is refused at s1a.f4137)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - s1a.f4137
+        - const: false
+      - op: test
+        gt:
+        - s1a.tips_over_count
+        - const: 0
+          type: Count
+    cite: 
+      doc: f1040s1a
+      locator: 'p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and tips
+        shown in box 5"'
   - id: s1a.tip_ssn_count
     printed: (helper)
     label: 'Number of people with a valid SSN who received qualified tips'
@@ -403,6 +446,15 @@ form:
     cite:
       doc: i1040gi
       locator: p. 104, Schedule 1-A, line 4c, and the Qualified Tips From More Than One Employer Worksheet
+    refuses:
+    - when: s1a.tips_over_wages
+      form: Schedule 1-A, Part II (qualified tips larger than the Medicare wages and tips that include them)
+      remedy: The tips entered for a person are more than that person's Form W-2 box 5 Medicare wages and tips, which include
+        them. Correct the tip amounts or the Forms W-2.
+      cite:
+        doc: f1040s1a
+        locator: 'p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and
+          tips shown in box 5"'
   - id: s1a.line4c
     printed: 4c
     label: If you only received qualified tips as an employee with respect to employment with one employer, enter the larger
@@ -915,6 +967,43 @@ form:
       doc: i1040gi
       locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if", "You (and/or your spouse if
         filing a joint return) received qualified overtime compensation in 2025"
+  - id: s1a.ot_over_count
+    printed: (helper)
+    label: Number of people with a valid SSN whose qualified overtime amounts entered are more than their Medicare wages and tips (W-2 box 5)
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.work_ssn
+          - const: true
+        - op: test
+          eq:
+          - person.ot_over_wages
+          - const: true
+    cite: 
+      doc: f1040s1a
+      locator: 'p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all Medicare
+        wages and tips shown in box 5"'
+  - id: s1a.ot_over_wages
+    printed: (gate)
+    label: For someone on the return, the qualified overtime amounts entered are more than the Medicare wages and tips (W-2 box 5) that include them
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1a.ot_over_count
+      - const: 0
+        type: Count
+    cite: 
+      doc: f1040s1a
+      locator: 'p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all Medicare
+        wages and tips shown in box 5"'
   - id: s1a.ot_ssn_count
     printed: (helper)
     label: 'Number of people with a valid SSN who received qualified overtime compensation'
@@ -1010,6 +1099,15 @@ form:
       doc: i1040gi
       locator: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet,
         line 2
+    refuses:
+    - when: s1a.ot_over_wages
+      form: Schedule 1-A, Part III (qualified overtime compensation larger than the Medicare wages and tips that include it)
+      remedy: The overtime compensation entered for a person is more than that person's Form W-2 box 5 Medicare wages and
+        tips, which include it. Correct the overtime amounts or the Forms W-2.
+      cite:
+        doc: f1040s1a
+        locator: 'p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all
+          Medicare wages and tips shown in box 5"'
   - id: s1a.line14a
     printed: 14a
     label: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not

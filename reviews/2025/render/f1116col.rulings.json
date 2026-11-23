@@ -13,6 +13,26 @@
    "subject_key": "b7b96fed060b8ec52a6d6c29b987939877030abee5ee03d7c1d442ec1ba56734"
   },
   {
+   "printed": "1a",
+   "restated": "Add helper \"Foreign-source dividends of this column when it has dividends; zero otherwise\" and helper \"Foreign-source interest of this column when it has interest; zero otherwise\".",
+   "model": "The restatement enters the full foreign-source dividends and interest, with no adjustment and no refusal for foreign qualified dividends or capital gain distributions. The instructions require adjusting these before line 1a in some cases: \"multiply your foreign source qualified dividends or capital gain distributions in each separate category by 0.4054 if ... taxed at a rate of 15%, and by 0.5405 if ... taxed at a 20% rate. Include the results on line 1a\" and \"taxed at the 0% rate by not including them on line 1a.\" They may be left unadjusted only under the adjustment exception (for example, foreign QD plus CGD \"less than $20,000\").",
+   "ruling": "Ruling: scope; as the ruling of 2026-11-15: a return that must adjust foreign qualified dividends or capital gain distributions is refused on Form 1116 line 35 by f1116.adjust ('Form 1116, Worksheet for Line 18'), so line 1a is unadjusted exactly where the adjustment exception applies (i1116, Foreign Qualified Dividends and Capital Gains (Losses)). The render review sees the column line without that refusal. Re-reviewed whole (owner-delegated precedent) only because siblings --check required a log of this sibling form of BUG-1181, whose change is interview wording. Project stands.",
+   "context": "b95ddfb9e23df35452dfb2282ab907c6280ad2d5ad3b34debb4214e012271c8f",
+   "date": "2026-11-23",
+   "run": "7e8d2b3a9281567665112827c50d513ebb1b7bb2dc33dae26093f1810141a419",
+   "subject_key": "0ed3e7cd0d46acb16b870c47815464a133606db9452f0f7251840269424c12bb"
+  },
+  {
+   "printed": "6",
+   "restated": "Add line 3g and line 4a.",
+   "model": "The form says \"Add lines 2, 3g, 4a, 4b, and 5,\" but the restatement adds only 3g and 4a. Lines 2 (definitely related expenses), 4b (other interest expense, which \"includes investment interest\" apportioned by an asset method) and 5 (losses) are dropped with no refusal. For example, Schedule A line 9 investment interest, which the program does compute, would change the line 6 value.",
+   "ruling": "Ruling: scope; as the ruling of 2026-11-15: lines 2, 4b and 5 are zero on every return prepared. Line 2 holds no interest (i1116 p. 17) and its state and local income tax is refused (f1116.itemized_unread); line 4b is zero when gross foreign source income is $5,000 or less (i1116 p. 18, Line 4a) and other interest above that is refused (f1116.asset_method); line 5 losses cannot arise in a dividend or interest column. Re-reviewed whole only for siblings --check (BUG-1181). Project stands.",
+   "context": "b95ddfb9e23df35452dfb2282ab907c6280ad2d5ad3b34debb4214e012271c8f",
+   "date": "2026-11-23",
+   "run": "7e8d2b3a9281567665112827c50d513ebb1b7bb2dc33dae26093f1810141a419",
+   "subject_key": "1994c8ea6b547bba7dcf64984b6005bea08cc4db17ae8d8d8aedebb7babfbccc"
+  },
+  {
    "printed": "6",
    "restated": "Add line 3g and line 4a.",
    "model": "The form says \"Add lines 2, 3g, 4a, 4b, and 5,\" but the restatement adds only lines 3g and 4a, with no refusal for the rest. Line 4b \"Other interest expense includes investment interest,\" which must be apportioned when foreign income is over $5,000. The program can carry investment interest on Schedule A line 9 (Form 4952), so leaving out line 4b, and line 2's definitely related expenses, changes the value.",

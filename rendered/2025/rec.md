@@ -477,7 +477,7 @@
 ## (gate) — `rec.nol_negative`
 
 - **Authored helper label:** Negative 2024 taxable income while a net operating loss is carried into 2025
-- **Encoded (Bool):** helper "Was your 2024 taxable income (Form 1040, line 15) more than zero?" = false and helper "The amount by which 2024 taxable income was negative (line 14 less line 11 of the 2024 Form 1040, zero if not more)" > $0 and scope helper "Are you (or, on a joint return, your spouse) carrying a loss from an earlier year into 2025 as a 'net operating loss' deduction?" = true
+- **Encoded (Bool):** helper "Was your 2024 taxable income (Form 1040, line 15) more than zero?" = false and helper "The amount by which 2024 taxable income was negative (line 14 less line 11 of the 2024 Form 1040, zero if not more)" > $0 and scope helper "Are you (or, on a joint return, your spouse) carrying a loss from an earlier year into 2025 as a 'net operating loss' deduction (a business, farm, rental or disaster loss, not a capital loss from selling investments)?" = true
 - Expr: `{"all":[{"eq":["rec.ti_positive",{"const":false}],"op":"test"},{"gt":["rec.negative_ti",{"const":0}],"op":"test"},{"eq":["scope.nol",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [p525] p. 27, Worksheet 2, footnote 4, "Taxable income will have to be adjusted for any net operating loss carryover. For more information, see the Instructions for Form 172" (2025; sha256 39b0fa5e)
 

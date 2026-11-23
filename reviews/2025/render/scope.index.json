@@ -5,8 +5,8 @@
  "base": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
  "head_rows": {
   "lines judged": "88",
-  "match / mismatch / unclear / missing": "78 / 5 / 5 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "81 / 4 / 3 / 0",
+  "line-scoped reviews": "6 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -53,15 +53,15 @@
   },
   {
    "key": "treaty",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "3139251bd36d4df224397dee5d43a9f941d6f954d253a62bf6afa5434798cefc"
   },
   {
    "key": "armed_forces",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "UNCLEAR",
-   "ruling": "Ruling: representation; the parent question's window is the project's design: its children are 2025 reservist travel, a 2025 military move, and the repayment of a qualified reservist distribution, which the archived text describes without a date window; the restatement cannot check the window against the text, and it is not a computed value. Left as the project's reading.",
+   "ruling": "Ruling: representation; p590a p. 9, Qualified reservist repayments, \"You can't make these repayment contributions later than the date that is 2 years after your active duty period ends\": a repayment in 2025 needs active duty that ended in 2023 or later, which service in 2022 or later contains; the gate is wider than the questions it opens and costs only a question (the reservist travel and military move questions concern 2025). Project stands.",
    "subject_key": "830f89c49376067c4b8f81726af20c00d1120e09b00776de999ee37efa304938"
   },
   {
@@ -72,21 +72,21 @@
   },
   {
    "key": "reservist_expenses_if_armed_forces",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "eaf1a960c1cbfd61fe986cd90ea90b753278b3b80fe94a1c3cab920806cb9268"
   },
   {
    "key": "military_move",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "e3b53c3a15536ff000ed0fcb47bcc859e083d2883c22e6df17a82103d8ac5222",
    "status": "MATCH",
-   "subject_key": "36b649ee557b0e3cf9edf833400963c561f6738b1897bfa0a8f1fda733721426"
+   "subject_key": "5a618a433fdfd3556c64d058ac85a35d9c276b713557880ba18eae201b6279dd"
   },
   {
    "key": "military_move_if_armed_forces",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "e3b53c3a15536ff000ed0fcb47bcc859e083d2883c22e6df17a82103d8ac5222",
    "status": "MATCH",
-   "subject_key": "1e11d21d82abf6f5a7d2824c9ef58a56a4c7179b43997eb5ab10f55fadf31d29"
+   "subject_key": "76d25eda23eafbed93beb05fd4a3f567cbae7f30b8988f394dcf331d82194aef"
   },
   {
    "key": "reservist_repaid",
@@ -96,7 +96,7 @@
   },
   {
    "key": "reservist_repaid_if_armed_forces",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "2ca40fa945db1fa8432c803e1cbe9eeadd982cd134ab894c93bb7fa5695fb2ac"
   },
@@ -162,7 +162,7 @@
   },
   {
    "key": "rental",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "57b95340f229b8f4281807b9b053c3ccb9ffada3cb5fa31fdf27dc93fdf289af",
    "status": "MATCH",
    "subject_key": "3441580fa4edbde64ecb9f1e13e4821892659a2dfb61ca345e3d1f33c3f0f949"
   },
@@ -174,7 +174,7 @@
   },
   {
    "key": "rent_personal_if_rental",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "57b95340f229b8f4281807b9b053c3ccb9ffada3cb5fa31fdf27dc93fdf289af",
    "status": "MATCH",
    "subject_key": "de21fc4adf035c4b26a913e4b3974938bd017d3faf0dc83975c1de1b4d3a09c9"
   },
@@ -198,21 +198,21 @@
   },
   {
    "key": "pay_no_w2",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "35069a4fd068174890e76b90a3d8b906b0c788bc8b07744b72d645a81c4cbb4d"
   },
   {
    "key": "household_pay",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
-   "subject_key": "e3b39d74b33178c69b5b0ceeed27f9c6182e1adc23d8fd41bcf5d156e070d226"
+   "subject_key": "fd35e522df9f37eedd4a2bd7919d4ee6d1b6444c2ab2a4e237525bcca6fa8556"
   },
   {
    "key": "household_pay_if_pay",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
-   "subject_key": "0c00c85d6554d595dfbd6c3ff9c99f6aeaffaebffea2536f0bc58af636900534"
+   "subject_key": "dc494ccd9377df10dbc66b115243c70c79395a0ead44db2fafa2d3dae6eaeb52"
   },
   {
    "key": "contractor_pay",
@@ -222,7 +222,7 @@
   },
   {
    "key": "contractor_pay_if_pay",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "cd304a6a4db34afe121d6d3ffff9c842369d1bcb3b977bb77d823dd9d24fb639"
   },
@@ -234,20 +234,20 @@
   },
   {
    "key": "tips_unreported_if_pay",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi p. 24, Line 1c. Allocated tips in W-2 box 8 are refused by s2.w2_marks ('Does any Form W-2 ... show an amount in box 8 (allocated tips) ...'); this question covers tips not on a W-2.",
+   "ruling": "Ruling: scope; i1040gi p. 24, Line 1c, \"any allocated tips shown in box 8 on your Form(s) W-2\". Allocated tips are refused with the W-2: the W-2 marks question (s2.w2_marks, \"An amount in box 8 ... A Yes ends the interview here\") refuses any box 8 amount, and the help of scope.tips_unreported says \"Tips in box 8 of a W-2 were asked about with the W-2\". Project stands.",
    "subject_key": "651b06ad97f8b2777a473defee43bf17406aeca37c5b9081ae6202dffe51a983"
   },
   {
    "key": "strike_pay",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "2a427535f28ebe7501e381f92d05fd922109e1fdda496ba40f6f584714d4089b"
   },
   {
    "key": "strike_pay_if_pay",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "a429a544f7cffc5397009b4d35545e8aa6fd5b971964a170d13a9b1e6ade0d9f"
   },
@@ -259,20 +259,20 @@
   },
   {
    "key": "wages_no_form_if_pay",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "80d70ec1d9a076fdf8d5586bc24aad46611d09fa4222f6fd2f5e71590de8f664"
   },
   {
    "key": "medicaid_waiver",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; i1040gi p. 24, Line 1d. The question asks about care of someone living in the filer's home because difficulty of care payments are for such care; pay for caring for someone who does not live with the filer is paid work in someone's home, which the question's help sends to scope.pay_no_w2, where it is asked and reported.",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: representation; i1040gi p. 24, Line 1d, and p525 p. 33, Difficulty-of-care payments. The question is the excludable case (care of someone living in the filer's home); its tick help sends care of someone who does not live with the filer to paid work in someone's home (scope.household_pay, line 1b), so no line 1d payment is left unasked. Project stands.",
    "subject_key": "8b9551267e5c7578338484bd934e97098f11715fe70b5f2186b36317f5643159"
   },
   {
    "key": "religious_work",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "f38bb64d59a66f76556837052b44b86584241b93f481954f063851bff3613449"
   },
@@ -284,7 +284,7 @@
   },
   {
    "key": "clergy_if_religious_work",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "82a1845d63a64cf9989429e33a6f1e2fdc6bb1eb8aaa2ac8c47964b79962754d"
   },
@@ -296,7 +296,7 @@
   },
   {
    "key": "church_exempt_wages_if_religious_work",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "f8e56076aba8e0fd6b305976265c726518655257960493e95fccbd86fdb27713"
   },
@@ -411,7 +411,7 @@
   },
   {
    "key": "foreign_shares",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "6e79dc70442ee1a8fe7c952306228eb0eb8d36842d94ed8f15e2b3af54cf553d"
   },
@@ -423,9 +423,8 @@
   },
   {
    "key": "pfic_if_foreign_shares",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: representation; the plain definition restates IRC section 1297 (income or asset test of passive income or investment assets), which is not archived; the archived i1040gi text names only Form 8621. A Yes refuses.",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
+   "status": "MATCH",
    "subject_key": "64ceff39057aae26689ebb28676ecff7d4069a56e59a53d3355b5d91b350dfc9"
   },
   {
@@ -436,9 +435,8 @@
   },
   {
    "key": "cfc_if_foreign_shares",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: representation; the plain definition restates IRC section 957 (more than 50% owned by U.S. shareholders), which is not archived; a Yes refuses.",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
+   "status": "MATCH",
    "subject_key": "35a4bb58e04dbe13f0a9eddf2d073e31658b51b3e8ed7b2ed77efc9c7d8a0b77"
   },
   {
@@ -450,9 +448,9 @@
   },
   {
    "key": "attorney_fees",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
-   "subject_key": "41d225ec61210c04efb569d1839611c90ae1443cf9636ae227265f53c20a3ada"
+   "subject_key": "98055e5e9abb1f0396231f4b8a073dd6405d2e8dd888d7a1f63cc56c637add58"
   },
   {
    "key": "trade_act_repaid",
@@ -468,9 +466,9 @@
   },
   {
    "key": "nol",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
-   "subject_key": "45bd6aa7cabeb776a5d4ce4b03082ab42a45a5ad105ee3d1d1eeb220e36eafce"
+   "subject_key": "4356b81df61b315664dcf7dce02fc2cd2dca67cd7f835199200dc4474e7c53d6"
   },
   {
    "key": "passive",
@@ -499,33 +497,32 @@
   },
   {
    "key": "schedule1",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi pp. 93-100 (Schedule 1 lines 8 to 24z). The screen is the project's aggregate of the Schedule 1 items it does not compute; this pass added scope.trade_act_repaid (line 24e, BUG-0948) and scope.remic (Schedule E Part IV, BUG-0977). Items the restatement finds missing are refused on their own lines (s1.line8_other for the line 8 items, the other screens cited in the locator).",
-   "subject_key": "8e4a0ef1e58f6a97b181cc7574e6af8f7e6bcd12b9d3c8858af612ee3d43ba96"
+   "record": "57b95340f229b8f4281807b9b053c3ccb9ffada3cb5fa31fdf27dc93fdf289af",
+   "status": "MATCH",
+   "subject_key": "e00e8af783d1d977f66001e010819818b2a1e79ac5dca508a38c85b27d55791b"
   },
   {
    "key": "other_income",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "8c783e31f29dd2b9f182c3938944989125eaad627f4b07735c8eef9a157d461e"
   },
   {
    "key": "other_line16",
-   "record": "7eac58be909b233770fe0e17d423828b442f7037d4301e086d415de02504e4c7",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: scope; i1040gi Line 16 lists 'Tax from Form 4972' and 'Triggering event under section 965(i)' (sources/2025/i1040gi.cols.txt:846). Neither needs a screen here: a lump-sum distribution reaches Form 4972 only from a Form 1099-R, and each 1099-R asks retirement.lump_sum, refused through retirement.special ('Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)'); a section 965(i) deferral is open only to S corporation shareholders, whose income or loss from the S corporation for 2025 is refused at scope.k1 (Schedule K-1), and a net 965 liability in installments is refused at s3.section965. Project stands.",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 34, Line 16, \"Tax from Form 4972 (relating to lump-sum distributions)\". Form 4972 is refused where the distribution is entered (retirement.lump_sum_if_born_before_averaging_date in retirement.special) and named in the Form 1040 line 16 refusal (f1040.line16, \"Forms 8814, 4972, 8615, 8621 or 8978\"); a section 965(i) triggering event belongs to an S corporation shareholder, refused by scope.k1. Project stands.",
    "subject_key": "64da5a6cf03589409148a3f1ad98f55ac28f6384def263496a6085ac849d41d2"
   },
   {
    "key": "ready_schedule1",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "57b95340f229b8f4281807b9b053c3ccb9ffada3cb5fa31fdf27dc93fdf289af",
    "status": "MATCH",
-   "subject_key": "089ef5344e86c9bd3e8ffcb16f5a3128382e578231af4d4ffc2bb541febef518"
+   "subject_key": "0dc0c424538a5e91d9b0737b3bc5fba0371dc2244748f051b9b2a0ce39c1a59a"
   },
   {
    "key": "ready_other_income",
-   "record": "101e8c71400a8545f7692ed1c0e8b2107ca0da71d277ad9b8b976634b210e389",
+   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
    "status": "MATCH",
    "subject_key": "628156cfa474b73d426a6d52c855a0d968964905d5bb36ef1456b7071ec2edad"
   },
@@ -560,8 +557,8 @@
   "armed_forces": "7ec44fb2ce962131f9c20eca5cfc8d26398fa3684283616dc4d11293a9455158",
   "reservist_expenses": "6733348ffde861780fdf729d07ef976bd69b1ead2dccacdfbd50a1bba32aec21",
   "reservist_expenses_if_armed_forces": "64d5f4ff1e3bad278b054348761a6fca51c67ab0860e3419fb1931dd8e1c9be9",
-  "military_move": "0e3c1624db697897e52f9287f67f990a45eb72da8d6eb7d9698188e6ca7eb056",
-  "military_move_if_armed_forces": "84be6625c293bce1d5c62e34fc791117231f9e73e94623198dda00a5b393b64d",
+  "military_move": "ef380ed31780aac0ae12faa4b226d09fb32f03136839a2f955d0b5533584ca28",
+  "military_move_if_armed_forces": "89fb5c69f6f31180ffec7cf974fb9f6bd3084d7cf45ca16c6c262d58b9130c6e",
   "reservist_repaid": "c9149cf90ebc397daf0b366d2a2ed47b6aae031bb49cb6fa01496a0ab391f96d",
   "reservist_repaid_if_armed_forces": "a3b918347920f5f4af079574af72bece900fb84680bd07b4c922238e7a5f16df",
   "under24_count": "35f09aa6c054560d492082a26037dabb2194a0db05820b1abd54078aa05151c9",
@@ -581,8 +578,8 @@
   "farm": "578d529fa363bc239681d3655b093dcc75315388f028e1faf7b020b91655cec2",
   "remic": "f169db96fbf79abe77e642c465a352a0a920c813c7bee08de1ba700d1f87b69c",
   "pay_no_w2": "d77c29eee83d125648da56cf90cc7f4d902605b1b865409d9e1ec87eecf3eedf",
-  "household_pay": "080d3e6b343e7ac31a3dd57ce1b6c411add7c57de6aa4e26388f43a29c95874f",
-  "household_pay_if_pay": "4cdbc7474dd66f554619ab9d1e2e41ab7f1650be995e2eb9ac1831358d0dd2db",
+  "household_pay": "61ce4e339ffb0a985e85af7061250174576eb9a245662422c1b42aafeca2387a",
+  "household_pay_if_pay": "5beea098f9b7bded70924debd7eeea9fb744b20b419822a4d216b30e3c806cae",
   "contractor_pay": "b4806a19a76ecb11d25ff4a7a5a829960bf4f15f0c5ea31ae75d49af7da3b9dc",
   "contractor_pay_if_pay": "21783626e26eac8e4ec34108227e067d44131d461345e65726d7e2ba6591b6ee",
   "tips_unreported": "c4c68ae746a2da305185b5fa0a8099a155b81ccd147c52956a6c15ed426f5b7a",
@@ -621,18 +618,18 @@
   "cfc": "2f5a72e78816dd3b9ade94958ddbca3ff05c03b13660d281d50ebb18524bcad8",
   "cfc_if_foreign_shares": "7aa32d4705093f91c347f3ecd7aa58d6437b3a3815198a4968ad0e2051d11b03",
   "reforestation": "f3da712e7fd96f3fea00ed1cac1db462059728e0ba6240c7ec0c79761e9c4a56",
-  "attorney_fees": "8b52fafa243ca77ef07d5dc43706195e7b423c82d10b84b4a0a89b10f86e567c",
+  "attorney_fees": "eac038fc96d4f532469327e5c9ab016ea0197525cfd2754083236d30fe3de9a7",
   "trade_act_repaid": "5be521cefbe9edd8f7cd59f7723b2166508654d8cb3d870da601a157a9d757db",
   "business_before": "ac2fdd5a26be10733a36ff8af96f2f65f5fa201be8bfcad2d13f01c1fb0810db",
-  "nol": "38624bd882fafc88a3161c61e8a6dc63609fc7256c3224b7767a4f1f37f93897",
+  "nol": "e71d688cc39966ca10e88912c194c28f39dfa2f084212edb8d25efa7f9416ec8",
   "passive": "17ba9a9c5b48834402457225f2a3a0226b4ba76237d0409ef0d08a6380e6a852",
   "passive_if_business_before": "c90f75d34fe0b9a9ae3948e3a664b4481d693a1851c4a69ce97a536ecd84341a",
   "f8978": "55fd93d088666a05e39701777efa2970e6dbb8e5dac38b8917868126b2cfb821",
   "f8978_if_business_before": "33c9bbb2fe3e9e3afafd84dde0a459eaabf32c867c9cf4c40dd09d41858d362f",
-  "schedule1": "5b8912c7a7433fa372f6e05c03d3863d39b34550b370c47ecb0a39b4d5f37d4e",
+  "schedule1": "e832ad409f1f7fa24ff65503880a54e16a054b8b65778cd6a5cf223a6a4ab3b4",
   "other_income": "65d596d263e0ddd9a76a626b80c49b7914a281854a2acb674d3636b73e38ab2f",
   "other_line16": "da0f0c402076ae5339d54eaf7a215f4a719109dc472a42d01456955f95951c20",
-  "ready_schedule1": "4f4ebdd16c7d2f3b1a4f4d0163152dbdec86571b179b7c73b304b687c406a75a",
+  "ready_schedule1": "a383c4ddaca3b33b4ee6bbf33c7265a4992f53d45b99c8ce834b03c3bcf5f573",
   "ready_other_income": "fd54cdf1e385a3fd191345356c63da5c764ffd9dbbdbd7317a2ff2db7dfd0bbe",
   "ready_other_line16": "6723121cfef5906c08d9d43756bc044d432c8f065f65c8efcca571c01ff362d2",
   "ready_credits": "e0073779f5c49f9d21a15fcc5e1c6d394a8d828a3f9a1ae061e8de5d5878d3ce",

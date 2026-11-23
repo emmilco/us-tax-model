@@ -3,6 +3,10 @@
  "form": "s8812",
  "family": "claude",
  "base": "49fda9387a65f2836d89037f90ecfe06d2f4b9f186720403d1c97423d1afc666",
+ "head_rows": {
+  "match / mismatch / unclear / missing": "49 / 1 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1",
@@ -180,22 +184,22 @@
   },
   {
    "key": "21",
-   "record": "49fda9387a65f2836d89037f90ecfe06d2f4b9f186720403d1c97423d1afc666",
-   "status": "MATCH",
-   "subject_key": "47404c2522eaf3ea3f3b81e8e00f2523c2fec7955200006e35a86796b7ae560b"
+   "record": "e7cc9fd4f421b962107ff2a00f5641465c8578a54105686f3b79ce7b207fd7bf",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; as the earlier ruling: i1040s8812 p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 16, \"Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812\". Lines 11 and 15 are Tier 1 RRTA amounts, outside the slice: person.rrta refuses the per-person Medicare totals and Form 8959 refuses on RRTA compensation, so a return with RRTA compensation is refused before this line. Project stands.",
+   "subject_key": "0e3a159221765d1eef3553473a687ca5114951d133b9a3d10aee4223eab0672d"
   },
   {
    "key": "22",
-   "record": "49fda9387a65f2836d89037f90ecfe06d2f4b9f186720403d1c97423d1afc666",
-   "status": "MISMATCH",
-   "ruling": "Ruling: finding; f1040s8812 line 22, \"Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form 1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13\". The reply is right: line 13 is refused through s2.other (s2.w2_marks_if_w2), but lines 5 and 6 are computed from Forms 4137 and 8919 and s2.other does not test them, so a Part II-B return with either tax understates line 22 (BUG-1114, medium).",
-   "subject_key": "59e22253eb251fc809912251bed69ff741ad539b78c4bbfcba2f8c593de20b0c"
+   "record": "e7cc9fd4f421b962107ff2a00f5641465c8578a54105686f3b79ce7b207fd7bf",
+   "status": "MATCH",
+   "subject_key": "13047c9b31b11c11e2da043161b01d7cb5f57c1838ed1941c72bf58fca4de661"
   },
   {
    "key": "23",
-   "record": "49fda9387a65f2836d89037f90ecfe06d2f4b9f186720403d1c97423d1afc666",
+   "record": "e7cc9fd4f421b962107ff2a00f5641465c8578a54105686f3b79ce7b207fd7bf",
    "status": "MATCH",
-   "subject_key": "8a6075a8a66d63c67c4bbd9a4f3c62e8df42a7ac5eaaf54aa28005bd6eb51be6"
+   "subject_key": "58be4bd1512c8c29c2d60406b059b9e66d14efa008637782afee6e7762f41fb1"
   },
   {
    "key": "24",
@@ -259,10 +263,9 @@
   },
   {
    "key": "(CLW B 8)",
-   "record": "49fda9387a65f2836d89037f90ecfe06d2f4b9f186720403d1c97423d1afc666",
-   "status": "MISMATCH",
-   "ruling": "Ruling: finding; i1040s8812 p. 5, Credit Limit Worksheet B, line 8, \"Enter the total of any amounts from\" Schedule 1 line 15 and Schedule 2 lines 5, 6 and 13. It copies line 22 and carries the same omission of Schedule 2 lines 5 and 6 (BUG-1114).",
-   "subject_key": "6c0cc7f5a9f07d7451fe43e3fc960e6a4134ba6fff7540033a35ce552920634d"
+   "record": "e7cc9fd4f421b962107ff2a00f5641465c8578a54105686f3b79ce7b207fd7bf",
+   "status": "MATCH",
+   "subject_key": "b4439897bcb76fd687bae328a1832b3995fc6a64c390043fe70d7eaf8ad961d3"
   },
   {
    "key": "(CLW B 9)",
@@ -337,9 +340,9 @@
   "18b": "a5e03d456fc9f950ba9ff034d5bedf6c722ddd3c946cc92506b839b3478f8a51",
   "19": "a938c3653c318b4599c17535bb4172fffef69ab0b343c9e35d39a443021fb2de",
   "20": "2d5f4d43c74f4dec083951ee2fbb37c26bbc6ad3fc7a8996d43e1e2f5e9f4430",
-  "21": "2a0861477943d3919fb36cc8302b430bb50c217b1c6eb61c248b12a3cde420fc",
-  "22": "b2fca12c5a87a5d84a63e0b46a153c2b67c9fe17c45839ad45443389c8b9ddcb",
-  "23": "e7ae9febe0c1ca4cc422ceca6fecb3f2fec01aba7326ba818932ae59ec124c4b",
+  "21": "29b85fdb91c4b2fc8a5cae7abf039a4caf9d1ebc9cbf2455f9e3e1bc3f6633c3",
+  "22": "ac2b8eef3e7611e1fc9cff24cccc704df822ec248207ade5639f6c6b93fce339",
+  "23": "746449328f7a0b497290cd5deb6821c1b53c1b1daa445b868a4b5cddaa79c63b",
   "24": "666a64f83be62068e9813cdcf2778d2d5796cdfc3d3c2ebe4bfcc0cb4af956c7",
   "25": "ff9aa336e9b52485a434321a3b88397c72897ea9639d47d4830e08178c7cc7dc",
   "26": "fde38d4a1a2015c7ec5563147005591856245a407a5cef986a1b2b671bf8e402",
@@ -350,7 +353,7 @@
   "(CLW B 4)": "6d2914689f1d7f763b9e2624927615dbf240de7a0a7e089d5affc1e06b01434d",
   "(CLW B 5)": "a7382350b2f71959a8d4f3df0ffb7cf38fa61054dd46593a1a86a0597505538d",
   "(CLW B 7)": "710ceede7f3375afc12ae52b6b952c86c78a0eff79509bc82794ba7f4da3cab7",
-  "(CLW B 8)": "515d8552bc3a4116cfe9e5e8fbcd6d46078e54807d8bd59ebc2f1a7c0d6b8eb2",
+  "(CLW B 8)": "448859b10a204f2cd0e254bf434e86a15506f34a9b4b357b242ad3e63e8d53a1",
   "(CLW B 9)": "9e0e758cd12434831708fae51b5a1d47307ad337984bdcb948d61957ddfc4617",
   "(CLW B 10)": "7de04f1a5d5f417e2c7895c1ccecaf12959b9925a632e3a4a4d5173382f46368",
   "(CLW B 11)": "27edf37c08989d364bb47b371c187ce63aeddeab28ef6606d8574d3681588ba0",

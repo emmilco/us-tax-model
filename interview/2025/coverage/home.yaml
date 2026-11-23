@@ -177,6 +177,19 @@ rows:
       sa.charity_limited: true
     expect:
       refused: sa.charity_limited_if_gifts
+  - id: home.gifts_over_income_limit
+    design: lane fx-itemized (the 60% limit of Pub. 526, computed; sa.charity_limited answered No)
+    situation: A person with no other income gave $60,000 in money to charity, more than 60% of their income, and itemizes.
+    answers:
+      sa.gifts: true
+      sa.line11: 6000000
+      $gift: []
+      sa.gift_carryover: false
+      sa.charity_limited: false
+      s3.foreign_any: false
+      scope.trade_act_repaid: false
+    expect:
+      refused: sa.charity_over_if_itemizing
   - id: home.gifts_and_carryover
     design: BUG-0817 (the carryover is asked of every filer, so a filer who gave in 2025 and has a carryover is refused on it)
     situation: A person gave to charity in 2025, no income limit applies to those gifts, and a gift from an earlier year is still carried over.

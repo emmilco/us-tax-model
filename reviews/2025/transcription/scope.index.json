@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "10",
   "agree / disagree / missing": "1 / 9 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -24,10 +24,10 @@
   },
   {
    "key": "scope.household_pay_if_pay",
-   "record": "5bd778951b0f8b2e63f1ece4bb6e4b64b945879bc9c9cb3b6669c7608bd53df0",
+   "record": "cc2684e87753b7576464309725992fe28838130f69d2617e2d6555f37273493d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 24, Line 1b, \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4715 of 4732 comparisons agree, 4715 of 4732 in scope; completed {}. Project stands.",
-   "subject_key": "7e8be0fabd1e19eeec71f87fc2d5b2b29bc604b10f4f35c65e7774af9091d73f"
+   "ruling": "Ruling: representation; i1040gi p. 24, Line 1b. The reply's conjunction of the two answers is the project's choose (the household question when pay not on a W-2 is Yes, false otherwise). Re-reviewed only because the household pay wording changed. Project stands.",
+   "subject_key": "57f1a138b3d0f33634d0747b7ccd83893f2e6b9e2f0b64ebdcdfaf63a8f5e7bb"
   },
   {
    "key": "scope.contractor_pay_if_pay",
@@ -59,10 +59,10 @@
   },
   {
    "key": "scope.schedule1",
-   "record": "8ab3402cb4fb0c26311e4c5f96e380447fe8444cf40bf846b2f8974cc93d5446",
+   "record": "8694157a167330ef692ca4338d589c29d51ce4869163b9024fa244617bfa6340",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as the earlier rulings, the reply's screen keeps only some Schedule 1 items (reservist, moving, performer, Archer MSA, reforestation, Trade Act repayment, attorney fees) and leaves out the personal-property rental, K-1, farm, REMIC (scope.remic, BUG-0977), clergy, church wages, W-2 marks and SE plan operands the project's screen holds, each cited in its locator (i1040se p. 1 and p. 11; i1040sf p. 2; i1040sse p. 1). executable triage (.transcription/triage/2025/scope.json, this pass): 4,219/4,660 agree; differences {\"candidate-unknown\": 11, \"project-unknown\": 287, \"value\": 143}; on completed returns {\"candidate-unknown\": 4}.",
-   "subject_key": "b65ed772cdc204e99310fd93ccb5ffc7091023ad25b903b5984327700ca66017"
+   "ruling": "Ruling: interface gap; as the ruling of 2026-11-23: the pages do not define this helper and the reply guesses a narrower set of Schedule 1 adjustments; the project's helper is any Schedule 1 item this tool does not compute, each a cited refusal (now with scope.trade_act_repaid and scope.remic from next). Triage executable-triage-v2 (.transcription/triage/2025/scope.json, pass 7497bafeab0e): 4253 of 4694 agree; {\"candidate-unknown\": 11, \"project-unknown\": 287, \"value\": 143}; completed {\"candidate-unknown\": 4}. Re-reviewed because the landing merged next's scope lines with advfix's. Project stands.",
+   "subject_key": "0f6ec1715d9cb90c53c89f7a50afd8db111a4b78051f2ca83aa8a600a2907a5c"
   },
   {
    "key": "scope.other_income",
@@ -82,12 +82,12 @@
  "subjects": {
   "scope.has_w2": "821f02aa9c7493efd8a6e938a2b1537590ee73b4e2847d7ca11c29b640ec4f44",
   "scope.reservist_repaid_if_armed_forces": "098b21a37866c1b741a8725d1a4c5cc5d5816d6863bbec740051f1460c3ca62d",
-  "scope.household_pay_if_pay": "00062014dadbbc6a253ac5e256fe5f072ebb4dca8c4343e5131fd8c3f99a9e4f",
+  "scope.household_pay_if_pay": "c145fa9f409f8bf1eacd7c606481df2b9b1f5753bddaaac4e02d35fe15f6c316",
   "scope.contractor_pay_if_pay": "61d726ac15e54b08250f94791370dc134edbd7f2237ec30d5cd281e07d0f1bb8",
   "scope.tips_unreported_if_pay": "00259428488f6304ddf62dca19ec13880901e9f2c5c10623d4f07a2606369326",
   "scope.strike_pay_if_pay": "c33b66de5acc1cdb893e0b32a73da4b75367b865b8495bdf79935e01e81129c6",
   "scope.excess_deferral_if_w2": "f62b1921e36df83067fa2da62cd47f106dfc9fe5cb829ed703143c124679ee03",
-  "scope.schedule1": "70ad283a97d1b046563b0782ad863daa9a064fbc9f34d3d98d9960569fa36038",
+  "scope.schedule1": "c3a48f6e73af30d4f7b4b1c2f00a3610750a2a35acef1d1755f7356930093df7",
   "scope.other_income": "6a224103c474c0ea0f38a1ee2fb34f34e77649624b44b97ee394e8a4bbaca755",
   "scope.other_line16": "1b2fe692e217c68a900d353c42f9594839c291a77f532e65a009239b670e2a3f"
  },

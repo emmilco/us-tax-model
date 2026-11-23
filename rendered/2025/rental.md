@@ -30,14 +30,14 @@
 - **IRS:** Type of property
 - **Encoded (Enum(rental_kind)):** Input — What kind of property is this?
 
-  - sfr: a house or condo (one home)
+  - sfr: a house, condo or mobile home (one home)
   - multi: a building with two or more homes
   - vacation: a vacation or short-stay rental
   - commercial: shops, offices or other business space
   - land: land only
   - self_rental: property rented to a business you or your spouse run
   - other: something else
-- Expr: `{"op":"input","source":"What kind of property is this?\n\n- sfr: a house or condo (one home)\n- multi: a building with two or more homes\n- vacation: a vacation or short-stay rental\n- commercial: shops, offices or other business space\n- land: land only\n- self_rental: property rented to a business you or your spouse run\n- other: something else"}`
+- Expr: `{"op":"input","source":"What kind of property is this?\n\n- sfr: a house, condo or mobile home (one home)\n- multi: a building with two or more homes\n- vacation: a vacation or short-stay rental\n- commercial: shops, offices or other business space\n- land: land only\n- self_rental: property rented to a business you or your spouse run\n- other: something else"}`
 - Cite: [i1040se] p. 5, Line 1b, "Enter one of the codes listed under “Type of Property” in Part I of the form" (2025; sha256 ad71de35)
 
 ## (gate) — `rental.self_rental`
@@ -696,6 +696,13 @@
 - **Encoded (NonNegDollars):** Choose — [helper "Any day of personal use in 2025" = false → helper "Taxes, asked only when ticked (zero otherwise)"] [helper "Any day of personal use in 2025" = true → helper "Taxes: the rental part (rental days over total days of use)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.personal_any",{"const":false}],"op":"test"},"then":"rental.amt16_if_any"},{"guard":{"eq":["rental.personal_any",{"const":true}],"op":"test"},"then":"rental.div16"}],"op":"choose"}`
 - Cite: [i1040se] p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes" (2025; sha256 ad71de35)
+
+## (helper) — `rental.tax_personal`
+
+- **Authored helper label:** Subtract rental.line16 from rental.amt16_if_any (the taxes not taken on Schedule E, carried to Schedule A line 5b)
+- **Encoded (NonNegDollars):** Subtract line 16 from helper "Taxes, asked only when ticked (zero otherwise)". If zero or less, enter -0-.
+- Expr: `{"from":"rental.amt16_if_any","op":"subtract_floor0","take":"rental.line16"}`
+- Cite: [p527] p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Only your rental expenses may be deducted on Schedule E (Form 1040). Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize your deductions"; i1040sca p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business" (2025; sha256 20c826e9)
 
 ## (helper) — `rental.has_utilities`
 

@@ -2946,6 +2946,230 @@
           "cents": 210324
         }
       }
+    },
+    {
+      "id": "fxi.rental_tax_personal_to_5b",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before recording from p527 p. 25 and p936 p. 4: single, wages $50,000; a vacation home rented 200 fair days and used 10 personal days (not a home), Form 1098 interest $12,000 and property tax $3,000, all entered with the rental; the filer leaves the rental out of Schedule A as the help says. Schedule E line 16 = $3,000 x 200/210 = $2,857.14; the $142.86 left is added to Schedule A line 5b; none of the interest is on line 8a (not a qualified home). Line 17 = $2,500 state tax + $142.86 + $9,000 gifts = $11,642.86, so the standard deduction applies.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "vacation",
+        "rental[a].rents": 2400000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 1200000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 300000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 150000,
+        "rental[a].has_utilities": true,
+        "rental[a].amt17": 210000,
+        "rental[a].days_fair": 200,
+        "rental[a].personal_any": true,
+        "rental[a].days_personal": 10,
+        "rental[a].days_overlap": 0,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m1",
+        "rental[a].rprop[b].year": "y2019",
+        "rental[a].rprop[b].basis": 22000000,
+        "sa.home_owner": true,
+        "sa.state_tax_any": true,
+        "sa.line5a": 250000,
+        "sa.gifts": true,
+        "sa.line11": 900000,
+        "sa.mortgage_interest": 0,
+        "sa.line5b": 0
+      },
+      "expect": {
+        "rental[a].line16": {
+          "kind": "money",
+          "cents": 285714
+        },
+        "sa.rental_tax_personal": {
+          "kind": "money",
+          "cents": 14286
+        },
+        "sa.line5b_total": {
+          "kind": "money",
+          "cents": 14286
+        },
+        "sa.line8a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sa.line17": {
+          "kind": "money",
+          "cents": 1164286
+        },
+        "sa.itemizes": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "fxi.charity_cash_over_limit_itemizing",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before recording from p526 p. 22 (no more than 60% of AGI): single, AGI $50,000, cash gifts $40,000 > 60% x $50,000 = $30,000; line 17 $40,000 > $15,750, so itemizing, and the deduction is refused.",
+      "inputs": {
+        "sa.gifts": true,
+        "sa.line11": 4000000,
+        "sa.charity_limited": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "person[taxpayer].w2[a].box6": 72500
+      },
+      "expect": {
+        "sa.charity_over_test": {
+          "kind": "bool",
+          "value": true
+        },
+        "sa.line17": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "sa.deduction": {
+          "kind": "refusal",
+          "gate": "sa.charity_over_if_itemizing",
+          "form": "Schedule A charitable limitation (Pub. 526)",
+          "remedy": "Gifts to charity this large compared with your income are limited, and the deduction and the carryover are figured under Pub. 526, which this tool does not do.",
+          "cite": {
+            "doc": "p526",
+            "locator": "p. 22, Limits on Deductions, \"The amount you can deduct for charitable contributions is generally limited to no more than 60% of your AGI\"; p. 25, \"Your noncash contributions of capital gain property to 50% limit organizations is limited to 30% of your AGI\"",
+            "revision": "2025 returns; printed date 2026-02-05",
+            "snapshot": "607011d9065a39b2fa3e08eda90c6313c581c2d4515f00fc23b0ae0a145435ae",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "fxi.charity_stock_over_limit_itemizing",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before recording from p526 p. 25 (capital gain property to 50% limit organizations, 30% of AGI): single, AGI $100,000, listed stock given, deduction $35,000 > $30,000; itemizing, so refused.",
+      "inputs": {
+        "sa.gifts": true,
+        "sa.charity_limited": false,
+        "$gift": [
+          "stock"
+        ],
+        "gift[stock].deduction": 3500000,
+        "gift[stock].public_securities": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box5": 10000000,
+        "person[taxpayer].w2[a].box6": 145000
+      },
+      "expect": {
+        "sa.charity_over_test": {
+          "kind": "bool",
+          "value": true
+        },
+        "sa.line17": {
+          "kind": "money",
+          "cents": 3500000
+        },
+        "sa.deduction": {
+          "kind": "refusal",
+          "gate": "sa.charity_over_if_itemizing",
+          "form": "Schedule A charitable limitation (Pub. 526)",
+          "remedy": "Gifts to charity this large compared with your income are limited, and the deduction and the carryover are figured under Pub. 526, which this tool does not do.",
+          "cite": {
+            "doc": "p526",
+            "locator": "p. 22, Limits on Deductions, \"The amount you can deduct for charitable contributions is generally limited to no more than 60% of your AGI\"; p. 25, \"Your noncash contributions of capital gain property to 50% limit organizations is limited to 30% of your AGI\"",
+            "revision": "2025 returns; printed date 2026-02-05",
+            "snapshot": "607011d9065a39b2fa3e08eda90c6313c581c2d4515f00fc23b0ae0a145435ae",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "fxi.charity_cash_at_limit_itemizing",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before recording from p526 p. 22 boundary: AGI $50,000, cash gifts exactly $30,000 (60%, not more); line 17 $30,000, itemized, not refused.",
+      "inputs": {
+        "sa.gifts": true,
+        "sa.line11": 3000000,
+        "sa.charity_limited": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "person[taxpayer].w2[a].box6": 72500
+      },
+      "expect": {
+        "sa.charity_over_test": {
+          "kind": "bool",
+          "value": false
+        },
+        "sa.deduction": {
+          "kind": "money",
+          "cents": 3000000
+        }
+      }
+    },
+    {
+      "id": "fxi.charity_over_limit_standard",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before recording from p526 p. 22 with the standard deduction: AGI $20,000, cash gifts $13,000 > $12,000 (60%), line 17 $13,000 < $15,750, so the standard deduction is taken and the limit cannot change it; not refused.",
+      "inputs": {
+        "sa.gifts": true,
+        "sa.line11": 1300000,
+        "sa.charity_limited": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 2000000,
+        "person[taxpayer].w2[a].box5": 2000000,
+        "person[taxpayer].w2[a].box6": 29000
+      },
+      "expect": {
+        "sa.charity_over_test": {
+          "kind": "bool",
+          "value": true
+        },
+        "sa.itemizes": {
+          "kind": "bool",
+          "value": false
+        },
+        "sa.deduction": {
+          "kind": "money",
+          "cents": 1575000
+        }
+      }
     }
   ]
 }

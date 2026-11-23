@@ -187,6 +187,7 @@ form:
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 1
+      ambiguity: amb.2025.eic_self_only_age
     - id: eic.status_mfs
       printed: (helper)
       label: Filing status married filing separately
@@ -590,6 +591,7 @@ form:
       cite:
         doc: i1040gi
         locator: p. 40, Step 1, question 4
+      ambiguity: amb.2025.eic_hoh_nonresident_spouse
       refuses:
         - when: scope.other_income
           form: Nonresident aliens (EIC, Step 1, question 4)
@@ -943,10 +945,83 @@ form:
         doc: i1040gi
         locator: pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31,
           1960 and before January 2, 2001)
+    - id: eic.self_only_qc
+      printed: (helper)
+      type: Bool
+      label: The filer has qualifying children for the EIC, none of them with a valid SSN, so only the self-only credit can be taken
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - eic.has_qc
+          - const: true
+        - op: test
+          eq:
+          - eic.ssn_count
+          - const: 0
+            type: Count
+      cite:
+        doc: p596
+        locator: 'p. 5, "you may be eligible to claim a self-only EIC if you are otherwise eligible"; p. 17, chapter 3, "You
+          must meet all four of these rules, in addition to the rules in chapters 1 and 4, to qualify for the EIC without a
+          qualifying child"'
+      ambiguity: amb.2025.eic_self_only_age
+    - id: eic.step3_self_only
+      printed: (helper)
+      type: Bool
+      label: 'Step 3 passed, and for the self-only credit Rules 11 to 14 (Step 4): aged 25 to 64, main home in the United States,
+        and not a qualifying child or dependent of another person'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - eic.step3
+            - const: true
+          then: eic.step4_age
+        - guard:
+            op: test
+            eq:
+            - eic.step3
+            - const: false
+          then: eic.no
+      cite:
+        doc: p596
+        locator: 'p. 5, "you may be eligible to claim a self-only EIC if you are otherwise eligible"; p. 17, chapter 3, "You
+          must meet all four of these rules, in addition to the rules in chapters 1 and 4, to qualify for the EIC without a
+          qualifying child"'
+      ambiguity: amb.2025.eic_self_only_age
+    - id: eic.step3_qc
+      printed: (helper)
+      type: Bool
+      label: Step 3 for a filer with a qualifying child; when no qualifying child has a valid SSN, Step 3 and Rules 11 to 14
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - eic.self_only_qc
+            - const: true
+          then: eic.step3_self_only
+        - guard:
+            op: test
+            eq:
+            - eic.self_only_qc
+            - const: false
+          then: eic.step3
+      cite:
+        doc: p596
+        locator: 'p. 5, "you may be eligible to claim a self-only EIC if you are otherwise eligible"; p. 17, chapter 3, "You
+          must meet all four of these rules, in addition to the rules in chapters 1 and 4, to qualify for the EIC without a
+          qualifying child"'
+      ambiguity: amb.2025.eic_self_only_age
     - id: eic.step34
       printed: (helper)
       type: Bool
-      label: Step 3 for a filer with a qualifying child, Step 4 otherwise
+      label: Step 3 for a filer with a qualifying child (and, when no qualifying child has a valid SSN, the Step 4 rules for the self-only credit too), Step 4 otherwise
       expr:
         op: choose
         alternatives:
@@ -955,7 +1030,7 @@ form:
             eq:
             - eic.has_qc
             - const: true
-          then: eic.step3
+          then: eic.step3_qc
         - guard:
             op: test
             eq:

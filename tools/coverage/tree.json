@@ -328,6 +328,7 @@
 
   {"gate": "sa.unsupported", "topic": "deductions", "kind": "situation", "question": "Do you have a casualty or theft loss, another miscellaneous deduction, a foreign tax deduction, mortgage interest not on Form 1098 or over the limits, or the sales tax election?"},
   {"gate": "sa.charity_limited_if_gifts", "topic": "deductions", "kind": "situation", "question": "Are your charitable deductions limited by income, or carried over from an earlier year?"},
+  {"gate": "sa.charity_over_if_itemizing", "topic": "deductions", "kind": "situation", "question": "Do you itemize, with gifts to charity of more than 60% of your income, or noncash gifts of more than 30% of it?"},
   {"gate": "sa.gift_carryover_if_no_gifts", "topic": "deductions", "kind": "situation", "question": "With no gifts to charity in 2025, do you have a charitable contribution carried over from an earlier year?"},
   {"gate": "gift.special", "topic": "deductions", "kind": "situation", "question": "Does a noncash gift need an appraisal or special treatment (over $5,000, a vehicle, intellectual property, inventory and similar)?"},
   {"gate": "gift.section_b", "topic": "deductions", "kind": "situation", "question": "Is a group of similar noncash gifts, other than publicly traded securities, over $5,000?"},
@@ -354,6 +355,8 @@
   {"gate": "person.mw_1099_over", "topic": "everyone", "part": "income", "kind": "situation", "question": "Are the Medicaid waiver payments on Form 1099 more than the payments not in W-2 box 1?"},
   {"gate": "f4137.line5_over", "topic": "everyone", "part": "income", "kind": "situation", "question": "Are the tips under $20 a month that were not reported more than all the unreported tips (Form 4137 line 5 more than line 4)?"},
   {"gate": "s1a.f4137", "topic": "schedule_1a", "kind": "situation", "question": "Do you claim the deduction for qualified tips and have tips on Form 4137?", "stop": "The tips deduction with Form 4137 tips"},
+  {"gate": "s1a.tips_over_wages", "topic": "schedule_1a", "kind": "entry"},
+  {"gate": "s1a.ot_over_wages", "topic": "schedule_1a", "kind": "entry"},
   {"gate": "person.f4137_filed", "topic": "schedule_1a", "kind": "situation", "question": "Do you claim the deduction for qualified tips from more than one employer and have tips on Form 4137?"},
   {"gate": "tipjob.mixed", "topic": "schedule_1a", "kind": "situation", "question": "Are only some of one employer's tips qualified tips?"},
   {"gate": "otjob.refused", "topic": "schedule_1a", "kind": "situation", "question": "Is your qualified overtime figured by an estimate, at an unusual overtime rate, or under a special FLSA rule?"},

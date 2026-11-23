@@ -34,10 +34,14 @@ form:
     expr:
       op: input
       source: Total of box 5 (net benefits) of all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099
-        for 2025
+        for 2025, plus any social security benefits paid to you (or your spouse) by Canada or Germany, in U.S. dollars, and
+        without benefits that belong to your child
     cite:
       doc: i1040gi
-      locator: p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b
+      locator: 'p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b; p915 p. 6, "If you receive social
+        security benefits from Canada or Germany, include them on line 1 of Worksheet 1."; p915 p. 5, Who is taxed, "Benefits
+        are included in the taxable income (to the extent they are taxable) of the person who has the legal right to receive
+        the benefits."'
     refuses:
     - when: ssb.pub915
       form: Pub. 915 or Pub. 590-A worksheet
@@ -58,14 +62,15 @@ form:
       locator: p. 31, Lines 6a and 6b, Exception
   - id: ssb.repaid_more
     printed: (helper)
-    label: 'On any of your (or, on a joint return, your spouse''s) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?'
+    label: 'Added up over all your (or, on a joint return, your spouse''s) Forms SSA-1099 and RRB-1099, is the total in box 4 (benefits repaid) more than the total in box 3 (benefits paid)?'
     type: Bool
     expr:
       op: input
-      source: 'On any of your (or, on a joint return, your spouse''s) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?'
+      source: 'Added up over all your (or, on a joint return, your spouse''s) Forms SSA-1099 and RRB-1099, is the total in box 4 (benefits repaid) more than the total in box 3 (benefits paid)?'
     cite:
       doc: i1040gi
-      locator: p. 31, Lines 6a and 6b, Exception
+      locator: 'p. 31, Lines 6a and 6b, Exception, "You repaid any benefits in 2025 and your total repayments (box 4) were more
+        than your total benefits for 2025 (box 3)"'
   - id: ssb.pub915
     printed: (helper)
     label: 'A situation in which the Social Security Benefits Worksheet of the Form 1040 instructions does not apply: a traditional IRA contribution for 2025 by a person covered by a retirement plan, or repayments (box 4) that are more than the benefits (box 3). The excluded income of Forms 2555 and 4563 and of Puerto Rico, the savings bond interest of Form 8815 and employer adoption benefits are asked about at their own questions.'

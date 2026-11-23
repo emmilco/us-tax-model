@@ -5,8 +5,8 @@
  "base": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
  "head_rows": {
   "printed lines compared": "42",
-  "agree / disagree / missing": "25 / 17 / 0",
-  "line-scoped reviews": "8 (latest 2026-11-22); see Line-scoped reviews"
+  "agree / disagree / missing": "24 / 18 / 0",
+  "line-scoped reviews": "9 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -30,16 +30,17 @@
   },
   {
    "key": "s1.nol_amount_if_nol",
-   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
-   "status": "AGREE",
-   "subject_key": "0f005895cc71174f9b01694acba405e573a36a0d27ad26be2c246c0c5522f5f2"
+   "record": "f401367a48649e7a6a2f650098c9d539f162f7419f6f430eaa4353d48e2c7586",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 91, Line 8a. The reply's guards (scope.nol true, scope.nol not true) are the project's two (true, false) for a Bool answer; the same input on the same branch. Re-reviewed only because the scope.nol wording changed. Project stands.",
+   "subject_key": "c6f96c0436691a50c3e839976a231a7834df3d07249d970f18b0d1af27805075"
   },
   {
    "key": "s1.nol_limit",
-   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "record": "f401367a48649e7a6a2f650098c9d539f162f7419f6f430eaa4353d48e2c7586",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; both flag the case where the 80% limit may bind with the same test: the project's N > 4T (T = Form 1040 line 11b less line 14, with the deduction taken) and the reply's 0.8 x max(0, N + T) < N are the same condition, and neither adds back the QBI deduction (amb.2025.s1_nol_limit_test, owner decision D3: i172 p. 2, \"80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions\"; a sufficiency test refused at f1040.line15). Triage 4e8342b3a4f8: 1,521/4,000 agree with no value difference: 1,386 candidate-unknown (the reply's Form 1040 line 11b / 14 chain reads inputs such as sche.re_pro the interview never asked) and 1,093 candidate-refuses (refusals the reply reaches through that chain, on returns refused either way).",
-   "subject_key": "c037ea2f09cacc1502a12faeaa2e0cb713c91afc8be7a8730604ab68285cd71e"
+   "ruling": "Ruling: model error; i172 p. 2, \"80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions\". The reply flags every NOL deduction; the project flags only where the limit may bind (N > 4T, amb.2025.s1_nol_limit_test, owner decision D3), and the flag refuses at Form 1040 line 15, so the reply refuses returns the limit cannot affect. The earlier ruling on this line ruled the same test representation where the reply kept it. Project stands.",
+   "subject_key": "eb11ed9de2723edbb3db631afea5a85a19408d9a793afd1195025fa0ed7bb709"
   },
   {
    "key": "s1.line10_ex5",
@@ -164,10 +165,10 @@
   },
   {
    "key": "8a",
-   "record": "d84d0c201ca6347ba1696b81a13602efc1182d2417aecd44686f5835658b4668",
+   "record": "f401367a48649e7a6a2f650098c9d539f162f7419f6f430eaa4353d48e2c7586",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 91, Line 8a, \"Enter any deduction for an NOL from an earlier year. Enter the amount in the preprinted parentheses (as a negative number)\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/s1.json): None of None comparisons agree; completed {}. Project stands.",
-   "subject_key": "c53d3e0c9d5d62b9b9016ca86532e104647aad8350633c199f08ff7d2500956d"
+   "ruling": "Ruling: representation; i1040gi p. 91, Line 8a, \"Enter any deduction for an NOL from an earlier year\" (in parentheses, as a negative number). Zero less the gated NOL amount on both sides; the guards differ only in form for a Bool answer. Project stands.",
+   "subject_key": "e97a0f4202c1c584bb6034efe4270123e9ad93e1161a1aaf447508a671609a92"
   },
   {
    "key": "8s",
@@ -326,8 +327,8 @@
  "__rest__": "1df47ff476caab5254486cac7cc33ec3618e59f81de5a353661491aecf3e58a8",
  "foreign": {
   "s1.has_gambling": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "s1.nol_amount_if_nol": "e9b3755b9ca179feb08992688478d8e1fabcfa3b48b1aa510fda101e1067c382",
-  "s1.nol_limit": "32d81f036d100c678ff7a3a8c5325a12ae7492c0ff27d27b20cae58c87263d56",
+  "s1.nol_amount_if_nol": "93f954f6baa3bb099741bccf8011e795845b09bb6ca13c5934a3ea93f9f2f4c8",
+  "s1.nol_limit": "a09c149a33c02ec9f356236f9b2d945ef58e10d2ca13921300b9f024706f8d9d",
   "s1.line10_ex5": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "7": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "7 (box)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
@@ -345,7 +346,7 @@
   "8z": "b4ada0b7f4d851c3aadea89c2690bcfb029fdb7b80e3dbd11fe933aef4abbd41",
   "2a": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "8c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "8a": "1aa4410e52a1ee814fc4f9d404939bfeba60656d9bcf0aceddd2a694b6701ac9",
+  "8a": "f522617524f7cbc2f0842a11c77ded7d8566b68928a0c8957375e2bc288add42",
   "8s": "0a701c83a4087c557fc3a1cbdf90bd0c59ab685ae364a7b145acffcf5eab1ed6",
   "9": "c581079fc619e65dbdf1d0669d689494d527ce2b3fb32c8a0dcb5b555cc88c75",
   "5": "b8b2ce06b1fa037a839deff095d5b15ee756d99af1c5c772b17ea99131054a4b",

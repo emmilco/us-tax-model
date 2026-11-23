@@ -2743,3 +2743,57 @@ register:
         doc: f8853
         locator: Form 8853 (2025), line 25, "Per diem limitation. Subtract line 24 from line 23"
       status: Planning lane lows-inc (BUG-0917), drafted 2026-11-16; for the owner.
+    - id: amb.2025.eic_self_only_age
+      text_at_issue: 'A filer whose only EIC qualifying children lack a valid SSN may claim the self-only EIC. The Form 1040
+        flowchart sends any filer with a qualifying child to Step 3 and skips Step 4 (age 25 to 64, a U.S. home for more
+        than half the year, not a dependent or qualifying child of another); Pub. 596 allows the self-only credit only
+        "if you are otherwise eligible" and requires all four rules for the EIC without a qualifying child.'
+      readings:
+      - The flowchart governs. A filer with a qualifying child, with or without an SSN, skips Step 4, so the self-only
+        credit is allowed whatever the filer's age (Step 3 question 6 tests only whether the filer could be someone's
+        qualifying child).
+      - Pub. 596 governs. A filer whose qualifying children all lack a valid SSN takes the self-only credit only if Rules
+        11 to 14 (Step 4) are met, so a filer under 25 or 65 or older, or one who is someone else's dependent, gets none.
+      chosen: The second (Pub. 596). A filer whose qualifying children all lack a valid SSN passes Step 3 and then Rules 11
+        to 14 (eic.self_only_qc, eic.step3_self_only through eic.step4_age); a filer with a qualifying child who has a valid
+        SSN skips Step 4 as before.
+      reason: 'Decided by the owner for Pub. 596. The flowchart is the instruction the return follows line by line; Pub. 596 is the
+        fuller statement and reads as the second. The statute (section 32(c)(1)(F)) is not archived. The readings differ
+        only for a filer whose every qualifying child lacks a valid SSN and who fails one of Rules 11 to 14 (for example a
+        filer of 21 with a child who has only an ITIN): up to $649 of credit.'
+      cite:
+        doc: i1040gi
+        locator: 'p. 41, Step 3, question 1, "Do you have at least one child who meets the conditions to be your qualifying
+          child for the purpose of claiming the EIC?", "No. Skip questions 2 through 6; go to Step 4", question 6, "Skip
+          Step 4; go to Step 5"; p596 p. 5, "you may be eligible to claim a self-only EIC if you are otherwise eligible";
+          p596 p. 17, chapter 3, "You must meet all four of these rules, in addition to the rules in chapters 1 and 4, to
+          qualify for the EIC without a qualifying child"'
+      status: decided by the owner 2026-11-23 (scout adversarial-credits M2, recorded in lane advfix; applied in lane
+        advland, BUG-1199).
+    - id: amb.2025.eic_hoh_nonresident_spouse
+      text_at_issue: 'EIC Step 1 question 4 asks "Were you or your spouse a nonresident alien for any part of 2025?", and a Yes
+        stops the credit unless the filer chose to treat the spouse as a resident (a joint return). A married filer who is
+        considered unmarried and files as head of household may have a spouse who was a nonresident alien; Pub. 596 Rule 4
+        bars only the filer''s own nonresident status.'
+      readings:
+      - Only the filer's own status counts (Pub. 596 Rule 4). A head of household whose spouse was a nonresident alien may
+        take the EIC.
+      - The spouse's status counts too (the flowchart). A head of household whose spouse was a nonresident alien at any time
+        in 2025 cannot take the EIC.
+      chosen: The first (Pub. 596 Rule 4), as the tool stands (eic.step1_resident reads scope.other_income, whose nonresident
+        question is shown on a return not filed jointly as about the filer only; no question asks a head of household about
+        the spouse's residence).
+      reason: 'Decided by the owner for Pub. 596. The flowchart names the spouse and sends a Yes to "Nonresident aliens", which allows the
+        credit only with the choice to be treated as residents; Pub. 596 Rule 4 says "If you were a nonresident alien for any
+        part of the year, you can''t claim the EIC unless your filing status is married filing jointly" and says nothing of a
+        spouse. The statute (section 32(c)(1)(E)) is not archived. If the second reading is adopted, a question on the
+        spouse''s residence is needed for a married head of household (household.considered_unmarried) and a Yes refuses or
+        stops the EIC.'
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 4, "Were you or your spouse a nonresident alien for any part of 2025?"; p. 44,
+          Nonresident aliens, "If you checked the box in the Filing Status section to treat a nonresident alien or
+          dual-status alien spouse as a U.S. resident for the entire year, go to Step 2. Otherwise, stop; you can''t take the
+          EIC"; p596 p. 6, Rule 4, "If you were a nonresident alien for any part of the year, you can''t claim the EIC unless
+          your filing status is married filing jointly"'
+      status: decided by the owner 2026-11-23 (scout adversarial-credits M3, recorded in lane advfix; behaviour unchanged).

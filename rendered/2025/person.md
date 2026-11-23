@@ -333,9 +333,9 @@
 ## (helper) — `person.tip_employers`
 
 - **Authored helper label:** Number of employers that paid this person qualified tips
-- **Encoded (Count):** Add tipjob.one over every confirmed tipjob entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"tipjob","field":"tipjob.one","op":"sum_over"}`
-- Cite: [i1040gi] p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Count):** Add tipjob.one over every confirmed tipjob entry for which helper "Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"tipjob","field":"tipjob.one","op":"sum_over","where":{"eq":["tipjob.listed",{"const":true}],"op":"test"}}`
+- Cite: [i1040gi] p. 104, Schedule 1-A, line 4c; Line 4a, "If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a"; tips from an employer for no job on the list are not qualified tips, so that employer is not counted (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.tip_total`
 
@@ -364,6 +364,20 @@
 - **Encoded (NonNegDollars):** Add otjob.col_b over every confirmed otjob entry, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"otjob","field":"otjob.col_b","op":"sum_over"}`
 - Cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.tips_over_wages`
+
+- **Authored helper label:** The qualified tips reported on this person's Forms W-2 or 4070 (worksheet column (b)) are more than the person's Medicare wages and tips (W-2 box 5), of which they are a part
+- **Encoded (Bool):** helper "This person's worksheet column (b) total" > helper "Total W-2 box 5 for this person"
+- Expr: `{"gt":["person.tip_reported","person.medicare5"],"op":"test"}`
+- Cite: [f1040s1a] p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5" (2025; created 2025-11-04; sha256 64f97b38)
+
+## (helper) — `person.ot_over_wages`
+
+- **Authored helper label:** The qualified overtime compensation entered for this person is more than the person's Medicare wages and tips (W-2 box 5), of which it is a part
+- **Encoded (Bool):** helper "This person's overtime worksheet column (b) total" > helper "Total W-2 box 5 for this person"
+- Expr: `{"gt":["person.ot_total","person.medicare5"],"op":"test"}`
+- Cite: [f1040s1a] p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## rrta — `person.rrta`
 
@@ -457,6 +471,27 @@
 - **Encoded (Bool):** helper "This person's Form 8919 line 6 (the column (f) wages of the firms listed; zero for a person not paid by such a firm)" > $0 (sales.zero)
 - Expr: `{"gt":["person.f8919_wages",{"param":"sales.zero"}],"op":"test"}`
 - Cite: [f8919] p. 1, Who must file, "You must file Form 8919 if all of the following apply" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)
+
+## (helper) — `person.f8919_ss8_firms`
+
+- **Authored helper label:** Number of this person's Form 8919 firms with reason code G
+- **Encoded (Count):** Add f8919firm.one over every confirmed f8919firm entry for which helper "Reason code G (Form SS-8 filed with no reply yet, or filed by the date of the return)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8919firm","field":"f8919firm.one","op":"sum_over","where":{"eq":["f8919firm.code_g",{"const":true}],"op":"test"}}`
+- Cite: [f8919] p. 1, Reason codes, "If none of the reason codes apply to you, but you believe you should have been treated as an employee, enter reason code G and file Form SS-8 on or before the date you file your tax return"; p. 2, "Don’t attach Form SS-8 to your tax return. Form SS-8 must be filed separately" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)
+
+## (helper) — `person.f8919_ss8`
+
+- **Authored helper label:** This person has a Form 8919 firm with reason code G, so must file Form SS-8 (false for a person not paid by such a firm)
+- **Encoded (Bool):** Choose — [scope helper "Wages from a firm that treated the worker as an independent contractor (Form 8919) (asked only after a Yes to pay not on a W-2; otherwise no)" = true → helper "At least one of this person's Form 8919 firms has reason code G"] [scope helper "Wages from a firm that treated the worker as an independent contractor (Form 8919) (asked only after a Yes to pay not on a W-2; otherwise no)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.contractor_pay_if_pay",{"const":true}],"op":"test"},"then":"person.f8919_ss8_any"},{"guard":{"eq":["scope.contractor_pay_if_pay",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [f8919] p. 1, Reason codes, "If none of the reason codes apply to you, but you believe you should have been treated as an employee, enter reason code G and file Form SS-8 on or before the date you file your tax return"; p. 2, "Don’t attach Form SS-8 to your tax return. Form SS-8 must be filed separately" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)
+
+## (helper) — `person.f8919_ss8_any`
+
+- **Authored helper label:** At least one of this person's Form 8919 firms has reason code G
+- **Encoded (Bool):** helper "Number of this person's Form 8919 firms with reason code G" > 0 (a count)
+- Expr: `{"gt":["person.f8919_ss8_firms",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [f8919] p. 1, Reason codes, "If none of the reason codes apply to you, but you believe you should have been treated as an employee, enter reason code G and file Form SS-8 on or before the date you file your tax return"; p. 2, "Don’t attach Form SS-8 to your tax return. Form SS-8 must be filed separately" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)
 
 ## (helper) — `person.f8919_line10_figured`
 
@@ -1509,6 +1544,27 @@
 - **Encoded (NonNegDollars):** Add sc.f26h over every confirmed sc entry, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"sc","field":"sc.f26h","op":"sum_over"}`
 - Cite: [i6251] p. 5, Line 2l—Post-1986 Depreciation, "Property placed in service after 1998 that is depreciated for the regular tax using the 200% declining balance method (generally 3-, 5-, 7-, and 10-year property under the modified accelerated cost recovery system (MACRS)" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 b130e873)
+
+## (helper) — `person.bonus_all`
+
+- **Authored helper label:** Special depreciation allowance on property and vehicles placed in service in 2025 (Form 4562 lines 14 and 25), all of this person's businesses
+- **Encoded (NonNegDollars):** Add sc.bonus_all over every confirmed sc entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"sc","field":"sc.bonus_all","op":"sum_over"}`
+- Cite: [i4562] p. 5, Line 14; p. 13, Line 25 (2025; sha256 5c1c95b7)
+
+## (helper) — `person.prior_bonus_assets`
+
+- **Authored helper label:** Special depreciation allowance claimed in an earlier year on property (other than vehicles) placed in service before 2025, all of this person's businesses
+- **Encoded (NonNegDollars):** Add sc.prior_bonus_assets over every confirmed sc entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"sc","field":"sc.prior_bonus_assets","op":"sum_over"}`
+- Cite: [p946] p. 37, Figuring the Unadjusted Basis of Your Property, "Any special depreciation allowance taken on the property" (For use in preparing 2025 returns; sha256 07fadfb2)
+
+## (helper) — `person.suv179`
+
+- **Authored helper label:** Section 179 elected in 2025 on SUVs rated over 6,000 pounds, all of this person's businesses
+- **Encoded (NonNegDollars):** Add sc.suv179 over every confirmed sc entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"sc","field":"sc.suv179","op":"sum_over"}`
+- Cite: [i4562] p. 16, Column (i)—Elected section 179 cost, "You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles" (2025; sha256 5c1c95b7)
 
 ## (helper) — `person.amt_dep`
 

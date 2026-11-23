@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
  "head_rows": {
-  "printed lines compared": "138",
-  "agree / disagree / missing": "57 / 81 / 0",
-  "line-scoped reviews": "11 (latest 2026-11-23); see Line-scoped reviews"
+  "printed lines compared": "142",
+  "agree / disagree / missing": "56 / 86 / 0",
+  "line-scoped reviews": "14 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -135,9 +135,10 @@
   },
   {
    "key": "person.tip_employers",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
-   "status": "AGREE",
-   "subject_key": "8b0fae90569c7011015e9417a15d9c05e62df87e5c5dd620541f3a61645339d5"
+   "record": "1cae320584ba4c0aa3d5b9dd4db4e5b2f5bd8e5592f0b9e7c9725ac3745e7b63",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 104, Line 4a, 'If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a'; f1040s1a line 4c, 'If you only received qualified tips as an employee with respect to employment with one employer'. The count is of employers that paid qualified tips. An entry answered No to tipjob.listed (no job on the list) has no qualified tips (tipjob.amount is zero), and the tipjob roster's help asks for every employer where the filer received tips, so the reply's count of every entry sends a filer with one qualifying employer to the worksheet and prints $0 on line 4a (BUG-1207, fixture fxi.tips_unlisted_employer_not_counted).",
+   "subject_key": "e0334fe910dccc52923b4d8b07163b67b3e9580a3555b980bde09b0ee4df48a3"
   },
   {
    "key": "person.tip_total",
@@ -181,6 +182,13 @@
    "status": "DISAGREE",
    "ruling": "Ruling: representation; executable triage 2,765/5,490 agree; 2,720 candidate-unknown, 5 project-unknown (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 8919 firm rows without the parent question that opens them (scope.contractor_pay_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 8919 rows are read the same way once asked; f8919 line 6, 'Total wages. Combine lines 1 through 5 in column (f)'.",
    "subject_key": "283526358ada8964057b72a3c7f0b3660a51ee3c60f0b9b18db89c9e1c5741de"
+  },
+  {
+   "key": "person.f8919_ss8",
+   "record": "6c984439da2712f7556025bd42fecae3ab98648bb88c68b3ee95741db6abb12d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f8919 p. 1, Reason codes, \"enter reason code G and file Form SS-8 on or before the date you file your tax return\". The reply tests f8919firm.reason = g on any firm, which is the project's f8919firm.code_g summed in person.f8919_ss8_firms; the project's added gate on scope.contractor_pay_if_pay only keeps an unasked roster from being read (no firm is listed without it). Project stands.",
+   "subject_key": "c7a0e2bd80422d857e95a5c832e1d6c56a59aa78498f3f72f6c36a36d5442e68"
   },
   {
    "key": "person.f8919_tax",
@@ -677,6 +685,13 @@
    "subject_key": "4dffa0a31937649463a3d98aa975ee41439c4ccaecf83d94c3059736315a55ac"
   },
   {
+   "key": "person.x_e05",
+   "record": "e67e9631063e4b8ab9da5db980077a4ed41cb449c4aca88e988cb9b7ecf0aa2c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (5687 values compared, none different or missing: 3028 on 2677 fixture cases, 565 on 500 generated returns seed 20261026, 2094 on 1808 partial records; every alternative of the 0 differing choose line(s) reached taken; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "38b0afa11d7e5d6a912750ef7a45c6ed5d1f5744d87d41566e47662ccfdde05e"
+  },
+  {
    "key": "person.x_tax",
    "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
    "status": "AGREE",
@@ -917,6 +932,20 @@
    "status": "DISAGREE",
    "ruling": "Ruling: interface gap; i8889 p. 4, How To Complete Part I, and p. 7, Line 6, Step 4. person.hsa_self is a per-person roll-up of the Form 8889 helper f8889.step4_total (the self-only amount for each eligible month without family coverage), read by household.hsa_self_sum so that each spouse's form can tell whether the other had eligible self-only months. The reply was not given the Form 8889 collection's fields and, as its note says, guessed a per-person self-only annual maximum with the $1,000; it is not the monthly sum the consumer tests. Project stands.",
    "subject_key": "a777141d0452cc00d45620b62f24003661f85d658aef874ae1c70c2d9cacb847"
+  },
+  {
+   "key": "person.tips_over_wages",
+   "record": "1cae320584ba4c0aa3d5b9dd4db4e5b2f5bd8e5592f0b9e7c9725ac3745e7b63",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. Both read the line as a consistency check that the qualified tips (worksheet column (b), from Form W-2 box 7 or Forms 4070) are not more than the wages that include them (f1040s1a line 4a, 'qualified tips included on Form W-2, box 7'). The project bounds them by box 5 (Medicare wages and tips; fw2 p. 7, Box 6, 'all Medicare wages and tips shown in box 5'), the reply by box 1. Box 1 is lowered by pretax deferrals such as a 401(k) while box 5 is not, so a tipped worker who defers pay can have tips above box 1 and below box 5 with no error; the box 5 bound refuses only answers that cannot all be true (BUG-1208).",
+   "subject_key": "32775a10f7c170ed4b9a284e258f2498f5163d7a444a8dd6a7a0df87f78c78fa"
+  },
+  {
+   "key": "person.ot_over_wages",
+   "record": "1cae320584ba4c0aa3d5b9dd4db4e5b2f5bd8e5592f0b9e7c9725ac3745e7b63",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. Both read the line as a consistency check that the qualified overtime entered is not more than the wages that include it. The reply bounds it by box 1 and notes itself that the line 14a instructions allow overtime not in box 1 (deferred under a qualified plan; otjob.statement asks to include it), so its check can fire with no error; the project bounds it by box 5 (fw2 p. 7, Box 6, 'all Medicare wages and tips shown in box 5'), which includes such deferrals (BUG-1208).",
+   "subject_key": "4be68a2e36482905a7e55a55d20002cb7edafee2050fc6a1a162646635107d8b"
   }
  ],
  "subjects": {
@@ -939,7 +968,7 @@
   "person.hsa_deduction": "1956484df58c7d1aeed094c8efa59ee93c6a0c68dbee62afba4a87c8b80708a7",
   "person.hsa_taxable": "503c05c6d871485c2aea293262dbce3c1659ec18c7a556d3ad5d5bc169e889a6",
   "person.hsa_addtax": "409d9c1e62e9c4bd2c548e299b1605d35083417e432b121f8158f93b766b3354",
-  "person.tip_employers": "7e5c9e8f931c5f86b55982a33d6fa2fbd4f310666f59b5ab14051b64622e4e40",
+  "person.tip_employers": "572ce4a9f3fcbcbaa4e2fa809e1a581e779b7b2269772c6a091170ee30d57b54",
   "person.tip_total": "4e5caa2352c233fa534639bb427634de55a1d7f5850f3eea4175397d27157597",
   "person.tip_reported": "fca06897fcea5e46106d81dd0d4159d4114542cb53607d00e425c168c184af65",
   "person.ot_employers": "03c70720e9ff8599767f3e75415a31b1dc21f760d76c55300816267248740a5e",
@@ -947,6 +976,7 @@
   "person.box1": "07ad8865d53bc777dc547733160a3fec3a254480e67c64db630e8020bd86ac0d",
   "person.box2": "a3e0f7c9fbed5eff0cb1ba5c0febfceaa19678c9ad4d19432f6eacd47894c6a0",
   "person.f8919_wages": "cd3910b94f8289870a8b151ad6e2fbd05613ac48d5528c091b08152169526d8c",
+  "person.f8919_ss8": "1147d7052b86c6aca32719149a0b80412703a73447c5e92c1127768379710755",
   "person.f8919_tax": "56e22259e31dc7c3d2eeef795a871f5ffd9a8d0b31123a3a6aa69bd2487b1490",
   "person.f4137_col_c": "0e6c119dd805efb9d593c3faeb16fa5783efb7db2dfff87a6f817501cbd7afe4",
   "person.f4137_col_d": "53f3976331e503b645a21f40886d9d87f824baaa244928bd0522dc040b009da8",
@@ -1021,6 +1051,7 @@
   "person.x_l2_all": "72a762c9f410531c028cda2c2c18402a79833e8ff9528c6ee38688017e1890cb",
   "person.x_l1_s": "24267bbbdb0337d89c5f3079e53acba0824dba00bbb8d1bccd2c19a7cf91abde",
   "person.x_l2_s": "ba325c3404635d9d716c53648c75ad1e72c363da9fbb778fa326f90a035d2c15",
+  "person.x_e05": "d4596ea2b6aa21d7a5afecdceaf735294a809021c7656dd88ce5811ab7d46a32",
   "person.x_tax": "6d7e884f1d692cc32ca3c1d24e5c5458205dcf01d0a847853a5b134ad447c6c1",
   "person.x_must": "9429d6b3783328f7049e6217d9dd8e0bdea36c5ceaece059947c15881f33ba97",
   "person.x_c05": "47a6b7e1b81e44437ae565e021699f1a4f8cca6f29f9ab87213a4296b16682ce",
@@ -1057,7 +1088,9 @@
   "30": "de4a93e13482929e09eb47269cb33de0af4eea51b14f73fe7d8c6da1f859f625",
   "31": "6965b8746aad942de14b8865d816526b4df3bcc5223369c606999da67fde65c8",
   "person.hsa_family": "b0b5e44c680fbab09101daa3a0fe3cc12ed8762712d931e7fb933d0051daadb4",
-  "person.hsa_self": "26d8ac8946a937f3eaf8cd81244f4b3636267d2576213d2bb069859811aa630f"
+  "person.hsa_self": "26d8ac8946a937f3eaf8cd81244f4b3636267d2576213d2bb069859811aa630f",
+  "person.tips_over_wages": "5a20a485cb04f9c177fb433b0902b9e7d18605ba6fbf907d9efec574c7781a47",
+  "person.ot_over_wages": "9c87c389c81dbb4907aac5c1929881b2a5153967b247fdc39fe06f3d56365116"
  },
  "__rest__": "d28e22d3400268c696f00ac5cb2cb4acf80222dd6ee55c48f68bb684d57f0110",
  "foreign": {
@@ -1080,7 +1113,7 @@
   "person.hsa_deduction": "583c8221c4e3ae95043d997637565de2e6769f505b5edc170648cc219dba8dd2",
   "person.hsa_taxable": "45a1873b958d39f07d2a4ae5d01a595c6fd6112532439b5443e114ef4e9b9f24",
   "person.hsa_addtax": "fb7e63afcb8541e0eedbae48f0f9e5ea700df3be5dd6f36fbd5589e15714f9ce",
-  "person.tip_employers": "ab10af5659ba3c0415801f75fb5cd5e4eb8c510fbfb065f156612f4b2d95ae3f",
+  "person.tip_employers": "c7281988558dd87917766d2ca09912a7ef9a07578d3682ceba3b945038172aec",
   "person.tip_total": "a627278babbb592348bea1fc75a70bd653a9a831f9ac4e2ee87328d953db42c0",
   "person.tip_reported": "2d1dedd22477f0a58c4f911a6dd7028b1da86d602b2ce1d8826ad8960cc802e2",
   "person.ot_employers": "f758aa42667a56fff588994574c0b4063221b5acbffb5582e5d6b44be7f7ad54",
@@ -1088,6 +1121,7 @@
   "person.box1": "056132170d28179fc192dae2644e55a3fce765caeaf22d15c210f4fe8fd8bd29",
   "person.box2": "00005c2f0c3f53c0fc12efd5f44e323e53cf49b0a31f1627d7198fd0f1163013",
   "person.f8919_wages": "8324106d3e5f5174f62bd9b7372ff7f3e2c421199b12273bc36b60f7ad814019",
+  "person.f8919_ss8": "eb934976b9165b4066b1d89f2e2e12df517626a2f8f51b1dfab6f83ca5243588",
   "person.f8919_tax": "67f0358fc253a5428a44eb87c348f3d039294320fa17f6ae7cd2a7479ce1ae8e",
   "person.f4137_col_c": "b75d0c6bb1b92c8b37bdc120a236f68b81af972a5284e066522598fe67c6f7c9",
   "person.f4137_col_d": "168f6bfeed8160a4fd8677db64aaac93e6befe0e049b339a6e1e61f92b942379",
@@ -1162,6 +1196,7 @@
   "person.x_l2_all": "72e265fbc505d3f4560c064945578f14f548cba5a15f41ed1a2b3b5e276ce237",
   "person.x_l1_s": "e7c02f28453d8d91c959feb2726a7c4aed9dd05be3c12bcab647c7d1cdbbfcee",
   "person.x_l2_s": "8e39af352f37448f186ea41b90065c219dd9fd4fd222289a9da0aa06eaac30cc",
+  "person.x_e05": "af9a50efbab9ab1fb39bcca9e8219f810d1af944517350a0fea667280fa043a5",
   "person.x_tax": "2b435d702d388319a6041c860f8caa8f93d3c558b1a465555169afd1d810ebe7",
   "person.x_must": "41852e914e15b179389ac2e6d1148f167c1f88e24373ca2848c3945012f60fc8",
   "person.x_c05": "21738db4e419adf9d161b08cca6ebbe74b17006290364ac41dcbf44334f161b4",
@@ -1198,6 +1233,8 @@
   "30": "f6ad556e49ce314571e7ad2b80d8e31a82697ad6e25383e17e12fb8ad2bedf8d",
   "31": "4a51e5c8e29d87c51a67acfe44559e05cb10a72e2117baf6f7a07475a63bb902",
   "person.hsa_family": "ad5c941962c021ccedb1345acad7a4ac358827dd0dfa74286959ec81b7cc1b48",
-  "person.hsa_self": "4b0b615e80614c5878357c96cdc5a0dd9cd7a34db6f2c7b086071851ba49fce8"
+  "person.hsa_self": "4b0b615e80614c5878357c96cdc5a0dd9cd7a34db6f2c7b086071851ba49fce8",
+  "person.tips_over_wages": "168564414376f5807fdba029552c42146e16fd7e227eb6ec781d17b63bd0300e",
+  "person.ot_over_wages": "8bba85370ae8ae6072fbfee0bb0298959c81219d4bb0c2b6e59084cd1bbd6a8d"
  }
 }

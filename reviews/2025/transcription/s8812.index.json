@@ -5,7 +5,7 @@
  "base": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
  "head_rows": {
   "agree / disagree / missing": "12 / 39 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "6 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -215,10 +215,10 @@
   },
   {
    "key": "22",
-   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "record": "c367d1c898446f800e46190736c488bd6129a522fa95e749c26206034a1d0307",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation (+ scope); f1040s8812 p. 2, line 22 and the instruction after line 20. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,306 agree; 539 project-refuses, 149 candidate-shows-skipped, 135 candidate-unknown, 7 candidate-refuses, 7 project-unknown (on completed returns: 112 candidate-shows-skipped). By reading, the reply's shown_when is the project's s8812.show_iib: line 20 below line 17 already implies lines 12, 16a and 16b above zero, and its extra Puerto Rico branch is refused (s8812.puerto_rico); triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. The candidate-unknown and refusals (s2.other) are on refused or incomplete returns. Project stands.",
-   "subject_key": "036380de32e12da8b7b0b4761e68ae15fd68c8bc48d38ca855d9bf41e3f677fd"
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3197 values compared, none different or missing: 2640 on 2640 fixture cases, 500 on 500 generated returns seed 20261026, 57 on 57 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "8de78a5df9008c7add63b4d3a20b528502b30b6c19a0b1c93546f6332dd11bc2"
   },
   {
    "key": "23",
@@ -386,7 +386,7 @@
   "19": "7251697fc0074a19522ab5dd388541085f7e6331eb534827dabea50ee7a6ef00",
   "20": "6ae7b1fe85db2da8d829f6db09b41fdbe04de5816c29ff18420bd2679c9629a8",
   "21": "07d932ff5152faad01e426cda5d7297195ed4c742e0ed6ec5db33e1e26ec0537",
-  "22": "1dc2276bcf27423668f065ae8861fb32ea4b77ab5863b40fe954f85e77262e08",
+  "22": "4cc2a22bdeb2ddeba0f681bf3ec21901c701b6b14c6ff4572fe2c4174a117349",
   "23": "582fa9dbd088b2e435dd8923c37112d5b564b645ee81f9daadd1cc3f0e644e8e",
   "24": "07e2ba2f1f2271364291e5a99e8e1f24abf48f6bf86fcc19c4a83e0e2799b4c2",
   "25": "2e484bbc3e5d603741c5e7d65d2eca129af97edfd82f3aa13311469ebf70ac0b",
@@ -416,6 +416,7 @@
   "(CLW A 4)": "85543fecffaaf297af9af2b94b36d8c85da701db9dec80245f073cc31ebab1fa",
   "18a": "9015c2a9bad0748e9a209f0278a9a2e6c2bb23178d2b6e94b3b9478e6cb7fc8b",
   "18b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "22": "8c144c3985ad257aa0d59d2962b8dbfad3890285cbd9ce8006b1df2d4609efc1",
   "27": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "(CLW B 1)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",
   "(CLW B 2)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",

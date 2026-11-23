@@ -311,6 +311,67 @@
    "date": "2026-11-14",
    "run": "d757e4dd502203def03c50be44cc54571618eb1edb1bee17dabf1c96cccb7f3b",
    "subject_key": "7bd4cfd20006d6763143fb34f9cfaaddd880d8a56d76ccc00b045ed9e70692fe"
+  },
+  {
+   "printed": "armed_forces",
+   "restated": "Input — In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?",
+   "model": "This gate is too broad, which is harmless for the 2025 reservist-travel (line 12) and active-duty move (line 14) questions. The text does not give the time window for qualified reservist repayments (it refers to Pub. 590-A), so the '2022 or later' cutoff cannot be checked.",
+   "ruling": "Ruling: representation; p590a p. 9, Qualified reservist repayments, \"You can't make these repayment contributions later than the date that is 2 years after your active duty period ends\": a repayment in 2025 needs active duty that ended in 2023 or later, which service in 2022 or later contains; the gate is wider than the questions it opens and costs only a question (the reservist travel and military move questions concern 2025). Project stands.",
+   "context": "9d530b4107f15b69cf8847d7e8389f01c601bb4d7e32ade11c2c72640b4eb39e",
+   "date": "2026-11-22",
+   "run": "09d91ff8428ea1c2c4291274c5170e562ccd6b634f4ad869a0f880235527a83c",
+   "subject_key": "f6b3e797c5690985843f3a2bb25a7c6a8183a3dae96f5ec2e62af70d973c4473"
+  },
+  {
+   "printed": "medicaid_waiver",
+   "restated": "Input — In 2025, were you (or, on a joint return, your spouse) paid under Medicaid to care for someone living in your home?",
+   "model": "Line 1d covers 'taxable Medicaid waiver payments' as well as optional nontaxable ones. The text given does not define Medicaid waiver payments or support limiting them to care for 'someone living in your home,' so it cannot be confirmed that this question catches every line 1d case.",
+   "ruling": "Ruling: representation; i1040gi p. 24, Line 1d, and p525 p. 33, Difficulty-of-care payments. The question is the excludable case (care of someone living in the filer's home); its tick help sends care of someone who does not live with the filer to paid work in someone's home (scope.household_pay, line 1b), so no line 1d payment is left unasked. Project stands.",
+   "context": "9d530b4107f15b69cf8847d7e8389f01c601bb4d7e32ade11c2c72640b4eb39e",
+   "date": "2026-11-22",
+   "run": "09d91ff8428ea1c2c4291274c5170e562ccd6b634f4ad869a0f880235527a83c",
+   "subject_key": "1740370f920dd80c3d418398b6379e639271e2dcd6a9c04df2e19a97fa5972e1"
+  },
+  {
+   "printed": "military_move_if_armed_forces",
+   "restated": "Choose — [helper \"In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?\" = true → helper \"Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders?\"] [helper \"In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?\" = false → helper \"Year parameter household.no (false)\"]",
+   "model": "The question only catches a '2025 move.' Line 14 also covers a filer who is 'claiming only storage fees during your absence from the United States,' which need not involve a 2025 move. Such a filer would answer No and would not be screened out.",
+   "ruling": "Ruling: finding; i1040gi p. 93, Line 14, \"If you are claiming only storage fees during your absence from the United States, check the box on line 14\". The question named only a 2025 move, so a member claiming only storage fees could answer No and lose the deduction with no refusal. Fixed: the question now names storage fees while posted outside the United States (BUG-1189).",
+   "context": "9d530b4107f15b69cf8847d7e8389f01c601bb4d7e32ade11c2c72640b4eb39e",
+   "date": "2026-11-22",
+   "run": "09d91ff8428ea1c2c4291274c5170e562ccd6b634f4ad869a0f880235527a83c",
+   "severity": "low",
+   "subject_key": "15074b3b46220931b673fcafaa213ecec81650838ea4176a31713e1f1eec8815"
+  },
+  {
+   "printed": "other_line16",
+   "restated": "(helper \"The answer to scope.f8615, asked only when the question scope.unearned_2700 is answered Yes (false otherwise)\" = true or helper \"Are you (or, on a joint return, your spouse) reporting a child's 2025 interest or dividends on your own return instead of filing a return for the child?\" = true or helper \"In 2025, was tuition or a fee refunded, or tax-free aid given, to a student for a year for which you (or, on a joint return, your spouse) had already claimed an education credit?\" = true or helper \"The answer to scope.income_averaging, asked only when a business (Schedule C) is listed (false otherwise)\" = true or helper \"The answer to scope.pfic, asked only when the question scope.foreign_shares is answered Yes (false otherwise)\" = true or helper \"The answer to scope.cfc, asked only when the question scope.foreign_shares is answered Yes (false otherwise)\" = true or helper \"The answer to scope.f8978, asked only when the question scope.business_before is answered Yes (false otherwise)\" = true)",
+   "model": "Line 16 also includes 'Tax from Form 4972 (relating to lump-sum distributions)' and the 'Triggering event under section 965(i).' Neither is among the ORed questions, so these line 16 taxes would not cause a refusal.",
+   "ruling": "Ruling: scope; i1040gi p. 34, Line 16, \"Tax from Form 4972 (relating to lump-sum distributions)\". Form 4972 is refused where the distribution is entered (retirement.lump_sum_if_born_before_averaging_date in retirement.special) and named in the Form 1040 line 16 refusal (f1040.line16, \"Forms 8814, 4972, 8615, 8621 or 8978\"); a section 965(i) triggering event belongs to an S corporation shareholder, refused by scope.k1. Project stands.",
+   "context": "9d530b4107f15b69cf8847d7e8389f01c601bb4d7e32ade11c2c72640b4eb39e",
+   "date": "2026-11-22",
+   "run": "09d91ff8428ea1c2c4291274c5170e562ccd6b634f4ad869a0f880235527a83c",
+   "subject_key": "c2b7dbeea447171d0b4d855edaa6ec680307034368a72569ea2556081a70c040"
+  },
+  {
+   "printed": "schedule1",
+   "restated": "(helper \"The answer to scope.reservist_expenses, asked only when the question scope.armed_forces is answered Yes (false otherwise)\" = true or helper \"The answer to scope.military_move, asked only when the question scope.armed_forces is answered Yes (false otherwise)\" = true or helper \"The answer to scope.rent_personal, asked only when the question scope.rental is answered Yes (false otherwise)\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it.\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) have income or a loss from farming?\" = true or helper \"The answer to scope.clergy, asked only when the question scope.religious_work is answered Yes (false otherwise)\" = true or helper \"The answer to scope.church_exempt_wages, asked only when the question scope.religious_work is answered Yes (false otherwise)\" = true or helper \"The answer to scope.w2_marks, asked only when a Form W-2 is listed (false otherwise)\" = true or helper \"The answer to scope.performer_expenses, asked only when the question scope.artist_official is answered Yes (false otherwise)\" = true or helper \"In 2025, did you (or, on a joint return, your spouse) put money into, or take money out of, an Archer MSA or a Medicare Advantage MSA (older kinds of medical savings account, not a health savings account)?\" = true or helper \"The answer to scope.se_plan_other, asked only when a business (Schedule C) is listed (false otherwise)\" = true or helper \"Do you (or, on a joint return, your spouse) own or lease timber land on which you paid to plant or replant trees, in 2025 or in the seven years before?\" = true or helper \"In 2025, were lawyer's fees or court costs paid by you (or, on a joint return, your spouse), or taken out of what you won, for a claim of unlawful discrimination, a claim against the U.S. Government, a Medicare secondary-payer claim or an IRS whistleblower award?\" = true)",
+   "model": "The OR-list leaves out the NOL question (scope.nol), but Schedule 1 line 8a says 'Enter any deduction for an NOL from an earlier year,' and the refusal does not list this as supported. It also screens rentals only through rent_personal, although Schedule E 'report[s] income or loss from rental real estate, royalties' and is not among the supported items.",
+   "ruling": "Ruling: model error; the reply says the list leaves out the NOL and rentals, but both are computed: the NOL on Schedule 1 line 8a (s1.nol_amount_if_nol, s1.line8a) and rentals and royalties on Schedule E (rental, royalty, sche.line41 to Schedule 1 line 5); the helper's label says it holds only the items this tool does not compute. Project stands.",
+   "context": "9d530b4107f15b69cf8847d7e8389f01c601bb4d7e32ade11c2c72640b4eb39e",
+   "date": "2026-11-22",
+   "run": "09d91ff8428ea1c2c4291274c5170e562ccd6b634f4ad869a0f880235527a83c",
+   "subject_key": "91834a62003e93a4db5cdf6e129e0ce327bff994d22d5fb6e8e92cc00f5cc970"
+  },
+  {
+   "printed": "tips_unreported_if_pay",
+   "restated": "Choose — [helper \"In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?\" = true → helper \"In 2025, did you (or, on a joint return, your spouse) get cash or card tips at a job that were not reported in full to the employer, or tips that were not money, such as tickets or other items of value?\"] [helper \"In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?\" = false → helper \"Year parameter household.no (false)\"]",
+   "model": "Line 1c also requires 'any allocated tips shown in box 8 on your Form(s) W-2 unless you can prove that your unreported tips are less than the amount in box 8.' The question asks only about unreported cash or card tips and noncash tips, and its gate asks about tips 'not on a W-2.'",
+   "ruling": "Ruling: scope; i1040gi p. 24, Line 1c, \"any allocated tips shown in box 8 on your Form(s) W-2\". Allocated tips are refused with the W-2: the W-2 marks question (s2.w2_marks, \"An amount in box 8 ... A Yes ends the interview here\") refuses any box 8 amount, and the help of scope.tips_unreported says \"Tips in box 8 of a W-2 were asked about with the W-2\". Project stands.",
+   "context": "9d530b4107f15b69cf8847d7e8389f01c601bb4d7e32ade11c2c72640b4eb39e",
+   "date": "2026-11-22",
+   "run": "09d91ff8428ea1c2c4291274c5170e562ccd6b634f4ad869a0f880235527a83c",
+   "subject_key": "fafa0d050e60b5d1b62e6cfb621a280271e64069b24a5db75ef21081a3795d73"
   }
  ]
 }

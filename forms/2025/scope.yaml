@@ -153,13 +153,13 @@ form:
       printed: (helper)
       type: Bool
       gated_by: scope.military_move_if_armed_forces
-      label: "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders?"
+      label: "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you were posted outside the United States?"
       expr:
         op: input
-        source: "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders?"
+        source: "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you were posted outside the United States?"
       cite:
         doc: f1040
-        locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+        locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 93, Line 14, \"If you are claiming only storage fees during your absence from the United States, check the box on line 14\""
     - id: scope.military_move_if_armed_forces
       printed: (gate)
       type: Bool
@@ -487,13 +487,13 @@ form:
       printed: (helper)
       type: Bool
       gated_by: scope.household_pay_if_pay
-      label: "In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?"
+      label: "In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2 and that controlled what work was done and how, not as a self-employed worker offering the work to the public?"
       expr:
         op: input
-        source: "In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?"
+        source: "In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2 and that controlled what work was done and how, not as a self-employed worker offering the work to the public?"
       cite:
         doc: i1040gi
-        locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"'
+        locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"; p926 p. 3, Do You Have a Household Employee?, "The worker is your employee if you can control not only what work is done, but how it is done"; p. 4, "A self-employed worker usually provides their own tools and offers services to the general public in an independent business"'
     - id: scope.household_pay_if_pay
       printed: (gate)
       type: Bool
@@ -1094,13 +1094,13 @@ form:
     - id: scope.attorney_fees
       printed: (helper)
       type: Bool
-      label: "In 2025, did you (or, on a joint return, your spouse) pay a lawyer or court costs to win a claim of unlawful discrimination or a whistleblower award?"
+      label: "In 2025, were lawyer's fees or court costs paid by you (or, on a joint return, your spouse), or taken out of what you won, for a claim of unlawful discrimination, a claim against the U.S. Government, a Medicare secondary-payer claim or an IRS whistleblower award?"
       expr:
         op: input
-        source: "In 2025, did you (or, on a joint return, your spouse) pay a lawyer or court costs to win a claim of unlawful discrimination or a whistleblower award?"
+        source: "In 2025, were lawyer's fees or court costs paid by you (or, on a joint return, your spouse), or taken out of what you won, for a claim of unlawful discrimination, a claim against the U.S. Government, a Medicare secondary-payer claim or an IRS whistleblower award?"
       cite:
         doc: f1040
-        locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+        locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 100, Line 24h, \"Enter attorney fees and court costs for actions involving certain unlawful discrimination claims\", Line 24i; p525 p. 32, Deduction for costs involved in unlawful discrimination suits, \"a claim against the U.S. Government, or a claim under section 1862(b)(3)(A) of the Social Security Act\", \"The attorney fees and court costs may be paid by you or on your behalf\""
     - id: scope.trade_act_repaid
       printed: (helper)
       type: Bool
@@ -1124,13 +1124,13 @@ form:
     - id: scope.nol
       printed: (helper)
       type: Bool
-      label: "Are you (or, on a joint return, your spouse) carrying a loss from an earlier year into 2025 as a 'net operating loss' deduction?"
+      label: "Are you (or, on a joint return, your spouse) carrying a loss from an earlier year into 2025 as a 'net operating loss' deduction (a business, farm, rental or disaster loss, not a capital loss from selling investments)?"
       expr:
         op: input
-        source: "Are you (or, on a joint return, your spouse) carrying a loss from an earlier year into 2025 as a 'net operating loss' deduction?"
+        source: "Are you (or, on a joint return, your spouse) carrying a loss from an earlier year into 2025 as a 'net operating loss' deduction (a business, farm, rental or disaster loss, not a capital loss from selling investments)?"
       cite:
         doc: i1040gi
-        locator: 'p. 91, Line 8a, "Enter any deduction for an NOL from an earlier year"'
+        locator: 'p. 91, Line 8a, "Enter any deduction for an NOL from an earlier year"; i1040sd p. 1, General Instructions, "To report a capital loss carryover from 2024 to 2025"'
     - id: scope.passive
       printed: (helper)
       type: Bool

@@ -4,18 +4,18 @@
  "family": "claude",
  "base": "6213cbf0bd74c7287c8df74632c3e9e60ca2c1ec5669254a3943f68c6fce9264",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "c7b6846becc241eabfe86a8142a178358860f1cf722488e155e3c36f9acc7d84",
+   "record": "903f0ddd1c65f7b73534c26c80913172959d376acd3971f8caff28fc6c49bfcc",
    "status": "MATCH",
-   "subject_key": "9cdd0d24f5abf6b1e4d4db598d0e7d181d79fc38d5440ca1eaafd818e74000af"
+   "subject_key": "f5b2a14a9fc428898d3e0d7fa5386392379432801e0a2b649b758747fea1255d"
   },
   {
    "key": "2",
-   "record": "c7b6846becc241eabfe86a8142a178358860f1cf722488e155e3c36f9acc7d84",
+   "record": "903f0ddd1c65f7b73534c26c80913172959d376acd3971f8caff28fc6c49bfcc",
    "status": "MATCH",
    "subject_key": "a4a51322150edeacf4a8696242392224199b640a93e5cb135bfb9efc5b1caea9"
   },
@@ -117,7 +117,7 @@
   }
  ],
  "subjects": {
-  "1": "ae50917d9855e73d8400df4951753f686f55a342021a4fd90508676932de4775",
+  "1": "ad7c76c3e1a7831e91afe50ee31558bd6e37c798d8a00f90549041fd7cfa08c9",
   "2": "4e6c4cb5becc57812c9022ee5d29955c2dd026ec1ef1260066b7d3c2d32c3e5d",
   "3": "04a638edf0cfaadaf2e62796865d9920e7b6a2fe2d8f0b64cd604f34f13b8f52",
   "4": "aa744040bb91dc6c31d93efc105025d1cdcdb1cbd76995d1f6175b0967ff6d95",

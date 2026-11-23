@@ -134,7 +134,8 @@ export const THIRD_TO_SECOND: Record<string, string> = { is: "are", was: "were",
 export const UNCHANGED_AFTER: ReadonlySet<string> = new Set(["a", "an", "and", "or", "for", "to", "on", "if", "as", "by", "in", "of", "at", "under", "with", "more", "age", "blind",
   "fully", "never", "overtime", "born", "made", "had", "took", "received", "enrolled", "filed", "applied", "applying", "can", "can't", "cannot", "could", "contributed", "did",
   "paid", "died", "acquired", "repaid", "served", "rolled", "became", "claimed", "deducted", "recharacterized", "covered", "deferred", "agreed",
-  "inherited", "returned", "opened", "turned", "put", "have"]);
+  "inherited", "returned", "opened", "turned", "put", "have", "separated", "reached", "entered", "got", "bought", "retired",
+  "completed", "because", "its", "back"]);
 const PREPOSITIONS: ReadonlySet<string> = new Set(["of", "for", "to", "by", "from", "with", "about", "on", "in"]);
 /** Whose entry a framed question is shown for. */
 export type PersonRole = "taxpayer" | "spouse";

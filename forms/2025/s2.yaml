@@ -1321,6 +1321,38 @@ form:
       cite:
         doc: f1040s2
         locator: 'Schedule 2 (2025), line 6, "Uncollected social security and Medicare tax on wages. Attach Form 8919"; f8919 p. 1, Add lines 11 and 12, "Include as tax on your annual tax return (Schedule 2 (Form 1040), line 6"; i1040gi p. 112, Line 6, "Enter the total of any taxes from Form 8919"'
+    - id: s2.ss8_count
+      printed: (helper)
+      type: Count
+      label: Number of people on the return with a Form 8919 firm under reason code G
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          eq:
+            - person.f8919_ss8
+            - const: true
+      cite:
+        doc: f8919
+        locator: 'p. 1, Reason codes, "enter reason code G and file Form SS-8 on or before the date you file your tax return"'
+    - id: s2.ss8_notice
+      printed: (helper)
+      type: Bool
+      label: 'Notice: for each firm given reason code G on Form 8919, file Form SS-8 with the IRS, separately and not
+        attached to this return, on or before the date you file it'
+      expr:
+        op: test
+        gt:
+          - s2.ss8_count
+          - const: 0
+            type: Count
+      cite:
+        doc: f8919
+        locator: 'p. 1, Reason codes, "If none of the reason codes apply to you, but you believe you should have been treated
+          as an employee, enter reason code G and file Form SS-8 on or before the date you file your tax return"; p. 2,
+          "Don’t attach Form SS-8 to your tax return. Form SS-8 must be filed separately"'
     - id: s2.line7
       printed: "7"
       type: NonNegDollars

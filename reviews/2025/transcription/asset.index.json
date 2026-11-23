@@ -4,11 +4,18 @@
  "family": "claude",
  "base": "99f72119c345281a91a3d2af0f9df6c0b4f6c11e38951868a2fbb2c7d2e56e6b",
  "head_rows": {
-  "printed lines compared": "17",
-  "agree / disagree / missing": "1 / 16 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
+  "printed lines compared": "18",
+  "agree / disagree / missing": "1 / 17 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-22); see Line-scoped reviews"
  },
  "lines": [
+  {
+   "key": "asset.placed_this_year",
+   "record": "768f0141a3e707d4c5a74fd7c7e493b63977bebaea6c6d1e88b8f8bd10fbb002",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3306 values compared, none different or missing: 214 on 2635 fixture cases, 163 on 500 generated returns seed 20261026, 2929 on 1721 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "b0c28dfa400caf931c9709e9faba24c87265461166a182948cba63d7ccd17572"
+  },
   {
    "key": "asset.dep_this_year",
    "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
@@ -129,6 +136,7 @@
   }
  ],
  "subjects": {
+  "asset.placed_this_year": "15fb96ab57c8060a8a155ccdc7fdfe551e175176006f367763e3164906073d4b",
   "asset.dep_this_year": "71be919257db7f6098670d3c6346f3a4e61bc98eb5e3da7c13b927273f74866a",
   "asset.bonus_this_year": "c84bfc44722dff490d24e3722a5c8f7db49ad9520023e94e5f971ff83787966e",
   "asset.s179_this_year": "1d411ab12fa741b04ab078bfb14c0619f18b4f2cbbbf4777b2b67b1ebf66b99e",
@@ -149,6 +157,7 @@
  },
  "__rest__": "c9708e5777e6b69e7558e632a0713a1496a425dc2a16eb800463caf770f116b1",
  "foreign": {
+  "asset.placed_this_year": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "asset.dep_this_year": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "asset.bonus_this_year": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "asset.s179_this_year": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

@@ -847,9 +847,16 @@ form:
         op: sum_over
         collection: tipjob
         field: tipjob.one
+        where:
+          op: test
+          eq:
+          - tipjob.listed
+          - const: true
       cite:
         doc: i1040gi
-        locator: p. 104, Schedule 1-A, line 4c
+        locator: 'p. 104, Schedule 1-A, line 4c; Line 4a, "If you received qualified tips as an employee with respect to
+          employment with more than one employer, enter -0- on line 4a"; tips from an employer for no job on the list are not
+          qualified tips, so that employer is not counted'
     - id: person.tip_total
       printed: (helper)
       type: NonNegDollars
@@ -894,6 +901,34 @@ form:
       cite:
         doc: i1040gi
         locator: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2
+    - id: person.tips_over_wages
+      printed: (helper)
+      type: Bool
+      label: The qualified tips reported on this person's Forms W-2 or 4070 (worksheet column (b)) are more than the person's Medicare wages and tips (W-2 box 5), of
+        which they are a part
+      expr:
+        op: test
+        gt:
+        - person.tip_reported
+        - person.medicare5
+      cite:
+        doc: f1040s1a
+        locator: 'p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and
+          tips shown in box 5"'
+    - id: person.ot_over_wages
+      printed: (helper)
+      type: Bool
+      label: The qualified overtime compensation entered for this person is more than the person's Medicare wages and tips
+        (W-2 box 5), of which it is a part
+      expr:
+        op: test
+        gt:
+        - person.ot_total
+        - person.medicare5
+      cite:
+        doc: f1040s1a
+        locator: 'p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all
+          Medicare wages and tips shown in box 5"'
     - id: person.rrta
       printed: rrta
       label: 'Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?'
@@ -1065,6 +1100,63 @@ form:
       cite:
         doc: f8919
         locator: 'p. 1, Who must file, "You must file Form 8919 if all of the following apply"'
+    - id: person.f8919_ss8_firms
+      printed: (helper)
+      type: Count
+      label: Number of this person's Form 8919 firms with reason code G
+      expr:
+        op: sum_over
+        collection: f8919firm
+        field: f8919firm.one
+        where:
+          op: test
+          eq:
+            - f8919firm.code_g
+            - const: true
+      cite:
+        doc: f8919
+        locator: 'p. 1, Reason codes, "If none of the reason codes apply to you, but you believe you should have been treated
+          as an employee, enter reason code G and file Form SS-8 on or before the date you file your tax return"; p. 2,
+          "Don’t attach Form SS-8 to your tax return. Form SS-8 must be filed separately"'
+    - id: person.f8919_ss8
+      printed: (helper)
+      type: Bool
+      label: This person has a Form 8919 firm with reason code G, so must file Form SS-8 (false for a person not paid by such a firm)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.contractor_pay_if_pay
+            - const: true
+          then: person.f8919_ss8_any
+        - guard:
+            op: test
+            eq:
+            - scope.contractor_pay_if_pay
+            - const: false
+          then: person.no
+      cite:
+        doc: f8919
+        locator: 'p. 1, Reason codes, "If none of the reason codes apply to you, but you believe you should have been treated
+          as an employee, enter reason code G and file Form SS-8 on or before the date you file your tax return"; p. 2,
+          "Don’t attach Form SS-8 to your tax return. Form SS-8 must be filed separately"'
+    - id: person.f8919_ss8_any
+      printed: (helper)
+      type: Bool
+      label: At least one of this person's Form 8919 firms has reason code G
+      expr:
+        op: test
+        gt:
+          - person.f8919_ss8_firms
+          - const: 0
+            type: Count
+      cite:
+        doc: f8919
+        locator: 'p. 1, Reason codes, "If none of the reason codes apply to you, but you believe you should have been treated
+          as an employee, enter reason code G and file Form SS-8 on or before the date you file your tax return"; p. 2,
+          "Don’t attach Form SS-8 to your tax return. Form SS-8 must be filed separately"'
     - id: person.f8919_line10_figured
       printed: (helper)
       type: NonNegDollars
@@ -3457,6 +3549,39 @@ form:
       cite:
         doc: i6251
         locator: 'p. 5, Line 2l—Post-1986 Depreciation, "Property placed in service after 1998 that is depreciated for the regular tax using the 200% declining balance method (generally 3-, 5-, 7-, and 10-year property under the modified accelerated cost recovery system (MACRS)"'
+    - id: person.bonus_all
+      printed: (helper)
+      label: Special depreciation allowance on property and vehicles placed in service in 2025 (Form 4562 lines 14 and 25), all of this person's businesses
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.bonus_all
+      cite:
+        doc: i4562
+        locator: p. 5, Line 14; p. 13, Line 25
+    - id: person.prior_bonus_assets
+      printed: (helper)
+      label: Special depreciation allowance claimed in an earlier year on property (other than vehicles) placed in service before 2025, all of this person's businesses
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.prior_bonus_assets
+      cite:
+        doc: p946
+        locator: p. 37, Figuring the Unadjusted Basis of Your Property, "Any special depreciation allowance taken on the property"
+    - id: person.suv179
+      printed: (helper)
+      label: Section 179 elected in 2025 on SUVs rated over 6,000 pounds, all of this person's businesses
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.suv179
+      cite:
+        doc: i4562
+        locator: p. 16, Column (i)—Elected section 179 cost, "You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles"
     - id: person.amt_dep
       printed: (helper)
       label: Regular-tax MACRS depreciation of this person's businesses that the alternative minimum tax may refigure (Form 4562 lines 17, 19a to 19d and 26 column (h)); the line 2l adjustment of Form 6251 is at most this amount

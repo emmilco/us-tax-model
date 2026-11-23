@@ -62,6 +62,42 @@ rows:
       person[taxpayer].retirement[r].under59: false
     expect:
       refused: person[taxpayer].retirement[r].special
+  - id: retirement.rollover_nonspouse
+    design: "retirement.special: a 60-day rollover by a beneficiary other than the surviving spouse (p590b p. 5), asked for an IRA by the inherited-IRA question"
+    situation: "A person inherited a parent's IRA, was paid it by check (code 4) and put it into her own IRA within 60 days."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: traditional_ira
+      person[taxpayer].retirement[r].code: death_4
+      person[taxpayer].retirement[r].box1: 5000000
+      person[taxpayer].retirement[r].rollover_any: true
+      person[taxpayer].retirement[r].rollover: 5000000
+      person[taxpayer].retirement[r].roth_moved: false
+      person[taxpayer].retirement[r].rollover_property: false
+      person[taxpayer].retirement[r].rollover_qdro: false
+      person[taxpayer].retirement[r].levy_returned: false
+      person[taxpayer].retirement[r].sav_inherited: true
+      person[taxpayer].retirement[r].not_beneficiary: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
+  - id: retirement.rollover_second
+    design: "retirement.special: a second IRA-to-IRA rollover within 12 months (p590a p. 25)"
+    situation: "A person put an IRA withdrawal back into an IRA within 60 days, having done the same with another IRA withdrawal five months earlier."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: traditional_ira
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].box1: 1000000
+      person[taxpayer].retirement[r].rollover_any: true
+      person[taxpayer].retirement[r].rollover: 600000
+      person[taxpayer].retirement[r].roth_moved: false
+      person[taxpayer].retirement[r].rollover_property: false
+      person[taxpayer].retirement[r].rollover_qdro: false
+      person[taxpayer].retirement[r].levy_returned: false
+      person[taxpayer].retirement[r].rollover_second: true
+      person[taxpayer].retirement[r].under59: false
+    expect:
+      refused: person[taxpayer].retirement[r].special
   - id: retirement.charity_hsa
     design: "retirement.special: a qualified charitable distribution or HSA funding distribution"
     situation: "An IRA owner had part of a withdrawal sent straight to a charity."

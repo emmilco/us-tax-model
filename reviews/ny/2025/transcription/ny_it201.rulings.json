@@ -984,11 +984,11 @@
    "printed": "1",
    "project_expr_sha256": "4e0fde6bbd661f1105d1a536ba0f5adfd120991ae32984f69ca91d31bbaa9a97",
    "second_expr_sha256": "483e47bf835761306362f5ca228c939ae3d18344d6a248b860b93a8d0ca2d17b",
-   "ruling": "Ruling: model error; ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\": the project rounds federal line 1z half up, the second copies it with cents.",
-   "context": "ef4cda24afe999c72eb1837c76a9938721c88c759b32ce51f083ffa375ebbeaa",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents. Same reference otherwise.",
+   "context": "d99b679940a05af8dec2008d9e5de9cfdf21c86e32d321f8406943b22213740a",
    "date": "2026-11-22",
-   "run": "dc95fa816536cf27eb65ca402669fa9defd280879dbf37515f882ce1d79f799c",
-   "subject_key": "28fa003f064ceb59baf60346c44cac710562ab19d057c711cf6935f01031d551",
+   "run": "113b03185ef054ae7624c5680a9283a3a66c7d770b8beed50f2ba6e459fdfbe0",
+   "subject_key": "3457a4fab429313a857b9a8d67ec463674ca24bf448cfbe747dfcf1a7e32c44b",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1040,6 +1040,84 @@
      "fixture:classm.retirement.5.deepseek@ny_it201",
      "fixture:classm.retirement.2@ny_it201",
      "fixture:classm.retirement.3@ny_it201"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "11",
+   "project_expr_sha256": "8dc5087b3b3726ade8e956cde0b462f7a705a584ca234bc11f7c168c219ee4fd",
+   "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "ruling": "Ruling: interface gap; project retained. IT-201 p. 2, line 11, \"Rental real estate, royalties, partnerships, S corporations, trusts, etc. (submit copy of federal Schedule E, Form 1040)\", is the label of federal Schedule 1 line 5, and IT-201-I p. 7, Lines 1 through 19, \"The calculation of your New York State, New York City, and Yonkers income tax is based on the information you reported on your federal income tax return\". The request's federal catalog did not offer s1.line5 (the label rule credits \"federal\" only before the phrase; here it follows), so the reply entered 0 and itself notes \"The real figure must come from a federal Schedule 1 line 5 interface once one is supplied.\" Tool gap recorded as BUG-1219.",
+   "context": "d99b679940a05af8dec2008d9e5de9cfdf21c86e32d321f8406943b22213740a",
+   "date": "2026-11-22",
+   "run": "113b03185ef054ae7624c5680a9283a3a66c7d770b8beed50f2ba6e459fdfbe0",
+   "subject_key": "04fff32feafc660dabab24a055095ea96f1b0dd352feb64e256c4d007361df5b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.2.deepseek@ny_it201",
+     "fixture:classm.dependent.2.deepseek@ny_it201",
+     "fixture:classm.f8582.1.deepseek@ny_it201",
+     "fixture:classm.f8582.2.deepseek@ny_it201",
+     "fixture:classm.royalty.1.deepseek@ny_it201",
+     "fixture:classm.royalty.2.deepseek@ny_it201",
+     "fixture:classm.rental.1.deepseek@ny_it201",
+     "fixture:classm.rprop.1.deepseek@ny_it201",
+     "fixture:classm.f4952.3@ny_it201",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@ny_it201",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ny_it201",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ny_it201",
+     "fixture:x1sche.f18.home_refused@ny_it201",
+     "fixture:x1sche.f19.overlap_days@ny_it201",
+     "fixture:x1sche.f20.exactly_15_days@ny_it201",
+     "fixture:x1sche.r1.short_stay@ny_it201",
+     "fixture:x1sche.r2.services@ny_it201",
+     "fixture:x1sche.r3.self_rental@ny_it201"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "12",
+   "project_expr_sha256": "91fb63adcf2a81873e577b1cf0b09993640a14d266cdff20ea73a854b2e9ee5b",
+   "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "ruling": "Ruling: interface gap; project retained. IT-201 p. 2, line 12, \"Rental real estate included in line 11\", is the rental real estate part of line 11, which is federal Schedule 1 line 5 (Schedule E line 41 when the return has rental or royalty property). The request's federal catalog offered no Schedule E interface, so the reply entered 0 and itself notes that the line needs a source; the project takes Schedule E line 41 less its royalties (Parts II to V are refused federally: scope.k1, scope.remic, scope.farm). Same tool gap as line 11, BUG-1219.",
+   "context": "f28fb2c4471dfb29be56725b185deb0b3e1e3af174f6046dfe890c0a5f4fe0c3",
+   "date": "2026-11-23",
+   "run": "f40585025a91839f6924188f041f23e96c044afa3c2a9ab8f2be7e879b440a52",
+   "subject_key": "2fb3142a7848ec0ad738a7796dacfa43e7782fc0b070d1ad5d635cadbffc1a48",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.2.deepseek@ny_it201",
+     "fixture:classm.dependent.2.deepseek@ny_it201",
+     "fixture:classm.f8582.1.deepseek@ny_it201",
+     "fixture:classm.f8582.2.deepseek@ny_it201",
+     "fixture:classm.royalty.2.deepseek@ny_it201",
+     "fixture:classm.rental.1.deepseek@ny_it201",
+     "fixture:classm.rprop.1.deepseek@ny_it201",
+     "fixture:classm.sche.1.deepseek@ny_it201",
+     "fixture:classm.s1.14.deepseek@ny_it201",
+     "fixture:classm.f4952.3@ny_it201",
+     "fixture:classm.s1.14@ny_it201",
+     "fixture:classm.f8582.2@ny_it201",
+     "fixture:f8582.refuse.prior_crd@ny_it201",
+     "fixture:x1sche.f18.home_refused@ny_it201",
+     "fixture:x1sche.f19.overlap_days@ny_it201",
+     "fixture:x1sche.f20.exactly_15_days@ny_it201",
+     "fixture:x1sche.r1.short_stay@ny_it201",
+     "fixture:x1sche.r2.services@ny_it201"
     ],
     "policy": "executable-triage-v2"
    }

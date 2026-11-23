@@ -13876,3 +13876,617 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Proposed fix:** Accept when the base rows are a sub-multiset of main's rows in order of appearance, and append only the worktree's post-clone rows not already present in main.
 - **Proposed fix lines:** none (tool change: tools/worktree_data.py).
 - **Tags:** tool, worktrees, cost ledger, review data
+
+## BUG-1173 — A 60-day rollover a beneficiary other than the spouse, or a second IRA-to-IRA rollover within 12 months, is excluded from line 4b
+
+- **Caught by:** scout adversarial-income M1 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix (claude-opus-5-5, judgment).
+- **Source:** p590b (2025) p. 5, Inherited from someone other than spouse, "you can't roll over any amounts into or out of the inherited IRA. However, you can make a trustee-to-trustee transfer"; p575 p. 24, Rollovers by nonspouse beneficiary, "The distribution must be a direct trustee-to-trustee transfer"; p590a p. 25, Application of one-rollover-per-year limitation, "You can make only one rollover from an IRA to another (or the same) IRA in any 1-year period regardless of the number of IRAs you own"; p590b p. 6, "A surviving spouse can roll over the distribution to another traditional IRA".
+- **Symptom:** A non-spouse beneficiary paid an inherited IRA by check (code 4) who put it into her own IRA within 60 days, or a filer with a second IRA-to-IRA 60-day rollover within 12 months, entered the deposit at retirement.rollover; line 4b excluded it and nothing refused. The beneficiary rule was only in the model source, which the filer does not see; the one-per-year limit was nowhere. Income understated by the whole amount, and the excess contribution (Form 5329 Part III) not raised.
+- **Where:** forms/2025/retirement.yaml retirement.rollover (source), retirement.special; interview/2025/questions.yaml (new entries retirement.rollover_nonspouse and retirement.rollover_second; retirement.sav_inherited moved into the 1099-R topic; the retirement.rollover bank entry is unchanged).
+- **Fix:** Two refusals beneath the put-back answer, read by retirement.special. (1) A beneficiary other than the spouse: retirement.rollover_nonspouse_if_death (code 4 with money put back, retirement.death_put_back) reads retirement.nonspouse_beneficiary, which for an IRA is the existing inherited-IRA question retirement.sav_inherited (one fact, one asker, N8; its bank entry moves from order 317 to the 1099-R topic, order 170 seq 20, so the refusal is told there) and for a plan the new retirement.rollover_nonspouse ("Did you inherit this money from someone other than your spouse?", gate retirement.rollover_nonspouse_if_plan on retirement.plan_death). (2) A second IRA-to-IRA rollover within 12 months: retirement.rollover_second ("Did this money go back into an IRA, when in the 12 months before you received it you had already put other money taken out of an IRA back into an IRA within 60 days?"; a rollover into a workplace plan is No, as p590a p. 25 limits only IRA-to-IRA rollovers), gate retirement.rollover_second_if_ira on retirement.ira_put_back (an IRA, not code G, money put back). The rollover source states both rules; its beneficiary sentence now says such a beneficiary counts nothing (a direct transfer to an inherited IRA is codes 4 and G, refused as another code; i1099r p. 15). Bank seqs of order 170 renumbered to place the three questions at 19 to 21. Defaults false. Fixtures, predicted by hand before evaluating: advfix.retirement.rollover_nonspouse_refused and advfix.retirement.rollover_second_refused (refusals), advfix.retirement.rollover_spouse_beneficiary (line 4b $0), advfix.retirement.ira_to_plan_rollover (IRA to a 401(k), line 4b $4,000). Coverage rows retirement.rollover_nonspouse and retirement.rollover_second. After the lane review and the sampled false-no reviews: retirement.rollover_second asks about other money taken out of an IRA in the 12 months before this money was received (p590a p. 25, "The 1-year period begins on the date you receive the IRA distribution"), counts a rollover made later under a waiver, and its help counts a Roth IRA put back into a Roth IRA (conversions excepted); retirement.rollover_any help names the first-home recontribution.
+- **Fix lines:** `retirement.rollover`, `retirement.special`, `retirement.death_put_back`, `retirement.nonspouse_beneficiary`, `retirement.rollover_nonspouse`, `retirement.rollover_nonspouse_if_death`, `retirement.rollover_nonspouse_if_plan`, `retirement.ira_put_back`, `retirement.rollover_second`, `retirement.rollover_second_if_ira`
+- **Siblings checked:** `f1040.ira_rollovers`, `f1040.line4c_rollover`, `f1040.plan_rollovers`, `person.ira_rollovers`, `person.plan_rollovers`, `retirement.amount_a`, `retirement.annuity_if_cost`, `retirement.annuity_rollover`, `retirement.ben_before_retire`, `retirement.ben_before_retire_if_death`, `retirement.ben_guaranteed`, `retirement.ben_guaranteed_if_death`, `retirement.ben_shared`, `retirement.ben_shared_if_death`, `retirement.born_before_averaging_date`, `retirement.born_before_averaging_date_if_plan`, `retirement.box6`, `retirement.box6_if_plan`, `retirement.charity_hsa`, `retirement.charity_hsa_if_ira`, `retirement.cost_any`, `retirement.cost_any_if_plan`, `retirement.csrs_alt`, `retirement.csrs_alt_if_cost`, `retirement.death_exclusion`, `retirement.death_exclusion_if_death`, `retirement.dis_early`, `retirement.dis_early_if_disability`, `retirement.dis_military`, `retirement.dis_military_if_disability`, `retirement.dis_terror`, `retirement.dis_terror_if_disability`, `retirement.disability`, `retirement.disability_if_plan`, `retirement.disaster`, `retirement.general_rule`, `retirement.general_rule_if_cost`, `retirement.has_rollover`, `retirement.ira_basis_if_trad`, `retirement.ira_not_rolled`, `retirement.ira_returned`, `retirement.ira_returned_if_ira`, `retirement.is_death`, `retirement.is_trad`, `retirement.levy_returned`, `retirement.levy_returned_if_put_back`, `retirement.loan_offset`, `retirement.loan_offset_if_plan`, `retirement.plan_excluded`, `retirement.plan_simple`, `retirement.rolled`, `retirement.rollover_if_any`, `retirement.sav_excluded`, `retirement.sav_inherited`, `retirement.show_a`, `retirement.taxable`
+- **Severity:** medium
+- **Tags:** retirement, rollover, refusal, interview; review debt: retirement transcription and render of the changed and new lines, class M of retirement; fixed
+
+## BUG-1174 — The interest amount question names only Form 1099-INT and asks what was paid, so OID from Form 1099-OID can be left out
+
+- **Caught by:** scout adversarial-income M2 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** i1040gi (2025) p. 25, Line 2b, "Each payer should send you a Form 1099-INT or Form 1099-OID. Enter your total taxable interest income on line 2b"; f1099oid p. 5, Box 1, "Report the amount in box 1 as interest income on your income tax return", Box 2, qualified stated interest, "report this amount as interest income on your tax return"; p. 7, Box 8, "Report this amount as interest income on your federal income tax return".
+- **Symptom:** The prompt asked how much interest the payer "pay[s]" and gave boxes of Form 1099-INT only; OID accrues and is not paid, so a holder of a discount CD or STRIPS with only a Form 1099-OID could enter 0. Line 2b and its readers (Form 8960, the Social Security Benefits Worksheet) understated.
+- **Where:** interview/2025/questions.yaml interest.amount (prompt, help), $interest (help); forms/2025/interest.yaml interest.amount (source, cite); forms/2025/sb.yaml sb.bond_special (source, cite).
+- **Fix:** Prompt: "pay or report to you for 2025"; Form 1099-INT box 8 named as such; new help: "On a Form 1099-OID it is boxes 1, 2 and 8: the discount counts as interest even though it was not paid to you. If box 11 also has an amount, box 2 is tax-exempt: leave it out. Premium in box 6 or 10 is asked later." The bond screen sb.bond_special now names a Form 1099-OID with an amount in box 6 or 10 (acquisition or bond premium, refused). Roster help names Form 1099-OID. Model source names the boxes, box 2 only when box 11 is blank; cites quote i1040gi p. 25 and f1099oid pp. 5 and 7. No amount changes for a given input; no fixture. After the sampled false-no review of gate:sb.bonds_any_if_income: the sb.bonds_any help names a Treasury bill.
+- **Fix lines:** `interest.amount`, `sb.bond_special`
+- **Siblings checked:** `sb.bond_special_if_bonds`, `sb.bonds_any`, `sb.bonds_any_if_income`, `sb.fbar_required`, `sb.form8938`, `sb.has_income`, `sb.interest_total`, `sb.line2`, `sb.line3`, `sb.line4`, `sb.line6`, `sb.line8`, `sb.no`, `sb.nominee`, `sb.nominee_if_income`, `sb.ordinary_dividends`, `sb.partIII`, `sb.unsupported`, `sb.unsupported_if_income`, `sb.zero`
+- **Severity:** medium
+- **Tags:** interest, Schedule B, wording; review debt: interest transcription and render of interest.amount; fixed
+
+## BUG-1175 — The attorney-fee refusal asks whether the filer paid a lawyer, so a contingent fee taken from a discrimination settlement reads as No and the line 24h refusal is lost
+
+- **Caught by:** scout adversarial-income M3 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** p525 (2025) p. 32, Deduction for costs involved in unlawful discrimination suits, "a claim against the U.S. Government, or a claim under section 1862(b)(3)(A) of the Social Security Act", "The attorney fees and court costs may be paid by you or on your behalf"; i1040gi p. 100, Line 24h, "Enter attorney fees and court costs for actions involving certain unlawful discrimination claims, but only to the extent of gross income from such actions".
+- **Symptom:** The question "did you ... pay a lawyer or court costs" reads No for a filer whose lawyer's contingent share was paid straight from the settlement, so the Schedule 1 line 24h deduction this tool cannot prepare was neither taken nor refused: income overstated by the fee. The question also omitted the claim against the U.S. Government and the Medicare secondary-payer claim.
+- **Where:** forms/2025/scope.yaml scope.attorney_fees (label, source, cite); interview/2025/questions.yaml scope.attorney_fees (help).
+- **Fix:** Wording: "were lawyer's fees or court costs paid by you (or, on a joint return, your spouse), or taken out of what you won, for a claim of unlawful discrimination, a claim against the U.S. Government, a Medicare secondary-payer claim or an IRS whistleblower award?"; help: "Count a lawyer's share that the other side paid straight to the lawyer." The refusal is unchanged. No fixture (no amount or refusal changes for a given answer).
+- **Fix lines:** `scope.attorney_fees`
+- **Siblings checked:** `scope.schedule1`
+- **Severity:** medium
+- **Tags:** scope, Schedule 1 line 24h, refusal wording; review debt: scope transcription and render of scope.attorney_fees, screen review; fixed
+
+## BUG-1176 — Business start-up costs are never asked about, and the line 48 catch-all invites deducting them in full
+
+- **Caught by:** scout adversarial-business M1 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** i1040sc (2025) p. 16, Business startup costs, "If your business began in 2025, you can elect to deduct up to $5,000 of certain business startup costs. The $5,000 limit is reduced (but not below zero) by the amount by which your total startup costs exceed $50,000. Your remaining startup costs can be amortized over a 180-month period ... For amortization that begins in 2025, complete and attach Form 4562."
+- **Symptom:** No question or screen item named start-up costs; a business that began in 2025 with $20,000 of pre-opening costs could put them all on line 48 (other expenses), understating net profit (by $14,500 in the scout's case) and self-employment tax, where $15,000 must be amortized from Form 4562 Part VI, which this tool does not prepare.
+- **Where:** forms/2025/sc.yaml sc.special (label, source, cite); interview/2025/questions.yaml sc.special (prompt).
+- **Fix:** A new item of the sc.special screen: "it began in 2025 and spent more than $5,000 to get started before it opened (such as training, market research or advertising)" (refuses, as the other items do). Start-up costs of $5,000 or less, and amortization begun before 2025, stay lawful on line 48. No fixture: the screen item adds a refusal reached only by a Yes, and no amount changes.
+- **Fix lines:** `sc.special`
+- **Siblings checked:** `person.cost179`, `person.income179`, `person.mq_q4`, `person.mq_total`, `person.s179_listed`, `person.s179_nonlisted`, `person.sc_count`, `s1.line3`, `s1.prizes`, `sc.line1`, `sc.line16a`, `sc.line16b`, `sc.line23`, `sc.line24a`, `sc.line24a_if_travel_meals`, `sc.line6`, `sc.loss`, `sc.meals_50`, `sc.meals_50_if_travel_meals`, `sc.result`, `sc.screened`, `sc.statutory`
+- **Severity:** medium
+- **Tags:** Schedule C, start-up costs, refusal; review debt: sc transcription and render of sc.special, screen review; fixed
+
+## BUG-1177 — The net operating loss box reads as Yes for a capital loss carryover
+
+- **Caught by:** scout t333-judgment-records-2 F2 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** i1040gi (2025) p. 91, Line 8a, "Enter any deduction for an NOL from an earlier year"; i1040sd p. 1, General Instructions, "To report a capital loss carryover from 2024 to 2025".
+- **Symptom:** The tick label "A loss still being carried into 2025 (a 'net operating loss')" describes a capital loss carryover exactly; only the quoted term says otherwise, and the help excluded Form 8582 losses but not capital losses; the capital loss question is asked later (order 276). A capital loss entered here goes to line 8a with no $3,000 limit, and probably again on Schedule D.
+- **Where:** interview/2025/questions.yaml scope.nol (tick, help); forms/2025/scope.yaml scope.nol (label, source, cite).
+- **Fix:** Tick: "A business, farm, rental or disaster loss carried into 2025 (not investments)"; help leads with the term and adds "Not a loss from selling stock or other investments (asked later)"; the source excludes a capital loss from selling investments. No fixture. After the sampled false-no review of gate:scope.nol: the help adds "A loss on small business stock taxed as ordinary (section 1244) counts" and keeps "nor one still held back on Form 8582" (a released Form 8582 loss can make an NOL).
+- **Fix lines:** `scope.nol`
+- **Siblings checked:** `rec.nol_negative`, `s1.line8a`, `s1.nol_amount_if_nol`, `s1.nol_before_limit_date_if_nol`, `s1.nol_ebl_if_nol`, `s1.nol_joint`, `s1.nol_limit`, `s1.nol_separate`
+- **Severity:** medium
+- **Tags:** scope, net operating loss, wording; review debt: scope transcription and render of scope.nol, false-no review; fixed
+
+## BUG-1178 — The household pay box never separates a household employee from a self-employed cleaner or gardener
+
+- **Caught by:** scout t333-judgment-records-2 F3 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** i1040gi (2025) p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"; p926 p. 3, Do You Have a Household Employee?, "The worker is your employee if you can control not only what work is done, but how it is done"; p. 4, "A self-employed worker usually provides their own tools and offers services to the general public in an independent business" (the lawn care example).
+- **Symptom:** The tick and prompt said only "paid by a household" and the help named a cleaner and gardener, trades p926 shows as usually self-employed; a self-employed worker's business income could go to line 1b as wages, omitting Schedule SE (about 15.3% of net earnings), or be counted twice.
+- **Where:** interview/2025/questions.yaml scope.household_pay (tick, prompt, help); forms/2025/scope.yaml scope.household_pay (label, source, cite).
+- **Fix:** Tick: "Pay as a household's own worker (not your own business), no W-2"; prompt adds "as its worker ... that the household directed"; help: "Such as a nanny, carer, housekeeper or private driver who works as the household directs ... Not pay to a business of your own that offers the work to anyone." The source names control of what and how and excludes a self-employed worker offering the work to the public. No fixture. After the sampled screen and false-no reviews of gate:scope.household_pay_if_pay: the amount question's help (person.household_wages) now says "for work you did as its own worker ... including the value of meals or lodging given as pay. Leave out pay to a business of your own."
+- **Fix lines:** `scope.household_pay`
+- **Siblings checked:** `f1040.line1b`, `person.household_wages`, `person.household_wages_if_pay`, `scope.household_pay_if_pay`
+- **Severity:** medium
+- **Tags:** scope, Form 1040 line 1b, household employee, wording; review debt: scope transcription and render of scope.household_pay, screen review; fixed
+
+## BUG-1179 — Form 8919 column (c), the reason code, is never asked, so the SS-8 rule that guards a contractor's Yes is never put to the filer
+
+- **Caught by:** scout t333-judgment-records-2 F6 (claude-opus-5-5, judgment), 2026-11-22, from lane x2-paynow2's note of 2026-11-15; confirmed in lane advfix (no line or target read f8919firm.reason; reports/2025/coverage.md: unobserved) and fixed there.
+- **Source:** f8919 (2025) p. 1, Reason codes, "For each firm listed below, enter in column (c) the applicable reason code", "If none of the reason codes apply to you, but you believe you should have been treated as an employee, enter reason code G and file Form SS-8 on or before the date you file your tax return"; p. 2, "Don't attach Form SS-8 to your tax return. Form SS-8 must be filed separately".
+- **Symptom:** f8919firm.reason (printed 1(c)) had no reader, and the interview asks only what a target reads, so the printed column (c) was blank and the SS-8 requirement, the guard on a wrong Yes to scope.contractor_pay, was never asked.
+- **Where:** forms/2025/f8919firm.yaml, person.yaml, s2.yaml; interview/2025/full.yaml targets.
+- **Fix:** A notice read from the reason codes: f8919firm.code_g (reason G), person.f8919_ss8_firms and person.f8919_ss8_any (count and test), person.f8919_ss8 (gated on scope.contractor_pay_if_pay), s2.ss8_count and s2.ss8_notice ("for each firm given reason code G on Form 8919, file Form SS-8 with the IRS, separately ... on or before the date you file"), asked for directly as a target of the full profile, so each firm's reason is asked. Fixture advfix.f8919.reason_g_ss8_notice (notice true, line 13 $765.00), predicted by hand; x2pay.f8919.w3 (code H) also expects the notice false.
+- **Fix lines:** `f8919firm.one`, `f8919firm.code_g`, `person.f8919_ss8_firms`, `person.f8919_ss8_any`, `person.f8919_ss8`, `s2.ss8_count`, `s2.ss8_notice`
+- **Siblings checked:** `f8919firm.reason`
+- **Severity:** medium
+- **Tags:** Form 8919, interview target, notice; review debt: f8919firm, person, s2 transcription and render of the new lines, class M of f8919; fixed
+
+## BUG-1180 — Rental buildings roster asks for what the filer depreciates, so a landlord who never claimed depreciation can leave it empty
+
+- **Caught by:** scout t333-judgment-records-1 F1 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** p527 (2025) p. 17, Claiming the Correct Amount of Depreciation, "You should claim the correct amount of depreciation each tax year. If you didn't claim all the depreciation you were entitled to deduct, you must still reduce your basis in the property by the full amount of depreciation that you could have deducted."
+- **Symptom:** The roster prompt "List the building and each improvement to it you depreciate" let a landlord who had never claimed depreciation truthfully leave the list empty, dropping the year's depreciation (Schedule E line 18) with no check.
+- **Where:** interview/2025/questions.yaml $rprop (prompt, help).
+- **Fix:** Prompt: "List the building and each improvement to it ... even if you have never claimed depreciation for them; leave the list empty for land only"; help adds that a building is depreciated whether or not it was claimed before, and this year's share is still allowed. No fixture.
+- **Fix lines:** `rental.dep_full` (the line the `$rprop` roster feeds; the change is the roster's bank prompt and help)
+- **Siblings checked:** `rental.depletion`, `rental.div18`, `rental.line18`, `rental.line21_full`, `royalty.depletion`, `royalty.line21`, `rprop.basis`
+- **Severity:** medium
+- **Tags:** rental, depreciation, roster wording; review debt: question review of $rprop; fixed
+
+## BUG-1181 — Form 1116 fund dividend question puts the foreign-share rule only in help, so a fund holder can enter the whole dividend
+
+- **Caught by:** scout t333-judgment-records-1 F3 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** i1116 (2025) p. 11, Regulated investment company (RIC) pass-through amounts, "Total all income, in the applicable category, passed through from the mutual fund or other RIC and enter the total in a single column in Part I".
+- **Symptom:** The prompt asked how much of the dividends came from outside the United States, with the fund's foreign share only in help; a fund holder entering box 1a passes f1116.income_over (which tests only against line 3b), overstating line 1a and the limit, so the credit where the limit binds.
+- **Where:** interview/2025/questions.yaml f1116col.div_income (prompt, help).
+- **Fix:** Prompt adds: "For funds, enter only the foreign source income their year-end tax statements list for you, not the whole dividend." Help keeps the foreign-company case. No mechanical check (a tax-to-income threshold has no source). No fixture.
+- **Fix lines:** `f1116col.div_income`
+- **Siblings checked:** `f1116.income_over`, `f1116.int_total`, `f1116.line35`, `f1116.other_category`, `f1116col.div_income_if_div`, `f1116col.int_income`, `f1116col.int_income_if_int`
+- **Severity:** medium
+- **Tags:** Form 1116, wording; review debt: question review of f1116col.div_income; fixed
+
+## BUG-1182 — Schedule 8812 line 22 and Credit Limit Worksheet B line 8 leave out Schedule 2 lines 5 and 6 (Forms 4137 and 8919)
+
+- **Caught by:** scout adversarial-credits M1 (claude-opus-5-5, judgment), 2026-11-22, reproduced by eval; confirmed and fixed in lane advfix.
+- **Source:** f1040s8812 (2025) p. 2, line 22, "Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form 1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13"; i1040s8812 p. 5, Credit Limit Worksheet B, line 8, the same four amounts.
+- **Symptom:** s8812.line22 copied Schedule 1 line 15 only; its locator said Schedule 2 lines 5, 6 and 13 were refused by s2.other, which is stale: Forms 4137 and 8919 are now prepared (s2.line5, s2.line6) and s2.other does not cover them. With three children, Form 8919 wages $4,000 and no EIC, line 27 was $225 where the form gives $306.
+- **Where:** forms/2025/s8812.yaml s8812.line22 (and s8812.clwb_8, its copy).
+- **Fix:** s8812.line22 = s1.line15 + s2.line5 + s2.line6; the s2.other refusal stays for Schedule 2 line 13 (its refusal form text, "Schedule 8812 line 22 (Schedule 2, lines 5, 6 and 13)", is unchanged so that the existing refusal fixture keeps its expected value); the locator quotes line 22. Fixture advfix.s8812.line22_form8919_tax (line 22 $306, line 27 and Form 1040 line 28 $306; $225 before), predicted by hand.
+- **Fix lines:** `s8812.line22`
+- **Siblings checked:** `s8812.clwb_8`, `s8812.line23`
+- **Severity:** medium
+- **Tags:** Schedule 8812, ACTC, Form 8919, Form 4137; review debt: s8812 transcription and render of s8812.line22, class M of s8812; fixed
+
+## BUG-1183 — The dependent age question says younger than either of you, which reads as younger than both
+
+- **Caught by:** scout adversarial-credits L1 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** i1040gi (2025) p. 17, Step 1, "younger than you (or your spouse if filing jointly)"; p501 p. 13, "the child must be younger than you or your spouse but doesn't have to be younger than both of you".
+- **Symptom:** "younger than either of you" reads naturally as younger than both, so a joint filer with a spouse older than the dependent but a taxpayer younger answers No and loses the qualifying child (EIC, CTC, head of household).
+- **Where:** interview/2025/questions.yaml dependent.younger (prompt).
+- **Fix:** Prompt: "Is this person younger than you or, if you file together, younger than your husband or wife? Younger than one of you is enough." No fixture.
+- **Fix lines:** `dependent.younger`
+- **Siblings checked:** `dependent.age`, `dependent.disabled`, `dependent.joint_return`, `dependent.lived_all_year`, `dependent.lived_half`, `dependent.lived_half_counted`, `dependent.months`, `dependent.no`, `dependent.other_claimant`, `dependent.other_only_spouse`, `dependent.other_only_spouse_if_mfs`, `dependent.qc_age`, `dependent.qc_age_19`, `dependent.qc_age_student`, `dependent.qc_age_younger`, `dependent.qc_from_age`, `dependent.qc_from_joint`, `dependent.qc_from_support`, `dependent.qc_relationship`, `dependent.qc_tests`, `dependent.qualifying_child`, `dependent.self_support`, `dependent.self_support_by_view`, `dependent.self_support_view`, `dependent.self_support_view_over`, `dependent.student`, `dependent.under_19`, `dependent.under_24`
+- **Severity:** low
+- **Tags:** dependent, wording; review debt: question review of dependent.younger; fixed
+
+## BUG-1184 — The jury pay given to an employer is asked of you only on a per-return question, so a spouse's amount can be left off line 24a
+
+- **Caught by:** scout adversarial-income L1 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** i1040gi (2025) p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury"; p. 13, a married couple filing jointly report their combined income.
+- **Symptom:** The prompt of s1.jury_to_employer (a per-return question) said "did you give to your employer"; a joint filer whose spouse served answers for themselves, so line 24a is understated.
+- **Where:** interview/2025/questions.yaml s1.jury_to_employer (prompt).
+- **Fix:** Prompt: "How much of that jury pay did you (or, on a joint return, your spouse) give to an employer because the employer kept paying the salary?" (the spouse phrase rule of interview/README.md). No fixture.
+- **Fix lines:** `s1.jury_to_employer`
+- **Siblings checked:** `s1.has_jury_pay`, `s1.jury_over`, `s1.jury_pay`, `s1.jury_to_employer_if_pay`, `s1.line24a`, `s1.line8h`
+- **Severity:** low
+- **Tags:** Schedule 1, spouse phrase; review debt: question review of s1.jury_to_employer; fixed
+
+## BUG-1185 — The SSA-1099 repayment question tests box 4 against box 3 form by form, not in total, so a joint return refuses where the worksheet applies
+
+- **Caught by:** scout adversarial-income L3 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** i1040gi (2025) p. 31, Lines 6a and 6b, Exception, "You repaid any benefits in 2025 and your total repayments (box 4) were more than your total benefits for 2025 (box 3)".
+- **Symptom:** "On any of your ... Forms SSA-1099 or RRB-1099, is box 4 more than box 3?" gets Yes when one spouse's form shows a repayment and no benefits though the totals do not, refusing a return the Social Security Benefits Worksheet handles (a false refusal; no wrong amount).
+- **Where:** forms/2025/ssb.yaml ssb.repaid_more (label, source, cite); interview/2025/questions.yaml ssb.repaid_more (tick), ssb.benefits (help).
+- **Fix:** The question asks about the totals over all the forms; tick "SSA-1099 and RRB-1099 totals, box 4 more than box 3". It can only remove false refusals. ssb.benefits gains help: "A box 5 shown in parentheses is negative; subtract it from the others" (p915 p. 15, "a negative figure in box 5 of one form is used to offset a positive figure in box 5 of another form"). ssb.any gains help: "Answer Yes also if your form shows only repayments, or if the benefits were all withheld for Medicare premiums or taken for a debt" (the sampled screen and false-no reviews of gate:ssb.any: a filer whose form shows only repayments read "get benefits" as No). No fixture.
+- **Fix lines:** `ssb.repaid_more`, `ssb.benefits`, `ssb.any`
+- **Siblings checked:** `f1040.line6a`, `f1040.line6b`, `household.mfs_living`, `household.mfs_living_else`, `ira.cov_gate`, `person.ira_ssb`, `person.ira_ssb_figured`, `ssb.any`, `ssb.benefits_if_any`, `ssb.has_benefits`, `ssb.ira_covered`, `ssb.ira_line20`, `ssb.line1`, `ssb.line10`, `ssb.line14`, `ssb.line15`, `ssb.line18`, `ssb.line18_figured`, `ssb.line2`, `ssb.line3`, `ssb.line4`, `ssb.line5`, `ssb.line6`, `ssb.line7`, `ssb.line8`, `ssb.line9`, `ssb.lines8_to_15`, `ssb.lived_apart`, `ssb.lump_elect`, `ssb.lump_sum`, `ssb.no`, `ssb.past7`, `ssb.past9`, `ssb.prior_year_pay`, `ssb.pub915`, `ssb.show10_15`, `ssb.show16_18`, `ssb.show8_9`, `ssb.terror_disability`
+- **Severity:** low
+- **Tags:** social security, refusal wording; review debt: ssb transcription and render of ssb.repaid_more; fixed
+
+## BUG-1186 — The personal property rental question names a trailer, inviting a mobile-home landlord to an unneeded refusal
+
+- **Caught by:** scout t333-judgment-records-1 F2 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** p527 (2025) p. 13, Residential rental property, "any real property that is a rental building or structure (including a mobile home)"; p. 25, Dwelling unit, "includes a house, apartment, condominium, mobile home, boat".
+- **Symptom:** scope.rent_personal ("such as a car, a trailer or equipment") invites a Yes from a landlord of a mobile home rented as a home, refused at scope.schedule1 without need; rental.kind offered no kind naming a mobile home.
+- **Where:** interview/2025/questions.yaml scope.rent_personal (help), rental.kind (value label sfr); forms/2025/rental.yaml rental.kind (source).
+- **Fix:** Help: a mobile home rented as a home is a building, answer No; the one-home kind reads "A house, condo or mobile home (one home)". A houseboat is left as it is. No fixture.
+- **Fix lines:** `scope.rent_personal`, `rental.kind`
+- **Siblings checked:** `rental.self_rental`, `scope.rent_personal_if_rental`, `rental.is_land` (tests the land kind; the mobile-home wording changes no kind)
+- **Severity:** low
+- **Tags:** rental, wording; review debt: rental transcription of rental.kind, question review of scope.rent_personal; fixed
+
+## BUG-1187 — The sales roster asks for crypto sold or traded, so a filer who paid with crypto may list no sale
+
+- **Caught by:** scout t333-judgment-records-1 F4 (claude-opus-5-5, judgment), 2026-11-22; confirmed and fixed in lane advfix.
+- **Source:** i1040gi (2025) p. 16, Digital assets, the Yes list, "Disposed of digital assets in exchange for property or services; Disposed of a digital asset in exchange or trade for another digital asset; Sold a digital asset".
+- **Symptom:** Spending crypto is a sale only in the help; the prompt said "sell or trade", so a filer whose only event was paying with crypto may leave the list empty and drop the gain.
+- **Where:** interview/2025/questions.yaml $sales (prompt).
+- **Fix:** Prompt: "sell or trade stocks, bonds, options, fund shares or crypto, or pay with crypto, outside a retirement account?" No fixture.
+- **Fix lines:** `f1040.digital_sales` (a reader of the `$sales` roster's crypto entries; the change is the roster's bank prompt)
+- **Siblings checked:** `f1040.digital_conflict`, `sales.digital`
+- **Severity:** low
+- **Tags:** digital assets, Schedule D, wording; review debt: question review of $sales; fixed
+
+## BUG-1188 — The recovery box is in tax vocabulary; its property tax and mortgage interest examples are only in help
+
+- **Caught by:** scout t333-judgment-records-2 F4 (claude-opus-5-5, judgment), 2026-11-22; fixed in lane advfix.
+- **Source:** p525 (2025) p. 24, Recoveries, "A recovery is a return of an amount you deducted or took a credit for in an earlier year" (the cite of scope.recovery).
+- **Symptom:** Tick "Money back for a deduction or credit (not state/local income tax refund)": an itemizer with a property tax or mortgage interest refund may not recognise it (N6, N10).
+- **Where:** interview/2025/questions.yaml scope.recovery (tick).
+- **Fix:** Tick: "Property tax or other past deduction or credit refunded (not income tax)" (12 words). No fixture.
+- **Fix lines:** `scope.recovery`
+- **Siblings checked:** `rec.before_prior_year_if_any`, `rec.joint_any`, `rec.no`, `rec.nonitemized`, `rec.nonitemized_if_any`, `rec.path`, `rec.sales_tax_if_any`
+- **Severity:** low
+- **Tags:** scope, tick wording; review debt: question review of scope.recovery; fixed
+
+## BUG-1189 — The military moving-expense question names only a 2025 move, so a member claiming only storage fees answers No
+
+- **Caught by:** the line-scoped Claude render review of scope (claude-opus-5-5), 2026-11-22, in lane advfix; ruled a finding and fixed there.
+- **Source:** i1040gi (2025) p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station", "If you are claiming only storage fees during your absence from the United States, check the box on line 14".
+- **Symptom:** scope.military_move asked only about "a 2025 move to a new permanent post"; a member claiming only storage fees while posted abroad could answer No and lose the line 14 deduction (which this tool does not prepare) with no refusal.
+- **Where:** forms/2025/scope.yaml scope.military_move (label, source, cite).
+- **Fix:** The question adds "or storage fees while you were posted outside the United States"; the cite quotes Line 14. The refusal is unchanged. No fixture.
+- **Fix lines:** `scope.military_move`
+- **Siblings checked:** `scope.military_move_if_armed_forces`
+- **Severity:** low
+- **Tags:** scope, Schedule 1 line 14, refusal wording; review debt: scope transcription and render of scope.military_move; fixed
+
+## BUG-1190 — The attorney-fee refusal names only an IRS whistleblower award; fees on SEC, CFTC or state false-claims awards may also be deductible
+
+- **Caught by:** review of lane advfix (rev-advfix, claude-opus-5-5, judgment), 2026-11-23, finding 6; filed by lane advfix at the owner-delegated coordinator's direction (keep the instructions-based wording).
+- **Source:** i1040gi (2025) p. 100, Line 24i, "Enter attorney fees and court costs you paid in connection with an award from the IRS for information you provided that helped the IRS detect tax law violations"; p525 p. 32 (the same). Section 62(a)(21), which the reviewer recalls also covers awards under the SEC, CFTC and state false-claims programs, is not archived.
+- **Symptom:** scope.attorney_fees now asks about "an IRS whistleblower award" (the archived instructions' scope); before, it said any "whistleblower award". A filer who paid fees on an SEC or CFTC award would have been refused before and now answers No; if the statute allows the deduction for such awards, it is lost with no refusal (income overstated). Not a defect against the archived text.
+- **Where:** forms/2025/scope.yaml scope.attorney_fees.
+- **Proposed fix:** Archive the 2025 text of section 62(a)(21) (or the Line 24z list of Schedule 1 other adjustments that names it). If it covers non-IRS whistleblower awards, add "or a whistleblower award from the SEC, the CFTC or a state" to the question; it refuses as before.
+- **Severity:** low
+- **Tags:** scope, Schedule 1 line 24, statute check, open
+
+## BUG-1191 — Start-up costs of a rental business that began in 2025 are neither asked nor refused on Schedule E
+
+- **Caught by:** review of lane advfix (rev-advfix, claude-opus-5-5, judgment), 2026-11-23, finding 7; filed by lane advfix at the owner-delegated coordinator's direction.
+- **Source:** i1040sc (2025) p. 16 and i1040sf p. 8, Business startup costs, "you can elect to deduct up to $5,000 of certain business startup costs. The $5,000 limit is reduced (but not below zero) by the amount by which your startup costs exceed $50,000. Your remaining startup costs can be amortized"; i4562 p. 18, Startup and organizational costs, "Business startup costs (section 195)" (amortized on Form 4562 Part VI).
+- **Symptom:** BUG-1176 added the start-up cost refusal to Schedule C only. A rental activity that is a business and began in 2025 has the same section 195 rule, but no rental question names pre-opening costs, so a landlord may deduct them in full among the expenses (income understated) where the part over $5,000 must be amortized on Form 4562 Part VI, which this tool does not prepare. Schedule F is refused as a whole (scope.farm), so only Schedule E is open.
+- **Where:** forms/2025/rental.yaml (the rental_rare or rental_costs screens); interview/2025/questions.yaml.
+- **Proposed fix:** A refusing box on the rental_rare screen: "It began in 2025 and you spent more than $5,000 to get it started before it was first rented (such as advertising or travel to find tenants)", read by the property's refusal list, citing i4562 p. 18 and i1040sc p. 16. Confirm first in p527 whether pre-rental expenses of a rental are section 195 costs or simply not deductible before the property is placed in service, and word the box to match.
+- **Severity:** low
+- **Tags:** rental, Schedule E, start-up costs, sibling of BUG-1176, open
+
+## BUG-1192 — A disability pension from a plan that does not provide for disability retirement can be routed to line 1h
+
+- **Caught by:** sampled completeness review of retirement (claude-opus-5-5), 2026-11-23, claim retirement#1.2 of subject 6cc6ff9c; ruled a real gap in lane advfix, not fixed (retirement follow-up).
+- **Source:** i1040gi (2025) p. 30, Disability Pensions, "If you receive payments from a retirement or profit-sharing plan that does not provide for disability retirement, do not treat those payments as disability payments. The payments must be reported as a pension or annuity."
+- **Symptom:** retirement.disability ("You get this pension because you became disabled") does not ask whether the plan provides for disability retirement, so a filer paid early from a plan without such a provision may tick it and have the payments treated as wages on line 1h (earned income for the EIC and other credits) instead of a pension on line 5b.
+- **Where:** forms/2025/retirement.yaml retirement.disability; interview/2025/questions.yaml retirement.disability (tick).
+- **Proposed fix:** Word the tick "Your plan pays a disability pension, and you get it because you became disabled" (or add a child question on the plan's disability provision beneath the box), citing i1040gi p. 30.
+- **Severity:** low
+- **Tags:** retirement, disability pension, line 1h, wording, open
+
+## BUG-1193 — A Form 1099-R coded 1 or S for a person 59½ or older all year is charged the 10% additional tax though the birth year is known
+
+- **Caught by:** scout adversarial-retirement (claude-opus-5-5, judgment), 2026-11-22/23; confirmed and fixed in lane advland (claude-opus-5-5, judgment), owner-delegated.
+- **Source:** i5329 (2025) p. 5, Line 2, exception 12, "Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older."
+- **Symptom:** A single filer born in 1955 with a $20,000 traditional IRA distribution coded 1 and no exception named got Schedule 2 line 8 $2,000 (scout walk, persona c1): retirement.early was true for code 1 and code S whatever the age, and the age question (retirement.under59) was asked only with code 7. Wrong amount, no refusal.
+- **Where:** forms/2025/retirement.yaml retirement.early..retirement.l2; params/2025.yaml age.*; interview/2025/questions.yaml retirement.after59.
+- **Fix:** Exception 12 is applied from the birth year: retirement.over59_all_year (born in or before age.over59h_all_year, 1964: 59½ or older on every day of 2025) and retirement.age_open (born 1965 or 1966); for an early code (1 or S) of a person born in 1965 or 1966 the new question retirement.after59 ("Were you age 59½ or older on the date of every payment of this money?", gate retirement.after59_if_open on retirement.ask_after59) is asked. retirement.miscoded (early, and 59½ or older all year or at every payment) puts the whole line 1 amount on line 2 (retirement.l2 chooses retirement.l1, else the named exception through the new retirement.l2_exc), and retirement.has_exception is false then, so no per-exception limit applies. A filer who turned 59½ part-way through can still name exception 12 for the later part (help). New parameters age.over59h_all_year 1964 and age.under59h_all_year 1967 (moves_with_year 1). Fixtures (hand-predicted): advland.retirement.code1_born_1955 (line 8 $0, was $2,000), advland.retirement.code1_born_1966_after ($0), advland.retirement.code1_born_1966_before ($1,000). Class M cases classm.f5329.2 and its deepseek twin (born 1965, code S) state after59 false, which their recorded figures assume.
+- **Fix lines:** `retirement.over59_all_year`, `retirement.age_open`, `retirement.ask_after59`, `retirement.after59`, `retirement.after59_if_open`, `retirement.miscoded`, `retirement.has_exception`, `retirement.l2`, `retirement.l2_exc`
+- **Siblings checked:** `retirement.under59` (code 7, still asked; a code 7 needs no exception), `retirement.code7_wrong`, `retirement.l1`, `retirement.l1_s`, `retirement.l2_s` (code S on line 2 through retirement.l2, so the 25% rate base falls with it), `retirement.is_e05`, `retirement.is_e09`, `retirement.is_e19`, `retirement.is_e22`, `retirement.is_e23` (false when miscoded through has_exception), `retirement.wrong_kind`, `person.x_l2_all`, `person.x_other_exc`, `s2.line8_must`; code J (Roth) is refused as an "other" code, so exception 12 for it is not reached.
+- **Severity:** medium
+- **Tags:** retirement, Form 5329, wrong amount, fixed
+
+## BUG-1194 — Social security from Canada or Germany has no place in the interview, and other countries' social security is not routed anywhere
+
+- **Caught by:** scout adversarial-retirement (claude-opus-5-5, judgment), 2026-11-22/23; confirmed and fixed in lane advland (claude-opus-5-5, judgment), owner-delegated.
+- **Source:** p915 (2025) p. 6, "Canadian or German social security benefits paid to U.S. residents ... If you receive social security benefits from Canada or Germany, include them on line 1 of Worksheet 1."
+- **Symptom:** ssb.any and ssb.benefits named only Forms SSA-1099 and RRB-1099 and had no help about foreign benefits; a filer with Canada Pension Plan benefits could leave them out of line 6a (a silent understatement), and the other-income list asks only for income the filer thinks taxable. Read only; the walk shows the prompts.
+- **Where:** interview/2025/questions.yaml ssb.any and ssb.benefits (help); forms/2025/ssb.yaml ssb.benefits (source, cite).
+- **Fix:** ssb.any help: "Social security from Canada or Germany counts too. Social security or a state pension from any other country is not this; list it as other income (Something else)", which refuses (oi8z.kind other). ssb.benefits help: "Add social security from Canada or Germany, in U.S. dollars."; its source adds the Canadian and German benefits, cite p915 p. 6. The ssb.any help, after the sampled false-no review of gate:ssb.any (findings 0, 1 and 3), also says "Answer Yes if you got a Form SSA-1099 or RRB-1099, for disability or survivor benefits too", counts benefits withheld for a workers' compensation offset, and names the Canada and Quebec Pension Plans, Old Age Security and the German statutory pension. No amount changes for a filer who already entered them; no fixture.
+- **Fix lines:** `ssb.any`, `ssb.benefits`
+- **Siblings checked:** `ssb.benefits_if_any`, `ssb.line1`, `ssb.repaid_more`, `oi8z.kind`
+- **Severity:** medium
+- **Tags:** social security, wording, help, fixed
+
+## BUG-1195 — Exception 05 (medical expenses) to the additional tax is cut to $0 when the medical-bills box is not ticked
+
+- **Caught by:** scout adversarial-retirement (claude-opus-5-5, judgment), 2026-11-22/23; confirmed and fixed in lane advland (claude-opus-5-5, judgment), owner-delegated.
+- **Source:** i5329 (2025) p. 5, Line 2, exception 05, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year."
+- **Symptom:** Scout walk a3: $20,000 code 1 distribution with exception 05 of $8,000 and the medical tick (sa.medical_any) not ticked gave Schedule 2 line 8 $2,000: person.x_c05_min takes the smaller of the exception and sa.line4, and sa.line1 was never asked, so line 4 was $0. The exception applies whether or not the filer itemizes.
+- **Where:** forms/2025/sa.yaml sa.medical_asked.
+- **Fix:** sa.medical_asked (which opens sa.line1) is also true when anyone on the return claims exception 05: new helpers sa.e05_amounts (sum of person.x_e05) and sa.e05_claimed (it is above $0). Fixture (hand-predicted): advland.retirement.e05_medical_asked, AGI $72,000, medical $15,000, Schedule A line 4 $9,600, Schedule 2 line 8 $1,200 (was $2,000).
+- **Fix lines:** `sa.medical_asked`, `sa.e05_claimed`, `sa.e05_amounts`
+- **Siblings checked:** `sa.line1_if_medical`, `sa.medical_premiums_if_not_large`, `person.x_c05`, `person.x_c05_min`, `s2.e05_total`, `s2.e05_over`
+- **Severity:** low
+- **Tags:** retirement, Form 5329, Schedule A, wrong amount, fixed
+
+## BUG-1196 — The questions about a spouse's Form 1099-R say "you" on a joint return
+
+- **Caught by:** scout adversarial-retirement (claude-opus-5-5, judgment), 2026-11-22/23; confirmed and fixed in lane advland (claude-opus-5-5, judgment), owner-delegated.
+- **Source:** interview/README.md, "The per-person frame as shown"; the questions ask about the person whose Form 1099-R it is (for example i1040gi p. 29, the age at the annuity starting date).
+- **Symptom:** Scout walk m1: the spouse's entry asked "Were you under age 59½ when you received any of this money?" and "...even if it was paid to you first?"; only the page's context line named the spouse. retirement.age and retirement.exception 01 depend on whose age it is.
+- **Where:** interview/2025/questions.yaml bank.frames; engine/src/spouse-wording.ts UNCHANGED_AFTER; retirement wording.
+- **Fix:** The retirement collection takes the per-person frame, so each of its questions is shown "About your spouse — Was your spouse ..." for the spouse's entry. Past forms and words after an object that read the same for either person (separated, reached, entered, got, bought, retired, completed, because, its, back) are listed in UNCHANGED_AFTER; wordings the rule cannot turn are reworded: "even if it was first paid to you", "that was then sold", "money on which tax was already paid", "would have allowed retirement", "the no-ownership requirement is also met by your spouse", sec457 help "A No means ...", the ira_basis and pso_exclusion ticks. reports/2025/person_wording.md regenerated; spouse-wording --self-test passes.
+- **Fix lines:** `retirement.rollover_any`, `retirement.rollover_property`, `retirement.ira_basis`, `retirement.dis_early`, `retirement.exception`, `retirement.sec457`, `retirement.pso_exclusion`
+- **Siblings checked:** every retirement question as shown for the spouse in the regenerated person wording report; the gates and helpers that read the reworded questions, whose expressions are unchanged: `retirement.dis_early_if_disability`, `retirement.has_exception`, `retirement.ira_basis_if_trad`, `retirement.is_e05`, `retirement.is_e09`, `retirement.is_e19`, `retirement.is_e22`, `retirement.is_e23`, `retirement.pso_exclusion_if_plan`, `retirement.rolled_some`, `retirement.rollover_if_any`, `retirement.rollover_property_if_put_back`, `retirement.sec457_if_under59`, `retirement.wrong_kind`; f8889 (the other per-person collection) unchanged
+- **Severity:** low
+- **Tags:** interview, wording, spouse, fixed
+
+## BUG-1197 — The social security questions do not say that a child's benefits paid to the parent are the child's
+
+- **Caught by:** scout adversarial-retirement (claude-opus-5-5, judgment), 2026-11-22/23; confirmed and fixed in lane advland (claude-opus-5-5, judgment), owner-delegated.
+- **Source:** p915 (2025) p. 5, Who is taxed, "Benefits are included in the taxable income ... of the person who has the legal right to receive the benefits. For example, if you and your child receive benefits, but the check for your child is made out in your name, you must use only your part of the benefits".
+- **Symptom:** ssb.any and ssb.benefits had no help on it; a parent might add a child's Form SSA-1099 box 5 to line 1 and overstate tax. Read only.
+- **Where:** interview/2025/questions.yaml ssb.any, ssb.benefits (help); forms/2025/ssb.yaml ssb.benefits (source, cite).
+- **Fix:** ssb.any help: "Benefits that belong to your child are not yours, even if paid to you."; ssb.benefits help: "Leave out your child's benefits, even if they are paid to you; they are the child's income."; the ssb.benefits source says "without benefits that belong to your child", cite p915 p. 5. No fixture (wording).
+- **Fix lines:** `ssb.any`, `ssb.benefits`
+- **Siblings checked:** `ssb.benefits_if_any`, `ssb.line1`
+- **Severity:** low
+- **Tags:** social security, wording, help, fixed
+
+## BUG-1198 — check_completeness refuses a real-gap ruling that cites a branch's pending bug id
+
+- **Caught by:** lane advland (claude-opus-5-5, judgment), 2026-11-23, verifying the advfix landing: advfix's ruling unruled:retirement#1.2 (real gap, bug BUG-1192) failed "a real gap needs bug: BUG-NNNN".
+- **Source:** tools/new_bug.py: a branch records its defects as pending entries and cites the placeholder BUG-NEW-<prefix>-NN "wherever it would cite the id"; --assign rewrites each placeholder in every tracked file.
+- **Symptom:** A lane that files a completeness real gap as a pending entry cannot pass check_completeness until integration assigns the id, which the pending-entry rule forbids it to do.
+- **Tool change (fixed):** tools/transcription/check_completeness.py accepts BUG-NEW-<prefix>-NN as well as BUG-NNNN on a real gap (PENDING-n is still refused); self-test case added. Also removed the stale ruling unruled:sb#1.2 (it ruled a claim of the sample before advfix's, subject 8c7768ed; the current sb sample has one claim).
+- **Changed files:** tools/transcription/check_completeness.py (no form lines)
+- **Siblings checked:** check_false_no.py and check_screens.py (rulings carry bug ids as free lists, not validated against BUG-NNNN); samples.BUG_ID counts only assigned ids, so a pending id is counted after --assign
+- **Severity:** low
+- **Tags:** tool change, completeness, pending entries, fixed
+
+## BUG-1199 — A filer whose EIC qualifying children all lack a valid SSN gets the self-only EIC without the Step 4 tests (age 25 to 64, U.S. home, not another's dependent)
+
+- **Caught by:** scout adversarial-credits M2 (claude-opus-5-5, judgment), 2026-11-22, recorded as amb.2025.eic_self_only_age in lane advfix; decided by the owner 2026-11-23 for the Pub. 596 reading; applied in lane advland (claude-opus-5-5, judgment).
+- **Source:** p596 (2025) p. 5, "you may be eligible to claim a self-only EIC if you are otherwise eligible"; p. 17, chapter 3, "You must meet all four of these rules, in addition to the rules in chapters 1 and 4, to qualify for the EIC without a qualifying child" (Rules 11 to 14).
+- **Symptom:** eic.step34 sent any filer with a qualifying child to Step 3 and skipped Step 4, so a filer of 21 whose only child has an ITIN took the self-only credit (up to $649).
+- **Where:** forms/2025/eic.yaml eic.step34; ambiguities/2025.yaml amb.2025.eic_self_only_age (and amb.2025.eic_hoh_nonresident_spouse, status only).
+- **Fix:** New eic.self_only_qc (qualifying children, none with a valid SSN), eic.step3_self_only (Step 3 passed, then eic.step4_age: age 25 to 64, U.S. home, not a qualifying child or dependent of another) and eic.step3_qc, which eic.step34 reads for a filer with a qualifying child; a filer with a child who has a valid SSN is unchanged. Both EIC ambiguities set to the owner's decision of 2026-11-23 (the nonresident-spouse one with behaviour unchanged). Fixtures (hand-predicted): advland.eic.self_only_age21 (born 2004: line 27a $0, was $312) and advland.eic.self_only_age30 (born 1995: $312).
+- **Fix lines:** `eic.self_only_qc`, `eic.step3_self_only`, `eic.step3_qc`, `eic.step34`
+- **Siblings checked:** `eic.has_qc`, `eic.ssn_count`, `eic.step3`, `eic.step4`, `eic.step4_age`, `eic.step4_home`, `eic.step4_dependent`, `eic.married_rules` (a married head of household or separate filer with an SSN-less child still passes Step 3's married rules and is now held to Rules 11 to 14 for the self-only credit, as Pub. 596 reads), `eic.age_range` (its death refusal now reachable for this filer too), `eic.reached_step5`, Worksheet A line 2 (reads eic.ssn_count, unchanged), `eic.wsb_line5_stop` (Worksheet B line 5 STOP; reads the limit by qualifying children with a valid SSN, unchanged)
+- **Severity:** medium
+- **Tags:** EIC, owner decision, wrong amount, fixed
+
+## BUG-1200 — The released-claim question for a child of separated parents does not cover equal nights, where the higher-AGI parent is the custodial parent
+
+- **Caught by:** the sampled screen review of dependent.divorced_rule, 2026-11-23 (claude-opus-5-5), finding 0; ruled in lane advland (claude-opus-5-5, judgment).
+- **Source:** i1040gi (2025) p. 20, "If the child was with each parent for an equal number of nights, the custodial parent is the parent with the higher adjusted gross income."
+- **Symptom:** dependent.divorced_rule asks "Has the parent this child lived with for more of 2025 given the right to claim the child to the other parent ...?" With equal nights neither parent lived with the child for more of 2025, so a filer can truthfully answer No although the higher-AGI parent signed a release; the return is then computed as if no release existed (the releasing parent may claim the child).
+- **Where:** interview/2025/questions.yaml dependent.divorced_rule (prompt or help); forms/2025/dependent.yaml dependent.divorced_rule (label, source).
+- **Proposed fix:** Add to the help: "With an equal number of nights, the parent with the higher adjusted gross income counts as the one the child lived with." Wording only; a Yes still refuses.
+- **Proposed fix lines:** dependent.divorced_rule
+- **Severity:** low
+- **Tags:** dependent, wording, sampled screen review
+
+## BUG-1201 — The special-sale question says "exclude part of the gain" for section 1202 stock, so a filer excluding all of it may answer No and be taxed on the whole gain
+
+- **Caught by:** the sampled screen review of sales.special, 2026-11-23 (claude-opus-5-5), finding 2; ruled in lane advland (claude-opus-5-5, judgment).
+- **Source:** i8949 (2025), code Q, the section 1202 exclusion entered as an adjustment in column (g), whether part or all of the gain is excluded.
+- **Symptom:** sales.special lists "small business stock on which you exclude part of the gain (section 1202)". A filer excluding 100% of the gain can read "part" literally and answer No; the sale is then computed with the whole gain taxable (overstated), instead of being refused.
+- **Where:** interview/2025/questions.yaml sales.special (prompt).
+- **Proposed fix:** "small business stock on which you exclude some or all of the gain (section 1202)". Wording only.
+- **Proposed fix lines:** sales.special
+- **Severity:** low
+- **Tags:** sales, wording, sampled screen review
+
+## BUG-1202 — A code 2 distribution from a series of substantially equal payments that was changed within five years is not refused, so the recapture of earlier years' 10% tax is missed
+
+- **Caught by:** the sampled false-no review of gate:retirement.is_code2, 2026-11-23 (claude-opus-5-5), finding 0; ruled in lane advland (claude-opus-5-5, judgment).
+- **Source:** i5329 (2025), Line 4 and exception 02: a modification of a series of substantially equal periodic payments before the later of age 59½ or five years after the first payment brings back the additional tax on the earlier payments (recapture).
+- **Symptom:** retirement.early_screen, which names "part of a series of substantially equal periodic payments that was modified (recapture)", is asked only for codes 1 and S. A payer codes a series payment 2; retirement.code2_partial asks only whether the exception covers "this money", which the 2025 payment may, so a filer who changed the series in 2025 answers No and the recapture is neither computed nor refused (understated tax).
+- **Where:** forms/2025/retirement.yaml retirement.code2_partial (or a screen asked for code 2); interview/2025/questions.yaml.
+- **Proposed fix:** Ask the series-modification question for code 2 entries too (or name it in retirement.code2_partial) and refuse a Yes through retirement.screen_refused.
+- **Proposed fix lines:** retirement.code2_partial, retirement.early_screen
+- **Severity:** medium
+- **Tags:** retirement, Form 5329, missed refusal, sampled false-no review
+
+## BUG-1203 — A rented vacation home not used as a home: the Schedule A help invited its mortgage interest and a rest-of-year share of its tax, double counting against Schedule E
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout "itemized" (claude-opus-5-5, judgment), .claude/scouts-2026-11-22/adversarial-itemized.md; reproduced by lane fx-itemized (claude-opus-5-5, judgment) on the int2 snapshot, finding 1 (also adversarial-business.md L2)
+- **Source:** p936 p. 4, Second home rented out, "You must use this home more than 14 days or more than 10% of the number of days during the year that the home is rented at a fair rental, whichever is longer. If you don't use the home long enough, it is considered rental property and not a second home"; p527 p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Only your rental expenses may be deducted on Schedule E (Form 1040). Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize your deductions"
+- **Symptom:** The help of sa.mortgage_interest and sa.line5b said to count, for a home rented in 2025, the interest and tax "for the rest of the year". Every rental with personal days the tool accepts is not a home (rental.ws51 refuses one that is), so none of its interest is deductible on Schedule A, and Schedule E already takes tax x fair days / days used. Single, wages $50,000, a vacation home rented 200 days and used 10, Form 1098 interest $12,000, tax $3,000: following the help gave line 8a $5,424.66, line 5b $1,356.16, line 17 $18,280.82 and line 16 tax $3,407; the correct return takes the standard deduction, line 16 $3,713 (tax understated $306).
+- **Fix:** rental.tax_personal (amt16 less line 16) is summed over reported rentals (sa.rental_tax_sum, read only when scope.rental) into sa.rental_tax_personal and added to the printed line 5b, now sa.line5b_total (sa.line5b_net becomes a helper; line 5d reads 5b_total). The help of sa.mortgage_interest and sa.line5b now says to leave out a property rented out for 15 days or more, except the days it was the filer's home before or after renting it, and that the rest of a rental's tax is added from the rental answers. Fixture (predicted by hand): fxi.rental_tax_personal_to_5b (fixtures/2025/sa.json: line 5b $142.86 = $3,000 - $2,857.14, line 8a $0, line 17 $11,642.86, standard deduction).
+- **Fix lines:** sa.line5b_total, sa.rental_tax_personal, sa.rental_tax_sum, rental.tax_personal, sa.line5d, sa.line5b_net, sa.mortgage_interest, sa.line5b
+- **Siblings checked:** rental.div16 and rental.line16 (the Schedule E share, unchanged), sa.line5b_if_home_owner, sa.line5e (reads 5d), sa.line8a (no rental interest is added: not a qualified home), sa.line5d, sa.line5b_net, sa.property_tax_leave_out_if_any (unchanged); rental.line12 (the personal share of a rental's interest is deliberately not carried: a rental the tool accepts is not a qualified home); rental.amt12 and rental.amt16 help (a home before or after renting is still entered as the rental part only, which the new Schedule A help agrees with); f8960 reads no line 5b helper.
+- **Severity:** medium
+- **Tags:** forms, sa, rental, interview wording, fixed
+
+## BUG-1204 — Charitable income limits rested only on the filer's answer: cash gifts of 80% of AGI were deducted in full
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout "itemized" (claude-opus-5-5, judgment), .claude/scouts-2026-11-22/adversarial-itemized.md; reproduced by lane fx-itemized (claude-opus-5-5, judgment) on the int2 snapshot, finding 2
+- **Source:** i1040sca p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction if any of the following applies. 1. Your cash contributions or contributions of ordinary income property are more than 30% of the amount on Form 1040 or 1040-SR, line 11b. 2. Your gifts of capital gain property are more than 20% of the amount on Form 1040 or 1040-SR, line 11b"
+- **Symptom:** The only income-limit guard was sa.charity_limited, asked before the amounts. Single, AGI $50,000, cash gifts $40,000, answered No: line 17 $40,000 with no refusal (the 60% limit allows $30,000). AGI $100,000, listed stock held over a year $35,000: deducted in full (the 30% limit allows $30,000).
+- **Fix:** an income limit that always binds is computed, and refuses an itemized return: sa.charity_over_test is true when lines 11 and 12 together (sa.gift_sum) are more than 60% of line 11b (sa.agi_floor; p526 p. 22, the ceiling of every limit), or line 12 is more than 30% of it (p526 p. 25, the capital gain property limit; every noncash gift is taken as capital gain property, since the tool does not know which are). sa.charity_over_if_itemizing (that, and itemizing) refuses sa.deduction, after the refusal for jointly paid expenses on a separate return (which needs no income figure and so is told first; coverage row mfs_ded.joint_paid); a return that takes the standard deduction is not refused, since a limit can only lower line 17. New params sa.gift_total_limit_rate (60/100) and sa.gift_property_limit_rate (30/100). Gifts between the instructions' screening tests (i1040sca p. 10: cash over 30%, capital gain property over 20%) and these limits still rest on sa.charity_limited, which is kept: those limits bind only for some organizations (30% and 20% limit organizations), which the tool does not ask. The screening tests themselves were tried first and rejected: they refused lawful returns, among them ten class M fixtures with cash gifts of 30% to 60% of AGI. Fixtures (predicted by hand), fixtures/2025/sa.json: fxi.charity_cash_over_limit_itemizing (cash 80% of AGI) and fxi.charity_stock_over_limit_itemizing (stock 35%) refused; fxi.charity_cash_at_limit_itemizing (exactly 60%, deduction $30,000) and fxi.charity_over_limit_standard (65%, standard $15,750) not refused; coverage row home.gifts_over_income_limit.
+- **Fix lines:** sa.charity_over_test, sa.charity_over_if_itemizing, sa.gift_sum, sa.gift_total_limit, sa.gift_property_limit, sa.deduction
+- **Regressions introduced (open until the class M reruns):** eight recorded class M cases carry generated gifts past the 60% limit (four with a negative AGI) and now refuse at sa.deduction: classm.s8812.1, classm.clcw_next_year.1, and the DeepSeek cases classm.s8812.1.deepseek, classm.clcw_next_year.2.deepseek, classm.s3.2.deepseek, classm.f1040.4.deepseek, classm.f8863.1.deepseek and classm.f8863.4.deepseek (AGI and gift totals were checked with the evaluator: for example classm.s3.2.deepseek, AGI $27,125 and gifts $26,970; classm.f1040.4.deepseek, AGI $406 and noncash gifts $2,891). Their expected deductions are not lawful, so they need class M reruns of s8812, clcw_next_year, s3, f1040 and f8863, from a generator whose gifts stay within the limits (engine/src/generate.ts draws cash gifts up to $20,000 whatever the income). The synthetic case qdcg.l5.floor0 (cash gifts $30,000 on an AGI of $40,000) now funds the same $30,000 deduction with Form 1098 mortgage interest; every asserted value is unchanged.
+- **Owner decision (2026-11-23):** the charity band is kept as built: a return is refused past the 60% and 30% legal limits (sa.charity_over_test), and below them the filer's answer to sa.charity_limited decides.
+- **Regressions resolved (integration 5, 2026-11-23):** engine/src/generate.ts draws gifts within the limits: after the draws (the random stream is unchanged), a return whose adjusted gross income is figured gives at most half of it in all and at most a quarter of it in noncash gifts, and nothing when it is zero or less; a return refused before its adjusted gross income keeps its gifts. Of the 2,000 generated returns of seed 7, none now meets sa.charity_over_test (126 did). On the integrated tree classm.s8812.1 and classm.clcw_next_year.1 pass as merged. Four DeepSeek cases were kept by lowering only their gift inputs, every asserted value checked unchanged with the evaluator: classm.s3.2.deepseek and classm.f8863.1.deepseek (AGI $27,125: cash $6,781.26, noncash $346.13 and $6,435.11) and classm.s8812.1.deepseek and classm.f8863.4.deepseek (AGI below zero: cash gifts $0). classm.clcw_next_year.2.deepseek and classm.f1040.4.deepseek could not be kept that way (lowering the gifts changes clcw_next_year.line1, and f1040.line12e and line14) and were removed; class M f1040 and clcw_next_year were rerun on Claude (claude-opus-5-5) from the capped generator (f1040 agree 589, clcw_next_year agree 36, no disagreements), which also replaced the Claude cases classm.f1040.3 and classm.clcw_next_year.2 that the limit now refused.
+- **Siblings checked:** sa.charity_limited_if_gifts (kept; its refusals on lines 6, 8b, 8c, 12, 13 and 15 unchanged), sa.gift_carryover_if_no_gifts, f1040.line12e (reads sa.deduction).
+- **Severity:** medium
+- **Tags:** forms, sa, charity, refusal, fixed
+
+## BUG-1205 — Points from an earlier refinance deducted over the loan's life, or the rest of them when the loan ends, were neither asked nor refused (Schedule A line 8c)
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout "itemized" (claude-opus-5-5, judgment), .claude/scouts-2026-11-22/adversarial-itemized.md; reproduced by lane fx-itemized (claude-opus-5-5, judgment) on the int2 snapshot, finding 3 (found by reading; confirmed against the question bank)
+- **Source:** i1040sca p. 9, Points Not Reported on Form 1098, "Refinancing. Generally, you must deduct points you paid to refinance a mortgage over the life of the loan" and "If you paid off a mortgage early, deduct any remaining points in the year you paid off the mortgage"; p936 pp. 8-9, Refinancing; Mortgage ending early
+- **Symptom:** sa.mortgage_unreported asked only about interest or points paid in 2025 that no Form 1098 shows. A filer deducting points from an earlier refinance (a yearly share, or the remaining balance in a payoff year) answered No; line 8c stays zero and the deduction is lost without a refusal.
+- **Fix:** the prompt of sa.mortgage_unreported (questions.yaml) and its form label and source now also ask about points paid in an earlier year that are deducted over the life of the loan, and the help says such points are deducted a little each year and the rest when the loan ends. A Yes refuses through sa.unsupported as before; the cite moves to i1040sca pp. 8-9.
+- **Fix lines:** sa.mortgage_unreported
+- **Siblings checked:** sa.mortgage_unreported_if_home, sa.unsupported (the refusal is unchanged).
+- **Severity:** low
+- **Tags:** forms, sa, interview wording, fixed
+
+## BUG-1206 — The car loan interest deduction never asked for the VIN the law requires on the return, and the loan prompt contradicted the form note
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout "newlaw" (claude-opus-5-5, judgment), .claude/scouts-2026-11-22/adversarial-newlaw.md, L1; confirmed by lane fx-itemized (claude-opus-5-5, judgment) against the question bank
+- **Source:** plaw-119-21, section 163(h)(4)(B)(iii), "Interest shall not be treated as qualified passenger vehicle loan interest under this paragraph unless the taxpayer includes the vehicle identification number ... on the return"; f1040s1a line 22, column (i) "Vehicle identification number (VIN)"
+- **Symptom:** The $carloan prompt asked to name each loan "for example by its lender"; no question asked for the VIN and nothing told the filer that the deduction depends on it, while the carloan form note said to name each entry by the VIN.
+- **Fix:** the $carloan prompt now asks to name each loan by its vehicle's VIN (the entry key, which the values sheet prints as carloan[VIN]); the help says where the VIN is found, that the deduction is not allowed unless it is on the return, and how to name an old and a new loan on one vehicle (VIN-old, VIN-new). The carloan form note agrees.
+- **Fix lines:** s1a.line30 (the deduction the VIN conditions; no line changed), the `$carloan` roster prompt and help, the carloan form note
+- **Siblings checked:** s1a.line23, s1a.part4, f1116.asset_method (generated; none reads the roster key); no other roster prompt names a VIN.
+- **Severity:** low
+- **Tags:** interview wording, carloan, s1a, fixed
+
+## BUG-1207 — An employer whose tips were for no listed job counted as a second tip employer, so Schedule 1-A line 4a printed $0
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout "newlaw" (claude-opus-5-5, judgment), .claude/scouts-2026-11-22/adversarial-newlaw.md, L2; reproduced by lane fx-itemized (claude-opus-5-5, judgment) on the int2 snapshot
+- **Source:** i1040gi p. 104, Line 4a, "If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a"; f1040s1a line 4c, "If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b"
+- **Symptom:** person.tip_employers counted every tipjob entry. Two W-2 employers, tips of $8,000 from a (listed job) and an entry for b with listed = No: s1a.tip_employers 2, line 4a $0, line 4c $8,000. The deduction was right; printed line 4a was wrong.
+- **Fix:** person.tip_employers counts only tipjob entries with listed = Yes. Fixture (predicted by hand): fxi.tips_unlisted_employer_not_counted (fixtures/2025/s1a.json: tip_employers 1, line 4a $8,000, line 4c $8,000, line 13 $8,000).
+- **Interview effect:** whether there are several tip employers now waits for each entry's listed answer, so a filer with Form 4137 tips who lists one tip employer is refused at once, before that answer, under both routes of line 4c; the refusal named is the worksheet's (person.f4137_filed, column (c)) rather than line 4b's (s1a.f4137), with the same remedy. Coverage row pay.tips_deduction_with_4137 now expects person[taxpayer].f4137_filed; the fixture stage12.refuse.form4137_one_employer (all answers given) still refuses at s1a.f4137. The fixture stage12.refuse.form4137_two_employers now states its second tip job as listed, with $3,000 of tips (it had taken the default No, which made it a one-employer return); it still refuses at person[taxpayer].f4137_filed.
+- **Fix lines:** person.tip_employers
+- **Siblings checked:** s1a.tip_employers, s1a.tip_ssn_count (a person whose only tip entries are for unlisted work no longer counts as receiving qualified tips, which is right); person.ot_employers counts every otjob entry but only feeds s1a.ot_ssn_count, and no overtime line has a one-employer path, so it has no such defect.
+- **Severity:** low
+- **Tags:** forms, person, s1a, fixed
+
+## BUG-1208 — Tip and overtime amounts were not checked against the W-2 wages that include them, so the deduction could exceed them
+
+- **Date:** 2026-11-23
+- **Caught by:** adversarial scout "newlaw" (claude-opus-5-5, judgment), .claude/scouts-2026-11-22/adversarial-newlaw.md, L3; reproduced by lane fx-itemized (claude-opus-5-5, judgment) on the int2 snapshot
+- **Source:** f1040s1a line 4a, "Enter qualified tips included on Form W-2, box 7"; line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5"
+- **Symptom:** Single, one W-2 with box 1 and box 5 $10,000, one listed tip job with $20,000 of tips: line 13 $20,000, Form 1040 line 15 $0, no refusal. Overtime had the same gap.
+- **Fix:** consistency checks: person.tips_over_wages (worksheet column (b) tips, from W-2 or Forms 4070, more than the person's W-2 box 5 total) and person.ot_over_wages (overtime worksheet column (b) more than box 5), counted over people with a valid SSN into the gates s1a.tips_over_wages (refusing s1a.line4c_calc) and s1a.ot_over_wages (refusing s1a.line14a_calc), both registered in interview/2025/conflict_checks.yaml and placed in tools/coverage/tree.json as entry gates. The tips gate is not tested on a return with Form 4137 tips (s1a.f4137), which is refused there first, so that return is not asked the tip-job questions before its refusal (coverage row pay.tips_deduction_with_4137). Box 5 is used rather than box 1 because pretax deferrals lower box 1 but not box 5. Fixtures (predicted by hand), fixtures/2025/s1a.json: fxi.tips_over_box5_refused, fxi.ot_over_box5_refused, fxi.tips_equal_box5 (no refusal); coverage row jobs.tips_over_wages; the jobs.yaml sets tip_job and ot_job gain a W-2 ($40,000), and the two mutation fixtures mutation.m4.s1a.spouse_no_ssn_one_job and _three_jobs gain W-2 box 5 $45,000 (their asserted lines do not read box 5).
+- **Fix lines:** person.tips_over_wages, person.ot_over_wages, s1a.tips_over_count, s1a.tips_over_wages, s1a.ot_over_count, s1a.ot_over_wages, s1a.line4c_calc, s1a.line14a_calc
+- **Siblings checked:** person.tip_total and s1a.tip_total (unchanged; the check reads column (b) so a Form 4137 return still refuses at s1a.f4137 first); otjob.statement help (overtime deferred into a retirement plan is outside box 1 but inside box 5, which is why box 5 is the bound).
+- **Severity:** low
+- **Tags:** forms, person, s1a, consistency check, fixed
+
+## BUG-1209 — New York omits A-119 and S-136 for alimony under a post-2018 agreement
+
+- **Date:** 2026-11-23
+- **Caught by:** the adversarial review of New York computations of 2026-11-22 (scout nycomp, claude-opus-5-5), finding H1 (`.claude/scouts-2026-11-22/adversarial-ny-computations.md`); reproduced in lane fx-ny (claude-opus-5-5, judgment) with the evaluator on the merged tree.
+- **Source:** IT-225-I (2025) p. 10, A-119, "If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received. An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018."; p. 18, S-136, "If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid." (The scout cited p. 8 for A-119; the archived text has it on p. 10.)
+- **Symptom:** a single New York City resident with $50,000 of wages who answered the federal alimony questions Yes (paid or received since 2023) and No (not under an agreement of 2018 or earlier) got line 23 $0, line 31 $0, line 33 $50,000, line 39 $2,147, line 47a $1,508 and line 61 $3,655 with no refusal (`node engine/dist/main.js --ny eval --batch`, lane fx-ny). A recipient of post-2018 alimony is undertaxed by the A-119 addition and a payer overtaxed by the missing S-136 subtraction; the federal help says nothing more is asked.
+- **Where:** forms/ny/2025/ny_it201.yaml `ny_it201.line23`, `ny_it201.line31` (nothing read `s1.alimony*`); interview/ny/2025/questions.yaml.
+- **Fix:** refused, not computed: the federal answers hold no amount for alimony under a post-2018 agreement (the federal interview asks none), and lines 23 and 31 are Form IT-225 totals the tool does not compute (decision B4). New question `ny_it201.ask.alimony_later` ("Did you (or, on a joint return, your spouse) pay or receive any of that alimony in 2025?"), asked at order 161 seq 14 directly after the federal question `s1.alimony`, only when `s1.alimony_any` is Yes and `s1.alimony` No (`ny_it201.alimony_later_if_any`, `ny_it201.alimony_later_if_not_old`); a Yes makes `ny_it201.gate.alimony_later` true, the first refusal entry of lines 23 and 31. A filer with alimony under a 2018-or-earlier agreement (`s1.alimony` Yes) is not asked: `s1.alimony_unsupported` refuses more than one agreement federally, so the only uncovered case is an old agreement modified during 2025 to apply Tax Law § 612(w). Fixtures `ny.refuse.alimony_later`, `ny.alimony_later_none_in_2025`, `ny.alimony_pre2019_not_asked`; coverage rows `ny.alimony_later`, `ny.alimony_later_not_in_2025`, `ny.alimony_old_agreement`; NY default false.
+- **Fix lines:** `ny_it201.ask.alimony_later`, `ny_it201.alimony_later_if_not_old`, `ny_it201.alimony_later_if_any`, `ny_it201.gate.alimony_later`, `ny_it201.line23`, `ny_it201.line31`
+- **Siblings checked:** `ny_it201.line23`, `ny_it201.line31` (both refuse on the new gate, first in order of asking). Federal `s1.alimony_received` and `s1.alimony_paid` (pre-2019 alimony) reach IT-201 line 5 and federal line 18 unchanged; New York makes no modification for them, so nothing else reads the new question.
+- **Severity:** high
+- **Tags:** forms, ny_it201, New York, IT-225, alimony, interview; review debt: ny_it201 line-scoped transcription and render, class M, question review of the new question; fixed
+
+## BUG-1210 — New York City flexible benefits addition A-101 is never asked
+
+- **Date:** 2026-11-23
+- **Caught by:** the adversarial review of New York computations of 2026-11-22 (scout nycomp, claude-opus-5-5), finding M1 (`.claude/scouts-2026-11-22/adversarial-ny-computations.md`); confirmed in lane fx-ny (claude-opus-5-5, judgment): no input of the tree asks about A-101, and the evaluator gives the scout's public-job, no-414(h) return no refusal.
+- **Source:** IT-225-I (2025) p. 7, A-101, "If any federal Form W-2 wage and tax statement shows that an amount was deducted or deferred from your salary under a flexible benefits program established by New York City or certain other New York City public employers on your or a decedent’s behalf, then enter that amount.", with the list of employers in the column beside it (City University of New York, NYC Health and Hospitals Corporation, NYC Transit Authority, NYC Housing Authority, NYC Board of Education, NYC School Construction Authority, NYC Rehabilitation Mortgage Insurance Corporation, MABSTOA, Staten Island Rapid Transit Authority).
+- **Symptom:** a New York City public employee without a 414(h) contribution (`ny_it201.ask.public_job` Yes, `ny_it201.ask.414h` No) whose Form W-2 shows a city flexible benefits deferral got line 23 $0 and no refusal; the only guard was the IT-225 catch-all, whose help did not name it.
+- **Where:** forms/ny/2025/ny_it201.yaml `ny_it201.line23`; interview/ny/2025/questions.yaml (order 1010, after `ny_it201.ask.414h`).
+- **Fix:** refused, as the other public-employee addition is (decision B4). New question `ny_it201.ask.nyc_flex`, asked at order 1010 seq 12 right after the 414(h) question and only after a public-job Yes (`ny_it201.nyc_flex_if_public`); a Yes makes `ny_it201.gate.nyc_flex` true, a refusal entry of line 23. Fixtures `ny.refuse.nyc_flex`, `ny.public_job_no_flex`; coverage row `ny.nyc_flex`, and `ny.public_job_no_414h` restated with the new answer (its end unchanged); NY default false.
+- **Fix lines:** `ny_it201.ask.nyc_flex`, `ny_it201.nyc_flex_if_public`, `ny_it201.gate.nyc_flex`, `ny_it201.line23`
+- **Siblings checked:** `ny_it201.line23` (refuses on it), `ny_it201.line31` (no A-101 counterpart among the subtractions; unchanged), `ny_it201.ask.414h` and `ny_it201.gate.line21` (the other public-employee addition, unchanged). Line 31 has no A-101 counterpart.
+- **Severity:** medium
+- **Tags:** forms, ny_it201, New York, IT-225, interview; review debt: ny_it201 line-scoped transcription and render, class M, question review of the new question; fixed
+
+## BUG-1211 — The IT-225 catch-all help omits moving expenses (S-135)
+
+- **Date:** 2026-11-23
+- **Caught by:** the adversarial review of New York computations of 2026-11-22 (scout nycomp, claude-opus-5-5), finding L1; confirmed by reading interview/ny/2025/questions.yaml in lane fx-ny (claude-opus-5-5, judgment).
+- **Source:** IT-225-I (2025) p. 18, S-135, "If during the tax year you received any qualified moving expense reimbursements or paid any moving expenses, then enter those".
+- **Symptom:** the help of the IT-225 catch-all (`ny_it201.ask.it225`) named a disability income exclusion, an accumulation distribution, reparations and wrongful-conviction awards, but not moving expenses, which New York still subtracts and which the tool has no other fact for; a filer with moving expenses had no cue to answer Yes.
+- **Where:** interview/ny/2025/questions.yaml, `ny_it201.ask.it225` help.
+- **Fix:** the help now opens with moving expenses paid or repaid by an employer and says what a Yes does. Alimony under a later agreement, the New York City flexible benefits addition and earlier bonus depreciation, which the finding also wanted named, now have questions of their own (BUG-1209, BUG-1210, BUG-1223), so the help does not repeat them.
+- **Fix lines:** `ny_it201.ask.it225`
+- **Siblings checked:** `ny_it201.gate.it225`, `ny_it201.line23` (the only readers; wording only).
+- **Severity:** low
+- **Tags:** interview, ny_it201, New York, IT-225, help text; review debt: question review of ny_it201.ask.it225; fixed
+
+## BUG-1212 — The New York itemize choice rests on the filer although the federal Schedule A is known
+
+- **Date:** 2026-11-23
+- **Caught by:** the adversarial review of New York computations of 2026-11-22 (scout nycomp, claude-opus-5-5), finding L2; confirmed by reading in lane fx-ny (claude-opus-5-5, judgment).
+- **Source:** IT-201-I (2025) p. 10, Line 34, "You may take either the New York standard deduction or the New York itemized deduction."; IT-196-I (2025) p. 1, "If you take the larger of your New York State itemized or standard deductions, in most cases your New York State and New York City income tax will be less."
+- **Symptom:** `ny_it201.ask.itemize` asks the wish and a Yes ends the New York part, so a filer has a reason to answer No; the form reads no Schedule A amount, so a federal itemizer whose New York itemized deduction exceeds the New York standard deduction can overpay without notice. Not a wrong answer to the question as asked.
+- **Where:** forms/ny/2025/ny_it201.yaml `ny_it201.ask.itemize`, `ny_it201.gate.itemize`; interview/ny/2025/questions.yaml.
+- **Proposed fix:** a computed refusal when a sound lower bound of the New York itemized deduction, from the federal Schedule A, exceeds the New York standard deduction. Not done in lane fx-ny: no sound bound is available without encoding part of Form IT-196. The scout's test (federal Schedule A less state and local income taxes) is not a lower bound: IT-196 removes the federal SALT limit, but it reduces total itemized deductions above $340,700 of federal AGI (single; line 40 worksheet), subtracts the itemized deduction adjustment above $100,000 of New York AGI (line 46), and above $1,000,000 of New York AGI allows only part of the charitable deduction (line 47), so the federal figure can exceed the New York one (IT-196-I, lines 40, 46 and 47). A design choice for the owner: encode IT-196, or accept the question as an election the filer may leave out (the register's exception for a return that is right without the thing wished for).
+- **Severity:** low
+- **Tags:** forms, ny_it201, New York, itemized deduction, design decision; open
+
+## BUG-1213 — Closure: BUG-1222 is fixed by the class M siblings change of integration 3
+
+- **Date:** 2026-11-23
+- **Caught by:** integration 5 (claude-opus-5-5, judgment), 2026-11-23.
+- **Closes:** BUG-1222
+- **Closure:** fixed
+- **Evidence:** Fixed in ed6c46ea (lane-speed, carried by integration 3): tools/siblings.py review_logs_due takes classm_forms, the forms whose class M log changed since the base (changed_logs(base, ("classm",))), and no longer requires a transcription or render log for a sibling line of such a form that the transcription review does not compare (a helper). BUG-1218's helper lines person.bonus_all, person.prior_bonus_assets and person.suv179 are such lines; siblings.py --check on the integration 5 tree is the check.
+- **Tags:** closure; tool, siblings, review guards
+
+## BUG-1214 — interview-rules, unscoped, finds nine problems on next (25e48ec0): three answers reachable before the answer that hides them, an asked and unread HSA question, four stale baseline entries and a stale pruning report
+
+- **Date:** 2026-11-23
+- **Caught by:** integration 5 (claude-opus-5-5, judgment), 2026-11-23, checking whether the interview-rules problems the fx-capital and fx-ny lanes saw on their snapshots are on next itself: an unscoped node engine/dist/main.js interview-rules in the integration 4 worktree (HEAD 25e48ec0).
+- **Symptom:** interview-rules: 9 problem(s). (1) generated.448: dependent[dep_a].lived_all_year is reachable before dependent[dep_a].relationship, the answer that hides it, and the walk in bank order never asks it. (2) ny.generated.680: person[taxpayer].tin is reachable before person[taxpayer].edu, which hides it. (3) generated.317: person[spouse].sc[biz_a].scveh[car_1].suv is reachable before .s179_elect, which hides it. (4) generated.277: person[taxpayer].f8889[hsa].months_eligible is asked in bank order and unread by the complete return (also listed as a pruning opportunity, 4 returns). (5) to (8) dependent.born_died, dependent.kidnapped, dependent.months and dependent.placed are no longer asked and unread: remove them from walked_unused in tools/interview_rules_baseline.json. (9) reports/2025/interview_pruning.md is not what the run finds (interview-rules --write-pruning). The light tier's scoped run does not reach these; the release's unscoped run does. dependent.spouse_relative (seen by fx-capital on its snapshot, generated.141) does not occur on next.
+- **Where:** interview/2025/questions.yaml order of dependent.relationship / dependent.lived_all_year, person.edu / person.tin, scveh.s179_elect / scveh.suv, f8889.months_eligible; tools/interview_rules_baseline.json; reports/2025/interview_pruning.md.
+- **Proposed fix:** for (1) to (3) ask the hiding answer before the answer it hides (or gate the hidden question on it), per the interview construction protocol; for (4) gate f8889.months_eligible on the answers that read it; remove the four stale baseline entries and rewrite the pruning report in the same unit; rerun interview-rules unscoped.
+- **Severity:** low
+- **Tags:** interview, interview-rules, release; open
+
+## BUG-1215 — Wording of the three new New York screening questions: a modified pre-2019 alimony instrument, 'another city public employer', and excepted or pre-June 2003 bonus property
+
+- **Date:** 2026-11-23
+- **Caught by:** question review (claude-opus-5-5) of ny_it201.ask.alimony_later, ny_it201.ask.nyc_flex and ny_it201.ask.prior_168k, run by integration 5 (claude-opus-5-5, judgment), 2026-11-23; each finding checked against sources/ny/2025/ny_it225i.cols.txt.
+- **Source:** ny_it225i p. 10, A-119 (line 771 of the cols text): "This also applies to any divorce or separation instrument executed on or before December 31, 2018, and modified after December 31, 2018, if the modification to the instrument expressly provides that the addition and subtraction modifications contained in Tax Law § 612(w) apply."; p. 7, A-101: "a flexible benefits program established by New York City or certain other New York City public employers"; p. 20, S-213: "With the exception of resurgence zone property and New York liberty zone property described in IRC § 1400L(b)(2), New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service ... on or after June 1, 2003."
+- **Symptom:** (1) ny_it201.ask.alimony_later (NARROW): its help names only 'an agreement made after 2018'; a filer paid under a 2018-or-earlier instrument modified later to say the Tax Law § 612(w) modifications apply answers No, and New York's addition or subtraction goes uncomputed without a refusal. (2) ny_it201.ask.nyc_flex (WIDE): 'New York City or another city public employer' reads as any city; an upstate city employee with a section 125 plan answers Yes and the New York part is refused although A-101 does not apply. Over-refusal. (3) ny_it201.ask.prior_168k (WIDE): 'Since 2003' and 'bonus depreciation' take in resurgence zone and New York Liberty Zone property and property placed in service from January to May 2003, which New York follows; a Yes refuses the New York part. Over-refusal. A second finding on (1), that 'that alimony' is unclear, was ruled not a defect: the question follows s1.alimony_any and s1.alimony, whose subject it names, and 'in 2025' fixes the year.
+- **Where:** interview/ny/2025/questions.yaml (prompts and help of the three questions).
+- **Proposed fix:** (1) help: 'an agreement made after 2018, or an earlier one changed after 2018 to say New York's alimony rules (Tax Law section 612(w)) apply'; (2) prompt: 'another New York City public employer'; (3) help: leave out resurgence zone and New York Liberty Zone property and property placed in service before June 1, 2003. Rerun the question review of each changed question.
+- **Severity:** low
+- **Tags:** interview, ny, wording, question review; open
+
+## BUG-1216 — Closure: BUG-1172 is fixed
+
+- **Closes:** BUG-1172
+- **Closure:** fixed
+- **Caught by:** integration 4 (claude-opus-5-5, judgment), 2026-11-23.
+- **Change:** tools/worktree_data.py carry-back accepts a main ledger that still holds every row of the ledger as cloned or last carried, in order, with other rows between them, and appends only the worktree's post-clone rows main does not already hold (exact line, counted). It still refuses a missing or reordered base row and a worktree ledger that no longer begins with its base. The base now records the hash of each row of main's ledger; a base written before that, whose main and worktree prefixes are equal (a clone not yet carried), takes its base rows from the worktree's prefix, and any other old base keeps the byte-prefix test.
+- **Evidence:** worktree_data.py --self-test (interleaved main accepted, missing and reordered base rows refused, rows already in main not duplicated, old base without row hashes); a read-only plan() against main for fx-seqbi, fx-eduhsa and fx-capital now raises no ledger conflict and would append 18, 22 and 17 rows. Their carry-back is still refused by 21, 29 and 37 non-ledger files changed on both sides (mostly .classm/), which this change does not address.
+- **Tags:** tool, worktrees, cost ledger, review data, fixed
+
+## BUG-1217 — IT-201 line 11 is always zero although the federal return computes Schedule E rentals and royalties
+
+- **Date:** 2026-11-22
+- **Caught by:** the adversarial review of New York refusals of 2026-11-22 (scout, claude-opus-5-5), finding H1 (`.claude/scouts-2026-11-22/adversarial-ny-refusals.md`); confirmed against the tree and the archived sources in lane nyfix (claude-opus-5-5, judgment).
+- **Source:** IT-201 (2025) p. 2, line 11, "Rental real estate, royalties, partnerships, S corporations, trusts, etc. (submit copy of federal Schedule E, Form 1040)", and line 12, "Rental real estate included in line 11"; IT-201-I p. 7, Lines 1 through 19, "The calculation of your New York State, New York City, and Yonkers income tax is based on the information you reported on your federal income tax return, including your income and federal adjustments to income."; IT-201-I p. 3, "If you are entering a loss (an amount less than zero), place a minus sign immediately to the left of the loss amount."
+- **Symptom:** with the federal inputs of x1sche.f1.profit (wages $60,000, a rental profit of $1,782.40) the New York return gave line 11 $0, line 19 $60,000 against federal AGI $61,782.40 (line19_agrees false), with no refusal; with x1sche.f2.small_loss_exception (a $213.20 allowed rental loss) line 19 was $50,000 against $49,786.80. New York AGI, State and City tax and every line-19 reader were wrong by the Schedule E amount.
+- **Where:** forms/ny/2025/ny_it201.yaml `ny_it201.line11` and `ny_it201.line12` (constant `ny.zero`, NonNegDollars), resting on the note "refuses Schedule E on the federal return (scope.schedule1)", false since the federal tool computes Schedule E Part I (`s1.line5` = `sche.line41` when `scope.rental`).
+- **Fix:** line 11 is federal Schedule 1 line 5 rounded half-up to the whole dollar, typed Dollars so a loss carries (IT-201-I p. 3). Line 12 is Schedule E line 41 less its royalties (new helpers `ny_it201.royalty_part`, `ny_it201.rental_re_sche`, and `ny_it201.rental_re`, guarded on `scope.rental` like `s1.line5`, so line 12 reads no Schedule E roster without Schedule E and carries line 26's refusals), rounded, Dollars. No New York modification the tool could compute applies to Schedule E Part I income: the IRC 168(k) modifications for rental property are unreachable because `rprop.fast` refuses a special allowance or section 179 on rental property, and partnership, S corporation, estate and trust income is refused federally (`scope.k1`). `ny_it201.has_line28_income` now sees line 11, so the line 28 question is asked when line 11 is not zero (IT-201-I p. 9, "on lines 2, 6, or 11"). Fixtures `ny.rental.profit_royalty` (profit plus a royalty, so line 12 differs from line 11) and `ny.rental.loss`, predicted by hand before evaluation, pass. The report's proposed line-19 guard (refuse when line 19 and federal AGI differ by more than rounding) is not part of this fix.
+- **Fix lines:** `ny_it201.line11`, `ny_it201.line12`, `ny_it201.royalty_part`, `ny_it201.rental_re_sche`, `ny_it201.rental_re`
+- **Siblings checked:** `ny_it201.has_line28_income`, `ny_it201.line10`, `ny_it201.line13`, `ny_it201.line14`, `ny_it201.line15`, `ny_it201.line16`, `ny_it201.line17`, `ny_it201.line18`, `ny_it201.line19`, `ny_it201.line2`, `ny_it201.line3`, `ny_it201.line4`, `ny_it201.line5`, `ny_it201.line6`, `ny_it201.line7`, `ny_it201.line8`, `ny_it201.line9`. Lines 8 (Form 4797, refused by `sd.other_forms`) and 13 (Schedule F, refused through `scope.schedule1` by `scope.farm`) are still zero by a true premise; line 11's readers `ny_it201.line17` and `ny_it201.has_line28_income` now see it.
+- **Severity:** high
+- **Tags:** forms, ny_it201, New York, Schedule E; review debt: ny_it201 transcription and render for the changed lines and class M (run in lane nyfix); fixed
+
+## BUG-1218 — New York's IRC 168(k) and heavy-SUV section 179 decoupling (IT-225 A-209, S-213, A-208) rests only on the catch-all IT-225 question
+
+- **Date:** 2026-11-22
+- **Caught by:** the adversarial review of New York refusals of 2026-11-22 (scout, claude-opus-5-5), finding H2 (`.claude/scouts-2026-11-22/adversarial-ny-refusals.md`); confirmed against the tree and the archived sources in lane nyfix (claude-opus-5-5, judgment).
+- **Source:** IT-225-I (2025) p. 12, A-209, "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003" and "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to determine the amount to enter"; p. 21, S-213, "complete Part 1 of Form IT-398 ... to calculate the amount of New York depreciation to enter"; p. 11, A-208, "If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds ... enter the amount of that deduction."
+- **Symptom:** with the federal inputs of stage14.asset.bonus_100 (a Schedule C asset taking a $20,000 special allowance) the New York return computed line 23 and line 31 as $0 and line 33 from federal AGI with no refusal; the only guard was the catch-all IT-225 question, whose wording names no depreciation item. The same held for an asset placed in service before 2025 that took an earlier special allowance, and for a section 179 deduction on an SUV over 6,000 pounds.
+- **Where:** forms/ny/2025/ny_it201.yaml `ny_it201.line23` and `ny_it201.line31` (constant `ny.zero`, refused only on `ny_it201.gate.it225`).
+- **Fix:** refused, not computed. Both A-209 and S-213 take their amounts from Form IT-398 Part 1, which is not in the archive, and S-213 continues in later years on New York depreciation the tool does not keep, so the archived instructions give no computable rule. New computed gates, listed before the IT-225 question on the line: `ny_it201.gate.depr_168k` (a 2025 special allowance on any Schedule C asset or vehicle, from new helpers `sc.bonus_all` = Form 4562 lines 14 and 25 and `person.bonus_all`; or an earlier special allowance on a Schedule C asset placed in service before 2025, from `sc.prior_bonus_assets` and `person.prior_bonus_assets`) refuses lines 23 and 31; `ny_it201.gate.suv_179` (section 179 elected in 2025 on a vehicle that is not a passenger automobile and is an SUV, from `sc.suv179` and `person.suv179`) refuses line 23. The federal SUV answer (i4562 p. 16: rated more than 6,000 and not more than 14,000 pounds) and A-208's SUV (more than 6,000 pounds, no upper limit; trucks, vans and motor homes excluded) differ both ways: the refusal may fire for a pickup or van New York would not add back (over-refusal), and stays silent for a passenger SUV rated over 14,000 pounds, which A-208 covers (a rare vehicle; accepted gap). Also not gated: a 2025 deduction of a section 179 carryover from an earlier SUV election (BUG-1224), and earlier-year 168(k) property not on the asset roster (BUG-1223). Vehicles with an earlier special allowance are already refused federally (`scveh.screen`), and rental property by `rprop.fast`. Fixtures `ny.refuse.depr_bonus`, `ny.refuse.depr_prior_bonus`, `ny.refuse.suv_179` (line 31 stays $0) and `ny.refuse.depr_suv_bonus`, predicted by hand before evaluation, pass.
+- **Fix lines:** `sc.bonus_all`, `sc.prior_bonus_assets`, `sc.suv179`, `person.bonus_all`, `person.prior_bonus_assets`, `person.suv179`, `ny_it201.fed_bonus`, `ny_it201.fed_prior_bonus`, `ny_it201.fed_suv179`, `ny_it201.gate.depr_168k`, `ny_it201.gate.suv_179`, `ny_it201.line23`, `ny_it201.line31`
+- **Siblings checked:** `asset.after_jan19`, `asset.bonus_fullcase`, `asset.f25`, `asset.f26i`, `asset.prior_179`, `asset.prior_bonus`, `asset.ub_prior`, `asset.ub_prior_a`, `f4562.line14`, `f4562.line25`, `ny_it201.ask.it225`, `ny_it201.line20`, `ny_it201.line21`, `ny_it201.line22`, `ny_it201.line24`, `ny_it201.line25`, `ny_it201.line26`, `ny_it201.line27`, `ny_it201.line28`, `ny_it201.line29`, `ny_it201.line30`, `ny_it201.line32`, `ny_it201.line33`, `sc.f14`, `sc.f25`, `sc.f25_assets`, `sc.f25_veh`, `sc.f29_assets`, `sc.f29_veh`, `scveh.acquired_before_bonus_date`, `scveh.acquired_before_bonus_date_if_this_year`, `scveh.after_jan19`, `scveh.basis_changed`, `scveh.bonus_choice`, `scveh.bonus_excluded`, `scveh.bonus_excluded_if_bonus`, `scveh.bonus_full`, `scveh.bonus_fullcase`, `scveh.bonus_o`, `scveh.bonus_v`, `scveh.claims_bonus`, `scveh.claims_bonus_this_year`, `scveh.converted`, `scveh.disposed`, `scveh.exempt_use`, `scveh.exempt_use_if_others_use`, `scveh.for_hire`, `scveh.got_other`, `scveh.investment`, `scveh.leasing`, `scveh.leasing_if_others_use`, `scveh.line10`, `scveh.line10_this_year`, `scveh.method_other`, `scveh.others_use`, `scveh.placed_this_year`, `scveh.prior_bonus`, `scveh.prior_bonus_if_earlier`, `scveh.prior_low_use`, `scveh.prior_low_use_if_earlier`, `scveh.prior_smr`, `scveh.prior_smr_if_earlier`, `scveh.qbu_low`, `scveh.qbu_low_if_others_use`, `scveh.rate40`, `scveh.records`, `scveh.s179_bad`, `scveh.s179_elect`, `scveh.s179_this_year_o`, `scveh.s179_this_year_ok`, `scveh.screen`, `scveh.short_year`, `scveh.suv`, `scveh.suv_cap`, `scveh.used_before`, `scveh.used_before_if_bonus`
+- **Severity:** high
+- **Tags:** forms, ny_it201, sc, person, New York, depreciation, IT-225; review debt: ny_it201 transcription, render and class M, sc and asset transcription, sc class M (run in lane nyfix); person class M (run in lane nyfix, coordinator approval; siblings --check still names person, BUG-1222); fixed
+
+## BUG-1219 — New York transcription catalog does not offer federal Schedule 1 line 5 for IT-201 line 11, whose label is followed, not preceded, by 'federal'
+
+- **Date:** 2026-11-22
+- **Caught by:** the line-scoped Claude transcription review of ny_it201 of 2026-11-22 (claude-opus-5-5, lane nyfix), lines 11 and 12: the second transcription entered 0, noting "The catalog supplies no Schedule E or Schedule 1 line 5 interface".
+- **Source:** IT-201 (2025) p. 2, line 11, "Rental real estate, royalties, partnerships, S corporations, trusts, etc. (submit copy of federal Schedule E, Form 1040)"; federal Schedule 1 (2025) line 5 carries the same label ("Rental real estate, royalties, partnerships, S corporations, trusts, etc. Attach Schedule E").
+- **Symptom:** the New York transcription request lists the federal lines the New York text names (`transcribe.federal_labelled`), but credits a label only where the words before it name the line's IRS form or say "federal". On IT-201 line 11 the word "federal" follows the label, so `s1.line5` (and the Schedule E lines line 12 needs) are not offered, and the second transcriber cannot express the line. The disagreement is ruled interface gap; any future review of lines 11 and 12 will repeat it.
+- **Where:** tools/transcription/transcribe.py `federal_labelled` (passage test before the phrase only); the expected catalog in tools/transcription/test_ny_review.py.
+- **Proposed fix:** also credit a label whose phrase is followed within the line by "federal" or the form name (for line 11, "federal Schedule E, Form 1040"), or name the federal line in the catalog notes for a New York line whose expression reads it; update test_ny_review.py's expected list.
+- **Severity:** low
+- **Tags:** tool, review-prompt, New York, transcription; open
+
+## BUG-1220 — Whole-dollar rounding of a New York loss of exactly 50 cents is unregistered; the engine and ny_predict round it opposite ways
+
+- **Date:** 2026-11-22
+- **Caught by:** lane nyfix (claude-opus-5-5, judgment), reading tools/ny_predict.py while giving it IT-201 line 11 (a Schedule E loss can now reach New York).
+- **Source:** IT-201-I p. 2, Entering whole dollar amounts, "Drop amounts that are less than 50 cents ... Increase amounts that are 50 cents or more to the next dollar."; p. 3, "If you are entering a loss (an amount less than zero), place a minus sign immediately to the left of the loss amount."
+- **Symptom:** the source does not say which way a loss of exactly 50 cents goes. The engine's `round` with `rule: half_up` rounds toward plus infinity (engine/src/eval.ts, floorDiv(2x + u, 2u)): a federal loss of -$213.50 enters New York as -$213. tools/ny_predict.py `r_dollar` rounds by magnitude (-$214), and its docstring says whole-dollar federal inputs never produce .50, which is not so (federal amounts are in cents). `amb.ny.2025.whole_dollars` records the half-up reading but not the direction for negatives. Lines 2, 6, 7, 11, 12 and 16 can be negative.
+- **Where:** ambiguities/ny/2025.yaml `amb.ny.2025.whole_dollars`; tools/ny_predict.py `r_dollar`.
+- **Proposed fix:** record the direction for a negative amount ending in exactly 50 cents in the ambiguity register (owner's reading), make ny_predict agree with it, and add a New York fixture with a -$x.50 loss.
+- **Severity:** low
+- **Tags:** ambiguity, New York, rounding, tool; open
+
+## BUG-1221 — IT-201 line 19 is not refused when it differs from federal AGI by more than whole-dollar rounding
+
+- **Date:** 2026-11-22
+- **Caught by:** the adversarial review of New York refusals of 2026-11-22 (scout, claude-opus-5-5), recommendation accompanying finding H1; filed by lane nyfix (claude-opus-5-5, judgment) at the coordinator's request.
+- **Source:** IT-201-I p. 7, Lines 1 through 19, "The calculation of your New York State, New York City, and Yonkers income tax is based on the information you reported on your federal income tax return, including your income and federal adjustments to income."; IT-201 p. 2, line 19, "Federal adjusted gross income (subtract line 18 from line 17)".
+- **Symptom:** a federal income or adjustment that reaches federal AGI but has no New York line (the H1 defect, BUG-1217, was one) leaves line 19 short of federal AGI with no refusal. `ny_it201.line19_agrees` only displays the gap on the values sheet; nothing reads it, so New York AGI and every tax line are computed on a wrong base without notice.
+- **Where:** forms/ny/2025/ny_it201.yaml `ny_it201.line19`, `ny_it201.line19_agrees`, `ny_it201.fagi_rounded`.
+- **Proposed fix:** add a computed gate `ny_it201.gate.line19_gap`: true when |line 19 - fagi_rounded| exceeds the most that whole-dollar rounding can explain (lines 1 to 11, 13 to 16 and 18 are each rounded once: 16 entries at most $0.50 each, so $8; amb.ny.2025.whole_dollars). It refuses line 19 (and so every reader) as an internal-consistency refusal: "federal adjusted gross income includes an amount this tool does not carry to lines 1 to 18". Not done in lane nyfix: the tolerance is a design choice the source does not give (owner's ruling wanted on $8 against a smaller bound); after BUG-1217 no supported federal input is known to trigger it, so a firing fixture needs a deliberately unmapped federal amount (a mutation case rather than an input fixture); and the change would make the ny_it201 reviews just run stale again (one review per form per round). Do it at ny_it201's next substantive change, with a mutation fixture that zeroes one line 1 to 16 mapping and asserts the refusal, and a fixture showing a $1 to $8 rounding gap does not refuse.
+- **Fix:** in lane fx-ny, at ny_it201's next substantive change, with the $8 tolerance under the owner's delegation (recorded in amb.ny.2025.whole_dollars). New helpers `ny_it201.fagi_plus_line18` (federal AGI rounded once, plus line 18) and `ny_it201.line19_gap` (line 17 less that sum, so the gate does not read line 19, which it refuses), and gate `ny_it201.gate.line19_gap` (the gap more than $8 either way); line 19 refuses on it, so every reader of line 19 does. The bound: lines 1 to 11, 13 to 16 and 18 are each one half-up rounding of one federal amount (checked in the tree: lines 8 and 13 are the constant $0), at most 50 cents each over 16 entries, and federal AGI is rounded once, so a gap from rounding alone is at most $8.50, a whole-dollar $8. Fixture `ny.line19.rounding_gap_within` ($10,000.50 of wages and $100.50 of interest: line 19 $10,102 against $10,101, gap $1, no refusal) and the existing `ny.mut.whole_dollars.lines` (gap -$2) hold the gate false on rounding gaps; no supported federal input reaches a gap over $8, so the refusal itself is defence in depth and its firing branch is unreachable by fixtures (mutants that remove it are expected to survive mutation as unreachable, not equivalent).
+  Reading federal AGI makes line 19 read the federal scope screens that `f1040.line11a` refuses on, so the New York partial-input cases (`fixtures/ny/2025/mutation.json`, `classm.json`, `classm.deepseek.json`, which take no defaults) now state the four inputs of that route they lacked (`scope.remic`, `scope.trade_act_repaid`, `household.cp_retirement`, `household.spouse_cp_domicile`, each at its federal default, false). A `when_known` refusal (consistency check only) was tried instead and dropped: with it the build had not finished after four hours and twenty minutes, against about ninety minutes for the same tree without it under similar machine load (one observation; the cause was not investigated).
+- **Fix lines:** `ny_it201.fagi_plus_line18`, `ny_it201.line19_gap`, `ny_it201.gate.line19_gap`, `ny_it201.line19`
+- **Siblings checked:** `ny_it201.line1` to `ny_it201.line18` (each one rounding of one federal amount, lines 8 and 13 the constant $0), `ny_it201.line19_agrees` (the display check, unchanged), `ny_it201.rental_re`, `ny_it201.rental_re_sche`, `ny_it201.royalty_part` (line 12, outside line 17).
+- **Severity:** medium
+- **Tags:** forms, ny_it201, New York, refusal, defence in depth; review debt: ny_it201 line-scoped transcription, render and class M; fixed
+
+## BUG-1222 — siblings.py --check counts only transcription and render logs, so a helper-only sibling form reviewed by class M can never clear
+
+- **Date:** 2026-11-22
+- **Caught by:** lane nyfix (claude-opus-5-5, judgment), running `siblings.py --check` after the person class M review for BUG-1218.
+- **Source:** tools/README.md, "Review rerun guards" (a log that already answers its subject is not rerun without --force-rerun); CLAUDE.md, no ceremonial reruns.
+- **Symptom:** BUG-1218's fix lines include three person helpers (`person.bonus_all`, `person.prior_bonus_assets`, `person.suv179`), which only class M reviews. After the person class M log was rerun and ruled (check_logs: classm 71/71; person transcription and render already current), `siblings.py --check` still reports "no review log changed since HEAD for sibling form(s): person", because `changed_logs` counts only transcription and render logs. The only way to clear it is a forced rerun of a person log that `rerun_all.py` judges current, which is a ceremonial rerun.
+- **Where:** tools/siblings.py `changed_logs` / `review_logs_due`.
+- **Proposed fix:** count a changed class M log (`reviews/<year>/classm/`, `reviews/ny/<year>/classm/`) as refreshing its form, or treat a form whose logs `check_logs` finds current for every changed line subject as refreshed; add a self-test.
+- **Severity:** low
+- **Tags:** tool, siblings, review guards; open
+
+## BUG-1223 — S-213 is silent for earlier-year IRC 168(k) property left off the asset roster; gate.depr_168k sees only listed assets
+
+- **Date:** 2026-11-23
+- **Caught by:** independent review of lane nyfix of 2026-11-22 (rev-nyfix, claude-opus-5-5), finding M1 (`.claude/scouts-2026-11-22/review-nyfix.md`); filed by lane nyfix (claude-opus-5-5, judgment). Not fixed in the lane: the fix adds an input id, and the `inputs` claim is held by bugfix-other (`tools/claims.py list`, 2026-11-23).
+- **Source:** IT-225-I (2025) pp. 20-21, S-213, "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003. If you claimed a depreciation deduction for such property ... complete Part 1 of Form IT-398 ... to calculate the amount of New York depreciation to enter."
+- **Symptom:** `ny_it201.gate.depr_168k` sees an earlier special allowance only on assets listed on the Schedule C asset roster (`sc.prior_bonus_assets`). The roster asks for items "whose cost this business deducts over several years or under the section 179 election", so a 5- or 7-year asset fully expensed by a 100% special allowance in 2018 to 2022 (no federal depreciation in 2025) is naturally left off. New York still depreciates it on IT-398, so S-213 subtracts an amount in 2025; with no asset listed every gate is false and the only guard is `ny_it201.ask.it225`, whose wording names no depreciation item. The same holds for a fully bonused rental improvement on Schedule E (the rprop roster asks for items "you depreciate"; `rprop.fast` is asked only of listed items). New York AGI is overstated by the missed subtraction and the return is silent where a refusal is due.
+- **Where:** forms/ny/2025/ny_it201.yaml `ny_it201.gate.depr_168k`, `ny_it201.fed_prior_bonus`; interview/ny/2025/questions.yaml.
+- **Proposed fix:** a New York question `ny_it201.ask.prior_168k`, asked when the federal return has a Schedule C or Schedule E (`person.sc` or `scope.rental`): "Have you claimed a federal special depreciation allowance (bonus depreciation) in any year since 2003 on property you still own, or did you file Form IT-398 for an earlier year?" (IT-225-I p. 21, S-213), ORed into `gate.depr_168k`, so lines 23 and 31 refuse when Yes. Per the interview construction protocol: wording with help naming the asset roster's gap, coverage entry, a refusal fixture (a Schedule C with no listed asset and the answer Yes refuses lines 23 and 31 on `gate.depr_168k`) and a No fixture; line-scoped ny_it201 transcription, render and class M reviews plus the question review. Alternative or complement: reword the `$asset` roster prompt to include property placed in service from 2005 that took a special allowance even if fully deducted.
+- **Fix:** in lane fx-ny, as proposed but with a gate of its own rather than ORed into `gate.depr_168k`, so that gate keeps its meaning (listed property) and the SUV refusal after it is not held until the New York question is answered (interview construction protocol 3.5, refusal entries in the order of asking). New question `ny_it201.ask.prior_168k` ("Since 2003, have you (or, on a joint return, your spouse) taken bonus depreciation on business or rental property you still had in 2025?", help naming property deducted in full and Form 4562 lines 14 and 25), asked at order 1010 seq 55 only with a Schedule C or rental or royalty property (`ny_it201.has_depreciable_business` on `s1.has_sc` and `scope.rental`; `ny_it201.prior_168k_if_business`); a Yes makes `ny_it201.gate.prior_168k` true, a refusal entry of lines 23 and 31 with the same form and remedy as `gate.depr_168k`. Fixtures `ny.refuse.prior_168k` (a Schedule C with no listed asset and the answer Yes refuses lines 23 and 31) and `ny.prior_168k_none`; coverage row `ny.prior_168k`; NY default false. The asset roster prompt is unchanged.
+- **Fix lines:** `ny_it201.ask.prior_168k`, `ny_it201.has_depreciable_business`, `ny_it201.prior_168k_if_business`, `ny_it201.gate.prior_168k`, `ny_it201.line23`, `ny_it201.line31`
+- **Siblings checked:** `ny_it201.gate.depr_168k` (listed property, unchanged), `ny_it201.gate.suv_179`, `ny_it201.line23`, `ny_it201.line31`.
+- **Severity:** medium
+- **Tags:** forms, ny_it201, New York, depreciation, IT-225, interview; review debt: ny_it201 line-scoped transcription, render and class M, question review of the new question; fixed
+
+## BUG-1224 — A 2025 deduction of a section 179 carryover from an earlier SUV election is not gated by ny_it201.gate.suv_179 (IT-225 A-208)
+
+- **Date:** 2026-11-23
+- **Caught by:** independent review of lane nyfix of 2026-11-22 (rev-nyfix, claude-opus-5-5), finding L2 (`.claude/scouts-2026-11-22/review-nyfix.md`); filed by lane nyfix (claude-opus-5-5, judgment).
+- **Source:** IT-225-I (2025) p. 11, A-208, "If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds ... enter the amount of that deduction."
+- **Symptom:** `sc.suv179` (and so `ny_it201.gate.suv_179`) reads only `scveh.s179_this_year`, the section 179 cost elected in 2025. A 2025 deduction of a carryover from an earlier year's SUV election (`s179.carryover`, Form 4562 line 10) is a section 179 deduction claimed on the 2025 return for an SUV, and is not gated. Conversely a 2025 election fully carried forward by the income limit refuses with no deduction claimed (over-refusal; harmless).
+- **Where:** forms/2025/sc.yaml `sc.suv179`; forms/ny/2025/ny_it201.yaml `ny_it201.gate.suv_179`.
+- **Proposed fix:** refuse line 23 also when a section 179 carryover is deducted in 2025 and any part of it came from an SUV election (the federal tool does not record the carryover's origin, so either a New York question asked when Form 4562 line 10 is above zero, or refuse on any deducted carryover while a vehicle with `scveh.suv` is listed); a fixture with a carryover deducted.
+- **Severity:** low
+- **Tags:** forms, ny_it201, sc, New York, section 179, IT-225; open

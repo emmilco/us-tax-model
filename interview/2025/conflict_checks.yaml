@@ -109,3 +109,9 @@ conflicts:
   f1116.income_over: >-
     The foreign dividends or foreign interest entered for the sources of foreign income are more than the ordinary
     dividends or taxable interest entered in all, of which they are parts. Correct the amounts.
+  s1a.tips_over_wages: >-
+    The tips entered for a person are more than that person's Medicare wages and tips (Form W-2 box 5, added over all of
+    the person's Forms W-2), which include every tip an employer reports. Correct the tip amounts or the Forms W-2.
+  s1a.ot_over_wages: >-
+    The overtime pay entered for a person is more than that person's Medicare wages and tips (Form W-2 box 5, added over
+    all of the person's Forms W-2), which include that pay. Correct the overtime amounts or the Forms W-2.

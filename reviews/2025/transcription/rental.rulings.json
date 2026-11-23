@@ -1197,11 +1197,11 @@
    "printed": "21",
    "project_expr_sha256": "c012fc53dabe4c444eeddd669c74c0f83cd889b3c2ade2cdbbb1f4e1045cec19",
    "second_expr_sha256": "6fa2c0eaad03e95d756bd97d3a9d2a29a9ac2053059cb871de5621640a450146",
-   "ruling": "Ruling: representation; i1040se p. 7, Line 21. The 17 completed differences are candidate-unknown: the reply reads rental.not_at_risk (or part_home) where the project asks it only of a loss (rental.not_at_risk_if_loss) or refuses earlier; no completed value differs (executable triage .transcription/triage/2025/rental.json: 2288 of 2666 agree). Project stands.",
-   "context": "06be7a635446b33b163140e5e6835cba33f74015b2fc211473a34bee08017ec0",
-   "date": "2026-11-22",
-   "run": "1d1a1273a302345d7124a9e0fa50bc37391c55655ea2c08c2a29b2e220a3bac2",
-   "subject_key": "5e6fc37598eb48dfe59609f2bd5c3a8ddc1d44e1d198791120cdec817211e313",
+   "ruling": "Ruling: representation; i1040se p. 5, Line 2. As the ruling of 2026-11-22: every completed difference is an input the reply reads ungated; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json, pass ebf7da51095d): 1597 of 1908 agree; {\"candidate-refuses\": 33, \"candidate-unknown\": 13, \"project-refuses\": 15, \"project-unknown\": 250}; completed {\"candidate-unknown\": 1}. Re-reviewed because the landing merged next's rental lines with advfix's. Project stands.",
+   "context": "16ba37763d57d4c51aa3c2ff11b56a37a413defcc4b38b8205151e33fd258341",
+   "date": "2026-11-23",
+   "run": "4b5d402f828d532447b0cdd6ebb18caa0f8c805cfcdcfd551f59c5d48c47e6d5",
+   "subject_key": "9251533475ca5ba91966030ec744b6333888ad4f46ae2d58d1b691cd4f871bdb",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1228,13 +1228,13 @@
      "partial:classm.f8582.1.deepseek-rental[a].under_tenth@rental[a]",
      "partial:classm.f8582.1.deepseek-rental[a].not_for_profit@rental[a]",
      "partial:classm.f8582.1.deepseek-rental[a].not_at_risk@rental[a]",
-     "partial:mrental.f8582.part5_income_and_loss-rental[a].not_at_risk@rental[a]",
-     "partial:mrental.f8582.part5_income_and_loss-rental[c].not_at_risk@rental[c]",
-     "partial:xfix.r10.part_home-rental[a].kind@rental[a]",
-     "partial:xfix.r10.part_home-rental[a].short_stays@rental[a]",
-     "partial:xfix.r10.part_home-rental[a].services@rental[a]",
-     "partial:xfix.r10.part_home-rental[a].under_tenth@rental[a]",
-     "partial:xfix.r10.part_home-rental[a].not_for_profit@rental[a]"
+     "partial:classm.rental.2.deepseek-rental[a].not_at_risk@rental[a]",
+     "partial:classm.rental.1-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_personal@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_overlap@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].short_stays@rental[a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1279,6 +1279,65 @@
      "partial:x1sche.r6.not_at_risk-rental[a].short_stays@rental[a]",
      "partial:x1sche.r6.not_at_risk-rental[a].vehicle@rental[a]",
      "partial:xfix.r11.qip_screen-rental[a].kind@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "22",
+   "project_expr_sha256": "d0c28a42bd8da7e00b2cd86405c748f3bfdf9ae178d865d9aa7a201ed0b2e310",
+   "second_expr_sha256": "09db521fbbe2b3bf8d4f30f538572109da6bc708f856dff2c2b285ec3371aa21",
+   "ruling": "Ruling: model error; i8582 p. 13, Part VIII (BUG-0934, owner-approved 2026-11-22). As the ruling of 2026-11-22: the reply takes line 22 from Part VIII column (c) or hides it, so a fully allowed loss becomes $0 or is not shown (mrental.f8582.part5_income_and_loss, -$6,000.00 vs $0; classm.f8582.1, -$2,000.00 vs hidden), against hand-predicted fixtures. Triage executable-triage-v2 (.transcription/triage/2025/rental.json, pass ebf7da51095d): 1244 of 1908 agree; {\"candidate-hides-shown\": 230, \"candidate-refuses\": 20, \"candidate-unknown\": 85, \"project-refuses\": 18, \"project-unknown\": 306, \"value\": 5}; completed {\"candidate-hides-shown\": 103, \"candidate-unknown\": 1, \"project-refuses\": 1, \"value\": 4}. Re-reviewed because the landing merged next's rental lines with advfix's. Project stands.",
+   "context": "16ba37763d57d4c51aa3c2ff11b56a37a413defcc4b38b8205151e33fd258341",
+   "date": "2026-11-23",
+   "run": "4b5d402f828d532447b0cdd6ebb18caa0f8c805cfcdcfd551f59c5d48c47e6d5",
+   "subject_key": "9333696ce4a785789c20e7d675404deb78c33dabddb2e643986c360ef3f0a830",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.1.deepseek@rental[b]",
+     "fixture:classm.rental.1.deepseek@rental[b]",
+     "fixture:classm.sche.1.deepseek@rental[b]",
+     "fixture:classm.f8582.1@rental[b]",
+     "fixture:classm.rental.1@rental[b]",
+     "fixture:classm.rental.4@rental[a]",
+     "fixture:mrental.f8582.part5_prior_loss@rental[b]",
+     "fixture:mrental.f8582.part5_income_and_loss@rental[a]",
+     "fixture:mrental.f8582.magi_one_cent_over@rental[a]",
+     "fixture:x1sche.f7.royalty_magi@rental[a]",
+     "fixture:x1sche.f13.part4_and_part5@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r1.short_stay@rental[a]",
+     "fixture:x1sche.r2.services@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:mrental.rental.excluded_home_with_costs@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].kind@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].kind@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].kind@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[a].short_stays@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].services@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].under_tenth@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].active@rental[b]",
+     "partial:classm.rental.1-rental[a].active@rental[b]",
+     "partial:classm.rprop.1-rental[a].rents@rental[b]",
+     "partial:classm.rprop.1-rental[a].has_taxes@rental[b]",
+     "partial:classm.rprop.1-rental[a].amt16@rental[b]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].services@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].under_tenth@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].not_for_profit@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].depletion@rental[a]"
     ],
     "policy": "executable-triage-v2"
    }

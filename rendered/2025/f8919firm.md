@@ -17,3 +17,17 @@
 - **Encoded (NonNegDollars):** Input — Total wages you received from this firm in 2025 with no social security or Medicare tax withholding and not reported on a Form W-2
 - Expr: `{"op":"input","source":"Total wages you received from this firm in 2025 with no social security or Medicare tax withholding and not reported on a Form W-2"}`
 - Cite: [f8919] p. 1, Total wages, "(f) Total wages", "withholding and not", "reported on Form W-2" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)
+
+## (helper) — `f8919firm.one`
+
+- **Authored helper label:** One firm
+- **Encoded (Count):** Enter 1 (person.one).
+- Expr: `{"op":"param","ref":"person.one"}`
+- Cite: [f8919] p. 2, Lines 1 through 5, "Complete a separate line for each firm" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)
+
+## (helper) — `f8919firm.code_g`
+
+- **Authored helper label:** Reason code G (Form SS-8 filed with no reply yet, or filed by the date of the return)
+- **Encoded (Bool):** line 1(c) = 'g'
+- Expr: `{"eq":["f8919firm.reason",{"const":"g"}],"op":"test"}`
+- Cite: [f8919] p. 1, Reason codes, "If none of the reason codes apply to you, but you believe you should have been treated as an employee, enter reason code G and file Form SS-8 on or before the date you file your tax return"; p. 2, "Don’t attach Form SS-8 to your tax return. Form SS-8 must be filed separately" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)

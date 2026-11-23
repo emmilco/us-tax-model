@@ -119,6 +119,7 @@ form:
       - Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income
       - an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)
       - licenses or other costs you must amortize (for example, some liquor licenses)
+      - business start-up costs of more than $5,000 for a business that began in 2025 (amortization that begins in 2025, on Form 4562)
       - travel by ocean liner, cruise ship or other luxury water transportation
       - a domestic LLC of which you are the sole member that elected to be treated as a corporation
     type: Bool
@@ -144,6 +145,7 @@ form:
         - Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income
         - an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)
         - licenses or other costs you must amortize (for example, some liquor licenses)
+        - business start-up costs of more than $5,000 for a business that began in 2025 (amortization that begins in 2025, on Form 4562)
         - travel by ocean liner, cruise ship or other luxury water transportation
         - a domestic LLC of which you are the sole member that elected to be treated as a corporation
     cite:
@@ -162,7 +164,9 @@ form:
         179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the
         property’s recovery period"; i8995 p. 2, "there is a presumption that you’re providing services as an employee for
         purposes of section 199A for the 3-year period after ceasing to be an employee", and p. 3, Determining if information
-        reported on your Form 1099-PATR is included in QBI
+        reported on your Form 1099-PATR is included in QBI; i1040sc p. 16, Business startup costs, "If your business began in 2025, you can elect to deduct up to
+        $5,000 of certain business startup costs", "Your remaining startup costs can be amortized over a 180-month period",
+        "For amortization that begins in 2025, complete and attach Form 4562"
   - id: sc.business_credit
     printed: (helper)
     type: Bool
@@ -1954,6 +1958,64 @@ form:
     cite:
       doc: i4562
       locator: p. 13, Line 25
+  - id: sc.bonus_all
+    printed: (helper)
+    label: Special depreciation allowance on all of this business's property and vehicles placed in service in 2025 (Form
+      4562 lines 14 and 25)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.f14
+      - sc.f25
+    cite:
+      doc: i4562
+      locator: p. 5, Line 14; p. 13, Line 25
+  - id: sc.prior_bonus_assets
+    printed: (helper)
+    label: Special depreciation allowance claimed in an earlier year on this business's property (other than vehicles) placed
+      in service before 2025
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.prior_bonus
+      where:
+        op: test
+        eq:
+        - asset.placed_this_year
+        - const: false
+    cite:
+      doc: p946
+      locator: p. 37, Figuring the Unadjusted Basis of Your Property, "Any special depreciation allowance taken on the property"
+  - id: sc.suv179
+    printed: (helper)
+    label: Section 179 elected in 2025 on this business's vehicles that are SUVs rated over 6,000 pounds (not subject to the
+      passenger automobile limits)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.s179_this_year
+      where:
+        op: test
+        all:
+        - op: test
+          gt:
+          - scveh.s179_this_year
+          - const: 0
+        - op: test
+          eq:
+          - scveh.passenger
+          - const: false
+        - op: test
+          eq:
+          - scveh.suv
+          - const: true
+    cite:
+      doc: i4562
+      locator: p. 16, Column (i)—Elected section 179 cost, "You cannot elect to expense more than $31,300 of the cost of any
+        SUVs and certain other vehicles"
   - id: sc.f26_assets
     printed: (helper)
     label: Column (h) of listed property other than vehicles

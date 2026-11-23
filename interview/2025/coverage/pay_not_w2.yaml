@@ -45,6 +45,7 @@ rows:
       scope.wages_no_form: false
       scope.contractor_pay: true
       $f8919firm@person[taxpayer]: [firm]
+      person[taxpayer].f8919firm[firm].reason: h
       person[taxpayer].f8919firm[firm].wages: 1000000
     expect:
       proceeds:
@@ -113,7 +114,7 @@ rows:
       person[taxpayer].work_ssn: true
       $tipjob@person[taxpayer]: [diner]
     expect:
-      refused: s1a.f4137
+      refused: person[taxpayer].f4137_filed
   - id: pay.strike
     design: scout-tail A.4, pay_no_w2 taken apart (line 1h)
     situation: A factory worker got $3,000 in strike benefits from the union.

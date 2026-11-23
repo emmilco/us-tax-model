@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "20",
   "agree / disagree / missing": "2 / 18 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-16); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,24 +23,24 @@
   },
   {
    "key": "eic.eligible",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-42, Steps 1 to 5; p. 46, Worksheet A, line 2, \"If line 2 is zero, STOP You can’t take the credit. Check the box on Form 1040 or 1040-SR, line 27c\". The reply keeps the reading the earlier ruling on this line refused: the STOP of Steps 1 to 4 ends the flowchart before the line, and the reply computes or refuses without it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 2384 of 3185 comparisons agree, 1764 of 2438 in scope; completed {\"candidate-refuses\": 35, \"candidate-unknown\": 272, \"value\": 18}. Project stands.",
-   "subject_key": "919e6f07aba75ab02aa9b3645b685a18926c5e4b82d74127b62de6539088dc30"
+   "ruling": "Ruling: model error; i1040gi pp. 40-42, Steps 1 to 5; p596 p. 17. As the ruling of 2026-11-17, the reply computes past the STOPs of Steps 1 to 4. The new witness advland.eic.self_only_age21 (born 2004, a child with no valid SSN) takes the reply's flowchart reading (self-only credit $312); the owner decided the Pub. 596 reading (p596 p. 5, \"if you are otherwise eligible\"; p. 17, \"You must meet all four of these rules\"), and the fixture is hand-predicted from it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2786 of 3286 agree; {\"candidate-refuses\": 45, \"candidate-unknown\": 271, \"project-refuses\": 7, \"project-unknown\": 159, \"value\": 18}; completed {\"candidate-unknown\": 172, \"value\": 18}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "46b51f43f9adf072c2edb7f85738e52baa9eb2fbe393a5681d48e405791519c7"
   },
   {
    "key": "eic.credit",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 40, Step 1, question 1: \"If, in 2025: 3 or more children who have valid SSNs lived with you, is the amount on Form 1040 or 1040-SR, line 11b, less than $61,555 ($68,675 if married filing jointly)? ... No. STOP You can’t take the credit.\". The reply keeps the reading the earlier ruling on this line refused: the STOP of Steps 1 to 4 ends the flowchart before the line, and the reply computes or refuses without it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 2388 of 3185 comparisons agree, 1761 of 2401 in scope; completed {\"candidate-refuses\": 35, \"candidate-unknown\": 272, \"value\": 2}. Project stands.",
-   "subject_key": "a77de428ac8d53d1e5aeb25e73861460f098a189d97ea564d469e22a963246a8"
+   "ruling": "Ruling: model error; i1040gi p. 40, Step 1, and pp. 41-42, Steps 3 and 4. As the ruling of 2026-11-17 (stage9.mut.eic_mfs_child_same_home, stage15.refuse.f2441.mfs_benefits: the reply computes a credit past a STOP). The new witness advland.eic.self_only_age21 (born 2004, a child with no valid SSN) takes the reply's flowchart reading (self-only credit $312); the owner decided the Pub. 596 reading (p596 p. 5, \"if you are otherwise eligible\"; p. 17, \"You must meet all four of these rules\"), and the fixture is hand-predicted from it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2804 of 3286 agree; {\"candidate-refuses\": 25, \"candidate-unknown\": 264, \"project-refuses\": 52, \"project-unknown\": 138, \"value\": 3}; completed {\"candidate-unknown\": 172, \"value\": 3}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "a9d4a60024dc4d24b13cc3c3925871772a9469f9960b2ae5263bd41904f816f7"
   },
   {
    "key": "eic.check_27c",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 43, Line 27c, \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a.\". The candidate reads kidnapped, qc_of_another, same_home, se_screen, us_half directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 2885 of 3185 comparisons agree, 2216 of 2494 in scope; completed {\"candidate-unknown\": 82}. Project stands.",
-   "subject_key": "927bf56d7b91955c6443b09accfd6006d37d815c2c0b428f908acf8725a9f91a"
+   "ruling": "Ruling: model error; i1040gi p. 41, Step 4, question 2, \"No. STOP You can't take the credit.\" (no instruction to check line 27c, unlike Step 3 question 6, Step 4 questions 3 and 5 and Worksheet A line 2). The reply checks 27c for a no-child filer outside ages 25 to 64 (stage9.eic.no_child.over65, stage9.eic.no_child.under25, project false, reply true); the rest are inputs the project asks only through its gates. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2958 of 3286 agree; {\"candidate-refuses\": 10, \"candidate-unknown\": 66, \"project-refuses\": 34, \"project-unknown\": 202, \"value\": 16}; completed {\"candidate-unknown\": 39, \"value\": 15}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "4f30a3886f9a58159b4f42dced72c63d3486fb45df9bf05eb5fd9f261f8d0c06"
   },
   {
    "key": "eic.separated_box",
@@ -58,117 +58,117 @@
   },
   {
    "key": "(Step 5, 1)",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 42, Step 5, question 1, \"No. Complete the following worksheet\". The candidate reads se_screen directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 780 of 3185 comparisons agree, 738 of 2514 in scope; completed {\"candidate-shows-skipped\": 839, \"candidate-unknown\": 237}. Project stands.",
-   "subject_key": "2382a63e0560aef22633a3cb29bf4d14beefb851ab80cd9d65fe99081eb257a6"
+   "ruling": "Ruling: representation; i1040gi p. 42, Step 5, question 1. As the ruling of 2026-11-17: the reply reads se_screen directly where the project asks it only through its gate; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2981 of 3286 agree; {\"candidate-refuses\": 18, \"candidate-shows-skipped\": 5, \"candidate-unknown\": 67, \"project-refuses\": 6, \"project-unknown\": 209}; completed {\"candidate-shows-skipped\": 3, \"candidate-unknown\": 39}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "2612ab8acc1e74269aa9b0cab4ef17c2ba5e7572670e0c94d06e711dfe8b0f21"
   },
   {
    "key": "(Step 5, 2)",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 42, Step 5, worksheet line 2, \"Enter the Medicaid waiver payment amounts excluded from income on Schedule 1, line 8s, unless you choose to include these amounts in earned income, in which case enter -0-\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 2260 of 3185 comparisons agree, 2258 of 2515 in scope; completed {}. Project stands.",
-   "subject_key": "919acf43e4cef874bf6bb4c83bdf387494a15e6fc9e50f1011073ef2334accd1"
+   "ruling": "Ruling: representation; i1040gi p. 42, Step 5, worksheet line 2. As the ruling of 2026-11-17: an input the project asks only through its gate; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2986 of 3286 agree; {\"candidate-refuses\": 18, \"candidate-unknown\": 67, \"project-refuses\": 6, \"project-unknown\": 209}; completed {\"candidate-unknown\": 39}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "ff581c7770227c7627f8062c052c9093a346c6af6b3cfd2f3f572dba1111d761"
   },
   {
    "key": "(Step 5, 3)",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 42, Step 5, line 3, \"Subtract line 2 from line 1\". The candidate reads se_screen directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 780 of 3185 comparisons agree, 738 of 2514 in scope; completed {\"candidate-shows-skipped\": 839, \"candidate-unknown\": 237}. Project stands.",
-   "subject_key": "52bc472d94c305760f96a07193de6b7f9a56ac099b7d199fe9662fdbc2c91ce5"
+   "ruling": "Ruling: representation; i1040gi p. 42, Step 5, line 3. As the ruling of 2026-11-17; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2981 of 3286 agree; {\"candidate-refuses\": 18, \"candidate-shows-skipped\": 5, \"candidate-unknown\": 67, \"project-refuses\": 6, \"project-unknown\": 209}; completed {\"candidate-shows-skipped\": 3, \"candidate-unknown\": 39}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "d96be3ba06e31dafb9785aba908c9062cf5cd7382b38050db749dbc3f8688db1"
   },
   {
    "key": "(Step 5, 4)",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, line 4, \"Enter all of your nontaxable combat pay if you elect to include it in earned income\". The reply keeps the reading the earlier ruling on this line refused: the STOP of Steps 1 to 4 ends the flowchart before the line, and the reply computes or refuses without it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 2077 of 3185 comparisons agree, 2061 of 2505 in scope; completed {\"candidate-refuses\": 2, \"candidate-unknown\": 174}. Project stands.",
-   "subject_key": "85a15b674a937cef593241be8a48fa2b1eea84acf36250bd9666747a635d49a5"
+   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, line 4. As the ruling of 2026-11-17: the reply computes past the STOPs of Steps 1 to 4. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2986 of 3286 agree; {\"candidate-refuses\": 18, \"candidate-unknown\": 67, \"project-refuses\": 6, \"project-unknown\": 209}; completed {\"candidate-unknown\": 39}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "40947a82b88c16f980e3d70d47887bd36c4dc9cb6db3f4e9f4f809c0779f9418"
   },
   {
    "key": "(Step 5, 5)",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, line 5, \"Add lines 3 and 4. This is your earned income\". The reply keeps the reading the earlier ruling on this line refused: the STOP of Steps 1 to 4 ends the flowchart before the line, and the reply computes or refuses without it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 788 of 3185 comparisons agree, 733 of 2504 in scope; completed {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 827, \"candidate-unknown\": 251}. Project stands.",
-   "subject_key": "081d43a343d30937e4f3dee3771560c9adb0a61ef540f9a23e418c5e5dc5fc42"
+   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, line 5. As the ruling of 2026-11-17: the reply computes past the STOPs of Steps 1 to 4. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2981 of 3286 agree; {\"candidate-refuses\": 18, \"candidate-shows-skipped\": 5, \"candidate-unknown\": 67, \"project-refuses\": 6, \"project-unknown\": 209}; completed {\"candidate-shows-skipped\": 3, \"candidate-unknown\": 39}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "73cdc0338f5e7041ed2aa9c6a54cea7647e33a5c09f041ff3b188e6a4c7a54a8"
   },
   {
    "key": "4b",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 47, Worksheet B, \"Use this worksheet if you answered “Yes” to Step 5, question 2\". The candidate reads combat_pay, se_screen, w2_marks directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 2376 of 3185 comparisons agree, 2282 of 2514 in scope; completed {\"candidate-shows-skipped\": 137, \"candidate-unknown\": 26}. Project stands.",
-   "subject_key": "353507254928d1ec3aeba3f2dabe17cdbcf54630f6145761576d1c61567851f1"
+   "ruling": "Ruling: representation; i1040gi p. 47, Worksheet B. As the ruling of 2026-11-17: inputs the project asks only through its gate; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 3200 of 3286 agree; {\"candidate-refuses\": 18, \"candidate-unknown\": 4, \"project-refuses\": 6, \"project-unknown\": 58}; completed {\"candidate-unknown\": 4}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "b47cae3d0dbcde42be4746588ff907f298332d5b2ab71178f9589431688fe775"
   },
   {
    "key": "6 (eic.wsb_6)",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; None. The candidate reads combat_pay, se_screen, w2_marks directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 2379 of 3185 comparisons agree, 2285 of 2512 in scope; completed {\"candidate-shows-skipped\": 136, \"candidate-unknown\": 26}. Project stands.",
-   "subject_key": "4e3b588b3ebbb41ea945249d1c5a241c66ba23e8d0891b20cd08212c3feaab7f"
+   "ruling": "Ruling: representation; i1040gi p. 47, Worksheet B, line 6. As the ruling of 2026-11-17; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 3176 of 3286 agree; {\"candidate-refuses\": 24, \"candidate-unknown\": 2, \"project-refuses\": 8, \"project-unknown\": 76}; completed {\"candidate-unknown\": 2}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "1b43c10fa1c68725f4ceec53b821ae07521d13d0d5984febd9ee6603eea5195f"
   },
   {
    "key": "1",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 40, Step 1, question 1: \"No. STOP You can’t take the credit.\". The reply keeps the reading the earlier ruling on this line refused: the STOP of Steps 1 to 4 ends the flowchart before the line, and the reply computes or refuses without it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 823 of 3185 comparisons agree, 777 of 2504 in scope; completed {\"candidate-hides-shown\": 16, \"candidate-refuses\": 2, \"candidate-shows-skipped\": 814, \"candidate-unknown\": 229}. Project stands.",
-   "subject_key": "89da72406540d5cfb4ecbdd01b1a9641997e2688850ecc2b2654d3f1cb21f45c"
+   "ruling": "Ruling: model error; i1040gi p. 40, Step 1, question 1, \"No. STOP You can't take the credit.\" As the ruling of 2026-11-17: the reply shows the worksheet past a STOP (candidate-hides-shown and shows-skipped). Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2804 of 3286 agree; {\"candidate-hides-shown\": 18, \"candidate-refuses\": 18, \"candidate-shows-skipped\": 5, \"candidate-unknown\": 62, \"project-refuses\": 7, \"project-unknown\": 372}; completed {\"candidate-hides-shown\": 15, \"candidate-shows-skipped\": 3, \"candidate-unknown\": 34}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "d6a0ef0102fe8bf9b63142f2a1e9b4c2dda76a0123ddafa5314b2186987c676c"
   },
   {
    "key": "2",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 40, Step 1, question 1: \"No. STOP You can’t take the credit.\". The reply keeps the reading the earlier ruling on this line refused: the STOP of Steps 1 to 4 ends the flowchart before the line, and the reply computes or refuses without it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 1910 of 3185 comparisons agree, 1852 of 2497 in scope; completed {\"candidate-hides-shown\": 16, \"candidate-refuses\": 2, \"candidate-shows-skipped\": 40, \"candidate-unknown\": 229}. Project stands.",
-   "subject_key": "2ef85ab32a41f519a1ca82b5b39870fe168eb8e42284529a192da1d0d6e840a6"
+   "ruling": "Ruling: model error; i1040gi p. 40, Step 1. As the ruling of 2026-11-17: the reply computes past the STOPs of Steps 1 to 4. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2804 of 3286 agree; {\"candidate-hides-shown\": 18, \"candidate-refuses\": 18, \"candidate-shows-skipped\": 5, \"candidate-unknown\": 62, \"project-refuses\": 7, \"project-unknown\": 372}; completed {\"candidate-hides-shown\": 15, \"candidate-shows-skipped\": 3, \"candidate-unknown\": 34}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "b32c9b786cafdd9111cb42f4c9a3ebbd044b17d4c008b5c3378dfce4c06ef92c"
   },
   {
    "key": "3",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 46, Worksheet A, line 2, \"If line 2 is zero, STOP You can’t take the credit\". The candidate reads $interest, adoption_any, code, dec_coverage, line9, nominee directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 1241 of 3185 comparisons agree, 756 of 2511 in scope; completed {\"candidate-hides-shown\": 13, \"candidate-shows-skipped\": 1082}. Project stands.",
-   "subject_key": "1826189d53cc287263215fd078269b6f5004e0ebf95b60ea163e1bc8296c07c7"
+   "ruling": "Ruling: representation; i1040gi p. 46, Worksheet A, line 3. As the ruling of 2026-11-17; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2774 of 3286 agree; {\"candidate-hides-shown\": 15, \"candidate-refuses\": 18, \"candidate-shows-skipped\": 5, \"candidate-unknown\": 56, \"project-refuses\": 19, \"project-unknown\": 399}; completed {\"candidate-hides-shown\": 13, \"candidate-shows-skipped\": 3, \"candidate-unknown\": 30}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "577df84341993b0c1f024ee34c925f27fbe9c4291846622d8afcc48b50171103"
   },
   {
    "key": "4",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 4, \"Are the amounts on lines 3 and 1 the same?\". The reply keeps the reading the earlier ruling on this line refused: the STOP of Steps 1 to 4 ends the flowchart before the line, and the reply computes or refuses without it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 1722 of 3185 comparisons agree, 1234 of 2504 in scope; completed {\"candidate-hides-shown\": 12, \"candidate-refuses\": 2, \"candidate-shows-skipped\": 533, \"candidate-unknown\": 229}. Project stands.",
-   "subject_key": "11012886d1c8a0f66bd79f8700dce3abf3633cc8b5678e0a8a68b925cb2c751a"
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 4. As the ruling of 2026-11-17. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2779 of 3286 agree; {\"candidate-hides-shown\": 13, \"candidate-refuses\": 18, \"candidate-shows-skipped\": 2, \"candidate-unknown\": 56, \"project-refuses\": 19, \"project-unknown\": 399}; completed {\"candidate-hides-shown\": 12, \"candidate-shows-skipped\": 2, \"candidate-unknown\": 30}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "d54a0196cfbd57ee5bd9254daaafecbac0202782c695242fc4a9b7e0542909bc"
   },
   {
    "key": "5",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 4, \"Yes. Skip line 5; enter the amount from line 2 on line 6\". The reply keeps the reading the earlier ruling on this line refused: the STOP of Steps 1 to 4 ends the flowchart before the line, and the reply computes or refuses without it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 2504 of 3185 comparisons agree, 2009 of 2493 in scope; completed {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 10, \"candidate-unknown\": 195}. Project stands.",
-   "subject_key": "fc2e7c5f98b381c6173a3f60611d1cfa7017f92f5fb3513da2fc0a00fd3375f9"
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 4, \"Yes. Skip line 5\". As the ruling of 2026-11-17. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2330 of 3286 agree; {\"candidate-refuses\": 13, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 23, \"project-refuses\": 527, \"project-unknown\": 392}; completed {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 7}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "a0d772293d4cccf8551ed44e53a2aa2963d4816766b6e8fa5b2c042ad555f42e"
   },
   {
    "key": "6 (eic.line6)",
-   "record": "52428cbd47d14cf03da2bff0bb6363cc8b8b5978b46a115c485d37d1a6b08900",
+   "record": "f38a241a1028fa483378c919fda29a9445167acf6542a721d258fa439b73391f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 6, and p. 48, Worksheet B, line 11, \"This is your earned income credit\". The reply keeps the reading the earlier ruling on this line refused: the STOP of Steps 1 to 4 ends the flowchart before the line, and the reply computes or refuses without it. Triage executable-triage-v2 (.transcription/triage/2025/eic.json): 2427 of 3185 comparisons agree, 1929 of 2494 in scope; completed {\"candidate-hides-shown\": 16, \"candidate-refuses\": 2, \"candidate-shows-skipped\": 32, \"candidate-unknown\": 229}. Project stands.",
-   "subject_key": "5d8dd6f44e4be95732e70f475c54d4e77bed10ac68ebbeca6cceab17990c777d"
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 6. As the ruling of 2026-11-17: the reply computes past the STOPs of Steps 1 to 4. Triage executable-triage-v2 (.transcription/triage/2025/eic.json, pass 9be2782038be): 2743 of 3286 agree; {\"candidate-hides-shown\": 18, \"candidate-refuses\": 18, \"candidate-shows-skipped\": 5, \"candidate-unknown\": 56, \"project-refuses\": 7, \"project-unknown\": 439}; completed {\"candidate-hides-shown\": 15, \"candidate-shows-skipped\": 3, \"candidate-unknown\": 30}. Re-reviewed because this lane (advland) applied the owner's decision of 2026-11-23 on amb.2025.eic_self_only_age (BUG-1199): a filer whose qualifying children all lack a valid SSN passes Step 3 and Rules 11 to 14 (p596 p. 17) for the self-only credit. Project stands.",
+   "subject_key": "53dce45601d7a6657e007015e439a73b93d2a5e3bb7d90fd63132d671036837c"
   }
  ],
  "subjects": {
   "eic.zero": "52aee938642df0c53e51498dcf7f0375a2dca1b221662a37474feb9a2f92e2d9",
   "eic.self_employed": "055a0cb5a33e1ca077a25b4066e576b957fe3ecfb88e31430139c9058cc2f751",
-  "eic.eligible": "5a29c13f47477e4feb85f65b41490d3f4922bde7110f23b348d519334773d0f7",
-  "eic.credit": "8a61a9d965bc4c48f2fcf2897bcf221c28befdb54fd8ee41f22a3eb5e2f33430",
-  "eic.check_27c": "f16fdb8e65d2a3b60ce8d5a432c42e73eb3e6d6cc83f59f744d9095683b5af83",
+  "eic.eligible": "59f1c53471b0aa51114f2ca5638fc9a61d43ffcf30785e3e2b24faf348baeaab",
+  "eic.credit": "43bbd5a72974a30962e07aa42f39edef497fe679dcbb270410840b30d0d552b7",
+  "eic.check_27c": "c489fbcd0d6bf6fcd6c89d14607eef3f538fb96ebe59c48a3eb0815fef0096db",
   "eic.separated_box": "6960746470292d2cd291700341a45557650b0dba2c067dda3391570f31e96fc3",
   "eic.clergy": "c34466ce2b1c242bf5bb418b6b0d77070c8e920d6c8754944817940261a62022",
-  "(Step 5, 1)": "3d7d03ea30685cb8a6dc68c82818e57cc0c0aa3cc6d092241d7a146f9f5a9df0",
-  "(Step 5, 2)": "2774995f03344f63489ae2181d131a987cc7de077b20bb930344a1d7f27b9fa2",
-  "(Step 5, 3)": "e0267360b0d8b2010aaa569bee9736e928c3737be0d60fb6def183d5ffecd67f",
-  "(Step 5, 4)": "c26bbb9ffdf2d4dd3e4fc70f7d01bbde2bea58a542bc4cb9c4f6bb0b0176e3de",
-  "(Step 5, 5)": "4bcd9834a8c690514e11cd1ba17846e76e9e4ce890d5b4cff54ddbdb64c68a42",
-  "4b": "33e8e2494efa695a892017bd7a03962f30ebad283bae56a4b608dbc187baf32d",
-  "6 (eic.wsb_6)": "22bc7caf423dc1b6271f6ebe5fc28beaaf5b3d428a71519a0297fad1ca85c047",
-  "1": "60d89492ad4cbbc3523187b9d5ecb1a1bdde3e4f98c57e943d5bc638838db1fa",
-  "2": "b8d7b2d5bd8e15821e454db64fff6b91f95c986fe25df011115c19111d53f2b4",
-  "3": "26b5fd7f2540deaed98ce1edc995be9691db7068959a95979e25f36e344b8c7b",
-  "4": "2b9b942a09c6910cbaa03e634f07a80e7f5751a9baf26765e80f89b695048024",
-  "5": "7e2b681b1eeb10f1f2d8bdb43b04862da3aa85286da7c3894ffb0c6b35918f1e",
-  "6 (eic.line6)": "f994f6a8648974df81ffc0c46eeda627078d30e98f3fc8307986e119019e6fa1"
+  "(Step 5, 1)": "c59f963652f9720ea7613c051b7fdeac8b613781400daf436073a14d43c385e4",
+  "(Step 5, 2)": "c4c2623a3a32e7fbe7b80183cd4a776ce05197e18db93df5d8206235c9be6bd1",
+  "(Step 5, 3)": "3c0a99cc9a865dfdb1863a97d620de488a35be23cff96d9b9eea448e321921dc",
+  "(Step 5, 4)": "9edc98ab2749a749466e5acf131283b3c12a9bb39c40f3e42dc603bb47404b55",
+  "(Step 5, 5)": "ecc298a8ed9912dda91008c6ee8a891de1cf238c56e0f18f620fd539f0a60abc",
+  "4b": "ad0f4e6ea3c4def20f47bab654268ab30a8d0782aa18771be26f29a6e1d9b672",
+  "6 (eic.wsb_6)": "8b6dc59ebe0bb179145e34307320a8f104a4924a0241889c4f5bf3ee43798014",
+  "1": "639b815381b7e32cdb45313bf05ecb6419e00bb39922964f65454588e8495b52",
+  "2": "041d35b8ae0e1ea41c03c1640e3b8114fa8cb7a05034efa3d63cafa98b912fdd",
+  "3": "3e8f5a4ac40dafd025a1c4f3480c1dc437eb51c3868e99d9e2c025e8ac95c83e",
+  "4": "fc0379a7979d69670fe32d62a4f596df4113bac6e06046fb52511c5b3820faff",
+  "5": "5334d247a22eb95a22b0d428aaaaa648ffe87d7104cde3525c4a6ab0ec3983d3",
+  "6 (eic.line6)": "bbac70d4065090117041e125ac5f680110ea9f4785744de093a62c244600af22"
  },
  "__rest__": "0cb74bdc4a8e058e063ada8c81e332a05cd9947874f874edab33db08a9fe38c7",
  "foreign": {

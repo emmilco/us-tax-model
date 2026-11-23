@@ -12,6 +12,7 @@ import fc from "fast-check";
 import type { CanonicalData, FormDoc, Inputs, Line } from "./types.js";
 import { YEAR } from "./year.js";
 import { cohereSpouseHsa } from "./hsa-calendar.js";
+import { evaluate } from "./eval.js";
 
 // The questions the vehicle screen and the equipment screen were taken apart into (scveh.screen and asset.screen are
 // now derived from them). A generated return answers each the way that refuses nothing: no, and yes to having records.
@@ -503,7 +504,41 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
         amount: money(1_500_000) }), { minLength: 1, maxLength: 2 }) }),
     stream: fc.noBias(fc.nat({ max: 0x7fffffff })),
   });
-  return spec.map((s) => buildInputs(data, s));
+  return spec.map((s) => capGifts(data, buildInputs(data, s)));
+}
+
+/** Charitable gifts within the income limits that always bind (p526 pp. 22 and 25, as sa.charity_over_test applies
+ * them): at most half of the adjusted gross income in all, the noncash gifts at most a quarter of it, so no generated
+ * return is refused for its gifts or deducts more than the law allows. Gifts do not enter adjusted gross income, so it
+ * is evaluated from the return as drawn; with none above zero the return gives nothing. A return refused before its
+ * adjusted gross income keeps its gifts, which it never deducts. Applied after the draws, so the random stream is
+ * unchanged. */
+function capGifts(data: CanonicalData, inputs: Inputs): Inputs {
+  const keys = (inputs["$gift"] as string[] | undefined) ?? [];
+  const cash = (inputs["sa.line11"] as number | undefined) ?? 0;
+  const noncash = keys.reduce((n, k) => n + ((inputs[`gift[${k}].deduction`] as number | undefined) ?? 0), 0);
+  if (cash === 0 && noncash === 0) return inputs;
+  const agi = evaluate(data, inputs, ["sa.agi"]).values.get("sa.agi");
+  if (agi?.kind !== "money") return inputs;
+  const cents = agi.cents;
+  const totalCap = cents > 0 ? Math.floor(cents / 2) : 0;
+  const noncashCap = cents > 0 ? Math.floor(cents / 4) : 0;
+  if (cash + noncash <= totalCap && noncash <= noncashCap) return inputs;
+  const out: Inputs = { ...inputs };
+  let kept = 0;
+  for (const k of keys) {
+    const d = (out[`gift[${k}].deduction`] as number | undefined) ?? 0;
+    const v = noncash > noncashCap ? Math.floor((d * noncashCap) / noncash) : d;
+    out[`gift[${k}].deduction`] = v;
+    kept += v;
+  }
+  out["sa.line11"] = Math.min(cash, totalCap - kept);
+  if (totalCap === 0) {
+    for (const k of keys) for (const f of Object.keys(out)) if (f.startsWith(`gift[${k}].`)) delete out[f];
+    out["$gift"] = [];
+  }
+  out["sa.gifts"] = (out["sa.line11"] as number) > 0 || (out["$gift"] as string[]).length > 0 || out["sa.charity_limited"] === true;
+  return out;
 }
 
 /** A screen and the amounts asked only after it is answered Yes. `entry` matches the collection entry the
@@ -1195,7 +1230,7 @@ const NY_IN_SCOPE: Record<string, boolean> = {
   other_credits: false, other_taxes: false, city_credits: false, mctmt: false, bought_untaxed: false, use_tax_dmv_only: false, use_tax_st141: false,
   contributions: false, dependent_care: false, noncustodial: false, real_property_credit: false, college_tuition: false,
   other_withholding: false, refund_529: false, late_penalty: false, prior_agi_high: false, abode_part_year: false,
-  est_late: false,
+  est_late: false, alimony_later: false, nyc_flex: false, prior_168k: false,
 };
 
 /** Whole returns with New York answers: a generated federal return (returnArbitrary over the federal documents, so

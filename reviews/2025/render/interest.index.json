@@ -3,16 +3,28 @@
  "form": "interest",
  "family": "claude",
  "base": "6cf0f3b8c1f5437bc785bc261654ef53fe0453dd2ab9a4d22e86288337356309",
+ "head_rows": {
+  "match / mismatch / unclear / missing": "1 / 1 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "amount",
-   "record": "6cf0f3b8c1f5437bc785bc261654ef53fe0453dd2ab9a4d22e86288337356309",
-   "status": "MATCH"
+   "record": "19c70779a962bb835cfd508c422aa2d4153b35c2257ec73354dde8f112688655",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sb p. 1, Line 1, \"Also include any accrued market discount that is includible in income\". Market discount (Form 1099-INT box 10, Form 1099-OID box 5) is refused by sb.bond_special, which lists \"have market discount to report\"; the box list of this input is for the amounts the tool computes. Project stands.",
+   "subject_key": "0d2fe40aace2599f03d488157307010dd385d9899066e0c8834eaca0bf079857"
   },
   {
    "key": "penalty",
    "record": "6cf0f3b8c1f5437bc785bc261654ef53fe0453dd2ab9a4d22e86288337356309",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "70f2669c47fa7ab618783aaf104893cbde8763712ba453e55297548af3a2765a"
   }
- ]
+ ],
+ "subjects": {
+  "amount": "343ffc646a1fbad76785755af33f479b0a627619caf9c750c4cfb6e3024734f9",
+  "penalty": "f45a24009f5a7ede2e57aa86a41aa5eabb1737490e7aa9698406b081cfef2c78"
+ },
+ "__rest__": "43f362747908df138c74f7affdca510a989b57ba95fe32cdc6172fcf674806e2"
 }

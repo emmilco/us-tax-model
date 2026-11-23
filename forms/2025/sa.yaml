@@ -3,9 +3,11 @@ form:
   kind: form
   title: Schedule A — supported itemized deductions and standard comparison
   tax_year: 2025
-  note: Income and deduction eligibility are explicit supplied facts. Charity valuation,
-    substantiation and income-limit screening are not computed; an affirmative limitation answer is
-    refused. The SALT formula follows the printed 2025 worksheet, including its MFS halving step.
+  note: Income and deduction eligibility are explicit supplied facts. Charity valuation and
+    substantiation are not computed; an affirmative limitation answer is refused, and so is an itemized
+    return whose gifts an income limit reduces whatever the charity (more than 60% of AGI in all, or noncash
+    gifts, all taken as capital gain property, more than 30%). Line 5b adds the real estate taxes of reported rentals not taken on Schedule E. The SALT
+    formula follows the printed 2025 worksheet, including its MFS halving step.
   lines:
     - id: sa.unsupported
       printed: (helper)
@@ -358,7 +360,7 @@ form:
     - id: sa.medical_asked
       printed: (helper)
       type: Bool
-      label: Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)
+      label: Medical and dental costs are asked (they were more than 7.5% of income, health insurance was paid for with money already taxed, or an exception 05 to the additional tax on an early retirement distribution is claimed)
       expr:
         op: test
         any:
@@ -370,9 +372,36 @@ form:
             eq:
               - sa.medical_premiums_if_not_large
               - const: true
+          - op: test
+            eq:
+              - sa.e05_claimed
+              - const: true
       cite:
         doc: i1040sca
         locator: 'p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income", "You can''t include insurance premiums paid by making a pretax reduction to your employee compensation"'
+    - id: sa.e05_claimed
+      printed: (helper)
+      type: Bool
+      label: Someone on the return claims the medical-expense exception (05) to the additional tax on an early retirement distribution, which is limited to the medical expenses above 7.5% of AGI whether or not deductions are itemized
+      expr:
+        op: test
+        gt:
+          - sa.e05_amounts
+          - const: 0
+      cite:
+        doc: i5329
+        locator: 'p. 5, Line 2, exception 05, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year."'
+    - id: sa.e05_amounts
+      printed: (helper)
+      type: NonNegDollars
+      label: Exception 05 amounts claimed by everyone on the return, before the limit to the medical expenses
+      expr:
+        op: sum_over
+        collection: person
+        field: person.x_e05
+      cite:
+        doc: i5329
+        locator: 'p. 5, Line 2, exception 05, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year."'
     - id: sa.line1
       printed: (helper)
       type: NonNegDollars
@@ -834,7 +863,7 @@ form:
         doc: i1040sca
         locator: 'p. 6, Line 5b, "Don''t include the following amounts on line 5b", "Itemized charges for services to specific property or persons"'
     - id: sa.line5b_net
-      printed: 5b
+      printed: (helper)
       type: NonNegDollars
       label: Subtract sa.property_tax_leave_out_if_any from sa.line5b_if_home_owner; if zero or less, enter zero
       expr:
@@ -844,6 +873,61 @@ form:
       cite:
         doc: i1040sca
         locator: 'p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that wasn''t used for business", "Don''t include the following amounts on line 5b"'
+    - id: sa.rental_tax_sum
+      printed: (helper)
+      type: NonNegDollars
+      label: Real estate taxes on the rentals reported on Schedule E that are not taken there (the personal-use share)
+      expr:
+        op: sum_over
+        collection: rental
+        field: rental.tax_personal
+        where:
+          op: test
+          eq:
+          - rental.reported
+          - const: true
+      cite:
+        doc: p527
+        locator: 'p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Only your rental expenses may be deducted on
+          Schedule E (Form 1040). Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize
+          your deductions"'
+    - id: sa.rental_tax_personal
+      printed: (helper)
+      type: NonNegDollars
+      label: Real estate taxes on reported rentals not taken on Schedule E (zero when you rented out no property)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - scope.rental
+                - const: true
+            then: sa.rental_tax_sum
+          - guard:
+              op: test
+              eq:
+                - scope.rental
+                - const: false
+            then: sa.zero
+      cite:
+        doc: p527
+        locator: 'p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Some of your personal expenses may be
+          deductible on Schedule A (Form 1040) if you itemize your deductions"'
+    - id: sa.line5b_total
+      printed: 5b
+      type: NonNegDollars
+      label: Add sa.line5b_net, sa.rental_tax_personal
+      expr:
+        op: sum
+        of:
+          - sa.line5b_net
+          - sa.rental_tax_personal
+      cite:
+        doc: i1040sca
+        locator: 'p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that wasn''t used
+          for business"; p527 p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Some of your personal expenses
+          may be deductible on Schedule A (Form 1040) if you itemize your deductions"'
     - id: sa.personal_property_tax_any
       printed: (helper)
       type: Bool
@@ -955,13 +1039,13 @@ form:
       printed: (helper)
       type: Bool
       gated_by: sa.mortgage_unreported_if_home
-      label: 'Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098?'
+      label: 'Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098, or points paid in an earlier year that are deducted over the life of the loan?'
       expr:
         op: input
-        source: 'Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098?'
+        source: 'Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098, or points paid in an earlier year that are deducted over the life of the loan?'
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040sca
+        locator: 'p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 9, Line 8c, Refinancing, "Generally, you must deduct points you paid to refinance a mortgage over the life of the loan", "If you paid off a mortgage early, deduct any remaining points in the year you paid off the mortgage"'
     - id: sa.mortgage_unreported_if_home
       printed: (gate)
       type: Bool
@@ -1348,12 +1432,12 @@ form:
     - id: sa.line5d
       printed: 5d
       type: NonNegDollars
-      label: Add sa.line5a_total, sa.line5b_net, sa.line5c_if_taxed
+      label: Add sa.line5a_total, sa.line5b_total, sa.line5c_if_taxed
       expr:
         op: sum
         of:
           - sa.line5a_total
-          - sa.line5b_net
+          - sa.line5b_total
           - sa.line5c_if_taxed
       cite:
         doc: f1040sa
@@ -1849,6 +1933,70 @@ form:
       cite:
         doc: f1040sa
         locator: p. 1, Gifts to Charity, line 12, "You must attach Form 8283 if over $500"
+    - id: sa.gift_sum
+      printed: (helper)
+      type: NonNegDollars
+      label: Add sa.line11_if_gifts, sa.line12 (the gifts to charity before income limits)
+      expr:
+        op: sum
+        of:
+          - sa.line11_if_gifts
+          - sa.line12
+      cite:
+        doc: f1040sa
+        locator: p. 1, Gifts to Charity, lines 11 and 12
+    - id: sa.gift_total_limit
+      printed: (helper)
+      type: NonNegDollars
+      label: Multiply sa.agi_floor by sa.gift_total_limit_rate (60% of Form 1040 line 11b, not less than zero)
+      expr:
+        op: multiply_rate
+        amount: sa.agi_floor
+        rate:
+          param: sa.gift_total_limit_rate
+      cite:
+        doc: p526
+        locator: 'p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited
+          to no more than 60% of your AGI"'
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sa.gift_property_limit
+      printed: (helper)
+      type: NonNegDollars
+      label: Multiply sa.agi_floor by sa.gift_property_limit_rate (30% of Form 1040 line 11b, not less than zero)
+      expr:
+        op: multiply_rate
+        amount: sa.agi_floor
+        rate:
+          param: sa.gift_property_limit_rate
+      cite:
+        doc: p526
+        locator: 'p. 25, "Your noncash contributions of capital gain property to 50% limit organizations is limited to 30%
+          of your AGI"'
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sa.charity_over_test
+      printed: (helper)
+      type: Bool
+      label: 'An income limit reduces the gifts whatever the charity: gifts on lines 11 and 12 together more than 60% of Form
+        1040 line 11b, or gifts other than by cash or check (line 12, all taken as capital gain property) more than 30% of
+        it'
+      expr:
+        op: test
+        any:
+          - op: test
+            gt:
+              - sa.gift_sum
+              - sa.gift_total_limit
+          - op: test
+            gt:
+              - sa.line12
+              - sa.gift_property_limit
+      cite:
+        doc: p526
+        locator: 'p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited
+          to no more than 60% of your AGI. Your deduction may be further limited to 50%, 30%, or 20% of your AGI, depending
+          on the type of property you give and the type of organization you give it to"; p. 25, "Your noncash contributions
+          of capital gain property to 50% limit organizations is limited to 30% of your AGI"; i1040sca p. 10, Limit on the
+          amount you can deduct, "See Pub. 526 to figure the amount of your deduction"'
     - id: sa.line14
       printed: "14"
       type: NonNegDollars
@@ -2269,6 +2417,15 @@ form:
             doc: i1040sca
             locator: 'p. 1, "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub.
               504 to figure the portion of joint expenses that you can claim as itemized deductions"'
+        - when: sa.charity_over_if_itemizing
+          form: Schedule A charitable limitation (Pub. 526)
+          remedy: Gifts to charity this large compared with your income are limited, and the deduction and the carryover are
+            figured under Pub. 526, which this tool does not do.
+          cite:
+            doc: p526
+            locator: 'p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited
+              to no more than 60% of your AGI"; p. 25, "Your noncash contributions of capital gain property to 50% limit
+              organizations is limited to 30% of your AGI"'
     - id: sa.mfs_joint_paid
       printed: (helper)
       type: Bool
@@ -2287,6 +2444,26 @@ form:
           interest", "half of the total medical expenses, subject to certain limits, unless you can show that you alone
           paid the expenses"; p504 p. 5, Table 1, state income tax, "file a joint state income tax return and you’re liable
           for only your own share of state income tax"'
+    - id: sa.charity_over_if_itemizing
+      printed: (gate)
+      type: Bool
+      label: Itemizing, and an income limit reduces the gifts to charity (no when taking the standard deduction, which the
+        limits cannot change)
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - sa.charity_over_test
+          - const: true
+        - op: test
+          eq:
+          - sa.itemizes
+          - const: true
+      cite:
+        doc: p526
+        locator: 'p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited
+          to no more than 60% of your AGI"'
     - id: sa.mfs_itemizing
       printed: (helper)
       type: Bool

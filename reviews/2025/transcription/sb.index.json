@@ -5,15 +5,16 @@
  "base": "e7e819909c6f6e33764ab0d991705d0e9013e6a66417745b89b4e1a75e39de3e",
  "head_rows": {
   "printed lines compared": "6",
-  "agree / disagree / missing": "5 / 1 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "4 / 2 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "sb.interest_total",
-   "record": "f7a9049a0fc0d88fb12d32e48391a0beacbc36aa07cd07bc9b20c2c588a8518c",
-   "status": "AGREE",
-   "subject_key": "79241a4d04b14de24d021de6f976a89fcc31981cad3fb837c589e93c4a4c7bfe"
+   "record": "b8729595eea6c9fd1db43c4b4b31c3dda885e89d4a7c8e2935409ee6c7f62332",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap; the reply guessed this helper to be line 4 (after the Schedule B adjustments). The project's line is the sum of the payers' interest before adjustment (f1040sb Part I, line 1 and line 2, i1040sb p. 1 Line 1), which is what its label says; where no adjustment applies (refused otherwise by sb.h_bond_adjust and sb.nominee) the two equal. Re-reviewed only because the interest.amount wording changed. Project stands.",
+   "subject_key": "a42c252c085e56a4565c3caeeb045d936205f78b6b70a7f7b92fed3d6dd83e59"
   },
   {
    "key": "sb.ordinary_dividends_if_dividends",
@@ -23,15 +24,15 @@
   },
   {
    "key": "2",
-   "record": "71be0bf0dffecc5102f2e4c1aa0a00b94d1ac83736b568e63a7f8ee7cf2c5126",
+   "record": "b8729595eea6c9fd1db43c4b4b31c3dda885e89d4a7c8e2935409ee6c7f62332",
    "status": "AGREE",
-   "subject_key": "40aa4712bb5d5acbace31940caeb546404f8d5d829dda6f2817e02e7605bca6b"
+   "subject_key": "dfd98549754409785e9c1f9785bcca452552c77c30fa6f6a67d86a2cb29a316d"
   },
   {
    "key": "3",
-   "record": "71be0bf0dffecc5102f2e4c1aa0a00b94d1ac83736b568e63a7f8ee7cf2c5126",
+   "record": "b8729595eea6c9fd1db43c4b4b31c3dda885e89d4a7c8e2935409ee6c7f62332",
    "status": "AGREE",
-   "subject_key": "417c58417c7b252dcfc9d87188cca99cff581170dfe8b6fcaa5fbc668296ff63"
+   "subject_key": "6b3e23ac91cf6ee073be0c8c1048b7b3af1953022760bda9c2568341e25111ea"
   },
   {
    "key": "4",
@@ -41,26 +42,26 @@
   },
   {
    "key": "6",
-   "record": "71be0bf0dffecc5102f2e4c1aa0a00b94d1ac83736b568e63a7f8ee7cf2c5126",
+   "record": "b8729595eea6c9fd1db43c4b4b31c3dda885e89d4a7c8e2935409ee6c7f62332",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: f1040sb Part II, line 6 (the line 5 total); i1040sb, Line 5. The reply reads sb.ordinary_dividends ungated; the project asks it only after div.any is Yes and gives $0 otherwise. Triage executable-triage-v2 (`.transcription/triage/2025/sb.json`, pass 602d75169f27): 2,548 of 3,063 agree and no value differs; 225 candidate-unknown (the reply reads sb.ordinary_dividends, or its sb.nominee gate, where div.any is No, e.g. classm.asset.1, project $0), 2 candidate-refuses (its sb.h_bond_adjust on generated returns, project $0, a refusal the project places on lines 2 and 4), 68 project-refuses (sb.fbar_required_if_foreign, sb.form8938_if_foreign) and 220 project-unknown (records withholding div.any). Project stands.",
-   "subject_key": "ce2d1167daacf581ee55c189ccd0083af34ea4191d9975ffcf39ea972affd95e"
+   "ruling": "Ruling: representation; as the earlier ruling: f1040sb Part II, line 6 (the line 5 total). The reply reads sb.ordinary_dividends ungated; the project asks it only after div.any is Yes and gives $0 otherwise. Project stands.",
+   "subject_key": "a91e2701190d0327224586f580cfbc6db8e6e483912c2429d32d58a3234542c9"
   }
  ],
  "subjects": {
   "sb.interest_total": "a823ed7bdda9a3aa4d7577af47aa144b6dfad54199aaea3a39bf5466d614c560",
   "sb.ordinary_dividends_if_dividends": "b1d271d8d849b7c1efeca53defa98c7bd54ccc1decc43a9cac93006238a8ca45",
-  "2": "f8397afacdc9aeaacc1099050757c5a41fc598395f836af2cd4f1fb25e12d828",
-  "3": "2872fdaa670ff6158b5b87a857e82792ffe81f8bbb669394396f662a5951d365",
+  "2": "4d9a6c3e0658706744c386e53d35b6b7ff19ee0316e66eaab66151abcc22916a",
+  "3": "0f406ca78f4371523cc0ecce382dbfeba7f19580a43601dc4b0210632137201f",
   "4": "d225f28e9701cf230747bff686459225d04bd398ce08e2040a616fb8958167c4",
-  "6": "e51ce7f32a3455a6f67f1c73bde24d4829a957d10ceba43f55f560c643db35de"
+  "6": "2e8a2873946b3bf59a64e743241012611ad7c1de573d8054c3b4b53664096acd"
  },
  "__rest__": "013e58d3d274e971cd170d48794200b98ac690d600b9af1e38e8133de7ae11db",
  "foreign": {
-  "sb.interest_total": "8cf0ce2bf0c7b014651488e8075711ffe3df51f55ed3ac4c95e42bc148c22246",
+  "sb.interest_total": "e61aaab6681c75c963fae8ef833347a064174fc00d37f229517056353786aa54",
   "sb.ordinary_dividends_if_dividends": "ae4f24f3eed20081a92cecaecf8db33911476c5839be89b64491e6867c2d4916",
-  "2": "4fd9e19d02dca8ee7eda2031b97a774019022fe30c5c3b542215c4731b946ea4",
-  "3": "4fd9e19d02dca8ee7eda2031b97a774019022fe30c5c3b542215c4731b946ea4",
-  "6": "4fd9e19d02dca8ee7eda2031b97a774019022fe30c5c3b542215c4731b946ea4"
+  "2": "4d11ca68cda540b728d13f65c3fd9cd1fe01a68de119ffab06c7d543b3c82a34",
+  "3": "4d11ca68cda540b728d13f65c3fd9cd1fe01a68de119ffab06c7d543b3c82a34",
+  "6": "4d11ca68cda540b728d13f65c3fd9cd1fe01a68de119ffab06c7d543b3c82a34"
  }
 }

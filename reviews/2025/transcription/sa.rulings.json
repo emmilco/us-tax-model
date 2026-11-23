@@ -4,6 +4,26 @@
  "rulings": [
   {
    "printed": "1",
+   "project_expr_sha256": "97af763de7c65004fda7855f4f0e6bae8972e7c2a3a6fd8e4be31746ce8ebc77",
+   "second_expr_sha256": "14eea60389de81fc7a32578d23f16cda5d6fb1b09be478809c89a5ca57278de7",
+   "ruling": "Ruling: model error; i5329 p. 5, exception 05, \"Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year\", which applies whether or not the filer itemizes. The reply asks line 1 only on the medical ticks; the one completed difference is advland.retirement.e05_medical_asked (exception 05 claimed, medical tick not ticked: project $15,000, reply $0), hand-predicted from that text (BUG-1195). Triage executable-triage-v2 (.transcription/triage/2025/sa.json, pass a2bc9f183177): 4409 of 4410 agree; {\"value\": 1}; completed {\"value\": 1}. Project stands.",
+   "context": "4ed849028429c7aae148ede7fc7dc77eefb8704bc94ff4cf11cd2c3058fe7577",
+   "date": "2026-11-23",
+   "run": "92b83be9fe47dfe786906552f30d8c4b5a1d84a771df714ca38d6ebf1446e065",
+   "subject_key": "2a1f0e6361f851a5decef4f08561c84f79244986643ad7390fb4c2cc12242cc3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "value"
+    ],
+    "witnesses": [
+     "fixture:advland.retirement.e05_medical_asked@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1",
    "project_expr_sha256": "b2be10ffde95817512ab8d52a50f06950447951b9d72b8e2cc4a0c8fc4b8ca7a",
    "second_expr_sha256": "14eea60389de81fc7a32578d23f16cda5d6fb1b09be478809c89a5ca57278de7",
    "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (4317 values compared, none different or missing: 2569 on 2569 fixture cases, 500 on 500 generated returns seed 20261026, 1248 on 1248 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
@@ -157,11 +177,11 @@
    "printed": "16",
    "project_expr_sha256": "ce45ab0471420bdb6853a00cf95eaac0248d70fbade1b2ee8430ba6adbcb8290",
    "second_expr_sha256": "ba6c3815e6198c5e2764fc906bc5de9cab5dd9a39f010d192f5f511e283cbe3e",
-   "ruling": "Ruling: representation; triage 3,367/3,708 agree, no value difference; differences are project-unknown/refuses (the project's sa.charity_limited_if_gifts, sa.unsupported and sa.excluded_income refusals on this line and its unasked parents) and candidate-unknown/refuses (2 and 9: the reply's own screens, e.g. sd.casualty, s3.repaid_income). Both enter the smaller of gambling losses and the gambling winnings on Schedule 1 line 8b, 0 without winnings (the project through s1.has_gambling, the reply through line 8b > 0; equal since the smaller of the losses and 0 is 0). i1040sca p. 12, Gambling losses, \"You can deduct gambling losses only to the extent of gambling winnings\".",
-   "context": "733ce47c31cdcc4a067970f27e9272bfce6a0d2daabd2ce414866fe24f4fac82",
-   "date": "2026-11-14",
-   "run": "c7d048be9648f556bfdf2cedae3ef7b53e3243f6948db5e039213714e14e9b93",
-   "subject_key": "2fe3b90f97ffaea16afbe71c27d97fc3353a70fda96de3ebeae35bcee5fafe25",
+   "ruling": "Ruling: equivalent; project retained. With no gambling winnings line 8b is zero, so the smaller of the losses and line 8b is zero, which the project writes as an explicit zero; with winnings both give the losses up to line 8b (i1040sca p. 11, Other Itemized Deductions, gambling losses 'but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b'). The project's guard reads s1.gambling_winnings, which s1.line8b copies. Same disagreement as ruled before; re-reviewed only as a reader of the changed lines. No change to the data.",
+   "context": "2c9159e0136e0c557ecc6a761c45ae9a7fc191afd5f4d3ba5806cb1acc2b2914",
+   "date": "2026-11-23",
+   "run": "512872ba1f263469ba69d62c15fc987b3b7d0eabe679df1fe07a3551691fe820",
+   "subject_key": "dd50fc26fd196380d75e689d50342996f5ae966fb143d019d6cd00fa3942e33e",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -178,19 +198,15 @@
      "fixture:classm.eic.7.deepseek@sa",
      "fixture:classm.f5329.3.deepseek@sa",
      "fixture:classm.dcprov.1@sa",
-     "fixture:classm.s1.2@sa",
-     "fixture:classm.sales.2@sa",
-     "fixture:classm.sc.2@sa",
-     "fixture:classm.dependent.1@sa",
-     "fixture:classm.dependent.4@sa",
-     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@sa",
+     "fixture:classm.f4952.2@sa",
+     "fixture:classm.f4952.3@sa",
+     "fixture:classm.gift.1@sa",
+     "fixture:t264.eic.show5_agi_open_married_child@sa",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sa",
+     "fixture:stage16.cleanup.refuse.f1040_line16@sa",
+     "fixture:stage16.cleanup.refuse.scope_credits@sa",
      "fixture:mutation.t2.no_itemize_f8960_9a@sa",
-     "fixture:mutation.m3.sd.other_forms_casualty@sa",
-     "fixture:redesign.credits.refuse.repaid_income@sa",
-     "generated:20261026.26@sa",
-     "generated:20261026.51@sa",
-     "generated:20261026.66@sa",
-     "generated:20261026.182@sa"
+     "fixture:redesign.credits.refuse.repaid_income@sa"
     ],
     "policy": "executable-triage-v2"
    }
@@ -513,6 +529,38 @@
    }
   },
   {
+   "printed": "5b",
+   "project_expr_sha256": "a07c420e967e810b95135a72f328f4693795b4473f4f7ea6b04088d5fdd16d3b",
+   "second_expr_sha256": "bfdf377b04b6084e9c0a26845b0b265ec9bc38a10d847571aeb2c341143d9a3e",
+   "ruling": "Ruling: representation; project retained. i1040sca p. 6, Line 5b, 'Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business'; p527 p. 25, Personal Use of Dwelling Unit (Including Vacation Home), 'Only your rental expenses may be deducted on Schedule E (Form 1040). Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize your deductions'. The reply takes the filer's line 5b answer (less the part left out) and nothing else. The project asks the filer to leave out the tax on a property rented out for 15 days or more (except days it was the filer's home before or after renting it) and adds, for each rental reported on Schedule E, the part of its tax not taken there (rental.amt16 less rental.line16; BUG-1203), so the same tax is neither counted twice nor lost. With no reported rental, or one with no personal use, the two agree (fixture fxi.rental_tax_personal_to_5b shows the difference: $142.86 added). No change to the data.",
+   "context": "2c9159e0136e0c557ecc6a761c45ae9a7fc191afd5f4d3ba5806cb1acc2b2914",
+   "date": "2026-11-23",
+   "run": "512872ba1f263469ba69d62c15fc987b3b7d0eabe679df1fe07a3551691fe820",
+   "subject_key": "68ce313ff0ef28080871e8813b2b392bc6126e2ce095e5ec9c07f7b09d7e3173",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@sa",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sa",
+     "fixture:stage16.cleanup.refuse.f1040_line16@sa",
+     "fixture:stage16.cleanup.refuse.scope_credits@sa",
+     "fixture:mexist.f8960.line5d.no_gains@sa",
+     "fixture:mutation.t2.mfj_no_overtime_part3@sa",
+     "fixture:x1sche.f8.personal_use_not_home@sa",
+     "fixture:x1sche.f16.home_test_edges@sa",
+     "fixture:x1sche.f17.home_tenth_edge@sa",
+     "fixture:x1sche.f18.home_refused@sa",
+     "fixture:x1sche.f19.overlap_days@sa",
+     "fixture:mrental.rental.shared_costs_divided@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "5c",
    "project_expr_sha256": "e3c744595b461d4ef6f79caea7e7f676d079097c87fb76b562b53d53f33ddfd8",
    "second_expr_sha256": "86c56fa04d559202bedf82fd7acf91ddcd43d3785670c1e024681d7c394bf37c",
@@ -760,6 +808,52 @@
      "fixture:dep.qss_refused@sa",
      "fixture:mexist.sa.itemizes.qss_dependent@sa",
      "fixture:sa.refuse.mfs_joint_paid@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sa.deduction",
+   "project_expr_sha256": "a0120d3b9cd12e82d0c6baace3effbc075c5dc6ffa091455447e8c7ab4f2fffe",
+   "second_expr_sha256": "c13335c87f34a02df1efabd1791a3c031dd0b231adc7a7ba4ff2c88b159f3eb3",
+   "ruling": "Ruling: representation; project retained. Both select line 17 when itemizing is elected, when a separate-return spouse itemizes, or when line 17 is more than the standard deduction, and the standard deduction otherwise (i1040gi p. 34, Line 12e; p. 33, Line 12b; f1040sa line 18); the reply writes it as the larger of the two unless the election is made, which gives the same amount on a tie. As ruled before, the reply reads the spouse-itemizes answer outside the separate-return gate. This pass reviewed the line because lane fx-itemized added the refusal sa.charity_over_if_itemizing (Pub. 526 p. 22, no more than 60% of AGI; p. 25, capital gain property 30%), which is not part of the compared expression. No change to the data.",
+   "context": "2c9159e0136e0c557ecc6a761c45ae9a7fc191afd5f4d3ba5806cb1acc2b2914",
+   "date": "2026-11-23",
+   "run": "512872ba1f263469ba69d62c15fc987b3b7d0eabe679df1fe07a3551691fe820",
+   "subject_key": "2d729fa1d93488cbd4f68d605ece89c204309353d5c6d138f448c6c887a1de2b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@sa",
+     "fixture:classm.f2441.4.deepseek@sa",
+     "fixture:classm.f2441.5.deepseek@sa",
+     "fixture:classm.f8960.1.deepseek@sa",
+     "fixture:classm.f8960.2.deepseek@sa",
+     "fixture:classm.clcw.2.deepseek@sa",
+     "fixture:classm.clcw.4.deepseek@sa",
+     "fixture:classm.clcw_next_year.1.deepseek@sa",
+     "fixture:classm.clcw_next_year.2.deepseek@sa",
+     "fixture:classm.s3.2.deepseek@sa",
+     "fixture:classm.f8962.1.deepseek@sa",
+     "fixture:classm.f8962.3.deepseek@sa",
+     "fixture:classm.f1040.4.deepseek@sa",
+     "fixture:classm.dependent.5.deepseek@sa",
+     "fixture:classm.carloan.1@sa",
+     "fixture:classm.carloan.3@sa",
+     "fixture:classm.clcw.2@sa",
+     "fixture:t264.f4952.unsupported_with_interest@sa",
+     "fixture:mutation.t2.eic.mfs_child_line5_skip@sa",
+     "partial:stage14.asset.hy_5yr-sa.excluded_income@sa",
+     "partial:stage14.asset.hy_5yr-sa.sales_tax_wish@sa",
+     "partial:stage14.asset.bonus_100-sa.excluded_income@sa",
+     "partial:stage14.asset.bonus_100-sa.sales_tax_wish@sa",
+     "partial:stage14.asset.prior_7yr-sa.excluded_income@sa"
     ],
     "policy": "executable-triage-v2"
    }

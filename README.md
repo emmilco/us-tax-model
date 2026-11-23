@@ -152,9 +152,9 @@ forms are wrong about the law, so is this.
 The instructions are sometimes silent, ambiguous, or in tension with themselves. Does "wages" for the
 excess Social Security credit mean W-2 box 1, or boxes 3 and 7? When multiplying by a rate yields a
 fraction of a cent, which way does it round? Every such question is an entry in
-[`ambiguities/2025.yaml`](ambiguities/2025.yaml), <!-- figures:readme-ambiguities -->154 so far<!-- /figures:readme-ambiguities -->, recording the text at issue, the
+[`ambiguities/2025.yaml`](ambiguities/2025.yaml), <!-- figures:readme-ambiguities -->156 so far<!-- /figures:readme-ambiguities -->, recording the text at issue, the
 candidate readings, the reading chosen and the reason. When an entry is linked to a line that touches
-your return, the values sheet shows the reading chosen; <!-- figures:readme-ambiguities-linked -->150 of the 154 entries are linked that way; each of the others says why it stands unlinked<!-- /figures:readme-ambiguities-linked -->.
+your return, the values sheet shows the reading chosen; <!-- figures:readme-ambiguities-linked -->152 of the 156 entries are linked that way; each of the others says why it stands unlinked<!-- /figures:readme-ambiguities-linked -->.
 
 ### Where the scope runs out
 
@@ -179,7 +179,7 @@ the instruction that requires it.
 | **Credits** | ✓ The child tax credit, the earned income credit, and the child and dependent care, education, saver's, home energy and premium tax credits | ✗ Other credits, such as the adoption, clean vehicle, elderly or disabled, or business credits: 0.9% of returns |
 | **Foreign** | ✓ Foreign tax on investment income, within the small-amount election | ✗ Foreign accounts or assets that require an FBAR or Form 8938: not measured |
 
-Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 336 situations the tool refuses, and says exactly what this table leaves out.
+Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 337 situations the tool refuses, and says exactly what this table leaves out.
 <!-- coverage-tree:end -->
 
 ### Exact arithmetic
@@ -262,7 +262,7 @@ prepared, and the instruction behind it.
 
 **What it earns.** Every number traces to a cited place on an archived IRS page, pinned by content hash,
 usually with the governing sentence quoted. A
-citation checker verifies every quote and locator against the archived text: <!-- figures:readme-citations -->7,580 anchors and 8,347 quotes<!-- /figures:readme-citations -->,
+citation checker verifies every quote and locator against the archived text: <!-- figures:readme-citations -->7,514 anchors and 8,265 quotes<!-- /figures:readme-citations -->,
 with no finding left unruled.
 
 **Where it stops.** A citation proves that a line points at a page. It does not prove that the line
@@ -392,7 +392,7 @@ Around the stack sit tests of whether the tests are any good.
   arithmetic ("Add lines 1 through 3") must match the line's operands, a limit sentence ("can't be more
   than") must be tied to the line that enforces it, and four more of the kind. Findings that predate a
   check are held in a baseline and come due when the line they concern changes.
-- **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (<!-- figures:readme-bugs -->1,172 so far<!-- /figures:readme-bugs -->)
+- **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (<!-- figures:readme-bugs -->1,224 so far<!-- /figures:readme-bugs -->)
   with how it was caught, its root cause, and *why the existing checks missed it*. It is
   append-only; the suite fails if its committed history changes.
 - **The commit guard.** A git hook, enabled per clone, refuses any commit whose tree is not exactly a

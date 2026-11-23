@@ -42,12 +42,12 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$67.00",
    "model": "$66.60",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): the engine rounds the NYC school tax credit rate-reduction computation (IT-201-I web edition, \"Calculation of NYC school tax credit (rate reduction amount)\": \"0.171% of taxable income\" / \"$21 plus 0.228% of the excess over $12,000\" / \"$37 plus 0.228% of the excess over $21,600\") half-up to the dollar where it is computed ($67.00); the reply carries cents ($66.60) on this helper and rounds only on the printed line, the register's third reading. The source says only \"enter whole dollar amounts\" (IT-201-I p. 2); adding a whole-dollar base or taking the smaller with $125 commutes with half-up rounding, so the readings cannot differ on a printed line, and in this case line 69a agrees. Dropped: the cents value is not the engine's helper under the chosen reading.",
-   "drop": true,
-   "context": "20b5a3830a3248022321ee4ab101f4df1b67812c50e2d5a01be407fc7c5a6c69",
-   "date": "2026-11-14",
-   "run": "7b67a48bf4f3d8cf979a2788cd919aef20e5e43f5e2d8b830b8281a46ab6add7",
-   "subject_key": "3072f4e3aa02d5fdfcd3f0281876db884dbc58d1a89caf4a5d468c5cd2fde6b3"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "7cdb885a25898b84b0fbbb27cf266856f2682f38983f1c09d2f4c67a07b3b602",
+   "subject_key": "469bf3cb42aa45ad02cb10e71dcaf5e3320437d1222f9590131717a8ff412e7e",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.1",
@@ -78,24 +78,24 @@
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$46.00",
    "model": "$45.60",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): the engine rounds the NYC school tax credit rate-reduction computation (IT-201-I web edition, \"Calculation of NYC school tax credit (rate reduction amount)\": \"0.171% of taxable income\" / \"$21 plus 0.228% of the excess over $12,000\" / \"$37 plus 0.228% of the excess over $21,600\") half-up to the dollar where it is computed ($46.00); the reply carries cents ($45.60) on this helper and rounds only on the printed line, the register's third reading. The source says only \"enter whole dollar amounts\" (IT-201-I p. 2); adding a whole-dollar base or taking the smaller with $125 commutes with half-up rounding, so the readings cannot differ on a printed line, and in this case line 69a agrees. Dropped: the cents value is not the engine's helper under the chosen reading.",
-   "drop": true,
-   "context": "20b5a3830a3248022321ee4ab101f4df1b67812c50e2d5a01be407fc7c5a6c69",
-   "date": "2026-11-14",
-   "run": "7b67a48bf4f3d8cf979a2788cd919aef20e5e43f5e2d8b830b8281a46ab6add7",
-   "subject_key": "d5733a94b368b9cf98e703090b824dd8b60154ba456a1556a251094025986119"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "7cdb885a25898b84b0fbbb27cf266856f2682f38983f1c09d2f4c67a07b3b602",
+   "subject_key": "bfb62252ab4feff9cea6adec240b4dcf98266eb124cc524837ca019b0f59e8fa",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.1",
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$67.00",
    "model": "$66.60",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): the engine rounds the NYC school tax credit rate-reduction computation (IT-201-I web edition, \"Calculation of NYC school tax credit (rate reduction amount)\": \"0.171% of taxable income\" / \"$21 plus 0.228% of the excess over $12,000\" / \"$37 plus 0.228% of the excess over $21,600\") half-up to the dollar where it is computed ($67.00); the reply carries cents ($66.60) on this helper and rounds only on the printed line, the register's third reading. The source says only \"enter whole dollar amounts\" (IT-201-I p. 2); adding a whole-dollar base or taking the smaller with $125 commutes with half-up rounding, so the readings cannot differ on a printed line, and in this case line 69a agrees. Dropped: the cents value is not the engine's helper under the chosen reading.",
-   "drop": true,
-   "context": "20b5a3830a3248022321ee4ab101f4df1b67812c50e2d5a01be407fc7c5a6c69",
-   "date": "2026-11-14",
-   "run": "7b67a48bf4f3d8cf979a2788cd919aef20e5e43f5e2d8b830b8281a46ab6add7",
-   "subject_key": "7c22fe505d3763807b6e11af70f1f61ab5bf5b55b0ab53997b1ca89b455da35c"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "7cdb885a25898b84b0fbbb27cf266856f2682f38983f1c09d2f4c67a07b3b602",
+   "subject_key": "c3d126662308e2ec255f1149b3d0c9e7762fa2aa50580b96940ccb7e6579da7b",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.1",
@@ -388,12 +388,12 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$21.00",
    "model": "$20.52",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "0a1c34ec1e5944eb5cfcca9d5898972d4ccfd2a08c05768ee278f28383fb77c6",
-   "subject_key": "48a5ab54a0146bfd438e958868f859258629c50ffb1a722406bcdb21b402ecd6"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "34c47ac7b0bbcb836767e6734bcf93089b6fdd713d43b199ee82c371bef730e6",
+   "subject_key": "469bf3cb42aa45ad02cb10e71dcaf5e3320437d1222f9590131717a8ff412e7e",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.2",
@@ -448,12 +448,12 @@
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$21.00",
    "model": "$20.52",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "0a1c34ec1e5944eb5cfcca9d5898972d4ccfd2a08c05768ee278f28383fb77c6",
-   "subject_key": "de55f131929faf57b3c7f1cfadad202093acb2d70b339fbbd8384e6b11ee3d13"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "34c47ac7b0bbcb836767e6734bcf93089b6fdd713d43b199ee82c371bef730e6",
+   "subject_key": "091881594c0efdde5cfa15e692c1df1118567d5f8a358c302ab9b344c1df44b7",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.2",
@@ -508,12 +508,12 @@
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$5.00",
    "model": "$4.91",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "0a1c34ec1e5944eb5cfcca9d5898972d4ccfd2a08c05768ee278f28383fb77c6",
-   "subject_key": "a5aac486bbc4abfdcc643bb3c19470607cf343ea3ae6c025783e2fe9ec8d5f4b"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "34c47ac7b0bbcb836767e6734bcf93089b6fdd713d43b199ee82c371bef730e6",
+   "subject_key": "6750927446f8440c05182fa1ae813bd88f807b2ca7acc337d51cb60e9390dcf9",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.2",
@@ -532,12 +532,12 @@
    "printed": "(chart) (ny_it201.sut.top_product)",
    "project": "$5.00",
    "model": "$4.91",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "0a1c34ec1e5944eb5cfcca9d5898972d4ccfd2a08c05768ee278f28383fb77c6",
-   "subject_key": "4f098d57137edd302c8d8b931fd69cb48c77c035e4ec01b3c0750a84f43472a4"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "34c47ac7b0bbcb836767e6734bcf93089b6fdd713d43b199ee82c371bef730e6",
+   "subject_key": "3f66f9f8d4223a675fe01f4066a00300e824e074eae710c19cc8dfb02a8e335d",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.2",
@@ -890,48 +890,48 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$78.00",
    "model": "$77.77",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): the engine rounds the NYC school tax credit rate-reduction computation (IT-201-I web edition, \"Calculation of NYC school tax credit (rate reduction amount)\": \"0.171% of taxable income\" / \"$21 plus 0.228% of the excess over $12,000\" / \"$37 plus 0.228% of the excess over $21,600\") half-up to the dollar where it is computed ($78.00); the reply carries cents ($77.77) on this helper and rounds only on the printed line, the register's third reading. The source says only \"enter whole dollar amounts\" (IT-201-I p. 2); adding a whole-dollar base or taking the smaller with $125 commutes with half-up rounding, so the readings cannot differ on a printed line, and in this case line 69a agrees. Dropped: the cents value is not the engine's helper under the chosen reading.",
-   "drop": true,
-   "context": "20b5a3830a3248022321ee4ab101f4df1b67812c50e2d5a01be407fc7c5a6c69",
-   "date": "2026-11-14",
-   "run": "b32adc6aa8f7343b11a5be6e1ae902c1f81fb8324d0e92f27ef4127c6bc54a81",
-   "subject_key": "3072f4e3aa02d5fdfcd3f0281876db884dbc58d1a89caf4a5d468c5cd2fde6b3"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "294210deb2bafd948e47115c91518dfb2bfcc12ed90f380e8686710df0ed46a5",
+   "subject_key": "469bf3cb42aa45ad02cb10e71dcaf5e3320437d1222f9590131717a8ff412e7e",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.3",
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$57.00",
    "model": "$56.77",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): the engine rounds the NYC school tax credit rate-reduction computation (IT-201-I web edition, \"Calculation of NYC school tax credit (rate reduction amount)\": \"0.171% of taxable income\" / \"$21 plus 0.228% of the excess over $12,000\" / \"$37 plus 0.228% of the excess over $21,600\") half-up to the dollar where it is computed ($57.00); the reply carries cents ($56.77) on this helper and rounds only on the printed line, the register's third reading. The source says only \"enter whole dollar amounts\" (IT-201-I p. 2); adding a whole-dollar base or taking the smaller with $125 commutes with half-up rounding, so the readings cannot differ on a printed line, and in this case line 69a agrees. Dropped: the cents value is not the engine's helper under the chosen reading.",
-   "drop": true,
-   "context": "20b5a3830a3248022321ee4ab101f4df1b67812c50e2d5a01be407fc7c5a6c69",
-   "date": "2026-11-14",
-   "run": "b32adc6aa8f7343b11a5be6e1ae902c1f81fb8324d0e92f27ef4127c6bc54a81",
-   "subject_key": "d5733a94b368b9cf98e703090b824dd8b60154ba456a1556a251094025986119"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "294210deb2bafd948e47115c91518dfb2bfcc12ed90f380e8686710df0ed46a5",
+   "subject_key": "bfb62252ab4feff9cea6adec240b4dcf98266eb124cc524837ca019b0f59e8fa",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.3",
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$78.00",
    "model": "$77.77",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): the engine rounds the NYC school tax credit rate-reduction computation (IT-201-I web edition, \"Calculation of NYC school tax credit (rate reduction amount)\": \"0.171% of taxable income\" / \"$21 plus 0.228% of the excess over $12,000\" / \"$37 plus 0.228% of the excess over $21,600\") half-up to the dollar where it is computed ($78.00); the reply carries cents ($77.77) on this helper and rounds only on the printed line, the register's third reading. The source says only \"enter whole dollar amounts\" (IT-201-I p. 2); adding a whole-dollar base or taking the smaller with $125 commutes with half-up rounding, so the readings cannot differ on a printed line, and in this case line 69a agrees. Dropped: the cents value is not the engine's helper under the chosen reading.",
-   "drop": true,
-   "context": "20b5a3830a3248022321ee4ab101f4df1b67812c50e2d5a01be407fc7c5a6c69",
-   "date": "2026-11-14",
-   "run": "b32adc6aa8f7343b11a5be6e1ae902c1f81fb8324d0e92f27ef4127c6bc54a81",
-   "subject_key": "7c22fe505d3763807b6e11af70f1f61ab5bf5b55b0ab53997b1ca89b455da35c"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "294210deb2bafd948e47115c91518dfb2bfcc12ed90f380e8686710df0ed46a5",
+   "subject_key": "c3d126662308e2ec255f1149b3d0c9e7762fa2aa50580b96940ccb7e6579da7b",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.3",
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$63.00",
    "model": "$63.10",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), Line 69a, \"Calculation of NYC school tax credit (rate reduction amount) for single ① and married filing separately ③\", \"0.171% of taxable income\" on New York City taxable income of $36,900 (a helper of the row this return does not take, line 47 being over $12,000): exactly $63.099, which the project rounds half-up to $63.00; the model's $63.10 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries p. 7's \"Enter only whole dollar amounts on your New York return.\" but neither p. 2's rounding rule nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.)",
-   "drop": true,
-   "context": "946fbff8b4b396360da80dc32d6a74abdd746d5328844c7df2a444c5ad41834d",
-   "date": "2026-11-07",
-   "run": "cf0b6d1b70fd54e62c7a6210ebc2fb37a5ce53db143766e94f0e1c1750d113e1",
-   "subject_key": "721a3a4a6c4167e4093dc2418862cbdf1552b9dbc67eef440039b39850e66d58"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "294210deb2bafd948e47115c91518dfb2bfcc12ed90f380e8686710df0ed46a5",
+   "subject_key": "091881594c0efdde5cfa15e692c1df1118567d5f8a358c302ab9b344c1df44b7",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.3",
@@ -988,9 +988,9 @@
    "model": "$3,100.00",
    "ruling": "Ruling: representation; project retained. The helper ny_it201.std_deduction is the standard deduction table's row for the filing status alone (\"① Single and you marked item C No | $8,000\"); the item C Yes row (\"① Single and you marked item C Yes | $3,100\") is the separate helper ny_it201.std_deduction_dependent, and line 34 takes it: line 34 is $3,100 on both sides (IT-201-I web edition, New York State standard deduction table). The model put line 34's amount in the status helper. Dropped from the fixture as not evidence. (carried over from reviews/ny/2025/classm/ny_it201.md at bdac4121, review of 2026-11-05)",
    "drop": true,
-   "context": "20b5a3830a3248022321ee4ab101f4df1b67812c50e2d5a01be407fc7c5a6c69",
-   "date": "2026-11-14",
-   "run": "b32adc6aa8f7343b11a5be6e1ae902c1f81fb8324d0e92f27ef4127c6bc54a81",
+   "context": "0c810c94bf107bd0b4a4c6d566cd7efcacfc4ceae94317f0166a126f98112849",
+   "date": "2026-11-22",
+   "run": "10d64e2c07341cb51c87aa6ac8cc95cb688e2a74f3887febf2e54984e57bd150",
    "subject_key": "47af3ca1fa78ae1d7b02512624a9ac52168068371e0e087b1663e1fc41079fd3"
   },
   {
@@ -1308,36 +1308,36 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$85.00",
    "model": "$84.84",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "93157f69954a41e6857248123e59dcc5981474414b0e0280887fb82e682873e9",
-   "subject_key": "48a5ab54a0146bfd438e958868f859258629c50ffb1a722406bcdb21b402ecd6"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "c7573ced62ca2449cc86a4d021f2f5d7a22b2e076f17f1f9edd17fb11a5ef49b",
+   "subject_key": "469bf3cb42aa45ad02cb10e71dcaf5e3320437d1222f9590131717a8ff412e7e",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$64.00",
    "model": "$63.84",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "93157f69954a41e6857248123e59dcc5981474414b0e0280887fb82e682873e9",
-   "subject_key": "91d672b480064348a5a1e467ac875ee210260c9be700957bc7056d9006c2be89"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "c7573ced62ca2449cc86a4d021f2f5d7a22b2e076f17f1f9edd17fb11a5ef49b",
+   "subject_key": "bfb62252ab4feff9cea6adec240b4dcf98266eb124cc524837ca019b0f59e8fa",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$85.00",
    "model": "$84.84",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "93157f69954a41e6857248123e59dcc5981474414b0e0280887fb82e682873e9",
-   "subject_key": "3f2829fd8ade0d7b4ce45d849d442a4575166f36ec6f816997cb4c989a8e5370"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "c7573ced62ca2449cc86a4d021f2f5d7a22b2e076f17f1f9edd17fb11a5ef49b",
+   "subject_key": "c3d126662308e2ec255f1149b3d0c9e7762fa2aa50580b96940ccb7e6579da7b",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.4",
@@ -1356,12 +1356,12 @@
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$68.00",
    "model": "$68.40",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $68.40 (0.171% x 40,000) is the same computation kept in cents; the project's $68.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
+   "context": "0c810c94bf107bd0b4a4c6d566cd7efcacfc4ceae94317f0166a126f98112849",
    "date": "2026-11-22",
-   "run": "93157f69954a41e6857248123e59dcc5981474414b0e0280887fb82e682873e9",
-   "subject_key": "de55f131929faf57b3c7f1cfadad202093acb2d70b339fbbd8384e6b11ee3d13"
+   "run": "1279896db39e60b2754bf359e5b6e0723fec8f54b3f4ae2c15dc2eb9d1615898",
+   "subject_key": "3e7a3de8e2b8ed8f064b06bd70ef4797888758ee540b6aa116f844b7877e1172"
   },
   {
    "case": "classm.ny_it201.4",
@@ -1404,12 +1404,12 @@
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$8.00",
    "model": "$8.40",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "93157f69954a41e6857248123e59dcc5981474414b0e0280887fb82e682873e9",
-   "subject_key": "a5aac486bbc4abfdcc643bb3c19470607cf343ea3ae6c025783e2fe9ec8d5f4b"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "c7573ced62ca2449cc86a4d021f2f5d7a22b2e076f17f1f9edd17fb11a5ef49b",
+   "subject_key": "6750927446f8440c05182fa1ae813bd88f807b2ca7acc337d51cb60e9390dcf9",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.4",
@@ -1428,12 +1428,12 @@
    "printed": "(chart) (ny_it201.sut.top_product)",
    "project": "$8.00",
    "model": "$8.40",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "93157f69954a41e6857248123e59dcc5981474414b0e0280887fb82e682873e9",
-   "subject_key": "4f098d57137edd302c8d8b931fd69cb48c77c035e4ec01b3c0750a84f43472a4"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "c7573ced62ca2449cc86a4d021f2f5d7a22b2e076f17f1f9edd17fb11a5ef49b",
+   "subject_key": "3f66f9f8d4223a675fe01f4066a00300e824e074eae710c19cc8dfb02a8e335d",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.4",
@@ -1787,12 +1787,12 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$85.00",
    "model": "$84.84",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "437808be2e199abcccac3f7751b4a754c64f6f750d3acafae13f303337b14b0b",
-   "subject_key": "48a5ab54a0146bfd438e958868f859258629c50ffb1a722406bcdb21b402ecd6"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "63d9089b7d173fc4706b16b4e868b5e8cd1dcacb8396208b4d41b3e6fc15fe0d",
+   "subject_key": "469bf3cb42aa45ad02cb10e71dcaf5e3320437d1222f9590131717a8ff412e7e",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.5",
@@ -1823,12 +1823,12 @@
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$64.00",
    "model": "$63.84",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "437808be2e199abcccac3f7751b4a754c64f6f750d3acafae13f303337b14b0b",
-   "subject_key": "91d672b480064348a5a1e467ac875ee210260c9be700957bc7056d9006c2be89"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "63d9089b7d173fc4706b16b4e868b5e8cd1dcacb8396208b4d41b3e6fc15fe0d",
+   "subject_key": "bfb62252ab4feff9cea6adec240b4dcf98266eb124cc524837ca019b0f59e8fa",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.5",
@@ -1859,12 +1859,12 @@
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$85.00",
    "model": "$84.84",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "437808be2e199abcccac3f7751b4a754c64f6f750d3acafae13f303337b14b0b",
-   "subject_key": "3f2829fd8ade0d7b4ce45d849d442a4575166f36ec6f816997cb4c989a8e5370"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "63d9089b7d173fc4706b16b4e868b5e8cd1dcacb8396208b4d41b3e6fc15fe0d",
+   "subject_key": "c3d126662308e2ec255f1149b3d0c9e7762fa2aa50580b96940ccb7e6579da7b",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.5",
@@ -1895,12 +1895,12 @@
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$68.00",
    "model": "$68.40",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $68.40 (40000 x 0.00171; not used because TI > 12000) is the same computation kept in cents; the project's $68.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
+   "context": "0c810c94bf107bd0b4a4c6d566cd7efcacfc4ceae94317f0166a126f98112849",
    "date": "2026-11-22",
-   "run": "437808be2e199abcccac3f7751b4a754c64f6f750d3acafae13f303337b14b0b",
-   "subject_key": "de55f131929faf57b3c7f1cfadad202093acb2d70b339fbbd8384e6b11ee3d13"
+   "run": "0d7baa183c2643e99298f1f8195e78c09279a300cf0f0be7cecc959cb7551386",
+   "subject_key": "3e7a3de8e2b8ed8f064b06bd70ef4797888758ee540b6aa116f844b7877e1172"
   },
   {
    "case": "classm.ny_it201.5",
@@ -1931,12 +1931,12 @@
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$8.00",
    "model": "$8.40",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "437808be2e199abcccac3f7751b4a754c64f6f750d3acafae13f303337b14b0b",
-   "subject_key": "a5aac486bbc4abfdcc643bb3c19470607cf343ea3ae6c025783e2fe9ec8d5f4b"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "63d9089b7d173fc4706b16b4e868b5e8cd1dcacb8396208b4d41b3e6fc15fe0d",
+   "subject_key": "6750927446f8440c05182fa1ae813bd88f807b2ca7acc337d51cb60e9390dcf9",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.5",
@@ -1955,12 +1955,12 @@
    "printed": "(chart) (ny_it201.sut.top_product)",
    "project": "$8.00",
    "model": "$8.40",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "437808be2e199abcccac3f7751b4a754c64f6f750d3acafae13f303337b14b0b",
-   "subject_key": "4f098d57137edd302c8d8b931fd69cb48c77c035e4ec01b3c0750a84f43472a4"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "63d9089b7d173fc4706b16b4e868b5e8cd1dcacb8396208b4d41b3e6fc15fe0d",
+   "subject_key": "3f66f9f8d4223a675fe01f4066a00300e824e074eae710c19cc8dfb02a8e335d",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.5",
@@ -2181,12 +2181,12 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$75.00",
    "model": "$75.02",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "b11336b07808109b76c4c4b69b62ae8320e61ba97f72576053ad7b969a616797",
-   "subject_key": "48a5ab54a0146bfd438e958868f859258629c50ffb1a722406bcdb21b402ecd6"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "03aea6e8a8e595d7c541371c4c5f0615eb950c9beb8283749ff141172e6f2c9d",
+   "subject_key": "469bf3cb42aa45ad02cb10e71dcaf5e3320437d1222f9590131717a8ff412e7e",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.6",
@@ -2205,12 +2205,12 @@
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$38.00",
    "model": "$38.02",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "b11336b07808109b76c4c4b69b62ae8320e61ba97f72576053ad7b969a616797",
-   "subject_key": "91d672b480064348a5a1e467ac875ee210260c9be700957bc7056d9006c2be89"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "03aea6e8a8e595d7c541371c4c5f0615eb950c9beb8283749ff141172e6f2c9d",
+   "subject_key": "bfb62252ab4feff9cea6adec240b4dcf98266eb124cc524837ca019b0f59e8fa",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.6",
@@ -2253,12 +2253,12 @@
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$75.00",
    "model": "$75.02",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "b11336b07808109b76c4c4b69b62ae8320e61ba97f72576053ad7b969a616797",
-   "subject_key": "3f2829fd8ade0d7b4ce45d849d442a4575166f36ec6f816997cb4c989a8e5370"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "03aea6e8a8e595d7c541371c4c5f0615eb950c9beb8283749ff141172e6f2c9d",
+   "subject_key": "c3d126662308e2ec255f1149b3d0c9e7762fa2aa50580b96940ccb7e6579da7b",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.6",
@@ -2289,12 +2289,12 @@
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$65.00",
    "model": "$65.45",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "b11336b07808109b76c4c4b69b62ae8320e61ba97f72576053ad7b969a616797",
-   "subject_key": "de55f131929faf57b3c7f1cfadad202093acb2d70b339fbbd8384e6b11ee3d13"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "03aea6e8a8e595d7c541371c4c5f0615eb950c9beb8283749ff141172e6f2c9d",
+   "subject_key": "091881594c0efdde5cfa15e692c1df1118567d5f8a358c302ab9b344c1df44b7",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.6",
@@ -2325,12 +2325,12 @@
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$10.00",
    "model": "$9.51",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "b11336b07808109b76c4c4b69b62ae8320e61ba97f72576053ad7b969a616797",
-   "subject_key": "a5aac486bbc4abfdcc643bb3c19470607cf343ea3ae6c025783e2fe9ec8d5f4b"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "03aea6e8a8e595d7c541371c4c5f0615eb950c9beb8283749ff141172e6f2c9d",
+   "subject_key": "6750927446f8440c05182fa1ae813bd88f807b2ca7acc337d51cb60e9390dcf9",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.6",
@@ -2361,12 +2361,12 @@
    "printed": "(chart) (ny_it201.sut.top_product)",
    "project": "$10.00",
    "model": "$9.51",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "b11336b07808109b76c4c4b69b62ae8320e61ba97f72576053ad7b969a616797",
-   "subject_key": "4f098d57137edd302c8d8b931fd69cb48c77c035e4ec01b3c0750a84f43472a4"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "03aea6e8a8e595d7c541371c4c5f0615eb950c9beb8283749ff141172e6f2c9d",
+   "subject_key": "3f66f9f8d4223a675fe01f4066a00300e824e074eae710c19cc8dfb02a8e335d",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.6",
@@ -2720,48 +2720,48 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$136.00",
    "model": "$135.95",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "166efd8c95bcf98238fe58b6b4bd571c484d5bbe7aa528ae0e3114af92bcd8e0",
-   "subject_key": "48a5ab54a0146bfd438e958868f859258629c50ffb1a722406bcdb21b402ecd6"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "82550198daf35ed85bb46a9b1b067b1b86bab59eae4b8b83bfd724994de5235a",
+   "subject_key": "469bf3cb42aa45ad02cb10e71dcaf5e3320437d1222f9590131717a8ff412e7e",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.7",
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$99.00",
    "model": "$98.95",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "166efd8c95bcf98238fe58b6b4bd571c484d5bbe7aa528ae0e3114af92bcd8e0",
-   "subject_key": "91d672b480064348a5a1e467ac875ee210260c9be700957bc7056d9006c2be89"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "82550198daf35ed85bb46a9b1b067b1b86bab59eae4b8b83bfd724994de5235a",
+   "subject_key": "bfb62252ab4feff9cea6adec240b4dcf98266eb124cc524837ca019b0f59e8fa",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.7",
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$136.00",
    "model": "$135.95",
-   "ruling": "Ruling: model error; the model kept cents where the return is in whole dollars: ny_it201i p. 2, Entering whole dollar amounts, \"enter whole dollar amounts only ... round cents to the nearest dollar ... Increase amounts that are 50 cents or more to the next dollar\"; the project rounds each amount half up, and the model's unrounded figure rounds to the project's",
-   "drop": true,
-   "context": "c6ed399b478d7ecc2ab69017dcef3280bb05ddf2cd0cf141ac1b5400fe72705a",
-   "date": "2026-11-22",
-   "run": "166efd8c95bcf98238fe58b6b4bd571c484d5bbe7aa528ae0e3114af92bcd8e0",
-   "subject_key": "3f2829fd8ade0d7b4ce45d849d442a4575166f36ec6f816997cb4c989a8e5370"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "82550198daf35ed85bb46a9b1b067b1b86bab59eae4b8b83bfd724994de5235a",
+   "subject_key": "c3d126662308e2ec255f1149b3d0c9e7762fa2aa50580b96940ccb7e6579da7b",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.7",
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$111.00",
    "model": "$111.15",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), Line 69a, \"0.171% of taxable income\": $64,999 x 0.171% = $111.15, which the project rounds to $111.00 and the model keeps in cents. On a joint return this low-band helper is not read (line 47 is over the bracket amount; ny_it201.stc_rr is the high-band $136.00). As the earlier rulings of this line on cases 1, 3 and 5.",
-   "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "49a09e6c496904ee7e03b0400253b8372e68ef17b348acf7b8fa78b8b17a8d79",
-   "subject_key": "fad51d9280209a074f9e9db73be1c7460bbebb68fe7868e787b27dfe63b4d0c3"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "82550198daf35ed85bb46a9b1b067b1b86bab59eae4b8b83bfd724994de5235a",
+   "subject_key": "091881594c0efdde5cfa15e692c1df1118567d5f8a358c302ab9b344c1df44b7",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.7",
@@ -2780,24 +2780,24 @@
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$14.00",
    "model": "$14.18",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The sales and use tax chart's top row, 0.0175% (0.000175) of income, on federal adjusted gross income (line 19) of $81,049: exactly $14.183575, which the project rounds half-up to $14.00 (under the $125 cap); the model's $14.18 keeps cents. Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
-   "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "49a09e6c496904ee7e03b0400253b8372e68ef17b348acf7b8fa78b8b17a8d79",
-   "subject_key": "5fd2ffbe907e923241106ed0454f0f95eb79897adac57751971d1ce1e59efc8f"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "82550198daf35ed85bb46a9b1b067b1b86bab59eae4b8b83bfd724994de5235a",
+   "subject_key": "6750927446f8440c05182fa1ae813bd88f807b2ca7acc337d51cb60e9390dcf9",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.7",
    "printed": "(chart) (ny_it201.sut.top_product)",
    "project": "$14.00",
    "model": "$14.18",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The sales and use tax chart's top row, 0.0175% (0.000175) of income, on federal adjusted gross income (line 19) of $81,049: exactly $14.183575, which the project rounds half-up to $14.00 (under the $125 cap); the model's $14.18 keeps cents. Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
-   "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "49a09e6c496904ee7e03b0400253b8372e68ef17b348acf7b8fa78b8b17a8d79",
-   "subject_key": "47a257fa768a47c9dd094e063be6607c197ffdee9eee106ddc83d6d59bad83ae"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model kept cents; every open difference here is under $1 and is that rounding (checked for all 33 sections of this run).",
+   "context": "c28dac362b46d08b596457e1c24f4ba9569be6a2df7d4e9a7354256290e253f9",
+   "date": "2026-11-23",
+   "run": "82550198daf35ed85bb46a9b1b067b1b86bab59eae4b8b83bfd724994de5235a",
+   "subject_key": "3f66f9f8d4223a675fe01f4066a00300e824e074eae710c19cc8dfb02a8e335d",
+   "drop": true
   },
   {
    "case": "classm.ny_it201.7",

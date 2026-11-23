@@ -5,7 +5,7 @@
  "base": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
  "head_rows": {
   "lines judged": "36",
-  "match / mismatch / unclear / missing": "29 / 7 / 0 / 0",
+  "match / mismatch / unclear / missing": "30 / 6 / 0 / 0",
   "line-scoped reviews": "9 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
@@ -35,15 +35,14 @@
   },
   {
    "key": "3",
-   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
+   "record": "fc1b1c92e47aa21c4554164ca81e2c22959ec24d9cb932b616d0280af961458b",
    "status": "MATCH",
    "subject_key": "6bde95d4e2409d643b827838866dddac69f61cf5628b45326d6a3a29d93ba474"
   },
   {
    "key": "8k",
-   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; i1040gi p. 91, Line 8k. The income asked is the compensation income from options or from shares bought with them that is not on a W-2 (for example an early disposition of incentive stock option shares, which i1040gi treats as income from the exercise not reported on line 1h); the help says the gain on the sale itself is asked with sales of investments. The gate s2.options_any asks about options exercised or shares from them sold, as its label says.",
+   "record": "2dadc405542a0be278692ec9ce058efeab6611928de945a64d0e61bf7114a9f7",
+   "status": "MATCH",
    "subject_key": "c3842472f6c66858644660c99abbac49c8848aa1e3b4c5d521b877505f8e4dcc"
   },
   {
@@ -55,7 +54,7 @@
   },
   {
    "key": "8v",
-   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
+   "record": "2dadc405542a0be278692ec9ce058efeab6611928de945a64d0e61bf7114a9f7",
    "status": "MATCH",
    "subject_key": "97e29f4bb72de9b4ca64fff639752bd8cdf523f9701ae6565d4806ca5f547095"
   },
@@ -109,7 +108,7 @@
   },
   {
    "key": "8c",
-   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
+   "record": "2dadc405542a0be278692ec9ce058efeab6611928de945a64d0e61bf7114a9f7",
    "status": "MATCH",
    "subject_key": "7180a49c5dacf6a4b7384e9a467249bbccb41ff1123edf999db39d85bc8c11ed"
   },
@@ -121,10 +120,10 @@
   },
   {
    "key": "8a",
-   "record": "f5842af66b35d8613326cb3f1344306075c5c71ff315303009a9b059505057e9",
+   "record": "2dadc405542a0be278692ec9ce058efeab6611928de945a64d0e61bf7114a9f7",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi p. 91, Line 8a, and the 80% limit. The limit is handled on s1.nol_limit (forms/2025/s1.yaml; amb.2025.s1_nol_limit_test): the deduction is computed where the 80% limit cannot bind and refused where it may. The restatement of line 8a does not show that line. (carried over from reviews/2025/render/s1.index.json at f4d8ea31, review of 2026-11-03)",
-   "subject_key": "c59a89c38daae92bcdfa540f2f26acb3539ced66fa66dcf29256d3b5ef8d4e22"
+   "ruling": "Ruling: scope; as the earlier ruling: i172 p. 2, the 80% limit on post-2017 NOLs is not applied as arithmetic; the return is refused at Form 1040 line 15 wherever the limit may bind (s1.nol_limit, amb.2025.s1_nol_limit_test, owner decision D3), so every computed return deducts an NOL the limit does not reduce. Project stands.",
+   "subject_key": "b8de7b7d2cdbf4f531f2b3c0074ed31686f8eb1cd137b70585c3ae75d214b951"
   },
   {
    "key": "8s",
@@ -149,15 +148,15 @@
   },
   {
    "key": "5",
-   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
+   "record": "fc1b1c92e47aa21c4554164ca81e2c22959ec24d9cb932b616d0280af961458b",
    "status": "MATCH",
    "subject_key": "dff8b734e78f1283033973b0318df3d26143c7b865f42ca6eccd07dafa60dbd1"
   },
   {
    "key": "10",
-   "record": "e73214a0ebabe7af2da34859e839472054b9fc7ae4b65a75a17033cec691665b",
+   "record": "fc1b1c92e47aa21c4554164ca81e2c22959ec24d9cb932b616d0280af961458b",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; f1040s1 line 10. Line 4 (Form 4797 gains) is refused by sd.other_forms on Schedule D and line 6 (farm income) by scope.farm through scope.schedule1, as the line's cite says ('line 4 is refused by sd.other_forms ..., line 6 by scope.schedule1'); the helper adds the lines the tool computes.",
+   "ruling": "Ruling: scope; as the ruling of 2026-11-22: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10). Project stands.",
    "subject_key": "76caf16b55c30d733409f6232a5c16ec105dd215cf133aa619b3dd27c29dac6b"
   },
   {
@@ -260,7 +259,7 @@
   "2a": "978f6fd9d84dccac3569cc51b677eb4899a483919ee31adc82908e98379c6d53",
   "8c": "a2434e6a595e5ebbe2861b7e80c1c2db35a3d21a6371698d9d8c2b30d342474e",
   "8f": "61cd1ea00f9720c8fa0491e4eabe0184235cd502525725831f06f21d546abb4a",
-  "8a": "af1ba828bbe165b9e77f8067806271de812f15f2c5d063a0c695247717d742cc",
+  "8a": "1b42defca06ecbacbe76c62c0e716d767b70283958705a8b73b1ac01aa9c3817",
   "8s": "0c94351cf75aec1a858c09699d1d65a754072228774a78b3179d6fce37a0be19",
   "9": "643e9ab07699d048abd15c9a3bf998b00858c85f8491cec4dbe072f89090712d",
   "5": "a9e6ebdb42b6de6c103d705147060752e0721ae895bbde2559b255c1d05abd39",

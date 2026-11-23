@@ -72,7 +72,9 @@ form:
         - dividends on employer securities
         - the cost of life insurance coverage
 
-        If you received this distribution as a beneficiary other than the surviving spouse, count only an amount paid by direct trustee-to-trustee transfer to an inherited IRA.
+        If you received this distribution as a beneficiary other than the surviving spouse, count nothing: such a beneficiary cannot roll over money paid to them (a direct transfer to an inherited IRA is reported with codes 4 and G, another code).
+
+        If this distribution is from an IRA and went back into an IRA, count none of it if, in the 12 months before this distribution, you had already rolled over another IRA distribution to an IRA (a trustee-to-trustee transfer, or a rollover to a Roth IRA, does not count as such a rollover).
 
         For code S (a SIMPLE IRA in its first 2 years), count only an amount rolled over to another SIMPLE IRA.
 
@@ -89,7 +91,8 @@ form:
         treated as an eligible rollover distribution"; p575 p. 24, Rollovers by nonspouse beneficiary, "The distribution must
         be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution.";
         p590b p. 5, Inherited from someone other than spouse, "you can't roll over any amounts into or out of the inherited
-        IRA"; p560 p. 18, Distributions (Withdrawals), "a rollover from a SIMPLE IRA to a non-SIMPLE IRA can be made tax free only after a 2-year
+        IRA"; p590a p. 25, Application of one-rollover-per-year limitation, "You can make only one rollover from an IRA to
+        another (or the same) IRA in any 1-year period regardless of the number of IRAs you own"; p560 p. 18, Distributions (Withdrawals), "a rollover from a SIMPLE IRA to a non-SIMPLE IRA can be made tax free only after a 2-year
         participation in the SIMPLE IRA plan"; p575 p. 21, Rollovers to SIMPLE retirement accounts, "During the first 2 years
         of participation in a SIMPLE retirement account, you may roll over amounts from one SIMPLE retirement account into
         another SIMPLE retirement account"; p575 p. 23, Ways to get a waiver of the 60-day rollover
@@ -111,11 +114,11 @@ form:
         Safety Officers, Simplified Method'
   - id: retirement.rollover_any
     printed: (helper)
-    label: 'Did any of this money go into a retirement account again (a rollover or a conversion), even if it was paid to you first?'
+    label: 'Did any of this money go into a retirement account again (a rollover or a conversion), even if it was first paid to you?'
     type: Bool
     expr:
       op: input
-      source: 'Did any of this money go into a retirement account again (a rollover or a conversion), even if it was paid to you first?'
+      source: 'Did any of this money go into a retirement account again (a rollover or a conversion), even if it was first paid to you?'
     cite:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
@@ -261,19 +264,19 @@ form:
         Safety Officers, Simplified Method'
   - id: retirement.rollover_property
     printed: (helper)
-    label: 'Did the plan or IRA pay out anything other than cash (such as shares) that you then sold, kept, or put only partly into the new account?'
+    label: 'Did the plan or IRA pay out anything other than cash (such as shares) that was then sold, kept, or put only partly into the new account?'
     type: Bool
     gated_by: retirement.rollover_property_if_put_back
     expr:
       op: input
-      source: 'Did the plan or IRA pay out anything other than cash (such as shares) that you then sold, kept, or put only partly into the new account?'
+      source: 'Did the plan or IRA pay out anything other than cash (such as shares) that was then sold, kept, or put only partly into the new account?'
     cite:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
         Safety Officers, Simplified Method'
   - id: retirement.rollover_property_if_put_back
     printed: (gate)
-    label: 'Did the plan or IRA pay out anything other than cash (such as shares) that you then sold, kept, or put only partly into the new account? Asked only with some of the money went into another retirement account (false otherwise)'
+    label: 'Did the plan or IRA pay out anything other than cash (such as shares) that was then sold, kept, or put only partly into the new account? Asked only with some of the money went into another retirement account (false otherwise)'
     type: Bool
     expr:
       op: choose
@@ -364,6 +367,163 @@ form:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
         Safety Officers, Simplified Method'
+  - id: retirement.death_put_back
+    printed: (helper)
+    label: 'A payment to a beneficiary (code 4) of which some went into another retirement account'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.is_death
+        - const: true
+      - op: test
+        eq:
+        - retirement.put_back
+        - const: true
+    cite:
+      doc: p590b
+      locator: 'p. 5, Inherited from someone other than spouse, "you can''t roll over any amounts into or out of the inherited IRA"'
+  - id: retirement.rollover_nonspouse
+    printed: (helper)
+    label: 'Did you inherit this money from someone other than your spouse?'
+    type: Bool
+    gated_by: retirement.rollover_nonspouse_if_plan
+    expr:
+      op: input
+      source: 'Did you inherit this money from someone other than your spouse?'
+    cite:
+      doc: p590b
+      locator: 'p. 5, Inherited from someone other than spouse, "you can''t roll over any amounts into or out of the inherited
+        IRA. However, you can make a trustee-to-trustee transfer"; p575 p. 24, Rollovers by nonspouse beneficiary, "The
+        distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive
+        the distribution."'
+  - id: retirement.nonspouse_beneficiary
+    printed: (helper)
+    label: 'Inherited from someone other than the spouse: for an IRA, the inherited-IRA answer (retirement.sav_inherited); for a plan, the plan question'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.is_ira
+          - const: true
+        then: retirement.sav_inherited
+      - guard:
+          op: test
+          eq:
+          - retirement.is_ira
+          - const: false
+        then: retirement.rollover_nonspouse_if_plan
+    cite:
+      doc: p590b
+      locator: 'p. 5, Inherited from someone other than spouse, "you can''t roll over any amounts into or out of the inherited IRA"'
+  - id: retirement.rollover_nonspouse_if_plan
+    printed: (gate)
+    label: 'Inherited from someone other than the spouse, asked of a plan payment to a beneficiary (code 4) of which some went into another retirement account (false otherwise; for an IRA the inherited-IRA question asks it)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.plan_death
+          - const: true
+        then: retirement.rollover_nonspouse
+      - guard:
+          op: test
+          eq:
+          - retirement.plan_death
+          - const: false
+        then: retirement.no
+    cite:
+      doc: p590b
+      locator: 'p. 5, Inherited from someone other than spouse, "you can''t roll over any amounts into or out of the inherited IRA"; p575 p. 24, Rollovers by nonspouse beneficiary, "The distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution."'
+  - id: retirement.rollover_nonspouse_if_death
+    printed: (gate)
+    label: 'Inherited from someone other than the spouse (the inherited-IRA answer for an IRA, the plan question for a plan), read only for a beneficiary (code 4) who put some of the money into another retirement account (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.death_put_back
+          - const: true
+        then: retirement.nonspouse_beneficiary
+      - guard:
+          op: test
+          eq:
+          - retirement.death_put_back
+          - const: false
+        then: retirement.no
+    cite:
+      doc: p590b
+      locator: 'p. 5, Inherited from someone other than spouse, "you can''t roll over any amounts into or out of the inherited IRA"'
+  - id: retirement.ira_put_back
+    printed: (helper)
+    label: 'An IRA distribution, not a direct rollover (code G), of which the filer put some into another retirement account'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.is_ira
+        - const: true
+      - op: test
+        eq:
+        - retirement.direct
+        - const: false
+      - op: test
+        eq:
+        - retirement.rolled_some
+        - const: true
+    cite:
+      doc: p590a
+      locator: 'p. 25, Application of one-rollover-per-year limitation, "You can make only one rollover from an IRA to another
+        (or the same) IRA in any 1-year period regardless of the number of IRAs you own"'
+  - id: retirement.rollover_second
+    printed: (helper)
+    label: 'Did this money go back into an IRA, when you had also taken other money out of an IRA in the 12 months before you received this money and put that money back into an IRA?'
+    type: Bool
+    gated_by: retirement.rollover_second_if_ira
+    expr:
+      op: input
+      source: 'Did this money go back into an IRA (not a workplace plan), when you had also taken other money out of an IRA in the 12 months before you received this money and put that money back into an IRA (within 60 days, or later under a waiver)? A direct transfer between IRAs, or a conversion from a traditional IRA to a Roth IRA, is not such a rollover; a Roth IRA distribution put back into a Roth IRA is.'
+    cite:
+      doc: p590a
+      locator: 'p. 25, Application of one-rollover-per-year limitation, "You can make only one rollover from an IRA to another
+        (or the same) IRA in any 1-year period regardless of the number of IRAs you own", "However, trustee-to-trustee
+        transfers between IRAs aren’t limited and rollovers from traditional IRAs to Roth IRAs (conversions) aren’t limited"; p. 25, "The 1-year period begins on the date you receive the IRA distribution, not on the date you roll it over into an IRA"'
+  - id: retirement.rollover_second_if_ira
+    printed: (gate)
+    label: 'A second IRA-to-IRA rollover within 12 months, asked only of an IRA distribution, not a direct rollover, of which the filer put some into another retirement account (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.ira_put_back
+          - const: true
+        then: retirement.rollover_second
+      - guard:
+          op: test
+          eq:
+          - retirement.ira_put_back
+          - const: false
+        then: retirement.no
+    cite:
+      doc: p590a
+      locator: 'p. 25, Application of one-rollover-per-year limitation, "You can make only one rollover from an IRA to another
+        (or the same) IRA in any 1-year period regardless of the number of IRAs you own"'
   - id: retirement.charity_hsa
     printed: (helper)
     label: 'Did any of this money go straight from the IRA to a charity, or into a health savings account?'
@@ -442,7 +602,7 @@ form:
     gated_by: retirement.ira_basis_if_trad
     expr:
       op: input
-      source: 'Does any traditional IRA of yours hold money you already paid tax on, such as contributions you did not
+      source: 'Does any traditional IRA of yours hold money on which tax was already paid, such as contributions you did not
         deduct, after-tax money rolled over from a work plan, or basis that came with an IRA from a spouse in a divorce or
         from someone who died?'
     cite:
@@ -582,19 +742,19 @@ form:
         Safety Officers, Simplified Method'
   - id: retirement.dis_early
     printed: (helper)
-    label: 'When any of this was paid, were you younger than the earliest age at which the plan would have let you retire without the disability (its minimum retirement age)?'
+    label: 'When any of this was paid, were you younger than the earliest age at which the plan would have allowed retirement without the disability (its minimum retirement age)?'
     type: Bool
     gated_by: retirement.dis_early_if_disability
     expr:
       op: input
-      source: 'When any of this was paid, were you younger than the earliest age at which the plan would have let you retire without the disability (its minimum retirement age)?'
+      source: 'When any of this was paid, were you younger than the earliest age at which the plan would have allowed retirement without the disability (its minimum retirement age)?'
     cite:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
         Safety Officers, Simplified Method'
   - id: retirement.dis_early_if_disability
     printed: (gate)
-    label: 'When any of this was paid, were you younger than the earliest age at which the plan would have let you retire without the disability (its minimum retirement age)? Asked only with a disability pension (false otherwise)'
+    label: 'When any of this was paid, were you younger than the earliest age at which the plan would have allowed retirement without the disability (its minimum retirement age)? Asked only with a disability pension (false otherwise)'
     type: Bool
     expr:
       op: choose
@@ -1257,6 +1417,14 @@ form:
       - op: test
         eq:
         - retirement.levy_returned_if_put_back
+        - const: true
+      - op: test
+        eq:
+        - retirement.rollover_nonspouse_if_death
+        - const: true
+      - op: test
+        eq:
+        - retirement.rollover_second_if_ira
         - const: true
       - op: test
         eq:
@@ -2538,6 +2706,117 @@ form:
       doc: i5329
       locator: p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery
         distributions) that you received from:"
+  - id: retirement.over59_all_year
+    printed: (helper)
+    label: The person whose entry this is was 59½ or older all through 2025 (born in 1964 or earlier)
+    type: Bool
+    expr:
+      op: test
+      le:
+      - person.birth_year
+      - param: age.over59h_all_year
+    cite:
+      doc: i5329
+      locator: 'p. 5, Line 2, exception 12, "Distributions incorrectly indicated as early distributions by code 1, J, or S in
+        box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older."'
+  - id: retirement.age_open
+    printed: (helper)
+    label: The person turned 59½ during 2025 or may have (born in 1965 or 1966), so the birth year does not settle the age at each payment
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - person.birth_year
+        - param: age.over59h_all_year
+      - op: test
+        lt:
+        - person.birth_year
+        - param: age.under59h_all_year
+    cite:
+      doc: i5329
+      locator: 'p. 5, Line 2, exception 12, "Distributions incorrectly indicated as early distributions by code 1, J, or S in
+        box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older."'
+  - id: retirement.after59
+    printed: (helper)
+    label: 'Were you age 59½ or older on the date of every payment of this money?'
+    type: Bool
+    gated_by: retirement.after59_if_open
+    expr:
+      op: input
+      source: 'Were you age 59½ or older on the date of every payment of this money?'
+    cite:
+      doc: i5329
+      locator: 'p. 5, Line 2, exception 12, "Distributions incorrectly indicated as early distributions by code 1, J, or S in
+        box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older."'
+  - id: retirement.ask_after59
+    printed: (helper)
+    label: An early distribution (code 1 or S) of a person born in 1965 or 1966, whose age at each payment the birth year does not settle
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.early
+        - const: true
+      - op: test
+        eq:
+        - retirement.age_open
+        - const: true
+    cite:
+      doc: i5329
+      locator: 'p. 5, Line 2, exception 12, "Distributions incorrectly indicated as early distributions by code 1, J, or S in
+        box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older."'
+  - id: retirement.after59_if_open
+    printed: (gate)
+    label: '59½ or older at every payment, asked only of an early distribution (code 1 or S) when the birth year does not settle it (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.ask_after59
+          - const: true
+        then: retirement.after59
+      - guard:
+          op: test
+          eq:
+          - retirement.ask_after59
+          - const: false
+        then: retirement.no
+    cite:
+      doc: i5329
+      locator: 'p. 5, Line 2, exception 12, "Distributions incorrectly indicated as early distributions by code 1, J, or S in
+        box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older."'
+  - id: retirement.miscoded
+    printed: (helper)
+    label: 'Exception 12: an early distribution (code 1 or S) received wholly at age 59½ or older, so all of it goes on Form 5329 line 2'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.early
+        - const: true
+      - op: test
+        any:
+        - op: test
+          eq:
+          - retirement.over59_all_year
+          - const: true
+        - op: test
+          eq:
+          - retirement.after59_if_open
+          - const: true
+    cite:
+      doc: i5329
+      locator: 'p. 5, Line 2, exception 12, "Distributions incorrectly indicated as early distributions by code 1, J, or S in
+        box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older."'
   - id: retirement.early_screen
     printed: (gate)
     label: An early distribution of a kind Form 5329 Part I is not computed for here
@@ -2807,7 +3086,7 @@ form:
         - 02, payments made at least annually for your life (or life expectancy) or the joint lives (or joint life expectancies) of you and your designated beneficiary, which from an employer plan must begin after separation from service
         - 03, total and permanent disability, if you can furnish proof that you can't do any substantial gainful activity because of your physical or mental condition and a medical determination has been made that the condition can be expected to result in death or to be of long, continued, and indefinite duration
         - 04, a distribution due to death (not from a modified endowment contract)
-        - 09, an IRA distribution for a first home, only if you had no present interest in a main home during the 2-year period ending on the date of acquisition (the date you entered into a binding contract to buy it, or building or rebuilding began) and, if you are married, your spouse also meets this no-ownership requirement
+        - 09, an IRA distribution for a first home, only if you had no present interest in a main home during the 2-year period ending on the date of acquisition (the date you entered into a binding contract to buy it, or building or rebuilding began) and, if you are married, the no-ownership requirement is also met by your spouse
         - 11, a qualified reservist distribution, only if you were ordered or called to active duty after September 11, 2001, for more than 179 days or for an indefinite period because you are a member of a reserve component, the distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement, and it was made no earlier than the date of the order or call and no later than the close of the active duty period
         - 19, a qualified birth or adoption distribution, only if made during the 1-year period beginning on the date your child was born or the legal adoption was finalized, an adopted child being an eligible adoptee (not the child of your spouse, and under age 18 or physically or mentally incapable of self-support)
     cite:
@@ -2832,7 +3111,7 @@ form:
         physically or mentally incapable of self-support."
   - id: retirement.has_exception
     printed: (helper)
-    label: An exception applies
+    label: An exception applies, other than exception 12 on the whole distribution (an early code received wholly at age 59½ or older)
     type: Bool
     expr:
       op: test
@@ -2841,6 +3120,10 @@ form:
         eq:
         - retirement.early
         - const: true
+      - op: test
+        eq:
+        - retirement.miscoded
+        - const: false
       - op: test
         ne:
         - retirement.exception
@@ -2958,9 +3241,9 @@ form:
       doc: i5329
       locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
         exception number (01–23). If more than one exception applies, enter 99."
-  - id: retirement.l2
+  - id: retirement.l2_exc
     printed: (helper)
-    label: Form 5329 line 2 share before the per-person limits
+    label: Form 5329 line 2 share under the exception named for the distribution, before the per-person limits
     type: NonNegDollars
     expr:
       op: choose
@@ -2977,6 +3260,29 @@ form:
           - retirement.has_exception
           - const: false
         then: retirement.zero
+    cite:
+      doc: i5329
+      locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
+        exception number (01–23). If more than one exception applies, enter 99."
+  - id: retirement.l2
+    printed: (helper)
+    label: Form 5329 line 2 share before the per-person limits
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.miscoded
+          - const: true
+        then: retirement.l1
+      - guard:
+          op: test
+          eq:
+          - retirement.miscoded
+          - const: false
+        then: retirement.l2_exc
     cite:
       doc: i5329
       locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable

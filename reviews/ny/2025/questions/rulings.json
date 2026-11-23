@@ -436,6 +436,63 @@
     }
    ],
    "bugs": []
+  },
+  "unruled:ny_it201.ask.alimony_later#1": {
+   "reason": "Finding 0 is a real gap (low): A-119 also treats a 2018-or-earlier instrument modified after 2018 to elect the Tax Law 612(w) modifications as applicable alimony, which the help leaves out. Finding 1 is not a defect.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "ny_it225i p. 10, A-119: \"This also applies to any divorce or separation instrument executed on or before December 31, 2018, and modified after December 31, 2018, if the modification to the instrument expressly provides that the addition and subtraction modifications contained in Tax Law § 612(w) apply.\" The help says only \"an agreement made after 2018\". BUG-1215."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "no defect",
+     "evidence": "The question is asked right after s1.alimony_any (\"In 2023 or later, did you ... pay or receive alimony\") and s1.alimony answered No (\"Was that alimony paid under a divorce or separation agreement made in 2018 or earlier?\"); \"that alimony\" is the alimony those questions asked about, and \"in 2025\" fixes the year."
+    }
+   ],
+   "bugs": [
+    "BUG-1215"
+   ],
+   "subject_sha": "8d610226fa02844fd6166b88796522f40c73c221fd082bef82b98af452786e25"
+  },
+  "unruled:ny_it201.ask.nyc_flex#1": {
+   "reason": "Real, low: \"another city public employer\" reads as any city; A-101 covers New York City and certain other New York City public employers only. A Yes only refuses (over-refusal).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "ny_it225i p. 7, A-101: \"a flexible benefits program established by New York City or certain other New York City public employers\"; the list of such employers (cols text line 711) is all New York City bodies. The prompt's examples are New York City bodies but its words say \"another city public employer\". BUG-1215."
+    }
+   ],
+   "bugs": [
+    "BUG-1215"
+   ],
+   "subject_sha": "029aa9ab25e345f771bbd735ffa4ebc1b3adf6c1858141f8d2cd845ccf68ce01"
+  },
+  "unruled:ny_it201.ask.prior_168k#1": {
+   "reason": "Both findings real, low: S-213 excepts resurgence zone and New York Liberty Zone property and applies to property placed in service on or after June 1, 2003; the question takes in both. A Yes only refuses (over-refusal).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "ny_it225i p. 20, S-213: \"With the exception of resurgence zone property and New York liberty zone property described in IRC § 1400L(b)(2), New York State does not follow the federal depreciation rules for IRC § 168(k) property\". BUG-1215."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "ny_it225i p. 20, S-213: \"placed in service inside or outside New York State on or after June 1, 2003\"; the prompt says \"Since 2003\". BUG-1215."
+    }
+   ],
+   "bugs": [
+    "BUG-1215"
+   ],
+   "subject_sha": "845e5e106f2821b082e70ec61d551cad79a0e8a71f1819dbf564d0d6a32e3540"
   }
  },
  "baseline": {}

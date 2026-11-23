@@ -3930,6 +3930,78 @@
           }
         }
       }
+    },
+    {
+      "id": "advland.eic.self_only_age21",
+      "covers": [
+        "eic.self_only_qc",
+        "eic.step3_self_only",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Owner decision 2026-11-23 on amb.2025.eic_self_only_age (Pub. 596 reading). As stage9.eic.child_without_ssn (head of household, wages $15,000, one qualifying child with no valid SSN), but the filer was born in 2004 (21 at the end of 2025). p596 p. 5, the self-only EIC \"if you are otherwise eligible\"; p. 17, chapter 3, Rule 11, at least age 25 but under 65. Predicted: no EIC, line 27a $0 (was $312).",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1500000,
+        "person[taxpayer].w2[emp_a].box4": 93000,
+        "person[taxpayer].w2[emp_a].box5": 1500000,
+        "person[taxpayer].w2[emp_a].box6": 21750,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.considered_unmarried": true,
+        "dependent[child].age": 3,
+        "dependent[child].months": 12,
+        "dependent[child].work_ssn": false,
+        "dependent[child].eic_ssn": false,
+        "person[taxpayer].birth_year": 2004
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "advland.eic.self_only_age30",
+      "covers": [
+        "eic.self_only_qc",
+        "eic.step3_self_only",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Owner decision 2026-11-23 on amb.2025.eic_self_only_age. As advland.eic.self_only_age21 but the filer was born in 1995 (30): Rules 11 to 14 are met, so the self-only credit stands. Predicted: line 27a $312, as stage9.eic.child_without_ssn.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1500000,
+        "person[taxpayer].w2[emp_a].box4": 93000,
+        "person[taxpayer].w2[emp_a].box5": 1500000,
+        "person[taxpayer].w2[emp_a].box6": 21750,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.considered_unmarried": true,
+        "dependent[child].age": 3,
+        "dependent[child].months": 12,
+        "dependent[child].work_ssn": false,
+        "dependent[child].eic_ssn": false,
+        "person[taxpayer].birth_year": 1995
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 31200
+        }
+      }
     }
   ]
 }

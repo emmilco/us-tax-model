@@ -1,0 +1,16 @@
+{
+ "kind": "render",
+ "form": "interest",
+ "rulings": [
+  {
+   "printed": "amount",
+   "restated": "Input — Taxable interest from this payer, including Treasury interest and original issue discount (Form 1099-INT boxes 1 and 3; Form 1099-OID boxes 1, 2 and 8, box 2 only when box 11 is blank); exclude tax-exempt interest",
+   "model": "Schedule B line 1 says to 'also include any accrued market discount that is includible in income'. Form 1099-OID box 5 reports accrued market discount, and its instructions say 'Market discount on a tax-exempt security is includible in taxable income as interest income.' The restatement's box list (1099-OID boxes 1, 2 and 8) leaves out box 5, and the 1099-INT boxes 1 and 3 it names cannot be checked against the text given.",
+   "ruling": "Ruling: scope; i1040sb p. 1, Line 1, \"Also include any accrued market discount that is includible in income\". Market discount (Form 1099-INT box 10, Form 1099-OID box 5) is refused by sb.bond_special, which lists \"have market discount to report\"; the box list of this input is for the amounts the tool computes. Project stands.",
+   "context": "b9f6ff77e7392e45040aa3a3463d110678367ddd6eff8f130e063dae10b256bf",
+   "date": "2026-11-23",
+   "run": "fb6af3e14dc5c8493ff1a478d592b2a2f453ff96d96552d5166fc5ca2a4baf10",
+   "subject_key": "a8c530aae9a6f533398868ba9a3462d7bbd83acd3750b746f598d2af79aab273"
+  }
+ ]
+}

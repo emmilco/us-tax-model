@@ -2,21 +2,18 @@
  "kind": "render",
  "form": "carloan",
  "family": "claude",
- "base": "c029dfdc004ef9f10c45392476fe7bc868d15a0c95d13b9b57c09f61098a947a",
- "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
- },
+ "base": "f818808e093603ec1a3edc73632cbb275e0790ba7df8d6fe63da5d94289c7f12",
  "lines": [
   {
    "key": "22(ii)",
-   "record": "ca9da80a6082321e527ea4297ed3cae0d94a19f6f2e048d5a4c0f92c1f8e8d8d",
+   "record": "f818808e093603ec1a3edc73632cbb275e0790ba7df8d6fe63da5d94289c7f12",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi p. 110, Schedule 1-A, line 22, column (ii), \"deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)\". Schedules E and F are outside the tool: rental and farm income are refused through scope.schedule1 (scope.rental, scope.farm), so on a completed return Schedule C is the only place QPVLI can be deducted elsewhere, and the English counts it. The model agrees that the pro rata limit to the qualifying part is consistent with the column. Same as the earlier rounds.",
+   "ruling": "Ruling: scope; refusal located elsewhere; restatement accepted. i1040gi p. 110, Schedule 1-A, Line 22, column (ii), 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)'. Schedule F is refused (scope.farm), and car, truck or travel costs of a rental are refused (rental.vehicle, on Schedule E line 6), so Schedule C is the only place the return can deduct this interest; the question asks for the part of this loan's interest deducted there. Same ruling as the earlier rounds; the form was re-reviewed because lane fx-itemized changed its note (entries named by the VIN).",
    "subject_key": "61f0bef3da832918625d226bc014651273fdbcb74a45dca100168b64fa692ed4"
   },
   {
    "key": "22(iii)",
-   "record": "ca9da80a6082321e527ea4297ed3cae0d94a19f6f2e048d5a4c0f92c1f8e8d8d",
+   "record": "f818808e093603ec1a3edc73632cbb275e0790ba7df8d6fe63da5d94289c7f12",
    "status": "MATCH",
    "subject_key": "01a2aec2b5140a1b2cc043c9c224ee50856204e62a961caae7423b4f934985c8"
   }
@@ -25,5 +22,5 @@
   "22(ii)": "0cd219f6186ad383e29e9aee1326beaa358ff907d873ae02399f4740e66848bc",
   "22(iii)": "a82fd9efa6e4f9900414a3bc663f803bbe27ad2de072ab9631a4d98dbb548f9c"
  },
- "__rest__": "a76106e6a173443cc0a1a4e7ca9894b5b732da1413856ef3d1613599c9a19b2b"
+ "__rest__": "e39fba84f369f3f389953310b2ef313c58a44d58a1aa1117fcf7b623c5168bd2"
 }

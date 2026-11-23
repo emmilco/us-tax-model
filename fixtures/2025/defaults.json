@@ -4013,6 +4013,16 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "retirement.rollover_nonspouse",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.rollover_second",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "retirement.loan_offset",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -4101,6 +4111,11 @@
       "input": "retirement.started_before_simplified_method_date",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "retirement.after59",
+      "value": false,
+      "reason": "Closed: asked only for an early code of a person born in 1965 or 1966; a scenario about turning 59 1/2 during 2025 states it."
     },
     {
       "input": "retirement.under59",

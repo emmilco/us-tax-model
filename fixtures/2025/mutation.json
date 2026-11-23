@@ -65997,7 +65997,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (filter.s1a.s1a.tip_total), inputs of mutation.t2.mfj_no_overtime_part3 (married filing jointly, the taxpayer with a valid SSN for work and three tipped jobs in a listed occupation: $17,185, $18,740 and $3,944 of tips), the three new questions about each job (other work, service charges, unlawful work) answered No, and the spouse without a valid SSN for work, so the spouse's tipped jobs are not asked. Expected value predicted by hand before running the evaluator: only tips of a person with a valid SSN for work count (i1040gi (2025) p. 101, Schedule 1-A, Part II, 'If you are married filing a joint return, the spouse who received the qualified tips must have a valid SSN'); with more than one employer line 4c is the total of the taxpayer's tips, $17,185 + $18,740 + $3,944 = $39,869.",
+      "evidence_note": "Mutation fixture (filter.s1a.s1a.tip_total), inputs of mutation.t2.mfj_no_overtime_part3 (married filing jointly, the taxpayer with a valid SSN for work and three tipped jobs in a listed occupation: $17,185, $18,740 and $3,944 of tips), the three new questions about each job (other work, service charges, unlawful work) answered No, and the spouse without a valid SSN for work, so the spouse's tipped jobs are not asked. Expected value predicted by hand before running the evaluator: only tips of a person with a valid SSN for work count (i1040gi (2025) p. 101, Schedule 1-A, Part II, 'If you are married filing a joint return, the spouse who received the qualified tips must have a valid SSN'); with more than one employer line 4c is the total of the taxpayer's tips, $17,185 + $18,740 + $3,944 = $39,869. W-2 box 5 raised to $45,000 (box 6 $652.50) so the Medicare wages and tips include the tips entered (lane fx-itemized consistency check s1a.tips_over_wages); the asserted lines do not read box 5.",
       "inputs": {
         "qbi.prior_form": false,
         "qbi.coop_patron": false,
@@ -66685,8 +66685,8 @@
         "person[taxpayer].w2[emp_a].box3": 217200,
         "person[taxpayer].w2[emp_a].box7": 370700,
         "person[taxpayer].w2[emp_a].box4": 36400,
-        "person[taxpayer].w2[emp_a].box5": 587900,
-        "person[taxpayer].w2[emp_a].box6": 8500,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
         "person[taxpayer].w2[emp_a].box10": 0,
         "person[taxpayer].w2[emp_a].box10_wages": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
@@ -66899,7 +66899,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (filter.s1a.s1a.tip_reported), inputs of mutation.t2.mfj_no_overtime_part3 (married filing jointly, the taxpayer with a valid SSN for work and three tipped jobs in a listed occupation: $17,185, $18,740 and $3,944 of tips), the three new questions about each job (other work, service charges, unlawful work) answered No, with only the first job ($17,185 of tips) and the spouse without a valid SSN for work, so the spouse's tipped jobs are not asked. Expected values predicted by hand before running the evaluator: only tips of a person with a valid SSN for work count (i1040gi (2025) p. 101, Schedule 1-A, Part II, 'If you are married filing a joint return, the spouse who received the qualified tips must have a valid SSN'); with one employer line 4a is the tips reported for it, $17,185, and line 4c the larger of lines 4a and 4b ($0), $17,185.",
+      "evidence_note": "Mutation fixture (filter.s1a.s1a.tip_reported), inputs of mutation.t2.mfj_no_overtime_part3 (married filing jointly, the taxpayer with a valid SSN for work and three tipped jobs in a listed occupation: $17,185, $18,740 and $3,944 of tips), the three new questions about each job (other work, service charges, unlawful work) answered No, with only the first job ($17,185 of tips) and the spouse without a valid SSN for work, so the spouse's tipped jobs are not asked. Expected values predicted by hand before running the evaluator: only tips of a person with a valid SSN for work count (i1040gi (2025) p. 101, Schedule 1-A, Part II, 'If you are married filing a joint return, the spouse who received the qualified tips must have a valid SSN'); with one employer line 4a is the tips reported for it, $17,185, and line 4c the larger of lines 4a and 4b ($0), $17,185. W-2 box 5 raised to $45,000 (box 6 $652.50) so the Medicare wages and tips include the tips entered (lane fx-itemized consistency check s1a.tips_over_wages); the asserted lines do not read box 5.",
       "inputs": {
         "qbi.prior_form": false,
         "qbi.coop_patron": false,
@@ -67587,8 +67587,8 @@
         "person[taxpayer].w2[emp_a].box3": 217200,
         "person[taxpayer].w2[emp_a].box7": 370700,
         "person[taxpayer].w2[emp_a].box4": 36400,
-        "person[taxpayer].w2[emp_a].box5": 587900,
-        "person[taxpayer].w2[emp_a].box6": 8500,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
         "person[taxpayer].w2[emp_a].box10": 0,
         "person[taxpayer].w2[emp_a].box10_wages": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,

@@ -1348,58 +1348,48 @@
    ]
   },
   "gate:f5695.line21a": {
-   "subject_sha": "af68a0f1b32798e6609f39be557dd32eb3879f92edd2e5aab1edabe6a727f05c",
+   "subject_sha": "d6f8d2b26ea7aa0bf8d7cdaddc5af8d0e39938d1c61587abb257ba416232253a",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "Married couple filing jointly. The spouse owns, rents, or uses a second home in the United States as a residence and pays for a qualifying heat pump, central air conditioner, or water heater installed there in 2025; the filer-spouse never lived in that home.",
-       "why_no": "The gate says 'you lived in' and the help says only 'A second home or a home you rent counts'; it never says 'you or your spouse.' The non-occupant spouse reads 'you' as myself and answers no.",
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A condominium owner or co-op tenant-stockholder whose association replaced the building's central boiler, central air conditioner or electrical panels in 2025. The owner paid a share through a special assessment or maintenance charges.",
+       "why_no": "The equipment sits in a common mechanical room and was installed by the association. The owner reads 'installed at a home ... that you lived in' as meaning their own unit, not the building, and answers no.",
        "line": "f5695.sec_b_home",
-       "irs_text": "fs-2025-01 p. 5: 'such property may be installed in the taxpayer's second home'; i5695 p. 3: 'If both you and your spouse owned and lived apart in separate main homes, the limit on the amount of the credit applies to each of you separately' and a joint return combines the forms.",
-       "severity": "high",
-       "fix": "Ask whether you or your spouse incurred costs for qualified energy property installed on or in connection with a home you or your spouse used as a residence in 2025."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "Homeowner who lives in the home in 2025 but installed an electrical panelboard in 2024 to enable qualifying windows or insulation installed in 2025, and wants the line 25e enabling-property credit under the consecutive-year safe harbor.",
-       "why_no": "The gate asks whether the heating, cooling, hot-water, or electrical equipment was installed during 2025. The panelboard was physically installed in 2024, and the 2025 work was only windows or insulation, not in the gate's equipment list. The filer truthfully answers no.",
-       "line": "f5695.sec_b_home",
-       "irs_text": "i5695 p. 6: 'If the enabling property and the enabled property were installed in consecutive tax years, then you can treat both as having been installed in the later of the tax year in which the enabling property or the enabled property was installed, regardless of which was installed first.'",
-       "severity": "high",
-       "fix": "Broaden the year test to include property treated as installed in 2025 under the line 25a safe harbor, and mention enabling property installed to enable a qualified energy efficiency improvement."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "Filer who shares with a neighbor the cost of qualifying energy property that benefits both main homes, where the property is installed at the neighbor's home or in a shared location rather than physically at the filer's home.",
-       "why_no": "The gate asks whether the equipment was installed at a home in the United States that you lived in. The filer reads that as requiring installation at their own dwelling and answers no.",
-       "line": "f5695.sec_b_home",
-       "irs_text": "i5695 p. 3: 'If you and a neighbor shared the cost of qualifying property to benefit each of your main homes, both of you can take the energy efficient home improvement credit. You figure your credit on the part of the cost you paid.'",
+       "irs_text": "f5695 (2025) p. 4, line 32b: 'If you live in a condominium or cooperative and have a fractional share of the qualified energy efficiency improvements or residential energy property expenditures, check here'",
        "severity": "medium",
-       "fix": "Add jointly owned or shared property installed to benefit the filer's home, even if not solely at the filer's dwelling."
+       "fix": "Add to the help: 'If you live in a condo or co-op, equipment the association installed for the building counts, for your share of the cost.' Alternatively, ask a separate question about association-installed equipment before this gate."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "Filer who installs a qualifying biomass boiler or other qualified energy property in a detached boiler house or garage and pipes heat or hot water into the home they lived in during 2025.",
-       "why_no": "The gate asks whether the equipment was installed 'at a home'; the equipment is in a separate structure, so the filer reads no. The form asks about property installed 'on or in connection with' the home.",
+       "pattern": "1",
+       "who": "A filer who bought a house in late 2025 and had a new furnace or heat pump installed before moving in. They first lived there in January 2026.",
+       "why_no": "'Lived in during 2025' is literally false for this home. The form's line 21a says only 'a home ... that you use as a residence' (present tense, no year), and the statute does not limit the year of use.",
        "line": "f5695.sec_b_home",
-       "irs_text": "i5695 p. 3: 'costs of new qualified energy property that is installed on or in connection with a home that you used during 2025 located in the United States.'",
-       "severity": "medium",
-       "fix": "Use the statutory phrase 'installed on or in connection with a home' instead of 'at a home.'"
+       "irs_text": "f5695 (2025) p. 3, line 21a: 'installed on or in connection with a home located in the United States that you use as a residence'; i5695 p. 3: 'a home that you used during 2025'",
+       "severity": "low",
+       "fix": "Follow the form's wording: 'that you (or your spouse) use or used as a residence.' Add help covering equipment installed in 2025 at a home you moved into afterward, or state the instructions' 2025-use condition explicitly so the no is deliberate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who installed a qualifying heat pump or water heater at a seasonal cabin they stay in a few weeks a year.",
+       "why_no": "'Lived in' suggests a full-time residence. The help mentions a 'second home' but not occasional or seasonal stays, so the filer may decide a cabin they only visit was not lived in.",
+       "line": "f5695.sec_b_home",
+       "irs_text": "fs-2025-01 p. 5, Qualifying residence A1: 'used as a residence by the taxpayer ... such property may be installed in the taxpayer's second home'",
+       "severity": "low",
+       "fix": "Use 'lived in or used as a residence (even part-time)' and extend the help: 'A second home, vacation home, or a home you rent counts; a home you only rent out to others does not.'"
       }
      ],
-     "prompt_sha": "7b8631abbeb630ab0a94dd4e849832e9983d5674c18daee5933ce26c805d9100",
+     "prompt_sha": "ac768621fbc72461e58ada302ca6b9eb111faa70fee75256dfcbdeae97a138d2",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_f5695.line21a.af68a0f1b327.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.12507200000000002,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_f5695.line21a.d6f8d2b26ea7.1.response.txt"
     }
    ],
    "condition": "f5695.line21a",

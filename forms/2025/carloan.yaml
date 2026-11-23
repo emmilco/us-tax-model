@@ -3,8 +3,8 @@ form:
   kind: form
   title: Qualified passenger vehicle loan interest (Schedule 1-A, line 22) — one entry per loan
   tax_year: 2025
-  note: One entry per loan; name each entry by the vehicle's VIN (a vehicle with a loan refinanced during 2025 has one
-    entry for each loan). Interest deducted on Schedule C (column (ii)) is asked when the return has a Schedule C; Schedules E
+  note: One entry per loan, named by the vehicle's VIN, which line 22 column (i) needs (a vehicle with a loan refinanced
+    during 2025 has one entry for each loan, the VIN with a suffix). Interest deducted on Schedule C (column (ii)) is asked when the return has a Schedule C; Schedules E
     and F are refused. Where a loan also financed amounts that do
     not qualify, or refinanced a qualifying loan for more than its balance, the interest is allocated pro rata under
     proposed § 1.163-16(d)(2)(iii) and (d)(4); the ratio is rounded to six places (amb.2025.carloan_ratio_places).

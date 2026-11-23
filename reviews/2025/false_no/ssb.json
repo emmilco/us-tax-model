@@ -2,58 +2,78 @@
  "form": "ssb",
  "reviews": {
   "gate:ssb.any": {
-   "subject_sha": "e6025debbd80ac7053a5f3ada7ffe365fecb29e602411699dec1426555d9d961",
+   "subject_sha": "463d3a24bfca43cc2b3de8c6bd946997fcf97db79885a6b39c946e74a1d2e966",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A retiree, or on a joint return the spouse, whose 2025 monthly benefit went entirely to Medicare Part B/D premiums, federal tax withholding, a levy or garnishment, or recovery of an earlier overpayment. No benefit money reached their bank account in 2025.",
-       "why_no": "\"did you ... get social security benefits\": they received no payment, so they read the deductions as never having been benefits they got. Help text that names only the form does not fix this if they have misplaced it or did not look at it.",
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A disabled worker whose SSDI benefit was reduced to zero all year because of the workers' compensation offset. SSA still issues a Form SSA-1099 showing the offset amount in box 3 as benefits paid.",
+       "why_no": "No check arrived, so truthfully they did not 'get social security benefits.' The help names only Medicare premiums and debt as withheld amounts that count, which reads as the complete list of exceptions.",
        "line": "ssb.benefits_if_any",
-       "irs_text": "i1040gi p. 31: \"You should receive a Form SSA-1099 showing in box 3 the total social security benefits paid to you\"; p. 32 worksheet line 1: \"Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099\"",
-       "severity": "medium",
-       "fix": "Add to help: \"Answer yes even if your benefits were used to pay Medicare premiums, withheld for tax, or kept by SSA to recover an overpayment, so you received no money. Box 3 of Form SSA-1099 still counts these amounts.\""
+       "irs_text": "p915 p. 5: \"Your gross benefits are shown in box 3 of Form SSA-1099 or RRB-1099... The amount in box 5 shows your net benefits for 2025 (box 3 minus box 4). Use the amount in box 5 to figure whether any of your benefits are taxable.\" (Pub. 915 also treats a workers' compensation offset as a social security benefit.)",
+       "severity": "high",
+       "fix": "Ask about the form, not cash received: 'Did you or your spouse receive a Form SSA-1099 or RRB-1099 for 2025, even one showing that benefits were withheld, offset or repaid?' Add to the help: 'Answer Yes even if you received no payment, for example because workers' compensation, Medicare premiums, tax withholding or a debt offset took the whole benefit.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer or spouse who received Social Security Disability Insurance (SSDI) in 2025, possibly as a retroactive award, and does not think of disability payments as 'social security benefits'.",
-       "why_no": "\"social security benefits\" reads to many people as retirement benefits. SSDI is a disability payment, and the help never names disability or survivor benefits.",
+       "who": "A filer, or a spouse on a joint return, who receives Social Security Disability Insurance, survivor benefits or spousal benefits. They think of 'social security' as their own retirement benefit.",
+       "why_no": "The question says 'social security benefits' without naming disability or survivor benefits. The filer reads their monthly 'disability' payment as something different.",
        "line": "ssb.benefits_if_any",
-       "irs_text": "i1040gi p. 31: \"disability payments (including Social Security Disability Insurance (SSDI) payments)\" ... \"You must report the remaining $12,000 on line 6a.\"",
+       "irs_text": "i1040gi p. 31: \"Disability payments... (including Social Security Disability Insurance (SSDI) payments)\"... \"You must report the remaining $12,000 on line 6a.\"",
        "severity": "medium",
-       "fix": "Reword: \"... get social security benefits (retirement, survivor, or disability (SSDI), including a back-payment for earlier years) ...\". Also note that SSI is not included."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer awarded benefits late, who in 2025 received a lump-sum back payment covering 2023–2024 and no other benefits in 2025.",
-       "why_no": "\"In 2025\": they treat the lump sum as benefits for earlier years, not 2025 benefits.",
-       "line": "ssb.benefits_if_any",
-       "irs_text": "i1040gi p. 31, Line 6c: \"If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year...\"",
-       "severity": "medium",
-       "fix": "Say \"received in 2025, including any lump-sum payment for earlier years\"."
+       "fix": "Reword to 'social security benefits of any kind (retirement, disability (SSDI), survivor, spouse's)' and add to the help that SSI is not included."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "7",
-       "who": "A railroad retiree, or the spouse, who received Form RRB-1099 (tier 1 social security equivalent benefits) and cannot tell whether their railroad annuity is 'treated as social security'.",
-       "why_no": "\"railroad retirement benefits treated as social security\" is a legal classification. The filer thinks of the annuity as a pension and answers no.",
+       "who": "A retired railroad worker, or the spouse of one, who receives a monthly annuity from the Railroad Retirement Board and gets both Form RRB-1099 and Form RRB-1099-R.",
+       "why_no": "The filer cannot tell whether their annuity is 'railroad retirement benefits treated as social security.' They see it as a railroad pension, report it as a pension, and answer no.",
        "line": "ssb.benefits_if_any",
        "irs_text": "i1040gi p. 31: \"If you received railroad retirement benefits treated as social security, you should receive a Form RRB-1099.\"",
+       "severity": "medium",
+       "fix": "Ask about something the filer can check: 'Did you or your spouse receive a Form RRB-1099 (not only an RRB-1099-R) from the Railroad Retirement Board?' Then classify the benefit after a yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A U.S. resident who receives Canada Pension Plan, Quebec Pension Plan or Old Age Security payments, or a German statutory pension (gesetzliche Rente), and gets no Form SSA-1099 or RRB-1099.",
+       "why_no": "The question itself says 'Form SSA-1099 or Form RRB-1099 reports them,' and they have neither form. The help also says 'a state pension from any other country is not this,' and they read their CPP or German Rente as exactly that, so they list it as other income.",
+       "line": "ssb.benefits_if_any",
+       "irs_text": "p915 p. 6: \"social security benefits paid by those countries to U.S. residents are treated for U.S. income tax purposes as if they were paid under the social security legislation of the United States. If you receive social security benefits from Canada or Germany, include them on line 1 of Worksheet 1.\"",
+       "severity": "medium",
+       "fix": "Ask a separate gate question: 'Did you or your spouse receive Canada Pension Plan, Quebec Pension Plan, Old Age Security, or German statutory pension (Deutsche Rentenversicherung) payments?' Remove the form reference from the main question, or add 'or a Canadian or German benefit statement.' Exclude only state pensions from other countries."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A child or young adult filing their own return whose survivor or dependent benefits were paid to a parent or other representative payee.",
+       "why_no": "The money went to the parent, so the filer did not 'get' it. The help speaks only from the parent's side ('benefits that belong to your child are not yours') and never says that benefits paid to a payee for you are yours.",
+       "line": "ssb.benefits_if_any",
+       "irs_text": "p915 p. 5: \"Benefits are included in the taxable income (to the extent they are taxable) of the person who has the legal right to receive the benefits.\"",
+       "severity": "medium",
+       "fix": "Add to the help: 'Answer Yes if benefits were paid in your name or for you, even if a parent or other representative payee received them.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A green card holder living abroad whose benefits were reported on Form SSA-1042S instead of Form SSA-1099, with 30% tax withheld in error.",
+       "why_no": "The question and the gated line both point to Form SSA-1099 and box 5. The filer holds a different form and may decide the question does not apply.",
+       "line": "ssb.benefits_if_any",
+       "irs_text": "p915 p. 5: \"If you are a green card holder and tax was withheld in error on your social security benefits because you have a foreign address... attach... A copy of the Form SSA-1042S.\"",
        "severity": "low",
-       "fix": "Ask about the fact the filer can check: \"Did you get a Form RRB-1099 (not only RRB-1099-R) from the Railroad Retirement Board?\""
+       "fix": "Name Form SSA-1042S and Form RRB-1042S in the help, and say how to find the net benefit amount on those forms."
       }
      ],
-     "prompt_sha": "494b366a3d7292e428a75df752650370fc6b6328b32d6304b8cb8256f2fa8920",
+     "prompt_sha": "a3337a808defdd28f220d08837b05280574fd49a82cac839fdf94947e02bea87",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.088168,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_ssb.any.e6025debbd80.1.response.txt"
+     "cost": 0.1469,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_ssb.any.463d3a24bfca.1.response.txt"
     }
    ],
    "condition": "ssb.any",
@@ -74,13 +94,31 @@
      ],
      "how": "cited pages",
      "locators": [
+      "p. 31, Lines 6a and 6b, Exception",
       "p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b",
-      "p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b, \"Box 4 will show the amount of any benefits you repaid in 2025\""
+      "p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b, \"Box 4 will show the amount of any benefits you repaid in 2025\"",
+      "p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b; , \"If you receive social security benefits from Canada or Germany, include them on line 1 of Worksheet 1.\"; , Who is taxed, \"Benefits are included in the taxable income (to the extent they are taxable) of the person who has the legal right to receive the benefits.\""
      ],
      "cols_pages": [
       31
      ],
      "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p915",
+     "revision": "2025 (Publication 915 (2025), Catalog Number 15320P, Nov 18, 2025)",
+     "text_sha256": "3b8570d8ff9230525a7ac07fec8d08b21d47a7534c5badab27e78c01be78e24f",
+     "pages": [
+      5,
+      6
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      5,
+      6
+     ],
+     "cols_sha256": "03c284c36f790a8359e8785e751d8785d1dde5caa7ba8e67ea3e8155a0adfbeb"
     }
    ]
   },

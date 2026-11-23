@@ -45,7 +45,7 @@ required_tier "$staged" ${parents[@]+"${parents[@]}"} || { echo "pre-commit: cou
 is_tier_green "$REQUIRED" "$staged" && exit 0
 
 whole="$(worktree_tree)"
-for t in full fast docs; do
+for t in full light docs; do
   m="$(marker_of "$t")"
   if [ -s "$m" ] && [ "$whole" = "$(cat "$m")" ] && [ "$whole" != "$staged" ]; then
     echo "pre-commit: the staged tree is only part of the tree the last $t-tier run tested; stage everything (git add -A) or rerun check-all" >&2

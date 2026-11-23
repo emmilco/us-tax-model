@@ -2374,6 +2374,22 @@
   },
   {
    "printed": "22",
+   "project_expr_sha256": "766c4b49101ff4e65a893fb623055c7bbd6b8d0e7689dc2720fb6d03b6c16485",
+   "second_expr_sha256": "e70dcee60cb8981f2047821c8b1384875ce65209371032b37607d03ededefff5",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3197 values compared, none different or missing: 2640 on 2640 fixture cases, 500 on 500 generated returns seed 20261026, 57 on 57 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "b115be620f1b5c0af4ffeed2e6ed110f96970cb2480cd5e3592b19839363a85f",
+   "date": "2026-11-22",
+   "run": "4e2822c30a563c76e1db4b5d06aa0fe453e51e2286188827cce4303a6c5f09db",
+   "subject_key": "8349396574bcc78b3dad463fe54b93fc70120071ce58cf4123f2834a7d56d24b",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "22",
    "project_expr_sha256": "c31c49658f879a128cbcfc4b205b4231f2bed42f2fb45edcfd7337daa887dc0e",
    "second_expr_sha256": "2ef942c34221e2c96d15d8ce26e82869b95aa1b8f3fc251309838bf4b040eae6",
    "ruling": "Ruling: model error; f1040s8812 p. 2, after line 20: \"No. If you are a bona fide resident of Puerto Rico, go to line 21. Otherwise, skip Part II-B and enter the smaller of line 17 or line 20 on line 27. Yes. If line 20 is equal to or more than line 17, skip Part II-B and enter the amount from line 17 on line 27.\" The candidate has no shown_when and shows a nonzero amount on 105 completed returns where the project hides the line (shown_when s8812.show_iib); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`; 1,495 fixtures, 500 generated returns seed 20261026, 79 partial records; 2,074 comparisons): 1,280 of 2,074 agree; differences 509 project-refuses, 146 candidate-shows-skipped, 123 candidate-unknown, 10 candidate-refuses, 6 project-unknown; on returns the full interview completes: 105 candidate-shows-skipped. Project stands.",

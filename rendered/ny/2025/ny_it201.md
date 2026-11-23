@@ -571,16 +571,39 @@
 ## 11 — `ny_it201.line11`
 
 - **IRS:** Rental real estate, royalties, partnerships, S corporations, trusts, etc.
-- **Encoded (NonNegDollars):** Enter $0 (ny.zero).
-- Note: Always zero for this tool, which refuses Schedule E on the federal return (scope.schedule1).
-- Expr: `{"op":"param","ref":"ny.zero"}`
+- **Encoded (Dollars):** Round s1 line 5 to the nearest multiple of (half up) $1.
+- Interpretation: amb.ny.2025.whole_dollars
+- Note: Federal Schedule 1 line 5, a loss entered with a minus sign (IT-201-I p. 3). It holds only Schedule E Part I rentals and royalties: the federal return refuses partnership, S corporation, estate and trust income (scope.k1).
+- Expr: `{"of":"s1.line5","op":"round","rule":"half_up","unit":100}`
 - Cite: [ny_it201] p. 2, Federal income and adjustments, "Rental real estate, royalties, partnerships, S corporations, trusts, etc." (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
+
+## (helper) — `ny_it201.royalty_part`
+
+- **Authored helper label:** Royalty income or loss included in federal Schedule E line 26 (the royalty properties' line 21)
+- **Encoded (Dollars):** Add sche helper "Positive line 21 of royalty properties" and sche helper "Royalty losses from line 21".
+- Expr: `{"of":["sche.roy_income","sche.roy_loss"],"op":"sum"}`
+- Cite: [ny_it201] p. 2, Federal income and adjustments, "Rental real estate included in line 11" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
+
+## (helper) — `ny_it201.rental_re_sche`
+
+- **Authored helper label:** Schedule E line 41 less its royalties: the rental real estate income or loss
+- **Encoded (Dollars):** Subtract helper "Royalty income or loss included in federal Schedule E line 26 (the royalty properties' line 21)" from sche line 41.
+- Expr: `{"from":"sche.line41","op":"subtract","take":"ny_it201.royalty_part"}`
+- Cite: [ny_it201] p. 2, Federal income and adjustments, "Rental real estate included in line 11" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
+
+## (helper) — `ny_it201.rental_re`
+
+- **Authored helper label:** Rental real estate income or loss included in line 11 (zero when the federal return has no Schedule E)
+- **Encoded (Dollars):** Choose — [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?" = true → helper "Schedule E line 41 less its royalties: the rental real estate income or loss"] [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.rental",{"const":true}],"op":"test"},"then":"ny_it201.rental_re_sche"},{"guard":{"eq":["scope.rental",{"const":false}],"op":"test"},"then":"ny_it201.zero"}],"op":"choose"}`
+- Cite: [ny_it201] p. 2, Federal income and adjustments, "Rental real estate included in line 11" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
 
 ## 12 — `ny_it201.line12`
 
 - **IRS:** Rental real estate included in line 11
-- **Encoded (NonNegDollars):** Enter $0 (ny.zero).
-- Expr: `{"op":"param","ref":"ny.zero"}`
+- **Encoded (Dollars):** Round helper "Rental real estate income or loss included in line 11 (zero when the federal return has no Schedule E)" to the nearest multiple of (half up) $1.
+- Interpretation: amb.ny.2025.whole_dollars
+- Expr: `{"of":"ny_it201.rental_re","op":"round","rule":"half_up","unit":100}`
 - Cite: [ny_it201] p. 2, Federal income and adjustments, "Rental real estate included in line 11" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
 
 ## 13 — `ny_it201.line13`
@@ -630,13 +653,6 @@
 - Expr: `{"of":"s1.line26","op":"round","rule":"half_up","unit":100}`
 - Cite: [ny_it201] p. 2, Federal income and adjustments, "Total federal adjustments to income" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
 
-## 19 — `ny_it201.line19`
-
-- **IRS:** Federal adjusted gross income (subtract line 18 from line 17)
-- **Encoded (Dollars):** Subtract line 18 from line 17.
-- Expr: `{"from":"ny_it201.line17","op":"subtract","take":"ny_it201.line18"}`
-- Cite: [ny_it201] p. 2, Federal income and adjustments, "Federal adjusted gross income ( subtract line 18 from line 17 )" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
-
 ## (helper) — `ny_it201.fagi_rounded`
 
 - **Authored helper label:** Federal adjusted gross income (Form 1040 line 11a) rounded to the whole dollar
@@ -644,6 +660,38 @@
 - Interpretation: amb.ny.2025.whole_dollars
 - Expr: `{"of":"f1040.line11a","op":"round","rule":"half_up","unit":100}`
 - Cite: [ny_it201i] p. 7, Lines 1 through 19: Federal income tax return information, "including your income and federal adjustments to income" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (helper) — `ny_it201.fagi_plus_line18`
+
+- **Authored helper label:** Federal adjusted gross income rounded to the whole dollar, plus line 18: what line 17 is when line 19 equals federal adjusted gross income
+- **Encoded (Dollars):** Add helper "Federal adjusted gross income (Form 1040 line 11a) rounded to the whole dollar" and line 18.
+- Interpretation: amb.ny.2025.whole_dollars
+- Expr: `{"of":["ny_it201.fagi_rounded","ny_it201.line18"],"op":"sum"}`
+- Cite: [ny_it201] p. 2, Federal income and adjustments, "Federal adjusted gross income ( subtract line 18 from line 17 )" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
+
+## (helper) — `ny_it201.line19_gap`
+
+- **Authored helper label:** Line 17 less line 18, less federal adjusted gross income rounded to the whole dollar
+- **Encoded (Dollars):** Subtract helper "Federal adjusted gross income rounded to the whole dollar, plus line 18: what line 17 is when line 19 equals federal adjusted gross income" from line 17.
+- Interpretation: amb.ny.2025.whole_dollars
+- Expr: `{"from":"ny_it201.line17","op":"subtract","take":"ny_it201.fagi_plus_line18"}`
+- Cite: [ny_it201i] p. 7, Lines 1 through 19: Federal income tax return information, "The calculation of your New York State, New York City, and Yonkers income tax is based on the information you reported on your federal income tax return, including your income and federal adjustments to income." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (gate) — `ny_it201.gate.line19_gap`
+
+- **Authored helper label:** Line 19 differs from federal adjusted gross income by more than $8, the most that rounding lines 1 to 11, 13 to 16 and 18 to the whole dollar (16 entries, at most 50 cents each) can explain
+- **Encoded (Bool):** (helper "Line 17 less line 18, less federal adjusted gross income rounded to the whole dollar" > $8 or helper "Line 17 less line 18, less federal adjusted gross income rounded to the whole dollar" < -$8)
+- Interpretation: amb.ny.2025.whole_dollars
+- Expr: `{"any":[{"gt":["ny_it201.line19_gap",{"const":800}],"op":"test"},{"lt":["ny_it201.line19_gap",{"const":-800}],"op":"test"}],"op":"test"}`
+- Cite: [ny_it201i] p. 7, Lines 1 through 19: Federal income tax return information, "including your income and federal adjustments to income" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## 19 — `ny_it201.line19`
+
+- **IRS:** Federal adjusted gross income (subtract line 18 from line 17)
+- **Encoded (Dollars):** Subtract line 18 from line 17.
+- **Refusal:** when ny_it201.gate.line19_gap is true, cannot complete Form IT-201 lines 1 to 19 (federal income and adjustments). Federal adjusted gross income includes an amount this tool does not carry to lines 1 to 18, so line 19 would not match the federal return. Cite: [ny_it201i] p. 7, Lines 1 through 19: Federal income tax return information, "The calculation of your New York State, New York City, and Yonkers income tax is based on the information you reported on your federal income tax return, including your income and federal adjustments to income." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+- Expr: `{"from":"ny_it201.line17","op":"subtract","take":"ny_it201.line18"}`
+- Cite: [ny_it201] p. 2, Federal income and adjustments, "Federal adjusted gross income ( subtract line 18 from line 17 )" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
 
 ## (check) — `ny_it201.line19_agrees`
 
@@ -754,10 +802,127 @@
 - Expr: `{"eq":["ny_it201.ask.it225",{"const":true}],"op":"test"}`
 - Cite: [ny_it201i] p. 7, Step 4, "See below and Form IT-225, New York State Modifications, and its instructions." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
+## (helper) — `ny_it201.fed_bonus`
+
+- **Authored helper label:** Federal special depreciation allowance (IRC § 168(k)) on Schedule C property and vehicles placed in service in 2025, all persons
+- **Encoded (NonNegDollars):** Add person.bonus_all over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.bonus_all","op":"sum_over"}`
+- Cite: [ny_it225i] p. 12, A-209, "If you claimed a depreciation deduction for such property" (2025; sha256 4a2de3cf)
+
+## (helper) — `ny_it201.fed_prior_bonus`
+
+- **Authored helper label:** Federal special depreciation allowance claimed in an earlier year on Schedule C property (other than vehicles) placed in service before 2025, all persons
+- **Encoded (NonNegDollars):** Add person.prior_bonus_assets over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.prior_bonus_assets","op":"sum_over"}`
+- Cite: [ny_it225i] p. 12, A-209, "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003." (2025; sha256 4a2de3cf)
+
+## (helper) — `ny_it201.fed_suv179`
+
+- **Authored helper label:** Federal section 179 deduction elected in 2025 on SUVs rated over 6,000 pounds, all persons
+- **Encoded (NonNegDollars):** Add person.suv179 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.suv179","op":"sum_over"}`
+- Cite: [ny_it225i] p. 11, A-208, "If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds" (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.gate.depr_168k`
+
+- **Authored helper label:** IRC § 168(k) property: a federal special depreciation allowance this year, or property depreciated this year that took one in an earlier year
+- **Encoded (Bool):** (helper "Federal special depreciation allowance (IRC § 168(k)) on Schedule C property and vehicles placed in service in 2025, all persons" > $0 or helper "Federal special depreciation allowance claimed in an earlier year on Schedule C property (other than vehicles) placed in service before 2025, all persons" > $0)
+- Expr: `{"any":[{"gt":["ny_it201.fed_bonus",{"const":0}],"op":"test"},{"gt":["ny_it201.fed_prior_bonus",{"const":0}],"op":"test"}],"op":"test"}`
+- Cite: [ny_it225i] p. 12, A-209, "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003." (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.gate.suv_179`
+
+- **Authored helper label:** A federal section 179 deduction on a sport utility vehicle over 6,000 pounds
+- **Encoded (Bool):** helper "Federal section 179 deduction elected in 2025 on SUVs rated over 6,000 pounds, all persons" > $0
+- Expr: `{"gt":["ny_it201.fed_suv179",{"const":0}],"op":"test"}`
+- Cite: [ny_it225i] p. 11, A-208, "If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds" (2025; sha256 4a2de3cf)
+
+## (question) — `ny_it201.ask.alimony_later`
+
+- **Authored helper label:** Applicable alimony or separate maintenance payments received or paid in 2025
+- **Encoded (Bool):** Input — During 2025, did you (or, on a joint return, your spouse) receive or pay any applicable alimony or separate maintenance payment, that is, a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018, or under one executed on or before that date and modified after it, if the modification expressly provides that the modifications of Tax Law § 612(w) apply?
+- Expr: `{"op":"input","source":"During 2025, did you (or, on a joint return, your spouse) receive or pay any applicable alimony or separate maintenance payment, that is, a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018, or under one executed on or before that date and modified after it, if the modification expressly provides that the modifications of Tax Law § 612(w) apply?"}`
+- Cite: [ny_it225i] p. 10, A-119, "An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018."; p. 18, S-136, "If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid." (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.alimony_later_if_not_old`
+
+- **Authored helper label:** Applicable alimony received or paid in 2025, asked only when none of the alimony paid or received in 2025 was under an agreement of 2018 or earlier (otherwise no)
+- **Encoded (Bool):** Choose — [s1 helper "Alimony under an agreement of 2018 or earlier, or a recapture of alimony, asked only when alimony was paid or received since the start of 2023 (false otherwise)" = false → helper "Applicable alimony or separate maintenance payments received or paid in 2025"] [s1 helper "Alimony under an agreement of 2018 or earlier, or a recapture of alimony, asked only when alimony was paid or received since the start of 2023 (false otherwise)" = true → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1.alimony_if_any",{"const":false}],"op":"test"},"then":"ny_it201.ask.alimony_later"},{"guard":{"eq":["s1.alimony_if_any",{"const":true}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it225i] p. 10, A-119, "a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018" (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.alimony_later_if_any`
+
+- **Authored helper label:** Applicable alimony received or paid in 2025 (asked only when the federal answers say alimony was paid or received since 2023 and none of it in 2025 under an agreement of 2018 or earlier; otherwise no)
+- **Encoded (Bool):** Choose — [s1 helper "Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2023, 2024 or 2025?" = true → helper "Applicable alimony received or paid in 2025, asked only when none of the alimony paid or received in 2025 was under an agreement of 2018 or earlier (otherwise no)"] [s1 helper "Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2023, 2024 or 2025?" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1.alimony_any",{"const":true}],"op":"test"},"then":"ny_it201.alimony_later_if_not_old"},{"guard":{"eq":["s1.alimony_any",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it225i] p. 10, A-119, "If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received." (2025; sha256 4a2de3cf)
+
+## (question) — `ny_it201.ask.nyc_flex`
+
+- **Authored helper label:** A New York City flexible benefits program (IRC 125) amount on a Form W-2
+- **Encoded (Bool):** Input — Does any 2025 federal Form W-2 issued to you (or, on a joint return, your spouse) show an amount deducted or deferred from salary under a flexible benefits program (IRC 125) established by New York City or another New York City public employer, such as the City University of New York, NYC Health and Hospitals Corporation, NYC Transit Authority, NYC Housing Authority, NYC Board of Education, NYC School Construction Authority, NYC Rehabilitation Mortgage Insurance Corporation, the Manhattan and Bronx Surface Transit Operating Authority or the Staten Island Rapid Transit Authority?
+- Expr: `{"op":"input","source":"Does any 2025 federal Form W-2 issued to you (or, on a joint return, your spouse) show an amount deducted or deferred from salary under a flexible benefits program (IRC 125) established by New York City or another New York City public employer, such as the City University of New York, NYC Health and Hospitals Corporation, NYC Transit Authority, NYC Housing Authority, NYC Board of Education, NYC School Construction Authority, NYC Rehabilitation Mortgage Insurance Corporation, the Manhattan and Bronx Surface Transit Operating Authority or the Staten Island Rapid Transit Authority?"}`
+- Cite: [ny_it225i] p. 7, A-101, "If any federal Form W-2 wage and tax statement shows that an amount was deducted or deferred from your salary under a flexible benefits program established by New York City or certain other New York City public employers on your or a decedent’s behalf, then enter that amount." (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.nyc_flex_if_public`
+
+- **Authored helper label:** A New York City flexible benefits program amount (asked only after a Form W-2 from a New York public employer; otherwise no)
+- **Encoded (Bool):** Choose — [helper "A public employer in New York (asked only when the return has a Form W-2; otherwise no)" = true → helper "A New York City flexible benefits program (IRC 125) amount on a Form W-2"] [helper "A public employer in New York (asked only when the return has a Form W-2; otherwise no)" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.public_job_if_w2",{"const":true}],"op":"test"},"then":"ny_it201.ask.nyc_flex"},{"guard":{"eq":["ny_it201.public_job_if_w2",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it225i] p. 7, A-101, "established by New York City or certain other New York City public employers" (2025; sha256 4a2de3cf)
+
+## (helper) — `ny_it201.has_depreciable_business`
+
+- **Authored helper label:** A Schedule C, or rental or royalty property, on the federal return
+- **Encoded (Bool):** (s1 helper "The return has a Schedule C" = true or scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?" = true)
+- Expr: `{"any":[{"eq":["s1.has_sc",{"const":true}],"op":"test"},{"eq":["scope.rental",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [ny_it225i] p. 20, S-213, "If you claimed a depreciation deduction for such property" (2025; sha256 4a2de3cf)
+
+## (question) — `ny_it201.ask.prior_168k`
+
+- **Authored helper label:** IRC § 168(k) property of an earlier year, or an earlier Form IT-398
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) claim a federal special depreciation allowance (IRC § 168(k)) in a year before 2025 on property placed in service on or after June 1, 2003 that you still held during 2025 (other than resurgence zone or New York Liberty Zone property), including property fully deducted in that year, or file Form IT-398 for an earlier year?
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) claim a federal special depreciation allowance (IRC § 168(k)) in a year before 2025 on property placed in service on or after June 1, 2003 that you still held during 2025 (other than resurgence zone or New York Liberty Zone property), including property fully deducted in that year, or file Form IT-398 for an earlier year?"}`
+- Cite: [ny_it225i] p. 20, S-213, "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003." (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.prior_168k_if_business`
+
+- **Authored helper label:** Earlier-year IRC § 168(k) property (asked only with a Schedule C or rental or royalty property; otherwise no)
+- **Encoded (Bool):** Choose — [helper "A Schedule C, or rental or royalty property, on the federal return" = true → helper "IRC § 168(k) property of an earlier year, or an earlier Form IT-398"] [helper "A Schedule C, or rental or royalty property, on the federal return" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_depreciable_business",{"const":true}],"op":"test"},"then":"ny_it201.ask.prior_168k"},{"guard":{"eq":["ny_it201.has_depreciable_business",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it225i] p. 20, S-213, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter" (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.gate.alimony_later`
+
+- **Authored helper label:** Applicable alimony or separate maintenance payments received (A-119) or paid (S-136)
+- **Encoded (Bool):** helper "Applicable alimony received or paid in 2025 (asked only when the federal answers say alimony was paid or received since 2023 and none of it in 2025 under an agreement of 2018 or earlier; otherwise no)" = true
+- Expr: `{"eq":["ny_it201.alimony_later_if_any",{"const":true}],"op":"test"}`
+- Cite: [ny_it225i] p. 10, A-119, "If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received." (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.gate.nyc_flex`
+
+- **Authored helper label:** A New York City flexible benefits program amount (A-101)
+- **Encoded (Bool):** helper "A New York City flexible benefits program amount (asked only after a Form W-2 from a New York public employer; otherwise no)" = true
+- Expr: `{"eq":["ny_it201.nyc_flex_if_public",{"const":true}],"op":"test"}`
+- Cite: [ny_it225i] p. 7, A-101, "then enter that amount" (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.gate.prior_168k`
+
+- **Authored helper label:** IRC § 168(k) property of an earlier year not on the federal asset lists (S-213)
+- **Encoded (Bool):** helper "Earlier-year IRC § 168(k) property (asked only with a Schedule C or rental or royalty property; otherwise no)" = true
+- Expr: `{"eq":["ny_it201.prior_168k_if_business",{"const":true}],"op":"test"}`
+- Cite: [ny_it225i] p. 20, S-213, "If you claimed a depreciation deduction for such property" (2025; sha256 4a2de3cf)
+
 ## 23 — `ny_it201.line23`
 
 - **IRS:** Other (Form IT-225, line 9)
 - **Encoded (NonNegDollars):** Enter $0 (ny.zero).
+- **Refusal:** when ny_it201.gate.alimony_later is true, cannot complete Form IT-225 (addition A-119, alimony received, and subtraction S-136, alimony paid, under an agreement made after 2018). New York adds alimony received under such an agreement to income and subtracts alimony paid under it; this tool does not compute Form IT-225. Cite: [ny_it225i] p. 10, A-119, "If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received." (2025; sha256 4a2de3cf)
+- **Refusal:** when ny_it201.gate.depr_168k is true, cannot complete Form IT-225 (addition A-209 and subtraction S-213) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property. New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute. Cite: [ny_it225i] p. 12, A-209, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to determine the amount to enter" (2025; sha256 4a2de3cf)
+- **Refusal:** when ny_it201.gate.suv_179 is true, cannot complete Form IT-225 (addition A-208, sport utility vehicle expense deduction). New York adds back a federal section 179 deduction on a sport utility vehicle over 6,000 pounds (unless you are an eligible farmer); this tool does not compute Form IT-225. Cite: [ny_it225i] p. 11, A-208, "If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds" (2025; sha256 4a2de3cf)
+- **Refusal:** when ny_it201.gate.nyc_flex is true, cannot complete Form IT-225 (addition A-101, New York City flexible benefits program). New York adds back an amount a Form W-2 shows deducted or deferred under a New York City flexible benefits program; this tool does not compute Form IT-225. Cite: [ny_it225i] p. 7, A-101, "If any federal Form W-2 wage and tax statement shows that an amount was deducted or deferred from your salary under a flexible benefits program established by New York City or certain other New York City public employers on your or a decedent’s behalf, then enter that amount." (2025; sha256 4a2de3cf)
+- **Refusal:** when ny_it201.gate.prior_168k is true, cannot complete Form IT-225 (addition A-209 and subtraction S-213) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property. New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute. Cite: [ny_it225i] p. 12, A-209, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to determine the amount to enter" (2025; sha256 4a2de3cf)
 - **Refusal:** when ny_it201.gate.it225 is true, cannot complete Form IT-225, New York State Modifications. Other New York additions and subtractions are not computed by this tool. Cite: [ny_it201i] p. 8, Line 23, "Enter on line 23 the amount from Form IT-225, line 9. Submit Form IT-225 with your return." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - Expr: `{"op":"param","ref":"ny.zero"}`
 - Cite: [ny_it201] p. 2, New York additions, "Other (Form IT-225, line 9)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
@@ -977,6 +1142,9 @@
 
 - **IRS:** Other (Form IT-225, line 18)
 - **Encoded (NonNegDollars):** Enter $0 (ny.zero).
+- **Refusal:** when ny_it201.gate.alimony_later is true, cannot complete Form IT-225 (subtraction S-136, alimony paid, and addition A-119, alimony received, under an agreement made after 2018). New York adds alimony received under such an agreement to income and subtracts alimony paid under it; this tool does not compute Form IT-225. Cite: [ny_it225i] p. 18, S-136, "If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid." (2025; sha256 4a2de3cf)
+- **Refusal:** when ny_it201.gate.depr_168k is true, cannot complete Form IT-225 (subtraction S-213 and addition A-209) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property. New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute. Cite: [ny_it225i] p. 21, S-213, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter" (2025; sha256 4a2de3cf)
+- **Refusal:** when ny_it201.gate.prior_168k is true, cannot complete Form IT-225 (subtraction S-213 and addition A-209) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property. New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute. Cite: [ny_it225i] p. 21, S-213, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter" (2025; sha256 4a2de3cf)
 - **Refusal:** when ny_it201.gate.it225 is true, cannot complete Form IT-225, New York State Modifications. Other New York additions and subtractions are not computed by this tool. Cite: [ny_it201i] p. 10, Line 31, "Enter on line 31 the amount from Form IT-225, line 18. Submit Form IT-225 with your return." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - Expr: `{"op":"param","ref":"ny.zero"}`
 - Cite: [ny_it201] p. 2, New York subtractions, "Other ( Form IT-225, line 18)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)

@@ -4,8 +4,19 @@ part: Jobs, tips and overtime
 profile: full
 sets:
   tip_job:
-    says: One person who got tips at one employer and has a social security number valid for work.
+    says: One person who got tips at one employer, whose Form W-2 shows $40,000 of wages and tips, and who has a social security number valid for work.
     answers:
+      $w2@person[taxpayer]: [diner]
+      person[taxpayer].w2[diner].box1: 4000000
+      person[taxpayer].w2[diner].box2: 300000
+      person[taxpayer].w2[diner].box4: 248000
+      person[taxpayer].w2[diner].box5: 4000000
+      person[taxpayer].w2[diner].box6: 58000
+      scope.w2_marks: false
+      s2.w2_marks: false
+      s1.nqdc_pension: false
+      scope.artist_official: false
+      scope.excess_deferral: false
       s1a.tips: true
       person[taxpayer].work_ssn: true
       $tipjob@person[taxpayer]: [diner]
@@ -14,8 +25,19 @@ sets:
     answers:
       person[taxpayer].tipjob[diner].listed: true
   ot_job:
-    says: One person who was paid overtime by one employer and has a social security number valid for work.
+    says: One person who was paid overtime by one employer, whose Form W-2 shows $40,000 of wages, and who has a social security number valid for work.
     answers:
+      $w2@person[taxpayer]: [plant]
+      person[taxpayer].w2[plant].box1: 4000000
+      person[taxpayer].w2[plant].box2: 300000
+      person[taxpayer].w2[plant].box4: 248000
+      person[taxpayer].w2[plant].box5: 4000000
+      person[taxpayer].w2[plant].box6: 58000
+      scope.w2_marks: false
+      s2.w2_marks: false
+      s1.nqdc_pension: false
+      scope.artist_official: false
+      scope.excess_deferral: false
       s1a.overtime: true
       person[taxpayer].work_ssn: true
       $otjob@person[taxpayer]: [plant]
@@ -32,6 +54,17 @@ rows:
     expect:
       proceeds:
         person[taxpayer].tipjob[diner].tips: 900000
+  - id: jobs.tips_over_wages
+    design: lane fx-itemized (the tips are part of the W-2 Medicare wages and tips; a consistency check)
+    situation: A server enters more tips than the Medicare wages and tips on all of their Forms W-2 together.
+    uses: [tip_job, listed_work]
+    answers:
+      person[taxpayer].tipjob[diner].other_work: false
+      person[taxpayer].tipjob[diner].charged: false
+      person[taxpayer].tipjob[diner].unlawful: false
+      person[taxpayer].tipjob[diner].tips: 50000000
+    expect:
+      refused: s1a.tips_over_wages
   - id: jobs.tips_work_not_listed
     design: lane 3, tipjob.qualified taken apart (the occupation is not on the list; today such a filer answers No to s1a.tips)
     situation: A person got tips at a job that is not on the list of tipped occupations; the return is completed without the deduction and nothing more is asked about the tips.

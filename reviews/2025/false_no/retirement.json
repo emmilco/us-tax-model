@@ -1,49 +1,120 @@
 {
  "form": "retirement",
  "reviews": {
+  "gate:retirement.ask_after59": {
+   "subject_sha": "84ff7fb7e399ab38ee4d8a97310d6a99f89d092aaeb6e3eb8553f5dd23a3e9bc",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer born in 1965 or 1966 who took a Roth IRA distribution after turning 59½ in 2025. The custodian coded it J in box 7 instead of Q or T, and the distribution includes taxable earnings, for example because the 5-year period is not met.",
+       "why_no": "The computed gate only recognizes code 1 or code S (a SIMPLE IRA within 2 years) as an early distribution. Code J makes the gate false, so the age question is never asked and the line is set to false.",
+       "line": "retirement.after59_if_open",
+       "irs_text": "i5329 (2025) p. 5, Line 2, exception 12: \"Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older.\"",
+       "severity": "high",
+       "fix": "Add code J to the early-distribution helper for this gate, so it reads code 1, J, or S, and ask the same age question for a Roth distribution coded J."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose plan dated a check before their 59½ date, but who received it on or after that date, for example a check mailed in late December that arrived after the filer turned 59½.",
+       "why_no": "The question asks about age on \"the date of every payment.\" The filer reads that as the payer's issue date and answers No, while the IRS text measures the amount \"you received when you were age 59 1/2 or older.\"",
+       "line": "retirement.after59_if_open",
+       "irs_text": "i5329 (2025) p. 5, Line 2, exception 12: \"Include on line 2 the amount you received when you were age 59 1/2 or older.\"",
+       "severity": "low",
+       "fix": "Reword the question as \"Were you age 59½ or older on the date you received every payment of this money?\" and match the help text."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer born in 1964 or earlier, clearly over 59½ for all of 2025, whose distribution was coded 1 in error. The computed gate is false because the birth year settles the age.",
+       "why_no": "The gate excludes this filer because their age is settled. Unless another line treats a settled age of 59½ or older as exception 12, the miscoded amount gets no exclusion.",
+       "line": "retirement.after59_if_open",
+       "irs_text": "i5329 (2025) p. 5, Line 2, exception 12: \"Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R.\"",
+       "severity": "low",
+       "fix": "Confirm that a separate computed path applies exception 12 automatically when the birth year shows 59½ or older at every payment in 2025 (born before 1965 with code 1, J, or S). If no such path exists, add one."
+      }
+     ],
+     "prompt_sha": "2088a8b636f0b680010379ed0dac3bc64d907d0790e1ae8d23a78c53ac0e69b5",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.07772399999999999,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.ask_after59.84ff7fb7e399.1.response.txt"
+    }
+   ],
+   "condition": "retirement.ask_after59",
+   "lines": [
+    "retirement.after59_if_open"
+   ],
+   "inputs": [
+    "retirement.after59"
+   ],
+   "used": [
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 2, exception 12, \"Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older.\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    }
+   ]
+  },
   "gate:retirement.born_before_averaging_date_if_plan": {
-   "subject_sha": "34886951b38c6e7090e4a36e83de1cb995bdbe4378e2f735949ae7111f69b871",
+   "subject_sha": "978c87eb2516e66227929d1eb9c680d499fc8a0896307ac6651a956e1bf6fc19",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer born after 1936 who, as an alternate payee under a QDRO, received their former spouse's whole plan balance in 2025. The former spouse is the plan participant and was born in 1933.",
-       "why_no": "The parenthetical '(you, or the person you inherited it from)' reads as the complete list. The filer did not inherit the balance and was born after 1936, so they answer about themselves and say no.",
-       "line": "retirement.lump_sum_if_born_before_averaging_date",
-       "irs_text": "i1040gi p. 30, Lump-Sum Distributions TIP: 'If you or the plan participant was born before January 2, 1936, you could pay less tax on the distribution. See Form 4972.'",
-       "severity": "medium",
-       "fix": "Ask about the plan participant, the employee whose plan it was, and say this covers you, your spouse, a former spouse whose plan was divided by a court order (QDRO), or anyone who died and left it to you, directly or through another heir."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A successor beneficiary. The filer inherited the plan balance from their mother (born 1942), who had inherited it from her husband, the participant (born 1931). The whole balance was paid out in 2025.",
-       "why_no": "'The person you inherited it from' points to the mother, who was born after 1936, so the filer answers no. The participant whose birth date controls is never asked about.",
-       "line": "retirement.lump_sum_if_born_before_averaging_date",
-       "irs_text": "i1040gi p. 30: 'If you or the plan participant was born before January 2, 1936, you could pay less tax on the distribution. See Form 4972.'",
-       "severity": "medium",
-       "fix": "Ask whether the original plan participant (the employee who earned the benefit, even if it passed through more than one heir) was born before January 2, 1936."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "On a joint return, the spouse (born 1934) received a total distribution of their own plan balance. The primary filer (born 1950) answers the interview for that spouse's Form 1099-R.",
-       "why_no": "The words 'you, or the person you inherited it from' lead the filer to answer about their own birth date (1950) and say no, although the spouse earned the plan.",
-       "line": "retirement.lump_sum_if_born_before_averaging_date",
-       "irs_text": "i1040gi p. 30: 'If you or the plan participant was born before January 2, 1936, you could pay less tax on the distribution. See Form 4972.'",
+       "who": "A married couple filing jointly enters the spouse's Form 1099-R. The spouse was born in 1934 and took a total distribution from a former employer's qualified plan. The filer at the keyboard was born in 1942.",
+       "why_no": "The gate's parenthetical, '(you, or the person you inherited it from)', names only 'you' and an inheritance. The filer answers with their own 1942 birth date. Unlike the gated question, the gate never says 'or your spouse on a joint return'.",
+       "line": "retirement.lump_sum_if_born_before_averaging_date (the Yes that ends the interview, and so the refusal, is never reached)",
+       "irs_text": "\"If you or the plan participant was born before January 2, 1936, you could pay less tax on the distribution. See Form 4972.\" (i1040gi 2025, p. 30, Lump-Sum Distributions)",
        "severity": "medium",
-       "fix": "Name the recipient of each Form 1099-R and ask about that person's plan participant, for example: 'Was the employee who earned this plan balance (you, your spouse, or the person it came from) born before January 2, 1936?'"
+       "fix": "Word the gate per document and person: 'Was the plan participant who earned this balance (you, your spouse on a joint return, or the person you inherited it from) born before January 2, 1936?' Better, ask for the participant's birth date and compute the condition."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A former spouse born in 1948 receives, under a qualified domestic relations order, a distribution of the entire share of an ex-husband's qualified plan balance. The ex-husband, the plan participant, was born in 1934 and is still living.",
+       "why_no": "The parenthetical lists only 'you, or the person you inherited it from'. The alternate payee did not earn the balance and did not inherit it, so they read the list as complete and answer for themselves (born 1948).",
+       "line": "retirement.lump_sum_if_born_before_averaging_date (the out-of-scope Form 4972 case and its refusal are missed)",
+       "irs_text": "\"If you or the plan participant was born before January 2, 1936, you could pay less tax on the distribution. See Form 4972.\" (i1040gi 2025, p. 30); see also \"distributions under qualified domestic relations orders\" (p. 30, Rollovers)",
+       "severity": "medium",
+       "fix": "Name the plan participant directly and add the alternate-payee case: '…(you, your spouse, a former spouse whose plan paid you under a court order (QDRO), or the person you inherited it from)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A successor beneficiary (born 1975) receives the whole remaining plan balance. They inherited the balance from their mother (born 1950), who had inherited it from the original participant, a grandfather born in 1933.",
+       "why_no": "'The person you inherited it from' is the mother, born 1950, so the filer answers no. The instructions key the rule to the plan participant.",
+       "line": "retirement.lump_sum_if_born_before_averaging_date",
+       "irs_text": "\"If you or the plan participant was born before January 2, 1936…\" (i1040gi 2025, p. 30)",
+       "severity": "low",
+       "fix": "Say 'the plan participant (the employee who originally earned the balance)' instead of 'the person you inherited it from'."
       }
      ],
-     "prompt_sha": "f740adf9be0c496c44c7dc9a40bac21d1879a3d0bcdb94d090fa129ec60438ce",
+     "prompt_sha": "96aef82c34cf7412b9e2e54398ee5b6c35038224363a0cccfcf9a9cd30785f69",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.09014,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_retirement.born_before_averaging_date_if_plan.34886951b38c.1.response.txt"
+     "cost": 0.09142,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.born_before_averaging_date_if_plan.978c87eb2516.1.response.txt"
     }
    ],
    "condition": "retirement.born_before_averaging_date_if_plan",
@@ -78,7 +149,7 @@
    ]
   },
   "gate:retirement.cost_any_if_plan": {
-   "subject_sha": "cff5c4b51507fb5e008187923c479b09a1fbd81f8ea2483514013c3bd3cf0cf0",
+   "subject_sha": "4c2930b21e042bce64846502926b9644b709be5f3cb87dedaf3d023b5dd92af9",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -86,70 +157,80 @@
       {
        "kind": "FALSE_NO",
        "pattern": "8",
-       "who": "The beneficiary of an employee who died before August 21, 1996, now receiving a survivor annuity from a plan the employee funded only with pre-tax or employer money. The beneficiary is entitled to the death benefit exclusion of up to $5,000.",
-       "why_no": "No money paid into the plan was ever taxed when it went in, and there are no after-tax contributions. The truthful answer to the question as worded is No, even though the instructions treat the death benefit exclusion as part of the cost.",
+       "who": "A beneficiary receiving a survivor annuity from a deceased employee who died before August 21, 1996, where neither the employee nor the beneficiary made after-tax contributions. The beneficiary is entitled to the death benefit exclusion of up to $5,000.",
+       "why_no": "The gate asks only whether money 'paid into' the plan was 'already taxed when it went in', and boxes 5 and 9b are blank. Nothing taxed went in, so No is the truthful answer, yet the exclusion counts as cost for the Simplified Method.",
        "line": "retirement.annuity_if_cost",
-       "irs_text": "i1040gi p. 29, Simplified Method Worksheet, Before you begin: \"If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2 below.\"",
+       "irs_text": "i1040gi p. 29, Simplified Method Worksheet: 'If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2 below.'",
        "severity": "high",
-       "fix": "Ask a broader cost gate: \"Do you have any cost (tax-free basis) in this pension or annuity? This includes after-tax contributions by you or the person who earned the pension, an amount in box 5 or box 9b, or, if you are the beneficiary of an employee who died before August 21, 1996, a death benefit exclusion.\" Add a separate yes/no about a death before August 21, 1996 for beneficiaries."
+       "fix": "Add a gate branch: 'Are you receiving this as the survivor or beneficiary of an employee who died before August 21, 1996?' A yes should open the Simplified Method questions with the death benefit exclusion as cost."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A widow or other beneficiary receiving a survivor annuity under a joint and survivor pension. The retiree, now deceased, made after-tax contributions. The survivor's Form 1099-R may leave box 5 and box 9b blank.",
-       "why_no": "The survivor never paid anything into the plan and reads \"money paid into this pension\" and \"after-tax contributions\" as their own. With the boxes blank, they answer No.",
-       "line": "retirement.annuity_if_cost; retirement.general_rule_if_cost; retirement.started_before_simplified_method_date_if_cost",
-       "irs_text": "p575 p. 34, Survivors of retirees: \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\"; i1040gi p. 30: \"If you are the survivor of a retiree, use the retiree's age\"",
-       "severity": "medium",
-       "fix": "Say \"by you or by the person who earned this pension (for a survivor or beneficiary, the deceased employee or retiree)\". Tell survivors to check the retiree's prior-year returns or worksheets."
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A plan participant whose plan basis did not come from after-tax contributions at the time of deposit. Examples are a participant taxed in an earlier year on a deemed distribution from a defaulted plan loan, or one taxed each year on employer-paid life insurance costs inside the plan. Another is an employee taxed on employer contributions in a year the plan was not qualified.",
+       "why_no": "The words 'already taxed when it went in' and 'after-tax contributions' describe the filer's own contributions taxed at deposit. These amounts were taxed later, or were employer money, and the payer often leaves box 9b blank.",
+       "line": "retirement.annuity_if_cost",
+       "irs_text": "i1040gi p. 30, Cost: 'Your cost is generally your net investment in the plan as of the annuity starting date. It doesn't include pre-tax contributions.'",
+       "severity": "high",
+       "fix": "Ask: 'Do you (or the person you inherited from) have any amount in this plan that was already taxed to you, whether when it went in or later? This includes after-tax contributions, employer contributions or insurance costs you paid tax on, or a defaulted plan loan reported as income.' Use box 5 or 9b as examples of yes, not as the test."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A retiree whose payer leaves box 5 and box 9b blank and checks box 2b \"taxable amount not determined\". This is common for older or governmental plans, and in later years after the first. The retiree has records of after-tax contributions.",
-       "why_no": "The help says \"An amount in box 5 or box 9b means yes.\" A filer reads the boxes as the test, sees them blank, and answers No.",
-       "line": "retirement.annuity_if_cost; retirement.general_rule_if_cost; retirement.started_before_simplified_method_date_if_cost; retirement.lump_at_start_if_cost",
-       "irs_text": "i1040gi p. 28: \"If your Form 1099-R doesn't show the taxable amount, you must use the General Rule ... But if your annuity starting date ... was after July 1, 1986, see Simplified Method\"; p. 30, Cost: \"Your net investment may be shown in box 9b\"",
-       "severity": "medium",
-       "fix": "Add: \"Blank boxes do not mean No. Answer Yes if your records, a prior year's Simplified Method Worksheet, or the plan show after-tax contributions, or if box 2b 'taxable amount not determined' is checked and you are unsure.\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "An employee whose cost includes employer amounts that were taxed to them when made. Examples are the cost of life insurance protection under the plan included in their wages, or employer contributions reported as income. The employee made no voluntary after-tax contributions.",
-       "why_no": "The parenthetical \"(after-tax contributions)\" reads as the employee's own after-tax deposits, so the filer answers No.",
+       "who": "A retiree who made after-tax contributions to a pension plan or a 401(k), shown in the retiree's own records or plan statements. The payer left boxes 5 and 9b blank and checked 'taxable amount not determined', as many payers do.",
+       "why_no": "The help says 'An amount in box 5 or box 9b means yes.' A filer reads the blank boxes as meaning no, even though the gated Simplified Method question itself refers to 'box 9b or your records'.",
        "line": "retirement.annuity_if_cost",
-       "irs_text": "i1040gi p. 30, Cost: \"Your cost is generally your net investment in the plan ... It doesn't include pre-tax contributions\"; p. 30, Rollovers: \"subtract any contributions (usually shown in box 5) that were taxable to you when made\"",
+       "irs_text": "i1040gi p. 30, Cost: 'Your net investment may be shown in box 9b of Form 1099-R.' i1040gi p. 28: 'If your Form 1099-R doesn't show the taxable amount, you must use the General Rule ... to figure the taxable part.'",
        "severity": "medium",
-       "fix": "Reword: \"Was any amount put into this plan taxed to you when it went in? This includes your after-tax contributions and any employer amounts reported as income to you at the time.\""
+       "fix": "Change the help to: 'An amount in box 5 or 9b means yes, but blank boxes do not mean no; also check your plan statements or records for after-tax contributions.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A person receiving payments from a commercial annuity they bought themselves from an insurance company with savings (a nonqualified annuity).",
-       "why_no": "The filer does not think of buying a policy with savings as money \"already taxed when it went in\" or as \"contributions\". Box 5 and box 9b may be blank or confusing, so they answer No. The tool then misses the refusal at retirement.own_annuity and fully taxes the payments.",
+       "who": "A retired state or local government employee, such as a teacher or police officer, or a federal CSRS or FERS retiree, whose mandatory pension contributions were withheld from salary after tax. This applies, for example, before a 414(h) pickup took effect.",
+       "why_no": "The filer thinks of payroll-withheld retirement contributions as pre-tax, like a 401(k) deferral. They answer 'not already taxed', especially with box 9b blank.",
+       "line": "retirement.annuity_if_cost",
+       "irs_text": "i1040gi p. 28, Partially Taxable Pensions and Annuities: 'If your Form 1099-R doesn't show the taxable amount, you must use the General Rule ... But if your annuity starting date ... was after July 1, 1986, see Simplified Method.'",
+       "severity": "medium",
+       "fix": "Add to the help: 'Mandatory contributions withheld from your pay for a government or employer pension were often after-tax (for example, federal CSRS/FERS contributions, or state plan contributions before your employer picked them up). Check your plan statement.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A federal civil service retiree who chose the alternative annuity option and received a lump-sum refund of their own contributions at retirement. Monthly payments followed.",
+       "why_no": "The retiree reasons that their taxed contributions were paid back in the lump sum, so none of the money now in the pension was 'already taxed'. Answering No suppresses the CSRS alternative-annuity question and the refusal it leads to.",
+       "line": "retirement.csrs_alt_if_cost",
+       "irs_text": "i1040gi p. 30, Caution: 'If you received U.S. Civil Service retirement benefits and you chose the alternative annuity option, see Pub. 721 to figure the taxable part of your annuity. Do not use the Simplified Method Worksheet in these instructions.'",
+       "severity": "medium",
+       "fix": "Ask the CSRS alternative-annuity question for any civil service (OPM, CSA 1099-R) pension, regardless of the cost gate. Or add 'including contributions later refunded to you in a lump sum' to the gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who bought a nonqualified annuity from an insurance company with their own money and now receives periodic payments reported on Form 1099-R. Box 9b is blank and the insurer reported the investment as premiums, not contributions.",
+       "why_no": "The gate speaks of a 'pension or annuity' and 'after-tax contributions'. A buyer who paid premiums for a contract does not think of them as contributions 'paid into' a pension. Answering No suppresses the own-annuity question and its refusal.",
        "line": "retirement.own_annuity_if_cost",
-       "irs_text": "i1040gi p. 28: \"Your payments are fully taxable if (a) you didn't contribute to the cost (see Cost, later) of your pension or annuity\"; p. 30, Simplified Method condition 2a limits it to qualified employee plans, qualified employee annuities and tax-sheltered annuities",
+       "irs_text": "i1040gi p. 30, Simplified Method condition 2a: 'The payments are from a qualified employee plan, a qualified employee annuity, or a tax-sheltered annuity.' i1040gi p. 28: 'you must use the General Rule explained in Pub. 939 to figure the taxable part.'",
        "severity": "medium",
-       "fix": "Ask retirement.own_annuity before the cost gate, not under it. Or add to the gate: \"If you bought this annuity yourself with your own savings, answer Yes.\""
+       "fix": "Ask 'Is this an annuity you bought yourself from an insurance company?' before or independently of the cost gate. Or add to the gate: 'premiums you paid for an annuity you bought yourself count as yes.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A retiree receiving periodic payments from a designated Roth account in a 401(k) or 403(b) that are not a qualified distribution.",
-       "why_no": "The filer thinks of Roth money as untaxed and does not see Roth deferrals as \"already taxed\" contributions, so they answer No.",
+       "pattern": "3",
+       "who": "A surviving spouse or beneficiary receiving payments under a joint and survivor annuity, where the deceased retiree made the after-tax contributions. The survivor's Form 1099-R shows no box 9b amount.",
+       "why_no": "The survivor paid nothing into the plan personally and reads 'the money paid into this pension' as their own payments. They answer No, losing the retiree's fixed tax-free amount and the questions about start date and age that refer to the retiree.",
        "line": "retirement.annuity_if_cost",
-       "irs_text": "i1040gi p. 30, Cost: \"Your cost is generally your net investment in the plan ... It doesn't include pre-tax contributions\"; p. 30: subtract \"any contributions (usually shown in box 5) that were taxable to you when made\"",
-       "severity": "low",
-       "fix": "Add: \"Roth 401(k) or Roth 403(b) contributions count as already taxed.\""
+       "irs_text": "p575 p. 34, Survivors of retirees: 'If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date.'",
+       "severity": "medium",
+       "fix": "Reword the gate: 'Did you, or the retiree or employee you receive this from as a survivor or beneficiary, pay any already-taxed money into this pension or annuity?'"
       }
      ],
-     "prompt_sha": "835a8c29d14c0cc04cc88d96afdf9ed498f5be305a1555f3cf839c73e2d52a01",
+     "prompt_sha": "69a1a36ed9cc25b5f2d29b581c214c80498747de5211258b29b97758f76c8166",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.15986,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_retirement.cost_any_if_plan.cff5c4b51507.1.response.txt"
+     "cost": 0.172868,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.cost_any_if_plan.4c2930b21e04.1.response.txt"
     }
    ],
    "condition": "retirement.cost_any_if_plan",
@@ -211,58 +292,48 @@
    ]
   },
   "gate:retirement.dis_early_if_disability": {
-   "subject_sha": "ba42ff87617981798f3dcefccae674637a87a0d4cda608f77058da1cef49afda",
+   "subject_sha": "dcaf992329f405623989ea43d84b96b73814a8393dbe2ff95566190f068cec01",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A joint filer, age 66, whose spouse, age 48, received a disability pension in 2025 on a Form 1099-R issued to the spouse. The spouse's employer plan sets its minimum retirement age at 55.",
-       "why_no": "The gate asks 'were you younger than the earliest age at which the plan would have let you retire'. The person answering reads 'you' as themselves, the primary filer, who is past any retirement age, and truthfully answers no. The parent question ('paid to you because you became disabled') has the same wording, so the error starts there too.",
-       "line": "retirement.dis_all_early_if_early",
-       "irs_text": "i1040gi p. 28: 'Don't include the following payments on lines 5a and 5b. Instead, report them on line 1h. • Disability pensions received before you reach the minimum retirement age set by your employer.'",
-       "severity": "high",
-       "fix": "Name the recipient of this Form 1099-R: 'When any of this was paid, was the person this Form 1099-R was issued to (you or your spouse) younger than ...'. Use the same wording in the parent disability question."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer whose plan's minimum retirement age is 60. They turned 60 in June 2025, so the January to May payments came before that age and the later ones came after it.",
-       "why_no": "The filer is now past the age, and the form that reports 'this' arrived in 2026. They read 'were you younger' as asking about their status now, or about the year as a whole, and answer no. The gated question is then never asked, so the No that should end the interview (a year in which the filer reached that age is outside what the tool prepares) never happens. The pre-age payments are reported as a pension instead of as wages.",
-       "line": "retirement.dis_all_early_if_early",
-       "irs_text": "i1040gi p. 25: 'Disability pensions shown on Form 1099-R if you haven't reached the minimum retirement age set by your employer ... Disability pensions received after you reach minimum retirement age ... are reported on lines 5a and 5b'",
+       "who": "A joint filer whose spouse, not the filer, receives a disability pension from the spouse's former employer's plan. The spouse is 48, and the plan's minimum retirement age is 55.",
+       "why_no": "The gate and its parent helper say \"paid to you because you became disabled\" and \"were you younger\" with no \"or your spouse\". Only the gated question says \"For this person (you, or your spouse on a joint return)\". The filer is past 55, or was never disabled, so they truthfully answer about themselves and say no.",
+       "line": "retirement.dis_all_early_if_early (and with it the move of the pension from lines 5a/5b to line 1h)",
+       "irs_text": "i1040gi p. 28: \"Don't include the following payments on lines 5a and 5b. Instead, report them on line 1h. • Disability pensions received before you reach the minimum retirement age set by your employer.\"",
        "severity": "medium",
-       "fix": "Ask: 'Was even one 2025 payment on this form made before the day you reached the plan's minimum retirement age? Answer yes if you reached that age during 2025.'"
+       "fix": "Name the recipient in the gate and its parent helper: \"Was any of this paid to the person this Form 1099-R is for (you, or your spouse on a joint return) because they became disabled...\" and \"was that person younger than...\"."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A 57-year-old receiving a disability pension from a plan that allows no retirement before 60. The filer does not know the plan's age.",
-       "why_no": "The filer substitutes a familiar age instead: 55, or the 59½ age for penalty-free distributions. Believing they are past it, they answer no. No help text tells them where to find the plan's age or that it differs from these ages.",
-       "line": "retirement.dis_all_early_if_early",
-       "irs_text": "i1040gi p. 28: 'Disability pensions received before you reach the minimum retirement age set by your employer.'",
+       "pattern": "7",
+       "who": "A disabled firefighter aged 40 whose plan allows unreduced retirement after 20 years of service at any age. A FERS employee aged 57, past the FERS 'Minimum Retirement Age' of 57, who has only 8 years of service, so the plan would not yet have let them retire without the disability.",
+       "why_no": "The parenthetical \"(its minimum retirement age)\" names a plan term. For the FERS employee, the plan's published MRA is 57 and they have reached it, so they answer no. For the 20-and-out firefighter, there is no stated age, so they answer no or treat the question as not applying. In both cases the person was younger than the age at which they could first have retired without the disability.",
+       "line": "retirement.dis_all_early_if_early (disability pension then reported as a pension on lines 5a/5b instead of wages on line 1h)",
+       "irs_text": "i1040gi p. 25: \"Disability pensions shown on Form 1099-R if you haven't reached the minimum retirement age set by your employer\" are reported on line 1h; \"Disability pensions received after you reach minimum retirement age ... are reported on lines 5a and 5b.\"",
        "severity": "medium",
-       "fix": "Add help text: 'This is the age set by your employer's plan, found in the plan documents or obtainable from the plan administrator. It is not 59½, Social Security's retirement age, or the plan's normal retirement age.' Alternatively, ask for the plan's minimum retirement age and the filer's birth date, and compute the answer."
+       "fix": "Ask about facts the filer can check: \"When each payment was made, could you already have retired under this plan (with a pension, reduced or not) if you had not become disabled, given your age and years of service?\" Add help saying that a plan term called 'minimum retirement age' (such as the FERS MRA) does not decide the answer if service requirements were not yet met."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A disabled filer, age 58, in a plan whose early retirement age is 55 and whose normal retirement age is 62.",
-       "why_no": "This is a borderline reading rather than a wrong no. Some filers read 'earliest age ... without the disability' as the plan's normal retirement age. That reading produces a wrong yes, not a wrong no. The opposite case is a plan that allows early retirement only after a service requirement the filer had not met. That filer may still answer no, keying on age alone.",
-       "line": "retirement.dis_all_early_if_early",
-       "irs_text": "i1040gi p. 25: 'minimum retirement age set by your employer'",
+       "pattern": "2",
+       "who": "A retired police officer under the plan's minimum retirement age whose governmental plan pays part of the disability pension straight to a health insurer as premiums under the public safety officer election.",
+       "why_no": "The parent helper asks whether any of this was \"paid to you\" because you became disabled. The filer may count only the checks they received, and treat the premium amounts paid directly to the insurer as not \"paid to you\". If all of it went to the insurer, they answer no.",
+       "line": "retirement.dis_all_early_if_early (the line 1h treatment and the 'PSO' notation next to line 1h)",
+       "irs_text": "i1040gi pp. 28-30: \"The distribution can be made directly from the plan to the provider... If you are retired on disability and reporting your disability pension on line 1h, include only the taxable amount on that line and enter \"PSO\" and the amount excluded on the line next to line 1h.\"",
        "severity": "low",
-       "fix": "Define the age as 'the earliest age at which you personally could have started receiving a pension from this plan, given your service, had you not become disabled'."
+       "fix": "Change \"paid to you\" to \"paid to you or for you (including amounts the plan sent directly to an insurer)\"."
       }
      ],
-     "prompt_sha": "c6cfe0f03481144e90148be3b50dc1af5616f6538678f2f809dc10a6a415ece5",
+     "prompt_sha": "4f5ddfc3f52434211e6ad02645bcf27edec170c3920edacce58c7fa944bdae41",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.118644,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_retirement.dis_early_if_disability.ba42ff876179.1.response.txt"
+     "cost": 0.11779999999999999,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.dis_early_if_disability.dcaf992329f4.1.response.txt"
     }
    ],
    "condition": "retirement.dis_early_if_disability",
@@ -301,68 +372,58 @@
    ]
   },
   "gate:retirement.disability_if_plan": {
-   "subject_sha": "3362630cdc380cebe833e3d022eb2d6c8918607bf08ba1945afbc92b3515abc3",
+   "subject_sha": "1c61070df1b9da97057c5ca0e80c4295e4ce86d4bdfd4bb69c785c51bd640e11",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A joint filer whose spouse retired early on disability from an employer pension plan and is below the plan's minimum retirement age. The spouse's Form 1099-R is entered in the retirement document, but the filer is the one answering.",
-       "why_no": "The gate asks whether this was paid 'to you because you became disabled.' The filer is not disabled and was paid nothing, so a truthful no follows. The spouse's disability pension then stays on lines 5a/5b instead of moving to line 1h.",
-       "line": "retirement.dis_early_if_disability",
-       "irs_text": "i1040gi 2025 p. 28, Lines 5a and 5b: \"Don't include the following payments on lines 5a and 5b. Instead, report them on line 1h. • Disability pensions received before you reach the minimum retirement age set by your employer.\"",
-       "severity": "high",
-       "fix": "Name the recipient of the document: \"Was any of this paid to [you / your spouse] because [you / they] became disabled, under a plan that provides for disability retirement?\" Alternatively, say in the help that on a joint return the question is about the person shown on the Form 1099-R."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A joint filer whose spouse receives a military disability retirement pension from DFAS, or whose spouse was disabled in a terrorist attack and receives a disability pension.",
-       "why_no": "\"Because you became disabled\" reads as being about the filer, so a truthful no follows. The military and terrorist-attack questions are never asked, and the refusal they lead to is missed.",
-       "line": "retirement.dis_military_if_disability; retirement.dis_terror_if_disability",
-       "irs_text": "i1040gi 2025 p. 28: \"For details on military disability pensions, see Pub. 525.\" p. 30: \"You must include in your income any amounts that you received that you would have received in retirement had you not become disabled as a result of a terrorist attack.\"",
-       "severity": "high",
-       "fix": "Same as above: name the spouse explicitly, or ask about the person shown on the Form 1099-R."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A military retiree, or the spouse of one, who was retired for disability (for example, a medical retirement under 10 U.S.C. chapter 61). The retired pay comes from DFAS on a Form 1099-R.",
-       "why_no": "They do not think of military retired pay as being paid 'under a plan that provides for disability retirement.' Military pay is not a 'plan' with a plan document or an employer. They answer no, and the out-of-scope refusal for an armed-forces disability pension is never reached.",
+       "pattern": "5",
+       "who": "A military retiree whose Form 1099-R retired pay was granted for years of service. The VA later awarded a disability rating, possibly retroactive, or the retiree has combat-related disability retired pay that is partly excludable.",
+       "why_no": "The pay was granted for length of service, not 'because you became disabled'. So the retiree truthfully answers no to the parent gate and never sees 'Is it a disability pension for service in the armed forces?'",
        "line": "retirement.dis_military_if_disability",
-       "irs_text": "i1040gi 2025 p. 28: \"Fully taxable pensions and annuities also include military retirement pay shown on Form 1099-R. For details on military disability pensions, see Pub. 525.\"",
-       "severity": "medium",
-       "fix": "Before the gate, ask every pension recipient: \"Is this retired pay from the armed forces (for example, a Form 1099-R from DFAS or the Coast Guard)?\" Then ask whether any of it is based on disability. Alternatively, add to the gate's help: \"Military retired pay for disability counts.\""
+       "irs_text": "i1040gi 2025 p. 28: 'Fully taxable pensions and annuities also include military retirement pay shown on Form 1099-R. For details on military disability pensions, see Pub. 525.'",
+       "severity": "high",
+       "fix": "Ask the military question for every pension, outside the disability gate: 'Is any of this military retired pay (for you or your spouse), or has the VA given either of you a disability rating that covers any period of this pay?' Refuse on yes."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "7",
-       "who": "A filer who stopped working because of a disability and began receiving payments from an employer pension. They do not know whether the plan formally 'provides for disability retirement.' Their Form 1099-R shows distribution code 3 in box 7.",
-       "why_no": "Whether a plan 'provides for disability retirement' is a legal feature of the plan document that the filer cannot check. Unsure, they answer no, and a disability pension received before the minimum retirement age is not moved to line 1h.",
+       "who": "A worker who stopped working because of a disability and receives monthly payments from the employer's pension plan. The worker does not know whether the plan formally 'provides for disability retirement'. The Form 1099-R shows code 3 (disability) in box 7.",
+       "why_no": "The phrase 'under a plan that provides for disability retirement' is a legal classification of the plan document. A filer who cannot confirm it answers no, or treats the payment as an ordinary early pension.",
        "line": "retirement.dis_early_if_disability",
-       "irs_text": "i1040gi 2025 p. 30: \"If you receive payments from a retirement or profit-sharing plan that does not provide for disability retirement, do not treat those payments as disability payments.\" p. 28: \"Disability pensions received before you reach the minimum retirement age set by your employer\" go on line 1h.",
+       "irs_text": "i1040gi 2025 p. 28: 'Don't include the following payments on lines 5a and 5b. Instead, report them on line 1h. • Disability pensions received before you reach the minimum retirement age set by your employer.'",
        "severity": "medium",
-       "fix": "First ask what the filer can check: \"Does box 7 of the Form 1099-R show code 3, or did the plan begin paying you because you became disabled?\" On a yes, ask whether the plan provides for disability retirement, with help saying the plan administrator can confirm this."
+       "fix": "Gate on facts the filer can check: 'Does box 7 of this Form 1099-R show code 3, or were any of these payments made because you or your spouse became disabled?' On yes, ask about the plan's disability provision and the minimum retirement age, with help text that names the plan administrator."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse receives a disability pension, possibly before the plan's minimum retirement age, or one resulting from a terrorist attack. The filer answers the questions for the whole return.",
+       "why_no": "The gate says 'paid to you because you became disabled' and does not mention a spouse. The gated questions do say 'For this person (you, or your spouse on a joint return)'. The filer answers no for themselves.",
+       "line": "retirement.dis_early_if_disability; retirement.dis_terror_if_disability; retirement.dis_military_if_disability",
+       "irs_text": "i1040gi 2025 p. 28: 'Disability pensions received before you reach the minimum retirement age set by your employer' (report on line 1h); p. 30: 'You must include in your income any amounts that you received that you would have received in retirement had you not become disabled as a result of a terrorist attack.'",
+       "severity": "medium",
+       "fix": "Reword the gate as 'For this person (you, or your spouse on a joint return) — was any of this paid because that person became disabled, under a plan that provides for disability retirement?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer disabled in a terrorist attack (for example, the 9/11 cleanup contractor in the IRS example). Their plan pays the normal retirement benefit early on account of disability. They view the payment as an ordinary early-retirement pension that they elected.",
-       "why_no": "They read 'paid to you because you became disabled' as excluding a pension they chose to start at the plan's early retirement age. They answer no, and the terrorist-attack question and its refusal are skipped.",
+       "who": "A contractor disabled in the World Trade Center cleanup who retired early on disability. The plan pays the normal retirement benefit instead of the reduced early benefit. The contractor thinks of the payments as an ordinary early-retirement pension.",
+       "why_no": "The contractor reads 'paid to you because you became disabled' as excluding a pension they would have received anyway at early-retirement age. Only the disability increment is attributable to the disability, so they answer no.",
        "line": "retirement.dis_terror_if_disability",
-       "irs_text": "i1040gi 2025 p. 30, Example: \"The pension plan provides that a participant who retires early on account of disability is entitled to receive the participant's normal retirement benefit... you can exclude $500 of your monthly retirement benefit from income.\"",
+       "irs_text": "i1040gi 2025 p. 30 Example: 'Until you turn age 62, you can exclude $500 of your monthly retirement benefit from income ... received on account of disability.'",
        "severity": "medium",
-       "fix": "Add help to the gate: \"Answer yes if the plan started payments, or pays a larger amount, because of your disability, even if you were also old enough for early retirement.\""
+       "fix": "Reword the gate as 'Was any of this paid, or paid at a higher amount or earlier date, because you or your spouse became disabled?' Ask the terrorist-attack question for every pension where either spouse is disabled."
       }
      ],
-     "prompt_sha": "e97ab3ec4ddb8008adab933b3fd96a3cb03e2900acb9d3b6118c15e1194b9223",
+     "prompt_sha": "a2e7bfcfff984c3aa021c3a5ee1b9de4ad6d9ae0cf559f14bb1c851df44bf262",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.126064,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_retirement.disability_if_plan.3362630cdc38.1.response.txt"
+     "cost": 0.111756,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.disability_if_plan.1c61070df1b9.1.response.txt"
     }
    ],
    "condition": "retirement.disability_if_plan",
@@ -400,69 +461,141 @@
     }
    ]
   },
-  "gate:retirement.is_code2": {
-   "subject_sha": "6cb870717fd0fa81904fa125a04dc5748ea0844bec05766d9035853295b0e0f1",
+  "gate:retirement.ira_put_back": {
+   "subject_sha": "a84e3972b36702836b2ae2cb63d23daa6c97abebc632402c4d866a3f9cdab9a2",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer whose Form 1099-R box 7 shows code 2 together with a second code, such as 2B, 2D, 2K, 2L (a loan offset), 2M, 2P or 28. Some of the money is not covered by the exception.",
-       "why_no": "The gate tests whether the box 7 code helper equals the single value 'early_exception_2'. If the helper stores a two-character entry as another value, or keeps only the other code, the computed condition is false. The partial-coverage question is then never asked and the line is set to false.",
-       "line": "retirement.code2_partial_if_code2",
-       "irs_text": "i5329 (2025) p. 5, Line 2: \"Enter on line 2 the amount that you can exclude.\" Only the excludable part of an early distribution escapes the additional tax.",
+       "pattern": "6",
+       "who": "A filer took money out of a traditional IRA and put it back into the same IRA within 60 days, after an earlier IRA-to-IRA rollover in the prior 12 months.",
+       "why_no": "The gate reads 'put some into another retirement account'. A filer who redeposited into the same account can truthfully say no money went into another account. The gate then stays false, and the second-rollover question is never asked.",
+       "line": "retirement.rollover_second_if_ira",
+       "irs_text": "p590a (2025) p. 25: \"You can make only one rollover from an IRA to another (or the same) IRA in any 1-year period regardless of the number of IRAs you own\"",
        "severity": "medium",
-       "fix": "Compute the gate as 'any code entered in box 7 is 2', so combinations like 2B, 2D, 2K, 2L, 2M, 2P and 28 also trigger it. Or ask the partial-coverage question for any box 7 entry that contains 2."
+       "fix": "Ask 'Did you put any of this money back into a retirement account, including the same IRA it came from (within 60 days, or later under a waiver)?' and drop 'another' from the gate text."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer under 59 1/2 taking substantially equal periodic payments that the payer codes 2. During 2025 they changed the payment amount or took an extra withdrawal before the series ended.",
-       "why_no": "The help says code 2 means the payer knows of an exception. The filer believes this year's payment is part of the series and answers no. They don't realize the modification ends the exception for this year, and that the recapture of earlier years' tax is also outside the tool's scope.",
-       "line": "retirement.code2_partial_if_code2",
-       "irs_text": "i5329 (2025) p. 5, exception 02: \"Distributions made as part of a series of substantially equal periodic payments (made at least annually) for your life (or life expectancy)...\"",
+       "who": "A filer received an IRA distribution in late December 2025 and redeposited it into an IRA in January 2026, within 60 days. An earlier IRA-to-IRA rollover falls in the 12 months before the December distribution.",
+       "why_no": "The filer reads the gate as asking what happened in the tax year, or with this year's money, and answers no because the redeposit happened in 2026. The gate turns false and the one-rollover limit is never tested.",
+       "line": "retirement.rollover_second_if_ira",
+       "irs_text": "p590a (2025) p. 25: \"If you rolled over the distribution into a qualified plan (other than an IRA) or you make the rollover in 2026, attach a statement explaining what you did\"; \"The 1-year period begins on the date you receive the IRA distribution, not on the date you roll it over into an IRA\"",
        "severity": "medium",
-       "fix": "Add to the help: 'Answer Yes if you changed or stopped a series of substantially equal payments this year, or took more than the scheduled amount.' Or ask directly whether a periodic-payment series was modified."
+       "fix": "Add to the gate's help: 'Count money you put back in 2026 (within 60 days of receiving it, or later under a waiver), even though you received it in 2025.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer with a code 2 distribution for a dollar-capped exception who already used part of the cap in an earlier year. For example, a birth or adoption distribution for a child who got a 2024 distribution too, or a first-home IRA withdrawal after an earlier one. A spouse's distribution for the same child is counted separately.",
-       "why_no": "The filer sees code 2 and an amount within the cap for this year's form alone. They read 'this money' as this year's form and do not add the earlier year's distribution.",
-       "line": "retirement.code2_partial_if_code2",
-       "irs_text": "i5329 (2025) p. 5, exception 19: \"a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted\". Exception 09: \"IRA distributions made for the purchase of a first home, up to $10,000.\"",
+       "pattern": "3",
+       "who": "A joint return in which this Form 1099-R belongs to the spouse. The spouse had already rolled over a different IRA withdrawal within the prior 12 months, and the primary filer had none.",
+       "why_no": "The gated question asks whether 'you had also taken other money out of an IRA'. The person at the keyboard answers about their own IRAs, says no, and the spouse's second rollover passes without the refusal.",
+       "line": "retirement.rollover_second_if_ira",
+       "irs_text": "p590a (2025) p. 25: \"The limit will apply by aggregating all of an individual's IRAs (whether traditional, Roth, or SIMPLE), effectively treating them as one IRA for purposes of the limit\"",
        "severity": "medium",
-       "fix": "Add to the help: 'Some exceptions have a dollar limit that counts earlier years' withdrawals for the same purpose (birth or adoption, first home, emergency, domestic abuse). Answer Yes if this year plus earlier withdrawals go over the limit.'"
+       "fix": "Name the IRA owner of this distribution in the question, for example 'Had [owner name] taken other money out of one of [his/her] own IRAs...'. Add to the help that only that person's IRAs count, not the spouse's."
+      }
+     ],
+     "prompt_sha": "a0b30b8eb8e99e6296bdf315c44822eb7880963bd2d711fce35f38321b8fde57",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08870800000000001,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.ira_put_back.a84e3972b367.1.response.txt"
+    }
+   ],
+   "condition": "retirement.ira_put_back",
+   "lines": [
+    "retirement.rollover_second_if_ira"
+   ],
+   "inputs": [
+    "retirement.rollover_second"
+   ],
+   "used": [
+    {
+     "doc": "p590a",
+     "revision": "2025",
+     "text_sha256": "be942a345a01a8f875a2a625b400d7760221e1a55a2c85dca5ab75826e6c801a",
+     "pages": [
+      25
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 25, Application of one-rollover-per-year limitation, \"You can make only one rollover from an IRA to another (or the same) IRA in any 1-year period regardless of the number of IRAs you own\"",
+      "p. 25, Application of one-rollover-per-year limitation, \"You can make only one rollover from an IRA to another (or the same) IRA in any 1-year period regardless of the number of IRAs you own\", \"However, trustee-to-trustee transfers between IRAs aren’t limited and rollovers from traditional IRAs to Roth IRAs (conversions) aren’t limited\"; p. 25, \"The 1-year period begins on the date you receive the IRA distribution, not on the date you roll it over into an IRA\""
+     ],
+     "cols_pages": [
+      25
+     ],
+     "cols_sha256": "cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b"
+    }
+   ]
+  },
+  "gate:retirement.is_code2": {
+   "subject_sha": "12a095c2b74cef094ad05a62c599b77789df742fa5f2eb50d74f345286ca4236",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer under age 59 1/2 who began a series of substantially equal periodic payments in an earlier year and changed or stopped the series in 2025, within five years of starting it. The payer codes this year's payment 2.",
+       "why_no": "The question asks only whether the exception covers 'this money'. This year's payment does fit the series exception, so the filer truthfully answers no. The change in 2025 also triggers recapture of the 10% tax on the earlier years' payments, which this question never reaches.",
+       "line": "retirement.code2_partial_if_code2 (missed refusal: recapture of the extra tax on earlier years' payments)",
+       "irs_text": "i5329 (2025) p. 5, Line 2, exception 02: 'Distributions made as part of a series of substantially equal periodic payments (made at least annually) for your life (or life expectancy)...' (recapture rules are in Pub. 590-B, cited on the same page)",
+       "severity": "high",
+       "fix": "Add a separate question: 'Did you (or your spouse) change or stop a series of equal periodic payments from a retirement plan or IRA in 2025, before age 59 1/2 or within 5 years of the first payment?' A yes should end the interview."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose payer coded 2 on a fact the payer cannot verify or got wrong. Examples: a separation from service in a year before the filer turned 55, or an IRA that was rolled over from a plan (the age-55 rule does not apply to IRAs). Another: a 457 distribution that comes from a rollover out of a qualified plan, or medical expenses below 7.5% of AGI.",
-       "why_no": "The help frames code 2 as the payer's knowledge of an exception. The filer defers to the payer's code instead of checking the exception's conditions, and answers no.",
-       "line": "retirement.code2_partial_if_code2",
-       "irs_text": "i5329 (2025) p. 5, exception 01: \"Qualified retirement plan distributions (doesn't apply to IRAs) you received after separation from service when the separation from service occurs in or after the year you reach age 55\". Exception 13: \"Distributions from a section 457 plan, which aren't from a rollover from a qualified retirement plan.\"",
+       "who": "A filer whose code-2 distribution is larger than the cap on the exception that applies. Examples: an IRA first-home withdrawal of $25,000 (cap $10,000), a birth or adoption distribution above $5,000, an emergency expense distribution above the per-year limit, or a medical expense withdrawal above unreimbursed medical costs minus 7.5% of AGI.",
+       "why_no": "The words 'the payer knows of an exception' read as if the payer has already confirmed the whole amount is exempt. The filer is never told that exceptions have dollar caps or formulas they must apply themselves.",
+       "line": "retirement.code2_partial_if_code2 (missed refusal; the excess is subject to the additional tax)",
+       "irs_text": "i5329 (2025) p. 5, Line 2: 'IRA distributions made for the purchase of a first home, up to $10,000.'; 'Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income'; 'a distribution of up to $5,000'",
        "severity": "medium",
-       "fix": "Reword: 'Code 2 means the payer believes an exception applies, but the payer may not know all the facts. Does any part of this money fall outside the exception's conditions (for example age at separation, IRA versus employer plan, rolled-over money, or a dollar limit)?'"
+       "fix": "Ask first which exception applies, then compare the amount with its limit (first home $10,000; birth or adoption $5,000; emergency limit; medical expenses minus 7.5% of AGI). Or add help text: 'Many exceptions cover only up to a dollar limit. If this distribution is more than that limit, answer Yes.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "Any code 2 filer reading the question as worded.",
-       "why_no": "'Does that exception fail to cover all of this money (it covers only part of it, or none)?' is a negated question. A filer whose exception covers only part may answer no, meaning 'it does not cover all'.",
+       "pattern": "7",
+       "who": "A filer whose payer used code 2 but whose facts don't meet the exception. Examples: separation from service at age 54, or in an earlier year than the age-55 year; a distribution from an IRA that the payer coded under the age-55 or QDRO exceptions, which don't apply to IRAs; a reservist on active duty for less than 180 days.",
+       "why_no": "The question takes the payer's code as settled ('Code 2 means the payer knows of an exception'). The filer trusts the payer and answers no, but the true answer is 'none of it is covered'.",
+       "line": "retirement.code2_partial_if_code2 (missed refusal; the full amount is subject to the additional tax)",
+       "irs_text": "i5329 (2025) p. 5, Line 2, exception 01: 'Qualified retirement plan distributions (doesn't apply to IRAs) you received after separation from service when the separation from service occurs in or after the year you reach age 55'",
+       "severity": "medium",
+       "fix": "Ask facts the filer can check, such as the year and age of separation, the plan type (IRA or employer plan), and days of active duty. Or reword: 'Payers sometimes use code 2 when the exception does not fully apply. Check that your facts meet the exception's conditions. If any part of this money does not qualify, answer Yes.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer whose Form 1099-R box 7 shows two codes that include 2. Examples: 2 with B (a designated Roth account), 2 with K (traded assets), or 2 with M (a plan loan offset).",
+       "why_no": "The gate tests a single value, 'Distribution code in box 7' = 'early_exception_2'. If the helper records the other code, or stores the pair as a separate value, the condition is false and the question is never asked, even though the exception may cover only part of the money.",
+       "line": "retirement.code2_partial_if_code2 (forced false; missed refusal)",
+       "irs_text": "i5329 (2025) p. 5, Line 2: 'Enter on line 2 the amount that you can exclude.'",
+       "severity": "medium",
+       "fix": "Compute the gate as 'box 7 contains code 2', checking either code position, rather than equality with a single stored code."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "Any filer with a code-2 distribution who reads the help text before answering.",
+       "why_no": "The help says 'a Yes ends the interview here'. A filer who is unsure leans toward no to keep going, and the help gives no example of when Yes is correct.",
        "line": "retirement.code2_partial_if_code2",
-       "irs_text": "i5329 (2025) p. 5, Line 2: \"Enter on line 2 the amount that you can exclude.\"",
+       "irs_text": "i5329 (2025) p. 5, Line 2: 'Enter on line 2 the amount that you can exclude.'",
        "severity": "low",
-       "fix": "Ask positively: 'Does the exception cover every dollar of this distribution?', with No ending the interview."
+       "fix": "Add to the help: 'Answer Yes if any part of this money is above an exception's limit, or if your facts don't meet the exception's conditions. If you are unsure, answer Yes.'"
       }
      ],
-     "prompt_sha": "b16c31a46807a0a527fc42b9fb84514a5c730f1063cfcb6e14e34fb847611514",
+     "prompt_sha": "5d0d7e020531bde6b2f4be4cb3e475ea52dca787911debfcb3ae7a1297d5ac50",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.097716,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_retirement.is_code2.6cb870717fd0.1.response.txt"
+     "cost": 0.09561599999999999,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.is_code2.12a095c2b74c.1.response.txt"
     }
    ],
    "condition": "retirement.is_code2",
@@ -492,58 +625,48 @@
    ]
   },
   "gate:retirement.is_code7": {
-   "subject_sha": "ad63a69a80d57d7c6ed393c2d84df18375d7cc881854128a12878ddab40c202b",
+   "subject_sha": "ebbbdb72add3e56be8eaddf6b78d670d61b7ee0b4b630a3773a57e727878aa2b",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer whose Form 1099-R box 7 shows code 7 together with a second code, such as 7D, 7K, 7L, 7M, 7A or B7. The filer was under 59½ when the money was paid.",
-       "why_no": "No question is asked here. The gate tests the helper for equality with the single value 'normal_7'. If a combined code maps to another helper value, the gate is false. The age question is never asked, and the line is silently false.",
-       "line": "retirement.under59_if_code7",
-       "irs_text": "i5329 (2025) p. 5, Line 2: \"Enter on line 2 the amount that you can exclude.\" The exclusions there assume the 10% tax applies to a distribution received before age 59½. A code 7 issued to someone under 59½ is a payer error that the filer must still account for.",
-       "severity": "medium",
-       "fix": "Make the gate 'box 7 contains code 7', alone or combined with another code, instead of equality with 'normal_7'. Or ask the age question for every Form 1099-R regardless of code."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "Joint filers where the Form 1099-R with code 7 belongs to the spouse, who was under 59½ when paid. The primary filer, who is entering the data, is over 59½.",
-       "why_no": "\"Were you under age 59½ when you received any of this money?\" The filer answers from their own age, not the recipient's.",
-       "line": "retirement.under59_if_code7",
-       "irs_text": "i5329 (2025) p. 5, Line 2: \"Enter on line 2 the amount that you can exclude.\" Each spouse who owes the additional tax files a separate Form 5329, based on the recipient's own age.",
-       "severity": "medium",
-       "fix": "Ask: \"Was the person who received this distribution (you or your spouse, as named on this Form 1099-R) under age 59½ on the date any of it was paid?\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer who turned 59½ partway through 2025 (for example, born in late 1965) and received code 7 payments both before and after that date.",
-       "why_no": "The filer reads \"under age 59½\" as their age at year end, or reads \"59½\" as \"59\". They answer no, though earlier payments in the year came before 59½.",
-       "line": "retirement.under59_if_code7",
-       "irs_text": "i5329 (2025) p. 5, Line 2, exception 12: \"Include on line 2 the amount you received when you were age 59 1/2 or older.\" Age is tested on each payment date.",
-       "severity": "low",
-       "fix": "Add help text: \"You reach 59½ six months after your 59th birthday. Answer yes if any payment in this form was made before that date, even if you were older by year end.\""
-      },
-      {
-       "kind": "UNCLEAR",
+       "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A filer aged 59½ or older whose Form 1099-R shows code 1, J or S in error.",
-       "why_no": "The gate is false for these codes, so age is never asked. The line is set to false, which downstream logic may read as a known age fact rather than 'not asked'.",
-       "line": "retirement.under59_if_code7",
+       "who": "A filer, or a spouse on a joint return, whose Form 1099-R shows code 1, J or S in box 7, but who was already 59½ or older when they received the money. The payer coded the distribution as early by mistake.",
+       "why_no": "The gate is computed as code = 'normal_7'. A code 1, J or S form fails it, so the age question is never asked and the age line is forced to false. The tool never learns the filer's age for exactly the codes where the IRS makes age decide the exclusion.",
+       "line": "retirement.under59_if_code7 (and the line 2 exclusion, exception 12, that depends on age at receipt)",
        "irs_text": "i5329 (2025) p. 5, Line 2, exception 12: \"Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older.\"",
-       "severity": "low",
-       "fix": "Ask the recipient's age at payment for codes 1, J and S as well, and feed it to the line 2 exception 12 amount. Do not reuse a false from the code-7-only line as an age answer."
+       "severity": "high",
+       "fix": "Ask the age question whenever box 7 is code 1, J, S or 7, not only code 7. For codes 1, J and S, ask: 'Were you (or your spouse, for this form) age 59½ or older when you received any of this money? If so, how much did you receive on or after the date you reached 59½?' Feed the answer to line 2 as exception 12."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer who turned 59½ during 2025 and received part of the distribution before that date and part after. The form shows code 1 (or J or S) because payments started early.",
+       "why_no": "The gate is false for code 1, so no age or timing question is asked. Even under code 7, the yes/no 'any of this money' cannot record the dollar split that exception 12 needs.",
+       "line": "retirement.under59_if_code7 (and the line 2 exception 12 amount)",
+       "irs_text": "i5329 (2025) p. 5, Line 2: \"Include on line 2 the amount you received when you were age 59 1/2 or older.\"",
+       "severity": "high",
+       "fix": "For codes 1, J, S and 7, ask the date the person reached 59½ and the amount received on or after that date. Do not rely on a single yes/no about age."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer whose box 7 holds a two-character code that includes 7 (for example 7D, 7K, 7M or B7). These mark a normal distribution with an annuity, IRA asset or plan-loan feature, or from a designated Roth account.",
+       "why_no": "If the helper maps only a bare '7' to 'normal_7', a combined code fails the gate. The age question is skipped, and an under-59½ recipient of a payment wrongly coded as normal is treated as not under 59½.",
+       "line": "retirement.under59_if_code7",
+       "irs_text": "i5329 (2025) p. 5, Line 2: \"Enter on line 2 the amount that you can exclude.\" Exceptions apply only to early distributions, so age at receipt decides whether the line 1 amount and line 2 exclusion exist at all.",
+       "severity": "medium",
+       "fix": "Define the gate as 'box 7 contains code 7 alone or with any other code'. Or ask the age question for every Form 1099-R regardless of code."
       }
      ],
-     "prompt_sha": "0f5101342f051a8c7caf857e3f37091a1200f4c662e6c73a63e26a89400fc324",
+     "prompt_sha": "8fe51bf5d06fd8100231f6e78e2a7b5e8a9d39b7ee0a20d43afa63a681d8f189",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.07588400000000001,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_retirement.is_code7.ad63a69a80d5.1.response.txt"
+     "cost": 0.06412399999999999,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.is_code7.ebbbdb72add3.1.response.txt"
     }
    ],
    "condition": "retirement.is_code7",
@@ -573,48 +696,48 @@
    ]
   },
   "gate:retirement.is_death": {
-   "subject_sha": "6a2454da68932ae87edafef2959b7eff484d6eaab1ef757750093e9ed62cde98",
+   "subject_sha": "ed6d05687bfdb67a65e32f5ec1d4983f556d8e2dbacf5ef5dcfc76d2866377e1",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A married couple filing jointly. The spouse received the Form 1099-R with code 4 after the spouse's first husband died, and the spouse has since made that inherited IRA their own, for example by contributing to it. The primary filer is entering the spouse's form.",
-       "why_no": "The question asks 'are you the surviving spouse and have you made the IRA your own'. The filer at the keyboard is not the surviving spouse of the decedent and did nothing to the IRA, so the filer truthfully answers no.",
-       "line": "retirement.not_beneficiary_if_death (the refusal is missed)",
-       "irs_text": "i5329 p. 5, Line 2: 'Distributions due to death (doesn't apply to modified endowment contracts).' Exception 04 applies only to a beneficiary, not to a spouse who has made the IRA their own.",
-       "severity": "high",
-       "fix": "Name the recipient of this Form 1099-R: 'Did the person this Form 1099-R is for (you or your spouse) get this money some other way, or is that person the surviving spouse who has made the IRA their own...?'"
-      },
-      {
        "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer whose Form 1099-R box 7 shows a combined code with 4, such as 4D, 4G, 4H, 4B, 4K, 4L, 4M or 4P. Examples are a surviving spouse whose deferred annuity shows 4D, or one whose direct rollover shows 4G.",
-       "why_no": "The helper 'Distribution code in box 7' takes one value. A filer who sees '4G' or '4D' may pick G or D, so the computed 'Code 4 (death)' is false and the question is never asked.",
-       "line": "retirement.not_beneficiary_if_death (the refusal is missed)",
-       "irs_text": "i5329 p. 5, Line 2: 'Distributions due to death' (exception 04); i1040gi p. 27: 'Distribution code T is shown in box 7 of Form 1099-R' shows that box 7 codes drive the treatment.",
+       "pattern": "4",
+       "who": "A filer whose Form 1099-R box 7 shows code 4 together with a second code, such as 4D, 4G, 4H, 4B, 4K or 48. Examples are a surviving spouse taking annuity payments from the decedent's plan (4D), or a beneficiary of a designated Roth account (4B).",
+       "why_no": "The gate is computed as box 7 code = 'death_4'. If the helper maps a two-character combination to another value, the gate is false even though code 4 is present. The question is then never asked, and a surviving spouse who has made the account her own never reaches the Yes that ends the interview.",
+       "line": "retirement.not_beneficiary_if_death",
+       "irs_text": "i5329 p. 5, Line 2: \"Distributions due to death (doesn't apply to modified endowment contracts).\" The exception is for beneficiaries, so the refusal is needed whenever code 4 appears, alone or combined.",
        "severity": "medium",
-       "fix": "Let the box 7 helper take both characters, or ask 'Does box 7 contain a 4, alone or with a letter?' and compute is_death from that."
+       "fix": "Compute the gate as 'box 7 contains code 4' (any combination that includes 4), not as equality with a single enumerated value."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A surviving spouse who made the inherited IRA their own by rolling it into their own IRA, not by electing, contributing or skipping an RMD, and who still receives a code 4 form for the distribution.",
-       "why_no": "The parenthetical lists three ways of making the IRA your own: 'by choosing to, by putting money into it, or by not taking a required minimum distribution'. A spouse who rolled it over reads the list as complete and answers no.",
-       "line": "retirement.not_beneficiary_if_death (the refusal is missed)",
-       "irs_text": "i5329 p. 5, Line 2: exception 04 'Distributions due to death' applies only to a beneficiary.",
+       "who": "A surviving spouse who rolled the deceased spouse's IRA, or a plan payout, into her own existing IRA, or retitled it in her own name. A later distribution from that account still came with code 4.",
+       "why_no": "The question lists three ways of making the IRA your own: choosing to, putting money into it, and skipping a required minimum distribution. She did none of these to 'the IRA' as she understands it, since she moved the money into a different IRA. She reads the list as complete and answers no.",
+       "line": "retirement.not_beneficiary_if_death",
+       "irs_text": "i5329 p. 5, Line 2: \"Distributions due to death\". Once the spouse treats or rolls the IRA as her own, she is no longer a beneficiary and the death exception does not apply.",
        "severity": "medium",
-       "fix": "Add 'or by rolling it over into your own IRA' and write 'for example' before the list."
+       "fix": "Add 'or rolled it over into your own IRA or retitled it in your name' and say that the list is not exhaustive: 'in any way, including ...'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A surviving spouse who received a code-4 distribution from her late husband's 401(k) or 403(b), after earlier electing to treat the account as her own or rolling it to her own plan or IRA.",
+       "why_no": "The question asks only whether she has 'made the IRA your own'. Her account is not an IRA, so she answers no.",
+       "line": "retirement.not_beneficiary_if_death",
+       "irs_text": "i5329 p. 5, Line 2: \"Distributions due to death (doesn't apply to modified endowment contracts).\" The exception depends on receiving the money as a beneficiary, whatever the type of plan.",
+       "severity": "low",
+       "fix": "Say 'made the IRA or retirement plan account your own (including by rolling it into your own account)'."
       }
      ],
-     "prompt_sha": "990db41aa657086a2c6c968005244bb667aaa25f15190842745f308abc7aa5a7",
+     "prompt_sha": "46af075620f644832c2ee414ec77111269e317b4c63690605044cd4d1f8febd5",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.114564,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_retirement.is_death.6a2454da6893.1.response.txt"
+     "cost": 0.098428,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.is_death.ed6d05687bfd.1.response.txt"
     }
    ],
    "condition": "retirement.is_death",
@@ -665,68 +788,58 @@
    ]
   },
   "gate:retirement.is_ira": {
-   "subject_sha": "027f5a686d2ca2c390ed7c0f0535795ef1c6e956552e59bcd76f315527fcae6d",
+   "subject_sha": "2ba4458022d42d1305a1375fb3428e69f94dd537252377cb581a6f9437a772b2",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer who bought a nonqualified commercial annuity with after-tax money from an insurer. The Form 1099-R has box 7 code D and an amount in box 5 or 9b, and no employer or IRA is involved.",
-       "why_no": "The gate is computed as kind ≠ 'plan', so any answer other than 'plan' counts as an IRA. A filer who has no employer plan picks whatever option is not 'employer plan' or 'pension', and the tool treats a private annuity as an IRA. The pension branch is never asked.",
-       "line": "retirement.cost_any_if_plan (and retirement.disability_if_plan, retirement.loan_offset_if_plan)",
-       "irs_text": "i1040gi p. 28, Lines 5a and 5b: 'Your payments are fully taxable if (a) you didn't contribute to the cost ... of your pension or annuity'; p. 30: 'Your cost is generally your net investment in the plan ... may be shown in box 9b of Form 1099-R.'",
-       "severity": "high",
-       "fix": "Compute the IRA gate from a positive IRA answer, not from '≠ plan'. Tie it to the checkable fact 'Is the IRA/SEP/SIMPLE box (next to box 7) on this Form 1099-R checked?' Route every other annuity, including a commercial annuity, to lines 5a/5b and the after-tax cost question."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A self-employed person or employee whose employer set up a SEP or SIMPLE IRA. Their paperwork calls it a 'Simplified Employee Pension plan' or 'SIMPLE IRA plan'. They took a distribution, and part of it was an excess contribution paid back or went to an HSA (an HFD from a non-ongoing SEP).",
-       "why_no": "The account is funded by an employer and is called a 'pension plan', so the filer chooses 'pension, annuity or plan'. That turns the IRA gate false, and the IRA-only questions that end the interview are never asked.",
+       "pattern": "8",
+       "who": "A self-employed person or employee whose employer funds a SEP-IRA or SIMPLE IRA. Their 2025 Form 1099-R reports an excess contribution returned to them, or a direct transfer to a charity or an HSA from a SEP or SIMPLE IRA that is no longer ongoing.",
+       "why_no": "They think of the account as their employer's retirement plan ('simplified employee pension', 'SIMPLE plan') and pick 'plan' for 'Kind of account the distribution came from'. That makes is_ira false, so the IRA questions are never asked.",
        "line": "retirement.ira_returned_if_ira; retirement.charity_hsa_if_ira",
-       "irs_text": "i1040gi p. 26: 'an IRA includes a traditional IRA (which includes a traditional IRA that receives contributions from a simplified employee pension (SEP) arrangement) ... and a SIMPLE IRA'; p. 27, Exception 2(4)-(5): 'You had a 2024 or 2025 IRA contribution returned to you ... You made excess contributions to your IRA for an earlier year and had them returned to you in 2025.'",
+       "irs_text": "i1040gi p. 26: 'an IRA includes a traditional IRA (which includes a traditional IRA that receives contributions from a simplified employee pension (SEP) arrangement)... and a SIMPLE IRA'; p. 27 Exception 2(4)-(5): 'You had a 2024 or 2025 IRA contribution returned to you'; Exception 3: 'A QCD is a distribution made directly by the trustee of your IRA (other than an ongoing SEP or SIMPLE IRA)'",
        "severity": "medium",
-       "fix": "In the kind-of-account help, say that SEP IRAs, SIMPLE IRAs and Roth IRAs are IRAs even when an employer funds them. Also classify from the IRA/SEP/SIMPLE checkbox on Form 1099-R rather than from the filer's label."
+       "fix": "Derive the account kind from the Form 1099-R 'IRA/SEP/SIMPLE' checkbox (between boxes 7 and 8) rather than the filer's label. If the helper is asked, state that SEP-IRAs and SIMPLE IRAs count as IRAs, not plans."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer aged 70½ or older with an individual retirement annuity bought from an insurance company. The trustee paid part of the distribution straight to a charity as a QCD.",
-       "why_no": "The product is sold and statemented as an 'annuity', so the filer chooses 'pension, annuity or plan'. The IRA gate is false, and the charity/HSA question that should end the interview is skipped.",
-       "line": "retirement.charity_hsa_if_ira",
-       "irs_text": "i1040gi p. 27, Exception 3: 'If all or part of the distribution is a qualified charitable distribution (QCD), enter the total distribution on line 4a ... A QCD is a distribution made directly by the trustee of your IRA ... to an organization eligible to receive tax-deductible contributions.'",
+       "who": "A participant with a designated Roth account in a 401(k), 403(b) or governmental 457(b). They received a distribution that includes a plan loan offset, after-tax Roth contributions (box 5), or employer stock with NUA (box 6).",
+       "why_no": "They read 'Roth' as an IRA and pick an IRA or non-'plan' answer. Every plan-branch question is then skipped and set to false.",
+       "line": "retirement.loan_offset_if_plan; retirement.cost_any_if_plan; retirement.box6_if_plan",
+       "irs_text": "i1040gi p. 28: 'Pension and annuity payments include distributions from 401(k), 403(b), and governmental 457(b) plans'; p. 30: 'subtract any contributions (usually shown in box 5) that were taxable to you when made'; 'special rules that apply to rollovers from designated Roth accounts'",
        "severity": "medium",
-       "fix": "Add to the help: 'An individual retirement annuity is an IRA. If the IRA/SEP/SIMPLE box on the 1099-R is checked, choose IRA.'"
+       "fix": "Use the 1099-R IRA/SEP/SIMPLE checkbox as the gate. In the helper's wording, say that a Roth 401(k), Roth 403(b) or Roth 457(b) is an employer plan, not an IRA."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose traditional or Roth IRA is held as an individual retirement annuity issued by an insurance company. They took a QCD or an HFD from it, or had an excess contribution returned.",
+       "why_no": "The contract and the Form 1099-R come from an insurer and pay as an 'annuity', so they pick 'plan' (pension, annuity or plan). The IRA questions are never asked.",
+       "line": "retirement.charity_hsa_if_ira; retirement.ira_returned_if_ira",
+       "irs_text": "i1040gi p. 27 Exception 3: 'If all or part of the distribution is a qualified charitable distribution (QCD), enter the total distribution on line 4a... Check box 2 on line 4c'; Exception 4 (HFD)",
+       "severity": "medium",
+       "fix": "Gate on the 1099-R IRA/SEP/SIMPLE checkbox. If asked, say 'an IRA held as an annuity contract is still an IRA'."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A retired public school teacher or government worker who takes distributions from a 403(b)(7) custodial account or a governmental 457(b). The custodian is an investment firm that also holds their IRA, and the plan has after-tax money or the retiree is a public safety officer paying health premiums.",
-       "why_no": "The account is held at a brokerage like an IRA, is 'individual', and has no employer on the statement, so the filer chooses IRA. The pension branch is never asked.",
-       "line": "retirement.cost_any_if_plan; retirement.pso_exclusion_if_plan; retirement.loan_offset_if_plan",
-       "irs_text": "i1040gi p. 28: 'Pension and annuity payments include distributions from 401(k), 403(b), and governmental 457(b) plans'; 'An eligible retirement plan is a governmental plan that is a qualified trust or a section 403(a), 403(b), or 457(b) plan.'",
+       "who": "A retired federal civil service employee with Form CSA 1099-R, a railroad retiree, a retired government police officer or firefighter with a 457(b) or governmental plan, or a holder of an annuity reported on Form 1099-R. Any of these may answer the account-kind helper with something other than 'plan', or be unsure.",
+       "why_no": "The gate is '≠ plan', so any answer other than 'plan' (for example annuity, other, or not sure) sends the filer to the IRA branch. A civil service annuity or a pension paid by a government retirement system may not read to them as a 'plan'. The cost, disability, pre-1936 birth and retired-public-safety-officer questions are then never asked.",
+       "line": "retirement.cost_any_if_plan; retirement.disability_if_plan; retirement.pso_exclusion_if_plan; retirement.born_before_averaging_date_if_plan",
+       "irs_text": "i1040gi p. 28: 'Insurance Premiums for Retired Public Safety Officers... An eligible retirement plan is a governmental plan that is a qualified trust or a section 403(a), 403(b), or 457(b) plan'; p. 30: 'see Pub. 721 for U.S. Civil Service retirement benefits'; 'If you or the plan participant was born before January 2, 1936... See Form 4972.'",
        "severity": "medium",
-       "fix": "State in the kind-of-account help that 401(k), 403(b) and 457(b) accounts are plans even when held at a brokerage. Better, classify by the Form 1099-R IRA/SEP/SIMPLE checkbox."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A joint filer entering their spouse's Form 1099-R from a plan. The spouse retired on disability, or the spouse (not the filer) is a retired firefighter.",
-       "why_no": "'Was any of this paid to you because you became disabled' and 'Are you a retired police officer, firefighter' use 'you', so a filer entering the spouse's form answers about themselves and says no.",
-       "line": "retirement.disability_if_plan; retirement.pso_exclusion_if_plan",
-       "irs_text": "i1040gi p. 28: 'If you are an eligible retired public safety officer ... you can elect to exclude from income distributions'; p. 27: 'If you (or your spouse if filing jointly) received more than one distribution...'",
-       "severity": "medium",
-       "fix": "Word these as 'the person this Form 1099-R was issued to (you or your spouse)', or name the recipient from the form."
+       "fix": "Invert the default: compute is_ira as true only when the 1099-R IRA/SEP/SIMPLE box is checked, and send every other answer (including 'not sure') to the pension/plan branch. Add 'government pension, civil service annuity, or other employer pension or annuity' to the 'plan' option."
       }
      ],
-     "prompt_sha": "b056b70f36c00363df60e699688c165003d32718fc28904d5c1bd26e0c489e5e",
+     "prompt_sha": "a916e27f87eb1a4ba9b94c62f05d6b72dab5e865dc9418c45e66c2da0118dca5",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.133884,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_retirement.is_ira.027f5a686d2c.1.response.txt"
+     "cost": 0.134372,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.is_ira.2ba4458022d4.1.response.txt"
     }
    ],
    "condition": "retirement.is_ira",
@@ -778,78 +891,78 @@
    ]
   },
   "gate:retirement.is_trad": {
-   "subject_sha": "2d758cb8a21172b1bbe2de9077a442299258ed30633a7f6a5df0011a2456084a",
+   "subject_sha": "3d2311e2f3a880eb1c1bb31578480add0077433f07077ba1cd0504d3e232b6e7",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer who made a nondeductible contribution to a traditional IRA for 2025 but took no distribution from a traditional IRA in 2025, for example because the only retirement distribution was from a 401(k) or pension.",
-       "why_no": "The gate looks only at the kind of account a distribution came from; with no traditional-IRA distribution the computed condition is false, so the basis question is never asked.",
-       "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You made nondeductible contributions to a traditional IRA for 2025.'",
-       "severity": "high",
-       "fix": "Broaden the gate to ask about traditional-IRA basis whenever the filer made nondeductible contributions, converted, recharacterized, or had a divorce or inheritance basis event, even without a traditional-IRA distribution."
-      },
-      {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer who receives a distribution from a SEP or SIMPLE IRA and has basis in a traditional IRA, or has after-tax basis in the SEP or SIMPLE IRA itself.",
-       "why_no": "The account-kind helper is SEP or SIMPLE, not 'traditional_ira', so the gate is false; the question's 'traditional IRA' wording also invites reading SEP and SIMPLE IRAs out.",
-       "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i1040gi (2025) p. 27, Exception 2: 'You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs...'",
-       "severity": "high",
-       "fix": "Gate on any non-Roth IRA distribution when any traditional, SEP, or SIMPLE IRA has basis, and word the question to include SEP and SIMPLE IRAs."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A joint filer whose spouse has basis in a traditional IRA, such as nondeductible contributions or an inherited IRA, and who receives a traditional-IRA distribution from that spouse's IRA.",
-       "why_no": "The gated question asks 'any traditional IRA of yours' and the help never mentions the spouse; the filer answers no for themselves, and the joint return drops the spouse's basis.",
-       "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You or your spouse transferred all or part of their traditional IRA...'",
-       "severity": "high",
-       "fix": "Ask 'you or your spouse' and include the spouse's traditional, SEP, and SIMPLE IRAs in the basis test."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer who transferred or received all or part of a traditional IRA in 2025 under a divorce or separation agreement and the transfer changed the IRA basis, but who had no traditional-IRA distribution.",
-       "why_no": "A divorce transfer is not a distribution from a traditional IRA, so the gate computed from the distribution source is false and the basis question is skipped.",
-       "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You or your spouse transferred all or part of their traditional IRA in 2025 to the other spouse under a divorce or separation agreement where the transfer resulted in a change in the basis...'",
-       "severity": "high",
-       "fix": "Add a direct divorce-transfer basis trigger and do not require a distribution from a traditional IRA."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A beneficiary who receives a distribution from an inherited traditional IRA that has basis, where the account-kind helper records the account as an inherited IRA rather than exactly 'traditional_ira'.",
-       "why_no": "The gate requires the account kind to equal 'traditional_ira'; an inherited-IRA category makes it false, so the basis question is not asked even though the help mentions inherited basis.",
-       "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You received a distribution from an inherited traditional IRA that has a basis.'",
-       "severity": "high",
-       "fix": "Treat inherited traditional IRAs as within the gate and do not require the account-kind value to be exactly 'traditional_ira'."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer who rolled after-tax money from a qualified work plan into a traditional IRA in 2025 and took no distribution from a traditional IRA.",
-       "why_no": "The gate looks at the account the distribution came from; the work-plan rollover is not a traditional-IRA distribution, so the gate is false. The help's 'Form 8606 on any earlier return means Yes' also suggests no to a filer with no prior Form 8606.",
-       "line": "retirement.ira_basis_if_trad",
-       "irs_text": "i8606 (2025) p. 9, Line 2: 'You rolled over any nontaxable portion of your qualified retirement plan to a traditional IRA... Include the nontaxable portion on line 2.'",
+       "who": "An owner took a 2025 distribution from a SEP IRA or a SIMPLE IRA. The same owner has a separate traditional IRA funded with nondeductible contributions, and earlier returns included Form 8606.",
+       "why_no": "The gate's label reads 'A traditional, SEP or SIMPLE IRA', but it is computed only as kind = 'traditional_ira'. If the 'Kind of account' helper lists SEP IRA or SIMPLE IRA as separate choices, this filer truthfully picks one of those, and the gate comes out false.",
+       "line": "retirement.ira_basis_if_trad (and the refusal a Yes triggers)",
+       "irs_text": "i8606 (2025) p. 2, Purpose of Form: 'Distributions from traditional IRAs, if you have a basis in these IRAs'. Definitions list 'SEP IRAs: Traditional and Roth' and 'SIMPLE IRAs: Traditional and Roth'. i1040gi p. 27, Exception 2(1): 'a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs'.",
        "severity": "medium",
-       "fix": "Ask directly about after-tax rollovers into traditional IRAs and do not require a traditional-IRA distribution or a prior Form 8606."
+       "fix": "Compute the gate as kind in {traditional_ira, sep_ira, simple_ira, inherited_traditional_ira}. Better: gate on Form 1099-R box 'IRA/SEP/SIMPLE' being checked and the account not being a Roth, and ask the basis question about all of the owner's traditional, SEP and SIMPLE IRAs together."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A beneficiary received a 2025 distribution from a traditional IRA inherited from a parent. The parent had made nondeductible contributions and filed Form 8606.",
+       "why_no": "If the helper offers 'inherited IRA' or 'beneficiary distribution' as its own kind, the filer picks it instead of 'traditional IRA', and the gate is false. The gated question even names inherited basis, but it is never asked.",
+       "line": "retirement.ira_basis_if_trad (and the refusal a Yes triggers)",
+       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You received a distribution from an inherited traditional IRA that has a basis'.",
+       "severity": "medium",
+       "fix": "Treat an inherited traditional, SEP or SIMPLE IRA as traditional for this gate. Alternatively, ask 'Did this come from an IRA that is not a Roth IRA, including one you inherited?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "An owner's traditional IRA is an individual retirement annuity bought from a life insurance company. The insurer's Form 1099-R reports annuity payments. The owner made nondeductible contributions in past years.",
+       "why_no": "The filer sees an insurance company as the issuer and 'annuity' payments, so they classify the account as an annuity or pension rather than a traditional IRA, and the gate is false.",
+       "line": "retirement.ira_basis_if_trad",
+       "irs_text": "i8606 (2025) p. 2: 'An IRA is an individual retirement account or an individual retirement annuity... You can open an individual retirement annuity by purchasing an annuity contract or an endowment contract from a life insurance company.'",
+       "severity": "medium",
+       "fix": "Classify the account from the checked 'IRA/SEP/SIMPLE' box on Form 1099-R, not from the filer's description. Help text should say that an IRA held as an annuity with an insurer counts as a traditional IRA."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "On a joint return, one spouse has several 2025 Forms 1099-R: one from a 401(k) and one from a traditional IRA that holds basis. Alternatively, the spouse with the basis is not the spouse whose account the helper describes.",
+       "why_no": "The gate depends on 'the distribution' in the singular. If the kind is captured once per person, or once per return, rather than once per Form 1099-R, the filer answers for the 401(k) distribution. The traditional-IRA basis question is then never asked for the person who owns that IRA.",
+       "line": "retirement.ira_basis_if_trad",
+       "irs_text": "i1040gi (2025) p. 27: 'If you (or your spouse if filing jointly) received more than one distribution, figure the taxable amount of each distribution'. i8606 p. 2: 'You received distributions from a traditional IRA in 2025 and your basis in these IRAs is more than zero'.",
+       "severity": "medium",
+       "fix": "Evaluate the gate per owner as 'any 2025 distribution of this person came from a non-Roth IRA', and ask the basis question once for each such owner."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "An employee received a distribution from a deemed traditional IRA (section 408(q)) held inside an employer's 401(k) or 457(b) plan, funded with nondeductible contributions.",
+       "why_no": "The plan administrator issues the form, and the account sits in the work plan, so the filer picks 'employer plan' as the kind.",
+       "line": "retirement.ira_basis_if_trad",
+       "irs_text": "i8606 (2025) p. 2, Definitions: '• Deemed IRAs. • Traditional IRAs.'; Purpose of Form: 'Distributions from traditional IRAs, if you have a basis in these IRAs'.",
+       "severity": "low",
+       "fix": "Rely on the 1099-R 'IRA/SEP/SIMPLE' box. Help text for the kind helper should say that an IRA held within an employer plan counts as an IRA."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "In 2025, under a divorce agreement, a spouse transferred part of a traditional IRA that held basis to the other spouse, which changed each spouse's basis. The receiving spouse also took a distribution, classified under a different kind such as a SIMPLE IRA or an inherited IRA.",
+       "why_no": "The gate is false because of the account kind, so the question that names 'basis that came with an IRA from a spouse in a divorce' is never reached. The refusal for a Form 8606 situation is missed.",
+       "line": "retirement.ira_basis_if_trad (missed refusal)",
+       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You or your spouse transferred all or part of their traditional IRA in 2025 to the other spouse under a divorce or separation agreement where the transfer resulted in a change in the basis'. p. 9, Line 2: 'Incident to divorce, you transferred or received part or all of a traditional IRA'.",
+       "severity": "low",
+       "fix": "Ask a separate, ungated per-person question about any 2025 transfer of a traditional IRA incident to divorce, and refuse when the answer is Yes."
       }
      ],
-     "prompt_sha": "c1c3292603dd58c2449b14b386c09e066ca7e949dabbda1c45f9165235779e25",
+     "prompt_sha": "dc8d03ce455aac500203587ded4ce0f8fcdf3245f6ca7d4418c209f45635318b",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_retirement.is_trad.2d758cb8a211.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.14213599999999998,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.is_trad.3d2311e2f3a8.1.response.txt"
     }
    ],
    "condition": "retirement.is_trad",
@@ -902,68 +1015,68 @@
    ]
   },
   "gate:retirement.plan_death": {
-   "subject_sha": "9d2d3283c614f31290b0a185c21d4015f31645224a4058b771f48dfd03b890ca",
+   "subject_sha": "4dfe8965c38b2916855dc2a986f328fb8f3fb78d22797d7cdd1abff3930e59e6",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A surviving spouse receives a joint-and-survivor annuity after a retiree's death, or a beneficiary is paid by a plan after an employee's death, but the payer reports box 7 code 7 (normal) or another non-death code instead of 4. Some payers do this for continuing survivor annuities. The plan pays the annuity to two or more beneficiaries, or the employee died before August 21, 1996.",
-       "why_no": "The gate is computed from the box 7 code. The filer truthfully enters the code printed on the form, so the gate is false even though the facts are those of a death payment to a beneficiary.",
-       "line": "retirement.ben_shared_if_death, retirement.death_exclusion_if_death, retirement.ben_before_retire_if_death",
-       "irs_text": "i1040gi p.30: 'If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary's taxable amount.' i1040gi p.29: 'If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion...'",
+       "who": "A surviving spouse or other beneficiary receives a continuing survivor annuity or guaranteed-period payments after a retiree died. The payer (some state or municipal systems, or a payer that kept the retiree's account coding) reports it on Form 1099-R with box 7 code 7, not code 4.",
+       "why_no": "The gate is computed from box 7 code 4 rather than from the fact that the payee is a beneficiary of someone who died. The filer enters code 7 from the form, so the gate is false and none of the beneficiary questions are asked.",
+       "line": "retirement.ben_guaranteed_if_death; retirement.ben_shared_if_death; retirement.ben_before_retire_if_death",
+       "irs_text": "i1040gi p. 30: \"If you are the survivor of a retiree, use the retiree's age on their annuity starting date... If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary's taxable amount.\"",
        "severity": "medium",
-       "fix": "Ask a fact-based question for every pension or annuity (line 5) Form 1099-R, whatever the code: 'Are you receiving these payments because the person who earned the pension or annuity (an employee, former employee or retiree) died?' Set the gate when the answer is yes or the code includes 4."
+       "fix": "Gate on a fact question asked of every non-IRA Form 1099-R: \"Are you receiving this because someone else (the worker or retiree) died, whatever code is in box 7?\" Treat a yes, or code 4, as the death branch."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A beneficiary whose Form 1099-R shows a combined death code, such as 4D (death payment from a nonqualified annuity), 4G (direct rollover of a death payment) or 4H, or whose death payment is reported without a box 7 code.",
-       "why_no": "If the helper 'Code 4 (death)' matches only a bare '4', a combined code makes the computed gate false. A General Rule annuity with several beneficiaries, or one with a pre-1996 death benefit exclusion, then passes without the refusal.",
-       "line": "retirement.ben_shared_if_death, retirement.death_exclusion_if_death",
-       "irs_text": "i1040gi p.28: 'If your Form 1099-R doesn't show the taxable amount, you must use the General Rule explained in Pub. 939'; p.30: 'If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary's taxable amount.'",
+       "who": "A widow is still receiving a survivor annuity in 2025 from a worker who died before August 21, 1996. After decades of payments, the payer codes the Form 1099-R as a normal distribution (code 7).",
+       "why_no": "The computed gate needs code 4, so the death benefit exclusion question is never asked. The tool also never refuses, even though the worksheet requires the exclusion to be added to cost.",
+       "line": "retirement.death_exclusion_if_death",
+       "irs_text": "i1040gi p. 29, Simplified Method Worksheet: \"If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2 below.\"",
        "severity": "medium",
-       "fix": "Define 'Code 4 (death)' as true when any box 7 code on the form is 4, including combinations with D, G, H, B or K. Also cover forms with no code through the fact-based question above."
+       "fix": "Ask whether the payments are made because of someone's death independently of the box 7 code, and route a yes to the death-benefit-exclusion question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A nonspouse beneficiary's Form 1099-R shows box 7 as a two-character code that includes 4, such as 4D, 4B (designated Roth), 4H, 4K or 4G. They rolled part of the distribution over within 60 days.",
+       "why_no": "If the helper \"Code 4 (death)\" matches only the exact entry \"4\", a combined code makes the gate false. The nonspouse-rollover refusal and the beneficiary questions are then skipped.",
+       "line": "retirement.rollover_nonspouse_if_plan; retirement.ben_before_retire_if_death",
+       "irs_text": "p575 p. 24: \"A distribution paid to a beneficiary other than the employee's surviving spouse is generally not an eligible rollover distribution... The distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution.\"",
+       "severity": "medium",
+       "fix": "Define the helper so it is true whenever either character of box 7 is 4."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "5",
-       "who": "A survivor of a railroad employee or of a federal civil service retiree who receives a survivor annuity reported on Form RRB-1099-R or OPM's CSA/CSF 1099-R. The payment may have no box 7 death code, or the payment may be entered through a route the code-based helper does not read. The annuity is shared among several survivors, or the employee died before August 21, 1996.",
-       "why_no": "The gate exists only for a 'payment from a plan' with code 4. A filer whose form uses a different format, or carries no code 4, never reaches the gated questions.",
-       "line": "retirement.ben_shared_if_death, retirement.death_exclusion_if_death, retirement.ben_before_retire_if_death",
-       "irs_text": "i1040gi p.28: 'If you received a Form RRB-1099-R, see Pub. 575 to find out how to report your benefits.' p.30: 'If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary's taxable amount.'",
+       "who": "A survivor receives federal civil service survivor benefits on OPM's CSA/CSF 1099-R, or railroad survivor benefits on Form RRB-1099-R. These forms do not follow the standard code-4 convention.",
+       "why_no": "The gate keys on the standard Form 1099-R box 7 code 4, which these forms may not carry. The beneficiary questions are reached only through that code.",
+       "line": "retirement.ben_shared_if_death; retirement.ben_guaranteed_if_death",
+       "irs_text": "i1040gi p. 30: \"If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary's taxable amount.\"; i1040gi p. 28: \"If you received a Form RRB-1099-R, see Pub. 575 to find out how to report your benefits.\"",
        "severity": "medium",
-       "fix": "Apply the same 'paid because the earner died?' question to RRB-1099-R and CSA/CSF 1099-R survivor annuities. If those forms are out of scope, refuse them."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A filer, or the filer's spouse on a joint return, who has an IRA distribution and also a separate code 4 survivor pension from an employer plan.",
-       "why_no": "If the helper 'IRA distribution (lines 4a and 4b)' is evaluated for the whole return rather than for each Form 1099-R, any IRA distribution makes the gate false for the employer-plan pension as well.",
-       "line": "retirement.ben_shared_if_death, retirement.death_exclusion_if_death, retirement.ben_guaranteed_if_death, retirement.ben_before_retire_if_death",
-       "irs_text": "i1040gi p.29: 'More than one pension or annuity. If you had more than one partially taxable pension or annuity, figure the taxable part of each separately.'",
-       "severity": "medium",
-       "fix": "Evaluate both helpers on the same Form 1099-R entry (the IRA/SEP/SIMPLE box and the code 4 on that form), never across the return."
+       "fix": "Ask the death or beneficiary fact for every pension or annuity source, including OPM and RRB forms, or refuse those survivor forms outright."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A surviving spouse who receives a survivor annuity under a retiree's joint-and-survivor election.",
-       "why_no": "The gated question asks whether payments are 'guaranteed for a set period ... not a survivor's pension paid for your own life'. A survivor may not know whether the plan's form of payment includes a period-certain guarantee, and may answer no.",
-       "line": "retirement.ben_guaranteed_if_death",
-       "irs_text": "i1040gi p.30: 'On your annuity starting date, either you were under age 75 or the number of years of guaranteed payments was fewer than 5. See Pub. 575 for the definition of guaranteed payments.'",
+       "who": "A nonspouse beneficiary's payer coded the distribution 4 correctly, but the filer received it as cash and redeposited part of it into their own IRA within 60 days.",
+       "why_no": "The line's label says \"of which some went into another retirement account\". If the rollover sub-condition is computed only from a direct-rollover code (G) or from the filer's own rollover entry, a filer who does not see a cash redeposit as a rollover goes unasked.",
+       "line": "retirement.rollover_nonspouse_if_plan",
+       "irs_text": "p575 p. 24: \"Rollovers by nonspouse beneficiary... The distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution.\"",
        "severity": "low",
-       "fix": "Add help text: 'Check your plan's payment election or the survivor notice. A Yes means the plan pays for a fixed number of years (for example, 10-year certain) whether or not anyone is alive.'"
+       "fix": "Ask any code-4 plan beneficiary: \"Did you put any of this money into an IRA or another plan, by any means, including a deposit within 60 days?\""
       }
      ],
-     "prompt_sha": "9a7c7c2d4173658913fbbc1341306a13ad41e0b4abea7fba27de9d616ced03b2",
+     "prompt_sha": "2b1603c221d7fc994bff6dbe76e8e102ae893a0d1ce49f775732f8e6e4494344",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.128244,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_retirement.plan_death.9d2d3283c614.1.response.txt"
+     "cost": 0.136004,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.plan_death.4dfe8965c38b.1.response.txt"
     }
    ],
    "condition": "retirement.plan_death",
@@ -971,13 +1084,15 @@
     "retirement.ben_before_retire_if_death",
     "retirement.ben_guaranteed_if_death",
     "retirement.ben_shared_if_death",
-    "retirement.death_exclusion_if_death"
+    "retirement.death_exclusion_if_death",
+    "retirement.rollover_nonspouse_if_plan"
    ],
    "inputs": [
     "retirement.ben_before_retire",
     "retirement.ben_guaranteed",
     "retirement.ben_shared",
-    "retirement.death_exclusion"
+    "retirement.death_exclusion",
+    "retirement.rollover_nonspouse"
    ],
    "used": [
     {
@@ -1000,102 +1115,93 @@
       30
      ],
      "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p590b",
+     "revision": "2025",
+     "text_sha256": "24de404e77c2a3d1f0540b91ac8c28ca4d45c7fcf968de613407419eba9266f4",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Inherited from someone other than spouse, \"you can't roll over any amounts into or out of the inherited IRA\"; , Rollovers by nonspouse beneficiary, \"The distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution.\"",
+      "p. 5, Inherited from someone other than spouse, \"you can't roll over any amounts into or out of the inherited IRA. However, you can make a trustee-to-trustee transfer\"; , Rollovers by nonspouse beneficiary, \"The distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution.\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "464639ba13341fe9c824b6f495922126cb3d158650887bf9beb265fd951c3e77"
+    },
+    {
+     "doc": "p575",
+     "revision": null,
+     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+     "pages": [
+      24
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
     }
    ]
   },
   "gate:retirement.put_back": {
-   "subject_sha": "ead135a3a7a30241619c6fbbe82abddc6c5238aad81a8e739aeb67352b554a97",
+   "subject_sha": "33ac97760b00ab4d1ec6dda7940e17020716d63fdb6bf91bf80fcc7693fdeba6",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer converted a traditional IRA to a Roth IRA at the same custodian, which re-registered the account. The Form 1099-R shows code 2 or 7, not G.",
-       "why_no": "They think of it as a conversion, not as money that 'went into another retirement account' or that they 'put into a retirement account'. In their view nothing moved.",
+       "pattern": "6",
+       "who": "A filer, or a spouse on a joint return, converted a traditional IRA to a Roth IRA at the same custodian. The custodian issued a 2025 Form 1099-R with code 2 or 7, not G, and the filer thinks of it as 'converting my IRA', not moving money to a new account.",
+       "why_no": "The gate says 'went into another retirement account' and gives a direct rollover as its example. An in-place conversion does not feel like putting money into another account, so the filer answers no.",
        "line": "retirement.roth_moved_if_put_back",
-       "irs_text": "i1040gi p.27, Exception 2: '3. You converted part or all of a traditional IRA or traditional SIMPLE IRA to a Roth IRA in 2025.' (see Form 8606); p.30: 'a rollover to a Roth IRA or a designated Roth account is generally not a tax-free distribution.'",
+       "irs_text": "\"However, a rollover to a Roth IRA or a designated Roth account is generally not a tax-free distribution.\" (i1040gi 2025 p. 30, Rollovers); \"3. You converted part or all of a traditional IRA or traditional SIMPLE IRA to a Roth IRA in 2025.\" (i1040gi 2025 p. 27, Exception 2)",
        "severity": "medium",
-       "fix": "Ask the Roth question regardless of the gate, or broaden the gate: 'Did you convert, roll over, or move any of this money into any retirement account, including a Roth IRA or a Roth account in the same plan or at the same firm?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A participant directly rolled a designated Roth 401(k) account to a Roth IRA. The Form 1099-R shows code H (direct rollover of a designated Roth account), not G.",
-       "why_no": "The gate is computed true only for code G. The fallback asks whether the filer 'put' the money into an account, and the plan sent it directly, so they answer that they put nothing in.",
-       "line": "retirement.roth_moved_if_put_back",
-       "irs_text": "i1040gi p.30, Rollovers: 'Use lines 5a and 5b to report a rollover, including a direct rollover ... See Pub. 575 for more details on rollovers, including special rules that apply to rollovers from designated Roth accounts.'",
-       "severity": "medium",
-       "fix": "Treat code H, and any direct-rollover code, like code G. Reword the fallback: 'Did you, or the plan or IRA on your behalf, move any of this money into a retirement account?'"
+       "fix": "Ask the Roth question outside the gate, or broaden the gate: 'Did you (or your spouse) roll over, convert, or move any of this money into any retirement account, including a Roth IRA, a Roth account in the same plan, or back into the same account?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer took money out of a Roth IRA or a traditional IRA and redeposited it into the same IRA within 60 days.",
-       "why_no": "The gate says the money 'went into another retirement account'. They put it back into the same account, so they read 'another' as excluding their case.",
-       "line": "retirement.roth_moved_if_put_back",
-       "irs_text": "i1040gi p.27, Exception 1: 'you rolled over part or all of the distribution from one: Roth IRA to another Roth IRA, or IRA ... to a qualified plan or another IRA ... Generally, a rollover must be made within 60 days.'",
+       "who": "A filer took money out of an IRA (traditional or Roth) and redeposited it into the same IRA within 60 days, a 60-day rollover with no new account. This includes a filer whose IRS-levied IRA money was returned and put back into the original IRA.",
+       "why_no": "The gate's words 'another retirement account' exclude putting the money back into the account it came from, so the filer truthfully answers no.",
+       "line": "retirement.roth_moved_if_put_back; retirement.levy_returned_if_put_back",
+       "irs_text": "\"Exception 1. Enter the total distribution on line 4a if you rolled over part or all of the distribution from one: • Roth IRA to another Roth IRA, or • IRA (other than a Roth IRA) to a qualified plan or another IRA ... Generally, a rollover must be made within 60 days after the day you received the distribution.\" (i1040gi 2025 p. 27)",
        "severity": "medium",
-       "fix": "Say 'any retirement account, including the same account you took it from'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "On a joint return, the spouse received the Form 1099-R and rolled part of it into an IRA, a Roth IRA, or a new account, partly in shares. The primary filer answers the interview.",
-       "why_no": "If the fallback asks 'did you put some of this money', the answering spouse truthfully did not.",
-       "line": "retirement.rollover_property_if_put_back; retirement.roth_moved_if_put_back; retirement.rollover_qdro_if_put_back",
-       "irs_text": "i1040gi p.27: 'If you (or your spouse if filing jointly) received more than one distribution, figure the taxable amount of each distribution.'",
-       "severity": "medium",
-       "fix": "Name the recipient on the form: 'Did [recipient name] put any of this money into a retirement account?' or 'you or your spouse'."
+       "fix": "Drop 'another' and say 'any retirement account, including the same account it came from'. Ask the levy question whenever the Form 1099-R is from an IRA or plan, not only after a yes to the gate."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A participant received employer stock or other property from a plan in kind. They rolled some of the shares into an IRA and kept or sold the rest.",
-       "why_no": "The question asks about putting 'money' into a retirement account. They moved shares, not money, so they answer no.",
+       "who": "A plan paid out employer stock or other shares in kind. The filer moved some of the shares into an IRA and kept or sold the rest, and no cash changed hands.",
+       "why_no": "The gate asks whether 'some of the money' went into another retirement account. A filer who received and moved only shares reads 'money' as cash and answers no.",
        "line": "retirement.rollover_property_if_put_back",
-       "irs_text": "i1040gi p.30: 'a rollover is a tax-free distribution of cash or other assets from one retirement plan that is contributed to another plan within 60 days ... See Pub. 575 ... partial rollovers of property.'",
+       "irs_text": "\"Generally, a rollover is a tax-free distribution of cash or other assets from one retirement plan that is contributed to another plan within 60 days ... See Pub. 575 for more details on rollovers, including ... partial rollovers of property\" (i1040gi 2025 p. 30, Rollovers)",
        "severity": "medium",
-       "fix": "Ask 'Did you put any of this distribution (cash, shares, or other property, or money from selling them) into a retirement account?'"
+       "fix": "Word the gate: 'Did any of this distribution (cash, shares, or other property) go into a retirement account, or did you sell property from it and put the proceeds into one?'"
       },
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer received a distribution in late December 2025 and files in January or February 2026. Their 60-day window is still open, and they roll over the money in 2026, after answering, or intend to before the deadline.",
-       "why_no": "The past tense ('put', 'went') is truthfully no at interview time, or is read as limited to 2025.",
+       "who": "A filer received a distribution in late December 2025 and completed the 60-day rollover in January or February 2026.",
+       "why_no": "The filer reads the question as being about 2025 events and does not count a deposit made in 2026.",
        "line": "retirement.roth_moved_if_put_back; retirement.rollover_property_if_put_back; retirement.rollover_qdro_if_put_back",
-       "irs_text": "i1040gi p.27, Exception 1: 'Generally, a rollover must be made within 60 days after the day you received the distribution ... If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.'",
-       "severity": "medium",
-       "fix": "Ask 'Did you put, or will you put within 60 days of receiving it (including in 2026), any of this money into a retirement account?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "The IRS levied the filer's IRA or plan account and later returned the amount. The filer re-contributes it to an IRA in 2026, before the return's due date, or has not yet done so when filing.",
-       "why_no": "The re-contribution has not happened yet, or the filer does not see paying levied money back in as 'putting this money into a retirement account'.",
-       "line": "retirement.levy_returned_if_put_back",
-       "irs_text": "i1040gi p.30, Rollovers: 'Generally, a rollover is a tax-free distribution of cash or other assets ... contributed to another plan within 60 days' (the levy-return contribution is a separate rule outside the quoted pages).",
+       "irs_text": "\"If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.\" (i1040gi 2025 p. 27)",
        "severity": "low",
-       "fix": "Ask the levy question regardless of the gate, or include 'paid back money the IRS returned after a levy' in the gate's help."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A former spouse under 59½ received a QDRO distribution from a plan and kept the cash.",
-       "why_no": "They truthfully answer that none of it went into a retirement account. The QDRO question is never reached, so the tool cannot flag the QDRO facts that affect early-distribution tax treatment.",
-       "line": "retirement.rollover_qdro_if_put_back",
-       "irs_text": "i1040gi p.30: 'You may owe an additional tax if you received an early distribution from a qualified retirement plan and the total amount wasn't rolled over. For details, see the instructions for Schedule 2, line 8 ... See Pub. 575 ... distributions under qualified domestic relations orders.'",
-       "severity": "low",
-       "fix": "Ask the QDRO question for every plan distribution, not only rolled-over ones, or confirm that QDRO handling outside rollovers is covered elsewhere."
+       "fix": "Add to the gate's help: 'Count a rollover made within 60 days even if it happened in 2026.'"
       }
      ],
-     "prompt_sha": "6bbf3b0c0ab007a936f9866bf601ec9be47b6871619f2a98fb4c97051ac23cba",
+     "prompt_sha": "61447ebb3efd277a6ac2b17a9a4d9e26a5b23d25eb784a9fd2251acdb82b948b",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.176508,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_retirement.put_back.ead135a3a7a3.1.response.txt"
+     "cost": 0.126004,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.put_back.33ac97760b00.1.response.txt"
     }
    ],
    "condition": "retirement.put_back",
@@ -1136,78 +1242,68 @@
    ]
   },
   "gate:retirement.rollover_any": {
-   "subject_sha": "98242381ab0ee6f302bdd6889491df00fa92717f3792b9ad3c45a8881037e673",
+   "subject_sha": "3dc641b638ebe2f33990ea0c5de348e325ae3aba0f7b1254159f552d2af80590",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "8",
-       "who": "A filer who took a 401(k) or IRA distribution, spent the check or had 20% withheld from it, and within 60 days deposited an equal amount from savings into a traditional IRA.",
-       "why_no": "The gate asks whether 'this money' went into a retirement account, and the help says 'If all of it stayed with you, answer No.' The filer kept the distributed dollars and deposited different dollars, so a literal no is truthful.",
-       "line": "retirement.rollover_if_any",
-       "irs_text": "i1040gi p. 30, Rollovers: 'From that result, subtract the amount of the rollover.' p575 p. 24: 'subtract the amount that was rolled over either directly or within 60 days of receiving the distribution.'",
-       "severity": "high",
-       "fix": "Ask: 'Did you or your spouse put any amount into a retirement plan or IRA within 60 days (or later under a waiver) as a rollover of this distribution, even with other money, such as savings that replaced tax withheld?' Change the help to: 'Using different money still counts. Answer No only if nothing was deposited.'"
-      },
-      {
-       "kind": "FALSE_NO",
        "pattern": "2",
-       "who": "A filer who left a job with a 401(k) loan outstanding. The plan offset the loan against the account (a qualified plan loan offset reported on Form 1099-R), and the filer deposited that amount into an IRA before the return's due date.",
-       "why_no": "No money was paid to the filer, so 'this money' and 'even if it was paid to you first' do not seem to apply. The filer may also read the 60-day frame elsewhere in the tool as excluding a deposit made months later.",
+       "who": "A filer, or the spouse on a joint return, leaves a job in 2025 with an outstanding 401(k) loan. The plan offsets the account balance to repay the loan, so no cash is paid out. Before the extended due date, the filer deposits an equal amount of their own savings into a traditional IRA to complete a qualified plan loan offset rollover.",
+       "why_no": "The gate asks whether 'any of this money' went into a retirement account. The offset amount never reached the filer, and the dollars deposited came from savings, so 'this money' truthfully did not go anywhere. The gated question's '60 days' wording and 'A later deposit counts only under an IRS waiver' also tell the filer that a deposit months later cannot count.",
        "line": "retirement.rollover_if_any",
-       "irs_text": "p575 p. 23, Plan loan offset: 'if you have a qualified plan loan offset, you will have until the due date (including extensions) for your tax return for the tax year in which the offset occurs to complete your rollover.'",
+       "irs_text": "p575 p. 23: 'if you have a qualified plan loan offset, you will have until the due date (including extensions) for your tax return for the tax year in which the offset occurs to complete your rollover.'",
        "severity": "high",
-       "fix": "Add to the gate: 'including a loan from the plan that was offset against your account when you left the job or the plan ended.' Also extend the gated question's deadline to the return's due date for a qualified plan loan offset."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer whose plan distributed stock or other property. The filer sold it and put the sale proceeds into a traditional IRA within 60 days.",
-       "why_no": "The filer received shares, not 'money', and deposited proceeds rather than the item distributed, so the filer may read 'this money' as not covering it.",
-       "line": "retirement.rollover_if_any",
-       "irs_text": "p575 p. 23, Rollovers of property: 'you must either roll over the actual property distributed or sell it and roll over the proceeds... If you sell the distributed property and roll over all the proceeds, no gain or loss is recognized on the sale.'",
-       "severity": "medium",
-       "fix": "Change 'this money' to 'this distribution (cash, stock, or other property), or the proceeds from selling it'."
+       "fix": "Make the gate turn on an amount the filer deposited, not on the same money: 'Did you put any amount into a retirement plan or IRA as a rollover of this distribution, including a deposit of your own funds to replace a plan loan offset, withheld tax, or money you spent?' In the gated question, allow the due date (with extensions) for a qualified plan loan offset."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who took a qualified birth or adoption distribution, or a first-home IRA withdrawal for a purchase that fell through, and later put the amount back into an IRA or plan.",
-       "why_no": "The filer thinks of this as repaying or returning a withdrawal, not as a 'rollover or a conversion'. The deposit may also come months later, in a different frame from the distribution.",
+       "who": "A filer takes a qualified birth or adoption distribution of up to $5,000 from a 401(k) or IRA in 2025 and repays part of it to an eligible plan later in 2025.",
+       "why_no": "The filer thinks of this as 'repaying' the withdrawal, not as a rollover or conversion. The help names only Roth moves and the cancelled first-home purchase as special cases. The gated question's '60 days' and 'A later deposit counts only under an IRS waiver' tell the filer that a repayment months later does not count.",
        "line": "retirement.rollover_if_any",
-       "irs_text": "p590b p. 28: 'Any contribution made to the eligible retirement plan as a repayment of a qualified birth or adoption distribution may be eligible for tax-free rollover treatment.' Also: 'This contribution is treated as a rollover contribution to the IRA.'",
+       "irs_text": "p590b p. 28: 'you can make one or more contributions to an eligible retirement plan during the 3-year period beginning on the day after the date the distribution was received... Any contribution made to the eligible retirement plan as a repayment of a qualified birth or adoption distribution may be eligible for tax-free rollover treatment.'",
        "severity": "medium",
-       "fix": "Add to the help: 'Repaying a birth or adoption withdrawal, or putting back a first-home withdrawal after the purchase was canceled or delayed, counts.'"
+       "fix": "Add to the gate help: 'Repaying a birth or adoption withdrawal (within 3 years) or an emergency or disaster withdrawal counts as putting money back.' In the gated question, list the 3-year repayment window beside the 60-day and 120-day windows."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer whose plan moved the balance directly, trustee to trustee, to a new employer's plan or to an IRA (code G), or a nonspouse beneficiary whose inherited plan balance was transferred directly to an inherited IRA.",
-       "why_no": "The money never left the retirement system, so 'go into a retirement account again' reads as describing money that came out and went back in. The filer may think a mere transfer is not a rollover.",
+       "pattern": "2",
+       "who": "A filer receives a distribution of stock from an employer plan, or shares in kind from an IRA. The filer either sells the stock and deposits the cash proceeds in a traditional IRA within 60 days, or transfers the same shares into an IRA.",
+       "why_no": "The gate asks about 'this money', and the help says 'If all of it stayed with you'. The distribution was stock, not money. If the stock was sold, the cash deposited is sale proceeds, which the filer may treat as a separate event.",
        "line": "retirement.rollover_if_any",
-       "irs_text": "i1040gi p. 30, Rollovers: 'Use lines 5a and 5b to report a rollover, including a direct rollover, from one qualified employer's plan to another or to an IRA.' p575 p. 24: 'The transfer will be treated as an eligible rollover distribution.'",
+       "irs_text": "p575 p. 23: 'To roll over an eligible rollover distribution of property, you must either roll over the actual property distributed or sell it and roll over the proceeds.'; p590a p. 25: 'your rollover is tax free only if the property you contribute is the same property that was distributed to you.'",
        "severity": "medium",
-       "fix": "Add to the help: 'A direct transfer from the plan to another plan or IRA counts, including a transfer to an inherited IRA.'"
+       "fix": "Replace 'this money' with 'this distribution (cash, stock, or other property)', and add to the help: 'Selling distributed property and depositing the proceeds also counts.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer who received a distribution in late 2025 and made the rollover deposit in January or February 2026.",
-       "why_no": "The filer may read the question as asking about 2025 events and answer no because the deposit happened in 2026.",
+       "who": "A filer receives an IRA or plan distribution in mid-December 2025 and completes the 60-day rollover in January 2026.",
+       "why_no": "The whole return is about 2025, so the filer may read the gate as asking about deposits made in 2025 and answer no, because the deposit was made in 2026.",
        "line": "retirement.rollover_if_any",
        "irs_text": "i1040gi p. 27, Exception 1: 'If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.'",
        "severity": "low",
-       "fix": "Add to the help: 'Count a deposit made in 2026 for a 2025 distribution.'"
+       "fix": "Add to the help: 'Count a deposit made in 2026 if it was within 60 days (or the allowed extension) of a 2025 distribution.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A surviving spouse or a non-spouse designated beneficiary has a deceased employee's plan balance moved by direct trustee-to-trustee transfer into an IRA set up to receive it.",
+       "why_no": "The words 'again' and 'rollover' suggest the filer's own money returning to an account. A beneficiary may see the transfer as setting up an inheritance, not as a rollover of 'this money'.",
+       "line": "retirement.rollover_if_any",
+       "irs_text": "p575 p. 24: 'The distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution. The transfer will be treated as an eligible rollover distribution'",
+       "severity": "low",
+       "fix": "Add to the help: 'A direct transfer from the plan to an IRA, including an inherited IRA set up to receive a beneficiary's share, counts.'"
       }
      ],
-     "prompt_sha": "88452ed72d4ff162e69fb215f62028cd16503d5aea2dcc77c27dd6e2e08e98bb",
+     "prompt_sha": "9ae8b0ef654bbe211c7b287326511e320e6836554c5d72dca92d911c45d50680",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.18469600000000003,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_retirement.rollover_any.98242381ab0e.1.response.txt"
+     "cost": 0.19136399999999998,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.rollover_any.3dc641b638eb.1.response.txt"
     }
    ],
    "condition": "retirement.rollover_any",
@@ -1230,7 +1326,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers; , Eligible rollover distribution, \"An eligible rollover distribution is any distribution of all or any part of the balance to your credit in a qualified retirement plan except the following.\" and \"A required minimum distribution (RMD)\"; , Distributions not eligible for rollover, \"Amounts that must be distributed (required minimum distributions) during a particular year aren't eligible for rollover treatment.\"; , Eligible rollover distribution, \"Any of a series of substantially equal distributions paid at least once a year over\", \"Hardship distributions.\", \"Dividends paid on employer securities.\", \"The cost of life insurance coverage.\" and \"a distribution to the plan participant’s beneficiary isn’t generally treated as an eligible rollover distribution\"; , Rollovers by nonspouse beneficiary, \"The distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution.\"; , Inherited from someone other than spouse, \"you can't roll over any amounts into or out of the inherited IRA\"; , Distributions (Withdrawals), \"a rollover from a SIMPLE IRA to a non-SIMPLE IRA can be made tax free only after a 2-year participation in the SIMPLE IRA plan\"; , Rollovers to SIMPLE retirement accounts, \"During the first 2 years of participation in a SIMPLE retirement account, you may roll over amounts from one SIMPLE retirement account into another SIMPLE retirement account\"; , Ways to get a waiver of the 60-day rollover requirement, \"There are three ways to obtain a waiver of the 60-day requirement.\" and Frozen deposits, \"The 60-day rollover period is extended by the period for which the amount is a frozen deposit\"; , \"the purchase or construction was canceled or delayed, you could generally contribute the amount of the distribution to an IRA within 120 days of the distribution and not pay income tax or the 10% additional tax on early distributions. This contribution is treated as a rollover contribution to the IRA.\"",
+      "p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers; , Eligible rollover distribution, \"An eligible rollover distribution is any distribution of all or any part of the balance to your credit in a qualified retirement plan except the following.\" and \"A required minimum distribution (RMD)\"; , Distributions not eligible for rollover, \"Amounts that must be distributed (required minimum distributions) during a particular year aren't eligible for rollover treatment.\"; , Eligible rollover distribution, \"Any of a series of substantially equal distributions paid at least once a year over\", \"Hardship distributions.\", \"Dividends paid on employer securities.\", \"The cost of life insurance coverage.\" and \"a distribution to the plan participant’s beneficiary isn’t generally treated as an eligible rollover distribution\"; , Rollovers by nonspouse beneficiary, \"The distribution must be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution.\"; , Inherited from someone other than spouse, \"you can't roll over any amounts into or out of the inherited IRA\"; , Application of one-rollover-per-year limitation, \"You can make only one rollover from an IRA to another (or the same) IRA in any 1-year period regardless of the number of IRAs you own\"; , Distributions (Withdrawals), \"a rollover from a SIMPLE IRA to a non-SIMPLE IRA can be made tax free only after a 2-year participation in the SIMPLE IRA plan\"; , Rollovers to SIMPLE retirement accounts, \"During the first 2 years of participation in a SIMPLE retirement account, you may roll over amounts from one SIMPLE retirement account into another SIMPLE retirement account\"; , Ways to get a waiver of the 60-day rollover requirement, \"There are three ways to obtain a waiver of the 60-day requirement.\" and Frozen deposits, \"The 60-day rollover period is extended by the period for which the amount is a frozen deposit\"; , \"the purchase or construction was canceled or delayed, you could generally contribute the amount of the distribution to an IRA within 120 days of the distribution and not pay income tax or the 10% additional tax on early distributions. This contribution is treated as a rollover contribution to the IRA.\"",
       "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method"
      ],
      "cols_pages": [
@@ -1277,6 +1373,20 @@
      "cols_sha256": "464639ba13341fe9c824b6f495922126cb3d158650887bf9beb265fd951c3e77"
     },
     {
+     "doc": "p590a",
+     "revision": "2025",
+     "text_sha256": "be942a345a01a8f875a2a625b400d7760221e1a55a2c85dca5ab75826e6c801a",
+     "pages": [
+      25
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      25
+     ],
+     "cols_sha256": "cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b"
+    },
+    {
      "doc": "p560",
      "revision": "For use in preparing 2025 returns",
      "text_sha256": "38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa",
@@ -1293,58 +1403,38 @@
    ]
   },
   "gate:retirement.under59_if_code7": {
-   "subject_sha": "b4edd9c6464e68f284563ff31e22878d04d8d88bdf9ccf4ed058bd868385d7e0",
+   "subject_sha": "79ab9c23b8e48302e4add123dbf6175e0b7daefeac970bfa94dbecb95613825b",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A couple filing jointly. The spouse is 52 and received a code 7 Form 1099-R, either from a former employer's 401(k) that the payer miscoded or from a governmental 457(b) plan. The filer entering the return is 62.",
-       "why_no": "The helper asks 'Were you under age 59½ when you received any of this money?' On a joint return the person typing reads 'you' as themselves. They were over 59½, so they answer no. The tool then skips the section 457 question and its refusal. A miscoded early distribution from a non-457 plan passes as a normal distribution, and the additional tax is never flagged.",
-       "line": "retirement.sec457_if_under59",
-       "irs_text": "i5329 (2025) p. 5, Line 2: 'Distributions from a section 457 plan, which aren't from a rollover from a qualified retirement plan.' (exception 12). The refusal in the gated help ('this tool does not figure the extra tax that may then be due') is the outcome that a wrong no suppresses.",
-       "severity": "high",
-       "fix": "Ask about the recipient on this Form 1099-R by name: 'Was [recipient named on this form] under age 59½ on the date any of this money was paid?' Or take the age from the recipient's date of birth already entered and compare it with the distribution dates. Do not rely on 'you'."
-      },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer born in March 1966 who turned 59½ in September 2025. They received code 7 payments in May and in November 2025 and are completing the return in 2026.",
-       "why_no": "They read 'were you under age 59½' as their age now or at year end, or they look only at the later or larger payment. They answer no even though the May payment was received before 59½.",
-       "line": "retirement.sec457_if_under59",
-       "irs_text": "i5329 (2025) p. 5, Line 2, exception 12: 'Distributions from a section 457 plan, which aren't from a rollover from a qualified retirement plan.' Contrast exception 11: 'Include on line 2 the amount you received when you were age 59 1/2 or older.' Age is judged at each receipt.",
+       "who": "A filer who reached age 59½ partway through 2025 and received code 7 payments both before and after that date, such as monthly payments starting in January when they reach 59½ in August. Some of the money may not be from a section 457 plan, or may be rollover money inside the 457 plan.",
+       "why_no": "They are 59½ or older now and at year end, so they answer by their age when filing or on December 31 rather than on each payment date. They may also not know which date makes them 59½, or they may read 'any of this money' as 'this distribution' and think of the most recent payments.",
+       "line": "retirement.sec457_if_under59 (forced false; the refusal for a code 7 distribution before age 59½ that is not from a section 457 plan is skipped, so the 10% additional tax on the early portion goes unreported)",
+       "irs_text": "i5329 (2025) p. 5, Line 2: 'Distributions from a section 457 plan, which aren't from a rollover from a qualified retirement plan.' Exception 12: 'Include on line 2 the amount you received when you were age 59 1/2 or older.' Line 2 depends on age at each receipt.",
        "severity": "medium",
-       "fix": "Compute the answer from date of birth: anyone who reaches 59½ during 2025 or later gets the question. Or reword it: 'Was any payment on this form made before the date you turned 59½ (6 months after your 59th birthday)? Answer yes even if you are 59½ or older now.'"
+       "fix": "Ask for the date of birth and the payment dates, or the total paid before the 59½ date, and compute the gate. Or reword: 'Was any payment in this 2025 total made before the date you turned 59½ (6 months after your 59th birthday)? Count each payment separately, even if you are older than 59½ now.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A 59-year-old filer, still short of 59½, who received a code 7 distribution from a 401(k) or a 457 plan.",
-       "why_no": "They read '59½' loosely as 'in my late fifties' or 'age 59' and decide the early-distribution worry doesn't apply to them. A payer's code 7 ('normal distribution') reinforces that no is the safe answer.",
-       "line": "retirement.sec457_if_under59",
-       "irs_text": "i5329 (2025) p. 5, Line 2: 'The additional tax on early distributions doesn't apply to the distributions described next. Enter on line 2 the amount that you can exclude.' (exception 12, section 457 non-rollover)",
-       "severity": "low",
-       "fix": "Show the threshold date in the help: 'You reach 59½ six months after your 59th birthday. If you were born after [date], you were under 59½ for at least part of 2025.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer under 59½ who received a distribution from a governmental 457(b) plan, all of it from non-rollover deferrals, where the payer entered code 1 or code 2 in box 7 instead of code 7.",
-       "why_no": "The computed gate is false whenever box 7 is not code 7. The gate keys on the document's code rather than on the fact of a 457 non-rollover distribution, so the exception 12 question is never reached on this path.",
-       "line": "retirement.sec457_if_under59",
-       "irs_text": "i5329 (2025) p. 5, Line 2, exception 12: 'Distributions from a section 457 plan, which aren't from a rollover from a qualified retirement plan.'",
-       "severity": "low",
-       "fix": "Confirm that the code 1 and code 2 paths offer exception 12. If they do not, ask the section 457 question for any distribution received before 59½, whatever the box 7 code."
+       "pattern": "3",
+       "who": "Joint filers where one spouse is 62 and the other is 52. The younger spouse received a code 7 Form 1099-R, for example from a government 457(b) plan that includes rollover money, or a code 7 issued in error.",
+       "why_no": "The gate asks 'Were you under age 59½…', but the gated question names 'this person (you, or your spouse on a joint return)'. The older spouse filling in the return reads 'you' as themselves and answers no.",
+       "line": "retirement.sec457_if_under59 (forced false; the refusal or the exception 12 handling for the spouse's early distribution is skipped)",
+       "irs_text": "i5329 (2025) p. 5, Line 2: 'Distributions from a section 457 plan, which aren't from a rollover from a qualified retirement plan.' The exception and the additional tax depend on the age of the person who received the money.",
+       "severity": "medium",
+       "fix": "Name the recipient in the gate: 'Was [name on this Form 1099-R] under age 59½ on the date any of this money was paid?' Better, compute the gate from that person's date of birth."
       }
      ],
-     "prompt_sha": "ac15318116dbab9a8823715899e26853440dcd809162035cddd9f41c18fb99a7",
+     "prompt_sha": "a714a00bbb44b9c57d3bbdfc6389e6da8c5894b5e925790d01d4381929fd5353",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.083692,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_retirement.under59_if_code7.b4edd9c6464e.1.response.txt"
+     "cost": 0.06781999999999999,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_retirement.under59_if_code7.79ab9c23b8e4.1.response.txt"
     }
    ],
    "condition": "retirement.under59_if_code7",

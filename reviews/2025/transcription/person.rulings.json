@@ -2815,6 +2815,37 @@
    }
   },
   {
+   "printed": "person.f8919_ss8",
+   "project_expr_sha256": "fb37c36c8a420177d2ae39a008c89904518511c0e0c34e193d5cfb095a6f172f",
+   "second_expr_sha256": "70f03a9a61d912237c6ce1e3865aa57927a2bbe211da32bcd6a97a5d043be26f",
+   "ruling": "Ruling: representation; f8919 p. 1, Reason codes, \"enter reason code G and file Form SS-8 on or before the date you file your tax return\". The reply tests f8919firm.reason = g on any firm, which is the project's f8919firm.code_g summed in person.f8919_ss8_firms; the project's added gate on scope.contractor_pay_if_pay only keeps an unasked roster from being read (no firm is listed without it). Project stands.",
+   "context": "04b617f94904778c7c0f1dbff5bfd9fda5ed76e1aa4f04e7613528c181c87946",
+   "date": "2026-11-22",
+   "run": "bed9c3e8dd4e744d1d9ebb497e5597df55db1ce475e5ebc9bc46093ef0b00aae",
+   "subject_key": "faceadf8e8b7160880c974796d3e8e22b924bb3a9aa063bb87a668eface70d54",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "person.f8919_tax",
    "project_expr_sha256": "8b02b6e4f2338bf47160e939b66aeb208af2ccbd89fe7542c97961cf394d6334",
    "second_expr_sha256": "40adcb615ce026018260ae5facd31152bbf38609f4e82c56efe273b5cdcd0c22",
@@ -6865,6 +6896,42 @@
    }
   },
   {
+   "printed": "person.ot_over_wages",
+   "project_expr_sha256": "b3fd9bf069f5b887c22eee206840f34b8924642b5b55f9221e4df95353f2b649",
+   "second_expr_sha256": "edad5262fa6ec83eede8727c45954a93cfbc12bb89e7c62145d6203d00a04820",
+   "ruling": "Ruling: representation; project retained. Both read the line as a consistency check that the qualified overtime entered is not more than the wages that include it. The reply bounds it by box 1 and notes itself that the line 14a instructions allow overtime not in box 1 (deferred under a qualified plan; otjob.statement asks to include it), so its check can fire with no error; the project bounds it by box 5 (fw2 p. 7, Box 6, 'all Medicare wages and tips shown in box 5'), which includes such deferrals (BUG-1208).",
+   "context": "3180989babafaed42461e5da19416948bae4004b43aea39c29bec0be7899ecbc",
+   "date": "2026-11-23",
+   "run": "6ea958957d88ed2eb1e12cc3e88846a77796de038a8e881c2a87a71547148074",
+   "subject_key": "89857da469a2f88b71049543ab029d7a62d38ef58726650231cec6ef92a344ce",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.f1040_line16@person[taxpayer]",
+     "fixture:mexist.f4137.line8_rrta@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.qip-person[taxpayer].rrta@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "person.plan_amount_a",
    "project_expr_sha256": "363ad38cd333ac2d109c1f3d9d78815f23e7a1e70261c3de2d0ef2aa27dd65c1",
    "second_expr_sha256": "c217951d6246f5e2152e416caa61d210a16cc2ea3203dec80dab642ba7e2e466",
@@ -8314,6 +8381,32 @@
    }
   },
   {
+   "printed": "person.tip_employers",
+   "project_expr_sha256": "0f340a1b0a35e6db34e7344c362bb60d393bd1ef7162d274fb734c908d58e347",
+   "second_expr_sha256": "a928d2f665306d5b36b09d33e543f49787713b605ded73bb4a5268a1b1dc64fd",
+   "ruling": "Ruling: model error; i1040gi p. 104, Line 4a, 'If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a'; f1040s1a line 4c, 'If you only received qualified tips as an employee with respect to employment with one employer'. The count is of employers that paid qualified tips. An entry answered No to tipjob.listed (no job on the list) has no qualified tips (tipjob.amount is zero), and the tipjob roster's help asks for every employer where the filer received tips, so the reply's count of every entry sends a filer with one qualifying employer to the worksheet and prints $0 on line 4a (BUG-1207, fixture fxi.tips_unlisted_employer_not_counted).",
+   "context": "3180989babafaed42461e5da19416948bae4004b43aea39c29bec0be7899ecbc",
+   "date": "2026-11-23",
+   "run": "6ea958957d88ed2eb1e12cc3e88846a77796de038a8e881c2a87a71547148074",
+   "subject_key": "1c5283501a6b60fedd98fbdb765fcf286106d1155ad69ca6910235844f7cc7e1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.4.deepseek@person[taxpayer]",
+     "fixture:classm.person.1.deepseek@person[taxpayer]",
+     "fixture:stage12.refuse.form4137_two_employers@person[taxpayer]",
+     "fixture:stage13.tips_spouse_no_ssn@person[spouse]",
+     "fixture:stage13.tips_two_jobs_spouse_no_ssn@person[spouse]",
+     "fixture:fxi.tips_unlisted_employer_not_counted@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "person.tip_reported",
    "project_expr_sha256": "dd973e1cc29aa277b6a5480e3d206eabb441676052d77794947a190187748501",
    "second_expr_sha256": "417a592f85294cfde93d02fcd7509e2f4e6851b8a276ceb712030219127d79aa",
@@ -8387,6 +8480,45 @@
      "fixture:ss.rrta@person[taxpayer]",
      "fixture:ss.early.refusal@person[taxpayer]",
      "generated:20261026.134@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.tips_over_wages",
+   "project_expr_sha256": "d442f49f61e91cc6cb4d8d82f49bf5417013fd3e2c227eab1d7f4d281716a9b3",
+   "second_expr_sha256": "291e5dd701b34243759437d36875ab8d3e53c6c5feda064188f642910f66b1ef",
+   "ruling": "Ruling: representation; project retained. Both read the line as a consistency check that the qualified tips (worksheet column (b), from Form W-2 box 7 or Forms 4070) are not more than the wages that include them (f1040s1a line 4a, 'qualified tips included on Form W-2, box 7'). The project bounds them by box 5 (Medicare wages and tips; fw2 p. 7, Box 6, 'all Medicare wages and tips shown in box 5'), the reply by box 1. Box 1 is lowered by pretax deferrals such as a 401(k) while box 5 is not, so a tipped worker who defers pay can have tips above box 1 and below box 5 with no error; the box 5 bound refuses only answers that cannot all be true (BUG-1208).",
+   "context": "3180989babafaed42461e5da19416948bae4004b43aea39c29bec0be7899ecbc",
+   "date": "2026-11-23",
+   "run": "6ea958957d88ed2eb1e12cc3e88846a77796de038a8e881c2a87a71547148074",
+   "subject_key": "0071fe4a587e31bbb95387089b018ba26d31da5035c31dad1c1bef74aa153e7f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.f1040_line16@person[taxpayer]",
+     "fixture:mexist.f4137.line8_rrta@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_three_jobs@person[taxpayer]",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_one_job@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.qip-person[taxpayer].rrta@person[taxpayer]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -8505,6 +8637,22 @@
    "ruling": "Ruling: representation; i5329 p. 5, Line 2, \"Enter on line 2 the amount that you can exclude\". The only completed-return differences are 4 candidate-unknown exception answers on fixtures whose exception does not need them (classm.ira.2, classm.tcw.15, classm.tcw.5); the other differences are on refused or partial records. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,825 of 4,960 agree; 134 candidate-unknown, 1 value; on returns the full interview completes: 4 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 4 candidate-unknown person.exception (for example classm.ira.2). Project stands.",
    "context": "1ff6206f4a5f4463020563a1a55576267474052bdeb20bcfde4d8cc23a42f446",
    "subject_key": "47c1d45de37c844cd4a68efc6f6e884523cb2bd2f974f8948b621cad7ab08826"
+  },
+  {
+   "printed": "person.x_e05",
+   "project_expr_sha256": "63bdd49aed9291ac78bbfe601a4f947c1583c671c337976ca0a9203061268ac0",
+   "second_expr_sha256": "805f12d238ff019758fe5326b820771ce38be8cb1fa5047d88f2de79addbb20e",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (5687 values compared, none different or missing: 3028 on 2677 fixture cases, 565 on 500 generated returns seed 20261026, 2094 on 1808 partial records; every alternative of the 0 differing choose line(s) reached taken; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "0e289b919f0870407c4de91e6e484165e608cca4c6cc610d2f5fb834c1e2ac46",
+   "date": "2026-11-23",
+   "run": "29bf9c0b150c6aed9714beaddbe55aace22f10e974f6772b600822d1880f2e04",
+   "subject_key": "da7349d7cb5bea377167fa1f2abf73d070831f7734f9fbb54db51fd71af9e8a4",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "person.x_l2_all",

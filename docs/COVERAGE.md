@@ -14,13 +14,13 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 319 of the 336 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 320 of the 337 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 85.9% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **387 refusal gates**: 336 tax situations the tool does not prepare, grouped by topic below, and 51 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **390 refusal gates**: 337 tax situations the tool does not prepare, grouped by topic below, and 53 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (69)
 - [Household and dependents](#household-and-dependents) (20)
@@ -33,7 +33,7 @@ The data holds **387 refusal gates**: 336 tax situations the tool does not prepa
 - [Other income and alimony](#other-income-and-alimony) (47)
 - [IRA contributions](#ira-contributions) (12)
 - [Health savings accounts](#health-savings-accounts) (13)
-- [Itemized deductions](#itemized-deductions) (10)
+- [Itemized deductions](#itemized-deductions) (11)
 - [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (8)
 - [Earned income credit](#earned-income-credit) (3)
 - [Child and dependent care](#child-and-dependent-care) (11)
@@ -41,7 +41,7 @@ The data holds **387 refusal gates**: 336 tax situations the tool does not prepa
 - [Home energy credits](#home-energy-credits) (8)
 - [Premium tax credit](#premium-tax-credit) (8)
 - [Partnership and S corporation Schedules K-1](#partnership-and-s-corporation-schedules-k-1) (62)
-- [Entry checks](#entry-checks) (51)
+- [Entry checks](#entry-checks) (53)
 
 ### Filing status, residency, wages, accounts and other taxes
 
@@ -1367,6 +1367,11 @@ The data holds **387 refusal gates**: 336 tax situations the tool does not prepa
   - *Not covered:* Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
+- **`sa.charity_over_if_itemizing`**: Do you itemize, with gifts to charity of more than 60% of your income, or noncash gifts of more than 30% of it?
+  - *The data asks or tests:* Itemizing, and an income limit reduces the gifts to charity (no when taking the standard deduction, which the limits cannot change) (`test`)
+  - *Not covered:* Schedule A charitable limitation (Pub. 526). Gifts to charity this large compared with your income are limited, and the deduction and the carryover are figured under Pub. 526, which this tool does not do.
+    *Source:* [p526] p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited to no more than 60% of your AGI"; p. 25, "Your noncash contributions of capital gain property to 50% limit organizations is limited to 30% of your AGI"
+  - *Refused at:* `sa.deduction`
 - **`sa.gift_carryover_if_no_gifts`**: With no gifts to charity in 2025, do you have a charitable contribution carried over from an earlier year?
   - *The data asks or tests:* A charitable contribution is carried over from an earlier year (asked of every filer, whether or not they gave in 2025) (`copy`)
   - *Not covered:* Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope.
@@ -2218,6 +2223,19 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *Not covered:* Form 4952. Enter no more than the sum of lines 4b and 4e on line 4g.
     *Source:* [f4952] pp. 1, 3–4, Investment Interest Expense Deduction
   - *Refused at:* `f4952.election_checked`
+
+#### Tips, overtime, car loans and seniors
+
+- **`s1a.tips_over_wages`**
+  - *The data asks or tests:* For someone on the return, the qualified tips entered are more than the Medicare wages and tips (W-2 box 5) that include them (not tested on a return with Form 4137 tips, which is refused at s1a.f4137) (`test`)
+  - *Not covered:* Schedule 1-A, Part II (qualified tips larger than the Medicare wages and tips that include them). The tips entered for a person are more than that person's Form W-2 box 5 Medicare wages and tips, which include them. Correct the tip amounts or the Forms W-2.
+    *Source:* [f1040s1a] p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5"
+  - *Refused at:* `s1a.line4c_calc`
+- **`s1a.ot_over_wages`**
+  - *The data asks or tests:* For someone on the return, the qualified overtime amounts entered are more than the Medicare wages and tips (W-2 box 5) that include them (`test`)
+  - *Not covered:* Schedule 1-A, Part III (qualified overtime compensation larger than the Medicare wages and tips that include it). The overtime compensation entered for a person is more than that person's Form W-2 box 5 Medicare wages and tips, which include it. Correct the overtime amounts or the Forms W-2.
+    *Source:* [f1040s1a] p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5"
+  - *Refused at:* `s1a.line14a_calc`
 
 #### Child and dependent care
 

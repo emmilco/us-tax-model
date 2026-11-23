@@ -229,9 +229,9 @@ def predict(fed, ny):
     out = {}
     L = {}
     for n, k in [(1, "f1040.line1z"), (2, "f1040.line2b"), (3, "f1040.line3b"), (4, "s1.line1"), (5, "s1.line2a"), (6, "s1.line3"),
-                 (7, "f1040.line7a"), (9, "f1040.line4b"), (10, "f1040.line5b"), (14, "s1.line7"), (15, "f1040.line6b"), (16, "s1.line9"), (18, "s1.line26")]:
+                 (7, "f1040.line7a"), (9, "f1040.line4b"), (10, "f1040.line5b"), (11, "s1.line5"), (14, "s1.line7"), (15, "f1040.line6b"), (16, "s1.line9"), (18, "s1.line26")]:
         L[n] = r_dollar(d(k))
-    L[8] = L[11] = L[13] = 0
+    L[8] = L[13] = 0
     L[17] = sum(L[n] for n in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16))
     L[19] = L[17] - L[18]
     L[24] = L[19]

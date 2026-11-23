@@ -839,7 +839,7 @@
  },
  {
   "form": "eic",
-  "subject_sha": "755a6c290930a9f69a315584b43cf6f3d8b1b6bc0e358d4f9d98b57a007214d4",
+  "subject_sha": "8192e267c3e4fdb492e9d69fdd545609ddf98fc7a2214406b22de2940dbb471f",
   "used": [
    {
     "doc": "i1040gi",
@@ -866,6 +866,18 @@
      59,
      60
     ]
+   },
+   {
+    "doc": "p596",
+    "pages": [
+     5
+    ]
+   },
+   {
+    "doc": "p596",
+    "pages": [
+     17
+    ]
    }
   ],
   "samples": [
@@ -882,40 +894,30 @@
       ],
       "quote": "Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a.",
       "page": "i1040gi p. 43",
-      "why_uncovered": "The encoding expressly says the filer's own choice not to claim the EIC is not asked; eic.check_27c covers only STOP instructions and the Worksheet A line 2 zero case.",
+      "why_uncovered": "The helper states outright that the filer's own choice not to claim the EIC is not asked. The tool sets line 27c only when a STOP instruction applies. No question lets a filer decline the credit, and no refusal covers that choice. So line 27a is always filled for an eligible filer, and the line 27c box is never checked by election.",
       "closest_item": "eic.check_27c",
       "effect": "amount"
      },
      {
-      "item": "eic.ssn_count",
+      "item": "eic.step1_ssn",
       "sentences": [
        {
-        "quote": "If a child didn’t have an SSN issued on or before the due date of your return (including extensions), you can’t count that child as a qualifying child in figuring the amount of the EIC on your original or an amended 2025 return.",
+        "quote": "However, if “Valid for Work Only With DHS Authorization” is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid.",
         "page": "i1040gi p. 45"
-       }
-      ],
-      "quote": "If a child didn’t have an SSN issued on or before the due date of your return (including extensions), you can’t count that child as a qualifying child in figuring the amount of the EIC on your original or an amended 2025 return.",
-      "page": "i1040gi p. 45",
-      "why_uncovered": "eic.ssn_count counts qualifying children with valid SSNs, but no encoded question or refusal asks whether the child’s SSN was issued by the return due date; eic.step1_ssn covers only the filer’s SSN.",
-      "closest_item": "eic.ssn_count",
-      "effect": "amount"
-     },
-     {
-      "item": "eic.step2_other",
-      "sentences": [
-       {
-        "quote": "You have income or loss from a passive activity.",
-        "page": "i1040gi p. 40"
        },
        {
-        "quote": "Yes. Use Worksheet 1 in Pub. 596 to see if you can take the credit.",
-        "page": "i1040gi p. 40"
+        "quote": "However, if you or your spouse were issued an SSN that wasn't valid for the EIC, but by the due date of your 2025 return (including extensions) you or your spouse became eligible for a social security card without “Not valid for employment” printed on it, you may claim the EIC on an original or amended 2025 return even if the social security card wasn't updated by the due date of your 2025 return (including extensions).",
+        "page": "p596 p. 5"
+       },
+       {
+        "quote": "If an SSN for you or your spouse is missing from your return because either you or your spouse didn't have a valid SSN on or before the due date of your 2025 return (including extensions) and you later get a valid SSN, you can't file an amended return to claim the EIC.",
+        "page": "p596 p. 5"
        }
       ],
-      "quote": "You have income or loss from a passive activity. / Yes. Use Worksheet 1 in Pub. 596 to see if you can take the credit.",
-      "page": "i1040gi p. 40",
-      "why_uncovered": "The eic.step2_other refusals cover Schedule E, personal-property rental and Form 8814, but no question or refusal covers passive activity income or loss generally.",
-      "closest_item": "eic.step2_other",
+      "quote": "However, if “Valid for Work Only With DHS Authorization” is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid. / However, if you or your spouse were issued an SSN that wasn't valid for the EIC, but by the due date of your 2025 return (including extensions) you or your spouse became eligible for a social security card without “Not valid for employment” printed on it, you may claim the EIC on an original or amended 2025 return even if the social security card wasn't updated by the due date of your 2025 return (including extensions). / If an SSN for you or your spouse is missing from your return because either you or your spouse didn't have a valid SSN on or before the due date of your 2025 return (including extensions) and you later get a valid SSN, you can't file an amended return to claim the EIC.",
+      "page": "i1040gi p. 45; p596 p. 5",
+      "why_uncovered": "The Step 1, question 2 helper has no question text. It cites only the general 'Not Valid for Employment' definition. Nothing asks whether a card's DHS work authorization was still valid. Nothing asks whether a 'Not valid for employment' holder became eligible for an unrestricted card by the due date. Nothing refuses amended-return claims after an SSN is obtained late.",
+      "closest_item": "eic.step1_ssn",
       "effect": "eligibility"
      },
      {
@@ -924,74 +926,21 @@
        {
         "quote": "Don’t include on these lines any statutory employee income, any net profit from services performed as a notary public, any amount exempt from self-employment tax as the result of the filing and approval of Form 4029 or Form 4361, or any other amounts exempt from self-employment tax.",
         "page": "i1040gi p. 47"
-       },
-       {
-        "quote": "If you have any Schedule K-1 amounts, complete the appropriate line(s) of Schedule SE, Part I.",
-        "page": "i1040gi p. 47"
-       },
-       {
-        "quote": "Reduce the Schedule K-1 amounts as described in the Partner’s Instructions for Schedule K-1.",
-        "page": "i1040gi p. 47"
-       },
-       {
-        "quote": "Enter your name and social security number on Schedule SE and attach it to your return.",
-        "page": "i1040gi p. 47"
        }
       ],
-      "quote": "Don’t include on these lines any statutory employee income, any net profit from services performed as a notary public, any amount exempt from self-employment tax as the result of the filing and approval of Form 4029 or Form 4361, or any other amounts exempt from self-employment tax. / If you have any Schedule K-1 amounts, complete the appropriate line(s) of Schedule SE, Part I. / Reduce the Schedule K-1 amounts as described in the Partner’s Instructions for Schedule K-1. / Enter your name and social security number on Schedule SE and attach it to your return.",
+      "quote": "Don’t include on these lines any statutory employee income, any net profit from services performed as a notary public, any amount exempt from self-employment tax as the result of the filing and approval of Form 4029 or Form 4361, or any other amounts exempt from self-employment tax.",
       "page": "i1040gi p. 47",
-      "why_uncovered": "eic.wsb_se computes Worksheet B lines 1e and 2c, but no encoded rule or refusal excludes notary-public, Form 4029/4361 or other exempt amounts, and no rule or refusal handles the Schedule K-1 reduction and attachment.",
+      "why_uncovered": "The Worksheet B lines 1e and 2c helper takes Schedule SE and Schedule C amounts directly. Schedule C is in scope through eic.sc_count. Nothing removes a notary public's net profit, Form 4029 or 4361 exempt amounts, or other SE-exempt amounts from Schedule C line 31 or the Schedule SE figures. No question or refusal addresses these amounts. Statutory employee income alone is refused.",
       "closest_item": "eic.wsb_se",
       "effect": "amount"
-     },
-     {
-      "item": "eic.wsb_4b",
-      "sentences": [
-       {
-        "quote": "If line 4b includes income on which you should have paid self-employment tax but didn’t, we may reduce your credit by the amount of self-employment tax not paid.",
-        "page": "i1040gi p. 47"
-       }
-      ],
-      "quote": "If line 4b includes income on which you should have paid self-employment tax but didn’t, we may reduce your credit by the amount of self-employment tax not paid.",
-      "page": "i1040gi p. 47",
-      "why_uncovered": "eic.wsb_4b combines the earned-income lines, but no encoded line, question or refusal applies the possible credit reduction for unpaid self-employment tax.",
-      "closest_item": "eic.wsb_4b",
-      "effect": "amount"
-     },
-     {
-      "item": "eic.has_qc",
-      "sentences": [
-       {
-        "quote": "If you have at least one child who meets the conditions to be your qualifying child for purposes of claiming the EIC, complete and attach Schedule EIC, even if that child doesn’t have a valid SSN.",
-        "page": "i1040gi p. 40"
-       },
-       {
-        "quote": "If you have a qualifying child, complete and attach Schedule EIC.",
-        "page": "i1040gi p. 46"
-       },
-       {
-        "quote": "If you have a qualifying child, complete and attach Schedule EIC.",
-        "page": "i1040gi p. 48"
-       }
-      ],
-      "quote": "If you have at least one child who meets the conditions to be your qualifying child for purposes of claiming the EIC, complete and attach Schedule EIC, even if that child doesn’t have a valid SSN. / If you have a qualifying child, complete and attach Schedule EIC. / If you have a qualifying child, complete and attach Schedule EIC.",
-      "page": "i1040gi p. 40; i1040gi p. 46; i1040gi p. 48",
-      "why_uncovered": "eic.has_qc only determines whether a qualifying child exists; no encoded line, question or refusal requires or asks for completing and attaching Schedule EIC.",
-      "closest_item": "eic.has_qc",
-      "effect": "presentation"
      }
     ],
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/completeness/eic.752d72ed0152.1.response.txt"
+    "cost": 0.399828,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/eic.8192e267c3e4.1.response.txt"
    }
-  ],
-  "subject_migrated": {
-   "from": "752d72ed01526e1a30a64fc60f7183c219b394839808914d75e921819b2d7695",
-   "date": "2026-11-21",
-   "task": "T-351"
-  }
+  ]
  },
  {
   "form": "f1040",
@@ -4420,12 +4369,13 @@
  },
  {
   "form": "f8919firm",
-  "subject_sha": "dae10610ed82c79b793f1e1e07113984861cde36855881cf73805427456366b0",
+  "subject_sha": "8131eac6baa7231d5261002a1501c896a194c362661371836312534956b5d706",
   "used": [
    {
     "doc": "f8919",
     "pages": [
-     1
+     1,
+     2
     ]
    }
   ],
@@ -4434,61 +4384,74 @@
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
     "claims": [
      {
+      "item": "f8919firm.one",
+      "sentences": [
+       {
+        "quote": "Name of person who must file this form. If married, complete a separate Form 8919 for each spouse who must file this form.",
+        "page": "f8919 p. 1"
+       }
+      ],
+      "quote": "Name of person who must file this form. If married, complete a separate Form 8919 for each spouse who must file this form.",
+      "page": "f8919 p. 1",
+      "why_uncovered": "The firm row has no question or field linking it to the taxpayer or the spouse. Nothing in the encoding keeps each spouse's firms on that spouse's own Form 8919. Lines 7–10 apply the $176,100 social security wage base per person against that person's own W-2 social security wages on line 8. On a joint return, firms belonging to both spouses could be pooled into one line 6, which would misstate the social security tax on line 11.",
+      "closest_item": "f8919firm.one",
+      "effect": "amount"
+     },
+     {
+      "item": "f8919firm.one",
+      "sentences": [
+       {
+        "quote": "Column (a). Enter the name of the firm for which you worked. If you received a Form 1099-MISC and/or 1099-NEC from the firm, enter the firm’s name exactly as it is entered on Form 1099-MISC and/or 1099-NEC.",
+        "page": "f8919 p. 2"
+       },
+       {
+        "quote": "If you received a Form 1099-MISC and/or 1099-NEC from the firm, enter the firm’s federal identification number that is entered on Form 1099-MISC and/or 1099-NEC.",
+        "page": "f8919 p. 2"
+       },
+       {
+        "quote": "If you are unable to obtain the number, enter “unknown.”",
+        "page": "f8919 p. 2"
+       },
+       {
+        "quote": "(e) Check if Form 1099-MISC and/or 1099-NEC was received.",
+        "page": "f8919 p. 1"
+       },
+       {
+        "quote": "If you worked as an employee for more than five firms in 2025, attach additional Form(s) 8919 with lines 1 through 5 completed. Complete lines 6 through 13 on only one Form 8919.",
+        "page": "f8919 p. 2"
+       }
+      ],
+      "quote": "Column (a). Enter the name of the firm for which you worked. If you received a Form 1099-MISC and/or 1099-NEC from the firm, enter the firm’s name exactly as it is entered on Form 1099-MISC and/or 1099-NEC. / If you received a Form 1099-MISC and/or 1099-NEC from the firm, enter the firm’s federal identification number that is entered on Form 1099-MISC and/or 1099-NEC. / If you are unable to obtain the number, enter “unknown.” / (e) Check if Form 1099-MISC and/or 1099-NEC was received. / If you worked as an employee for more than five firms in 2025, attach additional Form(s) 8919 with lines 1 through 5 completed. Complete lines 6 through 13 on only one Form 8919.",
+      "page": "f8919 p. 2; f8919 p. 1",
+      "why_uncovered": "The firm row asks only for the reason code and the wages. Nothing captures the firm's name (column a), its EIN/SSN or 'unknown' (column b), or the 1099 checkbox (column e). Nothing handles attaching extra forms when there are more than five firms.",
+      "closest_item": "f8919firm.one",
+      "effect": "presentation"
+     },
+     {
       "item": "f8919firm.reason",
       "sentences": [
        {
-        "quote": "(Don’t file Form SS-8 if you select reason code H.)",
-        "page": "f8919 p. 1"
+        "quote": "Column (d). Complete only if reason code A or C is entered in column (c).",
+        "page": "f8919 p. 2"
        },
        {
         "quote": "(d) Date of IRS determination or correspondence (MM/DD/YYYY) (see instructions)",
         "page": "f8919 p. 1"
-       },
-       {
-        "quote": "(e) Check (f) Total wages if Form received with 1099-MISC no social security and/or or Medicare tax 1099-NEC withholding and not was received.",
-        "page": "f8919 p. 1"
-       },
-       {
-        "quote": "(a) Name of firm",
-        "page": "f8919 p. 1"
-       },
-       {
-        "quote": "(b) Firm’s federal identification number (see instructions)",
-        "page": "f8919 p. 1"
        }
       ],
-      "quote": "(Don’t file Form SS-8 if you select reason code H.) / (d) Date of IRS determination or correspondence (MM/DD/YYYY) (see instructions) / (e) Check (f) Total wages if Form received with 1099-MISC no social security and/or or Medicare tax 1099-NEC withholding and not was received. / (a) Name of firm / (b) Firm’s federal identification number (see instructions)",
-      "page": "f8919 p. 1",
-      "why_uncovered": "The reason-code question only selects A, C, G or H. Several required row entries are never asked or produced: the firm's name (column a), the firm's EIN (column b), the IRS determination or correspondence date (column d, which goes with codes A and C), and the column (e) check box for a 1099-MISC/1099-NEC received. The instruction not to file Form SS-8 with code H is also never given. The code G question mentions filing Form SS-8, but the code H question says nothing to stop the filer from filing one.",
+      "quote": "Column (d). Complete only if reason code A or C is entered in column (c). / (d) Date of IRS determination or correspondence (MM/DD/YYYY) (see instructions)",
+      "page": "f8919 p. 2; f8919 p. 1",
+      "why_uncovered": "The reason code is asked, but the encoding never asks for the date of the IRS determination letter or correspondence. Column (d) must be completed when code A or C is chosen.",
       "closest_item": "f8919firm.reason",
       "effect": "presentation"
-     },
-     {
-      "item": "f8919firm.wages",
-      "sentences": [
-       {
-        "quote": "If married, complete a separate Form 8919 for each spouse who must file this form.",
-        "page": "f8919 p. 1"
-       }
-      ],
-      "quote": "If married, complete a separate Form 8919 for each spouse who must file this form.",
-      "page": "f8919 p. 1",
-      "why_uncovered": "The firm rows ask only for a reason code and wages. No question records which spouse performed the services for each firm, so rows cannot be put on a separate Form 8919 for each spouse. The per-person social security wage limit (lines 7–10) depends on that split, so combining spouses' rows could change the line 10–13 tax.",
-      "closest_item": "f8919firm.wages",
-      "effect": "amount"
      }
     ],
-    "cost": 0.054556,
+    "cost": 0.067316,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/completeness/f8919firm.2bc1ac26c28f.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/f8919firm.8131eac6baa7.1.response.txt"
    }
-  ],
-  "subject_migrated": {
-   "from": "2bc1ac26c28f2c150c119eb5a61976aaad93a7701044405809030756ede6cbac",
-   "date": "2026-11-21",
-   "task": "T-351"
-  }
+  ]
  },
  {
   "form": "f8959",
@@ -5158,8 +5121,14 @@
  },
  {
   "form": "interest",
-  "subject_sha": "f7a4a9606852c8aad7e4afb25308b029c8b956621248078d74d7684f5f454450",
+  "subject_sha": "8d9c56084136888d3244697f3d630df620848c4eb861b5bf916370d8bb3dca73",
   "used": [
+   {
+    "doc": "i1040gi",
+    "pages": [
+     25
+    ]
+   },
    {
     "doc": "i1040gi",
     "pages": [
@@ -5191,40 +5160,23 @@
         "page": "i1040sb p. 1"
        },
        {
-        "quote": "If you sold your home or other property and the buyer used the property as a personal residence, list first any interest the buyer paid you on a mortgage or other form of seller financing.",
-        "page": "i1040sb p. 1"
-       },
-       {
-        "quote": "Be sure to show the buyer’s name, address, and SSN.",
-        "page": "i1040sb p. 1"
-       },
-       {
-        "quote": "You must also let the buyer know your SSN.",
-        "page": "i1040sb p. 1"
-       },
-       {
-        "quote": "If you or the buyer do not have an SSN, use the appropriate TIN for the filer or recipient of Form 1098.",
-        "page": "i1040sb p. 1"
+        "quote": "Interest credited in 2025 on deposits that you couldn't withdraw because of the bankruptcy or insolvency of the financial institution may not have to be included in your 2025 income.",
+        "page": "i1040gi p. 25"
        }
       ],
-      "quote": "Also include any accrued market discount that is includible in income and any gain on a contingent payment debt instrument that is includible in income as interest income. / The market discount on a tax-exempt bond is taxable interest income and not tax-exempt interest. / If you sold your home or other property and the buyer used the property as a personal residence, list first any interest the buyer paid you on a mortgage or other form of seller financing. / Be sure to show the buyer’s name, address, and SSN. / You must also let the buyer know your SSN. / If you or the buyer do not have an SSN, use the appropriate TIN for the filer or recipient of Form 1098.",
-      "page": "i1040sb p. 1",
-      "why_uncovered": "The interest.amount question asks only for taxable interest including Treasury interest and tells the filer to exclude tax-exempt interest. It never says to include accrued market discount or contingent payment debt instrument gain. Its exclusion wording could lead a filer to leave out market discount on a tax-exempt bond, which is taxable. No question identifies seller-financed mortgage interest. Nothing collects the buyer's name, address and SSN/TIN, or puts that payer first. The 'Schedule B special treatment / Form 8815' refusal covers adjustments and exclusions, such as the nominee, accrued interest, OID and ABP subtractions. It does not cover these inclusion rules or the seller-financed disclosure.",
+      "quote": "Also include any accrued market discount that is includible in income and any gain on a contingent payment debt instrument that is includible in income as interest income. / The market discount on a tax-exempt bond is taxable interest income and not tax-exempt interest. / Interest credited in 2025 on deposits that you couldn't withdraw because of the bankruptcy or insolvency of the financial institution may not have to be included in your 2025 income.",
+      "page": "i1040sb p. 1; i1040gi p. 25",
+      "why_uncovered": "The question limits the amount to specific boxes: Form 1099-INT boxes 1 and 3, and Form 1099-OID boxes 1, 2 and 8. That leaves out includible accrued market discount (Form 1099-INT box 10, Form 1099-OID box 5) and gain on a contingent payment debt instrument treated as interest. The question also tells the filer to exclude tax-exempt interest, which would lead them to leave out market discount on a tax-exempt bond, even though that discount is taxable. No question or refusal deals with frozen deposits, meaning interest credited on deposits the filer couldn't withdraw because the institution was bankrupt or insolvent. The Schedule B special-treatment refusal covers only the listed Schedule B triggers and Form 8815. Those triggers are seller financing, nominee interest, accrued interest, OID and bond-premium adjustments, and the savings bond exclusion. None of these items is among them.",
       "closest_item": "interest.amount",
       "effect": "amount"
      }
     ],
-    "cost": 0.06700400000000001,
+    "cost": 0.082004,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/completeness/interest.f43e4e2cc3c5.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/interest.8d9c56084136.1.response.txt"
    }
-  ],
-  "subject_migrated": {
-   "from": "f43e4e2cc3c5c849e3c2259002ae02977ccc069d00bd3c607956d9dd78a104a8",
-   "date": "2026-11-21",
-   "task": "T-351"
-  }
+  ]
  },
  {
   "form": "ira",
@@ -6913,7 +6865,7 @@
  },
  {
   "form": "rental",
-  "subject_sha": "f47c7f6a333d2eff2542d6ea7e938841757b038ceb6a2d047bc9097edba67132",
+  "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
   "used": [
    {
     "doc": "i1040se",
@@ -6996,7 +6948,15 @@
         "page": "i1040se p. 3"
        },
        {
+        "quote": "You were a real estate professional for the year only if you met both of the following conditions.",
+        "page": "i1040se p. 3"
+       },
+       {
         "quote": "If you are married filing jointly, either you or your spouse must meet both of the above conditions without taking into account services performed by the other spouse.",
+        "page": "i1040se p. 3"
+       },
+       {
+        "quote": "Services you performed as an employee are not treated as performed in a real property trade or business unless you owned more than 5% of the stock (or more than 5% of the capital or profits interest) in the employer.",
         "page": "i1040se p. 3"
        },
        {
@@ -7004,17 +6964,35 @@
         "page": "i1040se p. 3"
        },
        {
-        "quote": "If you were a real estate professional for 2025, complete Schedule E, line 43.",
-        "page": "i1040se p. 4"
+        "quote": "If your rental real estate loss is not from a passive activity or you meet the exception for certain rental real estate activities (explained earlier), you do not have to complete Form 8582. Enter the (loss) from line 21 on line 22.",
+        "page": "i1040se p. 8"
        },
        {
         "quote": "A rental activity is a passive activity even if you materially participated in the activity (unless it’s a rental real estate activity in which you materially participated and you were a real estate professional).",
         "page": "i8582 p. 3"
        }
       ],
-      "quote": "If you were a real estate professional for 2025, any rental real estate activity in which you materially participated is not a passive activity. / If you are married filing jointly, either you or your spouse must meet both of the above conditions without taking into account services performed by the other spouse. / For purposes of determining whether you materially participated in your rental real estate activities, each interest in rental real estate is a separate activity unless you elect to treat all your interests in rental real estate as one activity. / If you were a real estate professional for 2025, complete Schedule E, line 43. / A rental activity is a passive activity even if you materially participated in the activity (unless it’s a rental real estate activity in which you materially participated and you were a real estate professional).",
-      "page": "i1040se p. 3; i1040se p. 4; i8582 p. 3",
-      "why_uncovered": "No question asks whether the filer was a real estate professional or materially participated in the rental. No refusal covers that case either. The encoding always sends a loss through the Form 8582 passive limits (Parts IV-VIII), but a real estate professional's loss is nonpassive and fully allowed on line 22.",
+      "quote": "If you were a real estate professional for 2025, any rental real estate activity in which you materially participated is not a passive activity. / You were a real estate professional for the year only if you met both of the following conditions. / If you are married filing jointly, either you or your spouse must meet both of the above conditions without taking into account services performed by the other spouse. / Services you performed as an employee are not treated as performed in a real property trade or business unless you owned more than 5% of the stock (or more than 5% of the capital or profits interest) in the employer. / For purposes of determining whether you materially participated in your rental real estate activities, each interest in rental real estate is a separate activity unless you elect to treat all your interests in rental real estate as one activity. / If your rental real estate loss is not from a passive activity or you meet the exception for certain rental real estate activities (explained earlier), you do not have to complete Form 8582. Enter the (loss) from line 21 on line 22. / A rental activity is a passive activity even if you materially participated in the activity (unless it’s a rental real estate activity in which you materially participated and you were a real estate professional).",
+      "page": "i1040se p. 3; i1040se p. 8; i8582 p. 3",
+      "why_uncovered": "No question asks whether the filer or spouse was a real estate professional who materially participated, and no refusal covers it. Line 22 always sends a loss through the Form 8582 Parts IV/V–VIII limit. A professional's loss is nonpassive and should go to line 22 in full.",
+      "closest_item": "rental.line22",
+      "effect": "amount"
+     },
+     {
+      "item": "rental.line22",
+      "sentences": [
+       {
+        "quote": "Net income from the following passive activities may have to be recharacterized and excluded from passive activity income.",
+        "page": "p925 p. 15"
+       },
+       {
+        "quote": "If the result is net income, don’t enter any of the income or losses from the activity or property on Form 8582 or its separate parts, as they are recharacterized as nonpassive.",
+        "page": "p925 p. 15"
+       }
+      ],
+      "quote": "Net income from the following passive activities may have to be recharacterized and excluded from passive activity income. / If the result is net income, don’t enter any of the income or losses from the activity or property on Form 8582 or its separate parts, as they are recharacterized as nonpassive.",
+      "page": "p925 p. 15",
+      "why_uncovered": "The encoding refuses recharacterization only for rental of nondepreciable property (rental.nondep_income) and for self-rental (type 7). The list also includes rental of property incidental to development activities. No question or refusal covers that case, so the net income stays in Form 8582 as passive income.",
       "closest_item": "rental.line22",
       "effect": "amount"
      },
@@ -7028,11 +7006,15 @@
        {
         "quote": "If the interest you paid in your rental real estate trade or business is limited, figure the limit on your business interest expenses on Form 8990 before completing lines 12 and 13.",
         "page": "i1040se p. 7"
+       },
+       {
+        "quote": "Follow the instructions under How to report, later, but report the reduced interest on lines 12 and 13.",
+        "page": "i1040se p. 7"
        }
       ],
-      "quote": "If your rental real estate activity is a trade or business, you must file Form 8990 to deduct any interest expenses of that rental real estate activity unless you meet one of the filing exceptions in the Instructions for Form 8990. / If the interest you paid in your rental real estate trade or business is limited, figure the limit on your business interest expenses on Form 8990 before completing lines 12 and 13.",
+      "quote": "If your rental real estate activity is a trade or business, you must file Form 8990 to deduct any interest expenses of that rental real estate activity unless you meet one of the filing exceptions in the Instructions for Form 8990. / If the interest you paid in your rental real estate trade or business is limited, figure the limit on your business interest expenses on Form 8990 before completing lines 12 and 13. / Follow the instructions under How to report, later, but report the reduced interest on lines 12 and 13.",
       "page": "i1040se p. 7",
-      "why_uncovered": "No question asks whether the rental is a trade or business subject to the section 163(j) limit or whether a Form 8990 filing exception applies. No refusal routes to Form 8990. Lines 12 and 13 are taken in full.",
+      "why_uncovered": "No question asks whether the rental is a trade or business subject to section 163(j), or whether a Form 8990 exception applies. Lines 12 and 13 are always the full interest, with no limit and no refusal.",
       "closest_item": "rental.line12",
       "effect": "amount"
      },
@@ -7040,19 +7022,19 @@
       "item": "rental.line13",
       "sentences": [
        {
-        "quote": "If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on the mortgage, and the other person received Form 1098, report your share of the deductible interest on line 13. Attach a statement to your return showing the name and address of the person who received Form 1098. On the dotted line next to line 13, enter “See attached.”",
+        "quote": "If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on the mortgage, and the other person received Form 1098, report your share of the deductible interest on line 13.",
         "page": "i1040se p. 7"
        },
        {
-        "quote": "These expenses, which include mortgage commissions, abstract fees, and recording fees, are capital expenses that are part of your basis in the property.",
-        "page": "p527 p. 5"
+        "quote": "Attach a statement to your return showing the name and address of the person who received Form 1098. On the dotted line next to line 13, enter “See attached.”",
+        "page": "i1040se p. 7"
        }
       ],
-      "quote": "If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on the mortgage, and the other person received Form 1098, report your share of the deductible interest on line 13. Attach a statement to your return showing the name and address of the person who received Form 1098. On the dotted line next to line 13, enter “See attached.” / These expenses, which include mortgage commissions, abstract fees, and recording fees, are capital expenses that are part of your basis in the property.",
-      "page": "i1040se p. 7; p527 p. 5",
-      "why_uncovered": "The amt13 question takes in interest on a loan with no Form 1098 in the filer's name, but nothing produces the required statement or the 'See attached' entry. The question also tells the filer to spread 'points or loan fees' over the loan. Nothing excludes mortgage commissions, abstract fees and recording fees, which must be capitalized rather than deducted as interest.",
+      "quote": "If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on the mortgage, and the other person received Form 1098, report your share of the deductible interest on line 13. / Attach a statement to your return showing the name and address of the person who received Form 1098. On the dotted line next to line 13, enter “See attached.”",
+      "page": "i1040se p. 7",
+      "why_uncovered": "The amt13 question takes in interest on a loan with no Form 1098 in the filer's name. Nothing collects, produces or refuses the required statement naming the person who received Form 1098, or the “See attached” notation.",
       "closest_item": "rental.line13",
-      "effect": "amount"
+      "effect": "presentation"
      },
      {
       "item": "rental.line10",
@@ -7064,7 +7046,7 @@
       ],
       "quote": "Do not deduct legal fees paid or incurred to defend or protect title to property, to recover property, or to develop or improve property. Instead, you must capitalize these fees and add them to the property’s basis.",
       "page": "i1040se p. 6",
-      "why_uncovered": "The amt10 question asks for all legal and professional fees paid in 2025. It does not exclude fees for title defense, recovery, development or improvement, which must be capitalized.",
+      "why_uncovered": "The amt10 question asks for all legal and professional fees without excluding fees to defend title, recover property, or develop or improve it. Those fees would be deducted on line 10 instead of capitalized.",
       "closest_item": "rental.line10",
       "effect": "amount"
      },
@@ -7078,7 +7060,7 @@
       ],
       "quote": "However, the base rate (including taxes and other charges) for local telephone service for the first telephone line into your residence is a personal expense and is not deductible.",
       "page": "i1040se p. 7",
-      "why_uncovered": "The amt17 utilities question does not exclude the base rate of the first telephone line into the residence. A filer could include it in line 17.",
+      "why_uncovered": "The amt17 question asks for utilities for the rental without excluding the base rate of the first phone line into the filer's residence. The part_home refusal does not cover a filer who lives elsewhere and runs the rental from home.",
       "closest_item": "rental.line17",
       "effect": "amount"
      },
@@ -7090,59 +7072,63 @@
         "page": "i1040se p. 6"
        },
        {
-        "quote": "You can also elect to deduct up to $15,000 of qualified costs paid or incurred in 2025 to remove architectural or transportation barriers to individuals with disabilities and the elderly. You cannot take both the credit and the deduction for the same expenditures.",
-        "page": "i1040se p. 6"
+        "quote": "Certain expenses you pay to obtain a mortgage on your rental property can’t be deducted as interest. These expenses, which include mortgage commissions, abstract fees, and recording fees, are capital expenses that are part of your basis in the property.",
+        "page": "p527 p. 5"
+       },
+       {
+        "quote": "However, in some cases, lease contracts are actually purchase contracts. If so, you can’t deduct these payments.",
+        "page": "p527 p. 5"
        }
       ],
-      "quote": "Do not deduct the value of your own labor or amounts paid for capital investments or capital improvements. / You can also elect to deduct up to $15,000 of qualified costs paid or incurred in 2025 to remove architectural or transportation barriers to individuals with disabilities and the elderly. You cannot take both the credit and the deduction for the same expenditures.",
-      "page": "i1040se p. 6",
-      "why_uncovered": "The amt19 question asks for 'Other costs of renting it (not depreciation)'. It does not exclude capital investments or improvements or the value of the filer's own labor. It also does not apply the $15,000 cap on barrier-removal costs or the bar on taking both the Form 8826 credit and the deduction.",
+      "quote": "Do not deduct the value of your own labor or amounts paid for capital investments or capital improvements. / Certain expenses you pay to obtain a mortgage on your rental property can’t be deducted as interest. These expenses, which include mortgage commissions, abstract fees, and recording fees, are capital expenses that are part of your basis in the property. / However, in some cases, lease contracts are actually purchase contracts. If so, you can’t deduct these payments.",
+      "page": "i1040se p. 6; p527 p. 5",
+      "why_uncovered": "The amt19 question asks for 'Other costs of renting it (not depreciation)'. It does not exclude capital improvements or investments, mortgage acquisition costs (commissions, abstract and recording fees), or payments under equipment leases that are really purchases. These capital amounts would be deducted on line 19.",
       "closest_item": "rental.line19",
       "effect": "amount"
      },
      {
-      "item": "rental.days_personal",
+      "item": "rental.prior_loss",
       "sentences": [
        {
-        "quote": "You use a dwelling unit for personal purposes if: • You donate the use of the unit to a charitable organization, • The organization sells the use of the unit at a fundraising event, and • The “purchaser” uses the unit.",
-        "page": "p527 pp. 26-27"
-       }
-      ],
-      "quote": "You use a dwelling unit for personal purposes if: • You donate the use of the unit to a charitable organization, • The organization sells the use of the unit at a fundraising event, and • The “purchaser” uses the unit.",
-      "page": "p527 pp. 26-27",
-      "why_uncovered": "The personal_any and days_personal questions list owners, relatives, free or below-fair-rent stays, and home swaps. They do not mention days the unit was used by someone who bought its use from a charity the filer donated it to. Those days would be omitted from the home test and the expense division.",
-      "closest_item": "rental.days_personal",
-      "effect": "eligibility"
-     },
-     {
-      "item": "rental.days_fair",
-      "sentences": [
-       {
-        "quote": "To make this election for your rental real estate business, check the “QJV” box on line 2 for each property that is part of the QJV.",
-        "page": "i1040se p. 2"
+        "quote": "If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real estate activities, treat that dollar amount as negative and combine with lines 1d and 2d.",
+        "page": "i8582 p. 10"
        },
        {
-        "quote": "Although you and your spouse will not each file your own Schedule E as part of the QJV, each of you must report your interest as separate properties on line 1 of Schedule E.",
-        "page": "i1040se p. 2"
+        "quote": "To apply any remaining portion of the $25,000 allowance to prior-year unallowed CRD from rental real estate activities, see the instructions for line 9.",
+        "page": "i8582 p. 10"
        }
       ],
-      "quote": "To make this election for your rental real estate business, check the “QJV” box on line 2 for each property that is part of the QJV. / Although you and your spouse will not each file your own Schedule E as part of the QJV, each of you must report your interest as separate properties on line 1 of Schedule E.",
-      "page": "i1040se p. 2",
-      "why_uncovered": "No question asks whether spouses elected qualified joint venture treatment. Nothing checks the line 2 QJV box or splits the property into separate spouse entries, and no refusal covers the case.",
-      "closest_item": "rental.days_fair",
-      "effect": "presentation"
+      "quote": "If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real estate activities, treat that dollar amount as negative and combine with lines 1d and 2d. / To apply any remaining portion of the $25,000 allowance to prior-year unallowed CRD from rental real estate activities, see the instructions for line 9.",
+      "page": "i8582 p. 10",
+      "why_uncovered": "The prior_amt question asks only for the Part VII column (c) held-back loss and treats it as a Part IV/V column (c) loss. Prior-year unallowed CRD go on line 3 and use the separate line 9 worksheet and a second Part VI. Nothing asks about CRD or refuses it.",
+      "closest_item": "rental.prior_loss",
+      "effect": "amount"
+     },
+     {
+      "item": "rental.line3",
+      "sentences": [
+       {
+        "quote": "Report farm rental income and expenses on Form 4835 if: • You are an individual, • You received rental income based on crops or livestock produced by the tenant, and • You did not materially participate in the management or operation of the farm.",
+        "page": "i1040se p. 6"
+       }
+      ],
+      "quote": "Report farm rental income and expenses on Form 4835 if: • You are an individual, • You received rental income based on crops or livestock produced by the tenant, and • You did not materially participate in the management or operation of the farm.",
+      "page": "i1040se p. 6",
+      "why_uncovered": "The property-type question offers 'land only' but does not ask whether the rent is a crop or livestock share. No refusal sends crop-share farm rentals to Form 4835, so this income would be reported on Schedule E line 3.",
+      "closest_item": "rental.line3",
+      "effect": "eligibility"
      }
     ],
-    "cost": 0.392456,
+    "cost": 0.409644,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/completeness/rental.f47c7f6a333d.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/rental.37b9669d62a0.1.response.txt"
    }
   ]
  },
  {
   "form": "retirement",
-  "subject_sha": "f6be280a4817e54794953f3f896be90235d321419f498218cff46bc4041fb332",
+  "subject_sha": "180b6895c249df94add044deec572e1ce46f17175f83df3f15d9e98a277bc5fe",
   "used": [
    {
     "doc": "i1040gi",
@@ -7210,6 +7196,12 @@
     ]
    },
    {
+    "doc": "p590a",
+    "pages": [
+     25
+    ]
+   },
+   {
     "doc": "p590b",
     "pages": [
      5,
@@ -7233,13 +7225,53 @@
        {
         "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.",
         "page": "i1040gi p. 27"
+       },
+       {
+        "quote": "If you rolled over the distribution into a qualified plan (other than an IRA) or you make the rollover in 2026, attach a statement explaining what you did.",
+        "page": "p590a p. 25"
        }
       ],
-      "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.",
-      "page": "i1040gi p. 27",
-      "why_uncovered": "The encoding computes the IRA rollover amount, puts the total on line 4a and checks box 1 on line 4c. Nothing asks whether the IRA money went into a qualified plan or whether the rollover was completed in 2026. Nothing produces or requires the explanatory statement that the instructions require in those cases.",
+      "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did. / If you rolled over the distribution into a qualified plan (other than an IRA) or you make the rollover in 2026, attach a statement explaining what you did.",
+      "page": "i1040gi p. 27; p590a p. 25",
+      "why_uncovered": "The encoding computes the amount rolled over and checks the rollover box on line 4c, but no question asks where or when an IRA rollover was completed. No output or refusal produces the required explanatory statement for a rollover into a qualified plan or one completed in 2026.",
       "closest_item": "retirement.has_rollover",
       "effect": "presentation"
+     },
+     {
+      "item": "retirement.rollover_second",
+      "sentences": [
+       {
+        "quote": "An IRA distribution made from a failed financial institution by the Federal Deposit Insurance Corporation as receiver is not treated as a rollover for purposes of the one-rollover-per-year limitation, provided:",
+        "page": "p590a p. 25"
+       },
+       {
+        "quote": "Neither the failed financial institution nor the depositor initiated the distribution, and",
+        "page": "p590a p. 25"
+       },
+       {
+        "quote": "No financial institution has assumed the IRAs of the failed financial institution.",
+        "page": "p590a p. 25"
+       }
+      ],
+      "quote": "An IRA distribution made from a failed financial institution by the Federal Deposit Insurance Corporation as receiver is not treated as a rollover for purposes of the one-rollover-per-year limitation, provided: / Neither the failed financial institution nor the depositor initiated the distribution, and / No financial institution has assumed the IRAs of the failed financial institution.",
+      "page": "p590a p. 25",
+      "why_uncovered": "The one-rollover-per-year question excludes only trustee-to-trustee transfers and conversions. An earlier rollover of an FDIC-initiated distribution from a failed institution would be counted. The filer would then answer Yes, and the encoding would disallow a rollover that is actually tax free.",
+      "closest_item": "retirement.rollover_second",
+      "effect": "amount"
+     },
+     {
+      "item": "retirement.l2_e23",
+      "sentences": [
+       {
+        "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000.",
+        "page": "p590b p. 28"
+       }
+      ],
+      "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000.",
+      "page": "p590b p. 28",
+      "why_uncovered": "The amount question and the per-person dollar cap enforce the $1,000 and interest-minus-$1,000 limits. They also cover the 3-year bar after an unrepaid distribution, through the early-distribution screen. Nothing asks whether another emergency personal expense distribution was already taken in 2025. A second distribution in the same year could therefore still be treated as excepted, within the $1,000 total.",
+      "closest_item": "retirement.l2_e23",
+      "effect": "amount"
      },
      {
       "item": "retirement.l2_e19",
@@ -7255,15 +7287,15 @@
       ],
       "quote": "Attach a statement that provides the name, age, and TIN of the child or eligible adoptee. / If the child died before you obtained a TIN, then write that the child died on the statement and include a copy of the child’s birth certificate, death certificate, or hospital records.",
       "page": "i5329 p. 5",
-      "why_uncovered": "Exception 19 (qualified birth or adoption distribution) is computed: it is chosen in retirement.exception and capped at $5,000 in l2_e19. However, no question collects the child's or eligible adoptee's name, age and TIN, or the death documentation. No output produces or requires the statement that must be attached when claiming this exception.",
+      "why_uncovered": "Exception 19 is computed with its $5,000 limit and 1-year timing condition. However, no question collects the child's name, age or TIN, or the death documentation. No output or refusal produces the required attachment.",
       "closest_item": "retirement.l2_e19",
       "effect": "presentation"
      }
     ],
-    "cost": 0.39490400000000003,
+    "cost": 0.442932,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/completeness/retirement.f6be280a4817.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/retirement.180b6895c249.1.response.txt"
    }
   ]
  },
@@ -8167,7 +8199,7 @@
  },
  {
   "form": "s2",
-  "subject_sha": "99aa7c460e7977cb16302fd7eb00263a1c1977f2de8d5343328c22a134cb0edd",
+  "subject_sha": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482",
   "used": [
    {
     "doc": "i1040gi",
@@ -8234,58 +8266,6 @@
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
     "claims": [
      {
-      "item": "s2.line1a",
-      "sentences": [
-       {
-        "quote": "You may have to repay excess advance payments of the premium tax credit even if someone else enrolled you, your spouse, or your dependent in Marketplace coverage.",
-        "page": "i1040gi p. 111"
-       },
-       {
-        "quote": "You may also have to repay excess advance payments of the premium tax credit if you enrolled an individual in coverage through the Marketplace, you don’t claim the individual as a dependent on your return, and no one else claims that individual as a dependent.",
-        "page": "i1040gi p. 111"
-       }
-      ],
-      "quote": "You may have to repay excess advance payments of the premium tax credit even if someone else enrolled you, your spouse, or your dependent in Marketplace coverage. / You may also have to repay excess advance payments of the premium tax credit if you enrolled an individual in coverage through the Marketplace, you don’t claim the individual as a dependent on your return, and no one else claims that individual as a dependent.",
-      "page": "i1040gi p. 111",
-      "why_uncovered": "Line 1a takes Form 8962 line 29 as it is. No question asks whether someone else enrolled the filer's family and received the Form 1095-A. No question asks whether the filer enrolled a person whom no one claims as a dependent. The listed Form 8962 refusals cover only dependents of others, the year of marriage, and lawfully present aliens.",
-      "closest_item": "s2.line1a",
-      "effect": "amount"
-     },
-     {
-      "item": "s2.line4",
-      "sentences": [
-       {
-        "quote": "If you filed Form 4029 and received IRS approval, check box 2 on line 4.",
-        "page": "i1040gi p. 112"
-       },
-       {
-        "quote": "If you are a U.S. citizen or resident alien living outside the United States and your self-employment income is exempt from self-employment tax, you should get a statement from the appropriate agency of the foreign country verifying that your self-employment income is subject to social security in that country.",
-        "page": "i1040gi p. 112"
-       },
-       {
-        "quote": "Under these agreements, you must generally pay social security and Medicare taxes to only the country in which you live.",
-        "page": "i1040sse p. 2"
-       },
-       {
-        "quote": "If you received fees for services performed as a notary public and you had no other income subject to self-employment tax, check box 3 and enter “EN” on the entry space next to box 3.",
-        "page": "i1040gi p. 112"
-       },
-       {
-        "quote": "You must pay SE tax on income you earned as a U.S. citizen employed by a foreign government (or, in certain cases, by a wholly owned instrumentality of a foreign government or an international organization under the International Organizations Immunities Act) for services performed in the United States, Puerto Rico, Guam, American Samoa, the Commonwealth of the Northern Mariana Islands, or the U.S. Virgin Islands.",
-        "page": "i1040sse p. 2"
-       },
-       {
-        "quote": "However, you (not the bankruptcy estate) are responsible for paying SE tax on your net earnings from self-employment.",
-        "page": "i1040sse p. 2"
-       }
-      ],
-      "quote": "If you filed Form 4029 and received IRS approval, check box 2 on line 4. / If you are a U.S. citizen or resident alien living outside the United States and your self-employment income is exempt from self-employment tax, you should get a statement from the appropriate agency of the foreign country verifying that your self-employment income is subject to social security in that country. / Under these agreements, you must generally pay social security and Medicare taxes to only the country in which you live. / If you received fees for services performed as a notary public and you had no other income subject to self-employment tax, check box 3 and enter “EN” on the entry space next to box 3. / You must pay SE tax on income you earned as a U.S. citizen employed by a foreign government (or, in certain cases, by a wholly owned instrumentality of a foreign government or an international organization under the International Organizations Immunities Act) for services performed in the United States, Puerto Rico, Guam, American Samoa, the Commonwealth of the Northern Mariana Islands, or the U.S. Virgin Islands. / However, you (not the bankruptcy estate) are responsible for paying SE tax on your net earnings from self-employment.",
-      "page": "i1040gi p. 112; i1040sse p. 2",
-      "why_uncovered": "Line 4 is computed from Schedule SE. Nothing asks about or refuses these cases: a Form 4029 exemption, a social security agreement exemption for a filer living abroad, notary fees being exempt, wages from a foreign government or international organization being subject to SE tax, or SE tax owed by a chapter 11 debtor on earnings reported by the estate. The only Schedule SE refusals listed elsewhere are for clergy (EIC) and railroad compensation.",
-      "closest_item": "s2.line4",
-      "effect": "amount"
-     },
-     {
       "item": "s2.amt_pab",
       "sentences": [
        {
@@ -8299,19 +8279,27 @@
       ],
       "quote": "Exempt-interest dividends paid by a mutual fund or other regulated investment company are treated as interest income on specified private activity bonds to the extent the dividends are attributable to interest on the bonds received by the company, minus an allocable share of the expenses paid or incurred by the company in earning the interest. / This specified private activity bond interest dividends amount should be reported to you in box 13 of Form 1099-DIV.",
       "page": "i6251 pp. 3–4; i6251 p. 4",
-      "why_uncovered": "The private activity bond question asks only for Form 1099-INT box 9 and Form 1099-OID box 11. A filer whose private activity bond interest comes through exempt-interest dividends (Form 1099-DIV box 13) would answer zero, so line 2g and line 4 would be understated.",
+      "why_uncovered": "The private activity bond question asks only for Form 1099-INT box 9 and tax-exempt OID from Form 1099-OID box 11. It never asks for the private-activity-bond part of exempt-interest dividends in Form 1099-DIV box 13. Line 2g, and with it the screen for whether line 7 exceeds line 10, can therefore be understated.",
       "closest_item": "s2.amt_pab",
       "effect": "amount"
      },
      {
-      "item": "s2.amt_business",
+      "item": "s2.amt_owed",
       "sentences": [
        {
-        "quote": "Research and experimental costs deducted under section 174(a) or section 174A(a) for regular tax purposes generally must be amortized for AMT purposes over 10 years beginning with the year the costs were paid or incurred.",
-        "page": "i6251 p. 7"
+        "quote": "Refigure your depletion deduction for the AMT.",
+        "page": "i6251 p. 3"
+       },
+       {
+        "quote": "If you claimed the exclusion under section 1202 for gain on qualified small business stock acquired before September 28, 2010, and held more than 5 years, multiply the excluded gain (as shown on Form 8949 in column (g)) by 7% (0.07).",
+        "page": "i6251 p. 4"
        },
        {
         "quote": "For the AMT, you must generally use the percentage-of-completion method described in section 460(b) to determine your income from any long-term contract (defined in section 460(f)).",
+        "page": "i6251 p. 7"
+       },
+       {
+        "quote": "Research and experimental costs deducted under section 174(a) or section 174A(a) for regular tax purposes generally must be amortized for AMT purposes over 10 years beginning with the year the costs were paid or incurred.",
         "page": "i6251 p. 7"
        },
        {
@@ -8319,14 +8307,14 @@
         "page": "i6251 p. 8"
        },
        {
-        "quote": "Also, your depletion deduction for mines, wells, and other natural deposits under section 611 is limited to the property’s adjusted basis at the end of the year, as refigured for the AMT, unless you are an independent producer or royalty owner claiming percentage depletion for oil and gas wells under section 613A(c).",
-        "page": "i6251 p. 3"
+        "quote": "Complete an AMT Form 8990 using amounts adjusted for AMT.",
+        "page": "i6251 p. 8"
        }
       ],
-      "quote": "Research and experimental costs deducted under section 174(a) or section 174A(a) for regular tax purposes generally must be amortized for AMT purposes over 10 years beginning with the year the costs were paid or incurred. / For the AMT, you must generally use the percentage-of-completion method described in section 460(b) to determine your income from any long-term contract (defined in section 460(f)). / The section 169 election to amortize the basis of a certified pollution control facility over a 60-month or 84-month period isn’t available for the AMT. / Also, your depletion deduction for mines, wells, and other natural deposits under section 611 is limited to the property’s adjusted basis at the end of the year, as refigured for the AMT, unless you are an independent producer or royalty owner claiming percentage depletion for oil and gas wells under section 613A(c).",
-      "page": "i6251 p. 7; i6251 p. 8; i6251 p. 3",
-      "why_uncovered": "The business question asks only about circulation, mining exploration and development, and drilling costs. Other positive AMT adjustments a Schedule C business can produce are never asked: research costs expensed under section 174A (lines 2r), long-term contract income (line 2p), pollution control amortization (line 3), and depletion (line 2d). The look-back interest question covers line 17n interest, not the line 2p adjustment.",
-      "closest_item": "s2.amt_business",
+      "quote": "Refigure your depletion deduction for the AMT. / If you claimed the exclusion under section 1202 for gain on qualified small business stock acquired before September 28, 2010, and held more than 5 years, multiply the excluded gain (as shown on Form 8949 in column (g)) by 7% (0.07). / For the AMT, you must generally use the percentage-of-completion method described in section 460(b) to determine your income from any long-term contract (defined in section 460(f)). / Research and experimental costs deducted under section 174(a) or section 174A(a) for regular tax purposes generally must be amortized for AMT purposes over 10 years beginning with the year the costs were paid or incurred. / The section 169 election to amortize the basis of a certified pollution control facility over a 60-month or 84-month period isn’t available for the AMT. / Complete an AMT Form 8990 using amounts adjusted for AMT.",
+      "page": "i6251 p. 3; i6251 p. 4; i6251 p. 7; i6251 p. 8",
+      "why_uncovered": "The items the arithmetic cannot see cover only three things: boat or recreational vehicle mortgage interest, circulation costs, and mining or drilling costs. Depreciation and related adjustments are bounded separately. No question, bound or refusal reaches these other positive adjustments and preferences: depletion (line 2d), section 1202 gain exclusion (line 2h), long-term contract income (line 2p), research and experimental costs (line 2r), pollution control amortization, and the AMT business interest limitation (line 3). Any of them could raise AMTI enough that line 7 exceeds line 10 while the tool reports zero AMT.",
+      "closest_item": "s2.amt_owed",
       "effect": "amount"
      },
      {
@@ -8343,23 +8331,53 @@
        {
         "quote": "See Form 8801, Credit for Prior Year Minimum Tax—Individuals, Estates, and Trusts, if you paid AMT for 2024 or you had a minimum tax credit carryforward on your 2024 Form 8801.",
         "page": "i6251 p. 2"
-       },
-       {
-        "quote": "If you claimed the exclusion under section 1202 for gain on qualified small business stock acquired before September 28, 2010, and held more than 5 years, multiply the excluded gain (as shown on Form 8949 in column (g)) by 7% (0.07).",
-        "page": "i6251 p. 4"
        }
       ],
-      "quote": "2. You claim any general business credit, and either line 6 (in Part I) of Form 3800 or line 25 of Form 3800 is more than zero. / 3. You claim the qualified electric vehicle credit (Form 8834), the personal-use part of the alternative fuel vehicle refueling property credit (Form 8911), or the credit for prior year minimum tax (Form 8801). / See Form 8801, Credit for Prior Year Minimum Tax—Individuals, Estates, and Trusts, if you paid AMT for 2024 or you had a minimum tax credit carryforward on your 2024 Form 8801. / If you claimed the exclusion under section 1202 for gain on qualified small business stock acquired before September 28, 2010, and held more than 5 years, multiply the excluded gain (as shown on Form 8949 in column (g)) by 7% (0.07).",
-      "page": "i6251 p. 1; i6251 p. 2; i6251 p. 4",
-      "why_uncovered": "The Form 6251 trigger looks only at incentive stock options, the circulation, mining, drilling and boat mortgage items, and line 7 versus line 10. It does not check filing statements 2 and 3: general business credits, Form 8834, Form 8911 personal use, or a Form 8801 minimum tax credit carried from 2024. Nothing asks about a prior-year AMT or credit carryforward. Nothing adds the line 2h preference for section 1202 gain excluded on Form 8949.",
+      "quote": "2. You claim any general business credit, and either line 6 (in Part I) of Form 3800 or line 25 of Form 3800 is more than zero. / 3. You claim the qualified electric vehicle credit (Form 8834), the personal-use part of the alternative fuel vehicle refueling property credit (Form 8911), or the credit for prior year minimum tax (Form 8801). / See Form 8801, Credit for Prior Year Minimum Tax—Individuals, Estates, and Trusts, if you paid AMT for 2024 or you had a minimum tax credit carryforward on your 2024 Form 8801.",
+      "page": "i6251 p. 1; i6251 p. 2",
+      "why_uncovered": "s2.amt triggers the Form 6251 refusal only for incentive stock options, unseen items, or line 7 greater than line 10 (Who Must File statements 1 and 4). Statements 2 and 3 are not tested. Those statements require Form 6251 when a general business credit, the Form 8834 credit, the Form 8911 credit or the Form 8801 credit is claimed. Nothing asks about a 2024 AMT payment or a minimum tax credit carryforward, so these credits could be allowed without the tentative minimum tax limit.",
       "closest_item": "s2.amt",
+      "effect": "amount"
+     },
+     {
+      "item": "s2.line4",
+      "sentences": [
+       {
+        "quote": "Under these agreements, you must generally pay social security and Medicare taxes to only the country in which you live.",
+        "page": "i1040sse p. 2"
+       },
+       {
+        "quote": "Don’t complete Schedule SE.",
+        "page": "i1040sse p. 2"
+       },
+       {
+        "quote": "Instead, attach a copy of the statement to Form 1040, 1040-SR, or 1040-NR, and on Schedule 2 (Form 1040), line 4, check box number 3 and enter “Exempt, see attached statement.”",
+        "page": "i1040sse p. 2"
+       },
+       {
+        "quote": "If you are a U.S. citizen or resident alien living outside the United States and your self-employment income is exempt from self-employment tax, you should get a statement from the appropriate agency of the foreign country verifying that your self-employment income is subject to social security in that country.",
+        "page": "i1040gi p. 112"
+       },
+       {
+        "quote": "If you received fees for services performed as a notary public and you had no other income subject to self-employment tax, check box 3 and enter “EN” on the entry space next to box 3.",
+        "page": "i1040gi p. 112"
+       },
+       {
+        "quote": "If you did have other earnings of $400 or more subject to self-employment tax, check box 3 and enter “EN” and the amount of your net profit as a notary public from Schedule C on the entry space next to box 3.",
+        "page": "i1040gi p. 112"
+       }
+      ],
+      "quote": "Under these agreements, you must generally pay social security and Medicare taxes to only the country in which you live. / Don’t complete Schedule SE. / Instead, attach a copy of the statement to Form 1040, 1040-SR, or 1040-NR, and on Schedule 2 (Form 1040), line 4, check box number 3 and enter “Exempt, see attached statement.” / If you are a U.S. citizen or resident alien living outside the United States and your self-employment income is exempt from self-employment tax, you should get a statement from the appropriate agency of the foreign country verifying that your self-employment income is subject to social security in that country. / If you received fees for services performed as a notary public and you had no other income subject to self-employment tax, check box 3 and enter “EN” on the entry space next to box 3. / If you did have other earnings of $400 or more subject to self-employment tax, check box 3 and enter “EN” and the amount of your net profit as a notary public from Schedule C on the entry space next to box 3.",
+      "page": "i1040sse p. 2; i1040gi p. 112",
+      "why_uncovered": "Line 4 is carried from Schedule SE line 12. No question or refusal identifies self-employment income exempt under a social security totalization agreement or notary public fees. Both are excluded from SE tax, need the box 3 entry, and (for the agreement case) need the attached foreign statement. The listed refusals elsewhere cover clergy, Forms 4361/4029 and community income, not these cases.",
+      "closest_item": "s2.line4",
       "effect": "amount"
      }
     ],
-    "cost": 0.423948,
+    "cost": 0.40464,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/completeness/s2.99aa7c460e79.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/s2.c4d6969090bd.1.response.txt"
    }
   ]
  },
@@ -8462,7 +8480,7 @@
  },
  {
   "form": "s8812",
-  "subject_sha": "32e977d0fb98e9e98f12cc3aaff077505194f53727b1a286be79d0b19890572e",
+  "subject_sha": "eb0c17a4243cd01343ecbc46546f9a973a61f01a71938a876aa3a7cb6cc6364c",
   "used": [
    {
     "doc": "i1040gi",
@@ -8492,42 +8510,24 @@
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
     "claims": [
      {
-      "item": "s8812.line18a",
-      "sentences": [
-       {
-        "quote": "If you have net earnings from self-employment and you use either optional method to figure those net earnings, use the Earned Income Worksheet, later, to figure the amount to enter on line 18a; otherwise, all other taxpayers can use the Earned Income Chart, later, to figure the amount to enter on line 18a.",
-        "page": "i1040s8812 p. 3"
-       },
-       {
-        "quote": "the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC).",
-        "page": "i1040s8812 p. 7"
-       },
-       {
-        "quote": "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a.",
-        "page": "i1040s8812 p. 3"
-       }
-      ],
-      "quote": "If you have net earnings from self-employment and you use either optional method to figure those net earnings, use the Earned Income Worksheet, later, to figure the amount to enter on line 18a; otherwise, all other taxpayers can use the Earned Income Chart, later, to figure the amount to enter on line 18a. / the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC). / Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a.",
-      "page": "i1040s8812 p. 3; i1040s8812 p. 7",
-      "why_uncovered": "Line 18a routes only on whether the filer is taking the EIC. No question asks whether a filer with Schedule SE net earnings used the nonfarm optional method. Such a filer must use the Earned Income Worksheet even when taking the EIC. Only farm amounts (worksheet lines 2c–2e) are refused, and Schedule SE is otherwise supported. Nothing asks about or refuses treaty-excluded income, which must be removed from line 18a earned income.",
-      "closest_item": "s8812.line18a",
-      "effect": "amount"
-     },
-     {
       "item": "s8812.line4",
       "sentences": [
        {
-        "quote": "If your qualifying child was born and died in 2025 and you do not have an SSN for the child, attach a copy of the child’s birth certificate, death certificate, or hospital records.",
-        "page": "i1040s8812 p. 1"
+        "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”)",
+        "page": "i1040gi p. 18"
        },
        {
-        "quote": "The document must show the child was born alive.",
+        "quote": "You can't claim any dependents.",
+        "page": "i1040gi p. 18"
+       },
+       {
+        "quote": "If your qualifying child was born and died in 2025 and you do not have an SSN for the child, attach a copy of the child’s birth certificate, death certificate, or hospital records. The document must show the child was born alive.",
         "page": "i1040s8812 p. 1"
        }
       ],
-      "quote": "If your qualifying child was born and died in 2025 and you do not have an SSN for the child, attach a copy of the child’s birth certificate, death certificate, or hospital records. / The document must show the child was born alive.",
-      "page": "i1040s8812 p. 1",
-      "why_uncovered": "Line 4 counts only children with a valid SSN. No question or refusal covers a child who was born and died in 2025 without an SSN. That child can still be counted for the CTC/ACTC if documentation showing a live birth is attached. The attachment requirement is not implemented.",
+      "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”) / You can't claim any dependents. / If your qualifying child was born and died in 2025 and you do not have an SSN for the child, attach a copy of the child’s birth certificate, death certificate, or hospital records. The document must show the child was born alive.",
+      "page": "i1040gi p. 18; i1040s8812 p. 1",
+      "why_uncovered": "Line 4 cites the Step 1 qualifying-child question and the Step 3 citizenship, age and SSN questions. It cites nothing from Step 2, question 4, which bars every dependent, and so the CTC, when the filer can be claimed as a dependent by another taxpayer. No question or refusal covers this test. The rule requiring documents to be attached for a child who was born and died in 2025 without an SSN is also neither asked about nor refused.",
       "closest_item": "s8812.line4",
       "effect": "eligibility"
      },
@@ -8535,36 +8535,65 @@
       "item": "s8812.line6",
       "sentences": [
        {
-        "quote": "If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household in 2025, that child meets condition (3), earlier, to be a qualifying person for the ODC.",
-        "page": "i1040s8812 p. 2"
+        "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”)",
+        "page": "i1040gi p. 19"
        },
        {
-        "quote": "An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption.",
+        "quote": "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025.",
+        "page": "i1040gi p. 19"
+       },
+       {
+        "quote": "Who had gross income of less than $5,200 in 2025.",
+        "page": "i1040gi p. 19"
+       },
+       {
+        "quote": "For whom you provided over half of the person’s support in 2025.",
+        "page": "i1040gi p. 19"
+       },
+       {
+        "quote": "Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn’t violate local law.",
+        "page": "i1040gi p. 19"
+       },
+       {
+        "quote": "If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household in 2025, that child meets condition (3), earlier, to be a qualifying person for the ODC.",
         "page": "i1040s8812 p. 2"
        }
       ],
-      "quote": "If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household in 2025, that child meets condition (3), earlier, to be a qualifying person for the ODC. / An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption.",
-      "page": "i1040s8812 p. 2",
-      "why_uncovered": "Line 6 applies only the citizen/national/resident-alien question. Nothing implements or asks about the adopted-child exception to the citizen test. The Form 8839 refusal elsewhere covers only adoptions that became final in 2025 or costs paid in 2025, not adopted children generally. A non-citizen adopted child who lived with a citizen/national filer all year would wrongly be excluded.",
+      "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”) / Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. / Who had gross income of less than $5,200 in 2025. / For whom you provided over half of the person’s support in 2025. / Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn’t violate local law. / If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household in 2025, that child meets condition (3), earlier, to be a qualifying person for the ODC.",
+      "page": "i1040gi p. 19; i1040s8812 p. 2",
+      "why_uncovered": "Line 6 cites only the Step 3 and Step 5 TIN, citizenship and age questions. Several rules have no matching question or refusal: the Step 4 qualifying-relative tests (not the qualifying child of any taxpayer, gross income under $5,200, more than half support, member of household all year); the Step 4/5 rule that a filer who can be claimed as a dependent can't claim any dependents; and the adopted-child exception that treats an adopted noncitizen child as meeting the ODC citizenship condition.",
       "closest_item": "s8812.line6",
       "effect": "eligibility"
+     },
+     {
+      "item": "s8812.line18a",
+      "sentences": [
+       {
+        "quote": "If you have net earnings from self-employment and you use either optional method to figure those net earnings, use the Earned Income Worksheet, later, to figure the amount to enter on line 18a; otherwise, all other taxpayers can use the Earned Income Chart, later, to figure the amount to enter on line 18a.",
+        "page": "i1040s8812 p. 3"
+       },
+       {
+        "quote": "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a.",
+        "page": "i1040s8812 p. 3"
+       }
+      ],
+      "quote": "If you have net earnings from self-employment and you use either optional method to figure those net earnings, use the Earned Income Worksheet, later, to figure the amount to enter on line 18a; otherwise, all other taxpayers can use the Earned Income Chart, later, to figure the amount to enter on line 18a. / Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a.",
+      "page": "i1040s8812 p. 3",
+      "why_uncovered": "Line 18a takes the EIC Step 5 / Worksheet B amount whenever the filer takes the EIC. No question or refusal routes a filer who uses the nonfarm optional method to the Earned Income Worksheet, as the chart's first row requires. Only farm optional-method lines are refused. Nothing asks about treaty-excluded income or refuses it so that it can be removed from earned income.",
+      "closest_item": "s8812.line18a",
+      "effect": "amount"
      }
     ],
-    "cost": 0.199288,
+    "cost": 0.196676,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/completeness/s8812.c76252c10652.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/s8812.eb0c17a4243c.1.response.txt"
    }
-  ],
-  "subject_migrated": {
-   "from": "c76252c106529cfa2d11bbde541c80682db1d2dbf5b4fccc5300d8873439f73d",
-   "date": "2026-11-21",
-   "task": "T-351"
-  }
+  ]
  },
  {
   "form": "sa",
-  "subject_sha": "bb30c93e4c77ceec4921289879f3e7889762b15b05364e4883090976754097c7",
+  "subject_sha": "5f329bfea96467eac36159850a6a301a6a20a6340ea95064d4e77652336e64e3",
   "used": [
    {
     "doc": "i1040gi",
@@ -8595,6 +8624,12 @@
      10,
      11,
      12
+    ]
+   },
+   {
+    "doc": "i5329",
+    "pages": [
+     5
     ]
    },
    {
@@ -8654,32 +8689,60 @@
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
     "claims": [
      {
-      "item": "sa.mortgage_interest",
+      "item": "sa.standard",
       "sentences": [
        {
-        "quote": "If you are claiming the mortgage interest credit (for holders of qualified mortgage credit certificates issued by state or local governmental units or agencies), subtract the amount shown on Form 8396, line 3, from the total deductible interest you paid on your home mortgage. Enter the result on line 8a.",
+        "quote": "If you were a dual-status alien, check the box on line 12c.",
+        "page": "i1040gi p. 33"
+       },
+       {
+        "quote": "Exception 3—Dual-status alien. Line 12c. If you checked the box on line 12c, your standard deduction is zero, even if you were born before January 2, 1961, or were blind.",
+        "page": "i1040gi p. 34"
+       },
+       {
+        "quote": "If you are married filing a separate return and your spouse itemizes deductions, or if you are a dual-status alien, you can’t take the standard deduction even if you were born before January 2, 1961 or are blind.",
+        "page": "p501 p. 24"
+       }
+      ],
+      "quote": "If you were a dual-status alien, check the box on line 12c. / Exception 3—Dual-status alien. Line 12c. If you checked the box on line 12c, your standard deduction is zero, even if you were born before January 2, 1961, or were blind. / If you are married filing a separate return and your spouse itemizes deductions, or if you are a dual-status alien, you can’t take the standard deduction even if you were born before January 2, 1961 or are blind.",
+      "page": "i1040gi p. 33; i1040gi p. 34; p501 p. 24",
+      "why_uncovered": "The standard deduction is set to zero only when a spouse itemizes on a separate return (sa.spouse_itemizes / sa.mfs_spouse_itemizes). No question asks whether the filer was a dual-status alien, and no sa refusal covers it. The HANDLED ELSEWHERE nonresident refusal is tied to the EIC, so it fires only on that path. A dual-status filer who claims no EIC would get a nonzero standard deduction and could be steered away from itemizing.",
+      "closest_item": "sa.standard",
+      "effect": "amount"
+     },
+     {
+      "item": "sa.line6",
+      "sentences": [
+       {
+        "quote": "Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.",
+        "page": "i1040sca p. 7"
+       }
+      ],
+      "quote": "Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.",
+      "page": "i1040sca p. 7",
+      "why_uncovered": "Line 6 is fixed at zero. sa.unsupported refuses only a foreign tax deduction. Nothing asks about, computes, or refuses a deduction for generation-skipping tax imposed on income distributions, so that deduction would be silently dropped.",
+      "closest_item": "sa.line6",
+      "effect": "amount"
+     },
+     {
+      "item": "sa.line8a",
+      "sentences": [
+       {
+        "quote": "If you are claiming the mortgage interest credit (for holders of qualified mortgage credit certificates issued by state or local governmental units or agencies), subtract the amount shown on Form 8396, line 3, from the total deductible interest you paid on your home mortgage.",
         "page": "i1040sca p. 8"
        }
       ],
-      "quote": "If you are claiming the mortgage interest credit (for holders of qualified mortgage credit certificates issued by state or local governmental units or agencies), subtract the amount shown on Form 8396, line 3, from the total deductible interest you paid on your home mortgage. Enter the result on line 8a.",
+      "quote": "If you are claiming the mortgage interest credit (for holders of qualified mortgage credit certificates issued by state or local governmental units or agencies), subtract the amount shown on Form 8396, line 3, from the total deductible interest you paid on your home mortgage.",
       "page": "i1040sca p. 8",
-      "why_uncovered": "The sa.mortgage_interest question asks for Form 1098 interest and points. It covers shared loans, refunds of overpaid interest and prepaid interest, but it never asks about a mortgage credit certificate or Form 8396. No refusal mentions the mortgage interest credit either. A filer with a mortgage credit certificate would have the full Form 1098 interest entered on line 8a, without the Form 8396 line 3 reduction.",
-      "closest_item": "sa.mortgage_interest",
+      "why_uncovered": "sa.mortgage_interest asks for the Form 1098 interest, the filer's share, and the period limits. Neither it nor any refusal reduces line 8a by a mortgage interest credit (Form 8396, line 3) or asks whether a mortgage credit certificate is held.",
+      "closest_item": "sa.line8a",
       "effect": "amount"
      },
      {
       "item": "sa.line11",
       "sentences": [
        {
-        "quote": "Gifts to civic leagues, social and sports clubs, labor unions, and chambers of commerce.",
-        "page": "i1040sca p. 10"
-       },
-       {
-        "quote": "Gifts to organizations engaged in certain political activities that are of direct financial interest to your trade or business. See section 170(f)(9).",
-        "page": "i1040sca p. 10"
-       },
-       {
-        "quote": "Exception. If the state or local tax credit you receive or expect to receive doesn’t exceed 15% of your payment amount or 15% of the FMV of the transferred property, then your charitable contribution deduction isn’t reduced.",
+        "quote": "If the state or local tax credit you receive or expect to receive doesn’t exceed 15% of your payment amount or 15% of the FMV of the transferred property, then your charitable contribution deduction isn’t reduced.",
         "page": "p526 p. 5"
        },
        {
@@ -8687,33 +8750,47 @@
         "page": "p526 p. 5"
        },
        {
-        "quote": "You can deduct qualifying expenses for a foreign or American student who: 1. Lives in your home under a written agreement between you and a qualified organization (defined later) as part of a program of the organization to provide educational opportunities for the student, 2. Isn’t your relative (defined later) or dependent (also defined later), and 3. Is a full-time student in the 12th or any lower grade at a school in the United States.",
-        "page": "p526 p. 6"
+        "quote": "However, if you return the ticket to the qualified organization for resale, you can deduct the entire amount you paid for the ticket.",
+        "page": "p526 p. 5"
        },
        {
         "quote": "You can deduct up to $50 a month for each full calendar month the student lives with you.",
         "page": "p526 p. 6"
        },
        {
-        "quote": "Any month when conditions (1) through (3) are met for 15 or more days counts as a full month.",
-        "page": "p526 p. 6"
+        "quote": "Gifts to civic leagues, social and sports clubs, labor unions, and chambers of commerce.",
+        "page": "i1040sca p. 10"
        },
        {
-        "quote": "For example, if you are providing a home for a student as part of a state or local government program, you can’t deduct your expenses as charitable contributions.",
-        "page": "p526 p. 6"
+        "quote": "Gifts to organizations engaged in certain political activities that are of direct financial interest to your trade or business.",
+        "page": "i1040sca p. 10"
        }
       ],
-      "quote": "Gifts to civic leagues, social and sports clubs, labor unions, and chambers of commerce. / Gifts to organizations engaged in certain political activities that are of direct financial interest to your trade or business. See section 170(f)(9). / Exception. If the state or local tax credit you receive or expect to receive doesn’t exceed 15% of your payment amount or 15% of the FMV of the transferred property, then your charitable contribution deduction isn’t reduced. / If the amount of the state or local tax deduction exceeds the amount of your cash contribution or the FMV of the transferred property, then your charitable contribution deduction is reduced. / You can deduct qualifying expenses for a foreign or American student who: 1. Lives in your home under a written agreement between you and a qualified organization (defined later) as part of a program of the organization to provide educational opportunities for the student, 2. Isn’t your relative (defined later) or dependent (also defined later), and 3. Is a full-time student in the 12th or any lower grade at a school in the United States. / You can deduct up to $50 a month for each full calendar month the student lives with you. / Any month when conditions (1) through (3) are met for 15 or more days counts as a full month. / For example, if you are providing a home for a student as part of a state or local government program, you can’t deduct your expenses as charitable contributions.",
-      "page": "i1040sca p. 10; p526 p. 5; p526 p. 6",
-      "why_uncovered": "The line 11 leave-out list has several gaps. It names dues to clubs and lodges and gifts to groups run for profit or to lobby. It does not name gifts to civic leagues, social and sports clubs, labor unions, chambers of commerce, or section 170(f)(9) political-activity organizations. On state or local tax credits, it tells the filer to leave out the credited part with no exception, so the 15% de minimis rule is missing. It also says nothing about a state or local tax deduction that exceeds the gift. Finally, the sa.gifts gate invites unreimbursed costs of hosting a student. Neither question nor any refusal applies the written-agreement, non-relative and grade-level conditions, the government-program exclusion, or the $50-per-month cap.",
+      "quote": "If the state or local tax credit you receive or expect to receive doesn’t exceed 15% of your payment amount or 15% of the FMV of the transferred property, then your charitable contribution deduction isn’t reduced. / If the amount of the state or local tax deduction exceeds the amount of your cash contribution or the FMV of the transferred property, then your charitable contribution deduction is reduced. / However, if you return the ticket to the qualified organization for resale, you can deduct the entire amount you paid for the ticket. / You can deduct up to $50 a month for each full calendar month the student lives with you. / Gifts to civic leagues, social and sports clubs, labor unions, and chambers of commerce. / Gifts to organizations engaged in certain political activities that are of direct financial interest to your trade or business.",
+      "page": "p526 p. 5; p526 p. 6; i1040sca p. 10",
+      "why_uncovered": "The line 11 question tells the filer to leave out every part of a gift that earned a state or local tax credit. It omits the 15% exception, which allows the full gift. It also omits the reduction when a state or local tax deduction exceeds the gift. It says to subtract the value of benefits received without the returned-ticket exception. sa.gifts invites the costs of hosting a student, but nothing applies the $50-per-month cap. The leave-out list does not exclude gifts to civic leagues, labor unions, chambers of commerce, or organizations whose political activities are of direct financial interest to the filer's business.",
       "closest_item": "sa.line11",
+      "effect": "amount"
+     },
+     {
+      "item": "sa.line16",
+      "sentences": [
+       {
+        "quote": "Deduction for repayment of amounts under a claim of right if over $3,000.",
+        "page": "i1040sca p. 12"
+       }
+      ],
+      "quote": "Deduction for repayment of amounts under a claim of right if over $3,000.",
+      "page": "i1040sca p. 12",
+      "why_uncovered": "sa.unsupported refuses line 16 items other than gambling losses, but only when a question flags them. The encoding asks about estate tax on income in respect of a decedent, bond premium, debt instrument losses, unrecovered pension investment, and impairment-related work expenses. No question asks about a claim-of-right repayment over $3,000, so it is neither computed nor refused.",
+      "closest_item": "sa.line16",
       "effect": "amount"
      }
     ],
-    "cost": 0.39734800000000003,
+    "cost": 0.42866000000000004,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/completeness/sa.bb30c93e4c77.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/sa.5f329bfea964.1.response.txt"
    }
   ]
  },
@@ -8908,7 +8985,7 @@
  },
  {
   "form": "sb",
-  "subject_sha": "8c7768ede52632d885ed1bc52f1692446cfddf7d6fa342d77979265467ec70eb",
+  "subject_sha": "52336e786a897ec38cc3568b51e7145a8137ca69edd9aa882f24b1d033996188",
   "used": [
    {
     "doc": "cfr-26-301-7701-7",
@@ -8940,73 +9017,34 @@
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
     "claims": [
      {
-      "item": "sb.interest_total",
+      "item": "sb.line8",
       "sentences": [
        {
-        "quote": "List each payer's name and the amount.",
-        "page": "i1040sb p. 1"
+        "quote": "Notwithstanding any other provision in this section, a court within the United States is not considered to have primary supervision over the administration of the trust if the trust instrument provides that a United States court’s attempt to assert jurisdiction or otherwise supervise the administration of the trust directly or indirectly would cause the trust to migrate from the United States.",
+        "page": "cfr-26-301-7701-7 p. 3"
        },
        {
-        "quote": "You can list more than one payer on each entry space for lines 1 and 5, but be sure to clearly show the amount paid next to each payer's name.",
-        "page": "i1040sb p. 1"
-       },
-       {
-        "quote": "Add the separate amounts paid by the payers listed on an entry space and enter the total in the “Amount” column.",
-        "page": "i1040sb p. 1"
-       },
-       {
-        "quote": "If you still need more space, attach separate statements using the same format as lines 1 and 5, but show your totals on Schedule B.",
-        "page": "i1040sb p. 1"
-       },
-       {
-        "quote": "Put your name and social security number (SSN) on the statements and attach them at the end of your return.",
-        "page": "i1040sb p. 1"
+        "quote": "However, this paragraph (c)(4)(ii) will not apply if the trust instrument provides that the trust will migrate from the United States only in the case of foreign invasion of the United States or widespread confiscation or nationalization of property in the United States.",
+        "page": "cfr-26-301-7701-7 p. 3"
        }
       ],
-      "quote": "List each payer's name and the amount. / You can list more than one payer on each entry space for lines 1 and 5, but be sure to clearly show the amount paid next to each payer's name. / Add the separate amounts paid by the payers listed on an entry space and enter the total in the “Amount” column. / If you still need more space, attach separate statements using the same format as lines 1 and 5, but show your totals on Schedule B. / Put your name and social security number (SSN) on the statements and attach them at the end of your return.",
-      "page": "i1040sb p. 1",
-      "why_uncovered": "The encoding takes taxable interest as one total for all payers and goes straight to line 2. It never asks for or produces the line 1 entries, which must give each payer's name and that payer's amount. It also has no step for the overflow statement when the payers don't fit on the form. No question or refusal asks for payer names.",
-      "closest_item": "sb.interest_total",
-      "effect": "presentation"
-     },
-     {
-      "item": "sb.ordinary_dividends",
-      "sentences": [
-       {
-        "quote": "Report on line 5 all of your ordinary dividends.",
-        "page": "i1040sb p. 2"
-       },
-       {
-        "quote": "You can list more than one payer on each entry space for lines 1 and 5, but be sure to clearly show the amount paid next to each payer's name.",
-        "page": "i1040sb p. 1"
-       },
-       {
-        "quote": "If you still need more space, attach separate statements using the same format as lines 1 and 5, but show your totals on Schedule B.",
-        "page": "i1040sb p. 1"
-       }
-      ],
-      "quote": "Report on line 5 all of your ordinary dividends. / You can list more than one payer on each entry space for lines 1 and 5, but be sure to clearly show the amount paid next to each payer's name. / If you still need more space, attach separate statements using the same format as lines 1 and 5, but show your totals on Schedule B.",
-      "page": "i1040sb p. 2; i1040sb p. 1",
-      "why_uncovered": "The encoding asks only for total ordinary dividends from Form 1099-DIV box 1a and puts that total on line 6. It never builds line 5, which lists each payer with an amount, and it has no attached statement for extra payers. No question collects dividend payer names.",
-      "closest_item": "sb.ordinary_dividends",
+      "quote": "Notwithstanding any other provision in this section, a court within the United States is not considered to have primary supervision over the administration of the trust if the trust instrument provides that a United States court’s attempt to assert jurisdiction or otherwise supervise the administration of the trust directly or indirectly would cause the trust to migrate from the United States. / However, this paragraph (c)(4)(ii) will not apply if the trust instrument provides that the trust will migrate from the United States only in the case of foreign invasion of the United States or widespread confiscation or nationalization of property in the United States.",
+      "page": "cfr-26-301-7701-7 p. 3",
+      "why_uncovered": "The line 8 question defines a trust as foreign unless a court in the 50 states or DC can supervise its administration and US persons control all substantial decisions. It does not say that an automatic migration clause defeats the court test. Such a clause moves the trust abroad if a US court tries to assert jurisdiction. A filer whose trust is administered in a US state, by a US trustee, under such a clause would reasonably answer No. That trust is foreign under the regulation, so the answer is wrong, and the Form 3520 / Form 3520-A refusal (sb.line8_if_foreign) is never triggered. The 'if you are not sure, answer Yes' fallback does not help, because the filer has no reason to be unsure. No other question or refusal raises this rule.",
+      "closest_item": "sb.line8",
       "effect": "presentation"
      }
     ],
-    "cost": 0.17354,
+    "cost": 0.146484,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/completeness/sb.2e493ad3caa8.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/sb.52336e786a89.1.response.txt"
    }
-  ],
-  "subject_migrated": {
-   "from": "2e493ad3caa8bdd236232930199d042c2a545ddea85566a25d38432cfb2eed75",
-   "date": "2026-11-21",
-   "task": "T-351"
-  }
+  ]
  },
  {
   "form": "sc",
-  "subject_sha": "a00e32ed83ddc6e33a4354ac78439538ef9f349f2565b5b5266e858267ece811",
+  "subject_sha": "fc964d7e3183c92f0fe5c0b9236f04cb839f524f70d828f586a319cfb238cb44",
   "used": [
    {
     "doc": "i1040gi",
@@ -9051,7 +9089,8 @@
      12,
      13,
      14,
-     15
+     15,
+     16
     ]
    },
    {
@@ -9142,90 +9181,82 @@
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
     "claims": [
      {
-      "item": "sc.line1",
+      "item": "sc.line48",
       "sentences": [
        {
-        "quote": "If you receive Medicaid waiver payments on a Form 1099-MISC or Form 1099-NEC that are excludable from gross income under Notice 2014-7, report the full amount of the payments as income on Schedule C, line 1. Then report the nontaxable and excludable amount as an expense in Part V, Other Expenses, and write “Notice 2014-7” next to the amount.",
-        "page": "i1040sc p. 6"
+        "quote": "Do not include the cost of business equipment or furniture; replacements or permanent improvements to property; or personal, living, and family expenses.",
+        "page": "i1040sc p. 16"
        },
        {
-        "quote": "If the total amounts that were reported in box 1 of Forms 1099-NEC are more than the total you are reporting on line 1, attach a statement explaining the difference.",
-        "page": "i1040sc p. 5"
+        "quote": "Do not include charitable contributions.",
+        "page": "i1040sc p. 16"
+       },
+       {
+        "quote": "Also, you can't deduct fines or penalties paid to a government for violating any law.",
+        "page": "i1040sc p. 16"
+       },
+       {
+        "quote": "Include debts and partial debts from sales or services that were included in income and are definitely known to be worthless.",
+        "page": "i1040sc p. 16"
+       },
+       {
+        "quote": "You may be able to deduct up to $15,000 of costs paid or incurred in 2025 to remove architectural or transportation barriers to individuals with disabilities and the elderly.",
+        "page": "i1040sc p. 16"
+       },
+       {
+        "quote": "However, you can't take both a credit (on Form 8826) and a deduction for the same expenditures.",
+        "page": "i1040sc p. 16"
+       },
+       {
+        "quote": "If you have an applicable financial statement, you may use this safe harbor to deduct amounts paid for tangible property up to $5,000 per item or invoice.",
+        "page": "i1040sc p. 16"
+       },
+       {
+        "quote": "If you don't have an applicable financial statement, you may use the de minimis safe harbor to deduct amounts paid for tangible property up to $2,500 per item or invoice.",
+        "page": "i1040sc p. 16"
+       },
+       {
+        "quote": "However, for each qualified timber property, you can elect to expense up to $10,000 ($5,000 if married filing separately) of qualifying reforestation costs paid or incurred in 2025.",
+        "page": "i1040sc p. 16"
+       },
+       {
+        "quote": "However, you can't deduct technology or software tools that must be depreciated or amortized.",
+        "page": "i1040sc p. 16"
+       },
+       {
+        "quote": "Then report the nontaxable and excludable amount as an expense in Part V, Other Expenses, and write \"Notice 2014-7\" next to the amount.",
+        "page": "i1040sc p. 6"
        }
       ],
-      "quote": "If you receive Medicaid waiver payments on a Form 1099-MISC or Form 1099-NEC that are excludable from gross income under Notice 2014-7, report the full amount of the payments as income on Schedule C, line 1. Then report the nontaxable and excludable amount as an expense in Part V, Other Expenses, and write “Notice 2014-7” next to the amount. / If the total amounts that were reported in box 1 of Forms 1099-NEC are more than the total you are reporting on line 1, attach a statement explaining the difference.",
-      "page": "i1040sc p. 6; i1040sc p. 5",
-      "why_uncovered": "The line 1 question tells the filer to include all Form 1099-NEC and 1099-MISC amounts. Neither it nor the line 48 (Part V) question mentions excludable Medicaid waiver payments or the offsetting Notice 2014-7 entry. The special-items screen cites this page but does not list Medicaid waiver payments, so it does not refuse them. As a result, excludable payments would be taxed. Nothing asks about or produces the statement required when Form 1099-NEC box 1 totals exceed line 1.",
-      "closest_item": "sc.line1",
+      "quote": "Do not include the cost of business equipment or furniture; replacements or permanent improvements to property; or personal, living, and family expenses. / Do not include charitable contributions. / Also, you can't deduct fines or penalties paid to a government for violating any law. / Include debts and partial debts from sales or services that were included in income and are definitely known to be worthless. / You may be able to deduct up to $15,000 of costs paid or incurred in 2025 to remove architectural or transportation barriers to individuals with disabilities and the elderly. / However, you can't take both a credit (on Form 8826) and a deduction for the same expenditures. / If you have an applicable financial statement, you may use this safe harbor to deduct amounts paid for tangible property up to $5,000 per item or invoice. / If you don't have an applicable financial statement, you may use the de minimis safe harbor to deduct amounts paid for tangible property up to $2,500 per item or invoice. / However, for each qualified timber property, you can elect to expense up to $10,000 ($5,000 if married filing separately) of qualifying reforestation costs paid or incurred in 2025. / However, you can't deduct technology or software tools that must be depreciated or amortized. / Then report the nontaxable and excludable amount as an expense in Part V, Other Expenses, and write \"Notice 2014-7\" next to the amount.",
+      "page": "i1040sc p. 16; i1040sc p. 6",
+      "why_uncovered": "The line 48 question asks only for 'the total of the other business expenses you list in Part V'. It does not exclude equipment, improvements, personal expenses, charitable contributions or government fines. It does not limit bad debts to amounts previously included in income. It does not apply the $15,000 barrier-removal cap or the bar on taking both the Form 8826 credit and the deduction. It does not apply the $2,500/$5,000 de minimis safe-harbor caps or the $10,000/$5,000 reforestation expensing cap. It does not exclude software that must be depreciated. It does not cover the Medicaid waiver offset entry. The screen covers start-up costs over $5,000 and amortized licenses, but none of these other items.",
+      "closest_item": "sc.line48",
       "effect": "amount"
      },
      {
-      "item": "sc.line9",
+      "item": "sc.line13",
       "sentences": [
        {
-        "quote": "You must use actual expenses if you used five or more vehicles simultaneously in your business (such as in fleet operations).",
-        "page": "i1040sc p. 6"
+        "quote": "You can't deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method.",
+        "page": "i1040sc p. 13"
        },
        {
-        "quote": "You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle.",
-        "page": "i1040sc p. 6"
-       },
-       {
-        "quote": "You can take the standard mileage rate for 2025 only if you: • Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service, or • Leased the vehicle and are using the standard mileage rate for the entire lease period.",
-        "page": "i1040sc p. 6"
+        "quote": "The depreciation deduction allowable for that portion of the home for that year is deemed to be zero.",
+        "page": "i1040sc p. 13"
        }
       ],
-      "quote": "You must use actual expenses if you used five or more vehicles simultaneously in your business (such as in fleet operations). / You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle. / You can take the standard mileage rate for 2025 only if you: • Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service, or • Leased the vehicle and are using the standard mileage rate for the entire lease period.",
-      "page": "i1040sc p. 6",
-      "why_uncovered": "Line 9 is computed per vehicle by the standard mileage rate or actual expenses. No listed question or refusal asks about these limits on choosing a method: the five-or-more-vehicles fleet rule, standard mileage use in the first year, or the leased-vehicle consistency rule. The tool could therefore apply a method the filer is not allowed to use.",
-      "closest_item": "sc.line9",
-      "effect": "amount"
-     },
-     {
-      "item": "sc.line23",
-      "sentences": [
-       {
-        "quote": "Taxes assessed to pay for improvements, such as paving and sewers.",
-        "page": "i1040sc p. 9"
-       },
-       {
-        "quote": "Estate and gift taxes.",
-        "page": "i1040sc p. 9"
-       }
-      ],
-      "quote": "Taxes assessed to pay for improvements, such as paving and sewers. / Estate and gift taxes.",
-      "page": "i1040sc p. 9",
-      "why_uncovered": "The line 23 question excludes income and self-employment tax, tax on property bought, and real estate tax on the home. It does not exclude special assessments for improvements or estate and gift taxes, so a filer could include these nondeductible amounts.",
-      "closest_item": "sc.line23",
-      "effect": "amount"
-     },
-     {
-      "item": "sc.loss_allowed",
-      "sentences": [
-       {
-        "quote": "If you report a loss on line 31 of your Schedule C (Form 1040), you may be subject to a business loss limitation.",
-        "page": "i1040sc p. 1"
-       },
-       {
-        "quote": "Instead, use Form 461 to determine the amount of your excess business loss, which will be included as income on Schedule 1 (Form 1040), line 8p.",
-        "page": "i1040sc p. 1"
-       },
-       {
-        "quote": "If you enter a loss on line 31, you may have an excess business loss. Use Form 461 to figure your excess business loss.",
-        "page": "i1040sc p. 14"
-       }
-      ],
-      "quote": "If you report a loss on line 31 of your Schedule C (Form 1040), you may be subject to a business loss limitation. / Instead, use Form 461 to determine the amount of your excess business loss, which will be included as income on Schedule 1 (Form 1040), line 8p. / If you enter a loss on line 31, you may have an excess business loss. Use Form 461 to figure your excess business loss.",
-      "page": "i1040sc p. 1; i1040sc p. 14",
-      "why_uncovered": "sc.loss_allowed passes the full at-risk loss through to Schedule 1, line 3 and refuses only the not-at-risk case (Form 6198). No question, computation or refusal applies the excess business loss limitation (Form 461), and nothing adds the add-back on Schedule 1, line 8p.",
-      "closest_item": "sc.loss_allowed",
+      "quote": "You can't deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method. / The depreciation deduction allowable for that portion of the home for that year is deemed to be zero.",
+      "page": "i1040sc p. 13",
+      "why_uncovered": "The encoding allows only the simplified method for the home office (sc.ho_sqft, sc.ho_line5). However, the line 13 depreciation and section 179 helpers (sc.f17, sc.f19_*, sc.s179_elected) have no guard or question that excludes depreciation on the business portion of the home. The expense questions for lines 15, 16a, 20b, 21, 23 and 25 do carry such an exclusion, but nothing does for depreciation.",
+      "closest_item": "sc.line13",
       "effect": "amount"
      }
     ],
-    "cost": 0.582704,
+    "cost": 0.534548,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/completeness/sc.a00e32ed83dd.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/sc.fc964d7e3183.1.response.txt"
    }
   ]
  },
@@ -9320,8 +9351,14 @@
  },
  {
   "form": "scope",
-  "subject_sha": "302ba13f6c08db4e04123660930a5ea2802ae007f3bbcfcb4202990fc2484579",
+  "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
   "used": [
+   {
+    "doc": "i1040gi",
+    "pages": [
+     4
+    ]
+   },
    {
     "doc": "i1040gi",
     "pages": [
@@ -9374,6 +9411,12 @@
     "doc": "i1040s8812",
     "pages": [
      3
+    ]
+   },
+   {
+    "doc": "i1040sd",
+    "pages": [
+     1
     ]
    },
    {
@@ -9502,7 +9545,10 @@
      26,
      27,
      28,
-     29
+     29,
+     30,
+     31,
+     32
     ]
    },
    {
@@ -9516,6 +9562,12 @@
     "pages": [
      3
     ]
+   },
+   {
+    "doc": "p926",
+    "pages": [
+     3
+    ]
    }
   ],
   "samples": [
@@ -9523,8 +9575,66 @@
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
     "claims": [
      {
+      "item": "scope.other_income",
+      "sentences": [
+       {
+        "quote": "If you worked abroad, you may be able to exclude part or all of your foreign earned income.",
+        "page": "i1040gi p. 23"
+       },
+       {
+        "quote": "Enter the amount of your foreign earned income and housing exclusion from Form 2555, line 45.",
+        "page": "i1040gi p. 91"
+       },
+       {
+        "quote": "If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must figure your tax using the Foreign Earned Income Tax Worksheet.",
+        "page": "i1040gi p. 36"
+       },
+       {
+        "quote": "If you file Form 2555, you cannot claim the additional child tax credit.",
+        "page": "i1040s8812 p. 3"
+       },
+       {
+        "quote": "If you were a beneficiary of a foreign retirement plan, you may have to report the undistributed income earned in your plan.",
+        "page": "i1040gi p. 23"
+       },
+       {
+        "quote": "You must complete Part III of Schedule B if you: • Had a foreign account; or • Received a distribution from, or were a grantor of, or a transferor to, a foreign trust.",
+        "page": "i1040gi p. 23"
+       },
+       {
+        "quote": "Although you don’t need to report the income from the forgiveness of your PPP Loan on Form 1040 or 1040-SR, you do need to report certain information related to your PPP Loan as an attachment to your tax return.",
+        "page": "i1040gi p. 23"
+       },
+       {
+        "quote": "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer.",
+        "page": "i1040gi p. 25"
+       },
+       {
+        "quote": "If you had a net qualified disaster loss and you elect to increase your standard deduction by the amount of your net qualified disaster loss, use Schedule A to figure your standard deduction.",
+        "page": "i1040gi p. 34"
+       },
+       {
+        "quote": "You received a lump-sum benefit payment during the year that is for one or more earlier years.",
+        "page": "p525 p. 31"
+       }
+      ],
+      "quote": "If you worked abroad, you may be able to exclude part or all of your foreign earned income. / Enter the amount of your foreign earned income and housing exclusion from Form 2555, line 45. / If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must figure your tax using the Foreign Earned Income Tax Worksheet. / If you file Form 2555, you cannot claim the additional child tax credit. / If you were a beneficiary of a foreign retirement plan, you may have to report the undistributed income earned in your plan. / You must complete Part III of Schedule B if you: • Had a foreign account; or • Received a distribution from, or were a grantor of, or a transferor to, a foreign trust. / Although you don’t need to report the income from the forgiveness of your PPP Loan on Form 1040 or 1040-SR, you do need to report certain information related to your PPP Loan as an attachment to your tax return. / Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer. / If you had a net qualified disaster loss and you elect to increase your standard deduction by the amount of your net qualified disaster loss, use Schedule A to figure your standard deduction. / You received a lump-sum benefit payment during the year that is for one or more earlier years.",
+      "page": "i1040gi p. 23; i1040gi p. 91; i1040gi p. 36; i1040s8812 p. 3; i1040gi p. 25; i1040gi p. 34; p525 p. 31",
+      "why_uncovered": "The other-income screen asks about nonresident status, chapter 11, treaties, reservist repayments, adoption and dependent care benefits, excess deferrals, unreported wages, disaster distributions and passive activities. It does not ask about the foreign earned income or housing exclusion (Form 2555), undistributed income of a foreign retirement plan, foreign accounts or foreign trusts (Schedule B Part III), PPP loan forgiveness, disability pensions paid before minimum retirement age, an increased standard deduction for a net qualified disaster loss, or a lump-sum social security benefit for earlier years. No refusal here or in HANDLED ELSEWHERE covers these situations.",
+      "closest_item": "scope.other_income",
+      "effect": "amount"
+     },
+     {
       "item": "scope.schedule1",
       "sentences": [
+       {
+        "quote": "If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u.",
+        "page": "i1040gi p. 23"
+       },
+       {
+        "quote": "If you received a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan and it was reported in box 1 of Form W-2, do not include this amount on Form 1040, line 1a.",
+        "page": "i1040gi p. 24"
+       },
        {
         "quote": "Enter gambling winnings not attributable to a trade or business.",
         "page": "i1040gi p. 91"
@@ -9534,23 +9644,11 @@
         "page": "i1040gi p. 91"
        },
        {
-        "quote": "Enter the amount of your foreign earned income and housing exclusion from Form 2555, line 45.",
-        "page": "i1040gi p. 91"
-       },
-       {
         "quote": "Enter any jury duty pay and see the instructions for line 24a.",
         "page": "i1040gi p. 91"
        },
        {
-        "quote": "Jury duty pay. Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury.",
-        "page": "i1040gi p. 99"
-       },
-       {
         "quote": "Enter prizes and awards but see the instructions for line 8m, Olympic and Paralympic medals and USOC prize money, later.",
-        "page": "i1040gi p. 91"
-       },
-       {
-        "quote": "If your adjusted gross income is not more than $1,000,000 ($500,000 if married filing separately), these amounts are nontaxable and you should include the amount in box 3 of Form 1099-MISC on line 8m, then subtract it by including it on line 24c.",
         "page": "i1040gi p. 91"
        },
        {
@@ -9558,104 +9656,26 @@
         "page": "i1040gi p. 91"
        },
        {
-        "quote": "Enter the amount of your excess business loss from Form 461, line 16.",
-        "page": "i1040gi p. 92"
-       },
-       {
         "quote": "Distributions from this type of account may be taxable if (a) they are more than the designated beneficiary’s qualified disability expenses, and (b) they were not included in a qualified rollover.",
         "page": "i1040gi p. 92"
-       },
-       {
-        "quote": "Enter the amount of scholarship and fellowship grants not reported on Form W-2.",
-        "page": "i1040gi p. 92"
-       },
-       {
-        "quote": "However, if you were a degree candidate, include on line 8r only the amounts you used for expenses other than tuition and course-related expenses.",
-        "page": "i1040gi p. 92"
-       },
-       {
-        "quote": "Enter the amount that you received for services performed while an inmate in a penal institution.",
-        "page": "i1040gi p. 92"
-       },
-       {
-        "quote": "If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u.",
-        "page": "i1040gi p. 23"
        },
        {
         "quote": "If, in 2025, you received ordinary income in connection with digital assets that isn’t reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining, which aren’t wages reported on line 1a or capital gain or loss reported on Form 8949 and Schedule D), report this income on line 8v.",
         "page": "i1040gi p. 92"
        },
        {
-        "quote": "Use line 8z to report any taxable income not reported elsewhere on your return or other schedules.",
-        "page": "i1040gi p. 92"
-       },
-       {
-        "quote": "If any of your disaster relief payment is taxable, attach a statement showing the total payment received and how you figured the taxable part.",
-        "page": "i1040gi p. 92"
-       },
-       {
-        "quote": "Distributions from these accounts may be taxable if (a) in the case of distributions from a QTP, they are more than the qualified higher education expenses of the designated beneficiary in 2025 or, in the case of distributions from an ESA, they are more than the qualified education expenses of the designated beneficiary in 2025; and (b) they were not included in a qualified rollover.",
-        "page": "i1040gi p. 92"
-       },
-       {
-        "quote": "You can’t take a deduction for alimony payments you made to or for your spouse if you entered into your divorce or separation agreement after December 31, 2018, or if you entered into the agreement on or before December 31, 2018, and the agreement was changed after December 31, 2018, to expressly provide that alimony received is not included in your former spouse’s income.",
-        "page": "i1040gi p. 95"
-       },
-       {
-        "quote": "Unemployment benefit payments from a private (nonunion) fund to which you voluntarily contribute are taxable only if the amounts you receive are more than your total payments into the fund.",
-        "page": "p525 p. 29"
+        "quote": "If you received a payment from Alaska’s mineral income fund (Alaska Permanent Fund dividend), report it as income on Schedule 1 (Form 1040), line 8g.",
+        "page": "p525 p. 31"
        },
        {
         "quote": "Benefits paid to you as an unemployed member of a union from regular union dues are included in your income on Schedule 1 (Form 1040), line 8z.",
         "page": "p525 p. 29"
-       },
-       {
-        "quote": "Report these payments on Schedule 1 (Form 1040), line 8z.",
-        "page": "p525 p. 29"
-       },
-       {
-        "quote": "If you receive a whistleblower’s award from the IRS, you must include it in your income.",
-        "page": "p525 p. 36"
-       },
-       {
-        "quote": "You must include these amounts in your income on Schedule 1 (Form 1040), line 8i, whether or not you use the amounts for educational purposes.",
-        "page": "p525 p. 36"
        }
       ],
-      "quote": "Enter gambling winnings not attributable to a trade or business. / Enter any canceled debt. / Enter the amount of your foreign earned income and housing exclusion from Form 2555, line 45. / Enter any jury duty pay and see the instructions for line 24a. / Jury duty pay. Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury. / Enter prizes and awards but see the instructions for line 8m, Olympic and Paralympic medals and USOC prize money, later. / If your adjusted gross income is not more than $1,000,000 ($500,000 if married filing separately), these amounts are nontaxable and you should include the amount in box 3 of Form 1099-MISC on line 8m, then subtract it by including it on line 24c. / Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h. / Enter the amount of your excess business loss from Form 461, line 16. / Distributions from this type of account may be taxable if (a) they are more than the designated beneficiary’s qualified disability expenses, and (b) they were not included in a qualified rollover. / Enter the amount of scholarship and fellowship grants not reported on Form W-2. / However, if you were a degree candidate, include on line 8r only the amounts you used for expenses other than tuition and course-related expenses. / Enter the amount that you received for services performed while an inmate in a penal institution. / If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. / If, in 2025, you received ordinary income in connection with digital assets that isn’t reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining, which aren’t wages reported on line 1a or capital gain or loss reported on Form 8949 and Schedule D), report this income on line 8v. / Use line 8z to report any taxable income not reported elsewhere on your return or other schedules. / If any of your disaster relief payment is taxable, attach a statement showing the total payment received and how you figured the taxable part. / Distributions from these accounts may be taxable if (a) in the case of distributions from a QTP, they are more than the qualified higher education expenses of the designated beneficiary in 2025 or, in the case of distributions from an ESA, they are more than the qualified education expenses of the designated beneficiary in 2025; and (b) they were not included in a qualified rollover. / You can’t take a deduction for alimony payments you made to or for your spouse if you entered into your divorce or separation agreement after December 31, 2018, or if you entered into the agreement on or before December 31, 2018, and the agreement was changed after December 31, 2018, to expressly provide that alimony received is not included in your former spouse’s income. / Unemployment benefit payments from a private (nonunion) fund to which you voluntarily contribute are taxable only if the amounts you receive are more than your total payments into the fund. / Benefits paid to you as an unemployed member of a union from regular union dues are included in your income on Schedule 1 (Form 1040), line 8z. / Report these payments on Schedule 1 (Form 1040), line 8z. / If you receive a whistleblower’s award from the IRS, you must include it in your income. / You must include these amounts in your income on Schedule 1 (Form 1040), line 8i, whether or not you use the amounts for educational purposes.",
-      "page": "i1040gi p. 91; i1040gi p. 99; i1040gi p. 92; i1040gi p. 23; i1040gi p. 95; p525 p. 29; p525 p. 36",
-      "why_uncovered": "scope.schedule1 is true only when one of the listed Schedule 1 screening questions is answered Yes. None of those questions asks about gambling winnings, canceled debt, the foreign earned income or housing exclusion, jury duty pay, prizes or Olympic medals, stock options, an excess business loss, ABLE, Coverdell or QTP distributions, scholarships not on a W-2, wages earned as an inmate, digital-asset income, other line 8z income (union or private unemployment funds, state-employee payments, a whistleblower award, taxable disaster relief) or alimony paid. The cites on scope.schedule1 don't reach lines 8b–8v, 8z, 19a, 24a, 24c or 24j either. A filer with any of these would pass the screen.",
+      "quote": "If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. / If you received a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan and it was reported in box 1 of Form W-2, do not include this amount on Form 1040, line 1a. / Enter gambling winnings not attributable to a trade or business. / Enter any canceled debt. / Enter any jury duty pay and see the instructions for line 24a. / Enter prizes and awards but see the instructions for line 8m, Olympic and Paralympic medals and USOC prize money, later. / Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h. / Distributions from this type of account may be taxable if (a) they are more than the designated beneficiary’s qualified disability expenses, and (b) they were not included in a qualified rollover. / If, in 2025, you received ordinary income in connection with digital assets that isn’t reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining, which aren’t wages reported on line 1a or capital gain or loss reported on Form 8949 and Schedule D), report this income on line 8v. / If you received a payment from Alaska’s mineral income fund (Alaska Permanent Fund dividend), report it as income on Schedule 1 (Form 1040), line 8g. / Benefits paid to you as an unemployed member of a union from regular union dues are included in your income on Schedule 1 (Form 1040), line 8z.",
+      "page": "i1040gi p. 23; i1040gi p. 24; i1040gi p. 91; i1040gi p. 92; p525 p. 31; p525 p. 29",
+      "why_uncovered": "scope.schedule1 becomes true only from specific screening questions: reservist travel, performing artist, military move, SE plans, rental, K-1, farm, clergy, statutory employee, Archer MSA, reforestation, attorney fees, Trade Act repayment and REMIC. No question asks about these income items: inmate wages, nonqualified deferred compensation pensions included in W-2 box 1, gambling winnings, canceled debt, jury duty pay, prizes, stock option income, taxable ABLE distributions, digital asset income, Alaska Permanent Fund dividends, or union unemployment benefits. A filer with any of them would pass the screen and get no refusal.",
       "closest_item": "scope.schedule1",
-      "effect": "amount"
-     },
-     {
-      "item": "scope.w2_marks",
-      "sentences": [
-       {
-        "quote": "If you received a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan and it was reported in box 1 of Form W-2, do not include this amount on Form 1040, line 1a.",
-        "page": "i1040gi p. 24"
-       },
-       {
-        "quote": "Enter the amount that you received as a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental 457 plan.",
-        "page": "i1040gi p. 92"
-       },
-       {
-        "quote": "Enter any additional tax on income you received from a nonqualified deferred compensation plan that fails to meet the requirements of section 409A.",
-        "page": "i1040gi p. 114"
-       },
-       {
-        "quote": "Enter any additional tax on compensation you received from a nonqualified deferred compensation plan described in section 457A if the compensation would have been includible in your income in an earlier year except that the amount wasn’t determinable until 2025.",
-        "page": "i1040gi p. 114"
-       },
-       {
-        "quote": "If you received an excess parachute payment (EPP), you must pay a 20% tax on it.",
-        "page": "i1040gi p. 114"
-       }
-      ],
-      "quote": "If you received a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan and it was reported in box 1 of Form W-2, do not include this amount on Form 1040, line 1a. / Enter the amount that you received as a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental 457 plan. / Enter any additional tax on income you received from a nonqualified deferred compensation plan that fails to meet the requirements of section 409A. / Enter any additional tax on compensation you received from a nonqualified deferred compensation plan described in section 457A if the compensation would have been includible in your income in an earlier year except that the amount wasn’t determinable until 2025. / If you received an excess parachute payment (EPP), you must pay a 20% tax on it.",
-      "page": "i1040gi p. 24; i1040gi p. 92; i1040gi p. 114",
-      "why_uncovered": "The W-2 screen asks only about the statutory-employee box and box 12 code H. It doesn't ask about W-2 box 11 (a nonqualified or section 457 plan pension, which moves from line 1a to Schedule 1 line 8t), box 12 code Z (section 409A additional tax) or box 12 code K (the 20% excise tax on an excess parachute payment). It also doesn't ask about the section 457A additional tax. So the wages are put on the wrong line and the Schedule 2 additional taxes are left out.",
-      "closest_item": "scope.w2_marks",
       "effect": "amount"
      },
      {
@@ -9668,119 +9688,39 @@
       ],
       "quote": "This should include any tip income you didn’t report to your employer and any allocated tips shown in box 8 on your Form(s) W-2 unless you can prove that your unreported tips are less than the amount in box 8.",
       "page": "i1040gi p. 24",
-      "why_uncovered": "The tips question is asked only after a Yes to having pay 'not on a W-2', and it asks about tips not reported to the employer. Allocated tips appear on a W-2 (box 8), so a filer with box 8 allocated tips can answer No to the gate and never reach the question. No item looks at W-2 box 8.",
+      "why_uncovered": "The tips question asks only about cash, card or noncash tips not reported to the employer. It does not ask about allocated tips in W-2 box 8, which must go on line 1c unless the filer can prove smaller unreported tips. It is also gated behind 'pay not on a W-2', so a filer whose allocated tips appear on a W-2 would never be asked.",
       "closest_item": "scope.tips_unreported",
       "effect": "amount"
      },
      {
-      "item": "scope.other_income",
+      "item": "scope.w2_marks",
       "sentences": [
        {
-        "quote": "If you worked abroad, you may be able to exclude part or all of your foreign earned income.",
-        "page": "i1040gi p. 23"
+        "quote": "Enter any additional tax on income you received from a nonqualified deferred compensation plan that fails to meet the requirements of section 409A.",
+        "page": "i1040gi p. 114"
        },
        {
-        "quote": "If you were a beneficiary of a foreign retirement plan, you may have to report the undistributed income earned in your plan.",
-        "page": "i1040gi p. 23"
+        "quote": "This income should be shown in box 12 of Form W-2 with code Z, or in box 15 of Form 1099-MISC.",
+        "page": "i1040gi p. 114"
        },
        {
-        "quote": "Although you don’t need to report the income from the forgiveness of your PPP Loan on Form 1040 or 1040-SR, you do need to report certain information related to your PPP Loan as an attachment to your tax return.",
-        "page": "i1040gi p. 23"
-       },
-       {
-        "quote": "If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must figure your tax using the Foreign Earned Income Tax Worksheet.",
-        "page": "i1040gi p. 36"
-       },
-       {
-        "quote": "If you file Form 2555, you cannot claim the additional child tax credit.",
-        "page": "i1040s8812 p. 3"
-       },
-       {
-        "quote": "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer.",
-        "page": "i1040gi p. 25"
+        "quote": "If you received an excess parachute payment (EPP), you must pay a 20% tax on it.",
+        "page": "i1040gi p. 114"
        }
       ],
-      "quote": "If you worked abroad, you may be able to exclude part or all of your foreign earned income. / If you were a beneficiary of a foreign retirement plan, you may have to report the undistributed income earned in your plan. / Although you don’t need to report the income from the forgiveness of your PPP Loan on Form 1040 or 1040-SR, you do need to report certain information related to your PPP Loan as an attachment to your tax return. / If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must figure your tax using the Foreign Earned Income Tax Worksheet. / If you file Form 2555, you cannot claim the additional child tax credit. / Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer.",
-      "page": "i1040gi p. 23; i1040gi p. 36; i1040s8812 p. 3; i1040gi p. 25",
-      "why_uncovered": "No screening question asks about foreign earned income or Form 2555, undistributed income in a foreign retirement plan, PPP loan forgiveness, or disability pensions received before minimum retirement age (which go on line 1h as earned income). scope.foreign_shares asks only about shares in foreign companies or funds. Form 2555 changes the tax computation (Foreign Earned Income Tax Worksheet) and denies the ACTC, and nothing in the encoding or in HANDLED ELSEWHERE refuses it.",
-      "closest_item": "scope.other_income",
-      "effect": "amount"
-     },
-     {
-      "item": "scope.other_line16",
-      "sentences": [
-       {
-        "quote": "Tax from Form 4972 (relating to lump-sum distributions).",
-        "page": "i1040gi p. 34"
-       },
-       {
-        "quote": "If you had a triggering event under section 965(i) during the year and did not enter into a transfer agreement, check box 3 and enter the amount of the triggered deferred net 965 tax liability and enter “965INC” on the line next to that box.",
-        "page": "i1040gi p. 36"
-       }
-      ],
-      "quote": "Tax from Form 4972 (relating to lump-sum distributions). / If you had a triggering event under section 965(i) during the year and did not enter into a transfer agreement, check box 3 and enter the amount of the triggered deferred net 965 tax liability and enter “965INC” on the line next to that box.",
-      "page": "i1040gi p. 34; i1040gi p. 36",
-      "why_uncovered": "The line 16 screen covers Forms 8615, 8814, 8621 and 8978, the section 962 election, education credit recapture and Schedule J. It doesn't ask about the Form 4972 lump-sum distribution tax. It also doesn't ask about a section 965(i) triggering event: the s3.section965 refusal is about Schedule 3 line 13d installments, not this line 16 tax.",
-      "closest_item": "scope.other_line16",
-      "effect": "amount"
-     },
-     {
-      "item": "scope.disaster_distribution",
-      "sentences": [
-       {
-        "quote": "A qualified disaster distribution was made to you from an eligible retirement plan.",
-        "page": "i8915f p. 2"
-       },
-       {
-        "quote": "You received a qualified distribution.",
-        "page": "i8915f p. 2"
-       }
-      ],
-      "quote": "A qualified disaster distribution was made to you from an eligible retirement plan. / You received a qualified distribution.",
-      "page": "i8915f p. 2",
-      "why_uncovered": "The question asks only about disaster distributions taken in 2023 or 2024. It doesn't ask about a qualified disaster distribution made in 2025 (which may be spread over 3 years or repaid) or a qualified distribution received in 2025 for buying or building a main home in a disaster area. Both require Form 8915-F for 2025.",
-      "closest_item": "scope.disaster_distribution",
-      "effect": "amount"
-     },
-     {
-      "item": "scope.religious_work",
-      "sentences": [
-       {
-        "quote": "If you have conscientious objections to social security insurance because of your membership in and belief in the teachings of a religious sect recognized as being in existence at all times since December 31, 1950, and which has provided a reasonable level of living for its dependent members, you are exempt from SE tax if you received IRS approval by filing Form 4029.",
-        "page": "i1040sse p. 1"
-       }
-      ],
-      "quote": "If you have conscientious objections to social security insurance because of your membership in and belief in the teachings of a religious sect recognized as being in existence at all times since December 31, 1950, and which has provided a reasonable level of living for its dependent members, you are exempt from SE tax if you received IRS approval by filing Form 4029.",
-      "page": "i1040sse p. 1",
-      "why_uncovered": "The religious screens ask only about pay from a church or as clergy. A Schedule C filer who is a member of a religious sect with an approved Form 4029 is exempt from SE tax, but nothing asks about it or refuses it, so SE tax and its deduction would be figured when they shouldn't be.",
-      "closest_item": "scope.religious_work",
-      "effect": "amount"
-     },
-     {
-      "item": "scope.ready_credits",
-      "sentences": [
-       {
-        "quote": "The net elective payment election amount from Form 3800, Part III, line 6, column (j), is reported on Schedule 3, line 13c.",
-        "page": "i1040gi p. 116"
-       },
-       {
-        "quote": "Enter any net elective payment election amount from Form 3800, Part III, line 6, column (j).",
-        "page": "i1040gi p. 117"
-       },
-       {
-        "quote": "If you’re liable for tax, you must first consider if any part of the general business credit(s) may be applied against tax.",
-        "page": "i3800 p. 3"
-       }
-      ],
-      "quote": "The net elective payment election amount from Form 3800, Part III, line 6, column (j), is reported on Schedule 3, line 13c. / Enter any net elective payment election amount from Form 3800, Part III, line 6, column (j). / If you’re liable for tax, you must first consider if any part of the general business credit(s) may be applied against tax.",
-      "page": "i1040gi p. 116; i1040gi p. 117; i3800 p. 3",
-      "why_uncovered": "The credit screens refuse only a general business credit carried from an earlier year (s3.prior_forms_if_forms). Nothing asks about or refuses a current-year general business credit from a Schedule C business (Schedule 3 line 6a), or a net elective payment election amount (line 13c).",
-      "closest_item": "scope.ready_credits",
+      "quote": "Enter any additional tax on income you received from a nonqualified deferred compensation plan that fails to meet the requirements of section 409A. / This income should be shown in box 12 of Form W-2 with code Z, or in box 15 of Form 1099-MISC. / If you received an excess parachute payment (EPP), you must pay a 20% tax on it.",
+      "page": "i1040gi p. 114",
+      "why_uncovered": "The W-2 marks question asks only about the statutory employee box and box 12 code H. It does not ask about code Z (the section 409A additional tax) or code K (the 20% excess parachute payment tax), and nothing else screens for these Schedule 2 taxes.",
+      "closest_item": "scope.w2_marks",
       "effect": "amount"
      },
      {
       "item": "scope.ready",
       "sentences": [
+       {
+        "quote": "Enter any additional tax on compensation you received from a nonqualified deferred compensation plan described in section 457A if the compensation would have been includible in your income in an earlier year except that the amount wasn’t determinable until 2025.",
+        "page": "i1040gi p. 114"
+       },
        {
         "quote": "Enter any section 72(m)(5) excess benefits tax.",
         "page": "i1040gi p. 114"
@@ -9798,17 +9738,63 @@
         "page": "i1040gi p. 114"
        }
       ],
-      "quote": "Enter any section 72(m)(5) excess benefits tax. / Enter any excise tax on insider stock compensation from an expatriated corporation. / Enter any look-back interest under section 167(g) or 460(b). / Enter the recapture amount of the net EPE claimed on Form 4255, line 1d, column (l), related to the credit from Form 3468, Part IV.",
+      "quote": "Enter any additional tax on compensation you received from a nonqualified deferred compensation plan described in section 457A if the compensation would have been includible in your income in an earlier year except that the amount wasn’t determinable until 2025. / Enter any section 72(m)(5) excess benefits tax. / Enter any excise tax on insider stock compensation from an expatriated corporation. / Enter any look-back interest under section 167(g) or 460(b). / Enter the recapture amount of the net EPE claimed on Form 4255, line 1d, column (l), related to the credit from Form 3468, Part IV.",
       "page": "i1040gi p. 114",
-      "why_uncovered": "None of the screens asks about these Schedule 2 additional taxes: the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, look-back interest (which a Schedule C business could owe) and the recapture of a net EPE. Nothing in the encoding or in HANDLED ELSEWHERE refuses them either.",
+      "why_uncovered": "No scope screen or refusal covers these Schedule 2 other taxes: the section 457A tax, the section 72(m)(5) tax, the section 4985 excise tax, look-back interest, and net EPE recapture. The line 16 screen covers only Forms 8615, 8814, 8621, 8978, Schedule J, section 962 and education credit recapture.",
       "closest_item": "scope.ready",
+      "effect": "amount"
+     },
+     {
+      "item": "scope.religious_work",
+      "sentences": [
+       {
+        "quote": "If you have conscientious objections to social security insurance because of your membership in and belief in the teachings of a religious sect recognized as being in existence at all times since December 31, 1950, and which has provided a reasonable level of living for its dependent members, you are exempt from SE tax if you received IRS approval by filing Form 4029.",
+        "page": "i1040sse p. 1"
+       }
+      ],
+      "quote": "If you have conscientious objections to social security insurance because of your membership in and belief in the teachings of a religious sect recognized as being in existence at all times since December 31, 1950, and which has provided a reasonable level of living for its dependent members, you are exempt from SE tax if you received IRS approval by filing Form 4029.",
+      "page": "i1040sse p. 1",
+      "why_uncovered": "The religious work questions ask about pay from a church or as clergy, which covers Form 4361. They do not ask whether a filer with Schedule C self-employment income has an approved Form 4029 sect exemption. That exemption removes the SE tax and the Schedule SE filing requirement.",
+      "closest_item": "scope.religious_work",
+      "effect": "amount"
+     },
+     {
+      "item": "scope.disaster_distribution",
+      "sentences": [
+       {
+        "quote": "A qualified disaster distribution was made to you from an eligible retirement plan.",
+        "page": "i8915f p. 2"
+       },
+       {
+        "quote": "You received a qualified distribution.",
+        "page": "i8915f p. 2"
+       }
+      ],
+      "quote": "A qualified disaster distribution was made to you from an eligible retirement plan. / You received a qualified distribution.",
+      "page": "i8915f p. 2",
+      "why_uncovered": "The question asks only about disaster distributions taken in 2023 or 2024 that are spread over three years or repaid in 2025. It does not ask about a qualified disaster distribution made in 2025, or a 2025 qualified distribution for a main home in a disaster area. Both require Form 8915-F for 2025.",
+      "closest_item": "scope.disaster_distribution",
+      "effect": "amount"
+     },
+     {
+      "item": "scope.excess_deferral",
+      "sentences": [
+       {
+        "quote": "Corrective distributions from a retirement plan shown on Form 1099-R of excess elective deferrals and excess contributions (plus earnings).",
+        "page": "i1040gi p. 25"
+       }
+      ],
+      "quote": "Corrective distributions from a retirement plan shown on Form 1099-R of excess elective deferrals and excess contributions (plus earnings).",
+      "page": "i1040gi p. 25",
+      "why_uncovered": "The excess deferral question asks only whether 2025 deferrals were more than the yearly limit, and only when a W-2 is listed. It does not ask about corrective distributions reported on Form 1099-R, which must be included on line 1h.",
+      "closest_item": "scope.excess_deferral",
       "effect": "amount"
      }
     ],
-    "cost": 0.704416,
+    "cost": 0.743776,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/completeness/scope.302ba13f6c08.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/scope.ebb68ff25479.1.response.txt"
    }
   ]
  },
@@ -10255,7 +10241,7 @@
  },
  {
   "form": "ssb",
-  "subject_sha": "5f62284979fe7fefb07d82f58b877b07cf7e29b8273af222af4e3bbda52bff20",
+  "subject_sha": "0a2e0145345a092f7bb39569a83162d956a1325484c3eac4042db02448d9def1",
   "used": [
    {
     "doc": "i1040gi",
@@ -10263,16 +10249,46 @@
      31,
      32
     ]
+   },
+   {
+    "doc": "p915",
+    "pages": [
+     5,
+     6
+    ]
    }
   ],
   "samples": [
    {
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
-    "claims": [],
-    "cost": 0.075304,
+    "claims": [
+     {
+      "item": "ssb.benefits",
+      "sentences": [
+       {
+        "quote": "U.S. citizens who are residents of the following countries are exempt from U.S. tax on their benefits.",
+        "page": "p915 p. 5"
+       },
+       {
+        "quote": "• Canada. • Egypt. • Germany. • Ireland. • Israel. • Italy. (You must also be a citizen of Italy for the exemption to apply.)",
+        "page": "p915 p. 5"
+       },
+       {
+        "quote": "• Romania. • United Kingdom.",
+        "page": "p915 p. 5"
+       }
+      ],
+      "quote": "U.S. citizens who are residents of the following countries are exempt from U.S. tax on their benefits. / • Canada. • Egypt. • Germany. • Ireland. • Israel. • Italy. (You must also be a citizen of Italy for the exemption to apply.) / • Romania. • United Kingdom.",
+      "page": "p915 p. 5",
+      "why_uncovered": "The net-benefits question asks for box 5 totals, adjusted only for Canadian or German benefits and benefits that belong to a child. Nothing asks whether the filer is a U.S. citizen living in one of the listed treaty countries, which would make the benefits exempt. Nothing asks about the extra Italian-citizenship condition, and no refusal covers this case. The nonresident-alien refusal handled elsewhere does not apply, because these filers are U.S. citizens. As encoded, such a filer's benefits would flow through lines 1–18 and could be taxed on line 6b.",
+      "closest_item": "ssb.benefits",
+      "effect": "amount"
+     }
+    ],
+    "cost": 0.0941,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/completeness/ssb.5f62284979fe.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/ssb.0a2e0145345a.1.response.txt"
    }
   ]
  },

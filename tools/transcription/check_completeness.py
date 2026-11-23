@@ -16,7 +16,7 @@ reviews/<year>/completeness/completeness.json holds the samples run against one 
 
     {"class": "real gap" | "covered" | "out of scope" | "presentation" | "wrong", "evidence": "...",
      "subject_sha": "<the record's subject_sha>",
-     "bug": "BUG-NNNN"  (real gap),  "line": "<line id>"  (covered),  "gate": "<line id>"  (out of scope, when a refusal covers it)}
+     "bug": "BUG-NNNN", or a branch's pending "BUG-NEW-<prefix>-NN"  (real gap),  "line": "<line id>"  (covered),  "gate": "<line id>"  (out of scope, when a refusal covers it)}
 
   A ruling whose subject_sha differs from the current record's is not accepted (the claim is unruled again and
   the mismatch is an error). A `PENDING-n` bug id is an error until a real BUG-NNNN replaces it.
@@ -73,8 +73,8 @@ def validate(key, ruling, line_ids, sha=None):
     bug = str(ruling.get("bug", ""))
     if cls == "real gap" and bug.startswith("PENDING-"):
         errs.append(f"{key}: pending bug id {bug}; file the bug and give bug: BUG-NNNN")
-    elif cls == "real gap" and not re.fullmatch(r"BUG-\d{4}", bug):
-        errs.append(f"{key}: a real gap needs bug: BUG-NNNN")
+    elif cls == "real gap" and not re.fullmatch(r"BUG-\d{4}|BUG-NEW-[A-Za-z0-9_.-]+-\d{2,}", bug):
+        errs.append(f"{key}: a real gap needs bug: BUG-NNNN (or a branch's pending BUG-NEW-<prefix>-NN, which new_bug.py --assign rewrites)")
     if cls == "covered" and ruling.get("line") not in line_ids:
         errs.append(f"{key}: covered needs a line that exists in canonical")
     if ruling.get("gate") is not None and ruling["gate"] not in line_ids:
@@ -210,7 +210,8 @@ def self_test():
             "u:f#2": {"class": "covered", "evidence": "e", "line": "a.x", "subject_sha": S},
             "u:f#3": {"class": "out of scope", "evidence": "e", "gate": "a.gate", "subject_sha": S},
             "u:f#4": {"class": "presentation", "evidence": "e", "subject_sha": S},
-            "u:f#5": {"class": "wrong", "evidence": "e", "subject_sha": S}}
+            "u:f#5": {"class": "wrong", "evidence": "e", "subject_sha": S},
+            "u:f#6": {"class": "real gap", "evidence": "e", "bug": "BUG-NEW-" + "lane-01", "subject_sha": S}}
     bad = {"u:f#1": {"class": "real gap", "evidence": "e", "subject_sha": S},
            "u:f#2": {"class": "covered", "evidence": "e", "line": "a.nope", "subject_sha": S},
            "u:f#3": {"class": "out of scope", "evidence": "e", "gate": "a.nope", "subject_sha": S},

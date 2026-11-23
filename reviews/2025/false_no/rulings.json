@@ -69,29 +69,32 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:s1.has_jury_pay#1": {
-   "class": "no gate defect; the condition is the owner-approved C gate on line 8h",
-   "reason": "As the earlier ruling of this gate, rechecked against the current lines: s1.jury_to_employer is asked only when line 8h is above zero (s1.has_jury_pay = line 8h > 0), and line 24a is a part of line 8h (i1040gi p. 91, Line 8h 'Enter any jury duty pay and see the instructions for line 24a'; p. 99, Line 24a). Pay included in 2024 and turned over in 2025 is a repayment of an amount included in an earlier year (p525 p. 36, Repayments), not line 24a of 2025; that remains the owner's open question of the earlier ruling. s1.jury_any is asked of every filer, so jury pay reported on a Form 1099-MISC reaches line 8h.",
+   "reason": "No amount the tool computes changes on these cases except a December-to-January carry, which is rare.",
    "findings": [
     {
      "n": 0,
-     "class": "out of scope",
-     "evidence": "p525 p. 34, quoted correctly. Line 24a pairs with line 8h of the same return ('Enter your jury duty pay if you gave the pay to your employer', i1040gi p. 99); pay included in 2024 and repaid in 2025 falls under p525 p. 36, Repayments ('If you had to repay an amount that you included in your income in an earlier year'). As the earlier ruling: an open question for the owner, not a gate defect.",
-     "kind": "UNCLEAR"
+     "kind": "FALSE_NO",
+     "class": "accepted residual",
+     "evidence": "i1040gi p. 99, Line 24a: pay included in 2024 and handed over in 2025 is deducted on the 2025 return only if line 8h carries it; the tool asks line 24a only beside 2025 jury pay. Cost: an over-payment of tax on the 2024 jury pay; rare.",
+     "bugs": []
     },
     {
      "n": 1,
-     "class": "covered",
-     "evidence": "s1.jury_any is asked of every filer (group money_a) whatever form reported the pay, and the tool has no Form 1099-MISC entry that routes box 3 to line 8z. Jury pay reaches line 8h and sets the gate.",
-     "kind": "UNCLEAR"
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "An employer that takes the fee back through payroll has been given it; the question's 'give to an employer' reads Yes for most. Cost: over-payment only.",
+     "bugs": []
     },
     {
      "n": 2,
+     "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "s1.jury_pay says 'Count any you handed over to an employer'. A filer who answers s1.jury_any No omits both line 8h and line 24a; AGI is unchanged, as the reviewer notes. The gate wording is BUG-0824.",
-     "kind": "UNCLEAR"
+     "evidence": "Leaving the pay off both line 8h and line 24a nets to the same AGI, as the reviewer says.",
+     "bugs": []
     }
    ],
-   "subject_sha": "e4be917657893d2bdc12c7559654bec4e54049ebf30a70099b850e82c964b3e8"
+   "subject_sha": "8a7b30fdae8b06bc9895649b7f9c4b6f42af290cb02906a747af7c008ffa218a",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:div.any#1": {
    "reason": "Every case is covered by owning shares or getting a Form 1099-DIV or a broker substitute statement.",
@@ -206,77 +209,100 @@
    "subject_sha": "611a80f8a299c1bf93d006831460305e31ad9d04a73989b5e91ce4804e2401ff"
   },
   "unruled:gate:sb.has_income#1": {
-   "reason": "Savings bond, seller-financed, nominee and OID/ABP cases all have interest or dividends above zero in the tool, so the gate is true.",
+   "reason": "Interest is entered per payer; OID and premium are in the help; the rest are wording.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "interest.amount is 'box 1 plus box 3 (interest on U.S. savings bonds and Treasury securities)', so any bond interest makes sb.interest_total above zero; sb.bonds_any then asks."
-    },
-    {
-     "n": 1,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The $interest roster help: 'Count interest of any amount, with or without a Form 1099-INT: ... bonds, U.S. savings bonds and loans you made', so seller-financed mortgage interest is listed and sb.has_income is true."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Nominee interest or dividends are inside the listed amounts (sb.ordinary_dividends help 'dividends on your forms that belong to someone else'), so the gate is true and sb.nominee asks."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "OID and bond-premium cases start from a listed interest amount above zero, which opens sb.bonds_any and sb.bond_special."
-    }
-   ],
-   "subject_sha": "b57dbf12447e50f2f6dfe4be6e9fb380158736e3b36459d209bff27104de1904",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
-  },
-  "unruled:gate:sa.gifts#1": {
-   "reason": "Carryovers and memberships are covered; hosting a student or foster child is a defect.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "sa.gift_carryover is asked of every filer (sa.gift_carryover_if_no_gifts) and refuses sa.line13 (i1040sca p. 11, Line 13).",
+     "class": "presentation",
+     "evidence": "Nominee income: the amount still goes to the right person; only the Schedule B nominee entry is missed. Low.",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "p526 p. 6, Expenses Paid for Student Living With You, 'up to $50 a month'; the shown question and help do not name hosting, though the encoded sa.gifts source does. BUG-1090.",
+     "class": "presentation",
+     "evidence": "Interest from an individual is interest from a payer; the roster asks each payer. Low.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "p526, Foster parents under Out-of-Pocket Expenses in Giving Services; the encoded sa.gifts source names 'a foster child placed by a charitable organization' but the shown question does not. Same bug, BUG-1090.",
+     "class": "covered",
+     "evidence": "The interest amount help: 'On a Form 1099-OID it is boxes 1, 2 and 8: the discount counts as interest'.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The gate help counts 'a payment that got you something back', and sa.line11's help handles membership perks of $75 or less (p526 p. 5).",
+     "class": "accepted residual",
+     "evidence": "Accrued market discount on a municipal bond is rare; series EE or I bond interest used for tuition is asked with Form 8815.",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "A charitable contribution reported on a K-1 is refused by scope.k1.",
+     "class": "covered",
+     "evidence": "Premium and accrued-interest adjustments are 'asked later' (the interest help), so the gross amount is entered.",
      "bugs": []
     }
    ],
-   "subject_sha": "a5de0a1725275b95b34666d54db7eede0a46e411840dce349cfebca4a333e821",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
+   "subject_sha": "057502b64a964af09f965f583888ab01b3ab1b43e4a0aef398395e53f0f4bce8",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
+  },
+  "unruled:gate:sa.gifts#1": {
+   "reason": "Carryovers and K-1 gifts are handled; hosting is BUG-1090.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "sa.gift_carryover is asked when there are no 2025 gifts (sa.gift_carryover_if_no_gifts) and refused on Schedule A.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "A partnership's or S corporation's gifts come with a K-1, refused by scope.k1.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "Hosting a student: BUG-1090 (open); not filed again.",
+     "bugs": [
+      "BUG-1090"
+     ]
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "A foster child placed by a charity: BUG-1090 (open); not filed again.",
+     "bugs": [
+      "BUG-1090"
+     ]
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Membership perks are handled in sa.line11's help, as ruled on the earlier subject; a membership paid to a charity is a payment that got something back, which the gate's help counts.",
+     "bugs": []
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "Payroll gifts are named in the sa.line11 help; a filer who forgets them; low.",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "4df8c56d0fa71d71de49dc0431a1d7880e9d9aea4b682606644aa97b7bb44169",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "bugs": [
     "BUG-1090"
    ]
@@ -658,41 +684,47 @@
    "subject_sha": "d32a8e1ec215f7854b466a8d9ef76a1914a82f146dc207abd2ef2642ecc17bf8"
   },
   "unruled:gate:ftc.carryover_ask#1": {
-   "class": "no gate defect; as the earlier ruling, rechecked",
-   "reason": "The fund case is answered by the help of s3.foreign_any; the rest are residuals known when the tree was accepted.",
+   "reason": "The fund case is covered; the rest are residuals known when the tree was accepted.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "accepted residual",
-     "evidence": "p514 p. 39. A former or late spouse's carryover allocated to the filer: rare; low."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "s3.foreign_any's help: 'Count foreign tax a fund paid for you (Form 1099-DIV box 7) only if you once filed Form 1116 for it'; a partnership's tax comes with a K-1, refused by scope.k1.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "s3.foreign_any's help: 'Count foreign tax a fund paid for you (Form 1099-DIV box 7) only if you once filed Form 1116 for it'; a partner's return is refused by scope.k1."
+     "class": "accepted residual",
+     "evidence": "Accrued or withheld tax read as not 'paid': as the earlier ruling (BUG-0620).",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "Withholding or accrual read as not 'paid': BUG-0620, as the earlier ruling."
+     "evidence": "A carryover from before 2024 with no 2024 Schedule B: as the earlier ruling (BUG-0620, BUG-0827).",
+     "bugs": []
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
-     "class": "accepted residual",
-     "evidence": "A carryback from 2026 belongs to an amended 2025 return, which this tool does not prepare."
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The question reads 'Is any foreign tax that you (or, on a joint return, your spouse) could not use as a credit in an earlier year carried into 2025?'.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "A carryover from before 2024 with no 2024 Schedule B: as the earlier ruling (BUG-0620); the deduction and election years are BUG-0827."
+     "evidence": "A carryback from 2026 belongs to an amended 2025 return, which this tool does not prepare.",
+     "bugs": []
     }
    ],
-   "subject_sha": "0de764b66d75043cab2e291423a25c8350c5a4c9bcdfe0950081dc2829b909f9"
+   "subject_sha": "cda567fb46d5d168636a80c12d0da0734b1ff2c51f5dc3a3f6ee13a3a014af6c",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:s3.adoption_any#1": {
    "class": "no gate defect; the two 'adopt by placement date' readings stand as medium wording residuals; employer reimbursement and the special-needs exclusion are reached",
@@ -4455,38 +4487,33 @@
    "subject_sha": "73dc1e3d8446d1d47be8970a1c687a52a08e273bbce9a566fc3976f433d5f76d"
   },
   "unruled:gate:f5695.line21a#1": {
-   "reason": "A once-per-return question uses a bare \"you lived in\" where the spouse's item can be left out; the other findings are covered.",
+   "reason": "Condominium shares are asked; the 2026 move-in is unsettled; a second home is named.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "Rule 4 applies: f5695.line21a is asked once per return and reads \"Was the heating, cooling, hot-water or electrical equipment installed at a home in the United States that you lived in during 2025?\" (questions.yaml:6337-6342). A joint filer whose spouse alone lived in a second or rented home with new qualified equipment (not a separate main home, so f5695.separate_homes is No) would truthfully answer No and zero sec_b_home. i5695 p. 3: \"costs of new qualified energy property that is installed on or in connection with a home that you used during 2025\"; fs-2025-01 p. 5: \"such property may be installed in the taxpayer's second home\"."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "f5695.condo asks about a condominium or cooperative share (i5695, members of a condominium management association), on the same Part II path.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "f5695.panel asks about an electrical panel, circuits or wiring \"put in in 2024 or 2025\", and f5695.line21a has no installation-year test (\"a home ... that you lived in during 2025\"), so a 2024 panelboard under the consecutive-year note (i5695 p. 6) reaches line 25."
+     "kind": "UNCLEAR",
+     "class": "open residual",
+     "evidence": "i5695 says 'a home ... that you use as a residence' with no year; the question says 'lived in during 2025'. Settled by the archived i5695 text on when the home must be used as a residence for 2025 expenditures.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
-     "class": "accepted residual",
-     "evidence": "i5695 p. 3 allows each of two neighbors to claim \"the part of the cost you paid\" for property shared \"to benefit each of your main homes\"; the question asks about equipment \"installed at a home ... that you lived in\", so property installed only at the neighbor's building may draw a No. f5695.joint_occupancy help routes the common case (\"enter only the part of the cost you paid\"). Cost: rare shared installations wholly at another dwelling."
-    },
-    {
-     "n": 3,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "i5695 p. 3 says \"on or in connection with a home\", and the question says \"installed at a home\"; a detached boiler house or garage serving the home is part of the filer's residence for a filer answering the question. Wording only."
+     "evidence": "The help names a second home; a seasonal cabin used as a residence is one. Wording only.",
+     "bugs": []
     }
    ],
-   "subject_sha": "af68a0f1b32798e6609f39be557dd32eb3879f92edd2e5aab1edabe6a727f05c",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0970"
-   ]
+   "subject_sha": "d6f8d2b26ea7aa0bf8d7cdaddc5af8d0e39938d1c61587abb257ba416232253a",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:f5695.line5a_if_any#1": {
    "class": "defect: construction and reconstruction timing and association share (BUG-0796)",
@@ -6496,115 +6523,104 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:scope.has_w2#1": {
-   "reason": "Two defects (box 11 blank; SIMPLE limit); four findings on employer marks and the 457(b) limit unsettled.",
+   "reason": "Payments without a W-2 are asked elsewhere; the fee-basis official is unsettled.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i1040gi p. 24, Line 1a: 'If you received a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan and it was reported in box 1 of Form W-2, do not include this amount on Form 1040, line 1a'; p. 92, Line 8t: 'If you received such an amount but box 11 is blank, contact your employer'. The question asks only whether box 11 shows it, so a blank box 11 is answered No and line 1a keeps the pension."
+     "class": "out of scope",
+     "evidence": "i1099r p. 2: distributions to beneficiaries of a nonqualified plan are reported on Form 1099-R or 1099-MISC; the other-tax question s2.other_tax and the Form 1099-R codes cover them, as ruled on the earlier subject.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "i1099r p. 2: nongovernmental 457(b) distributions to participants are reported 'on Form W-2, not on Form 1099-R', and to beneficiaries 'on Form 1099-MISC', which reaches the $oi8z catch-all ('Something else' ends the interview)."
+     "class": "covered",
+     "evidence": "A section 409A amount on Form 1099-MISC box 15 is named in s2.other_tax ('the additional tax on deferred compensation that failed section 409A'), refused through s2.other.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "Unreported cash tips are asked by scope.pay_no_w2 (help 'tips not reported in full to your employer') and scope.tips_unreported, not by the W-2 marks question (i1040gi p. 112, Line 5)."
+     "evidence": "An excess parachute payment is named in s2.other_tax, refused through s2.other.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "s2.other_tax asks 'the additional tax on deferred compensation that failed section 409A or 457A' with no W-2 condition (i1040gi p. 114, Line 17h, 'or in box 15 of Form 1099-MISC'); a Yes refuses."
+     "evidence": "Unreported tips are asked by scope.tips_unreported through scope.pay_no_w2, which does not depend on a W-2.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "s2.other_tax also names 'the tax on an excess parachute payment' (i1040gi p. 114, Line 17k); a Yes refuses."
+     "class": "open residual",
+     "evidence": "A fee-basis official without a W-2, as finding 0 of the screen review: settled by where such fees are reported.",
+     "bugs": []
     },
     {
      "n": 5,
-     "kind": "FALSE_NO",
-     "class": "open residual",
-     "evidence": "As in the screen packet: i1040gi p. 93, Line 12 fee-basis official expenses do not require a W-2. Settle by finding where such an official's fees without a W-2 are reported and whether that route refuses."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A reservist's travel is asked by the armed forces questions (scope.reservist_expenses_if_armed_forces).",
+     "bugs": []
     },
     {
      "n": 6,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i1040gi p. 24: 'This limit is generally (a) $16,500 if you have only SIMPLE plans'; the question's '$23,500 for most people' leads a SIMPLE-only filer with $18,000 deferred to answer No."
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A self-employed plan is refused by the SE plan screen (scope.se_plan_other_if_business); a corrective distribution carries a code the code question refuses (retirement.bad_code).",
+     "bugs": []
     },
     {
      "n": 7,
      "kind": "UNCLEAR",
-     "class": "open residual",
-     "evidence": "The help says 'A 457(b) plan (box 12 code G) has a limit of its own: count it apart'; the archived i1040gi p. 25 mentions 457(b) only for a higher limit and does not say how an excess over the 457(b) limit across two plans is reported. Settle from the 457(b) excess-deferral rule (the line on which it is included) and, if it is line 1h, add 'add all your 457(b) plans together' to the help."
-    },
-    {
-     "n": 8,
-     "kind": "FALSE_NO",
-     "class": "open residual",
-     "evidence": "i1040gi p. 25: 'If you were a statutory employee, the Statutory employee box in box 13 of your Form W-2 should be checked.' The question asks about the box, not the status; settle by an owner decision whether the W-2 mark stands for the fact when the employer omitted it."
-    },
-    {
-     "n": 9,
-     "kind": "FALSE_NO",
-     "class": "open residual",
-     "evidence": "p525 p. 10: 'The amount you contributed should be identified with code H in box 12.' Same question as finding 8: whether a missing employer mark may stand for the fact; settle by the same decision."
-    },
-    {
-     "n": 10,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "'Even if you don't get a Form W-2, you must still report your earnings' (i1040gi p. 25): employer wages with no W-2 are asked at scope.wages_no_form ('Other wages from an employer that gave you no W-2 ... a Yes ends the interview here')."
+     "class": "covered",
+     "evidence": "Wages with no W-2 are asked by scope.wages_no_form through scope.pay_no_w2.",
+     "bugs": []
     }
    ],
-   "subject_sha": "2793fb75961df5030c4a12dc7323ff8c1e1c9ab6d616afca26aae8ea9f5ace35",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0951",
-    "BUG-0947"
-   ]
+   "subject_sha": "50cc72a065ea0099740290c88b2dbe7c5ee47f032f75c60f17ccda6bcb5576d5",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:scope.household_pay_if_pay#1": {
-   "reason": "One defect (pay beyond a household's W-2); the other readings are answered by the wording.",
+   "reason": "The shown question now covers pay left off a W-2.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i1040gi p. 24, Line 1b: 'wages received as a household employee that was not reported on Form(s) W-2'; the question asks about a household 'with no W-2', so cash beyond a household's W-2 is answered No."
+     "class": "covered",
+     "evidence": "The question as shown: '... and not all of it on a W-2 from that household?', help 'Count cash beyond what a household's W-2 shows'.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The interview prompt does not say 'employee': 'were you ... paid by a household, with no W-2, for work in or around its home or for its members?', and the parent's help names 'pay for work in someone's home'."
+     "evidence": "The parent tick's help: 'Such as pay for work in someone's home'.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The household question's help says 'A household that pays you less than $2,800 in a year need not give you a W-2', and the parent asks a fact (pay 'not on a W-2'), not whether it is reportable."
+     "class": "presentation",
+     "evidence": "Pay in kind from a household: low; the question asks whether the household paid the filer as its worker.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The question is framed 'In 2025, were you ... paid by a household, with no W-2'; a 2024 W-2 does not answer it."
+     "class": "presentation",
+     "evidence": "The help: 'who works as the household directs'; the right to direct, not daily methods, is what counts. Low.",
+     "bugs": []
     }
    ],
-   "subject_sha": "086b2a90d7b0a60000d02db0ec20763193cfea3775629051ce8bbe2dbdedb5b0",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0949"
-   ]
+   "subject_sha": "4d63684e9ed56d5cad71e50ba4eec4f4b2c4d7fe163a710ddabf9f3e02ab945d",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:scope.medicaid_waiver#1": {
    "reason": "Care elsewhere goes to household pay; the other readings are answered by the wording.",
@@ -6632,41 +6648,61 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:scope.nol#1": {
-   "reason": "The help's source list may exclude employee-expense NOLs; the other readings are strained.",
+   "reason": "Pre-2018 NOLs are refused if declared; the help names Form 461.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "open residual",
-     "evidence": "i172 p. 1 lists 'Work as an employee' and 'Moving expenses' among NOL sources, while the help says 'from a business, farm, rental or disaster, or a business loss held back by the yearly limit'. The tick names 'a net operating loss', which such a filer has; settle by whether the help reads as a complete list (fix: 'from any source, such as ...')."
+     "class": "accepted residual",
+     "evidence": "A pre-2018 NOL is refused anyway (s1.nol_before_limit_date); a No over-pays, never under-pays, as on the earlier subject.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "open residual",
-     "evidence": "Same help list and i172 p. 1 text as finding 0, for a post-2017 performing artist, reservist, fee-basis official or service member; settled by the same decision."
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A K-1 (Form 1041) passing an NOL is refused by scope.k1.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "'A loss bigger than that year's income' describes total deductions exceeding income, which is i172 p. 1: 'If your deductions for the year are more than your income for the year, you may have a net operating loss'; it does not ask about a single loss."
+     "class": "presentation",
+     "evidence": "A trader's ordinary losses are business losses; low.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "'A loss ... not yet used up' asks whether any carryover remains; it does not compare the remainder with the loss year's income."
+     "class": "accepted residual",
+     "evidence": "A section 1242 loss is rare; a No over-pays.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The help excludes only 'a loss still held back on Form 8582'; a loss since allowed is no longer held back."
+     "class": "presentation",
+     "evidence": "The help explains the term; low.",
+     "bugs": []
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The help: 'not yet used up'; low.",
+     "bugs": []
+    },
+    {
+     "n": 6,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The help: 'or a business loss held back by the yearly limit (Form 461)'.",
+     "bugs": []
     }
    ],
-   "subject_sha": "191d734b0b4e0b36994f2f2e4ff5e866371adb2b706950adae57001affdac282",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "a14fbe47f99b86be570b26e9546fc0441be8477221af34fe523fa20d5837b170",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:scope.noncitizen#1": {
    "class": "no gate defect; the question asks about any time in 2025",
@@ -6694,59 +6730,54 @@
    "subject_sha": "129467153b180b24eea51488fe0d101eebafb94d3eac381bc0079740bd3c9d5f"
   },
   "unruled:gate:scope.pay_no_w2#1": {
-   "reason": "Most readings are answered by the wording; omitted W-2 pay and intermediary-paid contractors unsettled.",
+   "reason": "The parent help names household work; misclassification readings are low.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "A lost W-2 is still a W-2 the employer gave: the roster asks 'Which employers gave you a W-2 for 2025?', and i1040gi p. 25 says 'If you lose your Form W-2 ... ask your employer for a new one.'"
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The household question says 'in or around its home'; the parent help gives one example. Low.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "Pay with no W-2 in hand is literally 'not on a W-2', and scope.wages_no_form's help names this case: 'For example when an employer never sent a W-2. Ask the employer for it first'."
+     "class": "accepted residual",
+     "evidence": "A bonus on Form 1099 from an employer that issued a W-2 (Form 8919 reason H) is rare; low.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "open residual",
-     "evidence": "i1040gi p. 25: 'If you lose your Form W-2 or it is incorrect, ask your employer for a new one.' The parent covers omitted pay ('not on a W-2'), but the only employer tick is 'Other wages from an employer that gave you no W-2' and w2.box1 has no 'if wrong' help. Settle by deciding whether omitted wages are entered through a corrected W-2 (and say so at w2.box1) or through scope.wages_no_form."
+     "class": "presentation",
+     "evidence": "The contractor question asks whether the filer believes they were really an employee; low.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The parent asks about 'Wages ... not on a W-2' generally; the household question itself covers 'work in or around its home or for its members', 'even in a home you share'."
+     "class": "presentation",
+     "evidence": "Pay through an intermediary; low.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The tick asks a fact, pay 'not on a W-2', not whether it must be reported; the $2,800 rule is in the household question's help."
+     "class": "presentation",
+     "evidence": "A lost W-2 is still a W-2 to enter; low.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "open residual",
-     "evidence": "f8919 p. 2: 'This firm may or may not have paid you directly for these services', while scope.contractor_pay asks 'did a firm pay you ... as a contractor'. Settle by whether a worker paid through an agency or platform answers No; fix candidate: help 'directly or through an agency or platform'."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The 1099 amount is pay 'not on a W-2', and f8919firm.reason offers 'This firm gave me a W-2 and also a Form 1099-MISC or 1099-NEC with pay that should have been on the W-2' (f8919 p. 1, reason code H)."
-    },
-    {
-     "n": 7,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The contractor help says 'Yes only if you believe you were the firm's employee', and f8919firm.reason includes code G (SS-8 filed, no reply) (f8919 p. 1)."
+     "class": "accepted residual",
+     "evidence": "In-kind strike aid is rare.",
+     "bugs": []
     }
    ],
-   "subject_sha": "c00301f30c05d7ef343c130523cdfa8762b7a50f46c504fa9e0226ff6d595646",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "d574f636788633746f405ca435a58b62ccc06be6ea622abe20ef81ea948a0957",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:scope.recovery#1": {
    "reason": "Earlier-year income tax refunds are refused; a price adjustment is unsettled; the rest are named.",
@@ -6810,39 +6841,33 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:scope.rental#1": {
-   "reason": "K-1 owners are refused; platform rentals are renting; barter and lease-cancellation payments are residual.",
+   "reason": "Payments for the use of property are rent; the readings are low.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "An S corporation owner-employee has a K-1, refused by scope.k1.",
+     "class": "presentation",
+     "evidence": "Payment for the use of a car or trailer is rent; low.",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "open residual",
-     "evidence": "i1040se p. 5, 'If you received services or property instead of money as rent, report the fair market value'; neither the question nor its help mentions rent paid in goods or services. Settled by whether a filer who lent equipment for hay or labor answers No; add 'in money or in goods or services' to the help.",
+     "class": "accepted residual",
+     "evidence": "A lease cancellation payment after the lease ended: rare.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The question asks whether the filer 'rent[s] out ... anything you own or lease', and the help counts a car or equipment; renting through a platform is renting out.",
-     "bugs": []
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "p527 p. 3, 'If your tenant pays you to cancel a lease, the amount you receive is rent'; the question asks 'receive rent for', which a filer may not apply to a cancellation payment. Cost: a cancellation payment that is the year's only rent may be left out.",
+     "evidence": "Property or services received as rent: BUG-0940's siblings; rare for personal property.",
      "bugs": []
     }
    ],
-   "subject_sha": "87bd6240b227108f0309b1b61f959a4ec3e8c9ccb50755aa21cd69a257afc401",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "8d8eff25a8769f175a83a340b6a179e13e995382d025aa69d18df43b81d7e850",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:scope.strike_pay_if_pay#1": {
    "class": "defect: non-union funds and lockout (BUG-0906); gifts and in-kind support residual",
@@ -7058,54 +7083,92 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:s1.nol_joint#1": {
-   "reason": "A later-year loss carried back is a farming loss, claimed on an amended return; the help gives checkable facts; a loss from a prior marriage is the filer's own loss carried in.",
+   "reason": "Each case is the filer's own reading of an NOL; the help names the Form 461 carryover and now section 1244 losses.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "i172 p. 2: 'only the farming loss portion, if any, can be carried back'; farming is refused by scope.farm, and the carryback is claimed later on the 2025 Form 1040-X (i172 p. 3, 'Attach a Form 172 for each NOL to your Form 1040-X'), not on this original return."
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A filer who does not know their loss is an NOL over-pays (the deduction is lost); the scope.nol help defines it as 'a loss bigger than that year's income, not yet used up'.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "scope.nol's help gives the checkable fact, not the label: 'A loss bigger than that year's income, not yet used up, from a business, farm, rental or disaster, or a business loss held back by the yearly limit (Form 461).'"
+     "class": "covered",
+     "evidence": "The scope.nol help names 'a business loss held back by the yearly limit (Form 461)'; a Yes then reaches s1.nol_ebl, which refuses.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The gate asks 'Are you (or, on a joint return, your spouse) carrying a loss from an earlier year into 2025'; the filer carrying a share of a former joint NOL is 'you', so it is Yes, and s1.nol_not_married ('not married to each other in a year the loss arose') then refuses, as i172 p. 3 requires: 'only the spouse who had the loss can take the NOL deduction'."
+     "class": "defect",
+     "evidence": "Section 1244 losses are ordinary; the scope.nol help now says 'A loss on small business stock taxed as ordinary (section 1244) counts.' Fixed (BUG-1177).",
+     "bugs": [
+      "BUG-1177"
+     ]
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "An NOL carryover passed through from a terminated estate or trust is rare; a filer who answers No over-pays.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "Remarriage to the same spouse after a divorce, with a loss year inside the first marriage: rare; s1.nol_not_married asks the years of the loss and the years carried through.",
+     "bugs": []
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A 2018-2020 carryback into a year before the marriage: rare, and the deduction lost only over-taxes.",
+     "bugs": []
+    },
+    {
+     "n": 6,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The negative wording of s1.nol_not_married is not changed by this lane; its help names the case. To be reworded at its next change.",
+     "bugs": []
     }
    ],
-   "subject_sha": "e5395a609edcf8ad266a77da086e128a1a0f6b701c2be1f010a41cbb359f3694",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "2189a47ef9d217b7c5624ea1705617da2287dde9ad5fae17ee0ae50cb4104061",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:s1.nol_separate#1": {
-   "reason": "The joint case is handled by the companion gate s1.nol_joint, and the remaining two findings misread a factual question.",
+   "reason": "Section 1244 fixed; the rest is the filer's reading of a past joint return.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "On a joint return the companion s1.nol_joint gate asks s1.nol_not_married, 'Were you and your spouse not married to each other in a year the loss arose or was carried back to, or in any year since?', and s1.nol_marital refuses on Yes, applying i172 p. 3, 'If you file a joint return, the NOL deduction is limited to the income of that spouse.'"
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A filer who treats a joint NOL as the other spouse's over-pays; a filer who says Yes reaches s1.nol_was_joint, which refuses.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The gate asks whether the filer is 'carrying a loss from an earlier year into 2025', with help 'A loss bigger than that year's income, not yet used up'; an unused carryover is carried into 2025 whether or not 2025 income absorbs it. i172 p. 3: 'If you carry forward your NOL to a tax year after the NOL year, list your NOL deduction ... for the year to which the NOL is carried.'"
+     "class": "defect",
+     "evidence": "Fixed as for gate:s1.nol_joint: the scope.nol help names section 1244 losses (BUG-1177).",
+     "bugs": [
+      "BUG-1177"
+     ]
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "scope.nol's help describes the fact ('A loss bigger than that year's income, not yet used up, from a business, farm, rental or disaster'), and s1.nol_was_joint asks a checkable fact: 'Did you file a joint return for a year any of the loss arose or was carried back to, or for any year from then to 2024?' (i172 p. 3, Joint to separate returns)."
+     "class": "accepted residual",
+     "evidence": "A K-1 or section 1231 loss in an NOL is a business loss; the help's 'a loss bigger than that year's income' covers it. Over-payment only.",
+     "bugs": []
     }
    ],
-   "subject_sha": "5604f6423847ef05d261a190457275537e8ba3cdc0a7e8e6d1b575b7a5605d84",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "3a881ab69320aa18bb7826a577e9b4262adb33e1f1d3b2d4d04f76197743b6e1",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:s1.uc_any#1": {
    "reason": "Paid family leave contributions have no line 7 amount, a large earlier-year repayment is refused by s3.repaid_income, and the help's mention of the state does not narrow the question.",
@@ -7402,67 +7465,78 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:sa.medical_asked#1": {
-   "reason": "The gate names dependents' costs, estate costs, Medicare and Marketplace premiums and says to answer Yes if unsure; after-tax payroll premiums are wrongly excluded by the help (defect); income vs AGI is unsettled.",
+   "reason": "The shown premium question is 'other than from pay before tax', and Medicare from social security is in its help; the 7.5%-of-income wording is BUG-1087.",
    "findings": [
     {
      "n": 0,
-     "kind": "UNCLEAR",
+     "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "The sa.medical_any prompt counts costs 'you (or, on a joint return, your spouse) paid in 2025' for any person, and the sa.line1 source lists who counts (i1040sca p. 2)."
+     "evidence": "sa.medical_premiums as shown: 'did you ... pay for health insurance yourselves, other than from pay ...', with help 'Medicare premiums are usually taken out of social security benefits; Form SSA-1099 shows them'.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
-     "class": "open residual",
-     "evidence": "The prompt uses 'your income' where i1040sca p. 1 uses line 11b adjusted gross income; the help says 'If not sure, answer Yes'. Not settled from the files; it would be settled by a decision to word it with adjusted gross income or to show the computed amount."
+     "kind": "FALSE_NO",
+     "class": "model error",
+     "evidence": "The shown question bars only pay before tax, not money that was never taxed; the reviewer read the label.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "'After what insurance paid' refers to 2025 costs; the sa.line1 source says 'do not reduce them by a 2025 reimbursement of expenses paid in an earlier year' (i1040sca p. 2); the help says 'If not sure, answer Yes'."
+     "evidence": "Dental, vision and long-term care premiums are health insurance in the sa.line1 question; low.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "The sa.medical_any help says 'For someone who died in 2025, count costs their estate paid within a year of the death' (i1040sca p. 1)."
+     "evidence": "The sa.medical_any help: 'For someone who died in 2025, count costs their estate paid within a year of the death'.",
+     "bugs": []
     },
     {
      "n": 4,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The sa.medical_premiums prompt names 'Medicare' and the help says 'Medicare premiums are usually taken out of social security benefits; Form SSA-1099 shows them', so Part B and Part D premiums draw a Yes; the exclusions (pretax, HSA, public safety officer, PTC) are in the sa.line1 source."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'what you paid for doctors ...' counts costs paid for others; the sa.line1 question lists them. Low.",
+     "bugs": []
     },
     {
      "n": 5,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The sa.medical_premiums prompt names 'a Marketplace plan', which draws a Yes even when the premium is subsidized, and the sa.line1 source says 'advance payments you do repay count as premiums you paid' (p502 p. 12)."
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "7.5% of income instead of adjusted gross income: BUG-1087 (open); not filed again.",
+     "bugs": [
+      "BUG-1087"
+     ]
     },
     {
      "n": 6,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "The sa.medical_premiums help says 'Insurance paid for by a deduction from your pay at a job does not count.' i1040sca p. 2 excludes only pretax cafeteria premiums: \"don't include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2.\" Premiums deducted from pay after tax (in box 1) do count, so a filer with only such premiums answers No and line 1 is zeroed."
+     "class": "presentation",
+     "evidence": "Mileage, lodging and similar costs are listed in the sa.line1 question; the gate's estimate may miss them. Low.",
+     "bugs": []
     },
     {
      "n": 7,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The premium question names 'long-term care insurance' and the sa.line1 source applies the age limits ($480 to $6,020) to qualified long-term care premiums (i1040sca p. 2)."
+     "evidence": "After-tax payroll premiums are 'other than from pay before tax' in the shown question.",
+     "bugs": []
     },
     {
      "n": 8,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The help lists 'doctors, dentists, hospitals, prescriptions and insurance' and does not name mileage or lodging; the prompt is 'medical and dental costs', 'If not sure, answer Yes', and the sa.line1 source includes the lodging limit. A filer whose costs pass 7.5% only with travel might leave it out."
+     "class": "model error",
+     "evidence": "The shown premium question names the spouse: 'did you (or, on a joint return, your spouse) pay ...'.",
+     "bugs": []
     }
    ],
-   "subject_sha": "1317d266a738a08b8c26141ae01bcfe4ba5bc4187d450bbaa33bdbef7bcf7d24",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
+   "subject_sha": "5750936487bf0e25ee8df99923b196956fabb29fabb91e6a32ee5dea6f5dd4b8",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "bugs": [
-    "BUG-0976"
+    "BUG-1087"
    ]
   },
   "unruled:gate:sa.mfs_spouse_not_itemizing#1": {
@@ -7547,38 +7621,61 @@
    "subject_sha": "dac84c7c25eea768edb0b9fcd41160e59a860a9e5544a0cae78d30e2c16b36f8"
   },
   "unruled:gate:sa.state_tax_other_any#1": {
-   "reason": "The Washington fund is not named at the gate (defect); credits applied and Form 1099 withholding are named in the help.",
+   "reason": "The question covers any state income tax paid in 2025 outside pay and the funds; the rest are examples.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "The gate prompt names 'a state disability, unemployment or family leave fund' and the help 'SDI, SUI or FLI from pay', not the Washington State Supplemental Workmen's Compensation Fund that i1040sca p. 3 puts in line 5a; the amount question that lists it is reached only after a Yes. The same defect as the screen finding 0 for this gate."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'In 2025, did you ... pay state or local income tax not taken from pay (such as ...)' includes a 2024 balance paid in 2025; the examples are not a list. Low.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The help ends 'a state tax credit for a charity gift, applied to your tax', which draws a Yes (i1040sca p. 3)."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "As finding 0: a January 2025 estimate is tax paid in 2025.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Same help line as 1."
+     "evidence": "The question's second clause: 'or pay into a state disability, unemployment, workers' compensation or family leave fund', and the help counts 'SDI, SUI or FLI from pay'.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The help starts 'Count tax taken out of a pension, IRA, unemployment pay, winnings, 1099-NEC or 1099-MISC', matching i1040sca p. 3 'Forms W-2G, 1099-G, 1099-R, 1099-MISC, and 1099-NEC may also show state and local income taxes withheld'."
+     "class": "presentation",
+     "evidence": "The help's withholding list gives examples; other state withholding is tax not taken from pay. Low.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A composite return or entity withholding comes with a K-1, refused by scope.k1.",
+     "bugs": []
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A credit applied to the 2025 tax is named in the help ('a state tax credit for a charity gift, applied to your tax'). Low.",
+     "bugs": []
+    },
+    {
+     "n": 6,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "Territory tax withheld on a territory W-2: the help names U.S. territory income tax; a territory wage form outside box 17 is rare.",
+     "bugs": []
     }
    ],
-   "subject_sha": "efc66a6515b7719a7cc5a0874e94d3e3d4ef03b3c0ffc46fd734b29c0b50cb74",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0975"
-   ]
+   "subject_sha": "e78ab597da4cbbc70ee565c02ad7e1619494a8808cd5150b3b736556381f4a74",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:sa.has_mortgage_interest#1": {
    "reason": "Interest and points not on Form 1098 are refused upstream, the credit by s3.mcc_if_interest, and the other-use box needs 8a interest to matter.",
@@ -7970,35 +8067,39 @@
    "subject_sha": "71e79cf8a784fa706cc57cb1c15efa92b753cf442b3eb50329784781d61b7451"
   },
   "unruled:gate:f1116col.has_div#1": {
-   "class": "no gate defect: no amount turns on the dividend/interest split; K-1 refused",
-   "reason": "Dividends and interest of a column go to the same line 1a and line 8; a misclassification is caught by f1116.income_over or changes nothing.",
+   "reason": "No amount turns on the dividends/interest label; K-1 income is refused.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "accepted (no amount)",
-     "evidence": "i1116 p. 11. A bond fund's foreign income entered as interest stays in the RIC column (line 1a and line 8 add both kinds); f1116.income_over refuses if it exceeds the Form 1040 line 2b interest."
+     "class": "presentation",
+     "evidence": "i1116 p. 11: RIC pass-through income and tax go in one passive-category column; called dividends or interest, the column's income and tax reach the same Form 1116 lines (f1116.income_over, f1116.tax_mismatch check the totals).",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Any Schedule K-1 (partnership, S corporation, estate or trust) is a Yes to scope.k1 ('A Yes ends the interview here'), refused through scope.schedule1; a K-3 is refused too (k1p.r_b16, k1s.box14). The entity-level case never reaches this question."
+     "evidence": "A Schedule K-1 or K-3 is refused by scope.k1.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "f1116col.div_income's help: 'For shares of a foreign company it is the whole dividend (box 1a of Form 1099-DIV)', which covers ADRs."
+     "class": "out of scope",
+     "evidence": "Foreign rents are refused by f1116.rental; royalties, gains and substitute payments are other foreign income refused by the foreign_credit screens (f1116.foreign_gain) or not dividends or interest at all; the column choice covers only what the roster asks.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "model error",
-     "evidence": "The question as asked is 'Was the foreign income from this source dividends, interest, or both?', with no 'your'."
+     "evidence": "The roster prompt names the spouse: 'one for each country whose company shares or bonds you (or, on a joint return, your spouse) own directly'.",
+     "bugs": []
     }
    ],
-   "subject_sha": "2110e410ef5b05bd8736a9fc50178ccd1d8c88919cf10d594111f83cb43b5932"
+   "subject_sha": "11d05fde05864a669a00b4ad0dbbd8b742a5514e9bc8b71be5eaf6e29a7c5968",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:f1116col.has_int#1": {
    "class": "no gate defect: the cases are refused or minor",
@@ -8243,54 +8344,69 @@
    ]
   },
   "unruled:gate:sb.bonds_any_if_income#1": {
-   "class": "defect (low) in part: BUG-0832",
-   "reason": "Nominee income has its own question; the CD exclusion is the help's wording; the rest covered.",
+   "reason": "Nominee income has its own question; Treasury bills are now named; the rest is covered or rare.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "sb.nominee is asked of every filer with income and refuses."
+     "evidence": "sb.nominee is asked of every return with interest or dividends (gate sb.nominee_if_income), not beneath sb.bonds_any.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
+     "kind": "FALSE_NO",
      "class": "defect",
-     "evidence": "Brokered CDs are excluded by sb.bonds_any's help.",
-     "bug": "BUG-0832"
+     "evidence": "Treasury bills were not named; the sb.bonds_any help now says 'a CD bought through a broker, a Treasury bill, or anything with a Form 1099-OID counts' and the sb.bond_special list names Form 1099-OID boxes 6 and 10. Fixed (BUG-1174).",
+     "bugs": [
+      "BUG-1174"
+     ]
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "Market discount on a tax-exempt bond is realized at sale or redemption, where sales.code names 'accrued market discount (box 1f)' among the 'other' adjustments."
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "'own bonds or notes directly (not through a fund)': a bond held at a broker is owned directly.",
+     "bugs": []
     },
     {
      "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The interest roster's help names a buyer paying interest, so the seller-financed interest is entered and opens the gate; sb.bonds_any then asks 'interest ... on a property you sold' and sb.bond_special refuses."
+     "kind": "FALSE_NO",
+     "class": "accepted residual",
+     "evidence": "A bought or inherited seller-financed note: rare; Schedule B's seller-financed mortgage listing changes no amount.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR)",
-     "evidence": "'receive interest on money you lent or on a property you sold' in 2025 covers an old sale; low."
+     "class": "covered",
+     "evidence": "The $interest roster help says 'with or without a Form 1099-INT ... loans you made', so the interest is listed and the condition is true.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "sb.bonds_any as asked names the spouse ('did you (or, on a joint return, your spouse)')."
+     "class": "accepted residual",
+     "evidence": "Premium on tax-exempt bonds reduces only tax-exempt interest (line 2a), which changes no tax except through the Social Security worksheet; rare.",
+     "bugs": []
     },
     {
      "n": 6,
      "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR)",
-     "evidence": "The bond question is Yes for a bond owned directly; the bullet names the accrued interest."
+     "class": "model error",
+     "evidence": "sb.bonds_any's question reads 'did you (or, on a joint return, your spouse) own bonds or notes directly'.",
+     "bugs": []
+    },
+    {
+     "n": 7,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The question says 'receive interest on money you lent or on a property you sold', with no year for the sale.",
+     "bugs": []
     }
    ],
-   "subject_sha": "a302846e187e987c689d38a211e9a0ddf6ae78374fdbafbd6c71671bbeb068b8"
+   "subject_sha": "76d0f2b0bf17c6bef20e01210ec1391d213c46d20633551a0642af0aec15fead",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:sb.foreign_company_any#1": {
    "class": "defect (low): BUG-0831 item 3",
@@ -8548,50 +8664,55 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:f8889.ask_former_spouse_family#1": {
-   "class": "defect (low, wording and reach): the then-spouse question reads as coverage at the end of the marriage and skips a person remarried by year end",
-   "reason": "(0) defect, low: a person divorced and remarried within 2025 is not asked about the former spouse (BUG-0874). (1) covered: on the changed-coverage path f8889.months_family names the spouse's plan (BUG-0677 siblings note the line 6 share there). (2, 3) defect, low: 'while the other person had' reads as at the end, and legal separation is not named (BUG-0874). (4) covered: the help says the plan 'counts even if it did not cover you' and covering more than one person includes an employee and a child. (5) presentation, low.",
+   "reason": "The marriage-end wording and the remarried case are BUG-0874 (open).",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "defect",
-     "evidence": "i8889 p. 4, How To Complete Part I, 'either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan', applied by month. f8889.ask_former_spouse_family requires not married at the end of 2025; a person remarried by December 31 is asked only f8889.spouse_family ('did your spouse have'), so the first marriage's family months are counted self-only (limit understated). Rare; low.",
-     "bug": "BUG-0874"
+     "evidence": "A decree of separate maintenance is not 'divorce or death'; BUG-0874 (open), not filed again.",
+     "bugs": [
+      "BUG-0874"
+     ]
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "A person whose coverage started, ended or changed type answers the month questions; f8889.months_family names the spouse's plan by month (as ruled for gate:f8889.ask_spouse_family#1). The missing line 6 share on that path is recorded in BUG-0677's siblings."
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "A person remarried by year end is not asked; BUG-0874 (open), not filed again.",
+     "bugs": [
+      "BUG-0874"
+     ]
     },
     {
      "n": 2,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "The encoding is family coverage 'in a month of the marriage'; the interview asks 'Did a marriage of yours end during 2025 ... while the other person had a high-deductible plan covering more than one person?', which reads as coverage when the marriage ended. A then-spouse's family plan that became self-only before the divorce is answered No and the refusal missed. Low.",
-     "bug": "BUG-0874"
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "A person whose coverage changed answers the month questions; f8889.months_family names the spouse's plan by month, as ruled on the earlier subject (BUG-0677 siblings).",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "A decree of separate maintenance ends the marriage for the year-end status the household form uses, but the question names only 'divorce or death'. Low; carried in the same wording fix.",
-     "bug": "BUG-0874"
+     "class": "presentation",
+     "evidence": "A filer who does not know whether the plan was an HDHP; the question gives the plain description, as on the earlier subject.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The help says 'A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you'; the question asks whether the other person 'had' such a plan, which includes coverage as a member."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A filer who does not know whether the former spouse's plan was an HDHP; low, the question gives the plain description and the other questions use the same term."
+     "class": "defect",
+     "evidence": "An annulment is not named either; same wording fix as BUG-0874 (open).",
+     "bugs": [
+      "BUG-0874"
+     ]
     }
    ],
-   "subject_sha": "fc50d1bf90ca7235a48fddb4f041a38e1b9bb934c495936028a7dba0e0295c28"
+   "subject_sha": "bfeed3ddc2d9712ec09bf6d3cbb075ef3d787f40bc4a2ccb7a46cc96bda010f6",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": [
+    "BUG-0874"
+   ]
   },
   "unruled:gate:f8889.inherited_any#1": {
    "class": "no gate defect; the estate case is refused by f8889.owner_died and the help names the beneficiary cases",
@@ -8786,526 +8907,496 @@
    ]
   },
   "unruled:gate:retirement.born_before_averaging_date_if_plan#1": {
-   "class": "no gate defect; the question asks about the person who earned the balance",
-   "reason": "(0) presentation, low: an alternate payee's former spouse is 'the person who earned this pension'; the parenthetical gives examples. Form 4972 is an optional election; a missed refusal yields a return taxed without it. (1) covered: the original participant is the person who earned it. (2) covered: per person.",
+   "reason": "Per-entry question; the participant is the person who earned it.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "i1040gi p. 30, 'If you or the plan participant was born before January 2, 1936'. The question asks about 'the person who earned this pension or plan balance (you, or the person you inherited it from)', which names the participant; a QDRO payee's former spouse earned it. Form 4972 only offers a lower tax ('you could pay less tax'), so a No leaves a return taxed in the ordinary way. Low."
+     "class": "covered",
+     "evidence": "The retirement questions now carry the per-person frame (BUG-1196): the spouse's entry is shown 'About your spouse — ... your spouse', so 'you' is the person whose Form 1099-R it is.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "'The person who earned this pension or plan balance' is the participant, whoever passed it on."
+     "class": "presentation",
+     "evidence": "An alternate payee's former spouse is 'the person who earned this pension'; the parenthetical gives examples, as on the earlier subject. Form 4972 is an optional election.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) — In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
+     "evidence": "'The person who earned this pension or plan balance' is the participant, whoever passed it on.",
+     "bugs": []
     }
    ],
-   "subject_sha": "34886951b38c6e7090e4a36e83de1cb995bdbe4378e2f735949ae7111f69b871"
+   "subject_sha": "978c87eb2516e66227929d1eb9c680d499fc8a0896307ac6651a956e1bf6fc19",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:retirement.cost_any_if_plan#1": {
-   "class": "no gate defect; the question asks about any taxed money paid in, with 'If you are not sure, answer Yes'",
-   "reason": "(0) covered: a death benefit exclusion is asked on the code 4 path (retirement.death_exclusion; its wording is BUG-0875). (1, 2, 3, 5) covered: the question asks whether any money paid in was already taxed, by anyone, a box is a sign, and the help says 'If you are not sure, answer Yes'; Roth deferrals and taxed employer amounts are money already taxed. (4) covered: a commercial annuity is under 'A pension, an annuity ...' and was bought with taxed money.",
+   "reason": "The question asks about any taxed money paid in, with 'If you are not sure, answer Yes'.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "i1040gi p. 29, 'If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion'. A beneficiary's payment (code 4) reaches retirement.death_exclusion, which refuses; its wording for a former employee is BUG-0875.",
-     "bug": "BUG-0875"
+     "evidence": "The death benefit exclusion is asked on the code 4 path (retirement.death_exclusion), which refuses.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
+     "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "The question 'Was any of the money paid into this pension or annuity already taxed when it went in' is not limited to the filer's own payments; 'An amount in box 5 or box 9b means yes' is sufficient, not necessary, and the help says 'If you are not sure, answer Yes'."
+     "evidence": "Amounts taxed when deemed distributed or taxed as insurance costs are money 'already taxed'; the help says 'If you are not sure, answer Yes'.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Same: blank boxes do not make the answer No, and a filer with records of after-tax contributions answers Yes."
+     "evidence": "'An amount in box 5 or box 9b means yes' is sufficient, not necessary, and the help says 'If you are not sure, answer Yes', as ruled on the earlier subject.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Employer amounts taxed to the employee when made are money 'already taxed when it went in'."
+     "evidence": "After-tax payroll contributions are money already taxed; same help.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement.account offers 'A pension, an annuity, or a 401(k) ...' for a commercial annuity, and money paid for it from savings was already taxed, so cost_any is Yes and retirement.own_annuity refuses."
+     "class": "model error",
+     "evidence": "With the alternative annuity the contributions were refunded in the lump sum, so the remaining annuity has no cost to recover; the reviewer's No is the right answer and the payments are fully taxable.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Roth 401(k) or 403(b) deferrals were taxed when they went in; the question fits them as worded."
+     "evidence": "A commercial annuity bought with savings was already taxed; cost_any is Yes and retirement.own_annuity refuses, as ruled on the earlier subject.",
+     "bugs": []
+    },
+    {
+     "n": 6,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The question is not limited to the filer's own payments; the gated Simplified Method questions name the retiree for a survivor.",
+     "bugs": []
     }
    ],
-   "subject_sha": "cff5c4b51507fb5e008187923c479b09a1fbd81f8ea2483514013c3bd3cf0cf0"
+   "subject_sha": "4c2930b21e042bce64846502926b9644b709be5f3cb87dedaf3d023b5dd92af9",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:retirement.dis_early_if_disability#1": {
-   "class": "Per-entry question; the age readings are low.",
    "reason": "Per-entry question; the age readings are low.",
-   "subject_sha": "ba42ff87617981798f3dcefccae674637a87a0d4cda608f77058da1cef49afda",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "retirement is a per-entry list: the Form 1099-R list is asked per person ('For this person (you, or your spouse on a joint return) ...'), and the per-person frame shows the spouse's entry 'About your spouse', so 'you' in a question about that entry is the person it was issued to (interview/README.md, the per-person frame; RUBRIC2 rule 4).",
+     "evidence": "The retirement questions now carry the per-person frame (BUG-1196): the spouse's entry is shown 'About your spouse — ... your spouse', so 'you' is the person whose Form 1099-R it is.",
      "bugs": []
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "'Were you younger than the earliest age ...' asks about the time of the payments; the No path's refusal for a year in which the age was reached is stated in the help ('A year in which you reached that age is outside what this tool prepares'); low.",
-     "bugs": []
-    },
-    {
-     "n": 2,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "The plan's minimum retirement age: the existing help says 'The plan or the employer can tell you its minimum retirement age' (i1040gi p. 28).",
-     "bugs": []
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The reviewer's own reading leads to a wrong yes, not a wrong no; a Yes only asks the next question.",
-     "bugs": []
-    }
-   ]
-  },
-  "unruled:gate:retirement.disability_if_plan#1": {
-   "class": "Per-entry question; the plan wording added by BUG-0878 may leave a military or uncertain filer unsure, filed as a low defect.",
-   "reason": "Per-entry question; the plan wording added by BUG-0878 may leave a military or uncertain filer unsure, filed as a low defect.",
-   "subject_sha": "3362630cdc380cebe833e3d022eb2d6c8918607bf08ba1945afbc92b3515abc3",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "retirement is a per-entry list: the Form 1099-R list is asked per person ('For this person (you, or your spouse on a joint return) ...'), and the per-person frame shows the spouse's entry 'About your spouse', so 'you' in a question about that entry is the person it was issued to (interview/README.md, the per-person frame; RUBRIC2 rule 4).",
-     "bugs": []
-    },
-    {
-     "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "retirement is a per-entry list: the Form 1099-R list is asked per person ('For this person (you, or your spouse on a joint return) ...'), and the per-person frame shows the spouse's entry 'About your spouse', so 'you' in a question about that entry is the person it was issued to (interview/README.md, the per-person frame; RUBRIC2 rule 4). The military and terrorist-attack questions follow the same entry.",
-     "bugs": []
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040gi p. 28, 'For details on military disability pensions, see Pub. 525'; the BUG-0878 wording 'under a plan that provides for disability retirement' may lead a military disability retiree (DFAS) to answer No; the question has no help naming it.",
-     "bugs": [
-      {
-       "title": "retirement.disability: the plan-terms wording gives no checkable sign (box 7 code 3) and does not name military disability retired pay",
-       "source": "i1040gi p. 30, \"If you receive payments from a retirement or profit-sharing plan that does not provide for disability retirement, do not treat those payments as disability payments.\"; i1040gi p. 28, \"For details on military disability pensions, see Pub. 525.\"",
-       "symptom": "After BUG-0878 the question asks whether the payment was made 'under a plan that provides for disability retirement'; a filer cannot check the plan's terms, and a military disability retiree may answer No, so line 1h, the military and terrorist-attack questions are skipped.",
-       "where": "interview/2025/questions.yaml (retirement.disability); forms/2025/retirement.yaml (retirement.disability)",
-       "fix": "Proposed fix: help on retirement.disability: 'Code 3 in box 7 of the Form 1099-R means disability. Count military disability retired pay.'",
-       "severity": "low"
-      }
-     ]
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040gi p. 30, 'If you receive payments from a retirement or profit-sharing plan that does not provide for disability retirement, do not treat those payments as disability payments.' The filer cannot check the plan's terms; code 3 in box 7 is the checkable sign and is not named. Same bug as finding 2.",
-     "bugs": [
-      {
-       "title": "retirement.disability: the plan-terms wording gives no checkable sign (box 7 code 3) and does not name military disability retired pay (same bug as finding 2)",
-       "source": "i1040gi p. 30, \"If you receive payments from a retirement or profit-sharing plan that does not provide for disability retirement, do not treat those payments as disability payments.\"; i1040gi p. 28, \"For details on military disability pensions, see Pub. 525.\"",
-       "symptom": "After BUG-0878 the question asks whether the payment was made 'under a plan that provides for disability retirement'; a filer cannot check the plan's terms, and a military disability retiree may answer No, so line 1h, the military and terrorist-attack questions are skipped.",
-       "where": "interview/2025/questions.yaml (retirement.disability); forms/2025/retirement.yaml (retirement.disability)",
-       "fix": "Proposed fix: help on retirement.disability: 'Code 3 in box 7 of the Form 1099-R means disability. Count military disability retired pay.'",
-       "severity": "low"
-      }
-     ]
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "i1040gi p. 30, the terrorist-attack example; a pension started early because of disability is 'paid ... because you became disabled'; low.",
-     "bugs": []
-    }
-   ]
-  },
-  "unruled:gate:retirement.is_code2#1": {
-   "class": "no gate defect; combined codes are refused, a modified series is screened; wording lows",
-   "reason": "(0) covered: combined codes are refused (retirement.bad_code). (1) covered: retirement.early_screen asks about 'a series of substantially equal periodic payments that was later changed' and refuses. (2, 3, 4) presentation, low: the question asks whether the exception covers all of the money; the per-exception caps are completeness claim f5329#1.1.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement.code offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', and retirement.bad_code refuses 'a distribution code other than 7, 4, 2, 1, S, 3, G or Q'; a combined code is refused, not read as the single code."
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement.early_screen lists 'it is one of a series of substantially equal periodic payments that was later changed' and refuses (retirement.screen_refused)."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "i5329 p. 5, exceptions 09 and 19 limits. The question asks whether the exception fails to cover all of this money; the lifetime and per-child limits across years are not stated. Low; the limits are completeness claim f5329#1.1."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The question puts the payer's code as the payer's knowledge and asks whether the exception covers the money; a filer who defers to the payer can answer wrongly. Low."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "'Does that exception fail to cover all of this money (it covers only part of it, or none)?' is negated but glossed. Low."
-    }
-   ],
-   "subject_sha": "6cb870717fd0fa81904fa125a04dc5748ea0844bec05766d9035853295b0e0f1"
-  },
-  "unruled:gate:retirement.is_code7#1": {
-   "class": "no gate defect; combined codes are refused and the age question is per person",
-   "reason": "(0) covered: retirement.bad_code. (1) covered: per person. (2) presentation, low: 59½ by payment date is not glossed. (3) covered: codes 1, J and S take the exception list, where exception 12 is entered.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement.code offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', and retirement.bad_code refuses 'a distribution code other than 7, 4, 2, 1, S, 3, G or Q'; a combined code is refused, not read as the single code."
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) — In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "'Were you under age 59½ when you received any of this money?' asks about any payment; the date of 59½ is not glossed. Low."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "i5329 p. 5, exception 12. A code 1 distribution goes to retirement.exception, which takes 'the number from the table in the Form 5329 instructions', so a miscoded payment at 59½ or older is entered there; this gate's line is not read as the age for it."
-    }
-   ],
-   "subject_sha": "ad63a69a80d57d7c6ed393c2d84df18375d7cc881854128a12878ddab40c202b"
-  },
-  "unruled:gate:retirement.is_death#1": {
-   "class": "(0) per-entry frame; (1) two codes are refused; (2) a rollover into one's own IRA ends the code 4 form.",
-   "reason": "(0) per-entry frame; (1) two codes are refused; (2) a rollover into one's own IRA ends the code 4 form.",
-   "subject_sha": "6a2454da68932ae87edafef2959b7eff484d6eaab1ef757750093e9ed62cde98",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "retirement is a per-entry list: the Form 1099-R list is asked per person ('For this person (you, or your spouse on a joint return) ...'), and the per-person frame shows the spouse's entry 'About your spouse', so 'you' in a question about that entry is the person it was issued to (interview/README.md, the per-person frame; RUBRIC2 rule 4). The BUG-0878 wording now asks the surviving spouse case.",
-     "bugs": []
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement.code offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', and retirement.bad_code refuses it, as ruled for the earlier subject.",
-     "bugs": []
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "p590b p. 5 lists the deemed elections; a spouse who rolled the inherited IRA into an IRA of their own receives distributions from that IRA, not code 4 payments; low.",
-     "bugs": []
-    }
-   ]
-  },
-  "unruled:gate:retirement.is_ira#1": {
-   "class": "As ruled for the earlier subject: the options name SEP and SIMPLE IRAs and tie each to the IRA/SEP/SIMPLE box.",
-   "reason": "As ruled for the earlier subject: the options name SEP and SIMPLE IRAs and tie each to the IRA/SEP/SIMPLE box.",
-   "subject_sha": "027f5a686d2ca2c390ed7c0f0535795ef1c6e956552e59bcd76f315527fcae6d",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "retirement.account has three values; 'A pension, an annuity, or a 401(k), 403(b) or 457(b) plan' names an annuity, so a commercial annuity is the plan option and asks cost_any.",
-     "bugs": []
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement.account: 'A traditional IRA, a SEP IRA or a SIMPLE IRA (the box \"IRA/SEP/SIMPLE\" is ticked)'.",
-     "bugs": []
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Same options and the help 'The form has a small box marked \"IRA/SEP/SIMPLE\" next to box 7'; an individual retirement annuity has the box ticked.",
-     "bugs": []
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The plan option names 403(b) and 457(b) plans and 'the box \"IRA/SEP/SIMPLE\" is not ticked'.",
-     "bugs": []
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement is a per-entry list: the Form 1099-R list is asked per person ('For this person (you, or your spouse on a joint return) ...'), and the per-person frame shows the spouse's entry 'About your spouse', so 'you' in a question about that entry is the person it was issued to (interview/README.md, the per-person frame; RUBRIC2 rule 4).",
-     "bugs": []
-    }
-   ]
-  },
-  "unruled:gate:retirement.is_trad#1": {
-   "reason": "Basis sources are listed in the question text; contributions are asked at person level.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "person.ira_basis, person.sav_trad_if_ira_owner and person.ira_dist cover 2025 nondeductible contributions at person level (Form 8606 lines not prepared are refused)."
-    },
-    {
-     "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "retirement.ira_basis asks 'contributions you did not deduct' for any traditional IRA of the owner; SEP and SIMPLE are inside account kind traditional_ira."
-    },
-    {
-     "n": 2,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "retirement.ira_basis help: 'an IRA received in a divorce or inherited with basis'; roster per person."
-    },
-    {
-     "n": 3,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "Same question text: 'basis that came with an IRA from a spouse in a divorce'."
-    },
-    {
-     "n": 4,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "Same text: 'from someone who died'; inherited IRA distributions are on a Form 1099-R with the IRA box ticked."
-    },
-    {
-     "n": 5,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The question lists 'after-tax money rolled over from a work plan' (i8606 p. 9 line 2)."
-    }
-   ],
-   "subject_sha": "2d758cb8a21172b1bbe2de9077a442299258ed30633a7f6a5df0011a2456084a",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
-  },
-  "unruled:gate:retirement.plan_death#1": {
-   "class": "As ruled for the earlier subject; the beneficiary wording is fixed by BUG-0875, the several-beneficiaries case by BUG-0508's help.",
-   "reason": "As ruled for the earlier subject; the beneficiary wording is fixed by BUG-0875, the several-beneficiaries case by BUG-0508's help.",
-   "subject_sha": "9d2d3283c614f31290b0a185c21d4015f31645224a4058b771f48dfd03b890ca",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "FALSE_NO",
-     "class": "presentation",
-     "evidence": "Code 4 is the payer's code for a payment to a beneficiary (i5329 p. 5, exception 04); a survivor payment coded otherwise is a payer error; low.",
-     "bugs": []
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "retirement.code offers 'two codes together (such as 7D or 4G)', refused by retirement.bad_code.",
+     "evidence": "The plan's minimum retirement age: the help says 'The plan or the employer can tell you its minimum retirement age' (i1040gi p. 28).",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "The list is of Forms 1099-R ('List each Form 1099-R you received'); an RRB-1099-R or other format is not an entry this gate reaches.",
+     "evidence": "A retired public safety officer's premium exclusion is asked by retirement.pso_exclusion and refused ('A return with this is outside what this tool prepares').",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "dcaf992329f405623989ea43d84b96b73814a8393dbe2ff95566190f068cec01",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
+  },
+  "unruled:gate:retirement.disability_if_plan#1": {
+   "reason": "The plan wording added by BUG-0878 may leave a military or uncertain filer unsure (open).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "Military retired pay with a disability award: BUG-0878 (open, the disability-plan wording); not filed again.",
+     "bugs": [
+      "BUG-0878"
+     ]
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "'under a plan that provides for disability retirement' with code 3 in box 7: BUG-0878 (open); not filed again.",
+     "bugs": [
+      "BUG-0878"
+     ]
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The retirement questions now carry the per-person frame (BUG-1196): the spouse's entry is shown 'About your spouse — ... your spouse', so 'you' is the person whose Form 1099-R it is.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "Both helpers are per entry: retirement.is_ira and retirement.is_death read the entry's own account and code (forms/2025/retirement.yaml, a per-entry collection).",
+     "class": "presentation",
+     "evidence": "A pension started early because of disability is 'paid ... because you became disabled', as on the earlier subject; low.",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "1c61070df1b9da97057c5ca0e80c4295e4ce86d4bdfd4bb69c785c51bd640e11",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": [
+    "BUG-0878"
+   ]
+  },
+  "unruled:gate:retirement.is_code2#1": {
+   "reason": "A modified series coded 2 is not refused (new defect); the rest are refusals on a Yes or wording.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "i5329 exception 02 and line 4: a series changed within five years brings back the earlier years' tax; retirement.early_screen names it only for codes 1 and S. Filed as BUG-1202.",
+     "bugs": [
+      "BUG-1202"
+     ]
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "retirement.code2_partial asks whether the exception covers 'only part of it, or none'; a capped exception answered Yes refuses. Wording only.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A payer's code 2 that does not fit the facts: the filer is asked whether the exception covers the money; a wrong payer code trusted by the filer is a residual of every coded form.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "The code question offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', which retirement.bad_code refuses.",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "'guaranteed for a set period ... not a survivor's pension paid for your own life' contrasts the two cases; low.",
+     "evidence": "The help states the cost of a Yes; wording only.",
      "bugs": []
     }
+   ],
+   "subject_sha": "12a095c2b74cef094ad05a62c599b77789df742fa5f2eb50d74f345286ca4236",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": [
+    "BUG-1202"
    ]
+  },
+  "unruled:gate:retirement.is_code7#1": {
+   "reason": "Codes 1 and S at 59½ are handled by exception 12; combined codes are refused.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "retirement.miscoded (BUG-1193): exception 12 from the birth year, and retirement.after59 for 1965 or 1966; code J is refused.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "A filer who turned 59½ in 2025 answers retirement.after59 No and names exception 12 for the later part (its help).",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "The code question offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', which retirement.bad_code refuses.",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "ebbbdb72add3e56be8eaddf6b78d670d61b7ee0b4b630a3773a57e727878aa2b",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
+  },
+  "unruled:gate:retirement.is_death#1": {
+   "reason": "Combined codes are refused; the rest are wording.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "The code question offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', which retirement.bad_code refuses.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A spouse who moved the money into her own IRA receives later distributions from her own IRA, normally coded 7; a code 4 on such an account is a payer error. Wording only.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A code 4 from a 401(k) after the spouse elected to treat it as her own; the question names the IRA; low.",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "ed6d05687bfdb67a65e32f5ec1d4983f556d8e2dbacf5ef5dcfc76d2866377e1",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
+  },
+  "unruled:gate:retirement.is_ira#1": {
+   "reason": "The IRA box decides the kind; the plan option names pensions, annuities and 401(k)s.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "retirement.account: 'traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional SIMPLE IRAs), roth_ira (...), or plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'; the IRA box is checked for an inherited IRA, an individual retirement annuity and a deemed IRA.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A designated Roth account in a 401(k) is 'plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'; 'roth_ira' is 'a Roth IRA or Roth SIMPLE IRA'.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "retirement.account: 'traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional SIMPLE IRAs), roth_ira (...), or plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'; the IRA box is checked for an inherited IRA, an individual retirement annuity and a deemed IRA.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A civil service annuity is a pension ('plan'); a Form RRB-1099-R has no code and is refused ('no code at all', retirement.bad_code).",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "2ba4458022d42d1305a1375fb3428e69f94dd537252377cb581a6f9437a772b2",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
+  },
+  "unruled:gate:retirement.is_trad#1": {
+   "reason": "The IRA box decides the kind; per-entry question.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "retirement.account: 'traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional SIMPLE IRAs), roth_ira (...), or plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'; the IRA box is checked for an inherited IRA, an individual retirement annuity and a deemed IRA.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "retirement.account: 'traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional SIMPLE IRAs), roth_ira (...), or plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'; the IRA box is checked for an inherited IRA, an individual retirement annuity and a deemed IRA.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "retirement.account: 'traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional SIMPLE IRAs), roth_ira (...), or plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'; the IRA box is checked for an inherited IRA, an individual retirement annuity and a deemed IRA.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The kind is asked per Form 1099-R entry of each person (the retirement roster), not once per return.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "retirement.account: 'traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional SIMPLE IRAs), roth_ira (...), or plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'; the IRA box is checked for an inherited IRA, an individual retirement annuity and a deemed IRA.",
+     "bugs": []
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The basis question names 'basis that came with an IRA from a spouse in a divorce'; the receiving spouse's IRA box is checked.",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "3d2311e2f3a880eb1c1bb31578480add0077433f07077ba1cd0504d3e232b6e7",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
+  },
+  "unruled:gate:retirement.plan_death#1": {
+   "reason": "Code 4 is the payer's mark for a beneficiary; residuals are rare.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A survivor annuity coded 7 by the payer: the beneficiary questions are keyed to code 4 (f1099r box 7 instructions); a payer error is a residual.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A death before August 21, 1996 with code 7: rare; the exclusion is at most $5,000 of cost.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "The code question offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', which retirement.bad_code refuses.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A Form RRB-1099-R has no code ('no code at all', retirement.bad_code); a CSA 1099-R uses the standard codes.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "retirement.rollover_any: 'even if it was first paid to you' counts a cash redeposit within 60 days.",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "4dfe8965c38b2916855dc2a986f328fb8f3fb78d22797d7cdd1abff3930e59e6",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:retirement.put_back#1": {
-   "class": "no gate defect; conversions, direct Roth rollovers and same-account redeposits are reached",
-   "reason": "(0) covered: the rollover_any help says 'Money moved into a Roth IRA counts'. (1) covered: code H is refused (retirement.bad_code). (2) covered: 'go into a retirement account again', any account. (3) covered: per person. (4, 6) presentation, low. (5) presentation, low: a rollover not yet made at filing. (7) covered: a QDRO payment kept in cash is handled by its code and exception.",
+   "reason": "The shown question names conversions and money paid out first.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "retirement.rollover_any: 'Did any of this money go into a retirement account again (a rollover or a conversion) ...?', help 'Money moved into a Roth IRA counts'."
+     "evidence": "retirement.rollover_any as shown: '(a rollover or a conversion)'.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "retirement.code offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', and retirement.bad_code refuses 'a distribution code other than 7, 4, 2, 1, S, 3, G or Q'; a combined code is refused, not read as the single code."
+     "evidence": "'go into a retirement account again' includes the same account.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The question says 'a retirement account', not another one."
+     "class": "presentation",
+     "evidence": "Shares paid in kind: retirement.rollover_property asks it once the rollover question is Yes; a filer reading 'money' narrowly; low.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) — In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Shares rolled over in kind; 'any of this money' read narrowly. Low."
-    },
-    {
-     "n": 5,
-     "kind": "FALSE_NO",
-     "class": "presentation",
-     "evidence": "i1040gi p. 27, 'If you ... made the rollover in 2026, include a statement'. A rollover not yet made when the return is filed is not part of that return; the filer who completes it later amends. Low."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A levy return paid back in 2026. Low."
-    },
-    {
-     "n": 7,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "A QDRO payment kept in cash is not a rollover; its additional tax is decided by its code and retirement.exception, not by this gate."
+     "evidence": "A January deposit within 60 days counts; wording only.",
+     "bugs": []
     }
    ],
-   "subject_sha": "ead135a3a7a30241619c6fbbe82abddc6c5238aad81a8e739aeb67352b554a97"
+   "subject_sha": "33ac97760b00ab4d1ec6dda7940e17020716d63fdb6bf91bf80fcc7693fdeba6",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:retirement.rollover_any#1": {
-   "class": "As ruled for the earlier subject; the 120-day first-home case is now in the question (BUG-0881).",
-   "reason": "As ruled for the earlier subject; the 120-day first-home case is now in the question (BUG-0881).",
-   "subject_sha": "98242381ab0ee6f302bdd6889491df00fa92717f3792b9ad3c45a8881037e673",
+   "reason": "Loan offsets and repayments of special distributions are refused; the rest are wording.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "presentation",
-     "evidence": "A 60-day rollover with other money is a rollover of the amount; 'this money' read narrowly overstates income only; low.",
+     "class": "out of scope",
+     "evidence": "A plan loan offset is asked by retirement.loan_offset and refused ('A return with this is outside what this tool prepares').",
      "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "retirement.loan_offset ('Part of it is an unpaid plan loan taken off your balance') refuses every plan loan offset.",
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A repayment of a birth or adoption distribution is named in retirement.early_screen ('it repays a birth or adoption ... distribution') and refused through retirement.screen_refused.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Property sold and the proceeds rolled over: 'this money' read narrowly; overstatement only; low.",
+     "evidence": "Shares paid in kind: asked by retirement.rollover_property after a Yes; low.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The rollover question now names a first-home IRA withdrawal put back within 120 days (BUG-0881); birth or adoption repayments are screened at retirement.early_screen.",
+     "class": "presentation",
+     "evidence": "A deposit within 60 days in 2026 counts; wording only.",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "A direct rollover is code G, which sets retirement.put_back without this question; a nonspouse transfer is 4G, refused by retirement.bad_code.",
-     "bugs": []
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A deposit made in 2026 for a 2025 distribution within 60 days: the question asks 'within 60 days of receiving it', which includes it; low.",
+     "evidence": "A direct transfer to an IRA is a code G direct rollover, which the project treats as rolled over.",
      "bugs": []
     }
-   ]
+   ],
+   "subject_sha": "3dc641b638ebe2f33990ea0c5de348e325ae3aba0f7b1254159f552d2af80590",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:retirement.under59_if_code7#1": {
-   "class": "no gate defect; per person, and other codes take the exception list",
-   "reason": "(0) covered: per person. (1, 2) presentation, low: 59½ by payment date not glossed. (3) covered: codes 1 and 2 reach retirement.exception and retirement.code2_partial.",
+   "reason": "The question asks about any of the money; the spouse is named by the frame.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The Form 1099-R list is asked per person: 'For this person (you, or your spouse on a joint return) — In 2025, did you take money from a pension, an annuity, a 401(k) or an IRA? List each Form 1099-R you received'; a spouse's form is entered under the spouse, so 'you' in its questions is the recipient."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'Were you under age 59½ when you received any of this money?' covers payments before the 59½ date; a filer answering by year-end age misreads it. Wording only.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "'Were you under age 59½ when you received any of this money?' asks about any payment; the date is not glossed. Low."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Same. Low."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "A 457 payment coded 1 takes retirement.exception (the Form 5329 table number); coded 2 it is accepted unless retirement.code2_partial is Yes."
+     "evidence": "The retirement questions now carry the per-person frame (BUG-1196): the spouse's entry is shown 'About your spouse — ... your spouse', so 'you' is the person whose Form 1099-R it is.",
+     "bugs": []
     }
    ],
-   "subject_sha": "b4edd9c6464e68f284563ff31e22878d04d8d88bdf9ccf4ed058bd868385d7e0"
+   "subject_sha": "79ab9c23b8e48302e4add123dbf6175e0b7daefeac970bfa94dbecb95613825b",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:sli.any_if_not_mfs#1": {
    "class": "(0) fixed by BUG-0876's help; (1, 2) as ruled for the earlier subject.",
@@ -9423,38 +9514,61 @@
    "subject_sha": "b2df206acba61f515e40cc6baf524bb1a81d69ac9a71a7c0213edc248793faa4"
   },
   "unruled:gate:ssb.any#1": {
-   "class": "(0) covered by the question's form pointer; the rest as ruled for the earlier subject.",
-   "reason": "(0) covered by the question's form pointer; the rest as ruled for the earlier subject.",
-   "subject_sha": "e6025debbd80ac7053a5f3ada7ffe365fecb29e602411699dec1426555d9d961",
+   "reason": "The help now names disability and survivor benefits, the workers' compensation offset and the Canadian and German plans (this lane, BUG-1194).",
    "findings": [
     {
      "n": 0,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The question ends 'Form SSA-1099 or Form RRB-1099 reports them'; benefits withheld for premiums or recovered are in box 3 and box 5 of that form (i1040gi p. 31).",
-     "bugs": []
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "A benefit reduced to zero by the workers' compensation offset: the help now says 'Answer Yes if you got a Form SSA-1099 ... also if it shows only ... benefits all withheld for ... a workers' compensation offset'. Fixed in this lane (BUG-1194).",
+     "bugs": [
+      "BUG-1194"
+     ]
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "SSDI and survivor benefits are reported on Form SSA-1099, which the question names (i1040gi p. 31).",
-     "bugs": []
+     "class": "defect",
+     "evidence": "Disability or survivor benefits: the help now says 'for disability or survivor benefits too'. Fixed in this lane (BUG-1194).",
+     "bugs": [
+      "BUG-1194"
+     ]
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "ssb.benefits takes box 5, which includes back pay paid in 2025, and ssb.prior_year_pay then asks about it (i1040gi p. 31, Line 6c).",
+     "evidence": "The question names 'railroad retirement benefits treated as social security' and Form RRB-1099.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "Canada or Quebec Pension Plan, Old Age Security and the German statutory pension are now named in the help (p915 p. 6). Fixed in this lane (BUG-1194).",
+     "bugs": [
+      "BUG-1194"
+     ]
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "'Railroad retirement benefits treated as social security' is followed by 'Form ... RRB-1099 reports them', the checkable fact; low.",
+     "evidence": "A child filing for benefits paid to a representative payee: low.",
+     "bugs": []
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Form SSA-1042S is issued to nonresident aliens, refused by scope.nonresident through scope.other_income.",
      "bugs": []
     }
+   ],
+   "subject_sha": "463d3a24bfca43cc2b3de8c6bd946997fcf97db79885a6b39c946e74a1d2e966",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": [
+    "BUG-1194"
    ]
   },
   "unruled:gate:ssb.prior_year_pay#1": {
@@ -9526,33 +9640,34 @@
      "n": 0,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here'), so no box 2 amount is computed.",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here'), so no box 2 amount is computed.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here'), so no box 2 amount is computed.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here'), so no box 2 amount is computed.",
      "bugs": []
     }
    ],
-   "subject_sha": "5308bdd7612223cc207b83dd84ef5efdf76f96176d5b0733fb55cdcd4b9185c8",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "ea5b153683e8cc9bf02bd7f5997a20ed0d82635bf069911364e0434694ac0456",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:k1s.ask_dwelling#1": {
    "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
@@ -9604,33 +9719,34 @@
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here'), so no box 2 amount is computed.",
      "bugs": []
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
+     "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here'), so no box 2 amount is computed.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here'), so no box 2 amount is computed.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here'), so no box 2 amount is computed.",
+     "evidence": "scope.k1 refuses every return with a K-1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here'), so no box 2 amount is computed.",
      "bugs": []
     }
    ],
-   "subject_sha": "4417f7bb73a00b4fa3b8a6d678eee77db872f1cbc55804572baec59bc68769cc",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "76572b57202e8f2c316db914bb340b913aa0a8a315bd1af56be850addb455a88",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:royalty.has_loss#1": {
    "reason": "Royalty at-risk gate: the carryover gap is filed.",
@@ -10044,6 +10160,64 @@
    ],
    "subject_sha": "a3c0d9afffb526bec82a07a59bfc9f43fed7294166a6830f36bd5b8c571c8053",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+  },
+  "unruled:gate:retirement.ira_put_back#1": {
+   "reason": "The shown question asks whether the money went into a retirement account again.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "retirement.rollover_any as shown: 'Did any of this money go into a retirement account again (a rollover or a conversion), even if it was first paid to you?'; a redeposit into the same IRA is money that went into a retirement account again.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The rollover question's help counts a deposit within 60 days; a January deposit of December money is within it. Wording only.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The retirement questions now carry the per-person frame (BUG-1196): the spouse's entry is shown 'About your spouse — ... your spouse', so 'you' is the person whose Form 1099-R it is.",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "a84e3972b36702836b2ae2cb63d23daa6c97abebc632402c4d866a3f9cdab9a2",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
+  },
+  "unruled:gate:retirement.ask_after59#1": {
+   "reason": "Code J is refused; a settled age is handled from the birth year.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Code J (Roth IRA): The code question offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', which retirement.bad_code refuses.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'the date of every payment' and 'received' coincide for a filer; a check dated before and received after the 59½ date is rare. Wording only.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "retirement.over59_all_year applies exception 12 to the whole distribution for a person born in 1964 or earlier (retirement.miscoded); fixture advland.retirement.code1_born_1955.",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "84ff7fb7e399ab38ee4d8a97310d6a99f89d092aaeb6e3eb8553f5dd23a3e9bc",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   }
  },
  "baseline": {}

@@ -2,78 +2,68 @@
  "form": "f8889",
  "reviews": {
   "gate:f8889.ask_former_spouse_family": {
-   "subject_sha": "fc50d1bf90ca7235a48fddb4f041a38e1b9bb934c495936028a7dba0e0295c28",
+   "subject_sha": "bfeed3ddc2d9712ec09bf6d3cbb075ef3d787f40bc4a2ccb7a46cc96bda010f6",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A filer with self-only HDHP coverage all year divorced in March 2025 from a spouse who had family HDHP coverage. The filer remarried in October 2025 to someone with self-only or no HDHP coverage.",
-       "why_no": "The computed condition requires the filer to be not married at the end of 2025. Because the filer was married on December 31, the gate is false and the question is never asked. A married path would most likely ask only about the current spouse's coverage.",
-       "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 4: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan\"; p. 7, Line 6: \"had family coverage under an HDHP at any time during 2025\"",
-       "severity": "high",
-       "fix": "Drop 'not married at the end of 2025' from the gate. Ask everyone with self-only coverage all year whether any marriage during 2025, other than one in effect at year end, involved a spouse with family HDHP coverage during the marriage."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer whose HDHP coverage was self-only but did not cover all twelve months, for example starting April 1, 2025. The filer was married until September 2025 to a spouse with family HDHP coverage and was single at year end.",
-       "why_no": "The coverage helper returns 'changed' for coverage that started, ended or changed type. That branch sets the gate to false, so the former spouse's family coverage is never asked. Family coverage would still be deemed for the eligible months of the marriage, which matters to the Line 3 worksheet and the Line 6 allocation.",
-       "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules... use the following steps to determine the amount to enter on line 6\"",
-       "severity": "medium",
-       "fix": "Ask the former-spouse question in the 'changed' branch too, or confirm that the month-by-month path asks about every spouse's family coverage for each month of each marriage."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer whose then-spouse had family HDHP coverage from January to May 2025. The spouse switched to self-only coverage in June, and the divorce was final in August.",
-       "why_no": "The question asks whether the marriage ended 'while the other person had' a family plan. The filer reads this as coverage at the moment of the divorce and answers no. The rule actually turns on family coverage in any month of the marriage.",
-       "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 7, Line 6: \"had family coverage under an HDHP at any time during 2025\"",
-       "severity": "medium",
-       "fix": "Reword: 'During 2025, before your marriage ended, did your then-spouse have high-deductible coverage for more than one person in any month, even if it changed before the marriage ended?'"
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer who obtained a decree of separate maintenance (legal separation) in 2025 and is treated as unmarried at year end. The then-spouse had family HDHP coverage earlier in 2025.",
-       "why_no": "The question names only 'by divorce or death', so a legally separated filer answers that the marriage did not end.",
+       "who": "A filer whose marriage ended in 2025 by a decree of separate maintenance (legal separation), so they are unmarried at year end. They had self-only HDHP coverage all year, and the spouse had family HDHP coverage in the months before the decree.",
+       "why_no": "The question asks only whether a marriage ended 'by divorce or death'. A legal separation is neither, so the truthful answer is No, even though the tool's own gate treats the filer as not married at the end of 2025.",
        "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan\"",
-       "severity": "medium",
-       "fix": "Say 'ended or you became legally separated under a decree of divorce or separate maintenance, or your spouse died'. Better still, ask whether the filer was married at any time in 2025."
+       "irs_text": "i8889 p. 4: 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan. Disregard any plans with self-only coverage.'",
+       "severity": "high",
+       "fix": "Ask: 'Were you married at any time in 2025 but not at the end of the year (for example, divorced, legally separated under a decree, annulled, or widowed)?' Ask about the other person's coverage as a separate question."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer whose then-spouse was covered as a dependent under someone else's family HDHP, such as a parent's or another employer's plan, during the 2025 marriage.",
-       "why_no": "The words 'the other person had a high-deductible plan' read as a plan the spouse held in their own name. The filer answers no because the spouse was only a covered member of another person's family plan.",
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer divorced in March 2025 and remarried in October, so married at the end of 2025, with self-only HDHP coverage all year. The former spouse had family HDHP coverage in January through March.",
+       "why_no": "The computed gate requires 'not married at the end of 2025', so the question is never asked. Questions about the current spouse do not reach the former spouse's family coverage in the months of the earlier marriage.",
        "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 4, Line 1: \"If you and your spouse are considered covered by a family HDHP, you are considered covered by a family HDHP regardless of whether you file jointly or separately\"",
-       "severity": "medium",
-       "fix": "Say 'was covered by a high-deductible plan covering more than one person (their own or someone else's)'."
+       "irs_text": "i8889 p. 4: 'you both are treated as having only the family coverage plan'; p. 7, Line 6: 'Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules'",
+       "severity": "high",
+       "fix": "Drop 'not married at the end of 2025' from the gate. Ask every filer whether any marriage of theirs ended during 2025, whatever their status at year end."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer whose self-only HDHP coverage began in March 2025 (or who was not eligible in some month), divorced in June from a spouse who had family HDHP coverage while they were married.",
+       "why_no": "Coverage type 'changed' (not self-only in all twelve months) computes the gate to false. The former spouse's family coverage in the months they were both eligible is never asked, though in those months the filer is treated as having family coverage.",
+       "line": "f8889.former_spouse_family_if_asked",
+       "irs_text": "i8889 p. 4, Line 3: 'Use the family coverage amount if you or your spouse had an HDHP with family coverage. Disregard any plan with self-only coverage.'",
+       "severity": "high",
+       "fix": "Ask about a then-spouse's family HDHP coverage on the 'changed' branch too, or route that branch to the same refusal whenever a 2025 marriage ended."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "7",
-       "who": "A divorced filer who knows the ex-spouse had employer family health coverage but does not know whether it was a high-deductible plan.",
-       "why_no": "The filer cannot confirm the term 'high-deductible plan' and defaults to no.",
+       "who": "A divorced filer whose ex-spouse had an employer plan covering the ex-spouse and children. The filer does not know whether that plan was a 'high-deductible' HSA-qualified plan.",
+       "why_no": "'Did the other person have a high-deductible plan' asks for a classification of someone else's plan that the filer cannot check. Unsure filers default to No.",
        "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 4, How To Complete Part I: \"either of you has an HDHP with family coverage\"",
+       "irs_text": "i8889 p. 4: 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan'",
+       "severity": "medium",
+       "fix": "First ask whether the other person had any health plan covering more than one person during the marriage. On a yes, ask whether it was an HSA-eligible high-deductible plan (for example, whether they had or could have had an HSA), and treat 'not sure' as yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose marriage was annulled in 2025, with self-only HDHP coverage all year. The other person had family HDHP coverage during the marriage.",
+       "why_no": "An annulment is not 'divorce or death', and the filer may also read it as never having been married, so they answer No.",
+       "line": "f8889.former_spouse_family_if_asked",
+       "irs_text": "i8889 p. 4: 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan'",
        "severity": "low",
-       "fix": "Ask first whether the then-spouse had health coverage for more than one person. Then ask whether it was HSA-eligible, with help on how to check, for example whether the spouse also had an HSA or the plan was described as HSA-qualified."
+       "fix": "Name annulment in the list of ways a marriage ended, and say in the help how the tool treats it."
       }
      ],
-     "prompt_sha": "0e7d29384829477e5647839830713772ab823e0b70b79ca099cf44035947fb3e",
+     "prompt_sha": "2c29021c4dc3845cb87c3c6a4ad74c261653f20b69a580f4afd4d7a5ff368672",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.104308,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f8889.ask_former_spouse_family.fc50d1bf90ca.1.response.txt"
+     "cost": 0.097248,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_f8889.ask_former_spouse_family.bfeed3ddc2d9.1.response.txt"
     }
    ],
    "condition": "f8889.ask_former_spouse_family",

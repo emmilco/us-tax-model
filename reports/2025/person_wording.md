@@ -31,9 +31,9 @@ The closed lists the rule works from (a framed question with a subject before a 
 
 - verbs after "you" that change for "your spouse": "are" to "is", "were" to "was", "have" to "has", "weren't" to "wasn't", "aren't" to "isn't", "don't" to "doesn't", "file" to "files", "teach" to "teaches", "contribute" to "contributes", "receive" to "receives", "stop" to "stops", "plan" to "plans", "stay" to "stays", "do" to "does"
 - verbs after "this person" or "your spouse" that change for "you": "is" to "are", "was" to "were", "has" to "have", "does" to "do", "isn't" to "aren't", "wasn't" to "weren't", "doesn't" to "don't"
-- words after a subject or an object that need no change: "a", "acquired", "age", "agreed", "an", "and", "applied", "applying", "as", "at", "became", "blind", "born", "by", "can", "can't", "cannot", "claimed", "contributed", "could", "covered", "deducted", "deferred", "did", "died", "enrolled", "filed", "for", "fully", "had", "have", "if", "in", "inherited", "made", "more", "never", "of", "on", "opened", "or", "overtime", "paid", "put", "received", "recharacterized", "repaid", "returned", "rolled", "served", "to", "took", "turned", "under", "with"
+- words after a subject or an object that need no change: "a", "acquired", "age", "agreed", "an", "and", "applied", "applying", "as", "at", "back", "became", "because", "blind", "born", "bought", "by", "can", "can't", "cannot", "claimed", "completed", "contributed", "could", "covered", "deducted", "deferred", "did", "died", "enrolled", "entered", "filed", "for", "fully", "got", "had", "have", "if", "in", "inherited", "its", "made", "more", "never", "of", "on", "opened", "or", "overtime", "paid", "put", "reached", "received", "recharacterized", "repaid", "retired", "returned", "rolled", "separated", "served", "to", "took", "turned", "under", "with"
 
-120 questions carry the frame.
+170 questions carry the frame.
 
 ## `$k1p`
 
@@ -277,19 +277,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Add up the pay from every household that gave no W-2 for it, for work in or around its home or for its members. Pay on a W-2 is entered with the W-2s.
+> Add up the pay from every household that gave no W-2 for it, for work you did as its own worker in or around its home or for its members, including the value of meals or lodging given as pay. Leave out pay to a business of your own. Pay on a W-2 is entered with the W-2s.
 
 Shown on a one-person return:
 
-> Add up the pay from every household that gave no W-2 for it, for work in or around its home or for its members. Pay on a W-2 is entered with the W-2s.
+> Add up the pay from every household that gave no W-2 for it, for work you did as its own worker in or around its home or for its members, including the value of meals or lodging given as pay. Leave out pay to a business of your own. Pay on a W-2 is entered with the W-2s.
 
 Shown for you on a couple's return:
 
-> Add up the pay from every household that gave no W-2 for it, for work in or around its home or for its members. Pay on a W-2 is entered with the W-2s.
+> Add up the pay from every household that gave no W-2 for it, for work you did as its own worker in or around its home or for its members, including the value of meals or lodging given as pay. Leave out pay to a business of your own. Pay on a W-2 is entered with the W-2s.
 
 Shown for your spouse:
 
-> Add up the pay from every household that gave no W-2 for it, for work in or around its home or for its members. Pay on a W-2 is entered with the W-2s.
+> Add up the pay from every household that gave no W-2 for it, for work your spouse did as its own worker in or around its home or for its members, including the value of meals or lodging given as pay. Leave out pay to a business of your spouse's own. Pay on a W-2 is entered with the W-2s.
 
 ## `$f8919firm`
 
@@ -1461,6 +1461,182 @@ Shown for your spouse:
 
 > This includes an excess from an earlier year. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
+## `retirement.exception`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Which exception to the 10% additional tax applies to this distribution?
+>
+> Enter the number from the table in the Form 5329 instructions (for example 02 substantially equal periodic payments, 03 disability, 05 medical expenses, 08 higher education expenses, 09 first home, 12 incorrectly coded as early, 19 birth or adoption, 20 terminal illness), or none.
+>
+> An exception applies only if its conditions are met, for example:
+> - 01, a qualified retirement plan distribution (not an IRA) received after you separated from service in or after the year you reached age 55 (age 50 for qualified public safety employees and private sector firefighters) or after 25 years of service under the plan, whichever is earlier
+> - 02, payments made at least annually for your life (or life expectancy) or the joint lives (or joint life expectancies) of you and your designated beneficiary, which from an employer plan must begin after separation from service
+> - 03, total and permanent disability, if you can furnish proof that you can't do any substantial gainful activity because of your physical or mental condition and a medical determination has been made that the condition can be expected to result in death or to be of long, continued, and indefinite duration
+> - 04, a distribution due to death (not from a modified endowment contract)
+> - 09, an IRA distribution for a first home, only if you had no present interest in a main home during the 2-year period ending on the date of acquisition (the date you entered into a binding contract to buy it, or building or rebuilding began) and, if you are married, the no-ownership requirement is also met by your spouse
+> - 11, a qualified reservist distribution, only if you were ordered or called to active duty after September 11, 2001, for more than 179 days or for an indefinite period because you are a member of a reserve component, the distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement, and it was made no earlier than the date of the order or call and no later than the close of the active duty period
+> - 19, a qualified birth or adoption distribution, only if made during the 1-year period beginning on the date your child was born or the legal adoption was finalized, an adopted child being an eligible adoptee (not the child of your spouse, and under age 18 or physically or mentally incapable of self-support)
+
+Shown on a one-person return:
+
+> Which exception to the 10% additional tax applies to this distribution?
+>
+> Enter the number from the table in the Form 5329 instructions (for example 02 substantially equal periodic payments, 03 disability, 05 medical expenses, 08 higher education expenses, 09 first home, 12 incorrectly coded as early, 19 birth or adoption, 20 terminal illness), or none.
+>
+> An exception applies only if its conditions are met, for example:
+> - 01, a qualified retirement plan distribution (not an IRA) received after you separated from service in or after the year you reached age 55 (age 50 for qualified public safety employees and private sector firefighters) or after 25 years of service under the plan, whichever is earlier
+> - 02, payments made at least annually for your life (or life expectancy) or the joint lives (or joint life expectancies) of you and your designated beneficiary, which from an employer plan must begin after separation from service
+> - 03, total and permanent disability, if you can furnish proof that you can't do any substantial gainful activity because of your physical or mental condition and a medical determination has been made that the condition can be expected to result in death or to be of long, continued, and indefinite duration
+> - 04, a distribution due to death (not from a modified endowment contract)
+> - 09, an IRA distribution for a first home, only if you had no present interest in a main home during the 2-year period ending on the date of acquisition (the date you entered into a binding contract to buy it, or building or rebuilding began) and, if you are married, the no-ownership requirement is also met by your spouse
+> - 11, a qualified reservist distribution, only if you were ordered or called to active duty after September 11, 2001, for more than 179 days or for an indefinite period because you are a member of a reserve component, the distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement, and it was made no earlier than the date of the order or call and no later than the close of the active duty period
+> - 19, a qualified birth or adoption distribution, only if made during the 1-year period beginning on the date your child was born or the legal adoption was finalized, an adopted child being an eligible adoptee (not the child of your spouse, and under age 18 or physically or mentally incapable of self-support)
+
+Shown for you on a couple's return:
+
+> About you — Which exception to the 10% additional tax applies to this distribution?
+>
+> Enter the number from the table in the Form 5329 instructions (for example 02 substantially equal periodic payments, 03 disability, 05 medical expenses, 08 higher education expenses, 09 first home, 12 incorrectly coded as early, 19 birth or adoption, 20 terminal illness), or none.
+>
+> An exception applies only if its conditions are met, for example:
+> - 01, a qualified retirement plan distribution (not an IRA) received after you separated from service in or after the year you reached age 55 (age 50 for qualified public safety employees and private sector firefighters) or after 25 years of service under the plan, whichever is earlier
+> - 02, payments made at least annually for your life (or life expectancy) or the joint lives (or joint life expectancies) of you and your designated beneficiary, which from an employer plan must begin after separation from service
+> - 03, total and permanent disability, if you can furnish proof that you can't do any substantial gainful activity because of your physical or mental condition and a medical determination has been made that the condition can be expected to result in death or to be of long, continued, and indefinite duration
+> - 04, a distribution due to death (not from a modified endowment contract)
+> - 09, an IRA distribution for a first home, only if you had no present interest in a main home during the 2-year period ending on the date of acquisition (the date you entered into a binding contract to buy it, or building or rebuilding began) and, if you are married, the no-ownership requirement is also met by your spouse
+> - 11, a qualified reservist distribution, only if you were ordered or called to active duty after September 11, 2001, for more than 179 days or for an indefinite period because you are a member of a reserve component, the distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement, and it was made no earlier than the date of the order or call and no later than the close of the active duty period
+> - 19, a qualified birth or adoption distribution, only if made during the 1-year period beginning on the date your child was born or the legal adoption was finalized, an adopted child being an eligible adoptee (not the child of your spouse, and under age 18 or physically or mentally incapable of self-support)
+
+Shown for your spouse:
+
+> About your spouse — Which exception to the 10% additional tax applies to this distribution?
+>
+> Enter the number from the table in the Form 5329 instructions (for example 02 substantially equal periodic payments, 03 disability, 05 medical expenses, 08 higher education expenses, 09 first home, 12 incorrectly coded as early, 19 birth or adoption, 20 terminal illness), or none.
+>
+> An exception applies only if its conditions are met, for example:
+> - 01, a qualified retirement plan distribution (not an IRA) received after your spouse separated from service in or after the year your spouse reached age 55 (age 50 for qualified public safety employees and private sector firefighters) or after 25 years of service under the plan, whichever is earlier
+> - 02, payments made at least annually for your spouse's life (or life expectancy) or the joint lives (or joint life expectancies) of your spouse and your spouse's designated beneficiary, which from an employer plan must begin after separation from service
+> - 03, total and permanent disability, if your spouse can furnish proof that your spouse can't do any substantial gainful activity because of your spouse's physical or mental condition and a medical determination has been made that the condition can be expected to result in death or to be of long, continued, and indefinite duration
+> - 04, a distribution due to death (not from a modified endowment contract)
+> - 09, an IRA distribution for a first home, only if your spouse had no present interest in a main home during the 2-year period ending on the date of acquisition (the date your spouse entered into a binding contract to buy it, or building or rebuilding began) and, if your spouse is married, the no-ownership requirement is also met by you
+> - 11, a qualified reservist distribution, only if your spouse was ordered or called to active duty after September 11, 2001, for more than 179 days or for an indefinite period because your spouse is a member of a reserve component, the distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement, and it was made no earlier than the date of the order or call and no later than the close of the active duty period
+> - 19, a qualified birth or adoption distribution, only if made during the 1-year period beginning on the date your spouse's child was born or the legal adoption was finalized, an adopted child being an eligible adoptee (not the child of you, and under age 18 or physically or mentally incapable of self-support)
+
+## `retirement.exc_amount`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Amount of this distribution that the exception covers (the tool applies the dollar limits per person).
+>
+> - Medical expenses (05), birth or adoption (19) and domestic abuse (22): the amount of the distribution that qualifies, whatever it was spent on; for 05 the tool limits it to the medical expenses above 7.5% of AGI, and for 22 enter no more than 50% of the present value of the IRA or plan account
+> - First home (09): the amount used to pay qualified acquisition costs before the close of the 120th day after the day you received it
+> - Emergency expenses (23): no more than your total interest in the IRA or plan account minus $1,000
+> - Health insurance premiums while unemployed (07): the premiums you paid
+> - Higher education (08): your adjusted qualified education expenses (Pub. 970, chapter 8)
+> - Other exceptions: the amount the exception covers
+
+Shown on a one-person return:
+
+> Amount of this distribution that the exception covers (the tool applies the dollar limits per person).
+>
+> - Medical expenses (05), birth or adoption (19) and domestic abuse (22): the amount of the distribution that qualifies, whatever it was spent on; for 05 the tool limits it to the medical expenses above 7.5% of AGI, and for 22 enter no more than 50% of the present value of the IRA or plan account
+> - First home (09): the amount used to pay qualified acquisition costs before the close of the 120th day after the day you received it
+> - Emergency expenses (23): no more than your total interest in the IRA or plan account minus $1,000
+> - Health insurance premiums while unemployed (07): the premiums you paid
+> - Higher education (08): your adjusted qualified education expenses (Pub. 970, chapter 8)
+> - Other exceptions: the amount the exception covers
+
+Shown for you on a couple's return:
+
+> About you — Amount of this distribution that the exception covers (the tool applies the dollar limits per person).
+>
+> - Medical expenses (05), birth or adoption (19) and domestic abuse (22): the amount of the distribution that qualifies, whatever it was spent on; for 05 the tool limits it to the medical expenses above 7.5% of AGI, and for 22 enter no more than 50% of the present value of the IRA or plan account
+> - First home (09): the amount used to pay qualified acquisition costs before the close of the 120th day after the day you received it
+> - Emergency expenses (23): no more than your total interest in the IRA or plan account minus $1,000
+> - Health insurance premiums while unemployed (07): the premiums you paid
+> - Higher education (08): your adjusted qualified education expenses (Pub. 970, chapter 8)
+> - Other exceptions: the amount the exception covers
+
+Shown for your spouse:
+
+> About your spouse — Amount of this distribution that the exception covers (the tool applies the dollar limits per person).
+>
+> - Medical expenses (05), birth or adoption (19) and domestic abuse (22): the amount of the distribution that qualifies, whatever it was spent on; for 05 the tool limits it to the medical expenses above 7.5% of AGI, and for 22 enter no more than 50% of the present value of the IRA or plan account
+> - First home (09): the amount used to pay qualified acquisition costs before the close of the 120th day after the day your spouse received it
+> - Emergency expenses (23): no more than your spouse's total interest in the IRA or plan account minus $1,000
+> - Health insurance premiums while unemployed (07): the premiums your spouse paid
+> - Higher education (08): your spouse's adjusted qualified education expenses (Pub. 970, chapter 8)
+> - Other exceptions: the amount the exception covers
+
+## `retirement.rollover_any`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did any of this money go into a retirement account again (a rollover or a conversion), even if it was first paid to you?
+
+Shown on a one-person return:
+
+> Did any of this money go into a retirement account again (a rollover or a conversion), even if it was first paid to you?
+
+Shown for you on a couple's return:
+
+> About you — Did any of this money go into a retirement account again (a rollover or a conversion), even if it was first paid to you?
+
+Shown for your spouse:
+
+> About your spouse — Did any of this money go into a retirement account again (a rollover or a conversion), even if it was first paid to your spouse?
+
+**Help, as stored**
+
+> Money moved into a Roth IRA counts, and so does money put back into an IRA after a first-home purchase fell through. If all of it stayed with you, answer No.
+
+Shown on a one-person return:
+
+> Money moved into a Roth IRA counts, and so does money put back into an IRA after a first-home purchase fell through. If all of it stayed with you, answer No.
+
+Shown for you on a couple's return:
+
+> Money moved into a Roth IRA counts, and so does money put back into an IRA after a first-home purchase fell through. If all of it stayed with you, answer No.
+
+Shown for your spouse:
+
+> Money moved into a Roth IRA counts, and so does money put back into an IRA after a first-home purchase fell through. If all of it stayed with your spouse, answer No.
+
+## `retirement.roth_moved`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did any of this money go into a Roth IRA or another Roth account?
+
+Shown on a one-person return:
+
+> Did any of this money go into a Roth IRA or another Roth account?
+
+Shown for you on a couple's return:
+
+> About you — Did any of this money go into a Roth IRA or another Roth account?
+
+Shown for your spouse:
+
+> About your spouse — Did any of this money go into a Roth IRA or another Roth account?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
 ## `person.x_prior09`
 
 **Question, as stored**
@@ -1598,6 +1774,1276 @@ Shown for you on a couple's return:
 Shown for your spouse:
 
 > List a Form RRB-1099-R too. Do not list a Form SSA-1099 or RRB-1099 (social security benefits); they are asked about separately.
+
+## `retirement.under59`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Were you under age 59½ when you received any of this money?
+
+Shown on a one-person return:
+
+> Were you under age 59½ when you received any of this money?
+
+Shown for you on a couple's return:
+
+> About you — Were you under age 59½ when you received any of this money?
+
+Shown for your spouse:
+
+> About your spouse — Was your spouse under age 59½ when your spouse received any of this money?
+
+## `retirement.after59`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Were you age 59½ or older on the date of every payment of this money?
+
+Shown on a one-person return:
+
+> Were you age 59½ or older on the date of every payment of this money?
+
+Shown for you on a couple's return:
+
+> About you — Were you age 59½ or older on the date of every payment of this money?
+
+Shown for your spouse:
+
+> About your spouse — Was your spouse age 59½ or older on the date of every payment of this money?
+
+**Help, as stored**
+
+> Code 1 or S tells the IRS you were under 59½. If you turned 59½ in 2025 and got some of this money before that day, answer No, and choose exception 12 at the exception question for the part you got on or after it.
+
+Shown on a one-person return:
+
+> Code 1 or S tells the IRS you were under 59½. If you turned 59½ in 2025 and got some of this money before that day, answer No, and choose exception 12 at the exception question for the part you got on or after it.
+
+Shown for you on a couple's return:
+
+> Code 1 or S tells the IRS you were under 59½. If you turned 59½ in 2025 and got some of this money before that day, answer No, and choose exception 12 at the exception question for the part you got on or after it.
+
+Shown for your spouse:
+
+> Code 1 or S tells the IRS your spouse was under 59½. If your spouse turned 59½ in 2025 and got some of this money before that day, answer No, and choose exception 12 at the exception question for the part your spouse got on or after it.
+
+## `retirement.sec457`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Is it from a section 457 plan (a deferred compensation plan of a state or local government or a tax-exempt employer), and not money that was rolled into that plan from another kind of plan?
+
+Shown on a one-person return:
+
+> Is it from a section 457 plan (a deferred compensation plan of a state or local government or a tax-exempt employer), and not money that was rolled into that plan from another kind of plan?
+
+Shown for you on a couple's return:
+
+> About you — Is it from a section 457 plan (a deferred compensation plan of a state or local government or a tax-exempt employer), and not money that was rolled into that plan from another kind of plan?
+
+Shown for your spouse:
+
+> About your spouse — Is it from a section 457 plan (a deferred compensation plan of a state or local government or a tax-exempt employer), and not money that was rolled into that plan from another kind of plan?
+
+**Help, as stored**
+
+> A No means the code on the form does not fit and the interview ends here: this tool does not figure the extra tax that may then be due.
+
+Shown on a one-person return:
+
+> A No means the code on the form does not fit and the interview ends here: this tool does not figure the extra tax that may then be due.
+
+Shown for you on a couple's return:
+
+> A No means the code on the form does not fit and the interview ends here: this tool does not figure the extra tax that may then be due.
+
+Shown for your spouse:
+
+> A No means the code on the form does not fit and the interview ends here: this tool does not figure the extra tax that may then be due.
+
+## `retirement.code2_partial`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
+
+Shown on a one-person return:
+
+> Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
+
+Shown for you on a couple's return:
+
+> About you — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
+
+Shown for your spouse:
+
+> About your spouse — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.not_beneficiary`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way, or are you the surviving spouse and have you made the IRA your own (by choosing to, by putting money into it, or by not taking a required minimum distribution from it as a beneficiary)?
+
+Shown on a one-person return:
+
+> Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way, or are you the surviving spouse and have you made the IRA your own (by choosing to, by putting money into it, or by not taking a required minimum distribution from it as a beneficiary)?
+
+Shown for you on a couple's return:
+
+> About you — Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way, or are you the surviving spouse and have you made the IRA your own (by choosing to, by putting money into it, or by not taking a required minimum distribution from it as a beneficiary)?
+
+Shown for your spouse:
+
+> About your spouse — Code 4 is for money paid to the beneficiary of a person who has died. Did your spouse get this money some other way, or is your spouse the surviving spouse and has your spouse made the IRA your spouse's own (by choosing to, by putting money into it, or by not taking a required minimum distribution from it as a beneficiary)?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.box1`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Gross distribution, Form 1099-R box 1
+
+Shown on a one-person return:
+
+> Gross distribution, Form 1099-R box 1
+
+Shown for you on a couple's return:
+
+> About you — Gross distribution, Form 1099-R box 1
+
+Shown for your spouse:
+
+> About your spouse — Gross distribution, Form 1099-R box 1
+
+## `retirement.box5`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Employee contributions, designated Roth contributions or insurance premiums, Form 1099-R box 5 (a pension or annuity; zero for an IRA)
+
+Shown on a one-person return:
+
+> Employee contributions, designated Roth contributions or insurance premiums, Form 1099-R box 5 (a pension or annuity; zero for an IRA)
+
+Shown for you on a couple's return:
+
+> About you — Employee contributions, designated Roth contributions or insurance premiums, Form 1099-R box 5 (a pension or annuity; zero for an IRA)
+
+Shown for your spouse:
+
+> About your spouse — Employee contributions, designated Roth contributions or insurance premiums, Form 1099-R box 5 (a pension or annuity; zero for an IRA)
+
+## `retirement.box6`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Is there an amount in box 6 of this form (net unrealized appreciation in employer's securities)?
+
+Shown on a one-person return:
+
+> Is there an amount in box 6 of this form (net unrealized appreciation in employer's securities)?
+
+Shown for you on a couple's return:
+
+> About you — Is there an amount in box 6 of this form (net unrealized appreciation in employer's securities)?
+
+Shown for your spouse:
+
+> About your spouse — Is there an amount in box 6 of this form (net unrealized appreciation in employer's securities)?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.rollover_property`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did the plan or IRA pay out anything other than cash (such as shares) that was then sold, kept, or put only partly into the new account?
+
+Shown on a one-person return:
+
+> Did the plan or IRA pay out anything other than cash (such as shares) that was then sold, kept, or put only partly into the new account?
+
+Shown for you on a couple's return:
+
+> About you — Did the plan or IRA pay out anything other than cash (such as shares) that was then sold, kept, or put only partly into the new account?
+
+Shown for your spouse:
+
+> About your spouse — Did the plan or IRA pay out anything other than cash (such as shares) that was then sold, kept, or put only partly into the new account?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.rollover_qdro`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you get this money under a court order in a divorce or separation (a qualified domestic relations order)?
+
+Shown on a one-person return:
+
+> Did you get this money under a court order in a divorce or separation (a qualified domestic relations order)?
+
+Shown for you on a couple's return:
+
+> About you — Did you get this money under a court order in a divorce or separation (a qualified domestic relations order)?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse get this money under a court order in a divorce or separation (a qualified domestic relations order)?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.levy_returned`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was this money taken by the IRS under a levy and later returned to you?
+
+Shown on a one-person return:
+
+> Was this money taken by the IRS under a levy and later returned to you?
+
+Shown for you on a couple's return:
+
+> About you — Was this money taken by the IRS under a levy and later returned to you?
+
+Shown for your spouse:
+
+> About your spouse — Was this money taken by the IRS under a levy and later returned to your spouse?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.rollover_nonspouse`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you inherit this money from someone other than your spouse?
+
+Shown on a one-person return:
+
+> Did you inherit this money from someone other than your spouse?
+
+Shown for you on a couple's return:
+
+> About you — Did you inherit this money from someone other than your spouse?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse inherit this money from someone other than you?
+
+**Help, as stored**
+
+> Only a husband or wife who inherits can put money paid to them back into a retirement account. A Yes ends the interview here.
+
+Shown on a one-person return:
+
+> Only a husband or wife who inherits can put money paid to them back into a retirement account. A Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> Only a husband or wife who inherits can put money paid to them back into a retirement account. A Yes ends the interview here.
+
+Shown for your spouse:
+
+> Only a husband or wife who inherits can put money paid to them back into a retirement account. A Yes ends the interview here.
+
+## `retirement.charity_hsa`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did any of this money go straight from the IRA to a charity, or into a health savings account?
+
+Shown on a one-person return:
+
+> Did any of this money go straight from the IRA to a charity, or into a health savings account?
+
+Shown for you on a couple's return:
+
+> About you — Did any of this money go straight from the IRA to a charity, or into a health savings account?
+
+Shown for your spouse:
+
+> About your spouse — Did any of this money go straight from the IRA to a charity, or into a health savings account?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.ira_returned`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was any of this a contribution of yours that the IRA paid back to you, for example because you had put in more than the yearly limit?
+
+Shown on a one-person return:
+
+> Was any of this a contribution of yours that the IRA paid back to you, for example because you had put in more than the yearly limit?
+
+Shown for you on a couple's return:
+
+> About you — Was any of this a contribution of yours that the IRA paid back to you, for example because you had put in more than the yearly limit?
+
+Shown for your spouse:
+
+> About your spouse — Was any of this a contribution of your spouse's that the IRA paid back to your spouse, for example because your spouse had put in more than the yearly limit?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.ira_basis`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Does any traditional IRA of yours hold money on which tax was already paid, such as contributions you did not deduct, after-tax money rolled over from a work plan, or basis that came with an IRA from a spouse in a divorce or from someone who died?
+
+Shown on a one-person return:
+
+> Does any traditional IRA of yours hold money on which tax was already paid, such as contributions you did not deduct, after-tax money rolled over from a work plan, or basis that came with an IRA from a spouse in a divorce or from someone who died?
+
+Shown for you on a couple's return:
+
+> About you — Does any traditional IRA of yours hold money on which tax was already paid, such as contributions you did not deduct, after-tax money rolled over from a work plan, or basis that came with an IRA from a spouse in a divorce or from someone who died?
+
+Shown for your spouse:
+
+> About your spouse — Does any traditional IRA of your spouse's hold money on which tax was already paid, such as contributions your spouse did not deduct, after-tax money rolled over from a work plan, or basis that came with an IRA from a spouse in a divorce or from someone who died?
+
+**Help, as stored**
+
+> For example: contributions you did not deduct, after-tax money rolled in from a work plan, or an IRA received in a divorce or inherited with basis. A Form 8606 on any earlier return means Yes. A Yes ends the interview here.
+
+Shown on a one-person return:
+
+> For example: contributions you did not deduct, after-tax money rolled in from a work plan, or an IRA received in a divorce or inherited with basis. A Form 8606 on any earlier return means Yes. A Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> For example: contributions you did not deduct, after-tax money rolled in from a work plan, or an IRA received in a divorce or inherited with basis. A Form 8606 on any earlier return means Yes. A Yes ends the interview here.
+
+Shown for your spouse:
+
+> For example: contributions your spouse did not deduct, after-tax money rolled in from a work plan, or an IRA received in a divorce or inherited with basis. A Form 8606 on any earlier return means Yes. A Yes ends the interview here.
+
+## `retirement.loan_offset`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was any of this amount an unpaid loan from the plan that was taken off your balance, not money paid out (a plan loan offset)?
+
+Shown on a one-person return:
+
+> Was any of this amount an unpaid loan from the plan that was taken off your balance, not money paid out (a plan loan offset)?
+
+Shown for you on a couple's return:
+
+> About you — Was any of this amount an unpaid loan from the plan that was taken off your balance, not money paid out (a plan loan offset)?
+
+Shown for your spouse:
+
+> About your spouse — Was any of this amount an unpaid loan from the plan that was taken off your spouse's balance, not money paid out (a plan loan offset)?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.disability`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was any of this paid to you because you became disabled, under a plan that provides for disability retirement?
+
+Shown on a one-person return:
+
+> Was any of this paid to you because you became disabled, under a plan that provides for disability retirement?
+
+Shown for you on a couple's return:
+
+> About you — Was any of this paid to you because you became disabled, under a plan that provides for disability retirement?
+
+Shown for your spouse:
+
+> About your spouse — Was any of this paid to your spouse because your spouse became disabled, under a plan that provides for disability retirement?
+
+## `retirement.dis_early`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — When any of this was paid, were you younger than the earliest age at which the plan would have allowed retirement without the disability (its minimum retirement age)?
+
+Shown on a one-person return:
+
+> When any of this was paid, were you younger than the earliest age at which the plan would have allowed retirement without the disability (its minimum retirement age)?
+
+Shown for you on a couple's return:
+
+> About you — When any of this was paid, were you younger than the earliest age at which the plan would have allowed retirement without the disability (its minimum retirement age)?
+
+Shown for your spouse:
+
+> About your spouse — When any of this was paid, was your spouse younger than the earliest age at which the plan would have allowed retirement without the disability (its minimum retirement age)?
+
+**Help, as stored**
+
+> The plan or the employer can tell you its minimum retirement age.
+
+Shown on a one-person return:
+
+> The plan or the employer can tell you its minimum retirement age.
+
+Shown for you on a couple's return:
+
+> The plan or the employer can tell you its minimum retirement age.
+
+Shown for your spouse:
+
+> The plan or the employer can tell your spouse its minimum retirement age.
+
+## `retirement.dis_all_early`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Were you younger than that age when each payment of 2025 on this form was made?
+
+Shown on a one-person return:
+
+> Were you younger than that age when each payment of 2025 on this form was made?
+
+Shown for you on a couple's return:
+
+> About you — Were you younger than that age when each payment of 2025 on this form was made?
+
+Shown for your spouse:
+
+> About your spouse — Was your spouse younger than that age when each payment of 2025 on this form was made?
+
+**Help, as stored**
+
+> Until that age a disability pension is reported as wages; from the day after, as a pension. A year in which you reached that age is outside what this tool prepares; a No ends the interview here.
+
+Shown on a one-person return:
+
+> Until that age a disability pension is reported as wages; from the day after, as a pension. A year in which you reached that age is outside what this tool prepares; a No ends the interview here.
+
+Shown for you on a couple's return:
+
+> Until that age a disability pension is reported as wages; from the day after, as a pension. A year in which you reached that age is outside what this tool prepares; a No ends the interview here.
+
+Shown for your spouse:
+
+> Until that age a disability pension is reported as wages; from the day after, as a pension. A year in which your spouse reached that age is outside what this tool prepares; a No ends the interview here.
+
+## `retirement.dis_terror`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did the disability result from a terrorist attack?
+
+Shown on a one-person return:
+
+> Did the disability result from a terrorist attack?
+
+Shown for you on a couple's return:
+
+> About you — Did the disability result from a terrorist attack?
+
+Shown for your spouse:
+
+> About your spouse — Did the disability result from a terrorist attack?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.dis_military`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Is it a disability pension for service in the armed forces?
+
+Shown on a one-person return:
+
+> Is it a disability pension for service in the armed forces?
+
+Shown for you on a couple's return:
+
+> About you — Is it a disability pension for service in the armed forces?
+
+Shown for your spouse:
+
+> About your spouse — Is it a disability pension for service in the armed forces?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.pso_exclusion`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Are you a retired police officer, firefighter or other public safety officer who wants to leave out of income the part of this pension that paid for health or long-term care insurance?
+
+Shown on a one-person return:
+
+> Are you a retired police officer, firefighter or other public safety officer who wants to leave out of income the part of this pension that paid for health or long-term care insurance?
+
+Shown for you on a couple's return:
+
+> About you — Are you a retired police officer, firefighter or other public safety officer who wants to leave out of income the part of this pension that paid for health or long-term care insurance?
+
+Shown for your spouse:
+
+> About your spouse — Is your spouse a retired police officer, firefighter or other public safety officer who wants to leave out of income the part of this pension that paid for health or long-term care insurance?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares. To go on without it, answer No.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares. To go on without it, answer No.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares. To go on without it, answer No.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares. To go on without it, answer No.
+
+## `retirement.born_before_averaging_date`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was the person who earned this pension or plan balance (you, or the person you inherited it from) born before January 2, 1936?
+
+Shown on a one-person return:
+
+> Was the person who earned this pension or plan balance (you, or the person you inherited it from) born before January 2, 1936?
+
+Shown for you on a couple's return:
+
+> About you — Was the person who earned this pension or plan balance (you, or the person you inherited it from) born before January 2, 1936?
+
+Shown for your spouse:
+
+> About your spouse — Was the person who earned this pension or plan balance (your spouse, or the person your spouse inherited it from) born before January 2, 1936?
+
+## `retirement.lump_sum`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)?
+
+Shown on a one-person return:
+
+> Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)?
+
+Shown for you on a couple's return:
+
+> About you — Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)?
+
+Shown for your spouse:
+
+> About your spouse — Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.death_exclusion`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did the person who earned this pension (an employee or a former employee, a retiree included) die before August 21, 1996, so that a death benefit exclusion applies to these payments?
+
+Shown on a one-person return:
+
+> Did the person who earned this pension (an employee or a former employee, a retiree included) die before August 21, 1996, so that a death benefit exclusion applies to these payments?
+
+Shown for you on a couple's return:
+
+> About you — Did the person who earned this pension (an employee or a former employee, a retiree included) die before August 21, 1996, so that a death benefit exclusion applies to these payments?
+
+Shown for your spouse:
+
+> About your spouse — Did the person who earned this pension (an employee or a former employee, a retiree included) die before August 21, 1996, so that a death benefit exclusion applies to these payments?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.ben_before_retire`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did the person who died do so before this pension's payments to them began (its annuity starting date), even if they had already stopped working?
+
+Shown on a one-person return:
+
+> Did the person who died do so before this pension's payments to them began (its annuity starting date), even if they had already stopped working?
+
+Shown for you on a couple's return:
+
+> About you — Did the person who died do so before this pension's payments to them began (its annuity starting date), even if they had already stopped working?
+
+Shown for your spouse:
+
+> About your spouse — Did the person who died do so before this pension's payments to them began (its annuity starting date), even if they had already stopped working?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.ben_guaranteed`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Are these payments ones the plan guaranteed for a set period after the retiree's pension began, not a survivor's pension paid for your own life?
+
+Shown on a one-person return:
+
+> Are these payments ones the plan guaranteed for a set period after the retiree's pension began, not a survivor's pension paid for your own life?
+
+Shown for you on a couple's return:
+
+> About you — Are these payments ones the plan guaranteed for a set period after the retiree's pension began, not a survivor's pension paid for your own life?
+
+Shown for your spouse:
+
+> About your spouse — Are these payments ones the plan guaranteed for a set period after the retiree's pension began, not a survivor's pension paid for your spouse's own life?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.ben_shared`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Is this pension shared among more than one beneficiary?
+
+Shown on a one-person return:
+
+> Is this pension shared among more than one beneficiary?
+
+Shown for you on a couple's return:
+
+> About you — Is this pension shared among more than one beneficiary?
+
+Shown for your spouse:
+
+> About your spouse — Is this pension shared among more than one beneficiary?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.cost_any`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes.
+
+Shown on a one-person return:
+
+> Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes.
+
+Shown for you on a couple's return:
+
+> About you — Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes.
+
+Shown for your spouse:
+
+> About your spouse — Was any of the money paid into this pension or annuity already taxed when it went in (after-tax contributions)? An amount in box 5 or box 9b means yes.
+
+**Help, as stored**
+
+> If you are not sure, answer Yes.
+
+Shown on a one-person return:
+
+> If you are not sure, answer Yes.
+
+Shown for you on a couple's return:
+
+> If you are not sure, answer Yes.
+
+Shown for your spouse:
+
+> If your spouse is not sure, answer Yes.
+
+## `retirement.own_annuity`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Is this an annuity you bought yourself from an insurance company, not through an employer's plan (a nonqualified annuity)?
+
+Shown on a one-person return:
+
+> Is this an annuity you bought yourself from an insurance company, not through an employer's plan (a nonqualified annuity)?
+
+Shown for you on a couple's return:
+
+> About you — Is this an annuity you bought yourself from an insurance company, not through an employer's plan (a nonqualified annuity)?
+
+Shown for your spouse:
+
+> About your spouse — Is this an annuity your spouse bought himself or herself from an insurance company, not through an employer's plan (a nonqualified annuity)?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.csrs_alt`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Is this a federal civil service pension for which you took a lump-sum payment of your own contributions when you retired (the alternative annuity option)?
+
+Shown on a one-person return:
+
+> Is this a federal civil service pension for which you took a lump-sum payment of your own contributions when you retired (the alternative annuity option)?
+
+Shown for you on a couple's return:
+
+> About you — Is this a federal civil service pension for which you took a lump-sum payment of your own contributions when you retired (the alternative annuity option)?
+
+Shown for your spouse:
+
+> About your spouse — Is this a federal civil service pension for which your spouse took a lump-sum payment of your spouse's own contributions when your spouse retired (the alternative annuity option)?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.started_before_simplified_method_date`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did the regular payments from this pension or annuity start before November 19, 1996? (For a survivor, count from when the retiree's payments started.)
+
+Shown on a one-person return:
+
+> Did the regular payments from this pension or annuity start before November 19, 1996? (For a survivor, count from when the retiree's payments started.)
+
+Shown for you on a couple's return:
+
+> About you — Did the regular payments from this pension or annuity start before November 19, 1996? (For a survivor, count from when the retiree's payments started.)
+
+Shown for your spouse:
+
+> About your spouse — Did the regular payments from this pension or annuity start before November 19, 1996? (For a survivor, count from when the retiree's payments started.)
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.general_rule`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — When the regular payments started, were you (or, for a survivor, the retiree) 75 or older, with payments guaranteed for five years or more?
+
+Shown on a one-person return:
+
+> When the regular payments started, were you (or, for a survivor, the retiree) 75 or older, with payments guaranteed for five years or more?
+
+Shown for you on a couple's return:
+
+> About you — When the regular payments started, were you (or, for a survivor, the retiree) 75 or older, with payments guaranteed for five years or more?
+
+Shown for your spouse:
+
+> About your spouse — When the regular payments started, was your spouse (or, for a survivor, the retiree) 75 or older, with payments guaranteed for five years or more?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.lump_at_start`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Besides regular payments, does this form include a one-time payment that came with the start of the pension, closed it out, or made your later payments smaller?
+
+Shown on a one-person return:
+
+> Besides regular payments, does this form include a one-time payment that came with the start of the pension, closed it out, or made your later payments smaller?
+
+Shown for you on a couple's return:
+
+> About you — Besides regular payments, does this form include a one-time payment that came with the start of the pension, closed it out, or made your later payments smaller?
+
+Shown for your spouse:
+
+> About your spouse — Besides regular payments, does this form include a one-time payment that came with the start of the pension, closed it out, or made your spouse's later payments smaller?
+
+**Help, as stored**
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+## `retirement.cost`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Your cost (net investment, after-tax contributions) in the plan at the annuity starting date; it may be shown in Form 1099-R box 9b (if you are the survivor of a retiree, the retiree's cost at the retiree's annuity starting date)
+
+Shown on a one-person return:
+
+> Your cost (net investment, after-tax contributions) in the plan at the annuity starting date; it may be shown in Form 1099-R box 9b (if you are the survivor of a retiree, the retiree's cost at the retiree's annuity starting date)
+
+Shown for you on a couple's return:
+
+> About you — Your cost (net investment, after-tax contributions) in the plan at the annuity starting date; it may be shown in Form 1099-R box 9b (if you are the survivor of a retiree, the retiree's cost at the retiree's annuity starting date)
+
+Shown for your spouse:
+
+> About your spouse — Your spouse's cost (net investment, after-tax contributions) in the plan at the annuity starting date; it may be shown in Form 1099-R box 9b (if your spouse is the survivor of a retiree, the retiree's cost at the retiree's annuity starting date)
+
+## `retirement.used_last_year`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you complete the Simplified Method Worksheet for this annuity last year? (If you are the survivor of a retiree, answer Yes if you or the retiree completed it for this annuity last year.)
+
+Shown on a one-person return:
+
+> Did you complete the Simplified Method Worksheet for this annuity last year? (If you are the survivor of a retiree, answer Yes if you or the retiree completed it for this annuity last year.)
+
+Shown for you on a couple's return:
+
+> About you — Did you complete the Simplified Method Worksheet for this annuity last year? (If you are the survivor of a retiree, answer Yes if you or the retiree completed it for this annuity last year.)
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse complete the Simplified Method Worksheet for this annuity last year? (If your spouse is the survivor of a retiree, answer Yes if your spouse or the retiree completed it for this annuity last year.)
+
+## `retirement.last_line4`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — The amount on line 4 of last year's Simplified Method Worksheet for this annuity (yours, or the retiree's if you are the survivor of a retiree)
+
+Shown on a one-person return:
+
+> The amount on line 4 of last year's Simplified Method Worksheet for this annuity (yours, or the retiree's if you are the survivor of a retiree)
+
+Shown for you on a couple's return:
+
+> About you — The amount on line 4 of last year's Simplified Method Worksheet for this annuity (yours, or the retiree's if you are the survivor of a retiree)
+
+Shown for your spouse:
+
+> About your spouse — The amount on line 4 of last year's Simplified Method Worksheet for this annuity (your spouse's, or the retiree's if your spouse is the survivor of a retiree)
+
+## `retirement.joint_life`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Was the annuity starting date after 1997, with payments for your life and that of your beneficiary (Table 2)? (If you are the survivor of a retiree, answer for the retiree's annuity, that is, whether its starting date was after 1997, with payments for the retiree's life and yours.)
+
+Shown on a one-person return:
+
+> Was the annuity starting date after 1997, with payments for your life and that of your beneficiary (Table 2)? (If you are the survivor of a retiree, answer for the retiree's annuity, that is, whether its starting date was after 1997, with payments for the retiree's life and yours.)
+
+Shown for you on a couple's return:
+
+> About you — Was the annuity starting date after 1997, with payments for your life and that of your beneficiary (Table 2)? (If you are the survivor of a retiree, answer for the retiree's annuity, that is, whether its starting date was after 1997, with payments for the retiree's life and yours.)
+
+Shown for your spouse:
+
+> About your spouse — Was the annuity starting date after 1997, with payments for your spouse's life and that of your spouse's beneficiary (Table 2)? (If your spouse is the survivor of a retiree, answer for the retiree's annuity, that is, whether its starting date was after 1997, with payments for the retiree's life and your spouse's.)
+
+## `retirement.age`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Your age at the annuity starting date (if you are the survivor of a retiree, the retiree's age on their annuity starting date)
+
+Shown on a one-person return:
+
+> Your age at the annuity starting date (if you are the survivor of a retiree, the retiree's age on their annuity starting date)
+
+Shown for you on a couple's return:
+
+> About you — Your age at the annuity starting date (if you are the survivor of a retiree, the retiree's age on their annuity starting date)
+
+Shown for your spouse:
+
+> About your spouse — Your spouse's age at the annuity starting date (if your spouse is the survivor of a retiree, the retiree's age on their annuity starting date)
+
+## `retirement.combined_age`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Your combined ages (yours and your beneficiary's) at the annuity starting date (if you are the survivor of a retiree, the retiree's age and yours on the retiree's annuity starting date)
+
+Shown on a one-person return:
+
+> Your combined ages (yours and your beneficiary's) at the annuity starting date (if you are the survivor of a retiree, the retiree's age and yours on the retiree's annuity starting date)
+
+Shown for you on a couple's return:
+
+> About you — Your combined ages (yours and your beneficiary's) at the annuity starting date (if you are the survivor of a retiree, the retiree's age and yours on the retiree's annuity starting date)
+
+Shown for your spouse:
+
+> About your spouse — Your spouse's combined ages (your spouse's and your spouse's beneficiary's) at the annuity starting date (if your spouse is the survivor of a retiree, the retiree's age and your spouse's on the retiree's annuity starting date)
+
+**Help, as stored**
+
+> If the payments go on after the first person's death to more than one person, use the age of the youngest of them. If there is no main annuitant and the payments go to you and others, add the ages of the oldest and the youngest.
+
+Shown on a one-person return:
+
+> If the payments go on after the first person's death to more than one person, use the age of the youngest of them. If there is no main annuitant and the payments go to you and others, add the ages of the oldest and the youngest.
+
+Shown for you on a couple's return:
+
+> If the payments go on after the first person's death to more than one person, use the age of the youngest of them. If there is no main annuitant and the payments go to you and others, add the ages of the oldest and the youngest.
+
+Shown for your spouse:
+
+> If the payments go on after the first person's death to more than one person, use the age of the youngest of them. If there is no main annuitant and the payments go to your spouse and others, add the ages of the oldest and the youngest.
+
+## `retirement.months`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Number of months for which this year's payments were made (at most 12) — the months covered by the payments included in box 1 of this Form 1099-R, not the calendar months of 2025 since the payments began; for example, a pension paid monthly in arrears that began in July, with five payments in 2025 for July through November, is 5
+
+Shown on a one-person return:
+
+> Number of months for which this year's payments were made (at most 12) — the months covered by the payments included in box 1 of this Form 1099-R, not the calendar months of 2025 since the payments began; for example, a pension paid monthly in arrears that began in July, with five payments in 2025 for July through November, is 5
+
+Shown for you on a couple's return:
+
+> About you — Number of months for which this year's payments were made (at most 12) — the months covered by the payments included in box 1 of this Form 1099-R, not the calendar months of 2025 since the payments began; for example, a pension paid monthly in arrears that began in July, with five payments in 2025 for July through November, is 5
+
+Shown for your spouse:
+
+> About your spouse — Number of months for which this year's payments were made (at most 12) — the months covered by the payments included in box 1 of this Form 1099-R, not the calendar months of 2025 since the payments began; for example, a pension paid monthly in arrears that began in July, with five payments in 2025 for July through November, is 5
+
+## `retirement.recovered`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Amount, if any, recovered tax free in years after 1986 (if you completed this worksheet last year, line 10 of last year's worksheet; if you are the survivor of a retiree, include the amount the retiree recovered tax free)
+
+Shown on a one-person return:
+
+> Amount, if any, recovered tax free in years after 1986 (if you completed this worksheet last year, line 10 of last year's worksheet; if you are the survivor of a retiree, include the amount the retiree recovered tax free)
+
+Shown for you on a couple's return:
+
+> About you — Amount, if any, recovered tax free in years after 1986 (if you completed this worksheet last year, line 10 of last year's worksheet; if you are the survivor of a retiree, include the amount the retiree recovered tax free)
+
+Shown for your spouse:
+
+> About your spouse — Amount, if any, recovered tax free in years after 1986 (if your spouse completed this worksheet last year, line 10 of last year's worksheet; if your spouse is the survivor of a retiree, include the amount the retiree recovered tax free)
+
+## `retirement.disaster`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?
+
+Shown on a one-person return:
+
+> Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?
+
+Shown for you on a couple's return:
+
+> About you — Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?
+
+**Help, as stored**
+
+> Count money taken out to buy or build a home that a disaster then stopped, if you put it back. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown on a one-person return:
+
+> Count money taken out to buy or build a home that a disaster then stopped, if you put it back. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> Count money taken out to buy or build a home that a disaster then stopped, if you put it back. A return with this is outside what this tool prepares; a Yes ends the interview here.
+
+Shown for your spouse:
+
+> Count money taken out to buy or build a home that a disaster then stopped, if your spouse put it back. A return with this is outside what this tool prepares; a Yes ends the interview here.
 
 ## `person.educator_expenses`
 
@@ -4048,6 +5494,76 @@ Shown for you on a couple's return:
 Shown for your spouse:
 
 > On a joint return these go only in your spouse's own column of Form 8880 line 4.
+
+## `retirement.sav_military`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Is this a distribution from a military retirement plan (such as military retired pay), other than the federal Thrift Savings Plan (TSP)?
+
+Shown on a one-person return:
+
+> Is this a distribution from a military retirement plan (such as military retired pay), other than the federal Thrift Savings Plan (TSP)?
+
+Shown for you on a couple's return:
+
+> About you — Is this a distribution from a military retirement plan (such as military retired pay), other than the federal Thrift Savings Plan (TSP)?
+
+Shown for your spouse:
+
+> About your spouse — Is this a distribution from a military retirement plan (such as military retired pay), other than the federal Thrift Savings Plan (TSP)?
+
+## `retirement.sav_404k`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Is this a distribution of dividends paid on stock held by an employee stock ownership plan under section 404(k) (reported on its own Form 1099-R)?
+
+Shown on a one-person return:
+
+> Is this a distribution of dividends paid on stock held by an employee stock ownership plan under section 404(k) (reported on its own Form 1099-R)?
+
+Shown for you on a couple's return:
+
+> About you — Is this a distribution of dividends paid on stock held by an employee stock ownership plan under section 404(k) (reported on its own Form 1099-R)?
+
+Shown for your spouse:
+
+> About your spouse — Is this a distribution of dividends paid on stock held by an employee stock ownership plan under section 404(k) (reported on its own Form 1099-R)?
+
+## `retirement.sav_inherited`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Is this a distribution from an inherited IRA that you (or your spouse, on a joint return) received as a beneficiary who was not the IRA owner's spouse?
+
+Shown on a one-person return:
+
+> Is this a distribution from an inherited IRA that you (or your spouse, on a joint return) received as a beneficiary who was not the IRA owner's spouse?
+
+Shown for you on a couple's return:
+
+> About you — Is this a distribution from an inherited IRA that you (or your spouse, on a joint return) received as a beneficiary who was not the IRA owner's spouse?
+
+Shown for your spouse:
+
+> About your spouse — Is this a distribution from an inherited IRA that you (or your spouse, on a joint return) received as a beneficiary who was not the IRA owner's spouse?
+
+**Help, as stored**
+
+> With code 4, a Yes means you cannot put money paid to you back into a retirement account, and if you did, the interview ends here.
+
+Shown on a one-person return:
+
+> With code 4, a Yes means you cannot put money paid to you back into a retirement account, and if you did, the interview ends here.
+
+Shown for you on a couple's return:
+
+> With code 4, a Yes means you cannot put money paid to you back into a retirement account, and if you did, the interview ends here.
+
+Shown for your spouse:
+
+> With code 4, a Yes means your spouse cannot put money paid to your spouse back into a retirement account, and if your spouse did, the interview ends here.
 
 ## `$k1s`
 

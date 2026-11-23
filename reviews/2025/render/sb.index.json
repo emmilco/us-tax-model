@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "1a5dc8681840d939dc7333d238b4879fa1687e7749e1080a44ee513b78f00891",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,15 +22,15 @@
   },
   {
    "key": "2",
-   "record": "863886fe52274b7cd1f5d2a62d7eaf9af9011b38d61b6ae107f62791ca1ae7d4",
+   "record": "3b69799505d0b65b04cac7a3a55fb0ecc40172a2f025066075c7ae47ee0156d0",
    "status": "MATCH",
-   "subject_key": "11aca01dafd9bf8ca53a1c07276eef93f8273e529e57d083e0c59d3b5dc9967e"
+   "subject_key": "b68fb76ce12b625854776985b670fb92bcc627ee19f2d0fbffce6537cc217065"
   },
   {
    "key": "3",
-   "record": "863886fe52274b7cd1f5d2a62d7eaf9af9011b38d61b6ae107f62791ca1ae7d4",
+   "record": "3b69799505d0b65b04cac7a3a55fb0ecc40172a2f025066075c7ae47ee0156d0",
    "status": "MATCH",
-   "subject_key": "d08703514f0fd39f1fca511b4cd6b6921fb2efb3c49f6ae72b073bf7b58c71b5"
+   "subject_key": "1f120493f91dad19f4273b1675d2fc2bf675b77673015733a6d239ec62e6f8da"
   },
   {
    "key": "4",
@@ -40,18 +40,18 @@
   },
   {
    "key": "6",
-   "record": "863886fe52274b7cd1f5d2a62d7eaf9af9011b38d61b6ae107f62791ca1ae7d4",
+   "record": "3b69799505d0b65b04cac7a3a55fb0ecc40172a2f025066075c7ae47ee0156d0",
    "status": "MATCH",
-   "subject_key": "c248e852160eb05262ff2b14ee8121a8ed678245cda5fdb105dd9844481f04e2"
+   "subject_key": "782f5d7dd0916a5580fe8ac21ebcb4039c9b56eaf56731d042dc8a1932dc1b89"
   }
  ],
  "subjects": {
   "7a": "6a532b2dfe92d7e1cd9802a6b8f59bf57f5bef87caac66d805d0fe049bc236f8",
   "8": "a96cc50653790fbaf7c06a736cba0f32acb35d67d5dbe1b324690c7a97358963",
-  "2": "7aea750f06c26bac7c3812e9a4f8dd24d0f2c782802b94ba78124134c5d63ed7",
-  "3": "9ab0e5ff39bfef9ccf6fe3e148b92068e6e64f04b9c9c72f677807d568dbc0c7",
+  "2": "2e310c119cc465645c99f8be5b167892b39f0530f26ebfffe10942e5a6ddc771",
+  "3": "069fbda5c62fafc4b9bd6fb3be9b73408146a739015561052fcba080865cc088",
   "4": "51868f1dba562d284ef317872515b1b49dd12c6a346e0f4379e6aabb34f63bb9",
-  "6": "cc0d9f90b78ebba3e8ce631bdc13ff382bc521ae392b82afdcce333b6a85b2e9"
+  "6": "fda8a57cfa3ad539830e8ffae2207b56bc01d06fc2f2621d70920b0bda1f5269"
  },
  "__rest__": "a94af5b651134640cc219aba4abb67814d5b7730c6a2f18c6e978773a29f39cc"
 }

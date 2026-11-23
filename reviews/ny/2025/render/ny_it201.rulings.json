@@ -3,6 +3,16 @@
  "form": "ny_it201",
  "rulings": [
   {
+   "printed": "(Note 1)",
+   "restated": "Subtract $0 from line 19. If zero or less, enter -0-.",
+   "model": "Note 1 says that if 'you entered special condition code A6 (for Build America Bond interest), your federal adjusted gross income is the line 19 amount minus any Build America Bond interest'. The restatement subtracts $0 and names no refusal for A6. Flooring at zero is harmless, because Note 2 places 0 and negative amounts in the first row.",
+   "ruling": "Ruling: scope; special condition code A6 (Build America Bond interest) is refused: ny_it201.ask.bab (asked with interest) feeds ny_it201.ask.special_code, the item G refusal, so the household credit is never computed on a return that would subtract Build America Bond interest. Subtracting $0 is the line 19 amount on every return reached.",
+   "context": "a68263aa16d14c8ebbbee0817ffa4dfe8194055727641b179cdeccd7d71d62f8",
+   "date": "2026-11-23",
+   "run": "b1165e78d059d82ce02365301393229a16437219f9b9b16f0d3ef0a335d8870b",
+   "subject_key": "40d6529da708f953d0a5685b58c73ddf99cca34cdfe21571f09161d4dd878c22"
+  },
+  {
    "printed": "1",
    "restated": "Round f1040 line 1z to the nearest multiple of (half up) $1.",
    "model": "Form IT-201 line 1 reads only \"Wages, salaries, tips, etc.\" with \"Whole dollars only.\" The pages given contain no line 1 instruction saying to take federal Form 1040 line 1z or how to round, so neither the operand nor the half-up rounding can be confirmed. The refusals are consistent with the residency, separate-return, special accrual, Yonkers, Item G and decedent text.",
@@ -51,6 +61,26 @@
    "date": "2026-11-04",
    "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678",
    "subject_key": "df4ca86978c138dfd49cf620acd0e98874061bf2451a4193e082b599d6476c13"
+  },
+  {
+   "printed": "12",
+   "restated": "Round helper \"Rental real estate income or loss included in line 11 (zero when the federal return has no Schedule E)\" to the nearest multiple of (half up) $1.",
+   "model": "The form asks for 'Rental real estate included in line 11'. The helper starts from Schedule E line 41, which 'Combine[s] lines 26, 32, 37, 39, and 40', and removes only royalties. That leaves partnership and S corporation income (line 32), estate and trust income (line 37), REMIC income (line 39) and farm rental income (line 40) inside the amount. Nothing in the glossary refuses those parts.",
+   "ruling": "Ruling: interface gap; project retained. In this tool sche.line41 is a copy of sche.line26 (forms/2025/sche.yaml, sche.line41: \"Parts II to IV and line 40 are refused (scope.k1, scope.farm)\"), so Schedule E line 41 less the royalty properties' line 21 amounts is Part I rental real estate only, which is what IT-201 p. 2 line 12 asks for (\"Rental real estate included in line 11\"). The glossary given to the reviewer did not state that line 41 holds only line 26, so the reply read lines 32 to 40 into it.",
+   "context": "043cc1dc1992a18e7edde18fe8494aedeef479cd1642683202cb060b8b5614bd",
+   "date": "2026-11-22",
+   "run": "2962114dc3cd734b147536120fe28c5854da00efc7e2a77703d8e587946b5aac",
+   "subject_key": "f331807e28a52bdd62c9060a76449776aad5cf5561f999dec8b07efba91325eb"
+  },
+  {
+   "printed": "12",
+   "restated": "Round helper \"Rental real estate income or loss included in line 11 (zero when the federal return has no Schedule E)\" to the nearest multiple of (half up) $1.",
+   "model": "The restatement takes Schedule E line 41 less royalties. Line 41 is 'Total income or (loss). Combine lines 26, 32, 37, 39, and 40', so it also carries partnership, S corporation, estate/trust, REMIC and farm rental amounts. The result therefore equals rental real estate income only when Parts II–V are empty, and no refusal names that case.",
+   "ruling": "Ruling: scope; Schedule E line 41 carries Parts II to V only for partnerships, S corporations, estates and trusts, REMICs and farm rentals, and the federal return refuses each (scope.k1, scope.remic, scope.farm, which feed scope.schedule1, a refusal gate of f1040.line9 and line 10; sche.line41 note: 'Parts II to IV and line 40 are refused'). Where line 12 is reached, line 41 is Part I only, so line 41 less its royalties is the rental real estate amount.",
+   "context": "a68263aa16d14c8ebbbee0817ffa4dfe8194055727641b179cdeccd7d71d62f8",
+   "date": "2026-11-23",
+   "run": "b1165e78d059d82ce02365301393229a16437219f9b9b16f0d3ef0a335d8870b",
+   "subject_key": "a1402ca6a32a0b5f629edf45a498df3aa83985d27a8af8ab5374a30b5f4f09bc"
   },
   {
    "printed": "13",
@@ -127,6 +157,16 @@
    "run": "6af8094fdb158badb9318b01445493a89cf1394771c052d88d67a74e94433c67",
    "severity": "low",
    "subject_key": "9d8264942d273e6389b4fcb10046c5a75e3b39066171644d88503bc078393731"
+  },
+  {
+   "printed": "48",
+   "restated": "Choose — [line C = true → helper \"Zero\"] [line C = false → column (48)]",
+   "model": "The table selection and item C rule match. However, the restatement omits two limits in the instructions. Line 48 is 'New York City household credit (NYC residents only)'. For joint returns, 'If you are married and filing a joint New York State return and only one of you was a resident of New York City for all of 2025, do not enter an amount here.' The restatement applies no NYC-residency condition and has no refusal for these cases.",
+   "ruling": "Ruling: scope; a joint return on which only one spouse was a New York City resident all year is refused at line 1 by ny_it201.gate.spouse_nonresident (ny_it201.ask.spouse_resident), and every other non-resident case by gate.part_year_city and gate.part_year_state, so line 48 is reached only for full-year City residents (IT-201-I, Line 48, 'NYC residents only').",
+   "context": "a68263aa16d14c8ebbbee0817ffa4dfe8194055727641b179cdeccd7d71d62f8",
+   "date": "2026-11-23",
+   "run": "b1165e78d059d82ce02365301393229a16437219f9b9b16f0d3ef0a335d8870b",
+   "subject_key": "9fa5f99e630c9c270c8f757d8e3cc8d0276a6eff672f4295d2da507c6f3331e8"
   },
   {
    "printed": "53",

@@ -38,7 +38,7 @@ from fixture_inputs import load_cases  # noqa: E402
 NODE = ["node", str(ROOT / "engine" / "dist" / "main.js")]
 OUT = ROOT / "fixtures" / "ny" / Y / "it201.json"
 FED_KEYS = ["f1040.status", "f1040.line1z", "f1040.line2b", "f1040.line3b", "s1.line1", "s1.line2a", "s1.line3", "f1040.line7a",
-            "f1040.line4b", "f1040.line5b", "s1.line7", "f1040.line6b", "s1.line9", "s1.line26", "f1040.line11a", "f1040.line27a", "eic.limit"]
+            "f1040.line4b", "f1040.line5b", "s1.line7", "f1040.line6b", "s1.line9", "s1.line5", "s1.line26", "f1040.line11a", "f1040.line27a", "eic.limit"]
 
 NO = {"state_resident": True, "city_resident": True, "special_accrual": False, "yonkers": False, "special_code": False,
       "decedent": False, "item_c": False, "inflation_check": False, "out_of_state_bond_interest": False, "414h": False,

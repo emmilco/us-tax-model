@@ -965,6 +965,22 @@
    "subject_key": "291bafc1af1bfb17232b34d8e329e3dbf998e58f5a7bbe122e3661a6fb81f012"
   },
   {
+   "printed": "sc.bonus_all",
+   "project_expr_sha256": "3bbd6b43c0d48ed0a2b770412e9d195f51bd615ddffdc4191ac5ebcfa3048b4f",
+   "second_expr_sha256": "cf1fcb725ddfdcba669a18fa6c89aae1ba6ed30f3cc95d0eb00e58c4596aed9e",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3513 values compared, none different or missing: 386 on 2635 fixture cases, 158 on 500 generated returns seed 20261026, 2969 on 2274 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "b55a929a4c50535fecd0855f79c779aebcd0dcc40b9143df7e1513bf4376a92d",
+   "date": "2026-11-22",
+   "run": "ac2d60d91c46b9142086f1762a9464023b33b4b6faf30721b39ae866f2f46ce0",
+   "subject_key": "31708739fdf885766a731efb386ca80dea352ab1312e22ff2435b5015e43fb9a",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "sc.f14",
    "project_expr_sha256": "a9902403a8c9bf210786a896482488467f2735933204fe96b98cf99a039ca9b0",
    "second_expr_sha256": "b91fb89a4389da110f771c8917da6265684b959a4217ed6d522d4067eebf3449",
@@ -1627,6 +1643,38 @@
    "ruling": "Ruling: model error; the interface is this business owner's railroad retirement answer (person.rrta, Schedule SE line 8a). The candidate reads it as \"not a statutory employee\", so it is true on returns with no railroad retirement compensation and drives a refusal at person.se_rrta (see line 7 of Form 7206). The values are booleans (project false, candidate true) on every completed return listed. executable-triage-v2 (scratch rerun of triage.py's triage() with the witness cap lifted, /tmp/adj-bklg-asset-sc-scveh/triage/sc.json; 1,495 fixtures, 500 generated returns seed 20261026, 2,081 partial records): 14 of 3,248 agree; 3,186 value, 48 candidate-unknown; on completed returns: 237 value. Completed-return value differences (project/candidate): classm.f4952.1.deepseek sc[biz_a] false/true; classm.f4952.2.deepseek sc[biz_a] false/true; classm.f8960.1.deepseek sc[biz_a] false/true; classm.g28.1.deepseek sc[biz_a] false/true; classm.sd.1.deepseek sc[biz_a] false/true; classm.u1250.1.deepseek sc[biz_a] false/true; classm.clcw.2.deepseek sc[biz_a] false/true; classm.clcw.2.deepseek sc[biz_b] false/true; classm.clcw26.1.deepseek sc[biz_a] false/true; classm.f8962.5.deepseek sc[biz_a] false/true; classm.f8962.5.deepseek sc[biz_b] false/true; classm.f8880.2.deepseek sc[biz_a] false/true; classm.f1040.4.deepseek sc[biz_a] false/true; classm.f1040.6.deepseek sc[biz_a] false/true; classm.s8812.3.deepseek sc[biz_a] false/true; classm.f8863.2.deepseek sc[biz_a] false/true; classm.eic.3.deepseek sc[biz_a] false/true; classm.f8962.5.gpt sc[biz_a] false/true; classm.f8962.5.gpt sc[biz_b] false/true; classm.asset.1 sc[biz_a] false/true; classm.asset.1 sc[biz_b] false/true; classm.f4952.2 sc[biz_a] false/true; classm.f8880.2 sc[biz_a] false/true; classm.f8960.1 sc[biz_a] false/true; classm.f8995.2 sc[biz_a] false/true; classm.f8995.3 sc[biz_a] false/true; classm.f8995.3 sc[biz_b] false/true; classm.g28.1 sc[biz_a] false/true; classm.ira.2 sc[biz_a] false/true; classm.ltc.1 sc[biz_a] false/true; classm.s179.2 sc[d] false/true; classm.sc.1 sc[biz_a] false/true; classm.sc.1 sc[biz_b] false/true; classm.scveh.1 sc[biz_a] false/true; classm.scveh.1 sc[biz_b] false/true; classm.scveh.5 sc[biz_a] false/true; classm.sd.1 sc[biz_a] false/true; classm.sdtw.1 sc[biz_a] false/true; classm.se.2 sc[biz_a] false/true; classm.sli.4 sc[biz_a] false/true; classm.ssb.4 sc[biz_a] false/true; classm.u1250.1 sc[biz_a] false/true; classm.f1040.4 sc[biz_a] false/true; classm.f1040.6 sc[biz_a] false/true; classm.s8812.3 sc[biz_a] false/true; classm.clcw.2 sc[biz_a] false/true; classm.clcw.2 sc[biz_b] false/true; classm.clcw26.1 sc[biz_a] false/true; classm.f8962.4 sc[biz_a] false/true; classm.f8863.2 sc[biz_a] false/true; mutation.t2.mfj_sdtw_skip23 sc[biz_a] false/true; mutation.t2.f8962_months_asset3 sc[biz_a] false/true; mutation.t2.no_senior_part5 sc[biz_a] false/true; mutation.t2.no_senior_part5 sc[biz_b] false/true; stage14.sc.basic sc[shop] false/true; stage14.sc.meals_full sc[shop] false/true; stage14.se.wage_base sc[side] false/true; stage14.se.partial_base sc[side] false/true; stage14.sc.loss sc[new] false/true; stage14.ho.second_business_no_ho sc[home] false/true; stage14.ho.second_business_no_ho sc[shop] false/true; stage14.veh.standard sc[van] false/true; stage14.veh.2025_bonus sc[rides] false/true; stage14.veh.2025_mq_nobonus sc[rides] false/true; stage14.veh.2023_prior sc[rides] false/true; stage14.veh.2019_post sc[rides] false/true; stage14.veh.suv_179 sc[haul] false/true; stage14.veh.leased_actual sc[rides] false/true; stage14.asset.hy_5yr sc[desk] false/true; stage14.asset.mq_7yr sc[desk] false/true; stage14.asset.mq_mixed sc[desk] false/true; stage14.asset.mq_not sc[desk] false/true; stage14.asset.bonus_100 sc[desk] false/true; stage14.asset.bonus_40_before sc[desk] false/true; stage14.asset.bonus_40_elected sc[desk] false/true; stage14.asset.s179 sc[desk] false/true; stage14.s179.carryover_no_property sc[desk] false/true; stage14.asset.prior_7yr sc[desk] false/true; stage14.asset.prior_179_full sc[desk] false/true; stage14.asset.prior_bonus_full sc[desk] false/true; stage14.asset.prior_mq sc[desk] false/true; stage14.asset.qip sc[desk] false/true; stage14.asset.qip_2018 sc[desk] false/true; stage14.asset.qip_elected sc[desk] false/true; stage14.asset.done sc[desk] false/true; stage14.asset.listed_prior sc[desk] false/true; stage14.sep.basic sc[firm] false/true; stage14.simple.match_age50 sc[firm] false/true; stage14.simple.nonelective_60 sc[firm] false/true; stage14.sehi.basic sc[firm] false/true; stage14.sehi.ltc sc[firm] false/true; stage14.sehi.two_businesses sc[main] false/true; stage14.sehi.two_businesses sc[side] false/true; stage14.joint.both_se sc[s] false/true; stage14.joint.both_se sc[t] false/true; stage14.joint.spouse_wages sc[t] false/true; stage14.eic.wsb_only_business sc[odd] false/true; stage14.eic.wsb_loss sc[odd] false/true; stage14.actc.wsb sc[odd] false/true; stage14.asset.s179_partial_use sc[d] false/true; stage14.veh.2025_nobonus_hy sc[r] false/true; stage14.veh.2025_179_limit sc[r] false/true; stage14.veh.2025_forty sc[r] false/true; stage14.veh.2022_mq sc[r] false/true; stage14.veh.2024_prior179 sc[r] false/true; stage14.veh.2019_mq_179 sc[r] false/true; stage14.veh.heavy_prior sc[r] false/true; stage14.veh.heavy_2019 sc[r] false/true; stage14.asset.mq_bonus40 sc[d] false/true; stage14.asset.prior_179_bonus sc[d] false/true; stage14.asset.partial_use sc[d] false/true; stage14.asset.low_use_nonlisted sc[d] false/true; stage14.asset.last_year sc[d] false/true; stage14.asset.mq_at_40 sc[d] false/true; stage14.sep.at_max sc[f] false/true; stage14.veh.standard_half_use sc[r] false/true; stage14.simple.at_limit sc[f] false/true; stage14.asset.listed_and_not sc[d] false/true; stage14.asset.listed_forty sc[d] false/true; stage14.sch1a.tips_with_sc sc[side] false/true; stage14.sc.distinct sc[shop] false/true; stage14.veh.2019_cheap_mq3 sc[r] false/true; stage14.simple.match_high_comp sc[f] false/true; stage14.s179.election_and_carryover sc[d] false/true; stage14.s179.zero_limit_carryover sc[d] false/true; stage14.ho.with_179 sc[h] false/true; stage14.sehi.with_sep sc[f] false/true; stage14.s179.partial_election_carryover sc[d] false/true; stage14.s8812.eiw_stop_with_se_tax sc[s] false/true; stage14.s8812.eiw_stop_with_se_tax sc[t] false/true; stage14.s8812.eiw_zero_with_se_tax sc[s] false/true; stage14.s8812.eiw_zero_with_se_tax sc[t] false/true; stage14.eic.wsb_stop_27c sc[b] false/true; stage14.eic.wsb_line5_stop_27c sc[b] false/true; stage16.cleanup.mut.clwb_three_figured sc[shop] false/true; stage19.mut.se_not_filed_loss sc[odd] false/true; f2.t101.credit_disallowed_eic_zero sc[biz_a] false/true; generated 20 sc[biz_a] false/true; generated 97 sc[biz_a] false/true; generated 138 sc[biz_a] false/true; generated 150 sc[biz_a] false/true; generated 162 sc[biz_a] false/true; generated 163 sc[biz_a] false/true; generated 170 sc[biz_a] false/true; generated 172 sc[biz_a] false/true; generated 193 sc[biz_a] false/true; generated 235 sc[biz_a] false/true; generated 235 sc[biz_b] false/true; generated 238 sc[biz_a] false/true; generated 242 sc[biz_a] false/true; generated 253 sc[biz_a] false/true; generated 254 sc[biz_a] false/true; generated 261 sc[biz_a] false/true; generated 293 sc[biz_a] false/true; generated 293 sc[biz_b] false/true; generated 320 sc[biz_a] false/true; generated 355 sc[biz_a] false/true; generated 402 sc[biz_a] false/true; generated 402 sc[biz_b] false/true; generated 403 sc[biz_a] false/true; generated 411 sc[biz_a] false/true; generated 449 sc[biz_a] false/true; generated 476 sc[biz_a] false/true; generated 482 sc[biz_a] false/true; generated 482 sc[biz_b] false/true; generated 494 sc[biz_a] false/true; and 70 partial records built on those bases with the same pairs.",
    "context": "e5f09e83c77f890821f34e498da4c81ef409d7e1373ddfa86073c3d234f4dd5a",
    "subject_key": "b79f43f6a0c2cbc5b802f3c1593b68574e2e2795c4c9e43d5a9855fa0605415e"
+  },
+  {
+   "printed": "sc.suv179",
+   "project_expr_sha256": "6a9d7788bce953e558c47c4a4e4bf429679518992bad844c63c9219bddaf4e22",
+   "second_expr_sha256": "e7172d33b15b3d6971d1edb167aed5b6bade70e15fae74bde1754199403145c0",
+   "ruling": "Ruling: representation; project retained. i4562 p. 16, Column (i), \"You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles\": both sum column (i) over the business's vehicles that are not passenger automobiles and are SUVs, and give the same total, since a vehicle with no election adds $0 either way. The project's added first test (an election above zero) only makes the filter read scveh.passenger and scveh.suv for a vehicle with an election; the evaluator's all() stops at the first false test.",
+   "context": "b55a929a4c50535fecd0855f79c779aebcd0dcc40b9143df7e1513bf4376a92d",
+   "date": "2026-11-22",
+   "run": "ac2d60d91c46b9142086f1762a9464023b33b4b6faf30721b39ae866f2f46ce0",
+   "subject_key": "e1d072a2a249829014489c1c79de74e189d6fc1b9ed8f26d3a9ce9c2257b75f9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@person[taxpayer].sc[biz_a]",
+     "fixture:classm.f8889.4.deepseek@person[spouse].sc[biz_a]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.f4952.2.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.g28.2.deepseek@person[spouse].sc[biz_a]",
+     "fixture:classm.dependent.3.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.s2.3.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.g28.2@person[spouse].sc[biz_a]",
+     "fixture:mutation.t2.qss_s1a_tips_ot_car@person[taxpayer].sc[biz_a]",
+     "fixture:mutation.t2.f8880.simple_line2@person[spouse].sc[biz_a]",
+     "fixture:mutation.m4.scveh.bonus_used_before@person[taxpayer].sc[r]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

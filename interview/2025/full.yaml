@@ -37,6 +37,9 @@ interview:
   # Schedule B line 7a, printed in Part III and read by its notice: asked only after a Yes to one of the questions
   # about things outside the United States.
   - sb.line7a_if_foreign
+  # The Form SS-8 notice for a Form 8919 firm under reason code G: asking for it opens the reason code of each firm (Form
+  # 8919 column (c)), which no amount reads.
+  - s2.ss8_notice
   initial: {}
   cite:
     doc: f1040

@@ -2,7 +2,7 @@
  "form": "sa",
  "reviews": {
   "gate:sa.gifts": {
-   "subject_sha": "a5de0a1725275b95b34666d54db7eede0a46e411840dce349cfebca4a333e821",
+   "subject_sha": "4df8c56d0fa71d71de49dc0431a1d7880e9d9aea4b682606644aa97b7bb44169",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -10,60 +10,70 @@
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A filer whose 2023 cash gifts exceeded 60% of AGI and who carries the excess into 2025, but who gave nothing new in 2025. Their 2025 AGI is low enough that the carryover is again limited.",
-       "why_no": "The gate asks 'In 2025, did you ... give money or things to a charity'. They gave nothing in 2025, so the truthful answer is no. The gate's own citation names the line 13 carryover, but its words do not.",
+       "who": "A filer who gave cash above the income limits in 2022–2024 and still has an unused charitable carryover, but gave nothing to charity in 2025.",
+       "why_no": "The gate asks only whether they gave or spent money 'In 2025'. Truthfully they did not, so it never asks whether income limits reduce the deduction, even though the carryover is still subject to those limits in 2025.",
        "line": "sa.charity_limited_if_gifts",
-       "irs_text": "i1040sca p. 11, Line 13: 'Generally, the same limits apply this year to your carryover amounts as applied to those amounts in the earlier year ... After applying those limits, enter the amount of your carryover that you are allowed to deduct this year.'",
+       "irs_text": "i1040sca p. 11, Line 13: \"Generally, the same limits apply this year to your carryover amounts as applied to those amounts in the earlier year... After applying those limits, enter the amount of your carryover that you are allowed to deduct this year.\"",
+       "severity": "medium",
+       "fix": "Widen the gate (or add a parallel gate for the limit line): 'In 2025, did you or your spouse give to charity, or do you have charitable gifts from 2020–2024 that you couldn't fully deduct because of income limits?' Also make the limited-deduction question cover carryovers."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A partner in a partnership or a shareholder in an S corporation whose entity made cash gifts to charity in 2025. The filer's share appears on the K-1 as a charitable contribution, but the filer wrote no check personally.",
+       "why_no": "The question 'did you ... give money or things to a charity' is about the filer's own acts. The entity gave, so the truthful answer is no, yet the filer's share of the entity's cash gifts belongs on line 11.",
+       "line": "sa.line11_if_gifts",
+       "irs_text": "i1040sca p. 10, Line 11: \"Enter on line 11 the total value of gifts you made in cash or by check\". A pass-through entity's contributions are treated as made by its owners (Pub. 526).",
        "severity": "high",
-       "fix": "Broaden the gate: 'Did you or your spouse give to charity in 2025, or do you have charitable gifts from 2020–2024 that you could not fully deduct (a carryover)?' Alternatively, ask the limit question whenever a carryover is entered, and refuse if the carryover is limited."
+       "fix": "Add to the gate: '...or does a Schedule K-1 you or your spouse received show a charitable contribution?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A couple who host a foreign high-school exchange student in 2025 under a written agreement with a qualified nonprofit program. They pay for the student's food, clothing and transportation.",
-       "why_no": "They read 'give money or things to a charity' and 'volunteer work for one' as not covering costs of feeding a student who lives in their own home. The help text never mentions hosting a student.",
+       "who": "A household that hosts a high-school exchange student under a written agreement with a qualified organization and pays for the student's food, clothing and other costs.",
+       "why_no": "They see this as hosting a student, not 'giving money to a charity' or 'volunteer work', and the help text does not mention it.",
        "line": "sa.line11_if_gifts",
-       "irs_text": "p526 p. 6, Expenses Paid for Student Living With You: 'You may be able to deduct some expenses of having a student live with you ... You can deduct up to $50 a month for each full calendar month the student lives with you.'",
+       "irs_text": "p526 p. 6, Expenses Paid for Student Living With You: \"You may be able to deduct some expenses of having a student live with you... You can deduct up to $50 a month for each full calendar month the student lives with you.\"",
        "severity": "medium",
-       "fix": "Add to the gate's help: 'Count costs of hosting a student under a written agreement with a charity's exchange program, and unreimbursed costs of being a foster parent placed by a charity.'"
+       "fix": "Add to the gate help: 'Count unreimbursed costs of hosting a student under a program with a charity, and a foster parent's unreimbursed costs.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A foster parent placed by a nonprofit agency who pays unreimbursed costs for the foster child.",
-       "why_no": "They see fostering as family care, not as 'volunteer work' for a charity or a gift, so they answer no.",
+       "who": "A foster parent placed by a nonprofit or government agency who pays some of the foster child's costs out of pocket without reimbursement.",
+       "why_no": "They see this as caring for a child in their home, not as 'volunteer work for' a charity.",
        "line": "sa.line11_if_gifts",
-       "irs_text": "p526 p. 6: 'But see Foster parents under Out-of-Pocket Expenses in Giving Services, later, if you provide the home as a foster parent.'; i1040sca p. 9: 'Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work'",
+       "irs_text": "i1040sca p. 9: \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\". p526 p. 6 refers to \"Foster parents under Out-of-Pocket Expenses in Giving Services\".",
        "severity": "medium",
-       "fix": "Name foster-parent out-of-pocket costs in the gate's help, as with the whaling captain example."
+       "fix": "Name foster-parent and student-hosting costs in the gate help."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who paid $150 for a public-radio or museum membership and received benefits worth less than the payment. They made no other gifts.",
-       "why_no": "They think of the payment as membership dues, not as giving to a charity. The help mentions only a fundraising dinner as a payment that got something back.",
+       "who": "A filer whose only 2025 charitable payments were membership fees to a museum, zoo or public radio station, or synagogue High Holiday seat fees, with perks worth less than the payment.",
+       "why_no": "They see a membership or fee as a purchase, not as 'giving money to a charity'. The help names a fundraising dinner but not memberships or dues.",
        "line": "sa.line11_if_gifts",
-       "irs_text": "p526 p. 5, Membership fees or dues: 'You may be able to deduct membership fees or dues you pay to a qualified organization. However, you can deduct only the amount that is more than the value of the benefits you receive.'",
+       "irs_text": "p526 p. 5, Membership fees or dues: \"You may be able to deduct membership fees or dues you pay to a qualified organization. However, you can deduct only the amount that is more than the value of the benefits you receive.\"",
        "severity": "medium",
-       "fix": "Add to the help: 'Count membership fees paid to a charity (such as a museum, zoo or public broadcaster), and payments for charity event tickets or auction items above their value.'"
+       "fix": "Add to the gate help: 'Count memberships, dues or event fees paid to a charity, museum, public broadcaster or place of worship.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A partner in a partnership, or a shareholder in an S corporation, whose Schedule K-1 reports a share of cash charitable contributions made by the entity. The partner made no gifts personally.",
-       "why_no": "'Did you ... give money or things to a charity' reads as personal giving. The entity made the gift, so the partner truthfully answers no.",
+       "pattern": "8",
+       "who": "An employee whose only gifts were United Way or similar charity payroll deductions set up years ago.",
+       "why_no": "The deduction comes out of the paycheck automatically, so the employee may not recall 'giving money' in 2025. The gate help does not mention payroll deductions, though the line 11 help does.",
        "line": "sa.line11_if_gifts",
-       "irs_text": "i1040sca p. 10, Line 11: 'Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)'",
-       "severity": "medium",
-       "fix": "Add to the gate: 'or did a Schedule K-1 from a partnership or S corporation report charitable contributions passed through to you?'"
+       "irs_text": "i1040sca p. 10: \"If you made donations through payroll deductions, treat each deduction from each paycheck as a separate gift.\"",
+       "severity": "low",
+       "fix": "Add 'including through payroll deduction' to the gate wording or its help."
       }
      ],
-     "prompt_sha": "b85f42ec9067a4c84c61f2ab9f79bbfc3ff6168619b29cc8e7502fb9ac4021d5",
+     "prompt_sha": "a22111daf054bbfd21e7a4d1fa86805c669f87d049fb4ed9d49be74fd19ca740",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.12406800000000001,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_sa.gifts.a5de0a172527.1.response.txt"
+     "cost": 0.143428,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_sa.gifts.4df8c56d0fa7.1.response.txt"
     }
    ],
    "condition": "sa.gifts",
@@ -413,108 +423,108 @@
    ]
   },
   "gate:sa.medical_asked": {
-   "subject_sha": "1317d266a738a08b8c26141ae01bcfe4ba5bc4187d450bbaa33bdbef7bcf7d24",
+   "subject_sha": "5750936487bf0e25ee8df99923b196956fabb29fabb91e6a32ee5dea6f5dd4b8",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer who pays medical or dental bills for a dependent, for a child the other parent claims under the divorced/separated-parent rules, or for a person who would be a dependent but for income or a joint return, and whose own and spouse's costs are not over 7.5%.",
-       "why_no": "The gate says 'you (or, on a joint return, your spouse) paid yourselves'; the filer reads that as only the filer's and spouse's own care, not the qualifying dependents and other persons whose bills line 1 allows.",
-       "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p.2: 'You can include medical and dental bills you paid in 2025 for anyone who was one of the following ... All dependents you claim ... Your child whom you don't claim ... Any person you could have claimed as a dependent ... except that person received $5,200 or more ... or filed a joint return.'",
-       "severity": "high",
-       "fix": "Ask about expenses paid for the filer, spouse, dependents, divorced/separated-parent child, and any person who would be a dependent but for the $5,200/joint-return/other-dependent rules."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer whose adjusted gross income is lower than gross income (for example, from a deductible IRA/HSA contribution or self-employed health insurance) and whose medical costs exceed 7.5% of AGI but not 7.5% of gross income.",
-       "why_no": "The gate asks about 7.5% of 'your income,' not adjusted gross income; the filer uses gross income and answers no.",
-       "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p.1: 'You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b.'",
-       "severity": "high",
-       "fix": "Use 'adjusted gross income (Form 1040 line 11b)' and, on a joint return, joint AGI."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer who in 2025 received an insurance reimbursement for medical expenses paid in an earlier year and subtracts that reimbursement from 2025 medical costs, dropping below 7.5%.",
-       "why_no": "The gate says to use costs 'after anything insurance paid'; the filer subtracts the 2025 reimbursement even though it relates to an earlier year.",
-       "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p.2: 'If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount.'",
-       "severity": "medium",
-       "fix": "Tell the filer to reduce only by insurance or other reimbursements for the same 2025 expenses, not by prior-year reimbursements."
-      },
-      {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "An executor filing the final individual return of a taxpayer who died in 2025, where the decedent's estate paid medical or dental expenses that Publication 502 allows on the final return.",
-       "why_no": "The gate asks for costs 'you (or ... your spouse) paid yourselves'; the executor/decedent did not pay them personally, so the answer is no.",
+       "pattern": "4",
+       "who": "A low-income retiree whose Social Security is not taxable. Medicare Part B and Part D premiums are withheld from the benefit, and the retiree had few other medical bills. On a joint return, either spouse may be in this position.",
+       "why_no": "The first question asks about 'costs ... after anything insurance paid', which reads as bills, not premiums. The second asks whether health insurance was paid 'with money already taxed', and nontaxable Social Security was never taxed, so the honest answer is no.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p.1: 'Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return.'",
+       "irs_text": "i1040sca p. 1: 'The supplemental part of Medicare insurance (Medicare Part B). • The premiums you pay for Medicare Part D insurance.'",
        "severity": "high",
-       "fix": "Add a condition for a decedent's final return and estate-paid expenses allowed by Publication 502."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer whose health insurance is Medicare Part B/D deducted from tax-free Social Security benefits, or who pays otherwise-includible health insurance premiums with borrowed funds or a gift, and has no other medical costs over 7.5%.",
-       "why_no": "The gate asks whether health insurance was paid for with money already taxed. Tax-free Social Security, borrowed funds, or a gift were not already taxed, so the filer answers no.",
-       "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p.1: 'Insurance premiums for medical and dental care... The supplemental part of Medicare insurance (Medicare Part B). The premiums you pay for Medicare Part D insurance.' The source-based exclusions listed are pretax payroll, HSA/Archer MSA, retired public safety tax-free distributions, and PTC/APTC.",
-       "severity": "high",
-       "fix": "Ask whether the filer paid otherwise-includible health insurance premiums, then exclude only the specific tax-free/pretax sources; do not require the source to have been already taxed."
+       "fix": "Ask whether you or your spouse paid any health, dental, Medicare, or long-term care insurance premiums in 2025 other than by a pretax payroll deduction, a tax-free HSA or Archer MSA distribution, or a tax-free retirement-plan distribution for a public safety officer. Drop 'money already taxed'."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "8",
-       "who": "A Marketplace enrollee whose APTC covered the premiums, who had to repay excess APTC, and who has no after-tax premium payment; other medical costs are below 7.5%.",
-       "why_no": "The filer did not pay health insurance premiums with money already taxed; the extra amount is an excess APTC repayment, so the filer answers no to the insurance question.",
+       "who": "A filer who paid premiums out of tax-exempt money, such as nontaxable VA disability pay, municipal bond interest, gifts, a loan, or savings from earlier years.",
+       "why_no": "That money was not 'already taxed', so the filer truthfully answers no. The IRS bars only premiums paid by pretax salary reduction, by a tax-free HSA or MSA distribution, or by a retired public safety officer's tax-free distribution.",
        "line": "sa.line1_if_medical",
-       "irs_text": "p502 p.12: 'However, any amount of advance payments of the premium tax credit that you did have to pay back can be included in medical expenses.' i8962 p.2: 'You cannot deduct the portion ... paid for by the PTC or APTC (after you determine how much of any excess APTC you must repay).'",
+       "irs_text": "i1040sca p. 1: 'You can't include insurance premiums paid by making a pretax reduction to your employee compensation'; p. 2: 'Don't forget to include insurance premiums you paid for medical and dental care.'",
        "severity": "high",
-       "fix": "Gate on Marketplace coverage/Form 1095-A/APTC reconciliation, not only after-tax premiums; ask about excess APTC repaid."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer whose employer-sponsored health insurance premiums (or employer-plan medical expenses) are included in box 1 of Form W-2, and who has no separately paid after-tax premiums.",
-       "why_no": "The filer reads 'you paid yourselves' and 'health insurance paid for with money already taxed' as excluding employer-paid coverage, so says no even though box 1 makes it includible.",
-       "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p.2: 'don't include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2. Also, don't include any other medical and dental expenses paid by the plan unless the amount paid is included in box 1.'",
-       "severity": "medium",
-       "fix": "Ask about premiums or plan-paid expenses included in W-2 box 1, even if the employer paid the insurer."
+       "fix": "State the exclusions the instructions name instead of the 'already taxed' proxy, as in the first fix."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer who pays qualified long-term care insurance premiums with after-tax money and does not treat LTC insurance as 'health insurance'; other medical costs are below 7.5%.",
-       "why_no": "The gate says 'health insurance'; the filer thinks LTC coverage is not health insurance and answers no.",
+       "who": "A filer who paid premiums for dental-only, vision, or qualified long-term care insurance, or voluntary Medicare Part A at 65 or older without Social Security entitlement.",
+       "why_no": "The question says 'health insurance', and the filer does not count dental, vision, or long-term care coverage as health insurance.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p.1: 'Insurance premiums for medical and dental care, including premiums for qualified long-term care insurance contracts as defined in Pub. 502.' p.2 gives the age-based limits ($480 to $6,020).",
+       "irs_text": "i1040sca p. 1: 'Insurance premiums for medical and dental care, including premiums for qualified long-term care insurance contracts'",
        "severity": "medium",
-       "fix": "Mention qualified long-term care insurance premiums and the age limits in the gate/help."
+       "fix": "Say 'health, dental, vision, Medicare, or long-term care insurance premiums'."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "The executor filing a decedent's final 2025 return. The estate paid the decedent's 2025 medical bills in 2026, within one year after the death.",
+       "why_no": "The question asks about costs 'In 2025' that 'you ... paid yourselves'. The estate, not the decedent, paid them, and paid them in 2026.",
+       "line": "sa.line1_if_medical",
+       "irs_text": "i1040sca p. 1: 'Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return.'",
+       "severity": "high",
+       "fix": "Add a separate gate: 'Is this a final return, and did the estate pay the decedent's medical costs within one year after death?' Treat a yes as opening the medical questions."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer whose out-of-pocket medical care costs are below 7.5% but whose medical travel, parking, tolls, ambulance, or limited lodging expenses push the total over 7.5%.",
-       "why_no": "The gate asks about 'medical and dental costs'; the filer does not count travel or lodging as medical/dental costs and answers no.",
+       "who": "A filer who paid large medical bills for a parent they support who has $5,200 or more of income, for a child the ex-spouse claims, or for a dependent. The filer's own and spouse's costs were small.",
+       "why_no": "'Medical and dental costs you (or your spouse) paid yourselves' is read as costs for yourselves, not costs you paid for others.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p.1-2: 'Ambulance service and other travel costs to get medical care... 21 cents a mile. Add parking and tolls...' 'Lodging expenses (but not meals) while away from home to receive medical care... Don't deduct more than $50 a night...'",
+       "irs_text": "i1040sca p. 2: 'Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income'; 'Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents.'",
        "severity": "medium",
-       "fix": "Ask broadly about medical expenses as defined in Pub. 502, including travel/lodging, or list these examples in the gate."
+       "fix": "Say 'costs you or your spouse paid for anyone, including dependents, a supported parent, or a child the other parent claims', and show the whose-costs-count list with the gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer with substantial above-the-line adjustments (IRA, self-employment tax, HSA deduction, student loan interest) or untaxed income, whose costs exceed 7.5% of AGI but not 7.5% of gross pay or total receipts.",
+       "why_no": "'7.5% of your income' is compared with wages or gross income, because AGI is not yet computed and is not named.",
+       "line": "sa.line1_if_medical",
+       "irs_text": "i1040sca p. 1: 'You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b.'",
+       "severity": "medium",
+       "fix": "Ask for the dollar amount whenever any unreimbursed medical cost or premium was paid, and let the tool compare it with 7.5% of computed AGI."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose qualifying costs include medical mileage, parking and tolls, lodging for out-of-town treatment, nursing-home care, an attendant's employment taxes, special-education tuition, or a medically required home improvement.",
+       "why_no": "These are not perceived as 'medical and dental costs', so the filer's own estimate stays under 7.5%.",
+       "line": "sa.line1_if_medical",
+       "irs_text": "i1040sca p. 2: 'Ambulance service and other travel costs to get medical care ... 21 cents a mile'; p. 1: 'Nursing help (including your share of the employment taxes paid)'",
+       "severity": "medium",
+       "fix": "Show the IRS examples list with the gate, or replace the threshold judgment with an amount the tool compares itself."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An employee whose premiums came out of pay after tax and were included in W-2 box 1, or a 2% S corporation shareholder whose employer-paid premiums were added to box 1 beyond any self-employed health insurance deduction.",
+       "why_no": "A payroll deduction is assumed to be pretax, or premiums the employer paid are not seen as 'paid' by the filer.",
+       "line": "sa.line1_if_medical",
+       "irs_text": "i1040sca p. 2: 'don't include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2'",
+       "severity": "medium",
+       "fix": "Ask whether any premiums came out of pay, or were paid by an employer, and were included in W-2 box 1; tell the filer to check box 1 or the pay stub."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse alone paid premiums, such as COBRA, Marketplace, or Medicare premiums.",
+       "why_no": "The premium question, 'Paid for health insurance with money already taxed', names no subject, so the filer answers for themselves only.",
+       "line": "sa.line1_if_medical",
+       "irs_text": "i1040sca p. 2: 'You can include medical and dental bills you paid in 2025 for anyone who was one of the following ... Yourself and your spouse.'",
+       "severity": "low",
+       "fix": "Say 'Did you (or, on a joint return, your spouse) pay ...'."
       }
      ],
-     "prompt_sha": "86946652f96508e4b9310fefffcff64760e7c10292cfb8ae808cb0f0f562a73d",
+     "prompt_sha": "eb79d8f3729b5b88f736d405997aaa6d49cffd28c46a189e5612c0ff063d94b3",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_sa.medical_asked.1317d266a738.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.17046,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_sa.medical_asked.5750936487bf.1.response.txt"
     }
    ],
    "condition": "sa.medical_asked",
@@ -1392,58 +1402,88 @@
    ]
   },
   "gate:sa.state_tax_other_any": {
-   "subject_sha": "efc66a6515b7719a7cc5a0874e94d3e3d4ef03b3c0ffc46fd734b29c0b50cb74",
+   "subject_sha": "e78ab597da4cbbc70ee565c02ad7e1619494a8808cd5150b3b736556381f4a74",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer whose only state payroll contribution is a mandatory Washington State Supplemental Workmen's Compensation Fund contribution taken from pay; they have no state or local income tax payment and no disability, unemployment, or family leave contribution.",
-       "why_no": "The gate asks only about paying state or local income tax not taken from pay or paying into a state disability, unemployment, or family leave fund. Workers' compensation is not named, and the help lists only SDI, SUI, and FLI, so the filer truthfully answers no.",
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose only state payment in 2025 was the balance due on the 2024 state return, paid in April 2025. Nothing was withheld from other income, and no estimates were paid for 2025.",
+       "why_no": "The question reads 'In 2025, did you ... pay state or local income tax not taken from pay (such as estimated payments, or a past refund applied to 2025)'. Every example concerns 2025's tax, and neither the question nor its help mentions tax paid with last year's return. The filer reads it as 'tax for 2025' and answers no.",
        "line": "sa.state_tax_other_if_any",
-       "irs_text": "i1040sca p. 3, Line 5a: 'Mandatory contributions ... Washington State Supplemental Workmen's Compensation Fund.'",
-       "severity": "high",
-       "fix": "Add workers' compensation funds to the gate and help, e.g., '...state disability, unemployment, workers' compensation, or family leave fund,' or ask broadly about any mandatory state payroll fund contribution."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer who made a charitable gift and received a local (not state) tax credit, then applied that credit against local income tax; they did not pay the tax in cash.",
-       "why_no": "The gate's help names only 'a state tax credit for a charity gift.' The filer reads that as excluding local credits, and the main question asks about paying tax, so applying a local credit is not a payment.",
-       "line": "sa.state_tax_other_if_any",
-       "irs_text": "i1040sca p. 3: 'to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c...'",
-       "severity": "high",
-       "fix": "Change the help to 'state or local tax credit for a charity gift' and add local credits to the gate examples."
+       "irs_text": "i1040sca p. 3, Line 5a: \"State and local income taxes paid in 2025 for a prior year, such as taxes paid with your 2024 state or local income tax return.\"",
+       "severity": "medium",
+       "fix": "Name it in the question: '... such as estimated payments, a balance paid with your 2024 state or local return, or a past refund applied to 2025'. Also add 'tax you paid in 2025 for an earlier year' to the help."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer who in 2025 applied a state or local tax credit received for a charitable gift to their prior year's (e.g., 2024) state or local income tax liability, rather than to 2025 tax.",
-       "why_no": "The gate asks whether in 2025 they paid state or local income tax, and the help says the credit was 'applied to your tax' but does not say a prior year's liability. The filer reads 'your tax' as the 2025 tax and answers no.",
+       "who": "A former freelancer who closed the business in 2024 and whose only 2025 state payment was the fourth-quarter 2024 estimate, paid in January 2025.",
+       "why_no": "The filer takes 'estimated payments' and 'In 2025' to mean estimates for the 2025 tax year. They regard the January payment as 2024 tax and answer no.",
        "line": "sa.state_tax_other_if_any",
-       "irs_text": "i1040sca p. 3: 'to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c...'",
+       "irs_text": "i1040sca p. 3, Line 5a: \"State and local estimated tax payments made during 2025\"; \"State and local income taxes paid in 2025 for a prior year\"",
        "severity": "medium",
-       "fix": "Ask whether in 2025 the filer applied a state or local charitable tax credit to this year's or a prior year's state or local tax liability, and state that prior-year applications count."
+       "fix": "Say 'any payment of state or local income tax made during 2025, whatever year it was for (for example, a January 2025 estimate for 2024)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A California, New Jersey or New York employee, or one of a married couple, whose only qualifying amount is SDI, SUI or family leave contributions deducted from pay and shown in Form W-2 box 14. There are no estimates and no other withholding.",
+       "why_no": "The question opens with 'not taken from pay', and the filer applies that limit to the whole sentence. Some employees also think of the box 14 deductions as payroll items their employer handled, not money they 'paid into' a fund. The help says to count 'SDI, SUI or FLI from pay', but it conflicts with the question's opening limit.",
+       "line": "sa.state_tax_other_if_any",
+       "irs_text": "i1040sca p. 3, Line 5a: \"Mandatory contributions you made to the California, New Jersey, or New York Nonoccupational Disability Benefit Fund ...\"; \"Mandatory contributions to state family leave programs\"",
+       "severity": "medium",
+       "fix": "Split the gate into two questions. One asks about tax not taken from pay. A separate one asks: 'Did your pay stub or Form W-2 (box 14) show SDI, SUI, FLI, PFL or a state disability, unemployment, workers' compensation or family leave deduction?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer with state income tax withheld from an annuity or other 1099-R distribution that is not a pension or IRA (for example, a commercial annuity or profit-sharing distribution).",
-       "why_no": "The help names 'a pension, IRA' but not annuities or other 1099-R distributions. The filer reads the list as complete and, because the tax was taken out rather than paid directly, answers no.",
+       "who": "A filer who had state income tax withheld on something outside the help's list. Examples: nonresident withholding on the sale of real property (California Form 593), state withholding on a brokerage Form 1099-B, 1099-DIV or 1099-INT, or pass-through entity withholding reported to the filer as a nonresident partner.",
+       "why_no": "The help names 'a pension, IRA, unemployment pay, winnings, 1099-NEC or 1099-MISC'. The filer takes this as the complete list of withholding that counts, and treats a withheld amount on a house sale or brokerage account as not 'paid'.",
        "line": "sa.state_tax_other_if_any",
-       "irs_text": "i1040sca p. 3, Line 5a: 'Forms W-2G, 1099-G, 1099-R, 1099-MISC, and 1099-NEC may also show state and local income taxes withheld.'",
+       "irs_text": "i1040sca p. 3, Line 5a: \"State and local income taxes withheld ... Forms W-2G, 1099-G, 1099-R, 1099-MISC, and 1099-NEC may also show state and local income taxes withheld\"",
        "severity": "medium",
-       "fix": "Name 1099-R distributions, including annuities and other retirement distributions, or replace the list with 'tax withheld from any other income.'"
+       "fix": "Make the help say 'any state or local income tax withheld from anything other than wages, such as a pension, IRA, unemployment, winnings, a property sale, a brokerage account or a partnership'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A partner or S corporation shareholder whose state nonresident income tax was paid on their behalf through a composite return or entity-level withholding. The filer wrote no check and had nothing withheld.",
+       "why_no": "The question asks whether 'you ... pay state or local income tax'. The entity paid it, so the filer truthfully says they did not pay.",
+       "line": "sa.state_tax_other_if_any",
+       "irs_text": "i1040sca p. 3, Line 5a: \"include on line 5a the state and local income taxes listed next\" (taxes withheld or paid for the individual's own liability)",
+       "severity": "low",
+       "fix": "Add to the help: 'Count state income tax a partnership or S corporation paid or withheld for you as a nonresident (shown on your K-1 or state form).'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who made a cash gift to a qualifying charity for a state tax credit in 2023, then carried the unused credit forward and applied it to the 2025 state income tax.",
+       "why_no": "The filer did not 'pay' anything in 2025, because the credit only reduced their tax. They read 'a state tax credit for a charity gift' in a question headed 'In 2025' as a gift made in 2025.",
+       "line": "sa.state_tax_other_if_any",
+       "irs_text": "i1040sca p. 3, Safe harbor: \"To the extent you apply a portion of the credit to offset your state or local tax liability in a subsequent year (as permitted by law), you may treat this amount as state or local tax paid in the year the credit is applied.\"",
+       "severity": "low",
+       "fix": "Say 'a state or local tax credit from a charity gift (made in 2025 or earlier) that you applied to your income tax in 2025'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer with Puerto Rico, Guam or USVI wages whose territory income tax was withheld and reported on Form 499R-2/W-2PR or a territory W-2 rather than a U.S. Form W-2 with state boxes.",
+       "why_no": "The question says 'state or local income tax not taken from pay', so the filer answers no because the tax was taken from pay. The gated input also excludes tax 'taken out of pay'. If the wage-withholding input reads only Form W-2 box 17 and 19, the territory tax is lost.",
+       "line": "sa.state_tax_other_if_any",
+       "irs_text": "i1040sca p. 3: \"Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c.\"",
+       "severity": "medium",
+       "fix": "Confirm that the from-pay input explicitly counts territory income tax withheld on territory wage statements. If it does not, count territory tax withheld from pay in this gate and its amount."
       }
      ],
-     "prompt_sha": "7cdf595724f48e9355414f19f190fff036eefba2fb0bb6fc587132a9fb9829aa",
+     "prompt_sha": "56fffa7b3eb4b69476b7f9b88f47439ecb03eab43960893cb4c4111c0b6b061c",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_sa.state_tax_other_any.efc66a6515b7.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.14361200000000002,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_sa.state_tax_other_any.e78ab597da4c.1.response.txt"
     }
    ],
    "condition": "sa.state_tax_other_any",

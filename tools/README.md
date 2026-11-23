@@ -66,12 +66,16 @@ A linked worktree (an agent's) gets its git-ignored data from the main worktree 
 (`cp -cR`, never links) of the review data (`.transcription/`, `.classm/`,
 `.extraction-review/`, `.direct-file/`) and the installs
 (`node_modules/`, `.engines/`, `lean/.lake/`), and a record of the clone's base (the
-hash of every untracked review file, each ledger's length and hash) in the worktree's
+hash of every untracked review file, each ledger's length and hash, and the hash of each
+row of main's ledger) in the worktree's
 git directory. Reviews run there write their raw files and cost rows into the
 worktree's copies; `python3 tools/worktree_data.py carry-back <worktree>` (`--dry-run`
-first) brings them back: it appends to the main `costs.jsonl` exactly the rows the
-worktree appended since the clone (refusing if either ledger no longer begins with the
-cloned one), and copies each raw file the worktree changed since the base where the
+first) brings them back: it appends to the main `costs.jsonl` the rows the
+worktree appended since the clone, less any row main already holds as the same line (one
+carried back first through another worktree). It refuses if the worktree's ledger no longer
+begins with the ledger as cloned or last carried, or if main's ledger has lost or reordered
+any row it held then; rows other worktrees added between those rows are accepted, and
+nothing in main's ledger is rewritten or dropped. It copies each raw file the worktree changed since the base where the
 main copy is unchanged, refusing everything if any file changed on both sides. Naming
 such a non-ledger file after `--prefer-worktree PATH...` (repo-relative; shell globs are fine)
 copies the worktree's version over main's instead, with one report line per file; a ledger

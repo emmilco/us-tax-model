@@ -1048,6 +1048,16 @@
    "model": "The text says 'younger than you (or your spouse if filing jointly)'. The question asks only whether the person was younger than you, so a child older than you but younger than your joint-filing spouse would fail.",
    "ruling": "Ruling: second transcription right; data fixed. The question now reads 'Was this person younger than you (or, if you file jointly, younger than you or your spouse; the person need not be younger than both of you)?' (i1040gi p. 17, Step 1, 'and younger than you (or your spouse if filing jointly)'; p501 p. 13). BUG-0047.",
    "subject_key": "fed7dc25f780e34a7b903771bdc5a58aae93e31d4b81e801655a24bfa0f4ccc0"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The helper tells the filer to include expenses paid with dependent care benefits and relies on Form 2441 to subtract the excluded benefits later. The column (d) instructions and Form 2441 line 30 instead keep those benefits out of the column itself: \"If you completed Part III, don't include in column (d) any benefits shown on line 28.\"",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner's decision, Stage 15 decision 6). Column (d) shows each person's expenses before excluding the dependent care benefits, and f2441.line30 subtracts line 28 once from the total, since the instructions give no rule for dividing line 28 among the qualifying persons; the model reads the unchosen reading, as ruled on this line before. The second objection is a model error: the disabled person who could be claimed as a dependent except for gross income of $5,200 or more, a joint return, or the filer being claimable is refused on Form 2441 at f2441.nondependent_gate (\"Qualifying person who is not your dependent (Form 2441)\", i2441 p. 1, Qualifying Person(s), \"or could claim as a dependent except\"), a refusal in f2441, which the dependent review was not given. Project stands. (carried over from reviews/2025/render/dependent.index.json at 870cc146, review of 2026-11-07)",
+   "context": "861db9f158eb332daa42e8f6e2518ef5630a5cee93b98e7cb7aa4d2bc218fe8a",
+   "date": "2026-11-23",
+   "run": "5cf2a33e2fc3779fe11760b5e66db275a084569e0d7b8c7c5e7de04525b70beb",
+   "subject_key": "41b9b3d16e753cfd9b4b07be0199588fddb2d675747ca18b4fcfe81ed49a5ea3"
   }
  ]
 }

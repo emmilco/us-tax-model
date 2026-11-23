@@ -1,7 +1,7 @@
 # Schedule A — supported itemized deductions and standard comparison
 
 - Document: `sa` (form, tax year 2025)
-- Note: Income and deduction eligibility are explicit supplied facts. Charity valuation, substantiation and income-limit screening are not computed; an affirmative limitation answer is refused. The SALT formula follows the printed 2025 worksheet, including its MFS halving step.
+- Note: Income and deduction eligibility are explicit supplied facts. Charity valuation and substantiation are not computed; an affirmative limitation answer is refused, and so is an itemized return whose gifts an income limit reduces whatever the charity (more than 60% of AGI in all, or noncash gifts, all taken as capital gain property, more than 30%). Line 5b adds the real estate taxes of reported rentals not taken on Schedule E. The SALT formula follows the printed 2025 worksheet, including its MFS halving step.
 
 ## (helper) — `sa.unsupported`
 
@@ -164,10 +164,24 @@
 
 ## (helper) — `sa.medical_asked`
 
-- **Authored helper label:** Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)
-- **Encoded (Bool):** (helper "In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?" = true or helper "Paid for health insurance with money already taxed (asked only when medical and dental costs were not said to be more than 7.5% of income)" = true)
-- Expr: `{"any":[{"eq":["sa.medical_any",{"const":true}],"op":"test"},{"eq":["sa.medical_premiums_if_not_large",{"const":true}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** Medical and dental costs are asked (they were more than 7.5% of income, health insurance was paid for with money already taxed, or an exception 05 to the additional tax on an early retirement distribution is claimed)
+- **Encoded (Bool):** (helper "In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?" = true or helper "Paid for health insurance with money already taxed (asked only when medical and dental costs were not said to be more than 7.5% of income)" = true or helper "Someone on the return claims the medical-expense exception (05) to the additional tax on an early retirement distribution, which is limited to the medical expenses above 7.5% of AGI whether or not deductions are itemized" = true)
+- Expr: `{"any":[{"eq":["sa.medical_any",{"const":true}],"op":"test"},{"eq":["sa.medical_premiums_if_not_large",{"const":true}],"op":"test"},{"eq":["sa.e05_claimed",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040sca] p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.e05_claimed`
+
+- **Authored helper label:** Someone on the return claims the medical-expense exception (05) to the additional tax on an early retirement distribution, which is limited to the medical expenses above 7.5% of AGI whether or not deductions are itemized
+- **Encoded (Bool):** helper "Exception 05 amounts claimed by everyone on the return, before the limit to the medical expenses" > $0
+- Expr: `{"gt":["sa.e05_amounts",{"const":0}],"op":"test"}`
+- Cite: [i5329] p. 5, Line 2, exception 05, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; sha256 aec3d325)
+
+## (helper) — `sa.e05_amounts`
+
+- **Authored helper label:** Exception 05 amounts claimed by everyone on the return, before the limit to the medical expenses
+- **Encoded (NonNegDollars):** Add person.x_e05 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.x_e05","op":"sum_over"}`
+- Cite: [i5329] p. 5, Line 2, exception 05, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; sha256 aec3d325)
 
 ## (helper) — `sa.line1`
 
@@ -209,7 +223,7 @@
 ## (gate) — `sa.line1_if_medical`
 
 - **Authored helper label:** Medical and dental expenses (zero when your costs were not more than 7.5% of income and you paid for no health insurance with money already taxed)
-- **Encoded (NonNegDollars):** Choose — [helper "Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)" = true → helper "Unreimbursed eligible medical and dental expenses"] [helper "Medical and dental costs may be deductible (they were more than 7.5% of income, or health insurance was paid for with money already taxed)" = false → helper "Year parameter sales.zero"]
+- **Encoded (NonNegDollars):** Choose — [helper "Medical and dental costs are asked (they were more than 7.5% of income, health insurance was paid for with money already taxed, or an exception 05 to the additional tax on an early retirement distribution is claimed)" = true → helper "Unreimbursed eligible medical and dental expenses"] [helper "Medical and dental costs are asked (they were more than 7.5% of income, health insurance was paid for with money already taxed, or an exception 05 to the additional tax on an early retirement distribution is claimed)" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.medical_asked",{"const":true}],"op":"test"},"then":"sa.line1"},{"guard":{"eq":["sa.medical_asked",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
 - Cite: [i1040sca] p. 1, Medical and Dental Expenses, "If you received a distribution from a health savings account or a medical savings account in 2025, see Pub. 969 to figure your deduction", "Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation", "If you are a retired public safety officer, you can't include any premiums you paid to the extent they were paid for with a tax-free distribution from your retirement plan", "If you paid someone to do both nursing and housework, you can deduct only the cost of the nursing help", "Hospital care (including meals and lodging), clinic costs, and lab fees", "Lodging expenses (but not meals) while away from home to receive medical care"; p. 2, "Don't deduct more than $50 a night for each person who meets the requirements in Pub. 502 under Lodging", "Limit on long-term care premiums you can include. The amount you can include for qualified long-term care insurance contracts (as defined in Pub. 502) depends on the age at the end of 2025 of the person for whom the premiums were paid", Line 1 Medical and Dental Expenses, "Enter the total of your medical and dental expenses after you reduce these expenses by any payments received from insurance or other sources", "If advance payments of the premium tax credit were made or you think you may be eligible to claim a premium tax credit, fill out Form 8962 before filling out Schedule A, line 1", "self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17", "You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them", "Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents", "Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return", "You can't deduct any premiums attributable to this individual unless this individual is a person described under Whose medical and dental expenses can you include, earlier", "However, if you had family coverage when you added this individual to your policy and your premiums didn't increase, you can enter on line 1 the full amount of your medical and dental insurance premiums", "If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount", "don’t include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2", "Also, don't include any other medical and dental expenses paid by the plan unless the amount paid is included in box 1 of your Form(s) W-2"; p502 p. 12, Premium Tax Credit, "You can’t include in medical expenses the amount of health insurance premiums paid by or through the premium tax credit", "You also can’t include in medical expenses any amount of advance payments of the premium tax credit made that you did not have to pay back", "However, any amount of advance payments of the premium tax credit that you did have to pay back can be included in medical expenses", "You are treated as paying $5,100 ($8,700 less the allowed premium tax credit of $3,600)"; i8962 p. 2, "You cannot deduct the portion of your health insurance premium on your tax return that is paid for by the PTC or APTC (after you determine how much of any excess APTC you must repay)"; p969 p. 9, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA"; p969 p. 13, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your Archer MSA" (2025; printed date 2025-12-08; sha256 b0999b12)
 
@@ -380,12 +394,33 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.property_tax_other_if_home",{"const":true}],"op":"test"},"then":"sa.property_tax_leave_out"},{"guard":{"eq":["sa.property_tax_other_if_home",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
 - Cite: [i1040sca] p. 6, Line 5b, "Don't include the following amounts on line 5b", "Itemized charges for services to specific property or persons" (2025; printed date 2025-12-08; sha256 b0999b12)
 
-## 5b — `sa.line5b_net`
+## (helper) — `sa.line5b_net`
 
-- **IRS:** Subtract sa.property_tax_leave_out_if_any from sa.line5b_if_home_owner; if zero or less, enter zero
+- **Authored helper label:** Subtract sa.property_tax_leave_out_if_any from sa.line5b_if_home_owner; if zero or less, enter zero
 - **Encoded (NonNegDollars):** Subtract helper "The part of the real estate tax amount that is not deductible (zero when there is none)" from helper "State and local real estate taxes (zero when you owned no home or other real estate)". If zero or less, enter -0-.
 - Expr: `{"from":"sa.line5b_if_home_owner","op":"subtract_floor0","take":"sa.property_tax_leave_out_if_any"}`
 - Cite: [i1040sca] p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business", "Don't include the following amounts on line 5b" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.rental_tax_sum`
+
+- **Authored helper label:** Real estate taxes on the rentals reported on Schedule E that are not taken there (the personal-use share)
+- **Encoded (NonNegDollars):** Add rental.tax_personal over every confirmed rental entry for which helper "The property is reported on Schedule E (not excluded)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"rental","field":"rental.tax_personal","op":"sum_over","where":{"eq":["rental.reported",{"const":true}],"op":"test"}}`
+- Cite: [p527] p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Only your rental expenses may be deducted on Schedule E (Form 1040). Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize your deductions" (2025; sha256 20c826e9)
+
+## (helper) — `sa.rental_tax_personal`
+
+- **Authored helper label:** Real estate taxes on reported rentals not taken on Schedule E (zero when you rented out no property)
+- **Encoded (NonNegDollars):** Choose — [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?" = true → helper "Real estate taxes on the rentals reported on Schedule E that are not taken there (the personal-use share)"] [scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.rental",{"const":true}],"op":"test"},"then":"sa.rental_tax_sum"},{"guard":{"eq":["scope.rental",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [p527] p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize your deductions" (2025; sha256 20c826e9)
+
+## 5b — `sa.line5b_total`
+
+- **IRS:** Add sa.line5b_net, sa.rental_tax_personal
+- **Encoded (NonNegDollars):** Add helper "Subtract sa.property_tax_leave_out_if_any from sa.line5b_if_home_owner; if zero or less, enter zero" and helper "Real estate taxes on reported rentals not taken on Schedule E (zero when you rented out no property)".
+- Expr: `{"of":["sa.line5b_net","sa.rental_tax_personal"],"op":"sum"}`
+- Cite: [i1040sca] p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business"; p527 p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize your deductions" (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## (helper) — `sa.personal_property_tax_any`
 
@@ -431,15 +466,15 @@
 
 ## (helper) — `sa.mortgage_unreported`
 
-- **Authored helper label:** Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098?
-- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098?
-- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098?"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Authored helper label:** Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098, or points paid in an earlier year that are deducted over the life of the loan?
+- **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098, or points paid in an earlier year that are deducted over the life of the loan?
+- Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098, or points paid in an earlier year that are deducted over the life of the loan?"}`
+- Cite: [i1040sca] p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 9, Line 8c, Refinancing, "Generally, you must deduct points you paid to refinance a mortgage over the life of the loan", "If you paid off a mortgage early, deduct any remaining points in the year you paid off the mortgage" (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## (gate) — `sa.mortgage_unreported_if_home`
 
 - **Authored helper label:** Asked only where it can apply (sa.mortgage_unreported)
-- **Encoded (Bool):** Choose — [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = true → helper "Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098?"] [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = false → helper "Year parameter sa.no (no)"]
+- **Encoded (Bool):** Choose — [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = true → helper "Did you (or, on a joint return, your spouse) pay home mortgage interest or points in 2025 that are not reported to you on Form 1098, or points paid in an earlier year that are deducted over the life of the loan?"] [helper "You owned a home or other real estate, or paid interest on a loan secured by a home" = false → helper "Year parameter sa.no (no)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.home_asked",{"const":true}],"op":"test"},"then":"sa.mortgage_unreported"},{"guard":{"eq":["sa.home_asked",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
 - Cite: [i1040sca] p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 9, Line 8c, "Points Not Reported on Form 1098" (2025; printed date 2025-12-08; sha256 b0999b12)
 
@@ -621,9 +656,9 @@
 
 ## 5d — `sa.line5d`
 
-- **IRS:** Add sa.line5a_total, sa.line5b_net, sa.line5c_if_taxed
+- **IRS:** Add sa.line5a_total, sa.line5b_total, sa.line5c_if_taxed
 - **Encoded (NonNegDollars):** Add line 5a, line 5b, and line 5c.
-- Expr: `{"of":["sa.line5a_total","sa.line5b_net","sa.line5c_if_taxed"],"op":"sum"}`
+- Expr: `{"of":["sa.line5a_total","sa.line5b_total","sa.line5c_if_taxed"],"op":"sum"}`
 - Cite: [f1040sa] p. 1, Taxes You Paid, line 5d, "d Add lines 5a through 5c" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.saltbase`
@@ -833,6 +868,36 @@
 - Expr: `{"gt":["sa.line12",{"const":50000}],"op":"test"}`
 - Cite: [f1040sa] p. 1, Gifts to Charity, line 12, "You must attach Form 8283 if over $500" (2025; created 2025-11-20; sha256 c14acf34)
 
+## (helper) — `sa.gift_sum`
+
+- **Authored helper label:** Add sa.line11_if_gifts, sa.line12 (the gifts to charity before income limits)
+- **Encoded (NonNegDollars):** Add line 11 and line 12.
+- Expr: `{"of":["sa.line11_if_gifts","sa.line12"],"op":"sum"}`
+- Cite: [f1040sa] p. 1, Gifts to Charity, lines 11 and 12 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.gift_total_limit`
+
+- **Authored helper label:** Multiply sa.agi_floor by sa.gift_total_limit_rate (60% of Form 1040 line 11b, not less than zero)
+- **Encoded (NonNegDollars):** Multiply helper "Form 1040 line 11b adjusted gross income, but not less than zero" by 60% (0.60) (sa.gift_total_limit_rate).
+- Interpretation: amb.2025.multiplication_subcent
+- Expr: `{"amount":"sa.agi_floor","op":"multiply_rate","rate":{"param":"sa.gift_total_limit_rate"}}`
+- Cite: [p526] p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited to no more than 60% of your AGI" (2025 returns; printed date 2026-02-05; sha256 607011d9)
+
+## (helper) — `sa.gift_property_limit`
+
+- **Authored helper label:** Multiply sa.agi_floor by sa.gift_property_limit_rate (30% of Form 1040 line 11b, not less than zero)
+- **Encoded (NonNegDollars):** Multiply helper "Form 1040 line 11b adjusted gross income, but not less than zero" by 30% (0.30) (sa.gift_property_limit_rate).
+- Interpretation: amb.2025.multiplication_subcent
+- Expr: `{"amount":"sa.agi_floor","op":"multiply_rate","rate":{"param":"sa.gift_property_limit_rate"}}`
+- Cite: [p526] p. 25, "Your noncash contributions of capital gain property to 50% limit organizations is limited to 30% of your AGI" (2025 returns; printed date 2026-02-05; sha256 607011d9)
+
+## (helper) — `sa.charity_over_test`
+
+- **Authored helper label:** An income limit reduces the gifts whatever the charity: gifts on lines 11 and 12 together more than 60% of Form 1040 line 11b, or gifts other than by cash or check (line 12, all taken as capital gain property) more than 30% of it
+- **Encoded (Bool):** (helper "Add sa.line11_if_gifts, sa.line12 (the gifts to charity before income limits)" > helper "Multiply sa.agi_floor by sa.gift_total_limit_rate (60% of Form 1040 line 11b, not less than zero)" or line 12 > helper "Multiply sa.agi_floor by sa.gift_property_limit_rate (30% of Form 1040 line 11b, not less than zero)")
+- Expr: `{"any":[{"gt":["sa.gift_sum","sa.gift_total_limit"],"op":"test"},{"gt":["sa.line12","sa.gift_property_limit"],"op":"test"}],"op":"test"}`
+- Cite: [p526] p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited to no more than 60% of your AGI. Your deduction may be further limited to 50%, 30%, or 20% of your AGI, depending on the type of property you give and the type of organization you give it to"; p. 25, "Your noncash contributions of capital gain property to 50% limit organizations is limited to 30% of your AGI"; i1040sca p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction" (2025 returns; printed date 2026-02-05; sha256 607011d9)
+
 ## 14 — `sa.line14`
 
 - **IRS:** Add sa.line11, sa.line12, sa.line13
@@ -1007,6 +1072,7 @@
 - **Authored helper label:** Deduction selected for Form 1040 line 12e
 - **Encoded (NonNegDollars):** Choose — [helper "Itemize if elected, required, or itemized total exceeds standard" = true → line 17] [helper "Itemize if elected, required, or itemized total exceeds standard" = false → helper "Standard deduction, zero when MFS spouse itemizes"]
 - **Refusal:** when sa.mfs_joint_paid_if_itemizing is true, cannot complete Schedule A on a separate return, expenses paid jointly with the spouse (Pub. 504, Table 1). On a married filing separately return, itemized deductions paid from money held with your spouse, or state income tax on a joint state return, are divided between you under Pub. 504; that is outside this tool. Cite: [i1040sca] p. 1, "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions" (2025; printed date 2025-12-08; sha256 b0999b12)
+- **Refusal:** when sa.charity_over_if_itemizing is true, cannot complete Schedule A charitable limitation (Pub. 526). Gifts to charity this large compared with your income are limited, and the deduction and the carryover are figured under Pub. 526, which this tool does not do. Cite: [p526] p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited to no more than 60% of your AGI"; p. 25, "Your noncash contributions of capital gain property to 50% limit organizations is limited to 30% of your AGI" (2025 returns; printed date 2026-02-05; sha256 607011d9)
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.itemizes",{"const":true}],"op":"test"},"then":"sa.line17"},{"guard":{"eq":["sa.itemizes",{"const":false}],"op":"test"},"then":"sa.standard"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -1016,6 +1082,13 @@
 - **Encoded (Bool):** Input — Was any amount you entered for these deductions paid from an account you hold with your husband or wife, or do the two of you file a joint 2025 state income tax return?
 - Expr: `{"op":"input","source":"Was any amount you entered for these deductions paid from an account you hold with your husband or wife, or do the two of you file a joint 2025 state income tax return?"}`
 - Cite: [i1040sca] p. 1, "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions"; p504 p. 5, Table 1, medical expenses "paid with funds deposited in a joint checking account in which you and your spouse have an equal interest", "half of the total medical expenses, subject to certain limits, unless you can show that you alone paid the expenses"; p504 p. 5, Table 1, state income tax, "file a joint state income tax return and you’re liable for only your own share of state income tax" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (gate) — `sa.charity_over_if_itemizing`
+
+- **Authored helper label:** Itemizing, and an income limit reduces the gifts to charity (no when taking the standard deduction, which the limits cannot change)
+- **Encoded (Bool):** helper "An income limit reduces the gifts whatever the charity: gifts on lines 11 and 12 together more than 60% of Form 1040 line 11b, or gifts other than by cash or check (line 12, all taken as capital gain property) more than 30% of it" = true and helper "Itemize if elected, required, or itemized total exceeds standard" = true
+- Expr: `{"all":[{"eq":["sa.charity_over_test",{"const":true}],"op":"test"},{"eq":["sa.itemizes",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [p526] p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited to no more than 60% of your AGI" (2025 returns; printed date 2026-02-05; sha256 607011d9)
 
 ## (helper) — `sa.mfs_itemizing`
 

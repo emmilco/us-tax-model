@@ -8241,6 +8241,78 @@
           "cents": 0
         }
       }
+    },
+    {
+      "id": "advfix.s8812.line22_form8919_tax",
+      "covers": [
+        "s8812.line22",
+        "s8812.clwb_8",
+        "f1040.line28"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Scout adversarial-credits M1. Head of household, three children (ages 2, 5, 8), no W-2, Form 8919 wages $4,000 (reason h), taxable interest $12,500. Form 8919: line 10 $4,000; line 11 = 4,000 x 0.062 = $248; line 12 = 4,000 x 0.0145 = $58; line 13 = $306 (Schedule 2 line 6). AGI $16,500, below the $23,625 head of household standard deduction: tax $0, so the child tax credit (line 14) is $0. Investment income $12,500 is over $11,950: no EIC. Schedule 8812: line 16a $6,600, 16b 3 x $1,700 = $5,100, line 17 $5,100; earned income $4,000, line 19 $1,500, line 20 15% = $225; Part II-B: line 21 $0 (no W-2), line 22 = Schedule 1 line 15 $0 + Schedule 2 line 5 $0 + Schedule 2 line 6 $306 = $306 (f1040s8812 line 22), line 23 $306, line 24 $0, line 25 $306, line 26 the larger of $225 and $306 = $306, line 27 the smaller of $5,100 and $306 = $306 (Form 1040 line 28). Before the fix line 22 read Schedule 1 line 15 only: line 27 $225.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [],
+        "scope.pay_no_w2": true,
+        "scope.contractor_pay": true,
+        "$f8919firm@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].f8919firm[firm].reason": "h",
+        "person[taxpayer].f8919firm[firm].wages": 400000,
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 1250000,
+        "$dependent": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "household.home_cost": true,
+        "household.considered_unmarried": true,
+        "dependent[c1].age": 2,
+        "dependent[c1].months": 12,
+        "dependent[c2].age": 5,
+        "dependent[c2].months": 12,
+        "dependent[c3].age": 8,
+        "dependent[c3].months": 12
+      },
+      "expect": {
+        "s2.line6": {
+          "kind": "money",
+          "cents": 30600
+        },
+        "s8812.line20": {
+          "kind": "money",
+          "cents": 22500
+        },
+        "s8812.line22": {
+          "kind": "money",
+          "cents": 30600
+        },
+        "s8812.line25": {
+          "kind": "money",
+          "cents": 30600
+        },
+        "s8812.line26": {
+          "kind": "money",
+          "cents": 30600
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 30600
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line28": {
+          "kind": "money",
+          "cents": 30600
+        }
+      }
     }
   ]
 }

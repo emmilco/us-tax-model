@@ -167,6 +167,16 @@
    "subject_key": "53103dc9c4e242aed98d4a2af31b5c9cfdc27a81431ca8ce0eb478e5fc0e468c"
   },
   {
+   "printed": "21",
+   "restated": "Choose — [helper \"Used as a home and rented fewer than 15 days: not reported\" = true → helper \"Zero\"] [helper \"Used as a home and rented fewer than 15 days: not reported\" = false → helper \"Rents less total expenses\"]",
+   "model": "The two branches are correct. Zero is right when the unit is used as a home and rented fewer than 15 days ('do not report the rental income and do not deduct any rental expenses'), and otherwise line 3 rents less line 20 is right. However, the line 21 instructions say 'If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss. Enter that', and the form says 'If result is a (loss), see instructions to find out if you must file Form 6198'. No refusal covers a loss with amounts not at risk, so the program would enter the full loss where the IRS text calls for the Form 6198 amount.",
+   "ruling": "Ruling: model error; i1040se p. 7, Line 21, \"If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss\". The case is refused: rental.not_at_risk (asked of a property with a loss) refuses with Form 6198 (at-risk limits). The two branches are right, as the reply says. Project stands.",
+   "context": "588a9ee44ad665af0cbb867b506b8e26353b38d55f874b8faffa434d40907a6d",
+   "date": "2026-11-22",
+   "run": "3f1b3a8e97fd1838e1e8a17142f8d82f90b83fb91c766d1ce30a95443df7508c",
+   "subject_key": "3e436eeb8f766e57922edbd79a85616f289503e0a633ea6d47ef0dabadc9849e"
+  },
+  {
    "printed": "5",
    "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Advertising, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Advertising: the rental part (rental days over total days of use)\"]",
    "model": "The rental-day ratio is right, but the amount is still entered when the property is excluded. Line 2 instructions say a home rented fewer than 15 days means 'do not report the rental income and do not deduct any rental expenses'; only lines 3 and 21 are zeroed.",

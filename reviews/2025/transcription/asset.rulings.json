@@ -1586,6 +1586,22 @@
    "subject_key": "eb61ad837bb6257b0d13bd3d6c35edb338bd16ca3ab30ae168f7bd4ece770f2c"
   },
   {
+   "printed": "asset.placed_this_year",
+   "project_expr_sha256": "3245700699668352748ee69bf20d2ba71699be9e6c16f7a806c0a3157dc27ed6",
+   "second_expr_sha256": "2039df6d56a2d43c67898472fe32a3e4579579f9c246ddbafbd76a79c85930ce",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3306 values compared, none different or missing: 214 on 2635 fixture cases, 163 on 500 generated returns seed 20261026, 2929 on 1721 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "c8983c126eb0ec542362a14f9981f65863c8f540151c0e841e93a515eba8203b",
+   "date": "2026-11-22",
+   "run": "553e7623172befb8257408bde27dbae3f8113ad8d9fe650146df2f4c7a6e758b",
+   "subject_key": "6b774afbf3953ac77486f62b1454860dea01a6306de386c5a1db177fad1e58a8",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "asset.s179_2025",
    "project_expr_sha256": "5e41465ed84ab5d847aed129cabc4113e6890b5e5034914ad7b5f61f10070660",
    "second_expr_sha256": "c97553c439f33f70d9dae1fc8ba508fdf3910847779a78eb6ba210a94deba73f",

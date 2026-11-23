@@ -1245,6 +1245,317 @@
           "value": false
         }
       }
+    },
+    {
+      "id": "advfix.retirement.rollover_nonspouse_refused",
+      "covers": [
+        "retirement:refuse",
+        "retirement.sav_inherited"
+      ],
+      "evidence": "synthetic refusal regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Scout adversarial-income M1. A traditional IRA inherited from a parent: Form 1099-R code 4, box 1 $50,000, paid to the filer, who put it into her own IRA within 60 days. p590b p. 5: a beneficiary other than the spouse \"can't roll over any amounts into or out of the inherited IRA\"; the $50,000 is taxable and the deposit an excess contribution (Form 5329 Part III), outside this tool. Predicted: the Yes to the inherited-IRA question (retirement.sav_inherited, read for an IRA in place of a second question) refuses through retirement.special at line 4b.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "death_4",
+        "person[taxpayer].retirement[a].box1": 5000000,
+        "person[taxpayer].retirement[a].rollover_any": true,
+        "person[taxpayer].retirement[a].rollover": 5000000,
+        "person[taxpayer].retirement[a].sav_inherited": true
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[a].special",
+          "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+          "remedy": "This distribution needs a form or rule outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "advfix.retirement.rollover_second_refused",
+      "covers": [
+        "retirement:refuse",
+        "retirement.rollover_second"
+      ],
+      "evidence": "synthetic refusal regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Scout adversarial-income M1, second case. A traditional IRA distribution (code 7) of $10,000, $6,000 put back into an IRA within 60 days, when an earlier IRA distribution had already been rolled over to an IRA within the 12 months before. p590a p. 25: \"You can make only one rollover from an IRA to another (or the same) IRA in any 1-year period\". Predicted: refused through retirement.special at line 4b.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "normal_7",
+        "person[taxpayer].retirement[a].box1": 1000000,
+        "person[taxpayer].retirement[a].rollover_any": true,
+        "person[taxpayer].retirement[a].rollover": 600000,
+        "person[taxpayer].retirement[a].rollover_second": true
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[a].special",
+          "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+          "remedy": "This distribution needs a form or rule outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "advfix.retirement.rollover_spouse_beneficiary",
+      "covers": [
+        "retirement.sav_inherited",
+        "f1040.line4b"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Scout adversarial-income M1, the case that stays: a surviving spouse (code 4) who rolled over the whole $50,000 within 60 days, with no other IRA rollover in the 12 months before. p590b p. 6: \"A surviving spouse can roll over the distribution to another traditional IRA\". Predicted: line 4a $50,000, line 4b $0, line 4c rollover box checked.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "death_4",
+        "person[taxpayer].retirement[a].box1": 5000000,
+        "person[taxpayer].retirement[a].rollover_any": true,
+        "person[taxpayer].retirement[a].rollover": 5000000,
+        "person[taxpayer].retirement[a].rollover_second": false,
+        "person[taxpayer].retirement[a].sav_inherited": false
+      },
+      "expect": {
+        "f1040.line4a": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line4c_rollover": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "advfix.retirement.ira_to_plan_rollover",
+      "covers": [
+        "retirement.rollover_second",
+        "f1040.line4b"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Review of lane advfix, finding 1. A traditional IRA distribution (code 7) of $10,000, of which $6,000 went into a 401(k) within 60 days, by a filer who had rolled over another IRA distribution to an IRA five months earlier. p590a p. 25 limits only rollovers \"from an IRA to another (or the same) IRA\", so this rollover stands: the filer answers No to rollover_second (\"Did this money go back into an IRA ...\"). Predicted: line 4a $10,000, line 4b $4,000, line 4c rollover box checked.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "normal_7",
+        "person[taxpayer].retirement[a].box1": 1000000,
+        "person[taxpayer].retirement[a].rollover_any": true,
+        "person[taxpayer].retirement[a].rollover": 600000,
+        "person[taxpayer].retirement[a].rollover_second": false
+      },
+      "expect": {
+        "f1040.line4a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line4c_rollover": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "advland.retirement.code1_born_1955",
+      "covers": [
+        "retirement.miscoded",
+        "s2.line8"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Scout adversarial-retirement M1. A single filer born in 1955 (59 1/2 or older all through 2025) takes $20,000 from a traditional IRA; the custodian coded it 1 and the filer names no exception. i5329 p. 5, exception 12: \"Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older.\" Predicted: line 4b $20,000; Form 5329 line 1 $20,000, line 2 $20,000, line 4 $0; Schedule 2 line 8 $0 (was $2,000).",
+      "inputs": {
+        "person[taxpayer].birth_year": 1955,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "early_1",
+        "person[taxpayer].retirement[a].box1": 2000000
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "s2.line8": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "advland.retirement.code1_born_1966_after",
+      "covers": [
+        "retirement.after59",
+        "s2.line8"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Scout M1, the open birth years. A filer born in 1966 may have turned 59 1/2 during 2025, so the tool asks; the filer was 59 1/2 or older at the one payment of $10,000 (code 1). Exception 12 covers it (i5329 p. 5). Predicted: Schedule 2 line 8 $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5200000,
+        "person[taxpayer].w2[emp_a].box4": 322400,
+        "person[taxpayer].w2[emp_a].box5": 5200000,
+        "person[taxpayer].w2[emp_a].box6": 75400,
+        "person[taxpayer].birth_year": 1966,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "early_1",
+        "person[taxpayer].retirement[a].box1": 1000000,
+        "person[taxpayer].retirement[a].after59": true
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "s2.line8": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "advland.retirement.code1_born_1966_before",
+      "covers": [
+        "retirement.after59",
+        "s2.line8"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Scout M1, the open birth years: as advland.retirement.code1_born_1966_after, but the payment came before the filer turned 59 1/2, and no exception is named. i5329 p. 3, line 1; p. 5, line 4, 10%. Predicted: Schedule 2 line 8 $1,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5200000,
+        "person[taxpayer].w2[emp_a].box4": 322400,
+        "person[taxpayer].w2[emp_a].box5": 5200000,
+        "person[taxpayer].w2[emp_a].box6": 75400,
+        "person[taxpayer].birth_year": 1966,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "early_1",
+        "person[taxpayer].retirement[a].box1": 1000000,
+        "person[taxpayer].retirement[a].after59": false
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "s2.line8": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "advland.retirement.e05_medical_asked",
+      "covers": [
+        "sa.e05_claimed",
+        "sa.line1",
+        "person.x_c05",
+        "s2.line8"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Scout adversarial-retirement L1. A single filer with $52,000 of wages takes $20,000 (code 1) from a traditional IRA and claims exception 05 for $8,000 without ticking the medical-bills box; the medical expenses are now asked. i5329 p. 5, exception 05: up to \"unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income\". Predicted: AGI $72,000; medical $15,000 less $5,400 = $9,600 (Schedule A line 4); exception 05 $8,000; Form 5329 line 3 $12,000; Schedule 2 line 8 $1,200 (was $2,000, the exception cut to $0). Standard deduction.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5200000,
+        "person[taxpayer].w2[emp_a].box4": 322400,
+        "person[taxpayer].w2[emp_a].box5": 5200000,
+        "person[taxpayer].w2[emp_a].box6": 75400,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "early_1",
+        "person[taxpayer].retirement[a].box1": 2000000,
+        "person[taxpayer].retirement[a].exception": "e05",
+        "person[taxpayer].retirement[a].exc_amount": 800000,
+        "sa.medical_any": false,
+        "sa.line1": 1500000
+      },
+      "expect": {
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 7200000
+        },
+        "sa.line4": {
+          "kind": "money",
+          "cents": 960000
+        },
+        "s2.line8": {
+          "kind": "money",
+          "cents": 120000
+        }
+      }
     }
   ]
 }

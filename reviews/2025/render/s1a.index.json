@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "3ec2185bc07bd3db90147c5fbffd49af6a9ff4e7e13df2436f9a14a9ecbec5c2",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -63,9 +63,9 @@
   },
   {
    "key": "4c",
-   "record": "d0ec4b3a88946feafcc6879f8178825f99301a37ad232e202b821cecebf009ed",
+   "record": "334ec52dbaa10dd587d151fa220ca50d986147cbfcbaa370135ede25e6a2622a",
    "status": "MATCH",
-   "subject_key": "3c78dfc7efa6695c4275c64c2fe7837ebb966223b2c5758dac59b4713d8331b0"
+   "subject_key": "01f2aa17be3e70e371fb7e62b5a5b13963c40ced80223d6a96ecf991002c0e66"
   },
   {
    "key": "5",
@@ -117,9 +117,9 @@
   },
   {
    "key": "14a",
-   "record": "d0ec4b3a88946feafcc6879f8178825f99301a37ad232e202b821cecebf009ed",
+   "record": "334ec52dbaa10dd587d151fa220ca50d986147cbfcbaa370135ede25e6a2622a",
    "status": "MATCH",
-   "subject_key": "3302d4ad410a8cb0073b68c151abd20a05d26cbd37f389ffcdaf086b58e32c2c"
+   "subject_key": "8be54fff0643da986062e7d25b56ac2dae336f3fdf442cf9f21e1345b5d1fc6b"
   },
   {
    "key": "14b",
@@ -277,7 +277,7 @@
   "3": "40fa97a1c3f50fa31dfa0cd8bb6e7edcda9ea6aca62d05f575bc7f3042d6f0de",
   "4a": "4d07a489b2aae8ce39b8a4081f097c4870ea175da1a50948e3b659b341389ae1",
   "4b": "abdb7f5a38916fd35ea21e8db7c37f0ad4cad38718c033bf846f1e41756a1f41",
-  "4c": "08865c971771193b9b960e2dfa0486c1862722fb109f27d6b5b907be8d98293d",
+  "4c": "f94f68c5ff1d384a2408f108534005db2ad647cf09dceee82efb6663d9a80577",
   "5": "fea0019347f790ed913d8faef3141ba0ce83a6f61bad7ac0f8fe692012cc876e",
   "6": "d3b303365ed3f8c2177241467d322f454de43fe3b15db0ef1db79183b38e7f2e",
   "7": "8b9bbe981a070e8744875bfa882d7f4c1721c96d647f048781f6a20cdb512892",
@@ -286,7 +286,7 @@
   "10": "905050b62cf211e9ecc552dfbca5efc2ebb3d795f1cb1b96aa0cd25953d1b556",
   "12": "03c15abb9a3926990db8efa93b1147169b5007dec782e696c64ac1e4143be132",
   "13": "315089cb2146c3d85212a54af6f8d2661b74ed005bce7d3f478a94e9234d71bb",
-  "14a": "f291e47dad254bcf137f86549f6ee35ff8bb3ef0ff4f374a7003206c4ab718ec",
+  "14a": "2feaa0546a65a1d444c393c88900071283447bff91aa45bf4090b0299f8a0124",
   "14b": "c56c5ee43d96ff9fe20157050df0433eb829d1b6b587459261ea4171eb968302",
   "14c": "0a02e598e97165980d5380e9a61feb2e0025aa6d6e799f65da3fb841c41f8d3a",
   "15": "13474b827898de4845344ecd1934e7c1e63658ece9216caa51b4f6fe73ad7a9a",

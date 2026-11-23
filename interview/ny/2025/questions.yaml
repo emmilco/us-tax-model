@@ -97,6 +97,13 @@ bank:
       Program, the New York City Employees'', Teachers'' or Board of Education Retirement System, the City Police or Fire
       Pension Fund, and the MABSTOA Pension Plan. Contributions to a 401(k), 403(b) or 457 plan do not count. This tool
       does not compute the addition; a Yes ends the New York part here.'
+  - input: ny_it201.ask.nyc_flex
+    order: 1010
+    seq: 12
+    prompt: Does a Form W-2 you (or, on a joint return, your spouse) got from New York City or another city public employer, such
+      as CUNY, the city schools, NYC Transit or the Housing Authority, show pay set aside for a flexible benefits plan?
+    help: It may be listed in box 14, for example as IRC 125. New York adds it back to income, which this tool does not
+      compute; a Yes ends the New York part here.
   - input: ny_it201.ask.us_obligation_interest
     order: 1010
     seq: 20
@@ -163,13 +170,22 @@ bank:
       income, as a state tax refund or as other income?
     help: New York mailed inflation refund checks in the fall of 2025. Whether New York subtracts them is unsettled for 2025,
       so a Yes ends the New York part here.
+  - input: ny_it201.ask.prior_168k
+    order: 1010
+    seq: 55
+    prompt: Since 2003, have you (or, on a joint return, your spouse) taken bonus depreciation on business or rental property you
+      still had in 2025?
+    help: Bonus depreciation deducts much or all of a cost in the first year (an earlier Form 4562, line 14 or 25); count
+      property deducted in full. New York spreads it over years (Form IT-398), which this tool does not compute; a Yes ends
+      the New York part here.
   - input: ny_it201.ask.it225
     order: 1010
     seq: 60
     prompt: Does any item on New York's list of less common income changes (Form IT-225) apply to you (or, on a joint
       return, your spouse)? Most people have none.
-    help: 'The list covers, for example, a disability income exclusion, a trust''s accumulation distribution, and payments
-      such as Holocaust reparations or a wrongful-conviction award. This tool does not compute them.'
+    help: 'For example: moving expenses you paid or were repaid for by an employer, a disability income exclusion, a trust''s
+      accumulation distribution, or Holocaust reparations or a wrongful-conviction award. This tool does not compute them; a
+      Yes ends the New York part here.'
   # ---- 1020 Deductions
   - input: ny_it201.ask.itemize
     order: 1020
@@ -364,6 +380,13 @@ bank:
     seq: 130
     prompt: Do you want all or part of your New York refund put into a New York 529 college savings account?
     help: Depositing a refund into a 529 account (Form IT-195) is outside this tool.
+  # ---- asked where its subject lives: after the federal alimony questions
+  - input: ny_it201.ask.alimony_later
+    order: 161
+    seq: 14
+    prompt: Did you (or, on a joint return, your spouse) pay or receive any of that alimony in 2025?
+    help: Unlike the federal return, New York taxes alimony under an agreement made after 2018 and lets the payer subtract it.
+      This tool does not compute that; a Yes ends the New York part here.
   # ---- asked where its subject lives: after the federal care questions
   - input: ny_it201.ask.dependent_care
     order: 155

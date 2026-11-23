@@ -2667,7 +2667,7 @@
         "qdcg.line5 floor0 zero side"
       ],
       "evidence": "R",
-      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending. The $30,000 itemized deduction that brings taxable income to $10,000 is home mortgage interest (Form 1098), not cash gifts: $30,000 of cash gifts on a $40,000 AGI is more than the 60% limit of Pub. 526 and is refused (lane fx-itemized); line 17 and every asserted value are unchanged.",
       "inputs": {
         "div.any": true,
         "f1040.line3a": 2000000,
@@ -2676,9 +2676,9 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "sa.gifts": true,
-        "sa.line11": 3000000,
-        "person[taxpayer].w2[migrated].box1": 2000000
+        "person[taxpayer].w2[migrated].box1": 2000000,
+        "sa.home_owner": true,
+        "sa.mortgage_interest": 3000000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {

@@ -425,48 +425,48 @@
    ]
   },
   "gate:s1.has_jury_pay": {
-   "subject_sha": "e4be917657893d2bdc12c7559654bec4e54049ebf30a70099b850e82c964b3e8",
+   "subject_sha": "8a7b30fdae8b06bc9895649b7f9c4b6f42af290cb02906a747af7c008ffa218a",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
+       "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A filer received jury duty pay in late 2024 and reported it on the 2024 Schedule 1, line 8h. Their employer had kept paying their salary, and they turned the jury pay over in early 2025.",
-       "why_no": "The gate is computed from 2025 line 8h, which is zero because the pay was income in 2024. The repayment question is never asked, although the repayment happened in 2025.",
+       "who": "A filer served on a jury in December 2024 and reported that jury pay on the 2024 return. The employer kept paying the salary, and the filer turned the jury pay over to the employer in January 2025. No jury pay was received in 2025.",
+       "why_no": "The gate is computed from line 8h, which is truthfully zero for 2025 because the pay was received and reported in 2024. So the question about turning pay over to the employer is never asked, even though the repayment happened in 2025.",
        "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
        "irs_text": "p525 p. 34, Jury duty: \"you can deduct the amount turned over to your employer as an adjustment to income. Enter the amount you repay your employer on Schedule 1 (Form 1040), line 24a.\"",
-       "severity": "medium",
-       "fix": "Do not gate only on 2025 line 8h > 0. Ask directly: \"In 2025, did you or your spouse give any jury duty pay to an employer, including pay received in an earlier year, because the employer kept paying your salary?\" Cap the amount at line 8h only when the pay was received in 2025. Otherwise flag the case for year-of-repayment treatment."
+       "severity": "high",
+       "fix": "Ask the question when line 8h > 0 OR the filer answers yes to 'In 2025, did you (or your spouse, if filing jointly) turn over to an employer any jury duty pay, including pay received in an earlier year, because the employer kept paying your salary?' Cap the answer at line 8h only for pay received in 2025."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A juror's court or county reported the jury pay on Form 1099-MISC, box 3 (Other income). The filer entered the form as an ordinary 1099-MISC, so the amount went to line 8z instead of line 8h.",
-       "why_no": "The computed gate reads only line 8h. Jury pay that the tool routed from a 1099-MISC to other income leaves line 8h at zero, so the repayment question is suppressed.",
+       "pattern": "2",
+       "who": "An employer paid full salary during jury service and later recovered the jury fee, for example by deducting it from a later paycheck or by having the court check endorsed over. The filer never handed over money directly.",
+       "why_no": "The question asks how much the filer did 'give to an employer'. A filer whose employer took the amount back through payroll may not see that as giving, and may answer 0 as the help text ('Give 0 if none') invites.",
        "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
-       "irs_text": "i1040gi p. 91, Line 8h: \"Enter any jury duty pay and see the instructions for line 24a\"; p. 99, Line 24a: \"Enter your jury duty pay if you gave the pay to your employer...\"",
+       "irs_text": "p525 p. 34, Jury duty: \"If you must give the pay to your employer because your employer continues to pay your salary ... you can deduct the amount turned over to your employer\"",
        "severity": "medium",
-       "fix": "When the filer enters a Form 1099-MISC, ask whether any box 3 amount is jury duty pay and route that part to line 8h. Alternatively, gate on a direct question: \"Did you or your spouse receive jury duty pay (with or without a form)?\""
+       "fix": "Reword as 'How much of that jury pay did you (or your spouse) turn over or repay to an employer, including amounts the employer took back from your pay or checks you signed over, because the employer kept paying your salary?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A married filer's spouse served on a jury, endorsed the court's check over to the employer, and never saw the money as their own. The couple answered no to any jury pay question that feeds line 8h.",
-       "why_no": "They do not see pay they had to hand over as pay they received. Line 8h stays zero and the gate stays false. AGI is unchanged because both lines are omitted, but the return misreports income and the adjustment.",
-       "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
-       "irs_text": "p525 p. 34, Jury duty: \"Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer...\"",
+       "who": "A filer whose employer required the jury check to be turned over regards the money as never theirs. Because they surrendered it to the employer, they leave jury pay off line 8h.",
+       "why_no": "The filer sees the jury pay as a pass-through, not as income. Line 8h is then zero, so the computed gate is false and line 24a is dropped. AGI nets out the same, but gross income is understated.",
+       "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a), together with the upstream line 8h",
+       "irs_text": "p525 p. 34: \"Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h.\"",
        "severity": "low",
-       "fix": "Word the line 8h input as: \"Did you or your spouse receive any jury duty pay, even if you turned it over to your employer?\""
+       "fix": "In the line 8h question, add help: 'Include all jury pay you or your spouse received, even if you turned it over to your employer; you can deduct the turned-over amount later.'"
       }
      ],
-     "prompt_sha": "8138288d739569ad6b491cf3e60c8c97c0aeb59d6c8eb56853d8fbc33a222892",
+     "prompt_sha": "05afc474823d2b1212349081a1ade2f235b8d3051d018703d02e05a77aea3a9d",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.07991999999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_s1.has_jury_pay.e4be91765789.1.response.txt"
+     "cost": 0.08626,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_s1.has_jury_pay.8a7b30fdae8b.1.response.txt"
     }
    ],
    "condition": "s1.has_jury_pay",
@@ -950,48 +950,88 @@
    ]
   },
   "gate:s1.nol_joint": {
-   "subject_sha": "e5395a609edcf8ad266a77da086e128a1a0f6b701c2be1f010a41cbb359f3694",
+   "subject_sha": "2189a47ef9d217b7c5624ea1705617da2287dde9ad5fae17ee0ae50cb4104061",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A taxpayer who files a joint 2025 return and whose spouse has a 2026 farming NOL (or other carryback-eligible NOL) carried back into 2025; they were married on December 31, 2025 but divorced or were not married to each other in an involved year or a year since.",
-       "why_no": "The gate asks only about a loss 'from an earlier year' into 2025. This loss is from a later year (2026) even though it is carried back into 2025, so the filer truthfully answers no.",
-       "line": "s1.nol_not_married_if_joint",
-       "irs_text": "i172 p. 3, Change in Marital Status: 'If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction. If you file a joint return, the NOL deduction is limited to the income of that spouse.'",
-       "severity": "high",
-       "fix": "Broaden the gate to any NOL deduction on the 2025 joint return, including a carryback into 2025 from a later loss year; ask 'any NOL carryback or carryover into 2025' rather than 'from an earlier year'."
-      },
       {
        "kind": "UNCLEAR",
        "pattern": "7",
-       "who": "A joint filer with a prior-year business or farming loss carryforward reported on Form 172, but who does not recognize the quoted legal term 'net operating loss deduction' and thinks it means only a current-year business loss or a corporate NOL.",
-       "why_no": "The gate asks them to classify the carryforward as a 'net operating loss deduction'; they cannot tell that their prior-year loss carryforward is the thing asked and answer no.",
+       "who": "A married couple filing jointly in 2025. In 2023 one spouse had a Schedule C loss larger than all other income, and the prior return showed negative taxable income. They never filed Form 172 or used the words 'net operating loss.' They married in 2024.",
+       "why_no": "The helper asks whether they are carrying a loss 'as a net operating loss deduction.' They do not know whether their loss is an NOL, so they answer no. The gated question is never asked, and the deduction against the joint income is never limited.",
        "line": "s1.nol_not_married_if_joint",
-       "irs_text": "i172 p. 3, Deducting a Carryforward: 'If you carry forward your NOL to a tax year after the NOL year, list your NOL deduction as a negative figure on Schedule 1 (Form 1040) ... Attach a Form 172 for each NOL ...'",
+       "irs_text": "i172 p. 3, Change in Marital Status: \"If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction.\"",
        "severity": "medium",
-       "fix": "Ask a fact the filer can check first, such as whether they have a Form 172 or any prior-year business, farming, or casualty loss carryover being deducted on Schedule 1, and classify it as an NOL after a broad yes."
+       "fix": "Ask a fact the filer can check first: 'Did you or your spouse have a year since 2018 in which losses or deductions were more than income (negative taxable income, a Form 172, or an NOL deduction on Schedule 1)?' Classify the NOL after a broad yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A joint filer whose 2024 business losses exceeded the excess business loss limit (Form 461). The disallowed amount carries into 2025 as an NOL. The filer married the current spouse in 2025.",
+       "why_no": "The filer thinks of the amount as an 'excess business loss' carryover, not a 'net operating loss.' The helper's list of business, farm, rental and disaster losses does not name it.",
+       "line": "s1.nol_not_married_if_joint",
+       "irs_text": "i172 p. 3, Change in Marital Status: \"only the spouse who had the loss can take the NOL deduction. If you file a joint return, the NOL deduction is limited to the income of that spouse\"",
+       "severity": "medium",
+       "fix": "Add to the helper's help: 'This includes an excess business loss disallowed on Form 461 in an earlier year, an NOL passed to you from a terminated estate or trust, and ordinary losses on small business (section 1244) stock.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A joint filer who, before the current marriage, had an ordinary loss on small business (section 1244) stock. The loss created an NOL that still carries into 2025.",
+       "why_no": "The helper says 'not a capital loss from selling investments.' Selling stock sounds like selling investments, so the filer answers no.",
+       "line": "s1.nol_not_married_if_joint",
+       "irs_text": "i172 p. 3, Change in Marital Status: \"only the spouse who had the loss can take the NOL deduction\"",
+       "severity": "medium",
+       "fix": "Reword the exclusion: 'not a capital loss carryover (Schedule D). An ordinary loss on small business stock does count.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "other",
-       "who": "A taxpayer who files a joint 2025 return with a new spouse and is carrying forward their share of a joint NOL from a prior marriage with a former spouse; the current spouse did not have that loss.",
-       "why_no": "The gate says 'you (or, on a joint return, your spouse)' and the filer reads 'spouse' as the current spouse; since the current spouse did not have the loss, they answer no, overlooking that the filer's own share of the former joint NOL is being carried in.",
+       "who": "A spouse who received an NOL carryover from a terminated estate or trust in which they were a beneficiary (excess deductions in the final year). The filer married the current spouse after that year.",
+       "why_no": "The helper asks about a loss 'you (or your spouse)' had from a business, farm, rental or disaster. A carryover passed through from an estate does not feel like the filer's own loss of any listed kind.",
        "line": "s1.nol_not_married_if_joint",
-       "irs_text": "i172 p. 3, Change in Marital Status: 'If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction. If you file a joint return, the NOL deduction is limited to the income of that spouse.'",
+       "irs_text": "i172 p. 3, Change in Marital Status: \"If you file a joint return, the NOL deduction is limited to the income of that spouse.\"",
        "severity": "medium",
-       "fix": "Say explicitly that the question covers an NOL carryback or carryover of either spouse, including a share of a joint NOL from a prior marriage or a former spouse, and ask about any such loss before naming the current spouse."
+       "fix": "Name in the helper's help: 'an NOL carryover passed to you from an estate or trust that ended.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A joint couple who married each other, divorced in 2021, and remarried each other in 2023. One spouse's 2019 farm NOL still carries into 2025.",
+       "why_no": "They were married to each other in 2019, when the loss arose, and are married now. They read the question as asking about the loss year and the present, overlooking the gap years in between, and answer no.",
+       "line": "s1.nol_not_married_if_joint",
+       "irs_text": "i172 p. 3, Change in Marital Status: \"not married to each other in all years involved in figuring NOL carrybacks and carryovers\"",
+       "severity": "medium",
+       "fix": "Ask positively and year by year: 'Were you and your spouse married to each other at the end of every year from the year the loss arose (and any year it was carried back to) through 2025?' A No ends the interview."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A joint couple, married to each other since 2017. One spouse's 2020 NOL was carried back five years under the 2018–2020 rule to 2015, before they married, and the rest carries into 2025.",
+       "why_no": "They focus on the year the loss arose and on the years since, both of which fall inside the marriage. They miss that a carryback year falls before the marriage.",
+       "line": "s1.nol_not_married_if_joint",
+       "irs_text": "i172 p. 3, Change in Marital Status: \"all years involved in figuring NOL carrybacks and carryovers\"",
+       "severity": "low",
+       "fix": "State in the help: 'Include any earlier year the loss was carried back to, such as up to 5 years back for 2018–2020 losses or 2 years back for farm losses.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any joint filer facing the gated question.",
+       "why_no": "The double negative 'Were you … not married to each other' invites a reversed answer. A couple with an unmarried year in the loss period can answer no, meaning 'we were married,' and lose the refusal.",
+       "line": "s1.nol_not_married_if_joint",
+       "irs_text": "i172 p. 3, Change in Marital Status: \"If you and your spouse were not married to each other in all years involved\"",
+       "severity": "medium",
+       "fix": "Remove the negation: 'Were you and your spouse married to each other in every one of those years?' Treat a No as the refusal condition."
       }
      ],
-     "prompt_sha": "d334978f8863378d33611e111e7269c973a3e8ba08c20729df8ad49ac0ac48af",
+     "prompt_sha": "bc5ed81fc1122e2e623df8b63023f1f02462cf98df0b616ef909090db6e9018d",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_s1.nol_joint.e5395a609edc.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.112868,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_s1.nol_joint.2189a47ef9d2.1.response.txt"
     }
    ],
    "condition": "s1.nol_joint",
@@ -1023,48 +1063,48 @@
    ]
   },
   "gate:s1.nol_separate": {
-   "subject_sha": "5604f6423847ef05d261a190457275537e8ba3cdc0a7e8e6d1b575b7a5605d84",
+   "subject_sha": "3a881ab69320aa18bb7826a577e9b4262adb33e1f1d3b2d4d04f76197743b6e1",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A married filer filing a 2025 joint return when either spouse is carrying an NOL from an earlier year in which that spouse was not married to the current filer in all involved years, such as a joint return with a former spouse.",
-       "why_no": "The computed gate requires the 2025 return not be joint, so it is false on their MFJ return even though the helper specifically asks about a spouse's NOL on a joint return. The gated question is never asked and the line is set false.",
-       "line": "s1.nol_was_joint_if_separate",
-       "irs_text": "i172 p. 3, Change in Marital Status: 'If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction. If you file a joint return, the NOL deduction is limited to the income of that spouse.'",
-       "severity": "high",
-       "fix": "Do not make nonjoint status a prerequisite. On a joint return, ask whether either spouse has an NOL carryforward involving any year not married to the current spouse, and refuse or split/limit the NOL accordingly."
-      },
-      {
        "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A nonjoint 2025 filer with an NOL carryover from an earlier joint year but no 2025 taxable income to offset, so no NOL deduction is actually being claimed for 2025.",
-       "why_no": "They read 'carrying a loss ... into 2025 as a net operating loss deduction' as requiring an actual 2025 deduction. They answer no because they are not deducting it this year, even though the NOL carryover is still being carried into 2025.",
+       "pattern": "3",
+       "who": "A filer now filing single, head of household or married filing separately whose 2023 joint return showed an NOL. Both spouses had losses that year, but the larger one came from the other spouse's business. Under the allocation, part of the joint NOL is this filer's share and carries into 2025.",
+       "why_no": "On a return that is not joint, the scope helper asks only about 'you'. The filer thinks of the loss as the spouse's or ex-spouse's business loss, or as the couple's joint loss, not 'a loss you are carrying'. So they answer no, and the joint-history question that ends the interview is never asked.",
        "line": "s1.nol_was_joint_if_separate",
-       "irs_text": "i172 p. 3, Joint to separate returns: 'If you and your spouse file separate returns for a tax year, but filed a joint return for any or all of the tax years involved in figuring the NOL carryover, figure each of your carryovers separately.'",
+       "irs_text": "i172 p. 3, Joint to separate returns: 'figure each of your carryovers separately by separating the NOL portion for each spouse from within the joint return ... If both spouses have an NOL, multiply the joint NOL by a fraction ... The rest of the joint NOL is spouse B's share.'",
        "severity": "medium",
-       "fix": "Ask whether the filer has any NOL carryover available for 2025 even if not currently deductible, and separately whether it is being deducted; do not gate on the current deduction."
+       "fix": "Ask the joint-history fact first and broadly: 'Did you, or a joint return you signed with any spouse, have a business, farm, rental or disaster loss in an earlier year that was more than the income on that return, and not all used up by 2024?' On a return that is not joint, treat any loss shown on an earlier joint return as possibly partly yours."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "7",
-       "who": "A nonjoint 2025 filer who is the spouse who had the loss on an earlier joint return, but who does not recognize the carryforward as their own 'net operating loss' because they do not know the term or think a joint NOL belongs to both spouses or the former spouse.",
-       "why_no": "They answer no to the legal label 'net operating loss' rather than to the checkable fact that they have a loss carryforward from a joint year that must be split.",
+       "who": "A filer who in an earlier year sold, or found worthless, stock in a small corporation they helped found (section 1244 stock), with an ordinary loss that created an NOL. They filed jointly in that year and file separately or single now.",
+       "why_no": "The helper excludes 'a capital loss from selling investments'. A stock sale reads to the filer as exactly that, so they answer no, though a section 1244 loss is an ordinary, business-type loss that can produce an NOL.",
        "line": "s1.nol_was_joint_if_separate",
-       "irs_text": "i172 p. 3, Joint to separate returns: 'If you and your spouse file separate returns for a tax year, but filed a joint return for any or all of the tax years involved in figuring the NOL carryover, figure each of your carryovers separately.'",
+       "irs_text": "i172 p. 3, Joint to separate returns: 'If you and your spouse file separate returns for a tax year, but filed a joint return for any or all of the tax years involved in figuring the NOL carryover, figure each of your carryovers separately'",
        "severity": "medium",
-       "fix": "Ask a fact the filer can check first, such as a prior-year negative Schedule 1 entry or Form 172 carryforward, then classify it as an NOL and ask about joint years."
+       "fix": "Ask about a checkable fact: 'Did an earlier return, yours or a joint one, show a negative total after deductions, or a Form 172 or NOL carryover worksheet, that is not used up?' Add help naming small business (section 1244) stock, worthless business stock, K-1 losses and sales of business property as possible sources."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose earlier-year NOL came from a K-1 loss passed through from a partnership or S corporation, or from a section 1231 loss on selling business equipment or rental property. The loss arose on a joint return, and the filer now files separately.",
+       "why_no": "The filer reads 'business, farm, rental or disaster loss' as their own sole proprietorship, farm, or rental activity, not as a passive-investor K-1 or the sale of property. They also do not recognize the carryover as an 'NOL deduction' because a prior preparer computed it. So they answer no.",
+       "line": "s1.nol_was_joint_if_separate",
+       "irs_text": "i172 p. 3, Deducting a Carryforward: 'If you carry forward your NOL to a tax year after the NOL year, list your NOL deduction as a negative figure on Schedule 1 (Form 1040)'; Joint to separate returns: 'figure each of your carryovers separately'",
+       "severity": "medium",
+       "fix": "Have the help point to evidence: 'Look at your 2024 Schedule 1 line 8a, or for a Form 172 or an NOL carryover statement with your prior returns. Losses from partnerships, S corporations and the sale of business property count.'"
       }
      ],
-     "prompt_sha": "e1cc8c0e565be34063146160cff48294cefd8fb525ea6e66ef5ef9b8e32c8f56",
+     "prompt_sha": "4c5dd2c1744520a2c04200405cc08747eb9366922c2e90fbdaa3ff240982320f",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_s1.nol_separate.5604f6423847.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.085152,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_s1.nol_separate.3a881ab69320.1.response.txt"
     }
    ],
    "condition": "s1.nol_separate",

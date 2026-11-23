@@ -38,10 +38,10 @@
   },
   {
    "key": "sa.deduction",
-   "record": "6a9c50c5a0cc1172d3dfaf8432c68666cbad74a3a70f339aa4188f979b0f0e4b",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 34, Line 12e, 'In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions', and line 12b (a separate filer whose spouse itemizes has a zero standard deduction). The reply's own larger-of helper gives the standard deduction where line 17 is larger: on stage21.t067.smw_hidden_ira (a hand-predicted fixture) line 17 is $45,242.70 and the reply enters $31,500; it also declares refusals of its own (for example at f4952.has_interest on classm.f8960.1). Executable triage (.transcription/triage/2025/sa.json, this pass): 3,240/4,194 agree; differences {\"candidate-refuses\": 735, \"candidate-unknown\": 190, \"project-refuses\": 14, \"value\": 15}; on completed returns {\"candidate-refuses\": 87, \"candidate-unknown\": 154, \"value\": 6}.",
-   "subject_key": "4f0f6d84f03e32c969cc3613b575bc8eb0444d7fe370ced47b507db629d139af"
+   "ruling": "Ruling: representation; project retained. Both select line 17 when itemizing is elected, when a separate-return spouse itemizes, or when line 17 is more than the standard deduction, and the standard deduction otherwise (i1040gi p. 34, Line 12e; p. 33, Line 12b; f1040sa line 18); the reply writes it as the larger of the two unless the election is made, which gives the same amount on a tie. As ruled before, the reply reads the spouse-itemizes answer outside the separate-return gate. This pass reviewed the line because lane fx-itemized added the refusal sa.charity_over_if_itemizing (Pub. 526 p. 22, no more than 60% of AGI; p. 25, capital gain property 30%), which is not part of the compared expression. No change to the data.",
+   "subject_key": "5f55c5b78cb4b62addf1772949fef05e0ecc8449113b7eeaba9ecfc5ece839bd"
   },
   {
    "key": "sa.mfs_spouse_itemizes",
@@ -52,10 +52,10 @@
   },
   {
    "key": "1",
-   "record": "fd8c5800cda37fb8052c12bd29d2a764c9a7c84777220bec31041de0dd30a0e1",
+   "record": "cf2918fe4ed02522f9a239336495139c58d42bb14a78b666a2f9615adcbfcaef",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (4405 values compared, none different or missing: 2664 on 2664 fixture cases, 500 on 500 generated returns seed 20261026, 1241 on 1241 partial records; every alternative of the 1 differing choose line(s) reached taken; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
-   "subject_key": "175f3c4bbf537d4f95b6c64bada5c0caf809f49f65ea925cb64903ff2c9e7f03"
+   "ruling": "Ruling: model error; i5329 p. 5, exception 05, \"Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year\", which applies whether or not the filer itemizes. The reply asks line 1 only on the medical ticks; the one completed difference is advland.retirement.e05_medical_asked (exception 05 claimed, medical tick not ticked: project $15,000, reply $0), hand-predicted from that text (BUG-1195). Triage executable-triage-v2 (.transcription/triage/2025/sa.json, pass a2bc9f183177): 4409 of 4410 agree; {\"value\": 1}; completed {\"value\": 1}. Project stands.",
+   "subject_key": "33b212d1d9598a01bff2b2af630e3ed43a1b444f1373f73f6159c5324c1927f9"
   },
   {
    "key": "5a",
@@ -65,10 +65,10 @@
   },
   {
    "key": "5b",
-   "record": "7280d83cd542ec875ef200b25e65b0f17c03e0e1d4458542693a2649f1849213",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; triage 3,686/3,708 agree, no value difference; differences are project-unknown only (22, incomplete and refused returns: the project's line 5b is asked under sa.home_asked, whose parent questions were unanswered). The reply reads sa.home_owner and sa.property_tax_other_any directly; the project asks line 5b of an owner or of a filer who paid interest on a home in another's name (sa.home_other_if_not_owner) and the leave-out amount only of those (sa.property_tax_other_if_home). f1040sa line 5b, \"State and local real estate taxes\"; i1040sca p. 4, Line 5b.",
-   "subject_key": "b0d52ca6b3b98019bc2827bfa08c570f6848609050eb92438e89817edd45d833"
+   "ruling": "Ruling: representation; project retained. i1040sca p. 6, Line 5b, 'Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business'; p527 p. 25, Personal Use of Dwelling Unit (Including Vacation Home), 'Only your rental expenses may be deducted on Schedule E (Form 1040). Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize your deductions'. The reply takes the filer's line 5b answer (less the part left out) and nothing else. The project asks the filer to leave out the tax on a property rented out for 15 days or more (except days it was the filer's home before or after renting it) and adds, for each rental reported on Schedule E, the part of its tax not taken there (rental.amt16 less rental.line16; BUG-1203), so the same tax is neither counted twice nor lost. With no reported rental, or one with no personal use, the two agree (fixture fxi.rental_tax_personal_to_5b shows the difference: $142.86 added). No change to the data.",
+   "subject_key": "54da0ca4ea717f8840a500e65fa56c0e175bdfb07838ed2b21f72b87377eafbf"
   },
   {
    "key": "5c",
@@ -110,9 +110,9 @@
   },
   {
    "key": "5d",
-   "record": "7280d83cd542ec875ef200b25e65b0f17c03e0e1d4458542693a2649f1849213",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "AGREE",
-   "subject_key": "b6298a47be2eb5fe222106d024ef87d9a4ef513a881302a9c571c30e90c7d93b"
+   "subject_key": "48508e7fb79022d06342e8face449e400cee7c6a9d1dbec9c2f5fe6be2bc75d8"
   },
   {
    "key": "5e",
@@ -122,40 +122,40 @@
   },
   {
    "key": "6",
-   "record": "fba34f8f1350b43c882992d209ef7c69b877d4916bf1fbb6b65dafb071dbebd3",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "AGREE",
-   "subject_key": "c4da83f4cfb16d20b971234c6e1f46aa084fdf74778c94d52686ec6ca3ffa0af"
+   "subject_key": "e56a9da4907cb3f6c7d9c2f2620ac58a3dfe5c9d9b34bc3c36dfd6c0314fc709"
   },
   {
    "key": "8b",
-   "record": "fba34f8f1350b43c882992d209ef7c69b877d4916bf1fbb6b65dafb071dbebd3",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "AGREE",
-   "subject_key": "3878dece7f893b441c41e49c3399156cf7cd9297c1e7ed01f87fadcc3482cee9"
+   "subject_key": "c8b9a654434c8147ea6ab57f1f06af525a852e5f6e4bf057345aca075a717203"
   },
   {
    "key": "8c",
-   "record": "fba34f8f1350b43c882992d209ef7c69b877d4916bf1fbb6b65dafb071dbebd3",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "AGREE",
-   "subject_key": "5877cf867cb309b6a04ee5e294e3bf041ccd8a6d68fd883022afd5309d3bf290"
+   "subject_key": "2c1b6f6fd11c0cafdf88a8c5b1dda99852ae6186357b9bcdd73e40756aeb6d36"
   },
   {
    "key": "13",
-   "record": "fba34f8f1350b43c882992d209ef7c69b877d4916bf1fbb6b65dafb071dbebd3",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "AGREE",
-   "subject_key": "234b70121242ccbd92a2644f4342e585366ec81ba4155e4f28a816c23f7451fd"
+   "subject_key": "33bcaf54e20c7f4ef12ddb6b360b683748c038ecaa2d7d3a291c179e58e99c0c"
   },
   {
    "key": "15",
-   "record": "fba34f8f1350b43c882992d209ef7c69b877d4916bf1fbb6b65dafb071dbebd3",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "AGREE",
-   "subject_key": "02836b2cd387cdf2b1182ad85a27d9c14db70373acffb4e677bd276eb02dba07"
+   "subject_key": "76c0b6ae536a9fd7dd37f0d3ce2fc4afa8b9a9b66e4285818854ab5886dc64ae"
   },
   {
    "key": "16",
-   "record": "fba34f8f1350b43c882992d209ef7c69b877d4916bf1fbb6b65dafb071dbebd3",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040sca p. 11, Line 16: \"Gambling losses (gambling losses include, but aren't limited to, the cost of nonwinning bingo, lottery, and raffle tickets) but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b.\" The candidate takes the smaller of sa.gambling_losses and line 8b on every return. On 265 completed returns with no gambling winnings it needs an answer the interview does not ask, where the project answers zero through s1.has_gambling and the source makes the deduction zero; where both give a value the amounts agree. Same reading as the 2026-11-16 ruling on this line. Triage executable-triage-v2 (.transcription/triage/2025/sa.json): 3,231 of 4,317 agree. Candidate's line is not the project's.",
-   "subject_key": "9bd1b937d5d4261e33a8caa9522f910f64b376c5e7d4a7bbe916d7547da3495a"
+   "ruling": "Ruling: equivalent; project retained. With no gambling winnings line 8b is zero, so the smaller of the losses and line 8b is zero, which the project writes as an explicit zero; with winnings both give the losses up to line 8b (i1040sca p. 11, Other Itemized Deductions, gambling losses 'but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b'). The project's guard reads s1.gambling_winnings, which s1.line8b copies. Same disagreement as ruled before; re-reviewed only as a reader of the changed lines. No change to the data.",
+   "subject_key": "00994052f154afbfed73a298974a554686b6105725fd887e0d7e71fccd8d8ab3"
   },
   {
    "key": "7",
@@ -183,9 +183,9 @@
   },
   {
    "key": "12",
-   "record": "fba34f8f1350b43c882992d209ef7c69b877d4916bf1fbb6b65dafb071dbebd3",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "AGREE",
-   "subject_key": "393ca52ba40af2dfda8287dc80cea4e25551d1c6f806274700f7ab7914d3816b"
+   "subject_key": "2fa1cec1c5489de0ccf326d52e5fec85a9fff6922c74a12f49f3f7d1bc041741"
   },
   {
    "key": "14",
@@ -195,9 +195,9 @@
   },
   {
    "key": "17",
-   "record": "fba34f8f1350b43c882992d209ef7c69b877d4916bf1fbb6b65dafb071dbebd3",
+   "record": "c093ae9191a2a3f029950f64e87ee203aa7987077e397483d8cd79d7852d7e86",
    "status": "AGREE",
-   "subject_key": "28e55e1347d44b5bbb2504eacd7914f0e3c2b8e134faf5994c208c3c13a160dd"
+   "subject_key": "bd10b535ee284e7fa9ae9a96eecfcd6e9ff8c1cf5d2cc25162b6ec454128f4da"
   },
   {
    "key": "2 (sa.dep_line2)",
@@ -240,32 +240,32 @@
   "sa.agi": "7ac40a0d224f103b5668b2d9b355ac1ecb9b68c3d5235bd8ae09b20888315bc8",
   "sa.home_asked": "eb6a1053925958f7475e0ff4f85f3756be7cc44d809aac2158af603028439c1e",
   "sa.itemizes": "9cacc4822331cd8634b93293f7663534ce5e36eab56b4723b181552ef7c4cccd",
-  "sa.deduction": "8e29997b24ac7b299d65d2660e4e42927094541cd9a91ee205bf49f2357f152e",
+  "sa.deduction": "994dd10f2386c28c995275fd633c07074f5bc543203a0c1c6bc8a3f7584fd172",
   "sa.mfs_spouse_itemizes": "5e58e8e56fc8bba413fa4722e1b031f8b6aff3a5a260b525f12c39e36f1b8a43",
-  "1": "e0442d128bf301cd55938fecc35a50e9850a2d7dd5f969f29c6434b3dcbe0e04",
+  "1": "6aa2bcc2e1a977a1659bb8a7c78cc73eeeba44961afb1c9ee5595bc3de12583c",
   "5a": "6af90a76e5d7e457dd7adea0bb919b9806a921f2d8b531105636f3c9b4e0e0fd",
-  "5b": "ef1d0e093770f8d89583f0a9c95a7d4eff01e7880774e723fc8cfbcba22b7b5d",
+  "5b": "f7c32d64dd6b4af04bb400076c2349bd60de8078123f3c0923bba2a94a4a3c7e",
   "5c": "299d30680db43a236a6ad8191c87fc4cbb3bdbbc79a0c49fcf7c138a03014016",
   "8a": "125b7869c745d46a5427c1827ae80b8eb3c67673a5645cb0a5a43c65bfb4b174",
   "11": "87a46150869dedabf3b1a6fe30f7e228e885f3e00e03d857782f0032403fd73c",
   "2 (sa.line2)": "6ed9e8826b6917afade8428ad8ba0ef06fdbb723500482b53bce904f69e95014",
   "3 (sa.line3)": "4606a9bdca74892e9959452bafe144fe3a9c24d25b48c83ee961469221a4b4c3",
   "4": "9750221e9bfda46b9d16da4170f21eb3116b20c1101898517fd2eba570131128",
-  "5d": "c34cedc9a41efb5b3c441383a78fb012ce878fc05348c560ac921b0484f591ce",
+  "5d": "92cb7f2e7cde75444188d6c308ca91714250be9f11c06d6324b3f04f70830f30",
   "5e": "0762d68e00b9d72f8d0f0038205ed4ce3626ba29164c5743fb3d673cc4d286ef",
-  "6": "be57cf64d4666b715c4697d7e0048f57b21dd5873d56600186b3c0d0baa9ce05",
-  "8b": "86c73bc6b084398ee877c7f9902d9ab83b19d2bdbb60eaa265165fcc6b5601d2",
-  "8c": "17c9c8db07fe8505d763f21f51c5428aaaeb88793d3b6afb7f14c3795fc39c28",
-  "13": "0f1f631b08f9271826bd3c0281e64c135015ac2c0d573ebdc171e93b7fde36b6",
-  "15": "3d6e6fc655e79ffaca2b9728e11c618c7ee795419e46cd5848c1671874a02e77",
-  "16": "0655d9e55a26739629e4062113a0a553c6813e3f3e60f189efe6320b1109f32f",
+  "6": "866a084cedbfb85fd9ef081686f2fe1d8fe89b66ff47d030cd9be3cdc5941231",
+  "8b": "60c93e4a77b46d36ea333e5c0fe776fa6ef299832011eec059090ca06ac86c20",
+  "8c": "fdb907efee9ad0f368d9cd868d574f21d09ed8eeb102be1517469e5161961581",
+  "13": "6b6c75b80faa247e06fc19de60610c3ef38567cfd2c74f435ded0e96542f38a8",
+  "15": "f813d478d6d35df61295ce207eab617eb0c03afe79750d01566ff1095eca9109",
+  "16": "80cf3790f8bb3758e3fc650113e3949d89398fcaae82fa9f51a0d3376c5378dc",
   "7": "f01dc441865ba4d227e6810328f38376b883f341b25679842cfe8a31fbf9aee0",
   "8e": "071a09a146b961bd36890e32be2ec4297f5915da1cc043f46279a262029f7cd9",
   "9": "6afefd4a342b5f5749c93d7aab8c5b7494cd95445e619cb164a79b29df97b69b",
   "10": "320b71964696452137d0967c5995c1f6bc29fe3f800b4d8feff670ecdcf79f8a",
-  "12": "049f7abe954452a8aa542f755861d565136a229e0a08027af47d024e00f43d46",
+  "12": "26ee1a10bef955744d445a17a1d603ef2e3289644b8f82f9607b39f1b90b391a",
   "14": "d6f3486eacb02f6ccf83c804d55d314bc5451cf021becb040590566561e4e551",
-  "17": "6d0a4cfe6f127a80863cb5c689d6e26400f089cca0b1fee8073934fc5df02bdc",
+  "17": "aa80658bcdcc197f647b386118728948bafe3a7f8efc42482cd456853acf1c15",
   "2 (sa.dep_line2)": "bcc19a6fd6a8a047266ead83965e647215b0d9d5c655a688cc38af8efed2c395",
   "3 (sa.dep_line3)": "e231aed3dd3366b2e5ca372df0b4b0ce9bb1befd6411797624115f67310a6f86",
   "4a": "4db16a947eb5d5a857e3da8d52e4312c17f99c3c30e538779a0a00f3f6eb4798",
@@ -276,11 +276,11 @@
  "foreign": {
   "sa.home_asked": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "sa.itemizes": "9968d84f10dffe3128b9d95850464a95edf67471477002365d0359afe44fb508",
-  "sa.deduction": "9968d84f10dffe3128b9d95850464a95edf67471477002365d0359afe44fb508",
+  "sa.deduction": "b9084550bc5b1773b60b4d5c3c3bc3b56ab9a3ecfb27d895c6d65390d37bb36f",
   "sa.mfs_spouse_itemizes": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
-  "1": "5eb74b07245bef696c9c3f143a4c96fbdb97ad8d416dbe522414a622e946e980",
+  "1": "34471a5c295b1df038b922bb5e27b31cdc8778181cd7b0bfde568a1d0548b897",
   "5a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "5b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "5b": "8b8a01e7febabf379aaba8b1074506054584f874abe502e0ac91584481e30471",
   "5c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "8a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "11": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

@@ -17355,6 +17355,733 @@
           }
         }
       }
+    },
+    {
+      "id": "ny.rental.profit_royalty",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1800000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 600000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 240000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 120000,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 80000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m2",
+        "rental[a].rprop[b].year": "y2020",
+        "rental[a].rprop[b].basis": 16000000,
+        "$royalty": [
+          "r"
+        ],
+        "royalty[r].line4": 240000,
+        "ny_it201.ask.city_resident": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived sources before evaluating. Federal inputs of x1sche.f1.profit (wages $60,000; one house, Schedule E line 21 $1,782.40) plus one royalty property with $2,400 on line 4 and no expenses (line 21 $2,400): Schedule E line 26 and Schedule 1 line 5 $4,182.40, federal AGI $64,182.40. IT-201 (2025) p. 2: line 11 \"Rental real estate, royalties, partnerships, S corporations, trusts, etc. (submit copy of federal Schedule E, Form 1040)\" = $4,182 (whole dollars, amb.ny.2025.whole_dollars); line 12 \"Rental real estate included in line 11\" = $1,782 (the royalty is left out); line 17 (lines 1 to 11 and 13 to 16) = 60,000 + 4,182 = $64,182; line 18 $0; line 19 $64,182, equal to federal AGI rounded. Line 28's question is reached through line 11 (IT-201-I p. 9) and answered No (the default), so line 33 = $64,182; standard deduction $8,000 (single); line 37 = $56,182. 2025 New York State Tax Table, $56,150 to $56,200, single: $2,925 (line 39). New York City Tax Table, same row, single: $2,052 (line 47a).",
+      "expect": {
+        "ny_it201.line11": {
+          "kind": "money",
+          "cents": 418200
+        },
+        "ny_it201.line12": {
+          "kind": "money",
+          "cents": 178200
+        },
+        "ny_it201.line17": {
+          "kind": "money",
+          "cents": 6418200
+        },
+        "ny_it201.line19": {
+          "kind": "money",
+          "cents": 6418200
+        },
+        "ny_it201.line19_agrees": {
+          "kind": "bool",
+          "value": true
+        },
+        "ny_it201.line33": {
+          "kind": "money",
+          "cents": 6418200
+        },
+        "ny_it201.line37": {
+          "kind": "money",
+          "cents": 5618200
+        },
+        "ny_it201.line39": {
+          "kind": "money",
+          "cents": 292500
+        },
+        "ny_it201.line47a": {
+          "kind": "money",
+          "cents": 205200
+        }
+      }
+    },
+    {
+      "id": "ny.rental.loss",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1350000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 800000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 40000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 50000,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 25000,
+        "rental[a].has_utilities": true,
+        "rental[a].amt17": 20000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m2",
+        "rental[a].rprop[b].year": "y2020",
+        "rental[a].rprop[b].basis": 12000000,
+        "ny_it201.ask.city_resident": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived sources before evaluating. Federal inputs of x1sche.f2.small_loss_exception (wages $50,000; one house with a line 21 loss of $213.20, fully allowed by the Form 8582 exception): Schedule 1 line 5 -$213.20, federal AGI $49,786.80. IT-201-I p. 3: \"If you are entering a loss (an amount less than zero), place a minus sign immediately to the left of the loss amount.\" Line 11 = -$213 and line 12 = -$213 (all rental real estate); line 17 = 50,000 - 213 = $49,787; line 19 $49,787 (federal AGI rounded: $49,787). Line 33 $49,787; less the $8,000 standard deduction, line 37 $41,787. State Tax Table $41,750 to $41,800, single: $2,133 (line 39); City Tax Table, same row: $1,499 (line 47a).",
+      "expect": {
+        "ny_it201.line11": {
+          "kind": "money",
+          "cents": -21300
+        },
+        "ny_it201.line12": {
+          "kind": "money",
+          "cents": -21300
+        },
+        "ny_it201.line17": {
+          "kind": "money",
+          "cents": 4978700
+        },
+        "ny_it201.line19": {
+          "kind": "money",
+          "cents": 4978700
+        },
+        "ny_it201.line19_agrees": {
+          "kind": "bool",
+          "value": true
+        },
+        "ny_it201.line33": {
+          "kind": "money",
+          "cents": 4978700
+        },
+        "ny_it201.line37": {
+          "kind": "money",
+          "cents": 4178700
+        },
+        "ny_it201.line39": {
+          "kind": "money",
+          "cents": 213300
+        },
+        "ny_it201.line47a": {
+          "kind": "money",
+          "cents": 149900
+        }
+      }
+    },
+    {
+      "id": "ny.refuse.depr_bonus",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 2000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].after_jan19": true,
+        "person[taxpayer].sc[desk].asset[saw].bonus_same": true,
+        "ny_it201.ask.city_resident": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived sources before evaluating. Federal inputs of stage14.asset.bonus_100: a Schedule C with a $20,000 7-year asset placed in service in 2025 taking a 100% special allowance ($20,000 on Form 4562 line 14). IT-225-I p. 12, A-209: \"New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003\" and the amount comes from Part 1 of Form IT-398, which the tool does not compute; S-213 (p. 21) subtracts New York depreciation from the same form. So line 23 and line 31 refuse on ny_it201.gate.depr_168k, listed before the IT-225 question.",
+      "expect": {
+        "ny_it201.line23": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.depr_168k",
+          "form": "Form IT-225 (addition A-209 and subtraction S-213) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property",
+          "remedy": "New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 12, A-209, \"complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to determine the amount to enter\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        },
+        "ny_it201.line31": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.depr_168k",
+          "form": "Form IT-225 (subtraction S-213 and addition A-209) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property",
+          "remedy": "New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 21, S-213, \"complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ny.refuse.depr_prior_bonus",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2022",
+        "person[taxpayer].sc[desk].asset[pc].cost": 2000000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 2000000,
+        "ny_it201.ask.city_resident": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived sources before evaluating. Federal inputs of stage14.asset.prior_bonus_full: 5-year property placed in service in 2022 that took a $20,000 special allowance (federal 2025 depreciation $0). New York depreciates the property itself (IT-225-I p. 21, S-213, New York depreciation from Form IT-398 Part 1), so lines 23 and 31 refuse on ny_it201.gate.depr_168k (an earlier special allowance on property placed in service before 2025).",
+      "expect": {
+        "ny_it201.line23": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.depr_168k",
+          "form": "Form IT-225 (addition A-209 and subtraction S-213) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property",
+          "remedy": "New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 12, A-209, \"complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to determine the amount to enter\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        },
+        "ny_it201.line31": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.depr_168k",
+          "form": "Form IT-225 (subtraction S-213 and addition A-209) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property",
+          "remedy": "New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 21, S-213, \"complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ny.refuse.suv_179",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "haul"
+        ],
+        "person[taxpayer].sc[haul].line1": 20000000,
+        "$scveh@person[taxpayer].sc[haul]": [
+          "suv"
+        ],
+        "person[taxpayer].sc[haul].scveh[suv].method": "actual",
+        "person[taxpayer].sc[haul].scveh[suv].owned": true,
+        "person[taxpayer].sc[haul].scveh[suv].miles_business": 10000,
+        "person[taxpayer].sc[haul].scveh[suv].passenger": false,
+        "person[taxpayer].sc[haul].scveh[suv].suv": true,
+        "person[taxpayer].sc[haul].scveh[suv].s179_elect": 3130000,
+        "person[taxpayer].sc[haul].scveh[suv].after_jan19": true,
+        "person[taxpayer].sc[haul].scveh[suv].bonus_same": true,
+        "person[taxpayer].sc[haul].scveh[suv].placed": "y2025",
+        "person[taxpayer].sc[haul].scveh[suv].cost": 7000000,
+        "person[taxpayer].sc[haul].scveh[suv].bonus_choice": "none",
+        "person[taxpayer].sc[haul].scveh[suv].quarter": "q1",
+        "ny_it201.ask.city_resident": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived sources before evaluating. Federal inputs as mexist.scveh.macrs_heavy.suv_q1: a $70,000 SUV over 6,000 pounds (not a passenger automobile), 100% business, placed in service in 2025, section 179 of $31,300, no special allowance. IT-225-I p. 11, A-208: \"If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds ... enter the amount of that deduction\". Line 23 refuses on ny_it201.gate.suv_179. No special allowance is claimed, so the A-209/S-213 gate is false and line 31 (no other IT-225 item) is $0.",
+      "expect": {
+        "ny_it201.line23": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.suv_179",
+          "form": "Form IT-225 (addition A-208, sport utility vehicle expense deduction)",
+          "remedy": "New York adds back a federal section 179 deduction on a sport utility vehicle over 6,000 pounds (unless you are an eligible farmer); this tool does not compute Form IT-225.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 11, A-208, \"If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        },
+        "ny_it201.line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "ny.refuse.depr_suv_bonus",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "haul"
+        ],
+        "person[taxpayer].sc[haul].line1": 20000000,
+        "$scveh@person[taxpayer].sc[haul]": [
+          "suv"
+        ],
+        "person[taxpayer].sc[haul].scveh[suv].method": "actual",
+        "person[taxpayer].sc[haul].scveh[suv].owned": true,
+        "person[taxpayer].sc[haul].scveh[suv].miles_business": 10000,
+        "person[taxpayer].sc[haul].scveh[suv].passenger": false,
+        "person[taxpayer].sc[haul].scveh[suv].suv": true,
+        "person[taxpayer].sc[haul].scveh[suv].s179_elect": 3130000,
+        "person[taxpayer].sc[haul].scveh[suv].after_jan19": true,
+        "person[taxpayer].sc[haul].scveh[suv].bonus_same": true,
+        "person[taxpayer].sc[haul].scveh[suv].placed": "y2025",
+        "person[taxpayer].sc[haul].scveh[suv].cost": 7000000,
+        "person[taxpayer].sc[haul].scveh[suv].quarter": "q2",
+        "ny_it201.ask.city_resident": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived sources before evaluating. Federal inputs of stage14.veh.suv_179: the same SUV with section 179 of $31,300 and a 100% special allowance of $38,700 on the rest (Form 4562 line 25). Both A-208 and A-209 apply; line 23 lists the IRC 168(k) gate first, so lines 23 and 31 refuse on ny_it201.gate.depr_168k.",
+      "expect": {
+        "ny_it201.line23": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.depr_168k",
+          "form": "Form IT-225 (addition A-209 and subtraction S-213) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property",
+          "remedy": "New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 12, A-209, \"complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to determine the amount to enter\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        },
+        "ny_it201.line31": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.depr_168k",
+          "form": "Form IT-225 (subtraction S-213 and addition A-209) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property",
+          "remedy": "New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 21, S-213, \"complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ny.refuse.alimony_later",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "ny_it201.ask.city_resident": true,
+        "s1.alimony_any": true,
+        "s1.alimony": false,
+        "ny_it201.ask.alimony_later": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the source before evaluating. Single New York City resident with $50,000 of wages who received alimony in 2025 under an agreement made after 2018 (federal: s1.alimony_any Yes, s1.alimony No, so nothing on federal line 2a). IT-225-I p. 10, A-119: such applicable alimony is added; p. 18, S-136: the payer subtracts it. The New York answer Yes makes ny_it201.gate.alimony_later true; it is the first refusal entry of lines 23 and 31, so both refuse on it with their recorded text.",
+      "expect": {
+        "ny_it201.line23": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.alimony_later",
+          "form": "Form IT-225 (addition A-119, alimony received, and subtraction S-136, alimony paid, under an agreement made after 2018)",
+          "remedy": "New York adds alimony received under such an agreement to income and subtracts alimony paid under it; this tool does not compute Form IT-225.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 10, A-119, \"If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received.\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        },
+        "ny_it201.line31": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.alimony_later",
+          "form": "Form IT-225 (subtraction S-136, alimony paid, and addition A-119, alimony received, under an agreement made after 2018)",
+          "remedy": "New York adds alimony received under such an agreement to income and subtracts alimony paid under it; this tool does not compute Form IT-225.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 18, S-136, \"If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid.\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ny.alimony_later_none_in_2025",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "ny_it201.ask.city_resident": true,
+        "s1.alimony_any": true,
+        "s1.alimony": false,
+        "ny_it201.ask.alimony_later": false
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the source before evaluating. The same filer, whose post-2018 alimony was paid only before 2025: no A-119 or S-136 amount (IT-225-I p. 10, \"during the tax year\"), so lines 23 and 31 are $0, line 19 = line 33 = $50,000 (wages only), line 34 $8,000, line 38 $42,000; line 39 from the State Tax Table at $42,000 single, $2,147; line 47a from the City Tax Table, $1,508; line 61 = $2,147 + $1,508 = $3,655.",
+      "expect": {
+        "ny_it201.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line33": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "ny_it201.line39": {
+          "kind": "money",
+          "cents": 214700
+        },
+        "ny_it201.line47a": {
+          "kind": "money",
+          "cents": 150800
+        },
+        "ny_it201.line61": {
+          "kind": "money",
+          "cents": 365500
+        },
+        "ny_it201.gate.alimony_later": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ny.alimony_pre2019_not_asked",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "ny_it201.ask.city_resident": true,
+        "s1.alimony_any": true,
+        "s1.alimony": true,
+        "s1.alimony_received": 1200000,
+        "s1.alimony_unsupported": false
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the source before evaluating. Alimony of $12,000 received under a 2018-or-earlier agreement is federal income (Schedule 1 line 2a) and reaches IT-201 line 5 as it is; it is not applicable alimony (IT-225-I p. 10, A-119, \"executed after December 31, 2018\"), so the New York question is not asked (alimony_later_if_any is false) and lines 23 and 31 are $0. Line 19 = line 33 = $50,000 + $12,000 = $62,000.",
+      "expect": {
+        "ny_it201.line5": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "ny_it201.alimony_later_if_any": {
+          "kind": "bool",
+          "value": false
+        },
+        "ny_it201.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line33": {
+          "kind": "money",
+          "cents": 6200000
+        }
+      }
+    },
+    {
+      "id": "ny.refuse.nyc_flex",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.public_job": true,
+        "ny_it201.ask.414h": false,
+        "ny_it201.ask.nyc_flex": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the source before evaluating. A New York City public employee without a 414(h) contribution whose Form W-2 shows a flexible benefits program (IRC 125) amount: IT-225-I p. 7, A-101, \"then enter that amount\". ny_it201.gate.nyc_flex is true and line 23 refuses on it (alimony, depreciation and SUV gates false); line 31 has no such entry and stays $0.",
+      "expect": {
+        "ny_it201.line23": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.nyc_flex",
+          "form": "Form IT-225 (addition A-101, New York City flexible benefits program)",
+          "remedy": "New York adds back an amount a Form W-2 shows deducted or deferred under a New York City flexible benefits program; this tool does not compute Form IT-225.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 7, A-101, \"If any federal Form W-2 wage and tax statement shows that an amount was deducted or deferred from your salary under a flexible benefits program established by New York City or certain other New York City public employers on your or a decedent’s behalf, then enter that amount.\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        },
+        "ny_it201.line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "ny.public_job_no_flex",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.public_job": true,
+        "ny_it201.ask.414h": false,
+        "ny_it201.ask.nyc_flex": false
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the source before evaluating. The same public employee with no flexible benefits amount: no A-101 addition, line 23 is $0 and the return is the wages-only return (line 33 $50,000, line 61 $3,655).",
+      "expect": {
+        "ny_it201.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line33": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "ny_it201.line61": {
+          "kind": "money",
+          "cents": 365500
+        },
+        "ny_it201.gate.nyc_flex": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ny.refuse.prior_168k",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 3000000,
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.prior_168k": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the source before evaluating. A Schedule C with $30,000 of receipts and no asset listed (so ny_it201.gate.depr_168k is false), whose owner took bonus depreciation on equipment in an earlier year and still had it in 2025: IT-225-I p. 20, S-213, New York depreciation from Form IT-398. ny_it201.gate.prior_168k is true; lines 23 and 31 refuse on it (their earlier gates are false: no alimony, no listed bonus property, no SUV, no W-2 so no flexible benefits question).",
+      "expect": {
+        "ny_it201.line23": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.prior_168k",
+          "form": "Form IT-225 (addition A-209 and subtraction S-213) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property",
+          "remedy": "New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 12, A-209, \"complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to determine the amount to enter\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        },
+        "ny_it201.line31": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.prior_168k",
+          "form": "Form IT-225 (subtraction S-213 and addition A-209) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property",
+          "remedy": "New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 21, S-213, \"complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ny.prior_168k_none",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 3000000,
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.prior_168k": false
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the source before evaluating. The same Schedule C with no bonus depreciation in any year: S-213 does not apply, ny_it201.gate.prior_168k is false and lines 23 and 31 are $0.",
+      "expect": {
+        "ny_it201.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ny_it201.gate.prior_168k": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ny.line19.rounding_gap_within",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1000050,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 1000050,
+        "person[taxpayer].w2[emp_a].box4": 62003,
+        "person[taxpayer].w2[emp_a].box5": 1000050,
+        "person[taxpayer].w2[emp_a].box6": 14501,
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 10050,
+        "ny_it201.ask.city_resident": true
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the source before evaluating. Wages of $10,000.50 and taxable interest of $100.50: IT-201-I p. 2, \"Increase amounts that are 50 cents or more to the next dollar\", so line 1 is $10,001 and line 2 is $101, line 17 and line 19 $10,102; federal AGI $10,101.00 rounds to $10,101. The $1 gap is within the $8 rounding can explain (amb.ny.2025.whole_dollars), so ny_it201.gate.line19_gap is false and line 19 is its value; line19_agrees is false.",
+      "expect": {
+        "ny_it201.line1": {
+          "kind": "money",
+          "cents": 1000100
+        },
+        "ny_it201.line2": {
+          "kind": "money",
+          "cents": 10100
+        },
+        "ny_it201.line19": {
+          "kind": "money",
+          "cents": 1010200
+        },
+        "ny_it201.fagi_rounded": {
+          "kind": "money",
+          "cents": 1010100
+        },
+        "ny_it201.line19_gap": {
+          "kind": "money",
+          "cents": 100
+        },
+        "ny_it201.gate.line19_gap": {
+          "kind": "bool",
+          "value": false
+        },
+        "ny_it201.line19_agrees": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

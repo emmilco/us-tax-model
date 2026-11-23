@@ -2,76 +2,72 @@
  "kind": "render",
  "form": "dependent",
  "family": "claude",
- "base": "5efb8a2fd8365ddc8d22653e5c7e1742fe2cbe4f4f623464f493b0318e791a45",
- "head_rows": {
-  "match / mismatch / unclear / missing": "10 / 1 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
- },
+ "base": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
  "lines": [
   {
    "key": "2(d)",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MISMATCH",
    "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner's decision, Stage 15 decision 6). Column (d) shows each person's expenses before excluding the dependent care benefits, and f2441.line30 subtracts line 28 once from the total, since the instructions give no rule for dividing line 28 among the qualifying persons; the model reads the unchosen reading, as ruled on this line before. The second objection is a model error: the disabled person who could be claimed as a dependent except for gross income of $5,200 or more, a joint return, or the filer being claimable is refused on Form 2441 at f2441.nondependent_gate (\"Qualifying person who is not your dependent (Form 2441)\", i2441 p. 1, Qualifying Person(s), \"or could claim as a dependent except\"), a refusal in f2441, which the dependent review was not given. Project stands. (carried over from reviews/2025/render/dependent.index.json at 870cc146, review of 2026-11-07)",
    "subject_key": "cc33779ad0783cfc7feb1c058873982b8638ec956488da1f037986696b447e6f"
   },
   {
    "key": "2(c)",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MATCH",
    "subject_key": "449ce7e3bbbf5057bebd62198db6e1bc5be26403da821ccace662863461ca28e"
   },
   {
    "key": "23",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MATCH",
    "subject_key": "c92b2b21960768e28a8b066706cef95cca4f25c3fa073bbe13ee6409e381463d"
   },
   {
    "key": "24",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MATCH",
    "subject_key": "20d7830a65474aca628117852e1cbaadc95a72ffb3f2828c020715938184f84a"
   },
   {
    "key": "25",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MATCH",
    "subject_key": "45847cb71ecb6368c6fc023d8a1d918fc9cdd1ed87714eac8b7767cb6ecb8175"
   },
   {
    "key": "26",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MATCH",
    "subject_key": "d5654bd989902c95dce8eb6ffebe59cdf0b84579b5260a913623bef58f96969a"
   },
   {
    "key": "27",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MATCH",
    "subject_key": "5076547224055bcd0dfaf83e47413279e5cb2c1ff013eb4eb8b36408cd90d95b"
   },
   {
    "key": "28",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MATCH",
    "subject_key": "74a8fae3f55e24f0246d44e415183e71eb0de42dc75792725bcebaa48f49e201"
   },
   {
    "key": "29",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MATCH",
    "subject_key": "c8dd0a912e015c5a8569babbbc82b5b053fc3453dfd5474ece3468a69cb10576"
   },
   {
    "key": "30",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MATCH",
    "subject_key": "b21a3c38b000586959652252bb165fe4bad8752a1389cc8dc103cb4755f5e90d"
   },
   {
    "key": "31",
-   "record": "0075106418605894dd68fc7fcd7f33f386881f4e789424190c30df2834ca5e81",
+   "record": "85377b8b249fee3fd6f448e50a3c8a56f03601650e4aeec041bce5f048622bbe",
    "status": "MATCH",
    "subject_key": "3bfb4b7f6fb146ed9cf631502e7acbc0ce9ebea9141fcfb54a13b6b215da0e82"
   }

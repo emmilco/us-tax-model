@@ -49,7 +49,7 @@ form:
       source: 'What kind of property is this?
 
 
-        - sfr: a house or condo (one home)
+        - sfr: a house, condo or mobile home (one home)
 
         - multi: a building with two or more homes
 
@@ -1361,6 +1361,20 @@ form:
     cite:
       doc: i1040se
       locator: p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"
+  - id: rental.tax_personal
+    printed: (helper)
+    label: Subtract rental.line16 from rental.amt16_if_any (the taxes not taken on Schedule E, carried to Schedule A line 5b)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: rental.amt16_if_any
+      take: rental.line16
+    cite:
+      doc: p527
+      locator: 'p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Only your rental expenses may be deducted on
+        Schedule E (Form 1040). Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize your
+        deductions"; i1040sca p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that
+        wasn''t used for business"'
   - id: rental.has_utilities
     printed: (helper)
     label: 'Utilities: any'

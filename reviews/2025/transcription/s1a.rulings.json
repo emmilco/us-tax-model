@@ -325,6 +325,42 @@
   {
    "printed": "14a",
    "project_expr_sha256": "1b2749f4eaa8a43e63506b5985d308a19091b7ee3e33d351e1939336e3324abe",
+   "second_expr_sha256": "475d06c9d82d551c4826db7c0968581f4eb18c332de4c0c45be1366a3932b1fa",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part III only if'; the owner chose this strictly accurate reading after class M); the second figures the line from s1a.overtime alone, without the joint-return and valid-SSN conditions of i1040gi p. 106. Where the part applies the two agree (the sum of person.ot_total over persons with a valid SSN). This pass reviewed the line because lane fx-itemized added its consistency refusal s1a.ot_over_wages (BUG-1208), which is not part of the compared expression. No change to the data.",
+   "context": "3f7ce1f450283a324fd629ead6744a8798d7191431c7372a61f138a0230fecaa",
+   "date": "2026-11-23",
+   "run": "8065b7496c2cb982a67f549d3e60f373c718d373503b0ba72900450d36be1cdc",
+   "subject_key": "9c081f72554cc4be7a9930b4921596bf407f6cbf54c5215bb9a903dc617bfb30",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1a",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@s1a",
+     "fixture:mutation.m4.qbi.reit_loss_carryforward@s1a",
+     "fixture:mutation.m4.qbi.suspended_losses@s1a",
+     "fixture:mutation.m4.asset.bonus_used_before@s1a",
+     "fixture:mutation.m4.asset.qip_2016_screen@s1a",
+     "fixture:mutation.m4.asset.fully_recovered_no_179@s1a",
+     "fixture:stage13.overtime_spouse_no_ssn@s1a",
+     "fixture:fxi.ot_over_box5_refused@s1a",
+     "generated:20261026.21@s1a",
+     "generated:20261026.48@s1a",
+     "generated:20261026.258@s1a",
+     "generated:20261026.306@s1a",
+     "generated:20261026.322@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14a",
+   "project_expr_sha256": "1b2749f4eaa8a43e63506b5985d308a19091b7ee3e33d351e1939336e3324abe",
    "second_expr_sha256": "e5f6cd9c18ce3f6ac2b9dad790f6917bb4771d7a35b0741f07b93f878eac26fc",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, as the earlier rulings on this line found of earlier replies: its expression has no test of s1a.overtime or of the part. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,479 of 2,387 comparisons agree; differences by kind {\"candidate-unknown\": 853, \"project-unknown\": 52, \"value\": 3}; on completed returns {\"candidate-unknown\": 290}: on each of the 290 completed records the project's line is $0 (its part does not apply) and the candidate is unknown for an answer the completed interview did not ask on that return ($otjob, person.work_ssn). The other differences are on refused or incomplete returns. No change to the data.",
    "context": "597a49b61bd8b2002e56e6e771fc8d47e0045322c364714580f136e7ba87ca58",
@@ -2335,6 +2371,47 @@
    "second_expr_sha256": "9a9a91ae32acdaf68414ccacd05796b6b223be7a1efdcff4f161c129f14bf041",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: class M agreed on all 344 values of 8 cases on this encoding.",
    "subject_key": "bedee6e5daf97250c1620e30dd27e31475cfc9e623252f2e4d8fdb4ebd081936"
+  },
+  {
+   "printed": "4c",
+   "project_expr_sha256": "2e32a94cc4b7060a722833637e256c062f0b93c0c0839394bd628370dda6f928",
+   "second_expr_sha256": "ed02182fe7389ed4a067f2d00c3318ec6f14f9efec9ccb1e4eb9b65159571bc4",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line from s1a.tips alone and sums person.tip_employers and person.tip_total over every person, not only those with an SSN valid for work (i1040gi p. 101, 'the spouse who received the qualified tips must have a valid SSN'). Where the part applies and every tipped person has a valid SSN the two agree, including the one-employer and worksheet routes. This pass reviewed the line because lane fx-itemized added its consistency refusal s1a.tips_over_wages (a refusal, not part of the compared expression) and made person.tip_employers count only listed tip jobs (BUG-1207), which the second reads as given. No change to the data.",
+   "context": "3f7ce1f450283a324fd629ead6744a8798d7191431c7372a61f138a0230fecaa",
+   "date": "2026-11-23",
+   "run": "8065b7496c2cb982a67f549d3e60f373c718d373503b0ba72900450d36be1cdc",
+   "subject_key": "82706644d83acf0bffacd16099ce9253a4ddaac9db1e8224fb61bfa0ae78094b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.eic.6.deepseek@s1a",
+     "fixture:classm.f5329.3.deepseek@s1a",
+     "fixture:classm.f5329.3@s1a",
+     "fixture:mutation.t2.mfs_sli_line5@s1a",
+     "fixture:mutation.t2.f8880.inherited_ira@s1a",
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1a",
+     "fixture:mutation.t2.eic.mfs_step1_agi_stop@s1a",
+     "fixture:mutation.t2.eic.qss_step1_agi_stop@s1a",
+     "fixture:mutation.m4.f5695.hp_no_qmid_mfs@s1a",
+     "fixture:mutation.m4.tipjob.service_charge@s1a",
+     "fixture:mutation.m4.tipjob.unlawful_work@s1a",
+     "fixture:fxi.tips_over_box5_refused@s1a",
+     "generated:20261026.96@s1a",
+     "generated:20261026.131@s1a",
+     "generated:20261026.144@s1a",
+     "generated:20261026.200@s1a",
+     "generated:20261026.319@s1a",
+     "generated:20261026.326@s1a",
+     "generated:20261026.339@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "4c",

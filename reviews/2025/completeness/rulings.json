@@ -383,15 +383,17 @@
    "subject_sha": "93686ea0063513309669ca1695ebfa35462f6c67bb24da2356374482ed6e550f"
   },
   "unruled:f8919firm#1.1": {
-   "class": "presentation",
-   "evidence": "f8919 p. 1, columns (a), (b), (d), (e). The f8919firm note: 'columns (a), (b), (d) and (e) identify the firm and the IRS letter and change no amount'. The SS-8 point is false: f8919firm.reason help says 'With the last one [code H], do not send Form SS-8.'",
-   "subject_sha": "dae10610ed82c79b793f1e1e07113984861cde36855881cf73805427456366b0"
+   "class": "covered",
+   "evidence": "f8919 p. 1, 'If married, complete a separate Form 8919 for each spouse who must file this form.' f8919firm is a collection within person ('For this person (you, or your spouse on a joint return) — Which firms paid you in that way in 2025?'), so each firm row belongs to one person and lines 7-10 apply the wage base per person (f8919 is an implicit form per person).",
+   "subject_sha": "8131eac6baa7231d5261002a1501c896a194c362661371836312534956b5d706",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "line": "f8919firm.wages"
   },
   "unruled:f8919firm#1.2": {
-   "class": "covered",
-   "evidence": "f8919 p. 1, 'If married, complete a separate Form 8919 for each spouse'. f8919firm is a collection within person ('For this person (you, or your spouse on a joint return) — Which firms paid you in that way in 2025?'), and f8919 is one per person (note: 'Lines 6 to 13 of one person's Form 8919, from that person's firms'); lines 7 to 10 use that person's own wages, so the wage base is applied per spouse.",
-   "subject_sha": "dae10610ed82c79b793f1e1e07113984861cde36855881cf73805427456366b0",
-   "line": "f8919firm.wages"
+   "class": "presentation",
+   "evidence": "f8919 p. 2, columns (a), (b) and (e): the firm's name, identification number and the 1099 box identify the firm and change no amount; the f8919firm note says columns (a), (b), (d) and (e) 'identify the firm and the IRS letter and change no amount'. More than five firms is a matter of attaching another page.",
+   "subject_sha": "8131eac6baa7231d5261002a1501c896a194c362661371836312534956b5d706",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:f8959#1.1": {
    "class": "out of scope",
@@ -419,9 +421,10 @@
   },
   "unruled:interest#1.1": {
    "class": "out of scope",
-   "evidence": "i1040sb p. 1. sb.bond_special lists 'have market discount to report', 'a bond whose payments depend on something uncertain (a contingent payment debt instrument)' and 'the buyer of your home or other property pays you interest on the price (a seller-financed mortgage)'; a Yes sets sb.unsupported and refuses. Market discount on a tax-exempt bond is market discount to report; tax-exempt interest is asked separately (f1040.tax_exempt_interest). The buyer's name, address and SSN go with a refused return. As the earlier interest#1.1 and #1.2 rulings.",
-   "subject_sha": "f7a4a9606852c8aad7e4afb25308b029c8b956621248078d74d7684f5f454450",
-   "gate": "sb.unsupported_if_income"
+   "evidence": "i1040sb p. 1: accrued market discount and contingent payment debt instrument gain are refused by sb.bond_special, which lists 'have market discount to report' and 'a bond whose payments depend on something uncertain (a contingent payment debt instrument)'; interest on frozen deposits is a Schedule B adjustment covered by its last item, 'any other adjustment to the interest or dividends shown on your forms'.",
+   "subject_sha": "8d9c56084136888d3244697f3d630df620848c4eb861b5bf916370d8bb3dca73",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "sb.bond_special"
   },
   "unruled:ira#1.1": {
    "class": "covered",
@@ -586,22 +589,25 @@
    "line": "carloan.col_iii"
   },
   "unruled:s8812#1.1": {
-   "class": "real gap",
-   "evidence": "i1040s8812 p. 3, Line 18a. The optional-method part is out of scope: person.se_screen names 'electing an optional method (Schedule SE Part II)' and person.se_screened refuses Schedule SE (person.se_line2). The treaty part is a gap: 'Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a', and no line, screen or refusal in forms/2025 or interview/2025 mentions a treaty; the earlier ruling's s1.line8_other now reads only the deferred compensation and Olympic screens.",
-   "subject_sha": "32e977d0fb98e9e98f12cc3aaff077505194f53727b1a286be79d0b19890572e",
-   "bug": "BUG-0795"
+   "class": "covered",
+   "evidence": "i1040gi p. 18, 'Could you be claimed as a dependent on someone else's 2025 tax return? ... You can't claim any dependents.' dependent.filer_not_dependent (sa.dependent false) is a Step 2 test of every dependent; the child born and died in 2025 without an SSN is refused by dependent.claimed_no_tin.",
+   "subject_sha": "eb0c17a4243cd01343ecbc46546f9a973a61f01a71938a876aa3a7cb6cc6364c",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "line": "dependent.filer_not_dependent"
   },
   "unruled:s8812#1.2": {
-   "class": "out of scope",
-   "evidence": "i1040s8812 p. 2; i1040gi p. 22. A child born and died in 2025 without an SSN is refused by dependent.claimed_no_tin (refusal on dependent.claimed: 'A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" ... is outside this tool').",
-   "subject_sha": "32e977d0fb98e9e98f12cc3aaff077505194f53727b1a286be79d0b19890572e",
-   "gate": "dependent.claimed_no_tin"
+   "class": "covered",
+   "evidence": "i1040gi p. 19, the qualifying relative tests (not a qualifying child of anyone, gross income under $5,200, over half of support). They are encoded in dependent.qualifying_relative (dependent.qr_income, dependent.qr_relationship, dependent.qr_all_year and the support test), and the filer test in dependent.filer_not_dependent; line 6 counts only dependents that pass them.",
+   "subject_sha": "eb0c17a4243cd01343ecbc46546f9a973a61f01a71938a876aa3a7cb6cc6364c",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "line": "dependent.qualifying_relative"
   },
   "unruled:s8812#1.3": {
-   "class": "covered",
-   "evidence": "i1040gi p. 20, Exception to citizen test. dependent.citizen asks 'Was this person a U.S. citizen, U.S. national or U.S. resident alien? (Answer yes for your adopted child who lived with you all year as a member of your household, if you are a U.S. citizen or U.S. national.)', which is the exception the claim says is missing.",
-   "subject_sha": "32e977d0fb98e9e98f12cc3aaff077505194f53727b1a286be79d0b19890572e",
-   "line": "dependent.citizen"
+   "class": "real gap",
+   "evidence": "i1040s8812 p. 3, Line 18a. The optional-method part is out of scope (person.se_screened refuses Schedule SE optional methods); the treaty-excluded income is BUG-0795 (open), as ruled on the earlier subject.",
+   "subject_sha": "eb0c17a4243cd01343ecbc46546f9a973a61f01a71938a876aa3a7cb6cc6364c",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bug": "BUG-0795"
   },
   "unruled:sales#1.1": {
    "class": "out of scope",
@@ -629,37 +635,23 @@
   },
   "unruled:sb#1.1": {
    "class": "presentation",
-   "evidence": "i1040sb p. 1, line 1 payer list. sb.line2 sums interest.amount over the interest roster ($interest, one entry per payer); the payer names, the amounts beside them and an overflow statement are the printed layout of line 1 and change no amount.",
-   "subject_sha": "8c7768ede52632d885ed1bc52f1692446cfddf7d6fa342d77979265467ec70eb"
-  },
-  "unruled:sb#1.2": {
-   "class": "presentation",
-   "evidence": "i1040sb pp. 1-2, line 5 payer list. sb.ordinary_dividends asks the total of box 1a; the payer-by-payer listing on line 5 and the overflow statement are the printed layout and change no amount (line 6 is the total).",
-   "subject_sha": "8c7768ede52632d885ed1bc52f1692446cfddf7d6fa342d77979265467ec70eb"
+   "evidence": "Reg. 301.7701-7(c)(4)(ii) (the migration clause). sb.line8's question decides whether Form 3520 is due, an information return; a Yes refuses. The definition's edge cases change no amount on this return.",
+   "subject_sha": "52336e786a897ec38cc3568b51e7145a8137ca69edd9aa882f24b1d033996188",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:sc#1.1": {
-   "class": "out of scope",
-   "evidence": "i1040sc p. 6, Medicaid waiver payments on Form 1099 in a home-care business: person.mw_business asks 'Do you run a business of your own that provides home care?' and refuses. The Form 1099-NEC difference statement (p. 5) is a filing attachment.",
-   "subject_sha": "a00e32ed83ddc6e33a4354ac78439538ef9f349f2565b5b5266e858267ece811",
-   "gate": "person.mw_business_if_1099"
+   "class": "covered",
+   "evidence": "i1040sc p. 16, Line 48, as ruled on the earlier subject: sc.line48 asks costs \"needed to run\" the business that no other question asks, and its help leaves out equipment that lasts more than a year, vehicles, the home, the filer's own health insurance and retirement plan; charitable contributions, fines and personal expenses are not costs of running a business; reforestation is refused by scope.reforestation; barrier removal and the de minimis safe harbor are elections that only allow more; accrual-method bad debts are refused with accounting methods by sc.screened.",
+   "subject_sha": "fc964d7e3183c92f0fe5c0b9236f04cb839f524f70d828f586a319cfb238cb44",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "line": "sc.line48"
   },
   "unruled:sc#1.2": {
-   "class": "covered",
-   "evidence": "i1040sc p. 6: scveh.smr_amount refuses the standard mileage rate when 'not used in the vehicle's first year or for the whole lease, or five or more' vehicles (scveh.fleet, scveh.smr_first), and scveh.lease_business refuses actual expenses on a lease after the standard rate.",
-   "subject_sha": "a00e32ed83ddc6e33a4354ac78439538ef9f349f2565b5b5266e858267ece811",
-   "line": "scveh.smr_amount"
-  },
-  "unruled:sc#1.3": {
-   "class": "covered",
-   "evidence": "i1040sc p. 9: sc.line23's help says 'Leave out ... charges for improvements such as paving or sewers'; the prompt asks for 'business taxes and licenses', which estate and gift taxes are not.",
-   "subject_sha": "a00e32ed83ddc6e33a4354ac78439538ef9f349f2565b5b5266e858267ece811",
-   "line": "sc.line23"
-  },
-  "unruled:sc#1.4": {
    "class": "out of scope",
-   "evidence": "i1040sc p. 1: 'use Form 461 to determine the amount of your excess business loss'; s1.line3 refuses on s1.ebl ('The Schedule C losses are more than the excess business loss threshold') with the form 'Form 461 (Limitation on Business Losses)'.",
-   "subject_sha": "a00e32ed83ddc6e33a4354ac78439538ef9f349f2565b5b5266e858267ece811",
-   "gate": "s1.ebl"
+   "evidence": "i1040sc p. 13: depreciation of the business part of a home. A building is refused as an asset (asset.kind_excluded, \"A building, land, vehicle ...\") through asset.screen, so no home depreciation is computed with the simplified method.",
+   "subject_sha": "fc964d7e3183c92f0fe5c0b9236f04cb839f524f70d828f586a319cfb238cb44",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "asset.screen"
   },
   "unruled:scveh#1.1": {
    "class": "out of scope",
@@ -746,20 +738,24 @@
    "gate": "refund.exc_tax"
   },
   "unruled:rental#1.3": {
-   "class": "presentation",
-   "evidence": "i1040se p. 7: the co-borrower amount is asked at rental.amt13; the statement is an attachment. Mortgage commissions, abstract and recording fees are now excluded in the amt13 help (BUG-0941).",
-   "subject_sha": "f47c7f6a333d2eff2542d6ea7e938841757b038ceb6a2d047bc9097edba67132"
+   "class": "out of scope",
+   "evidence": "i1040se p. 7, Form 8990: a rental real estate trade or business is refused by sche.qbi_business through sche.line26, as ruled on the earlier subject; i8990 also exempts a small business.",
+   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "sche.line26"
   },
   "unruled:rental#1.4": {
-   "class": "covered",
-   "evidence": "i1040se p. 6, Line 10; the rental.amt10 help excludes fees to defend or protect ownership, recover, or develop or improve the property.",
-   "subject_sha": "f47c7f6a333d2eff2542d6ea7e938841757b038ceb6a2d047bc9097edba67132",
-   "line": "rental.amt10"
+   "class": "presentation",
+   "evidence": "i1040se p. 7: the statement naming the person who received Form 1098 and the \"See attached\" notation are a filing attachment; rental.amt13 asks the filer's share of the interest, so no amount changes.",
+   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:rental#1.8": {
-   "class": "presentation",
-   "evidence": "i1040se p. 2: QJV spouses report separate properties, which the roster allows; the election changes no amount.",
-   "subject_sha": "f47c7f6a333d2eff2542d6ea7e938841757b038ceb6a2d047bc9097edba67132"
+   "class": "out of scope",
+   "evidence": "i8582 p. 10, prior-year unallowed CRD. f8582.prior_crd asks whether any of the held-back loss was a CRD, and f8582.line3 refuses it.",
+   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "f8582.line3"
   },
   "unruled:k1p#1.1": {
    "class": "out of scope",
@@ -909,21 +905,24 @@
   },
   "unruled:rental#1.1": {
    "class": "out of scope",
-   "evidence": "i1040se p. 3: a real estate professional is asked at sche.re_pro and refused on sche.line26.",
-   "subject_sha": "f47c7f6a333d2eff2542d6ea7e938841757b038ceb6a2d047bc9097edba67132",
-   "gate": "sche.re_pro"
+   "evidence": "i1040se p. 3, real estate professionals. sche.re_pro asks it (\"more than 750 hours in 2025 in real estate businesses, and more than half of all your work time\") and sche.line26 refuses: \"A real estate professional's rentals are outside this tool.\"",
+   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "sche.line26"
   },
   "unruled:rental#1.5": {
-   "class": "out of scope",
-   "evidence": "i1040se p. 7: the first phone line into a residence arises when the rental is part of the filer's home, refused by rental.part_home.",
-   "subject_sha": "f47c7f6a333d2eff2542d6ea7e938841757b038ceb6a2d047bc9097edba67132",
-   "gate": "rental.part_home"
+   "class": "covered",
+   "evidence": "i1040se p. 6, Line 10. The rental.amt10 help: \"Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to\" the basis.",
+   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "line": "rental.amt10"
   },
   "unruled:rental#1.6": {
    "class": "covered",
-   "evidence": "i1040se p. 6: the rental.amt19 help excludes improvements and things lasting over a year (listed with the buildings, where a barrier-removal deduction is refused by rprop.credit); own labor is not an amount paid.",
-   "subject_sha": "f47c7f6a333d2eff2542d6ea7e938841757b038ceb6a2d047bc9097edba67132",
-   "line": "rental.amt19"
+   "evidence": "i1040se p. 7, the first telephone line into the filer's residence is a personal expense. rental.amt17 asks the utilities of this rental, not of the filer's residence; a rental that is part of the filer's home is refused by rental.part_home.",
+   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "line": "rental.amt17"
   },
   "unruled:household#1.1": {
    "class": "out of scope",
@@ -943,46 +942,46 @@
    "subject_sha": "ff332dc11101a7c4310c39f92cd80f03cc612ccf2ef89809cb52bfbd197153d3"
   },
   "unruled:scope#1.2": {
-   "class": "out of scope",
-   "evidence": "i1040gi pp. 24, 92, 114: box 11 pensions are asked by s1.nqdc_pension and refused by s1.line8_other; s2.w2_marks asks for 'code A, B, K, M, N or Z in box 12', and s2.other_tax for 'section 409A or 457A' tax and 'an excess parachute payment'; both are refused through s2.other.",
-   "subject_sha": "302ba13f6c08db4e04123660930a5ea2802ae007f3bbcfcb4202990fc2484579",
-   "gate": "s2.other"
+   "class": "covered",
+   "evidence": "i1040gi pp. 23-24 and 91-92; p525 pp. 29 and 31. These are Schedule 1 items the tool asks on Schedule 1 itself, not screens of scope.schedule1: inmate wages (s1.inmate_wages, refused), nonqualified deferred compensation in box 1 (s1.nqdc_pension), gambling winnings (s1.line8b), canceled debt (s1.line8c), jury duty pay (s1.line8h), prizes (s1.line8i), stock options (s1.line8k), Alaska dividends (s1.line8g), digital assets (s1.line8v), and other income (s1.line8z and the other-income roster).",
+   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "line": "s1.line10"
   },
   "unruled:scope#1.3": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 24, allocated tips in box 8: s2.w2_marks asks 'Does any Form W-2 ... show an amount in box 8 (allocated tips)', refused through s2.other.",
-   "subject_sha": "302ba13f6c08db4e04123660930a5ea2802ae007f3bbcfcb4202990fc2484579",
-   "gate": "s2.other"
+   "evidence": "i1040gi p. 24, allocated tips: s2.w2_marks asks \"Does any Form W-2 ... show an amount in box 8 (allocated tips) ...? A Yes ends the interview here\", as ruled on the earlier subject.",
+   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "s2.w2_marks"
   },
   "unruled:scope#1.4": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 23/36: Form 2555 is asked by sa.excluded_income ('These are the exclusions of Form 2555 ... A Yes ends the interview here'); disability pensions before minimum retirement age are person.dis_wages on line 1h; the PPP statement is an attachment. The foreign retirement plan sentence ('may have to report') is not settled by the packet; a foreign plan is a foreign account or trust asked on Schedule B.",
-   "subject_sha": "302ba13f6c08db4e04123660930a5ea2802ae007f3bbcfcb4202990fc2484579",
-   "gate": "sa.excluded_income"
+   "evidence": "i1040gi p. 114: box 12 codes Z and K are asked by s2.w2_marks (\"code A, B, K, M, N or Z in box 12\") and refused; a section 409A or parachute tax from other sources by s2.other_tax through s2.other.",
+   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "s2.w2_marks"
   },
   "unruled:scope#1.5": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 34, Form 4972: retirement.lump_sum asks about a lump-sum distribution for a person born before the averaging date, refused with 'Form 1099-R special cases (Forms 5329, 8606, 4972 ...)'; f1040.line16 refuses Form 4972 through scope.other_line16. A section 965(i) triggering event (p. 36) arises for an S corporation shareholder, refused by scope.k1.",
-   "subject_sha": "302ba13f6c08db4e04123660930a5ea2802ae007f3bbcfcb4202990fc2484579",
-   "gate": "retirement.lump_sum"
+   "evidence": "i1040gi p. 114: s2.other_tax asks \"the additional tax on deferred compensation that failed section 409A or 457A, the tax on an excess parachute payment, the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, or any other tax to be written in on line 1y or line 17z\", refused through s2.other; look-back interest is asked separately and refused.",
+   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "s2.other"
   },
   "unruled:scope#1.7": {
    "class": "out of scope",
-   "evidence": "i1040sse p. 1, Form 4029: person.se_screen lists 'an approved Form 4361 or Form 4029', refused by person.se_line2 ('Schedule SE items outside this tool').",
-   "subject_sha": "302ba13f6c08db4e04123660930a5ea2802ae007f3bbcfcb4202990fc2484579",
-   "gate": "person.se_screened"
+   "evidence": "i8915f p. 2: a 2025 qualified disaster distribution or a qualified distribution for a home is asked on its Form 1099-R by retirement.disaster and refused through retirement.special, as ruled on the earlier subject.",
+   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "retirement.special"
   },
   "unruled:scope#1.8": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 116-117 and i3800 p. 3: a current general business credit is asked by sc.business_credit ('Does this business claim a general business credit for 2025 (Form 3800)') and refused on sc.line1; the elective payment amount is refused on s3.line14 ('Form 3800 (elective payment amount, Schedule 3 line 13c)').",
-   "subject_sha": "302ba13f6c08db4e04123660930a5ea2802ae007f3bbcfcb4202990fc2484579",
-   "gate": "sc.business_credit"
-  },
-  "unruled:scope#1.9": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 114: s2.other_tax asks about 'the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation', s2.lookback about look-back interest, and s2.credit_recapture about a credit paid back (the Form 4255 recapture); all are refused through s2.other.",
-   "subject_sha": "302ba13f6c08db4e04123660930a5ea2802ae007f3bbcfcb4202990fc2484579",
-   "gate": "s2.other"
+   "evidence": "i1040gi p. 25: corrective distributions of excess deferrals carry codes 8, P, D or E in box 7, which the code question offers only as \"Any other code\", refused by retirement.bad_code.",
+   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "retirement.bad_code"
   },
   "unruled:f8582#1.1": {
    "class": "covered",
@@ -1213,39 +1212,38 @@
   },
   "unruled:sa#1.1": {
    "class": "out of scope",
-   "evidence": "i1040sca p. 8: 'subtract the amount shown on Form 8396, line 3'; scope.ready_credits refuses on s3.mcc_if_interest with the remedy 'A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A; this tool does not prepare it.'",
-   "subject_sha": "bb30c93e4c77ceec4921289879f3e7889762b15b05364e4883090976754097c7",
-   "gate": "s3.mcc_if_interest"
+   "evidence": "i1040gi pp. 33-34, dual-status alien: a filer who was a nonresident alien for any part of 2025 answers Yes to scope.nonresident (\"For any part of 2025, were you ... a nonresident alien\"), refused through scope.other_income on every return, not only the EIC path.",
+   "subject_sha": "5f329bfea96467eac36159850a6a301a6a20a6340ea95064d4e77652336e64e3",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "scope.other_income"
   },
   "unruled:sa#1.2": {
-   "class": "real gap",
-   "evidence": "p526 p. 6: 'You can deduct up to $50 a month for each full calendar month the student lives with you'; neither sa.gifts' shown question nor the sa.line11 help names hosting (BUG-1090). The 15% state tax credit exception (p526 p. 5) is BUG-1086. Gifts to civic leagues, unions or clubs are not gifts to 'U.S. charities', which is what sa.line11 asks for.",
-   "subject_sha": "bb30c93e4c77ceec4921289879f3e7889762b15b05364e4883090976754097c7",
-   "bug": "BUG-1090"
+   "class": "out of scope",
+   "evidence": "i1040sca p. 7, generation-skipping tax on income distributions: such distributions come from a trust and are reported on Schedule K-1 (Form 1041), refused by scope.k1 (\"income or a loss from a partnership, an S corporation, an estate or a trust\").",
+   "subject_sha": "5f329bfea96467eac36159850a6a301a6a20a6340ea95064d4e77652336e64e3",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "scope.k1"
   },
   "unruled:s2#1.1": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 111, someone else enrolled you, or you enrolled a person no one claims: f8962.shared_policy asks 'The plan also covered someone who is not on this return' with help 'Count a plan whose Form 1095-A went to someone else ... A Yes ends the interview here', refused through f8962.alloc.",
-   "subject_sha": "99aa7c460e7977cb16302fd7eb00263a1c1977f2de8d5343328c22a134cb0edd",
-   "gate": "f8962.alloc"
+   "evidence": "i6251 pp. 3-4: exempt-interest dividends from private activity bonds are \"reported to you in box 13 of Form 1099-DIV\"; box 13 is refused by div.amt, as ruled on the earlier subject.",
+   "subject_sha": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "div.amt"
   },
   "unruled:s2#1.2": {
    "class": "out of scope",
-   "evidence": "person.se_screen lists 'an approved Form 4361 or Form 4029' and 'self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government', refused by person.se_line2 (i1040gi p. 112); notary fees are refused by sc.statutory, and a chapter 11 debtor by scope.other_income (i1040gi p. 23).",
-   "subject_sha": "99aa7c460e7977cb16302fd7eb00263a1c1977f2de8d5343328c22a134cb0edd",
-   "gate": "person.se_screened"
+   "evidence": "i6251 pp. 3-8. Depletion is refused by sc.special and rental.depletion; a section 1202 exclusion by div.section1202 and the Form 8949 code (sales code other); long-term contracts by sc.method_other; research costs need no adjustment for an activity with material participation, and a Schedule C without it is refused (sc.passive); amortization and the business interest limit (Form 8990) by sc.special; other business adjustments by s2.amt_business.",
+   "subject_sha": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "sc.method_other"
   },
   "unruled:s2#1.3": {
    "class": "out of scope",
-   "evidence": "i6251 p. 4: exempt-interest dividends 'should be reported to you in box 13 of Form 1099-DIV'; div.box13 asks it and div.amt refuses any box 13 amount.",
-   "subject_sha": "99aa7c460e7977cb16302fd7eb00263a1c1977f2de8d5343328c22a134cb0edd",
-   "gate": "div.amt"
-  },
-  "unruled:s2#1.5": {
-   "class": "out of scope",
-   "evidence": "i6251 pp. 1-2 filing statements: a Form 8801 credit is refused by s3.prior_amt_if_forms, credits carried from 2024 (8834, 8396) by s3.prior_forms_if_forms, Form 8911 by s3.ev_equipment_if_ev, a current general business credit by sc.business_credit, and section 1202 gain (p. 4, line 2h) by sales.special ('small business stock on which you exclude part of the gain').",
-   "subject_sha": "99aa7c460e7977cb16302fd7eb00263a1c1977f2de8d5343328c22a134cb0edd",
-   "gate": "s3.prior_amt_if_forms"
+   "evidence": "i6251 p. 1, Who Must File 2 and 3: a general business credit is refused by s3.business_credit_any (Form 3800), and Forms 8834, 8911 and 8801 by the Schedule 3 screens and scope.ready_credits (\"Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912)\").",
+   "subject_sha": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "scope.ready_credits"
   },
   "unruled:refund#1.1": {
    "class": "covered",
@@ -1266,36 +1264,23 @@
   },
   "unruled:eic#1.1": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 43, Line 27c: \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box\". The first case is the filer's own election not to claim; it requires no amount, the tool computes the credit only when every step passes, and the instructed cases are covered by eic.check_27c.",
-   "subject_sha": "755a6c290930a9f69a315584b43cf6f3d8b1b6bc0e358d4f9d98b57a007214d4"
+   "evidence": "i1040gi p. 43, Line 27c: the first case is the filer's own election not to claim the credit; it requires no amount, and the instructed cases are covered by eic.check_27c, as ruled on the earlier subject.",
+   "subject_sha": "8192e267c3e4fdb492e9d69fdd545609ddf98fc7a2214406b22de2940dbb471f",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:eic#1.2": {
    "class": "covered",
-   "evidence": "The count comes from dependent.eic_ssn_child, whose input dependent.eic_ssn asks \"Does this person have a social security number that counts for the earned income credit, issued by the due date of your 2025 return, extensions included?\" (i1040gi p. 45, \"If a child didn't have an SSN issued on or before the due date of your return (including extensions)\").",
-   "subject_sha": "755a6c290930a9f69a315584b43cf6f3d8b1b6bc0e358d4f9d98b57a007214d4",
-   "line": "dependent.eic_ssn_child"
+   "evidence": "i1040gi p. 45; p596 p. 5. person.eic_ssn (read by eic.step1_ssn) asks for a number issued by the due date, extensions included, and its help says a card \"Valid for Work Only With DHS Authorization\" counts only while the authorization is valid and which \"Not Valid for Employment\" cards count. The amended-return sentence concerns a later amended return, which this tool does not prepare.",
+   "subject_sha": "8192e267c3e4fdb492e9d69fdd545609ddf98fc7a2214406b22de2940dbb471f",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "line": "eic.step1_ssn"
   },
   "unruled:eic#1.3": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 40, Step 2, question 4: \"You have income or loss from a passive activity. Yes. Use Worksheet 1 in Pub. 596\". A passive Schedule C is refused by sc.passive, a passive K-1 or other passive business by scope.passive, and Schedule E by sche.any and eic.step2_other's own refusals, so no passive-activity case reaches the credit.",
-   "subject_sha": "755a6c290930a9f69a315584b43cf6f3d8b1b6bc0e358d4f9d98b57a007214d4",
-   "gate": "scope.passive_if_business_before"
-  },
-  "unruled:eic#1.4": {
-   "class": "covered",
-   "evidence": "Statutory employee income and notary fees are refused by sc.statutory (i1040sc p. 5, Line 1 and p. 14, Line 31); Forms 4361/4029 exemptions and partnership (K-1 box 14) self-employment amounts are refused by person.se_screen / person.se_screened, which person.se_line2 (read by Worksheet B via person.eic_se) refuses on (i1040gi p. 47, \"Don't include ... any statutory employee income, any net profit from services performed as a notary public, any amount exempt ... Form 4029 or Form 4361\").",
-   "subject_sha": "755a6c290930a9f69a315584b43cf6f3d8b1b6bc0e358d4f9d98b57a007214d4",
-   "line": "person.se_screened"
-  },
-  "unruled:eic#1.5": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 47: \"If line 4b includes income on which you should have paid self-employment tax but didn't, we may reduce your credit\". This is a discretionary IRS adjustment for tax the filer did not pay; the tool computes self-employment tax on all Schedule C net earnings (person.se_line2 on), so the return it prepares has no unpaid self-employment tax to reduce the credit by.",
-   "subject_sha": "755a6c290930a9f69a315584b43cf6f3d8b1b6bc0e358d4f9d98b57a007214d4"
-  },
-  "unruled:eic#1.6": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 46 and p. 48: \"If you have a qualifying child, complete and attach Schedule EIC.\" Attaching Schedule EIC supplies each child's name and SSN; line 27a and the Worksheet A amounts do not depend on it, so no amount changes.",
-   "subject_sha": "755a6c290930a9f69a315584b43cf6f3d8b1b6bc0e358d4f9d98b57a007214d4"
+   "evidence": "i1040gi p. 47, Worksheet B. Notary public fees and statutory employee income are refused by sc.statutory (\"fees you received as a notary public\") through sc.line1; Forms 4029 and 4361 and SE income exempt under an agreement are refused by person.se_screen through person.se_screened.",
+   "subject_sha": "8192e267c3e4fdb492e9d69fdd545609ddf98fc7a2214406b22de2940dbb471f",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "sc.line1"
   },
   "unruled:gift#1.1": {
    "class": "presentation",
@@ -1321,15 +1306,18 @@
    "line": "tipjob.tips"
   },
   "unruled:scope#1.1": {
-   "class": "wrong",
-   "evidence": "The Schedule 1 items are asked on s1 itself, not scope.schedule1: gambling 8b, canceled debt 8c (Form 982 refused by s1.cod_refused), jury duty 8h, prizes 8i, stock options (s1.stock_options), scholarships 8r, digital assets 8v, unemployment (s1.uc_any), alimony (s1.alimony_any), other 8z kinds (oi8z, with disaster relief and education distributions); Olympic medals and inmate wages are refused by s1.line8_other, Form 2555 by sa.excluded_income, Form 461 by s1.ebl (i1040gi pp. 91-92).",
-   "subject_sha": "302ba13f6c08db4e04123660930a5ea2802ae007f3bbcfcb4202990fc2484579"
+   "class": "out of scope",
+   "evidence": "i1040gi pp. 23-36; i1040s8812 p. 3; p525 p. 31. Form 2555 is asked and refused by sa.excluded_income; foreign accounts, trusts and property abroad (including a foreign pension plan) by sb.account_any, sb.asset_any and sb.trust_any; treaty-exempt income by scope.treaty through scope.other_income; a disability pension before the minimum retirement age is computed on line 1h (retirement.dis_wages); a net qualified disaster loss needs Form 4684, refused by sd.other_forms; a lump-sum benefit for earlier years is asked by ssb.prior_year_pay; the PPP statement is an attachment with no amount.",
+   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "scope.other_income"
   },
   "unruled:scope#1.6": {
    "class": "out of scope",
-   "evidence": "i8915f p. 2: each Form 1099-R entry asks retirement.disaster, 'Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?', refused with the Form 1099-R special cases (including 8915-F), which covers 2025 qualified disaster and qualified home distributions.",
-   "subject_sha": "302ba13f6c08db4e04123660930a5ea2802ae007f3bbcfcb4202990fc2484579",
-   "gate": "retirement.disaster"
+   "evidence": "i1040sse p. 1, Form 4029: person.se_screen lists \"having an approved Form 4361 or Form 4029\", refused through person.se_screened, as ruled on the earlier subject.",
+   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "person.se_screened"
   },
   "unruled:f8582#1.5": {
    "class": "out of scope",
@@ -1349,9 +1337,10 @@
   },
   "unruled:s2#1.4": {
    "class": "out of scope",
-   "evidence": "i6251 p. 7, Line 2r: 'Don't make this adjustment for costs paid or incurred in connection with an activity in which you materially participated', which a Schedule C the tool prepares is (passive ones are refused); long-term contracts are refused by sc.method_other ('does it have long-term contracts (section 460)'); depletion by sc.special; section 169 amortization by sc.special ('costs you must amortize') and asset.screen ('you amortize it').",
-   "subject_sha": "99aa7c460e7977cb16302fd7eb00263a1c1977f2de8d5343328c22a134cb0edd",
-   "gate": "sc.special"
+   "evidence": "i1040sse p. 2; i1040gi p. 112. person.se_screen lists \"self-employment income exempt under an international social security agreement\" and is refused through person.se_screened; notary public fees are refused by sc.statutory through sc.line1.",
+   "subject_sha": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "person.se_screened"
   },
   "unruled:asset#1.3": {
    "class": "wrong",
@@ -1365,15 +1354,17 @@
   },
   "unruled:rental#1.2": {
    "class": "out of scope",
-   "evidence": "i1040se p. 7 (Form 8990): a rental trade or business is refused by sche.qbi_business.",
-   "subject_sha": "f47c7f6a333d2eff2542d6ea7e938841757b038ceb6a2d047bc9097edba67132",
-   "gate": "sche.qbi_business"
+   "evidence": "p925 p. 15, rental incidental to a development activity: the recharacterization applies to property sold in the year whose rental began less than 24 months before; a building sold or disposed of in 2025 is refused by rprop.disposed through rprop.screen and rprop.dep (Form 4562 real property outside the mid-month tables).",
+   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "rprop.dep"
   },
   "unruled:rental#1.7": {
    "class": "covered",
-   "evidence": "p527 pp. 26-27: the donated days have no rent, so rental.personal_any (\"did anyone stay free\") counts them.",
-   "subject_sha": "f47c7f6a333d2eff2542d6ea7e938841757b038ceb6a2d047bc9097edba67132",
-   "line": "rental.days_personal"
+   "evidence": "i1040se p. 6; p527 p. 5. The rental.amt19 help: \"Not something that lasts more than a year, such as an appliance, furniture, an improvement, or equipment you lease to own ... Not loan costs: points go with other interest; mortgage commissions and recording fees are part of its cost\"; own labor is not an amount paid.",
+   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "line": "rental.amt19"
   },
   "unruled:rprop#1.1": {
    "class": "out of scope",
@@ -1438,19 +1429,76 @@
   },
   "unruled:retirement#1.1": {
    "class": "presentation",
-   "evidence": "i1040gi p. 27, 'If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.' A documentation requirement; retirement.rollover asks for the amount put into a pension, a 401(k) or similar plan, or an IRA, which includes a qualified plan and a 2026 deposit; no amount changes.",
-   "subject_sha": "f6be280a4817e54794953f3f896be90235d321419f498218cff46bc4041fb332"
+   "evidence": "i1040gi p. 27; p590a p. 25: a documentation requirement, as ruled on the earlier subject. retirement.rollover counts a rollover into a plan or an IRA within 60 days, including one completed in 2026; no amount changes.",
+   "subject_sha": "180b6895c249df94add044deec572e1ce46f17175f83df3f15d9e98a277bc5fe",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:retirement#1.2": {
-   "class": "presentation",
-   "evidence": "i5329 p. 5, 'Attach a statement that provides the name, age, and TIN of the child or eligible adoptee.' A statement attached to the return; the exception's amount (retirement.l2_e19, capped at $5,000) is computed; no amount changes.",
-   "subject_sha": "f6be280a4817e54794953f3f896be90235d321419f498218cff46bc4041fb332"
+   "class": "out of scope",
+   "evidence": "p590a p. 25, FDIC distributions and the one-rollover limit: a filer whose earlier rollover was such a distribution answers Yes to retirement.rollover_second and is refused through retirement.special, a refusal the rule did not require (coverage only), never a wrong amount; as ruled on the earlier subject.",
+   "subject_sha": "180b6895c249df94add044deec572e1ce46f17175f83df3f15d9e98a277bc5fe",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "retirement.special"
   },
   "unruled:sli#1.1": {
    "class": "covered",
    "line": "sli.unqualified_any",
    "evidence": "i1040gi p. 99, '3. Any person you could have claimed as a dependent for the year the loan was taken out except that: a. The person filed a joint return; b. The person had gross income ...'. sli.unqualified_any's help: 'Someone you could have claimed as a dependent but for that person's income or joint return, or because you could be claimed yourself, counts as your dependent here.'",
    "subject_sha": "1ff4d64a4c9dc3c4f4056c247257ee16166a88938169a3484bab3eb5c81dea33"
+  },
+  "unruled:rental#1.9": {
+   "class": "out of scope",
+   "evidence": "i1040se p. 6, Form 4835. The farming tick (scope.farm) says \"Count a farm you run and a share of crops or livestock from land you let a farmer use. A Yes ends the interview here.\"",
+   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "scope.farm"
+  },
+  "unruled:retirement#1.3": {
+   "class": "out of scope",
+   "evidence": "p590b p. 28, one emergency personal expense distribution per calendar year. Exception 23 claimed on more than one Form 1099-R is refused by person.x_two23 through f5329.l4; every 2025 distribution is entered, so a second one is seen.",
+   "subject_sha": "180b6895c249df94add044deec572e1ce46f17175f83df3f15d9e98a277bc5fe",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "f5329.l4"
+  },
+  "unruled:retirement#1.4": {
+   "class": "presentation",
+   "evidence": "i5329 p. 5, exception 19: a filing attachment; the $5,000 cap is applied (person.x_c19) and no amount changes, as ruled on the earlier subject.",
+   "subject_sha": "180b6895c249df94add044deec572e1ce46f17175f83df3f15d9e98a277bc5fe",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:f8919firm#1.3": {
+   "class": "presentation",
+   "evidence": "f8919 p. 2, Column (d), 'Complete only if reason code A or C is entered in column (c).' The date of the IRS letter identifies it and changes no amount (f8919firm note).",
+   "subject_sha": "8131eac6baa7231d5261002a1501c896a194c362661371836312534956b5d706",
+   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:sa#1.3": {
+   "class": "out of scope",
+   "evidence": "i1040sca p. 8, Form 8396: s3.mcc_if_interest asks about a mortgage credit certificate and scope.ready_credits refuses it (\"A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A\").",
+   "subject_sha": "5f329bfea96467eac36159850a6a301a6a20a6340ea95064d4e77652336e64e3",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "scope.ready_credits"
+  },
+  "unruled:sa#1.4": {
+   "class": "real gap",
+   "evidence": "p526 pp. 5-6; i1040sca p. 10. The $50-a-month cap for hosting a student is the open BUG-1090, as ruled on the earlier subject; the 15% state tax credit exception and the returned-ticket rule only allow more than the question asks (no overstatement); gifts to civic leagues, unions and chambers of commerce are not gifts to qualified organizations, which the sa.line11 question asks for. Not filed again.",
+   "subject_sha": "5f329bfea96467eac36159850a6a301a6a20a6340ea95064d4e77652336e64e3",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "bug": "BUG-1090"
+  },
+  "unruled:sa#1.5": {
+   "class": "out of scope",
+   "evidence": "i1040sca p. 12, claim of right over $3,000: s3.repaid_income asks it and scope.ready_credits refuses (\"Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16)\").",
+   "subject_sha": "5f329bfea96467eac36159850a6a301a6a20a6340ea95064d4e77652336e64e3",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "scope.ready_credits"
+  },
+  "unruled:ssb#1.1": {
+   "class": "out of scope",
+   "evidence": "p915 p. 5: benefits of a U.S. citizen resident in a treaty country are income exempt under a tax treaty, asked by scope.treaty (\"Income exempt under a tax treaty with another country ... A Yes ends the interview here\") and refused through scope.other_income.",
+   "subject_sha": "0a2e0145345a092f7bb39569a83162d956a1325484c3eac4042db02448d9def1",
+   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "gate": "scope.other_income"
   }
  },
  "baseline": {}

@@ -17,7 +17,7 @@ page; the build adds the tax year, revision and content hash of the archived sou
 `sources/<year>/` from its manifest (`spec/spec.md` section 5, `engine/src/build.ts`). **Guarantees:**
 the build fails if any line, parameter, gate or question lacks a complete citation or cites a document
 absent from the manifest, and `tools/citations.py` verifies every quote and locator
-against the archived text; `reports/2025/citations.md` reports <!-- figures:trust-citations -->7,580 anchors and 8,347 quotes<!-- /figures:trust-citations --> with 0
+against the archived text; `reports/2025/citations.md` reports <!-- figures:trust-citations -->7,514 anchors and 8,265 quotes<!-- /figures:trust-citations --> with 0
 findings without a recorded ruling, and no computed-line locator too coarse to verify (the check runs
 with `--strict`). **Does not guarantee:** that the expression says what the cited page says. A
 citation proves a line points at a page, not that it was read correctly.
@@ -224,5 +224,5 @@ The IRS forms and instructions are not the law. They embed judgments about the I
 that are not announced, and this project encodes the published procedure, judgments included; where the
 text is ambiguous or silent, the reading chosen is recorded in `ambiguities/<year>.yaml` and shown to
 the user when the entry is linked to a line that affects their return
-(<!-- figures:trust-ambiguities -->150 of the 154 entries for 2025 are linked that way; each of the others says why it stands unlinked<!-- /figures:trust-ambiguities -->). No lawyer has reviewed the legal position the project operates
+(<!-- figures:trust-ambiguities -->152 of the 156 entries for 2025 are linked that way; each of the others says why it stands unlinked<!-- /figures:trust-ambiguities -->). No lawyer has reviewed the legal position the project operates
 under (`spec/spec.md` section 9).

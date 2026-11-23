@@ -155,10 +155,10 @@
   },
   {
    "key": "11",
-   "record": "776c27d34ba11089d1b4aa1c3ca4b1419100b2cbba35ced1870d937f2d7bfced",
+   "record": "1a85b7a855932e446d1747fe6c079e8a9c664a0ff0fde0333014e41516adccc1",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; p525 p. 27, line 11: \"If line 10 is a negative amount, add lines 9 and 10 ... but not less than zero.\" The candidate's line is the project's; its completed-return differences are prior-year figures it reads directly (rec.agi_prior 53, rec.ded_prior 26), which the interview does not ask because the project carries the prior-year figures as its own inputs. Where both evaluate no value differs; the 7 refusals are the project's cited screens. Triage executable-triage-v2 (.transcription/triage/2025/rec.json): 3,619 of 3,745 comparisons agree; completed {candidate-unknown 53, project-unknown 26}. Project stands.",
-   "subject_key": "9260f12dd5c8679ed8cc61a4779f31f38da97aa190e50a4b66a4dd8ccf738afd"
+   "ruling": "Ruling: representation; p525 p. 27, Worksheet 2, line 11, \"If line 10 is zero or more, enter the amount from line 9. If line 10 is a negative amount, add lines 9 and 10 and enter the result (but not less than zero)\". As the earlier ruling: the reply computes line 10 from the prior-year AGI and deductions directly (rec.agi_prior, rec.ded_prior) where the project tests its rec.ti_positive answer first; triage (.transcription/triage/2025/rec.json) 3,690 of 3,809 in-scope comparisons agree, completed {candidate-unknown 53, project-unknown 26}, no value differs. Re-reviewed only because the scope.recovery tick label changed. Project stands.",
+   "subject_key": "9e2483dc7ce7ca302cceaf3bc60de121a88ec17a041f2deecefa3a8cef5ddc36"
   },
   {
    "key": "B",
@@ -226,7 +226,7 @@
   "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "9": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "10": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "11": "0a7a6fa3191c72fc12adaa413ae0d61c30f55af2fed33759bbd2716d5348fa3c",
+  "11": "d8ac75311fa981bf85d6bfa9c25d787e28c55580cb210b2e94f97cc3158649bc",
   "B": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "C": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
  }

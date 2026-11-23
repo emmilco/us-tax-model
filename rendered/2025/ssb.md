@@ -20,10 +20,10 @@
 ## (helper) — `ssb.benefits`
 
 - **Authored helper label:** Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099
-- **Encoded (NonNegDollars):** Input — Total of box 5 (net benefits) of all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099 for 2025
+- **Encoded (NonNegDollars):** Input — Total of box 5 (net benefits) of all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099 for 2025, plus any social security benefits paid to you (or your spouse) by Canada or Germany, in U.S. dollars, and without benefits that belong to your child
 - **Refusal:** when ssb.pub915 is true, cannot complete Pub. 915 or Pub. 590-A worksheet. The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication. Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"op":"input","source":"Total of box 5 (net benefits) of all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099 for 2025"}`
-- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; sha256 482e9c48)
+- Expr: `{"op":"input","source":"Total of box 5 (net benefits) of all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099 for 2025, plus any social security benefits paid to you (or your spouse) by Canada or Germany, in U.S. dollars, and without benefits that belong to your child"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b; p915 p. 6, "If you receive social security benefits from Canada or Germany, include them on line 1 of Worksheet 1."; p915 p. 5, Who is taxed, "Benefits are included in the taxable income (to the extent they are taxable) of the person who has the legal right to receive the benefits." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.ira_covered`
 
@@ -34,15 +34,15 @@
 
 ## (helper) — `ssb.repaid_more`
 
-- **Authored helper label:** On any of your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?
-- **Encoded (Bool):** Input — On any of your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?
-- Expr: `{"op":"input","source":"On any of your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?"}`
-- Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Added up over all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099, is the total in box 4 (benefits repaid) more than the total in box 3 (benefits paid)?
+- **Encoded (Bool):** Input — Added up over all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099, is the total in box 4 (benefits repaid) more than the total in box 3 (benefits paid)?
+- Expr: `{"op":"input","source":"Added up over all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099, is the total in box 4 (benefits repaid) more than the total in box 3 (benefits paid)?"}`
+- Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception, "You repaid any benefits in 2025 and your total repayments (box 4) were more than your total benefits for 2025 (box 3)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.pub915`
 
 - **Authored helper label:** A situation in which the Social Security Benefits Worksheet of the Form 1040 instructions does not apply: a traditional IRA contribution for 2025 by a person covered by a retirement plan, or repayments (box 4) that are more than the benefits (box 3). The excluded income of Forms 2555 and 4563 and of Puerto Rico, the savings bond interest of Form 8815 and employer adoption benefits are asked about at their own questions.
-- **Encoded (Bool):** (helper "Did you (or, on a joint return, your spouse) put money into a traditional IRA for 2025 while covered by a retirement plan at work or through self-employment?" = true or helper "On any of your (or, on a joint return, your spouse's) Forms SSA-1099 or RRB-1099, is box 4 (benefits repaid) more than box 3 (benefits paid)?" = true)
+- **Encoded (Bool):** (helper "Did you (or, on a joint return, your spouse) put money into a traditional IRA for 2025 while covered by a retirement plan at work or through self-employment?" = true or helper "Added up over all your (or, on a joint return, your spouse's) Forms SSA-1099 and RRB-1099, is the total in box 4 (benefits repaid) more than the total in box 3 (benefits paid)?" = true)
 - Expr: `{"any":[{"eq":["ssb.ira_covered",{"const":true}],"op":"test"},{"eq":["ssb.repaid_more",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
 

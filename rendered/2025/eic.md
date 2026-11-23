@@ -79,6 +79,7 @@
 
 - **Authored helper label:** At least one qualifying child for the EIC
 - **Encoded (Bool):** helper "Number of qualifying children for the EIC" > 0 (a count)
+- Interpretation: amb.2025.eic_self_only_age
 - Expr: `{"gt":["eic.qc_count",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 3, question 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -214,6 +215,7 @@
 - **Authored helper label:** Step 1, question 4. Not a nonresident alien for any part of 2025
 - **Encoded (Bool):** scope helper "Nonresident alien status, or other income or return treatment outside this tool (true when any of the other-income screening questions is answered Yes)" = false
 - **Refusal:** when scope.other_income is true, cannot complete Nonresident aliens (EIC, Step 1, question 4). Nonresident and dual-status treatment is outside this tool. Cite: [i1040gi] p. 40, Step 1, question 4; p. 44, Nonresident aliens (2025; printed date 2026-02-25; sha256 482e9c48)
+- Interpretation: amb.2025.eic_hoh_nonresident_spouse
 - Expr: `{"eq":["scope.other_income",{"const":false}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 1, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -340,17 +342,41 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["eic.married_rules",{"const":true}],"op":"test"},"then":"eic.no"},{"guard":{"eq":["eic.married_rules",{"const":false}],"op":"test"},"then":"eic.step4_age"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960 and before January 2, 2001) (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `eic.self_only_qc`
+
+- **Authored helper label:** The filer has qualifying children for the EIC, none of them with a valid SSN, so only the self-only credit can be taken
+- **Encoded (Bool):** helper "At least one qualifying child for the EIC" = true and helper "Number of qualifying children for the EIC who have valid SSNs" = 0 (a count)
+- Interpretation: amb.2025.eic_self_only_age
+- Expr: `{"all":[{"eq":["eic.has_qc",{"const":true}],"op":"test"},{"eq":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
+- Cite: [p596] p. 5, "you may be eligible to claim a self-only EIC if you are otherwise eligible"; p. 17, chapter 3, "You must meet all four of these rules, in addition to the rules in chapters 1 and 4, to qualify for the EIC without a qualifying child" (2025 (Publication 596 (2025), Catalog Number 15173A, Nov 18, 2025); sha256 29e8c669)
+
+## (helper) — `eic.step3_self_only`
+
+- **Authored helper label:** Step 3 passed, and for the self-only credit Rules 11 to 14 (Step 4): aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person
+- **Encoded (Bool):** Choose — [helper "Step 3, questions 2 to 6: filing jointly, or passing questions 3 to 5 and not a qualifying child of another person" = true → helper "Step 4 for a filer outside the married rules: aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person"] [helper "Step 3, questions 2 to 6: filing jointly, or passing questions 3 to 5 and not a qualifying child of another person" = false → helper "Year parameter household.no (false)"]
+- Interpretation: amb.2025.eic_self_only_age
+- Expr: `{"alternatives":[{"guard":{"eq":["eic.step3",{"const":true}],"op":"test"},"then":"eic.step4_age"},{"guard":{"eq":["eic.step3",{"const":false}],"op":"test"},"then":"eic.no"}],"op":"choose"}`
+- Cite: [p596] p. 5, "you may be eligible to claim a self-only EIC if you are otherwise eligible"; p. 17, chapter 3, "You must meet all four of these rules, in addition to the rules in chapters 1 and 4, to qualify for the EIC without a qualifying child" (2025 (Publication 596 (2025), Catalog Number 15173A, Nov 18, 2025); sha256 29e8c669)
+
+## (helper) — `eic.step3_qc`
+
+- **Authored helper label:** Step 3 for a filer with a qualifying child; when no qualifying child has a valid SSN, Step 3 and Rules 11 to 14
+- **Encoded (Bool):** Choose — [helper "The filer has qualifying children for the EIC, none of them with a valid SSN, so only the self-only credit can be taken" = true → helper "Step 3 passed, and for the self-only credit Rules 11 to 14 (Step 4): aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person"] [helper "The filer has qualifying children for the EIC, none of them with a valid SSN, so only the self-only credit can be taken" = false → helper "Step 3, questions 2 to 6: filing jointly, or passing questions 3 to 5 and not a qualifying child of another person"]
+- Interpretation: amb.2025.eic_self_only_age
+- Expr: `{"alternatives":[{"guard":{"eq":["eic.self_only_qc",{"const":true}],"op":"test"},"then":"eic.step3_self_only"},{"guard":{"eq":["eic.self_only_qc",{"const":false}],"op":"test"},"then":"eic.step3"}],"op":"choose"}`
+- Cite: [p596] p. 5, "you may be eligible to claim a self-only EIC if you are otherwise eligible"; p. 17, chapter 3, "You must meet all four of these rules, in addition to the rules in chapters 1 and 4, to qualify for the EIC without a qualifying child" (2025 (Publication 596 (2025), Catalog Number 15173A, Nov 18, 2025); sha256 29e8c669)
+
 ## (helper) — `eic.step34`
 
-- **Authored helper label:** Step 3 for a filer with a qualifying child, Step 4 otherwise
-- **Encoded (Bool):** Choose — [helper "At least one qualifying child for the EIC" = true → helper "Step 3, questions 2 to 6: filing jointly, or passing questions 3 to 5 and not a qualifying child of another person"] [helper "At least one qualifying child for the EIC" = false → helper "Step 4: not a married filer filing separately or as head of household, aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person"]
-- Expr: `{"alternatives":[{"guard":{"eq":["eic.has_qc",{"const":true}],"op":"test"},"then":"eic.step3"},{"guard":{"eq":["eic.has_qc",{"const":false}],"op":"test"},"then":"eic.step4"}],"op":"choose"}`
+- **Authored helper label:** Step 3 for a filer with a qualifying child (and, when no qualifying child has a valid SSN, the Step 4 rules for the self-only credit too), Step 4 otherwise
+- **Encoded (Bool):** Choose — [helper "At least one qualifying child for the EIC" = true → helper "Step 3 for a filer with a qualifying child; when no qualifying child has a valid SSN, Step 3 and Rules 11 to 14"] [helper "At least one qualifying child for the EIC" = false → helper "Step 4: not a married filer filing separately or as head of household, aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person"]
+- Expr: `{"alternatives":[{"guard":{"eq":["eic.has_qc",{"const":true}],"op":"test"},"then":"eic.step3_qc"},{"guard":{"eq":["eic.has_qc",{"const":false}],"op":"test"},"then":"eic.step4"}],"op":"choose"}`
 - Cite: [i1040gi] p. 41, Step 3, question 1, "No. Skip questions 2 through 6; go to Step 4" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.reached_step5`
 
 - **Authored helper label:** Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5)
-- **Encoded (Bool):** Choose — [helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true → helper "Step 3 for a filer with a qualifying child, Step 4 otherwise"] [helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true → helper "Step 3 for a filer with a qualifying child (and, when no qualifying child has a valid SSN, the Step 4 rules for the self-only credit too), Step 4 otherwise"] [helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["eic.reached_step3",{"const":true}],"op":"test"},"then":"eic.step34"},{"guard":{"eq":["eic.reached_step3",{"const":false}],"op":"test"},"then":"eic.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 42, Step 4, "Go to Step 5"; each earlier "STOP You can't take the credit" ends the flowchart (pp. 40-42) (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -710,7 +736,7 @@
 ## (helper) — `eic.wsb_line5_stop`
 
 - **Authored helper label:** Worksheet B, line 5 is No (line 4b is not less than the limit), a STOP that says to check line 27c
-- **Encoded (Bool):** helper "Adjusted gross income below the largest Step 1 limit (otherwise question 1 is "No" for any number of children)" = true and helper "Step 1, question 1. Is the amount on Form 1040, line 11b, less than the limit for the number of children who have valid SSNs?" = true and helper "Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?" = true and helper "Step 1, question 3. Not filing Form 2555 (foreign earned income)" = true and helper "Step 1, question 4. Not a nonresident alien for any part of 2025" = true and helper "Step 2, question 2. Investment income not more than $11,950 (more than $11,950 stops at question 3 without Form 4797)" = true and helper "Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity" = true and helper "Step 3 for a filer with a qualifying child, Step 4 otherwise" = true and helper "Step 5, question 2: self-employed (Worksheet B)" = true and helper "Worksheet B, line 4b is more than zero (the worksheet continues to line 5)" = true and helper "Step 5, question 3. Is your earned income less than the limit for the number of qualifying children with valid SSNs?" = false
+- **Encoded (Bool):** helper "Adjusted gross income below the largest Step 1 limit (otherwise question 1 is "No" for any number of children)" = true and helper "Step 1, question 1. Is the amount on Form 1040, line 11b, less than the limit for the number of children who have valid SSNs?" = true and helper "Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?" = true and helper "Step 1, question 3. Not filing Form 2555 (foreign earned income)" = true and helper "Step 1, question 4. Not a nonresident alien for any part of 2025" = true and helper "Step 2, question 2. Investment income not more than $11,950 (more than $11,950 stops at question 3 without Form 4797)" = true and helper "Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity" = true and helper "Step 3 for a filer with a qualifying child (and, when no qualifying child has a valid SSN, the Step 4 rules for the self-only credit too), Step 4 otherwise" = true and helper "Step 5, question 2: self-employed (Worksheet B)" = true and helper "Worksheet B, line 4b is more than zero (the worksheet continues to line 5)" = true and helper "Step 5, question 3. Is your earned income less than the limit for the number of qualifying children with valid SSNs?" = false
 - Expr: `{"all":[{"eq":["eic.below_top",{"const":true}],"op":"test"},{"eq":["eic.step1_income",{"const":true}],"op":"test"},{"eq":["eic.step1_ssn",{"const":true}],"op":"test"},{"eq":["eic.step1_foreign",{"const":true}],"op":"test"},{"eq":["eic.step1_resident",{"const":true}],"op":"test"},{"eq":["eic.step2_income",{"const":true}],"op":"test"},{"eq":["eic.step2_other",{"const":true}],"op":"test"},{"eq":["eic.step34",{"const":true}],"op":"test"},{"eq":["eic.self_employed",{"const":true}],"op":"test"},{"eq":["eic.wsb_4b_positive",{"const":true}],"op":"test"},{"eq":["eic.step5_income",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 47, Worksheet B, line 5, "STOP No. You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes); p. 42, Step 5, question 3, whose STOP has no such instruction, "is your earned income less than $61,555 ($68,675 if married filing jointly)", "Yes. Go to Step 6. No. STOP You can’t take the credit" (2025; printed date 2026-02-25; sha256 482e9c48)
 

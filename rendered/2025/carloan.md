@@ -2,7 +2,7 @@
 
 - Document: `carloan` (form, tax year 2025)
 - Collection: keyed entries; [i1040gi] p. 110, Schedule 1-A, line 22, "If you need to report more than two VINs, attach a statement to your return showing the information required on line 22"; "for each entered VIN, enter the QPVLI paid or accrued on the loan originated for the purchase of that APV" (2025; printed date 2026-02-25; sha256 482e9c48)
-- Note: One entry per loan; name each entry by the vehicle's VIN (a vehicle with a loan refinanced during 2025 has one entry for each loan). Interest deducted on Schedule C (column (ii)) is asked when the return has a Schedule C; Schedules E and F are refused. Where a loan also financed amounts that do not qualify, or refinanced a qualifying loan for more than its balance, the interest is allocated pro rata under proposed § 1.163-16(d)(2)(iii) and (d)(4); the ratio is rounded to six places (amb.2025.carloan_ratio_places).
+- Note: One entry per loan, named by the vehicle's VIN, which line 22 column (i) needs (a vehicle with a loan refinanced during 2025 has one entry for each loan, the VIN with a suffix). Interest deducted on Schedule C (column (ii)) is asked when the return has a Schedule C; Schedules E and F are refused. Where a loan also financed amounts that do not qualify, or refinanced a qualifying loan for more than its balance, the interest is allocated pro rata under proposed § 1.163-16(d)(2)(iii) and (d)(4); the ratio is rounded to six places (amb.2025.carloan_ratio_places).
 
 ## (helper) — `carloan.zero`
 

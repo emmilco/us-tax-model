@@ -16,7 +16,10 @@ register:
         Owner decision C4 (docs/ny/DECISIONS.md, 2026-11-04). The instructions require every entry on the return and
         its worksheets to be a whole dollar and give the half-up rule; rounding where a line is entered is the literal
         reading. Rounding lines 1 to 18 separately can make line 19 differ by a few dollars from federal AGI rounded
-        once; ny_it201.line19_agrees shows whether they agree. A product of a rate and an amount is rounded once to the
+        once; ny_it201.line19_agrees shows whether they agree. Rounding can explain at most $8 (lines 1 to 11, 13 to
+        16 and 18 are 16 entries, each rounded by at most 50 cents), so ny_it201.gate.line19_gap refuses a line 19 more than
+        $8 from federal adjusted gross income rounded once: such a gap means a federal amount reached federal adjusted
+        gross income without reaching lines 1 to 18 (the tolerance chosen under the owner's delegation, 2026-11-23). A product of a rate and an amount is rounded once to the
         dollar (multiply_rate with unit 100), not first to the cent.
       cite:
         doc: ny_it201i

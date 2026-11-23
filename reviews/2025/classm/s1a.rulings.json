@@ -169,6 +169,126 @@
    "date": "2026-11-10",
    "run": "7aefe92bbb4d4f0c7911acba179903abcc1a84fb6d48eca74f37572adff6962c",
    "subject_key": "d2c3522a07e12d6721c9d7f7a35e106cc3c5ad967f8cf151e175eee709f342ce"
+  },
+  {
+   "case": "classm.s1a.4",
+   "printed": "10",
+   "project": "$0.00",
+   "model": "$-90,000.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. i1040gi p. 101, Schedule 1-A, Part II, \"If you are married, you must file a joint return with your spouse to claim this deduction\". The case is married filing separately (f1040.status mfs), so Part II does not apply and every line of it is $0 (the owner's reading that each printed line of Parts II to V is $0 unless its part applies); the model filled the part's phase-out lines anyway.",
+   "drop": true,
+   "context": "e8951c902fc799ca835f3b61ea7087767d445c8b43fb9f17ca024bd96cfe27a6",
+   "date": "2026-11-23",
+   "run": "c4220b638aaead349ade6a78073a9ee23be6607943ac702623ac6067d5e969af",
+   "subject_key": "6497f577d910e4136dfc5e1e705e97074d30f5d9b0fef4c54674b688ac4e9f11"
+  },
+  {
+   "case": "classm.s1a.4",
+   "printed": "16",
+   "project": "$0.00",
+   "model": "$60,000.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. i1040gi p. 106, Schedule 1-A, Part III, \"If you are married, you must file a joint return with your spouse to claim this deduction\". The case is married filing separately (f1040.status mfs), so Part III does not apply and every line of it is $0 (the owner's reading that each printed line of Parts II to V is $0 unless its part applies); the model filled the part's phase-out lines anyway.",
+   "drop": true,
+   "context": "e8951c902fc799ca835f3b61ea7087767d445c8b43fb9f17ca024bd96cfe27a6",
+   "date": "2026-11-23",
+   "run": "c4220b638aaead349ade6a78073a9ee23be6607943ac702623ac6067d5e969af",
+   "subject_key": "c50e2a78a37039b1dedbf9f74db59d1a1c8343175872e790b2a3a9b4660e7853"
+  },
+  {
+   "case": "classm.s1a.4",
+   "printed": "17",
+   "project": "$0.00",
+   "model": "$150,000.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. i1040gi p. 106, Schedule 1-A, Part III, \"If you are married, you must file a joint return with your spouse to claim this deduction\". The case is married filing separately (f1040.status mfs), so Part III does not apply and every line of it is $0 (the owner's reading that each printed line of Parts II to V is $0 unless its part applies); the model filled the part's phase-out lines anyway.",
+   "drop": true,
+   "context": "e8951c902fc799ca835f3b61ea7087767d445c8b43fb9f17ca024bd96cfe27a6",
+   "date": "2026-11-23",
+   "run": "c4220b638aaead349ade6a78073a9ee23be6607943ac702623ac6067d5e969af",
+   "subject_key": "e27ec22846512c4c46d562a336030b9809bb8bd6ac760b268a96a639644605f1"
+  },
+  {
+   "case": "classm.s1a.4",
+   "printed": "18",
+   "project": "$0.00",
+   "model": "$-90,000.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. i1040gi p. 106, Schedule 1-A, Part III, \"If you are married, you must file a joint return with your spouse to claim this deduction\". The case is married filing separately (f1040.status mfs), so Part III does not apply and every line of it is $0 (the owner's reading that each printed line of Parts II to V is $0 unless its part applies); the model filled the part's phase-out lines anyway.",
+   "drop": true,
+   "context": "e8951c902fc799ca835f3b61ea7087767d445c8b43fb9f17ca024bd96cfe27a6",
+   "date": "2026-11-23",
+   "run": "c4220b638aaead349ade6a78073a9ee23be6607943ac702623ac6067d5e969af",
+   "subject_key": "34d743991626fa6735f397ef1544ddc9d724e1a750c96c39a6d3acf033e512dd"
+  },
+  {
+   "case": "classm.s1a.4",
+   "printed": "31",
+   "project": "$0.00",
+   "model": "$60,000.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. i1040gi p. 110, Schedule 1-A, Part V, \"If you are married, you must file a joint return with your spouse to claim this deduction\". The case is married filing separately (f1040.status mfs), so Part V does not apply and every line of it is $0 (the owner's reading that each printed line of Parts II to V is $0 unless its part applies); the model filled the part's phase-out lines anyway.",
+   "drop": true,
+   "context": "e8951c902fc799ca835f3b61ea7087767d445c8b43fb9f17ca024bd96cfe27a6",
+   "date": "2026-11-23",
+   "run": "c4220b638aaead349ade6a78073a9ee23be6607943ac702623ac6067d5e969af",
+   "subject_key": "ec06ea22b88fa48bc28eb9a6b1173e5ae0c725be1ddf8bf5a266ba781537b113"
+  },
+  {
+   "case": "classm.s1a.4",
+   "printed": "32",
+   "project": "$0.00",
+   "model": "$75,000.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. i1040gi p. 110, Schedule 1-A, Part V, \"If you are married, you must file a joint return with your spouse to claim this deduction\". The case is married filing separately (f1040.status mfs), so Part V does not apply and every line of it is $0 (the owner's reading that each printed line of Parts II to V is $0 unless its part applies); the model filled the part's phase-out lines anyway.",
+   "drop": true,
+   "context": "e8951c902fc799ca835f3b61ea7087767d445c8b43fb9f17ca024bd96cfe27a6",
+   "date": "2026-11-23",
+   "run": "c4220b638aaead349ade6a78073a9ee23be6607943ac702623ac6067d5e969af",
+   "subject_key": "7701da6a2eb03f76a224d256f8dbd58f3719f1dc859bf89542f74c17bba54426"
+  },
+  {
+   "case": "classm.s1a.4",
+   "printed": "33",
+   "project": "$0.00",
+   "model": "$-15,000.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. i1040gi p. 110, Schedule 1-A, Part V, \"If you are married, you must file a joint return with your spouse to claim this deduction\". The case is married filing separately (f1040.status mfs), so Part V does not apply and every line of it is $0 (the owner's reading that each printed line of Parts II to V is $0 unless its part applies); the model filled the part's phase-out lines anyway.",
+   "drop": true,
+   "context": "e8951c902fc799ca835f3b61ea7087767d445c8b43fb9f17ca024bd96cfe27a6",
+   "date": "2026-11-23",
+   "run": "c4220b638aaead349ade6a78073a9ee23be6607943ac702623ac6067d5e969af",
+   "subject_key": "4d9689ff86b2f636895e2c4a612eed1bf29771c78a27c70872b16d15d9a72495"
+  },
+  {
+   "case": "classm.s1a.4",
+   "printed": "35",
+   "project": "$0.00",
+   "model": "$6,000.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. i1040gi p. 110, Schedule 1-A, Part V, \"If you are married, you must file a joint return with your spouse to claim this deduction\". The case is married filing separately (f1040.status mfs), so Part V does not apply and every line of it is $0 (the owner's reading that each printed line of Parts II to V is $0 unless its part applies); the model filled the part's phase-out lines anyway.",
+   "drop": true,
+   "context": "e8951c902fc799ca835f3b61ea7087767d445c8b43fb9f17ca024bd96cfe27a6",
+   "date": "2026-11-23",
+   "run": "c4220b638aaead349ade6a78073a9ee23be6607943ac702623ac6067d5e969af",
+   "subject_key": "32559ee66faaf81b5a0693c144d3073a2994102e1104518b1d57c6ce1030038a"
+  },
+  {
+   "case": "classm.s1a.4",
+   "printed": "8",
+   "project": "$0.00",
+   "model": "$60,000.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. i1040gi p. 101, Schedule 1-A, Part II, \"If you are married, you must file a joint return with your spouse to claim this deduction\". The case is married filing separately (f1040.status mfs), so Part II does not apply and every line of it is $0 (the owner's reading that each printed line of Parts II to V is $0 unless its part applies); the model filled the part's phase-out lines anyway.",
+   "drop": true,
+   "context": "e8951c902fc799ca835f3b61ea7087767d445c8b43fb9f17ca024bd96cfe27a6",
+   "date": "2026-11-23",
+   "run": "c4220b638aaead349ade6a78073a9ee23be6607943ac702623ac6067d5e969af",
+   "subject_key": "f1f44570abd428eb5fb3e8d72027fb1c4f9ce83a71059871801d2f3c49cab551"
+  },
+  {
+   "case": "classm.s1a.4",
+   "printed": "9",
+   "project": "$0.00",
+   "model": "$150,000.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. i1040gi p. 101, Schedule 1-A, Part II, \"If you are married, you must file a joint return with your spouse to claim this deduction\". The case is married filing separately (f1040.status mfs), so Part II does not apply and every line of it is $0 (the owner's reading that each printed line of Parts II to V is $0 unless its part applies); the model filled the part's phase-out lines anyway.",
+   "drop": true,
+   "context": "e8951c902fc799ca835f3b61ea7087767d445c8b43fb9f17ca024bd96cfe27a6",
+   "date": "2026-11-23",
+   "run": "c4220b638aaead349ade6a78073a9ee23be6607943ac702623ac6067d5e969af",
+   "subject_key": "18348430e106fe70ee5bb99a0f84389589062392c15418032739b22400fb6eb3"
   }
  ]
 }
