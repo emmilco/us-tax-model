@@ -5,6 +5,7 @@
       "id": "x2pay.f8919.w3",
       "covers": [
         "f8919",
+        "f8919firm",
         "f1040.line1g",
         "s2.wage_ss_tax",
         "f8959.line3"
@@ -295,6 +296,7 @@
     {
       "id": "advfix.f8919.reason_g_ss8_notice",
       "covers": [
+        "f8919firm",
         "f8919firm.reason",
         "s2.ss8_notice"
       ],

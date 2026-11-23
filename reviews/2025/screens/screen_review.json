@@ -1754,36 +1754,30 @@
  },
  {
   "screen": "f4952.alternative_allocation",
-  "subject_sha": "ab56f3896144b60ff9ec3e9e682550f69c00200c1fc355658c5a163b93f44ffb",
+  "subject_sha": "92a98ba96a4824b551f4aa62af023d29c400d0dc4eff59fa43891527bd38be47",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer has allowed investment expenses directly connected with investment income, such as depreciation or K-1 investment expenses, and does not make the alternative line 4g allocation, so answers NO.",
-      "irs_text": "f4952 p. 4, line 5: 'Investment expenses are your allowed deductions, other than interest expense, directly connected with the production of investment income. For example, depreciation or depletion allowed on assets that produce investment income is an investment expense. Include investment expenses ... reported to you on Schedule K-1...'",
-      "why": "The question asks only about the alternative line 4g allocation and never mentions investment expenses. A NO answer makes the tool treat line 5 as zero, ignoring those allowed expenses."
+      "situation": "A filer, or a spouse on a joint return, has deductible investment expenses other than interest, such as depreciation or depletion on investment assets or investment expenses reported on a partnership or S corporation Schedule K-1, but makes no alternative line 4g allocation and so truthfully answers NO.",
+      "irs_text": "f4952 (2025) p. 4, Line 5: \"Investment expenses are your allowed deductions, other than interest expense, directly connected with the production of investment income. For example, depreciation or depletion allowed on assets that produce investment income is an investment expense. Include investment expenses incurred directly by you or reported to you on Schedule K-1 from a partnership, or by an S corporation...\"",
+      "why": "The tool always computes line 5 as zero. The question asks only about the line 4e/4g allocation election, so it never brings out these expenses, and both net investment income and the filing exception test (\"You don't have any other deductible investment expenses,\" p. 3) come out wrong."
      },
      {
-      "kind": "NARROW",
-      "situation": "A filer has investment interest expense and other deductible investment expenses, and the interest/ordinary-dividend income test is met, so the no-file exception should fail; the filer answers NO to the alternative-allocation question.",
-      "irs_text": "f4952 p. 3, Who Must File: 'You don’t have to file Form 4952 if all of the following apply. • Your investment income from interest and ordinary dividends minus any qualified dividends is more than your investment interest expense. • You don’t have any other deductible investment expenses. • You don’t have any carryover of disallowed investment interest expense from 2024.'",
-      "why": "Because the question does not ask about other deductible investment expenses, a NO answer lets the tool zero line 5 and wrongly treat the filing exception as satisfied, so the required-test line can be false when the IRS text requires filing."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "On a joint return, only the spouse made the alternative line 4g allocation, and the filer answers NO because the question does not mention the spouse.",
-      "irs_text": "f4952 pp. 3–4, line 4g: 'you can elect to include part or all of these amounts in investment income' and 'you can treat less of the amount on line 4e as attributable to line 4g and more to line 4b.'",
-      "why": "The question is singular and does not say 'you or your spouse.' On a joint return a filer can answer NO about their own election, causing the tool to ignore the spouse’s alternative allocation."
+      "kind": "UNCLEAR",
+      "situation": "A filer, or spouse, who simply elects on line 4g to include qualified dividends in investment income, with no net capital gain on line 4e and no \"Elec.\" entry, could read the question as asking whether they are electing to put qualified dividends on line 4g.",
+      "irs_text": "f4952 (2025) p. 4, Line 4g Note: \"The amount on line 4g is generally treated as being attributable first to net capital gain ... (line 4e), and then to qualified dividends (line 4b) ... However, you can treat less of the amount on line 4e as attributable to line 4g and more to line 4b ... enter on the dotted line next to line 4e \"Elec.\"\"",
+      "why": "The question reads \"Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?\" It does not say this means only the \"Elec.\" entry next to line 4e. A filer making the ordinary line 4g election of qualified dividends, which the tool computes, could answer YES and be refused."
      }
     ],
-    "prompt_sha": "ab56f3896144b60ff9ec3e9e682550f69c00200c1fc355658c5a163b93f44ffb",
+    "prompt_sha": "92a98ba96a4824b551f4aa62af023d29c400d0dc4eff59fa43891527bd38be47",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/f4952.alternative_allocation.ab56f3896144.1.response.txt"
+    "cost": 0.056004,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-23",
+    "response": ".transcription/screens/f4952.alternative_allocation.92a98ba96a48.1.response.txt"
    }
   ],
   "question": "Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?",
@@ -1877,30 +1871,48 @@
  },
  {
   "screen": "f4952.unsupported",
-  "subject_sha": "507960e41de2b1e57a286508388650e1375b68726e99cf115a5d3621dc087619",
+  "subject_sha": "6fef633919ea00c587a2ad61a0920bb27596c0c2a606a849eef04072516b6945",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer receives Alaska Permanent Fund dividends, which are ordinary dividends but are excluded from Form 4952 investment income.",
-      "irs_text": "Form 4952 (2025), p. 3, line 4a: 'ordinary dividends (except Alaska Permanent Fund dividends)'",
-      "why": "The question treats 'dividends' as within the supported slice and never asks about Alaska Permanent Fund dividends; a filer can truthfully answer NO, but the tool would count them as investment income."
+      "situation": "A filer who files Form 1116 makes the line 4g election and chooses to treat less of line 4e as attributable to line 4g (writing \"Elec.\" next to line 4e), but nothing in the question prompts a YES, so the tool records only the line 4g amount and applies the default attribution.",
+      "irs_text": "f4952 p. 4, line 4g Note: \"you can treat less of the amount on line 4e as attributable to line 4g and more to line 4b. You may want to do this if you are filing Form 1116 ... enter on the dotted line next to line 4e \"Elec.\" and the part of line 4e that you elect to treat as being attributable to line 4g\"",
+      "why": "The validated election line takes only the line 4g amount and assumes the default attribution (capital gain first). The question asks about interest attribution, expenses and income types, not about an alternative 4e/4g attribution, so this filer truthfully answers NO."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer has a nondeductible miscellaneous itemized investment expense, such as investment advisory fees, that is not an allowed Form 4952 line 5 investment expense.",
-      "irs_text": "Form 4952 (2025), p. 4, line 5: 'Don’t include any miscellaneous itemized deductions, which aren’t allowed deductions in tax years beginning after December 31, 2017, and before January 1, 2026.'",
-      "why": "The question’s last clause asks about 'any other investment income or expense beyond interest, dividends and securities sales' without limiting it to deductible expenses; a filer with such a nondeductible expense could answer YES even though the tool correctly puts line 5 at zero."
+      "situation": "A filer whose only investment income outside interest, dividends and securities sales is, for example, non-qualified annuity income or net investment income from an estate or trust must answer YES, although that income does not change lines 2 or 5, the election, or the filing test.",
+      "irs_text": "f4952 p. 3, Who Must File exception: \"Your investment income from interest and ordinary dividends minus any qualified dividends is more than your investment interest expense\"; question: \"or any other investment income or expense beyond interest, dividends and securities sales?\"",
+      "why": "Annuity or trust income goes on line 4a, which is not one of the refused lines. The exception test counts only interest and ordinary dividends, so the tool computes the listed lines correctly, yet the catch-all clause forces a refusal."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer with mutual fund capital gain distributions or a capital loss carryover cannot tell whether these are \"securities sales\" or \"other investment income.\"",
+      "irs_text": "f4952 p. 3, line 4d: \"When figuring this amount, include capital gain distributions from mutual funds and capital loss carryovers.\"",
+      "why": "Capital gain distributions are not sales, so one filer may answer YES under the catch-all clause while another treats them as part of securities activity and answers NO."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer who paid investment advisory or other investment fees may answer YES to having a \"deductible investment expense other than interest,\" even though those fees are not allowed for 2025 and line 5 is correctly zero.",
+      "irs_text": "f4952 p. 4, line 5: \"Don't include any miscellaneous itemized deductions, which aren't allowed deductions in tax years beginning after December 31, 2017, and before January 1, 2026.\"",
+      "why": "The question says \"deductible\" without saying that miscellaneous itemized investment fees are excluded for 2025. Filers who think of such fees as investment expenses may answer YES and trigger a needless refusal."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "On a joint return, a spouse's royalty, annuity or other investment income may go unreported, because only the expense clause names the spouse.",
+      "irs_text": "Question: \"do you (or, on a joint return, your spouse) have any deductible investment expense ... or any other investment income or expense beyond interest, dividends and securities sales?\"",
+      "why": "The spouse is named only in the middle clause. A filer could read the first and last clauses as asking about the filer alone."
      }
     ],
-    "prompt_sha": "507960e41de2b1e57a286508388650e1375b68726e99cf115a5d3621dc087619",
+    "prompt_sha": "6fef633919ea00c587a2ad61a0920bb27596c0c2a606a849eef04072516b6945",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/f4952.unsupported.507960e41de2.1.response.txt"
+    "cost": 0.08482,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-23",
+    "response": ".transcription/screens/f4952.unsupported.6fef633919ea.1.response.txt"
    }
   ],
   "question": "Is any of the interest you count as investment interest paid or accrued in 2025 (line 1), or any of your 2024 carryforward, attributable to royalties, a trade or business, a passive activity, tax-exempt income, or an activity for which you aren't at risk (Form 6198); do you (or, on a joint return, your spouse) have any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?",
@@ -6161,42 +6173,36 @@
  },
  {
   "screen": "gate:div.any",
-  "subject_sha": "f7429cfb859471ff98b3584773ed8b8f9c48c420d06f99d85cb77173660cad57",
+  "subject_sha": "7e08471b5eb49acd7f868474c751e3ca5dbba457967657295c1e2298481cdc05",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A nominee recipient receives only a broker's substitute statement, not a literal Form 1099-DIV, reporting ordinary dividends belonging to another person; the filer owns no shares and answers No to the gate.",
-      "irs_text": "i1040sb p. 2, Line 5: 'This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements'; 'Nominees... report the total on line 5... Subtract this amount...'",
-      "why": "The IRS text gives line 5 an amount for a substitute statement, and the nominee has no share ownership, but the gate asks only for a Form 1099-DIV or shares, so the gated line is zeroed."
-     },
-     {
-      "kind": "SOURCE",
-      "situation": "A filer has ordinary dividends below $1,500 and no other Schedule B trigger, so Schedule B is not required, but the gate asks based on any shares or Form 1099-DIV.",
-      "irs_text": "i1040sb p. 1: 'Use Schedule B (Form 1040) if any of the following applies. • You had over $1,500 of taxable interest or ordinary dividends.'",
-      "why": "The cited text sets a $1,500 use threshold; the gate instead uses share ownership or receipt of a Form 1099-DIV, a different condition."
+      "situation": "A filer whose only ordinary dividends come through a partnership, S corporation, estate or trust (reported on a Schedule K-1) owns no shares directly and receives no Form 1099-DIV, so the filer can truthfully answer no, and Schedule B line 5 is set to zero.",
+      "irs_text": "i1040sb p. 2, Line 5: \"Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements.\"",
+      "why": "Line 5 takes all of the filer's ordinary dividends, including dividends passed through on a K-1. The gate asks only about owning shares or getting a Form 1099-DIV, and a partnership, LLC or trust interest is not reasonably read as owning shares."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "A filer receives the 2025 Form 1099-DIV in January 2026 and reads 'In 2025' as the year of receipt rather than the tax year of the form.",
-      "irs_text": "i1040sb p. 2: 'Report on line 5 all of your ordinary dividends'; f1099div p. 5: 'Box 12. Shows exempt-interest dividends... paid to you during the calendar year.'",
-      "why": "The gate's 'In 2025 ... get a Form 1099-DIV' can be read as receipt during 2025, while the IRS lines are for the 2025 tax year and forms are commonly received in 2026."
+      "situation": "A grantor-trust owner, or a beneficial owner whose shares are held in another person's or an entity's name, may read \"own shares\" as legal title and answer no, even though the dividends are theirs.",
+      "irs_text": "f1099div p. 5, Nominees: \"If this form includes amounts belonging to another person, you are considered a nominee recipient\"",
+      "why": "The gated questions explicitly include \"your share of amounts paid in someone else's name\". The gate question does not say whether shares held through a nominee or a trust count as owned, so a filer could read it either way."
      },
      {
       "kind": "WIDE",
-      "situation": "Filer owned shares of a stock outside a retirement account in 2025 but received no dividends, no Form 1099-DIV, and no Form 2439.",
-      "irs_text": "f1099div p. 5: 'Box 1a. Shows total ordinary dividends that are taxable'; 'Box 12. Shows exempt-interest dividends...'",
-      "why": "The gate is true by ownership, but every gated line is zero because no distribution or form exists; this is the intentional lean-to-yes overbreadth."
+      "situation": "A filer who owned shares outside a retirement account (for example in an HSA or 529, or a stock that paid nothing) and received no distributions answers yes, but every gated line is zero.",
+      "irs_text": "f1099div p. 5: \"Box 1a. Shows total ordinary dividends that are taxable\"",
+      "why": "Owning shares alone gives no gated line an amount. This only adds questions and is consistent with the gate's lean toward yes."
      }
     ],
-    "prompt_sha": "9f5c4b6a1e98fe1ee4edf107d793f883fad567a578ef6e2befdaeae06c329c72",
+    "prompt_sha": "a509dac9dc80a350c07c4145aa1028d5577df1f9788d7f77d3b88549cbaa47d6",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/gate_div.any.f7429cfb8594.1.response.txt"
+    "cost": 0.13308799999999998,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_div.any.7e08471b5eb4.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -6234,7 +6240,7 @@
      "Instructions for Recipient, boxes 1–16",
      "p. 5, Instructions for Recipient, \"Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year\"",
      "p. 5, Instructions for Recipient, \"Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)\"",
-     "p. 5, Instructions for Recipient, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain\", \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", \"Box 2e. Shows the portion of the amount in box 1a that is section 897 gain\", \"Box 2f. Shows the portion of the amount in box 2a that is section 897 gain\", \"Box 3. Shows a return of capital\", \"Boxes 9 and 10. Show cash and noncash liquidation distributions\", \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax\"",
+     "p. 5, Instructions for Recipient, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain\", \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", \"Box 3. Shows a return of capital\", \"Boxes 9 and 10. Show cash and noncash liquidation distributions\", \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax\"; boxes 2e and 2f are not asked: \"Note: Boxes 2e and 2f apply only to foreign persons and entities whose income maintains its character when passed through or distributed to its direct or indirect foreign owners or beneficiaries\"",
      "p. 5, Instructions for Recipient, boxes 1a, 2a, 3, 9, 10, 12 and 13, Box 1b, \"The amount shown may be dividends a corporation paid directly to you as a participant (or beneficiary of a participant) in an employee stock ownership plan (ESOP)\", Nominees, \"If this form includes amounts belonging to another person, you are considered a nominee recipient\", \"Box 1a. Shows total ordinary dividends that are taxable\", \"Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)\", \"Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable\", \"Boxes 9 and 10. Show cash and noncash liquidation distributions\", \"Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year\", \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12\""
     ],
     "cols_pages": [
@@ -6286,30 +6292,24 @@
  },
  {
   "screen": "gate:div.capital_gain_boxes",
-  "subject_sha": "7f3e5584e4e727b5db876a154fbba94d4e49cdda1d49630f5778549ebb4521d9",
+  "subject_sha": "13c465199fc285e13e202a316324f031ca5ab90e65fb46b30567580c3d7bba6b",
   "samples": [
    {
     "verdict": "COVERS",
     "findings": [
      {
       "kind": "WIDE",
-      "situation": "Box 2a is above zero and the only less-common box with an amount is 2e, 3, 9, 10 or 13. The gate opens, but none of boxes 2b, 2c, 2d or 2f has an amount.",
-      "irs_text": "f1099div p. 5: \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain...\"; \"Box 2c. Shows the portion of the amount in box 2a...\"; \"Box 2d. Shows the portion of the amount in box 2a...\"; \"Box 2f. Shows the portion of the amount in box 2a...\"",
-      "why": "Boxes 2e, 3, 9, 10 and 13 are not part of box 2a. An amount in them alone gives no gated line an amount, so the filer is asked four questions that come out zero."
-     },
-     {
-      "kind": "WIDE",
-      "situation": "The gate opens whenever any of the listed boxes has an amount on any of the filer's or spouse's Forms 1099-DIV. This includes a form that reports only box 2a, when another form reports one of the other boxes.",
-      "irs_text": "f1099div p. 5: \"if no amount is shown in boxes 2b, 2c, 2d, and 2f and your only capital gains and losses are capital gain distributions, you may be able to report the amounts shown in box 2a on your Form 1040\"",
-      "why": "The gate is true in some cases where boxes 2b, 2c, 2d and 2f are all empty. Every case that gives a gated line an amount is still caught, because each of those boxes is a portion of box 2a and is itself one of the listed trigger boxes."
+      "situation": "A filer has box 2a capital gain distributions and an amount only in box 3, 9, 10 or 13 (nothing in boxes 2b–2d), so the gate is true but every gated line is zero.",
+      "irs_text": "f1099div p. 5: \"Box 3. Shows a return of capital.\" ... \"Boxes 9 and 10. Show cash and noncash liquidation distributions.\" ... \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax.\"",
+      "why": "Boxes 3, 9, 10 and 13 do not feed boxes 2b–2d. The gate asks the three questions needlessly here, which costs only questions."
      }
     ],
-    "prompt_sha": "4f62be928f43c4198f45b99abf8158a0490d76ad40952028af1efe189de0c838",
+    "prompt_sha": "4ff72abeab1e11e917e8fd5f29f51caad21854e3c2d732ebe7cab422cc566281",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.068076,
+    "cost": 0.051912,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_div.capital_gain_boxes.7f3e5584e4e7.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_div.capital_gain_boxes.13c465199fc2.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -6317,14 +6317,12 @@
   "lines": [
    "div.box2b_if_capital_gain",
    "div.box2c_if_capital_gain",
-   "div.box2d_if_capital_gain",
-   "div.box2f_if_capital_gain"
+   "div.box2d_if_capital_gain"
   ],
   "inputs": [
    "div.box2b",
    "div.box2c",
-   "div.box2d",
-   "div.box2f"
+   "div.box2d"
   ],
   "used": [
    {
@@ -6343,10 +6341,9 @@
     "locators": [
      "Instructions for Recipient, boxes 1–16",
      "p. 5, Instructions for Recipient, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property\"",
-     "p. 5, Instructions for Recipient, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain\", \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", \"Box 2e. Shows the portion of the amount in box 1a that is section 897 gain\", \"Box 2f. Shows the portion of the amount in box 2a that is section 897 gain\", \"Box 3. Shows a return of capital\", \"Boxes 9 and 10. Show cash and noncash liquidation distributions\", \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax\"",
+     "p. 5, Instructions for Recipient, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain\", \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", \"Box 3. Shows a return of capital\", \"Boxes 9 and 10. Show cash and noncash liquidation distributions\", \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax\"",
      "p. 5, Instructions for Recipient, \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion\"",
-     "p. 5, Instructions for Recipient, \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles\"",
-     "p. 5, Instructions for Recipient, \"Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI\""
+     "p. 5, Instructions for Recipient, \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles\""
     ],
     "cols_pages": [
      5
@@ -6357,36 +6354,30 @@
  },
  {
   "screen": "gate:div.has_ordinary",
-  "subject_sha": "18df54104e7cae9b1e3d992ab4d40cf4f6ab10d3d66364c184597c827bb16ee1",
+  "subject_sha": "7541f4b3eb24faa76147074c370d09da3b72f707304577a00ddd6faf2b4fb55b",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer includes a child’s qualified dividends on Form 1040 line 3a through Form 8814, while neither the filer nor the spouse has ordinary dividends in Form 1099-DIV box 1a.",
-      "irs_text": "i1040gi p. 25: If you are including your child’s qualified dividends in the total on line 3a, check box 1 on line 3c.",
-      "why": "The IRS text gives line 3a an amount from the child’s dividends even though the computed gate, which looks only to the filer’s or spouse’s Form 1099-DIV box 1a, is false and would zero line 3a."
+      "situation": "A filer or spouse receives qualified dividends that no Form 1099-DIV reports (for example, from a payer that issued no form), so the box 1a total the gate sums is zero and line 3a is never asked.",
+      "irs_text": "i1040gi p. 25, Line 3a: \"Enter your total qualified dividends on line 3a... Generally, these dividends are shown in box 1b of Form(s) 1099-DIV.\"; p. 26: \"See Pub. 550 for the definition of qualified dividends if you received dividends not reported on Form 1099-DIV.\"",
+      "why": "Line 3a takes all qualified dividends, not only those on a 1099-DIV. The computed condition looks only at 1099-DIV box 1a, so it is false when the dividends were not reported on that form."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer has qualified dividends not reported on Form 1099-DIV and reports them on line 3a, so there is no Form 1099-DIV box 1a to make the gate true.",
-      "irs_text": "i1040gi p. 26: See Pub. 550 for the definition of qualified dividends if you received dividends not reported on Form 1099-DIV.",
-      "why": "Line 3a can receive an amount from qualified dividends outside Form 1099-DIV, while the gate is computed only from Form 1099-DIV box 1a and can be false."
-     },
-     {
-      "kind": "WIDE",
-      "situation": "A filer has ordinary dividends in box 1a above zero but no qualified dividends in box 1b and no section 199A dividends in box 5.",
-      "irs_text": "f1099div p. 5: Box 1a shows total ordinary dividends that are taxable; Box 1b shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates; Box 5 shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A.",
-      "why": "The gate holds because box 1a is positive, but both gated lines are portions of box 1a that can be zero when there are no qualified or section 199A dividends."
+      "situation": "A parent with no Form 1099-DIV of their own elects to include a child's qualified dividends on line 3a (Form 8814), so the gate's box 1a total is zero and line 3a is never asked.",
+      "irs_text": "i1040gi p. 25, Line 3a: \"If you are including your child's qualified dividends in the total on line 3a, check box 1 on line 3c. For more information, see the Instructions for Form 8814.\"",
+      "why": "The child's qualified dividends give line 3a an amount, but they are not on the filer's or spouse's Form 1099-DIV box 1a, so the computed condition is false."
      }
     ],
-    "prompt_sha": "b31639897dd41358eea01e1faa10f22c4f984fb09aac6d291c6d8f093829c8d1",
+    "prompt_sha": "219aa2f529dfde9cc5487afb1b28ba034bad0b908d2597dbbb94380dc49fbd4f",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/gate_div.has_ordinary.18df54104e7c.1.response.txt"
+    "cost": 0.09923599999999999,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_div.has_ordinary.7541f4b3eb24.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -6415,7 +6406,7 @@
     "how": "whole document",
     "locators": [
      "p. 5, Instructions for Recipient, \"Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\"",
-     "p. 5, Instructions for Recipient, boxes 1b, 2e and 5, \"Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates\", \"Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)\", \"Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\""
+     "p. 5, Instructions for Recipient, boxes 1b and 5, \"Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates\", \"Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\""
     ],
     "cols_pages": [
      5
@@ -6523,87 +6514,31 @@
   ]
  },
  {
-  "screen": "gate:div.ordinary_boxes",
-  "subject_sha": "915b7de240dcdf68a94c1c24f7d5fa2c30801602b7241a23b4cf4bf8226455a0",
+  "screen": "gate:div.other_boxes_if_dividends",
+  "subject_sha": "00837de24fedbffcb067f39fc1bee9c2d74b971de649a6f192101467b80e60b3",
   "samples": [
    {
-    "verdict": "COVERS",
+    "verdict": "UNCLEAR",
     "findings": [
      {
-      "kind": "WIDE",
-      "situation": "A U.S. filer has box 1a dividends and a Form 1099-DIV showing only box 2b, 2c, 2d, 3, 9, 10 or 13 (no box 2e), so the gate holds even though box 2e has no amount.",
-      "irs_text": "f1099div p. 5: \"Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI).\"",
-      "why": "The gate groups several less common boxes, so it holds whenever any of them has an amount. In that case the box 2e question is asked even though box 2e is zero."
+      "kind": "UNCLEAR",
+      "situation": "A filer whose share of a return of capital or liquidation distribution was reported on a Form 1099-DIV issued in someone else's name (for example a co-owner acting as nominee) could read 'any Form 1099-DIV' as only the forms they or their spouse received, and answer no.",
+      "irs_text": "f1099div p. 5: \"Nominees. If this form includes amounts belonging to another person, you are considered a nominee recipient.\" The IRS text describes no box 3, 9, 10 or 13 amount outside a Form 1099-DIV.",
+      "why": "Each gated question's help says to include 'your share of amounts paid in someone else's name, and any amount received without a form', but the gate asks only about 'an amount in box ... of any Form 1099-DIV'. A truthful filer could therefore answer no and lose amounts the gated questions are meant to collect."
      },
      {
       "kind": "WIDE",
-      "situation": "A U.S. person filing Form 1040 whose Form 1099-DIV shows box 2e gets the box 2e question, although the text limits box 2e to foreign persons.",
-      "irs_text": "f1099div p. 5: \"Note: Boxes 2e and 2f apply only to foreign persons and entities whose income maintains its character when passed through or distributed to its direct or indirect foreign owners or beneficiaries.\"",
-      "why": "The gate does not test foreign status, so it can hold where box 2e has no separate effect. This errs toward yes, which is intended."
+      "situation": "A filer whose only less common amounts are in box 2b, 2c or 2d meets the condition, but none of the gated lines (boxes 3, 9, 10, 13) has an amount.",
+      "irs_text": "f1099div p. 5: \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\"",
+      "why": "The condition also includes boxes that belong to no gated line. This only costs a few extra questions."
      }
     ],
-    "prompt_sha": "a9421f1b812ee20c93d98083371e71fbe413895cb9c2182be1a1a82514b86f0a",
+    "prompt_sha": "4b3b24d421b88c8e8c61dfcb907a1e1f540178039715a929dd23415df822dc53",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.05606,
+    "cost": 0.071116,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_div.ordinary_boxes.915b7de240dc.1.response.txt"
-   }
-  ],
-  "kind": "gate",
-  "condition": "div.ordinary_boxes",
-  "lines": [
-   "div.box2e_if_ordinary"
-  ],
-  "inputs": [
-   "div.box2e"
-  ],
-  "used": [
-   {
-    "doc": "f1099div",
-    "revision": "January 2024 (continuous-use form)",
-    "text_sha256": "833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3",
-    "pages": [
-     1,
-     2,
-     3,
-     4,
-     5,
-     6
-    ],
-    "how": "whole document",
-    "locators": [
-     "Instructions for Recipient, boxes 1–16",
-     "p. 5, Instructions for Recipient, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain\", \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", \"Box 2e. Shows the portion of the amount in box 1a that is section 897 gain\", \"Box 2f. Shows the portion of the amount in box 2a that is section 897 gain\", \"Box 3. Shows a return of capital\", \"Boxes 9 and 10. Show cash and noncash liquidation distributions\", \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax\"",
-     "p. 5, Instructions for Recipient, \"Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)\""
-    ],
-    "cols_pages": [
-     5
-    ],
-    "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
-   }
-  ]
- },
- {
-  "screen": "gate:div.other_boxes_if_dividends",
-  "subject_sha": "71e79cf8a784fa706cc57cb1c15efa92b753cf442b3eb50329784781d61b7451",
-  "samples": [
-   {
-    "verdict": "COVERS",
-    "findings": [
-     {
-      "kind": "WIDE",
-      "situation": "A filer whose only less-common amount is in box 2b, 2c, 2d, 2e or 2f is asked for boxes 3, 9, 10 and 13 even though all four are zero.",
-      "irs_text": "f1099div p. 5: \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain...\" / \"Box 2e. Shows the portion of the amount in box 1a that is section 897 gain...\"",
-      "why": "The computed condition also covers boxes 2b–2f, which give boxes 3, 9, 10 and 13 no amount. This costs only extra questions and drops no amount."
-     }
-    ],
-    "prompt_sha": "420555b7519387b4374d7c7ace6c102984ea1540b9ca4e837f414002676fb80a",
-    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.056027999999999994,
-    "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_div.other_boxes_if_dividends.71e79cf8a784.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_div.other_boxes_if_dividends.00837de24fed.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -6637,7 +6572,7 @@
     "locators": [
      "Instructions for Recipient, boxes 1–16",
      "p. 5, Instructions for Recipient, \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12\"",
-     "p. 5, Instructions for Recipient, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain\", \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", \"Box 2e. Shows the portion of the amount in box 1a that is section 897 gain\", \"Box 2f. Shows the portion of the amount in box 2a that is section 897 gain\", \"Box 3. Shows a return of capital\", \"Boxes 9 and 10. Show cash and noncash liquidation distributions\", \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax\"",
+     "p. 5, Instructions for Recipient, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", \"Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain\", \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", \"Box 3. Shows a return of capital\", \"Boxes 9 and 10. Show cash and noncash liquidation distributions\", \"Box 13. Shows exempt-interest dividends subject to the alternative minimum tax\"; boxes 2e and 2f are not asked: \"Note: Boxes 2e and 2f apply only to foreign persons and entities whose income maintains its character when passed through or distributed to its direct or indirect foreign owners or beneficiaries\"",
      "p. 5, Instructions for Recipient, \"Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable\"",
      "p. 5, Instructions for Recipient, \"Boxes 9 and 10. Show cash and noncash liquidation distributions\""
     ],
@@ -7538,36 +7473,42 @@
  },
  {
   "screen": "gate:f4952.has_interest",
-  "subject_sha": "571c341636a531581898007d2d97b8529a7ae75d08a4564e32a0e12e21ee63ae",
+  "subject_sha": "c1206f05f5bb84a49d3341dc75045bcdc2ace2d6ac999dbca67aaa0635aa6e87",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer has investment interest expense reported on a Schedule K-1 from a partnership or S corporation but did not personally pay interest on money borrowed to buy investments.",
-      "irs_text": "f4952 p. 3, Line 1: Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation.",
-      "why": "The IRS puts that pass-through amount on line 1, so the gated lines can have amounts, but the gate asks whether the filer or spouse paid interest; a truthful answer can be no, zeroing them."
+      "situation": "The filer, or the spouse, borrowed nothing personally, but a 2025 Schedule K-1 from a partnership or S corporation reports investment interest expense.",
+      "irs_text": "f4952 p. 3, Line 1: \"Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation.\"",
+      "why": "The entity paid the interest, not the filer. A filer could truthfully say they did not pay interest on money they borrowed to buy investments, answer no, and line 1 would be dropped."
      },
      {
       "kind": "NARROW",
-      "situation": "An accrual-method filer has investment interest expense accrued in 2025 but not paid in 2025.",
-      "irs_text": "f4952 p. 3, Line 1: Enter the investment interest expense paid or accrued during the tax year, regardless of when you incurred the indebtedness.",
-      "why": "The gated line includes accrued interest, but the gate question asks only whether the filer paid interest; a truthful no would drop the accrued amount."
+      "situation": "Investment interest was accrued in 2025 but not paid, such as interest an accrual-method taxpayer accrued, or accrued interest passed through on a K-1.",
+      "irs_text": "f4952 p. 3, Line 1: \"Enter the investment interest expense paid or accrued during the tax year\"",
+      "why": "The gate asks only whether the filer paid interest. A filer with interest that was accrued but not yet paid could truthfully answer no."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "The filer borrowed to buy a working interest in an oil or gas property without materially participating, or to buy property that produces royalties or annuities, and would not call it 'investments'.",
+      "irs_text": "f4952 p. 3, Property held for investment: \"A working interest in an oil or gas property that you held directly or through an entity that didn't limit your liability is property held for investment, but only if you didn't materially participate in the activity.\"",
+      "why": "Phrases like \"buy investments\" and \"a margin loan from a broker\" suggest securities. A filer may not see a working interest or royalty property as an investment, and the help does not say these count."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer paid investment interest but meets all the Who Must File exception conditions, so no Form 4952 is required.",
-      "irs_text": "f4952 p. 3, Who Must File: You don’t have to file Form 4952 if all of the following apply.",
-      "why": "The gate is true merely because interest was paid, but under the exception the Form 4952 lines need not be filed; this extra yes is harmless."
+      "situation": "The filer paid interest on borrowing for investments in an earlier year, deducted all of it then, and has no 2025 interest.",
+      "irs_text": "f4952 p. 1, line 2: \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+      "why": "The help excludes this case, but a filer who skips the help could answer yes. The only cost is a few extra questions."
      }
     ],
-    "prompt_sha": "df3f272e7ebb550dc92182a1075bd0797c40dc0e2be80b52f8915e4768e8c4c1",
+    "prompt_sha": "0fb8278d9b8b57f0dcd8d3ba3e6270604100582a813e96f638a83338f4b8e172",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/gate_f4952.has_interest.571c341636a5.1.response.txt"
+    "cost": 0.066104,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_f4952.has_interest.c1206f05f5bb.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -7595,7 +7536,7 @@
     ],
     "how": "whole document",
     "locators": [
-     "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+     "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\", and line 7, \"Subtract line 6 from line 3. If zero or less, enter -0-\"; p. 3, Who Must File, \"You don’t have any carryover of disallowed investment interest expense from 2024\"",
      "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"; p. 3, Who Must File, \"You don’t have any carryover of disallowed investment interest expense from 2024\"",
      "p. 3, Who Must File, \"you must file Form 4952 to claim a deduction for your investment interest expense\" and \"You don’t have any carryover of disallowed investment interest expense from 2024\"; p. 3, Line 1, \"Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment\" and \"Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation\"; p. 3, Allocation of Interest Expense, \"If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest\"; p. 3, Property held for investment, \"Property held for investment includes property that produces income, not derived in the ordinary course of a trade or business, from interest, dividends, annuities, or royalties\" and \"A working interest in an oil or gas property that you held directly or through an entity that didn't limit your liability is property held for investment\"; p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
      "p. 3, Who Must File, \"you must file Form 4952 to claim a deduction for your investment interest expense\"; p. 3, Line 1, \"Enter the investment interest expense paid or accrued during the tax year, regardless of when you incurred the indebtedness\"",
@@ -16530,36 +16471,42 @@
  },
  {
   "screen": "gate:qbi.prior_form",
-  "subject_sha": "a67ace58a98074144e332e6a412b83bc114b417abafa7d289d202b5f43c14a08",
+  "subject_sha": "514f1ff140f2f0f5262b4fc05ec2f95e88359775b26bb65f743a422c7a841130",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer has a post-2017 business loss that was fully suspended, for example a passive loss under section 469 or an at-risk loss under section 465. With no other QBI they filed no Form 8995 that year, and the loss is allowed in 2025.",
-      "irs_text": "i8995 p. 3: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion of the loss or deduction allowed under each provision is treated as a qualified net loss carryforward from a separate trade or business when calculating the current year's QBI deduction. See Line 3.\"; p. 4, Line 3: \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"",
-      "why": "Line 3 takes an amount from a suspended loss released this year even if no prior return included Form 8995 or 8995-A. This filer truthfully answers No, so line 3 is zeroed. The gated question also asks only for a prior line 16, which never contains such released suspended losses."
+      "situation": "A filer had a qualified business loss in 2018 or later but never filed Form 8995 or 8995-A for it (for example, no deduction was available that year), and the loss still carries forward.",
+      "irs_text": "i8995a p. 6, Schedule C: \"This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence\"; Line 6: \"This amount will offset QBI in subsequent tax years regardless of whether it is reported\"",
+      "why": "The IRS says the carryforward exists even when the loss was never reported on the form. This filer truthfully answers No to whether a prior return included Form 8995 or 8995-A, and the help text tells them to, so line 3 is set to zero."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer has a PTP loss from 2018 or later that was suspended under the passive loss rules, and no Form 8995 was filed that year. In 2025 the loss is allowed, for example on disposing of the interest.",
-      "irs_text": "i8995 p. 4: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion of the loss or deduction allowed for each PTP is treated as a qualified net loss carryforward from a separate PTP when calculating the current year's QBI deduction. See Line 7.\"; Line 7: \"Include here the qualified portion of PTP (loss) carryforward allowed in calculating taxable income in the current year, even if the loss was from a PTP that you no longer hold an interest in\"",
-      "why": "Line 7 gets an amount, and the tool should refuse because REIT/PTP carryforwards are out of scope. A filer with no prior Form 8995 or 8995-A answers No, so the refusal is never reached and line 7 is silently treated as zero."
+      "situation": "A filer has a 2018-or-later business loss that was suspended (for example under sections 465 or 469) and is allowed in calculating taxable income in 2025, and no prior return included Form 8995 or 8995-A.",
+      "irs_text": "i8995 p. 3: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward from a separate trade or business when calculating the current year's QBI deduction. See Line 3.\"",
+      "why": "Line 3 takes this amount whether or not any earlier Form 8995 was filed. The gate asks only about a prior form, so this filer answers No and the amount is dropped."
      },
      {
-      "kind": "WIDE",
-      "situation": "A prior return included Form 8995 or 8995-A, but its lines 16 and 17 were zero, and no suspended loss is allowed in 2025.",
-      "irs_text": "f8995 line 16: \"Total qualified business (loss) carryforward. Combine lines 2 and 3. If greater than zero, enter -0-\"",
-      "why": "The condition holds even though both gated lines are zero. This only costs the filer extra questions."
+      "kind": "NARROW",
+      "situation": "A filer has a 2018-or-later PTP loss that was suspended and is allowed in 2025, and no prior return included Form 8995 or 8995-A.",
+      "irs_text": "i8995 p. 4: \"the qualified portion of the loss or deduction allowed for each PTP is treated as a qualified net loss carryforward from a separate PTP when calculating the current year's QBI deduction. See Line 7.\"",
+      "why": "Line 7 has an amount, which should trigger the REIT/PTP refusal. The prior-form gate is No, so the REIT/PTP loss line is set to false and the refusal is never reached."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer whose prior Form 8995 showed no loss, but who has suspended losses that become allowed this year, reads the help text \"A loss on it carries forward\".",
+      "irs_text": "i8995 p. 4, Line 3: \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"",
+      "why": "The help text ties the carryforward only to a loss shown on a prior form. A filer could reasonably conclude that previously suspended losses allowed now are not covered and treat them as irrelevant to the question."
      }
     ],
-    "prompt_sha": "704c0d4da5d876d73a329e83487aa6427b18f9363af1affd7f54053724d39568",
+    "prompt_sha": "9257b23bac97451f342c366f1404cb11956b16fb0a0de5afc89ae72b5f33da83",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.07125999999999999,
+    "cost": 0.077536,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/screens/gate_qbi.prior_form.a67ace58a980.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_qbi.prior_form.514f1ff140f2.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -16599,7 +16546,7 @@
     "how": "cited pages",
     "locators": [
      "p. 4, Line 3, \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"; p. 5, Line 16, \"This is the amount to be carried forward to the next year\"",
-     "p. 4, Line 3, \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"; p. 5, Line 16, \"This is the amount to be carried forward to the next year\" (owner: the printed amount)",
+     "p. 4, Line 3, \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"; p. 5, Line 16, \"This is the amount to be carried forward to the next year\" (owner: the printed amount); , Line 6, \"The amount reported on this line must be reported in the next tax year on Schedule C (Form 8995-A), line 2, or Form 8995, line 3\"",
      "p. 4, Line 7, \"Include here the qualified portion of PTP (loss) carryforward allowed in calculating taxable income in the current year\""
     ],
     "cols_pages": [
@@ -16608,6 +16555,20 @@
      5
     ],
     "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
+   },
+   {
+    "doc": "i8995a",
+    "revision": "2025; printed date 2026-01-26",
+    "text_sha256": "83411868381d4f5edbb455d348b480a63d96586bcb4f821f67acc0e027d5401d",
+    "pages": [
+     6
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     6
+    ],
+    "cols_sha256": "1843d02e5f17b6a3f1ba9d1ab3304a5c0b6862916c5ff0e622e3ccb411a89af3"
    }
   ]
  },
@@ -19883,60 +19844,66 @@
  },
  {
   "screen": "gate:s1.has_sc",
-  "subject_sha": "1260022589b4171bf1e44c37aa2b0553c8df2f480bbf1a69b7f9e4adcd660b09",
+  "subject_sha": "8a6e6177a61cbe6b18d0b515aeffd07b8ef42167d9cc19606c28cd236277c834",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer with no Schedule C deducts part of the qualified passenger vehicle loan interest on Schedule E (rental) or Schedule F (farm). The gate is false, so column (ii) is zero and the same interest can be claimed again on Schedule 1-A.",
-      "irs_text": "i1040gi p. 110, Line 22: \"On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F).\"",
-      "why": "Column (ii) covers interest deducted on Schedules E and F as well as C. The gate and the line only count Schedule C, so interest deducted elsewhere is never subtracted."
+      "situation": "A filer is a partner or has a Schedule F farm, has no Schedule C, and puts money into a solo 401(k) or other qualified plan for 2025; the computed condition is false, so the plan question is never asked.",
+      "irs_text": "i1040gi p. 93, Line 16: \"If you were self-employed or a partner, you may be able to take this deduc-[tion]\"",
+      "why": "The cited text extends the line 16 deduction to partners and to self-employed people generally. The gate admits only filers with a Schedule C."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer with no Schedule C has a partnership or S corporation loss suspended in an earlier year (for example, under sections 469, 465, 704(d) or 1366(d)) that is allowed in 2025. A loss from a Schedule C business that closed before 2025 is the same case.",
-      "irs_text": "i8995 p. 3: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward\"; p. 4, Line 3: \"even if the loss was from a trade or business that is no longer in existence\"",
-      "why": "Suspended losses that become allowed can come from K-1s, Schedule E, Schedule F, PTPs (line 7) or a closed business, none of which needs a 2025 Schedule C. The gate silently drops the out-of-scope refusal."
+      "situation": "A filer has no Schedule C in 2025 but had a qualified business net loss in 2018–2024 that was never reported, and in 2025 has QBI from Schedule F, Schedule E or a K-1, or needs to carry the loss forward.",
+      "irs_text": "i8995a p. 6: \"This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence\"; i8995 p. 5, Line 16: \"This amount will offset QBI in later tax years regardless of whether the trade(s) or business(es) that generated the loss is still in existence.\"",
+      "why": "The carryforward survives the business and offsets QBI from any trade or business. Gating on a current Schedule C drops it when the loss came from a closed business or the 2025 QBI comes from elsewhere."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer with no Schedule C deducts intangible drilling costs or circulation costs in full for the regular tax through an oil and gas partnership K-1, a Schedule E working interest, or Schedule F mining or other activities.",
-      "irs_text": "i6251 p. 7, Line 2t: \"IDCs from oil, gas, and geothermal wells are a preference\"; Line 2o: \"Circulation costs ... deducted in full for the regular tax ... must be capitalized and amortized over 3 years for the AMT\"",
-      "why": "These AMT adjustments apply to the costs wherever they are deducted, including pass-through and Schedule E activities. The gate only opens with a Schedule C."
+      "situation": "A filer whose business closed before 2025, or whose business is a partnership, S corporation or farm, has an earlier-year suspended loss (passive, at-risk or section 179) allowed in 2025, and the return has no Schedule C.",
+      "irs_text": "i8995 p. 3: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward from a separate trade or business\"; i8995 p. 4, Line 3: \"even if the loss was from a trade or business that is no longer in existence\"",
+      "why": "Suspended losses are released, for example on disposition, from businesses that are not on a 2025 Schedule C. The gate never asks about them."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer with no Schedule C owes or is due look-back interest as a partner or S corporation shareholder in a long-term contract. Another case is an author or film owner reporting royalties on Schedule E from property depreciated under the income forecast method.",
-      "irs_text": "f1040s2 Schedule 2 (2025), line 17n: \"Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866\"",
-      "why": "Line 17n is not limited to Schedule C activities. Pass-through owners and Schedule E income-forecast property can produce it with no Schedule C."
+      "situation": "A filer deducts intangible drilling costs, mining costs or circulation costs through a partnership or S corporation K-1, or through a Schedule E interest, and has no Schedule C.",
+      "irs_text": "i6251 p. 7, Line 2t: \"IDCs from oil, gas, and geothermal wells are a preference\"; Line 2q: \"Mining exploration and development costs deducted in full for the regular tax ... must be capitalized and amortized over 10 years for the AMT\"",
+      "why": "The AMT adjustments apply to these costs however they are deducted, including pass-through shares. The gate limits the question to Schedule C filers."
      },
      {
       "kind": "NARROW",
-      "situation": "A farmer reporting on Schedule F, with no Schedule C, elects income averaging. So does a filer whose farming or fishing income comes through a K-1 or Form 4835.",
-      "irs_text": "i1040gi p. 36: \"If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J\"; i1040sj p. 1: \"your trade or business of farming or fishing\"",
-      "why": "Farming income is reported on Schedule F, not Schedule C, so the gate is false for the typical Schedule J filer. The gated question also asks only about fishing, so even a filer who passes the gate and farms truthfully answers no."
+      "situation": "A filer owes or claims look-back interest on Form 8697 as a partner or shareholder of a pass-through entity with a long-term contract, or on Form 8866 for income-forecast property held outside a Schedule C, and has no Schedule C.",
+      "irs_text": "f1040s2 line 17n: \"Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866\"",
+      "why": "Schedule 2 line 17n is not limited to Schedule C activity. Pass-through owners and non-Schedule C holders of forecast-method property can owe this interest."
      },
      {
       "kind": "NARROW",
-      "situation": "A self-employed farmer filing Schedule F, or a partner with self-employment income from a K-1, has no Schedule C and contributes to a qualified (non-SEP, non-SIMPLE) plan for 2025.",
-      "irs_text": "i1040gi p. 93, Line 16: \"If you were self-employed or a partner, you may be able to take this deduc-\"",
-      "why": "The line 16 deduction is open to any self-employed person or partner, not only Schedule C filers. The gate drops the out-of-scope refusal for them."
+      "situation": "A filer has fishing-business income as a partner in a fishing partnership (K-1) with no Schedule C and wants to elect Schedule J averaging.",
+      "irs_text": "i1040sj p. 1: \"all or part of your 2025 taxable income from your trade or business of farming or fishing\"; i1040gi p. 36: \"If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J\"",
+      "why": "Schedule J eligibility depends on income from a fishing trade or business, not on filing Schedule C. Fishing income from a pass-through misses the gate."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "A partner whose contribution goes to the partnership's qualified plan reads \"a retirement plan of your own business\".",
-      "irs_text": "i1040gi p. 93, Line 16: \"If you were self-employed or a partner, you may be able to take this deduc-\"",
-      "why": "A partner may reasonably think the partnership's plan is not a plan of \"your own business\" and answer no, though the line 16 deduction applies to partners."
+      "situation": "On a joint return where the spouse's Schedule C deducts the car loan interest, the filer is asked about interest deducted as an expense of \"your own business\" and may answer zero.",
+      "irs_text": "i1040gi p. 110, line 22 column (ii): \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C ...)\"",
+      "why": "Column (ii) covers any amount deducted on the return, including a spouse's Schedule C. The question's \"your own business\" does not clearly include the spouse's business."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "On a joint return where only the spouse runs a fishing business, the question \"Is your business fishing\" may be read as asking only about the filer's own business.",
+      "irs_text": "i1040sj p. 1: \"your 2025 taxable income from your trade or business of farming or fishing\"",
+      "why": "The election part of the question names the spouse, but the business part says only \"your business\". A filer could truthfully answer no when only the spouse fishes."
      }
     ],
-    "prompt_sha": "ba4bfdeb3c4c7ec3e936999bf4c2fc129ca2bd471bb793c1bdbf74cda64f4acd",
+    "prompt_sha": "c9bda57c7cd47d4b958465efa1ed639eabf3e3e3535b50b0ad9f7121f66685b4",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.19551999999999997,
+    "cost": 0.22,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/screens/gate_s1.has_sc.1260022589b4.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_s1.has_sc.8a6e6177a61c.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -19944,6 +19911,7 @@
   "lines": [
    "carloan.sc_interest",
    "qbi.suspended_if_business",
+   "qbi.unreported_loss_if_business",
    "s2.amt_business_if_sc",
    "s2.lookback_if_business",
    "scope.income_averaging_if_business",
@@ -19952,6 +19920,7 @@
   "inputs": [
    "carloan.col_ii_input",
    "qbi.suspended",
+   "qbi.unreported_loss",
    "s2.amt_business",
    "s2.lookback",
    "scope.income_averaging",
@@ -20002,7 +19971,8 @@
     "text_sha256": "96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2",
     "pages": [
      3,
-     4
+     4,
+     5
     ],
     "how": "cited pages",
     "locators": [
@@ -20010,7 +19980,8 @@
     ],
     "cols_pages": [
      3,
-     4
+     4,
+     5
     ],
     "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
    },
@@ -20023,10 +19994,27 @@
     ],
     "how": "whole document",
     "locators": [
-     "Form 8995 (2025), lines 1–17; "
+     "Form 8995 (2025), lines 1–17; ; , \"Such Code provisions include, but aren’t limited to, sections 163(j), 179, 461(l), 465, 469, 704(d), and 1366(d)\", \"In general, losses and deductions incurred prior to 2018 are not qualified losses or deductions\""
     ],
     "cols_pages": [],
     "cols_sha256": "8e2e78d7610e1d45e93c10c8b03f9026d46a1166678c6ed93f852569c382f346"
+   },
+   {
+    "doc": "i8995a",
+    "revision": "2025; printed date 2026-01-26",
+    "text_sha256": "83411868381d4f5edbb455d348b480a63d96586bcb4f821f67acc0e027d5401d",
+    "pages": [
+     6
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 6, Schedule C (Form 8995-A), \"This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence\"",
+     "p. 6, Schedule C (Form 8995-A), \"This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence\"; , Line 16, \"This amount will offset QBI in later tax years regardless of whether\"; , \"In general, losses and deductions incurred prior to 2018 are not qualified losses or deductions\""
+    ],
+    "cols_pages": [
+     6
+    ],
+    "cols_sha256": "1843d02e5f17b6a3f1ba9d1ab3304a5c0b6862916c5ff0e622e3ccb411a89af3"
    },
    {
     "doc": "i6251",
@@ -22414,30 +22402,24 @@
  },
  {
   "screen": "gate:sa.home_asked",
-  "subject_sha": "e098ff5ee3abd1c34bae9d57ac74cc1a8c221ae0285384230b9b3af670c13669",
+  "subject_sha": "1715e4f5782c1e87b791f7c7180e581791b2e3430ec4ec6cfa3524220e60a90c",
   "samples": [
    {
-    "verdict": "NARROW",
+    "verdict": "COVERS",
     "findings": [
      {
-      "kind": "NARROW",
-      "situation": "On a joint return, only the spouse paid 2025 home mortgage interest on a boat, camper, or mobile home that is a second home (reported on Form 1098 or not), and neither spouse owned any home or other real estate.",
-      "irs_text": "i1040sca p. 8: 'A home can be a house, condominium, cooperative, mobile home, boat, or similar property'; line 8b: 'If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b.'",
-      "why": "The computed gate's second helper asks only whether 'you' paid interest on a boat, camper, or mobile home and omits 'or your spouse'; a joint filer whose spouse alone paid can truthfully answer no, so the gate is false even though the spouse's interest belongs on line 8a or 8b."
-     },
-     {
       "kind": "WIDE",
-      "situation": "A filer owned a home in 2025 but did not sell a subsidized home, paid no real estate tax, and paid no mortgage interest.",
-      "irs_text": "i1040sca p. 6: 'Enter on line 5b the state and local taxes you paid on real estate you own...'; p. 8: 'Enter on line 8a mortgage interest and points reported to you on Form 1098...'",
-      "why": "The gate is true from ownership alone, but every gated line has no amount in this situation."
+      "situation": "A filer whose only real estate is a rental or other business property, with no home mortgage, makes the gate true, yet none of the gated lines gets an amount.",
+      "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business\"; p. 8, Line 8: \"A home mortgage is any loan that is secured by your main home or second home\"",
+      "why": "Owning any real estate makes the gate true, but taxes on business property are left off line 5b and interest on a rental is not home mortgage interest. This costs only extra questions."
      }
     ],
-    "prompt_sha": "c896c184e303548c8279f0726b7a9204409f88342762ca20ea7e93655494cf52",
+    "prompt_sha": "4176f0215e7597cc189e38161e8d074557533d23395223fb4ac4ee1408519105",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/gate_sa.home_asked.e098ff5ee3ab.1.response.txt"
+    "cost": 0.12258,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_sa.home_asked.1715e4f5782c.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -22474,7 +22456,8 @@
      "p. 6, Line 5b, \"Enter on line 5b the state and local taxes you paid on real estate you own\"; p. 8, Line 8, \"A home mortgage is any loan that is secured by your main home or second home\"",
      "p. 8, Interest You Paid, \"In general, if you paid interest in 2025 that applies to any period after 2025, you can deduct only amounts that apply for 2025\"; Line 8, Home Mortgage Interest, \"A home mortgage is any loan that is secured by your main home or second home\"; Line 8a, \"Enter on line 8a mortgage interest and points reported to you on Form 1098 unless one or more of the limits on home mortgage interest apply to you\", \"Refund of overpaid interest. If your Form 1098 shows any refund of overpaid interest, don't reduce your deduction by the refund\", \"More than one borrower\" and \"If the shared interest was reported on the Form 1098 you received, deduct only your share of the interest on line 8a\"",
      "p. 8, Line 8a, \"Enter on line 8a mortgage interest and points reported to you on Form 1098 unless one or more of the limits on home mortgage interest apply to you\"",
-     "p. 8, Line 8b, \"If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b\"; p. 9, Line 8c, \"Points Not Reported on Form 1098\""
+     "p. 8, Line 8b, \"If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b\"; p. 9, Line 8c, \"Points Not Reported on Form 1098\"",
+     "p. 8, Line 8b, \"If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b\"; p. 9, Line 8c, Refinancing, \"Generally, you must deduct points you paid to refinance a mortgage over the life of the loan\", \"If you paid off a mortgage early, deduct any remaining points in the year you paid off the mortgage\""
     ],
     "cols_pages": [
      3,
@@ -22533,36 +22516,36 @@
  },
  {
   "screen": "gate:sa.medical_asked",
-  "subject_sha": "5750936487bf0e25ee8df99923b196956fabb29fabb91e6a32ee5dea6f5dd4b8",
+  "subject_sha": "41ec635c0a76a1260dda0eb3fc605f9a0ebd75f9b87bf1e6216040993cc13347",
   "samples": [
    {
     "verdict": "UNCLEAR",
     "findings": [
      {
       "kind": "UNCLEAR",
-      "situation": "A filer's unreimbursed medical costs are more than 7.5% of adjusted gross income but not more than 7.5% of total or gross income (wages before adjustments such as IRA, HSA or self-employment deductions). Reading 'income' as gross or total income, the filer answers no.",
+      "situation": "A filer whose unreimbursed medical and dental costs exceed 7.5% of adjusted gross income but not 7.5% of gross or total income, and who paid no health insurance with after-tax money, could truthfully answer no to the first helper, so line 1 is never asked.",
       "irs_text": "i1040sca p. 1: \"You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b.\"",
-      "why": "The gate question says only 'more than 7.5% of your income' and never names adjusted gross income (Form 1040, line 11b). A filer could reasonably compare against a larger income figure, answer no, and lose a deductible amount on line 1."
+      "why": "The helper says \"7.5% of your income\" without saying adjusted gross income. A filer could compare costs to gross wages or total income, which is larger than AGI. That filer answers no even though Schedule A line 4 would be more than zero, and neither of the other two helpers catches the case."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "A filer pays medical bills for a dependent, a child claimed by the other parent, or a parent who would be a dependent except for $5,200+ of income, and counts only costs for themselves and their spouse.",
-      "irs_text": "i1040sca p. 2: \"You can include medical and dental bills you paid in 2025 for anyone who was one of the following ... All dependents you claim on your return. • Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents ... • Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return.\"",
-      "why": "'The medical and dental costs you (or, on a joint return, your spouse) paid yourselves' can be read as costs for yourselves rather than costs you paid for anyone. Under that reading, costs for these other people are left out of the 7.5% comparison and the filer may wrongly answer no."
+      "situation": "A filer may not count costs paid for dependents, for a child claimed by the other parent, or for a near-dependent, and may not count insurance premiums, when deciding whether \"the medical and dental costs you paid\" pass 7.5% of income.",
+      "irs_text": "i1040sca p. 2: \"You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them.\"",
+      "why": "The gate question does not say that costs for these other people and premiums count toward the 7.5% test. A filer who counts only their own care could truthfully answer no and lose the deduction. The second helper rescues only premiums paid with taxed money, not other people's medical bills."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer whose costs were paid with tax-free HSA or Archer MSA distributions counts them toward the 7.5% test, answers yes, and then has little or nothing to enter on line 1.",
-      "irs_text": "p969 p. 9: \"You can't deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA.\"",
-      "why": "The gate question subtracts only what insurance paid, not HSA or MSA payments, so it can hold when line 1 is zero. This costs only extra questions."
+      "situation": "A filer who paid any amount of health insurance with after-tax money is asked line 1 even when total costs are far below 7.5% of AGI, so the line 4 deduction is zero.",
+      "irs_text": "i1040sca p. 1: \"You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income\"",
+      "why": "The second helper does not depend on the amount, so it sends filers to line 1 even when line 1 cannot affect the deduction. This only costs extra questions."
      }
     ],
-    "prompt_sha": "27dd2a4c9642ed2e1fd33f5c05e8fbef978ff903073e8878c93c032828ddb173",
+    "prompt_sha": "396372bfa0eff87524196ea443390b55e877cb138505969e56d4438b528fadaa",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.097444,
+    "cost": 0.101468,
     "model": "claude-opus-5-5",
     "date": "2026-11-23",
-    "response": ".transcription/screens/gate_sa.medical_asked.5750936487bf.1.response.txt"
+    "response": ".transcription/screens/gate_sa.medical_asked.41ec635c0a76.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -24882,24 +24865,24 @@
  },
  {
   "screen": "gate:scope.pay_no_w2",
-  "subject_sha": "d574f636788633746f405ca435a58b62ccc06be6ea622abe20ef81ea948a0957",
+  "subject_sha": "833f56eff4418afebdea08c15e7d51d2cdba1037336b86b561dea8ad07b92ba3",
   "samples": [
    {
     "verdict": "COVERS",
     "findings": [
      {
       "kind": "WIDE",
-      "situation": "A home care provider whose only pay outside a W-2 is Medicaid waiver payments reported on Form 1099-MISC or 1099-NEC may answer yes because of the help's 'pay for work in someone's home', yet none of the gated lines takes that amount.",
-      "irs_text": "i1040gi p. 24, Line 1d: \"If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC.\"",
-      "why": "Those payments go on line 1d (and Schedule 1, line 8s), not on any gated line, so a yes here only adds questions. It does not drop any amount."
+      "situation": "A filer whose only pay not on a W-2 is a bona fide gift of strike or lockout benefits answers yes to the gate, but no gated line gets an amount.",
+      "irs_text": "i1040gi p. 24, Line 1h: \"Strike or lockout benefits (other than bona fide gifts)\"",
+      "why": "The gate's wording says \"strike or lockout benefits\" without the bona fide gift exclusion, so it holds where line 1h has no amount. This costs only extra questions, since the gated strike question carries the exclusion."
      }
     ],
-    "prompt_sha": "5a7c2814361f447dd5c41322c14735ac543b0e2a2b5b3b51216b958021adf6be",
+    "prompt_sha": "f7db33bb14525b29e28f8d24b07a65dff28d9f1f592e4e64e49cdbc197aec310",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.1182,
+    "cost": 0.108108,
     "model": "claude-opus-5-5",
     "date": "2026-11-23",
-    "response": ".transcription/screens/gate_scope.pay_no_w2.d574f6367886.1.response.txt"
+    "response": ".transcription/screens/gate_scope.pay_no_w2.833f56eff441.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -24956,14 +24939,13 @@
     "revision": "2025; printed date 2026-02-25",
     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
     "pages": [
-     4,
      24,
      25
     ],
     "how": "cited pages",
     "locators": [
      "p. 24, Line 1b, \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\"",
-     "p. 24, Line 1b, \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\"; , Do You Have a Household Employee?, \"The worker is your employee if you can control not only what work is done, but how it is done\"; p. 4, \"A self-employed worker usually provides their own tools and offers services to the general public in an independent business\"",
+     "p. 24, Line 1b, \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\"; , Do You Have a Household Employee?, \"The worker is your employee if you can control not only what work is done, but how it is done\"; , \"A self-employed worker usually provides their own tools and offers services to the general public in an independent business\"",
      "p. 24, Line 1c, \"This should include any tip income you didn’t report to your employer\", \"Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value\"",
      "p. 24, Line 1h, \"Strike or lockout benefits (other than bona fide gifts)\"",
      "p. 25, Missing or Incorrect Form W-2?, \"Even if you don’t get a Form W-2, you must still report your earnings\""
@@ -24979,12 +24961,14 @@
     "revision": "2025 edition; printed date 2024-12-17 (irs-prior archive copy; current irs-pdf copy is the 2026 edition)",
     "text_sha256": "feb8dce86630686bcf821749f31ac20478d02682f2e9d0313fede6d3ead73520",
     "pages": [
-     3
+     3,
+     4
     ],
     "how": "pages named by another document's citation",
     "locators": [],
     "cols_pages": [
-     3
+     3,
+     4
     ],
     "cols_sha256": "1ab465762c12ebd7f961f59c4944de2bd2ee989508710ebbdc9f898428fc52a1"
    }
@@ -25946,59 +25930,49 @@
  },
  {
   "screen": "gate:sd.sold_other",
-  "subject_sha": "569d74896aa5a18d4959700ec4c7786ab219c78e00029dde81c476a58e5abf6f",
+  "subject_sha": "d6e501a3c2f95989579892856f86b74ef01ef7466ac0c811d0a09c287f447b42",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer has an ordinary loss from the sale or worthlessness of small business (section 1244) or SBIC (section 1242) stock and sold no real estate or business property, so they truthfully answer no.",
-      "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. ... 4. Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1242) stock. 5. Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.\"",
-      "why": "Stock is neither real estate nor business property as the help defines them, and worthlessness is not a sale. A no zeroes the Form 4797 line even though Form 4797 is required."
+      "situation": "Business or rental real property, or investment land held more than 1 year, is taken by condemnation or under threat of condemnation in 2025, and the filer does not think of this as having 'sold or traded' it.",
+      "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. ... 2. The involuntary conversion (other than from casualty or theft) of property used in a trade or business and capital assets held more than 1 year for business or profit.\"",
+      "why": "The gate and its help ask only whether the filer sold or traded property, and never mention a condemnation or other involuntary conversion. A filer could truthfully answer no, so the Form 4797 line (sd.business_property_if_sold) is never reached."
      },
      {
       "kind": "NARROW",
-      "situation": "A trader in securities who made a mark-to-market election has ordinary gains or losses on securities and sold no real estate or equipment, so they answer no.",
-      "irs_text": "i1040sd p. 1: \"6. Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.\"",
-      "why": "Securities are not what a filer understands as \"business property\" under the help's examples (equipment, a vehicle or a building). The Form 4797 requirement is dropped."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "A filer's business property or long-held investment property was condemned (an involuntary conversion), and the filer answers no because they did not \"sell or trade\" it.",
-      "irs_text": "i1040sd p. 1: \"2. The involuntary conversion (other than from casualty or theft) of property used in a trade or business and capital assets held more than 1 year for business or profit.\"",
-      "why": "The gate asks only about selling or trading, not about condemnations or other involuntary conversions. Investment property other than real estate is also outside \"real estate or business property.\""
-     },
-     {
-      "kind": "NARROW",
-      "situation": "A filer sells a noncapital asset that is not inventory and not equipment, such as a self-created copyright, patent or literary work, and answers no because it is not real estate or business property.",
-      "irs_text": "i1040sd p. 1: \"3. The disposition of noncapital assets other than inventory or property held primarily for sale to customers in the ordinary course of your trade or business.\"",
-      "why": "The help limits business property to things \"used in a business or rented out,\" which a filer would not read to include their own creative works. Form 4797 is missed."
+      "situation": "A filer abandons, scraps or otherwise disposes of business equipment or another noncapital business asset without selling or trading it.",
+      "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. ... 3. The disposition of noncapital assets other than inventory or property held primarily for sale to customers in the ordinary course of your trade or business.\"",
+      "why": "The gate covers only a 'sell or trade', so a disposition that is not a sale or trade is not captured. The filer would answer no, and the Form 4797 question is skipped."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "A filer whose rental or business property was taken by eminent domain, or who received insurance or award proceeds for it, may or may not treat that as having \"sold\" the property.",
-      "irs_text": "i1040sd p. 1: \"The involuntary conversion (other than from casualty or theft) of property used in a trade or business\"",
-      "why": "\"Sell or trade\" does not clearly include forced dispositions, and the help does not mention them."
+      "situation": "A filer has a royalty interest in oil or gas, or uses a vehicle partly for business, and is unsure whether a sale of it counts as 'real estate or business property'.",
+      "irs_text": "i1040sd p. 1: \"c. Oil, gas, geothermal, or other mineral property\"; \"b. Depreciable and amortizable tangible property used in your trade or business\"",
+      "why": "The help text does say that mineral interests and business vehicles count. But the question itself uses only the words 'real estate or business property', so a filer who skips the help could read a royalty or a mixed-use vehicle as outside it."
      }
     ],
-    "prompt_sha": "5e4c0eda59c8368a34ac9616957d7eae6ce757b3b9b0773b41bc74e8da3386ee",
+    "prompt_sha": "4b3fa681b8b5f40f56251c2460864d49703559c91e198a2e1ad9f7477b4c046b",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.069276,
+    "cost": 0.084808,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/screens/gate_sd.sold_other.569d74896aa5.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_sd.sold_other.d6e501a3c2f9.1.response.txt"
    }
   ],
   "kind": "gate",
   "condition": "sd.sold_other",
   "lines": [
    "sd.business_property_if_sold",
+   "sd.home_sale_if_sold",
    "sd.installment_if_sold",
    "sd.like_kind_if_sold"
   ],
   "inputs": [
    "sd.business_property",
+   "sd.home_sale",
    "sd.installment",
    "sd.like_kind"
   ],
@@ -26009,6 +25983,7 @@
     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
     "pages": [
      1,
+     2,
      6
     ],
     "how": "cited pages",
@@ -26016,10 +25991,12 @@
      "p. 1, Other Forms You May Have To File, \"Use Form 4797 to report the following.\" and \"Real property used in your trade or business\"",
      "p. 1, Other Forms You May Have To File, \"Use Form 8824 to report like-kind exchanges.\"",
      "p. 1, Other Forms You May Have To File; p. 1, \"To report a gain from Form 2439 or 6252 or Part I of Form 4797\" and \"To report a gain or loss from Form 4684, 6781, or 8824\"",
+     "p. 2, Sale of Your Home, \"Report the sale or exchange of your main home on Form 8949 if: • You can’t exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange.\"",
      "p. 6, Installment Sales, \"Use Form 6252 to report the sale on the installment method. Also, use Form 6252 to report any payment received in 2025 from a sale made in an earlier year that you reported on the installment method.\" and \"To elect out of the installment method, report the full amount of the gain on Form 8949\""
     ],
     "cols_pages": [
      1,
+     2,
      6
     ],
     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
@@ -26028,30 +26005,30 @@
  },
  {
   "screen": "gate:sli.any_if_not_mfs",
-  "subject_sha": "ba7154702967f4c984983a5ba6d1f159f1ef7c48eee9ad7b9490d932d24ae231",
+  "subject_sha": "b1f3af756466008d74b631bdcd30b49d4bb0c28bc8ffe994ea54340a0ba9b879",
   "samples": [
    {
-    "verdict": "COVERS",
+    "verdict": "UNCLEAR",
     "findings": [
      {
-      "kind": "WIDE",
-      "situation": "A filer who is not married filing separately paid student loan interest but is claimed as a dependent on someone else's return, or whose modified AGI is at or above the limit. The gate holds, yet no deduction is allowed.",
-      "irs_text": "i1040gi p. 98, Line 21: 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return' and 'Your modified adjusted gross income (AGI) is less than $100,000 if single, head of household, or qualifying surviving spouse; $200,000 if married filing jointly'",
-      "why": "The gate tests only interest paid and filing status. It does not test dependency or the income limit, so these filers reach questions whose lines end up giving no deduction. That costs only extra questions."
+      "kind": "UNCLEAR",
+      "situation": "A filer who owes the student loan sees that all of the year's interest was paid for them, for example by a parent as a gift or by an employer that added the payment to W-2 box 1, so they may answer no to 'You ... paid interest on a student loan in 2025'.",
+      "irs_text": "p970 p. 33, Interest paid by others: 'If you are the person legally obligated to make interest payments and someone else makes a payment of interest on your behalf, you are treated as receiving the payments from the other person and, in turn, paying the interest.' (Example 2: 'As a gift, your mother made this payment... you can deduct this payment of interest')",
+      "why": "The tax law treats these payments as paid by the filer, but the gate question says only 'paid interest' and gives no help on payments made by others. A reasonable filer could answer no, and sli.interest would then be zero, dropping a deduction the IRS text allows."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer who is not married filing separately paid interest only on loans that are not qualified student loans, such as a loan from a relative.",
-      "irs_text": "i1040gi p. 98, Line 21: 'You paid interest in 2025 on a qualified student loan (defined later)'; p. 99: 'a loan isn't a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person...'",
-      "why": "The gate asks about interest on 'a student loan' rather than a 'qualified' one, so it is broader than the cited condition. The cited condition is therefore still fully covered, and the unqualified-loan question screens these filers afterwards."
+      "situation": "A filer who is not married filing separately paid student loan interest but is claimed as a dependent by someone else, or has modified AGI at or above the phase-out limit.",
+      "irs_text": "i1040gi p. 98, Line 21: 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return' and 'Your modified adjusted gross income (AGI) is less than $100,000 if single...'",
+      "why": "The gate is true here even though no deduction results. That costs only extra questions."
      }
     ],
-    "prompt_sha": "5f36f56903203dcd977fe2ca28e461def7a1b3a471a5cac940bbc54d31da1431",
+    "prompt_sha": "01e306f8359276fecd4c8198ea71f47fe0df9075dfb712e3e9cd4bd5c8e53c33",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.060323999999999996,
+    "cost": 0.06894800000000001,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/screens/gate_sli.any_if_not_mfs.ba7154702967.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_sli.any_if_not_mfs.b1f3af756466.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -26078,10 +26055,10 @@
     "how": "cited pages",
     "locators": [
      "p. 98, Schedule 1, line 21, \"Your filing status is any status except married filing separately\"",
-     "p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; , Student loan repayment assistance, \"You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs\" and \"The National Health Service Corps (NHSC) Loan Repayment Program\"",
+     "p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; , Student loan repayment assistance, \"You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs\" and \"The National Health Service Corps (NHSC) Loan Repayment Program\"; , No Double Benefit Allowed, \"For payments made after March 27, 2020, do not deduct as interest on a student loan any interest paid by your employer under an educational assistance program\"",
      "p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan'",
-     "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses",
-     "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses, 'The expenses must be for education in a degree, certificate, or similar program at an eligible educational institution. An eligible educational institution includes most colleges, universities, and certain vocational schools.'"
+     "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses, 'The expenses must be for education in a degree, certificate, or similar program at an eligible educational institution. An eligible educational institution includes most colleges, universities, and certain vocational schools.'; , Don’t Include as Interest, \"Interest you paid on a loan if, under the terms of the loan, you aren’t legally obligated to make interest payments\"",
+     "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses; , Don’t Include as Interest, \"Interest you paid on a loan if, under the terms of the loan, you aren’t legally obligated to make interest payments\""
     ],
     "cols_pages": [
      98
@@ -26101,35 +26078,43 @@
      5
     ],
     "cols_sha256": "21875d96efa2d4d7885584db3cf06d5830154aeff1eaf3370efad4fab5cc3a17"
+   },
+   {
+    "doc": "p970",
+    "revision": "2025",
+    "text_sha256": "a5c80030374da420bbaf3118a8a42fe79092e8529663d02ef601b6ae06657e00",
+    "pages": [
+     33
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     33
+    ],
+    "cols_sha256": "f6622ed07641c7d4e2a217fb9d9b1fecb7ab16f08dbc758f1a0963e1fe677e0a"
    }
   ]
  },
  {
   "screen": "gate:sli.assisted_any_if_any",
-  "subject_sha": "ee708701e39e97b6beb375ce271be4fa1265fac723d2964e0777e16eefa71bd1",
+  "subject_sha": "83dd043593a6ff0115b7f0cbae7f1a99ddec5819aaf37aa2881fab10d9961166",
   "samples": [
    {
     "verdict": "COVERS",
     "findings": [
      {
       "kind": "WIDE",
-      "situation": "A filer whose employer made tax-free student loan payments, or who received other repayment help outside the listed health-service programs, may truthfully answer yes to 'tax-free student loan repayment assistance', but the cited text bars the deduction only for the listed programs.",
-      "irs_text": "p4681 p. 5: 'Student loan repayments made to you are tax free if you received them for any of the following. • The National Health Service Corps (NHSC) Loan Repayment Program. • A state education loan repayment program ... • Any other state loan repayment or loan forgiveness program that is intended to provide for the increased availability of health services...'",
-      "why": "The gate's wording is broader than the three programs named in the cited text. A yes here only costs an extra question."
-     },
-     {
-      "kind": "WIDE",
-      "situation": "A filer who is claimed as a dependent, or whose modified AGI is at or above the limit, still sees the gated question even though no deduction is allowed.",
-      "irs_text": "i1040gi p. 98: 'You can take this deduction only if all of the following apply. ... Your modified adjusted gross income (AGI) is less than $100,000 ... You, or your spouse if filing jointly, aren't claimed as a dependent'",
-      "why": "The gate excludes only married filing separately, not the other eligibility conditions. That leads to extra questions, never a dropped amount."
+      "situation": "A filer who paid interest on a student loan that is not a qualified student loan, part of it paid by an employer program, is still asked how much was paid that way, though the IRS text allows no deduction on that loan.",
+      "irs_text": "i1040gi p. 98: 'You can take this deduction only if all of the following apply. • You paid interest in 2025 on a qualified student loan (defined later).'",
+      "why": "The gate asks about any student loan, not only a qualified one, so it can hold where the gated amount does not matter. Gates lean to yes, so this does not change the verdict."
      }
     ],
-    "prompt_sha": "f5f0576445e734f887143a940c0ae95b911e760ac809cf9eb01aad3481873d52",
+    "prompt_sha": "f3ba1a7166f0934a43885ac913822ca1e5b13c76f862cf8784fa28fe61ce967b",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.051404,
+    "cost": 0.049084,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_sli.assisted_any_if_any.ee708701e39e.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_sli.assisted_any_if_any.83dd043593a6.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -26150,7 +26135,7 @@
     ],
     "how": "cited pages",
     "locators": [
-     "p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; , Student loan repayment assistance, \"You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs\" and \"The National Health Service Corps (NHSC) Loan Repayment Program\""
+     "p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; , Student loan repayment assistance, \"You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs\" and \"The National Health Service Corps (NHSC) Loan Repayment Program\"; , No Double Benefit Allowed, \"For payments made after March 27, 2020, do not deduct as interest on a student loan any interest paid by your employer under an educational assistance program\""
     ],
     "cols_pages": [
      98
@@ -26170,29 +26155,36 @@
      5
     ],
     "cols_sha256": "21875d96efa2d4d7885584db3cf06d5830154aeff1eaf3370efad4fab5cc3a17"
+   },
+   {
+    "doc": "p970",
+    "revision": "2025",
+    "text_sha256": "a5c80030374da420bbaf3118a8a42fe79092e8529663d02ef601b6ae06657e00",
+    "pages": [
+     33
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     33
+    ],
+    "cols_sha256": "f6622ed07641c7d4e2a217fb9d9b1fecb7ab16f08dbc758f1a0963e1fe677e0a"
    }
   ]
  },
  {
   "screen": "gate:sli.unqualified_any_if_any",
-  "subject_sha": "b2df206acba61f515e40cc6baf524bb1a81d69ac9a71a7c0213edc248793faa4",
+  "subject_sha": "45e091ca663576c421a146100b716f9d0dddc19642fce3680078229669b6fa1f",
   "samples": [
    {
     "verdict": "COVERS",
-    "findings": [
-     {
-      "kind": "WIDE",
-      "situation": "A filer who is not married filing separately, paid student loan interest, and had some on a non-qualified loan is still asked, even if modified AGI is over the limit or they are claimed as a dependent, so no deduction is possible.",
-      "irs_text": "i1040gi p. 98: 'Your modified adjusted gross income (AGI) is less than $100,000 if single, head of household, or qualifying surviving spouse; $200,000 if married filing jointly' and 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.'",
-      "why": "In these cases the deduction is zero, so the non-qualified interest amount does not matter. The gate still asks for it, which costs only a question."
-     }
-    ],
-    "prompt_sha": "6ed2f33b2110ba36586d8729c220d9882029e1d2530af531bee438aaadcd8ae5",
+    "findings": [],
+    "prompt_sha": "c4fe36ea76e88f5e73ba7d158321e2ab2a0e2c91112cbfb6aa80eab713459625",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.041732000000000005,
+    "cost": 0.045388000000000005,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_sli.unqualified_any_if_any.b2df206acba6.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/screens/gate_sli.unqualified_any_if_any.45e091ca6635.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -26214,28 +26206,49 @@
     ],
     "how": "cited pages",
     "locators": [
-     "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses"
+     "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses; , Don’t Include as Interest, \"Interest you paid on a loan if, under the terms of the loan, you aren’t legally obligated to make interest payments\""
     ],
     "cols_pages": [
      98
     ],
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "p970",
+    "revision": "2025",
+    "text_sha256": "a5c80030374da420bbaf3118a8a42fe79092e8529663d02ef601b6ae06657e00",
+    "pages": [
+     33
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     33
+    ],
+    "cols_sha256": "f6622ed07641c7d4e2a217fb9d9b1fecb7ab16f08dbc758f1a0963e1fe677e0a"
    }
   ]
  },
  {
   "screen": "gate:ssb.any",
-  "subject_sha": "463d3a24bfca43cc2b3de8c6bd946997fcf97db79885a6b39c946e74a1d2e966",
+  "subject_sha": "57e274368651998fb4d9ab0c507f63dfd893e08327c386d199d83161aed44654",
   "samples": [
    {
     "verdict": "COVERS",
-    "findings": [],
-    "prompt_sha": "26b39befe8e979094acec9e30ec136da7754b6d3bd3e0b42f7131b2ddc405689",
+    "findings": [
+     {
+      "kind": "WIDE",
+      "situation": "A filer who is not a U.S. resident gets Canadian or German pension benefits, and the help tells them to answer yes, but the treaty treatment covers only benefits paid to U.S. residents.",
+      "irs_text": "p915 p. 6: \"social security benefits paid by those countries to U.S. residents are treated for U.S. income tax purposes as if they were paid under the social security legislation of the United States.\"",
+      "why": "The help counts Canadian and German benefits without the U.S.-residence condition, so some filers will answer yes when the line has no amount. This only adds questions and drops no amount."
+     }
+    ],
+    "prompt_sha": "7d8c91f37f6248025bbf43ddf541792b3a00b9abf06ff717253362f68616de95",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.049364,
+    "cost": 0.055772,
     "model": "claude-opus-5-5",
     "date": "2026-11-23",
-    "response": ".transcription/screens/gate_ssb.any.463d3a24bfca.1.response.txt"
+    "response": ".transcription/screens/gate_ssb.any.57e274368651.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -35287,6 +35300,108 @@
     "model": "claude-opus-5-5",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
     "response": ".transcription/screens/person.x_other.response.txt"
+   }
+  ]
+ },
+ {
+  "screen": "qbi.unreported_loss",
+  "subject_sha": "570e0b58104f2d610e703909ef5ccf7abd74bfe83352d71ca62f31c98972b2db",
+  "samples": [
+   {
+    "verdict": "NARROW",
+    "findings": [
+     {
+      "kind": "NARROW",
+      "situation": "In 2018 to 2024 a return had a Form 8995 or 8995-A (for example, only for REIT dividends, or listing only some businesses), but a business's qualified loss was left off it, so the loss went unreported; the filer truthfully answers NO because that year's return had a Form 8995.",
+      "irs_text": "i8995a (2025) p. 6: \"This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence.\"",
+      "why": "The question counts only years with no Form 8995 or 8995-A at all. A loss that went unreported on a return that did carry the form still carries forward to Form 8995 line 3, and the tool treats it as zero."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "Losses from 2018 to 2024 that were suspended under sections 465, 469, 704(d), 1366(d) and similar rules are allowed in computing 2025 taxable income; the filer answers NO because the businesses did not lose money overall in those years, or because those years had a Form 8995.",
+      "irs_text": "i8995 (2025) p. 3: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion of the loss or deduction allowed under each provision is treated as a qualified net loss carryforward from a separate trade or business when calculating the current year's QBI deduction. See Line 3.\"",
+      "why": "These released losses go on line 3 as a carryforward in 2025. The question asks only whether the businesses lost money overall in an earlier year with no Form 8995, so it does not reach them."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "The filer or spouse had a qualified PTP loss in 2018 to 2024 that carries forward against 2025 qualified REIT dividends, and answers NO because a publicly traded partnership interest is not 'your businesses'.",
+      "irs_text": "i8995 (2025) p. 5, Line 17: \"This amount will offset qualified REIT dividends and qualified PTP income in later tax years regardless of whether the qualified PTP(s) that generated the loss is still in existence.\"; p. 4, Line 7: \"Include here the qualified portion of PTP (loss) carryforward ... even if the loss was from a PTP that you no longer hold an interest in\"",
+      "why": "The computed line is built from section 199A dividends, which a PTP loss carryforward on line 7 reduces. The question's wording about the filer's businesses losing money would not lead a PTP investor to answer YES."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "An unreported 2018 to 2024 business loss was fully absorbed by qualified business income in a later year before 2025, so no carryforward remains for 2025 line 3, yet the filer must answer YES.",
+      "irs_text": "Question: \"In any year from 2018 to 2024 whose tax return had no Form 8995 or 8995-A, did your ... businesses lose money overall?\"; f8995 (2025) line 16: \"Total qualified business (loss) carryforward. Combine lines 2 and 3. If greater than zero, enter -0-\"",
+      "why": "The carryforward is netted against later QBI and ends once that income uses it up. In this case the 2025 carryforward is zero, which is what the tool computes, but the question still forces a refusal."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "A loss came from a partnership or S corporation K-1, or the filer or spouse filed no return for a year; the filer cannot tell whether that counts as 'your businesses' or as a year 'whose tax return had no Form 8995'.",
+      "irs_text": "i8995a (2025) p. 6: \"This amount will offset QBI in subsequent tax years regardless of whether it is reported and whether the trade or business that generated the loss is still in existence.\"",
+      "why": "The help text describes only sole-proprietor profit adjustments, which suggests that only Schedule C businesses count. It also does not say whether a year with no return filed counts as a year whose return had no Form 8995."
+     }
+    ],
+    "prompt_sha": "1df9cd36606a0b923188a1ed5622c80435b2264dfa7ca6ed59bb5717d615fb3f",
+    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
+    "cost": 0.11177999999999999,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-23",
+    "response": ".transcription/screens/qbi.unreported_loss.570e0b58104f.1.response.txt"
+   }
+  ],
+  "question": "In any year from 2018 to 2024 whose tax return had no Form 8995 or 8995-A, did your (or, on a joint return, your spouse's) businesses lose money overall?",
+  "lines": [
+   "qbi.eligible"
+  ],
+  "used": [
+   {
+    "doc": "i8995a",
+    "revision": "2025; printed date 2026-01-26",
+    "text_sha256": "83411868381d4f5edbb455d348b480a63d96586bcb4f821f67acc0e027d5401d",
+    "pages": [
+     6
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 6, Schedule C (Form 8995-A), \"This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence\"",
+     "p. 6, Schedule C (Form 8995-A), \"This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence\"; , Line 16, \"This amount will offset QBI in later tax years regardless of whether\"; , \"In general, losses and deductions incurred prior to 2018 are not qualified losses or deductions\""
+    ],
+    "cols_pages": [
+     6
+    ],
+    "cols_sha256": "1843d02e5f17b6a3f1ba9d1ab3304a5c0b6862916c5ff0e622e3ccb411a89af3"
+   },
+   {
+    "doc": "f8995",
+    "revision": "2025; created 2025-09-12",
+    "text_sha256": "49922587df3bd093e24470f5b42d0e3382ef8f5210b3cedccb02ccb864f2f65a",
+    "pages": [
+     1
+    ],
+    "how": "whole document",
+    "locators": [
+     "Form 8995 (2025), lines 1–17; "
+    ],
+    "cols_pages": [],
+    "cols_sha256": "8e2e78d7610e1d45e93c10c8b03f9026d46a1166678c6ed93f852569c382f346"
+   },
+   {
+    "doc": "i8995",
+    "revision": "2025; printed date 2026-01-26",
+    "text_sha256": "96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2",
+    "pages": [
+     3,
+     4,
+     5
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     3,
+     4,
+     5
+    ],
+    "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
    }
   ]
  },
@@ -45629,48 +45744,42 @@
  },
  {
   "screen": "sa.mfs_joint_paid",
-  "subject_sha": "e301fc6f49ad6707c8f9751988aa140302b5f999dbb333cac31b46994ac3ad43",
+  "subject_sha": "8f1c0951c626ab95d0f58d96def7fea7cb83fd922a2a2c210a3020a77a8999f4",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer married filing separately has a casualty loss from a federally declared disaster on a home owned with the spouse as tenants by the entirety, and paid nothing from a joint account and files no joint state return.",
-      "irs_text": "p504 p. 5, Table 1: casualty loss ... have a casualty loss resulting from a federally declared disaster on a home you own as tenants by the entirety ... half of the loss, subject to the deduction limits. Neither spouse may report the total casualty loss.",
-      "why": "A casualty loss is not an amount paid from an account, so the filer truthfully answers NO. The tool then takes the full entered loss, but only half is deductible."
+      "situation": "A separate filer's home, owned with the spouse as tenants by the entirety, has a casualty loss from a federally declared disaster. Nothing was 'paid' from a joint account, so the filer answers NO and the tool takes the full loss.",
+      "irs_text": "p504 (2025) p. 5, Table 1: casualty loss ... 'on a home you own as tenants by the entirety' → 'half of the loss, subject to the deduction limits. Neither spouse may report the total casualty loss.'",
+      "why": "The question asks only how amounts were paid and about a joint state return. A loss on jointly owned property involves no payment from an account, so the halving rule is never triggered."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer in a community property state paid itemized expenses from community funds held in an account titled only in their own name or in their spouse's name.",
-      "irs_text": "p504 p. 5, Table 1: Caution: If you live in a community property state, these rules don't apply. See Community Property.",
-      "why": "Community funds belong to both spouses, so the expenses were paid jointly under i1040sca p. 1 and must be divided under Pub. 504's community property rules. The question asks only about account titling and joint state returns, so the filer answers NO."
+      "situation": "A separate filer in a community property state pays deductible expenses from community funds held in an account in the filer's name alone, and so truthfully answers NO.",
+      "irs_text": "p504 (2025) p. 5, Table 1: 'Caution: If you live in a community property state, these rules don't apply. See Community Property.'",
+      "why": "Community funds are owned by both spouses no matter whose name is on the account. Because the wording turns on who holds the account, these shared-money payments are missed and the tool deducts the full amount."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer files a joint state return on which both spouses are jointly and individually liable for the full state tax, and enters on Schedule A only the state income tax they alone paid.",
-      "irs_text": "p504 p. 5, Table 1: file a joint state income tax return and you and your spouse are jointly and individually liable for the full amount of the state income tax ... the state income tax you alone paid during the year.",
-      "why": "Pub. 504 lets this filer deduct exactly what they alone paid, which the tool computes from the entry. The question still forces YES through 'or do the two of you file a joint 2025 state income tax return?'"
-     },
-     {
-      "kind": "WIDE",
-      "situation": "A filer paid medical expenses from a joint checking account, can show they alone paid them, and enters only those amounts.",
-      "irs_text": "p504 p. 5, Table 1: half of the total medical expenses, subject to certain limits, unless you can show that you alone paid the expenses.",
-      "why": "When the filer can show sole payment, the deductible amount is what they alone paid, which the tool computes. The question's wording 'paid from an account you hold with your husband or wife' still requires YES."
+      "situation": "The filer files a joint state return but either deducts no state income tax (for example, elects general sales tax instead) or is jointly and individually liable for the state tax, so only the state tax the filer alone paid is deductible.",
+      "irs_text": "p504 (2025) p. 5, Table 1: 'file a joint state income tax return and you and your spouse are jointly and individually liable for the full amount of the state income tax' → 'the state income tax you alone paid during the year.'",
+      "why": "The question 'or do the two of you file a joint 2025 state income tax return?' forces a YES even when no state income tax is deducted. It also forces YES when the rule matches the separate-return case the tool already handles: you deduct only what you alone paid, so no division is needed."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "A filer paid deductible expenses from a joint account in which the spouses do not have equal interests, or with a joint credit card.",
-      "irs_text": "p504 p. 5, Table 1: paid with funds deposited in a joint checking account in which you and your spouse have an equal interest",
-      "why": "Pub. 504 states the half rule only for equal-interest joint accounts. A filer could reasonably read 'an account you hold with your husband or wife' either to include or to exclude unequal-interest accounts and joint credit card accounts."
+      "situation": "The filer paid a deductible expense (for example, property tax or mortgage interest on a tenants-by-the-entirety home) from a joint account, but contributed all of the money in it.",
+      "irs_text": "p504 (2025) p. 5, Table 1: medical expenses paid from a joint account → 'half of the total medical expenses ... unless you can show that you alone paid the expenses'; property tax / mortgage interest → 'the ... you alone paid.'",
+      "why": "The help says 'On a separate return you deduct what you alone paid,' so a filer who can trace the funds may think the joint account is irrelevant and answer NO. Another filer reads the question literally and answers YES."
      }
     ],
-    "prompt_sha": "2b2193b46f3729958ce6b58246827680566769351e78b40f614951051169a39d",
+    "prompt_sha": "ba36bb04597d47d3e68c747010ead41cffcfde687df52406a4c7559f4bf3e090",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.07230800000000001,
+    "cost": 0.089296,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/screens/sa.mfs_joint_paid.e301fc6f49ad.1.response.txt"
+    "date": "2026-11-23",
+    "response": ".transcription/screens/sa.mfs_joint_paid.8f1c0951c626.1.response.txt"
    }
   ],
   "question": "Was any amount you entered for these deductions paid from an account you hold with your husband or wife, or do the two of you file a joint 2025 state income tax return?",
@@ -45711,6 +45820,24 @@
      34
     ],
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "p526",
+    "revision": "2025 returns; printed date 2026-02-05",
+    "text_sha256": "2886d40c1e518b1ab7ced3fb73c99a10360ddfc80ae98e9164a09f66c0d3a5c1",
+    "pages": [
+     22,
+     25
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 22, Limits on Deductions, \"The amount you can deduct for charitable contributions is generally limited to no more than 60% of your AGI\"; p. 25, \"Your noncash contributions of capital gain property to 50% limit organizations is limited to 30% of your AGI\""
+    ],
+    "cols_pages": [
+     22,
+     25
+    ],
+    "cols_sha256": "f95b6955fefaad988c4dacf20b5169ea5d8cd4a54fe8b1ff85a7f5cc1b721a0e"
    },
    {
     "doc": "p504",
@@ -48561,6 +48688,95 @@
      36
     ],
     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+   }
+  ]
+ },
+ {
+  "screen": "sd.home_sale",
+  "subject_sha": "a2f6b98377f023841243813182c0254d541df39f6381e36e0f9d98e3ee02de48",
+  "samples": [
+   {
+    "verdict": "NARROW",
+    "findings": [
+     {
+      "kind": "NARROW",
+      "situation": "On a joint return, gain is between $250,000 and $500,000 and only one spouse lived in the home 2 of the 5 years. No Form 1099-S was issued, so the filer relies on the help's '$500,000 on a joint return' and answers NO.",
+      "irs_text": "i1040sd p. 2: \"If both you and your spouse meet these tests and you file a joint return, you can exclude up to $500,000 of gain (but only one spouse needs to meet the ownership requirement in Test 1).\"",
+      "why": "The help says the $500,000 limit applies to any joint return. The IRS allows it only if both spouses meet the use test, so the filer may wrongly believe the whole gain is excluded and answer NO."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "The filer owned and lived in the home 2 of the 5 years but excluded gain on another main home within the 2 years before this sale, and has no Form 1099-S. Following the help, the filer treats the gain as excluded and answers NO.",
+      "irs_text": "i1040sd p. 2: \"Test 2 — You haven't excluded gain on the sale or exchange of another main home during the 2-year period ending on the date of the sale or exchange of your home.\"",
+      "why": "The help states only the ownership-and-use test as the condition for exclusion and leaves out Test 2. A filer who fails Test 2 can therefore truthfully believe the gain is fully excludable."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "On a joint return, the spouse sold a home that was the spouse's main home but never the filer's, such as a home the spouse owned before the marriage.",
+      "irs_text": "i1040sd p. 2: \"Report the sale or exchange of your main home on Form 8949 if: • You can't exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange.\"",
+      "why": "The question asks only whether it was 'your main home' and does not mention the spouse, unlike the gate question. A filer could read it as asking only about the filer's own main home and answer NO for the spouse's sale."
+     }
+    ],
+    "prompt_sha": "8f58a5249486ac5d491af6574b6552d4d4cbfe279f458654aa7b3de7e0bf06d4",
+    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
+    "cost": 0.06654,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-23",
+    "response": ".transcription/screens/sd.home_sale.a2f6b98377f0.1.response.txt"
+   }
+  ],
+  "question": "Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?",
+  "lines": [
+   "sd.count"
+  ],
+  "used": [
+   {
+    "doc": "i1040sd",
+    "revision": "2025; printed date 2025-12-11",
+    "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+    "pages": [
+     2
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 2, Sale of Your Home, \"Report the sale or exchange of your main home on Form 8949 if: • You can’t exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange.\""
+    ],
+    "cols_pages": [
+     2
+    ],
+    "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+   },
+   {
+    "doc": "f1040sd",
+    "revision": "2025; created 2025-10-06",
+    "text_sha256": "221151530f7cd599e8ad00bc3e1ba62d6b7ff34e402c336f4ae58d698c9f5187",
+    "pages": [
+     1,
+     2
+    ],
+    "how": "whole document",
+    "locators": [
+     "Schedule D (2025), Parts I–III",
+     "p. 1, Capital Gains and Losses, \"Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10\""
+    ],
+    "cols_pages": [],
+    "cols_sha256": "eb461181b39879c79d1c0b7761ca0cd9ade46fdb1531cdee3281053c348f6c41"
+   },
+   {
+    "doc": "i8949",
+    "revision": "2025; printed date 2026-01-20",
+    "text_sha256": "d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67",
+    "pages": [
+     9
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 9, code H, \"Report the sale or exchange on Form 8949 as you would if you weren't taking the exclusion. Then enter the amount of excluded (nontaxable) gain as a negative number (in parentheses) in column (g).\"; , How To Report the Sale of Your Main Home"
+    ],
+    "cols_pages": [
+     9
+    ],
+    "cols_sha256": "cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85"
    }
   ]
  },

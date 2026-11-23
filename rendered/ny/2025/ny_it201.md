@@ -877,21 +877,21 @@
 - **Authored helper label:** A Schedule C, or rental or royalty property, on the federal return
 - **Encoded (Bool):** (s1 helper "The return has a Schedule C" = true or scope helper "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?" = true)
 - Expr: `{"any":[{"eq":["s1.has_sc",{"const":true}],"op":"test"},{"eq":["scope.rental",{"const":true}],"op":"test"}],"op":"test"}`
-- Cite: [ny_it225i] p. 20, S-213, "If you claimed a depreciation deduction for such property" (2025; sha256 4a2de3cf)
+- Cite: [ny_it225i] pp. 20–21, S-213, "If you claimed a depreciation deduction for such property" (2025; sha256 4a2de3cf)
 
 ## (question) — `ny_it201.ask.prior_168k`
 
 - **Authored helper label:** IRC § 168(k) property of an earlier year, or an earlier Form IT-398
 - **Encoded (Bool):** Input — Did you (or, on a joint return, your spouse) claim a federal special depreciation allowance (IRC § 168(k)) in a year before 2025 on property placed in service on or after June 1, 2003 that you still held during 2025 (other than resurgence zone or New York Liberty Zone property), including property fully deducted in that year, or file Form IT-398 for an earlier year?
 - Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) claim a federal special depreciation allowance (IRC § 168(k)) in a year before 2025 on property placed in service on or after June 1, 2003 that you still held during 2025 (other than resurgence zone or New York Liberty Zone property), including property fully deducted in that year, or file Form IT-398 for an earlier year?"}`
-- Cite: [ny_it225i] p. 20, S-213, "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003." (2025; sha256 4a2de3cf)
+- Cite: [ny_it225i] pp. 20–21, S-213, "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003." (2025; sha256 4a2de3cf)
 
 ## (gate) — `ny_it201.prior_168k_if_business`
 
 - **Authored helper label:** Earlier-year IRC § 168(k) property (asked only with a Schedule C or rental or royalty property; otherwise no)
 - **Encoded (Bool):** Choose — [helper "A Schedule C, or rental or royalty property, on the federal return" = true → helper "IRC § 168(k) property of an earlier year, or an earlier Form IT-398"] [helper "A Schedule C, or rental or royalty property, on the federal return" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_depreciable_business",{"const":true}],"op":"test"},"then":"ny_it201.ask.prior_168k"},{"guard":{"eq":["ny_it201.has_depreciable_business",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
-- Cite: [ny_it225i] p. 20, S-213, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter" (2025; sha256 4a2de3cf)
+- Cite: [ny_it225i] pp. 20–21, S-213, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter" (2025; sha256 4a2de3cf)
 
 ## (gate) — `ny_it201.gate.alimony_later`
 
@@ -912,7 +912,7 @@
 - **Authored helper label:** IRC § 168(k) property of an earlier year not on the federal asset lists (S-213)
 - **Encoded (Bool):** helper "Earlier-year IRC § 168(k) property (asked only with a Schedule C or rental or royalty property; otherwise no)" = true
 - Expr: `{"eq":["ny_it201.prior_168k_if_business",{"const":true}],"op":"test"}`
-- Cite: [ny_it225i] p. 20, S-213, "If you claimed a depreciation deduction for such property" (2025; sha256 4a2de3cf)
+- Cite: [ny_it225i] pp. 20–21, S-213, "If you claimed a depreciation deduction for such property" (2025; sha256 4a2de3cf)
 
 ## 23 — `ny_it201.line23`
 

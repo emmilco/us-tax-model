@@ -201,6 +201,26 @@
    }
   },
   {
+   "key": "sc.bonus_all",
+   "record": "7024b0f69cb212ada10cf3678c498249efbb49b135ef3cc8ca94332a6ce9c929",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3513 values compared, none different or missing: 386 on 2635 fixture cases, 158 on 500 generated returns seed 20261026, 2969 on 2274 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "10f0788a76b2a87f110f0df0308799af1c757f8f2d3fe306a6a08de72c403e94"
+  },
+  {
+   "key": "sc.prior_bonus_assets",
+   "record": "7024b0f69cb212ada10cf3678c498249efbb49b135ef3cc8ca94332a6ce9c929",
+   "status": "AGREE",
+   "subject_key": "0442a720d8e4929c355eaf1b335204e1a5fd97f741e816eafd8aca2440c77d2b"
+  },
+  {
+   "key": "sc.suv179",
+   "record": "7024b0f69cb212ada10cf3678c498249efbb49b135ef3cc8ca94332a6ce9c929",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. i4562 p. 16, Column (i), \"You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles\": both sum column (i) over the business's vehicles that are not passenger automobiles and are SUVs, and give the same total, since a vehicle with no election adds $0 either way. The project's added first test (an election above zero) only makes the filter read scveh.passenger and scveh.suv for a vehicle with an election; the evaluator's all() stops at the first false test.",
+   "subject_key": "cd2504207ade5bc5f2d1fee7732828415292c24aa87c2f5da52089a51aaec7c4"
+  },
+  {
    "key": "sc.f26h",
    "record": "03f539da381227598664245e31572d38de3e8e49d51267b38cff2fa0d7aca217",
    "status": "AGREE",
@@ -269,9 +289,9 @@
   },
   {
    "key": "3 (sc.line3)",
-   "record": "5b1db004004f46bffb542ad52c1334f1b494988c73f7ecabfc75a799b84547ea",
+   "record": "8fe91f81f9b4291d90528fef17bf093a7b43668b6ed8c637333a288d03e08297",
    "status": "AGREE",
-   "subject_key": "711c08776988a4047c0b7ad7db8a729622d29de2313ed2afcfc2169313fd6e1c"
+   "subject_key": "d820835d060b4c86a760531c3792c8c6f910e29b16bd627a41793426ca72d53f"
   },
   {
    "key": "4 (sc.line4)",
@@ -517,26 +537,6 @@
    "status": "DISAGREE",
    "ruling": "Ruling: model error; the line itself matches the project's reading, but it inherits the candidate's Form 4562 terms: its Form 4562 line 25 vehicle term sums scveh.bonus_allowed, the passenger-automobile worksheet amount figured for every vehicle, instead of scveh.bonus, so for a standard-mileage vehicle it reaches the year placed in service and the project's refusal there on scveh.low_use (a standard-mileage vehicle used 50% or less takes no depreciation, so the low-use rule of i4562 p. 14, Lines 26 and 27, does not reach it) and asks miles and placed answers the project does not need (classm.clcw.2.deepseek biz_a and biz_b, classm.eic.3.deepseek refuse on sc[biz_b].scveh[car_1].low_use; classm.f4952.2.deepseek, classm.f8962.4.deepseek, classm.asset.1 unknown), and it drops the allowance of a vehicle that is not a passenger automobile (stage14.veh.suv_179, whose $38,700 allowance the project takes from scveh.bonus); same as the backlog-round ruling. Completed value difference: stage14.veh.suv_179 haul $120,815.79/$156,781.72. Triage executable-triage-v2 (`../triage/sc.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 2,203 partial records): 2,558 of 3,597 agree; on completed returns 68 candidate-refuses, 10 candidate-unknown, 1 value.",
    "subject_key": "c997af121cfbadcf91b8f735bc308ed7bb4304496a54b0b16a24925025206d86"
-  },
-  {
-   "key": "sc.bonus_all",
-   "record": "7024b0f69cb212ada10cf3678c498249efbb49b135ef3cc8ca94332a6ce9c929",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3513 values compared, none different or missing: 386 on 2635 fixture cases, 158 on 500 generated returns seed 20261026, 2969 on 2274 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
-   "subject_key": "10f0788a76b2a87f110f0df0308799af1c757f8f2d3fe306a6a08de72c403e94"
-  },
-  {
-   "key": "sc.prior_bonus_assets",
-   "record": "7024b0f69cb212ada10cf3678c498249efbb49b135ef3cc8ca94332a6ce9c929",
-   "status": "AGREE",
-   "subject_key": "0442a720d8e4929c355eaf1b335204e1a5fd97f741e816eafd8aca2440c77d2b"
-  },
-  {
-   "key": "sc.suv179",
-   "record": "7024b0f69cb212ada10cf3678c498249efbb49b135ef3cc8ca94332a6ce9c929",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. i4562 p. 16, Column (i), \"You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles\": both sum column (i) over the business's vehicles that are not passenger automobiles and are SUVs, and give the same total, since a vehicle with no election adds $0 either way. The project's added first test (an election above zero) only makes the filter read scveh.passenger and scveh.suv for a vehicle with an election; the evaluator's all() stops at the first false test.",
-   "subject_key": "cd2504207ade5bc5f2d1fee7732828415292c24aa87c2f5da52089a51aaec7c4"
   }
  ],
  "subjects": {
@@ -555,6 +555,9 @@
   "sc.f19_y20": "7870a04a843e355431e4f27e99fda46ba4638b884cccb7b2bc87f972f75749c1",
   "sc.f19_y15sl": "9a8a9bdb5b5b86f6a4d894f64f4a429e56de3a5c5dfc33ab66157675169fc799",
   "sc.f25": "c8c75294d6ad4338fd5080215c44081d269355c63d5d22fe593062ae09d43262",
+  "sc.bonus_all": "c825c3407154fd33aabf1da3edfbbc9d9584f4446d7dedc13c08335d76ddcbef",
+  "sc.prior_bonus_assets": "d395d9fac7a3ab52cdb4215c0c63414e08e4e4ee75f832a6f7d06083af5cb6ea",
+  "sc.suv179": "8aba284c9bc4795eca385d5b444b32244f7a4aac6dabcfe22696241b8888cfa2",
   "sc.f26h": "f256ea1dafb308ae8faef38c4171673d8252ac6a9e42334129b8894f87282cc9",
   "sc.f28": "201a26aa17440b4d528f0af303bcd836e2b4c83cc4570bf5d8f80366833cc0e1",
   "sc.f29": "e3d61d4fbb99416cc8cf610f32dd1489a290c728b71daac037e185fb19c2f23a",
@@ -563,7 +566,7 @@
   "sc.cost179": "16b87f1be299748b61d29f032baf97b674ca4cb68ad633cc75fe209405ca7d17",
   "sc.profit_pos": "f8643c070bbe59001d28cdc7c669edafa0cdb42ea8970dbaa86ed124702a764c",
   "sc.f7206_unused_if_uses": "f8884c7df07ee2521733b70983cc341af6e029638fd56ba493e59618dfc6a31d",
-  "3 (sc.line3)": "7903b3459f9e4fb18672b7718c9f08b8bec92a37f09f58cb9d474d4968d59857",
+  "3 (sc.line3)": "10e4aa7fa5b7060a996a22e546330244c8f57e68eb684f9013ac8fbcfa70ab4c",
   "4 (sc.line4)": "7bd4b774295ebb6907a73453b94e3cafbd8443e8b7f82eae3bd48576d59b5abe",
   "5 (sc.line5)": "2a876599a38c0e45f4ccade66e1189a489827ebc4cc3945cfc862edf3c0bb799",
   "7 (sc.line7)": "09eae94478e71d8e240d442e9d9774723b9003fed0741bd2ab34184e75ef219f",
@@ -595,14 +598,14 @@
   "10 (sc.f7206_line10)": "793436a92f598b09c0f5298d7087b511a0fd560462c2c0f86064cae7ca394d17",
   "13 (sc.f7206_line13)": "b757af5e3f6d5d200cf0af0b26b150d6521ed8a4d461628c3c5c40887595e4da",
   "14 (sc.f7206_line14)": "1e64db0b9fe6c6b7c16c4eface7550497d5f0f559e59b5a74a4b1c6800e88c94",
-  "1(c)": "73dc0d978859d68fcc013b93c2db76608d805b92bc45ea444f086c574960fa2a",
-  "sc.bonus_all": "c825c3407154fd33aabf1da3edfbbc9d9584f4446d7dedc13c08335d76ddcbef",
-  "sc.prior_bonus_assets": "d395d9fac7a3ab52cdb4215c0c63414e08e4e4ee75f832a6f7d06083af5cb6ea",
-  "sc.suv179": "8aba284c9bc4795eca385d5b444b32244f7a4aac6dabcfe22696241b8888cfa2"
+  "1(c)": "73dc0d978859d68fcc013b93c2db76608d805b92bc45ea444f086c574960fa2a"
  },
  "__rest__": "c47815e7189ca7c445692449dd063df97f10ec16a5290e8cca0c4b96530a9e2e",
  "foreign": {
   "sc.line31_pre179": "5901b1de22d6b693c2b0e6eb7c54a1c9630f1ab6c8a0cf133033f513785c0747",
+  "sc.bonus_all": "a725885b5a6bf24c881b0cc85a426f47f38b372d3ea9159b8308ec5b92910539",
+  "sc.prior_bonus_assets": "b4637264562e597e15dfa2bb25e682b12032251826ffbd36a4c20d1f0183e4ae",
+  "sc.suv179": "a833657d0cf411e7abd4becf466a468d4ca4547ed810875e6ded1ad8e2f36bed",
   "sc.f7206_unused_if_uses": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "3 (sc.line3)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "24b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
@@ -613,9 +616,6 @@
   "40": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "42": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "3 (sc.f7206_line3)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "14 (sc.f7206_line14)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "sc.bonus_all": "a725885b5a6bf24c881b0cc85a426f47f38b372d3ea9159b8308ec5b92910539",
-  "sc.prior_bonus_assets": "b4637264562e597e15dfa2bb25e682b12032251826ffbd36a4c20d1f0183e4ae",
-  "sc.suv179": "a833657d0cf411e7abd4becf466a468d4ca4547ed810875e6ded1ad8e2f36bed"
+  "14 (sc.f7206_line14)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
  }
 }

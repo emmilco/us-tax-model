@@ -24,6 +24,16 @@
   },
   {
    "printed": "4a",
+   "restated": "Add f1040 line 2b and f1040 line 3b.",
+   "model": "The line 4a instructions define gross income from property held for investment as income 'from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties,' 'unless derived in the ordinary course of a trade or business.' They also require including 'net investment income from an estate or a trust' and 'net passive income from a passive activity of a publicly traded partnership.' The restatement adds only f1040 lines 2b and 3b, and the refusal excludes only royalties, so annuity income and these other required items are silently omitted, and trade-or-business interest or dividends are not removed.",
+   "ruling": "Ruling: model error; f4952 p. 3, Line 4a, \"Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties\". The reviewer saw only line 4a's royalty refusal. Every return with Form 4952 also answers f4952.unsupported ('... or any other investment income or expense beyond interest, dividends and securities sales?'), refused at f4952.line2, which line 3 and so the deduction read: annuity income, net investment income from an estate or trust and PTP passive income are each other investment income and refused there. Interest and dividends derived in the ordinary course of a trade or business are business income (Schedule C), not Form 1040 lines 2b and 3b. Project stands.",
+   "context": "8d908819ce4b5e45a4d901a4372ace154f6770f7d2344bc4dd95fc0048d6e867",
+   "date": "2026-11-23",
+   "run": "f41a81a04600cdc7a2ee840a239422b28af24ce203139f475b57839e093f61dd",
+   "subject_key": "39a4242b4123b203b7100cd62ed7b36b12611e9889651aaf96987b4ff51cddb0"
+  },
+  {
+   "printed": "4a",
    "restated": "Add sb line 2 and sb line 6.",
    "model": "Line 4a is 'Gross income from property held for investment', but Schedule B line 2 comes before line 3, where 'you may be able to exclude part or all of the interest' on series EE or I savings bonds (Form 8815). Using line 2 would count excludable interest that is not gross income, where the taxable total after line 3 should be used. The text given does not show any other mismatch for ordinary dividends.",
    "ruling": "Ruling: scope; the model says Schedule B line 2 comes before line 3, where savings bond interest can be excluded (Form 8815), so line 4a could count excludable interest. f4952 p. 3, Line 4a: \"Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties.\" The exclusion is refused: Schedule B line 3 (sb.line3) is zero and refuses on sb.unsupported (\"a savings bond interest exclusion\"), and sb.line2 carries the same screen, so on every computed return line 2 is the taxable interest (line 4). The English names the lines correctly; no amount differs within scope. Same reading as the earlier rounds.",

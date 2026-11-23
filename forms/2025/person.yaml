@@ -855,8 +855,8 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 104, Schedule 1-A, line 4c; Line 4a, "If you received qualified tips as an employee with respect to
-          employment with more than one employer, enter -0- on line 4a"; tips from an employer for no job on the list are not
-          qualified tips, so that employer is not counted'
+          employment with more than one employer, enter -0- on line 4a" (tips from an employer for no job on the list are not
+          qualified tips, so that employer is not counted)'
     - id: person.tip_total
       printed: (helper)
       type: NonNegDollars

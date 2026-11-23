@@ -19,7 +19,7 @@ form:
         locator: pp. 1–3, interest, dividends and foreign accounts/trusts; i1040gi p. 25, Line 2b, "Each payer should send
           you a Form 1099-INT or Form 1099-OID. Enter your total taxable interest income on line 2b"; f1099oid p. 5, Box 1,
           "Report the amount in box 1 as interest income on your income tax return", Box 2, "report this amount as interest
-          income on your tax return", "If there is an amount in both boxes 2 and 11, the amount in box 2 is tax-exempt interest"; p. 7, Box 8, "Report this amount as interest income on your federal income tax return"
+          income on your tax return", "If there is an amount in both boxes 2 and 11, the amount in box 2 is tax-exempt interest"; f1099oid p. 7, Box 8, "Report this amount as interest income on your federal income tax return"
     - id: interest.penalty
       printed: (helper)
       type: NonNegDollars

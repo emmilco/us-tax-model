@@ -1252,7 +1252,7 @@ class InternalAdapterContracts(unittest.TestCase):
     def test_authored_adapter_and_all_consumer_copies_pass(self):
         result = adapters.assess("div", T.Y, T.model_type_context())
         self.assertEqual(result["state"], "pass")
-        self.assertEqual(len(result["cases"]), 21)
+        self.assertEqual(len(result["cases"]), 19)
         self.assertFalse(result["evidence_credit"])
         self.assertTrue(all(len(test["outputs"]) == 15 for test in result["cases"]))
 

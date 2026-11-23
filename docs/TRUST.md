@@ -17,7 +17,7 @@ page; the build adds the tax year, revision and content hash of the archived sou
 `sources/<year>/` from its manifest (`spec/spec.md` section 5, `engine/src/build.ts`). **Guarantees:**
 the build fails if any line, parameter, gate or question lacks a complete citation or cites a document
 absent from the manifest, and `tools/citations.py` verifies every quote and locator
-against the archived text; `reports/2025/citations.md` reports <!-- figures:trust-citations -->7,514 anchors and 8,265 quotes<!-- /figures:trust-citations --> with 0
+against the archived text; `reports/2025/citations.md` reports <!-- figures:trust-citations -->7,739 anchors and 8,531 quotes<!-- /figures:trust-citations --> with 0
 findings without a recorded ruling, and no computed-line locator too coarse to verify (the check runs
 with `--strict`). **Does not guarantee:** that the expression says what the cited page says. A
 citation proves a line points at a page, not that it was read correctly.
@@ -29,7 +29,7 @@ Every computed line is one application of one atom from the list in `spec/spec.m
 there are no user-defined functions, loops, variables, strings or recursion. **Guarantees:** the whole
 meaning of the data is the meaning of about twenty operations, each small enough to read; the one
 escape, `opaque`, a host-language function, is counted and published, and `reports/2025/coverage.md`
-reports <!-- figures:trust-opaque -->0 of 5,963 lines<!-- /figures:trust-opaque -->, federal and New York, use it. **Does not guarantee:** that the right atom was chosen for a line.
+reports <!-- figures:trust-opaque -->0 of 6,111 lines<!-- /figures:trust-opaque -->, federal and New York, use it. **Does not guarantee:** that the right atom was chosen for a line.
 
 ## 3. The build-time checker
 

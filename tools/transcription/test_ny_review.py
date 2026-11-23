@@ -124,10 +124,12 @@ class NewYorkMode(unittest.TestCase):
                                                       "dependent:dependent.under_ctc_age", "eic:eic.limit",
                                                       "f1040:f1040.line4a", "f1040:f1040.line5a", "f1040:f1040.tax_exempt_any",
                                                       "f2441:f2441.benefits", "f2441:f2441.care", "f8863:f8863.paid",
-                                                      "person:person.birth_year", "person:person.dis_wages", "person:person.ira_taxable", "person:person.one",
-                                                      "person:person.plan_taxable", "person:person.sc_count",
-                                                      "person:person.sc_total", "person:person.x_edu_account", "s1:s1.has_sc",
-                                                      "sa:sa.dependent", "scope:scope.armed_forces", "scope:scope.has_w2"])
+                                                      "person:person.birth_year", "person:person.bonus_all", "person:person.dis_wages", "person:person.ira_taxable", "person:person.one",
+                                                      "person:person.plan_taxable", "person:person.prior_bonus_assets", "person:person.sc_count",
+                                                      "person:person.sc_total", "person:person.suv179", "person:person.x_edu_account", "s1:s1.alimony_any",
+                                                      "s1:s1.alimony_if_any", "s1:s1.has_sc", "s1:s1.line5", "sa:sa.dependent",
+                                                      "sche:sche.line41", "sche:sche.roy_income", "sche:sche.roy_loss",
+                                                      "scope:scope.armed_forces", "scope:scope.has_w2", "scope:scope.rental"])
 
     def test_render_prompt_reads_the_new_york_rendering(self):
         got = run_ny("import json, render_compare as R\n"
@@ -278,7 +280,7 @@ class NewYorkFederalCatalog(unittest.TestCase):
             "f1040.line11a", "f1040.line15", "f1040.line1z", "f1040.line27a", "f1040.line2a", "f1040.line2b",
             "f1040.line3b", "f1040.line4b", "f1040.line5b", "f1040.line6b", "f1040.line7a", "f1040.status",
             "person.sep_s3", "s1.line1", "s1.line15", "s1.line26", "s1.line2a", "s1.line3", "s1.line7", "s1.line8z", "s1.line9", "s2.line4",
-            "sc.f7206_line3", "sc.line3"]))
+            "sc.f7206_line3", "sc.line3", "f5329.l4", "f5329.l49", "s1.line8a"]))
         for fid, r in got.items():
             self.assertTrue(r["notes"].strip().startswith("In this New York request"), fid)
             if fid != "ny_it2":

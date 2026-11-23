@@ -335,7 +335,7 @@
 - **Authored helper label:** Number of employers that paid this person qualified tips
 - **Encoded (Count):** Add tipjob.one over every confirmed tipjob entry for which helper "Were any of the tips from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024?" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"tipjob","field":"tipjob.one","op":"sum_over","where":{"eq":["tipjob.listed",{"const":true}],"op":"test"}}`
-- Cite: [i1040gi] p. 104, Schedule 1-A, line 4c; Line 4a, "If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a"; tips from an employer for no job on the list are not qualified tips, so that employer is not counted (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 104, Schedule 1-A, line 4c; Line 4a, "If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a" (tips from an employer for no job on the list are not qualified tips, so that employer is not counted) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.tip_total`
 

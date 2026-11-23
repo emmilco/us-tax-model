@@ -144,7 +144,7 @@ const UNDRAWN = new Set([
 // Money inputs not otherwise modelled that should often be nonzero: the Form 5695 costs, so the parts' caps and
 // limits are reached when a part is answered Yes (applyScreens zeroes them when it is No).
 const EXTRA_NONZERO_PERCENT: Record<string, number> = Object.fromEntries(
-  ["line1", "line2", "line3", "line4", "battery_cost", "line12", "line18a", "line19a", "line19d_i", "line19d_ii", "line19e",
+  ["line1", "line2", "line3", "line4", "battery_cost", "carry_in", "line18a", "line19a", "line19d_i", "line19d_ii", "line19e",
     "line20a_i", "line20a_ii", "line20a_iii", "line20a_iv", "line20b", "line22a", "line22b", "line23a_i", "line23a_ii", "line23b",
     "line24a", "line24b", "line25c", "line26b", "line29a", "line29b", "line29c", "line29d", "line29e", "line29f"].map((k) => [`f5695.${k}`, 50]));
 
@@ -278,7 +278,7 @@ interface Spec {
 }
 
 // The Schedule C expense lines the generator fills (Part II), each usually zero.
-const SC_EXPENSES = ["line8", "line10", "line11", "line14", "line15", "line16a", "line16b", "line17", "line18", "line19",
+const SC_EXPENSES = ["line8", "line10", "line11", "line14", "line15", "line16a", "interest_other", "line17", "line18", "line19",
   "rent_equipment", "line20b", "line21", "line22", "line23", "line24a", "meals_50", "meals_80", "meals_100", "line25", "line26", "line48"];
 
 function businessArbitrary(): fc.Arbitrary<Business> {

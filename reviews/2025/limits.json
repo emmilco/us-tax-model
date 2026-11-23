@@ -420,6 +420,72 @@
     "gift.special"
    ],
    "reason": "Taxidermy property is refused by gift.special (BUG-0985), so the basis limit never applies to a completed return."
+  },
+  "limit:fw2:p7:adf6bfbe": {
+   "enforced_by": [
+    "scope.excess_deferral_if_w2",
+    "scope.other_income"
+   ],
+   "reason": "The code G (section 457(b)) limit is one of the elective deferral limits that scope.excess_deferral asks about ('more of your pay into retirement plans at work than the yearly limit'); a Yes refuses through scope.other_income. Box 12 code G amounts are otherwise read only by the saver's credit (w2.has_g), not limited by the tool."
+  },
+  "limit:fw2:p7:cd7224c2": {
+   "enforced_by": [
+    "scope.excess_deferral_if_w2",
+    "scope.other_income"
+   ],
+   "reason": "The code H (section 501(c)(18)(D)) deferral limit: as for code G, an excess deferral is screened by scope.excess_deferral and refused through scope.other_income; w2.box12_h is read only to note the plan, not limited by the tool."
+  },
+  "limit:p501:p7:6f401c1f": {
+   "enforced_by": [
+    "f2441.exclusion_max_mfs",
+    "f2441.exclusion_cap"
+   ],
+   "reason": "The $2,500 dependent care exclusion on a separate return: f2441.exclusion_cap takes $2,500 (f2441.exclusion_max_mfs, parameter dc.exclusion_max_mfs) for a married person filing separately, $5,000 otherwise (Form 2441 Part III, line 21). Pub. 501 p. 7 is cited by household.yaml only for the separate-return rules."
+  },
+  "limit:p526:p22:46659030": {
+   "enforced_by": [
+    "sa.gift_total_limit",
+    "sa.charity_over_test",
+    "sa.charity_over_if_itemizing"
+   ],
+   "reason": "The 60% of AGI limit: sa.gift_total_limit is 60% of Form 1040 line 11b (parameter sa.gift_total_limit_rate), sa.charity_over_test is true when lines 11 and 12 together are more, and sa.charity_over_if_itemizing refuses an itemized return so limited (owner decision 2026-11-23, BUG-1204)."
+  },
+  "limit:p526:p22:9c76c8e1": {
+   "enforced_by": [
+    "sa.charity_over_test",
+    "sa.charity_over_if_itemizing"
+   ],
+   "reason": "The cash limit (60% of AGI minus the other contributions) can reduce the deduction only when cash and other gifts together exceed 60% of AGI; sa.charity_over_test compares lines 11 and 12 together with 60% of Form 1040 line 11b, and sa.charity_over_if_itemizing refuses every such itemized return."
+  },
+  "limit:p526:p25:40c18009": {
+   "enforced_by": [
+    "sa.gift_property_limit",
+    "sa.charity_over_test",
+    "sa.charity_over_if_itemizing",
+    "sa.charity_limited"
+   ],
+   "reason": "The 30% limit on capital gain property to 50% limit organizations: sa.charity_over_test takes all of line 12 as capital gain property and refuses (sa.charity_over_if_itemizing) above 30% of AGI (sa.gift_property_limit); below that, where the reduction by other contributions could still bind, the filer answers sa.charity_limited under Pub. 526 and a Yes refuses (owner decision 2026-11-23, BUG-1204)."
+  },
+  "limit:p526:p25:4a91f068": {
+   "enforced_by": [
+    "sa.charity_over_test",
+    "sa.charity_limited"
+   ],
+   "reason": "The 20% limit for capital gain property given to, or for the use of, organizations that are not 50% limit organizations: not computed; gifts above the 30% screen are refused by sa.charity_over_test, and below it the filer answers sa.charity_limited ('reduced by income limits', determined under Pub. 526), which refuses on Yes (owner decision 2026-11-23, BUG-1204)."
+  },
+  "limit:p969:p6:515894ee": {
+   "enforced_by": [
+    "f8889.line2",
+    "f8889.line13"
+   ],
+   "reason": "The limit applies to the total of all of a person's HSAs: Form 8889 is one per person, f8889.line2 is the total of the person's own contributions for 2025 (to every HSA), and f8889.line13 deducts no more than the person's limit (line 12)."
+  },
+  "limit:p969:p6:db16a634": {
+   "enforced_by": [
+    "f8889.line6_split",
+    "f8889.line7"
+   ],
+   "reason": "Both spouses 55 or older under family coverage: the family limit is divided between the spouses (f8889.line6_split, Form 8889 line 6), and each spouse's $1,000 additional contribution is figured on that spouse's own Form 8889 line 7 (f8889.line7), so the total cannot pass the family limit plus $2,000 ($10,550)."
   }
  },
  "baseline": {

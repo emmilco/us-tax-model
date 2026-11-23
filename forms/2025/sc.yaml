@@ -2590,7 +2590,8 @@ form:
     cite:
       doc: i7206
       locator: p. 2, "any medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as
-        medical expenses on Schedule A (Form 1040) if you itemize deductions"; f7206 Form 7206 (2025), lines 3 and 14
+        medical expenses on Schedule A (Form 1040) if you itemize deductions"; f7206 p. 1, "Enter the smaller of line 3 or line 13
+        here and on Schedule 1 (Form 1040), line 17" (line 14)
   - id: sc.f7206_unused_if_uses
     printed: (gate)
     label: Health insurance of this business not deducted on Schedule 1, line 17, figured only when health insurance is

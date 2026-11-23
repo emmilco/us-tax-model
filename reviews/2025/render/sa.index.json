@@ -3,12 +3,15 @@
  "form": "sa",
  "family": "claude",
  "base": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "6ffefd2b86dfc34a21d6a33f1a8723d1a336d0e48167360287339476a8473de0",
    "status": "MATCH",
-   "subject_key": "ac816809ba4bd7bd8e111e2891216502f95f1fd7cb1ee202b601625e19ecf097"
+   "subject_key": "d39c93001999d49c63f6e474062752a7d2a48e051ea6d02c5e39658e8643dc32"
   },
   {
    "key": "5a",
@@ -57,9 +60,9 @@
   },
   {
    "key": "4",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "6ffefd2b86dfc34a21d6a33f1a8723d1a336d0e48167360287339476a8473de0",
    "status": "MATCH",
-   "subject_key": "551ca47bbc4759626d5f315f4c93d09c4add54efd224cdb021a2bfb758a72ad3"
+   "subject_key": "e89c581f016d7fd1d5fa96567a3a8ea6d26411b9fc8c9bea7873e6ffab52c7a8"
   },
   {
    "key": "5d",
@@ -184,9 +187,9 @@
   },
   {
    "key": "17",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "6ffefd2b86dfc34a21d6a33f1a8723d1a336d0e48167360287339476a8473de0",
    "status": "MATCH",
-   "subject_key": "762a0ae569ecd1fc1df723a35713e3e07746c24f720008da6c3433f82940f8e9"
+   "subject_key": "83cf6121eddfd247d7b9c81196f78511d64bcf2d74180beb4f49205294b01f78"
   },
   {
    "key": "2 (sa.dep_line2)",
@@ -229,7 +232,7 @@
   }
  ],
  "subjects": {
-  "1": "d72f2bf28a2c76490c783642d4f48da42dc8ca0ec6cfd943990861c1eceab9c9",
+  "1": "3eced479d252b4275afb182da1fe8ce5f32d6afc8b4f41474961681a6db49e01",
   "5a": "fd56fa7bc183d0c8e2064b037e3f9ac35ac9e0c02d8a5f77fe210c8812110831",
   "5b": "73dd015108b60fde92971f31d1e99c7266dd115e5b843f5889e5b2377a1f046b",
   "5c": "9727f5441c3477fe0d2cb79a93b93266726e1b065e0c896692a71e3d730c6c80",
@@ -237,7 +240,7 @@
   "11": "4aa986f00a213972fa94e5c2898da305642ede20d71a6f0e0630fb7491986933",
   "2 (sa.line2)": "4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e",
   "3 (sa.line3)": "915c7f2a9b0042dab3a9e56be066227e30b5b060fc4824080ce27e96eaa3e71f",
-  "4": "c6894a0be16a100850d1ad9cf12a28e6d7e9a3184a4e0e4e30dfed09facbb85d",
+  "4": "fa17cba921907dcce829816bc113fef4b6d3075b759757bc9ef55da5ee674303",
   "5d": "b9ab7ad95ace5a0b1fe09a21d838e40df8d2e42c0264ea7cdbac0fba23bc0ebf",
   "5e": "3e29b31bba5a6121a5aede361c57d6ea2db7d8350136dc0f020d49168fa4f996",
   "6": "8db70fd2ee2bc5429eb57efb7e826aface7521ee115b76c7745b3747183e8e0c",
@@ -252,7 +255,7 @@
   "10": "92b522a02b3747cf7e857a9a1c388ed33e2503712bdf226862aea42adeee02e9",
   "12": "6a6c25e736ae795437253e856836145d367ae2f602fc7fbc8fef6431563562ea",
   "14": "5d211fc6e5622f9a857d5fa8f8c09a94d8678af98fb06a322b605ad9a90d33a2",
-  "17": "9f55a2e692479780b64a11c6ced9ec01f165a1333bb6b8a3253a25cae9c5df40",
+  "17": "ce1677c8282aaaefe4380cb00550f375b1701a214e5502b523b2ba16c661eaad",
   "2 (sa.dep_line2)": "c491f5623624750dae66e27621ffa3e03f69b84da1ea8ce2d3552f795bc0b60a",
   "3 (sa.dep_line3)": "bb2a121adcb5f0e32bbd434e9b4a7b6b80ca36b93a3d446dfd5683b45c539313",
   "4a": "9841bdd28de3be44b498d2e5c93d69a3ceb154f08165210b8b4314b2adc47e9a",

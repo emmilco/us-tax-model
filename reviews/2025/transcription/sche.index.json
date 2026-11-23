@@ -4,7 +4,9 @@
  "family": "claude",
  "base": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
+  "printed lines compared": "13",
+  "agree / disagree / missing": "5 / 8 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -19,6 +21,12 @@
    "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
    "status": "AGREE",
    "subject_key": "7466a90410317dcdff609251d61c76f104a0a1a262c6904625442e14af3f0ef0"
+  },
+  {
+   "key": "sche.royalty_count",
+   "record": "5ed2b20a153aeaee1e1daeb85d7a89b980eb9031dd343653e9013aca47b7c70a",
+   "status": "AGREE",
+   "subject_key": "e58eaa4a9133a8e1c97c5f07cc02c23c33cd8605a5a4f5371bdc8524c910b88f"
   },
   {
    "key": "sche.any",
@@ -91,6 +99,7 @@
  "subjects": {
   "sche.loss_prelimit": "65f680b6e109cd2ad9864ec28c35d9a2f5f6b5e033fb39f8d53a6b03de16dbf8",
   "sche.nonpassive_net": "9f670013a20da9504c103a95eba78f797efd05af22bb5165a9c793e92ab1e47c",
+  "sche.royalty_count": "48fd6438fad153806d93464952865022c18ecad557db147fbf9c20be1cc9403a",
   "sche.any": "7c513588063c6efdab9fc422d3f75e3a8733dd9f6522a366c8968f171f997479",
   "23a": "f4726b2db84dcc5b4c887d6c75792b81dd013b2e6a064229ba69f2cb5ada1ec0",
   "23b": "80fb595b2317eed3f3788b2f12008928b4fbecb174e3c79a150d5869d8422ed5",
@@ -106,6 +115,7 @@
  "foreign": {
   "sche.loss_prelimit": "76f73d926d4faefcf39b8a68145a631d7efbe3459f9049fd1a872431256bfd02",
   "sche.nonpassive_net": "037d1d84ac2ddad3fa092e9b692d8472b7af48e29bb266201189600987d37928",
+  "sche.royalty_count": "e41cacc5e8e97cb9d2c453ec97dfc3e08cafa270694c2fbd07b2432c7836f442",
   "sche.any": "f2fce1dc6ffd26cc97b2383de232b8aca8b65ee3f59a20c9f599ef4bf6cd8fb8",
   "23a": "ee5491ab7f0f9b901724702032f410866f224bdc5c49f20bad8b5cb5ba27a85d",
   "23b": "1622789cde471de84db346066fd6458c6d6d2e8ab6082cc6177f866d2d88bb45",

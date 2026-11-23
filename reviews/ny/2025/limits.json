@@ -69,6 +69,9 @@
     "ny_it201.gate.resident_credit"
    ],
    "reason": "The limit of the resident credit (Form IT-112-R, column B, line 22 against the other state's total income); the resident credit on line 41 is refused, not computed. The page is cited for its Column A sentence on a joint return."
+  },
+  "limit:ny_it225i:p18:217374f6": {
+   "not_applicable": "The formula is for Form IT-203 filers (the New York State allocated amount column); this tool prepares Form IT-201 for full-year residents only and refuses a nonresident or part-year resident (ny_it201.gate.part_year_state, Form IT-203). IT-225-I p. 18 is cited for the alimony subtraction of IT-201 filers (S-136)."
   }
  },
  "baseline": {}

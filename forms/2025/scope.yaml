@@ -493,7 +493,7 @@ form:
         source: "In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2 and that controlled what work was done and how, not as a self-employed worker offering the work to the public?"
       cite:
         doc: i1040gi
-        locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"; p926 p. 3, Do You Have a Household Employee?, "The worker is your employee if you can control not only what work is done, but how it is done"; p. 4, "A self-employed worker usually provides their own tools and offers services to the general public in an independent business"'
+        locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"; p926 p. 3, Do You Have a Household Employee?, "The worker is your employee if you can control not only what work is done, but how it is done"; p926 p. 4, "A self-employed worker usually provides their own tools and offers services to the general public in an independent business"'
     - id: scope.household_pay_if_pay
       printed: (gate)
       type: Bool

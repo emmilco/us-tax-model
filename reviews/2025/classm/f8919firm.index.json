@@ -1,0 +1,28 @@
+{
+ "kind": "classm",
+ "form": "f8919firm",
+ "family": "claude",
+ "base": "f632a0481ddc76f7a335cfedcf393483325dc44dd01a9072c2f99775fc699c69",
+ "lines": [
+  {
+   "key": "case classm.f8919firm.1",
+   "record": "f632a0481ddc76f7a335cfedcf393483325dc44dd01a9072c2f99775fc699c69",
+   "status": null
+  },
+  {
+   "key": "classm.f8919firm.1 — person[taxpayer].f8919firm[firm].code_g",
+   "record": "f632a0481ddc76f7a335cfedcf393483325dc44dd01a9072c2f99775fc699c69",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f8919firm.2",
+   "record": "f632a0481ddc76f7a335cfedcf393483325dc44dd01a9072c2f99775fc699c69",
+   "status": null
+  },
+  {
+   "key": "classm.f8919firm.2 — person[taxpayer].f8919firm[firm].code_g",
+   "record": "f632a0481ddc76f7a335cfedcf393483325dc44dd01a9072c2f99775fc699c69",
+   "status": "AGREE"
+  }
+ ]
+}

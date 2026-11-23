@@ -42,6 +42,20 @@
    "kind": "description",
    "status": "accepted",
    "reason": "Cites the screening gate and its refusal, which together cover statutory employee and notary income, passive and rental activities, businesses owned with a spouse, other accounting methods and the special items; each is described on its own page of pp. 2–15, so there is no single printed heading."
+  },
+  {
+   "doc": "f1040s1a",
+   "anchor": "line 14a",
+   "kind": "context",
+   "status": "proposed",
+   "reason": "Line 14a is printed on p. 1 as the entry numbered 14a in Part III (its label begins 'Qualified overtime compensation included in Form W-2, box 1', and the entry box is numbered 14a); the page prints no phrase 'line 14a', only 'Add lines 14a and 14b' on line 14c."
+  },
+  {
+   "doc": "i8949",
+   "anchor": "code H",
+   "kind": "context",
+   "status": "proposed",
+   "reason": "The adjustment-code table on p. 9 prints H in its 'THEN enter this code in column (f)' column on the row for the sale of a main home at a gain; the extracted text reads the code column apart from its rows, so 'code H' is not a printed phrase."
   }
  ],
  "quotes": [
@@ -72,6 +86,34 @@
    "kind": "extraction",
    "status": "accepted",
    "reason": "As for 'At least 1 But less than 50': the column head and the first row's value are separate table cells on p. 49."
+  },
+  {
+   "doc": "i1040gi",
+   "quote": "You may be able to file as head of household if you had a child living with you and you lived apart from your spouse during the last 6 months of 2025",
+   "kind": "extraction",
+   "status": "proposed",
+   "reason": "Printed verbatim on p. 14 in a tip box under Married Filing Separately; the extracted text puts the box's 'TIP' label between 'child' and 'living'."
+  },
+  {
+   "doc": "i5329",
+   "quote": "Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older.",
+   "kind": "extraction",
+   "status": "proposed",
+   "reason": "Printed verbatim on p. 5 (exception 12 of the Line 2 table) with the fraction ½ in 'age 59½'; the extracted text renders the fraction as '1 / 2'."
+  },
+  {
+   "doc": "i5329",
+   "quote": "Include on line 2 the amount you received when you were age 59 1/2 or older.",
+   "kind": "extraction",
+   "status": "proposed",
+   "reason": "The second sentence of the same p. 5 exception; the extracted text renders the printed fraction ½ as '1 / 2'."
+  },
+  {
+   "doc": "p526",
+   "quote": "Your noncash contributions of capital gain property to 50% limit organizations is limited to 30% of your AGI",
+   "kind": "extraction",
+   "status": "proposed",
+   "reason": "Printed on p. 25 with 'capital' hyphenated at a line end ('capi-' / 'tal'); the extracted text joins the two lines with a space ('capi- tal'), which the check does not rejoin."
   }
  ]
 }

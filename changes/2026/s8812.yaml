@@ -32,8 +32,9 @@ changes:
       page: 6
       quote: Schedule 2, line 17c.
     verified: draft
-    note: Only the references move (2025 Schedule 2 lines 5 and 6 are 2026 line 16c's parts, line 13 is 17c); the Schedule
-      2 amounts stay refused through s2.other, whose wording the Schedule 2 operations (C-SCHED-10) carry.
+    note: Only the references move (2025 Schedule 2 lines 5 and 6 are 2026 line 16c's parts, line 13 is 17c). Line 22 keeps
+      reading s2.tip_ss_tax and s2.wage_ss_tax (2026 lines 16a and 16b); line 17c stays refused through s2.other, whose
+      wording the Schedule 2 operations (C-SCHED-10) carry.
     operations:
     - set:
         line: s8812.line22
@@ -44,8 +45,12 @@ changes:
     - set:
         line: s8812.line22
         field: cite.locator
-        from: Schedule 8812 (2025), line 22 (Schedule 2 lines 5, 6 and 13 are refused by s2.other)
-        to: Schedule 8812 (2026), line 22 (draft) (Schedule 2 lines 16c and 17c are refused by s2.other)
+        from: Schedule 8812 (2025), line 22, "Enter the total of the amounts from Schedule 1 (Form 1040), line 15;
+          Schedule 2 (Form 1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13" (Schedule
+          2 line 13 is refused by s2.other)
+        to: Schedule 8812 (2026), line 22 (draft), "Enter the total of the amounts from Schedule 1 (Form 1040), line 15;
+          Schedule 2 (Form 1040), line 16c; and Schedule 2 (Form 1040), line 17c" (Schedule 2 line 17c is refused by
+          s2.other)
     - set:
         line: s8812.line22
         field: refuses

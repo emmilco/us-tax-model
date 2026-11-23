@@ -2,78 +2,78 @@
  "form": "qbi",
  "reviews": {
   "gate:qbi.prior_form": {
-   "subject_sha": "a67ace58a98074144e332e6a412b83bc114b417abafa7d289d202b5f43c14a08",
+   "subject_sha": "514f1ff140f2f0f5262b4fc05ec2f95e88359775b26bb65f743a422c7a841130",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A filer whose qualified business losses from 2018 or later were fully suspended under the passive-activity, at-risk, basis or excess-business-loss rules (sections 469, 465, 704(d), 1366(d), 461(l)). Because no QBI was ever allowed, no Form 8995 was ever filed. In 2025 the suspended losses are released, for example on sale of the rental or partnership interest, or when basis is restored.",
-       "why_no": "No return of theirs ever included Form 8995 or 8995-A, so the help's \"If no return of yours has either form, answer No\" applies literally.",
-       "line": "qbi.carryforward_if_prior_form",
-       "irs_text": "i8995 p. 3: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion of the loss or deduction allowed under each provision is treated as a qualified net loss carryforward from a separate trade or business ... See Line 3.\" p. 4, Line 3: \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year.\"",
-       "severity": "high",
-       "fix": "Ask separately, without the prior-form gate: \"Is any business, rental, partnership or S corporation loss from 2018 or later, which was limited or suspended in an earlier year (passive, at-risk, basis or excess business loss), allowed on your 2025 return?\" Then collect its qualified portion for line 3, or refuse."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A sole proprietor, partner or S corporation shareholder who had a net qualified business loss in a year from 2018 to 2024. They had no REIT dividends or PTP income, so there was no deduction to claim, and they or their software did not attach Form 8995. The loss carryforward exists anyway.",
-       "why_no": "The gate asks whether a form was filed, not whether a qualified business loss occurred. Truthfully, none was filed.",
-       "line": "qbi.carryforward_if_prior_form",
-       "irs_text": "i8995 p. 4, Line 4: \"If you have a qualified business net loss for the year, you don't qualify for the QBI deduction ... The loss will be carried forward to next year.\" p. 5, Line 16: \"This amount will offset QBI in later tax years regardless of whether the trade(s) or business(es) that generated the loss is still in existence.\"",
-       "severity": "high",
-       "fix": "Broaden the gate to the fact: \"In any year from 2018 through 2024, did you (or your spouse) have a net loss from a business, a farm, a rental treated as a business, or a partnership or S corporation business, or file Form 8995 or 8995-A?\" On yes, ask for the carryforward and explain how to reconstruct it if no form exists."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A holder of publicly traded partnership units, such as energy MLPs, whose K-1 losses were suspended under section 469 each year, so no Form 8995 was filed. In 2025 the units are sold, or the PTP has income, and the suspended qualified PTP losses are allowed.",
-       "why_no": "No Form 8995 was ever filed, because the PTP losses were suspended and there was no REIT or PTP income. Also, the help describes the form as filed \"for a business or for dividends of real estate funds\" and does not mention PTPs.",
-       "line": "qbi.reit_loss_if_prior_form (the refusal is missed)",
-       "irs_text": "i8995 p. 4: \"When losses or deductions previously suspended by other Code provisions are allowed ... the qualified portion of the loss or deduction allowed for each PTP is treated as a qualified net loss carryforward from a separate PTP ... See Line 7.\" Line 7: \"... even if the loss was from a PTP that you no longer hold an interest in or is no longer in existence.\"",
-       "severity": "high",
-       "fix": "Ask independently of the gate: \"Do you (or your spouse) have, or did you dispose of in 2025, an interest in a publicly traded partnership with losses suspended in earlier years?\" A yes ends the interview, as the REIT/PTP loss question does."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "7",
-       "who": "A filer whose return was prepared by a paid preparer or by software that attached Form 8995 automatically, for example for Form 1099-DIV box 5 REIT dividends from a mutual fund, or for a small Schedule C. They never saw or remember the form.",
-       "why_no": "They read \"for a business\" and think of themselves as having no business, or they do not recall a form titled \"Qualified Business Income Deduction\" and answer No under the help's last sentence.",
-       "line": "qbi.carryforward_if_prior_form; qbi.reit_loss_if_prior_form",
-       "irs_text": "i8995 p. 5, Line 16: \"This is the amount to be carried forward to the next year.\" Line 17: \"This amount must be carried forward to next year.\"",
-       "severity": "medium",
-       "fix": "Add checkable facts to the help: \"Answer Yes if any earlier return had a business, farm, rental, partnership, S corporation, publicly traded partnership or REIT dividend (Form 1099-DIV box 5) item, or an amount on the 'qualified business income deduction' line of Form 1040 (line 13 or 13a), unless you have confirmed no Form 8995 or 8995-A was attached. If unsure, check your prior returns.\""
+       "who": "A filer had a net loss from a Schedule C business, or a partnership or S corporation K-1 loss, in 2022. The software produced no Form 8995 because there was no deduction to claim, so no return of theirs has either form. Some of that qualified loss has not yet offset later QBI.",
+       "why_no": "The question asks only whether a return included Form 8995 or 8995-A. The help says 'If no return of yours has either form, answer No.' The truthful answer is no.",
+       "line": "qbi.carryforward_if_prior_form",
+       "irs_text": "i8995a p. 6, Line 2: 'including prior year loss carryforwards even if the loss was unreported'; Line 6: 'This amount will offset QBI in subsequent tax years regardless of whether it is reported'",
+       "severity": "high",
+       "fix": "Gate on the fact, not the form. Ask: 'Since 2018, did you (or your spouse) have a net loss from a business, farm, rental, partnership, S corporation, or publicly traded partnership, or did any return include Form 8995 or 8995-A?' Then have the tool compute or ask for the carryforward, including amounts never reported."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer has passive, at-risk, or basis-limited losses (sections 469, 465, 704(d), 1366(d)) from a qualified business that were suspended in 2019–2024. They are freed in 2025, for example when the activity is sold. No earlier return had Form 8995 because the losses were suspended and there was no QBI deduction.",
+       "why_no": "No 2024 or earlier return included either form, so the truthful answer is no. The freed loss arises this year from an earlier year's event, and a question about past forms does not reach it.",
+       "line": "qbi.carryforward_if_prior_form",
+       "irs_text": "i8995 p. 3: 'When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward from a separate trade or business ... See Line 3.'",
+       "severity": "high",
+       "fix": "Ask separately whether any business, rental, or K-1 loss suspended after 2017 (passive, at-risk, or basis limits) is allowed on the 2025 return. Add its qualified portion to line 3 whatever the answer to the prior-form gate."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer held a publicly traded partnership (an energy MLP) whose post-2017 losses were suspended under section 469. They sold it in 2025, freeing the losses. No prior return had Form 8995.",
+       "why_no": "No earlier return had the form, so the truthful answer is no. The tool then sets the REIT/PTP loss line to false and never refuses.",
+       "line": "qbi.reit_loss_if_prior_form",
+       "irs_text": "i8995 p. 4: 'the qualified portion of the loss or deduction allowed for each PTP is treated as a qualified net loss carryforward from a separate PTP ... See Line 7'; Line 7: 'even if the loss was from a PTP that you no longer hold an interest in'",
+       "severity": "high",
+       "fix": "Ask outside this gate whether the filer (or spouse) has held a publicly traded partnership since 2018 with a K-1 loss, or one sold or disposed of in 2025. Refuse on yes, or route to a computed line 7."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer whose only prior Form 8995 was filed for publicly traded partnership income or loss, with no business and no REIT dividends.",
-       "why_no": "The help says the form \"is filed for a business or for dividends of real estate funds.\" A PTP unitholder reads this list as complete and concludes the form was not about them.",
-       "line": "qbi.reit_loss_if_prior_form (the refusal is missed)",
-       "irs_text": "i8995 p. 5, Line 17: \"This amount will offset qualified REIT dividends and qualified PTP income in later tax years regardless of whether the qualified PTP(s) that generated the loss is still in existence.\"",
+       "pattern": "8",
+       "who": "A filer whose prior returns were prepared by software or a preparer that attached Form 8995 for MLP (PTP) K-1 income or a PTP loss. The filer thinks of the MLP as a stock-like investment, not a business, and has no real estate funds.",
+       "why_no": "The question calls it 'the form for the deduction for business income.' The help says it is filed 'for a business or for dividends of real estate funds' and never mentions publicly traded partnerships.",
+       "line": "qbi.reit_loss_if_prior_form",
+       "irs_text": "i8995 p. 5, Line 17: 'This amount must be carried forward to next year ... regardless of whether the qualified PTP(s) that generated the loss is still in existence.'",
        "severity": "medium",
-       "fix": "Change the help to: \"filed for business income or loss, REIT dividends (including those paid through mutual funds), or publicly traded partnership income or loss.\""
+       "fix": "Help text: 'It may have been filed for a business, rental, or farm; for a partnership or S corporation K-1; for REIT dividends (Form 1099-DIV box 5, including from mutual funds and ETFs); or for a publicly traded partnership. Check your return for a form numbered 8995 or 8995-A, even if you did not prepare it yourself.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple files jointly for 2025. Before the marriage, the spouse filed separate returns that included Form 8995 with a business loss carryforward. The filer's own returns never had the form.",
+       "why_no": "The question mentions the spouse, but the help says 'If no return of yours has either form, answer No.' The filer may read that as limited to their own returns.",
+       "line": "qbi.carryforward_if_prior_form",
+       "irs_text": "i8995 p. 5, Line 16: 'This is the amount to be carried forward to the next year. This amount will offset QBI in later tax years regardless of whether the trade(s) or business(es) that generated the loss is still in existence.'",
+       "severity": "medium",
+       "fix": "Change the help to: 'If no return of yours or, on a joint return, your spouse's (including returns either of you filed before marrying) has either form, answer No.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer whose 2024 return is not yet filed, or who is amending 2024 or an earlier year to add Form 8995 or 8995-A that shows a loss carryforward.",
-       "why_no": "\"Did your 2024 tax return ... include\" is read as the return as filed. A return not yet filed, or one as originally filed without the form, gives a no.",
-       "line": "qbi.carryforward_if_prior_form; qbi.reit_loss_if_prior_form",
-       "irs_text": "i8995 p. 5, Line 16: \"This is the amount to be carried forward to the next year.\"",
+       "who": "A filer has not yet filed the 2024 return, or filed it late after starting the 2025 interview. That 2024 return will include Form 8995 with a loss carryforward. No earlier return had the form.",
+       "why_no": "'Did your 2024 tax return ... include' is past tense and refers to a filed return. A filer with no 2024 return on file answers no.",
+       "line": "qbi.carryforward_if_prior_form",
+       "irs_text": "i8995a p. 6, Line 6: 'The amount reported on this line must be reported in the next tax year on Schedule C (Form 8995-A), line 2, or Form 8995, line 3'",
        "severity": "low",
-       "fix": "Ask: \"Does your 2024 return or any earlier one, including one not yet filed or as amended, include or need to include Form 8995 or 8995-A?\""
+       "fix": "Ask: 'Does or will your 2024 return (filed or not yet filed), or any earlier one, include ...'"
       }
      ],
-     "prompt_sha": "39cdb71b3e8c851bb1a7be3c9a46980c94b58055279ec4d1159d62be82eebf53",
+     "prompt_sha": "db34caa8f3ab1d9c0ecd188a57b6d23cf8d0fd5516f27731d8b28d175a63c08d",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.11691599999999999,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_qbi.prior_form.a67ace58a980.1.response.txt"
+     "cost": 0.125032,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_qbi.prior_form.514f1ff140f2.1.response.txt"
     }
    ],
    "condition": "qbi.prior_form",
@@ -112,7 +112,7 @@
      "how": "cited pages",
      "locators": [
       "p. 4, Line 3, \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"; p. 5, Line 16, \"This is the amount to be carried forward to the next year\"",
-      "p. 4, Line 3, \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"; p. 5, Line 16, \"This is the amount to be carried forward to the next year\" (owner: the printed amount)",
+      "p. 4, Line 3, \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"; p. 5, Line 16, \"This is the amount to be carried forward to the next year\" (owner: the printed amount); , Line 6, \"The amount reported on this line must be reported in the next tax year on Schedule C (Form 8995-A), line 2, or Form 8995, line 3\"",
       "p. 4, Line 7, \"Include here the qualified portion of PTP (loss) carryforward allowed in calculating taxable income in the current year\""
      ],
      "cols_pages": [
@@ -121,6 +121,20 @@
       5
      ],
      "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
+    },
+    {
+     "doc": "i8995a",
+     "revision": "2025; printed date 2026-01-26",
+     "text_sha256": "83411868381d4f5edbb455d348b480a63d96586bcb4f821f67acc0e027d5401d",
+     "pages": [
+      6
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "1843d02e5f17b6a3f1ba9d1ab3304a5c0b6862916c5ff0e622e3ccb411a89af3"
     }
    ]
   }

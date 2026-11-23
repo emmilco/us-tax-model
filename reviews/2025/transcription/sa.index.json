@@ -68,10 +68,10 @@
   },
   {
    "key": "1",
-   "record": "cf2918fe4ed02522f9a239336495139c58d42bb14a78b666a2f9615adcbfcaef",
+   "record": "e71470a7b7c7493cfcadb4d82c0e0c2a45365aba218d02c23758365f2e590650",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, exception 05, \"Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year\", which applies whether or not the filer itemizes. The reply asks line 1 only on the medical ticks; the one completed difference is advland.retirement.e05_medical_asked (exception 05 claimed, medical tick not ticked: project $15,000, reply $0), hand-predicted from that text (BUG-1195). Triage executable-triage-v2 (.transcription/triage/2025/sa.json, pass a2bc9f183177): 4409 of 4410 agree; {\"value\": 1}; completed {\"value\": 1}. Project stands.",
-   "subject_key": "33b212d1d9598a01bff2b2af630e3ed43a1b444f1373f73f6159c5324c1927f9"
+   "ruling": "Ruling: model error; i1040sca p. 2, Line 1, medical and dental expenses include insurance premiums. The reply gates line 1 on sa.medical_any alone. The project also asks line 1 when sa.medical_any is No but sa.medical_premiums is Yes ('did you ... pay for health insurance with money that had already been taxed, such as Medicare premiums, a Marketplace plan, COBRA or long-term care insurance'), and when a Form 5329 exception 05 amount (person.x_e05, distributions for unreimbursed medical expenses) is entered, since each implies medical expenses the filer may not have counted when answering sa.medical_any. Where the reply gives 0 the project asks for the amount, so the project only asks more (wider asking, no amount wrong); both add person.sehi_unused. Project stands.",
+   "subject_key": "b176f304dcc6beda5493e5a19450504630e48f628098c2d3c3425d1e601b855b"
   },
   {
    "key": "5a",
@@ -302,7 +302,7 @@
   "sa.itemizes": "823f1026769fac7dc525c86ec2c4d163b92337202601f24665f596dcb4b02c28",
   "sa.deduction": "3e4a0f50c38b19d34c0edcfbfeb6a498d909264634151a36037fe970d589a94d",
   "sa.mfs_spouse_itemizes": "5e58e8e56fc8bba413fa4722e1b031f8b6aff3a5a260b525f12c39e36f1b8a43",
-  "1": "6aa2bcc2e1a977a1659bb8a7c78cc73eeeba44961afb1c9ee5595bc3de12583c",
+  "1": "25ab308625e0d26620eea14a42fe549557c1139dcaaace7d1e3de5904e679b2e",
   "5a": "6af90a76e5d7e457dd7adea0bb919b9806a921f2d8b531105636f3c9b4e0e0fd",
   "5b": "f7c32d64dd6b4af04bb400076c2349bd60de8078123f3c0923bba2a94a4a3c7e",
   "5c": "299d30680db43a236a6ad8191c87fc4cbb3bdbbc79a0c49fcf7c138a03014016",
@@ -338,7 +338,7 @@
   "sa.itemizes": "9968d84f10dffe3128b9d95850464a95edf67471477002365d0359afe44fb508",
   "sa.deduction": "b9084550bc5b1773b60b4d5c3c3bc3b56ab9a3ecfb27d895c6d65390d37bb36f",
   "sa.mfs_spouse_itemizes": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
-  "1": "34471a5c295b1df038b922bb5e27b31cdc8778181cd7b0bfde568a1d0548b897",
+  "1": "918b90f5d8866ae8020607c9683b569b7f646916f2fb31dc24d90a37410894b4",
   "5a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "5b": "8b8a01e7febabf379aaba8b1074506054584f874abe502e0ac91584481e30471",
   "5c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

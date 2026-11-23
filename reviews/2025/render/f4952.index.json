@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "fdf8a1bd3a919c478b740cf7cacff881c6aa5de3013497773a2c4204bf378b39",
  "head_rows": {
-  "line-scoped reviews": "7 (latest 2026-11-23); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "14 / 1 / 0 / 0",
+  "line-scoped reviews": "8 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,9 +16,10 @@
   },
   {
    "key": "4a",
-   "record": "2bfbbc87713d607f929e046d0a5d222bf5c25a5cb4cc9bbfa2fcfb8606cf38cb",
-   "status": "MATCH",
-   "subject_key": "06c6d12ef587b33d317815a4b565a410fdff62320a666c4762691efc0975a774"
+   "record": "e3aac7c8cb3efee5e0f6423392d442bbaf3cb88e46a27acc591cf1650f6c4957",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; f4952 p. 3, Line 4a, \"Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties\". The reviewer saw only line 4a's royalty refusal. Every return with Form 4952 also answers f4952.unsupported ('... or any other investment income or expense beyond interest, dividends and securities sales?'), refused at f4952.line2, which line 3 and so the deduction read: annuity income, net investment income from an estate or trust and PTP passive income are each other investment income and refused there. Interest and dividends derived in the ordinary course of a trade or business are business income (Schedule C), not Form 1040 lines 2b and 3b. Project stands.",
+   "subject_key": "92f74da2d6b30a96f7ee6586721a99fb2b90ca7657c6cf5ef85e7f44c4920711"
   },
   {
    "key": "4g",
@@ -100,7 +102,7 @@
  ],
  "subjects": {
   "1": "b2af27e759fa3d8eb6b0064a61bd4934cd8fed257e7c61e9ef28c852d1328ca7",
-  "4a": "2ec396a4d505a6be85a70684c926b88786c94811b5de27b4e887f2140a3403fb",
+  "4a": "8e158fdc58e35af07dec29d7122b3faa7c7744f2ccc823224472312d9474c069",
   "4g": "8a4b2502bf8d080a2626b05da955724a1ce63615cc7125c100634be358720728",
   "2": "8b3966cbd7a8902b0760140358c61b6103b2d0282b5409b3843a8287dea411d1",
   "3": "1218b3a2a523984a233fb3606a4e72c720fe90374176b85eefe7c1ea83e698d2",

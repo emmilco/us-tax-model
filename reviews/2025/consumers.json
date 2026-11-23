@@ -937,12 +937,6 @@
    "source_phrase": "Enter reforestation amortization and expenses",
    "reason": "The input is read on scope.schedule1 only as one Yes among the refusal's screening questions; the page is cited for reforestation amortization, another item, and states no rule about what the question means."
   },
-  "consumer:scope.attorney_fees@i1040gi:p100": {
-   "verdict": "same",
-   "question_phrase": "pay a lawyer or court costs to win a claim of unlawful discrimination or a whistleblower award",
-   "source_phrase": "Enter attorney fees and court costs for actions involving certain unlawful",
-   "reason": "The question covers fees and court costs paid for an unlawful discrimination claim and adds whistleblower awards (line 24i), so it is at least as wide as the line 24h rule and the extra is harmless over-refusal."
-  },
   "consumer:scope.attorney_fees@i1040se:p1": {
    "verdict": "same",
    "question_phrase": "pay a lawyer or court costs to win a claim of unlawful discrimination or a whistleblower award",
@@ -1951,18 +1945,6 @@
    "source_phrase": "you didn't use all of your home mortgage proceeds from those loans to buy, build, or substantially improve your home",
    "reason": "The question asks the page's own test for the line 8 box, proceeds not all used to buy, build or substantially improve the home, and a Yes refuses the return."
   },
-  "consumer:sa.mortgage_unreported@i1040sca:p8": {
-   "verdict": "same",
-   "question_phrase": "pay home mortgage interest or points in 2025 that are not reported to you on Form 1098",
-   "source_phrase": "If you paid home mortgage interest to a recipient who",
-   "reason": "Line 8b takes interest paid to a recipient who gave no Form 1098 (and the page's other unreported cases, interest above the 1098 or on another person's 1098), all of which are interest not reported to you on Form 1098, and a Yes refuses."
-  },
-  "consumer:sa.mortgage_unreported@i1040sca:p9": {
-   "verdict": "same",
-   "question_phrase": "pay home mortgage interest or points in 2025 that are not reported to you on Form 1098",
-   "source_phrase": "Points Not Reported on Form 1098",
-   "reason": "Line 8c takes points not reported on Form 1098, which the question names, and a Yes refuses the return."
-  },
   "consumer:sa.property_tax_other_any@i1040sca:p6": {
    "verdict": "same",
    "question_phrase": "tax on real estate outside the United States, an itemized charge for services, a charge for an improvement, tax charged to the buyer on a sale, a refund or rebate of 2025 tax, or tax not assessed before 2026",
@@ -2094,12 +2076,6 @@
    "question_phrase": "choose to figure your tax by averaging its income over three years (Schedule J)",
    "source_phrase": "all or part of your 2025 taxable income from your trade or business of farming or fishing",
    "reason": "Schedule J is an election over the 3 base years for farming or fishing income; the question asks that election for a Schedule C fishing business, farming being refused by scope.farm, and a Yes refuses."
-  },
-  "consumer:scope.military_move@i1040gi:p93": {
-   "verdict": "same",
-   "question_phrase": "deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders",
-   "source_phrase": "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station.",
-   "reason": "The question asks for the page's case, a move to a new permanent post under military orders, and a Yes refuses."
   },
   "consumer:scope.armed_forces@i1040gi:p93": {
    "verdict": "same",
@@ -2478,12 +2454,6 @@
    "question_phrase": "Did you acquire this vehicle after January 19, 2025? ... answer No if you entered into a written binding contract to acquire it before January 20, 2025, even if you received it later",
    "source_phrase": "Line 14, \"certain qualified property acquired after January 19, 2025\"",
    "reason": "The 100% allowance on this page is for property acquired after January 19, 2025, and the question applies the statute's rule (plaw-119-21 sec. 70301(c)(4)) that property under a written binding contract is acquired no later than the contract date, as its twin asset.after_jan19 does."
-  },
-  "consumer:f4952.carryover@f4952:p3": {
-   "verdict": "same",
-   "question_phrase": "investment interest expense disallowed in 2024 and carried forward (line 7 of a 2024 Form 4952 of either of you, on a joint or a separate return)",
-   "source_phrase": "You don't have any carryover of disallowed investment interest expense from 2024",
-   "reason": "Both are the 2024 carryover of disallowed investment interest; the question now names either spouse's separate return (BUG-0571), and the gate reading it applies p. 3's filing test to the same fact."
   },
   "consumer:sd.carryover@i8960:p9": {
    "verdict": "same",
@@ -3853,6 +3823,73 @@
    "question_phrase": "income or a loss from a partnership, an S corporation, an estate or a trust",
    "source_phrase": "the Schedule 1 item that page describes (each operand of scope.schedule1 is cited for its own item)",
    "reason": "scope.schedule1 is true when any of its independent Schedule 1 screens is Yes; scope.k1 answers only its own item, and the page cited for another operand (BUG-0948, BUG-0977 extended the locator) does not redefine it."
+  },
+  "consumer:dependent.relationship@i1040gi:p15": {
+   "verdict": "differs",
+   "question_phrase": "child (son, daughter, stepchild, eligible foster child, or a descendant of any of them)",
+   "source_phrase": "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent",
+   "reason": "The qualifying surviving spouse test takes only a son, daughter or stepchild, while the child answer also takes foster children and descendants, so household.qss_child_conflict can miss or wrongly raise its conflict.",
+   "fixed_by": "BUG-NEW-release-prep-01"
+  },
+  "consumer:dependent.lived_all_year@i1040gi:p15": {
+   "verdict": "same",
+   "question_phrase": "Did this person live with you for all of 2025? For a person who was born or who died in 2025, answer for the whole time the person was alive ... Count temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility ... as time lived with you",
+   "source_phrase": "3. This child lived in your home for all of 2025. If the child didn't live with you for the required time, see Exception to time lived with you",
+   "reason": "The question applies the page's temporary-absence exception and the birth, death and placement rules; a child presumed kidnapped is answered No, and the QSS conflict screen then refuses rather than applying the kidnapped-child rule, as for dependent.us_half."
+  },
+  "consumer:f8919firm.reason@f8919:p2": {
+   "verdict": "same",
+   "question_phrase": "g (you filed Form SS-8 with the IRS and have not received a reply, or none of the reason codes applies but you believe you should have been treated as an employee and file Form SS-8 on or before the date you file your return)",
+   "source_phrase": "Don't attach Form SS-8 to your tax return. Form SS-8 must be filed separately",
+   "reason": "The p. 2 sentence is about the Form SS-8 of a firm with reason code G, which is exactly what answer g says; f8919firm.code_g only tests that answer."
+  },
+  "consumer:person.birth_year@i5329:p5": {
+   "verdict": "same",
+   "question_phrase": "In what year were you born?",
+   "source_phrase": "Include on line 2 the amount you received when you were age 59 1/2 or older",
+   "reason": "Age 59½ at a distribution follows from the birth date; retirement.over59_all_year treats a person as 59½ or older only when born in 1964 or earlier (age.over59h_all_year), which is 59½ or older on every day of 2025, so the birth year alone decides it."
+  },
+  "consumer:person.work_ssn@f1040s1a:p1": {
+   "verdict": "same",
+   "question_phrase": "Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?",
+   "source_phrase": "You and/or your spouse who received qualified tips must have a valid social security number to claim this deduction",
+   "reason": "s1a.tips_over_count screens the tips of the people whose tips the deduction counts, those with a valid SSN, which is what the question asks and what Part II requires."
+  },
+  "consumer:person.work_ssn@fw2:p7": {
+   "verdict": "same",
+   "question_phrase": "Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?",
+   "source_phrase": "all Medicare wages and tips shown in box 5",
+   "reason": "Form W-2 p. 7 is cited only for box 5 including the reported tips; it sets no SSN rule, and the reader takes the SSN condition from Schedule 1-A (the f1040s1a pair), with the question's meaning."
+  },
+  "consumer:retirement.sav_inherited@p590b:p5": {
+   "verdict": "same",
+   "question_phrase": "Is this a distribution from an inherited IRA that you (or your spouse, on a joint return) received as a beneficiary who was not the IRA owner's spouse?",
+   "source_phrase": "Inherited from someone other than spouse, \"you can't roll over any amounts into or out of the inherited IRA\"",
+   "reason": "The page's rule applies to an IRA inherited from someone other than the spouse, which is what a Yes says; retirement.nonspouse_beneficiary reads the answer for IRAs only."
+  },
+  "consumer:sc.hi_uses@i7206:p2": {
+   "verdict": "same",
+   "question_phrase": "Did you pay for health insurance for 2025 (for you, your spouse, your dependents, or your child under age 27 at the end of 2025) that is established under this business",
+   "source_phrase": "any medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as medical expenses on Schedule A",
+   "reason": "The p. 2 rule concerns the premiums of a plan the Form 7206 deduction is figured for, the plan established under the business that the question asks about; sc.f7206_unused_if_uses only gates the unused part on it."
+  },
+  "consumer:scope.rental@f4952:p3": {
+   "verdict": "same",
+   "question_phrase": "rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties",
+   "source_phrase": "Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from ... royalties",
+   "reason": "scope.rental only gates f4952.royalty_held: with no rental or royalty reported there is no royalty to classify, and whether a reported royalty is investment income is decided by f4952.royalty_used, not by this answer."
+  },
+  "consumer:scope.rental@p527:p25": {
+   "verdict": "same",
+   "question_phrase": "rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties",
+   "source_phrase": "Some of your personal expenses may be deductible on Schedule A (Form 1040) if you itemize your deductions",
+   "reason": "The answer only gates sa.rental_tax_personal: without a rental there is no rental property tax to divide, and the personal part is figured from the rental entries (sa.rental_tax_sum)."
+  },
+  "consumer:sd.sold_other@i1040sd:p2": {
+   "verdict": "same",
+   "question_phrase": "did you (or, on a joint return, your spouse) sell or trade real estate or business property?",
+   "source_phrase": "Report the sale or exchange of your main home on Form 8949 if: You can't exclude all of your gain from income, or You received a Form 1099-S",
+   "reason": "A main home is real estate, so every sale the page describes answers Yes; sd.sold_other only gates the main-home question (sd.home_sale), which applies the page's two conditions."
   }
  },
  "baseline": {
@@ -3951,7 +3988,6 @@
   "consumer:f2441.benefits@i1040gi:p24": "2e06b7a0104b56fd",
   "consumer:f2441.care@i2441:p3": "a46fcf4dfd98f49d",
   "consumer:f2441.spouse_died@i2441:p4": "3ae35d4f272c7694",
-  "consumer:f4952.carryover@f4952:p3": "21c998a02a237e4e",
   "consumer:f5695.joint_occupancy@i5695:p7": "ab226f3fcb8aaae3",
   "consumer:f5695.qmid_ac@i5695:p5": "fdd13dba4083b8a4",
   "consumer:f5695.qmid_doors@i5695:p5": "48660a1c477e0fe3",

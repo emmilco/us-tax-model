@@ -875,20 +875,20 @@ form:
       label: 'A Schedule C, or rental or royalty property, on the federal return'
       type: Bool
       expr: { op: test, any: [{ op: test, eq: ["s1.has_sc", { const: true }] }, { op: test, eq: ["scope.rental", { const: true }] }] }
-      cite: { doc: ny_it225i, locator: 'p. 20, S-213, "If you claimed a depreciation deduction for such property"' }
+      cite: { doc: ny_it225i, locator: 'pp. 20–21, S-213, "If you claimed a depreciation deduction for such property"' }
     - id: ny_it201.ask.prior_168k
       printed: '(question)'
       label: 'IRC § 168(k) property of an earlier year, or an earlier Form IT-398'
       type: Bool
       gated_by: ny_it201.prior_168k_if_business
       expr: { op: input, source: 'Did you (or, on a joint return, your spouse) claim a federal special depreciation allowance (IRC § 168(k)) in a year before 2025 on property placed in service on or after June 1, 2003 that you still held during 2025 (other than resurgence zone or New York Liberty Zone property), including property fully deducted in that year, or file Form IT-398 for an earlier year?' }
-      cite: { doc: ny_it225i, locator: 'p. 20, S-213, "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003."' }
+      cite: { doc: ny_it225i, locator: 'pp. 20–21, S-213, "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003."' }
     - id: ny_it201.prior_168k_if_business
       printed: '(gate)'
       label: 'Earlier-year IRC § 168(k) property (asked only with a Schedule C or rental or royalty property; otherwise no)'
       type: Bool
       expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.has_depreciable_business", { const: true }] }, then: "ny_it201.ask.prior_168k" }, { guard: { op: test, eq: ["ny_it201.has_depreciable_business", { const: false }] }, then: "ny_it201.no" }] }
-      cite: { doc: ny_it225i, locator: 'p. 20, S-213, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter"' }
+      cite: { doc: ny_it225i, locator: 'pp. 20–21, S-213, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter"' }
     - id: ny_it201.gate.alimony_later
       printed: '(gate)'
       label: 'Applicable alimony or separate maintenance payments received (A-119) or paid (S-136)'
@@ -906,7 +906,7 @@ form:
       label: 'IRC § 168(k) property of an earlier year not on the federal asset lists (S-213)'
       type: Bool
       expr: { op: test, eq: ["ny_it201.prior_168k_if_business", { const: true }] }
-      cite: { doc: ny_it225i, locator: 'p. 20, S-213, "If you claimed a depreciation deduction for such property"' }
+      cite: { doc: ny_it225i, locator: 'pp. 20–21, S-213, "If you claimed a depreciation deduction for such property"' }
     - id: ny_it201.line23
       printed: '23'
       label: 'Other (Form IT-225, line 9)'

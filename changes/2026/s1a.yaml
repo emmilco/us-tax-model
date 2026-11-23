@@ -799,7 +799,9 @@ changes:
     note: 'Lines 4a to 4c (W-2 box 7, Form 4137, and the one-employer or worksheet amount) are replaced by employer rows 4a
       to 4e, which the tipjob collection already is: line 5 (id s1a.tips_employee, the line that fed the total before) now adds column
       (v) of every row. The one-employer path and the worksheet''s column (b) total go. Form 4137 stays refused through tipjob.col_c
-      (column (iv)). How code TP amounts are determined (''see instructions'') waits for the 2026 i1040gi.'
+      (column (iv)). How code TP amounts are determined (''see instructions'') waits for the 2026 i1040gi. The box 5 screen
+      (s1a.tips_over_wages) keeps reading each person''s column (iii) total (person.s1a C-SCHED-03); its citations move to
+      code TP.'
     operations:
     - remove_line:
         line: s1a.tip_employers
@@ -881,6 +883,41 @@ changes:
         from: If you only received qualified tips as an employee with respect to employment with one employer, enter the larger
           of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c
         to: Add lines 4a through 4e, column (v)
+    - set:
+        line: s1a.tips_over_count
+        field: cite.locator
+        from: 'p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and
+          tips shown in box 5"'
+        to: 'Schedule 1-A (2026), line 4, column (iii) (draft), "Qualified tips included in Form W-2, box 12, code “TP” (see
+          instructions)"; iw2w3 p. 23, "Code TP—Total amount of cash tips reported to the employer"; p. 19, Box 5, "Be sure
+          to enter tips that the employee reported"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5"'
+    - set:
+        line: s1a.tips_over_wages
+        field: cite.locator
+        from: 'p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and
+          tips shown in box 5"'
+        to: 'Schedule 1-A (2026), line 4, column (iii) (draft), "Qualified tips included in Form W-2, box 12, code “TP” (see
+          instructions)"; iw2w3 p. 23, "Code TP—Total amount of cash tips reported to the employer"; p. 19, Box 5, "Be sure
+          to enter tips that the employee reported"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5"'
+    - set:
+        line: s1a.line4c_calc
+        field: refuses
+        from:
+        - when: s1a.tips_over_wages
+          form: Schedule 1-A, Part II (qualified tips larger than the Medicare wages and tips that include them)
+          remedy: The tips entered for a person are more than that person's Form W-2 box 5 Medicare wages and tips, which include
+            them. Correct the tip amounts or the Forms W-2.
+          cite:
+            doc: f1040s1a
+            locator: 'p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5"'
+        to:
+        - when: s1a.tips_over_wages
+          form: Schedule 1-A, Part II (qualified tips larger than the Medicare wages and tips that include them)
+          remedy: The tips entered for a person are more than that person's Form W-2 box 5 Medicare wages and tips, which include
+            them. Correct the tip amounts or the Forms W-2.
+          cite:
+            doc: f1040s1a
+            locator: 'Schedule 1-A (2026), line 4, column (iii) (draft), "Qualified tips included in Form W-2, box 12, code “TP” (see instructions)"; iw2w3 p. 23, "Code TP—Total amount of cash tips reported to the employer"; p. 19, Box 5, "Be sure to enter tips that the employee reported"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5"'
   - change: C-SCHED-04
     evidence:
     - doc: f1040s1a

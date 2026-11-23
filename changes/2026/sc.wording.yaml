@@ -143,13 +143,28 @@ changes:
       page: 3
       quote: there is a presumption that you’re providing services as an employee for purposes of section 199A for the 3-year
         period after ceasing to be an employee
+    - doc: i8995
+      page: 4
+      quote: Income that isn’t effectively connected with the conduct of a trade or business within the United States
+    - doc: i1116
+      page: 7
+      quote: Compensation for services performed outside the United States
+    - doc: i1040sc
+      page: 17
+      quote: If your business began in 2026, you can elect to deduct up to $5,000 of certain business startup costs.
+    - doc: i1040sc
+      page: 17
+      quote: For amortization that begins in 2026, complete and attach Form 4562-B.
     verified: draft
     note: 'Form 8844 is dropped from the credits the question names (the 2026 line 26 list is Forms 5884, 8932 and 8994;
       the screen still refuses on the other forms it names). The What''s New pointers of the citation are re-quoted from
       the 2026 p. 2; the p. 1 research and experimental expenditures pointer is not printed in 2026 and is replaced by the
       energy efficient commercial buildings pointer (the 2026 p. 17 sentence on amortizing research costs is not quoted).
       Unquoted page pointers (p. 3, p. 5, p. 6 Line 6 and Medicaid, p. 7, p. 8, p. 9 Line 23 headings, p. 10 Lines 26 and
-      27a) and the p463 and i4562 parts are left as they are: the 2026 pages are not verified.'
+      27a) and the p463 and i4562 parts are left as they are: the 2026 pages are not verified. The two refusals added to
+      the 2025 screen (pay for work done outside the United States; start-up costs over $5,000 of a business begun in the
+      year) are carried with their 2026 pages, the start-up one dated 2026 and naming Form 4562-B, which the 2026 draft
+      prints for amortization that begins in 2026.'
     operations:
     - set:
         line: sc.special
@@ -170,9 +185,11 @@ changes:
           - qualified sound recording production costs you elect to deduct under section 181
           - prior year unallowed passive activity losses from this activity
           - services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee
+          - income for services you performed while outside the United States (income not effectively connected with a trade or business within the United States)
           - Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income
           - an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)
           - licenses or other costs you must amortize (for example, some liquor licenses)
+          - business start-up costs of more than $5,000 for a business that began in 2025 (amortization that begins in 2025, on Form 4562)
           - travel by ocean liner, cruise ship or other luxury water transportation
           - a domestic LLC of which you are the sole member that elected to be treated as a corporation
         to: |-
@@ -191,9 +208,11 @@ changes:
           - qualified sound recording production costs you elect to deduct under section 181
           - prior year unallowed passive activity losses from this activity
           - services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee
+          - income for services you performed while outside the United States (income not effectively connected with a trade or business within the United States)
           - Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income
           - an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)
           - licenses or other costs you must amortize (for example, some liquor licenses)
+          - business start-up costs of more than $5,000 for a business that began in 2026 (amortization that begins in 2026, on Form 4562-B)
           - travel by ocean liner, cruise ship or other luxury water transportation
           - a domestic LLC of which you are the sole member that elected to be treated as a corporation
     - set:
@@ -215,9 +234,11 @@ changes:
           - qualified sound recording production costs you elect to deduct under section 181
           - prior year unallowed passive activity losses from this activity
           - services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee
+          - income for services you performed while outside the United States (income not effectively connected with a trade or business within the United States)
           - Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income
           - an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)
           - licenses or other costs you must amortize (for example, some liquor licenses)
+          - business start-up costs of more than $5,000 for a business that began in 2025 (amortization that begins in 2025, on Form 4562)
           - travel by ocean liner, cruise ship or other luxury water transportation
           - a domestic LLC of which you are the sole member that elected to be treated as a corporation
         to: |-
@@ -236,45 +257,59 @@ changes:
           - qualified sound recording production costs you elect to deduct under section 181
           - prior year unallowed passive activity losses from this activity
           - services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee
+          - income for services you performed while outside the United States (income not effectively connected with a trade or business within the United States)
           - Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income
           - an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)
           - licenses or other costs you must amortize (for example, some liquor licenses)
+          - business start-up costs of more than $5,000 for a business that began in 2026 (amortization that begins in 2026, on Form 4562-B)
           - travel by ocean liner, cruise ship or other luxury water transportation
           - a domestic LLC of which you are the sole member that elected to be treated as a corporation
     - set:
         line: sc.special
         field: cite.locator
         from: p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I;
-          p. 6, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you made
-          contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441,
-          Parts I and III'); p. 8, Lines 16a and 16b; p. 9, Line 23; p. 10, Lines 26 and 27a; p. 1, Qualified sound recording
-          productions; p. 2, "a sporadic activity, a not-for-profit activity, or a hobby does not qualify as a business"
-          and "unless you have elected to treat the domestic LLC as a corporation"; p. 6, Line 6, recapture; p. 14, Line
-          31, "prior year unallowed passive activity losses"; p. 6, Installment sales, "If you use the installment method,
-          attach a statement to your return"; p. 9, Line 23, "But some licenses, such as liquor licenses, may have to be
-          amortized"; p. 9, Line 24a, "Other rules apply to luxury water travel"; p463 p. 12, Luxury Water Travel, "there
-          is a daily limit on the amount you can deduct"; i4562 p. 4, "If the section 179 property is not used predominantly
-          (more than 50%) in your trade or business at any time before the end of the property’s recovery period"; i8995
-          p. 2, "there is a presumption that you’re providing services as an employee for purposes of section 199A for the
-          3-year period after ceasing to be an employee", and p. 3, Determining if information reported on your Form 1099-PATR
-          is included in QBI
-        to: p. 2, What's New, "The energy efficient commercial buildings deduction is available only for property for which
-          construction began before July 1, 2026."; p. 3, Capital Construction Fund; p. 5, Part I; p. 6, Medicaid waiver
-          payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you made contributions on your
-          behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III');
-          p. 8, Lines 16a and 16b; p. 9, Line 23; p. 10, Lines 26 and 27a; p. 2, What's New, "Qualified sound recording
-          productions that are produced and recorded in the United States have been added to the types of property for which
-          certain production costs may be deductible provided the production commences before January 1, 2026, in tax years
-          ending after July 4, 2025."; p. 2, "a sporadic activity, a not-for-profit activity, or a hobby does not qualify
-          as a business" and p. 3, "unless you have elected to treat the domestic LLC as a corporation"; p. 6, Line 6, recapture;
-          p. 15, Line 31, "prior year unallowed passive activity losses"; p. 7, Installment sales, "If you use the installment
-          method, attach a statement to your return"; p. 10, Line 23, "But some licenses, such as liquor licenses, may have
-          to be amortized"; p. 10, Line 24a, "Other rules apply to luxury water travel"; p463 p. 12, Luxury Water Travel,
-          "there is a daily limit on the amount you can deduct"; i4562 p. 4, "If the section 179 property is not used predominantly
-          (more than 50%) in your trade or business at any time before the end of the property’s recovery period"; i8995
-          p. 3, "there is a presumption that you’re providing services as an employee for purposes of section 199A for the
-          3-year period after ceasing to be an employee", and p. 3, Determining if information reported on your Form 1099-PATR
-          is included in QBI
+          p. 6, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you
+          made contributions on your behalf as a self-employed person to a dependent care assistance program, complete
+          Form 2441, Parts I and III'); p. 8, Lines 16a and 16b; p. 9, Line 23; p. 10, Lines 26 and 27a; p. 1, Qualified
+          sound recording productions; p. 2, "a sporadic activity, a not-for-profit activity, or a hobby does not
+          qualify as a business" and "unless you have elected to treat the domestic LLC as a corporation"; p. 6, Line 6,
+          recapture; p. 14, Line 31, "prior year unallowed passive activity losses"; p. 6, Installment sales, "If you
+          use the installment method, attach a statement to your return"; p. 9, Line 23, "But some licenses, such as
+          liquor licenses, may have to be amortized"; p. 9, Line 24a, "Other rules apply to luxury water travel"; p463
+          p. 12, Luxury Water Travel, "there is a daily limit on the amount you can deduct"; i8995 p. 2, "QBI doesn’t
+          include any of the following", "Income that isn’t effectively connected with the conduct of a trade or
+          business within the United States"; i1116 p. 5, "Foreign source income generally includes", "Compensation for
+          services performed outside the United States"; i4562 p. 4, "If the section 179 property is not used
+          predominantly (more than 50%) in your trade or business at any time before the end of the property’s recovery
+          period"; i8995 p. 2, "there is a presumption that you’re providing services as an employee for purposes of
+          section 199A for the 3-year period after ceasing to be an employee", and p. 3, Determining if information
+          reported on your Form 1099-PATR is included in QBI; i1040sc p. 16, Business startup costs, "If your business
+          began in 2025, you can elect to deduct up to $5,000 of certain business startup costs", "Your remaining
+          startup costs can be amortized over a 180-month period", "For amortization that begins in 2025, complete and
+          attach Form 4562"
+        to: p. 2, What's New, "The energy efficient commercial buildings deduction is available only for property for
+          which construction began before July 1, 2026."; p. 3, Capital Construction Fund; p. 5, Part I; p. 6, Medicaid
+          waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you made
+          contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form
+          2441, Parts I and III'); p. 8, Lines 16a and 16b; p. 9, Line 23; p. 10, Lines 26 and 27a; p. 2, What's New,
+          "Qualified sound recording productions that are produced and recorded in the United States have been added to
+          the types of property for which certain production costs may be deductible provided the production commences
+          before January 1, 2026, in tax years ending after July 4, 2025."; p. 2, "a sporadic activity, a not-for-profit
+          activity, or a hobby does not qualify as a business" and p. 3, "unless you have elected to treat the domestic
+          LLC as a corporation"; p. 6, Line 6, recapture; p. 15, Line 31, "prior year unallowed passive activity
+          losses"; p. 7, Installment sales, "If you use the installment method, attach a statement to your return"; p.
+          10, Line 23, "But some licenses, such as liquor licenses, may have to be amortized"; p. 10, Line 24a, "Other
+          rules apply to luxury water travel"; p463 p. 12, Luxury Water Travel, "there is a daily limit on the amount
+          you can deduct"; i8995 p. 4, "QBI doesn’t include any of the following", "Income that isn’t effectively
+          connected with the conduct of a trade or business within the United States"; i1116 p. 7, "Foreign source
+          income generally includes", "Compensation for services performed outside the United States"; i4562 p. 4, "If
+          the section 179 property is not used predominantly (more than 50%) in your trade or business at any time
+          before the end of the property’s recovery period"; i8995 p. 3, "there is a presumption that you’re providing
+          services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee",
+          and p. 3, Determining if information reported on your Form 1099-PATR is included in QBI; i1040sc p. 17,
+          Business startup costs, "If your business began in 2026, you can elect to deduct up to $5,000 of certain
+          business startup costs", "Your remaining startup costs can be amortized over a 180-month period", "For
+          amortization that begins in 2026, complete and attach Form 4562-B"
     - set:
         line: sc.line27a
         field: cite.locator
@@ -299,9 +334,11 @@ changes:
           - you chose to deduct the costs of producing a sound recording
           - it has losses of earlier years that the passive activity rules held back
           - you do work in it for a business that employed you within the last 3 years, much the same work as when you were its employee
+          - part of its income is pay for work you did while outside the United States
           - it is a hobby, or an occasional activity not run for profit
           - it received a Form 1099-PATR from a cooperative with amounts not reported as qualified
           - it has a license or other cost that must be written off over several years, such as some liquor licenses
+          - it began in 2025 and spent more than $5,000 to get started before it opened (such as training, market research or advertising)
           - it paid for travel by cruise ship or ocean liner
           - it is an LLC you own alone that chose to be taxed as a corporation
         to: |-
@@ -320,8 +357,10 @@ changes:
           - you chose to deduct the costs of producing a sound recording
           - it has losses of earlier years that the passive activity rules held back
           - you do work in it for a business that employed you within the last 3 years, much the same work as when you were its employee
+          - part of its income is pay for work you did while outside the United States
           - it is a hobby, or an occasional activity not run for profit
           - it received a Form 1099-PATR from a cooperative with amounts not reported as qualified
           - it has a license or other cost that must be written off over several years, such as some liquor licenses
+          - it began in 2026 and spent more than $5,000 to get started before it opened (such as training, market research or advertising)
           - it paid for travel by cruise ship or ocean liner
           - it is an LLC you own alone that chose to be taxed as a corporation

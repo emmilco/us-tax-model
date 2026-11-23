@@ -1231,7 +1231,7 @@
 - **Authored helper label:** Health insurance of this business not deducted on Schedule 1, line 17 (line 3 minus line 14), which counts as a medical expense on Schedule A
 - **Encoded (NonNegDollars):** Subtract line 14 (sc.f7206_line14) from line 3 (sc.f7206_line3). If zero or less, enter -0-.
 - Expr: `{"from":"sc.f7206_line3","op":"subtract_floor0","take":"sc.f7206_line14"}`
-- Cite: [i7206] p. 2, "any medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as medical expenses on Schedule A (Form 1040) if you itemize deductions"; f7206 Form 7206 (2025), lines 3 and 14 (2025; sha256 9cbf92b3)
+- Cite: [i7206] p. 2, "any medical insurance payments not deductible on Schedule 1 (Form 1040), line 17, can be included as medical expenses on Schedule A (Form 1040) if you itemize deductions"; f7206 p. 1, "Enter the smaller of line 3 or line 13 here and on Schedule 1 (Form 1040), line 17" (line 14) (2025; sha256 9cbf92b3)
 
 ## (gate) — `sc.f7206_unused_if_uses`
 

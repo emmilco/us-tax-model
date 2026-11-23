@@ -244,9 +244,10 @@
   },
   "unruled:f4952#1.1": {
    "class": "covered",
-   "evidence": "f4952 p. 3, 'include capital gain distributions from mutual funds and capital loss carryovers.' f4952.line4d is sd.line16 floored at zero; sd.line16 combines sd.line7 and sd.line15, which include the carryovers on Schedule D lines 6 and 14 (from clcw.line8 and clcw.line13) and the capital gain distributions on line 13. As the earlier f4952#1 ruling, rechecked.",
-   "subject_sha": "2929224edbec4638bccd290b5db7eea52465015567f19940d37872c9e2a0dadd",
-   "line": "f4952.line4d"
+   "evidence": "f4952 p. 3, 'include capital gain distributions from mutual funds and capital loss carryovers.' f4952.line4d is sd.line16 floored at zero; sd.line16 combines sd.line7 and sd.line15, which include the carryovers on Schedule D lines 6 and 14 (from clcw.line8 and clcw.line13) and the capital gain distributions on line 13. As the earlier f4952#1 ruling, rechecked. (Carried from the earlier subject's ruling of the same claim, unruled:f4952#1.1; rechecked against the current encoding.)",
+   "subject_sha": "94fb3996f1653791b7a66972bbf3016fc73f1b15c1233a7b41af31c25c75e71f",
+   "line": "f4952.line4d",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:f5329#1.1": {
    "class": "wrong",
@@ -367,9 +368,11 @@
    "subject_sha": "c241b785002883db27470affc2f640330b0532240336c8ed03f6ae1c1e3248f7"
   },
   "unruled:f8889#1.5": {
-   "class": "presentation",
-   "evidence": "i8889 p. 4, Line 1. The self-only/family checkbox is not encoded, but the amounts it would select are figured from the coverage answers: f8889.coverage_year (self-only all year, family all year, or changed, counted month by month) and f8889.dec_coverage for the last-month rule set line 3. The checkbox changes no amount.",
-   "subject_sha": "c241b785002883db27470affc2f640330b0532240336c8ed03f6ae1c1e3248f7"
+   "class": "covered",
+   "line": "f8889.fsa",
+   "evidence": "p969 p. 5, Health FSA grace period. f8889.fsa's help now says 'A 2024 health FSA's extra months in early 2025 count only if money was left in it at the end of 2024', so a grace period with a zero prior-year balance is answered No. (Carried from the earlier subject's ruling of the same claim, unruled:f8889#1.4; rechecked against the current encoding.)",
+   "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:f8919#1.1": {
    "class": "covered",
@@ -448,9 +451,9 @@
   },
   "unruled:interest#1.1": {
    "class": "out of scope",
-   "evidence": "i1040sb p. 1: accrued market discount and contingent payment debt instrument gain are refused by sb.bond_special, which lists 'have market discount to report' and 'a bond whose payments depend on something uncertain (a contingent payment debt instrument)'; interest on frozen deposits is a Schedule B adjustment covered by its last item, 'any other adjustment to the interest or dividends shown on your forms'.",
-   "subject_sha": "8d9c56084136888d3244697f3d630df620848c4eb861b5bf916370d8bb3dca73",
-   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "evidence": "i1040sb p. 1: accrued market discount and contingent payment debt instrument gain are refused by sb.bond_special, which lists 'have market discount to report' and 'a bond whose payments depend on something uncertain (a contingent payment debt instrument)'; interest on frozen deposits is a Schedule B adjustment covered by its last item, 'any other adjustment to the interest or dividends shown on your forms'. (Carried from the earlier subject's ruling of the same claim, unruled:interest#1.1; rechecked against the current encoding.)",
+   "subject_sha": "b35b0ec0691fc608fae882e98904a8eeeca53cad0deb1d29dcbf3505481126d2",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
    "gate": "sb.bond_special"
   },
   "unruled:ira#1.1": {
@@ -609,12 +612,6 @@
    "subject_sha": "da7353dcad20b14a154b44fe756e7348829163598c4d598142cbe30f21dc468d",
    "line": "carloan.requirements"
   },
-  "unruled:s1a#1.4": {
-   "class": "covered",
-   "evidence": "i1040gi pp. 109-110. carloan.col_iii subtracts carloan.col_ii (the part deducted elsewhere) from carloan.qpvli; s1a.line23 sums column (iii); carloan.refi_balance asks 'How much was still owed on the earlier loan on the day this loan replaced it?' for the refinancing limit; the qualifying-interest questions exclude negative equity, insurance and trailers (carloan.mixed / nonqualifying, as the earlier ruling, lines present).",
-   "subject_sha": "da7353dcad20b14a154b44fe756e7348829163598c4d598142cbe30f21dc468d",
-   "line": "carloan.col_iii"
-  },
   "unruled:s8812#1.1": {
    "class": "covered",
    "evidence": "i1040gi p. 18, 'Could you be claimed as a dependent on someone else's 2025 tax return? ... You can't claim any dependents.' dependent.filer_not_dependent (sa.dependent false) is a Step 2 test of every dependent; the child born and died in 2025 without an SSN is refused by dependent.claimed_no_tin.",
@@ -668,9 +665,9 @@
   },
   "unruled:sc#1.1": {
    "class": "covered",
-   "evidence": "i1040sc p. 16, Line 48, as ruled on the earlier subject: sc.line48 asks costs \"needed to run\" the business that no other question asks, and its help leaves out equipment that lasts more than a year, vehicles, the home, the filer's own health insurance and retirement plan; charitable contributions, fines and personal expenses are not costs of running a business; reforestation is refused by scope.reforestation; barrier removal and the de minimis safe harbor are elections that only allow more; accrual-method bad debts are refused with accounting methods by sc.screened.",
-   "subject_sha": "fc964d7e3183c92f0fe5c0b9236f04cb839f524f70d828f586a319cfb238cb44",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "evidence": "i1040sc p. 16, Line 48, as ruled on the earlier subject: sc.line48 asks costs \"needed to run\" the business that no other question asks, and its help leaves out equipment that lasts more than a year, vehicles, the home, the filer's own health insurance and retirement plan; charitable contributions, fines and personal expenses are not costs of running a business; reforestation is refused by scope.reforestation; barrier removal and the de minimis safe harbor are elections that only allow more; accrual-method bad debts are refused with accounting methods by sc.screened. (Carried from the earlier subject's ruling of the same claim, unruled:sc#1.1; rechecked against the current encoding.)",
+   "subject_sha": "2971fe3247ac93e8266420f5d32e30bb705d4752dbd552208f557200959ec601",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
    "line": "sc.line48"
   },
   "unruled:sc#1.2": {
@@ -776,13 +773,6 @@
    "evidence": "i1040se p. 7: the statement naming the person who received Form 1098 and the \"See attached\" notation are a filing attachment; rental.amt13 asks the filer's share of the interest, so no amount changes.",
    "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:rental#1.8": {
-   "class": "out of scope",
-   "evidence": "i8582 p. 10, prior-year unallowed CRD. f8582.prior_crd asks whether any of the held-back loss was a CRD, and f8582.line3 refuses it.",
-   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "f8582.line3"
   },
   "unruled:k1p#1.1": {
    "class": "out of scope",
@@ -945,17 +935,18 @@
    "line": "rental.amt10"
   },
   "unruled:rental#1.6": {
-   "class": "covered",
-   "evidence": "i1040se p. 7, the first telephone line into the filer's residence is a personal expense. rental.amt17 asks the utilities of this rental, not of the filer's residence; a rental that is part of the filer's home is refused by rental.part_home.",
-   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "line": "rental.amt17"
+   "class": "out of scope",
+   "evidence": "i1040se p. 6, Form 4835. The farming tick (scope.farm) says \"Count a farm you run and a share of crops or livestock from land you let a farmer use. A Yes ends the interview here.\" (Carried from the earlier subject's ruling of the same claim, unruled:rental#1.9; rechecked against the current encoding.)",
+   "subject_sha": "28c8f704d742b23b7c0e1369a475ff3ec846c2ba2d7b00a898389a3c7b4dd422",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
+   "gate": "scope.farm"
   },
   "unruled:household#1.1": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 13: 'a married couple can't file a joint return if either spouse is a nonresident alien'; scope.nonresident asks 'For any part of 2025, were you (or, on a joint return, your spouse) a nonresident alien' and a Yes is refused through scope.other_income, including the election to be treated as residents (p. 14).",
-   "subject_sha": "ff332dc11101a7c4310c39f92cd80f03cc612ccf2ef89809cb52bfbd197153d3",
-   "gate": "scope.nonresident"
+   "evidence": "i1040gi p. 13: 'a married couple can't file a joint return if either spouse is a nonresident alien'; scope.nonresident asks 'For any part of 2025, were you (or, on a joint return, your spouse) a nonresident alien' and a Yes is refused through scope.other_income, including the election to be treated as residents (p. 14). (Carried from the earlier subject's ruling of the same claim, unruled:household#1.1; rechecked against the current encoding.)",
+   "subject_sha": "4fc55f3b3a592860c75ae93fc04a43b0e774e4f531c9941e47c64b6657b9199f",
+   "gate": "scope.nonresident",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:household#1.2": {
    "class": "out of scope",
@@ -988,27 +979,6 @@
    "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "gate": "s2.w2_marks"
-  },
-  "unruled:scope#1.5": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 114: s2.other_tax asks \"the additional tax on deferred compensation that failed section 409A or 457A, the tax on an excess parachute payment, the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, or any other tax to be written in on line 1y or line 17z\", refused through s2.other; look-back interest is asked separately and refused.",
-   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "s2.other"
-  },
-  "unruled:scope#1.7": {
-   "class": "out of scope",
-   "evidence": "i8915f p. 2: a 2025 qualified disaster distribution or a qualified distribution for a home is asked on its Form 1099-R by retirement.disaster and refused through retirement.special, as ruled on the earlier subject.",
-   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "retirement.special"
-  },
-  "unruled:scope#1.8": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 25: corrective distributions of excess deferrals carry codes 8, P, D or E in box 7, which the code question offers only as \"Any other code\", refused by retirement.bad_code.",
-   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "retirement.bad_code"
   },
   "unruled:f8582#1.1": {
    "class": "covered",
@@ -1228,9 +1198,10 @@
   },
   "unruled:f1040#1.5": {
    "class": "out of scope",
-   "evidence": "scope.excess_deferral asks 'did you (or, on a joint return, your spouse) put more of your pay into retirement plans at work than the yearly limit ($23,500 for most people)?' (asked when a W-2 is listed) and scope.schedule1/other_income refuse a Yes (scope.excess_deferral_if_w2 is in scope.other_income), so line 1h excess deferrals (i1040gi p. 24) are never computed.",
-   "subject_sha": "e5decc1d9f689ad9dc6ef4d7c2df5273c0fc2c4012e913b079d424ce4d16f4e0",
-   "gate": "scope.excess_deferral"
+   "evidence": "ssb.pub915 includes ssb.repaid_more ('is box 4 (benefits repaid) more than box 3 (benefits paid)?') and refuses, and ssb.terror_disability refuses disability payments 'for injuries incurred as a direct result of a terrorist attack' (i1040gi p. 31). (Carried from the earlier subject's ruling of the same claim, unruled:f1040#1.7; rechecked against the current encoding.)",
+   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
+   "gate": "ssb.pub915",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:f1040#1.6": {
    "class": "out of scope",
@@ -1245,66 +1216,39 @@
    "gate": "ssb.pub915"
   },
   "unruled:f1040#1.8": {
-   "class": "out of scope",
-   "evidence": "Line 7a always comes from Schedule D (sd.to1040), so Exception 1 (i1040gi p. 31, 'You don't have to file Form 8949 or Schedule D if ...') is optional and gives the same amount; nominee income is refused by sb.nominee through sb.unsupported ('belong to someone else'), and a child's gain by scope.f8814 ('reporting a child's 2025 interest or dividends on your own return') through scope.other_line16.",
-   "subject_sha": "e5decc1d9f689ad9dc6ef4d7c2df5273c0fc2c4012e913b079d424ce4d16f4e0",
-   "gate": "sb.unsupported"
+   "class": "covered",
+   "evidence": "Nonresident-spouse and dual-status election is refused: scope.nonresident asks 'For any part of 2025, were you (or, on a joint return, your spouse) a nonresident alien' and scope.other_income refuses a Yes (i1040gi p. 13: 'a married couple can't file a joint return if either spouse is a nonresident alien'). Divorce-for-tax-purposes and annulment are in the household.married_dec31 question text: 'Answer No if ... you had a court decree of annulment' and 'if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years' (Pub. 501 p. 6). (Carried from the earlier subject's ruling of the same claim, unruled:f1040#1.1; rechecked against the current encoding.)",
+   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
+   "line": "household.married_dec31",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:f1040#1.9": {
    "class": "covered",
-   "evidence": "The boxes are asked: sa.dependent ('Can someone claim you or your spouse as a dependent'), person.age65_box and person.blind per person (sa.boxes_age65, sa.boxes_blind), dual-status is refused by scope.nonresident (any part of 2025), and the MFS spouse boxes and spouse-itemizes zero (i1040gi p. 33-34) by sa.spouse_extra and sa.mfs_spouse_itemizes; sa.boxes_age65 excludes 'a person who died in 2025 before reaching 65'.",
-   "subject_sha": "e5decc1d9f689ad9dc6ef4d7c2df5273c0fc2c4012e913b079d424ce4d16f4e0",
-   "line": "sa.boxes_age65"
+   "evidence": "The f1040.line26 question's help reads 'For joint payments with a spouse or former spouse filing separately, enter your share: the split you both agree on, or else in proportion to your separate 2025 taxes', which is i1040gi p. 39 and Pub. 504 p. 11 (joint estimated tax divided on separate returns). (Carried from the earlier subject's ruling of the same claim, unruled:f1040#1.13; rechecked against the current encoding.)",
+   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
+   "line": "f1040.line26",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:f1040#1.10": {
    "class": "covered",
-   "evidence": "f1040.line13a copies qbi.deduction, and the qbi unit chooses Form 8995 or 8995-A (qbi.use_8995a) from the taxable-income threshold of i1040gi p. 34; the 'attach the form' sentence is a filing instruction with no amount.",
-   "subject_sha": "e5decc1d9f689ad9dc6ef4d7c2df5273c0fc2c4012e913b079d424ce4d16f4e0",
-   "line": "qbi.deduction"
-  },
-  "unruled:f1040#1.11": {
-   "class": "out of scope",
-   "evidence": "sa.excluded_income is asked of every filer ('Do you (or, on a joint return, your spouse) leave out of this return any income earned abroad, in Puerto Rico or in American Samoa?', help 'These are the exclusions of Form 2555 ...; A Yes ends the interview here') and refuses sa.line17 and the credits, so a Form 2555 return never reaches the Foreign Earned Income Tax Worksheet of i1040gi p. 36.",
-   "subject_sha": "e5decc1d9f689ad9dc6ef4d7c2df5273c0fc2c4012e913b079d424ce4d16f4e0",
-   "gate": "sa.excluded_income"
-  },
-  "unruled:f1040#1.12": {
-   "class": "covered",
-   "evidence": "household.ctc_ssn ('you, or your spouse if filing jointly, have an SSN valid for employment, and each other person on the return has an SSN or ITIN') and the dependent unit's SSN, ITIN and dependent-test lines (dependent.work_ssn, dependent.citizen_ssn, joint-return and citizenship tests) implement the i1040gi p. 39 and Pub. 501 p. 11 rules.",
-   "subject_sha": "e5decc1d9f689ad9dc6ef4d7c2df5273c0fc2c4012e913b079d424ce4d16f4e0",
-   "line": "household.ctc_ssn"
-  },
-  "unruled:f1040#1.13": {
-   "class": "covered",
-   "evidence": "The f1040.line26 question's help reads 'For joint payments with a spouse or former spouse filing separately, enter your share: the split you both agree on, or else in proportion to your separate 2025 taxes', which is i1040gi p. 39 and Pub. 504 p. 11 (joint estimated tax divided on separate returns).",
-   "subject_sha": "e5decc1d9f689ad9dc6ef4d7c2df5273c0fc2c4012e913b079d424ce4d16f4e0",
-   "line": "f1040.line26"
-  },
-  "unruled:f1040#1.14": {
-   "class": "covered",
-   "evidence": "household.ctc_ssn encodes the i1040gi p. 61 rule (one spouse needs an SSN valid for employment, the other an SSN or ITIN issued by the due date) and gates the child tax credit and ACTC of the s8812 unit.",
-   "subject_sha": "e5decc1d9f689ad9dc6ef4d7c2df5273c0fc2c4012e913b079d424ce4d16f4e0",
-   "line": "household.ctc_ssn"
-  },
-  "unruled:f1040#1.15": {
-   "class": "covered",
-   "evidence": "f8863.ban asks whether the American opportunity credit 'was denied or reduced ... so that Form 8862 is required' or the filer is 'within 2 years of a final determination ... reckless or intentional disregard ... or within 10 years ... fraud' and refuses (f8863.ban_refused); the Pell grant inclusion choice is a scholarship the filer includes in income (dependent.edu_a_this_year: 'a scholarship the student includes in income (... Schedule 1 line 8r)').",
-   "subject_sha": "e5decc1d9f689ad9dc6ef4d7c2df5273c0fc2c4012e913b079d424ce4d16f4e0",
-   "line": "f8863.ban"
+   "evidence": "f8863.ban asks whether the American opportunity credit 'was denied or reduced ... so that Form 8862 is required' or the filer is 'within 2 years of a final determination ... reckless or intentional disregard ... or within 10 years ... fraud' and refuses (f8863.ban_refused); the Pell grant inclusion choice is a scholarship the filer includes in income (dependent.edu_a_this_year: 'a scholarship the student includes in income (... Schedule 1 line 8r)'). (Carried from the earlier subject's ruling of the same claim, unruled:f1040#1.15; rechecked against the current encoding.)",
+   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
+   "line": "f8863.ban",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:sa#1.1": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 33-34, dual-status alien: a filer who was a nonresident alien for any part of 2025 answers Yes to scope.nonresident (\"For any part of 2025, were you ... a nonresident alien\"), refused through scope.other_income on every return, not only the EIC path.",
-   "subject_sha": "5f329bfea96467eac36159850a6a301a6a20a6340ea95064d4e77652336e64e3",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
+   "evidence": "i1040gi pp. 33-34, dual-status alien: a filer who was a nonresident alien for any part of 2025 answers Yes to scope.nonresident (\"For any part of 2025, were you ... a nonresident alien\"), refused through scope.other_income on every return, not only the EIC path. (Carried from the earlier subject's ruling of the same claim, unruled:sa#1.1; rechecked against the current encoding.)",
+   "subject_sha": "dd052b5349834a61583378e1e8284f288d509a3e76f198bc46223dc6d09711ee",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
    "gate": "scope.other_income"
   },
   "unruled:sa#1.2": {
    "class": "out of scope",
-   "evidence": "i1040sca p. 7, generation-skipping tax on income distributions: such distributions come from a trust and are reported on Schedule K-1 (Form 1041), refused by scope.k1 (\"income or a loss from a partnership, an S corporation, an estate or a trust\").",
-   "subject_sha": "5f329bfea96467eac36159850a6a301a6a20a6340ea95064d4e77652336e64e3",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "scope.k1"
+   "evidence": "i1040sca p. 8, Form 8396: s3.mcc_if_interest asks about a mortgage credit certificate and scope.ready_credits refuses it (\"A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A\"). (Carried from the earlier subject's ruling of the same claim, unruled:sa#1.3; rechecked against the current encoding.)",
+   "subject_sha": "dd052b5349834a61583378e1e8284f288d509a3e76f198bc46223dc6d09711ee",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
+   "gate": "scope.ready_credits"
   },
   "unruled:s2#1.1": {
    "class": "out of scope",
@@ -1445,13 +1389,6 @@
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "gate": "scope.other_income"
   },
-  "unruled:scope#1.6": {
-   "class": "out of scope",
-   "evidence": "i1040sse p. 1, Form 4029: person.se_screen lists \"having an approved Form 4361 or Form 4029\", refused through person.se_screened, as ruled on the earlier subject.",
-   "subject_sha": "ebb68ff25479ed42cd53b84fddcd5535adba2bbb31d7612f781da1e660ac68f1",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "person.se_screened"
-  },
   "unruled:f8582#1.5": {
    "class": "out of scope",
    "evidence": "i8582 p. 1: losses are freed 'when you sell or exchange your entire interest in the activity in a fully taxable transaction'; a sale of a rental is refused by sd.business_property ('Was any of that property used in a business or rented out ... a Yes ends the interview here'), and a passive business by scope.passive.",
@@ -1515,17 +1452,10 @@
   },
   "unruled:rental#1.2": {
    "class": "out of scope",
-   "evidence": "p925 p. 15, rental incidental to a development activity: the recharacterization applies to property sold in the year whose rental began less than 24 months before; a building sold or disposed of in 2025 is refused by rprop.disposed through rprop.screen and rprop.dep (Form 4562 real property outside the mid-month tables).",
-   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "rprop.dep"
-  },
-  "unruled:rental#1.7": {
-   "class": "covered",
-   "evidence": "i1040se p. 6; p527 p. 5. The rental.amt19 help: \"Not something that lasts more than a year, such as an appliance, furniture, an improvement, or equipment you lease to own ... Not loan costs: points go with other interest; mortgage commissions and recording fees are part of its cost\"; own labor is not an amount paid.",
-   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "line": "rental.amt19"
+   "evidence": "i1040se p. 7, Form 8990: a rental real estate trade or business is refused by sche.qbi_business through sche.line26, as ruled on the earlier subject; i8990 also exempts a small business. (Carried from the earlier subject's ruling of the same claim, unruled:rental#1.3; rechecked against the current encoding.)",
+   "subject_sha": "28c8f704d742b23b7c0e1369a475ff3ec846c2ba2d7b00a898389a3c7b4dd422",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
+   "gate": "sche.line26"
   },
   "unruled:rprop#1.1": {
    "class": "out of scope",
@@ -1656,15 +1586,9 @@
   "unruled:sli#1.1": {
    "class": "covered",
    "line": "sli.unqualified_any",
-   "evidence": "i1040gi p. 99, '3. Any person you could have claimed as a dependent for the year the loan was taken out except that: a. The person filed a joint return; b. The person had gross income ...'. sli.unqualified_any's help: 'Someone you could have claimed as a dependent but for that person's income or joint return, or because you could be claimed yourself, counts as your dependent here.'",
-   "subject_sha": "1ff4d64a4c9dc3c4f4056c247257ee16166a88938169a3484bab3eb5c81dea33"
-  },
-  "unruled:rental#1.9": {
-   "class": "out of scope",
-   "evidence": "i1040se p. 6, Form 4835. The farming tick (scope.farm) says \"Count a farm you run and a share of crops or livestock from land you let a farmer use. A Yes ends the interview here.\"",
-   "subject_sha": "37b9669d62a0d30af1020a258697275ac7a9ffd47e4c8d57d4cb60248fe9e18a",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "scope.farm"
+   "evidence": "i1040gi p. 99, '3. Any person you could have claimed as a dependent for the year the loan was taken out except that: a. The person filed a joint return; b. The person had gross income ...'. sli.unqualified_any's help: 'Someone you could have claimed as a dependent but for that person's income or joint return, or because you could be claimed yourself, counts as your dependent here.' (Carried from the earlier subject's ruling of the same claim, unruled:sli#1.1; rechecked against the current encoding.)",
+   "subject_sha": "8e9a8f0aeca0972bb0a6690b4c978072d20e39a2e0a1e39127369b55a6b9978b",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:retirement#1.3": {
    "class": "out of scope",
@@ -1692,26 +1616,25 @@
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "gate": "scope.ready_credits"
   },
-  "unruled:sa#1.4": {
-   "class": "real gap",
-   "evidence": "p526 pp. 5-6; i1040sca p. 10. The $50-a-month cap for hosting a student is the open BUG-1090, as ruled on the earlier subject; the 15% state tax credit exception and the returned-ticket rule only allow more than the question asks (no overstatement); gifts to civic leagues, unions and chambers of commerce are not gifts to qualified organizations, which the sa.line11 question asks for. Not filed again.",
-   "subject_sha": "5f329bfea96467eac36159850a6a301a6a20a6340ea95064d4e77652336e64e3",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "bug": "BUG-1090"
-  },
-  "unruled:sa#1.5": {
-   "class": "out of scope",
-   "evidence": "i1040sca p. 12, claim of right over $3,000: s3.repaid_income asks it and scope.ready_credits refuses (\"Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16)\").",
-   "subject_sha": "5f329bfea96467eac36159850a6a301a6a20a6340ea95064d4e77652336e64e3",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "scope.ready_credits"
-  },
   "unruled:ssb#1.1": {
    "class": "out of scope",
    "evidence": "p915 p. 5: benefits of a U.S. citizen resident in a treaty country are income exempt under a tax treaty, asked by scope.treaty (\"Income exempt under a tax treaty with another country ... A Yes ends the interview here\") and refused through scope.other_income.",
    "subject_sha": "0a2e0145345a092f7bb39569a83162d956a1325484c3eac4042db02448d9def1",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "gate": "scope.other_income"
+  },
+  "unruled:f8889#1.8": {
+   "class": "presentation",
+   "evidence": "i8889 p. 4, Line 1. The self-only/family checkbox is not encoded, but the amounts it would select are figured from the coverage answers: f8889.coverage_year (self-only all year, family all year, or changed, counted month by month) and f8889.dec_coverage for the last-month rule set line 3. The checkbox changes no amount. (Carried from the earlier subject's ruling of the same claim, unruled:f8889#1.5; rechecked against the current encoding.)",
+   "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:sd#1.2": {
+   "class": "out of scope",
+   "evidence": "i1040sd p. 10: a 2025 separate return after a 2024 joint return is a Yes to clcw.spouse_screen ('the 2024 return these figures come from was a joint return, and for 2025 you are not filing a joint return with the same spouse'), refused on clcw.line1; an excluded canceled debt (Form 982) is refused by s1.cod_refused. (Carried from the earlier subject's ruling of the same claim, unruled:sd#1.1; rechecked against the current encoding.)",
+   "subject_sha": "891f1db3885def45806e33cfed610c35a502a9dc6598f0dcb1b5c6463902780e",
+   "gate": "clcw.spouse_screen",
+   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   }
  },
  "baseline": {}

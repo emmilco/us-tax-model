@@ -68,7 +68,7 @@ expected December 2026 to January 2027 (T-011, T-322).
 
 - **Last release:** `r2026.11.16.1` (2026-11-16), the newest release tag before this commit; `git describe --tags
   --match 'r*'` gives the commits after it (a file cannot name the commit that holds it).
-- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,224 entries (highest BUG-1224), 107 open, 4 of them covered
+- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,224 entries (highest BUG-1224), 109 open, 4 of them covered
   by a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 72 rows not done; scoreboard 692 of 3,911 computed lines
   (17.7%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
   156 ambiguity entries, 152 linked to a line (`ambiguities/2025.yaml`).

@@ -55,6 +55,34 @@
    }
   },
   {
+   "printed": "1",
+   "project_expr_sha256": "ce4462ee0ed57e880897dfb6f31d81575b7aea52843b8b68ec9c323f44c7de7d",
+   "second_expr_sha256": "1295c5c395223f6d67942d99d07d1ecf7d35c34148f4834173e59a69ead1ba3d",
+   "ruling": "Ruling: model error; i1040sca p. 2, Line 1, medical and dental expenses include insurance premiums. The reply gates line 1 on sa.medical_any alone. The project also asks line 1 when sa.medical_any is No but sa.medical_premiums is Yes ('did you ... pay for health insurance with money that had already been taxed, such as Medicare premiums, a Marketplace plan, COBRA or long-term care insurance'), and when a Form 5329 exception 05 amount (person.x_e05, distributions for unreimbursed medical expenses) is entered, since each implies medical expenses the filer may not have counted when answering sa.medical_any. Where the reply gives 0 the project asks for the amount, so the project only asks more (wider asking, no amount wrong); both add person.sehi_unused. Project stands.",
+   "context": "495b58e7fe670c06f60f2e8b0669653a463d1d06effb7ec7391b3c434c4fd328",
+   "date": "2026-11-23",
+   "run": "27899d5d5860cb33a3f222120c6d99edccfac60a2e01d3eb0affbbaef0f72e92",
+   "subject_key": "29c44672baf6038f910a7f33ba730d2a7af6984ea9eeb5fa17396e9994e674e3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:mutation.m3.sa.medical_premiums@sa",
+     "fixture:advland.retirement.e05_medical_asked@sa",
+     "partial:stage14.asset.hy_5yr-sa.medical_premiums@sa",
+     "partial:stage14.asset.bonus_100-sa.medical_premiums@sa",
+     "partial:stage14.asset.prior_7yr-sa.medical_premiums@sa",
+     "partial:stage14.asset.qip-sa.medical_premiums@sa",
+     "partial:stage14.asset.done-sa.medical_premiums@sa",
+     "partial:stage14.asset.refuse_class-sa.medical_premiums@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "11",
    "project_expr_sha256": "e719d66f989d62958e14d074efffb9b18b4e03880eb28f2adf22fc82a18f58df",
    "second_expr_sha256": "3ed361586b12ed0853b962a744d9c9976692910c7427dc78d38d6ae1340c3805",

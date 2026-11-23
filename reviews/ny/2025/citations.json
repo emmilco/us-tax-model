@@ -1,0 +1,13 @@
+{
+ "about": "Rulings for tools/citations.py: page-locator anchors that are not printed text on the cited pages, and quotes printed there that the extracted text does not show in reading order. Keyed by document and the exact anchor or quote. status: proposed (written by the agent) or accepted (owner).",
+ "anchors": [],
+ "quotes": [
+  {
+   "doc": "ny_it225i",
+   "quote": "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003.",
+   "kind": "extraction",
+   "status": "proposed",
+   "reason": "S-213 begins at the foot of p. 20 ('With the exception of ... described in IRC § 1400L(b)(2), New') and continues at the top of p. 21 ('York State does not follow ...'); the extracted text of p. 20 puts a line of the other column ('your New York income for that year or years, if the expenditures') after 'New', so the sentence is not contiguous across the page break."
+  }
+ ]
+}

@@ -1,8 +1,120 @@
 {
  "form": "s1",
  "reviews": {
+  "gate:s1.alimony_if_any": {
+   "subject_sha": "480d9d4002e74101f104e1bc6c9d4a395f8e17ebb5dc4f851d91fa72994d66e6",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer with two divorce or separation agreements. In 2025 they receive or pay alimony under a 2016 agreement with one former spouse and under a 2021 agreement with another.",
+       "why_no": "They truthfully answer yes to 'Did you receive or pay alimony ... in 2025 under a divorce or separation agreement entered into on or before December 31, 2018'. That makes s1.alimony_if_any true, so the tool sets the New York line to 'No' and never asks about the 2021 payments. The federal text expects more than one agreement: 'If you are including alimony payments from more than one divorce or separation agreement ...'.",
+       "line": "ny_it201.alimony_later_if_not_old",
+       "irs_text": "ny_it225i p. 10, A-119: 'If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received.' p. 18, S-136: 'If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid.'",
+       "severity": "high",
+       "fix": "Do not make the post-2018 question depend on the pre-2019 answer. Whenever the 2023–2025 alimony helper is yes, ask separately: 'Did you (or, on a joint return, your spouse) pay or receive any alimony or separate maintenance in 2025 under an agreement executed after December 31, 2018, or under an older agreement later modified to say that New York Tax Law § 612(w) applies?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A married couple filing jointly. One spouse pays alimony in 2025 under a 2015 agreement. The other spouse receives alimony under a 2020 agreement.",
+       "why_no": "The pre-2019 question covers either spouse ('Did you receive or pay ...'). The first spouse's old agreement makes the answer a truthful yes, so the tool marks the New York line 'No' and never asks about the second spouse's post-2018 alimony. New York adds that alimony to income.",
+       "line": "ny_it201.alimony_later_if_not_old",
+       "irs_text": "ny_it225i p. 10, A-119: 'An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument ... that was executed after December 31, 2018.'",
+       "severity": "high",
+       "fix": "Ask about post-2018 (applicable) alimony for each spouse, without regard to any pre-2019 answer. Gate only on the broad 'pay or receive alimony in 2023–2025' helper."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer whose divorce agreement was signed in 2017 and modified in 2022. The modification expressly says the post-2018 rules, including New York Tax Law § 612(w), apply. They pay or receive alimony under it in 2025.",
+       "why_no": "The agreement was 'entered into on or before December 31, 2018', so they truthfully answer yes to the pre-2019 question. The tool then sets the New York line to 'No'. New York, however, treats payments under a pre-2019 instrument modified this way as applicable alimony.",
+       "line": "ny_it201.alimony_later_if_not_old",
+       "irs_text": "ny_it225i p. 10, A-119: 'This also applies to any divorce or separation instrument executed on or before December 31, 2018, and modified after December 31, 2018, if the modification to the instrument expressly provides that the addition and subtraction modifications contained in Tax Law § 612(w) apply.'",
+       "severity": "high",
+       "fix": "In the pre-2019 question or its help, exclude agreements modified after 2018 to adopt the new rules. Ask separately about any such modification, and route a yes to the New York applicable-alimony question."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer who must include or may deduct a recapture of alimony paid in 2023–2024 under an old agreement. In 2025 they also pay or receive alimony under a new agreement made after 2018.",
+       "why_no": "The recapture clause ('or must you include or may you deduct a recapture of alimony?') makes them answer yes. That makes the gate condition true, and the post-2018 alimony is never asked about.",
+       "line": "ny_it201.alimony_later_if_not_old",
+       "irs_text": "ny_it225i p. 18, S-136: 'If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid.'",
+       "severity": "medium",
+       "fix": "Separate recapture from the New York applicable-alimony question. Ask about post-2018 alimony regardless of recapture."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who reaches the gated question after answering no to 'pay or receive alimony in 2023, 2024 or 2025', or who paid only under a post-2018 agreement.",
+       "why_no": "The question 'pay or receive any of that alimony in 2025' refers to 'that alimony' but never defines it. The definition (after December 31, 2018) appears only in the help text. A filer may read 'that' as the pre-2019 alimony they just said no to, and answer no.",
+       "line": "ny_it201.alimony_later_if_not_old",
+       "irs_text": "ny_it225i p. 10, A-119: 'a payment made under an alimony or separation instrument ... that was executed after December 31, 2018.'",
+       "severity": "medium",
+       "fix": "Make the question self-contained: 'Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2025 under a divorce or separation agreement made after December 31, 2018 (or an older one modified to adopt New York Tax Law § 612(w))?'"
+      }
+     ],
+     "prompt_sha": "a6c001e8d894e73bb3508e64e8ad3865cc62cde65edab9db254bdc9cad22c044",
+     "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
+     "model": "claude-opus-5-5",
+     "cost": 0.111696,
+     "date": "2026-11-23",
+     "response": ".transcription/ny/false_no/gate_s1.alimony_if_any.480d9d4002e7.1.response.txt"
+    }
+   ],
+   "condition": "s1.alimony_if_any",
+   "lines": [
+    "ny_it201.alimony_later_if_not_old"
+   ],
+   "inputs": [
+    "ny_it201.ask.alimony_later"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      89,
+      95
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 89, Line 2a; p. 95, Line 19a"
+     ],
+     "cols_pages": [
+      89,
+      95
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "ny_it225i",
+     "revision": "2025",
+     "text_sha256": "a536603d330d3ed7cb005555b0c1bd4e1ae48673f40827b8f3426c73abbb9d46",
+     "pages": [
+      10,
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, A-119, \"An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018.\"; p. 18, S-136, \"If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid.\"",
+      "p. 10, A-119, \"a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018\""
+     ],
+     "cols_pages": [
+      10,
+      18
+     ],
+     "cols_sha256": "6cac12fb00550d49e37f4cad6e4dbbd91d39ed9d6d1c372116571ca85101af8f"
+    }
+   ]
+  },
   "gate:s1.has_sc": {
-   "subject_sha": "b79f83d1bd14602d6a282f805f0975116edeaebaaefc5e5c397deb7424a6c7db",
+   "subject_sha": "d4a5236c3ecd24a60706a4bf3e1eae60deba1dfd1313a340efb2d1a25209e96f",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -10,60 +122,80 @@
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A full-year New York City resident who is a beneficiary of a trust. The trust made an accumulation distribution that qualifies for the New York City accumulation distribution credit. The filer has no sole proprietorship and no Schedule C.",
-       "why_no": "The tool computes the gate as false because the return has no Schedule C. The question is never asked, so line 53 is zero. Even if the question were asked, it mentions only unincorporated business tax, so the filer would truthfully answer no.",
+       "who": "A full-year New York City resident with no business who, as a beneficiary, received an accumulation distribution from a trust in 2025. The trust had paid New York City tax on that income in earlier years. No Schedule C is on the return.",
+       "why_no": "The computed gate counts Schedules C. With none on the return, the gate is false, the question is never asked, and line 53 is set to zero.",
        "line": "ny_it201.gate.city_credits (IT-201 line 53)",
-       "irs_text": "ny_it201i p. 15, Line 53: \"Can you claim the New York City unincorporated business tax (UBT) credit, the New York City accumulation distribution credit, or the part-year resident nonrefundable New York City child and dependent care credit?\"",
+       "irs_text": "ny_it201i p. 15, Line 53: \"Can you claim the New York City unincorporated business tax (UBT) credit, the New York City accumulation distribution credit, or the part-year resident nonrefundable New York City child and dependent care credit? ... If Yes, complete Section C of Form IT-201-ATT and enter the amount from Form IT-201-ATT, line 10, on line 53.\"",
        "severity": "high",
-       "fix": "Do not gate line 53 on Schedule C. For every return with New York City resident tax (line 51 or line 52 non-zero), ask all three credits as separate questions. Ask about the accumulation distribution credit in terms the filer can check, such as \"Did you receive a distribution of income a trust had accumulated in earlier years?\""
+       "fix": "Do not tie line 53 to Schedule C. Gate on New York City full-year or part-year residence (for either spouse), then ask each of the three credits separately, as the instructions do."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A part-year New York City resident who paid for child or dependent care so they could work, while living in the city. The filer is a wage earner with no Schedule C.",
-       "why_no": "The gate is false without a Schedule C, so the part-year resident New York City child and dependent care credit is never offered and line 53 is zero.",
+       "who": "A W-2 employee who moved into or out of New York City during 2025 and paid child care so they could work. No Schedule C is on the return.",
+       "why_no": "The Schedule C gate is false, so the part-year resident New York City child and dependent care credit is never reached and line 53 is zero.",
        "line": "ny_it201.gate.city_credits (IT-201 line 53)",
-       "irs_text": "ny_it201i p. 15, Line 53: \"...or the part-year resident nonrefundable New York City child and dependent care credit? ... If Yes, complete Section C of Form IT-201-ATT and enter the amount from Form IT-201-ATT, line 10, on line 53.\"",
+       "irs_text": "ny_it201i p. 15, Line 53: \"...or the part-year resident nonrefundable New York City child and dependent care credit?\"",
        "severity": "high",
-       "fix": "Ask every part-year New York City resident with dependent care expenses whether they paid for child or dependent care during the part of 2025 they lived in New York City. Do not condition this on Schedule C."
+       "fix": "Gate on part-year New York City residence. Ask: \"Were you (or your spouse) a New York City resident for only part of 2025 and did you pay child or dependent care expenses?\""
       },
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A New York City resident who is a partner in a partnership or a member of a multi-member LLC. The partnership paid New York City unincorporated business tax. The partner's income is on Schedule E and their K-1, not on Schedule C.",
-       "why_no": "No Schedule C means the gate is false, so the question is skipped. Even if asked, \"Did your business pay\" reads as the filer's own sole proprietorship. A partner would truthfully say their business did not pay; the partnership did.",
+       "who": "A New York City resident who is a partner in a partnership, such as a law or medical partnership, or an LLC member. The partnership paid New York City UBT for 2025. The filer reports the income on Schedule E (K-1), and neither spouse has a Schedule C.",
+       "why_no": "No Schedule C means the gate is false. The UBT credit available to resident partners for their share of partnership UBT is dropped.",
        "line": "ny_it201.gate.city_credits (IT-201 line 53)",
-       "irs_text": "ny_it201i p. 15, Line 53: \"Can you claim the New York City unincorporated business tax (UBT) credit...\" (the credit is not limited to Schedule C filers)",
+       "irs_text": "ny_it201i p. 15, Line 53: \"Can you claim the New York City unincorporated business tax (UBT) credit...\" (the instructions do not limit the credit to sole proprietors)",
        "severity": "high",
-       "fix": "Widen the gate to any New York City resident with Schedule C, Schedule E partnership income, or Schedule F income. Reword the question: \"Did you or your spouse, or any partnership or LLC in which either of you is a partner or member, pay New York City unincorporated business tax for 2025?\""
+       "fix": "Ask whether any business owned by you or your spouse, alone or through a partnership or LLC, paid New York City UBT. Do not condition the question on Schedule C."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A New York City resident sole proprietor (has a Schedule C) whose business owes no UBT, for example because it is below the filing threshold. The same filer received a trust accumulation distribution, or was a part-year New York City resident with child care costs.",
+       "why_no": "The gated question asks only \"Did your ... business pay New York City unincorporated business tax for 2025?\" The truthful answer is no, and the other two credits on the same line are never asked.",
+       "line": "ny_it201.gate.city_credits (IT-201 line 53)",
+       "irs_text": "ny_it201i p. 15, Line 53: \"...the New York City accumulation distribution credit, or the part-year resident nonrefundable New York City child and dependent care credit?\"",
+       "severity": "high",
+       "fix": "Use the instructions' full question listing all three credits, or ask three separate yes/no questions."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A married couple filing jointly. Only the spouse runs a sole proprietorship in New York City that paid unincorporated business tax. The filer answering the questions has a separate Schedule C side activity, or is answering on behalf of both.",
-       "why_no": "\"Did your business pay\" can be read as the answering filer's own business. The answering filer then says no, even though the spouse's business paid unincorporated business tax.",
+       "pattern": "5",
+       "who": "A New York City resident partner whose own Schedule C covers an unrelated side business. The partnership, not the filer's Schedule C business, paid UBT.",
+       "why_no": "\"Did your ... business pay\" reads as the Schedule C business the gate just keyed on. The partnership paid the UBT, not 'my business'.",
        "line": "ny_it201.gate.city_credits (IT-201 line 53)",
        "irs_text": "ny_it201i p. 15, Line 53: \"Can you claim the New York City unincorporated business tax (UBT) credit...\"",
        "severity": "medium",
-       "fix": "Ask \"Did you or your spouse, or any business either of you owns, pay New York City unincorporated business tax (Form NYC-202 or NYC-202S) for 2025?\""
+       "fix": "Say \"any business you or your spouse own or are a partner or LLC member in, including through a partnership\"."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A sole proprietor whose 2025 unincorporated business tax liability was settled when the Form NYC-202 return was filed in 2026. Alternatively, a filer whose business uses a fiscal year that ends in 2025.",
-       "why_no": "\"Pay ... for 2025\" can be read as tax actually paid during calendar 2025. A filer who paid the tax in 2026, or for a fiscal year that started in 2024, may answer no.",
+       "who": "A sole proprietor whose business uses a fiscal year ending in 2025. Alternatively, a sole proprietor whose 2025 UBT is owed but not yet paid, or was paid in 2026 with the NYC-202.",
+       "why_no": "\"pay ... for 2025\" reads as a payment made in calendar 2025 for calendar 2025. A fiscal-year filer, or one who has not yet paid, answers no.",
        "line": "ny_it201.gate.city_credits (IT-201 line 53)",
-       "irs_text": "ny_it201i p. 15, Line 53: \"Can you claim the New York City unincorporated business tax (UBT) credit...\"",
+       "irs_text": "ny_it201i p. 15: \"you may also be required to file New York City's Form NYC-202, Unincorporated Business Tax Return for Individuals and Single-Member LLCs\"; Line 53 \"Can you claim the New York City unincorporated business tax (UBT) credit\"",
        "severity": "medium",
-       "fix": "Ask \"Is your business subject to New York City unincorporated business tax for a tax year ending in 2025 (whether or not you have paid it yet)?\" Add help that mentions Form NYC-202 and NYC-202S."
+       "fix": "Ask: \"Is UBT owed or paid (Form NYC-202 or NYC-202S, or a partnership's NYC-204) for a business tax year ending in 2025?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A Schedule C filer who paid UBT and reads the help text.",
+       "why_no": "\"which this tool does not compute\" suggests the answer has no effect or the credit is unavailable here, inviting a no.",
+       "line": "ny_it201.gate.city_credits (IT-201 line 53)",
+       "irs_text": "ny_it201i p. 15, Line 53: \"If Yes, complete Section C of Form IT-201-ATT and enter the amount from Form IT-201-ATT, line 10, on line 53.\"",
+       "severity": "low",
+       "fix": "Say that a yes requires completing Form IT-201-ATT Section C, and prompt the filer for the line 10 amount."
       }
      ],
-     "prompt_sha": "540b4bfbf968d16be426460640123fbbd21e2f3092d3efffce64fe8252172cf1",
+     "prompt_sha": "5072bca1b9519e6c031500289c082ea020ee8875965e78939e2e0180d8847d55",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
      "model": "claude-opus-5-5",
-     "cost": 0.08275199999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/ny/false_no/gate_s1.has_sc.b79f83d1bd14.1.response.txt"
+     "cost": 0.097424,
+     "date": "2026-11-23",
+     "response": ".transcription/ny/false_no/gate_s1.has_sc.d4a5236c3ecd.1.response.txt"
     }
    ],
    "condition": "s1.has_sc",

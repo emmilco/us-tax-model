@@ -22,7 +22,8 @@ changes:
     note: The deduction is Form 8995 line 17 (the greater of line 15 and the minimum deduction). The prior-year carryforward
       the filer enters is still line 16 of the 2025 Form 8995; the instructions now describe the carryforward under Line 18.
       The threshold in the citation of qbi.deduction is the 2026 one (C-SCHED-30); qbi.use_8995a's citation, which quotes
-      the same sentence, is left to that change.
+      the same sentence, is left to that change. The Instructions for Form 8995-A for 2026 are not published, so the i8995a
+      segment of qbi.carryforward's citation keeps its 2025 page until it can be checked.
     operations:
     - set:
         line: qbi.deduction
@@ -66,12 +67,14 @@ changes:
     - set:
         line: qbi.carryforward
         field: cite.locator
-        from: 'p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating
-          taxable income in the current year"; p. 5, Line 16, "This is the amount to be carried forward to the next year"
-          (owner: the printed amount)'
-        to: 'p. 5, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating
-          taxable income in the current year"; p. 6, Line 18, "This is the amount to be carried forward to the next year"
-          (owner: the printed amount)'
+        from: 'p. 4, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in
+          calculating taxable income in the current year"; p. 5, Line 16, "This is the amount to be carried forward to
+          the next year" (owner: the printed amount); i8995a p. 6, Line 6, "The amount reported on this line must be
+          reported in the next tax year on Schedule C (Form 8995-A), line 2, or Form 8995, line 3"'
+        to: 'p. 5, Line 3, "Include here the qualified portion of trade or business (loss) carryforward allowed in
+          calculating taxable income in the current year"; p. 6, Line 18, "This is the amount to be carried forward to
+          the next year" (owner: the printed amount); i8995a p. 6, Line 6, "The amount reported on this line must be
+          reported in the next tax year on Schedule C (Form 8995-A), line 2, or Form 8995, line 3"'
     - set:
         line: qbi.carryforward_if_prior_form
         field: cite.locator

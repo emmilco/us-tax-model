@@ -258,7 +258,7 @@
    ]
   },
   "gate:sa.home_asked": {
-   "subject_sha": "e098ff5ee3abd1c34bae9d57ac74cc1a8c221ae0285384230b9b3af670c13669",
+   "subject_sha": "1715e4f5782c1e87b791f7c7180e581791b2e3430ec4ec6cfa3524220e60a90c",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -266,70 +266,70 @@
       {
        "kind": "FALSE_NO",
        "pattern": "8",
-       "who": "A tenant-stockholder in a cooperative housing corporation who pays a monthly maintenance charge that includes the cooperative's real estate taxes; the filer owns shares and a proprietary lease, not the building or land.",
-       "why_no": "They read 'own a home or other real estate' as legal ownership of real property, answer No, and the property-tax line is treated as zero.",
-       "line": "sa.line5b_if_home_owner",
-       "irs_text": "i1040sca p. 6, Line 5b: 'Enter on line 5b the state and local taxes you paid on real estate you own...'; p. 8: 'A home can be a house, condominium, cooperative, mobile home, boat, or similar property.'",
+       "who": "A tenant-stockholder in a housing cooperative who lives in the apartment. They hold shares and a proprietary lease, pay interest on a share loan reported on Form 1098, and pay maintenance that includes their share of the co-op's real estate tax and mortgage interest.",
+       "why_no": "Legally they own stock in a corporation, not 'a home or other real estate', so a truthful no is available. The fallback helper lists 'a boat, camper or mobile home, or ... a mortgage on a home in the name of another person', and a share loan secured by co-op stock fits none of these.",
+       "line": "sa.line8a (also sa.line5b_if_home_owner, sa.mortgage_unreported_if_home, s2.mortgage_subsidy_if_interest)",
+       "irs_text": "i1040sca p. 8, Line 8: \"A home can be a house, condominium, cooperative, mobile home, boat, or similar property\"; \"A home mortgage is any loan that is secured by your main home or second home, regardless of how the loan is labeled.\"",
        "severity": "high",
-       "fix": "Treat a cooperative housing corporation tenant-stockholder as owning a home for this gate; ask about co-op maintenance and split out the deductible real estate tax share."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A tenant-stockholder in a cooperative housing corporation who pays a share of the cooperative's mortgage interest through maintenance; the filer receives no Form 1098 showing that interest.",
-       "why_no": "They answer No to owning a home or real estate; the follow-up asks only about a boat, camper, mobile home, or a mortgage on a home in another person's name, so the tool never asks whether they paid co-op mortgage interest not reported on their own Form 1098.",
-       "line": "sa.mortgage_unreported_if_home",
-       "irs_text": "i1040sca p. 8: 'A home can be a house, condominium, cooperative, mobile home, boat, or similar property'; Line 8b: 'If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b.'",
-       "severity": "high",
-       "fix": "Include cooperative housing in the gate and ask about co-op mortgage interest not reported on the filer's own Form 1098; a Yes should trigger the refusal."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A surviving spouse who in 2025 pays mortgage interest on a home titled solely in the deceased spouse's name; a Form 1098 for the loan is issued in the survivor's name.",
-       "why_no": "They answer No to owning a home or real estate. They read the follow-up as asking whether the mortgage is in another person's name; because the mortgage/Form 1098 is in the survivor's name, they answer No even though the home is the decedent's and they paid the interest.",
-       "line": "sa.line8a",
-       "irs_text": "i1040sca p. 8, Line 8: 'A surviving spouse may deduct mortgage interest they pay after the decedent’s death.'",
-       "severity": "medium",
-       "fix": "Ask directly about mortgage interest paid on a deceased spouse's home and treat it as within the home gate, regardless of whose name is on the mortgage or Form 1098."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A co-borrower who is liable for and paid mortgage interest on a home titled in the other co-borrower's name, or a contract-for-deed buyer whose seller still holds title; the Form 1098 went to the other person or was not issued to the filer.",
-       "why_no": "They answer No to owning a home or real estate. They read the follow-up 'mortgage on a home in the name of another person' as asking whether the mortgage itself is in another person's name; because they are on the mortgage or the Form 1098 is shared, they answer No and the unreported-interest refusal is skipped.",
-       "line": "sa.mortgage_unreported_if_home",
-       "irs_text": "i1040sca p. 8, Line 8a: 'Shared interest reported on someone else's Form 1098. ... report your share of the interest on line 8b'; p. 9, Line 8b: 'Seller financed mortgage. If you paid home mortgage interest to the person from whom you bought the home and that person didn’t provide you a Form 1098...'",
-       "severity": "medium",
-       "fix": "Reword the follow-up to ask whether the filer paid interest on a home whose deed or Form 1098 is in someone else's name, including a co-borrower or seller; do not require the mortgage itself to be solely in another's name."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A grantor of a revocable living trust, or sole member of a disregarded LLC, that holds the filer's home; the trust/LLC sold the home in 2025 and it had been financed with a qualified mortgage bond or the filer claimed the mortgage interest credit.",
-       "why_no": "The filer answers No to owning a home or other real estate because legal title is in the trust/LLC, and if no mortgage interest was paid in the filer's own name the gate is false, so the recapture question is never asked.",
-       "line": "s2.mortgage_subsidy_if_interest",
-       "irs_text": "i1040gi p. 113, Line 17b: 'If you sold your home in 2025 and it was financed (in whole or in part) from the proceeds of any tax-exempt qualified mortgage bond or you claimed the mortgage interest credit, you may owe a recapture tax on the mortgage subsidy.'",
-       "severity": "medium",
-       "fix": "Ask who is treated as owner for federal income tax, including grantor trusts and disregarded entities; include beneficial ownership in the home gate."
+       "fix": "Ask: 'At any time in 2025, did you (or your spouse) own a home or other real estate, including a condominium, shares in a housing cooperative, a timeshare, or a home held in your trust or LLC?' Add 'a co-op share loan' to the fallback interest helper."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "An owner of a deeded timeshare interval who pays a property-tax share through the timeshare association and does not think of the interval as a home or other real estate.",
-       "why_no": "They read 'home or other real estate' as a primary or second home or land, not a vacation timeshare, and answer No, so the property-tax amount is treated as zero.",
-       "line": "sa.line5b_if_home_owner",
-       "irs_text": "i1040sca p. 6, Line 5b: 'Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business...'",
+       "who": "A filer whose home is titled in their revocable living trust, or in a single-member LLC that is disregarded for tax purposes. They pay the property tax and the mortgage interest themselves.",
+       "why_no": "The deed names the trust or LLC, so they read 'did you ... own a home' as no. The fallback asks about 'a home in the name of another person', but they may not see their own trust as another person.",
+       "line": "sa.line5b_if_home_owner, sa.line8a",
+       "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business\"; p. 8, Line 8a: \"Enter on line 8a mortgage interest and points reported to you on Form 1098\"",
        "severity": "medium",
-       "fix": "Clarify that other real estate includes a deeded timeshare or vacation interval and ask whether the property-tax share is separately stated."
+       "fix": "Add to the gate's help: 'Count a home held in your revocable trust or in an LLC you alone own as yours.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A buyer under a land contract (contract for deed). They live in the home and pay interest to the seller, but the seller keeps legal title until the contract is paid off.",
+       "why_no": "'The seller still holds title' makes owning read as no. They also may not see an installment contract as 'a mortgage' or as 'a loan secured by a home', so they answer no to the fallback as well.",
+       "line": "sa.mortgage_unreported_if_home (line 8b), sa.line5b_if_home_owner",
+       "irs_text": "i1040sca p. 9, Line 8b: \"Seller financed mortgage. If you paid home mortgage interest to the person from whom you bought the home and that person didn’t provide you a Form 1098...\"",
+       "severity": "medium",
+       "fix": "Add to the gate: 'or were buying a home on a land contract or other financing from the seller'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "An owner of a deeded timeshare used as a second home, with a loan on it and a share of the property tax.",
+       "why_no": "They do not think of a vacation week as 'a home or other real estate', and the fallback's list (boat, camper, mobile home) leaves timeshares out.",
+       "line": "sa.line8a, sa.line5b_if_home_owner",
+       "irs_text": "i1040sca p. 8, Line 8: \"A home mortgage is any loan that is secured by your main home or second home\"",
+       "severity": "medium",
+       "fix": "Name timeshares in the gate's wording or its help."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A life tenant who lives in a home after deeding the remainder to their children, or after receiving a life estate under a will. They pay the property tax.",
+       "why_no": "The deed or the will says the children own the home, so they answer no to owning.",
+       "line": "sa.line5b_if_home_owner",
+       "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own\"",
+       "severity": "low",
+       "fix": "Add to the help: 'Count a life estate or other right to live in a home for life as owning it.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who sold, in 2025, a mobile home on rented land that they had bought with a bond-financed or MCC loan. The loan was already paid off, so they paid no interest in 2025.",
+       "why_no": "They see a mobile home as a vehicle, not 'a home or other real estate'. The fallback asks only about interest paid in 2025, and they paid none.",
+       "line": "s2.mortgage_subsidy_if_interest",
+       "irs_text": "i1040gi p. 113, Line 17b: \"If you sold your home in 2025 and it was financed (in whole or in part) from the proceeds of any tax-exempt qualified mortgage bond or you claimed the mortgage interest credit, you may owe a recapture tax\"",
+       "severity": "low",
+       "fix": "Ask the Form 8828 question regardless of the gate, or broaden the gate to 'owned or sold a home of any kind, including a mobile home or houseboat'."
       }
      ],
-     "prompt_sha": "812a089dc57bc7baaba0db3d38b793e1ec3ffbfcdb331c2494c6c70a422ba725",
+     "prompt_sha": "a2293147863b8469d81f39c2099b12b1754d8136cf340007d0d26893a33022ea",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_sa.home_asked.e098ff5ee3ab.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.168356,
+     "date": "2026-11-23",
+     "response": ".transcription/false_no/gate_sa.home_asked.1715e4f5782c.1.response.txt"
     }
    ],
    "condition": "sa.home_asked",
@@ -365,7 +365,8 @@
       "p. 6, Line 5b, \"Enter on line 5b the state and local taxes you paid on real estate you own\"; p. 8, Line 8, \"A home mortgage is any loan that is secured by your main home or second home\"",
       "p. 8, Interest You Paid, \"In general, if you paid interest in 2025 that applies to any period after 2025, you can deduct only amounts that apply for 2025\"; Line 8, Home Mortgage Interest, \"A home mortgage is any loan that is secured by your main home or second home\"; Line 8a, \"Enter on line 8a mortgage interest and points reported to you on Form 1098 unless one or more of the limits on home mortgage interest apply to you\", \"Refund of overpaid interest. If your Form 1098 shows any refund of overpaid interest, don't reduce your deduction by the refund\", \"More than one borrower\" and \"If the shared interest was reported on the Form 1098 you received, deduct only your share of the interest on line 8a\"",
       "p. 8, Line 8a, \"Enter on line 8a mortgage interest and points reported to you on Form 1098 unless one or more of the limits on home mortgage interest apply to you\"",
-      "p. 8, Line 8b, \"If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b\"; p. 9, Line 8c, \"Points Not Reported on Form 1098\""
+      "p. 8, Line 8b, \"If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b\"; p. 9, Line 8c, \"Points Not Reported on Form 1098\"",
+      "p. 8, Line 8b, \"If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b\"; p. 9, Line 8c, Refinancing, \"Generally, you must deduct points you paid to refinance a mortgage over the life of the loan\", \"If you paid off a mortgage early, deduct any remaining points in the year you paid off the mortgage\""
      ],
      "cols_pages": [
       3,
@@ -423,108 +424,88 @@
    ]
   },
   "gate:sa.medical_asked": {
-   "subject_sha": "5750936487bf0e25ee8df99923b196956fabb29fabb91e6a32ee5dea6f5dd4b8",
+   "subject_sha": "41ec635c0a76a1260dda0eb3fc605f9a0ebd75f9b87bf1e6216040993cc13347",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A low-income retiree whose Social Security is not taxable. Medicare Part B and Part D premiums are withheld from the benefit, and the retiree had few other medical bills. On a joint return, either spouse may be in this position.",
-       "why_no": "The first question asks about 'costs ... after anything insurance paid', which reads as bills, not premiums. The second asks whether health insurance was paid 'with money already taxed', and nontaxable Social Security was never taxed, so the honest answer is no.",
-       "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 1: 'The supplemental part of Medicare insurance (Medicare Part B). • The premiums you pay for Medicare Part D insurance.'",
-       "severity": "high",
-       "fix": "Ask whether you or your spouse paid any health, dental, Medicare, or long-term care insurance premiums in 2025 other than by a pretax payroll deduction, a tax-free HSA or Archer MSA distribution, or a tax-free retirement-plan distribution for a public safety officer. Drop 'money already taxed'."
-      },
-      {
-       "kind": "FALSE_NO",
        "pattern": "8",
-       "who": "A filer who paid premiums out of tax-exempt money, such as nontaxable VA disability pay, municipal bond interest, gifts, a loan, or savings from earlier years.",
-       "why_no": "That money was not 'already taxed', so the filer truthfully answers no. The IRS bars only premiums paid by pretax salary reduction, by a tax-free HSA or MSA distribution, or by a retired public safety officer's tax-free distribution.",
+       "who": "A self-employed filer with $220,000 in gross receipts and $40,000 AGI paid $5,000 in medical bills. Or a retiree whose Social Security is mostly untaxed and whose AGI is far below total cash income.",
+       "why_no": "The gate asks whether costs were more than 7.5% of 'your income'. Measured against gross receipts, total pay before pretax deductions, or untaxed Social Security and tax-exempt interest, the costs fall below 7.5%. The real threshold is 7.5% of AGI, which can be far smaller.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 1: 'You can't include insurance premiums paid by making a pretax reduction to your employee compensation'; p. 2: 'Don't forget to include insurance premiums you paid for medical and dental care.'",
+       "irs_text": "i1040sca p. 1: 'You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b.'",
        "severity": "high",
-       "fix": "State the exclusions the instructions name instead of the 'already taxed' proxy, as in the first fix."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer who paid premiums for dental-only, vision, or qualified long-term care insurance, or voluntary Medicare Part A at 65 or older without Social Security entitlement.",
-       "why_no": "The question says 'health insurance', and the filer does not count dental, vision, or long-term care coverage as health insurance.",
-       "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 1: 'Insurance premiums for medical and dental care, including premiums for qualified long-term care insurance contracts'",
-       "severity": "medium",
-       "fix": "Say 'health, dental, vision, Medicare, or long-term care insurance premiums'."
+       "fix": "Say 'more than 7.5% of your adjusted gross income (Form 1040, line 11b, which is income after business expenses, pretax retirement contributions and other adjustments, and leaves out untaxed Social Security and tax-exempt interest)'. Better, have the tool compute the comparison against AGI from a dollar amount the filer enters."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "The executor filing a decedent's final 2025 return. The estate paid the decedent's 2025 medical bills in 2026, within one year after the death.",
-       "why_no": "The question asks about costs 'In 2025' that 'you ... paid yourselves'. The estate, not the decedent, paid them, and paid them in 2026.",
+       "who": "An executor files the final 2025 return of a person who died in 2025. The estate paid that person's hospital and nursing bills in early 2026, within one year of death.",
+       "why_no": "The gate asks about costs 'you (or ... your spouse) paid yourselves' 'In 2025'. The estate paid, and it paid in 2026, so the honest answer is no. Line 1 help mentions estate-paid costs, but the filer never sees it after a no.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 1: 'Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return.'",
+       "irs_text": "i1040sca p. 1: 'Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return. See Pub. 502 for details.'",
        "severity": "high",
-       "fix": "Add a separate gate: 'Is this a final return, and did the estate pay the decedent's medical costs within one year after death?' Treat a yes as opening the medical questions."
+       "fix": "Add to the gate: 'or, on the final return of someone who died in 2025, medical costs for that person were paid from the estate within one year after death'. The tool can also open the gate whenever the return is marked as a decedent's final return."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer who paid large medical bills for a parent they support who has $5,200 or more of income, for a child the ex-spouse claims, or for a dependent. The filer's own and spouse's costs were small.",
-       "why_no": "'Medical and dental costs you (or your spouse) paid yourselves' is read as costs for yourselves, not costs you paid for others.",
+       "who": "A filer paid over $15,000 toward the nursing home and medical bills of a parent they support. The parent is not their dependent because of $5,200 or more of gross income. Or a noncustodial divorced parent pays a child's orthodontics while the other parent claims the child.",
+       "why_no": "'The medical and dental costs you (or ... your spouse) paid yourselves' reads as costs for your own care. The gate says nothing about dependents, near-dependents, or a child claimed by the other parent.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 2: 'Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income'; 'Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents.'",
+       "irs_text": "i1040sca p. 2: 'Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return'; 'Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents.'",
        "severity": "medium",
-       "fix": "Say 'costs you or your spouse paid for anyone, including dependents, a supported parent, or a child the other parent claims', and show the whose-costs-count list with the gate."
+       "fix": "Reword to 'costs you or your spouse paid for anyone's care: yourselves, your dependents, a child the other parent claims, or a relative you support who has too much income to be your dependent'."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer with substantial above-the-line adjustments (IRA, self-employment tax, HSA deduction, student loan interest) or untaxed income, whose costs exceed 7.5% of AGI but not 7.5% of gross pay or total receipts.",
-       "why_no": "'7.5% of your income' is compared with wages or gross income, because AGI is not yet computed and is not named.",
+       "pattern": "1",
+       "who": "A filer paid in 2025 a large 2024 surgery bill, or charged medical bills to a credit card in 2025 and paid the card off in 2026.",
+       "why_no": "'In 2025, were the medical and dental costs...' can be read as care received in 2025, which drops the old bill. 'Paid' can be read as the date the card balance was paid, which drops the charges.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 1: 'You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b.'",
+       "irs_text": "i1040sca p. 2: 'You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them.'",
        "severity": "medium",
-       "fix": "Ask for the dollar amount whenever any unreimbursed medical cost or premium was paid, and let the tool compare it with 7.5% of computed AGI."
+       "fix": "Say 'amounts you paid during 2025 (including bills for earlier care and charges put on a credit card in 2025), whenever the care was received'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer paid $12,000 in 2025 medical costs and received a $6,000 insurance reimbursement in 2025 for 2024 bills. AGI is $100,000.",
+       "why_no": "'After anything insurance paid' invites netting every insurance payment received in 2025. That brings $12,000 down to $6,000, below the 7.5% threshold.",
+       "line": "sa.line1_if_medical",
+       "irs_text": "i1040sca p. 2: 'If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount.'",
+       "severity": "medium",
+       "fix": "Say 'after what insurance or anyone else paid toward these 2025 costs (do not subtract repayments of earlier years' bills)'."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose qualifying costs include medical mileage, parking and tolls, lodging for out-of-town treatment, nursing-home care, an attendant's employment taxes, special-education tuition, or a medically required home improvement.",
-       "why_no": "These are not perceived as 'medical and dental costs', so the filer's own estimate stays under 7.5%.",
+       "who": "A filer has large costs that they don't see as medical care: special-school tuition for a child with a learning disability, home modifications for a disability, long-term care services, mileage and lodging for out-of-town treatment, or Medicare Part B/D premiums withheld from Social Security.",
+       "why_no": "'Medical and dental costs' brings to mind doctor and dentist bills. Counting only those, the filer stays under 7.5%. For premiums withheld from largely untaxed Social Security, the fallback 'money already taxed' question also gets a no.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 2: 'Ambulance service and other travel costs to get medical care ... 21 cents a mile'; p. 1: 'Nursing help (including your share of the employment taxes paid)'",
+       "irs_text": "p502 p. 12: 'You can include in medical expenses the cost (tuition, meals, and lodging) of attending a school that furnishes special education...'; i1040sca p. 1: 'The supplemental part of Medicare insurance (Medicare Part B). The premiums you pay for Medicare Part D insurance.'",
        "severity": "medium",
-       "fix": "Show the IRS examples list with the gate, or replace the threshold judgment with an amount the tool compares itself."
+       "fix": "Add help to the gate listing what counts: insurance premiums including Medicare premiums taken from benefits, long-term care, special schooling, travel and lodging for care, and home changes for a disability. Or ask for a dollar total and let the tool compare it to AGI."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "An employee whose premiums came out of pay after tax and were included in W-2 box 1, or a 2% S corporation shareholder whose employer-paid premiums were added to box 1 beyond any self-employed health insurance deduction.",
-       "why_no": "A payroll deduction is assumed to be pretax, or premiums the employer paid are not seen as 'paid' by the filer.",
+       "who": "A self-employed filer has a small or negative net profit, so the self-employed health insurance deduction can't take all of their premiums. Or a 2% S-corporation shareholder has premiums paid by the corporation and included in Form W-2 box 1.",
+       "why_no": "The fallback question asks whether the filer 'paid for health insurance with money already taxed'. The self-employed filer thinks of the premiums as deductible business costs, not money already taxed. The S-corporation shareholder didn't personally pay them. Either way the leftover premiums that line 1 is supposed to pick up are dropped.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 2: 'don't include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2'",
+       "irs_text": "i1040sca p. 2: 'if you claimed the self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17'; 'don't include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2.'",
        "severity": "medium",
-       "fix": "Ask whether any premiums came out of pay, or were paid by an employer, and were included in W-2 box 1; tell the filer to check box 1 or the pay stub."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A joint filer whose spouse alone paid premiums, such as COBRA, Marketplace, or Medicare premiums.",
-       "why_no": "The premium question, 'Paid for health insurance with money already taxed', names no subject, so the filer answers for themselves only.",
-       "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 2: 'You can include medical and dental bills you paid in 2025 for anyone who was one of the following ... Yourself and your spouse.'",
-       "severity": "low",
-       "fix": "Say 'Did you (or, on a joint return, your spouse) pay ...'."
+       "fix": "Have the tool open the gate whenever the premiums entered for the self-employed health insurance deduction exceed the deduction allowed. Reword the fallback to 'paid health insurance premiums other than by a pretax payroll deduction, including premiums included in W-2 box 1, Medicare premiums withheld from benefits, and self-employed premiums'."
       }
      ],
-     "prompt_sha": "eb79d8f3729b5b88f736d405997aaa6d49cffd28c46a189e5612c0ff063d94b3",
+     "prompt_sha": "d91122411b94928da5414d8deaf7d7d0a70e4de7462b99d21b63f3d7047e30b1",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.17046,
+     "cost": 0.172404,
      "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_sa.medical_asked.5750936487bf.1.response.txt"
+     "response": ".transcription/false_no/gate_sa.medical_asked.41ec635c0a76.1.response.txt"
     }
    ],
    "condition": "sa.medical_asked",

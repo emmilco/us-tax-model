@@ -1039,78 +1039,88 @@
    ]
   },
   "gate:scope.pay_no_w2": {
-   "subject_sha": "d574f636788633746f405ca435a58b62ccc06be6ea622abe20ef81ea948a0957",
+   "subject_sha": "833f56eff4418afebdea08c15e7d51d2cdba1037336b86b561dea8ad07b92ba3",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "An employee whose firm gave a 2025 W-2 for salary and also a Form 1099-NEC or 1099-MISC for a signing bonus, award or non-accountable travel reimbursement that should have been wages (Form 8919 reason code H).",
+       "why_no": "The firm gave them a W-2 and treated them as an employee. The help names only 'pay from a firm that wrongly treated you as a contractor', so they read their pay as 'on a W-2' and the 1099 amount as non-wage income.",
+       "line": "scope.contractor_pay_if_pay",
+       "irs_text": "f8919 p. 1, reason code H: 'I received a Form W-2 and a Form 1099-MISC and/or 1099-NEC from this firm for 2025. The amount on Form 1099-MISC and/or 1099-NEC should have been included as wages on Form W-2.'",
+       "severity": "medium",
+       "fix": "Add to the gate help: 'or a bonus, award or other pay from your employer that came on a Form 1099-NEC or 1099-MISC instead of your W-2'. Reword the gated question to cover reason code H."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "An employee whose employer never sent a 2025 W-2, or whose W-2 is lost or still expected.",
+       "why_no": "They read 'not on a W-2' as pay that never goes on a W-2 at all. Their pay is ordinary payroll that belongs on a W-2, so they answer no and wait for a form.",
+       "line": "scope.wages_no_form_if_pay (missed refusal)",
+       "irs_text": "i1040gi p. 25: 'Even if you don't get a Form W-2, you must still report your earnings.'",
+       "severity": "medium",
+       "fix": "Add to the gate help: 'Also answer Yes if you were paid wages but do not have the W-2 for them (never received, lost, or not yet arrived).'"
+      },
+      {
+       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A gardener, yard worker or private driver paid in cash by one household that directs the work. All of the work is done outside the house or away from it, and the household gave no W-2 because it paid under $2,800.",
-       "why_no": "The gate's help gives 'pay for work in someone's home' as the household example. The worker never worked inside the home, so they read the gate as not covering them and do not count the cash as 'wages'.",
+       "who": "A gardener, yard worker or private driver paid in cash by a household that directs the work, which is done around the home or away from it rather than inside.",
+       "why_no": "The gate help gives 'pay for work in someone's home' as the household example. Work in the yard or on the road does not read as 'in someone's home'.",
        "line": "scope.household_pay_if_pay",
-       "irs_text": "p926 p. 3: 'Household work is work done in or around your home' (examples include Drivers and Yard workers); i1040gi p. 24, Line 1b: 'Enter the total of your wages received as a household employee that was not reported on Form(s) W-2'",
+       "irs_text": "p926 p. 3: 'Household work is work done in or around your home', listing 'Drivers' and 'Yard workers'.",
        "severity": "medium",
-       "fix": "In the gate's help, say 'pay for work in or around someone's home or for its members (nanny, carer, housekeeper, gardener, private driver), even if under $2,800 and paid in cash'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "An employee got a W-2 from their employer and also a Form 1099-NEC or 1099-MISC from the same employer for a signing bonus, award or nonaccountable travel reimbursement that should have been on the W-2 (Form 8919 reason code H).",
-       "why_no": "Their pay from that employer is 'on a W-2'. The gate's only example of misclassified pay is 'a firm that wrongly treated you as a contractor', and this firm treated them as an employee. The bonus does not seem to be wages 'not on a W-2'.",
-       "line": "scope.contractor_pay_if_pay",
-       "irs_text": "f8919 p. 1, reason code H: 'I received a Form W-2 and a Form 1099-MISC and/or 1099-NEC from this firm for 2025. The amount on Form 1099-MISC and/or 1099-NEC should have been included as wages on Form W-2'",
-       "severity": "medium",
-       "fix": "Add to the gate's help: 'including a bonus, award or other employee pay that your employer reported on a Form 1099-NEC or 1099-MISC instead of your W-2'. Make the gated question cover this case too."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A worker paid on a 1099-NEC with no social security or Medicare tax withheld. They believe they were really an employee but have no IRS ruling and have not yet filed Form SS-8 (reason code G).",
-       "why_no": "They think of 1099-NEC pay as nonemployee compensation, not 'wages'. The help's 'wrongly treated you as a contractor' reads as needing an established fact or ruling, so a worker who only believes it answers no.",
-       "line": "scope.contractor_pay_if_pay",
-       "irs_text": "f8919 p. 1, Who must file: 'You believe your pay from the firm wasn't for services as an independent contractor'; reason code G: 'If none of the reason codes apply to you, but you believe you should have been treated as an employee, enter reason code G'",
-       "severity": "medium",
-       "fix": "Ask the fact the filer can check in the gate itself: 'pay on a 1099-NEC/1099-MISC, or with no form, from a firm you believe you worked for as an employee (no IRS ruling needed)'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A worker who performed services for a firm that controlled the work, but was paid by an intermediary (a payroll or staffing middleman) that took out no social security or Medicare tax.",
-       "why_no": "The gated question asks whether 'a firm pay[s] you as a contractor'. The firm they worked for did not pay them directly, so they answer no.",
-       "line": "scope.contractor_pay_if_pay",
-       "irs_text": "f8919 p. 2, Firm: 'the term \"firm\" means any individual, business enterprise ... for which you performed services. This firm may or may not have paid you directly for these services.'",
-       "severity": "medium",
-       "fix": "Reword the question: 'did you work for a firm (paid by it or by someone else) that treated you as a contractor...'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "An employee whose employer issued a W-2 that the employee never received or has lost, and who has not obtained a copy.",
-       "why_no": "Their wages were 'on a W-2' that the employer issued, so they answer the gate no. The wages_no_form question ('for which you have no W-2') and the refusal it leads to are never reached, and the wages may also never be entered with the W-2s.",
-       "line": "scope.wages_no_form_if_pay",
-       "irs_text": "i1040gi p. 25, Missing or Incorrect Form W-2?: 'Even if you don't get a Form W-2, you must still report your earnings. If you lose your Form W-2 or it is incorrect, ask your employer for a new one.'",
-       "severity": "medium",
-       "fix": "Change the gate to 'wages, tips or strike or lockout benefits for which you do not have a W-2 in hand (none issued, not received, lost, or not showing all the pay)'."
+       "fix": "Change the gate help to 'pay from a household for work in or around its home or for its members (nanny, carer, housekeeper, gardener, private driver)'."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A union member on strike who received food, rent or utility help from the union or strike fund rather than a check, and who is not a bona fide gift recipient.",
-       "why_no": "They read 'strike or lockout benefits' alongside 'wages, tips' as cash pay, and do not think of in-kind union aid as a benefit received.",
-       "line": "scope.strike_pay_if_pay",
-       "irs_text": "i1040gi p. 24, Line 1h: 'Strike or lockout benefits (other than bona fide gifts)'",
+       "who": "A live-in carer or babysitter paid informally in cash by a relative or a household that shares their home, often under $2,800 a year.",
+       "why_no": "They see it as family help, not 'wages', and the home is their own, not 'someone's home'. Some believe pay under the $2,800 W-2 threshold is not reportable.",
+       "line": "scope.household_pay_if_pay",
+       "irs_text": "i1040gi p. 24, Line 1b: 'Enter the total of your wages received as a household employee that was not reported on Form(s) W-2. An employer isn't required to provide a Form W-2 to you if they paid you wages of less than $2,800.'",
+       "severity": "medium",
+       "fix": "Move the gated question's clarifications into the gate help: 'even from a relative, even in a home you share, and even if under $2,800 with no W-2.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A tipped worker who received under $20 a month in tips at a job and so did not report them to the employer, as the rules allow.",
+       "why_no": "They read 'tips not reported in full to your employer' as tips they failed to report. Tips they were not required to report seem to fall outside it, so they answer no.",
+       "line": "scope.tips_unreported_if_pay",
+       "irs_text": "i1040gi p. 24, Line 1c: 'This should include any tip income you didn't report to your employer.'",
+       "severity": "medium",
+       "fix": "Change the help to 'any cash or card tips you did not report to your employer, for any reason, including small amounts you were not required to report'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A household worker or misclassified worker paid in January 2025 for work done in December 2024, with no W-2.",
+       "why_no": "They read 'In 2025, did you have wages' as pay for work done in 2025.",
+       "line": "scope.household_pay_if_pay",
+       "irs_text": "i1040gi p. 24, Line 1b: 'Enter the total of your wages received as a household employee that was not reported on Form(s) W-2.'",
        "severity": "low",
-       "fix": "Add to the help: 'strike or lockout benefits in cash or in kind from a union or strike fund, unless a true gift'."
+       "fix": "Ask 'Did you receive in 2025 (for work in any year)…'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A worker treated as a contractor where the pay came from a third party rather than the firm the work was done for, such as a platform or intermediary.",
+       "why_no": "The help says 'pay from a firm that wrongly treated you as a contractor'. Their pay did not come from that firm.",
+       "line": "scope.contractor_pay_if_pay",
+       "irs_text": "f8919 p. 2: 'This firm may or may not have paid you directly for these services.'",
+       "severity": "low",
+       "fix": "Change the help to 'work for a firm that wrongly treated you as a contractor, whoever paid you'."
       }
      ],
-     "prompt_sha": "275345d58d75d278c1ca484b3ff78254d62c9948e00b2b12ee43adf6aee2e25a",
+     "prompt_sha": "f01e5771fb3a76311bb11b2c587018aaaffd26baefda59733e754ac1ac7bcca1",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.190776,
+     "cost": 0.180304,
      "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_scope.pay_no_w2.d574f6367886.1.response.txt"
+     "response": ".transcription/false_no/gate_scope.pay_no_w2.833f56eff441.1.response.txt"
     }
    ],
    "condition": "scope.pay_no_w2",
@@ -1166,14 +1176,13 @@
      "revision": "2025; printed date 2026-02-25",
      "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
      "pages": [
-      4,
       24,
       25
      ],
      "how": "cited pages",
      "locators": [
       "p. 24, Line 1b, \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\"",
-      "p. 24, Line 1b, \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\"; , Do You Have a Household Employee?, \"The worker is your employee if you can control not only what work is done, but how it is done\"; p. 4, \"A self-employed worker usually provides their own tools and offers services to the general public in an independent business\"",
+      "p. 24, Line 1b, \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\"; , Do You Have a Household Employee?, \"The worker is your employee if you can control not only what work is done, but how it is done\"; , \"A self-employed worker usually provides their own tools and offers services to the general public in an independent business\"",
       "p. 24, Line 1c, \"This should include any tip income you didn’t report to your employer\", \"Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value\"",
       "p. 24, Line 1h, \"Strike or lockout benefits (other than bona fide gifts)\"",
       "p. 25, Missing or Incorrect Form W-2?, \"Even if you don’t get a Form W-2, you must still report your earnings\""
@@ -1189,12 +1198,14 @@
      "revision": "2025 edition; printed date 2024-12-17 (irs-prior archive copy; current irs-pdf copy is the 2026 edition)",
      "text_sha256": "feb8dce86630686bcf821749f31ac20478d02682f2e9d0313fede6d3ead73520",
      "pages": [
-      3
+      3,
+      4
      ],
      "how": "pages named by another document's citation",
      "locators": [],
      "cols_pages": [
-      3
+      3,
+      4
      ],
      "cols_sha256": "1ab465762c12ebd7f961f59c4944de2bd2ee989508710ebbdc9f898428fc52a1"
     }
