@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "142",
   "agree / disagree / missing": "56 / 86 / 0",
-  "line-scoped reviews": "14 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "15 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -97,6 +97,20 @@
    "subject_key": "5d47ab4bb9d9ac3d1f766731695d8cff845747862df16d632441e0dabf3abfb3"
   },
   {
+   "key": "person.hsa_family",
+   "record": "be2c2a93dcf5448218a9cf948223e9d55287f863c6eb35e6b56761c0b148cd65",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1, \"the months you were treated as having family coverage\"; p969 p. 6, Rules for married people, Caution. person.hsa_family is a per-person roll-up of the Form 8889 helper f8889.step1_total (the $8,550 family amount for each month treated as family coverage, before the division between spouses), read by household.hsa_family_sum so that each spouse's form can find the other's family months. The reply was not given the Form 8889 collection's fields and, as its note says, guessed a per-person annual maximum with the $1,000 age-55 amount; that amount belongs on line 7 for a married filer with family coverage (i8889 p. 5, Line 3, Note), so the guess is not the quantity the consumer needs. Project stands.",
+   "subject_key": "069a808c036824e17d5df6c357fced60885d9c03570aac177ba91c1e555e40ad"
+  },
+  {
+   "key": "person.hsa_self",
+   "record": "be2c2a93dcf5448218a9cf948223e9d55287f863c6eb35e6b56761c0b148cd65",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap; i8889 p. 4, How To Complete Part I, and p. 7, Line 6, Step 4. person.hsa_self is a per-person roll-up of the Form 8889 helper f8889.step4_total (the self-only amount for each eligible month without family coverage), read by household.hsa_self_sum so that each spouse's form can tell whether the other had eligible self-only months. The reply was not given the Form 8889 collection's fields and, as its note says, guessed a per-person self-only annual maximum with the $1,000; it is not the monthly sum the consumer tests. Project stands.",
+   "subject_key": "a777141d0452cc00d45620b62f24003661f85d658aef874ae1c70c2d9cacb847"
+  },
+  {
    "key": "person.hsa_agreed",
    "record": "ce2d73db44e9e0642a1f95e81d758ddd43bc93568689e10989d56c325ccbfaa3",
    "status": "AGREE",
@@ -163,6 +177,20 @@
    "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
    "status": "AGREE",
    "subject_key": "ab555bb2d9c9d5c5fe7132742df9dddcaa816317b1d1941a97f81532e86d7cd2"
+  },
+  {
+   "key": "person.tips_over_wages",
+   "record": "1cae320584ba4c0aa3d5b9dd4db4e5b2f5bd8e5592f0b9e7c9725ac3745e7b63",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. Both read the line as a consistency check that the qualified tips (worksheet column (b), from Form W-2 box 7 or Forms 4070) are not more than the wages that include them (f1040s1a line 4a, 'qualified tips included on Form W-2, box 7'). The project bounds them by box 5 (Medicare wages and tips; fw2 p. 7, Box 6, 'all Medicare wages and tips shown in box 5'), the reply by box 1. Box 1 is lowered by pretax deferrals such as a 401(k) while box 5 is not, so a tipped worker who defers pay can have tips above box 1 and below box 5 with no error; the box 5 bound refuses only answers that cannot all be true (BUG-1208).",
+   "subject_key": "32775a10f7c170ed4b9a284e258f2498f5163d7a444a8dd6a7a0df87f78c78fa"
+  },
+  {
+   "key": "person.ot_over_wages",
+   "record": "1cae320584ba4c0aa3d5b9dd4db4e5b2f5bd8e5592f0b9e7c9725ac3745e7b63",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. Both read the line as a consistency check that the qualified overtime entered is not more than the wages that include it. The reply bounds it by box 1 and notes itself that the line 14a instructions allow overtime not in box 1 (deferred under a qualified plan; otjob.statement asks to include it), so its check can fire with no error; the project bounds it by box 5 (fw2 p. 7, Box 6, 'all Medicare wages and tips shown in box 5'), which includes such deferrals (BUG-1208).",
+   "subject_key": "4be68a2e36482905a7e55a55d20002cb7edafee2050fc6a1a162646635107d8b"
   },
   {
    "key": "person.box1",
@@ -914,38 +942,10 @@
   },
   {
    "key": "31",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "07016f9df7b581d72092f7a46aac3ebc4c59777c5f502d6e2b66668bb44478c1",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 3,914/5,015 agree; 1,097 candidate-unknown, 3 project-unknown, 1 project-refuses; completed: 42 candidate-unknown. No value differs. Completed candidate-unknowns are on the classm.f2441 cases. Same as the landing-round ruling.",
-   "subject_key": "7581ba662083efee0d066ac09aed39495b498c382b94b229f377ad079e0b69a5"
-  },
-  {
-   "key": "person.hsa_family",
-   "record": "be2c2a93dcf5448218a9cf948223e9d55287f863c6eb35e6b56761c0b148cd65",
-   "status": "DISAGREE",
-   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1, \"the months you were treated as having family coverage\"; p969 p. 6, Rules for married people, Caution. person.hsa_family is a per-person roll-up of the Form 8889 helper f8889.step1_total (the $8,550 family amount for each month treated as family coverage, before the division between spouses), read by household.hsa_family_sum so that each spouse's form can find the other's family months. The reply was not given the Form 8889 collection's fields and, as its note says, guessed a per-person annual maximum with the $1,000 age-55 amount; that amount belongs on line 7 for a married filer with family coverage (i8889 p. 5, Line 3, Note), so the guess is not the quantity the consumer needs. Project stands.",
-   "subject_key": "069a808c036824e17d5df6c357fced60885d9c03570aac177ba91c1e555e40ad"
-  },
-  {
-   "key": "person.hsa_self",
-   "record": "be2c2a93dcf5448218a9cf948223e9d55287f863c6eb35e6b56761c0b148cd65",
-   "status": "DISAGREE",
-   "ruling": "Ruling: interface gap; i8889 p. 4, How To Complete Part I, and p. 7, Line 6, Step 4. person.hsa_self is a per-person roll-up of the Form 8889 helper f8889.step4_total (the self-only amount for each eligible month without family coverage), read by household.hsa_self_sum so that each spouse's form can tell whether the other had eligible self-only months. The reply was not given the Form 8889 collection's fields and, as its note says, guessed a per-person self-only annual maximum with the $1,000; it is not the monthly sum the consumer tests. Project stands.",
-   "subject_key": "a777141d0452cc00d45620b62f24003661f85d658aef874ae1c70c2d9cacb847"
-  },
-  {
-   "key": "person.tips_over_wages",
-   "record": "1cae320584ba4c0aa3d5b9dd4db4e5b2f5bd8e5592f0b9e7c9725ac3745e7b63",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. Both read the line as a consistency check that the qualified tips (worksheet column (b), from Form W-2 box 7 or Forms 4070) are not more than the wages that include them (f1040s1a line 4a, 'qualified tips included on Form W-2, box 7'). The project bounds them by box 5 (Medicare wages and tips; fw2 p. 7, Box 6, 'all Medicare wages and tips shown in box 5'), the reply by box 1. Box 1 is lowered by pretax deferrals such as a 401(k) while box 5 is not, so a tipped worker who defers pay can have tips above box 1 and below box 5 with no error; the box 5 bound refuses only answers that cannot all be true (BUG-1208).",
-   "subject_key": "32775a10f7c170ed4b9a284e258f2498f5163d7a444a8dd6a7a0df87f78c78fa"
-  },
-  {
-   "key": "person.ot_over_wages",
-   "record": "1cae320584ba4c0aa3d5b9dd4db4e5b2f5bd8e5592f0b9e7c9725ac3745e7b63",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. Both read the line as a consistency check that the qualified overtime entered is not more than the wages that include it. The reply bounds it by box 1 and notes itself that the line 14a instructions allow overtime not in box 1 (deferred under a qualified plan; otjob.statement asks to include it), so its check can fire with no error; the project bounds it by box 5 (fw2 p. 7, Box 6, 'all Medicare wages and tips shown in box 5'), which includes such deferrals (BUG-1208).",
-   "subject_key": "4be68a2e36482905a7e55a55d20002cb7edafee2050fc6a1a162646635107d8b"
+   "ruling": "Ruling: representation; both give line 31 only for a lifetime learning credit student and zero where lines 27 to 30 are completed ('If you complete lines 27 through 30 for this student, don't complete line 31'); the project writes it as a choice on person.edu_llc.",
+   "subject_key": "fc3c2bb4ca1d4baed7ca876889458c3a87513b209a41c76ddc62d21dd2a20c77"
   }
  ],
  "subjects": {
@@ -962,6 +962,8 @@
   "person.died_before_65": "d71cdb0cbf88609e2688985b563fb02d47dcff3b8cc6cb7cac608c9409e19b9e",
   "person.educator_deduction": "bc35363030426f01897f3f9d390369d1988f8e9a71e3c2c4e776579a5acfba8b",
   "person.hsa_forms": "16f71fc60325994fcbadd912163258f6fbb15ad6fce56ad795df618b99432413",
+  "person.hsa_family": "b0b5e44c680fbab09101daa3a0fe3cc12ed8762712d931e7fb933d0051daadb4",
+  "person.hsa_self": "26d8ac8946a937f3eaf8cd81244f4b3636267d2576213d2bb069859811aa630f",
   "person.hsa_agreed": "d6c6cc72d7f021042ab4eaffa5da8ba28547d71235cc8421d8debed2e21a328a",
   "person.hsa_step1": "5531abe365e1684a202b58b6c2b833bcdab20870089a91b7a3876281b67357f7",
   "person.hsa_share": "a1d05ce975be491360d6936709754e399c110cf198d1f19291ffadbec37392ea",
@@ -973,6 +975,8 @@
   "person.tip_reported": "fca06897fcea5e46106d81dd0d4159d4114542cb53607d00e425c168c184af65",
   "person.ot_employers": "03c70720e9ff8599767f3e75415a31b1dc21f760d76c55300816267248740a5e",
   "person.ot_total": "08303f469cc196a914fcc12c3e757a11570e8a35dfc94af60397bace159942fb",
+  "person.tips_over_wages": "5a20a485cb04f9c177fb433b0902b9e7d18605ba6fbf907d9efec574c7781a47",
+  "person.ot_over_wages": "9c87c389c81dbb4907aac5c1929881b2a5153967b247fdc39fe06f3d56365116",
   "person.box1": "07ad8865d53bc777dc547733160a3fec3a254480e67c64db630e8020bd86ac0d",
   "person.box2": "a3e0f7c9fbed5eff0cb1ba5c0febfceaa19678c9ad4d19432f6eacd47894c6a0",
   "person.f8919_wages": "cd3910b94f8289870a8b151ad6e2fbd05613ac48d5528c091b08152169526d8c",
@@ -1086,11 +1090,7 @@
   "28": "22a2549aed04e3f902f0f45bc8ea2889e571720d87a98236de170bfb15d3c0da",
   "29": "cb0a4a754aca953d9446512addb86f362bbd4cf8680521bd7c9a6885e79ad7e5",
   "30": "de4a93e13482929e09eb47269cb33de0af4eea51b14f73fe7d8c6da1f859f625",
-  "31": "6965b8746aad942de14b8865d816526b4df3bcc5223369c606999da67fde65c8",
-  "person.hsa_family": "b0b5e44c680fbab09101daa3a0fe3cc12ed8762712d931e7fb933d0051daadb4",
-  "person.hsa_self": "26d8ac8946a937f3eaf8cd81244f4b3636267d2576213d2bb069859811aa630f",
-  "person.tips_over_wages": "5a20a485cb04f9c177fb433b0902b9e7d18605ba6fbf907d9efec574c7781a47",
-  "person.ot_over_wages": "9c87c389c81dbb4907aac5c1929881b2a5153967b247fdc39fe06f3d56365116"
+  "31": "c8a66ec4ed21ebaf6caf9368148a43dd87015a6eb83a7248c17a1646487465b0"
  },
  "__rest__": "d28e22d3400268c696f00ac5cb2cb4acf80222dd6ee55c48f68bb684d57f0110",
  "foreign": {
@@ -1107,6 +1107,8 @@
   "person.died_before_65": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "person.educator_deduction": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "person.hsa_forms": "5e419bc08f9cae62007352324d575608737e15124e4b2198efb35f7ca9bfa982",
+  "person.hsa_family": "ad5c941962c021ccedb1345acad7a4ac358827dd0dfa74286959ec81b7cc1b48",
+  "person.hsa_self": "4b0b615e80614c5878357c96cdc5a0dd9cd7a34db6f2c7b086071851ba49fce8",
   "person.hsa_agreed": "85a7fb101e4a88ec39b2040911f13c29bae4df6eb73ea9e836bcf7a61ffc13ab",
   "person.hsa_step1": "e7a31b6d0bb270bd03e766e8ff76875ac817f7e7f89ae73143a964760679c2f6",
   "person.hsa_share": "d2fb4aaccc540bfe21255afe80cb82c5c394597642ffd3079f80da2e648e9679",
@@ -1118,6 +1120,8 @@
   "person.tip_reported": "2d1dedd22477f0a58c4f911a6dd7028b1da86d602b2ce1d8826ad8960cc802e2",
   "person.ot_employers": "f758aa42667a56fff588994574c0b4063221b5acbffb5582e5d6b44be7f7ad54",
   "person.ot_total": "636d04d95d86476db2003d90f9f3c785a6ee94d6aec08598f6395ed4fa7c1955",
+  "person.tips_over_wages": "168564414376f5807fdba029552c42146e16fd7e227eb6ec781d17b63bd0300e",
+  "person.ot_over_wages": "8bba85370ae8ae6072fbfee0bb0298959c81219d4bb0c2b6e59084cd1bbd6a8d",
   "person.box1": "056132170d28179fc192dae2644e55a3fce765caeaf22d15c210f4fe8fd8bd29",
   "person.box2": "00005c2f0c3f53c0fc12efd5f44e323e53cf49b0a31f1627d7198fd0f1163013",
   "person.f8919_wages": "8324106d3e5f5174f62bd9b7372ff7f3e2c421199b12273bc36b60f7ad814019",
@@ -1231,10 +1235,6 @@
   "28": "04ade2990566c93653f53d9149d35a507df7d8bcac1d8c798034e2df9d0bfbff",
   "29": "a0731f9f73641383c55b0266f4035801c34912c301ed5b3650e071b6e29471f1",
   "30": "f6ad556e49ce314571e7ad2b80d8e31a82697ad6e25383e17e12fb8ad2bedf8d",
-  "31": "4a51e5c8e29d87c51a67acfe44559e05cb10a72e2117baf6f7a07475a63bb902",
-  "person.hsa_family": "ad5c941962c021ccedb1345acad7a4ac358827dd0dfa74286959ec81b7cc1b48",
-  "person.hsa_self": "4b0b615e80614c5878357c96cdc5a0dd9cd7a34db6f2c7b086071851ba49fce8",
-  "person.tips_over_wages": "168564414376f5807fdba029552c42146e16fd7e227eb6ec781d17b63bd0300e",
-  "person.ot_over_wages": "8bba85370ae8ae6072fbfee0bb0298959c81219d4bb0c2b6e59084cd1bbd6a8d"
+  "31": "dbe9baee7bb99322e049d919a2380e48d7b3f4df11cb8e075e11288a76bc3854"
  }
 }

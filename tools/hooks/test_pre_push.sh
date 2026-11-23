@@ -6,7 +6,8 @@
 # recorded release-green; and must refuse a release tag (refs/tags/r*) whose commit's tree is not
 # full-green or not recorded release-ready. release.sh runs against stubs of tools/check_all_bg.sh and
 # tools/release_reviews.sh and must promote next to main by fast-forward only, and tag, only a tree green
-# in release mode whose sampled reviews are complete; it skips release_reviews.sh for a release-green tree.
+# in release mode whose sampled reviews are complete; for a release-green tree it skips the full run but still runs
+# release_reviews.sh, and promotes nothing while the reviews are incomplete.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/pre-push-test.XXXXXX")"
@@ -190,12 +191,18 @@ hook refs/tags/r$day.1 "$(git rev-parse "r$day.1")" "$Z" || fail "pre-push refus
 for c in $(git rev-list "$A..main"); do record_green "$(tree "$c")" light; done
 branch main "$(git rev-parse main)" "$A" || fail "pre-push refused main at the release"
 
-# A tree already release-green: neither the run nor release_reviews.sh again, even with reviews that would fail.
+# A tree already release-green: the full run is not repeated, but release_reviews.sh runs again (the tag lists the
+# open bugs a release allows), so incomplete sampled reviews still promote nothing.
 git tag -d "r$day.1" >/dev/null
 git branch -f main "$A"
 : > "$common/stub-runs"; : > "$common/reviews-runs"
-REVIEWS=incomplete STUB=red tools/release.sh >/dev/null || fail "release.sh refused a release-green tree"
-[ ! -s "$common/stub-runs" ] && [ ! -s "$common/reviews-runs" ] || fail "release.sh reran the run or the reviews for a release-green tree"
+REVIEWS=incomplete STUB=red tools/release.sh >/dev/null 2>&1 && fail "release.sh promoted a release-green tree with incomplete sampled reviews"
+[ "$(git rev-parse main)" = "$A" ] || fail "release.sh moved main with incomplete sampled reviews"
+[ -z "$(git tag -l 'r*')" ] || fail "release.sh tagged a release-green tree with incomplete sampled reviews"
+: > "$common/reviews-runs"
+STUB=red tools/release.sh >/dev/null || fail "release.sh refused a release-green tree"
+[ ! -s "$common/stub-runs" ] || fail "release.sh reran the full run for a release-green tree"
+[ "$(wc -l < "$common/reviews-runs")" -eq 1 ] || fail "release.sh did not check the sampled reviews once for a release-green tree"
 [ "$(git rev-parse main)" = "$(git rev-parse next)" ] || fail "release.sh did not promote the release-green tree"
 git tag -d "r$day.1" >/dev/null
 

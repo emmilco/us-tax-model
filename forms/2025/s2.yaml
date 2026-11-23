@@ -1147,13 +1147,13 @@ form:
     - id: s2.other_tax
       printed: (helper)
       type: Bool
-      label: "Do you (or, on a joint return, your spouse) owe any other additional tax for Schedule 2 that has not been asked about: the additional tax on deferred compensation that failed section 409A or 457A, the tax on an excess parachute payment, the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, or any other tax to be written in on line 1y or line 17z?"
+      label: "Do you (or, on a joint return, your spouse) owe any other additional tax for Schedule 2 that has not been asked about: the additional tax on deferred compensation that failed section 409A or 457A, the tax on an excess parachute payment, the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, the recapture of the 10% additional tax when a series of substantially equal payments from a retirement plan or IRA is changed before the later of age 59½ or 5 years after its first payment (Form 5329 line 4), or any other tax to be written in on line 1y or line 17z?"
       expr:
         op: input
-        source: "Do you (or, on a joint return, your spouse) owe any other additional tax for Schedule 2 that has not been asked about: the additional tax on deferred compensation that failed section 409A or 457A, the tax on an excess parachute payment, the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, or any other tax to be written in on line 1y or line 17z?"
+        source: "Do you (or, on a joint return, your spouse) owe any other additional tax for Schedule 2 that has not been asked about: the additional tax on deferred compensation that failed section 409A or 457A, the tax on an excess parachute payment, the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, the recapture of the 10% additional tax when a series of substantially equal payments from a retirement plan or IRA is changed before the later of age 59½ or 5 years after its first payment (Form 5329 line 4), or any other tax to be written in on line 1y or line 17z?"
       cite:
         doc: f1040s2
-        locator: "Schedule 2 (2025), lines 1y, 17h to 17m and 17z"
+        locator: "Schedule 2 (2025), lines 1y, 17h to 17m and 17z; p590b p. 26, Recapture tax for changes in distribution method under equal payment exception, \"Report the recapture tax (including the interest on the deferral periods) on line 4 of Form 5329\""
     - id: s2.other
       printed: (helper)
       type: Bool

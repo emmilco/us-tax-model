@@ -1133,7 +1133,7 @@ bank:
     seq: 3
     group: other_taxes
     tick: Another federal tax you have not been asked about
-    help: "For example the 20% tax on deferred pay that broke the rules or on a “golden parachute” payment, or a tax a notice told you to add. A return with this is outside what this tool prepares; a Yes ends the interview here."
+    help: "For example the 20% tax on deferred pay that broke the rules or on a “golden parachute” payment, the 10% tax brought back when a series of equal retirement payments is changed too soon, or a tax a notice told you to add. A Yes ends the interview here."
     prompt: Do you (or, on a joint return, your spouse) owe any other federal tax for 2025 that you have not been asked
       about?
   - input: s3.line10
@@ -3704,7 +3704,8 @@ bank:
   - input: retirement.code2_partial
     order: 170
     seq: 8
-    help: A return with this is outside what this tool prepares; a Yes ends the interview here.
+    help: The exception may cover only part of the money, or none. Changing a series before age 59½, or within 5 years of
+      its first payment, brings back the extra tax on the earlier payments. A Yes ends the interview here.
   - input: retirement.not_beneficiary
     order: 170
     seq: 9

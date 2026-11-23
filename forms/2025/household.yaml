@@ -1664,15 +1664,9 @@ form:
         field: dependent.one
         where:
           op: test
-          all:
-            - op: test
-              eq:
-                - dependent.relationship
-                - const: child
-            - op: test
-              eq:
-                - dependent.lived_all_year
-                - const: true
+          eq:
+            - dependent.child_all_year
+            - const: true
       cite:
         doc: i1040gi
         locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim

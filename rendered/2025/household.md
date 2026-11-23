@@ -628,8 +628,8 @@
 ## (helper) — `household.qss_children_all_year`
 
 - **Authored helper label:** Number of people listed as your child who lived with you for all of 2025
-- **Encoded (Count):** Add dependent.one over every confirmed dependent entry for which helper "Relationship to you" = 'child' and helper "Lived with you for all of 2025 (for a person born, adopted or placed with you in 2025, or who died in 2025, all of their part of the year)?" = true, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"all":[{"eq":["dependent.relationship",{"const":"child"}],"op":"test"},{"eq":["dependent.lived_all_year",{"const":true}],"op":"test"}],"op":"test"}}`
+- **Encoded (Count):** Add dependent.one over every confirmed dependent entry for which helper "Listed as your child, and lived with you for all of 2025 (the lived-all-year answer is read only for a child)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"eq":["dependent.child_all_year",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.qss_child_conflict`

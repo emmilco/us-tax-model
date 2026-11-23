@@ -2654,8 +2654,15 @@
 ## (gate) — `person.edu_llc_tin_refused`
 
 - **Authored helper label:** A lifetime learning credit student whose ITIN was only applied for by the due date of the return
-- **Encoded (Bool):** helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true and helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = false
-- Expr: `{"all":[{"eq":["person.edu_llc",{"const":true}],"op":"test"},{"eq":["person.tin",{"const":false}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true → helper "No SSN or ITIN issued by the due date of the return (read only for a lifetime learning credit student)"] [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_llc",{"const":true}],"op":"test"},"then":"person.edu_tin_missing"},{"guard":{"eq":["person.edu_llc",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; sha256 195cfd5e)
+
+## (helper) — `person.edu_tin_missing`
+
+- **Authored helper label:** No SSN or ITIN issued by the due date of the return (read only for a lifetime learning credit student)
+- **Encoded (Bool):** helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = false
+- Expr: `{"eq":["person.tin",{"const":false}],"op":"test"}`
 - Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; sha256 195cfd5e)
 
 ## 27 — `person.edu_line27`

@@ -1130,10 +1130,10 @@
 
 ## (helper) — `retirement.code2_partial`
 
-- **Authored helper label:** Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
-- **Encoded (Bool):** Input — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
-- Expr: `{"op":"input","source":"Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?"}`
-- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
+- **Authored helper label:** Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?
+- **Encoded (Bool):** Input — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?
+- Expr: `{"op":"input","source":"Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?"}`
+- Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude."; p590b p. 26, "You may have to pay a recapture tax if you modify ... the annual amount distributed ... under the substantially equal periodic payment exception" and "The recapture tax is imposed in the tax year in which the modification occurs" (2025; sha256 aec3d325)
 
 ## (helper) — `retirement.is_code2`
 
@@ -1144,8 +1144,8 @@
 
 ## (gate) — `retirement.code2_partial_if_code2`
 
-- **Authored helper label:** The code 2 exception does not cover the whole distribution, asked only with code 2 (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Code 2 (early distribution, exception applies)" = true → helper "Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?"] [helper "Code 2 (early distribution, exception applies)" = false → helper "Year parameter s3.no (false)"]
+- **Authored helper label:** The code 2 exception does not cover the whole distribution, or the distribution is one of a series of substantially equal payments changed in 2025, asked only with code 2 (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Code 2 (early distribution, exception applies)" = true → helper "Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?"] [helper "Code 2 (early distribution, exception applies)" = false → helper "Year parameter s3.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["retirement.is_code2",{"const":true}],"op":"test"},"then":"retirement.code2_partial"},{"guard":{"eq":["retirement.is_code2",{"const":false}],"op":"test"},"then":"retirement.no"}],"op":"choose"}`
 - Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
 
@@ -1166,7 +1166,7 @@
 ## (gate) — `retirement.code_screen`
 
 - **Authored helper label:** A code 2, 4 or 7 distribution whose code does not fit
-- **Encoded (Bool):** (helper "The code 2 exception does not cover the whole distribution, asked only with code 2 (false otherwise)" = true or helper "Code 7 although under age 59½, other than a section 457 plan distribution not from a rollover" = true or helper "Code 4 although not a beneficiary, asked only with code 4 (false otherwise)" = true)
+- **Encoded (Bool):** (helper "The code 2 exception does not cover the whole distribution, or the distribution is one of a series of substantially equal payments changed in 2025, asked only with code 2 (false otherwise)" = true or helper "Code 7 although under age 59½, other than a section 457 plan distribution not from a rollover" = true or helper "Code 4 although not a beneficiary, asked only with code 4 (false otherwise)" = true)
 - Expr: `{"any":[{"eq":["retirement.code2_partial_if_code2",{"const":true}],"op":"test"},{"eq":["retirement.code7_wrong",{"const":true}],"op":"test"},{"eq":["retirement.not_beneficiary_if_death",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i5329] p. 5, Line 2, "Enter on line 2 the amount that you can exclude." (2025; sha256 aec3d325)
 

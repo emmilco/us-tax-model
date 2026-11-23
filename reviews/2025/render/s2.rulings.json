@@ -17,6 +17,26 @@
    "subject_key": "30b4d16eb069b68fb1d8d54a79862643d1e828650479e573003481bd9d88f518"
   },
   {
+   "printed": "1z",
+   "restated": "Enter the amount from line 1a.",
+   "model": "The IRS line says \"Add lines 1a through 1y\", but the program enters only line 1a. Line 1b/1c (\"Repayment of new/previously owned clean vehicle credit(s) transferred to a registered dealer\") can arise from a credit transferred in 2025. No gate input catches it: s2.credit_recapture asks only about a credit \"claimed in an earlier year\", so the refusal does not reliably exclude these amounts. The same gap applies to line 1e/1f excessive payments.",
+   "ruling": "Ruling: scope; lines 1b and 1c arise only from a clean vehicle credit taken off the price by a dealer, which is refused before Schedule 2 (scope, s3.ev_dealer_if_ev: 'A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed'); lines 1d to 1f and 1y are asked by s2.credit_recapture ('a recapture or repayment of a business, investment, energy, low-income housing or vehicle refueling credit, or a penalty tied to one') and s2.other_tax, each refused through s2.other.",
+   "context": "9009a90728314bad61f7d9ab0e88e0485eb5b96a6b3c9c955f357b7516b5e630",
+   "date": "2026-11-23",
+   "run": "1dcb8716c4d5320ba3e7e2b9045a680affec1cba5c357aa1cf5b91e087a291eb",
+   "subject_key": "3189f00c5fcf378930ab711260968715bbde4293ba5097cbd19e1fbf3168c4fb"
+  },
+  {
+   "printed": "21",
+   "restated": "Add line 4, line 7, line 8, line 11, line 12, and line 18.",
+   "model": "The IRS line says \"Add lines 4, 7 through 16, 18, and 19\", but the program adds only lines 4, 7, 8, 11, 12 and 18. No gate input asks about line 14 (\"Interest on tax due on installment income from the sale of certain residential lots and timeshares\") or line 15 (\"Interest on the deferred tax on gain from certain installment sales with a sales price over $150,000\"). s2.other_tax covers only amounts written in on line 1y or 17z, so these amounts would be left out without a refusal.",
+   "ruling": "Ruling: scope; lines 14 and 15 arise only from installment sales (Form 6252 and section 453A), refused by sd.installment ('An installment sale is figured on Form 6252 ... a Yes ends the interview here') and, for a business, sc.special ('income you report under the installment method (including installment sales of timeshares or residential lots)'); the remaining lines 9, 10, 13, 16, 17 and 19 are refused by the Schedule 2 screens through s2.other.",
+   "context": "9009a90728314bad61f7d9ab0e88e0485eb5b96a6b3c9c955f357b7516b5e630",
+   "date": "2026-11-23",
+   "run": "1dcb8716c4d5320ba3e7e2b9045a680affec1cba5c357aa1cf5b91e087a291eb",
+   "subject_key": "565c47c10e450bf7c6128b1b1553022b39f0e44395932d106afa22816223c0c5"
+  },
+  {
    "printed": "21",
    "restated": "Add line 4, line 8, line 11, line 12, and line 18.",
    "model": "The IRS text says 'Add lines 4, 7 through 16, 18, and 19', but the restatement adds only lines 4, 8, 11, 12 and 18. The s2.other gate does not test for every omitted line: no input asks about Form 8919 uncollected tax (line 6, which feeds line 7), installment-sale interest (lines 14 and 15), or tips unreported to an employer that are not on a W-2 (Form 4137, line 5), so those amounts would be left out without a refusal.",

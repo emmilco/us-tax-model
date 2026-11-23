@@ -1865,35 +1865,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
+> For this person (you, or your spouse on a joint return) — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?
 
 Shown on a one-person return:
 
-> Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
+> Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?
 
 Shown for you on a couple's return:
 
-> About you — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
+> About you — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?
 
 Shown for your spouse:
 
-> About your spouse — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?
+> About your spouse — Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?
 
 **Help, as stored**
 
-> A return with this is outside what this tool prepares; a Yes ends the interview here.
+> The exception may cover only part of the money, or none. Changing a series before age 59½, or within 5 years of its first payment, brings back the extra tax on the earlier payments. A Yes ends the interview here.
 
 Shown on a one-person return:
 
-> A return with this is outside what this tool prepares; a Yes ends the interview here.
+> The exception may cover only part of the money, or none. Changing a series before age 59½, or within 5 years of its first payment, brings back the extra tax on the earlier payments. A Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> A return with this is outside what this tool prepares; a Yes ends the interview here.
+> The exception may cover only part of the money, or none. Changing a series before age 59½, or within 5 years of its first payment, brings back the extra tax on the earlier payments. A Yes ends the interview here.
 
 Shown for your spouse:
 
-> A return with this is outside what this tool prepares; a Yes ends the interview here.
+> The exception may cover only part of the money, or none. Changing a series before age 59½, or within 5 years of its first payment, brings back the extra tax on the earlier payments. A Yes ends the interview here.
 
 ## `retirement.not_beneficiary`
 

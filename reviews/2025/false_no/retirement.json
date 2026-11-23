@@ -534,68 +534,58 @@
    ]
   },
   "gate:retirement.is_code2": {
-   "subject_sha": "12a095c2b74cef094ad05a62c599b77789df742fa5f2eb50d74f345286ca4236",
+   "subject_sha": "5673e512eef903571b1ce673341c5fe928ab504ae8c8b656d27613437de296a5",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer under age 59 1/2 who began a series of substantially equal periodic payments in an earlier year and changed or stopped the series in 2025, within five years of starting it. The payer codes this year's payment 2.",
-       "why_no": "The question asks only whether the exception covers 'this money'. This year's payment does fit the series exception, so the filer truthfully answers no. The change in 2025 also triggers recapture of the 10% tax on the earlier years' payments, which this question never reaches.",
-       "line": "retirement.code2_partial_if_code2 (missed refusal: recapture of the extra tax on earlier years' payments)",
-       "irs_text": "i5329 (2025) p. 5, Line 2, exception 02: 'Distributions made as part of a series of substantially equal periodic payments (made at least annually) for your life (or life expectancy)...' (recapture rules are in Pub. 590-B, cited on the same page)",
-       "severity": "high",
-       "fix": "Add a separate question: 'Did you (or your spouse) change or stop a series of equal periodic payments from a retirement plan or IRA in 2025, before age 59 1/2 or within 5 years of the first payment?' A yes should end the interview."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer whose code-2 distribution is larger than the cap on the exception that applies. Examples: an IRA first-home withdrawal of $25,000 (cap $10,000), a birth or adoption distribution above $5,000, an emergency expense distribution above the per-year limit, or a medical expense withdrawal above unreimbursed medical costs minus 7.5% of AGI.",
-       "why_no": "The words 'the payer knows of an exception' read as if the payer has already confirmed the whole amount is exempt. The filer is never told that exceptions have dollar caps or formulas they must apply themselves.",
-       "line": "retirement.code2_partial_if_code2 (missed refusal; the excess is subject to the additional tax)",
-       "irs_text": "i5329 (2025) p. 5, Line 2: 'IRA distributions made for the purchase of a first home, up to $10,000.'; 'Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income'; 'a distribution of up to $5,000'",
-       "severity": "medium",
-       "fix": "Ask first which exception applies, then compare the amount with its limit (first home $10,000; birth or adoption $5,000; emergency limit; medical expenses minus 7.5% of AGI). Or add help text: 'Many exceptions cover only up to a dollar limit. If this distribution is more than that limit, answer Yes.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer whose payer used code 2 but whose facts don't meet the exception. Examples: separation from service at age 54, or in an earlier year than the age-55 year; a distribution from an IRA that the payer coded under the age-55 or QDRO exceptions, which don't apply to IRAs; a reservist on active duty for less than 180 days.",
-       "why_no": "The question takes the payer's code as settled ('Code 2 means the payer knows of an exception'). The filer trusts the payer and answers no, but the true answer is 'none of it is covered'.",
-       "line": "retirement.code2_partial_if_code2 (missed refusal; the full amount is subject to the additional tax)",
-       "irs_text": "i5329 (2025) p. 5, Line 2, exception 01: 'Qualified retirement plan distributions (doesn't apply to IRAs) you received after separation from service when the separation from service occurs in or after the year you reach age 55'",
-       "severity": "medium",
-       "fix": "Ask facts the filer can check, such as the year and age of separation, the plan type (IRA or employer plan), and days of active duty. Or reword: 'Payers sometimes use code 2 when the exception does not fully apply. Check that your facts meet the exception's conditions. If any part of this money does not qualify, answer Yes.'"
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A filer whose Form 1099-R box 7 shows two codes that include 2. Examples: 2 with B (a designated Roth account), 2 with K (traded assets), or 2 with M (a plan loan offset).",
-       "why_no": "The gate tests a single value, 'Distribution code in box 7' = 'early_exception_2'. If the helper records the other code, or stores the pair as a separate value, the condition is false and the question is never asked, even though the exception may cover only part of the money.",
-       "line": "retirement.code2_partial_if_code2 (forced false; missed refusal)",
-       "irs_text": "i5329 (2025) p. 5, Line 2: 'Enter on line 2 the amount that you can exclude.'",
-       "severity": "medium",
-       "fix": "Compute the gate as 'box 7 contains code 2', checking either code position, rather than equality with a single stored code."
+       "who": "A filer started a series of substantially equal payments at 57 in 2022 and reached 59½ in 2025. In 2025 they took an extra withdrawal, which changes the series before the 5th anniversary of its first payment. The payer coded the 2025 Form 1099-R with code 7 (normal distribution) because the filer was over 59½.",
+       "why_no": "The gate is computed from box 7. It is false because the code is 7, not 2, so the question about a series changed in 2025 is never asked.",
+       "line": "retirement.code2_partial_if_code2 (the refusal for recapture tax is missed)",
+       "irs_text": "p590b p. 26: \"The recapture tax applies if you modify the series of payments ... before the later of these two dates: 1. The 5th anniversary of the date of the first distribution of the series; or 2. The date you reach age 59½.\" and \"The recapture tax is imposed in the tax year in which the modification occurs.\"",
+       "severity": "high",
+       "fix": "Ask a separate per-person question for every return, whatever the box 7 code: 'Did you or your spouse start a series of substantially equal payments before 2025, and in 2025 change, stop, or add to it before age 59½ or within 5 years of its first payment?' Ask it once per person, not per Form 1099-R. A yes should lead to the refusal."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "An IRA owner under 59½ takes a series of substantially equal payments. The IRA custodian does not track the series and codes each Form 1099-R with code 1. In 2025 the owner took more than the series amount, so the series was changed.",
+       "why_no": "The box 7 code is 1, not 2. The gate is false, so the question about a changed series is never asked, even though the change triggers recapture of the tax on earlier years' payments.",
+       "line": "retirement.code2_partial_if_code2 (the refusal for recapture tax is missed)",
+       "irs_text": "p590b p. 26: \"You may have to pay a recapture tax if you modify ... the annual amount distributed ... under the substantially equal periodic payment exception\"; i5329 p. 5 lists the exception (No. 02) apart from the payer's code",
+       "severity": "high",
+       "fix": "Ask about a changed series apart from the code 2 gate, as above. Also ask it on the code 1 path, where the filer claims the series exception."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer under 59½ stopped or skipped the 2025 payment from a series begun in 2023, so the account issued no 2025 Form 1099-R. Their other Forms 1099-R carry codes 7 or G.",
+       "why_no": "With no 2025 Form 1099-R from the series account, no document has code 2, so the gate never turns true. Stopping payments is a change of the series made in 2025.",
+       "line": "retirement.code2_partial_if_code2 (the refusal for recapture tax is missed)",
+       "irs_text": "p590b p. 26: \"The recapture tax is imposed in the tax year in which the modification occurs.\" Of the payment changes, only a fully depleted account or a one-time switch to the RMD method is \"not treated as a modification.\"",
+       "severity": "high",
+       "fix": "Ask the question about a changed series at the return level for each person, not only when a Form 1099-R with code 2 exists."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "Any filer with a code-2 distribution who reads the help text before answering.",
-       "why_no": "The help says 'a Yes ends the interview here'. A filer who is unsure leans toward no to keep going, and the help gives no example of when Yes is correct.",
+       "pattern": "other",
+       "who": "A filer's Form 1099-R shows code 2 together with a second code in box 7, such as '2B' (designated Roth account) or '2K'. The code 2 exception covers only part of the money.",
+       "why_no": "If the helper 'Distribution code in box 7' turns the two codes into a value other than 'early_exception_2', the gate is false and the partial-exception question is skipped.",
        "line": "retirement.code2_partial_if_code2",
-       "irs_text": "i5329 (2025) p. 5, Line 2: 'Enter on line 2 the amount that you can exclude.'",
-       "severity": "low",
-       "fix": "Add to the help: 'Answer Yes if any part of this money is above an exception's limit, or if your facts don't meet the exception's conditions. If you are unsure, answer Yes.'"
+       "irs_text": "i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude.\"",
+       "severity": "medium",
+       "fix": "Compute the gate as true whenever either box 7 code is 2, including the two-code combinations with 2."
       }
      ],
-     "prompt_sha": "5d0d7e020531bde6b2f4be4cb3e475ea52dca787911debfcb3ae7a1297d5ac50",
+     "prompt_sha": "f7681f43dfb00831ff4dcdd7ff783362821720c019dad66ddf53408e7440906f",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.09561599999999999,
+     "cost": 0.082912,
      "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_retirement.is_code2.12a095c2b74c.1.response.txt"
+     "response": ".transcription/false_no/gate_retirement.is_code2.5673e512eef9.1.response.txt"
     }
    ],
    "condition": "retirement.is_code2",
@@ -615,12 +605,27 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\"",
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\"; , \"You may have to pay a recapture tax if you modify ... the annual amount distributed ... under the substantially equal periodic payment exception\" and \"The recapture tax is imposed in the tax year in which the modification occurs\""
      ],
      "cols_pages": [
       5
      ],
      "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    },
+    {
+     "doc": "p590b",
+     "revision": "2025",
+     "text_sha256": "24de404e77c2a3d1f0540b91ac8c28ca4d45c7fcf968de613407419eba9266f4",
+     "pages": [
+      26
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      26
+     ],
+     "cols_sha256": "464639ba13341fe9c824b6f495922126cb3d158650887bf9beb265fd951c3e77"
     }
    ]
   },

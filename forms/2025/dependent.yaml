@@ -1098,16 +1098,38 @@ form:
       label: A relative of your spouse, on a joint return
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - f1040.status
-          - const: mfj
-        - op: test
-          eq:
-          - dependent.spouse_relative
-          - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: single
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfj
+          then: dependent.spouse_relative
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfs
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: hoh
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: qss
+          then: dependent.no
       cite:
         doc: p501
         locator: p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse."
@@ -3467,6 +3489,64 @@ form:
       cite:
         doc: p501
         locator: "p. 13, Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\" (time the child was missing is not time lived with you, so a person who lived with you for all of 2025 was not missing in 2025)"
+    - id: dependent.child_all_year
+      printed: (helper)
+      type: Bool
+      label: "Listed as your child, and lived with you for all of 2025 (the lived-all-year answer is read only for a child)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: child
+          then: dependent.lived_all_year
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: sibling
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: sibling_descendant
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: parent
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: parent_relative
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: in_law
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: household_member
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: other
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 15, Qualifying Surviving Spouse, "3. This child lived in your home for all of 2025"'
     - id: dependent.household_all_year
       printed: (helper)
       type: Bool

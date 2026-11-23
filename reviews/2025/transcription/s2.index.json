@@ -6,15 +6,15 @@
  "head_rows": {
   "printed lines compared": "17",
   "agree / disagree / missing": "14 / 3 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "s2.other",
-   "record": "7f24498b1b4a8dd2478df9ea3600e9e33bf11e1896a19f66445a1a26f876540d",
+   "record": "87b68f4d86c05a8f6f55f0cf1cdc21ca2c7846ad6303f245094858032f478fbe",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 111, Line 1y, \"Other additions to tax\". The reply keeps the screening reading the earlier ruling refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/s2.json): 1913 of 3472 comparisons agree, 1913 of 2713 in scope; completed {\"candidate-unknown\": 36, \"value\": 256}. Project stands.",
-   "subject_key": "88d1d3b7db8106aea208bde70f41ae87a51b1c0cf442f3181981c53bee470bd9"
+   "ruling": "Ruling: model error; s2.other is the project's screen ('Any amount on Schedule 2 other than the following?': the lines this tool figures), which the IRS pages do not define, as the candidate says; its reading 'line 21 above zero' would refuse every return with self-employment tax, Additional Medicare Tax or NIIT, which the tool computes.",
+   "subject_key": "dc8640edaa391bc0453d70e15eabe66db316fa4c121291daf5a8d36e8178be1d"
   },
   {
    "key": "s2.line8_file",
@@ -31,9 +31,9 @@
   },
   {
    "key": "1z",
-   "record": "7f24498b1b4a8dd2478df9ea3600e9e33bf11e1896a19f66445a1a26f876540d",
+   "record": "87b68f4d86c05a8f6f55f0cf1cdc21ca2c7846ad6303f245094858032f478fbe",
    "status": "AGREE",
-   "subject_key": "485506b124f42b5d02e783b426c0db842b3edf8f54301ea5aa5db7c4155d17a0"
+   "subject_key": "29713bec0b8d63e3bfff4b5b4c5fe3beaf1edbbb0c9daa4b13f44eba0d7e3530"
   },
   {
    "key": "2",
@@ -195,27 +195,16 @@
   },
   {
    "key": "21",
-   "record": "7f24498b1b4a8dd2478df9ea3600e9e33bf11e1896a19f66445a1a26f876540d",
+   "record": "87b68f4d86c05a8f6f55f0cf1cdc21ca2c7846ad6303f245094858032f478fbe",
    "status": "AGREE",
-   "subject_key": "debf5aad1f2bf1669c0f480e6dbcbc4882cc6c7767adacda635eaefa3bb68ecd",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s2.line12": "s2.niit",
-     "s2.line18": "s2.other_additional_total",
-     "s2.line7": "s2.ss_medicare_total",
-     "s2.line8": "s2.tax_favored_accounts"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "f16024773758489a9213323fb4ca464aecf69dc24fc6d4975b9007f2eef139fc"
-   }
+   "subject_key": "d7b616a804fa2b2560b41f6c0daa4a95a1985ccae41e890de86771726ac6da3c"
   }
  ],
  "subjects": {
-  "s2.other": "55edc29092a85906e9d06ed6d874176e760632c8c5aed7dc99f4c407f806be52",
+  "s2.other": "1d24342bea8e2fe43888c0eae53fbbbdcc107c8867e874e92b9391ac8ce3d297",
   "s2.line8_file": "deb8be263885897cf5058b90185a21cfbad1938e3b0c9298cb84098d5a29294d",
   "1a": "45c38ce8fdfae6506bcf62fdeee06baaffe971d62e9f9cdb5cbb53c45888473b",
-  "1z": "33d872e88e513fc79c3fba1a08807a2e2dba942d5af1890a2bf7ffb33623e9d5",
+  "1z": "73bd3d7eb52ef4f21779611b62342b9a58a5fdcb8c7686d0e3d2908c64e455b8",
   "2": "e8bc122c9c72ca790693cdb617d79e47eaa8cae7b249ce63db8a0191f24a80b0",
   "3": "7ab9b1b03d4566d66f61819570d3d1f50e8cef92e15293d3637f871dfcc2e150",
   "4": "953ef54c0b1d62d61d6b53201beb0d3ad1e1265d162735865c2ae696027a420c",
@@ -228,7 +217,7 @@
   "12": "dcebc04d534b7cfe51c700ebf7de0880c5e311091e65226487dcc99dd1b85895",
   "17c": "e690fa9eac7cdc3d3d9c750d7d27edfddad825c027545d6790fe4a3cde22486e",
   "18": "7e4ec44f9b9fd2bdda3be26dc6e2d52f22050c4f890fe94143cc8c9f8fa26dc5",
-  "21": "515666546344a1352515e594bab476e9ddde833bc96140a46967edcaee71021d"
+  "21": "d5935e3cae55074f75d6bde3f0a4fb5a42086e90332a3d49ed6cd564f6b10e08"
  },
  "__rest__": "afebc9cd3ed3e50a0f1f9e9d83cb49dd824e77c8da32f20b0c141d045a8c0355",
  "foreign": {

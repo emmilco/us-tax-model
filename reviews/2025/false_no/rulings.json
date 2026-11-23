@@ -97,90 +97,106 @@
    "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:div.any#1": {
-   "reason": "Every case is covered by owning shares or getting a Form 1099-DIV or a broker substitute statement.",
+   "reason": "A filer with a 2025 Form 1099-DIV or shares answers Yes; the rest are wording lows.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "ESOP dividends reported in box 1b of a Form 1099-DIV: the filer got a Form 1099-DIV, so div.any is Yes."
+     "class": "presentation",
+     "evidence": "The filer holds a Form 1099-DIV for 2025 and the help says 'If you are not sure, answer Yes'; reading 'get a Form 1099-DIV' as received in calendar 2025 only is a strained reading. Low wording point ('for 2025').",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "A nominee who received a Form 1099-DIV answers Yes by 'get a Form 1099-DIV'."
+     "class": "accepted residual",
+     "evidence": "f1099div p. 5, 'Boxes 9 and 10. Show cash and noncash liquidation distributions': a 2025 liquidating payment is reported on a Form 1099-DIV for 2025, which opens the gate; only a payment with no form and no shares held in 2025 is missed. Rare; low.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "'A broker's combined statement counts as a Form 1099-DIV' and the filer owned shares."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A beneficial owner of shares held in another's name owns shares; the gated questions' help says 'Include your share of amounts paid in someone else's name'. The gate help does not repeat it; low.",
+     "bugs": []
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "Box 3, 9 and 10 distributions come on a Form 1099-DIV or from owned shares, so Yes."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The gate help names 'money market funds' and says 'If you are not sure, answer Yes'; a consolidated broker statement with a 1099-DIV section is a Form 1099-DIV. Low.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Form 2439 holders owned shares of the fund or REIT in 2025, so 'own shares of a company or a fund' is Yes."
+     "class": "presentation",
+     "evidence": "REIT interests and UIT units are shares of a company or a fund; a Form 2439 holder who answers Yes is refused at sd.f2439. Low wording point.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Exempt-interest dividends come on Form 1099-DIV from a fund the filer owns, so Yes."
+     "class": "presentation",
+     "evidence": "A taxable account is not a retirement account; a filer's misnomer is not a reading of the words. Low.",
+     "bugs": []
     },
     {
      "n": 6,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "A nominee with a substitute statement: broker statement counts as a Form 1099-DIV (sb.ordinary_dividends help) and the filer owns the account's shares of record."
-    },
-    {
-     "n": 7,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Capital gain distributions come on Form 1099-DIV from owned shares, so Yes."
+     "evidence": "f1099div p. 5, Box 1b: ESOP dividends paid directly are reported on Form 1099-DIV, so the filer gets one and answers Yes.",
+     "bugs": []
     }
    ],
-   "subject_sha": "f7429cfb859471ff98b3584773ed8b8f9c48c420d06f99d85cb77173660cad57",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no gate defect; wording lows",
+   "subject_sha": "7e08471b5eb49acd7f868474c751e3ca5dbba457967657295c1e2298481cdc05",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:div.has_ordinary#1": {
-   "reason": "Child dividends are refused; no-form dividends feed the same ordinary total; qualified and 199A amounts are portions of box 1a.",
+   "reason": "No-form dividends feed the box 1a total; child dividends are refused; the rest are covered by the box 1a help.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "scope.f8814 refuses a Form 8814 child election, the source of 'child's qualified dividends in the total on line 3a'."
+     "class": "covered",
+     "evidence": "sb.ordinary_dividends help: 'Include ... ordinary dividends received without a form', so box 1a is above zero; K-1 dividends are refused by scope.k1.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "sb.ordinary_dividends help: 'ordinary dividends received without a form', so the gate is true for them."
+     "class": "out of scope",
+     "evidence": "scope.f8814 refuses a Form 8814 election to report a child's dividends (i1040gi p. 25, 'If you are including your child's qualified dividends in the total on line 3a').",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "i1040gi p. 25: 'Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b'; a positive qualified amount implies a positive ordinary total, so the gate cannot be false with box 1b above zero."
+     "evidence": "sb.ordinary_dividends help: 'Include reinvested dividends'.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "f1099div p. 5: box 5 is 'the portion of the amount in box 1a'; a positive box 5 implies ordinary dividends above zero."
+     "evidence": "f1099div p. 5, Box 1b: ESOP dividends are on Form 1099-DIV box 1a, which sb.ordinary_dividends totals.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "sb.ordinary_dividends help: 'A broker's combined statement counts as a Form 1099-DIV.'",
+     "bugs": []
     }
    ],
-   "subject_sha": "18df54104e7cae9b1e3d992ab4d40cf4f6ab10d3d66364c184597c827bb16ee1",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "7541f4b3eb24faa76147074c370d09da3b72f707304577a00ddd6faf2b4fb55b",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:div.has_return_of_capital#1": {
    "class": "defect (medium) through the parent question: BUG-0830",
@@ -2039,62 +2055,55 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude Opus agents, RUBRIC2)"
   },
   "unruled:gate:qbi.prior_form#1": {
-   "class": "Suspended losses are asked separately; PTP cases are refused with every K-1; one real narrow reading: a Schedule C loss year with no Form 8995 filed.",
-   "reason": "Suspended losses are asked separately; PTP cases are refused with every K-1; one real narrow reading: a Schedule C loss year with no Form 8995 filed.",
-   "subject_sha": "a67ace58a98074144e332e6a412b83bc114b417abafa7d289d202b5f43c14a08",
+   "reason": "An unreported Schedule C loss year is asked by qbi.unreported_loss; suspended losses by qbi.suspended and scope.passive; PTP cases with every K-1 are refused.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "qbi.suspended is asked on every return with a Schedule C (qbi.suspended_if_business), whether or not a Form 8995 was filed, and refuses (i8995 p. 3); other activities' QBI is refused by the scope questions.",
+     "evidence": "qbi.unreported_loss asks 'In any year from 2018 to 2024 whose tax return had no Form 8995 or 8995-A, did your ... businesses lose money overall?' and refuses a Yes (i8995a p. 6, 'even if the loss was unreported'); other activities' QBI is refused by scope.k1 and scope.farm.",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i8995 p. 4, Line 4, 'If you have a qualified business net loss for the year ... The loss will be carried forward to next year', and p. 5, Line 16, 'regardless of whether the trade(s) or business(es) that generated the loss is still in existence'. A sole proprietor whose earlier net loss year had no Form 8995 attached truthfully answers No, and the carryforward is dropped.",
-     "bugs": [
-      {
-       "title": "qbi.prior_form asks whether a form was filed, not whether a business had a net loss carried forward",
-       "source": "i8995 p. 4, Line 4, \"If you have a qualified business net loss for the year ... The loss will be carried forward to next year.\"; p. 5, Line 16, \"This amount will offset QBI in later tax years regardless of whether the trade(s) or business(es) that generated the loss is still in existence.\"",
-       "symptom": "A sole proprietor whose earlier net-loss year had no Form 8995 attached truthfully answers No to qbi.prior_form; the carryforward (Form 8995 line 3) is dropped and the QBI deduction overstated.",
-       "where": "interview/2025/questions.yaml (qbi.prior_form); forms/2025/qbi.yaml (qbi.prior_form)",
-       "fix": "Proposed fix: a refusing question asked with a Schedule C: 'Did a business of yours have a net loss in any year from 2018 to 2024 that a later year has not used up?' (needs the inputs claim), or help on qbi.prior_form: 'Answer Yes too if a business of yours had a net loss in a year since 2018, even with no Form 8995 that year.'",
-       "severity": "low"
-      }
-     ]
+     "class": "covered",
+     "evidence": "qbi.suspended ('deducting a business loss or expense of an earlier year that a tax limit kept you from deducting then') is asked with a Schedule C, and scope.passive ('income or a loss from, or sell your share of, a business that you owned but did not help run') refuses a freed passive loss; K-1 cases are refused by scope.k1.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "scope.k1 refuses every Schedule K-1 ('Income or a loss from a partnership, S corporation, estate or trust ... A Yes ends the interview here'), so a partner's or PTP holder's case is refused upstream.",
+     "evidence": "A PTP interest comes with a Schedule K-1, refused by scope.k1; a PTP sold in 2025 is a K-1 of 2025.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "A form attached by software that the filer does not remember: the help names the title and that it is filed 'for a business or for dividends of real estate funds'; low.",
+     "evidence": "The question names the form ('include Form 8995 or Form 8995-A'); the help's examples do not name PTP income. Low.",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "A prior Form 8995 filed only for PTP income came with a Schedule K-1; scope.k1 refuses every Schedule K-1 ('Income or a loss from a partnership, S corporation, estate or trust ... A Yes ends the interview here'), so a partner's or PTP holder's case is refused upstream.",
+     "class": "presentation",
+     "evidence": "The question names the spouse's returns: 'Did your (or, on a joint return, your spouse's) 2024 tax return, or any earlier one'; the help's 'yours' follows it. Low.",
      "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "A 2024 return not yet filed or amended: the tool prepares 2025 from the filed 2024 return; rare; low.",
+     "evidence": "A 2024 return not yet filed: the interview prepares 2025 from filed returns; rare.",
      "bugs": []
     }
-   ]
+   ],
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "514f1ff140f2f0f5262b4fc05ec2f95e88359775b26bb65f743a422c7a841130",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:k1s.active_if_b2#1": {
    "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
@@ -6738,54 +6747,62 @@
    "subject_sha": "129467153b180b24eea51488fe0d101eebafb94d3eac381bc0079740bd3c9d5f"
   },
   "unruled:gate:scope.pay_no_w2#1": {
-   "reason": "The parent help names household work; misclassification readings are low.",
+   "reason": "The gated questions name household work around the home, drivers and the under-$2,800 rule; misclassification readings are low.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The household question says 'in or around its home'; the parent help gives one example. Low.",
+     "class": "accepted residual",
+     "evidence": "Form 8919 reason code H (a 1099 amount from a firm that also issued a W-2) is not named; rare; the amount is reported as self-employment rather than wages. Low.",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "A bonus on Form 1099 from an employer that issued a W-2 (Form 8919 reason H) is rare; low.",
+     "class": "presentation",
+     "evidence": "scope.wages_no_form help: 'For example when an employer never sent a W-2'; a lost or late W-2 is still a W-2 to enter. Low.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The contractor question asks whether the filer believes they were really an employee; low.",
+     "class": "covered",
+     "evidence": "scope.household_pay: 'for work in or around its home or for its members'; help names 'private driver'.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Pay through an intermediary; low.",
+     "class": "covered",
+     "evidence": "scope.household_pay help: 'even in a home you share' and 'A household paying under $2,800 a year need not give a W-2.'",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A lost W-2 is still a W-2 to enter; low.",
+     "class": "model error",
+     "evidence": "Tips under $20 a month not reported to the employer are literally 'tips not reported in full to your employer'; scope.tips_unreported help: 'Count cash and card tips you did not report to the employer'.",
      "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "In-kind strike aid is rare.",
+     "class": "presentation",
+     "evidence": "'In 2025, did you have wages' read by the work date rather than the payment date; low.",
+     "bugs": []
+    },
+    {
+     "n": 6,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "Pay through an intermediary for a misclassified worker; low wording point (f8919 p. 2).",
      "bugs": []
     }
    ],
-   "subject_sha": "d574f636788633746f405ca435a58b62ccc06be6ea622abe20ef81ea948a0957",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "bugs": []
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "833f56eff4418afebdea08c15e7d51d2cdba1037336b86b561dea8ad07b92ba3",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:scope.recovery#1": {
    "reason": "Earlier-year income tax refunds are refused; a price adjustment is unsettled; the rest are named.",
@@ -7241,77 +7258,101 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:s1.has_sc#1": {
-   "reason": "Non-Schedule-C sources are refused upstream; a closed business's look-back interest is a defect.",
+   "reason": "Non-Schedule-C sources are refused upstream; a closed business's look-back interest is BUG-1092 (open, low); one rare unreported-loss residual.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Schedule F is refused by scope.farm, and vehicle expenses of a Schedule E rental by rental.vehicle (i1040gi p. 110).",
+     "evidence": "Schedule F is refused by scope.farm; a rental's vehicle is refused by rental.vehicle; i1040gi p. 110 column (ii) amounts of a Schedule E or F never reach the computation.",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "carloan.col_ii_input is asked per loan; the spouse's Schedule C is a business on the return, and rental use is refused by rental.vehicle.",
+     "evidence": "carloan.col_ii_input is asked per loan on a return that lists both spouses' Schedules C; 'your own business' on the loan's entry takes the spouse's business on a joint return (roster frame, RUBRIC2 rule 4).",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "K-1 losses are refused by scope.k1, PTPs with them, Schedule F by scope.farm (i8995 p. 3).",
+     "evidence": "K-1 losses are refused by scope.k1, Schedule F by scope.farm, and a freed passive loss by scope.passive (asked after scope.business_before); the tool counts QBI only from Schedules C (qbi.yaml note).",
      "bugs": []
     },
     {
      "n": 3,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "qbi.suspended asks about 'a business loss or expense of an earlier year that a tax limit kept you from deducting then', not only the current business.",
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "A suspended loss of a business owned before 2025 freed in 2025 is refused by scope.passive ('sell your share of, a business that you owned but did not help run'), asked after scope.business_before.",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "Partnership IDCs and an S corporation's circulation costs come through a K-1 (scope.k1).",
+     "class": "accepted residual",
+     "evidence": "Without a 2025 Schedule C the tool has no QBI (Schedule F and K-1 are refused); i8995 Line 3 carryforward cannot change the 2025 deduction, whose REIT part is figured apart (lines 6 to 9). Only Form 8995 line 16, the carryforward to 2026, is understated. Low.",
      "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "A prior-year mining or circulation cost gives only a negative 2025 adjustment (i6251 p. 7, 'If the AMT deduction is more than the regular tax deduction, enter the difference as a negative amount'); the tool does not prepare Form 6251 and its AMT test is an upper bound, so leaving it out can only refuse more.",
+     "class": "accepted residual",
+     "evidence": "A Form 8995 attached only for REIT dividends while a Schedule C loss was left off: qbi.carryforward reads that form's line 16, which omits the loss (i8995a p. 6, 'regardless of whether it is reported'). Rare; low.",
      "bugs": []
     },
     {
      "n": 6,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "f1040s2 line 17n look-back interest; i6251 p. 7 'for the tax year the contract is completed or adjusted'. K-1 contracts are refused by scope.k1, but s2.lookback is asked only with a 2025 Schedule C, so a closed sole proprietorship's contract adjusted in 2025 is never asked. Filed as BUG-1092.",
+     "class": "out of scope",
+     "evidence": "Partnership IDCs and circulation costs come on a K-1, refused by scope.k1.",
      "bugs": []
     },
     {
      "n": 7,
      "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "scope.farm refuses farming, including 'a share of crops or livestock from land you let a farmer use' (Form 4835), and partnership fishing is refused by scope.k1.",
+     "class": "accepted WIDE",
+     "evidence": "An earlier year's mining or circulation cost gives only a negative 2025 AMT adjustment (i6251 p. 7, 'enter the difference as a negative amount'); the tool's AMT test is an upper bound, so leaving it out can only refuse more.",
      "bugs": []
     },
     {
      "n": 8,
      "kind": "FALSE_NO",
      "class": "out of scope",
+     "evidence": "A partner's or shareholder's look-back computation comes on a K-1, refused by scope.k1; a royalty whose property is depreciated or amortized (income forecast method) is refused by royalty.depreciation ('Do you depreciate or amortize anything for it, such as a copyright or patent you bought?').",
+     "bugs": []
+    },
+    {
+     "n": 9,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "f1040s2 line 17n; i6251 p. 7, 'for the tax year the contract is completed or adjusted'. A closed sole proprietorship's contract adjusted in 2025 is never asked: BUG-1092 (open, low), not filed again.",
+     "bugs": [
+      "BUG-1092"
+     ]
+    },
+    {
+     "n": 10,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "scope.farm refuses farming 'and a share of crops or livestock from land you let a farmer use' (Form 4835); Schedule J is an election that only lowers tax, so not offering it to a vessel lessor leaves a correct tax.",
+     "bugs": []
+    },
+    {
+     "n": 11,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
      "evidence": "A partner's plan rests on K-1 earnings (scope.k1); a Schedule F farmer is refused by scope.farm.",
      "bugs": []
     }
    ],
-   "subject_sha": "1260022589b4171bf1e44c37aa2b0553c8df2f480bbf1a69b7f9e4adcd660b09",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
    "bugs": [
     "BUG-1092"
-   ]
+   ],
+   "class": "no gate defect beyond BUG-1092 (low)",
+   "subject_sha": "8a6e6177a61cbe6b18d0b515aeffd07b8ef42167d9cc19606c28cd236277c834",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:s1.hobby_any#1": {
    "reason": "Recreational farms are refused by scope.farm, activities the filer calls a business but runs without a profit motive are refused by sc.special, and the help excludes only personal-use property.",
@@ -7473,79 +7514,66 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:sa.medical_asked#1": {
-   "reason": "The shown premium question is 'other than from pay before tax', and Medicare from social security is in its help; the 7.5%-of-income wording is BUG-1087.",
+   "reason": "The 7.5%-of-income wording is BUG-1087 (open, low); estate-paid costs and premiums are covered by the help and the premium question.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "sa.medical_premiums as shown: 'did you ... pay for health insurance yourselves, other than from pay ...', with help 'Medicare premiums are usually taken out of social security benefits; Form SSA-1099 shows them'.",
-     "bugs": []
+     "class": "defect",
+     "evidence": "i1040sca p. 1, '7.5% of the amount of your adjusted gross income'. The tick reads '7.5% of your income': BUG-1087 (open, low), not filed again; the help adds 'If not sure, answer Yes'.",
+     "bugs": [
+      "BUG-1087"
+     ]
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "The shown question bars only pay before tax, not money that was never taxed; the reviewer read the label.",
+     "class": "covered",
+     "evidence": "sa.medical_any help: 'For someone who died in 2025, count costs their estate paid within a year of the death.'",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Dental, vision and long-term care premiums are health insurance in the sa.line1 question; low.",
+     "evidence": "'the medical and dental costs you ... paid' does not limit the person cared for; sa.line1 asks for all care paid. Low.",
      "bugs": []
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The sa.medical_any help: 'For someone who died in 2025, count costs their estate paid within a year of the death'.",
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'paid in 2025' is the question's own frame; card charges and old bills paid in 2025 are payments of 2025. Low.",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "'what you paid for doctors ...' counts costs paid for others; the sa.line1 question lists them. Low.",
+     "evidence": "Netting a 2025 reimbursement of 2024 bills (i1040sca p. 2, 'don't reduce your 2025 expenses by this amount') is a misreading the help does not invite; low.",
      "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "7.5% of income instead of adjusted gross income: BUG-1087 (open); not filed again.",
-     "bugs": [
-      "BUG-1087"
-     ]
+     "class": "presentation",
+     "evidence": "Special schooling and similar costs are medical care (p502); Medicare premiums withheld from social security are named in sa.medical_premiums help ('Form SSA-1099 shows them'). Low.",
+     "bugs": []
     },
     {
      "n": 6,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Mileage, lodging and similar costs are listed in the sa.line1 question; the gate's estimate may miss them. Low.",
-     "bugs": []
-    },
-    {
-     "n": 7,
-     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "After-tax payroll premiums are 'other than from pay before tax' in the shown question.",
-     "bugs": []
-    },
-    {
-     "n": 8,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The shown premium question names the spouse: 'did you (or, on a joint return, your spouse) pay ...'.",
+     "evidence": "sa.medical_premiums: 'did you ... pay for health insurance yourselves, other than from pay before tax'; a self-employed filer paid the premiums. A 2% S corporation shareholder has a K-1, refused by scope.k1.",
      "bugs": []
     }
    ],
-   "subject_sha": "5750936487bf0e25ee8df99923b196956fabb29fabb91e6a32ee5dea6f5dd4b8",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "bugs": [
     "BUG-1087"
-   ]
+   ],
+   "class": "no gate defect beyond BUG-1087 (low)",
+   "subject_sha": "41ec635c0a76a1260dda0eb3fc605f9a0ebd75f9b87bf1e6216040993cc13347",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:sa.mfs_spouse_not_itemizing#1": {
    "reason": "The gate is computed from sa.mfs and the spouse-itemizes answer, which the MFS filer is asked directly.",
@@ -7852,47 +7880,55 @@
    "subject_sha": "f3ee7ddc0662e20ae12dd13ee6258290d6b5ba02a82fdfbb4d7f04d87f4e675c"
   },
   "unruled:gate:sa.home_asked#1": {
-   "reason": "The two home questions cover owners (including sold homes), boat and camper loans, mortgages in another's name, and a surviving spouse.",
+   "reason": "The home-owner help names co-ops, mobile homes, land contracts and sold homes; trust title and life estates are rare wording lows.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "The sa.home_owner help counts 'a house, condo, co-op, mobile home, vacation home or land, even if sold during the year, and a home you are buying on a land contract', which covers real estate whose tax is on line 5b."
+     "evidence": "sa.home_owner help: 'Count a house, condo, co-op, mobile home, vacation home or land'.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "sa.home_other asks 'pay interest on a loan for a boat, camper or mobile home you can live in', with the spouse named."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A home in one's own revocable trust or disregarded LLC is owned by the filer for tax purposes; the help does not say so. Low.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "sa.home_other includes 'a mortgage for a home that is in someone else's name', which covers a surviving spouse paying a mortgage in the decedent's name."
+     "evidence": "sa.home_owner help: 'and a home you are buying on a land contract while the seller holds the deed'.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "A seller-financed loan is a mortgage on an owned home, which opens the gate through sa.home_owner and is then asked by sa.mortgage_unreported (refused); shared interest on another's 1098 is the same question."
+     "class": "presentation",
+     "evidence": "A deeded timeshare is real estate ('own a home or other real estate'); low wording point.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The home_owner help reads 'even if sold during the year', so a seller of a subsidized-mortgage home in 2025 answers Yes and reaches s2.mortgage_subsidy."
+     "class": "accepted residual",
+     "evidence": "A life tenant who pays the tax: rare; the help does not name it. Low.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Same wording: 'Owned a home, condo or land at any time in the year' covers the 5b taxes on real estate owned."
+     "evidence": "sa.home_owner help counts a 'mobile home ... even if sold during the year', so s2.mortgage_subsidy is asked.",
+     "bugs": []
     }
    ],
-   "subject_sha": "e098ff5ee3abd1c34bae9d57ac74cc1a8c221ae0285384230b9b3af670c13669",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "1715e4f5782c1e87b791f7c7180e581791b2e3430ec4ec6cfa3524220e60a90c",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:oi8z.damages#1": {
    "class": "defect (low): medical care for non-physical emotional distress and pre-September-1995 agreements (BUG-0804); the kind gate itself is sound",
@@ -7975,43 +8011,34 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:div.capital_gain_boxes#1": {
-   "class": "defect (medium): the box question excludes amounts without a form and shares of forms in another name",
-   "reason": "Findings 0 and 1 are BUG-0830; the corrected-form case is not a defect; 2f is refused.",
+   "reason": "The less-common-boxes question now counts payments with no form and shares of forms in another's name (BUG-0830, fixed).",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "f1099div p. 5, boxes 2b and 2d. div.other_boxes' help 'If you have no Form 1099-DIV, answer No' turns away a fund statement without a form.",
-     "bug": "BUG-0830"
+     "class": "covered",
+     "evidence": "div.other_boxes help: 'Count your share of a form in another's name, and a payment with no form, such as a return of capital or a payout when a company closed.'",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "f1099div p. 5, Nominees. div.other_boxes asks about 'your (or, on a joint return, your spouse's) Forms 1099-DIV'; a share of a form in another name is counted only in the box questions' help.",
-     "bug": "BUG-0830"
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "div.other_boxes help: 'Count your share of a form in another's name'.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "accepted (no defect)",
-     "evidence": "The filer answers from the forms held; a later corrected form is an amended return."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR)",
-     "evidence": "The question lists the box numbers and the help names the common boxes; low."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Boxes 2e and 2f apply to foreign persons; a nonresident or dual-status filer is refused by scope.nonresident."
+     "class": "presentation",
+     "evidence": "A composite broker statement is the Form 1099-DIV (sb.ordinary_dividends help: 'A broker's combined statement counts as a Form 1099-DIV'); a later corrected form is answered from the forms held. Low.",
+     "bugs": []
     }
    ],
-   "subject_sha": "7f3e5584e4e727b5db876a154fbba94d4e49cdda1d49630f5778549ebb4521d9"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "13c465199fc285e13e202a316324f031ca5ab90e65fb46b30567580c3d7bba6b",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:div.ordinary_boxes#1": {
    "class": "defect (medium) in part: BUG-0830",
@@ -8041,38 +8068,41 @@
    "subject_sha": "915b7de240dcdf68a94c1c24f7d5fa2c30801602b7241a23b4cf4bf8226455a0"
   },
   "unruled:gate:div.other_boxes_if_dividends#1": {
-   "class": "defect (medium): BUG-0830",
-   "reason": "The question and its help exclude distributions without a form and shares of forms in another name.",
+   "reason": "The question's help counts payments with no form and shares in another's name (BUG-0830, fixed); a 2024-cancelled share with no form is a rare residual.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "f1099div p. 5, boxes 3, 9, 10. A closely held or foreign corporation's distribution without a form.",
-     "bug": "BUG-0830"
+     "class": "covered",
+     "evidence": "div.other_boxes help, shown with the question: 'Count your share of a form in another's name, and a payment with no form, such as a return of capital or a payout when a company closed.'",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
      "class": "accepted residual",
-     "evidence": "A final liquidating payment on shares cancelled in 2024: a Form 1099-DIV for 2025 is issued; the lost-form case is the same wording.",
-     "bug": "BUG-0830"
+     "evidence": "A 2025 liquidating payment is reported on a 2025 Form 1099-DIV (f1099div p. 5, boxes 9 and 10), which opens div.any; only a payment with no form after the shares were cancelled in 2024 is missed. Rare; low.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR)",
-     "evidence": "Units of a liquidating trust, UIT or non-traded REIT are shares of a fund for this purpose; low."
+     "class": "covered",
+     "evidence": "div.other_boxes help: 'Count your share of a form in another's name'; shares in one's own revocable trust are one's own shares.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "A spouse's or another person's form: the question names the spouse ('your (or, on a joint return, your spouse's) Forms'), but not a share of a form in another name.",
-     "bug": "BUG-0830"
+     "class": "presentation",
+     "evidence": "div.any help: 'Stocks, mutual funds, ETFs and money market funds are all shares'; a municipal fund's Form 1099-DIV shows box 12 and 13. Low.",
+     "bugs": []
     }
    ],
-   "subject_sha": "71e79cf8a784fa706cc57cb1c15efa92b753cf442b3eb50329784781d61b7451"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "00837de24fedbffcb067f39fc1bee9c2d74b971de649a6f192101467b80e60b3",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:f1116col.has_div#1": {
    "reason": "No amount turns on the dividends/interest label; K-1 income is refused.",
@@ -8217,59 +8247,55 @@
    "adjudication": "lane adlow, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:f4952.has_interest#1": {
-   "reason": "K-1, mixed-use, carryforward and personal-interest cases are handled by the other refusals, the help, and the roster wording.",
+   "reason": "K-1 interest is refused; the carryforward and spouse cases are asked; the rest are wording lows.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Schedule K-1 investment interest (box 13 of Form 1065, box 12 of Form 1120-S) is refused by k1p.r_b13 and the k1s box 11/12 screen."
+     "evidence": "scope.k1 refuses every Schedule K-1 ('Income or a loss from a partnership, S corporation, estate or trust'), so K-1 investment interest (f4952 p. 3, Line 1) never reaches the gate.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "accepted residual",
-     "evidence": "'paid or accrued' versus the gate's 'pay interest': only an accrual-method individual is lost; same limitation as the screen finding."
+     "class": "presentation",
+     "evidence": "A seller-financed note is a loan whose money went into the investment; the help says 'Any loan counts if the money went into investments' and 'If you are not sure, answer Yes'. Low.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "f4952.line1 help: 'If one loan paid for investments and for something else, count only the investments' share'; f4952.has_interest help: 'Any loan counts if the money went into investments.'"
+     "class": "accepted residual",
+     "evidence": "f4952 p. 3, 'paid or accrued': individuals use the cash method; interest capitalized into a balance is not paid. Only an accrual-method individual is lost; rare.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "A loan to buy a non-participated working interest is borrowing 'to buy investments'; the help says 'If you are not sure, answer Yes', and royalties/passive/trade attribution is refused by f4952.unsupported."
+     "evidence": "'Any loan counts if the money went into investments' and 'If you are not sure, answer Yes'; a non-participated working interest is an investment, and business attribution is refused by f4952.unsupported.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The gate reads 'In 2025 or an earlier year' and the help says 'Interest of an earlier year counts only if you could not deduct all of it then'; f4952.carryover asks line 7 of the 2024 Form 4952 directly."
+     "class": "presentation",
+     "evidence": "Interest above the year's investment income could not be deducted then whatever the deduction choice; f4952.carryover help: 'counts even if you took the standard deduction and filed no Form 4952'. The gate help could say so; low.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The line 1 prompt says 'Leave out interest on money used to buy, build or improve your home, and on money that went into tax-exempt bonds or a business', and mixed-use is covered by its help."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "With no investment interest and no carryforward the line 4g election cannot change any amount (f4952.line4g_if_interest is zero without interest, per p. 4 'enter on line 4g the amount you elect'); the gate leans yes otherwise."
-    },
-    {
-     "n": 7,
-     "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "The gate is true whenever interest was paid, even if the Who Must File exception would remove the filing duty; extra asking only."
+     "evidence": "The gate names the spouse ('did you (or, on a joint return, your spouse) pay interest') and f4952.carryover asks about 'a 2024 Form 4952 of yours (or ... of your spouse's), on a joint or a separate 2024 return'.",
+     "bugs": []
     }
    ],
-   "subject_sha": "571c341636a531581898007d2d97b8529a7ae75d08a4564e32a0e12e21ee63ae",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no gate defect; wording lows",
+   "subject_sha": "c1206f05f5bb84a49d3341dc75045bcdc2ace2d6ac999dbca67aaa0635aa6e87",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:ftc.asked#1": {
    "class": "no gate defect: K-1 and K-3 refused; withholding a known residual",
@@ -8499,53 +8525,83 @@
    "subject_sha": "f2e0d92c830c4d2167462e9fad7c1d1d01bcebf1ceaf3079ba38457a5cf84516"
   },
   "unruled:gate:sd.sold_other#1": {
-   "reason": "Condemnations, special stock, K-1 sales and abandoned assets are asked or refused; inherited notes and related-party exchanges are unsettled.",
+   "reason": "Condemnations, small-business stock and trader elections are asked outside the gate; K-1 sales are refused; one rare related-party exchange gap filed (low).",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "sd.condemned asks about property 'taken by a government, or sold under threat of that'; a Schedule C asset abandoned or scrapped is refused by asset.ended_this_year ('sell, give away or scrap it').",
+     "evidence": "sd.condemned, asked of every filer outside this gate: 'Had business or investment property taken by a government' (refused).",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "sd.small_business_stock (section 1244 or 1242 stock) and sd.trader_election (mark-to-market) ask and refuse (i1040sd p. 1, items 4 to 6).",
+     "evidence": "sd.small_business_stock, asked outside the gate: 'Lost money on small-company stock and claim it as an ordinary loss' (refused).",
      "bugs": []
     },
     {
      "n": 2,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "i1040sd p. 1, item 3, and the capital-asset exclusion of a copyright or composition 'Created by your personal efforts': such a sale outside a business is neither asked nor refused. Already filed as BUG-1091 (open, low); not filed again.",
+     "bugs": [
+      "BUG-1091"
+     ]
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "sd.trader_election, asked outside the gate: 'Trade securities as a business under a mark-to-market election' (refused).",
+     "bugs": []
+    },
+    {
+     "n": 4,
      "kind": "UNCLEAR",
      "class": "out of scope",
      "evidence": "A section 1231 gain on a K-1 is refused by scope.k1.",
      "bugs": []
     },
     {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "open residual",
-     "evidence": "i1040sd p. 6 speaks of 'a sale made in an earlier year that you reported on the installment method'; an heir or former spouse collecting on another's note is not named. Settled by the Form 6252 instructions on inherited or transferred installment obligations, which are not archived.",
-     "bugs": []
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "open residual",
-     "evidence": "Form 8824's two-year related-party rule could require 2025 reporting of a 2024 exchange; i8824 is the source that settles it, and the gate asks only about 2025 sales or trades.",
-     "bugs": []
-    },
-    {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Breeding or dairy livestock is farming, refused by scope.farm; standing timber is real estate and a geothermal interest is 'oil, gas or mineral' property in the help's sense (i1040sd p. 1, 'Oil, gas, geothermal, or other mineral property').",
+     "class": "presentation",
+     "evidence": "A foreclosure is a sale for tax purposes; a filer reading 'sell' as voluntary is a wording point; a gain beyond the exclusion is rare. Low.",
+     "bugs": []
+    },
+    {
+     "n": 6,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The help: 'Real estate includes a home you lived in'; a co-op unit or mobile home lived in is that home.",
+     "bugs": []
+    },
+    {
+     "n": 7,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "i8824 p. 1: 'Also file Form 8824 for the 2 years following the year of a related party exchange'; Line 7: a disposition within 2 years makes the deferred gain reportable 'on your tax return for the year of disposition'. The gate asks only about 2025 sales or trades, so a 2023 or 2024 related-party exchange with a 2025 disposition is neither asked nor refused. Rare; low.",
+     "bugs": [
+      "BUG-NEW-release-prep-09"
+     ]
+    },
+    {
+     "n": 8,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The help: 'Real estate includes ... an oil, gas or mineral interest such as a royalty.'",
      "bugs": []
     }
    ],
-   "subject_sha": "569d74896aa5a18d4959700ec4c7786ab219c78e00029dde81c476a58e5abf6f",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [
+    "BUG-1091",
+    "BUG-NEW-release-prep-09"
+   ],
+   "class": "defect (low): related-party exchange of an earlier year (BUG-NEW-release-prep-09)",
+   "subject_sha": "d6e501a3c2f95989579892856f86b74ef01ef7466ac0c811d0a09c287f447b42",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:f8853c.has_line17#1": {
    "class": "no gate defect; the box 4 and box 3 readings follow the payee statement the line instructions name; low wording points",
@@ -9072,51 +9128,47 @@
    ]
   },
   "unruled:gate:retirement.is_code2#1": {
-   "reason": "A modified series coded 2 is not refused (new defect); the rest are refusals on a Yes or wording.",
+   "reason": "Code 1 is asked by the early-distribution screen and double codes are refused; code 7 and no-form series changes were not asked (BUG-NEW-release-prep-15, fixed by naming the recapture in s2.other_tax).",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "defect",
-     "evidence": "i5329 exception 02 and line 4: a series changed within five years brings back the earlier years' tax; retirement.early_screen names it only for codes 1 and S. Filed as BUG-1202.",
+     "evidence": "p590b p. 26, recapture 'imposed in the tax year in which the modification occurs'. A code 7 series payment changed in 2025 before the 5th anniversary is asked neither here nor in retirement.early_screen (codes 1 and S). Filed and fixed as BUG-NEW-release-prep-15 (medium): s2.other_tax now names the recapture.",
      "bugs": [
-      "BUG-1202"
+      "BUG-NEW-release-prep-15"
      ]
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "retirement.code2_partial asks whether the exception covers 'only part of it, or none'; a capped exception answered Yes refuses. Wording only.",
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "Code 1 entries are asked retirement.early_screen: 'it is one of a series of substantially equal periodic payments that was later changed' (refused).",
      "bugs": []
     },
     {
      "n": 2,
-     "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "A payer's code 2 that does not fit the facts: the filer is asked whether the exception covers the money; a wrong payer code trusted by the filer is a residual of every coded form.",
-     "bugs": []
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "Stopped payments with no 2025 Form 1099-R have no entry to ask; same entry, BUG-NEW-release-prep-15 (medium, fixed through s2.other_tax).",
+     "bugs": [
+      "BUG-NEW-release-prep-15"
+     ]
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "The code question offers 'Any other code, two codes together (such as 7D or 4G), or no code at all', which retirement.bad_code refuses.",
-     "bugs": []
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The help states the cost of a Yes; wording only.",
+     "evidence": "The code question offers 'two codes together (such as 7D or 4G)', which retirement.bad_code refuses, so '2B' or '2K' never reaches the code 2 question.",
      "bugs": []
     }
    ],
-   "subject_sha": "12a095c2b74cef094ad05a62c599b77789df742fa5f2eb50d74f345286ca4236",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "bugs": [
-    "BUG-1202"
-   ]
+    "BUG-NEW-release-prep-15"
+   ],
+   "class": "defect (medium, fixed): BUG-NEW-release-prep-15",
+   "subject_sha": "5673e512eef903571b1ce673341c5fe928ab504ae8c8b656d27613437de296a5",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:retirement.is_code7#1": {
    "reason": "Codes 1 and S at 59½ are handled by exception 12; combined codes are refused.",
@@ -9407,140 +9459,150 @@
    "bugs": []
   },
   "unruled:gate:sli.any_if_not_mfs#1": {
-   "class": "(0) fixed by BUG-0876's help; (1, 2) as ruled for the earlier subject.",
-   "reason": "(0) fixed by BUG-0876's help; (1, 2) as ruled for the earlier subject.",
-   "subject_sha": "ba7154702967f4c984983a5ba6d1f159f1ef7c48eee9ad7b9490d932d24ae231",
+   "reason": "A loan counts by what it paid for; interest someone else paid on the filer's loan is not named (filed, low).",
    "findings": [
     {
      "n": 0,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "sli.any help (BUG-0876): 'A loan counts by what it paid for, not by its name: a personal loan or credit line used only for college costs counts.' (i1040gi p. 98).",
-     "bugs": []
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "p970 p. 33, Interest paid by others: 'you are treated as receiving the payments from the other person and, in turn, paying the interest' (Example 2, a mother's gift). The sli.any tick 'Paid interest on a student loan' and its help do not say so, so the borrower answers No and loses the deduction. Low.",
+     "bugs": [
+      "BUG-NEW-release-prep-10"
+     ]
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Payments by a relative on the student's own loan: the third-party rule is in Pub. 970, which is not in the archived pages; low.",
+     "class": "covered",
+     "evidence": "sli.interest takes box 1 of Form 1098-E, which includes capitalized interest and origination fees allocated to payments; a borrower making payments ticks the gate.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "sli.interest takes box 1 of Form 1098-E, which includes capitalized interest paid; a filer who made payments on a student loan ticks the box.",
+     "evidence": "sli.any help: 'A loan counts by what it paid for, not by its name: a personal loan or credit line used only for college costs counts.'; a parent's PLUS loan is the parent's loan.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "Voluntary payments are payments; sli.interest help: 'A lender may send no form for a small amount of interest'. Low.",
      "bugs": []
     }
-   ]
+   ],
+   "bugs": [
+    "BUG-NEW-release-prep-10"
+   ],
+   "class": "defect (low): interest paid by others (BUG-NEW-release-prep-10)",
+   "subject_sha": "b1f3af756466008d74b631bdcd30b49d4bb0c28bc8ffe994ea54340a0ba9b879",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:sli.assisted_any_if_any#1": {
-   "class": "no gate defect; the question asks whether interest was paid by a program or a 529 plan, for the filer or spouse",
-   "reason": "(0, 3, 4) presentation, low. (1) model error: the interview question does not say 'tax-free' of the programs. (2) covered: 'paid for you ... with tax-free earnings of a 529 plan' includes a parent's plan. (5) covered: the question names the spouse.",
+   "reason": "The question names the employer plan, the health programs and 529 earnings, for the filer or spouse.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "p4681 p. 5. 'Was any of that interest paid for you ... by a loan repayment program for health workers' read past money routed through the filer's account. Low."
+     "class": "covered",
+     "evidence": "sli.assisted_any help: 'Count loan payments an employer made under its education assistance plan and left out of box 1 of your W-2; payments added to box 1 count as yours.'",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The interview question is 'by a loan repayment program for health workers, or with tax-free earnings of a 529 plan'; 'tax-free' qualifies the 529 earnings only, and the help names the NHSC and state programs."
+     "class": "presentation",
+     "evidence": "p4681 p. 5. The help names 'the National Health Service Corps Loan Repayment Program'; money routed through the filer's account is still 'paid ... by a loan repayment program'. Low.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "'Was any of that interest paid for you ... with tax-free earnings of a 529 plan?' covers a plan owned by a parent."
+     "evidence": "'paid for you ... with tax-free earnings of a 529 plan' includes a parent's plan (i1040gi p. 98).",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "'earnings' of a 529 plan versus a distribution; the excluded part is the earnings (i1040gi p. 98). Low."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Timing of program money. Low."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The question says 'paid for you (or, on a joint return, your spouse)'."
+     "evidence": "The question says 'paid for you (or, on a joint return, your spouse)'.",
+     "bugs": []
     }
    ],
-   "subject_sha": "ee708701e39e97b6beb375ce271be4fa1265fac723d2964e0777e16eefa71bd1"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "83dd043593a6ff0115b7f0cbae7f1a99ddec5819aaf37aa2881fab10d9961166",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:sli.unqualified_any_if_any#1": {
-   "class": "defect (low, wording): the list does not name a school or program that is not eligible; the other findings are covered",
-   "reason": "(0) presentation: interest on another person's loan has no Form 1098-E in the payer's name. (1) covered: 'a loan used partly for something other than school costs'. (2, 3) covered: 'not you, your spouse or your dependent at the time', with the help on would-be dependents. (4) defect, low: BUG-0881. (5) covered: 'a loan from a relative'.",
+   "reason": "The list names other uses, related lenders, non-dependents at the time, ineligible study and loans not owed.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "presentation",
-     "evidence": "i1040gi p. 98, 'any loan you took out'. sli.interest says 'Each lender reports it in box 1 of Form 1098-E', which goes to the borrower; a parent paying a child's loan has none. The obligation is not asked. Low."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "List item: 'a loan used partly for something other than school costs' (i1040gi p. 99, (a)).",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The list item 'a loan used partly for something other than school costs' is the other-use rule; a refinance with other debt is such a loan."
+     "evidence": "List item: 'a loan from a relative, or from someone who borrowed the money from an employer's plan' (i1040gi p. 99, (b)).",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "The list item 'a loan taken out for someone who was not you, your spouse or your dependent at the time', with the help 'Someone you could have claimed as a dependent but for that person's income or joint return, or because you could be claimed yourself, counts as your dependent here'."
+     "evidence": "List items: 'a loan taken out for someone who was not you, your spouse or your dependent at the time' and 'a loan for study not toward a degree, certificate or similar credential'. The half-time enrolment test is not named; low.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "'at the time' fixes the time the loan was taken out."
+     "evidence": "'at the time' fixes the test at the loan's origin.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040gi p. 99, 'The expenses must be for education in a degree, certificate, or similar program at an eligible educational institution'. The list does not name an ineligible school or program; the help only defines school costs.",
-     "bug": "BUG-0881"
+     "class": "presentation",
+     "evidence": "Interest one spouse paid on another person's loan: the item 'a loan you were not legally bound to repay' reads for either spouse on a joint return; low.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "'a loan from a relative, or from someone who borrowed the money from an employer's plan'. A family company is a rarer case. Low."
+     "evidence": "List item: 'a loan you were not legally bound to repay, such as one only your child signed'.",
+     "bugs": []
     }
    ],
-   "subject_sha": "b2df206acba61f515e40cc6baf524bb1a81d69ac9a71a7c0213edc248793faa4"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "45e091ca663576c421a146100b716f9d0dddc19642fce3680078229669b6fa1f",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:ssb.any#1": {
-   "reason": "The help now names disability and survivor benefits, the workers' compensation offset and the Canadian and German plans (this lane, BUG-1194).",
+   "reason": "The question and help name railroad, Canadian and German benefits; a payee case and a 1042S are rare lows.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "A benefit reduced to zero by the workers' compensation offset: the help now says 'Answer Yes if you got a Form SSA-1099 ... also if it shows only ... benefits all withheld for ... a workers' compensation offset'. Fixed in this lane (BUG-1194).",
-     "bugs": [
-      "BUG-1194"
-     ]
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A child's Form SSA-1099 is issued in the child's name, so the child got the form; the help addresses only the reverse case. Low.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "Disability or survivor benefits: the help now says 'for disability or survivor benefits too'. Fixed in this lane (BUG-1194).",
-     "bugs": [
-      "BUG-1194"
-     ]
+     "class": "accepted residual",
+     "evidence": "Form SSA-1042S goes to nonresident aliens (refused by scope.nonresident); a resident with one issued in error is rare (p915 p. 5). Low.",
+     "bugs": []
     },
     {
      "n": 2,
@@ -9552,32 +9614,15 @@
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "Canada or Quebec Pension Plan, Old Age Security and the German statutory pension are now named in the help (p915 p. 6). Fixed in this lane (BUG-1194).",
-     "bugs": [
-      "BUG-1194"
-     ]
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "A child filing for benefits paid to a representative payee: low.",
-     "bugs": []
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Form SSA-1042S is issued to nonresident aliens, refused by scope.nonresident through scope.other_income.",
+     "evidence": "The help: 'Benefits from Canada (Canada or Quebec Pension Plan, Old Age Security) or Germany (statutory pension) count too'; ssb.benefits asks for them. Low.",
      "bugs": []
     }
    ],
-   "subject_sha": "463d3a24bfca43cc2b3de8c6bd946997fcf97db79885a6b39c946e74a1d2e966",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "bugs": [
-    "BUG-1194"
-   ]
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "57e274368651998fb4d9ab0c507f63dfd893e08327c386d199d83161aed44654",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:ssb.prior_year_pay#1": {
    "class": "no gate defect; the lump-sum election is optional and a No yields a correct return without it",

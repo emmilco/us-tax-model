@@ -10,7 +10,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | clcw.md | worksheet | 33 |
 | clcw_next_year.md | worksheet | 28 |
 | dcprov.md | worksheet | 6 |
-| dependent.md | worksheet | 210 |
+| dependent.md | worksheet | 211 |
 | div.md | form | 38 |
 | eic.md | worksheet | 110 |
 | f1040.md | form | 86 |
@@ -52,7 +52,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | mq.md | worksheet | 7 |
 | oi8z.md | worksheet | 10 |
 | otjob.md | form | 12 |
-| person.md | worksheet | 484 |
+| person.md | worksheet | 485 |
 | qbi.md | form | 26 |
 | qdcg.md | worksheet | 27 |
 | rec.md | worksheet | 74 |

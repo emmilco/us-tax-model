@@ -228,56 +228,64 @@
    "subject_sha": "be9aac87176706f70b06cab43b84a9a08f67f0e3fbffa3c8555a830912040147"
   },
   "unruled:ny_it201.ask.529_nonqualified#1": {
-   "reason": "Line 22 screen: whether a 2025 New York 529 withdrawal was for anything but college, career training or student loans; Yes refuses line 22 and its worksheet, No computes $0.",
+   "reason": "Non-qualified college costs are a wording low; the July 4 help over-refuses earlier trade-school tuition.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "The question defines nonqualified against 'qualified higher education expenses at an eligible college or other post-secondary institution'; a non-eligible school is a Yes."
+     "class": "presentation",
+     "evidence": "ny_it201i p. 8, Line 22: qualified expenses 'at an eligible educational institution'. 'for anything but college' can take non-qualified college costs; their earnings are taxable federally, which is refused when answered (person.x_edu_taxable). Low.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "The question says 'a qualified education loan of the beneficiary or the beneficiary's sibling'; that is the IRC 221(d) term the finding asks for."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Trade-school tuition before July 4, 2025 answered Yes under the help refuses a return whose line 22 of $0 is right; extra refusing only.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "NARROW",
+     "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "The question lists 'a rollover to a Roth IRA' without the 529(c)(3)(E) conditions; a nonqualifying rollover could be answered No. Wording, no value where the rollover qualifies."
+     "evidence": "'that New York 529 account' in the singular with several accounts; low.",
+     "bugs": []
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/ny/2025/screens/adjudication/round-f-deepseek.md",
-   "subject_sha": "d6e93969544c78397f3d1eba551e5c39b39bbce592dea2b27fb2a5dd3600fb9a"
+   "class": "no screen defect",
+   "subject_sha": "b134bbd4b65bb0e1a2e20178a306dd5246ea15319ee69685b36fdbc1927689a2",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:ny_it201.ask.529_owner#1": {
-   "reason": "Line 30 screen: whether the filer, as account owner, put money into or took money out of the New York 529 account; Yes refuses line 30, No computes $0.",
+   "reason": "A beneficiary withdrawal in federal AGI is refused federally; the singular is a wording low.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "The question covers the beneficiary who is not the owner: 'or, as a beneficiary, receive a withdrawal included in federal adjusted gross income'."
+     "class": "out of scope",
+     "evidence": "A beneficiary's withdrawal with earnings in federal adjusted gross income is refused federally by person.x_edu_taxable ('Did you receive a taxable distribution from ... a qualified tuition program (529 plan)').",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "The question says 'you (or, on a joint return, your spouse)'."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'that New York 529 account' with several accounts; the gate question names the spouse. Low.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "A qualified withdrawal included in no federal AGI asks the question and leaves line 30 zero; extra asking, no wrong value."
+     "evidence": "A qualified withdrawal with no contribution answers Yes and is refused; extra refusing only.",
+     "bugs": []
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/ny/2025/screens/adjudication/round-f-deepseek.md",
-   "subject_sha": "9e4f3dff2a837f9251d1fc18088d81a8043d383daa2feb74af558ea2aefd44ac"
+   "class": "no screen defect",
+   "subject_sha": "b7a0d4ec894fd515682bbac26a23c2d0f2dc9cbc2df21cbf61bce59d55273d23",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:ny_it201.ask.abode_part_year#1": {
    "reason": "Line 59 screen: whether a month of 2025 had a New York home for half the month or less; Yes refuses line 59, No uses the full sales and use tax chart.",
@@ -306,43 +314,64 @@
    "subject_sha": "29b066421c17c56de10ef96f2c28f35741a679a3a201af9f137f1462bb819e2b"
   },
   "unruled:ny_it201.ask.city_credits#1": {
-   "class": "no defect; the other two credits are refused before the question",
-   "reason": "Only the UBT credit can reach this question; the accumulation distribution and part-year credits are refused elsewhere.",
+   "reason": "Trust, partnership and part-year City cases are refused upstream.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "A trust accumulation distribution comes with an estate or trust K-1, refused federally by scope.k1.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "A part-year New York City resident is refused by ny_it201.gate.part_year_city ('Not a New York City resident for all of 2025').",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "A partner's UBT share comes with a partnership K-1, refused federally by scope.k1.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A non-City resident whose business paid UBT answers Yes and is refused; extra refusing only.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'for 2025' names the tax year; a fiscal-year sole proprietor is rare. Low.",
+     "bugs": []
+    }
+   ],
+   "bugs": [],
+   "class": "no screen defect",
+   "subject_sha": "cf04e882f8ba1dd0567181c5f37d97e264cf33bb13467637416d354417031da8",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:ny_it201.ask.out_of_state_bond_interest#1": {
+   "reason": "K-1 interest is refused federally.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "ny_it201i p. 15, Line 53 names three credits. The New York City accumulation distribution credit needs a trust distribution, reported on a Schedule K-1 (Form 1041), refused by scope.k1 (scope.schedule1), and is also on the IT-225 list (ny_it201.ask.it225: 'a trust's accumulation distribution'). The part-year resident City child care credit needs a part-year City resident, refused by ny_it201.gate.part_year_city. The question is asked only with a Schedule C (s1.has_sc), so the UBT credit is the one it must reach, and it names it."
-    }
-   ],
-   "subject_sha": "9732719f6a78d957f7a4657b0d5d9411d4d32314aba6ef85c919f8ba6b90277e"
-  },
-  "unruled:ny_it201.ask.out_of_state_bond_interest#1": {
-   "reason": "Line 20 screen: whether tax-free interest or dividends came from bonds issued outside New York or a fund holding them; Yes refuses line 20, No computes $0.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "presentation",
-     "evidence": "The question names bonds and funds that invest in them; a fund of notes or other obligations is arguably outside it. Wording, no value where the fund holds bonds."
-    },
-    {
-     "n": 1,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Accrued interest equal to the coupon leaves a zero addition; asking costs a question and changes no value."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The question says 'Did you (or, on a joint return, your spouse) have interest or dividends from bonds of states other than New York...'."
+     "evidence": "A partnership or S corporation K-1 is refused federally by scope.k1, so EA-113 (ny_it201i p. 7) is never reached.",
+     "bugs": []
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/ny/2025/screens/adjudication/round-f-deepseek.md",
-   "subject_sha": "ef598e310e55f616423acbb441d8111f5bd8cfdead4669a42f18eb7b6d154bdf"
+   "class": "no screen defect",
+   "subject_sha": "b21c62928bd38bc48a16fe9391b08146fafa1cc203fdf2a36c39c24412dbfbc5",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:ny_it201.ask.real_property_credit#1": {
    "reason": "Line 67 screen: whether rent averaged $450 a month or less or real estate is worth $85,000 or less; Yes refuses line 67 (Form IT-214), No computes $0.",
@@ -589,38 +618,41 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:ny_it201.ny_529_if_account#1": {
-   "reason": "The owner gate names the spouse; the two gated follow-ups do not, which is where a joint spouse's activity is lost.",
+   "reason": "The federal account question asks about any account a person had in 2025, per person; beneficiary withdrawals in AGI are refused federally.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "A beneficiary's withdrawal 'included in your federal adjusted gross income' (ny_it201i p. 10) is a taxable 529 distribution, which the federal question person.x_edu_taxable ('A Yes ends the interview here', person.x_other) refuses before the New York part; and ny_it201.ask.ny_529 help says 'an account someone else owns for you, counts as No'."
+     "evidence": "A beneficiary's withdrawal with earnings in federal adjusted gross income is refused federally by person.x_edu_taxable; ny_it201.ask.ny_529 help: 'an account someone else owns for you, counts as No'.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "defect",
-     "evidence": "The gate itself asks 'did you (or, on a joint return, your spouse) own an account', so a spouse-only owner reaches the follow-ups; but those (interview/ny/2025/questions.yaml:145-156) say 'did you put money into that account, or take any out' and 'did you take money out' with a bare 'you', so the spouse's contribution or withdrawal on the joint return can be answered No and lost (ny_it201i p. 10: '$10,000 for married taxpayers filing a joint return')."
+     "class": "model error",
+     "evidence": "The parent gate reads person.x_edu_account: 'At any time in 2025, did you have a 529 plan ... or was one held for you?'; an owner who only contributed answers Yes. The reviewer read the helper label 'on the return'.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "SOURCE",
-     "class": "presentation",
-     "evidence": "ny_it201i p. 10 asks 'make contributions to or a withdrawal from'; the gate asks ownership (any time in 2025, including closed or moved accounts) and ny_it201.ask.529_owner then asks the contribution or withdrawal. An owner with no activity answers No there. No amount changes."
+     "kind": "NARROW",
+     "class": "model error",
+     "evidence": "ny_it201.ask.ny_529: 'did you (or, on a joint return, your spouse) own an account in New York's 529 college savings program?', and person.x_edu_account is asked for each person.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "An owner with no 2025 contribution or withdrawal answers No to ny_it201.ask.529_owner and ny_it201.ask.529_nonqualified; lines 22 and 30 are zero as ny_it201i p. 10 ('If No, go to line 31') says."
+     "evidence": "An owner with no activity is asked and answers No; extra asking only.",
+     "bugs": []
     }
    ],
-   "subject_sha": "2aa05854f8280c9e8a9016080232977052abac35350d811d2973b214ccc2370e",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0966"
-   ]
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "6f4af20ee948acff92d569948b9ab81ded7f413783d72d3c62f36101ce5452ba",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:ny_it201.pension_59_known#1": {
    "class": "no gate defect; the findings read the choice backwards",
@@ -673,47 +705,55 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:s1.has_sc#1": {
-   "class": "no gate defect; the credits other than UBT are refused elsewhere",
-   "reason": "Trust and partnership cases are refused federally, part-year residents by the City question; the spouse and timing UNCLEARs are presentation.",
+   "reason": "The other two line 53 credits and partnership UBT are refused upstream.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "Outside the tool's scope, refused federally before New York is reached (a refused federal return is a refused New York return): every Schedule K-1 (partnership, S corporation, estate or trust) is refused by scope.k1, part of scope.schedule1 (checked: still listed; the k1p collection is encoded but not wired). A trust's accumulation distribution is reported on a K-1 (Form 1041); it is also on the IT-225 list (ny_it201.ask.it225)."
+     "evidence": "A trust accumulation distribution comes with an estate or trust K-1, refused federally by scope.k1; ny_it201.ask.it225 also names it.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "A part-year City resident is refused: ny_it201.gate.part_year_city (City question No) refuses line 1 (Form IT-360.1)."
+     "evidence": "A part-year New York City resident is refused by ny_it201.gate.part_year_city.",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "Outside the tool's scope, refused federally before New York is reached (a refused federal return is a refused New York return): every Schedule K-1 (partnership, S corporation, estate or trust) is refused by scope.k1, part of scope.schedule1 (checked: still listed; the k1p collection is encoded but not wired)."
+     "evidence": "A partner's UBT share comes with a K-1, refused federally by scope.k1.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "With a Schedule C, the accumulation distribution credit (K-1, refused) and the part-year child care credit (part-year, refused) cannot arise; the UBT question is the one left."
+     "evidence": "The accumulation distribution and part-year credits are refused as in findings 0 and 1 whatever the UBT answer.",
+     "bugs": []
     },
     {
      "n": 4,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "'Did your business pay ...' on a joint return reads as the household's business; a partnership's payment is refused (K-1). Low; no change proposed."
+     "kind": "SOURCE",
+     "class": "out of scope",
+     "evidence": "The line's own three-credit question reduces to UBT once the other two credits are refused upstream (findings 0 and 1), and a resident's UBT credit needs a business that paid UBT, a Schedule C here (partnerships refused).",
+     "bugs": []
     },
     {
      "n": 5,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "'pay ... for 2025' names the tax year, the reading the source's credit takes (UBT for the year); tax paid in 2026 for 2025 is 'for 2025'."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A Schedule C outside New York City is asked the UBT question and answers No; extra asking only.",
+     "bugs": []
     }
    ],
-   "subject_sha": "b79f83d1bd14602d6a282f805f0975116edeaebaaefc5e5c397deb7424a6c7db"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "d4a5236c3ecd24a60706a4bf3e1eae60deba1dfd1313a340efb2d1a25209e96f",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:ny_it201.ask.bought_untaxed#1": {
    "reason": "Round F adjudication, gate:ny_it201.ask.bought_untaxed, 2026-11-18.",
@@ -929,6 +969,96 @@
    "bugs": [
     "BUG-0965"
    ]
+  },
+  "unruled:gate:ny_it201.has_depreciable_business#1": {
+   "reason": "Farm, K-1 and Form 2106 cases are refused federally; a 2025 disposal is refused at the federal sale.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "Schedule F is refused federally by scope.farm.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "Partnership, S corporation and trust K-1s are refused federally by scope.k1.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "Form 2106 expenses are refused federally (scope.reservist_expenses; scope.performer_expenses, whose help says 'To go on without the deduction, answer No', so no depreciation is claimed).",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Property sold in 2025 was still had in 2025; and a 2025 sale of business or rental property is refused federally by sd.business_property.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A Schedule C or rental with no bonus depreciation is asked and answers No; extra asking only.",
+     "bugs": []
+    }
+   ],
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "e21431ac90bb7c6ec0d028978199a9434d6f9d4223bf6a766aa913ca4382d296",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:gate:s1.alimony_if_any#1": {
+   "reason": "The New York post-2018 alimony question is skipped whenever pre-2019 alimony or a recapture is on the return (filed, low); the modified instrument is BUG-1215 (low).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "defect",
+     "evidence": "ny_it225i p. 10, A-119; i1040gi p. 89 expects more than one agreement. A pre-2019 agreement makes s1.alimony_if_any true and hides ny_it201.ask.alimony_later, so post-2018 alimony under a second agreement gets no New York addition or subtraction and no refusal. Low.",
+     "bugs": [
+      "BUG-NEW-release-prep-11"
+     ]
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "defect",
+     "evidence": "A recapture makes the same gate true and hides the New York question. Low.",
+     "bugs": [
+      "BUG-NEW-release-prep-11"
+     ]
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "defect",
+     "evidence": "ny_it225i p. 10, A-119, an instrument 'modified after December 31, 2018' to adopt Tax Law \u00a7 612(w). Already filed as BUG-1215 (1), low.",
+     "bugs": [
+      "BUG-1215"
+     ]
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'that alimony' is defined by the help ('an agreement made after 2018'); ruled not a defect under BUG-1215. Low.",
+     "bugs": []
+    }
+   ],
+   "bugs": [
+    "BUG-1215",
+    "BUG-NEW-release-prep-11"
+   ],
+   "class": "defect (low): BUG-NEW-release-prep-11; BUG-1215 (low)",
+   "subject_sha": "480d9d4002e74101f104e1bc6c9d4a395f8e17ebb5dc4f851d91fa72994d66e6",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   }
  },
  "baseline": {}

@@ -305,11 +305,11 @@
    "printed": "s2.other",
    "project_expr_sha256": "d62506e2ff0574905727c3b934e8161ae16616c8ef4c13471f2ad0fb992bbe79",
    "second_expr_sha256": "c385c56a09de7f199ff88278b8379aaf19cfe8bc25054913b1a9e61a11dce38f",
-   "ruling": "Ruling: model error; i1040gi p. 111, Line 1y, \"Other additions to tax\". The reply keeps the screening reading the earlier ruling refused; the completed-return amounts differ as the triage's witnesses show. Triage executable-triage-v2 (.transcription/triage/2025/s2.json): 1913 of 3472 comparisons agree, 1913 of 2713 in scope; completed {\"candidate-unknown\": 36, \"value\": 256}. Project stands.",
-   "context": "0c79aab4a8d4e50021b8468fe26285cad41771b775e01fc8411e09ae4b31b0a2",
-   "date": "2026-11-17",
-   "run": "833f3d3843b50d553f9da62c46eb803493478c159c0031a3f4baaa30e7e86457",
-   "subject_key": "15c6da89731302eb0d56c0d32a25d44520da534f3a7bbf1ceecf1473e63d6cf5",
+   "ruling": "Ruling: model error; s2.other is the project's screen ('Any amount on Schedule 2 other than the following?': the lines this tool figures), which the IRS pages do not define, as the candidate says; its reading 'line 21 above zero' would refuse every return with self-employment tax, Additional Medicare Tax or NIIT, which the tool computes.",
+   "context": "4bc899ea3bb460599ee6f1b9eb9a8c24fe11322203992f304a7a839b910d813e",
+   "date": "2026-11-23",
+   "run": "2a7a51271004b3536a4a13b21c75a05c5d307cffd83c6469fb8a49df2f344d21",
+   "subject_key": "2e856bc0677372e43e909bb61321dfb871e96c001089eb26447136dd767aa744",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -332,17 +332,17 @@
      "fixture:stage14.asset.refuse_listed_low@s2",
      "fixture:stage14.asset.refuse_s179_over@s2",
      "fixture:stage14.mut.asset_2025_listed_unanswered@s2",
-     "fixture:classm.f8889.3.deepseek@s2",
-     "fixture:classm.f8889.4.deepseek@s2",
-     "fixture:classm.f8960.3.deepseek@s2",
-     "fixture:classm.clcw_next_year.3.deepseek@s2",
-     "fixture:classm.f1095a.1.deepseek@s2",
+     "fixture:classm.f2441.1.deepseek@s2",
+     "fixture:classm.f2441.2.deepseek@s2",
+     "fixture:classm.f2441.3.deepseek@s2",
+     "fixture:classm.f2441.4.deepseek@s2",
+     "fixture:classm.f2441.5.deepseek@s2",
      "partial:stage14.asset.hy_5yr-s2.household_help@s2",
      "partial:stage14.asset.hy_5yr-s2.hsa_testing@s2",
      "partial:stage14.asset.hy_5yr-s2.lookback@s2",
-     "partial:stage14.asset.hy_5yr-s2.other_tax@s2",
      "partial:stage14.asset.bonus_100-s2.household_help@s2",
-     "partial:stage14.asset.bonus_100-s2.hsa_testing@s2"
+     "partial:stage14.asset.bonus_100-s2.hsa_testing@s2",
+     "partial:stage14.asset.bonus_100-s2.lookback@s2"
     ],
     "policy": "executable-triage-v2"
    }

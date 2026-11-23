@@ -5,8 +5,8 @@
  "base": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
  "head_rows": {
   "lines judged": "34",
-  "match / mismatch / unclear / missing": "34 / 0 / 0 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "33 / 1 / 0 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -209,9 +209,10 @@
   },
   {
    "key": "31",
-   "record": "94fb39f475177db650c3890beac86e8f01aae8efca361781c3c7f1762ab3d09b",
-   "status": "MATCH",
-   "subject_key": "ca4fa0ac2e316ef9f3c04f4058f031d88f7ac36012b16e920c3208fbc2cfa19c"
+   "record": "fe218a22856cca65d28354dc358eb6ac9e143f1ec48ad48aeed07c90a7dcab4e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; the Form 1098-T request date 'after February 2, 2026' is the reading chosen in amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29: Pub. 970 p. 2, 'After February 2, 2026 (January 31 falls on a Saturday)'); the arithmetic matches, as the reviewer says.",
+   "subject_key": "5f0752cece621a201abe6626c8f0d7680315e781efeb4b847392290020ad70e0"
   }
  ],
  "subjects": {
@@ -248,7 +249,7 @@
   "28": "2559fdf669240bb971e735006323875943031314d136f2e16bc833a2a17b8326",
   "29": "43ae47ad7a33b6c016b39cf17dc23973c7e236eece27740a1d9cab5c1025c04d",
   "30": "dbe7c35bd91ca0f4b79f11d454e65070203208b37ebf68e45b73854e4e52777c",
-  "31": "e35d445d96ae2b56b72ff3d7e054e4f285fbef5689eb47407dce7d801aa423c1"
+  "31": "c533bf85720723bbb9235870afa065df1254e07a381efa81c063cf4aa6e9e9ed"
  },
  "__rest__": "774637a29894532eb1f17ff28873aee0739a6158bd21538f87516cd8da60346c"
 }

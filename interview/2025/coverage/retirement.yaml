@@ -663,6 +663,24 @@ rows:
       person[taxpayer].retirement[r].code2_partial: true
     expect:
       refused: person[taxpayer].retirement[r].screen_refused
+  - id: retirement.code2_series_changed
+    design: "retirement.code_screen: code 2 from a series of substantially equal payments changed in 2025 (recapture)"
+    situation: "A code 2 payment from a series of substantially equal payments that the filer changed in 2025."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].box6: false
+      person[taxpayer].retirement[r].code: early_exception_2
+      person[taxpayer].retirement[r].rollover_any: false
+      person[taxpayer].retirement[r].disaster: false
+      person[taxpayer].retirement[r].loan_offset: false
+      person[taxpayer].retirement[r].disability: false
+      person[taxpayer].retirement[r].pso_exclusion: false
+      person[taxpayer].retirement[r].born_before_averaging_date: false
+      person[taxpayer].retirement[r].cost_any: false
+      person[taxpayer].retirement[r].code2_partial: true
+    expect:
+      refused: person[taxpayer].retirement[r].screen_refused
   - id: retirement.code4_not_beneficiary
     design: "retirement.code_screen: code 4 although not a beneficiary"
     situation: "A Form 1099-R wrongly shows code 4."

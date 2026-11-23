@@ -5,7 +5,7 @@
  "base": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
  "head_rows": {
   "printed lines compared": "26",
-  "agree / disagree / missing": "7 / 19 / 0",
+  "agree / disagree / missing": "8 / 18 / 0",
   "line-scoped reviews": "11 (latest 2026-11-23); see Line-scoped reviews"
  },
  "lines": [
@@ -124,10 +124,9 @@
   },
   {
    "key": "household.qss_fails",
-   "record": "3252b480b0e004514a4de633c15fcf67d5b1b2e6868164f22f8330ac93d28747",
-   "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 15, Qualifying Surviving Spouse, \"You can check the 'Qualifying surviving spouse' box ... if all of the following apply\". Ruled by reading. This pass re-reviews the line because a refusal was added to it (household.qss_child_not_all_year, a child listed but none who lived with the filer all year); the line's expression is unchanged. The reply's test is the project's test without its first operand, f1040.status = qss: it is true on any return whose household.qss_eligible is No, and unknown on every other filing status, where household.qss_eligible is never asked. The gate is the qualifying-surviving-spouse status line's own test, so the status condition belongs to it, as the reply's note itself reads it (\"the qualifying surviving spouse status\"). As the same omission was ruled on household.hoh_fails. Project stands.",
-   "subject_key": "d0a2f9c16853eaa992c1e98f1056d0eecd13c2a3d2f52e7304dfe5933f080a07"
+   "record": "7645857866d5a74f88b5fb6b50479c90b738d72b11bc4bf0e7369b0efeedf4be",
+   "status": "AGREE",
+   "subject_key": "552a6bd45542047ebc33f508e2e0bab0f71c6313755d758e36215442203bd993"
   },
   {
    "key": "household.widowed_this_year",
@@ -203,7 +202,7 @@
   "household.ctc_disallowed_claim": "ee3b3554dd5ac6ccdd4664421c2c2092138a851d7d7937b4db24eb21ddf724ba",
   "household.eic_disallowed_claim": "77b822135b27ab6e7b5c950dad556162237369336af8b5aa9426e04536558108",
   "household.hoh_fails": "78be1f3fb849fc1015efc7fbef5e7c7d192b46124952cb1ea3c4fdddfdedd54a",
-  "household.qss_fails": "6090ea4bfe816ce7cb892cfb4bbdba55e79adef300756b68814bf01e3cec1100",
+  "household.qss_fails": "1ad1dbc7c5d259388289e6695e040fe43e6ca369df6497ba49b02afe1c544b30",
   "household.widowed_this_year": "8abbe182d333f715cac8ac03b86fa35d20710670f069ca3553d886ecd038ec3f",
   "household.cp_marriage_ended": "83e4be6740c94293c155d28d8590ba7f4308a54c56a7e701fe3c2c988fd98f9b",
   "household.rdp_community_property": "cc8a52a6955f6574bf7ec6c447c5931cfa116075bab6cf8102a17d25bc12e442",
@@ -226,7 +225,7 @@
   "household.ctc_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
   "household.eic_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
   "household.hoh_fails": "2bcdd7bd8ce4c26397bdd083f1f71af1e5ab7419cfe50a9057777dbf354b6fd9",
-  "household.qss_fails": "22adfdaa36fa4310744da7e45cb6322d90a5e8a624fd02ebc4310b64296ed95a",
+  "household.qss_fails": "85035813624fec2247aec086094ae1244cbbc5525d67c6fbe861c9c8a971e408",
   "household.widowed_this_year": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.cp_marriage_ended": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.rdp_community_property": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",

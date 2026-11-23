@@ -111,48 +111,71 @@
    "subject_sha": "e362d6d448af00ffc4343a73acb3285356dc870be0c9042064b5113661471de9"
   },
   "unruled:f4952.alternative_allocation#1": {
-   "reason": "Investment-expense and K-1 items are caught by f4952.unsupported; the question has no 'you' to omit the spouse.",
+   "reason": "Other investment expenses are refused by f4952.unsupported; a plain line 4g election read as the alternative is an over-refusal.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "f4952.unsupported asks 'do you (or, on a joint return, your spouse) have any deductible investment expense other than interest (for example depreciation or depletion ... or investment expenses on a Schedule K-1)' and refuses line5; this screen only governs the line 4g election."
+     "evidence": "f4952.unsupported asks 'do you (or, on a joint return, your spouse) have any deductible investment expense other than interest (for example depreciation or depletion ... or investment expenses on a Schedule K-1)' and refuses; this screen governs only the 'Elec.' allocation (f4952 p. 4, Line 5).",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "The same f4952.unsupported question refuses when other deductible investment expenses exist, so line 5 stays zero and the p. 3 Who Must File exception is only reached with none."
-    },
-    {
-     "n": 2,
-     "kind": "NARROW",
-     "class": "model error",
-     "evidence": "The shown wording is 'Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?'; it has no 'you', and the election is made once on the single combined Form 4952 of a joint return, so no spouse's item can be left out."
+     "kind": "UNCLEAR",
+     "class": "accepted WIDE",
+     "evidence": "A filer making only the ordinary line 4g election who answers Yes is refused; extra refusing, no wrong amount.",
+     "bugs": []
     }
    ],
-   "subject_sha": "ab56f3896144b60ff9ec3e9e682550f69c00200c1fc355658c5a163b93f44ffb",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no screen defect",
+   "subject_sha": "92a98ba96a4824b551f4aa62af023d29c400d0dc4eff59fa43891527bd38be47",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:f4952.unsupported#1": {
-   "reason": "Alaska dividends never enter line 3b; the extra yes on non-deductible expenses is harmless.",
+   "reason": "The alternative allocation has its own screen; the catch-all clauses only over-refuse.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "model error",
-     "evidence": "Alaska Permanent Fund dividends are reported on Schedule 1 line 8g (s1.yaml 'Alaska Permanent Fund dividends'), not in Form 1040 line 3b, which is the only dividend input of f4952.line4a; the tool therefore never counts them as investment income."
+     "class": "covered",
+     "evidence": "The 'Elec.' attribution next to line 4e (f4952 p. 4, Line 4g Note) is asked by f4952.alternative_allocation, a separate screen, and refused there.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "f4952 p. 4 line 5 excludes miscellaneous itemized deductions; a Yes from a filer with only such fees refuses a return whose line 5 of zero would be right. Extra refusing, no wrong amount."
+     "evidence": "Annuity or trust investment income answers Yes and refuses a return whose lines would be right; extra refusing only.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted WIDE",
+     "evidence": "A capital gain distribution read as 'other investment income' gives Yes and an over-refusal; read as securities activity it is counted on line 4d as the instructions say. No wrong amount.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted WIDE",
+     "evidence": "Advisory fees are not deductible for 2025 (f4952 p. 4, line 5); a Yes refuses a return whose line 5 of zero is right. Extra refusing only.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The spouse phrase stands in the middle clause and carries to the last; the first clause's 'interest you count' is line 1 of the joint return. Low.",
+     "bugs": []
     }
    ],
-   "subject_sha": "507960e41de2b1e57a286508388650e1375b68726e99cf115a5d3621dc087619",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no screen defect",
+   "subject_sha": "6fef633919ea00c587a2ad61a0920bb27596c0c2a606a849eef04072516b6945",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:f5695.construction_later#1": {
    "reason": "Costs not yet installed are not 2025 costs and are not asked.",
@@ -1298,29 +1321,27 @@
    "subject_sha": "391ee0b9eca9db9f6c52b828d790ece544bdceaa24de4497603d352f9890e357"
   },
   "unruled:gate:div.has_ordinary#1": {
-   "reason": "Child's dividends (Form 8814) are refused; dividends without a form are counted in the ordinary total.",
+   "reason": "No-form dividends feed the box 1a total; Form 8814 is refused.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "scope.f8814 ('Form 8814 election to report a child's interest or dividends') refuses the return before line 3a."
+     "class": "covered",
+     "evidence": "sb.ordinary_dividends help: 'Include ... ordinary dividends received without a form', so box 1a is above zero (i1040gi p. 26).",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sb.ordinary_dividends help: 'Include ... ordinary dividends received without a form', so dividends not on Form 1099-DIV make the gate true (i1040gi p. 26 'dividends not reported on Form 1099-DIV')."
-    },
-    {
-     "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Box 1a above zero opens the questions whose answers may be zero; extra asking only."
+     "class": "out of scope",
+     "evidence": "scope.f8814 refuses the Form 8814 election (i1040gi p. 25).",
+     "bugs": []
     }
    ],
-   "subject_sha": "18df54104e7cae9b1e3d992ab4d40cf4f6ab10d3d66364c184597c827bb16ee1",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "7541f4b3eb24faa76147074c370d09da3b72f707304577a00ddd6faf2b4fb55b",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:sb.has_income#1": {
    "reason": "No defect: the interest roster's help names each case; the WIDE item is the nominee capital gain distribution limb (i1040gi p. 33).",
@@ -3405,32 +3426,41 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude Opus agents, RUBRIC2)"
   },
   "unruled:gate:qbi.prior_form#1": {
-   "class": "Released suspended losses are asked separately; PTP losses are refused with every K-1.",
-   "reason": "Released suspended losses are asked separately; PTP losses are refused with every K-1.",
-   "subject_sha": "a67ace58a98074144e332e6a412b83bc114b417abafa7d289d202b5f43c14a08",
+   "reason": "Unreported and suspended losses are asked by sibling questions; PTP losses are refused with every K-1.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "qbi.suspended ('In 2025, are you (or, on a joint return, your spouse) deducting a business loss or expense of an earlier year that a tax limit kept you from deducting then?', refused through qbi.unsupported; i8995 p. 3) is asked on every return with a Schedule C, whether or not a Form 8995 was filed; QBI from other activities is refused by the scope questions (qbi.unsupported label).",
+     "evidence": "qbi.unreported_loss asks about a loss year 'whose tax return had no Form 8995 or 8995-A' and refuses (i8995a p. 6).",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "A suspended PTP loss arises only from a Schedule K-1; scope.k1 refuses every Schedule K-1 ('Income or a loss from a partnership, S corporation, estate or trust ... A Yes ends the interview here'), so a partner's or PTP holder's case is refused upstream.",
+     "class": "covered",
+     "evidence": "qbi.suspended asks about 'a business loss or expense of an earlier year that a tax limit kept you from deducting then' and refuses (i8995 p. 3).",
      "bugs": []
     },
     {
      "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "A prior form whose lines 16 and 17 were zero leads to two zero answers; it costs questions, never a value.",
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "A PTP loss arises on a K-1, refused by scope.k1.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Suspended losses allowed now are asked by qbi.suspended whatever the prior form showed.",
      "bugs": []
     }
-   ]
+   ],
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "514f1ff140f2f0f5262b4fc05ec2f95e88359775b26bb65f743a422c7a841130",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:k1s.basis_carry#1": {
    "class": "no gate defect; carryovers outside the filer's own earlier return are rare",
@@ -6902,60 +6932,69 @@
    "subject_sha": "62eeefc30fbfa83203394c3dd710b1eb4419e82ce0485c9c99d824431f2b2f6e"
   },
   "unruled:gate:s1.has_sc#1": {
-   "reason": "Every non-Schedule-C source is refused upstream.",
+   "reason": "Every non-Schedule-C source is refused upstream; an unreported loss without a 2025 Schedule C changes only the 2026 carryforward.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "Schedule F is refused by scope.farm and vehicle expenses of a Schedule E rental by rental.vehicle ('Schedule E, line 6 (auto and travel)'); i1040gi p. 110's 'deducted elsewhere' has no unrefused path outside Schedule C.",
+     "evidence": "A partner's plan rests on K-1 earnings (scope.k1); a Schedule F farmer is refused by scope.farm (i1040gi p. 93).",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "Suspended partnership or S corporation losses come through a K-1 (scope.k1); a loss held back from an activity no longer had is refused by scope.passive; i8995 p. 3.",
+     "class": "accepted residual",
+     "evidence": "Without a 2025 Schedule C the tool has no QBI (Schedule F and K-1 refused); the unreported carryforward cannot change the 2025 deduction, only Form 8995 line 16. Low.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "IDCs and circulation costs outside Schedule C come through a K-1 (scope.k1), a farm (scope.farm) or a working interest, which royalty.yaml refuses (i6251 p. 7).",
+     "evidence": "K-1 and farm losses are refused by scope.k1 and scope.farm; a freed loss of a business owned before 2025 by scope.passive.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "Look-back interest of a partner or shareholder comes through a K-1 (scope.k1); income-forecast property on a royalty is refused by royalty.yaml's depreciation refusal (f1040s2 line 17n).",
+     "evidence": "IDCs and circulation costs through a K-1 are refused by scope.k1; a working interest held as a royalty is refused by royalty.yaml (its refusal names 'a working interest ... depreciation, depletion').",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "Farming is refused by scope.farm ('Count a farm you run and a share of crops or livestock from land you let a farmer use. A Yes ends the interview here'), including Form 4835 crop-share landlords; fishing through a partnership by scope.k1.",
+     "evidence": "A partner's look-back interest comes on a K-1 (scope.k1); income-forecast property held as a royalty is refused by royalty.depreciation.",
      "bugs": []
     },
     {
      "n": 5,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "A partner's plan rests on K-1 earnings (scope.k1) and a farmer's on Schedule F (scope.farm); i1040gi p. 93.",
+     "evidence": "A fishing partnership's income comes on a K-1, refused by scope.k1.",
      "bugs": []
     },
     {
      "n": 6,
      "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "A partnership's plan for a partner is a K-1 matter refused by scope.k1.",
+     "class": "covered",
+     "evidence": "carloan.col_ii_input is asked per loan; 'your own business' on a joint return's loan entry takes the spouse's Schedule C (roster frame, RUBRIC2 rule 4).",
+     "bugs": []
+    },
+    {
+     "n": 7,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'Is your business fishing' when only the spouse fishes: Schedule J is an election that only lowers tax, so a No leaves a correct tax. Low.",
      "bugs": []
     }
    ],
-   "subject_sha": "1260022589b4171bf1e44c37aa2b0553c8df2f480bbf1a69b7f9e4adcd660b09",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "8a6e6177a61cbe6b18d0b515aeffd07b8ef42167d9cc19606c28cd236277c834",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:s1.hobby_any#1": {
    "reason": "Recreational farms are refused by scope.farm, and other not-for-profit activities reported as businesses are refused by the Schedule C screen.",
@@ -7098,13 +7137,13 @@
    "bugs": []
   },
   "unruled:gate:sa.medical_asked#1": {
-   "reason": "The 7.5%-of-income wording is BUG-1087; the rest is wording or extra asking.",
+   "reason": "The 7.5%-of-income wording is BUG-1087 (open, low); the rest is wording or extra asking.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
      "class": "defect",
-     "evidence": "i1040sca p. 1, 7.5% of adjusted gross income; the tick says 'your income'. Already filed as BUG-1087 (open); not filed again.",
+     "evidence": "i1040sca p. 1, 7.5% of adjusted gross income; the tick says 'your income'. BUG-1087 (open, low); not filed again.",
      "bugs": [
       "BUG-1087"
      ]
@@ -7113,22 +7152,23 @@
      "n": 1,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "The help says 'Count what you paid for doctors, dentists, hospitals, prescriptions and insurance', and the sa.line1 question lists dependents and others; the gate's 'paid yourselves' means paid by you. Wording only.",
+     "evidence": "The help says 'Count what you paid for doctors, dentists, hospitals, prescriptions and insurance'; it does not limit the person cared for. Low.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Costs paid from an HSA open the gate and sa.line1 then leaves them out; extra asking only.",
+     "evidence": "Any after-tax premium opens sa.line1 even when the floor is not reached; extra asking only.",
      "bugs": []
     }
    ],
-   "subject_sha": "5750936487bf0e25ee8df99923b196956fabb29fabb91e6a32ee5dea6f5dd4b8",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "bugs": [
     "BUG-1087"
-   ]
+   ],
+   "class": "no gate defect beyond BUG-1087 (low)",
+   "subject_sha": "41ec635c0a76a1260dda0eb3fc605f9a0ebd75f9b87bf1e6216040993cc13347",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:sa.personal_property_tax_any#1": {
    "class": "defect (low): the gate's help says a weight-based fee does not count, missing the value-based part of a mixed fee",
@@ -7540,29 +7580,41 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:f4952.has_interest#1": {
-   "reason": "K-1 investment interest is refused at the K-1 forms; accrual-method individuals are rare.",
+   "reason": "K-1 interest is refused; accrual-method individuals are rare; the help counts any investment loan.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "K-1 investment interest expense is box 13 of a Schedule K-1 (Form 1065) or box 12 of a 1120-S K-1; k1p.r_b13 ('Does box 13 ... show an amount with any code other than AE?') and k1s box 11/12 refusal refuse these before f4952 is reached."
+     "evidence": "K-1 investment interest is refused by scope.k1.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "accepted residual",
-     "evidence": "i4952 p. 3 line 1 counts interest 'paid or accrued'. The gate asks only 'pay interest'; an accrual-method individual with accrued, unpaid investment interest would answer No. It costs that accrued interest deduction for a filer on the accrual method, which this tool otherwise treats as out of scope (sche.accrual refuses accrual rental books)."
+     "evidence": "'pay interest' versus 'paid or accrued' (f4952 p. 3): only an accrual-method individual is lost; rare.",
+     "bugs": []
     },
     {
      "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Help: 'Any loan counts if the money went into investments ... If you are not sure, answer Yes'; business attribution is refused by f4952.unsupported.",
+     "bugs": []
+    },
+    {
+     "n": 3,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "The gate is true whenever interest was paid; the Who Must File exception only means the form need not be filed, so asking more costs questions, not a value."
+     "evidence": "An earlier year's fully deducted interest gives Yes and zero amounts; extra asking only.",
+     "bugs": []
     }
    ],
-   "subject_sha": "571c341636a531581898007d2d97b8529a7ae75d08a4564e32a0e12e21ee63ae",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "c1206f05f5bb84a49d3341dc75045bcdc2ace2d6ac999dbca67aaa0635aa6e87",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:ftc.asked#1": {
    "class": "no gate defect: the K-1 and K-3 cases are refused",
@@ -7805,49 +7857,34 @@
    "subject_sha": "f2e0d92c830c4d2167462e9fad7c1d1d01bcebf1ceaf3079ba38457a5cf84516"
   },
   "unruled:gate:sd.sold_other#1": {
-   "reason": "Stock, trader, condemnation cases are asked; a self-created copyright sale is a defect.",
+   "reason": "Condemnations and scrapped business assets are asked outside the gate; the help names royalties and vehicles.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sd.small_business_stock asks about 'stock that a small company issued to you, a loss you claim as an ordinary loss ... (section 1244 or section 1242 stock)' and refuses (i1040sd p. 1, items 4 and 5).",
+     "evidence": "sd.condemned, asked of every filer: 'Had business or investment property taken by a government' (refused).",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sd.trader_election asks about trading securities 'as a business, under a mark-to-market election' and refuses (i1040sd p. 1, item 6).",
+     "evidence": "A Schedule C asset scrapped or abandoned is refused by asset.ended_this_year ('sell, give away or scrap it'); a rental's by its own asset questions.",
      "bugs": []
     },
     {
      "n": 2,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sd.condemned asks whether business or investment property was 'taken by a government, or sold under threat of that' and refuses (i1040sd p. 1, item 2).",
-     "bugs": []
-    },
-    {
-     "n": 3,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "i1040sd p. 1, item 3 'The disposition of noncapital assets', and p. 2, a copyright or 'literary, musical, or artistic composition ... Created by your personal efforts' is not a capital asset; sd.sold_other asks only about real estate or business property, so such a sale is neither refused nor figured as ordinary income. Filed as BUG-1091.",
-     "bugs": []
-    },
-    {
-     "n": 4,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "A taking by eminent domain is asked by sd.condemned ('taken by a government, or sold under threat of that').",
+     "evidence": "The help: 'Real estate includes ... an oil, gas or mineral interest such as a royalty. Business property is anything used in a business or rented out, such as equipment, a vehicle'.",
      "bugs": []
     }
    ],
-   "subject_sha": "569d74896aa5a18d4959700ec4c7786ab219c78e00029dde81c476a58e5abf6f",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-1091"
-   ]
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "d6e501a3c2f95989579892856f86b74ef01ef7466ac0c811d0a09c287f447b42",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:f8853c.nonqualified#1": {
    "reason": "Scope of \"those forms\" is the line-17 forms; any mis-reading over-refuses.",
@@ -8356,24 +8393,31 @@
    "bugs": []
   },
   "unruled:gate:sli.any_if_not_mfs#1": {
-   "class": "defect (wording): a loan not named a student loan; one WIDE",
-   "reason": "The tick turns on the loan's name; the help covers doubt but not a filer sure a personal loan is not a student loan. Filed low.",
+   "reason": "Interest someone else paid on the filer's loan is not named (filed, low).",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
      "class": "defect",
-     "evidence": "i1040gi p. 98, Line 21: a qualified student loan is any loan taken out to pay qualified higher education expenses. The tick 'Paid interest on a student loan' leads a filer whose personal loan or credit line paid only school costs to answer No, dropping deductible interest. BUG-0876, low.",
-     "bug": "BUG-0876"
+     "evidence": "p970 p. 33, Interest paid by others (Example 2, a mother's gift). The tick and help do not say such payments count as the borrower's. Low.",
+     "bugs": [
+      "BUG-NEW-release-prep-10"
+     ]
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040gi p. 99: unqualified loans give no deduction; the questions beneath sort them out (sli.unqualified_any). Extra questions only."
+     "evidence": "A dependent or a filer above the phase-out is asked and gets no deduction; extra asking only.",
+     "bugs": []
     }
    ],
-   "subject_sha": "e69c80ca57cda5542e85d14678f7d8494c47b95a785ade09b89b3d06051d46a6"
+   "bugs": [
+    "BUG-NEW-release-prep-10"
+   ],
+   "class": "defect (low): interest paid by others (BUG-NEW-release-prep-10)",
+   "subject_sha": "b1f3af756466008d74b631bdcd30b49d4bb0c28bc8ffe994ea54340a0ba9b879",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:ssb.any#1": {
    "reason": "Fixed: the help now names a form showing only repayments.",
@@ -9756,35 +9800,34 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:div.any#1": {
-   "reason": "Gate is deliberately broad (owned shares or got a 1099-DIV with 'if unsure, answer Yes').",
+   "reason": "K-1 dividends are refused; the gate leans Yes by design.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "A nominee who holds dividends in their own name owns the shares of record or got a broker statement that is treated as a Form 1099-DIV (sb.ordinary_dividends help 'A broker's combined statement counts as a Form 1099-DIV'); the help says 'If you are not sure, answer Yes'."
+     "class": "out of scope",
+     "evidence": "Dividends passed through on a K-1 are refused by scope.k1.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "SOURCE",
-     "class": "accepted WIDE",
-     "evidence": "The gate does not apply the $1,500 Schedule B threshold; asking more costs questions only."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A beneficial owner of shares in another's name owns shares; the gated questions' help says 'Include your share of amounts paid in someone else's name'. Low.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "'own shares ... in 2025' does not depend on when a form arrives, so a filer who got the form in January 2026 still answers Yes by ownership."
-    },
-    {
-     "n": 3,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Owning shares with no dividends gives Yes and all gated amounts of zero; intentional lean to Yes."
+     "evidence": "Owning shares with no distributions gives Yes and zero amounts; extra asking only.",
+     "bugs": []
     }
    ],
-   "subject_sha": "f7429cfb859471ff98b3584773ed8b8f9c48c420d06f99d85cb77173660cad57",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "7e08471b5eb49acd7f868474c751e3ca5dbba457967657295c1e2298481cdc05",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:f8962.mfs_ask#1": {
    "reason": "The gate is every married-filing-separately return with a Form 1095-A; the 3-year limit is asked in the next question.",
@@ -10310,40 +10353,35 @@
      "n": 0,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "A casualty loss is refused through sd.casualty and sd.other_forms (sa.yaml line 15: 'a casualty or theft loss is refused by sd.casualty'), so no casualty amount reaches Schedule A.",
+     "evidence": "A casualty loss is refused by sd.casualty, so no casualty amount reaches Schedule A (p504 p. 5, Table 1).",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "household.mfs_community_property refuses a separate return where either spouse lived in or had a permanent home in a community property state (p504 p. 5, Table 1, 'If you live in a community property state, these rules don't apply').",
+     "evidence": "household.mfs_community_property refuses a separate return in a community property state (p504 p. 5, 'If you live in a community property state, these rules don't apply').",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "A joint state return with joint liability, where the filer enters only what they alone paid, is refused although p504 p. 5 Table 1 allows 'the state income tax you alone paid'; extra refusal only.",
+     "evidence": "A joint state return with joint liability, or no state income tax deducted, is refused although p504 Table 1 allows 'the state income tax you alone paid'; extra refusing only.",
      "bugs": []
     },
     {
      "n": 3,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Medical bills from a joint account that the filer alone paid are refused although Table 1 allows them 'unless you can show that you alone paid the expenses'; extra refusal only.",
-     "bugs": []
-    },
-    {
-     "n": 4,
      "kind": "UNCLEAR",
      "class": "accepted WIDE",
-     "evidence": "An unequal-interest account or a joint credit card is 'an account you hold with your husband or wife', so the filer answers Yes and is refused; no wrong value.",
+     "evidence": "A Yes for a joint account the filer alone funded refuses a return Table 1 would allow ('unless you can show that you alone paid'); a No deducts what the filer alone paid, as Table 1 allows. No wrong amount.",
      "bugs": []
     }
    ],
-   "subject_sha": "e301fc6f49ad6707c8f9751988aa140302b5f999dbb333cac31b46994ac3ad43",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": [],
+   "class": "no screen defect",
+   "subject_sha": "8f1c0951c626ab95d0f58d96def7fea7cb83fd922a2a2c210a3020a77a8999f4",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:f8582.has_prior#1": {
    "reason": "A CRD carried is marked on the 2024 Form 8582, which rental.prior_any points to; unlisted rentals are refused.",
@@ -10461,6 +10499,138 @@
    "subject_sha": "84ff7fb7e399ab38ee4d8a97310d6a99f89d092aaeb6e3eb8553f5dd23a3e9bc",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "bugs": []
+  },
+  "unruled:qbi.unreported_loss#1": {
+   "reason": "Suspended losses are asked by qbi.suspended and PTP losses are refused with every K-1; a loss left off a filed Form 8995 is a rare residual.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "i8995a p. 6, 'even if the loss was unreported': a loss left off a Form 8995 that was filed (for example for REIT dividends only) is neither in qbi.carryforward nor asked here. Rare; low.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "qbi.suspended, asked with the same Schedule C gate: 'are you ... deducting a business loss or expense of an earlier year that a tax limit kept you from deducting then?' (refused; i8995 p. 3).",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "A PTP loss arises on a Schedule K-1, refused by scope.k1.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "An unreported loss already absorbed before 2025 gives Yes and a refusal; extra refusing only.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "K-1 losses are refused by scope.k1; a year with no return filed is a year 'whose tax return had no Form 8995'. Low.",
+     "bugs": []
+    }
+   ],
+   "bugs": [],
+   "class": "no screen defect",
+   "subject_sha": "570e0b58104f2d610e703909ef5ccf7abd74bfe83352d71ca62f31c98972b2db",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:sd.home_sale#1": {
+   "reason": "The help states the $500,000 joint exclusion and the 2-of-5-year test without the both-spouses use test or the 2-year rule, and the prompt does not name the spouse's home (filed, low).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "defect",
+     "evidence": "i1040sd p. 2: 'If both you and your spouse meet these tests and you file a joint return, you can exclude up to $500,000'. The help says 'Gain of up to $250,000 ($500,000 on a joint return) is usually excluded if you owned the home and lived in it for 2 of the 5 years', so a joint filer with only one spouse meeting the use test and a gain between the two limits can answer No; the reportable gain is neither computed nor refused. Rare; low.",
+     "bugs": [
+      "BUG-NEW-release-prep-12"
+     ]
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "defect",
+     "evidence": "i1040sd p. 2, Test 2: 'You haven't excluded gain on the sale or exchange of another main home during the 2-year period'. The help states only ownership and use. Same entry; low.",
+     "bugs": [
+      "BUG-NEW-release-prep-12"
+     ]
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "The prompt 'Was any of it your main home' is asked once per return; a spouse's own main home sold on a joint return is not named (interview/README.md spouse-phrase rule). Same entry; low.",
+     "bugs": [
+      "BUG-NEW-release-prep-12"
+     ]
+    }
+   ],
+   "bugs": [
+    "BUG-NEW-release-prep-12"
+   ],
+   "class": "defect (low): home sale screen wording (BUG-NEW-release-prep-12)",
+   "subject_sha": "a2f6b98377f023841243813182c0254d541df39f6381e36e0f9d98e3ee02de48",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:gate:div.other_boxes_if_dividends#1": {
+   "reason": "The less-common-boxes question counts a share of a form in another's name.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "div.other_boxes help: 'Count your share of a form in another's name, and a payment with no form'.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Boxes 2b to 2d open the box 3, 9, 10 and 13 questions too; extra asking only.",
+     "bugs": []
+    }
+   ],
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "00837de24fedbffcb067f39fc1bee9c2d74b971de649a6f192101467b80e60b3",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:gate:retirement.is_code2#1": {
+   "reason": "Code 7 series changes were not asked (BUG-NEW-release-prep-15, fixed); the change wording is wide by one-time switches.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "defect",
+     "evidence": "p590b p. 26. A series changed in 2025 with a code 7 payment is not asked; with code 1 it is asked by retirement.early_screen. Filed and fixed as BUG-NEW-release-prep-15 (medium): s2.other_tax names the recapture.",
+     "bugs": [
+      "BUG-NEW-release-prep-15"
+     ]
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A one-time switch to the RMD method or a depleted account (p590b p. 26, 'not treated as a modification') answered Yes refuses a return with no recapture; extra refusing only.",
+     "bugs": []
+    }
+   ],
+   "bugs": [
+    "BUG-NEW-release-prep-15"
+   ],
+   "class": "defect (medium, fixed): BUG-NEW-release-prep-15",
+   "subject_sha": "5673e512eef903571b1ce673341c5fe928ab504ae8c8b656d27613437de296a5",
+   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   }
  },
  "baseline": {

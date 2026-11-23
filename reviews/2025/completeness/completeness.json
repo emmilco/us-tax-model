@@ -564,7 +564,7 @@
  },
  {
   "form": "dependent",
-  "subject_sha": "a852f11c61f5ac40429a831fe04d66f54e9df6503a15a0ed998a9ac4eecec448",
+  "subject_sha": "26826228e0e0aecccf42c9e10ddd4c140d1d4acc642e1d81c5a75238eaa2e17f",
   "used": [
    {
     "doc": "i1040gi",
@@ -672,143 +672,44 @@
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
     "claims": [
      {
-      "item": "dependent.filer_not_dependent",
+      "item": "dependent.child_all_year",
       "sentences": [
        {
-        "quote": "4. Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”)",
-        "page": "i1040gi p. 18"
-       },
-       {
-        "quote": "5. Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”)",
-        "page": "i1040gi p. 19"
+        "quote": "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent except that, for 2025:",
+        "page": "i1040gi p. 15"
        }
       ],
-      "quote": "4. Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”) / 5. Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”)",
-      "page": "i1040gi p. 18; i1040gi p. 19",
-      "why_uncovered": "dependent.filer_not_dependent is only a bare condition that you cannot be claimed as a dependent; no question asks whether the person who could claim you is not required to file or is filing only for a refund, which the instructions treat as “No.”",
-      "closest_item": "dependent.filer_not_dependent",
+      "quote": "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent except that, for 2025:",
+      "page": "i1040gi p. 15",
+      "why_uncovered": "dependent.child_all_year treats anyone with relationship 'child' who lived with you all year as a child for the qualifying surviving spouse test. But the 'child' answer explicitly includes eligible foster children and descendants such as grandchildren. Qualifying surviving spouse status needs your own child or stepchild and excludes a foster child. No question separates a foster child or grandchild from a son, daughter or stepchild. The household refusal for qualifying surviving spouse fires only when none of the listed children qualify, so it does not catch a foster child or grandchild counted wrongly.",
+      "closest_item": "dependent.child_all_year",
       "effect": "eligibility"
      },
      {
-      "item": "dependent.ctc_child",
+      "item": "dependent.edu_aoc",
       "sentences": [
        {
-        "quote": "If you want to claim the child tax credit, you must have a valid SSN, which means it must be valid for employment and issued before the due date of your return (including extensions).",
-        "page": "i1040gi p. 17"
+        "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
+        "page": "i8863 p. 3"
        },
        {
-        "quote": "If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN, and it must have been issued on or before the due date of the return (including extensions).",
-        "page": "i1040gi p. 17"
-       },
-       {
-        "quote": "Did you, or your spouse if filing a joint return, and this child have SSNs valid for employment and issued before the due date of your 2025 return (including extensions)?",
-        "page": "i1040gi p. 18"
-       },
-       {
-        "quote": "If you didn’t have an SSN that is valid for employment and issued before the due date of your 2025 return (including extensions), you can’t claim the child tax credit on your original or amended 2025 return.",
-        "page": "i1040gi p. 22"
-       },
-       {
-        "quote": "To claim the credit on a joint return, you or your spouse must have an SSN that is valid for employment and issued before the due date of your 2025 return (including extensions). The other spouse must have either an SSN or ITIN, and it must have been issued on or before the due date of the return (including extensions).",
-        "page": "i1040gi p. 22"
+        "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+        "page": "i8863 p. 1"
        }
       ],
-      "quote": "If you want to claim the child tax credit, you must have a valid SSN, which means it must be valid for employment and issued before the due date of your return (including extensions). / If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN, and it must have been issued on or before the due date of the return (including extensions). / Did you, or your spouse if filing a joint return, and this child have SSNs valid for employment and issued before the due date of your 2025 return (including extensions)? / If you didn’t have an SSN that is valid for employment and issued before the due date of your 2025 return (including extensions), you can’t claim the child tax credit on your original or amended 2025 return. / To claim the credit on a joint return, you or your spouse must have an SSN that is valid for employment and issued before the due date of your 2025 return (including extensions). The other spouse must have either an SSN or ITIN, and it must have been issued on or before the due date of the return (including extensions).",
-      "page": "i1040gi p. 17; i1040gi p. 18; i1040gi p. 22",
-      "why_uncovered": "The encoding asks only about the child’s work SSN and the child’s TIN; it never asks whether the filer, or one spouse on a joint return, has an SSN valid for employment and the other spouse an SSN or ITIN issued by the due date.",
-      "closest_item": "dependent.ctc_child",
-      "effect": "eligibility"
-     },
-     {
-      "item": "dependent.claimed_no_tin",
-      "sentences": [
-       {
-        "quote": "If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records. The document must show the child was born alive.",
-        "page": "i1040gi p. 22"
-       },
-       {
-        "quote": "If the child was born and died in 2025 and didn't have an SSN, enter “Died” in column (b) and attach a copy of the child's birth certificate, death certificate, or hospital medical records.",
-        "page": "i2441 p. 3"
-       }
-      ],
-      "quote": "If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter “Died” on row (3) of the Dependents section and include a copy of the child’s birth certificate, death certificate, or hospital records. The document must show the child was born alive. / If the child was born and died in 2025 and didn't have an SSN, enter “Died” in column (b) and attach a copy of the child's birth certificate, death certificate, or hospital medical records.",
-      "page": "i1040gi p. 22; i2441 p. 3",
-      "why_uncovered": "The encoding refuses any dependent who meets the tests but has no SSN, ITIN or ATIN and has no exception for a child born and died in 2025; the Form 2441 column (b) rule would likewise be blocked by that refusal.",
-      "closest_item": "dependent.claimed_no_tin",
-      "effect": "eligibility"
-     },
-     {
-      "item": "dependent.claimed",
-      "sentences": [
-       {
-        "quote": "If you have more than four dependents, check the box under Dependents on page 1 of Form 1040 or 1040-SR and include a statement showing the information requested in the Dependents section.",
-        "page": "i1040gi p. 17"
-       }
-      ],
-      "quote": "If you have more than four dependents, check the box under Dependents on page 1 of Form 1040 or 1040-SR and include a statement showing the information requested in the Dependents section.",
-      "page": "i1040gi p. 17",
-      "why_uncovered": "No item, question or refusal handles more than four dependents or the required checkbox and statement; the per-person dependent items only process one person at a time.",
-      "closest_item": "dependent.claimed",
-      "effect": "presentation"
-     },
-     {
-      "item": "dependent.dc_count",
-      "sentences": [
-       {
-        "quote": "If you have more than three qualifying persons, check the box on line 2 and attach a statement to your return with the required information.",
-        "page": "i2441 p. 3"
-       },
-       {
-        "quote": "In this situation, all the lines on line 2 of Form 2441 must be completed with information for the three people with the highest qualifying expenses.",
-        "page": "i2441 p. 3"
-       }
-      ],
-      "quote": "If you have more than three qualifying persons, check the box on line 2 and attach a statement to your return with the required information. / In this situation, all the lines on line 2 of Form 2441 must be completed with information for the three people with the highest qualifying expenses.",
-      "page": "i2441 p. 3",
-      "why_uncovered": "dc_count counts qualifying persons, but nothing asks or refuses for the more-than-three case, the line 2 checkbox and statement, or selecting the three people with the highest qualifying expenses.",
-      "closest_item": "dependent.dc_count",
-      "effect": "presentation"
-     },
-     {
-      "item": "dependent.ptc_magi",
-      "sentences": [
-       {
-        "quote": "Form 8814. If you are filing Form 8814, Parents’ Election To Report Child’s Interest and Dividends, and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.",
-        "page": "i8962 p. 8"
-       }
-      ],
-      "quote": "Form 8814. If you are filing Form 8814, Parents’ Election To Report Child’s Interest and Dividends, and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.",
-      "page": "i8962 p. 8",
-      "why_uncovered": "dependent.ptc_magi asks for the dependent’s AGI, tax-exempt interest, Form 2555 amounts and nontaxable social security, but omits the additional Form 8814 amounts required when Form 8814 line 4 exceeds $1,350.",
-      "closest_item": "dependent.ptc_magi",
-      "effect": "amount"
-     },
-     {
-      "item": "dependent.supported",
-      "sentences": [
-       {
-        "quote": "Remarried parent. If you remarry, the support provided by your new spouse is treated as provided by you.",
-        "page": "p501 p. 15"
-       }
-      ],
-      "quote": "Remarried parent. If you remarry, the support provided by your new spouse is treated as provided by you.",
-      "page": "p501 p. 15",
-      "why_uncovered": "dependent.supported asks whether you provided over half support and lists many support items, but never states that support provided by your new spouse is treated as provided by you.",
-      "closest_item": "dependent.supported",
+      "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+      "page": "i8863 p. 3; i8863 p. 1",
+      "why_uncovered": "dependent.edu_aoc decides whether a student is an American opportunity credit student from lines 23–26, the filers' TINs and the institution's EIN. No question asks about an earlier final determination of reckless or intentional disregard or fraud that bars the credit. No question asks about a prior denial or reduction that requires Form 8862. No refusal on this form or in the handled-elsewhere list covers these situations.",
+      "closest_item": "dependent.edu_aoc",
       "effect": "eligibility"
      }
     ],
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/completeness/dependent.7adc3d4d7093.1.response.txt"
+    "cost": 0.6129199999999999,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-23",
+    "response": ".transcription/completeness/dependent.26826228e0e0.1.response.txt"
    }
-  ],
-  "subject_migrated": {
-   "from": "7adc3d4d70934571944b73de4f9518e1c63634bd9905c9b4d1b3c9ee979c55ed",
-   "date": "2026-11-21",
-   "task": "T-351"
-  }
+  ]
  },
  {
   "form": "div",
@@ -7088,7 +6989,7 @@
  },
  {
   "form": "retirement",
-  "subject_sha": "180b6895c249df94add044deec572e1ce46f17175f83df3f15d9e98a277bc5fe",
+  "subject_sha": "a178918fd5e043e7afeaedef536fc0b14a4536fbf7271ff2aebf023175356474",
   "used": [
    {
     "doc": "i1040gi",
@@ -7171,6 +7072,8 @@
    {
     "doc": "p590b",
     "pages": [
+     26,
+     27,
      28
     ]
    }
@@ -7179,24 +7082,6 @@
    {
     "system_sha": "5bfd2364767f9544b845bb0822dc26891c78ca7ede0dc2ab92d6fb2fdafec298",
     "claims": [
-     {
-      "item": "retirement.has_rollover",
-      "sentences": [
-       {
-        "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.",
-        "page": "i1040gi p. 27"
-       },
-       {
-        "quote": "If you rolled over the distribution into a qualified plan (other than an IRA) or you make the rollover in 2026, attach a statement explaining what you did.",
-        "page": "p590a p. 25"
-       }
-      ],
-      "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did. / If you rolled over the distribution into a qualified plan (other than an IRA) or you make the rollover in 2026, attach a statement explaining what you did.",
-      "page": "i1040gi p. 27; p590a p. 25",
-      "why_uncovered": "The encoding computes the amount rolled over and checks the rollover box on line 4c, but no question asks where or when an IRA rollover was completed. No output or refusal produces the required explanatory statement for a rollover into a qualified plan or one completed in 2026.",
-      "closest_item": "retirement.has_rollover",
-      "effect": "presentation"
-     },
      {
       "item": "retirement.rollover_second",
       "sentences": [
@@ -7215,22 +7100,44 @@
       ],
       "quote": "An IRA distribution made from a failed financial institution by the Federal Deposit Insurance Corporation as receiver is not treated as a rollover for purposes of the one-rollover-per-year limitation, provided: / Neither the failed financial institution nor the depositor initiated the distribution, and / No financial institution has assumed the IRAs of the failed financial institution.",
       "page": "p590a p. 25",
-      "why_uncovered": "The one-rollover-per-year question excludes only trustee-to-trustee transfers and conversions. An earlier rollover of an FDIC-initiated distribution from a failed institution would be counted. The filer would then answer Yes, and the encoding would disallow a rollover that is actually tax free.",
+      "why_uncovered": "The second-rollover question carves out only trustee-to-trustee transfers and conversions. It does not tell the filer that an earlier IRA distribution made by the FDIC as receiver of a failed institution, and then rolled over, does not count toward the one-rollover-per-year limit. A filer in that situation would answer Yes, and the tool would wrongly treat the current rollover as not tax free.",
       "closest_item": "retirement.rollover_second",
       "effect": "amount"
      },
      {
-      "item": "retirement.l2_e23",
+      "item": "retirement.exception",
       "sentences": [
        {
-        "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000.",
-        "page": "p590b p. 28"
+        "quote": "The education must be for you, your spouse, or the children or grandchildren of you or your spouse.",
+        "page": "p590b p. 27"
+       },
+       {
+        "quote": "It must be used to pay qualified acquisition costs for the main home of a first-time homebuyer (defined below) who is any of the following.",
+        "page": "p590b p. 27"
+       },
+       {
+        "quote": "Requirements for tutors. Tutors or teachers tutoring or providing educational classes outside of the home must not be related to the student and meet the following requirements.",
+        "page": "p590b p. 27"
        }
       ],
-      "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000.",
-      "page": "p590b p. 28",
-      "why_uncovered": "The amount question and the per-person dollar cap enforce the $1,000 and interest-minus-$1,000 limits. They also cover the 3-year bar after an unrepaid distribution, through the early-distribution screen. Nothing asks whether another emergency personal expense distribution was already taken in 2025. A second distribution in the same year could therefore still be treated as excepted, within the $1,000 total.",
-      "closest_item": "retirement.l2_e23",
+      "quote": "The education must be for you, your spouse, or the children or grandchildren of you or your spouse. / It must be used to pay qualified acquisition costs for the main home of a first-time homebuyer (defined below) who is any of the following. / Requirements for tutors. Tutors or teachers tutoring or providing educational classes outside of the home must not be related to the student and meet the following requirements.",
+      "page": "p590b p. 27",
+      "why_uncovered": "The exception question lists conditions for 01, 02, 03, 04, 09, 11 and 19 only. For exception 08 it gives no restriction on whose education qualifies, and it omits the tutor requirements. For exception 09 it states the no-ownership test only for 'you'. It does not say that the homebuyer may be the filer, the spouse, a child, a grandchild or an ancestor, each of whom must meet the test. Nothing asks about or refuses these cases.",
+      "closest_item": "retirement.exception",
+      "effect": "eligibility"
+     },
+     {
+      "item": "retirement.l2_e09",
+      "sentences": [
+       {
+        "quote": "When added to all your prior qualified first-time homebuyer distributions, if any, total qualifying distributions can't be more than $10,000.",
+        "page": "p590b p. 27"
+       }
+      ],
+      "quote": "When added to all your prior qualified first-time homebuyer distributions, if any, total qualifying distributions can't be more than $10,000.",
+      "page": "p590b p. 27",
+      "why_uncovered": "The $10,000 first-home limit is a lifetime limit. The encoding applies the $10,000 limit per person to 2025 distributions only and never asks about first-home distributions excluded in earlier years. An earlier exclusion would reduce the amount allowed on Form 5329 line 2.",
+      "closest_item": "retirement.l2_e09",
       "effect": "amount"
      },
      {
@@ -7247,15 +7154,33 @@
       ],
       "quote": "Attach a statement that provides the name, age, and TIN of the child or eligible adoptee. / If the child died before you obtained a TIN, then write that the child died on the statement and include a copy of the child’s birth certificate, death certificate, or hospital records.",
       "page": "i5329 p. 5",
-      "why_uncovered": "Exception 19 is computed with its $5,000 limit and 1-year timing condition. However, no question collects the child's name, age or TIN, or the death documentation. No output or refusal produces the required attachment.",
+      "why_uncovered": "Exception 19 is computed, but no item asks for or produces the required statement with the child's name, age and TIN. Nothing produces the death-related documentation either.",
       "closest_item": "retirement.l2_e19",
+      "effect": "presentation"
+     },
+     {
+      "item": "retirement.has_rollover",
+      "sentences": [
+       {
+        "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.",
+        "page": "i1040gi p. 27"
+       },
+       {
+        "quote": "If you rolled over the distribution into a qualified plan (other than an IRA) or you make the rollover in 2026, attach a statement explaining what you did.",
+        "page": "p590a p. 25"
+       }
+      ],
+      "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did. / If you rolled over the distribution into a qualified plan (other than an IRA) or you make the rollover in 2026, attach a statement explaining what you did.",
+      "page": "i1040gi p. 27; p590a p. 25",
+      "why_uncovered": "The encoding checks the rollover box on line 4c. It never asks whether an IRA rollover went to a qualified plan or was completed in 2026, and it does not produce the required explanatory statement.",
+      "closest_item": "retirement.has_rollover",
       "effect": "presentation"
      }
     ],
-    "cost": 0.442932,
+    "cost": 0.43567199999999995,
     "model": "claude-opus-5-5",
     "date": "2026-11-23",
-    "response": ".transcription/completeness/retirement.180b6895c249.1.response.txt"
+    "response": ".transcription/completeness/retirement.a178918fd5e0.1.response.txt"
    }
   ]
  },
@@ -8116,7 +8041,7 @@
  },
  {
   "form": "s2",
-  "subject_sha": "9c91ba6adb2e931743b9e530906e0ce86655215eead0b28c68bb62bb090516f1",
+  "subject_sha": "e79433bb41641bc1ec4c91cc80c78057a23542f437f2e4ab42f0ba48a8730adf",
   "used": [
    {
     "doc": "i1040gi",
@@ -8176,6 +8101,12 @@
     "pages": [
      13
     ]
+   },
+   {
+    "doc": "p590b",
+    "pages": [
+     26
+    ]
    }
   ],
   "samples": [
@@ -8196,20 +8127,16 @@
       ],
       "quote": "Exempt-interest dividends paid by a mutual fund or other regulated investment company are treated as interest income on specified private activity bonds to the extent the dividends are attributable to interest on the bonds received by the company, minus an allocable share of the expenses paid or incurred by the company in earning the interest. / This specified private activity bond interest dividends amount should be reported to you in box 13 of Form 1099-DIV.",
       "page": "i6251 pp. 3–4; i6251 p. 4",
-      "why_uncovered": "The private activity bond question asks only for Form 1099-INT box 9 and tax-exempt OID from Form 1099-OID box 11. It never asks for the private-activity-bond part of exempt-interest dividends in Form 1099-DIV box 13. Line 2g, and with it the screen for whether line 7 exceeds line 10, can therefore be understated.",
+      "why_uncovered": "The private activity bond question asks only for Form 1099-INT box 9 and tax-exempt OID in Form 1099-OID box 11. It never asks for mutual fund exempt-interest dividends in Form 1099-DIV box 13, which are also a line 2g preference. A filer holding private activity bond funds would answer zero or understate the amount. The AMT screen on line 4, and the decision whether to refuse line 2, could then wrongly conclude that AMT cannot apply.",
       "closest_item": "s2.amt_pab",
       "effect": "amount"
      },
      {
-      "item": "s2.amt_owed",
+      "item": "s2.amt_business",
       "sentences": [
        {
-        "quote": "Refigure your depletion deduction for the AMT.",
+        "quote": "Also, your depletion deduction for mines, wells, and other natural deposits under section 611 is limited to the property’s adjusted basis at the end of the year, as refigured for the AMT, unless you are an independent producer or royalty owner claiming percentage depletion for oil and gas wells under section 613A(c).",
         "page": "i6251 p. 3"
-       },
-       {
-        "quote": "If you claimed the exclusion under section 1202 for gain on qualified small business stock acquired before September 28, 2010, and held more than 5 years, multiply the excluded gain (as shown on Form 8949 in column (g)) by 7% (0.07).",
-        "page": "i6251 p. 4"
        },
        {
         "quote": "For the AMT, you must generally use the percentage-of-completion method described in section 460(b) to determine your income from any long-term contract (defined in section 460(f)).",
@@ -8228,9 +8155,23 @@
         "page": "i6251 p. 8"
        }
       ],
-      "quote": "Refigure your depletion deduction for the AMT. / If you claimed the exclusion under section 1202 for gain on qualified small business stock acquired before September 28, 2010, and held more than 5 years, multiply the excluded gain (as shown on Form 8949 in column (g)) by 7% (0.07). / For the AMT, you must generally use the percentage-of-completion method described in section 460(b) to determine your income from any long-term contract (defined in section 460(f)). / Research and experimental costs deducted under section 174(a) or section 174A(a) for regular tax purposes generally must be amortized for AMT purposes over 10 years beginning with the year the costs were paid or incurred. / The section 169 election to amortize the basis of a certified pollution control facility over a 60-month or 84-month period isn’t available for the AMT. / Complete an AMT Form 8990 using amounts adjusted for AMT.",
-      "page": "i6251 p. 3; i6251 p. 4; i6251 p. 7; i6251 p. 8",
-      "why_uncovered": "The items the arithmetic cannot see cover only three things: boat or recreational vehicle mortgage interest, circulation costs, and mining or drilling costs. Depreciation and related adjustments are bounded separately. No question, bound or refusal reaches these other positive adjustments and preferences: depletion (line 2d), section 1202 gain exclusion (line 2h), long-term contract income (line 2p), research and experimental costs (line 2r), pollution control amortization, and the AMT business interest limitation (line 3). Any of them could raise AMTI enough that line 7 exceeds line 10 while the tool reports zero AMT.",
+      "quote": "Also, your depletion deduction for mines, wells, and other natural deposits under section 611 is limited to the property’s adjusted basis at the end of the year, as refigured for the AMT, unless you are an independent producer or royalty owner claiming percentage depletion for oil and gas wells under section 613A(c). / For the AMT, you must generally use the percentage-of-completion method described in section 460(b) to determine your income from any long-term contract (defined in section 460(f)). / Research and experimental costs deducted under section 174(a) or section 174A(a) for regular tax purposes generally must be amortized for AMT purposes over 10 years beginning with the year the costs were paid or incurred. / The section 169 election to amortize the basis of a certified pollution control facility over a 60-month or 84-month period isn’t available for the AMT. / Complete an AMT Form 8990 using amounts adjusted for AMT.",
+      "page": "i6251 p. 3; i6251 p. 7; i6251 p. 8",
+      "why_uncovered": "The business question asks only about circulation costs, mining exploration and development costs, and intangible drilling costs. The depreciation cap (s2.amt_dep) covers only MACRS depreciation. Nothing asks about or bounds these other positive AMT adjustments for a Schedule C business: percentage depletion above basis, long-term contract income, section 174/174A research costs, pollution control amortization, and the business interest limitation. Each can raise line 4 beyond the screened maximum, so AMT can be missed without any refusal.",
+      "closest_item": "s2.amt_business",
+      "effect": "amount"
+     },
+     {
+      "item": "s2.amt_owed",
+      "sentences": [
+       {
+        "quote": "If you claimed the exclusion under section 1202 for gain on qualified small business stock acquired before September 28, 2010, and held more than 5 years, multiply the excluded gain (as shown on Form 8949 in column (g)) by 7% (0.07).",
+        "page": "i6251 p. 3"
+       }
+      ],
+      "quote": "If you claimed the exclusion under section 1202 for gain on qualified small business stock acquired before September 28, 2010, and held more than 5 years, multiply the excluded gain (as shown on Form 8949 in column (g)) by 7% (0.07).",
+      "page": "i6251 p. 3",
+      "why_uncovered": "The section 1202 exclusion is a positive line 2h preference. It is not among the items that the arithmetic sees (lines 1b, 2a, 2b, 2e, 2g, depreciation, related adjustments, mortgage interest). It is also not among the 'items the arithmetic cannot see' that trigger the Form 6251 refusal. A filer excluding qualified small business stock gain could therefore pass the screen with AMT owed.",
       "closest_item": "s2.amt_owed",
       "effect": "amount"
      },
@@ -8246,13 +8187,17 @@
         "page": "i6251 p. 1"
        },
        {
+        "quote": "Also use Form 6251 to figure your tentative minimum tax (Form 6251, line 9). You may need to know that amount to figure the tax liability limit on the credits listed under Who Must File, earlier.",
+        "page": "i6251 p. 1"
+       },
+       {
         "quote": "See Form 8801, Credit for Prior Year Minimum Tax—Individuals, Estates, and Trusts, if you paid AMT for 2024 or you had a minimum tax credit carryforward on your 2024 Form 8801.",
         "page": "i6251 p. 2"
        }
       ],
-      "quote": "2. You claim any general business credit, and either line 6 (in Part I) of Form 3800 or line 25 of Form 3800 is more than zero. / 3. You claim the qualified electric vehicle credit (Form 8834), the personal-use part of the alternative fuel vehicle refueling property credit (Form 8911), or the credit for prior year minimum tax (Form 8801). / See Form 8801, Credit for Prior Year Minimum Tax—Individuals, Estates, and Trusts, if you paid AMT for 2024 or you had a minimum tax credit carryforward on your 2024 Form 8801.",
+      "quote": "2. You claim any general business credit, and either line 6 (in Part I) of Form 3800 or line 25 of Form 3800 is more than zero. / 3. You claim the qualified electric vehicle credit (Form 8834), the personal-use part of the alternative fuel vehicle refueling property credit (Form 8911), or the credit for prior year minimum tax (Form 8801). / Also use Form 6251 to figure your tentative minimum tax (Form 6251, line 9). You may need to know that amount to figure the tax liability limit on the credits listed under Who Must File, earlier. / See Form 8801, Credit for Prior Year Minimum Tax—Individuals, Estates, and Trusts, if you paid AMT for 2024 or you had a minimum tax credit carryforward on your 2024 Form 8801.",
       "page": "i6251 p. 1; i6251 p. 2",
-      "why_uncovered": "s2.amt triggers the Form 6251 refusal only for incentive stock options, unseen items, or line 7 greater than line 10 (Who Must File statements 1 and 4). Statements 2 and 3 are not tested. Those statements require Form 6251 when a general business credit, the Form 8834 credit, the Form 8911 credit or the Form 8801 credit is claimed. Nothing asks about a 2024 AMT payment or a minimum tax credit carryforward, so these credits could be allowed without the tentative minimum tax limit.",
+      "why_uncovered": "s2.amt decides whether Form 6251 is required using only incentive stock options, unseen items, and line 7 against line 10. Who Must File statements 2 and 3 (general business credit, Form 8834, the personal part of Form 8911, Form 8801) are neither implemented nor asked about. The Form 8801 credit for 2024 AMT or a carryforward is also never asked about. The filing requirement is missed, along with the tentative minimum tax limit on those credits and the prior-year minimum tax credit itself.",
       "closest_item": "s2.amt",
       "effect": "amount"
      },
@@ -8260,16 +8205,12 @@
       "item": "s2.line4",
       "sentences": [
        {
-        "quote": "Under these agreements, you must generally pay social security and Medicare taxes to only the country in which you live.",
-        "page": "i1040sse p. 2"
+        "quote": "If you filed Form 4361, received IRS approval, and had no other income subject to self-employment tax, check box 1 on line 4.",
+        "page": "i1040gi p. 112"
        },
        {
-        "quote": "Don’t complete Schedule SE.",
-        "page": "i1040sse p. 2"
-       },
-       {
-        "quote": "Instead, attach a copy of the statement to Form 1040, 1040-SR, or 1040-NR, and on Schedule 2 (Form 1040), line 4, check box number 3 and enter “Exempt, see attached statement.”",
-        "page": "i1040sse p. 2"
+        "quote": "If you filed Form 4029 and received IRS approval, check box 2 on line 4.",
+        "page": "i1040gi p. 112"
        },
        {
         "quote": "If you are a U.S. citizen or resident alien living outside the United States and your self-employment income is exempt from self-employment tax, you should get a statement from the appropriate agency of the foreign country verifying that your self-employment income is subject to social security in that country.",
@@ -8280,40 +8221,27 @@
         "page": "i1040gi p. 112"
        },
        {
-        "quote": "If you did have other earnings of $400 or more subject to self-employment tax, check box 3 and enter “EN” and the amount of your net profit as a notary public from Schedule C on the entry space next to box 3.",
-        "page": "i1040gi p. 112"
+        "quote": "Under these agreements, you must generally pay social security and Medicare taxes to only the country in which you live.",
+        "page": "i1040sse p. 2"
+       },
+       {
+        "quote": "However, you (not the bankruptcy estate) are responsible for paying SE tax on your net earnings from self-employment.",
+        "page": "i1040sse p. 2"
        }
       ],
-      "quote": "Under these agreements, you must generally pay social security and Medicare taxes to only the country in which you live. / Don’t complete Schedule SE. / Instead, attach a copy of the statement to Form 1040, 1040-SR, or 1040-NR, and on Schedule 2 (Form 1040), line 4, check box number 3 and enter “Exempt, see attached statement.” / If you are a U.S. citizen or resident alien living outside the United States and your self-employment income is exempt from self-employment tax, you should get a statement from the appropriate agency of the foreign country verifying that your self-employment income is subject to social security in that country. / If you received fees for services performed as a notary public and you had no other income subject to self-employment tax, check box 3 and enter “EN” on the entry space next to box 3. / If you did have other earnings of $400 or more subject to self-employment tax, check box 3 and enter “EN” and the amount of your net profit as a notary public from Schedule C on the entry space next to box 3.",
-      "page": "i1040sse p. 2; i1040gi p. 112",
-      "why_uncovered": "Line 4 is carried from Schedule SE line 12. No question or refusal identifies self-employment income exempt under a social security totalization agreement or notary public fees. Both are excluded from SE tax, need the box 3 entry, and (for the agreement case) need the attached foreign statement. The listed refusals elsewhere cover clergy, Forms 4361/4029 and community income, not these cases.",
+      "quote": "If you filed Form 4361, received IRS approval, and had no other income subject to self-employment tax, check box 1 on line 4. / If you filed Form 4029 and received IRS approval, check box 2 on line 4. / If you are a U.S. citizen or resident alien living outside the United States and your self-employment income is exempt from self-employment tax, you should get a statement from the appropriate agency of the foreign country verifying that your self-employment income is subject to social security in that country. / If you received fees for services performed as a notary public and you had no other income subject to self-employment tax, check box 3 and enter “EN” on the entry space next to box 3. / Under these agreements, you must generally pay social security and Medicare taxes to only the country in which you live. / However, you (not the bankruptcy estate) are responsible for paying SE tax on your net earnings from self-employment.",
+      "page": "i1040gi p. 112; i1040sse p. 2",
+      "why_uncovered": "Line 4 is computed straight from Schedule SE. No question or refusal covers any of these rules: the Form 4361 or Form 4029 exemptions, exemption under a totalization agreement, the notary fee exemption, the box 1/2/3 checkboxes with their entries, or chapter 11 debtors who owe SE tax on income reported by the estate. Among the handled-elsewhere refusals, only the railroad compensation and community income cases touch these situations.",
       "closest_item": "s2.line4",
       "effect": "amount"
      }
     ],
-    "cost": 0.40464,
+    "cost": 0.468344,
     "model": "claude-opus-5-5",
     "date": "2026-11-23",
-    "response": ".transcription/completeness/s2.c4d6969090bd.1.response.txt"
+    "response": ".transcription/completeness/s2.e79433bb4164.1.response.txt"
    }
-  ],
-  "carried": {
-   "by": "rename",
-   "map": {
-    "f8959.line18": "f8959.total_tax",
-    "s2.amt_h_mfs_quarter": "s2.amt_h_mfs_phaseout_part",
-    "s2.amt_mfs_quarter": "s2.amt_mfs_phaseout_part",
-    "s2.line12": "s2.niit",
-    "s2.line17c": "s2.hsa_distribution_tax",
-    "s2.line18": "s2.other_additional_total",
-    "s2.line5": "s2.tip_ss_tax",
-    "s2.line6": "s2.wage_ss_tax",
-    "s2.line7": "s2.ss_medicare_total",
-    "s2.line8": "s2.tax_favored_accounts"
-   },
-   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-   "was": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482"
-  }
+  ]
  },
  {
   "form": "s3",

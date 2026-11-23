@@ -1556,6 +1556,83 @@
           "cents": 120000
         }
       }
+    },
+    {
+      "id": "relprep2.retirement.code2_exception_covers",
+      "covers": [
+        "retirement.code2_partial",
+        "s2.tax_favored_accounts"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "BUG-1202, the non-refusing path. A filer born in 1972 (under 59 1/2 all of 2025) takes $10,000 from a traditional IRA with code 2 (exception known to the payer), the exception covers all of it and no series of equal payments was changed. Predicted from i1040gi p. 27 (line 4b, the taxable amount of a traditional IRA with no basis) and i5329 p. 5 (code 2, no additional tax): Form 1040 line 4b $10,000, Schedule 2 line 8 $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5200000,
+        "person[taxpayer].w2[emp_a].box4": 322400,
+        "person[taxpayer].w2[emp_a].box5": 5200000,
+        "person[taxpayer].w2[emp_a].box6": 75400,
+        "person[taxpayer].birth_year": 1972,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "early_exception_2",
+        "person[taxpayer].retirement[a].box1": 1000000,
+        "person[taxpayer].retirement[a].code2_partial": false
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "s2.tax_favored_accounts": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "relprep2.retirement.code2_series_changed",
+      "covers": [
+        "retirement.code2_partial",
+        "retirement:refuse"
+      ],
+      "evidence": "synthetic refusal regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "BUG-1202. The same filer's code 2 payment is one of a series of substantially equal payments changed in 2025 (p590b p. 26: the recapture tax is imposed in the year of the modification), so retirement.code2_partial is Yes. Predicted: the entry's code screen refuses through retirement.screen_refused, and Form 1040 line 4b carries the refusal ('Form 5329 or Form 8915-F for this Form 1099-R'). The cite fields of the refusal are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5200000,
+        "person[taxpayer].w2[emp_a].box4": 322400,
+        "person[taxpayer].w2[emp_a].box5": 5200000,
+        "person[taxpayer].w2[emp_a].box6": 75400,
+        "person[taxpayer].birth_year": 1972,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "early_exception_2",
+        "person[taxpayer].retirement[a].box1": 1000000,
+        "person[taxpayer].retirement[a].code2_partial": true
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[a].screen_refused",
+          "form": "Form 5329 or Form 8915-F for this Form 1099-R",
+          "remedy": "A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply.",
+          "cite": {
+            "doc": "i5329",
+            "locator": "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\"",
+            "revision": "2025",
+            "snapshot": "aec3d325edb26a0d20d3b81030feb97cf62ecc97fa90c9abd91d83dd22749146",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

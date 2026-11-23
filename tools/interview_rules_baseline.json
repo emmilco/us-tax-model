@@ -10,5 +10,7 @@
   "retirement.exception": "reached out of bank order, cause not traced in lane T2; listed by the T-276 catalog (section 6.3); held until the T-276 family rewrites (goal-1 lane T3); found by the check widened under BUG-0602",
   "ny_it201.ask.moved_out": "on ny.generated.933, until ny_it201.ask.moved_in was answered; found by interview-rules at integration B1 of the goal-1 round; cause traced by lane b1-mutB (docs/provisional/lanes/b1-mutB.md): ny_it201.moved is any[ny_it201.ask.moved_in true, ny_it201.ask.moved_out true]; a Yes to moved_in decides it, so moved_out, asked after it in bank order (seq 41, 42), is reached first only in an order that asks moved_out before moved_in. Seq cannot fix an order the check draws at random; a gate (moved_out asked only after a No to moved_in) would. The goal-1 lanes changed none of these lines (diffed against g1-base b3dc1c0b); the return is witnessed now because the merged New York generator and data moved the seeded sample. Held until the gate wave rewrites the test as a choose chain."
  },
- "walked_unused": {}
+ "walked_unused": {
+  "f8889.months_eligible": "asked in bank order on 4 generated returns (generated.277 first) and unread once the spouse's last-month answer is given: the spouse's family-months check (f8889.family_months_bad, through household.hsa_self_sum and the taxpayer's step4_total and self_counted) reads the taxpayer's months_eligible while the spouse's December coverage is self-only and last_month is unanswered; the fix is to nest that check on last_month, a change to the HSA split not made in release preparation 2; held under BUG-1214 (open, low)"
+ }
 }

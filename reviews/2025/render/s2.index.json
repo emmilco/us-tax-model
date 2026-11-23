@@ -3,6 +3,10 @@
  "form": "s2",
  "family": "claude",
  "base": "8fd72a7d39055c993bf1c46ae4705708b18c1216159ecc3e21c3eaf6becfcfce",
+ "head_rows": {
+  "match / mismatch / unclear / missing": "13 / 2 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1a",
@@ -12,9 +16,10 @@
   },
   {
    "key": "1z",
-   "record": "8fd72a7d39055c993bf1c46ae4705708b18c1216159ecc3e21c3eaf6becfcfce",
-   "status": "MATCH",
-   "subject_key": "2db177d9f5f750a4a53595047a8c4f31c12a7ee3e87e2c37736fe829e2ee88e1"
+   "record": "405b4d18c44da46c40fbff168d812cdafc129e171ea75ce29b8d66541db16f5e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; lines 1b and 1c arise only from a clean vehicle credit taken off the price by a dealer, which is refused before Schedule 2 (scope, s3.ev_dealer_if_ev: 'A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed'); lines 1d to 1f and 1y are asked by s2.credit_recapture ('a recapture or repayment of a business, investment, energy, low-income housing or vehicle refueling credit, or a penalty tied to one') and s2.other_tax, each refused through s2.other.",
+   "subject_key": "d50a873a555e5c6529f59a7bf721bbf6edd17be86a7cac9d38cab43dc8969f08"
   },
   {
    "key": "2",
@@ -182,29 +187,15 @@
   },
   {
    "key": "21",
-   "record": "8fd72a7d39055c993bf1c46ae4705708b18c1216159ecc3e21c3eaf6becfcfce",
-   "status": "MATCH",
-   "subject_key": "90e7d51bbefbc75bcbcc382f2459185ba0b57367e254e2626fac279140b4f3dc",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f8959.line18": "f8959.total_tax",
-     "s2.line12": "s2.niit",
-     "s2.line17c": "s2.hsa_distribution_tax",
-     "s2.line18": "s2.other_additional_total",
-     "s2.line5": "s2.tip_ss_tax",
-     "s2.line6": "s2.wage_ss_tax",
-     "s2.line7": "s2.ss_medicare_total",
-     "s2.line8": "s2.tax_favored_accounts"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "fcc045d2c339e1b066c1a499df37823428d030aee926a00663a44f5a9009278b"
-   }
+   "record": "405b4d18c44da46c40fbff168d812cdafc129e171ea75ce29b8d66541db16f5e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; lines 14 and 15 arise only from installment sales (Form 6252 and section 453A), refused by sd.installment ('An installment sale is figured on Form 6252 ... a Yes ends the interview here') and, for a business, sc.special ('income you report under the installment method (including installment sales of timeshares or residential lots)'); the remaining lines 9, 10, 13, 16, 17 and 19 are refused by the Schedule 2 screens through s2.other.",
+   "subject_key": "8bbaa2c51870445e7e6643b7cd0764e537a61d2e3c867dc76e6dc43eec00bbbf"
   }
  ],
  "subjects": {
   "1a": "948c5bdb2766ad5ed74cbb3ecc7e370cef081b3b5fc0e996e63782a1b301ec54",
-  "1z": "feba7ad92b1251a4eaf4be32819b83bde9fed3305511fbb87c391e53dad80f5a",
+  "1z": "f41b9ffd0b6610d51ab84a9f082597bd5a5ac3bb4cd8789348d84f9aa815bcf3",
   "2": "abd055490cec61c0eead8e08bb86f0137eecb936905626169912ba5a1a8a6e94",
   "3": "092dce3698e41b666202e25927d6d429a51b8315eb175bfae2cf9419b6e941ae",
   "4": "9cd8a4c296c43b06d436f6de558fe38ee0931e30d2d7f91c46bde228c1854ab2",
@@ -217,7 +208,7 @@
   "12": "6dbad47708090452ab64badbfae748c2775653d7f1abc4bddc60b27e8667b8eb",
   "17c": "a634180d4d96db525cb16d296104480aba08fef9c4715e22d96515cb216272e5",
   "18": "fd1ecf75160d713065c2e2e6a006b979e93d58cd0f0d70a13fac86bc885396d9",
-  "21": "652a187115e569212e2d44dafb618d4aea1e354426bc4ba4b9f264d452af4a74"
+  "21": "a643a3cbb95c0e9ffd5cc747e4ff659f2075c7f5362f450350d01f03de08b23c"
  },
  "__rest__": "62e1e78bc43403c82fc8dd83ac8b2f3e5535a2a722b2af4193ee0376b12e6cd6"
 }

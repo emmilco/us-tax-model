@@ -6214,16 +6214,33 @@ form:
       label: A lifetime learning credit student whose ITIN was only applied for by the due date of the return
       type: Bool
       expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_llc
+            - const: true
+          then: person.edu_tin_missing
+        - guard:
+            op: test
+            eq:
+            - person.edu_llc
+            - const: false
+          then: person.no
+      cite:
+        doc: i8863
+        locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+          return (including extensions)."
+    - id: person.edu_tin_missing
+      printed: (helper)
+      label: No SSN or ITIN issued by the due date of the return (read only for a lifetime learning credit student)
+      type: Bool
+      expr:
         op: test
-        all:
-        - op: test
-          eq:
-          - person.edu_llc
-          - const: true
-        - op: test
-          eq:
-          - person.tin
-          - const: false
+        eq:
+        - person.tin
+        - const: false
       cite:
         doc: i8863
         locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025

@@ -851,6 +851,16 @@
   },
   {
    "printed": "31",
+   "project_expr_sha256": "399a5717f0884692909aad9d9ae275e2bc224452758987d9ec048c30fb8e4276",
+   "second_expr_sha256": "f3820f14283e1fdb3220cc9d050f2c6dd0a3bc20c0c91cf8924865415e800d87",
+   "ruling": "Ruling: representation; both give line 31 only for a lifetime learning credit student and zero where lines 27 to 30 are completed ('If you complete lines 27 through 30 for this student, don't complete line 31'); the project writes it as a choice on person.edu_llc.",
+   "context": "4f7573c6995b0f0a834e800ed123c328a0413dfacda0c50d6dda73278e615b70",
+   "date": "2026-11-23",
+   "run": "2b6731e582ec0cf829bfc7404ba4cffb91e7107c000f4602fd3b6fb80176bd0a",
+   "subject_key": "1361969b5df38032a5594ef65e85ea062400194d3b6e959726beebd0d684f163"
+  },
+  {
+   "printed": "31",
    "project_expr_sha256": "9caec1b7d59c434f16e5b33f02db30636228711aba2bd9340fa5bc9a19c2e131",
    "second_expr_sha256": "b5ed29f843231056080679b7b8360f800603752868630252e09a29bf5d301ad7",
    "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit. As the prior rulings on this line: the reply reads person.edu of every person with no f8863.paid gate (unknown where the project hides the line), and shows the lifetime learning amount for a student the project routes to the American opportunity credit (f1.t113.person_aoc_itin_applied, $5,000.00 shown on a hidden line); f1.t113.person_llc_itin_applied is refused by the project at person.edu_llc_tin_refused, as the owner decided (T-113). executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 1,630 of 4,066 agree; 2,433 candidate-unknown, 2 candidate-shows-skipped, 1 project-refuses; on returns the full interview completes: 313 candidate-unknown. Project stands.",

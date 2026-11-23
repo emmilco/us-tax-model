@@ -525,8 +525,8 @@
 ## (helper) — `dependent.spouse_relative_joint`
 
 - **Authored helper label:** A relative of your spouse, on a joint return
-- **Encoded (Bool):** f1040 line Filing Status = 'mfj' and helper "On a joint return, related to your spouse in one of the Step 4 ways" = true
-- Expr: `{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["dependent.spouse_relative",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfj' → helper "On a joint return, related to your spouse in one of the Step 4 ways"] [f1040 line Filing Status = 'mfs' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'hoh' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'qss' → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"dependent.spouse_relative"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [p501] p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
 ## (helper) — `dependent.qr_relationship`
@@ -1405,6 +1405,13 @@
 - **Encoded (Bool):** Choose — [helper "Lived with you for all of 2025 (for a person born, adopted or placed with you in 2025, or who died in 2025, all of their part of the year)?" = true → helper "Year parameter household.no (false)"] [helper "Lived with you for all of 2025 (for a person born, adopted or placed with you in 2025, or who died in 2025, all of their part of the year)?" = false → helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?"]
 - Expr: `{"alternatives":[{"guard":{"eq":["dependent.lived_all_year",{"const":true}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.lived_all_year",{"const":false}],"op":"test"},"then":"dependent.kidnapped"}],"op":"choose"}`
 - Cite: [p501] p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (time the child was missing is not time lived with you, so a person who lived with you for all of 2025 was not missing in 2025) (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.child_all_year`
+
+- **Authored helper label:** Listed as your child, and lived with you for all of 2025 (the lived-all-year answer is read only for a child)
+- **Encoded (Bool):** Choose — [helper "Relationship to you" = 'child' → helper "Lived with you for all of 2025 (for a person born, adopted or placed with you in 2025, or who died in 2025, all of their part of the year)?"] [helper "Relationship to you" = 'sibling' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'sibling_descendant' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'parent' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'parent_relative' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'in_law' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'household_member' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'other' → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.relationship",{"const":"child"}],"op":"test"},"then":"dependent.lived_all_year"},{"guard":{"eq":["dependent.relationship",{"const":"sibling"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"parent_relative"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"in_law"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"household_member"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"other"}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.household_all_year`
 

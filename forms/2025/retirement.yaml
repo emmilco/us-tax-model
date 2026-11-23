@@ -2931,15 +2931,17 @@ form:
       locator: 'p. 5, Line 2, "Enter on line 2 the amount that you can exclude."'
   - id: retirement.code2_partial
     printed: (helper)
-    label: 'Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?'
+    label: 'Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?'
     type: Bool
     gated_by: retirement.code2_partial_if_code2
     expr:
       op: input
-      source: 'Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money (it covers only part of it, or none)?'
+      source: 'Code 2 means the payer knows of an exception to the extra tax on early withdrawals. Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?'
     cite:
       doc: i5329
-      locator: 'p. 5, Line 2, "Enter on line 2 the amount that you can exclude."'
+      locator: 'p. 5, Line 2, "Enter on line 2 the amount that you can exclude."; p590b p. 26, "You may have to pay a recapture
+        tax if you modify ... the annual amount distributed ... under the substantially equal periodic payment exception"
+        and "The recapture tax is imposed in the tax year in which the modification occurs"'
   - id: retirement.is_code2
     printed: (helper)
     label: 'Code 2 (early distribution, exception applies)'
@@ -2954,7 +2956,7 @@ form:
       locator: 'p. 5, Line 2, "Enter on line 2 the amount that you can exclude."'
   - id: retirement.code2_partial_if_code2
     printed: (gate)
-    label: 'The code 2 exception does not cover the whole distribution, asked only with code 2 (false otherwise)'
+    label: 'The code 2 exception does not cover the whole distribution, or the distribution is one of a series of substantially equal payments changed in 2025, asked only with code 2 (false otherwise)'
     type: Bool
     expr:
       op: choose

@@ -18535,17 +18535,30 @@
  },
  {
   "screen": "gate:retirement.is_code2",
-  "subject_sha": "12a095c2b74cef094ad05a62c599b77789df742fa5f2eb50d74f345286ca4236",
+  "subject_sha": "5673e512eef903571b1ce673341c5fe928ab504ae8c8b656d27613437de296a5",
   "samples": [
    {
-    "verdict": "COVERS",
-    "findings": [],
-    "prompt_sha": "173d43f8bd4bcba5ddc40a5716923d5682459e44793ad04b3bd84003e07a3331",
+    "verdict": "NARROW",
+    "findings": [
+     {
+      "kind": "NARROW",
+      "situation": "A filer whose substantially equal periodic payment series started at 57 changes the payments in 2025 at age 61, before the 5th anniversary, and the 2025 Form 1099-R shows code 7 (normal distribution); or the payer reports the changed series with code 1. The computed condition is false, so the recapture question is never asked.",
+      "irs_text": "p590b p. 26: \"The recapture tax applies if you modify the series of payments ... before the later of these two dates: 1. The 5th anniversary of the date of the first distribution of the series; or 2. The date you reach age 59½.\" and \"The recapture tax is imposed in the tax year in which the modification occurs.\"",
+      "why": "Recapture depends on when the series was changed, not on the box 7 code of this year's distribution. A change made after 59½ but before the 5th anniversary, or a change the payer codes 1, still owes recapture on earlier years, but the gate only asks when the code is 2."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer with code 2 who made a one-time switch to the RMD method, or whose account was fully used up, answers yes to 'changed in 2025', and the interview ends.",
+      "irs_text": "p590b p. 26: \"the following two situations are not treated as a modification of the series for purposes of the recapture tax: (a) if your account is completely depleted of all assets; or (b) if you make a one-time change to the RMD method from one of the other methods.\"",
+      "why": "The question's 'changed' includes changes that p590b says owe no recapture, so the yes branch can be reached when no amount is due."
+     }
+    ],
+    "prompt_sha": "fb8182dc8f33bc257b4267bf007bac77fec9320773ab5f26c919ccdd52aa3868",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.027839999999999997,
+    "cost": 0.051435999999999996,
     "model": "claude-opus-5-5",
     "date": "2026-11-23",
-    "response": ".transcription/screens/gate_retirement.is_code2.12a095c2b74c.1.response.txt"
+    "response": ".transcription/screens/gate_retirement.is_code2.5673e512eef9.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -18566,12 +18579,27 @@
     ],
     "how": "cited pages",
     "locators": [
-     "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+     "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\"",
+     "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\"; , \"You may have to pay a recapture tax if you modify ... the annual amount distributed ... under the substantially equal periodic payment exception\" and \"The recapture tax is imposed in the tax year in which the modification occurs\""
     ],
     "cols_pages": [
      5
     ],
     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+   },
+   {
+    "doc": "p590b",
+    "revision": "2025",
+    "text_sha256": "24de404e77c2a3d1f0540b91ac8c28ca4d45c7fcf968de613407419eba9266f4",
+    "pages": [
+     26
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     26
+    ],
+    "cols_sha256": "464639ba13341fe9c824b6f495922126cb3d158650887bf9beb265fd951c3e77"
    }
   ]
  },
