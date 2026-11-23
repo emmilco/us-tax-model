@@ -1,6 +1,8 @@
 // An interview-coverage worker: loads the context once (loadCtx in interview-coverage.ts), sends the tax year it
 // loaded, then walks each row it is sent (walkRow). The tax year comes from the main thread, put on the command line
 // before year.ts loads.
+// First: a traced step records this worker's reads too (build-cache.ts).
+import "./build-cache.js";
 import { workerData } from "node:worker_threads";
 import { serveTasks } from "./pool.js";
 

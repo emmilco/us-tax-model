@@ -26,7 +26,7 @@ but not adopted (`docs/ty2026/ADOPTION.md`; `years.json` lists 2025 only).
 | Path | Purpose |
 |------|---------|
 | `PROJECT_INDEX.md` | This file: structure, directory purposes, naming conventions |
-| `HANDOFF-NEXT-SESSION.md` | Start here: the current entry (state of `main`, work in flight, the normative documents by kind of work, what is a record rather than guidance); at most two entries (`tools/check_docs_conventions.py`); older entries are in `handoffs/HANDOFF-NEXT-SESSION-ARCHIVE-2026-11.md` (historical) |
+| `HANDOFF-NEXT-SESSION.md` | Start here: the current entry (state of `main` and `next`, work in flight, the normative documents by kind of work, what is a record rather than guidance); at most two entries (`tools/check_docs_conventions.py`); older entries are in `handoffs/HANDOFF-NEXT-SESSION-ARCHIVE-2026-11.md` (historical) |
 | `CLAUDE.md` | The owner's standing working guidance for agents in this project: where to start, the controlling documents, the interview construction protocol, inference cost, worktrees, background waits and parallel lanes |
 | `README.md` | What the project is and where it comes from (Direct File, the Fact Graph, Catala), what tax law it encodes, what trusting it would take, the layers from the interview down to the archived page with what each earns and where it stops, the project's status and roadmap, how to run it, the standing notices, where things are, licences |
 | `LICENSE` | Apache License, Version 2.0: the licence of the code (spec 9) |

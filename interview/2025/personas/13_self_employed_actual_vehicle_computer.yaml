@@ -55,6 +55,7 @@ answers:
   scope.income_averaging: false
   qbi.suspended: false
   s2.lookback: false
+  s2.amt_business: false
   person[taxpayer].sc[design_studio].scveh[van].method: actual
   person[taxpayer].sc[design_studio].scveh[van].miles_business: 8000
   person[taxpayer].sc[design_studio].scveh[van].parking: 21000
@@ -89,6 +90,7 @@ answers:
   person[taxpayer].sc[design_studio].asset[computer].kind_excluded: false
   person[taxpayer].sc[design_studio].asset[computer].software: false
   person[taxpayer].sc[design_studio].asset[computer].industry: false
+  person[taxpayer].sc[design_studio].asset[computer].industry_use: false
   person[taxpayer].sc[design_studio].asset[computer].long_production: false
   person[taxpayer].sc[design_studio].asset[computer].cost: 200000
   person[taxpayer].sc[design_studio].asset[computer].pct: 100

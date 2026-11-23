@@ -7,6 +7,7 @@ answers:
   household.married_dec31: true
   household.community_property: false
   household.spouse_cp_domicile: false
+  household.cp_retirement: false
   person[taxpayer].birth_year: 1985
   $w2@person[taxpayer]: [acme]
   person[taxpayer].w2[acme].box1: 6000000

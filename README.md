@@ -392,7 +392,7 @@ Around the stack sit tests of whether the tests are any good.
   arithmetic ("Add lines 1 through 3") must match the line's operands, a limit sentence ("can't be more
   than") must be tied to the line that enforces it, and four more of the kind. Findings that predate a
   check are held in a baseline and come due when the line they concern changes.
-- **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (<!-- figures:readme-bugs -->1,118 so far<!-- /figures:readme-bugs -->)
+- **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (<!-- figures:readme-bugs -->1,128 so far<!-- /figures:readme-bugs -->)
   with how it was caught, its root cause, and *why the existing checks missed it*. It is
   append-only; the suite fails if its committed history changes.
 - **The commit guard.** A git hook, enabled per clone, refuses any commit whose tree is not exactly a

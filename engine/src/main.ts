@@ -1,7 +1,15 @@
 // Command-line entry: the backend of the system. Every command takes
 // --year N (default: the newest adopted year in years.json; see year.ts).
 //
-//   node engine/dist/main.js build                 build + check the data
+//   node engine/dist/main.js build                 build + check the data (a passing build of the same inputs is
+//                                                  reused: build-cache.ts; BUILD_CACHE=off builds regardless)
+//   node engine/dist/main.js build-cache --self-test
+//                                                  the build's reuse of a passing build of the same inputs (build-cache.ts)
+//   node engine/dist/main.js step-cache --self-test
+//                                                  a check step's reuse of a passing run of the same reads (build-cache.ts;
+//                                                  step-cache-probe is its planted step)
+//   node engine/dist/main.js interview-paths --self-test
+//                                                  the build's interview path checks, on one thread and on workers
 //   node engine/dist/main.js render                render worksheets for review
 //   node engine/dist/main.js render --check        fail unless rendered/ is what the canonical data renders to
 //   node engine/dist/main.js eval --inputs F [--json]
@@ -36,10 +44,13 @@
 //   node engine/dist/main.js spouse-wording --report [--check]
 //                                                  reports/<year>/person_wording.md: each question asked of a person, as stored and as shown
 
+// First: the build cache records the build's reads from the first module that reads a file (build-cache.ts).
+import { buildCacheSelfTest, cachedBuild, stepCacheSelfTest, stepProbe } from "./build-cache.js";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { NY_MODE, yearPath } from "./year.js";
+import { NY_MODE, YEAR, yearPath } from "./year.js";
 import { readDefaultsFile, resolveCase, tableOf } from "./fixture-inputs.js";
 import { runBuild } from "./build.js";
+import { pathsSelfTest } from "./interview-check.js";
 import { renderAll } from "./render.js";
 import { loadCanonical } from "./canonical.js";
 import { allTargets, evaluate } from "./eval.js";
@@ -93,7 +104,7 @@ if (command === "review-stage5") {
   try { await serveChecks(); }
   catch (e) { console.error(`test-serve FAILED: ${e instanceof Error ? e.stack ?? e.message : String(e)}`); process.exit(1); }
 } else if (command === "build") {
-  const { errors, stats } = runBuild();
+  const { errors, stats } = await cachedBuild(yearPath("canonical"), YEAR, () => runBuild());
   for (const line of stats) console.log(line);
   if (errors.length > 0) {
     console.error(`\nBUILD FAILED with ${errors.length} error(s):`);
@@ -101,6 +112,17 @@ if (command === "review-stage5") {
     process.exit(1);
   }
   console.log("\nbuild OK");
+} else if (command === "build-cache") {
+  if (process.argv[3] !== "--self-test") { console.error("usage: build-cache --self-test"); process.exit(2); }
+  process.exit(await buildCacheSelfTest());
+} else if (command === "step-cache") {
+  if (process.argv[3] !== "--self-test") { console.error("usage: step-cache --self-test"); process.exit(2); }
+  process.exit(stepCacheSelfTest());
+} else if (command === "step-cache-probe") {
+  process.exit(await stepProbe(process.argv.slice(3)));
+} else if (command === "interview-paths") {
+  if (process.argv[3] !== "--self-test") { console.error("usage: interview-paths --self-test"); process.exit(2); }
+  process.exit(await pathsSelfTest());
 } else if (command === "render") {
   process.exit(renderAll(process.argv.slice(3)));
 } else if (command === "eval") {

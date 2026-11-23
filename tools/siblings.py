@@ -19,7 +19,9 @@ that has a Fix field to name its Fix lines and the generated Siblings checked se
 grandfather older entries. A pending entry is measured from the commit before the one that added
 its file on this line of history, or from HEAD while the file is uncommitted.
 The review-refresh half of T-150 (fail check-all when a sibling form's logs were not rerun)
-is `--reviews-since <rev>`: it reports sibling forms with no review log changed since <rev>.
+is `--reviews-since <rev>`: it reports sibling forms with no review log changed since <rev>. In `--check`, a changed
+transcription or render log refreshes a sibling form; a changed class M log refreshes the sibling lines the form's
+transcription review does not compare (helper lines, which only class M reviews).
 """
 import argparse
 import json
@@ -315,16 +317,28 @@ def missing_siblings(fix, siblings, checked):
     return siblings - fix - checked
 
 
-def review_logs_due(siblings, logged_forms, year_forms_changed, ids=None):
+def review_logs_due(siblings, logged_forms, year_forms_changed, ids=None, classm_forms=frozenset(),
+                    transcribed=lambda line: True):
     """The sibling forms whose review log is due but did not change since the entry's base. None is due
     when the change since the base touched no form of the year (it is written, for example, as next year's
     operations in changes/<year>/): no line subject a review judged has changed. A line's form is the document
-    that defines it (`ids`, from index()), which a line id's prefix need not name (tcw defines mfj.*)."""
+    that defines it (`ids`, from index()), which a line id's prefix need not name (tcw defines mfj.*). A form's
+    changed transcription or render log refreshes all its sibling lines; its changed class M log refreshes the
+    sibling lines its transcription review does not compare (`transcribed` is false: helper lines, whose only line
+    review is class M)."""
     if not year_forms_changed:
         return []
     def form(target):
         return ids[target][0]["id"] if ids and target in ids else target.split(".")[0]
-    return sorted({form(target) for target in siblings} - logged_forms)
+    return sorted({form(t) for t in siblings if form(t) not in logged_forms
+                   and not (form(t) in classm_forms and not transcribed(t))})
+
+
+def transcribed_lines(form):
+    """The line ids the transcription review of `form` compares as the form is now (transcribe.line_keys)."""
+    sys.path.insert(0, str(ROOT / "tools" / "transcription"))
+    import transcribe
+    return {i for _, i in transcribe.line_keys(transcribe.load_form(form))}
 
 
 def line_ids_at(rev):
@@ -334,10 +348,10 @@ def line_ids_at(rev):
     return {line.split("id: ", 1)[1] for line in out.splitlines() if "id: " in line}
 
 
-def changed_logs(base):
+def changed_logs(base, kinds=("transcription", "render")):
+    """The forms with a review log of one of `kinds` changed since `base` (working tree included)."""
     changed = subprocess.run(["git", "diff", "--name-only", base, "--",
-                              f"reviews/{Y}/transcription", f"reviews/{Y}/render",
-                              f"reviews/ny/{Y}/transcription", f"reviews/ny/{Y}/render"],
+                              *(f"reviews/{y}{k}" for k in kinds for y in (f"{Y}/", f"ny/{Y}/"))],
                              capture_output=True, text=True, check=False).stdout
     forms = set()
     for path in changed.splitlines():
@@ -394,6 +408,17 @@ def check(docs, ids):
     notes = []
     head_text = subprocess.run(["git", "show", "HEAD:BUG_INVENTORY.md"], capture_output=True, text=True, check=False).stdout
     logged = {}
+    classm_logged = {}
+    transcribed = {}
+
+    def is_transcribed(line):
+        form = ids[line][0]["id"] if line in ids else line.split(".")[0]
+        if form not in transcribed:
+            try:
+                transcribed[form] = transcribed_lines(form)
+            except Exception:  # a form the transcription tools cannot load: its class M log refreshes nothing
+                transcribed[form] = None
+        return transcribed[form] is None or line in transcribed[form]
     existed = {}
     year_forms_changed = {}
     for bug, number, title, fields in bug_entries():
@@ -436,7 +461,10 @@ def check(docs, ids):
             year_forms_changed[base] = bool(subprocess.run(
                 ["git", "diff", "--name-only", base, "--", f"forms/{Y}"],
                 capture_output=True, text=True, check=False).stdout.strip())
-        unrefreshed = review_logs_due(siblings, logged[base], year_forms_changed[base], ids)
+        if base not in classm_logged:
+            classm_logged[base] = current_docs(changed_logs(base, ("classm",)))
+        unrefreshed = review_logs_due(siblings, logged[base], year_forms_changed[base], ids, classm_logged[base],
+                                      is_transcribed)
         if unrefreshed:
             problems.append(f"{bug}: no review log changed since {base} for sibling form(s): "
                             f"{', '.join(unrefreshed)}")
@@ -488,6 +516,16 @@ def self_test(docs, ids):
     assert review_logs_due({"mfj.result", "hoh.result", "b.y"}, {"tcw"}, True, tcw) == ["b"], \
         "a line whose id prefix is not a form is due under the document that defines it"
     assert review_logs_due({"mfj.result"}, set(), True, tcw) == ["tcw"], "its document's log is the one due"
+    helper = lambda line: line != "b.helper"  # noqa: E731  (b.helper is reviewed by class M only)
+    assert review_logs_due({"a.x", "b.helper"}, {"a"}, True, None, {"b"}, helper) == [], \
+        "a changed class M log refreshes a sibling line only class M reviews"
+    assert review_logs_due({"a.x", "b.y"}, {"a"}, True, None, {"b"}, helper) == ["b"], \
+        "a changed class M log does not refresh a sibling line the transcription review compares"
+    assert review_logs_due({"b.helper", "b.y"}, set(), True, None, {"b"}, helper) == ["b"], \
+        "a form is due while any of its sibling lines is not refreshed"
+    assert review_logs_due({"b.helper"}, set(), True, None, set(), helper) == ["b"], "no changed log refreshes nothing"
+    assert "person.one" in transcribed_lines("person") and "person.bonus_all" not in transcribed_lines("person"), \
+        "person.bonus_all is a helper the transcription review does not compare"
     assert unknown_siblings({"a.x", "a.gone", "a.typo"}, {"a.x"}, {"a.x", "a.gone"}) == ({"a.gone"}, {"a.typo"}), \
         "a sibling line removed since a committed entry was written is reported, not failed; an unknown one fails"
     assert unknown_siblings({"a.gone"}, {"a.x"}, None) == (set(), {"a.gone"}), "a pending entry's unknown line fails"

@@ -13,8 +13,4 @@ answers:
   sb.nominee: false
   sb.bonds_any: false
   ftc.taxes: 0
-  person[taxpayer].sav_claimed: false
-  person[taxpayer].sav_student: false
-  person[taxpayer].sav_voluntary: 0
-  person[taxpayer].sav_able: false
-  person[taxpayer].w2[diner].box12_any: false
+  person[taxpayer].sav_claimed: true

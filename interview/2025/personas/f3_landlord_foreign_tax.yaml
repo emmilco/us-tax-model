@@ -1,0 +1,25 @@
+# Expected end (from the owner walk kit's walk): refused at f1116.rental once the foreign-tax questions show Form 1116 is
+#   needed (over $300, all passive, on statements, eligible); Form 1116 does not yet take gross rents into line 3e.
+name: f3_landlord_foreign_tax
+who: The landlord of persona 19 who also holds an international fund paying $400 of foreign tax on $8,000 of dividends.
+extends: 19_rental_house
+end: { refused: f1116.rental }
+answers:
+  div.any: true
+  sb.ordinary_dividends: 800000
+  f1040.line3a: 600000
+  qbi.dividends: 0
+  sd.distributions: 0
+  div.other_boxes: false
+  sd.f2439: false
+  sb.nominee: false
+  sb.bonds_any: false
+  s3.foreign_any: true
+  s3.section960c: false
+  s3.section965: false
+  s3.virgin_islands: false
+  ftc.carryover: false
+  ftc.taxes: 40000
+  ftc.all_passive: true
+  ftc.statements: true
+  ftc.eligible: true

@@ -1,21 +1,43 @@
-# 2026-11-17: handed to DeepSeek (opencode) until the IRS final 2026 forms; round F staged in `.claude/worktrees/fr2`
+# 2026-11-22 evening: release gating landed on `next`; integration wave in flight
 
-**FROZEN 2026-11-18.** Work paused for the owner's absence. Read `.claude/freeze-2026-11-18/FREEZE.md`
-(main checkout, next to the worktree) or `handoffs/FREEZE-2026-11-18.md` before touching anything: it names
-the exact tree state (439 files staged at `213058b3`, restore hash `6ff27dbb`), what is finished (per-form
-reviews green, three pending bugs), what is open (sampled reviews 9% adjudicated, round F uncommitted), the
-diagnosed cost cause (the screen subject hash change made 157 of 166 screens due at once), and the resume
-steps. The DeepSeek balance is empty.
+**State (2026-11-22).** `main` = `870cc146` (round F, pushed); last release `r2026.11.16.1`. `next` = `9a2b3e9c`: round F
+plus the release-gating change (next/main split, light commit tier, preflight, release-only full checks;
+`docs/2026-11-05_release_gating_design.md`, amendment of 2026-11-22; `CLAUDE.md`, "Commit guard and releases"). Work is
+committed on `next` or a lane branch, never on `main`; `main` moves only by `tools/release.sh`. A commit needs a green
+light-tier run (`tools/check_all.sh`); the full tier runs only at a release.
 
-**State:** `main` = `213058b3` (pushed); last release `r2026.11.16.1`. Round F (fix round) is complete and staged, not
-committed, in worktree `.claude/worktrees/fr2` (branch `fix-round-2`); its paid review round is half done. The owner
-(2026-11-17) handed orchestration and reviews to DeepSeek via opencode; Claude returns for the IRS finals push.
-**Read `handoffs/HANDOFF-DEEPSEEK-2026-11-17.md` first**: state, the review-family switch to decide first, the steps to
-finish round F, the queue, and the lessons.
+**Owner decision (2026-11-22).** Back on Ultra: heavy parallel work in worktrees, with agent autonomy. The usage-scarcity
+rule of 2026-11-16 has ended (`CLAUDE.md`). Reviews run on Claude (`claude-opus-5-5`; owner, 2026-11-21); DeepSeek is
+qualified and not callable (`tools/transcription/families.json`).
 
-# 2026-11-15/16: start here (fix round B1 and the coverage expansion on main; release r2026.11.15.1 started)
+**In flight, not on `next`** (check `git worktree list` and each branch before relying on this; none of it is released):
+- `integrate-1` (worktree int1): about 500 staged files: year rollover T-339 to T-346, the 2026 finals, fixes for
+  BUG-0998 to BUG-1113; BUG_INVENTORY.md highest entry there BUG-1118. [flight]
+- `integrate-2` (worktree int2): batch 1+2, staged on `next`; the queue of
+  `.claude/wave-2026-11-22/after-int-queue.md` waits for it. [flight]
+- `adversarial-fixes` (advfix): fixes of the adversarial scouts' medium findings and T-333 mediums (Form 8919 reason code G,
+  s2, s8812, retirement, person.yaml, scope.yaml); uncommitted. [flight]
+- `ny-schedule-e` (nyfix): NY IT-201 line 11 and depreciation decoupling; staged. [flight]
+- Lane branches off `next` (worktrees adlow, hh, left, rb, speed, wk1, wk2 ...): scout and fix lanes of the wave; each lane
+  claims its forms with `tools/claims.py`. Their reports are in `.claude/scouts-2026-11-22/` and are testimony: confirm each
+  finding against the archived source and the current YAML before fixing. [flight]
 
-This entry is the current state of the project. Earlier entries are historical and are in
+**Queued once integrate-2 is on `next`** (`.claude/wave-2026-11-22/after-int-queue.md`): the BUG-1094 closure (not a defect,
+p970 p. 11); guards for W2 and W4; nyfix and advfix onto `next`; the 2026 operations of
+`.claude/wave-2026-11-22/ty2026-ops-ready.md` (BUG-1031 AMT phase-out rate, BUG-1032 IRA rate labels, T-353 renaming of 67
+ids; blocked until other branches release their form claims); BUG-0993 fix; the tool bug in `samples.confirmed_bugs()`;
+the two pending nyfix defects (05 and 06).
+
+**Open owner-facing points:** T-312 (redraft choices), T-326 (2026 preparation choices), T-332 (owner walk) and T-333
+(judgment records) of the 2026-11-15 expansion areas. The IRS 2026 finals are still expected December 2026 to January 2027
+(T-011, T-322).
+
+Read first: `CLAUDE.md`, then `docs/2026-11-05_release_gating_design.md` (last section), `tools/README.md`, and the
+"What governs the work" table of the entry below. The State figures below are generated; do not hand-edit them.
+
+# 2026-11-15/16: fix round B1 and the coverage expansion (superseded by the entry above where they differ)
+
+This entry holds the "What governs the work" tables and the 2026-11-15/16 record; its state statements are dated. Earlier entries are historical and are in
 `handoffs/HANDOFF-NEXT-SESSION-ARCHIVE-2026-11.md`. Read this entry, then the documents in "What governs the work"
 below for the kind of work you are doing, then the top of `TASKS.md`.
 
@@ -26,7 +48,7 @@ below for the kind of work you are doing, then the top of `TASKS.md`.
 
 - **Last release:** `r2026.11.16.1` (2026-11-16), the newest release tag before this commit; `git describe --tags
   --match 'r*'` gives the commits after it (a file cannot name the commit that holds it).
-- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,118 entries (highest BUG-1118), 74 open, 4 of them covered by
+- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,128 entries (highest BUG-1128), 77 open, 4 of them covered by
   a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 73 rows not done; scoreboard 692 of 3,911 computed lines
   (17.7%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
   153 ambiguity entries, 149 linked to a line (`ambiguities/2025.yaml`).
@@ -42,8 +64,9 @@ below for the kind of work you are doing, then the top of `TASKS.md`.
   prepared, not adopted: the definition changes as operations in `changes/2026/` (checked on every check-all run),
   parameters and tables staged in `research/ty2026/`, plan in `docs/ty2026/ADOPTION.md`. The IRS finals are expected
   December 2026 to January 2027 (T-011, T-322).
-- **Reviews:** qualified families by tier (`families.json`, owner 2026-11-17): a form is satisfied by any qualified
-  family's current log, Claude's included while Claude is not called; DeepSeek is qualified and callable; GPT is advisory.
+- **Reviews:** qualified families by tier (owner 2026-11-17): a form is satisfied by any qualified
+  family's current log. Qualified families `claude` and `deepseek` (`tools/transcription/families.json`); only Claude is callable
+  (model `claude-opus-5-5`); GPT is advisory and not callable.
 
 ## Landed on 2026-11-15/16, and what is open
 
@@ -56,9 +79,7 @@ below for the kind of work you are doing, then the top of `TASKS.md`.
   two medium review findings; inmate pay refuses at `s1.line8_other` again; T-336). These areas pass the mechanical
   interview checks but have NOT had the owner's walk (T-332) or the written judgment record (T-333); until then they
   are not at the redraft's standard.
-- **Release `r2026.11.15.1`** was started unattended after the expansion commit (`tools/release.sh --push`). Check
-  `git tag -l 'r2026.11.15.*'` and `<git common dir>/check-all-bg/log`; if no tag exists, the release failed and the
-  log names the step.
+- **Release `r2026.11.15.1`** was never tagged; the last release is `r2026.11.16.1`.
 - **Open findings, by owner decision left open for this release:** the 42 medium findings of the release's sampled
   reviews (mostly questions narrower than their rule, so a filer answers No and an item is dropped, about 25 of
   them in the expansion's new areas; a smaller set of logic errors in the K-1 and rental areas). The owner sets the
@@ -66,7 +87,6 @@ below for the kind of work you are doing, then the top of `TASKS.md`.
 - **Interview walks of the new areas** (before/after, 2026-11-15): every typical filer of the seven areas now
   completes; the filer with none of them goes from 56 to 58 steps: digital assets (+1, by design) and
   `f1040.tax_exempt_interest` now a screen for every filer (+1, from lane g1-f7b, not justified by its note).
-- **Not on `main`:** the 2026 tool lanes R7 and R8 (fixture carry rules; worktree `.claude/worktrees/nx-r7`).
 - Owner decisions of 2026-11-15, recorded in this documentation commit: the coverage expansion protocol adopted as
   normative, with its stop rule (section 1.1) and married filing separately run in parallel with wave X1 (section
   8.9); a defect entry whose fix is only proposed says "Proposed fix:" (`tools/README.md`, bug inventory);
@@ -107,8 +127,5 @@ instructions, and check any claim in them against the tree before relying on it:
 
 ## Next
 
-The order of work is at the top of `TASKS.md`. Before the expansion's next area: the judgment records of the
-2026-11-15 lanes (T-333) and the owner's walk of their areas (T-332), since those areas are not yet at the redraft's
-standard. Owner decisions waiting: T-312 (redraft choices), T-326 (2026
-preparation choices), and the owner-facing points the expansion lanes
-raise (in their notes and the release's commit message).
+The order of work is at the top of `TASKS.md`. Open owner-facing points are listed in the entry above (T-312, T-326,
+T-332, T-333); the in-flight lanes are listed there too.

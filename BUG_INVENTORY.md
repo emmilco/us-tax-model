@@ -13260,3 +13260,99 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Proposed fix lines:** f1040.line4a
 - **Severity:** low
 - **Tags:** forms, f1040, retirement, render review, round F
+
+## BUG-1119 — Form 4562 asset question wording lows (BUG-0565 restated with its severity): listed property definition, unadjusted basis, whole-percent use, calendar-year quarters, and a 521 cooperative
+
+- **Caught by:** question review, asset.listed#1, asset.cost#1, asset.not179#1, asset.pct#1, asset.placed#1, asset.quarter#1, 2026-11-10 (BUG-0565); restated by lane rb, 2026-11-22, to record the severity BUG-0565 lacks (its title says low; the release gate reads only the Severity field).
+- **Symptom:** The six items of BUG-0565, each checked against the questions of the integrate-1 tree (2026-11-22) and still present: (1) asset.listed omits peripherals and the operator-owned establishment condition for pre-2018 computers (no 2025 depreciation remains on them), applies the exclusive-business-use exception to all entertainment property (only the line changes), and its camera example may be read as requiring entertainment use. (2) asset.cost does not say the basis is unadjusted for prior depreciation. (3) asset.not179 does not except a section 521 farmers' cooperative. (4) asset.pct takes a whole percent, so a fractional percentage rounds. (5) asset.placed and asset.quarter assume a calendar tax year. (6) asset.quarter does not restate that a converted asset is placed in service on the conversion date (asset.placed says it).
+- **Source:** i4562 p. 3 (listed property and exceptions), p. 2 (section 179 exclusions), pp. 11, 14 (columns (b), (c), (d)); p946 p. 41 (quarters of the tax year).
+- **Where:** forms/2025/asset.yaml and interview/2025/questions.yaml: asset.listed, asset.cost, asset.not179, asset.pct, asset.placed, asset.quarter.
+- **Proposed fix:** Reword at the next substantive change of these questions (lows wait for it, CLAUDE.md inference-cost rule).
+- **Severity:** low (wording; item 4 moves an amount by under one percent of the property's use, items 3 and 5 reach rare filers: a section 521 cooperative, a fiscal-year individual)
+- **Tags:** asset; f4562; question wording; low
+
+## BUG-1120 — Closure: BUG-0565 is superseded by BUG-1119, which records its severity (low)
+
+- **Closes:** BUG-0565
+- **Closure:** superseded
+- **Evidence:** BUG-0565 has no Severity field (its title ends '(low)'), and tools/transcription/samples.py severity() reads only that field, so the release gate (samples.open_defects) treats it as unrecorded and fails on the false-no ruling of gate:asset.claims_bonus#1, whose class names BUG-0565 ('fiscal year recorded (BUG-0565)'). The inventory is append-only, so the severity is recorded in a restatement, BUG-1119, Severity low; all six items were checked against the asset questions of the integrate-1 tree (2026-11-22) and stand, and are carried there unchanged.
+
+## BUG-1121 — Closure: BUG-1094 is not a defect: an ITIN applied for by the due date and then issued counts as issued by it
+
+- **Closes:** BUG-1094
+- **Closure:** not a defect
+- **Evidence:** p970 p. 11 (sources/2025/p970.cols.txt:360): "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return." person.itin_applied asks whether an ITIN was applied for by the due date (extensions included), so an ITIN applied for then and issued counts as issued by the due date for the American opportunity credit, for the filers and for the student; the i8863 p. 1 sentence BUG-1094 cites states the general rule this one completes.
+
+## BUG-1122 — New York estimated-tax parameters ny.est.min_due, ny.est.share and ny.est.high_agi are read by nothing
+
+- **Caught by:** the mutation scout of 2026-11-22 (claude-opus-5-5), .claude/scouts-2026-11-22/mutation-survivors.md, section 4; first noted in research/audits/ny/2025-phase3-review/b_transcription.md lines 105-116
+- **Symptom:** The three parameters (params/ny/2025.yaml, ny.est.*) are read by no form, engine or tool, yet the unread-parameter rule of the mutation report says each unread parameter serves a cross-check outside the computation (engine/src/mutate.ts). For eic.earned_amount0-3 and eic.maximum0-3 that is true (engine/src/conjecture.ts, tools/engines/compare.py); for these three it is not. ny_it201.gate.estimated_penalty refuses any balance due below the safe harbor without the $300 and 10% test of ny_it201i, Line 81 (a conservative over-refusal, defensible under the instruction's second bullet).
+- **Where:** params/ny/2025.yaml (ny.est.min_due, ny.est.share, ny.est.high_agi); engine/src/mutate.ts (unread-parameter reason text)
+- **Proposed fix:** Delete the three parameters, or keep them and make the rule's reason say 'unread, kept for documentation'. No tax effect either way.
+- **Severity:** low
+- **Tags:** ny, params, mutation, documentation
+
+## BUG-1123 — Seven choice alternatives are unreachable (dead code): s1a x4, f8889, k1s x2
+
+- **Caught by:** the mutation scout of 2026-11-22 (claude-opus-5-5), .claude/scouts-2026-11-22/mutation-survivors.md, section 4; reasons recorded in reports/2025/mutation.md (rule 'Unreachable alternative')
+- **Symptom:** Each of these choice alternatives has a guard that the helper's only readers make false, so no input reaches it: (1) s1a.line9_calc alternative 2 (mfs base), unreachable because s1a.part2 true excludes MFS; (2) s1a.ot_max alternative 2 (mfs), because s1a.part3 true excludes MFS; (3) s1a.line17_calc alternative 2 (mfs base), same part3 reason; (4) s1a.line32_calc alternative 2 (mfs senior base), because s1a.part5 true excludes MFS; (5) f8889.ask_spouse_family alternative 2, because every reader sits behind f8889.clear_if_uniform true, which falsifies that alternative's guard; (6) k1s.p5_b2_prior alternative 0, because readers sit behind k1s.tenth_if_active true; (7) k1s.p1_prior_passive alternative 1, because readers sit behind k1s.other_ask true (also consistent with k1s.former_passive refusing material participation with a prior-year loss). Dead code, not wrong code; no tax effect.
+- **Where:** forms/2025/s1a.yaml (line9_calc, ot_max, line17_calc, line32_calc); forms/2025/f8889.yaml (ask_spouse_family); forms/2025/k1s.yaml (p5_b2_prior, p1_prior_passive)
+- **Proposed fix:** Remove or fold each unreachable alternative (re-run npm run mutate on the form after, since removing them changes the survivor list). Not done here: s1a, f8889 and k1s may be claimed by other lanes.
+- **Severity:** low
+- **Tags:** forms, s1a, f8889, k1s, dead code, mutation
+
+## BUG-1124 — f2441.attrib_gate mutant survives: no fixture leaves the benefits answer open with line 31 at zero
+
+- **Caught by:** the mutation scout of 2026-11-22 (claude-opus-5-5), .claude/scouts-2026-11-22/mutation-survivors.md, section 2 (b)
+- **Symptom:** Mutant operand.f2441.f2441.attrib_gate.line31.all.3.gt.0 (reads line 3 instead of line 31) is equivalent only where f2441.benefits is answered. With benefits unanswered and $0 of care expenses, f2441.line31 is $0, f2441.attrib_gate is a known false and f2441.line5 is $30,000; under the mutant the gate and line 5's refusal list are unknown. Affects interview pending-state only, never tax on a complete return. The scout's fixture is drafted at /tmp/scout-mutants/fixtures/f2441_attrib_gate_benefits_withheld.json (joint, two W-2s $40,000 and $30,000, one child age 6, f2441.care true, dc_paid 0, benefits null; expects line31 $0, attrib_gate false). Not added by lane-wk1 because f2441 is claimed by bugfix-older.
+- **Where:** forms/2025/f2441.yaml (f2441.attrib_gate); fixtures/2025/f2441.json
+- **Proposed fix:** Add the drafted fixture to fixtures/2025/f2441.json once f2441 is free, after checking its predicted values against i2441.
+- **Severity:** low
+- **Tags:** fixtures, f2441, mutation
+
+## BUG-1125 — The dependent question's help tells a 19-year-old full-time student earning over $5,200 to answer No
+
+- **Caught by:** owner walk kit T-332 W5 (scout claude-opus-5-5, judgment; probe q5), from scout t333-judgment-records-2 F5; confirmed in lane lane-wk2 (claude-opus-5-5, judgment), 2026-11-22, against the bank help and i1040gi.
+- **Source:** i1040gi (2025) p. 17, Step 1, a qualifying child was "Under age 19 at the end of 2025" or "Under age 24 at the end of 2025, a full-time student" or "Any age and permanently and totally disabled"; p. 15, "The child had gross income of $5,200 or more" (the qualifying relative limit).
+- **Symptom:** The help of sa.dependent read "At 19 or older (24 if a full-time student): only if your income was under $5,200 or you were disabled". A student born in 2006 with $6,000 of wages reads "At 19 or older ... only if your income was under $5,200" and answers No, though her parents can claim her as a qualifying child; she then takes the full $15,750 standard deduction in place of $6,450 (probe q5). Nothing else guards the No: the birth year cannot settle it, since a 19-year-old may truly not be claimable.
+- **Where:** interview/2025/questions.yaml, sa.dependent (help).
+- **Fix:** Help: "Yes even if they did not. A parent usually can if you were under 19, or under 24 and a full-time student. Otherwise only if your income was under $5,200 or you were disabled. No if they need not file and file none, or only for a refund." The student case now leads and points to Yes. No value or refusal changes; no fixture. Not done: the record's proposed child question for filers aged 16 to 23 ("Did a parent list you as a dependent on their 2025 return, or could they?") needs a new input and the sa form, both claimed by branch bugfix-other (claims.py, inputs and sa); it remains a proposal.
+- **Fix lines:** `sa.dependent`
+- **Siblings checked:** `sa.standard_amount`, `person.sav_ineligible`, `eic.step4_dependent`, `f8962.dependent_filer`, `dependent.filer_not_dependent`, `f2441.care_other_or_claimable`, `ny_it201.item_c`, `ny_it201.item_c_if_not_federal`, `sa.dep_qss` (readers of the answer; the help changes no reading); no other bank help or refusal note uses the age wording (grep).
+- **Severity:** low
+- **Tags:** interview wording, help, dependent filer; fixed
+
+## BUG-1126 — The refusal for wages with no W-2 does not say what to do about the missing W-2, and names tips not on a W-2 as refused
+
+- **Caught by:** owner walk kit T-332 W9 (scout claude-opus-5-5, judgment; persona p3_refused_no_w2_employer); confirmed in lane lane-wk2 (claude-opus-5-5, judgment), 2026-11-22, by draft-walk of p3 (refused at scope.other_income on the pay_kinds screen) and against refusal_notes.yaml and scope.yaml.
+- **Source:** i1040gi (2025) p. 25, Missing or Incorrect Form W-2?, "Your employer is required to provide or send Form W-2 to you no later than February 2, 2026. If you don't receive it by early February, use Tax Topic 154 to find out what to do. Even if you don't get a Form W-2, you must still report your earnings."
+- **Symptom:** A Yes to scope.wages_no_form refuses through the generic scope.other_income gate, whose note says only "If it was right, this return needs tax software or a preparer", so the filer whose remedy is to get the W-2 and enter it is not told so. The note also named "wages or tips that are not on a W-2" among the refused cases, though unreported tips (scope.tips_unreported, Form 4137) are prepared and are not among the gates of scope.other_income.
+- **Where:** interview/2025/refusal_notes.yaml, scope.other_income.
+- **Fix:** The note now names "wages from an employer that sent no W-2" (not tips) and adds: "If it was wages with no W-2, ask the employer for the W-2 (it was due by February 2, 2026); once you have it, enter it with your other W-2s and change that Yes to No. If it does not come, IRS Tax Topic 154 says what to do." Ground added to the file's header. Presentation only: the refusal, its gate and its remedy are unchanged; coverage row pay.wages_no_form (interview/2025/coverage/pay_not_w2.yaml) still expects refused: scope.other_income. A refusal of its own for this question (its own gate, so its own note) would need scope.yaml, claimed by bugfix-other.
+- **Fix lines:** `scope.other_income`
+- **Siblings checked:** `scope.wages_no_form`, `scope.wages_no_form_if_pay`, `ira.reservist_repaid`, `person.sav_excess` (readers of the gate; the note changes no reading), and the other refusal notes (`scope.schedule1`, `scope.other_line16`); the gates of `scope.other_income` were listed to confirm tips are not among them.
+- **Severity:** low
+- **Tags:** interview wording, refusal note, pay not on a W-2; fixed
+
+## BUG-1127 — The special-sale list, about 145 words, is asked once per sale though any Yes refuses the whole return
+
+- **Caught by:** owner walk kit T-332 W7 (scout claude-opus-5-5, judgment; personas 17, 18, 30); confirmed in lane lane-wk2 (claude-opus-5-5, judgment), 2026-11-22, by draft-walk of persona 17 on next: sales[btc].special, sales[eth].special and sales[sol_swap].special each show the 8-item list, prompt 145 words and help 38 (164 words on integrate-1, whose first bullet is longer).
+- **Source:** i1040sd (2025) pp. 11–12, lines 18 and 19 (the 28% rate gain and unrecaptured section 1250 gain worksheets), the grounds of the refusal on sales.one; docs/2026-11-13_interview_construction_protocol.md N10, N12, 1.1 (a catch-all is not a chain) and 3.4.
+- **Symptom:** sales.special is a per-sale input, so a filer with n sales reads the whole list n times (persona 17: three times, 435 prompt words) to give the typical No. Every Yes refuses the return (sales.one, Schedule D special gains worksheets), so which sale it was changes nothing: the fact is one per return.
+- **Where:** forms/2025/sales.yaml sales.special; interview/2025/questions.yaml sales.special.
+- **Proposed fix:** Ask the list once per return, before or just after the sales list (a new per-return yes or no input, for example sd.special_any, in the sales topic), and keep sales.special as a derived per-sale line equal to it (technique 3.1), so the refusal on sales.one, its wording and every fixture are unchanged. Not made in lane-wk2: it adds an input id, and the inputs claim is held by branch bugfix-other; rewording alone (protocol section 2, item 1: restructure, do not reword) would save a few words per sale and would collide with integrate-1's change to the list's first bullet.
+- **Proposed fix lines:** `sales.special` (and a new per-return input)
+- **Severity:** low
+- **Tags:** interview length, per-entry question, Schedule D
+
+## BUG-1128 — Persona 27, a claimed dependent, answers No to whether she is claimed as a dependent
+
+- **Caught by:** owner walk kit T-332 W8 (scout claude-opus-5-5, judgment; persona 27, probe q9); confirmed in lane lane-wk2 (claude-opus-5-5, judgment), 2026-11-22, from the persona file and a draft-walk.
+- **Source:** f8880 (2025) p. 2, Who Can Take This Credit, "(b) is claimed as a dependent on someone else's 2025 tax return"; the persona's own story ("whom the parents claim as a dependent").
+- **Symptom:** interview/2025/personas/27_dependent_student_interest.yaml answered person[taxpayer].sav_claimed false (and sav_student false for a student), so its walk took the Saver's credit path a truthful filer never sees (four more questions). The result is the same. The repeat itself was judged and kept: sav_claimed is asked only after a Yes to sa.dependent (person.sav_ineligible tests sa.dependent first), and "can claim" (sa.dependent) and "does claim" (Form 8880, Form 8863, the student loan interest deduction) are different facts, which the question's help states; sa.dependent Yes does not settle it (N8).
+- **Where:** interview/2025/personas/27_dependent_student_interest.yaml.
+- **Fix:** The persona answers sav_claimed true; the answers no longer asked (sav_student, sav_voluntary, sav_able, w2[diner].box12_any) are removed. Draft-walk: completed, 135 questions on 65 screens, no problems. No form, value or refusal changes.
+- **Fix lines:** `person.sav_claimed`
+- **Siblings checked:** `person.sav_ineligible`, `f8863.claimed_count`, `sli.claimed_count` (readers; no form changed); persona 20_dependent_student (never asked sav_claimed on next; no Saver's credit answers to contradict) and persona 28 (refused before); no other persona answers sa.dependent true.
+- **Severity:** low
+- **Tags:** persona, test data, dependent filer; fixed

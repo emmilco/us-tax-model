@@ -1377,8 +1377,9 @@ bank:
     seq: 1
     prompt: Can a parent or anyone else claim you (or, on a joint return, your spouse) as a dependent on their 2025
       return?
-    help: 'Yes even if they did not. At 19 or older (24 if a full-time student): only if your income was under $5,200 or you
-      were disabled. No if they need not file and file none, or only for a refund.'
+    help: 'Yes even if they did not. A parent usually can if you were under 19, or under 24 and a full-time student.
+      Otherwise only if your income was under $5,200 or you were disabled. No if they need not file and file none, or only
+      for a refund.'
   - input: sa.spouse_extra
     order: 200
     seq: 87

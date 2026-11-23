@@ -29,6 +29,7 @@ answers:
   person[taxpayer].w2[utility_co].box6: 121800
   f5695.business_use: false
   f5695.construction_later: false
+  f5695.reconstruct_later: false
   f5695.joint_occupancy: false
   f5695.line1: 2150000
   f5695.line5a: false

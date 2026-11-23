@@ -2,6 +2,21 @@
 
 Historical; the current entry is the top of `HANDOFF-NEXT-SESSION.md`. Entries are newest first.
 
+# 2026-11-17: handed to DeepSeek (opencode) until the IRS final 2026 forms; round F staged in `.claude/worktrees/fr2`
+
+**FROZEN 2026-11-18.** Work paused for the owner's absence. Read `.claude/freeze-2026-11-18/FREEZE.md`
+(main checkout, next to the worktree) or `handoffs/FREEZE-2026-11-18.md` before touching anything: it names
+the exact tree state (439 files staged at `213058b3`, restore hash `6ff27dbb`), what is finished (per-form
+reviews green, three pending bugs), what is open (sampled reviews 9% adjudicated, round F uncommitted), the
+diagnosed cost cause (the screen subject hash change made 157 of 166 screens due at once), and the resume
+steps. The DeepSeek balance is empty.
+
+**State:** `main` = `213058b3` (pushed); last release `r2026.11.16.1`. Round F (fix round) is complete and staged, not
+committed, in worktree `.claude/worktrees/fr2` (branch `fix-round-2`); its paid review round is half done. The owner
+(2026-11-17) handed orchestration and reviews to DeepSeek via opencode; Claude returns for the IRS finals push.
+**Read `handoffs/HANDOFF-DEEPSEEK-2026-11-17.md` first**: state, the review-family switch to decide first, the steps to
+finish round F, the queue, and the lessons.
+
 # 2026-11-11/12: the interview redesign's first slice is built and on main; the owner's walk is next
 
 **State:** `main` is pushed through `abf7d60a` (the commit after it holds this entry). Nothing is running except the

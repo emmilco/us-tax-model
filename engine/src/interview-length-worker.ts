@@ -1,6 +1,8 @@
 // An interview-length worker: builds the context and the list of returns as the main thread does, sends the list's
 // digest, then measures each return it is sent by index (measureCase in interview-length.ts). The tax year comes from
 // the main thread, put on the command line before year.ts loads.
+// First: a traced step records this worker's reads too (build-cache.ts).
+import "./build-cache.js";
 import { workerData } from "node:worker_threads";
 import { serveTasks } from "./pool.js";
 

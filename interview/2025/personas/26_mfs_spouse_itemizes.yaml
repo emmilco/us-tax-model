@@ -11,6 +11,7 @@ answers:
   household.married_dec31: true
   household.community_property: false
   household.spouse_cp_domicile: false
+  household.cp_retirement: false
   person[taxpayer].birth_year: 1978
   $w2@person[taxpayer]: [plant]
   person[taxpayer].w2[plant].box1: 7000000
@@ -30,3 +31,4 @@ answers:
   sa.line11: 120000
   $gift: []
   sa.spouse_itemizes: true
+  sa.mfs_joint_paid: false

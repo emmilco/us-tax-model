@@ -1,6 +1,6 @@
 # Tasks
 
-**Order of work (2026-11-15).** The owner started coverage expansion on 2026-11-15, ahead of the earlier plan
+**Order of work (2026-11-22).** The owner started coverage expansion on 2026-11-15, ahead of the earlier plan
 to wait until the project stabilized: one area at a time, by `tools/coverage/estimate.py`'s ranking, while the next
 area adds about 0.5 points of filer coverage or more (`docs/2026-11-15_coverage_expansion_protocol.md`, normative by
 owner decision 2026-11-15). The consolidation program, T-256, finishes alongside it. The 2026 adoption waits for the IRS
@@ -8,7 +8,8 @@ finals (T-011). This register is authoritative for individual task status; `HAND
 current state.
 
 **Next:**
-1. What the release of 2026-11-15 leaves: its commit message and the current handoff entry.
+1. Integrate the 2026-11-22 wave (`HANDOFF-NEXT-SESSION.md`): integrate-1, integrate-2, advfix, nyfix, then the queue of
+   `.claude/wave-2026-11-22/after-int-queue.md`.
 2. The 2026-11-15 expansion areas brought to the redraft's standard: their judgment records (T-333), then the
    owner's walk (T-332). They pass the mechanical interview checks only.
 3. The next expansion area: rerun `tools/coverage/estimate.py` (its report dates from 2026-11-01), then take the

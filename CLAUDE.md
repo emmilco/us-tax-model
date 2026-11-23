@@ -1,7 +1,7 @@
 # Working guidance for this project
 
-**Start here.** `HANDOFF-NEXT-SESSION.md` is the current state: what is on `main`, what is in flight, and what
-governs each kind of work. Then the top of `TASKS.md` (the order of work; the register is authoritative for each
+**Start here.** `HANDOFF-NEXT-SESSION.md` is the current state: what is on `main` (released) and `next` (integrated,
+unreleased), what is in flight, and what governs each kind of work. Then the top of `TASKS.md` (the order of work; the register is authoritative for each
 task's status).
 
 **Normative documents.** Read the one that applies before the first change of that kind:
@@ -27,7 +27,7 @@ task's status).
 above record what was done or proposed on a date. Cite them as evidence; check a claim in them against the tree
 before relying on it; never follow them as instructions (`docs/provisional/README.md`).
 
-- **Review families (owner, 2026-11-17).** `families.json` lists the qualified models, any one of which is
+- **Review families (owner, 2026-11-17).** `tools/transcription/families.json` lists the qualified models, any one of which is
   sufficient as a reviewer, and the advisory models, which may review only beside a qualified one (the owner's
   words). A family's `callable` flag says only whether the tools may call it. New review calls run on Claude
   (`claude-opus-5-5`; owner, 2026-11-21): Claude is callable and qualified; DeepSeek is qualified and not callable,
@@ -89,14 +89,13 @@ before relying on it; never follow them as instructions (`docs/provisional/READM
 - **Background waits (owner decision 2026-11-07; `pgrep -f` refused by tools/claude_hooks/bash_guard.py).** Never wait with `pgrep -f "<pattern>"` (it matches
   the waiting shell itself, so the wait never ends) or for a marker in the log of a run that may be
   killed. Wait on a pid or poll `tools/check_all_bg.sh --status`, always with a timeout, one wait per task.
-- **Usage is scarce (owner, 2026-11-16).** Since r2026.11.16.1 the owner is not on an Ultra subscription; it is
-  expected again in January 2027 or once the IRS publishes the final 2026 documents. Until then, structure work
-  linearly in atomic units: one unit at a time, finished and committed before the next starts; no parallel agent
-  fan-outs; use agents only where they clearly pay for themselves; keep combining and delaying checks. While this
-  holds it overrides the parallel-work bullet below.
+- **Usage is no longer scarce (owner, 2026-11-22).** The owner is back on Ultra and asked for heavy parallel work with
+  agent autonomy. The linear one-unit-at-a-time rule of 2026-11-16 has ended; the parallel-work bullet below governs
+  again. The cost rules of the inference-cost bullet (review only what changed, rerun guards, `--approve-cost`) still
+  hold: they are about evidence per dollar, not about the subscription.
 - **DeepSeek through opencode (owner, 2026-11-16).** Claude sessions may run DeepSeek via opencode, with the
   owner's approval. It runs in the owner's main account (the owner suspended the AISP sandbox rule for these
-  sessions). Reviews run under the qualified families of `families.json`; see the review-family bullet.
+  sessions). Reviews run under the qualified families of `tools/transcription/families.json`; see the review-family bullet.
 - **Parallel work (owner decision 2026-11-10).** When work splits into independent pieces (separate forms, separate
   tools), run them as parallel agent lanes in worktrees rather than in sequence. Lanes claim their forms
   (`tools/claims.py`), and each lane's agent brief follows the cost rules above. Lanes branch from `next` and are

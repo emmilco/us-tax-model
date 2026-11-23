@@ -1,0 +1,17 @@
+# Expected end (from the owner walk kit's walk): Form 1040 line 1g $8,000; Form 8919 line 13 and Schedule 2 line 6 $612
+#   (7.65% of $8,000; W-2 box 3 plus $8,000 under the wage base); taxable income $44,250; total tax $5,687; owed $487.
+name: p2_misclassified_worker
+who: A single person, 31, with one W-2 job ($52,000) who also worked evenings for a warehouse firm that paid $8,000 on a Form 1099-NEC though it set her hours and supervised her.
+extends: 01_single_w2
+end: complete
+answers:
+  scope.pay_no_w2: true
+  scope.household_pay: false
+  scope.contractor_pay: true
+  scope.tips_unreported: false
+  scope.strike_pay: false
+  scope.wages_no_form: false
+  $f8919firm@person[taxpayer]: [warehouse]
+  person[taxpayer].f8919firm[warehouse].wages: 800000
+  person[taxpayer].w2[acme].box3: 5200000
+  person[taxpayer].w2[acme].box7: 0

@@ -1,0 +1,13 @@
+# Expected end (from the owner walk kit's walk): refused on the pay_kinds screen at scope.other_income, the refusal for
+#   wages from an employer with no W-2.
+name: p3_refused_no_w2_employer
+who: A single person, 31, with one W-2 job ($52,000) whose second employer paid her $3,000 of wages by payroll and never sent a W-2.
+extends: 01_single_w2
+end: { refused: scope.other_income }
+answers:
+  scope.pay_no_w2: true
+  scope.household_pay: false
+  scope.contractor_pay: false
+  scope.tips_unreported: false
+  scope.strike_pay: false
+  scope.wages_no_form: true

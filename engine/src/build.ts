@@ -12,7 +12,8 @@ import type { ValidateFunction } from "ajv";
 import { isMarkedLine, stableStringify } from "./util.js";
 import { blockPlaces, entrySyntax, recordProblems, type InterviewData, type RosterChoice, type TickGroup } from "./interview.js";
 import { opensMap, tickGroupProblems } from "./tick-groups.js";
-import { checkInterviewPaths } from "./interview-check.js";
+import { checkInterviewPathsOn } from "./interview-check.js";
+import { walkWorkers } from "./pool.js";
 import { checkedCases, consistencyProblems, defaultsProblems, loadFixtureCases, walkedCases, yearDefaultsFiles } from "./fixture-inputs.js";
 import { runChecks } from "./check.js";
 import { isStructured, parseStructured, textSummary } from "./text.js";
@@ -69,7 +70,9 @@ export function dropNyConflicts(conflicts: Record<string, string>, nyPresent: bo
   return skipped;
 }
 
-export function runBuild(): { data: CanonicalData | null; errors: string[]; stats: string[] } {
+// The interview path checks run on BUILD_WORKERS worker threads (default defaultWorkers() of pool.ts); the result is the
+// same for every count, and BUILD_WORKERS=1 checks them in the calling thread.
+export async function runBuild(workers = walkWorkers("BUILD_WORKERS")): Promise<{ data: CanonicalData | null; errors: string[]; stats: string[] }> {
   const errors: string[] = [];
   const stats: string[] = [];
 
@@ -535,13 +538,13 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   // No case takes a default that its other answers contradict, by the rules the defaults files declare.
   if (errors.length === 0) errors.push(...consistencyProblems(data, yearDefaultsFiles(), checkedCases()));
   if (!existsSync(yearPath("fixtures"))) stats.push(`interview path checks skipped: no fixtures/${YEAR}/ yet`);
-  else if (errors.length === 0) errors.push(...checkInterviewPaths(data, fullInterview, walkedCases("full", data)));
+  else if (errors.length === 0) errors.push(...await checkInterviewPathsOn(data, fullInterview, walkedCases("full", data), 200, workers));
   // The New York profile walks the New York fixtures' paths (fixtures/ny/<year>/), once they exist.
   if (nyInterview && errors.length === 0 && existsSync(nyPath("fixtures"))) {
     // As federally (stages 3 to 5 only), the walk covers the hand-authored stage fixtures: class M cases keep only the
     // answers their route reads, and mutation cases exist to kill mutants, so neither is an interview path.
     const ny = loadFixtureCases("ny", data).filter((c) => !c.file.startsWith("classm") && c.file !== "mutation.json");
-    errors.push(...checkInterviewPaths(data, nyInterview, ny, 600).map((e) => `New York interview: ${e}`));
+    errors.push(...(await checkInterviewPathsOn(data, nyInterview, ny, 600, workers)).map((e) => `New York interview: ${e}`));
   }
   stats.push("interview: fixture paths checked for reachability, termination and answer-order invariance (not exhaustive)");
 

@@ -282,21 +282,43 @@ repository with stub tools.
 A run for a year other than the default passes or fails as usual but writes no
 marker.
 
-At most `CHECK_ALL_MAX_RUNS` (default 2) check-all runs execute at once on the machine, in
+At most `CHECK_ALL_MAX_RUNS` check-all runs execute at once on the machine, in
 any worktree, foreground (`tools/check_all.sh`) or background (`tools/check_all_bg.sh`), of
-any tier; further runs print that they are waiting, and on which runs, and start in arrival
+any tier. Unset, two runs always may, and a further run (up to as many as the cores and memory hold
+at a light run's measured demand, `RUN_CORES` and `RUN_MEM` in `tools/check_slot.py`) starts only
+while the one-minute load average and the memory available leave room for it. Further runs print
+that they are waiting, on which runs and, beyond the two, why there is no room, and start in arrival
 order as slots free (`tools/check_slot.py`, with `--status` to list the holders and waiters).
 A slot is an `flock` on a file in `.git/check-all-slots/` (the clone's common git dir),
 held by the run and its children and released when the last of them exits, however it ends,
 so a killed run leaves no stale slot; a waiter's place is a ticket named by arrival time and
 pid, dropped when its pid is dead. A background run waits for its slot before it checks out
-its snapshot. The worker pools size themselves to the limit: by default the smaller of
+its snapshot. The worker pools size themselves to the limit (unset: to the runs holding slots
+when the run started, at least two): by default the smaller of
 the core count less six and `floor((cores - 2) / CHECK_ALL_MAX_RUNS)`
 (`defaultWorkers()` in `engine/src/pool.ts`, used by the test commands, interview-rules,
 mutate, interview-length and interview-coverage); `TEST_WORKERS`, `MUTATE_WORKERS` and
 `INTERVIEW_WORKERS` still override. `check_slot.py --self-test`
 and `hooks/test_check_bg.sh` (per-run records, pruning, a background run waiting for a
 slot) are check-all steps.
+
+The build (`node engine/dist/main.js build`) walks the fixtures' interview paths on `BUILD_WORKERS` worker threads
+(default `defaultWorkers()`; the errors are the same for every count, `interview-paths --self-test`), and reuses a
+passing build whose every read is unchanged (`engine/src/build-cache.ts`): the build records what it reads (file bytes,
+directory listings, existence), its code (engine/dist, node_modules) and its environment, and a later build in the same
+worktree whose reads all give what they gave then prints that build's output and leaves its `canonical/<year>/`
+instead of building again, so the preflight's build and the step's are one. `BUILD_CACHE=off` always builds;
+`BUILD_CACHE=verify` (the default with `ENGINE_CACHE=verify`, as a release runs) always builds and fails when a stored
+build of the same reads gave other output. `build-cache --self-test` is a check-all self-test.
+The check steps that are engine commands and write nothing (`STEP_COMMANDS` in `engine/src/build-cache.ts`:
+interview-coverage, tick-groups, spouse-wording, check-self-test, interview-rules) are reused the same way: a run is
+traced with its worker threads and node child processes (they load the tracer through `NODE_OPTIONS=--import`), and a
+passing run that read nothing untraceably (a python or shell child, `fs.promises`, a module outside the hashed code) and
+wrote only in its own temporary folders is stored with its output; a later run of the same command line, code and
+environment whose every read is unchanged prints that output and a `step cache:` line instead of running. The
+preflight's `interview-coverage --write` stands for the step's `interview-coverage` (`WRITE_CHECK`). test-fixtures
+starts python and is never reused. `BUILD_CACHE` governs the steps as the build (`verify` runs every step and says so
+when one fails where a passing run of the same reads was stored); `step-cache --self-test` is a check-all self-test.
 
 After compiling and building, the steps run in three waves of side-by-side steps
 (see the head of `tools/check_all_steps.sh`); a step that reads what another writes runs
@@ -978,7 +1000,7 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   commit that changes a form another branch holds, or adds an input id while another branch holds `inputs`; a commit on
   a lane's branch claims what it changes, and `tools/hooks/post-commit` releases a branch's claims when it is merged.
   `tools/claims.py claim <form> --reason TEXT` claims before work starts; `list` shows the claims.
-- **Twin lines** (`tools/check_twins.py`, check-all step `twins`, fast and full tiers): Form 8863 Part III is stated twice
+- **Twin lines** (`tools/check_twins.py`, check-all step `twins`, full tier: a release runs it, a commit does not): Form 8863 Part III is stated twice
   in the form data, for a person on the return (`person.edu*` in `person.yaml`) and for a dependent (`dependent.edu*` in
   `dependent.yaml`), because no line can range over both collections. The check pairs the two blocks by local id and
   compares each pair field by field (the form line: printed marker, label, type, `shown_when`, the whole expression with

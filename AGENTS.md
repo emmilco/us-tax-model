@@ -1,6 +1,5 @@
-# Agents working on this project (opencode / DeepSeek)
+# Agents working on this project
 
-Start by reading `handoffs/HANDOFF-DEEPSEEK-2026-11-17.md` in this worktree, whole, before acting. It records the
-owner's decision of 2026-11-17 (DeepSeek orchestrates and reviews until the IRS final 2026 forms are published), the
-exact state, the next steps and the rules. Then read `CLAUDE.md` (project working guidance; the handoff says which
-bullet it supersedes).
+Start from `HANDOFF-NEXT-SESSION.md` and `CLAUDE.md`. Reviews and orchestration run on Claude since 2026-11-21/22
+(`tools/transcription/families.json`: Claude is callable; DeepSeek is qualified and not callable). The DeepSeek handoff,
+`handoffs/HANDOFF-DEEPSEEK-2026-11-17.md`, is a record, not instructions.

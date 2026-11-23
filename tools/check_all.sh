@@ -13,8 +13,9 @@
 # green: a commit must have passed on the default year. It refuses to run when a
 # git-ignored raw review file the review logs reference is missing
 # (tools/worktree_data.py check; a linked worktree has none until cloned in). At most
-# CHECK_ALL_MAX_RUNS (default 2) runs, in any worktree and either script, execute at once; the
-# others wait their turn (tools/check_slot.py). A green full run made in release mode
+# CHECK_ALL_MAX_RUNS runs, in any worktree and either script, execute at once (unset: two, and more
+# while the machine's measured load and memory leave room for one); the others wait their turn
+# (tools/check_slot.py). A green full run made in release mode
 # (CHECK_ALL_RELEASE=1 with ENGINE_CACHE=verify) in the snapshot worktree of tools/check_all_bg.sh, where
 # nothing else writes during the run, also adds its tree to the release list, which lets tools/release.sh tag
 # that tree without running the suite again. Start such a run with

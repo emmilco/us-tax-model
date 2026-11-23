@@ -13,6 +13,9 @@
 #                         p. 23, Community Property States, "For details, see Form 8958 and Pub. 555"
 #   household.hoh_fails   p. 14, Head of Household
 #   household.qss_fails   p. 15, Qualifying Surviving Spouse
+#   scope.other_income    p. 25, Missing or Incorrect Form W-2?, "Your employer is required to provide or send Form W-2 to
+#                         you no later than February 2, 2026. If you don't receive it by early February, use Tax Topic 154
+#                         to find out what to do"
 tax_year: 2025
 notes:
   household.mfs_community_property: >-
@@ -36,9 +39,11 @@ notes:
     software or a preparer that handles it.
   scope.other_income: >-
     This tool cannot prepare a return with what you just answered Yes to. The most common cases are a person who was a
-    nonresident alien for part of 2025 (that return is Form 1040-NR, or a dual-status return), wages or tips that are
-    not on a W-2, and a chapter 11 bankruptcy case. If that Yes was a mistake, go back and change it. If it was right,
-    this return needs tax software or a preparer that handles it.
+    nonresident alien for part of 2025 (that return is Form 1040-NR, or a dual-status return), wages from an employer
+    that sent no W-2, and a chapter 11 bankruptcy case. If that Yes was a mistake, go back and change it. If it was
+    wages with no W-2, ask the employer for the W-2 (it was due by February 2, 2026); once you have it, enter it with
+    your other W-2s and change that Yes to No. If it does not come, IRS Tax Topic 154 says what to do. Otherwise this
+    return needs tax software or a preparer that handles it.
   scope.other_line16: >-
     This tool cannot prepare a return with what you just answered Yes to: a tax figured on a form of its own, such as
     the tax on a child's investment income (Form 8615 or Form 8814) or on shares of a foreign fund or company. If that

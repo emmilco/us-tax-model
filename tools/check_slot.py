@@ -4,15 +4,22 @@
     tools/check_slot.py [--tier T] [--tree TREE] -- COMMAND [ARGS...]
 
 waits for a free slot, then replaces itself with COMMAND, which runs holding the slot.
-At most CHECK_ALL_MAX_RUNS (default 2) commands hold slots at once, across every worktree
-of the clone (the slot files live in the repository's common git dir, check-all-slots/),
-and waiting runs start in arrival order. The slot is an flock on a slot file, inherited
+Across every worktree of the clone (the slot files live in the repository's common git dir,
+check-all-slots/), waiting runs start in arrival order, and at once hold slots:
+
+- with CHECK_ALL_MAX_RUNS set, at most that many runs;
+- without it, FLOOR (2) runs always, and up to cap() runs while the machine has room for one
+  more: a run beyond the floor starts only while the one-minute load average is at most the core
+  count less RUN_CORES, and the memory available (free, inactive and speculative pages) is at
+  least RUN_MEM. The constants are a light run's measured demand. The slot is an flock on a slot file, inherited
 by the command and its children: it is released when the last of them exits, whether
 they finish, fail, are interrupted or are killed, so no stale slot outlives its run. A
 waiter's place is a ticket file named by arrival time and pid; tickets of dead pids are
 dropped, so a run killed while waiting leaves no place held. The command gets
 CHECK_ALL_MAX_RUNS and CHECK_ALL_SLOT (the slot file) in its environment; the worker
-pools of engine/src/pool.ts size themselves from the first.
+pools of engine/src/pool.ts size themselves from the first, which is the limit when one is
+set, else the number of runs holding slots when this one started (at least FLOOR). The
+slots decide only when a run starts, never what it checks.
 
     tools/check_slot.py --status       who holds the slots, who waits
     tools/check_slot.py --self-test
@@ -20,14 +27,77 @@ pools of engine/src/pool.ts size themselves from the first.
 import fcntl, json, os, shutil, signal, subprocess, sys, tempfile, time
 
 POLL = 0.2
+FLOOR = 2
+# A light check-all run's demand, measured on this machine (18 cores, 64 GB, pools sized for two runs): the cores it
+# keeps busy on average (its CPU time over its wall time, 5.0) and the memory its processes hold at their peak (5.0 GB),
+# with a margin.
+RUN_CORES = 5
+RUN_MEM = 6 << 30
 
 
-def max_runs():
+def fixed_runs():
+    """CHECK_ALL_MAX_RUNS when it is set to a positive whole number, else None."""
     try:
         n = int(os.environ.get("CHECK_ALL_MAX_RUNS", ""))
     except ValueError:
-        return 2
-    return n if n > 0 else 2
+        return None
+    return n if n > 0 else None
+
+
+def total_memory():
+    try:
+        return int(subprocess.run(["sysctl", "-n", "hw.memsize"], capture_output=True, text=True, check=True).stdout)
+    except (OSError, ValueError, subprocess.CalledProcessError):
+        return os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_PHYS_PAGES")
+
+
+def cap():
+    """The most runs at once without a set limit: as many as the cores and the memory hold, at least FLOOR."""
+    cores = os.cpu_count() or 2
+    return max(FLOOR, min(cores // RUN_CORES, total_memory() // RUN_MEM))
+
+
+def max_runs():
+    return fixed_runs() or cap()
+
+
+def available_memory():
+    """Bytes of memory available now: free, inactive and speculative pages (vm_stat), or MemAvailable on Linux."""
+    try:
+        out = subprocess.run(["vm_stat"], capture_output=True, text=True, check=True).stdout
+        page = int(out.split("page size of ")[1].split(" ")[0])
+        pages = {k.strip(): int(v.strip().rstrip(".")) for k, v in (l.split(":", 1) for l in out.splitlines()[1:] if ":" in l)
+                 if v.strip().rstrip(".").isdigit()}
+        return page * sum(pages.get(k, 0) for k in ("Pages free", "Pages inactive", "Pages speculative"))
+    except (OSError, IndexError, ValueError, subprocess.CalledProcessError):
+        try:
+            for line in open("/proc/meminfo"):
+                if line.startswith("MemAvailable:"):
+                    return int(line.split()[1]) * 1024
+        except OSError:
+            pass
+    return 0
+
+
+def measure():
+    """(one-minute load average, bytes available). A file named by CHECK_ALL_SLOT_MEASURE, holding "<load> <bytes>",
+    stands in for the machine (the self-test)."""
+    planted = os.environ.get("CHECK_ALL_SLOT_MEASURE")
+    if planted:
+        load, mem = open(planted).read().split()
+        return float(load), int(mem)
+    return os.getloadavg()[0], available_memory()
+
+
+def room():
+    """Whether the machine has room for one more run beyond the floor, and why not."""
+    load, mem = measure()
+    cores = os.cpu_count() or 2
+    if load > cores - RUN_CORES:
+        return False, f"load {load:.1f} on {cores} cores"
+    if mem < RUN_MEM:
+        return False, f"{mem / (1 << 30):.1f} GB available"
+    return True, ""
 
 
 def slot_dir():
@@ -105,8 +175,15 @@ def describe(h):
     return ", ".join(bits)
 
 
-def try_slot(d, n, info):
+def try_slot(d, n, info, floor=None):
+    """Take a free slot of the first n; one at or beyond `floor` only while the machine has room (room())."""
+    measured = None
     for i in range(n):
+        if floor is not None and i >= floor:
+            if measured is None:
+                measured = room()[0]
+            if not measured:
+                return None
         fd = os.open(os.path.join(d, f"slot-{i}"), os.O_RDWR | os.O_CREAT, 0o644)
         try:
             fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -119,7 +196,7 @@ def try_slot(d, n, info):
     return None
 
 
-def acquire(d, n, info, say):
+def acquire(d, n, info, say, floor=None):
     """Wait at the back of the queue; only the head tries the slots, so runs start in arrival order."""
     name = f"{time.time_ns():020d}-{os.getpid()}"
     ticket = os.path.join(d, "queue", name)
@@ -129,16 +206,18 @@ def acquire(d, n, info, say):
         while True:
             queue = tickets(d)
             if queue and queue[0][0] == name:
-                got = try_slot(d, n, info)
+                got = try_slot(d, n, info, floor)
                 if got:
                     return got
             ahead = sum(1 for nm, _ in queue if nm < name)
             held = holders(d, n)
-            state = (tuple(h["slot"] for h in held), ahead)
+            limit = f"at most {n} runs at once" if floor is None else f"{floor} runs at once, up to {n} while the machine has room"
+            why = room()[1] if floor is not None and len(held) >= floor else ""
+            state = (tuple(h["slot"] for h in held), ahead, bool(why))
             if state != last:
                 last = state
                 who = "; ".join(describe(h) for h in held) or "none"
-                say(f"check-all: waiting for a slot (at most {n} runs at once; {ahead} ahead of this one); running: {who}")
+                say(f"check-all: waiting for a slot ({limit}{'; no room: ' + why if why else ''}; {ahead} ahead of this one); running: {who}")
             time.sleep(POLL)
     finally:
         try:
@@ -150,7 +229,11 @@ def acquire(d, n, info, say):
 def status():
     d, n = slot_dir(), max_runs()
     hs = holders(d, n)
-    print(f"{len(hs)} of {n} check-all slots held")
+    if fixed_runs():
+        print(f"{len(hs)} of {n} check-all slots held")
+    else:
+        ok, why = room()
+        print(f"{len(hs)} check-all slots held ({FLOOR} always, up to {n} while the machine has room: {'room now' if ok else 'no room, ' + why})")
     for h in hs:
         print("  running: " + describe(h))
     for _, pid in tickets(d):
@@ -171,13 +254,14 @@ def run(argv):
     cmd = argv[1:]
     if not cmd:
         sys.exit("check_slot: no command")
-    d, n = slot_dir(), max_runs()
+    d, n, fixed = slot_dir(), max_runs(), fixed_runs()
     info = {"pid": os.getpid(), "tier": tier, "tree": tree, "worktree": os.getcwd(), "started": time.strftime("%Y-%m-%d %H:%M:%S")}
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(143))  # runs the ticket cleanup
-    fd, path = acquire(d, n, info, lambda m: print(m, file=sys.stderr, flush=True))
+    fd, path = acquire(d, n, info, lambda m: print(m, file=sys.stderr, flush=True), None if fixed else min(FLOOR, n))
     signal.signal(signal.SIGTERM, signal.SIG_DFL)
     os.set_inheritable(fd, True)
-    os.environ["CHECK_ALL_MAX_RUNS"] = str(n)
+    # The pools share the cores among the runs that may hold slots now: the set limit, or the runs holding slots.
+    os.environ["CHECK_ALL_MAX_RUNS"] = str(fixed or max(FLOOR, len(holders(d, n))))
     os.environ["CHECK_ALL_SLOT"] = path
     os.execvp(cmd[0], cmd)
 
@@ -197,7 +281,8 @@ def self_test():
 
     def start(name):
         """A run that touches started-NAME, then waits for release-NAME."""
-        script = (f"import os,time;open({tmp!r}+'/started-{name}','w').close()\n"
+        script = (f"import os,time;open({tmp!r}+'/runs-{name}','w').write(os.environ['CHECK_ALL_MAX_RUNS']);"
+                  f"open({tmp!r}+'/started-{name}','w').close()\n"
                   f"while not os.path.exists({tmp!r}+'/release-{name}'): time.sleep(0.05)")
         p = subprocess.Popen([sys.executable, me, "--", sys.executable, "-c", script], env=env, stderr=subprocess.DEVNULL)
         procs.append(p)
@@ -281,8 +366,41 @@ def self_test():
     until(lambda: started("h"), "run h did not start after g")
     release("h")
     h.wait(timeout=20)
+    # Without a set limit: FLOOR runs always; one more only while the planted load and memory leave room for it, with
+    # the pools sized to the runs holding slots.
+    measured = ""
+    if cap() >= FLOOR + 1:
+        del env["CHECK_ALL_MAX_RUNS"]
+        os.environ.pop("CHECK_ALL_MAX_RUNS", None)
+        plant = os.path.join(tmp, "measure")
+        env["CHECK_ALL_SLOT_MEASURE"] = plant
+        cores = os.cpu_count() or 2
+        with open(plant, "w") as f:
+            f.write(f"{cores} {RUN_MEM * 4}")
+        start("i")
+        start("j")
+        until(lambda: started("i") and started("j"), f"the first {FLOOR} runs did not start without a set limit")
+        start("k")
+        stays_false(lambda: started("k"), "a run beyond the floor started with the load at the core count")
+        with open(plant, "w") as f:
+            f.write(f"0.5 {RUN_MEM * 4}")
+        until(lambda: started("k"), "a run beyond the floor did not start with room for it")
+        runs_k = open(f"{tmp}/runs-k").read()
+        if runs_k != str(FLOOR + 1):
+            fail(f"the run beyond the floor sized its pools to {runs_k} runs, not {FLOOR + 1}")
+        with open(plant, "w") as f:
+            f.write(f"0.5 {RUN_MEM // 2}")
+        start("l")
+        stays_false(lambda: started("l"), "a run beyond the floor started with too little memory available")
+        release("i")
+        until(lambda: started("l"), "a run did not start in a slot of the floor")
+        for x in ("j", "k", "l"):
+            release(x)
+        for p in procs:
+            p.wait(timeout=20)
+        measured = f"; beyond the floor of {FLOOR}, a run starts only with room for it"
     shutil.rmtree(tmp, ignore_errors=True)
-    print("check_slot self-test: ok")
+    print(f"check_slot self-test: ok{measured}")
 
 
 if __name__ == "__main__":

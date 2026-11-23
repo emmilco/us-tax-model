@@ -22,6 +22,7 @@ Current guidance is in the normative documents named in `CLAUDE.md` and in the c
 | `landing`, `land3-*` | Landing the redraft on `main`: integration, review round adjudication (`land3-adj*`), consumers, holes, docs, tasks | 2026-11-14 |
 | `ty26-*` | Tax year 2026 preparation: the plan (`ty26-plan`), operations (`o*`), parameters (`p*`), tools (`r*`), sources (`s1`), wording (`w1`) | 2026-11-14 to 15 |
 | `nx-*`, `sweep-*` | Next-session tooling and documentation: the interview walk speed-up, the coverage expansion protocol draft, the documentation and task-register sweeps | 2026-11-15 |
+| `t333-judgment-1`, `t333-judgment-2` | The T-333 judgment records (parent questions of the x1, x2 and mfs lanes: cost, share, who answers wrongly), citations rechecked against `next` | 2026-11-22 |
 
 Later lanes add their notes here under the same rule. The briefs those lanes were given, the scouts' designs and the
 coordinator's notes of the 2026-11-15 round are in `docs/records/2026-11-15/`, also records.

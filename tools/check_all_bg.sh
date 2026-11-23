@@ -26,8 +26,8 @@
 # finished run's status) and `log` (a link to the latest started run's log) follow the newest, so
 # a run that finishes just before another starts loses nothing. Across the machine at most
 # CHECK_ALL_MAX_RUNS check-all runs (this and tools/check_all.sh, in any worktree) execute at
-# once, the others waiting their turn (tools/check_slot.py); the slot is taken before the
-# snapshot is checked out.
+# once (unset: two, and more while the machine has room; tools/check_slot.py), the others waiting
+# their turn; the slot is taken before the snapshot is checked out.
 #
 # It runs from the main worktree or a linked one (an agent's). The snapshot and the
 # review data come from the worktree it runs in, which must hold the review data
