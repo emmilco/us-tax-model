@@ -2,11 +2,13 @@
 # Runs check-all on a snapshot of the working tree in a separate worktree, so the
 # main tree stays free to edit while it runs.
 #
-#   tools/check_all_bg.sh [--wait] [--tier full|fast|docs] [--year N]
-#                                     snapshot now and test it (detached unless --wait; tier full by default)
+#   tools/check_all_bg.sh [--wait] [--tier light|full|docs] [--year N]
+#                                     snapshot now and test it (detached unless --wait; tier light by default)
 #   tools/check_all_bg.sh --status    the running run(s), the slots, and the latest finished run
 #   tools/check_all_bg.sh --status TREE   the record of the latest run of snapshot tree TREE
 #
+# First it runs the preflight (tools/preflight.sh) in the worktree it runs from, so the derived files it
+# regenerates are in the snapshot; a failed preflight starts no run (CHECK_ALL_PREFLIGHT=done skips it).
 # The snapshot is the tree a full `git add -A` would commit (tools/green.sh),
 # wrapped in a commit object no ref points to. It is checked out in
 # .git/check-all-worktree, a worktree this script owns and resets before each
@@ -118,15 +120,25 @@ prepare() {
   if [ ! -d "$wt/lean/.lake" ] && [ -d "$(from lean/.lake)" ]; then cp -cR "$(from lean/.lake)" "$wt/lean/.lake"; fi
 }
 
-# tier_of [check-all args]: the tier the arguments select (full by default).
+# tier_of [check-all args]: the tier the arguments select (light by default).
 tier_of() {
-  local a prev="" tier=full
+  local a prev="" tier=light
   for a in "$@"; do
     case "$a" in --tier=*) tier="${a#--tier=}" ;; esac
     [ "$prev" = --tier ] && tier="$a"
     prev="$a"
   done
   echo "$tier"
+}
+
+# year_args [check-all args]: the --year option of the arguments, if any.
+year_args() {
+  local a prev=""
+  for a in "$@"; do
+    case "$a" in --year=*) echo "$a" ;; esac
+    [ "$prev" = --year ] && echo "--year $a"
+    prev="$a"
+  done
 }
 
 # prune: keep the 50 newest run directories.
@@ -208,6 +220,11 @@ fi
 python3 tools/worktree_data.py check || exit 1
 timeout 300 python3 tools/worktree_gc.py check || true  # listed, not failed: a release fails on it (release.sh)
 refuse_sizing_env || exit 2
+if [ "${CHECK_ALL_PREFLIGHT:-}" != done ]; then
+  # shellcheck disable=SC2046
+  tools/preflight.sh --tier "$(tier_of "$@")" $(year_args "$@") || exit 1
+fi
+export CHECK_ALL_PREFLIGHT=done
 
 take_lock
 base="$(git rev-parse HEAD)"

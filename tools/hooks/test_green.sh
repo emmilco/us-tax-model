@@ -16,38 +16,38 @@ git init -q
 git config user.email test@example.com
 git config user.name test
 mkdir -p tools/hooks
-cp "$ROOT/tools/green.sh" "$ROOT/tools/tier_paths.py" "$ROOT/tools/docs_paths.txt" "$ROOT/tools/full_paths.txt" "$ROOT/tools/claims.py" "$ROOT/tools/check_bug_inventory.py" tools/
-cp "$ROOT/tools/hooks/pre-commit" tools/hooks/
-chmod +x tools/hooks/pre-commit
+cp "$ROOT/tools/green.sh" "$ROOT/tools/tier_paths.py" "$ROOT/tools/docs_paths.txt" "$ROOT/tools/claims.py" "$ROOT/tools/check_bug_inventory.py" tools/
+cp "$ROOT/tools/hooks/pre-commit" "$ROOT/tools/hooks/pre-merge-commit" tools/hooks/
+chmod +x tools/hooks/pre-commit tools/hooks/pre-merge-commit
 . tools/green.sh
 
 # Concurrent records lose nothing, in each tier's own list.
-for t in full fast docs; do
+for t in full light docs; do
   for i in $(seq 1 20); do record_green "$t$i" "$t" & done
 done
 wait
-for t in full fast docs; do
+for t in full light docs; do
   for i in $(seq 1 20); do
     grep -qx "$t$i" "$(trees_of "$t")" || fail "lost entry $t$i"
   done
   [ "$(wc -l < "$(trees_of "$t")")" -eq 20 ] || fail "the $t list holds another tier's entries"
 done
 
-# A full-green tree is fast- and docs-green; a fast-green tree docs-green, not full-green.
-is_tier_green fast full1 && is_tier_green docs full1 || fail "a full-green tree is not fast- and docs-green"
-is_tier_green docs fast1 || fail "a fast-green tree is not docs-green"
-! is_tier_green full fast1 || fail "a fast-green tree passed as full-green"
-! is_tier_green fast docs1 || fail "a docs-green tree passed as fast-green"
-for t in full fast docs; do rm -f "$(trees_of "$t")"; done
-echo marker > "$(marker_of fast)"
-is_tier_green fast marker && ! is_green marker || fail "the fast marker is not read as the fast record only"
-rm -f "$(marker_of fast)"
+# A full-green tree is light- and docs-green; a light-green tree docs-green, not full-green.
+is_tier_green light full1 && is_tier_green docs full1 || fail "a full-green tree is not light- and docs-green"
+is_tier_green docs light1 || fail "a light-green tree is not docs-green"
+! is_tier_green full light1 || fail "a light-green tree passed as full-green"
+! is_tier_green light docs1 || fail "a docs-green tree passed as light-green"
+for t in full light docs; do rm -f "$(trees_of "$t")"; done
+echo marker > "$(marker_of light)"
+is_tier_green light marker && ! is_green marker || fail "the light marker is not read as the light record only"
+rm -f "$(marker_of light)"
 
 # The release list is its own: a release-listed tree is no tier's green tree, and no tier's tree is release-listed.
 record_green rel1 release; record_green full2 full
 is_release_green rel1 || fail "a release-listed tree is not read as release-green"
 ! is_release_green full2 || fail "a full-green tree passed as release-green"
-for t in full fast docs; do ! is_tier_green "$t" rel1 || fail "a release-listed tree passed as $t-green"; done
+for t in full light docs; do ! is_tier_green "$t" rel1 || fail "a release-listed tree passed as $t-green"; done
 rm -f "$(trees_of release)" "$(trees_of full)"
 ( CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify; export CHECK_ALL_RELEASE ENGINE_CACHE; release_mode ) || fail "release_mode is false with both variables set"
 ( unset ENGINE_CACHE; CHECK_ALL_RELEASE=1; export CHECK_ALL_RELEASE; ! release_mode ) || fail "release_mode is true without ENGINE_CACHE=verify"
@@ -58,11 +58,12 @@ mkdir -p docs engine/src src
 echo a > docs/a.md; echo m > engine/src/mutate.ts; echo s > src/s.txt; echo b > BUG_INVENTORY.md
 git add -A
 git commit -qm base
+git checkout -q -b next
 git config core.hooksPath tools/hooks
 stage() { git reset -q --hard HEAD; for f in "$@"; do echo "$RANDOM" >> "$f"; done; git add -A; git write-tree; }
 accepts() { git commit -qm "$1" >/dev/null 2>&1; }
 # record_only TIER TREE: TREE is the only green tree of any tier (no arguments: none is).
-record_only() { local x; for x in full fast docs; do rm -f "$(trees_of "$x")"; done; [ "$#" -lt 2 ] || record_green "$2" "$1"; }
+record_only() { local x; for x in full light docs; do rm -f "$(trees_of "$x")"; done; [ "$#" -lt 2 ] || record_green "$2" "$1"; }
 
 # No record at all: refused.
 t="$(stage docs/a.md)"; record_only
@@ -71,27 +72,37 @@ t="$(stage docs/a.md)"; record_only
 # Docs tier: bookkeeping paths only, with a docs-green tree.
 t="$(stage docs/a.md BUG_INVENTORY.md)"; record_only docs "$t"
 accepts "docs" || fail "pre-commit refused a docs-only commit with a docs-green tree"
-t="$(stage docs/a.md)"; record_only fast other
+t="$(stage docs/a.md)"; record_only light other
 ! accepts "docs without record" || fail "pre-commit accepted a docs-only commit with no green tree"
 
-# One stray path outside the allowlist: the docs record is not enough; fast is.
+# One stray path outside the allowlist: the docs record is not enough; light is.
 t="$(stage docs/a.md src/s.txt)"; record_only docs "$t"
 ! accepts "stray" || fail "pre-commit accepted a docs-tier commit with a stray path on a docs-green tree"
-record_only fast "$t"
-accepts "stray fast" || fail "pre-commit refused a fast-green commit"
+record_only light "$t"
+accepts "stray light" || fail "pre-commit refused a light-green commit on next"
 
-# A full-green tree also passes as fast.
+# A full-green tree also passes as light.
 t="$(stage src/s.txt)"; record_only full "$t"
-accepts "full as fast" || fail "pre-commit refused a full-green tree for a fast-tier commit"
+accepts "full as light" || fail "pre-commit refused a full-green tree for a light-tier commit"
 
-# Trigger path: fast is not enough; full is.
-t="$(stage engine/src/mutate.ts)"; record_only fast "$t"
-! accepts "trigger fast" || fail "pre-commit accepted a full-tier path change on a fast-green tree"
-record_only full "$t"
-accepts "trigger full" || fail "pre-commit refused a full-tier path change on a full-green tree"
+# An input of the release's steps (the mutation tool): light is enough at commit.
+t="$(stage engine/src/mutate.ts)"; record_only light "$t"
+accepts "release input light" || fail "pre-commit refused a light-green change to an input of the release's steps"
+
+# On main, no commit is accepted, whatever its record; nor a merge commit (pre-merge-commit).
+git checkout -q -B main HEAD
+t="$(stage src/s.txt)"; record_only full "$t"
+! accepts "on main" || fail "pre-commit accepted a commit on main"
+git reset -q --hard HEAD
+git checkout -q -b side; t="$(stage src/s.txt)"; record_only light "$t"; accepts "side" || fail "pre-commit refused a light-green commit on a lane branch"
+git checkout -q main
+! git merge -q --no-ff -m m side >/dev/null 2>&1 || fail "pre-merge-commit accepted a merge commit on main"
+git merge --abort 2>/dev/null || git reset -q --hard HEAD
+git merge -q --ff-only side || fail "a fast-forward of main was refused"
+git checkout -q next
 
 # A commit cannot widen the allowlist it is judged by: the list is read from HEAD, so a
-# list that names itself and src/ still leaves this commit in the fast tier.
+# list that names itself and src/ still leaves this commit in the light tier.
 git reset -q --hard HEAD
 printf 'tools/docs_paths.txt\nsrc/*\n' >> tools/docs_paths.txt
 echo x >> src/s.txt

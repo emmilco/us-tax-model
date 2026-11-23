@@ -35,6 +35,8 @@
 //     --rows FILE   check these row files instead of interview/<year>/coverage/*.yaml (the report is then neither
 //                   checked nor written)
 //     --schema FILE the schema file holding `coverageFile` (default schema/data.schema.json)
+//     --forms a,b   only the rows whose own answers, sets used or expected end touch one of these forms (form-scope.ts);
+//                   the report is then neither checked nor written, and a set's use is not judged
 //   The rows are walked on INTERVIEW_WORKERS worker threads (default defaultWorkers() of pool.ts) and judged here in
 //   file order; the problems and the report are the same for every count, and 1 walks them in one thread.
 import assert from "node:assert/strict";
@@ -48,6 +50,7 @@ import { templateKey } from "./branches.js";
 import { applyAnswer, inputMeta, interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData } from "./interview.js";
 import { bankOrder, minimalAnswers, walk } from "./interview-rules.js";
 import { TaskWorkers, walkWorkers } from "./pool.js";
+import { formScopeSelfTest, formsOption, scopeLine, touchesAny } from "./form-scope.js";
 import { YEAR } from "./year.js";
 import type { CanonicalData, Inputs } from "./types.js";
 
@@ -507,14 +510,16 @@ export async function interviewCoverage(args: string[] = []): Promise<number> {
   if (!paths.length) problems.push(`no row file in ${relative(ROOT, ROWS_DIR)}`);
   const t0 = performance.now();
   const ctx = loadCtx();
-  const files = readFiles(paths, schemaPath, problems);
+  const forms = formsOption(args);
+  const files = scopeFiles(readFiles(paths, schemaPath, problems), forms);
   const workers = walkWorkers("INTERVIEW_WORKERS");
   const run = checkFiles(ctx, files, await walksOn(ctx, files, workers));
-  problems.push(...run.problems);
+  problems.push(...(forms === null ? run.problems : run.problems.filter((p) => !/^[^:]+: set /.test(p))));
+  console.log(`  ${scopeLine(forms)}`);
   for (const r of run.results) for (const p of r.problems) problems.push(`${r.file}: row ${r.row.id}: ${p}`);
   const asked = run.results.reduce((a, r) => a + (r.walk?.steps.length ?? 0), 0);
   console.log(`  ${run.results.length} rows of ${paths.length} file(s) walked (${asked} answers, ${run.results.reduce((a, r) => a + (r.walk?.steps.filter((s) => s.from === "background").length ?? 0), 0)} of them the background's), ${((performance.now() - t0) / 1000).toFixed(1)} s on ${workers} worker(s)`);
-  if (own) {
+  if (own && forms === null) {
     const text = renderReport(ctx, run);
     if (args.includes("--write")) { writeFileSync(REPORT, text); console.log(`  wrote ${relative(ROOT, REPORT)}`); }
     else if (!existsSync(REPORT) || readFileSync(REPORT, "utf8") !== text) problems.push(`${relative(ROOT, REPORT)} is not what the rows produce; run: node engine/dist/main.js interview-coverage --write`);
@@ -524,9 +529,39 @@ export async function interviewCoverage(args: string[] = []): Promise<number> {
   return problems.length ? 1 : 0;
 }
 
+/** The keys a row touches: its own answers, the answers of the sets it uses, and the ids its expected end names. */
+function rowKeys(row: Row, file: CoverageFile): string[] {
+  const e = row.expect;
+  return [
+    ...Object.keys(row.answers ?? {}),
+    ...(row.uses ?? []).flatMap((u) => Object.keys(file.sets?.[u]?.answers ?? {})),
+    ...[e.asks, e.refused].filter((x): x is string => typeof x === "string"),
+    ...Object.keys(e.records ?? {}), ...Object.keys(e.proceeds ?? {}), ...(e.not_asked ?? []),
+  ];
+}
+
+/** The files with only the rows that touch a form of `forms` (all rows when `forms` is null); a file left with no
+ * row is dropped. */
+export function scopeFiles(files: { name: string; file: CoverageFile }[], forms: Set<string> | null): { name: string; file: CoverageFile }[] {
+  if (forms === null) return files;
+  return files.map(({ name, file }) => ({ name, file: { ...file, rows: file.rows.filter((r) => touchesAny(rowKeys(r, file), forms)) } })).filter((f) => f.file.rows.length);
+}
+
 /** Each kind of failure is found on a planted row, and the clean rows pass. The planted rows are written against the
  * background return's own questions, so they hold whatever the question bank asks beyond them. */
 async function selfTest(): Promise<number> {
+  // The forms scope: a row is kept by its own answers, a set it uses, or its expected end.
+  formScopeSelfTest();
+  const scoped: CoverageFile = { tax_year: YEAR, part: "Scope", profile: "full", sets: { s: { says: "A set.", answers: { "f8889.x": true } } }, rows: [
+    { id: "own", design: "", situation: "", answers: { "f2441.a": 1 }, expect: { asks: "f1040.status" } },
+    { id: "set", design: "", situation: "", uses: ["s"], expect: { asks: "f1040.status" } },
+    { id: "end", design: "", situation: "", expect: { refused: "f5695.gate" } },
+    { id: "none", design: "", situation: "", answers: { "f1040.status": "single" }, expect: { asks: "f1040.line1" } },
+  ] };
+  const ids = (forms: Set<string> | null) => scopeFiles([{ name: "s.yaml", file: scoped }], forms).flatMap((f) => f.file.rows.map((r) => r.id));
+  assert.deepEqual(ids(null), ["own", "set", "end", "none"], "unscoped: every row");
+  assert.deepEqual(ids(new Set(["f2441", "f8889", "f5695"])), ["own", "set", "end"], "scoped: by own answers, a used set, the expected end");
+  assert.deepEqual(ids(new Set(["sc"])), [], "a form no row touches: no row, and no file");
   // The schema: a well-formed file passes; each malformed one is refused.
   const ok = { tax_year: YEAR, part: "Self-test", profile: "full", rows: [{ id: "a", design: "none", situation: "A filer.", answers: { $person: ["taxpayer"] }, expect: { asks: "f1040.status" } }] };
   assert.equal(schemaProblem(ok), null);

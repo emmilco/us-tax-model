@@ -3,7 +3,9 @@
 # check-all: each run keeps its own record, log and step times (runs/<tree>-<timestamp>/), `last` and `log` follow
 # the newest, --status [TREE] reads them, only the newest 50 run directories are kept, a background
 # run waits for a check-all slot while another holds it, and tools/commit_tested.sh can name the
-# tree it commits. (The slot lock itself: tools/check_slot.py --self-test.)
+# tree it commits; the preflight (tools/preflight.sh, a stub here) runs first, in the worktree, so what it
+# regenerates is in the snapshot, and a failing preflight starts no run. (The slot lock itself:
+# tools/check_slot.py --self-test.)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/check-bg-test.XXXXXX")"
@@ -25,12 +27,20 @@ cat > tools/check_all.sh <<'SH'
 set -euo pipefail
 . tools/green.sh
 tree="$(worktree_tree)"
-echo "$tree" > "$(marker_of full)"
-record_green "$tree" full
+[ "${CHECK_ALL_PREFLIGHT:-}" = done ] || { echo "the run in the snapshot was not told the preflight ran" >&2; exit 1; }
+echo "$tree" > "$(marker_of light)"
+record_green "$tree" light
 times="$(git rev-parse --git-path check-all-times)"
 [ ! -e "$times" ] || { echo "an earlier run's times were left in place" >&2; exit 1; }
-printf '%s\n' "3 compile" "3 stage:compile compile" "4 run:full" > "$times"
+printf '%s\n' "3 compile" "3 stage:compile compile" "4 run:light" > "$times"
 echo "stub check-all ok"
+SH
+cat > tools/preflight.sh <<'SH'
+#!/usr/bin/env bash
+# The stub preflight: regenerates derived.txt from f.txt, or fails when PREFLIGHT_FAIL is set.
+[ -z "${PREFLIGHT_FAIL:-}" ] || { echo "stub preflight failed" >&2; exit 1; }
+{ echo "derived from:"; cat f.txt; } > derived.txt
+echo "stub preflight ok"
 SH
 chmod +x tools/*.sh tools/check_slot.py
 echo one > f.txt
@@ -54,7 +64,7 @@ for d in "$state"/runs/*/; do
   [ -s "${d}status" ] && [ -s "${d}log" ] || fail "run directory ${d} lacks its status or log"
   grep -q 'stub check-all ok' "${d}log" || fail "the log of ${d} lacks the run's output"
   grep -qx '3 compile' "${d}times" || fail "run directory ${d} lacks the steps' times"
-  grep -q '^check-all times (full tier): 4 s' "${d}times.txt" || fail "run directory ${d} lacks the summary of its times"
+  grep -q '^check-all times (light tier): 4 s' "${d}times.txt" || fail "run directory ${d} lacks the summary of its times"
   [ "$(get "${d}status" times)" = "$(get "${d}status" log | sed 's/log$/times.txt/')" ] || fail "the record of ${d} does not name its times"
 done
 newest="$(ls -1dt "$state"/runs/*/ | head -n 1)"
@@ -90,6 +100,15 @@ for _ in $(seq 1 100); do [ -n "$(running)" ] || break; sleep 0.2; done
 [ -z "$(running)" ] || fail "the background run did not finish after the slot freed"
 [ "$(ls -1d "$state"/runs/*/ | wc -l)" -eq 3 ] || fail "expected three run directories"
 [ "$(get "$state/last" status)" = green ] || fail "the waiting run did not finish green"
+
+# The preflight ran in the worktree before the snapshot: what it regenerated is in the tested tree.
+snap="$(get "$state/last" snapshot)"
+[ "$(git show "$snap:derived.txt" | tail -n 1)" = "$(cat f.txt)" ] || fail "the snapshot lacks what the preflight regenerated"
+# A failing preflight starts no run.
+runs_before="$(ls -1d "$state"/runs/*/ | wc -l)"
+echo five > f.txt
+! PREFLIGHT_FAIL=1 tools/check_all_bg.sh --wait > out5.txt 2>&1 || fail "a run started although the preflight failed"
+[ "$(ls -1d "$state"/runs/*/ | wc -l)" = "$runs_before" ] || fail "a failed preflight left a run directory"
 
 # Pruning keeps the newest 50.
 for i in $(seq 1 60); do

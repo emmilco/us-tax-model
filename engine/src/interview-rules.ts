@@ -51,7 +51,12 @@
 // the data and the seed the serial loop would give it, and their results are taken back in the loop's order, so the
 // output and verdicts are those of a serial run (bar the printed times).
 //
-//   interview-rules [--self-test] [--write-pruning]
+//   interview-rules [--self-test] [--write-pruning] [--forms a,b]
+//
+// --forms (form-scope.ts): only the fixture cases and generated returns whose inputs touch one of these forms are
+// walked, and of the minimal returns only the existence gates and rosters that touch them are opened (the closed
+// returns are always walked). A scoped run does not fail a baseline entry it no longer sees and does not compare the
+// pruning report, since both need every walk; --write-pruning refuses a scope.
 //
 // reports/<year>/interview_pruning.md lists the reach check's asked-and-unread templates. --write-pruning writes it; a
 // run at the default sizes (no INTERVIEW_RULES_* variable set, as check-all runs it) fails when the file differs.
@@ -68,6 +73,7 @@ import { gateProblems, gatesOf, readsOf } from "./gates.js";
 import { nyReturnArbitrary, sampleReturns } from "./generate.js";
 import { loadFixtureCases, walkedCases } from "./fixture-inputs.js";
 import { YEAR } from "./year.js";
+import { formScopeSelfTest, formsOption, scopeLine, touches, touchesAny } from "./form-scope.js";
 import type { CanonicalData, Expr, Inputs, Line } from "./types.js";
 
 const PROFILES = ["full", "ny"] as const;
@@ -257,6 +263,11 @@ function classify(data: CanonicalData, config: InterviewData, inputs: Inputs, w:
 export interface Case { id: string; inputs: Inputs }
 /** The fixture cases a profile walks: the federal whole returns (`walk: full`), or the New York stage fixtures (not the
  * class M or mutation cases); inputs resolved (fixture-inputs.ts). */
+/** The cases whose inputs touch a form of `forms` (every case when `forms` is null). */
+export function scopeCases(cases: Case[], forms: Set<string> | null): Case[] {
+  return forms === null ? cases : cases.filter((c) => touchesAny(Object.keys(c.inputs), forms));
+}
+
 export function fixtureCases(profile: "full" | "ny", data: CanonicalData): Case[] {
   const cases = profile === "full" ? walkedCases("full", data) : loadFixtureCases("ny", data).filter((c) => !c.file.startsWith("classm") && c.file !== "mutation.json");
   return cases.map((c) => ({ id: c.id, inputs: c.inputs }));
@@ -513,6 +524,9 @@ class Workers {
 
 export async function interviewRules(args: string[] = []): Promise<number> {
   if (args.includes("--self-test")) return selfTest();
+  const forms = formsOption(args);
+  if (forms !== null && args.includes("--write-pruning")) { console.error("interview-rules: --write-pruning needs an unscoped run (no --forms)"); return 2; }
+  console.log(`  ${scopeLine(forms)}`);
   const { data, configs } = loadContext();
   const errors: string[] = [];
   const times: string[] = [];
@@ -570,10 +584,10 @@ export async function interviewRules(args: string[] = []): Promise<number> {
       return out.sort((a, b) => Number(a.id.slice(prefix.length)) - Number(b.id.slice(prefix.length)));
     };
     const groups: { name: string; profile: "full" | "ny"; cases: Case[]; generated: boolean }[] = await timed("generate returns, and select the complete ones", async () => [
-      { name: "full: Stage 5 fixtures", profile: "full", cases: fixtureCases("full", data), generated: false },
-      { name: "ny: New York fixtures", profile: "ny", cases: fixtureCases("ny", data), generated: false },
-      { name: "full: generated returns", profile: "full", cases: await generatedCases("full", "generated.", sampleReturns(data, POOL, SEED)), generated: true },
-      { name: "ny: generated returns", profile: "ny", cases: await generatedCases("ny", "ny.generated.", fc.sample(nyReturnArbitrary(data), { seed: SEED, numRuns: POOL })), generated: true },
+      { name: "full: Stage 5 fixtures", profile: "full", cases: scopeCases(fixtureCases("full", data), forms), generated: false },
+      { name: "ny: New York fixtures", profile: "ny", cases: scopeCases(fixtureCases("ny", data), forms), generated: false },
+      { name: "full: generated returns", profile: "full", cases: scopeCases(await generatedCases("full", "generated.", sampleReturns(data, POOL, SEED)), forms), generated: true },
+      { name: "ny: generated returns", profile: "ny", cases: scopeCases(await generatedCases("ny", "ny.generated.", fc.sample(nyReturnArbitrary(data), { seed: SEED, numRuns: POOL })), forms), generated: true },
     ]);
     const walks: { group: string; profile: "full" | "ny"; c: Case; w: Walk }[] = [];
     const counts: string[] = [];
@@ -644,7 +658,7 @@ export async function interviewRules(args: string[] = []): Promise<number> {
         if (!minimalResult(`${profile}: every gate closed`, r)) continue;
         const asked = new Map((r as Extract<TaskResult, { kind: "walked" }>).w.events.map((e) => [e.input, e.value]));
         const unreached: string[] = [];
-        for (const g of [...gates.keys()].sort()) {
+        for (const g of [...gates.keys()].filter((k) => touches(k, forms)).sort()) {
           if (!asked.has(g)) { unreached.push(g); continue; }
           const meta = inputMeta(data, g);
           const values = meta.type === "Bool" ? [true] : (meta.values ?? []).filter((v) => v !== asked.get(g));
@@ -658,7 +672,7 @@ export async function interviewRules(args: string[] = []): Promise<number> {
       // One entry per roster: the rosters the closed full return asks (the person roster aside: its other choice is
       // the couple, which the existence gates do not reach), each given one entry alone.
       const full = closed[0]!;
-      const rosters = full.kind === "walked" ? [...new Set(full.w.events.map((e) => e.input).filter((k) => k.startsWith("$")).map(questionTemplate))].filter((t) => t !== "$person").sort() : [];
+      const rosters = full.kind === "walked" ? [...new Set(full.w.events.map((e) => e.input).filter((k) => k.startsWith("$")).map(questionTemplate))].filter((t) => t !== "$person" && touches(t, forms)).sort() : [];
       const entries = await mapPool(rosters, (roster) => workers.run({ kind: "entry", profile: "full", roster }), limit);
       const chosen: { group: string; c: Case; w: Walk; seed: number }[] = [];
       for (const [i, roster] of rosters.entries()) {
@@ -697,11 +711,15 @@ export async function interviewRules(args: string[] = []): Promise<number> {
   function report(walkCount: number, traversals: number, counts: string[], minimal: string[]): number {
     const held = JSON.parse(readFileSync(BASELINE, "utf8")) as Baseline;
     const baseline = held.early_completion;
-    errors.push(...leakProblems(seen, baseline));
-    errors.push(...heldProblems(outOfOrder, held.order_dependent_reach, (t, where) => `reach: ${where}: ${t} is reachable before the answer that hides it, and the walk in bank order never asks it`,
-      (t) => `reach: ${t} is no longer reached out of bank order; remove it from order_dependent_reach in tools/interview_rules_baseline.json`));
-    errors.push(...heldProblems(new Map([...askedUnread].map(([t, x]) => [t, x.where])), held.walked_unused, (t, where) => `reach: ${where}: ${t} is asked in bank order and unread by the complete return`,
-      (t) => `reach: ${t} is no longer asked and unread; remove it from walked_unused in tools/interview_rules_baseline.json`));
+    // A scoped run sees only some of the walks: a held template it does not see is not judged gone.
+    const found = (seenNow: Map<string, string>, list: Record<string, string>, problems: string[]) =>
+      forms === null ? problems : problems.filter((_, i) => i < [...seenNow.keys()].filter((t) => !(t in list)).length);
+    errors.push(...found(seen, baseline, leakProblems(seen, baseline)));
+    errors.push(...found(outOfOrder, held.order_dependent_reach, heldProblems(outOfOrder, held.order_dependent_reach, (t, where) => `reach: ${where}: ${t} is reachable before the answer that hides it, and the walk in bank order never asks it`,
+      (t) => `reach: ${t} is no longer reached out of bank order; remove it from order_dependent_reach in tools/interview_rules_baseline.json`)));
+    const unread = new Map([...askedUnread].map(([t, x]) => [t, x.where]));
+    errors.push(...found(unread, held.walked_unused, heldProblems(unread, held.walked_unused, (t, where) => `reach: ${where}: ${t} is asked in bank order and unread by the complete return`,
+      (t) => `reach: ${t} is no longer asked and unread; remove it from walked_unused in tools/interview_rules_baseline.json`)));
     for (const line of counts) console.log(`  ${line}`);
     for (const line of minimal) console.log(`  minimal returns: ${line}`);
     console.log(`  early completion: ${seen.size} input template(s) left reachable at completion, ${Object.keys(baseline).length} held by the baseline`);
@@ -709,7 +727,7 @@ export async function interviewRules(args: string[] = []): Promise<number> {
     console.log(`  pruning opportunities (asked in bank order, unread by the complete return):`);
     for (const [t, x] of [...askedUnread].sort()) console.log(`    ${t}: ${x.cases} return(s), first ${x.where}`);
     if (args.includes("--write-pruning")) writePruning();
-    else if (DEFAULT_RUN && readFileSync(PRUNING, "utf8") !== pruningText()) {
+    else if (DEFAULT_RUN && forms === null && readFileSync(PRUNING, "utf8") !== pruningText()) {
       errors.push(`${relative(ROOT, PRUNING)} is not what this run finds; run: node engine/dist/main.js interview-rules --write-pruning`);
     }
     for (const t of times) console.log(`  time: ${t}`);
@@ -746,6 +764,12 @@ export async function interviewRules(args: string[] = []): Promise<number> {
 
 /** Each rule flags a planted violation and passes the clean case. */
 function selfTest(): number {
+  // The forms scope: a case is walked when one of its inputs touches a form of the scope.
+  formScopeSelfTest();
+  const scoped = [{ id: "a", inputs: { "f8889.line2": 0, "f1040.status": "single" } }, { id: "b", inputs: { "f1040.status": "single" } }] as Case[];
+  assert.deepEqual(scopeCases(scoped, null).map((c) => c.id), ["a", "b"], "unscoped: every case");
+  assert.deepEqual(scopeCases(scoped, new Set(["f8889"])).map((c) => c.id), ["a"], "scoped: the cases with an input of the form");
+  assert.deepEqual(scopeCases(scoped, new Set()).map((c) => c.id), [], "an empty scope: no case");
   const data = loadCanonical();
   const configs = Object.fromEntries(PROFILES.map((p) => [p, loadInterview(p)])) as Record<string, InterviewData>;
   assert.deepEqual(staticProblems(data, configs), []);

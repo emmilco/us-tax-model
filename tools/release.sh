@@ -1,33 +1,36 @@
 #!/usr/bin/env bash
-# Makes a release: a full check-all run on the clean tip of main and, when it is green,
-# the annotated tag r<YYYY>.<MM>.<DD>.<n> on a commit whose tree that run tested.
+# Makes a release: promotes a commit of `next` to `main`. For the commit, it ensures a green full check-all run in
+# release mode of its exact tree (reusing the recorded one, or running it), fast-forwards main to it, and puts the
+# annotated tag r<YYYY>.<MM>.<DD>.<n> on it.
 #
-#   tools/release.sh [--push] [-F <file>]
+#   tools/release.sh [--push] [-F <file>] [<commit>]
 #
-# First step (recommended): tools/release_prep.sh on the candidate tree, as soon as its content is final and before
-# its release-mode full check. It runs the sampled-review gate below, every check listed, and the check-all steps
-# that fail in minutes, with each step's time and one PASS or FAIL; a defect it finds would otherwise fail the full
-# check only when its wave ends.
+# <commit> defaults to the tip of next. HEAD must be that commit, in a worktree whose working tree is HEAD's tree
+# (`git add -A` would commit nothing): on next itself, or detached at an earlier commit of next. main must be an
+# ancestor of the commit (main moves only forward, by fast-forward), and the commit must be on next.
 #
-# HEAD must be the branch main, in the main worktree, with nothing to commit (the tree
-# `git add -A` would commit is HEAD's tree). The run is tools/check_all_bg.sh --wait
-# --tier full, with ENGINE_CACHE=verify: the engine differential reruns every outside engine
-# rather than reusing its stored record, and fails if a stored record differs from the fresh
-# one. A full run rewrites reports the fast tier leaves as they were (mutation,
-# evaluator agreement, the engine differential, and evidence without its fast-run
-# note); when the tested tree differs from HEAD's, tools/commit_tested.sh commits it,
-# with the message in <file> or a generated one, and the tag goes on that commit.
-# <n> is one more than the highest <n> among the day's existing local tags. A run that
-# is not green tags nothing; the failing step's log names what broke.
-# Before the run, the sampled reviews must be complete (tools/release_reviews.sh, on a fresh build): a
-# form due or short of samples, or an unruled finding, tags nothing; so does a linked worktree that
-# tools/worktree_gc.py check lists as removable or stale. A tagged tree is recorded under
-# <git common dir>/release-ready/, which tools/hooks/pre-push requires of a pushed release tag.
-# When HEAD's tree is already in the release list (tools/green.sh: a green full run made in release mode,
-# CHECK_ALL_RELEASE=1 with ENGINE_CACHE=verify, on exactly that tree, in tools/check_all_bg.sh's snapshot worktree), the
-# run is not repeated: the sampled reviews are still checked, and the tag goes on HEAD.
-# --push pushes the tag to origin, through tools/hooks/pre-push; without it nothing is
-# pushed.
+# First step (recommended): tools/release_prep.sh on the candidate tree, as soon as its content is final; it runs the
+# checks that fail in minutes.
+#
+# When the commit's tree is already in the release list (tools/green.sh: a green full run in release mode,
+# CHECK_ALL_RELEASE=1 with ENGINE_CACHE=verify, in tools/check_all_bg.sh's snapshot worktree), nothing is run again:
+# that run included the release checks of the sampled reviews (tools/check_all_steps.sh, release_steps), so
+# tools/release_reviews.sh is skipped too. Otherwise tools/release_reviews.sh runs first (on a fresh build; a form due
+# or short of samples, or an unruled finding, promotes nothing), then the release-mode full run
+# (tools/check_all_bg.sh --wait --tier full; ENGINE_CACHE=verify reruns every outside engine and compares its stored
+# record). A run that is not green promotes nothing; the failing step's log names what broke. Either way a linked
+# worktree that tools/worktree_gc.py check lists as removable or stale promotes nothing.
+#
+# A release-mode run rewrites reports the light tier leaves as they were (mutation, evaluator agreement, the engine
+# differential, evidence, the interview length report, figures). When the tested tree differs from HEAD's,
+# tools/commit_tested.sh commits it on HEAD, with the message in <file> or a generated one, and that commit is the
+# one promoted. (On next, next advances to it; detached, the commit is on no branch until next merges main.)
+#
+# main is fast-forwarded to the promoted commit: in the worktree that has main checked out, by `git merge --ff-only`
+# (which refuses to overwrite local changes there), or, when none has, by moving the ref. <n> is one more than the
+# highest <n> among the day's local tags. The promoted tree is recorded under <git common dir>/release-ready/, which
+# tools/hooks/pre-push requires of a pushed release tag. --push pushes main and the tag to origin, through
+# tools/hooks/pre-push; without it nothing is pushed.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 . tools/green.sh
@@ -35,52 +38,71 @@ die() { echo "release: $*" >&2; exit 1; }
 
 push=0
 msg=""
+target=""
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --push) push=1; shift ;;
     -F) [ "$#" -ge 2 ] || die "-F needs a file"; msg="$2"; shift 2 ;;
-    *) die "unknown argument '$1' (usage: tools/release.sh [--push] [-F <file>])" ;;
+    -*) die "unknown argument '$1' (usage: tools/release.sh [--push] [-F <file>] [<commit>])" ;;
+    *) [ -z "$target" ] || die "one commit at most"; target="$1"; shift ;;
   esac
 done
 [ -z "$msg" ] || [ -f "$msg" ] || die "no message file $msg"
-[ "$(git symbolic-ref -q HEAD || true)" = refs/heads/main ] || die "HEAD is not the branch main"
-[ "$(worktree_tree)" = "$(git rev-parse 'HEAD^{tree}')" ] || die "the working tree differs from HEAD; a release tests the tip as committed"
-tip="$(git rev-parse HEAD)"
+git rev-parse -q --verify refs/heads/next >/dev/null || die "there is no branch next"
+tip="$(git rev-parse --verify "${target:-next}^{commit}" 2>/dev/null)" || die "no commit ${target:-next}"
+[ "$(git rev-parse HEAD)" = "$tip" ] || die "HEAD is not $tip (${target:-the tip of next}); release from a worktree whose HEAD is that commit"
+case "$(git symbolic-ref -q HEAD || true)" in
+  ""|refs/heads/next) ;;
+  *) die "HEAD is the branch $(git symbolic-ref --short HEAD); release from next, or detached at a commit of next" ;;
+esac
+git merge-base --is-ancestor "$tip" next || die "$tip is not on next"
+git merge-base --is-ancestor main "$tip" || die "main is not an ancestor of $tip; main moves only by fast-forward (merge main into next first)"
+[ "$(worktree_tree)" = "$(git rev-parse 'HEAD^{tree}')" ] || die "the working tree differs from HEAD; a release tests the commit as committed"
 
-tools/release_reviews.sh || die "the sampled reviews are not complete for a release (above); nothing tagged"
-python3 tools/worktree_gc.py check --fail || die "linked worktrees need removal, archiving or a keep lock (above); nothing tagged"
-[ "$(worktree_tree)" = "$(git rev-parse 'HEAD^{tree}')" ] || die "the review check changed the working tree; nothing tagged"
-
+python3 tools/worktree_gc.py check --fail || die "linked worktrees need removal, archiving or a keep lock (above); nothing promoted"
 common="$(cd "$(git rev-parse --git-common-dir)" && pwd)"
 last="$common/check-all-bg/last"
 get() { sed -n "s/^$1=//p" "$last"; }
 head_tree="$(git rev-parse 'HEAD^{tree}')"
 if is_release_green "$head_tree" && is_green "$head_tree"; then
-  echo "release: tree $head_tree already passed a full run in release mode; not running it again"
+  echo "release: tree $head_tree already passed a full run in release mode, its sampled-review checks included; not running it, or tools/release_reviews.sh, again"
   tested="$head_tree"
 else
-  # A release reruns every outside engine and compares each stored record with the fresh one (tools/engines/engine_cache.py).
+  tools/release_reviews.sh || die "the sampled reviews are not complete for a release (above); nothing promoted"
+  [ "$(worktree_tree)" = "$(git rev-parse 'HEAD^{tree}')" ] || die "the review check changed the working tree; nothing promoted"
   if ! CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full; then
-    die "the full run did not pass; nothing tagged (log: $common/check-all-bg/log)"
+    die "the full run did not pass; nothing promoted (log: $common/check-all-bg/log)"
   fi
-  [ "$(get status)" = green ] && [ "$(get tier)" = full ] || die "the full run is $(get status), not green; nothing tagged"
-  [ "$(get base)" = "$tip" ] || die "the finished run was not on $tip; nothing tagged"
-  [ "$(git rev-parse HEAD)" = "$tip" ] || die "HEAD moved during the run; nothing tagged"
+  [ "$(get status)" = green ] && [ "$(get tier)" = full ] || die "the full run is $(get status), not green; nothing promoted"
+  [ "$(get base)" = "$tip" ] || die "the finished run was not on $tip; nothing promoted"
+  [ "$(git rev-parse HEAD)" = "$tip" ] || die "HEAD moved during the run; nothing promoted"
   tested="$(get tested)"
-  is_green "$tested" || die "tree $tested is not in the full-green record; nothing tagged"
+  is_green "$tested" || die "tree $tested is not in the full-green record; nothing promoted"
+  is_release_green "$tested" || die "tree $tested is not in the release record (a run in release mode); nothing promoted"
 fi
 
 if [ "$tested" != "$(git rev-parse 'HEAD^{tree}')" ]; then
   if [ -z "$msg" ]; then
     msg="$(mktemp)"
     trap 'rm -f "$msg"' EXIT
-    printf 'Release reports: full check-all run on %s\n\nThe reports a full run rewrites and the fast tier does not: mutation, evaluator\nagreement, the engine differential, and evidence.\n' \
+    printf 'Release reports: full check-all run in release mode on %s\n\nThe files a release-mode run rewrites and the light tier does not: mutation, evaluator\nagreement, the engine differential, evidence, the interview length report, figures.\n' \
       "$(git rev-parse --short "$tip")" > "$msg"
   fi
   tools/commit_tested.sh -F "$msg"
 fi
 commit="$(git rev-parse HEAD)"
-[ "$(git rev-parse "$commit^{tree}")" = "$tested" ] || die "HEAD's tree is not the tested tree; nothing tagged"
+[ "$(git rev-parse "$commit^{tree}")" = "$tested" ] || die "HEAD's tree is not the tested tree; nothing promoted"
+
+# Fast-forward main to the commit: in the worktree holding main, or by moving the ref.
+old_main="$(git rev-parse main)"
+git merge-base --is-ancestor "$old_main" "$commit" || die "main moved and is no longer an ancestor of $commit; nothing promoted"
+main_wt="$(git worktree list --porcelain | awk '/^worktree /{w=substr($0,10)} /^branch refs\/heads\/main$/{print w}')"
+if [ -n "$main_wt" ]; then
+  git -C "$main_wt" merge --ff-only -q "$commit" || die "main could not be fast-forwarded in $main_wt (local changes there?); nothing tagged"
+else
+  git update-ref -m "release: fast-forward to $commit" refs/heads/main "$commit" "$old_main"
+fi
+[ "$(git rev-parse main)" = "$commit" ] || die "main is not at $commit after the fast-forward; nothing tagged"
 
 day="$(date +%Y.%m.%d)"
 n=0
@@ -89,11 +111,14 @@ for t in $(git tag -l "r$day.*"); do
   if [[ "$k" =~ ^[0-9]+$ ]] && [ "$k" -gt "$n" ]; then n="$k"; fi
 done
 name="r$day.$((n + 1))"
-git tag -a "$name" -m "Release $name: full check-all green on tree $tested" "$commit"
+git tag -a "$name" -m "Release $name: full check-all green in release mode on tree $tested" "$commit"
 mkdir -p "$common/release-ready" && : > "$common/release-ready/$tested"
-echo "release: tagged $name on $(git rev-parse --short "$commit") (tree $tested)"
+echo "release: main fast-forwarded from $(git rev-parse --short "$old_main") to $(git rev-parse --short "$commit"); tagged $name (tree $tested)"
+if [ -z "$(git symbolic-ref -q HEAD || true)" ] && ! git merge-base --is-ancestor "$commit" next; then
+  echo "release: $(git rev-parse --short "$commit") is on main and not on next; merge main into next before the next release"
+fi
 if [ "$push" -eq 1 ]; then
-  git push origin "refs/tags/$name"
+  git push origin refs/heads/main "refs/tags/$name"
 else
-  echo "release: not pushed (git push origin $name pushes it)"
+  echo "release: not pushed (git push origin main $name pushes both)"
 fi

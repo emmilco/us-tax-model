@@ -5,14 +5,15 @@
 # release reviews and the listed steps run with the commands check_all_steps.sh declares, and no other step; every
 # step runs after a failure, unless --fail-fast; a failed build stops the run; a step that exits 0 without a line
 # step_output.py requires fails; a listed step the steps script does not declare stops the run; a New York step the
-# year skips is listed as skipped; and check-all's times file is not written.
+# year skips is listed as skipped; and check-all's times file is not written. Then tools/preflight.sh, in the same
+# repository: it regenerates each derived file before it runs a check, and stops at the first failure.
 set -euo pipefail
 here="$(cd "$(dirname "$0")/.." && pwd)"
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 repo="$tmp/repo"
 mkdir -p "$repo/tools" "$repo/forms/2025" "$repo/forms/ny/2025" "$tmp/bin"
-real="tools/release_prep.sh tools/release_reviews.sh tools/check_all_steps.sh tools/step_output.py tools/taxyear.py tools/jurisdiction.py"
+real="tools/release_prep.sh tools/release_reviews.sh tools/check_all_steps.sh tools/step_output.py tools/taxyear.py tools/jurisdiction.py tools/preflight.sh"
 for path in $real; do cp "$here/$path" "$repo/tools/"; done
 export CALLS="$tmp/calls" STUB="$tmp/stub.sh"
 # The one stub: logs "<name> <args>", prints the tier-path line bookkeeping_self_tests must have (unless
@@ -30,7 +31,7 @@ done
 exit 0
 EOF
 for path in $(grep -ohE 'tools/[A-Za-z0-9_/.-]+\.(py|mjs|sh)' "$here/tools/check_all_steps.sh" "$here/tools/release_reviews.sh" \
-              "$here/tools/release_prep.sh" | sort -u); do
+              "$here/tools/release_prep.sh" "$here/tools/preflight.sh" | sort -u); do
   case " $real " in *" $path "*) continue ;; esac
   mkdir -p "$repo/$(dirname "$path")"
   case "$path" in
@@ -128,8 +129,35 @@ has "$tmp/out" "declares no step limits ny_limits"
 [ ! -s "$CALLS" ] || fail "something ran although the step list was refused"
 cp "$tmp/steps.orig" "$repo/tools/check_all_steps.sh"
 
+# The preflight: the build when stale, each regeneration, then the checks, in that order; the first failure stops it.
+printf '{"adopted": [2025], "ny_adopted": [2025]}\n' > "$repo/years.json"
+: > "$CALLS"
+pstatus=0
+(cd "$repo" && PATH="$tmp/bin:$PATH" FAIL="tools/build_fresh.py" bash tools/preflight.sh --tier full) > "$tmp/out" 2>&1 || pstatus=$?
+[ "$pstatus" = 0 ] || { fail "preflight failed (exit $pstatus):"; sed 's/^/  /' "$tmp/out" >&2; }
+has "$tmp/out" "preflight: ok"
+for call in "npm run -s compile" "node engine/dist/main.js build" "tools/bug_status.py --write" "tools/coverage/tree.py" \
+    "tools/coverage/gate_frequencies.py" "node engine/dist/main.js spouse-wording --report" \
+    "node engine/dist/main.js interview-coverage --write" "tools/check_bug_inventory.py" "tools/doc_figures.py --check"; do
+  has "$CALLS" "$call"
+done
+write_at="$(grep -n '^tools/doc_figures.py$' "$CALLS" | head -1 | cut -d: -f1)"
+check_at="$(grep -n 'tools/check_bug_inventory.py' "$CALLS" | head -1 | cut -d: -f1)"
+regen_at="$(grep -n 'tools/bug_status.py --write' "$CALLS" | head -1 | cut -d: -f1)"
+[ -n "$write_at" ] && [ "${regen_at:-99}" -lt "$write_at" ] && [ "$write_at" -lt "${check_at:-0}" ] \
+  || fail "the preflight did not regenerate (bug status, then the figures) before its checks"
+# A fresh build is not rebuilt; a failing regeneration stops the preflight before any check.
+: > "$CALLS"
+pstatus=0
+(cd "$repo" && PATH="$tmp/bin:$PATH" FAIL="tools/coverage/tree.py" bash tools/preflight.sh) > "$tmp/out" 2>&1 || pstatus=$?
+[ "$pstatus" = 1 ] || fail "a failing regeneration did not fail the preflight (exit $pstatus)"
+has "$tmp/out" "preflight: FAILED at regenerate the coverage tree"
+lacks "$CALLS" "node engine/dist/main.js build"
+lacks "$CALLS" "tools/check_bug_inventory.py"
+lacks "$CALLS" "spouse-wording"
+
 if [ "$failures" -gt 0 ]; then
   echo "release-prep self-test FAILED: $failures problem(s)" >&2
   exit 1
 fi
-echo "release-prep self-test OK: commands from the steps script, failures collected, --fail-fast, build stop, required lines, New York skip, drift"
+echo "release-prep self-test OK: commands from the steps script, failures collected, --fail-fast, build stop, required lines, New York skip, drift; preflight order and fail-fast"

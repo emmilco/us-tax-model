@@ -33,16 +33,16 @@
 # skipped: it is listed in its wave as "== ny_<name>" with the reason, and the run says how many it skipped
 # at its start and its end. The New York render runs when the year has New York definitions (forms/ny/<year>/).
 #
-# --tier full|fast|docs selects the steps (default full: every step except release_steps, which only a
-# release runs: tools/release.sh sets CHECK_ALL_RELEASE=1). release_steps rewrite a report and check nothing
-# another step does not. fast skips slow_steps: the
-# mutation and independent-evaluator checks a release runs, and the interview length report. evidence then marks
-# its E column with the latest release reachable from HEAD, because the engine differential it reads was not rerun.
-# engine_differential reuses an outside engine's stored record while everything that determines it
-# is unchanged (tools/engines/engine_cache.py; ENGINE_CACHE=verify reruns every engine and compares,
-# as tools/release.sh does). docs runs docs_steps: compile, the build without
-# render, and the checks that read the bookkeeping paths of tools/docs_paths.txt (tools/tier_paths.py
-# lists every reader of them).
+# --tier light|full|docs selects the steps (default light, the tier a commit on `next` or a lane branch needs).
+# light runs light_steps: compile, build and render, the federal and New York fixtures, the bookkeeping checks, the
+# checks of generated reports, and the interview checks of scoped_steps scoped to the forms the change touches
+# (tools/change_scope.py: `--forms <ids>`; no step when no form is touched; when the change can reach any walk,
+# interview_coverage and tick_groups run unscoped and interview_rules, whose unscoped run is the release's, not at all). full is the release's tier: every step, the interview checks unscoped, except release_steps (the interview
+# length report and the release checks of the sampled reviews), which run only in release mode
+# (CHECK_ALL_RELEASE=1, as tools/release.sh runs it). engine_differential reuses an outside engine's stored record
+# while everything that determines it is unchanged (tools/engines/engine_cache.py; ENGINE_CACHE=verify reruns every
+# engine and compares, as tools/release.sh does). docs runs docs_steps: compile, the build without render, and the
+# checks that read the bookkeeping paths of tools/docs_paths.txt (tools/tier_paths.py lists every reader of them).
 #
 # --print-steps lists the tier's steps instead of running them, in the order declared, one per line: the step's
 # name, a tab, and its command quoted for eval (printf %q; a command that is a function of this script, such as
@@ -51,7 +51,7 @@
 # file is /dev/null). tools/release_prep.sh runs its steps from this list, so a step's command is declared here only.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
-tier=full
+tier=light
 print_steps=0
 args=()
 while [ "$#" -gt 0 ]; do
@@ -74,20 +74,37 @@ case "$ny_rc" in
   3) ny_skip="$ny_status" ;;
   *) echo "check-all: tools/jurisdiction.py --ny-status failed" >&2; exit 2 ;;
 esac
-slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate interview_length "
+light_steps=" compile build check_self_test bookkeeping_self_tests check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check gate_frequencies person_wording coverage_tree doc_figures test_fixtures ny_test_fixtures interview_rules interview_coverage tick_groups "
 docs_steps=" compile build check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree doc_figures "
+scoped_steps=" interview_rules interview_coverage tick_groups "
+release_unscoped=" interview_rules "
 case "$tier" in
-  full|fast|docs) ;;
-  *) echo "check-all: unknown tier '$tier' (full, fast or docs)" >&2; exit 2 ;;
+  full|light|docs) ;;
+  *) echo "check-all: unknown tier '$tier' (light, full or docs)" >&2; exit 2 ;;
 esac
-release_steps=" interview_length "
+release_steps=" interview_length release_completeness ny_release_completeness release_screens ny_release_screens release_false_no ny_release_false_no "
 in_tier() {
   if [[ "$release_steps" == *" $1 "* ]] && [ "${CHECK_ALL_RELEASE:-}" != 1 ]; then return 1; fi
   case "$tier" in
     full) return 0 ;;
-    fast) [[ "$slow_steps" != *" $1 "* ]] ;;
+    light) [[ "$light_steps" == *" $1 "* ]] ;;
     docs) [[ "$docs_steps" == *" $1 "* ]] ;;
   esac
+}
+# scope: in the light tier, what the change touches (tools/change_scope.py): all, none, or a list of form ids.
+scope=all
+if [ "$tier" = light ]; then
+  scope="$(python3 tools/change_scope.py "$@")" || { echo "check-all: tools/change_scope.py failed" >&2; exit 2; }
+  [ "$print_steps" = 1 ] || echo "check-all: light tier; the interview checks' scope: $scope"
+fi
+# scope_skip NAME: print why the light tier skips the scoped step NAME (status 0), or nothing (status 1).
+scope_skip() {
+  [ "$tier" = light ] && [[ "$scoped_steps" == *" $1 "* ]] || return 1
+  if [ "$scope" = none ]; then echo "the change touches no form the interview reads (tools/change_scope.py)"; return 0; fi
+  if [ "$scope" = all ] && [[ "$release_unscoped" == *" $1 "* ]]; then
+    echo "the change can reach any walk (tools/change_scope.py: all); the unscoped run is the release's"; return 0
+  fi
+  return 1
 }
 node=(node engine/dist/main.js)
 times="$(git rev-parse --git-path check-all-times)"
@@ -123,6 +140,13 @@ step() {
     names+=("$name"); pids+=(""); skipped+=("$name")
     return 0
   fi
+  local why
+  if why="$(scope_skip "$name")"; then
+    echo "skipped: $why" > "$logs/$name.log"
+    names+=("$name"); pids+=("")
+    return 0
+  fi
+  if [[ "$scoped_steps" == *" $name "* ]] && [ "$scope" != all ]; then set -- "$@" --forms "$scope"; fi
   ( t0=$(date +%s); rc=0; "$@" > "$logs/$name.log" 2>&1 || rc=$?
     echo "$(( $(date +%s) - t0 )) $name" >> "$times"; exit "$rc" ) &
   names+=("$name"); pids+=("$!")
@@ -179,7 +203,7 @@ build_and_render() {
 }
 
 lean_build() {
-  cd lean && lake build taxeval
+  (cd lean && lake build taxeval)
 }
 
 # The frozen Stage 2 to 5 review packets and their values sheets (reports/<year>/stage*), regenerated through
@@ -198,6 +222,12 @@ if [ "$print_steps" = 1 ]; then
       printf '%s\tskip\t%s\n' "$name" "$ny_skip"
       return 0
     fi
+    local why
+    if why="$(scope_skip "$name")"; then
+      printf '%s\tskip\t%s\n' "$name" "$why"
+      return 0
+    fi
+    if [[ "$scoped_steps" == *" $name "* ]] && [ "$scope" != all ]; then set -- "$@" --forms "$scope"; fi
     printf '%s\t' "$name"
     printf ' %q' "$@"
     printf '\n'
@@ -258,6 +288,10 @@ jstep limits "--jurisdiction ny" python3 tools/check_limits.py
 # Lines stated twice (Form 8863 Part III, for a person and for a dependent) agree except where reviews/<year>/twins.json says.
 step twins python3 tools/check_twins.py "$@"
 jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py
+# The release gate of the sampled reviews, the checks of tools/release_reviews.sh (release mode only).
+jstep release_completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py --release
+jstep release_screens "--jurisdiction ny" python3 tools/transcription/check_screens.py --release
+jstep release_false_no "--jurisdiction ny" python3 tools/transcription/check_false_no.py --release
 # No id of either jurisdiction's build carries a year, but for the ids listed in tools/year_ids.json (spec 4.3).
 step year_ids python3 tools/check_year_ids.py "$@"
 # No old id of tools/year_free_names.json is left in the fixtures (defaults included), coverage rows, personas or the
@@ -307,15 +341,15 @@ jstep compare --ny "${node[@]}" compare
 wave wave2
 
 evidence_args=()
-if [ "$tier" = fast ]; then
+if [ "$tier" = light ]; then
   evidence_args=(--engine-release "$(git describe --match 'r[0-9]*' --abbrev=0 HEAD 2>/dev/null || echo none)")
 fi
 step evidence "${node[@]}" evidence ${evidence_args[@]+"${evidence_args[@]}"} "$@"
 step review_packets review_packets "$@"
 wave wave3
 # The generated figures of the handoff, README.md and docs/TRUST.md (tools/doc_figures.py), after the waves that
-# rewrite the reports they quote.
-step doc_figures python3 tools/doc_figures.py --check
+# rewrite the reports they quote: written from the reports this run wrote, then checked.
+step doc_figures sh -c 'python3 tools/doc_figures.py && python3 tools/doc_figures.py --check'
 wave wave4
 if [ "$print_steps" = 0 ] && [ "${#skipped[@]}" -gt 0 ]; then
   echo "check-all: ${#skipped[@]} New York steps skipped for $year (${skipped[*]}): $ny_skip"

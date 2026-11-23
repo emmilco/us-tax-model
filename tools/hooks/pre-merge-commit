@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Refuses a merge commit made on the branch main (git runs no pre-commit hook on a merge that
+# needs no editing): main moves only by the fast-forward of a release (tools/release.sh). A
+# fast-forward makes no commit and is not refused. Enabled with the other hooks (core.hooksPath).
+set -euo pipefail
+if [ "$(git symbolic-ref -q HEAD || true)" = refs/heads/main ]; then
+  echo "pre-merge-commit: no merge commit is made on main; main moves only by the fast-forward of a release (tools/release.sh)" >&2
+  exit 1
+fi

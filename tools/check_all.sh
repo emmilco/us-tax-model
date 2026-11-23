@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-# Runs the suite (tools/check_all_steps.sh, passing on its arguments, e.g.
-# --tier fast or --year N) and, when it passes, writes the tested tree's hash to
-# the tier's marker and list of green trees (tools/green.sh) for
-# tools/hooks/pre-commit and pre-push. The tier is full unless --tier says otherwise.
+# Runs the preflight (tools/preflight.sh: regenerates the derived files the steps compare, then the fast bookkeeping
+# checks; a failure stops the run before it starts; CHECK_ALL_PREFLIGHT=done skips it), then the suite
+# (tools/check_all_steps.sh, passing on its arguments, e.g. --tier full or --year N) and, when it passes, writes the
+# tested tree's hash to the tier's marker and list of green trees (tools/green.sh) for
+# tools/hooks/pre-commit and pre-push. The tier is light unless --tier says otherwise.
 # It refuses to start while a variable that changes what a step checks (tools/green.sh,
 # SIZING_ENV: PROPERTY_RUNS and the like) is set.
 # A run is green only if nothing outside the suite's own outputs (reports/,
-# rendered/) changed while it ran; an edit made mid-run gets no marker. A run
+# rendered/, and the figure blocks its last wave writes: tools/doc_figures.py --blocks-changed) changed while it
+# ran; an edit made mid-run gets no marker. A run
 # for a year other than the default (--year N) is checked but never marked
 # green: a commit must have passed on the default year. It refuses to run when a
 # git-ignored raw review file the review logs reference is missing
@@ -22,7 +24,7 @@ cd "$(git rev-parse --show-toplevel)"
 . tools/green.sh
 
 orig=("$@")
-tier=full
+tier=light
 rest=()
 while [ "$#" -gt 0 ]; do
   case "$1" in
@@ -34,6 +36,11 @@ done
 set -- ${rest[@]+"${rest[@]}"}
 marker="$(marker_of "$tier")" || exit 2
 refuse_sizing_env || exit 2
+
+if [ -z "${CHECK_ALL_SLOT:-}" ] && [ "${CHECK_ALL_PREFLIGHT:-}" != done ]; then
+  tools/preflight.sh --tier "$tier" "$@" || exit 1
+  export CHECK_ALL_PREFLIGHT=done
+fi
 
 # At most CHECK_ALL_MAX_RUNS runs execute at once on the machine (tools/check_slot.py): wait for a
 # slot, then run again from the top holding it. A run started by check_all_bg.sh already holds one.
@@ -52,6 +59,11 @@ tools/check_all_steps.sh --tier "$tier" "$@"
 after="$(worktree_tree)"
 
 outside="$(git diff-tree -r --name-only "$before" "$after" | grep -vE '^(reports|rendered)/' || true)"
+if [ -n "$outside" ]; then
+  # The figure blocks the last wave writes (tools/doc_figures.py) are the run's own output when only they changed.
+  own="$(python3 tools/doc_figures.py --blocks-changed "$before")"
+  outside="$(echo "$outside" | grep -vxF -f <(echo "$own"; echo /dev/null) || true)"
+fi
 if [ -n "$outside" ]; then
   echo "check-all passed, but these files changed during the run; no green marker written:" >&2
   echo "$outside" | sed 's/^/  /' >&2

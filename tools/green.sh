@@ -3,15 +3,16 @@
 # and the hooks. worktree_tree prints the hash of the tree a full `git add -A` would commit
 # (tracked and untracked files, ignored files excluded), without touching the real index.
 #
-# Each tier of check-all (full, fast, docs; tools/check_all_steps.sh) has its own record: a marker
+# Each tier of check-all (full, light, docs; tools/check_all_steps.sh) has its own record: a marker
 # holding the tree of the last green run of that tier in this worktree, and a list of the trees of
 # the last 50 green runs of that tier in any worktree of the clone, most recent last. The full
 # record is MARKER and GREEN_TREES. A tier's steps include the next tier's, so is_tier_green
-# accepts a tree green in that tier or a higher one: full-green is also fast- and docs-green.
+# accepts a tree green in that tier or a higher one: full-green is also light- and docs-green.
 #
 # A further list, release, holds the trees of full runs made in release mode (CHECK_ALL_RELEASE=1 with
 # ENGINE_CACHE=verify; tools/check_all.sh records them). It is no tier: is_tier_green never reads it.
-# tools/release.sh tags a tip whose tree is in it without running the suite again.
+# tools/release.sh promotes a commit whose tree is in it without running the suite again, and
+# tools/hooks/pre-push refuses to push `main` to a commit whose tree is not in it.
 MARKER="$(git rev-parse --git-path check-all-green)"
 GREEN_TREES="$(cd "$(git rev-parse --git-common-dir)" && pwd)/check-all-green-trees"
 
@@ -43,7 +44,7 @@ refuse_sizing_env() {
 marker_of() {
   case "$1" in
     full) echo "$MARKER" ;;
-    fast|docs|release) echo "$MARKER-$1" ;;
+    light|docs|release) echo "$MARKER-$1" ;;
     *) echo "green.sh: unknown tier '$1'" >&2; return 1 ;;
   esac
 }
@@ -51,7 +52,7 @@ marker_of() {
 trees_of() {
   case "$1" in
     full) echo "$GREEN_TREES" ;;
-    fast|docs|release) echo "${GREEN_TREES%-trees}-$1-trees" ;;
+    light|docs|release) echo "${GREEN_TREES%-trees}-$1-trees" ;;
     *) echo "green.sh: unknown tier '$1'" >&2; return 1 ;;
   esac
 }
@@ -93,8 +94,8 @@ release_mode() { [ "${CHECK_ALL_RELEASE:-}" = 1 ] && [ "${ENGINE_CACHE:-}" = ver
 is_tier_green() {
   case "$1" in
     full) in_record full "$2" ;;
-    fast) in_record full "$2" || in_record fast "$2" ;;
-    docs) in_record full "$2" || in_record fast "$2" || in_record docs "$2" ;;
+    light) in_record full "$2" || in_record light "$2" ;;
+    docs) in_record full "$2" || in_record light "$2" || in_record docs "$2" ;;
     *) echo "green.sh: unknown tier '$1'" >&2; return 1 ;;
   esac
 }
@@ -102,15 +103,14 @@ is_tier_green() {
 # any_record: some tier has a marker or a list.
 any_record() {
   local t
-  for t in full fast docs; do
+  for t in full light docs; do
     [ -s "$(marker_of "$t")" ] || [ -s "$(trees_of "$t")" ] && return 0
   done
   return 1
 }
 
-# required_tier TREE [PARENT...]: sets REQUIRED (docs, fast or full) and REQUIRED_WHY for a commit of
-# TREE on those parents (tools/tier_paths.py, which reads each parent's tools/docs_paths.txt and
-# tools/full_paths.txt).
+# required_tier TREE [PARENT...]: sets REQUIRED (docs, light or full) and REQUIRED_WHY for a commit of
+# TREE on those parents (tools/tier_paths.py, which reads the first parent's tools/docs_paths.txt).
 required_tier() {
   local out
   out="$(python3 -I "$(git rev-parse --show-toplevel)/tools/tier_paths.py" required "$@")" || return 1

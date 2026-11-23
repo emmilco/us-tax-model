@@ -2,16 +2,16 @@
 """Which tier of check-all a commit needs, from the paths it changes.
 
     tier_paths.py required <tree> [<parent commit> ...]
-        print "<tier>\\t<reason>": docs, fast or full, the least tier whose green record
+        print "<tier>\\t<reason>": docs, light or full, the least tier whose green record
         tools/green.sh must hold for <tree> to be committed on those parents
     tier_paths.py --self-test
 
 The rule, for a tree and its parents:
-  - full when there is no parent, when a parent lacks tools/full_paths.txt, or when a path changed
-    against any parent matches a pattern in tools/full_paths.txt (the parents' lists and the tree's own);
+  - full when there is no parent;
   - docs when there is exactly one parent and every changed path matches tools/docs_paths.txt as the
     parent has it (a commit cannot widen the list it is judged by: the list is not on itself);
-  - fast otherwise.
+  - light otherwise (a merge needs at least light).
+The full tier's other steps are the release's (tools/release.sh): no path makes a commit need them.
 A path is compared with `git diff-tree -r --no-renames`, so a rename counts its old and its new path.
 
 The docs tier is sound only if no check-all step outside it reads an allowlisted path. The self-test
@@ -20,7 +20,7 @@ root package.json and tsconfig.json. Every reference in that code to an allowlis
 stem, its directory prefix, or its first directory as a quoted path component) and every idiom that
 enumerates files beyond a named directory must be listed below, in READERS or WALKERS; an unlisted
 one fails, and so does a listed one that is gone. A reader is listed with the check-all steps that
-read the path: each must be in the docs tier, or be one of the steps the fast tier skips. The data
+read the path: each must be in the docs tier, or be a step only the full tier runs. The data
 directories (forms/, tables/, reviews/, fixtures/, sources/, reports/ ...) mention allowlisted paths
 only in prose; they are read through this code, which opens no path taken from them into the allowlist.
 The scan finds literal names, not paths assembled from fragments; such a path would not be caught.
@@ -33,12 +33,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = "tools/docs_paths.txt"
-FULL = "tools/full_paths.txt"
 STEPS = ROOT / "tools" / "check_all_steps.sh"
-TIERS = ("docs", "fast", "full")
+TIERS = ("docs", "light", "full")
 
 # (file, allowlist pattern) -> ("docs", [steps that read it]) when a step reads the path,
-# ("slow", [steps]) when only steps the fast tier skips read it, or ("none", reason) when the
+# ("release", [steps]) when only steps of the full tier, not the light, read it, or ("none", reason) when the
 # reference is not a read by any check-all step.
 _COMMENT = ("none", "a comment or docstring citing the document")
 _KEY = ("none", "a dictionary key named docs, not a path")
@@ -55,6 +54,9 @@ READERS = {
     ("tools/bug_status.py", "TASKS.md"): ("docs", ["bug_status"]),
     ("tools/bug_status.py", "TASKS-DONE.md"): ("docs", ["bug_status"]),
     ("tools/bug_status.py", "reports/bug_status.md"): ("docs", ["bug_status"]),
+    # The preflight runs before every tier's steps; the tools it runs on these paths are docs-tier steps' tools.
+    ("tools/preflight.sh", "reports/bug_status.md"): ("none", "run before the steps of every tier, the docs tier's included: tools/bug_status.py --write and --check"),
+    ("tools/preflight.sh", "docs/*"): ("none", "run before the steps of every tier: docs/COVERAGE.md and docs/TRUST.md, written by the docs-tier steps' tools (coverage/tree.py, doc_figures.py)"),
     ("tools/check_all_steps.sh", "reports/bug_status.md"): ("none", "the step's name and its command, tools/bug_status.py"),
     ("tools/release_prep.sh", "reports/bug_status.md"): ("none", "the step's name and its command, tools/bug_status.py --check"),
     ("tools/test_release_prep.sh", "reports/bug_status.md"): ("none", "the stub's expected call tools/bug_status.py --check"),
@@ -90,7 +92,7 @@ READERS = {
     ("tools/claude_hooks/agents.py", "research/costs/*"): ("none", "a Claude Code hook writes the ledger; its self-test uses a temporary directory"),
     ("tools/claude_hooks/agents.py", "research/audits/*"): ("none", "the quoted component is research/costs"),
     # Pinned open-defect survivors must name an open entry.
-    ("engine/src/mutate.ts", "BUG_INVENTORY.md"): ("slow", ["mutate", "ny_mutate"]),
+    ("engine/src/mutate.ts", "BUG_INVENTORY.md"): ("release", ["mutate", "ny_mutate"]),
     ("tools/coverage/roadmap.py", "TASKS.md"): ("none", "roadmap.py is run by hand, by no check-all step"),
     ("tools/transcription/review_yield.py", "BUG_INVENTORY.md"):
         ("none", "review_yield.py runs from costs.py --yield; its test (self_tests review_yield_tests) uses a temporary tree"),
@@ -126,6 +128,7 @@ WALKERS = {
     ("tools/rename_ids.py", ".rglob("): "the files of fixtures/<year>, interview/<year>/coverage and interview/<year>/personas only",
     ("tools/archive_text.py", 'glob("tools/**'): "its self-test scans tools/**/*.py",
     ("tools/check_all.sh", "--name-only"): "the run's guard: paths changed during the run, not an input of a step",
+    ("tools/change_scope.py", "--name-only"): "git diff-tree of HEAD against the working tree's tree: the paths a change touches, not an input of a step",
     ("tools/commit_tested.sh", "--name-only"): "commits a tested tree; not a check-all step",
     ("tools/claims.py", "--name-only"): "pre-commit: the forms a commit changes; its self-test uses a temporary repository",
     ("tools/claims.py", "ls-tree"): "pre-commit, root commit only: the forms of the first tree; not a check-all step",
@@ -154,7 +157,7 @@ WALKERS = {
 }
 
 # The classifier, its lists and its tests name the allowlisted paths without reading them.
-SCAN_EXCLUDED = {"tools/tier_paths.py", DOCS, FULL}
+SCAN_EXCLUDED = {"tools/tier_paths.py", DOCS}
 SCAN_SUFFIXES = {".py", ".ts", ".mjs", ".js", ".cjs", ".sh", ".lean", ".json", ".toml", ".yaml", ".yml", ".txt"}
 WALK_RE = re.compile(r"ls-files|ls-tree|os\.walk\(|\.rglob\(|glob\(\s*[\"'][^\"']*\*\*|recursive\s*=\s*True"
                      r"|git grep|[\"']grep[\"']|--name-only|git archive|[\"']archive[\"']")
@@ -187,46 +190,33 @@ def changed(old, new):
     return [p for p in out.splitlines() if p]
 
 
-def decide(parents, docs, triggers, changes):
+def decide(parents, docs, changes):
     """The tier and its reason. `docs` is the first parent's allowlist (None if it has none),
-    `triggers` the full-tier patterns or None, `changes` the changed paths per parent."""
+    `changes` the changed paths per parent."""
     if not parents:
         return "full", "a commit with no parent needs the full tier"
-    if triggers is None:
-        return "full", f"a parent has no {FULL}"
-    for parent, paths in zip(parents, changes):
-        hit = [p for p in paths if matches(p, triggers)]
-        if hit:
-            return "full", f"{hit[0]} changed (against {parent[:12]}) is a full-tier path ({FULL})"
     if len(parents) > 1:
-        return "fast", "a merge needs at least the fast tier"
+        return "light", "a merge needs at least the light tier"
     if docs is None:
-        return "fast", f"the parent has no {DOCS}"
+        return "light", f"the parent has no {DOCS}"
     outside = [p for p in changes[0] if not matches(p, docs)]
     if outside:
-        return "fast", f"{outside[0]} changed and is not a docs-tier path ({DOCS})"
+        return "light", f"{outside[0]} changed and is not a docs-tier path ({DOCS})"
     return "docs", f"every changed path is a docs-tier path ({DOCS})"
 
 
 def required(tree, parents):
-    triggers = list_at(tree, FULL) or []
-    for parent in parents:
-        t = list_at(parent, FULL)
-        if t is None:
-            triggers = None
-            break
-        triggers += t
     docs = list_at(parents[0], DOCS) if parents else None
-    return decide(parents, docs, triggers, [changed(p, tree) for p in parents])
+    return decide(parents, docs, [changed(p, tree) for p in parents] if len(parents) == 1 else [[] for _ in parents])
 
 
 # --- self-test ----------------------------------------------------------------------------------
 
 def tier_steps():
-    """(steps the fast tier skips, steps the docs tier runs), as check_all_steps.sh declares them."""
+    """(steps only the full tier runs, steps the docs tier runs), as check_all_steps.sh declares them."""
     text = STEPS.read_text(encoding="utf-8")
     found = {}
-    for name in ("slow_steps", "docs_steps"):
+    for name in ("light_steps", "docs_steps"):
         m = re.search(rf'^{name}=" ([a-z0-9_ ]+) "$', text, re.M)
         if not m:
             raise AssertionError(f"check_all_steps.sh declares no {name}")
@@ -238,7 +228,9 @@ def tier_steps():
         unknown = steps - declared
         if unknown:
             raise AssertionError(f"check_all_steps.sh: {name} names no step {', '.join(sorted(unknown))}")
-    return found["slow_steps"], found["docs_steps"]
+    if not found["docs_steps"] <= found["light_steps"]:
+        raise AssertionError(f"check_all_steps.sh: docs steps not in the light tier: {', '.join(sorted(found['docs_steps'] - found['light_steps']))}")
+    return declared - found["light_steps"], found["docs_steps"]
 
 
 def reference_res(pattern):
@@ -276,7 +268,7 @@ def scan(files, allow, read=lambda f: (ROOT / f).read_text(encoding="utf-8", err
     return refs, walks
 
 
-def check_ledgers(refs, walks, slow, docs_tier):
+def check_ledgers(refs, walks, release_only, docs_tier):
     problems = []
     for key in sorted(set(refs) - set(READERS)):
         problems.append(f"{key[0]} refers to the docs-tier path {key[1]} ({refs[key]}x) and is not in READERS")
@@ -287,10 +279,10 @@ def check_ledgers(refs, walks, slow, docs_tier):
             missing = [s for s in what if s not in docs_tier]
             if missing:
                 problems.append(f"{key[0]} reads {key[1]} in step(s) {', '.join(missing)}, not in the docs tier")
-        elif kind == "slow":
-            missing = [s for s in what if s not in slow]
+        elif kind == "release":
+            missing = [s for s in what if s not in release_only]
             if missing:
-                problems.append(f"{key[0]} reads {key[1]} in step(s) {', '.join(missing)}, which the fast tier runs")
+                problems.append(f"{key[0]} reads {key[1]} in step(s) {', '.join(missing)}, which the light tier runs")
         elif kind != "none":
             problems.append(f"READERS: {key}: unknown kind {kind}")
     for key in sorted(set(walks) - set(WALKERS)):
@@ -300,26 +292,17 @@ def check_ledgers(refs, walks, slow, docs_tier):
     return problems
 
 
-def check_lists(allow, triggers, tracked):
+def check_lists(allow, tracked):
     problems = []
     for p in allow:
         body = p[:-2] if p.endswith("/*") else p
         if any(c in body for c in "*?[") or not body or body.startswith("/"):
             problems.append(f"{DOCS}: {p!r} is neither an exact file nor a whole directory (dir/*)")
-        if matches(DOCS, [p]) or matches(FULL, [p]) or any(matches(f, [p]) for f in SCAN_EXCLUDED):
+        if matches(DOCS, [p]) or any(matches(f, [p]) for f in SCAN_EXCLUDED):
             problems.append(f"{DOCS}: {p!r} covers the classifier or its lists")
         hit = [f for f in surface_like(tracked) if matches(f, [p])]
         if hit:
             problems.append(f"{DOCS}: {p!r} covers code check-all runs ({hit[0]})")
-    for p in triggers:
-        if not any(matches(f, [p]) for f in tracked):
-            problems.append(f"{FULL}: {p!r} matches no tracked file")
-    both = [f for f in tracked if matches(f, allow) and matches(f, triggers)]
-    if both:
-        problems.append(f"{both[0]} is both a docs-tier and a full-tier path")
-    for t in triggers:
-        if matches(t.replace("*", "x"), allow):
-            problems.append(f"{FULL}: {t!r} lies inside the docs-tier paths")
     return problems
 
 
@@ -327,40 +310,24 @@ def surface_like(tracked):
     return [f for f in tracked if f.split("/")[0] in ("tools", "engine", "lean") or f in ("package.json", "tsconfig.json")]
 
 
-# Paths whose tier under the real tools/full_paths.txt is fixed: True for full, False for not full.
-FULL_EXAMPLES = {
-    "tools/engines/engine_cache.py": True,
-    "tools/human_review/logs.py": False,
-    "tools/human_review/README.md": False,
-    "engine/src/mutate.ts": True,
-}
-
-
-def check_examples(triggers):
-    return [f"{FULL}: {path} {'should' if want else 'should not'} need the full tier"
-            for path, want in FULL_EXAMPLES.items() if matches(path, triggers) != want]
-
-
 def unit_tests():
     allow = ["BUG_INVENTORY.md", "docs/*"]
-    trig = ["engine/src/mutate*.ts", "lean/*"]
     cases = [
         (["p"], [["docs/a.md", "BUG_INVENTORY.md"]], "docs"),
         (["p"], [[]], "docs"),
-        (["p"], [["docs/a.md", "README.md"]], "fast"),
-        (["p"], [["docs.md"]], "fast"),
-        (["p"], [["xdocs/a.md"]], "fast"),
-        (["p"], [["engine/src/mutate-worker.ts"]], "full"),
-        (["p"], [["lean/TaxFormalization/X.lean", "docs/a.md"]], "full"),
-        (["p", "q"], [["docs/a.md"], ["docs/a.md"]], "fast"),
-        (["p", "q"], [["docs/a.md"], ["lean/x"]], "full"),
+        (["p"], [["docs/a.md", "README.md"]], "light"),
+        (["p"], [["docs.md"]], "light"),
+        (["p"], [["xdocs/a.md"]], "light"),
+        # The inputs of the release's steps (mutation, the evaluators) need only the light tier at commit.
+        (["p"], [["engine/src/mutate-worker.ts"]], "light"),
+        (["p"], [["lean/TaxFormalization/X.lean", "docs/a.md"]], "light"),
+        (["p", "q"], [[], []], "light"),
         ([], [], "full"),
     ]
     for parents, changes, want in cases:
-        got = decide(parents, allow, trig, changes)[0]
+        got = decide(parents, allow, changes)[0]
         assert got == want, (parents, changes, got, want)
-    assert decide(["p"], allow, None, [["docs/a.md"]])[0] == "full"
-    assert decide(["p"], None, trig, [["docs/a.md"]])[0] == "fast"
+    assert decide(["p"], None, [["docs/a.md"]])[0] == "light"
     assert parse("# c\n\n a \nb/*\n") == ["a", "b/*"]
     # The scan finds each form of reference and each enumeration idiom, and the ledgers catch both ways.
     text = {"t/a.py": 'x = ROOT / "docs" / "COVERAGE.md"\n', "t/b.ts": 'readFileSync(join(ROOT, "BUG_INVENTORY.md"))\n',
@@ -373,41 +340,36 @@ def unit_tests():
     saved = READERS, WALKERS
     try:
         READERS = {("t/a.py", "docs/*"): ("docs", ["coverage_tree"]), ("t/b.ts", "BUG_INVENTORY.md"): ("docs", ["mutate"]),
-                   ("t/c.py", "docs/*"): ("none", "comment"), ("t/e.py", "research/costs/*"): ("slow", ["siblings_check"]),
+                   ("t/c.py", "docs/*"): ("none", "comment"), ("t/e.py", "research/costs/*"): ("release", ["siblings_check"]),
                    ("t/z.py", "docs/*"): ("none", "gone")}
         WALKERS = {}
         problems = check_ledgers(refs, walks, {"mutate"}, {"coverage_tree", "siblings_check"})
         want = ["not in WALKERS", "no longer refers", "t/b.ts reads BUG_INVENTORY.md in step(s) mutate, not in the docs tier",
-                "t/e.py reads research/costs/* in step(s) siblings_check, which the fast tier runs"]
+                "t/e.py reads research/costs/* in step(s) siblings_check, which the light tier runs"]
         for w in want:
             assert any(w in p for p in problems), (w, problems)
         assert len(problems) == len(want), problems
     finally:
         READERS, WALKERS = saved
-    assert check_lists(["docs/*", "tools/x/*", "a*.md"], ["lean/*", "docs/x"], ["docs/a", "lean/b", "tools/x/y.py"])
-    assert not check_lists(["docs/*"], ["lean/*"], ["docs/a", "lean/b"])
-    assert check_examples(["tools/human_review/*"]) == [f"{FULL}: tools/engines/engine_cache.py should need the full tier",
-                                                         f"{FULL}: tools/human_review/logs.py should not need the full tier",
-                                                         f"{FULL}: tools/human_review/README.md should not need the full tier",
-                                                         f"{FULL}: engine/src/mutate.ts should need the full tier"]
+    assert check_lists(["docs/*", "tools/x/*", "a*.md"], ["docs/a", "lean/b", "tools/x/y.py"])
+    assert not check_lists(["docs/*"], ["docs/a", "lean/b"])
 
 
 def self_test():
     unit_tests()
     tracked = git("ls-files").stdout.splitlines()
     allow = parse((ROOT / DOCS).read_text(encoding="utf-8"))
-    triggers = parse((ROOT / FULL).read_text(encoding="utf-8"))
-    slow, docs_tier = tier_steps()
-    problems = check_lists(allow, triggers, tracked) + check_examples(triggers)
+    release_only, docs_tier = tier_steps()
+    problems = check_lists(allow, tracked)
     files = surface()
     refs, walks = scan(files, allow)
-    problems += check_ledgers(refs, walks, slow, docs_tier)
+    problems += check_ledgers(refs, walks, release_only, docs_tier)
     if problems:
         print("tier paths self-test: FAILED", file=sys.stderr)
         for p in problems:
             print(f"  {p}", file=sys.stderr)
         return 1
-    print(f"tier paths self-test: ok ({len(allow)} docs-tier patterns, {len(triggers)} full-tier patterns, "
+    print(f"tier paths self-test: ok ({len(allow)} docs-tier patterns, "
           f"{len(files)} code files scanned, {len(READERS)} references and {len(WALKERS)} enumerations accounted for)")
     return 0
 

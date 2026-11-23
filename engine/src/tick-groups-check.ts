@@ -11,22 +11,25 @@
 //   one by one       the same answers given one question at a time, in asking order (as the CLI asks them), end as
 //                    the screen's answers do
 //
-//   tick-groups [--self-test]      --self-test: the declaration rules of tick-groups.ts on planted banks
+//   tick-groups [--forms a,b] [--self-test]
+//                    --forms: only the groups with a member that touches one of these forms (form-scope.ts)
+//                    --self-test: the declaration rules of tick-groups.ts on planted banks, and the forms scope
 import assert from "node:assert/strict";
 import { loadCanonical } from "./canonical.js";
 import { answerEvent, applyAnswer, applyAnswers, inputMeta, interviewView, loadInterview, questionTemplate, replay, replayState, type Event, type InterviewData } from "./interview.js";
 import { backgroundOf, type Background } from "./interview-coverage.js";
 import { ABOUT_SPOUSE, ABOUT_YOU, PERSON_FRAME, personWording } from "./spouse-wording.js";
 import { opensMap, tickGroupProblems, type GroupFacts, type GroupQuestion } from "./tick-groups.js";
+import { formScopeSelfTest, formsOption, scopeLine, touchesAny } from "./form-scope.js";
 import type { CanonicalData, Line } from "./types.js";
 
 /** The checks of the head of this file for each group of `config`, on its background return. `problems` fail the
  * command; `notes` say what was not checked. */
-export function tickGroupWalkProblems(data: CanonicalData, config: InterviewData, background: Background): { problems: string[]; notes: string[]; checked: number } {
+export function tickGroupWalkProblems(data: CanonicalData, config: InterviewData, background: Background, forms: Set<string> | null = null): { problems: string[]; notes: string[]; checked: number } {
   const problems: string[] = [], notes: string[] = [];
   let checked = 0;
   const header: Event = { version: 1, tax_year: config.tax_year };
-  for (const g of config.groups ?? []) {
+  for (const g of scopedGroups(config, forms)) {
     const where = `group ${g.id}`;
     const members = config.questions.filter((q) => q.group === g.id).map((q) => q.input);
     const at = background.steps.findIndex((s) => members.includes(questionTemplate(s.input)));
@@ -75,16 +78,23 @@ export function tickGroupWalkProblems(data: CanonicalData, config: InterviewData
   return { problems, notes, checked };
 }
 
+/** The groups of `config` with a member that touches a form of `forms` (every group when `forms` is null). */
+export function scopedGroups(config: Pick<InterviewData, "groups" | "questions">, forms: Set<string> | null): NonNullable<InterviewData["groups"]> {
+  return (config.groups ?? []).filter((g) => touchesAny(config.questions.filter((q) => q.group === g.id).map((q) => q.input), forms));
+}
+
 export function tickGroups(args: string[] = []): number {
   if (args.includes("--self-test")) return selfTest();
+  const forms = formsOption(args);
   const data = loadCanonical();
   let failed = 0;
+  console.log(`  ${scopeLine(forms)}`);
   for (const profile of ["full", "ny"] as const) {
     const config = loadInterview(profile);
-    const { problems, notes, checked } = tickGroupWalkProblems(data, config, backgroundOf(data, config, profile));
+    const { problems, notes, checked } = tickGroupWalkProblems(data, config, backgroundOf(data, config, profile), forms);
     for (const n of notes) console.log(`  ${profile}: ${n}`);
     for (const p of problems) console.error(`  ${profile}: ${p}`);
-    console.log(`  ${profile}: ${(config.groups ?? []).length} group(s), ${checked} shown whole on the background return, ${problems.length} problem(s)`);
+    console.log(`  ${profile}: ${scopedGroups(config, forms).length} of ${(config.groups ?? []).length} group(s) checked, ${checked} shown whole on the background return, ${problems.length} problem(s)`);
     failed += problems.length;
   }
   console.log(`tick-groups: ${failed ? `${failed} problem(s)` : "passed"}`);
@@ -93,6 +103,11 @@ export function tickGroups(args: string[] = []): number {
 
 /** The declaration rules on planted banks. */
 function selfTest(): number {
+  formScopeSelfTest();
+  const scopeBank = { groups: [{ id: "g", heading: "H?" }, { id: "h", heading: "H?" }], questions: [{ input: "a.one", group: "g" }, { input: "person.x", group: "h" }, { input: "b.one" }] } as unknown as InterviewData;
+  assert.deepEqual(scopedGroups(scopeBank, null).map((g) => g.id), ["g", "h"], "unscoped: every group");
+  assert.deepEqual(scopedGroups(scopeBank, new Set(["a"])).map((g) => g.id), ["g"], "scoped: the groups with a member of the form");
+  assert.deepEqual(scopedGroups(scopeBank, new Set(["b"])).map((g) => g.id), [], "a form with no grouped question: no group");
   const types: Record<string, string> = { "a.one": "Bool", "a.two": "Bool", "a.three": "Bool", "a.child": "Bool", "a.amount": "NonNegDollars", "b.one": "Bool", "person.x": "Bool", "person.y": "Bool" };
   const facts = (opens: Record<string, string[]> = {}): GroupFacts => ({
     typeOf: (i) => types[i],

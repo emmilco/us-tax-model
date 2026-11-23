@@ -37,9 +37,9 @@ The Lean toolchain has since been pinned (`lean/lean-toolchain`, v4.29.1); Node 
 `npm run check-all -- --year N`) and, when it passes, writes the hash of the tested
 working tree to its tier's marker and list of green trees (the last 50 of the clone):
 `.git/check-all-green` and `.git/check-all-green-trees` for the full tier,
-`check-all-green-fast` and `check-all-green-fast-trees` for fast, and the same with
+`check-all-green-light` and `check-all-green-light-trees` for light, and the same with
 `docs`. The run counts as green only if nothing outside the suite's own outputs
-(`reports/`, `rendered/`) changed while it ran. It refuses to start when a git-ignored
+(`reports/`, `rendered/`, and the figure blocks of the last wave, below) changed while it ran. It refuses to start when a git-ignored
 raw review file the review logs reference (`.transcription/`, `.classm/`) is missing
 (`python3 tools/worktree_data.py check`; `check --list` prints every reference): a
 linked worktree has none of them, and the review checks would otherwise pass on what
@@ -77,28 +77,59 @@ NAME...` saves a worktree's uncommitted diff, untracked files and uncarried revi
 that integrates it. check-all prints `worktree_gc.py check`; `tools/release.sh` and `tools/release_prep.sh` fail
 while any worktree is removable or stale. `--self-test` runs in check-all.
 
-The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast`):
+**Branches and releases (owner decision 2026-11-22).** Work is committed on the branch `next` and on lane branches,
+never on `main`. `main` moves only when `tools/release.sh` fast-forwards it to a commit whose exact tree passed a
+green full run in release mode, and the release tag is on that commit; so every commit `main` holds was released or
+is an ancestor of a release.
 
-- **full** (the default): every step except `interview_length`, which only a release runs
-  (`tools/release.sh` sets `CHECK_ALL_RELEASE=1`): it rewrites `interview_length.md` and checks
-  nothing another step does not, so between releases that report can be older than the tree.
-  A release needs the full tier. The recorded green full runs
-  (`.git/check-all-bg/runs/*/times`) took 13 to 32 minutes, median 17; most of the spread is
-  the machine's other load. Wave 2 is the longest stage: `engine_differential`, `compare` and
-  `mutate` set it. `engine_differential` reuses the outside engines' stored records while
-  their inputs are unchanged (`tools/engines/README.md`, "Stored engine records"), which takes
-  it from about 9 minutes to about 4 on a loaded machine, so `compare` and `mutate` set the wave.
-- **fast**: every step except `mutate`, `ny_mutate`, `engine_differential`, `lean_build`,
-  `compare`, `ny_compare` and `interview_length`; the recorded green fast
-  runs took 4 to 12 minutes, median 7. It does not check mutation adequacy or agreement with the
-  independent evaluators, and leaves `mutation.md`, `evaluator_agreement.md`,
-  `engine_differential.{md,json}` and `interview_length.md` as the last full run wrote them;
-  `evidence.md` then says that its E column dates from the latest release.
+**Preflight.** `tools/check_all.sh` and `tools/check_all_bg.sh` first run `tools/preflight.sh` in the worktree being
+tested (`check_all_bg.sh` before it takes its snapshot, so what it writes is in the snapshot) and stop when it fails
+(`CHECK_ALL_PREFLIGHT=done` skips it). It rebuilds when the build is stale (`tools/build_fresh.py`), regenerates the
+derived files the steps compare with what they would write (`reports/bug_status.md`, `docs/COVERAGE.md` and the
+README's coverage table, `reports/<year>/gate_frequencies.md`, `reports/<year>/person_wording.md`, the interview
+coverage report when the run will compare it, and last the figure blocks of `tools/doc_figures.py`), then runs the
+bookkeeping checks that fail in seconds (`check_bug_inventory`, `check_agent_runs`, `check_docs_conventions`,
+`bug_status --check`, `doc_figures --check`), stopping at the first failure. A run therefore never fails because a
+generated file was not regenerated.
+
+The run's own regenerated reports are consistent by construction. Steps of the run rewrite reports under `reports/`
+(evidence, coverage, citations, and in a full run mutation, the evaluator agreement, the engine differential and the
+interview length), and the figure blocks of the handoff, `README.md` and `docs/TRUST.md` quote some of them. The last
+wave's step `doc_figures` therefore writes the blocks from the reports the run itself wrote and then checks them;
+`check_all.sh` accepts that change to those three files when `tools/doc_figures.py --blocks-changed <tree before the
+run>` names them, that is, when their text differs from the tree before the run only between figure markers. A
+green run's tree holds reports and figures that agree, and `tools/commit_tested.sh` commits both.
+
+The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier full`):
+
+- **light** (the default; what a commit on `next` or a lane branch needs): compile, build and render, the engine
+  self-check, the federal and New York fixtures, the bookkeeping checks (`check_bug_inventory`, `bug_status`,
+  `check_agent_runs`, `check_docs_conventions`, `siblings_check`, `bookkeeping_self_tests`), the checks of generated
+  reports (`gate_frequencies`, `person_wording`, `coverage_tree`, `doc_figures`), and the interview checks
+  `interview_rules`, `interview_coverage` and `tick_groups` scoped to the forms the change touches.
+  `tools/change_scope.py` computes the scope from the paths that differ from HEAD: `all` when a path can change any
+  walk (the engine, the profiles, the schema, parameters, tables, an unlisted path), `none` when the interview checks
+  read no changed path (tools, bookkeeping, reports, reviews, sources, the Lean evaluator, the web UI), else the form
+  ids of the changed form files and of the input keys on the changed lines of fixtures, coverage rows and the
+  question bank. With a list, each check gets `--forms <ids>` (`engine/src/form-scope.ts`: a walk, row or tick group
+  is checked when one of its input keys names one of the forms); with `none` the three steps are listed as skipped;
+  with `all` they run unscoped. A scoped run does not judge what needs every walk (a baseline entry no longer seen,
+  the pruning report, the interview coverage report, a coverage set no row uses).
+- **full** (the release's tier): every step. In release mode (`CHECK_ALL_RELEASE=1`, which `tools/release.sh` sets)
+  it also runs `release_steps`: `interview_length` and the release checks of the sampled reviews
+  (`release_completeness`, `release_screens`, `release_false_no`, each with its `ny_` step: the `--release` checks of
+  `tools/release_reviews.sh`). Only a release runs it; never run it to commit. The recorded green full runs
+  (`.git/check-all-bg/runs/*/times`) took 13 to 32 minutes on an idle machine, median 17; most of the spread is the
+  machine's other load. `engine_differential` reuses the outside engines' stored records while their inputs are
+  unchanged (`tools/engines/README.md`, "Stored engine records").
 - **docs**: compile, the build, and the checks that read the bookkeeping paths in
   `tools/docs_paths.txt` (`check_bug_inventory`, `bug_status`, `check_agent_runs`, `siblings_check`,
-  `coverage_tree`, and `bookkeeping_self_tests`: the self-tests of the agent-run, siblings,
-  bookkeeping and green-record tools),
-  1 to 4 minutes in the recorded runs, nearly all of it the build.
+  `coverage_tree`, `doc_figures`, and `bookkeeping_self_tests`: the self-tests of the agent-run, siblings,
+  bookkeeping and green-record tools), nearly all of it the build.
+
+Between releases, the reports only the full tier rewrites (`mutation.md`, `evaluator_agreement.md`,
+`engine_differential.{md,json}`, `interview_length.md`, `evidence.md`, `properties.md`) can be older than `next`'s
+tree; the release run rewrites them, and `main` holds only their released versions.
 
 `compare` and `ny_compare` (`engine/src/compare.ts`) run the TypeScript and the Lean evaluator
 over every fixture case and over generated whole returns, and fail on any line value that
@@ -158,14 +189,12 @@ values by kind, fixtures apart from generated returns, and what was not compared
 a case the Lean evaluator gave no values for, a line only one evaluator gave, a line the Lean
 evaluator ran out of steps on. Each of those fails the step.
 
-A full-green tree is also fast- and docs-green, and a fast-green tree is docs-green.
+A full-green tree is also light- and docs-green, and a light-green tree is docs-green.
 Which tier a commit needs is decided from the paths it changes against its parent
-(`tools/tier_paths.py`): **full** if it changes a path in `tools/full_paths.txt` (the
-mutation tool and its equivalence and pinned lists, the Lean evaluator and its
-comparison, the engine differential), **docs** if every changed path is in
-`tools/docs_paths.txt`, **fast** otherwise; a merge needs at least fast, a commit with
-no parent full. The lists are read from the parent, so a commit cannot widen the list
-it is judged by. `tools/tier_paths.py --self-test` (run by `hooks/test_green.sh`) checks
+(`tools/tier_paths.py`): **docs** if every changed path is in `tools/docs_paths.txt`,
+**light** otherwise; a merge needs at least light, a commit with no parent full. No path
+makes a commit need the full tier: its other steps are the release's. The list is read
+from the parent, so a commit cannot widen the list it is judged by. `tools/tier_paths.py --self-test` (run by `hooks/test_green.sh`) checks
 that every reference to a docs-tier path in the code check-all runs is listed with the
 steps that read it, and that those steps are in the docs tier.
 
@@ -193,16 +222,18 @@ tier is below the one the commit needs, if HEAD has moved since the snapshot or 
 regenerated `reports/` and `rendered/` files into the working tree where it still holds
 the snapshot's version.
 
-`tools/release.sh` makes a release: on the clean tip of `main` it runs
-`tools/check_all_bg.sh --wait --tier full`, and when the run is green it commits the
-reports the run rewrote (if any, with `tools/commit_tested.sh`; `-F <file>` gives the
-message) and puts the annotated tag `r<YYYY>.<MM>.<DD>.<n>` on the tested commit. It
-pushes the tag only with `--push`. A red run tags nothing. A full run made in release mode
-(`CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full`, from any worktree;
-only a run in its snapshot worktree counts) adds
-its green tree to a release list (`tools/green.sh`); when the tip's tree is in that list,
-`tools/release.sh` still checks the sampled reviews but does not run the suite again, and tags the
-tip. So the full check that lets a commit onto `main` can also be the release's run.
+`tools/release.sh [--push] [-F <file>] [<commit>]` makes a release: it promotes a commit of `next` (its tip by
+default) to `main`. HEAD must be that commit, with a clean working tree (on `next`, or detached at an earlier commit of
+`next`), and `main` must be its ancestor. When the commit's exact tree is already release-green (a green full run in
+release mode, `CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full`, in the snapshot
+worktree, recorded in the release list of `tools/green.sh`), nothing is run again: that run included the sampled
+reviews' release checks, so `tools/release_reviews.sh` is skipped too. Otherwise it runs `tools/release_reviews.sh`
+(fail fast), then that release-mode run. When the run rewrote files (it rewrites the reports the light tier does not),
+`tools/commit_tested.sh` commits the tested tree on HEAD (`-F <file>` gives the message) and that commit is promoted.
+It then fast-forwards `main` to the commit (`git merge --ff-only` in the worktree holding `main`, or by moving the ref
+when none does), tags it `r<YYYY>.<MM>.<DD>.<n>`, records the tree as release-ready, and with `--push` pushes `main`
+and the tag. A red run, a sampled-review gap, a removable or stale worktree, or a `main` that is not an ancestor
+promotes nothing.
 
 `tools/release_prep.sh [--fail-fast]` is the recommended first step of a release: run it on the candidate tree as
 soon as its content is final, before the release-mode full check. A defect the full check would report only when
@@ -221,9 +252,10 @@ its wave ends (about 13 minutes for wave 1, longer for wave 2) shows here in min
 
 Every step runs, unless `--fail-fast` stops at the first failure. Each step's output goes to
 `<git dir>/release-prep/<step>.log`; a failing step's output is printed. It ends with each step's status and time
-and one line, `release-prep: PASS` (exit 0) or `release-prep: FAIL: <steps>` (exit 1). It rewrites no report but
-those its steps write in check-all (`coverage.md`); the reports only the later waves or a release rewrite are left
-as they are, so `doc_figures` checks against the committed reports. A pass does not mean the full check will pass.
+and one line, `release-prep: PASS` (exit 0) or `release-prep: FAIL: <steps>` (exit 1). It rewrites nothing but
+what its steps write in check-all (`coverage.md`, and the figure blocks `doc_figures` writes before it checks them);
+the reports only the later waves or a release rewrite are left as they are, so the figures are those of the committed
+reports. A pass does not mean the full check will pass.
 It takes one of the check-all slots. `tools/test_release_prep.sh` (check-all `self_tests`) runs it in a temporary
 repository with stub tools.
 
@@ -329,20 +361,23 @@ for a chain once an observed line reads it; mutation.md lists these survivors in
 (helpers nothing reads, candidates for cleanup), and `unobservedLineSelfTest` plants each way of being observed on a
 synthetic chain and checks that the rule then does not apply.
 
-`tools/hooks/pre-commit` refuses any commit whose tree is not exactly a tree a green
-run of the tier the commit needs tested (a marker, or one of the recorded green
+`tools/hooks/pre-commit` refuses any commit made on `main`, and any other commit whose tree is not exactly a tree
+a green run of the tier the commit needs tested (a marker, or one of the recorded green
 trees): no green run, a run of too low a tier, a tree changed since the run, or a
-partial stage. Git runs no pre-commit hook on a merge, so `tools/hooks/pre-push`
+partial stage; `tools/hooks/pre-merge-commit` refuses a merge commit on `main` (a fast-forward makes no commit).
+Git runs no pre-commit hook on a merge that needs no editing, so `tools/hooks/pre-push`
 checks every commit of the pushed range by the same rule, against its own parents,
-which catches a merge made by `git pull`; it also refuses a release tag (`refs/tags/r*`)
-whose commit's tree is not full-green. Enable both once per clone:
+which catches a merge made by `git pull`; it refuses to push `main` to a commit whose tree is not in the release
+list, and a release tag (`refs/tags/r*`) whose commit's tree is not full-green and release-ready. Enable the hooks
+once per clone:
 
     git config core.hooksPath tools/hooks
 
 `--no-verify` bypasses either hook; that is a deliberate act, not a routine.
 
 **No ceremonial reruns (owner rule, 2026-11-15; advisory, no tool enforces it).** A check is rerun only where the
-tree changed in what that check verifies. The commit guard still requires a green record of the exact tree, so where
+tree changed in what that check verifies; a release of a release-green tree reruns nothing. The commit guard still
+requires a green light-tier record of the exact tree, so where
 a rerun would be purely ceremonial (the tree differs from a green one only in what no check reads) the owner decides
 whether to commit with `--no-verify`, as on 2026-11-15 for three commits.
 

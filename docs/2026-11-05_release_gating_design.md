@@ -1,6 +1,6 @@
 # Release-gated check-all: design for the owner (T-238)
 
-Status: approved by the owner on 2026-11-05, with the three recommendations below: fast commits on `main`; release at every session end plus the path triggers; the docs tier included.
+Status: approved by the owner on 2026-11-05, with the three recommendations below: fast commits on `main`; release at every session end plus the path triggers; the docs tier included. **Amended by the owner on 2026-11-22** (last section): the parts marked *[superseded 2026-11-22]* no longer hold; the text above the amendment is kept as the record of the 2026-11-05 decision.
 
 ## The problem, measured
 
@@ -42,7 +42,7 @@ So today every commit on `origin/main` passed the full suite.
 | Tier | Runs | Time | Accepted for |
 |---|---|---|---|
 | **docs** | `check_bug_inventory`, `coverage_tree --check`, `green_self_test` | seconds | a commit whose changes all lie in an allowlist of bookkeeping paths: `TASKS.md`, `TASKS-DONE.md`, `BUG_INVENTORY.md`, `HANDOFF-NEXT-SESSION.md`, `handoffs/`, `docs/`, `research/costs/`, `research/audits/`, `PROJECT_INDEX.md` |
-| **fast** | every step except the five slow ones | ~9.5 min | any commit on `main` |
+| **fast** *[superseded 2026-11-22: replaced by the light tier]* | every step except the five slow ones | ~9.5 min | any commit on `main` |
 | **full** | today's check-all, unchanged | ~38 min | a release |
 
 The docs tier is decided by the diff against the parent commit, not by the agent's judgment. A single
@@ -59,7 +59,7 @@ self-test checks that no path a build step reads is on it.
 - `pre-push` refuses any `r*` tag whose tree is not in the full-green record.
 - The README states the latest release and the fact that only releases carry the full guarantee.
 
-### What `main` guarantees between releases
+### What `main` guarantees between releases *[superseded 2026-11-22: `main` holds only released commits]*
 
 - Every commit's tree passed at least the fast tier, or the docs tier for bookkeeping-only commits. The
   hooks enforce this exactly as today: same tree identity, same range check on push, two records instead
@@ -75,7 +75,7 @@ self-test checks that no path a build step reads is on it.
   fast run therefore stamps `evidence.md` with "engine evidence as of release r…". Release refreshes
   all of these.
 
-### When to release
+### When to release *[the path triggers superseded 2026-11-22: no path needs the full tier at commit]*
 
 My recommendation:
 - **at the end of every working session**, before the handoff;
@@ -95,7 +95,7 @@ finds the commit. The fix is a new commit, never a rewrite of pushed history.
 
 ## Alternatives considered
 
-1. **Work on a `dev` branch, with `main` fast-forwarded only at releases.** `main` would keep today's
+1. *[Adopted in substance 2026-11-22, as the branch `next`.]* **Work on a `dev` branch, with `main` fast-forwarded only at releases.** `main` would keep today's
    every-commit-full guarantee in its first-parent history, and `dev` would be pushed often. This is
    rejected as the default. Fast-forwarding puts the fast-only commits into `main`'s history anyway, and
    a merge commit per release adds ceremony across a two-branch workflow, so the guarantee becomes
@@ -129,6 +129,35 @@ finds the commit. The fix is a new commit, never a rewrite of pushed history.
 
 ## Owner decisions (2026-11-05)
 
-1. Fast commits land on `main`. The full guarantee belongs to release tags, and the README is reworded to say so.
+1. Fast commits land on `main`. The full guarantee belongs to release tags, and the README is reworded to say so. *[Superseded 2026-11-22: commits land on `next`; `main` moves only by a release's fast-forward.]*
 2. Release cadence: at every session end, plus the path triggers in "When to release".
 3. The docs tier is included.
+
+## Amendment: owner decision (2026-11-22)
+
+The owner approved each item below in the coordinating session of 2026-11-22. The expensive guarantees attach to
+the release instead of the commit; cheap invariants stay at commit; `main` is always releasable.
+
+1. **Branches.** Lanes and integration commit to a long-lived branch `next`, created at `main`'s commit of that day.
+   `main` advances only by fast-forward to a commit whose tree passed a release-mode full run, and the release tag
+   goes on that commit. `tools/release.sh` is the promotion step: for `next`'s tip (or a named commit of `next`) it
+   ensures a green release-mode full run of that exact tree (reusing the record or running one), fast-forwards
+   `main`, tags it, and with `--push` pushes `main` and the tag. `pre-commit` refuses a commit made on `main`
+   (`pre-merge-commit` a merge commit there); `pre-push` refuses to push `main` to a commit not recorded
+   release-green.
+2. **Commit-time checks** (the light tier, for `next` and lane branches): compile, build and render, the federal and
+   New York fixtures, the bookkeeping checks, the checks of generated reports, and the interview checks
+   (`interview_rules`, `interview_coverage`, `tick_groups`) scoped to the forms the change touches (`--forms`,
+   computed by `tools/change_scope.py`). Release-only, in the full tier: mutation (federal and New York), the engine
+   differential, both Lean comparisons and the Lean build, the unscoped interview rules, the interview length report,
+   the properties, the web UI tests, refusal reach, and the release checks of the sampled reviews. The fast tier is
+   gone; `tools/full_paths.txt` is gone, since no path makes a commit need the full tier. The docs tier is kept.
+3. **Preflight.** `tools/preflight.sh` runs first in `check_all.sh` and `check_all_bg.sh` and stops the run on
+   failure: it regenerates the derived files the steps compare (bug status, the coverage tree, gate frequencies,
+   person wording, the interview coverage report when it will be compared, the figure blocks), then runs the fast
+   bookkeeping checks. A run's own regenerated reports are consistent by construction: the last wave writes the
+   figure blocks from the reports the run wrote before it checks them, and `check_all.sh` accepts that change.
+4. **No repeated sampled-review check.** The release-mode full run includes the `--release` checks of
+   `tools/release_reviews.sh`, so `release.sh` skips `release_reviews.sh` when the exact tree is release-green, and
+   runs it first otherwise.
+5. The README of `tools/`, `CLAUDE.md` and `PROJECT_INDEX.md` describe the result.

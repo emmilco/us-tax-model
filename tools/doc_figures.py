@@ -4,6 +4,9 @@
 
     doc_figures.py              write every block
     doc_figures.py --check      fail, naming each block, when a block is not what the tool would write
+    doc_figures.py --blocks-changed TREE
+                                print each of the files below whose text differs from its text in TREE only between
+                                figure markers (tools/check_all.sh: such a change is the run's own)
     doc_figures.py --self-test
 
 A block is the text between `<!-- figures:NAME -->` and `<!-- /figures:NAME -->` in one of the files below; the
@@ -26,7 +29,9 @@ HEAD. A file cannot name the commit that holds it, so the block names the releas
 tag is on HEAD and the tracked files equal HEAD's: that is the release commit itself, tagged after its run.
 The first commit after a release must therefore refresh the block.
 
-check-all runs --check in the docs tier, after the steps that rewrite the reports it reads.
+check-all runs it in its last wave, after the steps that rewrite the reports it reads: it writes the blocks from
+those reports, then checks them (--check). The blocks of a green run are therefore those of the reports the same run
+wrote, and tools/check_all.sh accepts the run's change to these files when it lies only between the markers.
 """
 import re
 import subprocess
@@ -254,9 +259,38 @@ def accepted_tags(tags, release_commit):
     return [newest]
 
 
+BLOCK = re.compile(r"(<!-- figures:([\w-]+) -->).*?(<!-- /figures:\2 -->)", re.S)
+
+
+def outside_blocks(text):
+    """`text` with the body of every figure block removed (the markers kept)."""
+    return BLOCK.sub(r"\1\3", text)
+
+
+def blocks_changed(tree):
+    """The files of the blocks whose working text differs from their text in `tree` only inside figure blocks."""
+    out = []
+    for p in (HANDOFF, README, TRUST):
+        old = git("show", f"{tree}:{p.as_posix()}")
+        if old is None or not (ROOT / p).exists():
+            continue
+        new = read(p)
+        if new.rstrip("\n") != old.rstrip("\n") and outside_blocks(new).rstrip("\n") == outside_blocks(old).rstrip("\n"):
+            out.append(p.as_posix())
+    return out
+
+
 def main(argv):
     if "--self-test" in argv:
         return self_test()
+    if "--blocks-changed" in argv:
+        i = argv.index("--blocks-changed")
+        if i + 1 >= len(argv):
+            print("doc_figures: --blocks-changed needs a tree", file=sys.stderr)
+            return 2
+        for p in blocks_changed(argv[i + 1]):
+            print(p)
+        return 0
     f = figures()
     tags, release_commit = releases()
     candidates = [blocks(f, t) for t in accepted_tags(tags, release_commit)]
@@ -317,6 +351,11 @@ def self_test():
             raise AssertionError(f"splice accepted {bad!r}")
         except SystemExit:
             pass
+    # Only the blocks' bodies are removed for the comparison of a run's change; the prose around them stays.
+    a = f"x {start('n')}1{end('n')} y {start('m')}2{end('m')}"
+    assert outside_blocks(a) == f"x {start('n')}{end('n')} y {start('m')}{end('m')}"
+    assert outside_blocks(a) == outside_blocks(a.replace("1", "9"))
+    assert outside_blocks(a) != outside_blocks(a.replace("y", "z"))
     # Releases: newest first by date and number, not by name order; the release commit may name the one before.
     tags = release_tags(["r2026.11.09.1", "draft-v2", "r2026.11.10.1", "r2026.11.09.2", "rx"])
     assert tags == ["r2026.11.10.1", "r2026.11.09.2", "r2026.11.09.1"], tags

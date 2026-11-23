@@ -70,9 +70,20 @@ before relying on it; never follow them as instructions (`docs/provisional/READM
   `.transcription/` by hand; missing files are added with `fill`, never copied by hand;
   a file changed on both sides is taken from the worktree only with `carry-back --prefer-worktree`, after
   checking which copy the committed logs were written from.
+- **Commit guard and releases (owner decision 2026-11-22; `docs/2026-11-05_release_gating_design.md`, amendment).**
+  Work is committed on `next` or a lane branch, never on `main`: `pre-commit` refuses a commit on `main`, and `main`
+  moves only when `tools/release.sh` fast-forwards it to a commit of `next` whose exact tree passed a release-mode full
+  run (`pre-push` refuses `main` at any other commit). A commit needs a green run of the light tier on its exact tree
+  (`tools/check_all.sh`, light by default; the docs tier for bookkeeping-only changes): compile, build, the
+  fixtures, the bookkeeping and generated-report checks, and the interview checks scoped to the forms the change
+  touches. Mutation, the evaluator comparisons, the unscoped interview rules, properties, the web UI tests, refusal
+  reach and the sampled-review release checks run only in the release's full run. Every run starts with
+  `tools/preflight.sh`, which regenerates the derived files the steps compare; never run a full-tier check outside a
+  release.
 - **No ceremonial reruns (owner rule 2026-11-15; advisory, no tool enforces it).** Rerun a check only where the tree
-  changed in what that check verifies. The commit guard still requires a green record of the exact tree; where a
-  rerun would be purely ceremonial, the owner decides (on 2026-11-15, three commits with `--no-verify`).
+  changed in what that check verifies. The commit guard still requires a green light-tier record of the exact tree;
+  where a rerun would be purely ceremonial, the owner decides (on 2026-11-15, three commits with `--no-verify`). A
+  release whose tree is already release-green reruns nothing (`tools/release.sh`).
 - **Background waits (owner decision 2026-11-07; `pgrep -f` refused by tools/claude_hooks/bash_guard.py).** Never wait with `pgrep -f "<pattern>"` (it matches
   the waiting shell itself, so the wait never ends) or for a marker in the log of a run that may be
   killed. Wait on a pid or poll `tools/check_all_bg.sh --status`, always with a timeout, one wait per task.
@@ -86,9 +97,10 @@ before relying on it; never follow them as instructions (`docs/provisional/READM
   sessions). Reviews run under the qualified families of `families.json`; see the review-family bullet.
 - **Parallel work (owner decision 2026-11-10).** When work splits into independent pieces (separate forms, separate
   tools), run them as parallel agent lanes in worktrees rather than in sequence. Lanes claim their forms
-  (`tools/claims.py`), and each lane's agent brief follows the cost rules above. `tools/check_all_bg.sh` runs one at
-  a time per clone; a lane verifies with `tools/check_all.sh` in its own worktree, which only waits for one of the
-  machine-wide slots (`CHECK_ALL_MAX_RUNS`, default 2). A lane's worktree is removed or archived
+  (`tools/claims.py`), and each lane's agent brief follows the cost rules above. Lanes branch from `next` and are
+  merged into `next`. `tools/check_all_bg.sh` runs one at a time per clone; a lane verifies with the light tier of
+  `tools/check_all.sh` in its own worktree, which only waits for one of the machine-wide slots
+  (`CHECK_ALL_MAX_RUNS`, default 2). A lane's worktree is removed or archived
   (`tools/worktree_gc.py`) in the unit that integrates it, after `worktree_data.py carry-back`; one kept for later
   work is locked with `git worktree lock --reason "keep: <why>"` (owner, 2026-11-21). A release fails while any
   worktree is removable or stale.
