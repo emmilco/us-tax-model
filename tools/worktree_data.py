@@ -11,7 +11,7 @@ into a linked worktree (an agent's) from the main worktree, and carry back what 
         copy-on-write clones of the main worktree's (cp -cR; never links), and write the clone's base:
         the hash of every untracked review-data file as cloned, and each ledger's length and hash.
         Refused when a tracked file under DATA has uncommitted changes in the worktree
-    worktree_data.py carry-back <worktree> [--main DIR] [--dry-run] [--prefer-worktree PATH...]
+    worktree_data.py carry-back <worktree> [--main DIR] [--dry-run] [--prefer-worktree PATH...] [--keep-main PATH...]
         bring back into the main worktree what the worktree changed since its clone:
           ledgers (costs.jsonl): the rows the worktree appended after the clone point are appended to the
             main ledger, but for a row main already holds (the same line, as when the rows came back through
@@ -28,6 +28,10 @@ into a linked worktree (an agent's) from the main worktree, and carry back what 
           non-ledger file that is a both-changed conflict is copied from the worktree over main's instead
           of refusing, and reported as such; a named file not in conflict is reported and handled as
           usual; a ledger path is an error. Every other conflict still refuses
+        --keep-main PATH...: the same for main's copy: each named both-changed conflict is left as main
+          has it, nothing copied, and recorded as carried (the base takes the worktree's copy, so a later
+          carry-back does not raise it again unless the worktree changes it). A path in both lists or a
+          ledger path is an error
         The base then moves to what was carried, so a second carry-back brings only what came after.
     worktree_data.py fill <worktree> [--main DIR] [--dry-run]
         copy into the worktree each untracked review file the main worktree has and the worktree lacks.
@@ -333,14 +337,19 @@ def plan(main, worktree, base, skip):
     return appends, copies, conflicts, deleted
 
 
-def carry_back(main, worktree, manifest, dry_run=False, skip=None, prefer=()):
+def carry_back(main, worktree, manifest, dry_run=False, skip=None, prefer=(), keep=()):
     if not manifest.is_file():
         raise SystemExit(f"worktree_data: no clone base for {worktree} ({manifest}); a worktree whose data was not "
                          "cloned with `worktree_data.py clone` cannot be carried back exactly")
     prefer = [os.path.normpath(x) for x in prefer]
-    for rel in prefer:
-        if is_ledger(rel):
-            raise SystemExit(f"worktree_data: --prefer-worktree does not apply to a ledger: {rel}")
+    keep = [os.path.normpath(x) for x in keep]
+    for flag, rels in (("--prefer-worktree", prefer), ("--keep-main", keep)):
+        for rel in rels:
+            if is_ledger(rel):
+                raise SystemExit(f"worktree_data: {flag} does not apply to a ledger: {rel}")
+    both_named = sorted(set(prefer) & set(keep))
+    if both_named:
+        raise SystemExit("worktree_data: named in both --prefer-worktree and --keep-main: " + ", ".join(both_named))
     if skip is None:
         skip = tracked(worktree) | tracked(main)
     base = json.loads(manifest.read_text())
@@ -353,6 +362,13 @@ def carry_back(main, worktree, manifest, dry_run=False, skip=None, prefer=()):
             print(f"worktree_data: {rel}: changed in both; worktree copy kept (--prefer-worktree)")
         else:
             print(f"worktree_data: {rel}: not in conflict; --prefer-worktree has no effect on it")
+    for rel in dict.fromkeys(keep):
+        both = f"{rel}: changed in both the worktree and the main worktree since the clone"
+        if both in conflicts:
+            conflicts.remove(both)
+            print(f"worktree_data: {rel}: changed in both; main copy kept (--keep-main)")
+        else:
+            print(f"worktree_data: {rel}: not in conflict; --keep-main has no effect on it")
     for rel in deleted:
         print(f"worktree_data: {rel} was deleted in the worktree; left in the main worktree")
     if conflicts:
@@ -434,7 +450,7 @@ def self_test():
         _self_test()
     print("worktree_data self-test: check (present, a receipt missing a file, prose left out), clone, carry-back "
           "(ledger rows with rows on both sides, changed files, tracked files left out, both-changed refusal, "
-          "rewritten ledgers, repeated carry, no base, --prefer-worktree, interleaved main ledger accepted, missing or "
+          "rewritten ledgers, repeated carry, no base, --prefer-worktree, --keep-main, interleaved main ledger accepted, missing or "
           "reordered base row refused, rows already in main not duplicated), fill (adds missing, never overwrites, skips ledgers, "
           "dry run, carry-back after) ok")
     return 0
@@ -528,6 +544,31 @@ def _self_test():
         assert (main / a_rel).read_text() == "a3" and (main / b_rel).read_text() == "b-wt", "preferred files are copied"
         assert carry_back(main, wt, manifest, skip=skip) == 0, "a preferred file is recorded as carried"
         (main / a_rel).write_text("a3")
+        # --keep-main: a named conflicting file keeps main's copy and is recorded as carried; a file named
+        # in both lists, or a ledger, is an error; a dry run records nothing.
+        (main / a_rel).write_text("a-main4")
+        (wt / a_rel).write_text("a-wt4")
+        assert carry_back(main, wt, manifest, skip=skip) == 1, "the conflict refuses unnamed"
+        for bad in ([a_rel, ".transcription/" + LEDGER],):
+            try:
+                carry_back(main, wt, manifest, skip=skip, keep=bad)
+                raise AssertionError("a ledger was accepted by --keep-main")
+            except SystemExit:
+                pass
+        try:
+            carry_back(main, wt, manifest, skip=skip, prefer=[a_rel], keep=["./" + a_rel])
+            raise AssertionError("a path in both lists was accepted")
+        except SystemExit:
+            pass
+        assert carry_back(main, wt, manifest, dry_run=True, skip=skip, keep=[a_rel]) == 0
+        assert carry_back(main, wt, manifest, skip=skip) == 1, "a dry run records nothing"
+        assert carry_back(main, wt, manifest, skip=skip, keep=[a_rel]) == 0
+        assert (main / a_rel).read_text() == "a-main4", "main's copy is kept"
+        assert carry_back(main, wt, manifest, skip=skip) == 0, "a kept file is recorded as carried"
+        assert (main / a_rel).read_text() == "a-main4"
+        (wt / a_rel).write_text("a-wt5")
+        assert carry_back(main, wt, manifest, skip=skip) == 1, "a later worktree change conflicts again"
+        (wt / a_rel).write_text("a-wt4")
         # A rewritten worktree ledger is refused; so is a rewritten main ledger.
         (main / ".transcription" / "a.prompt.txt").write_text("a3")
         good = (wt / ".transcription" / LEDGER).read_text()
@@ -633,9 +674,11 @@ def main(argv):
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--prefer-worktree", nargs="+", metavar="PATH", default=[],
                     help="carry-back: take the worktree's copy of these both-changed files")
+    ap.add_argument("--keep-main", nargs="+", metavar="PATH", default=[],
+                    help="carry-back: keep main's copy of these both-changed files and record them as carried")
     a = ap.parse_args(argv)
-    if a.prefer_worktree and a.command != "carry-back":
-        ap.error("--prefer-worktree applies to carry-back")
+    if (a.prefer_worktree or a.keep_main) and a.command != "carry-back":
+        ap.error("--prefer-worktree and --keep-main apply to carry-back")
     wt, main_wt, manifest = locate(Path(a.worktree), a.main)
     if a.command == "clone":
         if a.dry_run:
@@ -644,7 +687,7 @@ def main(argv):
         return 0
     if a.command == "fill":
         return fill(main_wt, wt, manifest, a.dry_run)
-    return carry_back(main_wt, wt, manifest, a.dry_run, prefer=a.prefer_worktree)
+    return carry_back(main_wt, wt, manifest, a.dry_run, prefer=a.prefer_worktree, keep=a.keep_main)
 
 
 if __name__ == "__main__":

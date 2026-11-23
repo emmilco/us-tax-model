@@ -17,6 +17,98 @@ committed, in worktree `.claude/worktrees/fr2` (branch `fix-round-2`); its paid 
 **Read `handoffs/HANDOFF-DEEPSEEK-2026-11-17.md` first**: state, the review-family switch to decide first, the steps to
 finish round F, the queue, and the lessons.
 
+# 2026-11-15/16: fix round B1 and the coverage expansion (superseded by the entry above where they differ)
+
+This entry holds the "What governs the work" tables and the 2026-11-15/16 record; its state statements are dated. Earlier entries are historical and are in
+`handoffs/HANDOFF-NEXT-SESSION-ARCHIVE-2026-11.md`. Read this entry, then the documents in "What governs the work"
+below for the kind of work you are doing, then the top of `TASKS.md`.
+
+## State
+
+
+- **Last release:** `r2026.11.16.1` (2026-11-16), the newest release tag before this commit; `git describe --tags
+  --match 'r*'` gives the commits after it (a file cannot name the commit that holds it).
+- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,224 entries (highest BUG-1224), 105 open, 4 of them covered
+  by a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 73 rows not done; scoreboard 692 of 3,911 computed lines
+  (17.7%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
+  156 ambiguity entries, 152 linked to a line (`ambiguities/2025.yaml`).
+
+- **On `main`** when this entry was written, oldest first: `c556c598` (the coverage report lists at most 8 cases per
+  branch; `interview_length` runs at a release only), `a2f24909` (the whole-interview redraft landed: questions,
+  coverage rows, its review round), `8a5a25d8` and `66a808c8` (tax year 2026 preparation, batches A and B: year
+  changes as operations, carry, operation kinds, archive; interview walks on worker threads), `acde74b5` (fix round
+  B1: the goal-1 round's eighteen fix lanes, BUG-0656 to BUG-0764), then the coverage expansion commit, which holds
+  this entry.
+- **Tax years:** 2025 is the only adopted year (`years.json`: `adopted` and `ny_adopted` are `[2025]`). 2026 is
+  prepared, not adopted: the definition changes as operations in `changes/2026/` (checked on every check-all run),
+  parameters and tables staged in `research/ty2026/`, plan in `docs/ty2026/ADOPTION.md`. The IRS finals are expected
+  December 2026 to January 2027 (T-011, T-322).
+- **Reviews:** qualified families by tier (owner 2026-11-17): a form is satisfied by any qualified
+  family's current log. Qualified families `claude` and `deepseek` (`tools/transcription/families.json`); only Claude is callable
+  (model `claude-opus-5-5`); GPT is advisory and not callable.
+
+## Landed on 2026-11-15/16, and what is open
+
+- **B1** (`acde74b5`): the goal-1 round's eighteen fix lanes, with their round-2 reviews and rulings.
+- **Coverage expansion** (owner, 2026-11-15: release with the expansion), integrated in one lane: Schedule E with Form
+  8582, Form 1116 with Schedule B, digital assets, married filing separately, dependent filers, Schedule 1 other
+  income, pay not on a W-2, and the partnership and S corporation K-1 forms (Form 7203 with them) landing unwired
+  (`scope.k1` still refuses). Left out: the estate and trust K-1 lane (`x2-k1e`, no class M possible before the K-1
+  wiring), `qdcg_amount` (lands with Form 8615, not started), and the computing of Schedule 1 line 8u (reverted after
+  two medium review findings; inmate pay refuses at `s1.line8_other` again; T-336). These areas pass the mechanical
+  interview checks but have NOT had the owner's walk (T-332) or the written judgment record (T-333); until then they
+  are not at the redraft's standard.
+- **Release `r2026.11.15.1`** was never tagged; the last release is `r2026.11.16.1`.
+- **Open findings, by owner decision left open for this release:** the 42 medium findings of the release's sampled
+  reviews (mostly questions narrower than their rule, so a filer answers No and an item is dropped, about 25 of
+  them in the expansion's new areas; a smaller set of logic errors in the K-1 and rental areas). The owner sets the
+  fix plan after the release; `python3 tools/bug_status.py --open` lists them.
+- **Interview walks of the new areas** (before/after, 2026-11-15): every typical filer of the seven areas now
+  completes; the filer with none of them goes from 56 to 58 steps: digital assets (+1, by design) and
+  `f1040.tax_exempt_interest` now a screen for every filer (+1, from lane g1-f7b, not justified by its note).
+- Owner decisions of 2026-11-15, recorded in this documentation commit: the coverage expansion protocol adopted as
+  normative, with its stop rule (section 1.1) and married filing separately run in parallel with wave X1 (section
+  8.9); a defect entry whose fix is only proposed says "Proposed fix:" (`tools/README.md`, bug inventory);
+  `interview_length` runs at a release, not in the full-tier commit gate (`c556c598`; `tools/release.sh` sets
+  `CHECK_ALL_RELEASE=1`).
+
+## What governs the work
+
+Normative documents, by the kind of work. Read the one that applies before the first change.
+
+| Work | Read |
+| --- | --- |
+| Any work | `CLAUDE.md` (the owner's standing rules: models, inference cost, worktrees, background waits, parallel lanes); `docs/consolidation_charter.md` (architecture, the verification system, the order of work, the documentation conventions in section 6) |
+| Validation, rulings, human review | `docs/2026-10-24_validation_policy.md` |
+| Adding or changing an interview question, topic or form | `docs/2026-11-13_interview_construction_protocol.md` |
+| Bringing a refused form or situation into scope | `docs/2026-11-15_coverage_expansion_protocol.md` (owner decision 2026-11-15) |
+| Releases and the check tiers | `docs/2026-11-05_release_gating_design.md` (approved 2026-11-05); `tools/README.md` ("Review rerun guards"; "Sampled completeness, screen and false-no reviews") |
+| Tax year 2026 | `docs/ty2026/ADOPTION.md`; `docs/2026-11-14_year_change_operations.md`; `changes/2026/README.md` |
+| New York | `docs/ny/INTEGRATION.md`; `docs/ny/2026-11-14_ny_year_handling.md` |
+
+**Standing decisions** are in `CLAUDE.md`, `handoffs/HANDOFF-HARDENING-1.md` (the owner's decisions of the hardening
+phase), `docs/provisional/DECISIONS.md` (questions of the interview redraft settled by the coordinator under the
+owner's delegation of 2026-11-14; each says how to reverse it) and the `TASKS.md` rows that name an owner decision
+(T-326 lists the 2026 preparation decisions taken on the owner's behalf, for the owner to confirm).
+
+## What is a record, not guidance
+
+These are records of past work. Cite them as evidence of what an agent did or found on a date; never follow them as
+instructions, and check any claim in them against the tree before relying on it:
+
+- `docs/provisional/lanes/` (one note per agent lane, with the lanes' `*_work/` scratch), `docs/provisional/walks/`,
+  `docs/provisional/map_work/`, and `docs/provisional/STATUS.md`, `MAP.md`, `NORMS.md` (the redraft's working
+  documents, superseded by the landing and the interview construction protocol). See `docs/provisional/README.md`.
+- `docs/records/` (dated folders of a round's lane briefs, design scouts and coordinator notes, kept verbatim as worked
+  examples for the coverage expansion protocol's section 8.7; placeholder ids in them are not rewritten).
+- `handoffs/`, except `HANDOFF-HARDENING-1.md`; the archive of this file.
+- Dated documents in `docs/` other than the normative ones above: each is a point-in-time document.
+
+## Next
+
+The order of work is at the top of `TASKS.md`. Open owner-facing points are listed in the entry above (T-312, T-326,
+T-332, T-333); the in-flight lanes are listed there too.
+
 # 2026-11-11/12: the interview redesign's first slice is built and on main; the owner's walk is next
 
 **State:** `main` is pushed through `abf7d60a` (the commit after it holds this entry). Nothing is running except the

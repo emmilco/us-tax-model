@@ -80,7 +80,10 @@ main copy is unchanged, refusing everything if any file changed on both sides. N
 such a non-ledger file after `--prefer-worktree PATH...` (repo-relative; shell globs are fine)
 copies the worktree's version over main's instead, with one report line per file; a ledger
 name is an error, a named file not in conflict is reported and handled as usual, every other
-conflict still refuses, and `--dry-run` writes nothing. Files git
+conflict still refuses, and `--dry-run` writes nothing. `--keep-main PATH...` is its counterpart:
+each named both-changed file is left as main has it, nothing copied, and recorded in the base as
+carried, so a later carry-back raises it again only if the worktree changes it; a path named in
+both lists is an error. Files git
 tracks are left to the worktree's commits. A worktree cloned some other way has no base
 and is refused; carry it back by hand. `python3 tools/worktree_data.py fill <worktree>`
 (`--dry-run` first; run from the main checkout) copies into the worktree each untracked

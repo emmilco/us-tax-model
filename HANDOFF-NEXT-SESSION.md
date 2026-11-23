@@ -1,45 +1,65 @@
-# 2026-11-22 evening: release gating landed on `next`; integration wave in flight
+# 2026-11-23: the 2026-11-22/23 wave integrated on `next`; `main` unchanged and unreleased
 
-**State (2026-11-22).** `main` = `870cc146` (round F, pushed); last release `r2026.11.16.1`. `next` = `9a2b3e9c`: round F
-plus the release-gating change (next/main split, light commit tier, preflight, release-only full checks;
-`docs/2026-11-05_release_gating_design.md`, amendment of 2026-11-22; `CLAUDE.md`, "Commit guard and releases"). Work is
-committed on `next` or a lane branch, never on `main`; `main` moves only by `tools/release.sh`. A commit needs a green
-light-tier run (`tools/check_all.sh`); the full tier runs only at a release.
+**State (2026-11-23).** `main` = `870cc146` (round F); last release `r2026.11.16.1`; nothing of this wave is released.
+`next` holds every lane of the wave, oldest first: `9a2b3e9c` (release gating: next/main split, light commit tier,
+preflight), `f4d8ea31` (batches 1 and 2: rollover tools T-339 to T-346, 2026 parameters and finals refresh, closures,
+wording and round F fixes; BUG-0998 to BUG-1118), `ed6c46ea` (five lanes: speed, rb, left, wk1, wk2; BUG-1119 to
+BUG-1128), `25e48ec0` (six lanes: ty26-ops, hh, adlow, fx-seqbi, fx-eduhsa, fx-capital; BUG-1129 to BUG-1172),
+`8175c23d` (three lanes: advfix-land with the retirement findings, fx-ny with nyfix, fx-itemized; BUG-1173 to
+BUG-1224), then the commit holding this entry (the `worktree_data.py carry-back --keep-main` option, ledger-fix
+`3bb2046c`, and this entry). Each integration commit's message lists its lanes, merge resolutions and review debt.
+The wave's worktrees are archived (`tools/worktree_gc.py archive`); their review data is carried back to the main
+checkout.
 
-**Owner decision (2026-11-22).** Back on Ultra: heavy parallel work in worktrees, with agent autonomy. The usage-scarcity
-rule of 2026-11-16 has ended (`CLAUDE.md`). Reviews run on Claude (`claude-opus-5-5`; owner, 2026-11-21); DeepSeek is
-qualified and not callable (`tools/transcription/families.json`).
+**Owner decisions (2026-11-23).** EIC self-only age (`amb.2025.eic_self_only_age`): the Pub. 596 reading. EIC head of
+household with a nonresident spouse (`amb.2025.eic_hoh_nonresident_spouse`): the Pub. 596 reading, unchanged. HSA split
+(`amb.2025.hsa_split_spouse_eligible`): only the shared family months are split, as built in fx-eduhsa. Charity band
+(BUG-1204): kept as built; refuse past the 60% and 30% legal limits, below them `sa.charity_limited` decides.
 
-**In flight, not on `next`** (check `git worktree list` and each branch before relying on this; none of it is released):
-- `integrate-1` (worktree int1): about 500 staged files: year rollover T-339 to T-346, the 2026 finals, fixes for
-  BUG-0998 to BUG-1113; BUG_INVENTORY.md highest entry there BUG-1118. [flight]
-- `integrate-2` (worktree int2): batch 1+2, staged on `next`; the queue of
-  `.claude/wave-2026-11-22/after-int-queue.md` waits for it. [flight]
-- `adversarial-fixes` (advfix): fixes of the adversarial scouts' medium findings and T-333 mediums (Form 8919 reason code G,
-  s2, s8812, retirement, person.yaml, scope.yaml); uncommitted. [flight]
-- `ny-schedule-e` (nyfix): NY IT-201 line 11 and depreciation decoupling; staged. [flight]
-- Lane branches off `next` (worktrees adlow, hh, left, rb, speed, wk1, wk2 ...): scout and fix lanes of the wave; each lane
-  claims its forms with `tools/claims.py`. Their reports are in `.claude/scouts-2026-11-22/` and are testimony: confirm each
-  finding against the archived source and the current YAML before fixing. [flight]
+**Open work from `.claude/wave-2026-11-22/after-int-queue.md`**, each checked against this tree on 2026-11-23:
+- W2 guard (offer `scope.nol` only after a business or disaster route): not built; `scope.nol` has no `gated_by`.
+- W4 guard (re-ask when a non-land rental has an empty building list): no such check found in `forms/2025/rental.yaml`
+  (searched, not walked).
+- BUG-0993 (rental building basis prompt) and its `rprop.credit` help draft (`leftovers-check.md`): open.
+- `samples.confirmed_bugs()` counting an id inside a "no defect" class (queue item 6), and `core.hooksPath` pointing at
+  the main checkout's hooks (item 19; commits use `git -c core.hooksPath=tools/hooks commit`): neither is in
+  `BUG_INVENTORY.md`; not filed.
+- Agent-run rows of the wave (item 11): not in `research/costs/agent_runs.jsonl` on `next`. 53 rows of 2026-11-22/23
+  sit uncommitted in the main checkout's working copy of that file; they reach `next` by a fold or a copy there.
+- BUG-0764 (AMT line 7 over-refusal at $0 taxable income): open. The kill fixture drafted at
+  `/tmp/scout-mutants/fixtures/amt_l7_zero_taxable_income.json` is not in the repository (unverified whether /tmp
+  still holds it).
+- Mutation survivors `s8812.line18a` and `person.f8919_line10` (item 14): both still argued in
+  `reports/2025/mutation.md`; whether they were re-looked at after advfix is unverified.
+- BUG-1124 (f2441 fixture), BUG-1127 (W7, one `sales.special` question per return), BUG-1136 (fx-eduhsa-05, an AOC ban
+  also blocks the LLC): open. BUG-1125 (W5) is recorded fixed by a help change; whether the follow-up question for
+  filers 16 to 23 is still wanted is unverified.
+- adlow mediums BUG-1151 (NY S-201), BUG-1152 (NY railroad S-122), BUG-1154 (Roth-only excess contributions): open.
+- BUG-1212 (New York itemize choice; the fx-ny-04 subject, owner's call; lane recommendation: leave filed as low): open.
+- fx-capital and fx-seqbi leftovers, per their messages (not rechecked): code H not in the `sales.code` list;
+  `qbi.prior_form` asked of filers without QBI; the generate.ts premiums-over-Form-7206 differential at release.
+- T-353: the 67 ids the 2026 operations print as another number, to rename in the 2025 tree before the 2026 adoption;
+  with it `s2.amt_mfs_quarter` and `s2.amt_h_mfs_quarter` (`forms/2025/s2.yaml`), whose rename needs a 2025-tree change
+  because the year-change files may not rename.
 
-**Queued once integrate-2 is on `next`** (`.claude/wave-2026-11-22/after-int-queue.md`): the BUG-1094 closure (not a defect,
-p970 p. 11); guards for W2 and W4; nyfix and advfix onto `next`; the 2026 operations of
-`.claude/wave-2026-11-22/ty2026-ops-ready.md` (BUG-1031 AMT phase-out rate, BUG-1032 IRA rate labels, T-353 renaming of 67
-ids; blocked until other branches release their form claims); BUG-0993 fix; the tool bug in `samples.confirmed_bugs()`;
-the two pending nyfix defects (05 and 06).
+**Review debt the integrations recorded** (run before the release): class M person (BUG-1207's
+`person.tip_employers` and the other person changes since fx-ny's run), sc and sa against the combined form changes,
+and f1040 (no candidate matched the merged computation at `25e48ec0`; rerun on Claude at `8175c23d`, agree 589:
+recheck whether that settles it, unverified); index lines current on neither side (transcription sa 1, sc 3; render sa
+1, 4, 17; render s1 8a); `ny_it201` render 40 and 48 (ruled a finding of BUG-0762) and 1; household transcription
+`hoh_fails`; the sampled screen, false-no and completeness reviews due at release (advland's, adlow's `f4952` gate and
+screens, fx-capital's `sd.sold_other`).
 
-**Open owner-facing points:** T-312 (redraft choices), T-326 (2026 preparation choices), T-332 (owner walk) and T-333
-(judgment records) of the 2026-11-15 expansion areas. The IRS 2026 finals are still expected December 2026 to January 2027
-(T-011, T-322).
+**Tool bugs and other open entries:** BUG-1170 (`siblings.py --check` re-tests entries already committed on `next`),
+BUG-1171 (`rule.py --amend` cannot set the drop flag on a ruled class M section), BUG-1214 (unscoped interview-rules
+finds nine problems on `next` itself), BUG-1215 (wording of the three new New York screening questions). Because of
+BUG-1171, integration 5 set the drop flag by hand on fx-ny's 33 New York whole-dollar class M rulings
+(`amb.ny.2025.whole_dollars`; the count is that commit's) and removed those lines from their fixture cases, as every
+earlier ruling of that ambiguity is set. Counted on this tree: every ruling naming the ambiguity has drop set, 76 in
+`reviews/ny/2025/classm/ny_it201.rulings.json` and 172 across the New York class M rulings files.
 
-Read first: `CLAUDE.md`, then `docs/2026-11-05_release_gating_design.md` (last section), `tools/README.md`, and the
-"What governs the work" table of the entry below. The State figures below are generated; do not hand-edit them.
-
-# 2026-11-15/16: fix round B1 and the coverage expansion (superseded by the entry above where they differ)
-
-This entry holds the "What governs the work" tables and the 2026-11-15/16 record; its state statements are dated. Earlier entries are historical and are in
-`handoffs/HANDOFF-NEXT-SESSION-ARCHIVE-2026-11.md`. Read this entry, then the documents in "What governs the work"
-below for the kind of work you are doing, then the top of `TASKS.md`.
+**Open owner-facing points:** T-312, T-326, T-332 and T-333 (listed in the entry below); the IRS 2026 finals are still
+expected December 2026 to January 2027 (T-011, T-322).
 
 ## State
 
@@ -54,44 +74,10 @@ below for the kind of work you are doing, then the top of `TASKS.md`.
   156 ambiguity entries, 152 linked to a line (`ambiguities/2025.yaml`).
 <!-- /figures:handoff-state -->
 
-- **On `main`** when this entry was written, oldest first: `c556c598` (the coverage report lists at most 8 cases per
-  branch; `interview_length` runs at a release only), `a2f24909` (the whole-interview redraft landed: questions,
-  coverage rows, its review round), `8a5a25d8` and `66a808c8` (tax year 2026 preparation, batches A and B: year
-  changes as operations, carry, operation kinds, archive; interview walks on worker threads), `acde74b5` (fix round
-  B1: the goal-1 round's eighteen fix lanes, BUG-0656 to BUG-0764), then the coverage expansion commit, which holds
-  this entry.
-- **Tax years:** 2025 is the only adopted year (`years.json`: `adopted` and `ny_adopted` are `[2025]`). 2026 is
-  prepared, not adopted: the definition changes as operations in `changes/2026/` (checked on every check-all run),
-  parameters and tables staged in `research/ty2026/`, plan in `docs/ty2026/ADOPTION.md`. The IRS finals are expected
-  December 2026 to January 2027 (T-011, T-322).
-- **Reviews:** qualified families by tier (owner 2026-11-17): a form is satisfied by any qualified
-  family's current log. Qualified families `claude` and `deepseek` (`tools/transcription/families.json`); only Claude is callable
-  (model `claude-opus-5-5`); GPT is advisory and not callable.
-
-## Landed on 2026-11-15/16, and what is open
-
-- **B1** (`acde74b5`): the goal-1 round's eighteen fix lanes, with their round-2 reviews and rulings.
-- **Coverage expansion** (owner, 2026-11-15: release with the expansion), integrated in one lane: Schedule E with Form
-  8582, Form 1116 with Schedule B, digital assets, married filing separately, dependent filers, Schedule 1 other
-  income, pay not on a W-2, and the partnership and S corporation K-1 forms (Form 7203 with them) landing unwired
-  (`scope.k1` still refuses). Left out: the estate and trust K-1 lane (`x2-k1e`, no class M possible before the K-1
-  wiring), `qdcg_amount` (lands with Form 8615, not started), and the computing of Schedule 1 line 8u (reverted after
-  two medium review findings; inmate pay refuses at `s1.line8_other` again; T-336). These areas pass the mechanical
-  interview checks but have NOT had the owner's walk (T-332) or the written judgment record (T-333); until then they
-  are not at the redraft's standard.
-- **Release `r2026.11.15.1`** was never tagged; the last release is `r2026.11.16.1`.
-- **Open findings, by owner decision left open for this release:** the 42 medium findings of the release's sampled
-  reviews (mostly questions narrower than their rule, so a filer answers No and an item is dropped, about 25 of
-  them in the expansion's new areas; a smaller set of logic errors in the K-1 and rental areas). The owner sets the
-  fix plan after the release; `python3 tools/bug_status.py --open` lists them.
-- **Interview walks of the new areas** (before/after, 2026-11-15): every typical filer of the seven areas now
-  completes; the filer with none of them goes from 56 to 58 steps: digital assets (+1, by design) and
-  `f1040.tax_exempt_interest` now a screen for every filer (+1, from lane g1-f7b, not justified by its note).
-- Owner decisions of 2026-11-15, recorded in this documentation commit: the coverage expansion protocol adopted as
-  normative, with its stop rule (section 1.1) and married filing separately run in parallel with wave X1 (section
-  8.9); a defect entry whose fix is only proposed says "Proposed fix:" (`tools/README.md`, bug inventory);
-  `interview_length` runs at a release, not in the full-tier commit gate (`c556c598`; `tools/release.sh` sets
-  `CHECK_ALL_RELEASE=1`).
+- **Tax years:** 2025 is the only adopted year (`years.json`). 2026 is prepared, not adopted: the definition changes as
+  operations in `changes/2026/`, parameters and tables staged in `research/ty2026/`, plan in `docs/ty2026/ADOPTION.md`.
+- **Reviews:** a form is satisfied by any qualified family's current log (`tools/transcription/families.json`); new
+  review calls run on Claude (`claude-opus-5-5`).
 
 ## What governs the work
 
@@ -127,5 +113,41 @@ instructions, and check any claim in them against the tree before relying on it:
 
 ## Next
 
-The order of work is at the top of `TASKS.md`. Open owner-facing points are listed in the entry above (T-312, T-326,
-T-332, T-333); the in-flight lanes are listed there too.
+The order of work is at the top of `TASKS.md`. Open owner-facing points and open work are listed in the entry above.
+
+# 2026-11-22 evening: release gating landed on `next`; integration wave in flight (superseded by the entry above where they differ)
+
+**State (2026-11-22).** `main` = `870cc146` (round F, pushed); last release `r2026.11.16.1`. `next` = `9a2b3e9c`: round F
+plus the release-gating change (next/main split, light commit tier, preflight, release-only full checks;
+`docs/2026-11-05_release_gating_design.md`, amendment of 2026-11-22; `CLAUDE.md`, "Commit guard and releases"). Work is
+committed on `next` or a lane branch, never on `main`; `main` moves only by `tools/release.sh`. A commit needs a green
+light-tier run (`tools/check_all.sh`); the full tier runs only at a release.
+
+**Owner decision (2026-11-22).** Back on Ultra: heavy parallel work in worktrees, with agent autonomy. The usage-scarcity
+rule of 2026-11-16 has ended (`CLAUDE.md`). Reviews run on Claude (`claude-opus-5-5`; owner, 2026-11-21); DeepSeek is
+qualified and not callable (`tools/transcription/families.json`).
+
+**In flight, not on `next`** (check `git worktree list` and each branch before relying on this; none of it is released):
+- `integrate-1` (worktree int1): about 500 staged files: year rollover T-339 to T-346, the 2026 finals, fixes for
+  BUG-0998 to BUG-1113; BUG_INVENTORY.md highest entry there BUG-1118. [flight]
+- `integrate-2` (worktree int2): batch 1+2, staged on `next`; the queue of
+  `.claude/wave-2026-11-22/after-int-queue.md` waits for it. [flight]
+- `adversarial-fixes` (advfix): fixes of the adversarial scouts' medium findings and T-333 mediums (Form 8919 reason code G,
+  s2, s8812, retirement, person.yaml, scope.yaml); uncommitted. [flight]
+- `ny-schedule-e` (nyfix): NY IT-201 line 11 and depreciation decoupling; staged. [flight]
+- Lane branches off `next` (worktrees adlow, hh, left, rb, speed, wk1, wk2 ...): scout and fix lanes of the wave; each lane
+  claims its forms with `tools/claims.py`. Their reports are in `.claude/scouts-2026-11-22/` and are testimony: confirm each
+  finding against the archived source and the current YAML before fixing. [flight]
+
+**Queued once integrate-2 is on `next`** (`.claude/wave-2026-11-22/after-int-queue.md`): the BUG-1094 closure (not a defect,
+p970 p. 11); guards for W2 and W4; nyfix and advfix onto `next`; the 2026 operations of
+`.claude/wave-2026-11-22/ty2026-ops-ready.md` (BUG-1031 AMT phase-out rate, BUG-1032 IRA rate labels, T-353 renaming of 67
+ids; blocked until other branches release their form claims); BUG-0993 fix; the tool bug in `samples.confirmed_bugs()`;
+the two pending nyfix defects (05 and 06).
+
+**Open owner-facing points:** T-312 (redraft choices), T-326 (2026 preparation choices), T-332 (owner walk) and T-333
+(judgment records) of the 2026-11-15 expansion areas. The IRS 2026 finals are still expected December 2026 to January 2027
+(T-011, T-322).
+
+Read first: `CLAUDE.md`, then `docs/2026-11-05_release_gating_design.md` (last section), `tools/README.md`, and the
+"What governs the work" table of the entry above.
