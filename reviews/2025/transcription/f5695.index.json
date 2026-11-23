@@ -63,27 +63,61 @@
    "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate adds lines 6b, 11 and 12 without the gates (f5695 p. 1, line 13); it inherits line 6b's Part I screens (f5695.construction_later, asked only with Part I) and line 12's carryforward gate. The two value differences are the refused fixtures classm.dcprov.1 and mutation.t2.qss_s1a_car (a line 3 cost with every kind answered No). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,782 of 4,642 agree; on completed returns: 78 candidate-unknown.",
-   "subject_key": "2437490d0d92b45102f019f060a3f1819adba433bee1c6d32009561f5c1e954b"
+   "subject_key": "a051c1b1d3afb6facf42a47e817cfc5208e07c2b6d79ee0a9c4363624861d2ac",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "2437490d0d92b45102f019f060a3f1819adba433bee1c6d32009561f5c1e954b"
+   }
   },
   {
    "key": "14",
    "record": "af9b7d26ab47e8f17537f609a8e473dd0f1baa8e06e5d346951445dd4219b4e6",
    "status": "DISAGREE",
    "ruling": "Ruling: representation and scope; i5695 p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2: \"Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return\". As ruled before on this line, the worksheet's terms are the project's f5695.rce_ws2 (Schedule 3 lines 1, 2, 3 and 4, line 5b, the child tax credit), the other credits being refused; that refusal is now s3.other_credit in place of scope.credits (BUG-0619). The reply refuses on the separate credit questions instead and reads the ones asked beneath a gate directly (s3.ev_credit, s3.elderly_credit), which have no answer on a return where their gate is closed. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 912fab1d2cf7; 1,803 fixtures, 500 generated returns seed 20261026, 2,081 partial records from 40 bases; 3,619 comparisons): 2,439 agree; 968 candidate-unknown, 209 project-refuses, 3 candidate-refuses; no value differs. On completed returns: 775 candidate-unknown (the witnesses listed are each on s3.ev_credit, unanswered because not asked; project $0.00), and 3 candidate-refuses on s3.ev_credit and s3.elderly_credit, on fixtures that state an unread Yes beneath a closed gate. The project refusals are on refused returns. Project stands.",
-   "subject_key": "d9ac238b350f1846a9228e0c85fac5357274e45b64da431044f6390eea103295"
+   "subject_key": "f393f2d530da137fcd8952696f34470e03cf0b6a593f3091f3e7486084586f8d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line14": "f5695.rce_limit"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "d9ac238b350f1846a9228e0c85fac5357274e45b64da431044f6390eea103295"
+   }
   },
   {
    "key": "15",
    "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
    "status": "AGREE",
-   "subject_key": "4a440b1b82de9b6473d9c25521e3d5f84b0a2fbfb298296ce5bc1a5477be104b"
+   "subject_key": "e275ed709f6957f4c7143a767b7acfd6ae1f3f2dd6c8127f786efff0db81b163",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "4a440b1b82de9b6473d9c25521e3d5f84b0a2fbfb298296ce5bc1a5477be104b"
+   }
   },
   {
    "key": "16",
    "record": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; f5695 p. 1, line 16, \"If line 15 is less than line 13, subtract line 15 from line 13\". The expression and its shown_when are acceptable (the candidate hides the line unless line 15 is less than line 13, a $0 line in the project), but line 15 inherits the candidate's unguarded line 32 through line 14, so it is unknown on returns without Part II (classm.f5695.1 and .7 with .deepseek, classm.s3.4.deepseek: project $0.00, candidate unknown) and refuses on generated 360 (see line 14). Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,147 of 3,703 agree; on completed returns 378 candidate-unknown, 1 candidate-refuses.",
-   "subject_key": "98cc2b81b89b09cacb1f0a1db499e8260f3ab34ad73ddb06b7f9d131ed3c41ed"
+   "subject_key": "8dd9e137230c6f29841ce6be9b80bdc78b2c1e0d5f2927f939caf6d20935a705",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "98cc2b81b89b09cacb1f0a1db499e8260f3ab34ad73ddb06b7f9d131ed3c41ed"
+   }
   },
   {
    "key": "18b",
@@ -259,10 +293,10 @@
   "6a": "5a92e7820d32ab5a6314c321b7dac0c898ed2bcfeb3b91d6cef96eed33fff4f3",
   "6b": "033dda84713fe99afcb352106c331342fe2469475865231043196d95777ddbd5",
   "11": "24d6e9f296e5431e0f6011ca7b7dd2615daa98b09d2421fb56c25d14bba2850f",
-  "13": "b56bb80b7d357b0eedd125f36ac504f08a2c7c6bf91c6ff3bd11d363d71b18cc",
-  "14": "445da6502d234ca01daf6aa6dafc70935ee5908ff6daea696dbb5421ec0c3042",
-  "15": "07cddd6a6ade0f4436071f1f0b91e81ded007249c4d3ed5ea937b2d158d3633f",
-  "16": "6e1f471dd878e5120de00782c2b04d157b3c1b698bd3810cde665d0afdad9405",
+  "13": "e018d7fd771026e7dae5c32a56be96dc19f5e8fa2c56f4379f476c1ffa031546",
+  "14": "8ffaded32239e72ccac7d43af7a21c6ef01bfd0804ea129049d48e80b06beb6b",
+  "15": "ce0d0c5d6f5ca806cd56185ddf076fdb30f6651f01de84ca65b6f82f38f78059",
+  "16": "0d84c71f0cf9d6ffc75d2eadb0afa9522117038adeacd6559b3972da778d4d4c",
   "18b": "6b1c33798204270f490829eafabdc7a362ed177a8d2aabe14d7287a72c4ee7f6",
   "19c": "23425638cb73fc0e66a65b09a739525a82009a550ee9778bf5566c3f9b2b3587",
   "19f": "df13e4a182b1940c5662e69e1705f3ef2490d6b73293d44060f1ac24acdb8001",

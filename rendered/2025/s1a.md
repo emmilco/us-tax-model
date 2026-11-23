@@ -188,7 +188,7 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.tip_multi",{"const":true}],"op":"test"},"then":"s1a.tip_total"},{"guard":{"eq":["s1a.tip_multi",{"const":false}],"op":"test"},"then":"s1a.line4c_one"}],"op":"choose"}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 4c, and the Qualified Tips From More Than One Employer Worksheet (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## 4c — `s1a.line4c`
+## 4c — `s1a.tips_employee`
 
 - **IRS:** If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c"]
@@ -204,7 +204,7 @@
 - Expr: `{"op":"param","ref":"sales.zero"}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## 5 — `s1a.line5`
+## 5 — `s1a.tips_business`
 
 - **IRS:** Qualified tips received in the course of a trade or business
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Qualified tips received in the course of a trade or business"]
@@ -215,10 +215,10 @@
 
 - **Authored helper label:** Figured: Add lines 4c and 5
 - **Encoded (NonNegDollars):** Add line 4c and line 5.
-- Expr: `{"of":["s1a.line4c","s1a.line5"],"op":"sum"}`
+- Expr: `{"of":["s1a.tips_employee","s1a.tips_business"],"op":"sum"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 6 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 6 — `s1a.line6`
+## 6 — `s1a.tips_total`
 
 - **IRS:** Add lines 4c and 5
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Add lines 4c and 5"]
@@ -229,10 +229,10 @@
 
 - **Authored helper label:** Figured: Enter the smaller of the amount on line 6 or $25,000
 - **Encoded (NonNegDollars):** Enter the smaller of line 6 or helper "Year parameter s1a.tips_max ($25,000)".
-- Expr: `{"of":["s1a.line6","s1a.tips_max"],"op":"smaller_of"}`
+- Expr: `{"of":["s1a.tips_total","s1a.tips_max"],"op":"smaller_of"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 7 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 7 — `s1a.line7`
+## 7 — `s1a.tips_capped`
 
 - **IRS:** Enter the smaller of the amount on line 6 or $25,000
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter the smaller of the amount on line 6 or $25,000"]
@@ -267,7 +267,7 @@
 - Expr: `{"from":"s1a.line3","op":"copy"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 8 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 8 — `s1a.line8`
+## 8 — `s1a.tips_magi`
 
 - **IRS:** Enter the amount from line 3
 - **Encoded (Dollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter the amount from line 3"]
@@ -281,7 +281,7 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.base_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.base_other"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 9 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 9 — `s1a.line9`
+## 9 — `s1a.tips_threshold`
 
 - **IRS:** Enter $150,000 ($300,000 if married filing jointly)
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter $150,000 ($300,000 if married filing jointly)"]
@@ -292,10 +292,10 @@
 
 - **Authored helper label:** Figured: Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13
 - **Encoded (Dollars):** Subtract line 9 from line 8.
-- Expr: `{"from":"s1a.line8","op":"subtract","take":"s1a.line9"}`
+- Expr: `{"from":"s1a.tips_magi","op":"subtract","take":"s1a.tips_threshold"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 10 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 10 — `s1a.line10`
+## 10 — `s1a.tips_over`
 
 - **IRS:** Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13
 - **Encoded (Dollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13"]
@@ -306,14 +306,14 @@
 
 - **Authored helper label:** Is the amount on line 8 more than the amount on line 9?
 - **Encoded (Bool):** line 8 > line 9
-- Expr: `{"gt":["s1a.line8","s1a.line9"],"op":"test"}`
+- Expr: `{"gt":["s1a.tips_magi","s1a.tips_threshold"],"op":"test"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 10, "If zero or less" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line10_pos`
 
 - **Authored helper label:** Line 10 if more than zero, otherwise zero
 - **Encoded (NonNegDollars):** Subtract line 9 from line 8. If zero or less, enter -0-.
-- Expr: `{"from":"s1a.line8","op":"subtract_floor0","take":"s1a.line9"}`
+- Expr: `{"from":"s1a.tips_magi","op":"subtract_floor0","take":"s1a.tips_threshold"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 10, "Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line11_thousands`
@@ -330,7 +330,7 @@
 - Expr: `{"amount":"s1a.line11_thousands","op":"multiply_rate","rate":{"param":"s1a.hundred_per_thousand"}}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 12, "Multiply line 11 by $100" (2025; created 2025-11-04; sha256 64f97b38)
 
-## 12 — `s1a.line12`
+## 12 — `s1a.tips_reduction`
 
 - **IRS:** Multiply line 11 by $100
 - **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Multiply line 11 by $100"]
@@ -341,14 +341,14 @@
 
 - **Authored helper label:** Subtract line 12 from line 7. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Subtract line 12 from line 7. If zero or less, enter -0-.
-- Expr: `{"from":"s1a.line7","op":"subtract_floor0","take":"s1a.line12"}`
+- Expr: `{"from":"s1a.tips_capped","op":"subtract_floor0","take":"s1a.tips_reduction"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 13 (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line13_amount`
 
 - **Authored helper label:** Line 13 when Part II applies
 - **Encoded (NonNegDollars):** Choose — [helper "Is the amount on line 8 more than the amount on line 9?" = false → line 7] [helper "Is the amount on line 8 more than the amount on line 9?" = true → helper "Subtract line 12 from line 7. If zero or less, enter -0-"]
-- Expr: `{"alternatives":[{"guard":{"eq":["s1a.line10_over",{"const":false}],"op":"test"},"then":"s1a.line7"},{"guard":{"eq":["s1a.line10_over",{"const":true}],"op":"test"},"then":"s1a.line13_figured"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["s1a.line10_over",{"const":false}],"op":"test"},"then":"s1a.tips_capped"},{"guard":{"eq":["s1a.line10_over",{"const":true}],"op":"test"},"then":"s1a.line13_figured"}],"op":"choose"}`
 - Cite: [i1040gi] p. 105, Schedule 1-A, line 10, "If the amount on line 10 is zero or less ... Skip lines 11 and 12 and enter the amount from Schedule 1-A, line 7, on Schedule 1-A, line 13" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line13_ssn`
@@ -365,7 +365,7 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.line13_ssn"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.line13_ssn"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.line13_ssn"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.line13_ssn"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), Part II caution, "If married, you must file jointly to claim this deduction" (2025; created 2025-11-04; sha256 64f97b38)
 
-## 13 — `s1a.line13`
+## 13 — `s1a.tips_deduction`
 
 - **IRS:** Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Choose — [helper "Did you (or, on a joint return, your spouse) receive qualified tips as an employee in 2025 that you want to deduct?" = false → helper "Year parameter sales.zero"] [helper "Did you (or, on a joint return, your spouse) receive qualified tips as an employee in 2025 that you want to deduct?" = true → helper "Line 13 with qualified tips: zero for married filing separately"]
@@ -423,7 +423,7 @@
 - Expr: `{"collection":"person","field":"person.ot_total","op":"sum_over","where":{"eq":["person.work_ssn",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## 14a — `s1a.line14a`
+## 14a — `s1a.ot_w2`
 
 - **IRS:** Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions"]
@@ -439,7 +439,7 @@
 - Expr: `{"op":"param","ref":"sales.zero"}`
 - Cite: [i1040gi] p. 108, Schedule 1-A, line 14b (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## 14b — `s1a.line14b`
+## 14b — `s1a.ot_1099`
 
 - **IRS:** Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"]
@@ -450,10 +450,10 @@
 
 - **Authored helper label:** Figured: Add lines 14a and 14b
 - **Encoded (NonNegDollars):** Add line 14a and line 14b.
-- Expr: `{"of":["s1a.line14a","s1a.line14b"],"op":"sum"}`
+- Expr: `{"of":["s1a.ot_w2","s1a.ot_1099"],"op":"sum"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 14c (2025; created 2025-11-04; sha256 64f97b38)
 
-## 14c — `s1a.line14c`
+## 14c — `s1a.ot_total`
 
 - **IRS:** Add lines 14a and 14b
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Add lines 14a and 14b"]
@@ -485,10 +485,10 @@
 
 - **Authored helper label:** Figured: Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)
 - **Encoded (NonNegDollars):** Enter the smaller of line 14c or helper "$12,500 ($25,000 if married filing jointly)".
-- Expr: `{"of":["s1a.line14c","s1a.ot_max"],"op":"smaller_of"}`
+- Expr: `{"of":["s1a.ot_total","s1a.ot_max"],"op":"smaller_of"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 15 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 15 — `s1a.line15`
+## 15 — `s1a.ot_capped`
 
 - **IRS:** Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)"]
@@ -502,7 +502,7 @@
 - Expr: `{"from":"s1a.line3","op":"copy"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 16 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 16 — `s1a.line16`
+## 16 — `s1a.ot_magi`
 
 - **IRS:** Enter the amount from line 3
 - **Encoded (Dollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Enter the amount from line 3"]
@@ -516,7 +516,7 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.base_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.base_other"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 17 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 17 — `s1a.line17`
+## 17 — `s1a.ot_threshold`
 
 - **IRS:** Enter $150,000 ($300,000 if married filing jointly)
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Enter $150,000 ($300,000 if married filing jointly)"]
@@ -527,10 +527,10 @@
 
 - **Authored helper label:** Figured: Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21
 - **Encoded (Dollars):** Subtract line 17 from line 16.
-- Expr: `{"from":"s1a.line16","op":"subtract","take":"s1a.line17"}`
+- Expr: `{"from":"s1a.ot_magi","op":"subtract","take":"s1a.ot_threshold"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 18 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 18 — `s1a.line18`
+## 18 — `s1a.ot_over`
 
 - **IRS:** Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21
 - **Encoded (Dollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21"]
@@ -541,14 +541,14 @@
 
 - **Authored helper label:** Is the amount on line 16 more than the amount on line 17?
 - **Encoded (Bool):** line 16 > line 17
-- Expr: `{"gt":["s1a.line16","s1a.line17"],"op":"test"}`
+- Expr: `{"gt":["s1a.ot_magi","s1a.ot_threshold"],"op":"test"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 18, "If zero or less" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line18_pos`
 
 - **Authored helper label:** Line 18 if more than zero, otherwise zero
 - **Encoded (NonNegDollars):** Subtract line 17 from line 16. If zero or less, enter -0-.
-- Expr: `{"from":"s1a.line16","op":"subtract_floor0","take":"s1a.line17"}`
+- Expr: `{"from":"s1a.ot_magi","op":"subtract_floor0","take":"s1a.ot_threshold"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 18, "Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line19_thousands`
@@ -565,7 +565,7 @@
 - Expr: `{"amount":"s1a.line19_thousands","op":"multiply_rate","rate":{"param":"s1a.hundred_per_thousand"}}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 20, "Multiply line 19 by $100" (2025; created 2025-11-04; sha256 64f97b38)
 
-## 20 — `s1a.line20`
+## 20 — `s1a.ot_reduction`
 
 - **IRS:** Multiply line 19 by $100
 - **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Multiply line 19 by $100"]
@@ -576,14 +576,14 @@
 
 - **Authored helper label:** Subtract line 20 from line 15. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Subtract line 20 from line 15. If zero or less, enter -0-.
-- Expr: `{"from":"s1a.line15","op":"subtract_floor0","take":"s1a.line20"}`
+- Expr: `{"from":"s1a.ot_capped","op":"subtract_floor0","take":"s1a.ot_reduction"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 21 (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line21_amount`
 
 - **Authored helper label:** Line 21 when Part III applies
 - **Encoded (NonNegDollars):** Choose — [helper "Is the amount on line 16 more than the amount on line 17?" = false → line 15] [helper "Is the amount on line 16 more than the amount on line 17?" = true → helper "Subtract line 20 from line 15. If zero or less, enter -0-"]
-- Expr: `{"alternatives":[{"guard":{"eq":["s1a.line18_over",{"const":false}],"op":"test"},"then":"s1a.line15"},{"guard":{"eq":["s1a.line18_over",{"const":true}],"op":"test"},"then":"s1a.line21_figured"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["s1a.line18_over",{"const":false}],"op":"test"},"then":"s1a.ot_capped"},{"guard":{"eq":["s1a.line18_over",{"const":true}],"op":"test"},"then":"s1a.line21_figured"}],"op":"choose"}`
 - Cite: [i1040gi] p. 108, Schedule 1-A, line 18, "If the amount on line 18 is zero or less ... Skip lines 19 and 20 and enter the amount from Schedule 1-A, line 15, on Schedule 1-A, line 21" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line21_ssn`
@@ -600,7 +600,7 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.line21_ssn"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.line21_ssn"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.line21_ssn"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.line21_ssn"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), Part III caution, "If married, you must file jointly to claim this deduction" (2025; created 2025-11-04; sha256 64f97b38)
 
-## 21 — `s1a.line21`
+## 21 — `s1a.ot_deduction`
 
 - **IRS:** Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Choose — [helper "Did you (or, on a joint return, your spouse) receive qualified overtime compensation in 2025 that you want to deduct?" = false → helper "Year parameter sales.zero"] [helper "Did you (or, on a joint return, your spouse) receive qualified overtime compensation in 2025 that you want to deduct?" = true → helper "Line 21 with qualified overtime: zero for married filing separately"]
@@ -622,7 +622,7 @@
 - Expr: `{"collection":"carloan","field":"carloan.col_iii","op":"sum_over"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, line 22, "If you need to report more than two VINs, attach a statement" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## 23 — `s1a.line23`
+## 23 — `s1a.vli_total`
 
 - **IRS:** Add lines 22a and 22b, column (iii)
 - **Encoded (NonNegDollars):** Choose — [helper "Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?" = false → helper "Year parameter sales.zero"] [helper "Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?" = true → helper "Add lines 22a and 22b, column (iii), and any further loans on the attached statement"]
@@ -647,10 +647,10 @@
 
 - **Authored helper label:** Figured: Enter the smaller of the amount on line 23 or $10,000
 - **Encoded (NonNegDollars):** Enter the smaller of line 23 or helper "Year parameter s1a.car_max ($10,000)".
-- Expr: `{"of":["s1a.line23","s1a.car_max"],"op":"smaller_of"}`
+- Expr: `{"of":["s1a.vli_total","s1a.car_max"],"op":"smaller_of"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 24 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 24 — `s1a.line24`
+## 24 — `s1a.vli_capped`
 
 - **IRS:** Enter the smaller of the amount on line 23 or $10,000
 - **Encoded (NonNegDollars):** Choose — [helper "Part IV applies: qualified passenger vehicle loan interest claimed" = false → helper "Year parameter sales.zero"] [helper "Part IV applies: qualified passenger vehicle loan interest claimed" = true → helper "Figured: Enter the smaller of the amount on line 23 or $10,000"]
@@ -678,7 +678,7 @@
 - Expr: `{"from":"s1a.line3","op":"copy"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 25 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 25 — `s1a.line25`
+## 25 — `s1a.vli_magi`
 
 - **IRS:** Enter the amount from line 3
 - **Encoded (Dollars):** Choose — [helper "Part IV applies: qualified passenger vehicle loan interest claimed" = false → helper "Year parameter sales.zero"] [helper "Part IV applies: qualified passenger vehicle loan interest claimed" = true → helper "Figured: Enter the amount from line 3"]
@@ -692,7 +692,7 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.car_base_other"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.car_base_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.car_base_other"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.car_base_other"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.car_base_other"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 26 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 26 — `s1a.line26`
+## 26 — `s1a.vli_threshold`
 
 - **IRS:** Enter $100,000 ($200,000 if married filing jointly)
 - **Encoded (NonNegDollars):** Choose — [helper "Part IV applies: qualified passenger vehicle loan interest claimed" = false → helper "Year parameter sales.zero"] [helper "Part IV applies: qualified passenger vehicle loan interest claimed" = true → helper "Figured: Enter $100,000 ($200,000 if married filing jointly)"]
@@ -703,10 +703,10 @@
 
 - **Authored helper label:** Figured: Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30
 - **Encoded (Dollars):** Subtract line 26 from line 25.
-- Expr: `{"from":"s1a.line25","op":"subtract","take":"s1a.line26"}`
+- Expr: `{"from":"s1a.vli_magi","op":"subtract","take":"s1a.vli_threshold"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 27 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 27 — `s1a.line27`
+## 27 — `s1a.vli_over`
 
 - **IRS:** Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30
 - **Encoded (Dollars):** Choose — [helper "Part IV applies: qualified passenger vehicle loan interest claimed" = false → helper "Year parameter sales.zero"] [helper "Part IV applies: qualified passenger vehicle loan interest claimed" = true → helper "Figured: Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30"]
@@ -717,14 +717,14 @@
 
 - **Authored helper label:** Is the amount on line 25 more than the amount on line 26?
 - **Encoded (Bool):** line 25 > line 26
-- Expr: `{"gt":["s1a.line25","s1a.line26"],"op":"test"}`
+- Expr: `{"gt":["s1a.vli_magi","s1a.vli_threshold"],"op":"test"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 27, "If zero or less" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line27_pos`
 
 - **Authored helper label:** Line 27 if more than zero, otherwise zero
 - **Encoded (NonNegDollars):** Subtract line 26 from line 25. If zero or less, enter -0-.
-- Expr: `{"from":"s1a.line25","op":"subtract_floor0","take":"s1a.line26"}`
+- Expr: `{"from":"s1a.vli_magi","op":"subtract_floor0","take":"s1a.vli_threshold"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 27, "Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line28_thousands`
@@ -741,7 +741,7 @@
 - Expr: `{"amount":"s1a.line28_thousands","op":"multiply_rate","rate":{"param":"s1a.two_hundred_per_thousand"}}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 29, "Multiply line 28 by $200" (2025; created 2025-11-04; sha256 64f97b38)
 
-## 29 — `s1a.line29`
+## 29 — `s1a.vli_reduction`
 
 - **IRS:** Multiply line 28 by $200
 - **Encoded (NonNegDollars):** Choose — [helper "Part IV applies: qualified passenger vehicle loan interest claimed" = false → helper "Year parameter sales.zero"] [helper "Part IV applies: qualified passenger vehicle loan interest claimed" = true → helper "Figured: Multiply line 28 by $200"]
@@ -752,17 +752,17 @@
 
 - **Authored helper label:** Subtract line 29 from line 24. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Subtract line 29 from line 24. If zero or less, enter -0-.
-- Expr: `{"from":"s1a.line24","op":"subtract_floor0","take":"s1a.line29"}`
+- Expr: `{"from":"s1a.vli_capped","op":"subtract_floor0","take":"s1a.vli_reduction"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 30 (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line30_amount`
 
 - **Authored helper label:** Line 30 when Part IV applies
 - **Encoded (NonNegDollars):** Choose — [helper "Is the amount on line 25 more than the amount on line 26?" = false → line 24] [helper "Is the amount on line 25 more than the amount on line 26?" = true → helper "Subtract line 29 from line 24. If zero or less, enter -0-"]
-- Expr: `{"alternatives":[{"guard":{"eq":["s1a.line27_over",{"const":false}],"op":"test"},"then":"s1a.line24"},{"guard":{"eq":["s1a.line27_over",{"const":true}],"op":"test"},"then":"s1a.line30_figured"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["s1a.line27_over",{"const":false}],"op":"test"},"then":"s1a.vli_capped"},{"guard":{"eq":["s1a.line27_over",{"const":true}],"op":"test"},"then":"s1a.line30_figured"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, line 27, "If the amount on line 27 is zero or less ... Skip lines 28 and 29 and enter the amount from Schedule 1-A, line 24, on Schedule 1-A, line 30" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## 30 — `s1a.line30`
+## 30 — `s1a.vli_deduction`
 
 - **IRS:** Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 24. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Choose — [helper "Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?" = false → helper "Year parameter sales.zero"] [helper "Did you (or, on a joint return, your spouse) pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?" = true → helper "Line 30 when Part IV applies"]
@@ -797,7 +797,7 @@
 - Expr: `{"from":"s1a.line3","op":"copy"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 31 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 31 — `s1a.line31`
+## 31 — `s1a.senior_magi`
 
 - **IRS:** Enter the amount from line 3
 - **Encoded (Dollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Enter the amount from line 3"]
@@ -825,7 +825,7 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.senior_base_other"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.senior_base_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.senior_base_other"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.senior_base_other"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.senior_base_other"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 32 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 32 — `s1a.line32`
+## 32 — `s1a.senior_threshold`
 
 - **IRS:** Enter $75,000 ($150,000 if married filing jointly)
 - **Encoded (NonNegDollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Enter $75,000 ($150,000 if married filing jointly)"]
@@ -836,10 +836,10 @@
 
 - **Authored helper label:** Figured: Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35
 - **Encoded (Dollars):** Subtract line 32 from line 31.
-- Expr: `{"from":"s1a.line31","op":"subtract","take":"s1a.line32"}`
+- Expr: `{"from":"s1a.senior_magi","op":"subtract","take":"s1a.senior_threshold"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 33 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 33 — `s1a.line33`
+## 33 — `s1a.senior_over`
 
 - **IRS:** Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35
 - **Encoded (Dollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35"]
@@ -850,14 +850,14 @@
 
 - **Authored helper label:** Is the amount on line 31 more than the amount on line 32?
 - **Encoded (Bool):** line 31 > line 32
-- Expr: `{"gt":["s1a.line31","s1a.line32"],"op":"test"}`
+- Expr: `{"gt":["s1a.senior_magi","s1a.senior_threshold"],"op":"test"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 33, "If zero or less, enter $6,000 on line 35" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line33_pos`
 
 - **Authored helper label:** Line 33 if more than zero, otherwise zero
 - **Encoded (NonNegDollars):** Subtract line 32 from line 31. If zero or less, enter -0-.
-- Expr: `{"from":"s1a.line31","op":"subtract_floor0","take":"s1a.line32"}`
+- Expr: `{"from":"s1a.senior_magi","op":"subtract_floor0","take":"s1a.senior_threshold"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 33, "Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line34_calc`
@@ -867,7 +867,7 @@
 - Expr: `{"amount":"s1a.line33_pos","op":"multiply_rate","rate":{"param":"s1a.senior_rate"}}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 34 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 34 — `s1a.line34`
+## 34 — `s1a.senior_reduction`
 
 - **IRS:** Multiply line 33 by 6% (0.06)
 - **Encoded (NonNegDollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Multiply line 33 by 6% (0.06)"]
@@ -885,7 +885,7 @@
 
 - **Authored helper label:** Subtract line 34 from $6,000. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Subtract line 34 from helper "Year parameter s1a.senior_amount ($6,000)". If zero or less, enter -0-.
-- Expr: `{"from":"s1a.senior_amount","op":"subtract_floor0","take":"s1a.line34"}`
+- Expr: `{"from":"s1a.senior_amount","op":"subtract_floor0","take":"s1a.senior_reduction"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 35 (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line35_calc`
@@ -895,7 +895,7 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.line33_over",{"const":false}],"op":"test"},"then":"s1a.senior_amount"},{"guard":{"eq":["s1a.line33_over",{"const":true}],"op":"test"},"then":"s1a.line35_figured"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 35, "Subtract line 34 from $6,000. If zero or less, enter -0-", line 33, "If zero or less, enter $6,000 on line 35" (2025; created 2025-11-04; sha256 64f97b38)
 
-## 35 — `s1a.line35`
+## 35 — `s1a.senior_phased`
 
 - **IRS:** Subtract line 34 from $6,000. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Subtract line 34 from $6,000. If zero or less, enter -0-"]
@@ -928,7 +928,7 @@
 - **Authored helper label:** Line 36a for a filer born before January 2, 1961
 - **Encoded (NonNegDollars):** Choose — [household helper "Do you have an SSN valid for employment issued before the due date of your return?" = false → helper "Year parameter sales.zero"] [household helper "Do you have an SSN valid for employment issued before the due date of your return?" = true → line 35]
 - **Refusal:** when s1a.senior_decedent is true, cannot complete Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65. A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is outside this tool. Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"alternatives":[{"guard":{"eq":["household.taxpayer_work_ssn",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"},"then":"s1a.line35"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["household.taxpayer_work_ssn",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"},"then":"s1a.senior_phased"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 36a (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line36a_claim`
@@ -938,7 +938,7 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.line36a_senior"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.line36a_senior"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.line36a_senior"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.line36a_senior"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), Part V caution, "If married, you must file jointly to claim this deduction" (2025; created 2025-11-04; sha256 64f97b38)
 
-## 36a — `s1a.line36a`
+## 36a — `s1a.senior_you`
 
 - **IRS:** If you have a valid social security number (see instructions) and were born before January 2, 1961, enter the amount from line 35
 - **Encoded (NonNegDollars):** Choose — [sa helper "Were you born before January 2, 1961?" = false → helper "Year parameter sales.zero"] [sa helper "Were you born before January 2, 1961?" = true → helper "Line 36a for a filer born before January 2, 1961: zero for married filing separately"]
@@ -985,28 +985,28 @@
 - **Authored helper label:** Line 36b for a spouse born before January 2, 1961, with a valid SSN
 - **Encoded (NonNegDollars):** Enter the amount from line 35.
 - **Refusal:** when s1a.spouse_senior_decedent is true, cannot complete Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65. A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is outside this tool. Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"from":"s1a.line35","op":"copy"}`
+- Expr: `{"from":"s1a.senior_phased","op":"copy"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 36b (2025; created 2025-11-04; sha256 64f97b38)
 
-## 36b — `s1a.line36b`
+## 36b — `s1a.senior_spouse`
 
 - **IRS:** If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35
 - **Encoded (NonNegDollars):** Choose — [helper "Your spouse was born before January 2, 1961, and has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Your spouse was born before January 2, 1961, and has a valid SSN" = true → helper "Line 36b for a spouse born before January 2, 1961, with a valid SSN"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.spouse_senior",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.spouse_senior",{"const":true}],"op":"test"},"then":"s1a.line36b_senior"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 36b; i1040gi p. 110, "The maximum amount of the enhanced deduction for seniors is $6,000 per person" (2025; created 2025-11-04; sha256 64f97b38)
 
-## 37 — `s1a.line37`
+## 37 — `s1a.senior_deduction`
 
 - **IRS:** Enhanced deduction for seniors. Add lines 36a and 36b
 - **Encoded (NonNegDollars):** Add line 36a and line 36b.
-- Expr: `{"of":["s1a.line36a","s1a.line36b"],"op":"sum"}`
+- Expr: `{"of":["s1a.senior_you","s1a.senior_spouse"],"op":"sum"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 37 (2025; created 2025-11-04; sha256 64f97b38)
 
-## 38 — `s1a.line38`
+## 38 — `s1a.total_deductions`
 
 - **IRS:** Add lines 13, 21, 30, and 37. Enter here and on Form 1040 or 1040-SR, line 13b, or on Form 1040-NR, line 13c
 - **Encoded (NonNegDollars):** Add line 13, line 21, line 30, and line 37.
-- Expr: `{"of":["s1a.line13","s1a.line21","s1a.line30","s1a.line37"],"op":"sum"}`
+- Expr: `{"of":["s1a.tips_deduction","s1a.ot_deduction","s1a.vli_deduction","s1a.senior_deduction"],"op":"sum"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 38 (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.no`

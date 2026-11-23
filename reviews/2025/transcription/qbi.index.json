@@ -33,7 +33,15 @@
    "record": "a7d4006cf25d172b7c23e5dd42eb6de4f4770d2945e07047527f62677cda190d",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3310 values compared, none different or missing: 2636 on 2636 fixture cases, 500 on 500 generated returns seed 20261026, 174 on 174 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
-   "subject_key": "fbcd376f8a3b3234a86ad6261ab2ad2e093d3632ce6f98801d553dbb2d5e5b9d"
+   "subject_key": "6e26f87f0993c0bf96aed95ca4236919ea90a10f5697ae4ab4512b9b965f1918",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f1040.line13b": "f1040.s1a_deductions"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "fbcd376f8a3b3234a86ad6261ab2ad2e093d3632ce6f98801d553dbb2d5e5b9d"
+   }
   },
   {
    "key": "qbi.net_capital_gain",
@@ -47,7 +55,15 @@
    "record": "a0ccf34664be4e77ccd69add40ad453c08310a6fba0d6c81b4c5f3b47a093b19",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; f8995 p. 1, \"Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)\". As ruled on 2026-11-14 and 2026-11-22: both choose Form 8995 line 15 at or under the threshold and Form 8995-A above it; the reply reads Form 8995 line 11 where the project reads qbi.taxable_before through qbi.use_8995a, the same figure (Form 8995 line 11 is qbi.taxable_before). The reply's note on patrons, suspended losses and a REIT/PTP carryforward describes refusals the project makes through qbi.unsupported (now asking the patron question only with a Schedule C or section 199A dividends, i8995 p. 1, Who Can Take the Deduction). No change to the data.",
-   "subject_key": "0f9b2254ecdc3116cb2ae5c2b1f2b06f4c041acf3689d0bc37b80e126797cafb"
+   "subject_key": "3b4c9737c83a8af9ea39f9dd4d059a0f9f7fdf846d734a60e2b67b946b7328af",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f1040.line13b": "f1040.s1a_deductions"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "0f9b2254ecdc3116cb2ae5c2b1f2b06f4c041acf3689d0bc37b80e126797cafb"
+   }
   },
   {
    "key": "qbi.dividends_if_ordinary",
@@ -60,18 +76,18 @@
   "qbi.zero": "d351e905679017dd4f47fae49b296df613ed439c812435776e137e37960346b9",
   "qbi.eligible": "195e47dd8941efb50a636d22ac9d686c9f61540ac229d53fe898e8704f8d4b60",
   "qbi.carryforward_if_prior_form": "d207269547c5c636ab0d88aa1a3c50341adddc51820a559e5806ab65df4fc078",
-  "qbi.taxable_before": "9258e4952d87f6c37e1f49ac697fbfad761a3c99e4311010a0f43341b748c4a3",
+  "qbi.taxable_before": "0542dc890ac475e4b8ec07f378489334e260d0b5da7e7cbc7120027b22a2991f",
   "qbi.net_capital_gain": "7a116174b72815c5db82b7c6151c282b32fc369ff97504259084e21f7e00f4e4",
-  "qbi.deduction": "96cd301921436762147641310106c6ac0014d3799caa20060fcf5426736de34a",
+  "qbi.deduction": "e02812bb615844fcc418d7c84fcb5cebcdf0cb23320384a28739d042c3a378cf",
   "qbi.dividends_if_ordinary": "2ab19b6e5b9e0ff946a290b08d30f9559a4d352a41efa4cd0ade557fb6639111"
  },
  "__rest__": "3ecd850aa0c9743f71e02cf3a8fda571cbba92fac4295ed77a1231fbce2a3a92",
  "foreign": {
   "qbi.eligible": "4bfc1a1aa5dda838516e4599a6eec85b4f8560ebb38f8d7050d1ad79ba1ffbad",
   "qbi.carryforward_if_prior_form": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "qbi.taxable_before": "fa21960f64d1e5fc66b04a5e53d8f2add94ec48d3edf75e1bfdda92b6095e773",
+  "qbi.taxable_before": "ea7f162fc83296450f004caadcd8bc5dcfb96e6b5cd56987325b48861b4730e4",
   "qbi.net_capital_gain": "108c0b63626e81123a19c71dbe5d2b7018d5e76ea04202a93685cfac2616d4a9",
-  "qbi.deduction": "5454d042ed63496d219120300e2f7144b07a93b7b836d54944114d9d5155f207",
+  "qbi.deduction": "b425fe010ab99bb76d16911a0959295333d89359ea6068606001c993c0eef032",
   "qbi.dividends_if_ordinary": "e66873f691171d72092552d4220f3c910ccd051a8111596cd19a931d5e006938"
  }
 }

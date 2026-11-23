@@ -129,7 +129,7 @@ class Matching(unittest.TestCase):
     def test_line_ids(self):
         self.assertEqual(C.template_id("person[taxpayer].sc[biz].line31"), "sc.line31")
         self.assertEqual(C.template_id("person[taxpayer].se_line12"), "person.se_line12")
-        self.assertEqual(C.resolve_line("f8959.tax"), "f8959.line18")
+        self.assertEqual(C.resolve_line("f8959.tax"), "f8959.total_tax")
         self.assertIsNone(C.resolve_line("f1040.tax_before_credits"))
 
     def test_project_line(self):

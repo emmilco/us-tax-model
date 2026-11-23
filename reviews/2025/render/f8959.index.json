@@ -30,13 +30,29 @@
    "key": "8",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "2f836f71033c36d07e559ad5c565b4dc35055b0bfec5ccf1c8d3e4c8ca3fcf3f"
+   "subject_key": "aacd85fca8491b2fe2f901e2b527ed87ca5c6fc5ed1637ac6c18b2803c32655a",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line8": "f8959.se_income"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "2f836f71033c36d07e559ad5c565b4dc35055b0bfec5ccf1c8d3e4c8ca3fcf3f"
+   }
   },
   {
    "key": "14",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "b7301eeedef9421be36e60e4c355ce447f90900302ddc139357da62012073400"
+   "subject_key": "217e2038c5e581d6c7a4df0047cb90fe2dba2fd3503920d7af7e748a5fc032f2",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line14": "f8959.rrta_comp"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "b7301eeedef9421be36e60e4c355ce447f90900302ddc139357da62012073400"
+   }
   },
   {
    "key": "23",
@@ -72,55 +88,145 @@
    "key": "9",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "d3163dd8b787a535b3f98af8c2e0e10df2904a05f29e768fe89924d11fac2062"
+   "subject_key": "fbffc50990448eb29c08c4e7b7891e6b2fb6e80a5d51a5fe8dd9c0b3c278ecc2",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line9": "f8959.se_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "d3163dd8b787a535b3f98af8c2e0e10df2904a05f29e768fe89924d11fac2062"
+   }
   },
   {
    "key": "10",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "6741e74633f60b4fd06ef1bcb32cd234a3b023e885bfb2d64dd5e87684163075"
+   "subject_key": "7b4fe981241b6e58bf16db3f93c37f368afdc90a225f5a7554d2f450910574b4",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line10": "f8959.se_wages"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "6741e74633f60b4fd06ef1bcb32cd234a3b023e885bfb2d64dd5e87684163075"
+   }
   },
   {
    "key": "11",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "8403332f7404e4f30980d4dbfc466603bdf8c57cbc7b2d1e404c35d1f85d6b30"
+   "subject_key": "fb924f9440338111045cad40e5e25a51c244e6107f79ba1686795920eaa23812",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line10": "f8959.se_wages",
+     "f8959.line11": "f8959.se_threshold_left",
+     "f8959.line9": "f8959.se_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "8403332f7404e4f30980d4dbfc466603bdf8c57cbc7b2d1e404c35d1f85d6b30"
+   }
   },
   {
    "key": "12",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "f61c1de5d322e923533f6ac9dc1bc1d8d060d7dee144521dc6f176c9a53ff3ef"
+   "subject_key": "1a4e35dbfc94534d6df347b83fb33e442d6f8dd0d82afa1245989993e95f3ec9",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line10": "f8959.se_wages",
+     "f8959.line11": "f8959.se_threshold_left",
+     "f8959.line12": "f8959.se_excess",
+     "f8959.line8": "f8959.se_income",
+     "f8959.line9": "f8959.se_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "f61c1de5d322e923533f6ac9dc1bc1d8d060d7dee144521dc6f176c9a53ff3ef"
+   }
   },
   {
    "key": "13",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "c1f2a2527ae041d6f36b220526a397f77a21c110b54cf49f30861bf269913726"
+   "subject_key": "9bec7139942b5f231e68f0514f333d1d5aec2df888d84272328f218e4f714929",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line11": "f8959.se_threshold_left",
+     "f8959.line12": "f8959.se_excess",
+     "f8959.line13": "f8959.se_tax",
+     "f8959.line8": "f8959.se_income"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "c1f2a2527ae041d6f36b220526a397f77a21c110b54cf49f30861bf269913726"
+   }
   },
   {
    "key": "15",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "94369cf15ed3baef415e4cacafa7aa76884649966d6a6f20df7702e7546f9c4c"
+   "subject_key": "52f7e9526e7fa661cb0bc8cbae271f44aa9c5bdff499ae854939f5a08d822944",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line15": "f8959.rrta_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "94369cf15ed3baef415e4cacafa7aa76884649966d6a6f20df7702e7546f9c4c"
+   }
   },
   {
    "key": "16",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "42fbd5e130b895c9d8d8a024f48c4094b996addc94fabe6f00e66b27d275bce1"
+   "subject_key": "12925b9f6234939bf4cc6a72aa51556d7f973ef05d26bfbbe265a0dbe4e9735c",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line14": "f8959.rrta_comp",
+     "f8959.line15": "f8959.rrta_threshold",
+     "f8959.line16": "f8959.rrta_excess"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "42fbd5e130b895c9d8d8a024f48c4094b996addc94fabe6f00e66b27d275bce1"
+   }
   },
   {
    "key": "17",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "f76d8a0134540caae8371bc4209d767b4076d8c798c25a866bd899319d6b0b8d"
+   "subject_key": "d94399f0a938a4e610ccf2eb961a743d9e016e8ce7bb9ec5aceb5797dfc0b476",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line14": "f8959.rrta_comp",
+     "f8959.line15": "f8959.rrta_threshold",
+     "f8959.line16": "f8959.rrta_excess",
+     "f8959.line17": "f8959.rrta_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "f76d8a0134540caae8371bc4209d767b4076d8c798c25a866bd899319d6b0b8d"
+   }
   },
   {
    "key": "18",
    "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
    "status": "MATCH",
-   "subject_key": "de21d813c0b166a42f39e5d68b2111433722e3f2b2778858b2d0de4571283592"
+   "subject_key": "8f78dc6bff980c883350bed5dab8733294fcb8b824b81cf5d95bc2251dc5989d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line12": "f8959.se_excess",
+     "f8959.line13": "f8959.se_tax",
+     "f8959.line16": "f8959.rrta_excess",
+     "f8959.line17": "f8959.rrta_tax",
+     "f8959.line18": "f8959.total_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "de21d813c0b166a42f39e5d68b2111433722e3f2b2778858b2d0de4571283592"
+   }
   },
   {
    "key": "19",
@@ -158,22 +264,22 @@
   "1": "37f69ed7930673f8f907395fc1f2058ee1cf5b31ff761397b3e40607f135c11e",
   "2": "4bd4b650d379bbc8efa35653cf8fcba9494a454ffc6943d0803fae25a5d1ef5f",
   "3": "879e17712425dd7d0685e6d61005515dec6c7e0f09c023ea08bfa6b577521e1a",
-  "8": "0db2eb6f83a07bbb6e696f09df4f1544e1b69bb39bb95045a66ab0c72f2cf598",
-  "14": "4fa146658dc58a2eb7dc36a2c3baaf3031e846a71a1b5e941fdd92d3e684c812",
+  "8": "830abb4abb0bcd868e71ad0c7f6dc9d3b419c0f1b775b39068be1fba59b7c86f",
+  "14": "3e4ed909c76865c4fcc5e86dcb7c5679800f8391c360024c68d6dafde5537461",
   "23": "8699f0f61851e718cb6821bb6fc949ff2d89e7986be3cca92e6c6121b142535a",
   "4": "d072aca18bd569335e666a3d2d92586aa5bdd383d22c0baedc70b1e6a40c02b8",
   "5": "c3d3bdebc03b5471defee98a89b3c0eee8578c4146430c47f1bab17fbd07942c",
   "6": "142822ff8d95c4d77569f328e4bc3d74b5d1f4aa4ef4543d3917a6b41c494886",
   "7": "ca9455d2bf15a5ac6189abb34590d1e1e7b0dc6d134cea28ffff4dfa446788cc",
-  "9": "31e471b3d53402b8f038c55ddde4510688094d71692b41f54d8c7e668e91ea34",
-  "10": "9096db13b12dfcfe1a6fe3818bb24cf5e8aeef1fbbe7c5fbba3001418c8c225b",
-  "11": "b7a4f3cfe3e31d6dbb7f6b9a3bd4fb4d1faedf56b245d35569bdf715c5d4ab29",
-  "12": "06b7736ab439e21072e6522777043c148c7d95709b4a23c41ab0497bf58a6217",
-  "13": "38b9d4d235e1b3bc58ae3bba3d2d057e2ff5e6651dcc56dc7d2a6ebaaf9b39c6",
-  "15": "7e6a3bf3cd7ef4c60d419a9eb4a0dc82bb6023260462f6d6d4a73deb719451a4",
-  "16": "e14a86650fbda19b9b45ca7ade559923f6d18efa95daa1faa299d6f784f3650d",
-  "17": "5f21829243af9f8d124a8382960015c3773ea9090feab39132f50eec5ce51cd1",
-  "18": "e8cf79004dd846b23ef2befe37663f52d9fe609dd1becf8c1cbf22794f56b24e",
+  "9": "aafd5c3ac376c174948a87c2632ec92fc585c1b2f39c9fd4e05e8653ca7d71bb",
+  "10": "f51a16f62323f1982e5a4112c9c1a0c55757a5ab991ef509e72019e51a06f73f",
+  "11": "8887ace195448c921b29dfe2b2cb81ec05a7d96f0c03daae5d04098e358f38cd",
+  "12": "a5c3919e059abe5d37fb60174f644feefd964754985bcc131c0533ac1d38a179",
+  "13": "e08f52234451e20f5267e000b1524c04e1d64c5967072e018814f40b509ccc27",
+  "15": "b04b8abe644eada7c32139d9062ca562dc535eb94130e5a38a3df150387979cc",
+  "16": "69d20115fe124ac87e41332e70802bf7a0f7ac973c10c14d00b13890a9444390",
+  "17": "6b81e801153059e12c572f911ecd3fa645db72f0a1ab58bc68053fe45cd9b56d",
+  "18": "eb1709c70367ca024ab56eb8e19a4a9a04651322291fb770a3d1d025320b6c20",
   "19": "2aad6b990076a3c582ec5c35ffed30564f2118a71430d447ff0e54014828a01e",
   "20": "76433dbfa25c1f457426c8a3adff1f363647a2f693fb149b8b383571ae91b029",
   "21": "e2b3a827711966fbfb64c702f9435503d7fdf1b3ab5402b4bd38b3839b38f966",

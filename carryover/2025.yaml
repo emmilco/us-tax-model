@@ -19,18 +19,18 @@ carryovers:
   - {from: f1040.status, to: refund.status, how: copy}
   - {from: sa.line5d, to: refund.line5d_prior_year, how: copy}
   - {from: sa.line5e, to: refund.line5e_prior_year, how: copy}
-  - {from: sa.line17, to: refund.line17_prior_year, how: copy}
+  - {from: sa.total_itemized, to: refund.line17_prior_year, how: copy}
   # Investment interest, residential clean energy credit and section 179 carryforwards
   - {from: f4952.line7, to: f4952.prior_7, how: copy}
   - {from: f4952.line7, to: f4952.carryover, how: nonzero}
-  - {from: f5695.line16, to: f5695.line12, how: copy}
-  - {from: f5695.line16, to: f5695.carry, how: nonzero}
+  - {from: f5695.carry_out, to: f5695.carry_in, how: copy}
+  - {from: f5695.carry_out, to: f5695.carry, how: nonzero}
   - {from: s179.line13, to: s179.carryover, how: copy}
   - {from: s179.line13, to: s179.prior_form, how: nonzero}
   # IRA basis (Form 8606 line 14, per person)
   - {from: f8606.line14, to: person.ira_basis, how: copy}
   # Qualified business loss carryforward (Form 8995 line 16)
-  - {from: f8995.line16, to: qbi.carryforward, how: negate}
+  - {from: f8995.qbi_loss_carryforward, to: qbi.carryforward, how: negate}
   # Passive activity loss carried forward, per rental (Form 8582 Part VIII)
   - {from: rental.carryforward, to: rental.prior_amt, how: copy}
   - {from: rental.carryforward, to: rental.prior_any, how: nonzero}

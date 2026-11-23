@@ -28,8 +28,8 @@ changes:
     - {doc: f1040, page: 3, quote: "13a Additional deductions from Schedule 1-A, line 44"}
     verified: draft       # draft: rests on an IRS draft; final: checked against a final edition
     operations:
-    - set: {line: f1040.line13b, field: printed, from: 13b, to: 13a}
-    - set: {line: f1040.line13b, field: label, from: "...line 38", to: "...line 44"}
+    - set: {line: f1040.s1a_deductions, field: printed, from: 13b, to: 13a}
+    - set: {line: f1040.s1a_deductions, field: label, from: "...line 38", to: "...line 44"}
 ```
 
 An entry is one change of the change map for one form: its evidence and its operations. Several operations share

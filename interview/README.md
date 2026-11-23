@@ -14,7 +14,7 @@ A profile file lists its targets, its initial answers and the inputs it asks; th
 
 | Profile | File | Targets | Scope reported by the CLI |
 |---|---|---|---|
-| `full` | `2025/full.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total`, `clcw_next_year.line8`, `clcw_next_year.line13`, `clcw_next_year.decedent_notice`, `clcw.figures_notice`, `s179.line13`, Form 8889's three results (`s1.line13`, `s1.line8f`, `s2.line17c`), and `s1.line10`, `s1a.line7`, `s1a.line15`, `sa.line17` and `s2.other`, asked for directly so that their questions are open in their own topics | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |
+| `full` | `2025/full.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total`, `clcw_next_year.line8`, `clcw_next_year.line13`, `clcw_next_year.decedent_notice`, `clcw.figures_notice`, `s179.line13`, Form 8889's three results (`s1.line13`, `s1.line8f`, `s2.hsa_distribution_tax`), and `s1.line10`, `s1a.tips_capped`, `s1a.ot_capped`, `sa.total_itemized` and `s2.other`, asked for directly so that their questions are open in their own topics | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |
 
 The `full` profile starts from no answers and asks `$person` first
 ("Who is this tax return for?"): `["taxpayer"]`, or `["taxpayer","spouse"]` for a couple
@@ -525,7 +525,7 @@ only once the return has got that far. The
 health savings account block (order 190: the roster `$f8889`, the Form 8889 questions, `person.age55_at_year_end` and
 `person.x_hsa_value`) is
 kept together by the `full` profile's asking for Form 8889's three results directly (`s1.line13`, `s1.line8f` and
-`s2.line17c`, which the return's own targets read in any case): each of the form's questions is then reachable as
+`s2.hsa_distribution_tax`, which the return's own targets read in any case): each of the form's questions is then reachable as
 soon as the account is listed, and a refusal on the form is told at once. `person.x_hsa_value` is the exception: it
 is reached through Form 5329 and is asked when that form is.
 

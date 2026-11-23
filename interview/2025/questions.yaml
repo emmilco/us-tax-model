@@ -5204,7 +5204,7 @@ bank:
     help: Only the business part. Leave out the mortgage on your home and interest that must be added to the cost of property.
     prompt: How much mortgage interest did this business pay in 2025 on a building or land it uses, as shown on a Form 1098
       sent to you?
-  - input: sc.line16b
+  - input: sc.interest_other
     order: 252
     seq: 14
     help: Only the business part, and only interest that belongs to 2025. Include business mortgage interest with no Form
@@ -6343,7 +6343,7 @@ bank:
     help: A fuel cell makes electricity from a fuel such as natural gas or hydrogen. A Yes is outside what this tool prepares
       and ends the interview here.
     prompt: Did that include a fuel cell at your (or, on a joint return, your spouse's) main home?
-  - input: f5695.line12
+  - input: f5695.carry_in
     order: 290
     seq: 10
     prompt: What is the amount on line 16 of your (or, on a joint return, your spouse's) 2024 Form 5695? Add the forms if there

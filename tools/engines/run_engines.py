@@ -68,8 +68,8 @@ PE_MAP = {
     # through Schedule D and line 7a, not through Schedule 1 line 26.
     "f1040.line10": ["above_the_line_deductions", "-loss_ald"],
     "f1040.line11b": ["adjusted_gross_income"],
-    "f1040.line13a": ["qualified_business_income_deduction"],
-    "f1040.line13b": ["tip_income_deduction", "overtime_income_deduction", "auto_loan_interest_deduction", "additional_senior_deduction"],
+    "f1040.qbi_deduction": ["qualified_business_income_deduction"],
+    "f1040.s1a_deductions": ["tip_income_deduction", "overtime_income_deduction", "auto_loan_interest_deduction", "additional_senior_deduction"],
     "f1040.line15": ["taxable_income"],
     "f1040.line16": ["regular_tax_before_credits"],
     # The engine's non_refundable_ctc is the credit left after the refundable part, not the
@@ -79,7 +79,7 @@ PE_MAP = {
     "f1040.line28": ["refundable_ctc"],
     "f1040.line27a": ["eitc"],
     "f1040.line6b": ["tax_unit_taxable_social_security"],
-    "sa.line17": ["itemized_taxable_income_deductions"],
+    "sa.total_itemized": ["itemized_taxable_income_deductions"],
     "sa.standard": ["standard_deduction"],
     # The engine's total also holds the Schedule 1-A deductions, which Form 1040 takes on line 13b.
     "sa.deduction": ["taxable_income_deductions", "-qualified_business_income_deduction", "-tip_income_deduction",
@@ -105,7 +105,7 @@ PE_MAP = {
     "f8880.line12": ["savers_credit"],
     # Form 5695 Part I (lines 13 and 15, Schedule 3 line 5a) and Part II (lines 30 and 32, Schedule 3 line 5b).
     "f5695.line13": ["residential_clean_energy_credit_potential"],
-    "f5695.line15": ["residential_clean_energy_credit"],
+    "f5695.rce_credit": ["residential_clean_energy_credit"],
     "s3.line5a": ["residential_clean_energy_credit"],
     "f5695.line30": ["energy_efficient_home_improvement_credit_potential"],
     "f5695.line32": ["energy_efficient_home_improvement_credit"],
@@ -119,10 +119,10 @@ PE_MAP = {
     # Schedule 1 line 20, the IRA deduction after the IRA Deduction Worksheet.
     "s1.line20": ["traditional_ira_deduction"],
     # Schedule 1-A parts: tips (line 13), overtime (line 21), car loan interest (line 30), seniors (line 37).
-    "s1a.line13": ["tip_income_deduction"],
-    "s1a.line21": ["overtime_income_deduction"],
-    "s1a.line30": ["auto_loan_interest_deduction"],
-    "s1a.line37": ["additional_senior_deduction"],
+    "s1a.tips_deduction": ["tip_income_deduction"],
+    "s1a.ot_deduction": ["overtime_income_deduction"],
+    "s1a.vli_deduction": ["auto_loan_interest_deduction"],
+    "s1a.senior_deduction": ["additional_senior_deduction"],
     # Form 8863: the American opportunity credit after the phase-out (line 7), its refundable part (line 8, Form 1040
     # line 29) and the rest (line 9), the lifetime learning credit after the phase-out (line 18), and the nonrefundable
     # credits after the Credit Limit Worksheet (line 19, Schedule 3 line 3).
@@ -165,19 +165,19 @@ PE_PASS_THROUGH = {"lines": [], "components": {
     "f8962.line29": "the engine has no reconciliation of advance payments (Form 8962 lines 25 to 29)",
     "person[taxpayer].f8889[hsa].line13": "health_savings_account_ald is an input with no formula; the engine does not compute Form 8889",
     "ssb.line18": "reached through Form 1040 line 6b, a copy of it",
-    "s1a.line38": "reached through Form 1040 line 13b, a copy of it",
+    "s1a.total_deductions": "reached through Form 1040 line 13b, a copy of it",
     "s8812.line14": "reached through Form 1040 line 19, a copy of it",
     "s8812.line27": "reached through Form 1040 line 28, a copy of it",
     "eic.credit": "reached through Form 1040 line 27a, a copy of it",
     "f8863.line1": "the engine has no variable for the American opportunity credit before the phase-out; line 7 is mapped",
     "f8863.line12": "the engine has no variable for the lifetime learning credit before the phase-out; line 18 is mapped",
-    "s2.line8": "the engine has no Form 5329 variable: early_withdrawal_penalty is an input with no formula, the Schedule 1 line 18 "
+    "s2.tax_favored_accounts": "the engine has no Form 5329 variable: early_withdrawal_penalty is an input with no formula, the Schedule 1 line 18 "
                 "penalty on early withdrawal of savings, and taxable_ira_distributions reaches income only (limitation early_distribution_tax)",
 }}
 # Lines that move with adjusted gross income, for limitations on an engine's AGI.
 PE_AGI_LINES = [l for l in PE_MAP if l not in ("eic.earned_income", "eic.line1", "person[taxpayer].se_line12", "person[taxpayer].se_line13", "s2.line4", "s1.line15")]
 PE_LIMITATIONS = [
-    {"feature": "schedule1a_stepped_phaseout", "lines": ['f1040.line13b', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28', 's1a.line13', 's1a.line21', 's1a.line30'],
+    {"feature": "schedule1a_stepped_phaseout", "lines": ['f1040.s1a_deductions', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28', 's1a.tips_deduction', 's1a.ot_deduction', 's1a.vli_deduction'],
      "reason": "PolicyEngine-US reduces the tips, overtime and car loan interest deductions by the rate times the exact excess of modified AGI over the threshold; Schedule 1-A lines 11, 19 and 28 count whole $1,000 steps (rounded down, down and up) first"},
     {"feature": "sli_phaseout", "lines": PE_AGI_LINES,
      "reason": "PolicyEngine-US phases the student loan interest deduction out with the exact ratio; the worksheet's line 7 ratio is rounded to three places in the project (amb.2025.sli_ratio_places), which moves the deduction by up to a few dollars"},
@@ -191,13 +191,13 @@ PE_LIMITATIONS = [
      "reason": "PolicyEngine-US's saver's credit rate (gov.irs.credits.retirement_saving.rate.joint, a bracket scale whose first threshold is $0) is zero for an adjusted gross income below zero; the Form 8880 line 9 table's first row has no lower bound (\"---\" to $23,750, $35,625 or $47,500: 0.5)"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "PolicyEngine-US takes excess payroll tax withheld as an input and does not compute it from per-employer withholding"},
-    {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line13a', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f8960.tax', 'f1040.line19', 'f1040.line28'],
+    {"feature": "investment_interest_limited", "lines": ['sa.total_itemized', 'sa.deduction', 'f1040.qbi_deduction', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f8960.tax', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US deducts investment interest expense in full; it does not apply the Form 4952 net-investment-income limit"},
     {"feature": "foreign_tax", "lines": ['f1040.line20', 'f1040.line24', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US takes the foreign tax credit as a supplied amount with a Form 1116-style limit on foreign-source income; the simple no-Form-1116 path is compared before credits instead"},
     {"feature": "section_1250_netted", "lines": ['f1040.line16', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US takes unrecaptured section 1250 gain as an already-netted input; the Unrecaptured Section 1250 Gain Worksheet (Schedule D instructions, lines 14-18) reduces it by the net short-term loss and the 28% worksheet amounts, which the project does"},
-    {"feature": "salt_exceeds_agi", "lines": ['sa.line17', 'sa.deduction'],
+    {"feature": "salt_exceeds_agi", "lines": ['sa.total_itemized', 'sa.deduction'],
      "reason": "PolicyEngine-US limits the state and local tax deduction to adjusted gross income; Schedule A line 5e limits it only by the statutory cap"},
     {"feature": "investment_interest_on_8960", "lines": ['f8960.tax', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US does not deduct investment interest expense (Form 4952 line 8) on Form 8960 line 9a"},
@@ -208,8 +208,8 @@ PE_LIMITATIONS = [
 TC_MAP = {
     "f1040.line10": ["c02900"],
     "f1040.line11b": ["c00100"],
-    "f1040.line13a": ["qbided"],
-    "f1040.line13b": ["tip_income_deduction", "overtime_income_deduction", "auto_loan_interest_deduction", "senior_deduction"],
+    "f1040.qbi_deduction": ["qbided"],
+    "f1040.s1a_deductions": ["tip_income_deduction", "overtime_income_deduction", "auto_loan_interest_deduction", "senior_deduction"],
     "f1040.line15": ["c04800"],
     "f1040.line16": ["taxbc"],
     "f1040.line19": ["c07220", "odc"],
@@ -217,7 +217,7 @@ TC_MAP = {
     "f1040.line27a": ["eitc"],
     "f1040.line6b": ["c02500"],
     "f1040.line20": ["c07300"],
-    "sa.line17": ["c04470"],
+    "sa.total_itemized": ["c04470"],
     "sa.deduction": ["standard", "c04470"],
     "f8959.tax": ["ptax_amc"],
     "f8960.tax": ["niit"],
@@ -234,10 +234,10 @@ TC_MAP = {
     # Earned income for the EIC (`earned`: wages plus self-employment earnings less half the self-employment tax).
     "eic.earned_income": ["earned"],
     "eic.line1": ["earned"],
-    "s1a.line13": ["tip_income_deduction"],
-    "s1a.line21": ["overtime_income_deduction"],
-    "s1a.line30": ["auto_loan_interest_deduction"],
-    "s1a.line37": ["senior_deduction"],
+    "s1a.tips_deduction": ["tip_income_deduction"],
+    "s1a.ot_deduction": ["overtime_income_deduction"],
+    "s1a.vli_deduction": ["auto_loan_interest_deduction"],
+    "s1a.senior_deduction": ["senior_deduction"],
     # Form 8863 (AmOppCreditParts, EducationTaxCredit): line 8 (Form 1040 line 29), line 9, line 7 as their sum, and
     # line 19 after the Credit Limit Worksheet (Schedule 3 line 3), from line 1 (e87521) and line 10 (e87530).
     "f8863.line7": ["c10960", "c87668"],
@@ -263,20 +263,20 @@ TC_PASS_THROUGH = {"lines": [], "components": {
     "f8880.line10": "e07240 (the Form 8880 credit) is an input; the engine computes only its tax limit (c07240)",
     "f8880.line12": "e07240 (the Form 8880 credit) is an input; the engine computes only its tax limit (c07240)",
     "f5695.line13": "e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts",
-    "f5695.line15": "e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts",
+    "f5695.rce_credit": "e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts",
     "f5695.line30": "e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts",
     "f5695.line32": "e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts",
     "f2441.line9c": "F2441 computes line 9a but does not expose it; only c07180 (line 11) is an output",
     "s8812.line12": "ChildDepTaxCredit computes line 12 but does not expose it; c07220 and odc are line 14 split",
     "ssb.line18": "reached through Form 1040 line 6b, a copy of it",
-    "s1a.line38": "reached through Form 1040 line 13b, a copy of it",
+    "s1a.total_deductions": "reached through Form 1040 line 13b, a copy of it",
     "s8812.line14": "reached through Form 1040 line 19, a copy of it",
     "s8812.line27": "reached through Form 1040 line 28, a copy of it",
     "eic.credit": "reached through Form 1040 line 27a, a copy of it",
     "f8863.line1": "e87521 (Form 8863 line 1, the total of Part III line 30) is an input",
     "f8863.line10": "e87530 (Form 8863 line 10, the total of Part III line 31) is an input",
     "f8863.line18": "EducationTaxCredit computes line 18 but does not expose it; c07230 (line 19) is an output",
-    "s2.line8": "e09900 (Schedule 2 line 8, the Form 5329 taxes) is an input; the engine does not compute Form 5329, so it could only "
+    "s2.tax_favored_accounts": "e09900 (Schedule 2 line 8, the Form 5329 taxes) is an input; the engine does not compute Form 5329, so it could only "
                 "echo the amount supplied (limitation early_distribution_tax)",
 }}
 TC_AGI_LINES = [l for l in TC_MAP if l not in ("eic.earned_income", "eic.line1", "person[taxpayer].se_line12", "person[taxpayer].se_line13", "s2.line4", "s1.line15")]
@@ -291,17 +291,17 @@ TC_LIMITATIONS = [
      "reason": "Tax-Calculator subtracts the whole Form 5695 amount (e07260) in Credit Limit Worksheet A line 2, which lists Schedule 3 line 5b (Part II) but not line 5a; the residential clean energy credit (Part I) follows the child tax credit, through Credit Limit Worksheet B when there is a qualifying child, which moves line 14 where the child tax credit does not fit under the engine's limit"},
     {"feature": "self_employed", "lines": ['eic.earned_income'],
      "reason": "Tax-Calculator's earned includes self-employment earnings less half the self-employment tax; Step 5 earned income (Form 1040 instructions, line 27) holds wages only and Worksheet B adds the self-employment amounts, so Worksheet B line 6 (eic.line1) is compared instead on self-employed returns"},
-    {"feature": "schedule1a_zero_tax", "lines": ['sa.line17'],
+    {"feature": "schedule1a_zero_tax", "lines": ['sa.total_itemized'],
      "reason": "Tax-Calculator takes the standard deduction whenever the tax is the same either way; when the Schedule 1-A deductions leave no tax even with the standard deduction zeroed, its forced pass also takes the standard deduction, so the itemized total is not compared"},
     {"feature": "student_loan_interest", "lines": TC_AGI_LINES,
      "reason": "Tax-Calculator takes the student loan interest deduction as a supplied amount (e03210) rather than computing the worksheet's phase-out, so returns with student loan interest are not compared"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "Tax-Calculator does not compute the excess Social Security withholding credit"},
-    {"feature": "qbi_dividends", "lines": ['f1040.line13a', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
+    {"feature": "qbi_dividends", "lines": ['f1040.qbi_deduction', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator has no input for section 199A dividends (Form 1099-DIV box 5), so its QBI deduction is zero"},
     {"feature": "special_gains", "lines": ['f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator has no inputs for unrecaptured section 1250 gain or 28% rate gain (Form 1099-DIV boxes 2b, 2d)"},
-    {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line13a', 'f1040.line15', 'f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
+    {"feature": "investment_interest_limited", "lines": ['sa.total_itemized', 'sa.deduction', 'f1040.qbi_deduction', 'f1040.line15', 'f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator deducts investment interest in full within itemizable interest paid; it does not apply the Form 4952 net-investment-income limit"},
     {"feature": "no_tax_either_way", "lines": ['sa.deduction', 'f1040.line15', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator treats a unit owing no tax under either deduction as taking the standard deduction; the project itemizes whenever itemized deductions exceed the standard deduction. The itemized total itself is compared on every return through a forced-itemize pass"},
@@ -310,7 +310,7 @@ TC_LIMITATIONS = [
 ]
 # The credits limited by the tax (Form 2441 line 10, Form 8880 line 11, Form 5695 lines 14 and 31) move with
 # Form 1040 line 16, so every limitation that sets line 16 aside sets them aside too.
-TAX_LIMITED_CREDIT_LINES = ["f2441.line11", "s3.line2", "f8863.line19", "s3.line3", "f8880.line12", "f5695.line15", "s3.line5a", "f5695.line32", "s3.line5b"]
+TAX_LIMITED_CREDIT_LINES = ["f2441.line11", "s3.line2", "f8863.line19", "s3.line3", "f8880.line12", "f5695.rce_credit", "s3.line5a", "f5695.line32", "s3.line5b"]
 
 # Lines a Form 1095-A moves: Schedule 3 line 9 and Schedule 2 line 1a, and through Form 1040 lines 17, 18 and 31 the tax,
 # every credit the tax limits, the payments and the refund. Engines given no Form 1095-A are not compared on them there.
@@ -589,7 +589,7 @@ def run_taxcalc(cases):
     lines = {}
     for i, c in enumerate(cases):
         lines[c["id"]] = {line: cents(combine(lambda n: float(calc.array(n)[i]), spec)) for line, spec in TC_MAP.items()}
-        lines[c["id"]]["sa.line17"] = cents(forced.array("c04470")[i])
+        lines[c["id"]]["sa.total_itemized"] = cents(forced.array("c04470")[i])
     return {"version": tc.__version__, "precision": TC_PRECISION, "lines": lines, "limitations": TC_LIMITATIONS,
             "pass_through": TC_PASS_THROUGH, "components": {line: len(spec) for line, spec in TC_MAP.items()}}
 

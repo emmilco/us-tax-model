@@ -68,13 +68,13 @@ changes:
         field: expr.of
         from:
         - f1040.line12e
-        - f1040.line13a
-        - f1040.line13b
+        - f1040.qbi_deduction
+        - f1040.s1a_deductions
         to:
         - f1040.line12e
         - f1040.line12f
-        - f1040.line13a
-        - f1040.line13b
+        - f1040.qbi_deduction
+        - f1040.s1a_deductions
   - change: C-PRI-02
     evidence:
     - doc: f1040
@@ -86,27 +86,27 @@ changes:
     verified: draft
     operations:
     - set:
-        line: f1040.line13a
+        line: f1040.qbi_deduction
         field: printed
         from: 13a
         to: 13b
     - set:
-        line: f1040.line13a
+        line: f1040.qbi_deduction
         field: cite.locator
         from: Form 1040 (2025), line 13a
         to: Form 1040 (2026), line 13b (draft)
     - set:
-        line: f1040.line13b
+        line: f1040.s1a_deductions
         field: printed
         from: 13b
         to: 13a
     - set:
-        line: f1040.line13b
+        line: f1040.s1a_deductions
         field: label
         from: Additional deductions from Schedule 1-A, line 38
         to: Additional deductions from Schedule 1-A, line 44
     - set:
-        line: f1040.line13b
+        line: f1040.s1a_deductions
         field: cite.locator
         from: Form 1040 (2025), line 13b; i1040gi p. 34, Line 13b, "enter on line 13b the amount, if any, from Schedule 1-A,
           line 38"
@@ -134,8 +134,8 @@ changes:
           expr:
             op: sum
             of:
-            - f1040.line13a
-            - f1040.line13b
+            - f1040.qbi_deduction
+            - f1040.s1a_deductions
           cite:
             doc: f1040sa
             locator: Schedule A (2026), line 18 (draft), "Is the amount on Form 1040 or 1040-SR, line 11b, minus the amounts

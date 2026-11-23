@@ -145,7 +145,15 @@
    "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; the project enters zero when Form 5695 Part I is not completed (f5695.part1_any), the reply copies Form 5695 line 15, which is unknown or refuses on a return without Form 5695 (Schedule 3 line 5a, \"Residential clean energy credit from Form 5695, line 15\"). Triage (pass fc3ac0eb0f5d): 1,641/3,089 agree; 1,093 candidate-refuses (refused returns), 351 candidate-unknown (6 completed), 4 project-unknown; no value difference.",
-   "subject_key": "865d98cb4c7fffd25c82457512444c4f4cf8d6820db57a0710448a2d9054881f"
+   "subject_key": "e1c0820bdffe0cfdeaf73cbd409aca2207f7b279284ee45a0cd20db46819162e",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line15": "f5695.rce_credit"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "865d98cb4c7fffd25c82457512444c4f4cf8d6820db57a0710448a2d9054881f"
+   }
   },
   {
    "key": "5b",
@@ -218,7 +226,7 @@
   "2": "62e7115d0a806175d67b2a301449897878e49828445e6b95e4a18e054c8bda0c",
   "3": "b0daa3d8cb6d0305fb434bfe96790797f41c4bd51ed3f5fb492aab01b6cb5a93",
   "4": "03d8777671ca0033641c0177a039694b68d0ac164b316661d6b64dea351b5031",
-  "5a": "d96673e713b85073ff55bf60e8b2b6053f6b040d3132603b472d87797ae11b91",
+  "5a": "703c559915c56891d6112a971cd6e7d0270c6438990b17340260e0f83fcc2817",
   "5b": "fddca36181beba97637b3e10759ac7f636e1f1f4871c33eba2ed26360f6fee10",
   "7": "eeffcc832c7c49529bee96dbfbfc19f1f35f6894bbe8198e6e0ef54051efeff1",
   "8": "85954f42c63184e45d1eee34850eb53f59288a43326d35af3a97d20699c595ce",
@@ -245,7 +253,7 @@
   "s3.prior_amt_if_forms": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "s3.prior_forms_if_forms": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "s3.other_credit": "3b1a999106f2fab5a9bf1de4aaf298977dfcc1b581cadf4210edf0175b0165c7",
-  "5a": "44145c9c17e80c02409fa95cd0f52adc10271be1967989b4354ff767f5b70bd6",
+  "5a": "b89a43c45c1a4be2b801343eb5159546ca5a4f19df66d8c02f69598f136b4da3",
   "5b": "f31308964e4ab0eaf59e9fdec690c8a94688eee8fecb7e91bd2772510ba14bde",
   "7": "69e0286cd23a6a5e7f33650a27d61737a6f8b3d5b027b25fd14a044fae9725a2",
   "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",

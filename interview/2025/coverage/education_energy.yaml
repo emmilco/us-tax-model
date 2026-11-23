@@ -123,7 +123,7 @@ rows:
   expect:
     proceeds:
       f5695.line1: 2000000
-    not_asked: [f5695.line2, f5695.battery_cost, f5695.line17a, f5695.line21a, f5695.joint_occupancy, f5695.line12]
+    not_asked: [f5695.line2, f5695.battery_cost, f5695.line17a, f5695.line21a, f5695.joint_occupancy, f5695.carry_in]
 - id: l8b.energy_heat_pump
   design: lane 8b notes, home energy (a heat pump, the common Part II case)
   situation: A homeowner had a heat pump installed in 2025 for $9,000 at the home she lives in.
@@ -261,10 +261,10 @@ rows:
     s3.prior_forms: false
     ftc.carryover: false
     f5695.carry: true
-    f5695.line12: 150000
+    f5695.carry_in: 150000
   expect:
     proceeds:
-      f5695.line12: 150000
+      f5695.carry_in: 150000
     not_asked: [f5695.solar, f5695.business_use, f5695.construction_later, f5695.line7a]
 - id: l8b.energy_no_prior_form
   design: lane 8b notes, home energy (no separate form in the 2024 return)
@@ -275,4 +275,4 @@ rows:
   expect:
     proceeds:
       s3.prior_other_forms: false
-    not_asked: [f5695.carry, f5695.line12]
+    not_asked: [f5695.carry, f5695.carry_in]

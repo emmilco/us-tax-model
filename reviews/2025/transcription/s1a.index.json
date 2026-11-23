@@ -68,236 +68,554 @@
    "record": "9e39f07a68c51fd4f95cfa36967c5f31800760e055731a1b7d1df1d536510040",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line from s1a.tips alone and sums person.tip_employers and person.tip_total over every person, not only those with an SSN valid for work (i1040gi p. 101, 'the spouse who received the qualified tips must have a valid SSN'). Where the part applies and every tipped person has a valid SSN the two agree, including the one-employer and worksheet routes. This pass reviewed the line because lane fx-itemized added its consistency refusal s1a.tips_over_wages (a refusal, not part of the compared expression) and made person.tip_employers count only listed tip jobs (BUG-1207), which the second reads as given. No change to the data.",
-   "subject_key": "07b635d48818d690a7a38d8fcc5c5706ccd73f3cdeb426f64ddfa39a95e18be9"
+   "subject_key": "0c25c80ef163e64e070729c117beecdbfd473fc93cc59cb4e4a205f0c64b56f8",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line4c": "s1a.tips_employee"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "07b635d48818d690a7a38d8fcc5c5706ccd73f3cdeb426f64ddfa39a95e18be9"
+   }
   },
   {
    "key": "5",
    "record": "45f950a70602ddb91cf04fb90208fd30b2f78ac2b9a0f399320813b83c5f0068",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; triage 2,481/2,597 agree, no value difference; differences are project-unknown (unasked Part II questions), project-refuses (12) and candidate-refuses (3), all on refused or incomplete returns: both lines are 0 where they compute and both refuse trade-or-business tips (s1.sc_1a; the project also scope.schedule1). The reply refuses on s1.sc_1a even when Part II does not apply, where the project's line is 0 (i1040gi p. 101, \"Fill out Schedule 1-A, Part II, only if\": you received qualified tips); refusal placement only. i1040gi p. 104, line 5.",
-   "subject_key": "12e49bec6fc50dcc5b54bf2886587c8156cb933c639e1a5c7e912baa9d70ffeb"
+   "subject_key": "3829fde677d6bb21b358ccf10922d8b28177feb4388dab317659e741ec498afc",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line5": "s1a.tips_business"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "12e49bec6fc50dcc5b54bf2886587c8156cb933c639e1a5c7e912baa9d70ffeb"
+   }
   },
   {
    "key": "6",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,445 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 10, \"candidate-unknown\": 879, \"project-refuses\": 6, \"project-unknown\": 44, \"value\": 3}; on completed returns {\"candidate-unknown\": 296}: on each of the 296 completed records the project's line is $0 (its part does not apply) and the candidate is unknown for an answer the completed interview did not ask on that return ($tipjob, person.work_ssn). The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "ee634d3ebcd021edb3e86920891233f6fd36c6ed42930d61941581af4af6a8e6"
+   "subject_key": "6b562193e5ee638945e0087e8a9ec861f327088030beacd84ee5eb48b9057c43",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line4c": "s1a.tips_employee",
+     "s1a.line5": "s1a.tips_business",
+     "s1a.line6": "s1a.tips_total"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "ee634d3ebcd021edb3e86920891233f6fd36c6ed42930d61941581af4af6a8e6"
+   }
   },
   {
    "key": "7",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,445 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 10, \"candidate-unknown\": 879, \"project-refuses\": 6, \"project-unknown\": 44, \"value\": 3}; on completed returns {\"candidate-unknown\": 296}: on each of the 296 completed records the project's line is $0 (its part does not apply) and the candidate is unknown for an answer the completed interview did not ask on that return ($tipjob, person.work_ssn). The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "e196b5ceb9467463b34b24e21002e5c25acf483eac5629224b279da07d03c921"
+   "subject_key": "59b736a74191bd137f41c9f04fa7fcd5c09a8129ed4ceb631d4fc882bbdaab7f",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line6": "s1a.tips_total",
+     "s1a.line7": "s1a.tips_capped"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "e196b5ceb9467463b34b24e21002e5c25acf483eac5629224b279da07d03c921"
+   }
   },
   {
    "key": "8",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 105 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 463, \"candidate-unknown\": 30, \"project-unknown\": 89, \"value\": 1700}; on completed returns {\"value\": 1100}: on each of the 1,100 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "9f69fd339d9bc095fe0d9dd3331d4995f0b29f8070087100c318de18c3faebf5"
+   "subject_key": "eea537aeabfd73fc84d6861af4f1c27beccde19eca8541d3e9c8a1b830ffdf92",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line8": "s1a.tips_magi"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "9f69fd339d9bc095fe0d9dd3331d4995f0b29f8070087100c318de18c3faebf5"
+   }
   },
   {
    "key": "9",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 52 of 2,387 comparisons agree; differences by kind {\"candidate-unknown\": 2, \"project-unknown\": 132, \"value\": 2201}; on completed returns {\"value\": 1131}: on each of the 1,131 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "9677792e67efb446d308648859b621b5d060a0dcb11eb1cf8eb49edf65985ce3"
+   "subject_key": "2748071fbf289f3a3b678bb330167d0a6862c841b17ac2d1e97918de95c8fa4f",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line9": "s1a.tips_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "9677792e67efb446d308648859b621b5d060a0dcb11eb1cf8eb49edf65985ce3"
+   }
   },
   {
    "key": "10",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 66 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 463, \"candidate-unknown\": 30, \"project-unknown\": 89, \"value\": 1739}; on completed returns {\"value\": 1128}: on each of the 1,128 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "04f853d6b2f2efac2365a80220ccc7bc709d37a9bbb6b1573d6eee8b8b9bb739"
+   "subject_key": "cdd9fcf4cb0b8b23a614e9800ca04a85bfdc9e62af13614005e85c0b6e4b0135",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line10": "s1a.tips_over",
+     "s1a.line8": "s1a.tips_magi",
+     "s1a.line9": "s1a.tips_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "04f853d6b2f2efac2365a80220ccc7bc709d37a9bbb6b1573d6eee8b8b9bb739"
+   }
   },
   {
    "key": "12",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,508 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 463, \"candidate-unknown\": 30, \"project-unknown\": 89, \"value\": 297}; on completed returns {\"value\": 137}: on each of the 137 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "3ad5cf01a7fa0100ab05a20854d75e42da557530bcc1fd237bed839048e7f4a2"
+   "subject_key": "eddee7ed77f150c4cc34d2ebe9d6235bdb09d75935db7bf0e891f4dfced11f6b",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line12": "s1a.tips_reduction",
+     "s1a.line8": "s1a.tips_magi",
+     "s1a.line9": "s1a.tips_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "3ad5cf01a7fa0100ab05a20854d75e42da557530bcc1fd237bed839048e7f4a2"
+   }
   },
   {
    "key": "13",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i1040gi p. 104, Line 5: \"Include the qualified tips you and/or your spouse received in the course of a trade or business, but only to the extent the trade or business in which you received the qualified tips has net income.\" and p. 101: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025.\" The candidate's line 13 is the Part II computation gated on s1a.tips and filing status, with no refusal for qualified tips received in a trade or business; its line 5 refusal (s1a.h_sc_1a) is reached only when s1a.tips, the employee-tips question, is true. On stage14.refuse.sch1a_tips_business_only and stage14.refuse.sch1a_tips (s1a.tips false, sc[b].tips_ot true: qualified tips received in the business or Form 1099 overtime) the candidate completes line 13 at $0.00, so business tips the source includes on line 5 and deducts on line 13 are dropped without a refusal; the project refuses at s1.sc_1a (BUG-0147). On stage14.sch1a.refuse_overtime_1099 (overtime only) the candidate's $0 is right for line 13 itself and the project's refusal of the return is its cited screen (scope). BUG-0154 checked: the refusal reported for Form 1040 line 37 on these returns is the one shared text, also when employee tips are claimed with the screen answered yes (evaluated on a variant of stage14.refuse.sch1a_tips_business_only with s1a.tips true and one $5,000 tip job). The candidate's refusals (generated 119, 203, 213) are upstream gates its line 3 chain reaches, on returns the project refuses; the project-unknown records withhold s1a.tips or sc.tips_ot. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 2,355 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 6, \"project-refuses\": 4, \"project-unknown\": 22}; on completed returns none. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "b3bb68e486fe65e2b6c0178b6fc32d99a0e220a8415d964bbfa80d295e23506c"
+   "subject_key": "193cc31f459add66fda0bdfdb86332e9d362aa12679fe3e82026021101420aff",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line12": "s1a.tips_reduction",
+     "s1a.line13": "s1a.tips_deduction",
+     "s1a.line7": "s1a.tips_capped",
+     "s1a.line8": "s1a.tips_magi",
+     "s1a.line9": "s1a.tips_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "b3bb68e486fe65e2b6c0178b6fc32d99a0e220a8415d964bbfa80d295e23506c"
+   }
   },
   {
    "key": "14a",
    "record": "9e39f07a68c51fd4f95cfa36967c5f31800760e055731a1b7d1df1d536510040",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part III only if'; the owner chose this strictly accurate reading after class M); the second figures the line from s1a.overtime alone, without the joint-return and valid-SSN conditions of i1040gi p. 106. Where the part applies the two agree (the sum of person.ot_total over persons with a valid SSN). This pass reviewed the line because lane fx-itemized added its consistency refusal s1a.ot_over_wages (BUG-1208), which is not part of the compared expression. No change to the data.",
-   "subject_key": "a4d17b76899e7caf92ec4aa8f5f4c21526fd120fd13e2d521066e252850717aa"
+   "subject_key": "170b85be2e304f48c63f23068c15b9c6e69730daa3457028cf888f48fc04dc45",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line14a": "s1a.ot_w2"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "a4d17b76899e7caf92ec4aa8f5f4c21526fd120fd13e2d521066e252850717aa"
+   }
   },
   {
    "key": "14b",
    "record": "45f950a70602ddb91cf04fb90208fd30b2f78ac2b9a0f399320813b83c5f0068",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; triage 2,487/2,597 agree, no value difference; differences are project-unknown (unasked Part III questions), project-refuses (6) and candidate-refuses (3), all on refused or incomplete returns: both lines are 0 where they compute and both refuse Form 1099 overtime from a Schedule C (s1.sc_1a). The reply refuses on s1.sc_1a also when Part III does not apply, where the project's line is 0; refusal placement only. i1040gi, Schedule 1-A Part III, \"Fill out Schedule 1-A, Part III, only if\".",
-   "subject_key": "be168a3a38a20a659776655bd3d72f11f4b9b10b1d421e7e65aed25e8d304d9c"
+   "subject_key": "7416fa390b386663442362dbcbd346718d2662cec81dc5fda96c1a15afb69d71",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line14b": "s1a.ot_1099"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "be168a3a38a20a659776655bd3d72f11f4b9b10b1d421e7e65aed25e8d304d9c"
+   }
   },
   {
    "key": "14c",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,477 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 3, \"candidate-unknown\": 853, \"project-refuses\": 2, \"project-unknown\": 49, \"value\": 3}; on completed returns {\"candidate-unknown\": 290}: on each of the 290 completed records the project's line is $0 (its part does not apply) and the candidate is unknown for an answer the completed interview did not ask on that return ($otjob, person.work_ssn). The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "741e336bb343d53a32ed581d5aeaf4f98af89a41124499ae1516ea83110edd7a"
+   "subject_key": "4838852137532cc3e5dc7c7102e90e051fcc7e29e77d6a91f60a6f8be483089b",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line14a": "s1a.ot_w2",
+     "s1a.line14b": "s1a.ot_1099",
+     "s1a.line14c": "s1a.ot_total"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "741e336bb343d53a32ed581d5aeaf4f98af89a41124499ae1516ea83110edd7a"
+   }
   },
   {
    "key": "15",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,476 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 3, \"candidate-unknown\": 854, \"project-refuses\": 2, \"project-unknown\": 49, \"value\": 3}; on completed returns {\"candidate-unknown\": 290}: on each of the 290 completed records the project's line is $0 (its part does not apply) and the candidate is unknown for an answer the completed interview did not ask on that return ($otjob, person.work_ssn). The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "8078ca488b8697db77a5047ef91133c3ef416069f7b4c5aa74d6660294bd931f"
+   "subject_key": "93fc39d9ac1e2fb644c2e318d2f60683dbe1651f7588bf2a41d2f0af5af0eecd",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line14c": "s1a.ot_total",
+     "s1a.line15": "s1a.ot_capped"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "8078ca488b8697db77a5047ef91133c3ef416069f7b4c5aa74d6660294bd931f"
+   }
   },
   {
    "key": "16",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 107 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 468, \"candidate-unknown\": 30, \"project-unknown\": 89, \"value\": 1693}; on completed returns {\"value\": 1096}: on each of the 1,096 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "a4c207d1706e8d70712315ceaada3c8231b28c039f780a79a48fbcc8a1e4756f"
+   "subject_key": "eeea28f8b4c6544cfab66c4cac23c5e0661f94a95d913ad0b896bf51b4b12479",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line16": "s1a.ot_magi"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "a4c207d1706e8d70712315ceaada3c8231b28c039f780a79a48fbcc8a1e4756f"
+   }
   },
   {
    "key": "17",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 54 of 2,387 comparisons agree; differences by kind {\"candidate-unknown\": 2, \"project-unknown\": 132, \"value\": 2199}; on completed returns {\"value\": 1127}: on each of the 1,127 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "77a60cc52fa489c13da1a2e20e0ab2b73ce19cc84f9dafe617e813c67aadb374"
+   "subject_key": "c84ad91590764c85f265e8d1360f739fda9710d7b045536f5e0ee661237ba233",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line17": "s1a.ot_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "77a60cc52fa489c13da1a2e20e0ab2b73ce19cc84f9dafe617e813c67aadb374"
+   }
   },
   {
    "key": "18",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 68 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 468, \"candidate-unknown\": 30, \"project-unknown\": 89, \"value\": 1732}; on completed returns {\"value\": 1124}: on each of the 1,124 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "50d1b296a88cda490d86fc4f11909a0f838f872025c3867601df45718ae156e4"
+   "subject_key": "928bfde081d966a8361d61a0f3dd19209976d589faac98650e23f801c5fb9581",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line16": "s1a.ot_magi",
+     "s1a.line17": "s1a.ot_threshold",
+     "s1a.line18": "s1a.ot_over"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "50d1b296a88cda490d86fc4f11909a0f838f872025c3867601df45718ae156e4"
+   }
   },
   {
    "key": "20",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,507 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 468, \"candidate-unknown\": 30, \"project-unknown\": 89, \"value\": 293}; on completed returns {\"value\": 135}: on each of the 135 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "6b9b9e8b698d45573bcae90b28ee9248444643cbcbec83d52731d958508110d1"
+   "subject_key": "81dc29db415bf26d3a339a0585af82d97dddee8050da700285bfea1fe3387944",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line16": "s1a.ot_magi",
+     "s1a.line17": "s1a.ot_threshold",
+     "s1a.line20": "s1a.ot_reduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "6b9b9e8b698d45573bcae90b28ee9248444643cbcbec83d52731d958508110d1"
+   }
   },
   {
    "key": "21",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i1040gi p. 108, Line 14b: \"Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3.\" and p. 106: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025\". The candidate's line 21 is gated on s1a.overtime, the employee-overtime question, and its line 14b refusal (s1a.h_sc_1a) is reached only when that answer is true. The per-business screen sc.tips_ot is one yes for qualified tips in the business or qualified overtime on Form 1099-NEC or 1099-MISC; on stage14.refuse.sch1a_tips_business_only and stage14.refuse.sch1a_tips (s1a.overtime false, sc[b].tips_ot true) the candidate completes line 21 at $0.00, so a filer whose yes is Form 1099 overtime loses the line 14b amount without a refusal, where the project refuses at s1.sc_1a. Where s1a.overtime is true (stage14.sch1a.refuse_overtime_1099) both refuse. The candidate's refusals are upstream gates (sb.fbar_required, se_screened, scope.other_income, sd.carryover) on returns the project refuses; the project-unknown records withhold s1a.overtime or sc.tips_ot. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 2,358 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 2, \"candidate-unknown\": 2, \"project-refuses\": 3, \"project-unknown\": 22}; on completed returns none. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "b93e24e6800d4240b3dccf2551b3a0b720da08f55ab463f6053a0762d0d4a995"
+   "subject_key": "9ca802ddd43717dfcc84323cd1185789b5b0d4c5e579d89123483fa2d3d80b64",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line15": "s1a.ot_capped",
+     "s1a.line16": "s1a.ot_magi",
+     "s1a.line17": "s1a.ot_threshold",
+     "s1a.line20": "s1a.ot_reduction",
+     "s1a.line21": "s1a.ot_deduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "b93e24e6800d4240b3dccf2551b3a0b720da08f55ab463f6053a0762d0d4a995"
+   }
   },
   {
    "key": "23",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i1040gi p. 109, Part IV: \"Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025.\" The candidate's line 23 reads the worksheet roster $carloan (carloan.col_iii) on every return with no s1a.carloan or Part gate, although s1a.carloan is in its interface and it tests it on its deduction line. A filer who answers s1a.carloan no is never asked for that roster, so the candidate's line 23 is unknown on completed returns where the source needs no answer, because the Part is not filled out at all: an answer required that the source does not need to determine the result. Its line 30 is gated on s1a.carloan, which is why line 30 agrees. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,463 of 2,387 comparisons agree; differences by kind {\"candidate-unknown\": 859, \"project-unknown\": 64, \"value\": 1}; on completed returns {\"candidate-unknown\": 249}: on each of the 249 completed records the project's line is $0 (its part does not apply) and the candidate is unknown for an answer the completed interview did not ask on that return ($carloan). The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "10eb34d23ae9bc7eebe00e4383bffc951d924175cd94be90c019aca967bcd0f4"
+   "subject_key": "e888baaff74edf2b503099cec3ede25e2f2c052633a9cbd8646f842ab6f0e46a",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line23": "s1a.vli_total"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "10eb34d23ae9bc7eebe00e4383bffc951d924175cd94be90c019aca967bcd0f4"
+   }
   },
   {
    "key": "24",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,463 of 2,387 comparisons agree; differences by kind {\"candidate-unknown\": 859, \"project-unknown\": 64, \"value\": 1}; on completed returns {\"candidate-unknown\": 249}: on each of the 249 completed records the project's line is $0 (its part does not apply) and the candidate is unknown for an answer the completed interview did not ask on that return ($carloan). The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "7cdf7fcb0654942f8549980264c808ac8ebca7e05bba6be7cdce9e536566da1c"
+   "subject_key": "48015bdb1fe9a8155e4a71515d139a0450dd20d0a5bc99c3ce7c8bc8118d1166",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line23": "s1a.vli_total",
+     "s1a.line24": "s1a.vli_capped"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "7cdf7fcb0654942f8549980264c808ac8ebca7e05bba6be7cdce9e536566da1c"
+   }
   },
   {
    "key": "25",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 125 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 460, \"candidate-unknown\": 21, \"project-unknown\": 92, \"value\": 1689}; on completed returns {\"value\": 1096}: on each of the 1,096 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "6b4eadb007904d588f0ae74021d8190db36d4fa428717cfe19f88359ad1fab31"
+   "subject_key": "f7e5db5b4a98667137d4fa92c8e8843d3de3288cf91bbe7f749c9bb977c2c180",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line25": "s1a.vli_magi"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "6b4eadb007904d588f0ae74021d8190db36d4fa428717cfe19f88359ad1fab31"
+   }
   },
   {
    "key": "26",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 66 of 2,387 comparisons agree; differences by kind {\"candidate-unknown\": 2, \"project-unknown\": 146, \"value\": 2173}; on completed returns {\"value\": 1127}: on each of the 1,127 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "2da05058f3531bcd2f460fc03354fd76711270981e9bf8abc5e655d2ee399b84"
+   "subject_key": "c4c324302c9d9e788a003c326f1d5235b759667c776c3219babe0437ddcdfdf8",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line26": "s1a.vli_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "2da05058f3531bcd2f460fc03354fd76711270981e9bf8abc5e655d2ee399b84"
+   }
   },
   {
    "key": "27",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 139 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 460, \"candidate-unknown\": 21, \"project-unknown\": 92, \"value\": 1675}; on completed returns {\"value\": 1089}: on each of the 1,089 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "ed4aade65a6608df3e67e62fac25336f0123256a8928de4bad7aeb6daa7985d2"
+   "subject_key": "78a35e2fc2db57f2629e30413a301bf549051777bdf23348270be12f13179a2c",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line25": "s1a.vli_magi",
+     "s1a.line26": "s1a.vli_threshold",
+     "s1a.line27": "s1a.vli_over"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "ed4aade65a6608df3e67e62fac25336f0123256a8928de4bad7aeb6daa7985d2"
+   }
   },
   {
    "key": "29",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,357 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 460, \"candidate-unknown\": 21, \"project-unknown\": 92, \"value\": 457}; on completed returns {\"value\": 230}: on each of the 230 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "57ceed862f56095bf0ecb42af7e3e14d414e5ebb017a7ca2b6369c927c38dc67"
+   "subject_key": "436b01b16e2945b05c921bbe8c1005200c867197ab9507ad80153ecff040f17a",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line25": "s1a.vli_magi",
+     "s1a.line26": "s1a.vli_threshold",
+     "s1a.line29": "s1a.vli_reduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "57ceed862f56095bf0ecb42af7e3e14d414e5ebb017a7ca2b6369c927c38dc67"
+   }
   },
   {
    "key": "30",
    "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; i1040gi p. 110, Line 27: \"If the amount on line 27 is zero or less, the amount of your QPVLI reported on line 24 is not reduced. Skip lines 28 and 29 and enter the amount from Schedule 1-A, line 24, on Schedule 1-A, line 30.\" The candidate's line 30 is gated on s1a.carloan and subtracts a zero-floored, rounded-up line 29, which equals the project's line 27 skip. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 2,387 of 2,387 comparisons agree; no differences. Observed equivalence on that sample, not proof.",
-   "subject_key": "22ad7db75efca19b550e00f91d6ecb6c7dab2c58740804da78df45113ac82144"
+   "subject_key": "9606245f1d6663aadb391ee8edc16706c1d98b9662c92b2ccfd600e15cf482fe",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line24": "s1a.vli_capped",
+     "s1a.line25": "s1a.vli_magi",
+     "s1a.line26": "s1a.vli_threshold",
+     "s1a.line29": "s1a.vli_reduction",
+     "s1a.line30": "s1a.vli_deduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "22ad7db75efca19b550e00f91d6ecb6c7dab2c58740804da78df45113ac82144"
+   }
   },
   {
    "key": "31",
    "record": "9751febc3b0a524551af013a08364e700935ca86f67af07971824ab2bd4993db",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" The candidate's line 31 copies line 3 with no test of whether Part V is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 131 of 2,361 comparisons agree; differences {\"candidate-refuses\": 464, \"candidate-unknown\": 32, \"project-unknown\": 7, \"value\": 1727}; on completed returns {\"value\": 1073}.",
-   "subject_key": "609e24e52147648d0f223b93de33c0e6004fce3cffc748487989f0eab84651c6"
+   "subject_key": "fa6e148a4bac2262fe4cca3b1e393c3110f857f987e99bd147d6d3f3178b67f2",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line31": "s1a.senior_magi"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "609e24e52147648d0f223b93de33c0e6004fce3cffc748487989f0eab84651c6"
+   }
   },
   {
    "key": "32",
    "record": "9751febc3b0a524551af013a08364e700935ca86f67af07971824ab2bd4993db",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" The candidate's line 32 enters $75,000 or $150,000 with no test of whether Part V is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 80 of 2,361 comparisons agree; differences {\"candidate-unknown\": 2, \"project-unknown\": 24, \"value\": 2255}; on completed returns {\"value\": 1103}.",
-   "subject_key": "3841233ea5321896c36d9baed08c44505f4925b443c00ed20c0c1e4532cc3bfc"
+   "subject_key": "80553e8e9320586e31ce2d974cdfd4181e5aaa6903be561e80220ad5017a6888",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line32": "s1a.senior_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "3841233ea5321896c36d9baed08c44505f4925b443c00ed20c0c1e4532cc3bfc"
+   }
   },
   {
    "key": "33",
    "record": "9751febc3b0a524551af013a08364e700935ca86f67af07971824ab2bd4993db",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" The candidate's line 33 subtracts line 32 from line 31 with no test of whether Part V is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 102 of 2,361 comparisons agree; differences {\"candidate-refuses\": 464, \"candidate-unknown\": 32, \"project-unknown\": 7, \"value\": 1756}; on completed returns {\"value\": 1098}.",
-   "subject_key": "54e95e1c8002016242769441209e807a5ed591a452096b4985ec90bd71cd4902"
+   "subject_key": "c49e3d26cbca63b89382a68f7e4746d61b2bbb2355dc0bccef88ce85622f438b",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line31": "s1a.senior_magi",
+     "s1a.line32": "s1a.senior_threshold",
+     "s1a.line33": "s1a.senior_over"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "54e95e1c8002016242769441209e807a5ed591a452096b4985ec90bd71cd4902"
+   }
   },
   {
    "key": "34",
    "record": "9751febc3b0a524551af013a08364e700935ca86f67af07971824ab2bd4993db",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 1,203 of 2,361 comparisons agree; differences {\"candidate-refuses\": 464, \"candidate-unknown\": 32, \"project-unknown\": 7, \"value\": 655}; on completed returns {\"value\": 362}.",
-   "subject_key": "b158a8a15c939a89eee15eef088a46db7e6af139424fff570d30366f106028db"
+   "subject_key": "c0eb8e0c7dfa22b84d8d9de7b29b1ab7aaec40021822a5f0ac4d2e61c38408dd",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line31": "s1a.senior_magi",
+     "s1a.line32": "s1a.senior_threshold",
+     "s1a.line34": "s1a.senior_reduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "b158a8a15c939a89eee15eef088a46db7e6af139424fff570d30366f106028db"
+   }
   },
   {
    "key": "35",
    "record": "9751febc3b0a524551af013a08364e700935ca86f67af07971824ab2bd4993db",
    "status": "DISAGREE",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 351 of 2,361 comparisons agree; differences {\"candidate-refuses\": 464, \"candidate-unknown\": 32, \"project-unknown\": 7, \"value\": 1507}; on completed returns {\"value\": 981}.",
-   "subject_key": "91ae2c8f65540d4fb940af675331300d2d1f538113a474510f49b231e778458a"
+   "subject_key": "d2eec3ce728edd67b90d360f32e289a1c8a1d119e2fdaee053b67697b0ac6d22",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line31": "s1a.senior_magi",
+     "s1a.line32": "s1a.senior_threshold",
+     "s1a.line34": "s1a.senior_reduction",
+     "s1a.line35": "s1a.senior_phased"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "91ae2c8f65540d4fb940af675331300d2d1f538113a474510f49b231e778458a"
+   }
   },
   {
    "key": "36a",
    "record": "82de8c9ba80af1434c63911f671d25a5da3bb6ac74bf7fd42bbe81bb49a3a2b3",
    "status": "DISAGREE",
    "ruling": "Ruling: scope; i1040gi p. 110, Death of a taxpayer in 2025: \"If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn’t qualify for the enhanced deduction for seniors.\" The candidate gives $0 for a taxpayer born before January 2, 1961, who died in 2025 before 65, which the text supports; the project refuses that return at its cited gate s1a.senior_decedent (stage12.refuse.senior_decedent, i1040gi p. 110). The project-unknown record withholds person.age65 on a married filing separately return refused at s3.mfs. Triage executable-triage-v2 (triage/s1a.json; 1,099 fixtures, 500 generated returns seed 20261026, 108 partial records): 1,705 of 1,707 comparisons agree; differences: 1 project-refuses, 1 project-unknown; by full-interview outcome of the return: refused: 1 project-refuses, 1 project-unknown; witnesses (project / candidate): project-refuses e.g. stage12.refuse.senior_decedent (refusal at s1a.senior_decedent / $0.00; return refused); project-unknown e.g. ss.mfs (unknown person[taxpayer].age65 / $0.00; return refused).",
-   "subject_key": "a2127fbfef6d690f375a5a4daf78b75b858ae554f4580ff5f31be3e170e0991e"
+   "subject_key": "2114b3b8287dacc1b33feda9b481239f51031fdf22918b5e4a51753600db95d9",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line35": "s1a.senior_phased",
+     "s1a.line36a": "s1a.senior_you"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "a2127fbfef6d690f375a5a4daf78b75b858ae554f4580ff5f31be3e170e0991e"
+   }
   },
   {
    "key": "36b",
    "record": "45f950a70602ddb91cf04fb90208fd30b2f78ac2b9a0f399320813b83c5f0068",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; triage 2,576/2,597 agree, no value difference; differences are candidate-unknown (9: the reply reads person.died_at_64 for every spouse, a question asked only of a person born in the year that turns 65 in 2025 (gated_by person.died_before_65)) and project-refuses (11: the project refuses a spouse born before January 2, 1961 who died in 2025 before reaching 65, s1a.spouse_senior_decedent, where the reply enters 0). i1040gi p. 110, Part V, \"If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors\": the reply's 0 matches the source and the project declines the case rather than computing it (a scope choice, not a wrong value). Elsewhere both enter line 35 for a married-filing-jointly spouse born before January 2, 1961 with a valid SSN.",
-   "subject_key": "4ef3b0fb01da606765fa1e8d69ef5cfff69df89129e0dc7b69424beb7dfcbd0c"
+   "subject_key": "849c4e206e4e1f93eb73a55e13906282865f0a156fff918721469135cfb7b367",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line35": "s1a.senior_phased",
+     "s1a.line36b": "s1a.senior_spouse"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "4ef3b0fb01da606765fa1e8d69ef5cfff69df89129e0dc7b69424beb7dfcbd0c"
+   }
   },
   {
    "key": "37",
    "record": "82de8c9ba80af1434c63911f671d25a5da3bb6ac74bf7fd42bbe81bb49a3a2b3",
    "status": "AGREE",
-   "subject_key": "d74d2f6e7a5745ca0de33e40061c1de76969491ff321af220eea68251ef25e08"
+   "subject_key": "1881c7108627c41a4dbc5e1ad890852bf5ae79f58f20decdeec1fea6e2bba362",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line36a": "s1a.senior_you",
+     "s1a.line36b": "s1a.senior_spouse",
+     "s1a.line37": "s1a.senior_deduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "d74d2f6e7a5745ca0de33e40061c1de76969491ff321af220eea68251ef25e08"
+   }
   },
   {
    "key": "38",
    "record": "82de8c9ba80af1434c63911f671d25a5da3bb6ac74bf7fd42bbe81bb49a3a2b3",
    "status": "AGREE",
-   "subject_key": "a0d29b62fdec1d8f12cb3bf23fbcef6dbabd79a6bccc7d04e3b2724b2883838d"
+   "subject_key": "326ad7bb8b6719361bedf0ee931d84a291533a4174c5014265fc972b8e4d3f26",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line13": "s1a.tips_deduction",
+     "s1a.line21": "s1a.ot_deduction",
+     "s1a.line30": "s1a.vli_deduction",
+     "s1a.line37": "s1a.senior_deduction",
+     "s1a.line38": "s1a.total_deductions"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "a0d29b62fdec1d8f12cb3bf23fbcef6dbabd79a6bccc7d04e3b2724b2883838d"
+   }
   }
  ],
  "subjects": {
@@ -310,40 +628,40 @@
   "3": "24bf2378d5d93636b24d69425c3802bdd6f044d519df7e7e5880bacd4ebb5034",
   "4a": "13af18bdcf814ab06a1f5975dddacabbc7eef636f0e3181d78de6f6b84a1c4b2",
   "4b": "c8c2c15e73e78f634b63a21a4c4f4313dff8e7906d758a596a8fa1b87f5a37c1",
-  "4c": "4ea12a11d9f2b48f9d005f637e1090587e317a4ecfbfd985ec8be4ec59987744",
-  "5": "9d2fe5f6eb024ad17b39881093d47310bdb759d155f28c270d900fc88f453d40",
-  "6": "ba516fc83faeb5e13270159511ca77d08621d948350860527f45e6fefe6b33cb",
-  "7": "003464989f341332b493375e4353346d84faaf0561d23fde4d5dc1364bcf1f1a",
-  "8": "f6165f60bbdab8e1953ce7040a0cdc17171e4a7385e083f6699fa3ced948b2ae",
-  "9": "1211b966bfaa22ab70d99aefa8e06ed59c2226eaf92a47f779e911d226c88bd4",
-  "10": "6ce048aca2ba18506ea8a56105e8c4d2da7132a691d00d0567de1fd089d1170b",
-  "12": "8de4abeb0ff5843e0c7095480de80f400f6167250a962ad348f1bcd7d54d2073",
-  "13": "f3a363857d05b21fba677696ade1d829786836ca1285fa5721127b89aecb4ae1",
-  "14a": "b5bc645960c9cc392fbc310af992947527d92b4d4e5511a7e07d4af5b567c150",
-  "14b": "5dca9c065ee549f832d81e119deaa6692d50336acab8484bcfa7c805107658f4",
-  "14c": "5a65f4aab4f2128860c4c45067bbeccd311db24a6110a693f07f92b747f50aa4",
-  "15": "0f64758f2d98f268283ba76e2a39c6a5c14ab5f3d6c80838ab648d786be4896a",
-  "16": "24018faa449ff2e35b98aca0e74e4eae12103b0bd23643abae7486dbbe12fedd",
-  "17": "10482248e28ad7e58bf575d1a4427ad9019d09bb03e7a6248969f1fec78108b6",
-  "18": "7f52b31734b476b1c8bde37148623362717f1f7a91452013e117655fbd7d4840",
-  "20": "c007d2bca3d8b2b695ff4bb101d93befd1d761e4b197399df633b378eee27d8f",
-  "21": "92e06e2b0fcebf90a62134e4d31b10ecfdc50ad009c2e911b915351f88ac4c37",
-  "23": "a8f4f019c94160b87aea5f0a2db3f6f695db745bbbfad059d133c08ce1bfd443",
-  "24": "5ab0802bd43b21e2d47d51fd8c4db287bbb075b106c33b3308a303a9c1f78788",
-  "25": "1cb0324a40ff1d298baa4663491f09522defc954d6232577d37eb11ffcda4e38",
-  "26": "53212e3b65d8beef5aaec4a46823b078f6590498eccf7f4f3ad54ca91be5a1d4",
-  "27": "e81ab22b0b9752561852172452a96b0c9263b2040f8b15682db09ae14d24bbb2",
-  "29": "ae8f7d7548c5f59f00a14431845d634fb1d50ee7688ff628623e1faaad000984",
-  "30": "fddf984c545c444669a8bcf2d9bb4a3b666b83b1784c9fda80005fdbee4dc009",
-  "31": "6832ae274dcaca765ed526080918d095a1b88a8a93739f5c3923d0b4bb0af0fc",
-  "32": "6942a7010f99dd865c3ce625300753a8ac9ecb3374be4d0b8ea2557287ea267e",
-  "33": "8d4848aa32eac699f6191c0438cb52c3e91b515a024624316bc52454382b477c",
-  "34": "02b4e15263042ee6c551f3bb371a31ecbbfa51edee3591aa708ab030afb015bf",
-  "35": "179dc1f6d2257400cad9a65dfdc583705d2783a762680daa24681a91e2b451cf",
-  "36a": "4915966bb676ea9d2de54e7e501b1eb8b137096893e7ed495c4a2e5be9486536",
-  "36b": "0e91df44b13b931d3d810a30a22644cf2e934940a58eef904f40b37d568fcdab",
-  "37": "fc7d03532d51ba25762dfb5da94fad32ce6add3f0ff78bad6ec6459d1da55e46",
-  "38": "9facc7e38e6598ef8f0375e3ba82d91ba4b3e45fdc12d509746ce655eec9e02b"
+  "4c": "08962cb1e38f7c559b76b83ada810fc0f02dfa679f9ad292e302dfc34cf6530e",
+  "5": "192fce5d2c956080243274915c0c293036fc18013aaba104f1906e542590d245",
+  "6": "5e6d775b3f2fa726d0adb4b047d9179422a3c053cb02f8f606090bf3676c218e",
+  "7": "c93d249d5719328a43c84b251a5ba78f61853b278fd437f0f7e6a37c12907c8a",
+  "8": "2b4343065fa21b4034ae6f4de230856454dc750fe2eb870886d72684dbe59223",
+  "9": "a742ea0cdc6b3217a1b9a05f74c215c82532f17549f8518e6b760e7f0b9650d8",
+  "10": "147c42b8ecc7aa22613a753476c5a7d0ded9e271705e55139d096c9ff31c084e",
+  "12": "aeb04b9567deb3e0265c580aa6c78fbc169a8a483634a9201723b0267395cd72",
+  "13": "05cea306c323fe1e78cf2747857c5735439a7bd790e610dc5fe8e4a362bf0d9b",
+  "14a": "597ff661c9ad773414a9c3809c3abcc2bec45baa81b7ddae86f10c8849e661db",
+  "14b": "ec75a24508c9846bbae0a98a29d46de8840bcc3e5accccaeedfd553349f6457c",
+  "14c": "2b5faa200485144966c31f5147602471684501615168f05b34c439ab559161dc",
+  "15": "e87236f028c7d70ac1f55f49ad261967bab5a0812252c6b5394299dd26ee3175",
+  "16": "bbc5e636cf14b508997f1fd74b58cb5c5efe98274fa9726b05bb7134fa1630d3",
+  "17": "efc1895777506ed9bc60281d34179d056b355202fa811d17b407b850a267bcf7",
+  "18": "c1f9da8f45d6b3fdea7e035e5a3a0edd795b0eceeada99cde883022fbeead67b",
+  "20": "efca23a65f89614319fc56e0d618a80f0d9f8b443c11275a942e6ada1f213091",
+  "21": "13e8ee9c850dcce682d3343ae6de7a2415b5a7a2d383cdc87835f778c0acc775",
+  "23": "2e2a2de4403a22d9047ca00e1c44d0d8d111bba1cfc266b0a08f71921cf66711",
+  "24": "a9f68e1a2e535199ca87a1c1f3597aa9346e200c91de26d26e999cf2bb4f5038",
+  "25": "e2f061522cdf70421bf494c1ff0557d39d7581511d2e5d0bf6821c96b31a8e08",
+  "26": "353fd4b73cdb345b156fc6d9ec5c39f59fa2d12ee3a24c13070a929ac2c652cc",
+  "27": "75597f8cedffb05ae7fc933866eb02b3a2f6ff2a45fc8145a2b1f77c7a44fef1",
+  "29": "8710784aea839a01b60705ae07ce8a282896cfc03dd7ec4f0260a2f7fc1101be",
+  "30": "f7eb45b94bb6fe2400b0bdb199ad4891520caa35b03816e2eb784764777fd79f",
+  "31": "6937958d79f8caf6109ee2c608cc1215749f9b6b75fbbc3fa829d15c847341e7",
+  "32": "d679b9c45ec16a3eb788b617798a9cbd7257bd97d44756b9e23d367b8e4fd862",
+  "33": "8ec2d322665f8c2a3cf78d4c1c2e56f3e85ea0ce04890895213b62bbf986d462",
+  "34": "e024d9fae027b1c4170afe38cfbe3433ef206408936386badf36c5a2fab70933",
+  "35": "e740207c6313cc51a445cf40521f2bab83fd2b16c78c54619138f4987769b1d9",
+  "36a": "ac45539ebe3f7f6ace50b2af5f48e7400b9e34793c917de5821b990548ca8865",
+  "36b": "fb77b30b367061fe590f141db6997dc2bb21a7b770e22ed8fb179dcf1b8be1ff",
+  "37": "d6b083993335e273837014473bf28ce26451881daa06f473e72e8881dee99dc1",
+  "38": "557a0b46752fe20828b45541dbf205a7020a982b1f7b61333bb218e707b696d5"
  },
  "__rest__": "72d6a605d769b79dd9b412e8f8a7e363d66aa6f28a55bfe31e2428c7309d2c07",
  "foreign": {

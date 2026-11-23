@@ -1414,7 +1414,7 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "f5695.line12",
+      "input": "f5695.carry_in",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },
@@ -5128,7 +5128,7 @@
       "reason": "Closed: no amount unless the scenario states one."
     },
     {
-      "input": "sc.line16b",
+      "input": "sc.interest_other",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },

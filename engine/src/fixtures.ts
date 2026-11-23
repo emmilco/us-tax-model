@@ -437,7 +437,7 @@ export function coverageReport(): void {
   for (const doc of data.forms) for (const line of doc.lines) {
     const sides = line.type === "Bool" ? ["false","true"] : line.expr.op === "subtract_floor0" ? ["floor","positive"] : ["smaller_of","larger_of"].includes(line.expr.op) ? ["left","right"] : [];
     for (const side of sides) {
-      if ((["f8959.line12","f8959.line16"].includes(line.id) && side==="positive") || (line.id==="scope.ready" && side==="false")) {
+      if ((["f8959.se_excess","f8959.rrta_excess"].includes(line.id) && side==="positive") || (line.id==="scope.ready" && side==="false")) {
         out.push(`- ${line.id} ${side}: unreachable in the supported slice; the source amount is structurally zero, or the scope gate returns a refusal instead.`); continue;
       }
       if (line.id === "sd.screen" && side === "true") { out.push("- sd.screen true: unreachable by Count non-negativity; structural propagation gate, not a tax branch."); continue; }

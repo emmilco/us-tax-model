@@ -87,7 +87,7 @@ form:
       cite:
         doc: f8995
         locator: Form 8995 (2025), line 16
-    - id: f8995.line16
+    - id: f8995.qbi_loss_carryforward
       printed: '16'
       label: Total qualified business (loss) carryforward. Combine lines 2 and 3. If greater than zero, enter -0-
       type: Dollars
@@ -109,7 +109,7 @@ form:
       cite:
         doc: f8995
         locator: Form 8995 (2025), line 16
-    - id: f8995.line17
+    - id: f8995.reit_ptp_loss_carryforward
       printed: "17"
       type: NonNegDollars
       label: 'Total qualified REIT dividends and PTP (loss) carryforward. Combine lines 6 and 7. If greater than zero, enter -0-'

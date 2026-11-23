@@ -3004,5 +3004,19 @@
    "record": "c31faa2d1524bdc798a5475e8b93751957a062274639d0adc1767cf37ca4cdcc",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "afdf67e42b19d66473d13b45a97b652335cc9931fc3ef201d677063b7cd4eb0a",
+  "was": "429da5a5487a5c7fe0cd5e5efd5bad8da385724ec3b67effc556677e4cf07aff",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f1040.line13a": "f1040.qbi_deduction",
+    "f1040.line13b": "f1040.s1a_deductions",
+    "s1a.line38": "s1a.total_deductions"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "429da5a5487a5c7fe0cd5e5efd5bad8da385724ec3b67effc556677e4cf07aff"
+  }
+ }
 }

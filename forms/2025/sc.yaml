@@ -467,7 +467,7 @@ form:
       doc: i1040sc
       locator: p. 8, Lines 16a and 16b, How to report; p. 14, Line 30, "You can’t deduct any excess mortgage interest, excess
         real estate taxes, or excess casualty losses on Schedule C for this home"
-  - id: sc.line16b
+  - id: sc.interest_other
     printed: 16b
     label: 'Interest: other'
     type: NonNegDollars
@@ -937,7 +937,7 @@ form:
       - sc.line14_if_employees
       - sc.line15
       - sc.line16a
-      - sc.line16b
+      - sc.interest_other
       - sc.line17
       - sc.line18
       - sc.line19_if_employees
@@ -981,7 +981,7 @@ form:
       - sc.line14_if_employees
       - sc.line15
       - sc.line16a
-      - sc.line16b
+      - sc.interest_other
       - sc.line17
       - sc.line18
       - sc.line19_if_employees

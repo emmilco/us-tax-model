@@ -3304,5 +3304,20 @@
    "record": "463f7ccb2141e8e17f1e331784859d44cb586496823d2348765fa46daf3940a3",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "738f0e0ecf340348c3404a386596ec0e97ab440aa11c2b50838df0dad16c4b7b",
+  "was": "62ecc89ee84a87de460925254eee6d59c9e529bc54a1741ec8a7b6411a63bb9e",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f5695.line12": "f5695.carry_in",
+    "f5695.line14": "f5695.rce_limit",
+    "f5695.line15": "f5695.rce_credit",
+    "f5695.line16": "f5695.carry_out"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "62ecc89ee84a87de460925254eee6d59c9e529bc54a1741ec8a7b6411a63bb9e"
+  }
+ }
 }

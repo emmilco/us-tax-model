@@ -26,7 +26,7 @@
      "n": 0,
      "kind": "NARROW",
      "class": "presentation",
-     "evidence": "i1040gi p. 21, Multiple support agreements: 'you and another person(s) provided more than half of your relative\u2019s support'. The project uses 'living costs' for support throughout; the next question's help defines them as 'housing (at what it would rent for), food, clothing ...', which includes lodging provided in kind. Moving that definition into this question's help would remove the doubt; no amount turns on it for a filer who provides lodging and regards it as paying for housing."
+     "evidence": "i1040gi p. 21, Multiple support agreements: 'you and another person(s) provided more than half of your relative’s support'. The project uses 'living costs' for support throughout; the next question's help defines them as 'housing (at what it would rent for), food, clothing ...', which includes lodging provided in kind. Moving that definition into this question's help would remove the doubt; no amount turns on it for a filer who provides lodging and regards it as paying for housing."
     },
     {
      "n": 1,
@@ -461,9 +461,21 @@
      "bugs": []
     }
    ],
-   "subject_sha": "17416e401e0917e286615be1cc43479c301a2e7be533ac3e24ff20c1190d0008",
+   "subject_sha": "0c7b69e3ec29d53817c27b57364a0bd0a0938faa8b1ad29db7f0c714107241d5",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "bugs": []
+   "bugs": [],
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sa.line13": "sa.gift_carryover_amount",
+     "sa.line14": "sa.gifts_deduction",
+     "sa.line15": "sa.casualty_loss",
+     "sa.line16": "sa.other_itemized",
+     "sa.line17": "sa.total_itemized"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "17416e401e0917e286615be1cc43479c301a2e7be533ac3e24ff20c1190d0008"
+   }
   },
   "unruled:sa.excluded_income#1": {
    "reason": "The question names Puerto Rico income and Form 2555 directly.",
@@ -490,9 +502,21 @@
      "bugs": []
     }
    ],
-   "subject_sha": "dcac125eff6f23e40e75e1aaeb2ced9b9824d1f051720c4adda107cbcaac29e6",
+   "subject_sha": "36c9658aa35d5376518715eee15d3ceb52b2b0a326d2ba0a707fad76174288df",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "bugs": []
+   "bugs": [],
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sa.line13": "sa.gift_carryover_amount",
+     "sa.line14": "sa.gifts_deduction",
+     "sa.line15": "sa.casualty_loss",
+     "sa.line16": "sa.other_itemized",
+     "sa.line17": "sa.total_itemized"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "dcac125eff6f23e40e75e1aaeb2ced9b9824d1f051720c4adda107cbcaac29e6"
+   }
   },
   "unruled:sa.unsupported#1": {
    "reason": "No defect: a charitable carryover is screened by sa.charity_limited on lines 13 and 17, reached through sa.gifts, whose wording names a carryover; the UNCLEAR is the existing debt and use limit wording.",
@@ -1389,7 +1413,7 @@
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040gi p. 21, Married person: 'if the person is married but doesn\u2019t file a joint return or files a joint return only to claim a refund ... you may be able to claim that person as your dependent'. The screen refuses every married dependent ('A married dependent is outside this tool'); this costs coverage but computes no wrong amount."
+     "evidence": "i1040gi p. 21, Married person: 'if the person is married but doesn’t file a joint return or files a joint return only to claim a refund ... you may be able to claim that person as your dependent'. The screen refuses every married dependent ('A married dependent is outside this tool'); this costs coverage but computes no wrong amount."
     }
    ],
    "subject_sha": "b8c21506fa9882a3857dcc1de7cc5f021013fafc159a57a1a594205beb126416",
@@ -3747,7 +3771,7 @@
      "n": 2,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "The question is asked per royalty entry (\"For this royalty \u2014\"); a spouse's royalty is its own roster entry, whose \"your own\" is that owner's. Rule 4 does not apply to roster questions."
+     "evidence": "The question is asked per royalty entry (\"For this royalty —\"); a spouse's royalty is its own roster entry, whose \"your own\" is that owner's. Rule 4 does not apply to roster questions."
     }
    ],
    "subject_sha": "2d0f8147a190de41f0daeca3aa5decfab1c99860674a87efb33dd1e29f934ab8",
@@ -3766,7 +3790,7 @@
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "Per royalty entry (\"For this royalty \u2014 Do you claim depletion for it\"): depletion of the spouse's royalty is asked on that roster entry; rule 4 does not apply."
+     "evidence": "Per royalty entry (\"For this royalty — Do you claim depletion for it\"): depletion of the spouse's royalty is asked on that roster entry; rule 4 does not apply."
     }
    ],
    "subject_sha": "7a378015ad356627806bdcb2b5d754bcd4c43eb3b40370d7c95021c0d88cd5e7",
@@ -4202,19 +4226,19 @@
   },
   "unruled:gate:asset.claims_bonus#1": {
    "class": "no gate defect; 60%, QPP and specified-plant cases are refused before the gate, WIDE accepted",
-   "reason": "asset.claims_bonus is computed (placed in 2025 and asset.bonus_choice \u2260 none), not asked as worded in the helper label. Aircraft, long-production property and QPP are refused by asset.kind_excluded and asset.long_production; fruit and nut plants are farming property outside the class table (asset.outside). Reuse and recycling property is refused by the screen, so the extra question is an accepted WIDE.",
+   "reason": "asset.claims_bonus is computed (placed in 2025 and asset.bonus_choice ≠ none), not asked as worded in the helper label. Aircraft, long-production property and QPP are refused by asset.kind_excluded and asset.long_production; fruit and nut plants are farming property outside the class table (asset.outside). Reuse and recycling property is refused by the screen, so the extra question is an accepted WIDE.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "i4562 p. 6, \"Property with a long production period and certain aircraft ... special depreciation allowance of 60%\". Out of scope: an aircraft is refused by asset.kind_excluded (tick 'A building, land, a vehicle, an aircraft, a film or a recording') and property with a long production period or qualified production property by asset.long_production (tick 'Built to order over a long period, or \u201cqualified production property\u201d'); both feed asset.screen, so asset.screened refuses through asset.cost. Also, asset.claims_bonus is not a yes/no the filer answers: it is asset.bonus_choice \u2260 'none' (choices 'Yes: the special depreciation allowance', 'The 40% allowance...', 'No: I elect not to take any special allowance'), so a filer taking 60% would not pick 'none'."
+     "evidence": "i4562 p. 6, \"Property with a long production period and certain aircraft ... special depreciation allowance of 60%\". Out of scope: an aircraft is refused by asset.kind_excluded (tick 'A building, land, a vehicle, an aircraft, a film or a recording') and property with a long production period or qualified production property by asset.long_production (tick 'Built to order over a long period, or “qualified production property”'); both feed asset.screen, so asset.screened refuses through asset.cost. Also, asset.claims_bonus is not a yes/no the filer answers: it is asset.bonus_choice ≠ 'none' (choices 'Yes: the special depreciation allowance', 'The 40% allowance...', 'No: I elect not to take any special allowance'), so a filer taking 60% would not pick 'none'."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "i4562 pp. 7-8, QPP \"by designating up to 100% of the depreciable basis\". QPP is named in the asset.long_production tick (\"Built to order over a long period, or \u201cqualified production property\u201d\"), and QPP is nonresidential real property, which asset.kind_excluded (\"A building, land, ...\") also refuses; either Yes refuses through asset.screened. A 2025 QPP never reaches asset.used_before_if_bonus."
+     "evidence": "i4562 pp. 7-8, QPP \"by designating up to 100% of the depreciable basis\". QPP is named in the asset.long_production tick (\"Built to order over a long period, or “qualified production property”\"), and QPP is nonresidential real property, which asset.kind_excluded (\"A building, land, ...\") also refuses; either Yes refuses through asset.screened. A 2025 QPP never reaches asset.used_before_if_bonus."
     },
     {
      "n": 2,
@@ -4307,19 +4331,19 @@
      "n": 0,
      "kind": "NARROW",
      "class": "model error",
-     "evidence": "i4562 p. 9, Line 17 \"placed in service in tax years beginning before 2025\". The gate is not inverted. asset.use_changed_if_earlier is Choose [placed_this_year = false \u2192 asset.use_changed] [= true \u2192 false]: the question is asked exactly for property placed in service before 2025. Evaluated: an asset placed in 2023 with asset.use_changed = Yes gives use_changed_if_earlier true and asset.screened true (refused); with No, $576 of line 17 depreciation; a 2025 asset gives false and is not asked. The review prompt said 'When the condition holds: Choose ... Otherwise: false, and the question below is not asked', the polarity reversal recorded as BUG-0800 (tools/transcription/gates.py)."
+     "evidence": "i4562 p. 9, Line 17 \"placed in service in tax years beginning before 2025\". The gate is not inverted. asset.use_changed_if_earlier is Choose [placed_this_year = false → asset.use_changed] [= true → false]: the question is asked exactly for property placed in service before 2025. Evaluated: an asset placed in 2023 with asset.use_changed = Yes gives use_changed_if_earlier true and asset.screened true (refused); with No, $576 of line 17 depreciation; a 2025 asset gives false and is not asked. The review prompt said 'When the condition holds: Choose ... Otherwise: false, and the question below is not asked', the polarity reversal recorded as BUG-0800 (tools/transcription/gates.py)."
     },
     {
      "n": 1,
      "kind": "SOURCE",
      "class": "model error",
-     "evidence": "i4562 p. 9, Line 17 \"For tangible property placed in service in tax years beginning before 2025\". The gated question is asked when \"Placed in service in 2025\" is false, the line 17 time frame. The gate is not inverted. asset.use_changed_if_earlier is Choose [placed_this_year = false \u2192 asset.use_changed] [= true \u2192 false]: the question is asked exactly for property placed in service before 2025. Evaluated: an asset placed in 2023 with asset.use_changed = Yes gives use_changed_if_earlier true and asset.screened true (refused); with No, $576 of line 17 depreciation; a 2025 asset gives false and is not asked. The review prompt said 'When the condition holds: Choose ... Otherwise: false, and the question below is not asked', the polarity reversal recorded as BUG-0800 (tools/transcription/gates.py)."
+     "evidence": "i4562 p. 9, Line 17 \"For tangible property placed in service in tax years beginning before 2025\". The gated question is asked when \"Placed in service in 2025\" is false, the line 17 time frame. The gate is not inverted. asset.use_changed_if_earlier is Choose [placed_this_year = false → asset.use_changed] [= true → false]: the question is asked exactly for property placed in service before 2025. Evaluated: an asset placed in 2023 with asset.use_changed = Yes gives use_changed_if_earlier true and asset.screened true (refused); with No, $576 of line 17 depreciation; a 2025 asset gives false and is not asked. The review prompt said 'When the condition holds: Choose ... Otherwise: false, and the question below is not asked', the polarity reversal recorded as BUG-0800 (tools/transcription/gates.py)."
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "model error",
-     "evidence": "For 2025 property the Choose returns false and asset.use_changed is not asked; no question is added. The gate is not inverted. asset.use_changed_if_earlier is Choose [placed_this_year = false \u2192 asset.use_changed] [= true \u2192 false]: the question is asked exactly for property placed in service before 2025. Evaluated: an asset placed in 2023 with asset.use_changed = Yes gives use_changed_if_earlier true and asset.screened true (refused); with No, $576 of line 17 depreciation; a 2025 asset gives false and is not asked. The review prompt said 'When the condition holds: Choose ... Otherwise: false, and the question below is not asked', the polarity reversal recorded as BUG-0800 (tools/transcription/gates.py)."
+     "evidence": "For 2025 property the Choose returns false and asset.use_changed is not asked; no question is added. The gate is not inverted. asset.use_changed_if_earlier is Choose [placed_this_year = false → asset.use_changed] [= true → false]: the question is asked exactly for property placed in service before 2025. Evaluated: an asset placed in 2023 with asset.use_changed = Yes gives use_changed_if_earlier true and asset.screened true (refused); with No, $576 of line 17 depreciation; a 2025 asset gives false and is not asked. The review prompt said 'When the condition holds: Choose ... Otherwise: false, and the question below is not asked', the polarity reversal recorded as BUG-0800 (tools/transcription/gates.py)."
     }
    ],
    "subject_sha": "0b7806d827f9434a865f815c8725b5523d1ac7b7fe987d8fe128d8ac54c52ab8"
@@ -4450,7 +4474,7 @@
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property \u2014\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     },
     {
      "n": 2,
@@ -4590,7 +4614,7 @@
      "n": 0,
      "kind": "SOURCE",
      "class": "covered",
-     "evidence": "i8582 p. 10: 'Don\u2019t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.' rental.prior_not_active refuses a loss from a year without active participation, rental.part4 sends a rental without current active participation to Part V, and f8582.mfs_together withholds Part II for MFS filers who lived with their spouse."
+     "evidence": "i8582 p. 10: 'Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.' rental.prior_not_active refuses a loss from a year without active participation, rental.part4 sends a rental without current active participation to Part V, and f8582.mfs_together withholds Part II for MFS filers who lived with their spouse."
     },
     {
      "n": 1,
@@ -4870,7 +4894,7 @@
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property \u2014\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect. Personal days of either spouse are counted at rental.personal_any."
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect. Personal days of either spouse are counted at rental.personal_any."
     },
     {
      "n": 2,
@@ -4901,7 +4925,7 @@
      "n": 0,
      "kind": "NARROW",
      "class": "model error",
-     "evidence": "Pub. 925 (2025) p. 5: 'If you lived with your spouse at any time during the year and are filing a separate return, you can\u2019t use the special allowance'; active participation (i8582 p. 4) turns on management decisions and the 10% interest, not filing status. A loss from an MFS year with decisions made arose in a year of active participation; the current-year MFS rule is applied by f8582.mfs_together."
+     "evidence": "Pub. 925 (2025) p. 5: 'If you lived with your spouse at any time during the year and are filing a separate return, you can’t use the special allowance'; active participation (i8582 p. 4) turns on management decisions and the 10% interest, not filing status. A loss from an MFS year with decisions made arose in a year of active participation; the current-year MFS rule is applied by f8582.mfs_together."
     },
     {
      "n": 1,
@@ -5007,7 +5031,7 @@
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property \u2014\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     }
    ],
    "subject_sha": "422b346b9c0585b9ebd1521a037228112b237b298a43fbe0adbd008c458a8ef9",
@@ -5629,7 +5653,7 @@
      "n": 0,
      "kind": "NARROW",
      "class": "model error",
-     "evidence": "The prompt shows \"When the condition holds: Choose \u2014 [income_100 = false \u2192 An enrolled lawfully present alien not eligible for Medicaid ...] [= true \u2192 household.no]\" and the help \"Asked because the income on this return is below the federal poverty line\", so the alien question is asked for line 5 below 100 (i8962 p. 9, Line 5, \"If the amount on line 5 is less than 100% ...\").",
+     "evidence": "The prompt shows \"When the condition holds: Choose — [income_100 = false → An enrolled lawfully present alien not eligible for Medicaid ...] [= true → household.no]\" and the help \"Asked because the income on this return is below the federal poverty line\", so the alien question is asked for line 5 below 100 (i8962 p. 9, Line 5, \"If the amount on line 5 is less than 100% ...\").",
      "bugs": []
     },
     {
@@ -5808,7 +5832,7 @@
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "f4137 p. 2, Line 5: under-$20 tips 'aren\u2019t subject to social security and Medicare tax'. A Yes for government tips that are all under $20 a month refuses a case the tool could compute; no wrong amount."
+     "evidence": "f4137 p. 2, Line 5: under-$20 tips 'aren’t subject to social security and Medicare tax'. A Yes for government tips that are all under $20 a month refuses a case the tool could compute; no wrong amount."
     }
    ],
    "subject_sha": "ee4bf17a034441982c6401a1a10ce7d5a571f5786cdc26f2fd6a58dfebd52d6d",
@@ -7285,13 +7309,13 @@
      "n": 1,
      "kind": "NARROW",
      "class": "defect",
-     "evidence": "p525 p. 32, Pre-existing agreement: 'If you receive damages under a written binding agreement, court decree, or mediation award that was in effect (or issued on or before) September 13, 1995, don\u2019t include in income any of those damages received on account of personal injuries or sickness.' Neither the injury screen nor the amount help (which lists the medical-care exclusion) says so, so a filer paid nonphysical injury damages under such an agreement is led to enter them as taxable."
+     "evidence": "p525 p. 32, Pre-existing agreement: 'If you receive damages under a written binding agreement, court decree, or mediation award that was in effect (or issued on or before) September 13, 1995, don’t include in income any of those damages received on account of personal injuries or sickness.' Neither the injury screen nor the amount help (which lists the medical-care exclusion) says so, so a filer paid nonphysical injury damages under such an agreement is led to enter them as taxable."
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "p525 p. 32: 'Punitive damages in most cases. It doesn\u2019t matter if they relate to a physical injury'. Refusing a purely punitive award in a physical-injury case costs coverage only."
+     "evidence": "p525 p. 32: 'Punitive damages in most cases. It doesn’t matter if they relate to a physical injury'. Refusing a purely punitive award in a physical-injury case costs coverage only."
     },
     {
      "n": 3,
@@ -7313,7 +7337,7 @@
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "tipjob rows are entries under a person (form collection parent: person), and the roster question reads \"For this person (you, or your spouse on a joint return) \u2014 At which employers did you get tips in 2025?\", so a spouse's tips are listed on that spouse's own roster (i1040gi p. 104, \"you and/or your spouse received qualified tips\"); the wording rule does not apply to per-person roster entries.",
+     "evidence": "tipjob rows are entries under a person (form collection parent: person), and the roster question reads \"For this person (you, or your spouse on a joint return) — At which employers did you get tips in 2025?\", so a spouse's tips are listed on that spouse's own roster (i1040gi p. 104, \"you and/or your spouse received qualified tips\"); the wording rule does not apply to per-person roster entries.",
      "bugs": []
     },
     {
@@ -7407,7 +7431,7 @@
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1116 p. 2: 'Don\u2019t use Form 1116 to figure a credit for taxes paid to the U.S. Virgin Islands.' A Yes for a Virgin Islands change refuses unnecessarily; no wrong amount."
+     "evidence": "i1116 p. 2: 'Don’t use Form 1116 to figure a credit for taxes paid to the U.S. Virgin Islands.' A Yes for a Virgin Islands change refuses unnecessarily; no wrong amount."
     },
     {
      "n": 3,
@@ -8166,7 +8190,7 @@
    ]
   },
   "unruled:gate:retirement.is_code7#1": {
-   "reason": "Codes 1 and S at 59\u00bd or older are now handled by exception 12 from the birth year; the code 7 gate is for the reverse case.",
+   "reason": "Codes 1 and S at 59½ or older are now handled by exception 12 from the birth year; the code 7 gate is for the reverse case.",
    "findings": [
     {
      "n": 0,
@@ -8179,14 +8203,14 @@
      "n": 1,
      "kind": "SOURCE",
      "class": "presentation",
-     "evidence": "The code 7 gate looks for a code that does not fit (code 7 under 59\u00bd refuses at retirement.code_screen); its citation is the generic line 2 sentence. No amount depends on it, as ruled on the earlier subject.",
+     "evidence": "The code 7 gate looks for a code that does not fit (code 7 under 59½ refuses at retirement.code_screen); its citation is the generic line 2 sentence. No amount depends on it, as ruled on the earlier subject.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "A code 7 distribution received after 59\u00bd is asked the age question; one extra question.",
+     "evidence": "A code 7 distribution received after 59½ is asked the age question; one extra question.",
      "bugs": []
     }
    ],
@@ -8323,7 +8347,7 @@
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "A code 1 distribution goes to retirement.exception, whose list (e01 to e23) includes the section 457 exception; the code 7 gate concerns only a code 7 under 59\u00bd, as ruled on the earlier subject.",
+     "evidence": "A code 1 distribution goes to retirement.exception, whose list (e01 to e23) includes the section 457 exception; the code 7 gate concerns only a code 7 under 59½, as ruled on the earlier subject.",
      "bugs": []
     }
    ],
@@ -8437,7 +8461,7 @@
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property \u2014\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     }
    ],
    "subject_sha": "12676c2b822f8b0189303776af967c542b327625fff8e2ad2d372d069b7ff151",
@@ -9204,7 +9228,7 @@
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "Per royalty entry (\"For this royalty \u2014\"): the spouse's royalty is its own roster entry; rule 4 does not apply."
+     "evidence": "Per royalty entry (\"For this royalty —\"): the spouse's royalty is its own roster entry; rule 4 does not apply."
     },
     {
      "n": 2,
@@ -9241,7 +9265,7 @@
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Per royalty entry (\"For this royalty \u2014\"); the roster lists the spouse's royalties separately, so the bare \"you\" is not a defect under rule 4."
+     "evidence": "Per royalty entry (\"For this royalty —\"); the roster lists the spouse's royalties separately, so the bare \"you\" is not a defect under rule 4."
     }
    ],
    "subject_sha": "6a48ed523ced254b690614ea8415c925339457a3a618eaabd2cc8905105891ee",
@@ -9335,7 +9359,7 @@
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Rule 4: asked per royalty entry (\"For this royalty \u2014\") of the $royalty roster, which lists the spouse's royalties."
+     "evidence": "Rule 4: asked per royalty entry (\"For this royalty —\") of the $royalty roster, which lists the spouse's royalties."
     },
     {
      "n": 4,
@@ -9486,7 +9510,7 @@
      "n": 0,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "p525 p. 35, Prize points: 'taxable in the year they\u2019re paid or made available to you'. Points credited and usable in 2025 are a prize received in 2025, and the gated amount question says 'Count prize points when you can use them'; copying that sentence into the gate help would remove the doubt."
+     "evidence": "p525 p. 35, Prize points: 'taxable in the year they’re paid or made available to you'. Points credited and usable in 2025 are a prize received in 2025, and the gated amount question says 'Count prize points when you can use them'; copying that sentence into the gate help would remove the doubt."
     },
     {
      "n": 1,
@@ -9498,7 +9522,7 @@
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "p525 p. 35: employer awards are wages; 'If you refuse to accept a prize, don\u2019t include its value'. The gated prize question's help excludes these; extra questions only."
+     "evidence": "p525 p. 35: employer awards are wages; 'If you refuse to accept a prize, don’t include its value'. The gated prize question's help excludes these; extra questions only."
     }
    ],
    "subject_sha": "4fecd1b1138cd53fc1619b1a638c10eb5b4e268fb14aeac22f5d03a254c0f777",
@@ -9826,7 +9850,7 @@
      "n": 6,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Rule 4: asked per royalty entry (\"For this royalty \u2014\") of a roster that lists the spouse's royalties ($royalty)."
+     "evidence": "Rule 4: asked per royalty entry (\"For this royalty —\") of a roster that lists the spouse's royalties ($royalty)."
     }
    ],
    "subject_sha": "c73717c6fc966523446ffba8c301403cf7c87fcaa83d0805cd87fde60a71f05b",
@@ -10067,7 +10091,7 @@
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property \u2014\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     }
    ],
    "subject_sha": "a148ad6af5e9c1d45da5ef3d9bb8238c5b85e2299e2ecc3e8a50d150c2b7fbad",
@@ -10092,7 +10116,7 @@
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Rule 4: asked per rental entry (\"For this rental property \u2014\") of a roster that lists the spouse's properties too."
+     "evidence": "Rule 4: asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too."
     }
    ],
    "subject_sha": "dfc7193335622ca2336c681715503dfe60722900852d38288d8f8a23931e2372",
@@ -10142,7 +10166,7 @@
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Rule 4: asked per rental entry (\"For this rental property \u2014\") of a roster that lists the spouse's properties too."
+     "evidence": "Rule 4: asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too."
     }
    ],
    "subject_sha": "9fbf898b2369752227a587ef23b0b23d4377182e9f181d623f1fc58290876f20",
@@ -10161,7 +10185,7 @@
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property \u2014\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
+     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
     },
     {
      "n": 2,

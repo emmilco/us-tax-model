@@ -564,7 +564,7 @@ const W2 = /^(?:.*\.)?w2\[[^\]]+\]$/;
 export const SCREENS: Screen[] = [
   ...Object.entries(F5695_KINDS).map(([kind, amounts]) => ({ entry: null, when: ["f5695.any", `f5695.${kind}`], amounts: amounts.map((k) => `f5695.${k}`) })),
   { entry: null, when: ["f5695.any", "f5695.line5a"], amounts: ["f5695.battery_cost"] },
-  { entry: null, when: ["s3.prior_other_forms", "f5695.carry"], amounts: ["f5695.line12"] },
+  { entry: null, when: ["s3.prior_other_forms", "f5695.carry"], amounts: ["f5695.carry_in"] },
   { entry: null, when: ["f5695.line17a", "f5695.line17b", "f5695.line17c"], amounts: F5695_SEC_A },
   { entry: null, when: ["f5695.line21a", "f5695.line21b"], amounts: F5695_SEC_B },
   { entry: null, when: ["f5695.any", "f5695.panel", "f5695.line25a"], amounts: ["f5695.line25c"] },

@@ -100,7 +100,7 @@ form:
           cite:
             doc: f8959
             locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
-    - id: f8959.line8
+    - id: f8959.se_income
       printed: "8"
       type: NonNegDollars
       label: Self-employment income from Schedule SE (Form 1040), Part I, line 6. If you had a loss, enter -0-
@@ -121,7 +121,7 @@ form:
           cite:
             doc: f8959
             locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
-    - id: f8959.line14
+    - id: f8959.rrta_comp
       printed: "14"
       type: NonNegDollars
       label: Amount from f8959.zero
@@ -208,7 +208,7 @@ form:
         locator: p. 1, Part I, line 7, "Additional Medicare Tax on Medicare wages. Multiply line 6 by 0.9% (0.009)";
           i8959 pp. 1–3
       ambiguity: amb.2025.multiplication_subcent
-    - id: f8959.line9
+    - id: f8959.se_threshold
       printed: "9"
       type: NonNegDollars
       label: Amount from f8959.line5
@@ -218,7 +218,7 @@ form:
       cite:
         doc: f8959
         locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
-    - id: f8959.line10
+    - id: f8959.se_wages
       printed: "10"
       type: NonNegDollars
       label: Amount from f8959.line4
@@ -228,35 +228,35 @@ form:
       cite:
         doc: f8959
         locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
-    - id: f8959.line11
+    - id: f8959.se_threshold_left
       printed: "11"
       type: NonNegDollars
-      label: Subtract f8959.line10 from f8959.line9; if zero or less, enter zero
+      label: Subtract f8959.se_wages from f8959.se_threshold; if zero or less, enter zero
       expr:
         op: subtract_floor0
-        from: f8959.line9
-        take: f8959.line10
+        from: f8959.se_threshold
+        take: f8959.se_wages
       cite:
         doc: f8959
         locator: p. 1, Part II, line 11, "Subtract line 10 from line 9. If zero or less, enter -0-"; i8959 pp. 1–3
-    - id: f8959.line12
+    - id: f8959.se_excess
       printed: "12"
       type: NonNegDollars
-      label: Subtract f8959.line11 from f8959.line8; if zero or less, enter zero
+      label: Subtract f8959.se_threshold_left from f8959.se_income; if zero or less, enter zero
       expr:
         op: subtract_floor0
-        from: f8959.line8
-        take: f8959.line11
+        from: f8959.se_income
+        take: f8959.se_threshold_left
       cite:
         doc: f8959
         locator: p. 1, Part II, line 12, "Subtract line 11 from line 8. If zero or less, enter -0-"; i8959 pp. 1–3
-    - id: f8959.line13
+    - id: f8959.se_tax
       printed: "13"
       type: NonNegDollars
-      label: Multiply f8959.line12 by medicare.additional_rate
+      label: Multiply f8959.se_excess by medicare.additional_rate
       expr:
         op: multiply_rate
-        amount: f8959.line12
+        amount: f8959.se_excess
         rate:
           param: medicare.additional_rate
       cite:
@@ -264,7 +264,7 @@ form:
         locator: p. 1, Part II, line 13, "Additional Medicare Tax on self-employment income. Multiply line 12 by 0.9%
           (0.009)"; i8959 pp. 1–3
       ambiguity: amb.2025.multiplication_subcent
-    - id: f8959.line15
+    - id: f8959.rrta_threshold
       printed: "15"
       type: NonNegDollars
       label: Amount from f8959.line5
@@ -274,40 +274,40 @@ form:
       cite:
         doc: f8959
         locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
-    - id: f8959.line16
+    - id: f8959.rrta_excess
       printed: "16"
       type: NonNegDollars
-      label: Subtract f8959.line15 from f8959.line14; if zero or less, enter zero
+      label: Subtract f8959.rrta_threshold from f8959.rrta_comp; if zero or less, enter zero
       expr:
         op: subtract_floor0
-        from: f8959.line14
-        take: f8959.line15
+        from: f8959.rrta_comp
+        take: f8959.rrta_threshold
       cite:
         doc: f8959
         locator: p. 1, Part III, line 16, "Subtract line 15 from line 14. If zero or less, enter -0-"; i8959 pp. 1–3
-    - id: f8959.line17
+    - id: f8959.rrta_tax
       printed: "17"
       type: NonNegDollars
-      label: Multiply f8959.line16 by medicare.additional_rate
+      label: Multiply f8959.rrta_excess by medicare.additional_rate
       expr:
         op: multiply_rate
-        amount: f8959.line16
+        amount: f8959.rrta_excess
         rate:
           param: medicare.additional_rate
       cite:
         doc: f8959
         locator: p. 1, Part III, line 17, "Multiply line 16 by 0.9% (0.009)"; i8959 pp. 1–3
       ambiguity: amb.2025.multiplication_subcent
-    - id: f8959.line18
+    - id: f8959.total_tax
       printed: "18"
       type: NonNegDollars
-      label: Add f8959.line7, f8959.line13, f8959.line17
+      label: Add f8959.line7, f8959.se_tax, f8959.rrta_tax
       expr:
         op: sum
         of:
           - f8959.line7
-          - f8959.line13
-          - f8959.line17
+          - f8959.se_tax
+          - f8959.rrta_tax
       cite:
         doc: f8959
         locator: p. 1, Part IV, line 18, "Add lines 7, 13, and 17"; i8959 pp. 1–3

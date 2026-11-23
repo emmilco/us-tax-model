@@ -27,7 +27,15 @@
    "record": "307217503d2ea8e198cef2a5e048161bcc4d75cc11ff08611c86fe2003a5908a",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i4562 p. 5, Line 11, and p946 pp. 17-19, Business Income Limit: the business income is figured \"without regard to the section 179 deduction\". The reply defines it as line 31 plus Form 4562 line 12 for the business (sc.s179_allowed), but line 12 is limited by line 11, which reads this line: the definition is circular and evaluates to nothing (\"cycle at ...sc[desk].line28\"). The project figures it forward, line 29 without the section 179 deduction less line 30. executable triage (.transcription/triage/2025/sc.json, executable-triage-v2): 1,606 of 3,749 agree; 1,916 candidate-unknown (371 completed, e.g. stage14.asset.hy_5yr, project $49,400.00), 112 candidate-refuses, 115 project-refuses; no value difference. Project stands.",
-   "subject_key": "8131892e4a563388a4d3361d0a9d1f846f08b628acc0c9b0f4fd484d593b799c"
+   "subject_key": "1ed21e0a78b2a8f8ee254ba6403abdf45a5bd93398cfae6602eddb9bdc0dda83",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sc.line16b": "sc.interest_other"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "8131892e4a563388a4d3361d0a9d1f846f08b628acc0c9b0f4fd484d593b799c"
+   }
   },
   {
    "key": "sc.result",
@@ -340,7 +348,15 @@
    "key": "28",
    "record": "307217503d2ea8e198cef2a5e048161bcc4d75cc11ff08611c86fe2003a5908a",
    "status": "AGREE",
-   "subject_key": "6356c37c6d2ac754ef624d75bba156ddb29fbeef0b01f5e3bc7cf709abfe5dd4"
+   "subject_key": "d4db6a9aee707083c1fddd45b64e4d65803ef36488bad6506422f1d91edefb09",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sc.line16b": "sc.interest_other"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "6356c37c6d2ac754ef624d75bba156ddb29fbeef0b01f5e3bc7cf709abfe5dd4"
+   }
   },
   {
    "key": "29",
@@ -374,7 +390,15 @@
    "record": "4fe86642e3c10535aa7736c6461117c6fa92611faa4569c77d39225e2f5d205a",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i1040sc p. 12, Simplified Method Worksheet, line 5, \"Enter the smaller of line 1 or line 4 ... If zero or less, enter -0-\", and p946 p. 19, Business Income Limit, Two different taxable income limits. Taking line 1 as Schedule C line 29 after the section 179 deduction makes a reference cycle (the section 179 business income limit reads Schedule C net profit, which reads line 30), which Pub. 946 resolves by ordering the two limits; the reply's line evaluates to unknown on 9 completed home-office returns (\"cycle at ...h_line5_min\": stage14.ho.basic $1,000, stage14.ho.cap_300 $1,500, stage14.ho.gross_limit $600, stage14.ho.with_179 $1,000). The project reads line 29 before the section 179 deduction, which gives the same smaller-of value where no section 179 deduction is possible or line 4 fits under the room left by the largest possible one, and refuses with a cite (sc.ho_both_limits) where both limits can bind. Other kinds: the reply hides the line where ho_sqft is not supplied (project-unknown, as line 4) and cited project refusals. Same as the earlier rounds. Triage executable-triage-v2 (pass 7fe7278a2b1c): 2,141/3,936 agree; 1,319 project-unknown, 265 project-refuses, 210 candidate-unknown, 1 candidate-refuses; on completed returns 19 project-unknown, 9 candidate-unknown, no value.",
-   "subject_key": "4066a2862c4e30f9f71706bd0f1711407e343688cbfa21deed9b3fee35e0de86"
+   "subject_key": "3234004d8cf6c78fff9069b4cb6399cc66e8c3a257cbd5ed22b56275bc92a24a",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sc.line16b": "sc.interest_other"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "4066a2862c4e30f9f71706bd0f1711407e343688cbfa21deed9b3fee35e0de86"
+   }
   },
   {
    "key": "30",
@@ -518,7 +542,7 @@
  "subjects": {
   "sc.one": "fe4b914540c0f913191b74b151756095faeea720fe15ae78b479179be072cc04",
   "sc.rrta": "2f5f806f5ca5f2553486468b22750b9d07c58f257697cf3979fab7fe098784b8",
-  "sc.line31_pre179": "ecba87a3296c18a60e244e528b9b24fd8bcdb367c3a9004522e249703ba834a3",
+  "sc.line31_pre179": "becd017edf9f2aef5405fdbc2b9e3510dec9335b3a99016957674314e0cc35df",
   "sc.result": "b6e9aa54038da0677b8de23c9e5e1c97625c3f358996d4892913e3bf2d6aefb6",
   "sc.f6": "0243178925eb5e3f073eabca09feeb944b8e2e2069e782139633a3f0c08988bd",
   "sc.f14": "7122c6c5873807ff43a553cbfff062e483096144a41fd245efb990cf674dc828",
@@ -550,12 +574,12 @@
   "24b": "4d852c023b19ca06e25c691c9cd472601cd0cb4f369e82974fde5abc9b064703",
   "27a": "47b043e2748f6706b79d43cd1c0ea62233a0e213a6f86c70822a61b53167c899",
   "27b": "50ec5e742de63c33ca3899be73813729399db4b7d036f67ee59d47120353be71",
-  "28": "13c6922e94ab90cbcf764d11a935ff7e6ee327ce7e205cb070431b7ba640199c",
+  "28": "6c4e86399525a42c793c07c45f77be410bd39c7e71bdb30a24a37d2223556c32",
   "29": "0b62b218b5c7e33b5758f98a66818e155ff0a13f2f7ad2fefb693002c1eed2e8",
   "3a": "bc13ad2a70d877c3e8538eb29c02b2efc099c85cc31be64927b7d5c1a3b93745",
   "4 (sc.ho_line4)": "a4261fbee9f21079c3a60d805332561f31b3272ce2874bc813ae6b187792a780",
   "1 (sc.ho_line1)": "1ac8efe49ede6d2b7aab8c11dd93b36f03fc0474940e78d9a06ab0849ac58779",
-  "5 (sc.ho_line5)": "0f058713d2fbed9f40c474b93d2ff81062581059fc8d77f10b37010169aea5cd",
+  "5 (sc.ho_line5)": "4d7a451dd63130d94e8f1eec5a9a374a60c7d7dedb6623517dd1874168e47f6b",
   "30": "c41d39165db2bf255856ba9fa6855e2bde902dc5439ad0992fb59e25c5a96097",
   "31": "460df8d8e36833bfe9e443e8476eb1325910936c32d8279f8813916ef3e52e3a",
   "40": "1c421ba17760a5035344669970b2b49371bbb22765beda14761ac81eaedc02c9",

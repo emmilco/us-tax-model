@@ -242,7 +242,7 @@ changes:
       quote: exceeds 0.5 percent of the taxpayer’s contribution base
     verified: draft
     note: 'Mended from the proposal: main gates sa.line11 (sa.line11_if_gifts), so sa.gifts_total adds the gate line, and
-      sa.line14 is expected to read sa.line11_if_gifts.'
+      sa.gifts_deduction is expected to read sa.line11_if_gifts.'
     operations:
     - set:
         line: sa.charity_limited
@@ -340,32 +340,32 @@ changes:
           status: Encoded from the statute (final); to be rechecked against the 2026 Schedule A instructions when they
             are published.
     - set:
-        line: sa.line13
+        line: sa.gift_carryover_amount
         field: printed
         from: '13'
         to: '14'
     - set:
-        line: sa.line14
+        line: sa.gifts_deduction
         field: printed
         from: '14'
         to: '15'
     - set:
-        line: sa.line14
+        line: sa.gifts_deduction
         field: label
-        from: Add sa.line11, sa.line12, sa.line13
-        to: Add sa.line13_ws, sa.line13
+        from: Add sa.line11, sa.line12, sa.gift_carryover_amount
+        to: Add sa.line13_ws, sa.gift_carryover_amount
     - set:
-        line: sa.line14
+        line: sa.gifts_deduction
         field: expr.of
         from:
         - sa.line11_if_gifts
         - sa.line12
-        - sa.line13
+        - sa.gift_carryover_amount
         to:
         - sa.line13_ws
-        - sa.line13
+        - sa.gift_carryover_amount
     - set:
-        line: sa.line14
+        line: sa.gifts_deduction
         field: cite.locator
         from: p. 1, Gifts to Charity, line 14, "Add lines 11 through 13"
         to: p. 3 (draft), Gifts to Charity, line 15, "15 Add lines 13 and 14"
@@ -377,7 +377,7 @@ changes:
     verified: draft
     operations:
     - set:
-        line: sa.line15
+        line: sa.casualty_loss
         field: printed
         from: '15'
         to: '16'
@@ -425,23 +425,23 @@ changes:
         - sa.gambling_90
         - s1.line8b
     - set:
-        line: sa.line16
+        line: sa.other_itemized
         field: printed
         from: '16'
         to: 17a
     - set:
-        line: sa.line16
+        line: sa.other_itemized
         field: label
         from: 'Other—from list in instructions. List type and amount:'
         to: Deductible gambling losses
     - set:
-        line: sa.line16
+        line: sa.other_itemized
         field: cite.locator
         from: Schedule A (2025), line 16; i1040sca p. 11, Other Itemized Deductions, "Only the expenses listed next can be
           deducted on line 16"
         to: Schedule A (2026), line 17a (draft), "17a Deductible gambling losses"
     - add_line:
-        after: sa.line14
+        after: sa.gifts_deduction
         line:
           id: sa.line17z
           printed: 17z
@@ -449,7 +449,7 @@ changes:
           label: Add lines 17a through 17k (only 17a is figured; 17b to 17k are refused)
           expr:
             op: copy
-            from: sa.line16
+            from: sa.other_itemized
           cite:
             doc: f1040sa
             locator: Schedule A (2026), line 17z (draft), "17z Add lines 17a through 17k"
@@ -461,34 +461,34 @@ changes:
     verified: draft
     operations:
     - set:
-        line: sa.line17
+        line: sa.total_itemized
         field: printed
         from: '17'
         to: '18'
     - set:
-        line: sa.line17
+        line: sa.total_itemized
         field: label
-        from: Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
-        to: Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line17z
+        from: Add sa.line4, sa.line7, sa.line10, sa.gifts_deduction, sa.casualty_loss, sa.other_itemized
+        to: Add sa.line4, sa.line7, sa.line10, sa.gifts_deduction, sa.casualty_loss, sa.line17z
     - set:
-        line: sa.line17
+        line: sa.total_itemized
         field: expr.of
         from:
         - sa.line4
         - sa.line7
         - sa.line10
-        - sa.line14
-        - sa.line15
-        - sa.line16
+        - sa.gifts_deduction
+        - sa.casualty_loss
+        - sa.other_itemized
         to:
         - sa.line4
         - sa.line7
         - sa.line10
-        - sa.line14
-        - sa.line15
+        - sa.gifts_deduction
+        - sa.casualty_loss
         - sa.line17z
     - set:
-        line: sa.line17
+        line: sa.total_itemized
         field: cite.locator
         from: p. 1, Total Itemized Deductions, line 17, "Add the amounts in the far right column for lines 4 through 16. Also,
           enter this amount on Form 1040 or 1040-SR, line 12e"

@@ -1307,11 +1307,11 @@
           "kind": "money",
           "cents": 200000
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 40000
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 40000
         },
@@ -1423,11 +1423,11 @@
           "kind": "money",
           "cents": 400000
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 30000
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 30000
         },
@@ -1451,7 +1451,7 @@
           "kind": "money",
           "cents": 1775000
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 600000
         },
@@ -1546,11 +1546,11 @@
           "kind": "money",
           "cents": 200000
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },
@@ -1574,7 +1574,7 @@
           "kind": "money",
           "cents": 1775000
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 600000
         },
@@ -1712,11 +1712,11 @@
           "kind": "money",
           "cents": 200000
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 40000
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 40000
         },
@@ -2050,7 +2050,7 @@
           "kind": "money",
           "cents": 200000
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 40000
         }
@@ -3841,7 +3841,7 @@
             "tax_year": 2025
           }
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].mistake_repaid",
           "form": "A mistaken HSA distribution repaid to the HSA",
@@ -3898,7 +3898,7 @@
             "tax_year": 2025
           }
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].loan",
           "form": "A deemed distribution from an HSA",

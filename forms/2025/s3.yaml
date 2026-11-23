@@ -91,7 +91,7 @@ form:
               eq:
                 - f5695.part1_any
                 - const: true
-            then: f5695.line15
+            then: f5695.rce_credit
           - guard:
               op: test
               eq:

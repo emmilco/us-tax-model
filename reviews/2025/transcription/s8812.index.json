@@ -211,14 +211,31 @@
    "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i1040s8812 p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 16. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14). Project stands.",
-   "subject_key": "d0ce60ab7bf40a1badd86a76b5ea561d261a26e58ef83efac76691099ad27856"
+   "subject_key": "41069060b819f6ae22de2fb202b78b65cca5d8e8647bc9930f4fb002ba39b860",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line13": "f8959.se_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "d0ce60ab7bf40a1badd86a76b5ea561d261a26e58ef83efac76691099ad27856"
+   }
   },
   {
    "key": "22",
    "record": "c367d1c898446f800e46190736c488bd6129a522fa95e749c26206034a1d0307",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3197 values compared, none different or missing: 2640 on 2640 fixture cases, 500 on 500 generated returns seed 20261026, 57 on 57 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
-   "subject_key": "8de78a5df9008c7add63b4d3a20b528502b30b6c19a0b1c93546f6332dd11bc2"
+   "subject_key": "73c4c3c19d0696df0f67b800e1fb00227224b59f9deb061a024f83f9e81b0e30",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line5": "s2.tip_ss_tax",
+     "s2.line6": "s2.wage_ss_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "8de78a5df9008c7add63b4d3a20b528502b30b6c19a0b1c93546f6332dd11bc2"
+   }
   },
   {
    "key": "23",
@@ -385,8 +402,8 @@
   "18b": "fee4c8d9edd408074fe9d2349f5eecb41270ab73c48f3f48aa60fd117ac8335b",
   "19": "7251697fc0074a19522ab5dd388541085f7e6331eb534827dabea50ee7a6ef00",
   "20": "6ae7b1fe85db2da8d829f6db09b41fdbe04de5816c29ff18420bd2679c9629a8",
-  "21": "07d932ff5152faad01e426cda5d7297195ed4c742e0ed6ec5db33e1e26ec0537",
-  "22": "4cc2a22bdeb2ddeba0f681bf3ec21901c701b6b14c6ff4572fe2c4174a117349",
+  "21": "7709b84d780212d85f9369c62c92a1c3173b29199d69a6028d1b3dec5c05ecdf",
+  "22": "b048fedbff7baaa34058b3fcfc0967eb188de5679cc5211e59aef18aa0829cd6",
   "23": "582fa9dbd088b2e435dd8923c37112d5b564b645ee81f9daadd1cc3f0e644e8e",
   "24": "07e2ba2f1f2271364291e5a99e8e1f24abf48f6bf86fcc19c4a83e0e2799b4c2",
   "25": "2e484bbc3e5d603741c5e7d65d2eca129af97edfd82f3aa13311469ebf70ac0b",
@@ -416,7 +433,7 @@
   "(CLW A 4)": "85543fecffaaf297af9af2b94b36d8c85da701db9dec80245f073cc31ebab1fa",
   "18a": "9015c2a9bad0748e9a209f0278a9a2e6c2bb23178d2b6e94b3b9478e6cb7fc8b",
   "18b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "22": "8c144c3985ad257aa0d59d2962b8dbfad3890285cbd9ce8006b1df2d4609efc1",
+  "22": "46547fcd81e8755fcd74036fa4d8859ac6b713bfa8bd27bb6a0fff42cf0c6b7a",
   "27": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "(CLW B 1)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",
   "(CLW B 2)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb",

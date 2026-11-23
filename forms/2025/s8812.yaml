@@ -825,7 +825,7 @@ form:
       label: Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment income (one-half of Form 8959, line 13)
       expr:
         op: multiply_rate
-        amount: f8959.line13
+        amount: f8959.se_tax
         rate:
           param: se.rate_50
       cite:
@@ -876,8 +876,8 @@ form:
         op: sum
         of:
           - s1.line15
-          - s2.line5
-          - s2.line6
+          - s2.tip_ss_tax
+          - s2.wage_ss_tax
       cite:
         doc: f1040s8812
         locator: Schedule 8812 (2025), line 22, "Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form 1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13" (Schedule 2 line 13 is refused by s2.other)

@@ -32,7 +32,7 @@ sets:
       person[taxpayer].sc[shop].line23: 0
       person[taxpayer].sc[shop].line21: 0
       person[taxpayer].sc[shop].line16a: 0
-      person[taxpayer].sc[shop].line16b: 0
+      person[taxpayer].sc[shop].interest_other: 0
       person[taxpayer].sc[shop].travel_meals: false
       person[taxpayer].sc[shop].employees: false
       person[taxpayer].sc[shop].line48: 0

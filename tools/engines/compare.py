@@ -64,7 +64,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
 TAX_LINES = {"f1040.line16", "f1040.line19", "f1040.line20", "f1040.line24", "f1040.line28", "f1040.tax_before_credits",
-             "f2441.line11", "s3.line2", "f8863.line19", "s3.line3", "f8880.line12", "f5695.line15", "s3.line5a", "f5695.line32", "s3.line5b"}
+             "f2441.line11", "s3.line2", "f8863.line19", "s3.line3", "f8880.line12", "f5695.rce_credit", "s3.line5a", "f5695.line32", "s3.line5b"}
 # The run fails when, on a mapped line, the project left more than this share of the engine's cases
 # without a value, unless the line is allow-listed below: the project value is unknown where the
 # named input is false (the form is not filed), and the share is measured on the other returns.
@@ -73,7 +73,7 @@ NOT_COMPUTED_ALLOW = {
     "f2441.line9c": ("f2441.care", "Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return"),
     "f2441.line11": ("f2441.care", "Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return"),
     "f5695.line13": ("energy_part1", "Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return"),
-    "f5695.line15": ("energy_part1", "Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return"),
+    "f5695.rce_credit": ("energy_part1", "Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return"),
     "f5695.line30": ("energy_part2", "Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return"),
     "f5695.line32": ("energy_part2", "Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return"),
 }
@@ -229,7 +229,7 @@ def schedule_mode_expectations(values, case, t, engine_tax=None, niit=None):
            "f1040.line24": line22 + line23,
            "f1040.tax_before_credits": tax18 + line23,
            "f2441.line11": cdcc, "s3.line2": cdcc, "f8863.line19": edu, "s3.line3": edu, "f8880.line12": savers,
-           "f5695.line15": rce, "s3.line5a": rce, "f5695.line32": eehic, "s3.line5b": eehic}
+           "f5695.rce_credit": rce, "s3.line5a": rce, "f5695.line32": eehic, "s3.line5b": eehic}
     if engine_tax is None and niit is None:
         return out
     line33 = (m("f1040.line33") or 0) - (m("f1040.line28") or 0) + tax28
@@ -278,7 +278,7 @@ def float_bound_cents(precision, engine_cents, components=1):
 DOUBLE_SLACK = Fraction(1, 1000)
 MODELLED_LIMIT = 2 ** 30
 # Lines the project reports as one value that the engine prints as the parts the adapter adds.
-VIRTUAL_PARTS = {"f8959.tax": ["f8959.line18"], "f8960.tax": ["f8960.line17"],
+VIRTUAL_PARTS = {"f8959.tax": ["f8959.total_tax"], "f8960.tax": ["f8960.line17"],
                  "f1040.tax_before_credits": ["f1040.line18", "f1040.line23"]}
 
 
@@ -691,13 +691,13 @@ def derived_features(case, values):
         feats.add("sli_phaseout")
     if (m("f1040.line16") or 0) == 0:
         feats.add("no_tax_either_way")
-        if (m("f1040.line13b") or 0) > 0:
+        if (m("f1040.s1a_deductions") or 0) > 0:
             feats.add("schedule1a_zero_tax")
     if (m("s3.line4") or 0) > 0:
         feats.add("savers_credit")
     if (m("f1040.line11b") or 0) < 0:
         feats.add("negative_agi")
-    if (m("f1040.line11b") or 0) - (m("f1040.line12e") or 0) - (m("f1040.line13b") or 0) < 0:
+    if (m("f1040.line11b") or 0) - (m("f1040.line12e") or 0) - (m("f1040.s1a_deductions") or 0) < 0:
         feats.add("taxable_before_qbi_negative")
     # A tax-line amount sitting exactly on a Tax Table band boundary ($5 bands under $25, $25 under $3,000, $50 under $100,000).
     for amount_line in ("f1040.line15", "qdcg.line1", "qdcg.line5", "sdtw.line1", "sdtw.line21"):
@@ -726,13 +726,13 @@ def derived_features(case, values):
     # A part's phase-out lines are figured from modified AGI whether or not the part is claimed;
     # the step matters only where the part has an amount to reduce.
     if any((m(cut) or 0) > 0 and (m(amount) or 0) > 0
-           for cut, amount in (("s1a.line12", "s1a.line7"), ("s1a.line20", "s1a.line15"), ("s1a.line29", "s1a.line24"))):
+           for cut, amount in (("s1a.tips_reduction", "s1a.tips_capped"), ("s1a.ot_reduction", "s1a.ot_capped"), ("s1a.vli_reduction", "s1a.vli_capped"))):
         feats.add("schedule1a_stepped_phaseout")
     # Schedule 8812 line 20 (15% of earned income over $2,500) below line 17: the form's line 20 question decides line 27.
     if m("s8812.line20") is not None and m("s8812.line17") is not None and m("s8812.line20") < m("s8812.line17"):
         feats.add("s8812_line20_below_line17")
     # Additional Medicare Tax owed or withheld: Schedule 8812 line 21 comes from the Additional Medicare Tax and RRTA Tax Worksheet.
-    if (m("f8959.line18") or 0) > 0 or (m("f8959.line24") or 0) > 0:
+    if (m("f8959.total_tax") or 0) > 0 or (m("f8959.line24") or 0) > 0:
         feats.add("additional_medicare_tax")
     # Social security benefits with Schedule 1 additional income (unemployment compensation): Social Security Benefits Worksheet line 6.
     if (m("ssb.line1") or 0) > 0 and (m("s1.line10") or 0) != 0:
@@ -744,16 +744,16 @@ def derived_features(case, values):
         if (m("f8960.line15") or 0) > 0:
             feats.add("itemized_state_tax_niit")
     # A car loan interest deduction remains after the phase-out (Schedule 1-A line 30).
-    if (m("s1a.line30") or 0) > 0:
+    if (m("s1a.vli_deduction") or 0) > 0:
         feats.add("car_loan_deduction")
     # The foreign tax credit is less than the foreign tax paid: the tax on line 16 limited it.
     if case["inputs"].get("ftc.taxes", 0) > (m("ftc.credit") or 0):
         feats.add("foreign_tax_limited")
     # Form 5329 (Schedule 2 line 8): a tax on early distributions or HSA excess contributions, and that tax not in
     # whole dollars (UsTaxes rounds its line to dollars); a Part VII tax (no engine has Part VII).
-    if (m("s2.line8") or 0) > 0:
+    if (m("s2.tax_favored_accounts") or 0) > 0:
         feats.add("early_distribution_tax")
-        if (m("s2.line8") or 0) % 100:
+        if (m("s2.tax_favored_accounts") or 0) % 100:
             feats.add("early_tax_cents")
     if any((m(f"person[{p}].f5329[form].l49") or 0) > 0 for p in ("taxpayer", "spouse")):
         feats.add("hsa_excess_tax")
@@ -783,7 +783,7 @@ def money(v):
     return v["cents"] if v and v.get("kind") == "money" else None
 
 
-VIRTUAL_LINES = {"f8959.tax": "f8959.line18", "f8960.tax": "f8960.line17", "f1040.tax_before_credits": None}
+VIRTUAL_LINES = {"f8959.tax": "f8959.total_tax", "f8960.tax": "f8960.line17", "f1040.tax_before_credits": None}
 
 
 def template_id(key):
@@ -804,7 +804,7 @@ def resolve_line(line):
 def project_line(values, line):
     """A project line in cents, with virtual ids for the two Schedule 2 taxes."""
     if line == "f8959.tax":
-        line = "f8959.line18"
+        line = "f8959.total_tax"
     if line == "f8960.tax":
         line = "f8960.line17"
     if line == "f1040.tax_before_credits":

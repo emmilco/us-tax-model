@@ -394,7 +394,7 @@ def run_case(pkg, case, workdir):
             lines[f"f8995.line{n}"] = q_vals.get(f"L{n}", 0)
         l13a = q_vals["L15"]
         lines["qbi.deduction"] = l13a
-        lines["f1040.line13a"] = l13a
+        lines["f1040.qbi_deduction"] = l13a
 
     # --- Form 1040, pass 2: with the QBI deduction, the NIIT and the foreign tax credit ---
     p2, prose2, out2 = f1040_pass("f1040_pass2", l13a=l13a, l19=0, l28=0, s2_12=n_vals["L17"], s3_1=s3_1, s3_2=0)
@@ -513,15 +513,15 @@ def run_case(pkg, case, workdir):
 # nonzero are zero when absent.
 F1040_LABELS = {
     "L1z": "f1040.line1z", "L6b": "f1040.line6b", "L7a": "f1040.line7a", "L8": "f1040.line8", "L9": "f1040.line9",
-    "L10": "f1040.line10", "L11b": "f1040.line11b", "L12": "f1040.line12e", "L13b": "f1040.line13b",
+    "L10": "f1040.line10", "L11b": "f1040.line11b", "L12": "f1040.line12e", "L13b": "f1040.s1a_deductions",
     "L14": "f1040.line14", "L15": "f1040.line15", "L16": "f1040.line16", "L17": "f1040.line17", "L18": "f1040.line18",
     "L20": "f1040.line20", "L21": "f1040.line21", "L22": "f1040.line22", "L23": "f1040.line23", "L24": "f1040.line24",
     "L25d": "f1040.line25d", "L32": "f1040.line32", "L33": "f1040.line33", "L34": "f1040.line34", "L37": "f1040.line37",
     "S1_9": "s1.line9", "S1_10": "s1.line10", "S1_21_computed": "s1.line21", "S1_26": "s1.line26",
-    "S1A_13": "s1a.line13", "S1A_21": "s1a.line21", "S1A_30": "s1a.line30", "S1A_37": "s1a.line37", "S1A_38": "s1a.line38",
+    "S1A_13": "s1a.tips_deduction", "S1A_21": "s1a.ot_deduction", "S1A_30": "s1a.vli_deduction", "S1A_37": "s1a.senior_deduction", "S1A_38": "s1a.total_deductions",
     "S2_21": "s2.line21", "S3_8": "s3.line8",
     "A3": "sa.line3", "A4": "sa.line4", "A5d": "sa.line5d", "A5e": "sa.line5e", "A7": "sa.line7", "A8e": "sa.line8e",
-    "A10": "sa.line10", "A14": "sa.line14", "A17": "sa.line17",
+    "A10": "sa.line10", "A14": "sa.gifts_deduction", "A17": "sa.total_itemized",
 }
 F1040_ZERO_WHEN_UNPRINTED = {"L25d", "L34", "L37", "S1A_13", "S1A_21", "S1A_30", "S1A_37", "S1A_38", "S2_21", "S3_8",
                              "A3", "A4", "A7", "A10", "A14", "A17"}
@@ -570,7 +570,7 @@ OTS_UNROUNDED = {
         [r"^ftc\.", "adapter"],
     ],
     "engine_line": {"f1040.line11a": "f1040.line11b"},
-    "first_pass": {"ftc.limited": "f1040.line13a"},
+    "first_pass": {"ftc.limited": "f1040.qbi_deduction"},
 }
 
 
@@ -604,14 +604,14 @@ OTS_PASS_THROUGH = {"lines": [], "components": {
     "f2441.line11": "Form 2441 line 4 (earned income) is the engine's own Form 1040 line 1z less the spouse's wages, plus its Schedule SE lines 3 less 13 by file import; "
                     "line 10 is its own Form 1040 line 18 less Schedule 3 line 1",
     "sd.line19": "Schedule D line 19 is supplied as Form 1099-DIV box 2b; the program takes the Unrecaptured Section 1250 Gain Worksheet result as an input",
-    "f8959.line18": "Form 8959 line 8 (self-employment income) is the engine's own Schedule SE line 6",
+    "f8959.total_tax": "Form 8959 line 8 (self-employment income) is the engine's own Schedule SE line 6",
 }, "unmapped": {
     "f1040.line27a": "the earned income credit is an input (L27); OTS has no EIC worksheet or table",
     "eic.credit": "the earned income credit is an input (L27); OTS has no EIC worksheet or table",
     "f8880.line10": "the saver's credit is an input (S3_4); OTS does not compute Form 8880",
     "f8880.line12": "the saver's credit is an input (S3_4); OTS does not compute Form 8880",
     "f5695.line13": "the residential energy credits are inputs (S3_5a, S3_5b); OTS does not compute Form 5695",
-    "f5695.line15": "the residential energy credits are inputs (S3_5a, S3_5b); OTS does not compute Form 5695",
+    "f5695.rce_credit": "the residential energy credits are inputs (S3_5a, S3_5b); OTS does not compute Form 5695",
     "f5695.line30": "the residential energy credits are inputs (S3_5a, S3_5b); OTS does not compute Form 5695",
     "f5695.line32": "the residential energy credits are inputs (S3_5a, S3_5b); OTS does not compute Form 5695",
     "s3.line5a": "the residential energy credits are inputs; the engine's zero would not be a computation",
@@ -624,7 +624,7 @@ OTS_PASS_THROUGH = {"lines": [], "components": {
     "f1040.line1z": "mapped (sum of Forms W-2 box 1)",
     "f8863.line19": "OTS does not compute Form 8863; Schedule 3 line 3 and Form 1040 line 29 are entered amounts (limitation education)",
     "f1040.line29": "OTS does not compute Form 8863; Form 1040 line 29 is an entered amount (limitation education)",
-    "s2.line8": "OTS does not compute Form 5329; Schedule 2 line 8 is an entered amount (S2_8, limitation early_distribution_tax)",
+    "s2.tax_favored_accounts": "OTS does not compute Form 5329; Schedule 2 line 8 is an entered amount (S2_8, limitation early_distribution_tax)",
 }}
 
 
@@ -655,12 +655,12 @@ EARLY_REASON = ("OpenTaxSolver does not compute Form 5329: it reads Schedule 2 l
 def limitations(pkg_version):
     """The engine's declared limitations, keyed by generator or derived features. Those marked
     with a version are defects of that release and drop away when another release is installed."""
-    AGI_LINES = ["f1040.line9", "f1040.line10", "f1040.line11b", "s1.line26", "sa.line3", "sa.line4", "sa.line17", "sa.deduction",
-                 "f1040.line12e", "f1040.line13a", "f1040.line13b", "f1040.line14", "f1040.line15", "f1040.line16", "f1040.line17",
+    AGI_LINES = ["f1040.line9", "f1040.line10", "f1040.line11b", "s1.line26", "sa.line3", "sa.line4", "sa.total_itemized", "sa.deduction",
+                 "f1040.line12e", "f1040.qbi_deduction", "f1040.s1a_deductions", "f1040.line14", "f1040.line15", "f1040.line16", "f1040.line17",
                  "f1040.line18", "f1040.line20", "f1040.line21", "f1040.line22", "f1040.line24", "f1040.tax_before_credits",
                  "f1040.line19", "f1040.line28", "f1040.line32", "f1040.line33", "f1040.line34", "f1040.line37",
                  "f8960.line15", "f8960.line16", "f8960.line17", "f8960.tax", "f8995.line11", "f8995.line13", "f8995.line14", "f8995.line15",
-                 "qbi.deduction", "s1a.line13", "s1a.line21", "s1a.line30", "s1a.line37", "s1a.line38", "f2441.line7", "f2441.line9a",
+                 "qbi.deduction", "s1a.tips_deduction", "s1a.ot_deduction", "s1a.vli_deduction", "s1a.senior_deduction", "s1a.total_deductions", "f2441.line7", "f2441.line9a",
                  "f2441.line9c", "f2441.line10", "f2441.line11", "s3.line2", "s3.line8"] \
                 + [f"qdcg.line{n}" for n in range(1, 26)] + [f"sdtw.line{n}" for n in range(1, 48)] + [f"ssb.line{n}" for n in range(1, 19)] \
                 + ["f1040.line6b"] + [f"s8812.line{n}" for n in ("1", "3", "10", "11", "12", "14", "16a", "17", "19", "20", "26", "27")]
@@ -693,14 +693,14 @@ def limitations(pkg_version):
         {"feature": "section_1250_netted", "lines": ["sd.line19", "sd.line20"] + [f"sdtw.line{n}" for n in range(1, 48)] + TAX_LINES,
          "reason": "OpenTaxSolver takes Schedule D line 19 as an input (D19, 'amount from line 18 of the Unrecaptured Section 1250 Gain Worksheet'), supplied as "
                    "Form 1099-DIV box 2b; the worksheet nets the gain against the net short-term loss and the 28% worksheet amounts, which the project does"},
-        {"feature": "investment_interest_limited", "lines": ["sa.line9", "sa.line10", "sa.line17", "sa.deduction", "f1040.line12e", "f1040.line13a", "f1040.line14",
+        {"feature": "investment_interest_limited", "lines": ["sa.line9", "sa.line10", "sa.total_itemized", "sa.deduction", "f1040.line12e", "f1040.qbi_deduction", "f1040.line14",
                                                              "f1040.line15", "f8995.line11", "f8995.line13", "f8995.line14", "f8995.line15", "qbi.deduction",
                                                              "f8960.line11", "f8960.line12", "f8960.line16", "f8960.line17", "f8960.tax"] + TAX_LINES
                                                             + [f"qdcg.line{n}" for n in range(1, 26)] + [f"sdtw.line{n}" for n in range(1, 48)],
          "reason": "OpenTaxSolver takes Schedule A line 9 as entered (A9) and fixes Schedule D Tax Worksheet lines 3 and 4 at zero; it does not apply the Form 4952 "
                    "net-investment-income limit, and the adapter supplies the investment interest paid"},
-        {"feature": "negative_agi", "lines": ["sa.line3", "sa.line4", "sa.line14", "sa.line17", "sa.deduction", "f1040.line12e", "f1040.line14", "f1040.line15", "f8995.line11",
-                                              "f8995.line13", "f8995.line14", "f8995.line15", "qbi.deduction", "f1040.line13a",
+        {"feature": "negative_agi", "lines": ["sa.line3", "sa.line4", "sa.gifts_deduction", "sa.total_itemized", "sa.deduction", "f1040.line12e", "f1040.line14", "f1040.line15", "f8995.line11",
+                                              "f8995.line13", "f8995.line14", "f8995.line15", "qbi.deduction", "f1040.qbi_deduction",
                                               "f2441.line9a", "f2441.line9c", "f2441.line11", "s3.line2"] + TAX_LINES
                                              + [f"qdcg.line{n}" for n in range(1, 26)] + [f"sdtw.line{n}" for n in range(1, 48)],
          "reason": "OpenTaxSolver figures Schedule A line 3 as 7.5% of a negative adjusted gross income and line 4 as `NotLessThanZero(SchedA[1] - SchedA[3])`, "
@@ -719,7 +719,7 @@ def limitations(pkg_version):
          "reason": "OpenTaxSolver fixes Schedule D Tax Worksheet lines 3 and 4 at zero (sched_D_tax_worksheet: `ws[3] = 0.0; /* Form 4952, line 4g. */ "
                    "ws[4] = 0.0; /* Form 4952, line 4e. */`); on a return that files Form 4952 the project carries its line 4e there. Line 3 is zero on the "
                    "generated returns (no line 4g election), so lines 5 and 8 and the tax are unmoved"},
-        {"feature": "qbi_above_threshold", "lines": ["f8995.line11", "f8995.line13", "f8995.line14", "f8995.line15", "qbi.deduction", "f1040.line13a",
+        {"feature": "qbi_above_threshold", "lines": ["f8995.line11", "f8995.line13", "f8995.line14", "f8995.line15", "qbi.deduction", "f1040.qbi_deduction",
                                                      "f1040.line14", "f1040.line15"] + TAX_LINES + [f"qdcg.line{n}" for n in range(1, 26)] + [f"sdtw.line{n}" for n in range(1, 48)],
          "reason": "OpenTaxSolver has no Form 8995-A; its Form 8995 program computes the simplified deduction above the taxable income threshold, where "
                    "the form sends the filer to Form 8995-A and the project refuses the return"},
@@ -740,15 +740,15 @@ def limitations(pkg_version):
              "reason": "OpenTaxSolver 23.06's Schedule D Tax Worksheet (sched_D_tax_worksheet) codes the line 19 ceiling for single and married filing separately as "
                        "197,390 (the 2025 worksheet: $197,300) and runs lines 33 to 43 only when lines 1 and 32 are equal (`absolutev(ws[1]-ws[32]) < 0.01`), where "
                        "the worksheet says to skip them when they are equal; the 23.07 revision history reports both fixed"},
-            {"feature": "car_loan_interest", "lines": ["s1a.line30", "s1a.line38", "f1040.line13b", "f1040.line14", "f1040.line15", "f8995.line11", "f8995.line13",
-                                                      "f8995.line14", "f8995.line15", "qbi.deduction", "f1040.line13a"] + TAX_LINES
+            {"feature": "car_loan_interest", "lines": ["s1a.vli_deduction", "s1a.total_deductions", "f1040.s1a_deductions", "f1040.line14", "f1040.line15", "f8995.line11", "f8995.line13",
+                                                      "f8995.line14", "f8995.line15", "qbi.deduction", "f1040.qbi_deduction"] + TAX_LINES
                                                       + [f"qdcg.line{n}" for n in range(1, 26)] + [f"sdtw.line{n}" for n in range(1, 48)], "version": pkg_version,
              "reason": "OpenTaxSolver 23.06's Schedule 1-A Part IV (sched_1A) truncates line 28 (`j = sched1A_L[27] / 1000.0`) where the form rounds up to the next "
                        "whole number, and multiplies line 29 by $300 per $1,000 where the form says $200; the 23.07 revision history reports both fixed"},
         ]
     universe = ({*F1040_LABELS.values(), "f1040.tax_before_credits", "f1040.line19", "f1040.line28", "s3.line2", "s3.line4", "s3.line5a",
-                 "s3.line5b", "s3.line15", "f2441.line9c", "f2441.line10", "f2441.line11", "f8880.line11", "f8880.line12", "f5695.line14",
-                 "f5695.line15", "f5695.line31", "f5695.line32"}
+                 "s3.line5b", "s3.line15", "f2441.line9c", "f2441.line10", "f2441.line11", "f8880.line11", "f8880.line12", "f5695.rce_limit",
+                 "f5695.rce_credit", "f5695.line31", "f5695.line32"}
                 | {f"s8812.line{n}" for n in ("1", "2a", "2b", "2c", "2d", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
                                                "15", "16a", "16b", "17", "18a", "18b", "19", "20", "21", "22", "23", "24", "25", "26", "27")})
     lims.append({"feature": "marketplace", "lines": sorted(l for l in universe if PTC_MOVED.match(l)),

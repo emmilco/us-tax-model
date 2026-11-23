@@ -219,11 +219,11 @@
           "kind": "money",
           "cents": 1575000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -550,11 +550,11 @@
           "kind": "money",
           "cents": 1575000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -920,11 +920,11 @@
           "kind": "money",
           "cents": 2730000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 6000
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -1199,7 +1199,7 @@
             "tax_year": 2025
           }
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -1685,11 +1685,11 @@
           "kind": "money",
           "cents": 1575000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -2021,11 +2021,11 @@
           "kind": "money",
           "cents": 1575000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -2522,11 +2522,11 @@
           "kind": "money",
           "cents": 1575000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -2861,11 +2861,11 @@
           "kind": "money",
           "cents": 1575000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -3237,11 +3237,11 @@
           "kind": "money",
           "cents": 2730000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 6000
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },

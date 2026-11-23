@@ -40,7 +40,17 @@
    "record": "b85f53823885076b9aa3cea605da538562e840724c57daa6e0cb10b1af8dd072",
    "status": "DISAGREE",
    "ruling": "Ruling: scope; f1040s2 line 2, 'See the Instructions for Form 6251 to see if you must file the form', as the ruling of 2026-11-17: the project refuses the alternative minimum tax through its computed s2.amt screen and enters zero otherwise; the reply figures Form 6251 where the project refuses. executable triage (.transcription/triage/2025/s2.json, this pass): 2,855/3,509 agree; differences {\"candidate-refuses\": 85, \"candidate-unknown\": 409, \"project-refuses\": 150, \"project-unknown\": 10}; on completed returns {\"candidate-refuses\": 52, \"candidate-unknown\": 158}; no value differs on a completed return. Rerun for the s2.amt_business and s2.amt_pab wording (BUG-0946, BUG-0980).",
-   "subject_key": "4f4a1f5a1627acd697dd94201afe49d67840fe65d53003e99e2e0519b9102801"
+   "subject_key": "9352d8b93722db403fdef266cdb72f944907bd95f62c51eba7902835286af31f",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line37": "s1a.senior_deduction",
+     "s2.amt_h_mfs_quarter": "s2.amt_h_mfs_phaseout_part",
+     "s2.amt_mfs_quarter": "s2.amt_mfs_phaseout_part"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "4f4a1f5a1627acd697dd94201afe49d67840fe65d53003e99e2e0519b9102801"
+   }
   },
   {
    "key": "3",
@@ -58,61 +68,147 @@
    "key": "5",
    "record": "78711551cece2a9b3a3c4d4b199dd675f15a9f329e74443ee3bd7f99400a853a",
    "status": "AGREE",
-   "subject_key": "a0413373e9966463db119fd4930e699a9f4dfbefb81fa80b7fa674bf24700b10"
+   "subject_key": "9fc6eca581070afc4c1e3fad713806b0de2224de27a473526a741ff79551ebc8",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line5": "s2.tip_ss_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "a0413373e9966463db119fd4930e699a9f4dfbefb81fa80b7fa674bf24700b10"
+   }
   },
   {
    "key": "6",
    "record": "78711551cece2a9b3a3c4d4b199dd675f15a9f329e74443ee3bd7f99400a853a",
    "status": "AGREE",
-   "subject_key": "47264cbf0ed51b9ac6109818ec22a36efd88cc54ba8cc35feeaf81c89b91fd69"
+   "subject_key": "d23ac7eff274695d27587002135e2469af0b31482d5f6e2811135ecbc488d73c",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line6": "s2.wage_ss_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "47264cbf0ed51b9ac6109818ec22a36efd88cc54ba8cc35feeaf81c89b91fd69"
+   }
   },
   {
    "key": "7",
    "record": "78711551cece2a9b3a3c4d4b199dd675f15a9f329e74443ee3bd7f99400a853a",
    "status": "AGREE",
-   "subject_key": "b871e804435f6e63a491ceac79ae8d56169876cfe20c59fa20d373e81a7a5dd8"
+   "subject_key": "bf68313347458822916aa19815e9e00e0238d89f75479bd3a409e8abd6218728",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line5": "s2.tip_ss_tax",
+     "s2.line6": "s2.wage_ss_tax",
+     "s2.line7": "s2.ss_medicare_total"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "b871e804435f6e63a491ceac79ae8d56169876cfe20c59fa20d373e81a7a5dd8"
+   }
   },
   {
    "key": "8",
    "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
    "status": "AGREE",
-   "subject_key": "c5fc84e01980a1ac50cba96953d3d695e127c5dcb50c502df663c9f32330b151"
+   "subject_key": "fcc99baae5c0d4772f612b0d8fd47fb1533ddc5af31cde70a32f313321f2e5a8",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line8": "s2.tax_favored_accounts"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "c5fc84e01980a1ac50cba96953d3d695e127c5dcb50c502df663c9f32330b151"
+   }
   },
   {
    "key": "8 (box)",
    "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
    "status": "AGREE",
-   "subject_key": "30697421fdb25af77d680f4952470c1afbc74878d08f8254c54a791fe7e468a4"
+   "subject_key": "8e6b805ef991aeb45d25b0f0403ce25fd71faef974be2e82623ea9d7b795a4af",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line8": "s2.tax_favored_accounts"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "30697421fdb25af77d680f4952470c1afbc74878d08f8254c54a791fe7e468a4"
+   }
   },
   {
    "key": "11",
    "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
    "status": "AGREE",
-   "subject_key": "6df2cf5fa681669bf84fdec72656d8a1a50be1775b85028b18dc56c2d50e7e4c"
+   "subject_key": "5c7eeb36748454d71b94fb36388a86184195fb1f1fe46ce81c32c16ac726a1f8",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line18": "f8959.total_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "6df2cf5fa681669bf84fdec72656d8a1a50be1775b85028b18dc56c2d50e7e4c"
+   }
   },
   {
    "key": "12",
    "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
    "status": "AGREE",
-   "subject_key": "e685da4c8b12575a0c59007b3d0b89b3e07e8cb353584160eb96667c9a714b96"
+   "subject_key": "6e89d6d9aaa44f26ec809a0b44b2d8bfc0a49eb16543bee66f37313e8e1cd77a",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line12": "s2.niit"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "e685da4c8b12575a0c59007b3d0b89b3e07e8cb353584160eb96667c9a714b96"
+   }
   },
   {
    "key": "17c",
    "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
    "status": "AGREE",
-   "subject_key": "90d7c371193da792746b224f760da48d8c53da08f7e2d7675a271ceda3fe483f"
+   "subject_key": "e503f6246533bbfc701ef78546dc3cfc97eb547fe296078cdcdff49c1eb3065c",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line17c": "s2.hsa_distribution_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "90d7c371193da792746b224f760da48d8c53da08f7e2d7675a271ceda3fe483f"
+   }
   },
   {
    "key": "18",
    "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
    "status": "AGREE",
-   "subject_key": "58e1b24c785b88ed4cec3a6a8784d4265b743e8235de013037e286b08f32aa7a"
+   "subject_key": "4f751ef95729b967c0f3e14f74c6d952be27d4ab3b0d1e64f99d118b6f10d431",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line17c": "s2.hsa_distribution_tax",
+     "s2.line18": "s2.other_additional_total"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "58e1b24c785b88ed4cec3a6a8784d4265b743e8235de013037e286b08f32aa7a"
+   }
   },
   {
    "key": "21",
    "record": "7f24498b1b4a8dd2478df9ea3600e9e33bf11e1896a19f66445a1a26f876540d",
    "status": "AGREE",
-   "subject_key": "f16024773758489a9213323fb4ca464aecf69dc24fc6d4975b9007f2eef139fc"
+   "subject_key": "debf5aad1f2bf1669c0f480e6dbcbc4882cc6c7767adacda635eaefa3bb68ecd",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line12": "s2.niit",
+     "s2.line18": "s2.other_additional_total",
+     "s2.line7": "s2.ss_medicare_total",
+     "s2.line8": "s2.tax_favored_accounts"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "f16024773758489a9213323fb4ca464aecf69dc24fc6d4975b9007f2eef139fc"
+   }
   }
  ],
  "subjects": {
@@ -120,25 +216,25 @@
   "s2.line8_file": "deb8be263885897cf5058b90185a21cfbad1938e3b0c9298cb84098d5a29294d",
   "1a": "45c38ce8fdfae6506bcf62fdeee06baaffe971d62e9f9cdb5cbb53c45888473b",
   "1z": "33d872e88e513fc79c3fba1a08807a2e2dba942d5af1890a2bf7ffb33623e9d5",
-  "2": "0a230042c72ae79dd5a1f28eef189a9a39d1e420860e1428d2beae441d80beba",
+  "2": "e8bc122c9c72ca790693cdb617d79e47eaa8cae7b249ce63db8a0191f24a80b0",
   "3": "7ab9b1b03d4566d66f61819570d3d1f50e8cef92e15293d3637f871dfcc2e150",
   "4": "953ef54c0b1d62d61d6b53201beb0d3ad1e1265d162735865c2ae696027a420c",
-  "5": "6bd6e5be7ca48e5b0d354c7a7975c3d59856c6de1ab596825db1f7b0c0d6dfb0",
-  "6": "3b56f936a2186bd5b54492d3e99e4daf321deca190f3566638e742687331577d",
-  "7": "7164b98408db148acb0ef074c6bd1e88cc9762d6d2a54c88615224a49d98d9f4",
-  "8": "7355e8cb8c3b54d4f15ff1dde8c8942afb9116cf25c38c82aa861eb1becf57f1",
-  "8 (box)": "5de2b5104f546bd8692ed681b83939a3c8a4346164cf927662e2d0cc42eb95a8",
-  "11": "94fed3df7408c90ad14eb46920279e55243992b0a2d252e4009cfe635586e260",
-  "12": "8815af92f32d42a0845b67cc205b1f75b926aa1f211865b195398d8c43314de6",
-  "17c": "a0773b09a661c82935a41d37eac6c5d2fc11bd478506d923f364a2385b9616d7",
-  "18": "70b979917d928776213d250602da518e7d7b607beb59522fca084ad3286f5069",
-  "21": "8da015df877f6bd19e6789e2d04a8246821f588ab218a72b99b684b72d67311a"
+  "5": "84a75296941f64a378a984c96b4e5e7533cf62f6a25f313c26110a5a170bd014",
+  "6": "424b004aaee41a80069b2b4ce1b935c66d3494cd1f40932a68b5a77721b18bd3",
+  "7": "9ca0a5ef568a7e31838d04e36acbc2debff9d8b874d09597fd8436523d115da4",
+  "8": "60025646b4ab3b3d02b9fa42bf64ea1e43bbfbab5ed1e3a29fa3b504fd134947",
+  "8 (box)": "f161e2cbaddc9558ab0d563b02c95ca70fed2affc0642697b3c6bea5d2f1caaa",
+  "11": "e926cbed799baf697ceb713460b3ed2c5c9d361f24c8207f25e22a4451206689",
+  "12": "dcebc04d534b7cfe51c700ebf7de0880c5e311091e65226487dcc99dd1b85895",
+  "17c": "e690fa9eac7cdc3d3d9c750d7d27edfddad825c027545d6790fe4a3cde22486e",
+  "18": "7e4ec44f9b9fd2bdda3be26dc6e2d52f22050c4f890fe94143cc8c9f8fa26dc5",
+  "21": "515666546344a1352515e594bab476e9ddde833bc96140a46967edcaee71021d"
  },
  "__rest__": "afebc9cd3ed3e50a0f1f9e9d83cb49dd824e77c8da32f20b0c141d045a8c0355",
  "foreign": {
   "s2.other": "6f2f86896e47652538c236b09bafbc66489ff2838ddfdbded44cc80c1a5592db",
   "1z": "6f2f86896e47652538c236b09bafbc66489ff2838ddfdbded44cc80c1a5592db",
-  "2": "f8a83ec6a29c0b3235346cdad5f82334809ddd897eef0153490b1db8c4d5412b",
+  "2": "0657639f7e93221e9b9ba45d6b82f7a51a4394b3643e8dda9949123a5a342f53",
   "3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "5": "cd35aebd2a8b869daeb60aaf1dec8855c88d4feae9e81366508b9f396e5e9d42",
   "6": "e6901d0a1d64fd79f936339dd644932cafe3d09f2213f4d3b5d604b809e5949e",

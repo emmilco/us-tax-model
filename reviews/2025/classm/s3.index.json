@@ -1054,5 +1054,17 @@
    "record": "73fbbe610601ce32a4bd65d28b162bfda01dce408d3a1eee19305e5109643407",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "687fb80ad143d1674b538accfd329e11e99e55a4bb7482d1e204ab8bf2b5567a",
+  "was": "3577c5b4b36c26857917c8955f0c59c27ae0b27b3094e5d3b9fdc73ada7f64c4",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f5695.line15": "f5695.rce_credit"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "3577c5b4b36c26857917c8955f0c59c27ae0b27b3094e5d3b9fdc73ada7f64c4"
+  }
+ }
 }

@@ -1059,7 +1059,7 @@
           "kind": "money",
           "cents": 45000
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 64600
         },
@@ -1160,15 +1160,15 @@
           "kind": "money",
           "cents": 45000
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 36100
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },

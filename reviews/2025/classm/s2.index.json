@@ -804,5 +804,27 @@
    "record": "88e9d03acc77db249bfa129a720657297cb1a7799dd84930427d2cc12bd0374e",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "a0e58dc186effc20a955a2a4b61db6cdfce8e7151704109e94e9f0dd451288a5",
+  "was": "a978bc4900cc85ca9b04637413e81ddfcef374794652b27e3263ce395a2a0feb",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f8959.line18": "f8959.total_tax",
+    "s1a.line37": "s1a.senior_deduction",
+    "s2.amt_h_mfs_quarter": "s2.amt_h_mfs_phaseout_part",
+    "s2.amt_mfs_quarter": "s2.amt_mfs_phaseout_part",
+    "s2.line12": "s2.niit",
+    "s2.line17c": "s2.hsa_distribution_tax",
+    "s2.line18": "s2.other_additional_total",
+    "s2.line5": "s2.tip_ss_tax",
+    "s2.line6": "s2.wage_ss_tax",
+    "s2.line7": "s2.ss_medicare_total",
+    "s2.line8": "s2.tax_favored_accounts"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "a978bc4900cc85ca9b04637413e81ddfcef374794652b27e3263ce395a2a0feb"
+  }
+ }
 }

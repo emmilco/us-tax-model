@@ -89,7 +89,7 @@ and every difference became an operation, grouped by the change-map entry it car
 applied to the 2025 forms as they stood, and those that no longer applied were mended (each entry concerned says so
 in its `note`):
 
-- `f1040.gate.nonitemizer_gifts` and `sa.gifts_total` read `sa.line11_if_gifts`, not `sa.line11`, and `sa.line14` is
+- `f1040.gate.nonitemizer_gifts` and `sa.gifts_total` read `sa.line11_if_gifts`, not `sa.line11`, and `sa.gifts_deduction` is
   expected to read `sa.line11_if_gifts`: Schedule A line 11 has been gated since the proposal was written, and only
   its gate line may read a gated input.
 - `sa.line8d` refuses on `sa.charity_limited_if_gifts`, as the other Schedule A lines held at zero now do.

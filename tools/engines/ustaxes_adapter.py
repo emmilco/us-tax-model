@@ -230,7 +230,7 @@ def build_info(case, year):
 F1040_MAP = {
     "f1040.line1a": "f1040.l1a", "f1040.line1z": "f1040.l1z", "f1040.line6b": "f1040.l6b", "f1040.line7a": "f1040.l7a",
     "f1040.line8": "f1040.l8", "f1040.line9": "f1040.l9", "f1040.line10": "f1040.l10", "f1040.line11a": "f1040.l11a",
-    "f1040.line11b": "f1040.l11b", "f1040.line12e": "f1040.l12e", "f1040.line13a": "f1040.l13a", "f1040.line13b": "f1040.l13b",
+    "f1040.line11b": "f1040.l11b", "f1040.line12e": "f1040.l12e", "f1040.qbi_deduction": "f1040.l13a", "f1040.s1a_deductions": "f1040.l13b",
     "f1040.line14": "f1040.l14", "f1040.line15": "f1040.l15", "f1040.line16": "f1040.l16", "f1040.line17": "f1040.l17",
     "f1040.line18": "f1040.l18", "f1040.line19": "f1040.l19", "f1040.line20": "f1040.l20", "f1040.line21": "f1040.l21",
     "f1040.line22": "f1040.l22", "f1040.line23": "f1040.l23", "f1040.line24": "f1040.l24", "f1040.line25a": "f1040.l25a",
@@ -239,11 +239,11 @@ F1040_MAP = {
     "s1.line10": "s1.l10", "s1.line11": "s1.l11", "s1.line13": "s1.l13", "s1.line21": "s1.l21", "s1.line26": "s1.l26",
     "s2.line21": "s2.l21", "s3.line8": "f1040.l20", "s3.line11": "s3.l11", "s3.line15": "f1040.l31",
     "sa.line3": "sa.l3", "sa.line4": "sa.l4", "sa.line5d": "sa.l5d", "sa.line5e": "sa.l5e", "sa.line7": "sa.l7", "sa.line8e": "sa.l8e",
-    "sa.line10": "sa.l10", "sa.line14": "sa.l14", "sa.line17": "sa.l17", "sa.standard": "f1040.standardDeduction",
+    "sa.line10": "sa.l10", "sa.gifts_deduction": "sa.l14", "sa.total_itemized": "sa.l17", "sa.standard": "f1040.standardDeduction",
     "sa.deduction": "f1040.l12e",
     "sb.line2": "sb.l2", "sb.line4": "sb.l4",
     "sd.line7": "sd.l7", "sd.line15": "sd.l15", "sd.line16": "sd.l16", "sd.line21": "sd.l21",
-    "f8959.line1": "f8959.l1", "f8959.line4": "f8959.l4", "f8959.line6": "f8959.l6", "f8959.line7": "f8959.l7", "f8959.line18": "f8959.l18",
+    "f8959.line1": "f8959.l1", "f8959.line4": "f8959.l4", "f8959.line6": "f8959.l6", "f8959.line7": "f8959.l7", "f8959.total_tax": "f8959.l18",
     "f8959.line19": "f8959.l19", "f8959.line21": "f8959.l21", "f8959.line22": "f8959.l22", "f8959.line24": "f8959.l24",
     "f8959.tax": "f8959.l18",
     "f8960.line8": "f8960.l8", "f8960.line9a": "f8960.l9a", "f8960.line9b": "f8960.l9b", "f8960.line9d": "f8960.l9d",
@@ -285,7 +285,7 @@ F8863_MAP = {"f8863.line1": "f8863.aotcBeforePhaseOut", "f8863.line8": "f8863.l8
 # Form 5329 Part I (UsTaxes' F5329.ts: line 1, the early withdrawal amounts of both spouses, and the 10% tax it numbers l8)
 # and Schedule 2 line 8. Read on every return; the per-person lines are the filer's (UsTaxes keeps one form for both
 # spouses, limitation early_spouse).
-F5329_MAP = {"s2.line8": "s2.l8", "person[taxpayer].f5329[form].l1": "f5329.l1", "person[taxpayer].f5329[form].l4": "f5329.l8"}
+F5329_MAP = {"s2.tax_favored_accounts": "s2.l8", "person[taxpayer].f5329[form].l1": "f5329.l1", "person[taxpayer].f5329[form].l4": "f5329.l8"}
 USTAXES_PRECISION = "float64"
 
 
@@ -448,7 +448,7 @@ USTAXES_PASS_THROUGH = {"lines": [], "components": {
     "s3.line4": "Form 8880: " + _CREDITS, "f8880.line10": "Form 8880: the credit before the limit is rounded down to whole dollars (`l4`)",
     "f8880.line12": "Form 8880: " + _CREDITS,
     "s3.line5a": "Form 5695 Part I: " + _CREDITS, "f5695.line13": "Form 5695 Part I: 30% of the costs rounded to whole dollars (`l15`)",
-    "f5695.line15": "Form 5695 Part I: " + _CREDITS,
+    "f5695.rce_credit": "Form 5695 Part I: " + _CREDITS,
     "s3.line5b": "Form 5695 Part II is an input (the credit amount itself, CreditType.EnergyEfficientHomeImprovement)",
     "f5695.line30": "Form 5695 Part II is an input", "f5695.line32": "Form 5695 Part II is an input",
     "eic.credit": "the EIC is figured from formulas at a misrounded income (ScheduleEIC.ts `roundIncome`); Form 1040 line 27a is mapped "
@@ -468,9 +468,9 @@ USTAXES_PASS_THROUGH = {"lines": [], "components": {
     "sli.line5": "UsTaxes' phase-out start is the 2024 amount (data/federal.ts `studentLoanInterest`), a parameter, not a computation",
     "sli.line6": "the project carries the negative difference where the worksheet says to skip line 6; UsTaxes floors it at zero",
     "sli.line7": "a ratio, not a money line",
-    "s1a.line10": "the project carries the negative difference where the form says to skip the phase-out; UsTaxes floors it at zero "
+    "s1a.tips_over": "the project carries the negative difference where the form says to skip the phase-out; UsTaxes floors it at zero "
                   "(likewise lines 18, 27 and 33); the part totals (lines 13, 21, 30, 37) are mapped",
-    "s1a.line9": "the phase-out thresholds (lines 9, 17, 26, 32) are parameters",
+    "s1a.tips_threshold": "the phase-out thresholds (lines 9, 17, 26, 32) are parameters",
     "person.se_line12": "UsTaxes never builds Schedule C, so self-employed returns are not run",
     "s2.line8_box": "UsTaxes' Schedule 2 line 8 box is always unchecked (Schedule2.ts `l8box`: `false // TODO`); a Bool, not a money line",
     "person.f5329.l2": "UsTaxes' Form 5329 has no line 2 (exceptions are left out of `earlyWithdrawalAmount` by the user), so lines 2 and 3 "
@@ -489,8 +489,8 @@ def mapped_lines():
 # Lines figured before adjusted gross income from the income items alone.
 INCOME_LINES = {"f1040.line1a", "f1040.line1z", "f1040.line7a", "f1040.line8", "f1040.line25a", "s1.line10", "sb.line2", "sb.line4",
                 "sd.line7", "sd.line15", "sd.line16", "sd.line21", "f8960.line8", "s3.line11", "s3.line15", "sa.line5d", "sa.line8e",
-                "sa.line14", "sa.standard", "s1.line11", "sli.line1", "s1a.line4c", "s1a.line6", "s1a.line7", "s1a.line14c", "s1a.line15",
-                "s1a.line23", "s1a.line24", "s8812.line5", "s8812.line7", "s8812.line8", "s8812.line16b", "s8812.line18a", "s8812.line19",
+                "sa.gifts_deduction", "sa.standard", "s1.line11", "sli.line1", "s1a.tips_employee", "s1a.tips_total", "s1a.tips_capped", "s1a.ot_total", "s1a.ot_capped",
+                "s1a.vli_total", "s1a.vli_capped", "s8812.line5", "s8812.line7", "s8812.line8", "s8812.line16b", "s8812.line18a", "s8812.line19",
                 "s8812.line20", "s8812.line21", "s8812.line23", "f1040.line25d"} \
                | {f"f8959.line{n}" for n in (1, 4, 6, 7, 18, 19, 21, 22, 24)} | {"f8959.tax"} | {f"ssb.line{n}" for n in range(1, 6)}
 # Lines from Form 1040 line 16 on: the tax, the credits and the payments.
@@ -498,12 +498,12 @@ TAX_LINES = {f"f1040.line{n}" for n in (16, 17, 18, 19, 20, 21, 22, 24, 28, 32, 
             | {"f1040.tax_before_credits", "s3.line8", "s8812.line14", "s8812.line16a", "s8812.line17", "s8812.line27"} \
             | {f"qdcg.line{n}" for n in (22, 23, 24, 25)}
 # From taxable income on: Form 1040 lines 13a to 15, the worksheet and the tax lines.
-TAXABLE_LINES = {"f1040.line13a", "f1040.line13b", "f1040.line14", "f1040.line15"} | set(QDCG_MAP) | TAX_LINES
+TAXABLE_LINES = {"f1040.qbi_deduction", "f1040.s1a_deductions", "f1040.line14", "f1040.line15"} | set(QDCG_MAP) | TAX_LINES
 # The lines the nonrefundable credits move.
 AFTER_CREDIT_LINES = {f"f1040.line{n}" for n in (19, 20, 21, 22, 24, 28, 32, 33, 34, 37)} \
                      | {"s3.line8", "s8812.line14", "s8812.line16a", "s8812.line17", "s8812.line27"}
 # The lines Schedule A line 9 (the Form 4952 limit) moves.
-INVESTMENT_INTEREST_LINES = sorted({"sa.line10", "sa.line17", "sa.deduction", "f1040.line12e"} | TAXABLE_LINES
+INVESTMENT_INTEREST_LINES = sorted({"sa.line10", "sa.total_itemized", "sa.deduction", "f1040.line12e"} | TAXABLE_LINES
                                    | {f"f8960.line{n}" for n in ("9a", "9d", "11", "12", "16", "17")}
                                    | {"f8960.tax", "s2.line21", "f1040.line23"})
 # The refundable credits and the payment lines.
@@ -612,9 +612,9 @@ def limitations():
          "reason": "UsTaxes never builds Schedule C: irsForms/F1040.ts declares `scheduleC?: ScheduleC` and no code assigns it, so "
                    "`selfEmployedIncome` reaches no form (Schedule 1 line 3, Schedule SE, the QBI deduction and earned income are all "
                    "zero); returns with self-employment income are not run"},
-        {"feature": "car_loan_interest", "lines": ["s1a.line23", "s1a.line24", "s1a.line30"],
+        {"feature": "car_loan_interest", "lines": ["s1a.vli_total", "s1a.vli_capped", "s1a.vli_deduction"],
          "reason": CAR_LOAN},
-        {"feature": "car_loan_deduction", "lines": srt({"s1a.line38"} | TAXABLE_LINES),
+        {"feature": "car_loan_deduction", "lines": srt({"s1a.total_deductions"} | TAXABLE_LINES),
          "reason": CAR_LOAN + "; returns where the project's line 30 is positive are not compared from line 38 on"},
         {"feature": "special_gains", "lines": srt(set(QDCG_MAP) | TAX_LINES),
          "reason": "UsTaxes' 28% Rate Gain Worksheet and Unrecaptured Section 1250 Gain Worksheet are stubs returning undefined "

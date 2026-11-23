@@ -7635,7 +7635,7 @@
           "kind": "money",
           "cents": 2362500
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
@@ -7879,15 +7879,15 @@
           "kind": "money",
           "cents": 150000
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 150000
         },
@@ -7979,7 +7979,7 @@
           "kind": "money",
           "cents": 2362500
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
@@ -8167,15 +8167,15 @@
           "kind": "money",
           "cents": 150000
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 150000
         },
@@ -8280,7 +8280,7 @@
         "dependent[c3].months": 12
       },
       "expect": {
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 30600
         },

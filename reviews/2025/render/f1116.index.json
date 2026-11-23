@@ -114,7 +114,15 @@
    "key": "18",
    "record": "3629063ef5937e2ebdbc4dd2a140c295114593f5560c4622475f45dfd5e84458",
    "status": "MATCH",
-   "subject_key": "aecdba143090722e440c6ac08b7d3ee1875513e99a0ae821b92607223cae5a79"
+   "subject_key": "1e8726faf7a5cc6f37e00e61a1d32f7791ecdfaf37ad163025f7dfc35db0ed79",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line37": "s1a.senior_deduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "aecdba143090722e440c6ac08b7d3ee1875513e99a0ae821b92607223cae5a79"
+   }
   },
   {
    "key": "20",
@@ -175,7 +183,15 @@
    "key": "35",
    "record": "3629063ef5937e2ebdbc4dd2a140c295114593f5560c4622475f45dfd5e84458",
    "status": "MATCH",
-   "subject_key": "46fee80672ee335572fbb58594b46636ff1c05c09af15fdc626dc4f00b91d8ad"
+   "subject_key": "7a9ab58f93e4fb75fa074d42ea43b85bb1949ad38d974ffb57dcfebee98e8147",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1a.line30": "s1a.vli_deduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "46fee80672ee335572fbb58594b46636ff1c05c09af15fdc626dc4f00b91d8ad"
+   }
   }
  ],
  "subjects": {
@@ -196,7 +212,7 @@
   "15": "803ad6362dda484e7d168f87bc97e6f3f881b0af5cdc2770c60a05869fb1408e",
   "16": "a6d271ebb1c54734560796d9279c73b02a9f317091036ab0273674a9ec5ee561",
   "17": "7343ff7daff916dfba0760b6542c31d7ba5be3c27f5c1db64ecb15fe227afef2",
-  "18": "796448cc1d812fcff07dcd92d25890e8c064558bcf741d26b74fc9372d4ab825",
+  "18": "5bc55383069a179a94fbefc496e58a0939a00a7534c2fce19688a903673ae6f9",
   "20": "a8f5ed3d8d6158812eb44af57deba260b67a4e7ed7e05ff954e4131fa5adc3ed",
   "21": "6ae342ccbf35eeb9c7f68d98e50866379d9cc3de59626cd3e6e46144736099b7",
   "22": "29b071b72f1693cde96814f9a203a4db7d2f52439a4edd4797dabf3b86e246c7",
@@ -206,7 +222,7 @@
   "32": "8fd6f9617560c60453c4f2ae3567dfb8cead89a73e29fbe7276904ad06a20d88",
   "33": "2d12ac9256fc8b550ae5b7cb8d305c074bad5a7194b788f01b8305269ba7f044",
   "34": "ce049cb74fe83b6a84641a2159aa6a4d97020d330bade12e1afdbbc7083b5933",
-  "35": "fd58ed28024746c0429e73b5de8622ba339256bbcb77272642eb580bf1324e50"
+  "35": "f0f6e971598554361471f5c347357a16dc1bddf5b9329ef0d2b7055a7fb8738d"
  },
  "__rest__": "879015c91186e0b5161c39493dee55734ab32129c342a101563ecff9a3cd6353"
 }

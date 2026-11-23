@@ -252,7 +252,7 @@
 - Expr: `{"op":"input","source":"Interest you paid for 2025 on a mortgage on real property used in the business, to banks or other financial institutions for which you received a Form 1098 (only the business part; not interest that must be capitalized, and not mortgage interest on your home, which with the simplified method for business use of the home you can deduct only on Schedule A); zero if none"}`
 - Cite: [i1040sc] p. 8, Lines 16a and 16b, How to report; p. 14, Line 30, "You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule C for this home" (2025; sha256 b5536db9)
 
-## 16b — `sc.line16b`
+## 16b — `sc.interest_other`
 
 - **IRS:** Interest: other
 - **Encoded (NonNegDollars):** Input — Other interest on business debt (including mortgage interest not reported on a Form 1098 to you); for a vehicle used for business and personal purposes, only the business part, and none of the interest you deduct on Schedule 1-A; for interest paid in 2025 that also applies to future years, only the part that applies to 2025; for a mortgage on which you and another person (other than your spouse on a joint return) were liable and paid interest and the other person received the Form 1098, only your share; not mortgage interest on your home; zero if none
@@ -463,7 +463,7 @@
 
 - **IRS:** Total expenses before expenses for business use of home. Add lines 8 through 27b
 - **Encoded (NonNegDollars):** Add line 8 (sc.line8), line 9 (sc.line9), line 10 (sc.line10), line 11, line 12 (sc.line12), line 13 (sc.line13), helper "Employee benefit programs (other than on line 19), asked only of a business with employees (zero without)", line 15, line 16a, line 16b, line 17, line 18, helper "Pension and profit-sharing plans, asked only of a business with employees (zero without)", line 20a, line 20b, line 21, line 22, line 23, helper "Travel, asked only of a business with travel, meal or food expenses (zero without)", line 24b, line 25, helper "Wages (less employment credits), asked only of a business with employees (zero without)", line 27a, and line 27b.
-- Expr: `{"of":["sc.line8","sc.line9","sc.line10","sc.line11","sc.line12","sc.line13","sc.line14_if_employees","sc.line15","sc.line16a","sc.line16b","sc.line17","sc.line18","sc.line19_if_employees","sc.line20a","sc.line20b","sc.line21","sc.line22","sc.line23","sc.line24a_if_travel_meals","sc.line24b","sc.line25","sc.line26_if_employees","sc.line27a","sc.line27b"],"op":"sum"}`
+- Expr: `{"of":["sc.line8","sc.line9","sc.line10","sc.line11","sc.line12","sc.line13","sc.line14_if_employees","sc.line15","sc.line16a","sc.interest_other","sc.line17","sc.line18","sc.line19_if_employees","sc.line20a","sc.line20b","sc.line21","sc.line22","sc.line23","sc.line24a_if_travel_meals","sc.line24b","sc.line25","sc.line26_if_employees","sc.line27a","sc.line27b"],"op":"sum"}`
 - Cite: [f1040sc] Schedule C (2025), line 28 (2025; created 2025-04-03; sha256 ddf401db)
 
 ## 29 — `sc.line29`
@@ -477,7 +477,7 @@
 
 - **Authored helper label:** Line 28 without the section 179 expense deduction
 - **Encoded (NonNegDollars):** Add line 8 (sc.line8), line 9 (sc.line9), line 10 (sc.line10), line 11, line 12 (sc.line12), helper "Employee benefit programs (other than on line 19), asked only of a business with employees (zero without)", line 15, line 16a, line 16b, line 17, line 18, helper "Pension and profit-sharing plans, asked only of a business with employees (zero without)", line 20a, line 20b, line 21, line 22, line 23, helper "Travel, asked only of a business with travel, meal or food expenses (zero without)", line 24b, line 25, helper "Wages (less employment credits), asked only of a business with employees (zero without)", line 27a, line 27b, and helper "Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)".
-- Expr: `{"of":["sc.line8","sc.line9","sc.line10","sc.line11","sc.line12","sc.line14_if_employees","sc.line15","sc.line16a","sc.line16b","sc.line17","sc.line18","sc.line19_if_employees","sc.line20a","sc.line20b","sc.line21","sc.line22","sc.line23","sc.line24a_if_travel_meals","sc.line24b","sc.line25","sc.line26_if_employees","sc.line27a","sc.line27b","sc.dep_other"],"op":"sum"}`
+- Expr: `{"of":["sc.line8","sc.line9","sc.line10","sc.line11","sc.line12","sc.line14_if_employees","sc.line15","sc.line16a","sc.interest_other","sc.line17","sc.line18","sc.line19_if_employees","sc.line20a","sc.line20b","sc.line21","sc.line22","sc.line23","sc.line24a_if_travel_meals","sc.line24b","sc.line25","sc.line26_if_employees","sc.line27a","sc.line27b","sc.dep_other"],"op":"sum"}`
 - Cite: [p946] pp. 17-19, Business Income Limit, Taxable income, "figure taxable income without regard to ... The section 179 deduction" (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `sc.line29_pre179`

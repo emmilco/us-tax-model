@@ -93,7 +93,7 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
     *Source:* [i1040sca] p. 7, State and Local Tax Deduction Worksheet
   - *Not covered:* Pub. 970 (student loan interest with Form 2555 or 4563, or excluded Puerto Rico income). Use Pub. 970 instead of the worksheet; it is outside this tool.
     *Source:* [i1040gi] p. 98, Schedule 1, line 21, Exception
-  - *Refused at:* `eic.step1_foreign`, `f2441.line4`, `f2441.line5`, `f2441.line18`, `f2441.line19`, `f8863.line3`, `f8863.line14`, `f8880.line8`, `f8962.ws1_3`, `s1a.line2a`, `s8812.line2a`, `s8812.line2b`, `s8812.line2c`, `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`, `sli.line1`
+  - *Refused at:* `eic.step1_foreign`, `f2441.line4`, `f2441.line5`, `f2441.line18`, `f2441.line19`, `f8863.line3`, `f8863.line14`, `f8880.line8`, `f8962.ws1_3`, `s1a.line2a`, `s8812.line2a`, `s8812.line2b`, `s8812.line2c`, `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.gift_carryover_amount`, `sa.casualty_loss`, `sa.other_itemized`, `sa.line12`, `sa.total_itemized`, `sli.line1`
   - *Share of returns (coverage estimate):* Foreign earned income exclusion (Form 2555), 0.3%
 - **`s8812.puerto_rico_if_child`**: Were you a bona fide resident of Puerto Rico?
   - *The data asks or tests:* Whether you were a bona fide resident of Puerto Rico, asked only with a qualifying child on line 4 (false otherwise, where line 16b and Credit Limit Worksheet B line 2 are zero and the Puerto Rico path changes no amount) (`choose`)
@@ -167,7 +167,7 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
   - *The data asks or tests:* A wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR), which this tool does not prepare (true when f8959.territory_w2 is answered Yes) (`test`)
   - *Not covered:* Form 8959 additional source forms. Form 8959 also counts the Medicare wages and Medicare tax withheld on a wage statement from an employer in Puerto Rico or another U.S. territory (such as Form 499R-2/W-2PR, boxes 22 and 23); this tool does not prepare Form 8959 with one.
     *Source:* [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3
-  - *Refused at:* `f8959.line1`, `f8959.line2`, `f8959.line3`, `f8959.line8`, `f8959.line14`, `f8959.line23`, `f8959.line19`
+  - *Refused at:* `f8959.line1`, `f8959.line2`, `f8959.line3`, `f8959.se_income`, `f8959.rrta_comp`, `f8959.line23`, `f8959.line19`
 - **`w2.box12_userra`**: Does a Form W-2 box 12 show a make-up contribution for an earlier year (a year after the code, such as "D 24")?
   - *The data asks or tests:* Does box 12 show an amount with a year after its code (make-up contributions for an earlier year under USERRA)? (`input`)
   - *Not covered:* Form W-2 box 12 make-up contributions for an earlier year (USERRA). Form 8880 line 2 counts contributions for 2025; box 12 amounts designated for an earlier year are outside this tool.
@@ -1361,12 +1361,12 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
   - *The data asks or tests:* A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other than gambling losses (`test`)
   - *Not covered:* Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
-  - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
+  - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.gift_carryover_amount`, `sa.casualty_loss`, `sa.other_itemized`, `sa.line12`, `sa.total_itemized`
 - **`sa.charity_limited_if_gifts`**: Are your charitable deductions limited by income, or carried over from an earlier year?
   - *The data asks or tests:* The 2025 charitable deductions are reduced by income limits (no when you and your spouse gave nothing to charity in 2025) (`choose`)
   - *Not covered:* Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
-  - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
+  - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.gift_carryover_amount`, `sa.casualty_loss`, `sa.other_itemized`, `sa.line12`, `sa.total_itemized`
 - **`sa.charity_over_if_itemizing`**: Do you itemize, with gifts to charity of more than 60% of your income, or noncash gifts of more than 30% of it?
   - *The data asks or tests:* Itemizing, and an income limit reduces the gifts to charity (no when taking the standard deduction, which the limits cannot change) (`test`)
   - *Not covered:* Schedule A charitable limitation (Pub. 526). Gifts to charity this large compared with your income are limited, and the deduction and the carryover are figured under Pub. 526, which this tool does not do.
@@ -1376,7 +1376,7 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
   - *The data asks or tests:* A charitable contribution is carried over from an earlier year (asked of every filer, whether or not they gave in 2025) (`copy`)
   - *Not covered:* Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
-  - *Refused at:* `sa.line13`
+  - *Refused at:* `sa.gift_carryover_amount`
 - **`gift.special`**: Does a noncash gift need an appraisal or special treatment (over $5,000, a vehicle, intellectual property, inventory and similar)?
   - *The data asks or tests:* Does this group need an appraisal or other special treatment: any of the following?
 
@@ -1439,7 +1439,7 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 108, Schedule 1-A, line 14b
   - *Not covered:* Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C). Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC are outside this tool.
     *Source:* [i1040gi] p. 108, Schedule 1-A, line 14b, "Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"; p. 106, "Fill out Schedule 1-A, Part III, only if"
-  - *Refused at:* `s1a.line5_calc`, `s1a.line13`, `s1a.line14b_calc`, `s1a.line21`
+  - *Refused at:* `s1a.line5_calc`, `s1a.tips_deduction`, `s1a.line14b_calc`, `s1a.ot_deduction`
 - **`s1a.f4137`**: Do you claim the deduction for qualified tips and have tips on Form 4137?
   - *The data asks or tests:* Someone on the return has tips on Form 4137 (`test`)
   - *Stops the return as:* The tips deduction with Form 4137 tips
@@ -2122,7 +2122,7 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *The data asks or tests:* On a joint return, medical-expense exceptions of both spouses above the medical expenses over 7.5% of AGI (`test`)
   - *Not covered:* Form 5329 line 2 (exception 05 of both spouses). The medical-expense exceptions of both spouses together exceed the medical expenses above 7.5% of your joint AGI; reduce them so that together they do not exceed it.
     *Source:* [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year."
-  - *Refused at:* `s2.line8`
+  - *Refused at:* `s2.tax_favored_accounts`
 
 #### Self-employment
 

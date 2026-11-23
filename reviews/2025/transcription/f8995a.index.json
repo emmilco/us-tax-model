@@ -31,7 +31,15 @@
    "record": "f3edf56d997c5708cc2913e320b70719df0c7a71aae66b92c3aacf4e72ce4b55",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; f8995a p. 2, line 40: \"Total qualified REIT dividends and PTP (loss) carryforward. Combine lines 28 and 29. If zero or greater, enter -0-\", and i8995a p. 7, Line 40: \"If the sum of lines 28 and 29 result in a loss (negative number), the loss must be carried forward to next year.\" Within scope line 28 is the nonnegative section 199A dividend amount and line 29 is zero (a prior-year REIT or PTP loss carryforward is screened by qbi.unsupported, which refuses qbi.eligible), so the candidate's line 29 minus line 28, floored at zero, is zero exactly where the project enters zero. Triage executable-triage-v1 (triage/f8995a.json): 1,512 of 1,583 comparisons agree. The 54 candidate-unknown records (e.g. classm.f8889.3, stage16.cleanup.refuse.f1040_line16) lack qbi.unsupported; the explained witness classm.f8889.3 shows the candidate's line 28 unknown on the same record, and line 28 agrees with the project on all 1,583 records, so the project's line 28 is equally unknown and no completed Part IV differs. The 17 candidate-refuses records (e.g. classm.dcprov.1, stage4.refuse.qbi, generated 31) answer qbi.unsupported yes; the project refuses the same returns on line 28 through its cited gate on qbi.eligible (f8995 lines 1-17; i8995 pp. 3-4). No printed amount differs; project stands.",
-   "subject_key": "4e9ca219a3f8ab5e64c775c8dfa56c1f996bf8ee3ff793bf1be46ecf149c673a"
+   "subject_key": "8f5ff6de391d4571f2b63f96747606e0e0671375c8243907d901895c4d812f49",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8995a.line40": "f8995a.reit_ptp_loss_carryforward"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "4e9ca219a3f8ab5e64c775c8dfa56c1f996bf8ee3ff793bf1be46ecf149c673a"
+   }
   },
   {
    "key": "28",
@@ -101,7 +109,7 @@
   "27": "b88d0dabc7110c46baa55440116dd6804b28dee222d439d0e7c6f829badcd5b2",
   "29": "556dd53726d33628e399ddeec41dbecdbc8d68486da7c70bd5537276c7c7611c",
   "38": "def6e10cf4eef2c555e78218f69b4eb8fc81912d6b7b3be7e9d39270535a035a",
-  "40": "681b3748c321a18d9c384159ff1a2dfa936fde94e8778b9f077b532ac255f94c",
+  "40": "9d2cdfd82b5ca3c86f6ab71398bf2a69181d8c7f75721636685be739c65310ab",
   "28": "1b14af1866c26de53393a11303241eeb70ae637905aabffe1da9eb402c62a32f",
   "30": "eac655c384732e031d9fc2305bb40f02f919b6e5a7762cdbdaa4e0419b99e742",
   "31": "987d2ec1b8714e7c2c7fc2efb281b128d8d78a3e903b971146def797716c92c1",

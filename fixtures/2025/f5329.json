@@ -39,7 +39,7 @@
           "kind": "money",
           "cents": 4200
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 4200
         }
@@ -85,7 +85,7 @@
           "kind": "money",
           "cents": 30000
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 30000
         },
@@ -137,7 +137,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         },
@@ -185,7 +185,7 @@
           "kind": "bool",
           "value": false
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 75802
         },
@@ -276,7 +276,7 @@
           "kind": "bool",
           "value": true
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 115000
         },
@@ -375,7 +375,7 @@
           "kind": "bool",
           "value": true
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 58000
         },
@@ -483,7 +483,7 @@
           "kind": "bool",
           "value": true
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 52000
         },
@@ -564,7 +564,7 @@
           "kind": "bool",
           "value": true
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 18000
         },
@@ -656,7 +656,7 @@
           "kind": "bool",
           "value": true
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 15250
         },
@@ -793,7 +793,7 @@
           "kind": "bool",
           "value": true
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 40000
         },
@@ -883,7 +883,7 @@
           "kind": "bool",
           "value": true
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         },
@@ -970,7 +970,7 @@
           "kind": "bool",
           "value": false
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 30000
         },
@@ -1080,7 +1080,7 @@
           "kind": "bool",
           "value": true
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 25460
         },
@@ -1165,7 +1165,7 @@
           "kind": "money",
           "cents": 20000
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 20000
         }
@@ -1230,7 +1230,7 @@
             "tax_year": 2025
           }
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "refusal",
           "gate": "person[taxpayer].x_two23",
           "form": "Form 5329 line 2, exception 23 on more than one distribution",
@@ -1299,7 +1299,7 @@
             "tax_year": 2025
           }
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "refusal",
           "gate": "person[taxpayer].x_limit_binds",
           "form": "Form 5329 line 4 with a SIMPLE IRA distribution and a limited exception over its limit",
@@ -1401,7 +1401,7 @@
             "tax_year": 2025
           }
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "refusal",
           "gate": "person[taxpayer].x_other",
           "form": "Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII",
@@ -1487,7 +1487,7 @@
             "tax_year": 2025
           }
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "refusal",
           "gate": "person[taxpayer].retirement[a].wrong_kind",
           "form": "Form 5329 line 2 exception for another kind of account",
@@ -1679,7 +1679,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         }
@@ -1800,7 +1800,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "refusal",
           "gate": "s2.e05_over",
           "form": "Form 5329 line 2 (exception 05 of both spouses)",
@@ -1881,7 +1881,7 @@
           "kind": "money",
           "cents": 20000
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 24200
         }
@@ -1963,7 +1963,7 @@
             "tax_year": 2025
           }
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].excess",
           "form": "Excess employer HSA contributions not included in Form W-2 box 1",
@@ -2018,7 +2018,7 @@
           "kind": "money",
           "cents": 55000
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 55000
         }

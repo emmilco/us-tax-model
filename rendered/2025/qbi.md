@@ -144,7 +144,7 @@
 
 - **Authored helper label:** Form 1040 lines 12e and 13b, the deductions taken before the QBI deduction
 - **Encoded (NonNegDollars):** Add sa helper "Deduction selected for Form 1040 line 12e" and f1040 line 13b.
-- Expr: `{"of":["sa.deduction","f1040.line13b"],"op":"sum"}`
+- Expr: `{"of":["sa.deduction","f1040.s1a_deductions"],"op":"sum"}`
 - Cite: [i8995-correction] Correction to 2025 Form 8995 instructions, Line 11, "Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b" (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; sha256 926735a0)
 
 ## (helper) — `qbi.taxable_before`

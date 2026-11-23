@@ -38,11 +38,11 @@ changes:
       page: 23
       quote: include this amount on Schedule 2 (Form 1040), line 6
     verified: draft
-    note: 'Part II is laid out again in Sections A to C. Ids are kept, so a line that moves is a set of printed: s2.line8
-      (5, C-SCHED-11), s2.line12 (6), s2.line17c (13c), s2.line18 (14). The new subtotal lines 15, 17d and 20 are added; line
+    note: 'Part II is laid out again in Sections A to C. Ids are kept, so a line that moves is a set of printed: s2.tax_favored_accounts
+      (5, C-SCHED-11), s2.niit (6), s2.hsa_distribution_tax (13c), s2.other_additional_total (14). The new subtotal lines 15, 17d and 20 are added; line
       16c and 19c are not figured, as 2025 line 7 and lines 17p and 17q were not. Line 21 becomes 15 + 20, which is 4 + 5
       + 6 + 11 + 14 + 17b + 18 in the slice. The cites of the screen questions follow the new line numbers; their i1040gi
-      quotes wait for the 2026 Instructions for Form 1040. s2.line17c keeps its cite here: its Form 8889 sentence (line 13c)
+      quotes wait for the 2026 Instructions for Form 1040. s2.hsa_distribution_tax keeps its cite here: its Form 8889 sentence (line 13c)
       is C-PEOP-19.'
     operations:
     - set:
@@ -96,39 +96,39 @@ changes:
         from: Schedule 2 (2025), lines 1y, 17h to 17m and 17z
         to: Schedule 2 (2026), lines 1y, 13h to 13m and 13z (draft)
     - set:
-        line: s2.line12
+        line: s2.niit
         field: printed
         from: '12'
         to: '6'
     - set:
-        line: s2.line12
+        line: s2.niit
         field: cite.locator
         from: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
         to: Schedule 2 (2026), line 6 (draft), "Net investment income tax. Attach Form 8960"; i8960 p. 23 (draft), Line 17,
           "include this amount on Schedule 2 (Form 1040), line 6"
     - set:
-        line: s2.line17c
+        line: s2.hsa_distribution_tax
         field: printed
         from: 17c
         to: 13c
     - set:
-        line: s2.line18
+        line: s2.other_additional_total
         field: printed
         from: '18'
         to: '14'
     - set:
-        line: s2.line18
+        line: s2.other_additional_total
         field: label
         from: Total additional taxes. Add lines 17a through 17z
         to: Total additional income taxes. Add lines 13a through 13z
     - set:
-        line: s2.line18
+        line: s2.other_additional_total
         field: cite.locator
         from: Schedule 2 (2025), line 18 (the other line 17 items are refused by s2.other)
         to: Schedule 2 (2026), line 14 (draft), "Total additional income taxes. Add lines 13a through 13z" (the other line
           13 items are refused by s2.other)
     - add_line:
-        after: s2.line18
+        after: s2.other_additional_total
         line:
           id: s2.line15
           printed: '15'
@@ -138,10 +138,10 @@ changes:
             op: sum
             of:
             - s2.line4
-            - s2.line8
-            - s2.line12
+            - s2.tax_favored_accounts
+            - s2.niit
             - s2.line11
-            - s2.line18
+            - s2.other_additional_total
           cite:
             doc: f1040s2
             locator: Schedule 2 (2026), line 15 (draft), "Add lines 4 through 11 and line 14"
@@ -178,18 +178,18 @@ changes:
     - set:
         line: s2.line21
         field: label
-        from: Add s2.line4, s2.line7, s2.line8, s2.line11, s2.line12, s2.line18
+        from: Add s2.line4, s2.ss_medicare_total, s2.tax_favored_accounts, s2.line11, s2.niit, s2.other_additional_total
         to: Add lines 15 and 20. These are your total additional taxes
     - set:
         line: s2.line21
         field: expr.of
         from:
         - s2.line4
-        - s2.line7
-        - s2.line8
+        - s2.ss_medicare_total
+        - s2.tax_favored_accounts
         - s2.line11
-        - s2.line12
-        - s2.line18
+        - s2.niit
+        - s2.other_additional_total
         to:
         - s2.line15
         - s2.line20
@@ -221,7 +221,7 @@ changes:
       quote: if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R
     verified: draft
     note: 'The Form 5329 taxes split: line 5 (was 8) takes the early-distribution tax (Form 5329 line 4, and Part II line
-      8, refused), with its "if not required" box; the new line 18 (id s2.excess_contrib, as s2.line18 is the kept id of line
+      8, refused), with its "if not required" box; the new line 18 (id s2.excess_contrib, as s2.other_additional_total is the kept id of line
       14) takes the excess-contribution taxes (line 49 in the slice). Each reads a per-person total the Form 5329 side of
       C-PEOP-03 is to add: person.x_tax_early and person.x_tax_excess (person.x_tax, today lines 4 + 49, is then no longer
       read by Schedule 2).'
@@ -241,17 +241,17 @@ changes:
         to: p. 2 (draft), Who Must File, "However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R
           and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
     - set:
-        line: s2.line8
+        line: s2.tax_favored_accounts
         field: printed
         from: '8'
         to: '5'
     - set:
-        line: s2.line8
+        line: s2.tax_favored_accounts
         field: expr.field
         from: person.x_tax
         to: person.x_tax_early
     - set:
-        line: s2.line8
+        line: s2.tax_favored_accounts
         field: cite.locator
         from: p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required.
           If not required, check here"
@@ -309,19 +309,19 @@ changes:
       quote: Additional Medicare Tax on self-employment income. Multiply line 17 by 0.9% (0.009). Enter here and on Schedule
         2 (Form 1040), line 11
     verified: draft
-    note: 'Form 8959 keeps its ids through the renumbering (changes/2026/f8959.yaml): line 18 (self-employment) is f8959.line13
-      and line 12 (wages and RRTA) is f8959.line18. Line 11 reads the first; the new line 17b the second.'
+    note: 'Form 8959 keeps its ids through the renumbering (changes/2026/f8959.yaml): line 18 (self-employment) is f8959.se_tax
+      and line 12 (wages and RRTA) is f8959.total_tax. Line 11 reads the first; the new line 17b the second.'
     operations:
     - set:
         line: s2.line11
         field: label
-        from: Amount from f8959.line18
+        from: Amount from f8959.total_tax
         to: Additional Medicare Tax on self-employment income. Attach Form 8959
     - set:
         line: s2.line11
         field: expr.from
-        from: f8959.line18
-        to: f8959.line13
+        from: f8959.total_tax
+        to: f8959.se_tax
     - set:
         line: s2.line11
         field: cite.locator
@@ -337,7 +337,7 @@ changes:
           label: Additional Medicare tax on Medicare wages and RRTA compensation. Attach Form 8959
           expr:
             op: copy
-            from: f8959.line18
+            from: f8959.total_tax
           cite:
             doc: f1040s2
             locator: Schedule 2 (2026), line 17b (draft), "Additional Medicare tax on Medicare wages and RRTA compensation.
@@ -452,17 +452,17 @@ changes:
         to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "Otherwise, include 50% of the excess of the amount
           on line 4 over $640,200"
     - set:
-        line: s2.amt_mfs_quarter
+        line: s2.amt_mfs_phaseout_part
         field: label
         from: 25% of line 4 over $900,350
         to: 50% of line 4 over $640,200
     - set:
-        line: s2.amt_mfs_quarter
+        line: s2.amt_mfs_phaseout_part
         field: expr.rate.param
         from: amt.rate_25
         to: amt.phaseout_rate
     - set:
-        line: s2.amt_mfs_quarter
+        line: s2.amt_mfs_phaseout_part
         field: cite.locator
         from: p. 9, Line 4—Alternative Minimum Taxable Income, "Otherwise, include 25% of the excess of the amount on line
           4 over $900,350"
@@ -546,17 +546,17 @@ changes:
         to: p. 10 (draft), Line 4—Alternative Minimum Taxable Income, "Otherwise, include 50% of the excess of the amount
           on line 4 over $640,200"
     - set:
-        line: s2.amt_h_mfs_quarter
+        line: s2.amt_h_mfs_phaseout_part
         field: label
         from: 25% of that excess
         to: 50% of that excess
     - set:
-        line: s2.amt_h_mfs_quarter
+        line: s2.amt_h_mfs_phaseout_part
         field: expr.rate.param
         from: amt.rate_25
         to: amt.phaseout_rate
     - set:
-        line: s2.amt_h_mfs_quarter
+        line: s2.amt_h_mfs_phaseout_part
         field: cite.locator
         from: p. 9, Line 4—Alternative Minimum Taxable Income, "Otherwise, include 25% of the excess of the amount on line
           4 over $900,350"

@@ -1676,7 +1676,7 @@ form:
           cite:
             doc: i1040sca
             locator: p. 7, State and Local Tax Deduction Worksheet
-    - id: sa.line13
+    - id: sa.gift_carryover_amount
       printed: "13"
       type: NonNegDollars
       label: Amount from sa.zero
@@ -1712,7 +1712,7 @@ form:
           cite:
             doc: i1040sca
             locator: p. 7, State and Local Tax Deduction Worksheet
-    - id: sa.line15
+    - id: sa.casualty_loss
       printed: "15"
       type: NonNegDollars
       label: Amount from sa.zero
@@ -1773,7 +1773,7 @@ form:
           1040), line 8b"; p525 p. 33, Gambling winnings, "If you itemize your deductions on Schedule A (Form 1040), you can
           deduct gambling losses you had during the year, but only up to the amount of your winnings"'
       ambiguity: amb.2025.gambling_losses
-    - id: sa.line16
+    - id: sa.other_itemized
       printed: "16"
       type: NonNegDollars
       label: "Other—from list in instructions. List type and amount:"
@@ -1997,32 +1997,32 @@ form:
           on the type of property you give and the type of organization you give it to"; p. 25, "Your noncash contributions
           of capital gain property to 50% limit organizations is limited to 30% of your AGI"; i1040sca p. 10, Limit on the
           amount you can deduct, "See Pub. 526 to figure the amount of your deduction"'
-    - id: sa.line14
+    - id: sa.gifts_deduction
       printed: "14"
       type: NonNegDollars
-      label: Add sa.line11, sa.line12, sa.line13
+      label: Add sa.line11, sa.line12, sa.gift_carryover_amount
       expr:
         op: sum
         of:
           - sa.line11_if_gifts
           - sa.line12
-          - sa.line13
+          - sa.gift_carryover_amount
       cite:
         doc: f1040sa
         locator: p. 1, Gifts to Charity, line 14, "Add lines 11 through 13"
-    - id: sa.line17
+    - id: sa.total_itemized
       printed: "17"
       type: NonNegDollars
-      label: Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
+      label: Add sa.line4, sa.line7, sa.line10, sa.gifts_deduction, sa.casualty_loss, sa.other_itemized
       expr:
         op: sum
         of:
           - sa.line4
           - sa.line7
           - sa.line10
-          - sa.line14
-          - sa.line15
-          - sa.line16
+          - sa.gifts_deduction
+          - sa.casualty_loss
+          - sa.other_itemized
       cite:
         doc: f1040sa
         locator: p. 1, Total Itemized Deductions, line 17, "Add the amounts in the far right column for lines 4
@@ -2378,7 +2378,7 @@ form:
               - const: true
           - op: test
             gt:
-              - sa.line17
+              - sa.total_itemized
               - sa.standard
       cite:
         doc: f1040sa
@@ -2398,7 +2398,7 @@ form:
               eq:
                 - sa.itemizes
                 - const: true
-            then: sa.line17
+            then: sa.total_itemized
           - guard:
               op: test
               eq:

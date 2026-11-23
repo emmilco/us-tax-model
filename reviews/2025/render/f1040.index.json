@@ -211,25 +211,61 @@
    "key": "13a",
    "record": "93ca6dcd744eddd937958c370e52a49a534ec1ff7aae5d15deccfae3fb639120",
    "status": "MATCH",
-   "subject_key": "e258352b596023db5e54802197df09cb01780ab8d6b70ddbd7aa52ea71c3d100"
+   "subject_key": "de8471700b3ac0bce1ad7a4d21347b54447c11d809381b451631a11460309468",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f1040.line13a": "f1040.qbi_deduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "e258352b596023db5e54802197df09cb01780ab8d6b70ddbd7aa52ea71c3d100"
+   }
   },
   {
    "key": "13b",
    "record": "93ca6dcd744eddd937958c370e52a49a534ec1ff7aae5d15deccfae3fb639120",
    "status": "MATCH",
-   "subject_key": "0f90650ca430b6e91289701897da2d2d5481f86c2e6516f5ebb818dbd36aca29"
+   "subject_key": "09e30c5da8d9932b54f9158eacce35d793fc9a817250612b49ad8daa7919ec4b",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f1040.line13b": "f1040.s1a_deductions",
+     "s1a.line38": "s1a.total_deductions"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "0f90650ca430b6e91289701897da2d2d5481f86c2e6516f5ebb818dbd36aca29"
+   }
   },
   {
    "key": "14",
    "record": "93ca6dcd744eddd937958c370e52a49a534ec1ff7aae5d15deccfae3fb639120",
    "status": "MATCH",
-   "subject_key": "2392b806b73434f2ac58a2a884a58daa60c209179d4548d3a5cbe09346bc357b"
+   "subject_key": "b3eed84bcec653ce0d568d867d68b10e4e3188ae04c1e5f415a9b81f84645106",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f1040.line13a": "f1040.qbi_deduction",
+     "f1040.line13b": "f1040.s1a_deductions",
+     "s1a.line38": "s1a.total_deductions"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "2392b806b73434f2ac58a2a884a58daa60c209179d4548d3a5cbe09346bc357b"
+   }
   },
   {
    "key": "15",
    "record": "93ca6dcd744eddd937958c370e52a49a534ec1ff7aae5d15deccfae3fb639120",
    "status": "MATCH",
-   "subject_key": "529dfbf02244cce5a0570f12789d45769cee7929b24ae5f5f209aaba235dfa0f"
+   "subject_key": "ad88871f78a75f7e3d82e17eabbb6565e86fed15d050ab0483d82f8f573526c1",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f1040.line13a": "f1040.qbi_deduction",
+     "f1040.line13b": "f1040.s1a_deductions"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "529dfbf02244cce5a0570f12789d45769cee7929b24ae5f5f209aaba235dfa0f"
+   }
   },
   {
    "key": "16",
@@ -440,10 +476,10 @@
   "11b": "7df116c5e90d3201485de113ebc2dab1b5231717df077133b325ece94ff93004",
   "12b": "6a583c52a7a4fd228c16a0381ec99669568d5b94dbee99eef75ac17540393f6b",
   "12e": "20edadb30cd18cd8f2c66f2f587fd42d514de57a5eeb181cadce20a35d5ebf02",
-  "13a": "dfe2b5904c4bf25e025191f62d204a2a0ea19e7b88c01e4ee78678c56b769883",
-  "13b": "aaffecdd8735a76d4cdbabda6a1050129779c26b30681ef982fd627ad92fa861",
-  "14": "ab0b86be179cfb44644fc9db1a56d7ba700c6ba14341ac25537a30c02f44faef",
-  "15": "cb08046dd4d0a337ee8620eecf5270a8412a96a89ad8462c6a762bc6c546ec54",
+  "13a": "913cf3b21abe94af712d5e080e6575a6aeadae1e158784c88822240f416ffd4c",
+  "13b": "8a3689081dbdb1f33082e6bc917aac5144430523c96c78c791aa71ba4fac3d29",
+  "14": "f72c8c94d62ebad80de80c4fc3fce0f6f798191fcda7a7f74ab48d7f44edbc1b",
+  "15": "0556cdec1b872beec7ad522dc4faa162546bce3de4c594420d037650d155cd94",
   "16": "d824b4ae65a9dd1a487f826852ae985d574323b2ea87ee48ca92d20a1db5d683",
   "17": "28ea233a6bb93db2d5371ed426827b429860b05eb3ef8ceb5ca08f871edfc37d",
   "18": "8eb51b0b9ea4c3d13d6bfb4d05fedc53d6cbc0d13c450f90c3314e0ee431bbea",

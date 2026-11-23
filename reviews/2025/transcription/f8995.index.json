@@ -43,14 +43,30 @@
    "record": "1422c10c247a2a54480e13c3a883e0e66025c389329afdb0c4f7cf5ca790cd36",
    "status": "DISAGREE",
    "ruling": "Ruling: equivalent; project retained. Both enter the combination of lines 2 and 3 when it is less than zero and zero otherwise ('Combine lines 2 and 3. If greater than zero, enter -0-', Form 8995 (2025) line 16). The second holds line 3 as the positive carryforward (qbi.carryforward) and subtracts it; the project holds line 3 signed (zero less qbi.carryforward) and adds it, so line 2 less the second's line 3 is the project's sum of lines 2 and 3; the second takes the smaller of that and zero, the project chooses on its sign.",
-   "subject_key": "8ccdb98b7519ea6b87fbc0d29bdfd297ef0df0d09b602f06c01a4cbde52d7f65"
+   "subject_key": "cdb79caa514fa3bca452c4934555b2d917c3a396eabbef409ae4b2235373d0ea",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8995.line16": "f8995.qbi_loss_carryforward"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "8ccdb98b7519ea6b87fbc0d29bdfd297ef0df0d09b602f06c01a4cbde52d7f65"
+   }
   },
   {
    "key": "17",
    "record": "1422c10c247a2a54480e13c3a883e0e66025c389329afdb0c4f7cf5ca790cd36",
    "status": "DISAGREE",
    "ruling": "Ruling: equivalent; project retained. The project enters zero (sales.zero); the second enters the smaller of line 6 less line 7 and zero. Line 7 is qbi.zero on both sides (a prior-year REIT or PTP loss carryforward is refused by qbi.unsupported) and line 6 is qbi.eligible, a NonNegDollars copy of qbi.dividends, so line 6 less line 7 is never below zero and the second's result is zero too. The label is now the printed text of line 17 ('Total qualified REIT dividends and PTP (loss) carryforward. Combine lines 6 and 7. If greater than zero, enter -0-').",
-   "subject_key": "374755f61576f2fbfaa9cc29155b4e892d6e64a4a84848ce8d97312161fc41b6"
+   "subject_key": "5e290a0f421746157e7a981890932a5ffd2c23a87e17542c93fbd830e739326b",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8995.line17": "f8995.reit_ptp_loss_carryforward"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "374755f61576f2fbfaa9cc29155b4e892d6e64a4a84848ce8d97312161fc41b6"
+   }
   },
   {
    "key": "6",
@@ -115,8 +131,8 @@
   "4": "4892f957e3df573ca85671dc63847a65aff059847452bcfeda16f840251ba94f",
   "5": "1f3a49a68b16288df176650e6dfdaf56039a4b551f4f2da2b4587ec9b884d710",
   "7": "df513a3cde127368148441b4b07679ef66c541c0946e5093b9760193e27dbb9f",
-  "16": "f958c639e186072641bccc70ea6aa2c9a6b71ff082972834366c16a7b85f0b89",
-  "17": "f4cbb8d159e0bbfa94e112a7d0eb91b36adc547bdc3dbc5f8bbca76ff003e4b6",
+  "16": "a6e0fe2c5fcdb8428a7e42a104d9020abdfa037c84f964bdec782c0c634f856b",
+  "17": "82fea84de7e2d6d7d3604e8cdb0c69230d07829ca1e71a60f34b4d2a50c2ace7",
   "6": "1acd25bcb401fc6185b2522f9d869a2f3071a71c5dfb81ea27b8bd341eac3560",
   "8": "9abc63ad074cfa9d51b49352e830a690e8337f1987c805bb4ac0609398f4f180",
   "9": "141b91b5b3040a485f40c73df2be366587f335b574e8c0bc5f8e229de58866e5",

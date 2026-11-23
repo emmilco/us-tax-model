@@ -3248,7 +3248,7 @@ params:
       note: 'the rate of the exemption phase-out (Exemption Worksheet line 5) and of the married-filing-separately add-back
         (i6251 p. 10, Line 4: "include 50% of the excess of the amount on line 4 over $640,200"); P.L. 119-21 section 70107(c)
         (plaw-119-21 p. 93, final) substitutes 50 percent for 25 percent for taxable years beginning after December 31, 2025;
-        read by s2.amt_mfs_quarter, s2.amt_ex_cut, s2.amt_h_mfs_quarter and s2.amt_h_ex_cut (changes/2026/s2.yaml, C-LAW-02,
+        read by s2.amt_mfs_phaseout_part, s2.amt_ex_cut, s2.amt_h_mfs_phaseout_part and s2.amt_h_ex_cut (changes/2026/s2.yaml, C-LAW-02,
         BUG-1031); Form 6251 line 37 keeps amt.rate_25'
     tcw.mfj.b0.upper:
       type: Dollars

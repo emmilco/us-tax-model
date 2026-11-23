@@ -54,11 +54,11 @@
           "kind": "money",
           "cents": 905500
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 905500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 600000
         },
@@ -394,11 +394,11 @@
           "kind": "money",
           "cents": 654600
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 654600
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 240000
         },
@@ -441,11 +441,11 @@
         "person[taxpayer].w2[emp_a].box5": 6000000,
         "person[taxpayer].w2[emp_a].box6": 87000,
         "f5695.carry": true,
-        "f5695.line12": 150000,
+        "f5695.carry_in": 150000,
         "s3.prior_other_forms": true
       },
       "expect": {
-        "f5695.line12": {
+        "f5695.carry_in": {
           "kind": "money",
           "cents": 150000
         },
@@ -465,11 +465,11 @@
           "kind": "money",
           "cents": 507500
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 507500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 150000
         },
@@ -836,15 +836,15 @@
           "kind": "money",
           "cents": 122500
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 122500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 122500
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 177500
         },
@@ -1314,15 +1314,15 @@
           "kind": "money",
           "cents": 387500
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 387500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 387500
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 152500
         },
@@ -2398,15 +2398,15 @@
           "kind": "money",
           "cents": 750000
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 327500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 327500
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 422500
         },
@@ -2491,15 +2491,15 @@
           "kind": "money",
           "cents": 150000
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 150000
         },
@@ -2660,15 +2660,15 @@
           "kind": "money",
           "cents": 90000
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 90000
         },
@@ -3995,15 +3995,15 @@
           "kind": "money",
           "cents": 252500
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 252500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 252500
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 47500
         },
@@ -4437,15 +4437,15 @@
           "kind": "money",
           "cents": 210000
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 210000
         }

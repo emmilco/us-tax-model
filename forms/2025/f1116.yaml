@@ -209,7 +209,7 @@ form:
                   - const: 0
               - op: test
                 gt:
-                  - s1a.line30
+                  - s1a.vli_deduction
                   - const: 0
               - op: test
                 all:
@@ -957,7 +957,7 @@ form:
         op: sum
         of:
           - f1116.line18_less14
-          - s1a.line37
+          - s1a.senior_deduction
       cite:
         doc: i1116
         locator: 'p. 23, Line 18, "Individuals: Enter on line 18 the sum of (i) Form 1040, 1040-SR, or 1040-NR, line 11b, minus Form 1040, 1040-SR, or 1040-NR, line 14; and (ii) Schedule 1-A (Form 1040), line 37."'

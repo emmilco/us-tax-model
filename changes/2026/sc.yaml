@@ -31,7 +31,7 @@ changes:
         property taxes on your vehicle on line 23'
     verified: draft
     note: 'The new printed line 16b is the sum over the business''s vehicles of scveh.loan_interest (changes/2026/scveh.yaml,
-      C-BUS-02); the line that was 16b keeps its id sc.line16b and is printed 16c. The business-use portion is asked, not
+      C-BUS-02); the line that was 16b keeps its id sc.interest_other and is printed 16c. The business-use portion is asked, not
       figured: the 2026 text says to allocate the interest between business and personal use without naming a method, and
       the 2025 line 16b asked the business part the same way. Line 23 now names the business-use part of a listed vehicle''s
       personal property tax, which the 2026 text routes there under either method.'
@@ -61,12 +61,12 @@ changes:
               (Form 1040)"; p. 7, Line 9, "Report the business-use portion of vehicle loan interest on line 16b, regardless
               of whether you use the business standard mileage rate or the actual costs of operating your vehicle"
     - set:
-        line: sc.line16b
+        line: sc.interest_other
         field: printed
         from: 16b
         to: 16c
     - set:
-        line: sc.line16b
+        line: sc.interest_other
         field: expr.source
         from: Other interest on business debt (including mortgage interest not reported on a Form 1098 to you); for a vehicle
           used for business and personal purposes, only the business part, and none of the interest you deduct on Schedule
@@ -79,7 +79,7 @@ changes:
           on a joint return) were liable and paid interest and the other person received the Form 1098, only your share; not
           mortgage interest on your home; zero if none
     - set:
-        line: sc.line16b
+        line: sc.interest_other
         field: cite.locator
         from: p. 8, Lines 16a and 16b, "If you paid interest in 2025 that also applies to future years, deduct only the part
           that applies to 2025" and "include your share of the interest on line 16b"; p. 14, Line 30, "You can’t deduct any
@@ -135,7 +135,7 @@ changes:
         - sc.line14_if_employees
         - sc.line15
         - sc.line16a
-        - sc.line16b
+        - sc.interest_other
         - sc.line17
         - sc.line18
         - sc.line19_if_employees
@@ -161,7 +161,7 @@ changes:
         - sc.line15
         - sc.line16a
         - sc.vehicle_interest
-        - sc.line16b
+        - sc.interest_other
         - sc.line17
         - sc.line18
         - sc.line19_if_employees
@@ -188,7 +188,7 @@ changes:
         - sc.line14_if_employees
         - sc.line15
         - sc.line16a
-        - sc.line16b
+        - sc.interest_other
         - sc.line17
         - sc.line18
         - sc.line19_if_employees
@@ -214,7 +214,7 @@ changes:
         - sc.line15
         - sc.line16a
         - sc.vehicle_interest
-        - sc.line16b
+        - sc.interest_other
         - sc.line17
         - sc.line18
         - sc.line19_if_employees
@@ -231,7 +231,7 @@ changes:
         - sc.line27b
         - sc.dep_other
     - set_question:
-        input: sc.line16b
+        input: sc.interest_other
         field: help
         from: Only the business part, and only interest that belongs to 2025. Include business mortgage interest with no Form
           1098 in your name (your share only). Leave out your home mortgage and car loan interest you deduct as personal.

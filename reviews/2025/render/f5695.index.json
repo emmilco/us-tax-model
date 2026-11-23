@@ -71,31 +71,79 @@
    "key": "12",
    "record": "88903da10e212b6890ccaf8ed4b1cd821e515616cb628fdd0869b90f3d6a1d9a",
    "status": "MATCH",
-   "subject_key": "b72021f47992d199c0fb5541af0ff9777847a366b715dd5e1125fd547c359ab7"
+   "subject_key": "130e0ea47e560841be375386abea27be7ade831c7379fd6aeef2e1b33ce7d376",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "b72021f47992d199c0fb5541af0ff9777847a366b715dd5e1125fd547c359ab7"
+   }
   },
   {
    "key": "13",
    "record": "88903da10e212b6890ccaf8ed4b1cd821e515616cb628fdd0869b90f3d6a1d9a",
    "status": "MATCH",
-   "subject_key": "b5f9e08fdbeace2d9163b24300a66c0ba3cc50988ae2ae09d21b14433e3d75e0"
+   "subject_key": "3d36049f87c95ddcb2e09a879fff415203e3bc3834428229e7feb1919fe48f12",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "b5f9e08fdbeace2d9163b24300a66c0ba3cc50988ae2ae09d21b14433e3d75e0"
+   }
   },
   {
    "key": "14",
    "record": "4c63b02880ae1993af49bc5389a0cd44a64b513688776825dc39c0806f6f6089",
    "status": "MATCH",
-   "subject_key": "073dd77fa85cb9ba0356acfab46958872a21ac16bb689555d6dd728915f4cdcc"
+   "subject_key": "838570ac7682235ba06db3c65f7287d68f8043f9d52f6d843cc29b4b29143df5",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "073dd77fa85cb9ba0356acfab46958872a21ac16bb689555d6dd728915f4cdcc"
+   }
   },
   {
    "key": "15",
    "record": "ef9063a56aaf4a0ae0e237fbe4777370bbc4464e92426b8d737ef2412907a761",
    "status": "MATCH",
-   "subject_key": "991a037e568a87198d5ca65396b5248875fb4b15662daf8bdfff8d8af17e8451"
+   "subject_key": "3394efcfb0865163d743e0aa601c8fdfd084b9359f244ff71e0093054b950bb1",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "991a037e568a87198d5ca65396b5248875fb4b15662daf8bdfff8d8af17e8451"
+   }
   },
   {
    "key": "16",
    "record": "ef9063a56aaf4a0ae0e237fbe4777370bbc4464e92426b8d737ef2412907a761",
    "status": "MATCH",
-   "subject_key": "422fb2ceec7a9ee694bf36659c8d50d258a1f144f61f619d838575cd64f1df04"
+   "subject_key": "3c4096d170f1748fea383b50fc2c674b80290e42028878d30bea7fea3f98667c",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "422fb2ceec7a9ee694bf36659c8d50d258a1f144f61f619d838575cd64f1df04"
+   }
   },
   {
    "key": "17a",
@@ -451,11 +499,11 @@
   "6b": "73fb84c1e19a9b8e405574c2623dfe748a015f47312b7cffa8ffd2e96edf2725",
   "7a": "bab15e18f950e89078f41b9bde5f0629ffbd18c53b3b3e4678c197ca0c6ac6ff",
   "11": "6b14a953bf2b8e72c7c061e32f3b730407e7ae65bcef1832f162e3c01132d56f",
-  "12": "ffd3f8f2ae98799b3ce5efedba272491d72b6c7cf5c206c86327fde537f1028b",
-  "13": "b2fff7a40ce6e6bb495fff48e66b76983f7b3b6def9baa4919f46cfa577cac40",
-  "14": "a21de4538110afaea5b7d122cd5933a102bcd26455e9a22a19a0362078751fe2",
-  "15": "ade78119badb536f739b19141dba44eca41d293f525f5a04dfb41e450fe8f51d",
-  "16": "8649618267b35641defd2e48d87c8f871ea3a2ddce88df3fffac7069feee3163",
+  "12": "751393d1ed3782a2445a8431b0b617fed3c5922f72c856cf17555cae4fd4037d",
+  "13": "838d35f748e9c32d1e24c5faa10372fa4f5e77439bb992f4b21917b50130efb6",
+  "14": "e4ce0cbc10a027c0054c24874c1678b866d9355eb3ca880d77962eb0034d9548",
+  "15": "2db9d22f4e455adee88ad486a246b73306649970ad5f1aa73b3218765bd2f7ca",
+  "16": "9a26cc2806c5e2ed0230af0d8f48c9f0ed4819174560c7be208ecc149ee01b30",
   "17a": "68d8223be5604680b6bbea2c4505413e640d82385c6959097649edaf8b00a81e",
   "17b": "6896294bf1c0f3e890dcef4a7a83e9c19cc4209d83346d31428812d265145eee",
   "17c": "339303155f252f8e33f9fdd9befee0da2e80c5adfb48bdf205addcd9b6f6e622",

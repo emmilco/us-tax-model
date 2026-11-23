@@ -634,7 +634,7 @@ form:
           cite:
             doc: i1040gi
             locator: 'p. 15, Qualifying Surviving Spouse; p501 p. 11, Kidnapped child, "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped."'
-    - id: f1040.line13a
+    - id: f1040.qbi_deduction
       printed: 13a
       label: Qualified business income deduction from Form 8995 or Form 8995-A
       type: NonNegDollars
@@ -644,13 +644,13 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 13a
-    - id: f1040.line13b
+    - id: f1040.s1a_deductions
       printed: 13b
       label: Additional deductions from Schedule 1-A, line 38
       type: NonNegDollars
       expr:
         op: copy
-        from: s1a.line38
+        from: s1a.total_deductions
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 13b; i1040gi p. 34, Line 13b, "enter on line 13b the amount, if any, from Schedule 1-A, line 38"
@@ -662,8 +662,8 @@ form:
         op: sum
         of:
           - f1040.line12e
-          - f1040.line13a
-          - f1040.line13b
+          - f1040.qbi_deduction
+          - f1040.s1a_deductions
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 14

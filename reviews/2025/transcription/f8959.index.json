@@ -29,13 +29,29 @@
    "key": "8",
    "record": "a3ea876fcb959de201f77545a085529a723597db06762ff8029df539111b2b91",
    "status": "AGREE",
-   "subject_key": "9e3d48917cdb5330181a1d524b758c850f35b4b48a37d59de375db562534d082"
+   "subject_key": "ed05dbeeedb492ba523dc30c85000add64f028ea9afa8875c383aaaee9057a8c",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line8": "f8959.se_income"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "9e3d48917cdb5330181a1d524b758c850f35b4b48a37d59de375db562534d082"
+   }
   },
   {
    "key": "14",
    "record": "a3ea876fcb959de201f77545a085529a723597db06762ff8029df539111b2b91",
    "status": "AGREE",
-   "subject_key": "b11779bbc9774ff2eca5f8876bec9961a0acb354e5180aa5643e4291919cd3f1"
+   "subject_key": "f8932e5df175b7f1cbf4e2e840312025a21701465536aded0b469cee110cf7e5",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line14": "f8959.rrta_comp"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "b11779bbc9774ff2eca5f8876bec9961a0acb354e5180aa5643e4291919cd3f1"
+   }
   },
   {
    "key": "23",
@@ -72,56 +88,138 @@
    "record": "d72670217a585139aa1c6ff5246e78bf0252f97c79cbc31fa6a97a74764f9b65",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. The project copies line5, whose expression is medicare.threshold; the reply reads that same status-keyed parameter directly. No tax-value difference.",
-   "subject_key": "65ee46fb0528bf668d977640b44c5cf8f10de7d97e7d14d71d02431968261a7c"
+   "subject_key": "e76824573324bb68ee2b777ef2e6a8204776b3f86036f067c9e493333f15598a",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line9": "f8959.se_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "65ee46fb0528bf668d977640b44c5cf8f10de7d97e7d14d71d02431968261a7c"
+   }
   },
   {
    "key": "10",
    "record": "d72670217a585139aa1c6ff5246e78bf0252f97c79cbc31fa6a97a74764f9b65",
    "status": "AGREE",
-   "subject_key": "15515645ee60cb71c2f32c6685935b772bc3b7317a0a84930fbe69d52278aa02"
+   "subject_key": "e6faabe6515dba253e009f7a41475a85baa80183bb91a088126a1c726f4fdc99",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line10": "f8959.se_wages"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15515645ee60cb71c2f32c6685935b772bc3b7317a0a84930fbe69d52278aa02"
+   }
   },
   {
    "key": "11",
    "record": "d72670217a585139aa1c6ff5246e78bf0252f97c79cbc31fa6a97a74764f9b65",
    "status": "AGREE",
-   "subject_key": "4c2fbd7c5856fc8eb69216a3ac2514698170bc9e3116014a94bcdce3c8fe64c2"
+   "subject_key": "cd9185e667b8c07403b3c3a5aa18bdb8907c181547da76bda0615a7acd5c1c1f",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line10": "f8959.se_wages",
+     "f8959.line11": "f8959.se_threshold_left",
+     "f8959.line9": "f8959.se_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "4c2fbd7c5856fc8eb69216a3ac2514698170bc9e3116014a94bcdce3c8fe64c2"
+   }
   },
   {
    "key": "12",
    "record": "d72670217a585139aa1c6ff5246e78bf0252f97c79cbc31fa6a97a74764f9b65",
    "status": "AGREE",
-   "subject_key": "9af1f6baf59f2d6f035fd3f97143c1fa04ed51fd6ad4085eccd978a88a018146"
+   "subject_key": "5dd0ca33b8dc7b32a7e48688b9c1218a9ca14a130863e223a38faea3ef92d690",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line11": "f8959.se_threshold_left",
+     "f8959.line12": "f8959.se_excess",
+     "f8959.line8": "f8959.se_income"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "9af1f6baf59f2d6f035fd3f97143c1fa04ed51fd6ad4085eccd978a88a018146"
+   }
   },
   {
    "key": "13",
    "record": "d72670217a585139aa1c6ff5246e78bf0252f97c79cbc31fa6a97a74764f9b65",
    "status": "AGREE",
-   "subject_key": "b6ff7801631371944067c59f9cc37fda1d726d00604b94278f1bd284b0edc059"
+   "subject_key": "dc5ec4aa75c34d3d20a992c13f47e08c001df9e528f031aeebd79b14de08f725",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line12": "f8959.se_excess",
+     "f8959.line13": "f8959.se_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "b6ff7801631371944067c59f9cc37fda1d726d00604b94278f1bd284b0edc059"
+   }
   },
   {
    "key": "15",
    "record": "d72670217a585139aa1c6ff5246e78bf0252f97c79cbc31fa6a97a74764f9b65",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. Copying line5 and reading medicare.threshold directly have the same published type and filing-status amounts. No tax-value difference.",
-   "subject_key": "ebe4dc43c0814ace66276b22a8c21c10d87960b29bbf58d35f5359c49fe8f1a6"
+   "subject_key": "87b2727edb44f41cea3ea333fb4075467b8d5404eab753dfa19009e90f379cf9",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line15": "f8959.rrta_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "ebe4dc43c0814ace66276b22a8c21c10d87960b29bbf58d35f5359c49fe8f1a6"
+   }
   },
   {
    "key": "16",
    "record": "d72670217a585139aa1c6ff5246e78bf0252f97c79cbc31fa6a97a74764f9b65",
    "status": "AGREE",
-   "subject_key": "45a060e08d6142db8aaea11fe4aafa7215b1ba5c80bdf92e93c4e1adb3fa6515"
+   "subject_key": "988850c89f0b06a03ac101ce4c2af5749a1d12e0ab81a4341ca94da9fb69b1de",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line14": "f8959.rrta_comp",
+     "f8959.line15": "f8959.rrta_threshold",
+     "f8959.line16": "f8959.rrta_excess"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "45a060e08d6142db8aaea11fe4aafa7215b1ba5c80bdf92e93c4e1adb3fa6515"
+   }
   },
   {
    "key": "17",
    "record": "d72670217a585139aa1c6ff5246e78bf0252f97c79cbc31fa6a97a74764f9b65",
    "status": "AGREE",
-   "subject_key": "6dd400acd479d11323243da0f9c26c0ee38a6aeba440c387e9f5399c1e8e46a0"
+   "subject_key": "52ba354300db461d926974a31e7067d9a1a164db28b73f2116d6fe8127b4971b",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line16": "f8959.rrta_excess",
+     "f8959.line17": "f8959.rrta_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "6dd400acd479d11323243da0f9c26c0ee38a6aeba440c387e9f5399c1e8e46a0"
+   }
   },
   {
    "key": "18",
    "record": "d72670217a585139aa1c6ff5246e78bf0252f97c79cbc31fa6a97a74764f9b65",
    "status": "AGREE",
-   "subject_key": "8dea4d1d2f51460376a187e91a251c463ea5eefbddc3063d6650b1be22ff2a35"
+   "subject_key": "f3d674f87250347e51e9a1d58c53c5f0523eeaf3eedd4c1dfff6c741a55a9fd5",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line13": "f8959.se_tax",
+     "f8959.line17": "f8959.rrta_tax",
+     "f8959.line18": "f8959.total_tax"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "8dea4d1d2f51460376a187e91a251c463ea5eefbddc3063d6650b1be22ff2a35"
+   }
   },
   {
    "key": "19",
@@ -158,22 +256,22 @@
   "1": "da1dcd8be9abf70f32e2577ed43018caa1add35a0c790b3337ffa4d776972272",
   "2": "b13200d035c7ec534d3973c63f428633a1bbadb647851c49c101145c9992fec9",
   "3": "9e094bdb113f7d41e2fee1cc4352330b0f534a05329deb7b7c6328f3fa96159a",
-  "8": "cf32f7cc0f855d4776e0d2d9691c8bf4a921ec421ce5a4c16f83f1e84e6ecacc",
-  "14": "44c43884eb85fc79f6dbc12241fc6ca7d5f1119a929d63d717decc2050cd92bb",
+  "8": "2cb463bcd1ad5126943e181ba834ecdee58ba5d860dc4e05980a03d6e6729dee",
+  "14": "2b1dd5d15aaf53cb7782b683c9e4709b551152624b649c7e41a68ec4fae78d8f",
   "23": "ab65e601e410125b267b7c313d44f6fd72b7840bb0eda4f28ef475e91bd1299a",
   "4": "ed22224c0115fc966fd47f915013c8fb51923dc023c9514dea6fc83a140ff592",
   "5": "c6b6d33ad87722d40c0d4bc9daf2b085d9648e05d3212428d91f2d3ae1da45f1",
   "6": "7853a8a6fd008460237e03204448a724dda408228d053ddaf73a521d9f71e34c",
   "7": "596967bfaa943e4c47a586280007a65e6bf72247a79c764ab122d0e37c50bc72",
-  "9": "a184099324d09e76f148dab5413958a8a76d642871623be36ae2281c452181a6",
-  "10": "8dd477b0b72a689674f7d9b0f029fc5ff853bb31bae1b2a2e1ba3f13b75bba0b",
-  "11": "54ace0876698f31c1cb5df55df47f397e80b381b17c0684c991311e05bffbd9d",
-  "12": "a20d365947586383c016813e541ca88f454304de1547024c7382f6e9eb2d42e8",
-  "13": "90f9c3046bff2273672bae91788a25038fa20e5a9cdaee8788503afcc7d18d4c",
-  "15": "53db87be0df5068e5b7a3d47d3990ce6cb9f432c52ae0a20502b534a4258be65",
-  "16": "612f4177caaecabdd8cdcc093a3cc1b2b3a19db5e4b7d24f7f0e6632f74950a2",
-  "17": "5b91f7f1aa469136e92380eb67bf7695551ed585fad45d92205c324a0d8bca91",
-  "18": "ba7ba1768da7820d3298349ec928153998485ab7f5ce6cfd3e9ef1af860039c6",
+  "9": "2e35977cee3fb120e3982d49c58840abd98156723e776a533423cd20bcb43ccc",
+  "10": "5502554f30ee8ace6406cf5e17d6aa59899b359e653ab5205dd46aa8e3a5e0c0",
+  "11": "2f15a6ebe9f43aff3d606538bece2fd46242ace63e464c3f978f668213f2d45e",
+  "12": "f4d598680274444a28e6b62a27f99936f1b6f6709dacc1ef5bec8c471a9b2dd7",
+  "13": "60b9ef25b01725981fe9451fa4872d806371f49de47bf3caa8a31ded5d1cba7c",
+  "15": "ca1d42aa85d905c43e4bb39b95d97adcc96aa912ad578694948bec63a7b359af",
+  "16": "a5eae28ff1c44b424e066a3a4bd0e9fcd6256db12d85abe8c1bde0c76a0f156f",
+  "17": "5fa8ca8802c39a38472f678d0783b5f1539d45bf23f6ed5549fd5c823ef2c948",
+  "18": "89bb92d8d703b967af83158e36863b511d3a783754724fba38782dd97f5b96b1",
   "19": "0d1e574e070806df9fe5fff8bb40770e9e8fc824712e6dfd2a888c694a6c8bdf",
   "20": "eea1b4b81078b4422bcdb701ff6cbbff7267953f04461ae5b346f7c5e5eaab32",
   "21": "6fc3c41c5004275484f2ae7a9d4cb624d7e96717c43bb7d37415c58fc3cd6d3c",

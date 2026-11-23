@@ -595,5 +595,18 @@
    "record": "a8238543f8d9ad18ad06a490b57784801bba2bd3d6bce74c892398babac49df4",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "3e89382697372e6bc9dc76afc3b028b87a973a1f4ca6022dbcf9b358bddf4913",
+  "was": "3d3a274e68ac39823a187c16e5dd50f7ae3acd742f8ec2e2a0c25fb2663d2d9f",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "s1a.line30": "s1a.vli_deduction",
+    "s1a.line37": "s1a.senior_deduction"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "3d3a274e68ac39823a187c16e5dd50f7ae3acd742f8ec2e2a0c25fb2663d2d9f"
+  }
+ }
 }

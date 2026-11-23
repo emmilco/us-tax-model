@@ -211,19 +211,45 @@
    "key": "13a",
    "record": "1581f67bbf0a24b9b36d5b40b62148e4cc91ab97a0996d0a903d35b7894c5be5",
    "status": "AGREE",
-   "subject_key": "5c48598e251d72119ab6cd83867085f4d9de16de4f3fe7474cfdf900c9cb92cc"
+   "subject_key": "a8608eec6c50a74924ee73ae37118c9c3187055ab516d3959748312acbed9685",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f1040.line13a": "f1040.qbi_deduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "5c48598e251d72119ab6cd83867085f4d9de16de4f3fe7474cfdf900c9cb92cc"
+   }
   },
   {
    "key": "13b",
    "record": "1581f67bbf0a24b9b36d5b40b62148e4cc91ab97a0996d0a903d35b7894c5be5",
    "status": "AGREE",
-   "subject_key": "faf8db1c216fda74aef237f789d1927006a8d21f2289f98e1d3d2f093e8ada0d"
+   "subject_key": "53363b391bc35344be8a09c1cb266b2b47dd9397a5a9b56ffcddaa68a379bafd",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f1040.line13b": "f1040.s1a_deductions",
+     "s1a.line38": "s1a.total_deductions"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "faf8db1c216fda74aef237f789d1927006a8d21f2289f98e1d3d2f093e8ada0d"
+   }
   },
   {
    "key": "14",
    "record": "1581f67bbf0a24b9b36d5b40b62148e4cc91ab97a0996d0a903d35b7894c5be5",
    "status": "AGREE",
-   "subject_key": "d4fdf24d8a8dea3581e9dc5b7e196fb67ae682ad85b1fbacc3f7b6dd66b412cd"
+   "subject_key": "a4b24f93ddbf1eaccaa723c5afe92a7b71cd44af470897667bbbb58a3ba21fdc",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f1040.line13a": "f1040.qbi_deduction",
+     "f1040.line13b": "f1040.s1a_deductions"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "d4fdf24d8a8dea3581e9dc5b7e196fb67ae682ad85b1fbacc3f7b6dd66b412cd"
+   }
   },
   {
    "key": "15",
@@ -427,9 +453,9 @@
   "11b": "980e586ccd43ed0b1ead654efdff7144a1b81e5872e19fd1f4f6e1bf95781112",
   "12b": "6127bc690b4087c10e95ff920733d13c3b8c9c7beee3e2bf55d0eb7d2bc9c72a",
   "12e": "a43d2563b1685a2e1407ee2964fa439e8b18b8990fb763f1454b199a9a6a4a0f",
-  "13a": "1ca2c02f6b1ae44a9fe194ebef88f9b5d81de340e765fb0184c4beb5f5e68f28",
-  "13b": "0d9926e84244027e7ad6305124cabe1353f17fffaaba10b10c0e104cedab91f9",
-  "14": "ee12548e01b68f2075b8332ff2bf76bf773510ce09b40e3da6d344bfa77f06fd",
+  "13a": "6fe0797c909eca9a907cf85e8f714bbb208b83a2890c4ec5e5a0b5d3b1969d39",
+  "13b": "1e62779ac546107c3f67ca8b8c8d9ec3b5290b62a6886997b356a4afd93ef46c",
+  "14": "fbe32608165ae6ed017f940a6ae841e7919badbf6570cf29dc8a080005c42812",
   "15": "07a5425f740529b6d99f73260b329a7ac454c041a26ecd99e0400af6080bd6cc",
   "16": "34b7715ac00f761c880b9271de3e166e6945882981c9755e7c879186e5f6eb6b",
   "17": "197fb0bb8c3ed1fcd417035ab7846c914a605bb956b3937c4e6b86ec87746a24",
@@ -494,7 +520,7 @@
   "12b": "e945b6c871f9d5c81ccbd80de03b3787beff0bdc18e28e94f2451469fac8f93e",
   "12e": "9b30f50bb00f289650037086cf10b86ff178c651f00c6b3b7082e7b0370bd0b0",
   "13a": "1dbc989cc867840c7d49cb1e7ff64db7ea0461e7f97bcb123ef7e677d2b887fa",
-  "13b": "3ffcfa80e1cd1613bb49ddeafeeb0dcf845d04073623ee2409662802e3bec924",
+  "13b": "3ca473bcc88b3851150bfcfd380bd81c2e62e78649ab5178a3eedb01851c21d8",
   "14": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "15": "563b1deb27909eebf77cc73aaff098465ccbe4843e533960971e72ccd6e93edb",
   "16": "72393a35744677e430686903eae3b7be50b01edc8aa1cda734634b750f5ef149",

@@ -770,7 +770,7 @@
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
-## 13 — `sa.line13`
+## 13 — `sa.gift_carryover_amount`
 
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
@@ -781,7 +781,7 @@
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
-## 15 — `sa.line15`
+## 15 — `sa.casualty_loss`
 
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
@@ -806,7 +806,7 @@
 - Expr: `{"of":["sa.gambling_losses","s1.line8b"],"op":"smaller_of"}`
 - Cite: [i1040sca] p. 11, Other Itemized Deductions, "but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b"; p525 p. 33, Gambling winnings, "If you itemize your deductions on Schedule A (Form 1040), you can deduct gambling losses you had during the year, but only up to the amount of your winnings" (2025; printed date 2025-12-08; sha256 b0999b12)
 
-## 16 — `sa.line16`
+## 16 — `sa.other_itemized`
 
 - **IRS:** Other—from list in instructions. List type and amount:
 - **Encoded (NonNegDollars):** Choose — [s1 helper "Any gambling winnings" = true → helper "Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b"] [s1 helper "Any gambling winnings" = false → helper "Year parameter sales.zero"]
@@ -898,21 +898,21 @@
 - Expr: `{"any":[{"gt":["sa.gift_sum","sa.gift_total_limit"],"op":"test"},{"gt":["sa.line12","sa.gift_property_limit"],"op":"test"}],"op":"test"}`
 - Cite: [p526] p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited to no more than 60% of your AGI. Your deduction may be further limited to 50%, 30%, or 20% of your AGI, depending on the type of property you give and the type of organization you give it to"; p. 25, "Your noncash contributions of capital gain property to 50% limit organizations is limited to 30% of your AGI"; i1040sca p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction" (2025 returns; printed date 2026-02-05; sha256 607011d9)
 
-## 14 — `sa.line14`
+## 14 — `sa.gifts_deduction`
 
-- **IRS:** Add sa.line11, sa.line12, sa.line13
+- **IRS:** Add sa.line11, sa.line12, sa.gift_carryover_amount
 - **Encoded (NonNegDollars):** Add line 11, line 12, and line 13.
-- Expr: `{"of":["sa.line11_if_gifts","sa.line12","sa.line13"],"op":"sum"}`
+- Expr: `{"of":["sa.line11_if_gifts","sa.line12","sa.gift_carryover_amount"],"op":"sum"}`
 - Cite: [f1040sa] p. 1, Gifts to Charity, line 14, "Add lines 11 through 13" (2025; created 2025-11-20; sha256 c14acf34)
 
-## 17 — `sa.line17`
+## 17 — `sa.total_itemized`
 
-- **IRS:** Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
+- **IRS:** Add sa.line4, sa.line7, sa.line10, sa.gifts_deduction, sa.casualty_loss, sa.other_itemized
 - **Encoded (NonNegDollars):** Add line 4, line 7, line 10, line 14, line 15, and line 16.
 - **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
-- Expr: `{"of":["sa.line4","sa.line7","sa.line10","sa.line14","sa.line15","sa.line16"],"op":"sum"}`
+- Expr: `{"of":["sa.line4","sa.line7","sa.line10","sa.gifts_deduction","sa.casualty_loss","sa.other_itemized"],"op":"sum"}`
 - Cite: [f1040sa] p. 1, Total Itemized Deductions, line 17, "Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.standardbase`
@@ -1064,7 +1064,7 @@
 
 - **Authored helper label:** Itemize if elected, required, or itemized total exceeds standard
 - **Encoded (Bool):** (helper "Elect to itemize even if the standard deduction is larger?" = true or helper "MFS with spouse itemizing" = true or line 17 > helper "Standard deduction, zero when MFS spouse itemizes")
-- Expr: `{"any":[{"eq":["sa.elect_itemize",{"const":true}],"op":"test"},{"eq":["sa.mfs_spouse_itemizes",{"const":true}],"op":"test"},{"gt":["sa.line17","sa.standard"],"op":"test"}],"op":"test"}`
+- Expr: `{"any":[{"eq":["sa.elect_itemize",{"const":true}],"op":"test"},{"eq":["sa.mfs_spouse_itemizes",{"const":true}],"op":"test"},{"gt":["sa.total_itemized","sa.standard"],"op":"test"}],"op":"test"}`
 - Cite: [f1040sa] p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are less than your standard deduction, check this box"; i1040gi p. 34, Line 12e Standard Deduction or Itemized Deductions, "In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions", "If you checked the box on line 12b, your standard deduction is zero" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.deduction`
@@ -1073,7 +1073,7 @@
 - **Encoded (NonNegDollars):** Choose — [helper "Itemize if elected, required, or itemized total exceeds standard" = true → line 17] [helper "Itemize if elected, required, or itemized total exceeds standard" = false → helper "Standard deduction, zero when MFS spouse itemizes"]
 - **Refusal:** when sa.mfs_joint_paid_if_itemizing is true, cannot complete Schedule A on a separate return, expenses paid jointly with the spouse (Pub. 504, Table 1). On a married filing separately return, itemized deductions paid from money held with your spouse, or state income tax on a joint state return, are divided between you under Pub. 504; that is outside this tool. Cite: [i1040sca] p. 1, "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions" (2025; printed date 2025-12-08; sha256 b0999b12)
 - **Refusal:** when sa.charity_over_if_itemizing is true, cannot complete Schedule A charitable limitation (Pub. 526). Gifts to charity this large compared with your income are limited, and the deduction and the carryover are figured under Pub. 526, which this tool does not do. Cite: [p526] p. 22, Limits on Deductions, "The amount you can deduct for charitable contributions is generally limited to no more than 60% of your AGI"; p. 25, "Your noncash contributions of capital gain property to 50% limit organizations is limited to 30% of your AGI" (2025 returns; printed date 2026-02-05; sha256 607011d9)
-- Expr: `{"alternatives":[{"guard":{"eq":["sa.itemizes",{"const":true}],"op":"test"},"then":"sa.line17"},{"guard":{"eq":["sa.itemizes",{"const":false}],"op":"test"},"then":"sa.standard"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.itemizes",{"const":true}],"op":"test"},"then":"sa.total_itemized"},{"guard":{"eq":["sa.itemizes",{"const":false}],"op":"test"},"then":"sa.standard"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.mfs_joint_paid`

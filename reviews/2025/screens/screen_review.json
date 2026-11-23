@@ -7839,7 +7839,7 @@
  },
  {
   "screen": "gate:f5695.carry_if_prior",
-  "subject_sha": "bc56945a902f88d39df1df02d50afd70ae64d3d8f65e77d341f8d979b536e96b",
+  "subject_sha": "037a430f4d0d8d51fe218f76ee7d216425fa72f5024e58b88e4da5b838861f4e",
   "samples": [
    {
     "verdict": "COVERS",
@@ -7914,7 +7914,15 @@
     ],
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
-  ]
+  ],
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f5695.line12": "f5695.carry_in"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "bc56945a902f88d39df1df02d50afd70ae64d3d8f65e77d341f8d979b536e96b"
+  }
  },
  {
   "screen": "gate:f5695.central_ac_if_any",
@@ -45171,7 +45179,7 @@
  },
  {
   "screen": "sa.charity_limited",
-  "subject_sha": "17416e401e0917e286615be1cc43479c301a2e7be533ac3e24ff20c1190d0008",
+  "subject_sha": "0c7b69e3ec29d53817c27b57364a0bd0a0938faa8b1ad29db7f0c714107241d5",
   "samples": [
    {
     "verdict": "NARROW",
@@ -45258,7 +45266,19 @@
     ],
     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
    }
-  ]
+  ],
+  "carried": {
+   "by": "rename",
+   "map": {
+    "sa.line13": "sa.gift_carryover_amount",
+    "sa.line14": "sa.gifts_deduction",
+    "sa.line15": "sa.casualty_loss",
+    "sa.line16": "sa.other_itemized",
+    "sa.line17": "sa.total_itemized"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "17416e401e0917e286615be1cc43479c301a2e7be533ac3e24ff20c1190d0008"
+  }
  },
  {
   "screen": "sa.dependent",
@@ -45330,7 +45350,7 @@
  },
  {
   "screen": "sa.excluded_income",
-  "subject_sha": "dcac125eff6f23e40e75e1aaeb2ced9b9824d1f051720c4adda107cbcaac29e6",
+  "subject_sha": "36c9658aa35d5376518715eee15d3ceb52b2b0a326d2ba0a707fad76174288df",
   "samples": [
    {
     "verdict": "NARROW",
@@ -45593,7 +45613,19 @@
     ],
     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
    }
-  ]
+  ],
+  "carried": {
+   "by": "rename",
+   "map": {
+    "sa.line13": "sa.gift_carryover_amount",
+    "sa.line14": "sa.gifts_deduction",
+    "sa.line15": "sa.casualty_loss",
+    "sa.line16": "sa.other_itemized",
+    "sa.line17": "sa.total_itemized"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "dcac125eff6f23e40e75e1aaeb2ced9b9824d1f051720c4adda107cbcaac29e6"
+  }
  },
  {
   "screen": "sa.mfs_joint_paid",

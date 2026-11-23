@@ -182,8 +182,8 @@ changes:
       quote: If you can’t use all of the credit because of the tax liability limit (that is, line 2 is less than line 1),
         you can carry the unused portion of the credit to 2027.
     verified: draft
-    note: 'Ids are kept through the renumbering: f5695.line12 is printed 1, f5695.line14 2 (C-CRED-04), f5695.line15 3 (read
-      by s3.line5a and s8812.clwb_15, lane O3b) and f5695.line16 4. Line 1 is the only source, so the 2025 line 13 (the sum
+    note: 'Ids are kept through the renumbering: f5695.carry_in is printed 1, f5695.rce_limit 2 (C-CRED-04), f5695.rce_credit 3 (read
+      by s3.line5a and s8812.clwb_15, lane O3b) and f5695.carry_out 4. Line 1 is the only source, so the 2025 line 13 (the sum
       of lines 6b, 11 and 12) is removed and lines 3 and 4 read line 1''s gate line. f5695.part1_any (read by s3.line5a) is
       kept, now true exactly when there is a carryforward. The i1040gi joint-return cite stays the 2025 edition until the
       2026 Form 1040 instructions are archived.'
@@ -277,24 +277,24 @@ changes:
           or to carry the unused portion of the residential clean energy credit to 2027"; "Caution: You may claim only a carryforward
           of any unused residential clean energy credit (which is shown on your prior-year Form 5695, line 16)"'
     - set:
-        line: f5695.line12
+        line: f5695.carry_in
         field: printed
         from: '12'
         to: '1'
     - set:
-        line: f5695.line12
+        line: f5695.carry_in
         field: label
         from: Credit carryforward from 2024. Enter the amount, if any, from your 2024 Form 5695, line 16
         to: Credit carryforward from 2025. Enter the amount, if any, from your 2025 Form 5695, line 16
     - set:
-        line: f5695.line12
+        line: f5695.carry_in
         field: expr.source
         from: The residential clean energy credit carryforward from 2024, the amount on line 16 of your (or, on a joint return,
           your spouse's) 2024 Form 5695, or the total of those amounts if there is more than one such form (zero if none)
         to: The residential clean energy credit carryforward from 2025, the amount on line 16 of your (or, on a joint return,
           your spouse's) 2025 Form 5695, or the total of those amounts if there is more than one such form (zero if none)
     - set:
-        line: f5695.line12
+        line: f5695.carry_in
         field: cite.locator
         from: Form 5695 (2025), line 12; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy
           credit carryforward from 2024"; i1040gi p. 13, Married Filing Jointly, "A married couple filing jointly report their
@@ -316,48 +316,48 @@ changes:
           Filing Jointly, "A married couple filing jointly report their combined income and deduct their combined allowable
           expenses on one return"
     - set:
-        line: f5695.line15
+        line: f5695.rce_credit
         field: printed
         from: '15'
         to: '3'
     - set:
-        line: f5695.line15
+        line: f5695.rce_credit
         field: label
         from: Residential clean energy credit. Enter the smaller of line 13 or line 14. Also include this amount on Schedule
           3 (Form 1040), line 5a
         to: Residential clean energy credit. Enter the smaller of line 1 or line 2. Also include this amount on Schedule 3
           (Form 1040), line 5a
     - set:
-        line: f5695.line15
+        line: f5695.rce_credit
         field: expr.of
         from:
         - f5695.line13
-        - f5695.line14
+        - f5695.rce_limit
         to:
         - f5695.line12_if_carry
-        - f5695.line14
+        - f5695.rce_limit
     - set:
-        line: f5695.line15
+        line: f5695.rce_credit
         field: cite.locator
         from: Form 5695 (2025), line 15
         to: Form 5695 (2026), line 3 (draft)
     - set:
-        line: f5695.line16
+        line: f5695.carry_out
         field: printed
         from: '16'
         to: '4'
     - set:
-        line: f5695.line16
+        line: f5695.carry_out
         field: label
         from: Credit carryforward to 2026. If line 15 is less than line 13, subtract line 15 from line 13
         to: Credit carryforward to 2027. If line 3 is less than line 1, subtract line 3 from line 1
     - set:
-        line: f5695.line16
+        line: f5695.carry_out
         field: expr.from
         from: f5695.line13
         to: f5695.line12_if_carry
     - set:
-        line: f5695.line16
+        line: f5695.carry_out
         field: cite.locator
         from: p. 5, Line 16, "If you can't use all of the credit because of the tax liability limit (that is, line 14 is less
           than line 13), you can carry the unused portion of the credit to 2026"
@@ -366,7 +366,7 @@ changes:
     - remove_line:
         line: f5695.line13
     - set_question:
-        input: f5695.line12
+        input: f5695.carry_in
         field: prompt
         from: What is the amount on line 16 of your (or, on a joint return, your spouse's) 2024 Form 5695? Add the forms if
           there is more than one.
@@ -488,12 +488,12 @@ changes:
         to: p. 2 (draft), Residential Clean Energy Credit Limit Worksheet—Line 2, line 3, "Subtract line 2 from line 1. Also
           enter this amount on Form 5695, line 2. If zero or less, enter -0- on Form 5695, lines 2 and 3"
     - set:
-        line: f5695.line14
+        line: f5695.rce_limit
         field: printed
         from: '14'
         to: '2'
     - set:
-        line: f5695.line14
+        line: f5695.rce_limit
         field: cite.locator
         from: p. 4, Line 14, "Complete the following worksheet to figure the amount to enter on line 14"
         to: p. 2 (draft), Line 2, "Complete the following worksheet to figure the amount to enter on line 2"

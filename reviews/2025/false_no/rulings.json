@@ -4142,7 +4142,15 @@
      "evidence": "The prompt says 'your (or, on a joint return, your spouse's) 2024 federal tax return'."
     }
    ],
-   "subject_sha": "bc56945a902f88d39df1df02d50afd70ae64d3d8f65e77d341f8d979b536e96b"
+   "subject_sha": "037a430f4d0d8d51fe218f76ee7d216425fa72f5024e58b88e4da5b838861f4e",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "bc56945a902f88d39df1df02d50afd70ae64d3d8f65e77d341f8d979b536e96b"
+   }
   },
   "unruled:gate:f5695.central_ac_if_any#1": {
    "reason": "Purpose, spouse, condo, year and business findings are covered by the opener, the help or other refusals; the second-home point belongs to the opener.",

@@ -31,7 +31,7 @@ changes:
     verified: draft
     note: 'Ids are kept through the renumbering: the self-employment part (ids line8 to line13) becomes lines 13 to 18, the
       RRTA part (ids line14 to line17) lines 8 to 11, and the total (id line18) line 12, now lines 7 + 11 only (ids line7
-      and line17). Schedule 2 line 11 reads f8959.line13 and the new line 17b f8959.line18 (changes/2026/s2.yaml).'
+      and line17). Schedule 2 line 11 reads f8959.se_tax and the new line 17b f8959.total_tax (changes/2026/s2.yaml).'
     operations:
     - set_form:
         field: note
@@ -43,118 +43,118 @@ changes:
           from the tax. Self-employment income (Part IV) is figured from Schedule SE. Railroad retirement (RRTA) compensation
           (Part II) and a wage statement from a U.S. territory are refused.
     - set:
-        line: f8959.line8
+        line: f8959.se_income
         field: printed
         from: '8'
         to: '13'
     - set:
-        line: f8959.line8
+        line: f8959.se_income
         field: cite.locator
         from: Form 8959 (2025), line 8 (on a joint return, the combined amounts of both spouses' Schedules SE, line 6); i8959
           p. 3, Line 8, "Enter your self-employment income from Schedule SE (Form 1040), Part I, line 6"
         to: Form 8959 (2026), line 13 (draft) (on a joint return, the combined amounts of both spouses' Schedules SE, line
           6); i8959 p. 5 (draft), Line 13, "Enter your self-employment income from Schedule SE (Form 1040), Part I, line 6"
     - set:
-        line: f8959.line14
+        line: f8959.rrta_comp
         field: printed
         from: '14'
         to: '8'
     - set:
-        line: f8959.line14
+        line: f8959.rrta_comp
         field: cite.locator
         from: Form 8959 (2025), lines 1–24; i8959 p. 4, Line 14, "Enter the total of your RRTA compensation and tips"
         to: Form 8959 (2026), lines 1–24 (draft); i8959 p. 5 (draft), Line 8, "Enter the total of your RRTA compensation and
           tips"
     - set:
-        line: f8959.line9
+        line: f8959.se_threshold
         field: printed
         from: '9'
         to: '14'
     - set:
-        line: f8959.line10
+        line: f8959.se_wages
         field: printed
         from: '10'
         to: '15'
     - set:
-        line: f8959.line11
+        line: f8959.se_threshold_left
         field: printed
         from: '11'
         to: '16'
     - set:
-        line: f8959.line11
+        line: f8959.se_threshold_left
         field: cite.locator
         from: p. 1, Part II, line 11, "Subtract line 10 from line 9. If zero or less, enter -0-"; i8959 pp. 1–3
         to: p. 2 (draft), Part IV, line 16, "Subtract line 15 from line 14. If zero or less, enter -0-"; i8959 pp. 1–3
     - set:
-        line: f8959.line12
+        line: f8959.se_excess
         field: printed
         from: '12'
         to: '17'
     - set:
-        line: f8959.line12
+        line: f8959.se_excess
         field: cite.locator
         from: p. 1, Part II, line 12, "Subtract line 11 from line 8. If zero or less, enter -0-"; i8959 pp. 1–3
         to: p. 2 (draft), Part IV, line 17, "Subtract line 16 from line 13. If zero or less, enter -0-"; i8959 pp. 1–3
     - set:
-        line: f8959.line13
+        line: f8959.se_tax
         field: printed
         from: '13'
         to: '18'
     - set:
-        line: f8959.line13
+        line: f8959.se_tax
         field: cite.locator
         from: p. 1, Part II, line 13, "Additional Medicare Tax on self-employment income. Multiply line 12 by 0.9% (0.009)";
           i8959 pp. 1–3
         to: p. 2 (draft), Part IV, line 18, "Additional Medicare Tax on self-employment income. Multiply line 17 by 0.9% (0.009).
           Enter here and on Schedule 2 (Form 1040), line 11"; i8959 pp. 1–3
     - set:
-        line: f8959.line15
+        line: f8959.rrta_threshold
         field: printed
         from: '15'
         to: '9'
     - set:
-        line: f8959.line16
+        line: f8959.rrta_excess
         field: printed
         from: '16'
         to: '10'
     - set:
-        line: f8959.line16
+        line: f8959.rrta_excess
         field: cite.locator
         from: p. 1, Part III, line 16, "Subtract line 15 from line 14. If zero or less, enter -0-"; i8959 pp. 1–3
         to: p. 2 (draft), Part II, line 10, "Subtract line 9 from line 8. If zero or less, enter -0-"; i8959 pp. 1–3
     - set:
-        line: f8959.line17
+        line: f8959.rrta_tax
         field: printed
         from: '17'
         to: '11'
     - set:
-        line: f8959.line17
+        line: f8959.rrta_tax
         field: cite.locator
         from: p. 1, Part III, line 17, "Multiply line 16 by 0.9% (0.009)"; i8959 pp. 1–3
         to: p. 2 (draft), Part II, line 11, "Additional Medicare Tax on RRTA compensation. Multiply line 10 by 0.9% (0.009)";
           i8959 pp. 1–3
     - set:
-        line: f8959.line18
+        line: f8959.total_tax
         field: printed
         from: '18'
         to: '12'
     - set:
-        line: f8959.line18
+        line: f8959.total_tax
         field: label
-        from: Add f8959.line7, f8959.line13, f8959.line17
-        to: Add f8959.line7, f8959.line17
+        from: Add f8959.line7, f8959.se_tax, f8959.rrta_tax
+        to: Add f8959.line7, f8959.rrta_tax
     - set:
-        line: f8959.line18
+        line: f8959.total_tax
         field: expr.of
         from:
         - f8959.line7
-        - f8959.line13
-        - f8959.line17
+        - f8959.se_tax
+        - f8959.rrta_tax
         to:
         - f8959.line7
-        - f8959.line17
+        - f8959.rrta_tax
     - set:
-        line: f8959.line18
+        line: f8959.total_tax
         field: cite.locator
         from: p. 1, Part IV, line 18, "Add lines 7, 13, and 17"; i8959 pp. 1–3
         to: p. 2 (draft), Part III, line 12, "Add lines 7 and 11. Also enter this amount on Schedule 2 (Form 1040), line 17b";

@@ -578,7 +578,7 @@ def add_form_features(r, inputs, facts, features, ages, wages, age):
         inputs.update({"f5695.part1_any": True, "f5695.business_use": False, "f5695.construction_later": False,
                        "f5695.line1": part1["solar_electric"], "f5695.line2": part1["solar_water"], "f5695.line3": 0,
                        "f5695.line4": 0, "f5695.line5a": part1["battery"] > 0, "f5695.battery_cost": part1["battery"],
-                       "f5695.line7a": False, "f5695.line12": 0, "f5695.joint_occupancy": False,
+                       "f5695.line7a": False, "f5695.carry_in": 0, "f5695.joint_occupancy": False,
                        "f5695.separate_homes": False, "f5695.condo": False})
         features.add("residential_clean_energy")
     part2 = {}
@@ -855,7 +855,7 @@ def redraft_answers(case):
     for k in ("business_use", "joint_occupancy", "separate_homes", "condo", "construction_later", "line5a", "line7a"):
         inputs.setdefault(f"f5695.{k}", False)
     inputs.setdefault("f5695.battery_cost", 0)
-    inputs.setdefault("f5695.line12", 0)
+    inputs.setdefault("f5695.carry_in", 0)
     # Every generated child has a social security number issued before the return's due date.
     for k in inputs.get("$dependent", []):
         inputs[f"dependent[{k}].edu_tin_issued"] = True

@@ -20,7 +20,7 @@ changes:
     note: 'Schedule 2 line 8 becomes two lines: line 5 takes Form 5329 line 4 (with the box for code 1 tax entered without
       the form) and new line 18 takes line 49. f5329.tax keeps line 4 only and f5329.tax_excess carries line 49; the per-person
       totals person.x_tax_early and person.x_tax_excess are the ones lane O1''s Schedule 2 lines 5 and 18 (s2.excess_contrib)
-      read. person.x_tax is read only by the 2025 s2.line8; it is removed once O1''s operations no longer read it (a remove_line
+      read. person.x_tax is read only by the 2025 s2.tax_favored_accounts; it is removed once O1''s operations no longer read it (a remove_line
       at the merge).'
     operations:
     - add_line:

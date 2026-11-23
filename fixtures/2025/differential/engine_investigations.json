@@ -37,7 +37,7 @@
  },
  {
   "engine": "Tax-Calculator",
-  "line": "sa.line17",
+  "line": "sa.total_itemized",
   "case": "se-00255",
   "cause": "Negative adjusted gross income (-$4,331.38) with no medical expenses: the project's Schedule A line 3 (7.5% of line 2) is -$324.85 and its line 4, line 1 ($0) less line 3, is $324.85, read literally from the form (\"Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-\"); Tax-Calculator floors AGI at zero for line 3 (calcfunctions.ItemDed: posagi = max(c00100, 0.); c17750 = medical_frt * posagi; c17000 = max(0., e17500 - c17750)) and deducts nothing. The instructions allow \"only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income\" (i1040sca, line 1), and no part of $0 of expenses is $324.85, so the engine's reading follows the instruction and the project's is a candidate defect referred to the owner. Investigated 2026-10-22 when IRA contributions entered the generated cases."
  },

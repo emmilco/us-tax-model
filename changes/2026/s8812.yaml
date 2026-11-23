@@ -77,7 +77,7 @@ changes:
       quote: Enter one-half of the Additional Medicare Tax, if any, on self-employment income (one-half of Form 8959, line
         18)
     verified: draft
-    note: s8812.amt_ws7 keeps reading f8959.line13, the line Form 8959's reordering (C-SCHED-13) prints as line 18 (ids survive
+    note: s8812.amt_ws7 keeps reading f8959.se_tax, the line Form 8959's reordering (C-SCHED-13) prints as line 18 (ids survive
       renumbering). The RRTA lines of the worksheet (Form 8959 line 11) are refused, not encoded.
     operations:
     - set:

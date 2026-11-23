@@ -613,7 +613,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "refusal",
           "gate": "sa.unsupported",
           "form": "Schedule A unsupported item",
@@ -678,7 +678,7 @@
             "snapshot": "c14acf3478f4c33f27ac6e8ecd9f94b6fb25b16745b341728bd27847d2ef56bb"
           }
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "refusal",
           "gate": "sa.unsupported",
           "form": "Schedule A unsupported item",
@@ -691,7 +691,7 @@
             "snapshot": "c14acf3478f4c33f27ac6e8ecd9f94b6fb25b16745b341728bd27847d2ef56bb"
           }
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "refusal",
           "gate": "sa.unsupported",
           "form": "Schedule A unsupported item",
@@ -704,7 +704,7 @@
             "snapshot": "c14acf3478f4c33f27ac6e8ecd9f94b6fb25b16745b341728bd27847d2ef56bb"
           }
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "refusal",
           "gate": "sa.unsupported",
           "form": "Schedule A unsupported item",
@@ -742,7 +742,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "refusal",
           "gate": "sa.charity_limited_if_gifts",
           "form": "Schedule A charitable limitation / carryover",
@@ -807,7 +807,7 @@
             "snapshot": "c14acf3478f4c33f27ac6e8ecd9f94b6fb25b16745b341728bd27847d2ef56bb"
           }
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "refusal",
           "gate": "sa.charity_limited_if_gifts",
           "form": "Schedule A charitable limitation / carryover",
@@ -820,7 +820,7 @@
             "snapshot": "c14acf3478f4c33f27ac6e8ecd9f94b6fb25b16745b341728bd27847d2ef56bb"
           }
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "refusal",
           "gate": "sa.charity_limited_if_gifts",
           "form": "Schedule A charitable limitation / carryover",
@@ -833,7 +833,7 @@
             "snapshot": "c14acf3478f4c33f27ac6e8ecd9f94b6fb25b16745b341728bd27847d2ef56bb"
           }
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "refusal",
           "gate": "sa.charity_limited_if_gifts",
           "form": "Schedule A charitable limitation / carryover",
@@ -895,7 +895,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "refusal",
           "gate": "sa.excluded_income",
           "form": "Schedule A SALT Worksheet / Forms 2555 and 4563",
@@ -960,7 +960,7 @@
             "snapshot": "b0999b12d9dc4b13868501a9c1879011c00d2fc035f13a1391251d355a6242c8"
           }
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "refusal",
           "gate": "sa.excluded_income",
           "form": "Schedule A SALT Worksheet / Forms 2555 and 4563",
@@ -973,7 +973,7 @@
             "snapshot": "b0999b12d9dc4b13868501a9c1879011c00d2fc035f13a1391251d355a6242c8"
           }
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "refusal",
           "gate": "sa.excluded_income",
           "form": "Schedule A SALT Worksheet / Forms 2555 and 4563",
@@ -986,7 +986,7 @@
             "snapshot": "b0999b12d9dc4b13868501a9c1879011c00d2fc035f13a1391251d355a6242c8"
           }
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "refusal",
           "gate": "sa.excluded_income",
           "form": "Schedule A SALT Worksheet / Forms 2555 and 4563",
@@ -1172,7 +1172,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "refusal",
           "gate": "sa.unsupported",
           "form": "Schedule A unsupported item",
@@ -1237,7 +1237,7 @@
             "snapshot": "c14acf3478f4c33f27ac6e8ecd9f94b6fb25b16745b341728bd27847d2ef56bb"
           }
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "refusal",
           "gate": "sa.unsupported",
           "form": "Schedule A unsupported item",
@@ -1250,7 +1250,7 @@
             "snapshot": "c14acf3478f4c33f27ac6e8ecd9f94b6fb25b16745b341728bd27847d2ef56bb"
           }
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "refusal",
           "gate": "sa.unsupported",
           "form": "Schedule A unsupported item",
@@ -1263,7 +1263,7 @@
             "snapshot": "c14acf3478f4c33f27ac6e8ecd9f94b6fb25b16745b341728bd27847d2ef56bb"
           }
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "refusal",
           "gate": "sa.unsupported",
           "form": "Schedule A unsupported item",
@@ -1351,11 +1351,11 @@
           "kind": "money",
           "cents": 20000
         },
-        "sa.line14": {
+        "sa.gifts_deduction": {
           "kind": "money",
           "cents": 520000
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 2770000
         },
@@ -1412,7 +1412,7 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 0
         }
@@ -1459,7 +1459,7 @@
           "kind": "money",
           "cents": 100000
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 100000
         }
@@ -1636,11 +1636,11 @@
           "kind": "money",
           "cents": 900000
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "money",
           "cents": 500000
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 1800000
         }
@@ -1723,7 +1723,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "refusal",
           "gate": "sa.charity_limited_if_gifts",
           "form": "Schedule A charitable limitation / carryover",
@@ -1761,7 +1761,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "refusal",
           "gate": "sa.excluded_income",
           "form": "Schedule A SALT Worksheet / Forms 2555 and 4563",
@@ -3011,7 +3011,7 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 1164286
         },
@@ -3044,7 +3044,7 @@
           "kind": "bool",
           "value": true
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 4000000
         },
@@ -3090,7 +3090,7 @@
           "kind": "bool",
           "value": true
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 3500000
         },

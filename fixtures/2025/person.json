@@ -230,7 +230,7 @@
           "kind": "money",
           "cents": 26782
         },
-        "f8959.line8": {
+        "f8959.se_income": {
           "kind": "money",
           "cents": 1847000
         }
@@ -526,7 +526,7 @@
           "kind": "money",
           "cents": 565183
         },
-        "f8959.line8": {
+        "f8959.se_income": {
           "kind": "money",
           "cents": 7388000
         }
@@ -1606,7 +1606,7 @@
         "f2441.care": null,
         "f5695.business_use": null,
         "f5695.line7a": null,
-        "f5695.line12": null,
+        "f5695.carry_in": null,
         "f8959.territory_w2": null,
         "s3.line10": null,
         "f5695.condo": null,

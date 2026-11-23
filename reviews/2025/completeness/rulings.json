@@ -399,13 +399,40 @@
    "class": "out of scope",
    "gate": "s2.other",
    "evidence": "i8959 p. 4, Line 19. Box 12 codes B and N are asked by s2.w2_marks ('Does any Form W-2 ... show an amount in box 8 (allocated tips), or code A, B, K, M, N or Z in box 12?'), part of s2.other. Evaluated: fixture stage4.base (f8959) with s2.w2_marks true gives s2.line21 and f1040.line24 refused at s2.other; without it they compute. So line 19 is never short of a code B or N amount on a completed return.",
-   "subject_sha": "0fcd29fb9fa1b9e2926c718a2fde6454d48761b16738caaefc72fa1830cb6f5f"
+   "subject_sha": "8804f73b186e8785f314fbe8c9de15a45d5b6ad8fc5f0eb0c41578b812b7d6fd",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line10": "f8959.se_wages",
+     "f8959.line11": "f8959.se_threshold_left",
+     "f8959.line12": "f8959.se_excess",
+     "f8959.line13": "f8959.se_tax",
+     "f8959.line14": "f8959.rrta_comp",
+     "f8959.line15": "f8959.rrta_threshold",
+     "f8959.line16": "f8959.rrta_excess",
+     "f8959.line17": "f8959.rrta_tax",
+     "f8959.line18": "f8959.total_tax",
+     "f8959.line8": "f8959.se_income",
+     "f8959.line9": "f8959.se_threshold"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "0fcd29fb9fa1b9e2926c718a2fde6454d48761b16738caaefc72fa1830cb6f5f"
+   }
   },
   "unruled:f8995#1.1": {
    "class": "covered",
    "evidence": "i8995 p. 3, quoted. qbi.dividends asks for 'Qualified section 199A dividends from Form 1099-DIV box 5. Leave out the part paid on shares you held for 45 days or less, and the part you are obliged to pay to someone else; enter only the part that qualifies', and its help repeats it; f8995.line6 takes that amount through qbi.eligible. Same as the earlier ruling, rechecked on the current line.",
-   "subject_sha": "e188218342edd5ccfcea2ce03eb18cf9045eedcc0c0767e93a76266babf3ed30",
-   "line": "qbi.dividends"
+   "subject_sha": "4d857b6fcf5d16dce4ba1aea8fab357045ba12370d04166675993edc482e0d92",
+   "line": "qbi.dividends",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8995.line16": "f8995.qbi_loss_carryforward",
+     "f8995.line17": "f8995.reit_ptp_loss_carryforward"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "e188218342edd5ccfcea2ce03eb18cf9045eedcc0c0767e93a76266babf3ed30"
+   }
   },
   "unruled:ftc#1.1": {
    "class": "out of scope",
@@ -1080,27 +1107,82 @@
   "unruled:f5695#1.1": {
    "class": "presentation",
    "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the address of the home above line 1 and the statement of additional addresses (i5695 p. 4) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   }
   },
   "unruled:f5695#1.2": {
    "class": "presentation",
    "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the main home address on line 17d (i5695 p. 5) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   }
   },
   "unruled:f5695#1.3": {
    "class": "presentation",
    "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the address of each home on line 21c (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   }
   },
   "unruled:f5695#1.4": {
    "class": "presentation",
    "evidence": "Line 25b (i5695 p. 6, 'Enter the code for the type(s) of enabled property') only labels which enabled item the panel work served; f5695.line25a already requires an enabled item installed in 2025, and the credit does not use the code.",
-   "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   }
   },
   "unruled:f5695#1.5": {
    "class": "presentation",
    "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for lines 19b and 19d and the line 19e statement (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   }
   },
   "unruled:f8853c#1.1": {
    "class": "covered",
@@ -1227,23 +1309,74 @@
   "unruled:s2#1.1": {
    "class": "out of scope",
    "evidence": "i6251 pp. 3-4: exempt-interest dividends from private activity bonds are \"reported to you in box 13 of Form 1099-DIV\"; box 13 is refused by div.amt, as ruled on the earlier subject.",
-   "subject_sha": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482",
+   "subject_sha": "9c91ba6adb2e931743b9e530906e0ce86655215eead0b28c68bb62bb090516f1",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "div.amt"
+   "gate": "div.amt",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line18": "f8959.total_tax",
+     "s2.amt_h_mfs_quarter": "s2.amt_h_mfs_phaseout_part",
+     "s2.amt_mfs_quarter": "s2.amt_mfs_phaseout_part",
+     "s2.line12": "s2.niit",
+     "s2.line17c": "s2.hsa_distribution_tax",
+     "s2.line18": "s2.other_additional_total",
+     "s2.line5": "s2.tip_ss_tax",
+     "s2.line6": "s2.wage_ss_tax",
+     "s2.line7": "s2.ss_medicare_total",
+     "s2.line8": "s2.tax_favored_accounts"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482"
+   }
   },
   "unruled:s2#1.2": {
    "class": "out of scope",
    "evidence": "i6251 pp. 3-8. Depletion is refused by sc.special and rental.depletion; a section 1202 exclusion by div.section1202 and the Form 8949 code (sales code other); long-term contracts by sc.method_other; research costs need no adjustment for an activity with material participation, and a Schedule C without it is refused (sc.passive); amortization and the business interest limit (Form 8990) by sc.special; other business adjustments by s2.amt_business.",
-   "subject_sha": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482",
+   "subject_sha": "9c91ba6adb2e931743b9e530906e0ce86655215eead0b28c68bb62bb090516f1",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "sc.method_other"
+   "gate": "sc.method_other",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line18": "f8959.total_tax",
+     "s2.amt_h_mfs_quarter": "s2.amt_h_mfs_phaseout_part",
+     "s2.amt_mfs_quarter": "s2.amt_mfs_phaseout_part",
+     "s2.line12": "s2.niit",
+     "s2.line17c": "s2.hsa_distribution_tax",
+     "s2.line18": "s2.other_additional_total",
+     "s2.line5": "s2.tip_ss_tax",
+     "s2.line6": "s2.wage_ss_tax",
+     "s2.line7": "s2.ss_medicare_total",
+     "s2.line8": "s2.tax_favored_accounts"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482"
+   }
   },
   "unruled:s2#1.3": {
    "class": "out of scope",
    "evidence": "i6251 p. 1, Who Must File 2 and 3: a general business credit is refused by s3.business_credit_any (Form 3800), and Forms 8834, 8911 and 8801 by the Schedule 3 screens and scope.ready_credits (\"Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912)\").",
-   "subject_sha": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482",
+   "subject_sha": "9c91ba6adb2e931743b9e530906e0ce86655215eead0b28c68bb62bb090516f1",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "scope.ready_credits"
+   "gate": "scope.ready_credits",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line18": "f8959.total_tax",
+     "s2.amt_h_mfs_quarter": "s2.amt_h_mfs_phaseout_part",
+     "s2.amt_mfs_quarter": "s2.amt_mfs_phaseout_part",
+     "s2.line12": "s2.niit",
+     "s2.line17c": "s2.hsa_distribution_tax",
+     "s2.line18": "s2.other_additional_total",
+     "s2.line5": "s2.tip_ss_tax",
+     "s2.line6": "s2.wage_ss_tax",
+     "s2.line7": "s2.ss_medicare_total",
+     "s2.line8": "s2.tax_favored_accounts"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482"
+   }
   },
   "unruled:refund#1.1": {
    "class": "covered",
@@ -1333,14 +1466,42 @@
   "unruled:f5695#1.6": {
    "class": "presentation",
    "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for lines 20a(i)-(iv) and the line 20b statement (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   }
   },
   "unruled:s2#1.4": {
    "class": "out of scope",
    "evidence": "i1040sse p. 2; i1040gi p. 112. person.se_screen lists \"self-employment income exempt under an international social security agreement\" and is refused through person.se_screened; notary public fees are refused by sc.statutory through sc.line1.",
-   "subject_sha": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482",
+   "subject_sha": "9c91ba6adb2e931743b9e530906e0ce86655215eead0b28c68bb62bb090516f1",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "gate": "person.se_screened"
+   "gate": "person.se_screened",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8959.line18": "f8959.total_tax",
+     "s2.amt_h_mfs_quarter": "s2.amt_h_mfs_phaseout_part",
+     "s2.amt_mfs_quarter": "s2.amt_mfs_phaseout_part",
+     "s2.line12": "s2.niit",
+     "s2.line17c": "s2.hsa_distribution_tax",
+     "s2.line18": "s2.other_additional_total",
+     "s2.line5": "s2.tip_ss_tax",
+     "s2.line6": "s2.wage_ss_tax",
+     "s2.line7": "s2.ss_medicare_total",
+     "s2.line8": "s2.tax_favored_accounts"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482"
+   }
   },
   "unruled:asset#1.3": {
    "class": "wrong",
@@ -1375,22 +1536,66 @@
   "unruled:f5695#1.7": {
    "class": "presentation",
    "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for line 22a and the line 22b statement (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   }
   },
   "unruled:f5695#1.8": {
    "class": "presentation",
    "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for line 23a and the line 23b statement (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   }
   },
   "unruled:f5695#1.9": {
    "class": "presentation",
    "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for line 24a and the line 24b statement (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   }
   },
   "unruled:f5695#1.10": {
    "class": "presentation",
    "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for lines 29a, 29c and 29e and their statements (i5695 p. 7) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f5695.line12": "f5695.carry_in",
+     "f5695.line14": "f5695.rce_limit",
+     "f5695.line15": "f5695.rce_credit",
+     "f5695.line16": "f5695.carry_out"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+   }
   },
   "unruled:f1116#1.1": {
    "class": "out of scope",
@@ -1420,7 +1625,15 @@
    "class": "covered",
    "line": "qbi.net_capital_gain",
    "evidence": "i8995a p. 7, Line 34, 'your qualified dividends on line 3a, plus your net capital gain'. f8995a.line34 copies qbi.net_capital_gain, the sum of f1040.line3a_if_ordinary and sd.net_gain (the net capital gain floored at zero; its citation quotes 'the smaller of Schedule D (Form 1040), line 15 or 16, unless line 15 or 16 is zero or less'); the citation on line 34 names the form, not the instruction, which is presentation only.",
-   "subject_sha": "542f24be3cdd7abad509787cf70183209c310f3de4a6dce1f07b065c2a46d069"
+   "subject_sha": "fee327e5453b59615bab350c582b25fe1beb9d932e45070e27b2b089dd48ed1f",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8995a.line40": "f8995a.reit_ptp_loss_carryforward"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "542f24be3cdd7abad509787cf70183209c310f3de4a6dce1f07b065c2a46d069"
+   }
   },
   "unruled:qbi#1.1": {
    "class": "wrong",

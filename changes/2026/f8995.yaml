@@ -34,8 +34,8 @@ changes:
       and 16: the same amount as the i8995 Line 17 text ("If the smaller of line 10 or 14 is less than $400, enter $400 if
       ..."), which reconciles the instructions'' heading with the form. The active QBI is line 2: every Schedule C business
       on a completed return answered Yes to line G (material participation, or the oil and gas working-interest exception,
-      whose depletion the Schedule C screen refuses). Line 20 (the ESBT box) is a trust''s and is not encoded. The ids f8995.line16
-      and f8995.line17 keep the carryforwards, now printed 18 and 19.'
+      whose depletion the Schedule C screen refuses). Line 20 (the ESBT box) is a trust''s and is not encoded. The ids f8995.qbi_loss_carryforward
+      and f8995.reit_ptp_loss_carryforward keep the carryforwards, now printed 18 and 19.'
     operations:
     - set:
         line: f8995.line15
@@ -126,22 +126,22 @@ changes:
               p. 91, SEC. 70105, section 199A(i)(1), "the deduction allowed under subsection (a) for the taxable year shall
               be equal to the greater of"
     - set:
-        line: f8995.line16
+        line: f8995.qbi_loss_carryforward
         field: printed
         from: '16'
         to: '18'
     - set:
-        line: f8995.line16
+        line: f8995.qbi_loss_carryforward
         field: cite.locator
         from: Form 8995 (2025), line 16
         to: Form 8995 (2026), line 18
     - set:
-        line: f8995.line17
+        line: f8995.reit_ptp_loss_carryforward
         field: printed
         from: '17'
         to: '19'
     - set:
-        line: f8995.line17
+        line: f8995.reit_ptp_loss_carryforward
         field: cite.locator
         from: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
         to: Form 8995 (2026), line 19; i8995 p. 6, Line 19, "This amount must be carried forward to next year"

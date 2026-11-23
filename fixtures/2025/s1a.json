@@ -36,23 +36,23 @@
           "kind": "money",
           "cents": 0
         },
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "money",
           "cents": 800000
         },
-        "s1a.line7": {
+        "s1a.tips_capped": {
           "kind": "money",
           "cents": 800000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 800000
         },
-        "s1a.line38": {
+        "s1a.total_deductions": {
           "kind": "money",
           "cents": 800000
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 800000
         },
@@ -96,19 +96,19 @@
           "kind": "money",
           "cents": 0
         },
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "money",
           "cents": 1350000
         },
-        "s1a.line7": {
+        "s1a.tips_capped": {
           "kind": "money",
           "cents": 1350000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 1350000
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 1350000
         }
@@ -137,15 +137,15 @@
         "person[taxpayer].tipjob[emp0].tips": 3000000
       },
       "expect": {
-        "s1a.line6": {
+        "s1a.tips_total": {
           "kind": "money",
           "cents": 3000000
         },
-        "s1a.line7": {
+        "s1a.tips_capped": {
           "kind": "money",
           "cents": 2500000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 2500000
         }
@@ -174,15 +174,15 @@
         "person[taxpayer].tipjob[emp0].tips": 2000000
       },
       "expect": {
-        "s1a.line10": {
+        "s1a.tips_over": {
           "kind": "money",
           "cents": 1350000
         },
-        "s1a.line12": {
+        "s1a.tips_reduction": {
           "kind": "money",
           "cents": 130000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 1870000
         }
@@ -211,15 +211,15 @@
         "person[taxpayer].tipjob[emp0].tips": 200000
       },
       "expect": {
-        "s1a.line12": {
+        "s1a.tips_reduction": {
           "kind": "money",
           "cents": 500000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line38": {
+        "s1a.total_deductions": {
           "kind": "money",
           "cents": 0
         }
@@ -248,15 +248,15 @@
         "person[taxpayer].tipjob[emp0].tips": 500000
       },
       "expect": {
-        "s1a.line10": {
+        "s1a.tips_over": {
           "kind": "money",
           "cents": 99999
         },
-        "s1a.line12": {
+        "s1a.tips_reduction": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 500000
         }
@@ -285,15 +285,15 @@
         "person[taxpayer].tipjob[emp0].tips": 500000
       },
       "expect": {
-        "s1a.line10": {
+        "s1a.tips_over": {
           "kind": "money",
           "cents": 100000
         },
-        "s1a.line12": {
+        "s1a.tips_reduction": {
           "kind": "money",
           "cents": 10000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 490000
         }
@@ -318,15 +318,15 @@
         "s1a.tips": true
       },
       "expect": {
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line38": {
+        "s1a.total_deductions": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         }
@@ -357,7 +357,7 @@
         "person[taxpayer].tipjob[emp0].other_work": true
       },
       "expect": {
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "refusal",
           "gate": "person[taxpayer].tipjob[emp0].mixed",
           "form": "Qualified tips from an employer where some tips were not qualified tips",
@@ -396,23 +396,23 @@
         "person[taxpayer].otjob[ot0].statement": 600000
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line14c": {
+        "s1a.ot_total": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line15": {
+        "s1a.ot_capped": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 600000
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 600000
         }
@@ -442,11 +442,11 @@
         "person[taxpayer].otjob[ot0].statement": 1500000
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 500000
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 500000
         }
@@ -476,11 +476,11 @@
         "person[taxpayer].otjob[ot0].statement": 1000000
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 500000
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 500000
         }
@@ -510,11 +510,11 @@
         "person[taxpayer].otjob[ot0].statement": 2000000
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 500000
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 500000
         }
@@ -544,11 +544,11 @@
         "person[taxpayer].otjob[ot0].statement": 100000
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 33333
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 33333
         }
@@ -578,11 +578,11 @@
         "person[taxpayer].otjob[ot0].statement": 100001
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 33334
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 33334
         }
@@ -616,15 +616,15 @@
         "person[taxpayer].otjob[ot1].statement": 1200000
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 1300000
         },
-        "s1a.line15": {
+        "s1a.ot_capped": {
           "kind": "money",
           "cents": 1250000
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 1250000
         }
@@ -654,15 +654,15 @@
         "person[taxpayer].otjob[ot0].statement": 1000000
       },
       "expect": {
-        "s1a.line18": {
+        "s1a.ot_over": {
           "kind": "money",
           "cents": 525000
         },
-        "s1a.line20": {
+        "s1a.ot_reduction": {
           "kind": "money",
           "cents": 50000
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 950000
         }
@@ -690,11 +690,11 @@
         "person[taxpayer].otjob[ot0].statement": null
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 0
         }
@@ -725,7 +725,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "refusal",
           "gate": "person[taxpayer].otjob[ot0].refused",
           "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
@@ -765,7 +765,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "refusal",
           "gate": "person[taxpayer].otjob[ot0].refused",
           "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
@@ -805,19 +805,19 @@
         "carloan[VIN0].col_ii_input": null
       },
       "expect": {
-        "s1a.line23": {
+        "s1a.vli_total": {
           "kind": "money",
           "cents": 320000
         },
-        "s1a.line24": {
+        "s1a.vli_capped": {
           "kind": "money",
           "cents": 320000
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 320000
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 320000
         }
@@ -847,15 +847,15 @@
         "carloan[VIN0].interest": 500000
       },
       "expect": {
-        "s1a.line27": {
+        "s1a.vli_over": {
           "kind": "money",
           "cents": 450000
         },
-        "s1a.line29": {
+        "s1a.vli_reduction": {
           "kind": "money",
           "cents": 100000
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 400000
         }
@@ -891,15 +891,15 @@
         "carloan[VIN0].interest": 500000
       },
       "expect": {
-        "s1a.line27": {
+        "s1a.vli_over": {
           "kind": "money",
           "cents": 1
         },
-        "s1a.line29": {
+        "s1a.vli_reduction": {
           "kind": "money",
           "cents": 20000
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 480000
         }
@@ -933,15 +933,15 @@
         "carloan[VIN1].interest": 600000
       },
       "expect": {
-        "s1a.line23": {
+        "s1a.vli_total": {
           "kind": "money",
           "cents": 1300000
         },
-        "s1a.line24": {
+        "s1a.vli_capped": {
           "kind": "money",
           "cents": 1000000
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 1000000
         }
@@ -970,11 +970,11 @@
         "carloan[VIN0].mixed": null
       },
       "expect": {
-        "s1a.line23": {
+        "s1a.vli_total": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 0
         }
@@ -1008,11 +1008,11 @@
         "carloan[VIN0].down": 400000
       },
       "expect": {
-        "s1a.line23": {
+        "s1a.vli_total": {
           "kind": "money",
           "cents": 200000
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 200000
         }
@@ -1048,11 +1048,11 @@
         "carloan[VIN0].mixed": null
       },
       "expect": {
-        "s1a.line23": {
+        "s1a.vli_total": {
           "kind": "money",
           "cents": 150000
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 150000
         }
@@ -1086,7 +1086,7 @@
         "carloan[VIN0].financed": 2000000
       },
       "expect": {
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 120000
         }
@@ -1117,7 +1117,7 @@
         "carloan[VIN0].interest": 250000
       },
       "expect": {
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 250000
         }
@@ -1150,7 +1150,7 @@
         "carloan[VIN0].nonqualifying": 1000000
       },
       "expect": {
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 82305
         }
@@ -1184,7 +1184,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "refusal",
           "gate": "carloan[VIN0].refi_nested",
           "form": "Refinancing of a loan that was itself only partly a qualifying vehicle loan",
@@ -1217,19 +1217,19 @@
         "person[taxpayer].w2[emp_a].box6": 72500
       },
       "expect": {
-        "s1a.line35": {
+        "s1a.senior_phased": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line38": {
+        "s1a.total_deductions": {
           "kind": "money",
           "cents": 600000
         },
@@ -1261,19 +1261,19 @@
         "person[taxpayer].w2[emp_a].box6": 130500
       },
       "expect": {
-        "s1a.line33": {
+        "s1a.senior_over": {
           "kind": "money",
           "cents": 1500000
         },
-        "s1a.line34": {
+        "s1a.senior_reduction": {
           "kind": "money",
           "cents": 90000
         },
-        "s1a.line35": {
+        "s1a.senior_phased": {
           "kind": "money",
           "cents": 510000
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 510000
         }
@@ -1297,15 +1297,15 @@
         "person[taxpayer].w2[emp_a].box6": 253750
       },
       "expect": {
-        "s1a.line34": {
+        "s1a.senior_reduction": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line35": {
+        "s1a.senior_phased": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 0
         }
@@ -1329,19 +1329,19 @@
         "person[taxpayer].w2[emp_a].box6": 108750
       },
       "expect": {
-        "s1a.line33": {
+        "s1a.senior_over": {
           "kind": "money",
           "cents": 10
         },
-        "s1a.line34": {
+        "s1a.senior_reduction": {
           "kind": "money",
           "cents": 1
         },
-        "s1a.line35": {
+        "s1a.senior_phased": {
           "kind": "money",
           "cents": 599999
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 599999
         }
@@ -1366,11 +1366,11 @@
         "person[taxpayer].work_ssn": false
       },
       "expect": {
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 0
         }
@@ -1397,7 +1397,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "refusal",
           "gate": "s1a.senior_decedent",
           "form": "Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65",
@@ -1450,31 +1450,31 @@
         "carloan[VIN0].interest": 300000
       },
       "expect": {
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 500000
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 400000
         },
-        "s1a.line29": {
+        "s1a.vli_reduction": {
           "kind": "money",
           "cents": 400000
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line35": {
+        "s1a.senior_phased": {
           "kind": "money",
           "cents": 330000
         },
-        "s1a.line38": {
+        "s1a.total_deductions": {
           "kind": "money",
           "cents": 1230000
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 1230000
         },
@@ -1508,7 +1508,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "s1a.line38": {
+        "s1a.total_deductions": {
           "kind": "refusal",
           "gate": "sa.excluded_income",
           "form": "Schedule 1-A, Part I, lines 2a to 2d (excluded Puerto Rico income, Form 2555, Form 4563)",
@@ -1540,7 +1540,7 @@
         "person[taxpayer].w2[emp_a].box6": 72500
       },
       "expect": {
-        "s1a.line38": {
+        "s1a.total_deductions": {
           "kind": "money",
           "cents": 0
         }
@@ -1574,19 +1574,19 @@
         "household.married_dec31": true
       },
       "expect": {
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 300000
         }
@@ -1628,27 +1628,27 @@
         "person[taxpayer].otjob[ot0].statement": 3000000
       },
       "expect": {
-        "s1a.line9": {
+        "s1a.tips_threshold": {
           "kind": "money",
           "cents": 30000000
         },
-        "s1a.line12": {
+        "s1a.tips_reduction": {
           "kind": "money",
           "cents": 10000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 1990000
         },
-        "s1a.line15": {
+        "s1a.ot_capped": {
           "kind": "money",
           "cents": 2500000
         },
-        "s1a.line20": {
+        "s1a.ot_reduction": {
           "kind": "money",
           "cents": 10000
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 2490000
         }
@@ -1684,15 +1684,15 @@
         "carloan[VIN0].interest": 500000
       },
       "expect": {
-        "s1a.line26": {
+        "s1a.vli_threshold": {
           "kind": "money",
           "cents": 20000000
         },
-        "s1a.line29": {
+        "s1a.vli_reduction": {
           "kind": "money",
           "cents": 20000
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 480000
         }
@@ -1722,19 +1722,19 @@
         "household.married_dec31": true
       },
       "expect": {
-        "s1a.line32": {
+        "s1a.senior_threshold": {
           "kind": "money",
           "cents": 15000000
         },
-        "s1a.line35": {
+        "s1a.senior_phased": {
           "kind": "money",
           "cents": 540000
         },
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 540000
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 540000
         }
@@ -1757,15 +1757,15 @@
         "person[taxpayer].w2[emp_a].box6": 87000
       },
       "expect": {
-        "s1a.line23": {
+        "s1a.vli_total": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line24": {
+        "s1a.vli_capped": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "money",
           "cents": 0
         }
@@ -1810,7 +1810,7 @@
         "person[taxpayer].f4137row[emp_a].col_d": 800000
       },
       "expect": {
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "refusal",
           "gate": "s1a.f4137",
           "form": "The deduction for qualified tips included on Form 4137 (Schedule 1-A, line 4b)",
@@ -1867,7 +1867,7 @@
         "person[taxpayer].tipjob[emp1].tips": 300000
       },
       "expect": {
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "refusal",
           "gate": "person[taxpayer].f4137_filed",
           "form": "The deduction for qualified tips included on Form 4137 (worksheet column (c))",
@@ -1880,7 +1880,7 @@
             "tax_year": 2025
           }
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "refusal",
           "gate": "person[taxpayer].f4137_filed",
           "form": "The deduction for qualified tips included on Form 4137 (worksheet column (c))",
@@ -1913,15 +1913,15 @@
         "person[taxpayer].w2[emp_a].box6": 72500
       },
       "expect": {
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line36b": {
+        "s1a.senior_spouse": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 600000
         }
@@ -1973,11 +1973,11 @@
         "person[taxpayer].tipjob[emp0].tips": 800000
       },
       "expect": {
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "money",
           "cents": 800000
         },
-        "s1a.line6": {
+        "s1a.tips_total": {
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C, E or F)",
@@ -2039,11 +2039,11 @@
         "s179.carryover": null
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 300000
         },
-        "s1a.line14c": {
+        "s1a.ot_total": {
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)",
@@ -2078,7 +2078,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "refusal",
           "gate": "sa.excluded_income",
           "form": "Schedule 1-A, Part I, lines 2a to 2d (excluded Puerto Rico income, Form 2555, Form 4563)",
@@ -2130,15 +2130,15 @@
           "kind": "money",
           "cents": 3470000
         },
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line36b": {
+        "s1a.senior_spouse": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 600000
         },
@@ -2187,15 +2187,15 @@
           "kind": "money",
           "cents": 3790000
         },
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line36b": {
+        "s1a.senior_spouse": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 1200000
         },
@@ -2237,27 +2237,27 @@
         "person[spouse].w2[e0].box6": 116000
       },
       "expect": {
-        "s1a.line33": {
+        "s1a.senior_over": {
           "kind": "money",
           "cents": 5000000
         },
-        "s1a.line34": {
+        "s1a.senior_reduction": {
           "kind": "money",
           "cents": 300000
         },
-        "s1a.line35": {
+        "s1a.senior_phased": {
           "kind": "money",
           "cents": 300000
         },
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 300000
         },
-        "s1a.line36b": {
+        "s1a.senior_spouse": {
           "kind": "money",
           "cents": 300000
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 600000
         }
@@ -2296,15 +2296,15 @@
         "person[spouse].w2[e0].box6": 72500
       },
       "expect": {
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line36b": {
+        "s1a.senior_spouse": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 600000
         }
@@ -2342,15 +2342,15 @@
         "person[spouse].w2[e0].box6": 72500
       },
       "expect": {
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line36b": {
+        "s1a.senior_spouse": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 600000
         },
@@ -2394,11 +2394,11 @@
         "s179.carryover": null
       },
       "expect": {
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line36b": {
+        "s1a.senior_spouse": {
           "kind": "refusal",
           "gate": "s1a.spouse_senior_decedent",
           "form": "Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65",
@@ -2411,7 +2411,7 @@
             "tax_year": 2025
           }
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "refusal",
           "gate": "s1a.spouse_senior_decedent",
           "form": "Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65",
@@ -2472,15 +2472,15 @@
           "kind": "money",
           "cents": 0
         },
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "money",
           "cents": 2900000
         },
-        "s1a.line7": {
+        "s1a.tips_capped": {
           "kind": "money",
           "cents": 2500000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 2500000
         }
@@ -2530,11 +2530,11 @@
           "kind": "money",
           "cents": 1500000
         },
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "money",
           "cents": 1500000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 1500000
         }
@@ -2584,15 +2584,15 @@
         "person[spouse].otjob[job].statement": 1300000
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 2700000
         },
-        "s1a.line15": {
+        "s1a.ot_capped": {
           "kind": "money",
           "cents": 2500000
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 2500000
         }
@@ -2631,15 +2631,15 @@
         "person[spouse].w2[e0].box6": 72500
       },
       "expect": {
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line36b": {
+        "s1a.senior_spouse": {
           "kind": "money",
           "cents": 600000
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 600000
         }
@@ -2692,11 +2692,11 @@
           "kind": "money",
           "cents": 0
         },
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "money",
           "cents": 1600000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 1600000
         }
@@ -2734,11 +2734,11 @@
         "person[spouse].w2[e0].box6": 72500
       },
       "expect": {
-        "s1a.line8": {
+        "s1a.tips_magi": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 0
         }
@@ -2787,11 +2787,11 @@
         "person[spouse].otjob[job].statement": 500000
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 1000000
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 1000000
         }
@@ -2827,15 +2827,15 @@
         "person[spouse].w2[e0].box6": 72500
       },
       "expect": {
-        "s1a.line31": {
+        "s1a.senior_magi": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line35": {
+        "s1a.senior_phased": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line37": {
+        "s1a.senior_deduction": {
           "kind": "money",
           "cents": 0
         }
@@ -2873,11 +2873,11 @@
         "person[spouse].w2[e0].box6": 72500
       },
       "expect": {
-        "s1a.line16": {
+        "s1a.ot_magi": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 0
         }
@@ -2938,7 +2938,7 @@
         "eic.qc_of_another": null
       },
       "expect": {
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "refusal",
           "gate": "s1.sc_1a",
           "form": "Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)",
@@ -2951,7 +2951,7 @@
             "tax_year": 2025
           }
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "refusal",
           "gate": "s1.sc_1a",
           "form": "Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)",
@@ -3154,7 +3154,7 @@
       "id": "mexist.s1a.line13.schedule1_refused",
       "covers": [
         "s1a",
-        "f1040.line13b"
+        "f1040.s1a_deductions"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of stage12.refuse.tips_trade_or_business: a K-1 (Schedule 1 income outside this tool) and qualified tips of $8,000 in a listed occupation. Line 13 is line 7 less line 12, and line 7 depends on Form 1040 line 11b (through the Part II modified AGI of lines 8 to 12) which is refused by the Schedule 1 screen (Form 1040 lines 8 and 10 for K-1 income), so line 13 carries the Schedule 1 refusal, recorded from the evaluator.",
@@ -3197,7 +3197,7 @@
         "person[taxpayer].tipjob[emp0].tips": 800000
       },
       "expect": {
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
@@ -3248,11 +3248,11 @@
           "kind": "money",
           "cents": 800000
         },
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "money",
           "cents": 800000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 800000
         }
@@ -3280,7 +3280,7 @@
         "person[taxpayer].tipjob[e].tips": 2000000
       },
       "expect": {
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "refusal",
           "gate": "s1a.tips_over_wages",
           "form": "Schedule 1-A, Part II (qualified tips larger than the Medicare wages and tips that include them)",
@@ -3317,11 +3317,11 @@
         "person[taxpayer].tipjob[e].tips": 1000000
       },
       "expect": {
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "money",
           "cents": 1000000
         },
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 1000000
         }
@@ -3350,7 +3350,7 @@
         "person[taxpayer].otjob[ot0].statement": 1200000
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "refusal",
           "gate": "s1a.ot_over_wages",
           "form": "Schedule 1-A, Part III (qualified overtime compensation larger than the Medicare wages and tips that include it)",

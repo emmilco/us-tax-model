@@ -23,16 +23,16 @@ interview:
   # together and its refusals are told at once.
   - s1.line13
   - s1.line8f
-  - s2.line17c
+  - s2.hsa_distribution_tax
   # Schedule 1's additional income, and the tip and overtime amounts of Schedule 1-A, asked for directly: their
   # questions are then open in their own topics (160 to 165; 150 to 153), and a refusal among them is told at once,
   # without waiting for the last scope item.
   - s1.line10
-  - s1a.line7
-  - s1a.line15
+  - s1a.tips_capped
+  - s1a.ot_capped
   # Schedule A's total and the Schedule 2 screen, asked for directly: every return reads both, and their questions are
   # then open from the start, so the bank's order decides where each is asked.
-  - sa.line17
+  - sa.total_itemized
   - s2.other
   # Schedule B line 7a, printed in Part III and read by its notice: asked only after a Yes to one of the questions
   # about things outside the United States.

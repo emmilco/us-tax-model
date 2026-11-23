@@ -1727,7 +1727,7 @@ form:
         doc: i5695
         locator: p. 4, Lines 7a Through 7c; p. 2, Qualified fuel cell property costs, "The credit amount for costs paid for
           qualified fuel cell property is limited to $500 for each one-half kilowatt of capacity of the property"
-  - id: f5695.line12
+  - id: f5695.carry_in
     printed: "12"
     label: Credit carryforward from 2024. Enter the amount, if any, from your 2024 Form 5695, line 16
     type: NonNegDollars
@@ -1755,7 +1755,7 @@ form:
           eq:
           - f5695.carry_if_prior
           - const: true
-        then: f5695.line12
+        then: f5695.carry_in
       - guard:
           op: test
           eq:
@@ -1966,7 +1966,7 @@ form:
       doc: i5695
       locator: p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 3, "Subtract line 2 from line 1. Also
         enter this amount on Form 5695, line 14. If zero or less, enter -0- on Form 5695, lines 14 and 15"
-  - id: f5695.line14
+  - id: f5695.rce_limit
     printed: "14"
     label: Limitation based on tax liability. Enter the amount from the Residential Clean Energy Credit Limit Worksheet
     type: NonNegDollars
@@ -1976,7 +1976,7 @@ form:
     cite:
       doc: i5695
       locator: p. 4, Line 14, "Complete the following worksheet to figure the amount to enter on line 14"
-  - id: f5695.line15
+  - id: f5695.rce_credit
     printed: "15"
     label: Residential clean energy credit. Enter the smaller of line 13 or line 14. Also include this amount on Schedule 3
       (Form 1040), line 5a
@@ -1985,18 +1985,18 @@ form:
       op: smaller_of
       of:
       - f5695.line13
-      - f5695.line14
+      - f5695.rce_limit
     cite:
       doc: f5695
       locator: Form 5695 (2025), line 15
-  - id: f5695.line16
+  - id: f5695.carry_out
     printed: "16"
     label: Credit carryforward to 2026. If line 15 is less than line 13, subtract line 15 from line 13
     type: NonNegDollars
     expr:
       op: subtract_floor0
       from: f5695.line13
-      take: f5695.line15
+      take: f5695.rce_credit
     cite:
       doc: i5695
       locator: p. 5, Line 16, "If you can't use all of the credit because of the tax liability limit (that is, line 14 is

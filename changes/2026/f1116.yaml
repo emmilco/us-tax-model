@@ -12,7 +12,7 @@ changes:
       quote: The enhanced deduction for seniors reported on Schedule 1-A (Form 1040), line 43, must be removed from taxable
     verified: draft
     note: 'Schedule 1-A is renumbered for 2026 (C-SCHED-01): the senior deduction added back on line 18 is line 43. The id
-      s1a.line37 is kept (its 2026 printed number is set by changes/2026/s1a.yaml), so only the wording changes here. The
+      s1a.senior_deduction is kept (its 2026 printed number is set by changes/2026/s1a.yaml), so only the wording changes here. The
       adjustment exception ceilings ($403,550 MFJ and QSS, $201,775 single and MFS, $201,750 HOH, 2026 i1116 p. 11) are
       year parameters, proposed by propose_params.py, not operations. The other page locators wait for the 2026 Form
       1116, which is not archived, and are set when it is (Part II moves to page 2). Schedule B (Form 1116) and its

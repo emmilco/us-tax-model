@@ -1486,19 +1486,19 @@
           "kind": "money",
           "cents": 0
         },
-        "s1a.line9": {
+        "s1a.tips_threshold": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line15": {
+        "s1a.ot_capped": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line26": {
+        "s1a.vli_threshold": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line32": {
+        "s1a.senior_threshold": {
           "kind": "money",
           "cents": 0
         },
@@ -1614,7 +1614,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -1932,7 +1932,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 916600,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -2423,7 +2423,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -2947,7 +2947,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -3569,7 +3569,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -4224,7 +4224,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -5023,7 +5023,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -5380,7 +5380,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 2276100,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 2511700,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -5590,7 +5590,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 2471700,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 0,
@@ -6033,7 +6033,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -6390,7 +6390,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -7633,7 +7633,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -7952,7 +7952,7 @@
         "person[taxpayer].sc[biz_a].line14": 3000000,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -8091,7 +8091,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 1984200,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 1857900,
@@ -8335,7 +8335,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line23": {
+        "s1a.vli_total": {
           "kind": "money",
           "cents": 0
         },
@@ -8448,7 +8448,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -8765,7 +8765,7 @@
         "person[taxpayer].sc[biz_a].line14": 2687600,
         "person[taxpayer].sc[biz_a].line15": 24400,
         "person[taxpayer].sc[biz_a].line16a": 2552800,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 1405800,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -9017,7 +9017,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line25": {
+        "s1a.vli_magi": {
           "kind": "money",
           "cents": 0
         },
@@ -9125,7 +9125,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -9443,7 +9443,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -9495,7 +9495,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 957200,
@@ -9724,7 +9724,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line31": {
+        "s1a.senior_magi": {
           "kind": "money",
           "cents": 0
         }
@@ -9820,7 +9820,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": true,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -10175,7 +10175,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -10271,7 +10271,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 271200,
         "person[taxpayer].sc[biz_b].line19": 0,
@@ -10618,11 +10618,11 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line14a": {
+        "s1a.ot_w2": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line16": {
+        "s1a.ot_magi": {
           "kind": "money",
           "cents": 0
         },
@@ -10932,7 +10932,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
@@ -11115,7 +11115,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -11896,7 +11896,7 @@
         "person[taxpayer].sc[biz_a].line14": 571700,
         "person[taxpayer].sc[biz_a].line15": 1128700,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 2539100,
@@ -12248,7 +12248,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -12769,11 +12769,11 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line9": {
+        "s1a.tips_threshold": {
           "kind": "money",
           "cents": 15000000
         },
-        "s1a.line17": {
+        "s1a.ot_threshold": {
           "kind": "money",
           "cents": 15000000
         }
@@ -12870,7 +12870,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -13314,7 +13314,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line17": {
+        "s1a.ot_threshold": {
           "kind": "money",
           "cents": 15000000
         }
@@ -13413,7 +13413,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 150700,
+        "f5695.carry_in": 150700,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -13947,7 +13947,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line26": {
+        "s1a.vli_threshold": {
           "kind": "money",
           "cents": 10000000
         },
@@ -14050,7 +14050,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -14475,7 +14475,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line26": {
+        "s1a.vli_threshold": {
           "kind": "money",
           "cents": 10000000
         }
@@ -14755,7 +14755,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 1724200,
+        "person[taxpayer].sc[biz_a].interest_other": 1724200,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -14885,7 +14885,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 0,
@@ -15128,15 +15128,15 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line9": {
+        "s1a.tips_threshold": {
           "kind": "money",
           "cents": 15000000
         },
-        "s1a.line17": {
+        "s1a.ot_threshold": {
           "kind": "money",
           "cents": 15000000
         },
-        "s1a.line26": {
+        "s1a.vli_threshold": {
           "kind": "money",
           "cents": 10000000
         }
@@ -15444,15 +15444,15 @@
         "scope.remic": false
       },
       "expect": {
-        "s1a.line32": {
+        "s1a.senior_threshold": {
           "kind": "money",
           "cents": 7500000
         },
-        "s1a.line35": {
+        "s1a.senior_phased": {
           "kind": "money",
           "cents": 450000
         },
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 450000
         }
@@ -15729,15 +15729,15 @@
         "scope.remic": false
       },
       "expect": {
-        "s1a.line32": {
+        "s1a.senior_threshold": {
           "kind": "money",
           "cents": 7500000
         },
-        "s1a.line35": {
+        "s1a.senior_phased": {
           "kind": "money",
           "cents": 450000
         },
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 450000
         }
@@ -17733,7 +17733,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -20302,7 +20302,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -20835,7 +20835,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -21375,7 +21375,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -22206,7 +22206,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -23015,7 +23015,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -23372,7 +23372,7 @@
         "person[taxpayer].sc[biz_a].line14": 744200,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 1594600,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -23424,7 +23424,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 0,
@@ -23910,7 +23910,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -24422,7 +24422,7 @@
         "person[spouse].sc[biz_a].line14": 0,
         "person[spouse].sc[biz_a].line15": 0,
         "person[spouse].sc[biz_a].line16a": 0,
-        "person[spouse].sc[biz_a].line16b": 0,
+        "person[spouse].sc[biz_a].interest_other": 0,
         "person[spouse].sc[biz_a].line17": 1044600,
         "person[spouse].sc[biz_a].line18": 844700,
         "person[spouse].sc[biz_a].line19": 0,
@@ -24690,7 +24690,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -25263,7 +25263,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -26008,7 +26008,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -26660,7 +26660,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": true,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -27015,7 +27015,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -27111,7 +27111,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 271200,
         "person[taxpayer].sc[biz_b].line19": 0,
@@ -27458,7 +27458,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "refusal",
           "gate": "sb.line8_if_foreign",
           "form": "Form 3520 / Form 3520-A",
@@ -27571,7 +27571,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -27890,7 +27890,7 @@
         "person[taxpayer].sc[biz_a].line14": 3000000,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -28029,7 +28029,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 1984200,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 1857900,
@@ -28275,7 +28275,7 @@
         "scope.remic": false
       },
       "expect": {
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "refusal",
           "gate": "person[taxpayer].plan_screened",
           "form": "Retirement plan contributions outside this tool",
@@ -28583,7 +28583,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line30": {
+        "s1a.vli_deduction": {
           "kind": "refusal",
           "gate": "sb.line8_if_foreign",
           "form": "Form 3520 / Form 3520-A",
@@ -29005,7 +29005,7 @@
         "scope.remic": false
       },
       "expect": {
-        "s1a.line15": {
+        "s1a.ot_capped": {
           "kind": "money",
           "cents": 1250000
         },
@@ -29422,7 +29422,7 @@
         "scope.remic": false
       },
       "expect": {
-        "s1a.line15": {
+        "s1a.ot_capped": {
           "kind": "money",
           "cents": 1250000
         }
@@ -29892,15 +29892,15 @@
         "f8962.mfs_exception": false
       },
       "expect": {
-        "s1a.line13": {
+        "s1a.tips_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line21": {
+        "s1a.ot_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "money",
           "cents": 0
         }
@@ -30313,7 +30313,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "refusal",
           "gate": "s1a.senior_decedent",
           "form": "Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65",
@@ -30735,7 +30735,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line36a": {
+        "s1a.senior_you": {
           "kind": "refusal",
           "gate": "s1a.senior_decedent",
           "form": "Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65",
@@ -32411,7 +32411,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -33079,7 +33079,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -33746,7 +33746,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -35318,7 +35318,7 @@
         "person[taxpayer].sc[d].line14": 0,
         "person[taxpayer].sc[d].line15": 0,
         "person[taxpayer].sc[d].line16a": 0,
-        "person[taxpayer].sc[d].line16b": 0,
+        "person[taxpayer].sc[d].interest_other": 0,
         "person[taxpayer].sc[d].line17": 0,
         "person[taxpayer].sc[d].line18": 0,
         "person[taxpayer].sc[d].line19": 0,
@@ -35687,7 +35687,7 @@
         "person[taxpayer].sc[r].line14": 0,
         "person[taxpayer].sc[r].line15": 0,
         "person[taxpayer].sc[r].line16a": 0,
-        "person[taxpayer].sc[r].line16b": 0,
+        "person[taxpayer].sc[r].interest_other": 0,
         "person[taxpayer].sc[r].line17": 0,
         "person[taxpayer].sc[r].line18": 0,
         "person[taxpayer].sc[r].line19": 0,
@@ -36087,7 +36087,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 50000,
         "f5695.line19d_i": 0,
@@ -36552,7 +36552,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -36907,7 +36907,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 147200,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -37245,7 +37245,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -37600,7 +37600,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 147200,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -38071,7 +38071,7 @@
         "person[taxpayer].sc[r].line14": 0,
         "person[taxpayer].sc[r].line15": 0,
         "person[taxpayer].sc[r].line16a": 0,
-        "person[taxpayer].sc[r].line16b": 0,
+        "person[taxpayer].sc[r].interest_other": 0,
         "person[taxpayer].sc[r].line17": 0,
         "person[taxpayer].sc[r].line18": 0,
         "person[taxpayer].sc[r].line19": 0,
@@ -38438,7 +38438,7 @@
         "person[taxpayer].sc[haul].line14": 0,
         "person[taxpayer].sc[haul].line15": 0,
         "person[taxpayer].sc[haul].line16a": 0,
-        "person[taxpayer].sc[haul].line16b": 0,
+        "person[taxpayer].sc[haul].interest_other": 0,
         "person[taxpayer].sc[haul].line17": 0,
         "person[taxpayer].sc[haul].line18": 0,
         "person[taxpayer].sc[haul].line19": 0,
@@ -38805,7 +38805,7 @@
         "person[taxpayer].sc[haul].line14": 0,
         "person[taxpayer].sc[haul].line15": 0,
         "person[taxpayer].sc[haul].line16a": 0,
-        "person[taxpayer].sc[haul].line16b": 0,
+        "person[taxpayer].sc[haul].interest_other": 0,
         "person[taxpayer].sc[haul].line17": 0,
         "person[taxpayer].sc[haul].line18": 0,
         "person[taxpayer].sc[haul].line19": 0,
@@ -39172,7 +39172,7 @@
         "person[taxpayer].sc[haul].line14": 0,
         "person[taxpayer].sc[haul].line15": 0,
         "person[taxpayer].sc[haul].line16a": 0,
-        "person[taxpayer].sc[haul].line16b": 0,
+        "person[taxpayer].sc[haul].interest_other": 0,
         "person[taxpayer].sc[haul].line17": 0,
         "person[taxpayer].sc[haul].line18": 0,
         "person[taxpayer].sc[haul].line19": 0,
@@ -40899,7 +40899,7 @@
         "f5695.construction_later": false,
         "f5695.joint_occupancy": false,
         "f5695.line1": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -41305,7 +41305,7 @@
         "f5695.construction_later": false,
         "f5695.joint_occupancy": false,
         "f5695.line1": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -41808,7 +41808,7 @@
         "person[taxpayer].sc[odd].line14": 0,
         "person[taxpayer].sc[odd].line15": 0,
         "person[taxpayer].sc[odd].line16a": 0,
-        "person[taxpayer].sc[odd].line16b": 0,
+        "person[taxpayer].sc[odd].interest_other": 0,
         "person[taxpayer].sc[odd].line17": 0,
         "person[taxpayer].sc[odd].line18": 0,
         "person[taxpayer].sc[odd].line19": 0,
@@ -42150,7 +42150,7 @@
         "person[taxpayer].sc[odd].line14": 0,
         "person[taxpayer].sc[odd].line15": 0,
         "person[taxpayer].sc[odd].line16a": 0,
-        "person[taxpayer].sc[odd].line16b": 0,
+        "person[taxpayer].sc[odd].interest_other": 0,
         "person[taxpayer].sc[odd].line17": 0,
         "person[taxpayer].sc[odd].line18": 0,
         "person[taxpayer].sc[odd].line19": 0,
@@ -42536,7 +42536,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 1273500,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 2183900,
@@ -42709,7 +42709,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 1614000,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 0,
@@ -43119,7 +43119,7 @@
         "f5695.construction_later": false,
         "f5695.joint_occupancy": false,
         "f5695.line1": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -43422,7 +43422,7 @@
           "kind": "money",
           "cents": 27000
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 27000
         }
@@ -44381,7 +44381,7 @@
         "person[taxpayer].sc[shop].line14": 0,
         "person[taxpayer].sc[shop].line15": 0,
         "person[taxpayer].sc[shop].line16a": 0,
-        "person[taxpayer].sc[shop].line16b": 0,
+        "person[taxpayer].sc[shop].interest_other": 0,
         "person[taxpayer].sc[shop].line17": 0,
         "person[taxpayer].sc[shop].line18": 0,
         "person[taxpayer].sc[shop].line19": 0,
@@ -45498,7 +45498,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 1696800,
-        "person[taxpayer].sc[biz_a].line16b": 279700,
+        "person[taxpayer].sc[biz_a].interest_other": 279700,
         "person[taxpayer].sc[biz_a].line17": 3000000,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -46019,7 +46019,7 @@
         "person[taxpayer].sc[odd].line14": 0,
         "person[taxpayer].sc[odd].line15": 0,
         "person[taxpayer].sc[odd].line16a": 0,
-        "person[taxpayer].sc[odd].line16b": 0,
+        "person[taxpayer].sc[odd].interest_other": 0,
         "person[taxpayer].sc[odd].line17": 0,
         "person[taxpayer].sc[odd].line18": 0,
         "person[taxpayer].sc[odd].line19": 0,
@@ -46278,7 +46278,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -46596,7 +46596,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 916600,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -47072,7 +47072,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -47664,7 +47664,7 @@
         "f5695.construction_later": false,
         "f5695.joint_occupancy": false,
         "f5695.line1": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -48070,7 +48070,7 @@
         "f5695.construction_later": false,
         "f5695.joint_occupancy": false,
         "f5695.line1": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -49484,7 +49484,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -49841,7 +49841,7 @@
         "person[taxpayer].sc[biz_a].line14": 744200,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 1594600,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -49893,7 +49893,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 0,
@@ -52450,7 +52450,7 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line14": {
+        "sa.gifts_deduction": {
           "kind": "money",
           "cents": 0
         },
@@ -53573,7 +53573,7 @@
         "f5695.construction_later": false,
         "f5695.joint_occupancy": false,
         "f5695.line1": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -54390,7 +54390,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -54735,7 +54735,7 @@
         "f5695.line3": 1000000,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -55080,7 +55080,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -55430,7 +55430,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -55780,7 +55780,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -56130,7 +56130,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -56480,7 +56480,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 50000,
         "f5695.line19d_i": 0,
@@ -56829,7 +56829,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 100000,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -57168,7 +57168,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -57525,7 +57525,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 50000,
         "f5695.line19d_i": 0,
@@ -57873,7 +57873,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -58220,7 +58220,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -58574,7 +58574,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -58908,7 +58908,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -59244,7 +59244,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -59580,7 +59580,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -59916,7 +59916,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -60252,7 +60252,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -60588,7 +60588,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -60924,7 +60924,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -61260,7 +61260,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -61625,7 +61625,7 @@
         "person[taxpayer].sc[biz_a].line14": 571700,
         "person[taxpayer].sc[biz_a].line15": 1128700,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 2539100,
@@ -61881,7 +61881,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -62254,7 +62254,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -62593,7 +62593,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -62900,7 +62900,7 @@
         "person[taxpayer].sc[biz_a].line14": 1744800,
         "person[taxpayer].sc[biz_a].line15": 2434300,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 3000000,
+        "person[taxpayer].sc[biz_a].interest_other": 3000000,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -63323,7 +63323,7 @@
         "person[taxpayer].sc[r].line14": 0,
         "person[taxpayer].sc[r].line15": 0,
         "person[taxpayer].sc[r].line16a": 0,
-        "person[taxpayer].sc[r].line16b": 0,
+        "person[taxpayer].sc[r].interest_other": 0,
         "person[taxpayer].sc[r].line17": 0,
         "person[taxpayer].sc[r].line18": 0,
         "person[taxpayer].sc[r].line19": 0,
@@ -63714,7 +63714,7 @@
         "person[taxpayer].sc[biz_a].line14": 1744800,
         "person[taxpayer].sc[biz_a].line15": 2434300,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 3000000,
+        "person[taxpayer].sc[biz_a].interest_other": 3000000,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -64163,7 +64163,7 @@
         "person[taxpayer].sc[biz_a].line14": 1744800,
         "person[taxpayer].sc[biz_a].line15": 2434300,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 3000000,
+        "person[taxpayer].sc[biz_a].interest_other": 3000000,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -64640,7 +64640,7 @@
         "person[taxpayer].sc[biz_a].line14": 571700,
         "person[taxpayer].sc[biz_a].line15": 1128700,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 2539100,
@@ -65190,7 +65190,7 @@
         "person[taxpayer].sc[biz_a].line14": 571700,
         "person[taxpayer].sc[biz_a].line15": 1128700,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 2539100,
@@ -65562,7 +65562,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -66081,7 +66081,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": true,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -66436,7 +66436,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -66532,7 +66532,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 271200,
         "person[taxpayer].sc[biz_b].line19": 0,
@@ -66887,7 +66887,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "money",
           "cents": 3986900
         }
@@ -66983,7 +66983,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": true,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -67338,7 +67338,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -67434,7 +67434,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 271200,
         "person[taxpayer].sc[biz_b].line19": 0,
@@ -67781,7 +67781,7 @@
           "kind": "money",
           "cents": 1718500
         },
-        "s1a.line4c": {
+        "s1a.tips_employee": {
           "kind": "money",
           "cents": 1718500
         }
@@ -68026,7 +68026,7 @@
         "person[taxpayer].sc[biz_a].line14": 1744800,
         "person[taxpayer].sc[biz_a].line15": 2434300,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 3000000,
+        "person[taxpayer].sc[biz_a].interest_other": 3000000,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -68473,7 +68473,7 @@
         "person[taxpayer].sc[biz_a].line14": 1744800,
         "person[taxpayer].sc[biz_a].line15": 2434300,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 3000000,
+        "person[taxpayer].sc[biz_a].interest_other": 3000000,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -68920,7 +68920,7 @@
         "person[taxpayer].sc[biz_a].line14": 1744800,
         "person[taxpayer].sc[biz_a].line15": 2434300,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 3000000,
+        "person[taxpayer].sc[biz_a].interest_other": 3000000,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -69366,7 +69366,7 @@
         "person[taxpayer].sc[biz_a].line14": 1744800,
         "person[taxpayer].sc[biz_a].line15": 2434300,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 3000000,
+        "person[taxpayer].sc[biz_a].interest_other": 3000000,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -71327,7 +71327,7 @@
         "person[taxpayer].sc[shop].line14": 0,
         "person[taxpayer].sc[shop].line15": 0,
         "person[taxpayer].sc[shop].line16a": 0,
-        "person[taxpayer].sc[shop].line16b": 0,
+        "person[taxpayer].sc[shop].interest_other": 0,
         "person[taxpayer].sc[shop].line17": 0,
         "person[taxpayer].sc[shop].line18": 0,
         "person[taxpayer].sc[shop].line19": 0,
@@ -75089,7 +75089,7 @@
         "person[taxpayer].sc[shop].line14": 0,
         "person[taxpayer].sc[shop].line15": 0,
         "person[taxpayer].sc[shop].line16a": 0,
-        "person[taxpayer].sc[shop].line16b": 0,
+        "person[taxpayer].sc[shop].interest_other": 0,
         "person[taxpayer].sc[shop].line17": 0,
         "person[taxpayer].sc[shop].line18": 0,
         "person[taxpayer].sc[shop].line19": 0,
@@ -76758,7 +76758,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 1724200,
+        "person[taxpayer].sc[biz_a].interest_other": 1724200,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -76888,7 +76888,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 0,
@@ -77416,7 +77416,7 @@
         "person[taxpayer].sc[biz_a].line14": 571700,
         "person[taxpayer].sc[biz_a].line15": 1128700,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 2539100,
@@ -84806,7 +84806,7 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "money",
           "cents": 0
         },
@@ -85117,8 +85117,8 @@
       "id": "mutation.m3.sa.carryover_no_gifts",
       "covers": [
         "sa",
-        "sa.line13",
-        "sa.line15"
+        "sa.gift_carryover_amount",
+        "sa.casualty_loss"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Mutation fixture for the charitable carryover with no gifts in 2025: inputs of mutation.sb.form5471_refuses with the foreign screens answered No, no gifts to charity in 2025 and a charitable contribution carried over from an earlier year Yes; the question about income limits on 2025 gifts is left unanswered (asked only with gifts). Predicted by hand from the Schedule A lines and i1040sca (p. 13, Line 13, Carryover From Prior Year) before running the evaluator: Schedule A line 13 refuses on sa.gift_carryover_if_no_gifts (the form, remedy and citation are those the line states); line 15 (casualty and theft losses, none) does not refuse on the carryover and is $0. Mutants that drop the carryover refusal from line 13, that test another answer for it, or that copy line 13 onto line 15 change one of the two.",
@@ -85404,7 +85404,7 @@
         "f1040.digital_assets": false
       },
       "expect": {
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "refusal",
           "gate": "sa.gift_carryover_if_no_gifts",
           "form": "Schedule A charitable limitation / carryover",
@@ -85417,7 +85417,7 @@
             "tax_year": 2025
           }
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "money",
           "cents": 0
         }
@@ -85940,7 +85940,7 @@
         "person[taxpayer].sc[shop].line14": 0,
         "person[taxpayer].sc[shop].line15": 0,
         "person[taxpayer].sc[shop].line16a": 0,
-        "person[taxpayer].sc[shop].line16b": 0,
+        "person[taxpayer].sc[shop].interest_other": 0,
         "person[taxpayer].sc[shop].line17": 0,
         "person[taxpayer].sc[shop].line18": 0,
         "person[taxpayer].sc[shop].line19": 0,
@@ -87314,7 +87314,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -87933,7 +87933,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -88553,7 +88553,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -89857,7 +89857,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -90475,7 +90475,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -91093,7 +91093,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -91711,7 +91711,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -92329,7 +92329,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -92947,7 +92947,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -93565,7 +93565,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -94183,7 +94183,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -94805,7 +94805,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -95415,7 +95415,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -99966,7 +99966,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 1696800,
-        "person[taxpayer].sc[biz_a].line16b": 279700,
+        "person[taxpayer].sc[biz_a].interest_other": 279700,
         "person[taxpayer].sc[biz_a].line17": 3000000,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -100761,7 +100761,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -101282,7 +101282,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -101803,7 +101803,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -102321,7 +102321,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -102846,7 +102846,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -103414,7 +103414,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -103989,7 +103989,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -104550,7 +104550,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -105120,7 +105120,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -105682,7 +105682,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -106253,7 +106253,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -106833,7 +106833,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -107406,7 +107406,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,

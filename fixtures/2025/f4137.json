@@ -6,7 +6,7 @@
       "covers": [
         "f4137",
         "f1040.line1c",
-        "s2.line5",
+        "s2.tip_ss_tax",
         "f8959.line2"
       ],
       "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
@@ -81,15 +81,15 @@
           "kind": "money",
           "cents": 3300000
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 35955
         },
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line7": {
+        "s2.ss_medicare_total": {
           "kind": "money",
           "cents": 35955
         },
@@ -177,7 +177,7 @@
           "kind": "money",
           "cents": 2815000
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 0
         },

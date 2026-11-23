@@ -1994,5 +1994,50 @@
    "record": "86136ff6c5ed67f59897529274fe56be98cee0e55b5353cf249af8bf2c005941",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "aa7d697e81faa6117606007009fc9d8ca55528345f2f3d6f4e176db13bac0eb5",
+  "was": "d2f007254d1551996a5afbe9d161111fcc32d47833721a7cae450fc66b3eaa02",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "s1a.line10": "s1a.tips_over",
+    "s1a.line12": "s1a.tips_reduction",
+    "s1a.line13": "s1a.tips_deduction",
+    "s1a.line14a": "s1a.ot_w2",
+    "s1a.line14b": "s1a.ot_1099",
+    "s1a.line14c": "s1a.ot_total",
+    "s1a.line15": "s1a.ot_capped",
+    "s1a.line16": "s1a.ot_magi",
+    "s1a.line17": "s1a.ot_threshold",
+    "s1a.line18": "s1a.ot_over",
+    "s1a.line20": "s1a.ot_reduction",
+    "s1a.line21": "s1a.ot_deduction",
+    "s1a.line23": "s1a.vli_total",
+    "s1a.line24": "s1a.vli_capped",
+    "s1a.line25": "s1a.vli_magi",
+    "s1a.line26": "s1a.vli_threshold",
+    "s1a.line27": "s1a.vli_over",
+    "s1a.line29": "s1a.vli_reduction",
+    "s1a.line30": "s1a.vli_deduction",
+    "s1a.line31": "s1a.senior_magi",
+    "s1a.line32": "s1a.senior_threshold",
+    "s1a.line33": "s1a.senior_over",
+    "s1a.line34": "s1a.senior_reduction",
+    "s1a.line35": "s1a.senior_phased",
+    "s1a.line36a": "s1a.senior_you",
+    "s1a.line36b": "s1a.senior_spouse",
+    "s1a.line37": "s1a.senior_deduction",
+    "s1a.line38": "s1a.total_deductions",
+    "s1a.line4c": "s1a.tips_employee",
+    "s1a.line5": "s1a.tips_business",
+    "s1a.line6": "s1a.tips_total",
+    "s1a.line7": "s1a.tips_capped",
+    "s1a.line8": "s1a.tips_magi",
+    "s1a.line9": "s1a.tips_threshold"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "d2f007254d1551996a5afbe9d161111fcc32d47833721a7cae450fc66b3eaa02"
+  }
+ }
 }

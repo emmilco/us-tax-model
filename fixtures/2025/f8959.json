@@ -29,7 +29,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         },
@@ -75,7 +75,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         }
@@ -105,7 +105,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         }
@@ -131,7 +131,7 @@
           "kind": "money",
           "cents": 100000
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 900
         }
@@ -172,7 +172,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         }
@@ -213,7 +213,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         }
@@ -250,7 +250,7 @@
           "kind": "money",
           "cents": 100000
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 900
         }
@@ -282,7 +282,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         }
@@ -314,7 +314,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         }
@@ -342,7 +342,7 @@
           "kind": "money",
           "cents": 100000
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 900
         }
@@ -377,7 +377,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         }
@@ -412,7 +412,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         }
@@ -443,7 +443,7 @@
           "kind": "money",
           "cents": 100000
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 900
         }
@@ -482,7 +482,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         }
@@ -521,7 +521,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         }
@@ -556,7 +556,7 @@
           "kind": "money",
           "cents": 100000
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 900
         }
@@ -578,7 +578,7 @@
         "person[taxpayer].w2[a].box1": 10000000
       },
       "expect": {
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 45000
         },
@@ -618,43 +618,43 @@
           "kind": "money",
           "cents": 45000
         },
-        "f8959.line8": {
+        "f8959.se_income": {
           "kind": "money",
           "cents": 0
         },
-        "f8959.line9": {
+        "f8959.se_threshold": {
           "kind": "money",
           "cents": 20000000
         },
-        "f8959.line10": {
+        "f8959.se_wages": {
           "kind": "money",
           "cents": 25000000
         },
-        "f8959.line11": {
+        "f8959.se_threshold_left": {
           "kind": "money",
           "cents": 0
         },
-        "f8959.line12": {
+        "f8959.se_excess": {
           "kind": "money",
           "cents": 0
         },
-        "f8959.line13": {
+        "f8959.se_tax": {
           "kind": "money",
           "cents": 0
         },
-        "f8959.line14": {
+        "f8959.rrta_comp": {
           "kind": "money",
           "cents": 0
         },
-        "f8959.line15": {
+        "f8959.rrta_threshold": {
           "kind": "money",
           "cents": 20000000
         },
-        "f8959.line16": {
+        "f8959.rrta_excess": {
           "kind": "money",
           "cents": 0
         },
-        "f8959.line17": {
+        "f8959.rrta_tax": {
           "kind": "money",
           "cents": 0
         },
@@ -720,7 +720,7 @@
         "s179.carryover": null
       },
       "expect": {
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
@@ -772,7 +772,7 @@
             "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d"
           }
         },
-        "f8959.line8": {
+        "f8959.se_income": {
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
@@ -785,7 +785,7 @@
             "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d"
           }
         },
-        "f8959.line14": {
+        "f8959.rrta_comp": {
           "kind": "refusal",
           "gate": "f8959.unsupported",
           "form": "Form 8959 additional source forms",
@@ -927,7 +927,7 @@
           "kind": "money",
           "cents": 45000
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 45000
         }
@@ -948,19 +948,19 @@
         "person[taxpayer].sc[big].line1": 30000000
       },
       "expect": {
-        "f8959.line8": {
+        "f8959.se_income": {
           "kind": "money",
           "cents": 27705000
         },
-        "f8959.line12": {
+        "f8959.se_excess": {
           "kind": "money",
           "cents": 7705000
         },
-        "f8959.line13": {
+        "f8959.se_tax": {
           "kind": "money",
           "cents": 69345
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 69345
         },
@@ -1005,7 +1005,7 @@
         "person[taxpayer].ira_dist": null
       },
       "expect": {
-        "f8959.line13": {
+        "f8959.se_tax": {
           "kind": "refusal",
           "gate": "person[taxpayer].se_screened",
           "form": "Schedule SE items outside this tool (church employee income, clergy, Forms 4361 and 4029, partnership and other self-employment income, farm income, optional methods, chapter 11, community income, exempt income, Forms 4137 and 8919)",
@@ -1018,7 +1018,7 @@
             "tax_year": 2025
           }
         },
-        "f8959.line16": {
+        "f8959.rrta_excess": {
           "kind": "money",
           "cents": 0
         }

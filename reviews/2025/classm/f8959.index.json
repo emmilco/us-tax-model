@@ -379,5 +379,27 @@
    "record": "5c17c5a692d4df165578a29c07c26f217139d01e9ede9d363719734b699a6f26",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "14364fb17cb0ee51e9df6e949a78eb841e8756fcb2c4fd64aeb2dd2c05fde545",
+  "was": "f7c36b35905492eaeee8d6da8650a112a8c668c704a76163cd7ef20be17daf02",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f8959.line10": "f8959.se_wages",
+    "f8959.line11": "f8959.se_threshold_left",
+    "f8959.line12": "f8959.se_excess",
+    "f8959.line13": "f8959.se_tax",
+    "f8959.line14": "f8959.rrta_comp",
+    "f8959.line15": "f8959.rrta_threshold",
+    "f8959.line16": "f8959.rrta_excess",
+    "f8959.line17": "f8959.rrta_tax",
+    "f8959.line18": "f8959.total_tax",
+    "f8959.line8": "f8959.se_income",
+    "f8959.line9": "f8959.se_threshold"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "f7c36b35905492eaeee8d6da8650a112a8c668c704a76163cd7ef20be17daf02"
+  }
+ }
 }

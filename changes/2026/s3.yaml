@@ -17,7 +17,7 @@ changes:
       page: 2
       quote: Residential clean energy credit. Enter the smaller of line 1 or line 2. Also include this amount on
     verified: draft
-    note: 'Line 5a keeps reading f5695.line15, the credit line that Form 5695''s renumbering (C-CRED-03) prints as line 3.
+    note: 'Line 5a keeps reading f5695.rce_credit, the credit line that Form 5695''s renumbering (C-CRED-03) prints as line 3.
       Line 5b stays as a zero line printed "Reserved for future use" rather than being removed: f5695.rce_ws2 still reads
       it until the Form 5695 operations (C-CRED-04) rewrite that worksheet, and f5695.part2_any and f5695.line32, which it
       read, are removed by C-CRED-06 to -08.'

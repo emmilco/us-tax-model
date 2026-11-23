@@ -153,7 +153,7 @@
       "id": "ty2026.sa.gambling_90_limited_by_winnings",
       "covers": [
         "sa.line16_gambling",
-        "sa.line16"
+        "sa.other_itemized"
       ],
       "evidence": "source-predicted (final (statute) and draft (Schedule A))",
       "evidence_note": "Itemizing; gambling winnings on Schedule 1 line 8b $8,000; losses $10,000. Statute section 165(d)(1) (plaw-119-21 p. 96): '(A) shall be equal to 90 percent of the amount of such losses' = $9,000 '(B) ... allowed only to the extent of the gains' = $8,000. Schedule A (2026 draft) line 17a = $8,000.",
@@ -163,14 +163,14 @@
         "sa.gambling_losses": 1000000
       },
       "expected": {
-        "sa.line16": 800000
+        "sa.other_itemized": 800000
       }
     },
     {
       "id": "ty2026.sa.gambling_90_below_winnings",
       "covers": [
         "sa.line16_gambling",
-        "sa.line16"
+        "sa.other_itemized"
       ],
       "evidence": "source-predicted (final (statute) and draft (Schedule A))",
       "evidence_note": "Winnings $8,000, losses $5,000: 90% of $5,000 = $4,500, under the winnings: line 17a = $4,500 (2025 rule: $5,000).",
@@ -180,7 +180,7 @@
         "sa.gambling_losses": 500000
       },
       "expected": {
-        "sa.line16": 450000
+        "sa.other_itemized": 450000
       }
     },
     {
@@ -274,8 +274,8 @@
       "inputs_partial": {
         "sa.itemizes": true,
         "f1040.line11b": 50000000,
-        "f1040.line13a": 0,
-        "f1040.line13b": 0
+        "f1040.qbi_deduction": 0,
+        "f1040.s1a_deductions": 0
       },
       "expected": {},
       "expect_refusal": "f1040.line15"
@@ -290,8 +290,8 @@
       "inputs_partial": {
         "sa.itemizes": true,
         "f1040.line11b": 38435000,
-        "f1040.line13a": 0,
-        "f1040.line13b": 0
+        "f1040.qbi_deduction": 0,
+        "f1040.s1a_deductions": 0
       },
       "expected": {
         "f1040.gate.itemized_limit": false
@@ -302,10 +302,10 @@
       "covers": [
         "sa.gift_floor",
         "sa.line13_ws",
-        "sa.line14"
+        "sa.gifts_deduction"
       ],
       "evidence": "source-predicted (final (statute, plaw-119-21 p. 165) and draft (Schedule A line 13))",
-      "evidence_note": "Itemizing; Form 1040 line 11b $100,000; cash gifts (line 11) $3,000; no noncash gifts, no income limit, no carryover. Section 170(b)(1)(I) (plaw-119-21 p. 165): allowed 'only to the extent that the aggregate of such contributions exceeds 0.5 percent of the taxpayer's contribution base': 0.5% of $100,000 = $500; $3,000 - $500 = $2,500 = line 13; line 15 (id sa.line14) = $2,500 + carryover $0.",
+      "evidence_note": "Itemizing; Form 1040 line 11b $100,000; cash gifts (line 11) $3,000; no noncash gifts, no income limit, no carryover. Section 170(b)(1)(I) (plaw-119-21 p. 165): allowed 'only to the extent that the aggregate of such contributions exceeds 0.5 percent of the taxpayer's contribution base': 0.5% of $100,000 = $500; $3,000 - $500 = $2,500 = line 13; line 15 (id sa.gifts_deduction) = $2,500 + carryover $0.",
       "inputs_partial": {
         "sa.itemizes": true,
         "sa.unsupported": false,
@@ -318,7 +318,7 @@
       "expected": {
         "sa.gift_floor": 50000,
         "sa.line13_ws": 250000,
-        "sa.line14": 250000
+        "sa.gifts_deduction": 250000
       }
     },
     {
@@ -326,7 +326,7 @@
       "covers": [
         "sa.gift_floor",
         "sa.line13_ws",
-        "sa.line14"
+        "sa.gifts_deduction"
       ],
       "evidence": "source-predicted (final (statute, plaw-119-21 p. 165) and draft (Schedule A line 13))",
       "evidence_note": "As ty2026.sa.gift_floor_basic with cash gifts $300: the floor ($500) exceeds the gifts; nothing is allowed: line 13 $0.",
@@ -342,7 +342,7 @@
       "expected": {
         "sa.gift_floor": 50000,
         "sa.line13_ws": 0,
-        "sa.line14": 0
+        "sa.gifts_deduction": 0
       }
     },
     {
@@ -350,7 +350,7 @@
       "covers": [
         "sa.gift_floor",
         "sa.line13_ws",
-        "sa.line14"
+        "sa.gifts_deduction"
       ],
       "evidence": "source-predicted (final (statute, plaw-119-21 p. 165) and draft (Schedule A line 13))",
       "evidence_note": "Line 11b $12,345.67, cash gifts $100: 0.5% of $12,345.67 = $61.72835, rounded half-up to the cent $61.73 (no source states a rounding: amb.2025.multiplication_subcent, half-up at the multiplication); $100 - $61.73 = $38.27.",
@@ -366,7 +366,7 @@
       "expected": {
         "sa.gift_floor": 6173,
         "sa.line13_ws": 3827,
-        "sa.line14": 3827
+        "sa.gifts_deduction": 3827
       }
     },
     {
@@ -374,7 +374,7 @@
       "covers": [
         "sa.gift_floor",
         "sa.line13_ws",
-        "sa.line14"
+        "sa.gifts_deduction"
       ],
       "evidence": "source-predicted (final (statute, plaw-119-21 p. 165) and draft (Schedule A line 13))",
       "evidence_note": "Line 11b -$5,000, cash gifts $200: the contribution base is taken as not less than zero (as sa.agi_floor does for the medical floor; amb.2026.gift_floor_base), so the floor is $0 and line 13 = $200.",
@@ -390,7 +390,7 @@
       "expected": {
         "sa.gift_floor": 0,
         "sa.line13_ws": 20000,
-        "sa.line14": 20000
+        "sa.gifts_deduction": 20000
       }
     },
     {

@@ -987,7 +987,7 @@ register:
         itemized deduction, so it counts only when itemized deductions are taken; with no winnings it is zero and the
         losses are not asked.
       - Gambling losses are not computed (Schedule A line 16 stays refused).
-      chosen: The first (sa.line16_gambling, sa.line16); a professional gambler (s1.gambling_pro) is refused at line 8b.
+      chosen: The first (sa.line16_gambling, sa.other_itemized); a professional gambler (s1.gambling_pro) is refused at line 8b.
       reason: The owner's decision D14 (Stage 16). The comparison of itemized and standard deductions (sa.itemizes) already
         applies the "only when itemizing" condition. Whether a professional gambler is asked only when there are winnings
         is the authoring agent's reading (a professional gambler with no winnings has nothing on line 8b or line 16).
@@ -1916,7 +1916,7 @@ register:
       - Count both spouses' carryforwards on a joint return (line 12 is the total of the line 16 amounts of every 2024 Form 5695
         either spouse filed).
       - Count only a carryforward from a 2024 Form 5695 filed on a return of the person who is the taxpayer on the 2025 return.
-      chosen: The first (f5695.carry and f5695.line12 ask about your or, on a joint return, your spouse's 2024 Form 5695, and line
+      chosen: The first (f5695.carry and f5695.carry_in ask about your or, on a joint return, your spouse's 2024 Form 5695, and line
         12 takes the total).
       reason: 'The general joint-return rule: "A married couple filing jointly report their combined income and deduct their
         combined allowable expenses on one return" (i1040gi p. 13). The instructions give no exception for this credit, and their

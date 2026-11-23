@@ -21,41 +21,41 @@ changes:
       Line 16c is added on line 20, which C-SCHED-10 adds, so this file applies after s2.yaml.
     operations:
     - set:
-        line: s2.line5
+        line: s2.tip_ss_tax
         field: printed
         from: '5'
         to: 16a
     - set:
-        line: s2.line5
+        line: s2.tip_ss_tax
         field: cite.locator
         from: 'Schedule 2 (2025), line 5, "Social security and Medicare tax on unreported tip income. Attach Form 4137"; f4137
           p. 1, Add lines 11 and 12, "Include as tax on Schedule 2 (Form 1040), line 5"; i1040gi p. 112, Line 5, "Enter
           the total of any taxes from Form 4137"'
         to: 'Schedule 2 (2026), line 16a (draft), "Social security and Medicare tax on unreported tip income. Attach Form 4137"'
     - set:
-        line: s2.line6
+        line: s2.wage_ss_tax
         field: printed
         from: '6'
         to: 16b
     - set:
-        line: s2.line6
+        line: s2.wage_ss_tax
         field: cite.locator
         from: 'Schedule 2 (2025), line 6, "Uncollected social security and Medicare tax on wages. Attach Form 8919"; f8919
           p. 1, Add lines 11 and 12, "Include as tax on your annual tax return (Schedule 2 (Form 1040), line 6"; i1040gi
           p. 112, Line 6, "Enter the total of any taxes from Form 8919"'
         to: 'Schedule 2 (2026), line 16b (draft), "Uncollected social security and Medicare tax on wages. Attach Form 8919"'
     - set:
-        line: s2.line7
+        line: s2.ss_medicare_total
         field: printed
         from: '7'
         to: 16c
     - set:
-        line: s2.line7
+        line: s2.ss_medicare_total
         field: label
         from: Total additional social security and Medicare tax. Add lines 5 and 6
         to: Total additional social security and Medicare tax. Add lines 16a and 16b
     - set:
-        line: s2.line7
+        line: s2.ss_medicare_total
         field: cite.locator
         from: 'Schedule 2 (2025), line 7, "Total additional social security and Medicare tax. Add lines 5 and 6"'
         to: 'Schedule 2 (2026), line 16c (draft), "Total additional social security and Medicare tax. Add lines 16a and 16b"'
@@ -66,7 +66,7 @@ changes:
         - s2.line17d
         - s2.excess_contrib
         to:
-        - s2.line7
+        - s2.ss_medicare_total
         - s2.line17d
         - s2.excess_contrib
     - set:

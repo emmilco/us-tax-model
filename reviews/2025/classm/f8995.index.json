@@ -259,5 +259,18 @@
    "record": "3eaca79644ac8fc1712f231723594a9adaae5bd5b6d28f0aa79f12656652e469",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "52783dd2a25857f6702711d4516c8e669d6d4edda9aaa8110fffc00c02d618c0",
+  "was": "9bccc344c4be78e8570d430373696ba5645861169b01d94ee83279e0704bad33",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f8995.line16": "f8995.qbi_loss_carryforward",
+    "f8995.line17": "f8995.reit_ptp_loss_carryforward"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "9bccc344c4be78e8570d430373696ba5645861169b01d94ee83279e0704bad33"
+  }
+ }
 }

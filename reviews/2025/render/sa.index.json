@@ -96,21 +96,45 @@
    "key": "13",
    "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
    "status": "MATCH",
-   "subject_key": "867f479ca94e1230f1af235eccfcb4f434c4be505824b7b15eaa522ad69afde8"
+   "subject_key": "bf888112eefe0784caaf4e83566b25659b71537c6a9295d8f3c42a2dc62e1713",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sa.line13": "sa.gift_carryover_amount"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "867f479ca94e1230f1af235eccfcb4f434c4be505824b7b15eaa522ad69afde8"
+   }
   },
   {
    "key": "15",
    "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
    "status": "MISMATCH",
    "ruling": "Ruling: scope; i1040sca p. 11, Line 15, 'Complete and attach Form 4684 to figure the amount of your loss'. A casualty or theft is refused before Schedule A: sd.casualty (asked of every filer) feeds sd.other_forms, refused on sd.count, so line 15 is $0 on every computed return. Same ruling as the earlier rounds.",
-   "subject_key": "abcd398e28446e4e65375e3764981a494e93a415d18451729ea0cdd6b3ca6326"
+   "subject_key": "de54bc426371f5effe34d67c7d36f570f1eda50c229e9af9fff7944ae5d289d1",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sa.line15": "sa.casualty_loss"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "abcd398e28446e4e65375e3764981a494e93a415d18451729ea0cdd6b3ca6326"
+   }
   },
   {
    "key": "16",
    "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
    "status": "MISMATCH",
    "ruling": "Ruling: scope; i1040sca p. 11, Line 16 list. The gambling limit matches, as the model says. Casualty and theft losses of income-producing property (Form 4684 lines 32 and 38b, Form 4797 line 18a) and a net qualified disaster loss (Form 4684 line 15) are refused through sd.casualty and sd.business_property into sd.other_forms; the claim-of-right repayment over $3,000 by s3.repaid_income (Schedule 3 and scope refusals); the other listed items by sa.unsupported. Same ruling as the earlier rounds.",
-   "subject_key": "65ca80592cd277c327bb7ef7b16d6dba994c95140f9ad8e760bacd46d9b05a6d"
+   "subject_key": "4ead62d59a200ba8cefa460d45a7140a293a5b164ca4ef38c835672c318b0ce0",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sa.line16": "sa.other_itemized"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "65ca80592cd277c327bb7ef7b16d6dba994c95140f9ad8e760bacd46d9b05a6d"
+   }
   },
   {
    "key": "7",
@@ -147,7 +171,16 @@
    "key": "14",
    "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
    "status": "MATCH",
-   "subject_key": "623bf9bfe6b7cf64fa0408538a2d9b7844956a692d6314413e3765a9db2fec5a"
+   "subject_key": "4ba758ea8e80e545a584cbeecff56b3f070232d773b6c7e4526f61b9f86e574f",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sa.line13": "sa.gift_carryover_amount",
+     "sa.line14": "sa.gifts_deduction"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "623bf9bfe6b7cf64fa0408538a2d9b7844956a692d6314413e3765a9db2fec5a"
+   }
   },
   {
    "key": "17",
@@ -160,7 +193,15 @@
    "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
    "status": "MISMATCH",
    "ruling": "Ruling: finding; medium; the model is right in part: the worksheet's earned income is 'Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15' (i1040gi p. 35, Standard Deduction Worksheet for Dependents) and sa.dep_earned_sum leaves out 6, 8t and 8u. Lines 6 and 8t are refused before this worksheet; line 8u is not. Already filed as BUG-0767 (open). Same ruling as the earlier round.",
-   "subject_key": "d3010db82acc05abdf47b290c3e26006dc3df1c44dea6c80056c8332615105f3"
+   "subject_key": "2b5825d63a239ca740f9cc2d12e9e2e9b474fc491b230be80e3530fe21fa7e04",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sa.line15": "sa.casualty_loss"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "d3010db82acc05abdf47b290c3e26006dc3df1c44dea6c80056c8332615105f3"
+   }
   },
   {
    "key": "3 (sa.dep_line3)",
@@ -202,17 +243,17 @@
   "6": "8db70fd2ee2bc5429eb57efb7e826aface7521ee115b76c7745b3747183e8e0c",
   "8b": "2110bdd5b67d488a307fb0777ec4358da275593ca0b4a6a6f6591b45326492b1",
   "8c": "7b6e087400f16a5c6fe5306b5dafb41746e9b924f0fc951c3f7560f8ef3f704c",
-  "13": "8f37f79b197917e78825187ed283d3ba238cb8d83b9c442e96754ff0ce2e81b2",
-  "15": "07d4d0be769e7b97504876bb90aa233e650a99532d86462b7778e8ebcf14a07f",
-  "16": "38eee0f5206fa2151079fbb58c47f110d8b2b7642eab985be5ff65dbd99eccf9",
+  "13": "287932af46c670f0a849a15eb92e919c5804fd591283286f607afcc40904710b",
+  "15": "915f43d524fa15ed0f79bfe8ea7d06fd8d325070d0a543fa404b1cb742b7cd90",
+  "16": "fd498ab84257c96127ef4d9b3e42feecf079cd2802ad4bcaeac4ea957f85c1dc",
   "7": "1d59e882ba98ae7a8dcf5a3c807217a18fd242122626f5a1ea0b0d30f7d3399e",
   "8e": "a1c3eaa8769af3038750e36dd1ffbdb9801945aaeb0ae10a2eaf1b402c4fdf0c",
   "9": "59551c58e6058836eb81aa7e7079bae6d30cf931898c086363bac3d61c09d8af",
   "10": "92b522a02b3747cf7e857a9a1c388ed33e2503712bdf226862aea42adeee02e9",
   "12": "6a6c25e736ae795437253e856836145d367ae2f602fc7fbc8fef6431563562ea",
-  "14": "09594ec9f531977fac4775eaa7aa8d0590d9a4c367feb9b34febdba4bbb296f8",
+  "14": "5d211fc6e5622f9a857d5fa8f8c09a94d8678af98fb06a322b605ad9a90d33a2",
   "17": "9f55a2e692479780b64a11c6ced9ec01f165a1333bb6b8a3253a25cae9c5df40",
-  "2 (sa.dep_line2)": "f61df01beb9d98c04f23918b262b9064ec9bf2e34522103b322b9ccbf7ec5190",
+  "2 (sa.dep_line2)": "c491f5623624750dae66e27621ffa3e03f69b84da1ea8ce2d3552f795bc0b60a",
   "3 (sa.dep_line3)": "bb2a121adcb5f0e32bbd434e9b4a7b6b80ca36b93a3d446dfd5683b45c539313",
   "4a": "9841bdd28de3be44b498d2e5c93d69a3ceb154f08165210b8b4314b2adc47e9a",
   "4b": "c827351e10f28b0f9c12b208d0fc3bad584ba6fc106cc517a80096b1fa479880",

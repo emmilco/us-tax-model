@@ -3203,7 +3203,7 @@
  },
  {
   "form": "f5695",
-  "subject_sha": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275",
+  "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
   "used": [
    {
     "doc": "i1040gi",
@@ -3408,7 +3408,18 @@
     "date": "2026-11-22",
     "response": ".transcription/completeness/f5695.15c5d0d944bf.1.response.txt"
    }
-  ]
+  ],
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f5695.line12": "f5695.carry_in",
+    "f5695.line14": "f5695.rce_limit",
+    "f5695.line15": "f5695.rce_credit",
+    "f5695.line16": "f5695.carry_out"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
+  }
  },
  {
   "form": "f7203",
@@ -4455,7 +4466,7 @@
  },
  {
   "form": "f8959",
-  "subject_sha": "0fcd29fb9fa1b9e2926c718a2fde6454d48761b16738caaefc72fa1830cb6f5f",
+  "subject_sha": "8804f73b186e8785f314fbe8c9de15a45d5b6ad8fc5f0eb0c41578b812b7d6fd",
   "used": [
    {
     "doc": "i8959",
@@ -4504,6 +4515,24 @@
    "from": "d8e69b498c1a9ef1d7fbcbe340b2e9bcb41fd98832278c3db31f4651c2c385a5",
    "date": "2026-11-21",
    "task": "T-351"
+  },
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f8959.line10": "f8959.se_wages",
+    "f8959.line11": "f8959.se_threshold_left",
+    "f8959.line12": "f8959.se_excess",
+    "f8959.line13": "f8959.se_tax",
+    "f8959.line14": "f8959.rrta_comp",
+    "f8959.line15": "f8959.rrta_threshold",
+    "f8959.line16": "f8959.rrta_excess",
+    "f8959.line17": "f8959.rrta_tax",
+    "f8959.line18": "f8959.total_tax",
+    "f8959.line8": "f8959.se_income",
+    "f8959.line9": "f8959.se_threshold"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "0fcd29fb9fa1b9e2926c718a2fde6454d48761b16738caaefc72fa1830cb6f5f"
   }
  },
  {
@@ -4637,7 +4666,7 @@
  },
  {
   "form": "f8995",
-  "subject_sha": "e188218342edd5ccfcea2ce03eb18cf9045eedcc0c0767e93a76266babf3ed30",
+  "subject_sha": "4d857b6fcf5d16dce4ba1aea8fab357045ba12370d04166675993edc482e0d92",
   "used": [
    {
     "doc": "i8995",
@@ -4676,11 +4705,20 @@
    "from": "85968d4eaed580dfa9fde02380b9cbbc5856a6db38f2cac12662ba2c10004269",
    "date": "2026-11-21",
    "task": "T-351"
+  },
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f8995.line16": "f8995.qbi_loss_carryforward",
+    "f8995.line17": "f8995.reit_ptp_loss_carryforward"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "e188218342edd5ccfcea2ce03eb18cf9045eedcc0c0767e93a76266babf3ed30"
   }
  },
  {
   "form": "f8995a",
-  "subject_sha": "542f24be3cdd7abad509787cf70183209c310f3de4a6dce1f07b065c2a46d069",
+  "subject_sha": "fee327e5453b59615bab350c582b25fe1beb9d932e45070e27b2b089dd48ed1f",
   "used": [
    {
     "doc": "i8995a",
@@ -4722,7 +4760,15 @@
     "date": "2026-11-22",
     "response": ".transcription/completeness/f8995a.542f24be3cdd.1.response.txt"
    }
-  ]
+  ],
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f8995a.line40": "f8995a.reit_ptp_loss_carryforward"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "542f24be3cdd7abad509787cf70183209c310f3de4a6dce1f07b065c2a46d069"
+  }
  },
  {
   "form": "ftc",
@@ -8199,7 +8245,7 @@
  },
  {
   "form": "s2",
-  "subject_sha": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482",
+  "subject_sha": "9c91ba6adb2e931743b9e530906e0ce86655215eead0b28c68bb62bb090516f1",
   "used": [
    {
     "doc": "i1040gi",
@@ -8379,7 +8425,24 @@
     "date": "2026-11-23",
     "response": ".transcription/completeness/s2.c4d6969090bd.1.response.txt"
    }
-  ]
+  ],
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f8959.line18": "f8959.total_tax",
+    "s2.amt_h_mfs_quarter": "s2.amt_h_mfs_phaseout_part",
+    "s2.amt_mfs_quarter": "s2.amt_mfs_phaseout_part",
+    "s2.line12": "s2.niit",
+    "s2.line17c": "s2.hsa_distribution_tax",
+    "s2.line18": "s2.other_additional_total",
+    "s2.line5": "s2.tip_ss_tax",
+    "s2.line6": "s2.wage_ss_tax",
+    "s2.line7": "s2.ss_medicare_total",
+    "s2.line8": "s2.tax_favored_accounts"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "c4d6969090bd05045d5c1953b91038f8a2babe89b9bbde2c818dea940de98482"
+  }
  },
  {
   "form": "s3",

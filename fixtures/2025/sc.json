@@ -84,7 +84,7 @@
           "kind": "money",
           "cents": 553944
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 553944
         },
@@ -158,7 +158,7 @@
           "kind": "money",
           "cents": 540004
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 540004
         },
@@ -221,7 +221,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8995.line16": {
+        "f8995.qbi_loss_carryforward": {
           "kind": "money",
           "cents": -1000000
         }

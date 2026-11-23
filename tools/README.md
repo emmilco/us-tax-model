@@ -797,7 +797,7 @@ changes:
     - {doc: f1040, page: 3, quote: "13a Additional deductions from Schedule 1-A, line 44"}
     verified: draft                        # draft, or final once checked against a final edition
     operations:
-    - set: {line: f1040.line13b, field: printed, from: 13b, to: 13a}
+    - set: {line: f1040.s1a_deductions, field: printed, from: 13b, to: 13a}
 ```
 
 Operations: `add_line {after, line}`, `remove_line {line}`, `set {line, field, from, to}` (`field` a path of keys such

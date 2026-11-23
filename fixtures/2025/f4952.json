@@ -622,7 +622,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         },
@@ -686,7 +686,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f8959.line18": {
+        "f8959.total_tax": {
           "kind": "money",
           "cents": 0
         },
@@ -770,7 +770,7 @@
         "f2441.care": null,
         "f5695.business_use": null,
         "f5695.line7a": null,
-        "f5695.line12": null,
+        "f5695.carry_in": null,
         "f8959.territory_w2": null,
         "f5695.condo": null,
         "sd.carryover": null,
@@ -1119,7 +1119,7 @@
           "kind": "money",
           "cents": 500000
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 2600000
         },
@@ -1242,7 +1242,7 @@
         "f2441.care": null,
         "f5695.business_use": null,
         "f5695.line7a": null,
-        "f5695.line12": null,
+        "f5695.carry_in": null,
         "f8959.territory_w2": null,
         "f5695.condo": null,
         "sd.carryover": null,
@@ -1346,7 +1346,7 @@
         "person[spouse].sc[biz_a].travel_meals": true,
         "person[spouse].sc[biz_a].line1": 16108000,
         "person[spouse].sc[biz_a].line14": 1287000,
-        "person[spouse].sc[biz_a].line16b": 2711900,
+        "person[spouse].sc[biz_a].interest_other": 2711900,
         "person[spouse].sc[biz_a].line21": 529300,
         "person[spouse].sc[biz_a].meals_50": 830800,
         "person[spouse].sc[biz_a].meals_80": 2196400,

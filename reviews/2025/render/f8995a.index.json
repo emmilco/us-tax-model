@@ -29,7 +29,15 @@
    "key": "40",
    "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
    "status": "MATCH",
-   "subject_key": "e0481745c39650fecb27ae3b4f3718898354c9e3b403b19b507ab21d53228f16"
+   "subject_key": "3582db44f192f2ca0aac1f3b2291641fd3e3c23b375b59ad9067bda04f9c41e7",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8995a.line40": "f8995a.reit_ptp_loss_carryforward"
+    },
+    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+    "was": "e0481745c39650fecb27ae3b4f3718898354c9e3b403b19b507ab21d53228f16"
+   }
   },
   {
    "key": "28",
@@ -97,7 +105,7 @@
   "27": "55e827cbc0d1def9e911a106a83b576d84f0d49963aad019710cbfe432fc1893",
   "29": "b28254734a394baea671beb13e14a1c76097c6546d5201e72bdf91a9f769fd87",
   "38": "68624d7557c2a14b8df01e62e2b56ff097f55446dd90e8cc965a72b7ffa7267c",
-  "40": "3f2aa569b0b8584dd4ba336f6e3da3c15782c941e279a7b79b5aef3f19d2a998",
+  "40": "7b0ccf31ce0ea463fbfb929c93c978b3dabc502014a3f47283342150c1555782",
   "28": "2868a38c05b22047c1fd6de66c67141baba2ebfa3388f74d878fc4cafb1220ad",
   "30": "d265d6a0bd1ebb69c0de04acbcf10f65a7e90a9253e5614ed2e775e35caa0f19",
   "31": "448e1725c751e9e01a621ba54b104f60dd2fdbabf121aba5ae0bfb11555c2236",

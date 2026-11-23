@@ -161,14 +161,14 @@ changes:
           s3.prior_forms: false
           ftc.carryover: false
           f5695.carry: true
-          f5695.line12: 150000
+          f5695.carry_in: 150000
         to:
           s3.prior_other_forms: true
           s3.prior_amt: false
           s3.prior_forms: false
           ftc.carryover: false
           f5695.carry: true
-          f5695.line12: 150000
+          f5695.carry_in: 150000
     - set_interview:
         file: coverage/education_energy.yaml
         list: rows

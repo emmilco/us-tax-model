@@ -113,8 +113,8 @@ changes:
       page: 3
       quote: Add the amounts in far-right column for lines 4 through 17z
     verified: draft
-    note: sa.deduction is sa.line17 (2026 Schedule A line 18, the sum of lines 4 to 17z, before any section 68 limit) for
-      an itemizer and the standard deduction otherwise, so with f1040.line12f (C-PRI-01) and f1040.line13b (Schedule 1-A,
+    note: sa.deduction is sa.total_itemized (2026 Schedule A line 18, the sum of lines 4 to 17z, before any section 68 limit) for
+      an itemizer and the standard deduction otherwise, so with f1040.line12f (C-PRI-01) and f1040.s1a_deductions (Schedule 1-A,
       printed 13a from 2026, C-PRI-02) it is the subtraction both readings of the Line 11 instructions name. The section 68
       limit itself is refused on Form 1040 line 15 (f1040.gate.itemized_limit, C-PRI-18), so 12e never differs from the sum
       on a completed return; the QBI computation reads the sum, not 12e's limited amount, either way.
@@ -130,11 +130,11 @@ changes:
         field: expr.of
         from:
         - sa.deduction
-        - f1040.line13b
+        - f1040.s1a_deductions
         to:
         - sa.deduction
         - f1040.line12f
-        - f1040.line13b
+        - f1040.s1a_deductions
     - set:
         line: qbi.deductions_before
         field: cite

@@ -790,7 +790,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": false,
         "f5695.line17c": false,
@@ -1417,7 +1417,7 @@
       "id": "advland.retirement.code1_born_1955",
       "covers": [
         "retirement.miscoded",
-        "s2.line8"
+        "s2.tax_favored_accounts"
       ],
       "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
       "evidence_note": "Scout adversarial-retirement M1. A single filer born in 1955 (59 1/2 or older all through 2025) takes $20,000 from a traditional IRA; the custodian coded it 1 and the filer names no exception. i5329 p. 5, exception 12: \"Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older.\" Predicted: line 4b $20,000; Form 5329 line 1 $20,000, line 2 $20,000, line 4 $0; Schedule 2 line 8 $0 (was $2,000).",
@@ -1435,7 +1435,7 @@
           "kind": "money",
           "cents": 2000000
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         }
@@ -1445,7 +1445,7 @@
       "id": "advland.retirement.code1_born_1966_after",
       "covers": [
         "retirement.after59",
-        "s2.line8"
+        "s2.tax_favored_accounts"
       ],
       "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
       "evidence_note": "Scout M1, the open birth years. A filer born in 1966 may have turned 59 1/2 during 2025, so the tool asks; the filer was 59 1/2 or older at the one payment of $10,000 (code 1). Exception 12 covers it (i5329 p. 5). Predicted: Schedule 2 line 8 $0.",
@@ -1471,7 +1471,7 @@
           "kind": "money",
           "cents": 1000000
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         }
@@ -1481,7 +1481,7 @@
       "id": "advland.retirement.code1_born_1966_before",
       "covers": [
         "retirement.after59",
-        "s2.line8"
+        "s2.tax_favored_accounts"
       ],
       "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
       "evidence_note": "Scout M1, the open birth years: as advland.retirement.code1_born_1966_after, but the payment came before the filer turned 59 1/2, and no exception is named. i5329 p. 3, line 1; p. 5, line 4, 10%. Predicted: Schedule 2 line 8 $1,000.",
@@ -1507,7 +1507,7 @@
           "kind": "money",
           "cents": 1000000
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 100000
         }
@@ -1519,7 +1519,7 @@
         "sa.e05_claimed",
         "sa.line1",
         "person.x_c05",
-        "s2.line8"
+        "s2.tax_favored_accounts"
       ],
       "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
       "evidence_note": "Scout adversarial-retirement L1. A single filer with $52,000 of wages takes $20,000 (code 1) from a traditional IRA and claims exception 05 for $8,000 without ticking the medical-bills box; the medical expenses are now asked. i5329 p. 5, exception 05: up to \"unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income\". Predicted: AGI $72,000; medical $15,000 less $5,400 = $9,600 (Schedule A line 4); exception 05 $8,000; Form 5329 line 3 $12,000; Schedule 2 line 8 $1,200 (was $2,000, the exception cut to $0). Standard deduction.",
@@ -1551,7 +1551,7 @@
           "kind": "money",
           "cents": 960000
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 120000
         }

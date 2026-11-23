@@ -2615,7 +2615,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -4390,7 +4390,7 @@
         "person[taxpayer].sc[biz_a].line14": 1250700,
         "person[taxpayer].sc[biz_a].line15": 981400,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -4536,7 +4536,7 @@
         "person[spouse].sc[biz_a].line14": 0,
         "person[spouse].sc[biz_a].line15": 0,
         "person[spouse].sc[biz_a].line16a": 42600,
-        "person[spouse].sc[biz_a].line16b": 0,
+        "person[spouse].sc[biz_a].interest_other": 0,
         "person[spouse].sc[biz_a].line17": 3000000,
         "person[spouse].sc[biz_a].line18": 0,
         "person[spouse].sc[biz_a].line19": 0,
@@ -5821,7 +5821,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 2376400,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -7486,7 +7486,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -7804,7 +7804,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -8209,7 +8209,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -8721,7 +8721,7 @@
         "person[spouse].sc[biz_a].line14": 0,
         "person[spouse].sc[biz_a].line15": 0,
         "person[spouse].sc[biz_a].line16a": 0,
-        "person[spouse].sc[biz_a].line16b": 0,
+        "person[spouse].sc[biz_a].interest_other": 0,
         "person[spouse].sc[biz_a].line17": 1044600,
         "person[spouse].sc[biz_a].line18": 844700,
         "person[spouse].sc[biz_a].line19": 0,
@@ -8996,7 +8996,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -9314,7 +9314,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -9762,7 +9762,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -10079,7 +10079,7 @@
         "person[taxpayer].sc[biz_a].line14": 2687600,
         "person[taxpayer].sc[biz_a].line15": 24400,
         "person[taxpayer].sc[biz_a].line16a": 2552800,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 1405800,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -10497,7 +10497,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -11079,7 +11079,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -11397,7 +11397,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -11832,7 +11832,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -12453,7 +12453,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -13030,7 +13030,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -13348,7 +13348,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -13400,7 +13400,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 0,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 957200,
@@ -13779,7 +13779,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -14367,7 +14367,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -14686,7 +14686,7 @@
         "person[taxpayer].sc[biz_a].line14": 3000000,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -14825,7 +14825,7 @@
         "person[taxpayer].sc[biz_b].line14": 0,
         "person[taxpayer].sc[biz_b].line15": 0,
         "person[taxpayer].sc[biz_b].line16a": 1984200,
-        "person[taxpayer].sc[biz_b].line16b": 0,
+        "person[taxpayer].sc[biz_b].interest_other": 0,
         "person[taxpayer].sc[biz_b].line17": 0,
         "person[taxpayer].sc[biz_b].line18": 0,
         "person[taxpayer].sc[biz_b].line19": 1857900,
@@ -15206,7 +15206,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -15524,7 +15524,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -15943,7 +15943,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -16416,7 +16416,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -17667,7 +17667,7 @@
         "person[taxpayer].sc[biz_a].meals_50": 0,
         "person[taxpayer].sc[biz_a].ho_uses": false,
         "person[taxpayer].sc[biz_a].rent_equipment": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line8": 0,
         "person[taxpayer].sc[biz_a].line48": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
@@ -18266,7 +18266,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -18376,19 +18376,19 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line7": {
+        "s2.ss_medicare_total": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         },
@@ -18400,15 +18400,15 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },
@@ -18650,19 +18650,19 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line7": {
+        "s2.ss_medicare_total": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         },
@@ -18674,15 +18674,15 @@
           "kind": "money",
           "cents": 168512
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 33052
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },
@@ -18908,7 +18908,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 1034100,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -19080,19 +19080,19 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line7": {
+        "s2.ss_medicare_total": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         },
@@ -19104,15 +19104,15 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },
@@ -19394,19 +19394,19 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line7": {
+        "s2.ss_medicare_total": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         },
@@ -19418,15 +19418,15 @@
           "kind": "money",
           "cents": 355955
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 213723
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },
@@ -19638,19 +19638,19 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line7": {
+        "s2.ss_medicare_total": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         },
@@ -19662,15 +19662,15 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },
@@ -19907,19 +19907,19 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line7": {
+        "s2.ss_medicare_total": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 35145
         },
@@ -19931,15 +19931,15 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },
@@ -20191,19 +20191,19 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line7": {
+        "s2.ss_medicare_total": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         },
@@ -20215,15 +20215,15 @@
           "kind": "money",
           "cents": 64668
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 269690
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },
@@ -20425,19 +20425,19 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line7": {
+        "s2.ss_medicare_total": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 30000
         },
@@ -20449,15 +20449,15 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },
@@ -20546,7 +20546,7 @@
         "person[taxpayer].sc[t].employees": false,
         "person[taxpayer].sc[t].line15": 0,
         "person[taxpayer].sc[t].line16a": 0,
-        "person[taxpayer].sc[t].line16b": 0,
+        "person[taxpayer].sc[t].interest_other": 0,
         "person[taxpayer].sc[t].line17": 0,
         "person[taxpayer].sc[t].line18": 0,
         "person[taxpayer].sc[t].line20b": 0,
@@ -20602,7 +20602,7 @@
         "person[spouse].sc[s].employees": false,
         "person[spouse].sc[s].line15": 0,
         "person[spouse].sc[s].line16a": 0,
-        "person[spouse].sc[s].line16b": 0,
+        "person[spouse].sc[s].interest_other": 0,
         "person[spouse].sc[s].line17": 0,
         "person[spouse].sc[s].line18": 0,
         "person[spouse].sc[s].line20b": 0,
@@ -20740,19 +20740,19 @@
           "kind": "money",
           "cents": 1130365
         },
-        "s2.line5": {
+        "s2.tip_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line6": {
+        "s2.wage_ss_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line7": {
+        "s2.ss_medicare_total": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line8": {
+        "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
         },
@@ -20764,15 +20764,15 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line12": {
+        "s2.niit": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line17c": {
+        "s2.hsa_distribution_tax": {
           "kind": "money",
           "cents": 0
         },
-        "s2.line18": {
+        "s2.other_additional_total": {
           "kind": "money",
           "cents": 0
         },
@@ -21988,7 +21988,7 @@
         "f5695.line4": 0,
         "f5695.line5a": false,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f8863.paid": false,
         "f8959.territory_w2": false,
         "f8960.unsupported": false,
@@ -22454,7 +22454,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -25243,7 +25243,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -26278,7 +26278,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 2981100,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 2201600,
+        "person[taxpayer].sc[biz_a].interest_other": 2201600,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 1293700,
@@ -26423,7 +26423,7 @@
         "$ltc@person[taxpayer].sc[biz_b]": [],
         "person[taxpayer].sc[biz_b].scveh[car_1].parking": 0,
         "dependent[dep_b].tin": true,
-        "person[taxpayer].sc[biz_b].line16b": 2230500,
+        "person[taxpayer].sc[biz_b].interest_other": 2230500,
         "person[taxpayer].sc[biz_b].passive": true,
         "dependent[dep_b].other_claimant": false,
         "$scveh@person[taxpayer].sc[biz_b]": [
@@ -26803,7 +26803,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 1492500,
@@ -28689,11 +28689,11 @@
           "kind": "money",
           "cents": 5619100
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -29157,11 +29157,11 @@
           "kind": "money",
           "cents": 2765600
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 34400
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -29552,11 +29552,11 @@
           "kind": "money",
           "cents": 1575000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -30028,11 +30028,11 @@
           "kind": "money",
           "cents": 7255472
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -30474,11 +30474,11 @@
           "kind": "money",
           "cents": 2362500
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -30932,11 +30932,11 @@
           "kind": "money",
           "cents": 3150000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -31321,11 +31321,11 @@
           "kind": "money",
           "cents": 300000
         },
-        "f1040.line13a": {
+        "f1040.qbi_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "f1040.line13b": {
+        "f1040.s1a_deductions": {
           "kind": "money",
           "cents": 0
         },
@@ -31699,7 +31699,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 0,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 1492500,
@@ -32760,7 +32760,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line5a": false,
         "f5695.line7a": false,
         "s1.cod_any": false,
@@ -33483,7 +33483,7 @@
         "f5695.line4": 0,
         "f5695.line5a": false,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -33850,11 +33850,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -34009,7 +34009,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -34405,11 +34405,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 169500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -34697,7 +34697,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 100000,
@@ -34789,11 +34789,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 894600
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -35172,7 +35172,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
         "f5695.line19d_ii": 0,
@@ -35248,15 +35248,15 @@
           "kind": "money",
           "cents": 300000
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 122500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 122500
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 177500
         },
@@ -35513,7 +35513,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 500000,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -35597,11 +35597,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 1005500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -35890,7 +35890,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 100000,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -35977,7 +35977,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -36131,7 +36131,7 @@
         "f5695.line4": 0,
         "f5695.line5a": false,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -36484,11 +36484,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -36607,7 +36607,7 @@
         "f5695.line4": 0,
         "f5695.line5a": false,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": false,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -36961,11 +36961,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -37063,7 +37063,7 @@
         "f5695.line4": 0,
         "f5695.line5a": false,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -37371,11 +37371,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -37660,7 +37660,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line19a": 50000,
         "f5695.line19d_i": 0,
         "f5695.line19d_ii": 0,
@@ -37743,11 +37743,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 845500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -38036,7 +38036,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
         "f5695.line19d_ii": 0,
@@ -38119,7 +38119,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -38408,7 +38408,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
         "f5695.line19d_ii": 0,
@@ -38493,11 +38493,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 725500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -38790,7 +38790,7 @@
         "f5695.line2": 600000,
         "f5695.line3": 0,
         "f5695.line4": 1200000,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
         "f5695.line19d_ii": 0,
@@ -38867,15 +38867,15 @@
           "kind": "money",
           "cents": 540000
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 387500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 387500
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 152500
         },
@@ -39164,7 +39164,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 800000,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
         "f5695.line19d_ii": 0,
@@ -39246,15 +39246,15 @@
           "kind": "money",
           "cents": 240000
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 654600
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 240000
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 0
         },
@@ -39514,7 +39514,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 150000,
+        "f5695.carry_in": 150000,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
         "f5695.line19d_ii": 0,
@@ -39583,11 +39583,11 @@
           "kind": "money",
           "cents": 150000
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 507500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 150000
         },
@@ -39844,7 +39844,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 100000,
         "f5695.line19d_i": 60000,
@@ -39928,15 +39928,15 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 745500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 0
         },
@@ -40221,7 +40221,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -40305,11 +40305,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 735500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
@@ -40594,7 +40594,7 @@
         "f5695.line2": 0,
         "f5695.line3": 0,
         "f5695.line4": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 100000,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -40681,15 +40681,15 @@
           "kind": "money",
           "cents": 0
         },
-        "f5695.line14": {
+        "f5695.rce_limit": {
           "kind": "money",
           "cents": 785500
         },
-        "f5695.line15": {
+        "f5695.rce_credit": {
           "kind": "money",
           "cents": 0
         },
-        "f5695.line16": {
+        "f5695.carry_out": {
           "kind": "money",
           "cents": 0
         },
@@ -42505,7 +42505,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -43368,7 +43368,7 @@
         "f5695.line3": 0,
         "f5695.line4": 0,
         "f5695.battery_cost": 0,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line18a": 0,
         "f5695.line19a": 0,
         "f5695.line19d_i": 0,
@@ -43627,7 +43627,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -44338,7 +44338,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -44694,7 +44694,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 147200,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -45066,7 +45066,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -45421,7 +45421,7 @@
         "person[taxpayer].sc[biz_a].line14": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 894400,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].line19": 0,
@@ -45981,7 +45981,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -46676,7 +46676,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -47301,7 +47301,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -47997,7 +47997,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -48553,7 +48553,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -49324,7 +49324,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -50178,7 +50178,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -50900,7 +50900,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -51623,7 +51623,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -52451,7 +52451,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -53123,7 +53123,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -53741,7 +53741,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -54321,7 +54321,7 @@
         "f5695.line5a": false,
         "f5695.battery_cost": 0,
         "f5695.line7a": false,
-        "f5695.line12": 0,
+        "f5695.carry_in": 0,
         "f5695.line17a": true,
         "f5695.line17b": true,
         "f5695.line17c": true,
@@ -55320,15 +55320,15 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "money",
           "cents": 0
         },
@@ -55352,11 +55352,11 @@
           "kind": "money",
           "cents": 544700
         },
-        "sa.line14": {
+        "sa.gifts_deduction": {
           "kind": "money",
           "cents": 544700
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 8100400
         }
@@ -55581,15 +55581,15 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "money",
           "cents": 0
         },
@@ -55613,11 +55613,11 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line14": {
+        "sa.gifts_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 500000
         },
@@ -55963,15 +55963,15 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "money",
           "cents": 0
         },
@@ -55995,11 +55995,11 @@
           "kind": "money",
           "cents": 1752800
         },
-        "sa.line14": {
+        "sa.gifts_deduction": {
           "kind": "money",
           "cents": 1826100
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 6420300
         },
@@ -56231,11 +56231,11 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "money",
           "cents": 0
         },
@@ -56259,11 +56259,11 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line14": {
+        "sa.gifts_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 0
         },
@@ -56504,15 +56504,15 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "money",
           "cents": 0
         },
@@ -56536,11 +56536,11 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line14": {
+        "sa.gifts_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 2000000
         },
@@ -56788,15 +56788,15 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "money",
           "cents": 120000
         },
@@ -56820,11 +56820,11 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line14": {
+        "sa.gifts_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 1420000
         },
@@ -57195,15 +57195,15 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "money",
           "cents": 0
         },
@@ -57227,11 +57227,11 @@
           "kind": "money",
           "cents": 925800
         },
-        "sa.line14": {
+        "sa.gifts_deduction": {
           "kind": "money",
           "cents": 2156100
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 5225117
         },
@@ -57487,15 +57487,15 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line13": {
+        "sa.gift_carryover_amount": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line15": {
+        "sa.casualty_loss": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line16": {
+        "sa.other_itemized": {
           "kind": "money",
           "cents": 500000
         },
@@ -57519,11 +57519,11 @@
           "kind": "money",
           "cents": 0
         },
-        "sa.line14": {
+        "sa.gifts_deduction": {
           "kind": "money",
           "cents": 0
         },
-        "sa.line17": {
+        "sa.total_itemized": {
           "kind": "money",
           "cents": 1800000
         },
@@ -57955,7 +57955,7 @@
         "person[taxpayer].sc[d].employees": false,
         "person[taxpayer].sc[d].line15": 0,
         "person[taxpayer].sc[d].line16a": 0,
-        "person[taxpayer].sc[d].line16b": 0,
+        "person[taxpayer].sc[d].interest_other": 0,
         "person[taxpayer].sc[d].line17": 0,
         "person[taxpayer].sc[d].line18": 0,
         "person[taxpayer].sc[d].line20b": 0,
@@ -58307,7 +58307,7 @@
         "person[taxpayer].sc[biz_a].line11": 0,
         "person[taxpayer].sc[biz_a].line15": 0,
         "person[taxpayer].sc[biz_a].line16a": 147200,
-        "person[taxpayer].sc[biz_a].line16b": 0,
+        "person[taxpayer].sc[biz_a].interest_other": 0,
         "person[taxpayer].sc[biz_a].line17": 0,
         "person[taxpayer].sc[biz_a].line18": 0,
         "person[taxpayer].sc[biz_a].rent_equipment": 0,
@@ -58546,7 +58546,7 @@
         "person[taxpayer].sc[desk].employees": false,
         "person[taxpayer].sc[desk].line15": 0,
         "person[taxpayer].sc[desk].line16a": 0,
-        "person[taxpayer].sc[desk].line16b": 0,
+        "person[taxpayer].sc[desk].interest_other": 0,
         "person[taxpayer].sc[desk].line17": 0,
         "person[taxpayer].sc[desk].line18": 0,
         "person[taxpayer].sc[desk].line20b": 0,
@@ -67799,7 +67799,7 @@
         "person[taxpayer].sc[firm].employees": false,
         "person[taxpayer].sc[firm].line15": 0,
         "person[taxpayer].sc[firm].line16a": 0,
-        "person[taxpayer].sc[firm].line16b": 0,
+        "person[taxpayer].sc[firm].interest_other": 0,
         "person[taxpayer].sc[firm].line17": 0,
         "person[taxpayer].sc[firm].line18": 0,
         "person[taxpayer].sc[firm].line20b": 0,

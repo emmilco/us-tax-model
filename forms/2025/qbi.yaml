@@ -338,7 +338,7 @@ form:
         op: sum
         of:
           - sa.deduction
-          - f1040.line13b
+          - f1040.s1a_deductions
       cite:
         doc: i8995-correction
         locator: 'Correction to 2025 Form 8995 instructions, Line 11, "Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b"'

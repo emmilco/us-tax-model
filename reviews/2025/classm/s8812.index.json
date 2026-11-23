@@ -759,5 +759,19 @@
    "record": "410e76a372c2c1ff0bd6c946982519d0863ca01b65f157b80e33ea5ecadd1c1c",
    "status": "SKIPPED"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "59b1350ac097c19fb8d151fc1fccd548e50a42cec8a1d98773b515f1171246ea",
+  "was": "fbc882b58626a88ffbefcb1eb061a6f595f8a1e87078d8d92fa3c119f15c83d4",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "f8959.line13": "f8959.se_tax",
+    "s2.line5": "s2.tip_ss_tax",
+    "s2.line6": "s2.wage_ss_tax"
+   },
+   "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
+   "was": "fbc882b58626a88ffbefcb1eb061a6f595f8a1e87078d8d92fa3c119f15c83d4"
+  }
+ }
 }

@@ -455,7 +455,7 @@ form:
         doc: f1040s1a
         locator: 'p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and
           tips shown in box 5"'
-  - id: s1a.line4c
+  - id: s1a.tips_employee
     printed: 4c
     label: If you only received qualified tips as an employee with respect to employment with one employer, enter the larger
       of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c
@@ -502,7 +502,7 @@ form:
       cite:
         doc: i1040gi
         locator: p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet
-  - id: s1a.line5
+  - id: s1a.tips_business
     printed: '5'
     label: Qualified tips received in the course of a trade or business
     type: NonNegDollars
@@ -532,12 +532,12 @@ form:
     expr:
       op: sum
       of:
-      - s1a.line4c
-      - s1a.line5
+      - s1a.tips_employee
+      - s1a.tips_business
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 6
-  - id: s1a.line6
+  - id: s1a.tips_total
     printed: '6'
     label: Add lines 4c and 5
     type: NonNegDollars
@@ -567,12 +567,12 @@ form:
     expr:
       op: smaller_of
       of:
-      - s1a.line6
+      - s1a.tips_total
       - s1a.tips_max
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 7
-  - id: s1a.line7
+  - id: s1a.tips_capped
     printed: '7'
     label: Enter the smaller of the amount on line 6 or $25,000
     type: NonNegDollars
@@ -635,7 +635,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 8
-  - id: s1a.line8
+  - id: s1a.tips_magi
     printed: '8'
     label: Enter the amount from line 3
     type: Dollars
@@ -698,7 +698,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 9
-  - id: s1a.line9
+  - id: s1a.tips_threshold
     printed: '9'
     label: Enter $150,000 ($300,000 if married filing jointly)
     type: NonNegDollars
@@ -727,12 +727,12 @@ form:
     type: Dollars
     expr:
       op: subtract
-      from: s1a.line8
-      take: s1a.line9
+      from: s1a.tips_magi
+      take: s1a.tips_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 10
-  - id: s1a.line10
+  - id: s1a.tips_over
     printed: '10'
     label: Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13
     type: Dollars
@@ -762,8 +762,8 @@ form:
     expr:
       op: test
       gt:
-      - s1a.line8
-      - s1a.line9
+      - s1a.tips_magi
+      - s1a.tips_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 10, "If zero or less"
@@ -773,8 +773,8 @@ form:
     type: NonNegDollars
     expr:
       op: subtract_floor0
-      from: s1a.line8
-      take: s1a.line9
+      from: s1a.tips_magi
+      take: s1a.tips_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 10, "Subtract line 9 from line 8. If zero or less, enter the amount from line
@@ -804,7 +804,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 12, "Multiply line 11 by $100"
-  - id: s1a.line12
+  - id: s1a.tips_reduction
     printed: '12'
     label: Multiply line 11 by $100
     type: NonNegDollars
@@ -833,8 +833,8 @@ form:
     type: NonNegDollars
     expr:
       op: subtract_floor0
-      from: s1a.line7
-      take: s1a.line12
+      from: s1a.tips_capped
+      take: s1a.tips_reduction
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 13
@@ -850,7 +850,7 @@ form:
           eq:
           - s1a.line10_over
           - const: false
-        then: s1a.line7
+        then: s1a.tips_capped
       - guard:
           op: test
           eq:
@@ -924,7 +924,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), Part II caution, "If married, you must file jointly to claim this deduction"
-  - id: s1a.line13
+  - id: s1a.tips_deduction
     printed: '13'
     label: Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-
     type: NonNegDollars
@@ -1108,7 +1108,7 @@ form:
         doc: f1040s1a
         locator: 'p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all
           Medicare wages and tips shown in box 5"'
-  - id: s1a.line14a
+  - id: s1a.ot_w2
     printed: 14a
     label: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not
       reported on Form W-2, box 1, see instructions
@@ -1155,7 +1155,7 @@ form:
       cite:
         doc: i1040gi
         locator: p. 108, Schedule 1-A, line 14b
-  - id: s1a.line14b
+  - id: s1a.ot_1099
     printed: 14b
     label: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3
     type: NonNegDollars
@@ -1185,12 +1185,12 @@ form:
     expr:
       op: sum
       of:
-      - s1a.line14a
-      - s1a.line14b
+      - s1a.ot_w2
+      - s1a.ot_1099
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 14c
-  - id: s1a.line14c
+  - id: s1a.ot_total
     printed: 14c
     label: Add lines 14a and 14b
     type: NonNegDollars
@@ -1280,12 +1280,12 @@ form:
     expr:
       op: smaller_of
       of:
-      - s1a.line14c
+      - s1a.ot_total
       - s1a.ot_max
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 15
-  - id: s1a.line15
+  - id: s1a.ot_capped
     printed: '15'
     label: Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)
     type: NonNegDollars
@@ -1318,7 +1318,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 16
-  - id: s1a.line16
+  - id: s1a.ot_magi
     printed: '16'
     label: Enter the amount from line 3
     type: Dollars
@@ -1381,7 +1381,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 17
-  - id: s1a.line17
+  - id: s1a.ot_threshold
     printed: '17'
     label: Enter $150,000 ($300,000 if married filing jointly)
     type: NonNegDollars
@@ -1410,12 +1410,12 @@ form:
     type: Dollars
     expr:
       op: subtract
-      from: s1a.line16
-      take: s1a.line17
+      from: s1a.ot_magi
+      take: s1a.ot_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 18
-  - id: s1a.line18
+  - id: s1a.ot_over
     printed: '18'
     label: Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21
     type: Dollars
@@ -1445,8 +1445,8 @@ form:
     expr:
       op: test
       gt:
-      - s1a.line16
-      - s1a.line17
+      - s1a.ot_magi
+      - s1a.ot_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 18, "If zero or less"
@@ -1456,8 +1456,8 @@ form:
     type: NonNegDollars
     expr:
       op: subtract_floor0
-      from: s1a.line16
-      take: s1a.line17
+      from: s1a.ot_magi
+      take: s1a.ot_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 18, "Subtract line 17 from line 16. If zero or less, enter the amount from
@@ -1487,7 +1487,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 20, "Multiply line 19 by $100"
-  - id: s1a.line20
+  - id: s1a.ot_reduction
     printed: '20'
     label: Multiply line 19 by $100
     type: NonNegDollars
@@ -1516,8 +1516,8 @@ form:
     type: NonNegDollars
     expr:
       op: subtract_floor0
-      from: s1a.line15
-      take: s1a.line20
+      from: s1a.ot_capped
+      take: s1a.ot_reduction
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 21
@@ -1533,7 +1533,7 @@ form:
           eq:
           - s1a.line18_over
           - const: false
-        then: s1a.line15
+        then: s1a.ot_capped
       - guard:
           op: test
           eq:
@@ -1607,7 +1607,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), Part III caution, "If married, you must file jointly to claim this deduction"
-  - id: s1a.line21
+  - id: s1a.ot_deduction
     printed: '21'
     label: Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less, enter -0-
     type: NonNegDollars
@@ -1661,7 +1661,7 @@ form:
     cite:
       doc: i1040gi
       locator: p. 110, Schedule 1-A, line 22, "If you need to report more than two VINs, attach a statement"
-  - id: s1a.line23
+  - id: s1a.vli_total
     printed: '23'
     label: Add lines 22a and 22b, column (iii)
     type: NonNegDollars
@@ -1712,12 +1712,12 @@ form:
     expr:
       op: smaller_of
       of:
-      - s1a.line23
+      - s1a.vli_total
       - s1a.car_max
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 24
-  - id: s1a.line24
+  - id: s1a.vli_capped
     printed: '24'
     label: Enter the smaller of the amount on line 23 or $10,000
     type: NonNegDollars
@@ -1769,7 +1769,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 25
-  - id: s1a.line25
+  - id: s1a.vli_magi
     printed: '25'
     label: Enter the amount from line 3
     type: Dollars
@@ -1831,7 +1831,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 26
-  - id: s1a.line26
+  - id: s1a.vli_threshold
     printed: '26'
     label: Enter $100,000 ($200,000 if married filing jointly)
     type: NonNegDollars
@@ -1859,12 +1859,12 @@ form:
     type: Dollars
     expr:
       op: subtract
-      from: s1a.line25
-      take: s1a.line26
+      from: s1a.vli_magi
+      take: s1a.vli_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 27
-  - id: s1a.line27
+  - id: s1a.vli_over
     printed: '27'
     label: Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30
     type: Dollars
@@ -1893,8 +1893,8 @@ form:
     expr:
       op: test
       gt:
-      - s1a.line25
-      - s1a.line26
+      - s1a.vli_magi
+      - s1a.vli_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 27, "If zero or less"
@@ -1904,8 +1904,8 @@ form:
     type: NonNegDollars
     expr:
       op: subtract_floor0
-      from: s1a.line25
-      take: s1a.line26
+      from: s1a.vli_magi
+      take: s1a.vli_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 27, "Subtract line 26 from line 25. If zero or less, enter the amount from
@@ -1935,7 +1935,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 29, "Multiply line 28 by $200"
-  - id: s1a.line29
+  - id: s1a.vli_reduction
     printed: '29'
     label: Multiply line 28 by $200
     type: NonNegDollars
@@ -1963,8 +1963,8 @@ form:
     type: NonNegDollars
     expr:
       op: subtract_floor0
-      from: s1a.line24
-      take: s1a.line29
+      from: s1a.vli_capped
+      take: s1a.vli_reduction
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 30
@@ -1980,7 +1980,7 @@ form:
           eq:
           - s1a.line27_over
           - const: false
-        then: s1a.line24
+        then: s1a.vli_capped
       - guard:
           op: test
           eq:
@@ -1991,7 +1991,7 @@ form:
       doc: i1040gi
       locator: p. 110, Schedule 1-A, line 27, "If the amount on line 27 is zero or less ... Skip lines 28 and 29 and enter
         the amount from Schedule 1-A, line 24, on Schedule 1-A, line 30"
-  - id: s1a.line30
+  - id: s1a.vli_deduction
     printed: '30'
     label: Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 24. If zero or less, enter -0-
     type: NonNegDollars
@@ -2072,7 +2072,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 31
-  - id: s1a.line31
+  - id: s1a.senior_magi
     printed: '31'
     label: Enter the amount from line 3
     type: Dollars
@@ -2156,7 +2156,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 32
-  - id: s1a.line32
+  - id: s1a.senior_threshold
     printed: '32'
     label: Enter $75,000 ($150,000 if married filing jointly)
     type: NonNegDollars
@@ -2186,12 +2186,12 @@ form:
     type: Dollars
     expr:
       op: subtract
-      from: s1a.line31
-      take: s1a.line32
+      from: s1a.senior_magi
+      take: s1a.senior_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 33
-  - id: s1a.line33
+  - id: s1a.senior_over
     printed: '33'
     label: Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35
     type: Dollars
@@ -2222,8 +2222,8 @@ form:
     expr:
       op: test
       gt:
-      - s1a.line31
-      - s1a.line32
+      - s1a.senior_magi
+      - s1a.senior_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 33, "If zero or less, enter $6,000 on line 35"
@@ -2233,8 +2233,8 @@ form:
     type: NonNegDollars
     expr:
       op: subtract_floor0
-      from: s1a.line31
-      take: s1a.line32
+      from: s1a.senior_magi
+      take: s1a.senior_threshold
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 33, "Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35"
@@ -2250,7 +2250,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 34
-  - id: s1a.line34
+  - id: s1a.senior_reduction
     printed: '34'
     label: Multiply line 33 by 6% (0.06)
     type: NonNegDollars
@@ -2291,7 +2291,7 @@ form:
     expr:
       op: subtract_floor0
       from: s1a.senior_amount
-      take: s1a.line34
+      take: s1a.senior_reduction
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 35
@@ -2318,7 +2318,7 @@ form:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 35, "Subtract line 34 from $6,000. If zero or less, enter -0-", line 33, "If
         zero or less, enter $6,000 on line 35"
-  - id: s1a.line35
+  - id: s1a.senior_phased
     printed: '35'
     label: Subtract line 34 from $6,000. If zero or less, enter -0-
     type: NonNegDollars
@@ -2407,7 +2407,7 @@ form:
           eq:
           - household.taxpayer_work_ssn
           - const: true
-        then: s1a.line35
+        then: s1a.senior_phased
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 36a
@@ -2459,7 +2459,7 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), Part V caution, "If married, you must file jointly to claim this deduction"
-  - id: s1a.line36a
+  - id: s1a.senior_you
     printed: 36a
     label: If you have a valid social security number (see instructions) and were born before January 2, 1961, enter the amount
       from line 35
@@ -2564,7 +2564,7 @@ form:
     type: NonNegDollars
     expr:
       op: copy
-      from: s1a.line35
+      from: s1a.senior_phased
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 36b
@@ -2576,7 +2576,7 @@ form:
       cite:
         doc: i1040gi
         locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
-  - id: s1a.line36b
+  - id: s1a.senior_spouse
     printed: 36b
     label: If you are married filing jointly, your spouse has a valid social security number (see instructions), and your
       spouse was born before January 2, 1961, enter the amount from line 35
@@ -2600,29 +2600,29 @@ form:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 36b; i1040gi p. 110, "The maximum amount of the enhanced deduction for seniors
         is $6,000 per person"
-  - id: s1a.line37
+  - id: s1a.senior_deduction
     printed: '37'
     label: Enhanced deduction for seniors. Add lines 36a and 36b
     type: NonNegDollars
     expr:
       op: sum
       of:
-      - s1a.line36a
-      - s1a.line36b
+      - s1a.senior_you
+      - s1a.senior_spouse
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 37
-  - id: s1a.line38
+  - id: s1a.total_deductions
     printed: '38'
     label: Add lines 13, 21, 30, and 37. Enter here and on Form 1040 or 1040-SR, line 13b, or on Form 1040-NR, line 13c
     type: NonNegDollars
     expr:
       op: sum
       of:
-      - s1a.line13
-      - s1a.line21
-      - s1a.line30
-      - s1a.line37
+      - s1a.tips_deduction
+      - s1a.ot_deduction
+      - s1a.vli_deduction
+      - s1a.senior_deduction
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 38

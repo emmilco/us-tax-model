@@ -15,7 +15,7 @@ changes:
       quote: Lines 17a and 17b
     verified: draft
     note: Label and citation of f8889.line17b only; the Schedule 2 line the amount lands on is renumbered by the Schedule
-      2 entry (C-SCHED-10), and s2.line17c is not touched here. The 2026 form prints "Also include" without the comma.
+      2 entry (C-SCHED-10), and s2.hsa_distribution_tax is not touched here. The 2026 form prints "Also include" without the comma.
     operations:
     - set:
         line: f8889.line17b

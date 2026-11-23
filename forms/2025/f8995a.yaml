@@ -36,7 +36,7 @@ form:
       cite:
         doc: f8995a
         locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
-    - id: f8995a.line40
+    - id: f8995a.reit_ptp_loss_carryforward
       printed: "40"
       type: NonNegDollars
       label: Amount from qbi.zero
