@@ -114,10 +114,23 @@ form:
     - id: f2441.spouse_died
       printed: (helper)
       type: Bool
-      label: Did your spouse die in 2025?
+      label: On a joint return, the spouse you file with died in 2025 (the answer to household.spouse_died_this_year; false
+        for any other filing status)
       expr:
-        op: input
-        source: Did the spouse with whom you file this joint return die in 2025?
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f2441.joint
+                - const: true
+            then: household.spouse_died_this_year_if_ever_married
+          - guard:
+              op: test
+              eq:
+                - f2441.joint
+                - const: false
+            then: f2441.no
       cite:
         doc: p503
         locator: 'p. 11, Surviving spouse, "If your spouse died during the year and you file a joint return as a surviving spouse, you may, but aren''t required to, take into account the earned income of your spouse who died during the year"'

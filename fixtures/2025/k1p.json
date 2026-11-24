@@ -3380,6 +3380,223 @@
           "cents": 0
         }
       }
+    },
+    {
+      "id": "lk1.k1p.refuse_fiscal",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0839), refusal predicted from i1065sk1 p. 13: a K-1 for a fiscal year is reported in the year the fiscal year ends, and participation is judged in the partnership's tax year; the fiscal-year tick refuses.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "person[taxpayer].k1p[acme].fiscal": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_interest": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[acme].fiscal",
+          "form": "Schedule K-1 (Form 1065) for a partnership's fiscal year",
+          "remedy": "A Schedule K-1 for a tax year other than the calendar year 2025 is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 13, \"If you file your tax return on a calendar-year basis, but your partnership files a return for a fiscal year, report the amounts on your tax return for the year in which the partnership's fiscal year ends\"; p. 9, \"All determinations of material participation are based on your participation during the partnership’s tax year\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "lk1.k1p.refuse_oil_gas_gp",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0844), refusal predicted from i1065sk1 p. 8: a working interest in oil or gas wells held as a general partner is not passive whatever the participation.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "person[taxpayer].k1p[acme].general": true,
+        "person[taxpayer].k1p[acme].oil_gas_gp": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_interest": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[acme].oil_gas_gp_if_gp",
+          "form": "Schedule E, line 28, column (k), a working interest in oil or gas wells held as a general partner (nonpassive)",
+          "remedy": "A working interest in oil or gas wells held through a partnership as a general partner is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 8, Passive activities don't include the following, \"Working interests in oil or gas wells if you were a general partner\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "lk1.k1p.refuse_llc_member",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0847, amb.2025.k1p_llc_member), refusal predicted: item G second box, the partnership is an LLC, and box 1 shows $5,000; whether the member counts as a limited partner decides the tests (i1065sk1 p. 2, 'may be treated as limited partners').",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "person[taxpayer].k1p[acme].general": false,
+        "person[taxpayer].k1p[acme].is_llc": true,
+        "person[taxpayer].k1p[acme].has_b1": true,
+        "person[taxpayer].k1p[acme].box1": 500000
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_interest": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[acme].llc_member_active",
+          "form": "Material and active participation of an LLC member who is not a manager (Form 8582)",
+          "remedy": "Whether an LLC member who is not a manager is treated as a limited partner is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 2, Limited Partner, \"Some members of other entities, such as domestic or foreign business trusts or limited liability companies (LLCs) that are classified as partnerships, may be treated as limited partners for certain purposes\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "lk1.k1p.refuse_significant_participation",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0844), refusal predicted from i1065sk1 pp. 9 and 11: a general partner with box 1 income of $10,000 who worked over 100 hours and met none of tests 1 to 7 has a significant participation activity whose net income is recharacterized (Form 8582 instructions).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "person[taxpayer].k1p[acme].general": true,
+        "person[taxpayer].k1p[acme].has_b1": true,
+        "person[taxpayer].k1p[acme].box1": 1000000,
+        "person[taxpayer].k1p[acme].work": true,
+        "person[taxpayer].k1p[acme].hours500": false,
+        "person[taxpayer].k1p[acme].most_hours": false,
+        "person[taxpayer].k1p[acme].nearly_all": false,
+        "person[taxpayer].k1p[acme].five_of_ten": false,
+        "person[taxpayer].k1p[acme].t6": false,
+        "person[taxpayer].k1p[acme].t4": false,
+        "person[taxpayer].k1p[acme].t7": false,
+        "person[taxpayer].k1p[acme].over100": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_interest": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[acme].over100_if_income",
+          "form": "Form 8582, income from a significant participation activity (recharacterized as nonpassive)",
+          "remedy": "Income from a business you worked in for more than 100 hours without materially participating is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 11, Special rules for certain other activities, \"If you have net income subject to recharacterization under Temporary Regulations section 1.469-2T(f) and Regulations sections 1.469-2(f)(5) and (6), report such amounts according to the Instructions for Form 8582\"; p. 9, \"A significant participation activity is any trade or business activity in which you participated for more than 100 hours during the year and in which you didn’t materially participate\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "lk1.k1p.significant_participation_loss_not_asked",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0844): the recharacterization reaches net income only, so with a box 1 loss of $10,000 the over-100-hours question is not asked (its gate is false).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "person[taxpayer].k1p[acme].general": true,
+        "person[taxpayer].k1p[acme].has_b1": true,
+        "person[taxpayer].k1p[acme].box1": -1000000,
+        "person[taxpayer].k1p[acme].work": true,
+        "person[taxpayer].k1p[acme].hours500": false,
+        "person[taxpayer].k1p[acme].most_hours": false,
+        "person[taxpayer].k1p[acme].nearly_all": false,
+        "person[taxpayer].k1p[acme].five_of_ten": false,
+        "person[taxpayer].k1p[acme].t6": false,
+        "person[taxpayer].k1p[acme].t4": false,
+        "person[taxpayer].k1p[acme].t7": false
+      },
+      "expect": {
+        "person[taxpayer].k1p[acme].over100_if_income": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "lk1.k1p.prior_loss_portfolio_only",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0847, amb.2025.k1p_prior_with_activity), predicted from i8582 p. 10 (column (c), each activity's prior-year unallowed loss): a K-1 with only box 5 ($100) whose box 1 activity carries a $300 loss held back on the 2024 Form 8582; box 1 is passive (no work), so Part V column (c) is $300.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "person[taxpayer].k1p[acme].has_b5": true,
+        "person[taxpayer].k1p[acme].box5": 10000,
+        "person[taxpayer].k1p[acme].prior_any": true,
+        "person[taxpayer].k1p[acme].prior_b1_any": true,
+        "person[taxpayer].k1p[acme].prior_b1": 30000
+      },
+      "expect": {
+        "person[taxpayer].k1p[acme].p5_prior": {
+          "kind": "money",
+          "cents": 30000
+        }
+      }
+    },
+    {
+      "id": "lk1.k1p.llc_member_no_box1_box2",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating (amb.2025.k1p_llc_member): an LLC member who is not a manager, with nothing in box 1 or box 2 (interest of $500 in box 5 only). The refusal applies only where box 1 or box 2 shows an amount, since only those carry the participation tests, so k1p.llc_member_active is false.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "person[taxpayer].k1p[acme].general": false,
+        "person[taxpayer].k1p[acme].is_llc": true,
+        "person[taxpayer].k1p[acme].has_b1": false,
+        "person[taxpayer].k1p[acme].has_b2": false,
+        "person[taxpayer].k1p[acme].has_b5": true,
+        "person[taxpayer].k1p[acme].box5": 50000
+      },
+      "expect": {
+        "person[taxpayer].k1p[acme].llc_member_active": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

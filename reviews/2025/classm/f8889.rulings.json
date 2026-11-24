@@ -747,24 +747,24 @@
    "printed": "person[spouse].f8889[hsa].line12",
    "project": "$5,279.17",
    "model": "$5,279.16",
-   "ruling": "Ruling: model error; carries the model's line 8 ($5,279.16, a rounding slip on intermediates; see line 8) less line 11 $0. Project $5,279.17. Not evidence; dropped.",
+   "ruling": "Ruling: model error; carries the model's line 8 ($5,279.16, a rounding slip; see line 8) less line 11 $0. Project $5,279.17. Repeat of the ruling of 2026-11-15. Not evidence; dropped.",
    "drop": true,
-   "context": "c95ca6c26a2113968ce0e92fb667974628dd83eba90d535ac878abd99a0cc03d",
-   "date": "2026-11-15",
-   "run": "81ac726f84d8f2e58b96f5f3960bd604d96f3b744604669c688f3b588bad538c",
-   "subject_key": "2901ededc63b9aa09edd4ed0911310e3e145dc92715a223a8f81c12a3dda6e54"
+   "context": "d1e11bbec9d7c999d46dc91fe2987b90fc881ba40882026f15330ae4b2098e2c",
+   "date": "2026-11-24",
+   "run": "bad69dbb0ea279ba88cc091052b207094b06e8342f602150cdc254fb3f3833d5",
+   "subject_key": "0ac6381ab13ab74fa6de4f99074062087bb6fed43326c815d7ba26132cd34fb3"
   },
   {
    "case": "classm.f8889.4",
    "printed": "person[spouse].f8889[hsa].line6",
    "project": "$4,279.17",
    "model": "$4,445.83",
-   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months and amb.2025.hsa_step4_other_limits; i8889 p. 7, Line 6, Step 4; p. 5, Line 3, Note. Project $4,279.17 = Step 3 $3,562.50 (Step 1 $8,550 x 10/12 = $7,125, half to the spouse) + Step 4 $4,300 x 2/12 = $716.67 for the self-only months; under the owner's reading the $1,000 additional amount is on line 7 for all 12 eligible months. The model ($4,445.83) put $5,300 x 2/12 (the 55-or-older amount) in Step 4 and counted only the 10 family months on line 7: the recorded alternative pairing of amb.2025.hsa_line7_months. Not evidence for the project's reading; dropped.",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months and amb.2025.hsa_step4_other_limits; i8889 p. 7, Line 6, Step 4; p. 5, Line 3, Note. Project $4,279.17 = Step 3 $3,562.50 + Step 4 $4,300 x 2/12 = $716.67; the model ($4,445.83) put the 55-or-older $5,300 in Step 4 and counted only the 10 family months on line 7, the recorded alternative pairing. Repeat of the ruling of 2026-11-15 on this case; this round's change (the allocation check, a status choice folded, question wording) moves no value here. Model value dropped.",
    "drop": true,
-   "context": "c95ca6c26a2113968ce0e92fb667974628dd83eba90d535ac878abd99a0cc03d",
-   "date": "2026-11-15",
-   "run": "81ac726f84d8f2e58b96f5f3960bd604d96f3b744604669c688f3b588bad538c",
-   "subject_key": "04e783e1defc4fa89c5e9c4f92d4755ad9bdeb2732db638dc82f47178a081333"
+   "context": "d1e11bbec9d7c999d46dc91fe2987b90fc881ba40882026f15330ae4b2098e2c",
+   "date": "2026-11-24",
+   "run": "bad69dbb0ea279ba88cc091052b207094b06e8342f602150cdc254fb3f3833d5",
+   "subject_key": "4c401348bee6f60bb1cefc2b30d6d7a50f29d2f2d8485ce8c9d4455e831616b1"
   },
   {
    "case": "classm.f8889.4",
@@ -780,12 +780,12 @@
    "printed": "person[spouse].f8889[hsa].line7",
    "project": "$1,000.00",
    "model": "$833.33",
-   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (i8889 p. 7, Additional Contribution Amount Worksheet, line 1; p. 5, Note). Project $1,000.00 (owner reading: all 12 eligible months count once family coverage applied at any time), model $833.33 (family months only, 10/12: the recorded alternative). Same as the goal-1 round. Model value dropped.",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (i8889 p. 7, Additional Contribution Amount Worksheet, line 1; p. 5, Note). Project $1,000.00 (all 12 eligible months), model $833.33 (10 family months, the recorded alternative). Repeat of the ruling of 2026-11-15. Model value dropped.",
    "drop": true,
-   "context": "246a5f670a6c51623de417c208926a11c32cb4cb7002fdf405409e6a284330be",
-   "date": "2026-11-15",
-   "run": "b4b11e5a249f5f5c58c91bebe348d6048507363814ac3060ffca1d7c059a6b50",
-   "subject_key": "cd265ad177781aca7996dbe7e88d7389748d020d4f41d9bb8441d965db1c5692"
+   "context": "d1e11bbec9d7c999d46dc91fe2987b90fc881ba40882026f15330ae4b2098e2c",
+   "date": "2026-11-24",
+   "run": "bad69dbb0ea279ba88cc091052b207094b06e8342f602150cdc254fb3f3833d5",
+   "subject_key": "20f9e58de34e9cb1828a0e1ca51735bc4cffca16625597dee1aa89c34dd152af"
   },
   {
    "case": "classm.f8889.4",
@@ -804,12 +804,12 @@
    "printed": "person[spouse].f8889[hsa].line8",
    "project": "$5,279.17",
    "model": "$5,279.16",
-   "ruling": "Ruling: model error; follows the model's line 6 and line 7 under the alternative reading of amb.2025.hsa_line7_months, and its sum $5,279.16 adds rounded intermediates ($4,445.83 + $833.33); the exact sum under its own reading is $3,562.50 + $883.33... + $833.33... = $5,279.17, the project's amount (amounts are exact cents, rounded at the line). A model arithmetic (rounding) slip, not evidence; dropped.",
+   "ruling": "Ruling: model error; the model's line 6 and line 7 under the alternative reading of amb.2025.hsa_line7_months sum, exactly, to the project's $5,279.17; its $5,279.16 adds rounded intermediates ($4,445.83 + $833.33). A rounding slip, not evidence; repeat of the ruling of 2026-11-15. Dropped.",
    "drop": true,
-   "context": "c95ca6c26a2113968ce0e92fb667974628dd83eba90d535ac878abd99a0cc03d",
-   "date": "2026-11-15",
-   "run": "81ac726f84d8f2e58b96f5f3960bd604d96f3b744604669c688f3b588bad538c",
-   "subject_key": "2699271aef336b22a9cc3ce5b7a3166d8518abf0b48d5e9cf6c84a112c1dd634"
+   "context": "d1e11bbec9d7c999d46dc91fe2987b90fc881ba40882026f15330ae4b2098e2c",
+   "date": "2026-11-24",
+   "run": "bad69dbb0ea279ba88cc091052b207094b06e8342f602150cdc254fb3f3833d5",
+   "subject_key": "fb90b33f078fb69d701b9f433e6f8516132489ede9211c19cd5e8dc99ff0b665"
   },
   {
    "case": "classm.f8889.4",

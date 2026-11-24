@@ -687,6 +687,27 @@
   },
   {
    "printed": "15",
+   "project_expr_sha256": "820b745d39d41fbc2dad8d6ecd7d67e7db1cc6a7d7e4d7f72fb79c38e6b6440f",
+   "second_expr_sha256": "e667b27b4c0470a1e4852fae30fb6ae6ef0462aef772271677cacf92f3301f9b",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: the second's choice on filing status (mfj: the joint amount; any other status: the other amount) is the project's figure behind the part gate. Re-reviewed because this round folded the figure's choice on the five filing statuses into a choice on s1a.joint (married filing jointly), removing the unreachable mfs alternative; the figure's value is unchanged at every status. The disagreement is the one ruled before on this line.",
+   "context": "90eb6e9c9742e7e0075b422492df5604074d535454b4d9170081836888a2aead",
+   "date": "2026-11-24",
+   "run": "b054b99744570833e176f8a94601dbd58092c475aa7f0ce78658c260b272aaf6",
+   "subject_key": "293ba9dc5adb9032cb631bfaad96d871d06dd53dd393c5e923c8ddab21a45e6e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage21.choose.eic_limit_status_unanswered@s1a",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "15",
    "project_expr_sha256": "9e073c55de5fdbaf88c74b5dc2e8340a86d7af10be2253c8dcc31a66cd3dac89",
    "second_expr_sha256": "e667b27b4c0470a1e4852fae30fb6ae6ef0462aef772271677cacf92f3301f9b",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,476 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 3, \"candidate-unknown\": 854, \"project-refuses\": 2, \"project-unknown\": 49, \"value\": 3}; on completed returns {\"candidate-unknown\": 290}: on each of the 290 completed records the project's line is $0 (its part does not apply) and the candidate is unknown for an answer the completed interview did not ask on that return ($otjob, person.work_ssn). The other differences are on refused or incomplete returns. No change to the data.",
@@ -841,6 +862,41 @@
    "second_expr_sha256": "ad5234ef149f2d7afbcd340843c236d276c159ae9224102a999a94aad830d447",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).",
    "subject_key": "043d1e3afb3b327440b9ed3105c5591504ce56fb08f947020010c8c6bc7c94c8"
+  },
+  {
+   "printed": "17",
+   "project_expr_sha256": "336de9623ac9550b021ae3c11677d477638fde0b35bcf838f1d0e3836bc07d17",
+   "second_expr_sha256": "ad5234ef149f2d7afbcd340843c236d276c159ae9224102a999a94aad830d447",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: the second's choice on filing status (mfj: the joint amount; any other status: the other amount) is the project's figure behind the part gate. Re-reviewed because this round folded the figure's choice on the five filing statuses into a choice on s1a.joint (married filing jointly), removing the unreachable mfs alternative; the figure's value is unchanged at every status. The disagreement is the one ruled before on this line.",
+   "context": "90eb6e9c9742e7e0075b422492df5604074d535454b4d9170081836888a2aead",
+   "date": "2026-11-24",
+   "run": "b054b99744570833e176f8a94601dbd58092c475aa7f0ce78658c260b272aaf6",
+   "subject_key": "f960a01110ca8b60c2798561cd1f17190a3568f9527136eb6a1516bf2e69ca9c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:mut.asset.prior_bonus_assets.this_year_ignored@s1a",
+     "fixture:classm.f8889.1.deepseek@s1a",
+     "fixture:classm.f8889.2.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.dependent.1.deepseek@s1a",
+     "fixture:stage21.choose.eic_limit_status_unanswered@s1a",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "17",
@@ -1636,6 +1692,41 @@
    "second_expr_sha256": "dc61b4f66a7d3a6575009ce1cb9ae0a04363f4ce6ec1b2e4058adaca2b6c99cf",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: class M agreed on all 344 values of 8 cases on this encoding.",
    "subject_key": "a87a2897df6002621ad8d8477c98269132963817483f7a600c47954fea03db36"
+  },
+  {
+   "printed": "32",
+   "project_expr_sha256": "780a9b11899f62341ecb8473fc85afb9533aa7b1ceab89b06584801e4c0ada41",
+   "second_expr_sha256": "dc61b4f66a7d3a6575009ce1cb9ae0a04363f4ce6ec1b2e4058adaca2b6c99cf",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: the second's choice on filing status (mfj: the joint amount; any other status: the other amount) is the project's figure behind the part gate. Re-reviewed because this round folded the figure's choice on the five filing statuses into a choice on s1a.joint (married filing jointly), removing the unreachable mfs alternative; the figure's value is unchanged at every status. The disagreement is the one ruled before on this line.",
+   "context": "90eb6e9c9742e7e0075b422492df5604074d535454b4d9170081836888a2aead",
+   "date": "2026-11-24",
+   "run": "b054b99744570833e176f8a94601dbd58092c475aa7f0ce78658c260b272aaf6",
+   "subject_key": "ee917e1afdf18005f721b1150c1dd29290812af3bced260f73fb127e2305ffc5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:mut.asset.prior_bonus_assets.this_year_ignored@s1a",
+     "fixture:stage21.choose.eic_limit_status_unanswered@s1a",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@s1a",
+     "fixture:stage16.cleanup.refuse.f1040_line16@s1a",
+     "fixture:stage16.cleanup.refuse.scope_credits@s1a",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@s1a",
+     "fixture:redesign.hsa.testing_kept_age_unanswered@s1a",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@s1a",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "32",
@@ -2944,6 +3035,41 @@
    "second_expr_sha256": "d12771cf09eaa3ad5c3a5e391d50c7522cbf8ebbd9ddd80bf3a5f1e2ba749821",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).",
    "subject_key": "70feeaffa7c43341b830bd3386c9e8277acf4a26833b1b0a0b44017c55de99cb"
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "05fa066ae857c06017aea248eda84bc33cb3b123931d975e7e77e01bb48590f0",
+   "second_expr_sha256": "ad5234ef149f2d7afbcd340843c236d276c159ae9224102a999a94aad830d447",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: the second's choice on filing status (mfj: the joint amount; any other status: the other amount) is the project's figure behind the part gate. Re-reviewed because this round folded the figure's choice on the five filing statuses into a choice on s1a.joint (married filing jointly), removing the unreachable mfs alternative; the figure's value is unchanged at every status. The disagreement is the one ruled before on this line.",
+   "context": "90eb6e9c9742e7e0075b422492df5604074d535454b4d9170081836888a2aead",
+   "date": "2026-11-24",
+   "run": "b054b99744570833e176f8a94601dbd58092c475aa7f0ce78658c260b272aaf6",
+   "subject_key": "122a24a2e8630375e5f1f24d80fadb8602a5f0206a6edc77d13e07684a5e1d7c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:mut.asset.prior_bonus_assets.this_year_ignored@s1a",
+     "fixture:classm.f8889.1.deepseek@s1a",
+     "fixture:classm.f8889.2.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.dependent.1.deepseek@s1a",
+     "fixture:stage21.choose.eic_limit_status_unanswered@s1a",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "9",

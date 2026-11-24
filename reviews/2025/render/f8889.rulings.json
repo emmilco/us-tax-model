@@ -68,6 +68,16 @@
   },
   {
    "printed": "15",
+   "restated": "Choose — [helper \"Any HSA distributions in 2025\" = true → helper \"Line 15 when there were distributions: all of line 14c when every distribution paid qualified medical expenses, else the part that did\"] [helper \"Any HSA distributions in 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Neither the all-distributions question nor the partial-amount input excludes withdrawn excess contributions. The instructions say: 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.' Such a distribution used for medical expenses would therefore be counted on line 15 when it should not be.",
+   "ruling": "Ruling: model error; i8889 p. 8, Line 15, 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses' cannot reach a completed 2025 return: an excess from before 2025 still in the HSA is refused by person.x_hsa_prior_excess (its help: 'a Yes ends the interview here'), and a withdrawal of 2025 excess contributions, in 2025 or by the 2026 due date, is refused by f8889.excess_withdrawn; a 2025 excess taken out after the due date is a later year's distribution. Repeat of the earlier render ruling on line 15.",
+   "context": "9f219e976d606f17e02b031baf51c5c7f32b5c105f12992846c1984466c0c4cc",
+   "date": "2026-11-24",
+   "run": "a1c1715d203bb6836fd6377c66b791544a86ca529e44b0fb13a20312660385cf",
+   "subject_key": "b919e2b7a02e3125b891ea968ee86384c879fdaef00b456198598c3b70cbc6f6"
+  },
+  {
+   "printed": "15",
    "restated": "Choose — [helper \"Any HSA distributions in 2025\" = true → helper \"Qualified medical expenses paid using HSA distributions\"] [helper \"Any HSA distributions in 2025\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The input limits expenses to 'you, your spouse and your dependents', but the line 15 instructions also include '3. Any person who would be a dependent except that: a. The person filed a joint return. b. The person had gross income. c. You, or your spouse if filing jointly, are dependents of someone else.' A filer following the restatement could leave those expenses off line 15.",
    "ruling": "Ruling: second construction right (fixed: BUG-0085, the f8889.medical question now names the would-be dependents and the divorced-parents rule). The question for f8889.medical names expenses \"of you, your spouse and your dependents\", but line 15 also takes the expenses of \"3. Any person who would be a dependent except that: a. The person filed a joint return. b. The person had gross income. c. You, or your spouse if filing jointly, are dependents of someone else\" (i8889 p. 8, Line 15), and the p. 9 TIP treats a child of divorced or separated parents as the dependent of both; a filer answering the question as worded can leave those expenses off line 15 and overstate line 16 and the 20% tax.",
@@ -107,6 +117,16 @@
    "date": "2026-11-12",
    "run": "abc43cf6977286a964a7893f421ecf8590fbd18bdd4a756f9afebebeae45cf86",
    "subject_key": "378ed1a0a020b89891ea8939b3d3d31f87fdf607e0c76ce1386901d210759f4b"
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = true → helper \"Additional Contribution Amount Worksheet, line 2: divide line 1 by 12\"] [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Outside the full-year case, worksheet line 1 counts every eligible month (helper 'number of months of 2025 on the first day of which you were an eligible individual'). The instructions count only months where both items apply: '1. You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month. 2. You were not enrolled in Medicare for the month.' The TIP confirms this: 'If items (1) and (2) apply to all months during 2025, enter $1,000.' The program's count therefore wrongly includes self-only months.",
+   "ruling": "Ruling: ambiguity; the same competing reading of the Additional Contribution Amount Worksheet's month count (only months of family coverage, under the i8889 p. 5 Note for a married person with family coverage, against the worksheet's 'number of months' of the eligible individual) that the register already holds as amb.2025.hsa_line7_months; repeat of the earlier render ruling on line 7, unchanged by this round (whose change is the allocation check and question wording).",
+   "context": "9f219e976d606f17e02b031baf51c5c7f32b5c105f12992846c1984466c0c4cc",
+   "date": "2026-11-24",
+   "run": "a1c1715d203bb6836fd6377c66b791544a86ca529e44b0fb13a20312660385cf",
+   "subject_key": "3083af5149a5d7451e41b00d71e360f9424b9a9da4efe5d97d9600a6ca3a0765"
   },
   {
    "printed": "7",

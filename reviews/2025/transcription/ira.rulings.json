@@ -783,6 +783,49 @@
    }
   },
   {
+   "printed": "8",
+   "project_expr_sha256": "ec4b2980d72436dfc283e7c754ebcb45bed5c87c9fc82dda02bc82d1b4121110",
+   "second_expr_sha256": "84c79e90f9c077dcc59f437fdc60b504c927a8e14f2c7c4f7e2924a8b76425aa",
+   "ruling": "Ruling: model error; p590a p. 6, What Is Compensation?, \"Wages, salaries, tips, professional fees, bonuses, and other amounts you receive for providing personal services are compensation\"; i1040gi p. 98, line 8, \"Wages, salaries, tips, etc. Generally, this is the amount reported in box 1 of Form W-2\". The reply takes line 1a only; household-employee wages (line 1b), tips not on a W-2 (line 1c) and Form 8919 wages (line 1g) are pay for services and compensation, and leaving them out refused a lawful contribution (BUG-1156, fixture ira.household_wages_comp). 'Generally' marks box 1 as the usual source, not the whole of the line. Where lines 1b, 1c and 1g are zero the two agree.",
+   "context": "718b1ae837e05129472d63ea40afb22d6efaec485eefe91f4fd746a84493df12",
+   "date": "2026-11-24",
+   "run": "9b493994bba1bf407d09a900c2047bddf19597c4ff4644d777561995c23502fd",
+   "subject_key": "eaf38935289d06a51ce2549ac92496a6bfad6abc5167c6fb43a5f5b224494607",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@ira",
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f2441.3.deepseek@ira",
+     "fixture:classm.f2441.4.deepseek@ira",
+     "fixture:classm.f2441.5.deepseek@ira",
+     "fixture:classm.f2441.6.deepseek@ira",
+     "fixture:classm.carloan.2@ira",
+     "fixture:stage9.eic.refuse.combat_pay@ira",
+     "fixture:stage14.eic.wsb_combat_pay@ira",
+     "fixture:stage13.refuse.joint_without_spouse@ira",
+     "fixture:stage13.refuse.single_with_spouse@ira",
+     "fixture:stage15.refuse.f2441.combat_pay@ira",
+     "fixture:x2pay.f4137.w1@ira",
+     "fixture:x2pay.f4137.w1_noncash@ira",
+     "fixture:x2pay.f4137.noncash_only@ira",
+     "fixture:x2pay.f4137.w9_government@ira",
+     "fixture:x2pay.f4137.over_ss_base@ira",
+     "fixture:x2pay.f4137.line5_over@ira",
+     "generated:20261026.96@ira",
+     "generated:20261026.301@ira",
+     "generated:20261026.338@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "9",
    "project_expr_sha256": "588887578e47193dcd939d3ca85821e16eba2d29f68629665bbbc3fe3073a969",
    "second_expr_sha256": "08d54afa58118da077b29a37c98d71ba84aaa1c205c407a258632ff79f796c22",
@@ -1231,6 +1274,47 @@
   },
   {
    "printed": "ira.kbh_short",
+   "project_expr_sha256": "88120bdf84a938c7dbf46ba4119e7aefb82339cc17d2c95c801342f29eeb80b0",
+   "second_expr_sha256": "3b74140de78acc44784c59cc2576dfdd217c544f6a35d46221251b0bd0720ccb",
+   "ruling": "Ruling: representation; i1040gi p. 98, IRA Deduction Worksheet—Continued, Caution, \"If married filing jointly and line 10 is less than $14,000 ... stop here and use the worksheet in Pub. 590-A\"; i8606 p. 5, Overall Contribution Limit for Traditional and Roth IRAs, \"see Kay Bailey Hutchison Spousal IRA Limit in Pub. 590-A for special rules\". Both sides test a joint return with line 10 under the caution amount; the project adds 'some traditional or Roth contribution was made' (ira.any_contrib). The two differ only on a return with no IRA contribution, where no line reads the gate: person.ira_line11 is read only with a traditional contribution (person.ira_deduction, person.ira_nondeductible) and person.ira_roth_over only with a Roth contribution. Values agree wherever the gate is read.",
+   "context": "718b1ae837e05129472d63ea40afb22d6efaec485eefe91f4fd746a84493df12",
+   "date": "2026-11-24",
+   "run": "9b493994bba1bf407d09a900c2047bddf19597c4ff4644d777561995c23502fd",
+   "subject_key": "46318e52f185a93991c63e3b6d43f3607182602a89591eed394441f283fef15f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f8889.3.deepseek@ira",
+     "fixture:classm.f8889.4.deepseek@ira",
+     "fixture:classm.f4952.2.deepseek@ira",
+     "fixture:classm.f8960.1.deepseek@ira",
+     "fixture:classm.dependent.2.deepseek@ira",
+     "fixture:classm.f5329.1.deepseek@ira",
+     "fixture:classm.f5329.1@ira",
+     "fixture:f2.t101.credit_disallowed_eic_zero@ira",
+     "fixture:stage9.eic.joint.no_child.12000@ira",
+     "fixture:stage13.refuse.joint_without_spouse@ira",
+     "fixture:stage15.refuse.f2441.combat_pay@ira",
+     "fixture:stage16.hsa.partial.H16@ira",
+     "fixture:stage16.hsa.partial.H17@ira",
+     "fixture:mutation.t2.person.ira_nd_spouse_none_screened@ira",
+     "generated:20261026.50@ira",
+     "generated:20261026.262@ira",
+     "generated:20261026.285@ira",
+     "generated:20261026.338@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ira.kbh_short",
    "project_expr_sha256": "b0f00c9235003e3c439c84ef78359dfc8d9373c126768d13ba3026e182ecdc8c",
    "second_expr_sha256": "73ce7f2fc5f4acceea57d1a618c037d26f6575b50bee02da6d60d8d11ea1d96e",
    "ruling": "Ruling: model error; i1040gi p. 98, Caution: \"If married filing jointly and line 10 is less than $14,000 ($15,000 if one spouse is age 50 or older at the end of 2025; $16,000 if both spouses are age 50 or older at the end of 2025), stop here and use the worksheet in Pub. 590-A to figure your IRA deduction.\" The caution sits in the worksheet, which applies only to traditional contributions (i1040gi p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.\"). The candidate drops the contribution condition. Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1472 of 1640 comparisons agree; 148 candidate-unknown, 10 candidate-refuses, 10 value. All 10 value records are joint returns with no traditional contributions and line 10 under the caution amount, where the candidate's gate is true and its lines 12a, 12b and 20 refuse a return the source gives a zero deduction; classm.sli.4, classm.ssb.4, classm.f1040.3 and generated 208 and 383 are refused by nothing else. The 148 candidate-unknown records are joint returns without contributions on which the candidate's line 10 needs ira.special or ira.se_capital (its line 8 and 9 screens), answers the source needs only when there are contributions. The 10 candidate-refuses records (generated 113, 121, 169) are returns refused by other cited gates (scope). Project stands.",
@@ -1296,6 +1380,47 @@
      "fixture:classm.g28.2@ira",
      "fixture:classm.ssb.3@ira",
      "fixture:stage16.refuse.ira.over_comp@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ira.over_comp",
+   "project_expr_sha256": "1c330574dff29816fe748216ba65af3bfafbab34d190db12f5c3d72c8be3786f",
+   "second_expr_sha256": "dfc55028e6cda6a506e44a06431a8df88e2cbdcf2f45f61737464d190a27daf8",
+   "ruling": "Ruling: model error; i8606 p. 5, Overall Contribution Limit for Traditional and Roth IRAs, \"your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation\". The limit counts Roth contributions with traditional ones; the reply adds only lines 11a and 11b (traditional), so a Roth contribution above the compensation passes (BUG-1154, fixture roth.no_compensation). On returns with traditional contributions only the two agree.",
+   "context": "718b1ae837e05129472d63ea40afb22d6efaec485eefe91f4fd746a84493df12",
+   "date": "2026-11-24",
+   "run": "9b493994bba1bf407d09a900c2047bddf19597c4ff4644d777561995c23502fd",
+   "subject_key": "250fa336743de1a0b62efca82fcebbbc08cd5074b5b2d64fc498ef23e2cfabdc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@ira",
+     "fixture:stage14.asset.refuse_ads_past_gds@ira",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@ira",
+     "fixture:stage14.asset.refuse_class@ira",
+     "fixture:stage14.asset.refuse_listed_low@ira",
+     "fixture:stage14.asset.refuse_s179_over@ira",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@ira",
+     "fixture:classm.f2441.1.deepseek@ira",
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f2441.3.deepseek@ira",
+     "fixture:classm.f2441.4.deepseek@ira",
+     "fixture:classm.f2441.5.deepseek@ira",
+     "fixture:classm.eic.6.deepseek@ira",
+     "fixture:classm.f5329.3.deepseek@ira",
+     "fixture:classm.f8962.4.gpt@ira",
+     "fixture:classm.f8606.1@ira",
+     "fixture:classm.f5329.3@ira",
+     "fixture:roth.no_compensation@ira",
+     "generated:20261026.338@ira"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1379,6 +1504,22 @@
      "fixture:mutation.m4.s1a.spouse_no_ssn_one_job@ira",
      "generated:20261026.108@ira"
     ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ira.roth_reduced",
+   "project_expr_sha256": "0cd50d35b2956d90fa0e86887cf172fb77ebd9e7b8f8bd48c23199fe2331d4ed",
+   "second_expr_sha256": "a033dc75230c2916fc0cb4b29b12410b07a06a1bb52156ea35a36f86989972ff",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3378 values compared, none different or missing: 2761 on 2761 fixture cases, 500 on 500 generated returns seed 20261026, 117 on 117 partial records; every alternative of the 0 differing choose line(s) reached taken; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "718b1ae837e05129472d63ea40afb22d6efaec485eefe91f4fd746a84493df12",
+   "date": "2026-11-24",
+   "run": "9b493994bba1bf407d09a900c2047bddf19597c4ff4644d777561995c23502fd",
+   "subject_key": "e7ba239029c47e6a32cdeaa8a2ae7f39c07e225a76ca19af8d346e962567d59a",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
     "policy": "executable-triage-v2"
    }
   },

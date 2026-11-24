@@ -12,10 +12,36 @@ changes:
       page: 6
       quote: combined taxable compensation of both you and your spouse is less than $15,000 ($16,100 if one spouse is age
         50 or older at the end of 2026; $17,200 if both spouses are age 50 or older at the end of 2026
+    - doc: n-25-67
+      page: 5
+      quote: the adjusted gross income phase-out range for taxpayers making contributions to a Roth IRA is between $242,000
+        and $252,000 for married couples filing jointly
+    - doc: n-25-67
+      page: 5
+      quote: For singles and heads of household, the income phase-out range is between $153,000 and $168,000
     verified: draft
     note: The worksheet caution amounts ($15,000, $16,100, $17,200) are the 2026 i8606 figures for the same rule; the i1040gi
-      locators wait for its 2026 edition.
+      locators wait for its 2026 edition. The Roth phase-out starts ($242,000 and $153,000) are from Notice 2025-67 (final).
     operations:
+    - set:
+        line: ira.roth_start_joint
+        field: label
+        from: Year parameter ira.roth_start_joint ($236,000)
+        to: Year parameter ira.roth_start_joint ($242,000)
+    - set:
+        line: ira.roth_start_other
+        field: label
+        from: Year parameter ira.roth_start_other ($150,000)
+        to: Year parameter ira.roth_start_other ($153,000)
+    - set:
+        line: ira.roth_reduced
+        field: label
+        from: Modified AGI for Roth IRA purposes in or above the Roth phase-out range ($236,000 or more married filing jointly
+          or qualifying surviving spouse; $150,000 or more single, head of household or married filing separately and apart all
+          year; above zero married filing separately and living with the spouse at any time in 2025)
+        to: Modified AGI for Roth IRA purposes in or above the Roth phase-out range ($242,000 or more married filing jointly
+          or qualifying surviving spouse; $153,000 or more single, head of household or married filing separately and apart all
+          year; above zero married filing separately and living with the spouse at any time in 2026)
     - set:
         line: ira.kbh_none
         field: label

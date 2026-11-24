@@ -312,6 +312,85 @@
       }
     },
     {
+      "id": "sb.trust_owner.refused",
+      "covers": [
+        "sb.trust_owner"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "sb.account_any": true,
+        "sb.trust_any": true,
+        "sb.line8": false,
+        "sb.trust_owner": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "sb.line4": {
+          "kind": "refusal",
+          "gate": "sb.trust_owner_if_foreign",
+          "form": "Form 3520 / Form 3520-A",
+          "remedy": "An owner of a foreign trust under the grantor trust rules files Form 3520 even with no transaction in the year; this tool does not prepare it.",
+          "cite": {
+            "doc": "i3520",
+            "tax_year": 2025,
+            "revision": "Rev. December 2025 (continuous-use: \"Use these instructions for tax year 2025 and subsequent years until a superseding revision is issued\"; used with the December 2023 revision of Form 3520)",
+            "locator": "p. 1, Who Must File, item 2, \"You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679\", \"You are required to complete Part II even if there have been no transactions involving the trust during the tax year\"",
+            "snapshot": "d3e27f7dc226edecd5cfa67a8d175d4db6445355f016e651c95fa62b78d64308"
+          }
+        },
+        "sb.line2": {
+          "kind": "refusal",
+          "gate": "sb.trust_owner_if_foreign",
+          "form": "Form 3520 / Form 3520-A",
+          "remedy": "An owner of a foreign trust under the grantor trust rules files Form 3520 even with no transaction in the year; this tool does not prepare it.",
+          "cite": {
+            "doc": "i3520",
+            "tax_year": 2025,
+            "revision": "Rev. December 2025 (continuous-use: \"Use these instructions for tax year 2025 and subsequent years until a superseding revision is issued\"; used with the December 2023 revision of Form 3520)",
+            "locator": "p. 1, Who Must File, item 2, \"You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679\", \"You are required to complete Part II even if there have been no transactions involving the trust during the tax year\"",
+            "snapshot": "d3e27f7dc226edecd5cfa67a8d175d4db6445355f016e651c95fa62b78d64308"
+          }
+        },
+        "sb.line3": {
+          "kind": "refusal",
+          "gate": "sb.trust_owner_if_foreign",
+          "form": "Form 3520 / Form 3520-A",
+          "remedy": "An owner of a foreign trust under the grantor trust rules files Form 3520 even with no transaction in the year; this tool does not prepare it.",
+          "cite": {
+            "doc": "i3520",
+            "tax_year": 2025,
+            "revision": "Rev. December 2025 (continuous-use: \"Use these instructions for tax year 2025 and subsequent years until a superseding revision is issued\"; used with the December 2023 revision of Form 3520)",
+            "locator": "p. 1, Who Must File, item 2, \"You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679\", \"You are required to complete Part II even if there have been no transactions involving the trust during the tax year\"",
+            "snapshot": "d3e27f7dc226edecd5cfa67a8d175d4db6445355f016e651c95fa62b78d64308"
+          }
+        },
+        "sb.line6": {
+          "kind": "refusal",
+          "gate": "sb.trust_owner_if_foreign",
+          "form": "Form 3520 / Form 3520-A",
+          "remedy": "An owner of a foreign trust under the grantor trust rules files Form 3520 even with no transaction in the year; this tool does not prepare it.",
+          "cite": {
+            "doc": "i3520",
+            "tax_year": 2025,
+            "revision": "Rev. December 2025 (continuous-use: \"Use these instructions for tax year 2025 and subsequent years until a superseding revision is issued\"; used with the December 2023 revision of Form 3520)",
+            "locator": "p. 1, Who Must File, item 2, \"You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679\", \"You are required to complete Part II even if there have been no transactions involving the trust during the tax year\"",
+            "snapshot": "d3e27f7dc226edecd5cfa67a8d175d4db6445355f016e651c95fa62b78d64308"
+          }
+        }
+      },
+      "evidence_note": "Predicted from the archived i3520 before evaluating: a beneficiary of a foreign trust who can take its property for themselves is treated as its owner under the grantor trust rules, received nothing from it in 2025 and neither set it up nor gave to it (Schedule B line 8 is No). i3520 p. 1, Who Must File, item 2, \"is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679\", \"You are required to complete Part II even if there have been no transactions involving the trust during the tax year\". Form 3520 is outside the tool, so Schedule B lines 2, 3, 4 and 6 refuse with the owner gate in place of the line 8 gate."
+    },
+    {
       "id": "stage4.sb.foreign_no_filing",
       "covers": [
         "sb.foreign_no_filing"

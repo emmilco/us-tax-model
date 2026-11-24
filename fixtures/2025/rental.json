@@ -3694,6 +3694,43 @@
           }
         }
       }
+    },
+    {
+      "id": "rentals25.business_credit_no",
+      "covers": [
+        "rental",
+        "sche",
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating: the inputs of rentals25.business_credit_refused with the general business credit question answered No: no listed rental claims a Form 3800 credit, so the count is 0 and s3.rental_credit_listed is false.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1200000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 100000,
+        "rental[a].business_credit": false
+      },
+      "expect": {
+        "s3.rental_credit_count": {
+          "kind": "count",
+          "value": 0
+        },
+        "s3.rental_credit_listed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

@@ -2804,6 +2804,249 @@
           "cents": 3150000
         }
       }
+    },
+    {
+      "id": "hh.household.qss_no_child_notice",
+      "covers": [
+        "household",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1164, predicted by hand before recording. Qualifying surviving spouse, the five tests answered Yes, W-2 $30,000, no one listed. i1040gi p. 15 tests 2 and 3 need a child or stepchild who lived in the home all year; the notice household.qss_no_child_notice is true (no refusal, the coordinator decision), and line 12e stays $31,500.",
+      "inputs": {
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "person[taxpayer].birth_year": 1980,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 200000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500
+      },
+      "expect": {
+        "household.qss_no_child_notice": {
+          "kind": "bool",
+          "value": true
+        },
+        "household.qss_child_not_all_year": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 3150000
+        }
+      }
+    },
+    {
+      "id": "hh.household.qss_foster_all_year_step_not",
+      "covers": [
+        "household",
+        "dependent",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1277, predicted by hand before recording. Qualifying surviving spouse, tests Yes; a stepchild (own_child Yes) who lived with the filer 5 months and a foster child (own_child No) who lived there all year. i1040gi p. 15, test 2: \"a child or stepchild (not a foster child)\"; only the stepchild counts, and it did not live there all year, so line 12e is refused by household.qss_child_not_all_year (on next the foster child counted and nothing was refused).",
+      "inputs": {
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "person[taxpayer].birth_year": 1980,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 200000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$dependent": [
+          "step",
+          "foster"
+        ],
+        "dependent[step].relationship": "child",
+        "dependent[step].own_child": true,
+        "dependent[step].age": 10,
+        "dependent[step].younger": true,
+        "dependent[step].citizen_ssn": true,
+        "dependent[step].lived_all_year": false,
+        "dependent[step].months": 5,
+        "dependent[foster].relationship": "child",
+        "dependent[foster].own_child": false,
+        "dependent[foster].age": 8,
+        "dependent[foster].younger": true,
+        "dependent[foster].citizen_ssn": true,
+        "dependent[foster].lived_all_year": true,
+        "dependent[foster].months": 12
+      },
+      "expect": {
+        "household.qss_children_listed": {
+          "kind": "count",
+          "value": 1
+        },
+        "household.qss_child_not_all_year": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.qss_child_not_all_year",
+          "form": "Qualifying surviving spouse filing status",
+          "remedy": "Qualifying surviving spouse needs a child or stepchild of yours who lived in your home for all of 2025, but none of the children you listed lived with you all year. Correct the answer about where the child lived, or choose another filing status.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 15, Qualifying Surviving Spouse, \"3. This child lived in your home for all of 2025\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "hh.household.qss_foster_only",
+      "covers": [
+        "household",
+        "dependent",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1277, predicted by hand before recording. Qualifying surviving spouse, tests Yes; only a foster child (own_child No) listed, 5 months. No son, daughter or stepchild is listed, so the conflict screen does not refuse (it did on next) and the notice of BUG-1164 is true; line 12e $31,500.",
+      "inputs": {
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "person[taxpayer].birth_year": 1980,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 200000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$dependent": [
+          "foster"
+        ],
+        "dependent[foster].relationship": "child",
+        "dependent[foster].own_child": false,
+        "dependent[foster].age": 8,
+        "dependent[foster].younger": true,
+        "dependent[foster].citizen_ssn": true,
+        "dependent[foster].lived_all_year": false,
+        "dependent[foster].months": 5
+      },
+      "expect": {
+        "household.qss_children_listed": {
+          "kind": "count",
+          "value": 0
+        },
+        "household.qss_child_not_all_year": {
+          "kind": "bool",
+          "value": false
+        },
+        "household.qss_no_child_notice": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 3150000
+        }
+      }
+    },
+    {
+      "id": "stage21.pending2.rdp_not_in_cp_state_refused",
+      "covers": [
+        "household",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1089, predicted by hand before recording. The inputs of stage21.pending2.rdp_community_income_refused with household.community_property No: a registered domestic partner of NV, WA or CA not filing jointly is refused wherever the filer lived (p555 p. 2, Domicile); line 1a refused by household.rdp_community_property (computed on next).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box2": 2153000,
+        "person[taxpayer].w2[emp_a].box5": 21530000,
+        "person[taxpayer].w2[emp_a].box6": 325955,
+        "$dependent": [
+          "child"
+        ],
+        "household.community_property": false,
+        "household.rdp": true,
+        "dependent[child].age": 12,
+        "dependent[child].months": 12,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "household.rdp_community_property": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line1a": {
+          "kind": "refusal",
+          "gate": "household.rdp_community_property",
+          "form": "Community income of a registered domestic partner (Form 8958; Pub. 555)",
+          "remedy": "A registered domestic partner in Nevada, Washington or California must generally report half the combined community income of the partners; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, Nevada, Washington, and California domestic partners, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "hh.household.qss_foster_all_year_only",
+      "covers": [
+        "household",
+        "dependent",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating: the inputs of hh.household.qss_foster_only, but the foster child lived with the filer all of 2025. A foster child does not qualify a surviving spouse (i1040gi p. 15, Qualifying Surviving Spouse, item 3: a child or stepchild, not a foster child), so no son, daughter or stepchild is listed: household.qss_children_listed is 0 and the notice is given, however long the foster child lived there.",
+      "inputs": {
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "person[taxpayer].birth_year": 1980,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 200000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$dependent": [
+          "foster"
+        ],
+        "dependent[foster].relationship": "child",
+        "dependent[foster].own_child": false,
+        "dependent[foster].age": 8,
+        "dependent[foster].younger": true,
+        "dependent[foster].citizen_ssn": true,
+        "dependent[foster].lived_all_year": true,
+        "dependent[foster].months": 12
+      },
+      "expect": {
+        "household.qss_children_listed": {
+          "kind": "count",
+          "value": 0
+        },
+        "household.qss_no_child_notice": {
+          "kind": "bool",
+          "value": true
+        }
+      }
     }
   ]
 }

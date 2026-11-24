@@ -3429,6 +3429,40 @@
           }
         }
       }
+    },
+    {
+      "id": "sa.rental_tax_personal.no_rental",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating: no rental property; real estate taxes $5,000 of which $500 is not deductible. With no rental there are no rental real estate taxes to bring to Schedule A, so sa.rental_tax_personal is $0 (the $500 left out reduces line 5b, not this helper).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "sa.home_owner": true,
+        "sa.state_tax_any": true,
+        "sa.line5a": 250000,
+        "sa.line5b": 500000,
+        "sa.gifts": true,
+        "sa.line11": 900000,
+        "sa.mortgage_interest": 0,
+        "sa.property_tax_other_any": true,
+        "sa.property_tax_leave_out": 50000
+      },
+      "expect": {
+        "sa.rental_tax_personal": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

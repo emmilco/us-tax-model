@@ -2,1006 +2,1006 @@
  "kind": "classm",
  "form": "k1p",
  "family": "claude",
- "base": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+ "base": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
  "lines": [
   {
    "key": "case classm.k1p.1",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": null
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].b1_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].b1_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].b2_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].b2_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].b3_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].b3_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].b1_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].b2_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].b3_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].p4_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].p4_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].p4_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].p6_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].p5_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].p5_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].p5_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].col_h",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].col_k",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.1 — person[taxpayer].k1p[fund].col_i",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "case classm.k1p.2",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": null
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].b1_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].b1_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].b2_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].b2_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].b3_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].b3_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].b1_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].b2_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].b3_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].p4_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].p4_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].p4_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].p6_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].p5_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].p5_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].p5_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].col_h",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].col_k",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.2 — person[taxpayer].k1p[llc].col_i",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "case classm.k1p.3",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": null
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].b1_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].b1_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].b2_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].b2_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].b3_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].b3_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].b1_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].b2_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].b3_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].p4_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].p4_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].p4_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].p6_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].p5_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].p5_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].p5_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].col_h",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].col_k",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.3 — person[taxpayer].k1p[fund].col_i",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "case classm.k1p.4",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": null
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].b1_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].b1_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].b2_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].b2_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].b3_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].b3_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].b1_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].b2_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].b3_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].p4_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].p4_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].p4_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].p6_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].p5_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].p5_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].p5_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].col_h",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].col_k",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.4 — person[taxpayer].k1p[fund].col_i",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "case classm.k1p.5",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": null
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].b1_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].b1_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].b2_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].b2_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].b3_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].b3_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].b1_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].b2_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].b3_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].p4_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].p4_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].p4_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].p6_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].p5_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].p5_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].p5_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].col_h",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].col_k",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.5 — person[taxpayer].k1p[llc].col_i",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "case classm.k1p.6",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": null
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].b1_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].b1_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].b2_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].b2_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].b3_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].b3_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].b1_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].b2_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].b3_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].p4_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].p4_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].p4_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].p6_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].p5_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].p5_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].p5_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].col_h",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].col_k",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.6 — person[taxpayer].k1p[fund].col_i",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "case classm.k1p.7",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": null
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].b1_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].b1_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].b2_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].b2_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].b3_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].b3_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].b1_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].b2_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].b3_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].p4_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].p4_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].p4_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].p6_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].p5_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].p5_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].p5_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].col_h",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].col_k",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.7 — person[taxpayer].k1p[llc].col_i",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "case classm.k1p.8",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": null
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].b1_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].b1_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].b2_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].b2_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].b3_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].b3_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].b1_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].b2_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].b3_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].p4_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].p4_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].p4_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].p6_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].p5_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].p5_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].p5_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].col_h",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].col_k",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "classm.k1p.8 — person[taxpayer].k1p[fund].col_i",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "case classm.k1p.9",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": null
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].b1_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].b1_net_income",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].b1_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].b1_net_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].b2_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].b2_net_income",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].b2_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].b2_net_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].b3_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].b3_net_income",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].b3_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].b3_net_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].b1_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].b1_overall_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].b2_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].b2_overall_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].b3_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].b3_overall_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].p4_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].p4_income",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].p4_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].p4_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].p4_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].p4_prior",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].p6_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].p6_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].p5_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].p5_income",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].p5_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].p5_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].p5_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].p5_prior",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].col_h",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].col_h",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].col_k",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].col_k",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.9 — person[taxpayer].k1p[llc].col_i",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.9 — person[taxpayer].k1p[fund].col_i",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
    "key": "case classm.k1p.10",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": null
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].b1_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].b1_net_income",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].b1_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].b1_net_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].b2_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].b2_net_income",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].b2_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].b2_net_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].b3_net_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].b3_net_income",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].b3_net_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].b3_net_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].b1_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].b1_overall_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].b2_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].b2_overall_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].b3_overall_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].b3_overall_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].p4_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].p4_income",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].p4_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].p4_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].p4_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].p4_prior",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].p6_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].p6_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].p5_income",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].p5_income",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].p5_loss",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].p5_loss",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].p5_prior",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].p5_prior",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].col_h",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].col_h",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].col_k",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].col_k",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   },
   {
-   "key": "classm.k1p.10 — person[taxpayer].k1p[fund].col_i",
-   "record": "89c4ffe114d2a9331e928e1ec5c2089f71013b18c082dbd145fdd1ffed755c7a",
+   "key": "classm.k1p.10 — person[taxpayer].k1p[llc].col_i",
+   "record": "f5235909369fbd62337cc14cb3a2c1c7fa236f7bcfe3499ba419264fae4e2e25",
    "status": "AGREE"
   }
  ]

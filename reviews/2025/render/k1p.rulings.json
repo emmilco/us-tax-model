@@ -15,6 +15,16 @@
   {
    "printed": "28 (h)",
    "restated": "Add line V (a) (k1p.b1_net_income), line IV/V (a), and line V (a) (k1p.b3_net_income).",
+   "model": "Box 2 income always goes to column (h). The text says 'If you were a real estate professional and you materially participated in the activity, report box 2 income (loss) in column (i) or (k)'. The box 1 portion also inherits the incomplete material-participation and trading tests.",
+   "ruling": "Ruling: scope; a real estate professional's box 2 is refused (k1p.re_pro_if_b2) and a PTP (k1p.ptp); the box 1 portion uses complete tests because tests 4, 6 and 7 are refused (k1p.t4_if_gp, k1p.t6_if_asked, k1p.t7_if_gp), a limited partner meets only tests 1, 5 and 6 (item G; an LLC member who is not a manager is refused, k1p.llc_member_active), a trading partnership is refused (k1p.trader_if_b1) and so is significant participation income (k1p.over100_if_income).",
+   "context": "35b0eb0b962770bc71a704b1a6cf8f16ef7e067bedb050e34f207aa0bb6bac7e",
+   "date": "2026-11-24",
+   "run": "bb286e73ac015ae7d45551fcff8a78072dd1ce791ee30dbd8ec8617df060632b",
+   "subject_key": "1c4d8d803aef84d3f2842f6e8adacbb859fd2b95bbb2eb2d253995a48c884c79"
+  },
+  {
+   "printed": "28 (h)",
+   "restated": "Add line V (a) (k1p.b1_net_income), line IV/V (a), and line V (a) (k1p.b3_net_income).",
    "model": "Passive income does go in column (h). But for box 1, 2 and 3 the text says 'if the box in item D is checked, report the income following the rules for PTPs'. Box 2 income of a real estate professional who materially participated goes in '(i) or (k)'. Neither case is handled or refused.",
    "ruling": "Ruling: scope; PTP refused (k1p.ptp); real estate professional refused (sche.re_pro, R-K20), as IV/V (a).",
    "context": "18d517a864b0a3b3cb65293120925dbc57fea41172db0023c2d1534220c20baa",
@@ -31,6 +41,26 @@
    "date": "2026-11-15",
    "run": "3f6682a5296042ee47ff82812b5a541d278f3f52130f251d7845f80b6985470f",
    "subject_key": "644576edf605fe51ce599a4f5cef5227f71a305bb01a1dec0c0b8b48542bee46"
+  },
+  {
+   "printed": "28 (i)",
+   "restated": "Choose — [helper \"Box 1 is passive (no material participation)\" = true → helper \"Zero\"] [helper \"Box 1 is passive (no material participation)\" = false → helper \"Box 1 loss\"]",
+   "model": "The box 1 loss is entered in full. The text says to report it 'after applying the basis and at-risk limitations on losses', and no refusal covers this. The nonpassive gate also inherits the incomplete material-participation and trading tests.",
+   "ruling": "Ruling: scope; losses above basis and not at risk are refused (k1p.basis_short_if_loss, k1p.not_at_risk_if_loss, k1p.basis_carry, k1p.risk_carry), so the box 1 loss is entered after those limitations; tests 4, 6 and 7 are refused (k1p.t4_if_gp, k1p.t6_if_asked, k1p.t7_if_gp), a limited partner meets only tests 1, 5 and 6 (item G; an LLC member who is not a manager is refused, k1p.llc_member_active), a trading partnership is refused (k1p.trader_if_b1) and so is significant participation income (k1p.over100_if_income).",
+   "context": "35b0eb0b962770bc71a704b1a6cf8f16ef7e067bedb050e34f207aa0bb6bac7e",
+   "date": "2026-11-24",
+   "run": "bb286e73ac015ae7d45551fcff8a78072dd1ce791ee30dbd8ec8617df060632b",
+   "subject_key": "434bf1dfdf5b7e036c23b937f57963b821affb2630b790c4052df112dd6fbcfe"
+  },
+  {
+   "printed": "28 (k)",
+   "restated": "Add helper \"Box 1 income with material participation\" and helper \"Box 4a, asked only when the box shows an amount (zero otherwise)\".",
+   "model": "Box 4b is omitted. The text says of guaranteed payments for capital: 'Amounts on this line should be reported in column (k) of Schedule E (Form 1040), line 28'.",
+   "ruling": "Ruling: scope; box 4b (guaranteed payments for capital) is refused on k1p.screened (k1p.r_b4b), so column (k) never needs it; trading and tests 4, 6 and 7 are refused as for 28 (i).",
+   "context": "35b0eb0b962770bc71a704b1a6cf8f16ef7e067bedb050e34f207aa0bb6bac7e",
+   "date": "2026-11-24",
+   "run": "bb286e73ac015ae7d45551fcff8a78072dd1ce791ee30dbd8ec8617df060632b",
+   "subject_key": "93b9c0827e3e84e179eb6d686c345abb24445835241745db11c68f527a21200c"
   },
   {
    "printed": "28 (k)",
@@ -64,6 +94,16 @@
    "subject_key": "be28979b74ec2abd8da212c7abaacfca51f73130d22cb607c42162a4979ab232"
   },
   {
+   "printed": "IV (a)",
+   "restated": "Choose — [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = true → line IV/V (a)] [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = false → helper \"Zero\"]",
+   "model": "The active-participation gate ignores 'Married individuals who file separate returns and lived with their spouses at any time during the tax year don't qualify under the active participation rule and must use Part V instead of Part IV.' No refusal names this case.",
+   "ruling": "Ruling: scope; married filing separately is refused for every return (s3.mfs), so the rule for separate filers living with their spouse never applies to a completed return.",
+   "context": "35b0eb0b962770bc71a704b1a6cf8f16ef7e067bedb050e34f207aa0bb6bac7e",
+   "date": "2026-11-24",
+   "run": "bb286e73ac015ae7d45551fcff8a78072dd1ce791ee30dbd8ec8617df060632b",
+   "subject_key": "d5659951f8f82f57246595787bde3c2bb546e0fb731ebba26aa22bacba543905"
+  },
+  {
    "printed": "IV (b)",
    "restated": "Choose — [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = true → line IV/V (b)] [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = false → helper \"Zero\"]",
    "model": "The same married-filing-separately rule ('must use Part V instead of Part IV') is not applied or refused.",
@@ -72,6 +112,26 @@
    "date": "2026-11-15",
    "run": "3f6682a5296042ee47ff82812b5a541d278f3f52130f251d7845f80b6985470f",
    "subject_key": "8def711e3ef40f9b63a09d12e011f4bc86d9813423c2003004808910e6168dd4"
+  },
+  {
+   "printed": "IV (b)",
+   "restated": "Choose — [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = true → line IV/V (b)] [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = false → helper \"Zero\"]",
+   "model": "This line has the same gate, which omits the rule that married individuals filing separately who lived with their spouse 'must use Part V instead of Part IV'.",
+   "ruling": "Ruling: scope; as IV (a): married filing separately is refused (s3.mfs).",
+   "context": "35b0eb0b962770bc71a704b1a6cf8f16ef7e067bedb050e34f207aa0bb6bac7e",
+   "date": "2026-11-24",
+   "run": "bb286e73ac015ae7d45551fcff8a78072dd1ce791ee30dbd8ec8617df060632b",
+   "subject_key": "0a190e74d31c65b09806e16c9c62b1c801e0740b3c84ca0c8caa45cd49917a58"
+  },
+  {
+   "printed": "IV (c)",
+   "restated": "Choose — [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = true → helper \"Asked only when a loss was held back from it (zero otherwise)\"] [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = false → helper \"Zero\"]",
+   "model": "The prior loss is placed in Part IV whenever the partner is active this year. The text says 'Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.' The MFS-living-together rule is also omitted.",
+   "ruling": "Ruling: scope; a held-back box 2 loss with active participation this year but not in the year it arose is refused (k1p.prior_not_active_if, which now names 'at any time that year' and a limited partner's share), so a prior loss reaches Part IV only with active participation in both years; married filing separately is refused (s3.mfs).",
+   "context": "35b0eb0b962770bc71a704b1a6cf8f16ef7e067bedb050e34f207aa0bb6bac7e",
+   "date": "2026-11-24",
+   "run": "bb286e73ac015ae7d45551fcff8a78072dd1ce791ee30dbd8ec8617df060632b",
+   "subject_key": "3cc279ee0088caae3dbd308eabda3bfdabb7187aaac4230b73ff82dea05ba7fa"
   },
   {
    "printed": "IV (c)",
@@ -102,6 +162,16 @@
    "date": "2026-11-15",
    "run": "3f6682a5296042ee47ff82812b5a541d278f3f52130f251d7845f80b6985470f",
    "subject_key": "29ff36a073819bdb066666818d6dc777fad4c44609532349ea6e028572958864"
+  },
+  {
+   "printed": "V (a) (k1p.b1_net_income)",
+   "restated": "Choose — [helper \"Box 1 is passive (no material participation)\" = true → helper \"Box 1 income\"] [helper \"Box 1 is passive (no material participation)\" = false → helper \"Zero\"]",
+   "model": "Passivity is decided only by tests 1, 2, 3 and 5. The text also allows tests 4, 6 and 7 (limited partners: 'item 1, 5, or 6'), and says passive activities don't include 'Activities of trading personal property for the account of owners'; the trader answer is never used.",
+   "ruling": "Ruling: scope; tests 4, 6 and 7 are refused (k1p.t4_if_gp, k1p.t6_if_asked, k1p.t7_if_gp), a limited partner meets only tests 1, 5 and 6 (item G; an LLC member who is not a manager is refused, k1p.llc_member_active), a trading partnership is refused (k1p.trader_if_b1) and so is significant participation income (k1p.over100_if_income), so tests 1, 2, 3 and 5 decide on every return that completes.",
+   "context": "35b0eb0b962770bc71a704b1a6cf8f16ef7e067bedb050e34f207aa0bb6bac7e",
+   "date": "2026-11-24",
+   "run": "bb286e73ac015ae7d45551fcff8a78072dd1ce791ee30dbd8ec8617df060632b",
+   "subject_key": "64927e5579f7d859d243cbc4bd5de41a63aeb8f9ca373853b8b665c8d1b2e69b"
   },
   {
    "printed": "V (a) (k1p.b1_net_income)",
@@ -144,6 +214,16 @@
    "subject_key": "150519119582e1d2db4347d8dc6e117f34c0591eb07053a9cef7fe1843309746"
   },
   {
+   "printed": "V (b) (k1p.b1_net_loss)",
+   "restated": "Choose — [helper \"Box 1 is passive (no material participation)\" = true → helper \"Box 1 loss\"] [helper \"Box 1 is passive (no material participation)\" = false → helper \"Zero\"]",
+   "model": "This line uses the same incomplete passivity gate as V (a): tests 4, 6 and 7 are omitted, and the exclusion of 'Activities of trading personal property for the account of owners' is not applied. No refusal names these cases.",
+   "ruling": "Ruling: scope; as V (a) (k1p.b1_net_income): tests 4, 6 and 7 are refused (k1p.t4_if_gp, k1p.t6_if_asked, k1p.t7_if_gp), a limited partner meets only tests 1, 5 and 6 (item G; an LLC member who is not a manager is refused, k1p.llc_member_active), a trading partnership is refused (k1p.trader_if_b1) and so is significant participation income (k1p.over100_if_income).",
+   "context": "35b0eb0b962770bc71a704b1a6cf8f16ef7e067bedb050e34f207aa0bb6bac7e",
+   "date": "2026-11-24",
+   "run": "bb286e73ac015ae7d45551fcff8a78072dd1ce791ee30dbd8ec8617df060632b",
+   "subject_key": "0d0560f728f7495e719b90c935a72c246521d29be65d5d5ef1bdb41888a3828f"
+  },
+  {
    "printed": "V (b) (k1p.b3_net_loss)",
    "restated": "Enter the amount from helper \"Box 3 loss\".",
    "model": "The text says 'if the box in item D is checked, report the loss following the rules for PTPs'. Basis and at-risk limits also apply first. The restatement handles and refuses neither.",
@@ -166,6 +246,16 @@
   {
    "printed": "V (c)",
    "restated": "Add helper \"Asked only when a loss was held back from it (zero otherwise)\", helper \"Box 2 prior years unallowed loss without active participation (Part V)\", and helper \"Asked only when a loss was held back from it (zero otherwise)\".",
+   "model": "The box 2 prior loss goes to Part V only when the partner is not active this year. The text says 'If you didn't actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V.'",
+   "ruling": "Ruling: scope; the case of active participation now but not when the loss arose is refused (k1p.prior_not_active_if), so a box 2 prior loss goes to Part V exactly when there was no active participation this year, which is when it was not in both years.",
+   "context": "35b0eb0b962770bc71a704b1a6cf8f16ef7e067bedb050e34f207aa0bb6bac7e",
+   "date": "2026-11-24",
+   "run": "bb286e73ac015ae7d45551fcff8a78072dd1ce791ee30dbd8ec8617df060632b",
+   "subject_key": "f27d5cdf902649ead8400d62b054b83e56f733a99417b5c707c651622df58fed"
+  },
+  {
+   "printed": "V (c)",
+   "restated": "Add helper \"Asked only when a loss was held back from it (zero otherwise)\", helper \"Box 2 prior years unallowed loss without active participation (Part V)\", and helper \"Asked only when a loss was held back from it (zero otherwise)\".",
    "model": "The text says 'If you didn't actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V.' Here a box 2 prior loss goes to Part V only when there is no active participation in the current year.",
    "ruling": "Ruling: scope; the case of active participation now but not when the loss arose is refused (k1p.prior_not_active_if), so a box 2 prior loss goes to Part V exactly when the partner did not actively participate in 2025, which with that refusal is 'If you didn't actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V'.",
    "context": "18d517a864b0a3b3cb65293120925dbc57fea41172db0023c2d1534220c20baa",
@@ -182,6 +272,16 @@
    "date": "2026-11-15",
    "run": "3f6682a5296042ee47ff82812b5a541d278f3f52130f251d7845f80b6985470f",
    "subject_key": "dc0552023463a38631e1e15b86713c045ea886e45e216ddc334925f322fccf9f"
+  },
+  {
+   "printed": "VI (a)",
+   "restated": "Choose — [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = true → column (e) (k1p.b2_overall_loss)] [helper \"Actively participated in the rental real estate activity (box 2): Part IV of Form 8582\" = false → helper \"Zero\"]",
+   "model": "Part VI column (a) is 'the overall loss from column (e) of Part IV'. Part IV membership here uses the gate that omits the MFS-living-together rule, which requires Part V instead. The text also says 'Complete Part VI only if you entered an amount (other than zero) on Part II, line 9'.",
+   "ruling": "Ruling: scope; as IV (a): married filing separately is refused (s3.mfs). The reviewer agrees the value is right; Part VI is read only where Part II line 9 has an amount, on the return-level Form 8582.",
+   "context": "35b0eb0b962770bc71a704b1a6cf8f16ef7e067bedb050e34f207aa0bb6bac7e",
+   "date": "2026-11-24",
+   "run": "bb286e73ac015ae7d45551fcff8a78072dd1ce791ee30dbd8ec8617df060632b",
+   "subject_key": "b15dac166e650df3e40898cfeef08832e5546b72d1a50804db565e5197ffa9fa"
   }
  ]
 }

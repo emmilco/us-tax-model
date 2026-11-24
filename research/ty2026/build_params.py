@@ -129,6 +129,10 @@ put("ira.line2", {"single": D(91000), "hoh": D(91000), "mfs": D(10000), "mfj": D
     "adjusted gross incomes (as defined in section 219(g)(3)(A)) between $81,000 and $91,000 ... the income phase-out range is between $129,000 and $149,000 ... remains $0 to $10,000.",
     "the upper ends of the phase-out ranges, which the 2025 IRA Deduction Worksheet line 2 printed; the 2026 worksheet (Form 1040 instructions) is not posted; the qualifying-surviving-spouse amount follows section 219(g)(3)(B)(i) ('a joint return or as a qualifying widow(er)')")
 put("ira.line2_not_covered", D(252000), N, 4, "section 219(g)(7)(A)", "the deduction is phased out if the couple’s income is between $242,000 and $252,000")
+put("ira.roth_start_joint", D(242000), N, 5, "section 408A(c)(3)(A)",
+    "the adjusted gross income phase-out range for taxpayers making contributions to a Roth IRA is between $242,000 and $252,000 for married couples filing jointly")
+put("ira.roth_start_other", D(153000), N, 5, "section 408A(c)(3)(A)",
+    "For singles and heads of household, the income phase-out range is between $153,000 and $168,000")
 put("savers.agi_limit", {"single": D(40250), "mfs": D(40250), "qss": D(40250), "hoh": D(60375), "mfj": D(80500)}, "f8880", 2,
     "Form 8880 (2026), caution", "is more than $40,250 ($60,375 if head of household; $80,500 if married filing jointly).",
     "draft form; the same limits are in n-25-67 p. 3-4 (final)")
@@ -249,6 +253,10 @@ put("amt.bracket_subtract", ST(4890, 4890, 2445, 4890), "i6251", 11, "Line 7",
     "2% of amt.bracket ($244,500; $122,250), as in 2025")
 put("amt.rate_26", R(26, 100), "i6251", 11, "Line 7", "multiplying line 6 by 26% (0.26)")
 put("amt.rate_28", R(28, 100), "i6251", 11, "Line 7", "multiplying line 6 by 28% (0.28)")
+put("amt.rate_25", R(25, 100), "f6251", 3, "Form 6251 (2026), line 37", "Multiply line 36 by 25% (0.25)",
+    "Form 6251 line 37, read after C-LAW-02's operations by s2.amt_l37_rate alone (the exemption phase-out and the "
+    "separate-return add-back read amt.phaseout_rate); the 2026 i6251 draft does not print line 37's rate; P.L. 119-21 "
+    "section 70107 amends section 55(d) only")
 
 # ---- Other parameters read by hand from the refreshed archive ----
 put("sa.dep_min", D(1350), RP, 18, "section 4.14(2), Standard deduction for a dependent",
@@ -334,10 +342,6 @@ for pid, quote in (("ret.catchup_under50", "that generally applies for individua
 
 # ---- Parameters known to have no 2026 source ----
 NONE_NOTES = {
- "amt.rate_25": ("Form 6251 line 37 (\"Multiply line 36 by 25% (0.25)\" on the 2025 form), read after C-LAW-02's "
-                 "operations by s2.amt_l37_rate alone (the exemption phase-out and the separate-return add-back read "
-                 "amt.phaseout_rate). No 2026 Form 6251 is archived and the 2026 i6251 draft does not print line 37's "
-                 "rate; P.L. 119-21 section 70107 amends section 55(d) only. Fill from the final Form 6251"),
  "refund.std_single": ("i1040gi 2026 not posted (the State and Local Income Tax Refund Worksheet). Inferred, not checked "
                        "against a 2026 worksheet: the 2026 worksheet prints the prior year's (2025) standard deduction, "
                        "$15,750 (single or married filing separately), as the 2025 worksheet printed 2024's; rp-25-32 p. 10"),

@@ -43,13 +43,14 @@ form:
   - id: s1.uc_any
     printed: (helper)
     type: Bool
-    label: "Did you (or, on a joint return, your spouse) receive unemployment compensation in 2025?"
+    label: "Did you (or, on a joint return, your spouse) receive unemployment compensation in 2025, counting benefits from a governmental paid family leave program, partial benefits and trade readjustment allowances?"
     expr:
       op: input
-      source: "Did you (or, on a joint return, your spouse) receive unemployment compensation in 2025?"
+      source: "Did you (or, on a joint return, your spouse) receive unemployment compensation in 2025, counting benefits from a governmental paid family leave program, partial benefits and trade readjustment allowances?"
     cite:
       doc: i1040gi
-      locator: "p. 89, Schedule 1, line 7"
+      locator: 'p. 89, Schedule 1, line 7; f1099g p. 5, Instructions for Recipient, Box 1, "If you made contributions to a governmental UC program or to a governmental paid family leave program and received a payment from that program, the payer must issue a separate Form 1099-G to report this amount to you", "Combine the box 1 amounts from all Forms 1099-G and report the total as income on the UC line of your tax return"; p525 p. 29, Types of unemployment compensation, "Trade readjustment allowances under the Trade Act of 1974"; rr-2025-4 p. 27, Holdings, "(3) Amounts paid to the employee by the State as family leave benefits pursuant to the State’s PFML statute are included in the Federal gross income of the employee under § 61"'
+    ambiguity: amb.2025.pfml_benefits_contributions
   - id: s1.uc_paid
     printed: (helper)
     label: Unemployment compensation paid to you in 2025
@@ -58,7 +59,7 @@ form:
     expr:
       op: input
       source: 'Unemployment compensation paid to you (or, on a joint return, your spouse) in 2025: the total of box 1 of
-        your (or, on a joint return, your spouse''s) Forms 1099-G (if box 1 is wrong, the amount actually paid)'
+        your (or, on a joint return, your spouse''s) Forms 1099-G, including a separate Form 1099-G for benefits from a governmental paid family leave program (if box 1 is wrong, the amount actually paid)'
     cite:
       doc: i1040gi
       locator: p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation

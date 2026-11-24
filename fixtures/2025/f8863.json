@@ -3813,6 +3813,186 @@
           "cents": 0
         }
       }
+    },
+    {
+      "id": "stage19.example.pell.ex1.choice_notice",
+      "covers": [
+        "f8863",
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0932, predicted by hand before recording. The inputs of stage19.example.pell.ex1 (a $5,000 Pell grant applied to $5,000 of expenses). Worksheet line 3 $5,000, so f8863.adj_total $5,000 and the notice of the i8863 p. 6 Tip (reduce 2026 payments instead) is true; amounts unchanged.",
+      "inputs": {
+        "f8863.paid": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "$dependent": [
+          "k0"
+        ],
+        "dependent[k0].age": 18,
+        "dependent[k0].months": 12,
+        "dependent[k0].edu": true,
+        "dependent[k0].edu_1098t": true,
+        "dependent[k0].edu_inst": 500000,
+        "dependent[k0].edu_a_this_year": 500000,
+        "dependent[k0].edu_line24": true,
+        "dependent[k0].edu_ein": true
+      },
+      "expect": {
+        "f8863.adj_total": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f8863.adj_choice_notice": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "f8863.adj_notice_no_adjustment",
+      "covers": [
+        "f8863",
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating: the inputs of stage19.example.pell.ex1.choice_notice with no grant or other adjustment (Adjusted Qualified Education Expenses Worksheet lines 2a to 2c zero, i8863 p. 9), so worksheet line 3 is $0, f8863.adj_total $0 and the i8863 p. 6 Tip notice is false (it is given only when an adjustment reduced the expenses).",
+      "inputs": {
+        "f8863.paid": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "$dependent": [
+          "k0"
+        ],
+        "dependent[k0].age": 18,
+        "dependent[k0].months": 12,
+        "dependent[k0].edu": true,
+        "dependent[k0].edu_1098t": true,
+        "dependent[k0].edu_inst": 500000,
+        "dependent[k0].edu_a_this_year": 0,
+        "dependent[k0].edu_line24": true,
+        "dependent[k0].edu_ein": true
+      },
+      "expect": {
+        "f8863.adj_total": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8863.adj_choice_notice": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "f8863.adj_notice_not_eligible_student",
+      "covers": [
+        "f8863",
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating: the inputs of stage19.example.pell.ex1.choice_notice, but the dependent has no Form 1098-T and no exception (i8863 p. 2, Form 1098-T requirement), so the dependent is not an eligible student of this return and the $3,000 grant stated for the dependent is not an adjustment of any credit's expenses: f8863.adj_total is $0 (adjustments are added only for eligible students).",
+      "inputs": {
+        "f8863.paid": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "$dependent": [
+          "k0"
+        ],
+        "dependent[k0].age": 18,
+        "dependent[k0].months": 12,
+        "dependent[k0].edu": true,
+        "dependent[k0].edu_1098t": false,
+        "dependent[k0].edu_inst": 500000,
+        "dependent[k0].edu_a_this_year": 300000,
+        "dependent[k0].edu_line24": true,
+        "dependent[k0].edu_ein": true
+      },
+      "expect": {
+        "f8863.adj_total": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "f8863.adj_notice_taxpayer_student",
+      "covers": [
+        "f8863",
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating: the filer is the student (single, W-2 wages $60,000), $5,000 of qualified expenses all paid with a $5,000 Pell grant (i8863 p. 9 worksheet line 2a), so worksheet line 3 is $5,000, f8863.adj_total $5,000 and the i8863 p. 6 Tip notice is true, as for a dependent student.",
+      "inputs": {
+        "f8863.paid": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_inst": 500000,
+        "person[taxpayer].edu_a_this_year": 500000,
+        "person[taxpayer].edu_line24": true
+      },
+      "expect": {
+        "f8863.adj_total": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f8863.adj_choice_notice": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "f8863.adj_notice_taxpayer_not_eligible",
+      "covers": [
+        "f8863",
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating: the inputs of f8863.adj_notice_taxpayer_student, but the filer has no Form 1098-T and no exception (i8863 p. 2), so the filer is not an eligible student and the $3,000 grant stated is not an adjustment of any credit's expenses: f8863.adj_total is $0.",
+      "inputs": {
+        "f8863.paid": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": false,
+        "person[taxpayer].edu_inst": 500000,
+        "person[taxpayer].edu_a_this_year": 300000,
+        "person[taxpayer].edu_line24": true
+      },
+      "expect": {
+        "f8863.adj_total": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

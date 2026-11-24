@@ -528,6 +528,13 @@ rows:
     "scope.chapter11": true
   expect:
     refused: scope.other_income
+- id: scope.fiscal_year
+  design: "BUG-1313 hand-off (a return for a fiscal year)"
+  situation: "A wage earner files for a tax year that runs from July 1, 2025, to June 30, 2026."
+  answers:
+    "scope.fiscal_year": true
+  expect:
+    refused: scope.other_income
 - id: scope.treaty
   design: "BUG-0795 (income a tax treaty exempts)"
   situation: "A researcher from abroad, a resident alien for 2025, has pay a tax treaty exempts."

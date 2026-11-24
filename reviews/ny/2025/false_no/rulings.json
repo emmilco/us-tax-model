@@ -531,41 +531,41 @@
    "subject_sha": "bc56d1e18c6ee5519f62983571643d2fcfde2eda258b54c235e2fd393e481a2c"
   },
   "unruled:gate:ny_it201.public_job_if_w2#1": {
-   "reason": "The shown question names the spouse, asks about a 2025 W-2, and its help lists public authorities, school districts and CUNY.",
+   "reason": "The public-job question names the spouse and its help counts public bodies, SUNY and CUNY; a decedent's return is refused.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "ny_it201.ask.public_job: 'Did you (or, on a joint return, your spouse) get a 2025 Form W-2 from New York State, a New York local government or another New York public employer?'",
+     "kind": "6",
+     "class": "covered",
+     "evidence": "ny_it201.ask.public_job help: 'public bodies such as the MTA, a public hospital or library'; the nyc_flex prompt names NYC Transit and the Housing Authority.",
      "bugs": []
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
+     "kind": "3",
      "class": "model error",
-     "evidence": "The question asks whether the filer got 'a 2025 Form W-2' from such an employer, not whether they are still employed.",
+     "evidence": "ny_it201.ask.public_job reads 'Did you (or, on a joint return, your spouse) get a 2025 Form W-2 from ... another New York public employer?'",
      "bugs": []
     },
     {
      "n": 2,
-     "kind": "UNCLEAR",
+     "kind": "6",
      "class": "covered",
-     "evidence": "ny_it201.ask.public_job help: 'Count the State, a city, county, town or village, a school district, SUNY or CUNY, and public bodies such as the MTA, a public hospital or library, or a fire district.'",
+     "evidence": "The help counts 'SUNY or CUNY'; the 414(h) question's help names the Optional Retirement Program.",
      "bugs": []
     },
     {
      "n": 3,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The help names school districts; a charter school teacher in the Teachers' Retirement System is not named. Low.",
+     "kind": "4",
+     "class": "out of scope",
+     "evidence": "A decedent's return is refused by ny_it201.ask.decedent.",
      "bugs": []
     }
    ],
    "bugs": [],
    "class": "no gate defect",
-   "subject_sha": "14156782f64a89eef29da28db5397c3a457e01f6d3cbca0bbe13dda4d6b83124",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "35f8f49133767939699980dd99c75cd0a3c0e0b9ca75d2f7f2fb93f79cba1f68",
+   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:s1.has_sc#1": {
    "reason": "Trust, partnership and part-year City cases are refused upstream; the UBT question asks about the tax year.",
@@ -871,6 +871,198 @@
    "class": "defect (low): post-2018 New York alimony hidden by pre-2019 alimony (BUG-1287); BUG-1215 (low)",
    "subject_sha": "480d9d4002e74101f104e1bc6c9d4a395f8e17ebb5dc4f851d91fa72994d66e6",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:gate:ny_it201.active_duty_possible#1": {
+   "reason": "A married head of household answers Yes to the federal married question, whose own wording includes 'married but considered unmarried'; the other two are rare readings.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "3",
+     "class": "model error",
+     "evidence": "household.married_dec31 asks 'Were you married at the end of 2025 (including married but considered unmarried for head of household status)?', so this filer answers Yes and is asked.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "1",
+     "class": "accepted residual",
+     "evidence": "A spouse who died in 2025 after active duty, on a separate return: rare; low; no case in the archive's examples.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "6",
+     "class": "presentation",
+     "evidence": "The federal question names the armed forces, reserves and National Guard 'since 2022'; a recalled retiree is serving. Low.",
+     "bugs": []
+    }
+   ],
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "28563b89baeca56443684a92243a5b3c6bc8cdea0ed678ebc70e14b87d407633",
+   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:gate:ny_it201.ask.spouse_resident#1": {
+   "reason": "Every No to the spouse residence question refuses line 1 (ny_it201.gate.spouse_nonresident), so no false no reaches a computed return; the cannot-sign question is needed only after a Yes.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "5",
+     "class": "covered",
+     "evidence": "Unknown whereabouts: the filer answers No and line 1 is refused by ny_it201.gate.spouse_nonresident.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "5",
+     "class": "covered",
+     "evidence": "A spouse living apart outside the City: No, refused by ny_it201.gate.spouse_nonresident.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "other",
+     "class": "accepted WIDE",
+     "evidence": "A State-resident spouse outside the City: No, refused; the tool prepares full-year City residents only (decision C5).",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "8",
+     "class": "covered",
+     "evidence": "A spouse away but resident answers either way: Yes is right (help of city_resident counts time away), No refuses.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "other",
+     "class": "covered",
+     "evidence": "A spouse who died in 2025 is refused by ny_it201.ask.decedent ('including a husband or wife on this joint return').",
+     "bugs": []
+    },
+    {
+     "n": 5,
+     "kind": "8",
+     "class": "presentation",
+     "evidence": "The help names the residence refusal only; the cannot-sign question follows a Yes. Low.",
+     "bugs": []
+    }
+   ],
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "528c86f640fba92d8b7c2d54cc6c7e88207ccc8a2013e66b94e48ea0d3e3f089",
+   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:gate:ny_it201.carryover_179_used#1": {
+   "reason": "Help now resolves an undivided carryover toward Yes and states the weight as gross vehicle weight; trucks and vans are excluded by A-208's own definition.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "7",
+     "class": "presentation",
+     "evidence": "Help: 'If you are not sure which property the carryover is from, answer Yes when such a vehicle was among the property expensed in the year it arose.' Changed in this lane.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "6",
+     "class": "model error",
+     "evidence": "ny_it225i p. 12, A-208: a sport utility vehicle 'does not include ... any truck, van, or motor home', with a truck defined by its cargo area.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "8",
+     "class": "presentation",
+     "evidence": "Help now says 'rated over 6,000 pounds gross vehicle weight' (leans to Yes). Changed in this lane.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "8",
+     "class": "presentation",
+     "evidence": "Help now says 'even one used only for business'. Changed in this lane.",
+     "bugs": []
+    }
+   ],
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "854263ae0e92aabf08e27c4213179bbaa5fd56331137f4e79a522d31fe24c137",
+   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:gate:ny_it201.has_unemployment#1": {
+   "reason": "RUIA sickness benefits paid as wages are not asked where the federal railroad question does not refuse them (filed, low).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "5",
+     "class": "defect",
+     "evidence": "S-122 covers RUIA sickness benefits, which are wages; mostly refused by person.rrta; filed as BUG-1375. Low.",
+     "bugs": [
+      "BUG-1375"
+     ]
+    },
+    {
+     "n": 1,
+     "kind": "6",
+     "class": "defect",
+     "evidence": "Same route on a joint return; BUG-1375. Low.",
+     "bugs": [
+      "BUG-1375"
+     ]
+    },
+    {
+     "n": 2,
+     "kind": "4",
+     "class": "presentation",
+     "evidence": "Help now says railroad unemployment benefits are paid by the U.S. Railroad Retirement Board, not New York State. Changed in this lane.",
+     "bugs": []
+    }
+   ],
+   "bugs": [
+    "BUG-1375"
+   ],
+   "class": "defect (low): BUG-1375",
+   "subject_sha": "121386ca7685c88eaa60a5b9af1c79b5a69c714877bbb3b150de25470b8e79bf",
+   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:gate:s1.alimony_any#1": {
+   "reason": "The federal alimony question does not name temporary orders, unallocated support or 'maintenance' (filed, low; hand-off to the lane holding s1).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "1",
+     "class": "defect",
+     "evidence": "Temporary support orders while a divorce is pending; BUG-1376. Low.",
+     "bugs": [
+      "BUG-1376"
+     ]
+    },
+    {
+     "n": 1,
+     "kind": "8",
+     "class": "defect",
+     "evidence": "Unallocated family support not fixed as child support; BUG-1376. Low.",
+     "bugs": [
+      "BUG-1376"
+     ]
+    },
+    {
+     "n": 2,
+     "kind": "6",
+     "class": "defect",
+     "evidence": "New York's term 'maintenance'; BUG-1376. Low.",
+     "bugs": [
+      "BUG-1376"
+     ]
+    }
+   ],
+   "bugs": [
+    "BUG-1376"
+   ],
+   "class": "defect (low): BUG-1376",
+   "subject_sha": "6d844ad463e4dcaa4830c4a0cfbf58af7fd882023181cfaf6691e350a4f4d0c0",
+   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   }
  },
  "baseline": {}

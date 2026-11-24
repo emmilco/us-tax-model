@@ -3365,39 +3365,33 @@
  },
  {
   "screen": "f8889.former_spouse_family",
-  "subject_sha": "799c285fabda11a51fbc2be93ad7fe72456bfa8604110ca7f08305f902c9abec",
+  "subject_sha": "2a5cd59f527099d9cc1520194140758652906eade24902e0384fa5c95f01a53d",
   "samples": [
    {
     "verdict": "WIDE",
     "findings": [
      {
       "kind": "WIDE",
-      "situation": "While married, the former spouse had a family HDHP but was not an eligible individual (for example, enrolled in Medicare or holding other non-disregarded health coverage), so the filer's own self-only coverage controls and the tool computes it correctly, yet the filer must answer Yes.",
-      "irs_text": "i8889 p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan\"",
-      "why": "The family-coverage attribution applies only when both spouses are eligible individuals, but the question asks only whether the other person had a plan covering more than one person. A filer whose spouse was ineligible answers Yes and is refused even though self-only treatment is correct."
+      "situation": "The then-spouse had a family HDHP while married to the filer but was not an eligible individual in those months, for example because they had other non-HDHP health coverage or were enrolled in Medicare.",
+      "irs_text": "i8889 p. 4, How To Complete Part I: 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan'",
+      "why": "The question asks only whether the other person 'have a high-deductible plan covering more than one person', not whether they were an eligible individual. A filer whose former spouse was ineligible answers YES and is refused, even though the cited rule and the tool's own refusal text ('both of you were eligible individuals') would not apply the family coverage."
      },
      {
       "kind": "WIDE",
-      "situation": "The former spouse's family HDHP was in force only during part of the final month of the marriage and never on the first day of a month while the couple was married (for example, it began June 15 and the divorce was final June 20).",
-      "irs_text": "i8889 p. 6, Line 3 Limitation Chart: \"What type of coverage did your HDHP provide on the first day of the month?\"; p. 2: \"You must be, or be considered, an eligible individual on the first day of a month\"",
-      "why": "The IRS tests coverage month by month as of the first day, so no month is affected and the tool's self-only figure is correct. The question's \"in any month of 2025 while you were married\" still produces a Yes."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "The former spouse was covered as a dependent under someone else's family HDHP, such as a parent's plan, rather than holding the policy.",
-      "irs_text": "i8889 p. 4, Line 1: \"If you were covered, or considered covered, by ... a family HDHP\"; How To Complete Part I: \"either of you has an HDHP with family coverage\"",
-      "why": "\"Did the other person have a high-deductible plan\" can be read as asking whether the spouse was the policyholder. A filer could then answer No when the spouse was in fact covered by family HDHP coverage, which the IRS text treats as family coverage."
+      "situation": "The marriage, or the then-spouse's family HDHP, existed only partway through a month and did not overlap on the first day of any month of 2025.",
+      "irs_text": "i8889 p. 6, Line 3 Limitation Chart: 'Were you an eligible individual ... on the first day of the month?' / 'What type of coverage did your HDHP provide on the first day of the month?'",
+      "why": "The question says 'in any month of 2025 while you were married', so mid-month overlap draws a YES. The IRS monthly test looks only at coverage on the first day of each month, so with no first-day overlap the filer's self-only figure computed by the tool is correct."
      }
     ],
-    "prompt_sha": "d999c9bc7df62b2890c4afb740178745e9fff220cc7fae4b24be502675df3f8f",
+    "prompt_sha": "f2be10ec52ce721a6c079ba8c9a342e674aebcb0e9b95e44fd136a0db88382dc",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.08347199999999999,
+    "cost": 0.09681200000000001,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/screens/f8889.former_spouse_family.799c285fabda.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/f8889.former_spouse_family.2a5cd59f5270.1.response.txt"
    }
   ],
-  "question": "For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person?",
+  "question": "For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce, a court decree of legal separation or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person, even if that plan had changed by the time the marriage ended?",
   "lines": [
    "f8889.line13_figured"
   ],
@@ -9697,24 +9691,36 @@
  },
  {
   "screen": "gate:f8889.ask_former_spouse_family",
-  "subject_sha": "bfeed3ddc2d9712ec09bf6d3cbb075ef3d787f40bc4a2ccb7a46cc96bda010f6",
+  "subject_sha": "55e4c868e0a0237e8bba6d4049e50b40671425bf6e05c2c1dc5e8cb713eb317e",
   "samples": [
    {
-    "verdict": "COVERS",
+    "verdict": "NARROW",
     "findings": [
      {
-      "kind": "WIDE",
-      "situation": "A person divorced in 2025 whose then-spouse had a family HDHP but was not an eligible individual during the marriage (for example, enrolled in Medicare) is still asked and answers yes, so the interview ends even though the family-coverage rule does not apply.",
+      "kind": "NARROW",
+      "situation": "An unmarried-at-year-end filer who had self-only HDHP coverage for only part of 2025, or whose coverage type changed, was married until a 2025 divorce or death to a spouse with family HDHP coverage during months both were eligible; the computed condition is false and the question is never asked.",
+      "irs_text": "i8889 p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan. Disregard any plans with self-only coverage\"; p. 4, Line 3 rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage\"; p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025\"",
+      "why": "The IRS rule applies to any month the filer and spouse were both eligible, whatever the filer's coverage in other months. The gate maps the 'changed' coverage pattern straight to false, so a then-spouse's family coverage in those months is never captured on this line."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "A filer with self-only HDHP coverage on the first day of all twelve months was not an eligible individual in some month (for example, Medicare enrollment), and was married until a 2025 divorce or death to a spouse with family coverage during months both were eligible.",
       "irs_text": "i8889 p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan\"",
-      "why": "The family-coverage rule requires both spouses to be eligible individuals, but the question asks only whether the other person had a plan covering more than one person. A yes in this case is wrong but only costs questions, so it is reported without changing the verdict."
+      "why": "The family-coverage treatment still governs the months both spouses were eligible. The helper requires eligibility in every month, so the condition is false and the question is not reached."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "The then-spouse had family HDHP coverage but was not an eligible individual (for example, was enrolled in Medicare or had other disqualifying coverage) during the marriage months.",
+      "irs_text": "i8889 p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage\"",
+      "why": "The question does not ask whether the then-spouse was an eligible individual, so a Yes, which ends the interview, can arise where the IRS rule does not apply."
      }
     ],
-    "prompt_sha": "32077f050b2e20f3e0cb8831a01549f857ee37abcc362abf9dfb18c1306fa722",
+    "prompt_sha": "da59fbb1f9324c0d66b819126deb4b87cfda533b5f69b6a5e898b594ba98e39a",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.066252,
+    "cost": 0.076792,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/screens/gate_f8889.ask_former_spouse_family.bfeed3ddc2d9.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_f8889.ask_former_spouse_family.55e4c868e0a0.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -9813,42 +9819,48 @@
  },
  {
   "screen": "gate:f8889.ask_spouse_family",
-  "subject_sha": "aae267dab792d7e81ffc410691bd9489435ff8509b0797857a829e55f170b348",
+  "subject_sha": "2452505108db3caa80cac9100405fd72a8227de6bb1f027cc5e899b8443a666e",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A married person whose own HDHP coverage started, ended or changed type during 2025 (bucket 'changed'), for example self-only from July to December, while the spouse had a family HDHP in those months.",
-      "irs_text": "i8889 (2025) p. 4, Line 3, rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage. Disregard any plan with self-only coverage.\"",
-      "why": "The 'changed' branch sets the condition to false, so the spouse's family coverage is never asked and is treated as false. Rule 1 applies to every Line 3 computation, including the monthly Limitation Chart and the last-month rule (rules 2, 4 and 5), so the family amount is silently dropped for those months."
+      "situation": "A married filer has self-only HDHP coverage for only part of 2025, for example from July through December. Their spouse has family HDHP coverage in those months. The filer was not an eligible individual in every month, so the computed condition is false and the spouse question is never asked.",
+      "irs_text": "i8889 p. 4, Line 3 rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage. Disregard any plan with self-only coverage.\"; rule 5: \"If you were not an eligible individual on the first day of the last month of your tax year, use the Line 3 Limitation Chart and Worksheet\"",
+      "why": "Rule 1 has no every-month requirement. A part-year eligible filer uses the monthly worksheet, and the spouse's family coverage raises each eligible month to the family limit. The gate's every-month test leaves out these filers, so line 3 is understated."
      },
      {
       "kind": "NARROW",
-      "situation": "A married person with a self-only HDHP on the first day of all twelve months who was not an eligible individual in every month (for example enrolled in Medicare from October), while the spouse had a family HDHP.",
-      "irs_text": "i8889 (2025) p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan. Disregard any plans with self-only coverage.\"",
-      "why": "The condition requires eligibility in every month, so it is false here. In the months when both spouses were eligible, the IRS text treats the filer as having family coverage, which sets the monthly limit under rule 5's worksheet."
+      "situation": "A married filer has self-only coverage in some months and family coverage in others, with self-only coverage on December 1. Their spouse has family coverage in the filer's self-only months. Because the filer did not have self-only coverage every month as answered, the condition is false.",
+      "irs_text": "i8889 p. 4, Line 3 rule 4: \"you changed your type of coverage during the year, enter on line 3 ... the greater of: a. The limitation shown on the last line of the Line 3 Limitation Chart and Worksheet ... or b. The maximum amount ... based on the type of HDHP coverage you had on the first day of the last month\"; rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage\"",
+      "why": "In the filer's self-only months, the spouse's family coverage turns those months into family months on the worksheet. That can raise item (a) above the self-only December limit, but the gate never asks about it."
      },
      {
       "kind": "NARROW",
-      "situation": "A person with a self-only HDHP all year who was married for part of 2025 but not at year-end (divorced or widowed), whose spouse had a family HDHP during the months of the marriage.",
-      "irs_text": "i8889 (2025) p. 4, Line 3, rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage.\"",
-      "why": "The condition tests marital status only at the end of 2025, while the gated question asks about \"any month of 2025\". Rule 1 is not limited to year-end marital status, so the spouse's family coverage in the married months is never asked."
+      "situation": "A filer was married for part of 2025 and divorced before year-end. During the married months, both spouses were eligible and the former spouse had family HDHP coverage. The 'married at the end of 2025' test makes the condition false.",
+      "irs_text": "i8889 p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan\"",
+      "why": "The family-coverage rule applies in any month the person was a spouse. 'Married at the end of the year' is the rule 6 test for the $1,000 additional contribution, not the rule 1 test. Using it drops the family treatment for the married months."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "A married filer becomes eligible during the year and is eligible on December 1 under the last-month rule. It is unclear whether the helper 'an eligible individual in every month' counts this filer as eligible all year or only in the months they were actually eligible.",
+      "irs_text": "i8889 p. 4, Line 3 rule 2: \"If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month\"",
+      "why": "If the helper counts only actual months, it treats a filer who is deemed eligible all year as not eligible every month, and the spouse's December family coverage is never asked."
      },
      {
       "kind": "WIDE",
-      "situation": "A married person with self-only coverage and full-year eligibility whose spouse had a family HDHP but was not an eligible individual in any month (for example the spouse was on Medicare all year).",
-      "irs_text": "i8889 (2025) p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan.\"",
-      "why": "The question is asked although the deemed-family treatment in this passage requires both spouses to be eligible. This leans to yes and is harmless by design."
+      "situation": "A married filer is eligible all year with self-only coverage, and the spouse has family HDHP coverage but is not an eligible individual (for example, because they are enrolled in Medicare). The question is still asked.",
+      "irs_text": "i8889 p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage\"",
+      "why": "The gate does not require the spouse to be eligible, so it asks in some cases where the spouse's coverage does not count. That is acceptable because gates lean to yes."
      }
     ],
-    "prompt_sha": "f7baef51bc8b99b790ef1e93b8b97a09c03ece9380fb1630d127fe99fd4619d7",
+    "prompt_sha": "5d8aa2fb214638e3d66e4be010b0da678a86b216cfc5a62494fed4793f122997",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.106264,
-    "model": "claude-fable-5-2",
-    "date": "2026-11-12",
-    "response": ".transcription/screens/gate_f8889.ask_spouse_family.aae267dab792.1.response.txt"
+    "cost": 0.07802,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_f8889.ask_spouse_family.2452505108db.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -10411,36 +10423,36 @@
  },
  {
   "screen": "gate:f8889.medical_all_if_dist",
-  "subject_sha": "48734f01b25430002de9cce1d52e0d827a58ceaede47e3783e4c7ad8ffb85a68",
+  "subject_sha": "924162566b9bc2c384337ef38a1999cbfe4946e8bef8f5276000cef22b6c0c21",
   "samples": [
    {
-    "verdict": "UNCLEAR",
+    "verdict": "NARROW",
     "findings": [
      {
-      "kind": "UNCLEAR",
-      "situation": "A filer whose non-rolled-over distributions paid medical bills, but some bills were incurred before the HSA was set up, reimbursed by insurance, or were premiums that don't qualify, could answer the computed helper yes.",
-      "irs_text": "i8889 p. 8, Line 15: \"Only include on line 15 distributions from your HSA that were used to pay you for qualified medical expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established.\" p. 2: \"Expenses incurred before you establish your HSA are not qualified medical expenses.\"",
-      "why": "The helper question says only \"used to pay qualified medical expenses\" and does not state the after-establishment, unreimbursed and premium limits. A yes skips the detailed question, so line 15 is taken as all distributions and is overstated."
+      "kind": "NARROW",
+      "situation": "A filer took an excess contribution out of the HSA after the return's due date (including extensions) and spent it on qualified medical expenses. Every distribution paid qualified medical expenses, so the filer truthfully answers yes, and the partial-amount question is never asked.",
+      "irs_text": "i8889 p. 8, Line 15: \"Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.\" Also p969 p. 9: \"the distribution of an excess contribution taken out after the due date, including extensions, of your return is subject to tax even if used for qualified medical expenses.\"",
+      "why": "Line 15 must be smaller than the distributions here. The gate only asks whether the money paid qualified medical expenses and only leaves out rollovers, so this filer answers yes and the medical_if_partial amount is never collected."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "A filer with a deemed distribution (prohibited transaction) or an excess contribution withdrawn after the return due date, whose actual withdrawals all went to medical bills, could answer yes that all non-rolled-over distributions paid qualified medical expenses.",
-      "irs_text": "i8889 p. 3: \"Any deemed distribution will not be treated as used to pay qualified medical expenses.\" p. 8, Line 15: \"Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.\"",
-      "why": "Filers may not think of a deemed distribution or a late excess withdrawal as a distribution that 'paid' expenses, or may believe the late excess withdrawal counts because it was spent on medical care. A yes leaves these amounts in line 15 when the text excludes them."
+      "situation": "A filer whose HSA ceased to be an HSA because of a prohibited transaction must report the account's fair market value on line 14a as a deemed distribution. The same filer may have spent all actual withdrawals on medical costs.",
+      "irs_text": "i8889 p. 3: \"you must include the fair market value of all assets in the account as of January 1, 2025, on line 14a\" and \"Any deemed distribution will not be treated as used to pay qualified medical expenses.\"",
+      "why": "A filer could read \"All of the 2025 HSA distributions\" as only the money they actually withdrew, leave out the deemed distribution, and answer yes. Line 15 would then be overstated and the partial question skipped."
      },
      {
       "kind": "WIDE",
-      "situation": "When there were no HSA distributions, the computed condition is false (hsa.no), so the tool asks the medical-expense amount even though lines 14a–14c are zero.",
-      "irs_text": "i8889 p. 8, Line 14a: \"Enter the total distributions your HSAs made in 2025.\"",
-      "why": "With no distributions, line 15 has no effect, so asking the question costs only an extra question."
+      "situation": "When there were no HSA distributions in 2025, the computed condition is false, so the gated question about medical costs paid from distributions is asked.",
+      "irs_text": "i8889 p. 8, Line 15: \"Only include on line 15 distributions from your HSA that were used to pay you for qualified medical expenses\"",
+      "why": "With no distributions, line 15 has no amount, so the question costs the filer a step but drops nothing."
      }
     ],
-    "prompt_sha": "09b51c32f24779f2bfcda41fbc79c313840dfd1ee840b33465d5e7395bd60516",
+    "prompt_sha": "736ba34d13bd2587a8b56e6960ac9602cc350c8920d3bb3d9202f7fdfda6a655",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.07738,
+    "cost": 0.105912,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_f8889.medical_all_if_dist.48734f01b254.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_f8889.medical_all_if_dist.924162566b9b.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -10465,7 +10477,7 @@
     "how": "cited pages",
     "locators": [
      "p. 8, Line 15",
-     "p. 8, Line 15, \"Only include on line 15 distributions from your HSA that were used to pay you for qualified medical expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established\" and \"Any person who would be a dependent except that\"; p. 9, Line 15, TIP, divorced or separated parents; p. 2, Qualified Medical Expenses, \"You cannot treat insurance premiums as qualified medical expenses unless the premiums are for:\", \"Long-term care (LTC) insurance\", \"Health care continuation coverage (such as coverage under COBRA)\" and \"Health care coverage while receiving unemployment compensation under federal or state law\"; p. 3, \"Medicare and other health care coverage if you were 65 or older (other than premiums for a Medicare supplemental policy, such as Medigap)\", \"Coverage under (2) and (3) can be for your spouse or a dependent meeting the requirement.\" and \"are under age 65, Medicare premiums for your spouse or dependents (who are age 65 or older) are generally not qualified medical expenses\""
+     "p. 8, Line 15, \"Only include on line 15 distributions from your HSA that were used to pay you for qualified medical expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established\" and \"Any person who would be a dependent except that\"; p. 9, Line 15, TIP, divorced or separated parents; p. 2, Qualified Medical Expenses, \"You cannot treat insurance premiums as qualified medical expenses unless the premiums are for:\", \"Long-term care (LTC) insurance\", \"Health care continuation coverage (such as coverage under COBRA)\" and \"Health care coverage while receiving unemployment compensation under federal or state law\"; p. 3, \"Medicare and other health care coverage if you were 65 or older (other than premiums for a Medicare supplemental policy, such as Medigap)\", \"Coverage under (2) and (3) can be for your spouse or a dependent meeting the requirement.\" and \"are under age 65, Medicare premiums for your spouse or dependents (who are age 65 or older) are generally not qualified medical expenses\"; , \"An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established on the date the prior account was established.\"; , \"The premiums for long-term care insurance (item (1)) that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually.\""
     ],
     "cols_pages": [
      2,
@@ -10474,41 +10486,38 @@
      9
     ],
     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+   },
+   {
+    "doc": "p969",
+    "revision": "2025",
+    "text_sha256": "0491c6445304fc8c1b7ae3097b8a3ea30260bb35f706da40900d06416502b9c8",
+    "pages": [
+     8,
+     9
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     8,
+     9
+    ],
+    "cols_sha256": "f643ce7086d88eabd1d8006ab0b5609f775af36b9b8a5b74637e1f366d8c29c3"
    }
   ]
  },
  {
   "screen": "gate:f8889.mfs_ask",
-  "subject_sha": "44364b714d6b4f161f1d9330be811cd89d78493a3454affd244c35f3893f5778",
+  "subject_sha": "1a2db71e6e98b8860ccc3849f4fe415d4ed251040abc9cb34aadd2039a414e7d",
   "samples": [
    {
-    "verdict": "SOURCE",
-    "findings": [
-     {
-      "kind": "SOURCE",
-      "situation": "Married spouses with separate HSAs and family HDHP coverage who file a joint return must also split the family limit on line 6, but the computed gate is false unless filing status is married filing separately.",
-      "irs_text": "i8889 (2025) p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6\"; gate: \"Filing status married filing separately\" = true and \"Married at the end of 2025 and treated as having family coverage at any time during 2025\" = true",
-      "why": "The cited condition is spouses with separate HSAs and family coverage, with no filing-status test. The gate adds a married-filing-separately requirement the text does not state. This is harmless only if the tool handles joint returns' separate-HSA allocation somewhere else."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "A spouse who had an HSA during 2025 but closed or rolled it out before the filer answers could read 'Does your husband or wife have' in the present tense and truthfully answer no.",
-      "irs_text": "i8889 (2025) p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025\"",
-      "why": "The question asks about now, not 2025. The help says to count an HSA with nothing put into it for 2025, but it does not say to count an account that no longer exists, so a filer could answer no while the line 6 split still applies."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "On a married-filing-separately return, the question opens with \"For this person (you, or your spouse on a joint return)\", which refers to a joint return that cannot exist in this case.",
-      "irs_text": "i8889 (2025) p. 7, Line 6: \"divide the amount on line 5 equally between you and your spouse, unless you both agree on a different allocation\"",
-      "why": "A separate filer could be unsure whose HSA is being asked about. The joint-return framing conflicts with the gate's limit to separate returns and with the line's label, \"A separate return's spouse had an HSA\"."
-     }
-    ],
-    "prompt_sha": "1c2935bcc7485dd5cb20fcf620e2efddc343a90aea06367f4b48aa8b99b243a0",
+    "verdict": "COVERS",
+    "findings": [],
+    "prompt_sha": "b8f71d8b8b0b56bbe95e8556049391ff7cb798ec0e06c3771f6205afd4a84506",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.055904,
+    "cost": 0.057432,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_f8889.mfs_ask.44364b714d6b.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_f8889.mfs_ask.1a2db71e6e98.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -12663,67 +12672,6 @@
   ]
  },
  {
-  "screen": "gate:k1p.has_activity",
-  "subject_sha": "0014cb8d56047534a8b5ed61b95aa4b8099e551c19e9477617a9c0512a66652b",
-  "samples": [
-   {
-    "verdict": "NARROW",
-    "findings": [
-     {
-      "kind": "NARROW",
-      "situation": "A filer has a prior-year unallowed loss from this partnership, but the 2025 K-1 shows nothing in boxes 1, 2 and 3 (for example, the partnership broke even, or the activity was wound down or disposed of).",
-      "irs_text": "Column (c). Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582. (i8582 2025 p. 10, Part IV; same for Part V column (c))",
-      "why": "Column (c) asks for prior-year unallowed losses for each activity regardless of current-year income or loss, so the carryover still goes on line 1c or 2c. The computed gate is false here, so the tool sets the carryover to zero."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "The partnership's passive activity produces current-year loss items only in boxes other than 1–3 (such as a section 1231 loss, section 179 deduction or other deductions), or a prior-year unallowed loss arose from such items, while boxes 1–3 are blank.",
-      "irs_text": "Column (b). Enter the current year net loss for each activity... If an activity has net income on one form or schedule and a net loss on another form or schedule, report the net amounts separately (i8582 2025 p. 10, Part IV); Part V covers 'Passive trade or business activities' (i8582 2025 p. 10)",
-      "why": "The IRS text treats the activity as a whole, across forms and schedules, not just K-1 boxes 1–3. Gating the prior-year loss question on boxes 1–3 misses activities whose amounts flow through other boxes."
-     },
-     {
-      "kind": "SOURCE",
-      "situation": "The cited text sets no current-year-activity condition for entering a prior-year unallowed loss, but the gate adds one.",
-      "irs_text": "Gate: 'Box 1, 2 or 3 shows an amount' vs. i8582 p. 10: 'Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.'",
-      "why": "The cited source's condition is that a prior-year unallowed loss exists on the 2024 Form 8582 Part VII column (c). The gate replaces that with a condition on current-year K-1 boxes."
-     }
-    ],
-    "prompt_sha": "d68d3d86d60f5d392f8db55d7fe810f2c3aed3cc317d0fa6ee2b88349cde83ec",
-    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.039144,
-    "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_k1p.has_activity.0014cb8d5604.1.response.txt"
-   }
-  ],
-  "kind": "gate",
-  "condition": "k1p.has_activity",
-  "lines": [
-   "k1p.prior_any_if_activity"
-  ],
-  "inputs": [
-   "k1p.prior_any"
-  ],
-  "used": [
-   {
-    "doc": "i8582",
-    "revision": "2025",
-    "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
-    "pages": [
-     10
-    ],
-    "how": "cited pages",
-    "locators": [
-     "p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\""
-    ],
-    "cols_pages": [
-     10
-    ],
-    "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
-   }
-  ]
- },
- {
   "screen": "gate:k1p.has_b1",
   "subject_sha": "f72e507cca5301705719f0e09164a3e6daccba5d1c9f77228c620faf482b619a",
   "samples": [
@@ -13407,71 +13355,6 @@
      16
     ],
     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
-   }
-  ]
- },
- {
-  "screen": "gate:k1p.prior_any_if_activity",
-  "subject_sha": "bfeecf598fcb08e90e25cc093dcec65177e03a04ced5638c89899c586e9b3fe2",
-  "samples": [
-   {
-    "verdict": "NARROW",
-    "findings": [
-     {
-      "kind": "NARROW",
-      "situation": "A partnership activity has a prior-year unallowed loss carried forward on the 2024 Form 8582, but the 2025 K-1 shows no amount in box 1, 2 or 3. For example, the activity broke even this year, or the K-1 reports only other items.",
-      "irs_text": "i8582 (2025) p. 10, Part IV/Part V Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
-      "why": "Column (c) needs the carried-forward loss for every activity that has one, whether or not columns (a) or (b) show a current-year amount. The computed condition is false whenever boxes 1–3 are blank, so the carryforward is silently dropped from lines 1c/2c."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "In a year with blank boxes 1–3, a filer disposes of the partnership interest or keeps it with no current operating items, and still holds unallowed losses from earlier years.",
-      "irs_text": "i8582 (2025) p. 10, Columns (d) and (e): \"Combine income and losses in columns (a) through (c) for each activity, and either enter the overall gain for the activity in column (d) or enter the overall loss for the activity in column (e).\"",
-      "why": "Columns (d)/(e) contemplate an activity whose only entry is column (c). Gating on current-year box 1–3 amounts excludes exactly this case."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "A filer is asked whether a loss was \"held back on an earlier return\" and must classify it as \"from the business (box 1)\", \"rental real estate (box 2)\" or \"other rentals (box 3)\".",
-      "irs_text": "i8582 (2025) p. 10, Part IV: \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
-      "why": "The IRS text identifies the amount by the prior Form 8582 Part VII column (c), not by \"held back\" or by K-1 box. A filer may not recognize a suspended passive loss (or a prior-year CRD) as \"held back\", or may not know which current-year box an earlier suspended loss belongs to."
-     }
-    ],
-    "prompt_sha": "3f0621f2a4aa84b6537d09426f9d717f6fc53df21e9ef98cd91e67f465d92210",
-    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.04825599999999999,
-    "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_k1p.prior_any_if_activity.bfeecf598fcb.1.response.txt"
-   }
-  ],
-  "kind": "gate",
-  "condition": "k1p.prior_any_if_activity",
-  "lines": [
-   "k1p.prior_b1_any_if",
-   "k1p.prior_b2_any_if",
-   "k1p.prior_b3_any_if"
-  ],
-  "inputs": [
-   "k1p.prior_b1_any",
-   "k1p.prior_b2_any",
-   "k1p.prior_b3_any"
-  ],
-  "used": [
-   {
-    "doc": "i8582",
-    "revision": "2025",
-    "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
-    "pages": [
-     10
-    ],
-    "how": "cited pages",
-    "locators": [
-     "p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\""
-    ],
-    "cols_pages": [
-     10
-    ],
-    "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
    }
   ]
  },
@@ -20490,28 +20373,42 @@
  },
  {
   "screen": "gate:s1.uc_any",
-  "subject_sha": "ba29a5c84054349713ee1a3fecdaba3ee0f56acea876f284ac8760acfd6c3460",
+  "subject_sha": "8746e27d0552dd8fc979c42b615b2c1ac8b53993d8a268d3e4be1eef37420609",
   "samples": [
    {
-    "verdict": "UNPARSED",
-    "findings": [],
-    "prompt_sha": "35169c4feefc78ba7b00466008f2fa73774a49237d35e841ba7ac84af023384c",
+    "verdict": "NARROW",
+    "findings": [
+     {
+      "kind": "NARROW",
+      "situation": "A filer, or a spouse on a joint return, gets disability payments from a government program paid as a substitute for unemployment compensation, and the payments are not shown in box 1 of a Form 1099-G.",
+      "irs_text": "p525 p. 29: unemployment compensation includes \"Disability payments from a government program paid as a substitute for unemployment compensation.\"",
+      "why": "The gate asks only about unemployment benefits and paid family leave. Its help points to box 1 of a Form 1099-G. A filer who thinks of these payments as disability benefits could truthfully answer no, which drops an amount the text puts on line 7."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A state employee not covered by the state's unemployment law receives payments similar to unemployment compensation from the state.",
+      "irs_text": "p525 p. 29: \"Although the payments are fully taxable, don't report them as unemployment compensation. Report these payments on Schedule 1 (Form 1040), line 8z.\"",
+      "why": "The filer would likely answer yes to 'unemployment benefits', but these payments do not belong on line 7."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer receives unemployment benefits from a private fund or a union fund.",
+      "irs_text": "p525 p. 29: \"Private unemployment fund... Report the taxable amount on Schedule 1 (Form 1040), line 8z\"; \"Payments by a union... included in your income on Schedule 1 (Form 1040), line 8z.\"",
+      "why": "The gate question says 'unemployment benefits' without limiting them to government programs, so these filers answer yes even though line 7 gets nothing."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer receives only state paid family and medical leave program medical leave benefits that are attributable to the employee's own contributions.",
+      "irs_text": "rr-2025-4 p. 27: medical leave benefits \"attributable to the employee's contribution... are excluded from the employee's gross income under § 104(a)(3).\"",
+      "why": "The filer may answer yes because the benefits came from a paid family leave program, but no amount is includible on line 7."
+     }
+    ],
+    "prompt_sha": "80c6c02469e3185d57be82288fb28f7be45f9b9d0068a005604b53c5569bac4e",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/gate_s1.uc_any.ba29a5c84054.1.response.txt",
-    "parse_error": true
-   },
-   {
-    "verdict": "COVERS",
-    "findings": [],
-    "prompt_sha": "35169c4feefc78ba7b00466008f2fa73774a49237d35e841ba7ac84af023384c",
-    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.026712,
+    "cost": 0.08534,
     "model": "claude-opus-5-5",
-    "date": "2026-11-21",
-    "response": ".transcription/screens/gate_s1.uc_any.ba29a5c84054.2.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_s1.uc_any.8746e27d0552.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -20533,12 +20430,58 @@
     "how": "cited pages",
     "locators": [
      "p. 89, Schedule 1, line 7",
-     "p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only the actual amount'"
+     "p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only the actual amount'",
+     "p. 89, Schedule 1, line 7; , Instructions for Recipient, Box 1, \"If you made contributions to a governmental UC program or to a governmental paid family leave program and received a payment from that program, the payer must issue a separate Form 1099-G to report this amount to you\", \"Combine the box 1 amounts from all Forms 1099-G and report the total as income on the UC line of your tax return\"; , Types of unemployment compensation, \"Trade readjustment allowances under the Trade Act of 1974\"; , Holdings, \"(3) Amounts paid to the employee by the State as family leave benefits pursuant to the State’s PFML statute are included in the Federal gross income of the employee under § 61\""
     ],
     "cols_pages": [
      89
     ],
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "f1099g",
+    "revision": "Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026)",
+    "text_sha256": "c3505294585e00ec5e957f73aa97dee32ad4b6916cd3eb48fef7f3c79f123270",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "how": "whole document",
+    "locators": [],
+    "cols_pages": [
+     5
+    ],
+    "cols_sha256": "49cc781de5cf6d881cc347361880de4b4b20fca0f13397bc94c94e84a20cff6d"
+   },
+   {
+    "doc": "p525",
+    "revision": "2025",
+    "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+    "pages": [
+     29
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     29
+    ],
+    "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+   },
+   {
+    "doc": "rr-2025-4",
+    "revision": "Rev. Rul. 2025-4 (IRB 2025-7); not year-specific; effective for payments made on or after January 1, 2025, with 2025 a transition period for reporting",
+    "text_sha256": "a684c9ce673a677027737d3c1c78e24dddb1556fff2ca5bf6dd6dc812f427729",
+    "pages": [
+     27
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [],
+    "cols_sha256": "4233122a946ea3d6cd361f346161d519a2b38d24c27217f96555d2df37a5d4e8"
    }
   ]
  },
@@ -23611,57 +23554,47 @@
  },
  {
   "screen": "gate:sb.foreign_trust_any",
-  "subject_sha": "f2e0d92c830c4d2167462e9fad7c1d1d01bcebf1ceaf3079ba38457a5cf84516",
+  "subject_sha": "9126c379e845289466cddf720564d94170563306de48d77c92ff792147267d6c",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "The trust is administered by U.S. trustees under a state court, but a foreign protector or other non-trustee foreign person can veto substantial decisions, so it is a foreign trust; the filer was its grantor or received a distribution from it, yet truthfully says it is not 'outside the United States' and has no 'trustee abroad'.",
-      "irs_text": "cfr-26-301-7701-7 p. 4: \"Control ... with no other person having the power to veto any of the substantial decisions. To determine whether United States persons have control, it is necessary to consider all persons who have authority to make a substantial decision of the trust, not only the trust fiduciaries.\"; p. 2: \"The term foreign trust means any trust other than a domestic trust.\"",
-      "why": "The helper tests foreignness only by location and trustee residence. A trust that fails the control test because of a foreign non-trustee power holder is foreign, but the condition is false."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "In 2025 the filer sold or lent property to a foreign trust at arm's length, or borrowed cash or securities from one, or used its property free, and does not see that as having 'gave to it' or as someone who 'may receive from it'.",
-      "irs_text": "i1040sb p. 3, Line 8: \"For this purpose, a loan of cash or marketable securities is generally considered to be a distribution\"; \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.\"",
-      "why": "A transferor includes someone who sells or lends to the trust, and a loan from the trust counts as a distribution. The helper's 'gave to it' and 'may receive from it' suggest gifts and future benefits, so a truthful filer can answer no."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "The filer received a final distribution in 2025 from a foreign trust that then ended, or made a transfer in an earlier year to a foreign trust that still existed in 2025 but with which the filer no longer has dealings.",
-      "irs_text": "f1040sb Part III line 8: \"During 2025, did you receive a distribution from, or were you the grantor of, or transferor to, a foreign trust?\"",
-      "why": "The helper is in the present tense ('do you ... have anything to do with', 'may receive'). A filer whose connection ended can truthfully answer no, although line 8 asks about any 2025 distribution and about past grantor or transferor status."
+      "situation": "A trust administered by a U.S. court and U.S. trustee in which a non-U.S. person (for example a nonresident alien or foreign company physically in the United States) holds a veto or decision power, so the trust is foreign, and the filer received a distribution from it, transferred property to it, or is treated as its owner.",
+      "irs_text": "cfr-26-301-7701-7 p. 4: \"Control ... with no other person having the power to veto any of the substantial decisions\"; p. 2: \"(ii) One or more United States persons have the authority to control all substantial decisions of the trust (control test)\"",
+      "why": "The control test turns on whether the decision-holders are U.S. persons, not on where they are. The helper asks only about a trustee 'abroad' or 'anyone abroad', so a filer whose trust is foreign because a non-U.S. person inside the United States holds a power can truthfully answer no, and lines 8 and trust_owner are never reached."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "A filer received a 2025 distribution from a foreign trust through an intermediary, such as a nominee, a company or a relative.",
-      "irs_text": "i1040sb p. 3, Line 8: \"If you received a distribution from a foreign trust, you must provide additional information.\"",
-      "why": "'Have anything to do with ... as the person who ... may receive from it' does not say whether indirect receipt counts. The gated question's help says it does, but the gate question gives the filer no such guidance."
+      "situation": "A filer who set up, or gave or sold property to, a foreign trust before 2025 but had no dealings with it during 2025, while the trust still existed in 2025.",
+      "irs_text": "i1040sb p. 3, Line 8: \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520\"",
+      "why": "The helper asks whether you 'have, or did you have at any time in 2025, anything to do with' the trust as the person who set it up or gave to it. That can be read as requiring the setting up or giving to happen in 2025, or some live involvement in 2025. A past grantor or transferor could therefore answer no even though line 8 still applies to them."
      },
      {
       "kind": "WIDE",
-      "situation": "The filer has only a U.S. territory account, investment or company, with no foreign trust connection.",
-      "irs_text": "f1040sb line 8: \"did you receive a distribution from, or were you the grantor of, or transferor to, a foreign trust?\"",
-      "why": "The territory helper makes the condition true even though line 8 would be no. This costs only an extra question."
+      "situation": "A filer whose only connection is a bank account, investment or company in Puerto Rico or another U.S. territory, with no trust involved.",
+      "irs_text": "f1040sb Part III line 8: \"did you receive a distribution from, or were you the grantor of, or transferor to, a foreign trust?\"",
+      "why": "The second helper makes the condition true for territory accounts and companies. Neither gated line has any amount unless a foreign trust is involved."
      }
     ],
-    "prompt_sha": "fea17510824f466c6eb74d7ca5672e3eeae1005cbadd6111906fa5e38531f4f8",
+    "prompt_sha": "c9c51291488f679cdb46e56eaf265c4ea403cebc3703b73b14850b41ae77a087",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.117648,
+    "cost": 0.15228,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_sb.foreign_trust_any.f2e0d92c830c.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_sb.foreign_trust_any.9126c379e845.1.response.txt"
    }
   ],
   "kind": "gate",
   "condition": "sb.foreign_trust_any",
   "lines": [
-   "sb.line8_if_foreign"
+   "sb.line8_if_foreign",
+   "sb.trust_owner_if_foreign"
   ],
   "inputs": [
-   "sb.line8"
+   "sb.line8",
+   "sb.trust_owner"
   ],
   "used": [
    {
@@ -23690,7 +23623,7 @@
     "how": "whole document",
     "locators": [
      "p. 3, Line 8, \"If you received a distribution from a foreign trust, you must provide additional information\", \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520\"",
-     "pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, \"a loan of cash or marketable securities is generally considered to be a distribution\"; \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.\"; , In general, \"A trust is a United States person if\", \"The term foreign trust means any trust other than a domestic trust\"; , The court test, \"a court within a territory or possession of the United States or within a foreign country is not a court within the United States\"; , Control test, \"with no other person having the power to veto any of the substantial decisions\""
+     "pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, \"a loan of cash or marketable securities is generally considered to be a distribution\"; \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.\"; , In general, \"A trust is a United States person if\", \"The term foreign trust means any trust other than a domestic trust\"; , The court test, \"a court within a territory or possession of the United States or within a foreign country is not a court within the United States\"; , Control test, \"with no other person having the power to veto any of the substantial decisions\"; , Who Must File, item 3, \"received, directly or indirectly, a distribution from a foreign trust\", \"(1) a loan of cash or marketable securities (including an extension of credit) directly or indirectly from such foreign trust, or (2) the uncompensated use of trust property\"; , Distribution, \"A distribution also includes constructive transfers from a foreign trust\", \"used any property owned by a foreign trust without paying FMV within a reasonable amount of time, the amount of such loan or the FMV of the use of trust property will be treated as a distribution\"; , Reportable Event, \"The transfer of any money or property, directly or indirectly, to a foreign trust by a U.S. person\""
     ],
     "cols_pages": [
      1,
@@ -23698,6 +23631,29 @@
      3
     ],
     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+   },
+   {
+    "doc": "i3520",
+    "revision": "Rev. December 2025 (continuous-use: \"Use these instructions for tax year 2025 and subsequent years until a superseding revision is issued\"; used with the December 2023 revision of Form 3520)",
+    "text_sha256": "d57ee5316a05205f628ff51f12123446424912a2b7bcccaf4defde7f0eadf44d",
+    "pages": [
+     1,
+     4,
+     5,
+     6
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 1, Who Must File, item 2, \"You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679\", \"Note: You are required to complete Part II even if there have been no transactions involving the trust during the tax year\"; p. 5, Grantor Trust, \"A grantor trust is any trust to the extent that the assets of the trust are treated as owned by a person other than the trust\"; p. 6, Owner, \"An owner of a foreign trust is the person that is treated as owning any of the assets of a foreign trust under the rules of sections 671 through 679\"; , Line 8, \"If you were treated as the owner of a foreign trust under the grantor trust rules, you are also responsible for ensuring that the foreign trust files Form 3520-A\"",
+     "p. 1, Who Must File, item 2, \"is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679\""
+    ],
+    "cols_pages": [
+     1,
+     4,
+     5,
+     6
+    ],
+    "cols_sha256": "a9bce76174bcfc9b75d47f2cf73661eb4724382a09cd7cdccf154522342f739f"
    },
    {
     "doc": "fincen114",
@@ -46344,41 +46300,42 @@
  },
  {
   "screen": "sb.line8",
-  "subject_sha": "175db767662578bee5a4cbee07097fb257c4210d525deb4fe91d3f50c78cb545",
+  "subject_sha": "a2b3433479de0e11b67f9f7389efb0914d3345cd7212d88dfd409e46e65cf420",
   "samples": [
-   {
-    "verdict": "UNPARSED",
-    "findings": [],
-    "prompt_sha": "439caff43bcedd3070f9e0e28360600ee988c2ab7c4f30c411c876cf0a103b04",
-    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/sb.line8.175db7676625.1.response.txt",
-    "parse_error": true
-   },
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer, or the filer's spouse, holds a power over a foreign trust that makes them its owner under the grantor trust rules (for example, an unexercised power to withdraw trust property). They did not set the trust up, never gave, sold or lent anything to it, and received nothing from it in 2025, so they truthfully answer NO.",
-      "irs_text": "i1040sb p. 3, Line 8: \"If you were treated as the owner of a foreign trust under the grantor trust rules, you are also responsible for ensuring that the foreign trust files Form 3520-A.\"",
-      "why": "The question asks only about receiving from the trust, setting it up, or giving, selling or lending to it. It never asks whether the filer is treated as the trust's owner, so this Form 3520-A duty passes the screen and the lines compute as if no trust issue exists."
+      "situation": "In 2025 the filer is treated as owner of part of a foreign trust under the grantor trust rules (for example, through a power to withdraw trust assets), but did not create it, never transferred anything to it, and received nothing from it in 2025.",
+      "irs_text": "i1040sb p. 3, Line 8: \"If you were treated as the owner of a foreign trust under the grantor trust rules, you are also responsible for ensuring that the foreign trust files Form 3520-A.\" i3520 p. 1, Who Must File 2: \"treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679 ... required to complete Part II even if there have been no transactions involving the trust during the tax year.\"",
+      "why": "The question asks only about receiving from, setting up, or giving, selling or lending to the trust. An owner under section 678 who did none of these can truthfully answer No, although Form 3520 Part II and Form 3520-A apply."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "The filer is a grantor or beneficiary of a foreign trust, and in 2025 the trust lends cash, or gives free use of trust property, to a U.S. person related to the filer (such as the filer's child or parent), not to the filer.",
+      "irs_text": "i3520 p. 1, Who Must File 3: \"you are a U.S. person who is a U.S. owner or beneficiary of a foreign trust and in the current tax year you or a U.S. person related to you received (1) a loan of cash or marketable securities ... or (2) the uncompensated use of trust property\"",
+      "why": "The question asks only what the filer or spouse received. The help covers only what 'reached you' through another person, so a loan or use that stays with a related person such as a child can truthfully be answered No."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "The filer received a qualified-obligation loan from a foreign trust before 2025, the loan is still outstanding in 2025, and nothing new was received in 2025.",
+      "irs_text": "i3520 p. 1, Who Must File 3: \"you are a U.S. person who is a U.S. owner or beneficiary of a foreign trust and in the current tax year such foreign trust holds an outstanding qualified obligation of yours or a U.S. person related to you.\"",
+      "why": "The question is limited to what was received 'In 2025', so a filer with an older loan still outstanding answers No, although Form 3520 reporting continues each year the obligation is outstanding."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "A filer set up a foreign trust that ended before 2025 and cannot tell whether \"that still existed in 2025\" also limits \"the person who set one up\".",
-      "irs_text": "i1040sb p. 3, Line 8: \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.\"",
-      "why": "In the question, \"that still existed in 2025\" sits only in the giving, selling or lending clause. A filer may read \"set one up\" as including a trust that ended earlier and answer YES, even though the IRS text limits the grantor case to a trust that existed during 2025."
+      "situation": "The filer transferred property to a trust that was domestic at the time of the transfer and that became a foreign trust in 2025, which can be a deemed transfer to a foreign trust.",
+      "irs_text": "i3520 p. 6, Reportable Event 2: \"The transfer of any money or property, directly or indirectly, to a foreign trust by a U.S. person ... This includes transfers that are deemed to have occurred under sections 679(a)(4) and (5).\"",
+      "why": "'gave, sold or lent anything to one that still existed in 2025' can be read as requiring the trust to be foreign when the filer gave to it. A filer whose trust was domestic at that time may reasonably answer No."
      }
     ],
-    "prompt_sha": "439caff43bcedd3070f9e0e28360600ee988c2ab7c4f30c411c876cf0a103b04",
+    "prompt_sha": "8180e1f29edde1044186dcff66369c3d30741824545e36f9263482f40642998d",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.07594000000000001,
+    "cost": 0.128392,
     "model": "claude-opus-5-5",
-    "date": "2026-11-21",
-    "response": ".transcription/screens/sb.line8.175db7676625.2.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/sb.line8.a2b3433479de.1.response.txt"
    }
   ],
   "question": "In 2025, did you (or, on a joint return, your spouse) receive anything from a foreign trust (money, property, a loan, or the free or cheap use of something it owns), or are you the person who set one up, or who at any time gave, sold or lent anything to one that still existed in 2025?",
@@ -46401,7 +46358,7 @@
     "locators": [
      "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
      "pp. 1–3, interest, dividends and foreign accounts/trusts",
-     "pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, \"a loan of cash or marketable securities is generally considered to be a distribution\"; \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.\"; , In general, \"A trust is a United States person if\", \"The term foreign trust means any trust other than a domestic trust\"; , The court test, \"a court within a territory or possession of the United States or within a foreign country is not a court within the United States\"; , Control test, \"with no other person having the power to veto any of the substantial decisions\""
+     "pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, \"a loan of cash or marketable securities is generally considered to be a distribution\"; \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.\"; , In general, \"A trust is a United States person if\", \"The term foreign trust means any trust other than a domestic trust\"; , The court test, \"a court within a territory or possession of the United States or within a foreign country is not a court within the United States\"; , Control test, \"with no other person having the power to veto any of the substantial decisions\"; , Who Must File, item 3, \"received, directly or indirectly, a distribution from a foreign trust\", \"(1) a loan of cash or marketable securities (including an extension of credit) directly or indirectly from such foreign trust, or (2) the uncompensated use of trust property\"; , Distribution, \"A distribution also includes constructive transfers from a foreign trust\", \"used any property owned by a foreign trust without paying FMV within a reasonable amount of time, the amount of such loan or the FMV of the use of trust property will be treated as a distribution\"; , Reportable Event, \"The transfer of any money or property, directly or indirectly, to a foreign trust by a U.S. person\""
     ],
     "cols_pages": [
      1,
@@ -46409,6 +46366,26 @@
      3
     ],
     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+   },
+   {
+    "doc": "i3520",
+    "revision": "Rev. December 2025 (continuous-use: \"Use these instructions for tax year 2025 and subsequent years until a superseding revision is issued\"; used with the December 2023 revision of Form 3520)",
+    "text_sha256": "d57ee5316a05205f628ff51f12123446424912a2b7bcccaf4defde7f0eadf44d",
+    "pages": [
+     1,
+     4,
+     6
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 1, Who Must File, item 2, \"You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679\", \"You are required to complete Part II even if there have been no transactions involving the trust during the tax year\""
+    ],
+    "cols_pages": [
+     1,
+     4,
+     6
+    ],
+    "cols_sha256": "a9bce76174bcfc9b75d47f2cf73661eb4724382a09cd7cdccf154522342f739f"
    },
    {
     "doc": "cfr-26-301-7701-7",
@@ -46427,6 +46404,79 @@
      4
     ],
     "cols_sha256": "9724bb458d4ff3a28fc240e1c9b34cb4561e54c580dd1067e95ae4e08d9179d6"
+   }
+  ]
+ },
+ {
+  "screen": "sb.trust_owner",
+  "subject_sha": "b0f5ce8fb7d89a38e486717e5941d09eb457244660de80c55e5355a394148e63",
+  "samples": [
+   {
+    "verdict": "UNCLEAR",
+    "findings": [
+     {
+      "kind": "UNCLEAR",
+      "situation": "A U.S. filer or spouse set up or funded a foreign trust for U.S. beneficiaries such as their children, cannot take the property back, and is treated as owner under section 679, so the trust's interest and dividends belong on their Schedule B; reading the help, they could believe they are not an 'owner'.",
+      "irs_text": "i3520 p. 1: 'You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679'; i3520 p. 5: 'if a foreign trust directly or indirectly loans cash or marketable securities to a U.S. person ... the trust will be treated as having a U.S. beneficiary and therefore is treated as a grantor trust ... See section 679.'",
+      "why": "The help describes an owner as 'often someone who can take the trust's property for themselves', and the question stresses 'even if you did not set it up, give to it'. A transferor-owner under section 679, the most common foreign grantor trust case, could therefore read their own situation as outside the question and answer No, and the tool would leave the trust's interest and dividends out of lines 2 and 6. The 'If you are not sure, answer Yes' instruction does not help a filer who wrongly feels sure."
+     }
+    ],
+    "prompt_sha": "ded68c7d29d2aadd258350f3d8a8e40a7d8038bdca64f27b853b3785e17ecc58",
+    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
+    "cost": 0.08996,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-24",
+    "response": ".transcription/screens/sb.trust_owner.b0f5ce8fb7d8.1.response.txt"
+   }
+  ],
+  "question": "In 2025, were you (or, on a joint return, your spouse) treated for tax as the owner of a foreign trust, or of part of one, even if you did not set it up, give to it or get anything from it?",
+  "lines": [
+   "sb.line2",
+   "sb.line3",
+   "sb.line6"
+  ],
+  "used": [
+   {
+    "doc": "i3520",
+    "revision": "Rev. December 2025 (continuous-use: \"Use these instructions for tax year 2025 and subsequent years until a superseding revision is issued\"; used with the December 2023 revision of Form 3520)",
+    "text_sha256": "d57ee5316a05205f628ff51f12123446424912a2b7bcccaf4defde7f0eadf44d",
+    "pages": [
+     1,
+     5,
+     6
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 1, Who Must File, item 2, \"You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679\", \"Note: You are required to complete Part II even if there have been no transactions involving the trust during the tax year\"; p. 5, Grantor Trust, \"A grantor trust is any trust to the extent that the assets of the trust are treated as owned by a person other than the trust\"; p. 6, Owner, \"An owner of a foreign trust is the person that is treated as owning any of the assets of a foreign trust under the rules of sections 671 through 679\"; , Line 8, \"If you were treated as the owner of a foreign trust under the grantor trust rules, you are also responsible for ensuring that the foreign trust files Form 3520-A\"",
+     "p. 1, Who Must File, item 2, \"You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679\", \"You are required to complete Part II even if there have been no transactions involving the trust during the tax year\""
+    ],
+    "cols_pages": [
+     1,
+     5,
+     6
+    ],
+    "cols_sha256": "a9bce76174bcfc9b75d47f2cf73661eb4724382a09cd7cdccf154522342f739f"
+   },
+   {
+    "doc": "i1040sb",
+    "revision": "TY2025; printed April 23, 2025",
+    "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+    "pages": [
+     1,
+     2,
+     3
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
+     "pp. 1–3, interest, dividends and foreign accounts/trusts"
+    ],
+    "cols_pages": [
+     1,
+     2,
+     3
+    ],
+    "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
    }
   ]
  },

@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
  "head_rows": {
-  "lines judged": "88",
-  "match / mismatch / unclear / missing": "81 / 4 / 3 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-24); see Line-scoped reviews"
+  "lines judged": "89",
+  "match / mismatch / unclear / missing": "82 / 4 / 3 / 0",
+  "line-scoped reviews": "7 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -50,6 +50,12 @@
    "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "ace2ebbe5c3596e0af429d954ee800687f8fe6182d5ab83f77c1fc6bc1c210a5"
+  },
+  {
+   "key": "fiscal_year",
+   "record": "41597ebd23d66dabfd69db6493d1d9a97fe2bc9ba875f1be83ee18d596c33ef3",
+   "status": "MATCH",
+   "subject_key": "b5c9cffeda3e598903cd441efd342b24a2134079e1bdb5283185608846e99238"
   },
   {
    "key": "treaty",
@@ -375,9 +381,9 @@
   },
   {
    "key": "archer_msa",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "41597ebd23d66dabfd69db6493d1d9a97fe2bc9ba875f1be83ee18d596c33ef3",
    "status": "MATCH",
-   "subject_key": "27991e362178f3ecee884a4a4ef4c3072007f120cafef767fc49321078e70fc1"
+   "subject_key": "1948ade729562451affe1f353dd8802a397c80ffc428e6a8215591b424401c69"
   },
   {
    "key": "education_recapture",
@@ -448,9 +454,9 @@
   },
   {
    "key": "attorney_fees",
-   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
+   "record": "41597ebd23d66dabfd69db6493d1d9a97fe2bc9ba875f1be83ee18d596c33ef3",
    "status": "MATCH",
-   "subject_key": "98055e5e9abb1f0396231f4b8a073dd6405d2e8dd888d7a1f63cc56c637add58"
+   "subject_key": "bce280f0ae1dcbf85ee35a64f2db9ff44fb1f25b0373e8f3db88fbf5bca7b623"
   },
   {
    "key": "trade_act_repaid",
@@ -497,15 +503,15 @@
   },
   {
    "key": "schedule1",
-   "record": "da152fd6833045e9b42d748c3f204d8783ce82f5050606387c4c44ee85c7596a",
+   "record": "41597ebd23d66dabfd69db6493d1d9a97fe2bc9ba875f1be83ee18d596c33ef3",
    "status": "MATCH",
-   "subject_key": "06b3d85726c403aa62252c01800c34c5c548a8c21225ef332e2cce4eb80d56d2"
+   "subject_key": "878220b2aa087e4f6dbcec9a33e6bb9f8ad3db604183053d9dd5a4c9169ab9b8"
   },
   {
    "key": "other_income",
-   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
+   "record": "41597ebd23d66dabfd69db6493d1d9a97fe2bc9ba875f1be83ee18d596c33ef3",
    "status": "MATCH",
-   "subject_key": "8c783e31f29dd2b9f182c3938944989125eaad627f4b07735c8eef9a157d461e"
+   "subject_key": "9e9169bb009a65d5579e82bb524a4a713bc3d5a5fda1951729045e342c0149fb"
   },
   {
    "key": "other_line16",
@@ -516,15 +522,15 @@
   },
   {
    "key": "ready_schedule1",
-   "record": "57b95340f229b8f4281807b9b053c3ccb9ffada3cb5fa31fdf27dc93fdf289af",
+   "record": "41597ebd23d66dabfd69db6493d1d9a97fe2bc9ba875f1be83ee18d596c33ef3",
    "status": "MATCH",
-   "subject_key": "0dc0c424538a5e91d9b0737b3bc5fba0371dc2244748f051b9b2a0ce39c1a59a"
+   "subject_key": "b8765d0c2e43a77ae4171ecc25557335409686ecee58e26c417dbcde36b6bc3a"
   },
   {
    "key": "ready_other_income",
-   "record": "f04aa9893b7975e8939b690d83a7a3d972b9237f3128498e787b1a277c1a2db8",
+   "record": "41597ebd23d66dabfd69db6493d1d9a97fe2bc9ba875f1be83ee18d596c33ef3",
    "status": "MATCH",
-   "subject_key": "628156cfa474b73d426a6d52c855a0d968964905d5bb36ef1456b7071ec2edad"
+   "subject_key": "77ea2ec65ca122838b1eb7def68468198bbf3a218212dcc82aa2bfa255966e2f"
   },
   {
    "key": "ready_other_line16",
@@ -553,6 +559,7 @@
   "nonresident": "ae58dc075f07269fbd7282e2c08c970cce110fba688a42a2a6025969b0edf8b2",
   "nonresident_if_noncitizen": "4c09c205786755eee946888e04e48ba514d510e703e46ef29d60a2bb0257d69f",
   "chapter11": "b07525be1b782896b986e57a7b678e1736c2a902992f4ca7b4c3f64ce9d3ded4",
+  "fiscal_year": "0a801f89169981c116c7042181013b548f1da4c493b9c86c032bfaa5d7e2da3c",
   "treaty": "b0f910c1325052aeb16ec9f06d84c4572feffe366bf4acd496659d1075f86569",
   "armed_forces": "7ec44fb2ce962131f9c20eca5cfc8d26398fa3684283616dc4d11293a9455158",
   "reservist_expenses": "6733348ffde861780fdf729d07ef976bd69b1ead2dccacdfbd50a1bba32aec21",
@@ -606,7 +613,7 @@
   "disaster_distribution": "d575769ea2f1ca3638cbb7c7b5a3d4b7b11234ce8cdbe892f1e4a99412078e9c",
   "excess_deferral": "500a86ddcc3ebf7f05f61ae4099d013df4e9011851ddba25813ce3d33c11fd4f",
   "excess_deferral_if_w2": "ede22d83f2e0ce17bec9417d5c8a69fd0ef125d8bdd8359d55988a134dc29930",
-  "archer_msa": "43cf65ea8133d120ef8a7915432e9449fc403067f9e562b2c29b0acaa7970f41",
+  "archer_msa": "967ce31d1f4515aa39e4ad0d10ff5bdba96ee1ac42c769f230ccba77ad2282d2",
   "education_recapture": "8cfcc7f258cef4b537c4a09757e3307e2d39f3f992326af29a3cab5bf1a0cba5",
   "se_plan_other": "63daaa8ee5aa7cd2b8da8a2e75c015eb86c4fb987c2a2b82687600f033b35c85",
   "se_plan_other_if_business": "af756881c6470dbc7e54275dd1d8b925ed397457732f2261919598e8d7ef6cfa",
@@ -618,7 +625,7 @@
   "cfc": "2f5a72e78816dd3b9ade94958ddbca3ff05c03b13660d281d50ebb18524bcad8",
   "cfc_if_foreign_shares": "7aa32d4705093f91c347f3ecd7aa58d6437b3a3815198a4968ad0e2051d11b03",
   "reforestation": "f3da712e7fd96f3fea00ed1cac1db462059728e0ba6240c7ec0c79761e9c4a56",
-  "attorney_fees": "eac038fc96d4f532469327e5c9ab016ea0197525cfd2754083236d30fe3de9a7",
+  "attorney_fees": "b7dba8bdf3adc37d0827f96f1b7abd1e289c61b93d8fbe13a984f5a4eaa4ff33",
   "trade_act_repaid": "5be521cefbe9edd8f7cd59f7723b2166508654d8cb3d870da601a157a9d757db",
   "business_before": "ac2fdd5a26be10733a36ff8af96f2f65f5fa201be8bfcad2d13f01c1fb0810db",
   "nol": "e71d688cc39966ca10e88912c194c28f39dfa2f084212edb8d25efa7f9416ec8",
@@ -626,11 +633,11 @@
   "passive_if_business_before": "c90f75d34fe0b9a9ae3948e3a664b4481d693a1851c4a69ce97a536ecd84341a",
   "f8978": "55fd93d088666a05e39701777efa2970e6dbb8e5dac38b8917868126b2cfb821",
   "f8978_if_business_before": "33c9bbb2fe3e9e3afafd84dde0a459eaabf32c867c9cf4c40dd09d41858d362f",
-  "schedule1": "032ff18a0c419db94c5062bd25b42bed6ade088d346231d521b9fc3bdde00c20",
-  "other_income": "65d596d263e0ddd9a76a626b80c49b7914a281854a2acb674d3636b73e38ab2f",
+  "schedule1": "8d7f47b664f6690bf762b53ce69580bee9c8ce93361dbf8a34eb20a7b2abd0f6",
+  "other_income": "9010067146f3cbffd528b5d3221a289c756606d61fc7fd4fbc5d364d3af7d7af",
   "other_line16": "da0f0c402076ae5339d54eaf7a215f4a719109dc472a42d01456955f95951c20",
-  "ready_schedule1": "a383c4ddaca3b33b4ee6bbf33c7265a4992f53d45b99c8ce834b03c3bcf5f573",
-  "ready_other_income": "fd54cdf1e385a3fd191345356c63da5c764ffd9dbbdbd7317a2ff2db7dfd0bbe",
+  "ready_schedule1": "cb54a8a2bc46cf33c7bf018087b9c9cb389c38c55ba9d639d5cfb5e2c7aac3ec",
+  "ready_other_income": "6451909a5a6d22f37ef31d5f5721cf6531fd3a237aa8e72b8e6a2d43d7b31888",
   "ready_other_line16": "6723121cfef5906c08d9d43756bc044d432c8f065f65c8efcca571c01ff362d2",
   "ready_credits": "e0073779f5c49f9d21a15fcc5e1c6d394a8d828a3f9a1ae061e8de5d5878d3ce",
   "ready": "e4267e857480b694d79ed117cf8484b9e14f645bcb7ff6c369440c81bcaf1f63"

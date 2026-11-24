@@ -839,6 +839,14 @@
 - Expr: `{"collection":"retirement","field":"retirement.amount_a","op":"sum_over","where":{"eq":["retirement.is_ira",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] pp. 26-27, Lines 4a and 4b (total distributions where an exception applies; 'More than one distribution') (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `person.ira_box1`
+
+- **Authored helper label:** Total of box 1 of this person's Forms 1099-R for IRA distributions
+- **Encoded (NonNegDollars):** Add retirement.box1 over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Interpretation: amb.2025.line4a_several
+- Expr: `{"collection":"retirement","field":"retirement.box1","op":"sum_over","where":{"eq":["retirement.is_ira",{"const":true}],"op":"test"}}`
+- Cite: [i1040gi] p. 27, More than one distribution, "figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b. Enter the total amount of those distributions on line 4a." (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `person.ira_taxable`
 
 - **Authored helper label:** Taxable IRA distributions on this person's Forms 1099-R (line 4b amounts)
@@ -2214,9 +2222,37 @@
 ## (gate) — `person.ira_over_limit`
 
 - **Authored helper label:** This person's traditional and Roth IRA contributions for 2025 together are more than the applicable amount
-- **Encoded (Bool):** helper "This person made traditional IRA contributions for 2025" = true and helper "This person's traditional and Roth IRA contributions for 2025" > helper "The applicable amount for this person ($7,000 if under age 50 at the end of 2025; $8,000 if age 50 or older)"
-- Expr: `{"all":[{"eq":["person.ira_has",{"const":true}],"op":"test"},{"gt":["person.ira_own_total","person.ira_limit"],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "This person's traditional and Roth IRA contributions for 2025" > helper "The applicable amount for this person ($7,000 if under age 50 at the end of 2025; $8,000 if age 50 or older)"
+- Expr: `{"gt":["person.ira_own_total","person.ira_limit"],"op":"test"}`
 - Cite: [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of: • $7,000 ($8,000 if you are age 50 or older), or • Your taxable compensation for the year" (2025; sha256 ca0e4287)
+
+## (helper) — `person.ira_roth_has`
+
+- **Authored helper label:** This person made Roth IRA contributions for 2025
+- **Encoded (Bool):** helper "Roth IRA contributions for 2025 (asked only of a person with an IRA; otherwise zero)" > $0 (sales.zero)
+- Expr: `{"gt":["person.sav_roth_if_ira_owner",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [p590a] p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA" (2025; sha256 ca0e4287)
+
+## (helper) — `person.ira_limit_screens`
+
+- **Authored helper label:** This person's traditional and Roth IRA contributions are more than the applicable amount, or the return's are more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the Kay Bailey Hutchison amount
+- **Encoded (Bool):** (helper "This person's traditional and Roth IRA contributions for 2025 together are more than the applicable amount" = true or ira helper "Traditional and Roth IRA contributions for 2025 more than the compensation on line 10" = true or ira helper "Married filing jointly with traditional or Roth IRA contributions and line 10 less than the amount in the caution" = true)
+- Expr: `{"any":[{"eq":["person.ira_over_limit",{"const":true}],"op":"test"},{"eq":["ira.over_comp",{"const":true}],"op":"test"},{"eq":["ira.kbh_short",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i8606] p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation" and "see Kay Bailey Hutchison Spousal IRA Limit in Pub. 590-A for special rules" (2025; sha256 735fb7ae)
+
+## (gate) — `person.ira_roth_over`
+
+- **Authored helper label:** This person made Roth IRA contributions for 2025, and the contributions are more than the applicable amount, or more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the Kay Bailey Hutchison amount
+- **Encoded (Bool):** Choose — [helper "This person made Roth IRA contributions for 2025" = true → helper "This person's traditional and Roth IRA contributions are more than the applicable amount, or the return's are more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the Kay Bailey Hutchison amount"] [helper "This person made Roth IRA contributions for 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.ira_roth_has",{"const":true}],"op":"test"},"then":"person.ira_limit_screens"},{"guard":{"eq":["person.ira_roth_has",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [i8606] p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation" and "see Kay Bailey Hutchison Spousal IRA Limit in Pub. 590-A for special rules"; p590a p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA" (2025; sha256 735fb7ae)
+
+## (gate) — `person.ira_roth_income`
+
+- **Authored helper label:** This person made Roth IRA contributions for 2025 and the return's modified AGI for Roth IRA purposes is in or above the phase-out range
+- **Encoded (Bool):** Choose — [helper "This person made Roth IRA contributions for 2025" = true → ira helper "Modified AGI for Roth IRA purposes in or above the Roth phase-out range ($236,000 or more married filing jointly or qualifying surviving spouse; $150,000 or more single, head of household or married filing separately and apart all year; above zero married filing separately and living with the spouse at any time in 2025)"] [helper "This person made Roth IRA contributions for 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.ira_roth_has",{"const":true}],"op":"test"},"then":"ira.roth_reduced"},{"guard":{"eq":["person.ira_roth_has",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [p590a] p. 2, Modified AGI limit for Roth IRA contributions, "For 2025, your Roth IRA contribution limit is reduced (phased out) in the following situations" (2025; sha256 ca0e4287)
 
 ## (helper) — `person.ira_own_total`
 
@@ -2866,6 +2902,8 @@
 
 - **Authored helper label:** This person's Form 5329 taxes
 - **Encoded (NonNegDollars):** Add f5329.tax over every confirmed f5329 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- **Refusal:** when person.ira_roth_over is true, cannot complete Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A). Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool. Cite: [p590a] p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA" (2025; sha256 ca0e4287)
+- **Refusal:** when person.ira_roth_income is true, cannot complete Roth IRA contributions limited by modified AGI (Maximum Roth IRA Contribution Worksheet, Form 5329 Part IV). Roth IRA contributions are reduced or not allowed when modified AGI is $236,000 or more (married filing jointly or qualifying surviving spouse), $150,000 or more (single, head of household, or married filing separately and apart from your spouse all year) or more than zero (married filing separately and living with your spouse at any time in 2025). This return is at or above that point (figured here without subtracting any Roth conversion), so its Roth contributions are outside this tool. Cite: [i8606] p. 4, Maximum Roth IRA Contribution Worksheet, line 6, "If zero or less, stop here; you may not contribute to a Roth IRA for 2025" (2025; sha256 735fb7ae)
 - Expr: `{"collection":"f5329","field":"f5329.tax","op":"sum_over"}`
 - Cite: [f1040s2] p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required." (2025; created 2025-05-08; sha256 64d867b6)
 
@@ -3059,91 +3097,91 @@
 - **Authored helper label:** Form 5329 parts this tool does not prepare
 - **Encoded (Bool):** (helper "A required minimum distribution not received in full by its deadline (asked only of a person born in 1952 or earlier or with an inherited account; otherwise no)" = true or helper "A taxable distribution from a Coverdell ESA, a qualified tuition program or an ABLE account (asked only with such an account; otherwise no)" = true or helper "Excess contributions to a Coverdell ESA or an ABLE account (asked only with such an account; otherwise no)" = true or helper "Do you have excess contributions to an Archer MSA?" = true or helper "An earlier year's excess IRA contributions remained at the end of 2025 (asked only of a person with an IRA; otherwise no)" = true or helper "An earlier year's excess HSA contributions not removed or used up before 2025 (asked only of a person who listed a health savings account; otherwise no)" = true)
 - Expr: `{"any":[{"eq":["person.rmd_missed_if_possible",{"const":true}],"op":"test"},{"eq":["person.x_edu_taxable_if_account",{"const":true}],"op":"test"},{"eq":["person.x_edu_excess_if_account",{"const":true}],"op":"test"},{"eq":["person.x_archer_excess",{"const":true}],"op":"test"},{"eq":["person.x_ira_prior_excess_if_ira_owner",{"const":true}],"op":"test"},{"eq":["person.x_hsa_prior_excess_if_hsa",{"const":true}],"op":"test"}],"op":"test"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 1, Part III, "or you had an amount on line 17 of your 2024 Form 5329"; p. 1, Part IV, "Complete this part if you contributed more to your Roth IRAs", "or you had an amount on line 25 of your 2024 Form 5329"; p. 2, Part V, "Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329"; p. 2, Part VI, "Complete this part if you or your employer contributed more to your Archer MSAs for 2025 than is allowable"; p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329"; p. 2, Part VIII, "Complete this part if contributions to your ABLE account for 2025 were more than is allowable"; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
 
 ## (helper) — `person.x_edu_account`
 
 - **Authored helper label:** This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026
 - **Encoded (Bool):** Input — At any time in 2025, did you have a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account, or was one held for you; or was money put into a Coverdell ESA for you for 2025 by April 15, 2026?
 - Expr: `{"op":"input","source":"At any time in 2025, did you have a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account, or was one held for you; or was money put into a Coverdell ESA for you for 2025 by April 15, 2026?"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 2, Part V, "Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329"; p. 2, Part VIII, "Complete this part if contributions to your ABLE account for 2025 were more than is allowable" (2025; sha256 2ad77023)
 
 ## (helper) — `person.x_edu_taxable`
 
 - **Authored helper label:** Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?
 - **Encoded (Bool):** Input — Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?
 - Expr: `{"op":"input","source":"Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account." (2025; sha256 2ad77023)
 
 ## (gate) — `person.x_edu_taxable_if_account`
 
 - **Authored helper label:** A taxable distribution from a Coverdell ESA, a qualified tuition program or an ABLE account (asked only with such an account; otherwise no)
 - **Encoded (Bool):** Choose — [helper "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026" = true → helper "Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?"] [helper "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.x_edu_account",{"const":true}],"op":"test"},"then":"person.x_edu_taxable"},{"guard":{"eq":["person.x_edu_account",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account." (2025; sha256 2ad77023)
 
 ## (helper) — `person.x_edu_excess`
 
 - **Authored helper label:** Do you have excess contributions to a Coverdell ESA or an ABLE account?
 - **Encoded (Bool):** Input — Do you have excess contributions to a Coverdell ESA or an ABLE account?
 - Expr: `{"op":"input","source":"Do you have excess contributions to a Coverdell ESA or an ABLE account?"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 2, Part V, "Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329"; p. 2, Part VIII, "Complete this part if contributions to your ABLE account for 2025 were more than is allowable" (2025; sha256 2ad77023)
 
 ## (gate) — `person.x_edu_excess_if_account`
 
 - **Authored helper label:** Excess contributions to a Coverdell ESA or an ABLE account (asked only with such an account; otherwise no)
 - **Encoded (Bool):** Choose — [helper "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026" = true → helper "Do you have excess contributions to a Coverdell ESA or an ABLE account?"] [helper "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.x_edu_account",{"const":true}],"op":"test"},"then":"person.x_edu_excess"},{"guard":{"eq":["person.x_edu_account",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 2, Part V, "Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329"; p. 2, Part VIII, "Complete this part if contributions to your ABLE account for 2025 were more than is allowable" (2025; sha256 2ad77023)
 
 ## (helper) — `person.x_archer_excess`
 
 - **Authored helper label:** Do you have excess contributions to an Archer MSA?
 - **Encoded (Bool):** Input — Do you have excess contributions to an Archer MSA?
 - Expr: `{"op":"input","source":"Do you have excess contributions to an Archer MSA?"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 2, Part VI, "Complete this part if you or your employer contributed more to your Archer MSAs for 2025 than is allowable" (2025; sha256 2ad77023)
 
 ## (helper) — `person.x_ira_prior_excess`
 
 - **Authored helper label:** Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?
 - **Encoded (Bool):** Input — Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?
 - Expr: `{"op":"input","source":"Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 1, Part III, "or you had an amount on line 17 of your 2024 Form 5329"; p. 1, Part IV, "Complete this part if you contributed more to your Roth IRAs", "or you had an amount on line 25 of your 2024 Form 5329" (2025; sha256 2ad77023)
 
 ## (gate) — `person.x_ira_prior_excess_if_ira_owner`
 
 - **Authored helper label:** An earlier year's excess IRA contributions remained at the end of 2025 (asked only of a person with an IRA; otherwise no)
 - **Encoded (Bool):** Choose — [helper "Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)" = true → helper "Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?"] [helper "Had an IRA of any kind at any time in 2025, or has one now (traditional, Roth, SEP or SIMPLE, inherited, or opened in 2026 for 2025)" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.ira_owner",{"const":true}],"op":"test"},"then":"person.x_ira_prior_excess"},{"guard":{"eq":["person.ira_owner",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 1, Part III, "or you had an amount on line 17 of your 2024 Form 5329"; p. 1, Part IV, "Complete this part if you contributed more to your Roth IRAs", "or you had an amount on line 25 of your 2024 Form 5329" (2025; sha256 2ad77023)
 
 ## (helper) — `person.has_hsa`
 
 - **Authored helper label:** This person listed a health savings account
 - **Encoded (Bool):** helper "Number of Forms 8889 entered for this person" > 0 (a count)
 - Expr: `{"gt":["person.hsa_forms",{"const":0,"type":"Count"}],"op":"test"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329" (2025; sha256 2ad77023)
 
 ## (helper) — `person.x_hsa_prior_excess`
 
 - **Authored helper label:** Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?
 - **Encoded (Bool):** Input — Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?
 - Expr: `{"op":"input","source":"Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329" (2025; sha256 2ad77023)
 
 ## (gate) — `person.x_hsa_prior_excess_if_hsa`
 
 - **Authored helper label:** An earlier year's excess HSA contributions not removed or used up before 2025 (asked only of a person who listed a health savings account; otherwise no)
 - **Encoded (Bool):** Choose — [helper "This person listed a health savings account" = true → helper "Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?"] [helper "This person listed a health savings account" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.has_hsa",{"const":true}],"op":"test"},"then":"person.x_hsa_prior_excess"},{"guard":{"eq":["person.has_hsa",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329" (2025; sha256 2ad77023)
 
 ## (helper) — `person.rmd_age`
 
 - **Authored helper label:** Born in 1952 or earlier (age 73 or older at the end of 2025)
 - **Encoded (Bool):** helper "The year you were born" < 1953 (age.cut_73)
 - Expr: `{"lt":["person.birth_year",{"param":"age.cut_73"}],"op":"test"}`
-- Cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
+- Cite: [f5329] p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; sha256 2ad77023)
 
 ## (helper) — `person.inherited_account`
 

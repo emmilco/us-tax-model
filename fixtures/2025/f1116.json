@@ -3307,6 +3307,55 @@
           "cents": 0
         }
       }
+    },
+    {
+      "id": "f1116.carry_through_deduction_year_with_excess",
+      "covers": [
+        "f1116sb",
+        "f1116sb.carry_through_prior",
+        "ftc.credit"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating: the inputs of f1116.carry_through_deduction_year with $1,500 of foreign tax on the $4,000 of dividends, more than the line 21 limit, so a 2025 excess arises (Schedule B line 6 above zero). The carryover came through a 2024 return that deducted foreign tax (f1116sb.prior_year other), not changed by a closing agreement and not split from another joint return: f1116sb.carry_through_prior holds (i1116 p. 19, Line 10), whether or not this year also generates an excess.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 150000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 150000,
+        "ftc.carryover": true,
+        "$f1116sbyr": [
+          "a",
+          "b",
+          "c"
+        ],
+        "f1116sbyr[a].year": "p10",
+        "f1116sbyr[a].amount": 8000,
+        "f1116sbyr[b].year": "p9",
+        "f1116sbyr[b].amount": 6000,
+        "f1116sbyr[c].year": "p8",
+        "f1116sbyr[c].amount": 13000,
+        "f1116sb.prior_year": "other"
+      },
+      "expect": {
+        "f1116sb.carry_through_prior": {
+          "kind": "bool",
+          "value": true
+        }
+      }
     }
   ]
 }

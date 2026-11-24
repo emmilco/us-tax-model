@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
  "head_rows": {
-  "printed lines compared": "32",
-  "agree / disagree / missing": "6 / 26 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-16); see Line-scoped reviews"
+  "printed lines compared": "36",
+  "agree / disagree / missing": "9 / 27 / 0",
+  "line-scoped reviews": "6 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -44,10 +44,10 @@
   },
   {
    "key": "ira.kbh_short",
-   "record": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
+   "record": "678a6d81de07165efa1c58a4527ff16735dda45a3474b8cf3f5cff01fc436fcb",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 98, Caution: \"If married filing jointly and line 10 is less than $14,000 ($15,000 if one spouse is age 50 or older at the end of 2025; $16,000 if both spouses are age 50 or older at the end of 2025), stop here and use the worksheet in Pub. 590-A to figure your IRA deduction.\" The caution sits in the worksheet, which applies only to traditional contributions (i1040gi p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.\"). The candidate drops the contribution condition. Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1472 of 1640 comparisons agree; 148 candidate-unknown, 10 candidate-refuses, 10 value. All 10 value records are joint returns with no traditional contributions and line 10 under the caution amount, where the candidate's gate is true and its lines 12a, 12b and 20 refuse a return the source gives a zero deduction; classm.sli.4, classm.ssb.4, classm.f1040.3 and generated 208 and 383 are refused by nothing else. The 148 candidate-unknown records are joint returns without contributions on which the candidate's line 10 needs ira.special or ira.se_capital (its line 8 and 9 screens), answers the source needs only when there are contributions. The 10 candidate-refuses records (generated 113, 121, 169) are returns refused by other cited gates (scope). Project stands.",
-   "subject_key": "cabddbac80a8fcaa119570d5d74a9b319832a4c6d9eae666efde89ff251a4562"
+   "ruling": "Ruling: representation; i1040gi p. 98, IRA Deduction Worksheet—Continued, Caution, \"If married filing jointly and line 10 is less than $14,000 ... stop here and use the worksheet in Pub. 590-A\"; i8606 p. 5, Overall Contribution Limit for Traditional and Roth IRAs, \"see Kay Bailey Hutchison Spousal IRA Limit in Pub. 590-A for special rules\". Both sides test a joint return with line 10 under the caution amount; the project adds 'some traditional or Roth contribution was made' (ira.any_contrib). The two differ only on a return with no IRA contribution, where no line reads the gate: person.ira_line11 is read only with a traditional contribution (person.ira_deduction, person.ira_nondeductible) and person.ira_roth_over only with a Roth contribution. Values agree wherever the gate is read.",
+   "subject_key": "c3a7236a42e5875018efd38591141c2bd29d62e0e6a8679a766c9af07d20d05e"
   },
   {
    "key": "ira.both_kinds",
@@ -58,10 +58,17 @@
   },
   {
    "key": "ira.over_comp",
-   "record": "0d939d3c094825014f3a5bc2df822f912d4341393c1280366ce88cec7de9c743",
+   "record": "678a6d81de07165efa1c58a4527ff16735dda45a3474b8cf3f5cff01fc436fcb",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the interface is the excess-contribution screen (label \"Traditional and Roth IRA contributions for 2025 more than the compensation on line 10\"; p590a p. 35, Excess Contributions, \"the smaller of: $7,000 ($8,000 if you are age 50 or older), or Your taxable compensation\"), but the reply transcribes the CAUTION below worksheet line 10 (i1040gi p. 98, \"If married filing jointly and line 10 is less than $14,000 ... stop here and use the worksheet in Pub. 590-A\"), which the project carries on ira.kbh_short. It also drops the traditional-contribution condition: the worksheet is used only \"If you made contributions to a traditional IRA for 2025\" (i1040gi p. 95). Triage (pass 12f36e046fb1): 2,544/2,591 agree; 12 value records (classm.f5329.1.deepseek, classm.ssb.3: joint, line 10 $6,574, no traditional contribution; project false, reply true), 6 candidate-refuses, 6 candidate-unknown, 6 project-unknown, 2 project-refuses on refused returns; 7 value differences on completed returns.",
-   "subject_key": "45fbaf3ba8400ea4314343430d6ead8eb717703492bd575472d35c3056d04375"
+   "ruling": "Ruling: model error; i8606 p. 5, Overall Contribution Limit for Traditional and Roth IRAs, \"your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation\". The limit counts Roth contributions with traditional ones; the reply adds only lines 11a and 11b (traditional), so a Roth contribution above the compensation passes (BUG-1154, fixture roth.no_compensation). On returns with traditional contributions only the two agree.",
+   "subject_key": "e3cea5e129b0fe52f646c7f4f0bd131e9bf06869e989cbcf0b6ef09bb05f1e34"
+  },
+  {
+   "key": "ira.roth_reduced",
+   "record": "678a6d81de07165efa1c58a4527ff16735dda45a3474b8cf3f5cff01fc436fcb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3378 values compared, none different or missing: 2761 on 2761 fixture cases, 500 on 500 generated returns seed 20261026, 117 on 117 partial records; every alternative of the 0 differing choose line(s) reached taken; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "37b425c6200611476abf0015ab9ebee8fb04ead9bb2d5d43f2962e69d7b0c0f0"
   },
   {
    "key": "ira.special_gate",
@@ -90,6 +97,24 @@
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i1040gi p. 98, worksheet line 12, \"Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20\". No value differs where both sides compute (triage pass 12f36e046fb1: 1,987/2,591 agree), but the reply's line refuses through its special_gate, which has no traditional-contribution condition: candidate-refuses on returns with no IRA contribution (classm.f8889.4.deepseek, classm.f5329.1.deepseek; 7 on completed returns) and 46 candidate-unknown on completed returns from unasked special-case answers. The 1 project refusal (stage16.refuse.ira.over_comp) is the project's cited excess-contribution screen.",
    "subject_key": "b4bc52114e26d7ce58cdc2e506a370202e41ea1e8052b672b54ba403077ee202"
+  },
+  {
+   "key": "ira.dist_4a_sum",
+   "record": "678a6d81de07165efa1c58a4527ff16735dda45a3474b8cf3f5cff01fc436fcb",
+   "status": "AGREE",
+   "subject_key": "568a3123a35e48f614b158e49fed06e7643e7e13f839c4b9bc260652e8b31776"
+  },
+  {
+   "key": "ira.dist_4a_any",
+   "record": "678a6d81de07165efa1c58a4527ff16735dda45a3474b8cf3f5cff01fc436fcb",
+   "status": "AGREE",
+   "subject_key": "0286024dac12f52fb48cc3e9fa11ff586455e5201ced21a9f69ecbb84fef09bf"
+  },
+  {
+   "key": "ira.dist_box1_total",
+   "record": "678a6d81de07165efa1c58a4527ff16735dda45a3474b8cf3f5cff01fc436fcb",
+   "status": "AGREE",
+   "subject_key": "b3e14d7825bf0add67018d3bfd1976ec3fe70b60433ca64420d8105d7fd3a5a1"
   },
   {
    "key": "1a",
@@ -167,10 +192,10 @@
   },
   {
    "key": "8",
-   "record": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
+   "record": "678a6d81de07165efa1c58a4527ff16735dda45a3474b8cf3f5cff01fc436fcb",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 98, line 8: \"Wages, salaries, tips, etc. Generally, this is the amount reported in box 1 of Form W-2.\" The candidate's wages (Form 1040 line 1a) equal the project's Form W-2 box 1 total on every record where both compute; no value differs. The difference is the refusals attached to the candidate's line 8, ira.special_gate and ira.combat_gate without the contribution condition (i1040gi p. 95, Line 20: \"Use the IRA Deduction Worksheet to figure the amount, if any, of your IRA deduction. But read the following list before you fill in the worksheet.\"). Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 677 of 1640 comparisons agree; 949 candidate-unknown, 12 candidate-refuses, 2 project-refuses. All 949 candidate-unknown records need ira.special on returns with no traditional contributions (classm.f2441.1.deepseek, classm.f8995a.2), an answer the source needs only for a worksheet that is used. The 12 candidate-refuses records are returns the project refuses for other gates (stage16.refuse.ira.special, stage16.refuse.ira.combat_pay); the 2 project-refuses records are the cited Schedule 1 line 2a alimony screens (stage16.refuse.s1.alimony_received, stage16.refuse.s1.alimony_paid), scope. Project's wages stand.",
-   "subject_key": "5c5986a54ab574151e617d4db7dee0b0310cc2acb0654d1faba200d341a538ff"
+   "ruling": "Ruling: model error; p590a p. 6, What Is Compensation?, \"Wages, salaries, tips, professional fees, bonuses, and other amounts you receive for providing personal services are compensation\"; i1040gi p. 98, line 8, \"Wages, salaries, tips, etc. Generally, this is the amount reported in box 1 of Form W-2\". The reply takes line 1a only; household-employee wages (line 1b), tips not on a W-2 (line 1c) and Form 8919 wages (line 1g) are pay for services and compensation, and leaving them out refused a lawful contribution (BUG-1156, fixture ira.household_wages_comp). 'Generally' marks box 1 as the usual source, not the whole of the line. Where lines 1b, 1c and 1g are zero the two agree.",
+   "subject_key": "f1609a04fa2d95ce88db055053e4d5b3cebabf4ea5a2d4bbd39ff4ce8da68fba"
   },
   {
    "key": "9",
@@ -234,13 +259,17 @@
   "ira.any_trad": "27a9015204fc6c4589508dad62e52f99a207460e2db317cd13be9440f13f19d0",
   "ira.anyone_covered": "97a186c93edecc008c63248fd882b40490a6389afe77191bb0c127a974c92371",
   "ira.cov_gate": "dd9043ad1ad6ac976da0df90bbd55dfbd00fd7780b8c7a9ec57d681e33369e38",
-  "ira.kbh_short": "8471d8496289d4b1b3ed6d47555a1876a0e972a225541c2699e0f867f289e4f2",
+  "ira.kbh_short": "3dd0369d5d57ae1e71484dc857344b5004ee8f3e6c8105a3bf98f05c1f8e1854",
   "ira.both_kinds": "1cb39e3da77d9ff2301e8e79845e42cddad9c3b4b59acda3de109caefa81d014",
-  "ira.over_comp": "fd21e056dc4ca704a55b1bc1944dd6bf8c0ea511853069864ea6ef045c8f0736",
+  "ira.over_comp": "14e1aa6278a0007f2d8b451ede599fa0dc8d403812e7ccf847f4879da9faabf4",
+  "ira.roth_reduced": "90085bed97cad4ad54decc28502c33866cc629edac40a8b32b7e29d9ec52cf31",
   "ira.special_gate": "5a1eac91fc38a91bc9fa9a6482fef51223ced42999da498aa5aceb051ed03259",
   "ira.combat_gate": "0074db81433811c53cd733ce0724ea280aa8a33d9a116aa502ddd1ddf152003f",
   "ira.excl_gate": "29b5ab7a38d656e52ba390cdf922f1698be89767248cb345961e9aa28ed0003f",
   "ira.line20": "1b49c8cfb6f0fec6904cbfaf8d4e9cf6afcef87c57567783ca091c52907bc4c6",
+  "ira.dist_4a_sum": "35917fd42a12e17952dd91d5234584e0bab415ed7429474b63008bc16719374e",
+  "ira.dist_4a_any": "55e32f847cde40fbab19c267e1bedc1a472808254f55577a184c93d13d283167",
+  "ira.dist_box1_total": "2e462c63b3523a14447d166aa7af3bfd00f6fd7eb9284b661438753201d28639",
   "1a": "bc7ae6656090d245db0f874760173d3cae50147495f94e7c81e81e3efc2994f9",
   "1b": "0b5459110e122f5244fe421f199b71693e94bdb2b298b595bbfb7047e07cdb7e",
   "2a": "c3348607a527bdcce801737af70a2c59468bf0f53c225e428cf93e66022ff9a8",
@@ -252,7 +281,7 @@
   "6b": "10a5cd33e7108add626a9f2638aadb3e720deedba980ffd74bf557d0cec0e809",
   "7a": "91c5dba4d0d8f4c5f8fe4c956633c4388eb0ee3087a5450b792f59da64367c12",
   "7b": "009b873ffbba562008d783dd1dbe365542d24f1a185698fe385c1bd2b767348b",
-  "8": "7597109de3fec41b733a74816d8a220d240e9ecde0bf76774502bdbce079b654",
+  "8": "e7f0db9c4f9efaa031b7de88584c5dc93d0471a4e0acfce052a5e71821615202",
   "9": "0b806f1a31e147b2cbc269826fa9e900506495312ab407c0c8f74f3f2de8fda2",
   "10": "bca4d9e6e7600ac219f8466c342382500fa2e0de9bac73aa2670bcec80f6fe6a",
   "(screen) (ira.special)": "4448ac88ffd76dad53e748b718f5ba4f500e0185235438eae9f5304804efe1d8",
@@ -267,17 +296,23 @@
   "ira.any_trad": "72f9b6dd1bccc9866f4dd2eb123aef4bb4a61a4ac92b37991aed27caaf4d4486",
   "ira.anyone_covered": "56e5fd0b21db506d083633eca3607caf6fd4d06ee50b4af9ae5a2b7962550473",
   "ira.cov_gate": "cb46363e41e615896b024e4a9cb3dde5a66b0a430da0571285bf3d05c589eabe",
+  "ira.kbh_short": "bc9ca467834036bdb4273b46aa5217d1109e135d515b353d06bf3466be210c6d",
   "ira.both_kinds": "5854b78d117217f28eb86ce7750587b5b935caa30f5befd58e0f684c2a8c0f0e",
   "ira.over_comp": "21ac5f64a33a76f7f7d620e36f73fe5cd5c6bdd243ccff3085d36d54488fc324",
+  "ira.roth_reduced": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
   "ira.special_gate": "72f9b6dd1bccc9866f4dd2eb123aef4bb4a61a4ac92b37991aed27caaf4d4486",
   "ira.combat_gate": "c289dc6646202069a3209e5c65de4e8f83116a3ce4588fefabd1e4474be36c78",
   "ira.excl_gate": "cf211430fec52c22d1b6cf296c0a0a0661a1ce6d2e3409aca87a2f4ad8390b07",
   "ira.line20": "5c16bbd2c3580c26e60a0627c1651f2d3a296698fbdc1da90687d87346d59cb1",
+  "ira.dist_4a_sum": "7bb14fa210ea13d3dddfda9ae431dbc7ea86522622cb391b99479113ffa287f4",
+  "ira.dist_4a_any": "a5414bcefe51e9b33a5f942da7a0523b2d1cf51d00f7c6d4ab11411a8feb15a9",
+  "ira.dist_box1_total": "5405926398803abc2760721bbf4efa56896801eeb1ee9befcd4e4867e1856e7f",
   "1a": "56e5fd0b21db506d083633eca3607caf6fd4d06ee50b4af9ae5a2b7962550473",
   "2a": "9a8f7688747d160360f39eb540fd50ee37d5af02a9ba81ec8b2c948c8cfcc840",
   "2b": "9a8f7688747d160360f39eb540fd50ee37d5af02a9ba81ec8b2c948c8cfcc840",
   "6a": "b641014970eedb986c22ec18b6aa4387f21887beb9a951ed265b0bd257373ad3",
   "6b": "b641014970eedb986c22ec18b6aa4387f21887beb9a951ed265b0bd257373ad3",
+  "8": "615e39f13f698c529e66c0150bffdde80a75d3e69a1673fc7ab9859cb1a85a47",
   "(screen) (ira.special)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "(screen) (ira.reservist_repaid)": "6b5702b76bc91accc9aa3962b054dcf78023d020244c72c564eba6e05003f96e"
  }

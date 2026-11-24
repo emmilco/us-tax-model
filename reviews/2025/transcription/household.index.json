@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
  "head_rows": {
-  "printed lines compared": "26",
-  "agree / disagree / missing": "8 / 18 / 0",
-  "line-scoped reviews": "11 (latest 2026-11-23); see Line-scoped reviews"
+  "printed lines compared": "28",
+  "agree / disagree / missing": "8 / 20 / 0",
+  "line-scoped reviews": "11 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -124,16 +124,30 @@
   },
   {
    "key": "household.qss_fails",
-   "record": "7645857866d5a74f88b5fb6b50479c90b738d72b11bc4bf0e7369b0efeedf4be",
+   "record": "d47711a1c4e8a6351a6e7364c38b3b3d66d7e7c635d7f3b98677706d5ca977d1",
    "status": "AGREE",
-   "subject_key": "552a6bd45542047ebc33f508e2e0bab0f71c6313755d758e36215442203bd993"
+   "subject_key": "cf72b5e8bcb199ce86075b26d3a33daf425046689fd56e1970969b11eb7dd930"
+  },
+  {
+   "key": "household.qss_claimed",
+   "record": "d47711a1c4e8a6351a6e7364c38b3b3d66d7e7c635d7f3b98677706d5ca977d1",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 15, Qualifying Surviving Spouse, \"use joint return tax rates for 2025 if all of the following apply\". The reply drops the five tests (household.qss_eligible) and is true on every qualifying-surviving-spouse return. The two differ only where the tests were answered No, and that return is refused for the whole status by household.qss_fails (Form 1040 line 12e and the tax), so no computed amount or notice differs; the project's line decides whether dependent.own_child is asked and whether the notice household.qss_no_child_notice shows, both moot on a refused return.",
+   "subject_key": "b930aca8a2832a311181ebfa55e5433e1b85bf4f6e2f900412b62b06a9f3f444"
+  },
+  {
+   "key": "household.spouse_died_this_year_if_ever_married",
+   "record": "d47711a1c4e8a6351a6e7364c38b3b3d66d7e7c635d7f3b98677706d5ca977d1",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; p501 p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\" On a single or head-of-household return both read household.ever_married and then the death question. On a joint, separate or qualifying-surviving-spouse return the status itself states a marriage (household.status_states_marriage), so the project does not ask household.ever_married; the reply needs it there, where its answer could only be Yes. No value differs where both are known. This run reviewed the line because the death question's source now also names the Form 2441 route (BUG-0681).",
+   "subject_key": "fd2bafa6df4c822a88469b2ff0c5e73f513af400124fe820291f11c5143140b2"
   },
   {
    "key": "household.widowed_this_year",
-   "record": "e489c2b263f0be04bfdce6cb3c97c564f770a815ea6bb5c950f38ca8c8d3bff6",
+   "record": "d47711a1c4e8a6351a6e7364c38b3b3d66d7e7c635d7f3b98677706d5ca977d1",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 13, Married Filing Jointly: \"You can choose married filing jointly as your filing status if any of the following apply ... Your spouse died in 2025 and you didn't remarry in 2025\"; the interface is \"Filing as single or head of household although your spouse died in 2025\", the refusal at Form 1040 line 12e. The reply drops the filing-status guard, so the gate is true on a valid death-year joint (or separate) return, refusing it, as the earlier replies to this line (household.widowed_2025) were ruled. Ruled by reading: no household triage (triage.py refuses the form because an earlier pass names the renamed household.widowed_2025; the record on disk predates the redraft). Project stands.",
-   "subject_key": "2998f257e0193a0afe818c5422dd307c655ce8796881aa74f75c4342d9032181"
+   "ruling": "Ruling: model error; i1040gi p. 13, Married Filing Jointly: \"You can choose married filing jointly as your filing status if any of the following apply ... Your spouse died in 2025 and you didn't remarry in 2025\"; the interface is \"Filing as single or head of household although your spouse died in 2025\". The reply adds a joint return not married at the end of 2025 whose spouse died in 2025, the valid death-year joint return, so it would refuse it. Same reading as the ruling of 2026-11-14 on this line. Project stands.",
+   "subject_key": "759880ec1cdd25532f8ce6c12dcd889fde0c93a298784ff2bb6cfa82c3365365"
   },
   {
    "key": "household.cp_marriage_ended",
@@ -144,17 +158,17 @@
   },
   {
    "key": "household.rdp_community_property",
-   "record": "6f962d361a860e24735457f4371d828f97c1510baf8bbdfd3cee87476e6ff6c7",
+   "record": "d47711a1c4e8a6351a6e7364c38b3b3d66d7e7c635d7f3b98677706d5ca977d1",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 23, Community Property States, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner\". The candidate reads rdp directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/household.json): 1940 of 2514 comparisons agree, 1940 of 2514 in scope; completed {\"candidate-unknown\": 213}. Project stands.",
-   "subject_key": "db3509e2fde4e2213ff7a6f3c2662c1c73e57e0c691598a96965b4e2a0cf6fae"
+   "ruling": "Ruling: scope; i1040gi p. 23, Community Property States, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income\"; p555 p. 2, Domicile, \"If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both.\" The reply keeps the filer's own community-property residence as a condition; a partner living elsewhere can still have community income through the partner's domicile or a former one (BUG-1089). The project's gate is a refusal and refuses every registered domestic partner of those states not filing jointly, the coordinator's decision under the owner's grant: extra refusing where the rule may not apply, no amount computed wrongly.",
+   "subject_key": "a0e42797aba87c042a490fd1b04b014c908e2942e3bb2670aec945755d5423f9"
   },
   {
    "key": "household.filing_status_conflict",
-   "record": "9e8c0fdaad9ae9700f8acc54ceab59a5719abdb91dd0b6b793c5075a4def1dfa",
+   "record": "d47711a1c4e8a6351a6e7364c38b3b3d66d7e7c635d7f3b98677706d5ca977d1",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; read without triage (triage.py refuses the log: an old line-scoped pass, 7073fcafb61a, names household.widowed_2025, which the form no longer compares). The changed alternative is MFS: the project refuses a separate return only when the filer was not married at the end of 2025 and no spouse died in 2025 (household.joint_unmarried); the reply refuses every MFS filer not married on Dec 31, so it refuses a 2025 widow filing separately. p501 p. 6, Spouse died during the year: \"If your spouse died during the year, you are considered married for the whole year for filing status purposes\"; i1040gi p. 14 allows MFS to a married filer. The project is right. The reply's other differences fold in cases other gates refuse (a 2025 death on a single return: household.widowed_2025; HOH tests: household.hoh_fails; QSS: household.qss_fails), as the prior rounds ruled (scope).",
-   "subject_key": "a24781b8b433b665c709bebd5dd08427ae20e3e7d7e188f3c0c8a7854c2af301"
+   "ruling": "Ruling: model error; p501 p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes\"; i1040gi p. 14 allows married filing separately to a married filer. The reply refuses every separate return not married on December 31, so it refuses a 2025 widow filing separately; its other additions fold in cases other gates refuse (a 2025 death on a single or head-of-household return: household.widowed_this_year; the head-of-household tests: household.hoh_fails). Same reading as the ruling of 2026-11-15 on this line. Project stands.",
+   "subject_key": "fec9779e030e6f8c1cbe5bb0495cbbf5547864e665b35d60cef53771cdc4b07e"
   },
   {
    "key": "household.mfs",
@@ -202,11 +216,13 @@
   "household.ctc_disallowed_claim": "ee3b3554dd5ac6ccdd4664421c2c2092138a851d7d7937b4db24eb21ddf724ba",
   "household.eic_disallowed_claim": "77b822135b27ab6e7b5c950dad556162237369336af8b5aa9426e04536558108",
   "household.hoh_fails": "78be1f3fb849fc1015efc7fbef5e7c7d192b46124952cb1ea3c4fdddfdedd54a",
-  "household.qss_fails": "1ad1dbc7c5d259388289e6695e040fe43e6ca369df6497ba49b02afe1c544b30",
-  "household.widowed_this_year": "8abbe182d333f715cac8ac03b86fa35d20710670f069ca3553d886ecd038ec3f",
+  "household.qss_fails": "ad62584d0d71793cf9b58bd99c23413c046e25fb487b2e9a2b916fb1e6917c62",
+  "household.qss_claimed": "5702b61ee60279d2dd008d7551c760c18aed0c075b13997940c03b1c6115214c",
+  "household.spouse_died_this_year_if_ever_married": "c47630b66376787b8aa888d400bf067c82242387e2cf1e3fe3d14a0f3a49dc35",
+  "household.widowed_this_year": "347d939680abe973db94855127363b0bbee1c68dd03d73feda50f169d3feea80",
   "household.cp_marriage_ended": "83e4be6740c94293c155d28d8590ba7f4308a54c56a7e701fe3c2c988fd98f9b",
-  "household.rdp_community_property": "cc8a52a6955f6574bf7ec6c447c5931cfa116075bab6cf8102a17d25bc12e442",
-  "household.filing_status_conflict": "c20f956d22dccd614e1d5ac766e3267b84b02b72154f1fe9624ea9469c34c315",
+  "household.rdp_community_property": "a3c9e1daa196a4459c3c3ce9ee98cd53015bf6c864a70b14c8ebc48549067d80",
+  "household.filing_status_conflict": "21b1361879cb05d60284261d59ba4d07b7bcdfec22a279c1129d4dedd6a4ee28",
   "household.mfs": "176699ddce9a83f1c9416ba78656a2b56ac77d598593dc578bb1ded5ce97b640",
   "household.mfs_apart_all_year": "150855687ea4442b9580dca4458459bcc97dc1c45144c635d8704aeeeacc2fcc",
   "household.mfs_apart_last6": "37bc6bbe8bf82e257a31c0237e7f4eb50b91c411faaa32d19257f5e80eefd060",
@@ -225,7 +241,9 @@
   "household.ctc_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
   "household.eic_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
   "household.hoh_fails": "2bcdd7bd8ce4c26397bdd083f1f71af1e5ab7419cfe50a9057777dbf354b6fd9",
-  "household.qss_fails": "85035813624fec2247aec086094ae1244cbbc5525d67c6fbe861c9c8a971e408",
+  "household.qss_fails": "f221889b3aa9c4e145aa92e8251471d014bf5a5e4e02e9e7bfc06c9c5b092c26",
+  "household.qss_claimed": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.spouse_died_this_year_if_ever_married": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.widowed_this_year": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.cp_marriage_ended": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.rdp_community_property": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",

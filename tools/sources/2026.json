@@ -755,9 +755,23 @@
     "description": "Instructions for Form 6251 (2026), Alternative Minimum Tax: the 2026 counterpart of the 2025 catalog's i6251, cited by the 2025 definitions and parameters (C-LAW-02)"
   },
   {
+    "id": "f6251",
+    "url": "https://www.irs.gov/pub/irs-dft/f6251--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-05-28",
+    "description": "Form 6251 (2026), Alternative Minimum Tax—Individuals: the 2026 counterpart of the 2025 catalog's f6251, cited by the Schedule 2 AMT screen (forms/2025/s2.yaml) and amt.rate_25 (line 37)"
+  },
+  {
     "id": "n-26-05",
     "url": "https://www.irs.gov/pub/irs-drop/n-26-05.pdf",
     "document_tax_year": 2026,
     "purpose": "Notice 2026-5: expanded availability of health savings accounts under Public Law 119-21 (HSA eligibility; cited by the 2026 Instructions for Form 8889); final guidance"
+  },
+  {
+    "id": "fr-2026-18219",
+    "url": "https://www.govinfo.gov/content/pkg/FR-2026-09-08/pdf/2026-18219.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Final regulations on the deduction for interest on qualified passenger vehicle loans (section 163(h)(4)), Federal Register 2026-18219 (2026-09-08): the final counterpart of the proposed regulations fr-2025-24154 cited by forms/2025/carloan.yaml; final guidance"
   }
 ]

@@ -335,7 +335,7 @@ rows:
       asks: ny_it201.ask.city_resident
       not_asked: [ny_it201.ask.529_owner, ny_it201.ask.529_nonqualified]
   - id: ny.alimony_later
-    design: lane fx-ny, ny_it201.ask.alimony_later beneath the federal alimony questions, asked only after a No to an agreement of 2018 or earlier
+    design: lane fx-ny, ny_it201.ask.alimony_later beneath the federal alimony questions, asked whenever alimony was paid or received since 2023 (lane ny, BUG-1287)
     situation: A person who received alimony in 2025 under a divorce agreement made in 2020.
     uses: [one_w2]
     answers:
@@ -356,8 +356,8 @@ rows:
     expect:
       asks: ny_it201.ask.it225
   - id: ny.alimony_old_agreement
-    design: lane fx-ny, alimony under an agreement of 2018 or earlier is federal income and the New York question is not asked
-    situation: A person who received $12,000 of alimony in 2025 under a 2015 divorce agreement.
+    design: lane ny (BUG-1287), alimony under an agreement of 2018 or earlier is federal income, and the New York question is still asked, since a second agreement may be later
+    situation: A person who received $12,000 of alimony in 2025 under a 2015 divorce agreement, and none under any other agreement.
     uses: [one_w2]
     answers:
       s1.alimony_any: true
@@ -365,10 +365,10 @@ rows:
       s1.alimony_received: 1200000
       s1.alimony_paid: 0
       s1.alimony_unsupported: false
+      ny_it201.ask.alimony_later: false
       ny_it201.ask.public_job: false
     expect:
       asks: ny_it201.ask.it225
-      not_asked: [ny_it201.ask.alimony_later]
   - id: ny.prior_168k
     design: lane fx-ny, ny_it201.ask.prior_168k asked only with a Schedule C or rental or royalty property
     situation: A self-employed person who took bonus depreciation on equipment in 2021, deducting it in full, and still has it.

@@ -157,6 +157,30 @@ function forgetSelfTest(): number {
   return 2 * cases.length + 3;
 }
 
+/** An implicit collection's roster: absent, or exactly its one implicit key; any other list is an input error, and the
+ * same list is accepted for a collection that is not implicit. Returns the number of cases. */
+function implicitRosterSelfTest(): number {
+  const l = (id: string, type: string, expr: unknown) => ({ id, printed: id, label: id, type, expr, cite: null }) as unknown as Line;
+  const data = {
+    forms: [
+      { id: "p", kind: "form", tax_year: 2025, title: "p", collection: { cite: null }, lines: [l("p.x", "NonNegDollars", { op: "input", source: "X?" })] },
+      { id: "q", kind: "form", tax_year: 2025, title: "q", collection: { parent: "p", implicit: "form", cite: null }, lines: [
+        l("q.y", "NonNegDollars", { op: "input", source: "Y?" })] },
+      { id: "r", kind: "form", tax_year: 2025, title: "r", collection: { parent: "p", cite: null }, lines: [
+        l("r.z", "NonNegDollars", { op: "input", source: "Z?" })] },
+    ],
+    defs: [], tables: [], params: { tax_year: 2025, enums: {}, values: {} }, register: { tax_year: 2025, entries: [] },
+  } as unknown as CanonicalData;
+  const run = (inputs: Record<string, unknown>) => () => evaluate(data, { $p: ["a"], ...inputs } as never, ["p[a].x"]);
+  run({})();
+  run({ "$q@p[a]": ["form"], "p[a].q[form].y": 1 })();
+  run({ "$q@p[a]": null })();
+  run({ "$r@p[a]": [], "$q@p[a]": ["form"] })();
+  run({ "$r@p[a]": ["form", "w9"] })();
+  for (const bad of [[], ["form", "w9"], ["w9"]]) assert.throws(run({ "$q@p[a]": bad }), /an implicit collection has the one entry \["form"\]/, JSON.stringify(bad));
+  return 8;
+}
+
 /** Line ids that name another printed number, and the carryover map's checks, on a small document set: a form `y`
  * (top level), a collection `p` and a collection `q` within each entry of `p`. Returns the number of cases. */
 function idsAndCarryoverSelfTest(): number {
@@ -411,7 +435,7 @@ export function runCheckSelfTest(): void {
   assert.deepEqual(typedAsked({ "c.flag": false, "c.kind": "b" }), []);
   assert.deepEqual(typedAsked({ "c.flag": true, "c.kind": "a" }), ["c.pick", "c.yes"]);
   const typedCount = 1 + chooseCases.length + TYPED_CHOOSE_CASES.length + 4 + 3;
-  const forgetCount = forgetSelfTest();
+  const forgetCount = forgetSelfTest() + implicitRosterSelfTest();
   const idsCount = idsAndCarryoverSelfTest();
   // Structured text (text.ts): the subset parses to its blocks; everything else is a named problem; plain text is untouched.
   const good = "Any of these?\n\nWork:\n- wages (Form W-2)\n- tips, for example:\n  - cash tips\n\nA closing note, with a colon:\n\n- a list after a blank line";
@@ -457,5 +481,5 @@ export function runCheckSelfTest(): void {
   assert.deepEqual(conflicts, { "w2.g_bad": "a" });
   console.log(`fixtures self-test: ${markedCasesSelfTest()} cases passed (a case marked not evaluated by the year carry is left out and listed)`);
   console.log(`defaults self-test: ${defaultsSelfTest()} cases passed (conditional withholding, condition and rule validation, consistency violations)`);
-  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + typedCount + forgetCount + idsCount + 10 + bad.length + 2} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, Bool and enum choose, forgotten evaluations and exact products, line ids and the carryover map, structured text, New York conflict checks without New York definitions)`);
+  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + typedCount + forgetCount + idsCount + 10 + bad.length + 2} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, Bool and enum choose, forgotten evaluations and exact products, implicit rosters, line ids and the carryover map, structured text, New York conflict checks without New York definitions)`);
 }

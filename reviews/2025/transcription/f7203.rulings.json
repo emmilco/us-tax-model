@@ -120,6 +120,32 @@
   },
   {
    "printed": "35 (c)",
+   "project_expr_sha256": "14cf05b158abaad5cffd5976d44d16f2b28331bb9648dde1c3dec3e485968304",
+   "second_expr_sha256": "881534f9abe33113b1de141b729b1dc7042e34af9eccf9393a297efec0fb4f35",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (decided under the owner's delegation of 2026-11-24): the project prorates by the six-place ratio and keeps each line of column (c) within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (i7203 p. 4, 'can't exceed the amount reported on line 10'); the reply keeps a nine-place ratio with no such cap. Executable triage (f7203.json): the only value differences are a cent of rounding on the k1s.loss_over_basis_ratio_rounding and classm.f7203.3 cases (ratio 0.333333, $6,666.66 against $6,666.67), the ratio rounding down, which the register accepts; candidate-unknown elsewhere. Column (b) is refused (k1s.basis_carry), as both readings say.",
+   "context": "b89de9c3abc3184eca366111487d5aa8c1489e77e9189a643430aa1ae63a6871",
+   "date": "2026-11-24",
+   "run": "89e73dab669a812aa5c6d6b5240b3e8155197ba64295c4918a2e3bb5a7fb9fad",
+   "subject_key": "de86b39cdb913a23981be328e8531bbff3976b711ff8381448c50a0605e63303",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:classm.f7203.3@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:classm.k1s.4@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.loss_over_basis_ratio_rounding@person[taxpayer].k1s[acme].f7203[form]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].f7203[form].election@person[taxpayer].k1s[acme].f7203[form]",
+     "partial:k1s.loss_over_basis_ratio_rounding-person[taxpayer].k1s[acme].f7203[form].loans@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "35 (c)",
    "project_expr_sha256": "8ea0486d8da47f796dbbc3b0f9ce16b9364abf31b7329cdbcad7434ddf919cc5",
    "second_expr_sha256": "38e4b6bf3f8f99061a6dca6dd22e75807b46758fc9d4d3e8ebe1e4e8602801c3",
    "ruling": "Ruling: ambiguity; 12/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
@@ -208,6 +234,27 @@
    }
   },
   {
+   "printed": "36 (c)",
+   "project_expr_sha256": "e07e47dd30a1da957f009db770147ea94e3399b614295dbaeb2bc526c8267b63",
+   "second_expr_sha256": "9e50cba2257d0dd3b2aae65dd0ff7156005222867145aa12339ff49e8d006f10",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (decided under the owner's delegation of 2026-11-24): the project prorates by the six-place ratio and keeps each line of column (c) within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (i7203 p. 4, 'can't exceed the amount reported on line 10'); the reply keeps a nine-place ratio with no such cap. Executable triage (f7203.json): the only value differences are a cent of rounding on the k1s.loss_over_basis_ratio_rounding and classm.f7203.3 cases (ratio 0.333333, $6,666.66 against $6,666.67), the ratio rounding down, which the register accepts; candidate-unknown elsewhere. Column (b) is refused (k1s.basis_carry), as both readings say.",
+   "context": "b89de9c3abc3184eca366111487d5aa8c1489e77e9189a643430aa1ae63a6871",
+   "date": "2026-11-24",
+   "run": "89e73dab669a812aa5c6d6b5240b3e8155197ba64295c4918a2e3bb5a7fb9fad",
+   "subject_key": "8b93e0e5daa55dc438fce9db4becec20c106448d1df8619a04b1fe2ecd07fffc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:classm.k1s.4@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "36 (e)",
    "project_expr_sha256": "92fb058a51e9f9f34e34ca66ff9164039787cb5a55855eb493f699af2404576c",
    "second_expr_sha256": "87b3922512dbc0545ea17e6c92879f05b7d6fd6a5482b7fee3805d55f328acbb",
@@ -264,6 +311,27 @@
    }
   },
   {
+   "printed": "37 (c)",
+   "project_expr_sha256": "422efc3b7d4392d08f815b1c83efc24ee0efbb5a1e5ebcb797600bcc7b060406",
+   "second_expr_sha256": "682b80b0a45f8c1c40b52168a52bc3feaa1ee63dbbef88565ddb1de9b926f465",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (decided under the owner's delegation of 2026-11-24): the project prorates by the six-place ratio and keeps each line of column (c) within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (i7203 p. 4, 'can't exceed the amount reported on line 10'); the reply keeps a nine-place ratio with no such cap. Executable triage (f7203.json): the only value differences are a cent of rounding on the k1s.loss_over_basis_ratio_rounding and classm.f7203.3 cases (ratio 0.333333, $6,666.66 against $6,666.67), the ratio rounding down, which the register accepts; candidate-unknown elsewhere. Column (b) is refused (k1s.basis_carry), as both readings say.",
+   "context": "b89de9c3abc3184eca366111487d5aa8c1489e77e9189a643430aa1ae63a6871",
+   "date": "2026-11-24",
+   "run": "89e73dab669a812aa5c6d6b5240b3e8155197ba64295c4918a2e3bb5a7fb9fad",
+   "subject_key": "36a5382c618f34113118d6701e383929a2bb0751d3548d564bae65fa76e45e6e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:classm.k1s.4@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "37 (e)",
    "project_expr_sha256": "dd0beea0758be03cdd068e14652e51a93ab8993127712c1c28dd93d1266f7632",
    "second_expr_sha256": "dd6bf6010669af8ad2409097e731853dba10b15ed0156c785bb8697bad93c05d",
@@ -287,6 +355,27 @@
      "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
      "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
      "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "38 (c)",
+   "project_expr_sha256": "591a9992bd67d8e1c48bf28cc4c19fbf9cfc029ba163a86d8fbf5ec4c400dae1",
+   "second_expr_sha256": "48d47b82c64f3b53910515c3c0de7baf1ec7e418e9365473b4de99fbb2da856e",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (decided under the owner's delegation of 2026-11-24): the project prorates by the six-place ratio and keeps each line of column (c) within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (i7203 p. 4, 'can't exceed the amount reported on line 10'); the reply keeps a nine-place ratio with no such cap. Executable triage (f7203.json): the only value differences are a cent of rounding on the k1s.loss_over_basis_ratio_rounding and classm.f7203.3 cases (ratio 0.333333, $6,666.66 against $6,666.67), the ratio rounding down, which the register accepts; candidate-unknown elsewhere. Column (b) is refused (k1s.basis_carry), as both readings say.",
+   "context": "b89de9c3abc3184eca366111487d5aa8c1489e77e9189a643430aa1ae63a6871",
+   "date": "2026-11-24",
+   "run": "89e73dab669a812aa5c6d6b5240b3e8155197ba64295c4918a2e3bb5a7fb9fad",
+   "subject_key": "b71764362776268e21aec0259e01183abf913151c31869f0c38d14038ec8a3aa",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.k1s.4.deepseek@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:classm.k1s.4@person[taxpayer].k1s[acme].f7203[form]"
     ],
     "policy": "executable-triage-v2"
    }

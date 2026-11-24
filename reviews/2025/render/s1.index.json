@@ -6,7 +6,7 @@
  "head_rows": {
   "lines judged": "36",
   "match / mismatch / unclear / missing": "30 / 6 / 0 / 0",
-  "line-scoped reviews": "9 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "10 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,9 +17,9 @@
   },
   {
    "key": "7",
-   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
+   "record": "4dd2b5daea77770552572a5c962ab4b73c082fb58114e250d73e8632f9405b36",
    "status": "MATCH",
-   "subject_key": "208c8f6868af8b2f08083843015089b2a0fb711b3e5e598bdbcbf6255307a947"
+   "subject_key": "8567e083a65de0cd774b154a16bc432b2218efa86f172ab99ae094e8c4ce3ab3"
   },
   {
    "key": "7 (box)",
@@ -242,7 +242,7 @@
  ],
  "subjects": {
   "1": "58670c8bb3557b518db28d15c0575db7bd18c807075f888cec9d91e0522cd172",
-  "7": "0aa7e18fa41397e9c171ffac098cfbea679e107ade4d0789644fb7a869935a82",
+  "7": "dc9d969b4879dad5769fd0d582b91fc8ac72c844450a03cda165be2afa1b6256",
   "7 (box)": "09b7c34093b1ada499b0dd9b024a5725401b1b3c053bf7a088ca9b4b4fe0fa61",
   "7 (amount repaid)": "684c11973a74fbcaca801a35d11dedc198af1f3f9c8045e0b24173854c36a5a6",
   "3": "6c6d599a805f5a1e51720b9c2f16cfffd504171dfcd8da8d26e03617e4db9eca",

@@ -250,6 +250,18 @@
    "subject_key": "9747f85be34d8057ab88909a2225019ed11d26de9e0f0dacbd5aa6994b20a0b3"
   },
   {
+   "case": "classm.f2441.4",
+   "printed": "30",
+   "project": "$18,500.00",
+   "model": "$19,500.00",
+   "ruling": "Ruling: model error; Form 2441 (2025), line 30, \"Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here\". The expenses paid are $19,500 ($18,500 and $1,000) and line 28 is $1,000 (evaluated on the case), so column (d) without the line 28 benefits totals $18,500, the project's value. The model added the expenses without taking out line 28.",
+   "drop": true,
+   "context": "3d8d43f8d07d84e96d04d026ae1805814072392e48c877e0ede92364dbed8c04",
+   "date": "2026-11-24",
+   "run": "4ca2d67efaf339e05fe538b5fdc3d37cd71e42e8cd975267f7d718c67fc268b9",
+   "subject_key": "e846412fcf61ae68c5ed99892b0eb1b4e993ed1063a0986293d112e6b5665e23"
+  },
+  {
    "case": "classm.f2441.5",
    "printed": "18",
    "project": "$-67,592.70",

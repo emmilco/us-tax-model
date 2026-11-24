@@ -618,24 +618,45 @@
 - Expr: `{"eq":["f1040.status",{"const":"qss"}],"op":"test"}`
 - Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "You can check the “Qualifying surviving spouse” box in the Filing Status section on page 1 of Form 1040 or 1040-SR" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `household.qss_claimed`
+
+- **Authored helper label:** Qualifying surviving spouse checked and its tests answered Yes (false for any other filing status)
+- **Encoded (Bool):** Choose — [helper "Filing status qualifying surviving spouse" = true → helper "Do all five qualifying surviving spouse tests apply to you?"] [helper "Filing status qualifying surviving spouse" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.qss",{"const":true}],"op":"test"},"then":"household.qss_eligible"},{"guard":{"eq":["household.qss",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "use joint return tax rates for 2025 if all of the following apply" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.qss_no_child`
+
+- **Authored helper label:** No son, daughter or stepchild is listed
+- **Encoded (Bool):** helper "Number of people listed as your son, daughter or stepchild (not a foster child, grandchild or other descendant)" = 0 (a count)
+- Expr: `{"eq":["household.qss_children_listed",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.qss_no_child_notice`
+
+- **Authored helper label:** Notice: qualifying surviving spouse needs a son, daughter or stepchild of yours (not a foster child) who lived in your home for all of 2025, and none is listed among the people who lived with you. List that child (even one you cannot claim as a dependent), or choose another filing status.
+- **Encoded (Bool):** Choose — [helper "Qualifying surviving spouse checked and its tests answered Yes (false for any other filing status)" = true → helper "No son, daughter or stepchild is listed"] [helper "Qualifying surviving spouse checked and its tests answered Yes (false for any other filing status)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.qss_claimed",{"const":true}],"op":"test"},"then":"household.qss_no_child"},{"guard":{"eq":["household.qss_claimed",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `household.qss_children_listed`
 
-- **Authored helper label:** Number of people listed as your child (son, daughter, stepchild, foster child or a descendant of one)
-- **Encoded (Count):** Add dependent.one over every confirmed dependent entry for which helper "Relationship to you" = 'child', within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"eq":["dependent.relationship",{"const":"child"}],"op":"test"}}`
+- **Authored helper label:** Number of people listed as your son, daughter or stepchild (not a foster child, grandchild or other descendant)
+- **Encoded (Count):** Add dependent.one over every confirmed dependent entry for which helper "Listed as your child and your son, daughter or stepchild, asked only when qualifying surviving spouse is checked and its tests answered Yes (false otherwise)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"eq":["dependent.own_child_if_qss",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.qss_children_all_year`
 
-- **Authored helper label:** Number of people listed as your child who lived with you for all of 2025
-- **Encoded (Count):** Add dependent.one over every confirmed dependent entry for which helper "Listed as your child, and lived with you for all of 2025 (the lived-all-year answer is read only for a child)" = true, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"eq":["dependent.child_all_year",{"const":true}],"op":"test"}}`
+- **Authored helper label:** Number of people listed as your son, daughter or stepchild who lived with you for all of 2025
+- **Encoded (Count):** Add dependent.one over every confirmed dependent entry for which helper "Listed as your child and your son, daughter or stepchild, asked only when qualifying surviving spouse is checked and its tests answered Yes (false otherwise)" = true and helper "Listed as your child, and lived with you for all of 2025 (the lived-all-year answer is read only for a child)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"all":[{"eq":["dependent.own_child_if_qss",{"const":true}],"op":"test"},{"eq":["dependent.child_all_year",{"const":true}],"op":"test"}],"op":"test"}}`
 - Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.qss_child_conflict`
 
 - **Authored helper label:** A child is listed, but no child listed lived with you for all of 2025
-- **Encoded (Bool):** helper "Number of people listed as your child (son, daughter, stepchild, foster child or a descendant of one)" > 0 (a count) and helper "Number of people listed as your child who lived with you for all of 2025" = 0 (a count)
+- **Encoded (Bool):** helper "Number of people listed as your son, daughter or stepchild (not a foster child, grandchild or other descendant)" > 0 (a count) and helper "Number of people listed as your son, daughter or stepchild who lived with you for all of 2025" = 0 (a count)
 - Expr: `{"all":[{"gt":["household.qss_children_listed",{"const":0,"type":"Count"}],"op":"test"},{"eq":["household.qss_children_all_year",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -663,8 +684,8 @@
 ## (helper) — `household.spouse_died_this_year`
 
 - **Authored helper label:** Did your spouse die in 2025?
-- **Encoded (Bool):** Input — Did your spouse die in 2025? (Asked when your filing status is single or head of household, or when filing jointly although not married at the end of 2025.)
-- Expr: `{"op":"input","source":"Did your spouse die in 2025? (Asked when your filing status is single or head of household, or when filing jointly although not married at the end of 2025.)"}`
+- **Encoded (Bool):** Input — Did your spouse die in 2025? (Asked when your filing status is single or head of household, when filing jointly although not married at the end of 2025, and on a joint return with child or dependent care expenses, Form 2441.)
+- Expr: `{"op":"input","source":"Did your spouse die in 2025? (Asked when your filing status is single or head of household, when filing jointly although not married at the end of 2025, and on a joint return with child or dependent care expenses, Form 2441.)"}`
 - Cite: [p501] p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
 ## (helper) — `household.spouse_died_this_year_if_ever_married`
@@ -718,10 +739,10 @@
 
 ## (gate) — `household.rdp_community_property`
 
-- **Authored helper label:** Not filing jointly, living in a community property state, and a registered domestic partner in Nevada, Washington or California
-- **Encoded (Bool):** f1040 line Filing Status ≠ 'mfj' and helper "Did you live in, or have your permanent home (domicile) in, a community property state at any time in 2025?" = true and helper "Were you a registered domestic partner in Nevada, Washington or California at any time in 2025?" = true
-- Expr: `{"all":[{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["household.community_property",{"const":true}],"op":"test"},{"eq":["household.rdp",{"const":true}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Not filing jointly, and a registered domestic partner in Nevada, Washington or California at any time in 2025 (wherever you lived)
+- **Encoded (Bool):** f1040 line Filing Status ≠ 'mfj' and helper "Were you a registered domestic partner in Nevada, Washington or California at any time in 2025?" = true
+- Expr: `{"all":[{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["household.rdp",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"; p555 p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.joint_unmarried`
 

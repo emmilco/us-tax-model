@@ -19,6 +19,7 @@ interview:
   - ny_it201.ask.city_resident
   - ny_it201.ask.state_resident
   - ny_it201.ask.spouse_resident
+  - ny_it201.ask.spouse_cannot_sign
   - ny_it201.ask.yonkers
   - ny_it201.ask.moved_in
   - ny_it201.ask.moved_out
@@ -39,8 +40,10 @@ interview:
   - ny_it201.ask.529_nonqualified
   - ny_it201.ask.529_owner
   - ny_it201.ask.inflation_check
+  - ny_it201.ask.railroad_uc
   - ny_it201.ask.alimony_later
   - ny_it201.ask.prior_168k
+  - ny_it201.ask.suv_carryover
   - ny_it201.ask.it225
   - ny_it201.ask.itemize
   - ny_it201.ask.spouse_itemizes

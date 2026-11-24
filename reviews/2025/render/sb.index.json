@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "1a5dc8681840d939dc7333d238b4879fa1687e7749e1080a44ee513b78f00891",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "6 / 0 / 0 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,43 +16,42 @@
   },
   {
    "key": "8",
-   "record": "863886fe52274b7cd1f5d2a62d7eaf9af9011b38d61b6ae107f62791ca1ae7d4",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: finding; i1040sb p. 3, Line 8, 'During 2025, did you receive a distribution from, or were you the grantor of, or transferor to, a foreign trust?' and 'a loan of cash or marketable securities is generally considered to be a distribution'. The reviewer finds the foreign-trust test in agreement with cfr-26-301-7701-7 and is right that the given pages support neither the indirect receipt ('through another person or company'), nor the free or below-market use of trust property, nor 'a foreign foundation, a waqf or another arrangement' counting as a trust. These follow the Form 3520 rules, which are not archived or cited; each only widens a Yes, which refuses (Form 3520), so no value is wrong and no refusal is missed. Low (BUG-0759): archive i3520 and cite the passages, or drop a clause they do not support.",
-   "subject_key": "d178391731ee6086b6a97259b4f090c846d3b8670bba9b649b6670a20858c39d"
+   "record": "06eaff4fe4cbafc6990949dd8c73920efc845e04681d0406f71f8f312da617b9",
+   "status": "MATCH",
+   "subject_key": "7305bd0c6ed7ed884786ea36a39f4a4b5c9c05f310389aafc935f9cccc694894"
   },
   {
    "key": "2",
-   "record": "3b69799505d0b65b04cac7a3a55fb0ecc40172a2f025066075c7ae47ee0156d0",
+   "record": "772d689017cc8b8090b5834d0f1844c696f0ae062385fffd1ec47f172428b0f2",
    "status": "MATCH",
-   "subject_key": "b68fb76ce12b625854776985b670fb92bcc627ee19f2d0fbffce6537cc217065"
+   "subject_key": "ce88591bb41c5704e233ff0be48430fd6f49fd108cbeba25b5d684893f582a87"
   },
   {
    "key": "3",
-   "record": "3b69799505d0b65b04cac7a3a55fb0ecc40172a2f025066075c7ae47ee0156d0",
+   "record": "772d689017cc8b8090b5834d0f1844c696f0ae062385fffd1ec47f172428b0f2",
    "status": "MATCH",
-   "subject_key": "1f120493f91dad19f4273b1675d2fc2bf675b77673015733a6d239ec62e6f8da"
+   "subject_key": "10139bf15f2c411260308e94bb8151642de71fe6d25b35a27d29e5f5e088b735"
   },
   {
    "key": "4",
-   "record": "21873843d69356f1600fc4785f5be5e9d46ba105f64b0ae09fdc880f00f559d8",
+   "record": "06eaff4fe4cbafc6990949dd8c73920efc845e04681d0406f71f8f312da617b9",
    "status": "MATCH",
-   "subject_key": "772970913a63ca107156760d0ad4a180beeabb14e782d33920f498f021b5eca6"
+   "subject_key": "80b317bdf18d0e6acaeee7a00ce27c318dfba2a4a1f9bb64d5ef67eaa3802be1"
   },
   {
    "key": "6",
-   "record": "3b69799505d0b65b04cac7a3a55fb0ecc40172a2f025066075c7ae47ee0156d0",
+   "record": "772d689017cc8b8090b5834d0f1844c696f0ae062385fffd1ec47f172428b0f2",
    "status": "MATCH",
-   "subject_key": "782f5d7dd0916a5580fe8ac21ebcb4039c9b56eaf56731d042dc8a1932dc1b89"
+   "subject_key": "8e6af36cf57558c23c59bf6a63277fab0cdf5faa074baa59dfbfb71aba9d16ac"
   }
  ],
  "subjects": {
   "7a": "6a532b2dfe92d7e1cd9802a6b8f59bf57f5bef87caac66d805d0fe049bc236f8",
-  "8": "a96cc50653790fbaf7c06a736cba0f32acb35d67d5dbe1b324690c7a97358963",
-  "2": "2e310c119cc465645c99f8be5b167892b39f0530f26ebfffe10942e5a6ddc771",
-  "3": "069fbda5c62fafc4b9bd6fb3be9b73408146a739015561052fcba080865cc088",
-  "4": "51868f1dba562d284ef317872515b1b49dd12c6a346e0f4379e6aabb34f63bb9",
-  "6": "fda8a57cfa3ad539830e8ffae2207b56bc01d06fc2f2621d70920b0bda1f5269"
+  "8": "aa6a274c9cd3c4284d59cdbcb02772d456447314cd300c218a18afe339c07852",
+  "2": "c855df9370ce8ff48c4fb09d3a48c512384bb9c8a7d42fe7fc1d06223a35aa9f",
+  "3": "9e970d4999964c01a7010184351b58d180fc6165f432de84badc92fd76cedc5d",
+  "4": "f9ff1f5e7ca7ebdd0068a0520e0074549b01c51a9c1da718bd35624b3ab80228",
+  "6": "63258f4c28bdf64aa9c1a3fe27fdafe04fd795428ffe9792210e800432f9fac9"
  },
  "__rest__": "a94af5b651134640cc219aba4abb67814d5b7730c6a2f18c6e978773a29f39cc"
 }

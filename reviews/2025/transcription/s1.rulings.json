@@ -252,34 +252,22 @@
   {
    "printed": "7",
    "project_expr_sha256": "6f583385d559effa11140134f8973cfb72c477c0d9ebcb6dd68c106287cc05e0",
+   "second_expr_sha256": "c3eb98e5dd759555df0b6242f750f1de9dec730b51a39ac16a8617cf382fd086",
+   "ruling": "Ruling: representation; i1040gi p. 89, Schedule 1, line 7, 'subtract the amount you repaid from the total amount you received'. The reply subtracts the display line '7 (amount repaid)', which copies s1.uc_repaid, and chooses on s1.uc_any where the project chooses on the gated amount; they differ only when s1.uc_any is Yes and s1.uc_paid is zero, where both give zero. Re-reviewed because s1.uc_any's wording now names partial benefits and trade readjustment allowances. Project stands.",
+   "context": "87ca132024c16bd7425a805001fc43b1124fadac6b4543fed393859173e3fd8b",
+   "date": "2026-11-24",
+   "run": "88725271207c2fc2231354381d8352b7f25663f69d0c12a12ad46e8ddd798c52",
+   "subject_key": "2a80aa41f5d4ed20da356118eb5407b8a1a31fccc7efa3d42db88bb63abba720"
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "6f583385d559effa11140134f8973cfb72c477c0d9ebcb6dd68c106287cc05e0",
    "second_expr_sha256": "ce4c35b19de7e579d5e56bafacde071284e4b09dac90432840df8018dad13ebc",
-   "ruling": "Ruling: representation; both give box 1 of Form 1099-G less a 2025 repayment, floored at zero (i1040gi p. 89, Line 7, \"subtract the amount you repaid from the total amount you received\"). The reply refuses on s1.uc_unsupported for every filer, the project only when unemployment compensation was received (s1.line7_figured): contributions to a program reduce \"the amount you report on line 7\" and an earlier-year repayment is not a line 7 amount, so with no compensation line 7 is zero either way. Triage (pass eba464d939db): 2,804/3,553 agree; differences only candidate-refuses/candidate-unknown on s1.uc_unsupported where the project has no compensation (19 + 15 on completed returns, project 0); no value difference.",
-   "context": "b32d95d2e680b66d4f494ad1071dc606bea4a26d28f19d40e064aa1bd115416e",
-   "date": "2026-11-14",
-   "run": "2c1d84afa7117e6c7b349cbf8b5e5f33d0d5cd4d4fad4e5c9e011bbb8cac01b2",
-   "subject_key": "8704265d1e32ef59dc8dfb579debe72e4915146ffcc4151f97ad0ed0bb90cf8c",
-   "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "candidate-refuses",
-     "candidate-unknown"
-    ],
-    "witnesses": [
-     "fixture:classm.f2441.1.deepseek@s1",
-     "fixture:classm.f2441.2.deepseek@s1",
-     "fixture:classm.f2441.3.deepseek@s1",
-     "fixture:classm.f2441.4.deepseek@s1",
-     "fixture:classm.f2441.5.deepseek@s1",
-     "fixture:classm.f2441.6.deepseek@s1",
-     "fixture:classm.f1040.6.deepseek@s1",
-     "fixture:classm.otjob.3@s1",
-     "fixture:classm.f1040.6@s1",
-     "fixture:mutation.t2.qss_s1a_tips_ot_car@s1",
-     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1",
-     "fixture:mutation.m3.scope.l16_f8615_qss@s1"
-    ],
-    "policy": "executable-triage-v2"
-   }
+   "ruling": "Ruling: representation; i1040gi p. 89, Schedule 1, line 7, 'subtract the amount you repaid from the total amount you received'. The project chooses on the gated amount (s1.uc_paid_if_any, zero when s1.uc_any is No) and the reply on s1.uc_any itself; they differ only when s1.uc_any is Yes and s1.uc_paid is zero, where both give zero. The reply's note on family leave benefits (included in full, Rev. Rul. 2025-4) agrees with the project's reading (amb.2025.pfml_benefits_contributions). Re-reviewed because s1.uc_any and s1.uc_paid now name state paid family leave benefits. Project stands.",
+   "context": "3103563c28bd3825b134e1aa36dd3c926d156ea232131a5e4f21b5d5f3c52f08",
+   "date": "2026-11-24",
+   "run": "d54766aa3fee31f962e814a76e9b4fc446f50ed67f57db15d4f961835defb3e2",
+   "subject_key": "62f1059cf6bae5d0c2dbc49b759afa8651514a353e8e11c24f7cd4235a7c96dd"
   },
   {
    "printed": "7",

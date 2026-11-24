@@ -2534,5 +2534,47 @@
     "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapE-partII-subpartB-sec457.pdf",
     "document_tax_year": 2025,
     "purpose": "BUG-0719: 26 U.S.C. 457 (deferred compensation plans of State and local governments and tax-exempt organizations); law, not a form source"
+  },
+  {
+    "id": "usc-26-62",
+    "title": "§ 62. Adjusted gross income defined",
+    "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapB-partI-sec62.pdf",
+    "document_tax_year": 2025,
+    "purpose": "BUG-1190: 26 U.S.C. 62(a)(21), attorney fees relating to awards to whistleblowers (Schedule 1 line 24i); law, not a form source"
+  },
+  {
+    "id": "i3520",
+    "title": "Instructions for Form 3520",
+    "designation": "Instructions for Form 3520",
+    "url": "https://www.irs.gov/pub/irs-pdf/i3520.pdf",
+    "purpose": "BUG-0759, BUG-0595: the Schedule B line 8 foreign-trust screen (distributions, indirect transfers, use of trust property, owners)"
+  },
+  {
+    "id": "f2210",
+    "title": "Underpayment of Estimated Tax by Individuals, Estates, and Trusts",
+    "designation": "Form 2210",
+    "url": "https://www.irs.gov/pub/irs-prior/f2210--2025.pdf",
+    "purpose": "BUG-1145: Part II, the boxes that require filing Form 2210; the estimated tax penalty notice"
+  },
+  {
+    "id": "i2210",
+    "title": "Instructions for Form 2210",
+    "designation": "Instructions for Form 2210",
+    "url": "https://www.irs.gov/pub/irs-prior/i2210--2025.pdf",
+    "purpose": "BUG-1145: who must file Form 2210; the estimated tax penalty notice"
+  },
+  {
+    "id": "i1099g",
+    "title": "Instructions for Form 1099-G",
+    "designation": "Instructions for Form 1099-G",
+    "url": "https://www.irs.gov/pub/irs-prior/i1099g--2024.pdf",
+    "purpose": "BUG-1150: how state paid family leave benefits are reported"
+  },
+  {
+    "id": "rr-2025-4",
+    "title": "Rev. Rul. 2025-4",
+    "designation": "Rev. Rul. 2025-4",
+    "url": "https://www.irs.gov/pub/irs-drop/rr-25-04.pdf",
+    "purpose": "BUG-1150: state paid family and medical leave programs, contributions and benefits"
   }
 ]

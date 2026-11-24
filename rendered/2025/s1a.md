@@ -260,6 +260,13 @@
 - Expr: `{"op":"param","ref":"s1a.base_joint"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), lines 9 and 17, $300,000 (2025; created 2025-11-04; sha256 64f97b38)
 
+## (helper) — `s1a.joint`
+
+- **Authored helper label:** Married filing jointly
+- **Encoded (Bool):** f1040 line Filing Status = 'mfj'
+- Expr: `{"eq":["f1040.status",{"const":"mfj"}],"op":"test"}`
+- Cite: [f1040s1a] Schedule 1-A (2025), lines 9, 15, 17 and 32, "if married filing jointly" (2025; created 2025-11-04; sha256 64f97b38)
+
 ## (helper) — `s1a.line8_calc`
 
 - **Authored helper label:** Figured: Enter the amount from line 3
@@ -277,8 +284,8 @@
 ## (helper) — `s1a.line9_calc`
 
 - **Authored helper label:** Figured: Enter $150,000 ($300,000 if married filing jointly)
-- **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Year parameter s1a.base_other ($150,000)"] [f1040 line Filing Status = 'mfj' → helper "Year parameter s1a.base_joint ($300,000)"] [f1040 line Filing Status = 'mfs' → helper "Year parameter s1a.base_other ($150,000)"] [f1040 line Filing Status = 'hoh' → helper "Year parameter s1a.base_other ($150,000)"] [f1040 line Filing Status = 'qss' → helper "Year parameter s1a.base_other ($150,000)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.base_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.base_other"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [helper "Married filing jointly" = true → helper "Year parameter s1a.base_joint ($300,000)"] [helper "Married filing jointly" = false → helper "Year parameter s1a.base_other ($150,000)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1a.joint",{"const":true}],"op":"test"},"then":"s1a.base_joint"},{"guard":{"eq":["s1a.joint",{"const":false}],"op":"test"},"then":"s1a.base_other"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 9 (2025; created 2025-11-04; sha256 64f97b38)
 
 ## 9 — `s1a.tips_threshold`
@@ -477,8 +484,8 @@
 ## (helper) — `s1a.ot_max`
 
 - **Authored helper label:** $12,500 ($25,000 if married filing jointly)
-- **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Year parameter s1a.ot_max_other ($12,500)"] [f1040 line Filing Status = 'mfj' → helper "Year parameter s1a.ot_max_joint ($25,000)"] [f1040 line Filing Status = 'mfs' → helper "Year parameter s1a.ot_max_other ($12,500)"] [f1040 line Filing Status = 'hoh' → helper "Year parameter s1a.ot_max_other ($12,500)"] [f1040 line Filing Status = 'qss' → helper "Year parameter s1a.ot_max_other ($12,500)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.ot_max_other"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.ot_max_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.ot_max_other"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.ot_max_other"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.ot_max_other"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [helper "Married filing jointly" = true → helper "Year parameter s1a.ot_max_joint ($25,000)"] [helper "Married filing jointly" = false → helper "Year parameter s1a.ot_max_other ($12,500)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1a.joint",{"const":true}],"op":"test"},"then":"s1a.ot_max_joint"},{"guard":{"eq":["s1a.joint",{"const":false}],"op":"test"},"then":"s1a.ot_max_other"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 15 (2025; created 2025-11-04; sha256 64f97b38)
 
 ## (helper) — `s1a.line15_calc`
@@ -512,8 +519,8 @@
 ## (helper) — `s1a.line17_calc`
 
 - **Authored helper label:** Figured: Enter $150,000 ($300,000 if married filing jointly)
-- **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Year parameter s1a.base_other ($150,000)"] [f1040 line Filing Status = 'mfj' → helper "Year parameter s1a.base_joint ($300,000)"] [f1040 line Filing Status = 'mfs' → helper "Year parameter s1a.base_other ($150,000)"] [f1040 line Filing Status = 'hoh' → helper "Year parameter s1a.base_other ($150,000)"] [f1040 line Filing Status = 'qss' → helper "Year parameter s1a.base_other ($150,000)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.base_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.base_other"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.base_other"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [helper "Married filing jointly" = true → helper "Year parameter s1a.base_joint ($300,000)"] [helper "Married filing jointly" = false → helper "Year parameter s1a.base_other ($150,000)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1a.joint",{"const":true}],"op":"test"},"then":"s1a.base_joint"},{"guard":{"eq":["s1a.joint",{"const":false}],"op":"test"},"then":"s1a.base_other"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 17 (2025; created 2025-11-04; sha256 64f97b38)
 
 ## 17 — `s1a.ot_threshold`
@@ -821,8 +828,8 @@
 ## (helper) — `s1a.line32_calc`
 
 - **Authored helper label:** Figured: Enter $75,000 ($150,000 if married filing jointly)
-- **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Year parameter s1a.senior_base_other ($75,000)"] [f1040 line Filing Status = 'mfj' → helper "Year parameter s1a.senior_base_joint ($150,000)"] [f1040 line Filing Status = 'mfs' → helper "Year parameter s1a.senior_base_other ($75,000)"] [f1040 line Filing Status = 'hoh' → helper "Year parameter s1a.senior_base_other ($75,000)"] [f1040 line Filing Status = 'qss' → helper "Year parameter s1a.senior_base_other ($75,000)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.senior_base_other"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.senior_base_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.senior_base_other"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.senior_base_other"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.senior_base_other"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [helper "Married filing jointly" = true → helper "Year parameter s1a.senior_base_joint ($150,000)"] [helper "Married filing jointly" = false → helper "Year parameter s1a.senior_base_other ($75,000)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1a.joint",{"const":true}],"op":"test"},"then":"s1a.senior_base_joint"},{"guard":{"eq":["s1a.joint",{"const":false}],"op":"test"},"then":"s1a.senior_base_other"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 32 (2025; created 2025-11-04; sha256 64f97b38)
 
 ## 32 — `s1a.senior_threshold`

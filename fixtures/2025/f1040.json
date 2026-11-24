@@ -4533,6 +4533,88 @@
           "cents": 105400
         }
       }
+    },
+    {
+      "id": "stage10.ira.line4a_several",
+      "covers": [
+        "f1040",
+        "person",
+        "retirement"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1118 / amb.2025.line4a_several, predicted by hand before recording. Two traditional IRA Forms 1099-R, code 7: $10,000 rolled over in full and $3,000 fully taxable. i1040gi p. 27, More than one distribution: line 4b the total of the taxable amounts, $3,000; line 4a \"the total amount of those distributions\", $13,000 (on next $10,000).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "normal_7",
+        "person[taxpayer].retirement[a].box1": 1000000,
+        "person[taxpayer].retirement[a].rollover_any": true,
+        "person[taxpayer].retirement[a].rollover": 1000000,
+        "person[taxpayer].retirement[a].rollover_second": false,
+        "person[taxpayer].retirement[b].account": "traditional_ira",
+        "person[taxpayer].retirement[b].code": "normal_7",
+        "person[taxpayer].retirement[b].box1": 300000,
+        "person[taxpayer].retirement[b].rollover_any": false
+      },
+      "expect": {
+        "f1040.line4a": {
+          "kind": "money",
+          "cents": 1300000
+        },
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage10.plan_only_line4a",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating: the pension of stage10.mixed.ira_and_plan alone ($12,000, box 5 $1,200): lines 5a $12,000 and 5b $10,800 (i1040gi pp. 27-28). No IRA distribution, so the person's line 4a IRA amount is $0; a pension's total goes only to line 5a.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 1200000,
+        "person[taxpayer].retirement[p].box5": 120000
+      },
+      "expect": {
+        "person[taxpayer].ira_amount_a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 1080000
+        }
+      }
     }
   ]
 }

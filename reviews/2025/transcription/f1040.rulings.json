@@ -731,6 +731,27 @@
    "subject_key": "c06cd6724a746e609342a554442a98b1d34da2780de524ef5af2608cf7a1778b"
   },
   {
+   "printed": "4a",
+   "project_expr_sha256": "be2c2a665bb115960100362e63065c17d67f179d9d93b6afe7a31972f7c87759",
+   "second_expr_sha256": "bc965e09f76eb5a3102663b8712a199c525e3487535aa21030fdccee34b43ddb",
+   "ruling": "Ruling: ambiguity; amb.2025.line4a_several. i1040gi p. 27, Lines 4a and 4b, \"If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don't make an entry on line 4a\", and More than one distribution, \"Enter the total amount of those distributions on line 4a.\" The reply takes the second reading (only the distributions an exception puts on line 4a); the project takes the first, decided by the coordinator under the owner's delegation of 2026-11-24 (BUG-1118): once any distribution is on line 4a, line 4a is box 1 of every IRA distribution. They differ only with a fully taxable distribution beside an exception one (fixture stage10.ira.line4a_several, $13,000 against $10,000); line 4b, the tax and whether line 4a is zero are the same.",
+   "context": "c00852df0495700efcc81da8f5462f3493ba9e196a1dd1205c745e6084966d84",
+   "date": "2026-11-24",
+   "run": "b3e047af6d171dbc850bbbcc692b28c6ee066c07d1d939524c11c06280abb725",
+   "subject_key": "8913d46293a0e5c2d7cdd98f5b2d9720810d0b80aabcaa4f42cc600e8616d566",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.tcw.4@f1040",
+     "fixture:stage10.ira.line4a_several@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "4b",
    "project_expr_sha256": "70d296279f243ed268c91848597f133bb48897d94544a44725d2ace4f7363cc3",
    "second_expr_sha256": "d9f28452374888585a3c09fbe1ca8daa48bedde5c61c810f67832d4fda382166",

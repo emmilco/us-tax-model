@@ -46,6 +46,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -131,6 +132,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -304,7 +306,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f2441.line1_box": {
@@ -431,6 +434,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -514,6 +518,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -664,7 +669,7 @@
         "dependent[b].younger": true,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
+        "household.spouse_died_this_year": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -920,6 +925,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -1005,6 +1011,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -1178,7 +1185,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f2441.line1_box": {
@@ -1296,6 +1304,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -1381,6 +1390,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -1555,7 +1565,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f2441.line1_box": {
@@ -1734,6 +1745,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -1819,6 +1831,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -2018,7 +2031,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f2441.line1_box": {
@@ -2205,6 +2219,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -2290,6 +2305,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -2463,7 +2479,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f2441.line1_box": {
@@ -2591,7 +2608,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": true,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -2691,7 +2707,7 @@
         "household.ever_married": true,
         "household.married_dec31": true,
         "household.community_property": false,
-        "household.spouse_died_this_year": false,
+        "household.spouse_died_this_year": true,
         "household.cp_married": false,
         "household.credit_disallowed": false,
         "ira.deferred_comp": false,
@@ -2803,6 +2819,7 @@
         "sb.fbar_required": true,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -2827,6 +2844,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": true,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -3354,6 +3372,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -3388,6 +3407,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -3548,7 +3568,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -3661,7 +3682,8 @@
         "scope.medicaid_waiver": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[sample].f8889[hsa].line3": {
@@ -3844,6 +3866,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -3878,6 +3901,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -4288,6 +4312,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -4312,6 +4337,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -4913,6 +4939,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -4947,6 +4974,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -5113,7 +5141,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -5320,6 +5349,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -5344,6 +5374,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -5548,7 +5579,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f4952.line4a": {
@@ -5740,6 +5772,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -5764,6 +5797,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -6172,6 +6206,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -6196,6 +6231,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -6335,7 +6371,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f4952.line4a": {
@@ -6520,6 +6557,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -6544,6 +6582,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -6673,7 +6712,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f4952.line4a": {
@@ -6832,6 +6872,7 @@
         "scope.noncitizen": true,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -7224,6 +7265,7 @@
         "sb.ordinary_dividends": 25803900,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -7337,7 +7379,8 @@
         "dependent[dep_a].own_money": false,
         "dependent[dep_a].citizen_ssn": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8960.line1": {
@@ -7497,7 +7540,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -7712,6 +7754,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -7736,6 +7779,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -8158,7 +8202,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {}
     },
@@ -8226,7 +8271,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -8441,6 +8485,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -8465,6 +8510,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -9013,7 +9059,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -9228,6 +9273,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -9252,6 +9298,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -9674,7 +9721,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "sd.line4": {
@@ -9783,7 +9831,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -9997,6 +10044,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -10021,6 +10069,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -10393,7 +10442,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "sd.line10.d": {
@@ -10521,7 +10571,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": true,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -10736,6 +10785,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -10760,6 +10810,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -10999,7 +11050,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "sd.line4": {
@@ -11107,7 +11159,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -11322,6 +11373,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -11346,6 +11398,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -11768,7 +11821,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "u1250.line10": {
@@ -11864,7 +11918,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -12079,6 +12132,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -12103,6 +12157,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -12392,7 +12447,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "u1250.line10": {
@@ -12488,7 +12544,6 @@
         "f2441.care": false,
         "f2441.student": true,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -12702,6 +12757,7 @@
         "sb.territory_any": false,
         "sb.form8938": true,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -12726,6 +12782,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -13010,7 +13067,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {}
     },
@@ -13069,7 +13127,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -13283,6 +13340,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -13307,6 +13365,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -13711,7 +13770,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "clcw.line1": {
@@ -13822,7 +13882,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -14036,6 +14095,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -14060,6 +14120,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -14302,7 +14363,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "clcw.line1": {
@@ -14414,7 +14476,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -14629,6 +14690,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -14653,6 +14715,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -15164,7 +15227,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "clcw.line1": {
@@ -15257,7 +15321,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -15472,6 +15535,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -15496,6 +15560,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -15918,7 +15983,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "clcw_next_year.line1": {
@@ -15996,7 +16062,6 @@
         "f2441.care": false,
         "f2441.student": true,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -16210,6 +16275,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -16234,6 +16300,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -16414,7 +16481,8 @@
         "household.mfs_living": "apart_last6",
         "f8962.mfs_exception": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {}
     },
@@ -16473,7 +16541,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -16688,6 +16755,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -16712,6 +16780,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -16891,7 +16960,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "clcw_next_year.line1": {
@@ -17071,6 +17141,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -17242,7 +17313,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "dependent[dep_a].dc_line2d": {
@@ -17599,6 +17671,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -17633,6 +17706,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -17845,7 +17919,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "dependent[dep_a].dc_line2c": {
@@ -17956,6 +18031,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -17990,6 +18066,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -18177,7 +18254,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "dependent[dep_a].dc_line2c": {
@@ -18292,6 +18370,7 @@
         "sb.ordinary_dividends": 1997400,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -18472,7 +18551,8 @@
         "person[taxpayer].f8889[hsa].ira_prior": false,
         "person[taxpayer].f8889[hsa].testing_prior": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s2.line1a": {
@@ -18638,6 +18718,7 @@
         "sb.ordinary_dividends": 0,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -18748,7 +18829,8 @@
         "dependent[dep_a].parents_apart": false,
         "dependent[dep_a].citizen_ssn": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s2.line1a": {
@@ -18932,6 +19014,7 @@
         "sb.ordinary_dividends": 2090800,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -19178,7 +19261,8 @@
         "dependent[dep_a].citizen_ssn": true,
         "dependent[dep_a].supported_view": "under_half",
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s2.line1a": {
@@ -19340,6 +19424,7 @@
         "sb.ordinary_dividends": 4267900,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -19708,6 +19793,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -19740,7 +19826,8 @@
         "ssb.any": false,
         "household.cp_retirement": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s2.line1a": {
@@ -19888,6 +19975,7 @@
         "sa.line11": 239900,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -20188,6 +20276,7 @@
         "sb.ordinary_dividends": 4130200,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -20297,7 +20386,8 @@
         "person[taxpayer].f8889[hsa].ira_prior": false,
         "person[taxpayer].f8889[hsa].testing_prior": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s2.line1a": {
@@ -20501,6 +20591,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -20533,7 +20624,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s2.line1a": {
@@ -20819,6 +20911,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -21060,6 +21153,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -21084,6 +21178,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -21289,7 +21384,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s3.line1": {
@@ -21487,6 +21583,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -21511,6 +21608,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -21676,7 +21774,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s3.line1": {
@@ -21888,6 +21987,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -21912,6 +22012,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -22059,7 +22160,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {}
     },
@@ -22219,6 +22321,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -22243,6 +22346,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -22464,7 +22568,8 @@
         "household.home_cost": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s3.line1": {
@@ -22554,7 +22659,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -22790,6 +22894,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -22814,6 +22919,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -23572,6 +23678,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -23596,6 +23703,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -23760,7 +23868,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8962.line1": {
@@ -24000,6 +24109,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -24024,6 +24134,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -24337,7 +24448,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8962.line1": {
@@ -24846,6 +24958,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -24870,6 +24983,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -25052,7 +25166,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8962.line1": {
@@ -25275,6 +25390,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -25299,6 +25415,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -25618,7 +25735,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8962.line1": {
@@ -25881,6 +25999,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -25905,6 +26024,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -26101,7 +26221,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8962.line1": {
@@ -26309,6 +26430,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -26343,6 +26465,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -26658,7 +26781,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].employers": {
@@ -26838,6 +26962,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -26862,6 +26987,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -27222,7 +27348,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8880.line1a": {
@@ -27386,6 +27513,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -27410,6 +27538,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -27760,6 +27889,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -27841,6 +27971,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -28252,6 +28383,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -28276,6 +28408,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -28446,7 +28579,8 @@
         "household.home_cost": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8880.line1a": {
@@ -28600,6 +28734,7 @@
         "sa.line11": 1511900,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -28740,7 +28875,8 @@
         "dependent[dep_c].own_money": false,
         "dependent[dep_c].citizen_ssn": true,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f1040.line1a": {
@@ -29080,6 +29216,7 @@
         "sb.ordinary_dividends": 1720100,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -29209,7 +29346,8 @@
         "person[taxpayer].f8889[hsa].ira_prior": false,
         "person[taxpayer].f8889[hsa].testing_prior": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f1040.line1a": {
@@ -29574,6 +29712,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -29606,7 +29745,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f1040.line1a": {
@@ -29937,6 +30077,7 @@
         "sa.line11": 0,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -30084,7 +30225,8 @@
         "dependent[dep_c].citizen_ssn": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
-        "household.cp_retirement": false
+        "household.cp_retirement": false,
+        "household.rdp": false
       },
       "expect": {
         "f1040.line1a": {
@@ -30499,6 +30641,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -30532,7 +30675,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f1040.line1a": {
@@ -30960,6 +31104,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -31350,6 +31495,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -31383,7 +31529,8 @@
         "household.cp_retirement": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
-        "sa.mfs_joint_paid": false
+        "sa.mfs_joint_paid": false,
+        "household.rdp": false
       },
       "expect": {
         "f1040.line1a": {
@@ -31759,6 +31906,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -31783,6 +31931,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -32143,7 +32292,8 @@
         "s2.amt_business": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s8812.line1": {
@@ -32401,6 +32551,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -32425,6 +32576,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -32594,7 +32746,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s8812.line1": {
@@ -32688,6 +32841,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -32771,6 +32925,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -32982,7 +33137,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s8812.line1": {
@@ -33324,6 +33480,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -33348,6 +33505,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -33549,7 +33707,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s8812.line1": {
@@ -33797,6 +33956,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -33821,6 +33981,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -34026,7 +34187,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -34329,6 +34491,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -34353,6 +34516,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -34578,7 +34742,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line5b": {
@@ -34685,6 +34850,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -34768,6 +34934,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -35130,6 +35297,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -35215,6 +35383,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -35429,7 +35598,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -35531,6 +35701,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -35616,6 +35787,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -35780,7 +35952,8 @@
         "f1040.digital_assets": false,
         "f5695.reconstruct_later": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -35910,6 +36083,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -35995,6 +36169,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -36162,7 +36337,8 @@
         "f1040.digital_assets": false,
         "f5695.reconstruct_later": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -36449,6 +36625,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -36473,6 +36650,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -36671,7 +36849,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -36926,6 +37105,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -36950,6 +37130,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -37150,7 +37331,8 @@
         "f1040.tax_exempt_interest": 0,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -37389,6 +37571,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -37413,6 +37596,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -37562,7 +37746,8 @@
         "f1040.digital_assets": false,
         "f5695.reconstruct_later": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -37688,6 +37873,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -37773,6 +37959,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -37936,7 +38123,8 @@
         "f1040.digital_assets": false,
         "f5695.reconstruct_later": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -38066,6 +38254,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -38151,6 +38340,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -38314,7 +38504,8 @@
         "f1040.digital_assets": false,
         "f5695.reconstruct_later": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -38440,6 +38631,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -38525,6 +38717,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -38690,7 +38883,8 @@
         "f1040.digital_assets": false,
         "f5695.reconstruct_later": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -38824,6 +39018,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -38909,6 +39104,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -39066,7 +39262,8 @@
         "f1040.tax_exempt_interest": 0,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -39173,6 +39370,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -39256,6 +39454,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -39549,6 +39748,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -39634,6 +39834,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -39794,7 +39995,8 @@
         "f1040.tax_exempt_interest": 0,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line13": {
@@ -39884,6 +40086,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -39969,6 +40172,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -40133,7 +40337,8 @@
         "f1040.digital_assets": false,
         "f5695.reconstruct_later": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -40263,6 +40468,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -40348,6 +40554,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -40512,7 +40719,8 @@
         "f1040.digital_assets": false,
         "f5695.reconstruct_later": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -40638,6 +40846,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -40723,6 +40932,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -40890,7 +41100,8 @@
         "f1040.digital_assets": false,
         "f5695.reconstruct_later": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f5695.line6a": {
@@ -41156,6 +41367,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -41180,6 +41392,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -41345,7 +41558,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8863.line1": {
@@ -41562,6 +41776,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -41586,6 +41801,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -41774,7 +41990,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8863.line1": {
@@ -41970,6 +42187,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "sb.ordinary_dividends": 0,
         "sb.bond_special": false,
         "sb.bonds_any": false,
@@ -41984,6 +42202,7 @@
         "scope.business_before": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -42055,7 +42274,8 @@
         "f1040.tax_exempt_interest": 0,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8863.line1": {
@@ -42273,6 +42493,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -42297,6 +42518,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -42534,7 +42756,8 @@
         "household.home_cost": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "f8863.line1": {
@@ -42693,7 +42916,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": true,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -42926,6 +43148,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -42950,6 +43173,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -43328,7 +43552,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "dependent[dep_a]|inst:aqee#{\"adj\":\"dependent.edu_adj\",\"inst\":\"dependent.edu_inst\",\"mat\":\"dependent.edu_mat\"}.line27": {
@@ -43399,6 +43624,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "f1040.line3a": 0,
         "div.box2b": 0,
         "div.box2c": 0,
@@ -43493,6 +43719,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -43752,7 +43979,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "dependent[k0]|inst:aqee#{\"adj\":\"dependent.edu_adj\",\"inst\":\"dependent.edu_inst\",\"mat\":\"dependent.edu_mat\"}.line27": {
@@ -43823,7 +44051,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -44059,6 +44286,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -44083,6 +44311,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -44536,7 +44765,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -44772,6 +45000,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -44796,6 +45025,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -45266,7 +45496,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -45501,6 +45730,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -45525,6 +45755,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -46183,7 +46414,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": true,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -46418,6 +46648,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -46442,6 +46673,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -46880,7 +47112,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -47116,6 +47347,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -47140,6 +47372,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -47509,7 +47742,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -47744,6 +47976,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -47768,6 +48001,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -48209,7 +48443,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -48445,6 +48678,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -48469,6 +48703,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -48769,7 +49004,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -49005,6 +49239,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -49029,6 +49264,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -49540,7 +49776,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -49773,6 +50008,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -49797,6 +50033,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -50308,7 +50545,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].retirement[r1].smw1": {
@@ -50398,7 +50636,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -50631,6 +50868,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -50655,6 +50893,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -51033,7 +51272,8 @@
         "household.mfs_living": "apart_last6",
         "f8962.mfs_exception": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].retirement[r2].smw1": {
@@ -51124,7 +51364,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -51357,6 +51596,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -51381,6 +51621,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -51760,7 +52001,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].retirement[r1].smw1": {
@@ -51850,7 +52092,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -52084,6 +52325,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -52108,6 +52350,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -52591,7 +52834,8 @@
         "household.mfs_living": "apart_last6",
         "f8962.mfs_exception": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].retirement[r1].smw1": {
@@ -52682,7 +52926,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -52915,6 +53158,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -52939,6 +53183,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -53266,7 +53511,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].retirement[r1].smw1": {
@@ -53357,7 +53603,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -53591,6 +53836,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -53615,6 +53861,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -53979,7 +54226,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -54212,6 +54458,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -54236,6 +54483,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -54484,7 +54732,8 @@
         "f1040.digital_assets": false,
         "person[taxpayer].retirement[r1].after59": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].f5329[form].l1": {
@@ -54563,7 +54812,6 @@
         "f2441.care": false,
         "f2441.student": false,
         "f2441.unable": false,
-        "f2441.spouse_died": false,
         "f2441.care_other": false,
         "f2441.nondependent": false,
         "f2441.prior_year": false,
@@ -54796,6 +55044,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
         "scope.unearned_2700": false,
@@ -54820,6 +55069,7 @@
         "scope.nol": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -55160,7 +55410,8 @@
         "sd.qof": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].f5329[form].l1": {
@@ -55320,6 +55571,7 @@
         "sb.ordinary_dividends": 2655600,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -55783,6 +56035,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -55815,7 +56068,8 @@
         "ssb.any": false,
         "household.cp_retirement": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -56061,6 +56315,7 @@
         "sb.ordinary_dividends": 0,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -56199,7 +56454,8 @@
         "dependent[dep_a].citizen_ssn": false,
         "dependent[dep_a].supported_view": "unsure",
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -56437,6 +56693,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -56469,7 +56726,8 @@
         "ssb.any": false,
         "household.cp_retirement": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -56712,6 +56970,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -56744,7 +57003,8 @@
         "ssb.any": false,
         "household.cp_retirement": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -56998,6 +57258,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -57030,7 +57291,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -57249,6 +57511,7 @@
         "scope.noncitizen": true,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -57701,6 +57964,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -57733,7 +57997,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "sa.line1_if_medical": {
@@ -57933,6 +58198,7 @@
         "sb.fbar_required": false,
         "sb.form8938": false,
         "sb.line8": false,
+        "sb.trust_owner": false,
         "sb.form5471": false,
         "scope.noncitizen": false,
         "scope.armed_forces": false,
@@ -57968,6 +58234,7 @@
         "s3.repaid_income": false,
         "scope.nonresident": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.reservist_repaid": false,
         "scope.adoption_benefits": false,
@@ -58143,7 +58410,8 @@
         "f8962.mfs_exception": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "dependent[dep_a].dc_line2d": {
@@ -58384,6 +58652,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -58415,7 +58684,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].sc[d].asset[cam].period": {
@@ -58564,6 +58834,7 @@
         "scope.attorney_fees": false,
         "scope.nol": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.pay_no_w2": false,
         "scope.medicaid_waiver": false,
@@ -58756,7 +59027,8 @@
         "f1040.withheld_other_any": false,
         "f1040.digital_assets": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].sc[biz_a].asset[item_1].period": {
@@ -58967,6 +59239,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -58998,7 +59271,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].sc[desk].asset[pc].period": {
@@ -59192,6 +59466,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -59221,7 +59496,10 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1s[acme].fiscal": false,
+        "person[taxpayer].k1s[acme].credit_carry": false
       },
       "expect": {
         "person[taxpayer].k1s[acme].col_k": {
@@ -59391,6 +59669,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -59420,7 +59699,11 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1s[acme].fiscal": false,
+        "person[taxpayer].k1s[acme].credit_carry": false,
+        "person[taxpayer].k1s[acme].prior_any": false
       },
       "expect": {
         "person[taxpayer].k1s[acme].col_k": {
@@ -59598,6 +59881,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -59627,7 +59911,11 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1s[acme].fiscal": false,
+        "person[taxpayer].k1s[acme].credit_carry": false,
+        "person[taxpayer].k1s[acme].prior_any": false
       },
       "expect": {
         "person[taxpayer].k1s[acme].col_k": {
@@ -59810,6 +60098,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -59839,7 +60128,10 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1s[acme].fiscal": false,
+        "person[taxpayer].k1s[acme].credit_carry": false
       },
       "expect": {
         "person[taxpayer].k1s[acme].col_k": {
@@ -60012,6 +60304,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -60041,7 +60334,11 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1s[acme].fiscal": false,
+        "person[taxpayer].k1s[acme].credit_carry": false,
+        "person[taxpayer].k1s[acme].prior_any": false
       },
       "expect": {
         "person[taxpayer].k1s[acme].col_k": {
@@ -60210,6 +60507,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -60239,7 +60537,10 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1s[acme].fiscal": false,
+        "person[taxpayer].k1s[acme].credit_carry": false
       },
       "expect": {
         "person[taxpayer].k1s[acme].col_k": {
@@ -60405,6 +60706,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -60434,7 +60736,11 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1s[acme].fiscal": false,
+        "person[taxpayer].k1s[acme].credit_carry": false,
+        "person[taxpayer].k1s[acme].prior_any": false
       },
       "expect": {
         "person[taxpayer].k1s[acme].col_k": {
@@ -60602,6 +60908,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -60631,7 +60938,10 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1s[acme].fiscal": false,
+        "person[taxpayer].k1s[acme].credit_carry": false
       },
       "expect": {
         "person[taxpayer].k1s[acme].col_k": {
@@ -60801,6 +61111,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -60830,7 +61141,11 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1s[acme].fiscal": false,
+        "person[taxpayer].k1s[acme].credit_carry": false,
+        "person[taxpayer].k1s[acme].prior_any": false
       },
       "expect": {
         "person[taxpayer].k1s[acme].col_k": {
@@ -61041,6 +61356,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -61082,6 +61398,7 @@
         "f8582.prior_crd": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false,
@@ -61350,6 +61667,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -61383,6 +61701,7 @@
         "ssb.any": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false
@@ -61554,6 +61873,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -61591,6 +61911,7 @@
         "f8582.prior_crd": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false
@@ -61846,6 +62167,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -61883,6 +62205,7 @@
         "household.cp_retirement": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false
@@ -62098,6 +62421,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -62131,6 +62455,7 @@
         "ssb.any": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "royalty[r].at_risk_prior": false,
         "royalty[s].at_risk_prior": false
       },
@@ -62349,6 +62674,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -62382,6 +62708,7 @@
         "ssb.any": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false,
@@ -62604,6 +62931,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -62645,6 +62973,7 @@
         "f8582.prior_crd": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false,
@@ -63059,6 +63388,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -63096,6 +63426,7 @@
         "household.cp_retirement": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false
@@ -63376,6 +63707,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -63413,6 +63745,7 @@
         "f8582.prior_crd": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false
@@ -63670,6 +64003,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -63699,7 +64033,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].k1p[fund].b1_net_income": {
@@ -63916,6 +64251,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -63945,7 +64281,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].k1p[llc].b1_net_income": {
@@ -64155,6 +64492,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -64184,7 +64522,9 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1p[fund].prior_any": false
       },
       "expect": {
         "person[taxpayer].k1p[fund].b1_net_income": {
@@ -64402,6 +64742,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -64431,7 +64772,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].k1p[fund].b1_net_income": {
@@ -64645,6 +64987,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -64674,7 +65017,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].k1p[llc].b1_net_income": {
@@ -64884,6 +65228,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -64913,7 +65258,9 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false,
+        "person[taxpayer].k1p[fund].prior_any": false
       },
       "expect": {
         "person[taxpayer].k1p[fund].b1_net_income": {
@@ -65131,6 +65478,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -65160,7 +65508,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].k1p[llc].b1_net_income": {
@@ -65373,6 +65722,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -65402,7 +65752,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].k1p[fund].b1_net_income": {
@@ -65619,6 +65970,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -65648,7 +66000,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].k1p[llc].b1_net_income": {
@@ -65863,6 +66216,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -65892,7 +66246,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "person[taxpayer].k1p[fund].b1_net_income": {
@@ -66203,6 +66558,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -66243,6 +66599,7 @@
         "rental[b].rprop[d].short_class": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false,
@@ -66459,6 +66816,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -66500,6 +66858,7 @@
         "f8582.prior_crd": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false,
@@ -66685,6 +67044,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -66718,6 +67078,7 @@
         "ssb.any": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false
@@ -66901,6 +67262,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -66933,7 +67295,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line7_box": {
@@ -67091,6 +67454,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -67123,7 +67487,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line1": {
@@ -67405,6 +67770,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -67436,7 +67802,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line7_box": {
@@ -67603,6 +67970,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -67635,7 +68003,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line7_box": {
@@ -67794,6 +68163,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -67826,7 +68196,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line7": {
@@ -67982,6 +68353,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -68014,7 +68386,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line7_box": {
@@ -68182,6 +68555,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -68214,7 +68588,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line7_box": {
@@ -68408,6 +68783,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -68439,7 +68815,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line1": {
@@ -68700,6 +69077,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -68732,7 +69110,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line1": {
@@ -69042,6 +69421,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -69353,6 +69733,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -69385,7 +69766,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line1": {
@@ -69609,6 +69991,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -69641,7 +70024,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line1": {
@@ -69931,6 +70315,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -69962,7 +70347,8 @@
         "sd.carryover": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line1": {
@@ -70290,6 +70676,7 @@
         "sche.accrual": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -70327,6 +70714,7 @@
         "rental[a].mortgage_excess": false,
         "scope.trade_act_repaid": false,
         "scope.remic": false,
+        "household.rdp": false,
         "rental[a].at_risk_prior": false,
         "rental[a].business_credit": false,
         "rental[a].prerental": false
@@ -70483,6 +70871,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -70515,7 +70904,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line1": {
@@ -70797,6 +71187,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -70829,7 +71220,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line7_box": {
@@ -70982,6 +71374,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -71014,7 +71407,8 @@
         "sli.any": false,
         "ssb.any": false,
         "scope.trade_act_repaid": false,
-        "scope.remic": false
+        "scope.remic": false,
+        "household.rdp": false
       },
       "expect": {
         "s1.line1": {

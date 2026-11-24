@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
  "head_rows": {
-  "match / mismatch / unclear / missing": "159 / 9 / 0 / 0",
-  "line-scoped reviews": "13 (latest 2026-11-23); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "160 / 8 / 0 / 0",
+  "line-scoped reviews": "13 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,9 +22,9 @@
   },
   {
    "key": "1",
-   "record": "944bf5198f257050f05f974676384b9f06312e7b1ea07de1b5b048b01b975298",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "c5085c88c0a6e2dad5d7f5904bbd9b4e8115c5300316b9814430111e8f2be733"
+   "subject_key": "be8afcd232f989f248de970d028829e9c8cb0ca8578fba6372a2a95d1b18b841"
   },
   {
    "key": "2",
@@ -121,9 +121,9 @@
   },
   {
    "key": "17",
-   "record": "944bf5198f257050f05f974676384b9f06312e7b1ea07de1b5b048b01b975298",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "f238a86daf31dfd309df9cfeb57b0ea1faffb6fbbf4a488e5d5f06cde2e40340"
+   "subject_key": "afbb8a38f9db7d2a9a830c4f50827cbe695869520ed04fbd59bfa9c72da044fa"
   },
   {
    "key": "18",
@@ -163,9 +163,9 @@
   },
   {
    "key": "23",
-   "record": "5d4660767d401b25b8adfe58bc7f6ec0a13bebabde775aa819f8627ff96a16d5",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "26f6d2ec568653c1274f7364d032e3c9ae101f8b03b52cee9b6127fd9d2f34c6"
+   "subject_key": "7d1b4bd37b9852dc877fe5038e475969a3b663c65287857e3e043e97c2b3188f"
   },
   {
    "key": "24",
@@ -175,9 +175,9 @@
   },
   {
    "key": "25",
-   "record": "70ef3ceb6e8328cb4f6666aa516d39289d1ad86e19b76b02f48938c1d3e01ba2",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "f26bec7f1c37efcbcd68d8d264990d05424f069fda9f4618ac8b6d5894b9d6e7"
+   "subject_key": "59942c8900d0ea49549a39764db3fbfcba35c4d8bcd7dd2b0267d229c4d84f9e"
   },
   {
    "key": "26",
@@ -212,15 +212,15 @@
   },
   {
    "key": "31",
-   "record": "5d4660767d401b25b8adfe58bc7f6ec0a13bebabde775aa819f8627ff96a16d5",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "77d54199231552b4e790933ed81f5389b13053df934ac762e88214ee6c124cff"
+   "subject_key": "c81acfea4b9310cce60692b081576bb44aaaf62a8b6ad48d8d24065a0dd991a3"
   },
   {
    "key": "32",
-   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "fe58d7764c8f995ee5e71ef7c0e693cd809a8d65e9dacb06cc9595de2e4c18d8"
+   "subject_key": "68960d25ac219dcfc3480fad4851bbfd264c6acff29de2b041da63943e12bbc6"
   },
   {
    "key": "33",
@@ -531,21 +531,21 @@
   },
   {
    "key": "(40)",
-   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "4924b026b427f566a4802588477135688188d507b26e5044f6f7bb7f2af600fc"
+   "subject_key": "68a11fa6a3ac1c3419af8bbd919294507f25b118967a73c9f05f34667de134ba"
   },
   {
    "key": "(48)",
-   "record": "69f10d80ddc3d819cbb99d3d328d6267a4d33d622d83fb31a20c4318a52e9116",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "02507a25ce3751f8c85909b5ae60b15fcf333860ccc74874338160bd2e6824ec"
+   "subject_key": "098b85fb29275367224e434662ef932d9cc7b47fafa78f576061ce39b8431324"
   },
   {
    "key": "40",
-   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "de422e171942c1418774c84244b0574538ac09bceba3773bb3e96637d557f066"
+   "subject_key": "f6c113683fcb84a910440d38c37ca273215179c2f1bdcbea472a4d2d4b15481b"
   },
   {
    "key": "41",
@@ -561,9 +561,9 @@
   },
   {
    "key": "43",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "3bedde380bcc5bf2109a0ec696f355d682ed54e0c569596913de4055ac8bda1c"
+   "subject_key": "0e21f482e4476c4be29ce3ff603492ecc6d7d07f9a11c6c0a67252fb4814c53f"
   },
   {
    "key": "44",
@@ -609,16 +609,15 @@
   },
   {
    "key": "48",
-   "record": "e83d67e6447156fa4505ddf9edec4862dcd9f50c07b1f6a8ffe1342bdff6ed6a",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; a joint return on which only one spouse was a New York City resident all year is refused at line 1 by ny_it201.gate.spouse_nonresident (ny_it201.ask.spouse_resident), and every other non-resident case by gate.part_year_city and gate.part_year_state, so line 48 is reached only for full-year City residents (IT-201-I, Line 48, 'NYC residents only').",
-   "subject_key": "653eb074b342e5044ab29d0870442f6834877fbf19c47b7319ae6ce7c15274ce"
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
+   "status": "MATCH",
+   "subject_key": "7ee56fe471abcb98aa96b3c6d344ab93fd14155a010cc8b4546b18d8e6494b61"
   },
   {
    "key": "49",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "ef30f11a23f321fcf89ea8971084866bc46d5b50ab752050a18419f5ba2a8f39"
+   "subject_key": "db4837a69e8f3bb6cff5b92101daa640dc15bb4614d15a4febff463d4f5ad122"
   },
   {
    "key": "50",
@@ -913,15 +912,15 @@
   },
   {
    "key": "72",
-   "record": "e111646ae185fe84874eb5e3d4cc65b441333a6b8498e6018a3fa9dd6d362bdd",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "747ce9b4c1188aa420977e7ea16341c1302acb0445d7347bd3bb6bc2e7711d44"
+   "subject_key": "b6a1d2e1e88e6aef7b16414dce34409a57a48c21bd62d0786acde6c657b6e9a9"
   },
   {
    "key": "73",
-   "record": "e111646ae185fe84874eb5e3d4cc65b441333a6b8498e6018a3fa9dd6d362bdd",
+   "record": "c5a12147f7229905507352fa2c77dffa864fad3765d3dfad7910d7aac691de24",
    "status": "MATCH",
-   "subject_key": "20184ffab75ba63dee17b1c6784297c6252d5009bb162be670cb3c93e04e01ca"
+   "subject_key": "a91fc4c0bdaf18daa1626e58eb31682eacd1b8d1fd7ef3aa8b21324f742255bc"
   },
   {
    "key": "74",
@@ -1029,7 +1028,7 @@
  "subjects": {
   "C": "5a5c945c24f437b06b84e0310ff52e9bcf017d0a9aa92b57a82b4273643e745e",
   "H (count)": "0c8c87a494445eedac6b11398976eaa3cc695158ad2d7d62ac07fde93f319b62",
-  "1": "e36f02efaf5cfbbaf153a28dc20085ca562fd2aedd23498271e7ad482d0f86cd",
+  "1": "61e24fdc8dbb6de3a1c8f3e02e080b13672dbdd6155f644d478d7fc013a6d907",
   "2": "41a22296c262da3dae545c48ee34e0f1f178cb656d50b89b46b262cac4e8812b",
   "3": "ec9f1eece2ab7d441953cd351e87aea12bb92fc22ece65ed1f45d255fdff67fe",
   "4": "e1d3337da945c87972767038058bedf0ab6eef7a7fc10340c3622f29f03e99ff",
@@ -1045,23 +1044,23 @@
   "14": "f2e176edc8c5592ca3ca6e1917bb32bb9bb18c62297265e75d27fda732d7f271",
   "15": "6968d1daf494ca8e847660489861948862d0563ece3c7bd8f78c0ec38e50357d",
   "16": "4879f5d4641ca8a93f394cec8939fc80fa2e91beb132f6cd83c33c4317e0fcac",
-  "17": "b64c6835cc91ec0878e6f4b55f9c7e60063904dc53df4e071422ecaf719176e0",
+  "17": "dcee9129223528877b2e5828836d9571c9161953c61dd6e921ad1244fa8da393",
   "18": "68c2887413c1d5fabba2464c31aca95b30c51525af6b38f3ee0dfd0316c83a24",
   "19": "4b211863b6b26987c76bccb8572b099220f62051b162eb66f25694f92586b578",
   "(check)": "bdcc138f05b5f6b980d2cffdddaf1363ace1ab745c3c12d1ad59ab394b49d028",
   "20": "dc06870eaafc93226819af71fc84c6dd78ca58a05ddf5ec8db7818baf68a6574",
   "21": "f01a36bdb31465e9a137d0f9623fdb1e39ebf9a9ffe3683a77dd6990e57e1a71",
   "22": "ea9d668f7c04d9f4b31c034178eb7993ef0b42d94e1ca479060acda45da16549",
-  "23": "a1f6ad3f5d7fab3f109596a2b7684aaaa8101e214dcc107a17eced618413c219",
+  "23": "5dd13f297e72ffc1e3eb1462266b42f38af9ffa39a56faec3ec3a5304373098f",
   "24": "f7a0263f2a30f359e60c1bfc9e59a19812c52e9ee918d8de85e0a448949be548",
-  "25": "99cd040d7a0677c6e4d12e3736600093ed000b1ccefd70f6bb3ad25319c6c76c",
+  "25": "fcf31b80196c03cce0aa62995c859eb87fef03a7a577abe7f1abb1ba7e488ce5",
   "26": "2b49ddb28b5f71d87b436e32ea2bf4aea9e1d88f2118258ae923dd4baf4951e2",
   "27": "ef46a52e6b14e33021b324fe149004c417bc54ee7800843188ba1fc4fba78e36",
   "28": "cd1497e374ccd23df6b6751daacfeef278ea9507593abce5e9d8fd26b835f3bc",
   "29": "a71c1d7c0df37512eda2d2e47decf614f5de51a2cec409d8f4696324592ed882",
   "30": "c6a12a400b0137fc6bb2fd148c65803ce4c963a6ea008b4538e96e5137823552",
-  "31": "4bf0516ede760f6a0f243574b1e861b9c69e4e3fe262df916d4859be287e90c7",
-  "32": "a33b2904d54a52278bd14eaf408184a61411dd2e101c201816cf2add3ef9665c",
+  "31": "3d466a58230a9778f3ec4f052ca8cee1bc7b4e4010471fd29c31fd0987579cfb",
+  "32": "81174bd246e892c63982125172a375441c84fa8bfc5f898a11a252e729ed242b",
   "33": "7b96b7c994a8e9a524d0193eb82a7a320ca68169b98c81a7b8f3f5cf2cfaf050",
   "(table) (ny_it201.std_deduction)": "0e8766c3c819e055d3d598b209b3e55c2835cd45cf104996847a451f3ecd7c3b",
   "(table) (ny_it201.std_deduction_dependent)": "0fcde989e3b289b6a1609ebb5c9889f90e37528033509cc51d2e0c05e7da9310",
@@ -1113,12 +1112,12 @@
   "(table 5)": "6c3e73bf37007dcde1f39ee96a559290a2f63947e359cce7876e46e142aaf363",
   "(table 1)": "148b4499fd3728f81ff374338dbfdd86035beffb6ab3205ace66b04f5c86dc4d",
   "(table 4)": "3bada7525cd785b2bc159137d40feb4a1d7e118d0bce8c44b5023bfe8e5edf6d",
-  "(40)": "5b7b0c67337989723dbdc71cc86b9847b5ed126547cbde9341d020162b85c8bc",
-  "(48)": "be511286c5c784fd8d72020f389fccbbb129504aed32cb20b32446ec3aac31cc",
-  "40": "6508000bf9198c8092f49829d36187b98758ed1c4c8f42bd5694686fceed2e97",
+  "(40)": "a63d5bfdb868ebaffff120df05aad3f8c89c1a6cbc799a4d230b6f58b05676b2",
+  "(48)": "f30173bedb365dc7519984c23c7dca2be14ec1f02df6406e88341a6066fe0bf3",
+  "40": "763eb9adcb585f9321b59f1ca5d9dcb7e144ed103cdc274299fc3a8418732520",
   "41": "185247ce6f2ec8c2451df0e33eed2cf73dbe399cf3d1515151f0372fa8040793",
   "42": "38e7e54fbb206e02ea396710bf968ace785c38da186476e2966f9dfa145165a6",
-  "43": "0ce88c0c67a3d1a4c17d47409bdb3950bae1670b9c7809c9044bf8a22d001994",
+  "43": "84756c40cc58067cbdf359fcf447531ec1df8eff6e557d8efac222fd7ec8e726",
   "44": "3cd7a1684f99ef0f7b695ee4ef8035b18d064b2baec6f51ddfcd4495b1b6b0b3",
   "45": "39a3d1c84a7b71559e740f2eed93c7e585debbd59b110685dd4abfc92ded8767",
   "46": "3a4b70ebaa11c78e77a31aa2289cbde65f222bd14dda945373f8def7d7c3ef1f",
@@ -1126,8 +1125,8 @@
   "(47a) (ny_it201.city_tax_table)": "a7fa356eefc0bcfdec2a0c5004f0c51b39bd516823e6749b0e748546dc612c80",
   "(47a) (ny_it201.city_tax_schedule)": "f307de98fbb6466a67c1e78bb7fe74deb1c590cd502323d04626dd2591d234cf",
   "47a": "05e571c7eda86eea3ee225d8e9917433078f45ba8b9e0789163160f85dbceb24",
-  "48": "431eef21d18425f5db0d8a5faf577ec2dacddab75cf3447ea8658af6bf0f3255",
-  "49": "8eeb7186e42775f3ec6e0cff74306a2a6a677e6cbbbaf6925fad91c0d8879ff3",
+  "48": "ffc8bb7b9e297d2f902f5d6a1bacc6ca571d7212539c56e143e2503beec3aa4a",
+  "49": "19a6ee429058b6fdc85344fc0a07be9f2f971e908f7fc45e8b1ba69330dbbe3c",
   "50": "459b49222e30a4359e91a309b6f34d09333434b80aa65f4551682fbb70343c9c",
   "51": "8b1fd4bb72bfb5c2d5a4502acb07bd37eea75f6065a8179aba83d0b42e18b01c",
   "52": "7690406c9c23247e330709f2bf007a36a5eacf7431410f2da6d6535a0e50ebc4",
@@ -1176,8 +1175,8 @@
   "70": "c1b77882bfa478597244335ac2467c270683611a99bd0edc816291b96e9130cb",
   "70a": "4a41a57446c3c192b3e44a902a5cf74e44f6250191de741ef8c16ef21e76cee1",
   "71": "2ad8ca4d4503d4801c04677fcd31020bd46fafb81af8441cb7093d5c6f99d010",
-  "72": "057dfba7d5dfe7d6627bac7666ff8797b8ed356c6c6dac9015c8d6f2df249fa7",
-  "73": "1b9dc4473c2d6bcdb5a987d6246afdaef52c1fba5541847ae6da59ee03ea7c54",
+  "72": "6d1521c53b3dc0d5d649a1965f85734ee3e2cd08903ac756350e2e4be1b8dcf6",
+  "73": "c395799fef8beb325238b16f14ea9e5e054083477cb81b31f980140b08522f96",
   "74": "f45d3e3ae95f61d7e71e605f811ebe4c2dfd15ae8508dde2fcd878c224e877f0",
   "75": "f759af11bfcdec969bdbce4de53465efab4abca3261eb5afe412b18dcda43c04",
   "76": "85fa2d08b86da68580c5d734d22bbf515d740c0d74886e6b0cd4c35e35528e0f",

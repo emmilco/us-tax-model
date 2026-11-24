@@ -4,8 +4,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 
 | check | documents | failing |
 | --- | --- | --- |
-| layout vs reading order | 121 | 0 |
-| PDFKit against poppler | 121 | 0 |
+| layout vs reading order | 123 | 0 |
+| PDFKit against poppler | 123 | 0 |
 | PDF vs HTML snapshot | 0 | 0 |
 
 ## Per document
@@ -88,6 +88,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f6198** layout vs reading order: 1 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **f6251** layout vs reading order: 3 pages, identical characters (1 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 1 words poppler reads that PDFKit skips)
 - **f7206** layout vs reading order: 1 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f8283** layout vs reading order: 2 pages, identical characters
@@ -123,6 +125,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **f8995a** layout vs reading order: 3 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **fr-2025-01377** layout vs reading order: 2 pages, identical characters (1 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **fr-2026-18219** layout vs reading order: 31 pages, identical characters (3 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **fw2** layout vs reading order: 11 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (12 such occurrences; 24 words poppler reads that PDFKit skips)

@@ -625,6 +625,18 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), lines 9 and 17, $300,000
+  - id: s1a.joint
+    printed: (helper)
+    label: Married filing jointly
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f1040.status
+      - const: mfj
+    cite:
+      doc: f1040s1a
+      locator: Schedule 1-A (2025), lines 9, 15, 17 and 32, "if married filing jointly"
   - id: s1a.line8_calc
     printed: (helper)
     label: 'Figured: Enter the amount from line 3'
@@ -668,32 +680,14 @@ form:
       - guard:
           op: test
           eq:
-          - f1040.status
-          - const: single
-        then: s1a.base_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: mfj
+          - s1a.joint
+          - const: true
         then: s1a.base_joint
       - guard:
           op: test
           eq:
-          - f1040.status
-          - const: mfs
-        then: s1a.base_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: hoh
-        then: s1a.base_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: qss
+          - s1a.joint
+          - const: false
         then: s1a.base_other
     cite:
       doc: f1040s1a
@@ -1243,32 +1237,14 @@ form:
       - guard:
           op: test
           eq:
-          - f1040.status
-          - const: single
-        then: s1a.ot_max_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: mfj
+          - s1a.joint
+          - const: true
         then: s1a.ot_max_joint
       - guard:
           op: test
           eq:
-          - f1040.status
-          - const: mfs
-        then: s1a.ot_max_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: hoh
-        then: s1a.ot_max_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: qss
+          - s1a.joint
+          - const: false
         then: s1a.ot_max_other
     cite:
       doc: f1040s1a
@@ -1351,32 +1327,14 @@ form:
       - guard:
           op: test
           eq:
-          - f1040.status
-          - const: single
-        then: s1a.base_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: mfj
+          - s1a.joint
+          - const: true
         then: s1a.base_joint
       - guard:
           op: test
           eq:
-          - f1040.status
-          - const: mfs
-        then: s1a.base_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: hoh
-        then: s1a.base_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: qss
+          - s1a.joint
+          - const: false
         then: s1a.base_other
     cite:
       doc: f1040s1a
@@ -2126,32 +2084,14 @@ form:
       - guard:
           op: test
           eq:
-          - f1040.status
-          - const: single
-        then: s1a.senior_base_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: mfj
+          - s1a.joint
+          - const: true
         then: s1a.senior_base_joint
       - guard:
           op: test
           eq:
-          - f1040.status
-          - const: mfs
-        then: s1a.senior_base_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: hoh
-        then: s1a.senior_base_other
-      - guard:
-          op: test
-          eq:
-          - f1040.status
-          - const: qss
+          - s1a.joint
+          - const: false
         then: s1a.senior_base_other
     cite:
       doc: f1040s1a

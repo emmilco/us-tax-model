@@ -14,6 +14,18 @@ proposal:
     status: changed
     value: 1901
     derived: 'moves_with_year: 1 (the from-year value plus 1 a tax year)'
+  age.over59h_all_year:
+    type: Count
+    from_value: 1964
+    status: changed
+    value: 1965
+    derived: 'moves_with_year: 1 (the from-year value plus 1 a tax year)'
+  age.under59h_all_year:
+    type: Count
+    from_value: 1967
+    status: changed
+    value: 1968
+    derived: 'moves_with_year: 1 (the from-year value plus 1 a tax year)'
   age.cut_65:
     type: Count
     from_value: 1961
@@ -136,8 +148,10 @@ proposal:
       qss: 13700000
       mfs: 6850000
     status: not found
-    reason: no printed text at “Single or head of household . . . . . $ 626,350 . . . . . $ 88,100 Married filin” reads the
-      from-year value alone; no 2026 edition of f6251 archived
+    reason: “626,350 then enter on line 5 $ 88,100 . 137,000 . 68,500 } 5” is not printed in the 2026 edition of f6251; “1,252,700
+      married filing separately 626,350 then enter on line 5 $ 88,100 . 137,000 . 68,5” is not printed in the 2026 edition
+      of f6251; no printed text at “Single or head of household . . . . . $ 626,350 . . . . . $ 88,100 Married filin” reads
+      the from-year value alone
   amt.phaseout_start:
     type: Dollars
     from_value:
@@ -266,8 +280,26 @@ proposal:
       mfj: 23910000
       qss: 23910000
       mfs: 11955000
-    status: not found
-    reason: no 2026 edition of f6251 archived
+    status: changed
+    value:
+      single: 24450000
+      hoh: 24450000
+      mfj: 24450000
+      qss: 24450000
+      mfs: 12225000
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: f6251
+      pages:
+      - 2
+      - 3
+      from_text: If line 6 is $239,100 or less ($119,550 or less if married filing separately), multiply line 6 by 26% (0.26).
+      read:
+      - if line 12 is $244,500 or less ($122,250 or less if married filing separately), multiply line 12 by 26% (0.26).
+      - if line 17 is $244,500 or less ($122,250 or less if married filing separately), multiply line 17 by 26% (0.26).
+      draft: true
+    draft: true
   amt.bracket_subtract:
     type: Dollars
     from_value:
@@ -276,22 +308,92 @@ proposal:
       mfj: 478200
       qss: 478200
       mfs: 239100
-    status: not found
-    reason: no 2026 edition of f6251 archived
+    status: changed
+    value:
+      single: 489000
+      hoh: 489000
+      mfj: 489000
+      qss: 489000
+      mfs: 244500
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: f6251
+      pages:
+      - 2
+      from_text: Otherwise, multiply line 6 by 28% (0.28) and subtract $4,782 ($2,391 if married filing separately) from the
+        result.
+      read:
+      - otherwise, multiply line 6 by 28% (0.28) and subtract $4,890 ($2,445 if married filing separately) from the result.
+      draft: true
+    draft: true
   amt.rate_26:
     type: Rate
     from_value:
       num: 26
       den: 100
-    status: not found
-    reason: no 2026 edition of f6251 archived
+    status: unchanged
+    value:
+      num: 26
+      den: 100
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: f6251
+      pages:
+      - 2
+      - 3
+      from_text: married filing separately), multiply line 6 by 26% (0.26). otherwise, multiply
+      read:
+      - married filing separately), multiply line 12 by 26% (0.26). otherwise, multiply
+      - married filing separately), multiply line 17 by 26% (0.26). otherwise, multiply
+      draft: true
+    - how: quote
+      matched: printed once
+      doc: f6251
+      pages:
+      - 2
+      - 3
+      from_text: or less if married filing separately), multiply line 6 by 26% (0.26). otherwise, multiply line 6 by
+      read:
+      - or less if married filing separately), multiply line 12 by 26% (0.26). otherwise, multiply line 12 by
+      - or less if married filing separately), multiply line 17 by 26% (0.26). otherwise, multiply line 17 by
+      draft: true
+    draft: true
   amt.rate_28:
     type: Rate
     from_value:
       num: 28
       den: 100
-    status: not found
-    reason: no 2026 edition of f6251 archived
+    status: unchanged
+    value:
+      num: 28
+      den: 100
+    evidence:
+    - how: quote
+      matched: printed once
+      doc: f6251
+      pages:
+      - 2
+      - 3
+      from_text: 26% (0.26). otherwise, multiply line 6 by 28% (0.28) and subtract $4,782
+      read:
+      - 26% (0.26). otherwise, multiply line 12 by 28% (0.28) and subtract $4,890
+      - 26% (0.26). otherwise, multiply line 17 by 28% (0.28) and subtract $4,890
+      draft: true
+    - how: quote
+      matched: printed once
+      doc: f6251
+      pages:
+      - 2
+      - 3
+      from_text: line 6 by 26% (0.26). otherwise, multiply line 6 by 28% (0.28) and subtract $4,782 ($2,391 if married filing
+        separately)
+      read:
+      - line 12 by 26% (0.26). otherwise, multiply line 12 by 28% (0.28) and subtract $4,890 ($2,445 if married filing separately)
+      - line 17 by 26% (0.26). otherwise, multiply line 17 by 28% (0.28) and subtract $4,890 ($2,445 if married filing separately)
+      draft: true
+    draft: true
   tcw.single.b1.upper:
     type: Dollars
     from_value: 10335000
@@ -3074,6 +3176,21 @@ proposal:
     reason: “1040-sr, expenses line 11b 2 3 multiply line 2 by 7.5% (0.075) 3 4 subtract line 3 from li” is not printed in
       the 2026 edition of f1040sa; “expenses line 11b 2 3 multiply line 2 by 7.5% (0.075) 3 4 subtract line 3 from line 1.
       if ” is not printed in the 2026 edition of f1040sa
+  sa.gift_total_limit_rate:
+    type: Rate
+    from_value:
+      num: 60
+      den: 100
+    status: not found
+    reason: no 2026 edition of p526 archived
+  sa.gift_property_limit_rate:
+    type: Rate
+    from_value:
+      num: 30
+      den: 100
+    status: not found
+    reason: no printed text at “Your noncash contributions of capital gain property to 50% limit organizations i” reads the
+      from-year value alone
   sa.salt_base:
     type: NonNegDollars
     from_value: 4000000
@@ -3513,11 +3630,6 @@ proposal:
     from_value: 12
     status: not found
     reason: the citation quotes no printed figure of the value (a count or a fraction stated in words, a table cell)
-  hsa.no_months:
-    type: Count
-    from_value: 0
-    status: not found
-    reason: not a printed figure (a flag, an enumeration value or a zero)
   hsa.two:
     type: Count
     from_value: 2

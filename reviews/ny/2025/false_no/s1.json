@@ -1,74 +1,54 @@
 {
  "form": "s1",
  "reviews": {
-  "gate:s1.alimony_if_any": {
-   "subject_sha": "480d9d4002e74101f104e1bc6c9d4a395f8e17ebb5dc4f851d91fa72994d66e6",
+  "gate:s1.alimony_any": {
+   "subject_sha": "6d844ad463e4dcaa4830c4a0cfbf58af7fd882023181cfaf6691e350a4f4d0c0",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer with two divorce or separation agreements. In 2025 they receive or pay alimony under a 2016 agreement with one former spouse and under a 2021 agreement with another.",
-       "why_no": "They truthfully answer yes to 'Did you receive or pay alimony ... in 2025 under a divorce or separation agreement entered into on or before December 31, 2018'. That makes s1.alimony_if_any true, so the tool sets the New York line to 'No' and never asks about the 2021 payments. The federal text expects more than one agreement: 'If you are including alimony payments from more than one divorce or separation agreement ...'.",
-       "line": "ny_it201.alimony_later_if_not_old",
-       "irs_text": "ny_it225i p. 10, A-119: 'If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received.' p. 18, S-136: 'If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid.'",
-       "severity": "high",
-       "fix": "Do not make the post-2018 question depend on the pre-2019 answer. Whenever the 2023–2025 alimony helper is yes, ask separately: 'Did you (or, on a joint return, your spouse) pay or receive any alimony or separate maintenance in 2025 under an agreement executed after December 31, 2018, or under an older agreement later modified to say that New York Tax Law § 612(w) applies?'"
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A married couple filing jointly. One spouse pays alimony in 2025 under a 2015 agreement. The other spouse receives alimony under a 2020 agreement.",
-       "why_no": "The pre-2019 question covers either spouse ('Did you receive or pay ...'). The first spouse's old agreement makes the answer a truthful yes, so the tool marks the New York line 'No' and never asks about the second spouse's post-2018 alimony. New York adds that alimony to income.",
-       "line": "ny_it201.alimony_later_if_not_old",
-       "irs_text": "ny_it225i p. 10, A-119: 'An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument ... that was executed after December 31, 2018.'",
-       "severity": "high",
-       "fix": "Ask about post-2018 (applicable) alimony for each spouse, without regard to any pre-2019 answer. Gate only on the broad 'pay or receive alimony in 2023–2025' helper."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer whose divorce agreement was signed in 2017 and modified in 2022. The modification expressly says the post-2018 rules, including New York Tax Law § 612(w), apply. They pay or receive alimony under it in 2025.",
-       "why_no": "The agreement was 'entered into on or before December 31, 2018', so they truthfully answer yes to the pre-2019 question. The tool then sets the New York line to 'No'. New York, however, treats payments under a pre-2019 instrument modified this way as applicable alimony.",
-       "line": "ny_it201.alimony_later_if_not_old",
-       "irs_text": "ny_it225i p. 10, A-119: 'This also applies to any divorce or separation instrument executed on or before December 31, 2018, and modified after December 31, 2018, if the modification to the instrument expressly provides that the addition and subtraction modifications contained in Tax Law § 612(w) apply.'",
-       "severity": "high",
-       "fix": "In the pre-2019 question or its help, exclude agreements modified after 2018 to adopt the new rules. Ask separately about any such modification, and route a yes to the New York applicable-alimony question."
-      },
-      {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer who must include or may deduct a recapture of alimony paid in 2023–2024 under an old agreement. In 2025 they also pay or receive alimony under a new agreement made after 2018.",
-       "why_no": "The recapture clause ('or must you include or may you deduct a recapture of alimony?') makes them answer yes. That makes the gate condition true, and the post-2018 alimony is never asked about.",
-       "line": "ny_it201.alimony_later_if_not_old",
-       "irs_text": "ny_it225i p. 18, S-136: 'If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid.'",
+       "who": "A married filer, filing separately in 2025 while a divorce is pending, who paid or received support under a temporary (pendente lite) maintenance order or a written separation agreement signed after 2018. No final divorce or legal separation exists yet.",
+       "why_no": "The gate says support 'after divorce or separation.' A filer who is still married and not yet divorced or legally separated reads this as not having happened yet. The help does not say that temporary orders or written agreements made while still married count.",
+       "line": "ny_it201.alimony_later_if_any",
+       "irs_text": "ny_it225i p. 10, A-119: 'a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018.' The pre-2018 IRC § 71 defines that instrument to include a written separation agreement and a decree requiring a spouse to make payments for support or maintenance.",
        "severity": "medium",
-       "fix": "Separate recapture from the New York applicable-alimony question. Ask about post-2018 alimony regardless of recapture."
+       "fix": "Ask: 'Did you (or your spouse) pay or receive alimony, maintenance or spousal support under a divorce or separation decree, a written separation agreement, or a court order for support (including a temporary order while a divorce was pending)?' Add help saying that you need not be divorced or legally separated for this to count."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who reaches the gated question after answering no to 'pay or receive alimony in 2023, 2024 or 2025', or who paid only under a post-2018 agreement.",
-       "why_no": "The question 'pay or receive any of that alimony in 2025' refers to 'that alimony' but never defines it. The definition (after December 31, 2018) appears only in the help text. A filer may read 'that' as the pre-2019 alimony they just said no to, and answer no.",
-       "line": "ny_it201.alimony_later_if_not_old",
-       "irs_text": "ny_it225i p. 10, A-119: 'a payment made under an alimony or separation instrument ... that was executed after December 31, 2018.'",
+       "who": "A filer who pays or receives one unallocated 'family support' or 'unallocated support' amount for both the former spouse and the children, under a post-2018 instrument. The instrument does not fix any part of it as child support.",
+       "why_no": "The help says 'Child support ... [is] not alimony.' The payment supports the children, so the filer treats it as child support and answers no.",
+       "line": "ny_it201.alimony_later_if_any",
+       "irs_text": "ny_it225i p. 10, A-119: 'An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97)'. Under that § 71, only an amount the instrument fixes as payable for child support is excluded.",
        "severity": "medium",
-       "fix": "Make the question self-contained: 'Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2025 under a divorce or separation agreement made after December 31, 2018 (or an older one modified to adopt New York Tax Law § 612(w))?'"
+       "fix": "Change the help to: 'Only amounts your agreement or order fixes as child support are child support. A combined or unallocated support payment for a spouse and children counts here.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A New York filer whose decree or agreement calls the payments 'maintenance' or 'separate maintenance' (New York's own term) rather than alimony.",
+       "why_no": "The gate's words are 'alimony or other spousal support.' A filer may not read 'maintenance' under their decree as either term.",
+       "line": "ny_it201.alimony_later_if_any",
+       "irs_text": "ny_it225i p. 18, S-136: 'If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid.'",
+       "severity": "low",
+       "fix": "Ask about 'alimony, maintenance, separate maintenance or other spousal support.'"
       }
      ],
-     "prompt_sha": "a6c001e8d894e73bb3508e64e8ad3865cc62cde65edab9db254bdc9cad22c044",
+     "prompt_sha": "89d1fbf8727d590bf2e9043bc3e9c0926cfa7d306cad69e640d8ee81e7bce9b5",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
      "model": "claude-opus-5-5",
-     "cost": 0.111696,
-     "date": "2026-11-23",
-     "response": ".transcription/ny/false_no/gate_s1.alimony_if_any.480d9d4002e7.1.response.txt"
+     "cost": 0.101984,
+     "date": "2026-11-24",
+     "response": ".transcription/ny/false_no/gate_s1.alimony_any.6d844ad463e4.1.response.txt"
     }
    ],
-   "condition": "s1.alimony_if_any",
+   "condition": "s1.alimony_any",
    "lines": [
-    "ny_it201.alimony_later_if_not_old"
+    "ny_it201.alimony_later_if_any"
    ],
    "inputs": [
     "ny_it201.ask.alimony_later"
@@ -103,7 +83,7 @@
      "how": "cited pages",
      "locators": [
       "p. 10, A-119, \"An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018.\"; p. 18, S-136, \"If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid.\"",
-      "p. 10, A-119, \"a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018\""
+      "p. 10, A-119, \"If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received.\""
      ],
      "cols_pages": [
       10,

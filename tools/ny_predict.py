@@ -41,10 +41,11 @@ def require_printed():
 
 def r_dollar(x):
     """IT-201-I p. 2, Entering whole dollar amounts: "Drop amounts that are less than 50 cents ... Increase amounts
-    that are 50 cents or more to the next dollar." (half-up; for negatives, by magnitude would differ only at .50,
-    which whole-dollar federal inputs never produce)."""
+    that are 50 cents or more to the next dollar." Half-up toward plus infinity, floor(x + 1/2), for a loss too: a
+    loss of exactly 50 cents is increased toward zero (-213.50 becomes -213; amb.ny.2025.whole_dollars), as the
+    engine's round with rule half_up does."""
     x = F(x)
-    return int((x + F(1, 2)) // 1) if x >= 0 else -int((-x + F(1, 2)) // 1)
+    return int((x + F(1, 2)) // 1)
 
 
 # --- New York State tax rate schedule (IT-201-I p. 33; web edition "New York State tax rate schedule") ---
@@ -314,7 +315,11 @@ def self_test():
     ok = tax_table(38275, "mfj") == 1773 and tax_table(38275, "mfj", city=True) == 1292
     print("ny_predict self-test, the official tax-table examples ($38,275, married filing jointly: State $1,773, City $1,292): "
           + ("reproduced" if ok else "WRONG"))
-    return 0 if ok else 1
+    rounding = [(F("1.39"), 1), (F("2.50"), 3), (F("-213.20"), -213), (F("-213.50"), -213), (F("-213.51"), -214)]
+    bad = [(str(x), r_dollar(x), want) for x, want in rounding if r_dollar(x) != want]
+    print("ny_predict self-test, whole-dollar rounding (p. 2 examples; a loss of exactly 50 cents toward zero): "
+          + ("as registered" if not bad else f"WRONG {bad}"))
+    return 0 if ok and not bad else 1
 
 
 if __name__ == "__main__":

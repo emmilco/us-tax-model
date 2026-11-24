@@ -31,6 +31,104 @@ form:
     cite:
       doc: f8863
       locator: p. 1, Part II, line 10, "If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19"
+  - id: f8863.adj_dep
+    printed: (helper)
+    label: Tax-free educational assistance and refunds taken off the expenses of the dependents who are eligible students
+      (Adjusted Qualified Education Expenses Worksheet, line 3 of each)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: dependent
+      field: dependent.edu_adj_sum
+      where:
+        op: test
+        eq:
+        - dependent.edu_student
+        - const: true
+    cite:
+      doc: i8863
+      locator: 'p. 6, Refunds, "Tip: If you paid qualified education expenses in both 2025 and 2026 for an academic period
+        that begins in the first 3 months of 2026 and you receive tax-free educational assistance or a refund, as described
+        above, you may choose to reduce the qualified education expenses you paid in 2026 instead of reducing the qualified
+        education expenses you paid in 2025."'
+  - id: f8863.adj_person
+    printed: (helper)
+    label: Tax-free educational assistance and refunds taken off the expenses of you and your spouse as eligible students
+      (Adjusted Qualified Education Expenses Worksheet, line 3 of each)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.edu_adj_sum
+      where:
+        op: test
+        eq:
+        - person.edu_student
+        - const: true
+    cite:
+      doc: i8863
+      locator: 'p. 6, Refunds, "Tip: If you paid qualified education expenses in both 2025 and 2026 for an academic period
+        that begins in the first 3 months of 2026 and you receive tax-free educational assistance or a refund, as described
+        above, you may choose to reduce the qualified education expenses you paid in 2026 instead of reducing the qualified
+        education expenses you paid in 2025."'
+  - id: f8863.adj_total
+    printed: (helper)
+    label: Tax-free educational assistance and refunds taken off the 2025 expenses of every eligible student
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8863.adj_dep
+      - f8863.adj_person
+    cite:
+      doc: i8863
+      locator: 'p. 6, Refunds, "Tip: If you paid qualified education expenses in both 2025 and 2026 for an academic period
+        that begins in the first 3 months of 2026 and you receive tax-free educational assistance or a refund, as described
+        above, you may choose to reduce the qualified education expenses you paid in 2026 instead of reducing the qualified
+        education expenses you paid in 2025."'
+  - id: f8863.adj_any
+    printed: (helper)
+    label: Tax-free educational assistance or refunds were taken off the 2025 expenses of an eligible student
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8863.adj_total
+      - param: sales.zero
+    cite:
+      doc: i8863
+      locator: 'p. 6, Refunds, "Tip: If you paid qualified education expenses in both 2025 and 2026 for an academic period
+        that begins in the first 3 months of 2026 and you receive tax-free educational assistance or a refund, as described
+        above, you may choose to reduce the qualified education expenses you paid in 2026 instead of reducing the qualified
+        education expenses you paid in 2025."'
+  - id: f8863.adj_choice_notice
+    printed: (helper)
+    label: 'Notice: tax-free educational assistance and refunds were taken off the 2025 education expenses. If you paid in
+      both 2025 and 2026 for an academic period that begins in January, February or March 2026, you may instead choose to
+      reduce the expenses you paid in 2026; this return takes the reduction from the 2025 expenses (Instructions for Form
+      8863, Tip under Adjustments to Qualified Education Expenses).'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8863.eligible
+          - const: true
+        then: f8863.adj_any
+      - guard:
+          op: test
+          eq:
+          - f8863.eligible
+          - const: false
+        then: f8863.no
+    cite:
+      doc: i8863
+      locator: 'p. 6, Refunds, "Tip: If you paid qualified education expenses in both 2025 and 2026 for an academic period
+        that begins in the first 3 months of 2026 and you receive tax-free educational assistance or a refund, as described
+        above, you may choose to reduce the qualified education expenses you paid in 2026 instead of reducing the qualified
+        education expenses you paid in 2025."'
   - id: f8863.claimed_count
     printed: (helper)
     label: Number of the people on the return (you, and your spouse if filing jointly) claimed as a dependent on another

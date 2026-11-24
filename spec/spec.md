@@ -62,7 +62,7 @@ The authoritative list is the data: every `refuses:` entry in `forms/<year>/*.ya
 - Schedule B treatment not covered (nominee income, original issue discount, bond premium, seller-financed mortgage interest, the savings bond exclusion).
 - Within each computed form, the sub-cases its screens name (for example the year-of-marriage and allocation parts of Form 8962, or a capital loss carryover from a joint return with someone other than the present spouse).
 
-The estimated tax penalty is not computed. The tool states that the IRS will figure it and cites the instruction.
+The estimated tax penalty is not computed. The tool states that the IRS generally figures it, names the cases in which the filer must file Form 2210 (its Part II boxes), and cites the instructions. Lines 35b to 35d (direct deposit of a refund) are not asked; a standing notice says to complete them, or Form 8888, when line 34 shows a refund.
 
 ### 2.3 Non-goals
 

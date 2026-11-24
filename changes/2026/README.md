@@ -3,7 +3,7 @@
 The operations that take the 2025 definitions to 2026, one file per form they act on, applied by
 `tools/year_changes.py` (format and checks: `tools/README.md`, "Year changes as operations"; design:
 `docs/2026-11-14_year_change_operations.md`). check-all applies them to `forms/2025`, `interview/2025`,
-`ambiguities/2025.yaml` and the archived pages of `sources/2026` on every run (164 entries, 1,347 operations); `tools/year_diff.py --from 2025 --to 2026 --adopt` applies them to the
+`ambiguities/2025.yaml` and the archived pages of `sources/2026` on every run (164 entries, 1,348 operations); `tools/year_diff.py --from 2025 --to 2026 --adopt` applies them to the
 adopted copy. Nothing here is read by the build.
 
 | File | Entries | Operations | Change-map entries |

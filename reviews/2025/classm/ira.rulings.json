@@ -31,6 +31,18 @@
   },
   {
    "case": "classm.ira.2",
+   "printed": "1a",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: model error; classm.ira.2 is a joint return with no traditional IRA contribution (person.ira_owner false for both; ira.any_trad false), the taxpayer covered through a SEP. The IRA Deduction Worksheet is used only for traditional contributions (i1040gi p. 95, Line 20, 'If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction'); the project's display lines 1a through 7 then read No and zero (ira.lines2to6 false) and lines 11 and 12 are $0, as the model's are. The model filled the worksheet as if it were used (1a Yes); its value is not evidence for the line as defined. Same ruling as this case's earlier run.",
+   "drop": true,
+   "context": "9be2c280d3a64e6db8cdd8d0e9795688225af0a6e4506ae69f35a3d1692ca4fd",
+   "date": "2026-11-24",
+   "run": "3499adbcccde660b360006f85116c50dc2a1aa7ee070a2a0415e36dd1128a204",
+   "subject_key": "16ecd7f10fe15978c783dbeccb611e62fbab2518a8f8c406f8262835575c1324"
+  },
+  {
+   "case": "classm.ira.2",
    "printed": "1b",
    "project": "no",
    "model": "yes",
@@ -40,6 +52,18 @@
    "date": "2026-11-15",
    "run": "b07bc7780bf191d207a1574c8ddc27c626671a0e9d824a8f1c231f073b92b80a",
    "subject_key": "fedc6fdc94306e9915eff8a8c45a92de7339fb577f4d9cdffcbf024d987676c4"
+  },
+  {
+   "case": "classm.ira.2",
+   "printed": "2a",
+   "project": "$0.00",
+   "model": "$146,000.00",
+   "ruling": "Ruling: model error; classm.ira.2 is a joint return with no traditional IRA contribution (person.ira_owner false for both; ira.any_trad false), the taxpayer covered through a SEP. The IRA Deduction Worksheet is used only for traditional contributions (i1040gi p. 95, Line 20, 'If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction'); the project's display lines 1a through 7 then read No and zero (ira.lines2to6 false) and lines 11 and 12 are $0, as the model's are. The model filled the worksheet as if it were used (2a $146,000); its value is not evidence for the line as defined. Same ruling as this case's earlier run.",
+   "drop": true,
+   "context": "9be2c280d3a64e6db8cdd8d0e9795688225af0a6e4506ae69f35a3d1692ca4fd",
+   "date": "2026-11-24",
+   "run": "3499adbcccde660b360006f85116c50dc2a1aa7ee070a2a0415e36dd1128a204",
+   "subject_key": "56357b48899da35632fc071576d133633cc46e275c5ceee57b794fe16458820a"
   },
   {
    "case": "classm.ira.2",
@@ -64,6 +88,66 @@
    "date": "2026-11-15",
    "run": "b07bc7780bf191d207a1574c8ddc27c626671a0e9d824a8f1c231f073b92b80a",
    "subject_key": "946b822a1b47a9b21143451f1ce12d7cfccbbf87a03581c4749fac89d538f6d1"
+  },
+  {
+   "case": "classm.ira.2",
+   "printed": "2b",
+   "project": "$0.00",
+   "model": "$246,000.00",
+   "ruling": "Ruling: model error; classm.ira.2 is a joint return with no traditional IRA contribution (person.ira_owner false for both; ira.any_trad false), the taxpayer covered through a SEP. The IRA Deduction Worksheet is used only for traditional contributions (i1040gi p. 95, Line 20, 'If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction'); the project's display lines 1a through 7 then read No and zero (ira.lines2to6 false) and lines 11 and 12 are $0, as the model's are. The model filled the worksheet as if it were used (2b $246,000); its value is not evidence for the line as defined. Same ruling as this case's earlier run.",
+   "drop": true,
+   "context": "9be2c280d3a64e6db8cdd8d0e9795688225af0a6e4506ae69f35a3d1692ca4fd",
+   "date": "2026-11-24",
+   "run": "3499adbcccde660b360006f85116c50dc2a1aa7ee070a2a0415e36dd1128a204",
+   "subject_key": "d2c20e4303e3cddef3d032df38ed2432e1fc5f4618c792e04592369c8536530f"
+  },
+  {
+   "case": "classm.ira.2",
+   "printed": "6a",
+   "project": "$0.00",
+   "model": "$122,521.18",
+   "ruling": "Ruling: model error; classm.ira.2 is a joint return with no traditional IRA contribution (person.ira_owner false for both; ira.any_trad false), the taxpayer covered through a SEP. The IRA Deduction Worksheet is used only for traditional contributions (i1040gi p. 95, Line 20, 'If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction'); the project's display lines 1a through 7 then read No and zero (ira.lines2to6 false) and lines 11 and 12 are $0, as the model's are. The model filled the worksheet as if it were used (6a $122,521.18); its value is not evidence for the line as defined. Same ruling as this case's earlier run.",
+   "drop": true,
+   "context": "9be2c280d3a64e6db8cdd8d0e9795688225af0a6e4506ae69f35a3d1692ca4fd",
+   "date": "2026-11-24",
+   "run": "3499adbcccde660b360006f85116c50dc2a1aa7ee070a2a0415e36dd1128a204",
+   "subject_key": "c9065766c0317329335b6339701e84bfbd4acfd5730d306345ea5fdac6684f69"
+  },
+  {
+   "case": "classm.ira.2",
+   "printed": "6b",
+   "project": "$0.00",
+   "model": "$222,521.18",
+   "ruling": "Ruling: model error; classm.ira.2 is a joint return with no traditional IRA contribution (person.ira_owner false for both; ira.any_trad false), the taxpayer covered through a SEP. The IRA Deduction Worksheet is used only for traditional contributions (i1040gi p. 95, Line 20, 'If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction'); the project's display lines 1a through 7 then read No and zero (ira.lines2to6 false) and lines 11 and 12 are $0, as the model's are. The model filled the worksheet as if it were used (6b $222,521.18); its value is not evidence for the line as defined. Same ruling as this case's earlier run.",
+   "drop": true,
+   "context": "9be2c280d3a64e6db8cdd8d0e9795688225af0a6e4506ae69f35a3d1692ca4fd",
+   "date": "2026-11-24",
+   "run": "3499adbcccde660b360006f85116c50dc2a1aa7ee070a2a0415e36dd1128a204",
+   "subject_key": "76878d3e1fd64c3b20a9da00c2e850b865da61278e5ce52986ba6948787c6deb"
+  },
+  {
+   "case": "classm.ira.2",
+   "printed": "7a",
+   "project": "$0.00",
+   "model": "$7,000.00",
+   "ruling": "Ruling: model error; classm.ira.2 is a joint return with no traditional IRA contribution (person.ira_owner false for both; ira.any_trad false), the taxpayer covered through a SEP. The IRA Deduction Worksheet is used only for traditional contributions (i1040gi p. 95, Line 20, 'If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction'); the project's display lines 1a through 7 then read No and zero (ira.lines2to6 false) and lines 11 and 12 are $0, as the model's are. The model filled the worksheet as if it were used (7a $7,000); its value is not evidence for the line as defined. Same ruling as this case's earlier run.",
+   "drop": true,
+   "context": "9be2c280d3a64e6db8cdd8d0e9795688225af0a6e4506ae69f35a3d1692ca4fd",
+   "date": "2026-11-24",
+   "run": "3499adbcccde660b360006f85116c50dc2a1aa7ee070a2a0415e36dd1128a204",
+   "subject_key": "3d22ab12e21313e55e83ee49c7f9fb85a589dd0f6263adc048f991db34ccaecb"
+  },
+  {
+   "case": "classm.ira.2",
+   "printed": "7b",
+   "project": "$0.00",
+   "model": "$7,000.00",
+   "ruling": "Ruling: model error; classm.ira.2 is a joint return with no traditional IRA contribution (person.ira_owner false for both; ira.any_trad false), the taxpayer covered through a SEP. The IRA Deduction Worksheet is used only for traditional contributions (i1040gi p. 95, Line 20, 'If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction'); the project's display lines 1a through 7 then read No and zero (ira.lines2to6 false) and lines 11 and 12 are $0, as the model's are. The model filled the worksheet as if it were used (7b $7,000); its value is not evidence for the line as defined. Same ruling as this case's earlier run.",
+   "drop": true,
+   "context": "9be2c280d3a64e6db8cdd8d0e9795688225af0a6e4506ae69f35a3d1692ca4fd",
+   "date": "2026-11-24",
+   "run": "3499adbcccde660b360006f85116c50dc2a1aa7ee070a2a0415e36dd1128a204",
+   "subject_key": "1d19d9a89ae44670a353e3dd20bf6c6d2f28a41953d5d0513ea3241e236236c5"
   },
   {
    "case": "classm.ira.3",

@@ -2829,6 +2829,289 @@
           }
         }
       }
+    },
+    {
+      "id": "lk1.k1s.refuse_fiscal",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0884), refusal predicted from i1120ssk p. 6: a K-1 for a fiscal year is reported in the year the fiscal year ends; the fiscal-year tick refuses.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].fiscal": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].fiscal",
+          "form": "Schedule K-1 (Form 1120-S) for a corporation's fiscal year",
+          "remedy": "A Schedule K-1 for a tax year other than the calendar year 2025 is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 6, \"If you file your tax return on a calendar-year basis, but the corporation files a return for a fiscal year, report the amounts on your tax return for the year in which the corporation’s fiscal year ends\"; p. 4, \"All determinations of material participation are based on your participation during the corporation’s tax year\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "lk1.k1s.refuse_credit_carry",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0883), refusal predicted from i1120ssk p. 6 (prior-year credits not usable because of limitations): a passive credit held back on the 2024 Form 8582-CR.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].credit_carry": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].credit_carry",
+          "form": "Form 8582-CR (a passive activity credit carried from an earlier year)",
+          "remedy": "A credit carried from an earlier year by the passive activity rules is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 6, \"If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your income, loss, or credits for this year\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "lk1.k1s.refuse_prior_not_active",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0883), refusal predicted from i8582 p. 10 (Part IV column (c) only with active participation in the loss year and this year): box 2 loss of $5,000 with active participation, $2,000 held back, part of it from a year without active participation.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box2_any": true,
+        "person[taxpayer].k1s[acme].box2": -500000,
+        "person[taxpayer].k1s[acme].active": true,
+        "person[taxpayer].k1s[acme].tenth": true,
+        "person[taxpayer].k1s[acme].prior_any": true,
+        "person[taxpayer].k1s[acme].b1_prior": 0,
+        "person[taxpayer].k1s[acme].b2_prior": 200000,
+        "person[taxpayer].k1s[acme].b3_prior": 0,
+        "person[taxpayer].k1s[acme].prior_not_active": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 1000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].prior_not_active_if",
+          "form": "Form 8582, Part IV (prior-year loss from a year without active participation)",
+          "remedy": "A held-back rental loss from a year without active participation is outside this tool.",
+          "cite": {
+            "doc": "i8582",
+            "locator": "p. 10, Column (c), \"Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year\"",
+            "revision": "2025",
+            "snapshot": "76787e11a385d1205faf70a07924cdec4efd5e66628e6f47e5316d29e6035f71",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "lk1.k1s.refuse_b2_prior_blank",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0883), refusal predicted: box 2 is blank, so active participation is not asked, but a $1,000 box 2 loss was held back on the 2024 Form 8582 (i8582 p. 10, column (c)); box 1 income $5,000 from a business the shareholder did not work in.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": false,
+        "person[taxpayer].k1s[acme].past_years": false,
+        "person[taxpayer].k1s[acme].prior_any": true,
+        "person[taxpayer].k1s[acme].b1_prior": 0,
+        "person[taxpayer].k1s[acme].b2_prior": 100000,
+        "person[taxpayer].k1s[acme].b3_prior": 0
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].b2_prior_blank",
+          "form": "Form 8582, Part IV or V (a held-back rental real estate loss with no box 2 amount this year)",
+          "remedy": "A held-back rental real estate loss from a corporation whose box 2 is blank this year is outside this tool.",
+          "cite": {
+            "doc": "i8582",
+            "locator": "p. 10, Column (c), \"Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year\"",
+            "revision": "2025",
+            "snapshot": "76787e11a385d1205faf70a07924cdec4efd5e66628e6f47e5316d29e6035f71",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "lk1.f7203.col_c_within_line10",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0929), predicted by hand from i7203 p. 4, Column (c) ('The total allocation amount reported in column (c), line 47, can't exceed the amount reported on line 10'): box 1 loss $30,000, stock basis $20,000; the six-place ratio 0.666667 gives $20,000.01, kept to line 10: column (c) $20,000, column (e) $10,000; the K-1 allows $20,000 in column (i).",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -3000000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 2000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].c35": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c47": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e35": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "money",
+          "cents": 2000000
+        }
+      }
+    },
+    {
+      "id": "lk1.f7203.col_c_room_line37",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane k1 (BUG-0929), predicted by hand from i7203 p. 4: box 1 loss $10,000, box 3 loss $20,000, stock basis $20,000; ratio 0.666667: line 35 (c) $6,666.67; line 37 pro rata $13,333.34 is more than the $13,333.33 line 10 leaves, so line 37 (c) is $13,333.33 and the column (c) total is $20,000; column (e) $3,333.33 and $6,666.67.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -1000000,
+        "person[taxpayer].k1s[acme].box3_any": true,
+        "person[taxpayer].k1s[acme].box3": -2000000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 2000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].c35": {
+          "kind": "money",
+          "cents": 666667
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c37": {
+          "kind": "money",
+          "cents": 1333333
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c47": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e35": {
+          "kind": "money",
+          "cents": 333333
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e37": {
+          "kind": "money",
+          "cents": 666667
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "lk1.f7203.col_c_room_line36",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating, from i7203 p. 4 (as lk1.f7203.col_c_room_line37, with the second loss in box 2): box 1 loss $10,000, box 2 net rental real estate loss $20,000, stock basis $20,000; ratio 0.666667: line 35 (c) $6,666.67; line 36 pro rata $13,333.34 is more than the $13,333.33 line 10 leaves, so line 36 (c) is $13,333.33 and the column (c) total is $20,000.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "scope.k1": true,
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -1000000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 2000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "person[taxpayer].k1s[acme].box2_any": true,
+        "person[taxpayer].k1s[acme].box2": -2000000
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].c35": {
+          "kind": "money",
+          "cents": 666667
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c36": {
+          "kind": "money",
+          "cents": 1333333
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c47": {
+          "kind": "money",
+          "cents": 2000000
+        }
+      }
     }
   ]
 }

@@ -1952,6 +1952,24 @@ form:
       cite:
         doc: i1040gi
         locator: pp. 26-27, Lines 4a and 4b (total distributions where an exception applies; 'More than one distribution')
+    - id: person.ira_box1
+      printed: (helper)
+      label: Total of box 1 of this person's Forms 1099-R for IRA distributions
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.box1
+        where:
+          op: test
+          eq:
+            - retirement.is_ira
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 27, More than one distribution, "figure the taxable amount of each distribution and enter the total of
+          the taxable amounts on line 4b. Enter the total amount of those distributions on line 4a."
+      ambiguity: amb.2025.line4a_several
     - id: person.ira_taxable
       printed: (helper)
       label: Taxable IRA distributions on this person's Forms 1099-R (line 4b amounts)
@@ -5097,20 +5115,103 @@ form:
       type: Bool
       expr:
         op: test
-        all:
-        - op: test
-          eq:
-          - person.ira_has
-          - const: true
-        - op: test
-          gt:
-          - person.ira_own_total
-          - person.ira_limit
+        gt:
+        - person.ira_own_total
+        - person.ira_limit
       cite:
         doc: p590a
         locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
           IRAs for the year that is more than the smaller of: • $7,000 ($8,000 if you are age 50 or older), or • Your taxable
           compensation for the year"'
+    - id: person.ira_roth_has
+      printed: (helper)
+      label: This person made Roth IRA contributions for 2025
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.sav_roth_if_ira_owner
+        - param: sales.zero
+      cite:
+        doc: p590a
+        locator: 'p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA"'
+    - id: person.ira_limit_screens
+      printed: (helper)
+      label: This person's traditional and Roth IRA contributions are more than the applicable amount, or the return's are more
+        than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the Kay
+        Bailey Hutchison amount
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - person.ira_over_limit
+          - const: true
+        - op: test
+          eq:
+          - ira.over_comp
+          - const: true
+        - op: test
+          eq:
+          - ira.kbh_short
+          - const: true
+      cite:
+        doc: i8606
+        locator: 'p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional
+          and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation"
+          and "see Kay Bailey Hutchison Spousal IRA Limit in Pub. 590-A for special rules"'
+    - id: person.ira_roth_over
+      printed: (gate)
+      label: This person made Roth IRA contributions for 2025, and the contributions are more than the applicable amount, or
+        more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the
+        Kay Bailey Hutchison amount
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_roth_has
+            - const: true
+          then: person.ira_limit_screens
+        - guard:
+            op: test
+            eq:
+            - person.ira_roth_has
+            - const: false
+          then: person.no
+      cite:
+        doc: i8606
+        locator: 'p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional
+          and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation"
+          and "see Kay Bailey Hutchison Spousal IRA Limit in Pub. 590-A for special rules"; p590a p. 43, Excess Contributions,
+          "A 6% excise tax applies to any excess contribution to a Roth IRA"'
+    - id: person.ira_roth_income
+      printed: (gate)
+      label: This person made Roth IRA contributions for 2025 and the return's modified AGI for Roth IRA purposes is in or above
+        the phase-out range
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_roth_has
+            - const: true
+          then: ira.roth_reduced
+        - guard:
+            op: test
+            eq:
+            - person.ira_roth_has
+            - const: false
+          then: person.no
+      cite:
+        doc: p590a
+        locator: 'p. 2, Modified AGI limit for Roth IRA contributions, "For 2025, your Roth IRA contribution limit is reduced
+          (phased out) in the following situations"'
     - id: person.ira_own_total
       printed: (helper)
       label: This person's traditional and Roth IRA contributions for 2025
@@ -6837,6 +6938,27 @@ form:
       cite:
         doc: f1040s2
         locator: p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required."
+      refuses:
+      - when: person.ira_roth_over
+        form: Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)
+        remedy: Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if
+          age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under
+          $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess
+          contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.
+        cite:
+          doc: p590a
+          locator: 'p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA"'
+      - when: person.ira_roth_income
+        form: Roth IRA contributions limited by modified AGI (Maximum Roth IRA Contribution Worksheet, Form 5329 Part IV)
+        remedy: Roth IRA contributions are reduced or not allowed when modified AGI is $236,000 or more (married filing jointly
+          or qualifying surviving spouse), $150,000 or more (single, head of household, or married filing separately and
+          apart from your spouse all year) or more than zero (married filing separately and living with your spouse at any
+          time in 2025). This return is at or above that point (figured here without subtracting any Roth conversion), so its
+          Roth contributions are outside this tool.
+        cite:
+          doc: i8606
+          locator: 'p. 4, Maximum Roth IRA Contribution Worksheet, line 6, "If zero or less, stop here; you may not contribute
+            to a Roth IRA for 2025"'
     - id: person.x_must
       printed: (helper)
       label: One if this person must file Form 5329
@@ -7251,11 +7373,18 @@ form:
           - const: true
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040),
+          line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule
+          1 (Form 1040), line 8q, from an ABLE account."; p. 1, Part III, "or you had an amount on line 17 of your 2024
+          Form 5329"; p. 1, Part IV, "Complete this part if you contributed more to your Roth IRAs", "or you had an
+          amount on line 25 of your 2024 Form 5329"; p. 2, Part V, "Complete this part if the contributions to your
+          Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329";
+          p. 2, Part VI, "Complete this part if you or your employer contributed more to your Archer MSAs for 2025 than
+          is allowable"; p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329"; p. 2, Part VIII,
+          "Complete this part if contributions to your ABLE account for 2025 were more than is allowable"; p. 3, Part
+          IX, "Complete this part if you did not receive the minimum required distribution from your qualified
+          retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference
+          between the amount that was required to be distributed and the amount that was actually distributed."'
     - id: person.x_edu_account
       printed: (helper)
       type: Bool
@@ -7265,11 +7394,12 @@ form:
         source: "At any time in 2025, did you have a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account, or was one held for you; or was money put into a Coverdell ESA for you for 2025 by April 15, 2026?"
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040),
+          line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule
+          1 (Form 1040), line 8q, from an ABLE account."; p. 2, Part V, "Complete this part if the contributions to your
+          Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329";
+          p. 2, Part VIII, "Complete this part if contributions to your ABLE account for 2025 were more than is
+          allowable"'
     - id: person.x_edu_taxable
       printed: (helper)
       type: Bool
@@ -7280,11 +7410,9 @@ form:
         source: "Did you receive a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account?"
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040),
+          line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule
+          1 (Form 1040), line 8q, from an ABLE account."'
     - id: person.x_edu_taxable_if_account
       printed: (gate)
       type: Bool
@@ -7306,11 +7434,9 @@ form:
           then: person.no
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040),
+          line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule
+          1 (Form 1040), line 8q, from an ABLE account."'
     - id: person.x_edu_excess
       printed: (helper)
       type: Bool
@@ -7321,11 +7447,9 @@ form:
         source: "Do you have excess contributions to a Coverdell ESA or an ABLE account?"
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 2, Part V, "Complete this part if the contributions to your Coverdell ESAs for 2025 were more than
+          is allowable or you had an amount on line 33 of your 2024 Form 5329"; p. 2, Part VIII, "Complete this part if
+          contributions to your ABLE account for 2025 were more than is allowable"'
     - id: person.x_edu_excess_if_account
       printed: (gate)
       type: Bool
@@ -7347,11 +7471,9 @@ form:
           then: person.no
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 2, Part V, "Complete this part if the contributions to your Coverdell ESAs for 2025 were more than
+          is allowable or you had an amount on line 33 of your 2024 Form 5329"; p. 2, Part VIII, "Complete this part if
+          contributions to your ABLE account for 2025 were more than is allowable"'
     - id: person.x_archer_excess
       printed: (helper)
       type: Bool
@@ -7361,11 +7483,8 @@ form:
         source: "Do you have excess contributions to an Archer MSA?"
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 2, Part VI, "Complete this part if you or your employer contributed more to your Archer MSAs for
+          2025 than is allowable"'
     - id: person.x_ira_prior_excess
       printed: (helper)
       type: Bool
@@ -7376,11 +7495,9 @@ form:
         source: "Did excess contributions to a traditional or Roth IRA for an earlier year remain in the IRA at the end of 2025 (whether or not you contributed for 2025)?"
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 1, Part III, "or you had an amount on line 17 of your 2024 Form 5329"; p. 1, Part IV, "Complete
+          this part if you contributed more to your Roth IRAs", "or you had an amount on line 25 of your 2024 Form
+          5329"'
     - id: person.x_ira_prior_excess_if_ira_owner
       printed: (gate)
       type: Bool
@@ -7402,11 +7519,9 @@ form:
           then: person.no
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 1, Part III, "or you had an amount on line 17 of your 2024 Form 5329"; p. 1, Part IV, "Complete
+          this part if you contributed more to your Roth IRAs", "or you had an amount on line 25 of your 2024 Form
+          5329"'
     - id: person.has_hsa
       printed: (helper)
       type: Bool
@@ -7419,11 +7534,7 @@ form:
           type: Count
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329"'
     - id: person.x_hsa_prior_excess
       printed: (helper)
       type: Bool
@@ -7434,11 +7545,7 @@ form:
         source: "Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported)?"
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329"'
     - id: person.x_hsa_prior_excess_if_hsa
       printed: (gate)
       type: Bool
@@ -7460,11 +7567,7 @@ form:
           then: person.no
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329"'
     - id: person.rmd_age
       printed: (helper)
       type: Bool
@@ -7476,11 +7579,10 @@ form:
         - param: age.cut_73
       cite:
         doc: f5329
-        locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
-          a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line
-          8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution
-          from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
-          difference between the amount that was required to be distributed and the amount that was actually distributed."'
+        locator: 'p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your
+          qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the
+          difference between the amount that was required to be distributed and the amount that was actually
+          distributed."'
     - id: person.inherited_account
       printed: (helper)
       type: Bool

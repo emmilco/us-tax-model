@@ -101,8 +101,8 @@ changes:
         your spouse didn’t file a joint return for the year the distribution was received.
     verified: final
     note: 'The ABLE refusals cite the Reminders, where the 2026 form moves the paragraph. person.sav_claimed''s i1040gi segment
-      and person.sav_line1''s Pub. 590-A refusal citation are left as they are: the 2026 i1040gi and Pub. 590-A are not archived
-      (C-PEOP-23, C-PEOP-24). The ambiguity amb.2025.savers_2026_joint stays linked; its register text moves by a year with
+      is left as it is: the 2026 i1040gi is not archived (C-PEOP-23). person.sav_line1''s Pub. 590-A refusal citation needs no
+      change: the 2026 Pub. 590-A draft prints its quote under Excess Contributions on the same page, 35 (C-PEOP-24). The ambiguity amb.2025.savers_2026_joint stays linked; its register text moves by a year with
       the register operations (plan D4, lane R3).'
     operations:
     - set:
@@ -146,10 +146,10 @@ changes:
     - set_question:
         input: person.sav_able
         field: prompt
-        from: For this person (you, or your spouse on a joint return) — Is an ABLE account held for you, and did you put money
-          into it for 2025, or get money out of it in 2023 or later?
-        to: For this person (you, or your spouse on a joint return) — Is an ABLE account held for you, and did you put money
-          into it for 2026, or get money out of it in 2024 or later?
+        from: For this person (you, or your spouse on a joint return) — Has an ABLE account been held for you, and did you put
+          money into it for 2025, or get money out of it in 2023 or later?
+        to: For this person (you, or your spouse on a joint return) — Has an ABLE account been held for you, and did you put
+          money into it for 2026, or get money out of it in 2024 or later?
     - set:
         line: person.sav_prior_joint
         field: label

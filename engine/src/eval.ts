@@ -859,6 +859,10 @@ export function validateInputs(data: CanonicalData, inputs: Inputs): void {
     const raw = inputs[rk];
     if (raw === undefined || raw === null) return;
     if (!Array.isArray(raw) || raw.some(k => typeof k !== "string" || !/^[a-zA-Z0-9_-]+$/.test(k)) || new Set(raw).size !== raw.length) throw new Error(`${rk}: expected distinct stable entry keys`);
+    // An implicit collection has exactly its one implicit entry under each parent entry; the interview never asks its
+    // roster, so a roster listing anything else describes no return.
+    const implicit = doc.collection?.implicit;
+    if (implicit && (raw.length !== 1 || raw[0] !== implicit)) throw new Error(`${rk}: an implicit collection has the one entry ${JSON.stringify([implicit])}; got ${JSON.stringify(raw)}`);
     for (const k of raw) visit(doc, `${parent ? parent + "." : ""}${doc.id}[${k}]`);
   };
   for (const doc of data.forms) {

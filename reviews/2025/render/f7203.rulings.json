@@ -33,6 +33,16 @@
    "subject_key": "2b7fe7d34ffcd1d79aaed3998006a8e3d5bb3302f35f072db24e045c2a8a4fa6"
   },
   {
+   "printed": "35 (c)",
+   "restated": "Choose — [helper \"Line 47, column (a), is more than zero\" = true → helper \"Line 35, column (c) pro rata amount, not more than line 10\"] [helper \"Line 47, column (a), is more than zero\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The restatement prorates line 10 using only column (a) and line 47(a). The instructions measure against carryovers too: 'If stock basis, as reported on line 10, is greater than the sum of column (a) and column (b), line 47, enter the sum of each line for column (a) plus column (b) in column (c).' Column (b) is ignored, and no refusal excludes carryovers.",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry), so 'the sum of column (a) and column (b), line 47' is line 47 column (a); lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok, so line 47 (a) is complete. Each line's pro rata amount is kept within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (amb.2025.f7203_prorata_places).",
+   "context": "d1d307d7fefa93b5f61b380dbc57f8bab4dd0e844b75dab790ec669456ec04f1",
+   "date": "2026-11-24",
+   "run": "d7ba456f91f90c6a3bccd0ba6010c8ce8b8d131ab207bd11500a6c1d2712c976",
+   "subject_key": "86da85fcae25b7a8c73cfaaa42755728c73484ec7797609f7db3381c096681b4"
+  },
+  {
    "printed": "35 (e)",
    "restated": "Subtract line 35 (c) from line 35 (a). If zero or less, enter -0-.",
    "model": "Column (e) applies \"If the sum of column (a) plus column (b) exceeds the sum of column (c) plus column (d)\". The restatement leaves out column (b) carryovers and column (d) losses allowed from debt basis.",
@@ -41,6 +51,16 @@
    "date": "2026-11-15",
    "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
    "subject_key": "630d55e09ead9e278c436fa1a6fcd06a567458d94c593a9fc8df8771087204ab"
+  },
+  {
+   "printed": "35 (e)",
+   "restated": "Subtract line 35 (c) from line 35 (a). If zero or less, enter -0-.",
+   "model": "The restatement subtracts only column (c) from column (a). The instructions say 'If the sum of column (a) plus column (b) exceeds the sum of column (c) plus column (d), enter the excess in column (e)'. Column (b) and column (d) are omitted.",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "context": "d1d307d7fefa93b5f61b380dbc57f8bab4dd0e844b75dab790ec669456ec04f1",
+   "date": "2026-11-24",
+   "run": "d7ba456f91f90c6a3bccd0ba6010c8ce8b8d131ab207bd11500a6c1d2712c976",
+   "subject_key": "9b1fe771fef38f2993c63d3379c97540a9e0a9fc25487a64d7160466b1a11374"
   },
   {
    "printed": "36 (c)",
@@ -53,6 +73,16 @@
    "subject_key": "44ecdd386e9a5ce6d266a5e00c4f3162152ced8e32e77cc8e200cdb46c4cb6ab"
   },
   {
+   "printed": "36 (c)",
+   "restated": "Choose — [helper \"Line 47, column (a), is more than zero\" = true → helper \"Line 36, column (c) pro rata amount, not more than what line 10 leaves after lines 35 through 35\"] [helper \"Line 47, column (a), is more than zero\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The restatement omits column (b) carryovers from both the allowed amount and the proration base. The instructions direct 'enter the sum of each line for column (a) plus column (b) in column (c)' or a pro rata amount against 'the sum of column (a) and column (b), line 47'.",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry), so 'the sum of column (a) and column (b), line 47' is line 47 column (a); lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok, so line 47 (a) is complete. Each line's pro rata amount is kept within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (amb.2025.f7203_prorata_places).",
+   "context": "d1d307d7fefa93b5f61b380dbc57f8bab4dd0e844b75dab790ec669456ec04f1",
+   "date": "2026-11-24",
+   "run": "d7ba456f91f90c6a3bccd0ba6010c8ce8b8d131ab207bd11500a6c1d2712c976",
+   "subject_key": "e1941c8a302c2ef1d4b2029451666751d543f35302e7f9d8f4ab2faf2c573553"
+  },
+  {
    "printed": "36 (e)",
    "restated": "Subtract line 36 (c) from line 36 (a). If zero or less, enter -0-.",
    "model": "Column (e) is \"column (a) plus column (b)\" in excess of \"column (c) plus column (d)\". The restatement leaves out columns (b) and (d).",
@@ -61,6 +91,16 @@
    "date": "2026-11-15",
    "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
    "subject_key": "fbb93bdf41e71c551990021b9809657067c7011ffa21fcdc2773c79b831e08e0"
+  },
+  {
+   "printed": "36 (e)",
+   "restated": "Subtract line 36 (c) from line 36 (a). If zero or less, enter -0-.",
+   "model": "The restatement computes (a) minus (c), omitting column (b) carryovers and column (d) debt-basis allowance. The instructions require the excess of 'the sum of column (a) plus column (b)' over 'the sum of column (c) plus column (d)'.",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "context": "d1d307d7fefa93b5f61b380dbc57f8bab4dd0e844b75dab790ec669456ec04f1",
+   "date": "2026-11-24",
+   "run": "d7ba456f91f90c6a3bccd0ba6010c8ce8b8d131ab207bd11500a6c1d2712c976",
+   "subject_key": "4851f20d6a39da008a0a35e0785350b6c225351ab2d3157c7fbae15f4740f519"
   },
   {
    "printed": "37 (c)",
@@ -73,6 +113,16 @@
    "subject_key": "21a74fb30002c482cf526ccc1eb4ee35c43e4145fd711a40d6948cd639ee06a4"
   },
   {
+   "printed": "37 (c)",
+   "restated": "Choose — [helper \"Line 47, column (a), is more than zero\" = true → helper \"Line 37, column (c) pro rata amount, not more than what line 10 leaves after lines 35 through 36\"] [helper \"Line 47, column (a), is more than zero\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The restatement computes only from column (a) and line 47(a). The instructions require comparing line 10 with 'the sum of column (a) and column (b), line 47' and allowing 'column (a) plus column (b)'. No refusal excludes carryovers.",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry), so 'the sum of column (a) and column (b), line 47' is line 47 column (a); lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok, so line 47 (a) is complete. Each line's pro rata amount is kept within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (amb.2025.f7203_prorata_places).",
+   "context": "d1d307d7fefa93b5f61b380dbc57f8bab4dd0e844b75dab790ec669456ec04f1",
+   "date": "2026-11-24",
+   "run": "d7ba456f91f90c6a3bccd0ba6010c8ce8b8d131ab207bd11500a6c1d2712c976",
+   "subject_key": "1124364f8972d189e545b96fad262dd95997de611705b3a615931ef997743bde"
+  },
+  {
    "printed": "37 (e)",
    "restated": "Subtract line 37 (c) from line 37 (a). If zero or less, enter -0-.",
    "model": "Column (e) is \"column (a) plus column (b)\" in excess of \"column (c) plus column (d)\". The restatement leaves out columns (b) and (d).",
@@ -81,6 +131,16 @@
    "date": "2026-11-15",
    "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
    "subject_key": "d2377618dc1e533da40d64ef1ae285d71614c3159d9be9d3f9b3c752653e19f6"
+  },
+  {
+   "printed": "37 (e)",
+   "restated": "Subtract line 37 (c) from line 37 (a). If zero or less, enter -0-.",
+   "model": "The restatement omits columns (b) and (d). The instructions direct entering the excess of 'column (a) plus column (b)' over 'column (c) plus column (d)'.",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "context": "d1d307d7fefa93b5f61b380dbc57f8bab4dd0e844b75dab790ec669456ec04f1",
+   "date": "2026-11-24",
+   "run": "d7ba456f91f90c6a3bccd0ba6010c8ce8b8d131ab207bd11500a6c1d2712c976",
+   "subject_key": "613fc658805280874885e8ed27673b9b81f5fa8aa1c9939297f4cb166d1b5223"
   },
   {
    "printed": "38 (c)",
@@ -93,6 +153,16 @@
    "subject_key": "8e96295a989d803692dca5b0cf0d66414971e3f4ae3c1cd9a741fad1cc6786c3"
   },
   {
+   "printed": "38 (c)",
+   "restated": "Choose — [helper \"Line 47, column (a), is more than zero\" = true → helper \"Line 38, column (c) pro rata amount, not more than what line 10 leaves after lines 35 through 37\"] [helper \"Line 47, column (a), is more than zero\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The restatement omits column (b) carryovers. Per the instructions, column (c) is 'the sum of each line for column (a) plus column (b)' or the pro rata share of line 10 against 'the sum of column (a) and column (b), line 47'.",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry), so 'the sum of column (a) and column (b), line 47' is line 47 column (a); lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok, so line 47 (a) is complete. Each line's pro rata amount is kept within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (amb.2025.f7203_prorata_places).",
+   "context": "d1d307d7fefa93b5f61b380dbc57f8bab4dd0e844b75dab790ec669456ec04f1",
+   "date": "2026-11-24",
+   "run": "d7ba456f91f90c6a3bccd0ba6010c8ce8b8d131ab207bd11500a6c1d2712c976",
+   "subject_key": "c1139266512a075163c0975b01de8cd5f66c322822a5349554105edd577ed910"
+  },
+  {
    "printed": "38 (e)",
    "restated": "Subtract line 38 (c) from line 38 (a). If zero or less, enter -0-.",
    "model": "Column (e) is \"column (a) plus column (b)\" in excess of \"column (c) plus column (d)\". The restatement leaves out columns (b) and (d).",
@@ -101,6 +171,16 @@
    "date": "2026-11-15",
    "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
    "subject_key": "7f0792e5d4fb972c06a7a52e1c45c7384a680e7d429cf7a6e07e765369dfa62e"
+  },
+  {
+   "printed": "38 (e)",
+   "restated": "Subtract line 38 (c) from line 38 (a). If zero or less, enter -0-.",
+   "model": "The restatement subtracts only (c) from (a). The instructions specify 'If the sum of column (a) plus column (b) exceeds the sum of column (c) plus column (d), enter the excess in column (e)'.",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "context": "d1d307d7fefa93b5f61b380dbc57f8bab4dd0e844b75dab790ec669456ec04f1",
+   "date": "2026-11-24",
+   "run": "d7ba456f91f90c6a3bccd0ba6010c8ce8b8d131ab207bd11500a6c1d2712c976",
+   "subject_key": "4633e6b035f3a810ded2b868efbfd7d065117ec3ab5677ded473593026f3c5c8"
   },
   {
    "printed": "3f",
@@ -181,6 +261,16 @@
    "date": "2026-11-15",
    "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
    "subject_key": "c2ab120fbc40ce628c521bf2c25c697eeccded17c4813ea9e53fa57b21e0720e"
+  },
+  {
+   "printed": "47 (c)",
+   "restated": "Add line 35 (c), line 36 (c), line 37 (c), and line 38 (c).",
+   "model": "The restatement adds only lines 35 through 38 in column (c), and no refusal excludes lines 39 through 46. The form says 'Total loss. Add lines 35 through 46 for each column.'",
+   "ruling": "Ruling: scope; lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok (k1s.box9, box10, box11_12, box14, box16ef_if_16); the form note says 'Lines 39 to 46 have no amount: the boxes that would fill them are refused on the K-1'.",
+   "context": "d1d307d7fefa93b5f61b380dbc57f8bab4dd0e844b75dab790ec669456ec04f1",
+   "date": "2026-11-24",
+   "run": "d7ba456f91f90c6a3bccd0ba6010c8ce8b8d131ab207bd11500a6c1d2712c976",
+   "subject_key": "a207f06a49f8fc128a99d6432319ef59c7bf47c23c47f1e054366a09b4cd09e9"
   },
   {
    "printed": "47 (e)",

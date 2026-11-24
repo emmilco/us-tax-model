@@ -2134,6 +2134,16 @@
    }
   },
   {
+   "printed": "person.edu_adj",
+   "project_expr_sha256": "4a607a11c8da6f32eed297b40428352b4985688e8075afe56d0815a667e209ca",
+   "second_expr_sha256": "c99807f26ddfb4c3b5f26dd822182327e1eabff461dd4a86e1c20f2a713e5368",
+   "ruling": "Ruling: representation; i8863 p. 9, Adjusted Qualified Education Expenses Worksheet, line 3. Both add lines 2a, 2b and 2c; the reply opens the sum on person.edu (expenses paid for this person), the project on person.edu_student (an eligible student of the return: expenses paid, a TIN by the due date, a Form 1098-T or an exception). They differ only for a person with expenses who is not an eligible student; Part III reads the line only for an eligible student, and the new reader f8863.adj_person (the notice of BUG-0932) should not count a student no credit is figured for, so the project's zero there is the intended value.",
+   "context": "e93c1e95c3079a47db6e44a1f593ed6a2d05550666da01d7dbdaaf01d556cf63",
+   "date": "2026-11-24",
+   "run": "25b0b93e2a3813158badca4e5f181adb548df1c0b431000448276859062139fb",
+   "subject_key": "f1c999f24dd0032aaac3453b80cc0179e0309cd179edf2cb9abf12fd0631574f"
+  },
+  {
    "printed": "person.edu_kid",
    "project_expr_sha256": "e232cf8a6f2a52c97603e98e435fa09417b3c13c1dc2c85c204c0ce558f3c27f",
    "second_expr_sha256": "4416f12076916e9d0f089cf0f761a2888620c78f795011a3d9611c8c870ba76a",
@@ -3390,40 +3400,11 @@
    "printed": "person.ira_8606_line2",
    "project_expr_sha256": "a478212b2445fcfcbdd8c2a184f4e4150da554919e1d98d493f8aa8475d12e86",
    "second_expr_sha256": "f834ec24a8906be7c0f9e49de5e2961201911fdfa0cc13608067fc03594fb36c",
-   "ruling": "Ruling: representation; executable triage 4,203/5,490 agree; 1,229 candidate-unknown, 37 project-unknown, 21 project-refuses (completed: 238 candidate-unknown). No value differs on any return; the reply sums or reads the Form 8606 inputs without the parent question that opens them (person.ira_files_8606), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 8606 rows are read the same way once asked; f8606 line 2.",
-   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
-   "date": "2026-11-15",
-   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
-   "subject_key": "39e06648f2aeb2fed92c8a46ee36973034e1c4c5758120b1d450d4f796c57c5b",
-   "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "candidate-unknown",
-     "project-refuses",
-     "project-unknown"
-    ],
-    "witnesses": [
-     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
-     "fixture:classm.f2441.2.deepseek@person[spouse]",
-     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
-     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
-     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
-     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
-     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@person[taxpayer]",
-     "fixture:stage16.cleanup.refuse.f1040_line16@person[taxpayer]",
-     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
-     "fixture:stage16.cleanup.refuse.f2441_line24@person[spouse]",
-     "fixture:stage16.cleanup.refuse.f2441_line24@person[taxpayer]",
-     "fixture:stage16.cleanup.refuse.f4952_unsupported@person[taxpayer]",
-     "fixture:stage16.refuse.ira.both_kinds@person[spouse]",
-     "fixture:stage16.refuse.ira.both_kinds@person[taxpayer]",
-     "fixture:stage16.refuse.ira.kbh_short@person[spouse]",
-     "fixture:stage16.refuse.ira.kbh_short@person[taxpayer]",
-     "fixture:stage16.refuse.person.ira_over_limit@person[taxpayer]",
-     "fixture:stage16.refuse.ira.over_comp@person[taxpayer]"
-    ],
-    "policy": "executable-triage-v2"
-   }
+   "ruling": "Ruling: representation; f8606 (2025) line 2, \"Enter your total basis in traditional IRAs\". The reply reads person.ira_basis directly; the project reads it under the parent questions that open it (person.ira_owner and the Form 8606 filing test) and refuses an adjusted basis (person.ira_basis_adjusted). No value differs where both are known, as the ruling of 2026-11-15. Re-reviewed only because ira.line10 changed (BUG-1156).",
+   "context": "e93c1e95c3079a47db6e44a1f593ed6a2d05550666da01d7dbdaaf01d556cf63",
+   "date": "2026-11-24",
+   "run": "25b0b93e2a3813158badca4e5f181adb548df1c0b431000448276859062139fb",
+   "subject_key": "1a9248f29caaa995f752f2a69b121147957ba8d9eca7da2031ea43ca27f4d08f"
   },
   {
    "printed": "person.ira_8606_line2",
@@ -3531,6 +3512,16 @@
    "ruling": "Ruling: representation; i1040gi pp. 26-28, Lines 4a to 5b. The same answer is read through a ref where the project uses an input reference. No difference. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 5,033 of 5,033 agree; none; on returns the full interview completes: none. Project stands.",
    "context": "475380d22861e33690a18e5ed2f185e526e7d9083156fee8b22829073c5c48c4",
    "subject_key": "5e5951950b1fdad5d6c0230ceb2fc2f017c9cefc6f50fdddcf83fe086970dcef"
+  },
+  {
+   "printed": "person.ira_box1",
+   "project_expr_sha256": "10f70f1c28292905ccaa33ef19bfbac8bf50a93bb7a980265e431ed298bc0ec5",
+   "second_expr_sha256": "b6293d2a8dd36be3f3d823fafdbc2d568791e99322b0dc5933d7eb860b8b70d8",
+   "ruling": "Ruling: model error; i1040gi p. 27, More than one distribution, \"Enter the total amount of those distributions on line 4a\"; the line is the total of box 1 of this person's Forms 1099-R for IRA distributions (retirement.box1 where retirement.is_ira), read by f1040.line4a under amb.2025.line4a_several (BUG-1118). The reply sums box 1 of the person's Forms W-2, an unrelated amount (wages), misreading the label as an IRA Deduction Worksheet line 8 share.",
+   "context": "e93c1e95c3079a47db6e44a1f593ed6a2d05550666da01d7dbdaaf01d556cf63",
+   "date": "2026-11-24",
+   "run": "25b0b93e2a3813158badca4e5f181adb548df1c0b431000448276859062139fb",
+   "subject_key": "c3994c5d73d74d9d4d62c5d36f3cf6fdea5df2efe11ce3198e802ee93a64b461"
   },
   {
    "printed": "person.ira_contrib",
@@ -4023,6 +4014,16 @@
    }
   },
   {
+   "printed": "person.ira_deduction",
+   "project_expr_sha256": "be42742983ecf7e5d312cdf7c0d9ae4bdadeb2560d42219ad24fbdd08c95b067",
+   "second_expr_sha256": "d18124e1015595fdc8aef5be1c9fe0a53c3b5345287529ae55836248d9cde41a",
+   "ruling": "Ruling: model error; The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a person born in the cut-off year (person.ira_age50 reads person.birth_year first, amb.2025.ira_age50), so for a person born before it (stage16.ira.i7, born 1970, $8,000 contributed) the reply uses $7,000 where the project uses $8,000. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same error as the rulings of 2026-11-15 on this line. Ruled by reading: this pass re-reviewed the line because ira.line10 changed through ira.line8 (BUG-1156); the project's formula is unchanged.",
+   "context": "e93c1e95c3079a47db6e44a1f593ed6a2d05550666da01d7dbdaaf01d556cf63",
+   "date": "2026-11-24",
+   "run": "25b0b93e2a3813158badca4e5f181adb548df1c0b431000448276859062139fb",
+   "subject_key": "8e011d56715c6f5c634f17d5187847f469de1c5ee70b5a7a942e559417684921"
+  },
+  {
    "printed": "person.ira_dist_gate",
    "project_expr_sha256": "4d387d065b8b6ce75afbcda62edbd1bafab50d41f7b793ffb303c150e4fdf26c",
    "second_expr_sha256": "23bcb6022f86c4485e599717c603fc8d6551963d3674326ed19b4640a3744f7c",
@@ -4334,6 +4335,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "person.ira_dist_gate",
+   "project_expr_sha256": "c6f429d53a6fe8343c08e36d596e504a2a8fc4c0ea8047192d3facf21df6ed1a",
+   "second_expr_sha256": "9463b66f3aedc632ca5127b2b407b5722223907688b8b052c59ad2835db3c396",
+   "ruling": "Ruling: model error; p590a p. 15, Both contributions for 2025 and distributions in 2025. The reply's nondeductible amount has the age-50 error of person.ira_nondeductible: The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a person born in the cut-off year (person.ira_age50 reads person.birth_year first, amb.2025.ira_age50), so for a person born before it (stage16.ira.i7, born 1970, $8,000 contributed) the reply uses $7,000 where the project uses $8,000. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same error as the rulings of 2026-11-15 on this line. Ruled by reading: this pass re-reviewed the line because ira.line10 changed through ira.line8 (BUG-1156); the project's formula is unchanged.",
+   "context": "e93c1e95c3079a47db6e44a1f593ed6a2d05550666da01d7dbdaaf01d556cf63",
+   "date": "2026-11-24",
+   "run": "25b0b93e2a3813158badca4e5f181adb548df1c0b431000448276859062139fb",
+   "subject_key": "325cb59b68a86813b31ba6ca2ab9c3dee76173ced23530493994556c975f49f9"
   },
   {
    "printed": "person.ira_dist_gate",
@@ -4807,6 +4818,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "person.ira_files_8606",
+   "project_expr_sha256": "d55afd6977b6d8336b91d3131233276571054f4835b73a98e2a3ab526eb0db24",
+   "second_expr_sha256": "fa6994793966f6830e518c9b524aec1ef8e61b35a62d395fb2fcb3491a056b39",
+   "ruling": "Ruling: model error; f8606 (2025) line 1 and Who Must File. The reply's test reads the nondeductible amount with the same age-50 error as person.ira_nondeductible: The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a person born in the cut-off year (person.ira_age50 reads person.birth_year first, amb.2025.ira_age50), so for a person born before it (stage16.ira.i7, born 1970, $8,000 contributed) the reply uses $7,000 where the project uses $8,000. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same error as the rulings of 2026-11-15 on this line. Ruled by reading: this pass re-reviewed the line because ira.line10 changed through ira.line8 (BUG-1156); the project's formula is unchanged.",
+   "context": "e93c1e95c3079a47db6e44a1f593ed6a2d05550666da01d7dbdaaf01d556cf63",
+   "date": "2026-11-24",
+   "run": "25b0b93e2a3813158badca4e5f181adb548df1c0b431000448276859062139fb",
+   "subject_key": "30e21d0e23920b4bca5c6399f00bd1d4c1007dba012ef38eef6800f00f7a4122"
   },
   {
    "printed": "person.ira_files_8606",
@@ -5823,6 +5844,16 @@
    }
   },
   {
+   "printed": "person.ira_nondeductible",
+   "project_expr_sha256": "d4520b88077de831e051b61033ce94e1e9bea777a291c2e8d4ae2c71fcdb2af3",
+   "second_expr_sha256": "7a7b3cd49435bf3cecf49d27dea1d3b7f7156b784d97c225d3b8906b49baf28d",
+   "ruling": "Ruling: model error; The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a person born in the cut-off year (person.ira_age50 reads person.birth_year first, amb.2025.ira_age50), so for a person born before it (stage16.ira.i7, born 1970, $8,000 contributed) the reply uses $7,000 where the project uses $8,000. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same error as the rulings of 2026-11-15 on this line. Ruled by reading: this pass re-reviewed the line because ira.line10 changed through ira.line8 (BUG-1156); the project's formula is unchanged.",
+   "context": "e93c1e95c3079a47db6e44a1f593ed6a2d05550666da01d7dbdaaf01d556cf63",
+   "date": "2026-11-24",
+   "run": "25b0b93e2a3813158badca4e5f181adb548df1c0b431000448276859062139fb",
+   "subject_key": "e056b57e4b5e91e4bd59576fc507bbe25cee86873974408cd2419bf1eae8d65e"
+  },
+  {
    "printed": "person.ira_rollovers",
    "project_expr_sha256": "d6c068f2c6d70542b5b6218b3506101a66fd18ba702595aea7b589b4b2b4b4a4",
    "second_expr_sha256": "3ed5f7750bfd64ddb8c4d51cd8798aacc81cf6594312751666bcc6439206693e",
@@ -6411,6 +6442,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "person.ira_ssb",
+   "project_expr_sha256": "310d642b88563b0a3a1f8f81cec266836322e903ee4866b4430a199b42db0cd7",
+   "second_expr_sha256": "16272bf1b4c244a4bb8c18c665746c00ad43970e724d969294de0ed6f0c6c18e",
+   "ruling": "Ruling: model error; i1040gi p. 31, Lines 6a and 6b, and the IRA Deduction Worksheet. The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a person born in the cut-off year (person.ira_age50 reads person.birth_year first, amb.2025.ira_age50), so for a person born before it (stage16.ira.i7, born 1970, $8,000 contributed) the reply uses $7,000 where the project uses $8,000. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same error as the rulings of 2026-11-15 on this line. Ruled by reading: this pass re-reviewed the line because ira.line10 changed through ira.line8 (BUG-1156); the project's formula is unchanged.",
+   "context": "e93c1e95c3079a47db6e44a1f593ed6a2d05550666da01d7dbdaaf01d556cf63",
+   "date": "2026-11-24",
+   "run": "25b0b93e2a3813158badca4e5f181adb548df1c0b431000448276859062139fb",
+   "subject_key": "39ac7b0987f729d1989c7fff5c0980586f03d98e2cbabdc8999d8599c70c843e"
   },
   {
    "printed": "person.ira_ssb",

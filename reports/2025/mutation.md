@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 10392 |
-| Killed by the checker | 3903 |
-| Killed by fixtures | 6028 (78 only by class M cases) |
-| Surviving | 461 (443 provably equivalent on every input; 10 equivalent on answered inputs only) |
+| Mutants | 10519 |
+| Killed by the checker | 3952 |
+| Killed by fixtures | 6093 (79 only by class M cases) |
+| Surviving | 474 (451 provably equivalent on every input; 10 equivalent on answered inputs only) |
 | Surviving on unobserved lines (among the provably equivalent) | 0 |
-| Mutation score (raw) | 95.6% |
+| Mutation score (raw) | 95.5% |
 | Mutation score (mutants provably equivalent on every input excluded) | 99.8% |
 | Mutation score (also excluding those equivalent on answered inputs only) | 99.9% |
 
@@ -29,7 +29,6 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 | boundary.dependent.dependent.edu_has_adj | replace strict greater-than with inclusive | dependent.dependent.edu_has_adj | classm.f8863.2.deepseek |
 | operand.eic.eic.check_27c.has_qc.any.2.all.1.eq.0 | replace an operand | eic.eic.check_27c | classm.f1040.1.deepseek |
 | operand.f1095a.f1095a.b_jan.mo_b.then0 | replace an operand | f1095a.f1095a.b_jan | classm.f1095a.1.deepseek |
-| boundary.f1116sb.f1116sb.generated | replace strict greater-than with inclusive | f1116sb.f1116sb.generated | classm.f1116.1 |
 | operand.f2441.f2441.mfs_married.line_a.all.1.eq.0 | replace an operand | f2441.f2441.mfs_married | classm.f2441.11 |
 | operand.f5695.f5695.sec_a_claimed.no.then1 | replace an operand | f5695.f5695.sec_a_claimed | classm.f5695.2.deepseek |
 | filter.f8582.f8582.prior_count | remove collection filter | f8582.f8582.prior_count | classm.f8582.4.deepseek |
@@ -47,15 +46,16 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 | operand.f8880.f8880.contrib_counted.line3b_counted | replace an operand | f8880.f8880.contrib_counted | classm.f1040.6.deepseek |
 | boundary.f8880.f8880.has_contrib | replace strict greater-than with inclusive | f8880.f8880.has_contrib | classm.f1040.6.deepseek |
 | operand.f8880.f8880.can_take_contrib.no.then1 | replace an operand | f8880.f8880.can_take_contrib | classm.f1040.6.deepseek |
-| operand.f8889.f8889.fsf_possible.no.then0 | replace an operand | f8889.f8889.fsf_possible | classm.f8889.6 |
+| operand.f8889.f8889.fsf_possible.no.then0 | replace an operand | f8889.f8889.fsf_possible | classm.f8889.11 |
 | operand.f8889.f8889.ask_former_spouse_family.fsf_eligible.then0 | replace an operand | f8889.f8889.ask_former_spouse_family | classm.f8889.7 |
 | operand.f8889.f8889.covered_12.yes.then0 | replace an operand | f8889.f8889.covered_12 | classm.f8889.3.deepseek |
-| operand.f8889.f8889.covered_12.yes.then1 | replace an operand | f8889.f8889.covered_12 | classm.ira.2 |
+| operand.f8889.f8889.covered_12.yes.then1 | replace an operand | f8889.f8889.covered_12 | classm.s2.1 |
 | boundary.f8960.f8960.allocation_over_5e | replace strict greater-than with inclusive | f8960.f8960.allocation_over_5e | classm.f8960.1.deepseek |
 | operand.f8962.f8962.show_applicable.applicable.all.1.eq.0 | replace an operand | f8962.f8962.show_applicable | classm.s2.5.deepseek |
 | boundary.household.household.dependents_any | replace strict greater-than with inclusive | household.household.dependents_any | classm.s2.1.deepseek |
 | operand.household.household.cp_marriage_ended.cp_not_joint.then3 | replace an operand | household.household.cp_marriage_ended | classm.f2441.4.deepseek |
 | operand.household.household.cp_marriage_ended.cp_not_joint.then4 | replace an operand | household.household.cp_marriage_ended | classm.f8960.2.deepseek |
+| operand.ira.ira.roth_reduced.roth_start_joint.any.0.all.1.ge.1 | replace an operand | ira.ira.roth_reduced | classm.f1040.7.deepseek |
 | operand.k1p.k1p.under500.hours500_if_work.all.1.eq.0 | replace an operand | k1p.k1p.under500 | classm.k1p.2.deepseek |
 | operand.k1p.k1p.p5_b2_income.zero.then0 | replace an operand | k1p.k1p.p5_b2_income | classm.k1p.1.deepseek |
 | operand.k1s.k1s.other_ask.work_if_b1.all.0.eq.0 | replace an operand | k1s.k1s.other_ask | classm.k1s.2.deepseek |
@@ -79,6 +79,7 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 | boundary.s2.s2.amt_could | replace strict greater-than with inclusive | s2.s2.amt_could | classm.s2.3.deepseek |
 | operand.s2.s2.amt_owed.amt_boat_if_could.any.0.eq.0 | replace an operand | s2.s2.amt_owed | classm.s2.1.deepseek |
 | operand.s2.s2.amt_owed.amt_business_if_sc.any.1.eq.0 | replace an operand | s2.s2.amt_owed | classm.s2.1.deepseek |
+| operand.s3.s3.business_credit_any.rental_credit_if_rentals.any.1.eq.0 | replace an operand | s3.s3.business_credit_any | classm.s3.1.deepseek |
 | operand.s3.s3.line15.line9 | replace an operand | s3.s3.line15 | classm.s3.2.deepseek |
 | boundary.sa.sa.e05_claimed | replace strict greater-than with inclusive | sa.sa.e05_claimed | classm.f8960.2.deepseek |
 | operand.sa.sa.mortgage_interest_not_mfs.mfs.all.1.eq.0 | replace an operand | sa.sa.mortgage_interest_not_mfs | classm.sa.5.deepseek |
@@ -314,6 +315,76 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
 }
 ), the lines that guard compares are complete and fix the choices that dependent.zero and dependent.edu_line29 make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since the values compared, or another alternative still possible, cannot refuse while the guard is unknown (spec 4.7.3); so the mutated line is unchanged at every input.
 - `operand.dependent.dependent.odc_from_tin.no.then1` (replace an operand, dependent.dependent.odc_from_tin): odc_from_tin is a choice on tin_known (a choice on the input citizen_ssn between citizen_ssn itself and the input tin, with no gates): true takes odc_from_citizen, false takes dependent.no (the parameter household.no, false); the mutant reads meets_tests in place of dependent.no. odc_from_tin is read only by odc_person, as the alternative its choice on claimed takes when claimed is true. claimed copies meets_tests behind the refusal gate claimed_no_tin, a choice on tin_known: false takes meets_tests, true takes dependent.no. claimed is a known true only when that gate was a known false (spec 4.7.1), which with tin_known false would need meets_tests false and so claimed false, and with tin_known unknown is unknown: so wherever claimed is true tin_known is a memoized true (spec 4.7.6) and odc_from_tin takes odc_from_citizen on both routes. Where claimed is false or a refusal odc_from_tin is not read. Where claimed is unknown both alternatives of odc_person are ways (spec 4.7.3) and its false alternative, dependent.no, is no refusal, so odc_person is claimed's unknown on both routes whatever odc_from_tin is. (Premises pinned: dependent.odc_from_tin, dependent.odc_person, dependent.claimed, dependent.claimed_no_tin, dependent.meets_tests, dependent.tin_known, dependent.citizen_ssn, dependent.tin, dependent.no, param:household.no; the mutant reads dependent.meets_tests.) (structural conditions re-checked this run.)
+- `operand.dependent.dependent.child_all_year.no.then1` (replace an operand, dependent.dependent.child_all_year): Branch settled by its guard: where dependent.child_all_year takes alternative 1 (guard {
+  "eq": [
+    "dependent.relationship",
+    {
+      "const": "sibling"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that dependent.no and dependent.own_child_if_qss make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither dependent.no nor dependent.own_child_if_qss ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.dependent.dependent.child_all_year.no.then2` (replace an operand, dependent.dependent.child_all_year): Branch settled by its guard: where dependent.child_all_year takes alternative 2 (guard {
+  "eq": [
+    "dependent.relationship",
+    {
+      "const": "sibling_descendant"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that dependent.no and dependent.own_child_if_qss make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither dependent.no nor dependent.own_child_if_qss ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.dependent.dependent.child_all_year.no.then3` (replace an operand, dependent.dependent.child_all_year): Branch settled by its guard: where dependent.child_all_year takes alternative 3 (guard {
+  "eq": [
+    "dependent.relationship",
+    {
+      "const": "parent"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that dependent.no and dependent.own_child_if_qss make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither dependent.no nor dependent.own_child_if_qss ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.dependent.dependent.child_all_year.no.then4` (replace an operand, dependent.dependent.child_all_year): Branch settled by its guard: where dependent.child_all_year takes alternative 4 (guard {
+  "eq": [
+    "dependent.relationship",
+    {
+      "const": "parent_relative"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that dependent.no and dependent.own_child_if_qss make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither dependent.no nor dependent.own_child_if_qss ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.dependent.dependent.child_all_year.no.then5` (replace an operand, dependent.dependent.child_all_year): Branch settled by its guard: where dependent.child_all_year takes alternative 5 (guard {
+  "eq": [
+    "dependent.relationship",
+    {
+      "const": "in_law"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that dependent.no and dependent.own_child_if_qss make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither dependent.no nor dependent.own_child_if_qss ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.dependent.dependent.child_all_year.no.then6` (replace an operand, dependent.dependent.child_all_year): Branch settled by its guard: where dependent.child_all_year takes alternative 6 (guard {
+  "eq": [
+    "dependent.relationship",
+    {
+      "const": "household_member"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that dependent.no and dependent.own_child_if_qss make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither dependent.no nor dependent.own_child_if_qss ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.dependent.dependent.child_all_year.no.then7` (replace an operand, dependent.dependent.child_all_year): Branch settled by its guard: where dependent.child_all_year takes alternative 7 (guard {
+  "eq": [
+    "dependent.relationship",
+    {
+      "const": "other"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that dependent.no and dependent.own_child_if_qss make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither dependent.no nor dependent.own_child_if_qss ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
 - `operand.dependent.dependent.married_screen_qr.no` (replace an operand, dependent.dependent.married_screen_qr): married_screen_qr is a copy of dependent.no (the parameter household.no, false) behind its refusal gate dependent.married; the mutant reads married_if_ever_married_qc in place of dependent.no. married_screen_qr is read only by married_if_ever_married_qr, a choice on the input ever_married whose true alternative is married_screen_qr and whose false alternative is dependent.no. The copy is evaluated only where married was a known false (spec 4.7.1), memoized in the dependent's frame (spec 4.7.6). Through the reader ever_married is a known true, so married_if_ever_married_qc takes its own ever_married-true alternative, married_screen_qc, a copy of dependent.no behind the same gate dependent.married, a known false: false, the value of dependent.no. Where ever_married is unknown both alternatives of married_if_ever_married_qr are ways (spec 4.7.3) and dependent.no is no refusal, so the reader is that unknown on both routes; where it is false or a refusal the reader does not read married_screen_qr. married_screen_qr's own value differs only where ever_married is unknown and married false, where nothing reads it. (Premises pinned: dependent.married_screen_qr, dependent.married_if_ever_married_qr, dependent.married_if_ever_married_qc, dependent.married_screen_qc, dependent.married, dependent.ever_married, dependent.no, param:household.no; the mutant reads dependent.married_if_ever_married_qc.) (structural conditions re-checked this run.)
 - `operand.dependent.dependent.married_if_ever_married_qr.married_screen_qr.then0` (replace an operand, dependent.dependent.married_if_ever_married_qr): Branch settled by its guard: where dependent.married_if_ever_married_qr takes alternative 0 (guard {
   "eq": [
@@ -782,46 +853,9 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
 - `operand.f7203.f7203.l3j.zero` (replace an operand, f7203.f7203.l3j): Copy-chain identity: f7203.zero and f7203.l3i expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f7203.f7203.l3m.zero` (replace an operand, f7203.f7203.l3m): Copy-chain identity: f7203.zero and f7203.l3l expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f7203.f7203.l8c.zero` (replace an operand, f7203.f7203.l8c): Copy-chain identity: f7203.zero and f7203.l8b expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `operand.f7203.f7203.c35.zero.then1` (replace an operand, f7203.f7203.c35): Branch settled by its guard: where f7203.c35 takes alternative 1 (guard {
-  "eq": [
-    "f7203.has_loss",
-    {
-      "const": false
-    }
-  ],
-  "op": "test"
-}
-), the lines that guard compares are complete and fix the choices that f7203.zero and f7203.a47 make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither f7203.zero nor f7203.a47 ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
-- `operand.f7203.f7203.c36.zero.then1` (replace an operand, f7203.f7203.c36): Branch settled by its guard: where f7203.c36 takes alternative 1 (guard {
-  "eq": [
-    "f7203.has_loss",
-    {
-      "const": false
-    }
-  ],
-  "op": "test"
-}
-), the lines that guard compares are complete and fix the choices that f7203.zero and f7203.c35 make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither f7203.zero nor f7203.c35 ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
-- `operand.f7203.f7203.c37.zero.then1` (replace an operand, f7203.f7203.c37): Branch settled by its guard: where f7203.c37 takes alternative 1 (guard {
-  "eq": [
-    "f7203.has_loss",
-    {
-      "const": false
-    }
-  ],
-  "op": "test"
-}
-), the lines that guard compares are complete and fix the choices that f7203.zero and f7203.c36 make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither f7203.zero nor f7203.c36 ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
-- `operand.f7203.f7203.c38.zero.then1` (replace an operand, f7203.f7203.c38): Branch settled by its guard: where f7203.c38 takes alternative 1 (guard {
-  "eq": [
-    "f7203.has_loss",
-    {
-      "const": false
-    }
-  ],
-  "op": "test"
-}
-), the lines that guard compares are complete and fix the choices that f7203.zero and f7203.c37 make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither f7203.zero nor f7203.c37 ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.f7203.f7203.room36.c35` (replace an operand, f7203.f7203.room36): Guarded figure: f7203.c35 is f7203.c35_k wherever f7203.has_loss holds, and every printed line reads f7203.room36 (a helper) only through choices whose guards make f7203.has_loss true, which, where a guard is unknown, are that unknown whatever f7203.room36 is (another alternative still possible never refuses, or neither operand ever refuses; spec 4.7.3), so the replacement changes no printed value; where f7203.has_loss does not hold only f7203.room36's own, unprinted value can differ.
+- `operand.f7203.f7203.room37.c36` (replace an operand, f7203.f7203.room37): Guarded figure: f7203.c36 is f7203.c36_k wherever f7203.has_loss holds, and every printed line reads f7203.room37 (a helper) only through choices whose guards make f7203.has_loss true, which, where a guard is unknown, are that unknown whatever f7203.room37 is (another alternative still possible never refuses, or neither operand ever refuses; spec 4.7.3), so the replacement changes no printed value; where f7203.has_loss does not hold only f7203.room37's own, unprinted value can differ.
+- `operand.f7203.f7203.room38.c37` (replace an operand, f7203.f7203.room38): Guarded figure: f7203.c37 is f7203.c37_k wherever f7203.has_loss holds, and every printed line reads f7203.room38 (a helper) only through choices whose guards make f7203.has_loss true, which, where a guard is unknown, are that unknown whatever f7203.room38 is (another alternative still possible never refuses, or neither operand ever refuses; spec 4.7.3), so the replacement changes no printed value; where f7203.has_loss does not hold only f7203.room38's own, unprinted value can differ.
 - `operand.f7203.f7203.line13.zero` (replace an operand, f7203.f7203.line13): Copy-chain identity: f7203.zero and f7203.line12 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8853c.f8853c.line20.line18` (replace an operand, f8853c.f8853c.line20): Copy-chain identity: f8853c.line18 and f8853c.line17_if_periodic expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8863.f8863.clw3.clw1` (replace an operand, f8863.f8863.clw3): Copy-chain identity: f8863.clw1 and f8863.line18 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -878,24 +912,14 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
 }
 , {
   "eq": [
-    "f8889.coverage_year",
+    "f8889.year_self_answered",
     {
-      "const": "self_only"
+      "const": true
     }
   ],
   "op": "test"
 }
  on its one reader path), f8889.yes and f8889.eligible_all have the same value, through settled choices, copies, comparisons of complete values and arithmetic of zeros, so no printed value changes.
-- `operand.f8889.f8889.ask_spouse_family.no.then2` (replace an operand, f8889.f8889.ask_spouse_family): Unreachable alternative: f8889.ask_spouse_family is a helper that every printed line reads only through choices whose guards make f8889.clear_if_uniform true, and f8889.clear_if_uniform true makes the guard of alternative 2 ({
-  "eq": [
-    "f8889.coverage_year",
-    {
-      "const": "changed"
-    }
-  ],
-  "op": "test"
-}
-) false; where f8889.ask_spouse_family's guards or its readers' are unknown, the choice is that unknown whatever the alternative's value (neither f8889.no nor f8889.sf_married ever refuses; spec 4.7.3); so wherever a printed value depends on f8889.ask_spouse_family that alternative is not taken, and replacing its value changes no printed value.
 - `operand.f8889.f8889.fsf_eligible.no.then1` (replace an operand, f8889.f8889.fsf_eligible): Branch equal under a case split: where f8889.fsf_eligible takes alternative 1 (guard {
   "eq": [
     "f8889.eligible_all",
@@ -925,7 +949,7 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
   "op": "test"
 }
 ), the lines that guard compares are complete and fix the choices that f8889.cov_changed and f8889.coverage_self make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither f8889.cov_changed nor f8889.coverage_self ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
-- `operand.f8889.f8889.age55_unmarried.age55.all.0.eq.0` (replace an operand, f8889.f8889.age55_unmarried): age55_unmarried is all[age55, household.married false]; the mutant reads age55_line3, all[age55, married_family false], in place of age55. married_family is a choose on household.married (family_any_time where true, f8889.no where false), and family_any_time is a choose on full_year (dec_family or some_family_months) over inputs and parameters with no refusal gates (coverage_year and the checks beneath it, dec_coverage, last_month, months_family, and the parameters behind year_same, year_self_only, year_family and no_last_month); household.married and age55 are derived with no refusal gates on the way (household.married a choice on marriage_possible (a choice on the input f1040.status taking the input ever_married or status_states_marriage, a test of the status) taking the input married_dec31 or household.no, the parameter household.no (false); age55 a test of the input person.birth_year against the parameter age.cut_55 and of age55_at_year_end_if_open_year, a choice on age55_open_year (a test of birth_year) taking the input age55_at_year_end or person.no). So none of these lines is a refusal. With married false, married_family is false and age55_line3 is age55. With married true the second conjunct is false on both routes, and the mutant's first conjunct is age55's value or false, never a refusal. With married unknown, married_family is unknown, so age55_line3 is false where age55 is false and otherwise age55's value or unknown, and the second conjunct is unknown: both tests are false where age55 is false and unknown otherwise. (Premises pinned: f8889.age55_unmarried, f8889.age55_line3, f8889.married_family, f8889.age55, household.married, f8889.family_any_time, f8889.dec_family, f8889.some_family_months, f8889.full_year, f8889.year_same, f8889.use_last_month, f8889.dec_coverage_if_changed, f8889.coverage_year, f8889.dec_coverage, f8889.last_month, f8889.no_last_month, f8889.year_self_only, f8889.year_family, f8889.months_family, f8889.coverage, f8889.coverage_self, f8889.coverage_self_spouse, f8889.coverage_family, f8889.eligible_all, f8889.no_fsa, f8889.clear_if_uniform, f8889.fsa_if_clear, f8889.spouse_family_if_asked, f8889.ask_spouse_family, f8889.sf_eligible, f8889.sf_married, f8889.clear_all_year, f8889.fsa, f8889.spouse_family, f8889.cov_self_only, f8889.cov_family, f8889.cov_changed, f8889.no, f8889.yes, param:hsa.no, param:hsa.yes, param:hsa.cov_self_only, param:hsa.cov_family, param:hsa.cov_changed, household.marriage_possible, household.married_dec31, household.ever_married, household.status_states_marriage, household.no, param:household.no, person.age55_at_year_end_if_open_year, person.age55_open_year, person.age55_at_year_end, person.no, param:age.cut_55; the mutant reads f8889.age55_line3.) (structural conditions re-checked this run.)
+- `operand.f8889.f8889.age55_unmarried.age55.all.0.eq.0` (replace an operand, f8889.f8889.age55_unmarried): age55_unmarried is all[age55, household.married false]; the mutant reads age55_line3, all[age55, married_family false], in place of age55. married_family is a choose on household.married (family_any_time where true, f8889.no where false), and family_any_time is a choose on full_year (dec_family or some_family_months) over inputs and parameters with no refusal gates (coverage_year and the checks beneath it, dec_coverage, last_month, months_family, and the parameters behind year_same, year_self_only, year_family and no_last_month); household.married and age55 are derived with no refusal gates on the way (household.married a choice on marriage_possible (a choice on the input f1040.status taking the input ever_married or status_states_marriage, a test of the status) taking the input married_dec31 or household.no, the parameter household.no (false); age55 a test of the input person.birth_year against the parameter age.cut_55 and of age55_at_year_end_if_open_year, a choice on age55_open_year (a test of birth_year) taking the input age55_at_year_end or person.no). So none of these lines is a refusal. With married false, married_family is false and age55_line3 is age55. With married true the second conjunct is false on both routes, and the mutant's first conjunct is age55's value or false, never a refusal. With married unknown, married_family is unknown, so age55_line3 is false where age55 is false and otherwise age55's value or unknown, and the second conjunct is unknown: both tests are false where age55 is false and unknown otherwise. (Premises pinned: f8889.age55_unmarried, f8889.age55_line3, f8889.married_family, f8889.age55, household.married, f8889.family_any_time, f8889.dec_family, f8889.some_family_months, f8889.full_year, f8889.year_same, f8889.use_last_month, f8889.dec_coverage_if_changed, f8889.coverage_year, f8889.dec_coverage, f8889.last_month, f8889.no_last_month, f8889.year_self_only, f8889.year_family, f8889.months_family, f8889.coverage, f8889.coverage_self, f8889.coverage_self_spouse, f8889.coverage_family, f8889.eligible_all, f8889.no_fsa, f8889.clear_if_uniform, f8889.fsa_if_clear, f8889.spouse_family_if_asked, f8889.ask_spouse_family, f8889.year_self_answered, f8889.sf_eligible, f8889.sf_married, f8889.clear_all_year, f8889.fsa, f8889.spouse_family, f8889.cov_self_only, f8889.cov_family, f8889.cov_changed, f8889.no, f8889.yes, param:hsa.no, param:hsa.yes, param:hsa.cov_self_only, param:hsa.cov_family, param:hsa.cov_changed, household.marriage_possible, household.married_dec31, household.ever_married, household.status_states_marriage, household.no, param:household.no, person.age55_at_year_end_if_open_year, person.age55_open_year, person.age55_at_year_end, person.no, param:age.cut_55; the mutant reads f8889.age55_line3.) (structural conditions re-checked this run.)
 - `operand.f8889.f8889.line3_last_month.line3_changed.then0` (replace an operand, f8889.f8889.line3_last_month): Branch settled by its guard: where f8889.line3_last_month takes alternative 0 (guard {
   "eq": [
     "f8889.changed",
@@ -936,9 +960,9 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
   "op": "test"
 }
 ), the lines that guard compares are complete and fix the choices that f8889.line3_changed and f8889.line3_all_year make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither f8889.line3_changed nor f8889.line3_all_year ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
-- `operand.f8889.f8889.family_dec_year.zero.then2` (replace an operand, f8889.f8889.family_dec_year): family_dec_year's none alternative (no December 1 coverage) is f8889.zero; the mutant reads line5. family_dec_year is read only by step1_total, which takes it where full_year is true. full_year is a choose on coverage (the coverage used: the coverage_year answer, turned to changed by the checks beneath it, clear_all_year, fsa and spouse_family, all inputs with no gates): year_same (a parameter) for self_only and family, use_last_month for changed; use_last_month takes no_last_month (the parameter hsa.no_last_month, false) where dec_coverage_if_changed is none; and dec_coverage_if_changed is year_self_only or year_family (the parameters hsa.year_self_only, self_only, and hsa.year_family, family) for those two coverage values and dec_coverage for changed. So full_year true never meets December coverage none, and the changed alternative is not taken there. full_year reads only inputs and parameters with no gates, so it is never a refusal; where it is unknown step1_total's other way, family_counted (the parameter line family_under55 times the input months_family), never refuses, so step1_total is full_year's unknown on both routes (spec 4.7.3). (Premises pinned: f8889.family_dec_year, f8889.step1_total, f8889.full_year, f8889.year_same, f8889.use_last_month, f8889.no_last_month, f8889.last_month, f8889.dec_coverage_if_changed, f8889.coverage_year, f8889.dec_coverage, f8889.year_self_only, f8889.year_family, f8889.family_counted, f8889.family_under55, f8889.months_family, f8889.zero, param:hsa.no_last_month, param:hsa.year_self_only, param:hsa.year_family, f8889.coverage, f8889.coverage_self, f8889.coverage_self_spouse, f8889.coverage_family, f8889.eligible_all, f8889.no_fsa, f8889.clear_if_uniform, f8889.fsa_if_clear, f8889.spouse_family_if_asked, f8889.ask_spouse_family, f8889.sf_eligible, f8889.sf_married, f8889.clear_all_year, f8889.fsa, f8889.spouse_family, f8889.cov_self_only, f8889.cov_family, f8889.cov_changed, f8889.no, f8889.yes, param:hsa.no, param:hsa.yes, param:hsa.cov_self_only, param:hsa.cov_family, param:hsa.cov_changed; the mutant reads f8889.line5.) (structural conditions re-checked this run.)
-- `operand.f8889.f8889.self_dec_year.zero.then2` (replace an operand, f8889.f8889.self_dec_year): self_dec_year's none alternative (no December 1 coverage) is f8889.zero; the mutant reads self_family_months. self_dec_year is read only by self_in_family, which takes it where full_year is true. full_year is a choose on coverage (the coverage used: the coverage_year answer, turned to changed by the checks beneath it, clear_all_year, fsa and spouse_family, all inputs with no gates): year_same (a parameter) for self_only and family, use_last_month for changed; use_last_month takes no_last_month (the parameter hsa.no_last_month, false) where dec_coverage_if_changed is none; and dec_coverage_if_changed is year_self_only or year_family (the parameters hsa.year_self_only, self_only, and hsa.year_family, family) for those two coverage values and dec_coverage for changed. So full_year true never meets December coverage none, and the changed alternative is not taken there. full_year reads only inputs and parameters with no gates, so it is never a refusal; where it is unknown self_in_family's other way, self_family_months (self_amount times the input months_family, reading only inputs and parameters with no refusal gates), never refuses, so self_in_family is full_year's unknown on both routes (spec 4.7.3). (Premises pinned: f8889.self_dec_year, f8889.self_in_family, f8889.full_year, f8889.year_same, f8889.use_last_month, f8889.no_last_month, f8889.last_month, f8889.dec_coverage_if_changed, f8889.coverage_year, f8889.dec_coverage, f8889.year_self_only, f8889.year_family, f8889.self_family_months, f8889.self_amount, f8889.self_55, f8889.self_under55, f8889.age55_line3, f8889.age55, f8889.married_family, household.married, f8889.family_any_time, f8889.dec_family, f8889.some_family_months, f8889.months_family, f8889.zero, param:hsa.no_last_month, param:hsa.year_self_only, param:hsa.year_family, f8889.coverage, f8889.coverage_self, f8889.coverage_self_spouse, f8889.coverage_family, f8889.eligible_all, f8889.no_fsa, f8889.clear_if_uniform, f8889.fsa_if_clear, f8889.spouse_family_if_asked, f8889.ask_spouse_family, f8889.sf_eligible, f8889.sf_married, f8889.clear_all_year, f8889.fsa, f8889.spouse_family, f8889.cov_self_only, f8889.cov_family, f8889.cov_changed, f8889.no, f8889.yes, param:hsa.no, param:hsa.yes, param:hsa.cov_self_only, param:hsa.cov_family, param:hsa.cov_changed, household.marriage_possible, household.married_dec31, household.ever_married, household.status_states_marriage, household.no, param:household.no, person.age55_at_year_end_if_open_year, person.age55_open_year, person.age55_at_year_end, person.no, param:age.cut_55; the mutant reads f8889.self_family_months.) (structural conditions re-checked this run.)
-- `operand.f8889.f8889.testing_failed_figured.no.then1` (replace an operand, f8889.f8889.testing_failed_figured): testing_failed_figured's alternative for testing_if_asked false is f8889.no (the parameter hsa.no, false); the mutant reads testing_prior_if_asked. testing_if_asked is any[ira_failed true, testing_prior_if_asked true], a known false only where both disjuncts are known false, so where the false alternative is taken testing_prior_if_asked is false, f8889.no's value. Nothing testing_if_asked reads has a refusal gate (ira_failed, testing_prior_if_asked, ask_last_month_prior, ask_testing, not_covered_12 and the coverage lines beneath them read only inputs and parameters with no refusal gates), so it is never a refusal; where it is unknown both alternatives are ways (spec 4.7.3), neither route's ways (not_covered_12 with f8889.no, or with testing_prior_if_asked) refuse, and testing_failed_figured is that unknown on both routes. (Premises pinned: f8889.testing_failed_figured, f8889.testing_if_asked, f8889.not_covered_12, f8889.ira_failed, f8889.testing_prior_if_asked, f8889.covered_12, f8889.no, f8889.yes, f8889.ira_gap_if_prior, f8889.ask_last_month_prior, f8889.testing_prior, f8889.coverage, f8889.all_year, f8889.ira_prior_if_asked, f8889.ira_gap, f8889.ask_testing, f8889.coverage_year, f8889.coverage_self, f8889.coverage_family, f8889.cov_changed, f8889.months_eligible, f8889.ira_prior, f8889.any, f8889.eligible_all, f8889.coverage_self_spouse, f8889.cov_family, f8889.line2, sales.zero, f8889.line9, f8889.clear_if_uniform, f8889.no_fsa, f8889.spouse_family_if_asked, f8889.cov_self_only, f8889.clear_all_year, f8889.fsa_if_clear, f8889.ask_spouse_family, f8889.spouse_family, f8889.fsa, f8889.sf_eligible, f8889.sf_married, household.married, household.marriage_possible, household.married_dec31, household.no, f1040.status, household.ever_married, household.status_states_marriage, param:hsa.no, param:hsa.yes, param:hsa.cov_changed, param:hsa.cov_family, param:sales.zero, param:hsa.cov_self_only, param:household.no; the mutant reads f8889.testing_prior_if_asked.) (structural conditions re-checked this run.)
+- `operand.f8889.f8889.family_dec_year.zero.then2` (replace an operand, f8889.f8889.family_dec_year): family_dec_year's none alternative (no December 1 coverage) is f8889.zero; the mutant reads line5. family_dec_year is read only by step1_total, which takes it where full_year is true. full_year is a choose on coverage (the coverage used: the coverage_year answer, turned to changed by the checks beneath it, clear_all_year, fsa and spouse_family, all inputs with no gates): year_same (a parameter) for self_only and family, use_last_month for changed; use_last_month takes no_last_month (the parameter hsa.no_last_month, false) where dec_coverage_if_changed is none; and dec_coverage_if_changed is year_self_only or year_family (the parameters hsa.year_self_only, self_only, and hsa.year_family, family) for those two coverage values and dec_coverage for changed. So full_year true never meets December coverage none, and the changed alternative is not taken there. full_year reads only inputs and parameters with no gates, so it is never a refusal; where it is unknown step1_total's other way, family_counted (the parameter line family_under55 times the input months_family), never refuses, so step1_total is full_year's unknown on both routes (spec 4.7.3). (Premises pinned: f8889.family_dec_year, f8889.step1_total, f8889.full_year, f8889.year_same, f8889.use_last_month, f8889.no_last_month, f8889.last_month, f8889.dec_coverage_if_changed, f8889.coverage_year, f8889.dec_coverage, f8889.year_self_only, f8889.year_family, f8889.family_counted, f8889.family_under55, f8889.months_family, f8889.zero, param:hsa.no_last_month, param:hsa.year_self_only, param:hsa.year_family, f8889.coverage, f8889.coverage_self, f8889.coverage_self_spouse, f8889.coverage_family, f8889.eligible_all, f8889.no_fsa, f8889.clear_if_uniform, f8889.fsa_if_clear, f8889.spouse_family_if_asked, f8889.ask_spouse_family, f8889.year_self_answered, f8889.sf_eligible, f8889.sf_married, f8889.clear_all_year, f8889.fsa, f8889.spouse_family, f8889.cov_self_only, f8889.cov_family, f8889.cov_changed, f8889.no, f8889.yes, param:hsa.no, param:hsa.yes, param:hsa.cov_self_only, param:hsa.cov_family, param:hsa.cov_changed; the mutant reads f8889.line5.) (structural conditions re-checked this run.)
+- `operand.f8889.f8889.self_dec_year.zero.then2` (replace an operand, f8889.f8889.self_dec_year): self_dec_year's none alternative (no December 1 coverage) is f8889.zero; the mutant reads self_family_months. self_dec_year is read only by self_in_family, which takes it where full_year is true. full_year is a choose on coverage (the coverage used: the coverage_year answer, turned to changed by the checks beneath it, clear_all_year, fsa and spouse_family, all inputs with no gates): year_same (a parameter) for self_only and family, use_last_month for changed; use_last_month takes no_last_month (the parameter hsa.no_last_month, false) where dec_coverage_if_changed is none; and dec_coverage_if_changed is year_self_only or year_family (the parameters hsa.year_self_only, self_only, and hsa.year_family, family) for those two coverage values and dec_coverage for changed. So full_year true never meets December coverage none, and the changed alternative is not taken there. full_year reads only inputs and parameters with no gates, so it is never a refusal; where it is unknown self_in_family's other way, self_family_months (self_amount times the input months_family, reading only inputs and parameters with no refusal gates), never refuses, so self_in_family is full_year's unknown on both routes (spec 4.7.3). (Premises pinned: f8889.self_dec_year, f8889.self_in_family, f8889.full_year, f8889.year_same, f8889.use_last_month, f8889.no_last_month, f8889.last_month, f8889.dec_coverage_if_changed, f8889.coverage_year, f8889.dec_coverage, f8889.year_self_only, f8889.year_family, f8889.self_family_months, f8889.self_amount, f8889.self_55, f8889.self_under55, f8889.age55_line3, f8889.age55, f8889.married_family, household.married, f8889.family_any_time, f8889.dec_family, f8889.some_family_months, f8889.months_family, f8889.zero, param:hsa.no_last_month, param:hsa.year_self_only, param:hsa.year_family, f8889.coverage, f8889.coverage_self, f8889.coverage_self_spouse, f8889.coverage_family, f8889.eligible_all, f8889.no_fsa, f8889.clear_if_uniform, f8889.fsa_if_clear, f8889.spouse_family_if_asked, f8889.ask_spouse_family, f8889.year_self_answered, f8889.sf_eligible, f8889.sf_married, f8889.clear_all_year, f8889.fsa, f8889.spouse_family, f8889.cov_self_only, f8889.cov_family, f8889.cov_changed, f8889.no, f8889.yes, param:hsa.no, param:hsa.yes, param:hsa.cov_self_only, param:hsa.cov_family, param:hsa.cov_changed, household.marriage_possible, household.married_dec31, household.ever_married, household.status_states_marriage, household.no, param:household.no, person.age55_at_year_end_if_open_year, person.age55_open_year, person.age55_at_year_end, person.no, param:age.cut_55; the mutant reads f8889.self_family_months.) (structural conditions re-checked this run.)
+- `operand.f8889.f8889.testing_failed_figured.no.then1` (replace an operand, f8889.f8889.testing_failed_figured): testing_failed_figured's alternative for testing_if_asked false is f8889.no (the parameter hsa.no, false); the mutant reads testing_prior_if_asked. testing_if_asked is any[ira_failed true, testing_prior_if_asked true], a known false only where both disjuncts are known false, so where the false alternative is taken testing_prior_if_asked is false, f8889.no's value. Nothing testing_if_asked reads has a refusal gate (ira_failed, testing_prior_if_asked, ask_last_month_prior, ask_testing, not_covered_12 and the coverage lines beneath them read only inputs and parameters with no refusal gates), so it is never a refusal; where it is unknown both alternatives are ways (spec 4.7.3), neither route's ways (not_covered_12 with f8889.no, or with testing_prior_if_asked) refuse, and testing_failed_figured is that unknown on both routes. (Premises pinned: f8889.testing_failed_figured, f8889.testing_if_asked, f8889.not_covered_12, f8889.ira_failed, f8889.testing_prior_if_asked, f8889.covered_12, f8889.no, f8889.yes, f8889.ira_gap_if_prior, f8889.ask_last_month_prior, f8889.testing_prior, f8889.coverage, f8889.all_year, f8889.ira_prior_if_asked, f8889.ira_gap, f8889.ask_testing, f8889.coverage_year, f8889.coverage_self, f8889.coverage_family, f8889.cov_changed, f8889.months_eligible, f8889.ira_prior, f8889.any, f8889.eligible_all, f8889.coverage_self_spouse, f8889.cov_family, f8889.line2, sales.zero, f8889.line9, f8889.clear_if_uniform, f8889.no_fsa, f8889.spouse_family_if_asked, f8889.cov_self_only, f8889.clear_all_year, f8889.fsa_if_clear, f8889.ask_spouse_family, f8889.year_self_answered, f8889.spouse_family, f8889.fsa, f8889.sf_eligible, f8889.sf_married, household.married, household.marriage_possible, household.married_dec31, household.no, f1040.status, household.ever_married, household.status_states_marriage, param:hsa.no, param:hsa.yes, param:hsa.cov_changed, param:hsa.cov_family, param:sales.zero, param:hsa.cov_self_only, param:household.no; the mutant reads f8889.testing_prior_if_asked.) (structural conditions re-checked this run.)
 - `operand.f8889.f8889.line16_figured.line15` (replace an operand, f8889.f8889.line16_figured): Guarded figure: f8889.line15 is f8889.line15_dist wherever f8889.has_dist holds, and every printed line reads f8889.line16_figured (a helper) only through choices whose guards make f8889.has_dist true, which, where a guard is unknown, are that unknown whatever f8889.line16_figured is (another alternative still possible never refuses, or neither operand ever refuses; spec 4.7.3), so the replacement changes no printed value; where f8889.has_dist does not hold only f8889.line16_figured's own, unprinted value can differ.
 - `operand.f8889.f8889.line16.zero.then1` (replace an operand, f8889.f8889.line16): Branch settled by its guard: where f8889.line16 takes alternative 1 (guard {
   "eq": [
@@ -1009,6 +1033,45 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
 - `operand.household.household.hoh_community_property.no.then4` (replace an operand, household.household.hoh_community_property): hoh_community_property is a choice on the filing status: hoh takes hoh_cp_married and every other status takes household.no (the parameter household.no, false); the mutant reads household.cp_any in place of household.no for qss. hoh_community_property is read only by hoh_eligible, as its second refusal gate, and hoh_eligible only by hoh_fails, all[status hoh, hoh_eligible false], whose first conjunct is false wherever the status is qss (an all-test stops at a false conjunct), so hoh_eligible is not read there and the mutated alternative changes no line that reads it. Where the status is unknown every alternative is a way (spec 4.7.3): the other alternatives that take household.no never refuse, so hoh_community_property is the status's unknown on both routes whatever household.cp_any is; where the status is hoh both routes take hoh_cp_married. The status is an input with no refusal gates. (Premises pinned: household.hoh_community_property, household.hoh_eligible, household.hoh_fails, household.hoh_cp_married, household.cp_any, household.no, f1040.status, param:household.no; the mutant reads household.cp_any.) (structural conditions re-checked this run.)
 - `operand.household.household.hoh_missed_test2.no.then1` (replace an operand, household.household.hoh_missed_test2): hoh_missed_test2 is a choice on household.dependents_any: true takes hoh_missed_cost, false takes household.no (the parameter household.no, false); the mutant reads hoh_missed_person in place of household.no. dependents_any is dependents_listed more than 0, and dependents_listed sums dependent.one (the parameter dependent.one, 1) over the dependent roster with no filter, so dependents_any is a known false only where the roster is known to be empty. There test2_lived_persons and test2_absence_persons, sums of dependent.one over the same empty roster, are both 0, and hoh_missed_person (test2_lived_persons more than test2_absence_persons) is false, household.no's value. dependents_listed reads only the roster and a parameter and has no refusal gate, so dependents_any is never a refusal. Where it is unknown (the roster not given) both alternatives are ways (spec 4.7.3), and a choose is a refusal only when every way is: household.no never refuses, and hoh_missed_person, two sums over a roster not given, is an unknown and no refusal, so on both routes hoh_missed_test2 is dependents_any's unknown, unchanged. So hoh_missed_test2 has the same value on both routes wherever it is evaluated, and its readers, the gate hoh_missed and hoh_missed_mfs_test2 (a choice on it), receive that value on both. (Premises pinned: household.hoh_missed_test2, household.hoh_missed, household.hoh_missed_mfs_test2, household.dependents_any, household.dependents_listed, dependent.one, param:dependent.one, household.hoh_missed_cost, household.hoh_missed_person, household.test2_lived_persons, household.test2_absence_persons, household.no, param:household.no; the mutant reads household.hoh_missed_person.) (structural conditions re-checked this run.)
 - `operand.household.household.hoh_missed_mfs.no.then1` (replace an operand, household.household.hoh_missed_mfs): hoh_missed_mfs is a choice on household.mfs (the filing status equal to mfs; the status is an input with no refusal gates, so mfs is never a refusal): true takes hoh_missed_mfs_listed, false takes household.no (the parameter household.no, false); the mutant reads household.hoh_missed in place of household.no. hoh_missed_mfs is read only by household.hoh_fails, as the second of its two refusal gates; the first is hoh_missed. A line's gates are evaluated at entry in order, and a gate that is true, a refusal or unknown ends them (spec 4.7.1), so hoh_missed_mfs is evaluated only where hoh_missed is a known false, memoized in the same frame (spec 4.7.6): with mfs false the mutant's alternative is false, the value of household.no. A refused guard ends the choose with its refusal on both routes. Where mfs is unknown both alternatives are ways (spec 4.7.3); neither household.no nor hoh_missed (a known false) refuses, so hoh_missed_mfs is that unknown on both routes. The interview's reach pass also evaluates the gates after an unanswered first gate, but only a later gate that is true or a refusal changes what it does; there hoh_missed is unknown, so the base's false and the mutant's alternative (hoh_missed's unknown, or with mfs unknown hoh_missed_mfs's unknown on both routes) are neither, and no new input is read (hoh_missed is memoized). (Premises pinned: household.hoh_missed_mfs, household.hoh_fails, household.hoh_missed, household.mfs, f1040.status, household.no, param:household.no; the mutant reads household.hoh_missed.) (structural conditions re-checked this run.)
+- `operand.household.household.qss_no_child_notice.qss_no_child.then0` (replace an operand, household.household.qss_no_child_notice): Unreachable alternative: household.qss_no_child_notice is a helper that every printed line reads only through choices whose guards make household.ask_spouse_cp_domicile true, and household.ask_spouse_cp_domicile true makes the guard of alternative 0 ({
+  "eq": [
+    "household.qss_claimed",
+    {
+      "const": true
+    }
+  ],
+  "op": "test"
+}
+) false; where household.qss_no_child_notice's guards or its readers' are unknown, the choice is that unknown whatever the alternative's value (neither household.qss_no_child nor household.qss ever refuses; spec 4.7.3); so wherever a printed value depends on household.qss_no_child_notice that alternative is not taken, and replacing its value changes no printed value.
+- `operand.household.household.qss_no_child_notice.no.then1` (replace an operand, household.household.qss_no_child_notice): Unreachable alternative: household.qss_no_child_notice is a helper that every printed line reads only through choices whose guards make household.qss_claimed true, and household.qss_claimed true makes the guard of alternative 1 ({
+  "eq": [
+    "household.qss_claimed",
+    {
+      "const": false
+    }
+  ],
+  "op": "test"
+}
+) false; where household.qss_no_child_notice's guards or its readers' are unknown, the choice is that unknown whatever the alternative's value (neither household.no nor household.qss ever refuses; spec 4.7.3); so wherever a printed value depends on household.qss_no_child_notice that alternative is not taken, and replacing its value changes no printed value.
+- `operand.household.household.qss_child_conflict_if_claimed.no.then1` (replace an operand, household.household.qss_child_conflict_if_claimed): Branch equal under a case split: where household.qss_child_conflict_if_claimed takes alternative 1 (guard {
+  "eq": [
+    "household.qss_eligible",
+    {
+      "const": false
+    }
+  ],
+  "op": "test"
+}
+) and its value can reach a printed line (guards {
+  "eq": [
+    "household.qss",
+    {
+      "const": true
+    }
+  ],
+  "op": "test"
+}
+ on its one reader path), household.no and household.qss_no_child_notice have the same value, through settled choices, copies, comparisons of complete values and arithmetic of zeros, so no printed value changes.
 - `operand.household.household.widowed_this_year.no.then1` (replace an operand, household.household.widowed_this_year): Branch settled by its guard: where household.widowed_this_year takes alternative 1 (guard {
   "eq": [
     "f1040.status",
@@ -1101,6 +1164,9 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
   "op": "test"
 }
 ), the lines that guard compares are complete and fix the choices that ira.zero and ira.line7a make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since the values compared, or another alternative still possible, cannot refuse while the guard is unknown (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.ira.ira.roth_reduced.roth_magi.any.0.all.1.ge.0` (replace an operand, ira.ira.roth_reduced): Copy-chain identity: ira.roth_magi and ira.line5 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.ira.ira.roth_reduced.roth_magi.any.1.all.1.ge.0` (replace an operand, ira.ira.roth_reduced): Copy-chain identity: ira.roth_magi and ira.line5 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.ira.ira.roth_reduced.roth_magi.any.2.all.2.gt.0` (replace an operand, ira.ira.roth_reduced): Copy-chain identity: ira.roth_magi and ira.line5 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.ira.ira.combat_gate.no.then1` (replace an operand, ira.ira.combat_gate): Branch equal under a case split: where ira.combat_gate takes alternative 1 (guard {
   "eq": [
     "ira.any_trad",
@@ -1546,6 +1612,16 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
   "op": "test"
 }
 ), person.no and person.ira_has have the same value, through settled choices, copies, comparisons of complete values and arithmetic of zeros, so the mutated line is unchanged at every input.
+- `operand.person.person.ira_roth_income.no.then1` (replace an operand, person.person.ira_roth_income): Branch settled by its guard: where person.ira_roth_income takes alternative 1 (guard {
+  "eq": [
+    "person.ira_roth_has",
+    {
+      "const": false
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that person.no and person.ira_roth_over make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since the values compared, or another alternative still possible, cannot refuse while the guard is unknown (spec 4.7.3); so the mutated line is unchanged at every input.
 - `operand.person.person.ira_dist_gate.no.then1` (replace an operand, person.person.ira_dist_gate): ira_dist_gate is a choice on ira_has (ira_contrib more than $0): true takes ira_dist_if_files, false takes person.no (the parameter household.no, false); the mutant reads ira_basis_gate, all[ira_files_8606, ira_basis_adjusted], in place of person.no. ira_contrib reads inputs with no refusal gates (ira_trad, and sav_trad through the gate sav_trad_if_ira_owner, a choice on the input ira_owner whose other alternative is person.no), so ira_has is never a refusal. With ira_has a known false (memoized, spec 4.7.6), ira_nondeductible, a choice on ira_has whose false alternative is person.zero, is $0, ira_files_8606 (ira_nondeductible more than $0) is false, and ira_basis_gate, an all-test whose first conjunct is ira_files_8606 true, is false, the value of person.no. Where ira_has is unknown both alternatives are ways (spec 4.7.3): ira_nondeductible is then unknown (its person.zero way never refuses), ira_files_8606 is unknown, and ira_basis_gate is false or unknown (ira_basis_adjusted is an input with no refusal gates), never a refusal, so ira_dist_gate is that unknown on both routes. (Premises pinned: person.ira_dist_gate, person.ira_has, person.ira_contrib, person.ira_dist_if_files, person.ira_basis_gate, person.ira_files_8606, person.ira_nondeductible, person.ira_basis_adjusted, person.zero, person.no, param:household.no, person.sav_trad_if_ira_owner, person.ira_owner, person.sav_trad, person.ira_trad; the mutant reads person.ira_basis_gate.) (structural conditions re-checked this run.)
 - `operand.person.person.ira_se.zero.then1` (replace an operand, person.person.ira_se): person.ira_se's has_sc-false alternative is person.zero; the mutant reads person.ira_se_take, the sum of se_line13 and s16. With has_sc known false both take person.zero, so the sum is $0. Where has_sc is unknown: has_sc is sc_count more than 0, sc_count a sum of sc.one (a parameter) over the person's Schedule C entries with no filter, so it is complete wherever that roster is confirmed and unknown, without a lower bound, only where it is not; person.se_rrta sums sc.one over the same roster (where sc.rrta), so it is unknown there too; se_line13's gate se_rrta is unknown, so se_line13 is unknown at line entry, and s16 is a choice on has_sc with a person.zero alternative, so it is unknown (spec 4.7.3); ira_se_take is then unknown, never a refusal, and ira_se is has_sc's unknown on both routes. (Premises pinned: person.ira_se, person.ira_se_take, person.se_line13, person.s16, person.has_sc, person.sc_count, person.se_rrta, person.sc_rrta_count, person.zero, sc.one, param:sc.one; the mutant reads person.ira_se_take.) (structural conditions re-checked this run.)
 - `operand.person.person.edu_adj.zero.then1` (replace an operand, person.person.edu_adj): edu_adj's edu_student-false alternative: edu_student is then known false (memoized). edu_adj's other reader, edu_has_adj (edu_adj more than $0), is read only by edu_over_if_adj, which only edu_over_refused reads, in its edu_student-true alternative; edu_over_refused is a choice on edu_student whose false alternative is edu_no, the year parameter edu.no (false), so it is false without reading edu_adj. Lines 27 to 30 read edu_adj only in the alternative guarded by edu_aoc true; edu_aoc is a choice on edu_student whose false alternative is edu_no, so edu_aoc is false. Line 31 reads it only in the alternative guarded by edu_llc true, an all-test whose first conjunct is edu_student true, so edu_llc is false. Those alternatives (and their bindings) are not evaluated (spec 4.7.3, 4.7.4). Where edu_student is unknown, edu_adj's other alternative, edu_adj_sum (a sum of three inputs with no refusal gates, edu_a_this_year, edu_a_next_year and edu_refunds), never refuses, so edu_adj is that unknown on both routes (spec 4.7.3). edu_adj, edu_has_adj and edu_over_if_adj are helpers. (Premises pinned: person.edu_adj, person.edu_adj_sum, person.edu_student, person.edu_has_adj, person.edu_over_if_adj, person.edu_over_refused, person.edu_aoc, person.edu_no, person.edu_llc, person.edu_line27, person.edu_line28, person.edu_line29, person.edu_line30, person.edu_line31, person.zero, param:edu.no, person.edu_a_this_year, person.edu_a_next_year, person.edu_refunds; the mutant reads person.ira_se.) (structural conditions re-checked this run.)
@@ -1798,16 +1874,6 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
 }
 ), the lines that guard compares are complete and fix the choices that s1a.zero and s1a.tips_total make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since the values compared, or another alternative still possible, cannot refuse while the guard is unknown (spec 4.7.3); so the mutated line is unchanged at every input.
 - `operand.s1a.s1a.tips_magi.line8_calc.then1` (replace an operand, s1a.s1a.tips_magi): Copy-chain identity: s1a.line8_calc and s1a.line3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `operand.s1a.s1a.line9_calc.base_other.then2` (replace an operand, s1a.s1a.line9_calc): Unreachable alternative: s1a.line9_calc is a helper that every printed line reads only through choices whose guards make s1a.part2 true, and s1a.part2 true makes the guard of alternative 2 ({
-  "eq": [
-    "f1040.status",
-    {
-      "const": "mfs"
-    }
-  ],
-  "op": "test"
-}
-) false; where s1a.line9_calc's guards or its readers' are unknown, the choice is that unknown whatever the alternative's value (neither s1a.base_other nor s1a.tips_max ever refuses; spec 4.7.3); so wherever a printed value depends on s1a.line9_calc that alternative is not taken, and replacing its value changes no printed value.
 - `operand.s1a.s1a.line10_calc.tips_magi` (replace an operand, s1a.s1a.line10_calc): Guarded figure: s1a.tips_magi is s1a.line8_calc wherever s1a.part2 holds, and every printed line reads s1a.line10_calc (a helper) only through choices whose guards make s1a.part2 true, which, where a guard is unknown, are that unknown whatever s1a.line10_calc is (another alternative still possible never refuses, or neither operand ever refuses; spec 4.7.3), so the replacement changes no printed value; where s1a.part2 does not hold only s1a.line10_calc's own, unprinted value can differ.
 - `operand.s1a.s1a.tips_over.zero.then0` (replace an operand, s1a.s1a.tips_over): Branch settled by its guard: where s1a.tips_over takes alternative 0 (guard {
   "eq": [
@@ -1860,26 +1926,6 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
   "op": "test"
 }
 ), the lines that guard compares are complete and fix the choices that s1a.zero and s1a.ot_1099 make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since the values compared, or another alternative still possible, cannot refuse while the guard is unknown (spec 4.7.3); so the mutated line is unchanged at every input.
-- `operand.s1a.s1a.ot_max.ot_max_other.then2` (replace an operand, s1a.s1a.ot_max): Unreachable alternative: s1a.ot_max is a helper that every printed line reads only through choices whose guards make s1a.part3 true, and s1a.part3 true makes the guard of alternative 2 ({
-  "eq": [
-    "f1040.status",
-    {
-      "const": "mfs"
-    }
-  ],
-  "op": "test"
-}
-) false; where s1a.ot_max's guards or its readers' are unknown, the choice is that unknown whatever the alternative's value (the values compared, or another alternative still possible, cannot refuse while the guard is unknown; spec 4.7.3); so wherever a printed value depends on s1a.ot_max that alternative is not taken, and replacing its value changes no printed value.
-- `operand.s1a.s1a.line17_calc.base_other.then2` (replace an operand, s1a.s1a.line17_calc): Unreachable alternative: s1a.line17_calc is a helper that every printed line reads only through choices whose guards make s1a.part3 true, and s1a.part3 true makes the guard of alternative 2 ({
-  "eq": [
-    "f1040.status",
-    {
-      "const": "mfs"
-    }
-  ],
-  "op": "test"
-}
-) false; where s1a.line17_calc's guards or its readers' are unknown, the choice is that unknown whatever the alternative's value (the values compared, or another alternative still possible, cannot refuse while the guard is unknown; spec 4.7.3); so wherever a printed value depends on s1a.line17_calc that alternative is not taken, and replacing its value changes no printed value.
 - `operand.s1a.s1a.ot_threshold.zero.then0` (replace an operand, s1a.s1a.ot_threshold): Branch settled by its guard: where s1a.ot_threshold takes alternative 0 (guard {
   "eq": [
     "s1a.part3",
@@ -1948,16 +1994,6 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
 ), the lines that guard compares are complete and fix the choices that s1a.zero and s1a.line28_thousands make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since the values compared, or another alternative still possible, cannot refuse while the guard is unknown (spec 4.7.3); so the mutated line is unchanged at every input.
 - `operand.s1a.s1a.line30_figured.vli_reduction` (replace an operand, s1a.s1a.line30_figured): Guarded figure: s1a.vli_reduction is s1a.line29_calc wherever s1a.part4 holds, and every printed line reads s1a.line30_figured (a helper) only through choices whose guards make s1a.part4 true, which, where a guard is unknown, are that unknown whatever s1a.line30_figured is (another alternative still possible never refuses, or neither operand ever refuses; spec 4.7.3), so the replacement changes no printed value; where s1a.part4 does not hold only s1a.line30_figured's own, unprinted value can differ.
 - `operand.s1a.s1a.vli_deduction.zero.then0` (replace an operand, s1a.s1a.vli_deduction): s1a.vli_deduction's carloan-false alternative is s1a.zero; the mutant reads s1a.line30_figured, line24 less line29, floored at zero, both choices on s1a.part4 (carloan true) between s1a.zero and their figures. With carloan known false, part4 is false and both are $0, so line30_figured is $0. Where carloan is unknown, part4 is that unknown, line24 and line29 are $0 or unknown, never a refusal (spec 4.7.3), and so is line30_figured; s1a.vli_deduction is then carloan's unknown on both routes. (Premises pinned: s1a.vli_deduction, s1a.line30_figured, s1a.vli_capped, s1a.vli_reduction, s1a.part4, s1a.carloan, s1a.zero; the mutant reads s1a.line30_figured.) (structural conditions re-checked this run.)
-- `operand.s1a.s1a.line32_calc.senior_base_other.then2` (replace an operand, s1a.s1a.line32_calc): Unreachable alternative: s1a.line32_calc is a helper that every printed line reads only through choices whose guards make s1a.part5 true, and s1a.part5 true makes the guard of alternative 2 ({
-  "eq": [
-    "f1040.status",
-    {
-      "const": "mfs"
-    }
-  ],
-  "op": "test"
-}
-) false; where s1a.line32_calc's guards or its readers' are unknown, the choice is that unknown whatever the alternative's value (the values compared, or another alternative still possible, cannot refuse while the guard is unknown; spec 4.7.3); so wherever a printed value depends on s1a.line32_calc that alternative is not taken, and replacing its value changes no printed value.
 - `operand.s1a.s1a.line33_calc.senior_magi` (replace an operand, s1a.s1a.line33_calc): Guarded figure: s1a.senior_magi is s1a.line31_calc wherever s1a.part5 holds, and every printed line reads s1a.line33_calc (a helper) only through choices whose guards make s1a.part5 true, which, where a guard is unknown, are that unknown whatever s1a.line33_calc is (another alternative still possible never refuses, or neither operand ever refuses; spec 4.7.3), so the replacement changes no printed value; where s1a.part5 does not hold only s1a.line33_calc's own, unprinted value can differ.
 - `operand.s1a.s1a.senior_over.zero.then0` (replace an operand, s1a.s1a.senior_over): Branch settled by its guard: where s1a.senior_over takes alternative 0 (guard {
   "eq": [
@@ -2401,157 +2437,162 @@ Known-killed controls (one fixture-killed mutant per line): 88 of 99 rejected by
 
 | Argument | Held to | Sets | Reaching it | Exercising it | Result |
 | --- | --- | --- | --- | --- | --- |
-| operand.asset.asset.s179_bad_test2_test2.over_half.eq.0 | all sets | 699 | 699 | 699 | holds |
-| operand.dependent.dependent.qc_age_younger.younger.then0 | all sets | 3121 | 3034 | 2291 | holds |
-| operand.dependent.dependent.spouse_relative_joint.no.then0 | all sets | 3121 | 1376 | 643 | holds |
-| operand.dependent.dependent.spouse_relative_joint.no.then2 | all sets | 3121 | 1029 | 296 | holds |
-| operand.dependent.dependent.spouse_relative_joint.no.then3 | all sets | 3121 | 1617 | 884 | holds |
-| operand.dependent.dependent.spouse_relative_joint.no.then4 | all sets | 3121 | 929 | 196 | holds |
-| operand.dependent.dependent.qualifying_relative.no.then1 | all sets | 3121 | 209 | 0 | holds |
-| operand.dependent.dependent.qr_dependent.no.then1 | all sets | 3121 | 2861 | 0 | holds |
-| operand.dependent.dependent.odc_person.no.then1 | all sets | 3121 | 2403 | 223 | holds |
-| operand.dependent.dependent.eic_ssn_child.no.then1 | all sets | 3121 | 2614 | 0 | holds |
-| operand.dependent.dependent.dc_line2c.dc_incapable.all.1.eq.0 | answered returns | 483 | 94 | 85 | holds |
-| operand.dependent.dependent.edu_adj.zero.then1 | all sets | 3121 | 3091 | 2150 | holds |
-| operand.dependent.dependent.edu_over_refused.edu_no.then1 | all sets | 3121 | 3091 | 2150 | holds |
-| operand.dependent.dependent.odc_from_tin.no.then1 | all sets | 3121 | 1335 | 90 | holds |
-| operand.dependent.dependent.married_screen_qr.no | all sets | 3121 | 2432 | 2432 | holds |
-| operand.dependent.dependent.married_screen_eic.no | all sets | 3121 | 2432 | 2432 | holds |
-| operand.eic.eic.show_wsb6.self_employed.all.1.eq.0 | all sets | 12184 | 9277 | 9277 | holds |
-| operand.eic.eic.step5_income.earned_for_limit.lt.0 | answered returns | 2313 | 2313 | 2061 | holds |
-| operand.eic.eic.line1.earned_income.then0 | all sets | 12184 | 10676 | 9190 | holds |
-| operand.eic.eic.line1_in_table.line1.ge.0 | all sets | 12184 | 12184 | 12184 | holds |
-| operand.eic.eic.line1_table0.line1.key | all sets | 12184 | 12184 | 12184 | holds |
-| operand.eic.eic.line1_table1.line1.key | all sets | 12184 | 12184 | 12184 | holds |
-| operand.eic.eic.line1_table2.line1.key | all sets | 12184 | 12184 | 12184 | holds |
-| operand.eic.eic.line1_table3.line1.key | all sets | 12184 | 12184 | 12184 | holds |
-| operand.eic.eic.credit.line6.then0 | all sets | 12184 | 503 | 319 | holds |
-| operand.eic.eic.check_27c.has_qc.any.3.all.1.eq.0 | answered returns | 2313 | 492 | 492 | holds; on a partial return: generated return 84 (seed 20261115), answers withheld at rate 0.1: f1040.line27c is unknown with the data and { "cite": { "doc": "i4562", "locator": "p. 5, Line 5, \"If you are married filing separately, you and your spouse must allocate the dollar limitation for the ta... with the mutant |
-| boundary.eic.eic.wsb_4b_positive | all sets | 12184 | 359 | 359 | holds |
-| operand.eic.eic.from_step1_income.no.then1 | all sets | 12184 | 10374 | 1597 | holds |
-| operand.f1116.f1116.line18_shown.line17.gt.0 | all sets | 12184 | 12184 | 0 | holds |
-| operand.f1116.f1116.line24.line23 | all sets | 12184 | 12184 | 0 | holds |
-| operand.f2441.f2441.line13_earned.line20.all.3.gt.1 | all sets | 12184 | 4965 | 4965 | holds |
-| operand.f5695.f5695.part1_any.no.then1 | all sets | 12184 | 3346 | 0 | holds |
-| operand.f5695.f5695.claiming_part1.no.then1 | all sets | 12184 | 12107 | 0 | holds |
-| operand.f8880.f8880.line3a_counted.zero.then1 | answered returns | 2313 | 315 | 19 | holds |
-| operand.f8880.f8880.line3b_counted.zero.then1 | all sets | 12184 | 3380 | 16 | holds |
-| operand.f8889.f8889.bad_months.counts_hold.then0 | all sets | 2681 | 1081 | 92 | holds |
-| operand.f8889.f8889.bad_months.counts_hold.then1 | all sets | 2681 | 1020 | 35 | holds |
-| operand.f8889.f8889.age55_unmarried.age55.all.0.eq.0 | all sets | 2681 | 2681 | 2681 | holds |
-| operand.f8889.f8889.family_dec_year.zero.then2 | all sets | 2681 | 2303 | 1040 | holds |
-| operand.f8889.f8889.self_dec_year.zero.then2 | all sets | 2681 | 2303 | 1040 | holds |
-| operand.f8889.f8889.testing_failed_figured.no.then1 | all sets | 2681 | 2666 | 0 | holds |
-| operand.f8889.f8889.subject.line16.then0 | all sets | 2681 | 2658 | 1449 | holds |
-| operand.f8959.f8959.total_tax.rrta_tax | all sets | 12184 | 11963 | 0 | holds |
-| operand.f8962.f8962.marriage.no.then1 | all sets | 12184 | 8986 | 5960 | holds |
-| operand.f8962.f8962.marriage.no.then2 | all sets | 12184 | 3748 | 722 | holds |
-| operand.f8962.f8962.marriage.no.then3 | all sets | 12184 | 3978 | 952 | holds |
-| operand.f8962.f8962.marriage.no.then4 | all sets | 12184 | 3381 | 355 | holds |
-| operand.f8962.f8962.filing.applicable.all.1.any.0.eq.0 | all sets | 12184 | 1434 | 1434 | holds |
-| operand.f8962.f8962.alien_branch.no.then1 | all sets | 12184 | 11498 | 10766 | holds |
-| operand.household.household.hoh_community_property.no.then1 | all sets | 12184 | 4195 | 1169 | holds |
-| operand.household.household.hoh_community_property.no.then2 | all sets | 12184 | 3748 | 722 | holds |
-| operand.household.household.hoh_community_property.no.then4 | all sets | 12184 | 3381 | 355 | holds |
-| operand.household.household.hoh_missed_test2.no.then1 | all sets | 12184 | 9063 | 8304 | holds |
-| operand.household.household.hoh_missed_mfs.no.then1 | all sets | 12184 | 11462 | 8436 | holds |
-| operand.ira.ira.mfs_cov_matters_trad.cov_you.all.1.eq.0 | answered returns | 2313 | 134 | 134 | holds |
-| operand.k1p.k1p.active.decisions_if_asked.all.0.eq.0 | all sets | 329 | 329 | 0 | holds |
-| operand.k1p.k1p.b1_neg.zero | all sets | 329 | 329 | 329 | holds |
-| operand.k1p.k1p.b2_neg.zero | all sets | 329 | 329 | 329 | holds |
-| operand.k1p.k1p.b3_neg.zero | all sets | 329 | 329 | 329 | holds |
-| operand.k1s.k1s.loss1.zero | all sets | 250 | 250 | 250 | holds |
-| operand.k1s.k1s.loss2.zero | all sets | 250 | 250 | 250 | holds |
-| operand.k1s.k1s.loss3.zero | all sets | 250 | 250 | 250 | holds |
-| operand.k1s.k1s.loss7.zero | all sets | 250 | 250 | 250 | holds |
-| operand.k1s.k1s.loss8.zero | all sets | 250 | 250 | 250 | holds |
-| operand.k1s.k1s.np_loss.zero | all sets | 250 | 250 | 250 | holds |
-| operand.k1s.k1s.p1_income.zero | all sets | 250 | 250 | 250 | holds |
-| operand.k1s.k1s.p1_loss.zero | all sets | 250 | 250 | 250 | holds |
-| operand.k1s.k1s.p2_loss.zero | all sets | 250 | 250 | 250 | holds |
-| operand.k1s.k1s.p3_loss.zero | all sets | 250 | 250 | 250 | holds |
-| boundary.person.person.has_educator_expenses | all sets | 11414 | 8834 | 8834 | holds |
-| operand.person.person.has_educator_expenses.educator_expenses_if_educator.gt.0 | all sets | 11414 | 11414 | 11414 | holds |
-| operand.person.person.educator_eligible_amount.zero.then1 | all sets | 11414 | 11344 | 8776 | holds |
-| operand.person.person.f4137_line6.zero.then1 | answered returns | 2313 | 2296 | 2296 | holds |
-| operand.person.person.se_line6.zero.then1 | all sets | 11414 | 9413 | 9333 | holds |
-| operand.person.person.eic_se.zero.then1 | all sets | 11414 | 10044 | 9413 | holds |
-| operand.person.person.dc_earned.eic_se | all sets | 11414 | 11378 | 10008 | holds |
-| operand.person.person.ira_dist_gate.no.then1 | all sets | 11414 | 11294 | 8621 | holds |
-| operand.person.person.ira_se.zero.then1 | all sets | 11414 | 10044 | 9413 | holds |
-| operand.person.person.edu_adj.zero.then1 | all sets | 11414 | 11270 | 8362 | holds |
-| operand.qdcg.qdcg.line8.line7 | all sets | 12184 | 10745 | 0 | holds |
-| boundary.rec.rec.w2a_line5_more | all sets | 12184 | 4565 | 4565 | holds |
-| operand.rec.rec.w2a_line5_more.w2a_line3.gt.0 | all sets | 12184 | 12184 | 3 | holds |
-| operand.rec.rec.w2a_line7_capped.zero.then1 | all sets | 12184 | 12179 | 4572 | holds |
-| operand.rec.rec.w2a_line8_capped.zero.then1 | all sets | 12184 | 12179 | 4572 | holds |
-| operand.rec.rec.to_line1.zero.then1 | answered returns | 2313 | 2288 | 2288 | holds |
-| operand.rental.rental.home_pers10_if_any.zero.then1 | all sets | 392 | 346 | 254 | holds |
-| operand.rental.rental.home.home_pers10_if_any.all.1.gt.0 | answered returns | 95 | 11 | 0 | holds |
-| operand.rental.rental.net_loss.zero | all sets | 392 | 392 | 392 | holds |
-| operand.royalty.royalty.loss_abs.zero | all sets | 46 | 14 | 14 | holds |
-| boundary.s1a.s1a.line10_over | all sets | 12184 | 8820 | 8820 | holds |
-| operand.s1a.s1a.line10_over.tips_threshold.gt.1 | all sets | 12184 | 12184 | 12061 | holds |
-| operand.s1a.s1a.line13_figured.tips_reduction | all sets | 12184 | 12184 | 12061 | holds |
-| operand.s1a.s1a.line13_ssn.zero.then0 | all sets | 12184 | 7344 | 878 | holds |
-| operand.s1a.s1a.line13_claim.line13_ssn.then0 | all sets | 12184 | 8986 | 2358 | holds |
-| operand.s1a.s1a.line13_claim.line13_ssn.then1 | all sets | 12184 | 4195 | 1139 | holds |
-| operand.s1a.s1a.line13_claim.zero.then2 | all sets | 12184 | 3748 | 722 | holds |
-| operand.s1a.s1a.line13_claim.line13_ssn.then3 | all sets | 12184 | 3978 | 323 | holds |
-| operand.s1a.s1a.line13_claim.line13_ssn.then4 | all sets | 12184 | 3381 | 167 | holds |
-| boundary.s1a.s1a.line18_over | all sets | 12184 | 8924 | 8924 | holds |
-| operand.s1a.s1a.line18_over.ot_threshold.gt.1 | all sets | 12184 | 12184 | 12082 | holds |
-| operand.s1a.s1a.line21_figured.ot_reduction | all sets | 12184 | 12184 | 12082 | holds |
-| operand.s1a.s1a.line21_ssn.zero.then0 | all sets | 12184 | 7359 | 882 | holds |
-| operand.s1a.s1a.line21_claim.line21_ssn.then0 | all sets | 12184 | 8986 | 2358 | holds |
-| operand.s1a.s1a.line21_claim.line21_ssn.then1 | all sets | 12184 | 4195 | 1154 | holds |
-| operand.s1a.s1a.line21_claim.zero.then2 | all sets | 12184 | 3748 | 722 | holds |
-| operand.s1a.s1a.line21_claim.line21_ssn.then3 | all sets | 12184 | 3978 | 323 | holds |
-| operand.s1a.s1a.line21_claim.line21_ssn.then4 | all sets | 12184 | 3381 | 167 | holds |
-| boundary.s1a.s1a.line27_over | all sets | 12184 | 8800 | 8800 | holds |
-| operand.s1a.s1a.vli_deduction.zero.then0 | all sets | 12184 | 12053 | 8800 | holds |
-| boundary.s1a.s1a.line33_over | all sets | 12184 | 8411 | 8411 | holds |
-| operand.s1a.s1a.line36a_claim.zero.then2 | all sets | 12184 | 3748 | 722 | holds |
-| operand.s2.s2.amt_rel.zero.then1 | all sets | 12184 | 12001 | 0 | holds |
-| operand.s2.s2.amt_l15.amt_l13.then1 | all sets | 12184 | 10680 | 3049 | holds |
-| operand.s8812.s8812.line18a.chart_eic.then0 | answered returns | 2313 | 217 | 217 | holds; on a partial return: generated return 152 (seed 20261115), answers withheld at rate 0.3: s8812.line19 is { "cite": { "doc": "i1040gi", "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable", "revision": "2025; printed date 2026-02-25", "snapsho... with the data and unknown with the mutant |
-| operand.sa.sa.medical_premiums_if_not_large.no.then1 | all sets | 12184 | 4459 | 1313 | holds |
-| operand.sa.sa.home_other_if_not_owner.no.then1 | all sets | 12184 | 4856 | 1713 | holds |
-| operand.sa.sa.deduction.standard.then1 | all sets | 12184 | 1919 | 0 | holds |
-| operand.sales.sales.bad_aggregate.no.then1 | all sets | 1670 | 1638 | 1154 | holds |
-| boundary.sc.sc.ho_over | all sets | 1508 | 4 | 4 | holds |
-| operand.sc.sc.f7206_line9.zero.then1 | all sets | 1508 | 1188 | 88 | holds |
-| filter.sche.sche.rents | all sets | 12184 | 392 | 87 | holds |
-| filter.sche.sche.rent_income | all sets | 12184 | 392 | 87 | holds |
-| filter.sche.sche.rent_netloss | all sets | 12184 | 392 | 87 | holds |
-| operand.scveh.scveh.claims_bonus_this_year.no.then1 | all sets | 605 | 499 | 0 | holds |
-| operand.scveh.scveh.l5.k5 | all sets | 605 | 566 | 566 | holds |
-| operand.scveh.scveh.d5.l5 | all sets | 605 | 605 | 605 | holds |
-| operand.scveh.scveh.l6.k6 | all sets | 605 | 566 | 566 | holds |
-| operand.scveh.scveh.d6.l6 | all sets | 605 | 605 | 605 | holds |
-| operand.sd.sd.to1040.line21.then0 | all sets | 12184 | 8226 | 0 | holds |
-| operand.sdtw.sdtw.line4.zero.then1 | answered returns | 2313 | 2181 | 2181 | holds |
-| operand.sdtw.sdtw.line17.line16 | all sets | 12184 | 10725 | 0 | holds |
-| operand.sdtw.sdtw.line45.line43 | all sets | 12184 | 10744 | 10139 | holds |
-| boundary.sli.sli.over | all sets | 12184 | 6 | 6 | holds |
-| operand.sli.sli.line9.line8 | all sets | 12184 | 12184 | 11468 | holds |
-| operand.ssb.ssb.show16_18.mfs_together.all.1.any.0.eq.0 | all sets | 12184 | 10872 | 10872 | holds |
-| operand.ssb.ssb.show16_18.past9.all.1.any.1.eq.0 | all sets | 12184 | 10420 | 10420 | holds |
-| operand.ssb.ssb.line16.line16_together.then0 | all sets | 12184 | 3718 | 678 | holds |
-| operand.ssb.ssb.line18.zero.then1 | all sets | 12184 | 11953 | 8772 | holds |
-| boundary.se.positive | all sets | 11414 | 3 | 3 | holds |
-| param.eic.ws_threshold0.joint.$1 | all sets | 12184 | 12184 | 12184 | holds |
-| param.eic.ws_threshold0.other.$1 | all sets | 12184 | 12184 | 12184 | holds |
-| param.eic.ws_threshold1.joint.$1 | all sets | 12184 | 12184 | 12184 | holds |
+| operand.asset.asset.s179_bad_test2_test2.over_half.eq.0 | all sets | 652 | 652 | 652 | holds |
+| operand.dependent.dependent.qc_age_younger.younger.then0 | all sets | 3147 | 3056 | 2341 | holds |
+| operand.dependent.dependent.spouse_relative_joint.no.then0 | all sets | 3147 | 1388 | 653 | holds |
+| operand.dependent.dependent.spouse_relative_joint.no.then2 | all sets | 3147 | 1036 | 301 | holds |
+| operand.dependent.dependent.spouse_relative_joint.no.then3 | all sets | 3147 | 1613 | 878 | holds |
+| operand.dependent.dependent.spouse_relative_joint.no.then4 | all sets | 3147 | 937 | 202 | holds |
+| operand.dependent.dependent.qualifying_relative.no.then1 | all sets | 3147 | 201 | 0 | holds |
+| operand.dependent.dependent.qr_dependent.no.then1 | all sets | 3147 | 2885 | 0 | holds |
+| operand.dependent.dependent.odc_person.no.then1 | all sets | 3147 | 2435 | 220 | holds |
+| operand.dependent.dependent.eic_ssn_child.no.then1 | all sets | 3147 | 2630 | 0 | holds |
+| operand.dependent.dependent.dc_line2c.dc_incapable.all.1.eq.0 | answered returns | 488 | 95 | 86 | holds |
+| operand.dependent.dependent.edu_adj.zero.then1 | all sets | 3147 | 3112 | 2158 | holds |
+| operand.dependent.dependent.edu_over_refused.edu_no.then1 | all sets | 3147 | 3112 | 2158 | holds |
+| operand.dependent.dependent.odc_from_tin.no.then1 | all sets | 3147 | 1371 | 89 | holds |
+| operand.dependent.dependent.married_screen_qr.no | all sets | 3147 | 2422 | 2422 | holds |
+| operand.dependent.dependent.married_screen_eic.no | all sets | 3147 | 2422 | 2422 | holds |
+| operand.eic.eic.show_wsb6.self_employed.all.1.eq.0 | all sets | 12436 | 9417 | 9417 | holds |
+| operand.eic.eic.step5_income.earned_for_limit.lt.0 | answered returns | 2368 | 2368 | 2114 | holds |
+| operand.eic.eic.line1.earned_income.then0 | all sets | 12436 | 10956 | 9429 | holds |
+| operand.eic.eic.line1_in_table.line1.ge.0 | all sets | 12436 | 12436 | 12436 | holds |
+| operand.eic.eic.line1_table0.line1.key | all sets | 12436 | 12436 | 12436 | holds |
+| operand.eic.eic.line1_table1.line1.key | all sets | 12436 | 12436 | 12436 | holds |
+| operand.eic.eic.line1_table2.line1.key | all sets | 12436 | 12436 | 12436 | holds |
+| operand.eic.eic.line1_table3.line1.key | all sets | 12436 | 12436 | 12436 | holds |
+| operand.eic.eic.credit.line6.then0 | all sets | 12436 | 513 | 329 | holds |
+| operand.eic.eic.check_27c.has_qc.any.3.all.1.eq.0 | answered returns | 2368 | 498 | 498 | holds; on a partial return: generated return 9 (seed 20261115), answers withheld at rate 0.1: f1040.line27c is unknown with the data and { "cite": { "doc": "i1040gi", "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable", "revision": "2025; printed date 2026-02-25", "snapsho... with the mutant |
+| boundary.eic.eic.wsb_4b_positive | all sets | 12436 | 366 | 366 | holds |
+| operand.eic.eic.from_step1_income.no.then1 | all sets | 12436 | 10539 | 1631 | holds |
+| operand.f1116.f1116.line18_shown.line17.gt.0 | all sets | 12436 | 12436 | 0 | holds |
+| operand.f1116.f1116.line24.line23 | all sets | 12436 | 12436 | 0 | holds |
+| operand.f2441.f2441.line13_earned.line20.all.3.gt.1 | all sets | 12436 | 5068 | 5068 | holds |
+| operand.f5695.f5695.part1_any.no.then1 | all sets | 12436 | 3365 | 0 | holds |
+| operand.f5695.f5695.claiming_part1.no.then1 | all sets | 12436 | 12365 | 0 | holds |
+| operand.f8880.f8880.line3a_counted.zero.then1 | answered returns | 2368 | 307 | 16 | holds |
+| operand.f8880.f8880.line3b_counted.zero.then1 | all sets | 12436 | 3389 | 17 | holds |
+| operand.f8889.f8889.bad_months.counts_hold.then0 | all sets | 2685 | 1076 | 100 | holds |
+| operand.f8889.f8889.bad_months.counts_hold.then1 | all sets | 2685 | 1012 | 40 | holds |
+| operand.f8889.f8889.age55_unmarried.age55.all.0.eq.0 | all sets | 2685 | 2685 | 2685 | holds |
+| operand.f8889.f8889.family_dec_year.zero.then2 | all sets | 2685 | 2309 | 1039 | holds |
+| operand.f8889.f8889.self_dec_year.zero.then2 | all sets | 2685 | 2309 | 1039 | holds |
+| operand.f8889.f8889.testing_failed_figured.no.then1 | all sets | 2685 | 2670 | 0 | holds |
+| operand.f8889.f8889.subject.line16.then0 | all sets | 2685 | 2663 | 1516 | holds |
+| operand.f8959.f8959.total_tax.rrta_tax | all sets | 12436 | 12201 | 0 | holds |
+| operand.f8962.f8962.marriage.no.then1 | all sets | 12436 | 9208 | 6130 | holds |
+| operand.f8962.f8962.marriage.no.then2 | all sets | 12436 | 3812 | 734 | holds |
+| operand.f8962.f8962.marriage.no.then3 | all sets | 12436 | 4030 | 952 | holds |
+| operand.f8962.f8962.marriage.no.then4 | all sets | 12436 | 3440 | 362 | holds |
+| operand.f8962.f8962.filing.applicable.all.1.any.0.eq.0 | all sets | 12436 | 1467 | 1467 | holds |
+| operand.f8962.f8962.alien_branch.no.then1 | all sets | 12436 | 11747 | 10988 | holds |
+| operand.household.household.hoh_community_property.no.then1 | all sets | 12436 | 4258 | 1180 | holds |
+| operand.household.household.hoh_community_property.no.then2 | all sets | 12436 | 3812 | 734 | holds |
+| operand.household.household.hoh_community_property.no.then4 | all sets | 12436 | 3440 | 362 | holds |
+| operand.household.household.hoh_missed_test2.no.then1 | all sets | 12436 | 9289 | 8522 | holds |
+| operand.household.household.hoh_missed_mfs.no.then1 | all sets | 12436 | 11702 | 8624 | holds |
+| operand.ira.ira.mfs_cov_matters_trad.cov_you.all.1.eq.0 | answered returns | 2368 | 134 | 134 | holds |
+| operand.k1p.k1p.active.decisions_if_asked.all.0.eq.0 | all sets | 349 | 349 | 0 | holds |
+| operand.k1p.k1p.b1_neg.zero | all sets | 349 | 349 | 349 | holds |
+| operand.k1p.k1p.b2_neg.zero | all sets | 349 | 349 | 349 | holds |
+| operand.k1p.k1p.b3_neg.zero | all sets | 349 | 349 | 349 | holds |
+| operand.k1s.k1s.loss1.zero | all sets | 284 | 284 | 284 | holds |
+| operand.k1s.k1s.loss2.zero | all sets | 284 | 284 | 284 | holds |
+| operand.k1s.k1s.loss3.zero | all sets | 284 | 284 | 284 | holds |
+| operand.k1s.k1s.loss7.zero | all sets | 284 | 284 | 284 | holds |
+| operand.k1s.k1s.loss8.zero | all sets | 284 | 284 | 284 | holds |
+| operand.k1s.k1s.np_loss.zero | all sets | 284 | 284 | 284 | holds |
+| operand.k1s.k1s.p1_income.zero | all sets | 284 | 284 | 284 | holds |
+| operand.k1s.k1s.p1_loss.zero | all sets | 284 | 284 | 284 | holds |
+| operand.k1s.k1s.p2_loss.zero | all sets | 284 | 284 | 284 | holds |
+| operand.k1s.k1s.p3_loss.zero | all sets | 284 | 284 | 284 | holds |
+| boundary.person.person.has_educator_expenses | all sets | 11632 | 9080 | 9080 | holds |
+| operand.person.person.has_educator_expenses.educator_expenses_if_educator.gt.0 | all sets | 11632 | 11632 | 11632 | holds |
+| operand.person.person.educator_eligible_amount.zero.then1 | all sets | 11632 | 11552 | 9021 | holds |
+| operand.person.person.f4137_line6.zero.then1 | answered returns | 2368 | 2351 | 2351 | holds |
+| operand.person.person.se_line6.zero.then1 | all sets | 11632 | 9637 | 9558 | holds |
+| operand.person.person.eic_se.zero.then1 | all sets | 11632 | 10289 | 9637 | holds |
+| operand.person.person.dc_earned.eic_se | all sets | 11632 | 11599 | 10256 | holds |
+| operand.person.person.ira_dist_gate.no.then1 | all sets | 11632 | 11513 | 8768 | holds |
+| operand.person.person.ira_se.zero.then1 | all sets | 11632 | 10289 | 9637 | holds |
+| operand.person.person.edu_adj.zero.then1 | all sets | 11632 | 11496 | 8483 | holds |
+| operand.qdcg.qdcg.line8.line7 | all sets | 12436 | 10918 | 0 | holds |
+| boundary.rec.rec.w2a_line5_more | all sets | 12436 | 4665 | 4665 | holds |
+| operand.rec.rec.w2a_line5_more.w2a_line3.gt.0 | all sets | 12436 | 12436 | 4 | holds |
+| operand.rec.rec.w2a_line7_capped.zero.then1 | all sets | 12436 | 12431 | 4670 | holds |
+| operand.rec.rec.w2a_line8_capped.zero.then1 | all sets | 12436 | 12431 | 4670 | holds |
+| operand.rec.rec.to_line1.zero.then1 | answered returns | 2368 | 2343 | 2343 | holds |
+| operand.rental.rental.home_pers10_if_any.zero.then1 | all sets | 406 | 357 | 285 | holds |
+| operand.rental.rental.home.home_pers10_if_any.all.1.gt.0 | answered returns | 99 | 11 | 0 | holds |
+| operand.rental.rental.net_loss.zero | all sets | 406 | 406 | 406 | holds |
+| operand.royalty.royalty.loss_abs.zero | all sets | 57 | 11 | 11 | holds |
+| boundary.s1a.s1a.line10_over | all sets | 12436 | 9019 | 9019 | holds |
+| operand.s1a.s1a.line10_over.tips_threshold.gt.1 | all sets | 12436 | 12436 | 12323 | holds |
+| operand.s1a.s1a.line13_figured.tips_reduction | all sets | 12436 | 12436 | 12323 | holds |
+| operand.s1a.s1a.line13_ssn.zero.then0 | all sets | 12436 | 7511 | 866 | holds |
+| operand.s1a.s1a.line13_claim.line13_ssn.then0 | all sets | 12436 | 9208 | 2458 | holds |
+| operand.s1a.s1a.line13_claim.line13_ssn.then1 | all sets | 12436 | 4258 | 1154 | holds |
+| operand.s1a.s1a.line13_claim.zero.then2 | all sets | 12436 | 3812 | 734 | holds |
+| operand.s1a.s1a.line13_claim.line13_ssn.then3 | all sets | 12436 | 4030 | 331 | holds |
+| operand.s1a.s1a.line13_claim.line13_ssn.then4 | all sets | 12436 | 3440 | 164 | holds |
+| boundary.s1a.s1a.line18_over | all sets | 12436 | 8983 | 8983 | holds |
+| operand.s1a.s1a.line18_over.ot_threshold.gt.1 | all sets | 12436 | 12436 | 12336 | holds |
+| operand.s1a.s1a.line21_figured.ot_reduction | all sets | 12436 | 12436 | 12336 | holds |
+| operand.s1a.s1a.line21_ssn.zero.then0 | all sets | 12436 | 7523 | 859 | holds |
+| operand.s1a.s1a.line21_claim.line21_ssn.then0 | all sets | 12436 | 9208 | 2458 | holds |
+| operand.s1a.s1a.line21_claim.line21_ssn.then1 | all sets | 12436 | 4258 | 1166 | holds |
+| operand.s1a.s1a.line21_claim.zero.then2 | all sets | 12436 | 3812 | 734 | holds |
+| operand.s1a.s1a.line21_claim.line21_ssn.then3 | all sets | 12436 | 4030 | 331 | holds |
+| operand.s1a.s1a.line21_claim.line21_ssn.then4 | all sets | 12436 | 3440 | 164 | holds |
+| boundary.s1a.s1a.line27_over | all sets | 12436 | 9000 | 9000 | holds |
+| operand.s1a.s1a.vli_deduction.zero.then0 | all sets | 12436 | 12297 | 9000 | holds |
+| boundary.s1a.s1a.line33_over | all sets | 12436 | 8581 | 8581 | holds |
+| operand.s1a.s1a.line36a_claim.zero.then2 | all sets | 12436 | 3812 | 734 | holds |
+| operand.s2.s2.amt_rel.zero.then1 | all sets | 12436 | 12252 | 0 | holds |
+| operand.s2.s2.amt_l15.amt_l13.then1 | all sets | 12436 | 10860 | 3080 | holds |
+| operand.s8812.s8812.line18a.chart_eic.then0 | answered returns | 2368 | 221 | 221 | holds; on a partial return: generated return 9 (seed 20261115), answers withheld at rate 0.1: s8812.line19 is { "cite": { "doc": "i1040gi", "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable", "revision": "2025; printed date 2026-02-25", "snapsho... with the data and unknown with the mutant |
+| operand.sa.sa.medical_premiums_if_not_large.no.then1 | all sets | 12436 | 4439 | 1345 | holds |
+| operand.sa.sa.home_other_if_not_owner.no.then1 | all sets | 12436 | 4886 | 1764 | holds |
+| operand.sa.sa.deduction.standard.then1 | all sets | 12436 | 1951 | 0 | holds |
+| operand.sales.sales.bad_aggregate.no.then1 | all sets | 1675 | 1645 | 1151 | holds |
+| boundary.sc.sc.ho_over | all sets | 1480 | 8 | 8 | holds |
+| operand.sc.sc.f7206_line9.zero.then1 | all sets | 1480 | 1156 | 89 | holds |
+| filter.sche.sche.rents | all sets | 12436 | 406 | 73 | holds |
+| filter.sche.sche.rent_income | all sets | 12436 | 406 | 73 | holds |
+| filter.sche.sche.rent_netloss | all sets | 12436 | 406 | 73 | holds |
+| operand.scveh.scveh.claims_bonus_this_year.no.then1 | all sets | 593 | 500 | 0 | holds |
+| operand.scveh.scveh.l5.k5 | all sets | 593 | 558 | 558 | holds |
+| operand.scveh.scveh.d5.l5 | all sets | 593 | 593 | 593 | holds |
+| operand.scveh.scveh.l6.k6 | all sets | 593 | 558 | 558 | holds |
+| operand.scveh.scveh.d6.l6 | all sets | 593 | 593 | 593 | holds |
+| operand.sd.sd.to1040.line21.then0 | all sets | 12436 | 8407 | 0 | holds |
+| operand.sdtw.sdtw.line4.zero.then1 | answered returns | 2368 | 2241 | 2241 | holds |
+| operand.sdtw.sdtw.line17.line16 | all sets | 12436 | 10903 | 0 | holds |
+| operand.sdtw.sdtw.line45.line43 | all sets | 12436 | 10917 | 10301 | holds |
+| boundary.sli.sli.over | all sets | 12436 | 6 | 6 | holds |
+| operand.sli.sli.line9.line8 | all sets | 12436 | 12436 | 11712 | holds |
+| operand.ssb.ssb.show16_18.mfs_together.all.1.any.0.eq.0 | all sets | 12436 | 11042 | 11042 | holds |
+| operand.ssb.ssb.show16_18.past9.all.1.any.1.eq.0 | all sets | 12436 | 10600 | 10600 | holds |
+| operand.ssb.ssb.line16.line16_together.then0 | all sets | 12436 | 3780 | 691 | holds |
+| operand.ssb.ssb.line18.zero.then1 | all sets | 12436 | 12199 | 8786 | holds |
+| boundary.se.positive | all sets | 11632 | 4 | 4 | holds |
+| param.eic.ws_threshold0.joint.$1 | all sets | 12436 | 12436 | 12436 | holds |
+| param.eic.ws_threshold0.other.$1 | all sets | 12436 | 12436 | 12436 | holds |
+| param.eic.ws_threshold1.joint.$1 | all sets | 12436 | 12436 | 12436 | holds |
 
 - Controls the sample did not reject (its readers never differ on these sets; the kill is on the line itself or rests on a fixture's own answers): operand.dependent.dependent.dc_line2c.dc_qp.all.0.eq.0 (line:dependent.dependent.dc_line2c), operand.eic.eic.show_wsb6.eligible.all.0.eq.0 (line:eic.eic.show_wsb6), operand.eic.eic.wsb_4b_positive.wsb_4b.gt.0 (line:eic.eic.wsb_4b_positive), boundary.f1116.f1116.line18_shown (line:f1116.f1116.line18_shown), operand.f8962.f8962.filing.any.all.0.eq.0 (line:f8962.f8962.filing), operand.household.household.hoh_community_property.no.then0 (line:household.household.hoh_community_property), operand.k1s.k1s.p1_loss.b1_passive (line:k1s.k1s.p1_loss), operand.k1s.k1s.p2_loss.b2_net (line:k1s.k1s.p2_loss), operand.k1s.k1s.p3_loss.b3_net (line:k1s.k1s.p3_loss), operand.s2.s2.amt_l15.amt_l15_sdtw.then0 (line:s2.s2.amt_l15), operand.ssb.ssb.show16_18.past7.all.0.eq.0 (line:ssb.ssb.show16_18)
 
 ## Surviving — explained by an open defect
 
+- `operand.f7203.f7203.line14.line11` (replace an operand, f7203.f7203.line14): BUG-1411
+- `operand.household.household.qss_child_not_all_year.qss_child_conflict_if_claimed.then0` (replace an operand, household.household.qss_child_not_all_year): BUG-1411
+- `operand.household.household.qss_child_not_all_year.no.then1` (replace an operand, household.household.qss_child_not_all_year): BUG-1411
+- `operand.k1s.k1s.ask_prior_active.part4.all.1.eq.0` (replace an operand, k1s.k1s.ask_prior_active): BUG-1411
 - `operand.k1s.k1s.col_k.zero.then1` (replace an operand, k1s.k1s.col_k): BUG-0928
 - `operand.k1s.k1s.col_i.zero.then1` (replace an operand, k1s.k1s.col_i): BUG-0928
 - `operand.k1s.k1s.col_h.zero.then1` (replace an operand, k1s.k1s.col_h): BUG-0928
 - `operand.k1s.k1s.p5_income.zero.then1` (replace an operand, k1s.k1s.p5_income): BUG-0928
+- `filter.person.person.hsa_step1` (remove collection filter, person.person.hsa_step1): BUG-1348
 - `operand.person.person.f8919_line10.f8919_line10_figured.then0` (replace an operand, person.person.f8919_line10): BUG-0928
 - `operand.s2.s2.amt_l16.amt_l15` (replace an operand, s2.s2.amt_l16): BUG-0764
 - `operand.s2.s2.amt_l7.amt_l39.then1` (replace an operand, s2.s2.amt_l7): BUG-0764

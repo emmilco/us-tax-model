@@ -640,6 +640,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "dependent.own_child",
+      "value": true,
+      "reason": "true: a person listed as your child is ordinarily your son, daughter or stepchild; a foster child or grandchild is the special case the scenario states."
+    },
+    {
       "input": "dependent.own_money",
       "value": true,
       "reason": "true: the answer that opens the self-support question, so a scenario that states it is read."
@@ -1255,11 +1260,6 @@
     },
     {
       "input": "f2441.prior_year",
-      "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
-    },
-    {
-      "input": "f2441.spouse_died",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2368,6 +2368,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "k1p.fiscal",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "k1p.five_of_ten",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -2468,6 +2473,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "k1p.is_llc",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "k1p.most_hours",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -2479,6 +2489,16 @@
     },
     {
       "input": "k1p.not_at_risk",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "k1p.oil_gas_gp",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "k1p.over100",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2878,12 +2898,22 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "k1s.credit_carry",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "k1s.disposed",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
       "input": "k1s.dwelling",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "k1s.fiscal",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2924,6 +2954,11 @@
     },
     {
       "input": "k1s.prior_any",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "k1s.prior_not_active",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -5028,6 +5063,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "sb.trust_owner",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "sb.nominee",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -5369,6 +5409,11 @@
     },
     {
       "input": "scope.chapter11",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "scope.fiscal_year",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },

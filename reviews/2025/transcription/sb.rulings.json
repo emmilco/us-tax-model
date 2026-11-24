@@ -6,11 +6,11 @@
    "printed": "6",
    "project_expr_sha256": "11f5ed11b0255f98a513d209f38bf5d91f4487dc25b0371cbe556842471097b9",
    "second_expr_sha256": "815c91e5fa9ffe9c8a0d430f59dd0c8d103b54257fb348b2e4ab980887937f4d",
-   "ruling": "Ruling: representation; as the earlier ruling: f1040sb Part II, line 6 (the line 5 total). The reply reads sb.ordinary_dividends ungated; the project asks it only after div.any is Yes and gives $0 otherwise. Project stands.",
-   "context": "19377d68b17ddfe07497a1e321c25525deac7f9eeb72a3df8422c119b3abd8b8",
-   "date": "2026-11-23",
-   "run": "562f437c2171b52a1e322abc5124215ee1ab44b0355dc94c8dac49530f3ab411",
-   "subject_key": "b0098a8579a2f267493b054c48e0cb4daa7a59a8cb7255491577cb163b4d0de7"
+   "ruling": "Ruling: representation; i1040sb p. 2, Line 6. The project reads sb.ordinary_dividends only when div.any is Yes (zero otherwise); the reply reads the input directly; on a completed return the input is unasked exactly when div.any is No. K-1 dividends are refused with the K-1 (scope.k1). Re-reviewed only because the foreign-trust gate's wording changed. Project stands.",
+   "context": "4d646317bca652e20bf3c6219744b5b41db8ccbe0501a03f1c83146602ecf215",
+   "date": "2026-11-24",
+   "run": "c2a1fd294d8b2872c1afe925bf388bf1f88fd7c79e1fcfba4c2697fa891135e6",
+   "subject_key": "68b2c5b85fb2ce0fcde9ce03a354cf2a4e718e8c1ae6e53f33b505ca279d8122"
   },
   {
    "printed": "sb.interest_total",

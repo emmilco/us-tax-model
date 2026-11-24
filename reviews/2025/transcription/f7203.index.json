@@ -3,6 +3,9 @@
  "form": "f7203",
  "family": "claude",
  "base": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-24); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "f7203.one",
@@ -179,31 +182,31 @@
   },
   {
    "key": "35 (c)",
-   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "record": "9b598ea1ad8f82f4e7802e77334ba557ad2847ca2ad1d9e854a77d0316446b20",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; 12/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
-   "subject_key": "29f6044806bc76fbf83b9ab617f36e51638957e5331140ec6a81d75e2668c4e9"
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (decided under the owner's delegation of 2026-11-24): the project prorates by the six-place ratio and keeps each line of column (c) within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (i7203 p. 4, 'can't exceed the amount reported on line 10'); the reply keeps a nine-place ratio with no such cap. Executable triage (f7203.json): the only value differences are a cent of rounding on the k1s.loss_over_basis_ratio_rounding and classm.f7203.3 cases (ratio 0.333333, $6,666.66 against $6,666.67), the ratio rounding down, which the register accepts; candidate-unknown elsewhere. Column (b) is refused (k1s.basis_carry), as both readings say.",
+   "subject_key": "9be562c5477ceb0da4f515c0df8060d1276c7b5ec99b299b121eb544e3e8f725"
   },
   {
    "key": "36 (c)",
-   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "record": "9b598ea1ad8f82f4e7802e77334ba557ad2847ca2ad1d9e854a77d0316446b20",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
-   "subject_key": "5448b15c7791fb50bba28681bb1fc192f9ddb4d2ad7d0bd72f818bb606e454ad"
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (decided under the owner's delegation of 2026-11-24): the project prorates by the six-place ratio and keeps each line of column (c) within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (i7203 p. 4, 'can't exceed the amount reported on line 10'); the reply keeps a nine-place ratio with no such cap. Executable triage (f7203.json): the only value differences are a cent of rounding on the k1s.loss_over_basis_ratio_rounding and classm.f7203.3 cases (ratio 0.333333, $6,666.66 against $6,666.67), the ratio rounding down, which the register accepts; candidate-unknown elsewhere. Column (b) is refused (k1s.basis_carry), as both readings say.",
+   "subject_key": "06277d7b4762138750582779ab795e5315a7d8942b255ba688d62be744eaa482"
   },
   {
    "key": "37 (c)",
-   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "record": "9b598ea1ad8f82f4e7802e77334ba557ad2847ca2ad1d9e854a77d0316446b20",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
-   "subject_key": "2100abf745ec932c25e45f3279768b7ef1354b8536e5b97fa1ce6d13f54b7c08"
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (decided under the owner's delegation of 2026-11-24): the project prorates by the six-place ratio and keeps each line of column (c) within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (i7203 p. 4, 'can't exceed the amount reported on line 10'); the reply keeps a nine-place ratio with no such cap. Executable triage (f7203.json): the only value differences are a cent of rounding on the k1s.loss_over_basis_ratio_rounding and classm.f7203.3 cases (ratio 0.333333, $6,666.66 against $6,666.67), the ratio rounding down, which the register accepts; candidate-unknown elsewhere. Column (b) is refused (k1s.basis_carry), as both readings say.",
+   "subject_key": "115626411bd110882edc4fa883ca7ff81de6ae44825d0f031f70e1243b409063"
   },
   {
    "key": "38 (c)",
-   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "record": "9b598ea1ad8f82f4e7802e77334ba557ad2847ca2ad1d9e854a77d0316446b20",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
-   "subject_key": "7263ea1be48530d8a842069467214b6c380f846611d00780909e315028d7f3c9"
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (decided under the owner's delegation of 2026-11-24): the project prorates by the six-place ratio and keeps each line of column (c) within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (i7203 p. 4, 'can't exceed the amount reported on line 10'); the reply keeps a nine-place ratio with no such cap. Executable triage (f7203.json): the only value differences are a cent of rounding on the k1s.loss_over_basis_ratio_rounding and classm.f7203.3 cases (ratio 0.333333, $6,666.66 against $6,666.67), the ratio rounding down, which the register accepts; candidate-unknown elsewhere. Column (b) is refused (k1s.basis_carry), as both readings say.",
+   "subject_key": "f307716b1fc208578eab00275f338d7f03d198936171a669e16c7fa77c0cd0ec"
   },
   {
    "key": "47 (c)",
@@ -311,10 +314,10 @@
   "37 (a)": "e21d56bd938b384519f433c32e9fe3eda54e966562706e63b4f5af51fe35b984",
   "38 (a)": "d8d9d76eae8ff46512198cf61d097f81935007145e03417859f5f90739676eff",
   "47 (a)": "6ea89c9cb7124e41e7fa92c7c76f4c665bf616b5ea6a57d5e115025f0a05476e",
-  "35 (c)": "86e73ba1c2be8a850e4194b32133d79cf6f45806266cb2276b4465a3945c6dc5",
-  "36 (c)": "2a9ec0b1c57c722603d4dfc2f71ad00f07ad50f744c96e695411d3dffbd2031a",
-  "37 (c)": "f15fe2dcb1f780384996aec4a9d9b5fd992d944b29d8a7fa850e7a4ad395b584",
-  "38 (c)": "e9c9887837938001da567c0c76b7731c212ed8b5437d54b4204fa140284f23ae",
+  "35 (c)": "f4d6b8cae26846b54d83cd04d5b60784cf444abd1fba2d9ab7e379a834d71f5d",
+  "36 (c)": "9286ab0085f6466697082b8478914ab017a07290cb6374e5846e66872b9c00b3",
+  "37 (c)": "584939a881aee5792d61da0c0adeffa7180a036122932f6134dc128dbe6632f8",
+  "38 (c)": "fca2c19fbfef29c2d92bfea023a167a881dc47224ca2912e6647b41e3231a6e8",
   "47 (c)": "2be2d097666dde7636ef0080cb92376c8f860ce9d752e50eb3a15ddc86b51a9f",
   "11": "4095006f0b29a9239fb2bab272a4d869d8d915489700e1c3059d4adc603ee25b",
   "12": "917d18be76f54e677e9ded575131162bdec993dfb3f6751ba062dfa92032a61a",

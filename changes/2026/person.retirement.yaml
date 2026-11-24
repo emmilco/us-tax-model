@@ -359,13 +359,17 @@ changes:
         input: person.ira_extra_left
         field: help
         from: The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your
-          taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA
-          has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the
-          interview here.
+          taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth
+          IRA's limit is lower once modified AGI reaches $236,000 on a joint return or $150,000 for single, head of household,
+          or married filing separately and apart all year, and once it is above zero for married filing separately and living
+          together at any time in 2025 (no Roth contribution at all from $10,000). Count money an employer put in and a rollover
+          that did not qualify. A Yes ends the interview here.
         to: The limit for traditional and Roth IRAs together is $7,500 ($8,600 if you were 50 or older at the end of 2026), or your
-          taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA
-          has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the
-          interview here.
+          taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth
+          IRA's limit is lower once modified AGI reaches $242,000 on a joint return or $153,000 for single, head of household,
+          or married filing separately and apart all year, and once it is above zero for married filing separately and living
+          together at any time in 2026 (no Roth contribution at all from $10,000). Count money an employer put in and a rollover
+          that did not qualify. A Yes ends the interview here.
     - set_question:
         input: person.age50_at_year_end
         field: help

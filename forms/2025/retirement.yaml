@@ -3187,6 +3187,30 @@ form:
               eq:
               - retirement.exception
               - const: e06
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e13
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e14
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e15
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e16
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e17
+            - op: test
+              eq:
+              - retirement.exception
+              - const: e18
         - op: test
           all:
           - op: test
@@ -3210,7 +3234,10 @@ form:
     cite:
       doc: i5329
       locator: p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation
-        from service"
+        from service", "Distributions from a section 457 plan", "Distributions from a plan maintained by an employer if",
+        "Distributions from annuity contracts", "phased retirement annuity payments made to federal employees", "Permissible
+        withdrawals under section 414(w)"; p590b p. 24, Exceptions, "There are several exceptions to the age" (the
+        IRA exceptions listed there include none of 13 to 18)
   - id: retirement.l1
     printed: (helper)
     label: 'Form 5329 line 1 share: the taxable amount of an early distribution'
@@ -3296,8 +3323,8 @@ form:
     refuses:
     - when: retirement.wrong_kind
       form: Form 5329 line 2 exception for another kind of account
-      remedy: Exceptions 01 and 06 do not apply to IRAs, and 07, 08 and 09 apply only to IRAs (i5329 p. 5). Check the exception
-        number.
+      remedy: Exceptions 01, 06 and 13 to 18 do not apply to IRAs (they are for employer plans, section 457 plans and annuity
+        contracts), and 07, 08 and 09 apply only to IRAs (i5329 p. 5; Pub. 590-B, p. 24). Check the exception number.
       cite:
         doc: i5329
         locator: p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation

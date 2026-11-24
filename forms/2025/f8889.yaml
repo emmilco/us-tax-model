@@ -288,8 +288,8 @@ form:
     type: Bool
     expr:
       op: input
-      source: Did your husband or wife have an HSA of their own for 2025 (an HSA in their name, whether or not anything was
-        put into it)?
+      source: Did your husband or wife have an HSA of their own for 2025 (an HSA in their name at any time in 2025, whether
+        or not anything was put into it and even if it has since been closed, or one into which anything was put for 2025)?
     cite:
       doc: i8889
       locator: 'p. 7, Line 6, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025,
@@ -689,6 +689,19 @@ form:
     cite:
       doc: i8889
       locator: 'p. 4, Line 3, rule 1, "Use the family coverage amount if you or your spouse had an HDHP with family coverage"'
+  - id: f8889.year_self_answered
+    printed: (helper)
+    label: Self-only HDHP coverage on the first day of every month of 2025, as answered
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8889.coverage_year
+      - const: self_only
+    cite:
+      doc: i8889
+      locator: 'p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did
+        not change your type of coverage"'
   - id: f8889.ask_spouse_family
     printed: (helper)
     label: 'A married person with self-only HDHP coverage all year who was an eligible individual in every month: the
@@ -700,20 +713,14 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.coverage_year
-          - const: self_only
+          - f8889.year_self_answered
+          - const: true
         then: f8889.sf_eligible
       - guard:
           op: test
           eq:
-          - f8889.coverage_year
-          - const: family
-        then: f8889.no
-      - guard:
-          op: test
-          eq:
-          - f8889.coverage_year
-          - const: changed
+          - f8889.year_self_answered
+          - const: false
         then: f8889.no
     cite:
       doc: i8889
@@ -826,8 +833,9 @@ form:
     type: Bool
     expr:
       op: input
-      source: Were you married during part of 2025 (a marriage that ended by divorce or death before the end of the year) to
-        a person who, in a month of the marriage, had family coverage under an HDHP (HDHP coverage for more than one person)?
+      source: Were you married during part of 2025 (a marriage that ended by divorce, a decree of separate maintenance or
+        death before the end of the year) to a person who, in a month of the marriage, had family coverage under an HDHP
+        (HDHP coverage for more than one person)?
         If you were both eligible individuals in such a month, you are both treated as having family coverage for it.
     cite:
       doc: i8889
@@ -1836,32 +1844,38 @@ form:
       locator: 'p. 7, Line 6, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)"; p. 7, Line 6, Step 3, "Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1"'
   - id: f8889.allocation_bad
     printed: (gate)
-    label: 'The spouses allocation cannot be checked or does not hold: only one using an agreed allocation, or an agreed allocation with different Step 1 limits or with more than the Step 1 limit allocated in total'
+    label: 'On a Form 8889 that uses the spouse rule of line 6, the spouses allocation cannot be checked or does not hold: only one using an agreed allocation, or an agreed allocation with different Step 1 limits or with more than the Step 1 limit allocated in total'
     type: Bool
     expr:
       op: test
-      any:
+      all:
       - op: test
         eq:
-        - household.hsa_agreed_count
-        - const: 1
-          type: Count
+        - f8889.split
+        - const: true
       - op: test
-        all:
+        any:
         - op: test
           eq:
-          - f8889.allocation
-          - const: agreed
+          - household.hsa_agreed_count
+          - const: 1
+            type: Count
         - op: test
-          any:
+          all:
           - op: test
-            ne:
-            - f8889.step1_x2
-            - household.hsa_step1_sum
+            eq:
+            - f8889.allocation
+            - const: agreed
           - op: test
-            gt:
-            - household.hsa_share_sum
-            - f8889.step1
+            any:
+            - op: test
+              ne:
+              - f8889.step1_x2
+              - household.hsa_step1_sum
+            - op: test
+              gt:
+              - household.hsa_share_sum
+              - f8889.step1
     cite:
       doc: i8889
       locator: 'p. 4, Line 3, rule 1, "Use the family coverage amount if you or your spouse had an HDHP with family coverage"; "if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan"; p. 7, Line 6, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)"'
@@ -3272,7 +3286,7 @@ form:
       source: |-
         The part of your 2025 HSA distributions used to pay qualified medical expenses; zero if none
 
-        The expenses must not have been reimbursed by insurance or other coverage, and must have been incurred after the HSA was established.
+        The expenses must not have been reimbursed by insurance or other coverage, and must have been incurred after the HSA was established (an HSA funded by a rollover from an Archer MSA or another HSA is established on the date the earlier account was).
 
         Whose expenses count:
         - yours and your spouse's
@@ -3281,7 +3295,7 @@ form:
         - those of a child of divorced or separated parents, who counts for both parents
 
         Insurance premiums count only if they are for:
-        - long-term care insurance
+        - long-term care insurance, up to the limit for the age of the person covered
         - health care continuation coverage (such as COBRA), which can be for your spouse or a dependent
         - health care coverage while receiving unemployment compensation under federal or state law, which can be for your spouse or a dependent
         - Medicare and other health care coverage if you were 65 or older (not a Medicare supplemental policy, such as Medigap); if you, the HSA owner, are under 65, Medicare premiums for your spouse or dependents generally do not count
@@ -3296,7 +3310,9 @@ form:
         care coverage if you were 65 or older (other than premiums for a Medicare supplemental policy, such as Medigap)",
         "Coverage under (2) and (3) can be for your spouse or a dependent meeting the requirement." and "are under age 65,
         Medicare premiums for your spouse or dependents (who are age 65 or older) are generally not qualified medical
-        expenses"
+        expenses"; p969 p. 8, "An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established
+        on the date the prior account was established."; p969 p. 9, "The premiums for long-term care insurance (item (1))
+        that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually."
   - id: f8889.medical_if_partial
     printed: (helper)
     label: 'Qualified medical expenses paid using HSA distributions: asked only when not all of the distributions paid them'

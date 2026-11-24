@@ -37,6 +37,13 @@ bank:
     prompt: Did your husband or wife also live in New York City for all of 2025?
     help: When one spouse lived elsewhere for part of the year, New York requires separate returns or a joint return
       taxing both as residents, which this tool does not prepare.
+  - input: ny_it201.ask.spouse_cannot_sign
+    order: 1000
+    seq: 31
+    prompt: Is your husband or wife unable or unwilling to sign a joint New York return, because you do not know where they
+      are or because they refuse to sign it?
+    help: New York then allows a separate return in some cases, which this tool does not prepare; a Yes ends the New York
+      part here.
   - input: ny_it201.ask.yonkers
     order: 1000
     seq: 40
@@ -61,8 +68,9 @@ bank:
   - input: ny_it201.ask.active_duty
     order: 1000
     seq: 45
-    help: Asked because you said you (or your spouse) served in the armed forces. Military residence rules are outside this
-      tool; a Yes ends the New York part here.
+    help: Asked because you said you (or your spouse) served in the armed forces, or because you are married and not filing
+      jointly. A servicemember's husband or wife may choose another state of residence for tax; military residence rules
+      are outside this tool, so a Yes ends the New York part here.
   - input: ny_it201.ask.special_accrual
     order: 1000
     seq: 50
@@ -100,8 +108,9 @@ bank:
   - input: ny_it201.ask.nyc_flex
     order: 1010
     seq: 12
-    prompt: Does a Form W-2 you (or, on a joint return, your spouse) got from New York City or another city public employer, such
-      as CUNY, the city schools, NYC Transit or the Housing Authority, show pay set aside for a flexible benefits plan?
+    prompt: Does a Form W-2 you (or, on a joint return, your spouse) got from New York City or another New York City public
+      employer, such as CUNY, the city schools, NYC Transit or the Housing Authority, show pay set aside for a flexible
+      benefits plan?
     help: It may be listed in box 14, for example as IRC 125. New York adds it back to income, which this tool does not
       compute; a Yes ends the New York part here.
   - input: ny_it201.ask.us_obligation_interest
@@ -170,20 +179,38 @@ bank:
       income, as a state tax refund or as other income?
     help: New York mailed inflation refund checks in the fall of 2025. Whether New York subtracts them is unsettled for 2025,
       so a Yes ends the New York part here.
+  - input: ny_it201.ask.railroad_uc
+    order: 1010
+    seq: 52
+    prompt: Were any of your (or, on a joint return, your spouse's) unemployment benefits paid by the Railroad Retirement
+      Board?
+    help: Railroad unemployment benefits are paid by the U.S. Railroad Retirement Board, not by New York State. New York does
+      not tax them; this tool does not compute that subtraction, so a Yes ends the New York part here.
   - input: ny_it201.ask.prior_168k
     order: 1010
     seq: 55
-    prompt: Since 2003, have you (or, on a joint return, your spouse) taken bonus depreciation on business or rental property you
-      still had in 2025?
+    prompt: Since June 2003, have you (or, on a joint return, your spouse) taken bonus depreciation on business or rental
+      property you still had in 2025?
     help: Bonus depreciation deducts much or all of a cost in the first year (an earlier Form 4562, line 14 or 25); count
-      property deducted in full. New York spreads it over years (Form IT-398), which this tool does not compute; a Yes ends
-      the New York part here.
+      property deducted in full. Leave out property placed in service before June 1, 2003, and resurgence zone or New York
+      Liberty Zone property. New York spreads the rest over years (Form IT-398), which this tool does not compute; a Yes
+      ends the New York part here.
+  - input: ny_it201.ask.suv_carryover
+    order: 1010
+    seq: 57
+    prompt: Did any of the section 179 deduction you (or, on a joint return, your spouse) carried over from an earlier year come from expensing an SUV over 6,000
+      pounds?
+    help: Count any passenger vehicle rated over 6,000 pounds gross vehicle weight that is not a truck, van or motor home,
+      even one used only for business. If you are not sure which property the carryover is from, answer Yes when such a
+      vehicle was among the property expensed in the year it arose. New York adds back a section 179 deduction taken on
+      it, which this tool does not compute; a Yes ends the New York part here.
   - input: ny_it201.ask.it225
     order: 1010
     seq: 60
     prompt: Does any item on New York's list of less common income changes (Form IT-225) apply to you (or, on a joint
       return, your spouse)? Most people have none.
-    help: 'For example: moving expenses you paid or were repaid for by an employer, a disability income exclusion, a trust''s
+    help: 'For example: a business of your own with employees and a profit under $250,000 (New York subtracts 15% of
+      the profit), moving expenses you paid or were repaid for by an employer, a disability income exclusion, a trust''s
       accumulation distribution, or Holocaust reparations or a wrongful-conviction award. This tool does not compute them; a
       Yes ends the New York part here.'
   # ---- 1020 Deductions
@@ -386,9 +413,11 @@ bank:
   - input: ny_it201.ask.alimony_later
     order: 161
     seq: 14
-    prompt: Did you (or, on a joint return, your spouse) pay or receive any of that alimony in 2025?
-    help: Unlike the federal return, New York taxes alimony under an agreement made after 2018 and lets the payer subtract it.
-      This tool does not compute that; a Yes ends the New York part here.
+    prompt: In 2025, did you (or, on a joint return, your spouse) pay or receive alimony under an agreement made after 2018,
+      or under an earlier one changed after 2018 to say New York's alimony rules apply?
+    help: Count every agreement, including a second one beside an older agreement. New York's rules are those of Tax Law
+      section 612(w). Unlike the federal return, New York taxes such alimony and lets the payer subtract it, which this tool
+      does not compute; a Yes ends the New York part here.
   # ---- asked where its subject lives: after the federal care questions
   - input: ny_it201.ask.dependent_care
     order: 155

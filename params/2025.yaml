@@ -2802,6 +2802,20 @@ params:
         doc: i1040gi
         locator: 'p. 98, IRA Deduction Worksheet—Continued, Caution, "$16,000 if both spouses are age 50 or older at the end of
           2025)"'
+    ira.roth_start_joint:
+      type: NonNegDollars
+      value: 23600000
+      cite:
+        doc: p590a
+        locator: 'p. 2, Modified AGI limit for Roth IRA contributions, "Your filing status is married filing jointly or qualifying
+          surviving spouse and your modified AGI is at least $236,000"'
+    ira.roth_start_other:
+      type: NonNegDollars
+      value: 15000000
+      cite:
+        doc: p590a
+        locator: 'p. 2, Modified AGI limit for Roth IRA contributions, "you didn’t live with your spouse
+          at any time in 2025 and your modified AGI is at least $150,000"'
     # Schedule E Part I rentals (one property's days and counts) and Form 8582.
     rental.one:
       type: Count

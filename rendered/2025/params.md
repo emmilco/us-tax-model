@@ -196,6 +196,8 @@
 | `ira.rate_40` | Rate | 40% (0.40) | [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 7, "or by 40% (0.40)" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ira.rate_70` | Rate | 70% (0.70) | [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 7, "multiply by 70% (0.70)" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ira.rate_80` | Rate | 80% (0.80) | [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 7, "or by 80% (0.80)" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ira.roth_start_joint` | NonNegDollars | $236,000 | [p590a] p. 2, Modified AGI limit for Roth IRA contributions, "Your filing status is married filing jointly or qualifying surviving spouse and your modified AGI is at least $236,000" (2025; sha256 ca0e4287) |
+| `ira.roth_start_other` | NonNegDollars | $150,000 | [p590a] p. 2, Modified AGI limit for Roth IRA contributions, "you didn’t live with your spouse at any time in 2025 and your modified AGI is at least $150,000" (2025; sha256 ca0e4287) |
 | `llc.expense_cap` | NonNegDollars | $10,000 | [f8863] p. 1, Part II, line 11, "Enter the smaller of line 10 or $10,000"; i8863 p. 4, Lifetime Learning Credit, "up to a maximum of $10,000 of adjusted qualified education expenses per return." (2025; sha256 a251a1cf) |
 | `llc.rate` | Rate | 20% (0.20) | [f8863] p. 1, Part II, line 12, "Multiply line 11 by 20% (0.20)"; i8863 p. 4, Lifetime Learning Credit, "The lifetime learning credit equals 20% of adjusted qualified education expenses" (2025; sha256 a251a1cf) |
 | `medicare.additional_rate` | Rate | 9/1000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |

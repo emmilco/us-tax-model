@@ -2,68 +2,48 @@
  "form": "f8889",
  "reviews": {
   "gate:f8889.ask_former_spouse_family": {
-   "subject_sha": "bfeed3ddc2d9712ec09bf6d3cbb075ef3d787f40bc4a2ccb7a46cc96bda010f6",
+   "subject_sha": "55e4c868e0a0237e8bba6d4049e50b40671425bf6e05c2c1dc5e8cb713eb317e",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer whose marriage ended in 2025 by a decree of separate maintenance (legal separation), so they are unmarried at year end. They had self-only HDHP coverage all year, and the spouse had family HDHP coverage in the months before the decree.",
-       "why_no": "The question asks only whether a marriage ended 'by divorce or death'. A legal separation is neither, so the truthful answer is No, even though the tool's own gate treats the filer as not married at the end of 2025.",
-       "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 4: 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan. Disregard any plans with self-only coverage.'",
-       "severity": "high",
-       "fix": "Ask: 'Were you married at any time in 2025 but not at the end of the year (for example, divorced, legally separated under a decree, annulled, or widowed)?' Ask about the other person's coverage as a separate question."
-      },
-      {
-       "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A filer divorced in March 2025 and remarried in October, so married at the end of 2025, with self-only HDHP coverage all year. The former spouse had family HDHP coverage in January through March.",
-       "why_no": "The computed gate requires 'not married at the end of 2025', so the question is never asked. Questions about the current spouse do not reach the former spouse's family coverage in the months of the earlier marriage.",
-       "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 4: 'you both are treated as having only the family coverage plan'; p. 7, Line 6: 'Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules'",
+       "who": "A filer with self-only HDHP coverage all year who divorced in April 2025 and remarried in October 2025. The first spouse had family HDHP coverage from January through April.",
+       "why_no": "The computed gate requires the filer to be not married at the end of 2025. Because the filer had remarried by December 31, the gate is false and the question about the former spouse is never asked. The current-spouse branch covers only the spouse at year end, so the earlier spouse's family coverage during the first marriage never reaches the return.",
+       "line": "f8889.former_spouse_family_if_asked (set to false; the refusal it leads to is missed, and line 3 uses self-only $4,300 for months that count as family)",
+       "irs_text": "i8889 p. 4: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan. Disregard any plans with self-only coverage\"; p. 7, Line 6: \"Spouses who ... had family coverage under an HDHP at any time during 2025\"",
        "severity": "high",
-       "fix": "Drop 'not married at the end of 2025' from the gate. Ask every filer whether any marriage of theirs ended during 2025, whatever their status at year end."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A filer whose self-only HDHP coverage began in March 2025 (or who was not eligible in some month), divorced in June from a spouse who had family HDHP coverage while they were married.",
-       "why_no": "Coverage type 'changed' (not self-only in all twelve months) computes the gate to false. The former spouse's family coverage in the months they were both eligible is never asked, though in those months the filer is treated as having family coverage.",
-       "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 4, Line 3: 'Use the family coverage amount if you or your spouse had an HDHP with family coverage. Disregard any plan with self-only coverage.'",
-       "severity": "high",
-       "fix": "Ask about a then-spouse's family HDHP coverage on the 'changed' branch too, or route that branch to the same refusal whenever a 2025 marriage ended."
+       "fix": "Drop 'not married at the end of 2025' from the gate. Ask every filer with self-only coverage all year whether any marriage that ended during 2025 (before a remarriage or not) involved a spouse with family HDHP coverage in a month of that marriage."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "7",
-       "who": "A divorced filer whose ex-spouse had an employer plan covering the ex-spouse and children. The filer does not know whether that plan was a 'high-deductible' HSA-qualified plan.",
-       "why_no": "'Did the other person have a high-deductible plan' asks for a classification of someone else's plan that the filer cannot check. Unsure filers default to No.",
+       "who": "A recently divorced filer whose former spouse had employer coverage for the spouse and the children. The filer does not know whether that plan was a high-deductible plan, or does not remember its type.",
+       "why_no": "The question asks whether the other person had 'a high-deductible plan covering more than one person.' The filer cannot check the plan's HDHP status for an ex-spouse and defaults to no. The help explains 'covering more than one person' but never says how to tell whether a plan was high-deductible.",
        "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 4: 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan'",
+       "irs_text": "i8889 p. 4, How To Complete Part I: \"either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan\"",
        "severity": "medium",
-       "fix": "First ask whether the other person had any health plan covering more than one person during the marriage. On a yes, ask whether it was an HSA-eligible high-deductible plan (for example, whether they had or could have had an HSA), and treat 'not sure' as yes."
+       "fix": "First ask a fact the filer can check: did the then-spouse have any health plan covering more than one person, or have or receive contributions to an HSA? Then add help on how to recognize an HDHP, for example a plan the spouse paired with an HSA, or one with a high deductible stated in the plan papers. Treat 'not sure' as yes (refusal)."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer whose marriage was annulled in 2025, with self-only HDHP coverage all year. The other person had family HDHP coverage during the marriage.",
-       "why_no": "An annulment is not 'divorce or death', and the filer may also read it as never having been married, so they answer No.",
+       "pattern": "5",
+       "who": "A filer with self-only HDHP coverage all twelve months who was married until mid-2025 to a spouse with family HDHP coverage. The filer was not an eligible individual in one or more months, for example after enrolling in Medicare or because of a spouse's general-purpose health FSA during the marriage.",
+       "why_no": "The 'self_only' branch also requires the filer to be 'an eligible individual in every month.' When that fails, the computed gate is false and the former spouse's family coverage is never asked about. That coverage still sets family treatment for the eligible months of the marriage in the Line 3 monthly worksheet.",
        "line": "f8889.former_spouse_family_if_asked",
-       "irs_text": "i8889 p. 4: 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan'",
+       "irs_text": "i8889 p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules\"; p. 4, Line 3 rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage\"",
        "severity": "low",
-       "fix": "Name annulment in the list of ways a marriage ended, and say in the help how the tool treats it."
+       "fix": "Confirm that a filer who was ineligible in some month is refused or routed to a path that asks about the then-spouse's family coverage month by month. If neither happens, widen the gate to cover self-only filers who were eligible in only some months."
       }
      ],
-     "prompt_sha": "2c29021c4dc3845cb87c3c6a4ad74c261653f20b69a580f4afd4d7a5ff368672",
+     "prompt_sha": "d19fc97dbc726b6ba2e34e0dc9a7f7181a001ac7b2fa70e6399b1a98ddc2612c",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.097248,
-     "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_f8889.ask_former_spouse_family.bfeed3ddc2d9.1.response.txt"
+     "cost": 0.11174799999999999,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_f8889.ask_former_spouse_family.55e4c868e0a0.1.response.txt"
     }
    ],
    "condition": "f8889.ask_former_spouse_family",
@@ -176,7 +156,7 @@
    ]
   },
   "gate:f8889.ask_spouse_family": {
-   "subject_sha": "aae267dab792d7e81ffc410691bd9489435ff8509b0797857a829e55f170b348",
+   "subject_sha": "2452505108db3caa80cac9100405fd72a8227de6bb1f027cc5e899b8443a666e",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -184,60 +164,40 @@
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A married filer whose own self-only HDHP started, ended or was not in force on the first day of all twelve months (for example, self-only from July 1 through December), while the spouse had a family HDHP during the same months. Coverage is classed as 'changed'.",
-       "why_no": "No one answers anything: the 'changed' branch of the computed gate is hard-wired to false, so the spouse's family coverage is never asked and is treated as none.",
-       "line": "f8889.spouse_family_if_asked",
-       "irs_text": "i8889 (2025) p. 4, Line 3, rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage. Disregard any plan with self-only coverage.\" Also rule 2: \"You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year.\"",
+       "who": "A married filer had self-only HDHP coverage and was HSA-eligible from March 1 through December, with no HDHP in January or February. The spouse, also eligible, had family HDHP coverage (spouse and child) all year.",
+       "why_no": "The computed gate is false because the filer did not have self-only coverage on the first day of every month and was not eligible in every month. The spouse's family coverage is never asked, and the gated line is set to false.",
+       "line": "f8889.spouse_family_if_asked (and through it line 3 and the Line 3 Limitation Chart months, which use self-only instead of family)",
+       "irs_text": "i8889 p. 4, Line 3 rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage. Disregard any plan with self-only coverage.\" How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan.\"",
        "severity": "high",
-       "fix": "Ask the spouse-family question of every married person who had self-only HDHP coverage in any month, not only all twelve. Take the answer by month, so the Line 3 worksheet and the last-month rule use the family amount for months when both spouses were eligible and either had family coverage."
+       "fix": "Ask the spouse-family question of every married filer who was an eligible individual in any month of 2025, not only one with self-only coverage every month. Apply the answer month by month in the Line 3 chart."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A married filer with a self-only HDHP on the first day of all twelve months who was not an eligible individual in every month (for example, enrolled in Medicare from October, or covered by a general-purpose FSA for some months). The spouse had a family HDHP during the months the filer was eligible.",
-       "why_no": "The gate requires 'an eligible individual in every month'. This filer fails it, so the question is skipped and the eligible months are figured at the self-only amount.",
-       "line": "f8889.spouse_family_if_asked",
-       "irs_text": "i8889 (2025) p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan. Disregard any plans with self-only coverage.\" Also Line 3, rule 5: \"If you were not an eligible individual on the first day of the last month of your tax year, use the Line 3 Limitation Chart and Worksheet\".",
+       "who": "A married filer first became eligible with self-only HDHP coverage on December 1 (or mid-year) and uses the last-month rule. The spouse was eligible with family HDHP coverage on December 1.",
+       "why_no": "The filer was not eligible in every month and lacked coverage on the first day of every month, so the gate computes false. The question about the spouse's family coverage is never reached.",
+       "line": "f8889.spouse_family_if_asked (line 3 under the last-month rule gives $4,300 instead of $8,550)",
+       "irs_text": "i8889 p. 4, Line 3 rule 2: \"If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month\"; Line 1: \"If you and your spouse are considered covered by a family HDHP, you are considered covered by a family HDHP regardless of whether you file jointly or separately.\"",
        "severity": "high",
-       "fix": "Drop the 'eligible in every month' requirement from the gate. Ask whenever the person was married and eligible in at least one month with self-only coverage, and apply the family amount in the worksheet for each month both spouses were eligible."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer with a self-only HDHP all year whose spouse had a family HDHP and died during 2025, or who divorced or legally separated before December 31. They were married in earlier months but are not 'married at the end of 2025'.",
-       "why_no": "The gate tests marital status only at the end of the year. It computes false, the question is never asked, and the months of marriage are figured at the self-only amount.",
-       "line": "f8889.spouse_family_if_asked",
-       "irs_text": "i8889 (2025) p. 4, Line 3, rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage.\" Also Line 1: \"If you and your spouse are considered covered by a family HDHP, you are considered covered by a family HDHP regardless of whether you file jointly or separately.\"",
-       "severity": "medium",
-       "fix": "Gate on 'married at any time in 2025', including a spouse who died during the year. Ask in which months the spouse or former spouse had family HDHP coverage while the marriage lasted."
+       "fix": "Ask the spouse-family question whenever the filer is married at year end and was eligible on December 1 or in any month. Determine December 1 coverage type after applying the spouse rule."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A joint return where the question is put for the second spouse's Form 8889. That spouse has self-only coverage, and the primary filer has a family HDHP covering the primary filer and a child.",
-       "why_no": "The lead-in 'For this person (you, or your spouse on a joint return) — did your spouse have...' leaves 'your spouse' ambiguous. The person at the keyboard may read it as asking about the same person the form is for, whose plan is self-only, and answer No.",
+       "pattern": "7",
+       "who": "A married filer is eligible with self-only HDHP coverage all year. The spouse has no HSA and is on an employer or marketplace bronze plan covering the spouse and children. The plan is HSA-qualified but is never called a \"high-deductible plan\" in the spouse's materials.",
+       "why_no": "The question asks whether the spouse had \"a high-deductible plan.\" A spouse without an HSA often does not know the plan is an HDHP, and the filer answers no.",
        "line": "f8889.spouse_family_if_asked",
-       "irs_text": "i8889 (2025) p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan.\"",
+       "irs_text": "i8889 p. 4, Line 3 rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage.\"",
        "severity": "medium",
-       "fix": "Name the people: 'In any month of 2025, did [other spouse's name] have a high-deductible plan covering more than one person?' On a joint return, derive the answer from the other spouse's own coverage answers where the tool already has them."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A married filer with self-only coverage all year whose spouse's family HDHP ended early in the year (for example, in February), or whose spouse was not eligible for an HSA.",
-       "why_no": "The help's last sentence starts 'In a month when both of you qualified to have an HSA'. A filer may read that as a condition on answering Yes and answer No because the spouse was not eligible or the plan was brief.",
-       "line": "f8889.spouse_family_if_asked",
-       "irs_text": "i8889 (2025) p. 4, Line 3, rule 1: \"Use the family coverage amount if you or your spouse had an HDHP with family coverage. Disregard any plan with self-only coverage.\"",
-       "severity": "low",
-       "fix": "Reword the help: 'Answer Yes if this was true in even one month, whether or not your spouse qualified for an HSA. We will work out the effect on your limit.' Move the consequence sentence after that."
+       "fix": "Ask a fact the filer can check: \"In any month of 2025, was your spouse on a health plan covering more than one person (for example, spouse and child) that their employer or insurer describes as HSA-eligible or HSA-qualified, or that has a deductible of at least the family HDHP minimum?\" Add help explaining how to check plan documents or the Summary of Benefits."
       }
      ],
-     "prompt_sha": "35493b9feb7b0d28be20f8a834e3fc4707ef7bd4f052ef05db15b7e48c02cfc2",
+     "prompt_sha": "4be433d710a9b4b7dad5ba2de7bd63dc8a9a38699df005fc2ae7489d3b9bd9ce",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-fable-5-2",
-     "cost": 0.17558399999999996,
-     "date": "2026-11-12",
-     "response": ".transcription/false_no/gate_f8889.ask_spouse_family.aae267dab792.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.087848,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_f8889.ask_spouse_family.2452505108db.1.response.txt"
     }
    ],
    "condition": "f8889.ask_spouse_family",
@@ -1132,58 +1092,48 @@
    ]
   },
   "gate:f8889.mfs_ask": {
-   "subject_sha": "44364b714d6b4f161f1d9330be811cd89d78493a3454affd244c35f3893f5778",
+   "subject_sha": "1a2db71e6e98b8860ccc3849f4fe415d4ed251040abc9cb34aadd2039a414e7d",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A married filer filing separately with family HDHP coverage. The spouse had an HSA that received contributions for 2025 (from the spouse or the spouse's employer), but the spouse closed it or rolled it into the filer's account late in 2025 or early in 2026, before this return is prepared.",
-       "why_no": "The question asks in the present tense, 'Does your husband or wife have a health savings account (HSA) of their own?' The spouse no longer has one, so 'no' is truthful. The help covers only an HSA that had nothing put in it, not one that existed for 2025 and has since closed.",
-       "line": "f8889.mfs_spouse_hsa_if_asked (the refusal is missed, and the filer takes the whole line 5 family limit on line 6 with no allocation to the spouse)",
-       "irs_text": "i8889 (2025) p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6 ... divide the amount on line 5 equally between you and your spouse\"",
+       "pattern": "other",
+       "who": "A married couple filing jointly. One spouse has family HDHP coverage at any time in 2025, and each spouse has an HSA of their own, so each needs their own Form 8889 on the joint return.",
+       "why_no": "The computed gate needs filing status married filing separately, so it is false on any joint return. The spouse's-HSA question is never asked, and the line is forced to false.",
+       "line": "f8889.mfs_spouse_hsa_if_asked",
+       "irs_text": "i8889 (2025) p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6 ... divide the amount on line 5 equally between you and your spouse, unless you both agree on a different allocation\". The rule is not limited to separate returns.",
        "severity": "high",
-       "fix": "Ask: 'Did your husband or wife have an HSA of their own at any time in 2025, or receive any contribution to an HSA of their own for 2025 (including one made in 2026 or by an employer), even if the account is now closed or was rolled over?'"
+       "fix": "Drop the married-filing-separately condition. Ask about separate HSAs whenever the filer is married at the end of 2025 and treated as having family HDHP coverage. On a joint return, ask whether each spouse had an HSA, then apply the Line 6 allocation (or the refusal) to both spouses' Forms 8889, unless the joint path already handles this allocation elsewhere."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A married filer filing separately who has self-only HDHP coverage through their own employer. The filer's spouse has family HDHP coverage through the spouse's job, and the spouse also has an HSA.",
+       "why_no": "The filer reads \"treated as having family HDHP coverage\" as asking about their own plan, which is self-only. They answer no, not knowing the rule that a spouse's family coverage is treated as family coverage for both spouses.",
+       "line": "f8889.mfs_spouse_hsa_if_asked",
+       "irs_text": "i8889 (2025) p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025\"; \"If you are treated as having family coverage for each month ...\"",
+       "severity": "medium",
+       "fix": "Ask facts the filer can check: \"Did you or your husband or wife have family (not self-only) HDHP coverage at any time in 2025?\" Then compute \"treated as having family coverage\" from the answer, applying the spouse rule in the tool."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A married filer filing separately who has self-only HDHP coverage in their own name. The spouse has family HDHP coverage, and both spouses have their own HSAs.",
-       "why_no": "The filer reports their own coverage as self-only, so the helper 'treated as having family coverage' is false unless the tool applies the spouse's family coverage to the filer. If the helper is built from the filer's own coverage answer, the gate is false and the spouse's HSA is never asked.",
-       "line": "f8889.mfs_spouse_hsa_if_asked (the refusal is missed, and line 6 is not split with the spouse)",
-       "irs_text": "i8889 (2025) p. 7, Line 6: \"If you are treated as having family coverage for each month, divide the amount on line 5 equally between you and your spouse\" (the words 'treated as' cover a spouse's family coverage)",
-       "severity": "medium",
-       "fix": "Compute the family-coverage helper as true for any month in which either spouse had family HDHP coverage. Ask the MFS filer separately whether the spouse had family HDHP coverage in any month of 2025."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A married filer filing separately, looking at the wording 'For this person (you, or your spouse on a joint return)'.",
-       "why_no": "On a separate return the joint-return framing is confusing. A filer may read the question as not applying to them, or as asking about themselves, and answer no.",
+       "who": "A married filer filing separately who reads the gated question's preface \"For this person (you, or your spouse on a joint return)\".",
+       "why_no": "The joint-return preface on a separate return can make the filer unsure whose HSA is asked about, or think the question applies only to joint returns. They may answer no about their own HSA, or skip the question.",
        "line": "f8889.mfs_spouse_hsa_if_asked",
        "irs_text": "i8889 (2025) p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025\"",
        "severity": "low",
-       "fix": "On a separate return, drop the 'you, or your spouse on a joint return' prefix and ask directly about the husband or wife who is not on this return."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A married couple filing jointly with family HDHP coverage, where each spouse has their own HSA.",
-       "why_no": "The computed gate requires married filing separately, so it is false on a joint return. The line 6 rule in the instructions is not limited to separate returns, so the joint return gets no allocation step unless another path handles it.",
-       "line": "f8889.mfs_spouse_hsa_if_asked (and the line 6 allocation it feeds)",
-       "irs_text": "i8889 (2025) p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6\"",
-       "severity": "low",
-       "fix": "Confirm that joint returns with two HSAs and family coverage go through a separate line 6 allocation. If they do not, widen the allocation step beyond married filing separately."
+       "fix": "On a separate return, drop the joint-return preface and ask: \"Did your husband or wife (who files their own return) have an HSA of their own at any time in 2025, or was anything put into one for 2025?\""
       }
      ],
-     "prompt_sha": "61d74d6c4e3bed72361551a04cf1ba3a9206ef622b6f77d2d08f618d41e6ab95",
+     "prompt_sha": "2d1526ef748ed244c0a9b558a649fc23e6b7c0d54b304c766cdbb78cc9321ab0",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.09140399999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f8889.mfs_ask.44364b714d6b.1.response.txt"
+     "cost": 0.07100000000000001,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_f8889.mfs_ask.1a2db71e6e98.1.response.txt"
     }
    ],
    "condition": "f8889.mfs_ask",

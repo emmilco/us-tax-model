@@ -48,15 +48,29 @@
 ## (question) — `ny_it201.ask.active_duty`
 
 - **Authored helper label:** On active duty in the armed forces in 2025
-- **Encoded (Bool):** Input — At any time in 2025, were you (or, on a joint return, your spouse) on active duty in the U.S. armed forces?
-- Expr: `{"op":"input","source":"At any time in 2025, were you (or, on a joint return, your spouse) on active duty in the U.S. armed forces?"}`
+- **Encoded (Bool):** Input — At any time in 2025, were you, or your husband or wife if you are married (whether or not you file jointly), on active duty in the U.S. armed forces?
+- Expr: `{"op":"input","source":"At any time in 2025, were you, or your husband or wife if you are married (whether or not you file jointly), on active duty in the U.S. armed forces?"}`
+- Cite: [ny_it201i] p. 30, Resident, "whether or not you were domiciled in New York State (unless you were in active service in the military)" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (helper) — `ny_it201.married_not_joint`
+
+- **Authored helper label:** Married at the end of 2025 and not filing a joint return (the federal armed forces question then does not ask about the spouse)
+- **Encoded (Bool):** household helper "Married at the end of 2025 (false for a person filing as single or head of household who has never been married)" = true and f1040 line Filing Status ≠ 'mfj'
+- Expr: `{"all":[{"eq":["household.married",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfj"}],"op":"test"}],"op":"test"}`
+- Cite: [ny_it201i-html] Filing information for military servicemembers and their spouses, "for any tax year of the marriage, a servicemember and their spouse may elect to use, for purposes of taxation, any of the following" (Web edition of Form IT-201-I (2025) ('2025 Form IT-201-I, Instructions for Form IT-201'); page 'Updated: July 27, 2026'. Every number of the PDF edition occurs in it and every word of every PDF page bar the six excepted pages (check_extraction.py --jurisdiction ny); sha256 b866b238)
+
+## (helper) — `ny_it201.active_duty_possible`
+
+- **Authored helper label:** The federal answer says you (or, on a joint return, your spouse) served in the armed forces since 2022, or you are married and not filing jointly
+- **Encoded (Bool):** (scope helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = true or helper "Married at the end of 2025 and not filing a joint return (the federal armed forces question then does not ask about the spouse)" = true)
+- Expr: `{"any":[{"eq":["scope.armed_forces",{"const":true}],"op":"test"},{"eq":["ny_it201.married_not_joint",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 30, Resident, "whether or not you were domiciled in New York State (unless you were in active service in the military)" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.active_duty_if_armed_forces`
 
-- **Authored helper label:** Active duty in 2025 (asked only when the federal answer says you or your spouse served in the armed forces since 2022; otherwise no)
-- **Encoded (Bool):** Choose — [scope helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = true → helper "On active duty in the armed forces in 2025"] [scope helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = false → helper "No"]
-- Expr: `{"alternatives":[{"guard":{"eq":["scope.armed_forces",{"const":true}],"op":"test"},"then":"ny_it201.ask.active_duty"},{"guard":{"eq":["scope.armed_forces",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- **Authored helper label:** Active duty in 2025 (asked only when the federal answer says you or your spouse served in the armed forces since 2022, or when you are married and not filing jointly; otherwise no)
+- **Encoded (Bool):** Choose — [helper "The federal answer says you (or, on a joint return, your spouse) served in the armed forces since 2022, or you are married and not filing jointly" = true → helper "On active duty in the armed forces in 2025"] [helper "The federal answer says you (or, on a joint return, your spouse) served in the armed forces since 2022, or you are married and not filing jointly" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.active_duty_possible",{"const":true}],"op":"test"},"then":"ny_it201.ask.active_duty"},{"guard":{"eq":["ny_it201.active_duty_possible",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 30, Resident, "whether or not you were domiciled in New York State (unless you were in active service in the military)" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.moved_in`
@@ -195,9 +209,9 @@
 
 ## (question) — `ny_it201.ask.it225`
 
-- **Authored helper label:** Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?
-- **Encoded (Bool):** Input — Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?
-- Expr: `{"op":"input","source":"Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?"}`
+- **Authored helper label:** Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the small business modification for a sole proprietor with employees (S-201), the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?
+- **Encoded (Bool):** Input — Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the small business modification for a sole proprietor with employees (S-201), the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?
+- Expr: `{"op":"input","source":"Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the small business modification for a sole proprietor with employees (S-201), the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?"}`
 - Cite: [ny_it201i] p. 8, Line 23, "Use this line to report other additions that are not specifically listed on Form IT-201." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.gov_pension`
@@ -413,7 +427,7 @@
 ## (gate) — `ny_it201.gate.part_year_state`
 
 - **Authored helper label:** Not a New York State resident for all of 2025
-- **Encoded (Bool):** (helper "Active duty in 2025 (asked only when the federal answer says you or your spouse served in the armed forces since 2022; otherwise no)" = true or helper "Were you (and your spouse, on a joint return) a New York City resident (the Bronx, Brooklyn, Manhattan, Queens or Staten Island) for all of 2025, by the same test with New York City in place of New York State?" = false and helper "The State question, asked only after a No to the city question; otherwise no" = false)
+- **Encoded (Bool):** (helper "Active duty in 2025 (asked only when the federal answer says you or your spouse served in the armed forces since 2022, or when you are married and not filing jointly; otherwise no)" = true or helper "Were you (and your spouse, on a joint return) a New York City resident (the Bronx, Brooklyn, Manhattan, Queens or Staten Island) for all of 2025, by the same test with New York City in place of New York State?" = false and helper "The State question, asked only after a No to the city question; otherwise no" = false)
 - Expr: `{"any":[{"eq":["ny_it201.active_duty_if_armed_forces",{"const":true}],"op":"test"},{"all":[{"eq":["ny_it201.ask.city_resident",{"const":false}],"op":"test"},{"eq":["ny_it201.state_resident_if_not_city",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 3, New York State full-year residents: Who must file?, "If you were a New York State resident for only part of the year, do not file Form IT-201." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -430,6 +444,27 @@
 - **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "No"] [f1040 line Filing Status = 'mfj' → helper "The spouse on a joint return was not a full-year New York State and City resident"] [f1040 line Filing Status = 'mfs' → helper "No"] [f1040 line Filing Status = 'hoh' → helper "No"] [f1040 line Filing Status = 'qss' → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"ny_it201.no"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"ny_it201.spouse_not_resident"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"ny_it201.no"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"ny_it201.no"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 4, Item A, "One spouse is a New York State resident and the other is a nonresident or part-year resident." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (question) — `ny_it201.ask.spouse_cannot_sign`
+
+- **Authored helper label:** Unable to file a joint New York return: the spouse's whereabouts are unknown, or the spouse refuses to sign
+- **Encoded (Bool):** Input — Are you unable to file a joint New York return with your spouse because your spouse's address or whereabouts are unknown, or because your spouse refuses to sign a joint New York return?
+- Expr: `{"op":"input","source":"Are you unable to file a joint New York return with your spouse because your spouse's address or whereabouts are unknown, or because your spouse refuses to sign a joint New York return?"}`
+- Cite: [ny_it201i] p. 5, Item A, "You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown" and "– your spouse refuses to sign a joint New York return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (gate) — `ny_it201.spouse_cannot_sign_if_resident`
+
+- **Authored helper label:** Unable to file jointly in New York (asked only after a Yes to the spouse residence question; otherwise no)
+- **Encoded (Bool):** Choose — [helper "On your joint return, was your spouse also a full-year New York State and New York City resident?" = true → helper "Unable to file a joint New York return: the spouse's whereabouts are unknown, or the spouse refuses to sign"] [helper "On your joint return, was your spouse also a full-year New York State and New York City resident?" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.ask.spouse_resident",{"const":true}],"op":"test"},"then":"ny_it201.ask.spouse_cannot_sign"},{"guard":{"eq":["ny_it201.ask.spouse_resident",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it201i] p. 5, Item A, "In this case, you may file a separate New York return using filing status" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (gate) — `ny_it201.gate.spouse_cannot_sign`
+
+- **Authored helper label:** A federal joint return whose filer cannot file a joint New York return (spouse's whereabouts unknown, or the spouse refuses to sign)
+- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "No"] [f1040 line Filing Status = 'mfj' → helper "Unable to file jointly in New York (asked only after a Yes to the spouse residence question; otherwise no)"] [f1040 line Filing Status = 'mfs' → helper "No"] [f1040 line Filing Status = 'hoh' → helper "No"] [f1040 line Filing Status = 'qss' → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"ny_it201.no"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"ny_it201.spouse_cannot_sign_if_resident"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"ny_it201.no"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"ny_it201.no"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it201i] p. 5, Item A, "You are unable to file a joint New York return because:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.special_accrual`
 
@@ -488,6 +523,7 @@
 - **Refusal:** when ny_it201.gate.part_year_state is true, cannot complete Form IT-203, Nonresident and Part-Year Resident Income Tax Return. This tool prepares Form IT-201 for a full-year New York State and New York City resident only; a nonresident or part-year resident files Form IT-203. Cite: [ny_it201i] p. 3, New York nonresidents and part-year residents, "you must file Form IT-203, Nonresident and Part-Year Resident Income Tax Return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - **Refusal:** when ny_it201.gate.part_year_city is true, cannot complete Form IT-360.1, Change of City Resident Status. This tool computes the New York City resident tax for a full-year City resident only. Cite: [ny_it201i] p. 14, Line 50: Part-year New York City resident tax, "complete Form IT-360.1, Change of City Resident Status" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - **Refusal:** when ny_it201.gate.spouse_nonresident is true, cannot complete Separate New York returns, or a joint return taxing both as residents. When one spouse was not a full-year New York State and City resident, New York requires separate returns or a joint return as if both were residents; this tool does neither. Cite: [ny_it201i] p. 3, Separate returns are required for some married taxpayers who file a joint federal return, "If one of you was a New York State resident and the other was a nonresident or part-year resident, you must each file a separate New York return." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+- **Refusal:** when ny_it201.gate.spouse_cannot_sign is true, cannot complete A separate New York return (filing status 3) for a federal joint filer. When your spouse cannot be found or refuses to sign a joint New York return, New York lets you file a separate return under conditions this tool does not check, and this tool prepares only a joint return for a federal joint filer. Cite: [ny_it201i] p. 5, Item A, "You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown" and "In this case, you may file a separate New York return using filing status" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - **Refusal:** when ny_it201.gate.special_accrual is true, cannot complete Form IT-225 (special accrual modifications A-115 and S-129). The special accrual rules for a change of residence are outside this tool. Cite: [ny_it201i] p. 31, Special accruals, "see the instructions for Form IT-225, addition modification number A-115 and subtraction modification number S-129" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - **Refusal:** when ny_it201.gate.yonkers is true, cannot complete Yonkers lines 55 to 57 (Form Y-203 or IT-360.1). Yonkers resident surcharge and nonresident earnings tax are outside this tool. Cite: [ny_it201i] p. 5, Item D2, "you may be considered a resident or part-year resident for Yonkers income tax purposes" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - **Refusal:** when ny_it201.gate.decedent is true, cannot complete A deceased taxpayer's return. Returns for a taxpayer who died are outside this tool. Cite: [ny_it201i] p. 31, Deceased taxpayers, "the taxpayer’s spouse or personal representative may have to file and sign a return for that taxpayer" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
@@ -798,7 +834,7 @@
 ## (gate) — `ny_it201.gate.it225`
 
 - **Authored helper label:** Other New York additions or subtractions (Form IT-225)
-- **Encoded (Bool):** helper "Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?" = true
+- **Encoded (Bool):** helper "Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the small business modification for a sole proprietor with employees (S-201), the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?" = true
 - Expr: `{"eq":["ny_it201.ask.it225",{"const":true}],"op":"test"}`
 - Cite: [ny_it201i] p. 7, Step 4, "See below and Form IT-225, New York State Modifications, and its instructions." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -830,11 +866,32 @@
 - Expr: `{"any":[{"gt":["ny_it201.fed_bonus",{"const":0}],"op":"test"},{"gt":["ny_it201.fed_prior_bonus",{"const":0}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it225i] p. 12, A-209, "New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003." (2025; sha256 4a2de3cf)
 
+## (helper) — `ny_it201.carryover_179_used`
+
+- **Authored helper label:** Part of a section 179 carryover from an earlier year is deducted in 2025 (Form 4562 line 12 more than line 9)
+- **Encoded (Bool):** s179 line 12 > s179 line 9
+- Expr: `{"gt":["s179.line12","s179.line9"],"op":"test"}`
+- Cite: [ny_it225i] p. 11, A-208, "If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds" (2025; sha256 4a2de3cf)
+
+## (question) — `ny_it201.ask.suv_carryover`
+
+- **Authored helper label:** A section 179 carryover deducted in 2025 that came from a sport utility vehicle over 6,000 pounds
+- **Encoded (Bool):** Input — Did any of the section 179 deduction carried over from an earlier year and deducted in 2025 (Form 4562, line 10) come from a sport utility vehicle weighing more than 6,000 pounds that you (or, on a joint return, your spouse) elected to expense?
+- Expr: `{"op":"input","source":"Did any of the section 179 deduction carried over from an earlier year and deducted in 2025 (Form 4562, line 10) come from a sport utility vehicle weighing more than 6,000 pounds that you (or, on a joint return, your spouse) elected to expense?"}`
+- Cite: [ny_it225i] p. 11, A-208, "If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds" (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.suv_carryover_if_used`
+
+- **Authored helper label:** A deducted section 179 carryover from a sport utility vehicle (asked only when part of a carryover is deducted in 2025; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Part of a section 179 carryover from an earlier year is deducted in 2025 (Form 4562 line 12 more than line 9)" = true → helper "A section 179 carryover deducted in 2025 that came from a sport utility vehicle over 6,000 pounds"] [helper "Part of a section 179 carryover from an earlier year is deducted in 2025 (Form 4562 line 12 more than line 9)" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.carryover_179_used",{"const":true}],"op":"test"},"then":"ny_it201.ask.suv_carryover"},{"guard":{"eq":["ny_it201.carryover_179_used",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it225i] p. 11, A-208, "then enter the amount of that deduction" (2025; sha256 4a2de3cf)
+
 ## (gate) — `ny_it201.gate.suv_179`
 
-- **Authored helper label:** A federal section 179 deduction on a sport utility vehicle over 6,000 pounds
-- **Encoded (Bool):** helper "Federal section 179 deduction elected in 2025 on SUVs rated over 6,000 pounds, all persons" > $0
-- Expr: `{"gt":["ny_it201.fed_suv179",{"const":0}],"op":"test"}`
+- **Authored helper label:** A federal section 179 deduction on a sport utility vehicle over 6,000 pounds: elected in 2025, or carried over from an earlier election and deducted in 2025
+- **Encoded (Bool):** (helper "Federal section 179 deduction elected in 2025 on SUVs rated over 6,000 pounds, all persons" > $0 or helper "A deducted section 179 carryover from a sport utility vehicle (asked only when part of a carryover is deducted in 2025; otherwise no)" = true)
+- Expr: `{"any":[{"gt":["ny_it201.fed_suv179",{"const":0}],"op":"test"},{"eq":["ny_it201.suv_carryover_if_used",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it225i] p. 11, A-208, "If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds" (2025; sha256 4a2de3cf)
 
 ## (question) — `ny_it201.ask.alimony_later`
@@ -844,18 +901,11 @@
 - Expr: `{"op":"input","source":"During 2025, did you (or, on a joint return, your spouse) receive or pay any applicable alimony or separate maintenance payment, that is, a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018, or under one executed on or before that date and modified after it, if the modification expressly provides that the modifications of Tax Law § 612(w) apply?"}`
 - Cite: [ny_it225i] p. 10, A-119, "An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018."; p. 18, S-136, "If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid." (2025; sha256 4a2de3cf)
 
-## (gate) — `ny_it201.alimony_later_if_not_old`
-
-- **Authored helper label:** Applicable alimony received or paid in 2025, asked only when none of the alimony paid or received in 2025 was under an agreement of 2018 or earlier (otherwise no)
-- **Encoded (Bool):** Choose — [s1 helper "Alimony under an agreement of 2018 or earlier, or a recapture of alimony, asked only when alimony was paid or received since the start of 2023 (false otherwise)" = false → helper "Applicable alimony or separate maintenance payments received or paid in 2025"] [s1 helper "Alimony under an agreement of 2018 or earlier, or a recapture of alimony, asked only when alimony was paid or received since the start of 2023 (false otherwise)" = true → helper "No"]
-- Expr: `{"alternatives":[{"guard":{"eq":["s1.alimony_if_any",{"const":false}],"op":"test"},"then":"ny_it201.ask.alimony_later"},{"guard":{"eq":["s1.alimony_if_any",{"const":true}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
-- Cite: [ny_it225i] p. 10, A-119, "a payment made under an alimony or separation instrument (as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97) that was executed after December 31, 2018" (2025; sha256 4a2de3cf)
-
 ## (gate) — `ny_it201.alimony_later_if_any`
 
-- **Authored helper label:** Applicable alimony received or paid in 2025 (asked only when the federal answers say alimony was paid or received since 2023 and none of it in 2025 under an agreement of 2018 or earlier; otherwise no)
-- **Encoded (Bool):** Choose — [s1 helper "Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2023, 2024 or 2025?" = true → helper "Applicable alimony received or paid in 2025, asked only when none of the alimony paid or received in 2025 was under an agreement of 2018 or earlier (otherwise no)"] [s1 helper "Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2023, 2024 or 2025?" = false → helper "No"]
-- Expr: `{"alternatives":[{"guard":{"eq":["s1.alimony_any",{"const":true}],"op":"test"},"then":"ny_it201.alimony_later_if_not_old"},{"guard":{"eq":["s1.alimony_any",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- **Authored helper label:** Applicable alimony received or paid in 2025 (asked whenever the federal answers say alimony was paid or received since 2023, whether or not some of it was under an agreement of 2018 or earlier; otherwise no)
+- **Encoded (Bool):** Choose — [s1 helper "Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2023, 2024 or 2025?" = true → helper "Applicable alimony or separate maintenance payments received or paid in 2025"] [s1 helper "Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2023, 2024 or 2025?" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1.alimony_any",{"const":true}],"op":"test"},"then":"ny_it201.ask.alimony_later"},{"guard":{"eq":["s1.alimony_any",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it225i] p. 10, A-119, "If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received." (2025; sha256 4a2de3cf)
 
 ## (question) — `ny_it201.ask.nyc_flex`
@@ -896,7 +946,7 @@
 ## (gate) — `ny_it201.gate.alimony_later`
 
 - **Authored helper label:** Applicable alimony or separate maintenance payments received (A-119) or paid (S-136)
-- **Encoded (Bool):** helper "Applicable alimony received or paid in 2025 (asked only when the federal answers say alimony was paid or received since 2023 and none of it in 2025 under an agreement of 2018 or earlier; otherwise no)" = true
+- **Encoded (Bool):** helper "Applicable alimony received or paid in 2025 (asked whenever the federal answers say alimony was paid or received since 2023, whether or not some of it was under an agreement of 2018 or earlier; otherwise no)" = true
 - Expr: `{"eq":["ny_it201.alimony_later_if_any",{"const":true}],"op":"test"}`
 - Cite: [ny_it225i] p. 10, A-119, "If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received." (2025; sha256 4a2de3cf)
 
@@ -1138,6 +1188,35 @@
 - Expr: `{"op":"param","ref":"ny.zero"}`
 - Cite: [ny_it201] p. 2, New York subtractions, "New York’s 529 college savings program deduction/earnings" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
 
+## (question) — `ny_it201.ask.railroad_uc`
+
+- **Authored helper label:** Railroad unemployment or sickness benefits (Railroad Unemployment Insurance Act) in federal income
+- **Encoded (Bool):** Input — Was any of the unemployment compensation in your (or, on a joint return, your spouse's) federal income a benefit paid by the Railroad Retirement Board under the Railroad Unemployment Insurance Act?
+- Expr: `{"op":"input","source":"Was any of the unemployment compensation in your (or, on a joint return, your spouse's) federal income a benefit paid by the Railroad Retirement Board under the Railroad Unemployment Insurance Act?"}`
+- Cite: [ny_it225i] p. 17, S-122, "benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)" (2025; sha256 4a2de3cf)
+
+## (helper) — `ny_it201.has_unemployment`
+
+- **Authored helper label:** Unemployment compensation on line 14
+- **Encoded (Bool):** line 14 > $0
+- Expr: `{"gt":["ny_it201.line14",{"const":0}],"op":"test"}`
+- Cite: [ny_it225i] p. 17, S-122, "benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)" (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.railroad_uc_if_uc`
+
+- **Authored helper label:** Railroad unemployment benefits (asked only with unemployment compensation on line 14; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Unemployment compensation on line 14" = true → helper "Railroad unemployment or sickness benefits (Railroad Unemployment Insurance Act) in federal income"] [helper "Unemployment compensation on line 14" = false → helper "No"]
+- Note: A Tier 2 or supplemental railroad retirement annuity (the other part of S-122) comes on Form RRB-1099-R, which has no distribution code; the federal part refuses a Form 1099-R entry without one of the codes it computes (retirement.bad_code), so only the unemployment benefits reach this line.
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_unemployment",{"const":true}],"op":"test"},"then":"ny_it201.ask.railroad_uc"},{"guard":{"eq":["ny_it201.has_unemployment",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it225i] p. 17, S-122, "benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)" (2025; sha256 4a2de3cf)
+
+## (gate) — `ny_it201.gate.railroad_uc`
+
+- **Authored helper label:** Railroad unemployment benefits in federal income (S-122)
+- **Encoded (Bool):** helper "Railroad unemployment benefits (asked only with unemployment compensation on line 14; otherwise no)" = true
+- Expr: `{"eq":["ny_it201.railroad_uc_if_uc",{"const":true}],"op":"test"}`
+- Cite: [ny_it225i] p. 17, S-122, "Enter supplemental annuity or Tier 2 benefits received under the Railroad Retirement Act of 1974, or benefits received under the Railroad Unemployment Insurance Act" (2025; sha256 4a2de3cf)
+
 ## 31 — `ny_it201.line31`
 
 - **IRS:** Other (Form IT-225, line 18)
@@ -1145,6 +1224,7 @@
 - **Refusal:** when ny_it201.gate.alimony_later is true, cannot complete Form IT-225 (subtraction S-136, alimony paid, and addition A-119, alimony received, under an agreement made after 2018). New York adds alimony received under such an agreement to income and subtracts alimony paid under it; this tool does not compute Form IT-225. Cite: [ny_it225i] p. 18, S-136, "If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid." (2025; sha256 4a2de3cf)
 - **Refusal:** when ny_it201.gate.depr_168k is true, cannot complete Form IT-225 (subtraction S-213 and addition A-209) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property. New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute. Cite: [ny_it225i] p. 21, S-213, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter" (2025; sha256 4a2de3cf)
 - **Refusal:** when ny_it201.gate.prior_168k is true, cannot complete Form IT-225 (subtraction S-213 and addition A-209) and Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property. New York does not follow the federal special depreciation allowance: it adds back the federal depreciation of that property and subtracts New York depreciation figured on Form IT-398, which this tool does not compute. Cite: [ny_it225i] p. 21, S-213, "complete Part 1 of Form IT-398, New York State Depreciation Schedule for IRC Section 168(k) Property, to calculate the amount of New York depreciation to enter" (2025; sha256 4a2de3cf)
+- **Refusal:** when ny_it201.gate.railroad_uc is true, cannot complete Form IT-225 (subtraction S-122, railroad unemployment insurance benefits). New York subtracts benefits paid under the Railroad Unemployment Insurance Act that are in federal income; this tool does not compute Form IT-225. Cite: [ny_it225i] p. 17, S-122, "benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)" (2025; sha256 4a2de3cf)
 - **Refusal:** when ny_it201.gate.it225 is true, cannot complete Form IT-225, New York State Modifications. Other New York additions and subtractions are not computed by this tool. Cite: [ny_it201i] p. 10, Line 31, "Enter on line 31 the amount from Form IT-225, line 18. Submit Form IT-225 with your return." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - Expr: `{"op":"param","ref":"ny.zero"}`
 - Cite: [ny_it201] p. 2, New York subtractions, "Other ( Form IT-225, line 18)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
@@ -1605,9 +1685,9 @@
 
 ## (gate) — `ny_it201.gate.hh_state_mfs`
 
-- **Authored helper label:** Married filing separately with federal AGI within the state credit rows (both returns' AGI and dependents are needed)
-- **Encoded (Bool):** f1040 line Filing Status = 'mfs' and helper "Is federal AGI within the state household credit tables' credit rows?" = true and line C = false
-- Expr: `{"all":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["ny_it201.hh_state_in_range",{"const":true}],"op":"test"},{"eq":["ny_it201.item_c",{"const":false}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** Married filing separately, not a dependent (table 3 keys on the federal AGI total from both returns and needs both returns' dependents)
+- **Encoded (Bool):** f1040 line Filing Status = 'mfs' and line C = false
+- Expr: `{"all":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["ny_it201.item_c",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 13, Note 4, "If your spouse was not required to file a New York State return, use your spouse’s federal adjusted gross income as reported on their federal return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.hh_state_over7`
@@ -1621,7 +1701,7 @@
 
 - **Authored helper label:** The state household credit table for the filing status
 - **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → column (table 1)] [f1040 line Filing Status = 'mfj' → column (table 2)] [f1040 line Filing Status = 'hoh' → column (table 2)] [f1040 line Filing Status = 'qss' → column (table 2)] [f1040 line Filing Status = 'mfs' → helper "Zero"]
-- Note: Married filing separately (tables 3 and 6) is zero here because the line refuses it wherever those tables allow a credit.
+- Note: Married filing separately (tables 3 and 6) is zero here because the line refuses every separate return of a filer who is not a dependent: the tables key on the federal AGI total from both returns, which can be below this return's own AGI when the spouse's AGI is negative.
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"ny_it201.hh_state_t1"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"ny_it201.hh_state_t2"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"ny_it201.hh_state_t2"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"ny_it201.hh_state_t2"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"ny_it201.zero"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 12, Line 40: New York State household credit, "If you marked No, use the appropriate table (1, 2, or 3) and the notes below to determine the amount to enter on line 40." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -1634,9 +1714,9 @@
 
 ## (gate) — `ny_it201.gate.hh_city_mfs`
 
-- **Authored helper label:** Married filing separately with federal AGI within the city credit rows (both returns' AGI and dependents are needed)
-- **Encoded (Bool):** f1040 line Filing Status = 'mfs' and helper "Is federal AGI within the city household credit tables' credit rows?" = true and line C = false
-- Expr: `{"all":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["ny_it201.hh_city_in_range",{"const":true}],"op":"test"},{"eq":["ny_it201.item_c",{"const":false}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** Married filing separately, not a dependent (table 6 keys on the federal AGI total from both returns and needs both returns' dependents)
+- **Encoded (Bool):** f1040 line Filing Status = 'mfs' and line C = false
+- Expr: `{"all":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["ny_it201.item_c",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 14, Use these notes for New York City household credit tables 4 through 6, Note 4, "If your spouse was not required to file a New York State return, use your spouse’s federal adjusted gross income as reported on their federal return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.hh_city_over7`
@@ -1650,7 +1730,7 @@
 
 - **Authored helper label:** The city household credit table for the filing status
 - **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → column (table 4)] [f1040 line Filing Status = 'mfj' → column (table 5)] [f1040 line Filing Status = 'hoh' → column (table 5)] [f1040 line Filing Status = 'qss' → column (table 5)] [f1040 line Filing Status = 'mfs' → helper "Zero"]
-- Note: Married filing separately (tables 3 and 6) is zero here because the line refuses it wherever those tables allow a credit.
+- Note: Married filing separately (tables 3 and 6) is zero here because the line refuses every separate return of a filer who is not a dependent: the tables key on the federal AGI total from both returns, which can be below this return's own AGI when the spouse's AGI is negative.
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"ny_it201.hh_city_t4"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"ny_it201.hh_city_t5"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"ny_it201.hh_city_t5"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"ny_it201.hh_city_t5"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"ny_it201.zero"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 13, Line 48: New York City household credit (NYC residents only), "If you marked No, use the appropriate table (4, 5, or 6) and accompanying notes to determine the amount to enter on line 48." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -1658,7 +1738,7 @@
 
 - **IRS:** NYS household credit
 - **Encoded (NonNegDollars):** Choose — [line C = true → helper "Zero"] [line C = false → column (40)]
-- **Refusal:** when ny_it201.gate.hh_state_mfs is true, cannot complete New York State household credit table 3 (married filing separately). The table for married filing separately needs your spouse's federal AGI and both returns' dependents; this tool refuses it where a credit is allowed. Cite: [ny_it201i] p. 13, Note 4, "use your spouse’s federal adjusted gross income as reported on their federal return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+- **Refusal:** when ny_it201.gate.hh_state_mfs is true, cannot complete New York State household credit table 3 (married filing separately). The table for married filing separately keys on the federal adjusted gross income total from both returns and counts both returns' dependents; this tool does not ask for your spouse's, so it refuses this credit on every separate return. Cite: [ny_it201i] p. 13, Note 4, "use your spouse’s federal adjusted gross income as reported on their federal return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - **Refusal:** when ny_it201.gate.hh_state_over7 is true, cannot complete New York State household credit, more than 7 people (Note 3). More than seven people in the household credit count is outside this tool where a credit is allowed. Cite: [ny_it201i] p. 13, "Note 3 For each individual over 7, add the amount in this column to the column 7 amount." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.item_c",{"const":true}],"op":"test"},"then":"ny_it201.zero"},{"guard":{"eq":["ny_it201.item_c",{"const":false}],"op":"test"},"then":"ny_it201.hh_state_by_status"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 12, Line 40: New York State household credit, "If you marked the Yes box at item C on the front of Form IT-201, you do not qualify for this credit." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
@@ -1769,7 +1849,7 @@
 
 - **IRS:** NYC household credit
 - **Encoded (NonNegDollars):** Choose — [line C = true → helper "Zero"] [line C = false → column (48)]
-- **Refusal:** when ny_it201.gate.hh_city_mfs is true, cannot complete New York City household credit table 6 (married filing separately). The table for married filing separately needs your spouse's federal AGI and both returns' dependents; this tool refuses it where a credit is allowed. Cite: [ny_it201i] p. 14, Note 4, "use your spouse’s federal adjusted gross income as reported on their federal return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+- **Refusal:** when ny_it201.gate.hh_city_mfs is true, cannot complete New York City household credit table 6 (married filing separately). The table for married filing separately keys on the federal adjusted gross income total from both returns and counts both returns' dependents; this tool does not ask for your spouse's, so it refuses this credit on every separate return. Cite: [ny_it201i] p. 14, Note 4, "use your spouse’s federal adjusted gross income as reported on their federal return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - **Refusal:** when ny_it201.gate.hh_city_over7 is true, cannot complete New York City household credit, more than 7 people (Note 3). More than seven people in the household credit count is outside this tool where a credit is allowed. Cite: [ny_it201i] p. 14, "Note 3 For each individual over 7, add the amount in this column to the column 7 amount." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.item_c",{"const":true}],"op":"test"},"then":"ny_it201.zero"},{"guard":{"eq":["ny_it201.item_c",{"const":false}],"op":"test"},"then":"ny_it201.hh_city_by_status"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 13, Line 48: New York City household credit (NYC residents only), "If you marked the Yes box at item C on the front of Form IT-201, you do not qualify for this credit and should go to line 49." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
@@ -2317,15 +2397,16 @@
 
 ## (helper) — `ny_it201.has_other_payments`
 
-- **Authored helper label:** IRA, pension, unemployment or other income that can carry withholding outside a Form W-2
-- **Encoded (Bool):** (f1040 line 4a > $0 or f1040 line 5a > $0 or s1 line 7 > $0 or s1 line 9 ≠ $0)
-- Expr: `{"any":[{"gt":["f1040.line4a",{"const":0}],"op":"test"},{"gt":["f1040.line5a",{"const":0}],"op":"test"},{"gt":["s1.line7",{"const":0}],"op":"test"},{"ne":["s1.line9",{"const":0}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** IRA, pension, unemployment or other income that can carry withholding outside a Form W-2, including a disability pension reported as wages from a Form 1099-R
+- **Encoded (Bool):** (f1040 line 4a > $0 or f1040 line 5a > $0 or helper "Disability pensions paid before the minimum retirement age, in federal wages (Form 1040 line 1h)" > $0 or s1 line 7 > $0 or s1 line 9 ≠ $0)
+- Interpretation: amb.ny.2025.withholding_forms
+- Expr: `{"any":[{"gt":["f1040.line4a",{"const":0}],"op":"test"},{"gt":["f1040.line5a",{"const":0}],"op":"test"},{"gt":["ny_it201.dis_pension_wages",{"const":0}],"op":"test"},{"gt":["s1.line7",{"const":0}],"op":"test"},{"ne":["s1.line9",{"const":0}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 21, Lines 72, 73, and 74, "Enter on the appropriate line your total New York State, New York City, and Yonkers tax withheld from any of the following:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.other_withholding`
 
 - **Authored helper label:** New York withholding on a form other than Form W-2
-- **Encoded (Bool):** Choose — [helper "IRA, pension, unemployment or other income that can carry withholding outside a Form W-2" = true → helper "Was any New York State, City or Yonkers tax withheld from a pension, annuity or IRA payment (Form 1099-R), unemployment or other government payment (Form 1099-G) or gambling winnings (Form W-2G)?"] [helper "IRA, pension, unemployment or other income that can carry withholding outside a Form W-2" = false → helper "No"]
+- **Encoded (Bool):** Choose — [helper "IRA, pension, unemployment or other income that can carry withholding outside a Form W-2, including a disability pension reported as wages from a Form 1099-R" = true → helper "Was any New York State, City or Yonkers tax withheld from a pension, annuity or IRA payment (Form 1099-R), unemployment or other government payment (Form 1099-G) or gambling winnings (Form W-2G)?"] [helper "IRA, pension, unemployment or other income that can carry withholding outside a Form W-2, including a disability pension reported as wages from a Form 1099-R" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_other_payments",{"const":true}],"op":"test"},"then":"ny_it201.ask.other_withholding"},{"guard":{"eq":["ny_it201.has_other_payments",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 21, Lines 72, 73, and 74, "Form IT-1099-R, Summary of Federal Form 1099-R Statements" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 

@@ -1233,7 +1233,8 @@ const NY_IN_SCOPE: Record<string, boolean> = {
   other_credits: false, other_taxes: false, city_credits: false, mctmt: false, bought_untaxed: false, use_tax_dmv_only: false, use_tax_st141: false,
   contributions: false, dependent_care: false, noncustodial: false, real_property_credit: false, college_tuition: false,
   other_withholding: false, refund_529: false, late_penalty: false, prior_agi_high: false, abode_part_year: false,
-  est_late: false, alimony_later: false, nyc_flex: false, prior_168k: false,
+  est_late: false, alimony_later: false, nyc_flex: false, prior_168k: false, railroad_uc: false, spouse_cannot_sign: false,
+  suv_carryover: false,
 };
 
 /** Whole returns with New York answers: a generated federal return (returnArbitrary over the federal documents, so

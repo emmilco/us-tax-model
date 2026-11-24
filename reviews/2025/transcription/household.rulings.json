@@ -549,6 +549,16 @@
   {
    "printed": "household.filing_status_conflict",
    "project_expr_sha256": "44b4aa3f5f63cae9bf438d62366e80c8e2541c1d8c142a147b9236411cb1abde",
+   "second_expr_sha256": "be3f94d4d978bf656394da7130c5e161e9dbcfdcdd7def0a6b799d91fd9bef3f",
+   "ruling": "Ruling: model error; p501 p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes\"; i1040gi p. 14 allows married filing separately to a married filer. The reply refuses every separate return not married on December 31, so it refuses a 2025 widow filing separately; its other additions fold in cases other gates refuse (a 2025 death on a single or head-of-household return: household.widowed_this_year; the head-of-household tests: household.hoh_fails). Same reading as the ruling of 2026-11-15 on this line. Project stands.",
+   "context": "a08f7611d72cf0ff13dee0cfbb95da9e5c13d43ddcbd588ad988a023f2b6388d",
+   "date": "2026-11-24",
+   "run": "6b2f7abe036046efbe09301beeae410ac01873296dde900e07d482a29157e770",
+   "subject_key": "33cb9eb9507146b2dd4bedf99d57e667d5c105267dd49df3c3be4e5be1a38403"
+  },
+  {
+   "printed": "household.filing_status_conflict",
+   "project_expr_sha256": "44b4aa3f5f63cae9bf438d62366e80c8e2541c1d8c142a147b9236411cb1abde",
    "second_expr_sha256": "bf09897bc3b8072ce63f4f4df9dad1162ccf16f9a705c6b98e36cfd9f6f3c98e",
    "ruling": "Ruling: model error; read without triage (triage.py refuses the log: an old line-scoped pass, 7073fcafb61a, names household.widowed_2025, which the form no longer compares). The changed alternative is MFS: the project refuses a separate return only when the filer was not married at the end of 2025 and no spouse died in 2025 (household.joint_unmarried); the reply refuses every MFS filer not married on Dec 31, so it refuses a 2025 widow filing separately. p501 p. 6, Spouse died during the year: \"If your spouse died during the year, you are considered married for the whole year for filing status purposes\"; i1040gi p. 14 allows MFS to a married filer. The project is right. The reply's other differences fold in cases other gates refuse (a 2025 death on a single return: household.widowed_2025; HOH tests: household.hoh_fails; QSS: household.qss_fails), as the prior rounds ruled (scope).",
    "context": "6be5eb93a6ee6ec2512611bdcfb2a062147de37119b940a2305f36f2cdbe3553",
@@ -855,6 +865,16 @@
    "subject_key": "e9f2ce60ef6dc55f0e17c7bc3e2ad8af8f4330007e62b0256e11e93b02a11e87"
   },
   {
+   "printed": "household.qss_claimed",
+   "project_expr_sha256": "4d2d64aa7dec30c7cdf339908a3d8ba66b33d6fc6f9b2f923e1a873120cdce61",
+   "second_expr_sha256": "4f4631b60066bb833269bbef4ed8259cd5f235dbd1ece4fc18becf3af618813e",
+   "ruling": "Ruling: scope; i1040gi p. 15, Qualifying Surviving Spouse, \"use joint return tax rates for 2025 if all of the following apply\". The reply drops the five tests (household.qss_eligible) and is true on every qualifying-surviving-spouse return. The two differ only where the tests were answered No, and that return is refused for the whole status by household.qss_fails (Form 1040 line 12e and the tax), so no computed amount or notice differs; the project's line decides whether dependent.own_child is asked and whether the notice household.qss_no_child_notice shows, both moot on a refused return.",
+   "context": "a08f7611d72cf0ff13dee0cfbb95da9e5c13d43ddcbd588ad988a023f2b6388d",
+   "date": "2026-11-24",
+   "run": "6b2f7abe036046efbe09301beeae410ac01873296dde900e07d482a29157e770",
+   "subject_key": "57ecfc21908b2d9c838cbacb0624b52a86e8420dba5f2b09fe8446b304ce3d61"
+  },
+  {
    "printed": "household.qss_fails",
    "project_expr_sha256": "28b3cbbd296b4f3c1833b514781f6bc121068ae2f866e7125d08f51b29252ff6",
    "second_expr_sha256": "536e28f08259475f4b1de3a394eec17bbc6862d7a3a66b16e2a335ffd686b0a5",
@@ -899,6 +919,16 @@
    "subject_key": "bebefea012cbbe9fc79ae52295a5387300f3872d88bbdcc7f4f80337d0353857"
   },
   {
+   "printed": "household.rdp_community_property",
+   "project_expr_sha256": "f198369673364aaea774a1e3d44203381e24ce9bf52b967c1f24880190e07eab",
+   "second_expr_sha256": "68406fbaf93536908147a4b37446b9844d45ed8a06e6fbe65dae76822390228e",
+   "ruling": "Ruling: scope; i1040gi p. 23, Community Property States, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income\"; p555 p. 2, Domicile, \"If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both.\" The reply keeps the filer's own community-property residence as a condition; a partner living elsewhere can still have community income through the partner's domicile or a former one (BUG-1089). The project's gate is a refusal and refuses every registered domestic partner of those states not filing jointly, the coordinator's decision under the owner's grant: extra refusing where the rule may not apply, no amount computed wrongly.",
+   "context": "a08f7611d72cf0ff13dee0cfbb95da9e5c13d43ddcbd588ad988a023f2b6388d",
+   "date": "2026-11-24",
+   "run": "6b2f7abe036046efbe09301beeae410ac01873296dde900e07d482a29157e770",
+   "subject_key": "8f43ed54763d5e97f95f7b92142f9164dec76543cf69849c14d94dcc7b7c371d"
+  },
+  {
    "printed": "household.roster_bad",
    "project_expr_sha256": "6be8b9e0a9797cdf5410c843f023207a0ab9450651a54356ce9effe677ea73d2",
    "second_expr_sha256": "765400b5d21d7b046dd235dc2cd90b173dcb3331972091a71702d3d3f0885403",
@@ -940,6 +970,16 @@
    "ruling": "Ruling: ambiguity; amb.2025.filer_under_16 (owner's entry check); f1040 p. 1: \"If joint return, spouse's first name and middle initial\". The project line is unchanged by the T-091 correction (BUG-0267 adds household.test2_absence_persons, the gate household.hoh_absence and its refusal on household.hoh_eligible; no other household expression changed). The reply restates through helpers (household.h_mfj, household.h_taxpayers) the roster test ruled since round 1: exactly one taxpayer entry, two person entries on a joint return and one otherwise, the complement of household.roster_ok, without the owner's under-16 check. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,411 fixtures, 500 generated returns seed 20261026, 211 partial records; 2,122 comparisons): 2,109 of 2,122 agree; 12 project-unknown, 1 project-refuses; on returns the full interview completes: none. The 12 project-unknown are fixtures without person.under16 (classm.f8889.3 and .deepseek, stage16.hsa.partial.H01, H02 and others, ss.person.separation; incomplete returns); the project-refuses is audit.household.filer_under16, the owner's check. As ruled in the T-091 round. Project stands.",
    "context": "fff32ef714ad9b6680e4fb80e6ed03b62a680ad41dbc6c61ba4f6576df7c7af0",
    "subject_key": "8fc1be839e656132c5c9d6c9abf0c95cfeb8a6cef561ebfd036169a433fb5d78"
+  },
+  {
+   "printed": "household.spouse_died_this_year_if_ever_married",
+   "project_expr_sha256": "2256e7df8d561edddf798a7582fc8d7b4dc798fa5bd5056aa23a9356b36013fb",
+   "second_expr_sha256": "97a494a9a5a7a31a6ac41711b89b42274942a765c12f87e3103a4746a8ecf3c9",
+   "ruling": "Ruling: representation; p501 p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\" On a single or head-of-household return both read household.ever_married and then the death question. On a joint, separate or qualifying-surviving-spouse return the status itself states a marriage (household.status_states_marriage), so the project does not ask household.ever_married; the reply needs it there, where its answer could only be Yes. No value differs where both are known. This run reviewed the line because the death question's source now also names the Form 2441 route (BUG-0681).",
+   "context": "a08f7611d72cf0ff13dee0cfbb95da9e5c13d43ddcbd588ad988a023f2b6388d",
+   "date": "2026-11-24",
+   "run": "6b2f7abe036046efbe09301beeae410ac01873296dde900e07d482a29157e770",
+   "subject_key": "0d0c5fecac8d97e7857ffdf49450494155f535ed16c1167a005f0da6dfaca0e9"
   },
   {
    "printed": "household.taxpayer_work_ssn",
@@ -1026,6 +1066,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "household.widowed_this_year",
+   "project_expr_sha256": "3b08044e16f16fcfb150073920840f441ea70c47dae8dd4a81984b91e9a0d754",
+   "second_expr_sha256": "386730a1dc2805f4e63444e70b93a1684441a22a2633625a9a78787ffa2a0ef7",
+   "ruling": "Ruling: model error; i1040gi p. 13, Married Filing Jointly: \"You can choose married filing jointly as your filing status if any of the following apply ... Your spouse died in 2025 and you didn't remarry in 2025\"; the interface is \"Filing as single or head of household although your spouse died in 2025\". The reply adds a joint return not married at the end of 2025 whose spouse died in 2025, the valid death-year joint return, so it would refuse it. Same reading as the ruling of 2026-11-14 on this line. Project stands.",
+   "context": "a08f7611d72cf0ff13dee0cfbb95da9e5c13d43ddcbd588ad988a023f2b6388d",
+   "date": "2026-11-24",
+   "run": "6b2f7abe036046efbe09301beeae410ac01873296dde900e07d482a29157e770",
+   "subject_key": "1540f5a77af5132336bf23fadc24e07349762bd67a3dd0601e34a8d585455f7a"
   },
   {
    "printed": "household.widowed_this_year",

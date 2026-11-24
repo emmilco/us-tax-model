@@ -6,7 +6,7 @@
  "head_rows": {
   "lines judged": "25",
   "match / mismatch / unclear / missing": "22 / 2 / 1 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -78,9 +78,9 @@
   },
   {
    "key": "8",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "9d4ed2289a793e0b41995f22e7f8275e16b86f3035a1f846aa06a716fd0e2c94",
    "status": "MATCH",
-   "subject_key": "95cd5ed6bcdb43ae0e424cd5526a1dfa2d70e9daa036af6d01dedba1bf5f99de"
+   "subject_key": "398a5a279886406cf03b81126e312f09bc8522bec6e11d4a7f458825cb3793a2"
   },
   {
    "key": "9",
@@ -91,9 +91,9 @@
   },
   {
    "key": "10",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "9d4ed2289a793e0b41995f22e7f8275e16b86f3035a1f846aa06a716fd0e2c94",
    "status": "MATCH",
-   "subject_key": "d31af2769b53d8cc6cfba302f32aeb4cbb0a2f586f432dc5144bbc74fe002ae2"
+   "subject_key": "f97ac03116e640591c33940cb18770aab903cebb445776571a7d1d3a914ef195"
   },
   {
    "key": "(screen) (ira.special)",
@@ -146,15 +146,15 @@
   },
   {
    "key": "12a",
-   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
+   "record": "9d4ed2289a793e0b41995f22e7f8275e16b86f3035a1f846aa06a716fd0e2c94",
    "status": "MATCH",
-   "subject_key": "0a5a8a8b4ccd5d0ee602de733ac27104e21d949821e21ddb7ddfb88558240e93"
+   "subject_key": "77d6434bbe59803ca537aaec6642c78a5340f00ce51cf41bbadfd48a5559744b"
   },
   {
    "key": "12b",
-   "record": "3b2c653f0542f9d83a6ee2c181f1f99f4574e3792ccd754797976bd7769b0bcc",
+   "record": "9d4ed2289a793e0b41995f22e7f8275e16b86f3035a1f846aa06a716fd0e2c94",
    "status": "MATCH",
-   "subject_key": "5c02b7ad4535cdbd555683ce48adca8216c64522a24c653e3d1a2270fffcfc9d"
+   "subject_key": "c9f3c27aa2e7b1fb0a504cab7bb1c6ba41e41ea2f0d353cafc76d67e38e53bb4"
   },
   {
    "key": "(screen) (ira.deduct_less)",
@@ -175,9 +175,9 @@
   "6b": "73dda74fa6da544aae01eb0a5a00ddeb87f9002476fc1e01d28c6543e4cfaa24",
   "7a": "5ef4420feeae35636a75d3df7713ff900926f8c0fb77cb7884fbe4ae49f4566b",
   "7b": "ffd23f6844274e80b0d17c6909490896ea198db88d82a2ee074c22f886b836b2",
-  "8": "2e002c5b49a6bf59c74f34b532a35e1831b29e53251b2a1cb9feaac8621bdfee",
+  "8": "a61d15832d90b9633f4f83bd678e1754efd0a12a324689816529b720c183f043",
   "9": "e0c88b07f9e834cac611e12d20a888d42803b075c71f81601be2737a1b1696e1",
-  "10": "05a8fb8f9ed2403f2f49ca8c5c2a96c9a0429a65574de08177339869980e4a03",
+  "10": "389eb8677077d1181e6d5dbf147db3f10d3673ac53d23f00268f82729105ab42",
   "(screen) (ira.special)": "201538afb273929ab974776e52fc2e0e9382cff88ad2cc666dcefab249f37792",
   "(screen) (ira.deferred_comp)": "d3065a818a8986b0371d5cdb43fd4d96b557dd18b443c195ea3ee4f0e11db495",
   "(screen) (ira.fellowship)": "5fcbe6fa74bbcb5cf8a54a33d4a912b596e32008699aaf9155867a0673265600",
@@ -186,8 +186,8 @@
   "(screen) (ira.se_capital)": "dae8086074c34029941c504a1fbf3e1a570ac6f3bf29c842880ce83e0c215a47",
   "11a": "a2330bb4d0b76c1402650572ba3345913bbd9dba1bf36d7449b40468656bde1e",
   "11b": "2cce555dc6a35cf66f1b1f9a4f067486f524dda968590ad3a62e4bb147027e48",
-  "12a": "ae8aad7b7607fce4ffcc38245f0c29e6d8f8b09808c91458f79f94b559ed0fd4",
-  "12b": "7839bd0165f5678fddea16897d2befa3713a839d864e495bd7626cb3951be91c",
+  "12a": "20cab9d24dcd9f68b669fc5520168371cbc0733bd3565d62f1582d3c11d82b39",
+  "12b": "a8abe1f08f886f014e6e1947b6274263015a4390ae63f234f4ad6f0dd8e55c75",
   "(screen) (ira.deduct_less)": "b4240e555b0ceac4d5954d9f838e2de758a9b775e15598e46e6cec0f3a36258f"
  },
  "__rest__": "17123d13dc65bd705a2a042799aea875ab0ac42f5ea45f1e031b5a4f0e7383c6"

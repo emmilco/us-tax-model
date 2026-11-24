@@ -11,11 +11,11 @@ to date on 2026-11-15, after the 2026 preparation lanes (`docs/provisional/lanes
 
 | Step | Output | State |
 |---|---|---|
-| 1 | `sources/2026/` (121 documents, 68 IRS drafts), `tools/sources/2026.json`, `reports/2026/archive_refresh_2026-11-04.md`, the refresh of 2026-11-14 (`archive_refresh_2026-11-14.md`: three finals, two reposted drafts, five new drafts), the 22 documents added on 2026-11-15 for the coverage expansion, and the refresh of 2026-11-22 (ten finals, posted 2026-11-17 to 2026-11-20: f8889, f8880, f8863, f5329, i1040sb, f7206, p915, f8919, f1045 and i1045; two new drafts, p969 and i6251; Notice 2026-5; the catalog rows name the drafts they supersede) | archive verified (`python3 tools/fetch_sources.py --year 2026`) |
+| 1 | `sources/2026/` (122 documents, 69 IRS drafts), `tools/sources/2026.json`, `reports/2026/archive_refresh_2026-11-04.md`, the refresh of 2026-11-14 (`archive_refresh_2026-11-14.md`: three finals, two reposted drafts, five new drafts), the 22 documents added on 2026-11-15 for the coverage expansion, and the refresh of 2026-11-22 (ten finals, posted 2026-11-17 to 2026-11-20: f8889, f8880, f8863, f5329, i1040sb, f7206, p915, f8919, f1045 and i1045; two new drafts, p969 and i6251; Notice 2026-5; the catalog rows name the drafts they supersede), and the refresh of 2026-11-24 (`docs/ty2026/2026-11-24_refresh_and_rehearsal.md`: no new final, no reposted draft, no gating document; the Form 6251 draft of 2026-05-28 added) | archive verified (`python3 tools/fetch_sources.py --year 2026`) |
 | 2 | `reports/2026/year_diff_from_2025.{md,html}`; `reports/2026/worklist_split.md` and `research/ty2026/worklist.json` (`research/ty2026/split_worklist.py`) | 2,236 worklist items: 426 of kind (a), 1,810 of kind (b) as the script splits them; counting the 16 items of C-PEOP-23 and C-PEOP-24 as kind (b) (owner decision 2026-11-04), 410 of kind (a) and 1,826 of kind (b) |
 | 3 | `research/ty2026/changes.md` (135 entries, with C-LAW-01 and C-LAW-02 and the statute read) and `changes.verification.md` (2 high, 11 medium, 7 low; all applied) | 827 quotes checked by `research/ty2026/check_quotes.py`, 0 not printed (2026-11-23, against the refreshed archive; C-LAW-02 rewritten with its operations) |
-| 4 | `research/ty2026/params-2026.proposed.yaml` (`build_params.py`, `check_params.py`), merged with the mechanical proposal `reports/2026/params_proposal_from_2025.{md,yaml}` (`tools/propose_params.py`); the staged tables `research/ty2026/tables-2026/` (`dc_rate`, `ltc_limit`, `savers_rate`, `rate_schedule`) | 346 values (2026-11-23, with the parameters the coverage expansion added to 2025): 168 from final sources, 82 from drafts, 14 derived (the `age.*` years of birth, `moves_with_year`), 82 with no 2026 source (`amt.rate_25` keeps no 2026 value: line 37 only, waiting for the 2026 Form 6251; the phase-out reads `amt.phaseout_rate`, BUG-1031); 13 of them new in 2026 (every parameter the operations read that 2025 lacks); filled on 2026-11-23 from final sources the audit of 2026-11-22 named: `sdtw.ordinary_ceiling`, `sli.divisor_*` (from rp-25-32), `clcw.prior_limit*` (the Schedule D draft, line 21), and six re-cited from draft to final (`qbi.threshold`, `sa.salt_threshold`, `ira.limit_50`, `f5329.cap_abuse`, `f5329.simple_rate`, `ctc.age_limit`); `refund.std_*` and `refund.box_*` stay unsourced until the 2026 Form 1040 instructions (their inferred values are in their notes); `savers_rate` and `ltc_limit` re-extracted from the final Forms 8880 and 7206 (values unchanged); 15 retired (`sc.mileage_rate`, `sc.bonus_rate_40`, `ptc.repay_*`, ten `f5695.*`) |
-| 5 | `changes/2026/` (164 entries, 1,347 operations, carrying out 91 of the change map's entries; `changes/2026/README.md`), from the proposals of `research/ty2026/forms-proposed/` (Form 1040, Schedule A, Form W-2, new Schedule 3-A, the Schedule C vehicle lines) and the change map; `research/ty2026/fixtures-proposed/2026-predicted.json` (22 cases) | `python3 tools/year_changes.py --check`: all apply to the 2025 forms; 125 of the 141 entries rest on drafts (2026-11-23; on 2026-11-22: eight entries flipped to `verified: final` after their evidence and locators were checked against the finals: C-PEOP-02, C-SCHED-16, C-CRED-16 (three files), C-PEOP-17, C-PEOP-19, C-PEOP-21) |
+| 4 | `research/ty2026/params-2026.proposed.yaml` (`build_params.py`, `check_params.py`), merged with the mechanical proposal `reports/2026/params_proposal_from_2025.{md,yaml}` (`tools/propose_params.py`); the staged tables `research/ty2026/tables-2026/` (`dc_rate`, `ltc_limit`, `savers_rate`, `rate_schedule`) | 349 values (2026-11-24, with the parameters added to 2025 since): 168 from final sources, 82 from drafts, 16 derived (the `age.*` years of birth, `moves_with_year`), 83 with no 2026 source (`amt.rate_25`, now line 37 only, filled on 2026-11-24 from the Form 6251 draft, p. 3, 25%; the phase-out reads `amt.phaseout_rate`, BUG-1031; `sa.gift_total_limit_rate` and `sa.gift_property_limit_rate` wait for the 2026 Pub. 526); 13 of them new in 2026 (every parameter the operations read that 2025 lacks); filled on 2026-11-23 from final sources the audit of 2026-11-22 named: `sdtw.ordinary_ceiling`, `sli.divisor_*` (from rp-25-32), `clcw.prior_limit*` (the Schedule D draft, line 21), and six re-cited from draft to final (`qbi.threshold`, `sa.salt_threshold`, `ira.limit_50`, `f5329.cap_abuse`, `f5329.simple_rate`, `ctc.age_limit`); `refund.std_*` and `refund.box_*` stay unsourced until the 2026 Form 1040 instructions (their inferred values are in their notes); `savers_rate` and `ltc_limit` re-extracted from the final Forms 8880 and 7206 (values unchanged); 15 retired (`sc.mileage_rate`, `sc.bonus_rate_40`, `ptc.repay_*`, ten `f5695.*`) |
+| 5 | `changes/2026/` (164 entries, 1,348 operations, carrying out 91 of the change map's entries; `changes/2026/README.md`), from the proposals of `research/ty2026/forms-proposed/` (Form 1040, Schedule A, Form W-2, new Schedule 3-A, the Schedule C vehicle lines) and the change map; `research/ty2026/fixtures-proposed/2026-predicted.json` (22 cases) | `python3 tools/year_changes.py --check`: all apply to the 2025 forms; 129 of the 164 entries rest on drafts (2026-11-24; no entry has had all its documents turn final since 2026-11-22; on 2026-11-22: eight entries flipped to `verified: final` after their evidence and locators were checked against the finals: C-PEOP-02, C-SCHED-16, C-CRED-16 (three files), C-PEOP-17, C-PEOP-19, C-PEOP-21) |
 
 ## Order of work when the final documents publish
 
@@ -111,24 +111,32 @@ to 7d and Trump accounts (C-PEOP-04, -11); the mileage rate split (C-BUS-01); Sc
 (C-BUS-04); the home office storage rule (C-BUS-06); Form 4562 line 14 and bonus rates (C-BUS-11, -12); the
 remaining wording-only entries last.
 
-## Items that must be re-verified against the final documents
+## Items that must be re-verified against the final documents (as of 2026-11-24)
 
-- **Change map**: every entry whose 2026 bullet is marked "(draft)" (most of the 133; the final-sourced entries are
+No document has turned final since the refresh of 2026-11-22, so the list is that of 2026-11-22 with today's counts
+(`docs/ty2026/2026-11-24_refresh_and_rehearsal.md`).
+
+- **Change map**: every entry whose 2026 bullet is marked "(draft)" (most of the 135; the final-sourced entries are
   those resting on the final Schedule C, Schedule SE and its instructions, Form 4952, Form 1095-A, the 1099-R and W-2
-  instructions, Rev. Procs. 2025-32, 2025-19, 2025-25 and 2026-15, Notices 2025-67 and 2026-10, IRB 2026-29 and
-  Public Law 119-21). The corrections in `changes.verification.md` apply first.
-- **Parameters**: the 82 with `source: draft` in `params-2026.proposed.yaml` (the 70 first staged came from Schedules 1-A, 8812, A, D, Forms
-  8863, 2441, 8959, 8995, 8880, 5329, 8962, 8889 and the instructions for 8889, 1040-SC, 8606, 2441, 8960, 1116, 1095-A,
-  5329, and Pub. 590-B). Also the Tax Computation Worksheet rows taken from the rate tables (confirm against the
-  worksheet), the EIC limits taken from Rev. Proc. 2025-32 (confirm against the Form 1040 instructions' EIC steps), and
-  `qbi.threshold`, whose married-filing-separately amount ($201,775) is $25 above the single amount in the draft and
-  in Rev. Proc. 2025-32 (C-SCHED-30; confirmed by the final Rev. Proc. p. 22, so not a draft error). The dependent
-  care exclusion: the final W-2 instructions (p. 19) still print "$5,000 exclusion" against the Form 2441 draft's
-  $7,500 (C-CRED-11).
-- **Operations**: the 125 entries of `changes/2026/` marked `verified: draft` (of 141, on 2026-11-23), among them those from
-  `forms-proposed/` (Form 1040 and Schedule 3-A rest on drafts; Schedule A on a draft and the statute; the W-2
-  codes on the final instructions; the mileage split on final guidance, with its layout from the draft Schedule C
-  instructions).
+  instructions, Schedule 8812, Forms 8606, 8863, 8880, 8889, 5329, 7206, 8919, 1045 and its instructions, Schedule B's
+  instructions, Pub. 915, Rev. Procs. 2025-32, 2025-19, 2025-25 and 2026-15, Notices 2025-67, 2026-5 and 2026-10, IRB
+  2026-29 and Public Law 119-21). The corrections in `changes.verification.md` apply first.
+- **Parameters**: the 82 with `source: draft` in `params-2026.proposed.yaml`, among them `amt.rate_25` (Form 6251
+  line 37, from the Form 6251 draft since 2026-11-24). Also the Tax Computation Worksheet rows taken from the rate tables
+  (confirm against the worksheet), the EIC limits taken from Rev. Proc. 2025-32 (confirm against the Form 1040
+  instructions' EIC steps), and the 83 with no 2026 source (`check_params.py` lists them; most wait on i1040gi). The
+  dependent care exclusion: the final W-2 instructions (p. 19) print "$5,000 exclusion" against the Form 2441 draft's
+  $7,500 (C-CRED-11; recorded 2026-11-04, not re-read today).
+- **Operations**: the 129 of the 164 entries of `changes/2026/` marked `verified: draft`. The drafts most often left
+  alone in an entry: Schedule 1-A (12 entries), Form 1040 (11), the Schedule C instructions (10), the Form 8863
+  instructions (9), Schedule A (7), the Form 5329 instructions (7). Before adoption, also the entries the rehearsal of
+  2026-11-24 found wanting (BUG-1408: `person.edu_tin_missing` left with no reader) and the Schedule 2 AMT
+  citations that quote the 2025 Form 6251 (20 citation findings now that the Form 6251 draft is archived: line 1a's
+  Schedule 1-A line 37 is line 43 in 2026, and the 2026 amounts of lines 4, 7, 18, 19, 25 and 39).
+- **Car loan interest**: the final regulations (T.D. 10054, Federal Register 2026-18219, archived 2026-11-24 as
+  `fr-2026-18219`) replace the proposed ones (`fr-2025-24154`) that `forms/2025/carloan.yaml` cites 20 times; 8 of
+  the quoted passages are not printed as quoted in the final (among them the refinancing and negative-equity
+  passages). Read the final against `carloan` and re-cite before adoption.
 - **Statute-sourced rules** (decisions 2 and 6): the 0.5% charitable floor (C-PRI-15; `sa.gift_floor`,
   `amb.2026.gift_floor_base`) against the 2026 Schedule A instructions' Charitable Contribution Limitation Worksheet;
   C-LAW-01 (hazardous duty areas) and C-LAW-02 (AMT) against the 2026 Form 1040 instructions; and every entry the statute
@@ -136,16 +144,23 @@ remaining wording-only entries last.
 - **Fixtures**: every case of `2026-predicted.json` labelled draft, and the four `ty2026.sa.gift_floor_*` cases
   against the Schedule A instructions.
 
-## Documents still missing (on 2026-11-04)
+## Documents still missing (as of 2026-11-24)
 
-The 2026 Instructions for Form 1040 (`i1040gi`: 937 kind (b) items and 60 parameters wait on it), Schedule A
-(`i1040sca`), Schedule D (`i1040sd`), Form 8949, Form 8995-A, Form 4562, Form 8582, Schedule K-1 (Form 1065), Form
-8962; Publications 334, 463, 501, 502, 504, 525, 526, 527, 550, 560, 561, 587, 590-A, 925, 946, 969, 970, 974; the HTML
-editions of the instructions; final regulations on car loan interest (`fr-2025-24154` was proposed); 2026 guidance on
-overtime methods (the 2025 `n-25-69`); the U.S. Code 2025 edition (not on GovInfo on 2026-11-04). Full list:
-`reports/2026/archive_refresh_2026-11-04.md` section 7. Since archived as drafts (refresh of 2026-11-14): the
-instructions for Form 8962 and Form 8582, and Publications 525, 590-A and 925; none of the gating documents
-(i1040gi, i1040sca, i1040sd, i8949, i8995a, i4562, Publications 463, 501, 526, 560, 946, 970) had posted. Since archived as drafts (refresh of 2026-11-22): Publication 969 (posted 2026-11-17) and the instructions for Form 6251 (posted 2026-11-09); Notice 2026-5 is archived. On 2026-11-22 still no gating document had posted, as a final or as a 2026 draft: each of the twelve shows only an edition dated December 2025 to March 2026 at `irs-pdf/` and `irs-dft/`. A December 2026 revision of Publication 529 was posted as a draft on 2026-11-05; the catalog keeps the continuous-use final (Rev. December 2020) until the new revision is final.
+Checked 2026-11-24 at `irs.gov/pub/irs-pdf/` and `irs.gov/pub/irs-dft/` (and the draft listing for Forms 6251, 8829
+and Pub. 926): no gating document has posted, as a final or as a 2026 draft. `i1040gi` (the Form 1040 instructions,
+which most of the 83 unsourced parameters and C-PEOP-23 wait on), `i1040sca`, `i1040sd`, `i8949`, `i8995a`, `i4562`,
+and Publications 463, 501, 526, 560, 946 and 970 each show only an edition dated December 2025 to March 2026. Also
+still with no 2026 edition: the instructions for Schedule K-1 (Form 1065); Publications 334, 502, 504, 527, 550, 561,
+587 and 974; the HTML editions of the instructions; the U.S. Code 2025 edition. No 2026 notice on overtime methods
+(the counterpart of `n-25-69`) was found: for 2026 the IRS's August 2026 FAQs (Fact Sheet 2026-13, not archived)
+describe reporting on Form W-2 box 12 code TT, which the 2026 operations already read. Still drafts in the archive: 69
+(all the IRS drafts listed in `tools/sources/2026.json`); the final Schedule 3-A and the final Form 1062 instructions
+have not posted. Posted but not archived (no 2026 definition cites them): the final 2026 Form 8829 (2026-11-20), and
+drafts of Pub. 936 (posted 2026-10-07), Pub. 926 (2027 edition, 2026-10-16) and the Schedule H instructions
+(2026-11-19), editions not read. A December 2026 revision of
+Publication 529 was posted as a draft on 2026-11-05; the catalog keeps the continuous-use final (Rev. December 2020)
+until the new revision is final. Earlier lists: `reports/2026/archive_refresh_2026-11-04.md` section 7 and
+`archive_refresh_2026-11-14.md`.
 
 ## Questions for the owner, and the owner's decisions (2026-11-04)
 

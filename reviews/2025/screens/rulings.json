@@ -1053,23 +1053,36 @@
    ]
   },
   "unruled:sb.line8#1": {
-   "class": "no gate defect: WIDE by design",
-   "reason": "The question tells the filer to answer Yes when unsure; a Yes refuses only.",
+   "class": "low gap: Form 3520 duties outside line 8 (BUG-1406)",
+   "reason": "The question follows the printed line 8 (owner decision, 2026-11-10). The owner case is now asked by sb.trust_owner; the related-person loan or use, the outstanding qualified obligation and the trust that became foreign are Form 3520 duties with no Schedule B line 2, 3 or 6 amount, filed as BUG-1406.",
    "findings": [
     {
      "n": 0,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "A foreign pension or fund read as a trust draws Yes and a refusal. Safe."
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "i3520 p. 1, Who Must File, item 2. A deemed owner who neither set up, funded nor received from the trust is asked by sb.trust_owner, asked right after sb.line8 on the same gate, and a Yes refuses Schedule B lines 2, 3 and 6."
     },
     {
      "n": 1,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "i3520 p. 1, Who Must File, item 3, a loan or uncompensated use received by 'a U.S. person related to you'. A Form 3520 duty only; no Form 1040 amount changes. BUG-1406."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "i3520 p. 1, Who Must File, item 3, an outstanding qualified obligation. A Form 3520 duty only; the loan was a reportable distribution only when made. BUG-1406."
+    },
+    {
+     "n": 3,
      "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "i1040sb p. 3. An arm's-length loan or sale draws Yes ('generally', 'may have to file'); refusal only. Safe."
+     "class": "accepted residual",
+     "evidence": "i3520 p. 6, Reportable Event 2, deemed transfers under section 679(a)(4) and (5). A Form 3520 duty; the help's 'If you are not sure, answer Yes' gives a doubtful filer a refusal. BUG-1406."
     }
    ],
-   "subject_sha": "f5b8a8b7eef718253f22b1f0f8bb3bcbdc21a45fca767b3d4655a1438264c43b"
+   "subject_sha": "a2b3433479de0e11b67f9f7389efb0914d3345cd7212d88dfd409e46e65cf420",
+   "adjudication": "lane screens, wave 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:scope.other_line16#1": {
    "reason": "No defect in what this change touches: the screen's wording is unchanged; the findings repeat earlier ones or are safe.",
@@ -7814,45 +7827,30 @@
    "subject_sha": "f1d8753ce9c1f5bcc33579c624f5a5d14612aa3905922e3e6a3986e1d922946c"
   },
   "unruled:gate:sb.foreign_trust_any#1": {
-   "class": "defect (low): the trust gate is narrower than line 8",
-   "reason": "Findings 0 to 3 are BUG-0831 item 2.",
+   "class": "no gate defect: wording widened",
+   "reason": "The control-test wording now names anyone other than a U.S. citizen, resident or company; the other points only open questions.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "defect",
-     "evidence": "cfr-26-301-7701-7 p. 4, control test. The gate tests location and trustee residence only.",
-     "bug": "BUG-0831"
+     "evidence": "cfr-26-301-7701-7 p. 4, Control test. Fixed in the same lane: sb.trust_any now reads 'anyone other than a U.S. citizen, U.S. resident or U.S. company can make or veto a decision', and its help the same."
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "i1040sb p. 3. A sale or loan to the trust, or a loan or free use received from it, is not 'gave to it' or 'may receive from it'; sb.line8 names them.",
-     "bug": "BUG-0831"
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "'Do you ... have ... anything to do with' a trust 'as the person who set it up' is a standing tie, not one made in 2025; the help ends 'If unsure, answer Yes'."
     },
     {
      "n": 2,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "f1040sb line 8. The present tense misses a connection that ended in 2025.",
-     "bug": "BUG-0831"
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "Receipt through an intermediary is named only in sb.line8's help.",
-     "bug": "BUG-0831"
-    },
-    {
-     "n": 4,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Territory items open the gate. Extra question only."
+     "evidence": "A territory account or company opens sb.line8 and sb.trust_owner, each answered No; nothing refuses."
     }
    ],
-   "subject_sha": "f2e0d92c830c4d2167462e9fad7c1d1d01bcebf1ceaf3079ba38457a5cf84516"
+   "subject_sha": "9126c379e845289466cddf720564d94170563306de48d77c92ff792147267d6c",
+   "adjudication": "lane screens, wave 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:sd.sold_other#1": {
    "subject_sha": "4b9a3c8b9b97cf952b4dd75901b88adef5fb2093f95b3abd9edb39369f4c9138",
@@ -10621,6 +10619,53 @@
    "class": "defect (medium, fixed): BUG-1291",
    "subject_sha": "5673e512eef903571b1ce673341c5fe928ab504ae8c8b656d27613437de296a5",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:gate:s1.uc_any#1": {
+   "class": "low gap: BUG-1405",
+   "reason": "Disability payments paid in place of unemployment compensation are a known low gap; the WIDE readings only open the amount question, which takes box 1 of a Form 1099-G.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "defect",
+     "evidence": "p525 p. 29, Types of unemployment compensation, 'Disability payments from a government program paid as a substitute for unemployment compensation'. Filed with the other state disability and medical leave benefits.",
+     "bug": "BUG-1405"
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A Yes only opens s1.uc_paid, which asks the total of box 1 of each Form 1099-G; payments not reported there give no amount."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "The same: a private fund pays no Form 1099-G box 1 amount (p525 p. 29 sends it to line 8z, refused elsewhere)."
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Medical leave benefits from the employee's own contributions are excluded (Rev. Rul. 2025-4 holding 4) and carry no Form 1099-G box 1 amount; the Yes only opens the amount question."
+    }
+   ],
+   "subject_sha": "8746e27d0552dd8fc979c42b615b2c1ac8b53993d8a268d3e4be1eef37420609",
+   "adjudication": "lane screens, wave 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:sb.trust_owner#1": {
+   "class": "no gate defect: covered",
+   "reason": "A transferor-owner under section 679 set up or funded the trust and is refused by sb.line8, asked first.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "i1040sb p. 3, Line 8, 'were you the grantor of, or transferor to, a foreign trust'. sb.line8 asks whether the filer set one up or at any time gave, sold or lent anything to one that still existed in 2025; a Yes refuses before sb.trust_owner is asked."
+    }
+   ],
+   "subject_sha": "b0f5ce8fb7d89a38e486717e5941d09eb457244660de80c55e5355a394148e63",
+   "adjudication": "lane screens, wave 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   }
  },
  "baseline": {

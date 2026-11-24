@@ -61,7 +61,7 @@ def saver_answers(person):
 def gen_case(rng, i):
     inputs = {
         "f1040.status": "single", "$person": ["taxpayer"], "person[taxpayer].role": "taxpayer", "person[taxpayer].rrta": False,
-        "sb.nominee": False, "sb.bonds_any": False, "sb.bond_special": False, "sb.form5471": False, "sb.line7a": False, "sb.fbar_required": False, "sb.form8938": False, "sb.line8": False,
+        "sb.nominee": False, "sb.bonds_any": False, "sb.bond_special": False, "sb.form5471": False, "sb.line7a": False, "sb.fbar_required": False, "sb.form8938": False, "sb.line8": False, "sb.trust_owner": False,
         "sb.account_any": False, "sb.asset_any": False, "sb.trust_any": False, "sb.company_any": False, "sb.territory_any": False,
         "div.other_boxes": False, "div.box2c": 0, "div.box3": 0,
         "div.box9": 0, "div.box10": 0, "div.box13": 0, "div.basis_reconciled": True,
@@ -540,7 +540,7 @@ def add_form_features(r, inputs, facts, features, ages, wages, age):
             if r.random() < 0.8:
                 care_paid[k] = r.randint(50_000, 900_000)
     if care_paid:
-        inputs.update({"f2441.care": True, "f2441.student": False, "f2441.unable": False, "f2441.spouse_died": False,
+        inputs.update({"f2441.care": True, "f2441.student": False, "f2441.unable": False,
                        "f2441.care_other": False, "f2441.nondependent": False, "f2441.prior_year": False, "f2441.other_care_expenses": 0,
                        "f2441.line13": 0, "f2441.line14": 0, "f2441.plans_differ": False, "f2441.plan_max": 500_000,
                        "$dcprov": ["p0"], "dcprov[p0].tin_kind": "tin", "dcprov[p0].household": False,
@@ -744,7 +744,7 @@ SCREENS_NO = {
                         "scope.military_move", "scope.nol", "scope.performer_expenses", "scope.recovery", "scope.reforestation",
                         "scope.religious_work", "scope.remic", "scope.rental", "scope.reservist_expenses", "scope.se_plan_other",
                         "scope.trade_act_repaid", "scope.w2_marks"),
-    "scope.other_income": ("scope.adoption_benefits", "scope.care_benefits_other", "scope.chapter11", "scope.disaster_distribution",
+    "scope.other_income": ("scope.adoption_benefits", "scope.care_benefits_other", "scope.chapter11", "scope.disaster_distribution", "scope.fiscal_year",
                            "scope.excess_deferral", "scope.medicaid_waiver", "scope.noncitizen", "scope.nonresident", "scope.passive",
                            "scope.pay_no_w2", "scope.reservist_repaid", "scope.treaty"),
     "scope.other_line16": ("scope.cfc", "scope.education_recapture", "scope.f8615", "scope.f8814", "scope.f8978", "scope.foreign_shares",
@@ -839,7 +839,7 @@ def redraft_answers(case):
     inputs["sa.mortgage_other_use"] = False
     inputs.setdefault("$dcprov", [])
     # Form 2441's questions on a return with no care paid: none applies (the answers the care branch gives).
-    inputs.update({k: v for k, v in (("f2441.student", False), ("f2441.unable", False), ("f2441.spouse_died", False),
+    inputs.update({k: v for k, v in (("f2441.student", False), ("f2441.unable", False),
                                      ("f2441.care_other", False), ("f2441.nondependent", False), ("f2441.prior_year", False),
                                      ("f2441.other_care_expenses", 0), ("f2441.line13", 0), ("f2441.line14", 0),
                                      ("f2441.plans_differ", False), ("f2441.plan_max", 500_000)) if k not in inputs})

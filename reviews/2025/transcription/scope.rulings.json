@@ -148,6 +148,45 @@
   },
   {
    "printed": "scope.other_income",
+   "project_expr_sha256": "be1e7cb1da45daf92a426cc1490595000f60ae305ddefe833dd40f0aefde5ef2",
+   "second_expr_sha256": "13a160bf3dd7520ed3b9e0429a605b8aba4ee1444b98fddf2edd2cbb68e1eac8",
+   "ruling": "Ruling: interface gap; the pages do not define this helper, the union of the other-income and return-treatment screens that refuse. The reply moved farm, REMIC and rental of personal property here (the project refuses them through scope.schedule1) and left out the nonresident, chapter 11, treaty, reservist repayment, wages without a form, care and adoption benefits, passive and fiscal-year screens, which the project gathers here (cite: i1040gi pp. 8, 12, 23, 24, 25, 95). Every screen refuses through one of the two helpers, so no return differs in whether it is refused. Re-reviewed because scope.fiscal_year was added (i1040gi p. 12, Fiscal-year filers). Project stands.",
+   "context": "c9cdffda47aaaa573740469437a2b107d7a4c73c037f78138292401858b7297e",
+   "date": "2026-11-24",
+   "run": "248bf6b1320d26a7b54d69d912b3af26b084a730631b6f381f38b8bcbf1ffc76",
+   "subject_key": "5b54ccb3a9891ccba86cb06f9baf267b4fd86a2ced8d8b1ddd233835a5ac5d4c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.1.deepseek@scope",
+     "fixture:classm.f8960.2.deepseek@scope",
+     "fixture:classm.s2.1.deepseek@scope",
+     "fixture:classm.s2.2.deepseek@scope",
+     "fixture:classm.s2.3.deepseek@scope",
+     "fixture:classm.s2.4.deepseek@scope",
+     "fixture:classm.carloan.2@scope",
+     "fixture:t264.eic.step2_schedule1@scope",
+     "fixture:mut.f2441.attrib_gate_benefits_open_no_credit@scope",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@scope",
+     "fixture:t264.f4952.unsupported_with_interest@scope",
+     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@scope",
+     "fixture:stage16.cleanup.f8959_line16_se_refused@scope",
+     "fixture:mutation.t2.hoh_s1a_car@scope",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@scope",
+     "fixture:mutation.m3.scope.oi_reservist_repaid@scope",
+     "fixture:mutation.m3.scope.oi_pay_no_w2@scope",
+     "fixture:mutation.m3.scope.oi_care_benefits_other@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.other_income",
    "project_expr_sha256": "e174cf0994199180d534ab616d412412be0ae07de594d6739373a4e665c00773",
    "second_expr_sha256": "d4bd39e2fa5de2126624b19a72b943ff6e76d98dd928f8094edb51406f1e8096",
    "ruling": "Ruling: representation; i1040gi p. 8, \"Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR\". The candidate reads adoption_benefits directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4095 of 4732 comparisons agree, 4095 of 4732 in scope; completed {\"candidate-unknown\": 267}. Project stands.",
@@ -409,11 +448,11 @@
    "printed": "scope.schedule1",
    "project_expr_sha256": "6575fd839383b717d1689dcce36a2542d6b118d163141fc877ce2ce0621262c9",
    "second_expr_sha256": "0ba1af1859f83daff715e48f739a4b1d5a7e365e9c38b195bb9ff2e211d3ee40",
-   "ruling": "Ruling: model error; as the earlier rulings, the reply's screen keeps only some Schedule 1 items (reservist, moving, performer, Archer MSA, reforestation, Trade Act repayment, attorney fees) and leaves out the personal-property rental, K-1, farm, REMIC (scope.remic, BUG-0977), clergy, church wages, W-2 marks and SE plan operands the project's screen holds, each cited in its locator (i1040se p. 1 and p. 11; i1040sf p. 2; i1040sse p. 1). executable triage (.transcription/triage/2025/scope.json, this pass): 4,219/4,660 agree; differences {\"candidate-unknown\": 11, \"project-unknown\": 287, \"value\": 143}; on completed returns {\"candidate-unknown\": 4}.",
-   "context": "d02125c76733d3a58701b8aa746357b83bb551f8df8edca94e381aa2de634ba0",
-   "date": "2026-11-22",
-   "run": "84d3279ae1faa75ba1d2d2ed27765c684d9cd04082579e73f2f26893549f8897",
-   "subject_key": "49c0bf678b32f68a5e536626e0736dc813a91a10cfb9ebb6cf8977a9a5e8eb5f",
+   "ruling": "Ruling: interface gap; the pages do not define this helper, the union of the Schedule 1 screening answers that refuse. The reply left out farm, K-1, REMIC, rental of personal property, clergy and church wages, W-2 marks and the self-employed plan screens, guessing them computed elsewhere; each is a refusing screen the project gathers here (i1040gi p. 93, Lines 12, 14, 16; i1040se p. 1; i1040sf p. 2; i1040sse p. 1, as the line's cite gives). Re-reviewed only because scope.archer_msa and scope.attorney_fees were reworded. Project stands.",
+   "context": "c9cdffda47aaaa573740469437a2b107d7a4c73c037f78138292401858b7297e",
+   "date": "2026-11-24",
+   "run": "248bf6b1320d26a7b54d69d912b3af26b084a730631b6f381f38b8bcbf1ffc76",
+   "subject_key": "24a35b8ee78f8638453a09c7dd6921e1aff85c9c26a1f4a550eb62cb60650b23",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -422,24 +461,24 @@
      "value"
     ],
     "witnesses": [
+     "fixture:classm.dependent.2.deepseek@scope",
      "fixture:classm.s2.9.deepseek@scope",
-     "fixture:classm.f4952.2@scope",
-     "fixture:classm.s179.1@scope",
-     "fixture:classm.s2.8@scope",
-     "fixture:classm.tipjob.1@scope",
-     "fixture:classm.eic.9@scope",
+     "fixture:classm.asset.1.deepseek@scope",
+     "fixture:classm.asset.3.deepseek@scope",
+     "fixture:classm.k1s.1.deepseek@scope",
+     "fixture:classm.k1s.2.deepseek@scope",
+     "fixture:classm.k1s.3.deepseek@scope",
      "fixture:stage9.eic.refuse.clergy_schedule1.step5@scope",
      "fixture:t264.eic.step2_schedule1@scope",
      "fixture:stage9.eic.refuse.clergy_schedule1@scope",
      "fixture:x2k1p.refuse_ptp@scope",
      "fixture:x2k1p.refuse_box10@scope",
      "fixture:x2k1p.refuse_multi@scope",
-     "partial:stage14.asset.hy_5yr-scope.armed_forces@scope",
-     "partial:stage14.asset.hy_5yr-scope.rental@scope",
-     "partial:stage14.asset.hy_5yr-scope.k1@scope",
-     "partial:stage14.asset.hy_5yr-scope.farm@scope",
-     "partial:stage14.asset.hy_5yr-scope.remic@scope",
-     "partial:stage14.asset.hy_5yr-scope.religious_work@scope"
+     "fixture:mutation.t2.mfj_no_overtime_part3@scope",
+     "fixture:mutation.t2.s1a.line13_magi_first@scope",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_three_jobs@scope",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_one_job@scope",
+     "partial:stage14.asset.hy_5yr-scope.armed_forces@scope"
     ],
     "policy": "executable-triage-v2"
    }

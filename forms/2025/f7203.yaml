@@ -505,7 +505,7 @@ form:
           eq:
           - f7203.has_loss
           - const: true
-        then: f7203.c35_p
+        then: f7203.c35_k
       - guard:
           op: test
           eq:
@@ -537,7 +537,7 @@ form:
           eq:
           - f7203.has_loss
           - const: true
-        then: f7203.c36_p
+        then: f7203.c36_k
       - guard:
           op: test
           eq:
@@ -569,7 +569,7 @@ form:
           eq:
           - f7203.has_loss
           - const: true
-        then: f7203.c37_p
+        then: f7203.c37_k
       - guard:
           op: test
           eq:
@@ -589,6 +589,80 @@ form:
       places: 6
     cite: *id008
     ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.c35_k
+    printed: (helper)
+    label: Line 35, column (c) pro rata amount, not more than line 10
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f7203.c35_p
+      - f7203.line10
+    cite: *id008
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.room36
+    printed: (helper)
+    label: Line 10 less column (c) of lines 35 through 35 (what line 10 leaves for line 36)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f7203.line10
+      take: f7203.c35
+    cite: *id008
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.c36_k
+    printed: (helper)
+    label: Line 36, column (c) pro rata amount, not more than what line 10 leaves after lines 35 through 35
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f7203.c36_p
+      - f7203.room36
+    cite: *id008
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.room37
+    printed: (helper)
+    label: Line 10 less column (c) of lines 35 through 36 (what line 10 leaves for line 37)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f7203.room36
+      take: f7203.c36
+    cite: *id008
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.c37_k
+    printed: (helper)
+    label: Line 37, column (c) pro rata amount, not more than what line 10 leaves after lines 35 through 36
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f7203.c37_p
+      - f7203.room37
+    cite: *id008
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.room38
+    printed: (helper)
+    label: Line 10 less column (c) of lines 35 through 37 (what line 10 leaves for line 38)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f7203.room37
+      take: f7203.c37
+    cite: *id008
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.c38_k
+    printed: (helper)
+    label: Line 38, column (c) pro rata amount, not more than what line 10 leaves after lines 35 through 37
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f7203.c38_p
+      - f7203.room38
+    cite: *id008
+    ambiguity: amb.2025.f7203_prorata_places
   - id: f7203.c38
     printed: 38 (c)
     label: 'Net capital loss: allowable loss from stock basis'
@@ -601,7 +675,7 @@ form:
           eq:
           - f7203.has_loss
           - const: true
-        then: f7203.c38_p
+        then: f7203.c38_k
       - guard:
           op: test
           eq:

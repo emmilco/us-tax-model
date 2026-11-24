@@ -1805,6 +1805,10 @@ items"; the coverage table and `worklist.json` give 16, and 33 could not be repr
 - **Worklist items:** f8962.line24, f8962.line25
 - **Notes:** The form text of lines 24 and 25 is the same. The locators cite i8962 pp. 17–18, and no 2026 i8962 is archived,
   so re-quote them when it is posted.
+- **Update (2026-11-24):** the 2026 i8962 is archived as a draft (posted 2026-11-05). It prints the Line 24 heading on
+  p. 18 and Line 25 on p. 19, counting its cover page; at the final, without the cover, they would fall on pp. 17 and 18,
+  where the 2025 locators point. Not written as an operation: a page written on the draft would move back at the final;
+  the relocation of `--adopt` reads them then.
 
 ### C-PEOP-14. Form 8962 line 6: household income above 400% of the poverty line ends eligibility
 
@@ -1934,6 +1938,10 @@ items"; the coverage table and `worklist.json` give 16, and 33 could not be repr
 - **Notes:** The section 179 and mid-quarter person lines wait on the 2026 i4562; the Form 4562 draft is archived but is not
   the cited text. The line 31 refusals wait on Pub. 970. `person.sav_line1` (p590a) is also covered by C-PEOP-21, and
   `retirement.rollover` (p560) by C-PEOP-22.
+- **Update (2026-11-24):** Pub. 590-A (2026) is archived as a draft (posted 2026-11-10); it prints the `person.sav_line1`
+  refusal quote ("Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is
+  more than the smaller of") on p. 35, the page the 2025 citation names, so that item needs no operation. i4562, p970, p560
+  and p501 still have no 2026 edition at irs.gov/pub/irs-pdf/ or irs.gov/pub/irs-dft/.
 
 ### C-PEOP-25. Exclusions for qualified principal residence debt and student loan discharges end after 2025
 

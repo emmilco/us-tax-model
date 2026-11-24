@@ -248,9 +248,9 @@
 ## 8 — `ira.line8`
 
 - **IRS:** Enter the total of your (and your spouse's if filing jointly): wages, salaries, tips, etc.; alimony and separate maintenance payments reported on Schedule 1, line 2a; and nontaxable combat pay
-- **Encoded (NonNegDollars):** Add helper "Wages, salaries, tips, etc. (box 1 of the Forms W-2 of you and your spouse)" and s1 line 2a.
-- Expr: `{"of":["ira.wages","s1.line2a"],"op":"sum"}`
-- Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 8, "Enter the total of your (and your spouse’s if filing jointly)" (nontaxable combat pay is refused, ira.combat_gate) (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (NonNegDollars):** Add helper "Wages, salaries, tips, etc. (box 1 of the Forms W-2 of you and your spouse)", f1040 line 1b, f1040 line 1c, f1040 line 1g, and s1 line 2a.
+- Expr: `{"of":["ira.wages","f1040.line1b","f1040.line1c","f1040.line1g","s1.line2a"],"op":"sum"}`
+- Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 8, "Enter the total of your (and your spouse’s if filing jointly)" and "Wages, salaries, tips, etc. Generally, this is the amount reported in box 1 of Form W-2"; p590a p. 6, What Is Compensation?, "Wages, salaries, tips, professional fees, bonuses, and other amounts you receive for providing personal services are compensation" (household employee wages, unreported tips and Form 8919 wages, Form 1040 lines 1b, 1c and 1g, are added, and strike benefits and disability pensions on line 1h, not paid for services, are not, while nontaxable combat pay is refused by ira.combat_gate) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 9 — `ira.line9`
 
@@ -305,9 +305,9 @@
 
 ## (gate) — `ira.kbh_short`
 
-- **Authored helper label:** Married filing jointly with traditional IRA contributions and line 10 less than the amount in the caution
-- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "Married filing jointly" = true and line 10 < helper "The amount in the caution below line 10 ($14,000; $15,000 if one spouse is age 50 or older; $16,000 if both are)"
-- Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["ira.joint",{"const":true}],"op":"test"},{"lt":["ira.line10","ira.kbh_amount"],"op":"test"}],"op":"test"}`
+- **Authored helper label:** Married filing jointly with traditional or Roth IRA contributions and line 10 less than the amount in the caution
+- **Encoded (Bool):** helper "Anyone on the return made traditional or Roth IRA contributions for 2025" = true and helper "Married filing jointly" = true and line 10 < helper "The amount in the caution below line 10 ($14,000; $15,000 if one spouse is age 50 or older; $16,000 if both are)"
+- Expr: `{"all":[{"eq":["ira.any_contrib",{"const":true}],"op":"test"},{"eq":["ira.joint",{"const":true}],"op":"test"},{"lt":["ira.line10","ira.kbh_amount"],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, Caution, "stop here and use the worksheet in Pub. 590-A to figure your IRA deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `ira.both_kinds`
@@ -325,12 +325,47 @@
 - Expr: `{"of":["ira.contrib_total","ira.roth_total"],"op":"sum"}`
 - Cite: [i8606] p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation" (2025; sha256 735fb7ae)
 
+## (helper) — `ira.any_contrib`
+
+- **Authored helper label:** Anyone on the return made traditional or Roth IRA contributions for 2025
+- **Encoded (Bool):** helper "Traditional and Roth IRA contributions for 2025 on this return" > $0 (sales.zero)
+- Expr: `{"gt":["ira.all_total",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i8606] p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation" (2025; sha256 735fb7ae)
+
 ## (gate) — `ira.over_comp`
 
 - **Authored helper label:** Traditional and Roth IRA contributions for 2025 more than the compensation on line 10
-- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "Traditional and Roth IRA contributions for 2025 on this return" > line 10
-- Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"gt":["ira.all_total","ira.line10"],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "Anyone on the return made traditional or Roth IRA contributions for 2025" = true and helper "Traditional and Roth IRA contributions for 2025 on this return" > line 10
+- Expr: `{"all":[{"eq":["ira.any_contrib",{"const":true}],"op":"test"},{"gt":["ira.all_total","ira.line10"],"op":"test"}],"op":"test"}`
 - Cite: [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of: • $7,000 ($8,000 if you are age 50 or older), or • Your taxable compensation for the year" (2025; sha256 ca0e4287)
+
+## (helper) — `ira.roth_magi`
+
+- **Authored helper label:** Modified AGI for Roth IRA purposes, taken as line 5 (Form 1040 line 11a with the IRA and student loan interest deductions added back), without subtracting Roth conversions or plan rollovers to a Roth IRA
+- **Encoded (Dollars):** Enter the amount from line 5.
+- Expr: `{"from":"ira.line5","op":"copy"}`
+- Cite: [i8606] p. 4, Modified AGI for Roth IRA purposes, "First, figure your AGI (2025 Form 1040, 1040-SR, or 1040-NR, line 11a)" and "Adding: a. IRA deduction from Schedule 1 (Form 1040), line 20; b. Student loan interest deduction from Schedule 1 (Form 1040), line 21" (the exclusions of Forms 8815, 8839 and 2555 it also adds are refused elsewhere; conversions and plan rollovers to a Roth IRA, which it subtracts, are not, so this can only be higher than the modified AGI) (2025; sha256 735fb7ae)
+
+## (helper) — `ira.roth_start_joint`
+
+- **Authored helper label:** Year parameter ira.roth_start_joint ($236,000)
+- **Encoded (NonNegDollars):** Enter $236,000 (ira.roth_start_joint).
+- Expr: `{"op":"param","ref":"ira.roth_start_joint"}`
+- Cite: [p590a] p. 2, Modified AGI limit for Roth IRA contributions, "Your filing status is married filing jointly or qualifying surviving spouse and your modified AGI is at least $236,000" (2025; sha256 ca0e4287)
+
+## (helper) — `ira.roth_start_other`
+
+- **Authored helper label:** Year parameter ira.roth_start_other ($150,000)
+- **Encoded (NonNegDollars):** Enter $150,000 (ira.roth_start_other).
+- Expr: `{"op":"param","ref":"ira.roth_start_other"}`
+- Cite: [p590a] p. 2, Modified AGI limit for Roth IRA contributions, "you didn’t live with your spouse at any time in 2025 and your modified AGI is at least $150,000" (2025; sha256 ca0e4287)
+
+## (gate) — `ira.roth_reduced`
+
+- **Authored helper label:** Modified AGI for Roth IRA purposes in or above the Roth phase-out range ($236,000 or more married filing jointly or qualifying surviving spouse; $150,000 or more single, head of household or married filing separately and apart all year; above zero married filing separately and living with the spouse at any time in 2025)
+- **Encoded (Bool):** ((f1040 line Filing Status = 'mfj' or f1040 line Filing Status = 'qss') and helper "Modified AGI for Roth IRA purposes, taken as line 5 (Form 1040 line 11a with the IRA and student loan interest deductions added back), without subtracting Roth conversions or plan rollovers to a Roth IRA" ≥ helper "Year parameter ira.roth_start_joint ($236,000)" or (f1040 line Filing Status = 'single' or f1040 line Filing Status = 'hoh' or household helper "Married filing separately, and you lived apart from your spouse for all of 2025" = true) and helper "Modified AGI for Roth IRA purposes, taken as line 5 (Form 1040 line 11a with the IRA and student loan interest deductions added back), without subtracting Roth conversions or plan rollovers to a Roth IRA" ≥ helper "Year parameter ira.roth_start_other ($150,000)" or f1040 line Filing Status = 'mfs' and household helper "Married filing separately, and you lived apart from your spouse for all of 2025" = false and helper "Modified AGI for Roth IRA purposes, taken as line 5 (Form 1040 line 11a with the IRA and student loan interest deductions added back), without subtracting Roth conversions or plan rollovers to a Roth IRA" > $0 (sales.zero))
+- Expr: `{"any":[{"all":[{"any":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["f1040.status",{"const":"qss"}],"op":"test"}],"op":"test"},{"ge":["ira.roth_magi","ira.roth_start_joint"],"op":"test"}],"op":"test"},{"all":[{"any":[{"eq":["f1040.status",{"const":"single"}],"op":"test"},{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},{"eq":["household.mfs_apart_all_year",{"const":true}],"op":"test"}],"op":"test"},{"ge":["ira.roth_magi","ira.roth_start_other"],"op":"test"}],"op":"test"},{"all":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["household.mfs_apart_all_year",{"const":false}],"op":"test"},{"gt":["ira.roth_magi",{"param":"sales.zero"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [p590a] p. 2, Modified AGI limit for Roth IRA contributions, "For 2025, your Roth IRA contribution limit is reduced (phased out) in the following situations" and "your modified AGI is more than zero"; i8606 p. 4, Maximum Roth IRA Contribution Worksheet, line 6, "If zero or less, stop here; you may not contribute to a Roth IRA for 2025" (2025; sha256 ca0e4287)
 
 ## (screen) — `ira.special`
 
@@ -474,6 +509,29 @@
 - **Refusal:** when ira.less_gate is true, cannot complete An IRA deduction smaller than the most you can deduct (Form 8606). Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct. Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 12, "Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"from":"ira.total","op":"copy"}`
 - Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ira.dist_4a_sum`
+
+- **Authored helper label:** IRA distributions placed on Form 1099-R by an exception on line 4a, everyone on the return (Form 1040 lines 4a and 4b, not part of this worksheet)
+- **Encoded (NonNegDollars):** Add person.ira_amount_a over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.ira_amount_a","op":"sum_over"}`
+- Cite: [i1040gi] p. 27, Lines 4a and 4b, "If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don’t make an entry on line 4a" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ira.dist_4a_any`
+
+- **Authored helper label:** Some IRA distribution on the return goes on line 4a under an exception
+- **Encoded (Bool):** helper "IRA distributions placed on Form 1099-R by an exception on line 4a, everyone on the return (Form 1040 lines 4a and 4b, not part of this worksheet)" > $0 (sales.zero)
+- Interpretation: amb.2025.line4a_several
+- Expr: `{"gt":["ira.dist_4a_sum",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040gi] p. 27, More than one distribution, "Enter the total amount of those distributions on line 4a." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ira.dist_box1_total`
+
+- **Authored helper label:** Total of box 1 of every Form 1099-R for an IRA distribution on the return (Form 1040 line 4a when any distribution goes there; not part of this worksheet)
+- **Encoded (NonNegDollars):** Add person.ira_box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Interpretation: amb.2025.line4a_several
+- Expr: `{"collection":"person","field":"person.ira_box1","op":"sum_over"}`
+- Cite: [i1040gi] p. 27, More than one distribution, "Enter the total amount of those distributions on line 4a." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ira.basis_total`
 

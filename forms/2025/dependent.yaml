@@ -91,9 +91,9 @@ form:
 
           Enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months.
 
-          For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise.
+          For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and otherwise the number of months they actually lived with you.
 
-          For any other person born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since the adoption or placement, and 0 otherwise
+          For any other person born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible foster child in 2025, enter 12 if your home was their home for the entire time they were alive or since the adoption or placement, and otherwise the number of months they actually lived with you
       cite:
         doc: i1040gi
         locator: p. 17, Step 1, "Who lived with you for more than half of 2025"; p501 p. 13, Death or birth of child, "The same is true if the child lived with you more than half the year except for any required hospital stay following birth."; p501 p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true."; p. 21, Exception to time lived with you ("the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025")
@@ -146,7 +146,7 @@ form:
       label: U.S. citizen, U.S. national or U.S. resident alien?
       expr:
         op: input
-        source: Was this person a U.S. citizen, U.S. national or U.S. resident alien? (Answer yes for your adopted child
+        source: Was this person a U.S. citizen, U.S. national or U.S. resident alien? (Answer yes for your adopted child, including a child lawfully placed with you for legal adoption,
           who lived with you all year as a member of your household, if you are a U.S. citizen or U.S. national.)
       cite:
         doc: i1040gi
@@ -302,7 +302,7 @@ form:
       label: Rule for children of divorced or separated parents applies?
       expr:
         op: input
-        source: 'Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child? Answer yes whether you are the custodial parent who signed the release (or whose decree or agreement lets the other parent claim the child) or the noncustodial parent using it. A release the custodial parent has revoked still applies for 2025 unless written notice of the revocation was given (or reasonable efforts were made to give it) to the noncustodial parent in 2024 or earlier.'
+        source: 'Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child? Answer yes whether you are the custodial parent who signed the release (or whose decree or agreement lets the other parent claim the child) or the noncustodial parent using it. With an equal number of nights, the custodial parent is the parent with the higher adjusted gross income. A release the custodial parent has revoked still applies for 2025 unless written notice of the revocation was given (or reasonable efforts were made to give it) to the noncustodial parent in 2024 or earlier.'
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "But see Children of divorced or separated parents"; p. 20, Children of divorced or separated parents, "If conditions (1) through (4) apply, only the noncustodial parent can claim the child for purposes of the child tax credit and credit for other dependents"; p501 p. 22, Revocation of release of claim to an exemption, "For the revocation to be effective for 2025, the custodial parent must have given (or made reasonable efforts to give) written notice of the revocation to the noncustodial parent in 2024 or earlier."
@@ -3489,6 +3489,64 @@ form:
       cite:
         doc: p501
         locator: "p. 13, Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\" (time the child was missing is not time lived with you, so a person who lived with you for all of 2025 was not missing in 2025)"
+    - id: dependent.own_child
+      printed: (helper)
+      type: Bool
+      gated_by: dependent.own_child_if_qss
+      label: Your son, daughter or stepchild (an adopted child or a child placed with you for adoption included), not a foster
+        child, grandchild or other descendant
+      expr:
+        op: input
+        source: Is this person your son, daughter or stepchild (an adopted child, or a child lawfully placed with you for legal
+          adoption, counts as your son or daughter)? Answer No for a foster child, and for a grandchild or another descendant
+          of your child.
+      cite:
+        doc: i1040gi
+        locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child)" and "An adopted
+          child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption"'
+    - id: dependent.own_child_asked
+      printed: (helper)
+      type: Bool
+      label: Listed as your child on a return where qualifying surviving spouse is checked and its tests answered Yes
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - dependent.relationship
+          - const: child
+        - op: test
+          eq:
+          - household.qss_claimed
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim
+          as a dependent or could claim as a dependent"'
+    - id: dependent.own_child_if_qss
+      printed: (gate)
+      type: Bool
+      label: Listed as your child and your son, daughter or stepchild, asked only when qualifying surviving spouse is checked
+        and its tests answered Yes (false otherwise)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.own_child_asked
+            - const: true
+          then: dependent.own_child
+        - guard:
+            op: test
+            eq:
+            - dependent.own_child_asked
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim
+          as a dependent or could claim as a dependent"'
     - id: dependent.child_all_year
       printed: (helper)
       type: Bool

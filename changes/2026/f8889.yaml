@@ -428,7 +428,8 @@ changes:
 
 
           The expenses must not have been reimbursed by insurance or other coverage, and must have been incurred after the
-          HSA was established.
+          HSA was established (an HSA funded by a rollover from an Archer MSA or another HSA is established on the date
+          the earlier account was).
 
 
           Whose expenses count:
@@ -445,7 +446,7 @@ changes:
 
           Insurance premiums count only if they are for:
 
-          - long-term care insurance
+          - long-term care insurance, up to the limit for the age of the person covered
 
           - health care continuation coverage (such as COBRA), which can be for your spouse or a dependent
 
@@ -458,7 +459,8 @@ changes:
 
 
           The expenses must not have been reimbursed by insurance or other coverage, and must have been incurred after the
-          HSA was established.
+          HSA was established (an HSA funded by a rollover from an Archer MSA or another HSA is established on the date
+          the earlier account was).
 
 
           Whose expenses count:
@@ -475,7 +477,7 @@ changes:
 
           Insurance premiums count only if they are for:
 
-          - long-term care insurance
+          - long-term care insurance, up to the limit for the age of the person covered
 
           - health care continuation coverage (such as COBRA), which can be for your spouse or a dependent
 
@@ -498,7 +500,9 @@ changes:
           and other health care coverage if you were 65 or older (other than premiums for a Medicare supplemental policy,
           such as Medigap)", "Coverage under (2) and (3) can be for your spouse or a dependent meeting the requirement." and
           "are under age 65, Medicare premiums for your spouse or dependents (who are age 65 or older) are generally not qualified
-          medical expenses"
+          medical expenses"; p969 p. 8, "An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established
+          on the date the prior account was established."; p969 p. 9, "The premiums for long-term care insurance (item (1))
+          that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually."
         to: p. 9, Line 15, "Only include on line 15 distributions from your HSA that were used to pay you for qualified medical
           expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established" and
           "Any person who would be a dependent except that"; p. 9, Line 15, Tip, divorced or separated parents; p. 3, Qualified
@@ -508,7 +512,9 @@ changes:
           receiving unemployment compensation under any federal or state law", "In the case of an HSA beneficiary who has
           reached age 65 years, any health insurance other than a Medicare supplemental policy", "Any direct primary care
           service arrangement." and "Medicare premiums for a spouse who has reached age 65 are generally not qualified medical
-          expenses if the HSA account beneficiary has not attained age 65."
+          expenses if the HSA account beneficiary has not attained age 65."; p969 p. 8, "An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established
+          on the date the prior account was established."; p969 p. 9, "The premiums for long-term care insurance (item (1))
+          that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually."
     - set_question:
         input: f8889.medical
         field: prompt
@@ -517,6 +523,7 @@ changes:
 
 
           The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+          An HSA funded by money moved from another HSA or an Archer MSA counts as opened when that earlier account was.
 
 
           Whose costs count:
@@ -534,7 +541,8 @@ changes:
 
           Insurance premiums count only for:
 
-          - long-term care insurance
+          - long-term care insurance, up to the yearly limit for the age of the person covered (the Schedule A instructions
+          list it under "Limit on long-term care premiums you can deduct")
 
           - continuation coverage such as COBRA, for you, your spouse, or a dependent
 
@@ -550,6 +558,7 @@ changes:
 
 
           The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+          An HSA funded by money moved from another HSA or an Archer MSA counts as opened when that earlier account was.
 
 
           Whose costs count:
@@ -567,7 +576,8 @@ changes:
 
           Insurance premiums count only for:
 
-          - long-term care insurance
+          - long-term care insurance, up to the yearly limit for the age of the person covered (the Schedule A instructions
+          list it under "Limit on long-term care premiums you can deduct")
 
           - continuation coverage such as COBRA, for you, your spouse, or a dependent
 

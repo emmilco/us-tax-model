@@ -93,6 +93,11 @@ changes:
         from: Schedule 1-A (2025), line 9
         to: Schedule 1-A (2026), line 11 (draft)
     - set:
+        line: s1a.joint
+        field: cite.locator
+        from: Schedule 1-A (2025), lines 9, 15, 17 and 32, "if married filing jointly"
+        to: Schedule 1-A (2026), lines 11, 21, 23 and 38 (draft), "if married filing jointly"
+    - set:
         line: s1a.tips_threshold
         field: printed
         from: '9'

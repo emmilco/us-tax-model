@@ -148,6 +148,16 @@
   },
   {
    "printed": "19",
+   "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 19\"] [helper \"Married filing jointly\" = false → helper \"Line 19 when not filing jointly: married filing separately and not considered unmarried, your spouse's earned income; all others, the amount from line 18\"]",
+   "model": "The branches follow the line 19 text: spouse's earned income if filing jointly; spouse's earned income if married filing separately and not considered unmarried; otherwise line 18. Leaving out the dependent care benefits also matches ('earned income doesn't include any dependent care benefits shown on line 12'). However, lines 18 and 19 use the same earned income as lines 4 and 5, which is built from 'Form 1040... line 1z'. The person.dc_earned_b total omits line 1f and the line 1h items other than strike benefits and disability pensions, and no refusal names them.",
+   "ruling": "Ruling: scope; i2441 p. 6, Line 19, and p. 5, Line 18 (earned income figured as for lines 4 and 5). The three branches follow the instructions (the reply agrees); the spouse's amount omits only line 1z items refused on every return the tool computes (line 1f by scope.adoption_benefits_if_adoption, excess elective deferrals by scope.excess_deferral_if_w2, the rest by scope.other_income), as ruled for line 5.",
+   "context": "f1cc3fc54563afd9b3850969a507f692ab9e1ab73b20f2c1d5d04b434381e016",
+   "date": "2026-11-24",
+   "run": "f05052d6ebb8998b2a64a91870b612b212c08228ab22696822d0a51c0c510826",
+   "subject_key": "1cde4213197b8adfc08125ee257e760fccf109566351fc2964dd49e9ef8ab566"
+  },
+  {
+   "printed": "19",
    "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 19\"] [helper \"Married filing jointly\" = false → line 18]",
    "model": "For married filing separately, the line 19 instructions ask whether you are considered unmarried and say: 'No. Enter your spouse's earned income on line 19.' The restatement enters line 18 for every return that is not joint. That is wrong for a separate filer who is not considered unmarried, and no refusal names that case.",
    "ruling": "Ruling: scope; Form 2441 (2025) line 19: \"If married filing jointly, enter your spouse's earned income ...; all others, enter the amount from line 18\"; the married filing separately branch the model cites (i2441, Line 19, \"No. Enter your spouse's earned income on line 19\") is never reached: married filing separately is refused for the whole return by s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs; refused at scope.ready and in Form 2441 itself, forms/2025/f2441.yaml). On every supported status the English gives the line its source amount. Project stands.",
@@ -449,6 +459,16 @@
    "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The refreshed prompt supplies Form 1040. The omitted wage classes are explicitly outside completed-return scope, not reviewer noise or supported cases.",
    "context": "93ce585c49d2360759206d6eb5c4cdcca9b47552f5acd100e71f6f85b91fff70",
    "subject_key": "48ce8a562ae61ce6da7ce6c81e8417518031c95957776119a90af622ea6c0dd5"
+  },
+  {
+   "printed": "5",
+   "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 5\"] [helper \"Married filing jointly\" = false → line 4]",
+   "model": "The choice is right: the spouse's earned income if filing jointly, and line 4 otherwise. However, the instructions define earned income as 'The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z' (lines 1a through 1h) plus Schedule SE line 3 less Schedule 1 line 15. The person.dc_earned total leaves out line 1f (employer-provided adoption benefits) and the line 1h items other than strike benefits and disability pensions, such as excess elective deferrals and corrective distributions. No refusal names these, so a filer with them gets a smaller line 5.",
+   "ruling": "Ruling: scope; i2441 pp. 4-5, Lines 4 and 5 (earned income starts from Form 1040 line 1z). The branches are right (the reply agrees); the spouse's amount omits only line 1z items refused on every return the tool computes: employer adoption benefits (line 1f) by scope.adoption_benefits_if_adoption, excess elective deferrals by scope.excess_deferral_if_w2, and the other items of line 1b to 1d and 1g to 1h outside person.dc_earned by scope.other_income, as ruled for line 4 in earlier runs. This run reviewed the line because f2441.spouse_died changed (BUG-0681); its definition is unchanged.",
+   "context": "f1cc3fc54563afd9b3850969a507f692ab9e1ab73b20f2c1d5d04b434381e016",
+   "date": "2026-11-24",
+   "run": "f05052d6ebb8998b2a64a91870b612b212c08228ab22696822d0a51c0c510826",
+   "subject_key": "6be174b4a572d8fbe5505b58fa49e045248f7f09a2d7b2ea446bbaa4853c317c"
   },
   {
    "printed": "5",

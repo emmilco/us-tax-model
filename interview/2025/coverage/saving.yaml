@@ -86,6 +86,7 @@ rows:
     answers:
       person[taxpayer].ira_owner: true
       person[taxpayer].sav_trad: false
+      person[taxpayer].sav_roth: 0
       person[taxpayer].x_ira_prior_excess: true
       s2.other_tax: false
     expect:

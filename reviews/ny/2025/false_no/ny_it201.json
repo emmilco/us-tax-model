@@ -1,6 +1,77 @@
 {
  "form": "ny_it201",
  "reviews": {
+  "gate:ny_it201.active_duty_possible": {
+   "subject_sha": "28563b89baeca56443684a92243a5b3c6bc8cdea0ed678ebc70e14b87d407633",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A filer who is legally married at the end of 2025 but files as head of household because they are 'considered unmarried' (they lived apart from their spouse for the last six months of the year). The estranged spouse was on active duty in the U.S. armed forces in 2025, and the filer never served.",
+       "why_no": "The federal head-of-household rules tell this filer they are 'considered unmarried', so they answer no to 'Married at the end of 2025 and not filing a joint return'. They also truthfully answer no to the federal armed-forces question, which asks only about 'you' when the return is not joint. The gate is then false, so the spouse's active duty is never asked about.",
+       "line": "ny_it201.active_duty_if_armed_forces",
+       "irs_text": "ny_it201i p. 30: 'Note: Special rules under the SCRA apply to members of the military and their spouses for determining residency.'",
+       "severity": "medium",
+       "fix": "Base the married helper on legal marital status, not filing status. For example: 'Were you legally married on December 31, 2025, even if you file as head of household or are considered unmarried for federal purposes, and not filing a joint return?' Or ask the active-duty question directly of anyone who was married at any time in 2025."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose spouse died during 2025 after serving on active duty that year. The filer files separately rather than jointly, for example because an executor files the decedent's return.",
+       "why_no": "The filer reads 'Married at the end of 2025' literally and answers no because the spouse had died before year end. Federal rules, however, treat them as married for all of 2025. The armed-forces question on their non-joint return asks only about themselves, so they answer no there too.",
+       "line": "ny_it201.active_duty_if_armed_forces",
+       "irs_text": "ny_it201i p. 30: 'Note: Special rules under the SCRA apply to members of the military and their spouses for determining residency.'",
+       "severity": "medium",
+       "fix": "Word the helper as 'Were you married at any time in 2025 (including a spouse who died during 2025) and not filing a joint return?', or widen the gate to anyone married at any time in 2025."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who was in active federal service in 2025 in a role they do not count as 'armed forces, Coast Guard, reserves or National Guard', such as a recalled retiree or a member of the Individual Ready Reserve called to active duty.",
+       "why_no": "The filer reads the federal list as covering only current units and does not see their own recall as 'serving'.",
+       "line": "ny_it201.active_duty_if_armed_forces",
+       "irs_text": "ny_it201i p. 30: 'whether or not you were domiciled in New York State (unless you were in active service in the military)'",
+       "severity": "low",
+       "fix": "Add help to the federal question: 'Include any active duty in 2025, including a retiree recalled to service or a member of the Individual Ready Reserve.'"
+      }
+     ],
+     "prompt_sha": "79c0aeccd50b2e4222bf7310850a6c9d713fb862901540c493c65dffb5202e88",
+     "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
+     "model": "claude-opus-5-5",
+     "cost": 0.076668,
+     "date": "2026-11-24",
+     "response": ".transcription/ny/false_no/gate_ny_it201.active_duty_possible.28563b89baec.1.response.txt"
+    }
+   ],
+   "condition": "ny_it201.active_duty_possible",
+   "lines": [
+    "ny_it201.active_duty_if_armed_forces"
+   ],
+   "inputs": [
+    "ny_it201.ask.active_duty"
+   ],
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      30
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 30, Resident, \"whether or not you were domiciled in New York State (unless you were in active service in the military)\""
+     ],
+     "cols_pages": [
+      30
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
   "gate:ny_it201.apply_if_overpaid": {
    "subject_sha": "5fbc19a707d2e9eba9a5b70960d56812a5c16a1b84ef2e11b2e58fa27a67c557",
    "samples": [
@@ -429,6 +500,193 @@
       18
      ],
      "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "gate:ny_it201.ask.spouse_resident": {
+   "subject_sha": "528c86f640fba92d8b7c2d54cc6c7e88207ccc8a2013e66b94e48ea0d3e3f089",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A New York City resident who filed a joint federal return but does not know where the spouse is. The spouse left during or before 2025 and cannot be found despite reasonable efforts.",
+       "why_no": "The filer cannot truthfully say the spouse 'also live[d] in New York City for all of 2025', because they do not know where the spouse lived. The residence gate excludes exactly the case the gated question exists for.",
+       "line": "ny_it201.spouse_cannot_sign_if_resident",
+       "irs_text": "ny_it201i p. 5, Item A: \"You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown ... In this case, you may file a separate New York return\"",
+       "severity": "high",
+       "fix": "Ask the cannot-sign question of every filer who was married and filed a joint federal return, before and independent of the spouse-residence question. The Item A exception does not depend on the spouse's residence."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A New York City resident whose estranged spouse refuses to sign a joint New York return. The couple have lived apart for twelve months, and during 2025 the spouse lived in New Jersey, or moved out of the city partway through the year.",
+       "why_no": "The objective evidence of alienation the instructions require, such as 'living apart for the twelve months', usually means the spouse did not live in New York City for all of 2025. The filer truthfully answers no, so the refusal question is never reached.",
+       "line": "ny_it201.spouse_cannot_sign_if_resident",
+       "irs_text": "ny_it201i p. 5, Item A: \"your spouse refuses to sign a joint New York return; ... objective evidence of alienation from your spouse such as: ... living apart for the twelve months immediately preceding application to file a separate return\"",
+       "severity": "high",
+       "fix": "Ask the refusal and whereabouts question first, for all married filers who filed a joint federal return. A yes records the line as 'Unable to file jointly' whatever the spouse's residence."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A Manhattan resident whose spouse lived all of 2025 in Nassau or Westchester County. Both are full-year New York State residents, so the one-spouse-nonresident exception does not apply. The spouse refuses to sign a joint return.",
+       "why_no": "The gate asks about New York City, but the Item A exceptions turn on New York State residence and on inability to file jointly. The spouse did not live in the City, so the filer truthfully answers no.",
+       "line": "ny_it201.spouse_cannot_sign_if_resident",
+       "irs_text": "ny_it201i p. 4, Item A: \"One spouse is a New York State resident and the other is a nonresident or part-year resident\"; p. 5: \"your spouse refuses to sign a joint New York return ... you may file a separate New York return\"",
+       "severity": "high",
+       "fix": "Separate the State question from the City question: (1) Was your spouse a New York State resident for all of 2025? (2) Was your spouse also a New York City resident for all of 2025? Ask the cannot-sign question regardless of the answers to either."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A New York City resident whose spouse was domiciled in New York City but was physically away all or most of 2025, for example on military deployment, on a work posting abroad, in a hospital or care facility outside the city, or incarcerated. The spouse cannot be reached, or refuses to sign.",
+       "why_no": "The filer reads 'live in New York City for all of 2025' as physical presence rather than residence or domicile. Neither the question nor its help defines residence, so the filer answers no.",
+       "line": "ny_it201.spouse_cannot_sign_if_resident",
+       "irs_text": "ny_it201i p. 5, Item A: \"the address or whereabouts of your spouse is unknown ... your spouse refuses to sign a joint New York return ... you may file a separate New York return\"",
+       "severity": "medium",
+       "fix": "Ask whether the spouse was a New York City resident (domiciled there, even if temporarily away) for all of 2025. Add help that points to the instructions' definition of Resident."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer whose spouse lived in New York City until dying in 2025, filing jointly as surviving spouse.",
+       "why_no": "'For all of 2025' suggests no, because the spouse did not live in the city after death. A decedent's year of residence ends at death, so the joint return remains a full-year resident return.",
+       "line": "ny_it201.spouse_cannot_sign_if_resident",
+       "irs_text": "ny_it201i p. 4: \"If the taxpayer whose name is listed second died after December 31, 2024, and before you filed your return, enter the date of death in the box labeled Spouse's date of death.\"",
+       "severity": "low",
+       "fix": "Add to the help: 'If your spouse died in 2025, answer about the part of the year before their death.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "Any filer reading the help shown with the gate.",
+       "why_no": "The help says a no leads to 'separate returns or a joint return taxing both as residents' and that the tool does not prepare either. This presents the refusal as about residence only. It hides that a separate return is also allowed when a spouse refuses to sign or cannot be found, a case the gated line is meant to record. The line's own condition also says 'full-year New York State and New York City resident', but the gate asks only about the City.",
+       "line": "ny_it201.spouse_cannot_sign_if_resident",
+       "irs_text": "ny_it201i p. 5, Item A: \"You are unable to file a joint New York return because: ... In this case, you may file a separate New York return\"",
+       "severity": "low",
+       "fix": "Use the same wording for the gate and the line condition, either 'New York State and New York City resident' in both or 'New York City' in both. Mention the refusal and whereabouts exception in the help, or ask about it separately."
+      }
+     ],
+     "prompt_sha": "92568af3a2a3a4e936a1f8db25bec172a233279b4c6565629273b0ae321c2ee5",
+     "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
+     "model": "claude-opus-5-5",
+     "cost": 0.10941999999999999,
+     "date": "2026-11-24",
+     "response": ".transcription/ny/false_no/gate_ny_it201.ask.spouse_resident.528c86f640fb.1.response.txt"
+    }
+   ],
+   "condition": "ny_it201.ask.spouse_resident",
+   "lines": [
+    "ny_it201.spouse_cannot_sign_if_resident"
+   ],
+   "inputs": [
+    "ny_it201.ask.spouse_cannot_sign"
+   ],
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      4,
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Item A, \"One spouse is a New York State resident and the other is a nonresident or part-year resident.\"",
+      "p. 5, Item A, \"In this case, you may file a separate New York return using filing status\"",
+      "p. 5, Item A, \"You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown\" and \"– your spouse refuses to sign a joint New York return\""
+     ],
+     "cols_pages": [
+      4,
+      5
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  },
+  "gate:ny_it201.carryover_179_used": {
+   "subject_sha": "854263ae0e92aabf08e27c4213179bbaa5fd56331137f4e79a522d31fe24c137",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A sole proprietor bought a 6,500-pound SUV and other equipment in 2023 and elected section 179 on both. The business income limit created a carryover, and part of it is deducted on the 2025 Form 4562 line 12.",
+       "why_no": "The question asks whether the carryover 'came from expensing an SUV'. Form 4562 carries the carryover forward as one undivided amount. Under the section 179 regulations, the taxpayer chooses which properties and portions make up the carryover. A filer who never made or recorded that choice cannot trace the carryover to the SUV, so they answer no.",
+       "line": "ny_it201.suv_carryover_if_used",
+       "irs_text": "ny_it225i p. 11, A-208: \"If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds ... then enter the amount of that deduction.\"",
+       "severity": "medium",
+       "fix": "Ask a fact the filer can check: 'Was an SUV over 6,000 pounds among the property you (or your spouse) elected to expense under section 179 in the year this carryover arose?' Treat yes as a Yes, or ask how the carryover was allocated among properties."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A contractor expensed a pickup over 6,000 pounds GVWR with a bed under six feet, or a heavy passenger van, in 2024. Part of that section 179 carryover is deducted in 2025.",
+       "why_no": "The help says to count 'any passenger vehicle over 6,000 pounds that is not a truck, van or motor home'. The filer reads 'truck' or 'van' and answers no. A-208 says only 'sport utility vehicle' and gives no blanket exclusion for trucks or vans. Under the federal section 179(b)(5) definition, a short-bed pickup or a van seating nine or fewer behind the driver is treated as an SUV.",
+       "line": "ny_it201.suv_carryover_if_used",
+       "irs_text": "ny_it225i p. 11, A-208: \"with respect to a sport utility vehicle that weighs more than 6,000 pounds\"",
+       "severity": "medium",
+       "fix": "Drop the blanket truck and van exclusion from the help, or state the statutory definition. For example: 'include pickups with a cargo bed under six feet and vans that seat nine or fewer behind the driver'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer expensed an SUV whose curb weight is about 5,000 pounds but whose gross vehicle weight rating is over 6,000 pounds. A carryover from that deduction is used in 2025.",
+       "why_no": "The question and help say 'over 6,000 pounds'. The filer checks the curb or shipping weight, finds it is under 6,000 pounds, and answers no. The 6,000-pound threshold for SUVs is measured by gross vehicle weight rating.",
+       "line": "ny_it201.suv_carryover_if_used",
+       "irs_text": "ny_it225i p. 11, A-208: \"a sport utility vehicle that weighs more than 6,000 pounds\"",
+       "severity": "medium",
+       "fix": "Say 'gross vehicle weight rating (GVWR, shown on the door-jamb label) over 6,000 pounds'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A business owner expensed an SUV in an earlier year and uses it only for business.",
+       "why_no": "The help calls it a 'passenger vehicle'. The filer thinks of it as a work vehicle, not a passenger car, and answers no.",
+       "line": "ny_it201.suv_carryover_if_used",
+       "irs_text": "ny_it225i p. 11, A-208: \"If you claimed an IRC § 179 deduction ... with respect to a sport utility vehicle\"",
+       "severity": "low",
+       "fix": "Add to the help: 'including an SUV used only for business'."
+      }
+     ],
+     "prompt_sha": "26f7655590b3ec0fbac83375e921ed4fb1acbe6b253954d53848a3150a6c0e52",
+     "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
+     "model": "claude-opus-5-5",
+     "cost": 0.091036,
+     "date": "2026-11-24",
+     "response": ".transcription/ny/false_no/gate_ny_it201.carryover_179_used.854263ae0e92.1.response.txt"
+    }
+   ],
+   "condition": "ny_it201.carryover_179_used",
+   "lines": [
+    "ny_it201.suv_carryover_if_used"
+   ],
+   "inputs": [
+    "ny_it201.ask.suv_carryover"
+   ],
+   "used": [
+    {
+     "doc": "ny_it225i",
+     "revision": "2025",
+     "text_sha256": "a536603d330d3ed7cb005555b0c1bd4e1ae48673f40827b8f3426c73abbb9d46",
+     "pages": [
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, A-208, \"If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds\"",
+      "p. 11, A-208, \"then enter the amount of that deduction\""
+     ],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "6cac12fb00550d49e37f4cad6e4dbbd91d39ed9d6d1c372116571ca85101af8f"
     }
    ]
   },
@@ -1274,6 +1532,77 @@
     }
    ]
   },
+  "gate:ny_it201.has_unemployment": {
+   "subject_sha": "121386ca7685c88eaa60a5b9af1c79b5a69c714877bbb3b150de25470b8e79bf",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A former railroad worker, or the spouse on a joint return, who drew only sickness benefits from the Railroad Retirement Board under the Railroad Unemployment Insurance Act in 2025 and no unemployment benefits. The Board reports taxable sickness benefits on Form W-2, so they go into federal wages (IT-201 line 1), and line 14 is $0.",
+       "why_no": "The gate is computed as line 14 > $0. Railroad sickness benefits are federal wages, not unemployment compensation, so line 14 is $0 and the question is never asked. The tool treats the line as no and finishes the return without stopping.",
+       "line": "ny_it201.railroad_uc_if_uc",
+       "irs_text": "ny_it225i (2025) p. 17, S-122: \"benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)\"",
+       "severity": "high",
+       "fix": "Ask the railroad question on its own, not only when line 14 > $0: \"Did you (or, on a joint return, your spouse) receive any unemployment or sickness benefits from the Railroad Retirement Board (Form 1099-G or Form W-2 issued by the RRB)?\" Or open the gate when line 14 > $0 OR line 1 > $0."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A joint filer whose line 14 holds state unemployment for one spouse, while the other spouse received RUIA sickness benefits from the Railroad Retirement Board, reported as wages on an RRB Form W-2.",
+       "why_no": "The question asks only whether \"unemployment benefits\" were \"paid by the Railroad Retirement Board\". The household's unemployment benefits came from the state, and the RRB money was sickness benefits, so the truthful answer is no. The help text mentions sickness benefits only as a statement, not as part of the question.",
+       "line": "ny_it201.railroad_uc_if_uc",
+       "irs_text": "ny_it225i (2025) p. 17, S-122: \"Certain railroad retirement income and railroad unemployment insurance benefits ... benefits received under the Railroad Unemployment Insurance Act\"",
+       "severity": "high",
+       "fix": "Word the question as: \"Did you (or, on a joint return, your spouse) receive any unemployment or sickness benefits paid by the Railroad Retirement Board under the Railroad Unemployment Insurance Act, whether reported on Form 1099-G or Form W-2?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer whose railroad unemployment benefits were reported on a Form 1099-G from the Railroad Retirement Board but who thinks of the payer as their railroad employer, a union, or 'the railroad unemployment program', not 'the Railroad Retirement Board'.",
+       "why_no": "\"paid by the Railroad Retirement Board\" names one issuer. A filer who does not recognize the RRB as the payer, or who counts the benefits as ordinary state unemployment, may answer no.",
+       "line": "ny_it201.railroad_uc_if_uc",
+       "irs_text": "ny_it225i (2025) p. 17, S-122: \"benefits received under the Railroad Unemployment Insurance Act ... (but that you included in your federal income)\"",
+       "severity": "medium",
+       "fix": "Add to the help: \"Railroad unemployment and sickness benefits are paid by the U.S. Railroad Retirement Board (RRB), not by New York State. Check whether your Form 1099-G or Form W-2 shows the RRB as the payer.\""
+      }
+     ],
+     "prompt_sha": "731d457081d2713a82b39fe088132efbb574842f7f074b284ffaf1654e715cba",
+     "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
+     "model": "claude-opus-5-5",
+     "cost": 0.062308,
+     "date": "2026-11-24",
+     "response": ".transcription/ny/false_no/gate_ny_it201.has_unemployment.121386ca7685.1.response.txt"
+    }
+   ],
+   "condition": "ny_it201.has_unemployment",
+   "lines": [
+    "ny_it201.railroad_uc_if_uc"
+   ],
+   "inputs": [
+    "ny_it201.ask.railroad_uc"
+   ],
+   "used": [
+    {
+     "doc": "ny_it225i",
+     "revision": "2025",
+     "text_sha256": "a536603d330d3ed7cb005555b0c1bd4e1ae48673f40827b8f3426c73abbb9d46",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, S-122, \"benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "6cac12fb00550d49e37f4cad6e4dbbd91d39ed9d6d1c372116571ca85101af8f"
+    }
+   ]
+  },
   "gate:ny_it201.low_income": {
    "subject_sha": "64d0f7ec66d2e0817f910e4218b82a0577680a6940e52a4117bb0b7670cb5f29",
    "samples": [
@@ -1752,58 +2081,58 @@
    ]
   },
   "gate:ny_it201.public_job_if_w2": {
-   "subject_sha": "14156782f64a89eef29da28db5397c3a457e01f6d3cbca0bbe13dda4d6b83124",
+   "subject_sha": "35f8f49133767939699980dd99c75cd0a3c0e0b9ca75d2f7f2fb93f79cba1f68",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A married couple files jointly. One spouse works in the private sector. The other is a New York City teacher in TRS, or a NYSLRS member, with a 414(h) amount in box 14 of their Form W-2.",
-       "why_no": "The gate is computed per return, but neither its label ('A public employer in New York') nor its cited question ('Are you a public employee of New York State or its local governments?') mentions a spouse. The filer answering truthfully about themselves says no. The spouse clause appears only in the child questions, which the no skips.",
-       "line": "ny_it201.gate.line21 (and ny_it201.nyc_flex_if_public)",
-       "irs_text": "ny_it201i p. 8, Line 21: 'enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2'; ny_it225i p. 7, A-101: 'on your or a decedent's behalf'",
-       "severity": "high",
-       "fix": "Word the gate: 'Do you or your spouse have a 2025 Form W-2 from New York State, a New York local government, a school district, a public university, or a public authority or public benefit corporation (such as the MTA, NYC Transit, MABSTOA, NYC Housing Authority or NYC Health and Hospitals)?'"
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A New York City resident who works for NYC Health + Hospitals, the NYC Transit Authority, MABSTOA, Staten Island Rapid Transit, the NYC School Construction Authority or the Housing Authority. Their W-2 box 14 shows an IRC 125 flexible benefits deduction, and they may also show a 414(h) contribution to NYCERS or the MABSTOA plan.",
+       "why_no": "The gate asks about 'a New York public employer.' They think of their employer as a hospital, a transit company or an authority, not as a government. A public benefit corporation does not read as a 'public employer,' so they answer no.",
+       "line": "ny_it201.nyc_flex_if_public; ny_it201.gate.line21",
+       "irs_text": "ny_it225i p. 7, A-101: 'Certain other New York City public employers may include, but are not limited to, the following: ... NYC Health and Hospitals Corporation • NYC Transit Authority • NYC Housing Authority ... • Manhattan and Bronx Surface Transit Operating Authority • Staten Island Rapid Transit Authority'; ny_it201i p. 8, Line 21: 'a member of the Manhattan and Bronx Surface Transit Operating Authority (MABSTOA) Pension Plan'",
+       "severity": "medium",
+       "fix": "Ask: 'Did you (or your spouse) get a Form W-2 from New York State, a New York city, county, town, village, school district or BOCES, a state or city university (SUNY or CUNY), or a New York public authority or public benefit corporation (for example the MTA, NYC Transit, MABSTOA, NYC Health + Hospitals or the Housing Authority)?' Add help text saying the list is not complete. Alternatively, ask a broader question: does any W-2 box 14 show 414(h), IRC 125, or a retirement system name such as NYSLRS, TRS, NYCERS, TRS NYC, BERS, ORP or MABSTOA?"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer who left a state, county or New York City job (for example a police officer who retired, or a teacher who moved to a private school) during 2025. Their 2025 Form W-2 from that job shows 414(h) pickups for the months worked.",
-       "why_no": "The cited question is present tense: 'Are you a public employee...?' Someone who no longer works there truthfully says they are not.",
-       "line": "ny_it201.gate.line21 (and ny_it201.nyc_flex_if_public)",
-       "irs_text": "ny_it201i p. 8, Line 21: 'enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2'",
+       "pattern": "3",
+       "who": "A married couple filing jointly. Only the spouse works for a New York public employer, for example as a teacher who belongs to the State Teachers' Retirement System, and that W-2 shows a 414(h) contribution or an IRC 125 flex amount.",
+       "why_no": "The gate cites 'Are you a public employee of New York State or its local governments?' and does not mention a spouse. The filer answering for the return reads 'you' as themselves and says no. Only the gated child questions say 'you (or, on a joint return, your spouse).'",
+       "line": "ny_it201.gate.line21; ny_it201.nyc_flex_if_public",
+       "irs_text": "ny_it201i p. 8, Line 21: 'enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2'; ny_it225i p. 7, A-101: 'If any federal Form W-2 ... shows that an amount was deducted or deferred ... on your or a decedent's behalf'",
        "severity": "medium",
-       "fix": "Ask about any 2025 Form W-2 from such an employer ('Did you or your spouse work for ... at any time in 2025?'), not about current employment."
+       "fix": "Word the gate as 'Did you or your spouse get a Form W-2 from a New York public employer?' Or compute it over every W-2 on the return, whichever spouse it belongs to, rather than asking one person."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A bus operator paid by MABSTOA or NYC Transit, a nurse at NYC Health and Hospitals, a NYC Housing Authority worker, a NYC School Construction Authority worker, or a CUNY employee. Each has a 414(h) amount (MABSTOA Pension Plan, NYCERS, ORP) or an IRC 125 flexible benefits amount on their Form W-2.",
-       "why_no": "They see their employer as an authority or corporation, not as 'New York State or its local governments' or a 'public employer'. Neither the gate nor its help lists public authorities, public benefit corporations, school districts or public universities.",
-       "line": "ny_it201.gate.line21; ny_it201.nyc_flex_if_public",
-       "irs_text": "ny_it201i p. 8: 'a member of the Manhattan and Bronx Surface Transit Operating Authority (MABSTOA) Pension Plan'; ny_it225i p. 7: 'Certain other New York City public employers may include, but are not limited to ... NYC Health and Hospitals Corporation • NYC Transit Authority • NYC Housing Authority'",
+       "who": "A SUNY or CUNY faculty or staff member in the Optional Retirement Program, with TIAA as the carrier, whose W-2 shows a 414(h) ORP contribution. Also a teacher at a charter school that participates in the State Teachers' Retirement System.",
+       "why_no": "They see themselves as university employees or charter-school employees whose pension is run by TIAA, a private company, not as 'public employees of New York State or its local governments.' They answer no to the public-employer gate even though the line names their retirement plan.",
+       "line": "ny_it201.gate.line21",
+       "irs_text": "ny_it201i p. 8, Line 21: 'an employee of the State or City University of New York who belongs to the Optional Retirement Program; – a member of the New York State Teachers' Retirement System'",
        "severity": "medium",
-       "fix": "List these employer types in the gate question and its help. Alternatively, gate on a fact the filer can check: 'Does any Form W-2 show 414(h), IRC 125, or a NY retirement system in box 14?'"
+       "fix": "Ask the gate by retirement plan as well as by employer: 'Are you or your spouse a member of NYSLRS, the State Teachers' Retirement System, the SUNY or CUNY Optional Retirement Program (including through TIAA), NYCERS, TRS NYC, BERS, the NYC Police or Fire pension fund, or the MABSTOA plan, or does any W-2 box 14 show 414(h)?'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A teacher at a New York charter school, or at a BOCES or school district, who is a NYSTRS member. Their Form W-2 shows 414(h) contributions.",
-       "why_no": "A charter school is an education corporation, and a school district may not seem to be a 'local government'. The teacher may honestly not see themselves as a 'public employee of New York State or its local governments', even though they belong to the Teachers' Retirement System that the line names.",
-       "line": "ny_it201.gate.line21",
-       "irs_text": "ny_it201i p. 8, Line 21: 'a member of the New York State Teachers' Retirement System'",
-       "severity": "medium",
-       "fix": "Ask first whether any Form W-2 (yours or your spouse's) shows a 414(h) contribution or membership in one of the listed retirement systems. Then classify the employer after a yes."
+       "pattern": "4",
+       "who": "The executor filing a decedent's final IT-201. A New York City public employer issued a W-2 in the decedent's name that shows an IRC 125 flex deduction.",
+       "why_no": "The flex question asks only about a W-2 'you (or, on a joint return, your spouse) got.' A fiduciary filing for the decedent may not read 'you' as covering the decedent.",
+       "line": "ny_it201.nyc_flex_if_public",
+       "irs_text": "ny_it225i p. 7, A-101: 'an amount was deducted or deferred from your salary under a flexible benefits program ... on your or a decedent's behalf'",
+       "severity": "low",
+       "fix": "Add 'or the deceased person this return is for' to both the gate and the flex question."
       }
      ],
-     "prompt_sha": "707dda1cc5ab69a382771330c769ac544c6ed352332eed7a2a134403427611e9",
+     "prompt_sha": "582b283160e45806d2aaa71ee58b7c957d7983f6a3f058ff2d096bc32e5d05e0",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
      "model": "claude-opus-5-5",
-     "cost": 0.09748000000000001,
-     "date": "2026-11-23",
-     "response": ".transcription/ny/false_no/gate_ny_it201.public_job_if_w2.14156782f64a.1.response.txt"
+     "cost": 0.09490399999999999,
+     "date": "2026-11-24",
+     "response": ".transcription/ny/false_no/gate_ny_it201.public_job_if_w2.35f8f4913376.1.response.txt"
     }
    ],
    "condition": "ny_it201.public_job_if_w2",

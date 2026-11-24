@@ -32,6 +32,13 @@
 - Expr: `{"op":"input","source":"In 2025, did you sell, give away or otherwise dispose of any of your shares in this corporation, or did it buy any back from you?"}`
 - Cite: [i7203] p. 1, Who Must File, "Disposed of stock in an S corporation (whether or not gain is recognized)"; i7203 p. 3, Line 13, "If a portion of your stock is redeemed, sold, or otherwise disposed of during the year, attach two" (Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists); sha256 f2a4a124)
 
+## (screen) — `k1s.fiscal`
+
+- **Authored helper label:** The K-1 is for a tax year other than calendar year 2025 (a fiscal year)
+- **Encoded (Bool):** Input — Is the tax year at the top of this Schedule K-1 something other than the calendar year 2025 (a fiscal year)?
+- Expr: `{"op":"input","source":"Is the tax year at the top of this Schedule K-1 something other than the calendar year 2025 (a fiscal year)?"}`
+- Cite: [i1120ssk] p. 6, "If you file your tax return on a calendar-year basis, but the corporation files a return for a fiscal year, report the amounts on your tax return for the year in which the corporation’s fiscal year ends"; p. 4, "All determinations of material participation are based on your participation during the corporation’s tax year" (2025; sha256 fb6194da)
+
 ## 1 — `k1s.box1_any`
 
 - **IRS:** Box 1 (ordinary business income (loss)) shows an amount
@@ -280,8 +287,8 @@
 ## 14 — `k1s.box14`
 
 - **IRS:** Box 14 is checked (Schedule K-3 attached)
-- **Encoded (Bool):** Input — Is box 14 of this Schedule K-1 checked (a Schedule K-3 is attached)?
-- Expr: `{"op":"input","source":"Is box 14 of this Schedule K-1 checked (a Schedule K-3 is attached)?"}`
+- **Encoded (Bool):** Input — Is box 14 of this Schedule K-1 checked (a Schedule K-3 is attached), or did you get a Schedule K-3 for 2025 from the corporation?
+- Expr: `{"op":"input","source":"Is box 14 of this Schedule K-1 checked (a Schedule K-3 is attached), or did you get a Schedule K-3 for 2025 from the corporation?"}`
 - Cite: [i1120ssk] p. 14, Box 14. International Transactions, "If the S corporation checked the box, see the attached Schedule K-3 with respect to items of international tax relevance" (2025; sha256 fb6194da)
 
 ## 15 — `k1s.box15`
@@ -662,6 +669,13 @@
 - Expr: `{"op":"input","source":"Was a loss from this corporation held back on an earlier return by the at-risk rules (Form 6198)?"}`
 - Cite: [i1120ssk] p. 3, At-Risk Limitations, "Any loss from a section 465 activity not allowed for this tax year will be treated as a deduction allocable to the activity in the next tax year" (2025; sha256 fb6194da)
 
+## (screen) — `k1s.credit_carry`
+
+- **Authored helper label:** A credit from this corporation held back on an earlier return by the passive activity rules (Form 8582-CR)
+- **Encoded (Bool):** Input — Was a credit from this corporation held back on an earlier return by the passive activity rules (Form 8582-CR)?
+- Expr: `{"op":"input","source":"Was a credit from this corporation held back on an earlier return by the passive activity rules (Form 8582-CR)?"}`
+- Cite: [i1120ssk] p. 6, "If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your income, loss, or credits for this year" (2025; sha256 fb6194da)
+
 ## (c) — `k1s.b1_prior`
 
 - **Authored helper label:** Prior-year unallowed loss of the box 1 activity (2024 Form 8582, Part VII, column (c))
@@ -689,6 +703,34 @@
 - **Encoded (NonNegDollars):** Choose — [helper "A loss from this corporation was not allowed on the 2024 Form 8582 (prior-year unallowed passive loss)" = true → column (c) (k1s.b2_prior)] [helper "A loss from this corporation was not allowed on the 2024 Form 8582 (prior-year unallowed passive loss)" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["k1s.prior_any",{"const":true}],"op":"test"},"then":"k1s.b2_prior"},{"guard":{"eq":["k1s.prior_any",{"const":false}],"op":"test"},"then":"k1s.zero"}],"op":"choose"}`
 - Cite: [i8582] p. 10, Column (c), "Enter the prior-year unallowed losses for each activity" (2025; sha256 76787e11)
+
+## (screen) — `k1s.prior_not_active`
+
+- **Authored helper label:** Part of the held-back box 2 loss arose in a year without active participation
+- **Encoded (Bool):** Input — Did any of the held-back rental real estate loss (box 2) come from a year when you did not help make decisions for it, or owned less than a tenth of the corporation's stock at any time that year?
+- Expr: `{"op":"input","source":"Did any of the held-back rental real estate loss (box 2) come from a year when you did not help make decisions for it, or owned less than a tenth of the corporation's stock at any time that year?"}`
+- Cite: [i8582] p. 10, Column (c), "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year" (2025; sha256 76787e11)
+
+## (gate) — `k1s.ask_prior_active`
+
+- **Authored helper label:** A held-back box 2 loss that would go to Form 8582 Part IV (active participation this year)
+- **Encoded (Bool):** helper "Prior-year unallowed loss of the box 2 activity, asked only when a loss was held back (zero otherwise)" > $0 and helper "Box 2 activity with active participation (Form 8582 Part IV)" = true
+- Expr: `{"all":[{"gt":["k1s.b2_prior_if_any",{"const":0}],"op":"test"},{"eq":["k1s.part4",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i8582] p. 10, Column (c), "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year" (2025; sha256 76787e11)
+
+## (gate) — `k1s.prior_not_active_if`
+
+- **Authored helper label:** Asked only when a held-back box 2 loss would go to Form 8582 Part IV (false otherwise)
+- **Encoded (Bool):** Choose — [helper "A held-back box 2 loss that would go to Form 8582 Part IV (active participation this year)" = true → helper "Part of the held-back box 2 loss arose in a year without active participation"] [helper "A held-back box 2 loss that would go to Form 8582 Part IV (active participation this year)" = false → helper "Year parameter s3.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["k1s.ask_prior_active",{"const":true}],"op":"test"},"then":"k1s.prior_not_active"},{"guard":{"eq":["k1s.ask_prior_active",{"const":false}],"op":"test"},"then":"k1s.no"}],"op":"choose"}`
+- Cite: [i8582] p. 10, Column (c), "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year" (2025; sha256 76787e11)
+
+## (gate) — `k1s.b2_prior_blank`
+
+- **Authored helper label:** A box 2 loss was held back but box 2 shows no amount this year (active participation is not asked)
+- **Encoded (Bool):** line 2 (k1s.box2_any) = false and helper "Prior-year unallowed loss of the box 2 activity, asked only when a loss was held back (zero otherwise)" > $0
+- Expr: `{"all":[{"eq":["k1s.box2_any",{"const":false}],"op":"test"},{"gt":["k1s.b2_prior_if_any",{"const":0}],"op":"test"}],"op":"test"}`
+- Cite: [i8582] p. 10, Column (c), "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year" (2025; sha256 76787e11)
 
 ## (c) — `k1s.b3_prior`
 
@@ -921,6 +963,7 @@
 - **Authored helper label:** This Schedule K-1 passes every screen and its Form 7203 is supported
 - **Encoded (Bool):** helper "One Form 7203 for this corporation, screened" = 1 (a count)
 - **Refusal:** when k1s.multi is true, cannot complete Schedule K-1 (Form 1120-S) with more than one activity (box 18 or 19). A corporation with more than one activity reports each on an attached statement, and each activity's income and losses are limited separately; that is outside this tool. Cite: [i1120ssk] p. 19, Box 19. More Than One Activity for Passive Activity Purposes, "Use the information in the attached statement to correctly determine your passive activity limitations" (2025; sha256 fb6194da)
+- **Refusal:** when k1s.fiscal is true, cannot complete Schedule K-1 (Form 1120-S) for a corporation's fiscal year. A Schedule K-1 for a tax year other than the calendar year 2025 is outside this tool. Cite: [i1120ssk] p. 6, "If you file your tax return on a calendar-year basis, but the corporation files a return for a fiscal year, report the amounts on your tax return for the year in which the corporation’s fiscal year ends"; p. 4, "All determinations of material participation are based on your participation during the corporation’s tax year" (2025; sha256 fb6194da)
 - **Refusal:** when k1s.disposed is true, cannot complete Form 7203 for a disposition of S corporation stock, and Form 8949. A sale or other disposition of S corporation stock, or a redemption, needs the stock basis at the date of sale (two Forms 7203) and the gain or loss on Form 8949; that is outside this tool. Cite: [i7203] p. 3, Line 13, "If a portion of your stock is redeemed, sold, or otherwise disposed of during the year, attach two" (Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists); sha256 f2a4a124)
 - **Refusal:** when k1s.box6 is true, cannot complete Schedule E (Form 1040), line 4 (royalties from a Schedule K-1). Royalties from an S corporation are reported on Schedule E line 4, which this tool does not prepare for a Schedule K-1. Cite: [i1120ssk] p. 7, Box 6. Royalties, "Report royalties on Schedule E (Form 1040), line 4" (2025; sha256 fb6194da)
 - **Refusal:** when k1s.box8_stmt_if_any is true, cannot complete Unrecaptured section 1250 gain from an attached statement. Unrecaptured section 1250 gain of the other two types is reported from the corporation's statement on other lines of the worksheet; that is outside this tool. Cite: [i1120ssk] p. 7, Box 8c. Unrecaptured Section 1250 Gain, "If it reports the other two types of unrecaptured gain, it will provide an attached statement that shows the amount for each type of unrecaptured section 1250 gain" (2025; sha256 fb6194da)
@@ -937,6 +980,9 @@
 - **Refusal:** when k1s.former_passive is true, cannot complete Form 8582 (prior-year unallowed loss of an activity that is not passive this year). A prior-year unallowed loss of an activity in which you now materially participate is allowed under special rules that are outside this tool. Cite: [i8582] p. 10, Column (c), "Enter the prior-year unallowed losses for each activity" (2025; sha256 76787e11)
 - **Refusal:** when k1s.basis_carry is true, cannot complete Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27. A loss or deduction carried from an earlier year by the basis limitation is outside this tool. Cite: [i7203] p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "Column (b). Enter any loss or deduction items disallowed due to basis limitations in prior years that were carried forward" (Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists); sha256 f2a4a124)
 - **Refusal:** when k1s.risk_carry is true, cannot complete Form 6198 (At-Risk Limitations). A loss carried from an earlier year by the at-risk limitation is figured on Form 6198, which this tool does not prepare. Cite: [i1120ssk] p. 3, At-Risk Limitations, "Any loss from a section 465 activity not allowed for this tax year will be treated as a deduction allocable to the activity in the next tax year" (2025; sha256 fb6194da)
+- **Refusal:** when k1s.credit_carry is true, cannot complete Form 8582-CR (a passive activity credit carried from an earlier year). A credit carried from an earlier year by the passive activity rules is outside this tool. Cite: [i1120ssk] p. 6, "If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your income, loss, or credits for this year" (2025; sha256 fb6194da)
+- **Refusal:** when k1s.prior_not_active_if is true, cannot complete Form 8582, Part IV (prior-year loss from a year without active participation). A held-back rental loss from a year without active participation is outside this tool. Cite: [i8582] p. 10, Column (c), "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year" (2025; sha256 76787e11)
+- **Refusal:** when k1s.b2_prior_blank is true, cannot complete Form 8582, Part IV or V (a held-back rental real estate loss with no box 2 amount this year). A held-back rental real estate loss from a corporation whose box 2 is blank this year is outside this tool. Cite: [i8582] p. 10, Column (c), "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year" (2025; sha256 76787e11)
 - **Refusal:** when k1s.not_at_risk_if_loss is true, cannot complete Form 6198 (At-Risk Limitations). A loss with amounts not at risk is figured on Form 6198, which this tool does not prepare. Cite: [i1120ssk] p. 3, At-Risk Limitations, "you will have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity" (2025; sha256 fb6194da)
 - **Refusal:** when k1s.trader_if_b1 is true, cannot complete A corporation trading investments for its owners (nonpassive trading activity). A corporation that trades investments for its owners is outside this tool. Cite: [i1120ssk] p. 5, "Trading personal property for the account of owners of interests in the activity" (2025; sha256 fb6194da)
 - **Refusal:** when k1s.re_pro_if_b2 is true, cannot complete Schedule K-1 (Form 1120-S) box 2 of a real estate professional (Schedule E, line 43). Rental real estate from an S corporation held by a real estate professional is outside this tool. Cite: [i1120ssk] p. 6, Box 2. Net Rental Real Estate Income (Loss), "the income (loss) in box 2 isn’t from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity" (2025; sha256 fb6194da)

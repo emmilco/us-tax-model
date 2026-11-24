@@ -7,84 +7,84 @@
    "printed": "person[taxpayer].k1s[acme].f7203[form].c35",
    "project": "$6,666.66",
    "model": "$6,666.67",
-   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (i7203 p. 4, Column (c): 'enter the pro rata amount on the corresponding line in column (c) ... can't exceed the amount reported on line 10', with no rounding rule): the project takes the chosen reading, the ratio line 10 / line 47(a) half-up to six places (0.333333), so with basis 10,000 and losses 20,000 and 10,000 column (c) totals 9,999.99 and a cent of basis and carryover moves; the model took the other reading (exact ratio, 6,666.67 + 3,333.33 = 10,000). One cent, within the ambiguity's stated bound; the same cent the transcription review raised and that log rules ambiguity.",
-   "context": "2c7bceebe1c7b8adf1f8d0fdd1cb0ba652915ce93632feb272c32a8f881f5719",
-   "date": "2026-11-15",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places: stock basis $10,000 against losses of $30,000; the project's six-place ratio 0.333333 gives $6,666.66 and $3,333.33, a column (c) total of $9,999.99 and $0.01 of basis left, where the model's exact ratio gives $10,000. The register's reading (decided under the owner's delegation of 2026-11-24) keeps the six-place ratio and caps each line within line 10, never above; a cent left by a ratio rounded down is accepted (it allows a cent less loss, so no tax is understated).",
+   "drop": true,
+   "context": "2cbfc4a51284b61f19b99b3d4829e9faec9675d1a0bf00fea23e2b648f16f81e",
+   "date": "2026-11-24",
    "run": "67ebfb007c8b8c9c17239c409dadcdbac97f4f31b8ed9210db2c176b54596096",
-   "subject_key": "f77ef004e363958d5f959d11d99648048dcbdb4855e98de518fcf554dd2bf169",
-   "drop": true
+   "subject_key": "de86b39cdb913a23981be328e8531bbff3976b711ff8381448c50a0605e63303"
   },
   {
    "case": "classm.f7203.3",
    "printed": "person[taxpayer].k1s[acme].f7203[form].c47",
    "project": "$9,999.99",
    "model": "$10,000.00",
-   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (i7203 p. 4, Column (c): 'enter the pro rata amount on the corresponding line in column (c) ... can't exceed the amount reported on line 10', with no rounding rule): the project takes the chosen reading, the ratio line 10 / line 47(a) half-up to six places (0.333333), so with basis 10,000 and losses 20,000 and 10,000 column (c) totals 9,999.99 and a cent of basis and carryover moves; the model took the other reading (exact ratio, 6,666.67 + 3,333.33 = 10,000). One cent, within the ambiguity's stated bound; the same cent the transcription review raised and that log rules ambiguity.",
-   "context": "2c7bceebe1c7b8adf1f8d0fdd1cb0ba652915ce93632feb272c32a8f881f5719",
-   "date": "2026-11-15",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places: stock basis $10,000 against losses of $30,000; the project's six-place ratio 0.333333 gives $6,666.66 and $3,333.33, a column (c) total of $9,999.99 and $0.01 of basis left, where the model's exact ratio gives $10,000. The register's reading (decided under the owner's delegation of 2026-11-24) keeps the six-place ratio and caps each line within line 10, never above; a cent left by a ratio rounded down is accepted (it allows a cent less loss, so no tax is understated).",
+   "drop": true,
+   "context": "2cbfc4a51284b61f19b99b3d4829e9faec9675d1a0bf00fea23e2b648f16f81e",
+   "date": "2026-11-24",
    "run": "67ebfb007c8b8c9c17239c409dadcdbac97f4f31b8ed9210db2c176b54596096",
-   "subject_key": "cf9eda9ea467a7c41b9dfc11b0780521bb117f744d4df02e7566a8047e053ab4",
-   "drop": true
+   "subject_key": "fdcecf35c86a9807dbfb47c0c5c973ba9330d2143deda7de5e02418eeea46b67"
   },
   {
    "case": "classm.f7203.3",
    "printed": "person[taxpayer].k1s[acme].f7203[form].e35",
    "project": "$13,333.34",
    "model": "$13,333.33",
-   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (i7203 p. 4, Column (c): 'enter the pro rata amount on the corresponding line in column (c) ... can't exceed the amount reported on line 10', with no rounding rule): the project takes the chosen reading, the ratio line 10 / line 47(a) half-up to six places (0.333333), so with basis 10,000 and losses 20,000 and 10,000 column (c) totals 9,999.99 and a cent of basis and carryover moves; the model took the other reading (exact ratio, 6,666.67 + 3,333.33 = 10,000). One cent, within the ambiguity's stated bound; the same cent the transcription review raised and that log rules ambiguity.",
-   "context": "2c7bceebe1c7b8adf1f8d0fdd1cb0ba652915ce93632feb272c32a8f881f5719",
-   "date": "2026-11-15",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places: stock basis $10,000 against losses of $30,000; the project's six-place ratio 0.333333 gives $6,666.66 and $3,333.33, a column (c) total of $9,999.99 and $0.01 of basis left, where the model's exact ratio gives $10,000. The register's reading (decided under the owner's delegation of 2026-11-24) keeps the six-place ratio and caps each line within line 10, never above; a cent left by a ratio rounded down is accepted (it allows a cent less loss, so no tax is understated).",
+   "drop": true,
+   "context": "2cbfc4a51284b61f19b99b3d4829e9faec9675d1a0bf00fea23e2b648f16f81e",
+   "date": "2026-11-24",
    "run": "67ebfb007c8b8c9c17239c409dadcdbac97f4f31b8ed9210db2c176b54596096",
-   "subject_key": "51cfd45c138f407887aa7fcba555b2001c18a63d0b7f0230ea4c6b668e4a7d15",
-   "drop": true
+   "subject_key": "a04dd2ba7fcfaed7320a9fc615e326db1c8cee21eee56357260e266356ffddbf"
   },
   {
    "case": "classm.f7203.3",
    "printed": "person[taxpayer].k1s[acme].f7203[form].e47",
    "project": "$20,000.01",
    "model": "$20,000.00",
-   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (i7203 p. 4, Column (c): 'enter the pro rata amount on the corresponding line in column (c) ... can't exceed the amount reported on line 10', with no rounding rule): the project takes the chosen reading, the ratio line 10 / line 47(a) half-up to six places (0.333333), so with basis 10,000 and losses 20,000 and 10,000 column (c) totals 9,999.99 and a cent of basis and carryover moves; the model took the other reading (exact ratio, 6,666.67 + 3,333.33 = 10,000). One cent, within the ambiguity's stated bound; the same cent the transcription review raised and that log rules ambiguity.",
-   "context": "2c7bceebe1c7b8adf1f8d0fdd1cb0ba652915ce93632feb272c32a8f881f5719",
-   "date": "2026-11-15",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places: stock basis $10,000 against losses of $30,000; the project's six-place ratio 0.333333 gives $6,666.66 and $3,333.33, a column (c) total of $9,999.99 and $0.01 of basis left, where the model's exact ratio gives $10,000. The register's reading (decided under the owner's delegation of 2026-11-24) keeps the six-place ratio and caps each line within line 10, never above; a cent left by a ratio rounded down is accepted (it allows a cent less loss, so no tax is understated).",
+   "drop": true,
+   "context": "2cbfc4a51284b61f19b99b3d4829e9faec9675d1a0bf00fea23e2b648f16f81e",
+   "date": "2026-11-24",
    "run": "67ebfb007c8b8c9c17239c409dadcdbac97f4f31b8ed9210db2c176b54596096",
-   "subject_key": "5d7a3b5a3eddbd8267a296061b762f290fedb907b8a009e09f70b80580a54730",
-   "drop": true
+   "subject_key": "7adf77522dd938fa4ed81ada7364679a855a11076af8649542d8607ea469f9ef"
   },
   {
    "case": "classm.f7203.3",
    "printed": "person[taxpayer].k1s[acme].f7203[form].line11",
    "project": "$9,999.99",
    "model": "$10,000.00",
-   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (i7203 p. 4, Column (c): 'enter the pro rata amount on the corresponding line in column (c) ... can't exceed the amount reported on line 10', with no rounding rule): the project takes the chosen reading, the ratio line 10 / line 47(a) half-up to six places (0.333333), so with basis 10,000 and losses 20,000 and 10,000 column (c) totals 9,999.99 and a cent of basis and carryover moves; the model took the other reading (exact ratio, 6,666.67 + 3,333.33 = 10,000). One cent, within the ambiguity's stated bound; the same cent the transcription review raised and that log rules ambiguity.",
-   "context": "2c7bceebe1c7b8adf1f8d0fdd1cb0ba652915ce93632feb272c32a8f881f5719",
-   "date": "2026-11-15",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places: stock basis $10,000 against losses of $30,000; the project's six-place ratio 0.333333 gives $6,666.66 and $3,333.33, a column (c) total of $9,999.99 and $0.01 of basis left, where the model's exact ratio gives $10,000. The register's reading (decided under the owner's delegation of 2026-11-24) keeps the six-place ratio and caps each line within line 10, never above; a cent left by a ratio rounded down is accepted (it allows a cent less loss, so no tax is understated).",
+   "drop": true,
+   "context": "2cbfc4a51284b61f19b99b3d4829e9faec9675d1a0bf00fea23e2b648f16f81e",
+   "date": "2026-11-24",
    "run": "67ebfb007c8b8c9c17239c409dadcdbac97f4f31b8ed9210db2c176b54596096",
-   "subject_key": "16ebc980b2ff6f56f6c27cdd26cf664657956e84ad60b5c727a0d45659c12539",
-   "drop": true
+   "subject_key": "6af78c42d2101a9b84af4aa50a924346ac2b10af0c3a1d5cb486ad81b13f730a"
   },
   {
    "case": "classm.f7203.3",
    "printed": "person[taxpayer].k1s[acme].f7203[form].line14",
    "project": "$9,999.99",
    "model": "$10,000.00",
-   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (i7203 p. 4, Column (c): 'enter the pro rata amount on the corresponding line in column (c) ... can't exceed the amount reported on line 10', with no rounding rule): the project takes the chosen reading, the ratio line 10 / line 47(a) half-up to six places (0.333333), so with basis 10,000 and losses 20,000 and 10,000 column (c) totals 9,999.99 and a cent of basis and carryover moves; the model took the other reading (exact ratio, 6,666.67 + 3,333.33 = 10,000). One cent, within the ambiguity's stated bound; the same cent the transcription review raised and that log rules ambiguity.",
-   "context": "2c7bceebe1c7b8adf1f8d0fdd1cb0ba652915ce93632feb272c32a8f881f5719",
-   "date": "2026-11-15",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places: stock basis $10,000 against losses of $30,000; the project's six-place ratio 0.333333 gives $6,666.66 and $3,333.33, a column (c) total of $9,999.99 and $0.01 of basis left, where the model's exact ratio gives $10,000. The register's reading (decided under the owner's delegation of 2026-11-24) keeps the six-place ratio and caps each line within line 10, never above; a cent left by a ratio rounded down is accepted (it allows a cent less loss, so no tax is understated).",
+   "drop": true,
+   "context": "2cbfc4a51284b61f19b99b3d4829e9faec9675d1a0bf00fea23e2b648f16f81e",
+   "date": "2026-11-24",
    "run": "67ebfb007c8b8c9c17239c409dadcdbac97f4f31b8ed9210db2c176b54596096",
-   "subject_key": "4ffd92a7073764c90cda732ded9e519611f625edd2edc3816b8a588467eaec5a",
-   "drop": true
+   "subject_key": "4bfbaaaea21ebe6acadd96f0b1225358bf4c1bed8155fe9c6ac2a6e1fc0bde59"
   },
   {
    "case": "classm.f7203.3",
    "printed": "person[taxpayer].k1s[acme].f7203[form].line15",
    "project": "$0.01",
    "model": "$0.00",
-   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places (i7203 p. 4, Column (c): 'enter the pro rata amount on the corresponding line in column (c) ... can't exceed the amount reported on line 10', with no rounding rule): the project takes the chosen reading, the ratio line 10 / line 47(a) half-up to six places (0.333333), so with basis 10,000 and losses 20,000 and 10,000 column (c) totals 9,999.99 and a cent of basis and carryover moves; the model took the other reading (exact ratio, 6,666.67 + 3,333.33 = 10,000). One cent, within the ambiguity's stated bound; the same cent the transcription review raised and that log rules ambiguity.",
-   "context": "2c7bceebe1c7b8adf1f8d0fdd1cb0ba652915ce93632feb272c32a8f881f5719",
-   "date": "2026-11-15",
+   "ruling": "Ruling: ambiguity; amb.2025.f7203_prorata_places: stock basis $10,000 against losses of $30,000; the project's six-place ratio 0.333333 gives $6,666.66 and $3,333.33, a column (c) total of $9,999.99 and $0.01 of basis left, where the model's exact ratio gives $10,000. The register's reading (decided under the owner's delegation of 2026-11-24) keeps the six-place ratio and caps each line within line 10, never above; a cent left by a ratio rounded down is accepted (it allows a cent less loss, so no tax is understated).",
+   "drop": true,
+   "context": "2cbfc4a51284b61f19b99b3d4829e9faec9675d1a0bf00fea23e2b648f16f81e",
+   "date": "2026-11-24",
    "run": "67ebfb007c8b8c9c17239c409dadcdbac97f4f31b8ed9210db2c176b54596096",
-   "subject_key": "b0af307bc8049a48dcb50f807fef61e1205b8946f1424977623f29e28eae4025",
-   "drop": true
+   "subject_key": "afa3d9c170a2d34d3c49d5ce5bfb3b17c441ad4dd9357742563668f82213c580"
   }
  ]
 }

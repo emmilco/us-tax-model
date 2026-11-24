@@ -3,6 +3,9 @@
  "form": "f7203",
  "family": "claude",
  "base": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-24); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "E",
@@ -203,38 +206,38 @@
   },
   {
    "key": "35 (c)",
-   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "record": "3639354fcef706acbe4fdcfa2f8008a6f8585bbac1a965bfae9e88645b39f3f5",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
-   "subject_key": "5df9e495bcc7df9aa7f08a3ba73ef45633b4f2808f5ebae35c63cc82ee484689"
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry), so 'the sum of column (a) and column (b), line 47' is line 47 column (a); lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok, so line 47 (a) is complete. Each line's pro rata amount is kept within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (amb.2025.f7203_prorata_places).",
+   "subject_key": "9c9e2775ae257910d8a6a46670f07d955bb94402da3c9b59b77a05c9d78f19fe"
   },
   {
    "key": "36 (c)",
-   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "record": "3639354fcef706acbe4fdcfa2f8008a6f8585bbac1a965bfae9e88645b39f3f5",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
-   "subject_key": "ee96891c0a62ad4c4fb7f0b2515da9442e818ec21dabcd759772acbc8c0248d1"
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry), so 'the sum of column (a) and column (b), line 47' is line 47 column (a); lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok, so line 47 (a) is complete. Each line's pro rata amount is kept within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (amb.2025.f7203_prorata_places).",
+   "subject_key": "4b39e0c15d8eaa4105ecca301e5243fbbf48dec3686c4dd88cbd032f55ea646c"
   },
   {
    "key": "37 (c)",
-   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "record": "3639354fcef706acbe4fdcfa2f8008a6f8585bbac1a965bfae9e88645b39f3f5",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
-   "subject_key": "cb778a7f5931df1bd58317ecf10adfe1e57e8513989015a8429b5378eaa2475f"
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry), so 'the sum of column (a) and column (b), line 47' is line 47 column (a); lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok, so line 47 (a) is complete. Each line's pro rata amount is kept within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (amb.2025.f7203_prorata_places).",
+   "subject_key": "e2de288e563da0b8ee2ea75caf6d598892539b265649f9c28332106e003bd77c"
   },
   {
    "key": "38 (c)",
-   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "record": "3639354fcef706acbe4fdcfa2f8008a6f8585bbac1a965bfae9e88645b39f3f5",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
-   "subject_key": "47b4485a059611b459983c7158dec4ae8790a7c3dc3d55fee2b1a38a6c013908"
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry), so 'the sum of column (a) and column (b), line 47' is line 47 column (a); lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok, so line 47 (a) is complete. Each line's pro rata amount is kept within what line 10 leaves after the lines above it, so the column (c) total never exceeds line 10 (amb.2025.f7203_prorata_places).",
+   "subject_key": "7d3137359fb171a0d87ef8be0b55befffb511e1c3c54f6eb57261b2e4c8123b6"
   },
   {
    "key": "47 (c)",
-   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "record": "3639354fcef706acbe4fdcfa2f8008a6f8585bbac1a965bfae9e88645b39f3f5",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
-   "subject_key": "9eee981acddf184ed91e82dff88d5283f3e74f7a8813bdbe9f8fba065dd96c93"
+   "ruling": "Ruling: scope; lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok (k1s.box9, box10, box11_12, box14, box16ef_if_16); the form note says 'Lines 39 to 46 have no amount: the boxes that would fill them are refused on the K-1'.",
+   "subject_key": "97928c4e3547d9e6b5ad6df0d1d8d75c00694a1e51bfc840274a06d6da216e8a"
   },
   {
    "key": "11",
@@ -270,31 +273,31 @@
   },
   {
    "key": "35 (e)",
-   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "record": "3639354fcef706acbe4fdcfa2f8008a6f8585bbac1a965bfae9e88645b39f3f5",
    "status": "MISMATCH",
    "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
-   "subject_key": "854de5eedf33f53f21061af39b861557ebafdac14931a05d3083b9d4e5dbd07b"
+   "subject_key": "ec65d2a9e483faddfc29690a1be64d5737d77cdb82ff54ce9a60064f2b6e888a"
   },
   {
    "key": "36 (e)",
-   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "record": "3639354fcef706acbe4fdcfa2f8008a6f8585bbac1a965bfae9e88645b39f3f5",
    "status": "MISMATCH",
    "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
-   "subject_key": "38888ae1fdd3f356e69850d396db2ab0d5e71e7ad438f6eac68949df727dfde0"
+   "subject_key": "5122a8c6db6b70d8a0fee0145c1d8f88685262545e0c15a72396594d61348f39"
   },
   {
    "key": "37 (e)",
-   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "record": "3639354fcef706acbe4fdcfa2f8008a6f8585bbac1a965bfae9e88645b39f3f5",
    "status": "MISMATCH",
    "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
-   "subject_key": "6f31be5d707619b47cf0b6926e4b72870cb7f4ef7750d3a2cb51fd1460fd417b"
+   "subject_key": "0ac519e3d7a79b3a247419bdcd13a20f8f8ef30a47d11479eb56bf990889958f"
   },
   {
    "key": "38 (e)",
-   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "record": "3639354fcef706acbe4fdcfa2f8008a6f8585bbac1a965bfae9e88645b39f3f5",
    "status": "MISMATCH",
    "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
-   "subject_key": "4c6906e410878642212c687b0a60821e70382006092e3c7da859bca7583adfc3"
+   "subject_key": "6cb9ed1b9fcdebe229b8475454b2d03ab9c152bed13aca1743990f902ad787e6"
   },
   {
    "key": "47 (e)",
@@ -336,20 +339,20 @@
   "37 (a)": "bd6289cfc3900f2548ad4b87b45e463e7c656ae84bb088a369efa8d63f9f0661",
   "38 (a)": "d76ff9292248b53a1ba9869a33dbe5050397dc7b212499bfc12dc148cbed1d0a",
   "47 (a)": "9e0cb360e889af2a5d3d05cbd551499e8058dfb5292ba36a07f74a3a3593cf01",
-  "35 (c)": "45d7a3d505c0178de1c691b291fe734417074de61beaa8c5a0c552861f4a0125",
-  "36 (c)": "159cb87d83febacbc703f03ed7528d4635daa191a8027c91d80fe88b649b4bf6",
-  "37 (c)": "660b0324da5ecf50e1fd6e1764602f7429951b9f205f6f56c57ef0ef838325f9",
-  "38 (c)": "7e63dffd1fd6b782b31c59e0e4d0e5e24281237a5ae180d3c12dc56c83a420bd",
-  "47 (c)": "f1079cf334fdf4cc2776005f49c496100d3ba8183942947f56658191c8d91676",
+  "35 (c)": "3663cb76c349806cee6110f0b3ea9da50a1ff5345cabd8dd1c37ad47e1c2b9d8",
+  "36 (c)": "23a8cdd1d7f574d7997e52f7484a0f8018c39ad618d3589c0efb1a45f2fd5b15",
+  "37 (c)": "807935ebbee4a249b2fe5237572b3694aff807a9f96bbfc206fb5be5fd326877",
+  "38 (c)": "0be345895b66d807287117c61e8dd6cb660f77b9f4e4ffbbd85230578dd9ab37",
+  "47 (c)": "249879d361e6d7f3aec5ca782a5e48f036032ea49e280cb626d2d3e6147093ca",
   "11": "dded5f67a362faec7d98210f6fe333ca3a38051165419cfcf97766dab399e656",
   "12": "4106295682d8dadb60288a9e8483c8c8dbe980b5dfb952850a8e582ff28d1567",
   "13": "027eb8565324abd0d906d20b127a993df00cce2097bf7eaf09da0e8d49dc1f90",
   "14": "6717b88668100c1f941d5642859fb6b79e5a00ec5fbc81d0c292948500bb6637",
   "15": "8338217df352fc6504d1588c7fde19b0b5fcd826b633dbb43bc74b49b49710ff",
-  "35 (e)": "2dec14c063f0da80878e9ad239e507d1722c09c7b90f8eef99f2cf7510a51a2a",
-  "36 (e)": "49381ef80e5619afba9d6cb39118cbf09f6d50174557b91bf338d297e29b4145",
-  "37 (e)": "93e15bf0ac2f8a2344b04ff6bacdb880f78c8f1f1b63fb6127d7873fefc1380d",
-  "38 (e)": "513e0600ee16045f9d46723864ad5eaead83431d8a16bcc459f1dcc054a1cdc2",
+  "35 (e)": "79e594de3260e4de7277b38d6bde0869bc32548481eaa466c8d8570fce55f06b",
+  "36 (e)": "2e4c413f215f1eae1b4463b06b51ca0e39704fce4089d0d19cc83e4c7f58e165",
+  "37 (e)": "4195dc83b7fce74b933be1b3eddca157b82bc6f93dc12cd2c1b6c893a5f896cd",
+  "38 (e)": "3bcc84748a2ce9a25b09786a054499279dacec80fc2274518f98e28fc45bd157",
   "47 (e)": "70839b9aa271cf429ec17671243d2ba8330b0710bc5cacb9b614bcbace28b8e3"
  },
  "__rest__": "a60d0e3bb752c2092c289fc36f6462c42469da708fad0a7db2689f5a0c0dc176"

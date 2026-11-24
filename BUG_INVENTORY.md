@@ -15817,3 +15817,717 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Proposed fix lines:** sche.qbi_business
 - **Severity:** low
 - **Tags:** sche, f8995, wording, question review, open
+
+## BUG-1343 — Closure: BUG-1268 is fixed (the allocation check applies only on a Form 8889 that splits)
+
+- **Closes:** BUG-1268
+- **Closure:** fixed
+- **Caught by:** lane L6 hsa of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Source:** i8889 p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation"
+- **Fix:** f8889.allocation_bad is now all[f8889.split eq true, any[the two former disjuncts]], so the check is false on a form that does not use the spouse rule of line 6 (spec 4.7.2: a known false conjunct decides all[] past an unknown one). Reproduced first: on mut.f8889.two_forms_one_person_allocation_check (single filer, two Forms 8889, allocation unanswered) the printed gate was unknown; it is now false, the case's revised expectation (predicted before evaluating). f8889.share is read only through line6_split on forms that split, so no amount or refusal reach changes. The federal mutation run on the first form of the fix (the split conjunct in each disjunct) left three unexplained survivors: the operand replacing split in the first disjunct, and the where-tests of person.hsa_step1 and person.hsa_share. With split tested once, its replacement (f8889.family_any_time) leaves that case's gate unknown, so the case kills it (checked on a build with the mutant planted); the hand-predicted case mut.f8889.split_household_unsplit_form_share (a splitting household with a third, unsplit form whose allocation is unanswered) kills the hsa_share filter (gate false; unknown with the filter removed, checked the same way); the hsa_step1 filter is listed as explained by BUG-1348.
+- **Fix lines:** f8889.allocation_bad
+- **Siblings checked:** f8889.age55, f8889.age55_line3, f8889.all_year, f8889.allocated, f8889.allocation, f8889.alone, f8889.alone_total, f8889.bad_months, f8889.changed, f8889.clear_if_uniform, f8889.cov_changed, f8889.cov_family, f8889.cov_self_only, f8889.coverage, f8889.coverage_family, f8889.coverage_self, f8889.coverage_self_spouse, f8889.coverage_year, f8889.dec_amount, f8889.dec_coverage_if_changed, f8889.dec_family, f8889.eligible_all, f8889.family_any_time, f8889.family_counted, f8889.family_dec_year, f8889.family_months_bad, f8889.family_year, f8889.former_spouse_family, f8889.former_spouse_family_if_asked, f8889.fsf_eligible, f8889.full_year, f8889.last_month, f8889.line13_figured, f8889.line3, f8889.line3_all_year, f8889.line3_changed, f8889.line3_last_month, f8889.line3_part_year, f8889.line6, f8889.line6_split, f8889.line7_year, f8889.married_family, f8889.mfs, f8889.mfs_ask, f8889.mfs_spouse_hsa, f8889.mfs_spouse_hsa_if_asked, f8889.self_all, f8889.self_counted, f8889.self_dec_year, f8889.self_family_months, f8889.self_in_family, f8889.self_year, f8889.sf_eligible, f8889.sf_married, f8889.share, f8889.share_equal, f8889.share_raw, f8889.split, f8889.spouse_family, f8889.spouse_family_if_asked, f8889.spouse_family_total, f8889.step1, f8889.step1_line3, f8889.step1_shared, f8889.step1_total, f8889.step1_x2, f8889.step4, f8889.step4_total, f8889.testing_prior, f8889.twelve, f8889.two, f8889.use_last_month, f8889.year_family, f8889.year_same, f8889.year_self_answered, f8889.year_self_only, household.hsa_agreed_count, household.hsa_both, household.hsa_family_sum, household.hsa_self_sum, household.hsa_share_sum, household.hsa_step1_sum, household.married, household.married_dec31, person.age55_at_year_end, person.age55_at_year_end_if_open_year, person.age55_open_year, person.hsa_agreed, person.hsa_family, person.hsa_self, person.hsa_share, person.hsa_step1 (values unchanged: f8889.share is the only reader and is read only where f8889.split is true; the others share the citation anchor and are not changed by this rule)
+- **Tags:** forms, f8889, fixed
+
+## BUG-1344 — Closure: BUG-1264 is not a defect (the refusal follows only from a No that rule 1 makes untruthful)
+
+- **Closes:** BUG-1264
+- **Closure:** not a defect
+- **Caught by:** lane L6 hsa of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Evidence:** Reproduced on mut.f8889.self_only_spouse_all_year: both line 6 and Schedule 1 line 13 are refused at f8889.family_months_bad. That case leaves the spouse's f8889.spouse_family to its test-data default, No. A spouse with self-only coverage all year who is married and an eligible individual every month is asked f8889.spouse_family ('In any month of 2025, did your spouse have a high-deductible plan covering more than one person?'; help: 'In a month when both of you qualified ..., both of you are treated as having family coverage'); with the other spouse's family coverage all year the truthful answer is Yes. Evaluated with that Yes and the month questions it opens (12 eligible months, 12 family, December 1 family, last-month rule not used): line 6 $4,275 for each spouse, Schedule 1 line 13 $8,550, the spouse's excess $25, as i8889 p. 4 (How To Complete Part I, 'you both are treated as having only the family coverage plan') and p. 7 (Line 6, Steps 1 to 4) give. So the interview already reaches the rule 1 result, and the refusal fires only on an answer the spouse-family question itself says is wrong, with a remedy that says to count the months the same way for both. Recorded as fixture f8889.rule1_spouse_self_only_answers_family; the input is now explicit (No) in mut.f8889.self_only_spouse_all_year, whose note says that No is not the truthful answer. Deriving the spouse's months from the other spouse's form (the entry's first proposed fix) would save four questions on this path; it is not needed for a correct return and is left as an option, not a defect.
+- **Tags:** forms, f8889, closure
+
+## BUG-1345 — Closure: BUG-1214 is fixed (f8889.months_eligible no longer asked and unread)
+
+- **Closes:** BUG-1214
+- **Closure:** fixed
+- **Caught by:** lane L6 hsa of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Evidence:** BUG-1295 left item 4 open, held in tools/interview_rules_baseline.json. The hold is gone from the baseline on next 29baf383 (removed in d63d282a, where mutation lane A made f8889.family_months_ok a choice on f8889.family_same, so the self-only amounts, and through them f8889.months_eligible, are read only once the family amounts differ). node engine/dist/main.js interview-rules, unscoped, default sizes, on lane-hsa before its changes (tree of next 29baf383): 'reach: 287 complete returns classed; ... 0 asked and unread (0 held)'; 'interview-rules: 0 problem(s); 316 walks'. After this lane's changes the same unscoped run again reports 'reach: ... 0 asked and unread (0 held)' and 'interview-rules: 0 problem(s)'. Items 1 to 3 and 9 were fixed by BUG-1295; items 5 to 8 (stale walked_unused holds of dependent.born_died, kidnapped, months and placed) are no longer in the baseline (grep finds none), and the run, which fails on a stale hold, reports 0 problems.
+- **Tags:** interview, interview-rules, closure
+
+## BUG-1346 — Closure: BUG-0874 is fixed (the then-spouse and separate-return spouse questions reworded)
+
+- **Closes:** BUG-0874
+- **Closure:** fixed
+- **Caught by:** lane L6 hsa of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Wording fix:** Part (1): the prompt of f8889.former_spouse_family already asked about 'any month of 2025 while you were married' (the end-of-marriage reading the entry describes is gone); it now also names a court decree of legal separation as an end of the marriage, with help that a decree of separate maintenance counts and that the other person's plan counts when they were covered as a member of someone else's plan (both from the screen and false-no reviews of the new text) (as household.married_dec31's help does: 'a final decree of divorce or legal separation' leaves a person unmarried) and says the plan counts 'even if that plan had changed by the time the marriage ended'; the line's input text names 'a decree of separate maintenance'. Part (2) was closed won't-fix by BUG-1059. Part (3): f8889.mfs_spouse_hsa now asks 'Did your husband or wife have a health savings account (HSA) of their own at any time in 2025, or was anything put into one for 2025?', with help counting one since closed or moved to another HSA; its input text matches. Question text only: no value, gate or reach changes (fixtures unchanged).
+- **Tags:** interview, f8889, wording, fixed
+
+## BUG-1347 — Closure: BUG-0877 is fixed in part (long-term care limit and rollover-funded HSA date; the 2% S corporation item is latent)
+
+- **Closes:** BUG-0877, in part: items 2 and 3; item 1 stays open, latent
+- **Closure:** fixed
+- **Caught by:** lane L6 hsa of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Wording fix:** Item 2: f8889.medical's prompt lists 'long-term care insurance, up to the yearly limit for the age of the person covered (the Schedule A instructions list it under "Limit on long-term care premiums you can deduct")', the reference p969 p. 9 itself gives ('subject to limits based on age and are adjusted annually. See Limit on long-term care premiums you can deduct in the Instructions for Schedule A'); the 2025 amounts (p502: $480 to $6,020) are not printed in the question, so the text needs no change for 2026. Item 3: the prompt adds 'An HSA funded by money moved from another HSA or an Archer MSA counts as opened when that earlier account was' (p969 p. 8). The line's input text and citation (p969 pp. 8 and 9) match, and the 2026 operations of changes/2026/f8889.yaml that rewrite this prompt, input text and citation now start from the new 2025 text. Item 1 (a 2% S corporation shareholder's HSA contributions through box 1, or a partner's through guaranteed payments): not reachable today, since such a filer has a Schedule K-1 and scope.k1 ends the interview at a Yes; it stays open until K-1 coverage is lifted.
+- **Tags:** interview, f8889, wording, fixed in part
+
+## BUG-1348 — person.hsa_step1's split filter no longer changes a printed value: filter.person.person.hsa_step1 survives the mutation run (open)
+
+- **Date:** 2026-11-24
+- **Caught by:** lane L6 hsa of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24, in the federal mutation run after the BUG-1268 fix (BUG-1343).
+- **Symptom:** person.hsa_step1 sums f8889.step1 over a person's Forms 8889 where f8889.split is true. Its only reader, through household.hsa_step1_sum, is f8889.allocation_bad, which now reads the sum only on a form whose own split is true. A form whose split is known false in a household where another form splits has no family coverage (a married form with family coverage splits whenever the other spouse's family amount is positive), so its Step 1 limit is $0 and the filter skips only zeros; the one hand-written case that told the filter apart (mut.f8889.two_forms_one_person_allocation_check, a form that did not split) no longer reads the sum. The mutant that removes the where-test (filter.person.person.hsa_step1) is listed among the survivors explained by this entry. Not shown: whether a return with some answers withheld (a split unknown beside one known true) can tell the two apart. No value is wrong.
+- **Where:** forms/2025/person.yaml person.hsa_step1 (where: f8889.split eq true); engine/src/mutate.ts OPEN_DEFECT_SURVIVORS_ALL
+- **Proposed fix:** either drop the where-test of person.hsa_step1 (the people lane's form; person.hsa_share keeps its filter, which a fixture now pins: mut.f8889.split_household_unsplit_form_share), or write a keyed argument (ANSWERED_ONLY if the withheld-answer case is real); then remove the OPEN_DEFECT_SURVIVORS entry.
+- **Severity:** low
+- **Tags:** forms, person, f8889, mutation, open
+
+## BUG-1349 — Closure: BUG-1123 is fixed in part (the four Schedule 1-A and one Form 8889 unreachable alternatives folded)
+
+- **Closes:** BUG-1123, in part: items 1 to 5; items 6 and 7 (k1s) stay open for the k1 lane
+- **Closure:** fixed
+- **Caught by:** lane L6 hsa of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Fix:** An alternative cannot simply be removed: engine/src/check.ts requires a choice's enum guards to cover every value. Items 1 to 4: s1a.line9_calc, s1a.ot_max, s1a.line17_calc and s1a.line32_calc were five-way choices on f1040.status, the mfs alternative unreachable behind s1a.part2, part3 and part5; each is now a choice on the new helper s1a.joint (the test f1040.status eq mfj): true takes the joint amount, false the other amount, so the false alternative is reached by single, head of household and surviving spouse returns. Item 5: f8889.ask_spouse_family was a three-way choice on f8889.coverage_year whose changed alternative was unreachable behind f8889.clear_if_uniform; it is now a choice on the new helper f8889.year_self_answered (coverage_year eq self_only). Values are the same at every input, unknowns and refusals included (a test of the same enum passes its unknown or refusal as the choice did). The federal mutation run (10,391 mutants) lists none of the five as an unreachable alternative and finds no survivor on the new lines; the 16 keyed arguments whose premises moved (readers of f1040.status and f8889.coverage_year; the four s1a arguments pin line9_calc or line17_calc; four f8889 arguments now also pin f8889.year_self_answered) were re-read and re-pinned, as was the New York argument on ny_it201.gate.spouse_nonresident (it pins f1040.status). changes/2026/s1a.yaml gains the 2026 citation of s1a.joint. Fixtures 2749/2749; the s1a transcription review's four disagreements are the Part-gating ones ruled before.
+- **Fix lines:** s1a.line9_calc, s1a.ot_max, s1a.line17_calc, s1a.line32_calc, s1a.joint, f8889.ask_spouse_family, f8889.year_self_answered
+- **Siblings checked:** f8889.age55, f8889.age55_line3, f8889.all_year, f8889.allocation_bad, f8889.ask_former_spouse_family, f8889.bad_months, f8889.changed, f8889.clear_if_uniform, f8889.cov_changed, f8889.cov_family, f8889.cov_self_only, f8889.coverage, f8889.coverage_family, f8889.coverage_self, f8889.coverage_self_spouse, f8889.coverage_year, f8889.dec_amount, f8889.dec_coverage, f8889.dec_coverage_if_changed, f8889.dec_family, f8889.eligible_all, f8889.family_any_time, f8889.family_dec_year, f8889.family_months_bad, f8889.family_months_ok, f8889.family_other, f8889.family_same, f8889.family_year, f8889.former_spouse_family, f8889.former_spouse_family_if_asked, f8889.fsf_eligible, f8889.fsf_possible, f8889.full_year, f8889.last_month, f8889.line13_figured, f8889.line3, f8889.line3_all_year, f8889.line3_changed, f8889.line3_last_month, f8889.line3_part_year, f8889.line6, f8889.line7_year, f8889.married_family, f8889.self_all, f8889.self_dec_year, f8889.self_in_family, f8889.self_year, f8889.sf_eligible, f8889.sf_married, f8889.share, f8889.spouse_family, f8889.spouse_family_if_asked, f8889.spouse_self_total, f8889.step1_total, f8889.testing_prior, f8889.twelve, f8889.use_last_month, f8889.year_family, f8889.year_same, f8889.year_self_only, household.hsa_self_sum, household.married, household.married_dec31, person.age55_at_year_end, person.age55_at_year_end_if_open_year, person.age55_open_year, person.hsa_self, s1a.line15_calc, s1a.ot_threshold, s1a.senior_threshold, s1a.tips_threshold (values unchanged: each folded choice gives the same value at every input; the siblings share the readers or the citation anchors and no rule of theirs changed)
+- **Tags:** forms, s1a, f8889, dead code, mutation, fixed in part
+
+## BUG-1350 — Closure: BUG-0839 and BUG-0884 are fixed: a K-1 for a fiscal year is refused
+
+- **Closes:** BUG-0839, BUG-0884
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Fix:** Reproduced by reading: no k1p or k1s input asks the tax year at the top of the K-1, and the participation questions name 2025 (i1065sk1 p. 13 and i1120ssk p. 6, a fiscal-year K-1 is reported in the year its fiscal year ends; i1065sk1 p. 9 and i1120ssk p. 4, participation is judged over the entity's tax year). New refusing inputs k1p.fiscal (asked after item G) and k1s.fiscal (a tick on the K-1's first screen), each refused on k1p.screened / k1s.ok: a K-1 for any tax year other than the calendar year 2025 is outside the tool, so the participation questions are asked only of calendar-year K-1s.
+- **Fix lines:** k1p.fiscal, k1s.fiscal
+- **Siblings checked:** k1p.screened, k1s.ok
+- **Evidence:** Fixtures lk1.k1p.refuse_fiscal and lk1.k1s.refuse_fiscal, predicted before evaluation; defaults false in fixtures/2025/defaults.json.
+- **Tags:** k1p, k1s, refusal, latent, fixed
+
+## BUG-1351 — Closure: BUG-0840 is fixed: test 6 names any business in which capital is not a material income-producing factor
+
+- **Closes:** BUG-0840
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Fix:** Reproduced: k1p.t6 listed the eight fields only. Its question now adds "or any other business in which capital is not a major source of income" (i1065sk1 p. 9, test 6); the tick reads "A personal service business ..." with the definition in its help, as k1s.past_years gives it.
+- **Fix lines:** k1p.t6
+- **Siblings checked:** k1p.ask_five, k1p.ask_nearly_all, k1p.five_of_ten, k1p.five_of_ten_if_asked, k1p.hours500, k1p.hours500_if_work, k1p.most_hours, k1p.most_hours_if_gp, k1p.nearly_all, k1p.nearly_all_if_asked, k1p.screened, k1p.t4, k1p.t4_if_gp, k1p.t6_if_asked, k1p.t7, k1p.t7_if_gp
+- **Evidence:** Wording only; the input's answers in every fixture are unchanged.
+- **Tags:** k1p, question wording, latent, fixed
+
+## BUG-1352 — Closure: BUG-0844 is fixed: an oil or gas working interest held as a general partner, and significant participation income, are refused
+
+- **Closes:** BUG-0844
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Fix:** Reproduced by reading k1p.material and k1p.screened: neither case is asked. New k1p.oil_gas_gp, asked of a general partner (k1p.oil_gas_gp_if_gp), refuses a working interest in oil or gas wells held through the partnership (i1065sk1 p. 8). New k1p.over100, asked when box 1 shows income from a business the partner worked in without meeting tests 1, 2, 3 or 5 (k1p.ask_sp, k1p.over100_if_income; limited partners included, since the recharacterization turns on hours, not on tests 2 to 7), refuses more than 100 hours there: the net income of a significant participation activity is recharacterized under Temporary Regulations section 1.469-2T(f) (i1065sk1 pp. 9 and 11). A box 1 loss is not asked (the rule reaches net income only).
+- **Fix lines:** k1p.oil_gas_gp, k1p.oil_gas_gp_if_gp, k1p.over100, k1p.ask_sp, k1p.over100_if_income
+- **Siblings checked:** k1p.ask_dwelling, k1p.dwelling, k1p.dwelling_if_rent, k1p.screened, k1p.trader, k1p.trader_if_b1
+- **Evidence:** Fixtures lk1.k1p.refuse_oil_gas_gp, lk1.k1p.refuse_significant_participation and lk1.k1p.significant_participation_loss_not_asked, predicted before evaluation.
+- **Tags:** k1p, refusal, passive, latent, fixed
+
+## BUG-1353 — Closure: BUG-0845 is fixed: the k1p basis, distribution and at-risk questions name the missing cases
+
+- **Closes:** BUG-0845
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Fix:** Reproduced in the YAML and bank. k1p.basis_short (question, bank prompt) and k1p.dist_over help now count tax-exempt income, nondeductible expenses, marketable securities and a fall in the share of debts (i1065sk1 p. 3, p. 25); k1p.dist_over asks about money or marketable securities with a fall in the share of debts (item K); k1p.not_at_risk adds a similar arrangement, a lender with an interest in the business other than as a creditor, and nonrecourse debts shown in item K (i1065sk1 p. 8).
+- **Fix lines:** k1p.basis_short, k1p.dist_over, k1p.not_at_risk
+- **Siblings checked:** k1p.b19_other, k1p.b19_other_if_any, k1p.basis_short_if_loss, k1p.dist_over_if_any, k1p.has_b19, k1p.not_at_risk_if_loss, k1p.screened
+- **Evidence:** Wording only; answers in every fixture unchanged.
+- **Tags:** k1p, question wording, latent, fixed
+
+## BUG-1354 — Closure: BUG-0846 is partly fixed: STMT boxes, a K-3 received on request, territory partnerships and cooperative items
+
+- **Closes:** BUG-0846, in part: box 9b with box 9a blank and a box 9c STMT stay open
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Fix:** Reproduced in the YAML and bank. The five k1p box screens' headings now ask which boxes "show an amount or STMT" (i1065sk1 p. 14); k1p.r_b16 adds "or did you get a Schedule K-3 from the partnership" (p. 24); k1p.r_foreign and its help name a partnership organized in Puerto Rico or another U.S. territory as foreign; k1p.z_other asks about anything on a farm or garden cooperative, such as a section 199A(g) deduction (p. 30). Left open: k1p.has_b9bc is still asked only with an amount in box 9a, and a box 9c STMT is named outside the tool in help with no refusal; each needs a new or regated input that this latent lane did not add.
+- **Fix lines:** k1p.r_b16, k1p.r_foreign, k1p.z_other
+- **Siblings checked:** k1p.screened, k1p.z_other_if_z
+- **Evidence:** Wording only; answers in every fixture unchanged.
+- **Tags:** k1p, question wording, latent, fixed in part
+
+## BUG-1355 — Closure: BUG-0847 is fixed: an LLC member who is not a manager is refused where the tests matter, the held-back loss is asked on every K-1, and the wording parts
+
+- **Closes:** BUG-0847
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Fix:** Readings decided by the coordinator under the owner's delegation of 2026-11-24. (1) amb.2025.k1p_llc_member (new): i1065sk1 p. 2 says LLC members "may be treated as limited partners for certain purposes" without saying when, and either fixed reading understates tax in some return, so new k1p.is_llc (asked when item G's first box is not checked) and k1p.llc_member_active refuse such a member with an amount in box 1 or 2. (2) amb.2025.k1p_prior_with_activity re-ruled: k1p.prior_any is now asked on every K-1 (k1p.has_activity and k1p.prior_any_if_activity removed; the three prior_b*_any_if gates read k1p.prior_any), since i8582 p. 10 enters each activity's prior-year unallowed loss whatever this year's box shows. (3) Wording: k1p.general help "Answer Yes also if you held a general partner's share all through 2025"; k1p.prior_not_active adds "at any time that year, or held your share as a limited partner" (i1065sk1 p. 11).
+- **Fix lines:** k1p.is_llc, k1p.is_llc_if_not_gp, k1p.llc_member_active, k1p.prior_not_active, k1p.prior_any, k1p.prior_b1_any_if, k1p.prior_b2_any_if, k1p.prior_b3_any_if
+- **Siblings checked:** k1p.active, k1p.ask_prior_active, k1p.former_passive, k1p.p4_income, k1p.p4_loss, k1p.p4_prior, k1p.prior_b1, k1p.prior_b1_any, k1p.prior_b1_if, k1p.prior_b2, k1p.prior_b2_any, k1p.prior_b2_if, k1p.prior_b3, k1p.prior_b3_any, k1p.prior_b3_if, k1p.prior_not_active_if, k1p.prior_total, k1p.screened, k1s.p4_income, k1s.p4_income_raw, k1s.p4_loss, k1s.p4_loss_raw, k1s.p4_prior, k1s.p4_prior_raw, k1s.p5_b2_income, k1s.p5_b2_loss, k1s.p5_b2_prior, k1s.part4, person.k1s_total_p4_income, person.k1s_total_p4_loss, person.k1s_total_p4_prior, rental.net_income, rental.net_loss, rental.part4, rental.prior_amt, rental.prior_amt_if_any, rental.prior_any, rental.prior_loss, rental.prior_not_active
+- **Evidence:** Fixtures lk1.k1p.refuse_llc_member and lk1.k1p.prior_loss_portfolio_only (a box-5-only K-1 with a $300 held-back box 1 loss: Part V column (c) $300, $0 before), predicted before evaluation.
+- **Tags:** k1p, refusal, owner decision, question wording, latent, fixed
+
+## BUG-1356 — Closure: BUG-0848 is fixed: Form 7203 help for contributed property, stock for services, guarantee payments, open-account advances and an election made with this return
+
+- **Closes:** BUG-0848
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Fix:** Reproduced in the bank. f7203.line2 help adds stock received for work (its value reported as income) and property put in (its basis less debts the corporation took on; more debt than basis is outside the tool), i7203 p. 2; f7203.loans help counts money advanced without a note and payments made on a guaranteed loan (pp. 2 to 3); f7203.election help names a statement attached to this 2025 return (p. 2).
+- **Fix lines:** f7203.line2, f7203.loans, f7203.election
+- **Siblings checked:** f7203.election_if_req, f7203.line2_if_req, f7203.loans_if_req, f7203.one
+- **Evidence:** Help only; answers in every fixture unchanged.
+- **Tags:** f7203, question wording, latent, fixed
+
+## BUG-1357 — Closure: BUG-0883 is fixed: held-back box 2 losses and prior-year passive credits on k1s are screened
+
+- **Closes:** BUG-0883
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Fix:** Reproduced by evaluation: classm.k1s.2 with prior_any Yes and $400 held back from box 2, box 2 blank, put $400 in k1s.p5_b2_prior and person.k1s_total_p5_prior (Part V) without asking active participation. New k1s.b2_prior_blank refuses a held-back box 2 loss when box 2 is blank (no new input; refusing rather than asking active participation after the prior-loss questions); new k1s.prior_not_active (gate k1s.ask_prior_active, k1s.prior_not_active_if) refuses a held-back box 2 loss bound for Part IV when part of it arose in a year without active participation (i8582 p. 10), as k1p.prior_not_active does; new tick k1s.credit_carry on the earlier-return screen refuses a credit held back on Form 8582-CR (i1120ssk p. 6).
+- **Fix lines:** k1s.credit_carry, k1s.prior_not_active, k1s.ask_prior_active, k1s.prior_not_active_if, k1s.b2_prior_blank
+- **Siblings checked:** k1s.b1_prior, k1s.b1_prior_if_any, k1s.b2_prior, k1s.b2_prior_if_any, k1s.b3_prior, k1s.b3_prior_if_any, k1s.former_passive, k1s.ok, k1s.prior_any
+- **Evidence:** Fixtures lk1.k1s.refuse_credit_carry, lk1.k1s.refuse_prior_not_active and lk1.k1s.refuse_b2_prior_blank, predicted before evaluation. The k1p sibling of the credit screen is not added: a held-back passive credit is screened at return level (s3.prior_forms, Form 8582-CR) and a K-1 credit this year by k1p.r_b15.
+- **Tags:** k1s, Form 8582, refusal, latent, fixed
+
+## BUG-1358 — Closure: BUG-0887 is fixed: k1s box screens count STMT and a Schedule K-3 received on request
+
+- **Closes:** BUG-0887
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Fix:** Reproduced in the bank. The k1s box screens' headings ask which boxes "show an amount or STMT" (box 16 and 17 code screens: "on the K-1 or on an attached statement"), i1120ssk p. 6; k1s.box14 asks "or did you get a Schedule K-3 for 2025 from the corporation" (p. 14).
+- **Fix lines:** k1s.box14
+- **Siblings checked:** k1s.ok
+- **Evidence:** Wording only; answers in every fixture unchanged.
+- **Tags:** k1s, question wording, latent, fixed
+
+## BUG-1359 — Closure: BUG-0929 is fixed: Form 7203 column (c) is kept within line 10
+
+- **Closes:** BUG-0929
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Fix:** Reproduced by evaluating mk1.k1s.f7203_loss_over_basis_line14: f7203.c35 and c47 $20,000.01 against line 10 $20,000; k1s.col_i $20,000.01. amb.2025.f7203_prorata_places re-ruled under the owner's delegation of 2026-11-24 (i7203 p. 4: the column (c) total "can't exceed the amount reported on line 10"): each line of column (c) is its six-place pro rata amount kept within what line 10 leaves after the lines above it (f7203.c35_k to c38_k, f7203.room36 to room38), so the cents a rounded-up ratio adds come off the last line they reach and no allowed loss exceeds basis.
+- **Fix lines:** f7203.c35, f7203.c36, f7203.c37, f7203.c38, f7203.c35_k, f7203.c36_k, f7203.c37_k, f7203.c38_k, f7203.room36, f7203.room37, f7203.room38
+- **Siblings checked:** f7203.a35, f7203.a36, f7203.a37, f7203.a38, f7203.c35_p, f7203.c36_p, f7203.c37_p, f7203.c38_p, f7203.c47, f7203.cap_limited, f7203.e35, f7203.e36, f7203.e37, f7203.e38, f7203.has_loss, f7203.one, k1s.allowed1, k1s.allowed2, k1s.allowed3, k1s.basis_carry, k1s.basis_cut, k1s.ok
+- **Evidence:** Fixtures lk1.f7203.col_c_within_line10 (c35 $20,000, e35 $10,000, k1s.col_i $20,000) and lk1.f7203.col_c_room_line37 (c35 $6,666.67, c37 $13,333.33, total $20,000), predicted before evaluation.
+- **Tags:** f7203, k1s, rounding, latent, fixed
+
+## BUG-1360 — Closure: BUG-0928 is partly fixed: the evaluator rejects a hand-listed roster of an implicit collection
+
+- **Closes:** BUG-0928, in part: the five mutation survivors stay open until argued or removed at a federal mutation run
+- **Closure:** fixed
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Tool change:** engine/src/eval.ts validateInputs: a roster given for an implicit collection must be exactly its one implicit key (["form"]); [] or any other list is an input error, so k1s.f7203_n is 1 wherever known and k1s.ok's false alternatives (k1s.col_h, col_i, col_k, p5_income) and person.f8919_line10's figured alternative can no longer be reached by an input. A self-test (engine/src/check-selftest.ts, implicitRosterSelfTest) covers an absent roster, the implicit key, null, the same lists on a collection that is not implicit, and the three rejected lists. The mutants listed for BUG-0928 in engine/src/mutate.ts OPEN_DEFECT_SURVIVORS are unchanged: the k1s alternatives are not removed (a Bool choose must stay exhaustive) and no mutation run was made in this lane (the slot was held by lane hsa); the next federal run should find them still surviving and they can then be argued equivalent on the restricted inputs, which closes the entry.
+- **Evidence:** node engine/dist/main.js check-self-test: 130 cases passed (implicit rosters included); every fixture that lists an implicit roster lists ["form"] (31 cases in k1s.json, classm.json and classm.deepseek.json), so test-fixtures is unchanged.
+- **Tags:** evaluator, input validation, k1s, f7203, f8919, mutation, fixed in part
+
+## BUG-1361 — Closure: BUG-1123 items 6 and 7 are not defects: the two k1s alternatives are reached
+
+- **Closes:** BUG-1123, in part: items 6 and 7 (k1s.p5_b2_prior alternative 0, k1s.p1_prior_passive alternative 1) are not defects; items 1 to 5 belong to lane hsa
+- **Closure:** not a defect
+- **Caught by:** lane k1 of the 2026-11-24 wave (claude-opus-5-5, judgment), from the entry.
+- **Evidence:** Both alternatives are taken on valid inputs: the class M evidence notes of classm.k1s.1, 2, 4, 5, 6 and 8 record k1s.p5_b2_prior#0 (box 2 without active participation) and classm.k1s.1, 3, 6 and 8 record k1s.p1_prior_passive#1 (material participation); evaluating classm.k1s.2 with $400 held back from box 2 gives k1s.p5_b2_prior $400 and person.k1s_total_p5_prior $400. engine/src/mutate.ts's 'Unreachable alternative' rule calls them unreachable only because no printed line reads k1s.p5_prior yet (person.k1s_total_p5_prior is a helper the unwired K-1 integration will read), so dominance over printed readers holds vacuously. Removing them would drop the Part V route of a held-back box 2 loss and a material participant's zero, which the integration needs. Nothing changed.
+- **Tags:** k1s, mutation, dead code, not a defect
+
+## BUG-1362 — Closure: BUG-0750 is closed (won't fix): the W-2c box of the New York W-2 record
+
+- **Closes:** BUG-0750
+- **Closure:** won't fix
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Evidence:** Reproduced by reading: forms/ny/2025/ny_it2.yaml has no line for the Corrected (W-2c) box, and the federal W-2 entry (forms/2025/w2.yaml) records no W-2c (grep 'W-2c' finds no input), so nothing can mark the box without a new question on every W-2 record. The amounts are asked as corrected (the $ny_it2 roster help and ny_it2.state_withheld, city_withheld and yonkers_withheld say to enter the W-2c's corrected amounts), so no amount is wrong; the gap is one presentation box of a rare form. A per-record question asked of every New York W-2 record to mark it does not pay for itself (interview construction protocol N3, N4). Kept as a known presentation gap; reopen if the federal W-2 entry ever records a W-2c.
+- **Tags:** new-york; presentation; won't fix; lane-ny
+
+## BUG-1363 — Closure: BUG-1212 is closed (not a defect): the New York itemize question is the filer's election
+
+- **Closes:** BUG-1212
+- **Closure:** not a defect
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24, applying the coordinator's decision (.claude/wave-2026-11-24/queue.md, coordinator decisions: BUG-1212, the NY itemize question is the filer's election; no IT-196 encoding).
+- **Evidence:** IT-201-I (2025) p. 10, Line 34: 'You may take either the New York standard deduction or the New York itemized deduction.' The choice is the filer's; ny_it201.ask.itemize asks it and its help states when itemizing helps and the standard deduction amounts. A sound lower bound of the New York itemized deduction from federal Schedule A would need part of Form IT-196 (lines 40, 46 and 47 reduce it above $100,000 of New York AGI), which is coverage expansion, frozen. A return on the standard deduction is a correct return under the election the filer made.
+- **Tags:** new-york; itemized deduction; design decision; not a defect; lane-ny
+
+## BUG-1364 — Closure: BUG-1220 is fixed: the direction of a New York loss of exactly 50 cents is registered and ny_predict agrees
+
+- **Closes:** BUG-1220
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Tool change:** amb.ny.2025.whole_dollars now records the direction for a negative amount ending in exactly 50 cents: increased toward zero (-$213.50 to -$213), the engine's half-up rule floor(x + 1/2), decided by the coordinator under the owner's delegation of 2026-11-24 (the literal 'Increase amounts that are 50 cents or more to the next dollar', IT-201-I p. 2, and, where the text is silent, the reading that does not understate tax; the alternative, rounding the loss's magnitude, and how to reverse it are in the entry). tools/ny_predict.py r_dollar now computes floor(x + 1/2) for every sign (its docstring no longer claims federal inputs never end in 50 cents), and its --self-test checks the p. 2 examples and -213.20, -213.50 and -213.51. New fixture ny.whole_dollars.loss_half (ny.rental.loss with a Schedule E loss of $213.50).
+- **Evidence:** Reproduced before the change: the engine's round (engine/src/eval.ts, half_up) gives -213 for -213.50 and ny_predict.r_dollar gave -214 (by magnitude). After: python3 tools/ny_predict.py --self-test 'whole-dollar rounding ... as registered'; ny.whole_dollars.loss_half evaluates federal AGI $49,786.50, lines 11 and 12 -$213, line 17 $49,787, line 39 $2,133, line 47a $1,499, as predicted by hand.
+- **Tags:** ambiguity; New York; rounding; tool; fixed; lane-ny
+
+## BUG-1365 — Closure: BUG-0424 is partly fixed: the spouse-cannot-sign gap, the W-2c and the City-table citation
+
+- **Closes:** BUG-0424, in part: items ny_it201#1 (BUG-1095, fixed in this lane), the W-2c half of ny_it2#1 and the City-table citation; the foreign-income IT-2 record and the three review-tool items stay open under T-244
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Evidence:** (1) A federal joint filer who cannot file a joint New York return (spouse's whereabouts unknown, or refuses to sign) is now asked and refused: BUG-1095's fix, fixture ny.refuse.spouse_cannot_sign. (2) The corrected amounts of a Form W-2c are asked (the $ny_it2 roster help and ny_it2.state_withheld, city_withheld and yonkers_withheld name the W-2c's corrected amounts, BUG-0746); its box is BUG-0750, closed won't fix in this lane. (3) ny_it201.gate.hh_city_over7 already cites 'p. 14, Use these notes for New York City household credit tables 4 through 6, "Note 3 ..."' (git log -S: changed in acde74b5). Left open: the IT-2 record for foreign income received without a Form W-2 (neither built nor refused), and the render and class M prompt gaps (whole-dollar rule, class M case binding), tools work under T-244.
+- **Tags:** new-york; closure; in part; lane-ny
+
+## BUG-1366 — Closure: BUG-1152 is fixed: railroad unemployment benefits (IT-225 S-122) are asked and refused
+
+- **Closes:** BUG-1152
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Fix:** Reproduced first. The Tier 2 and supplemental annuity half did not reproduce: a Form RRB-1099-R is listed in $retirement with code 'other' (its question's own label: 'no code at all (a Form RRB-1099-R has none)'), and retirement.bad_code refuses that entry federally (evaluated: an RRB-1099-R entry of $12,000 refuses f1040.line5b and every New York line with 'Form 8606 or another Form 1099-R code'). The Railroad Unemployment Insurance Act half did: unemployment compensation of $8,000 reached IT-201 line 14 with line 31 $0 and no question. New question ny_it201.ask.railroad_uc, asked only when line 14 is more than zero (ny_it201.has_unemployment, ny_it201.railroad_uc_if_uc), order 1010 seq 52: 'Were any of your (or, on a joint return, your spouse's) unemployment benefits paid by the Railroad Retirement Board?'; a Yes refuses line 31 (ny_it201.gate.railroad_uc, IT-225-I p. 17, S-122). RUIA sickness benefits paid as wages go with railroad employment, which the federal person.rrta question ('Did you work for a railroad in 2025?') refuses. New default false in fixtures/ny/2025/defaults.json; fixtures ny.refuse.railroad_uc (and .mfj, .hoh, .qss, which also hold line 34 against the operand mutants of spouse_itemizes_if_mfs) and ny.railroad_uc.no.
+- **Fix lines:** ny_it201.line31, ny_it201.ask.railroad_uc, ny_it201.railroad_uc_if_uc, ny_it201.has_unemployment, ny_it201.gate.railroad_uc
+- **Siblings checked:** ny_it201.ask.alimony_later, ny_it201.line23, ny_it201.line25, ny_it201.line26, ny_it201.line27, ny_it201.line28, ny_it201.line29, ny_it201.line30, ny_it201.line32, ny_it201.line33 (line 31's other refusals unchanged; the new question reads only line 14)
+- **Evidence:** ny.refuse.railroad_uc: line 31 refused by ny_it201.gate.railroad_uc; ny.railroad_uc.no: line 14 $8,000, line 33 $38,000, line 39 $1,487, line 47a $1,050, as predicted by hand (tools/ny_predict.py tax_table).
+- **Tags:** ny; it201; it225; fixed; lane-ny
+
+## BUG-1367 — Closure: BUG-1095 is fixed: a federal joint filer who cannot file a joint New York return is asked and refused
+
+- **Closes:** BUG-1095
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Fix:** Reproduced by reading: on a federal joint return the only New York exception asked was ny_it201.ask.spouse_resident. New question ny_it201.ask.spouse_cannot_sign, asked on a federal joint return after a Yes to the spouse residence question (ny_it201.spouse_cannot_sign_if_resident; ny_it201.gate.spouse_cannot_sign chooses on f1040.status like gate.spouse_nonresident), order 1000 seq 31: 'Is your husband or wife unable or unwilling to sign a joint New York return, because you do not know where they are or because they refuse to sign it?'; a Yes refuses line 1 (a separate New York return, filing status 3; IT-201-I p. 5, Item A). New default false; the no-default class M and mutation cases on a joint return answer it No.
+- **Fix lines:** ny_it201.line1, ny_it201.ask.spouse_cannot_sign, ny_it201.spouse_cannot_sign_if_resident, ny_it201.gate.spouse_cannot_sign
+- **Siblings checked:** ny_it201.ask.moved_in, ny_it201.ask.moved_out, ny_it201.ask.special_accrual, ny_it201.ask.yonkers, ny_it201.fagi_rounded, ny_it201.gate.line19_gap, ny_it201.gate.part_year_city, ny_it201.gate.special_accrual, ny_it201.gate.yonkers, ny_it201.line19, ny_it201.line19_agrees, ny_it201.line19_gap, ny_it201.moved (line 1's other refusals unchanged)
+- **Evidence:** ny.refuse.spouse_cannot_sign (ny.official.tax_table_38275 with a Yes): line 1 refused by ny_it201.gate.spouse_cannot_sign.
+- **Tags:** ny; it201; filing status; fixed; lane-ny
+
+## BUG-1368 — Closure: BUG-1224 is fixed: a deducted section 179 carryover from an SUV election is asked and refused
+
+- **Closes:** BUG-1224
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Fix:** Reproduced by reading: ny_it201.gate.suv_179 read only ny_it201.fed_suv179 (2025 elections). New helper ny_it201.carryover_179_used (Form 4562 line 12 more than line 9: part of a carryover is deducted in 2025) and question ny_it201.ask.suv_carryover, asked only then (ny_it201.suv_carryover_if_used), order 1010 seq 57: 'Did any of the section 179 deduction you (or, on a joint return, your spouse) carried over from an earlier year come from expensing an SUV over 6,000 pounds?' (help: any passenger vehicle over 6,000 pounds that is not a truck, van or motor home, IT-225-I A-208's definition). gate.suv_179 is now any[fed_suv179 > 0, the Yes]; line 23 refuses it (A-208, p. 11). No federal form edited: the carryover's origin is not recorded federally, so the question asks it. The reverse over-refusal the entry notes (a 2025 SUV election carried forward whole) is left: harmless.
+- **Fix lines:** ny_it201.gate.suv_179, ny_it201.carryover_179_used, ny_it201.ask.suv_carryover, ny_it201.suv_carryover_if_used
+- **Siblings checked:** ny_it201.fed_suv179, ny_it201.line23 (fed_suv179 unchanged; line 23's other refusals unchanged)
+- **Evidence:** ny.refuse.suv_carryover (a $5,000 carryover deducted, Form 4562 line 12 $5,000, line 9 $0): line 23 refused by ny_it201.gate.suv_179; ny.suv_carryover.no: line 6 $55,000, line 23 $0.
+- **Tags:** ny; it201; it225; section 179; fixed; lane-ny
+
+## BUG-1369 — Closure: BUG-1287 is fixed: the New York alimony question is asked whenever alimony was paid or received since 2023
+
+- **Closes:** BUG-1287
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Fix:** Reproduced by reading: ny_it201.ask.alimony_later was gated by ny_it201.alimony_later_if_not_old, asked only when s1.alimony_if_any was false. That helper is removed; ny_it201.alimony_later_if_any now asks ny_it201.ask.alimony_later whenever s1.alimony_any is true, whatever s1.alimony. The question no longer says 'that alimony': 'In 2025, did you (or, on a joint return, your spouse) pay or receive alimony under an agreement made after 2018, or under an earlier one changed after 2018 to say New York's alimony rules apply?', help: count every agreement, including a second one beside an older agreement; New York's rules are those of Tax Law section 612(w) (IT-225-I p. 10, A-119). This folds BUG-1215 item (1).
+- **Fix lines:** ny_it201.alimony_later_if_any, ny_it201.ask.alimony_later
+- **Siblings checked:** ny_it201.gate.alimony_later, ny_it201.line23, ny_it201.line31 (ny_it201.gate.alimony_later reads alimony_later_if_any as before; lines 23 and 31 refusals unchanged)
+- **Evidence:** ny.refuse.alimony_later_with_old ($6,000 of pre-2019 alimony received, s1.alimony Yes, and a Yes for a post-2018 agreement): lines 23 and 31 refused by ny_it201.gate.alimony_later; before the change the question was not reached on these facts.
+- **Tags:** ny; alimony; fixed; lane-ny
+
+## BUG-1370 — Closure: BUG-1215 is fixed: wording of the New York alimony, City flexible benefits and earlier bonus depreciation questions
+
+- **Closes:** BUG-1215
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Wording fix:** (1) ny_it201.ask.alimony_later names an earlier agreement changed after 2018 to say New York's alimony rules (Tax Law section 612(w)) apply (with BUG-1287). (2) ny_it201.ask.nyc_flex prompt: 'New York City or another New York City public employer' (A-101). (3) ny_it201.ask.prior_168k prompt 'Since June 2003', and help: leave out property placed in service before June 1, 2003, and resurgence zone or New York Liberty Zone property (S-213). The forms' own input sources already said so; only interview/ny/2025/questions.yaml changed for (2) and (3).
+- **Evidence:** Each wording checked against sources/ny/2025/ny_it225i.cols.txt: A-119 (modified instrument 'expressly provides that the addition and subtraction modifications contained in Tax Law § 612(w) apply'), A-101 ('New York City or certain other New York City public employers'), S-213 ('With the exception of resurgence zone property and New York liberty zone property ... on or after June 1, 2003').
+- **Tags:** interview; ny; wording; fixed; lane-ny
+
+## BUG-1371 — Closure: BUG-1153 is closed: New York credits withholding on the four listed forms only; the disability pension wages gap is fixed
+
+- **Closes:** BUG-1153
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Fix:** The reading is decided and registered (amb.ny.2025.withholding_forms, by the coordinator under the owner's delegation of 2026-11-24): IT-201-I p. 21, Lines 72, 73, and 74 total tax withheld 'from any of the following', a closed list (Forms IT-2, IT-1099-R, 1099-G, W-2G); withholding on a Form 1099-NEC, 1099-INT or 1099-DIV is not credited there, so not asking about it is not a defect, and the reading credits nothing the instructions do not name. Checking the listed forms found one route not asked: a disability pension paid wholly before the minimum retirement age comes on a Form 1099-R (IT-1099-R) but is federal wages on line 1h (person.dis_wages), not lines 4a or 5a. ny_it201.has_other_payments now also reads ny_it201.dis_pension_wages > 0, so ny_it201.ask.other_withholding is asked with such a pension (its Yes refuses lines 72 and 73 as before).
+- **Fix lines:** ny_it201.has_other_payments
+- **Siblings checked:** ny_it2.yonkers_gate, ny_it201.ask.other_withholding, ny_it201.gate.other_withholding, ny_it201.line72, ny_it201.line73 (the question's wording already names Form 1099-R; lines 72 and 73 refusals unchanged; Yonkers is refused elsewhere)
+- **Evidence:** ny.refuse.other_withholding_dis_wages (ny.gate.pension_disability_wages with No to the government pension question and Yes to other withholding): lines 72 and 73 refused by ny_it201.gate.other_withholding; before the change the question was not reached on these facts.
+- **Tags:** ny; it201; withholding; ambiguity; fixed; lane-ny
+
+## BUG-1372 — Closure: BUG-0852 is fixed: the active duty question is asked of a married filer not filing jointly, for the spouse
+
+- **Closes:** BUG-0852
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Fix:** The remaining part (the PHS and NOAA part was closed by BUG-1059): a civilian married filer not filing jointly whose spouse was on active duty was never asked, since scope.armed_forces asks about the spouse only on a joint return. New helpers ny_it201.married_not_joint (household.married and f1040.status not mfj) and ny_it201.active_duty_possible (scope.armed_forces or married_not_joint); ny_it201.active_duty_if_armed_forces now asks ny_it201.ask.active_duty when active_duty_possible. The question reads 'At any time in 2025, were you, or your husband or wife if you are married (whether or not you file jointly), on active duty in the U.S. armed forces?', its help names the spouse's choice of residence. A Yes refuses line 1 (Form IT-203) as before.
+- **Fix lines:** ny_it201.active_duty_if_armed_forces, ny_it201.active_duty_possible, ny_it201.married_not_joint, ny_it201.ask.active_duty
+- **Siblings checked:** ny_it201.ask.state_resident, ny_it201.gate.part_year_state, ny_it201.state_resident_if_not_city (ny_it201.gate.part_year_state reads active_duty_if_armed_forces as before; the State resident question's help already excepts active service)
+- **Evidence:** ny.refuse.active_duty_mfs (ny.status.mfs.40000 with scope.armed_forces No and a Yes): line 1 refused by ny_it201.gate.part_year_state; before the change the question was not reached.
+- **Tags:** new-york; residency; mfs; fixed; lane-ny
+
+## BUG-1373 — Closure: BUG-1151 is partly fixed: the IT-225 question names the small business modification
+
+- **Closes:** BUG-1151, in part: the question's help names the small business modification; the computed refusal from the Schedule C answers stays open
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Wording fix:** ny_it201.ask.it225's help now begins 'For example: a business of your own with employees and a profit under $250,000 (New York subtracts 15% of the profit), ...', and the form's input source names 'the small business modification for a sole proprietor with employees (S-201)' (IT-225-I p. 19).
+- **Evidence:** Reproduced: one Schedule C with $150,000 of receipts, $50,000 of employee wages (sc.employees Yes), net profit $100,000, and No to the IT-225 question: IT-201 line 6 $100,000, line 31 $0, no refusal. The computed refusal the entry proposes (refuse line 31 when a Schedule C has employees and a profit above zero and below $250,000) cannot be written in forms/ny: ny_it201 can sum only over person (engine/src/check.ts, 'collection parent binding mismatch'), and no person line counts Schedules C by sc.employees and sc.line31. It needs one person line in forms/2025/person.yaml (another lane's form), e.g. person.sc_small_business_count = sum_over sc of sc.one where sc.employees = true, sc.line31 > 0 and sc.line31 < 25000000, then in ny_it201 a gate on the sum over person and a line 31 refusal (IT-225 S-201). A New York question asking about employees would repeat sc.employees (construction protocol N8). Handed off to the integrator.
+- **Tags:** ny; it201; it225; in part; hand-off; lane-ny
+
+## BUG-1374 — Closure: BUG-0762 is fixed: every New York separate return not marked at item C refuses the household credits
+
+- **Closes:** BUG-0762
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L8 ny of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24, applying the coordinator's decision (.claude/wave-2026-11-24/queue.md: refuse; drop the in-range test rather than add a spouse-AGI input).
+- **Fix:** Reproduced: ny.status.mfs.40000 (married filing separately, line 19 $48,000, above the $32,000 and $22,500 rows) gave lines 40 and 48 $0 with no refusal, although tables 3 and 6 key on the federal AGI total from both returns, which a spouse's negative AGI can bring within the rows (IT-201-I pp. 13 and 14, Notes 2 and 4). ny_it201.gate.hh_state_mfs and ny_it201.gate.hh_city_mfs are now all[f1040.status = mfs, item C No], without the in-range test, so lines 40 and 48 refuse every such return; the remedies and the notes on hh_state_by_status and hh_city_by_status say so. hh_state_in_range and hh_city_in_range remain for the more-than-seven gates. Over-refusal of separate returns whose total AGI is above the rows is accepted (the coordinator's decision).
+- **Fix lines:** ny_it201.gate.hh_state_mfs, ny_it201.gate.hh_city_mfs
+- **Siblings checked:** ny_it201.gate.hh_city_over7, ny_it201.line40, ny_it201.line48 (ny_it201.gate.hh_city_over7 cites the City notes, p. 14, and keeps its in-range test, which is right there: more than seven people with a credit allowed)
+- **Evidence:** Restated, as predicted (every MFS case not marked at item C: line 40 refused by gate.hh_state_mfs, line 48 by gate.hh_city_mfs, and the lines reading them refused): it201.json ny.status.mfs.40000, 70000, 120000, 300000 and ny.refuse.hh_mfs (remedy text); classm.ny_it201.4 and classm.ny_it201.6.deepseek; mutation.json ny.mut.rs.mfs.b1.deps92, b2.deps88, b3.deps86, ny.mut.refuse.hh_mfs_city, ny.mut.hh.mfs_32001, ny.mut.refuse.hh_mfs_22501, ny.mut.hh.mfs_ss_state, ny.mut.refuse.hh_mfs_ss_city, ny.mut.hh_state_by_status.mfs. ny.mut.hh.mfs_item_c (item C Yes) is unchanged. The in-range tests now serve only the more-than-seven gates; new fixtures ny.hh.over7_32001, over7_22501, over7_ss_state and over7_ss_city hold their limits and their reading of line 19 (they replace the separate-return boundary cases that held them).
+- **Tags:** New York; household credit; married filing separately; fixed; lane-ny
+
+## BUG-1375 — New York: Railroad Unemployment Insurance Act sickness benefits paid as wages are not asked about (IT-225 S-122)
+
+- **Caught by:** the scoped screen review of gate:ny_it201.has_unemployment (claude-opus-5-5), run by bug-fix lane L8 ny of the 2026-11-24 wave, 2026-11-24; adjudicated in the lane.
+- **Source:** ny_it225i p. 17, S-122: 'benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)'; p525 p. 19, 'Railroad sick pay. Payments you receive as sick pay under the Railroad Unemployment Insurance Act are taxable and you must include them in your income.'
+- **Symptom:** ny_it201.ask.railroad_uc is asked only with unemployment compensation on IT-201 line 14. RUIA sickness benefits reach federal income as wages (line 1), so a filer whose only railroad benefit is sick pay is not asked, and line 31 is $0 with no refusal. Most such filers are railroad employees, whom the federal person.rrta question ('Did you work for a railroad in 2025?', help: Yes also if box 14 of a W-2 shows RRTA pay or tax) refuses; a recipient who did no railroad work in 2025 and reads the RRB statement as not an RRTA W-2 is not caught. Not evaluated: no archived source states what the Railroad Retirement Board's statement of sickness benefits shows in box 14.
+- **Where:** forms/ny/2025/ny_it201.yaml ny_it201.railroad_uc_if_uc, ny_it201.ask.railroad_uc; interview/ny/2025/questions.yaml (its help names sickness benefits).
+- **Proposed fix:** Read the RRB sickness statement (Form W-2 from the Railroad Retirement Board) into the archive; if its box 14 does not show RRTA tax, widen ny_it201.railroad_uc_if_uc to returns with wages and word the question 'unemployment or sickness benefits paid by the Railroad Retirement Board'.
+- **Proposed fix lines:** ny_it201.railroad_uc_if_uc, ny_it201.ask.railroad_uc
+- **Severity:** low
+- **Tags:** ny; it225; railroad; screen review; open; lane-ny
+
+## BUG-1376 — Federal alimony question: temporary support orders, unallocated family support and 'maintenance' are not named, so a filer may answer No
+
+- **Caught by:** the scoped false-no review of gate:s1.alimony_any (New York; claude-opus-5-5), run by bug-fix lane L8 ny of the 2026-11-24 wave, 2026-11-24, findings 0 to 2; adjudicated in the lane.
+- **Source:** ny_it225i p. 10, A-119: an alimony or separation instrument 'as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97'; p. 18, S-136, 'applicable alimony or separate maintenance payments'.
+- **Symptom:** s1.alimony_any asks 'In 2023 or later, did you (or, on a joint return, your spouse) pay or receive alimony or other spousal support after divorce or separation?' with help 'Child support and a division of property are not alimony.' A filer paying under a temporary support order while a divorce is pending, one paying an unallocated family support amount the instrument does not fix as child support, or one whose decree says 'maintenance' may answer No; the federal alimony questions (pre-2019 instruments) and the New York question (post-2018 instruments, A-119 and S-136) are then not asked. Not reproduced by walking; a reading of the wording against the cited definition.
+- **Where:** interview/2025/questions.yaml s1.alimony_any (prompt and help); forms/2025/s1.yaml s1.alimony_any.
+- **Proposed fix:** Prompt: 'alimony, maintenance or other spousal support under a divorce or separation decree, a written separation agreement or a support order (a temporary order while a divorce is pending counts)'; help: 'Only an amount the agreement or order fixes as child support is child support.' Federal question: hand-off to the lane holding s1.
+- **Proposed fix lines:** s1.alimony_any
+- **Severity:** low
+- **Tags:** interview; s1; alimony; false-no review; hand-off; open; lane-ny
+
+## BUG-1377 — Closure: BUG-1060 is fixed (retirement.disability help names code 3 and military disability retired pay)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1060
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Fix:** interview/2025/questions.yaml retirement.disability (tick in plan_payment) gains the help 'Code 3 in box 7 of the Form 1099-R shows a disability payment. Military disability retired pay counts.' (f1099r, Instructions for Recipient, box 7 code '3—Disability'; i1040gi p. 28, military disability pensions). Wording only; no value changes.
+- **Fix lines:** retirement.disability
+- **Siblings checked:** retirement.dis_early, retirement.dis_all_early (their help already names the plan's minimum retirement age); retirement.disability_if_plan (gate, unchanged).
+- **Tags:** retirement, wording, fixed
+
+## BUG-1378 — Closure: BUG-1192 is already fixed (retirement.disability asks for a plan that provides for disability retirement)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1192
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24, read on next 29baf383
+- **Evidence:** forms/2025/retirement.yaml retirement.disability reads 'Was any of this paid to you because you became disabled, under a plan that provides for disability retirement?' (label and source), and its tick in interview/2025/questions.yaml is 'Some of it was paid under the plan's disability retirement terms', the wording the entry proposes (i1040gi p. 30). No change made.
+- **Tags:** retirement, closure
+
+## BUG-1379 — Closure: BUG-1200 is fixed (equal nights: the higher-AGI parent is the custodial parent)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1200
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Fix:** dependent.divorced_rule: the help (interview/2025/questions.yaml) and the input source (forms/2025/dependent.yaml) add 'With an equal number of nights, the parent with the higher adjusted gross income counts as the one the child lived with' (i1040gi p. 20, Custodial and noncustodial parents). Wording only; a Yes still refuses.
+- **Fix lines:** dependent.divorced_rule
+- **Siblings checked:** dependent.parents_apart, dependent.filer_parent (no custodial-parent wording to change); dependent.divorced_rule_screen (reads the answer; unchanged).
+- **Tags:** dependent, wording, fixed
+
+## BUG-1380 — Closure: BUG-1286 is fixed (student loan interest paid by someone else counts)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1286
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** interview/2025/questions.yaml: sli.any's help adds 'Count interest someone else paid on a loan you owe, such as a parent's gift or an employer's payment added to your W-2 box 1; it counts as paid by you.'; sli.interest's help adds 'Include interest someone else paid on your loan for you.' (p970 p. 33, Interest paid by others). Wording only.
+- **Fix lines:** sli.any, sli.interest
+- **Siblings checked:** sli.line1, sli.qualified (no payer wording); sli.any_if_not_mfs, sli.interest_if_any (gates of the two questions; unchanged).
+- **Tags:** sli, wording, fixed
+
+## BUG-1381 — Closure: BUG-0865 is fixed (each Form 5329 screen line cites its own Part)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-0865
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** forms/2025/person.yaml: the shared Part II / Part IX locator is replaced on each screen line by the Part it rests on (f5329 p. 1 Parts II, III and IV; p. 2 Parts V to VIII; p. 3 Part IX): person.x_other (all of them), x_edu_account (II, V, VIII), x_edu_taxable and _if_account (II), x_edu_excess and _if_account (V, VIII), x_archer_excess (VI), x_ira_prior_excess and _if_ira_owner (III, IV), has_hsa, x_hsa_prior_excess and _if_hsa (VII), rmd_age (IX with i5329 p. 9). The second half (x_edu_account's label and source against the question) was already fixed on next: both read 'At any time in 2025 ... or was money put into a Coverdell ESA for you for 2025 by April 15, 2026'. No value changes.
+- **Fix lines:** person.x_other, person.x_edu_account, person.x_edu_taxable, person.x_edu_excess, person.x_archer_excess, person.x_ira_prior_excess, person.has_hsa, person.x_hsa_prior_excess, person.rmd_age
+- **Siblings checked:** person.inherited_account and person.inherited_account_if_under_73 keep the Part IX locator, which is theirs; f5329.l4, f5329.l49, f8889.age55, ny_it201.edu_people, ny_it201.pension_59_people, person.age50_open_year, person.age55_open_year, person.age65 and the other lines anchored on the same f5329 pages (locators only changed; no value).
+- **Tags:** citation, person, f5329, fixed
+
+## BUG-1382 — Closure: BUG-0866 is fixed (items 1 to 3 already, item 5 now; item 4 was closed won't fix by BUG-1059)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-0866
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** Items 1 to 3 were fixed on next 29baf383: person.x_edu_account's help covers 'money put into a Coverdell for 2025 by April 15, 2026' (item 1); person.x_edu_taxable's help says 'A Coverdell left at age 30 or at death counts as paid out' (item 2) and 'Costs also used for an education credit, or paid by a tax-free scholarship, do not count as costs it paid' (item 3). Item 4 (the ABLE contributor) was closed won't fix by BUG-1059.
+- **Fix:** Item 5: person.sav_able's prompt now asks 'Has an ABLE account been held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?' (f8880 p. 2, Line 4, ABLE distributions after 2022), so a former beneficiary answers Yes.
+- **Fix lines:** person.sav_able
+- **Siblings checked:** person.x_edu_account (its present-tense 'At any time in 2025' already covers a held account); person.sav_line1, person.sav_prior_joint, person.sav_prior_other (read the ABLE answer or share its page; unchanged).
+- **Tags:** wording, person, f8880, fixed
+
+## BUG-1383 — Closure: BUG-0568 is fixed (the items BUG-1059 and BUG-0662 left open)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-0568
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** Read on next 29baf383: other_claimant's prompt says 'Besides you (and your spouse, if you file together)'; gross_income's help counts a business's sales less the cost of goods sold, a partnership share and taxable scholarships; ptc_files' help gives the 65-or-older and blind figures; ptc_magi names 'any Form 2555 amounts'; relationship's in_law value label lists the six in-laws only; lawful's time frame was fixed by BUG-0662. Not changed: other_claimant's joining of the dependent and EIC rules (both refuse; no value).
+- **Fix:** dependent.citizen: help and source say an adopted child includes 'a child lawfully placed with you for legal adoption'. dependent.months: prompt says '(0 to 12)', and for a person born, died, adopted or placed in 2025 the prompt and the source replace '0 otherwise' with 'otherwise the months they actually lived with you' (i1040gi p. 21, Exception to time lived with you: the 12-month treatment is an exception to the ordinary count, which still applies when it is not met).
+- **Fix lines:** dependent.citizen, dependent.months
+- **Siblings checked:** dependent.lived_all_year (already counts a born, adopted or placed person's part of the year), dependent.part_year_home; dependent.citizen_known, dependent.lived_half_counted, dependent.under_7_counted (read the two answers; unchanged).
+- **Tags:** dependent, wording, fixed
+
+## BUG-1384 — Closure: BUG-1154 is fixed (Roth IRA contributions checked against the limit, the compensation and the Roth income limit)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1154
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24; reproduced first with the evaluator on next 29baf383: single, born 1985, W-2 $50,000, Roth $8,000, person.ira_extra_left No: no refusal, line 24 $3,875
+- **Fix:** (1) person.ira_over_limit no longer requires person.ira_has. (2) ira.over_comp and ira.kbh_short test any traditional or Roth contribution (new ira.any_contrib; the traditional path is unchanged). (3) New ira.roth_magi (ira.line5: AGI with the IRA and student loan interest deductions added back; conversions not subtracted, so it can only be higher; the 8815, 8839 and 2555 exclusions are refused elsewhere) and ira.roth_reduced, the phase-out start of p590a p. 2 ($236,000 joint or qualifying surviving spouse, $150,000 single, head of household or married filing separately apart all year, above zero married filing separately living together), with new parameters ira.roth_start_joint and ira.roth_start_other (2026 values from n-25-67 staged in research/ty2026). (4) person.x_tax (Schedule 2 line 8, read for every person on every return) refuses on person.ira_roth_over (Roth contributions with person.ira_over_limit, ira.over_comp or ira.kbh_short, through person.ira_limit_screens) and person.ira_roth_income (Roth contributions with ira.roth_reduced). (5) person.ira_extra_left's help gives the thresholds and the married-filing-separately rule. ira.kbh_short is kept on the Roth path: with combined compensation under the Kay Bailey Hutchison amount, the higher earner's own compensation can bind, which over_comp alone does not test.
+- **Fix lines:** person.ira_over_limit, ira.over_comp, ira.kbh_short, person.x_tax, person.ira_extra_left
+- **Siblings checked:** person.ira_line11 (same gates, traditional path, unchanged values), person.sav_line1 (ira_excess_gate unchanged), ira.special_gate and ira.se_capital_gate (still traditional-only: deferred compensation or a capital-based Schedule C counted as compensation can hide a Roth excess; left, rare), ira.both_kinds; person.ira_excess, person.ira_limit_screens (the new helper the Roth gate reads).
+- **Evidence:** Fixtures predicted by hand (fixtures/2025/ira.json): roth.over_limit, roth.no_compensation (refused by person.ira_roth_over), roth.magi_single_at, roth.magi_joint_at, roth.magi_mfs_together (refused by person.ira_roth_income), roth.magi_single_below (computes, Schedule 2 line 8 $0).
+- **Tags:** ira, person, f5329, Roth, fixed
+
+## BUG-1385 — Closure: BUG-1155 is fixed (exceptions 13 to 18 refused on an IRA distribution)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1155
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Fix:** retirement.wrong_kind's IRA branch adds e13 (section 457 plan), e14 (employer plan), e15 (404(k) dividends), e16 (annuity contracts, investment before August 14, 1982), e17 (federal phased retirement) and e18 (414(w) withdrawals); the remedy names them. e16 settled from the source: the IRA exceptions of p590b p. 24 ('There are several exceptions to the age 59 1/2 rule') do not include it; the i5329 p. 5 text is about annuity contracts.
+- **Fix lines:** retirement.wrong_kind
+- **Siblings checked:** retirement.l2 (the refusing line; unchanged), the plan branch (07, 08, 09 unchanged).
+- **Evidence:** Fixtures stage21.refuse.wrong_kind_e13 and _e16 (fixtures/2025/f5329.json), predicted by hand: line 2 and line 4 refused, line 1 $3,000; the four stage21.refuse.wrong_kind expectations take the new remedy text.
+- **Tags:** retirement, f5329, fixed
+
+## BUG-1386 — Closure: BUG-1156 is fixed (IRA worksheet line 8 counts household-employee wages, unreported tips and Form 8919 wages)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1156
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Fix:** ira.line8 adds f1040.line1b, f1040.line1c and f1040.line1g (p590a p. 6, What Is Compensation?, 'Wages, salaries, tips, professional fees, bonuses, and other amounts you receive for providing personal services are compensation'). The entry's proposal to add the strike benefits of line 1h is not taken: strike or lockout benefits are not paid for personal services, and disability pensions are pension income (p590a p. 6, Table 1-1), so leaving them out cannot understate an excess.
+- **Fix lines:** ira.line8
+- **Siblings checked:** ira.line9 (self-employment, unchanged), ira.wages (box 1), ira.line10, ira.over_comp, ira.kbh_short.
+- **Evidence:** Fixture ira.household_wages_comp (fixtures/2025/ira.json), predicted by hand: household wages $5,000, traditional $4,000: line 8 $5,000, line 10 $5,000, Schedule 1 line 20 $4,000, no refusal (refused by ira.over_comp on next).
+- **Tags:** ira, over-refusal, fixed
+
+## BUG-1387 — Closure: BUG-1164 is fixed (a notice when qualifying surviving spouse is claimed with no son, daughter or stepchild listed)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1164
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24; the coordinator's decision under the owner's grant: a notice, not a refusal (queue.md)
+- **Fix:** New household.qss_claimed (status qss and the five tests answered Yes), household.qss_no_child (household.qss_children_listed = 0) and household.qss_no_child_notice, listed among the targets of interview/2025/full.yaml beside household.mfs_spouse_notice: it tells the filer the status needs a son, daughter or stepchild (not a foster child) who lived with them all of 2025 and asks them to list the child or choose another status (i1040gi p. 15, Qualifying Surviving Spouse, tests 2 and 3). No amount changes.
+- **Fix lines:** household.qss_no_child_notice, household.qss_claimed, household.qss_no_child
+- **Siblings checked:** household.qss_fails and household.qss_child_not_all_year (the narrow refusal, unchanged), household.qss_children_listed (now sons, daughters and stepchildren: BUG-1277's entry); household.qss_child_conflict_if_claimed (unchanged).
+- **Evidence:** Fixture hh.household.qss_no_child_notice (fixtures/2025/household.json), predicted by hand: qualifying surviving spouse, tests Yes, no one listed: the notice is true and line 12e stays $31,500.
+- **Tags:** household, QSS, notice, fixed
+
+## BUG-1388 — Closure: BUG-1161 is fixed (walk (b) by BUG-1163, walk (a) by the BUG-1164 notice)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1161
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** Walk (b), a listed child who did not live with the filer all year, is refused by household.qss_child_not_all_year (BUG-1163; fixture hh.household.qss_child_part_year_refused). Walk (a), no one listed, is answered by the notice household.qss_no_child_notice (BUG-1387), the coordinator's decision under the owner's grant in place of a refusal that would have forced children into about 75 fixtures.
+- **Tags:** household, QSS, closure
+
+## BUG-1389 — Closure: BUG-1277 is fixed (the QSS child screen counts only sons, daughters and stepchildren)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1277
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Fix:** New input dependent.own_child ('Is this person your son, daughter or stepchild, rather than a foster child or a grandchild?', an adopted child or one placed for adoption counting as a son or daughter), asked through dependent.own_child_if_qss / dependent.own_child_asked only of a person listed as a child on a return where qualifying surviving spouse is checked and its tests answered Yes (household.qss_claimed). household.qss_children_listed and household.qss_children_all_year count only those answered Yes (i1040gi p. 15, test 2, 'a child or stepchild (not a foster child)'). Default true in fixtures/2025/defaults.json; stated as true in the 12 qualifying-surviving-spouse cases with a listed child of the no-default files (fixtures/2025/classm.json 6 cases, fixtures/ny/2025/classm.json 2, classm.deepseek.json 2, mutation.json 2) and in the coverage row opening.widowed_child_part_year; question in interview/2025/questions.yaml (order 120, seq 3, right after the relationship; the later dependent questions move down one).
+- **Fix lines:** household.qss_children_listed, household.qss_children_all_year, dependent.own_child, dependent.own_child_if_qss
+- **Siblings checked:** dependent.child_all_year (unchanged; still read by the all-year count), household.qss_child_conflict, household.qss_child_not_all_year, household.qss_no_child_notice; dependent.relationship's other readers (dependent and head-of-household tests) use the full child relationship, as the law does; household.qss_no_child (reads the narrowed count).
+- **Evidence:** Fixtures (fixtures/2025/household.json), predicted by hand: hh.household.qss_foster_all_year_step_not (a stepchild not all year and a foster child all year: refused by household.qss_child_not_all_year, not refused on next) and hh.household.qss_foster_only (a foster child only, not all year: no refusal, the notice true, line 12e $31,500; refused on next).
+- **Tags:** household, dependent, QSS, new input, fixed
+
+## BUG-1390 — Closure: BUG-0681 is fixed (Form 2441 reads the opening's answer on the spouse's death)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-0681
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24
+- **Fix:** f2441.spouse_died is no longer an input: it is a derived Bool, household.spouse_died_this_year_if_ever_married on a joint return (f2441.joint) and false otherwise (protocol technique 3.1: the id and f2441.spouse_died_gate unchanged); its bank entry and its default are removed. Fixtures restated: every case's answer to f2441.spouse_died is dropped, and on a joint return household.spouse_died_this_year takes its value where it was unstated or different (classm.json 30, classm.deepseek.json 34, classm.gpt.json 5, mutation.json 76, f2441.json 1, retirement.json 1, ssb.json 1 cases), so each gate keeps its value; coverage row care.joint_spouse_died (refused through the household answer). A joint filer married at the end of 2025 who paid for care is now asked the household question once (the coverage row care.joint_spouse_student answers it No), in place of the Form 2441 tick; its help and source say so.
+- **Fix lines:** f2441.spouse_died
+- **Siblings checked:** f2441.spouse_died_gate (unchanged), f2441.line5 and f2441.line19 (read the gate's refusal), household.widowed_this_year and household.no_spouse_died (other readers of the household answer, unchanged).
+- **Tags:** f2441, interview, duplicate question, fixed
+
+## BUG-1391 — Closure: BUG-1089 is fixed (any registered domestic partner of Nevada, Washington or California not filing jointly is refused)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1089
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24; the coordinator's decision under the owner's grant: refuse (queue.md)
+- **Fix:** household.rdp_community_property drops the household.community_property condition (p555 p. 2, Domicile, 'If you and your spouse (or your RDP) have different domiciles, check the laws of each'), so the household.rdp help's 'A Yes ends the interview here' holds wherever the filer lived. The files that take no defaults state household.rdp No on every case not filing jointly that did not answer it (780 cases: classm.json, classm.deepseek.json, classm.gpt.json and mutation.json, federal and New York), since the gate now reads it without the community-property answer first; the shape of the BUG-1040 fill.
+- **Fix lines:** household.rdp_community_property
+- **Siblings checked:** f1040.line1a (the refusing line), household.community_property, household.cp_marriage_ended and household.mfs_community_property (marriage routes, unchanged).
+- **Evidence:** Fixture stage21.pending2.rdp_not_in_cp_state_refused (fixtures/2025/household.json), predicted by hand: the inputs of stage21.pending2.rdp_community_income_refused with household.community_property No: line 1a refused (computed on next).
+- **Tags:** household, community property, refusal, fixed
+
+## BUG-1392 — Closure: BUG-0932 is fixed (a notice of the choice to reduce 2026 payments instead)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-0932
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24; the coordinator's decision under the owner's grant: a notice (queue.md)
+- **Fix:** New f8863.adj_dep, f8863.adj_person, f8863.adj_total (worksheet line 3 of every eligible student), f8863.adj_any and f8863.adj_choice_notice, read only when an education credit can be claimed (f8863.eligible, so a separate return is never asked about education) and true when any tax-free assistance or refund was taken off 2025 expenses, listed among the targets of interview/2025/full.yaml: it states the choice of the i8863 p. 6 Tip (reduce the 2026 payments for a period beginning January to March 2026 instead) and that this return reduces the 2025 expenses. The tool's amount is the default treatment and is unchanged.
+- **Fix lines:** f8863.adj_choice_notice
+- **Siblings checked:** dependent.edu_adj and person.edu_adj (twins, read unchanged), dependent.edu_over and person.edu_over.
+- **Evidence:** Fixture stage19.example.pell.ex1.choice_notice (fixtures/2025/f8863.json), predicted by hand: Pell grant $5,000 on $5,000 of expenses: f8863.adj_total $5,000, the notice true.
+- **Tags:** f8863, education, notice, fixed
+
+## BUG-1393 — Closure: BUG-1118 is fixed (Form 1040 line 4a totals every IRA distribution once any goes there)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1118
+- **Closure:** fixed
+- **Caught by:** lane people (claude-opus-5-5, judgment), wave 2026-11-24, on lane capital's hand-off of amb.2025.line4a_several
+- **Evidence:** amb.2025.line4a_several registered (decided by the coordinator under the owner's delegation of 2026-11-24; lane capital registered the same reading, the integrator reconciles the two). New person.ira_box1 (box 1 of the person's IRA Forms 1099-R), ira.dist_4a_sum, ira.dist_4a_any and ira.dist_box1_total; f1040.line4a takes ira.dist_box1_total when any IRA distribution goes on line 4a, and the sum of person.ira_amount_a (zero) otherwise (i1040gi p. 27, More than one distribution). Line 4b and the tax are unchanged; whether line 4a is zero is unchanged (ny_it201.has_other_payments reads only that).
+- **Fix lines:** f1040.line4a
+- **Siblings checked:** person.ira_amount_a, retirement.amount_a (refusals still reached through ira.dist_4a_sum), f1040.line4b, f1040.line5a (pensions; not checked here, unchanged); ny_it201.has_other_payments (reads only whether line 4a is zero, which the change leaves as it was).
+- **Evidence:** Fixture stage10.ira.line4a_several (fixtures/2025/f1040.json), predicted by hand: a $10,000 IRA distribution rolled over and a $3,000 fully taxable one: line 4a $13,000 ($10,000 on next), line 4b $3,000.
+- **Tags:** f1040, retirement, ambiguity, fixed
+
+## BUG-1394 — Closure: BUG-1143 is fixed
+
+- **Closes:** BUG-1143
+- **Closure:** fixed
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24
+- **Wording fix:** scope.archer_msa now asks whether anyone (you, your employer or anyone else) put money into the filer's (or spouse's) Archer MSA for 2025, counting money put in during 2026 for 2025, or whether money came out of an Archer MSA or a Medicare Advantage MSA, or one came to the filer because its owner died (i8853 p. 1, Who Must File, all five bullets; the inherited case was also missing). Tick: 'An Archer MSA anyone paid into, or an MSA withdrawal or inheritance'; help names the employer, money put in during 2026 for 2025, and the Medicare Advantage MSA cases. Cite moved from the generic Form 1040 locator to i8853 p. 1.
+- **Wording lines:** scope.archer_msa
+- **Siblings checked:** f8889.archer (the HSA holders' twin, already names the employer and the inherited account); scope.schedule1 (reads it, unchanged).
+- **Tags:** scope, f8853, wording, fixed
+
+## BUG-1395 — Closure: BUG-0823 is fixed
+
+- **Closes:** BUG-0823
+- **Closure:** fixed
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24
+- **Wording fix:** The prompt of s1.inmate_wages now asks about work done 'while an inmate of a jail, prison or other correctional facility, including work release' (its tick already read 'Pay in 2025 for work done as an inmate, including work release'). The proposed help of s1.inmate_amount has no home: that input no longer exists, and a Yes to s1.inmate_wages refuses (line 8u, s1.line8_other), so the inmate account and fee deductions cannot change an amount.
+- **Wording lines:** s1.inmate_wages
+- **Siblings checked:** s1.line8_other (the refusal, unchanged); coverage rows other.inmate_wages and s1o.inmate_amount (refuse as before).
+- **Tags:** s1, line 8u, wording, fixed
+
+## BUG-1396 — Closure: BUG-1190 is fixed
+
+- **Closes:** BUG-1190
+- **Closure:** fixed
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** 26 U.S.C. 62 archived (usc-26-62, GovInfo USCODE-2024). Section 62(a)(21)(A), p. 2: the deduction covers attorney fees and court costs 'in connection with any award under (i) section 7623(b), or (ii) ... any action brought under (I) section 21F of the Securities Exchange Act of 1934, (II) a State false claims act ..., or (III) section 23 of the Commodity Exchange Act'. The reviewer's recollection is confirmed.
+- **Wording fix:** scope.attorney_fees now names 'a whistleblower award from the IRS, the SEC or the CFTC, or a suit under a state false claims act'; a Yes refuses as before (scope.schedule1). Cite adds usc-26-62 p. 2.
+- **Wording lines:** scope.attorney_fees
+- **Siblings checked:** scope.schedule1 (reads it, unchanged); coverage row scope.attorney_fees (refuses as before).
+- **Tags:** scope, Schedule 1 line 24, statute check, fixed
+
+## BUG-1397 — Closure: BUG-1150 is fixed
+
+- **Closes:** BUG-1150
+- **Closure:** fixed
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** Archived Rev. Rul. 2025-4 (rr-2025-4) and the Instructions for Form 1099-G in force for 2025 (i1099g, Rev. March 2024; the December 2026 revision, which moves the benefits to a new box 10, is first used for 2026). Rev. Rul. 2025-4 pp. 26–27, holding (3): family leave benefits a state pays are included in gross income under section 61. Form 1099-G (Rev. March 2024), recipient instructions, Box 1 (f1099g p. 5): payments from a governmental paid family leave program are reported in box 1 on a separate Form 1099-G, and box 1 amounts go 'on the UC line of your tax return' (Schedule 1 line 7); i1099g p. 1, Box 1, the same for the payer. So the benefits belong on line 7, and the gap was only that no question named them.
+- **Wording fix:** s1.uc_any (label, source, tick and prompt) now names benefits from a state (governmental) paid family leave program; s1.uc_paid (source and prompt) counts the separate Form 1099-G for them. The reading that the benefits go in full (contributions not subtracted, against the older Form 1099-G recipient text) is registered as amb.2025.pfml_benefits_contributions, decided by the coordinator under the owner's delegation of 2026-11-24.
+- **Wording lines:** s1.uc_any, s1.uc_paid
+- **Siblings checked:** s1.uc_unsupported (already excludes paid family leave contributions from its refusal, consistent with the ruling); ny_it201.line14 (copies s1.line7; the New York instructions are silent on family leave benefits). State medical leave benefits are filed separately (BUG-1405).
+- **Tags:** s1, line 7, source archive, wording, fixed
+
+## BUG-1398 — Closure: BUG-1145 is fixed
+
+- **Closes:** BUG-1145
+- **Closure:** fixed
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** Archived Form 2210 (2025) and its instructions (f2210, i2210). i2210 p. 1, Who Must File Form 2210: 'If box B, C, or D in Part II is checked, you must figure the penalty yourself and attach Form 2210 to your return'; f2210 p. 1, Part II: box A (waiver of the whole penalty) and box E (a joint return for 2024 or 2025 but not both, with line 8 smaller than line 5) require filing page 1.
+- **Change:** The standing notice in engine/src/output.ts now says the IRS generally figures the penalty and names the cases in which the filer must file Form 2210 (Part II boxes A to D, and box E), citing i1040gi line 38 and i2210; spec/spec.md section 2.2 says the same. No amount changes.
+- **Siblings checked:** the other standing notices (unchanged); no form line computes line 38.
+- **Tags:** notice, f1040, source archive, fixed
+
+## BUG-1399 — Closure: BUG-1146 is fixed
+
+- **Closes:** BUG-1146
+- **Closure:** fixed
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24
+- **Change:** A standing notice in engine/src/output.ts says lines 35b to 35d are not asked and that, if line 34 shows a refund, they (or Form 8888) must be completed, since from October 2025 the IRS generally stopped issuing paper refund checks (i1040gi p. 62). It is a standing notice worded for the case, not one keyed on line 34: Form 1040 is not among this lane's forms, and the standing notices are the lane's file. A notice line keyed on f1040.line34 (as household.mfs_spouse_notice is keyed on its fact) can replace it when Form 1040 is next edited.
+- **Siblings checked:** f1040.line35a and line 36 (supplied, unchanged).
+- **Tags:** notice, f1040, fixed
+
+## BUG-1400 — Closure: BUG-1144 is fixed
+
+- **Closes:** BUG-1144
+- **Closure:** fixed
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24
+- **Wording fix:** Coordinator's choice B (one help sentence; queue.md, coordinator decisions). The help of dependent.age, which already tells the filer to enter 0 for a baby born in 2025, adds: 'For a baby born in 2025, Form 4547, which can be filed with this return, may elect a $1,000 pilot contribution to the child's Trump account' (i1040gi p. 6, What's New). No amount changes; the help is now about 55 words, over the protocol's 40.
+- **Wording lines:** dependent.age (interview help only; forms/2025/dependent.yaml unchanged)
+- **Siblings checked:** dependent.born_died (asked only for a part-year member, so not every parent of a 2025 baby reaches it; left without help).
+- **Tags:** dependent, help, fixed
+
+## BUG-1401 — Closure: BUG-0759 is fixed
+
+- **Closes:** BUG-0759
+- **Closure:** fixed
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** Archived the Instructions for Form 3520 (i3520, Rev. December 2025, continuous-use for 2025). Two of the three clauses are supported: p. 1, Who Must File, item 3, 'received, directly or indirectly, a distribution from a foreign trust' and '(2) the uncompensated use of trust property'; p. 4, Distribution, 'A distribution also includes constructive transfers from a foreign trust' and 'used any property owned by a foreign trust without paying FMV within a reasonable amount of time ... will be treated as a distribution'; p. 6, Reportable Event, 'The transfer of any money or property, directly or indirectly, to a foreign trust'. The third, 'A foreign foundation, a waqf or another arrangement that holds property for beneficiaries counts as a trust', is in no archived page (i3520 has no 'foundation' or 'waqf').
+- **Wording fix:** sb.line8's label and source drop the foundation and waqf sentence (the closing 'if you are not sure whether an arrangement is a trust ... answer Yes' stays) and its cite adds the three i3520 passages. Its interview prompt and help already used only the supported clauses. No value changes.
+- **Wording lines:** sb.line8
+- **Siblings checked:** sb.trust_any (the gate's help still counts a Stiftung, an Anstalt or a waqf; a gate only opens the questions, so it widens nothing that refuses; left as is).
+- **Tags:** schedule-b, foreign trust, citation, fixed
+
+## BUG-1402 — Closure: BUG-0595 is fixed
+
+- **Closes:** BUG-0595
+- **Closure:** fixed
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** i3520 p. 1, Who Must File, item 2: a U.S. person 'treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679' files Form 3520 Part II, 'even if there have been no transactions involving the trust during the tax year'; p. 6, Owner. Such an owner is also taxed on the trust's income, which no question collects.
+- **Change:** New refusing question sb.trust_owner, gated like sb.line8 on sb.foreign_trust_any (sb.trust_owner_if_foreign) and asked right after it: 'In 2025, were you (or, on a joint return, your spouse) treated for tax as the owner of a foreign trust, or of part of one, even if you did not set it up, give to it or get anything from it?' (help: the grantor trust rules, whether or not the trust had income or anyone reported it, the Foreign Grantor Trust Owner Statement, if unsure answer Yes). The gate sb.trust_any's label and help now also name selling, lending, anything the trust paid for you, a power to take its property, an owner taxed on its income, and decisions by anyone other than a U.S. citizen, resident or company (screen and false-no reviews of gate:sb.foreign_trust_any). A Yes refuses Schedule B lines 2, 3 and 6 (Form 3520 / Form 3520-A, cited to i3520 p. 1). sb.line8 keeps the printed line 8 wording (owner decision, 2026-11-10). Coverage row foreign.trust_owner; fixture sb.trust_owner.refused (predicted before running); default false; the no-default fixture files answer it false where they answer sb.line8.
+- **Siblings checked:** sb.line4, sb.partIII and f1040.line3b (read lines 2, 3 and 6 and their refusals; their own content is unchanged, and the f1040 review subject did not change, so no f1040 review was due); sb.line8 (unchanged wording); sb.trust_any (the gate, unchanged); the Part III requirement (sb.line8_if_foreign only; an owner is refused before it matters).
+- **Tags:** schedule-b, foreign trust, refusal, fixed
+
+## BUG-1403 — Closure: BUG-0927 is not fixable with the archive's extractor
+
+- **Closes:** BUG-0927
+- **Closure:** won't fix
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** Re-checked against the PDFs with poppler 26.11.0 (pdftotext, layout and raw modes) and PDFKit (tools/extraction/pdfkit_text.swift): poppler still drops the same text, so a re-extraction with the archive's tool gives the same files. p4801 p. 1: 2 words (a URL and an image placeholder); p. 2: an introductory paragraph of 142 words (fonts CID TrueType, Identity-H); p. 6: about 110 tokens of a table of contents (dot leaders and page numbers); p915 p. 23: 36 tokens of the mirrored sample SSA-1099 box labels. Nothing cites these pages: no form, interview or tool reads p4801, and forms/2025/ssb.yaml cites p915 only at pp. 5 and 6. The pdfkit exceptions in tools/extraction/exceptions.json stay, with their reasons; a future citation of these pages must quote the PDF, not the archived text.
+- **Tags:** sources, extraction, won't fix
+
+## BUG-1404 — No scope question refuses a return for a fiscal year
+
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24, from the hand-off of BUG-1313 (lane business found it while closing BUG-1119)
+- **Source:** Form 1040 (2025), page 1 heading, 'For the year Jan. 1–Dec. 31, 2025, or other tax year beginning'; i1040gi p. 12, Fiscal-year filers, 'If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025, enter the beginning and ending months of your fiscal year'.
+- **Symptom:** Reproduced on lane-screens (from next 29baf383): no input of forms/2025 or interview/2025 asks the return's tax year (grep for fiscal, 'other tax year' and calendar year finds none), so a filer whose tax year is not the calendar year (an individual, or a sole proprietor whose business year is the individual's) is prepared as if for calendar 2025, with calendar-year amounts, dates and parameters.
+- **Change:** New refusing screen scope.fiscal_year ('Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?'), a tick in the about_you group the typical filer leaves empty ('A tax year other than January to December 2025 (fiscal year)'; help: nearly everyone's tax year is the calendar year, a return for someone who died in 2025 included). A Yes refuses through scope.other_income, whose cite adds i1040gi p. 12. Coverage row scope.fiscal_year; fixture scope.fiscal_year.refused (predicted before running); default false; the no-default fixture files answer it false wherever they answer scope.chapter11.
+- **Siblings checked:** ira.reservist_repaid and person.sav_excess (read scope.other_income; unchanged, the refusal only gains a screen); K-1s for a partnership's or S corporation's fiscal year (BUG-0839, BUG-0884, lane k1-latent; scope.k1 refuses K-1s today); scope.chapter11 (the same group and refusal).
+- **Status:** fixed in lane screens (scope.fiscal_year, refusing through scope.other_income).
+- **Severity:** low
+- **Tags:** scope, refusal, fiscal year, fixed
+
+## BUG-1405 — State paid medical leave benefits are asked by no question (suspected)
+
+- **Caught by:** lane screens (claude-opus-5-5, judgment), wave 2026-11-24, reading Rev. Rul. 2025-4 for BUG-1150
+- **Source:** rr-2025-4 p. 27, holding (4): medical leave benefits a state pays under a PFML statute are excluded under section 104(a)(3) to the extent attributable to the employee's contributions, and the part attributable to the employer's contributions is included in gross income under section 105 and is third-party sick pay; p. 32, Transition period: for calendar year 2025 a state or employer need not follow the sick-pay withholding and reporting rules for that part.
+- **Symptom:** s1.uc_any now names family leave benefits (line 7), but no question names medical leave benefits from a state program, or state disability benefits generally. The taxable part is normally reported as sick pay on a Form W-2; under the 2025 transition a state may not report it at all, and a filer then enters nothing and the income is left out with no refusal. Disability payments a government program pays as a substitute for unemployment compensation (p525 p. 29, Types of unemployment compensation; false-no review of gate:s1.uc_any) belong on line 7, but a filer who thinks of them as disability benefits may answer the unemployment question No when they are not on a Form 1099-G. Benefits a state law requires but an employer's insurer or approved private plan pays (screen review of gate:s1.uc_any) are not on a Form 1099-G either and are asked by no question. Not reproduced with a scenario; the size of the part attributable to employer contributions is not knowable from the filer's papers in the transition year.
+- **Proposed fix:** A tick (in money_a, beside the unemployment tick) for state medical leave or disability benefits not on a W-2 in 2025, refusing; or name them in s1.uc_unsupported's help as outside the tool. Decide after reading the state's own 2025 statements; Schedule 1 line 8z or line 1h may be the home.
+- **Severity:** low (suspected)
+- **Tags:** s1, PFML, suspected, refusal
+
+## BUG-1406 — Form 3520 duties outside Schedule B line 8 are not screened: a loan or free use given to a related person, an outstanding qualified obligation, a trust that became foreign
+
+- **Caught by:** screen review of sb.line8 (claude-opus-5-5), lane screens, wave 2026-11-24, after i3520 was archived
+- **Source:** i3520 p. 1, Who Must File, item 3: a U.S. owner or beneficiary files Form 3520 when 'you or a U.S. person related to you received (1) a loan of cash or marketable securities ... or (2) the uncompensated use of trust property', or when 'such foreign trust holds an outstanding qualified obligation of yours or a U.S. person related to you'; p. 6, Reportable Event, 'This includes transfers that are deemed to have occurred under sections 679(a)(4) and (5)' (a domestic trust that becomes foreign).
+- **Symptom:** sb.line8 follows the printed line 8 (owner decision, 2026-11-10) and asks what the filer or spouse received, set up or transferred. A beneficiary whose child got a loan or free use of trust property, a filer with an older qualified-obligation loan still outstanding, or a filer whose trust became foreign in 2025 can answer No, and no question asks those Form 3520 duties. No amount on lines 1 to 37 changes; the tool does not prepare Form 3520 and its standing notice says it covers Form 1040 lines only.
+- **Proposed fix:** Either a refusing child question beside sb.trust_owner for these three duties, or a statement in sb.line8's help that Form 3520 may be due in them. Low: information-return duties only.
+- **Severity:** low
+- **Tags:** schedule-b, foreign trust, screen, Form 3520
+
+## BUG-1407 — Adoption refuses the year label rule on realty_year: a non-year member (before1987) fails the label check
+
+- **Date:** 2026-11-24
+- **Caught by:** lane ty26 of the 2026-11-24 wave (claude-opus-5-5, judgment), the adoption rehearsal tools/year_rehearse.sh --to 2026 --stand-in-sources (/tmp/ty26-2026-11-24-reh, out/03_adopt.log).
+- **Symptom:** year_diff.py --from 2025 --to 2026 --adopt stops before writing anything: 'question rprop.year: its value_labels are not the realty_year years each labelled by its year, newest (y2025) first; label y2026 by hand'. The enum realty_year (params/2025.yaml, extends_with_year) is [before1987, y1987 ... y2025] and the question labels all 40 members newest first, the last 'before1987: Before 1987'. extend_year_labels requires every label key k to read k[1:], so the one non-year member fails the rule although the labels are otherwise exactly the rule's. No year can be adopted while this stands.
+- **Where:** tools/year_diff.py extend_year_labels (the check of each label against its key); enum realty_year (params/2025.yaml) and question rprop.year (interview/2025/questions.yaml), both added after the last full rehearsal.
+- **Proposed fix:** apply the label-equals-year test only to members of the form yNNNN, keeping the rest of the rule (labels are exactly the from-year members, y<from> first), with a self-test case of an enum with a non-year member. In the rehearsal a scratch copy patched this way adopted and went on (the patch is not in the repository).
+- **Severity:** medium
+- **Tags:** tool, adoption, TY2026, year enums; open
+
+## BUG-1408 — The 2026 operations leave person.edu_tin_missing with no reader: the 2026 build fails
+
+- **Date:** 2026-11-24
+- **Caught by:** lane ty26 of the 2026-11-24 wave (claude-opus-5-5, judgment), the adoption rehearsal (/tmp/ty26-2026-11-24-reh, out/07_build_to.log and 09_build_to_standin.log).
+- **Symptom:** node engine/dist/main.js build --year 2026 on the adopted copy (sources stood in) fails: 'person.person.edu_tin_missing: no line reads this test line and it is not an interview target'. In 2025 its only reader is person.edu_llc_tin_refused (forms/2025/person.yaml), which changes/2026/person.edu.yaml (C-CRED-18+C-PEOP-16) removes; the entry's note names the edu_llc_tin_refused pair as removed, but no operation removes person.edu_tin_missing. year_changes.py --check cannot see it (it applies the operations and runs the static checks, not the build's reader check).
+- **Where:** changes/2026/person.edu.yaml, entry C-CRED-18+C-PEOP-16, after its remove_line of person.edu_llc_tin_refused.
+- **Proposed fix:** add a remove_line of person.edu_tin_missing after that of person.edu_llc_tin_refused. In the rehearsal's scratch copy this change applied (year_changes.py --check: all apply) and the error went away.
+- **Severity:** medium
+- **Tags:** TY2026, year changes, adoption, build; open
+
+## BUG-1409 — Lines read only by the New York forms fail the 2026 federal build's reader check while New York 2026 is not adopted
+
+- **Date:** 2026-11-24
+- **Caught by:** lane ty26 of the 2026-11-24 wave (claude-opus-5-5, judgment), the adoption rehearsal (/tmp/ty26-2026-11-24-reh, out/07_build_to.log).
+- **Symptom:** the 2026 build of the adopted copy fails on person.bonus_all, person.prior_bonus_assets and person.suv179: 'no line reads this sum_over line and it is not an interview target'. Their only readers are in forms/ny/2025/ny_it201.yaml; for a year years.json does not list in ny_adopted there is no forms/ny/2026, so the federal build finds no reader. The build already skips the conflict checks that name a New York gate for such a year (tools/README.md, New York years), but not this one. The federal year can therefore not be adopted ahead of New York, which ADOPTION.md says it can.
+- **Where:** the build's reader check (engine/src: the check that reports 'no line reads this ... line and it is not an interview target'); forms/2025/person.yaml person.bonus_all, person.prior_bonus_assets, person.suv179.
+- **Proposed fix:** for a year with no New York forms, count a line as read when the latest New York year's forms read it (and say so in the build output), or give each such line a display reason naming the New York reader. In the rehearsal's scratch copy a display reason on the three lines let the build pass.
+- **Severity:** medium
+- **Tags:** TY2026, New York, build, adoption; open
+
+## BUG-1410 — Fixture carry: class M expectations still turn unknown when the year newly reads a from-year input the case does not answer (person.work_ssn, dependent.work_ssn, person.age55_at_year_end, person.born_jan1)
+
+- **Date:** 2026-11-24
+- **Caught by:** lane ty26 of the 2026-11-24 wave (claude-opus-5-5, judgment): the end-to-end check of BUG-1275 in the adoption rehearsal (/tmp/ty26-2026-11-24-reh, out/12_fixtures_year.log; the copy's reports/2026/fixtures_from_2025.md, section 'Expectations re-recorded from a known value to unknown').
+- **Symptom:** fixtures_year.py --from 2025 --to 2026 --no-hand-work re-records 86 class M expectations from a known value to unknown, all in classm files: 61 for want of person[...].work_ssn, 11 dependent[...].work_ssn, 9 person[spouse].age55_at_year_end, 2 person[spouse].born_jan1, 3 others. BUG-1275's prediction (no class M or mutation expectation unknown for want of sa.mortgage_insurance, person.work_ssn or f8962.sep_income) holds for the two new inputs (0 each; BUG-1040 measured 211 and 40) but not for person.work_ssn (BUG-1040 measured 72 for work_ssn; now 61 person and 11 dependent). These inputs are not new in 2026: they are 2025 inputs with a default in fixtures/2025/defaults.json that the 2026 operations newly read (the education-credit SSN rule of C-CRED-18+C-PEOP-16 for work_ssn), and the fix gives cases that take no defaults only the add_question defaults of new inputs. The report lists them, as the fix intended, but the cases still assert unknown on the lines they were made for.
+- **Also seen:** three of those 86 (classm.tcw.9, classm.tcw.11, classm.tcw.15; known money amounts in 2025) are listed with an empty reason: the 2026 evaluation does not reach their tax_on_amount/tcw key at all, the carry records it as unknown, and test-fixtures --year 2026 then fails them 'not evaluated' (2350 of 2353 evaluated cases pass; the other 13 classm.tcw cases pass). BUG-1040 measured 12 such tcw failures; BUG-1275 predicted none or all marked. Why the key is not reached was not traced (no evaluation of the three cases was run).
+- **Where:** tools/fixtures_year.py new_answers (the defaults given to cases of files that take no defaults).
+- **Proposed fix:** also give such a case, as stated answers, the from-year default of every input the to-year evaluation reads that the case does not answer and the from-year evaluation of the case did not read (the same resolve-twice difference the fix uses), so a case is completed only where the year's own change makes it incomplete; list them in the report as for new inputs.
+- **Severity:** low
+- **Tags:** tool change, fixtures, adoption, class M, TY2026; open
+
+## BUG-1411 — Four mutation survivors are equivalent through redundant structure left by the batch-2b lanes (household.qss_child_not_all_year, k1s.ask_prior_active, f7203.line14) (open)
+
+- **Date:** 2026-11-24
+- **Caught by:** the batch-2b integration of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24, in the federal mutation run on the integrated tree (the people and k1 lanes ran no federal mutation).
+- **Symptom:** Four survivors change no value on any input the run or a fixture can state, because a later lane made the mutated operand redundant. (1) operand.household.household.qss_child_not_all_year.qss_child_conflict_if_claimed.then0 and (2) operand.household.household.qss_child_not_all_year.no.then1: dependent.own_child_if_qss is asked only on a qualifying-surviving-spouse return whose tests were answered Yes (dependent.own_child_asked), and is false otherwise, so household.qss_children_listed is 0 and household.qss_child_conflict false wherever household.qss is false or household.qss_eligible is false; the guards on household.qss and household.qss_eligible (BUG-1389's dependent.own_child) choose between two equal values. (3) operand.k1s.k1s.ask_prior_active.part4.all.1.eq.0 replaces k1s.part4 (all[active_if_b2, tenth_if_active]) with k1s.tenth_if_active, which is already false unless active_if_b2 is true. (4) operand.f7203.f7203.line14.line11 replaces line 11 (smaller of c47 and line 10) with c47: since BUG-1359 keeps each column (c) amount within what line 10 leaves (c35_k to c38_k), c47 is never more than line 10. Checked by hand against the expressions on the integrated build; not checked: whether a return with the status or a guard unanswered can tell (1) to (3) apart (spec 4.7.3). No value is wrong. Listed in OPEN_DEFECT_SURVIVORS so the run is explained; the other 18 survivors the run left unexplained were killed by hand-predicted fixtures in the same integration.
+- **Where:** forms/2025/household.yaml household.qss_child_not_all_year, household.qss_child_conflict_if_claimed; forms/2025/k1s.yaml k1s.ask_prior_active; forms/2025/f7203.yaml f7203.line14, f7203.line11; engine/src/mutate.ts OPEN_DEFECT_SURVIVORS_ALL
+- **Proposed fix:** for each, either remove the redundant structure (household.qss_child_not_all_year reads household.qss_child_conflict directly; k1s.ask_prior_active tests k1s.tenth_if_active; f7203.line14 keeps reading line 11, the printed line, so that one is better argued than removed) or write a keyed argument in EQUIVALENT_IF (ANSWERED_ONLY if an unanswered guard can tell them apart); then remove the four OPEN_DEFECT_SURVIVORS entries. The form changes need the owning forms' reviews (household, k1s).
+- **Proposed fix lines:** household.qss_child_not_all_year, household.qss_child_conflict_if_claimed, k1s.ask_prior_active
+- **Severity:** low
+- **Tags:** forms, household, k1s, f7203, mutation, open

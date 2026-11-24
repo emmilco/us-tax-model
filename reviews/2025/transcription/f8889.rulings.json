@@ -52,11 +52,11 @@
    "printed": "13",
    "project_expr_sha256": "5065fe526c8d5e3625adad527669dff74fc4a43d4eec0773c5505a996b26a76f",
    "second_expr_sha256": "98fa78a5610d20bb33da4118e2880a6e5751fe1044bb88e9fb92f91625ed36a8",
-   "ruling": "Ruling: ambiguity; inherited from line 6 (amb.2025.hsa_split_spouse_eligible) and line 3. i8889 p. 8, Line 13, the smaller of line 2 and line 12. Completed value differences: fxeduhsa.hsa_spouse_eligible_half_year (project $6,412.50, reply $4,275, from line 6), fxeduhsa.hsa_spouse_never_eligible ($8,550 v. $4,275, from line 6), redesign.hsa.unmarried_spouse_plan_not_asked ($1,000 v. $0, from the reply's line 3 model error). The reply's note (it leaves out a prior-year excess contribution, i8889 p. 8, Note under Line 13) accounts for none of the completed value differences, which all come from line 6 or line 3. Triage: 1,428 of 1,779 agree. Project stands.",
-   "context": "548b46c2b40062e8cfdd05879aee41136e6e0f24c9207fbe784ed8397c1ec318",
-   "date": "2026-11-23",
-   "run": "f357e954d6d388a1d7be67b8c77f07bf85a51714477056e9315563a2a92ba1e4",
-   "subject_key": "2639e0cc870f5e074dd615cb8ec1d3e0da16b266141341e3afd4c44c8283e841",
+   "ruling": "Ruling: interface gap; repeat of the earlier ruling on this line, whose reasoning stands: \"interface gap; i8889 p.8 line13 generally takes the smaller of contributions and remaining limit. With zero personal and employer contributions the project returns zero without computing unavailable limit inputs; the reply still demands the limit. Complete question wording does not establish answer availability. Add source-based HSA partial-input cases before qualification; no general equivalence or model-only-noise ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {\"completed\": {\"candidate-unknown\": 5, \"value\": 4}, \"incomplete\": {\"candidate-unknown\": 1, \"project-unknown\": 241, \"value\": 4}, \"refused\": {\"candidate-unknown\": 9, \"project-refuses\": 77, \"project-unknown\": 54, \"value\": 8}}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "8be1c325b2c4776238cf46c0d5bea8f93a5838c8a2c20ae3ec4b4aff80da7ebe",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -70,21 +70,21 @@
      "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
      "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
      "fixture:classm.dependent.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.se.2@person[taxpayer].f8889[hsa]",
      "fixture:classm.sli.2@person[taxpayer].f8889[hsa]",
-     "fixture:classm.f8889.1@person[taxpayer].f8889[hsa]",
-     "fixture:classm.f8889.14@person[taxpayer].f8889[hsa]",
-     "fixture:classm.clcw_next_year.3@person[spouse].f8889[hsa]",
-     "fixture:stage11.refuse.hsa_months@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.1@person[spouse].f8889[hsa]",
+     "fixture:classm.f8889.13@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.14@person[spouse].f8889[hsa]",
      "fixture:stage21.refuse.hsa_employer_excess_not_box1@person[taxpayer].f8889[hsa]",
      "fixture:stage11.refuse.hsa_screen@person[taxpayer].f8889[hsa]",
      "fixture:stage11.mut.hsa_dec_self_only_no_months@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[spouse].f8889[hsa]",
      "fixture:stage16.hsa.partial.H01@person[sample].f8889[hsa]",
      "fixture:redesign.hsa.unmarried_spouse_plan_not_asked@person[taxpayer].f8889[hsa]",
      "fixture:fxeduhsa.hsa_spouse_eligible_half_year@person[taxpayer].f8889[hsa]",
      "fixture:fxeduhsa.hsa_spouse_never_eligible@person[taxpayer].f8889[hsa]",
-     "generated:20261026.84@person[spouse].f8889[hsa]",
-     "generated:20261026.332@person[spouse].f8889[hsa]",
-     "generated:20261026.375@person[spouse].f8889[hsa]",
+     "fixture:mut.f8889.spouse_never_eligible_you_part_family@person[taxpayer].f8889[hsa]",
+     "fixture:mutation.t2.mfj_no_overtime_part3@person[spouse].f8889[hsa]",
      "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].inherited_any@person[taxpayer].f8889[hsa]",
      "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].inherited_case@person[taxpayer].f8889[hsa]",
      "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].owner_died@person[taxpayer].f8889[hsa]",
@@ -98,9 +98,47 @@
    "printed": "13",
    "project_expr_sha256": "5065fe526c8d5e3625adad527669dff74fc4a43d4eec0773c5505a996b26a76f",
    "second_expr_sha256": "cda92f34bd3e8876fa7c5e60fdbb2f6c07cbe8430d2f956efe0ffc9f5bbb6b5d",
-   "ruling": "Ruling: interface gap; i8889 p.8 line13 generally takes the smaller of contributions and remaining limit. With zero personal and employer contributions the project returns zero without computing unavailable limit inputs; the reply still demands the limit. Complete question wording does not establish answer availability. Add source-based HSA partial-input cases before qualification; no general equivalence or model-only-noise claim.",
-   "context": "61d086430a644b15db8df042d3a538b156e9cc9412335a9946d94d3cdb2290e4",
-   "subject_key": "41c6530445d13dedc7dea66fe0bbbe8d8eaefa83d4942d5f310e26951b765b5c"
+   "ruling": "Ruling: interface gap; repeat of the earlier ruling on this line, whose reasoning stands: \"interface gap; i8889 p.8 line13 generally takes the smaller of contributions and remaining limit. With zero personal and employer contributions the project returns zero without computing unavailable limit inputs; the reply still demands the limit. Complete question wording does not establish answer availability. Add source-based HSA partial-input cases before qualification; no general equivalence or model-only-noise ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "96f5f0997f4cca28086f110f34f434a6581048f8f08429b9b0ec69b1ac1ed905",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f4952.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.se.2@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.refuse.hsa_months@person[taxpayer].f8889[hsa]",
+     "fixture:stage21.refuse.hsa_employer_excess_not_box1@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.refuse.hsa_screen@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.mut.hsa_dec_self_only_no_months@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.hsa_part_year_family@person[spouse].f8889[hsa]",
+     "fixture:stage13.hsa_part_year_family@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.unmarried_spouse_plan_not_asked@person[taxpayer].f8889[hsa]",
+     "fixture:fxeduhsa.hsa_spouse_eligible_half_year@person[taxpayer].f8889[hsa]",
+     "fixture:fxeduhsa.hsa_spouse_never_eligible@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].inherited_any@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].inherited_case@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].owner_died@person[taxpayer].f8889[hsa]",
+     "partial:classm.f4952.2.deepseek-person[taxpayer].f8889[hsa].owner_died@person[taxpayer].f8889[hsa]",
+     "partial:classm.f4952.2.deepseek-person[taxpayer].f8889[hsa].inherited_any@person[taxpayer].f8889[hsa]",
+     "partial:classm.f4952.2.deepseek-person[taxpayer].f8889[hsa].excess_withdrawn@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "14b",
@@ -152,12 +190,28 @@
   {
    "printed": "15",
    "project_expr_sha256": "36c905f8b555027fdd529e39dc17fbddaa0ec5d0bfe7848ac8485c34cafb475e",
+   "second_expr_sha256": "005eed346a9bb2d1b2c3a2c84cfaf0a914376a56e4eb7f3dd26d41b69583e827",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-07, whose reasoning stands: \"representation; Form 8889 line 15. Scratch triage of the gate-round-1 reply (triage.py, 1,638 fixtures, 500 generated returns seed 20261026, 477 partial records): 1,403 of 1,403 agree. Project ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "7a1c96f9f9cadc6b312877340e8fccbbea06b2e288270661360bd161ab0a1e97",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "15",
+   "project_expr_sha256": "36c905f8b555027fdd529e39dc17fbddaa0ec5d0bfe7848ac8485c34cafb475e",
    "second_expr_sha256": "28724f88fa5a3d863a64839cc5dff074e1ba7e75fffe3472090542f8a307ba9e",
-   "ruling": "Ruling: representation; the reply tests line 14c where the project tests line 14a and reads medical_all and medical directly where the interview asks them only when there were distributions (medical_all_if_dist, medical_if_partial); when 14a > 0 but 14c = 0 the project's value is 14c = 0 or the stated medical amount, and line 16 is 0 either way. i8889 p. 8, Line 15. Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,611 agree, 293 differ, all candidate-unknown (dist_code) or candidate-refuses (the reply's declared refusals); no value witness. (carried over from reviews/2025/transcription/f8889.index.json at a2f24909, review of 2026-11-14)",
-   "context": "548b46c2b40062e8cfdd05879aee41136e6e0f24c9207fbe784ed8397c1ec318",
-   "date": "2026-11-23",
-   "run": "f357e954d6d388a1d7be67b8c77f07bf85a51714477056e9315563a2a92ba1e4",
-   "subject_key": "86e306b8de0080d9b28f33bde8b4172c55dea7c27d3f7b4b66e7baf212df6904",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-07, whose reasoning stands: \"representation; Form 8889 line 15. Scratch triage of the gate-round-1 reply (triage.py, 1,638 fixtures, 500 generated returns seed 20261026, 477 partial records): 1,403 of 1,403 agree. Project ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "7a1c96f9f9cadc6b312877340e8fccbbea06b2e288270661360bd161ab0a1e97",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -298,17 +352,16 @@
    "printed": "16",
    "project_expr_sha256": "98fc09937313ced43e9dc70bafb6cfc9322a1dfd5f9a8b4ae00d74afcef8ac45",
    "second_expr_sha256": "2358dd768e427384c63146b148d4a83a55233e820bdebe0c855c3cf807d45213",
-   "ruling": "Ruling: representation; i8889 p. 8, Line 16. Same amount where both evaluate. The reply reads the distribution-code and correction inputs (dist_code, mistake_repaid, rollover) where the interview does not ask them, so it is unknown or refuses there (classm.f5695.11; redesign.hsa.dist_code_not_asked, a completed return with no distribution: project $0.00, reply refuses). Triage: 1,574/1,846 agree; 262 candidate-unknown, 6 candidate-refuses, 4 project-refuses; no value differs. No change. (carried over from reviews/2025/transcription/f8889.index.json at deca6831, review of 2026-11-15)",
-   "context": "548b46c2b40062e8cfdd05879aee41136e6e0f24c9207fbe784ed8397c1ec318",
-   "date": "2026-11-23",
-   "run": "f357e954d6d388a1d7be67b8c77f07bf85a51714477056e9315563a2a92ba1e4",
-   "subject_key": "cdcbf5f3982cc958201b3377915fab577eac6b92929d9371bed77124b163176f",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-04, whose reasoning stands: \"representation; same reply and project as the round-2 ruling. Form 8889 line 16. Scratch run of triage.mjs on the full round-3 reply (.transcription/f8889.response.txt; 1,578 fixtures, 500 generated returns seed 20261026, 477 partial records; 1,396 comparisons per line): 1,395 agree; the one difference is a candidate refusal on an incomplete record. Project ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "2fe824d6ccd030041e0bf9ab88c42aec2934255dcb09aedba082b755550f5346",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
-     "candidate-unknown",
-     "project-refuses"
+     "candidate-unknown"
     ],
     "witnesses": [
      "fixture:classm.f8960.1.deepseek@person[taxpayer].f8889[hsa]",
@@ -322,11 +375,7 @@
      "fixture:redesign.hsa.refuse.loan@person[taxpayer].f8889[hsa]",
      "fixture:mutation.t2.f8889.rollover_no_dist@person[taxpayer].f8889[hsa]",
      "generated:20261026.21@person[taxpayer].f8889[hsa]",
-     "generated:20261026.26@person[taxpayer].f8889[hsa]",
-     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].excess_withdrawn@person[taxpayer].f8889[hsa]",
-     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].dist_code@person[taxpayer].f8889[hsa]",
-     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].mistake_repaid@person[taxpayer].f8889[hsa]",
-     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].loan@person[taxpayer].f8889[hsa]"
+     "generated:20261026.26@person[taxpayer].f8889[hsa]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -448,17 +497,16 @@
    "printed": "17b",
    "project_expr_sha256": "d8d60431c5d8aca4c97e82babb11759d68bcff934ba41d70665b615edc730046",
    "second_expr_sha256": "94a7dea56b11caee62873da12f1b28bc26196c5d83b49bcc3f70c61bc820b877",
-   "ruling": "Ruling: representation; i8889 p. 9, Line 17b. Triage: 1,849 compared, 1,669 agree, no value difference; the differences are candidate-unknown and candidate refusals inherited from line 15 and 11 project refusals on refused records (the cited f8889.subject_bad gate). The reply's guards (17a checked or not, line 16 positive) give the same 20% of line 16 or of f8889.subject_part. (carried over from reviews/2025/transcription/f8889.index.json at acde74b5, review of 2026-11-15)",
-   "context": "548b46c2b40062e8cfdd05879aee41136e6e0f24c9207fbe784ed8397c1ec318",
-   "date": "2026-11-23",
-   "run": "f357e954d6d388a1d7be67b8c77f07bf85a51714477056e9315563a2a92ba1e4",
-   "subject_key": "57a269dc1ecbffafdbaab76f047a64e65e783d5fa5ac55c9c4b311d011a26bad",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-23, whose reasoning stands: \"representation; i8889 p. 9, Line 17b. Triage: 1,849 compared, 1,669 agree, no value difference; the differences are candidate-unknown and candidate refusals inherited from line 15 and 11 project refusals on refused records (the cited f8889.subject_bad gate). The reply's guards (17a checked or not, line 16 positive) give the same 20% of line 16 or of f8889.subject_part. (carried over from ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "5c7648655dec43558a3b7ae059ce1639ba938b303a5dc0d28be37ff6e488cd32",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
-     "candidate-unknown",
-     "project-refuses"
+     "candidate-unknown"
     ],
     "witnesses": [
      "fixture:classm.f8960.1.deepseek@person[taxpayer].f8889[hsa]",
@@ -469,8 +517,8 @@
      "fixture:classm.s2.4.deepseek@person[taxpayer].f8889[hsa]",
      "fixture:redesign.hsa.dist_code_not_asked@person[taxpayer].f8889[hsa]",
      "fixture:mutation.t2.f8889.rollover_no_dist@person[taxpayer].f8889[hsa]",
-     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].excess_withdrawn@person[taxpayer].f8889[hsa]",
-     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].dist_code@person[taxpayer].f8889[hsa]"
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].mistake_repaid@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].loan@person[taxpayer].f8889[hsa]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -487,9 +535,33 @@
    "printed": "17b",
    "project_expr_sha256": "d8d60431c5d8aca4c97e82babb11759d68bcff934ba41d70665b615edc730046",
    "second_expr_sha256": "ab45569afa6ccb179407b4e1253bc6ce7f3a56c336be50f5a213c04ca98f464d",
-   "ruling": "Ruling: scope; i8889 p. 9, Lines 17a and 17b: \"Enter on line 17b only 20% (0.20) of any amount included on line 16 that does not meet any of the exceptions\". The candidate caps the part subject to the tax at line 16; the project refuses an answer above line 16 (f8889.subject_bad), the owner's reading amb.2025.hsa_partial_exception for the part. executable-triage-v2 (`../triage/f8889.json`; 1,372 fixtures, 500 generated returns seed 20261026, 615 partial records from 40 bases; 1,548 comparisons): 1,547 of 1,548 agree; 1 project-refuses (witness 0 stage16.refuse.f8889.subject_over, the cited gate). Project stands.",
-   "context": "325fba9629d2735506be4fa909ef1797e0a4c314dbd69ab97eb8ee2981fbfb52",
-   "subject_key": "da3d7ff23627a16beee618cb4fea03473fb1809eb69df91bedb77f369a80d399"
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-23, whose reasoning stands: \"representation; i8889 p. 9, Line 17b. Triage: 1,849 compared, 1,669 agree, no value difference; the differences are candidate-unknown and candidate refusals inherited from line 15 and 11 project refusals on refused records (the cited f8889.subject_bad gate). The reply's guards (17a checked or not, line 16 positive) give the same 20% of line 16 or of f8889.subject_part. (carried over from ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {\"completed\": {\"candidate-refuses\": 1, \"candidate-unknown\": 84}, \"incomplete\": {\"candidate-refuses\": 1, \"candidate-unknown\": 127}, \"refused\": {\"candidate-refuses\": 2, \"candidate-unknown\": 41, \"project-refuses\": 1}}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "5c7648655dec43558a3b7ae059ce1639ba938b303a5dc0d28be37ff6e488cd32",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8960.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s2.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s2.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s2.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s2.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:stage16.refuse.f8889.subject_over@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.dist_code_not_asked@person[taxpayer].f8889[hsa]",
+     "fixture:mutation.t2.f8889.rollover_no_dist@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].mistake_repaid@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].loan@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "17b",
@@ -933,6 +1005,88 @@
      "partial:classm.u1250.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
      "partial:classm.clcw.4.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
      "partial:classm.clcw_next_year.4.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
+   "project_expr_sha256": "7008843d16e335e53ad35f84d13d19275da9f7d8a82d055cb309df825f900084",
+   "second_expr_sha256": "5d7fd36b19d2096fedb5301c64a6fcce919ca7a99b3f71a8356edf60296f97dd",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line, whose reasoning stands: \"representation; project retained. Both apply rules 1 to 6 of Line 3 (i8889 pp. 4-5) with the page 5 Note that a married filer with family coverage at any time figures the additional contribution amount on line 7: the second leaves the $1,000 out of the family amount for any married filer and out of the self-only amount when married with family coverage, the project out of both when married with family coverage. A ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {\"completed\": {\"candidate-unknown\": 6, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 4, \"project-unknown\": 7}, \"refused\": {\"candidate-refuses\": 4, \"candidate-unknown\": 21, \"project-unknown\": 6, \"value\": 2}}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "7584d9426b81d00852e94da106d306b1de757a05e7fd86110b8baad419e646bf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.refuse.hsa_months@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.mut.hsa_thirteen_months@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.mut.hsa_married_last_month_self_only@person[taxpayer].f8889[hsa]",
+     "fixture:audit.f8889.married_hoh_family_age55@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.unmarried_spouse_plan_not_asked@person[taxpayer].f8889[hsa]",
+     "fixture:g1f1.hsa.former_spouse_family_refused@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_over_allocated@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_mixed_methods@person[taxpayer].f8889[hsa]",
+     "generated:20261026.386@person[taxpayer].f8889[hsa]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.3.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.7.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.f5329.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
+   "project_expr_sha256": "7008843d16e335e53ad35f84d13d19275da9f7d8a82d055cb309df825f900084",
+   "second_expr_sha256": "665be3156d0efde603d3d90e169602e31f9b3abe168711d7cc6dea2720ad8f92",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line, whose reasoning stands: \"representation; project retained. Both apply rules 1 to 6 of Line 3 (i8889 pp. 4-5) with the page 5 Note that a married filer with family coverage at any time figures the additional contribution amount on line 7: the second leaves the $1,000 out of the family amount for any married filer and out of the self-only amount when married with family coverage, the project out of both when married with family coverage. A ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "7584d9426b81d00852e94da106d306b1de757a05e7fd86110b8baad419e646bf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.refuse.hsa_months@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.mut.hsa_married_last_month_self_only@person[taxpayer].f8889[hsa]",
+     "fixture:audit.f8889.married_hoh_family_age55@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.unmarried_spouse_plan_not_asked@person[taxpayer].f8889[hsa]",
+     "fixture:g1f1.hsa.former_spouse_family_refused@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_over_allocated@person[taxpayer].f8889[hsa]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.3.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.7.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.f5329.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1428,6 +1582,106 @@
   },
   {
    "printed": "6",
+   "project_expr_sha256": "948a985804cd03cd85bac6c7506f80d06716bb8ec0815ccce5f28cdfc31e66da",
+   "second_expr_sha256": "2b2bc1ceed4c194888b8d3a3f970ef1d3ff9b912937845e2e1722a84e95cb8d7",
+   "ruling": "Ruling: model error; repeat of the earlier ruling on this line of 2026-11-15, whose reasoning stands: \"model error; i8889 p. 7, Line 6, \"If you are not treated as having family coverage for each month ... Step 1. Refigure ... only for the months you were treated as having family coverage\"; p. 2, Last-month rule (elective); amb.2025.hsa_last_month_all_year and amb.2025.hsa_step4_other_limits (chosen: Step 4 the self-only monthly amounts). Triage: 1,849 compared, 1,563 agree, 16 value differences (3 completed). ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {\"completed\": {\"candidate-unknown\": 9, \"value\": 11}, \"incomplete\": {\"candidate-unknown\": 21, \"project-unknown\": 7, \"value\": 3}, \"refused\": {\"candidate-refuses\": 4, \"candidate-unknown\": 32, \"project-refuses\": 12, \"project-unknown\": 6, \"value\": 20}}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "bf507a1bc03dde48edb98be750e24be9b2ec770ea68ba5985e2eb4bad71026d0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.se.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4@person[spouse].f8889[hsa]",
+     "fixture:stage11.refuse.hsa_months@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.mut.hsa_thirteen_months@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[spouse].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[taxpayer].f8889[hsa]",
+     "fixture:mut.f8889.self_only_spouse_all_year@person[spouse].f8889[hsa]",
+     "fixture:mut.f8889.self_only_spouse_all_year@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.hsa_part_year_family@person[spouse].f8889[hsa]",
+     "fixture:stage13.hsa_part_year_family@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.mut.hsa_married_last_month_self_only@person[taxpayer].f8889[hsa]",
+     "fixture:audit.f8889.married_hoh_family_age55@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.refuse.archer@person[taxpayer].f8889[hsa]",
+     "fixture:fxeduhsa.refuse.hsa_family_months_unmatched@person[spouse].f8889[hsa]",
+     "fixture:fxeduhsa.refuse.hsa_family_months_unmatched@person[taxpayer].f8889[hsa]",
+     "generated:20261026.275@person[taxpayer].f8889[hsa]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.3.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.7.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.f5329.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6",
+   "project_expr_sha256": "948a985804cd03cd85bac6c7506f80d06716bb8ec0815ccce5f28cdfc31e66da",
+   "second_expr_sha256": "d31e96152b3464c499f722ffed6a6fafe1fc966f297a474be58b88a2893df9cc",
+   "ruling": "Ruling: model error; repeat of the earlier ruling on this line of 2026-11-15, whose reasoning stands: \"model error; i8889 p. 7, Line 6, \"If you are not treated as having family coverage for each month ... Step 1. Refigure ... only for the months you were treated as having family coverage\"; p. 2, Last-month rule (elective); amb.2025.hsa_last_month_all_year and amb.2025.hsa_step4_other_limits (chosen: Step 4 the self-only monthly amounts). Triage: 1,849 compared, 1,563 agree, 16 value differences (3 completed). ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "4c401348bee6f60bb1cefc2b30d6d7a50f29d2f2d8485ce8c9d4455e831616b1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.se.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4@person[spouse].f8889[hsa]",
+     "fixture:stage11.refuse.hsa_months@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[spouse].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[taxpayer].f8889[hsa]",
+     "fixture:mut.f8889.self_only_spouse_all_year@person[spouse].f8889[hsa]",
+     "fixture:mut.f8889.self_only_spouse_all_year@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.hsa_part_year_family@person[spouse].f8889[hsa]",
+     "fixture:stage13.hsa_part_year_family@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.mut.hsa_married_last_month_self_only@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.refuse.archer@person[taxpayer].f8889[hsa]",
+     "fixture:fxeduhsa.refuse.hsa_family_months_unmatched@person[spouse].f8889[hsa]",
+     "fixture:fxeduhsa.refuse.hsa_family_months_unmatched@person[taxpayer].f8889[hsa]",
+     "generated:20261026.275@person[taxpayer].f8889[hsa]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.3.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.7.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.f5329.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6",
    "project_expr_sha256": "9b4a98914058189499be78986fd137077eed926d2badf874612bd05e45cee057",
    "second_expr_sha256": "ca731817e5c5e4047f067bac53af30ab9a418c53432ab6e193d26425439468f2",
    "ruling": "Ruling: ambiguity and model error; as the earlier rulings. i8889 p. 7, Line 6, Step 4 (amb.2025.hsa_step4_other_limits, owner decision: reading 1); the reply takes the register's reading 2 and inherits line 3's last-month question and f8889.share_raw's allocation refusal. Scratch triage of the gate-round-1 reply (triage.py, 1,638 fixtures, 500 generated returns seed 20261026, 477 partial records): 1,248 agree; on completed returns 11 candidate-unknown (line 3's f8889.last_month); value differences only on incomplete or refused records.",
@@ -1602,6 +1856,76 @@
    "second_expr_sha256": "86a6cca1ce304ef6da01af315317c5cb63daa54ec00a35db786ae858d9a2eff6",
    "ruling": "Ruling: scope; project retained. Line 7 applies only to a married filer, and married filers are refused (f8889.married); for an unmarried filer age 55 or older the $1,000 is in line 3 (rule 6).",
    "subject_key": "b624ee3f4e0a311ca13ebf2102a0d39bc4559225704513bb849acd26d236976d"
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "16b46f08ed98991632d6818e6b2ce0e8be6eaec9cdc0d8ecf2753649bff5aff8",
+   "second_expr_sha256": "9bcc144914bfad2b91fac42257014fc48c17a63f07d55b2fe4681789b71aa9e2",
+   "ruling": "Ruling: ambiguity; repeat of the earlier ruling on this line of 2026-11-23, whose reasoning stands: \"ambiguity; amb.2025.hsa_line7_months and amb.2025.hsa_last_month_all_year, as ruled on 2026-11-15; i8889 p. 7, Additional Contribution Amount Worksheet. Unchanged by this lane. Triage: 1,820 of 1,832 agree; completed value differences stage13.mut.hsa_married_last_month_self_only (project $0, reply $1,000) and audit.f8889.married_hoh_family_age55 (project $1,000, reply $0; line 8 equal, see line 3). Project ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "20f9e58de34e9cb1828a0e1ca51735bc4cffca16625597dee1aa89c34dd152af",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.asset.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.sales.3@person[spouse].f8889[hsa]",
+     "fixture:classm.ssb.6@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.mut.hsa_married_last_month_self_only@person[taxpayer].f8889[hsa]",
+     "fixture:audit.f8889.married_hoh_family_age55@person[taxpayer].f8889[hsa]",
+     "generated:20261026.386@person[taxpayer].f8889[hsa]",
+     "partial:classm.f8889.3.deepseek-person[taxpayer].f8889[hsa].line2@person[taxpayer].f8889[hsa]",
+     "partial:classm.f8889.3.deepseek-person[taxpayer].f8889[hsa].line9@person[taxpayer].f8889[hsa]",
+     "partial:classm.f8889.3.deepseek-person[taxpayer].f8889[hsa].owner_died@person[taxpayer].f8889[hsa]",
+     "partial:classm.f8889.3.deepseek-person[taxpayer].f8889[hsa].inherited_any@person[taxpayer].f8889[hsa]",
+     "partial:classm.asset.1-person[taxpayer].f8889[hsa].line2@person[taxpayer].f8889[hsa]",
+     "partial:classm.asset.1-person[taxpayer].f8889[hsa].line9@person[taxpayer].f8889[hsa]",
+     "partial:classm.asset.1-person[taxpayer].f8889[hsa].line14a@person[taxpayer].f8889[hsa]",
+     "partial:classm.asset.1-person[taxpayer].f8889[hsa].owner_died@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "16b46f08ed98991632d6818e6b2ce0e8be6eaec9cdc0d8ecf2753649bff5aff8",
+   "second_expr_sha256": "b29b24417b9b79b15f2d4e5b54ce086e2ac7138075aed2313b430238911874f7",
+   "ruling": "Ruling: ambiguity; repeat of the earlier ruling on this line of 2026-11-23, whose reasoning stands: \"ambiguity; amb.2025.hsa_line7_months and amb.2025.hsa_last_month_all_year, as ruled on 2026-11-15; i8889 p. 7, Additional Contribution Amount Worksheet. Unchanged by this lane. Triage: 1,820 of 1,832 agree; completed value differences stage13.mut.hsa_married_last_month_self_only (project $0, reply $1,000) and audit.f8889.married_hoh_family_age55 (project $1,000, reply $0; line 8 equal, see line 3). Project ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {\"completed\": {\"project-unknown\": 1, \"value\": 4}, \"incomplete\": {\"candidate-unknown\": 1, \"value\": 2}, \"refused\": {\"project-unknown\": 15, \"value\": 13}}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "20f9e58de34e9cb1828a0e1ca51735bc4cffca16625597dee1aa89c34dd152af",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.sales.3@person[spouse].f8889[hsa]",
+     "fixture:classm.ssb.6@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4@person[spouse].f8889[hsa]",
+     "fixture:stage13.mut.hsa_married_last_month_self_only@person[taxpayer].f8889[hsa]",
+     "fixture:audit.f8889.married_hoh_family_age55@person[taxpayer].f8889[hsa]",
+     "fixture:mutation.t2.mfj_no_overtime_part3@person[taxpayer].f8889[hsa]",
+     "fixture:mutation.t2.mfs_sli_line5@person[taxpayer].f8889[hsa]",
+     "fixture:mutation.t2.s1a.line13_magi_first@person[taxpayer].f8889[hsa]",
+     "partial:classm.f8889.3.deepseek-person[taxpayer].f8889[hsa].clear_all_year@person[taxpayer].f8889[hsa]",
+     "partial:classm.f8889.3.deepseek-person[taxpayer].f8889[hsa].fsa@person[taxpayer].f8889[hsa]",
+     "partial:classm.asset.1-person[taxpayer].f8889[hsa].line2@person[taxpayer].f8889[hsa]",
+     "partial:classm.asset.1-person[taxpayer].f8889[hsa].line9@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "7",
@@ -2074,11 +2398,11 @@
    "printed": "f8889.excess_amt",
    "project_expr_sha256": "8f93329fcead585d11567925fbe3e79b3b69c325e5e071159686972a28091587",
    "second_expr_sha256": "46a07273c90af7c8a4899a9c359117a77add3e7ee8db3cb8b9b8e5b4bc7cf1b4",
-   "ruling": "Ruling: ambiguity; inherited from line 6 (amb.2025.hsa_split_spouse_eligible) and amb.2025.hsa_step4_other_limits; i5329 p. 8, Line 47. The reply's own formula (line 2 plus line 11 less line 8, floored at zero) matches the project's where line 8 agrees. Completed value differences: fxeduhsa.hsa_spouse_eligible_half_year (project $0, reply $2,137.50) and fxeduhsa.hsa_spouse_never_eligible ($0 v. $4,275), both from line 6, and redesign.hsa.unmarried_spouse_plan_not_asked ($0 v. $1,000, from the reply's line 3 model error). Triage: 1,333 of 1,779 agree. Project stands.",
-   "context": "548b46c2b40062e8cfdd05879aee41136e6e0f24c9207fbe784ed8397c1ec318",
-   "date": "2026-11-23",
-   "run": "f357e954d6d388a1d7be67b8c77f07bf85a51714477056e9315563a2a92ba1e4",
-   "subject_key": "a1de6ef7f02ebaf81dfc3f689a97b88066ff48365da6c2c71ef30a1967e10095",
+   "ruling": "Ruling: ambiguity; repeat of the earlier ruling on this line, whose reasoning stands: \"ambiguity — i5329 p. 8, Line 47, and i8889 p. 7, Line 6, Step 4 (amb.2025.hsa_step4_other_limits). The candidate's own excess formula (line 2 less line 12, plus line 9 less line 8) matches the project's when line 12 agrees; the 2 completed value differences (classm.s2.2 and classm.s2.2.deepseek, $2,674.83 vs $1,966.50) are inherited from line 6 Step 4 reading 2 (amb.2025.hsa_step4_other_limits), and the 1 completed ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "75ab19b046fd9da2f8631c4959993600f8aede32402e5386442a271520afec0b",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -2095,28 +2419,30 @@
      "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
      "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
      "fixture:classm.f4952.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.se.2@person[taxpayer].f8889[hsa]",
      "fixture:stage11.refuse.hsa_months@person[taxpayer].f8889[hsa]",
      "fixture:stage21.refuse.hsa_employer_excess_not_box1@person[taxpayer].f8889[hsa]",
      "fixture:stage11.mut.hsa_dec_self_only_no_months@person[taxpayer].f8889[hsa]",
      "fixture:stage11.mut.hsa_thirteen_months@person[taxpayer].f8889[hsa]",
      "fixture:stage13.refuse.hsa_family_one_spouse@person[spouse].f8889[hsa]",
      "fixture:stage13.refuse.hsa_family_one_spouse@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.hsa_part_year_family@person[spouse].f8889[hsa]",
+     "fixture:stage13.hsa_part_year_family@person[taxpayer].f8889[hsa]",
+     "fixture:stage21.refuse.hsa_excess_withdrawn@person[taxpayer].f8889[hsa]",
      "fixture:redesign.hsa.refuse.ira_transfer_no_contributions@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.refuse.excess_withdrawn_no_contributions@person[taxpayer].f8889[hsa]",
      "fixture:redesign.hsa.unmarried_spouse_plan_not_asked@person[taxpayer].f8889[hsa]",
      "fixture:fxeduhsa.hsa_spouse_eligible_half_year@person[taxpayer].f8889[hsa]",
      "fixture:fxeduhsa.hsa_spouse_never_eligible@person[taxpayer].f8889[hsa]",
-     "generated:20261026.84@person[spouse].f8889[hsa]",
+     "generated:20261026.108@person[taxpayer].f8889[hsa]",
      "generated:20261026.116@person[taxpayer].f8889[hsa]",
-     "generated:20261026.275@person[taxpayer].f8889[hsa]",
-     "generated:20261026.332@person[spouse].f8889[hsa]",
-     "generated:20261026.375@person[spouse].f8889[hsa]",
-     "generated:20261026.475@person[taxpayer].f8889[hsa]",
+     "generated:20261026.121@person[taxpayer].f8889[hsa]",
      "partial:classm.retirement.3.deepseek-person[taxpayer].f8889[hsa].owner_died@person[taxpayer].f8889[hsa]",
      "partial:classm.retirement.3.deepseek-person[taxpayer].f8889[hsa].inherited_any@person[taxpayer].f8889[hsa]",
-     "partial:classm.retirement.3.deepseek-person[taxpayer].f8889[hsa].excess_withdrawn@person[taxpayer].f8889[hsa]",
      "partial:classm.f8959.3-person[taxpayer].f8889[hsa].owner_died@person[taxpayer].f8889[hsa]",
      "partial:classm.f8959.3-person[taxpayer].f8889[hsa].inherited_any@person[taxpayer].f8889[hsa]",
-     "partial:classm.f8959.3-person[taxpayer].f8889[hsa].excess_withdrawn@person[taxpayer].f8889[hsa]"
+     "partial:classm.s2.7-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.s2.7-person[taxpayer].f8889[hsa].owner_died@person[taxpayer].f8889[hsa]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2448,6 +2774,91 @@
    "date": "2026-11-07",
    "run": "123341d26cfa8fe29c25ccd5bffd090f4f26d7604b88043362892968622970df",
    "subject_key": "956315347409f519552da1ab5e334a0e1a041a47188f3d51bcd2ad57129c5069"
+  },
+  {
+   "printed": "f8889.share_raw",
+   "project_expr_sha256": "5c5cc2d3d9beed48826840262126a6379288ff170265c9f2ddcd32be09fa5f5c",
+   "second_expr_sha256": "23fbc6ee6edf817bc5d1c39887136e97ac2dc8982b051ba209e2caad793cc72f",
+   "ruling": "Ruling: ambiguity; repeat of the earlier ruling on this line of 2026-11-23, whose reasoning stands: \"ambiguity; inherited from f8889.step1 (amb.2025.hsa_split_spouse_eligible; i8889 p. 7, Line 6, Steps 2 and 3). The equal division halves the shared Step 1 limit in the project and the filer's own family limit in the reply. The completed value differences (stage11.hsa.family_55, stage11.hsa.family_all_year_answer, stage11.hsa.changed, stage11.hsa.last_month, stage11.hsa.no_last_month, stage11.hsa.last_month_changed: ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "8a544677fa9a116b69c5c06786e8c4a35cb35919090432d11f9ff1c07901bc78",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.retirement.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5329.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.carloan.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.ltc.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.se.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.w2.1@person[taxpayer].f8889[hsa]",
+     "fixture:mut.f8889.self_only_spouse_all_year@person[spouse].f8889[hsa]",
+     "fixture:redesign.hsa.refuse.archer@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.testing_kept_age_unanswered@person[taxpayer].f8889[hsa]",
+     "generated:20261026.275@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].archer@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].clear_all_year@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].fsa@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].months_family@person[taxpayer].f8889[hsa]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].f8889[hsa].archer@person[taxpayer].f8889[hsa]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].archer@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.3.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8889.share_raw",
+   "project_expr_sha256": "5c5cc2d3d9beed48826840262126a6379288ff170265c9f2ddcd32be09fa5f5c",
+   "second_expr_sha256": "737841b134939f9544853ccf46d7b3391e11e07a9a61ee055c37afd7720d99b5",
+   "ruling": "Ruling: ambiguity; repeat of the earlier ruling on this line of 2026-11-23, whose reasoning stands: \"ambiguity; inherited from f8889.step1 (amb.2025.hsa_split_spouse_eligible; i8889 p. 7, Line 6, Steps 2 and 3). The equal division halves the shared Step 1 limit in the project and the filer's own family limit in the reply. The completed value differences (stage11.hsa.family_55, stage11.hsa.family_all_year_answer, stage11.hsa.changed, stage11.hsa.last_month, stage11.hsa.no_last_month, stage11.hsa.last_month_changed: ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {\"completed\": {\"value\": 32}, \"incomplete\": {\"candidate-unknown\": 9, \"project-unknown\": 6, \"value\": 29}, \"refused\": {\"candidate-refuses\": 3, \"candidate-unknown\": 8, \"project-unknown\": 10, \"value\": 97}}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "8a544677fa9a116b69c5c06786e8c4a35cb35919090432d11f9ff1c07901bc78",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.retirement.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5329.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.carloan.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.ltc.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.w2.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5329.1@person[taxpayer].f8889[hsa]",
+     "fixture:mut.f8889.self_only_spouse_all_year@person[spouse].f8889[hsa]",
+     "fixture:redesign.hsa.refuse.archer@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.testing_kept_age_unanswered@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_mixed_methods@person[taxpayer].f8889[hsa]",
+     "generated:20261026.275@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].archer@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].clear_all_year@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].fsa@person[taxpayer].f8889[hsa]",
+     "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].months_family@person[taxpayer].f8889[hsa]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].f8889[hsa].archer@person[taxpayer].f8889[hsa]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].archer@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.3.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f8889.share_raw",
@@ -2847,6 +3258,84 @@
      "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
      "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
      "partial:classm.eic.3.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8889.split",
+   "project_expr_sha256": "02283cfcf664c31870217c8efe51bc97be5056f0f95bc90ac390707730cb9fa4",
+   "second_expr_sha256": "b3d3914f6df0bd1033b47785e4fbdd37b40d7e039eeb30d358edd2d9b4e71f08",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-15, whose reasoning stands: \"representation; i8889 p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025\". Both test separate HSAs with family coverage. The 3 value differences are all on refused returns: on a separate return whose spouse has an HSA with family coverage the project refuses (f8889.mfs, this merge's narrowed gate) and leaves split false (mfs.hsa.refuse.family_spouse_hsa: ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "e3a352f1ca77a4cde3b4b830bd72c13a2a51d243e4eb510e64d6ce23175aaf2e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8960.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s2.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f1040.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.sa.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.sales.3@person[spouse].f8889[hsa]",
+     "fixture:classm.sli.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.tcw.11@person[spouse].f8889[hsa]",
+     "fixture:classm.f8889.1@person[spouse].f8889[hsa]",
+     "fixture:classm.f8889.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.14@person[spouse].f8889[hsa]",
+     "fixture:classm.f8889.14@person[taxpayer].f8889[hsa]",
+     "fixture:classm.clcw_next_year.3@person[spouse].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[taxpayer].f8889[hsa]",
+     "fixture:mut.f8889.self_only_spouse_all_year@person[taxpayer].f8889[hsa]",
+     "fixture:mfs.hsa.refuse.family_spouse_hsa@person[taxpayer].f8889[hsa]",
+     "fixture:fxeduhsa.hsa_spouse_never_eligible@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8889.split",
+   "project_expr_sha256": "02283cfcf664c31870217c8efe51bc97be5056f0f95bc90ac390707730cb9fa4",
+   "second_expr_sha256": "e3586c0b6f48a91800495a0dcc1af884b156194c780e30d0e7b3eecf4ab0e9ac",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-15, whose reasoning stands: \"representation; i8889 p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025\". Both test separate HSAs with family coverage. The 3 value differences are all on refused returns: on a separate return whose spouse has an HSA with family coverage the project refuses (f8889.mfs, this merge's narrowed gate) and leaves split false (mfs.hsa.refuse.family_spouse_hsa: ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {\"completed\": {\"candidate-unknown\": 3, \"project-unknown\": 27, \"value\": 7}, \"incomplete\": {\"candidate-unknown\": 1, \"project-unknown\": 54, \"value\": 3}, \"refused\": {\"candidate-unknown\": 5, \"project-unknown\": 25, \"value\": 11}}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "e3a352f1ca77a4cde3b4b830bd72c13a2a51d243e4eb510e64d6ce23175aaf2e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8960.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s2.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f1040.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.sa.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.sales.3@person[spouse].f8889[hsa]",
+     "fixture:classm.tcw.11@person[spouse].f8889[hsa]",
+     "fixture:classm.f8889.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.14@person[spouse].f8889[hsa]",
+     "fixture:classm.f8889.14@person[taxpayer].f8889[hsa]",
+     "fixture:classm.clcw_next_year.3@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[taxpayer].f8889[hsa]",
+     "fixture:mut.f8889.self_only_spouse_all_year@person[taxpayer].f8889[hsa]",
+     "fixture:mfs.hsa.refuse.family_spouse_hsa@person[taxpayer].f8889[hsa]",
+     "fixture:fxeduhsa.hsa_spouse_never_eligible@person[taxpayer].f8889[hsa]",
+     "fixture:mutation.t2.mfs_sli_line5@person[taxpayer].f8889[hsa]",
+     "fixture:mutation.m4.f5695.hp_no_qmid_mfs@person[taxpayer].f8889[hsa]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -3647,6 +4136,92 @@
   },
   {
    "printed": "f8889.step1",
+   "project_expr_sha256": "7eff18dd1617c1a1cff35737cd8bf78f144084cc5beaa4bff82c3898b3ddf669",
+   "second_expr_sha256": "02885b0924b51fb01cd66e23dc43234da9d9ea0927323d3018c7441216bb62ac",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-07, whose reasoning stands: \"representation (+ scope); project retained. i8889 p. 7, Line 6, Step 1, and p. 4, Line 3, rules 2 and 3 (amb.2025.hsa_last_month_all_year, reading 1). With coverage_year changed both sides read the month counts as before; with self-only or family all year the project treats the December 1 coverage as the coverage of every month (rule 3, 'If you were, or were considered, an eligible individual for the entire year and ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "a115db15ef4c2b88cdb55878f09e5f3aa669a02256b3fff3b37b2264024ca78f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s2.6.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s3.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5695.8.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5695.9.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8863.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.retirement.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5329.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.carloan.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8959.3@person[taxpayer].f8889[hsa]",
+     "fixture:classm.ira.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.sales.3@person[spouse].f8889[hsa]",
+     "fixture:classm.sli.2@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.refuse.archer@person[taxpayer].f8889[hsa]",
+     "generated:20261026.275@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8889.step1",
+   "project_expr_sha256": "7eff18dd1617c1a1cff35737cd8bf78f144084cc5beaa4bff82c3898b3ddf669",
+   "second_expr_sha256": "789f7911e721462f4743f65b86ae6977526034550642a8ef63715c45669376e7",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-07, whose reasoning stands: \"representation (+ scope); project retained. i8889 p. 7, Line 6, Step 1, and p. 4, Line 3, rules 2 and 3 (amb.2025.hsa_last_month_all_year, reading 1). With coverage_year changed both sides read the month counts as before; with self-only or family all year the project treats the December 1 coverage as the coverage of every month (rule 3, 'If you were, or were considered, an eligible individual for the entire year and ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {\"completed\": {\"candidate-unknown\": 6, \"project-unknown\": 1, \"value\": 45}, \"incomplete\": {\"candidate-unknown\": 18, \"project-unknown\": 22, \"value\": 48}, \"refused\": {\"candidate-refuses\": 4, \"candidate-unknown\": 27, \"project-unknown\": 10, \"value\": 102}}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "a115db15ef4c2b88cdb55878f09e5f3aa669a02256b3fff3b37b2264024ca78f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s2.6.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8863.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.retirement.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5329.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.carloan.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8959.3@person[taxpayer].f8889[hsa]",
+     "fixture:classm.ira.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.sales.3@person[spouse].f8889[hsa]",
+     "fixture:classm.se.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.sli.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8962.2@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.refuse.archer@person[taxpayer].f8889[hsa]",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_over_allocated@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_mixed_methods@person[taxpayer].f8889[hsa]",
+     "generated:20261026.275@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8889.step1",
    "project_expr_sha256": "843e0a7ad193a65028595a26a5d38aa10bc234bec8e180c9b606581c77f9d750",
    "second_expr_sha256": "1db2bc403a2df933f5568a70331be046205dd384b2802ec2134894407e83ffa9",
    "ruling": "Ruling: representation (+ scope); project retained. i8889 p. 7, Line 6, Step 1, and p. 4, Line 3, rules 2 and 3 (amb.2025.hsa_last_month_all_year, reading 1). With coverage_year changed both sides read the month counts as before; with self-only or family all year the project treats the December 1 coverage as the coverage of every month (rule 3, 'If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage'), while the reply still reads the month counts, which the interview never asks after an all-year answer. triage.py (1,639 fixtures, 500 generated returns seed 20261026, 501 partial records; 1,423 comparisons): 1,231 agree; the completed value differences (generated 89, 163, 174, 180, 185, 311) are all an all-year answer with month counts that contradict it (for example self-only all year with 12 family months), inputs the interview cannot produce; the completed unknowns are Step 1 off the married allocation path, where it reaches no printed line. Other differences are on incomplete or refused records.",
@@ -3781,6 +4356,172 @@
      "fixture:classm.f8962.2@person[taxpayer].f8889[hsa]",
      "fixture:mutation.t2.f8889.all_year_dec_unanswered@person[taxpayer].f8889[hsa]",
      "partial:stage12.car.mixed_sc_interest_prorated-person[taxpayer].f8889[hsa].clear_all_year@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8889.step1_total",
+   "project_expr_sha256": "f5040700c2e8804911f949099e295818b973a132be38b6dee3a5b82cdbc02062",
+   "second_expr_sha256": "57844fb668351eb2e2a2b1d5f291eca3e08685071df90b91be23926448586e14",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-23, whose reasoning stands: \"representation; i8889 p. 7, Line 6, Step 1. The project's f8889.step1_total is the sum of the monthly family amounts ($8,550 a month) for the months the filer was treated as having family coverage, before division by 12; the reply, as its note says, read the interface as the refigured line 3 (the same amount divided by 12). Triage (executable-triage-v2, .transcription/triage/2025/f8889.json): 1,553 of 1,832 agree; ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {\"completed\": {\"candidate-unknown\": 9, \"project-unknown\": 2, \"value\": 65}, \"incomplete\": {\"candidate-unknown\": 3, \"project-unknown\": 69, \"value\": 51}, \"refused\": {\"candidate-unknown\": 21, \"project-unknown\": 22, \"value\": 124}}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "d8496de926590b509e070a338467913112e25d5a54172b2fa05b26c206e9bcb0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s2.6.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s3.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5695.8.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5695.9.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8863.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.retirement.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5329.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.carloan.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8959.3@person[taxpayer].f8889[hsa]",
+     "fixture:classm.ira.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.ltc.1@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8889.step1_total",
+   "project_expr_sha256": "f5040700c2e8804911f949099e295818b973a132be38b6dee3a5b82cdbc02062",
+   "second_expr_sha256": "e06382579ccabd91da2389cce9b63a7f5d4b1527af06dcc60d28e83861f36bbd",
+   "ruling": "Ruling: representation; repeat of the earlier ruling on this line of 2026-11-23, whose reasoning stands: \"representation; i8889 p. 7, Line 6, Step 1. The project's f8889.step1_total is the sum of the monthly family amounts ($8,550 a month) for the months the filer was treated as having family coverage, before division by 12; the reply, as its note says, read the interface as the refigured line 3 (the same amount divided by 12). Triage (executable-triage-v2, .transcription/triage/2025/f8889.json): 1,553 of 1,832 agree; ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "d8496de926590b509e070a338467913112e25d5a54172b2fa05b26c206e9bcb0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.s3.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8962.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5695.8.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5695.9.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8959.3@person[taxpayer].f8889[hsa]",
+     "fixture:classm.ira.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.w2.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.6@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.10@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.hsa.family_55@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.hsa.family_all_year_answer@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.hsa.last_month@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8889.step4_total",
+   "project_expr_sha256": "6213a717df743288ef2b53cab4e4ad982304cd29e01887a55de0073c3013572b",
+   "second_expr_sha256": "41eddddba819c2488b477721224ccc98ceef9d8a8df11533dfb5225cb6775026",
+   "ruling": "Ruling: interface gap; repeat of the earlier ruling on this line of 2026-11-23, whose reasoning stands: \"interface gap; i8889 p. 7, Line 6, Step 4. The project's f8889.step4_total is the sum of the self-only monthly amounts for the eligible months without family coverage (before division by 12); the reply read the same interface name as a line 6 total and so asks f8889.allocation on every return. Triage: 1,205 of 1,779 agree; the differences are this reading (stage11.hsa.self_full_year and stage11.hsa_excess: project ...\". This round changed no value of this line: its form edits are the leading split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2749/2749 pass (two new cases; one allocation_bad expectation revised). Triage of this reply (2749 fixtures, 500 generated returns seed 20261026, 777 partial records): null.",
+   "context": "70dfd686286492bf7278c49162391336c72535187673adbced9722d5877e94bf",
+   "date": "2026-11-24",
+   "run": "2679b9b1bc4aaa91ddd43949f5209b73eef19c253a745dd140d29d9dbdd14c83",
+   "subject_key": "33baa4104038de0fc4193f83d536bfc4b89aba0039d2d9f329f081fba7ce379e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f4952.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f4952.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.retirement.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5329.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.carloan.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.ltc.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.otjob.1@person[spouse].f8889[hsa]",
+     "fixture:redesign.hsa.refuse.archer@person[taxpayer].f8889[hsa]",
+     "generated:20261026.275@person[taxpayer].f8889[hsa]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.3.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.7.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.retirement.3.deepseek-person[taxpayer].f8889[hsa].last_month@person[taxpayer].f8889[hsa]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8889.step4_total",
+   "project_expr_sha256": "6213a717df743288ef2b53cab4e4ad982304cd29e01887a55de0073c3013572b",
+   "second_expr_sha256": "7e7914484b06fc86c9b95ad3d07b7011367fb15e6988aeda34cdbe9e9df93197",
+   "ruling": "Ruling: interface gap; repeat of the earlier ruling on this line of 2026-11-23, whose reasoning stands: \"interface gap; i8889 p. 7, Line 6, Step 4. The project's f8889.step4_total is the sum of the self-only monthly amounts for the eligible months without family coverage (before division by 12); the reply read the same interface name as a line 6 total and so asks f8889.allocation on every return. Triage: 1,205 of 1,779 agree; the differences are this reading (stage11.hsa.self_full_year and stage11.hsa_excess: project ...\". This round changed no value of this line: its form edits are the split conjunct of f8889.allocation_bad (a printed gate read only on forms that split), the folded unreachable alternative of f8889.ask_spouse_family, and question wording; fixtures 2747/2747 pass unchanged but the one allocation_bad expectation. Triage of this reply (2748 fixtures, 500 generated returns seed 20261026, 777 partial records): {\"completed\": {\"candidate-unknown\": 23, \"value\": 89}, \"incomplete\": {\"candidate-unknown\": 170, \"project-unknown\": 6, \"value\": 35}, \"refused\": {\"candidate-refuses\": 6, \"candidate-unknown\": 61, \"project-unknown\": 7, \"value\": 179}}.",
+   "context": "6ff619a2cbb863e125ada17edf5bd4b084e0567f9f34203a732a393b417c7577",
+   "date": "2026-11-24",
+   "run": "ada0ebdcc0ba55875a3d52de5855ff90278d2453bf0577f62ad2d568309a4fe1",
+   "subject_key": "33baa4104038de0fc4193f83d536bfc4b89aba0039d2d9f329f081fba7ce379e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.4.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f4952.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f4952.2.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.retirement.3.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.f5329.1.deepseek@person[taxpayer].f8889[hsa]",
+     "fixture:classm.carloan.2@person[taxpayer].f8889[hsa]",
+     "fixture:classm.ltc.1@person[taxpayer].f8889[hsa]",
+     "fixture:classm.otjob.1@person[spouse].f8889[hsa]",
+     "fixture:stage11.refuse.hsa_months@person[taxpayer].f8889[hsa]",
+     "fixture:stage11.mut.hsa_thirteen_months@person[taxpayer].f8889[hsa]",
+     "fixture:redesign.hsa.refuse.archer@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_over_allocated@person[taxpayer].f8889[hsa]",
+     "fixture:stage13.refuse.hsa_mixed_methods@person[taxpayer].f8889[hsa]",
+     "generated:20261026.275@person[taxpayer].f8889[hsa]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.clcw_next_year.1.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.3.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.eic.7.deepseek-person[taxpayer].f8889[hsa].dec_coverage@person[taxpayer].f8889[hsa]",
+     "partial:classm.retirement.3.deepseek-person[taxpayer].f8889[hsa].last_month@person[taxpayer].f8889[hsa]"
     ],
     "policy": "executable-triage-v2"
    }

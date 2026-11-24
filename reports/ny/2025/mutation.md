@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 942 |
-| Killed by the checker | 265 |
-| Killed by fixtures | 627 (5 only by class M cases) |
-| Surviving | 50 (50 provably equivalent on every input; 0 equivalent on answered inputs only) |
+| Mutants | 965 |
+| Killed by the checker | 279 |
+| Killed by fixtures | 632 (5 only by class M cases) |
+| Surviving | 54 (54 provably equivalent on every input; 0 equivalent on answered inputs only) |
 | Surviving on unobserved lines (among the provably equivalent) | 0 |
-| Mutation score (raw) | 94.7% |
+| Mutation score (raw) | 94.4% |
 | Mutation score (mutants provably equivalent on every input excluded) | 100.0% |
 | Mutation score (also excluding those equivalent on answered inputs only) | 100.0% |
 
@@ -45,6 +45,46 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 - `operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then2` (replace an operand, ny_it201.ny_it201.gate.spouse_nonresident): gate.spouse_nonresident is a choice on the filing status: mfj takes spouse_not_resident, every other status takes ny_it201.no (the parameter ny.false); the mutant reads gate.part_year_city in place of ny_it201.no for mfs. gate.spouse_nonresident is read only by ny_it201.line1, as its third refusal gate, after gate.part_year_city (the second); gates are evaluated in order and a gate that is not a known false ends the list (spec 4.7.1), so gate.spouse_nonresident is read only where gate.part_year_city is a memoized false in the same frame (spec 4.7.6), the value of ny_it201.no. Where the status is unknown every alternative is a way (spec 4.7.3): ny_it201.no and the memoized gate.part_year_city are not refusals, and spouse_not_resident compares an input with no refusal gates, so the gate is the status's unknown on both routes. (Premises pinned: ny_it201.gate.spouse_nonresident, ny_it201.line1, ny_it201.gate.part_year_city, ny_it201.ask.city_resident, ny_it201.spouse_not_resident, ny_it201.ask.spouse_resident, ny_it201.no, f1040.status, param:ny.false; the mutant reads ny_it201.gate.part_year_city.) (structural conditions re-checked this run.)
 - `operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then3` (replace an operand, ny_it201.ny_it201.gate.spouse_nonresident): gate.spouse_nonresident is a choice on the filing status: mfj takes spouse_not_resident, every other status takes ny_it201.no (the parameter ny.false); the mutant reads gate.part_year_city in place of ny_it201.no for hoh. gate.spouse_nonresident is read only by ny_it201.line1, as its third refusal gate, after gate.part_year_city (the second); gates are evaluated in order and a gate that is not a known false ends the list (spec 4.7.1), so gate.spouse_nonresident is read only where gate.part_year_city is a memoized false in the same frame (spec 4.7.6), the value of ny_it201.no. Where the status is unknown every alternative is a way (spec 4.7.3): ny_it201.no and the memoized gate.part_year_city are not refusals, and spouse_not_resident compares an input with no refusal gates, so the gate is the status's unknown on both routes. (Premises pinned: ny_it201.gate.spouse_nonresident, ny_it201.line1, ny_it201.gate.part_year_city, ny_it201.ask.city_resident, ny_it201.spouse_not_resident, ny_it201.ask.spouse_resident, ny_it201.no, f1040.status, param:ny.false; the mutant reads ny_it201.gate.part_year_city.) (structural conditions re-checked this run.)
 - `operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then4` (replace an operand, ny_it201.ny_it201.gate.spouse_nonresident): gate.spouse_nonresident is a choice on the filing status: mfj takes spouse_not_resident, every other status takes ny_it201.no (the parameter ny.false); the mutant reads gate.part_year_city in place of ny_it201.no for qss. gate.spouse_nonresident is read only by ny_it201.line1, as its third refusal gate, after gate.part_year_city (the second); gates are evaluated in order and a gate that is not a known false ends the list (spec 4.7.1), so gate.spouse_nonresident is read only where gate.part_year_city is a memoized false in the same frame (spec 4.7.6), the value of ny_it201.no. Where the status is unknown every alternative is a way (spec 4.7.3): ny_it201.no and the memoized gate.part_year_city are not refusals, and spouse_not_resident compares an input with no refusal gates, so the gate is the status's unknown on both routes. (Premises pinned: ny_it201.gate.spouse_nonresident, ny_it201.line1, ny_it201.gate.part_year_city, ny_it201.ask.city_resident, ny_it201.spouse_not_resident, ny_it201.ask.spouse_resident, ny_it201.no, f1040.status, param:ny.false; the mutant reads ny_it201.gate.part_year_city.) (structural conditions re-checked this run.)
+- `operand.ny_it201.ny_it201.gate.spouse_cannot_sign.no.then0` (replace an operand, ny_it201.ny_it201.gate.spouse_cannot_sign): Branch settled by its guard: where ny_it201.gate.spouse_cannot_sign takes alternative 0 (guard {
+  "eq": [
+    "f1040.status",
+    {
+      "const": "single"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that ny_it201.no and ny_it201.gate.spouse_nonresident make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither ny_it201.no nor ny_it201.gate.spouse_nonresident ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.ny_it201.ny_it201.gate.spouse_cannot_sign.no.then2` (replace an operand, ny_it201.ny_it201.gate.spouse_cannot_sign): Branch settled by its guard: where ny_it201.gate.spouse_cannot_sign takes alternative 2 (guard {
+  "eq": [
+    "f1040.status",
+    {
+      "const": "mfs"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that ny_it201.no and ny_it201.gate.spouse_nonresident make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither ny_it201.no nor ny_it201.gate.spouse_nonresident ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.ny_it201.ny_it201.gate.spouse_cannot_sign.no.then3` (replace an operand, ny_it201.ny_it201.gate.spouse_cannot_sign): Branch settled by its guard: where ny_it201.gate.spouse_cannot_sign takes alternative 3 (guard {
+  "eq": [
+    "f1040.status",
+    {
+      "const": "hoh"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that ny_it201.no and ny_it201.gate.spouse_nonresident make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither ny_it201.no nor ny_it201.gate.spouse_nonresident ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
+- `operand.ny_it201.ny_it201.gate.spouse_cannot_sign.no.then4` (replace an operand, ny_it201.ny_it201.gate.spouse_cannot_sign): Branch settled by its guard: where ny_it201.gate.spouse_cannot_sign takes alternative 4 (guard {
+  "eq": [
+    "f1040.status",
+    {
+      "const": "qss"
+    }
+  ],
+  "op": "test"
+}
+), the lines that guard compares are complete and fix the choices that ny_it201.no and ny_it201.gate.spouse_nonresident make, and both reduce to the same value (through settled choices, copies, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since neither ny_it201.no nor ny_it201.gate.spouse_nonresident ever refuses (spec 4.7.3); so the mutated line is unchanged at every input.
 - `operand.ny_it201.ny_it201.ti_table_range.line38.lt.0` (replace an operand, ny_it201.ny_it201.ti_table_range): Copy-chain identity: ny_it201.line38 and ny_it201.line37 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.ny_it201.ny_it201.tax_table.line38.key` (replace an operand, ny_it201.ny_it201.tax_table): Copy-chain identity: ny_it201.line38 and ny_it201.line37 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.ny_it201.ny_it201.hh_city_by_status.zero.then4` (replace an operand, ny_it201.ny_it201.hh_city_by_status): Branch settled by its guard: where ny_it201.hh_city_by_status takes alternative 4 (guard {
@@ -62,7 +102,7 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 - `operand.ny_it201.ny_it201.line58.line56` (replace an operand, ny_it201.ny_it201.line58): Lines 55, 56 and 57 are the parameter ny.zero ($0, checked) with no refusal gate, so each is a complete $0 at every input. Lines 54a and 54b are ny.zero behind the same MCTMT refusal gate (gate.mctmt), and lines 54c and 54d are line 54a and line 54b times their zone's rate, rounded: with the gate a known false all four are a complete $0; otherwise 54a and 54b are the gate's refusal or unknown, and 54c and 54d carry it. Line 58 sums lines 54, 54e, 55, 56 and 57; the mutant reads line 54d in place of line 56. With the gate a known false line 54d is a complete $0, the same as line 56, in the same position. Otherwise line 54e, in position 2 ahead of the replaced operand, already carries the gate's refusal or unknown (its first operand is line 54c), so the sum meets the same first refusal or unknown (from line 54 or 54e) on both routes. (Premises pinned: ny_it201.line54a, ny_it201.line54b, ny_it201.line54c, ny_it201.line54d, ny_it201.line55, ny_it201.line56, ny_it201.line57, ny_it201.line54e, ny_it201.line58, param:ny.zero; the mutant reads ny_it201.line54d.) (structural conditions re-checked this run.)
 - `operand.ny_it201.ny_it201.line58.line57` (replace an operand, ny_it201.ny_it201.line58): Lines 55, 56 and 57 are the parameter ny.zero ($0, checked) with no refusal gate, so each is a complete $0 at every input. Lines 54a and 54b are ny.zero behind the same MCTMT refusal gate (gate.mctmt), and lines 54c and 54d are line 54a and line 54b times their zone's rate, rounded: with the gate a known false all four are a complete $0; otherwise 54a and 54b are the gate's refusal or unknown, and 54c and 54d carry it. Line 58 sums lines 54, 54e, 55, 56 and 57; the mutant reads line 54d in place of line 57. With the gate a known false line 54d is a complete $0, the same as line 57, in the same position. Otherwise line 54e, in position 2 ahead of the replaced operand, already carries the gate's refusal or unknown (its first operand is line 54c), so the sum meets the same first refusal or unknown (from line 54 or 54e) on both routes. (Premises pinned: ny_it201.line54a, ny_it201.line54b, ny_it201.line54c, ny_it201.line54d, ny_it201.line55, ny_it201.line56, ny_it201.line57, ny_it201.line54e, ny_it201.line58, param:ny.zero; the mutant reads ny_it201.line54d.) (structural conditions re-checked this run.)
 - `operand.ny_it201.ny_it201.line75.zero.then1` (replace an operand, ny_it201.ny_it201.line75): Copy-chain identity: ny_it201.zero and ny_it201.line74 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `operand.ny_it201.ny_it201.est_penalty_balance.no.then1` (replace an operand, ny_it201.ny_it201.est_penalty_balance): est_penalty_balance is a choice on tax_due_positive (tax_due more than $0): true takes est_below_safe_harbor, false takes ny_it201.no (the parameter ny.false); the mutant reads gate.other_withholding in place of ny_it201.no. tax_due is line 62 less line 76, floored at zero, which evaluates both operands, a refusal in either outranking an unknown (spec 4.7.4); line 76 is a sum, which returns the first refusal among its operands and is a known value only when every operand is, among them line 72, whose only refusal gate is gate.other_withholding. gate.other_withholding is a choice on has_other_payments (an any-test of federal lines) between the input ask.other_withholding and ny_it201.no. Where the gate is true, a refusal or unknown, line 72 is that refusal or unknown at entry (spec 4.7.1), so line 76 and tax_due are not known values and tax_due_positive is not a known false; where the gate is a refusal or true, line 72, line 76, tax_due and tax_due_positive are refusals, and the guard's refusal ends the choose on both routes. So wherever tax_due_positive is known false gate.other_withholding is a memoized false in the same frame (spec 4.7.6), the value of ny_it201.no; and wherever tax_due_positive is unknown, gate.other_withholding is false or unknown, never a refusal, as ny_it201.no never is, so both alternatives being ways (spec 4.7.3) est_penalty_balance is that unknown on both routes. (Premises pinned: ny_it201.est_penalty_balance, ny_it201.tax_due_positive, ny_it201.tax_due, ny_it201.line76, ny_it201.line72, ny_it201.gate.other_withholding, ny_it201.has_other_payments, ny_it201.ask.other_withholding, ny_it201.no, param:ny.false; the mutant reads ny_it201.gate.other_withholding.) (structural conditions re-checked this run.)
+- `operand.ny_it201.ny_it201.est_penalty_balance.no.then1` (replace an operand, ny_it201.ny_it201.est_penalty_balance): est_penalty_balance is a choice on tax_due_positive (tax_due more than $0): true takes est_below_safe_harbor, false takes ny_it201.no (the parameter ny.false); the mutant reads gate.other_withholding in place of ny_it201.no. tax_due is line 62 less line 76, floored at zero, which evaluates both operands, a refusal in either outranking an unknown (spec 4.7.4); line 76 is a sum, which returns the first refusal among its operands and is a known value only when every operand is, among them line 72, whose only refusal gate is gate.other_withholding. gate.other_withholding is a choice on has_other_payments (an any-test of federal amounts) between the input ask.other_withholding and ny_it201.no. Where the gate is true, a refusal or unknown, line 72 is that refusal or unknown at entry (spec 4.7.1), so line 76 and tax_due are not known values and tax_due_positive is not a known false; where the gate is a refusal or true, line 72, line 76, tax_due and tax_due_positive are refusals, and the guard's refusal ends the choose on both routes. So wherever tax_due_positive is known false gate.other_withholding is a memoized false in the same frame (spec 4.7.6), the value of ny_it201.no; and wherever tax_due_positive is unknown, gate.other_withholding is false or unknown, never a refusal, as ny_it201.no never is, so both alternatives being ways (spec 4.7.3) est_penalty_balance is that unknown on both routes. (Premises pinned: ny_it201.est_penalty_balance, ny_it201.tax_due_positive, ny_it201.tax_due, ny_it201.line76, ny_it201.line72, ny_it201.gate.other_withholding, ny_it201.has_other_payments, ny_it201.ask.other_withholding, ny_it201.no, param:ny.false; the mutant reads ny_it201.gate.other_withholding.) (structural conditions re-checked this run.)
 - `operand.ny_it201.ny_it201.line79.zero.then1` (replace an operand, ny_it201.ny_it201.line79): ny_it201.line79 is a choice on has_overpayment, the test 'line 77 more than $0': true takes line79_wanted, false takes ny_it201.zero (the parameter ny.zero, $0); the mutant takes line 77 in place of ny_it201.zero. has_overpayment is a known false only where line 77 is a known value not more than $0; line 77 is NonNegDollars, so it is $0, the value ny.zero gives. Where line 77 is a refusal or unknown, so is the guard: a refusal ends the choose on both routes; an unknown leaves both alternatives as ways (spec 4.7.3), and neither ny.zero nor line 77 (then unknown, not a refusal) refuses, so line 79 is the guard's unknown on both routes. (Premises pinned: ny_it201.line79, ny_it201.line79_wanted, ny_it201.has_overpayment, ny_it201.apply_if_overpaid, ny_it201.line77, ny_it201.zero, ny_it201.no, ny_it201.ask.apply_any, ny_it201.line79_amount, ny_it201.gate.line79_over, ny_it201.line78, param:ny.zero, param:ny.false; the mutant reads ny_it201.line77.) (structural conditions re-checked this run.)
 - `operand.ny_it201.ny_it201.gate.line79_over.line79.gt.0` (replace an operand, ny_it201.ny_it201.gate.line79_over): ny_it201.line79 is a choice on has_overpayment (line 77 more than $0): true takes line79_wanted, false takes ny_it201.zero (the parameter ny.zero, $0). line79_wanted is a choice on apply_if_overpaid, itself a choice on has_overpayment (true: the input ask.apply_any; false: ny_it201.no, the parameter ny.false): true takes the input line79_amount, false takes ny_it201.zero. So line79 equals line79_wanted on every input: with has_overpayment true line79 is line79_wanted; with it false apply_if_overpaid is false and line79_wanted is $0, as line79 is; with it a refusal both are that refusal (a refused guard ends a choose, spec 4.7.3); with it unknown, line79 is its unknown (its other way, ny.zero, never refuses) and so is apply_if_overpaid (ny_it201.no never refuses), and line79_wanted is apply_if_overpaid's unknown, that same unknown, as its other way ny.zero never refuses. gate.line79_over compares line 79 with line 77; the mutant compares line79_wanted with line 77, which is the same comparison of equal values. (Premises pinned: ny_it201.line79, ny_it201.line79_wanted, ny_it201.has_overpayment, ny_it201.apply_if_overpaid, ny_it201.line77, ny_it201.zero, ny_it201.no, ny_it201.ask.apply_any, ny_it201.line79_amount, ny_it201.gate.line79_over, ny_it201.line78, param:ny.zero, param:ny.false; the mutant reads ny_it201.line79_wanted.) (structural conditions re-checked this run.)
 - `operand.ny_it201.ny_it201.line78.line79` (replace an operand, ny_it201.ny_it201.line78): ny_it201.line79 is a choice on has_overpayment (line 77 more than $0): true takes line79_wanted, false takes ny_it201.zero (the parameter ny.zero, $0). line79_wanted is a choice on apply_if_overpaid, itself a choice on has_overpayment (true: the input ask.apply_any; false: ny_it201.no, the parameter ny.false): true takes the input line79_amount, false takes ny_it201.zero. So line79 equals line79_wanted on every input: with has_overpayment true line79 is line79_wanted; with it false apply_if_overpaid is false and line79_wanted is $0, as line79 is; with it a refusal both are that refusal (a refused guard ends a choose, spec 4.7.3); with it unknown, line79 is its unknown (its other way, ny.zero, never refuses) and so is apply_if_overpaid (ny_it201.no never refuses), and line79_wanted is apply_if_overpaid's unknown, that same unknown, as its other way ny.zero never refuses. line 78 is line 77 less line 79, floored at zero, behind gate.line79_over; the mutant subtracts line79_wanted, an equal value. (Premises pinned: ny_it201.line79, ny_it201.line79_wanted, ny_it201.has_overpayment, ny_it201.apply_if_overpaid, ny_it201.line77, ny_it201.zero, ny_it201.no, ny_it201.ask.apply_any, ny_it201.line79_amount, ny_it201.gate.line79_over, ny_it201.line78, param:ny.zero, param:ny.false; the mutant reads ny_it201.line79_wanted.) (structural conditions re-checked this run.)
@@ -111,49 +151,49 @@ Known-killed controls (one fixture-killed mutant per line): 7 of 7 rejected by t
 
 | Argument | Held to | Sets | Reaching it | Exercising it | Result |
 | --- | --- | --- | --- | --- | --- |
-| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then0 | all sets | 2728 | 1673 | 997 | holds |
-| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then2 | all sets | 2728 | 919 | 243 | holds |
-| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then3 | all sets | 2728 | 1028 | 352 | holds |
-| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then4 | all sets | 2728 | 812 | 136 | holds |
-| operand.ny_it201.ny_it201.line54e.line54d | all sets | 2728 | 2716 | 0 | holds |
-| operand.ny_it201.ny_it201.line58.line55 | all sets | 2728 | 2231 | 0 | holds |
-| operand.ny_it201.ny_it201.line58.line56 | all sets | 2728 | 2231 | 0 | holds |
-| operand.ny_it201.ny_it201.line58.line57 | all sets | 2728 | 2231 | 0 | holds |
-| operand.ny_it201.ny_it201.est_penalty_balance.no.then1 | all sets | 2728 | 1832 | 0 | holds |
-| operand.ny_it201.ny_it201.line79.zero.then1 | all sets | 2728 | 1922 | 0 | holds |
-| operand.ny_it201.ny_it201.gate.line79_over.line79.gt.0 | all sets | 2728 | 2728 | 2698 | holds |
-| operand.ny_it201.ny_it201.line78.line79 | all sets | 2728 | 159 | 130 | holds |
-| param.ny.city.hoh.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.hoh.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.hoh.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.mfj.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.mfj.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.mfj.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.single.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.single.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.single.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.mctmt.zone1.+1pt | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: the rate multiplies ny_it201.line54a, which is ny.zero ($0) behind its refusal gate |
-| param.ny.mctmt.zone2.+1pt | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: the rate multiplies ny_it201.line54b, which is ny.zero ($0) behind its refusal gate |
-| param.ny.rs.hoh.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.hoh.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.hoh.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.hoh.b4.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.hoh.b5.upper.$1 | all sets | 2728 | 3 | 3 | holds |
-| param.ny.rs.hoh.b6.upper.$1 | all sets | 2728 | 3 | 3 | holds |
-| param.ny.rs.hoh.b8.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.mfj.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.mfj.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.mfj.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.mfj.b4.upper.$1 | all sets | 2728 | 1 | 1 | holds |
-| param.ny.rs.mfj.b5.upper.$1 | all sets | 2728 | 3 | 3 | holds |
-| param.ny.rs.mfj.b6.upper.$1 | all sets | 2728 | 3 | 3 | holds |
-| param.ny.rs.mfj.b7.upper.$1 | all sets | 2728 | 3 | 3 | holds |
-| param.ny.rs.mfj.b8.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.single.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.single.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.single.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.single.b4.upper.$1 | all sets | 2728 | 1 | 1 | holds |
-| param.ny.rs.single.b5.upper.$1 | all sets | 2728 | 3 | 3 | holds |
-| param.ny.rs.single.b6.upper.$1 | all sets | 2728 | 3 | 3 | holds |
-| param.ny.rs.single.b8.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then0 | all sets | 2788 | 1726 | 1012 | holds |
+| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then2 | all sets | 2788 | 946 | 232 | holds |
+| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then3 | all sets | 2788 | 1078 | 364 | holds |
+| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then4 | all sets | 2788 | 847 | 133 | holds |
+| operand.ny_it201.ny_it201.line54e.line54d | all sets | 2788 | 2776 | 0 | holds |
+| operand.ny_it201.ny_it201.line58.line55 | all sets | 2788 | 2232 | 0 | holds |
+| operand.ny_it201.ny_it201.line58.line56 | all sets | 2788 | 2232 | 0 | holds |
+| operand.ny_it201.ny_it201.line58.line57 | all sets | 2788 | 2232 | 0 | holds |
+| operand.ny_it201.ny_it201.est_penalty_balance.no.then1 | all sets | 2788 | 1827 | 0 | holds |
+| operand.ny_it201.ny_it201.line79.zero.then1 | all sets | 2788 | 1921 | 0 | holds |
+| operand.ny_it201.ny_it201.gate.line79_over.line79.gt.0 | all sets | 2788 | 2788 | 2767 | holds |
+| operand.ny_it201.ny_it201.line78.line79 | all sets | 2788 | 141 | 121 | holds |
+| param.ny.city.hoh.b1.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.hoh.b2.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.hoh.b3.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.mfj.b1.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.mfj.b2.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.mfj.b3.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.single.b1.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.single.b2.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.single.b3.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.mctmt.zone1.+1pt | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: the rate multiplies ny_it201.line54a, which is ny.zero ($0) behind its refusal gate |
+| param.ny.mctmt.zone2.+1pt | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: the rate multiplies ny_it201.line54b, which is ny.zero ($0) behind its refusal gate |
+| param.ny.rs.hoh.b1.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.hoh.b2.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.hoh.b3.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.hoh.b4.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.hoh.b5.upper.$1 | all sets | 2788 | 3 | 3 | holds |
+| param.ny.rs.hoh.b6.upper.$1 | all sets | 2788 | 3 | 3 | holds |
+| param.ny.rs.hoh.b8.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.mfj.b1.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.mfj.b2.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.mfj.b3.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.mfj.b4.upper.$1 | all sets | 2788 | 1 | 1 | holds |
+| param.ny.rs.mfj.b5.upper.$1 | all sets | 2788 | 1 | 1 | holds |
+| param.ny.rs.mfj.b6.upper.$1 | all sets | 2788 | 1 | 1 | holds |
+| param.ny.rs.mfj.b7.upper.$1 | all sets | 2788 | 1 | 1 | holds |
+| param.ny.rs.mfj.b8.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.single.b1.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.single.b2.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.single.b3.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.single.b4.upper.$1 | all sets | 2788 | 1 | 1 | holds |
+| param.ny.rs.single.b5.upper.$1 | all sets | 2788 | 3 | 3 | holds |
+| param.ny.rs.single.b6.upper.$1 | all sets | 2788 | 3 | 3 | holds |
+| param.ny.rs.single.b8.upper.$1 | all sets | 2788 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
 

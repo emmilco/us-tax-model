@@ -2293,6 +2293,22 @@ Shown for your spouse:
 
 > About your spouse — Was any of this paid to your spouse because your spouse became disabled, under a plan that provides for disability retirement?
 
+**Help, as stored**
+
+> Code 3 in box 7 of the Form 1099-R shows a disability payment. Military disability retired pay counts.
+
+Shown on a one-person return:
+
+> Code 3 in box 7 of the Form 1099-R shows a disability payment. Military disability retired pay counts.
+
+Shown for you on a couple's return:
+
+> Code 3 in box 7 of the Form 1099-R shows a disability payment. Military disability retired pay counts.
+
+Shown for your spouse:
+
+> Code 3 in box 7 of the Form 1099-R shows a disability payment. Military disability retired pay counts.
+
 ## `retirement.dis_early`
 
 **Question, as stored**
@@ -3579,35 +3595,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person?
+> For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce, a court decree of legal separation or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person, even if that plan had changed by the time the marriage ended?
 
 Shown on a one-person return:
 
-> Did a marriage of yours end during 2025, by divorce or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person?
+> Did a marriage of yours end during 2025, by divorce, a court decree of legal separation or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person, even if that plan had changed by the time the marriage ended?
 
 Shown for you on a couple's return:
 
-> About you — Did a marriage of yours end during 2025, by divorce or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person?
+> About you — Did a marriage of yours end during 2025, by divorce, a court decree of legal separation or death, and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person, even if that plan had changed by the time the marriage ended?
 
 Shown for your spouse:
 
-> About your spouse — Did a marriage of your spouse's end during 2025, by divorce or death, and in any month of 2025 while your spouse was married did the other person have a high-deductible plan covering more than one person?
+> About your spouse — Did a marriage of your spouse's end during 2025, by divorce, a court decree of legal separation or death, and in any month of 2025 while your spouse was married did the other person have a high-deductible plan covering more than one person, even if that plan had changed by the time the marriage ended?
 
 **Help, as stored**
 
-> Answer No if you were not married at any time in 2025. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you. A Yes ends the interview here.
+> Answer No if you were not married at any time in 2025. A court decree of separate maintenance counts as a decree of legal separation. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you, and also when the other person was covered as a member of someone else's plan (a parent's, for example). A Yes ends the interview here.
 
 Shown on a one-person return:
 
-> Answer No if you were not married at any time in 2025. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you. A Yes ends the interview here.
+> Answer No if you were not married at any time in 2025. A court decree of separate maintenance counts as a decree of legal separation. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you, and also when the other person was covered as a member of someone else's plan (a parent's, for example). A Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> Answer No if you were not married at any time in 2025. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you. A Yes ends the interview here.
+> Answer No if you were not married at any time in 2025. A court decree of separate maintenance counts as a decree of legal separation. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you, and also when the other person was covered as a member of someone else's plan (a parent's, for example). A Yes ends the interview here.
 
 Shown for your spouse:
 
-> Answer No if your spouse was not married at any time in 2025. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover your spouse. A Yes ends the interview here.
+> Answer No if your spouse was not married at any time in 2025. A court decree of separate maintenance counts as a decree of legal separation. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover your spouse, and also when the other person was covered as a member of someone else's plan (a parent's, for example). A Yes ends the interview here.
 
 ## `f8889.months_eligible`
 
@@ -4021,35 +4037,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Does your husband or wife have a health savings account (HSA) of their own?
+> For this person (you, or your spouse on a joint return) — Did your husband or wife have a health savings account (HSA) of their own at any time in 2025, or was anything put into one for 2025?
 
 Shown on a one-person return:
 
-> Does your husband or wife have a health savings account (HSA) of their own?
+> Did your husband or wife have a health savings account (HSA) of their own at any time in 2025, or was anything put into one for 2025?
 
 Shown for you on a couple's return:
 
-> About you — Does your husband or wife have a health savings account (HSA) of their own?
+> About you — Did your husband or wife have a health savings account (HSA) of their own at any time in 2025, or was anything put into one for 2025?
 
 Shown for your spouse:
 
-> About your spouse — Does your spouse's husband or wife have a health savings account (HSA) of their own?
+> About your spouse — Did your spouse's husband or wife have a health savings account (HSA) of their own at any time in 2025, or was anything put into one for 2025?
 
 **Help, as stored**
 
-> Count an HSA in their name even if nothing was put into it for 2025. A Yes ends the interview here.
+> Count an HSA in their name even if nothing was put into it for 2025, and one that has since been closed or moved to another HSA. A Yes ends the interview here.
 
 Shown on a one-person return:
 
-> Count an HSA in their name even if nothing was put into it for 2025. A Yes ends the interview here.
+> Count an HSA in their name even if nothing was put into it for 2025, and one that has since been closed or moved to another HSA. A Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> Count an HSA in their name even if nothing was put into it for 2025. A Yes ends the interview here.
+> Count an HSA in their name even if nothing was put into it for 2025, and one that has since been closed or moved to another HSA. A Yes ends the interview here.
 
 Shown for your spouse:
 
-> Count an HSA in their name even if nothing was put into it for 2025. A Yes ends the interview here.
+> Count an HSA in their name even if nothing was put into it for 2025, and one that has since been closed or moved to another HSA. A Yes ends the interview here.
 
 ## `person.x_hsa_value`
 
@@ -4261,7 +4277,7 @@ Shown for your spouse:
 
 > For this person (you, or your spouse on a joint return) — How much of the money that came out paid for medical costs that count?
 >
-> The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+> The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA. An HSA funded by money moved from another HSA or an Archer MSA counts as opened when that earlier account was.
 >
 > Whose costs count:
 > - yours, and your spouse's
@@ -4270,7 +4286,7 @@ Shown for your spouse:
 > - those of your child if you are divorced, separated or lived apart from the other parent for the last six months of the year, whichever parent claims the child
 >
 > Insurance premiums count only for:
-> - long-term care insurance
+> - long-term care insurance, up to the yearly limit for the age of the person covered (the Schedule A instructions list it under "Limit on long-term care premiums you can deduct")
 > - continuation coverage such as COBRA, for you, your spouse, or a dependent
 > - health coverage while you, your spouse, or a dependent received unemployment compensation
 > - Medicare and other health coverage if you were 65 or older, but not a Medicare supplement (Medigap) policy; if you are under 65, Medicare premiums for your spouse or a dependent do not count
@@ -4281,7 +4297,7 @@ Shown on a one-person return:
 
 > How much of the money that came out paid for medical costs that count?
 >
-> The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+> The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA. An HSA funded by money moved from another HSA or an Archer MSA counts as opened when that earlier account was.
 >
 > Whose costs count:
 > - yours, and your spouse's
@@ -4290,7 +4306,7 @@ Shown on a one-person return:
 > - those of your child if you are divorced, separated or lived apart from the other parent for the last six months of the year, whichever parent claims the child
 >
 > Insurance premiums count only for:
-> - long-term care insurance
+> - long-term care insurance, up to the yearly limit for the age of the person covered (the Schedule A instructions list it under "Limit on long-term care premiums you can deduct")
 > - continuation coverage such as COBRA, for you, your spouse, or a dependent
 > - health coverage while you, your spouse, or a dependent received unemployment compensation
 > - Medicare and other health coverage if you were 65 or older, but not a Medicare supplement (Medigap) policy; if you are under 65, Medicare premiums for your spouse or a dependent do not count
@@ -4301,7 +4317,7 @@ Shown for you on a couple's return:
 
 > About you — How much of the money that came out paid for medical costs that count?
 >
-> The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+> The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA. An HSA funded by money moved from another HSA or an Archer MSA counts as opened when that earlier account was.
 >
 > Whose costs count:
 > - yours, and your spouse's
@@ -4310,7 +4326,7 @@ Shown for you on a couple's return:
 > - those of your child if you are divorced, separated or lived apart from the other parent for the last six months of the year, whichever parent claims the child
 >
 > Insurance premiums count only for:
-> - long-term care insurance
+> - long-term care insurance, up to the yearly limit for the age of the person covered (the Schedule A instructions list it under "Limit on long-term care premiums you can deduct")
 > - continuation coverage such as COBRA, for you, your spouse, or a dependent
 > - health coverage while you, your spouse, or a dependent received unemployment compensation
 > - Medicare and other health coverage if you were 65 or older, but not a Medicare supplement (Medigap) policy; if you are under 65, Medicare premiums for your spouse or a dependent do not count
@@ -4321,7 +4337,7 @@ Shown for your spouse:
 
 > About your spouse — How much of the money that came out paid for medical costs that count?
 >
-> The costs must not have been paid back by insurance or anyone else, and must date from after your spouse opened the HSA.
+> The costs must not have been paid back by insurance or anyone else, and must date from after your spouse opened the HSA. An HSA funded by money moved from another HSA or an Archer MSA counts as opened when that earlier account was.
 >
 > Whose costs count:
 > - your spouse's, and yours
@@ -4330,7 +4346,7 @@ Shown for your spouse:
 > - those of your spouse's child if your spouse is divorced, separated or lived apart from the other parent for the last six months of the year, whichever parent claims the child
 >
 > Insurance premiums count only for:
-> - long-term care insurance
+> - long-term care insurance, up to the yearly limit for the age of the person covered (the Schedule A instructions list it under "Limit on long-term care premiums your spouse can deduct")
 > - continuation coverage such as COBRA, for your spouse, you, or a dependent
 > - health coverage while your spouse, you, or a dependent received unemployment compensation
 > - Medicare and other health coverage if your spouse was 65 or older, but not a Medicare supplement (Medigap) policy; if your spouse is under 65, Medicare premiums for you or a dependent do not count
@@ -4957,19 +4973,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA's limit is lower once modified AGI reaches $236,000 on a joint return or $150,000 for single, head of household, or married filing separately and apart all year, and once it is above zero for married filing separately and living together at any time in 2025 (no Roth contribution at all from $10,000). Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
 
 Shown on a one-person return:
 
-> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA's limit is lower once modified AGI reaches $236,000 on a joint return or $150,000 for single, head of household, or married filing separately and apart all year, and once it is above zero for married filing separately and living together at any time in 2025 (no Roth contribution at all from $10,000). Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA's limit is lower once modified AGI reaches $236,000 on a joint return or $150,000 for single, head of household, or married filing separately and apart all year, and once it is above zero for married filing separately and living together at any time in 2025 (no Roth contribution at all from $10,000). Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
 
 Shown for your spouse:
 
-> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if your spouse was 50 or older at the end of 2025), or your spouse's taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if your spouse was 50 or older at the end of 2025), or your spouse's taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA's limit is lower once modified AGI reaches $236,000 on a joint return or $150,000 for single, head of household, or married filing separately and apart all year, and once it is above zero for married filing separately and living together at any time in 2025 (no Roth contribution at all from $10,000). Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
 
 ## `person.ira_recharacterized`
 
@@ -5213,19 +5229,19 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Is an ABLE account held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?
+> For this person (you, or your spouse on a joint return) — Has an ABLE account been held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?
 
 Shown on a one-person return:
 
-> Is an ABLE account held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?
+> Has an ABLE account been held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?
 
 Shown for you on a couple's return:
 
-> About you — Is an ABLE account held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?
+> About you — Has an ABLE account been held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?
 
 Shown for your spouse:
 
-> About your spouse — Is an ABLE account held for your spouse, and did your spouse put money into it for 2025, or get money out of it in 2023 or later?
+> About your spouse — Has an ABLE account been held for your spouse, and did your spouse put money into it for 2025, or get money out of it in 2023 or later?
 
 **Help, as stored**
 

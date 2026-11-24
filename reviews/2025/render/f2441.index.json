@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "690653ce462fee28a281473b391cab01737a91189856ed1b534f23915744c967",
  "head_rows": {
-  "match / mismatch / unclear / missing": "36 / 1 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "34 / 3 / 0 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -40,9 +40,10 @@
   },
   {
    "key": "5",
-   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
-   "status": "MATCH",
-   "subject_key": "83016a412a5691d9e97686d55513bb6d8603572225234ae2b59603bd79f133fa"
+   "record": "85f8f5f9b8e2138d4ca3c5f1162c115e2e5a87ab32a2cfaba7161394dbce1bf9",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i2441 pp. 4-5, Lines 4 and 5 (earned income starts from Form 1040 line 1z). The branches are right (the reply agrees); the spouse's amount omits only line 1z items refused on every return the tool computes: employer adoption benefits (line 1f) by scope.adoption_benefits_if_adoption, excess elective deferrals by scope.excess_deferral_if_w2, and the other items of line 1b to 1d and 1g to 1h outside person.dc_earned by scope.other_income, as ruled for line 4 in earlier runs. This run reviewed the line because f2441.spouse_died changed (BUG-0681); its definition is unchanged.",
+   "subject_key": "243e0b216b0a5a0b66b4a2d89adba1073823ae548c96d387c8ac9594e9a89f96"
   },
   {
    "key": "6",
@@ -155,9 +156,10 @@
   },
   {
    "key": "19",
-   "record": "d12585551b3b18f4ab9189ce81d69fee511ff72a23e3cbf62a1fe5a1ba90e165",
-   "status": "MATCH",
-   "subject_key": "1e84f6be3a30b70b76ea579d8f8779aec8b94bf65f208a1b8d85be04bf61ed53"
+   "record": "85f8f5f9b8e2138d4ca3c5f1162c115e2e5a87ab32a2cfaba7161394dbce1bf9",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i2441 p. 6, Line 19, and p. 5, Line 18 (earned income figured as for lines 4 and 5). The three branches follow the instructions (the reply agrees); the spouse's amount omits only line 1z items refused on every return the tool computes (line 1f by scope.adoption_benefits_if_adoption, excess elective deferrals by scope.excess_deferral_if_w2, the rest by scope.other_income), as ruled for line 5.",
+   "subject_key": "d9ef49375a5d95c45c666152ae5f40d7e4b62d7a068394c4cd5dda0fc3bc506c"
   },
   {
    "key": "20",
@@ -238,7 +240,7 @@
   "2 (box)": "9f20227fe4c6b3ab67d7e69e04693310f785307a5da5219e7ef39d13675c6b7f",
   "3": "5053656075b0727eba360d068b0b6df22d25a879074622ba931603a0f04609aa",
   "4": "dec360c614fb6ed54aea47d08f1c03adbe50e059a77d50be3bf261d30ec0b4a6",
-  "5": "2bb63e2d6174ebb22957dc73320f7731f6a39fc58f49aec1b3ac27501a3d48c9",
+  "5": "ea5b9bcbfe6c1aa1e937e58770fc081b2dce4669c701adfd6d91ecb40d8c1dc7",
   "6": "34f0d934a032cf5160050a88a7c21ff9f4b54c02714966c2a6fce32c9aca03fb",
   "7": "9b9154af283c2b42e9d64eb62ce706bf52b02db97816b30e65038653eeb3c9aa",
   "8": "17c760497e98f0b2f513dfc9cc6b76141b008ea179d06e5f01941e0ab163e0e8",
@@ -257,7 +259,7 @@
   "16": "5da92b9db63986b4ddf140079494a36e2688bf385d9fda6a8e0cabcea6dc9353",
   "17": "53d82130477336f9957ddecd0d80db9b57b23b6d45df57c96bad8b69d85044db",
   "18": "78154172f34eac826e259b4cbd5b2fc3ea7030866f7948015a5dd250d1df4870",
-  "19": "43bbdcfddb84e2daa069776eb6cb2ad04106ea492177791b1ab9ce8c9b3c8171",
+  "19": "e6e204450dd1ce0828303332d52e86abfd47c82df93a8e98e13dfcf2535bd420",
   "20": "d93c581f2600b5c4a2c6c650ad83bb978c7088aad12aef9f9957fbc18f147e75",
   "21": "5680979e0424b1ab971cd62264d0e956c9c55c1ed1a48c97824c12035b86b7c6",
   "22": "7073e82c50d0aaae88b246fd9ceb2645fcf17439c15fd04984e7f0f53c206d37",

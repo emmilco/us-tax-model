@@ -92,13 +92,13 @@ form:
     - id: sb.trust_any
       printed: (gate)
       type: Bool
-      label: 'Do you (or, on a joint return, your spouse) have anything to do with a trust or family foundation that is outside the United States or has a trustee abroad, as the person who set it up, gave to it, or may receive from it?'
+      label: 'Do you (or, on a joint return, your spouse) have, or did you have at any time in 2025, anything to do with a trust or family foundation that is outside the United States, has a trustee abroad, or in which anyone other than a U.S. citizen, U.S. resident or U.S. company can make or veto a decision: as the person who set it up, gave, sold or lent anything to it (directly or through another person or company), received or may receive anything from it in any way, holds a power over it, or is taxed on its income as its owner?'
       expr:
         op: input
-        source: 'Do you (or, on a joint return, your spouse) have anything to do with a trust or family foundation that is outside the United States or has a trustee abroad, as the person who set it up, gave to it, or may receive from it?'
+        source: 'Do you (or, on a joint return, your spouse) have, or did you have at any time in 2025, anything to do with a trust or family foundation that is outside the United States, has a trustee abroad, or in which anyone other than a U.S. citizen, U.S. resident or U.S. company can make or veto a decision: as the person who set it up, gave, sold or lent anything to it (directly or through another person or company), received or may receive anything from it in any way, holds a power over it, or is taxed on its income as its owner?'
       cite:
         doc: f1040sb
-        locator: 'Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans'
+        locator: 'Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans; i3520 p. 1, Who Must File, items 2 and 3, "treated as the owner of any part of the assets of a foreign trust", "received, directly or indirectly, a distribution from a foreign trust"; i3520 p. 4, Distribution, "without regard to whether the recipient is designated as a beneficiary"; i3520 p. 6, Reportable Event, "The transfer of any money or property, directly or indirectly, to a foreign trust"'
     - id: sb.company_any
       printed: (gate)
       type: Bool
@@ -236,13 +236,30 @@ form:
       printed: "8"
       type: Bool
       gated_by: sb.line8_if_foreign
-      label: During 2025, did you (or, on a joint return, your spouse) receive a distribution from a foreign trust, including money or property that reached you through another person or company (a loan of cash or marketable securities counts, and so does free or below-market use of a home, car or other property the trust owns), or were you (or, on a joint return, your spouse) the grantor of, or a transferor to, a foreign trust that existed at any time during 2025, even one created or funded in an earlier year (a transferor is anyone who gave, sold, lent or otherwise transferred money or property to the trust, directly or through another person, in 2025 or any earlier year)? A foreign foundation, a waqf or another arrangement that holds property for beneficiaries counts as a trust; a trust counts as foreign unless a court in one of the 50 states or the District of Columbia (not one in Puerto Rico, Guam or another US territory) can supervise its administration and US persons (US citizens or residents, or US companies such as a US bank) control all of its substantial decisions, so it is foreign if anyone else can make or veto any of them, even if the trust was set up under US law or has a US address; if you are not sure whether an arrangement is a trust or whether a trust is foreign, answer Yes.
+      label: During 2025, did you (or, on a joint return, your spouse) receive a distribution from a foreign trust, including money or property that reached you through another person or company (a loan of cash or marketable securities counts, and so does free or below-market use of a home, car or other property the trust owns), or were you (or, on a joint return, your spouse) the grantor of, or a transferor to, a foreign trust that existed at any time during 2025, even one created or funded in an earlier year (a transferor is anyone who gave, sold, lent or otherwise transferred money or property to the trust, directly or through another person, in 2025 or any earlier year)? A trust counts as foreign unless a court in one of the 50 states or the District of Columbia (not one in Puerto Rico, Guam or another US territory) can supervise its administration and US persons (US citizens or residents, or US companies such as a US bank) control all of its substantial decisions, so it is foreign if anyone else can make or veto any of them, even if the trust was set up under US law or has a US address; if you are not sure whether an arrangement is a trust or whether a trust is foreign, answer Yes.
       expr:
         op: input
-        source: During 2025, did you (or, on a joint return, your spouse) receive a distribution from a foreign trust, including money or property that reached you through another person or company (a loan of cash or marketable securities counts, and so does free or below-market use of a home, car or other property the trust owns), or were you (or, on a joint return, your spouse) the grantor of, or a transferor to, a foreign trust that existed at any time during 2025, even one created or funded in an earlier year (a transferor is anyone who gave, sold, lent or otherwise transferred money or property to the trust, directly or through another person, in 2025 or any earlier year)? A foreign foundation, a waqf or another arrangement that holds property for beneficiaries counts as a trust; a trust counts as foreign unless a court in one of the 50 states or the District of Columbia (not one in Puerto Rico, Guam or another US territory) can supervise its administration and US persons (US citizens or residents, or US companies such as a US bank) control all of its substantial decisions, so it is foreign if anyone else can make or veto any of them, even if the trust was set up under US law or has a US address; if you are not sure whether an arrangement is a trust or whether a trust is foreign, answer Yes.
+        source: During 2025, did you (or, on a joint return, your spouse) receive a distribution from a foreign trust, including money or property that reached you through another person or company (a loan of cash or marketable securities counts, and so does free or below-market use of a home, car or other property the trust owns), or were you (or, on a joint return, your spouse) the grantor of, or a transferor to, a foreign trust that existed at any time during 2025, even one created or funded in an earlier year (a transferor is anyone who gave, sold, lent or otherwise transferred money or property to the trust, directly or through another person, in 2025 or any earlier year)? A trust counts as foreign unless a court in one of the 50 states or the District of Columbia (not one in Puerto Rico, Guam or another US territory) can supervise its administration and US persons (US citizens or residents, or US companies such as a US bank) control all of its substantial decisions, so it is foreign if anyone else can make or veto any of them, even if the trust was set up under US law or has a US address; if you are not sure whether an arrangement is a trust or whether a trust is foreign, answer Yes.
       cite:
         doc: i1040sb
-        locator: 'pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, "a loan of cash or marketable securities is generally considered to be a distribution"; "If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520."; cfr-26-301-7701-7 pp. 1–2, In general, "A trust is a United States person if", "The term foreign trust means any trust other than a domestic trust"; cfr-26-301-7701-7 p. 2, The court test, "a court within a territory or possession of the United States or within a foreign country is not a court within the United States"; cfr-26-301-7701-7 p. 4, Control test, "with no other person having the power to veto any of the substantial decisions"'
+        locator: 'pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, "a loan of cash or marketable securities is generally considered to be a distribution"; "If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520."; cfr-26-301-7701-7 pp. 1–2, In general, "A trust is a United States person if", "The term foreign trust means any trust other than a domestic trust"; cfr-26-301-7701-7 p. 2, The court test, "a court within a territory or possession of the United States or within a foreign country is not a court within the United States"; cfr-26-301-7701-7 p. 4, Control test, "with no other person having the power to veto any of the substantial decisions"; i3520 p. 1, Who Must File, item 3, "received, directly or indirectly, a distribution from a foreign trust", "(1) a loan of cash or marketable securities (including an extension of credit) directly or indirectly from such foreign trust, or (2) the uncompensated use of trust property"; i3520 p. 4, Distribution, "A distribution also includes constructive transfers from a foreign trust", "used any property owned by a foreign trust without paying FMV within a reasonable amount of time, the amount of such loan or the FMV of the use of trust property will be treated as a distribution"; i3520 p. 6, Reportable Event, "The transfer of any money or property, directly or indirectly, to a foreign trust by a U.S. person"'
+    - id: sb.trust_owner
+      printed: (helper)
+      type: Bool
+      gated_by: sb.trust_owner_if_foreign
+      label: During 2025, were you (or, on a joint return, your spouse) treated as the owner of any part of a foreign trust
+        under the grantor trust rules (sections 671 through 679), whether or not the trust had income in 2025 or its income
+        was reported, even if you did not set it up, give anything to it or receive anything from it? If you are not sure,
+        answer Yes.
+      expr:
+        op: input
+        source: During 2025, were you (or, on a joint return, your spouse) treated as the owner of any part of a foreign trust
+          under the grantor trust rules (sections 671 through 679), whether or not the trust had income in 2025 or its income
+          was reported, even if you did not set it up, give anything to it or receive anything from it? If you are not sure,
+          answer Yes.
+      cite:
+        doc: i3520
+        locator: 'p. 1, Who Must File, item 2, "You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679", "Note: You are required to complete Part II even if there have been no transactions involving the trust during the tax year"; p. 5, Grantor Trust, "A grantor trust is any trust to the extent that the assets of the trust are treated as owned by a person other than the trust"; p. 6, Owner, "An owner of a foreign trust is the person that is treated as owning any of the assets of a foreign trust under the rules of sections 671 through 679"; i1040sb p. 3, Line 8, "If you were treated as the owner of a foreign trust under the grantor trust rules, you are also responsible for ensuring that the foreign trust files Form 3520-A"'
     - id: sb.zero
       printed: (helper)
       type: NonNegDollars
@@ -293,6 +310,13 @@ form:
           cite:
             doc: i1040sb
             locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.trust_owner_if_foreign
+          form: Form 3520 / Form 3520-A
+          remedy: An owner of a foreign trust under the grantor trust rules files Form 3520 even with no
+            transaction in the year; this tool does not prepare it.
+          cite:
+            doc: i3520
+            locator: p. 1, Who Must File, item 2, "You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679", "You are required to complete Part II even if there have been no transactions involving the trust during the tax year"
         - when: sb.form5471_if_foreign
           form: Form 5471
           remedy: You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.
@@ -338,6 +362,13 @@ form:
           cite:
             doc: i1040sb
             locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.trust_owner_if_foreign
+          form: Form 3520 / Form 3520-A
+          remedy: An owner of a foreign trust under the grantor trust rules files Form 3520 even with no
+            transaction in the year; this tool does not prepare it.
+          cite:
+            doc: i3520
+            locator: p. 1, Who Must File, item 2, "You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679", "You are required to complete Part II even if there have been no transactions involving the trust during the tax year"
         - when: sb.form5471_if_foreign
           form: Form 5471
           remedy: You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.
@@ -394,6 +425,13 @@ form:
           cite:
             doc: i1040sb
             locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.trust_owner_if_foreign
+          form: Form 3520 / Form 3520-A
+          remedy: An owner of a foreign trust under the grantor trust rules files Form 3520 even with no
+            transaction in the year; this tool does not prepare it.
+          cite:
+            doc: i3520
+            locator: p. 1, Who Must File, item 2, "You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679", "You are required to complete Part II even if there have been no transactions involving the trust during the tax year"
         - when: sb.form5471_if_foreign
           form: Form 5471
           remedy: You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.
@@ -667,6 +705,29 @@ form:
       cite:
         doc: i1040sb
         locator: 'p. 3, Line 8, "If you received a distribution from a foreign trust, you must provide additional information", "If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520"'
+    - id: sb.trust_owner_if_foreign
+      printed: (helper)
+      type: Bool
+      label: 'The owner of a foreign trust under the grantor trust rules, when you or your spouse had a connection to a foreign
+        trust or a trust in a U.S. territory; false otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sb.foreign_trust_any
+                - const: true
+            then: sb.trust_owner
+          - guard:
+              op: test
+              eq:
+                - sb.foreign_trust_any
+                - const: false
+            then: sb.foreign_no
+      cite:
+        doc: i3520
+        locator: 'p. 1, Who Must File, item 2, "is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679"'
     - id: sb.form5471_if_foreign
       printed: (helper)
       type: Bool

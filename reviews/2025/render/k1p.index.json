@@ -2,232 +2,221 @@
  "kind": "render",
  "form": "k1p",
  "family": "claude",
- "base": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
- "head_rows": {
-  "match / mismatch / unclear / missing": "17 / 17 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
- },
+ "base": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
  "lines": [
   {
    "key": "1",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "cdd2eaaa3e4ddac54c0af9c6e001f8be9135a1fba3d95d435aeb37f384705ada"
   },
   {
    "key": "2",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "caedb631392a3350a8f73f12a469cb44b0259841df7508a2d0bc53a7a5504f06"
   },
   {
    "key": "3",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "966f80f5c9fc214e052708e7d5afd30926bae690ee59e0a4b646c162cf56ae73"
   },
   {
    "key": "4a",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "776b165af9072ff657bb89b871dface3c7fc1cbe4e64b719272b51cb3dfb521e"
   },
   {
    "key": "5",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "ac80deafb3159c0f5f7dfe4fab222f12778a6a3fbae0ff473589e07a9af160bb"
   },
   {
    "key": "6a",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "aa7a6f84e3487ad48d0238253e6db7ad57dff35af1f3996029d3e4fbda23a2a4"
   },
   {
    "key": "8",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "a389584be1d380245e1e9a19cd68365fb87096271d796f2a6295292ec0ae8e2c"
   },
   {
    "key": "9a",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "f4f456183b0fef2191c5a1e8d3e2e0a8f345faf5919d6b9c4eba7d44651cbbaa"
   },
   {
    "key": "14 A",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "2d7a5397b4302006049ca7f57a57fc54e4d3fe3e49b4ff8ac257f64e0f54c465"
   },
   {
    "key": "15 O",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "512704af13d691208ba9c8cd440b1092b40f1d1a9ff1d6271b2183b0e11bf07b"
   },
   {
    "key": "18 A",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "4de70831a3dfc3747874a5e3bd482a98c8bb33d3736cad40ca2679a535b9d986"
   },
   {
    "key": "20 Z",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "d4e8f18bee13dd88e93848cacea7f85742762cb3b34a7d208441ca4cf4d893a1"
   },
   {
    "key": "6b",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "e4e6fa547532e42d947f77ebd49c815db022f8d4ce50246686e143aecb240d8c"
   },
   {
    "key": "9b",
-   "record": "0bc5446dd649901f2c245d03c028894c9ba544adedb927dddc9be7d08dc60801",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "6d82b2000e0c2589a4949e568d042e241b6808f39ac32e42bb57f180707ecc9a"
   },
   {
    "key": "9c",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
    "subject_key": "3ccc8828f6cbe9567c5346a55d0ef3c6ed0688014f43cc6987408c6658784d02"
   },
   {
    "key": "V (a) (k1p.b1_net_income)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; every case the reply names is refused on k1p.screened, which every person sum reads: tests 4, 6 and 7 (t4_if_gp, t6_if_asked, t7_if_gp), a trading partnership (trader_if_b1), item D (k1p.ptp, i1065sk1 p. 10 'Don't report passive income, gains, or losses from a PTP on Form 8582'), and a former passive activity with a held-back loss (k1p.former_passive). The render review sees the line's restatement without the refusals on the screened line.",
-   "subject_key": "1d880227ad731c26adcd8e48fb3c3248a701fb4f9a8034b8a849ea54b54e8a99"
+   "ruling": "Ruling: scope; tests 4, 6 and 7 are refused (k1p.t4_if_gp, k1p.t6_if_asked, k1p.t7_if_gp), a limited partner meets only tests 1, 5 and 6 (item G; an LLC member who is not a manager is refused, k1p.llc_member_active), a trading partnership is refused (k1p.trader_if_b1) and so is significant participation income (k1p.over100_if_income), so tests 1, 2, 3 and 5 decide on every return that completes.",
+   "subject_key": "e604a3ddd61a0173778bb1a79e8c75f63a8d1dc71da1c5216815e8e4b4084db9"
   },
   {
    "key": "V (b) (k1p.b1_net_loss)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; as V (a): tests 4, 6, 7, trading and PTP are refused on k1p.screened, and a loss above basis or not at risk is refused (basis_short_if_loss, not_at_risk_if_loss; i1065sk1 p. 3 'the basis limitations, the at-risk limitations'), so the box 1 loss entered is the loss after those limits on every return that completes.",
-   "subject_key": "76cfbfb729bb5d6b09f4a71fc7336b34c912adedc23d3fbbd971c3a0bbee3684"
+   "ruling": "Ruling: scope; as V (a) (k1p.b1_net_income): tests 4, 6 and 7 are refused (k1p.t4_if_gp, k1p.t6_if_asked, k1p.t7_if_gp), a limited partner meets only tests 1, 5 and 6 (item G; an LLC member who is not a manager is refused, k1p.llc_member_active), a trading partnership is refused (k1p.trader_if_b1) and so is significant participation income (k1p.over100_if_income).",
+   "subject_key": "55ae2ddb1478770080821d81a59b2c9712e11f992fa078e7a96cb45d0a25ca1b"
   },
   {
    "key": "IV/V (a)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; item D is refused (k1p.ptp) and a real estate professional is refused by sche.re_pro (scout-k1 R-K20; forms sche, lane x1-sche); in this tree scope.k1 still refuses every K-1 filer. Integration must keep sche.re_pro asked of a K-1 box 2 filer.",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
+   "status": "MATCH",
    "subject_key": "34dbd880781916df1ecdd3026b65e6349f86136480b70df8bbd49f65c95ebb3b"
   },
   {
    "key": "IV/V (b)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; as IV/V (a), plus basis and at-risk limits refused (basis_short_if_loss, not_at_risk_if_loss).",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
+   "status": "MATCH",
    "subject_key": "f0fd5cfbc465ee2dbff25f8e9b485108708fde52eef41bb5decb4fbab2d17c5c"
   },
   {
    "key": "V (a) (k1p.b3_net_income)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; item D (PTP) is refused on k1p.screened (k1p.ptp).",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
+   "status": "MATCH",
    "subject_key": "26d59ada5a56cd2e18a35198f26a00469cd7b380b2b5aae04ad9d074720a8ce6"
   },
   {
    "key": "V (b) (k1p.b3_net_loss)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; item D (PTP), losses above basis and amounts not at risk are refused on k1p.screened (k1p.ptp, basis_short_if_loss, not_at_risk_if_loss).",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
+   "status": "MATCH",
    "subject_key": "9cbcb07b05d7c7a2c409c533f2abcb60eb3ac15e5cbf3b2c1b9151c63f37346e"
   },
   {
    "key": "(e) (k1p.b1_overall_loss)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; the former passive activity the reply names (a held-back loss from a business now materially participated in) is refused (k1p.former_passive, i8582 'former passive activity'); the other gaps are refused as for V (a).",
-   "subject_key": "8bd05c15007ab6493a1442237deb011e8a459cedd39e9729e8aebda714896c1f"
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
+   "status": "MATCH",
+   "subject_key": "a65fe97da9d6cb1a272a05957225bd3dd4e0afb69c40db4226b11ace8c09c35c"
   },
   {
    "key": "(e) (k1p.b2_overall_loss)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
-   "subject_key": "b7dab539fbee3327df0bdc58626a7e924a060f2056d3042b5b5d158e6493e481"
+   "subject_key": "0769afaa3366d589ea059b01b7bce1b662792e10a4415fdb89a5db4f8b4845e5"
   },
   {
    "key": "(e) (k1p.b3_overall_loss)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MATCH",
-   "subject_key": "75bdf4daffa913a0cc7914102307eb7eabb3ee2b9c142b8791ee39e33dbb78b3"
+   "subject_key": "3188dc7ededfc1211896813a893923cfe713c0da97e697f169e330f7bbfd2d0f"
   },
   {
    "key": "IV (a)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; married filing separately is refused for every return (scope, s3.mfs: 'Married filing separately'), so the rule that MFS filers who lived with their spouse 'must use Part V instead of Part IV' never applies to a completed return.",
-   "subject_key": "a70e7353658f110ae45fa9763dfa438ea2e8993db78acc100ddeca48cfd06a80"
+   "ruling": "Ruling: scope; married filing separately is refused for every return (s3.mfs), so the rule for separate filers living with their spouse never applies to a completed return.",
+   "subject_key": "19e6ae64d80bda530c3a1e72bc19c092097b62494e19ce604ee8c2c38ebe87d3"
   },
   {
    "key": "IV (b)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MISMATCH",
    "ruling": "Ruling: scope; as IV (a): married filing separately is refused (s3.mfs).",
-   "subject_key": "1003dc6c49f5c892bf807697728a3cddc4895a309a77a9d10dbe6ca0b1cb2105"
+   "subject_key": "f9f1a5678b69aa60f97ca5b58c2ffb7b1ed4f6596e5f1e22907faa3ba3856c73"
   },
   {
    "key": "IV (c)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; a held-back box 2 loss with current active participation but none in the year it arose is refused (k1p.prior_not_active_if, 'Form 8582, Part IV (prior-year loss from a year without active participation)'), so Part IV column (c) holds only losses with active participation in both years ('Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year').",
-   "subject_key": "d63a7ce7a1e1bf79cc2c127ba2d277656f150b49dfc41ec6011607af90aa9378"
+   "ruling": "Ruling: scope; a held-back box 2 loss with active participation this year but not in the year it arose is refused (k1p.prior_not_active_if, which now names 'at any time that year' and a limited partner's share), so a prior loss reaches Part IV only with active participation in both years; married filing separately is refused (s3.mfs).",
+   "subject_key": "219b45c78aa7c27bbe995ba84aea4c26aed9d69c66817b2d81d18098a909e1d4"
   },
   {
    "key": "VI (a)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; as IV (a): married filing separately is refused (s3.mfs). The reviewer agrees the value is right.",
-   "subject_key": "52ace2d9dfa451f55a2490c1ceaaf1a86ec981fa06aa9da32636b911150de346"
+   "ruling": "Ruling: scope; as IV (a): married filing separately is refused (s3.mfs). The reviewer agrees the value is right; Part VI is read only where Part II line 9 has an amount, on the return-level Form 8582.",
+   "subject_key": "b07901d440ffd6dcd732d2fec452c36739aabdf9132bf3afcf46e548743d2d6c"
   },
   {
    "key": "V (a) (k1p.p5_income)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; MFS refused (s3.mfs); the box 1 and box 3 cases are refused as for those lines.",
-   "subject_key": "5fd3c105195ef8d3154834c8d2bc82271392d55e12187cc34f3a1b5c29713c82"
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
+   "status": "MATCH",
+   "subject_key": "19ee39c0f572d1d49578251f6cb648066fb3478f08f59cadfba58c3b5da01159"
   },
   {
    "key": "V (b) (k1p.p5_loss)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; MFS refused (s3.mfs); the box 1 cases are refused as for V (b) (k1p.b1_net_loss).",
-   "subject_key": "6d0f8552a1f271bf920aba9bb7bf0b10b0663c9da46bfbacef6b803a438337a1"
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
+   "status": "MATCH",
+   "subject_key": "46b15d9656151ee144b3f3eb530c9f9d9fb56c4871eb0b6868efeddbbbc9f453"
   },
   {
    "key": "V (c)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the case of active participation now but not when the loss arose is refused (k1p.prior_not_active_if), so a box 2 prior loss goes to Part V exactly when the partner did not actively participate in 2025, which with that refusal is 'If you didn't actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V'.",
-   "subject_key": "0f221aaa43c47f343a6051b8530b19c53d42fd69982ea961c3b543f551102249"
+   "ruling": "Ruling: scope; the case of active participation now but not when the loss arose is refused (k1p.prior_not_active_if), so a box 2 prior loss goes to Part V exactly when there was no active participation this year, which is when it was not in both years.",
+   "subject_key": "002f72959584e6d1f0fe85bf172d8613f3ef67875863811e449c1ae1e8240d04"
   },
   {
    "key": "28 (h)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; PTP refused (k1p.ptp); real estate professional refused (sche.re_pro, R-K20), as IV/V (a).",
+   "ruling": "Ruling: scope; a real estate professional's box 2 is refused (k1p.re_pro_if_b2) and a PTP (k1p.ptp); the box 1 portion uses complete tests because tests 4, 6 and 7 are refused (k1p.t4_if_gp, k1p.t6_if_asked, k1p.t7_if_gp), a limited partner meets only tests 1, 5 and 6 (item G; an LLC member who is not a manager is refused, k1p.llc_member_active), a trading partnership is refused (k1p.trader_if_b1) and so is significant participation income (k1p.over100_if_income).",
    "subject_key": "0c2a5d89fa35e9ffef7f7b36cf8fb82edc751a3ad2bc4273fdd62328446901dc"
   },
   {
    "key": "28 (k)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; a trading partnership is refused (k1p.trader_if_b1) and tests 4, 6 and 7 are refused, so the material participation used (tests 1, 2, 3, 5) is complete on every return that completes.",
-   "subject_key": "1a04851b8a7ca9e8250cae209e0fa76ffc5b484358d761001694a3099c8bb6a4"
+   "ruling": "Ruling: scope; box 4b (guaranteed payments for capital) is refused on k1p.screened (k1p.r_b4b), so column (k) never needs it; trading and tests 4, 6 and 7 are refused as for 28 (i).",
+   "subject_key": "a8d827160305edbbd98c3578f7543a29e67d110ee05f94c06f2bd3d8c7f501ba"
   },
   {
    "key": "28 (i)",
-   "record": "a9f52dfd76b4229f8d34ba10039d52d3ea43724fca8fb6a7c0d987fd7694abf1",
+   "record": "8beb644eed87785aec0cb5f5ed549065b368ba91bdbdd43e0725b8925050f1c6",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; losses above basis and not at risk are refused (basis_short_if_loss, not_at_risk_if_loss); trading and tests 4, 6 and 7 refused as for 28 (k).",
-   "subject_key": "ed81a6edc0ff10a156759ed4e91868217eadcccc194cfe3ea3352c34777ebea7"
+   "ruling": "Ruling: scope; losses above basis and not at risk are refused (k1p.basis_short_if_loss, k1p.not_at_risk_if_loss, k1p.basis_carry, k1p.risk_carry), so the box 1 loss is entered after those limitations; tests 4, 6 and 7 are refused (k1p.t4_if_gp, k1p.t6_if_asked, k1p.t7_if_gp), a limited partner meets only tests 1, 5 and 6 (item G; an LLC member who is not a manager is refused, k1p.llc_member_active), a trading partnership is refused (k1p.trader_if_b1) and so is significant participation income (k1p.over100_if_income).",
+   "subject_key": "f715fed05b79f787bb353270a2b3fbe3bbe43ca96d993457546cfccf8f55c6da"
   }
  ],
  "subjects": {
@@ -246,25 +235,25 @@
   "6b": "3bd84370d2d4c5ac7f3327680e8ba424dba8c5ad4e17017428cdfdcc8ca3be05",
   "9b": "27614c9e858a9013b8028a8dc07d0a00d06334b45f2519742e7d5d48a8b76724",
   "9c": "491594ee84b9548a954423a4721661adb593f6316abbcf726a2f5a9d0880e2b4",
-  "V (a) (k1p.b1_net_income)": "021bc0bde8b8d11259a8daef6464e18fe4ecbecd9ef51b0e52bed0b1da6833b7",
-  "V (b) (k1p.b1_net_loss)": "21d4b1a03b403f05fad2bbfd540af38e3381a2500ceb454b2fac8f924fd95131",
+  "V (a) (k1p.b1_net_income)": "77e2b09f327e13acf9e59b7bf248b945671e9061ee4d6c158dd9e785a1a3b062",
+  "V (b) (k1p.b1_net_loss)": "c9d4934bc0f36b43d0ca93b19ce80be70247d1c36e5934fb98cc09b4811a0976",
   "IV/V (a)": "c642db9fceb34ec94c7674a89742e8125b926061f1883e2544e22799a0d790b5",
   "IV/V (b)": "bb930fed214509d3624296b2b6cb4d3ed0b62cce7a626a6b69b5e42429682bca",
   "V (a) (k1p.b3_net_income)": "2d7e35505b7f01e14e133e6b3da83393be55437c2d03ee72a407362fc4bad0d5",
   "V (b) (k1p.b3_net_loss)": "e077af824642975042588404f2dcf33eb821422ecf128eba4e3f6eb011cf4fd1",
-  "(e) (k1p.b1_overall_loss)": "5f5d08d29c825b39a0c65e78846f225395a1d2086c188e38e176b2c8d0e2d5af",
-  "(e) (k1p.b2_overall_loss)": "ca6be2f3f0e974b4ab200042adc369974b796d3aa68888e2b9617853f828727d",
-  "(e) (k1p.b3_overall_loss)": "7bdee5c835a93f36abd390369e0507c8d5756876d297d87b13aed34f41556e6d",
-  "IV (a)": "f88841c621c9fcff5aaf6c587ffc3a6fb7e3708c065f240ed82650f525ee1f5b",
-  "IV (b)": "6a261ffca8a4703d1a9a3f82e9e44caac163cb4f22090821bceaf353ce109c22",
-  "IV (c)": "c95049aa620f1eb66883df8128ec9de385b7cd40ded4da5531cf09b882773cb2",
-  "VI (a)": "d8b11ac0e4cd687db8f03216c2ecb8f02b98fa5c4708e7f2d6a7a96c6d51f09d",
-  "V (a) (k1p.p5_income)": "0411efe524a80047917f07e5501f8f5771dc40500eb92c246ff13eaba16eab93",
-  "V (b) (k1p.p5_loss)": "afd6dea8b19a86dbfed8f1e36a54ddc1c8024df876ab6fbf74a91a73e643bd62",
-  "V (c)": "2afa8e25480e6b054eae0fe220a4b06addf2c02628370afba4c3d6c9660df3e3",
+  "(e) (k1p.b1_overall_loss)": "f26c50b9465b78ab50376c659f680bab4bf07a0490ef8525cec7c27d7dc0a52b",
+  "(e) (k1p.b2_overall_loss)": "4c594dcc7fcfcf64536e87033b1842fc24cc4fd59b4e707a84109a900a87064b",
+  "(e) (k1p.b3_overall_loss)": "58aff2c5aeae7854f79d43cac2dd47b7538b6d058bc6b9f038f72352d3794dff",
+  "IV (a)": "87cd8ee3a863591650b5486142d23dce3477f7a0e306efdaf69670117f66e851",
+  "IV (b)": "2209be4fcc5b488efb408c5ff3340a2526cca2d85e95c3bcd0c3f09cb50be458",
+  "IV (c)": "4d36e4be73c84066abda57aee48f32671e3e3135dd3e6df6f1c36aece03007cc",
+  "VI (a)": "b32ad8d0bdb1a34c78cdc861d3192e35bfa84d83828caf0063e9559e30eda9c1",
+  "V (a) (k1p.p5_income)": "430fc6f944ec513c34ed0b1c1b7a7a4710f2026fa4a8ce9eecf425a5e4b60902",
+  "V (b) (k1p.p5_loss)": "7f307d6f22ed9a8452ad69a8675d65fe407cdb473d19788ed937b621834a5934",
+  "V (c)": "ae2df235a4e71dbff7f180f7c3f660f0aa4935172501bbca191b2c34c63e26b7",
   "28 (h)": "6c9139daee36116bc89e96632d8a311093c0bdcfa97040c6265a7dfebb3b536e",
-  "28 (k)": "9b9791895e951ce7977f78a92e7c1ec026e521fba4a6af4e798d1f9b4b6b1234",
-  "28 (i)": "09eeba104b546ff3536ff79270f906fb7061776d64ae64ea8582f85831698142"
+  "28 (k)": "d57acc0a98813f065a5a8034f291396dff056288daeaf7839c18abe3f7cdc41d",
+  "28 (i)": "88835c6a088564681236a895d74d2f24eba8fed5bf63bb922b81be2f5e02cb82"
  },
- "__rest__": "19def7dd1cdaf4fa9a4f8fef6e03ff9ceeafee42236dd72315ee14756dd6c9d0"
+ "__rest__": "65627ea48fc29d0c821959ccfa6a427b33279019080356daed014f1d487b4c97"
 }

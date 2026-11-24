@@ -134,15 +134,15 @@ bank:
     heading: Did the work include any of this heating, cooling or hot-water equipment?
   # --- k1p groups (lane x2-k1p) ---
   - id: k1p_income
-    heading: Which of boxes 1 to 4 of this Schedule K-1 show an amount?
+    heading: Which of boxes 1 to 4 of this Schedule K-1 show an amount or STMT?
   - id: k1p_portfolio
-    heading: Which of boxes 5 to 9 show an amount?
+    heading: Which of boxes 5 to 9 show an amount or STMT?
   - id: k1p_boxes_10
-    heading: Which of boxes 10 to 13 show an amount?
+    heading: Which of boxes 10 to 13 show an amount or STMT?
   - id: k1p_boxes_14
-    heading: Which of boxes 14 to 17 show an amount or a check?
+    heading: Which of boxes 14 to 17 show an amount, STMT or a check?
   - id: k1p_boxes_18
-    heading: Which of boxes 18 to 20 show an amount?
+    heading: Which of boxes 18 to 20 show an amount or STMT?
   - id: k1p_facts
     heading: Is any of these true of this Schedule K-1 or your share?
   - id: k1p_part_other
@@ -156,19 +156,19 @@ bank:
     heading: Does your 2024 return, or an earlier one, show any of these for this partnership?
   # --- end k1p groups ---
   - id: k1s_facts
-    heading: Is either of these true of this Schedule K-1?
+    heading: Is any of these true of this Schedule K-1?
   - id: k1s_box_a
-    heading: Which of boxes 1 to 5 of this Schedule K-1 show an amount?
+    heading: Which of boxes 1 to 5 of this Schedule K-1 show an amount or STMT?
   - id: k1s_box_b
-    heading: Which of boxes 6 to 12 of this Schedule K-1 show an amount?
+    heading: Which of boxes 6 to 12 of this Schedule K-1 show an amount or STMT?
   - id: k1s_box_c
-    heading: Which of boxes 13 to 17 of this Schedule K-1 show an amount or a check?
+    heading: Which of boxes 13 to 17 of this Schedule K-1 show an amount, STMT or a check?
   - id: k1s_box16
-    heading: Which codes does box 16 of this Schedule K-1 show?
+    heading: Which codes does box 16 of this Schedule K-1 show (on the K-1 or on an attached statement)?
   - id: k1s_box17
-    heading: Which codes does box 17 of this Schedule K-1 show?
+    heading: Which codes does box 17 of this Schedule K-1 show (on the K-1 or on an attached statement)?
   - id: k1s_prior
-    heading: On an earlier return, was a loss from this corporation held back for any of these reasons?
+    heading: On an earlier return, was a loss or credit from this corporation held back for any of these reasons?
   - id: k1s_activity
     heading: Is any of these true of you or this corporation?
   - id: rental_rare
@@ -204,7 +204,23 @@ bank:
   - input: k1p.general
     order: 264
     seq: 3
-    help: Item G is in Part II, on the left. Answer No if the second box, limited partner or other LLC member, is checked.
+    help: Item G is in Part II, on the left. Answer Yes also if you held a general partner's share all through 2025. Otherwise
+      answer No if the second box, limited partner or other LLC member, is checked.
+  - input: k1p.is_llc
+    order: 264
+    seq: 4
+    help: Its name in item B usually ends in LLC or L.L.C. A limited partnership (LP or L.P.) is not one. If you are a member
+      of an LLC with an amount in box 1 or 2, the interview ends here.
+  - input: k1p.fiscal
+    order: 264
+    seq: 5
+    help: A partnership with a fiscal year fills in its beginning and ending dates at the top of the K-1. A Yes ends the
+      interview here.
+  - input: k1p.oil_gas_gp
+    order: 264
+    seq: 6
+    help: A working interest bears the costs of drilling and running the wells; a royalty does not. A Yes ends the interview
+      here.
   - input: k1p.has_b1
     order: 264
     seq: 10
@@ -347,7 +363,7 @@ bank:
     order: 264
     seq: 44
     group: k1p_boxes_14
-    tick: 'Box 16 checked: Schedule K-3 attached'
+    tick: 'Box 16 checked, or you got a Schedule K-3 from the partnership'
     help: A Yes ends the interview here.
   - input: k1p.r_b17
     order: 264
@@ -399,8 +415,9 @@ bank:
   - input: k1p.dist_over
     order: 264
     seq: 57
-    help: Your basis is what you put in, plus your share of its income and debts, less losses and money taken out earlier.
-      The worksheet in the instructions for Schedule K-1 figures it. A Yes ends the interview here.
+    help: Your basis is what you put in, plus your share of its income (taxable and tax-exempt) and debts, less losses,
+      nondeductible expenses and money taken out earlier. The worksheet in the instructions for Schedule K-1 figures it. A
+      Yes ends the interview here.
   - input: k1p.box20z
     order: 264
     seq: 58
@@ -427,7 +444,8 @@ bank:
     seq: 62
     group: k1p_facts
     tick: It is a foreign partnership
-    help: A Yes ends the interview here.
+    help: One organized outside the United States, including in Puerto Rico or another U.S. territory. A Yes ends the interview
+      here.
   - input: k1p.r_disposed
     order: 264
     seq: 63
@@ -474,8 +492,9 @@ bank:
     order: 264
     seq: 76
     group: k1p_part_other
-    tick: A service business you took part in for 3 earlier years
-    help: A Yes ends the interview here.
+    tick: A personal service business you took part in for 3 earlier years
+    help: 'Personal services: health, law, engineering, architecture, accounting, actuarial science, performing arts, consulting,
+      or other work where capital is not a major source of income. A Yes ends the interview here.'
   - input: k1p.t4
     order: 264
     seq: 77
@@ -488,6 +507,13 @@ bank:
     group: k1p_part_other
     tick: Regular, continuous and substantial work, over 100 hours
     help: A Yes ends the interview here.
+  - input: k1p.over100
+    order: 264
+    seq: 79
+    group: k1p_part_other
+    tick: Over 100 hours of work in it
+    help: Income from a business you worked in for over 100 hours without meeting the tests above is treated differently. A
+      Yes ends the interview here.
   - input: k1p.decisions
     order: 264
     seq: 80
@@ -547,13 +573,14 @@ bank:
     seq: 95
     help: Most partners with a loss have basis to cover it. The worksheet for a partner's basis in the instructions for
       Schedule K-1 figures it. A Yes ends the interview here.
-    prompt: "On this Schedule K-1 (Form 1065) — Were your 2025 losses from it more than your basis at the end of its year (what you put in, plus your share of its income and debts, less losses and money taken out)?"
+    prompt: "On this Schedule K-1 (Form 1065) — Were your 2025 losses from it more than your basis at the end of its year (what you put in, plus your share of its income, taxable or not, and debts, less losses, nondeductible expenses, money or marketable securities taken out, and any fall in your share of its debts)?"
   - input: k1p.not_at_risk
     order: 264
     seq: 96
     help: A partner who put in their own cash, or is liable for the partnership's loans, is at risk; so is money borrowed
-      from a bank or other outside lender that you must repay. A Yes ends the interview here.
-    prompt: "On this Schedule K-1 (Form 1065) — Was any of what you put in borrowed without personal liability (other than qualified real estate loans), protected by a guarantee or stop-loss agreement, or lent by another partner or someone related to one?"
+      from a bank or other outside lender that you must repay. Item K shows the partnership's nonrecourse debts. A Yes ends
+      the interview here.
+    prompt: "On this Schedule K-1 (Form 1065) — Was any of what you put in borrowed without personal liability (other than qualified real estate loans), protected by a guarantee, stop-loss agreement or similar arrangement, or lent by anyone with a stake in the business or someone related to one; or does item K show nonrecourse debts (other than qualified real estate loans)?"
   - input: k1p.basis_carry
     order: 264
     seq: 97
@@ -1866,8 +1893,9 @@ bank:
     seq: 3
     group: outside_us
     tick: A tie to a trust or family foundation abroad
-    help: Count selling or lending to it, and a loan from it. A trust counts as abroad if anyone outside the United States
-      can veto its decisions. A Stiftung, an Anstalt or a waqf counts as a trust. If unsure, answer Yes.
+    help: Count selling or lending to it, a loan from it, anything it paid for you, a power to take its property, and a
+      trust whose income is taxed to you as its owner. A trust counts as abroad if anyone other than a U.S. citizen,
+      resident or company can veto its decisions. A Stiftung, an Anstalt or a waqf counts as a trust. If unsure, answer Yes.
   - input: sb.company_any
     order: 285
     seq: 4
@@ -1884,7 +1912,7 @@ bank:
       opens the questions that follow.
   - input: sb.form5471
     order: 285
-    seq: 10
+    seq: 11
     help: "A company in Puerto Rico, Guam or another U.S. territory counts. For the 10%, add the shares of your spouse, children, grandchildren and parents, shares held by partnerships, corporations, trusts or estates you have an interest in, and shares any of you could buy through options. Form 5471 is outside what this tool prepares; a Yes ends the interview here."
     prompt: "In 2025, were you (or, on a joint return, your spouse) an officer, director or manager of a company organized outside the 50 states and the District of Columbia, or did you own 10% or more of its value or of its votes?"
   - input: sb.ordinary_dividends
@@ -1894,7 +1922,7 @@ bank:
     prompt: "Add up box 1a (total ordinary dividends) of all your (or, on a joint return, your spouse's) Forms 1099-DIV for 2025. Zero if none."
   - input: sb.line7a
     order: 285
-    seq: 11
+    seq: 12
     help: "Where the account is kept decides: a U.S. bank's branch abroad counts; Puerto Rico and the other U.S. territories count as inside the United States here. Count a cash-value insurance or annuity policy, fund shares, an employer's account you could sign for, and an account of a company you own more than half of."
     prompt: "In 2025, did you (or, on a joint return, your spouse) own, or have the power to sign for, a financial account located outside the United States, even if no report of it is due?"
   - input: sb.fbar_required
@@ -1912,6 +1940,11 @@ bank:
     seq: 9
     help: "A trust is foreign unless a court in one of the 50 states or the District of Columbia can supervise it (Puerto Rico and the other territories count as outside) and U.S. citizens, residents or U.S. companies control all its main decisions, with no one else able to veto them. What reached you through another person or company counts. If you are not sure, answer Yes. The reports a foreign trust needs (Form 3520) are outside what this tool prepares; a Yes ends the interview here."
     prompt: "In 2025, did you (or, on a joint return, your spouse) receive anything from a foreign trust (money, property, a loan, or the free or cheap use of something it owns), or are you the person who set one up, or who at any time gave, sold or lent anything to one that still existed in 2025?"
+  - input: sb.trust_owner
+    order: 285
+    seq: 10
+    help: "This is an owner under the grantor trust rules, often someone who can take the trust's property for themselves; it holds whether or not the trust had income or anyone reported it. Such an owner may get a Foreign Grantor Trust Owner Statement. If you are not sure, answer Yes. The report an owner files (Form 3520) is outside what this tool prepares; a Yes ends the interview here."
+    prompt: "In 2025, were you (or, on a joint return, your spouse) treated for tax as the owner of a foreign trust, or of part of one, even if you did not set it up, give to it or get anything from it?"
   - input: scope.noncitizen
     order: 113
     seq: 1
@@ -1927,6 +1960,12 @@ bank:
     group: "about_you"
     tick: "In a chapter 11 bankruptcy case at some time in 2025"
     help: "Chapter 11 is the kind of bankruptcy that reorganizes debts; chapter 7 and chapter 13 cases do not count. A Yes ends the interview here."
+  - input: scope.fiscal_year
+    order: 113
+    seq: 7
+    group: "about_you"
+    tick: "A tax year other than January to December 2025 (fiscal year)"
+    help: "Nearly everyone's tax year is the calendar year, including on a return for someone who died in 2025. A Yes ends the interview here."
   - input: scope.treaty
     order: 113
     seq: 6
@@ -2179,8 +2218,10 @@ bank:
     order: 193
     seq: 2
     group: rare_accounts
-    tick: Money put into or taken from an Archer or Medicare Advantage MSA
-    help: 'A Yes ends the interview here: this tool cannot prepare a return with it.'
+    tick: An Archer MSA anyone paid into, or an MSA withdrawal or inheritance
+    help: 'Count money your employer put in, and money put in during 2026 for 2025. A Medicare Advantage MSA counts only
+      for money taken out or an account that came to you because its owner died. A Yes ends the interview here: this tool
+      cannot prepare a return with it.'
   - input: scope.education_recapture
     order: 193
     seq: 4
@@ -2203,11 +2244,11 @@ bank:
     help: "Count stock or ADRs of a company set up abroad even if bought in the U.S., a fund set up abroad, and shares held for you by a partnership, trust, estate, foreign pension or insurance policy."
   - input: scope.pfic
     order: 285
-    seq: 12
+    seq: 13
     help: "A Yes ends the interview here: this tool cannot prepare a return with it."
   - input: scope.cfc
     order: 285
-    seq: 13
+    seq: 14
     help: "A Yes ends the interview here: this tool cannot prepare a return with it."
   - input: scope.reforestation
     order: 295
@@ -2485,108 +2526,108 @@ bank:
       other: "Someone else"
   - input: dependent.age
     order: 120
-    seq: 3
-    help: "Enter 0 for a baby born in 2025. A person born on January 1 counts as a year older on the December 31 before (born January 1, 2007: enter 19)."
+    seq: 4
+    help: "Enter 0 for a baby born in 2025. A person born on January 1 counts as a year older on the December 31 before (born January 1, 2007: enter 19). For a baby born in 2025, Form 4547, which can be filed with this return, may elect a $1,000 pilot contribution to the child's Trump account."
     prompt: "How old was this person at the end of 2025?"
   - input: dependent.lived_all_year
     order: 120
-    seq: 4
+    seq: 5
     help: "Time away at school, on vacation, on business, in hospital, in military service or in juvenile detention counts as living with you. For a child who was missing because of a kidnapping, answer No."
     prompt: "Did this person live with you for all of 2025? (For a baby born in 2025, a child adopted or placed with you in 2025, or a person who died in 2025: all of their part of the year.)"
   - input: dependent.kidnapped
     order: 120
-    seq: 5
+    seq: 6
     help: "Answer Yes even if the authorities first presumed the kidnapping after 2025, or the child has since come home."
     prompt: "Is this a child whom the police or other authorities presume was kidnapped by someone outside your family and the child's, and who was missing because of it at some time in 2025?"
   - input: dependent.months
     order: 120
-    seq: 6
-    prompt: "For how many months of 2025 did this person live with you?\n\nCount time away at school, on vacation, on business, in hospital, in military service or in juvenile detention, but not time a kidnapped child was missing.\n\nIf it was more than half the year but fewer than 7 full months, enter 7.\n\nFor a person born, adopted or placed with you in 2025, or who died in 2025: enter 12 if your home was theirs for more than half of their part of the year (for a person who cannot be your qualifying child, for all of it), and 0 otherwise."
+    seq: 7
+    prompt: "For how many months of 2025 (0 to 12) did this person live with you?\n\nCount time away at school, on vacation, on business, in hospital, in military service or in juvenile detention, but not time a kidnapped child was missing.\n\nIf it was more than half the year but fewer than 7 full months, enter 7.\n\nFor a person born, adopted or placed with you in 2025, or who died in 2025: enter 12 if your home was theirs for more than half of their part of the year (for a person who cannot be your qualifying child, for all of it), and otherwise the months they actually lived with you."
   - input: dependent.born_died
     order: 120
-    seq: 7
+    seq: 8
   - input: dependent.placed
     order: 120
-    seq: 8
+    seq: 9
   - input: dependent.part_year_home
     order: 120
-    seq: 9
+    seq: 10
   - input: dependent.younger
     order: 120
-    seq: 10
+    seq: 11
     prompt: "Is this person younger than you or, if you file together, younger than your husband or wife? Younger than one of you is enough."
   - input: dependent.student
     order: 120
-    seq: 11
+    seq: 12
     help: "Full-time is what the school counts as full-time. The school must have regular teaching staff and students who attend, or be a full-time on-farm training course. A co-op job that is part of the course counts; on-the-job training, correspondence schools and online-only schools do not."
     prompt: "Was this person a full-time student during any part of 5 months of 2025?"
   - input: dependent.disabled
     order: 120
-    seq: 12
+    seq: 13
     prompt: "At any time in 2025, was this person permanently and totally disabled: unable to do any substantial paid work because of a physical or mental condition that a doctor has found has lasted, or will last, at least a year, or will lead to death?"
   - input: dependent.other_claimant
     order: 120
-    seq: 13
+    seq: 14
     group: "dependent_facts"
     tick: "Lived over half of 2025 with another relative who could claim them"
     help: "Answer Yes even if that relative will not claim the person. On a separate return, your husband or wife counts. Any relative the person is the child, grandchild, younger brother or sister, niece or nephew of can count. A Yes may end the interview here: the rules for a child two people can claim are outside what this tool prepares."
     prompt: "Besides you (and your spouse, if you file together), did this person live for more than half of 2025 with another relative who could claim them: a parent, grandparent, aunt, uncle, or grown brother or sister?"
   - input: dependent.parents_apart
     order: 120
-    seq: 14
+    seq: 15
     group: "dependent_facts"
     tick: "Parents divorced, separated, or apart for the last 6 months of 2025"
     help: "Count parents who never married each other. If you are not sure, answer Yes."
     prompt: "Is this person a child whose parents are divorced, separated, or lived apart for the last 6 months of 2025?"
   - input: dependent.ever_married
     order: 120
-    seq: 15
+    seq: 16
     group: "dependent_facts"
     tick: "Has been married at some time"
     help: "Count a marriage that has since ended, a common-law marriage, and a marriage abroad or under tribal law that a U.S. state would recognize."
     prompt: "Has this person ever been married?"
   - input: dependent.own_money
     order: 120
-    seq: 16
+    seq: 17
     group: "dependent_facts"
     tick: "Had money of their own in 2025, or owned their home"
     help: "Count any income, even a scholarship. For a child with no income, savings or property of their own, answer No. If you are not sure, answer Yes."
     prompt: "In 2025, did this person have money of their own (pay, benefits in their name, savings, a trust, a loan) or own the home they lived in?"
   - input: dependent.other_only_spouse
     order: 120
-    seq: 17
+    seq: 18
     help: Answer No if a grandparent, aunt, uncle, grown brother or sister, or a parent other than you and your husband or
       wife also lived with the child over half of 2025. A No may end the interview here.
   - input: dependent.spouse_claims
     order: 120
-    seq: 18
+    seq: 19
     help: "Only one of you can claim the child, for every tax benefit the child brings; agree which of you will. A Yes ends the interview here: when you both claim, the IRS decides by tie-breaker rules."
   - input: dependent.filer_parent
     order: 120
-    seq: 19
+    seq: 20
     help: "A stepparent, foster parent or grandparent who has not adopted the child answers No. A No may end the interview here."
   - input: dependent.other_nontaxpayer
     order: 120
-    seq: 20
+    seq: 21
     help: "A relative who is not a U.S. citizen and has no U.S. income also counts. One who files to claim the earned income credit or any other credit or deduction does not."
     prompt: "Is every such relative someone who does not have to file a 2025 tax return, and who either files none or files only to get back tax that was withheld or paid in advance?"
   - input: dependent.divorced_rule
     order: 120
-    seq: 21
-    help: "Answer Yes whichever parent you are. A release that was taken back still counts for 2025 unless the other parent was told in writing in 2024 or earlier. A Yes ends the interview here."
+    seq: 22
+    help: "Answer Yes whichever parent you are. With an equal number of nights, the parent with the higher adjusted gross income counts as the one the child lived with. A release that was taken back still counts for 2025 unless the other parent was told in writing in 2024 or earlier. A Yes ends the interview here."
     prompt: "Has the parent this child lived with for more of 2025 given the right to claim the child to the other parent, by signing Form 8332 or a similar statement, or under a divorce decree or separation agreement?"
   - input: dependent.married
     order: 120
-    seq: 22
+    seq: 23
     help: "A person legally separated under a decree of divorce or separate maintenance is not married. A Yes ends the interview here."
     prompt: "Was this person married at the end of 2025, or is this person on a joint tax return for 2025 (for example one filed with a husband or wife who died in 2025)?"
   - input: dependent.joint_return
     order: 120
-    seq: 23
+    seq: 24
     prompt: "Is a joint tax return for 2025 being filed that includes this person, other than one filed only to get back tax that was withheld or paid in advance?"
   - input: dependent.self_support_view
     order: 120
-    seq: 24
+    seq: 25
     help: "Living costs are housing, food, clothing, schooling, medical care, recreation and transport. A scholarship does not count as the person's own money. If it is close, choose the last answer: the next question gives the rules."
     prompt: "Did this person pay for more than half of their own living costs in 2025 out of their own money?"
     value_labels:
@@ -2595,32 +2636,32 @@ bank:
       unsure: "It is close, or I am not sure"
   - input: dependent.self_support
     order: 120
-    seq: 25
+    seq: 26
   - input: dependent.qr_all_year
     order: 120
-    seq: 26
+    seq: 27
     prompt: "Was this person away from your home in 2025 only for a temporary reason, yours or theirs: illness, school, work, vacation, military service, juvenile detention, or a stay in a nursing home for constant medical care?\n\nAnswer Yes also if the person lived with you until they died in 2025, or from their birth, adoption or placement with you in 2025."
   - input: dependent.lawful
     order: 120
-    seq: 27
+    seq: 28
     help: "Answer No only if the relationship broke local law at some time in 2025."
     prompt: "Was your relationship with this person lawful under local law throughout 2025?"
   - input: dependent.spouse_relative
     order: 120
-    seq: 28
+    seq: 29
   - input: dependent.gross_income
     order: 120
-    seq: 29
+    seq: 30
     help: "Count rent received before expenses, a partner's share of a partnership's gross income, a business's sales less the cost of the goods sold, taxable unemployment pay and taxable scholarships."
     prompt: "What was this person's total income in 2025, before any expenses, leaving out income that is not taxed (such as social security that is not taxable)?"
   - input: dependent.multiple_support
     order: 120
-    seq: 30
+    seq: 31
     help: "A Yes ends the interview here."
     prompt: "Did two or more people, you among them, together pay more than half of this person's living costs in 2025, with no one of them paying more than half?"
   - input: dependent.supported_view
     order: 120
-    seq: 31
+    seq: 32
     help: "Living costs are housing (at what it would rent for), food, clothing, schooling, medical care, recreation and transport. What the person paid from their own income or benefits is not paid by you. If it is close, choose the last answer: the next question gives the rules."
     prompt: "Did you pay for more than half of this person's living costs in 2025?"
     value_labels:
@@ -2629,38 +2670,43 @@ bank:
       unsure: "It is close, or I am not sure"
   - input: dependent.supported
     order: 120
-    seq: 32
+    seq: 33
   - input: dependent.citizen_ssn
     order: 120
-    seq: 33
+    seq: 34
     help: "The number must have been issued before the due date of your 2025 return, extensions included; if it was not, answer No."
     prompt: "Is this person a U.S. citizen with a social security number? (If the card has a restriction printed on it, such as “Not Valid for Employment”, answer No.)"
   - input: dependent.citizen
     order: 120
-    seq: 34
-    help: "If you are a U.S. citizen or national and this is your adopted child who lived with you all year as a member of your household, answer Yes."
+    seq: 35
+    help: "If you are a U.S. citizen or national and this is your adopted child (a child lawfully placed with you for legal adoption counts) who lived with you all year as a member of your household, answer Yes."
     prompt: "In 2025, was this person a U.S. citizen, a U.S. national, or a resident of the United States for tax purposes (a “resident alien”)?"
   - input: dependent.canada_mexico
     order: 120
-    seq: 35
+    seq: 36
     prompt: "Was this person a resident of Canada or Mexico in 2025?"
   - input: dependent.tin
     order: 120
-    seq: 36
+    seq: 37
     help: "An ITIN is a tax number for a person who cannot get a social security number; an ATIN is one for a child being adopted. An expired ITIN counts only if renewed, or renewal applied for, by then."
     prompt: "Will this person have a social security number, or an ITIN or ATIN (or an application for one), by the due date of your 2025 return, extensions included?"
   - input: dependent.work_ssn
     order: 120
-    seq: 37
+    seq: 38
     help: "If the card says “Not Valid for Employment”, answer No. If it says “Valid for Work Only With DHS Authorization”, answer Yes only while that authorization is valid."
     prompt: "Does this person have a social security number that is valid for work, issued before the due date of your 2025 return, extensions included?"
   - input: dependent.parent_home_paid
     order: 120
-    seq: 38
+    seq: 39
   - input: dependent.absence_no_return
     order: 120
-    seq: 39
+    seq: 40
     prompt: "In counting the time this person lived with you, did you count time away that the person, or you, was not expected to come back from, or during which you did not keep up the home?"
+  - input: dependent.own_child
+    order: 120
+    seq: 3
+    help: "Asked because you file as a qualifying surviving spouse, which needs your own child or stepchild. A child you adopted, or one placed with you for adoption, is your son or daughter."
+    prompt: "Is this person your son, daughter or stepchild, rather than a foster child or a grandchild?"
   - input: dependent.us_half
     order: 314
     seq: 1
@@ -2704,13 +2750,6 @@ bank:
     tick: "Unable to care for yourself at some time in 2025"
     help: "Answer Yes too if some of the care you paid for was for your husband or wife. A Yes ends the interview here."
     prompt: "In 2025, was there a time when you (or, on a joint return, your spouse) could not care for yourself because of a physical or mental condition?"
-  - input: f2441.spouse_died
-    order: 155
-    seq: 10
-    group: "care_facts"
-    tick: "Your husband or wife on this return died in 2025"
-    help: "A Yes ends the interview here."
-    prompt: "Did the husband or wife you are filing this joint return with die in 2025?"
   - input: f2441.nondependent
     order: 155
     seq: 11
@@ -2903,7 +2942,8 @@ bank:
     prompt: Did your husband or wife die in 2025?
     help: For the year a husband or wife died, the survivor counts as married for the whole year. If you chose a
       line for an unmarried person, a Yes ends the interview here; go back and choose “together” to file one last
-      return for you both. If you chose “together”, a Yes lets you file together; a No ends the interview here.
+      return for you both. If you chose “together” and were not married at the end of 2025, a Yes lets you file together;
+      a No ends the interview here.
   - input: household.cp_married
     order: 103
     seq: 4
@@ -3819,6 +3859,7 @@ bank:
     seq: 29
     group: plan_payment
     tick: Some of it was paid under the plan's disability retirement terms
+    help: Code 3 in box 7 of the Form 1099-R shows a disability payment. Military disability retired pay counts.
   - input: retirement.dis_early
     order: 170
     seq: 32
@@ -3974,7 +4015,7 @@ bank:
     order: 160
     seq: 10
     help: If box 1 is wrong, give the amount actually paid.
-    prompt: How much unemployment did you (or, on a joint return, your spouse) get in 2025? Add up box 1 of each Form 1099-G.
+    prompt: How much unemployment and government paid family leave did you (or, on a joint return, your spouse) get in 2025? Add up box 1 of each Form 1099-G.
   - input: s1.uc_repaid
     order: 160
     seq: 11
@@ -4019,15 +4060,16 @@ bank:
     group: "money_b"
     tick: "Pay in 2025 for work done as an inmate, including work release"
     help: "A Yes ends the interview here."
-    prompt: In 2025, were you (or, on a joint return, your spouse) paid for work done while in jail or prison, including work release?
+    prompt: In 2025, were you (or, on a joint return, your spouse) paid for work done while an inmate of a jail, prison or other correctional facility, including work release?
   - input: s1.uc_any
     order: 160
     seq: 1
     group: "money_a"
-    tick: "Unemployment benefits"
-    help: Count all benefits paid for you in 2025, including back pay for earlier weeks and amounts withheld, taken for a
-      debt or later paid back. The state sends Form 1099-G, often only online.
-    prompt: In 2025, did you (or, on a joint return, your spouse) get unemployment benefits?
+    tick: "Unemployment benefits, or government paid family leave benefits"
+    help: Count all benefits paid for you (or, on a joint return, your spouse) in 2025, including partial benefits, trade
+      readjustment allowances, back pay for earlier weeks and amounts withheld, taken for a debt or later paid back. Any
+      amount in box 1 of a Form 1099-G counts; it is often sent only online.
+    prompt: In 2025, did you (or, on a joint return, your spouse) get unemployment benefits, or benefits from a government (such as a state's) paid family leave program?
   - input: s1.gambling_winnings
     order: 160
     seq: 13
@@ -4700,11 +4742,14 @@ bank:
   - input: f8889.former_spouse_family
     order: 190
     seq: 14
-    help: Answer No if you were not married at any time in 2025. A plan covering more than one person includes one for an
-      employee and a child, and counts even if it did not cover you. A Yes ends the interview here.
-    prompt: For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce
-      or death, and in any month of 2025 while you were married did the other person have a high-deductible plan
-      covering more than one person?
+    help: Answer No if you were not married at any time in 2025. A court decree of separate maintenance counts as a
+      decree of legal separation. A plan covering more than one person includes one for an employee and a child, and
+      counts even if it did not cover you, and also when the other person was covered as a member of someone else's
+      plan (a parent's, for example). A Yes ends the interview here.
+    prompt: For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce,
+      a court decree of legal separation or death, and in any month of 2025 while you were married did the other person have
+      a high-deductible plan covering more than one person, even if that plan had changed by the time the marriage
+      ended?
   - input: f8889.months_eligible
     order: 190
     seq: 15
@@ -4810,8 +4855,10 @@ bank:
   - input: f8889.mfs_spouse_hsa
     order: 190
     seq: 37
-    help: "Count an HSA in their name even if nothing was put into it for 2025. A Yes ends the interview here."
-    prompt: "For this person (you, or your spouse on a joint return) — Does your husband or wife have a health savings account (HSA) of their own?"
+    help: "Count an HSA in their name even if nothing was put into it for 2025, and one that has since been closed or
+      moved to another HSA. A Yes ends the interview here."
+    prompt: "For this person (you, or your spouse on a joint return) — Did your husband or wife have a health savings
+      account (HSA) of their own at any time in 2025, or was anything put into one for 2025?"
   - input: person.x_hsa_value
     order: 190
     seq: 27
@@ -4860,7 +4907,7 @@ bank:
     prompt: |-
       For this person (you, or your spouse on a joint return) — How much of the money that came out paid for medical costs that count?
 
-      The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA.
+      The costs must not have been paid back by insurance or anyone else, and must date from after you opened the HSA. An HSA funded by money moved from another HSA or an Archer MSA counts as opened when that earlier account was.
 
       Whose costs count:
       - yours, and your spouse's
@@ -4869,7 +4916,7 @@ bank:
       - those of your child if you are divorced, separated or lived apart from the other parent for the last six months of the year, whichever parent claims the child
 
       Insurance premiums count only for:
-      - long-term care insurance
+      - long-term care insurance, up to the yearly limit for the age of the person covered (the Schedule A instructions list it under "Limit on long-term care premiums you can deduct")
       - continuation coverage such as COBRA, for you, your spouse, or a dependent
       - health coverage while you, your spouse, or a dependent received unemployment compensation
       - Medicare and other health coverage if you were 65 or older, but not a Medicare supplement (Medigap) policy; if you are under 65, Medicare premiums for your spouse or a dependent do not count
@@ -4899,14 +4946,16 @@ bank:
   - input: sli.interest
     order: 244
     seq: 2
-    help: A lender may send no form for a small amount of interest; its year-end statement shows what you paid.
+    help: A lender may send no form for a small amount of interest; its year-end statement shows what you paid. Include
+      interest someone else paid on your loan for you.
   - input: sli.any
     order: 220
     seq: 6
     group: home_school
     tick: Paid interest on a student loan
     help: 'A loan counts by what it paid for, not by its name: a personal loan or credit line used only for college costs
-      counts. If you are not sure, answer Yes: the questions that follow sort it out.'
+      counts. Count interest someone else paid on a loan you owe, such as a parent''s gift or an employer''s payment added
+      to your W-2 box 1; it counts as paid by you. If you are not sure, answer Yes: the questions that follow sort it out.'
   - input: sli.unqualified_any
     order: 244
     seq: 3
@@ -6729,8 +6778,10 @@ bank:
     seq: 15
     help: The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or
       your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth
-      IRA has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends
-      the interview here.
+      IRA's limit is lower once modified AGI reaches $236,000 on a joint return or $150,000 for single, head of household,
+      or married filing separately and apart all year, and once it is above zero for married filing separately and living
+      together at any time in 2025 (no Roth contribution at all from $10,000). Count money an employer put in and a rollover
+      that did not qualify. A Yes ends the interview here.
     prompt: For this person (you, or your spouse on a joint return) — Did you put more into your IRAs for 2025 than you were
       allowed, and was the extra still there after the deadline for your 2025 return?
   - input: person.ira_recharacterized
@@ -6816,8 +6867,8 @@ bank:
     order: 315
     seq: 4
     help: A return with this is outside what this tool prepares; a Yes ends the interview here.
-    prompt: For this person (you, or your spouse on a joint return) — Is an ABLE account held for you, and did you put money
-      into it for 2025, or get money out of it in 2023 or later?
+    prompt: For this person (you, or your spouse on a joint return) — Has an ABLE account been held for you, and did you put
+      money into it for 2025, or get money out of it in 2023 or later?
   - input: person.sav_roth
     order: 180
     seq: 12
@@ -6912,11 +6963,18 @@ bank:
       interview ends here.
   - input: $k1s
     order: 264
-    seq: 120
+    seq: 119
     help: Name each corporation once, as on its K-1. A K-1 from a partnership, an estate or a trust is not listed here. If you
       received none from an S corporation, leave the list empty.
     prompt: For this person (you, or your spouse on a joint return) — Which S corporations sent you a Schedule K-1 (Form 1120-S)
       for 2025?
+  - input: k1s.fiscal
+    order: 264
+    seq: 120
+    group: k1s_facts
+    tick: Its tax year at the top is not calendar 2025
+    help: A corporation with a fiscal year fills in its beginning and ending dates at the top. Outside what this tool prepares;
+      a Yes ends the interview here.
   - input: k1s.multi
     order: 264
     seq: 121
@@ -7047,7 +7105,7 @@ bank:
     order: 264
     seq: 147
     group: k1s_box_c
-    tick: Box 14 is checked (Schedule K-3 attached)
+    tick: Box 14 checked, or you got a Schedule K-3
     help: Outside what this tool prepares; a Yes ends the interview here.
   - input: k1s.box15
     order: 264
@@ -7165,7 +7223,7 @@ bank:
     order: 264
     seq: 172
     group: k1s_prior
-    tick: The passive activity rules (Form 8582)
+    tick: The passive activity rules held back a loss (Form 8582)
     help: Your 2024 Form 8582 shows it, in Part VII, column (c).
   - input: k1s.basis_carry
     order: 264
@@ -7180,34 +7238,44 @@ bank:
     group: k1s_prior
     tick: The at-risk rules (Form 6198)
     help: Outside what this tool prepares; a Yes ends the interview here.
-  - input: k1s.b1_prior
+  - input: k1s.credit_carry
     order: 264
     seq: 175
+    group: k1s_prior
+    tick: The passive activity rules held back a credit (Form 8582-CR)
+    help: Your 2024 Form 8582-CR shows it. Outside what this tool prepares; a Yes ends the interview here.
+  - input: k1s.b1_prior
+    order: 264
+    seq: 176
     help: Use the amount for this corporation's business activity (box 1).
   - input: k1s.b2_prior
     order: 264
-    seq: 176
+    seq: 177
     help: Use the amount for this corporation's rental real estate (box 2).
   - input: k1s.b3_prior
     order: 264
-    seq: 177
+    seq: 178
     help: Use the amount for this corporation's other rentals (box 3).
+  - input: k1s.prior_not_active
+    order: 264
+    seq: 179
+    help: Count your spouse's shares with yours. Outside what this tool prepares; a Yes ends the interview here.
   - input: k1s.not_at_risk
     order: 264
-    seq: 178
+    seq: 180
     help: "Such as a loan you are not personally liable for, or money protected from loss by a guarantee or stop-loss agreement. A bank loan you must repay yourself does not count. A Yes ends the interview here."
     prompt: For this S corporation — Is any money or property you put into it (for shares, a loan or a contribution) protected
       from loss, or borrowed from anyone with a stake in its business or their relative?
   - input: k1s.trader
     order: 264
-    seq: 179
+    seq: 181
     group: k1s_activity
     tick: Its business is trading stocks or other investments for its owners
     help: A fund that buys and sells stocks for its owners is one; a business that sells goods or services is not. Outside
       what this tool prepares; a Yes ends the interview here.
   - input: k1s.re_pro
     order: 264
-    seq: 180
+    seq: 182
     group: k1s_activity
     tick: "One person: over 750 hours and most work time in real estate"
     help: Outside what this tool prepares; a Yes ends the interview here.
@@ -7215,38 +7283,39 @@ bank:
       than half of your own work time? On a joint return, one spouse must meet both alone.
   - input: k1s.dwelling
     order: 264
-    seq: 181
+    seq: 183
     group: k1s_activity
     tick: One of its rental homes had over 14 days of personal use
     help: A day counts if you, another shareholder, a family member of either, or anyone paying less than a fair rent used
       it. Outside what this tool prepares; a Yes ends the interview here.
   - input: k1s.interest_buy
     order: 264
-    seq: 182
+    seq: 184
     group: k1s_activity
     tick: You paid interest on money borrowed to buy into it
     help: A loan used to buy shares, or to put money into the corporation as an owner. Outside what this tool prepares; a
       Yes ends the interview here.
   - input: f7203.election
     order: 264
-    seq: 183
-    help: You would have attached a statement to an earlier return making it. Outside what this tool prepares; a Yes ends the
-      interview here.
+    seq: 185
+    help: The election is made by a statement attached to an earlier return or to this 2025 return. Outside what this tool
+      prepares; a Yes ends the interview here.
   - input: f7203.loans
     order: 264
-    seq: 184
-    help: Loans you guaranteed or co-signed for the corporation are not meant. Outside what this tool prepares; a Yes ends the
-      interview here.
+    seq: 186
+    help: Money you advanced to it without a note counts, and so do payments you made on a corporate loan you guaranteed or
+      co-signed; the guarantee alone does not. Outside what this tool prepares; a Yes ends the interview here.
   - input: f7203.line1
     order: 264
-    seq: 185
+    seq: 187
     help: If you first got shares in 2025, enter 0 and give what they cost at the next question. Without a 2024 Form 7203, figure
       your basis from your records first.
   - input: f7203.line2
     order: 264
-    seq: 186
+    seq: 188
     help: 'Shares bought: their cost. Shares inherited: their value at the death. Shares received as a gift: generally the giver''s
-      basis.'
+      basis. Shares received for work: the value you reported as income. Property put in: its basis to you, less any of your
+      debts the corporation took on (if those debts are more, that is outside this tool).'
   - input: scope.rent_personal
     order: 130
     seq: 5

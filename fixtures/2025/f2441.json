@@ -4321,7 +4321,7 @@
         "dependent[a].months": 12,
         "dependent[b].age": 9,
         "dependent[b].months": 12,
-        "f2441.spouse_died": true,
+        "household.spouse_died_this_year": true,
         "dependent[a].dc_paid": 350000,
         "dependent[b].dc_paid": 350000,
         "$dcprov": [
@@ -6768,6 +6768,32 @@
         "f2441.line5": {
           "kind": "money",
           "cents": 3000000
+        }
+      }
+    },
+    {
+      "id": "f2441.spouse_died.single_student",
+      "covers": [
+        "f2441"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating: single, W-2 wages $50,000, the filer a full-time student. The surviving-spouse rule of Pub. 503 p. 11 applies only to a joint return, so f2441.spouse_died is false on any other filing status, whatever the student or disability answers.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "f2441.student": true
+      },
+      "expect": {
+        "f2441.spouse_died": {
+          "kind": "bool",
+          "value": false
         }
       }
     }

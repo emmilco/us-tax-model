@@ -343,7 +343,8 @@ export function closedAnswer(data: CanonicalData, config: InterviewData, key: st
  * amount is answered yes, and the amount, a gated input, is given although its gate counts as closed. */
 // ny: the city question is answered Yes, the filer the New York part serves. Its No does not refuse at once (the State
 // question follows, and either answer to it refuses), so the closed answer would leave the walk on a gated question.
-const MINIMAL_BASE: Partial<Record<"full" | "ny", Inputs>> = { ny: { "s1.uc_any": true, "s1.uc_paid": 5_000_000, "ny_it201.ask.city_resident": true } };
+// The unemployment compensation opens the railroad question (a gated input), answered No: state unemployment.
+const MINIMAL_BASE: Partial<Record<"full" | "ny", Inputs>> = { ny: { "s1.uc_any": true, "s1.uc_paid": 5_000_000, "ny_it201.ask.city_resident": true, "ny_it201.ask.railroad_uc": false } };
 
 /** The existence gates: the inputs a gate line's guard reads directly, and for each the gated inputs it can open (those
  * whose gate line's guards read it, directly or through other lines). */

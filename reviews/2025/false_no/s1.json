@@ -1384,48 +1384,58 @@
    ]
   },
   "gate:s1.uc_any": {
-   "subject_sha": "ba29a5c84054349713ee1a3fecdaba3ee0f56acea876f284ac8760acfd6c3460",
+   "subject_sha": "8746e27d0552dd8fc979c42b615b2c1ac8b53993d8a268d3e4be1eef37420609",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer who made contributions to a governmental paid family leave program in 2025 but received no unemployment benefits.",
-       "why_no": "The gate asks only whether they got unemployment benefits; they did not. The help describes benefits paid to the filer, not contributions the filer made, so the paid-family-leave contribution does not sound like a yes.",
+       "pattern": "8",
+       "who": "A filer (or spouse) who was collecting unemployment, then became ill or injured. In 2025 they received government disability payments from a state disability program, paid in place of the unemployment benefits they could no longer draw.",
+       "why_no": "The question asks about 'unemployment benefits' or 'paid family leave'. What they received was a disability benefit, so they truthfully answer no. The help mentions Form 1099-G box 1, but they may never open the online-only form, and they may not link a disability payment to it.",
        "line": "s1.uc_paid_if_any",
-       "irs_text": "i1040gi p. 89: 'Beginning in 2025, if you made contributions to a governmental paid family leave program, you will now include the full amount of those contributions in your income.'",
+       "irs_text": "p525 (2025) p. 29: unemployment compensation includes '• Disability payments from a government program paid as a substitute for unemployment compensation.'",
        "severity": "high",
-       "fix": "Broaden the gate to ask about unemployment compensation or contributions to a governmental paid family leave program, and add a separate input for those contributions."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer who did not receive unemployment compensation in 2025 but in 2025 repaid more than $3,000 of unemployment compensation received in an earlier year and included in gross income.",
-       "why_no": "The gate asks whether they got unemployment benefits in 2025; they did not. The help is framed around benefits paid in 2025, not repayments of earlier-year benefits, so they answer no.",
-       "line": "s1.uc_paid_if_any (the line 7 repayment branch)",
-       "irs_text": "i1040gi p. 89: 'If, in 2025, you repaid more than $3,000 of unemployment compensation that you included in gross income in an earlier year, see Repayments in Pub. 525 for details on how to report the payment.'",
-       "severity": "high",
-       "fix": "Add a gate/input for 2025 repayments of more than $3,000 of earlier-year unemployment compensation, or broaden the unemployment gate to include such repayments."
+       "fix": "Broaden the gate: '...or government disability payments you received instead of unemployment benefits (for example, after you became unable to work while unemployed)?' Add to the help: 'Workers' compensation does not count.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A filer who received non-state unemployment compensation (for example, railroad unemployment benefits) and no state Form 1099-G.",
-       "why_no": "The help says 'The state sends Form 1099-G,' so the filer may read the gate as asking only about state unemployment benefits and answer no when their benefits came from a federal or railroad program.",
+       "who": "A railroad worker (or spouse) who received railroad unemployment benefits from the Railroad Retirement Board in 2025.",
+       "why_no": "The words 'a government (such as a state's)' and the stress on state programs can suggest that only state unemployment insurance counts. A railroad worker may treat RRB payments as a separate federal railroad benefit and not as 'unemployment benefits'.",
        "line": "s1.uc_paid_if_any",
-       "irs_text": "i1040gi p. 89: 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025.'",
-       "severity": "medium",
-       "fix": "Say the Form 1099-G may come from a state or federal/railroad unemployment agency, or ask about unemployment compensation from any payer without naming the state."
+       "irs_text": "p525 (2025) p. 29: unemployment compensation includes '• Railroad unemployment compensation benefits.'",
+       "severity": "low",
+       "fix": "In the help, list the federal programs: 'including railroad unemployment benefits from the Railroad Retirement Board, Disaster Unemployment Assistance, and Airline Deregulation Act unemployment assistance.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who received Disaster Unemployment Assistance after a federally declared disaster, or a self-employed person paid under such a program, while not eligible for regular state unemployment insurance.",
+       "why_no": "They may see the payment as disaster relief, which is often tax-free, and not as 'unemployment benefits', especially since they were told they did not qualify for regular unemployment.",
+       "line": "s1.uc_paid_if_any",
+       "irs_text": "p525 (2025) p. 29: '• Unemployment assistance under the Disaster Relief and Emergency Assistance Act of 1974'; 'Unemployment assistance payments under the Act are taxable unemployment compensation.'",
+       "severity": "low",
+       "fix": "Name Disaster Unemployment Assistance in the help, and say it counts even though disaster relief grants usually do not."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer in a state that brands its program differently, for example 'Reemployment Assistance' or 'Family Leave Insurance' paid by a state disability or labor agency.",
+       "why_no": "The program name they know does not contain 'unemployment' or 'paid family leave', so they may not recognize it in the question.",
+       "line": "s1.uc_paid_if_any",
+       "irs_text": "f1099g p. 5, Box 1: 'If you made contributions to a governmental UC program or to a governmental paid family leave program and received a payment from that program, the payer must issue a separate Form 1099-G'",
+       "severity": "low",
+       "fix": "Add to the help: 'Your state may call it reemployment assistance, jobless benefits, or family leave insurance.'"
       }
      ],
-     "prompt_sha": "ee21907a705bca7ef1c87836c1f93886597590be21e13633b72c1b5cb334418c",
+     "prompt_sha": "7b4508c6531132fbd82959eec3c5337d652bcf5ba3dadb29ead7a4a037efd2ed",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_s1.uc_any.ba29a5c84054.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.145256,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_s1.uc_any.8746e27d0552.1.response.txt"
     }
    ],
    "condition": "s1.uc_any",
@@ -1446,12 +1456,58 @@
      "how": "cited pages",
      "locators": [
       "p. 89, Schedule 1, line 7",
-      "p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only the actual amount'"
+      "p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only the actual amount'",
+      "p. 89, Schedule 1, line 7; , Instructions for Recipient, Box 1, \"If you made contributions to a governmental UC program or to a governmental paid family leave program and received a payment from that program, the payer must issue a separate Form 1099-G to report this amount to you\", \"Combine the box 1 amounts from all Forms 1099-G and report the total as income on the UC line of your tax return\"; , Types of unemployment compensation, \"Trade readjustment allowances under the Trade Act of 1974\"; , Holdings, \"(3) Amounts paid to the employee by the State as family leave benefits pursuant to the State’s PFML statute are included in the Federal gross income of the employee under § 61\""
      ],
      "cols_pages": [
       89
      ],
      "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1099g",
+     "revision": "Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026)",
+     "text_sha256": "c3505294585e00ec5e957f73aa97dee32ad4b6916cd3eb48fef7f3c79f123270",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "49cc781de5cf6d881cc347361880de4b4b20fca0f13397bc94c94e84a20cff6d"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      29
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      29
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    },
+    {
+     "doc": "rr-2025-4",
+     "revision": "Rev. Rul. 2025-4 (IRB 2025-7); not year-specific; effective for payments made on or after January 1, 2025, with 2025 a transition period for reporting",
+     "text_sha256": "a684c9ce673a677027737d3c1c78e24dddb1556fff2ca5bf6dd6dc812f427729",
+     "pages": [
+      27
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "4233122a946ea3d6cd361f346161d519a2b38d24c27217f96555d2df37a5d4e8"
     }
    ]
   },

@@ -1637,10 +1637,71 @@ form:
         doc: i1040gi
         locator: 'p. 15, Qualifying Surviving Spouse, "You can check the “Qualifying surviving spouse” box in the Filing Status
           section on page 1 of Form 1040 or 1040-SR"'
+    - id: household.qss_claimed
+      printed: (helper)
+      type: Bool
+      label: Qualifying surviving spouse checked and its tests answered Yes (false for any other filing status)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.qss
+            - const: true
+          then: household.qss_eligible
+        - guard:
+            op: test
+            eq:
+            - household.qss
+            - const: false
+          then: household.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 15, Qualifying Surviving Spouse, "use joint return tax rates for 2025 if all of the following apply"'
+    - id: household.qss_no_child
+      printed: (helper)
+      type: Bool
+      label: No son, daughter or stepchild is listed
+      expr:
+        op: test
+        eq:
+          - household.qss_children_listed
+          - const: 0
+            type: Count
+      cite:
+        doc: i1040gi
+        locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim
+          as a dependent or could claim as a dependent"'
+    - id: household.qss_no_child_notice
+      printed: (helper)
+      type: Bool
+      label: 'Notice: qualifying surviving spouse needs a son, daughter or stepchild of yours (not a foster child) who lived
+        in your home for all of 2025, and none is listed among the people who lived with you. List that child (even one you
+        cannot claim as a dependent), or choose another filing status.'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.qss_claimed
+            - const: true
+          then: household.qss_no_child
+        - guard:
+            op: test
+            eq:
+            - household.qss_claimed
+            - const: false
+          then: household.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim
+          as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025"'
     - id: household.qss_children_listed
       printed: (helper)
       type: Count
-      label: Number of people listed as your child (son, daughter, stepchild, foster child or a descendant of one)
+      label: Number of people listed as your son, daughter or stepchild (not a foster child, grandchild or other descendant)
       expr:
         op: sum_over
         collection: dependent
@@ -1648,8 +1709,8 @@ form:
         where:
           op: test
           eq:
-            - dependent.relationship
-            - const: child
+            - dependent.own_child_if_qss
+            - const: true
       cite:
         doc: i1040gi
         locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim
@@ -1657,16 +1718,22 @@ form:
     - id: household.qss_children_all_year
       printed: (helper)
       type: Count
-      label: Number of people listed as your child who lived with you for all of 2025
+      label: Number of people listed as your son, daughter or stepchild who lived with you for all of 2025
       expr:
         op: sum_over
         collection: dependent
         field: dependent.one
         where:
           op: test
-          eq:
-            - dependent.child_all_year
-            - const: true
+          all:
+            - op: test
+              eq:
+                - dependent.own_child_if_qss
+                - const: true
+            - op: test
+              eq:
+                - dependent.child_all_year
+                - const: true
       cite:
         doc: i1040gi
         locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim
@@ -1757,7 +1824,7 @@ form:
       label: Did your spouse die in 2025?
       expr:
         op: input
-        source: Did your spouse die in 2025? (Asked when your filing status is single or head of household, or when filing jointly although not married at the end of 2025.)
+        source: Did your spouse die in 2025? (Asked when your filing status is single or head of household, when filing jointly although not married at the end of 2025, and on a joint return with child or dependent care expenses, Form 2441.)
       cite:
         doc: p501
         locator: p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."
@@ -1953,8 +2020,8 @@ form:
     - id: household.rdp_community_property
       printed: (gate)
       type: Bool
-      label: Not filing jointly, living in a community property state, and a registered domestic partner in Nevada,
-        Washington or California
+      label: Not filing jointly, and a registered domestic partner in Nevada, Washington or California at any time in 2025
+        (wherever you lived)
       expr:
         op: test
         all:
@@ -1964,15 +2031,11 @@ form:
               - const: mfj
           - op: test
             eq:
-              - household.community_property
-              - const: true
-          - op: test
-            eq:
               - household.rdp
               - const: true
       cite:
         doc: i1040gi
-        locator: 'p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"'
+        locator: 'p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"; p555 p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both."'
     - id: household.joint_unmarried
       printed: (helper)
       label: Not married at the end of 2025, and no spouse who died in 2025 (read for a joint or a separate return)

@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "643fb098b4d60aa9d5c16e57d47655a6d42978be473710deaa66af6cbfc4f8ad",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -21,9 +21,9 @@
   },
   {
    "key": "3",
-   "record": "643fb098b4d60aa9d5c16e57d47655a6d42978be473710deaa66af6cbfc4f8ad",
+   "record": "e764236f77c1e44da186839427cc846550df7bd46a3b241b81f8aaf7407ae3d3",
    "status": "MATCH",
-   "subject_key": "eb08660fdc6ede35f7f5cb928f843fe79148212b947c8dae6e2d5333c15fdcf3"
+   "subject_key": "0f95f185b342e528c89d263dfe64662f5b7716e68cab833939fe06d771a661c4"
   },
   {
    "key": "4",
@@ -39,16 +39,16 @@
   },
   {
    "key": "6",
-   "record": "5f06829752f4d9e483a94b1946d8c810ac4f1192cc3ea8dfb4c2abbafee063d1",
+   "record": "0ee6778206d26054f66a2cc1cf12ed1d38b434dac174c8fc95d2c66a8b21cfcb",
    "status": "MATCH",
-   "subject_key": "d3ea411e4de528503e55780bad16046bc8cf980b541b39d557e121e02b257990"
+   "subject_key": "ec7e78f2f524f3c890edd6dccde718abeb59cfa735c302e240ee3de6519db023"
   },
   {
    "key": "7",
-   "record": "643fb098b4d60aa9d5c16e57d47655a6d42978be473710deaa66af6cbfc4f8ad",
+   "record": "e764236f77c1e44da186839427cc846550df7bd46a3b241b81f8aaf7407ae3d3",
    "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (i8889 p. 7, Additional Contribution Amount Worksheet, line 1; p. 5, Note). The rendered line 7 states the owner-accepted reading recorded on f8889.line7_total (every month the filer was an eligible individual counts toward the $1,000 once family coverage applied at any time); the model reads the recorded alternative (family months only). Same as the goal-1 round; the line's English is unchanged in substance by this merge. (carried over from reviews/2025/render/f8889.index.json at deca6831, review of 2026-11-15)",
-   "subject_key": "394e52206f0c65bc0544583c987a10147828c66e34a5e71bda48d5e50d14a14a"
+   "ruling": "Ruling: ambiguity; the same competing reading of the Additional Contribution Amount Worksheet's month count (only months of family coverage, under the i8889 p. 5 Note for a married person with family coverage, against the worksheet's 'number of months' of the eligible individual) that the register already holds as amb.2025.hsa_line7_months; repeat of the earlier render ruling on line 7, unchanged by this round (whose change is the allocation check and question wording).",
+   "subject_key": "5d140f9c733b1811064d7d9ee246f6bac256d0acc4dec6d7b322c8b06f809eb1"
   },
   {
    "key": "8",
@@ -76,10 +76,9 @@
   },
   {
    "key": "13",
-   "record": "643fb098b4d60aa9d5c16e57d47655a6d42978be473710deaa66af6cbfc4f8ad",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i8889 p. 8, Line 13, and i5329 p. 8, Lines 43 and 47. Line 13 renders the general rule (the smaller of line 2 or line 12). A filer with prior-year excess HSA contributions is refused on the return at Form 5329: person.x_hsa_prior_excess_if_hsa is one of the tests of person.x_other (Form 5329 parts this tool does not prepare), so the Form 5329 line 43 addition never reaches a computed line 13. Same as the goal-1 round. (carried over from reviews/2025/render/f8889.index.json at deca6831, review of 2026-11-15)",
-   "subject_key": "b7de9200b26410a5d4f07be790ca0a1161bcc167dec1b286ec7977ddb4c55c2f"
+   "record": "e764236f77c1e44da186839427cc846550df7bd46a3b241b81f8aaf7407ae3d3",
+   "status": "MATCH",
+   "subject_key": "af4cae7daab5d77745dd3bd233c7dc5b944f1ce42d805850e6985c29b9aa10c7"
   },
   {
    "key": "14a",
@@ -101,9 +100,10 @@
   },
   {
    "key": "15",
-   "record": "643fb098b4d60aa9d5c16e57d47655a6d42978be473710deaa66af6cbfc4f8ad",
-   "status": "MATCH",
-   "subject_key": "fbeddeb4af6a6a5373bda898096927e4ea4ed58c9c295d61cb42edb102ce95ae"
+   "record": "e764236f77c1e44da186839427cc846550df7bd46a3b241b81f8aaf7407ae3d3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; i8889 p. 8, Line 15, 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses' cannot reach a completed 2025 return: an excess from before 2025 still in the HSA is refused by person.x_hsa_prior_excess (its help: 'a Yes ends the interview here'), and a withdrawal of 2025 excess contributions, in 2025 or by the 2026 due date, is refused by f8889.excess_withdrawn; a 2025 excess taken out after the due date is a later year's distribution. Repeat of the earlier render ruling on line 15.",
+   "subject_key": "6d7ca94cf15f7988af0ae29367585873593d5da01da2889b77b9486795c04547"
   },
   {
    "key": "16",
@@ -127,20 +127,20 @@
  "subjects": {
   "2": "2801d78e69c37ee24115db41e5235da312bd06df55e272ee28083dc011a5f5bf",
   "9": "c907349dbc8b5965c63f2946fe179ae94c3521ade0757220c0a0f0662cacf4e2",
-  "3": "63ba0e474927d1c763cd9a83134c6fee167ab01cf5e1daddf35d7d2bb3a013d9",
+  "3": "ab7a8d7a0b2041e35a54dadb1b0dfd8e60edb5d66300fbebd3cf95d32c3004d8",
   "4": "66c8cb628df1fc8f52a3e6a07c44e516b2b37dc7b8337191d71e6c52ecef5fad",
   "5": "55cd4636f29c903005e95a654b36503895e002c4a6e215607c3bdd1cd863f535",
-  "6": "f783db0ba353eb74ec0725ca17a89956149002647358d1cb98887b247e10e9a4",
-  "7": "94ceda96bb538a4543bc60762e35aca45db3e1db7c9952e1a9405e36c163f085",
+  "6": "2a57496b31945bcc6779a244692655527011eb8510cdea4eaeb9036b8b4bc394",
+  "7": "f8174ca6df54da41b04a061b4555f69c348525f361f7edcb956557fb153e5523",
   "8": "105942510283b256519607e12dd06fd99c3d37067b7e659ed42710a817b31936",
   "10": "4d894568a5073a0219da252a0228e9f16d4da19de17284ac2591ccbd8a62bdf0",
   "11": "10231ebfca7ee67bae504c3d67a48b26630654159159ba35f8f04439cb17d497",
   "12": "433e1aab81c429caf584307e3aefe3f7b97a2077d40a3f639fdb9a4d76c7915b",
-  "13": "3439ac9b902c1912b56daed4adbbb091865615c76910dcf3ba5a346551488100",
+  "13": "23bc8530819b2b4920650b18c75190d55ff86f1e3f797c27c1f8d34f799d58be",
   "14a": "2a13fc3666dd83c836cabda2b0e3f470c3e797bc913548161b25f9a6763613d4",
   "14b": "1cc9da67d36bfb3e4e5dbc97332dd6257b083257857343d18c0872f8fb0d6b72",
   "14c": "ab5463202f3bac2cc65837d523f1a5b1e024ca4c01ad301d1192e808e93a3385",
-  "15": "90f9642cfc17f2d778baa2d951c85ea707cdca71fc2ce53ea16b4442dae7052a",
+  "15": "98e0b4371f3cfc1324b7a7cf78420987f1fd5d0dabb38260609a2c2e7bf9d643",
   "16": "0eee56fd69e74ae108e04bc1411aaf3c5f0c3b5bbd979a2567f9d7bdc33dec09",
   "17a": "2b52e5398cab09553bc77bfe41957ef8e1bf70e6915a380f8705b30eec8cf27e",
   "17b": "3d9dc1ad065d3557d389ec8bb2ba2981d786c0ab58d25bdd6142234f0c152497"

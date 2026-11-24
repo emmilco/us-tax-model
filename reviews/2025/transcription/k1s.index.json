@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "ea7785f8968d154e82c701f1261057987af1f478091d41656c2939faf23a7150",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -116,122 +116,122 @@
   },
   {
    "key": "k1s.p4_income",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,336/1,517 agree; differences {\"candidate-unknown\": 13, \"project-refuses\": 19, \"project-unknown\": 149}; on completed returns {\"project-unknown\": 35}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "3dccc6e9d15333023aeb1fda88df875e6120b062ab0bea5de10119cbb211433b"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "46b90b07a4048af20743e7157d0e5f689ed651f64e0c94123456db07e363be52"
   },
   {
    "key": "k1s.p4_loss",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,341/1,517 agree; differences {\"candidate-unknown\": 13, \"project-refuses\": 19, \"project-unknown\": 144}; on completed returns {\"project-unknown\": 35}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "374a662203aa8a081a0e96e3c95fb27f6588c00454afb6c9b6b94f2d792e112e"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "e209ad4c0a9804e06f20a7f5e0cea97e54d1da8b97a152ea148ffc3d52649738"
   },
   {
    "key": "k1s.p4_prior",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,334/1,517 agree; differences {\"candidate-unknown\": 13, \"project-refuses\": 19, \"project-unknown\": 151}; on completed returns {\"project-unknown\": 35}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "dec4f14512c7b8ffccad8d591ecf5da6cd8438482fe233f5125da369c8cab9fd"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "e2d460bdbdf5c208e4c1bd72e98d33cc6ce542b25934969f5227f1ff01ac06c9"
   },
   {
    "key": "k1s.p5_income",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,361/1,517 agree; differences {\"candidate-unknown\": 27, \"project-refuses\": 19, \"project-unknown\": 110}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 24}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "a69a23847f34ecd8c98bff1b49370757e8dabcd6cab70834ece5cb712aab3a35"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "7dddc47d3370ef0f5ceca60e4b6b286ebec30fc2a92422f8fb8dcf35b9cc251a"
   },
   {
    "key": "k1s.p5_loss",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,394/1,517 agree; differences {\"candidate-unknown\": 27, \"project-refuses\": 19, \"project-unknown\": 77}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 12}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "1235f21d55347d44f7d34d2185f4a3dac0f744bd39ea7b3e5d99e553278ec790"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "54090e086a96ed06a672bceb699deb1c54f9d62df29ab42f144e2c641fb3f33b"
   },
   {
    "key": "k1s.p5_prior",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,337/1,517 agree; differences {\"candidate-unknown\": 21, \"project-refuses\": 19, \"project-unknown\": 140}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 30}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "c116fe34fd1d066d8d18c4dfeb1d69b4cd39c461f55a0150148d8c65b20a3a37"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "f48a857cf0209559419c571263e6f160a384a0f8c0611ea6a05d7b68a0717d4c"
   },
   {
    "key": "k1s.int",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,138/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 351}; on completed returns {\"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "cc6dcf106fcdde659d4026a73428727f46ec17425d4aa65c99aeacf8723fd7e0"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "daeb7217257a784883d63c6296469da49d324f574830f2d5ae71b42f0fb1631c"
   },
   {
    "key": "k1s.ord_div",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,138/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 351}; on completed returns {\"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "c457ee7dea603dc5bc1055f09dd228d5d94c0f8091250c651d6298eb52b5b573"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "eaaace3d6b68aae8d2322359edadb769b2d7440872788e2696a0711672718f85"
   },
   {
    "key": "k1s.qual_div",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,137/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 352}; on completed returns {\"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "66dc635a043f40573ee293cc53286b6e08d6ded17556270c6c44949f42047b0d"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "7ccdad3c95e3f28a5f4738949734209bebbc5f0f729d8343f227eedf4bc405f8"
   },
   {
    "key": "k1s.st",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,310/1,517 agree; differences {\"project-refuses\": 22, \"project-unknown\": 185}; on completed returns {\"project-unknown\": 24}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "609db0f5f21cb1235be21da9d664c04fb4f0a05346f1b31e7e0b53df61dfdff9"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "53549ce228cbee0652f97f915773a9790690b05465aeeb3dbc593b74b5634399"
   },
   {
    "key": "k1s.lt",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,310/1,517 agree; differences {\"project-refuses\": 22, \"project-unknown\": 185}; on completed returns {\"project-unknown\": 24}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "8baf3500650e5bab423fa18363fadc13fdbaccdece4dc2e28f9adf649a8c49be"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "2e4f8a905ceae71cbf7d5376589d15d7bb21ddc4e74785c0639853b21500ce52"
   },
   {
    "key": "k1s.g28",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,240/1,517 agree; differences {\"project-refuses\": 27, \"project-unknown\": 250}; on completed returns {\"project-unknown\": 34}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "b4ca32b82344a5e6bb8838b1b145cd701eeeb7868c96a597f17aae5d084c5d2a"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "1ff270157d4df2cfa90e65abc3652936b97cfb4783badff14fc88bae1d36c0ed"
   },
   {
    "key": "k1s.u1250",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,249/1,517 agree; differences {\"candidate-unknown\": 25, \"project-refuses\": 27, \"project-unknown\": 216}; on completed returns {\"candidate-unknown\": 2, \"project-unknown\": 51}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "a30ff98a2361b4ca7886c8bd5c3e08baeb62ece800c54e3aa926198d59a7ff43"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "b63cf699b9b9731aa145989905fe26adeec0c1eb09dcfaf552d0f955b056f5ed"
   },
   {
    "key": "k1s.backup",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,264/1,517 agree; differences {\"project-refuses\": 28, \"project-unknown\": 225}; on completed returns {\"project-unknown\": 53}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "337c43e711944d0263b76709194d806d84437090e518f9b1238b370cba76e583"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "3b53f61e260e902c7765519ae41159bab54e8007c69852c39cc5478a75ca7a82"
   },
   {
    "key": "k1s.taxexempt",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,179/1,517 agree; differences {\"candidate-unknown\": 21, \"project-refuses\": 28, \"project-unknown\": 289}; on completed returns {\"candidate-unknown\": 2, \"project-unknown\": 53}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "e806029b4e80a3473a8827a195cba03797608465e3aaef2b6eea5d3221c854a2"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "fa3de553619674e2fdb89aa9b8b1bdbc78c6bfaa9d4f209c681394478c59a5be"
   },
   {
    "key": "k1s.nonpassive",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,380/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 92}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 13}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "6c9a83ef99665695b4131b524d36fcf76ebb7ca3f20c84becb646af6a0a01de2"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "a75c97031c41ea103c1dfecb30f7dd30812b35d0371c872d06cb300fd162ceec"
   },
   {
    "key": "k1s.qbi",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,237/1,517 agree; differences {\"candidate-unknown\": 25, \"project-refuses\": 30, \"project-unknown\": 225}; on completed returns {\"candidate-unknown\": 2, \"project-unknown\": 53}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "ec44e39cb1e0435a27788fa5a0fb3d0a1f7f5309962d43a98dfbc700d1fcdf3f"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "964ee80db4da9d8522e61c22147500a72b75ba47ddc032ea47c072bddab18bb5"
   },
   {
    "key": "k1s.one",
@@ -247,24 +247,24 @@
   },
   {
    "key": "28 (k)",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,354/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 118}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 21}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "00cd98bf5286f777e9593ba915bf997fccce5040ef6bbddeaff9213dadf09282"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "08583fc029bbbecf9887943a74f041e1e8b213c3db88d079d1af399adcebf233"
   },
   {
    "key": "28 (i)",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,380/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 92}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 13}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "25ba0b43bbbcdb5145e926e92897504c5be0cfbc478d4a885bcdca653f03ecfe"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "b6cce36035fded611022d663d4c7b251eba33170c2c73c5a5137345d1101ab7c"
   },
   {
    "key": "28 (h)",
-   "record": "8c46c6401903a2674d883b90f63b512fa26311f9c202325cf2c730a2c770bc27",
+   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1120ssk (the box instructions the line cites). The line was rerun only because scope.rental, read by k1s.ask_re_pro, was reworded (BUG-0952). executable triage (.transcription/triage/2025/k1s.json, this pass): 1,385/1,517 agree; differences {\"candidate-unknown\": 30, \"project-refuses\": 15, \"project-unknown\": 87}; on completed returns {\"candidate-unknown\": 3, \"project-unknown\": 16}: the differences are the project refusing (k1s.ok carries every K-1 refusal) or withholding an input on partial records where the reply computes, and the reply unknown where it reads inputs without their parent questions; no value differs on any return, so the earlier value differences (the test 5 material participation reading) do not occur in this reply.",
-   "subject_key": "0e911096847d63fd214e68920effa080e6e328ce93a1a19b812d73ff759b45f1"
+   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "c4672eee79f9a11b4b0ae0fafba2d9aa2521f4b2083d282a9d6b066f9c0ec390"
   }
  ],
  "subjects": {
@@ -285,28 +285,28 @@
   "k1s.gain8": "56925af37c1b49d15ecb568ff9c749fc457680c71a03715598f0ecb7adb2f8aa",
   "k1s.loss8": "53584ef696d0d2aa33984bff2a0a857e4290f8895f6f8e7520125b02f69bf58e",
   "k1s.f7203_required": "b22e49cc87fe89280110bfe334bf00411e33b1338d3eed7eb55c71e1c811d402",
-  "k1s.p4_income": "45e2b67564923ca2ded177bf09ceb3d5de072190b04bba567360965c5d38a51f",
-  "k1s.p4_loss": "07d4bcfa3992598ea695d91fc9ef261cfb1352ec84fed04041e85b79b0f28fb3",
-  "k1s.p4_prior": "86f94dba584b74b24c79b0e6ef067c51434028aad88c9bc0c0b2bb3138625950",
-  "k1s.p5_income": "7cbdb4267e522d11a75720928f9bf49105f0338d763f6f9af84e3926cb8f3ce3",
-  "k1s.p5_loss": "e8ea43da33e53d7659e62733206f2d79f4780d2d4c0af743f0c39073dd806c16",
-  "k1s.p5_prior": "a90a17534d4c0c4104df8e0205ddff3b1f733ddef3c5ab6f536fb7d96840fd3e",
-  "k1s.int": "a3a1b2024ee4e85bd95ef5e1244d9df347d237d2e9d5ba28adf6f93524b4961e",
-  "k1s.ord_div": "50f77b777495893e012d554a688f4655024fe8b08cca79870fb220fcfb11cb42",
-  "k1s.qual_div": "c5708c994b076ad9dfdf1786eb676b5ba3dc24ec2d90cc1896c8b11dc0782ec0",
-  "k1s.st": "f60c1a77d6f4200a9ebcdafe04e31a5976379c182ab97916ca092f6a91edf897",
-  "k1s.lt": "b51fcff7f2449eaba1b85da042eeffad040eac609f263d1df82c86f062c6b178",
-  "k1s.g28": "e231334a3dca893107df082608988056203ba59665827bbf98f8de2c22a48cb1",
-  "k1s.u1250": "c211d76314f2598b5c2e04ac2153924e693c313a0d79404734f0365eb9dafa58",
-  "k1s.backup": "6f33e92dc7d1ce61d7d969725e73d0c0fb13bdfcaa576ad63d796ff5703dcb98",
-  "k1s.taxexempt": "274a6b556e5e3967c243153ea794c4c324327524b451e5d97591ecc78e3a2958",
-  "k1s.nonpassive": "a27631042dc9ebfab70ac181740a7836f4aae8ba9298423d108aae5daab6f01e",
-  "k1s.qbi": "4efc5142f2cf3bb2bac58d05e9b511fbbd80c1357328afea04b43a1cee088bf1",
+  "k1s.p4_income": "fbdb5c43660cf87f7a9c1b57c3482fd0f970caae34712bf9e3dd9bb044311384",
+  "k1s.p4_loss": "00180fc834c20a69c315613ee687d826c66a626a0e45113d318015cdc10acac3",
+  "k1s.p4_prior": "c87450b1fc258b2a7b00caca6921d65038487dcac7f0d451982f9b98813fb802",
+  "k1s.p5_income": "7ebf1c1869cba383986a7a64e55dc7f0693faa644d2d97ee361ec0fb5bc525dd",
+  "k1s.p5_loss": "40194b7545f6f4552a3f0637466facf9ac9edf3f512501c68022ca7baa4fe47d",
+  "k1s.p5_prior": "7f483285f3a6882daafa55759d38c86204225a7b483aad432c367b7e5808d40f",
+  "k1s.int": "8df8fc52b7fc5e61789d4692efee1007e18d05d4b615ae66e653de7dd76af8fd",
+  "k1s.ord_div": "52a026ac308b759145b1f552bb3495ed64f2faec7d473fc18119972bb9280633",
+  "k1s.qual_div": "6b57015ef753c60874f5734935264b19e84b6441d3eeae31408150b1681ef23f",
+  "k1s.st": "3eb21afaf00ca3499cbdef35c881bde2a10e1c48d228420ef63117daec6e81bf",
+  "k1s.lt": "f0e7bd56aa349a99e25684df1ee7ca0afbd874011c7156b8e74740157f9785bc",
+  "k1s.g28": "06b82075e73428d4f37f3f99e9bec930442b7340c310c0a99b0dcb73503c736f",
+  "k1s.u1250": "1ba660856c5ae4900e45e8eeb717f9e8920dc198fcde851c55de76641c5977fb",
+  "k1s.backup": "a4719cf132324c1034e396e3cac00a4259e24c17b52515795e3cde05a47b3f51",
+  "k1s.taxexempt": "a44da26baf31afeeae61706c4d50dd8b85b642464464545973d40c845bc32aea",
+  "k1s.nonpassive": "9eb8e36054212d1825758f47e0dca21c701b25b7856848ff920fe323aaa667a4",
+  "k1s.qbi": "82190d2798a1ad650626f24248089b753bb161e8d70ffee33bb4f9a09ccab47a",
   "k1s.one": "a4539b0fcfe48eac2a8abd0473a64279ef8fb635bf653b6ee744b055458aa4c2",
   "k1s.sche_any": "b66760d1cd526042f6c86ea89735b88b0795a58e532757f4bf45c96a1202373c",
-  "28 (k)": "f1948375f755bcfe92a33c75126624d16d30ad1719f3fdda444c26fbedaf23ae",
-  "28 (i)": "ce7043d500627ecf39f82677d007f6231804fec7e0f8610e9ab2a31db08a351d",
-  "28 (h)": "f766f16810121c830700a34fb56913ac89c835a3f3b1e57c79049e668eb52a95"
+  "28 (k)": "712cc505157b5442887b0fbc5e51ba868e7ef2e463c35883266541017e88bc46",
+  "28 (i)": "147f91a717177b5c54d60eafdbbbf489f47c9c14ff0f91dec30eb2c597395717",
+  "28 (h)": "c1d05cce6efaf74c3d994c41841e6118acf7254f9d508d2a7f924fba867a382a"
  },
  "__rest__": "cb4444dd95a7f30256efd51e76058f0657248dc45ed516f8feaba0c3c0b51037",
  "foreign": {

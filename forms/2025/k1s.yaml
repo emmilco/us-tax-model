@@ -59,6 +59,18 @@ form:
       doc: i7203
       locator: p. 1, Who Must File, "Disposed of stock in an S corporation (whether or not gain is recognized)"; i7203 p.
         3, Line 13, "If a portion of your stock is redeemed, sold, or otherwise disposed of during the year, attach two"
+  - id: k1s.fiscal
+    printed: (screen)
+    label: The K-1 is for a tax year other than calendar year 2025 (a fiscal year)
+    type: Bool
+    expr:
+      op: input
+      source: Is the tax year at the top of this Schedule K-1 something other than the calendar year 2025 (a fiscal year)?
+    cite: &k1s_fiscal
+      doc: i1120ssk
+      locator: p. 6, "If you file your tax return on a calendar-year basis, but the corporation files a return for a fiscal
+        year, report the amounts on your tax return for the year in which the corporation’s fiscal year ends"; p. 4, "All
+        determinations of material participation are based on your participation during the corporation’s tax year"
   - id: k1s.box1_any
     printed: '1'
     label: Box 1 (ordinary business income (loss)) shows an amount
@@ -549,7 +561,8 @@ form:
     type: Bool
     expr:
       op: input
-      source: Is box 14 of this Schedule K-1 checked (a Schedule K-3 is attached)?
+      source: Is box 14 of this Schedule K-1 checked (a Schedule K-3 is attached), or did you get a Schedule K-3 for 2025 from
+        the corporation?
     cite:
       doc: i1120ssk
       locator: p. 14, Box 14. International Transactions, "If the S corporation checked the box, see the attached Schedule
@@ -1395,6 +1408,18 @@ form:
       doc: i1120ssk
       locator: p. 3, At-Risk Limitations, "Any loss from a section 465 activity not allowed for this tax year will be treated
         as a deduction allocable to the activity in the next tax year"
+  - id: k1s.credit_carry
+    printed: (screen)
+    label: A credit from this corporation held back on an earlier return by the passive activity rules (Form 8582-CR)
+    type: Bool
+    expr:
+      op: input
+      source: Was a credit from this corporation held back on an earlier return by the passive activity rules (Form 8582-CR)?
+    cite: &k1s_credit
+      doc: i1120ssk
+      locator: p. 6, "If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because
+        of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining
+        your income, loss, or credits for this year"
   - id: k1s.b1_prior
     printed: (c)
     label: Prior-year unallowed loss of the box 1 activity (2024 Form 8582, Part VII, column (c))
@@ -1455,6 +1480,71 @@ form:
           - const: false
         then: k1s.zero
     cite: *id029
+  - id: k1s.prior_not_active
+    printed: (screen)
+    label: Part of the held-back box 2 loss arose in a year without active participation
+    type: Bool
+    gated_by: k1s.prior_not_active_if
+    expr:
+      op: input
+      source: Did any of the held-back rental real estate loss (box 2) come from a year when you did not help make decisions
+        for it, or owned less than a tenth of the corporation's stock at any time that year?
+    cite: &k1s_p4prior
+      doc: i8582
+      locator: p. 10, Column (c), "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated
+        in the activity in both the year the loss arose and the current tax year"
+  - id: k1s.ask_prior_active
+    printed: (gate)
+    label: A held-back box 2 loss that would go to Form 8582 Part IV (active participation this year)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - k1s.b2_prior_if_any
+        - const: 0
+      - op: test
+        eq:
+        - k1s.part4
+        - const: true
+    cite: *k1s_p4prior
+  - id: k1s.prior_not_active_if
+    printed: (gate)
+    label: Asked only when a held-back box 2 loss would go to Form 8582 Part IV (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ask_prior_active
+          - const: true
+        then: k1s.prior_not_active
+      - guard:
+          op: test
+          eq:
+          - k1s.ask_prior_active
+          - const: false
+        then: k1s.no
+    cite: *k1s_p4prior
+  - id: k1s.b2_prior_blank
+    printed: (gate)
+    label: A box 2 loss was held back but box 2 shows no amount this year (active participation is not asked)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1s.box2_any
+        - const: false
+      - op: test
+        gt:
+        - k1s.b2_prior_if_any
+        - const: 0
+    cite: *k1s_p4prior
   - id: k1s.b3_prior
     printed: (c)
     label: Prior-year unallowed loss of the box 3 activity (2024 Form 8582, Part VII, column (c))
@@ -1899,6 +1989,10 @@ form:
         doc: i1120ssk
         locator: p. 19, Box 19. More Than One Activity for Passive Activity Purposes, "Use the information in the attached
           statement to correctly determine your passive activity limitations"
+    - when: k1s.fiscal
+      form: Schedule K-1 (Form 1120-S) for a corporation's fiscal year
+      remedy: A Schedule K-1 for a tax year other than the calendar year 2025 is outside this tool.
+      cite: *k1s_fiscal
     - when: k1s.disposed
       form: Form 7203 for a disposition of S corporation stock, and Form 8949
       remedy: A sale or other disposition of S corporation stock, or a redemption, needs the stock basis at the date of sale
@@ -1994,6 +2088,18 @@ form:
         doc: i1120ssk
         locator: p. 3, At-Risk Limitations, "Any loss from a section 465 activity not allowed for this tax year will be treated
           as a deduction allocable to the activity in the next tax year"
+    - when: k1s.credit_carry
+      form: Form 8582-CR (a passive activity credit carried from an earlier year)
+      remedy: A credit carried from an earlier year by the passive activity rules is outside this tool.
+      cite: *k1s_credit
+    - when: k1s.prior_not_active_if
+      form: Form 8582, Part IV (prior-year loss from a year without active participation)
+      remedy: A held-back rental loss from a year without active participation is outside this tool.
+      cite: *k1s_p4prior
+    - when: k1s.b2_prior_blank
+      form: Form 8582, Part IV or V (a held-back rental real estate loss with no box 2 amount this year)
+      remedy: A held-back rental real estate loss from a corporation whose box 2 is blank this year is outside this tool.
+      cite: *k1s_p4prior
     - when: k1s.not_at_risk_if_loss
       form: Form 6198 (At-Risk Limitations)
       remedy: A loss with amounts not at risk is figured on Form 6198, which this tool does not prepare.

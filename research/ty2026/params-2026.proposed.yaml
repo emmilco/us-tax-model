@@ -118,6 +118,29 @@ params:
       source: derived
       derived: 'moves_with_year: 1 (the from-year value plus 1 a tax year)'
       note: i1040gi 2025 citation (no 2026 reading); re-verify when the 2026 edition posts
+    age.over59h_all_year:
+      type: Count
+      value: 1965
+      moves_with_year: 1
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, exception 12, "Distributions incorrectly indicated as early distributions by code 1, J, or
+          S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older." (the latest
+          year of birth of a person who was 59 1/2 or older on every day of the tax year)
+      source: derived
+      derived: 'moves_with_year: 1 (the from-year value plus 1 a tax year)'
+      note: i5329 2025 citation (no 2026 reading); re-verify when the 2026 edition posts
+    age.under59h_all_year:
+      type: Count
+      value: 1968
+      moves_with_year: 1
+      cite:
+        doc: i5329
+        locator: p. 5, Line 2, exception 12, "Include on line 2 the amount you received when you were age 59 1/2 or older."
+          (the earliest year of birth of a person who was under age 59 1/2 on every day of the tax year)
+      source: derived
+      derived: 'moves_with_year: 1 (the from-year value plus 1 a tax year)'
+      note: i5329 2025 citation (no 2026 reading); re-verify when the 2026 edition posts
     age.cut_65:
       type: Count
       value: 1962
@@ -326,12 +349,17 @@ params:
         Exemption Worksheet line 3, prints the same amounts
     amt.rate_25:
       type: Rate
-      value: null
-      source: none
-      note: Form 6251 line 37 ("Multiply line 36 by 25% (0.25)" on the 2025 form), read after C-LAW-02's operations by s2.amt_l37_rate
-        alone (the exemption phase-out and the separate-return add-back read amt.phaseout_rate). No 2026 Form 6251 is archived
-        and the 2026 i6251 draft does not print line 37's rate; P.L. 119-21 section 70107 amends section 55(d) only. Fill
-        from the final Form 6251
+      value:
+        num: 25
+        den: 100
+      cite:
+        doc: f6251
+        locator: p. 3, Form 6251 (2026), line 37
+        quote: Multiply line 36 by 25% (0.25)
+      source: draft
+      note: Form 6251 line 37, read after C-LAW-02's operations by s2.amt_l37_rate alone (the exemption phase-out and the
+        separate-return add-back read amt.phaseout_rate); the 2026 i6251 draft does not print line 37's rate; P.L. 119-21
+        section 70107 amends section 55(d) only
     amt.mfs_addback_start:
       type: Dollars
       value: 64020000
@@ -1877,6 +1905,16 @@ params:
         locator: p. 2, Schedule A (2026), line 3
         quote: Multiply line 2 by 7.5% (0.075)
       source: draft
+    sa.gift_total_limit_rate:
+      type: Rate
+      value: null
+      source: none
+      note: 2025 source `p526` has no 2026 edition archived and no other archived 2026 source prints this value
+    sa.gift_property_limit_rate:
+      type: Rate
+      value: null
+      source: none
+      note: 2025 source `p526` has no 2026 edition archived and no other archived 2026 source prints this value
     sa.salt_base:
       type: NonNegDollars
       value: 4040000
@@ -3011,6 +3049,23 @@ params:
         quote: combined taxable compensation of both you and your spouse is less than $15,000 ($16,100 if one spouse is age
           50 or older at the end of 2026; $17,200 if both spouses are age 50 or older at the end of 2026
       source: draft
+    ira.roth_start_joint:
+      type: NonNegDollars
+      value: 24200000
+      cite:
+        doc: n-25-67
+        locator: p. 5, section 408A(c)(3)(A)
+        quote: the adjusted gross income phase-out range for taxpayers making contributions to a Roth IRA is between $242,000
+          and $252,000 for married couples filing jointly
+      source: final
+    ira.roth_start_other:
+      type: NonNegDollars
+      value: 15300000
+      cite:
+        doc: n-25-67
+        locator: p. 5, section 408A(c)(3)(A)
+        quote: For singles and heads of household, the income phase-out range is between $153,000 and $168,000
+      source: final
     rental.one:
       type: Count
       value: null
@@ -3238,8 +3293,8 @@ params:
       note: 'the rate of the exemption phase-out (Exemption Worksheet line 5) and of the married-filing-separately add-back
         (i6251 p. 10, Line 4: "include 50% of the excess of the amount on line 4 over $640,200"); P.L. 119-21 section 70107(c)
         (plaw-119-21 p. 93, final) substitutes 50 percent for 25 percent for taxable years beginning after December 31, 2025;
-        read by s2.amt_mfs_phaseout_part, s2.amt_ex_cut, s2.amt_h_mfs_phaseout_part and s2.amt_h_ex_cut (changes/2026/s2.yaml, C-LAW-02,
-        BUG-1031); Form 6251 line 37 keeps amt.rate_25'
+        read by s2.amt_mfs_phaseout_part, s2.amt_ex_cut, s2.amt_h_mfs_phaseout_part and s2.amt_h_ex_cut (changes/2026/s2.yaml,
+        C-LAW-02, BUG-1031); Form 6251 line 37 keeps amt.rate_25'
     tcw.mfj.b0.upper:
       type: Dollars
       value: 10080000
@@ -3281,7 +3336,6 @@ params:
   - ordinary.table_boundary
   - qdcg.rate_15
   - qdcg.rate_20
-  - amt.rate_25
   - household.mfs_living_else
   - household.no
   - s3.no
@@ -3313,6 +3367,8 @@ params:
   - sdtw.rate20
   - sdtw.rate25
   - sdtw.rate28
+  - sa.gift_total_limit_rate
+  - sa.gift_property_limit_rate
   - sa.no
   - f4952.no
   - ftc.no

@@ -879,32 +879,6 @@
    "adjudication": "reviews/ny/2025/screens/adjudication/round-f-deepseek.md",
    "subject_sha": "da546d47bf5bbc8a91f822ba9b8308f629156ad8771a37cc383d6063dceb5645"
   },
-  "unruled:gate:scope.armed_forces#1": {
-   "reason": "Round F adjudication, gate:scope.armed_forces, 2026-11-18.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "SOURCE",
-     "class": "accepted WIDE",
-     "evidence": "The gate asks the service questions for service since 2022, broader than the active-service exception; the extra answers leave the line unchanged. Asking costs a question, never a correct amount."
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "Reserve or National Guard service asks the question and the filer answers; the NY active-service exception is applied on the line, not by the gate."
-    },
-    {
-     "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Service in 2022 with no 2025 active duty asks the question; the answers leave the line unchanged."
-    }
-   ],
-   "bugs": [],
-   "adjudication": "reviews/ny/2025/screens/adjudication/round-f-deepseek.md",
-   "subject_sha": "b2a7103b555154d13755074cb2b2cccd6bc9e46ca0873a7d7d1cba8be0318ffd"
-  },
   "unruled:ny_it201.ask.mctmt#2": {
    "reason": "All three readings can only push a filer toward Yes, which refuses; none can turn a subject filer into a No.",
    "findings": [
@@ -991,74 +965,87 @@
      "n": 2,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "Form 2106 expenses are refused federally (scope.reservist_expenses; scope.performer_expenses, whose help says 'To go on without the deduction, answer No', so no depreciation is claimed).",
+     "evidence": "A 2025 sale of business or rental property is refused federally by sd.business_property.",
      "bugs": []
     },
     {
      "n": 3,
-     "kind": "UNCLEAR",
+     "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "Property sold in 2025 was still had in 2025; and a 2025 sale of business or rental property is refused federally by sd.business_property.",
-     "bugs": []
-    },
-    {
-     "n": 4,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "A Schedule C or rental with no bonus depreciation is asked and answers No; extra asking only.",
+     "evidence": "Form 2106 expenses are refused federally (scope.reservist_expenses; scope.performer_expenses, whose help says 'To go on without the deduction, answer No', so no depreciation is claimed).",
      "bugs": []
     }
    ],
    "bugs": [],
    "class": "no gate defect",
-   "subject_sha": "e21431ac90bb7c6ec0d028978199a9434d6f9d4223bf6a766aa913ca4382d296",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "358863a67614fc32f196d40f6ab8cf45ec8e25576c47d252eaed962440b3386e",
+   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   },
-  "unruled:gate:s1.alimony_if_any#1": {
-   "reason": "The New York post-2018 alimony question is skipped whenever pre-2019 alimony or a recapture is on the return (filed, low); the modified instrument is BUG-1215 (low).",
+  "unruled:gate:ny_it201.ask.spouse_resident#1": {
+   "reason": "A No to the spouse residence question refuses line 1 (ny_it201.gate.spouse_nonresident), so no case the findings describe is computed.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "defect",
-     "evidence": "ny_it225i p. 10, A-119; i1040gi p. 89 expects more than one agreement. A pre-2019 agreement makes s1.alimony_if_any true and hides ny_it201.ask.alimony_later, so post-2018 alimony under a second agreement gets no New York addition or subtraction and no refusal. Low.",
-     "bugs": [
-      "BUG-1287"
-     ]
+     "class": "covered",
+     "evidence": "A filer who cannot say the spouse lived in the City all year answers No, and ny_it201.gate.spouse_nonresident refuses line 1; the spouse-cannot-sign question is needed only after a Yes.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "defect",
-     "evidence": "A recapture makes the same gate true and hides the New York question. Low.",
-     "bugs": [
-      "BUG-1287"
-     ]
+     "class": "covered",
+     "evidence": "A spouse living outside the City makes the answer No, which refuses line 1 through ny_it201.gate.spouse_nonresident.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "ny_it225i p. 10, A-119, an instrument 'modified after December 31, 2018' to adopt Tax Law \u00a7 612(w). Already filed as BUG-1215 (1), low.",
-     "bugs": [
-      "BUG-1215"
-     ]
+     "kind": "SOURCE",
+     "class": "accepted WIDE",
+     "evidence": "The tool prepares IT-201 for full-year City residents only (decision C5); a State resident spouse outside the City is refused, an over-refusal by design.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "'that alimony' is defined by the help ('an agreement made after 2018'); ruled not a defect under BUG-1215. Low.",
+     "evidence": "The help of ny_it201.ask.city_resident counts time away if the home stayed in the City; the spouse question asks the same test. No case is computed wrongly.",
      "bugs": []
     }
    ],
-   "bugs": [
-    "BUG-1215",
-    "BUG-1287"
+   "bugs": [],
+   "class": "no gate defect",
+   "subject_sha": "528c86f640fba92d8b7c2d54cc6c7e88207ccc8a2013e66b94e48ea0d3e3f089",
+   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:gate:ny_it201.has_unemployment#1": {
+   "reason": "RUIA sickness benefits paid as wages are not asked about where the federal railroad question does not refuse them (filed, low).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "defect",
+     "evidence": "ny_it225i p. 17, S-122 covers all Railroad Unemployment Insurance Act benefits; sick pay is wages (p525 p. 19), not line 14. Mostly refused by person.rrta; the rest is filed as BUG-1375. Low.",
+     "bugs": [
+      "BUG-1375"
+     ]
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The question is reached only with unemployment on line 14 and asks about the Railroad Retirement Board as payer; sick pay goes with BUG-1375. Low.",
+     "bugs": [
+      "BUG-1375"
+     ]
+    }
    ],
-   "class": "defect (low): BUG-1287; BUG-1215 (low)",
-   "subject_sha": "480d9d4002e74101f104e1bc6c9d4a395f8e17ebb5dc4f851d91fa72994d66e6",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "bugs": [
+    "BUG-1375"
+   ],
+   "class": "defect (low): BUG-1375",
+   "subject_sha": "121386ca7685c88eaa60a5b9af1c79b5a69c714877bbb3b150de25470b8e79bf",
+   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   }
  },
  "baseline": {}

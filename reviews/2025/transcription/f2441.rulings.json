@@ -360,6 +360,29 @@
   },
   {
    "printed": "19",
+   "project_expr_sha256": "a9d86e37dd2c0a6a35315fa66d5efb5162efc64afd1eb2af1ac10cea01f86827",
+   "second_expr_sha256": "9c117f7f9777deadb2857fc2936d58115f7fcf1abfc63135df666ca380de7286",
+   "ruling": "Ruling: representation; i2441 p. 6, Line 19, \"If married filing jointly, enter your spouse's earned income ... If you are married filing separately, see the instructions\" and p. 5, Married Persons Filing Separately. Both choose the same three cases: a joint return takes the spouse's person.dc_earned_b; a separate return not considered unmarried (line A No) takes f2441.mfs_spouse_earned; every other return takes line 18. The project nests the separate-return choice under 'not joint'; the reply lists the three guards flat. The guards partition the same returns, so the values are the same on every input.",
+   "context": "f7eff4a63b6b52aed7d17e0c09988c4ab78af88935d64628488a816e02a9ac8d",
+   "date": "2026-11-24",
+   "run": "ecdb45183ca909e2ada80125f8b65acbd0b360fca710306a5eff16fd65ab98a6",
+   "subject_key": "d1f06c9a84353668aa1d957b897f54ca66527e155df6122a383b5750b8f175b9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f2441",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@f2441",
+     "fixture:mutation.t3.roth_excess_screen@f2441",
+     "generated:20261026.339@f2441"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "19",
    "project_expr_sha256": "dbd8dbed5a83c6a8184306c7e994386ea16ae814906c0e097d4de7e3d30566fe",
    "second_expr_sha256": "16ba457c81a9cb32850fd66e7a8675fe4157de435be85d860b67f2fc826ca079",
    "ruling": "Ruling: scope; project retained. The second adds a branch for a married filing separately filer not treated as unmarried (the spouse's earned income as an input); the project refuses every married filing separately return (s3.mfs in scope.ready, and on Form 2441 lines 11 and 26; owner decision 5, \"Form 2441 refuses MFS\"). On a joint return both take the spouse's earned income, otherwise line 18. f2441 p. 2, line 19, \"If married filing jointly, enter your spouse's earned income\", \"If married filing separately, see instructions. • All others, enter the amount from line 18\"; i2441 p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return\". No change to the data.",

@@ -48,6 +48,22 @@ rows:
     expect:
       asks: f2441.prior_year
       not_asked: [f2441.nondependent]
+  - id: care.joint_spouse_died
+    design: BUG-0681, f2441.spouse_died read from the opening's answer household.spouse_died_this_year (no second question)
+    situation: A filer whose husband died in 2025 files one return for the two of them and paid for care so as to work.
+    uses: [paid_care]
+    answers:
+      $person: [taxpayer, spouse]
+      household.married_dec31: false
+      household.spouse_died_this_year: true
+      f2441.care_other: false
+      f2441.prior_year: false
+      f2441.student: false
+      f2441.unable: false
+      $dcprov: []
+      s8812.combat_pay: false
+    expect:
+      refused: f2441.spouse_died_gate
   - id: care.bill_for_2024
     design: lane 2b, f2441.prior_year (unchanged in the model)
     situation: A filer paid in 2025 a bill for care given in 2024.
@@ -82,6 +98,7 @@ rows:
     answers:
       $person: [taxpayer, spouse]
       household.married_dec31: true
+      household.spouse_died_this_year: false
       f2441.prior_year: false
       f2441.student: true
     expect:

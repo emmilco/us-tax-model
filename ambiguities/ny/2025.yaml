@@ -21,6 +21,16 @@ register:
         $8 from federal adjusted gross income rounded once: such a gap means a federal amount reached federal adjusted
         gross income without reaching lines 1 to 18 (the tolerance chosen under the owner's delegation, 2026-11-23). A product of a rate and an amount is rounded once to the
         dollar (multiply_rate with unit 100), not first to the cent.
+        A negative amount ending in exactly 50 cents (a loss carried from federal lines 5, 6, 7, 8 or 11 in cents, for
+        example -$213.50) is increased to the next dollar toward zero (-$213): the engine's half-up rule, floor(x + 1/2).
+        Decided by the coordinator under the owner's delegation of 2026-11-24 (BUG-1220). The instructions are silent on
+        the direction for a loss: "Increase amounts that are 50 cents or more to the next dollar" read literally raises
+        -$213.50 to -$213, while "place a minus sign immediately to the left of the loss amount" (p. 3) can be read as
+        rounding the loss's magnitude first (-$214). The first is taken because it is the literal "increase" and, where
+        the text is silent, it does not understate tax (the smaller loss). The alternative, rounding the magnitude half
+        away from zero, would change at most $1 on each of lines 2, 6, 7, 11, 12 and 16 (and so line 17) and is
+        reversed by giving the engine's round a rule that rounds a negative amount's magnitude, with tools/ny_predict.py
+        r_dollar changed to match and fixture ny.whole_dollars.loss_half restated.
       cite:
         doc: ny_it201i
         locator: 'p. 2, Entering whole dollar amounts, "When you enter amounts on your return, enter whole dollar amounts only."'
@@ -95,6 +105,29 @@ register:
       cite:
         doc: ny_it201i
         locator: 'p. 19, Line 65, "Did you claim the federal earned income credit for 2025 on your federal income tax return, or could you have claimed it based on your federal adjusted gross income?"'
+    - id: amb.ny.2025.withholding_forms
+      text_at_issue: Lines 72 to 74 credit "your total New York State, New York City, and Yonkers tax withheld from any of
+        the following" and list Form IT-2 (Forms W-2), Form IT-1099-R (Forms 1099-R), Form 1099-G and Form W-2G; they do
+        not name Form 1099-NEC, 1099-MISC, 1099-INT, 1099-DIV or another information return.
+      readings:
+        - Lines 72 to 74 take New York tax withheld on the four listed forms only, so the question is asked where one of
+          them can arise (a pension, annuity or IRA distribution, including a disability pension reported as wages;
+          unemployment compensation; other income on Schedule 1, which holds government payments and gambling
+          winnings).
+        - Lines 72 to 74 also take New York tax withheld on any other information return, so the question is asked of
+          every return with nonemployee, interest or dividend income as well.
+      chosen: The first.
+      reason: >
+        The instructions give a closed list ("any of the following") of the forms whose withholding the lines total, and
+        no other form of withholding is described anywhere in IT-201-I. Where the text is read as silent, the first
+        reading does not understate tax: it credits no withholding the instructions do not name. Decided by the
+        coordinator under the owner's delegation of 2026-11-24 (BUG-1153). To reverse it, add the federal lines of the
+        other forms (Schedule 1 line 3, Form 1040 lines 2b and 3b) to ny_it201.has_other_payments and name those forms
+        in ny_it201.ask.other_withholding; the question's Yes refuses lines 72 and 73 either way.
+      cite:
+        doc: ny_it201i
+        locator: 'p. 21, Lines 72, 73, and 74, "Enter on the appropriate line your total New York State, New York City, and Yonkers tax withheld from any of the following:"'
+        quote: "Form IT-1099-R, Summary of Federal Form 1099-R Statements"
     - id: amb.ny.2025.recapture_selection
       text_at_issue: Each tax computation worksheet (IT-201-I pp. 34 to 39) tests New York AGI (line 33) and also
         taxable income (line 38), for example worksheet 7, "If your New York adjusted gross income (line 33) is more

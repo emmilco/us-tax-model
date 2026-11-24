@@ -985,16 +985,17 @@
    "project_expr_sha256": "4e0fde6bbd661f1105d1a536ba0f5adfd120991ae32984f69ca91d31bbaa9a97",
    "second_expr_sha256": "483e47bf835761306362f5ca228c939ae3d18344d6a248b860b93a8d0ca2d17b",
    "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents. Same reference otherwise.",
-   "context": "d99b679940a05af8dec2008d9e5de9cfdf21c86e32d321f8406943b22213740a",
-   "date": "2026-11-22",
-   "run": "113b03185ef054ae7624c5680a9283a3a66c7d770b8beed50f2ba6e459fdfbe0",
-   "subject_key": "3457a4fab429313a857b9a8d67ec463674ca24bf448cfbe747dfcf1a7e32c44b",
+   "context": "5d7862d29eba78fef296f411d186db2cdfb6058a6243c23678bcc0c7c0168ed5",
+   "date": "2026-11-24",
+   "run": "7528ea7e2f2e486590b41c96d909135add8dec2145a69406d1eef37e6c9fdebd",
+   "subject_key": "0498356d5f7c6996b9bd4aa31c5bea83ef88fe28f677f467c171892146125701",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
      "project-refuses",
-     "project-unknown"
+     "project-unknown",
+     "value"
     ],
     "witnesses": [
      "fixture:stage14.asset.hy_5yr@ny_it201",
@@ -1002,7 +1003,7 @@
      "fixture:stage14.asset.mq_mixed@ny_it201",
      "fixture:stage14.asset.mq_not@ny_it201",
      "fixture:stage14.asset.bonus_100@ny_it201",
-     "fixture:stage14.asset.bonus_40_before@ny_it201",
+     "fixture:mut.asset.prior_bonus_assets.this_year_ignored@ny_it201",
      "fixture:classm.w2.1.deepseek@ny_it201",
      "fixture:stage13.refuse.joint_without_spouse@ny_it201",
      "fixture:stage13.refuse.single_with_spouse@ny_it201",
@@ -1014,7 +1015,8 @@
      "generated:20261026.2@ny_it201",
      "generated:20261026.3@ny_it201",
      "generated:20261026.4@ny_it201",
-     "generated:20261026.5@ny_it201"
+     "generated:20261026.5@ny_it201",
+     "generated:20261026.201@ny_it201"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1665,6 +1667,33 @@
      "fixture:classm.f8959.2@ny_it201",
      "fixture:classm.ltc.2@ny_it201",
      "fixture:classm.retirement.1@ny_it201"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "48",
+   "project_expr_sha256": "b242751db1d21746556f13eaa03270da080089ee89e82d30a59f84ad85f4891d",
+   "second_expr_sha256": "8616222a430e07c768ecd329b32fe1ccafc6127e14c0cae6b9395c4ca945adf8",
+   "ruling": "Ruling: representation; the reply's full-year City resident guard is always true on a computed return (ny_it201.gate.part_year_city refuses line 1 when ny_it201.ask.city_resident is No, and ny_it201.gate.spouse_nonresident refuses a joint return whose spouse was not a full-year City resident); the item C test is the same.",
+   "context": "5d7862d29eba78fef296f411d186db2cdfb6058a6243c23678bcc0c7c0168ed5",
+   "date": "2026-11-24",
+   "run": "7528ea7e2f2e486590b41c96d909135add8dec2145a69406d1eef37e6c9fdebd",
+   "subject_key": "808efdc85600be02e88c2d0f32a759074e7f32aa84ede134438f4ab926185e34",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.retirement.1.deepseek@ny_it201",
+     "fixture:classm.retirement.3.deepseek@ny_it201",
+     "fixture:classm.ltc.2@ny_it201",
+     "fixture:audit.dependent.claimed_no_tin@ny_it201",
+     "fixture:audit.dependent.hoh_test1_no_tin@ny_it201",
+     "fixture:stage15.refuse.dependent.dc_no_tin@ny_it201",
+     "partial:generated 20261026/488-ny_it201.ask.item_c@ny_it201"
     ],
     "policy": "executable-triage-v2"
    }

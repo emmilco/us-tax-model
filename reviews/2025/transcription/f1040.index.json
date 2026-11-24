@@ -5,8 +5,8 @@
  "base": "1581f67bbf0a24b9b36d5b40b62148e4cc91ab97a0996d0a903d35b7894c5be5",
  "head_rows": {
   "printed lines compared": "64",
-  "agree / disagree / missing": "53 / 11 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
+  "agree / disagree / missing": "52 / 12 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -111,9 +111,10 @@
   },
   {
    "key": "4a",
-   "record": "1581f67bbf0a24b9b36d5b40b62148e4cc91ab97a0996d0a903d35b7894c5be5",
-   "status": "AGREE",
-   "subject_key": "1463f3dafdeae85ea8b1a9bdd09b53329906d2994140459c2929cf86ebbabb74"
+   "record": "fbdbeca7bb595c18a536a73a9a262dc5b107e6cc21e0f9e00840119c2a33227b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.2025.line4a_several. i1040gi p. 27, Lines 4a and 4b, \"If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don't make an entry on line 4a\", and More than one distribution, \"Enter the total amount of those distributions on line 4a.\" The reply takes the second reading (only the distributions an exception puts on line 4a); the project takes the first, decided by the coordinator under the owner's delegation of 2026-11-24 (BUG-1118): once any distribution is on line 4a, line 4a is box 1 of every IRA distribution. They differ only with a fully taxable distribution beside an exception one (fixture stage10.ira.line4a_several, $13,000 against $10,000); line 4b, the tax and whether line 4a is zero are the same.",
+   "subject_key": "f2d5c3719fbf8896a26cf6102129cc15b156cff81a33baf45187dc1c9db71c3a"
   },
   {
    "key": "4b",
@@ -448,7 +449,7 @@
   "2a": "01bc063ab44f592da6ca1be992a45be7e757c3b957fd12106d944ca1504cc3f5",
   "2b": "03d82155fa8460bec99cb7486856a6cff99a933867f5fc8d76846d8383066867",
   "3b": "0d10dd3b8ea473e76293097fde829743554540aca10def24defbe473cff25883",
-  "4a": "00f2d0e365c6748117d4095b2d858e480f4256c4ed594693cd26293026df0a5c",
+  "4a": "1930bc2d2538013a72a3b8968949c8340b26d84a9878705e72fbf996b3a0ab4e",
   "4b": "d7e9c99cdff30f61fd500a7dceadd210b252f900305c0ed9013ffd4e467f0030",
   "4c": "6fafae27be338a3c07cd90acb57e687b6a55a0832f8c9523fe6d29727126d7f6",
   "5a": "73419c2e8b168666acb40f4c616c6da1e047e5af852cb12e305fdec73750ac66",
@@ -515,7 +516,7 @@
   "2a": "4951c6b45574a18987a756b757a2e5605f9059f55462f9ae2befffea31e0f6e9",
   "2b": "a2584c3dbad84a8b89c733295f4ef2be4dd8887cdc529c872fd89d9abaac379d",
   "3b": "8549712d33aa8d8076af6b3abee22747d1ae4a8dfc53fec04b3fce09060c7c92",
-  "4a": "7bb14fa210ea13d3dddfda9ae431dbc7ea86522622cb391b99479113ffa287f4",
+  "4a": "19493f1f0f68714c9ec27500896c70037d62f7e133ead7011985466cd8799988",
   "4b": "7ec02956b6fc5424fcab3306aed9e60e3303d70c2068aa2ba04e547e51775581",
   "4c": "7ace0ca79246c9eeff152e52fff277e890fda85ce7165fba040ce97541fbc5a2",
   "5a": "9fe944c9e3121eac6b6776d0273e1261644ec039d6c1b3a213290bee10dfdb42",

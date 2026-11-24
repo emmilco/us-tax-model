@@ -155,6 +155,12 @@ changes:
     - doc: i1040sc
       page: 17
       quote: For amortization that begins in 2026, complete and attach Form 4562-B.
+    - doc: rp-26-15
+      page: 8
+      quote: DOLLAR AMOUNTS FOR PASSENGER AUTOMOBILES WITH A LEASE TERM BEGINNING IN CALENDAR YEAR 2026
+    - doc: rp-26-15
+      page: 8
+      quote: $62,000 64,000 66,000
     verified: draft
     note: 'Form 8844 is dropped from the credits the question names (the 2026 line 26 list is Forms 5884, 8932 and 8994;
       the screen still refuses on the other forms it names). The What''s New pointers of the citation are re-quoted from
@@ -164,9 +170,9 @@ changes:
       27a) and the p463 and i4562 parts are left as they are: the 2026 pages are not verified. The two refusals added to
       the 2025 screen (pay for work done outside the United States; start-up costs over $5,000 of a business begun in the
       year) are carried with their 2026 pages, the start-up one dated 2026 and naming Form 4562-B, which the 2026 draft
-      prints for amortization that begins in 2026. The prompt''s leased-vehicle threshold ($62,000, the
-      2025 figure) is carried unverified: no 2026 lease inclusion table is archived; a higher 2026 threshold only refuses
-      more.'
+      prints for amortization that begins in 2026. The prompt''s leased-vehicle threshold ($62,000) holds for 2026:
+      Table 3 of Rev. Proc. 2026-15 (final), for leases beginning in 2026, starts at a fair market value over $62,000, the same as
+      the 2025 figure the prompt prints.'
     operations:
     - set:
         line: sc.special

@@ -59,17 +59,17 @@
   },
   {
    "key": "scope.schedule1",
-   "record": "bfa44c7175befc9a31ebbbdab8e1ec7f30363da6d827562192fdd341e1e167bc",
+   "record": "2ffaedd122290c3749d2d04103bff1497715ef3cdb8afde525802300bf46e1e2",
    "status": "DISAGREE",
-   "ruling": "Ruling: interface gap; as the ruling of 2026-11-22: the pages do not define this helper and the reply guessed a narrower set of Schedule 1 adjustments. The project's helper is any Schedule 1 item this tool does not compute (its label), and also holds the personal property rental, Schedule K-1, farm, clergy and church-employee screens. Encoding unchanged; re-reviewed because scope.military_move's question text changed (BUG-1230). Triage (pass 61c588e4239c): 4,431 of 4,897 agree; the 134 value differences are the screens the reply leaves out. Project stands.",
-   "subject_key": "037d62ff4670fa8afc75643b9bd25dbfb96b9c7e22d24bfb3843efa429d6a166"
+   "ruling": "Ruling: interface gap; the pages do not define this helper, the union of the Schedule 1 screening answers that refuse. The reply left out farm, K-1, REMIC, rental of personal property, clergy and church wages, W-2 marks and the self-employed plan screens, guessing them computed elsewhere; each is a refusing screen the project gathers here (i1040gi p. 93, Lines 12, 14, 16; i1040se p. 1; i1040sf p. 2; i1040sse p. 1, as the line's cite gives). Re-reviewed only because scope.archer_msa and scope.attorney_fees were reworded. Project stands.",
+   "subject_key": "ab45271546c1fb3cf9b9b5c53e5d7d279d06725e9ae1b943234a653ccf9d2eea"
   },
   {
    "key": "scope.other_income",
-   "record": "5bd778951b0f8b2e63f1ece4bb6e4b64b945879bc9c9cb3b6669c7608bd53df0",
+   "record": "2ffaedd122290c3749d2d04103bff1497715ef3cdb8afde525802300bf46e1e2",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 8, \"Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR\". The candidate reads adoption_benefits directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/scope.json): 4095 of 4732 comparisons agree, 4095 of 4732 in scope; completed {\"candidate-unknown\": 267}. Project stands.",
-   "subject_key": "e55f565fa6e6e8ab2b9bd9ff18b30d05002141ce3518cf65887082835308883e"
+   "ruling": "Ruling: interface gap; the pages do not define this helper, the union of the other-income and return-treatment screens that refuse. The reply moved farm, REMIC and rental of personal property here (the project refuses them through scope.schedule1) and left out the nonresident, chapter 11, treaty, reservist repayment, wages without a form, care and adoption benefits, passive and fiscal-year screens, which the project gathers here (cite: i1040gi pp. 8, 12, 23, 24, 25, 95). Every screen refuses through one of the two helpers, so no return differs in whether it is refused. Re-reviewed because scope.fiscal_year was added (i1040gi p. 12, Fiscal-year filers). Project stands.",
+   "subject_key": "aefdfb381bb66ae91e34596fdd1d78cfdda427a7781b4f2af667c8fdcc547ef9"
   },
   {
    "key": "scope.other_line16",
@@ -87,8 +87,8 @@
   "scope.tips_unreported_if_pay": "00259428488f6304ddf62dca19ec13880901e9f2c5c10623d4f07a2606369326",
   "scope.strike_pay_if_pay": "c33b66de5acc1cdb893e0b32a73da4b75367b865b8495bdf79935e01e81129c6",
   "scope.excess_deferral_if_w2": "f62b1921e36df83067fa2da62cd47f106dfc9fe5cb829ed703143c124679ee03",
-  "scope.schedule1": "3accadf774099839b49c04fc432113658a108e3670a4c6ccb201e2ad25de6795",
-  "scope.other_income": "6a224103c474c0ea0f38a1ee2fb34f34e77649624b44b97ee394e8a4bbaca755",
+  "scope.schedule1": "339e363e2b869ee325e8d858a489c550cfcb0d35b07ef90b433887cac11e18fb",
+  "scope.other_income": "1ca968c7c420edaa59c7f649ff812a8039ab0de6a10d02c3bf120ea3b14eb2d3",
   "scope.other_line16": "1b2fe692e217c68a900d353c42f9594839c291a77f532e65a009239b670e2a3f"
  },
  "__rest__": "c0448cd138abd167fdf478a533908ab7d7dbffd5aa5e7a74d1e438f35e949699",

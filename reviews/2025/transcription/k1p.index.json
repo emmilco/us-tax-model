@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "f91709b9efdd0853c03c73049fe51a2714adac9067350ea48b77464eeeb59632",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -83,17 +83,17 @@
   },
   {
    "key": "k1p.prior_total",
-   "record": "f91709b9efdd0853c03c73049fe51a2714adac9067350ea48b77464eeeb59632",
+   "record": "8a42de7f5d9eb5cdc96780dd0a9d9c99f0fcfb401c1539270c33ed999312113b",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 510/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 13 project-unknown.",
-   "subject_key": "04ebc903bfa6650d86ff8635154a777ec700f46792dfbbfb553ea7e3ade15e62"
+   "ruling": "Ruling: representation; executable triage (k1p.json, 1,789 inputs): no value differs on a completed return. The differences are candidate-refuses (the reply refuses at this line on returns the project refuses on k1p.screened), candidate-unknown and project-unknown (the reply reads the held-back loss without the project's gates, now that k1p.prior_any is asked on every K-1), or the reply's line does not validate (candidate-invalid). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "7a9d56282b9387f8c716c1f772fcc3f9df223d2dd81451cf1f61bf18bd5b2051"
   },
   {
    "key": "k1p.passive_loss",
-   "record": "f91709b9efdd0853c03c73049fe51a2714adac9067350ea48b77464eeeb59632",
+   "record": "8a42de7f5d9eb5cdc96780dd0a9d9c99f0fcfb401c1539270c33ed999312113b",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 349/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 139 candidate-refuses, 27 candidate-unknown, 7 project-unknown, 1 value. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
-   "subject_key": "cde1e9467dbbc64fd549bd2089472700dba689022c8e926cac1e6c6a8fc7815e"
+   "ruling": "Ruling: representation; executable triage (k1p.json, 1,789 inputs): no value differs on a completed return. The differences are candidate-refuses (the reply refuses at this line on returns the project refuses on k1p.screened), candidate-unknown and project-unknown (the reply reads the held-back loss without the project's gates, now that k1p.prior_any is asked on every K-1), or the reply's line does not validate (candidate-invalid). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "2c7d098ea7e8540f0a63c5d574ffd2a85c1bf813b41f2d1fc32cba22ec837313"
   },
   {
    "key": "k1p.nonpassive_net",
@@ -104,10 +104,10 @@
   },
   {
    "key": "k1p.sche_row",
-   "record": "f91709b9efdd0853c03c73049fe51a2714adac9067350ea48b77464eeeb59632",
+   "record": "8a42de7f5d9eb5cdc96780dd0a9d9c99f0fcfb401c1539270c33ed999312113b",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 517/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 1 candidate-unknown, 5 project-unknown.",
-   "subject_key": "f513cad995cf3cd4d10fe03ea4e1bc578bb788261c3c251b315537ac9b4f267a"
+   "ruling": "Ruling: representation; executable triage (k1p.json, 1,789 inputs): no value differs on a completed return. The differences are candidate-refuses (the reply refuses at this line on returns the project refuses on k1p.screened), candidate-unknown and project-unknown (the reply reads the held-back loss without the project's gates, now that k1p.prior_any is asked on every K-1), or the reply's line does not validate (candidate-invalid). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "4a5fe788eca90307e17146ca5d71e62470aa8b40f8a4fa84e07cd0623979b8a1"
   },
   {
    "key": "k1p.se_pos",
@@ -117,10 +117,10 @@
   },
   {
    "key": "k1p.screened",
-   "record": "fb8fdaced90c5db295d49e791e803107b98a4cff58bf797ae2649eef81455e21",
+   "record": "8a42de7f5d9eb5cdc96780dd0a9d9c99f0fcfb401c1539270c33ed999312113b",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as the earlier rulings, the line is 'This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)', true by construction with the K-1's refusals declared on it; the reply defines the inverse (true when any screening input is Yes). executable triage (.transcription/triage/2025/k1p.json, this pass): 209/796 agree; differences {\"project-refuses\": 38, \"project-unknown\": 118, \"value\": 431}; on completed returns {\"project-unknown\": 67, \"value\": 237}. The line was rerun only because scope.rental, read by k1p.ask_re_pro, was reworded (BUG-0952).",
-   "subject_key": "222254cc0dc77136b28c04308ac53ef8b80c30613af71e8e400a7826e7d4c10f"
+   "ruling": "Ruling: representation; k1p.screened is a helper that is true when the K-1 passes every screen, and its refusal entries (now with k1p.fiscal, k1p.oil_gas_gp_if_gp, k1p.llc_member_active and k1p.over100_if_income) carry the screens; the reply restates it as the opposite Bool (true when any screen is answered Yes), so it differs in value on every completed return (triage: 406 value differences, all of polarity) while every refusal is the same screen. No amount depends on its value.",
+   "subject_key": "74581bf09a9908b53efbccaf8730453810f0a096d19987bde61a41765e4e94d5"
   },
   {
    "key": "V (a) (k1p.b1_net_income)",
@@ -166,24 +166,24 @@
   },
   {
    "key": "(e) (k1p.b1_overall_loss)",
-   "record": "f91709b9efdd0853c03c73049fe51a2714adac9067350ea48b77464eeeb59632",
+   "record": "8a42de7f5d9eb5cdc96780dd0a9d9c99f0fcfb401c1539270c33ed999312113b",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 437/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 64 candidate-refuses, 11 candidate-unknown, 10 project-unknown, 1 value. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
-   "subject_key": "f66fa35fcffb05287d8f887755d16be55f188781101d313a6c0307e2d0648f3a"
+   "ruling": "Ruling: representation; executable triage (k1p.json, 1,789 inputs): no value differs on a completed return. The differences are candidate-refuses (the reply refuses at this line on returns the project refuses on k1p.screened), candidate-unknown and project-unknown (the reply reads the held-back loss without the project's gates, now that k1p.prior_any is asked on every K-1), or the reply's line does not validate (candidate-invalid). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "a400455e1b2962d421dacac2c16c083371fde784fda55d27103b8d043d895313"
   },
   {
    "key": "(e) (k1p.b2_overall_loss)",
-   "record": "f91709b9efdd0853c03c73049fe51a2714adac9067350ea48b77464eeeb59632",
+   "record": "8a42de7f5d9eb5cdc96780dd0a9d9c99f0fcfb401c1539270c33ed999312113b",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 497/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 1 candidate-refuses, 11 candidate-unknown, 14 project-unknown. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
-   "subject_key": "77cd27d501507e539b0c06a045ca87bf748a631958019e58850a6ff34b2a4cdb"
+   "ruling": "Ruling: representation; executable triage (k1p.json, 1,789 inputs): no value differs on a completed return. The differences are candidate-refuses (the reply refuses at this line on returns the project refuses on k1p.screened), candidate-unknown and project-unknown (the reply reads the held-back loss without the project's gates, now that k1p.prior_any is asked on every K-1), or the reply's line does not validate (candidate-invalid). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "ffe3202c22146314eeabfbbe1f097cd551da29be3d0edd9ec4b2f18bafee6023"
   },
   {
    "key": "(e) (k1p.b3_overall_loss)",
-   "record": "f91709b9efdd0853c03c73049fe51a2714adac9067350ea48b77464eeeb59632",
+   "record": "8a42de7f5d9eb5cdc96780dd0a9d9c99f0fcfb401c1539270c33ed999312113b",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 509/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 14 project-unknown.",
-   "subject_key": "e5c779a1dba978bbdb1dd950c1d2b7272c7382b218c24a5efe9eb54d924e04f5"
+   "ruling": "Ruling: representation; executable triage (k1p.json, 1,789 inputs): no value differs on a completed return. The differences are candidate-refuses (the reply refuses at this line on returns the project refuses on k1p.screened), candidate-unknown and project-unknown (the reply reads the held-back loss without the project's gates, now that k1p.prior_any is asked on every K-1), or the reply's line does not validate (candidate-invalid). Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "0795850c7d0ed3175c292bc71fdb2ced7051c8bfcdeec66a3fe676b960c61545"
   },
   {
    "key": "IV (a)",
@@ -201,10 +201,10 @@
   },
   {
    "key": "IV (c)",
-   "record": "e1dd39961799842c2ccac1cc3c2374a3239c6c79e3d2f035bf61d0317c11bf15",
+   "record": "8a42de7f5d9eb5cdc96780dd0a9d9c99f0fcfb401c1539270c33ed999312113b",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i8582 p. 10, Part IV, \"Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV\". On completed returns every difference is a return the project refuses through its cited screens (or withholds an input for) and the candidate computes; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1480 of 1519 comparisons agree, 1480 of 1519 in scope; completed {\"candidate-unknown\": 27, \"project-unknown\": 7}. Project stands.",
-   "subject_key": "36c7902a26c3e80519bdc9a39a8cc36ffed5b7276c5cea7660762e4961646246"
+   "ruling": "Ruling: representation; executable triage: the 72 value differences are all on returns the project refuses (x2k1p.refuse_prior_not_active and its variants: a held-back box 2 loss from a year without active participation is refused on k1p.prior_not_active_if, where the reply moves it to Part V); no completed return differs.",
+   "subject_key": "4d300b712a257a8f8c180693a28babe7a536aeaad132913d60a6e35af70bb720"
   },
   {
    "key": "VI (a)",
@@ -229,10 +229,10 @@
   },
   {
    "key": "V (c)",
-   "record": "e1dd39961799842c2ccac1cc3c2374a3239c6c79e3d2f035bf61d0317c11bf15",
+   "record": "8a42de7f5d9eb5cdc96780dd0a9d9c99f0fcfb401c1539270c33ed999312113b",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i8582 p. 9, Part V, \"Use Part V for all other passive activities\". On completed returns every difference is an entry the project refuses on k1p.screened (or withholds an input for) and the candidate computes; no value stands against the project. Triage executable-triage-v2 (.transcription/triage/2025/k1p.json): 1273 of 1519 comparisons agree, 1273 of 1441 in scope; completed {\"candidate-refuses\": 78, \"candidate-unknown\": 71, \"project-unknown\": 9}. Project stands.",
-   "subject_key": "68a886f00dee6ad285d8d0fad5d55527bff066c0c7f033d931d4df921d168700"
+   "ruling": "Ruling: representation; executable triage: the 71 value differences are all on returns the project refuses (x2k1p.refuse_prior_not_active: the held-back loss from a year without active participation is refused on k1p.prior_not_active_if, which the reply routes to Part V instead); no completed return differs. With k1p.prior_any asked on every K-1, a held-back loss of a K-1 whose boxes are blank now reaches Part V (fixture lk1.k1p.prior_loss_portfolio_only).",
+   "subject_key": "c0c9fde90c732c8a018441cbd99bb98dfc37c3956a210c6f41fb7c6370092338"
   },
   {
    "key": "28 (h)",
@@ -269,28 +269,28 @@
   "k1p.box6b_if_any": "5441813e350ace3aa1c68655dbfee04b7cdc8a5c7ee27e0c52346e32c1233e48",
   "k1p.box9b_if_any": "9478e5f00fe87e4f8d2278948965bc6802a367d367a321548ed8efcf47f9c092",
   "k1p.box9c_if_any": "56dfd67df7acd736c3ad0e40e8bc8d7dd76bfdb7be70c53b2668ae675873af7e",
-  "k1p.prior_total": "ba578613357c9b52c98d351f77ed3993814e22c617fda2797b9cc3d5684e57b4",
-  "k1p.passive_loss": "e898e30e3cec6b145acb50f0d5763ae17977dfb463b1ce582b876fc8c2465917",
+  "k1p.prior_total": "eabab75dc22edcb5517dce7cf3b3b08efe62f2a203155794383fa9174bafa4cc",
+  "k1p.passive_loss": "eefb2d652fac35c396d9007411a3f831b7c64a06f1bcdf50515bf48dd89a23c9",
   "k1p.nonpassive_net": "6a061d34a1966c4473f234350a37ee7f2f2f5d80d7f454fcc1521f9d8ee11b1f",
-  "k1p.sche_row": "0690566edf46cada9cb4f9c68175adc501c94f904d73adc5bf34738104eb4515",
+  "k1p.sche_row": "88960d54b4d8275ce814ceb90ad1cb0ce110ba32b748b339d810c0405ccebb3f",
   "k1p.se_pos": "9f261a1fb26fef4a55541deabd9d88e3aedec039f325c6f56dc93aadd5c01570",
-  "k1p.screened": "637ad2b9cf0afb5f6528c2cf5f2000ec9a005d38c89f518a4a379d3d34f55e2a",
+  "k1p.screened": "478984cee436de3090ef2cc7cb37b0a2ced258f0bf0e07e5045593675902504e",
   "V (a) (k1p.b1_net_income)": "68cf529fb39bc3e3423cf2b425e7862e8fdf5f12c71b0fc1da0594c8a8f7d003",
   "V (b) (k1p.b1_net_loss)": "256c3f06261f658ab1dc4988e1fa719e279fef8e69368d7720da2977b7fdcd8e",
   "IV/V (a)": "e1304d6ba8af7d4c44ed3d9e3b40ff84bdca65c7a32c58c56be6f48d03c7cd94",
   "IV/V (b)": "9fe65fd3fb61989ed22bab4e408a9f985a64417fd272b2ed6ac0df7bbef388ee",
   "V (a) (k1p.b3_net_income)": "2c28ce813346ceae00dc6912404bed35cfe6a545194162d23f81cf200e9f3818",
   "V (b) (k1p.b3_net_loss)": "6c0008598eab73f19f28a5db8f06aa19accab5838b460ae4d816e5edd6b7fc77",
-  "(e) (k1p.b1_overall_loss)": "4bf13dcbca812f7235ca06475b0c0df9c2b9325e29d2173eaa6a4008f3a04348",
-  "(e) (k1p.b2_overall_loss)": "525e41694b81df8a0927e36efce70af192db9a8dab22b777549c3226bc2bf35c",
-  "(e) (k1p.b3_overall_loss)": "a05d9b7b4796e124f80495817ad60358399c2a5bd4b88e077d1bab62565e367e",
+  "(e) (k1p.b1_overall_loss)": "adeb7707e90565dc2c890f60494d248b2edc9e0f603b6c2f5c54a661c782204b",
+  "(e) (k1p.b2_overall_loss)": "36404ba7b6a311bb686b513676161f81f460ef5286d9ce9dcc7a813511be6397",
+  "(e) (k1p.b3_overall_loss)": "2dc920487207b6d2046f95178f19ec4941aae49b521f8e4f85fee1644c9b3b62",
   "IV (a)": "cf7b86d717fcd488fa8a762df033a39f71b8363be909837f58ca27359de85eff",
   "IV (b)": "e66ef7414a7f7e3aee203442733586b7fb001e3f3e28b2b9838156bf597980f0",
-  "IV (c)": "d048d5cb6b5a1f5d0deb944087bf79375e55f61adff88415d9f7b4fffea9d319",
+  "IV (c)": "9d06775a30aff3b288387752640058d3e38902fddddb6503d62350b24b0c1c1f",
   "VI (a)": "e8cf93ac182ae3b1d7e3b3b0315205f063ffc5664e894d17bde79be0bdb8c466",
   "V (a) (k1p.p5_income)": "45830c03077bb2220c831e2e2befd01236d5555b4b56dc41d8f822a10714625a",
   "V (b) (k1p.p5_loss)": "62f0f03812858ffe552c9c5724124c36a6e82a78ee6c4e3f6a09cf949d2eeb4e",
-  "V (c)": "140952e34ece1f3ef96600e4f57ead401d7aba29466a3d84628427f0a88bab88",
+  "V (c)": "de14ac776ea644177ec82358431b11f019e74a5180116fec1ec2f89919a89f5d",
   "28 (h)": "1f22e6ecf624a0efe0b936a2df1916afaffdc09d3d3c82b6fec2de08badc6884",
   "28 (k)": "caab92e7fba8943a784c7624ccc721f087497843fe3c92ab2028b3dc6d171fde",
   "28 (i)": "d24084083b0e54c72b0318e606196a8344b1a0f4167ded40dc6ae46c1acd91be"

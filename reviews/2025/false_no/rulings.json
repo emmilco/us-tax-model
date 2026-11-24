@@ -7191,29 +7191,37 @@
    "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:s1.uc_any#1": {
-   "reason": "Paid family leave contributions have no line 7 amount, a large earlier-year repayment is refused by s3.repaid_income, and the help's mention of the state does not narrow the question.",
+   "class": "low gap: BUG-1405",
+   "reason": "The disability-substitute payment is the filed low gap; the other programs are named by the help's 'Any amount in box 1 of a Form 1099-G counts'.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "i1040gi p. 89 says to 'include the full amount of those contributions in your income' and that itemizers 'can include the amounts contributed as part of the state and local taxes that you paid'. That is wages and Schedule A treatment; no line 7 (s1.uc_paid_if_any) amount arises from it."
+     "class": "defect",
+     "evidence": "p525 p. 29, disability payments paid as a substitute for unemployment compensation. Filed.",
+     "bug": "BUG-1405"
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "p525 p. 29: a repayment of earlier-year unemployment compensation over $3,000 is deducted 'on Schedule A (Form 1040), line 16' or taken as a credit 'on Schedule 3 (Form 1040), line 13b', not on line 7. It is refused by s3.repaid_income, 'In 2025, did you (or, on a joint return, your spouse) pay back more than $3,000 that you had reported as income in an earlier year?'"
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "Railroad unemployment benefits are reported in box 1 of a Form 1099-G (i1099g p. 1, Box 1, 'including Railroad Retirement Board payments for unemployment'), which the help says counts."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "The question itself is 'In 2025, did you (or, on a joint return, your spouse) get unemployment benefits?', from any payer; 'The state sends Form 1099-G' is a descriptive help sentence. i1040gi p. 89: 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you.' Naming other payers would be clearer, but the question is not narrowed."
+     "evidence": "Disaster Unemployment Assistance is unemployment compensation (p525 p. 29) reported in box 1; the help's box 1 sentence covers it."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A program branded otherwise still issues Form 1099-G box 1, which the help names."
     }
    ],
-   "subject_sha": "ba29a5c84054349713ee1a3fecdaba3ee0f56acea876f284ac8760acfd6c3460",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "8746e27d0552dd8fc979c42b615b2c1ac8b53993d8a268d3e4be1eef37420609",
+   "adjudication": "lane screens, wave 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:s1.winnings_any#1": {
    "reason": "The gate asks broadly about winnings or 'a prize or an award', and designated lottery interest is interest income asked with interest.",
@@ -8477,52 +8485,54 @@
    "subject_sha": "f1d8753ce9c1f5bcc33579c624f5a5d14612aa3905922e3e6a3986e1d922946c"
   },
   "unruled:gate:sb.foreign_trust_any#1": {
-   "class": "defect (low): BUG-0831 item 2",
-   "reason": "The trust gate is narrower than sb.line8.",
+   "class": "no gate defect: wording widened",
+   "reason": "The control-test case is fixed in the wording; the rest are covered by the help's widening words and 'If unsure, answer Yes'.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "defect",
-     "evidence": "Control test (a foreign protector's veto).",
-     "bug": "BUG-0831"
+     "evidence": "cfr-26-301-7701-7 p. 4, Control test. Fixed in the same lane: the gate now names anyone other than a U.S. citizen, resident or company."
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "A sale or loan to the trust.",
-     "bug": "BUG-0831"
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A standing tie as the person who set it up or gave to it is asked in the present tense; 'If unsure, answer Yes'."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "A loan or free use received from the trust.",
-     "bug": "BUG-0831"
+     "class": "covered",
+     "evidence": "The help counts 'anything it paid for you'; i3520 p. 4 treats a guarantee as a loan from the trust."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "Receipt through an intermediary.",
-     "bug": "BUG-0831"
+     "class": "accepted residual",
+     "evidence": "An inheritance through a foreign testamentary trust is a receipt from a trust the label names ('received or may receive anything from it in any way'); the help ends 'If unsure, answer Yes'."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "A trust that ended or moved in 2025 (present tense).",
-     "bug": "BUG-0831"
+     "class": "accepted residual",
+     "evidence": "A foreign pension or unit trust is a Form 8938 and PFIC matter asked by sb.asset_any and scope.foreign_shares; as a trust tie the help's 'If unsure, answer Yes' applies."
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "sb.trust_any's help: 'A foundation such as a Stiftung or an Anstalt, a waqf, or any arrangement that holds property for beneficiaries counts as a trust'."
+     "evidence": "sb.territory_any asks about 'a trust in Puerto Rico, Guam or another U.S. territory', which opens the same questions."
+    },
+    {
+     "n": 6,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A deemed transfer through a domestic trust that moved property abroad; the label names giving 'through another person or company'. Form 3520 duty only (BUG-1406)."
     }
    ],
-   "subject_sha": "f2e0d92c830c4d2167462e9fad7c1d1d01bcebf1ceaf3079ba38457a5cf84516"
+   "subject_sha": "9126c379e845289466cddf720564d94170563306de48d77c92ff792147267d6c",
+   "adjudication": "lane screens, wave 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:sd.sold_other#1": {
    "subject_sha": "4b9a3c8b9b97cf952b4dd75901b88adef5fb2093f95b3abd9edb39369f4c9138",

@@ -93,6 +93,7 @@ rows:
       household.qss_eligible: true
       $dependent: [kid]
       dependent[kid].relationship: child
+      dependent[kid].own_child: true
       dependent[kid].age: 10
       dependent[kid].lived_all_year: false
     expect:

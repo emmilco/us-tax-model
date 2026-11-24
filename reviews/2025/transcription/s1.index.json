@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "42",
   "agree / disagree / missing": "24 / 18 / 0",
-  "line-scoped reviews": "9 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "10 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -57,10 +57,10 @@
   },
   {
    "key": "7",
-   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
+   "record": "564367e322a162e8834d75571646811acfaef08c4d54dc464fda71def5083ad5",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; both give box 1 of Form 1099-G less a 2025 repayment, floored at zero (i1040gi p. 89, Line 7, \"subtract the amount you repaid from the total amount you received\"). The reply refuses on s1.uc_unsupported for every filer, the project only when unemployment compensation was received (s1.line7_figured): contributions to a program reduce \"the amount you report on line 7\" and an earlier-year repayment is not a line 7 amount, so with no compensation line 7 is zero either way. Triage (pass eba464d939db): 2,804/3,553 agree; differences only candidate-refuses/candidate-unknown on s1.uc_unsupported where the project has no compensation (19 + 15 on completed returns, project 0); no value difference.",
-   "subject_key": "0de5ca1752aa6387b4934a56c71bed50d3cc37126288eec82306c2cd7dc39cdf"
+   "ruling": "Ruling: representation; i1040gi p. 89, Schedule 1, line 7, 'subtract the amount you repaid from the total amount you received'. The reply subtracts the display line '7 (amount repaid)', which copies s1.uc_repaid, and chooses on s1.uc_any where the project chooses on the gated amount; they differ only when s1.uc_any is Yes and s1.uc_paid is zero, where both give zero. Re-reviewed because s1.uc_any's wording now names partial benefits and trade readjustment allowances. Project stands.",
+   "subject_key": "7fbbe9bfac15665866480bee72841b6d2493aa057fd29144d0a9b87af11a92b2"
   },
   {
    "key": "7 (box)",
@@ -288,7 +288,7 @@
   "s1.nol_limit": "a62784a96c3f67575972430f537e0c67882d0f3b9cc4a6141a7d076f9346498d",
   "s1.line10_ex5": "c8dfc792d11088acb9a0f14bf645bbe0897433839cf8ca056994f45ce47146f4",
   "1": "22095d5b679fd68f482e87a713c5db00395fae9e5a4f972380f9559246c90320",
-  "7": "fcd2529d8f0221272b86fb99f937008156f8d53cf113ff460a3c1cc620d0053f",
+  "7": "7880d28c067d42784ec54b08397df89d96a6f14bed9aae069a0347263f141be4",
   "7 (box)": "6800053d71cb26ff4f4fcf6c1914d4c22fff5f4df1300d2e07af4e8184f1139f",
   "7 (amount repaid)": "5b9e4b8684f95b8e68638e79322cce45359abe70ac55476ea167d454ca65a490",
   "3": "128e6afe6daa483cb0a928220b4cb698fd332f7aa814a710a5c977557018a833",

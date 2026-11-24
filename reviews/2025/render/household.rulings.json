@@ -140,6 +140,16 @@
    "subject_key": "65352eb006e7f11bc72be9eb533504a3834aca8a3603abba432641780d7e8891"
   },
   {
+   "printed": "rdp_community_property",
+   "restated": "f1040 line Filing Status ≠ 'mfj' and helper \"Were you a registered domestic partner in Nevada, Washington or California at any time in 2025?\" = true",
+   "model": "Pub. 555 limits the rule to \"RDPs who are domiciled in Nevada, Washington, or California\", and says \"The law of the state ... where you are domiciled will determine if you have community property, community income, or both.\" The restatement instead applies it to any registered partner in those states \"wherever you lived\", dropping the domicile condition.",
+   "ruling": "Ruling: scope; i1040gi p. 23, Community Property States, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income\"; p555 p. 2, Domicile, \"If you and your spouse (or your RDP) have different domiciles, check the laws of each\". The reply is right that the community rule turns on domicile; the gate is a refusal, not a computation, and it refuses every registered domestic partner of those states not filing jointly whether or not domiciled there (BUG-1089, decided by the coordinator under the owner's grant: refuse). A partner not domiciled there is refused though the rule may not apply: extra refusing, no amount computed wrongly.",
+   "context": "4526edbfc307b730b6b749b7e81270d613d48bc3f1499fe74f75161d60c1fac2",
+   "date": "2026-11-24",
+   "run": "76b6046056ed90a0495864cf35d931ecd075be131347c814a1bd7627903fc985",
+   "subject_key": "3321276749de23f8d767490a394d253b2b2def942f14b6b2b8d2bd37c86d974a"
+  },
+  {
    "printed": "test1_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The per-dependent helper that decides Test 1 is not defined in the text given. It cannot be confirmed that the helper checks 'paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent, except under a multiple support agreement.'",

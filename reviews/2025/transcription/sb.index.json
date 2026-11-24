@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "6",
   "agree / disagree / missing": "4 / 2 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -24,15 +24,15 @@
   },
   {
    "key": "2",
-   "record": "b8729595eea6c9fd1db43c4b4b31c3dda885e89d4a7c8e2935409ee6c7f62332",
+   "record": "66fc7e355231d64f03971fea1eee73050d40f2e433163881733a885dfda9fc9c",
    "status": "AGREE",
-   "subject_key": "dfd98549754409785e9c1f9785bcca452552c77c30fa6f6a67d86a2cb29a316d"
+   "subject_key": "5ef638434e83dd175be82ad3cd4979931eccaf8d3dbb9f2ae9c089ebe5717916"
   },
   {
    "key": "3",
-   "record": "b8729595eea6c9fd1db43c4b4b31c3dda885e89d4a7c8e2935409ee6c7f62332",
+   "record": "66fc7e355231d64f03971fea1eee73050d40f2e433163881733a885dfda9fc9c",
    "status": "AGREE",
-   "subject_key": "6b3e23ac91cf6ee073be0c8c1048b7b3af1953022760bda9c2568341e25111ea"
+   "subject_key": "fef6419b19202c64bdfdfc960915b33647d7b9377e96dc8ffa8d612598275535"
   },
   {
    "key": "4",
@@ -42,19 +42,19 @@
   },
   {
    "key": "6",
-   "record": "b8729595eea6c9fd1db43c4b4b31c3dda885e89d4a7c8e2935409ee6c7f62332",
+   "record": "66fc7e355231d64f03971fea1eee73050d40f2e433163881733a885dfda9fc9c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as the earlier ruling: f1040sb Part II, line 6 (the line 5 total). The reply reads sb.ordinary_dividends ungated; the project asks it only after div.any is Yes and gives $0 otherwise. Project stands.",
-   "subject_key": "a91e2701190d0327224586f580cfbc6db8e6e483912c2429d32d58a3234542c9"
+   "ruling": "Ruling: representation; i1040sb p. 2, Line 6. The project reads sb.ordinary_dividends only when div.any is Yes (zero otherwise); the reply reads the input directly; on a completed return the input is unasked exactly when div.any is No. K-1 dividends are refused with the K-1 (scope.k1). Re-reviewed only because the foreign-trust gate's wording changed. Project stands.",
+   "subject_key": "d21cf6fb4dd56a6314ece129a59e7817cca0c9a69b10eec1c50ace7c5086d6ec"
   }
  ],
  "subjects": {
   "sb.interest_total": "a823ed7bdda9a3aa4d7577af47aa144b6dfad54199aaea3a39bf5466d614c560",
   "sb.ordinary_dividends_if_dividends": "b1d271d8d849b7c1efeca53defa98c7bd54ccc1decc43a9cac93006238a8ca45",
-  "2": "4d9a6c3e0658706744c386e53d35b6b7ff19ee0316e66eaab66151abcc22916a",
-  "3": "0f406ca78f4371523cc0ecce382dbfeba7f19580a43601dc4b0210632137201f",
+  "2": "196cb85ec952c51bb745eb50ebe3e64a1a6f9900c484f8a2bb58ab172ee72e2e",
+  "3": "ac57e022bd4e06dafad458c77cafdf41c2699fd7570cad72bd173f370642062d",
   "4": "d225f28e9701cf230747bff686459225d04bd398ce08e2040a616fb8958167c4",
-  "6": "2e8a2873946b3bf59a64e743241012611ad7c1de573d8054c3b4b53664096acd"
+  "6": "2e8027a8da42a3601df11f3a9f22b7eabe27dc7db5fddfdaf521bc80e4f0e5db"
  },
  "__rest__": "013e58d3d274e971cd170d48794200b98ac690d600b9af1e38e8133de7ae11db",
  "foreign": {

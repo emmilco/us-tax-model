@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "82de8c9ba80af1434c63911f671d25a5da3bb6ac74bf7fd42bbe81bb49a3a2b3",
  "head_rows": {
-  "line-scoped reviews": "5 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "6 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -143,18 +143,10 @@
   },
   {
    "key": "9",
-   "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
+   "record": "1be28d77940c421d9e3fd70b3a8af13a0b34a027666dec584c24e95ca3fc9d1b",
    "status": "DISAGREE",
-   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 52 of 2,387 comparisons agree; differences by kind {\"candidate-unknown\": 2, \"project-unknown\": 132, \"value\": 2201}; on completed returns {\"value\": 1131}: on each of the 1,131 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "2748071fbf289f3a3b678bb330167d0a6862c841b17ac2d1e97918de95c8fa4f",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s1a.line9": "s1a.tips_threshold"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "9677792e67efb446d308648859b621b5d060a0dcb11eb1cf8eb49edf65985ce3"
-   }
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: the second's choice on filing status (mfj: the joint amount; any other status: the other amount) is the project's figure behind the part gate. Re-reviewed because this round folded the figure's choice on the five filing statuses into a choice on s1a.joint (married filing jointly), removing the unreachable mfs alternative; the figure's value is unchanged at every status. The disagreement is the one ruled before on this line.",
+   "subject_key": "a020fe651f55e46c803e70b432b5c9d9cd1549e53ed70c75443fbe5246e75c69"
   },
   {
    "key": "10",
@@ -258,19 +250,10 @@
   },
   {
    "key": "15",
-   "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
+   "record": "1be28d77940c421d9e3fd70b3a8af13a0b34a027666dec584c24e95ca3fc9d1b",
    "status": "DISAGREE",
-   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 1,476 of 2,387 comparisons agree; differences by kind {\"candidate-refuses\": 3, \"candidate-unknown\": 854, \"project-refuses\": 2, \"project-unknown\": 49, \"value\": 3}; on completed returns {\"candidate-unknown\": 290}: on each of the 290 completed records the project's line is $0 (its part does not apply) and the candidate is unknown for an answer the completed interview did not ask on that return ($otjob, person.work_ssn). The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "93fc39d9ac1e2fb644c2e318d2f60683dbe1651f7588bf2a41d2f0af5af0eecd",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s1a.line14c": "s1a.ot_total",
-     "s1a.line15": "s1a.ot_capped"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "8078ca488b8697db77a5047ef91133c3ef416069f7b4c5aa74d6660294bd931f"
-   }
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: the second's choice on filing status (mfj: the joint amount; any other status: the other amount) is the project's figure behind the part gate. Re-reviewed because this round folded the figure's choice on the five filing statuses into a choice on s1a.joint (married filing jointly), removing the unreachable mfs alternative; the figure's value is unchanged at every status. The disagreement is the one ruled before on this line.",
+   "subject_key": "a47a2336864d85f1589cbab234ab322dea7a5cdea42b2bd963f9ca22e9a3fc11"
   },
   {
    "key": "16",
@@ -289,18 +272,10 @@
   },
   {
    "key": "17",
-   "record": "a3ca7b1c97003600068394d36f932738c19a9f8881f8436de22d6e260259cf11",
+   "record": "1be28d77940c421d9e3fd70b3a8af13a0b34a027666dec584c24e95ca3fc9d1b",
    "status": "DISAGREE",
-   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies, or applies only part of the condition. Where the part applies the two agree. Re-reviewed because this round removed the sentence \"Answer Yes if either of you did.\" from the gate questions s1a.tips, s1a.overtime and s1a.carloan (wording only; no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/s1a.json`, pass 3ddb442def1a; 1,767 fixtures, 500 generated returns seed 20261026, 120 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 54 of 2,387 comparisons agree; differences by kind {\"candidate-unknown\": 2, \"project-unknown\": 132, \"value\": 2199}; on completed returns {\"value\": 1127}: on each of the 1,127 completed records with a value difference the project's line is $0 (its part does not apply) and the candidate figures the line. The other differences are on refused or incomplete returns. No change to the data.",
-   "subject_key": "c84ad91590764c85f265e8d1360f739fda9710d7b045536f5e0ee661237ba233",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s1a.line17": "s1a.ot_threshold"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "77a60cc52fa489c13da1a2e20e0ab2b73ce19cc84f9dafe617e813c67aadb374"
-   }
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: the second's choice on filing status (mfj: the joint amount; any other status: the other amount) is the project's figure behind the part gate. Re-reviewed because this round folded the figure's choice on the five filing statuses into a choice on s1a.joint (married filing jointly), removing the unreachable mfs alternative; the figure's value is unchanged at every status. The disagreement is the one ruled before on this line.",
+   "subject_key": "ad0eb0757eab8f329d54d6edc189eebd48adb0a3cc54c41c31cb274090d09198"
   },
   {
    "key": "18",
@@ -486,18 +461,10 @@
   },
   {
    "key": "32",
-   "record": "9751febc3b0a524551af013a08364e700935ca86f67af07971824ab2bd4993db",
+   "record": "1be28d77940c421d9e3fd70b3a8af13a0b34a027666dec584c24e95ca3fc9d1b",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" The candidate's line 32 enters $75,000 or $150,000 with no test of whether Part V is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 80 of 2,361 comparisons agree; differences {\"candidate-unknown\": 2, \"project-unknown\": 24, \"value\": 2255}; on completed returns {\"value\": 1103}.",
-   "subject_key": "80553e8e9320586e31ce2d974cdfd4181e5aaa6903be561e80220ad5017a6888",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s1a.line32": "s1a.senior_threshold"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "3841233ea5321896c36d9baed08c44505f4925b443c00ed20c0c1e4532cc3bfc"
-   }
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: the second's choice on filing status (mfj: the joint amount; any other status: the other amount) is the project's figure behind the part gate. Re-reviewed because this round folded the figure's choice on the five filing statuses into a choice on s1a.joint (married filing jointly), removing the unreachable mfs alternative; the figure's value is unchanged at every status. The disagreement is the one ruled before on this line.",
+   "subject_key": "b5983645e84c0d775d627179c5531590cf0221f80925bea1ba922419c515b089"
   },
   {
    "key": "33",
@@ -633,16 +600,16 @@
   "6": "5e6d775b3f2fa726d0adb4b047d9179422a3c053cb02f8f606090bf3676c218e",
   "7": "c93d249d5719328a43c84b251a5ba78f61853b278fd437f0f7e6a37c12907c8a",
   "8": "2b4343065fa21b4034ae6f4de230856454dc750fe2eb870886d72684dbe59223",
-  "9": "a742ea0cdc6b3217a1b9a05f74c215c82532f17549f8518e6b760e7f0b9650d8",
+  "9": "3de575ad3baee4576fa975dc29740a903d7d450c44c852c1f3f7973c61e72a3c",
   "10": "147c42b8ecc7aa22613a753476c5a7d0ded9e271705e55139d096c9ff31c084e",
   "12": "aeb04b9567deb3e0265c580aa6c78fbc169a8a483634a9201723b0267395cd72",
   "13": "05cea306c323fe1e78cf2747857c5735439a7bd790e610dc5fe8e4a362bf0d9b",
   "14a": "597ff661c9ad773414a9c3809c3abcc2bec45baa81b7ddae86f10c8849e661db",
   "14b": "ec75a24508c9846bbae0a98a29d46de8840bcc3e5accccaeedfd553349f6457c",
   "14c": "2b5faa200485144966c31f5147602471684501615168f05b34c439ab559161dc",
-  "15": "e87236f028c7d70ac1f55f49ad261967bab5a0812252c6b5394299dd26ee3175",
+  "15": "a93a8b046ba5269b1d08e4af94e7e7c86d80cc81d77c48a5dbfcc2b8751fbbfc",
   "16": "bbc5e636cf14b508997f1fd74b58cb5c5efe98274fa9726b05bb7134fa1630d3",
-  "17": "efc1895777506ed9bc60281d34179d056b355202fa811d17b407b850a267bcf7",
+  "17": "34b8d303a0a92c0580fec4e4966d939172a31284b7f48bf2dc1dc70721c24c9e",
   "18": "c1f9da8f45d6b3fdea7e035e5a3a0edd795b0eceeada99cde883022fbeead67b",
   "20": "efca23a65f89614319fc56e0d618a80f0d9f8b443c11275a942e6ada1f213091",
   "21": "13e8ee9c850dcce682d3343ae6de7a2415b5a7a2d383cdc87835f778c0acc775",
@@ -654,7 +621,7 @@
   "29": "8710784aea839a01b60705ae07ce8a282896cfc03dd7ec4f0260a2f7fc1101be",
   "30": "f7eb45b94bb6fe2400b0bdb199ad4891520caa35b03816e2eb784764777fd79f",
   "31": "6937958d79f8caf6109ee2c608cc1215749f9b6b75fbbc3fa829d15c847341e7",
-  "32": "d679b9c45ec16a3eb788b617798a9cbd7257bd97d44756b9e23d367b8e4fd862",
+  "32": "b2cdb9bd64abdfe3f6d4bda973e04567a84ee33eaa9194836c1940e89460d559",
   "33": "8ec2d322665f8c2a3cf78d4c1c2e56f3e85ea0ce04890895213b62bbf986d462",
   "34": "e024d9fae027b1c4170afe38cfbe3433ef206408936386badf36c5a2fab70933",
   "35": "e740207c6313cc51a445cf40521f2bab83fd2b16c78c54619138f4987769b1d9",

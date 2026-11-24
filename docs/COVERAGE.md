@@ -14,15 +14,15 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 326 of the 343 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 337 of the 354 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 85.9% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **396 refusal gates**: 343 tax situations the tool does not prepare, grouped by topic below, and 53 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **407 refusal gates**: 354 tax situations the tool does not prepare, grouped by topic below, and 53 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
-- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (71)
+- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (72)
 - [Household and dependents](#household-and-dependents) (20)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (6)
@@ -31,7 +31,7 @@ The data holds **396 refusal gates**: 343 tax situations the tool does not prepa
 - [Self-employment](#self-employment) (31)
 - [State and local tax refunds](#state-and-local-tax-refunds) (9)
 - [Other income and alimony](#other-income-and-alimony) (51)
-- [IRA contributions](#ira-contributions) (12)
+- [IRA contributions](#ira-contributions) (14)
 - [Health savings accounts](#health-savings-accounts) (13)
 - [Itemized deductions](#itemized-deductions) (11)
 - [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (8)
@@ -40,7 +40,7 @@ The data holds **396 refusal gates**: 343 tax situations the tool does not prepa
 - [Education credits](#education-credits) (5)
 - [Home energy credits](#home-energy-credits) (8)
 - [Premium tax credit](#premium-tax-credit) (8)
-- [Partnership and S corporation Schedules K-1](#partnership-and-s-corporation-schedules-k-1) (62)
+- [Partnership and S corporation Schedules K-1](#partnership-and-s-corporation-schedules-k-1) (70)
 - [Entry checks](#entry-checks) (53)
 
 ### Filing status, residency, wages, accounts and other taxes
@@ -68,7 +68,7 @@ The data holds **396 refusal gates**: 343 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"
   - *Refused at:* `household.roster_ok`
 - **`household.rdp_community_property`**: Not filing jointly, living in a community property state, and a registered domestic partner in California, Nevada or Washington?
-  - *The data asks or tests:* Not filing jointly, living in a community property state, and a registered domestic partner in Nevada, Washington or California (`test`)
+  - *The data asks or tests:* Not filing jointly, and a registered domestic partner in Nevada, Washington or California at any time in 2025 (wherever you lived) (`test`)
   - *Not covered:* Community income of a registered domestic partner (Form 8958; Pub. 555). A registered domestic partner in Nevada, Washington or California must generally report half the combined community income of the partners; Form 8958 and the community property rules of Pub. 555 are outside this tool.
     *Source:* [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"
   - *Refused at:* `f1040.line1a`
@@ -207,6 +207,11 @@ The data holds **396 refusal gates**: 343 tax situations the tool does not prepa
   - *The data asks or tests:* Schedule B line 8 (a foreign trust distribution, or the grantor of or a transferor to a foreign trust), when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise (`choose`)
   - *Not covered:* Form 3520 / Form 3520-A. Review and prepare the required foreign-trust information returns; this path is outside scope.
     *Source:* [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts
+  - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`
+- **`sb.trust_owner_if_foreign`**: Were you treated for tax as the owner of a foreign trust under the grantor trust rules?
+  - *The data asks or tests:* The owner of a foreign trust under the grantor trust rules, when you or your spouse had a connection to a foreign trust or a trust in a U.S. territory; false otherwise (`choose`)
+  - *Not covered:* Form 3520 / Form 3520-A. An owner of a foreign trust under the grantor trust rules files Form 3520 even with no transaction in the year; this tool does not prepare it.
+    *Source:* [i3520] p. 1, Who Must File, item 2, "You are a U.S. person who, during the current tax year, is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679", "You are required to complete Part II even if there have been no transactions involving the trust during the tax year"
   - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`
 - **`sb.form5471_if_foreign`**: Were you an officer or director of a foreign corporation, or a 10% owner of one (Form 5471)?
   - *The data asks or tests:* Form 5471 officer, director or 10% shareholder of a foreign corporation, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise (`choose`)
@@ -1281,11 +1286,21 @@ The data holds **396 refusal gates**: 343 tax situations the tool does not prepa
   - *Not covered:* IRA deduction with excluded foreign or possession income (Pub. 590-A). With a retirement plan coverage and Form 2555 (or excluded income from Form 4563 or Puerto Rico), the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.
     *Source:* [i1040gi] p. 96, Were You Covered by a Retirement Plan?, "If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction"
   - *Refused at:* `person.ira_line11`
-- **`ira.kbh_short`**: On a joint return with traditional IRA contributions, is the compensation on the IRA worksheet under $14,000 ($15,000 or $16,000 with spouses 50 or older)?
-  - *The data asks or tests:* Married filing jointly with traditional IRA contributions and line 10 less than the amount in the caution (`test`)
+- **`ira.kbh_short`**: On a joint return with traditional or Roth IRA contributions, is the compensation on the IRA worksheet under $14,000 ($15,000 or $16,000 with spouses 50 or older)?
+  - *The data asks or tests:* Married filing jointly with traditional or Roth IRA contributions and line 10 less than the amount in the caution (`test`)
   - *Not covered:* IRA deduction on a joint return with little compensation (Pub. 590-A worksheet). On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare.
     *Source:* [i1040gi] p. 98, IRA Deduction Worksheet—Continued, Caution, "stop here and use the worksheet in Pub. 590-A to figure your IRA deduction"
   - *Refused at:* `person.ira_line11`
+- **`person.ira_roth_over`**: Are a person's Roth IRA contributions, with any traditional ones, above $7,000 ($8,000 at age 50 or older) or above the compensation, or on a joint return with compensation under $14,000?
+  - *The data asks or tests:* This person made Roth IRA contributions for 2025, and the contributions are more than the applicable amount, or more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the Kay Bailey Hutchison amount (`choose`)
+  - *Not covered:* Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A). Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.
+    *Source:* [p590a] p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA"
+  - *Refused at:* `person.x_tax`
+- **`person.ira_roth_income`**: With Roth IRA contributions, is modified AGI $236,000 or more on a joint return, $150,000 or more for single, head of household or separate filers living apart, or above zero for separate filers living together?
+  - *The data asks or tests:* This person made Roth IRA contributions for 2025 and the return's modified AGI for Roth IRA purposes is in or above the phase-out range (`choose`)
+  - *Not covered:* Roth IRA contributions limited by modified AGI (Maximum Roth IRA Contribution Worksheet, Form 5329 Part IV). Roth IRA contributions are reduced or not allowed when modified AGI is $236,000 or more (married filing jointly or qualifying surviving spouse), $150,000 or more (single, head of household, or married filing separately and apart from your spouse all year) or more than zero (married filing separately and living with your spouse at any time in 2025). This return is at or above that point (figured here without subtracting any Roth conversion), so its Roth contributions are outside this tool.
+    *Source:* [i8606] p. 4, Maximum Roth IRA Contribution Worksheet, line 6, "If zero or less, stop here; you may not contribute to a Roth IRA for 2025"
+  - *Refused at:* `person.x_tax`
 - **`ira.combat_gate`**: Do you have traditional IRA contributions and nontaxable combat pay?
   - *The data asks or tests:* Traditional IRA contributions with nontaxable combat pay (`choose`)
   - *Not covered:* Nontaxable combat pay in IRA compensation (IRA Deduction Worksheet, line 8). Nontaxable combat pay counts as compensation for the IRA deduction; it is outside this tool.
@@ -1805,6 +1820,26 @@ The data holds **396 refusal gates**: 343 tax situations the tool does not prepa
   - *Not covered:* Schedule E, line 28, interest on money borrowed to buy into an S corporation (debt-financed acquisition). Interest on money borrowed to buy into an S corporation is outside this tool.
     *Source:* [i1040se] p. 9, S Corporations, "If you used loan proceeds to buy an interest in, or make a contribution to the capital of, an S corporation (debt-financed acquisition), report your share of deductible S corporation interest expense on either Schedule A or Schedule E"
   - *Refused at:* `k1s.ok`
+- **`k1s.fiscal`**: Is an S corporation K-1 for a tax year other than the calendar year 2025 (a fiscal year)?
+  - *The data asks or tests:* The K-1 is for a tax year other than calendar year 2025 (a fiscal year) (`input`)
+  - *Not covered:* Schedule K-1 (Form 1120-S) for a corporation's fiscal year. A Schedule K-1 for a tax year other than the calendar year 2025 is outside this tool.
+    *Source:* [i1120ssk] p. 6, "If you file your tax return on a calendar-year basis, but the corporation files a return for a fiscal year, report the amounts on your tax return for the year in which the corporation’s fiscal year ends"; p. 4, "All determinations of material participation are based on your participation during the corporation’s tax year"
+  - *Refused at:* `k1s.ok`
+- **`k1s.credit_carry`**: Was a credit from an S corporation held back on an earlier return by the passive activity rules (Form 8582-CR)?
+  - *The data asks or tests:* A credit from this corporation held back on an earlier return by the passive activity rules (Form 8582-CR) (`input`)
+  - *Not covered:* Form 8582-CR (a passive activity credit carried from an earlier year). A credit carried from an earlier year by the passive activity rules is outside this tool.
+    *Source:* [i1120ssk] p. 6, "If you have losses, deductions, or credits from a prior year that weren’t deductible or usable because of certain limitations, such as the basis limitations or the at-risk limitations, take them into account in determining your income, loss, or credits for this year"
+  - *Refused at:* `k1s.ok`
+- **`k1s.prior_not_active_if`**: Did a held-back S corporation rental loss arise in a year without active participation?
+  - *The data asks or tests:* Asked only when a held-back box 2 loss would go to Form 8582 Part IV (false otherwise) (`choose`)
+  - *Not covered:* Form 8582, Part IV (prior-year loss from a year without active participation). A held-back rental loss from a year without active participation is outside this tool.
+    *Source:* [i8582] p. 10, Column (c), "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year"
+  - *Refused at:* `k1s.ok`
+- **`k1s.b2_prior_blank`**: Was an S corporation rental real estate loss held back on your 2024 return while its box 2 is blank this year?
+  - *The data asks or tests:* A box 2 loss was held back but box 2 shows no amount this year (active participation is not asked) (`test`)
+  - *Not covered:* Form 8582, Part IV or V (a held-back rental real estate loss with no box 2 amount this year). A held-back rental real estate loss from a corporation whose box 2 is blank this year is outside this tool.
+    *Source:* [i8582] p. 10, Column (c), "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year"
+  - *Refused at:* `k1s.ok`
 - **`f7203.election_if_req`**: Is a Regulations section 1.1367-1(g) election in effect for an S corporation (Form 7203)?
   - *The data asks or tests:* The election, asked only when Form 7203 is required (false otherwise) (`choose`)
   - *Not covered:* Form 7203 with a Regulations section 1.1367-1(g) election. With the election, nondeductible expenses are moved to line 13 and carried over under special rules; that is outside this tool.
@@ -1975,6 +2010,26 @@ The data holds **396 refusal gates**: 343 tax situations the tool does not prepa
   - *Not covered:* Schedule E, line 28, interest on money borrowed to buy into a partnership (debt-financed acquisition). Interest on money borrowed to buy into a partnership is outside this tool.
     *Source:* [i1040se] p. 9, Domestic Partnerships, "If you used loan proceeds to buy an interest in, or make a contribution to the capital of, a partnership (debt-financed acquisition), report your share of deductible partnership interest expense on either Schedule A or Schedule E"
   - *Refused at:* `k1p.screened`
+- **`k1p.fiscal`**: Is a partnership K-1 for a tax year other than the calendar year 2025 (a fiscal year)?
+  - *The data asks or tests:* The K-1 is for a tax year other than calendar year 2025 (a fiscal year) (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) for a partnership's fiscal year. A Schedule K-1 for a tax year other than the calendar year 2025 is outside this tool.
+    *Source:* [i1065sk1] p. 13, "If you file your tax return on a calendar-year basis, but your partnership files a return for a fiscal year, report the amounts on your tax return for the year in which the partnership's fiscal year ends"; p. 9, "All determinations of material participation are based on your participation during the partnership’s tax year"
+  - *Refused at:* `k1p.screened`
+- **`k1p.oil_gas_gp_if_gp`**: As a general partner, do you hold a working interest in oil or gas wells through a partnership?
+  - *The data asks or tests:* Asked only when item G's first box (general partner or LLC member-manager) is checked (false otherwise) (`choose`)
+  - *Not covered:* Schedule E, line 28, column (k), a working interest in oil or gas wells held as a general partner (nonpassive). A working interest in oil or gas wells held through a partnership as a general partner is outside this tool.
+    *Source:* [i1065sk1] p. 8, Passive activities don't include the following, "Working interests in oil or gas wells if you were a general partner"
+  - *Refused at:* `k1p.screened`
+- **`k1p.llc_member_active`**: Are you a member, not a manager, of an LLC whose K-1 shows an amount in box 1 or box 2?
+  - *The data asks or tests:* A member of an LLC who is not a manager, with an amount in box 1 or box 2 (whether the member counts as a limited partner decides the tests) (`test`)
+  - *Not covered:* Material and active participation of an LLC member who is not a manager (Form 8582). Whether an LLC member who is not a manager is treated as a limited partner is outside this tool.
+    *Source:* [i1065sk1] p. 2, Limited Partner, "Some members of other entities, such as domestic or foreign business trusts or limited liability companies (LLCs) that are classified as partnerships, may be treated as limited partners for certain purposes"
+  - *Refused at:* `k1p.screened`
+- **`k1p.over100_if_income`**: Did you work over 100 hours in a partnership business with income in box 1 without materially participating?
+  - *The data asks or tests:* Asked only when box 1 shows income from a business the partner worked in without meeting tests 1, 2, 3 or 5 (false otherwise) (`choose`)
+  - *Not covered:* Form 8582, income from a significant participation activity (recharacterized as nonpassive). Income from a business you worked in for more than 100 hours without materially participating is outside this tool.
+    *Source:* [i1065sk1] p. 11, Special rules for certain other activities, "If you have net income subject to recharacterization under Temporary Regulations section 1.469-2T(f) and Regulations sections 1.469-2(f)(5) and (6), report such amounts according to the Instructions for Form 8582"; p. 9, "A significant participation activity is any trade or business activity in which you participated for more than 100 hours during the year and in which you didn’t materially participate"
+  - *Refused at:* `k1p.screened`
 - **`k1p.re_pro_if_b2`**: With rental real estate income or loss from a partnership (box 2), did you work over 750 hours, and most of your work time, in real estate?
   - *The data asks or tests:* Asked only when box 2 shows an amount and no rental or royalty of your own is listed (false otherwise; Schedule E Part I asks it then, and a Yes there refuses the return) (`choose`)
   - *Not covered:* Schedule K-1 (Form 1065) box 2 of a real estate professional (Schedule E, line 43). Rental real estate from a partnership held by a real estate professional is outside this tool.
@@ -2131,7 +2186,7 @@ These refuse a return when entered figures contradict each other, or when an ent
 
 - **`retirement.wrong_kind`**
   - *The data asks or tests:* An exception that does not apply to this kind of account (`test`)
-  - *Not covered:* Form 5329 line 2 exception for another kind of account. Exceptions 01 and 06 do not apply to IRAs, and 07, 08 and 09 apply only to IRAs (i5329 p. 5). Check the exception number.
+  - *Not covered:* Form 5329 line 2 exception for another kind of account. Exceptions 01, 06 and 13 to 18 do not apply to IRAs (they are for employer plans, section 457 plans and annuity contracts), and 07, 08 and 09 apply only to IRAs (i5329 p. 5; Pub. 590-B, p. 24). Check the exception number.
     *Source:* [i5329] p. 5, Line 2, "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service"
   - *Refused at:* `retirement.l2`
 - **`person.x_two23`**
@@ -2212,7 +2267,7 @@ These refuse a return when entered figures contradict each other, or when an ent
     *Source:* [i8889] p. 3, "If, during the tax year, you are the beneficiary of two or more HSAs or you are a beneficiary of an HSA and you have your own HSA, you must complete a separate Form 8889 for each HSA"
   - *Refused at:* `person.hsa_deduction`
 - **`f8889.allocation_bad`**
-  - *The data asks or tests:* The spouses allocation cannot be checked or does not hold: only one using an agreed allocation, or an agreed allocation with different Step 1 limits or with more than the Step 1 limit allocated in total (`test`)
+  - *The data asks or tests:* On a Form 8889 that uses the spouse rule of line 6, the spouses allocation cannot be checked or does not hold: only one using an agreed allocation, or an agreed allocation with different Step 1 limits or with more than the Step 1 limit allocated in total (`test`)
   - *Not covered:* Form 8889 line 6 for spouses with separate HSAs. Use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit (the family amount for the months you were both eligible individuals treated as having family coverage) between you.
     *Source:* [i8889] p. 4, Line 3, rule 1; p. 7, Line 6, Steps 1 to 3
   - *Refused at:* `f8889.share`

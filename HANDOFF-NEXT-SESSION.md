@@ -38,10 +38,10 @@ before relying on the list.
 
 - **Last release:** `r2026.11.24.1` (2026-11-24), the newest release tag before this commit; `git describe --tags
   --match 'r*'` gives the commits after it (a file cannot name the commit that holds it).
-- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,342 entries (highest BUG-1342), 76 open, 4 of them covered by
-  a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 72 rows not done; scoreboard 693 of 4,046 computed lines
+- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,411 entries (highest BUG-1411), 34 open, 7 of them covered by
+  a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 73 rows not done; scoreboard 693 of 4,046 computed lines
   (17.1%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
-  164 ambiguity entries, 160 linked to a line (`ambiguities/2025.yaml`).
+  166 ambiguity entries, 162 linked to a line (`ambiguities/2025.yaml`).
 <!-- /figures:handoff-state -->
 
 - **Tax years:** 2025 is the only adopted year (`years.json`). 2026 is prepared, not adopted: the definition changes as

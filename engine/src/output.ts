@@ -161,7 +161,8 @@ export function standingNotices(): string[] {
   return [
     "Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.",
     `Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/${YEAR}.yaml).`,
-    "Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).",
+    "Estimated tax penalty: not computed. The IRS generally figures it and sends a bill (i1040gi, line 38; i2210, Who Must File Form 2210). You must file Form 2210 yourself to ask for a waiver, to use the annualized income installment method or the dates tax was actually withheld (Form 2210, Part II, boxes A to D), or if you filed a joint return for 2024 or 2025 but not both and the payment based on your 2024 tax (Form 2210, line 8) is smaller than 90% of your 2025 tax (line 5) (box E).",
+    "Refund: lines 35b to 35d are not asked. If line 34 shows a refund, give your routing number, account number and account type on lines 35b to 35d, or attach Form 8888 to split it; from October 2025 the IRS generally stopped issuing paper refund checks (i1040gi, Line 35a, p. 62).",
     "This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.",
     "The user is responsible for the return. Not affiliated with or endorsed by the IRS.",
   ];
