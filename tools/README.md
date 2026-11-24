@@ -128,14 +128,15 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier full
 - **light** (the default; what a commit on `next` or a lane branch needs): compile, build and render, the engine
   self-check, the federal and New York fixtures, the bookkeeping checks (`check_bug_inventory`, `bug_status`,
   `check_agent_runs`, `check_docs_conventions`, `siblings_check`, `bookkeeping_self_tests`), the checks of generated
-  reports (`gate_frequencies`, `person_wording`, `coverage_tree`, `doc_figures`), and the interview checks
-  `interview_rules`, `interview_coverage` and `tick_groups` scoped to the forms the change touches.
+  reports (`gate_frequencies`, `person_wording`, `coverage_tree`, `doc_figures`), the year-label lint
+  (`label_year`, "Year-label lint" below), and the interview checks `interview_rules`, `interview_coverage`,
+  `tick_groups` and `spouse_phrase` scoped to the forms the change touches.
   `tools/change_scope.py` computes the scope from the paths that differ from HEAD: `all` when a path can change any
   walk (the engine, the profiles, the schema, parameters, tables, an unlisted path), `none` when the interview checks
   read no changed path (tools, bookkeeping, reports, reviews, sources, the Lean evaluator, the web UI), else the form
   ids of the changed form files and of the input keys on the changed lines of fixtures, coverage rows and the
   question bank. With a list, each check gets `--forms <ids>` (`engine/src/form-scope.ts`: a walk, row or tick group
-  is checked when one of its input keys names one of the forms); with `none` the three steps are listed as skipped;
+  is checked when one of its input keys names one of the forms); with `none` the four steps are listed as skipped;
   with `all` they run unscoped. A scoped run does not judge what needs every walk (a baseline entry no longer seen,
   the pruning report, the interview coverage report, a coverage set no row uses).
 - **full** (the release's tier): every step. In release mode (`CHECK_ALL_RELEASE=1`, which `tools/release.sh` sets)
@@ -919,6 +920,20 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   fails only on unarchived documents with their from-year editions, so the carry and the estimate are a lower bound
   for the forms that cite them. No model is called. A run takes hours on a loaded machine (each build of 2025 walks
   the interview); `--reuse-build` keeps an earlier copy's from-year build.
+
+### Year-label lint
+
+`check_label_year.py` (the light tier's `label_year`) finds a line's label, or a question's prompt or help, that
+prints this year's amount of a dollar parameter the line reads (a question: the parameters of its input's line and of
+the lines that read the input directly), when the next year's staged value
+(`research/ty<year+1>/params-<year+1>.proposed.yaml`) differs and no operation of `changes/<year+1>/` rewrites that
+text (`set` of `label`, `set_question` of `prompt` or `help`, `set` of `expr.source`, or a removal). Labels hold
+literal text (no form renders a parameter into a label), so the fix is an operation printing the staged amount:
+`changes/<year+1>/<form>.labels.yaml` holds those of lines no other operation relabels. A parameter staged with no
+value (`value: null`, the prior-year `refund.*` amounts until the next year's Form 1040 instructions) is printed as a
+note and checked once a value is staged, so the relabel goes in with the staging. A hit may instead be held in
+`tools/label_year_baseline.json` with the reason the amount stays right; a held id no longer a hit fails.
+`--self-test` (in check-all) plants each case.
 
 ## Process hooks
 

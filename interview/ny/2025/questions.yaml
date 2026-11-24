@@ -220,7 +220,8 @@ bank:
   - input: ny_it201.ask.noncustodial
     order: 1030
     seq: 40
-    prompt: Did you pay child support in 2025 through New York's child support program (a Support Collection Unit)?
+    prompt: Did you (or, on a joint return, your spouse) pay child support in 2025 through New York's child support program (a
+      Support Collection Unit)?
     help: Such a parent may get a New York credit (Form IT-209), which this tool does not compute.
   - input: ny_it201.ask.city_credits
     order: 1030
@@ -279,8 +280,9 @@ bank:
   - input: ny_it201.ask.other_withholding
     order: 1050
     seq: 10
-    prompt: Was New York income tax taken out of any retirement, unemployment or other payment to you (not pay on a Form W-2)?
-    help: Look at the state and local boxes of your Forms 1099-R, 1099-G and W-2G. This tool counts New York withholding
+    prompt: Was New York income tax taken out of any retirement, unemployment or other payment (not pay on a Form W-2) to you
+      (or, on a joint return, your spouse)?
+    help: Look at the state and local boxes of your (or, on a joint return, your spouse's) Forms 1099-R, 1099-G and W-2G. This tool counts New York withholding
       from Forms W-2 only.
   - input: $ny_it2
     order: 1050

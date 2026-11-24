@@ -651,6 +651,18 @@ the household itself; or a question where naming the spouse would change what th
 means (a line the form asks about the taxpayer only). Each use is grounded in the source the
 question cites: the spouse's item counts on the joint return.
 
+`spouse-phrase` (the light tier's `spouse_phrase`, scoped to the forms a change touches like the
+other interview checks; `engine/src/spouse-phrase.ts`) finds the questions the rule may apply
+to: in both banks, a question whose input's form has no `collection` block and is not a roster,
+whose prompt says "you" or "your", while neither its prompt, its help nor its group's heading
+and box label names the spouse ("spouse", "husband or wife", "either of you", "both of you",
+"you both", "joint", or "anyone on this return"). Each such question names the spouse or is held
+in `tools/spouse_phrase_baseline.json` with the reason its "you" is right as written (one of the
+exceptions above, an election of the return, a figure from the prior year's return, the return's
+one home, or a follow-up whose "you" chooses or describes rather than owns the item its parent
+asked of you or your spouse). A held question no longer found fails an unscoped run, so the list
+only shrinks.
+
 ### The spouse phrase as shown
 
 A filer reads the phrase in the form that fits their return. When a question is handed to a

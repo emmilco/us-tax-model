@@ -1,0 +1,18 @@
+changes:
+  tax_year: 2026
+  form: f8880
+  entries:
+  - change: BUG-NEW-lane-lints-12
+    evidence:
+    - doc: f8880
+      page: 2
+      quote: is more than $40,250 ($60,375 if head of household; $80,500 if married filing jointly).
+    verified: final
+    note: The label prints the amount of savers.agi_limit; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: f8880.agi_limit
+        field: label
+        from: Year parameter savers.agi_limit ($39,500; $59,250 if head of household; $79,000 if married filing jointly)
+        to: Year parameter savers.agi_limit ($40,250; $60,375 if head of household; $80,500 if married filing jointly)

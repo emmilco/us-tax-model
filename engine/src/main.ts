@@ -39,6 +39,8 @@
 //   node engine/dist/main.js vetting-report [--write] [--file F]
 //                                                  the owner's verdicts on the questions, for whoever acts on them
 //   node engine/dist/main.js test-serve            the web UI server's tests (synthetic returns, temporary dirs)
+//   node engine/dist/main.js spouse-phrase [--forms a,b] [--self-test]
+//                                                  the once-per-return questions with a bare "you", against tools/spouse_phrase_baseline.json
 //   node engine/dist/main.js spouse-wording --self-test
 //                                                  the spouse phrase's rewording for display, on constructed texts and the built questions
 //   node engine/dist/main.js spouse-wording --report [--check]
@@ -79,6 +81,7 @@ import { interviewOrder } from "./interview-order.js";
 import { tickGroups } from "./tick-groups-check.js";
 import { vettingReport } from "./vetting.js";
 import { personWordingReport, spouseWordingSelfTest } from "./spouse-wording.js";
+import { spousePhrase } from "./spouse-phrase.js";
 
 const command = process.argv[2];
 
@@ -234,6 +237,8 @@ if (command === "review-stage5") {
   process.exit(await draftWalk(process.argv.slice(3)));
 } else if (command === "tick-groups") {
   process.exit(tickGroups(process.argv.slice(3)));
+} else if (command === "spouse-phrase") {
+  process.exit(spousePhrase(process.argv.slice(3)));
 } else if (command === "spouse-wording" && process.argv.includes("--self-test")) {
   process.exit(spouseWordingSelfTest());
 } else if (command === "spouse-wording" && process.argv.includes("--report")) {
@@ -248,7 +253,7 @@ if (command === "review-stage5") {
   runCheckSelfTest();
 } else {
   console.error(
-    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] [--vetting <file>] | test-serve | vetting-report [--write] [--file <file>] [--self-test] | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | draft-walk [--personas <dir>] [--out <dir>] [--only <name>] [--summary] [--self-test] | tick-groups [--self-test] | spouse-wording --self-test | spouse-wording --report [--check]",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] [--vetting <file>] | test-serve | vetting-report [--write] [--file <file>] [--self-test] | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | draft-walk [--personas <dir>] [--out <dir>] [--only <name>] [--summary] [--self-test] | tick-groups [--self-test] | spouse-phrase [--forms a,b] [--self-test] | spouse-wording --self-test | spouse-wording --report [--check]",
   );
   process.exit(2);
 }

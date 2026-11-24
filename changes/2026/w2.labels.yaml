@@ -1,0 +1,18 @@
+changes:
+  tax_year: 2026
+  form: w2
+  entries:
+  - change: BUG-NEW-lane-lints-31
+    evidence:
+    - doc: iw2w3
+      page: 19
+      quote: For 2026, the amount should not exceed $11,439 ($184,500 × 6.2%).
+    verified: final
+    note: The label prints the amount of ss.limit; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: w2.over
+        field: label
+        from: Did this employer withhold more than $10,918.20?
+        to: Did this employer withhold more than $11,439?

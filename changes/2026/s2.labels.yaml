@@ -1,0 +1,147 @@
+changes:
+  tax_year: 2026
+  form: s2
+  entries:
+  - change: BUG-NEW-lane-lints-22
+    evidence:
+    - doc: i6251
+      page: 11
+      quote: multiplying line 6 by 28% (0.28) and subtracting $4,890 ($2,445 if married filing separately)
+    verified: draft
+    note: The label prints the amount of amt.bracket_subtract; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: s2.amt_h39_high
+        field: label
+        from: That line 6 times 28%, less $4,782 ($2,391 if married filing separately)
+        to: That line 6 times 28%, less $4,890 ($2,445 if married filing separately)
+  - change: BUG-NEW-lane-lints-23
+    evidence:
+    - doc: rp-25-32
+      page: 16
+      quote: Married Individuals Filing Separate Returns $122,250
+    - doc: rp-25-32
+      page: 16
+      quote: All Other Taxpayers $244,500
+    verified: final
+    note: The label prints the amount of amt.bracket; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: s2.amt_h6_high
+        field: label
+        from: That line 6 is more than $239,100 ($119,550 if married filing separately)
+        to: That line 6 is more than $244,500 ($122,250 if married filing separately)
+  - change: BUG-NEW-lane-lints-24
+    evidence:
+    - doc: rp-25-32
+      page: 16
+      quote: Married Individuals Filing Separate Returns $122,250
+    - doc: rp-25-32
+      page: 16
+      quote: All Other Taxpayers $244,500
+    verified: final
+    note: The label prints the amount of amt.bracket; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: s2.amt_l17_high
+        field: label
+        from: Line 17 is more than $239,100 ($119,550 if married filing separately)
+        to: Line 17 is more than $244,500 ($122,250 if married filing separately)
+  - change: BUG-NEW-lane-lints-25
+    evidence:
+    - doc: i6251
+      page: 11
+      quote: multiplying line 6 by 28% (0.28) and subtracting $4,890 ($2,445 if married filing separately)
+    verified: draft
+    note: The label prints the amount of amt.bracket_subtract; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: s2.amt_l18_high
+        field: label
+        from: Line 17 times 28%, less $4,782 ($2,391 if married filing separately)
+        to: Line 17 times 28%, less $4,890 ($2,445 if married filing separately)
+  - change: BUG-NEW-lane-lints-26
+    evidence:
+    - doc: rp-25-32
+      page: 13
+      quote: Married Individuals Filing Joint Returns and Surviving Spouse $98,900 $613,700
+    - doc: rp-25-32
+      page: 13
+      quote: Married Individuals Filing Separate Returns $49,450 $306,850
+    - doc: rp-25-32
+      page: 13
+      quote: Heads of Household $66,200 $579,600
+    - doc: rp-25-32
+      page: 13
+      quote: All Other Individuals $49,450 $545,500
+    verified: final
+    note: The label prints the amount of qdcg.zero_rate_ceiling; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: s2.amt_l19
+        field: label
+        from: 'Form 6251 line 19: $96,700 if married filing jointly or qualifying surviving spouse, $48,350 if single or married
+          filing separately, $64,750 if head of household'
+        to: 'Form 6251 line 19: $98,900 if married filing jointly or qualifying surviving spouse, $49,450 if single or married
+          filing separately, $66,200 if head of household'
+  - change: BUG-NEW-lane-lints-27
+    evidence:
+    - doc: rp-25-32
+      page: 13
+      quote: Married Individuals Filing Joint Returns and Surviving Spouse $98,900 $613,700
+    - doc: rp-25-32
+      page: 13
+      quote: Married Individuals Filing Separate Returns $49,450 $306,850
+    - doc: rp-25-32
+      page: 13
+      quote: Heads of Household $66,200 $579,600
+    - doc: rp-25-32
+      page: 13
+      quote: All Other Individuals $49,450 $545,500
+    verified: final
+    note: The label prints the amount of qdcg.fifteen_rate_ceiling; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: s2.amt_l25
+        field: label
+        from: 'Form 6251 line 25: $533,400 if single, $300,000 if married filing separately, $600,050 if married filing jointly
+          or qualifying surviving spouse, $566,700 if head of household'
+        to: 'Form 6251 line 25: $545,500 if single, $306,850 if married filing separately, $613,700 if married filing jointly
+          or qualifying surviving spouse, $579,600 if head of household'
+  - change: BUG-NEW-lane-lints-28
+    evidence:
+    - doc: i6251
+      page: 11
+      quote: multiplying line 6 by 28% (0.28) and subtracting $4,890 ($2,445 if married filing separately)
+    verified: draft
+    note: The label prints the amount of amt.bracket_subtract; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: s2.amt_l39_high
+        field: label
+        from: Line 6 times 28%, less $4,782 ($2,391 if married filing separately)
+        to: Line 6 times 28%, less $4,890 ($2,445 if married filing separately)
+  - change: BUG-NEW-lane-lints-29
+    evidence:
+    - doc: rp-25-32
+      page: 16
+      quote: Married Individuals Filing Separate Returns $122,250
+    - doc: rp-25-32
+      page: 16
+      quote: All Other Taxpayers $244,500
+    verified: final
+    note: The label prints the amount of amt.bracket; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: s2.amt_l6_high
+        field: label
+        from: Line 6 is more than $239,100 ($119,550 if married filing separately)
+        to: Line 6 is more than $244,500 ($122,250 if married filing separately)

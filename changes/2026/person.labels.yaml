@@ -1,0 +1,110 @@
+changes:
+  tax_year: 2026
+  form: person
+  entries:
+  - change: BUG-NEW-lane-lints-13
+    evidence:
+    - doc: n-25-67
+      page: 2
+      quote: is increased from $350,000 to $360,000.
+    verified: final
+    note: The label prints the amount of ret.comp_limit; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: person.comp_limit
+        field: label
+        from: $350,000
+        to: $360,000
+  - change: BUG-NEW-lane-lints-14
+    evidence:
+    - doc: rp-25-32
+      page: 17
+      quote: supplementary materials used by the eligible educator in the classroom is $350.
+    verified: final
+    note: The label prints the amount of s1.educator_max; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: person.educator_max
+        field: label
+        from: Year parameter s1.educator_max ($300)
+        to: Year parameter s1.educator_max ($350)
+  - change: BUG-NEW-lane-lints-15
+    evidence:
+    - doc: p15
+      page: 2
+      quote: The social security wage base limit is $184,500.
+    verified: final
+    note: The label prints the amount of ss.base; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: person.eligible
+        field: label
+        from: More than one employer and total social security wages over $176,100
+        to: More than one employer and total social security wages over $184,500
+  - change: BUG-NEW-lane-lints-16
+    evidence:
+    - doc: iw2w3
+      page: 19
+      quote: For 2026, the amount should not exceed $11,439 ($184,500 × 6.2%).
+    verified: final
+    note: The label prints the amount of ss.limit; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: person.excess
+        field: label
+        from: Withholding above $10,918.20, if any
+        to: Withholding above $11,439, if any
+  - change: BUG-NEW-lane-lints-17
+    evidence:
+    - doc: p590a
+      page: 15
+      quote: $91,000 or more
+    verified: draft
+    note: The label prints the amount of ira.line2_apart; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: person.ira_line2_apart
+        field: label
+        from: $89,000 (married filing separately and lived apart from your spouse for all of 2025)
+        to: $91,000 (married filing separately and lived apart from your spouse for all of 2026)
+  - change: BUG-NEW-lane-lints-18
+    evidence:
+    - doc: n-25-67
+      page: 4
+      quote: between $242,000 and $252,000
+    verified: final
+    note: The label prints the amount of ira.line2_not_covered; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: person.ira_line2_nc
+        field: label
+        from: $246,000
+        to: $252,000
+  - change: BUG-NEW-lane-lints-19
+    evidence:
+    - doc: n-25-67
+      page: 4
+      quote: between $81,000 and $91,000
+    - doc: n-25-67
+      page: 4
+      quote: between $129,000 and $149,000
+    - doc: n-25-67
+      page: 4
+      quote: remains $0 to $10,000
+    verified: final
+    note: The label prints the amount of ira.line2; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: person.ira_line2_table
+        field: label
+        from: The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving
+          spouse; $10,000 if married filing separately)
+        to: The line 2 amount for the filing status ($91,000; $149,000 if married filing jointly or qualifying surviving spouse;
+          $10,000 if married filing separately)

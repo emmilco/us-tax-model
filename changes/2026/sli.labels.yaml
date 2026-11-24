@@ -1,0 +1,18 @@
+changes:
+  tax_year: 2026
+  form: sli
+  entries:
+  - change: BUG-NEW-lane-lints-30
+    evidence:
+    - doc: rp-25-32
+      page: 23
+      quote: modified adjusted gross income in excess of $85,000 ($175,000 for joint returns)
+    verified: final
+    note: The label prints the amount of sli.base_joint; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: sli.base_joint
+        field: label
+        from: Year parameter sli.base_joint ($170,000)
+        to: Year parameter sli.base_joint ($175,000)

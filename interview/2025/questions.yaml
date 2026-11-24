@@ -704,8 +704,9 @@ bank:
     seq: 3
     help: Your broker's year-end statement shows margin interest. If one loan paid for investments and for something else,
       count only the investments' share.
-    prompt: How much interest did you pay in 2025 on money borrowed to buy investments? Leave out interest on money used to
-      buy, build or improve your home, and on money that went into tax-exempt bonds or a business.
+    prompt: How much interest did you (or, on a joint return, your spouse) pay in 2025 on money borrowed to buy investments?
+      Leave out interest on money used to buy, build or improve your home, and on money that went into tax-exempt bonds or a
+      business.
   - input: f4952.carryover
     order: 276
     seq: 4
@@ -785,7 +786,7 @@ bank:
     order: 280
     seq: 3
     help: "Answer No if you paid any of the tax to another country yourself."
-    prompt: "Was all of that income, and the foreign tax on it, reported to you on a Form 1099-DIV, a Form 1099-INT, a Schedule K-1 or K-3, or a similar statement?"
+    prompt: "Was all of that income, and the foreign tax on it, reported to you (or, on a joint return, your spouse) on a Form 1099-DIV, a Form 1099-INT, a Schedule K-1 or K-3, or a similar statement?"
   - input: ftc.eligible
     order: 280
     seq: 4
@@ -1080,8 +1081,8 @@ bank:
     order: 155
     seq: 4
     help: "Count only people who work as you direct them, not people who run their own business. Do not count pay to a student who was under 18 in 2025. A Yes means household employment taxes (Schedule H). A Yes ends the interview here."
-    prompt: Did you pay any one of them $2,800 or more in 2025, or all of them together $1,000 or more in any calendar quarter
-      of 2024 or 2025, or hold back income tax from their pay?
+    prompt: Did you (or, on a joint return, your spouse) pay any one of them $2,800 or more in 2025, or all of them together
+      $1,000 or more in any calendar quarter of 2024 or 2025, or hold back income tax from their pay?
   - input: s2.hsa_testing
     order: 193
     seq: 3
@@ -4292,7 +4293,7 @@ bank:
   - input: rec.medical
     order: 165
     seq: 27
-    prompt: How much of your 2024 medical and dental bills was repaid to you in 2025?
+    prompt: How much of your 2024 medical and dental bills was repaid to you (or, on a joint return, your spouse) in 2025?
   - input: rec.medical_deducted
     order: 165
     seq: 28

@@ -1,0 +1,4 @@
+{
+ "about": "Holds of tools/check_label_year.py by line or input id, each with the reason the amount its label or question prints stays right in the next year although the parameter it reads changes. A hit not held fails, and so does a hold no longer a hit, so the list only shrinks.",
+ "held": {}
+}

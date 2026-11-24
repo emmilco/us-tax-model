@@ -36,9 +36,9 @@
 #
 # --tier light|full|docs selects the steps (default light, the tier a commit on `next` or a lane branch needs).
 # light runs light_steps: compile, build and render, the federal and New York fixtures, the bookkeeping checks, the
-# checks of generated reports, and the interview checks of scoped_steps scoped to the forms the change touches
-# (tools/change_scope.py: `--forms <ids>`; no step when no form is touched; when the change can reach any walk,
-# interview_coverage and tick_groups run unscoped and interview_rules, whose unscoped run is the release's, not at all). full is the release's tier: every step, the interview checks unscoped, except release_steps (the interview
+# checks of generated reports, the year-label lint, and the interview checks of scoped_steps scoped to the forms the
+# change touches (tools/change_scope.py: `--forms <ids>`; no step when no form is touched; when the change can reach any walk,
+# interview_coverage, tick_groups and spouse_phrase run unscoped and interview_rules, whose unscoped run is the release's, not at all). full is the release's tier: every step, the interview checks unscoped, except release_steps (the interview
 # length report and the release checks of the sampled reviews), which run only in release mode
 # (CHECK_ALL_RELEASE=1, as tools/release.sh runs it). engine_differential reuses an outside engine's stored record
 # while everything that determines it is unchanged (tools/engines/engine_cache.py; ENGINE_CACHE=verify reruns every
@@ -75,9 +75,9 @@ case "$ny_rc" in
   3) ny_skip="$ny_status" ;;
   *) echo "check-all: tools/jurisdiction.py --ny-status failed" >&2; exit 2 ;;
 esac
-light_steps=" compile build check_self_test bookkeeping_self_tests check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check gate_frequencies person_wording coverage_tree doc_figures test_fixtures ny_test_fixtures interview_rules interview_coverage tick_groups "
+light_steps=" compile build check_self_test bookkeeping_self_tests check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check gate_frequencies person_wording label_year coverage_tree doc_figures test_fixtures ny_test_fixtures interview_rules interview_coverage tick_groups spouse_phrase "
 docs_steps=" compile build check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree doc_figures "
-scoped_steps=" interview_rules interview_coverage tick_groups "
+scoped_steps=" interview_rules interview_coverage tick_groups spouse_phrase "
 release_unscoped=" interview_rules "
 case "$tier" in
   full|light|docs) ;;
@@ -305,6 +305,9 @@ jstep renamed_ids "--jurisdiction ny" python3 tools/rename_ids.py check
 # The prepared operations of the next tax year (changes/<year+1>/) still apply to this year's forms, question bank and
 # profiles: no line gone or renamed, no expected text changed, no collision, reference or gate broken, evidence printed.
 jstep year_changes "--jurisdiction ny" python3 tools/year_changes.py --check
+# A label or question that prints a dollar parameter's amount which changes next year is rewritten by an operation of
+# changes/<year+1>/ or held, with its reason, in tools/label_year_baseline.json.
+step label_year python3 tools/check_label_year.py "$@"
 # New York only: its tax tables and household credit tables, each the same as a fresh extraction.
 step ny_tax_table python3 tools/extract_ny_tax_table.py --check "$@"
 step ny_household_tables python3 tools/extract_ny_household_tables.py --check "$@"
@@ -320,6 +323,9 @@ step interview_rules "${node[@]}" interview-rules "$@"
 step tick_groups "${node[@]}" tick-groups "$@"
 # The questions asked of a person, as stored and as shown for each entry: the tracked report is what the built questions give.
 step person_wording "${node[@]}" spouse-wording --report --check "$@"
+# A question asked once per return whose prompt says "you" names the spouse, or is held, with its reason, in
+# tools/spouse_phrase_baseline.json (interview/README.md, "A joint return combines both spouses' items").
+step spouse_phrase "${node[@]}" spouse-phrase "$@"
 # reports/<year>/interview_length.md, rewritten above its hand-written findings (full tier only); interview_rules,
 # above, fails when reports/<year>/interview_pruning.md is not what it finds. interview_length and interview_coverage
 # each spread their walks over INTERVIEW_WORKERS worker threads (default defaultWorkers() of engine/src/pool.ts,

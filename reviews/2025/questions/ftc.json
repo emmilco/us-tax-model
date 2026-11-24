@@ -165,25 +165,32 @@
    ]
   },
   "ftc.statements": {
-   "subject_sha": "40bd8346cbd824127d333cffa1eee2bf602bf28b84b56e1ea999e0b243cb4523",
+   "subject_sha": "d6e7fe31dbf0035045437be1cc2f52572d85677d5511ac074e8152ca881b96d2",
    "samples": [
     {
-     "verdict": "NARROW",
+     "verdict": "WIDE",
      "findings": [
       {
-       "kind": "NARROW",
-       "situation": "A filer whose foreign income and taxes were reported on a Schedule K-3 (Form 1065 or 1120-S), a Schedule K-1 (Form 1041), or a substitute statement may answer no, because the help names only Forms 1099-INT and 1099-DIV.",
+       "kind": "WIDE",
+       "situation": "A filer whose foreign tax came only on a Schedule K-1 (Form 1065) or Schedule K-1 (Form 1120-S), with no Schedule K-3, would truthfully answer yes, because the question accepts any 'Schedule K-1 or K-3'.",
        "source_text": "i1116 p. 1: \"Qualified payee statements include Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3 (Form 1065), Schedule K-3 (Form 1120-S), or similar substitute statements.\"",
-       "why": "\"Qualified payee statement\" is a term of art that an ordinary filer can't define without the full list. The help names only two of the qualifying statements, so a filer holding a K-3, a 1041 K-1 or a substitute statement could truthfully answer no when the election condition is met, and the lines would wrongly treat the election as unavailable.",
+       "why": "The text lists K-1 only for Form 1041, and lists K-3, not K-1, for partnerships and S corporations. The question's 'a Schedule K-1 or K-3' also counts partnership and S corporation K-1s, so the election can be allowed when the condition isn't met.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose foreign dividends and withheld tax appear only on an annual tax certificate or statement from a foreign bank or broker could read that as 'a similar statement' and answer yes.",
+       "source_text": "Question: \"...on a Form 1099-DIV, a Form 1099-INT, a Schedule K-1 or K-3, or a similar statement?\"; i1116 p. 1: \"or similar substitute statements\"",
+       "why": "The text accepts only substitutes for the listed U.S. information returns. The question's broader 'similar statement' lets in foreign payer statements, and the help only rules out tax the filer paid directly.",
        "bound": ""
       }
      ],
-     "prompt_sha": "06293d4d0cdeeaab76edf1b73232b0e8d7fcb75139d78f414aa52ec4e6b4e45f",
+     "prompt_sha": "0d35b66d2f43788024d4b9abdb1008b82fab7e4be5170deaf47dca0044f158e6",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.052332000000000004,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/ftc.statements.40bd8346cbd8.1.response.txt"
+     "cost": 0.080192,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/ftc.statements.d6e7fe31dbf0.1.response.txt"
     }
    ],
    "type": "Bool",
