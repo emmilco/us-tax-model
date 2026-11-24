@@ -150,8 +150,11 @@ the release instead of the commit; cheap invariants stay at commit; `main` is al
    (`interview_rules`, `interview_coverage`, `tick_groups`) scoped to the forms the change touches (`--forms`,
    computed by `tools/change_scope.py`). Release-only, in the full tier: mutation (federal and New York), the engine
    differential, both Lean comparisons and the Lean build, the unscoped interview rules, the interview length report,
-   the properties, the web UI tests, refusal reach, and the release checks of the sampled reviews. The fast tier is
-   gone; `tools/full_paths.txt` is gone, since no path makes a commit need the full tier. The docs tier is kept.
+   the properties, the web UI tests, and the release checks of the sampled reviews. (Refusal reach, the twins, a
+   sample of the engine differential's generated returns and the self-tests' environment check, each seconds long,
+   joined the light tier when release preparation found failures that only they would have caught earlier:
+   BUG-NEW-release-prep-23.) The fast tier is gone; `tools/full_paths.txt` is gone, since no path makes a commit
+   need the full tier. The docs tier is kept.
 3. **Preflight.** `tools/preflight.sh` runs first in `check_all.sh` and `check_all_bg.sh` and stops the run on
    failure: it regenerates the derived files the steps compare (bug status, the coverage tree, gate frequencies,
    person wording, the interview coverage report when it will be compared, the figure blocks), then runs the fast

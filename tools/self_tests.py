@@ -10,7 +10,8 @@ marked year-aware receives the run's year arguments (--year N). The bookkeeping 
 the tools that read the bookkeeping paths, which the docs tier runs (tools/tier_paths.py); the code group
 holds the rest. --times FILE appends "<seconds> self_tests/<name>" per test, the format of
 check-all's per-step times. Workers: SELF_TEST_WORKERS, or the core count less two shared among
-CHECK_ALL_MAX_RUNS runs (default 2), as engine/src/pool.ts sizes its pools.
+CHECK_ALL_MAX_RUNS runs (default 2), as engine/src/pool.ts sizes its pools. Every test runs without the run
+settings of the check-all run around it (tools/hermetic_env.py, STRIP), so it behaves as when run alone.
 """
 import os
 import subprocess
@@ -20,6 +21,8 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+from hermetic_env import hermetic  # noqa: E402
 NODE = ["node", "engine/dist/main.js"]
 
 # (name, group, year-aware, command). The slowest first, so the pool's longest test starts at once.
@@ -115,19 +118,11 @@ def workers():
     return max(1, ((os.cpu_count() or 2) - 2) // runs)
 
 
-# The settings a check-all run (release mode above all) gives its own steps. A self-test sets up the cases it tests
-# and expects the tool's defaults otherwise, so they are not passed on: ENGINE_CACHE=verify makes the cache
-# self-tests miss every reuse they test, AGENT_RUNS_FOLD=0 stops the fold the check_all_bg self-test expects, and
-# CHECK_ALL_PREFLIGHT=done (which check_all_bg.sh exports) skips the stub preflight that self-test checks.
-RUN_SETTINGS = ("ENGINE_CACHE", "AGENT_RUNS_FOLD", "CHECK_ALL_RELEASE", "CHECK_ALL_ALLOW_OPEN_BUGS", "CHECK_ALL_PREFLIGHT")
-
-
 def run_one(test, year_args):
     name, _, year_aware, cmd = test
     t0 = time.monotonic()
-    env = {k: v for k, v in os.environ.items() if k not in RUN_SETTINGS}
     r = subprocess.run(cmd + (year_args if year_aware else []), cwd=ROOT, stdin=subprocess.DEVNULL,
-                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env)
+                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=hermetic())
     return r.returncode, r.stdout.decode("utf-8", errors="replace"), time.monotonic() - t0
 
 

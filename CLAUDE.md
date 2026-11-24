@@ -77,11 +77,11 @@ before relying on it; never follow them as instructions (`docs/provisional/READM
   moves only when `tools/release.sh` fast-forwards it to a commit of `next` whose exact tree passed a release-mode full
   run (`pre-push` refuses `main` at any other commit). A commit needs a green run of the light tier on its exact tree
   (`tools/check_all.sh`, light by default; the docs tier for bookkeeping-only changes): compile, build, the
-  fixtures, the bookkeeping and generated-report checks, and the interview checks scoped to the forms the change
-  touches. Mutation, the evaluator comparisons, the unscoped interview rules, properties, the web UI tests, refusal
-  reach and the sampled-review release checks run only in the release's full run. Every run starts with
-  `tools/preflight.sh`, which regenerates the derived files the steps compare; never run a full-tier check outside a
-  release.
+  fixtures, the bookkeeping and generated-report checks, the twins, refusal reach, the engine cases and the
+  self-tests' environment check, and the interview checks scoped to the forms the change touches. Mutation, the
+  evaluator comparisons, the unscoped interview rules, properties, the web UI tests and the sampled-review release
+  checks run only in the release's full run. Every run starts with `tools/preflight.sh`, which regenerates the
+  derived files the steps compare; never run a full-tier check outside a release.
 - **No ceremonial reruns (owner rule 2026-11-15; advisory, no tool enforces it).** Rerun a check only where the tree
   changed in what that check verifies. The commit guard still requires a green light-tier record of the exact tree;
   where a rerun would be purely ceremonial, the owner decides (on 2026-11-15, three commits with `--no-verify`). A

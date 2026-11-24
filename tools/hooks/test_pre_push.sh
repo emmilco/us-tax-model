@@ -10,6 +10,7 @@
 # release_reviews.sh, and promotes nothing while the reviews are incomplete.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+eval "$(python3 -I "$ROOT/tools/hermetic_env.py" --unset)"  # behave as alone inside a check-all run
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/pre-push-test.XXXXXX")"
 trap 'rm -rf "$TMP"' EXIT
 fail() { echo "pre-push self-test: $*" >&2; exit 1; }

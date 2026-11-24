@@ -128,7 +128,9 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier full
 - **light** (the default; what a commit on `next` or a lane branch needs): compile, build and render, the engine
   self-check, the federal and New York fixtures, the bookkeeping checks (`check_bug_inventory`, `bug_status`,
   `check_agent_runs`, `check_docs_conventions`, `siblings_check`, `bookkeeping_self_tests`), the checks of generated
-  reports (`gate_frequencies`, `person_wording`, `coverage_tree`, `doc_figures`), and the interview checks
+  reports (`gate_frequencies`, `person_wording`, `coverage_tree`, `doc_figures`), four checks of seconds that
+  would otherwise fail only at a release (`hermetic_env`, `twins`, `refusal_reach`, and `engine_cases`: a sample of
+  the engine differential's generated returns evaluated by the build, `generate_cases.py --check-project`), and the interview checks
   `interview_rules`, `interview_coverage` and `tick_groups` scoped to the forms the change touches.
   `tools/change_scope.py` computes the scope from the paths that differ from HEAD: `all` when a path can change any
   walk (the engine, the profiles, the schema, parameters, tables, an unlisted path), `none` when the interview checks
@@ -309,6 +311,19 @@ mutate, interview-length and interview-coverage); `TEST_WORKERS`, `MUTATE_WORKER
 and `hooks/test_check_bg.sh` (per-run records, pruning, a background run waiting for a
 slot) are check-all steps.
 
+The engine commands that load the machine take the same slots when they start outside a check-all run
+(`SLOT_COMMANDS` in `engine/src/slot.ts`: build, test-fixtures, test-integration, test-serve, interview-rules,
+interview-length, interview-coverage, tick-groups, mutate, properties and compare), so that a build or test run
+started by hand or by an agent in a worktree waits its turn beside the checks instead of overloading the machine.
+Such a command waits for a slot before any work (it prints the same waiting lines), holds it until it exits
+(`tools/check_slot.py --for-pid`: a holder process frees the slot when the command's process ends, however it ends),
+and passes `CHECK_ALL_SLOT` and `CHECK_ALL_MAX_RUNS` to its children, so a command it starts does not wait again
+and its pools are sized as in a run. Where `CHECK_ALL_SLOT` is already set (inside a check-all run, release-prep or
+a command that holds a slot) nothing waits, so a run never waits for a second slot while it holds one. A
+`--self-test` of these commands runs at once, as do the commands not listed (eval, interview, serve, render and the
+rest). `npm run build` takes a slot through the build. `tools/check_slot.py --status` names each holder (`node build`
+for a build). On an idle machine the wait is one call of `check_slot.py`, a fraction of a second.
+
 The build (`node engine/dist/main.js build`) walks the fixtures' interview paths on `BUILD_WORKERS` worker threads
 (default `defaultWorkers()`; the errors are the same for every count, `interview-paths --self-test`), and reuses a
 passing build whose every read is unchanged (`engine/src/build-cache.ts`): the build records what it reads (file bytes,
@@ -334,7 +349,13 @@ step must be placed by it. A check that runs for both jurisdictions is declared 
 (`jstep`), and its New York run is the step `ny_<name>`. The tools' self-tests and test
 suites run as two steps, `bookkeeping_self_tests` and `self_tests`
 (`tools/self_tests.py --list` names each test and its command), side by side in a worker
-pool, each failing test named. A step's output is printed when its wave ends, under its `== <step>` line.
+pool, each failing test named. A self-test behaves inside a run as when run alone: `tools/self_tests.py` gives each
+test its environment without the run settings (`STRIP` in `tools/hermetic_env.py`: release mode, the preflight's
+`CHECK_ALL_PREFLIGHT=done`, `AGENT_RUNS_FOLD=0`, the cache modes, the sizing variables and the rest), and each shell
+self-test (`tools/test_*.sh`, `tools/hooks/test_*.sh`) unsets them on its first lines, so one run by hand from a
+polluted shell behaves the same. Worker counts, `CHECK_ALL_MAX_RUNS` and `CHECK_ALL_SLOT` are passed on.
+`hermetic_env.py --self-test` (the light-tier step `hermetic_env`) fails when a tool reads an environment variable that none of its
+lists classifies, or when a shell self-test does not unset the run settings: a new run setting goes in `STRIP`. A step's output is printed when its wave ends, under its `== <step>` line.
 
 Some self-tests have no row in `tools/self_tests.py`: a step runs them inside itself, and with the
 call removed the step would print one line less and still pass. `tools/step_output.py` lists, per

@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Machine-wide limit on concurrent check-all runs.
 
-    tools/check_slot.py [--tier T] [--tree TREE] -- COMMAND [ARGS...]
+    tools/check_slot.py [--tier T] [--tree TREE] [--what TEXT] -- COMMAND [ARGS...]
+    tools/check_slot.py --for-pid PID [--what TEXT]
 
-waits for a free slot, then replaces itself with COMMAND, which runs holding the slot.
+waits for a free slot, then replaces itself with COMMAND, which runs holding the slot. With --for-pid, it takes the
+slot for the running process PID instead: it leaves a holder process that keeps the slot until PID exits, prints
+the two variables below as NAME=VALUE lines for PID to set, and exits (engine/src/slot.ts: an engine command that
+loads the machine, started outside a check-all run, takes a slot this way before it starts its work).
 Across every worktree of the clone (the slot files live in the repository's common git dir,
 check-all-slots/), waiting runs start in arrival order, and at once hold slots:
 
@@ -166,6 +170,8 @@ def holders(d, n):
 
 def describe(h):
     bits = [f"pid {h.get('pid', '?')}"]
+    if h.get("what"):
+        bits.append(h["what"])
     if h.get("tier"):
         bits.append(f"{h['tier']} tier")
     if h.get("tree"):
@@ -240,8 +246,25 @@ def status():
         print(f"  waiting: pid {pid}")
 
 
+def hold_for(fd, pid):
+    """Fork a holder that keeps the slot's lock until process `pid` exits, then return. The holder keeps no other
+    file open, so a caller reading this process's output sees it end when this process exits."""
+    if os.fork():
+        return
+    os.setsid()
+    null = os.open(os.devnull, os.O_RDWR)
+    for std in (0, 1, 2):
+        os.dup2(null, std)
+    os.closerange(3, fd)
+    os.closerange(fd + 1, 4096)
+    while alive(pid):
+        time.sleep(POLL)
+    os._exit(0)
+
+
 def run(argv):
-    tier = tree = ""
+    tier = tree = what = ""
+    for_pid = None
     while argv and argv[0] != "--":
         if argv[0] == "--tier":
             tier = argv[1]
@@ -249,19 +272,31 @@ def run(argv):
         elif argv[0] == "--tree":
             tree = argv[1]
             argv = argv[2:]
+        elif argv[0] == "--for-pid":
+            for_pid = int(argv[1])
+            argv = argv[2:]
+        elif argv[0] == "--what":
+            what = argv[1]
+            argv = argv[2:]
         else:
             sys.exit(f"check_slot: unknown argument {argv[0]}")
     cmd = argv[1:]
-    if not cmd:
+    if not cmd and for_pid is None:
         sys.exit("check_slot: no command")
     d, n, fixed = slot_dir(), max_runs(), fixed_runs()
-    info = {"pid": os.getpid(), "tier": tier, "tree": tree, "worktree": os.getcwd(), "started": time.strftime("%Y-%m-%d %H:%M:%S")}
+    info = {"pid": for_pid or os.getpid(), "what": what, "tier": tier, "tree": tree, "worktree": os.getcwd(),
+            "started": time.strftime("%Y-%m-%d %H:%M:%S")}
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(143))  # runs the ticket cleanup
     fd, path = acquire(d, n, info, lambda m: print(m, file=sys.stderr, flush=True), None if fixed else min(FLOOR, n))
     signal.signal(signal.SIGTERM, signal.SIG_DFL)
-    os.set_inheritable(fd, True)
     # The pools share the cores among the runs that may hold slots now: the set limit, or the runs holding slots.
-    os.environ["CHECK_ALL_MAX_RUNS"] = str(fixed or max(FLOOR, len(holders(d, n))))
+    runs = str(fixed or max(FLOOR, len(holders(d, n))))
+    if for_pid is not None:
+        hold_for(fd, for_pid)
+        print(f"CHECK_ALL_SLOT={path}\nCHECK_ALL_MAX_RUNS={runs}", flush=True)
+        os._exit(0)
+    os.set_inheritable(fd, True)
+    os.environ["CHECK_ALL_MAX_RUNS"] = runs
     os.environ["CHECK_ALL_SLOT"] = path
     os.execvp(cmd[0], cmd)
 
@@ -366,6 +401,25 @@ def self_test():
     until(lambda: started("h"), "run h did not start after g")
     release("h")
     h.wait(timeout=20)
+    # --for-pid: the slot is held for another process until it exits, and the call returns once it is taken.
+    owner = subprocess.Popen(["sleep", "300"])
+    procs.append(owner)
+    try:
+        got = subprocess.run([sys.executable, me, "--for-pid", str(owner.pid), "--what", "node build"], env=env,
+                             capture_output=True, text=True, timeout=20)
+    except subprocess.TimeoutExpired:
+        fail("--for-pid did not return once it held the slot")
+    if got.returncode != 0 or got.stdout.split() != [f"CHECK_ALL_SLOT={sd}/slot-0", "CHECK_ALL_MAX_RUNS=1"]:
+        fail(f"--for-pid printed {got.stdout!r} (exit {got.returncode})")
+    if "node build" not in subprocess.run([sys.executable, me, "--status"], env=env, capture_output=True, text=True).stdout:
+        fail("--status does not name what holds the slot")
+    m = start("m")
+    stays_false(lambda: started("m"), "a run started while the slot was held for another process")
+    owner.kill()
+    owner.wait()
+    until(lambda: started("m"), "the slot held for a process was not freed when it exited")
+    release("m")
+    m.wait(timeout=20)
     # Without a set limit: FLOOR runs always; one more only while the planted load and memory leave room for it, with
     # the pools sized to the runs holding slots.
     measured = ""

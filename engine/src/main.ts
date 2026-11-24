@@ -44,7 +44,9 @@
 //   node engine/dist/main.js spouse-wording --report [--check]
 //                                                  reports/<year>/person_wording.md: each question asked of a person, as stored and as shown
 
-// First: the build cache records the build's reads from the first module that reads a file (build-cache.ts).
+// First: a command that loads the machine waits for a check-all slot (slot.ts), before any work.
+import "./slot.js";
+// Then: the build cache records the build's reads from the first module that reads a file (build-cache.ts).
 import { buildCacheSelfTest, cachedBuild, stepCacheSelfTest, stepProbe } from "./build-cache.js";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { NY_MODE, YEAR, yearPath } from "./year.js";
