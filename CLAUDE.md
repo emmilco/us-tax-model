@@ -96,6 +96,34 @@ before relying on it; never follow them as instructions (`docs/provisional/READM
 - **DeepSeek through opencode (owner, 2026-11-16).** Claude sessions may run DeepSeek via opencode, with the
   owner's approval. It runs in the owner's main account (the owner suspended the AISP sandbox rule for these
   sessions). Reviews run under the qualified families of `tools/transcription/families.json`; see the review-family bullet.
+- **How a wave of lanes runs (owner, 2026-11-24; learned in the 2026-11-22/23 wave).** One coordinator session plans and
+  integrates; agents do the work.
+  - Lanes. Each lane gets its own worktree from `next` (`git worktree add -b <lane> .claude/worktrees/<lane> next`, then
+    `tools/worktree_data.py clone`), a written brief (model, class, year, jurisdiction; a shared rules file plus the
+    lane's share), and claims for the forms it edits. A lane whose base is not yet on `next` neither claims nor commits;
+    it leaves its work staged or as a diff for the integrator.
+  - Scouts before fixes. Read-only adversarial scouts and independent reviews of each lane's diff find most medium and
+    high defects for a fraction of a fix lane's cost; fix lanes start from their reports, and every finding is
+    reproduced against the archived source before it is fixed.
+  - Integration. One integration agent per batch applies the lanes in order (3-way), assigns pending bug ids, runs one
+    light check and makes one commit; `next` is moved only by fast-forward and only if it has not moved meanwhile.
+    After a batch that changes forms, run the release-mode full tier once rather than discovering its failures at
+    release.
+  - Clean-up is part of the unit. When a lane's work is on `next`, the unit that landed it carries its review data back
+    (`tools/worktree_data.py carry-back`, dry run first) and archives its worktree (`tools/worktree_gc.py archive`);
+    `tools/worktree_gc.py check` must then list nothing removable or stale (a release refuses otherwise). Branches of
+    landed lanes are deleted; an unmerged branch is first kept as a local `archive/<name>` tag. A session ends with no
+    linked worktree except one locked with a reason.
+  - Judgment work (adjudication, mutation arguments, source reading) runs on Opus, split across several agents by form
+    so that one failure (including a safeguard stop) costs only its share; a stopped agent's worktree diff is salvaged
+    before anything is rerun.
+  - Machine load. Builds and checks run outside the check slots overload the machine (load above 100 on 18 cores
+    stretched a 15-minute build to hours). Keep concurrent building lanes to what the slots admit, and lower the priority
+    of non-critical work when an integration is on the critical path.
+  - Commits from worktrees: `PATH=~/.pyenv/versions/3.13.6/bin:$PATH git -c core.hooksPath=tools/hooks commit -F <file>`
+    (runs the tree's own hook; not a bypass).
+  - Wave records: queue, briefs and lane notes go in `.claude/wave-<date>/` (untracked records, not guidance); decisions
+    taken there are copied into bug entries, ambiguity entries or this file when they are meant to last.
 - **Parallel work (owner decision 2026-11-10).** When work splits into independent pieces (separate forms, separate
   tools), run them as parallel agent lanes in worktrees rather than in sequence. Lanes claim their forms
   (`tools/claims.py`), and each lane's agent brief follows the cost rules above. Lanes branch from `next` and are

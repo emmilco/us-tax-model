@@ -9,6 +9,13 @@ reviews ruled, BUG-1202 fixed), `d63d282a` (mutation lanes A to H, the defaults 
 full run green on tree `4a9ff814`; no open bug was allowed. Every linked worktree is archived; only `main` and `next`
 remain as branches (the others are local `archive/*` tags).
 
+**Autonomy (owner, 2026-11-24).** Through the next release (the one after `r2026.11.24.1`), the owner's grant of
+2026-11-22 stands: operate autonomously and treat any course of action the coordinator would recommend as approved.
+Decisions taken under it are recorded where the work is (briefs, commit messages, bug entries, ambiguity entries) and
+reported to the owner. Still referred to the owner: choices between readings of the tax law that change amounts
+(ambiguity entries marked for the owner), releasing with `--allow-open-bugs`, any `--no-verify`, pushing anything other
+than a release, and any change to this grant. How the work is run: `CLAUDE.md`, "How a wave of lanes runs".
+
 **Owner direction (2026-11-23) for the next release.** In order: (1) process and tool fixes, first those that cut
 development time and cost; (2) all open bugs; (3) 2026 and model work. Coverage expansion is frozen until all three are
 done; fixes inside existing coverage count as bugs. The ranked work is at the top of `TASKS.md`; its source is the bug
