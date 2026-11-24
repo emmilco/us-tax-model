@@ -14490,3 +14490,11 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Proposed fix:** refuse line 23 also when a section 179 carryover is deducted in 2025 and any part of it came from an SUV election (the federal tool does not record the carryover's origin, so either a New York question asked when Form 4562 line 10 is above zero, or refuse on any deducted carryover while a vehicle with `scveh.suv` is listed); a fixture with a carryover deducted.
 - **Severity:** low
 - **Tags:** forms, ny_it201, sc, New York, section 179, IT-225; open
+
+## BUG-1225 — Closure: BUG-1114 is fixed (by BUG-1182)
+
+- **Closes:** BUG-1114
+- **Closure:** fixed
+- **Caught by:** the bug characterization of 2026-11-23 (claude-opus-5-5, judgment), which found BUG-1114 listed open although BUG-1182 fixed the same defect; checked against the tree by the coordinator, 2026-11-24.
+- **Evidence:** forms/2025/s8812.yaml s8812.line22 is the sum of s1.line15, s2.tip_ss_tax and s2.wage_ss_tax (Schedule 2 lines 5 and 6, renamed by T-353), and s8812.clwb_8 copies s8812.line22; BUG-1182 records the fix and its fixture (Form 8919 tax of $306 reaching line 27).
+- **Tags:** closure; Schedule 8812, Form 4137, Form 8919, fixed

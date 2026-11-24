@@ -1,23 +1,23 @@
 # Tasks
 
-**Order of work (2026-11-22).** The owner started coverage expansion on 2026-11-15, ahead of the earlier plan
-to wait until the project stabilized: one area at a time, by `tools/coverage/estimate.py`'s ranking, while the next
-area adds about 0.5 points of filer coverage or more (`docs/2026-11-15_coverage_expansion_protocol.md`, normative by
-owner decision 2026-11-15). The consolidation program, T-256, finishes alongside it. The 2026 adoption waits for the IRS
-finals (T-011). This register is authoritative for individual task status; `HANDOFF-NEXT-SESSION.md` holds the
-current state.
+**Order of work (owner decision 2026-11-23, for the release after `r2026.11.24.1`).** Coverage expansion is frozen:
+no new form, schedule or situation comes into scope until every item below is done; fixes inside existing coverage
+count as open bugs (item 2), not as expansion. That release is made when all three are done. This register is
+authoritative for individual task status; `HANDOFF-NEXT-SESSION.md` holds the current state.
 
-**Next:**
-1. Integrate the 2026-11-22 wave (`HANDOFF-NEXT-SESSION.md`): integrate-1, integrate-2, advfix, nyfix, then the queue of
-   `.claude/wave-2026-11-22/after-int-queue.md`.
-2. The 2026-11-15 expansion areas brought to the redraft's standard: their judgment records (T-333), then the
-   owner's walk (T-332). They pass the mechanical interview checks only.
-3. The next expansion area: rerun `tools/coverage/estimate.py` (its report dates from 2026-11-01), then take the
-   top-ranked area under the protocol (T-151 and T-012 hold the older scope rows).
-4. Owner decisions waiting: T-312 (redraft choices), T-326 (2026 preparation choices).
-5. The rest of T-256 (item 7, the path conventions of charter section 6: the straggler `adapter_contracts/2025/`) and the sampled reviews of the redraft (T-318), if the
-   release did not run them.
-6. Weekly while the 2026 finals post: T-322, then T-320 and T-328 as each document posts.
+**Next, in order:**
+1. Process and tool fixes, first those that cut development time and cost. Ranked candidates are in
+   `.claude/scouts-2026-11-23/bug-characterization.md` in the main checkout (untracked; section 5); in short: cheap checks in the
+   light tier (`year_changes.py --check`, evaluating pinned mutation arguments without a mutation run, `rename_ids`
+   matching bare quoted names, an unread-parameter step); the open tool bugs (BUG-1170 first, then BUG-1171 and the
+   other tool entries); hermetic self-tests and a release-mode full run after each integration; an adversarial scout
+   as the exit of any lane that changes a refusal, gate or formula; interview lints for the spouse phrase on
+   once-per-return questions and for labels that print a 2025 amount; the agent-run ledger fold on `next`; CPU
+   contention from builds run outside the check slots; fixture cases left partial by new inputs.
+2. All open bugs (`reports/bug_status.md`), including the candidate new instances the characterization lists once
+   each is confirmed.
+3. 2026 and model work: T-011, T-320, T-322 and T-328 as the IRS finals post; the 55 year-drifting helper ids of
+   T-353's plan; the open 2026 items of `docs/ty2026/ADOPTION.md`.
 
 The one list of work that is known and not done. Spec section 11 states the
 open scope items; `BUG_INVENTORY.md` records defects; the stage handoffs

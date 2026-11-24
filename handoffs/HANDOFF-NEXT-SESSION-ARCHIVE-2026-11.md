@@ -2,6 +2,43 @@
 
 Historical; the current entry is the top of `HANDOFF-NEXT-SESSION.md`. Entries are newest first.
 
+# 2026-11-22 evening: release gating landed on `next`; integration wave in flight (superseded by the entry above where they differ)
+
+**State (2026-11-22).** `main` = `870cc146` (round F, pushed); last release `r2026.11.16.1`. `next` = `9a2b3e9c`: round F
+plus the release-gating change (next/main split, light commit tier, preflight, release-only full checks;
+`docs/2026-11-05_release_gating_design.md`, amendment of 2026-11-22; `CLAUDE.md`, "Commit guard and releases"). Work is
+committed on `next` or a lane branch, never on `main`; `main` moves only by `tools/release.sh`. A commit needs a green
+light-tier run (`tools/check_all.sh`); the full tier runs only at a release.
+
+**Owner decision (2026-11-22).** Back on Ultra: heavy parallel work in worktrees, with agent autonomy. The usage-scarcity
+rule of 2026-11-16 has ended (`CLAUDE.md`). Reviews run on Claude (`claude-opus-5-5`; owner, 2026-11-21); DeepSeek is
+qualified and not callable (`tools/transcription/families.json`).
+
+**In flight, not on `next`** (check `git worktree list` and each branch before relying on this; none of it is released):
+- `integrate-1` (worktree int1): about 500 staged files: year rollover T-339 to T-346, the 2026 finals, fixes for
+  BUG-0998 to BUG-1113; BUG_INVENTORY.md highest entry there BUG-1118. [flight]
+- `integrate-2` (worktree int2): batch 1+2, staged on `next`; the queue of
+  `.claude/wave-2026-11-22/after-int-queue.md` waits for it. [flight]
+- `adversarial-fixes` (advfix): fixes of the adversarial scouts' medium findings and T-333 mediums (Form 8919 reason code G,
+  s2, s8812, retirement, person.yaml, scope.yaml); uncommitted. [flight]
+- `ny-schedule-e` (nyfix): NY IT-201 line 11 and depreciation decoupling; staged. [flight]
+- Lane branches off `next` (worktrees adlow, hh, left, rb, speed, wk1, wk2 ...): scout and fix lanes of the wave; each lane
+  claims its forms with `tools/claims.py`. Their reports are in `.claude/scouts-2026-11-22/` and are testimony: confirm each
+  finding against the archived source and the current YAML before fixing. [flight]
+
+**Queued once integrate-2 is on `next`** (`.claude/wave-2026-11-22/after-int-queue.md`): the BUG-1094 closure (not a defect,
+p970 p. 11); guards for W2 and W4; nyfix and advfix onto `next`; the 2026 operations of
+`.claude/wave-2026-11-22/ty2026-ops-ready.md` (BUG-1031 AMT phase-out rate, BUG-1032 IRA rate labels, T-353 renaming of 67
+ids; blocked until other branches release their form claims); BUG-0993 fix; the tool bug in `samples.confirmed_bugs()`;
+the two pending nyfix defects (05 and 06).
+
+**Open owner-facing points:** T-312 (redraft choices), T-326 (2026 preparation choices), T-332 (owner walk) and T-333
+(judgment records) of the 2026-11-15 expansion areas. The IRS 2026 finals are still expected December 2026 to January 2027
+(T-011, T-322).
+
+Read first: `CLAUDE.md`, then `docs/2026-11-05_release_gating_design.md` (last section), `tools/README.md`, and the
+"What governs the work" table of the entry above.
+
 # 2026-11-17: handed to DeepSeek (opencode) until the IRS final 2026 forms; round F staged in `.claude/worktrees/fr2`
 
 **FROZEN 2026-11-18.** Work paused for the owner's absence. Read `.claude/freeze-2026-11-18/FREEZE.md`
